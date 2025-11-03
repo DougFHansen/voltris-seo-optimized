@@ -100,7 +100,7 @@ export default function SegurancaDigitalGuide() {
 
               <h3 className="text-2xl font-bold text-white mb-3 mt-6">Verificar se o Firewall Está Ativo</h3>
               <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-6">
-                <li>Vá em Configurações > Rede e Internet > Firewall do Windows</li>
+                <li>Vá em Configurações &gt; Rede e Internet &gt; Firewall do Windows</li>
                 <li>Verifique se o firewall está ativado para rede privada e pública</li>
                 <li>Se não estiver ativo, ative-o imediatamente</li>
               </ol>
@@ -110,7 +110,7 @@ export default function SegurancaDigitalGuide() {
                 Às vezes, programas legítimos precisam de permissão no firewall. Ao permitir um programa, faça-o apenas se você confiar completamente na fonte:
               </p>
               <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-4">
-                <li>Vá em Configurações > Firewall do Windows Defender > Permitir um aplicativo pelo firewall</li>
+                <li>Vá em Configurações &gt; Firewall do Windows Defender &gt; Permitir um aplicativo pelo firewall</li>
                 <li>Revise a lista de programas permitidos</li>
                 <li>Remova permissões de programas que você não reconhece ou não usa mais</li>
                 <li>Se precisar permitir um novo programa, adicione apenas após verificar que é confiável</li>

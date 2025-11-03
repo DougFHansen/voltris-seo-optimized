@@ -163,7 +163,7 @@ export default function InstalacaoDriversGuide() {
 
               <h3 className="text-2xl font-bold text-white mb-3 mt-6">Instalar Driver Manualmente</h3>
               <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-4">
-                <li>No Gerenciador de Dispositivos, clique com botão direito > Atualizar driver</li>
+                <li>No Gerenciador de Dispositivos, clique com botão direito &gt; Atualizar driver</li>
                 <li>Escolha "Procurar drivers no computador"</li>
                 <li>Clique em "Permitir que eu escolha de uma lista de drivers disponíveis no computador"</li>
                 <li>Ou clique em "Procurar" e selecione a pasta onde está o driver baixado</li>

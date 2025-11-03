@@ -211,7 +211,7 @@ export default function OtimizacaoPerformanceGuide() {
               <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-4">
                 <li>Abra o Explorador de Arquivos</li>
                 <li>Clique com botão direito na unidade C: (ou unidade principal)</li>
-                <li>Vá em Propriedades > Aba Ferramentas</li>
+                <li>Vá em Propriedades &gt; Aba Ferramentas</li>
                 <li>Clique em "Verificar" em Verificação de erros</li>
                 <li>O Windows pode pedir para agendar a verificação na próxima reinicialização</li>
                 <li>Aceite e reinicie o computador para executar a verificação</li>
@@ -237,7 +237,7 @@ export default function OtimizacaoPerformanceGuide() {
               <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-6">
                 <li>Pressione <kbd className="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd></li>
                 <li>Digite <code className="bg-[#2a2a2e] px-2 py-1 rounded">regedit</code> e pressione Enter</li>
-                <li>No Editor de Registro, clique em Arquivo > Exportar</li>
+                <li>No Editor de Registro, clique em Arquivo &gt; Exportar</li>
                 <li>Escolha um local seguro e salve com um nome descritivo (ex: "backup-registro-antes-otimizacao.reg")</li>
                 <li>Aguarde o backup ser concluído</li>
               </ol>
@@ -258,7 +258,7 @@ export default function OtimizacaoPerformanceGuide() {
 
               <h3 className="text-2xl font-bold text-white mb-3 mt-6">Ajustar Configurações TCP/IP</h3>
               <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-6">
-                <li>Abra o Prompt de Comando como Administrador (clique com botão direito no menu Iniciar > Prompt de Comando (Admin))</li>
+                <li>Abra o Prompt de Comando como Administrador (clique com botão direito no menu Iniciar &gt; Prompt de Comando (Admin))</li>
                 <li>Execute os seguintes comandos um por vez:
                   <ul className="mt-2 space-y-1 ml-6">
                     <li><code className="bg-[#2a2a2e] px-2 py-1 rounded">netsh int tcp set global autotuninglevel=normal</code></li>

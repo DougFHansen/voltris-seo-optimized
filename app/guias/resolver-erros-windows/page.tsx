@@ -117,7 +117,7 @@ export default function ResolverErrosWindowsGuide() {
               <h4 className="text-xl font-bold text-white mb-2 mt-4">Restauração do Sistema</h4>
               <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-6">
                 <li>Na tela de reparação, escolha "Opções Avançadas"</li>
-                <li>Vá em "Solução de Problemas" > "Opções Avançadas"</li>
+                <li>Vá em &quot;Solução de Problemas&quot; &gt; &quot;Opções Avançadas&quot;</li>
                 <li>Selecione "Restauração do Sistema"</li>
                 <li>Escolha um ponto de restauração anterior ao problema</li>
                 <li>Confirme e aguarde a restauração</li>
