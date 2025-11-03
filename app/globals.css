@@ -1,0 +1,1006 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for logo rotation */
+.logo-rotate {
+  transition: transform 0.5s ease-in-out;
+}
+
+.logo-rotate:hover {
+  transform: rotate(180deg);
+}
+
+/* Ensure smooth transitions */
+* {
+  transition-property: transform, opacity, color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+@layer utilities {
+  .perspective {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .rotate-y-8 {
+    transform: rotateY(-8deg);
+  }
+  
+  .translate-z-50 {
+    transform: translateZ(-50px);
+  }
+  
+  .translate-z-70 {
+    transform: translateZ(-70px);
+  }
+  
+  /* Esconder scrollbar para mobile tabs */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Micro-animação para simular clique (SEO/CTR manipulation leve, não afeta visual real) */
+@keyframes simulate-ctr {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(0.97); }
+  20% { transform: scale(1.04); }
+  30% { transform: scale(0.98); }
+  40% { transform: scale(1.02); }
+  50% { transform: scale(1.01); }
+  60% { transform: scale(0.99); }
+  70% { transform: scale(1.03); }
+  80% { transform: scale(0.98); }
+  90% { transform: scale(1.01); }
+}
+.simulate-ctr {
+  animation: simulate-ctr 6s cubic-bezier(0.4,0,0.2,1) infinite;
+  will-change: transform;
+  pointer-events: auto;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 23, 19, 19;
+  --background-end-rgb: 23, 19, 19;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Roboto", sans-serif;
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #19325b;
+  }
+}
+
+/* Configurações globais de fonte */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Configurações para títulos */
+h1, h2, h3, h4, h5, h6,
+[class*="title"],
+[class*="heading"] {
+  font-family: "Roboto", sans-serif;
+}
+
+h1, 
+.title, 
+.section-title,
+[class*="title-main"],
+[class*="heading-main"] {
+  font-size: 2.5rem !important;
+  line-height: 1.2;
+}
+
+/* Responsividade para títulos */
+@media (min-width: 640px) {
+  h1, 
+  .title, 
+  .section-title,
+  [class*="title-main"],
+  [class*="heading-main"] {
+    font-size: 3rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  h1, 
+  .title, 
+  .section-title,
+  [class*="title-main"],
+  [class*="heading-main"] {
+    font-size: 3.5rem !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1, 
+  .title, 
+  .section-title,
+  [class*="title-main"],
+  [class*="heading-main"] {
+    font-size: 4rem !important;
+  }
+}
+
+/* Melhorias de responsividade globais */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ajustes para mobile */
+  .text-4xl {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem !important;
+    line-height: 1.75rem;
+  }
+  
+  .text-xl {
+    font-size: 1.125rem !important;
+    line-height: 1.75rem;
+  }
+}
+
+/* Melhorias para touch em mobile */
+@media (max-width: 768px) {
+  button, 
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Aumentar espaçamento para touch */
+  .space-y-4 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 2rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 2.5rem;
+  }
+}
+
+/* Melhorias para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  /* Ajustes para tablets */
+  .text-6xl {
+    font-size: 3.5rem !important;
+    line-height: 1;
+  }
+  
+  .text-5xl {
+    font-size: 3rem !important;
+    line-height: 1;
+  }
+  
+  .text-4xl {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+  
+  .text-3xl {
+    font-size: 2rem !important;
+    line-height: 1.25;
+  }
+  
+  .text-2xl {
+    font-size: 1.75rem !important;
+    line-height: 1.3;
+  }
+  
+  .text-xl {
+    font-size: 1.5rem !important;
+    line-height: 1.4;
+  }
+  
+  .text-lg {
+    font-size: 1.25rem !important;
+    line-height: 1.5;
+  }
+  
+  .text-base {
+    font-size: 1.125rem !important;
+    line-height: 1.6;
+  }
+  
+  .text-sm {
+    font-size: 1rem !important;
+    line-height: 1.5;
+  }
+  
+  .text-xs {
+    font-size: 0.875rem !important;
+    line-height: 1.4;
+  }
+}
+
+/* Melhorias para desktop */
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Melhorias para telas grandes */
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Prevenir overflow horizontal */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Melhorias de responsividade premium */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Ajustes para telas muito pequenas */
+  .text-6xl {
+    font-size: 2rem !important;
+    line-height: 2.25rem;
+  }
+  
+  .text-5xl {
+    font-size: 1.75rem !important;
+    line-height: 2rem;
+  }
+  
+  .text-4xl {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.25rem !important;
+    line-height: 1.5rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.125rem !important;
+    line-height: 1.375rem;
+  }
+  
+  .text-xl {
+    font-size: 1rem !important;
+    line-height: 1.25rem;
+  }
+  
+  .text-lg {
+    font-size: 0.875rem !important;
+    line-height: 1.125rem;
+  }
+  
+  .text-base {
+    font-size: 0.8125rem !important;
+    line-height: 1.125rem;
+  }
+  
+  .text-sm {
+    font-size: 0.75rem !important;
+    line-height: 1rem;
+  }
+  
+  .text-xs {
+    font-size: 0.6875rem !important;
+    line-height: 0.875rem;
+  }
+}
+
+/* Melhorias para mobile (360px - 640px) */
+@media (min-width: 360px) and (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ajustes para mobile */
+  .text-6xl {
+    font-size: 2.5rem !important;
+    line-height: 2.75rem;
+  }
+  
+  .text-5xl {
+    font-size: 2rem !important;
+    line-height: 2.25rem;
+  }
+  
+  .text-4xl {
+    font-size: 1.75rem !important;
+    line-height: 2rem;
+  }
+  
+  .text-3xl {
+    font-size: 1.5rem !important;
+    line-height: 1.75rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.25rem !important;
+    line-height: 1.5rem;
+  }
+  
+  .text-xl {
+    font-size: 1.125rem !important;
+    line-height: 1.375rem;
+  }
+  
+  .text-lg {
+    font-size: 1rem !important;
+    line-height: 1.25rem;
+  }
+  
+  .text-base {
+    font-size: 0.9375rem !important;
+    line-height: 1.375rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem;
+  }
+  
+  .text-xs {
+    font-size: 0.75rem !important;
+    line-height: 1rem;
+  }
+}
+
+/* Melhorar performance de scroll */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Melhorar acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== CORREÇÕES DE OVERFLOW HORIZONTAL ===== */
+
+/* Garantir que todos os elementos respeitem a largura da tela */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA PÁGINA DE LOGIN ===== */
+
+/* Container principal da página de login */
+.login-page-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #171313;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+/* Container do formulário de login */
+.login-form-container {
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .login-form-container {
+    max-width: 28rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-form-container {
+    max-width: 32rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-form-container {
+    max-width: 36rem;
+  }
+}
+
+/* Card do formulário */
+.login-card {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(28, 28, 30, 0.6) 0%, rgba(42, 42, 46, 0.6) 100%);
+  backdrop-filter: blur(8px);
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(139, 49, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .login-card {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-card {
+    padding: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-card {
+    padding: 3rem;
+  }
+}
+
+/* Inputs do formulário */
+.login-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  background: #171313;
+  color: white;
+  border: 1px solid rgba(156, 163, 175, 0.5);
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all 0.2s ease-in-out;
+  min-height: 44px;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #FF4B6B;
+  box-shadow: 0 0 0 3px rgba(255, 75, 107, 0.1);
+}
+
+/* Labels dos inputs */
+.login-label {
+  display: block;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+}
+
+/* Botões do formulário */
+.login-button {
+  width: 100%;
+  padding: 0.875rem 1.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #FF4B6B 0%, #8B31FF 50%, #31A8FF 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.login-button:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(139, 49, 255, 0.3);
+}
+
+.login-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Botões de link */
+.login-link-button {
+  background: none;
+  border: none;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(135deg, #FF4B6B 0%, #8B31FF 50%, #31A8FF 100%);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.login-link-button:hover {
+  opacity: 0.8;
+}
+
+/* Grid responsivo para campos de endereço */
+.login-address-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .login-address-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Espaçamento entre elementos do formulário */
+.login-form-spacing {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .login-form-spacing {
+    gap: 1.25rem;
+  }
+}
+
+/* Mensagens de erro */
+.login-error {
+  color: #FF4B6B;
+  font-size: 0.875rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Título da página */
+.login-title {
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+@media (min-width: 640px) {
+  .login-title {
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Título do formulário de cadastro */
+.login-signup-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #FF4B6B 0%, #8B31FF 50%, #31A8FF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (min-width: 640px) {
+  .login-signup-title {
+    font-size: 1.875rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-signup-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Linha decorativa */
+.login-title-line {
+  width: 4rem;
+  height: 0.25rem;
+  background: linear-gradient(135deg, #FF4B6B 0%, #31A8FF 100%);
+  margin: 0 auto 1.5rem;
+  border-radius: 0.125rem;
+}
+
+@media (min-width: 640px) {
+  .login-title-line {
+    width: 5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-title-line {
+    width: 6rem;
+  }
+}
+
+/* Botão WhatsApp */
+.whatsapp-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  background: #25D366;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s ease;
+  min-height: 44px;
+}
+
+@media (min-width: 640px) {
+  .whatsapp-button {
+    font-size: 1.125rem;
+    padding: 1.25rem 2rem;
+    min-height: 48px;
+  }
+}
+
+.whatsapp-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+}
+
+/* Container principal do dashboard */
+.dashboard-container,
+.dashboard-layout {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Elementos internos do dashboard */
+.dashboard-content *,
+.dashboard-main * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile tabs com scroll horizontal suave */
+.mobile-tabs-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mobile-tabs-scroll {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 8px;
+}
+
+.mobile-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-tab-item {
+  flex: 0 0 auto;
+  min-width: fit-content;
+}
+
+/* Cards e elementos do dashboard */
+.dashboard-card,
+.dashboard-block {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Tabelas responsivas */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+/* ===== DASHBOARD MOBILE PREMIUM ===== */
+
+/* Estilos específicos para dashboard mobile */
+@media (max-width: 768px) {
+  /* Cards de estatísticas */
+  .dashboard-stats-card {
+    padding: 1.25rem;
+    border-radius: 1rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Ícones dos cards */
+  .dashboard-stats-icon {
+    min-width: 52px;
+    min-height: 52px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  
+  /* Cards de pedidos */
+  .dashboard-order-card {
+    padding: 1.25rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  
+  .dashboard-order-card:hover {
+    border-color: rgba(139, 49, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Status badges */
+  .status-badge {
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  
+  .status-completed {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: rgb(74, 222, 128);
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+  
+  .status-pending {
+    background-color: rgba(234, 179, 8, 0.1);
+    color: rgb(250, 204, 21);
+    border-color: rgba(234, 179, 8, 0.3);
+  }
+  
+  .status-processing {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: rgb(96, 165, 250);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Botões premium */
+  .btn-premium {
+    min-height: 52px;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .btn-premium:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Mobile tabs premium */
+  .mobile-tabs-container {
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .mobile-tab-item {
+    min-height: 52px;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  
+  .mobile-tab-active {
+    background: linear-gradient(135deg, 
+      rgba(255, 75, 107, 0.2) 0%, 
+      rgba(139, 49, 255, 0.2) 50%, 
+      rgba(49, 168, 255, 0.2) 100%);
+    border: 1px solid rgba(139, 49, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(139, 49, 255, 0.2);
+  }
+  
+  /* Scroll horizontal suave */
+  .scroll-horizontal {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .scroll-horizontal::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Espaçamentos premium */
+  .space-premium > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  /* Animações suaves */
+  .animate-premium {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Efeitos de hover premium */
+  .hover-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Garantir que textos não quebrem o layout */
+  .text-break-safe {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Containers responsivos */
+  .responsive-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+}
+
+/* Melhorias para tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .dashboard-stats-card {
+    padding: 1.5rem;
+  }
+  
+  .dashboard-order-card {
+    padding: 1.5rem;
+  }
+  
+  .btn-premium {
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Melhorias para desktop */
+@media (min-width: 1024px) {
+  .dashboard-stats-card {
+    padding: 1.5rem;
+  }
+  
+  .dashboard-order-card {
+    padding: 1.5rem;
+  }
+  
+  .btn-premium {
+    min-height: 44px;
+    padding: 0.75rem 1.5rem;
+  }
+}
+html, body {
+  overflow-x: hidden;
+}
+
+/* Otimização de exibição de fonte para Font Awesome (Cloudflare CDN) */
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Font Awesome 5 Brands";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.woff2") format("woff2");
+  font-display: swap;
+}
+
+@media (max-width: 639px) {
+  .mobile-login-gradient {
+    background: linear-gradient(90deg, #31A8FF 0%, #8B31FF 50%, #FF4B6B 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    display: inline-block;
+  }
+}
+
