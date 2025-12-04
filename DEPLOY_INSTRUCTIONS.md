@@ -67,7 +67,7 @@ Após o deploy ser concluído:
 1. Acesse a URL fornecida pelo Vercel
 2. Verifique se a página inicial carrega corretamente
 3. Teste a integração com o Mercado Pago acessando:
-   - `https://SUA_URL/api/criar-pagamento`
+   - `https://SUA_URL/api/pagamento`
 4. Verifique se as páginas públicas estão acessíveis:
    - `https://SUA_URL/sucesso.html`
    - `https://SUA_URL/falha.html`
