@@ -8,8 +8,8 @@ export async function GET(request) {
 
     const preference = new Preference(client);
     
-    // TODO: Substitua SEU-DOMINIO-VERCEL.vercel.app pelo seu domínio real da Vercel
-    const dominio = 'https://SEU-DOMINIO-VERCEL.vercel.app';
+    // Domínio correto para o seu site
+    const dominio = 'https://voltris.com.br';
     
     const response = await preference.create({
       body: {
