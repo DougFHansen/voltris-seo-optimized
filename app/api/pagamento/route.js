@@ -2,8 +2,19 @@ import { MercadoPagoConfig, Preference } from 'mercadopago';
 
 export async function GET(request) {
   try {
+    // Verifica se o token está configurado
+    const accessToken = process.env.MP_ACCESS_TOKEN;
+    if (!accessToken) {
+      return new Response(JSON.stringify({ error: 'MP_ACCESS_TOKEN not configured' }), {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+
     const client = new MercadoPagoConfig({
-      accessToken: process.env.MP_ACCESS_TOKEN || '',
+      accessToken: accessToken,
     });
 
     const preference = new Preference(client);
@@ -39,7 +50,7 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error('Error creating payment preference:', error);
-    return new Response(JSON.stringify({ error: 'Failed to create payment preference' }), {
+    return new Response(JSON.stringify({ error: 'Failed to create payment preference', details: error.message }), {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
