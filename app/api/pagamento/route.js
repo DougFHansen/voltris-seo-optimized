@@ -8,6 +8,9 @@ export async function GET(request) {
 
     const preference = new Preference(client);
     
+    // TODO: Substitua SEU-DOMINIO-VERCEL.vercel.app pelo seu domínio real da Vercel
+    const dominio = 'https://SEU-DOMINIO-VERCEL.vercel.app';
+    
     const response = await preference.create({
       body: {
         items: [
@@ -20,9 +23,9 @@ export async function GET(request) {
           }
         ],
         back_urls: {
-          success: 'https://your-success-url.com',
-          failure: 'https://your-failure-url.com',
-          pending: 'https://your-pending-url.com'
+          success: `${dominio}/sucesso.html`,
+          failure: `${dominio}/falha.html`,
+          pending: `${dominio}/falha.html`
         },
         auto_return: 'approved'
       }
