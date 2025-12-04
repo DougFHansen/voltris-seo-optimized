@@ -10,6 +10,12 @@
       "master": true
     }
   },
+  "builds": [
+    {
+      "src": "app/api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
