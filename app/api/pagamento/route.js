@@ -50,7 +50,11 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error('Error creating payment preference:', error);
-    return new Response(JSON.stringify({ error: 'Failed to create payment preference', details: error.message }), {
+    return new Response(JSON.stringify({ 
+      error: 'Failed to create payment preference', 
+      details: error.message,
+      stack: error.stack
+    }), {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
