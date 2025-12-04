@@ -31,7 +31,7 @@ export async function GET(request) {
       }
     });
 
-    return new Response(JSON.stringify({ url: response.init_point }), {
+    return new Response(JSON.stringify({ init_point: response.init_point }), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
