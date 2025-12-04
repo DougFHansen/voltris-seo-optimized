@@ -4,6 +4,7 @@
   "outputDirectory": ".next",
   "installCommand": "npm install",
   "framework": "nextjs",
+  "nodeVersion": "22.x",
   "git": {
     "deploymentEnabled": {
       "main": true,
