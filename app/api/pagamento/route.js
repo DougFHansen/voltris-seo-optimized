@@ -17,10 +17,16 @@ export const maxDuration = 30;
  * - email: email do comprador (opcional)
  */
 export async function GET(request) {
+  const startTime = Date.now();
+  const requestId = `req-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+  
+  console.log(`[Pagamento ${requestId}] Iniciando requisição`);
+  
   try {
     // Verifica se o token está configurado
     const accessToken = process.env.MP_ACCESS_TOKEN;
     if (!accessToken) {
+      console.error(`[Pagamento ${requestId}] MP_ACCESS_TOKEN não configurado`);
       return new Response(JSON.stringify({ error: 'MP_ACCESS_TOKEN not configured' }), {
         status: 500,
         headers: {
@@ -28,6 +34,8 @@ export async function GET(request) {
         },
       });
     }
+
+    console.log(`[Pagamento ${requestId}] Token encontrado: ${accessToken.substring(0, 20)}...`);
 
     // Obter parâmetros da query
     const { searchParams } = new URL(request.url);
@@ -48,6 +56,7 @@ export async function GET(request) {
     });
 
     const preference = new Preference(client);
+    console.log(`[Pagamento ${requestId}] Cliente Mercado Pago configurado`);
     
     // Domínio do site (pode ser variável de ambiente)
     const dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://voltris.com.br';
@@ -82,36 +91,64 @@ export async function GET(request) {
     // URL do webhook (Mercado Pago notificará aqui quando houver mudanças)
     const webhookUrl = `${dominio}/api/webhook/mercadopago`;
     
-    const response = await preference.create({
-      body: {
-        items: [
-          {
-            id: `voltris-license-${plan}`,
-            title: selectedPlan.title,
-            description: `Licença ${plan.toUpperCase()} - ${selectedPlan.months} mês(es)`,
-            quantity: 1,
-            currency_id: 'BRL',
-            unit_price: selectedPlan.price,
-          }
-        ],
-        payer: email ? {
-          email: email,
-        } : undefined,
-        back_urls: {
-          success: `${dominio}/sucesso?preference_id={preference_id}`,
-          failure: `${dominio}/falha?preference_id={preference_id}`,
-          pending: `${dominio}/falha?preference_id={preference_id}`
-        },
-        notification_url: webhookUrl, // Webhook para processamento automático
-        auto_return: 'approved',
-        external_reference: paymentRecord?.id || `payment-${Date.now()}`, // ID do nosso registro
-        metadata: {
-          plan: plan,
-          email: email,
-          payment_id: paymentRecord?.id || null,
+    const preferenceBody = {
+      items: [
+        {
+          id: `voltris-license-${plan}`,
+          title: selectedPlan.title,
+          description: `Licença ${plan.toUpperCase()} - ${selectedPlan.months} mês(es)`,
+          quantity: 1,
+          currency_id: 'BRL',
+          unit_price: selectedPlan.price,
         }
+      ],
+      payer: email ? {
+        email: email,
+      } : undefined,
+      back_urls: {
+        success: `${dominio}/sucesso?preference_id={preference_id}`,
+        failure: `${dominio}/falha?preference_id={preference_id}`,
+        pending: `${dominio}/falha?preference_id={preference_id}`
+      },
+      notification_url: webhookUrl, // Webhook para processamento automático
+      auto_return: 'approved',
+      external_reference: paymentRecord?.id || `payment-${Date.now()}`, // ID do nosso registro
+      metadata: {
+        plan: plan,
+        email: email,
+        payment_id: paymentRecord?.id || null,
       }
+    };
+
+    console.log(`[Pagamento ${requestId}] Criando preferência:`, {
+      plan: plan,
+      price: selectedPlan.price,
+      email: email || 'não informado',
+      payment_id: paymentRecord?.id || 'não criado',
+      webhook_url: webhookUrl,
     });
+
+    let response;
+    try {
+      response = await preference.create({
+        body: preferenceBody
+      });
+      console.log(`[Pagamento ${requestId}] Preferência criada com sucesso:`, {
+        preference_id: response.id,
+        init_point: response.init_point,
+        sandbox_init_point: response.sandbox_init_point,
+        test_mode: response.test_mode,
+      });
+    } catch (mpError) {
+      console.error(`[Pagamento ${requestId}] Erro ao criar preferência:`, {
+        message: mpError.message,
+        cause: mpError.cause,
+        status: mpError.status,
+        statusCode: mpError.statusCode,
+        stack: mpError.stack,
+      });
+      throw mpError;
+    }
 
     // Atualizar registro com preference_id
     if (paymentRecord && response.id) {
@@ -125,10 +162,19 @@ export async function GET(request) {
       }
     }
 
+    const duration = Date.now() - startTime;
+    console.log(`[Pagamento ${requestId}] Requisição concluída em ${duration}ms`);
+
     return new Response(JSON.stringify({ 
       init_point: response.init_point,
+      sandbox_init_point: response.sandbox_init_point,
       preference_id: response.id,
       payment_id: paymentRecord?.id || null,
+      test_mode: response.test_mode,
+      debug: {
+        request_id: requestId,
+        duration_ms: duration,
+      }
     }), {
       status: 200,
       headers: {
@@ -136,10 +182,24 @@ export async function GET(request) {
       },
     });
   } catch (error) {
-    console.error('Error creating payment preference:', error);
+    const duration = Date.now() - startTime;
+    console.error(`[Pagamento ${requestId}] Erro após ${duration}ms:`, {
+      message: error.message,
+      cause: error.cause,
+      status: error.status,
+      statusCode: error.statusCode,
+      stack: error.stack,
+    });
+
     return new Response(JSON.stringify({ 
       error: 'Failed to create payment preference', 
       details: error.message,
+      request_id: requestId,
+      debug: {
+        cause: error.cause?.toString(),
+        status: error.status,
+        statusCode: error.statusCode,
+      },
       stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     }), {
       status: 500,
