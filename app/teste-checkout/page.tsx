@@ -31,9 +31,10 @@ export default function TesteCheckoutPage() {
 
       setPaymentData(data);
       
-      // Abrir checkout automaticamente
-      if (data.init_point) {
-        window.open(data.init_point, '_blank');
+      // Abrir checkout automaticamente (usar sandbox_init_point para testes)
+      const checkoutUrl = data.sandbox_init_point || data.init_point;
+      if (checkoutUrl) {
+        window.open(checkoutUrl, '_blank');
       }
     } catch (err: any) {
       setError(err.message || 'Erro desconhecido');
@@ -74,8 +75,10 @@ export default function TesteCheckoutPage() {
   }
 
   function abrirCheckout() {
-    if (paymentData?.init_point) {
-      window.open(paymentData.init_point, '_blank');
+    // Usar sandbox_init_point se disponível (para testes), senão usar init_point
+    const checkoutUrl = paymentData?.sandbox_init_point || paymentData?.init_point;
+    if (checkoutUrl) {
+      window.open(checkoutUrl, '_blank');
     }
   }
 
@@ -170,6 +173,11 @@ export default function TesteCheckoutPage() {
                   💡 O checkout do Mercado Pago deve ter aberto em uma nova aba. 
                   Complete o pagamento lá e depois clique em "Verificar Licença".
                 </p>
+                {paymentData.sandbox_init_point && (
+                  <p className="text-sm text-yellow-600 mt-2 font-semibold">
+                    ⚠️ Use o link SANDBOX para testes (ambiente de teste do Mercado Pago)
+                  </p>
+                )}
               </div>
               <div className="flex gap-4">
                 <button
