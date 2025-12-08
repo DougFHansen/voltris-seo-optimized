@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 
 interface LicenseData {
@@ -10,7 +10,7 @@ interface LicenseData {
   max_devices: number;
 }
 
-export default function SucessoPage() {
+function SucessoContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -171,6 +171,24 @@ export default function SucessoPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SucessoPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-8 md:p-12">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-green-600 mx-auto mb-4"></div>
+            <h1 className="text-2xl font-bold text-gray-800 mb-2">Carregando...</h1>
+            <p className="text-gray-600">Aguarde enquanto processamos sua solicitação.</p>
+          </div>
+        </div>
+      </div>
+    }>
+      <SucessoContent />
+    </Suspense>
   );
 }
 

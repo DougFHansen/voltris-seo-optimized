@@ -8,8 +8,8 @@ export async function middleware(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
+  // Se as variáveis não estiverem configuradas, apenas retornar a resposta sem autenticação
   if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Supabase environment variables are not configured')
     return response
   }
 
