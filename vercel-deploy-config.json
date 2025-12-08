@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "env": {
+    "MP_ACCESS_TOKEN": "APP_USR-1779915323498167-120406-7bd7b57f348d130c62a7f57975217fef-3039297620",
+    "NEXT_PUBLIC_SITE_URL": "https://voltris.com.br"
+  }
+}
+
+
