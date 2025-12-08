@@ -62,7 +62,17 @@ export async function GET(request) {
     const dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://voltris.com.br';
     
     // Criar registro de pagamento no banco ANTES de criar a preferência
-    const supabase = await createClient();
+    // Usar service_role key para bypass RLS
+    const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    
+    // Se tiver service_role key, usar ela (bypass RLS)
+    // Senão, usar cliente normal (vai depender das políticas RLS)
+    const supabase = supabaseServiceKey 
+      ? createSupabaseClient(supabaseUrl, supabaseServiceKey)
+      : await createClient();
+    
     let paymentRecord = null;
     
     try {

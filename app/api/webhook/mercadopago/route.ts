@@ -16,7 +16,17 @@ export const maxDuration = 30;
  */
 export async function POST(request: Request) {
   try {
-    const supabase = await createClient();
+    // Usar service_role key para bypass RLS no webhook
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    
+    let supabase;
+    if (supabaseServiceKey) {
+      const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
+      supabase = createSupabaseClient(supabaseUrl!, supabaseServiceKey);
+    } else {
+      supabase = await createClient();
+    }
     
     // Obter dados do webhook
     const body = await request.json();
