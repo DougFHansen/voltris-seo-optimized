@@ -174,9 +174,13 @@ export default function TesteCheckoutPage() {
                   Complete o pagamento lá e depois clique em "Verificar Licença".
                 </p>
                 {paymentData.sandbox_init_point && (
-                  <p className="text-sm text-yellow-600 mt-2 font-semibold">
-                    ⚠️ Use o link SANDBOX para testes (ambiente de teste do Mercado Pago)
-                  </p>
+                  <div className="text-sm text-yellow-600 mt-2 font-semibold space-y-1">
+                    <p>⚠️ IMPORTANTE: Use o link SANDBOX para testes</p>
+                    <p className="text-xs text-yellow-700">
+                      Antes de pagar, você PRECISA fazer login com uma CONTA DE TESTE do Mercado Pago.
+                      Crie uma conta de teste "Comprador" no painel do Mercado Pago e faça login com ela antes de pagar.
+                    </p>
+                  </div>
                 )}
               </div>
               <div className="flex gap-4">
