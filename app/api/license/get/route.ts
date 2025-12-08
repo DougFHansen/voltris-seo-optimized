@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 
+export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 
@@ -14,7 +15,20 @@ export const maxDuration = 30;
  */
 export async function GET(request: Request) {
   try {
-    const supabase = await createClient();
+    console.log('[License API] Requisição recebida:', request.url);
+    
+    // Usar service_role key se disponível
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    
+    let supabase;
+    if (supabaseServiceKey) {
+      const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
+      supabase = createSupabaseClient(supabaseUrl!, supabaseServiceKey);
+    } else {
+      supabase = await createClient();
+    }
+    
     const { searchParams } = new URL(request.url);
     
     const preferenceId = searchParams.get('preference_id');
