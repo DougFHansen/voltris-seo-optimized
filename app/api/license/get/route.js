@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { createClient } from '@/utils/supabase/server';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -13,7 +12,7 @@ export const maxDuration = 30;
  * - payment_id: ID do pagamento (nosso UUID)
  * - email: Email do comprador (opcional)
  */
-export async function GET(request: Request) {
+export async function GET(request) {
   try {
     console.log('[License API] Requisição recebida:', request.url);
     
@@ -24,8 +23,9 @@ export async function GET(request: Request) {
     let supabase;
     if (supabaseServiceKey) {
       const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
-      supabase = createSupabaseClient(supabaseUrl!, supabaseServiceKey);
+      supabase = createSupabaseClient(supabaseUrl, supabaseServiceKey);
     } else {
+      const { createClient } = await import('@/utils/supabase/server');
       supabase = await createClient();
     }
     
@@ -108,7 +108,7 @@ export async function GET(request: Request) {
         is_active: license.is_active,
       },
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('[License API] Erro:', error);
     return NextResponse.json(
       { error: error.message || 'Erro ao buscar licença' },
