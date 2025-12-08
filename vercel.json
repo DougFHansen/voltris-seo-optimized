@@ -1,22 +1,5 @@
 {
-  "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "installCommand": "npm install",
-  "framework": "nextjs",
-  "nodeVersion": "22.x",
-  "git": {
-    "deploymentEnabled": {
-      "main": true,
-      "master": true
-    }
-  },
-  "builds": [
-    {
-      "src": "app/api/**/*.js",
-      "use": "@vercel/node"
-    }
-  ],
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "app/api/**/*.ts": {
       "maxDuration": 30
