@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function TesteCheckoutPage() {
   const [plan, setPlan] = useState<'trial' | 'pro' | 'premium'>('pro');
@@ -30,6 +30,11 @@ export default function TesteCheckoutPage() {
       }
 
       setPaymentData(data);
+      
+      // Abrir checkout automaticamente
+      if (data.init_point) {
+        window.open(data.init_point, '_blank');
+      }
     } catch (err: any) {
       setError(err.message || 'Erro desconhecido');
     } finally {
@@ -59,7 +64,7 @@ export default function TesteCheckoutPage() {
       if (data.license) {
         setLicense(data.license);
       } else {
-        setError(data.message || 'Licença ainda não foi gerada');
+        setError(data.message || 'Licença ainda não foi gerada. Aguarde alguns segundos e tente novamente.');
       }
     } catch (err: any) {
       setError(err.message || 'Erro desconhecido');
@@ -73,6 +78,16 @@ export default function TesteCheckoutPage() {
       window.open(paymentData.init_point, '_blank');
     }
   }
+
+  // Verificar licença automaticamente a cada 5 segundos se paymentData existe
+  useEffect(() => {
+    if (paymentData?.preference_id && !license) {
+      const interval = setInterval(() => {
+        verificarLicenca();
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [paymentData, license]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
@@ -120,7 +135,7 @@ export default function TesteCheckoutPage() {
               disabled={loading}
               className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
             >
-              {loading ? 'Criando pagamento...' : 'Criar Pagamento'}
+              {loading ? 'Criando pagamento...' : 'Criar Pagamento e Abrir Checkout'}
             </button>
           </div>
 
@@ -148,8 +163,12 @@ export default function TesteCheckoutPage() {
                 <p>
                   <strong>Payment ID:</strong>{' '}
                   <code className="bg-white px-2 py-1 rounded text-sm">
-                    {paymentData.payment_id || 'N/A'}
+                    {paymentData.payment_id || 'Aguardando pagamento...'}
                   </code>
+                </p>
+                <p className="text-sm text-gray-600 mt-2">
+                  💡 O checkout do Mercado Pago deve ter aberto em uma nova aba. 
+                  Complete o pagamento lá e depois clique em "Verificar Licença".
                 </p>
               </div>
               <div className="flex gap-4">
@@ -157,7 +176,7 @@ export default function TesteCheckoutPage() {
                   onClick={abrirCheckout}
                   className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors"
                 >
-                  Abrir Checkout Mercado Pago
+                  Abrir Checkout Novamente
                 </button>
                 <button
                   onClick={verificarLicenca}
@@ -174,7 +193,7 @@ export default function TesteCheckoutPage() {
           {license && (
             <div className="bg-purple-50 border border-purple-200 rounded-lg p-6">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">
-                🎉 Licença Gerada
+                🎉 Licença Gerada com Sucesso!
               </h2>
               <div className="space-y-3">
                 <div>
@@ -190,7 +209,11 @@ export default function TesteCheckoutPage() {
                     Válida até
                   </label>
                   <p className="text-lg font-semibold text-gray-800">
-                    {new Date(license.expires_at).toLocaleDateString('pt-BR')}
+                    {new Date(license.expires_at).toLocaleDateString('pt-BR', {
+                      day: '2-digit',
+                      month: '2-digit',
+                      year: 'numeric'
+                    })}
                   </p>
                 </div>
                 <div>
@@ -207,7 +230,7 @@ export default function TesteCheckoutPage() {
                     <button
                       onClick={() => {
                         navigator.clipboard.writeText(license.license_key);
-                        alert('Copiado!');
+                        alert('✅ Chave copiada para a área de transferência!');
                       }}
                       className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
                     >
@@ -227,8 +250,8 @@ export default function TesteCheckoutPage() {
           </h2>
           <ol className="list-decimal list-inside space-y-2 text-gray-600">
             <li>Selecione o plano e insira um email (opcional)</li>
-            <li>Clique em "Criar Pagamento"</li>
-            <li>Clique em "Abrir Checkout Mercado Pago"</li>
+            <li>Clique em "Criar Pagamento e Abrir Checkout"</li>
+            <li>O checkout do Mercado Pago abrirá automaticamente em nova aba</li>
             <li>
               No Mercado Pago, use um cartão de teste:
               <ul className="list-disc list-inside ml-6 mt-1">
@@ -239,22 +262,22 @@ export default function TesteCheckoutPage() {
                   <strong>CVV:</strong> 123
                 </li>
                 <li>
-                  <strong>Vencimento:</strong> Qualquer data futura
+                  <strong>Vencimento:</strong> Qualquer data futura (ex: 12/25)
                 </li>
                 <li>
                   <strong>Nome:</strong> Qualquer nome
                 </li>
                 <li>
-                  <strong>CPF:</strong> Qualquer CPF válido
+                  <strong>CPF:</strong> Qualquer CPF válido (ex: 123.456.789-00)
                 </li>
               </ul>
             </li>
             <li>Complete o pagamento no Mercado Pago</li>
             <li>
-              Aguarde alguns segundos e clique em "Verificar Licença"
+              Volte para esta página e clique em "Verificar Licença"
             </li>
             <li>
-              A licença deve aparecer automaticamente após o webhook processar
+              A licença deve aparecer automaticamente após o webhook processar (pode levar alguns segundos)
             </li>
           </ol>
 
@@ -272,6 +295,9 @@ export default function TesteCheckoutPage() {
                 Verifique os logs no Vercel para debug: Dashboard → Deployments
                 → Logs
               </li>
+              <li>
+                Se a licença não aparecer, aguarde 10-15 segundos e clique novamente em "Verificar Licença"
+              </li>
             </ul>
           </div>
         </div>
@@ -279,4 +305,3 @@ export default function TesteCheckoutPage() {
     </div>
   );
 }
-
