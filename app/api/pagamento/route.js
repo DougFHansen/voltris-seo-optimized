@@ -172,12 +172,22 @@ export async function GET(request) {
       response = await preference.create({
         body: preferenceBody
       });
+      
+      // Logs detalhados para diagnóstico
       console.log(`[Pagamento ${requestId}] Preferência criada com sucesso:`, {
         preference_id: response.id,
         init_point: response.init_point,
         sandbox_init_point: response.sandbox_init_point,
         test_mode: response.test_mode,
+        status: response.status,
+        site_id: response.site_id,
+        operation_type: response.operation_type,
       });
+      
+      // Log completo da resposta (útil para debug)
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`[Pagamento ${requestId}] Resposta completa do MP:`, JSON.stringify(response, null, 2));
+      }
     } catch (mpError) {
       console.error(`[Pagamento ${requestId}] Erro ao criar preferência:`, {
         message: mpError.message,
