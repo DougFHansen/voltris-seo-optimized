@@ -134,49 +134,32 @@ export async function GET(request) {
     // URL do webhook (Mercado Pago notificará aqui quando houver mudanças)
     const webhookUrl = `${dominio}/api/webhook/mercadopago`;
     
-    // Construir corpo da preferência - versão simplificada para sandbox
-    // Removendo campos que podem causar problemas no ambiente de teste
+    // Construir corpo da preferência - VERSÃO MÍNIMA para testar no sandbox
+    // Removendo TUDO que pode causar problemas para isolar o problema
     const preferenceBody = {
       items: [
         {
-          id: `voltris-license-${plan}`,
           title: selectedPlan.title,
-          description: `Licença ${plan.toUpperCase()} - ${selectedPlan.months} mês(es)`,
           quantity: 1,
           currency_id: 'BRL',
           unit_price: selectedPlan.price,
         }
       ],
       back_urls: {
-        success: `${dominio}/sucesso?preference_id={preference_id}`,
-        failure: `${dominio}/falha?preference_id={preference_id}`,
-        pending: `${dominio}/falha?preference_id={preference_id}`
+        success: `${dominio}/sucesso`,
+        failure: `${dominio}/falha`,
+        pending: `${dominio}/falha`
       },
-      auto_return: 'approved',
-      external_reference: paymentRecord?.id || `payment-${Date.now()}`,
     };
     
-    // Adicionar payer apenas se email fornecido
-    if (email) {
-      preferenceBody.payer = { email: email };
-    }
-    
-    // Adicionar notification_url apenas se o domínio for HTTPS (requisito do MP)
-    if (dominio.startsWith('https://')) {
-      preferenceBody.notification_url = webhookUrl;
-    }
-    
-    // Metadata simplificada (pode causar problemas no sandbox se muito complexa)
-    preferenceBody.metadata = {
-      plan: plan,
-    };
+    // Adicionar apenas campos essenciais se necessário
+    // Removendo auto_return, notification_url, metadata, external_reference temporariamente
 
-    console.log(`[Pagamento ${requestId}] Criando preferência:`, {
+    console.log(`[Pagamento ${requestId}] Criando preferência MÍNIMA para teste sandbox:`, {
       plan: plan,
       price: selectedPlan.price,
       email: email || 'não informado',
-      payment_id: paymentRecord?.id || 'não criado',
-      webhook_url: webhookUrl,
+      preference_body: JSON.stringify(preferenceBody),
     });
 
     let response;
