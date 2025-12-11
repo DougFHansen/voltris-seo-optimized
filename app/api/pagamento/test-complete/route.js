@@ -83,9 +83,14 @@ export async function GET(request) {
           has_sandbox_url: !!response.sandbox_init_point,
           has_production_url: !!response.init_point,
           test_mode_active: response.test_mode === true,
+          token_is_test: accessToken.startsWith('TEST-'),
+          token_is_app_usr: accessToken.startsWith('APP_USR-'),
           recommendation: response.sandbox_init_point 
-            ? 'USE sandbox_init_point para testes' 
+            ? '⚠️ ATENÇÃO: Token não está em modo teste, mas sandbox_init_point está disponível. Use o sandbox_init_point e certifique-se de estar logado com conta de TESTE do comprador.' 
             : 'sandbox_init_point não disponível - verifique token',
+          critical_warning: !accessToken.startsWith('TEST-') && response.test_mode !== true
+            ? '🚨 PROBLEMA: Token não está sendo reconhecido como teste. Mesmo usando sandbox_init_point, pode haver problemas. Recomendado: obter token que comece com TEST- ou verificar configuração da aplicação no painel.'
+            : null,
         },
         next_steps: [
           '1. Copie o sandbox_init_point acima',

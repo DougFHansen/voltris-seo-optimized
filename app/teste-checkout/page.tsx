@@ -31,10 +31,16 @@ export default function TesteCheckoutPage() {
 
       setPaymentData(data);
       
-      // Abrir checkout automaticamente (usar sandbox_init_point para testes)
+      // SEMPRE usar sandbox_init_point para testes (forçar sandbox)
       const checkoutUrl = data.sandbox_init_point || data.init_point;
       if (checkoutUrl) {
+        // Adicionar aviso se não estiver usando sandbox
+        if (!data.sandbox_init_point) {
+          console.warn('⚠️ sandbox_init_point não disponível - usando init_point de produção');
+        }
         window.open(checkoutUrl, '_blank');
+      } else {
+        setError('URL de checkout não disponível');
       }
     } catch (err: any) {
       setError(err.message || 'Erro desconhecido');
