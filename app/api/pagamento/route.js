@@ -140,7 +140,7 @@ export async function GET(request) {
     const webhookUrl = `${dominio}/api/webhook/mercadopago`;
     
     // Construir corpo da preferência - VERSÃO MÍNIMA para testar no sandbox
-    // Removendo TUDO que pode causar problemas para isolar o problema
+    // IMPORTANTE: Adicionar campos que forçam modo teste
     const preferenceBody = {
       items: [
         {
@@ -154,6 +154,14 @@ export async function GET(request) {
         success: `${dominio}/sucesso`,
         failure: `${dominio}/falha`,
         pending: `${dominio}/falha`
+      },
+      // Forçar modo teste explicitamente
+      statement_descriptor: 'VOLTRIS TEST',
+      // Adicionar payer com email para melhor compatibilidade
+      payer: email ? {
+        email: email,
+      } : {
+        email: 'test@testuser.com', // Email padrão para testes
       },
     };
     

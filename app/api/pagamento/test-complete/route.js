@@ -36,6 +36,7 @@ export async function GET(request) {
     const preference = new Preference(client);
 
     // Preferência ULTRA SIMPLIFICADA - apenas o essencial
+    // Adicionar payer para melhor compatibilidade com sandbox
     const preferenceBody = {
       items: [
         {
@@ -50,6 +51,10 @@ export async function GET(request) {
         failure: `${dominio}/falha`,
         pending: `${dominio}/falha`
       },
+      payer: {
+        email: email || 'test@testuser.com',
+      },
+      statement_descriptor: 'VOLTRIS TEST',
     };
 
     console.log('[TEST-COMPLETE] Criando preferência:', JSON.stringify(preferenceBody, null, 2));
