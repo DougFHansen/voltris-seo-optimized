@@ -9,7 +9,11 @@ export const maxDuration = 30;
 export async function GET(request) {
   try {
     const accessToken = process.env.MP_ACCESS_TOKEN;
-    const dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://voltris.com.br';
+    let dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.voltris.com.br';
+    dominio = dominio.replace(/\/$/, ''); // Remove barra final
+    if (dominio.includes('voltris.com.br') && !dominio.includes('www.')) {
+      dominio = dominio.replace('voltris.com.br', 'www.voltris.com.br');
+    }
 
     const debugInfo = {
       token_configured: !!accessToken,

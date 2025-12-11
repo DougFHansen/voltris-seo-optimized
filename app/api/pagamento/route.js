@@ -90,9 +90,14 @@ export async function GET(request) {
     console.log(`[Pagamento ${requestId}] Cliente Mercado Pago configurado`);
     
     // Domínio do site (pode ser variável de ambiente)
-    // Garantir que não tenha barra no final
-    let dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://voltris.com.br';
+    // Garantir que não tenha barra no final e usar www se disponível
+    let dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.voltris.com.br';
     dominio = dominio.replace(/\/$/, ''); // Remove barra final se houver
+    
+    // Garantir que use www.voltris.com.br (formato correto)
+    if (dominio.includes('voltris.com.br') && !dominio.includes('www.')) {
+      dominio = dominio.replace('voltris.com.br', 'www.voltris.com.br');
+    }
     
     // Criar registro de pagamento no banco ANTES de criar a preferência
     // Usar service_role key para bypass RLS
