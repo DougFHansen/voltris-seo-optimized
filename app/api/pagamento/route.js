@@ -90,7 +90,9 @@ export async function GET(request) {
     console.log(`[Pagamento ${requestId}] Cliente Mercado Pago configurado`);
     
     // Domínio do site (pode ser variável de ambiente)
-    const dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://voltris.com.br';
+    // Garantir que não tenha barra no final
+    let dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://voltris.com.br';
+    dominio = dominio.replace(/\/$/, ''); // Remove barra final se houver
     
     // Criar registro de pagamento no banco ANTES de criar a preferência
     // Usar service_role key para bypass RLS
@@ -132,40 +134,41 @@ export async function GET(request) {
     // URL do webhook (Mercado Pago notificará aqui quando houver mudanças)
     const webhookUrl = `${dominio}/api/webhook/mercadopago`;
     
-    // Construir corpo da preferência seguindo melhores práticas 2025
+    // Construir corpo da preferência - versão simplificada para sandbox
+    // Removendo campos que podem causar problemas no ambiente de teste
     const preferenceBody = {
       items: [
         {
           id: `voltris-license-${plan}`,
           title: selectedPlan.title,
-          description: `Licença ${plan.toUpperCase()} - ${selectedPlan.months} mês(es) de acesso ao Voltris Optimizer`,
+          description: `Licença ${plan.toUpperCase()} - ${selectedPlan.months} mês(es)`,
           quantity: 1,
           currency_id: 'BRL',
           unit_price: selectedPlan.price,
         }
       ],
-      payer: email ? {
-        email: email,
-      } : undefined,
       back_urls: {
         success: `${dominio}/sucesso?preference_id={preference_id}`,
         failure: `${dominio}/falha?preference_id={preference_id}`,
         pending: `${dominio}/falha?preference_id={preference_id}`
       },
-      notification_url: webhookUrl, // Webhook para processamento automático
-      auto_return: 'approved', // Redireciona automaticamente quando aprovado
-      statement_descriptor: 'VOLTRIS', // Nome que aparece na fatura do cartão
-      external_reference: paymentRecord?.id || `payment-${Date.now()}`, // ID do nosso registro
-      metadata: {
-        plan: plan,
-        email: email || 'not_provided',
-        payment_id: paymentRecord?.id || null,
-        created_at: new Date().toISOString(),
-      },
-      // Configurações adicionais para melhor experiência
-      // A preferência expira em 24 horas se não for paga
-      expiration_date_from: new Date().toISOString(),
-      expiration_date_to: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // Expira em 24h
+      auto_return: 'approved',
+      external_reference: paymentRecord?.id || `payment-${Date.now()}`,
+    };
+    
+    // Adicionar payer apenas se email fornecido
+    if (email) {
+      preferenceBody.payer = { email: email };
+    }
+    
+    // Adicionar notification_url apenas se o domínio for HTTPS (requisito do MP)
+    if (dominio.startsWith('https://')) {
+      preferenceBody.notification_url = webhookUrl;
+    }
+    
+    // Metadata simplificada (pode causar problemas no sandbox se muito complexa)
+    preferenceBody.metadata = {
+      plan: plan,
     };
 
     console.log(`[Pagamento ${requestId}] Criando preferência:`, {
