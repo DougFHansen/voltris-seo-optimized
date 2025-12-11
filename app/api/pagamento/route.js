@@ -11,10 +11,11 @@ export const maxDuration = 30;
  * - Diferentes planos (trial, pro, premium)
  * - Webhook para processamento automático
  * - Modo teste/produção
+ * - Validações de segurança
  * 
  * Query params:
  * - plan: tipo de licença (trial, pro, premium) - default: pro
- * - email: email do comprador (opcional)
+ * - email: email do comprador (opcional, mas recomendado)
  */
 export async function GET(request) {
   const startTime = Date.now();
@@ -27,7 +28,10 @@ export async function GET(request) {
     const accessToken = process.env.MP_ACCESS_TOKEN;
     if (!accessToken) {
       console.error(`[Pagamento ${requestId}] MP_ACCESS_TOKEN não configurado`);
-      return new Response(JSON.stringify({ error: 'MP_ACCESS_TOKEN not configured' }), {
+      return new Response(JSON.stringify({ 
+        error: 'MP_ACCESS_TOKEN not configured',
+        message: 'Token de acesso do Mercado Pago não está configurado. Configure a variável MP_ACCESS_TOKEN no Vercel.'
+      }), {
         status: 500,
         headers: {
           'Content-Type': 'application/json',
@@ -42,6 +46,33 @@ export async function GET(request) {
     const plan = searchParams.get('plan') || 'pro';
     const email = searchParams.get('email') || '';
     
+    // Validar plano
+    const validPlans = ['trial', 'pro', 'premium'];
+    if (!validPlans.includes(plan)) {
+      return new Response(JSON.stringify({ 
+        error: 'Invalid plan',
+        message: `Plano inválido. Use: ${validPlans.join(', ')}`
+      }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+    
+    // Validar email se fornecido
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return new Response(JSON.stringify({ 
+        error: 'Invalid email',
+        message: 'Formato de email inválido'
+      }), {
+        status: 400,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+    
     // Configurar preços e tipos de licença
     const planConfig = {
       trial: { price: 0, title: 'Licença Voltris - Trial', months: 0 },
@@ -49,7 +80,7 @@ export async function GET(request) {
       premium: { price: 99.90, title: 'Licença Voltris - Premium', months: 3 },
     };
     
-    const selectedPlan = planConfig[plan] || planConfig.pro;
+    const selectedPlan = planConfig[plan];
     
     const client = new MercadoPagoConfig({
       accessToken: accessToken,
@@ -101,12 +132,13 @@ export async function GET(request) {
     // URL do webhook (Mercado Pago notificará aqui quando houver mudanças)
     const webhookUrl = `${dominio}/api/webhook/mercadopago`;
     
+    // Construir corpo da preferência seguindo melhores práticas 2025
     const preferenceBody = {
       items: [
         {
           id: `voltris-license-${plan}`,
           title: selectedPlan.title,
-          description: `Licença ${plan.toUpperCase()} - ${selectedPlan.months} mês(es)`,
+          description: `Licença ${plan.toUpperCase()} - ${selectedPlan.months} mês(es) de acesso ao Voltris Optimizer`,
           quantity: 1,
           currency_id: 'BRL',
           unit_price: selectedPlan.price,
@@ -121,13 +153,19 @@ export async function GET(request) {
         pending: `${dominio}/falha?preference_id={preference_id}`
       },
       notification_url: webhookUrl, // Webhook para processamento automático
-      auto_return: 'approved',
+      auto_return: 'approved', // Redireciona automaticamente quando aprovado
+      statement_descriptor: 'VOLTRIS', // Nome que aparece na fatura do cartão
       external_reference: paymentRecord?.id || `payment-${Date.now()}`, // ID do nosso registro
       metadata: {
         plan: plan,
-        email: email,
+        email: email || 'not_provided',
         payment_id: paymentRecord?.id || null,
-      }
+        created_at: new Date().toISOString(),
+      },
+      // Configurações adicionais para melhor experiência
+      // A preferência expira em 24 horas se não for paga
+      expiration_date_from: new Date().toISOString(),
+      expiration_date_to: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // Expira em 24h
     };
 
     console.log(`[Pagamento ${requestId}] Criando preferência:`, {

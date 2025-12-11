@@ -1,0 +1,76 @@
+name: 🚀 Build e Release Automático
+
+on:
+  release:
+    types: [created, edited]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Versão (ex: 3.1.0)'
+        required: true
+        type: string
+      changelog:
+        description: 'Changelog (separado por \n)'
+        required: true
+        type: string
+      mandatory:
+        description: 'Atualização obrigatória? (true/false)'
+        required: false
+        default: 'false'
+        type: string
+
+jobs:
+  update-version-json:
+    name: 📝 Atualizar version.json
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout do código
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔍 Obter informações do release
+        id: release_info
+        run: |
+          if [ "${{ github.event_name }}" == "release" ]; then
+            VERSION="${{ github.event.release.tag_name }}"
+            VERSION=${VERSION#v}  # Remove prefixo 'v' se existir
+            CHANGELOG="${{ github.event.release.body }}"
+            MANDATORY="false"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+            CHANGELOG="${{ github.event.inputs.changelog }}"
+            MANDATORY="${{ github.event.inputs.mandatory }}"
+          fi
+          
+          # Escapar quebras de linha para JSON
+          CHANGELOG=$(echo "$CHANGELOG" | sed 's/$/\\n/' | tr -d '\n' | sed 's/\\n$//')
+          
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "changelog=$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "mandatory=$MANDATORY" >> $GITHUB_OUTPUT
+          
+          echo "📌 Versão: $VERSION"
+          echo "📝 Changelog: $CHANGELOG"
+
+      - name: 📝 Atualizar version.json
+        run: |
+          cat > version.json << EOF
+          {
+            "latestVersion": "${{ steps.release_info.outputs.version }}",
+            "downloadUrl": "https://github.com/${{ github.repository }}/releases/download/v${{ steps.release_info.outputs.version }}/VoltrisOptimizer_v${{ steps.release_info.outputs.version }}_Setup.exe",
+            "changelog": "${{ steps.release_info.outputs.changelog }}",
+            "mandatory": ${{ steps.release_info.outputs.mandatory }}
+          }
+          EOF
+          cat version.json
+
+      - name: 💾 Commit e push das alterações
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add version.json
+          git diff --staged --quiet || git commit -m "📦 Atualizar version.json para v${{ steps.release_info.outputs.version }} [skip ci]"
+          git push
+

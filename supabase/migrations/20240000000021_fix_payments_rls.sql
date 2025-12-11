@@ -35,3 +35,8 @@ CREATE POLICY "Users can view their own payments"
     ON payments FOR SELECT
     USING (auth.uid() = user_id OR user_id IS NULL);
 
+
+
+
+
+
