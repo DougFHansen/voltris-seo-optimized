@@ -233,13 +233,9 @@ export async function GET(request) {
       },
       external_reference: `voltris-${plan}-${Date.now()}`, // Unique reference for tracking
       payment_methods: {
-        excluded_payment_types: [
-          { id: 'account_money' }, // Força cartão, remove saldo MP
-        ],
         installments: 12, // ✅ CRITICAL: Permite parcelamento até 12x
         default_installments: 1,
       },
-      purpose: 'wallet_purchase', // Força checkout sem login obrigatório
     };
 
     console.log(`[MERCADO PAGO DEBUG] ========== PAYLOAD PARA MERCADO PAGO ==========`);
