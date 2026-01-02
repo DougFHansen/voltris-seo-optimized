@@ -154,10 +154,40 @@ export async function POST(request: Request) {
       // Gerar nova licença
       console.log(`[PAGAMENTO RETORNO] Gerando nova licença...`);
       
-      const licenseType = paymentRecord.amount >= 100 ? 'premium' : 'pro';
-      const validMonths = licenseType === 'premium' ? 3 : 1;
-      const expiresAt = new Date();
-      expiresAt.setMonth(expiresAt.getMonth() + validMonths);
+      // Determinar tipo e dispositivos baseado no valor
+      let licenseType: 'trial' | 'pro' | 'premium' | 'enterprise' = 'pro';
+      let maxDevices = 1;
+      
+      const amount = paymentRecord.amount || 0;
+      if (amount >= 149) {
+        licenseType = 'enterprise';
+        maxDevices = 9999;
+      } else if (amount >= 99) {
+        licenseType = 'premium';
+        maxDevices = 3;
+      } else if (amount >= 49) {
+        licenseType = 'pro';
+        maxDevices = 1;
+      } else if (amount < 1) {
+        licenseType = 'trial';
+        maxDevices = 1;
+      }
+      
+      // Calcular data de expiração usando função do banco
+      const { data: expiryResult } = await supabase
+        .rpc('calculate_expiry_date', {
+          p_plan_code: licenseType,
+          p_start_date: new Date().toISOString()
+        });
+      
+      const expiresAt = expiryResult ? new Date(expiryResult) : (() => {
+        const date = new Date();
+        if (licenseType === 'trial') date.setDate(date.getDate() + 7);
+        else if (licenseType === 'pro') date.setMonth(date.getMonth() + 1);
+        else if (licenseType === 'premium') date.setMonth(date.getMonth() + 3);
+        else if (licenseType === 'enterprise') date.setMonth(date.getMonth() + 6);
+        return date;
+      })();
 
       const clientId = (paymentRecord.email.split('@')[0].toUpperCase().substring(0, 8) + 
                        Date.now().toString(36).toUpperCase().substring(0, 4));
@@ -180,7 +210,7 @@ export async function POST(request: Request) {
           payment_id: paymentRecord.id,
           email: paymentRecord.email,
           license_type: licenseType,
-          max_devices: licenseType === 'premium' ? 3 : 1,
+          max_devices: maxDevices,
           expires_at: expiresAt.toISOString(),
           is_active: true,
           activated_at: new Date().toISOString(),

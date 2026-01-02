@@ -1,0 +1,193 @@
+<Window x:Class="VoltrisOptimizer.UI.Controls.ModernTrayMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TrayMenu"
+        Width="280"
+        MinWidth="280"
+        MaxWidth="280"
+        SizeToContent="Height"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ShowInTaskbar="False"
+        Topmost="True"
+        ResizeMode="NoResize">
+    <Border Background="{StaticResource DarkPanelBrush}"
+           BorderBrush="{StaticResource DarkBorderBrush}"
+           BorderThickness="1"
+           CornerRadius="12"
+           Padding="8">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" 
+                            ShadowDepth="0" 
+                            Opacity="0.5" 
+                            Color="Black"/>
+        </Border.Effect>
+        
+        <StackPanel>
+            <!-- Header -->
+            <Border Background="{StaticResource DarkPanelAltBrush}"
+                   CornerRadius="8"
+                   Padding="12,10"
+                   Margin="0,0,0,8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Text="⚡"
+                              FontSize="20"
+                              VerticalAlignment="Center"
+                              Margin="0,0,12,0">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#FF4B6B" Offset="0"/>
+                                <GradientStop Color="#8B31FF" Offset="0.5"/>
+                                <GradientStop Color="#31A8FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="Voltris Optimizer"
+                                  FontSize="13"
+                                  FontWeight="SemiBold">
+                            <TextBlock.Foreground>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#FF4B6B" Offset="0"/>
+                                    <GradientStop Color="#8B31FF" Offset="0.5"/>
+                                    <GradientStop Color="#31A8FF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </TextBlock.Foreground>
+                        </TextBlock>
+                        <TextBlock x:Name="TrayVersionText"
+                                  Text="v3.0.0"
+                                  FontSize="10"
+                                  Foreground="{StaticResource TextSecondaryBrush}"
+                                  Margin="0,2,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            
+            <!-- Ações Rápidas -->
+            <TextBlock Text="Ações Rápidas"
+                      FontSize="11"
+                      FontWeight="SemiBold"
+                      Foreground="{StaticResource TextMutedBrush}"
+                      Margin="8,0,8,6"/>
+            
+            <Button x:Name="ShowButton"
+                   Content="👁️ Mostrar"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,4"
+                   Click="ShowButton_Click"/>
+            
+            <Button x:Name="DashboardButton"
+                   Content="🏠 Dashboard"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,4"
+                   Click="DashboardButton_Click"/>
+            
+            <Button x:Name="CleanupButton"
+                   Content="🧹 Limpeza Rápida"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,4"
+                   Click="CleanupButton_Click"/>
+            
+            <Button x:Name="PerformanceButton"
+                   Content="⚡ Otimizar Agora"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,8"
+                   Click="PerformanceButton_Click"/>
+            
+            <!-- Separador -->
+            <Border Height="1"
+                   Background="{StaticResource DarkBorderBrush}"
+                   Margin="0,0,0,8"
+                   Opacity="0.5"/>
+            
+            <!-- Navegação -->
+            <TextBlock Text="Navegação"
+                      FontSize="11"
+                      FontWeight="SemiBold"
+                      Foreground="{StaticResource TextMutedBrush}"
+                      Margin="8,0,8,6"/>
+            
+            <Button x:Name="HistoryButton"
+                   Content="📊 Histórico"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,4"
+                   Click="HistoryButton_Click"/>
+            
+            <Button x:Name="SchedulerButton"
+                   Content="⏰ Agendamento"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,4"
+                   Click="SchedulerButton_Click"/>
+            
+            <Button x:Name="SettingsButton"
+                   Content="⚙️ Configurações"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,8"
+                   Click="SettingsButton_Click"/>
+            
+            <!-- Separador -->
+            <Border Height="1"
+                   Background="{StaticResource DarkBorderBrush}"
+                   Margin="0,0,0,8"
+                   Opacity="0.5"/>
+            
+            <!-- Sistema -->
+            <Button x:Name="AboutButton"
+                   Content="ℹ️ Sobre"
+                   Style="{StaticResource SecondaryButtonStyle}"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Margin="0,0,0,4"
+                   Click="AboutButton_Click"/>
+            
+            <Button x:Name="ExitButton"
+                   Content="🚪 Sair"
+                   Height="36"
+                   HorizontalContentAlignment="Left"
+                   Padding="12,0"
+                   Click="ExitButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource SecondaryButtonStyle}">
+                        <Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Border>
+</Window>
+

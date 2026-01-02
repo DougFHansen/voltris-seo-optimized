@@ -1,0 +1,13 @@
+{
+  "version": "1.0.1",
+  "download": "https://github.com/DougFHansen/voltris-seo-optimized/releases/download/v1.0.1/VoltrisInstaller.exe",
+  "changelog": [
+    "Correções de estabilidade",
+    "Melhorias no SystemIntelligenceProfiler",
+    "Melhorias na limpeza gamer",
+    "Otimizações de performance"
+  ],
+  "mandatory": false,
+  "releaseDate": "2025-11-30T00:00:00Z"
+}
+

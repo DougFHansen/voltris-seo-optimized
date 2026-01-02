@@ -85,7 +85,7 @@ export async function GET(request) {
     });
     
     // Validar plano
-    const validPlans = ['trial', 'pro', 'premium'];
+    const validPlans = ['trial', 'pro', 'premium', 'enterprise'];
     if (!validPlans.includes(plan)) {
       console.error(`[MERCADO PAGO DEBUG] Plano inválido: ${plan}`);
       return new Response(JSON.stringify({ 
@@ -128,11 +128,12 @@ export async function GET(request) {
     
     console.log(`[MERCADO PAGO DEBUG] Validações OK`);
     
-    // Configurar preços e tipos de licença (PRODUÇÃO COM VALORES DE TESTE)
+    // Configurar preços e tipos de licença (VALORES DE PRODUÇÃO)
     const planConfig = {
-      trial: { price: 0.01, title: 'Licença Voltris - Trial', months: 0 },
-      pro: { price: 1.00, title: 'Licença Voltris - Pro', months: 1 },
-      premium: { price: 1.00, title: 'Licença Voltris - Premium', months: 3 },
+      trial: { price: 0.01, title: 'Licença Voltris - Trial (7 dias)', months: 0 },
+      pro: { price: 49.90, title: 'Licença Voltris - Pro (1 mês)', months: 1 },
+      premium: { price: 99.90, title: 'Licença Voltris - Premium (3 meses)', months: 3 },
+      enterprise: { price: 149.90, title: 'Licença Voltris - Enterprise (6 meses)', months: 6 },
     };
     
     const selectedPlan = planConfig[plan];

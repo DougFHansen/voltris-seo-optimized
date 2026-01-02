@@ -1,0 +1,380 @@
+<!-- ============================================ -->
+<!-- VOLTRIS PREMIUM SIDEBAR - MARKUP COMPLETO   -->
+<!-- Substituir a seção do sidebar no MainWindow -->
+<!-- ============================================ -->
+
+<!-- 
+    INSTRUÇÕES DE USO:
+    1. Copie este código e substitua a seção do sidebar no MainWindow.xaml
+    2. Adicione a referência ao SidebarPremium.xaml no App.xaml:
+       <ResourceDictionary Source="/UI/Themes/SidebarPremium.xaml"/>
+    3. Para Windows 11 com Acrylic, use a versão com AcrylicBrush
+    4. Para Windows 10, use a versão com fallback (LinearGradientBrush)
+-->
+
+<!-- ============================================ -->
+<!-- SIDEBAR PREMIUM COM ACRYLIC (Windows 11)    -->
+<!-- ============================================ -->
+<Border Grid.Column="0" 
+        Style="{StaticResource PremiumSidebarContainerStyle}"
+        x:Name="PremiumSidebar">
+    
+    <!-- Background com AcrylicBrush (Windows 11) -->
+    <Border.Background>
+        <!-- AcrylicBrush para Windows 11 -->
+        <AcrylicBrush x:Name="SidebarAcrylicBrush"
+                      TintColor="#0A0F1C"
+                      TintOpacity="0.85"
+                      FallbackColor="#0A0F1C"
+                      BackgroundSource="Backdrop"/>
+    </Border.Background>
+    
+    <!-- Fallback para Windows 10 (se Acrylic não disponível) -->
+    <Border.Style>
+        <Style TargetType="Border" BasedOn="{StaticResource PremiumSidebarContainerStyle}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=Tag}" Value="NoAcrylic">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Color="#0D0D14" Offset="0"/>
+                                <GradientStop Color="#0A0F1C" Offset="0.5"/>
+                                <GradientStop Color="#12121A" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Border.Style>
+    
+    <!-- Glass Overlay Layer -->
+    <Border Opacity="0.95" IsHitTestVisible="False" Grid.RowSpan="3">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                <GradientStop Color="#15FFFFFF" Offset="0"/>
+                <GradientStop Color="#08FFFFFF" Offset="0.5"/>
+                <GradientStop Color="#05FFFFFF" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.Background>
+    </Border>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- ============================================ -->
+        <!-- HEADER: LOGO E BRANDING                     -->
+        <!-- ============================================ -->
+        <Border Grid.Row="0" Style="{StaticResource PremiumSidebarHeaderStyle}">
+            <Grid>
+                <!-- Glass Overlay Sutil -->
+                <Border Opacity="0.2" IsHitTestVisible="False">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#20FFFFFF" Offset="0"/>
+                            <GradientStop Color="#00FFFFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                
+                <StackPanel HorizontalAlignment="Center" 
+                            VerticalAlignment="Center">
+                    <!-- Logo Voltris com Glow -->
+                    <Image Source="pack://siteoforigin:,,,/Images/logo.png"
+                           Width="180"
+                           Height="60"
+                           Stretch="Uniform"
+                           HorizontalAlignment="Center"
+                           RenderOptions.BitmapScalingMode="HighQuality"
+                           Margin="0,0,0,8">
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="10" 
+                                              ShadowDepth="0" 
+                                              Color="#8B31FF" 
+                                              Opacity="0.3"/>
+                        </Image.Effect>
+                    </Image>
+                    
+                    <!-- Version Text -->
+                    <TextBlock x:Name="SidebarVersionText"
+                               Text="v1.0.0"
+                               Foreground="{StaticResource TextMutedBrush}"
+                               FontFamily="Segoe UI Variable, Segoe UI"
+                               FontSize="11"
+                               HorizontalAlignment="Center"
+                               TextWrapping="NoWrap"
+                               Opacity="0.7"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <!-- ============================================ -->
+        <!-- NAVIGATION MENU                              -->
+        <!-- ============================================ -->
+        <ScrollViewer Grid.Row="1" 
+                      Style="{StaticResource PremiumSidebarScrollViewerStyle}">
+            <StackPanel>
+                <!-- Dashboard -->
+                <Button x:Name="NavDashboard" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="Dashboard">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource HomeIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Dashboard" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Limpeza -->
+                <Button x:Name="NavCleanup" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="Cleanup">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource CleanupIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Limpeza" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Desempenho -->
+                <Button x:Name="NavPerformance" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="Performance">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource PerformanceIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Desempenho" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Rede -->
+                <Button x:Name="NavNetwork" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="Network">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource NetworkIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Rede" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Sistema -->
+                <Button x:Name="NavSystem" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="System">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource SystemIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Sistema" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Gamer -->
+                <Button x:Name="NavGamer" 
+                        Style="{StaticResource PremiumNavButtonActiveStyle}"
+                        Click="NavButton_Click"
+                        Tag="Gamer">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource GamerIcon}" 
+                              Fill="#00D4FF"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality">
+                            <Path.Effect>
+                                <DropShadowEffect BlurRadius="6" 
+                                                  ShadowDepth="0" 
+                                                  Color="#00D4FF" 
+                                                  Opacity="0.6"/>
+                            </Path.Effect>
+                        </Path>
+                        <TextBlock Text="Gamer" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="SemiBold"
+                                   Foreground="#FFFFFF"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Diagnóstico -->
+                <Button x:Name="NavDiagnostics" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="Diagnostics">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource DiagnosticsIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Diagnóstico" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Histórico -->
+                <Button x:Name="NavHistory" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="History">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource HistoryIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Histórico" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Agendamento -->
+                <Button x:Name="NavScheduler" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="Scheduler">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource SchedulerIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Agendamento" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+                
+                <!-- Logs -->
+                <Button x:Name="NavLogs" 
+                        Style="{StaticResource PremiumNavButtonStyle}"
+                        Click="NavButton_Click"
+                        Tag="Logs">
+                    <StackPanel Orientation="Horizontal">
+                        <Path Data="{StaticResource LogsIcon}" 
+                              Fill="{StaticResource TextSecondaryBrush}"
+                              Width="18" Height="18" 
+                              Stretch="Uniform" 
+                              Margin="0,0,12,0"
+                              RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock Text="Logs" 
+                                   VerticalAlignment="Center"
+                                   FontWeight="Medium"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+        
+        <!-- ============================================ -->
+        <!-- FOOTER: STATUS E INDICADOR                  -->
+        <!-- ============================================ -->
+        <Border Grid.Row="2" Style="{StaticResource PremiumSidebarFooterStyle}">
+            <Grid>
+                <!-- Glass Overlay Sutil -->
+                <Border Opacity="0.15" IsHitTestVisible="False">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Color="#00FFFFFF" Offset="0"/>
+                            <GradientStop Color="#20FFFFFF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+                
+                <StackPanel>
+                    <!-- Status Text -->
+                    <TextBlock x:Name="StatusText"
+                               Text="Status: Pronto"
+                               FontSize="11"
+                               FontFamily="Segoe UI Variable, Segoe UI"
+                               Foreground="{StaticResource TextMutedBrush}"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               TextTrimming="CharacterEllipsis"
+                               MaxWidth="200"
+                               LineHeight="16"
+                               Margin="0,0,0,10"
+                               Opacity="0.8"/>
+                    
+                    <!-- Status Indicator Bar -->
+                    <Border Style="{StaticResource PremiumStatusIndicatorStyle}">
+                        <Border x:Name="StatusIndicator"
+                                Style="{StaticResource PremiumStatusIndicatorFillStyle}"
+                                HorizontalAlignment="Stretch"
+                                Width="100%"/>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Border>
+
+<!-- ============================================ -->
+<!-- VERSÃO FALLBACK (SEM ACRYLIC) - Windows 10  -->
+<!-- ============================================ -->
+<!-- 
+    Use esta versão se AcrylicBrush não estiver disponível
+    Substitua apenas o Background do Border principal:
+-->
+
+<!--
+<Border Grid.Column="0" 
+        Style="{StaticResource PremiumSidebarContainerStyle}"
+        x:Name="PremiumSidebar">
+    
+    <Border.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#0D0D14" Offset="0"/>
+            <GradientStop Color="#0A0F1C" Offset="0.5"/>
+            <GradientStop Color="#12121A" Offset="1"/>
+        </LinearGradientBrush>
+    </Border.Background>
+    
+    ... resto do código igual ...
+    
+</Border>
+-->
+

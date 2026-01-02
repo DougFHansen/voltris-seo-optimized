@@ -287,20 +287,52 @@ async function generateLicenseForPayment(
     
     // Determinar tipo de licença e validade baseado no valor
     let licenseType: 'trial' | 'pro' | 'premium' | 'enterprise' = 'pro';
-    let validMonths = 1; // Default: 1 mês
+    let maxDevices = 1;
     
     const amount = payment.amount || 0;
-    if (amount >= 100) {
+    
+    // Determinar plano baseado no valor
+    if (amount >= 149) {
+      licenseType = 'enterprise';
+      maxDevices = 9999; // Ilimitado
+    } else if (amount >= 99) {
       licenseType = 'premium';
-      validMonths = 3;
-    } else if (amount >= 50) {
+      maxDevices = 3;
+    } else if (amount >= 49) {
       licenseType = 'pro';
-      validMonths = 1;
+      maxDevices = 1;
+    } else if (amount < 1) {
+      licenseType = 'trial';
+      maxDevices = 1;
     }
     
-    // Calcular data de expiração
-    const expiresAt = new Date();
-    expiresAt.setMonth(expiresAt.getMonth() + validMonths);
+    console.log(`[Webhook MP] Plano determinado:`, { amount, licenseType, maxDevices });
+    
+    // Calcular data de expiração usando função do banco
+    const { data: expiryResult, error: expiryError } = await supabase
+      .rpc('calculate_expiry_date', {
+        p_plan_code: licenseType,
+        p_start_date: new Date().toISOString()
+      });
+    
+    let expiresAt: Date;
+    
+    if (expiryError || !expiryResult) {
+      console.error('[Webhook MP] Erro ao calcular data de expiração:', expiryError);
+      // Fallback: calcular manualmente
+      expiresAt = new Date();
+      if (licenseType === 'trial') {
+        expiresAt.setDate(expiresAt.getDate() + 7); // 7 dias
+      } else if (licenseType === 'pro') {
+        expiresAt.setMonth(expiresAt.getMonth() + 1); // 1 mês
+      } else if (licenseType === 'premium') {
+        expiresAt.setMonth(expiresAt.getMonth() + 3); // 3 meses
+      } else if (licenseType === 'enterprise') {
+        expiresAt.setMonth(expiresAt.getMonth() + 6); // 6 meses
+      }
+    } else {
+      expiresAt = new Date(expiryResult);
+    }
     
     // Gerar ID único do cliente (usando email ou UUID)
     const clientId = payment.email.split('@')[0].toUpperCase().substring(0, 8) + 
@@ -334,7 +366,7 @@ async function generateLicenseForPayment(
         payment_id: paymentId,
         email: payment.email,
         license_type: licenseType,
-        max_devices: licenseType === 'premium' ? 3 : 1,
+        max_devices: maxDevices,
         expires_at: expiresAt.toISOString(),
         is_active: true,
         activated_at: new Date().toISOString(),

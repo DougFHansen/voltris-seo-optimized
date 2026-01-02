@@ -1,0 +1,15 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Tema Dark Principal -->
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="{StaticResource DarkColor}"/>
+    <SolidColorBrush x:Key="PanelBackgroundBrush" Color="{StaticResource DarkPanelColor}"/>
+    <SolidColorBrush x:Key="PanelAltBackgroundBrush" Color="{StaticResource DarkPanelAltColor}"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource DarkBorderColor}"/>
+    
+    <!-- Cores de Texto Padrão -->
+    <SolidColorBrush x:Key="DefaultTextBrush" Color="{StaticResource TextPrimaryColor}"/>
+    <SolidColorBrush x:Key="SecondaryTextBrush" Color="{StaticResource TextSecondaryColor}"/>
+    
+</ResourceDictionary>
+
