@@ -201,14 +201,10 @@ export async function GET(request) {
     
     console.log(`[MERCADO PAGO DEBUG] Webhook URL configurada:`, webhookUrl);
     
-    // Determine payer email with proper defaults
-    let payerEmail = email || 'test@testuser.com';
+    // Payer email: usar o fornecido ou email genérico REAL (não teste)
+    const payerEmail = email || 'pagamento@voltris.com.br';
     
-    // If using production token but in test mode, force test email
-    if (isAppUsrToken && !email) {
-      payerEmail = 'test@testuser.com';
-      console.warn(`[MERCADO PAGO DEBUG] ⚠️ Token de produção sem email - usando email de teste padrão`);
-    }
+    console.log(`[MERCADO PAGO DEBUG] Payer email configurado:`, payerEmail);
     
     // Construir corpo da preferência
     const preferenceBody = {
