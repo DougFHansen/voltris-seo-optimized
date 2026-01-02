@@ -190,20 +190,20 @@ export default function CheckoutPage() {
   const getPlanIcon = (code: string) => {
     switch (code) {
       case 'trial':
-        return <Zap className="w-12 h-12 text-blue-500" />;
+        return <Zap className="w-12 h-12 text-[#31A8FF]" />;
       case 'pro':
-        return <Shield className="w-12 h-12 text-green-500" />;
+        return <Shield className="w-12 h-12 text-[#8B31FF]" />;
       case 'premium':
-        return <TrendingUp className="w-12 h-12 text-purple-500" />;
+        return <TrendingUp className="w-12 h-12 text-[#FF4B6B]" />;
       case 'enterprise':
-        return <Users className="w-12 h-12 text-orange-500" />;
+        return <Users className="w-12 h-12 text-[#31A8FF]" />;
       default:
         return <Shield className="w-12 h-12 text-gray-500" />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#0D0D0D] via-[#1A1A2E] to-[#0D0D0D] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -224,13 +224,13 @@ export default function CheckoutPage() {
               className={`
                 relative bg-white rounded-xl shadow-xl p-6 cursor-pointer transition-all duration-300
                 ${selectedPlan?.code === plan.code
-                  ? 'ring-4 ring-blue-500 transform scale-105'
+                  ? 'ring-4 ring-[#8B31FF] transform scale-105 shadow-2xl shadow-[#8B31FF]/50'
                   : 'hover:shadow-2xl hover:scale-102'}
-                ${plan.popular ? 'border-4 border-yellow-400' : ''}
+                ${plan.popular ? 'border-4 border-[#31A8FF]' : ''}
               `}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
                   MAIS POPULAR
                 </div>
               )}
@@ -249,7 +249,7 @@ export default function CheckoutPage() {
                   </span>
                 )}
                 {plan.highlight && (
-                  <span className="text-xs text-blue-600 font-semibold block mt-2">
+                  <span className="text-xs text-[#31A8FF] font-semibold block mt-2">
                     {plan.highlight}
                   </span>
                 )}
@@ -258,7 +258,7 @@ export default function CheckoutPage() {
               <ul className="space-y-3 mb-6">
                 {plan.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start text-sm">
-                    <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-[#31A8FF] mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">{feature}</span>
                   </li>
                 ))}
@@ -267,9 +267,9 @@ export default function CheckoutPage() {
               <button
                 onClick={() => setSelectedPlan(plan)}
                 className={`
-                  w-full py-3 rounded-lg font-semibold transition-colors duration-200
+                  w-full py-3 rounded-lg font-semibold transition-all duration-300 shadow-md
                   ${selectedPlan?.code === plan.code
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white shadow-lg shadow-[#8B31FF]/50'
                     : 'bg-gray-200 text-gray-900 hover:bg-gray-300'}
                 `}
               >
@@ -298,7 +298,7 @@ export default function CheckoutPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B31FF] focus:border-transparent text-gray-900"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -314,7 +314,7 @@ export default function CheckoutPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B31FF] focus:border-transparent text-gray-900"
                   placeholder="Seu Nome Completo"
                 />
               </div>
@@ -329,7 +329,7 @@ export default function CheckoutPage() {
                   id="phone"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B31FF] focus:border-transparent text-gray-900"
                   placeholder="(11) 98765-4321"
                 />
               </div>
@@ -360,10 +360,10 @@ export default function CheckoutPage() {
                 onClick={handlePurchase}
                 disabled={isLoading}
                 className={`
-                  w-full py-4 rounded-lg font-bold text-lg transition-colors duration-200
+                  w-full py-4 rounded-lg font-bold text-lg transition-all duration-300 shadow-lg
                   ${isLoading
                     ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                    : 'bg-blue-600 text-white hover:bg-blue-700'}
+                    : 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white hover:shadow-2xl hover:shadow-[#8B31FF]/50 hover:scale-105'}
                 `}
               >
                 {isLoading ? 'Processando...' : `Finalizar Compra - ${selectedPlan.priceDisplay}`}
