@@ -231,6 +231,9 @@ export async function GET(request) {
       },
       external_reference: `voltris-${plan}-${Date.now()}`, // Unique reference for tracking
       payment_methods: {
+        excluded_payment_types: [
+          { id: 'account_money' }, // Remove saldo Mercado Pago - Força checkout como convidado
+        ],
         installments: 12, // ✅ CRITICAL: Permite parcelamento até 12x
         default_installments: 1,
       },
