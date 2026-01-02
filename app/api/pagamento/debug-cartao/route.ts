@@ -69,7 +69,6 @@ export async function GET(request: Request) {
         email: email,
       },
       external_reference: `voltris-${plan}-${Date.now()}`,
-      binary_mode: true,
       payment_methods: {
         installments: 12,
         default_installments: 1,
@@ -198,7 +197,6 @@ export async function GET(request: Request) {
         sandbox_url_available: !!response.sandbox_init_point,
         payment_methods_configured: !!preferenceBody.payment_methods,
         installments_configured: preferenceBody.payment_methods.installments === 12,
-        binary_mode: preferenceBody.binary_mode === false,
         payer_info_complete: !!preferenceBody.payer.email,
       },
     }, {

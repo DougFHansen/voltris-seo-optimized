@@ -57,7 +57,7 @@ export default function TesteCartaoMP() {
             <li>Faça login com seu <strong>test user COMPRADOR</strong></li>
             <li>Digite o código de verificação (últimos 6 dígitos do user ID)</li>
             <li>Selecione "Cartão de crédito ou débito"</li>
-            <li>Use o cartão de teste <strong>VISA</strong>: <code className="bg-slate-700 px-2 py-1 rounded">4235 6477 2802 5682</code></li>
+            <li>Use o cartão de teste <strong>VISA OFICIAL 2025</strong>: <code className="bg-slate-700 px-2 py-1 rounded">4509 9535 6623 3704</code></li>
             <li>CVV: <code className="bg-slate-700 px-2 py-1 rounded">123</code></li>
             <li>Vencimento: <code className="bg-slate-700 px-2 py-1 rounded">11/25</code></li>
             <li>Nome: <code className="bg-slate-700 px-2 py-1 rounded">APRO</code></li>
@@ -72,20 +72,26 @@ export default function TesteCartaoMP() {
           <div className="space-y-4">
             <div className="bg-slate-700 p-4 rounded">
               <h3 className="font-semibold text-green-400">✅ APROVADO</h3>
-              <p className="text-sm text-slate-300 mt-2">Número: <code>4235 6477 2802 5682</code> (VISA)</p>
+              <p className="text-sm text-slate-300 mt-2">Número: <code>4509 9535 6623 3704</code> (VISA OFICIAL 2025)</p>
               <p className="text-sm text-slate-300">Nome: APRO</p>
             </div>
             
             <div className="bg-slate-700 p-4 rounded">
               <h3 className="font-semibold text-yellow-400">⏳ PENDENTE</h3>
-              <p className="text-sm text-slate-300 mt-2">Número: <code>4235 6477 2802 5682</code> (VISA)</p>
+              <p className="text-sm text-slate-300 mt-2">Número: <code>4509 9535 6623 3704</code> (VISA)</p>
               <p className="text-sm text-slate-300">Nome: CONT</p>
             </div>
             
             <div className="bg-slate-700 p-4 rounded">
               <h3 className="font-semibold text-red-400">❌ REJEITADO</h3>
-              <p className="text-sm text-slate-300 mt-2">Número: <code>4235 6477 2802 5682</code> (VISA)</p>
+              <p className="text-sm text-slate-300 mt-2">Número: <code>4509 9535 6623 3704</code> (VISA)</p>
               <p className="text-sm text-slate-300">Nome: OTHE</p>
+            </div>
+            
+            <div className="bg-slate-700 p-4 rounded">
+              <h3 className="font-semibold text-green-400">✅ MASTERCARD</h3>
+              <p className="text-sm text-slate-300 mt-2">Número: <code>5031 7557 3453 0604</code> (OFICIAL 2025)</p>
+              <p className="text-sm text-slate-300">Nome: APRO</p>
             </div>
           </div>
         </div>

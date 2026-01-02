@@ -230,7 +230,6 @@ export async function GET(request) {
         email: payerEmail,
       },
       external_reference: `voltris-${plan}-${Date.now()}`, // Unique reference for tracking
-      binary_mode: true, // ✅ CRITICAL: Força apenas approved/rejected sem pending
       payment_methods: {
         installments: 12, // ✅ CRITICAL: Permite parcelamento até 12x
         default_installments: 1,
