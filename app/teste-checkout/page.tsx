@@ -81,12 +81,12 @@ export default function TesteCheckoutPage() {
 
       setPaymentData(data);
       
-      // SEMPRE usar sandbox_init_point para testes (forçar sandbox)
-      const checkoutUrl = data.sandbox_init_point || data.init_point;
+      // Usar init_point de PRODUÇÃO (sandbox apenas se for teste explícito)
+      const checkoutUrl = data.init_point || data.sandbox_init_point;
       
       console.log('[MERCADO PAGO DEBUG] ========== ABRINDO CHECKOUT ==========');
       console.log('[MERCADO PAGO DEBUG] URL escolhida:', checkoutUrl);
-      console.log('[MERCADO PAGO DEBUG] Tipo:', data.sandbox_init_point ? 'SANDBOX (teste)' : 'PRODUÇÃO');
+      console.log('[MERCADO PAGO DEBUG] Tipo:', data.sandbox_init_point && !data.init_point ? 'SANDBOX (teste)' : 'PRODUÇÃO');
       
       if (checkoutUrl) {
         if (!data.sandbox_init_point) {
@@ -157,8 +157,8 @@ Verifique os logs do console para mais detalhes.`);
   }
 
   function abrirCheckout() {
-    // Usar sandbox_init_point se disponível (para testes), senão usar init_point
-    const checkoutUrl = paymentData?.sandbox_init_point || paymentData?.init_point;
+    // Usar init_point de PRODUÇÃO por padrão
+    const checkoutUrl = paymentData?.init_point || paymentData?.sandbox_init_point;
     if (checkoutUrl) {
       window.open(checkoutUrl, '_blank');
     }
@@ -196,9 +196,9 @@ Verifique os logs do console para mais detalhes.`);
                 onChange={(e) => setPlan(e.target.value as any)}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="trial">Trial (R$ 0,01 - TESTE)</option>
-                <option value="pro">Pro (R$ 1,00 - TESTE)</option>
-                <option value="premium">Premium (R$ 1,00 - TESTE)</option>
+                <option value="trial">Trial (R$ 0,01)</option>
+                <option value="pro">Pro (R$ 49,90)</option>
+                <option value="premium">Premium (R$ 99,90)</option>
               </select>
             </div>
 
