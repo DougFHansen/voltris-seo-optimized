@@ -7,11 +7,19 @@ export const maxDuration = 30;
 /**
  * API para criar preferência de pagamento no Mercado Pago
  * 
- * Suporta:
- * - Diferentes planos (trial, pro, premium)
- * - Webhook para processamento automático
- * - Modo teste/produção
- * - Validações de segurança
+ * [MERCADO PAGO DEBUG] Esta API:
+ * 1. Recebe plan e email via query params
+ * 2. Valida o MP_ACCESS_TOKEN (deve estar em env)
+ * 3. Cria preferência no Mercado Pago
+ * 4. Retorna init_point e sandbox_init_point
+ * 
+ * PONTOS DE FALHA POSSÍVEIS:
+ * - Token ausente ou inválido
+ * - Token de produção quando deveria ser teste
+ * - Payload inválido (campos obrigatórios)
+ * - API Mercado Pago fora do ar
+ * - Timeout na requisição
+ * - Erro de rede
  * 
  * Query params:
  * - plan: tipo de licença (trial, pro, premium) - default: pro
@@ -21,13 +29,13 @@ export async function GET(request) {
   const startTime = Date.now();
   const requestId = `req-${Date.now()}-${Math.random().toString(36).substring(7)}`;
   
-  console.log(`[Pagamento ${requestId}] Iniciando requisição`);
+  console.log(`[MERCADO PAGO DEBUG] ========== INÍCIO REQUISIÇÃO ${requestId} ==========`);
   
   try {
     // Verifica se o token está configurado
     const accessToken = process.env.MP_ACCESS_TOKEN;
     if (!accessToken) {
-      console.error(`[Pagamento ${requestId}] MP_ACCESS_TOKEN não configurado`);
+      console.error(`[MERCADO PAGO DEBUG] ERRO CRÍTICO: MP_ACCESS_TOKEN não configurado`);
       return new Response(JSON.stringify({ 
         error: 'MP_ACCESS_TOKEN not configured',
         message: 'Token de acesso do Mercado Pago não está configurado. Configure a variável MP_ACCESS_TOKEN no Vercel.'
@@ -39,16 +47,60 @@ export async function GET(request) {
       });
     }
 
-    console.log(`[Pagamento ${requestId}] Token encontrado: ${accessToken.substring(0, 20)}...`);
+    // Log detalhado do token
+    const tokenPrefix = accessToken.substring(0, 20);
+    const isTestToken = accessToken.startsWith('TEST-');
+    const isAppUsrToken = accessToken.startsWith('APP_USR-');
+    const ambiente = isTestToken ? 'TESTE' : (isAppUsrToken ? 'PRODUÇÃO' : 'INDEFINIDO');
+    
+    console.log(`[MERCADO PAGO DEBUG] ========== VALIDAÇÃO DE TOKEN ==========`);
+    console.log(`[MERCADO PAGO DEBUG] Token configurado:`, {
+      prefix: tokenPrefix,
+      length: accessToken.length,
+      isTestToken,
+      isAppUsrToken,
+      ambiente,
+    });
+    
+    // ⚠️ CRITICAL WARNING: Detect token/environment mismatch
+    if (isAppUsrToken) {
+      console.warn(`[MERCADO PAGO DEBUG] ⚠️⚠️⚠️ AVISO CRÍTICO ⚠️⚠️⚠️`);
+      console.warn(`[MERCADO PAGO DEBUG] TOKEN DE PRODUÇÃO DETECTADO (APP_USR-)`);
+      console.warn(`[MERCADO PAGO DEBUG] `);
+      console.warn(`[MERCADO PAGO DEBUG] PROBLEMA:`);
+      console.warn(`[MERCADO PAGO DEBUG] - Você está usando um token de PRODUÇÃO`);
+      console.warn(`[MERCADO PAGO DEBUG] - Para TESTES em SANDBOX, use um token que comece com TEST-`);
+      console.warn(`[MERCADO PAGO DEBUG] `);
+      console.warn(`[MERCADO PAGO DEBUG] CONSEQUÊNCIA:`);
+      console.warn(`[MERCADO PAGO DEBUG] - O sandbox_init_point será gerado, MAS NÃO FUNCIONARÁ`);
+      console.warn(`[MERCADO PAGO DEBUG] - Pagamentos de teste FALHARÃO no checkout`);
+      console.warn(`[MERCADO PAGO DEBUG] - Você precisa de um TOKEN DE TESTE para usar o sandbox`);
+      console.warn(`[MERCADO PAGO DEBUG] `);
+      console.warn(`[MERCADO PAGO DEBUG] SOLUÇÃO:`);
+      console.warn(`[MERCADO PAGO DEBUG] 1. Acesse: https://www.mercadopago.com.br/developers/panel/credentials`);
+      console.warn(`[MERCADO PAGO DEBUG] 2. Vá em "Credenciais de teste"`);
+      console.warn(`[MERCADO PAGO DEBUG] 3. Copie o Access Token que começa com TEST-`);
+      console.warn(`[MERCADO PAGO DEBUG] 4. Atualize MP_ACCESS_TOKEN no Vercel com o token de teste`);
+      console.warn(`[MERCADO PAGO DEBUG] ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️`);
+    } else if (isTestToken) {
+      console.log(`[MERCADO PAGO DEBUG] ✅ Token de TESTE detectado - Ambiente correto para sandbox`);
+    }
 
     // Obter parâmetros da query
     const { searchParams } = new URL(request.url);
     const plan = searchParams.get('plan') || 'pro';
     const email = searchParams.get('email') || '';
     
+    console.log(`[MERCADO PAGO DEBUG] Parâmetros da requisição:`, {
+      plan,
+      email: email || 'não informado',
+      url: request.url,
+    });
+    
     // Validar plano
     const validPlans = ['trial', 'pro', 'premium'];
     if (!validPlans.includes(plan)) {
+      console.error(`[MERCADO PAGO DEBUG] Plano inválido: ${plan}`);
       return new Response(JSON.stringify({ 
         error: 'Invalid plan',
         message: `Plano inválido. Use: ${validPlans.join(', ')}`
@@ -62,6 +114,7 @@ export async function GET(request) {
     
     // Validar email se fornecido
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      console.error(`[MERCADO PAGO DEBUG] Email inválido: ${email}`);
       return new Response(JSON.stringify({ 
         error: 'Invalid email',
         message: 'Formato de email inválido'
@@ -73,6 +126,23 @@ export async function GET(request) {
       });
     }
     
+    // ⚠️ Validate test user for sandbox environment
+    if (isAppUsrToken && email) {
+      console.warn(`[MERCADO PAGO DEBUG] ⚠️ AVISO: Usando token de produção com email: ${email}`);
+      console.warn(`[MERCADO PAGO DEBUG] Se você tentar pagar no sandbox, isso FALHARÁ`);
+      console.warn(`[MERCADO PAGO DEBUG] Use um token TEST- para testes em sandbox`);
+    } else if (isTestToken && email) {
+      // Check if email looks like a test user
+      const isTestUserEmail = email.includes('test@') || email.includes('testuser');
+      if (!isTestUserEmail) {
+        console.warn(`[MERCADO PAGO DEBUG] ⚠️ ATENÇÃO: Email fornecido (${email}) não parece ser uma conta de teste`);
+        console.warn(`[MERCADO PAGO DEBUG] Para pagamentos de teste, use contas de teste criadas no painel do Mercado Pago`);
+        console.warn(`[MERCADO PAGO DEBUG] Mais info: https://www.mercadopago.com.br/developers/pt/docs/testing`);
+      }
+    }
+    
+    console.log(`[MERCADO PAGO DEBUG] Validações OK`);
+    
     // Configurar preços e tipos de licença
     const planConfig = {
       trial: { price: 0, title: 'Licença Voltris - Trial', months: 0 },
@@ -82,31 +152,34 @@ export async function GET(request) {
     
     const selectedPlan = planConfig[plan];
     
+    console.log(`[MERCADO PAGO DEBUG] Configurando cliente Mercado Pago...`);
     const client = new MercadoPagoConfig({
       accessToken: accessToken,
     });
 
     const preference = new Preference(client);
-    console.log(`[Pagamento ${requestId}] Cliente Mercado Pago configurado`);
+    console.log(`[MERCADO PAGO DEBUG] Cliente Mercado Pago configurado com sucesso`);
     
     // Domínio do site (pode ser variável de ambiente)
-    // Garantir que não tenha barra no final e usar www se disponível
     let dominio = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.voltris.com.br';
-    dominio = dominio.replace(/\/$/, ''); // Remove barra final se houver
+    dominio = dominio.replace(/\/$/, '');
     
-    // Garantir que use www.voltris.com.br (formato correto)
     if (dominio.includes('voltris.com.br') && !dominio.includes('www.')) {
       dominio = dominio.replace('voltris.com.br', 'www.voltris.com.br');
     }
     
+    console.log(`[MERCADO PAGO DEBUG] Domínio configurado:`, dominio);
+    
     // Criar registro de pagamento no banco ANTES de criar a preferência
-    // Usar service_role key para bypass RLS
     const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     
-    // Se tiver service_role key, usar ela (bypass RLS)
-    // Senão, usar cliente normal (vai depender das políticas RLS)
+    console.log(`[MERCADO PAGO DEBUG] Supabase configurado:`, {
+      url: supabaseUrl ? 'presente' : 'AUSENTE',
+      serviceKey: supabaseServiceKey ? 'presente' : 'AUSENTE',
+    });
+    
     const supabase = supabaseServiceKey 
       ? createSupabaseClient(supabaseUrl, supabaseServiceKey)
       : await createClient();
@@ -114,6 +187,8 @@ export async function GET(request) {
     let paymentRecord = null;
     
     try {
+      console.log(`[MERCADO PAGO DEBUG] Criando registro de pagamento no banco...`);
+      
       const { data: payment, error: paymentError } = await supabase
         .from('payments')
         .insert({
@@ -127,20 +202,30 @@ export async function GET(request) {
         .single();
       
       if (paymentError) {
-        console.error('[Pagamento] Erro ao criar registro:', paymentError);
+        console.error('[MERCADO PAGO DEBUG] Erro ao criar registro no banco:', paymentError);
       } else {
         paymentRecord = payment;
+        console.log('[MERCADO PAGO DEBUG] Registro criado no banco:', payment.id);
       }
     } catch (dbError) {
-      console.error('[Pagamento] Erro ao acessar banco:', dbError);
-      // Continuar mesmo se falhar (modo degradado)
+      console.error('[MERCADO PAGO DEBUG] Erro ao acessar banco:', dbError);
     }
     
     // URL do webhook (Mercado Pago notificará aqui quando houver mudanças)
     const webhookUrl = `${dominio}/api/webhook/mercadopago`;
     
-    // Construir corpo da preferência - VERSÃO MÍNIMA para testar no sandbox
-    // IMPORTANTE: Adicionar campos que forçam modo teste
+    console.log(`[MERCADO PAGO DEBUG] Webhook URL configurada:`, webhookUrl);
+    
+    // Determine payer email with proper defaults
+    let payerEmail = email || 'test@testuser.com';
+    
+    // If using production token but in test mode, force test email
+    if (isAppUsrToken && !email) {
+      payerEmail = 'test@testuser.com';
+      console.warn(`[MERCADO PAGO DEBUG] ⚠️ Token de produção sem email - usando email de teste padrão`);
+    }
+    
+    // Construir corpo da preferência
     const preferenceBody = {
       items: [
         {
@@ -155,34 +240,62 @@ export async function GET(request) {
         failure: `${dominio}/falha`,
         pending: `${dominio}/falha`
       },
-      // Forçar modo teste explicitamente
-      statement_descriptor: 'VOLTRIS TEST',
-      // Adicionar payer com email para melhor compatibilidade
-      payer: email ? {
-        email: email,
-      } : {
-        email: 'test@testuser.com', // Email padrão para testes
+      auto_return: 'approved', // Automatically return to success URL when payment is approved
+      notification_url: webhookUrl, // ✅ CRITICAL: Send webhook URL to Mercado Pago
+      statement_descriptor: isTestToken ? 'VOLTRIS TEST' : 'VOLTRIS',
+      payer: {
+        email: payerEmail,
       },
+      external_reference: `voltris-${plan}-${Date.now()}`, // Unique reference for tracking
     };
-    
-    // Adicionar apenas campos essenciais se necessário
-    // Removendo auto_return, notification_url, metadata, external_reference temporariamente
 
-    console.log(`[Pagamento ${requestId}] Criando preferência MÍNIMA para teste sandbox:`, {
-      plan: plan,
+    console.log(`[MERCADO PAGO DEBUG] ========== PAYLOAD PARA MERCADO PAGO ==========`);
+    console.log(`[MERCADO PAGO DEBUG] Payload:`, JSON.stringify(preferenceBody, null, 2));
+    console.log(`[MERCADO PAGO DEBUG] Detalhes:`, {
+      plan,
       price: selectedPlan.price,
-      email: email || 'não informado',
-      preference_body: JSON.stringify(preferenceBody),
+      email: payerEmail,
+      dominio,
+      back_url_success: `${dominio}/sucesso`,
+      webhook_url: webhookUrl,
+      auto_return: 'approved',
+      ambiente_token: ambiente,
     });
+    
+    // ⚠️ CRITICAL VALIDATION BEFORE SENDING
+    console.log(`[MERCADO PAGO DEBUG] ========== VALIDAÇÃO PRÉ-ENVIO ==========`);
+    const validationChecks = {
+      token_type: ambiente,
+      token_correto_para_sandbox: isTestToken ? '✅ SIM' : '❌ NÃO - Use token TEST-',
+      webhook_url_presente: !!webhookUrl ? '✅ SIM' : '❌ NÃO',
+      auto_return_configurado: !!preferenceBody.auto_return ? '✅ SIM' : '❌ NÃO',
+      notification_url_presente: !!preferenceBody.notification_url ? '✅ SIM' : '❌ NÃO',
+      preco_valido: selectedPlan.price >= 0 ? '✅ SIM' : '❌ NÃO',
+      email_valido: !!payerEmail ? '✅ SIM' : '❌ NÃO',
+    };
+    console.log(`[MERCADO PAGO DEBUG] Checklist de validação:`, validationChecks);
+    
+    if (isAppUsrToken) {
+      console.error(`[MERCADO PAGO DEBUG] ❌❌❌ ERRO DETECTADO ❌❌❌`);
+      console.error(`[MERCADO PAGO DEBUG] Você está prestes a criar uma preferência com TOKEN DE PRODUÇÃO`);
+      console.error(`[MERCADO PAGO DEBUG] Isso significa que:`);
+      console.error(`[MERCADO PAGO DEBUG] - sandbox_init_point será gerado, mas NÃO funcionará corretamente`);
+      console.error(`[MERCADO PAGO DEBUG] - Pagamentos de teste FALHARÃO`);
+      console.error(`[MERCADO PAGO DEBUG] - Você precisa trocar para um TOKEN DE TESTE (TEST-)`);
+      console.error(`[MERCADO PAGO DEBUG] ❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌`);
+    }
 
     let response;
     try {
+      console.log(`[MERCADO PAGO DEBUG] Enviando requisição para API Mercado Pago...`);
+      
       response = await preference.create({
         body: preferenceBody
       });
       
-      // Logs detalhados para diagnóstico
-      console.log(`[Pagamento ${requestId}] Preferência criada com sucesso:`, {
+      console.log(`[MERCADO PAGO DEBUG] ========== RESPOSTA MERCADO PAGO ==========`);
+      console.log(`[MERCADO PAGO DEBUG] Preferência criada com sucesso!`);
+      console.log(`[MERCADO PAGO DEBUG] Dados principais:`, {
         preference_id: response.id,
         init_point: response.init_point,
         sandbox_init_point: response.sandbox_init_point,
@@ -192,37 +305,105 @@ export async function GET(request) {
         operation_type: response.operation_type,
       });
       
-      // Log completo da resposta (útil para debug)
-      if (process.env.NODE_ENV === 'development') {
-        console.log(`[Pagamento ${requestId}] Resposta completa do MP:`, JSON.stringify(response, null, 2));
-      }
-    } catch (mpError) {
-      console.error(`[Pagamento ${requestId}] Erro ao criar preferência:`, {
-        message: mpError.message,
-        cause: mpError.cause,
-        status: mpError.status,
-        statusCode: mpError.statusCode,
-        stack: mpError.stack,
+      console.log(`[MERCADO PAGO DEBUG] URLs geradas:`, {
+        production_url: response.init_point || 'não disponível',
+        sandbox_url: response.sandbox_init_point || 'não disponível',
+        usar_sandbox: !!response.sandbox_init_point,
       });
+      
+      // ⚠️ CRITICAL ANALYSIS: Check for inconsistencies
+      console.log(`[MERCADO PAGO DEBUG] ========== ANÁLISE DE CONSISTÊNCIA ==========`);
+      
+      const hasSandboxUrl = !!response.sandbox_init_point;
+      const hasProductionUrl = !!response.init_point;
+      
+      if (isAppUsrToken && hasSandboxUrl) {
+        console.error(`[MERCADO PAGO DEBUG] ❌❌❌ INCONSISTÊNCIA DETECTADA ❌❌❌`);
+        console.error(`[MERCADO PAGO DEBUG] `);
+        console.error(`[MERCADO PAGO DEBUG] PROBLEMA ENCONTRADO:`);
+        console.error(`[MERCADO PAGO DEBUG] - Token: PRODUÇÃO (APP_USR-)`);
+        console.error(`[MERCADO PAGO DEBUG] - Sandbox URL: GERADA (${response.sandbox_init_point?.substring(0, 50)}...)`);
+        console.error(`[MERCADO PAGO DEBUG] `);
+        console.error(`[MERCADO PAGO DEBUG] ISTO É O SEU ERRO ATUAL:`);
+        console.error(`[MERCADO PAGO DEBUG] O Mercado Pago gera o sandbox_init_point, mas como o token é de`);
+        console.error(`[MERCADO PAGO DEBUG] PRODUÇÃO, quando você tentar pagar no sandbox, ele vai FALHAR`);
+        console.error(`[MERCADO PAGO DEBUG] porque o token não tem permissão para processar pagamentos de teste.`);
+        console.error(`[MERCADO PAGO DEBUG] `);
+        console.error(`[MERCADO PAGO DEBUG] SOLUÇÃO DEFINITIVA:`);
+        console.error(`[MERCADO PAGO DEBUG] 1. Acesse: https://www.mercadopago.com.br/developers/panel/credentials`);
+        console.error(`[MERCADO PAGO DEBUG] 2. Clique em "Credenciais de teste" (não "Produção")`);
+        console.error(`[MERCADO PAGO DEBUG] 3. Copie o Access Token que COMEÇA com TEST-`);
+        console.error(`[MERCADO PAGO DEBUG] 4. No Vercel, vá em Settings → Environment Variables`);
+        console.error(`[MERCADO PAGO DEBUG] 5. Edite MP_ACCESS_TOKEN e cole o token TEST-`);
+        console.error(`[MERCADO PAGO DEBUG] 6. Faça redeploy do projeto`);
+        console.error(`[MERCADO PAGO DEBUG] `);
+        console.error(`[MERCADO PAGO DEBUG] Depois disso, o pagamento de teste funcionará corretamente.`);
+        console.error(`[MERCADO PAGO DEBUG] ❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌`);
+      } else if (isTestToken && hasSandboxUrl) {
+        console.log(`[MERCADO PAGO DEBUG] ✅✅✅ CONFIGURAÇÃO CORRETA ✅✅✅`);
+        console.log(`[MERCADO PAGO DEBUG] - Token: TESTE (TEST-)`);
+        console.log(`[MERCADO PAGO DEBUG] - Sandbox URL: Gerada corretamente`);
+        console.log(`[MERCADO PAGO DEBUG] - Status: Pronto para pagamentos de teste`);
+        console.log(`[MERCADO PAGO DEBUG] ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅`);
+      }
+      
+      console.log(`[MERCADO PAGO DEBUG] Resposta COMPLETA do Mercado Pago:`);
+      console.log(JSON.stringify(response, null, 2));
+      
+    } catch (mpError) {
+      console.error(`[MERCADO PAGO DEBUG] ========== ERRO AO CRIAR PREFERÊNCIA ==========`);
+      console.error(`[MERCADO PAGO DEBUG] Erro geral:`, mpError.message);
+      console.error(`[MERCADO PAGO DEBUG] Status HTTP:`, mpError.status || mpError.statusCode || 'não disponível');
+      
+      if (mpError.cause) {
+        console.error(`[MERCADO PAGO DEBUG] Causa raiz:`, mpError.cause);
+      }
+      
+      // Tentar extrair mais detalhes do erro
+      if (mpError.response) {
+        console.error(`[MERCADO PAGO DEBUG] Response data:`, JSON.stringify(mpError.response.data, null, 2));
+      }
+      
+      if (mpError.apiResponse) {
+        console.error(`[MERCADO PAGO DEBUG] API Response:`, JSON.stringify(mpError.apiResponse, null, 2));
+      }
+      
+      console.error(`[MERCADO PAGO DEBUG] Stack trace:`, mpError.stack);
+      console.error(`[MERCADO PAGO DEBUG] Objeto de erro completo:`, JSON.stringify(mpError, null, 2));
+      
       throw mpError;
     }
 
     // Atualizar registro com preference_id
     if (paymentRecord && response.id) {
       try {
+        console.log(`[MERCADO PAGO DEBUG] Atualizando registro com preference_id...`);
+        
         await supabase
           .from('payments')
           .update({ preference_id: response.id })
           .eq('id', paymentRecord.id);
+        
+        console.log(`[MERCADO PAGO DEBUG] Registro atualizado com sucesso`);
       } catch (updateError) {
-        console.error('[Pagamento] Erro ao atualizar preference_id:', updateError);
+        console.error('[MERCADO PAGO DEBUG] Erro ao atualizar preference_id:', updateError);
       }
     }
 
     const duration = Date.now() - startTime;
-    console.log(`[Pagamento ${requestId}] Requisição concluída em ${duration}ms`);
-
-    return new Response(JSON.stringify({ 
+    
+    console.log(`[MERCADO PAGO DEBUG] ========== RESPOSTA PARA FRONTEND ==========`);
+    
+    // ⚠️ Add warnings to frontend response
+    const warnings = [];
+    const errors = [];
+    
+    if (isAppUsrToken && response.sandbox_init_point) {
+      warnings.push('TOKEN_PRODUCAO_COM_SANDBOX');
+      errors.push('❌ ERRO CRÍTICO: Token de PRODUÇÃO detectado, mas tentando usar SANDBOX. Pagamento de teste FALHARÁ.');
+    }
+    
+    const frontendResponse = { 
       init_point: response.init_point,
       sandbox_init_point: response.sandbox_init_point,
       preference_id: response.id,
@@ -231,8 +412,18 @@ export async function GET(request) {
       debug: {
         request_id: requestId,
         duration_ms: duration,
+        ambiente: ambiente,
+        token_type: isTestToken ? 'TEST' : 'PRODUCAO',
+        warnings: warnings.length > 0 ? warnings : undefined,
+        errors: errors.length > 0 ? errors : undefined,
+        config_ok: isTestToken && response.sandbox_init_point,
       }
-    }), {
+    };
+    
+    console.log(`[MERCADO PAGO DEBUG] Dados retornados:`, JSON.stringify(frontendResponse, null, 2));
+    console.log(`[MERCADO PAGO DEBUG] ========== FIM REQUISIÇÃO ${requestId} (${duration}ms) ==========`);
+
+    return new Response(JSON.stringify(frontendResponse), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
@@ -240,13 +431,13 @@ export async function GET(request) {
     });
   } catch (error) {
     const duration = Date.now() - startTime;
-    console.error(`[Pagamento ${requestId}] Erro após ${duration}ms:`, {
-      message: error.message,
-      cause: error.cause,
-      status: error.status,
-      statusCode: error.statusCode,
-      stack: error.stack,
-    });
+    
+    console.error(`[MERCADO PAGO DEBUG] ========== ERRO GERAL (${duration}ms) ==========`);
+    console.error(`[MERCADO PAGO DEBUG] Mensagem:`, error.message);
+    console.error(`[MERCADO PAGO DEBUG] Status:`, error.status || error.statusCode || 'não disponível');
+    console.error(`[MERCADO PAGO DEBUG] Causa:`, error.cause || 'não disponível');
+    console.error(`[MERCADO PAGO DEBUG] Stack:`, error.stack);
+    console.error(`[MERCADO PAGO DEBUG] Erro completo:`, JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
 
     return new Response(JSON.stringify({ 
       error: 'Failed to create payment preference', 
@@ -257,7 +448,7 @@ export async function GET(request) {
         status: error.status,
         statusCode: error.statusCode,
       },
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      stack: error.stack
     }), {
       status: 500,
       headers: {

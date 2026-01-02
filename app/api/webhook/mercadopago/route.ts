@@ -8,12 +8,18 @@ export const maxDuration = 30;
 /**
  * Webhook do Mercado Pago para processar notificações de pagamento
  * 
- * O Mercado Pago envia notificações quando há mudanças no status do pagamento.
- * Este endpoint processa essas notificações e:
- * 1. Valida a assinatura do webhook (segurança)
- * 2. Atualiza o status do pagamento
- * 3. Gera a licença automaticamente quando o pagamento é aprovado
- * 4. Envia email com a licença (opcional)
+ * [MERCADO PAGO DEBUG] Este webhook:
+ * 1. Recebe notificações do Mercado Pago
+ * 2. Busca dados completos do pagamento via API
+ * 3. Atualiza status no banco
+ * 4. Gera licença quando aprovado
+ * 
+ * PONTOS DE FALHA POSSÍVEIS:
+ * - Webhook não configurado no painel MP
+ * - Token inválido para buscar dados
+ * - Erro ao atualizar banco
+ * - Erro ao gerar licença
+ * - Timeout na requisição
  * 
  * Tipos de notificação suportados:
  * - payment: Notificação de pagamento
@@ -21,6 +27,8 @@ export const maxDuration = 30;
  */
 export async function POST(request: Request) {
   const webhookId = `webhook-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+  
+  console.log(`[MERCADO PAGO DEBUG] ========== WEBHOOK RECEBIDO ${webhookId} ==========`);
   
   try {
     // Usar service_role key para bypass RLS no webhook
@@ -39,10 +47,12 @@ export async function POST(request: Request) {
     const body = await request.json();
     const headers = Object.fromEntries(request.headers.entries());
     
-    console.log(`[Webhook MP ${webhookId}] Recebido:`, {
-      type: body.type,
-      data_id: body.data?.id,
-      timestamp: new Date().toISOString(),
+    console.log(`[MERCADO PAGO DEBUG] Tipo de notificação:`, body.type);
+    console.log(`[MERCADO PAGO DEBUG] Data ID:`, body.data?.id);
+    console.log(`[MERCADO PAGO DEBUG] Body completo:`, JSON.stringify(body, null, 2));
+    console.log(`[MERCADO PAGO DEBUG] Headers:`, {
+      signature: headers['x-signature'] ? 'presente' : 'ausente',
+      requestId: headers['x-request-id'] || 'ausente',
     });
     
     // Validação de assinatura do webhook (segurança - opcional mas recomendado)
@@ -57,37 +67,47 @@ export async function POST(request: Request) {
     }
     
     // Verificar tipo de notificação
-    const type = body.type; // payment, merchant_order, etc.
-    const dataId = body.data?.id; // ID do pagamento ou preferência
+    const type = body.type;
+    const dataId = body.data?.id;
     
     if (!type || !dataId) {
-      console.warn(`[Webhook MP ${webhookId}] Notificação sem tipo ou data_id:`, body);
+      console.warn(`[MERCADO PAGO DEBUG] AVISO: Notificação sem tipo ou data_id`);
+      console.warn(`[MERCADO PAGO DEBUG] Body recebido:`, body);
       return NextResponse.json({ received: true, message: 'Notification processed but no action taken' });
     }
     
+    console.log(`[MERCADO PAGO DEBUG] Processando notificação tipo: ${type}, ID: ${dataId}`);
+    
     if (type === 'payment' && dataId) {
+      console.log(`[MERCADO PAGO DEBUG] ========== PROCESSANDO PAGAMENTO ==========`);
+      
       // Buscar informações do pagamento no Mercado Pago
       const accessToken = process.env.MP_ACCESS_TOKEN;
       if (!accessToken) {
-        console.error(`[Webhook MP ${webhookId}] MP_ACCESS_TOKEN não configurado`);
+        console.error(`[MERCADO PAGO DEBUG] ERRO CRÍTICO: MP_ACCESS_TOKEN não configurado no webhook`);
         return NextResponse.json({ error: 'MP_ACCESS_TOKEN not configured' }, { status: 500 });
       }
+      
+      console.log(`[MERCADO PAGO DEBUG] Token configurado, buscando dados do pagamento...`);
       
       const client = new MercadoPagoConfig({ accessToken });
       const payment = new Payment(client);
       
       try {
+        console.log(`[MERCADO PAGO DEBUG] Chamando API Mercado Pago para obter dados do pagamento ${dataId}...`);
+        
         const paymentData = await payment.get({ id: dataId });
-        console.log(`[Webhook MP ${webhookId}] Dados do pagamento:`, {
-          id: paymentData.id,
-          status: paymentData.status,
-          status_detail: paymentData.status_detail,
-          preference_id: paymentData.preference_id,
-          transaction_amount: paymentData.transaction_amount,
-        });
+        
+        console.log(`[MERCADO PAGO DEBUG] ========== DADOS DO PAGAMENTO RECEBIDOS ==========`);
+        console.log(`[MERCADO PAGO DEBUG] ID:`, paymentData.id);
+        console.log(`[MERCADO PAGO DEBUG] Status:`, paymentData.status);
+        console.log(`[MERCADO PAGO DEBUG] Status Detail:`, paymentData.status_detail);
+        console.log(`[MERCADO PAGO DEBUG] Preference ID:`, (paymentData as any).preference_id);
+        console.log(`[MERCADO PAGO DEBUG] Amount:`, paymentData.transaction_amount);
+        console.log(`[MERCADO PAGO DEBUG] Dados completos:`, JSON.stringify(paymentData, null, 2));
         
         // Buscar pagamento no banco pelo preference_id ou payment_id
-        const preferenceId = paymentData.preference_id;
+        const preferenceId = (paymentData as any).preference_id;
         const paymentId = paymentData.id?.toString();
         const status = paymentData.status; // approved, rejected, pending, etc.
         
@@ -121,9 +141,13 @@ export async function POST(request: Request) {
           paymentStatus = 'pending';
         }
         
-        console.log(`[Webhook MP ${webhookId}] Status mapeado: ${status} -> ${paymentStatus}`);
+        console.log(`[MERCADO PAGO DEBUG] Status mapeado: ${status} -> ${paymentStatus}`);
+        
+        console.log(`[MERCADO PAGO DEBUG] ========== ATUALIZANDO BANCO DE DADOS ==========`);
         
         if (existingPayment) {
+          console.log(`[MERCADO PAGO DEBUG] Pagamento existente encontrado no banco: ${existingPayment.id}`);
+          
           // Atualizar pagamento existente
           const updateData: any = {
             payment_id: paymentId,
@@ -142,23 +166,25 @@ export async function POST(request: Request) {
             .eq('id', existingPayment.id);
           
           if (updateError) {
-            console.error(`[Webhook MP ${webhookId}] Erro ao atualizar pagamento:`, updateError);
+            console.error(`[MERCADO PAGO DEBUG] ERRO ao atualizar pagamento:`, updateError);
           } else {
-            console.log(`[Webhook MP ${webhookId}] Pagamento atualizado:`, {
-              payment_id: existingPayment.id,
-              status: paymentStatus,
-              was_approved: status === 'approved' || status === 'authorized',
-            });
+            console.log(`[MERCADO PAGO DEBUG] Pagamento atualizado com sucesso`);
+            console.log(`[MERCADO PAGO DEBUG] - Payment ID:`, existingPayment.id);
+            console.log(`[MERCADO PAGO DEBUG] - Novo status:`, paymentStatus);
+            console.log(`[MERCADO PAGO DEBUG] - Aprovado:`, status === 'approved' || status === 'authorized');
           }
           
           // Se o pagamento foi aprovado/autorizado e ainda não gerou licença, gerar agora
           if ((status === 'approved' || status === 'authorized') && !existingPayment.processed_at) {
-            console.log(`[Webhook MP ${webhookId}] Gerando licença para pagamento aprovado...`);
+            console.log(`[MERCADO PAGO DEBUG] ========== GERANDO LICENÇA ==========`);
+            console.log(`[MERCADO PAGO DEBUG] Pagamento aprovado, iniciando geração de licença...`);
             await generateLicenseForPayment(supabase, existingPayment.id, paymentData);
+            console.log(`[MERCADO PAGO DEBUG] Licença gerada com sucesso`);
           }
         } else {
-          // Criar novo registro de pagamento (caso o webhook chegue antes do usuário retornar)
-          // Isso pode acontecer se o webhook for muito rápido
+          console.log(`[MERCADO PAGO DEBUG] Pagamento NÃO encontrado no banco, criando novo registro...`);
+          
+          // Criar novo registro de pagamento
           const email = paymentData.payer?.email || paymentData.additional_info?.items?.[0]?.description || 'unknown@example.com';
           
           const { data: newPayment, error: createError } = await supabase
@@ -178,12 +204,16 @@ export async function POST(request: Request) {
             .single();
           
           if (createError) {
-            console.error(`[Webhook MP ${webhookId}] Erro ao criar pagamento:`, createError);
+            console.error(`[MERCADO PAGO DEBUG] ERRO ao criar pagamento:`, createError);
           } else if ((status === 'approved' || status === 'authorized') && newPayment) {
-            console.log(`[Webhook MP ${webhookId}] Novo pagamento criado e aprovado:`, newPayment.id);
+            console.log(`[MERCADO PAGO DEBUG] Novo pagamento criado e aprovado:`, newPayment.id);
+            console.log(`[MERCADO PAGO DEBUG] Gerando licença...`);
             await generateLicenseForPayment(supabase, newPayment.id, paymentData);
+            console.log(`[MERCADO PAGO DEBUG] Licença gerada com sucesso`);
           }
         }
+        
+        console.log(`[MERCADO PAGO DEBUG] ========== WEBHOOK PROCESSADO COM SUCESSO ==========`);
         
         return NextResponse.json({ 
           received: true, 
@@ -192,11 +222,10 @@ export async function POST(request: Request) {
           payment_status: paymentStatus,
         });
       } catch (mpError: any) {
-        console.error(`[Webhook MP ${webhookId}] Erro ao buscar pagamento no MP:`, {
-          message: mpError.message,
-          status: mpError.status,
-          statusCode: mpError.statusCode,
-        });
+        console.error(`[MERCADO PAGO DEBUG] ========== ERRO AO BUSCAR PAGAMENTO NO MP ==========`);
+        console.error(`[MERCADO PAGO DEBUG] Mensagem:`, mpError.message);
+        console.error(`[MERCADO PAGO DEBUG] Status:`, mpError.status || mpError.statusCode);
+        console.error(`[MERCADO PAGO DEBUG] Erro completo:`, JSON.stringify(mpError, null, 2));
         return NextResponse.json({ 
           error: mpError.message,
           webhook_id: webhookId,

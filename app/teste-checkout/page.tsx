@@ -22,30 +22,106 @@ export default function TesteCheckoutPage() {
       params.append('plan', plan);
       if (email) params.append('email', email);
 
+      console.log('[MERCADO PAGO DEBUG] ========== FRONTEND: INICIANDO CHAMADA ==========');
+      console.log('[MERCADO PAGO DEBUG] Parâmetros:', { plan, email: email || 'não informado' });
+      console.log('[MERCADO PAGO DEBUG] URL:', `/api/pagamento?${params.toString()}`);
+
       const response = await fetch(`/api/pagamento?${params.toString()}`);
+      
+      console.log('[MERCADO PAGO DEBUG] Status HTTP recebido:', response.status);
+      console.log('[MERCADO PAGO DEBUG] Status OK:', response.ok);
+      
       const data = await response.json();
+      
+      console.log('[MERCADO PAGO DEBUG] ========== RESPOSTA DO BACKEND ==========');
+      console.log('[MERCADO PAGO DEBUG] Dados completos:', JSON.stringify(data, null, 2));
 
       if (!response.ok) {
+        console.error('[MERCADO PAGO DEBUG] ERRO: Resposta não OK');
+        console.error('[MERCADO PAGO DEBUG] Error:', data.error);
+        console.error('[MERCADO PAGO DEBUG] Details:', data.details);
+        console.error('[MERCADO PAGO DEBUG] Debug:', data.debug);
         throw new Error(data.error || 'Erro ao criar pagamento');
+      }
+      
+      console.log('[MERCADO PAGO DEBUG] Validação de campos obrigatórios:');
+      console.log('[MERCADO PAGO DEBUG] - preference_id:', data.preference_id || 'AUSENTE');
+      console.log('[MERCADO PAGO DEBUG] - init_point:', data.init_point ? 'presente' : 'AUSENTE');
+      console.log('[MERCADO PAGO DEBUG] - sandbox_init_point:', data.sandbox_init_point ? 'presente' : 'AUSENTE');
+      console.log('[MERCADO PAGO DEBUG] - test_mode:', data.test_mode);
+      
+      // ⚠️ CHECK FOR CRITICAL ERRORS/WARNINGS
+      if (data.debug?.errors && data.debug.errors.length > 0) {
+        console.error('[MERCADO PAGO DEBUG] ❌❌❌ ERROS CRÍTICOS DETECTADOS ❌❌❌');
+        data.debug.errors.forEach((err: string) => {
+          console.error('[MERCADO PAGO DEBUG]', err);
+        });
+        console.error('[MERCADO PAGO DEBUG] ❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌');
+      }
+      
+      if (data.debug?.warnings && data.debug.warnings.length > 0) {
+        console.warn('[MERCADO PAGO DEBUG] ⚠️ AVISOS IMPORTANTES:');
+        data.debug.warnings.forEach((warn: string) => {
+          console.warn('[MERCADO PAGO DEBUG]', warn);
+        });
+      }
+      
+      if (data.debug?.config_ok === false) {
+        console.error('[MERCADO PAGO DEBUG] ⚠️⚠️⚠️ CONFIGURAÇÃO INCORRETA ⚠️⚠️⚠️');
+        console.error('[MERCADO PAGO DEBUG] A preferência foi criada, mas a configuração está incorreta.');
+        console.error('[MERCADO PAGO DEBUG] Token type:', data.debug?.token_type);
+        console.error('[MERCADO PAGO DEBUG] Para usar sandbox, você PRECISA de um token TEST-');
+        console.error('[MERCADO PAGO DEBUG] Consulte os logs do servidor para mais detalhes.');
+      }
+
+      if (!data.preference_id) {
+        console.error('[MERCADO PAGO DEBUG] ERRO CRÍTICO: preference_id ausente na resposta!');
+        throw new Error('preference_id não retornado pelo backend');
       }
 
       setPaymentData(data);
       
       // SEMPRE usar sandbox_init_point para testes (forçar sandbox)
       const checkoutUrl = data.sandbox_init_point || data.init_point;
+      
+      console.log('[MERCADO PAGO DEBUG] ========== ABRINDO CHECKOUT ==========');
+      console.log('[MERCADO PAGO DEBUG] URL escolhida:', checkoutUrl);
+      console.log('[MERCADO PAGO DEBUG] Tipo:', data.sandbox_init_point ? 'SANDBOX (teste)' : 'PRODUÇÃO');
+      
       if (checkoutUrl) {
-        // Adicionar aviso se não estiver usando sandbox
         if (!data.sandbox_init_point) {
-          console.warn('⚠️ sandbox_init_point não disponível - usando init_point de produção');
+          console.warn('[MERCADO PAGO DEBUG] ⚠️ AVISO: sandbox_init_point não disponível - usando init_point de produção');
+          console.warn('[MERCADO PAGO DEBUG] Isso pode indicar que o token não está em modo teste!');
         }
+        
+        // Display critical error if detected
+        if (data.debug?.errors && data.debug.errors.length > 0) {
+          const errorMsg = data.debug.errors.join('\n');
+          alert(`⚠️ ERRO DETECTADO:
+
+${errorMsg}
+
+O pagamento provavelmente FALHARÁ no checkout.
+Verifique os logs do console para mais detalhes.`);
+        }
+        
+        console.log('[MERCADO PAGO DEBUG] Abrindo janela de checkout...');
         window.open(checkoutUrl, '_blank');
+        console.log('[MERCADO PAGO DEBUG] Janela aberta com sucesso');
       } else {
+        console.error('[MERCADO PAGO DEBUG] ERRO: Nenhuma URL de checkout disponível!');
+        console.error('[MERCADO PAGO DEBUG] Dados recebidos:', data);
         setError('URL de checkout não disponível');
       }
     } catch (err: any) {
+      console.error('[MERCADO PAGO DEBUG] ========== ERRO NO FRONTEND ==========');
+      console.error('[MERCADO PAGO DEBUG] Mensagem:', err.message);
+      console.error('[MERCADO PAGO DEBUG] Stack:', err.stack);
+      console.error('[MERCADO PAGO DEBUG] Objeto completo:', err);
       setError(err.message || 'Erro desconhecido');
     } finally {
       setLoading(false);
+      console.log('[MERCADO PAGO DEBUG] ========== FIM DO PROCESSO ==========');
     }
   }
 
