@@ -105,6 +105,19 @@ export default function CheckoutPage() {
   const supabase = createClient();
 
   useEffect(() => {
+    // Obter plano da URL
+    const params = new URLSearchParams(window.location.search);
+    const planCode = params.get('plan') || 'pro';
+    
+    // Encontrar plano correspondente
+    const plan = PLANS.find(p => p.code === planCode);
+    if (plan) {
+      setSelectedPlan(plan);
+    } else {
+      // Se plano não encontrado, usar Pro como padrão
+      setSelectedPlan(PLANS.find(p => p.code === 'pro') || PLANS[1]);
+    }
+
     // Carregar dados do usuário se autenticado
     const loadUser = async () => {
       const { data: { user } } = await supabase.auth.getUser();
@@ -204,87 +217,54 @@ export default function CheckoutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0D0D0D] via-[#1A1A2E] to-[#0D0D0D] py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Escolha o Plano Ideal Para Você
+            Finalizar Compra
           </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Otimize seu PC com o Voltris Optimizer. Trial de 7 dias grátis com cartão obrigatório.
+          <p className="text-xl text-gray-300">
+            Complete seus dados para prosseguir com o pagamento
           </p>
         </div>
 
-        {/* Plans Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {PLANS.map((plan) => (
-            <div
-              key={plan.code}
-              onClick={() => setSelectedPlan(plan)}
-              className={`
-                relative bg-white rounded-xl shadow-xl p-6 cursor-pointer transition-all duration-300
-                ${selectedPlan?.code === plan.code
-                  ? 'ring-4 ring-[#8B31FF] transform scale-105 shadow-2xl shadow-[#8B31FF]/50'
-                  : 'hover:shadow-2xl hover:scale-102'}
-                ${plan.popular ? 'border-4 border-[#31A8FF]' : ''}
-              `}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                  MAIS POPULAR
+        {selectedPlan ? (
+          <div className="space-y-8">
+            {/* Resumo do Plano Selecionado */}
+            <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-4">
+                  {getPlanIcon(selectedPlan.code)}
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">{selectedPlan.name}</h2>
+                    <p className="text-gray-300">{selectedPlan.description}</p>
+                  </div>
                 </div>
-              )}
-
-              <div className="flex flex-col items-center mb-4">
-                {getPlanIcon(plan.code)}
-                <h3 className="text-2xl font-bold text-gray-900 mt-4">{plan.name}</h3>
-                <p className="text-sm text-gray-600 text-center mt-2">{plan.description}</p>
+                <div className="text-right">
+                  <p className="text-3xl font-bold text-[#31A8FF]">{selectedPlan.priceDisplay}</p>
+                  {selectedPlan.durationMonths > 0 && (
+                    <p className="text-sm text-gray-400">
+                      a cada {selectedPlan.durationMonths === 1 ? 'mês' : `${selectedPlan.durationMonths} meses`}
+                    </p>
+                  )}
+                </div>
               </div>
-
-              <div className="text-center mb-6">
-                <span className="text-4xl font-bold text-gray-900">{plan.priceDisplay}</span>
-                {plan.durationMonths > 0 && (
-                  <span className="text-sm text-gray-600 block mt-1">
-                    a cada {plan.durationMonths === 1 ? 'mês' : `${plan.durationMonths} meses`}
-                  </span>
-                )}
-                {plan.highlight && (
-                  <span className="text-xs text-[#31A8FF] font-semibold block mt-2">
-                    {plan.highlight}
-                  </span>
-                )}
-              </div>
-
-              <ul className="space-y-3 mb-6">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-start text-sm">
-                    <CheckCircle className="w-5 h-5 text-[#31A8FF] mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">{feature}</span>
-                  </li>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4 pt-4 border-t border-white/10">
+                {selectedPlan.features.slice(0, 4).map((feature, idx) => (
+                  <div key={idx} className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-[#31A8FF] flex-shrink-0" />
+                    <span className="text-sm text-gray-300">{feature}</span>
+                  </div>
                 ))}
-              </ul>
-
-              <button
-                onClick={() => setSelectedPlan(plan)}
-                className={`
-                  w-full py-3 rounded-lg font-semibold transition-all duration-300 shadow-md
-                  ${selectedPlan?.code === plan.code
-                    ? 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white shadow-lg shadow-[#8B31FF]/50'
-                    : 'bg-gray-200 text-gray-900 hover:bg-gray-300'}
-                `}
-              >
-                {selectedPlan?.code === plan.code ? 'Selecionado' : 'Selecionar'}
-              </button>
+              </div>
             </div>
-          ))}
-        </div>
 
-        {/* Checkout Form */}
-        {selectedPlan && (
-          <div className="max-w-2xl mx-auto bg-white rounded-xl shadow-xl p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Finalizar Compra - {selectedPlan.name}
-            </h2>
+            {/* Checkout Form */}
+            <div className="bg-white rounded-xl shadow-xl p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                Seus Dados
+              </h2>
 
             <div className="space-y-6">
               {/* Email */}
@@ -376,36 +356,41 @@ export default function CheckoutPage() {
                   Pagamento seguro via Mercado Pago
                 </p>
               </div>
+              </div>
             </div>
+
+            {/* FAQ Section */}
+            <div className="mt-12 text-white">
+              <h2 className="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h2>
+              <div className="space-y-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-2">Como funciona o Trial?</h3>
+                  <p className="text-gray-300">
+                    Você pode testar TODAS as funcionalidades por 7 dias gratuitamente. É necessário cadastrar um cartão,
+                    mas você NÃO será cobrado durante o período de teste. Cancele a qualquer momento.
+                  </p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-2">Posso cancelar a qualquer momento?</h3>
+                  <p className="text-gray-300">
+                    Sim! Você pode cancelar sua assinatura a qualquer momento. Após o cancelamento, você manterá acesso
+                    até o final do período já pago.
+                  </p>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-2">Quantos dispositivos posso usar?</h3>
+                  <p className="text-gray-300">
+                    Depende do plano: Pro (1 dispositivo), Premium (3 dispositivos), Enterprise (ILIMITADO).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="text-center text-white">
+            <p className="text-xl">Carregando...</p>
           </div>
         )}
-
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mt-16 text-white">
-          <h2 className="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h2>
-          <div className="space-y-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-2">Como funciona o Trial?</h3>
-              <p className="text-gray-300">
-                Você pode testar TODAS as funcionalidades por 7 dias gratuitamente. É necessário cadastrar um cartão,
-                mas você NÃO será cobrado durante o período de teste. Cancele a qualquer momento.
-              </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-2">Posso cancelar a qualquer momento?</h3>
-              <p className="text-gray-300">
-                Sim! Você pode cancelar sua assinatura a qualquer momento. Após o cancelamento, você manterá acesso
-                até o final do período já pago.
-              </p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-2">Quantos dispositivos posso usar?</h3>
-              <p className="text-gray-300">
-                Depende do plano: Pro (1 dispositivo), Premium (3 dispositivos), Enterprise (ILIMITADO).
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
