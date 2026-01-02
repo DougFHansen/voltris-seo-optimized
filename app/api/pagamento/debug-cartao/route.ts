@@ -69,7 +69,7 @@ export async function GET(request: Request) {
         email: email,
       },
       external_reference: `voltris-${plan}-${Date.now()}`,
-      binary_mode: false,
+      binary_mode: true,
       payment_methods: {
         installments: 12,
         default_installments: 1,
