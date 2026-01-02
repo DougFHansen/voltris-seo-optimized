@@ -70,9 +70,6 @@ export async function GET(request: Request) {
       },
       external_reference: `voltris-${plan}-${Date.now()}`,
       payment_methods: {
-        excluded_payment_types: [
-          { id: 'account_money' }, // Remove saldo MP - Força checkout como convidado
-        ],
         installments: 12,
         default_installments: 1,
       },
