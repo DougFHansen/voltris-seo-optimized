@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS license_plans (
 -- Limpar dados existentes
 TRUNCATE TABLE license_plans;
 
--- Inserir planos corretos
+-- Inserir planos corretos (alinhados com o app C#)
 INSERT INTO license_plans (code, name, description, price_monthly, price_display, max_devices, duration_months, features, display_order) VALUES
 (
     'trial',
@@ -61,12 +61,12 @@ INSERT INTO license_plans (code, name, description, price_monthly, price_display
 (
     'enterprise',
     'Enterprise',
-    'Plano semestral para uso ilimitado',
+    'Plano semestral para uso ilimitado e empresas',
     149.90,
     'R$ 149,90 a cada 6 meses',
     9999, -- Ilimitado
     6,
-    '["Todas as funcionalidades", "Dispositivos ilimitados", "Renovação a cada 6 meses", "Suporte 24/7", "Todas as otimizações", "API de integração", "Painel de administração", "Implantação em lote"]'::jsonb,
+    '["Todas as funcionalidades", "Dispositivos ILIMITADOS", "Renovação a cada 6 meses", "Suporte 24/7", "Todas as otimizações", "API de integração", "Painel de administração", "Implantação em lote", "Licença única para múltiplos PCs"]'::jsonb,
     3
 );
 

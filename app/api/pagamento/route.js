@@ -7,25 +7,21 @@ export const maxDuration = 30;
 /**
  * API para criar preferência de pagamento no Mercado Pago
  * 
- * [MERCADO PAGO DEBUG] Esta API:
- * 1. Recebe plan e email via query params
- * 2. Valida o MP_ACCESS_TOKEN (deve estar em env)
- * 3. Cria preferência no Mercado Pago
- * 4. Retorna init_point e sandbox_init_point
+ * Suporta GET (legacy) e POST (novo)
  * 
- * PONTOS DE FALHA POSSÍVEIS:
- * - Token ausente ou inválido
- * - Token de produção quando deveria ser teste
- * - Payload inválido (campos obrigatórios)
- * - API Mercado Pago fora do ar
- * - Timeout na requisição
- * - Erro de rede
+ * POST Body: {
+ *   plan: string (trial|pro|premium|enterprise),
+ *   email: string (obrigatório),
+ *   fullName: string (obrigatório),
+ *   phone: string (opcional)
+ * }
  * 
- * Query params:
- * - plan: tipo de licença (trial, pro, premium) - default: pro
+ * Query params (GET):
+ * - plan: tipo de licença (trial, pro, premium, enterprise) - default: pro
  * - email: email do comprador (opcional, mas recomendado)
  */
-export async function GET(request) {
+
+async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
   const startTime = Date.now();
   const requestId = `req-${Date.now()}-${Math.random().toString(36).substring(7)}`;
   
@@ -33,20 +29,10 @@ export async function GET(request) {
   
   try {
     // Verifica se o token está configurado
-    // Prioridade: MERCADOPAGO_ACCESS_TOKEN_PROD (produção) > MP_ACCESS_TOKEN (fallback)
     const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN_PROD || process.env.MP_ACCESS_TOKEN;
     if (!accessToken) {
       console.error(`[MERCADO PAGO DEBUG] ERRO CRÍTICO: Token não configurado`);
-      console.error(`[MERCADO PAGO DEBUG] Configure MERCADOPAGO_ACCESS_TOKEN_PROD ou MP_ACCESS_TOKEN no Vercel`);
-      return new Response(JSON.stringify({ 
-        error: 'Access token not configured',
-        message: 'Token de acesso do Mercado Pago não está configurado. Configure a variável MERCADOPAGO_ACCESS_TOKEN_PROD no Vercel.'
-      }), {
-        status: 500,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      throw new Error('Token de acesso do Mercado Pago não está configurado');
     }
 
     // Log detalhado do token
@@ -73,57 +59,24 @@ export async function GET(request) {
       console.log(`[MERCADO PAGO DEBUG]    - O ambiente é determinado pelos test users, não pelo token`);
     }
 
-    // Obter parâmetros da query
-    const { searchParams } = new URL(request.url);
-    const plan = searchParams.get('plan') || 'pro';
-    const email = searchParams.get('email') || '';
-    
     console.log(`[MERCADO PAGO DEBUG] Parâmetros da requisição:`, {
       plan,
       email: email || 'não informado',
-      url: request.url,
+      fullName: fullName || 'não informado',
+      phone: phone || 'não informado',
     });
     
     // Validar plano
     const validPlans = ['trial', 'pro', 'premium', 'enterprise'];
     if (!validPlans.includes(plan)) {
       console.error(`[MERCADO PAGO DEBUG] Plano inválido: ${plan}`);
-      return new Response(JSON.stringify({ 
-        error: 'Invalid plan',
-        message: `Plano inválido. Use: ${validPlans.join(', ')}`
-      }), {
-        status: 400,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      throw new Error(`Plano inválido. Use: ${validPlans.join(', ')}`);
     }
     
     // Validar email se fornecido
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       console.error(`[MERCADO PAGO DEBUG] Email inválido: ${email}`);
-      return new Response(JSON.stringify({ 
-        error: 'Invalid email',
-        message: 'Formato de email inválido'
-      }), {
-        status: 400,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    }
-    
-    // ⚠️ Validate test user for sandbox environment
-    if (email) {
-      // Check if email looks like a test user
-      const isTestUserEmail = email.includes('test@') || email.includes('testuser');
-      if (!isTestUserEmail) {
-        console.warn(`[MERCADO PAGO DEBUG] ⚠️ ATENÇÃO: Email fornecido (${email}) não parece ser uma conta de teste`);
-        console.warn(`[MERCADO PAGO DEBUG] Para pagamentos de teste, use contas de teste criadas no painel do Mercado Pago`);
-        console.warn(`[MERCADO PAGO DEBUG] Mais info: https://www.mercadopago.com.br/developers/pt/docs/testing`);
-      } else {
-        console.log(`[MERCADO PAGO DEBUG] ✅ Email parece ser de test user`);
-      }
+      throw new Error('Formato de email inválido');
     }
     
     console.log(`[MERCADO PAGO DEBUG] Validações OK`);
@@ -179,6 +132,8 @@ export async function GET(request) {
         .from('payments')
         .insert({
           email: email || 'unknown@example.com',
+          full_name: fullName || null,
+          phone: phone || null,
           license_type: plan,
           amount: selectedPlan.price,
           currency: 'BRL',
@@ -222,15 +177,25 @@ export async function GET(request) {
         failure: `${dominio}/falha`,
         pending: `${dominio}/falha`
       },
-      auto_return: 'approved', // Automatically return to success URL when payment is approved
-      notification_url: webhookUrl, // ✅ CRITICAL: Send webhook URL to Mercado Pago
+      auto_return: 'approved',
+      notification_url: webhookUrl,
       statement_descriptor: 'VOLTRIS',
       payer: {
         email: payerEmail,
+        ...(fullName && {
+          name: fullName,
+          surname: '',
+        }),
+        ...(phone && {
+          phone: {
+            area_code: phone.replace(/\D/g, '').substring(0, 2),
+            number: phone.replace(/\D/g, '').substring(2),
+          },
+        }),
       },
-      external_reference: `voltris-${plan}-${Date.now()}`, // Unique reference for tracking
+      external_reference: `voltris-${plan}-${Date.now()}`,
       payment_methods: {
-        installments: 12, // ✅ CRITICAL: Permite parcelamento até 12x
+        installments: 12,
         default_installments: 1,
       },
     };
@@ -348,12 +313,7 @@ export async function GET(request) {
     console.log(`[MERCADO PAGO DEBUG] Dados retornados:`, JSON.stringify(frontendResponse, null, 2));
     console.log(`[MERCADO PAGO DEBUG] ========== FIM REQUISIÇÃO ${requestId} (${duration}ms) ==========`);
 
-    return new Response(JSON.stringify(frontendResponse), {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    return frontendResponse;
   } catch (error) {
     const duration = Date.now() - startTime;
     
@@ -362,23 +322,64 @@ export async function GET(request) {
     console.error(`[MERCADO PAGO DEBUG] Status:`, error.status || error.statusCode || 'não disponível');
     console.error(`[MERCADO PAGO DEBUG] Causa:`, error.cause || 'não disponível');
     console.error(`[MERCADO PAGO DEBUG] Stack:`, error.stack);
-    console.error(`[MERCADO PAGO DEBUG] Erro completo:`, JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
 
+    throw error;
+  }
+}
+
+// GET handler (legacy support)
+export async function GET(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const plan = searchParams.get('plan') || 'pro';
+    const email = searchParams.get('email') || '';
+    
+    const result = await handlePaymentRequest(plan, email);
+    
+    return new Response(JSON.stringify(result), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
     return new Response(JSON.stringify({ 
       error: 'Failed to create payment preference', 
       details: error.message,
-      request_id: requestId,
-      debug: {
-        cause: error.cause?.toString(),
-        status: error.status,
-        statusCode: error.statusCode,
-      },
-      stack: error.stack
     }), {
       status: 500,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+}
+
+// POST handler (new, with fullName and phone support)
+export async function POST(request) {
+  try {
+    const body = await request.json();
+    const { plan, email, fullName, phone } = body;
+    
+    if (!plan || !email) {
+      return new Response(JSON.stringify({ 
+        error: 'Missing required fields',
+        message: 'plan e email são obrigatórios',
+      }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    
+    const result = await handlePaymentRequest(plan, email, fullName, phone);
+    
+    return new Response(JSON.stringify(result), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ 
+      error: 'Failed to create payment preference', 
+      details: error.message,
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 }
