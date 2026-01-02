@@ -49,41 +49,26 @@ export async function GET(request) {
 
     // Log detalhado do token
     const tokenPrefix = accessToken.substring(0, 20);
-    const isTestToken = accessToken.startsWith('TEST-');
     const isAppUsrToken = accessToken.startsWith('APP_USR-');
-    const ambiente = isTestToken ? 'TESTE' : (isAppUsrToken ? 'PRODUÇÃO' : 'INDEFINIDO');
     
     console.log(`[MERCADO PAGO DEBUG] ========== VALIDAÇÃO DE TOKEN ==========`);
     console.log(`[MERCADO PAGO DEBUG] Token configurado:`, {
       prefix: tokenPrefix,
       length: accessToken.length,
-      isTestToken,
       isAppUsrToken,
-      ambiente,
+      valid: isAppUsrToken,
     });
     
-    // ⚠️ CRITICAL WARNING: Detect token/environment mismatch
-    if (isAppUsrToken) {
-      console.warn(`[MERCADO PAGO DEBUG] ⚠️⚠️⚠️ AVISO CRÍTICO ⚠️⚠️⚠️`);
-      console.warn(`[MERCADO PAGO DEBUG] TOKEN DE PRODUÇÃO DETECTADO (APP_USR-)`);
-      console.warn(`[MERCADO PAGO DEBUG] `);
-      console.warn(`[MERCADO PAGO DEBUG] PROBLEMA:`);
-      console.warn(`[MERCADO PAGO DEBUG] - Você está usando um token de PRODUÇÃO`);
-      console.warn(`[MERCADO PAGO DEBUG] - Para TESTES em SANDBOX, use um token que comece com TEST-`);
-      console.warn(`[MERCADO PAGO DEBUG] `);
-      console.warn(`[MERCADO PAGO DEBUG] CONSEQUÊNCIA:`);
-      console.warn(`[MERCADO PAGO DEBUG] - O sandbox_init_point será gerado, MAS NÃO FUNCIONARÁ`);
-      console.warn(`[MERCADO PAGO DEBUG] - Pagamentos de teste FALHARÃO no checkout`);
-      console.warn(`[MERCADO PAGO DEBUG] - Você precisa de um TOKEN DE TESTE para usar o sandbox`);
-      console.warn(`[MERCADO PAGO DEBUG] `);
-      console.warn(`[MERCADO PAGO DEBUG] SOLUÇÃO:`);
-      console.warn(`[MERCADO PAGO DEBUG] 1. Acesse: https://www.mercadopago.com.br/developers/panel/credentials`);
-      console.warn(`[MERCADO PAGO DEBUG] 2. Vá em "Credenciais de teste"`);
-      console.warn(`[MERCADO PAGO DEBUG] 3. Copie o Access Token que começa com TEST-`);
-      console.warn(`[MERCADO PAGO DEBUG] 4. Atualize MP_ACCESS_TOKEN no Vercel com o token de teste`);
-      console.warn(`[MERCADO PAGO DEBUG] ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️`);
-    } else if (isTestToken) {
-      console.log(`[MERCADO PAGO DEBUG] ✅ Token de TESTE detectado - Ambiente correto para sandbox`);
+    if (!isAppUsrToken) {
+      console.error(`[MERCADO PAGO DEBUG] ❌ TOKEN INVÁLIDO`);
+      console.error(`[MERCADO PAGO DEBUG] Token deve começar com APP_USR-`);
+      console.error(`[MERCADO PAGO DEBUG] Obtenha o token em: https://www.mercadopago.com.br/developers/panel/credentials`);
+    } else {
+      console.log(`[MERCADO PAGO DEBUG] ✅ Token APP_USR- detectado - Token válido`);
+      console.log(`[MERCADO PAGO DEBUG] 💡 IMPORTANTE: Este mesmo token funciona para:`);
+      console.log(`[MERCADO PAGO DEBUG]    - Sandbox (usando test users e cartões de teste)`);
+      console.log(`[MERCADO PAGO DEBUG]    - Produção (usando usuários e cartões reais)`);
+      console.log(`[MERCADO PAGO DEBUG]    - O ambiente é determinado pelos test users, não pelo token`);
     }
 
     // Obter parâmetros da query
@@ -127,17 +112,15 @@ export async function GET(request) {
     }
     
     // ⚠️ Validate test user for sandbox environment
-    if (isAppUsrToken && email) {
-      console.warn(`[MERCADO PAGO DEBUG] ⚠️ AVISO: Usando token de produção com email: ${email}`);
-      console.warn(`[MERCADO PAGO DEBUG] Se você tentar pagar no sandbox, isso FALHARÁ`);
-      console.warn(`[MERCADO PAGO DEBUG] Use um token TEST- para testes em sandbox`);
-    } else if (isTestToken && email) {
+    if (email) {
       // Check if email looks like a test user
       const isTestUserEmail = email.includes('test@') || email.includes('testuser');
       if (!isTestUserEmail) {
         console.warn(`[MERCADO PAGO DEBUG] ⚠️ ATENÇÃO: Email fornecido (${email}) não parece ser uma conta de teste`);
         console.warn(`[MERCADO PAGO DEBUG] Para pagamentos de teste, use contas de teste criadas no painel do Mercado Pago`);
         console.warn(`[MERCADO PAGO DEBUG] Mais info: https://www.mercadopago.com.br/developers/pt/docs/testing`);
+      } else {
+        console.log(`[MERCADO PAGO DEBUG] ✅ Email parece ser de test user`);
       }
     }
     
@@ -242,7 +225,7 @@ export async function GET(request) {
       },
       auto_return: 'approved', // Automatically return to success URL when payment is approved
       notification_url: webhookUrl, // ✅ CRITICAL: Send webhook URL to Mercado Pago
-      statement_descriptor: isTestToken ? 'VOLTRIS TEST' : 'VOLTRIS',
+      statement_descriptor: 'VOLTRIS',
       payer: {
         email: payerEmail,
       },
@@ -259,14 +242,12 @@ export async function GET(request) {
       back_url_success: `${dominio}/sucesso`,
       webhook_url: webhookUrl,
       auto_return: 'approved',
-      ambiente_token: ambiente,
     });
     
     // ⚠️ CRITICAL VALIDATION BEFORE SENDING
     console.log(`[MERCADO PAGO DEBUG] ========== VALIDAÇÃO PRÉ-ENVIO ==========`);
     const validationChecks = {
-      token_type: ambiente,
-      token_correto_para_sandbox: isTestToken ? '✅ SIM' : '❌ NÃO - Use token TEST-',
+      token_valido: isAppUsrToken ? '✅ SIM (APP_USR-)' : '❌ NÃO',
       webhook_url_presente: !!webhookUrl ? '✅ SIM' : '❌ NÃO',
       auto_return_configurado: !!preferenceBody.auto_return ? '✅ SIM' : '❌ NÃO',
       notification_url_presente: !!preferenceBody.notification_url ? '✅ SIM' : '❌ NÃO',
@@ -274,16 +255,6 @@ export async function GET(request) {
       email_valido: !!payerEmail ? '✅ SIM' : '❌ NÃO',
     };
     console.log(`[MERCADO PAGO DEBUG] Checklist de validação:`, validationChecks);
-    
-    if (isAppUsrToken) {
-      console.error(`[MERCADO PAGO DEBUG] ❌❌❌ ERRO DETECTADO ❌❌❌`);
-      console.error(`[MERCADO PAGO DEBUG] Você está prestes a criar uma preferência com TOKEN DE PRODUÇÃO`);
-      console.error(`[MERCADO PAGO DEBUG] Isso significa que:`);
-      console.error(`[MERCADO PAGO DEBUG] - sandbox_init_point será gerado, mas NÃO funcionará corretamente`);
-      console.error(`[MERCADO PAGO DEBUG] - Pagamentos de teste FALHARÃO`);
-      console.error(`[MERCADO PAGO DEBUG] - Você precisa trocar para um TOKEN DE TESTE (TEST-)`);
-      console.error(`[MERCADO PAGO DEBUG] ❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌`);
-    }
 
     let response;
     try {
@@ -310,42 +281,6 @@ export async function GET(request) {
         sandbox_url: response.sandbox_init_point || 'não disponível',
         usar_sandbox: !!response.sandbox_init_point,
       });
-      
-      // ⚠️ CRITICAL ANALYSIS: Check for inconsistencies
-      console.log(`[MERCADO PAGO DEBUG] ========== ANÁLISE DE CONSISTÊNCIA ==========`);
-      
-      const hasSandboxUrl = !!response.sandbox_init_point;
-      const hasProductionUrl = !!response.init_point;
-      
-      if (isAppUsrToken && hasSandboxUrl) {
-        console.error(`[MERCADO PAGO DEBUG] ❌❌❌ INCONSISTÊNCIA DETECTADA ❌❌❌`);
-        console.error(`[MERCADO PAGO DEBUG] `);
-        console.error(`[MERCADO PAGO DEBUG] PROBLEMA ENCONTRADO:`);
-        console.error(`[MERCADO PAGO DEBUG] - Token: PRODUÇÃO (APP_USR-)`);
-        console.error(`[MERCADO PAGO DEBUG] - Sandbox URL: GERADA (${response.sandbox_init_point?.substring(0, 50)}...)`);
-        console.error(`[MERCADO PAGO DEBUG] `);
-        console.error(`[MERCADO PAGO DEBUG] ISTO É O SEU ERRO ATUAL:`);
-        console.error(`[MERCADO PAGO DEBUG] O Mercado Pago gera o sandbox_init_point, mas como o token é de`);
-        console.error(`[MERCADO PAGO DEBUG] PRODUÇÃO, quando você tentar pagar no sandbox, ele vai FALHAR`);
-        console.error(`[MERCADO PAGO DEBUG] porque o token não tem permissão para processar pagamentos de teste.`);
-        console.error(`[MERCADO PAGO DEBUG] `);
-        console.error(`[MERCADO PAGO DEBUG] SOLUÇÃO DEFINITIVA:`);
-        console.error(`[MERCADO PAGO DEBUG] 1. Acesse: https://www.mercadopago.com.br/developers/panel/credentials`);
-        console.error(`[MERCADO PAGO DEBUG] 2. Clique em "Credenciais de teste" (não "Produção")`);
-        console.error(`[MERCADO PAGO DEBUG] 3. Copie o Access Token que COMEÇA com TEST-`);
-        console.error(`[MERCADO PAGO DEBUG] 4. No Vercel, vá em Settings → Environment Variables`);
-        console.error(`[MERCADO PAGO DEBUG] 5. Edite MP_ACCESS_TOKEN e cole o token TEST-`);
-        console.error(`[MERCADO PAGO DEBUG] 6. Faça redeploy do projeto`);
-        console.error(`[MERCADO PAGO DEBUG] `);
-        console.error(`[MERCADO PAGO DEBUG] Depois disso, o pagamento de teste funcionará corretamente.`);
-        console.error(`[MERCADO PAGO DEBUG] ❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌❌`);
-      } else if (isTestToken && hasSandboxUrl) {
-        console.log(`[MERCADO PAGO DEBUG] ✅✅✅ CONFIGURAÇÃO CORRETA ✅✅✅`);
-        console.log(`[MERCADO PAGO DEBUG] - Token: TESTE (TEST-)`);
-        console.log(`[MERCADO PAGO DEBUG] - Sandbox URL: Gerada corretamente`);
-        console.log(`[MERCADO PAGO DEBUG] - Status: Pronto para pagamentos de teste`);
-        console.log(`[MERCADO PAGO DEBUG] ✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅✅`);
-      }
       
       console.log(`[MERCADO PAGO DEBUG] Resposta COMPLETA do Mercado Pago:`);
       console.log(JSON.stringify(response, null, 2));
@@ -394,15 +329,6 @@ export async function GET(request) {
     
     console.log(`[MERCADO PAGO DEBUG] ========== RESPOSTA PARA FRONTEND ==========`);
     
-    // ⚠️ Add warnings to frontend response
-    const warnings = [];
-    const errors = [];
-    
-    if (isAppUsrToken && response.sandbox_init_point) {
-      warnings.push('TOKEN_PRODUCAO_COM_SANDBOX');
-      errors.push('❌ ERRO CRÍTICO: Token de PRODUÇÃO detectado, mas tentando usar SANDBOX. Pagamento de teste FALHARÁ.');
-    }
-    
     const frontendResponse = { 
       init_point: response.init_point,
       sandbox_init_point: response.sandbox_init_point,
@@ -412,11 +338,7 @@ export async function GET(request) {
       debug: {
         request_id: requestId,
         duration_ms: duration,
-        ambiente: ambiente,
-        token_type: isTestToken ? 'TEST' : 'PRODUCAO',
-        warnings: warnings.length > 0 ? warnings : undefined,
-        errors: errors.length > 0 ? errors : undefined,
-        config_ok: isTestToken && response.sandbox_init_point,
+        token_valid: isAppUsrToken,
       }
     };
     
