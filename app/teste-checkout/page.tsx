@@ -13,6 +13,19 @@ export default function TesteCheckoutPage() {
 
   async function criarPagamento() {
     try {
+      // Validação: Email obrigatório
+      if (!email || !email.trim()) {
+        setError('❌ Por favor, informe seu email para continuar');
+        return;
+      }
+
+      // Validação: Email válido
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        setError('❌ Por favor, informe um email válido');
+        return;
+      }
+
       setLoading(true);
       setError(null);
       setPaymentData(null);
@@ -20,7 +33,7 @@ export default function TesteCheckoutPage() {
 
       const params = new URLSearchParams();
       params.append('plan', plan);
-      if (email) params.append('email', email);
+      params.append('email', email); // Email sempre enviado agora
 
       console.log('[MERCADO PAGO DEBUG] ========== FRONTEND: INICIANDO CHAMADA ==========');
       console.log('[MERCADO PAGO DEBUG] Parâmetros:', { plan, email: email || 'não informado' });
@@ -204,15 +217,19 @@ Verifique os logs do console para mais detalhes.`);
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Email (opcional)
+                Email <span className="text-red-500">*</span> (obrigatório)
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="teste@example.com"
+                placeholder="seu@email.com"
+                required
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
+              <p className="text-xs text-gray-500 mt-1">
+                📧 Usaremos este email para enviar sua licença
+              </p>
             </div>
 
             <button
