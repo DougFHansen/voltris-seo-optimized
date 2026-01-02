@@ -18,15 +18,65 @@ function SucessoContent() {
   const [error, setError] = useState<string | null>(null);
   const preferenceId = searchParams.get('preference_id');
   const paymentId = searchParams.get('payment_id');
+  const collectionId = searchParams.get('collection_id');
+  const status = searchParams.get('status');
 
   useEffect(() => {
-    if (preferenceId || paymentId) {
-      fetchLicense();
+    if (preferenceId || paymentId || collectionId) {
+      processPaymentReturn();
     } else {
       setError('Parâmetros de pagamento não encontrados');
       setLoading(false);
     }
-  }, [preferenceId, paymentId]);
+  }, [preferenceId, paymentId, collectionId]);
+
+  async function processPaymentReturn() {
+    try {
+      setLoading(true);
+      
+      // Primeiro, processar o retorno do pagamento
+      const actualPaymentId = paymentId || collectionId;
+      
+      if (actualPaymentId && status === 'approved') {
+        console.log('[SUCESSO] Processando retorno do pagamento...', {
+          payment_id: actualPaymentId,
+          preference_id: preferenceId,
+          status,
+        });
+        
+        // Chamar API para processar o retorno
+        const processResponse = await fetch('/api/pagamento/processar-retorno', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            payment_id: actualPaymentId,
+            collection_id: collectionId,
+            preference_id: preferenceId,
+            status,
+          }),
+        });
+        
+        if (processResponse.ok) {
+          const processData = await processResponse.json();
+          console.log('[SUCESSO] Pagamento processado:', processData);
+          
+          if (processData.license) {
+            setLicense(processData.license);
+            setLoading(false);
+            return;
+          }
+        } else {
+          console.error('[SUCESSO] Erro ao processar retorno:', await processResponse.text());
+        }
+      }
+      
+      // Se não conseguiu processar, tentar buscar licença existente
+      await fetchLicense();
+    } catch (err) {
+      console.error('[SUCESSO] Erro:', err);
+      await fetchLicense();
+    }
+  }
 
   async function fetchLicense() {
     try {
