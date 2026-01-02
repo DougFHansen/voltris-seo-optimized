@@ -86,9 +86,23 @@ namespace VoltrisOptimizer
         private const int SW_RESTORE = 9;
         private const int SW_SHOW = 5;
 
+        // Win32 API para forçar DPI Awareness
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool SetProcessDpiAwarenessContext(IntPtr dpiFlag);
+        
+        private static readonly IntPtr DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = new IntPtr(-4);
+        
         public App()
         {
-            // DPI Awareness configurado via propriedade do projeto (ApplicationHighDpiMode)
+            // Forçar DPI Awareness ANTES de qualquer inicialização
+            try
+            {
+                SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
+            }
+            catch
+            {
+                // Fallback: manifest já configura DPI
+            }
         }
 
         protected override async void OnStartup(StartupEventArgs e)

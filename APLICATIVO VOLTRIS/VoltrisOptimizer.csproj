@@ -21,9 +21,6 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PlatformTarget>x86</PlatformTarget>
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
-    <!-- Configuração moderna de DPI Awareness -->
-    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
-    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <DefaultItemExcludes>$(DefaultItemExcludes);**\obj\**;**\bin\**;LicenseGenerator\**</DefaultItemExcludes>
