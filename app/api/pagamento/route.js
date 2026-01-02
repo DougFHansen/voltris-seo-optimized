@@ -126,11 +126,11 @@ export async function GET(request) {
     
     console.log(`[MERCADO PAGO DEBUG] Validações OK`);
     
-    // Configurar preços e tipos de licença
+    // Configurar preços e tipos de licença (PRODUÇÃO COM VALORES DE TESTE)
     const planConfig = {
       trial: { price: 0.01, title: 'Licença Voltris - Trial', months: 0 },
-      pro: { price: 49.90, title: 'Licença Voltris - Pro', months: 1 },
-      premium: { price: 99.90, title: 'Licença Voltris - Premium', months: 3 },
+      pro: { price: 1.00, title: 'Licença Voltris - Pro', months: 1 },
+      premium: { price: 1.00, title: 'Licença Voltris - Premium', months: 3 },
     };
     
     const selectedPlan = planConfig[plan];
