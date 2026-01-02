@@ -17,11 +17,7 @@
         Icon="pack://application:,,,/Images/favicon.ico"
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded"
-        SourceInitialized="Window_SourceInitialized"
-        SnapsToDevicePixels="True"
-        UseLayoutRounding="True"
-        TextOptions.TextFormattingMode="Display"
-        TextOptions.TextRenderingMode="ClearType">
+        SourceInitialized="Window_SourceInitialized">
     
     <Window.Resources>
         <!-- Ícones Vetoriais para Sidebar -->
@@ -161,8 +157,7 @@
                                 Margin="16,0,12,0">
                         <!-- Ícone da Logo -->
                         <Image Source="pack://siteoforigin:,,,/Images/favicon.ico"
-                               Width="28" Height="28" 
-                               Stretch="Uniform"
+                               MaxWidth="28" MaxHeight="28"
                                VerticalAlignment="Center"
                                Margin="0,0,10,0"
                                RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -231,8 +226,8 @@
                         <Button x:Name="MinimizeButton"
                                 Style="{StaticResource TitleBarButtonStyle}"
                                 Click="MinimizeButton_Click"
-                                Width="46"
-                                Height="32"
+                                MinWidth="46"
+                                MinHeight="32"
                                 ToolTip="Minimizar">
                             <Path Data="M4,12 L20,12" 
                                   Stroke="{StaticResource TextSecondaryBrush}"
@@ -245,8 +240,8 @@
                         <Button x:Name="MaximizeButton"
                                 Style="{StaticResource TitleBarButtonStyle}"
                                 Click="MaximizeButton_Click"
-                                Width="46"
-                                Height="32"
+                                MinWidth="46"
+                                MinHeight="32"
                                 ToolTip="Maximizar/Restaurar">
                             <Path x:Name="MaximizeIcon"
                                   Data="M4,4 L20,4 L20,20 L4,20 Z" 
@@ -261,8 +256,8 @@
                         <Button x:Name="CloseButton"
                                 Style="{StaticResource TitleBarCloseButtonStyle}"
                                 Click="CloseButton_Click"
-                                Width="46"
-                                Height="32"
+                                MinWidth="46"
+                                MinHeight="32"
                                 ToolTip="Fechar">
                             <Path Data="M4,4 L20,20 M20,4 L4,20" 
                                   Stroke="{StaticResource TextSecondaryBrush}"
@@ -281,14 +276,16 @@
             <!-- ============================================ -->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
+                    <!-- Sidebar: Auto width with constraints for DPI scaling -->
                     <ColumnDefinition Width="Auto" MinWidth="200" MaxWidth="280"/>
+                    <!-- Content: Takes remaining space -->
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
                 <!-- ============================================ -->
                 <!-- SIDEBAR MODERNA COM TRANSPARÊNCIA PROFISSIONAL -->
                 <!-- ============================================ -->
-                <Border Grid.Column="0" 
+                <Border Grid.Column="0"
                         MinWidth="200"
                         MaxWidth="280"
                         HorizontalAlignment="Stretch"
@@ -334,8 +331,8 @@
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <!-- Logo Voltris -->
                                 <Image Source="pack://siteoforigin:,,,/Images/logo.png"
-                                       Width="200"
-                                       Height="65"
+                                       MaxWidth="200"
+                                       MaxHeight="65"
                                        Stretch="Uniform"
                                        HorizontalAlignment="Center"
                                        RenderOptions.BitmapScalingMode="HighQuality"
@@ -540,21 +537,25 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     
-                    <!-- Frame de Conteúdo -->
-                    <ContentControl x:Name="ContentFrame"
-                                    Grid.Row="0"
-                                    Background="Transparent"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalAlignment="Top"
-                                    HorizontalContentAlignment="Stretch"
-                                    VerticalContentAlignment="Top"
-                                    Margin="0"
-                                    Padding="0"
-                                    RenderTransformOrigin="0.5,0.5">
-                        <ContentControl.RenderTransform>
-                            <TranslateTransform/>
-                        </ContentControl.RenderTransform>
-                    </ContentControl>
+                    <!-- Frame de Conteúdo com ScrollViewer para evitar cortes em alta DPI -->
+                    <ScrollViewer Grid.Row="0"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  Background="Transparent">
+                        <ContentControl x:Name="ContentFrame"
+                                        Background="Transparent"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Top"
+                                        HorizontalContentAlignment="Stretch"
+                                        VerticalContentAlignment="Top"
+                                        Margin="0"
+                                        Padding="0"
+                                        RenderTransformOrigin="0.5,0.5">
+                            <ContentControl.RenderTransform>
+                                <TranslateTransform/>
+                            </ContentControl.RenderTransform>
+                        </ContentControl>
+                    </ScrollViewer>
                     
                     <!-- Barra de Progresso Inferior -->
                     <Border Grid.Row="1"
