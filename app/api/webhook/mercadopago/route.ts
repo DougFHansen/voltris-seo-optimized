@@ -82,9 +82,9 @@ export async function POST(request: Request) {
       console.log(`[MERCADO PAGO DEBUG] ========== PROCESSANDO PAGAMENTO ==========`);
       
       // Buscar informações do pagamento no Mercado Pago
-      const accessToken = process.env.MP_ACCESS_TOKEN;
+      const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN_PROD || process.env.MP_ACCESS_TOKEN;
       if (!accessToken) {
-        console.error(`[MERCADO PAGO DEBUG] ERRO CRÍTICO: MP_ACCESS_TOKEN não configurado no webhook`);
+        console.error(`[MERCADO PAGO DEBUG] ERRO CRÍTICO: Token Mercado Pago não configurado no webhook`);
         return NextResponse.json({ error: 'MP_ACCESS_TOKEN not configured' }, { status: 500 });
       }
       
