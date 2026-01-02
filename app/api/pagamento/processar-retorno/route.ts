@@ -53,9 +53,9 @@ export async function POST(request: Request) {
     const supabase = createSupabaseClient(supabaseUrl, supabaseServiceKey);
 
     // Buscar dados completos do pagamento no Mercado Pago
-    const accessToken = process.env.MP_ACCESS_TOKEN;
+    const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN_PROD || process.env.MP_ACCESS_TOKEN;
     if (!accessToken) {
-      console.error('[PAGAMENTO RETORNO] MP_ACCESS_TOKEN não configurado');
+      console.error('[PAGAMENTO RETORNO] Token Mercado Pago não configurado');
       return NextResponse.json(
         { error: 'Token Mercado Pago não configurado' },
         { status: 500 }
