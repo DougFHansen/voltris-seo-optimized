@@ -7,19 +7,21 @@
         mc:Ignorable="d"
         Title="Voltris Optimizer - Sistema Profissional de Otimização para Windows 10/11"
         MinHeight="650" MinWidth="900"
-        Background="#0A0A0F"
+        Background="Transparent"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize"
         WindowStyle="None"
-        AllowsTransparency="False"
-        BorderThickness="1"
-        BorderBrush="#1E1E2E"
-        SnapsToDevicePixels="True"
-        UseLayoutRounding="True"
+        AllowsTransparency="True"
+        BorderThickness="0"
+        BorderBrush="Transparent"
         Icon="pack://application:,,,/Images/favicon.ico"
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded"
-        SourceInitialized="Window_SourceInitialized">
+        SourceInitialized="Window_SourceInitialized"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType">
     
     <Window.Resources>
         <!-- Ícones Vetoriais para Sidebar -->
@@ -160,6 +162,7 @@
                         <!-- Ícone da Logo -->
                         <Image Source="pack://siteoforigin:,,,/Images/favicon.ico"
                                Width="28" Height="28" 
+                               Stretch="Uniform"
                                VerticalAlignment="Center"
                                Margin="0,0,10,0"
                                RenderOptions.BitmapScalingMode="HighQuality"/>
@@ -278,7 +281,7 @@
             <!-- ============================================ -->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="220" MinWidth="200" MaxWidth="280"/>
+                    <ColumnDefinition Width="Auto" MinWidth="200" MaxWidth="280"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
@@ -286,6 +289,8 @@
                 <!-- SIDEBAR MODERNA COM TRANSPARÊNCIA PROFISSIONAL -->
                 <!-- ============================================ -->
                 <Border Grid.Column="0" 
+                        MinWidth="200"
+                        MaxWidth="280"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch"
                         ClipToBounds="False"
