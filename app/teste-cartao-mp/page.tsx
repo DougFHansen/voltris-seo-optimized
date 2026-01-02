@@ -57,9 +57,9 @@ export default function TesteCartaoMP() {
             <li>Faça login com seu <strong>test user COMPRADOR</strong></li>
             <li>Digite o código de verificação (últimos 6 dígitos do user ID)</li>
             <li>Selecione "Cartão de crédito ou débito"</li>
-            <li>Use o cartão de teste: <code className="bg-slate-700 px-2 py-1 rounded">5031 4332 1540 6351</code></li>
+            <li>Use o cartão de teste <strong>VISA</strong>: <code className="bg-slate-700 px-2 py-1 rounded">4235 6477 2802 5682</code></li>
             <li>CVV: <code className="bg-slate-700 px-2 py-1 rounded">123</code></li>
-            <li>Vencimento: <code className="bg-slate-700 px-2 py-1 rounded">12/25</code></li>
+            <li>Vencimento: <code className="bg-slate-700 px-2 py-1 rounded">11/25</code></li>
             <li>Nome: <code className="bg-slate-700 px-2 py-1 rounded">APRO</code></li>
             <li>CPF: <code className="bg-slate-700 px-2 py-1 rounded">12345678909</code></li>
             <li><strong>Se der erro, abra F12 (Console) e copie TUDO!</strong></li>
@@ -72,19 +72,19 @@ export default function TesteCartaoMP() {
           <div className="space-y-4">
             <div className="bg-slate-700 p-4 rounded">
               <h3 className="font-semibold text-green-400">✅ APROVADO</h3>
-              <p className="text-sm text-slate-300 mt-2">Número: <code>5031 4332 1540 6351</code></p>
+              <p className="text-sm text-slate-300 mt-2">Número: <code>4235 6477 2802 5682</code> (VISA)</p>
               <p className="text-sm text-slate-300">Nome: APRO</p>
             </div>
             
             <div className="bg-slate-700 p-4 rounded">
               <h3 className="font-semibold text-yellow-400">⏳ PENDENTE</h3>
-              <p className="text-sm text-slate-300 mt-2">Número: <code>5031 4332 1540 6351</code></p>
+              <p className="text-sm text-slate-300 mt-2">Número: <code>4235 6477 2802 5682</code> (VISA)</p>
               <p className="text-sm text-slate-300">Nome: CONT</p>
             </div>
             
             <div className="bg-slate-700 p-4 rounded">
               <h3 className="font-semibold text-red-400">❌ REJEITADO</h3>
-              <p className="text-sm text-slate-300 mt-2">Número: <code>5031 4332 1540 6351</code></p>
+              <p className="text-sm text-slate-300 mt-2">Número: <code>4235 6477 2802 5682</code> (VISA)</p>
               <p className="text-sm text-slate-300">Nome: OTHE</p>
             </div>
           </div>
