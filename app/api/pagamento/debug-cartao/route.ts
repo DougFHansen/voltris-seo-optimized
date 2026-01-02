@@ -34,9 +34,9 @@ export async function GET(request: Request) {
     });
 
     const planConfig = {
-      trial: { price: 0.01, title: 'Licença Voltris - Trial', months: 0 },
-      pro: { price: 49.90, title: 'Licença Voltris - Pro', months: 1 },
-      premium: { price: 99.90, title: 'Licença Voltris - Premium', months: 3 },
+      trial: { price: 0.01, title: 'Licença Voltris - Trial (TESTE)', months: 0 },
+      pro: { price: 1.00, title: 'Licença Voltris - Pro (TESTE)', months: 1 },
+      premium: { price: 1.00, title: 'Licença Voltris - Premium (TESTE)', months: 3 },
     };
     
     const selectedPlan = planConfig[plan as keyof typeof planConfig] || planConfig.pro;
