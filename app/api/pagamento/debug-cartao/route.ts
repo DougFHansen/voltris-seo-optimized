@@ -66,22 +66,7 @@ export async function GET(request: Request) {
       notification_url: `${dominio}/api/webhook/mercadopago`,
       statement_descriptor: 'VOLTRIS',
       payer: {
-        name: 'Test',
-        surname: 'User',
         email: email,
-        phone: {
-          area_code: '11',
-          number: '999999999',
-        },
-        identification: {
-          type: 'CPF',
-          number: '12345678909',
-        },
-        address: {
-          zip_code: '01310-100',
-          street_name: 'Av Paulista',
-          street_number: '1000',
-        }
       },
       external_reference: `voltris-${plan}-${Date.now()}`,
       binary_mode: false,
@@ -214,7 +199,7 @@ export async function GET(request: Request) {
         payment_methods_configured: !!preferenceBody.payment_methods,
         installments_configured: preferenceBody.payment_methods.installments === 12,
         binary_mode: preferenceBody.binary_mode === false,
-        payer_info_complete: !!(preferenceBody.payer.email && preferenceBody.payer.name),
+        payer_info_complete: !!preferenceBody.payer.email,
       },
     }, {
       headers: {
