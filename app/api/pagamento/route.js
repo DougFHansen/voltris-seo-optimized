@@ -33,12 +33,14 @@ export async function GET(request) {
   
   try {
     // Verifica se o token está configurado
-    const accessToken = process.env.MP_ACCESS_TOKEN;
+    // Prioridade: MERCADOPAGO_ACCESS_TOKEN_PROD (produção) > MP_ACCESS_TOKEN (fallback)
+    const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN_PROD || process.env.MP_ACCESS_TOKEN;
     if (!accessToken) {
-      console.error(`[MERCADO PAGO DEBUG] ERRO CRÍTICO: MP_ACCESS_TOKEN não configurado`);
+      console.error(`[MERCADO PAGO DEBUG] ERRO CRÍTICO: Token não configurado`);
+      console.error(`[MERCADO PAGO DEBUG] Configure MERCADOPAGO_ACCESS_TOKEN_PROD ou MP_ACCESS_TOKEN no Vercel`);
       return new Response(JSON.stringify({ 
-        error: 'MP_ACCESS_TOKEN not configured',
-        message: 'Token de acesso do Mercado Pago não está configurado. Configure a variável MP_ACCESS_TOKEN no Vercel.'
+        error: 'Access token not configured',
+        message: 'Token de acesso do Mercado Pago não está configurado. Configure a variável MERCADOPAGO_ACCESS_TOKEN_PROD no Vercel.'
       }), {
         status: 500,
         headers: {

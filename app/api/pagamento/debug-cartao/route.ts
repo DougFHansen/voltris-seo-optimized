@@ -18,11 +18,12 @@ export async function GET(request: Request) {
     const plan = searchParams.get('plan') || 'pro';
     const email = searchParams.get('email') || 'test@testuser.com';
     
-    const accessToken = process.env.MP_ACCESS_TOKEN;
+    // Prioridade: MERCADOPAGO_ACCESS_TOKEN_PROD (produção) > MP_ACCESS_TOKEN (fallback)
+    const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN_PROD || process.env.MP_ACCESS_TOKEN;
     
     if (!accessToken) {
       return NextResponse.json({
-        error: 'MP_ACCESS_TOKEN não configurado',
+        error: 'Token não configurado - Configure MERCADOPAGO_ACCESS_TOKEN_PROD ou MP_ACCESS_TOKEN no Vercel',
         debug_id: debugId,
       }, { status: 500 });
     }
