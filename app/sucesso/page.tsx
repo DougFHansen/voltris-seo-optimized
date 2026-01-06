@@ -16,10 +16,15 @@ function SucessoContent() {
   const [loading, setLoading] = useState(true);
   const [license, setLicense] = useState<LicenseData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isPix, setIsPix] = useState(false);
+  const [pixQrCode, setPixQrCode] = useState<string | null>(null);
+  const [pixCopyPaste, setPixCopyPaste] = useState<string | null>(null);
+  const [pollingCount, setPollingCount] = useState(0);
   const preferenceId = searchParams.get('preference_id');
   const paymentId = searchParams.get('payment_id');
   const collectionId = searchParams.get('collection_id');
   const status = searchParams.get('status');
+  const paymentType = searchParams.get('payment_type');
 
   useEffect(() => {
     if (preferenceId || paymentId || collectionId) {
@@ -30,12 +35,34 @@ function SucessoContent() {
     }
   }, [preferenceId, paymentId, collectionId]);
 
+  // Polling para PIX
+  useEffect(() => {
+    if (isPix && pollingCount < 120) { // Máximo 10 minutos (120 x 5s)
+      const timer = setTimeout(() => {
+        console.log(`[PIX] Polling ${pollingCount + 1}/120...`);
+        checkPixPayment();
+        setPollingCount(prev => prev + 1);
+      }, 5000); // Verificar a cada 5 segundos
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isPix, pollingCount]);
+
   async function processPaymentReturn() {
     try {
       setLoading(true);
       
       // Primeiro, processar o retorno do pagamento
       const actualPaymentId = paymentId || collectionId;
+      
+      // Detectar se é PIX (pending ou payment_type específico)
+      if ((status === 'pending' || paymentType === 'ticket') && actualPaymentId) {
+        console.log('[PIX] Pagamento PIX detectado, buscando QR Code...');
+        setIsPix(true);
+        await fetchPixData(actualPaymentId);
+        setLoading(false);
+        return;
+      }
       
       if (actualPaymentId && status === 'approved') {
         console.log('[SUCESSO] Processando retorno do pagamento...', {
@@ -109,6 +136,67 @@ function SucessoContent() {
     }
   }
 
+  async function fetchPixData(mpPaymentId: string) {
+    try {
+      console.log('[PIX] Buscando dados do PIX...');
+      
+      const response = await fetch(`/api/pagamento/pix-info?payment_id=${mpPaymentId}`);
+      
+      if (response.ok) {
+        const data = await response.json();
+        console.log('[PIX] Dados recebidos:', data);
+        
+        if (data.qr_code_base64) {
+          setPixQrCode(data.qr_code_base64);
+        }
+        if (data.qr_code) {
+          setPixCopyPaste(data.qr_code);
+        }
+      } else {
+        console.error('[PIX] Erro ao buscar dados do PIX');
+      }
+    } catch (err) {
+      console.error('[PIX] Erro:', err);
+    }
+  }
+
+  async function checkPixPayment() {
+    try {
+      const actualPaymentId = paymentId || collectionId;
+      if (!actualPaymentId) return;
+      
+      const response = await fetch('/api/pagamento/processar-retorno', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          payment_id: actualPaymentId,
+          collection_id: collectionId,
+          preference_id: preferenceId,
+          status: 'check',
+        }),
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        
+        if (data.success && data.license) {
+          console.log('[PIX] Pagamento aprovado! Licença gerada.');
+          setIsPix(false);
+          setLicense(data.license);
+        }
+      }
+    } catch (err) {
+      console.error('[PIX] Erro ao verificar pagamento:', err);
+    }
+  }
+
+  function copyPixCode() {
+    if (pixCopyPaste) {
+      navigator.clipboard.writeText(pixCopyPaste);
+      alert('Código PIX copiado! Cole no seu aplicativo bancário.');
+    }
+  }
+
   function copyLicenseKey() {
     if (license?.license_key) {
       navigator.clipboard.writeText(license.license_key);
@@ -124,6 +212,91 @@ function SucessoContent() {
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-green-600 mx-auto mb-4"></div>
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Processando pagamento...</h1>
             <p className="text-gray-600">Aguarde enquanto verificamos seu pagamento e geramos sua licença.</p>
+          </div>
+        ) : isPix ? (
+          <div className="text-center">
+            <div className="text-6xl mb-4">💳</div>
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">Pagamento PIX Pendente</h1>
+            <p className="text-gray-600 mb-8">Escaneie o QR Code ou copie o código abaixo para pagar</p>
+            
+            {/* QR Code */}
+            {pixQrCode && (
+              <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                <h2 className="text-xl font-semibold text-gray-800 mb-4">Escaneie o QR Code</h2>
+                <img 
+                  src={`data:image/png;base64,${pixQrCode}`} 
+                  alt="QR Code PIX" 
+                  className="mx-auto w-64 h-64 border-4 border-gray-300 rounded-lg"
+                />
+              </div>
+            )}
+            
+            {/* Copy/Paste Code */}
+            {pixCopyPaste && (
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <h2 className="text-lg font-semibold text-blue-900 mb-3">Ou copie o código PIX</h2>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={pixCopyPaste}
+                    readOnly
+                    className="flex-1 bg-white border-2 border-gray-300 rounded-lg px-4 py-3 font-mono text-xs focus:outline-none focus:border-blue-500 overflow-hidden"
+                  />
+                  <button
+                    onClick={copyPixCode}
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors whitespace-nowrap"
+                  >
+                    Copiar
+                  </button>
+                </div>
+              </div>
+            )}
+            
+            {/* Instruções */}
+            <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-5 mb-6">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">⚠️</div>
+                <div className="text-left">
+                  <h3 className="font-bold text-yellow-900 mb-2 text-lg">Como pagar:</h3>
+                  <ol className="text-sm text-yellow-800 space-y-2 list-decimal list-inside">
+                    <li>Abra o aplicativo do seu banco</li>
+                    <li>Escolha a opção PIX</li>
+                    <li>Escaneie o QR Code OU cole o código copiado</li>
+                    <li>Confirme o pagamento</li>
+                    <li><strong>Esta página detectará automaticamente quando você pagar!</strong></li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+            
+            {/* Status de verificação */}
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+              <div className="flex items-center justify-center gap-3">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-green-600"></div>
+                <p className="text-sm text-green-800">
+                  Verificando pagamento automaticamente... ({pollingCount}/120)
+                </p>
+              </div>
+              <p className="text-xs text-green-700 mt-2">
+                Assim que você pagar, sua licença será gerada automaticamente.
+              </p>
+            </div>
+            
+            {/* Botões */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => router.push('/checkout')}
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-6 rounded-lg transition-colors"
+              >
+                Usar Outro Método
+              </button>
+              <button
+                onClick={() => window.location.reload()}
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+              >
+                Já Paguei - Verificar
+              </button>
+            </div>
           </div>
         ) : error ? (
           <div className="text-center">
