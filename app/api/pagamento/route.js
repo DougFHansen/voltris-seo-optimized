@@ -162,13 +162,41 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
     // Payer email: usar o fornecido ou email genérico REAL (não teste)
     const payerEmail = email || 'pagamento@voltris.com.br';
     
+    // Mapear categoria baseada no plano
+    const itemCategories = {
+      trial: 'computing',
+      standard: 'computing',
+      pro: 'computing',
+      enterprise: 'computing'
+    };
+    
+    // Mapear IDs dos itens
+    const itemIds = {
+      trial: 'VOLTRIS-TRIAL-001',
+      standard: 'VOLTRIS-STANDARD-001',
+      pro: 'VOLTRIS-PRO-001',
+      enterprise: 'VOLTRIS-ENTERPRISE-001'
+    };
+    
+    // Separar primeiro nome e sobrenome
+    let firstName = '';
+    let lastName = '';
+    if (fullName) {
+      const nameParts = fullName.trim().split(' ');
+      firstName = nameParts[0] || '';
+      lastName = nameParts.slice(1).join(' ') || nameParts[0] || '';
+    }
+    
     console.log(`[MERCADO PAGO DEBUG] Payer email configurado:`, payerEmail);
     
     // Construir corpo da preferência
     const preferenceBody = {
       items: [
         {
-          title: selectedPlan.title,
+          id: itemIds[plan],  // ✅ OBRIGATÓRIO para qualidade
+          title: selectedPlan.title,  // ✅ Já tinha
+          description: `Licença ${plan} do Voltris Optimizer - Otimizador de PC para gamers com ${selectedPlan.devices} dispositivo(s)`,  // ✅ NOVO
+          category_id: itemCategories[plan],  // ✅ NOVO
           quantity: 1,
           currency_id: 'BRL',
           unit_price: selectedPlan.price,
@@ -183,10 +211,10 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
       notification_url: webhookUrl,
       statement_descriptor: 'VOLTRIS',
       payer: {
-        email: payerEmail,
-        ...(fullName && {
-          name: fullName,
-          surname: '',
+        email: payerEmail,  // ✅ OBRIGATÓRIO
+        ...(firstName && {
+          name: firstName,  // ✅ RECOMENDADO - first_name
+          surname: lastName || firstName,  // ✅ RECOMENDADO - last_name
         }),
         ...(phone && {
           phone: {
