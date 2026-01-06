@@ -83,12 +83,12 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
     
     // Configurar preços e tipos de licença (ALINHADO COM LicenseModels.cs)
     // Fonte da verdade: APLICATIVO VOLTRIS/Services/License/LicenseModels.cs
-    // ⚠️ PREÇOS ALTERADOS PARA R$ 1,00 (TESTES) - VOLTAR VALORES ORIGINAIS APÓS VALIDAÇÃO
+    // ⚠️ PREÇOS ALTERADOS PARA R$ 0,01 (TESTES) - VOLTAR VALORES ORIGINAIS APÓS VALIDAÇÃO
     const planConfig = {
-      trial: { price: 1.00, title: 'Licença Voltris - Trial (7 dias)', months: 0, devices: 1 }, // TESTE: Original 0.01
-      standard: { price: 1.00, title: 'Licença Voltris - Standard (1 ano)', months: 12, devices: 1 }, // TESTE: Original 29.90
-      pro: { price: 1.00, title: 'Licença Voltris - Pro (1 ano)', months: 12, devices: 3 }, // TESTE: Original 59.90
-      enterprise: { price: 1.00, title: 'Licença Voltris - Enterprise (Vitalício)', months: 0, devices: 9999 }, // TESTE: Original 149.90
+      trial: { price: 0.01, title: 'Licença Voltris - Trial (7 dias)', months: 0, devices: 1 }, // TESTE: Original 0.01
+      standard: { price: 0.01, title: 'Licença Voltris - Standard (1 ano)', months: 12, devices: 1 }, // TESTE: Original 29.90
+      pro: { price: 0.01, title: 'Licença Voltris - Pro (1 ano)', months: 12, devices: 3 }, // TESTE: Original 59.90
+      enterprise: { price: 0.01, title: 'Licença Voltris - Enterprise (Vitalício)', months: 0, devices: 9999 }, // TESTE: Original 149.90
     };
     
     const selectedPlan = planConfig[plan];
