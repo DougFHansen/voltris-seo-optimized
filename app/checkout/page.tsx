@@ -41,8 +41,8 @@ const PLANS: Plan[] = [
     code: 'standard',
     name: 'Standard',
     description: 'Para uso pessoal em um único computador',
-    priceMonthly: 0.01, // TESTE: Original 29.90
-    priceDisplay: 'R$ 0,01',
+    priceMonthly: 1.00, // TESTE: Original 29.90 (PIX requer mínimo R$ 0,50)
+    priceDisplay: 'R$ 1,00',
     maxDevices: 1,
     durationMonths: 12, // 1 ano
     features: [
@@ -57,8 +57,8 @@ const PLANS: Plan[] = [
     code: 'pro',
     name: 'Pro',
     description: 'Para entusiastas com múltiplos dispositivos',
-    priceMonthly: 0.01, // TESTE: Original 59.90
-    priceDisplay: 'R$ 0,01',
+    priceMonthly: 1.00, // TESTE: Original 59.90 (PIX requer mínimo R$ 0,50)
+    priceDisplay: 'R$ 1,00',
     maxDevices: 3,
     durationMonths: 12, // 1 ano
     features: [
@@ -76,8 +76,8 @@ const PLANS: Plan[] = [
     code: 'enterprise',
     name: 'Enterprise',
     description: 'Para empresas e gamers profissionais',
-    priceMonthly: 0.01, // TESTE: Original 149.90
-    priceDisplay: 'R$ 0,01',
+    priceMonthly: 1.00, // TESTE: Original 149.90 (PIX requer mínimo R$ 0,50)
+    priceDisplay: 'R$ 1,00',
     maxDevices: 9999, // Ilimitado
     durationMonths: 0, // Vitalício (sem expiração)
     features: [
