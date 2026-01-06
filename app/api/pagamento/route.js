@@ -209,7 +209,7 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
         failure: `${dominio}/falha`,
         pending: `${dominio}/sucesso`  // PIX retorna como pending!
       },
-      auto_return: 'approved',
+      auto_return: 'all',  // Redirecionar automaticamente para approved, pending e in_process
       notification_url: webhookUrl,
       statement_descriptor: 'VOLTRIS',
       payer: {

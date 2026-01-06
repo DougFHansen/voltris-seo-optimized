@@ -80,10 +80,47 @@ export async function POST(request: Request) {
     const signature = headers['x-signature'];
     const requestId = headers['x-request-id'];
     
-    if (signature && process.env.MP_WEBHOOK_SECRET) {
-      // Validar assinatura se configurado
-      // Nota: A validação exata depende da configuração do webhook no painel do Mercado Pago
-      console.log(`[Webhook MP ${webhookId}] Assinatura recebida: ${signature.substring(0, 20)}...`);
+    // Validar assinatura se o webhook secret estiver configurado
+    const webhookSecret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
+    
+    if (webhookSecret && signature && requestId) {
+      try {
+        // Extrair ts e v1 da assinatura
+        // Formato: "ts=1234567890,v1=abc123def456..."
+        const signatureParts = signature.split(',');
+        const ts = signatureParts.find(p => p.startsWith('ts='))?.split('=')[1];
+        const v1 = signatureParts.find(p => p.startsWith('v1='))?.split('=')[1];
+        
+        if (ts && v1) {
+          // Construir string para validação
+          const dataId = body.data?.id || body.id;
+          const manifest = `id:${dataId};request-id:${requestId};ts:${ts};`;
+          
+          // Calcular HMAC-SHA256
+          const crypto = require('crypto');
+          const hmac = crypto.createHmac('sha256', webhookSecret);
+          hmac.update(manifest);
+          const calculatedSignature = hmac.digest('hex');
+          
+          // Comparar assinaturas
+          if (calculatedSignature !== v1) {
+            console.warn(`[MERCADO PAGO DEBUG] ⚠️ ASSINATURA INVÁLIDA!`);
+            console.warn(`[MERCADO PAGO DEBUG] Esperado: ${calculatedSignature}`);
+            console.warn(`[MERCADO PAGO DEBUG] Recebido: ${v1}`);
+            return NextResponse.json({ 
+              error: 'Invalid signature',
+              webhook_id: webhookId,
+            }, { status: 403 });
+          }
+          
+          console.log(`[MERCADO PAGO DEBUG] ✅ Assinatura validada com sucesso`);
+        }
+      } catch (signatureError) {
+        console.error(`[MERCADO PAGO DEBUG] Erro ao validar assinatura:`, signatureError);
+        // Não bloquear se houver erro na validação (para não quebrar webhook)
+      }
+    } else if (webhookSecret && !signature) {
+      console.warn(`[MERCADO PAGO DEBUG] ⚠️ Webhook secret configurado mas assinatura não recebida`);
     }
     
     // Verificar tipo de notificação
