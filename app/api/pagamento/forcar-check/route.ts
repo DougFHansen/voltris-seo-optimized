@@ -37,8 +37,14 @@ export async function GET(request: Request) {
     if (paymentData.status === 'approved') {
       console.log(`[DEBUG] Pagamento APROVADO! Processando...`);
       
+      // Determinar URL do site
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://voltris.com.br';
+      const webhookUrl = `${siteUrl.replace(/\/$/, '')}/api/webhook/mercadopago`;
+      
+      console.log(`[DEBUG] Chamando webhook:`, webhookUrl);
+      
       // Chamar webhook manualmente
-      const webhookResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/webhook/mercadopago`, {
+      const webhookResponse = await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
