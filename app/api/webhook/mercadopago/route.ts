@@ -12,6 +12,20 @@ export const fetchCache = 'force-no-store';
 export const revalidate = 0;
 
 /**
+ * OPTIONS handler para CORS preflight
+ */
+export async function OPTIONS() {
+  return new Response(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, X-Signature, X-Request-Id',
+    },
+  });
+}
+
+/**
  * Webhook do Mercado Pago para processar notificações de pagamento
  * 
  * [MERCADO PAGO DEBUG] Este webhook:
