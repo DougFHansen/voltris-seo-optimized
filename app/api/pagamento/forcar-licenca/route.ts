@@ -54,7 +54,7 @@ export async function POST(request: Request) {
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
     
     // 3. Criar ou atualizar pagamento no banco
-    const preferenceId = (paymentData as any).preference_id;
+    const preferenceId = (paymentData as any).preference_id || `manual-${payment_id}`;
     const email = paymentData.payer?.email || 'pagamento@voltris.com.br';
     
     // Tentar buscar primeiro
