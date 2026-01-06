@@ -76,6 +76,24 @@ export async function POST(request: Request) {
     const type = body.type;
     const dataId = body.data?.id;
     
+    // Detectar notificação de teste do Mercado Pago
+    const isTestNotification = (
+      dataId === '123456' || 
+      body.live_mode === false ||
+      body.id === '123456'
+    );
+    
+    if (isTestNotification) {
+      console.log(`[MERCADO PAGO DEBUG] ✅ Notificação de TESTE detectada - Respondendo OK`);
+      console.log(`[MERCADO PAGO DEBUG] Body de teste:`, body);
+      return NextResponse.json({ 
+        received: true, 
+        message: 'Test notification received successfully',
+        test: true,
+        webhook_id: webhookId,
+      });
+    }
+    
     if (!type || !dataId) {
       console.warn(`[MERCADO PAGO DEBUG] AVISO: Notificação sem tipo ou data_id`);
       console.warn(`[MERCADO PAGO DEBUG] Body recebido:`, body);
