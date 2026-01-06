@@ -1,214 +1,274 @@
 import { NextResponse } from 'next/server';
-import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { MercadoPagoConfig, Payment } from 'mercadopago';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 
 /**
- * API para processar pagamento quando usuário retorna da página de sucesso do MP
- * Usado quando webhook não foi chamado automaticamente
+ * API para processar retorno do Mercado Pago SINCRONAMENTE
+ * 
+ * Esta API é chamada quando o cliente volta do Mercado Pago para /sucesso
+ * Ela busca o pagamento diretamente na API do Mercado Pago e processa imediatamente
+ * Não espera o webhook!
  */
 export async function POST(request: Request) {
-  const processingId = `processing-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+  const requestId = `retorno-${Date.now()}-${Math.random().toString(36).substring(7)}`;
   
-  console.log(`[PAGAMENTO RETORNO] ========== PROCESSANDO RETORNO ${processingId} ==========`);
+  console.log(`[RETORNO MP ${requestId}] ========== PROCESSANDO RETORNO ==========`);
   
   try {
     const body = await request.json();
-    const {
+    const { payment_id, collection_id, preference_id, status } = body;
+    
+    console.log(`[RETORNO MP ${requestId}] Parâmetros recebidos:`, {
       payment_id,
       collection_id,
       preference_id,
       status,
-    } = body;
-
-    const paymentId = payment_id || collection_id;
-
-    console.log(`[PAGAMENTO RETORNO] Dados recebidos:`, {
-      payment_id: paymentId,
-      preference_id,
-      status,
     });
-
-    if (!paymentId) {
+    
+    const actualPaymentId = payment_id || collection_id;
+    
+    if (!actualPaymentId) {
+      console.error(`[RETORNO MP ${requestId}] payment_id ou collection_id ausente`);
       return NextResponse.json(
         { error: 'payment_id ou collection_id é obrigatório' },
         { status: 400 }
       );
     }
-
-    // Conectar ao Supabase com service role
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-    if (!supabaseUrl || !supabaseServiceKey) {
-      console.error('[PAGAMENTO RETORNO] Credenciais Supabase não configuradas');
-      return NextResponse.json(
-        { error: 'Configuração do servidor incompleta' },
-        { status: 500 }
-      );
-    }
-
-    const supabase = createSupabaseClient(supabaseUrl, supabaseServiceKey);
-
-    // Buscar dados completos do pagamento no Mercado Pago
+    
+    // Buscar pagamento no Mercado Pago
     const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN_PROD || process.env.MP_ACCESS_TOKEN;
     if (!accessToken) {
-      console.error('[PAGAMENTO RETORNO] Token Mercado Pago não configurado');
+      console.error(`[RETORNO MP ${requestId}] Token Mercado Pago não configurado`);
       return NextResponse.json(
-        { error: 'Token Mercado Pago não configurado' },
+        { error: 'Configuração inválida do servidor' },
         { status: 500 }
       );
     }
-
-    console.log(`[PAGAMENTO RETORNO] Buscando dados do pagamento no Mercado Pago...`);
-
+    
+    console.log(`[RETORNO MP ${requestId}] Buscando pagamento ${actualPaymentId} no Mercado Pago...`);
+    
     const client = new MercadoPagoConfig({ accessToken });
-    const payment = new Payment(client);
-
-    const paymentData = await payment.get({ id: paymentId });
-
-    console.log(`[PAGAMENTO RETORNO] Dados do pagamento:`, {
+    const paymentAPI = new Payment(client);
+    
+    const paymentData = await paymentAPI.get({ id: actualPaymentId });
+    
+    console.log(`[RETORNO MP ${requestId}] Pagamento encontrado:`, {
       id: paymentData.id,
       status: paymentData.status,
       preference_id: (paymentData as any).preference_id,
       amount: paymentData.transaction_amount,
     });
-
-    // Buscar ou criar pagamento no banco
-    const mpPreferenceId = (paymentData as any).preference_id;
     
-    const { data: existingPayment } = await supabase
+    // Conectar ao Supabase
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    
+    let supabase;
+    if (supabaseServiceKey) {
+      const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
+      supabase = createSupabaseClient(supabaseUrl!, supabaseServiceKey);
+    } else {
+      const { createClient } = await import('@/utils/supabase/server');
+      supabase = await createClient();
+    }
+    
+    const mpPreferenceId = (paymentData as any).preference_id;
+    const mpPaymentId = paymentData.id?.toString();
+    const mpStatus = paymentData.status;
+    
+    // Buscar ou criar pagamento no banco
+    let { data: existingPayment } = await supabase
       .from('payments')
       .select('*')
-      .or(`preference_id.eq.${mpPreferenceId},payment_id.eq.${paymentId}`)
+      .or(`preference_id.eq.${mpPreferenceId},payment_id.eq.${mpPaymentId}`)
       .single();
-
-    let paymentRecord;
-
-    if (existingPayment) {
-      console.log(`[PAGAMENTO RETORNO] Pagamento existente encontrado: ${existingPayment.id}`);
+    
+    console.log(`[RETORNO MP ${requestId}] Pagamento no banco:`, existingPayment ? 'Encontrado' : 'Não encontrado');
+    
+    // Mapear status
+    let paymentStatus: 'pending' | 'approved' | 'rejected' | 'cancelled' | 'refunded' | 'charged_back' = 'pending';
+    
+    if (mpStatus === 'approved' || mpStatus === 'authorized') {
+      paymentStatus = 'approved';
+    } else if (mpStatus === 'rejected') {
+      paymentStatus = 'rejected';
+    } else if (mpStatus === 'cancelled') {
+      paymentStatus = 'cancelled';
+    } else if (mpStatus === 'refunded') {
+      paymentStatus = 'refunded';
+    } else if (mpStatus === 'charged_back') {
+      paymentStatus = 'charged_back';
+    }
+    
+    let dbPayment = existingPayment;
+    
+    if (!existingPayment) {
+      // Criar pagamento no banco
+      console.log(`[RETORNO MP ${requestId}] Criando pagamento no banco...`);
       
-      // Atualizar pagamento existente
-      const { data: updated } = await supabase
-        .from('payments')
-        .update({
-          payment_id: paymentId.toString(),
-          status: paymentData.status === 'approved' ? 'approved' : 'pending',
-          mercado_pago_data: paymentData,
-          processed_at: paymentData.status === 'approved' ? new Date().toISOString() : null,
-        })
-        .eq('id', existingPayment.id)
-        .select()
-        .single();
-
-      paymentRecord = updated;
-      console.log(`[PAGAMENTO RETORNO] Pagamento atualizado`);
-    } else {
-      console.log(`[PAGAMENTO RETORNO] Criando novo registro de pagamento...`);
+      const email = paymentData.payer?.email || 'unknown@example.com';
       
-      // Criar novo pagamento
-      const { data: created } = await supabase
+      const { data: newPayment, error: createError } = await supabase
         .from('payments')
         .insert({
           preference_id: mpPreferenceId,
-          payment_id: paymentId.toString(),
-          email: paymentData.payer?.email || 'unknown@example.com',
-          license_type: 'premium', // Determinar baseado no valor
+          payment_id: mpPaymentId,
+          email: email,
+          license_type: 'pro', // Default, será ajustado
           amount: paymentData.transaction_amount || 0,
           currency: paymentData.currency_id || 'BRL',
-          status: paymentData.status === 'approved' ? 'approved' : 'pending',
+          status: paymentStatus,
           mercado_pago_data: paymentData,
-          processed_at: paymentData.status === 'approved' ? new Date().toISOString() : null,
+          processed_at: paymentStatus === 'approved' ? new Date().toISOString() : null,
         })
         .select()
         .single();
-
-      paymentRecord = created;
-      console.log(`[PAGAMENTO RETORNO] Novo pagamento criado: ${paymentRecord?.id}`);
+      
+      if (createError) {
+        console.error(`[RETORNO MP ${requestId}] Erro ao criar pagamento:`, createError);
+        throw createError;
+      }
+      
+      dbPayment = newPayment;
+      console.log(`[RETORNO MP ${requestId}] Pagamento criado:`, dbPayment?.id);
+    } else {
+      // Atualizar pagamento existente
+      console.log(`[RETORNO MP ${requestId}] Atualizando pagamento ${existingPayment.id}...`);
+      
+      const { error: updateError } = await supabase
+        .from('payments')
+        .update({
+          payment_id: mpPaymentId,
+          status: paymentStatus,
+          mercado_pago_data: paymentData,
+          processed_at: paymentStatus === 'approved' && !existingPayment.processed_at 
+            ? new Date().toISOString() 
+            : existingPayment.processed_at,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', existingPayment.id);
+      
+      if (updateError) {
+        console.error(`[RETORNO MP ${requestId}] Erro ao atualizar pagamento:`, updateError);
+      } else {
+        console.log(`[RETORNO MP ${requestId}] Pagamento atualizado`);
+      }
+      
+      // Recarregar dados atualizados
+      const { data: updatedPayment } = await supabase
+        .from('payments')
+        .select('*')
+        .eq('id', existingPayment.id)
+        .single();
+      
+      dbPayment = updatedPayment || existingPayment;
     }
-
-    // Se aprovado, gerar licença
-    if (paymentData.status === 'approved' && paymentRecord) {
-      console.log(`[PAGAMENTO RETORNO] Pagamento aprovado, verificando licença...`);
+    
+    // Se pagamento foi aprovado, gerar licença
+    if (paymentStatus === 'approved' && dbPayment) {
+      console.log(`[RETORNO MP ${requestId}] Verificando licença existente...`);
       
       // Verificar se já existe licença
       const { data: existingLicense } = await supabase
         .from('licenses')
         .select('*')
-        .eq('payment_id', paymentRecord.id)
+        .eq('payment_id', dbPayment.id)
         .single();
-
+      
       if (existingLicense) {
-        console.log(`[PAGAMENTO RETORNO] Licença já existe: ${existingLicense.id}`);
+        console.log(`[RETORNO MP ${requestId}] Licença já existe:`, existingLicense.id);
         
         return NextResponse.json({
           success: true,
-          payment: paymentRecord,
-          license: existingLicense,
-          message: 'Pagamento já processado anteriormente',
+          payment: {
+            id: dbPayment.id,
+            status: dbPayment.status,
+          },
+          license: {
+            license_key: existingLicense.license_key,
+            license_type: existingLicense.license_type,
+            expires_at: existingLicense.expires_at,
+            max_devices: existingLicense.max_devices,
+          },
         });
       }
-
-      // Gerar nova licença
-      console.log(`[PAGAMENTO RETORNO] Gerando nova licença...`);
       
-      // Determinar tipo e dispositivos baseado no valor
-      let licenseType: 'trial' | 'pro' | 'premium' | 'enterprise' = 'pro';
+      // Gerar licença
+      console.log(`[RETORNO MP ${requestId}] Gerando licença...`);
+      
+      const licenseType = dbPayment.license_type || 'pro';
       let maxDevices = 1;
       
-      const amount = paymentRecord.amount || 0;
-      if (amount >= 149) {
-        licenseType = 'enterprise';
-        maxDevices = 9999;
-      } else if (amount >= 99) {
-        licenseType = 'premium';
-        maxDevices = 3;
-      } else if (amount >= 49) {
-        licenseType = 'pro';
-        maxDevices = 1;
-      } else if (amount < 1) {
-        licenseType = 'trial';
-        maxDevices = 1;
+      switch (licenseType) {
+        case 'trial':
+          maxDevices = 1;
+          break;
+        case 'standard':
+          maxDevices = 1;
+          break;
+        case 'pro':
+          maxDevices = 3;
+          break;
+        case 'enterprise':
+          maxDevices = 9999;
+          break;
       }
       
-      // Calcular data de expiração usando função do banco
+      // Calcular data de expiração
       const { data: expiryResult } = await supabase
         .rpc('calculate_expiry_date', {
           p_plan_code: licenseType,
           p_start_date: new Date().toISOString()
         });
       
-      const expiresAt = expiryResult ? new Date(expiryResult) : (() => {
-        const date = new Date();
-        if (licenseType === 'trial') date.setDate(date.getDate() + 7);
-        else if (licenseType === 'pro') date.setMonth(date.getMonth() + 1);
-        else if (licenseType === 'premium') date.setMonth(date.getMonth() + 3);
-        else if (licenseType === 'enterprise') date.setMonth(date.getMonth() + 6);
-        return date;
-      })();
-
-      const clientId = (paymentRecord.email.split('@')[0].toUpperCase().substring(0, 8) + 
-                       Date.now().toString(36).toUpperCase().substring(0, 4));
-
-      // Tentar gerar chave via função do banco
+      let expiresAt: Date;
+      
+      if (expiryResult) {
+        expiresAt = new Date(expiryResult);
+      } else {
+        // Fallback
+        expiresAt = new Date();
+        if (licenseType === 'trial') {
+          expiresAt.setDate(expiresAt.getDate() + 7);
+        } else if (licenseType === 'standard' || licenseType === 'pro') {
+          expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+        } else if (licenseType === 'enterprise') {
+          expiresAt.setFullYear(expiresAt.getFullYear() + 99);
+        }
+      }
+      
+      // Gerar ID do cliente
+      const clientId = dbPayment.email.split('@')[0].toUpperCase().substring(0, 8) + 
+                       Date.now().toString(36).toUpperCase().substring(0, 4);
+      
+      // Gerar chave de licença
       const { data: licenseKeyResult } = await supabase
         .rpc('generate_license_key', {
           p_client_id: clientId,
           p_valid_until: expiresAt.toISOString().split('T')[0],
           p_plan: licenseType
         });
-
-      const licenseKey = licenseKeyResult || 
-        `VOLTRIS-LIC-${clientId}-${expiresAt.toISOString().split('T')[0].replace(/-/g, '')}-${Date.now().toString(36).toUpperCase().substring(0, 16)}`;
-
+      
+      let licenseKey: string;
+      
+      if (licenseKeyResult) {
+        licenseKey = licenseKeyResult as string;
+      } else {
+        // Fallback
+        const formattedDate = expiresAt.toISOString().split('T')[0].replace(/-/g, '');
+        const randomSuffix = Date.now().toString(36).toUpperCase().substring(0, 16);
+        licenseKey = `VOLTRIS-LIC-${clientId}-${formattedDate}-${randomSuffix}`;
+      }
+      
+      // Criar licença
       const { data: license, error: licenseError } = await supabase
         .from('licenses')
         .insert({
           license_key: licenseKey,
-          payment_id: paymentRecord.id,
-          email: paymentRecord.email,
+          payment_id: dbPayment.id,
+          email: dbPayment.email,
           license_type: licenseType,
           max_devices: maxDevices,
           expires_at: expiresAt.toISOString(),
@@ -217,35 +277,47 @@ export async function POST(request: Request) {
         })
         .select()
         .single();
-
+      
       if (licenseError) {
-        console.error('[PAGAMENTO RETORNO] Erro ao gerar licença:', licenseError);
+        console.error(`[RETORNO MP ${requestId}] Erro ao criar licença:`, licenseError);
         throw licenseError;
       }
-
-      console.log(`[PAGAMENTO RETORNO] Licença gerada com sucesso: ${license.id}`);
-
+      
+      console.log(`[RETORNO MP ${requestId}] Licença gerada com sucesso:`, license.id);
+      
       return NextResponse.json({
         success: true,
-        payment: paymentRecord,
-        license,
-        message: 'Pagamento processado e licença gerada',
+        payment: {
+          id: dbPayment.id,
+          status: dbPayment.status,
+        },
+        license: {
+          license_key: license.license_key,
+          license_type: license.license_type,
+          expires_at: license.expires_at,
+          max_devices: license.max_devices,
+        },
       });
     }
-
+    
+    // Se não foi aprovado, retornar status
     return NextResponse.json({
-      success: true,
-      payment: paymentRecord,
-      message: 'Pagamento processado (aguardando aprovação)',
-    });
-
-  } catch (error: any) {
-    console.error(`[PAGAMENTO RETORNO] Erro:`, error);
-    return NextResponse.json(
-      {
-        error: 'Erro ao processar pagamento',
-        details: error.message,
+      success: false,
+      payment: {
+        id: dbPayment?.id,
+        status: paymentStatus,
       },
+      message: 'Pagamento ainda não foi aprovado',
+    });
+    
+  } catch (error: any) {
+    console.error(`[RETORNO MP ${requestId}] Erro:`, {
+      message: error.message,
+      stack: error.stack,
+    });
+    
+    return NextResponse.json(
+      { error: error.message || 'Erro ao processar retorno' },
       { status: 500 }
     );
   }
