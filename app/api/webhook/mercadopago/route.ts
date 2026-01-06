@@ -5,6 +5,9 @@ import { MercadoPagoConfig, Payment } from 'mercadopago';
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 
+// Permitir GET para testes do Mercado Pago
+export const dynamic = 'force-dynamic';
+
 /**
  * Webhook do Mercado Pago para processar notificações de pagamento
  * 
