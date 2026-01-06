@@ -1,5 +1,7 @@
 /** @type {import('next').Config} */
 const nextConfig = {
+  // Prevenir redirects 307 em webhooks
+  skipTrailingSlashRedirect: true,
   experimental: {
     optimizePackageImports: [
       '@heroicons/react',

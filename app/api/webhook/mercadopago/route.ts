@@ -7,6 +7,9 @@ export const maxDuration = 30;
 
 // Permitir GET para testes do Mercado Pago
 export const dynamic = 'force-dynamic';
+// Prevenir redirect ao acessar com ou sem barra final
+export const fetchCache = 'force-no-store';
+export const revalidate = 0;
 
 /**
  * Webhook do Mercado Pago para processar notificações de pagamento
