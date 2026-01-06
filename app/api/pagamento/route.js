@@ -67,7 +67,7 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
     });
     
     // Validar plano
-    const validPlans = ['trial', 'pro', 'premium', 'enterprise'];
+    const validPlans = ['trial', 'standard', 'pro', 'enterprise']; // Alinhado com LicenseModels.cs
     if (!validPlans.includes(plan)) {
       console.error(`[MERCADO PAGO DEBUG] Plano inválido: ${plan}`);
       throw new Error(`Plano inválido. Use: ${validPlans.join(', ')}`);
@@ -81,12 +81,13 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
     
     console.log(`[MERCADO PAGO DEBUG] Validações OK`);
     
-    // Configurar preços e tipos de licença (VALORES DE PRODUÇÃO)
+    // Configurar preços e tipos de licença (ALINHADO COM LicenseModels.cs)
+    // Fonte da verdade: APLICATIVO VOLTRIS/Services/License/LicenseModels.cs
     const planConfig = {
-      trial: { price: 0.01, title: 'Licença Voltris - Trial (7 dias)', months: 0 },
-      pro: { price: 49.90, title: 'Licença Voltris - Pro (1 mês)', months: 1 },
-      premium: { price: 99.90, title: 'Licença Voltris - Premium (3 meses)', months: 3 },
-      enterprise: { price: 149.90, title: 'Licença Voltris - Enterprise (6 meses)', months: 6 },
+      trial: { price: 0.01, title: 'Licença Voltris - Trial (7 dias)', months: 0, devices: 1 },
+      standard: { price: 29.90, title: 'Licença Voltris - Standard (1 ano)', months: 12, devices: 1 },
+      pro: { price: 59.90, title: 'Licença Voltris - Pro (1 ano)', months: 12, devices: 3 },
+      enterprise: { price: 149.90, title: 'Licença Voltris - Enterprise (Vitalício)', months: 0, devices: 9999 },
     };
     
     const selectedPlan = planConfig[plan];

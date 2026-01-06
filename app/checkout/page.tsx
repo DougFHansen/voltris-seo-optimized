@@ -6,7 +6,7 @@ import { createClient } from '@/utils/supabase/client';
 import { CheckCircle, XCircle, Shield, Zap, TrendingUp, Users } from 'lucide-react';
 
 interface Plan {
-  code: 'trial' | 'pro' | 'premium' | 'enterprise';
+  code: 'trial' | 'standard' | 'pro' | 'enterprise'; // Alinhado com LicenseModels.cs
   name: string;
   description: string;
   priceMonthly: number;
@@ -18,15 +18,17 @@ interface Plan {
   highlight?: string;
 }
 
+// ⚠️ FONTE DA VERDADE: LicenseModels.cs (Services/License)
+// Alinhado com: App.xaml, API /pagamento, LicenseGenerator
 const PLANS: Plan[] = [
   {
     code: 'trial',
     name: 'Trial',
     description: 'Teste gratuito por 7 dias',
-    priceMonthly: 0.01,
+    priceMonthly: 0.01, // Valor simbólico MP (sem cobrança nos 7 dias)
     priceDisplay: 'Grátis',
     maxDevices: 1,
-    durationMonths: 0,
+    durationMonths: 0, // 7 dias de trial
     features: [
       'Todas as funcionalidades básicas',
       '1 dispositivo',
@@ -36,34 +38,33 @@ const PLANS: Plan[] = [
     highlight: 'Experimente grátis por 7 dias',
   },
   {
-    code: 'pro',
-    name: 'Pro',
-    description: 'Ideal para uso pessoal',
-    priceMonthly: 49.90,
-    priceDisplay: 'R$ 49,90',
+    code: 'standard',
+    name: 'Standard',
+    description: 'Para uso pessoal em um único computador',
+    priceMonthly: 29.90,
+    priceDisplay: 'R$ 29,90',
     maxDevices: 1,
-    durationMonths: 1,
+    durationMonths: 12, // 1 ano
     features: [
       'Todas as funcionalidades',
       '1 dispositivo',
-      'Renovação mensal',
-      'Suporte prioritário',
-      'Modo Gamer avançado',
-      'Otimizações de rede',
+      'Atualizações por 1 ano',
+      'Suporte por email',
+      'Modo Gamer básico',
     ],
   },
   {
-    code: 'premium',
-    name: 'Premium',
-    description: 'Para múltiplos dispositivos',
-    priceMonthly: 99.90,
-    priceDisplay: 'R$ 99,90',
+    code: 'pro',
+    name: 'Pro',
+    description: 'Para entusiastas com múltiplos dispositivos',
+    priceMonthly: 59.90,
+    priceDisplay: 'R$ 59,90',
     maxDevices: 3,
-    durationMonths: 3,
+    durationMonths: 12, // 1 ano
     features: [
       'Todas as funcionalidades',
       '3 dispositivos',
-      'Renovação a cada 3 meses',
+      'Atualizações por 1 ano',
       'Suporte prioritário',
       'Modo Gamer avançado',
       'Otimizações de rede',
@@ -74,15 +75,15 @@ const PLANS: Plan[] = [
   {
     code: 'enterprise',
     name: 'Enterprise',
-    description: 'Uso ilimitado para empresas',
+    description: 'Para empresas e gamers profissionais',
     priceMonthly: 149.90,
     priceDisplay: 'R$ 149,90',
-    maxDevices: 9999,
-    durationMonths: 6,
+    maxDevices: 9999, // Ilimitado
+    durationMonths: 0, // Vitalício (sem expiração)
     features: [
       'Todas as funcionalidades',
       'Dispositivos ILIMITADOS',
-      'Renovação a cada 6 meses',
+      'Atualizações vitalícias',
       'Suporte 24/7',
       'Todas as otimizações',
       'API de integração',
