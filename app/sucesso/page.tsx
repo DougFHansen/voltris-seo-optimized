@@ -197,6 +197,21 @@ function SucessoContent() {
               </p>
             </div>
             
+            <div className="bg-yellow-50 border-2 border-yellow-300 rounded-lg p-5 mb-6">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">⚠️</div>
+                <div className="text-left">
+                  <h3 className="font-bold text-yellow-900 mb-2 text-lg">NÃO PERCA ESTA LICENÇA!</h3>
+                  <ul className="text-sm text-yellow-800 space-y-1">
+                    <li>✅ <strong>Anote</strong> ou salve a chave em um lugar seguro</li>
+                    <li>✅ <strong>Em até 10 minutos</strong>, você também receberá a licença no email cadastrado</li>
+                    <li>✅ <strong>Guarde este email</strong> para futuras reinstalações do programa</li>
+                    <li>✅ Use a licença no <strong>Voltris Optimizer</strong> para ativar todas as funcionalidades</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
             <div className="flex gap-4 justify-center">
               <button
                 onClick={() => window.close()}

@@ -41,8 +41,8 @@ const PLANS: Plan[] = [
     code: 'standard',
     name: 'Standard',
     description: 'Para uso pessoal em um único computador',
-    priceMonthly: 29.90,
-    priceDisplay: 'R$ 29,90',
+    priceMonthly: 1.00, // TESTE: Original 29.90
+    priceDisplay: 'R$ 1,00',
     maxDevices: 1,
     durationMonths: 12, // 1 ano
     features: [
@@ -57,8 +57,8 @@ const PLANS: Plan[] = [
     code: 'pro',
     name: 'Pro',
     description: 'Para entusiastas com múltiplos dispositivos',
-    priceMonthly: 59.90,
-    priceDisplay: 'R$ 59,90',
+    priceMonthly: 1.00, // TESTE: Original 59.90
+    priceDisplay: 'R$ 1,00',
     maxDevices: 3,
     durationMonths: 12, // 1 ano
     features: [
@@ -76,8 +76,8 @@ const PLANS: Plan[] = [
     code: 'enterprise',
     name: 'Enterprise',
     description: 'Para empresas e gamers profissionais',
-    priceMonthly: 149.90,
-    priceDisplay: 'R$ 149,90',
+    priceMonthly: 1.00, // TESTE: Original 149.90
+    priceDisplay: 'R$ 1,00',
     maxDevices: 9999, // Ilimitado
     durationMonths: 0, // Vitalício (sem expiração)
     features: [
@@ -282,6 +282,17 @@ export default function CheckoutPage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#8B31FF] focus:border-transparent text-gray-900"
                   placeholder="seu@email.com"
                 />
+                <div className="mt-2 bg-amber-50 border-l-4 border-amber-400 p-3 rounded">
+                  <div className="flex items-start gap-2">
+                    <div className="text-amber-600 font-bold text-lg mt-0.5">⚠️</div>
+                    <div>
+                      <p className="text-sm font-semibold text-amber-900">IMPORTANTE: Use um email válido!</p>
+                      <p className="text-xs text-amber-800 mt-1">
+                        Sua <strong>licença será enviada para este email</strong>. Certifique-se de que é um endereço real e que você tem acesso.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Full Name */}

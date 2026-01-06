@@ -285,28 +285,28 @@ async function generateLicenseForPayment(
       return;
     }
     
-    // Determinar tipo de licença e validade baseado no valor
-    let licenseType: 'trial' | 'pro' | 'premium' | 'enterprise' = 'pro';
+    // Determinar tipo de licença e validade baseado no plano salvo no banco
+    // Priorizar license_type do banco (salvo na API /pagamento)
+    let licenseType: 'trial' | 'standard' | 'pro' | 'enterprise' = payment.license_type || 'pro';
     let maxDevices = 1;
     
-    const amount = payment.amount || 0;
-    
-    // Determinar plano baseado no valor
-    if (amount >= 149) {
-      licenseType = 'enterprise';
-      maxDevices = 9999; // Ilimitado
-    } else if (amount >= 99) {
-      licenseType = 'premium';
-      maxDevices = 3;
-    } else if (amount >= 49) {
-      licenseType = 'pro';
-      maxDevices = 1;
-    } else if (amount < 1) {
-      licenseType = 'trial';
-      maxDevices = 1;
+    // Mapear limites de dispositivos conforme o plano
+    switch (licenseType) {
+      case 'trial':
+        maxDevices = 1;
+        break;
+      case 'standard':
+        maxDevices = 1;
+        break;
+      case 'pro':
+        maxDevices = 3;
+        break;
+      case 'enterprise':
+        maxDevices = 9999; // Ilimitado
+        break;
     }
     
-    console.log(`[Webhook MP] Plano determinado:`, { amount, licenseType, maxDevices });
+    console.log(`[Webhook MP] Plano determinado do banco:`, { licenseType, maxDevices });
     
     // Calcular data de expiração usando função do banco
     const { data: expiryResult, error: expiryError } = await supabase
@@ -323,12 +323,12 @@ async function generateLicenseForPayment(
       expiresAt = new Date();
       if (licenseType === 'trial') {
         expiresAt.setDate(expiresAt.getDate() + 7); // 7 dias
+      } else if (licenseType === 'standard') {
+        expiresAt.setFullYear(expiresAt.getFullYear() + 1); // 1 ano
       } else if (licenseType === 'pro') {
-        expiresAt.setMonth(expiresAt.getMonth() + 1); // 1 mês
-      } else if (licenseType === 'premium') {
-        expiresAt.setMonth(expiresAt.getMonth() + 3); // 3 meses
+        expiresAt.setFullYear(expiresAt.getFullYear() + 1); // 1 ano
       } else if (licenseType === 'enterprise') {
-        expiresAt.setMonth(expiresAt.getMonth() + 6); // 6 meses
+        expiresAt.setFullYear(expiresAt.getFullYear() + 99); // Vitalício (99 anos)
       }
     } else {
       expiresAt = new Date(expiryResult);
