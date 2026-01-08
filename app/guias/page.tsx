@@ -97,6 +97,191 @@ const guides = [
     readTime: '11 min',
     difficulty: 'Básico',
     href: '/guias/limpeza-computador'
+  },
+  // Novos guias de segurança
+  {
+    id: 'firewall-configuracao',
+    title: 'Configuração Profissional de Firewall',
+    description: 'Aprenda a configurar firewall do Windows para proteger seu computador contra ameaças cibernéticas e acessos não autorizados.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '25 min',
+    difficulty: 'Intermediário',
+    href: '/guias/firewall-configuracao'
+  },
+  {
+    id: 'vpn-configuracao',
+    title: 'Configuração Completa de VPN',
+    description: 'Proteja sua privacidade online e acesse conteúdo restrito com configuração profissional de VPN para Windows.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '30 min',
+    difficulty: 'Intermediário',
+    href: '/guias/vpn-configuracao'
+  },
+  {
+    id: 'criptografia-dados',
+    title: 'Criptografia de Dados Pessoais',
+    description: 'Aprenda a criptografar seus dados sensíveis para proteção máxima contra vazamentos e acessos não autorizados.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '35 min',
+    difficulty: 'Avançado',
+    href: '/guias/criptografia-dados'
+  },
+  {
+    id: 'protecao-ransomware',
+    title: 'Proteção contra Ransomware',
+    description: 'Estratégias completas para proteger seu sistema contra ransomware, incluindo prevenção, detecção e recuperação.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '40 min',
+    difficulty: 'Avançado',
+    href: '/guias/protecao-ransomware'
+  },
+  {
+    id: 'autenticacao-dois-fatores',
+    title: 'Autenticação de Dois Fatores (2FA)',
+    description: 'Implemente autenticação de dois fatores em todas as suas contas para segurança máxima e proteção contra roubo de senhas.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '20 min',
+    difficulty: 'Intermediário',
+    href: '/guias/autenticacao-dois-fatores'
+  },
+  // Novos guias de hardware
+  {
+    id: 'upgrade-memoria-ram',
+    title: 'Upgrade de Memória RAM',
+    description: 'Aprenda a identificar, comprar e instalar memória RAM compatível com seu computador para maximizar performance.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '25 min',
+    difficulty: 'Intermediário',
+    href: '/guias/upgrade-memoria-ram'
+  },
+  {
+    id: 'substituicao-ssd',
+    title: 'Substituição de SSD/HDD',
+    description: 'Troque seu disco rígido por SSD para velocidade máxima. Transferência de sistema, clonagem e otimização.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '45 min',
+    difficulty: 'Avançado',
+    href: '/guias/substituicao-ssd'
+  },
+  {
+    id: 'overclock-processador',
+    title: 'Overclock Seguro de Processador',
+    description: 'Extraia mais performance do seu CPU com overclock profissional. Monitoramento de temperatura e estabilidade.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '50 min',
+    difficulty: 'Avançado',
+    href: '/guias/overclock-processador'
+  },
+  {
+    id: 'diagnostico-hardware',
+    title: 'Diagnóstico de Falhas de Hardware',
+    description: 'Identifique problemas de componentes físicos com ferramentas especializadas. Testes de memória, disco e placa-mãe.',
+    icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '35 min',
+    difficulty: 'Avançado',
+    href: '/guias/diagnostico-hardware'
+  },
+  // Novos guias de software
+  {
+    id: 'virtualizacao-vmware',
+    title: 'Virtualização com VMware/VirtualBox',
+    description: 'Crie máquinas virtuais para testes, desenvolvimento e isolamento de sistemas. Configuração profissional.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Software',
+    readTime: '40 min',
+    difficulty: 'Intermediário',
+    href: '/guias/virtualizacao-vmware'
+  },
+  {
+    id: 'automacao-tarefas',
+    title: 'Automação de Tarefas com Scripts',
+    description: 'Automatize tarefas repetitivas do Windows com PowerShell, Batch e ferramentas de agendamento.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Software',
+    readTime: '30 min',
+    difficulty: 'Intermediário',
+    href: '/guias/automacao-tarefas'
+  },
+  {
+    id: 'gestao-pacotes',
+    title: 'Gestão de Pacotes e Dependências',
+    description: 'Gerencie bibliotecas, frameworks e dependências de software com npm, pip, chocolatey e outras ferramentas.',
+    icon: <DocumentTextIcon className="w-8 h-8" />,
+    category: 'Software',
+    readTime: '25 min',
+    difficulty: 'Intermediário',
+    href: '/guias/gestao-pacotes'
+  },
+  // Novos guias de redes
+  {
+    id: 'rede-domestica',
+    title: 'Configuração de Rede Doméstica',
+    description: 'Configure roteadores, extensores Wi-Fi, VLANs e segurança de rede residencial. Otimização de cobertura.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Redes',
+    readTime: '35 min',
+    difficulty: 'Intermediário',
+    href: '/guias/rede-domestica'
+  },
+  {
+    id: 'troubleshooting-internet',
+    title: 'Diagnóstico de Problemas de Internet',
+    description: 'Diagnostique e resolva problemas de conexão, velocidade lenta e instabilidade de internet com ferramentas profissionais.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Redes',
+    readTime: '28 min',
+    difficulty: 'Intermediário',
+    href: '/guias/troubleshooting-internet'
+  },
+  {
+    id: 'compartilhamento-impressoras',
+    title: 'Compartilhamento de Impressoras',
+    description: 'Configure impressoras em rede, compartilhe dispositivos entre múltiplos computadores e gerencie filas de impressão.',
+    icon: <DocumentTextIcon className="w-8 h-8" />,
+    category: 'Redes',
+    readTime: '22 min',
+    difficulty: 'Básico',
+    href: '/guias/compartilhamento-impressoras'
+  },
+  // Novos guias de manutenção avançada
+  {
+    id: 'recuperacao-sistema',
+    title: 'Recuperação do Sistema Windows',
+    description: 'Recupere seu sistema Windows após falhas, corrupção ou problemas graves com métodos profissionais.',
+    icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+    category: 'Manutenção',
+    readTime: '45 min',
+    difficulty: 'Avançado',
+    href: '/guias/recuperacao-sistema'
+  },
+  {
+    id: 'otimizacao-registro',
+    title: 'Otimização do Registro do Windows',
+    description: 'Limpe e otimize o registro do Windows para melhor performance. Técnicas seguras de manutenção preventiva.',
+    icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+    category: 'Manutenção',
+    readTime: '30 min',
+    difficulty: 'Intermediário',
+    href: '/guias/otimizacao-registro'
+  },
+  {
+    id: 'gestao-servicos',
+    title: 'Gestão de Serviços do Sistema',
+    description: 'Configure, otimize e monitore serviços do Windows para melhor performance e segurança do sistema.',
+    icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+    category: 'Manutenção',
+    readTime: '28 min',
+    difficulty: 'Intermediário',
+    href: '/guias/gestao-servicos'
   }
 ];
 
@@ -109,7 +294,10 @@ const categories = [
   'Manutenção',
   'Troubleshooting',
   'Drivers',
-  'Limpeza'
+  'Limpeza',
+  'Hardware',
+  'Software',
+  'Redes'
 ];
 
 export default function GuiasPage() {
