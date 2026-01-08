@@ -442,33 +442,6 @@ export default function InternationalServicesOptimized() {
                 A confiança em serviços de TI online depende da credibilidade da empresa. A VOLTRIS possui anos de 
                 experiência no mercado brasileiro, equipe certificada internacionalmente, utiliza ferramentas de acesso 
                 remoto de padrão empresarial com criptografia de ponta a ponta, e mantém política transparente de 
-                privacidade de dados. Além disso, oferecemos garantia de satisfação e suporte pós-atendimento.
-              </p>
-            </div>
-            
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
-              <h3 className="text-xl font-bold text-white mb-3">
-                Qual a diferença entre suporte técnico local e remoto internacional?
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                O suporte técnico remoto internacional oferece vantagens significativas: acesso a profissionais 
-                especializados independentemente da sua localização geográfica, atendimento em português com 
-                compreensão cultural das necessidades brasileiras no exterior, preços geralmente mais competitivos 
-                que empresas locais, e a conveniência de resolver problemas sem sair de casa. A VOLTRIS combina 
-                a qualidade do atendimento local com a praticidade do suporte remoto.
-              </p>
-            </div>
-            
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
-              <h3 className="text-xl font-bold text-white mb-3">
-                Como é feita a segurança dos meus dados durante o atendimento remoto?
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                Implementamos múltiplas camadas de segurança: todas as conexões utilizam criptografia SSL/TLS de 256 bits, 
-                requerem autenticação de dois fatores, são registradas em logs de auditoria, e nossos técnicos 
-                seguem rigorosos protocolos de privacidade. Além disso, você mantém controle total durante todo 
-                o processo, podendo encerrar a sessão a qualquer momento. Garantimos conformidade com as melhores 
-                práticas de segurança da informação internacionais.
               </p>
             </div>
           </div>
