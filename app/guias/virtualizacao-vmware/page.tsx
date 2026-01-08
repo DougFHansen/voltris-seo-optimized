@@ -12,28 +12,32 @@ export default function VirtualizacaovmwareGuide() {
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">Este guia apresenta uma abordagem completa e profissional para dominar guia completo de virtualização com vmware/virtualbox. 
-        Com práticas recomendadas e técnicas avançadas, você estará equipado para lidar com desafios complexos nesta área.</p>
+        <p class="mb-4">A virtualização com VMware permite criar máquinas virtuais completas em seu computador físico, possibilitando executar múltiplos sistemas operacionais simultaneamente sem afetar o sistema host.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria significativa de performance</li>
-              <li>✓ Redução de problemas técnicos</li>
-              <li>✓ Maior segurança do sistema</li>
-              <li>✓ Otimização de recursos</li>
+              <li>✓ Isolamento completo de ambientes de trabalho</li>
+              <li>✓ Testes de software em ambientes seguros</li>
+              <li>✓ Execução de sistemas legados em hardware moderno</li>
+              <li>✓ Economia de recursos físicos e energia</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento básico de informática</li>
-              <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 60 minutos</li>
-              <li>📚 Nível: Intermediário</li>
+              <li>💻 Processador com suporte a VT-x/AMD-V (Virtualização)</li>
+              <li>🧠 8GB+ RAM (recomendado 16GB+) para múltiplas VMs</li>
+              <li>⏱️ Tempo estimado: 60-120 minutos (instalação completa)</li>
+              <li>💾 Espaço em disco: 20GB+ por máquina virtual</li>
             </ul>
           </div>
+        </div>
+        
+        <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4 my-6">
+          <h3 class="text-purple-400 font-semibold mb-2">💡 Dica Profissional</h3>
+          <p class="text-gray-300 text-sm">Habilite a virtualização na BIOS/UEFI para melhor desempenho das máquinas virtuais.</p>
         </div>
       `,
       subsections: [

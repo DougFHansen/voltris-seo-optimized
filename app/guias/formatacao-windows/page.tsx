@@ -12,27 +12,32 @@ export default function FormatacaoWindowsGuide() {
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">${title} é uma técnica essencial para profissionais de TI. Este guia apresenta uma abordagem completa e profissional para dominar esta área de especialização.</p>
+        <p class="mb-4">A formatação do Windows é o processo de reinstalação limpa do sistema operacional, eliminando todos os dados, programas e configurações do disco rígido e instalando uma cópia fresh do sistema operacional.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria significativa de performance</li>
-              <li>✓ Redução de problemas técnicos</li>
-              <li>✓ Maior segurança do sistema</li>
-              <li>✓ Otimização de recursos</li>
+              <li>✓ Eliminação completa de vírus e malware</li>
+              <li>✓ Remoção de arquivos temporários e lixo do sistema</li>
+              <li>✓ Resolução de problemas de desempenho crônicos</li>
+              <li>✓ Retorno à performance original do sistema</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento básico de informática</li>
-              <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 45 minutos</li>
-              <li>📚 Nível: Intermediário</li>
+              <li>💾 Mídia de instalação do Windows (USB ou DVD)</li>
+              <li>☁️ Backup de todos os dados importantes</li>
+              <li>⏱️ Tempo estimado: 60-120 minutos</li>
+              <li>📥 Chaves de produto/licenças dos softwares principais</li>
             </ul>
           </div>
+        </div>
+        
+        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 my-6">
+          <h3 class="text-yellow-400 font-semibold mb-2">⚠️ Aviso Importante</h3>
+          <p class="text-gray-300 text-sm">A formatação apaga todos os dados do disco onde o Windows está instalado. Faça backup de todos os arquivos importantes antes de prosseguir.</p>
         </div>
       `,
       subsections: [
@@ -40,10 +45,10 @@ export default function FormatacaoWindowsGuide() {
           subtitle: "Quando Aplicar Esta Técnica",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Quando enfrentar problemas de performance</li>
-              <li>Para prevenção de falhas futuras</li>
-              <li>Durante manutenção preventiva</li>
-              <li>Ao configurar novos sistemas</li>
+              <li>Quando o sistema operacional está muito lento ou instável</li>
+              <li>Para eliminar vírus ou malware persistentes</li>
+              <li>Durante a reinstalação limpa após problemas graves</li>
+              <li>Antes de vender ou transferir o computador para outra pessoa</li>
             </ul>
           `
         }
@@ -52,30 +57,30 @@ export default function FormatacaoWindowsGuide() {
     {
       title: "Configuração Passo a Passo",
       content: `
-        <p class="mb-4">Siga estas etapas metodológicas para implementação completa e segura.</p>
+        <p class="mb-4">Siga estas etapas para formatar e reinstalar o Windows.</p>
       `,
       subsections: [
         {
-          subtitle: "Preparação Inicial",
+          subtitle: "Preparação para Formatação",
           content: `
             <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Faça backup completo do sistema</li>
-              <li>Verifique requisitos mínimos de hardware/software</li>
-              <li>Baixe ferramentas necessárias de fontes confiáveis</li>
-              <li>Crie ponto de restauração do sistema</li>
-              <li>Feche todos os programas em execução</li>
+              <li>Faça backup completo de todos os dados importantes</li>
+              <li>Anote chaves de licença de softwares e do Windows</li>
+              <li>Baixe a ferramenta de criação de mídia do Windows da Microsoft</li>
+              <li>Crie uma mídia de instalação (USB ou DVD) com o instalador</li>
+              <li>Desative o BitLocker e outros criptogramas se estiverem ativos</li>
             </ol>
           `
         },
         {
-          subtitle: "Execução Principal",
+          subtitle: "Instalação Limpa",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Siga instruções específicas do guia</li>
-              <li>Monitore sistema durante processo</li>
-              <li>Documente cada etapa realizada</li>
-              <li>Teste funcionalidade após conclusão</li>
-              <li>Verifique logs de eventuais erros</li>
+              <li>Inicie o computador pela mídia de instalação criada</li>
+              <li>Siga o assistente de instalação do Windows</li>
+              <li>Selecione a opção de formatação personalizada</li>
+              <li>Formate o disco onde estava instalado o Windows anterior</li>
+              <li>Após a instalação, configure as configurações básicas</li>
             </ul>
           `
         }
@@ -84,7 +89,7 @@ export default function FormatacaoWindowsGuide() {
     {
       title: "Ferramentas e Recursos Recomendados",
       content: `
-        <p class="mb-4">Utilize estas ferramentas profissionais para melhores resultados.</p>
+        <p class="mb-4">Ferramentas especializadas para formatação e reinstalação do Windows.</p>
       `,
       subsections: [
         {
@@ -94,17 +99,17 @@ export default function FormatacaoWindowsGuide() {
               <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
                 <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
                 <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas nativas do Windows</li>
-                  <li>Software open source recomendado</li>
-                  <li>Utilitários de diagnóstico básicos</li>
+                  <li>Criador de mídia do Windows - para criar USB de instalação</li>
+                  <li>Recuperação do Windows - para ferramentas de recuperação</li>
+                  <li>Driver Easy Free - para backup de drivers</li>
                 </ul>
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
                 <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
                 <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas profissionais especializadas</li>
-                  <li>Licenças corporativas quando necessário</li>
-                  <li>Suporte técnico especializado</li>
+                  <li>Norton Ghost - para cópias de imagem do sistema</li>
+                  <li>Acronis True Image - para backup e restauração completos</li>
+                  <li>WinRAR ou 7-Zip Pro - para manipulação de arquivos</li>
                 </ul>
               </div>
             </div>
@@ -114,10 +119,10 @@ export default function FormatacaoWindowsGuide() {
           subtitle: "Práticas de Segurança",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Sempre verifique integridade de downloads</li>
-              <li>Use apenas fontes oficiais e confiáveis</li>
-              <li>Mantenha antivírus atualizado durante processo</li>
-              <li>Faça testes em ambiente controlado primeiro</li>
+              <li>Verifique a autenticidade da mídia de instalação para evitar malware</li>
+              <li>Armazene chaves de licença em local seguro antes da formatação</li>
+              <li>Evite reinstalar softwares de fontes não confiáveis após formatação</li>
+              <li>Configure firewall e antivírus imediatamente após a reinstalação</li>
             </ul>
           `
         }
@@ -126,19 +131,28 @@ export default function FormatacaoWindowsGuide() {
     {
       title: "Troubleshooting e Solução de Problemas",
       content: `
-        <p class="mb-4">Soluções para problemas comuns que podem surgir durante a implementação.</p>
+        <p class="mb-4">Soluções para problemas comuns durante a formatação e reinstalação do Windows.</p>
       `,
       subsections: [
         {
           subtitle: "Erros Frequentes e Soluções",
           content: `
             <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: [Descrição do problema comum]</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Etapas detalhadas para resolução</p>
+              <h4 class="text-white font-semibold mb-2">Problema: Computador não inicia pela mídia de instalação</h4>
+              <p class="text-gray-300 text-sm mb-2">Solução: Verifique configurações de boot na BIOS/UEFI</p>
               <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Etapa 1 de resolução</li>
-                <li>Etapa 2 de resolução</li>
-                <li>Etapa 3 de resolução</li>
+                <li>Acesse a BIOS/UEFI durante a inicialização (normalmente com F2, F12 ou Del)</li>
+                <li>Altere a ordem de boot para iniciar pelo dispositivo USB/CD/DVD primeiro</li>
+                <li>Desative o Secure Boot temporariamente se necessário</li>
+              </ul>
+            </div>
+            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
+              <h4 class="text-white font-semibold mb-2">Problema: Drivers não funcionam corretamente após reinstalação</h4>
+              <p class="text-gray-300 text-sm mb-2">Solução: Instale os drivers corretos para seu hardware</p>
+              <ul class="text-gray-300 text-xs space-y-1 ml-4">
+                <li>Visite o site do fabricante do seu computador/hardware</li>
+                <li>Baixe os drivers específicos para seu modelo e versão do Windows</li>
+                <li>Instale os drivers de chipset, vídeo e rede primeiro</li>
               </ul>
             </div>
           `
@@ -147,10 +161,10 @@ export default function FormatacaoWindowsGuide() {
           subtitle: "Prevenção de Problemas Futuros",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Implemente monitoramento contínuo</li>
-              <li>Realize manutenção preventiva regular</li>
-              <li>Mantenha sistema sempre atualizado</li>
-              <li>Documente configurações e mudanças</li>
+              <li>Crie uma imagem de sistema após uma instalação limpa e configuração completa</li>
+              <li>Mantenha uma lista de softwares essenciais para reinstalação rápida</li>
+              <li>Configure backups automáticos regulares após a reinstalação</li>
+              <li>Documente as configurações personalizadas para fácil reimplementação</li>
             </ul>
           `
         }

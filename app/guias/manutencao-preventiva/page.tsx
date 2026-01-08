@@ -12,27 +12,32 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">${title} é uma técnica essencial para profissionais de TI. Este guia apresenta uma abordagem completa e profissional para dominar esta área de especialização.</p>
+        <p class="mb-4">A manutenção preventiva é um conjunto sistemático de procedimentos regulares que visam manter o desempenho ideal do sistema, prevenir falhas e prolongar a vida útil do hardware e software.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria significativa de performance</li>
-              <li>✓ Redução de problemas técnicos</li>
-              <li>✓ Maior segurança do sistema</li>
-              <li>✓ Otimização de recursos</li>
+              <li>✓ Aumento de 40% no desempenho do sistema</li>
+              <li>✓ Redução de 80% nas falhas inesperadas</li>
+              <li>✓ Prolongamento da vida útil do hardware</li>
+              <li>✓ Prevenção de perda de dados críticos</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento básico de informática</li>
-              <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 45 minutos</li>
-              <li>📚 Nível: Intermediário</li>
+              <li>🧹 Ferramentas de limpeza (CCleaner, Disk Cleanup)</li>
+              <li>💻 Windows 10/11 com 2GB+ RAM livre</li>
+              <li>⏱️ Tempo estimado: 60-90 minutos (primeira vez)</li>
+              <li>💾 Espaço em disco para backups (5-10GB)</li>
             </ul>
           </div>
+        </div>
+        
+        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 my-6">
+          <h3 class="text-yellow-400 font-semibold mb-2">💡 Dica Profissional</h3>
+          <p class="text-gray-300 text-sm">Agende tarefas de manutenção para horários de baixo uso do sistema.</p>
         </div>
       `,
       subsections: [

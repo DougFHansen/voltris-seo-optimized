@@ -12,28 +12,32 @@ export default function SubstituicaossdGuide() {
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">Este guia apresenta uma abordagem completa e profissional para dominar guia completo de substituição de ssd/hdd. 
-        Com práticas recomendadas e técnicas avançadas, você estará equipado para lidar com desafios complexos nesta área.</p>
+        <p class="mb-4">A substituição de SSD/HDD é um procedimento que envolve trocar o armazenamento antigo por um novo disco, seja para upgrade de performance, aumento de capacidade ou substituição de hardware com falhas.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria significativa de performance</li>
-              <li>✓ Redução de problemas técnicos</li>
-              <li>✓ Maior segurança do sistema</li>
-              <li>✓ Otimização de recursos</li>
+              <li>✓ Aumento de 5x a 10x na velocidade de inicialização</li>
+              <li>✓ Redução de 90% no tempo de carregamento de aplicativos</li>
+              <li>✓ Melhor desempenho geral do sistema</li>
+              <li>✓ Maior confiabilidade e durabilidade do armazenamento</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento básico de informática</li>
-              <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 90 minutos</li>
-              <li>📚 Nível: Intermediário</li>
+              <li>🔧 Chaves Phillips #0 e #1 para abertura do computador</li>
+              <li>💡 Novo SSD (SATA ou NVMe PCIe) compatível com seu sistema</li>
+              <li>⏱️ Tempo estimado: 60-90 minutos</li>
+              <li>💾 Software de clonagem (Macrium Reflect, Acronis, etc.)</li>
             </ul>
           </div>
+        </div>
+        
+        <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 my-6">
+          <h3 class="text-blue-400 font-semibold mb-2">💡 Dica Profissional</h3>
+          <p class="text-gray-300 text-sm">Use SSD NVMe PCIe para desempenho máximo, mas SSD SATA ainda oferece excelente melhoria em relação a HDDs tradicionais.</p>
         </div>
       `,
       subsections: [

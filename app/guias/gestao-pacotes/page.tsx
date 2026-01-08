@@ -12,28 +12,32 @@ export default function GestaopacotesGuide() {
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">Este guia apresenta uma abordagem completa e profissional para dominar guia completo de gestão de pacotes e dependências. 
-        Com práticas recomendadas e técnicas avançadas, você estará equipado para lidar com desafios complexos nesta área.</p>
+        <p class="mb-4">A gestão de pacotes é o processo sistemático de instalar, atualizar, configurar e remover software em sistemas Windows, garantindo compatibilidade, segurança e desempenho otimizado dos aplicativos.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria significativa de performance</li>
-              <li>✓ Redução de problemas técnicos</li>
-              <li>✓ Maior segurança do sistema</li>
-              <li>✓ Otimização de recursos</li>
+              <li>✓ Evita conflitos entre versões de software</li>
+              <li>✓ Automatiza atualizações de segurança</li>
+              <li>✓ Simplifica processos de implantação empresarial</li>
+              <li>✓ Reduz tempo de manutenção em 70%</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento básico de informática</li>
-              <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 50 minutos</li>
-              <li>📚 Nível: Iniciante</li>
+              <li>📦 Chocolatey, Scoop ou winget instalado</li>
+              <li>💻 Windows 10/11 com PowerShell 5.1+</li>
+              <li>⏱️ Tempo estimado: 45-75 minutos</li>
+              <li>🔑 Permissões de administrador no sistema</li>
             </ul>
           </div>
+        </div>
+        
+        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4 my-6">
+          <h3 class="text-green-400 font-semibold mb-2">✅ Dica Essencial</h3>
+          <p class="text-gray-300 text-sm">Use ambientes virtuais para testar pacotes antes de instalar em produção.</p>
         </div>
       `,
       subsections: [
@@ -41,10 +45,10 @@ export default function GestaopacotesGuide() {
           subtitle: "Quando Aplicar Esta Técnica",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Quando enfrentar problemas de performance</li>
-              <li>Para prevenção de falhas futuras</li>
-              <li>Durante manutenção preventiva</li>
-              <li>Ao configurar novos sistemas</li>
+              <li>Quando for necessário instalar múltiplos softwares de forma automatizada</li>
+              <li>Para padronizar a instalação de pacotes em vários computadores</li>
+              <li>Durante a configuração de ambientes de desenvolvimento</li>
+              <li>Ao implementar políticas de software em ambientes corporativos</li>
             </ul>
           `
         }
@@ -53,30 +57,30 @@ export default function GestaopacotesGuide() {
     {
       title: "Configuração Passo a Passo",
       content: `
-        <p class="mb-4">Siga estas etapas metodológicas para implementação completa e segura.</p>
+        <p class="mb-4">Siga estas etapas para gerenciar pacotes de software no Windows.</p>
       `,
       subsections: [
         {
-          subtitle: "Preparação Inicial",
+          subtitle: "Configuração do Gerenciador de Pacotes",
           content: `
             <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Faça backup completo do sistema</li>
-              <li>Verifique requisitos mínimos de hardware/software</li>
-              <li>Baixe ferramentas necessárias de fontes confiáveis</li>
-              <li>Crie ponto de restauração do sistema</li>
-              <li>Feche todos os programas em execução</li>
+              <li>Instale um gerenciador de pacotes como Chocolatey, Scoop ou winget</li>
+              <li>Configure repositórios adicionais se necessário</li>
+              <li>Crie uma lista de pacotes essenciais para sua necessidade</li>
+              <li>Teste a instalação de alguns pacotes para verificar funcionamento</li>
+              <li>Documente os pacotes instalados e suas versões</li>
             </ol>
           `
         },
         {
-          subtitle: "Execução Principal",
+          subtitle: "Instalação e Atualização de Pacotes",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Siga instruções específicas do guia</li>
-              <li>Monitore sistema durante processo</li>
-              <li>Documente cada etapa realizada</li>
-              <li>Teste funcionalidade após conclusão</li>
-              <li>Verifique logs de eventuais erros</li>
+              <li>Use comandos para instalar múltiplos pacotes de uma vez</li>
+              <li>Configure atualizações automáticas periódicas</li>
+              <li>Verifique dependências e compatibilidades entre pacotes</li>
+              <li>Monitore logs de instalação para detectar erros</li>
+              <li>Mantenha um registro das versões instaladas</li>
             </ul>
           `
         }
@@ -85,7 +89,7 @@ export default function GestaopacotesGuide() {
     {
       title: "Ferramentas e Recursos Recomendados",
       content: `
-        <p class="mb-4">Utilize estas ferramentas profissionais para melhores resultados.</p>
+        <p class="mb-4">Ferramentas especializadas para gerenciamento de pacotes no Windows.</p>
       `,
       subsections: [
         {
@@ -95,17 +99,17 @@ export default function GestaopacotesGuide() {
               <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
                 <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
                 <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas nativas do Windows</li>
-                  <li>Software open source recomendado</li>
-                  <li>Utilitários de diagnóstico básicos</li>
+                  <li>Chocolatey - gerenciador de pacotes popular para Windows</li>
+                  <li>Scoop - alternativa leve e moderna ao Chocolatey</li>
+                  <li>winget - gerenciador nativo do Windows Package Manager</li>
                 </ul>
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
                 <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
                 <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas profissionais especializadas</li>
-                  <li>Licenças corporativas quando necessário</li>
-                  <li>Suporte técnico especializado</li>
+                  <li>System Center Configuration Manager (SCCM)</li>
+                  <li>PDQ Deploy - para implantação em larga escala</li>
+                  <li>ManageEngine Desktop Central - solução corporativa completa</li>
                 </ul>
               </div>
             </div>
@@ -115,10 +119,10 @@ export default function GestaopacotesGuide() {
           subtitle: "Práticas de Segurança",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Sempre verifique integridade de downloads</li>
-              <li>Use apenas fontes oficiais e confiáveis</li>
-              <li>Mantenha antivírus atualizado durante processo</li>
-              <li>Faça testes em ambiente controlado primeiro</li>
+              <li>Verifique assinaturas digitais dos pacotes antes da instalação</li>
+              <li>Use repositórios oficiais e confiáveis apenas</li>
+              <li>Mantenha logs detalhados de todas as instalações</li>
+              <li>Teste pacotes em ambiente isolado antes de implantação em massa</li>
             </ul>
           `
         }
@@ -127,19 +131,28 @@ export default function GestaopacotesGuide() {
     {
       title: "Troubleshooting e Solução de Problemas",
       content: `
-        <p class="mb-4">Soluções para problemas comuns que podem surgir durante a implementação.</p>
+        <p class="mb-4">Soluções para problemas comuns no gerenciamento de pacotes.</p>
       `,
       subsections: [
         {
           subtitle: "Erros Frequentes e Soluções",
           content: `
             <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: [Descrição do problema comum]</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Etapas detalhadas para resolução</p>
+              <h4 class="text-white font-semibold mb-2">Problema: Pacote não encontrado no repositório</h4>
+              <p class="text-gray-300 text-sm mb-2">Solução: Verifique nome correto e disponibilidade do pacote</p>
               <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Etapa 1 de resolução</li>
-                <li>Etapa 2 de resolução</li>
-                <li>Etapa 3 de resolução</li>
+                <li>Procure pelo pacote usando o comando de busca do gerenciador</li>
+                <li>Verifique se o repositório está corretamente configurado</li>
+                <li>Confirme se o pacote existe para a arquitetura do seu sistema</li>
+              </ul>
+            </div>
+            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
+              <h4 class="text-white font-semibold mb-2">Problema: Dependências conflitantes entre pacotes</h4>
+              <p class="text-gray-300 text-sm mb-2">Solução: Resolva conflitos de dependências manualmente</p>
+              <ul class="text-gray-300 text-xs space-y-1 ml-4">
+                <li>Identifique quais pacotes estão causando o conflito</li>
+                <li>Instale pacotes em ordem específica para evitar dependências</li>
+                <li>Considere usar ambientes isolados para pacotes problemáticos</li>
               </ul>
             </div>
           `
@@ -148,10 +161,10 @@ export default function GestaopacotesGuide() {
           subtitle: "Prevenção de Problemas Futuros",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Implemente monitoramento contínuo</li>
-              <li>Realize manutenção preventiva regular</li>
-              <li>Mantenha sistema sempre atualizado</li>
-              <li>Documente configurações e mudanças</li>
+              <li>Mantenha uma lista atualizada de pacotes aprovados e testados</li>
+              <li>Implemente controle de versão para pacotes críticos</li>
+              <li>Planeje atualizações durante janelas de manutenção programadas</li>
+              <li>Documente procedimentos de rollback para reversão de atualizações problemáticas</li>
             </ul>
           `
         }

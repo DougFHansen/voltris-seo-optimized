@@ -12,28 +12,32 @@ export default function TroubleshootinginternetGuide() {
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">Este guia apresenta uma abordagem completa e profissional para dominar guia completo de troubleshooting de internet. 
-        Com práticas recomendadas e técnicas avançadas, você estará equipado para lidar com desafios complexos nesta área.</p>
+        <p class="mb-4">O troubleshooting de internet envolve diagnosticar e resolver problemas de conectividade, como lentidão, desconexões frequentes, DNS não resolvendo, ou impossibilidade de acessar certos sites/serviços.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria significativa de performance</li>
-              <li>✓ Redução de problemas técnicos</li>
-              <li>✓ Maior segurança do sistema</li>
-              <li>✓ Otimização de recursos</li>
+              <li>✓ Identificação precisa da causa raiz do problema</li>
+              <li>✓ Resolução eficiente de problemas de conectividade</li>
+              <li>✓ Otimização da velocidade e estabilidade da conexão</li>
+              <li>✓ Melhoria na experiência de navegação</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento básico de informática</li>
-              <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 55 minutos</li>
-              <li>📚 Nível: Intermediário</li>
+              <li>🌐 Acesso físico ao modem/roteador</li>
+              <li>💻 Computador com Windows PowerShell ou CMD</li>
+              <li>⏱️ Tempo estimado: 30-60 minutos</li>
+              <li>📞 Informações do provedor de internet (ISP)</li>
             </ul>
           </div>
+        </div>
+        
+        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4 my-6">
+          <h3 class="text-green-400 font-semibold mb-2">💡 Dica Profissional</h3>
+          <p class="text-gray-300 text-sm">Sempre comece o troubleshooting verificando conexão física antes de tentar soluções complexas.</p>
         </div>
       `,
       subsections: [

@@ -135,9 +135,9 @@ export function GuideTemplate({
             <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#31A8FF]/20 shadow-lg">
               <h2 className="text-3xl font-bold text-white mb-4">Conclusão</h2>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Este guia apresentou uma abordagem completa e profissional para dominar {title.toLowerCase()}. 
-                Com as práticas recomendadas e técnicas avançadas descritas, você está equipado para 
-                lidar com desafios complexos nesta área de especialização.
+                Este guia apresentou informações técnicas detalhadas sobre {title.toLowerCase()}, 
+                com procedimentos práticos, melhores práticas e soluções específicas para 
+                os desafios comuns encontrados nesta área de especialização.
               </p>
               <p className="text-gray-300 leading-relaxed mb-4">
                 Lembre-se de que a tecnologia evolui constantemente, então mantenha-se atualizado 

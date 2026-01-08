@@ -12,28 +12,32 @@ export default function OverclockprocessadorGuide() {
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">Este guia apresenta uma abordagem completa e profissional para dominar guia completo de overclock seguro de processador. 
-        Com práticas recomendadas e técnicas avançadas, você estará equipado para lidar com desafios complexos nesta área.</p>
+        <p class="mb-4">O overclock de processador é o processo de aumentar a frequência de operação do CPU acima das especificações de fábrica para obter maior desempenho, ajustando multiplicadores e tensões dentro de limites seguros.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria significativa de performance</li>
-              <li>✓ Redução de problemas técnicos</li>
-              <li>✓ Maior segurança do sistema</li>
-              <li>✓ Otimização de recursos</li>
+              <li>✓ Aumento de 10-30% no desempenho do CPU</li>
+              <li>✓ Melhoria em tarefas intensivas (jogos, renderização)</li>
+              <li>✓ Aproveitamento máximo do hardware existente</li>
+              <li>✓ Melhor custo/benefício em vez de upgrade</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento básico de informática</li>
-              <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 75 minutos</li>
-              <li>📚 Nível: Avançado</li>
+              <li>Sistema de refrigeração robusto (refrigerador aftermarket)</li>
+              <li>⚡ Fonte de alimentação com capacidade extra (+300W recomendado)</li>
+              <li>⏱️ Tempo estimado: 60-120 minutos (testes incluídos)</li>
+              <li>📊 Software de benchmark (Prime95, AIDA64, Cinebench)</li>
             </ul>
           </div>
+        </div>
+        
+        <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-4 my-6">
+          <h3 class="text-red-400 font-semibold mb-2">⚠️ Aviso Importante</h3>
+          <p class="text-gray-300 text-sm">Overclock pode anular garantia e danificar componentes. Prossiga com cautela e monitore temperaturas constantemente.</p>
         </div>
       `,
       subsections: [
