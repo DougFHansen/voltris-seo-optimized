@@ -4,70 +4,134 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useState } from 'react';
-import { FiGlobe, FiUsers, FiClock, FiShield, FiDatabase, FiMonitor, FiCloud, FiBarChart2, FiPhone, FiMail } from 'react-icons/fi';
+import { FiGlobe, FiUsers, FiClock, FiShield, FiDatabase, FiMonitor, FiCloud, FiBarChart2, FiPhone, FiMail, FiTrendingUp, FiPackage } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const internationalServices = [
   {
-    id: "suporte-tecnico",
-    title: "Suporte Técnico Remoto Global",
-    description: "Atendimento especializado em português para resolver problemas técnicos de computadores, notebooks, celulares e outros dispositivos, independentemente do país onde você estiver.",
-    icon: <FiGlobe className="text-5xl text-purple-400" />,
+    id: "formatacao",
+    title: "Formatação Remota Internacional",
+    description: "Formatação completa do seu computador com instalação de programas essenciais, drivers e configurações otimizadas para uso no exterior.",
+    icon: <FiDatabase className="text-5xl text-purple-400" />,
     features: [
-      "Atendimento 24/7 com horários flexíveis",
-      "Suporte em português por profissionais brasileiros",
-      "Resolução remota de problemas em qualquer dispositivo",
-      "Suporte para Windows, macOS, Linux, iOS e Android",
-      "Diagnóstico e correção de erros do sistema",
-      "Otimização de performance e velocidade"
+      "Formatação Básica - Sistema + Drivers essenciais",
+      "Formatação Média - Sistema + Drivers + Programas básicos",
+      "Formatação Avançada - Sistema completo + Office + Software especializado",
+      "Configuração para trabalho remoto internacional",
+      "Instalação de softwares regionais",
+      "Backup prévio dos seus dados"
     ],
-    price: "A partir de €29,90 / $32,90",
+    price: "€99,90 / $109,90",
     currency: "EUR/USD"
   },
   {
-    id: "criacao-sites",
-    title: "Criação de Sites Multilíngues",
-    description: "Desenvolvimento de websites profissionais com suporte a múltiplos idiomas, otimizados para mercados internacionais e integração com sistemas de pagamento globais.",
-    icon: <FiMonitor className="text-5xl text-blue-400" />,
+    id: "otimizacao-pc",
+    title: "Otimização de PC para Performance",
+    description: "Otimização completa do seu computador para máxima performance, especialmente útil para gamers e profissionais que exigem alta performance.",
+    icon: <FiTrendingUp className="text-5xl text-blue-400" />,
     features: [
-      "Sites responsivos para todos os dispositivos",
-      "Suporte a múltiplos idiomas (português, inglês, espanhol)",
-      "Integração com gateways de pagamento internacionais",
-      "Otimização para motores de busca globais",
-      "Hospedagem em servidores internacionais",
-      "Manutenção e atualizações contínuas"
+      "Otimização Básica - Limpeza e ajustes simples",
+      "Otimização Média - Limpeza + otimização de performance",
+      "Otimização Avançada - Limpeza completa + performance máxima",
+      "Otimização para jogos e streaming",
+      "Configuração de recursos do sistema",
+      "Relatório detalhado de melhorias"
     ],
-    price: "A partir de €297,90 / $327,90",
+    price: "€79,90 / $87,90",
     currency: "EUR/USD"
   },
   {
-    id: "migracao-dados",
-    title: "Migração de Dados Internacional",
-    description: "Transferência segura de seus dados entre países, sincronização em nuvem e backup automatizado com redundância global para garantir acesso contínuo às suas informações.",
-    icon: <FiDatabase className="text-5xl text-green-400" />,
+    id: "correcao-erros",
+    title: "Correção de Erros no Windows/Mac",
+    description: "Solução rápida de problemas e erros no sistema operacional, crashes, inicialização e outros problemas técnicos.",
+    icon: <FiShield className="text-5xl text-green-400" />,
     features: [
-      "Transferência segura de grandes volumes de dados",
-      "Sincronização automática em tempo real",
-      "Backup com redundância em múltiplos data centers",
-      "Recuperação de dados em caso de perda",
-      "Compatibilidade com serviços em nuvem internacionais",
-      "Criptografia de ponta a ponta"
+      "Correção de erros do sistema",
+      "Reparo de arquivos corrompidos",
+      "Solução de problemas de inicialização",
+      "Recuperação de sistema",
+      "Diagnóstico completo remoto",
+      "Garantia de resolução"
     ],
-    price: "€89,90 / $99,90",
+    price: "€49,90 / $54,90",
+    currency: "EUR/USD"
+  },
+  {
+    id: "remocao-virus",
+    title: "Remoção de Vírus e Malware",
+    description: "Remoção completa de vírus, malware, spyware e outros programas maliciosos que comprometem a segurança do seu dispositivo.",
+    icon: <FiShield className="text-5xl text-red-400" />,
+    features: [
+      "Varredura completa do sistema",
+      "Remoção de vírus e malware",
+      "Limpeza de arquivos infectados",
+      "Instalação de antivírus premium",
+      "Configuração de proteção contínua",
+      "Relatório de ameaças eliminadas"
+    ],
+    price: "€39,90 / $43,90",
+    currency: "EUR/USD"
+  },
+  {
+    id: "erros-jogos",
+    title: "Correção de Erros em Jogos",
+    description: "Especialistas em resolver problemas em jogos populares como GTA, CS2, Cyberpunk, Valorant, League of Legends e outros títulos internacionais.",
+    icon: <FiMonitor className="text-5xl text-yellow-400" />,
+    features: [
+      "Correção GTA V/6 - Erros de inicialização e crashes",
+      "Correção CS2 - Problemas de VAC e conectividade",
+      "Correção Cyberpunk - Bugs e problemas de performance",
+      "Correção Valorant - Problemas de Vanguard e rede",
+      "Correção League of Legends - Erros de cliente",
+      "Suporte para outros jogos populares"
+    ],
+    price: "€49,90 / $54,90",
+    currency: "EUR/USD"
+  },
+  {
+    id: "instalacao-programas",
+    title: "Instalação de Programas e Softwares",
+    description: "Instalação e configuração remota de programas essenciais, softwares especializados e ferramentas de produtividade para uso internacional.",
+    icon: <FiPackage className="text-5xl text-indigo-400" />,
+    features: [
+      "Programas Básicos - Instalação de softwares essenciais",
+      "Pacote Office - Instalação do Microsoft Office completo",
+      "Programas Específicos - Softwares especializados por área",
+      "Configuração regional - Ajustes para país de residência",
+      "Licenciamento - Ajuda com ativação de softwares",
+      "Treinamento básico de uso"
+    ],
+    price: "€29,90 / $32,90",
+    currency: "EUR/USD"
+  },
+  {
+    id: "recuperacao-dados",
+    title: "Recuperação de Dados Perdidos",
+    description: "Recuperação especializada de arquivos, documentos, fotos e dados importantes perdidos devido a formatação, danos em HDs ou exclusão acidental.",
+    icon: <FiDatabase className="text-5xl text-orange-400" />,
+    features: [
+      "Recuperação de Arquivos - Arquivos deletados acidentalmente",
+      "Recuperação de HDs - HDs com bad sectors ou danos físicos",
+      "Recuperação de Mídias - Pendrives e cartões de memória",
+      "Recuperação de Sistemas - Sistemas operacionais danificados",
+      "Análise gratuita inicial",
+      "Taxa de sucesso de 95%+"
+    ],
+    price: "€99,90 / $109,90",
     currency: "EUR/USD"
   },
   {
     id: "configuracao-redes",
-    title: "Configuração de Redes Globais",
-    description: "Otimização de conexões internacionais, configuração de VPN, segurança de redes e conectividade com serviços brasileiros acessados do exterior.",
-    icon: <FiCloud className="text-5xl text-yellow-400" />,
+    title: "Configuração de Redes e Internet",
+    description: "Otimização de conexões de internet, configuração de redes Wi-Fi, segurança de roteadores e conectividade com serviços brasileiros do exterior.",
+    icon: <FiGlobe className="text-5xl text-teal-400" />,
     features: [
+      "Configuração de roteadores e Wi-Fi",
+      "Otimização de velocidade de internet",
+      "Segurança avançada de redes",
       "Configuração de VPN para acesso seguro",
-      "Otimização de velocidade de internet internacional",
-      "Segurança avançada de redes domésticas",
-      "Conectividade com serviços brasileiros do exterior",
-      "Configuração de roteadores e equipamentos de rede",
-      "Monitoramento e manutenção de conectividade"
+      "Conectividade com serviços brasileiros",
+      "Monitoramento de performance"
     ],
     price: "€69,90 / $76,90",
     currency: "EUR/USD"
@@ -75,15 +139,15 @@ const internationalServices = [
   {
     id: "suporte-nuvem",
     title: "Suporte a Serviços em Nuvem",
-    description: "Assistência especializada com Google Workspace, Microsoft 365, AWS, Azure e outros serviços em nuvem utilizados por brasileiros no exterior para trabalho e negócios.",
-    icon: <FiCloud className="text-5xl text-indigo-400" />,
+    description: "Assistência especializada com Google Workspace, Microsoft 365, Dropbox, iCloud e outros serviços em nuvem utilizados internacionalmente.",
+    icon: <FiCloud className="text-5xl text-cyan-400" />,
     features: [
-      "Configuração de Google Workspace e Microsoft 365",
+      "Configuração Google Workspace/Microsoft 365",
       "Gerenciamento de contas e permissões",
-      "Migração de dados para ambientes em nuvem",
+      "Migração de dados para ambientes cloud",
+      "Backup automatizado em nuvem",
       "Treinamento em ferramentas colaborativas",
-      "Suporte a AWS, Azure e outras plataformas",
-      "Backup e recuperação em ambientes cloud"
+      "Suporte a múltiplas plataformas"
     ],
     price: "€49,90 / $54,90",
     currency: "EUR/USD"
@@ -91,13 +155,13 @@ const internationalServices = [
   {
     id: "consultoria",
     title: "Consultoria de TI Internacional",
-    description: "Planejamento estratégico de tecnologia para brasileiros que trabalham remotamente ou possuem negócios internacionais, com soluções adaptadas ao ambiente global.",
-    icon: <FiBarChart2 className="text-5xl text-red-400" />,
+    description: "Planejamento estratégico de tecnologia para brasileiros que trabalham remotamente ou possuem negócios internacionais.",
+    icon: <FiBarChart2 className="text-5xl text-pink-400" />,
     features: [
       "Planejamento de infraestrutura tecnológica",
       "Análise de soluções para trabalho remoto",
       "Consultoria para negócios internacionais",
-      "Seleção de ferramentas e plataformas adequadas",
+      "Seleção de ferramentas e plataformas",
       "Treinamento personalizado para equipes",
       "Suporte estratégico contínuo"
     ],
@@ -181,14 +245,14 @@ export default function InternationalServices() {
                       <div className="flex gap-3">
                         <Link 
                           href={`/exterior/servicos/${service.id}`}
-                          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 hover:shadow-lg"
+                          className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium py-1.5 px-4 rounded-lg transition-all duration-300 hover:shadow-lg text-sm"
                         >
                           Saiba Mais
                         </Link>
                         
                         <Link 
                           href="/exterior/contato"
-                          className="border border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-medium py-2 px-6 rounded-lg transition-all duration-300"
+                          className="border border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-medium py-1.5 px-4 rounded-lg transition-all duration-300 text-sm"
                         >
                           Contratar
                         </Link>
