@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FiBarChart2, FiUser, FiMail, FiPhone, FiMessageSquare, FiClock, FiCheckCircle, FiAward, FiGlobe, FiShield, FiTrendingUp } from 'react-icons/fi';
-import { motion } from 'framer-motion';
 
 // SEO Metadata otimizado para orçamento internacional
 export const metadata: Metadata = {
@@ -66,50 +65,6 @@ export const metadata: Metadata = {
 };
 
 export default function OrcamentoExteriorPage() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    telefone: '',
-    pais: '',
-    servico: '',
-    descricao: '',
-    nivelUrgencia: 'normal'
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simular envio do formulário
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form após 5 segundos
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        nome: '',
-        email: '',
-        telefone: '',
-        pais: '',
-        servico: '',
-        descricao: '',
-        nivelUrgencia: 'normal'
-      });
-    }, 5000);
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313] header-spacing">
@@ -161,164 +116,32 @@ export default function OrcamentoExteriorPage() {
               Solicite seu Orçamento Personalizado
             </h2>
             
-            {isSubmitted ? (
-              <div className="text-center py-12">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-green-500/20 rounded-full mb-6">
-                  <FiCheckCircle className="text-4xl text-green-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Orçamento Solicitado com Sucesso!</h3>
-                <p className="text-gray-400 mb-6">
-                  Recebemos sua solicitação e nossa equipe entrará em contato em até 24 horas úteis 
-                  com um orçamento personalizado para suas necessidades.
+            <div className="text-center">
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8 border border-gray-700">
+                <h3 className="text-2xl font-bold text-white mb-6">Solicite seu Orçamento Personalizado</h3>
+                <p className="text-gray-400 mb-8">
+                  Entre em contato conosco através dos canais abaixo para receber um orçamento personalizado:
                 </p>
-                <Link 
-                  href="/exterior"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-all duration-300"
-                >
-                  <FiGlobe className="text-lg" />
-                  Voltar para Home
-                </Link>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="nome" className="block text-sm font-medium text-gray-300 mb-2">
-                      Nome Completo *
-                    </label>
-                    <input
-                      type="text"
-                      id="nome"
-                      name="nome"
-                      value={formData.nome}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                      placeholder="Seu nome completo"
-                    />
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
+                    <FiMail className="text-purple-400 text-2xl mb-3 mx-auto" />
+                    <h4 className="text-white font-semibold mb-2">Email</h4>
+                    <p className="text-gray-400">orcamento@voltris.com.br</p>
                   </div>
                   
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                      placeholder="seu.email@exemplo.com"
-                    />
+                  <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
+                    <FiPhone className="text-blue-400 text-2xl mb-3 mx-auto" />
+                    <h4 className="text-white font-semibold mb-2">WhatsApp</h4>
+                    <p className="text-gray-400">+55 11 99671-6235</p>
                   </div>
-                  
-                  <div>
-                    <label htmlFor="telefone" className="block text-sm font-medium text-gray-300 mb-2">
-                      Telefone/WhatsApp *
-                    </label>
-                    <input
-                      type="tel"
-                      id="telefone"
-                      name="telefone"
-                      value={formData.telefone}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                      placeholder="+55 (11) 99999-9999"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="pais" className="block text-sm font-medium text-gray-300 mb-2">
-                      País de Residência *
-                    </label>
-                    <select
-                      id="pais"
-                      name="pais"
-                      value={formData.pais}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                    >
-                      <option value="">Selecione seu país</option>
-                      <option value="estados-unidos">Estados Unidos</option>
-                      <option value="portugal">Portugal</option>
-                      <option value="espanha">Espanha</option>
-                      <option value="canada">Canadá</option>
-                      <option value="alemanha">Alemanha</option>
-                      <option value="italia">Itália</option>
-                      <option value="franca">França</option>
-                      <option value="reino-unido">Reino Unido</option>
-                      <option value="australia">Austrália</option>
-                      <option value="outro">Outro país</option>
-                    </select>
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="servico" className="block text-sm font-medium text-gray-300 mb-2">
-                    Serviço Desejado *
-                  </label>
-                  <select
-                    id="servico"
-                    name="servico"
-                    value={formData.servico}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Selecione o serviço</option>
-                    <option value="formatacao">Formatação Remota Internacional</option>
-                    <option value="otimizacao">Otimização de PC para Performance</option>
-                    <option value="suporte-tecnico">Suporte Técnico Online Especializado</option>
-                    <option value="configuracao-sistema">Configuração de Sistema para Trabalho e Games</option>
-                    <option value="seguranca">Configuração de Segurança e VPN</option>
-                    <option value="cloud">Suporte a Serviços em Nuvem</option>
-                    <option value="consultoria">Consultoria de TI Internacional</option>
-                    <option value="multiplos">Múltiplos Serviços</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="nivelUrgencia" className="block text-sm font-medium text-gray-300 mb-2">
-                    Nível de Urgência
-                  </label>
-                  <select
-                    id="nivelUrgencia"
-                    name="nivelUrgencia"
-                    value={formData.nivelUrgencia}
-                    onChange={handleChange}
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="baixa">Baixa - Prazo maior</option>
-                    <option value="normal">Normal - Prazo padrão</option>
-                    <option value="urgente">Urgente - Necessário rápido</option>
-                    <option value="critico">Crítico - Problema imediato</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label htmlFor="descricao" className="block text-sm font-medium text-gray-300 mb-2">
-                    Descreva suas necessidades (opcional)
-                  </label>
-                  <textarea
-                    id="descricao"
-                    name="descricao"
-                    value={formData.descricao}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300 resize-none"
-                    placeholder="Conte-nos mais detalhes sobre o que você precisa, problemas específicos, equipamentos envolvidos, etc..."
-                  ></textarea>
                 </div>
                 
                 <div className="bg-gray-700/50 rounded-xl p-6 border border-gray-600">
-                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                  <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
                     <FiTrendingUp className="text-purple-400" />
                     Condições Especiais para Expatriados
-                  </h3>
+                  </h4>
                   <ul className="space-y-2 text-gray-300 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-green-400 mt-1">✓</span>
@@ -338,26 +161,8 @@ export default function OrcamentoExteriorPage() {
                     </li>
                   </ul>
                 </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 text-lg disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-                      Processando...
-                    </>
-                  ) : (
-                    <>
-                      <FiBarChart2 className="text-xl" />
-                      Solicitar Orçamento Grátis
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -402,11 +207,8 @@ export default function OrcamentoExteriorPage() {
                 description: "Descontos e benefícios exclusivos para clientes internacionais"
               }
             ].map((benefit, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-purple-500/30 transition-all duration-300"
               >
                 <div className="mb-4">
@@ -414,7 +216,7 @@ export default function OrcamentoExteriorPage() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
                 <p className="text-gray-400 leading-relaxed">{benefit.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

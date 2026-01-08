@@ -4,7 +4,6 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { FiGlobe, FiUsers, FiClock, FiShield, FiDatabase, FiMonitor, FiCloud, FiBarChart2, FiPhone, FiMail, FiTrendingUp, FiPackage, FiCheckCircle, FiAward, FiLock } from 'react-icons/fi';
-import { motion } from 'framer-motion';
 
 // SEO Metadata otimizado
 export const metadata: Metadata = {
@@ -225,11 +224,8 @@ export default function InternationalServicesOptimized() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {optimizedServices.map((service, index) => (
-              <motion.div
+              <div
                 key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 hover:border-purple-500/50 transition-all duration-300 hover:transform hover:-translate-y-2"
               >
                 <div className="flex flex-col md:flex-row gap-6">
@@ -305,7 +301,7 @@ export default function InternationalServicesOptimized() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
