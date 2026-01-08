@@ -370,9 +370,9 @@ export default function GuiasPage() {
                 >
                   <Link href={guide.href}>
                     <div className="group bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 rounded-2xl border border-[#8B31FF]/10 hover:border-[#FF4B6B]/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(139,49,255,0.1)] h-full flex flex-col cursor-pointer">
-                      {/* Compact Centered Professional Category Header */}
+                      {/* Vertically Centered Professional Category Header */}
                       <div className="mb-4">
-                        <div className="relative bg-gradient-to-r from-[#8B31FF]/20 via-[#31A8FF]/15 to-[#FF4B6B]/20 backdrop-blur-sm border border-[#8B31FF]/30 rounded-xl py-2 px-4 shadow-md hover:shadow-[#8B31FF]/25 hover:border-[#31A8FF]/40 transition-all duration-300 group-hover:scale-105">
+                        <div className="relative bg-gradient-to-r from-[#8B31FF]/20 via-[#31A8FF]/15 to-[#FF4B6B]/20 backdrop-blur-sm border border-[#8B31FF]/30 rounded-xl py-2 px-4 shadow-md hover:shadow-[#8B31FF]/25 hover:border-[#31A8FF]/40 transition-all duration-300 group-hover:scale-105 h-16 flex items-center justify-center">
                           <div className="text-center">
                             <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] w-5 h-5 mx-auto">
                               {guide.icon}
