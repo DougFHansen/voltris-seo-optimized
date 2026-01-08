@@ -21,6 +21,9 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PlatformTarget>x86</PlatformTarget>
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
+    <!-- Configuração moderna de DPI Awareness -->
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     <DefaultItemExcludes>$(DefaultItemExcludes);**\obj\**;**\bin\**;LicenseGenerator\**</DefaultItemExcludes>
@@ -83,16 +86,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Images\voltris.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\favicon.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="Images\voltris.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\favicon.ico" />
   </ItemGroup>
+
 
   <ItemGroup>
     <Compile Remove="Backend\**" />

@@ -30,6 +30,7 @@ namespace LicenseGenerator
             }
 
             Console.WriteLine("=== Gerador de Licenças Voltris Optimizer ===");
+            Console.WriteLine("Alinhado com: LicenseModels.cs, checkout/page.tsx, API /pagamento");
             Console.WriteLine();
 
             try
@@ -44,6 +45,44 @@ namespace LicenseGenerator
                     Console.ReadKey();
                     return;
                 }
+                
+                // Solicitar plano
+                Console.WriteLine();
+                Console.WriteLine("Planos disponíveis:");
+                Console.WriteLine("  1 - Trial (7 dias, 1 dispositivo)");
+                Console.WriteLine("  2 - Standard (R$ 29,90, 1 dispositivo)");
+                Console.WriteLine("  3 - Pro (R$ 59,90, 3 dispositivos)");
+                Console.WriteLine("  4 - Enterprise (R$ 149,90, ilimitado)");
+                Console.Write("Escolha o plano (1-4): ");
+                var planChoice = Console.ReadLine();
+                
+                string plan;
+                int maxDevices;
+                
+                switch (planChoice)
+                {
+                    case "1":
+                        plan = "trial";
+                        maxDevices = 1;
+                        break;
+                    case "2":
+                        plan = "standard";
+                        maxDevices = 1;
+                        break;
+                    case "3":
+                        plan = "pro";
+                        maxDevices = 3;
+                        break;
+                    case "4":
+                        plan = "enterprise";
+                        maxDevices = 9999;
+                        break;
+                    default:
+                        Console.WriteLine("Opção inválida. Usando Standard como padrão.");
+                        plan = "standard";
+                        maxDevices = 1;
+                        break;
+                }
 
                 Console.Write("Data de Validade (yyyy-MM-dd): ");
                 var validityDateStr = Console.ReadLine();
@@ -56,10 +95,16 @@ namespace LicenseGenerator
                 }
 
                 // Gerar a licença
-                var license = GenerateLicense(clientId, validityDate);
+                var license = GenerateLicense(clientId, validityDate, plan, maxDevices);
 
                 Console.WriteLine();
                 Console.WriteLine("=== LICENÇA GERADA ===");
+                Console.WriteLine($"Cliente: {clientId}");
+                Console.WriteLine($"Plano: {plan.ToUpperInvariant()}");
+                Console.WriteLine($"Dispositivos: {maxDevices}");
+                Console.WriteLine($"Validade: {validityDate:yyyy-MM-dd}");
+                Console.WriteLine();
+                Console.WriteLine("Chave de Licença:");
                 Console.WriteLine(license);
                 Console.WriteLine("=====================");
                 Console.WriteLine();
@@ -219,20 +264,51 @@ namespace LicenseGenerator
 
         /// <summary>
         /// Gera uma licença para um cliente
+        /// ALINHADO COM: LicenseModels.cs, checkout/page.tsx, API /pagamento
         /// </summary>
-        private static string GenerateLicense(string clientId, DateTime validUntil)
+        /// <param name="clientId">ID do cliente</param>
+        /// <param name="validUntil">Data de validade</param>
+        /// <param name="plan">Tipo de plano: trial, standard, pro, enterprise</param>
+        /// <param name="maxDevices">Limite de dispositivos (1, 1, 3, 9999)</param>
+        private static string GenerateLicense(string clientId, DateTime validUntil, string plan = "standard", int maxDevices = 1)
         {
             try
             {
+                // VALIDAÇÃO DE SEGURANÇA: Validar plano
+                var validPlans = new[] { "trial", "standard", "pro", "enterprise" };
+                if (!validPlans.Contains(plan.ToLowerInvariant()))
+                {
+                    throw new ArgumentException($"Plano inválido: {plan}. Use: {string.Join(", ", validPlans)}");
+                }
+                
+                // VALIDAÇÃO DE SEGURANÇA: Validar limite de dispositivos por plano
+                var expectedDevices = plan.ToLowerInvariant() switch
+                {
+                    "trial" => 1,
+                    "standard" => 1,
+                    "pro" => 3,
+                    "enterprise" => 9999,
+                    _ => 1
+                };
+                
+                if (maxDevices != expectedDevices)
+                {
+                    Console.WriteLine($"⚠️  AVISO: maxDevices={maxDevices} não corresponde ao plano {plan} (esperado: {expectedDevices})");
+                    Console.WriteLine($"Ajustando para: {expectedDevices}");
+                    maxDevices = expectedDevices;
+                }
+                
                 // Criar o conteúdo da licença em formato JSON
-                var licenseContent = $"{{\"id\":\"{clientId}\",\"validUntil\":\"{validUntil:yyyy-MM-dd}\",\"plan\":\"Mensal\"}}";
+                var licenseContent = $"{{\"id\":\"{clientId}\",\"validUntil\":\"{validUntil:yyyy-MM-dd}\",\"plan\":\"{plan}\",\"maxDevices\":{maxDevices}}}";
                 
                 // Gerar a assinatura
                 var signature = GenerateLicenseSignature(licenseContent);
                 
                 // Formatar a chave de licença final
                 var formattedDate = validUntil.ToString("yyyyMMdd");
-                return $"VOLTRIS-LIC-{clientId}-{formattedDate}-{signature}";
+                var planCode = plan.ToUpperInvariant().Substring(0, Math.Min(3, plan.Length));
+                
+                return $"VOLTRIS-{planCode}-{clientId}-{formattedDate}-{signature}";
             }
             catch (Exception ex)
             {

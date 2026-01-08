@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Voltris\\Voltris\\VoltrisOptimizer.csproj": {}
+    "D:\\Voltris\\Voltris\\Site Voltris\\APLICATIVO VOLTRIS\\VoltrisOptimizer.csproj": {}
   },
   "projects": {
-    "D:\\Voltris\\Voltris\\VoltrisOptimizer.csproj": {
+    "D:\\Voltris\\Voltris\\Site Voltris\\APLICATIVO VOLTRIS\\VoltrisOptimizer.csproj": {
       "version": "1.0.0.3",
       "restore": {
-        "projectUniqueName": "D:\\Voltris\\Voltris\\VoltrisOptimizer.csproj",
+        "projectUniqueName": "D:\\Voltris\\Voltris\\Site Voltris\\APLICATIVO VOLTRIS\\VoltrisOptimizer.csproj",
         "projectName": "VoltrisOptimizer",
-        "projectPath": "D:\\Voltris\\Voltris\\VoltrisOptimizer.csproj",
+        "projectPath": "D:\\Voltris\\Voltris\\Site Voltris\\APLICATIVO VOLTRIS\\VoltrisOptimizer.csproj",
         "packagesPath": "C:\\Users\\VOLTRIS\\.nuget\\packages\\",
-        "outputPath": "D:\\Voltris\\Voltris\\obj\\",
+        "outputPath": "D:\\Voltris\\Voltris\\Site Voltris\\APLICATIVO VOLTRIS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\VOLTRIS\\AppData\\Roaming\\NuGet\\NuGet.Config"

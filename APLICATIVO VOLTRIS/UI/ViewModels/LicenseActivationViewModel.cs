@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Text;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -508,134 +509,46 @@ namespace VoltrisOptimizer.UI.ViewModels
         }
         
         /// <summary>
-        /// Abre página de compra
+        /// Abre página de compra no site (checkout page)
+        /// O site irá coletar email/nome/telefone e processar o pagamento
         /// </summary>
-        private async void BuyLicense(object? parameter)
+        private void BuyLicense(object? parameter)
         {
             try
             {
-                // Show loading state
-                IsLoading = true;
-                StatusMessage = "Processando pagamento...";
+                // Determinar plano baseado no parâmetro (alinhado com LicenseModels.cs)
+                var planParam = parameter as string ?? "pro";
                 
-                // Determinar plano baseado no parâmetro ou tipo de licença selecionado
-                var plan = parameter as string ?? "pro";
-                
-                // Mapear tipo de licença para plano
-                if (SelectedLicenseType == LicenseType.Standard)
-                    plan = "standard";
-                else if (SelectedLicenseType == LicenseType.Pro)
-                    plan = "pro";
-                else
-                    plan = "pro";
-                
-                // Obter email do usuário (se disponível)
-                var email = string.Empty; // Pode ser obtido de configurações ou entrada do usuário
-                
-                // Create HTTP client
-                using (var client = new HttpClient())
+                // Mapear tipos de licença para códigos de plano da API
+                // VALIDAÇÃO: Site aceita trial, standard, pro, enterprise
+                string plan = planParam.ToLowerInvariant() switch
                 {
-                    // URL da API com parâmetros de plano e email
-                    var apiUrlBuilder = new System.Text.StringBuilder("https://voltris.com.br/api/pagamento");
-                    apiUrlBuilder.Append($"?plan={System.Uri.EscapeDataString(plan)}");
-                    if (!string.IsNullOrEmpty(email))
-                    {
-                        apiUrlBuilder.Append($"&email={System.Uri.EscapeDataString(email)}");
-                    }
-                    string apiUrl = apiUrlBuilder.ToString();
-                    
-                    _logger.LogInfo($"[License] Chamando API de pagamento: {apiUrl}");
-                    
-                    // Make API call to get payment URL with timeout
-                    using (var cts = new CancellationTokenSource(TimeSpan.FromSeconds(15)))
-                    {
-                        var response = await client.GetAsync(apiUrl, cts.Token);
-                        
-                        if (response.IsSuccessStatusCode)
-                        {
-                            var jsonResponse = await response.Content.ReadAsStringAsync();
-                            _logger.LogInfo($"[License] Resposta da API: {jsonResponse}");
-                            
-                            // Parse JSON response
-                            using (var document = JsonDocument.Parse(jsonResponse))
-                            {
-                                // A API retorna "init_point" com a URL de pagamento
-                                if (document.RootElement.TryGetProperty("init_point", out var initPointElement))
-                                {
-                                    string paymentUrl = initPointElement.GetString() ?? string.Empty;
-                                    
-                                    if (!string.IsNullOrEmpty(paymentUrl))
-                                    {
-                                        // Salvar preference_id e payment_id para referência futura (opcional)
-                                        if (document.RootElement.TryGetProperty("preference_id", out var prefIdElement))
-                                        {
-                                            var preferenceId = prefIdElement.GetString();
-                                            _logger.LogInfo($"[License] Preference ID: {preferenceId}");
-                                        }
-                                        
-                                        if (document.RootElement.TryGetProperty("payment_id", out var payIdElement))
-                                        {
-                                            var paymentId = payIdElement.GetString();
-                                            _logger.LogInfo($"[License] Payment ID: {paymentId}");
-                                        }
-                                        
-                                        // Open URL in default browser
-                                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                                        {
-                                            FileName = paymentUrl,
-                                            UseShellExecute = true
-                                        });
-                                        
-                                        StatusMessage = $"Redirecionando para pagamento... (Plano: {plan})";
-                                        _logger.LogInfo($"[License] Abrindo página de pagamento: {plan}");
-                                        
-                                        // Aguardar um pouco antes de limpar a mensagem
-                                        await Task.Delay(2000);
-                                    }
-                                    else
-                                    {
-                                        ErrorMessage = "URL de pagamento inválida recebida da API.";
-                                    }
-                                }
-                                else if (document.RootElement.TryGetProperty("error", out var errorElement))
-                                {
-                                    var errorMsg = errorElement.GetString() ?? "Erro desconhecido";
-                                    ErrorMessage = $"Erro na API: {errorMsg}";
-                                    _logger.LogWarning($"[License] Erro da API: {errorMsg}");
-                                }
-                                else
-                                {
-                                    ErrorMessage = "Resposta da API em formato inesperado.";
-                                    _logger.LogWarning($"[License] Resposta inesperada: {jsonResponse}");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            var errorContent = await response.Content.ReadAsStringAsync();
-                            ErrorMessage = $"Falha na requisição: {response.StatusCode}. {errorContent}";
-                            _logger.LogError($"[License] Erro HTTP {response.StatusCode}: {errorContent}");
-                        }
-                    }
-                }
-            }
-            catch (OperationCanceledException)
-            {
-                _logger.LogError("[License] Tempo limite excedido ao processar pagamento");
-                ErrorMessage = "Tempo limite excedido. Verifique sua conexão e tente novamente.";
+                    "trial" => "trial",
+                    "standard" => "standard",
+                    "pro" => "pro",
+                    "enterprise" => "enterprise",
+                    _ => "pro" // Default seguro
+                };
+                
+                _logger.LogInfo($"[License] Abrindo checkout para plano: {plan}");
+                
+                // URL do checkout com parâmetro de plano
+                var checkoutUrl = $"https://voltris.com.br/checkout?plan={plan}";
+                
+                // Abrir URL no navegador padrão
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = checkoutUrl,
+                    UseShellExecute = true
+                });
+                
+                _logger.LogInfo($"[License] Checkout aberto: {checkoutUrl}");
+                StatusMessage = $"Abrindo página de pagamento... (Plano: {plan})";
             }
             catch (Exception ex)
             {
-                _logger.LogError("[License] Erro ao processar pagamento", ex);
-                ErrorMessage = $"Erro ao processar pagamento: {ex.Message}";
-            }
-            finally
-            {
-                IsLoading = false;
-                if (string.IsNullOrEmpty(ErrorMessage))
-                {
-                    StatusMessage = "";
-                }
+                _logger.LogError("[License] Erro ao abrir checkout", ex);
+                ErrorMessage = $"Erro ao abrir página de pagamento: {ex.Message}";
             }
         }
         

@@ -98,83 +98,26 @@ namespace VoltrisOptimizer.UI.Windows
 
         private void LoadLogo()
         {
-            var baseDir = AppDomain.CurrentDomain.BaseDirectory;
-
-            var searchDirs = new[]
+            try 
             {
-                System.IO.Path.Combine(baseDir, "Assets"),
-                System.IO.Path.Combine(baseDir, "Images"),
-                baseDir
-            };
-
-            string? imagePath = null;
-
-            foreach (var dir in searchDirs)
-            {
-                if (!System.IO.Directory.Exists(dir)) continue;
-
-                try
-                {
-                    var files = System.IO.Directory.GetFiles(dir, "*.png", System.IO.SearchOption.TopDirectoryOnly)
-                        .Concat(System.IO.Directory.GetFiles(dir, "*.jpg", System.IO.SearchOption.TopDirectoryOnly))
-                        .Concat(System.IO.Directory.GetFiles(dir, "*.jpeg", System.IO.SearchOption.TopDirectoryOnly))
-                        .ToArray();
-
-                    imagePath = files
-                        .Select(f => new { Path = f, Score = GetImageResolutionScoreSafe(f), NameBias = GetNameBias(f) })
-                        .OrderByDescending(x => x.Score)
-                        .ThenByDescending(x => x.NameBias)
-                        .Select(x => x.Path)
-                        .FirstOrDefault();
-
-                    if (imagePath != null) break;
-                }
-                catch { }
+                // Carregar diretamente do Recurso Embutido (Garantido pela build)
+                var logoUri = new Uri("pack://application:,,,/Images/logo.png", UriKind.Absolute);
+                
+                var img = new BitmapImage();
+                img.BeginInit();
+                img.UriSource = logoUri;
+                img.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                img.CacheOption = BitmapCacheOption.OnLoad;
+                img.EndInit();
+                img.Freeze();
+                
+                LogoImage.Source = img;
+                App.LoggingService?.LogInfo($"[SPLASH] Imagem carregada: {logoUri}");
             }
-
-            if (imagePath == null)
+            catch (Exception ex)
             {
-                var fallbackPaths = new[]
-                {
-                    System.IO.Path.Combine(baseDir, "Assets", "voltris_splash.png"),
-                    System.IO.Path.Combine(baseDir, "Assets", "voltris.png"),
-                    System.IO.Path.Combine(baseDir, "Assets", "logo.png"),
-                    System.IO.Path.Combine(baseDir, "Images", "logo.png"),
-                    System.IO.Path.Combine(baseDir, "Images", "voltris.png")
-                };
-
-                imagePath = fallbackPaths.FirstOrDefault(System.IO.File.Exists);
+                App.LoggingService?.LogWarning($"[SPLASH] Erro ao carregar logo: {ex.Message}");
             }
-
-            if (imagePath != null && TryLoadImage(imagePath))
-            {
-                App.LoggingService?.LogInfo($"[SPLASH] Imagem carregada: {imagePath}");
-                return;
-            }
-
-            var packUris = new[]
-            {
-                "pack://application:,,,/Resources/Images/voltris_splash.png",
-                "pack://application:,,,/Resources/Images/voltris.png",
-                "pack://application:,,,/Resources/Images/logo.png",
-                "pack://application:,,,/Resources/Icons/app-icon.png"
-            };
-
-            foreach (var uriString in packUris)
-            {
-                try
-                {
-                    var uri = new Uri(uriString, UriKind.Absolute);
-                    if (TryLoadImageFromUri(uri))
-                    {
-                        App.LoggingService?.LogInfo($"[SPLASH] Imagem via pack: {uriString}");
-                        return;
-                    }
-                }
-                catch { }
-            }
-
-            App.LoggingService?.LogWarning("[SPLASH] Nenhuma imagem encontrada");
         }
 
         private bool TryLoadImage(string path)

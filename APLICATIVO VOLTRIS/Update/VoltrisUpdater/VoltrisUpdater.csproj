@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>VoltrisUpdater</AssemblyName>
+    <RootNamespace>VoltrisUpdater</RootNamespace>
+    <Version>1.0.0.3</Version>
+    <Authors>Voltris Corporation</Authors>
+    <Company>Voltris Corporation</Company>
+    <Product>Voltris Optimizer Updater</Product>
+    <Description>Atualizador automático do Voltris Optimizer</Description>
+    <Copyright>Copyright © VOLTRIS 2025</Copyright>
+    <PlatformTarget>x86</PlatformTarget>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="..\..\Images\voltris.png">
+      <Link>Images\voltris.png</Link>
+    </Resource>
+    <Resource Include="..\..\Images\favicon.ico">
+      <Link>favicon.ico</Link>
+    </Resource>
+  </ItemGroup>
+
+  <!-- Embutir o pacote ZIP de atualização -->
+  <ItemGroup>
+    <EmbeddedResource Include="Payload\update.zip">
+      <LogicalName>VoltrisUpdater.Payload.update.zip</LogicalName>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
+
+

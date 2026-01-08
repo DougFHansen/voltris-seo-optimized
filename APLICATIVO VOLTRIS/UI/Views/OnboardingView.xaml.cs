@@ -67,8 +67,16 @@ namespace VoltrisOptimizer.UI.Views
             StepTitleText.Text = "Bem-vindo ao Voltris Optimizer!";
             StepDescriptionText.Text = "O sistema profissional de otimização para Windows 10/11";
 
-            var content = new StackPanel { Margin = new Thickness(0, 8, 0, 0) };
+            // Usar Grid principal para garantir alinhamento central correto
+            var rootGrid = new Grid 
+            { 
+                Margin = new Thickness(0, 16, 0, 0),
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
             
+            rootGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); // Ícone
+            rootGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto }); // Funcionalidades
+
             // Ícone central com gradiente
             var iconBorder = new Border
             {
@@ -76,12 +84,12 @@ namespace VoltrisOptimizer.UI.Views
                 Height = 80,
                 CornerRadius = new CornerRadius(20),
                 HorizontalAlignment = HorizontalAlignment.Center,
-                Margin = new Thickness(0, 0, 0, 24)
+                Margin = new Thickness(0, 0, 0, 32)
             };
             iconBorder.Background = CreateGradientBrush("#FF4B6B", "#8B31FF");
             iconBorder.Effect = new System.Windows.Media.Effects.DropShadowEffect
             {
-                BlurRadius = 25,
+                BlurRadius = 30,
                 ShadowDepth = 0,
                 Color = (Color)ColorConverter.ConvertFromString("#8B31FF"),
                 Opacity = 0.5
@@ -94,10 +102,22 @@ namespace VoltrisOptimizer.UI.Views
                 VerticalAlignment = VerticalAlignment.Center
             };
             iconBorder.Child = iconText;
-            content.Children.Add(iconBorder);
-
-            var featuresPanel = new StackPanel { Margin = new Thickness(0, 8, 0, 0) };
             
+            Grid.SetRow(iconBorder, 0);
+            rootGrid.Children.Add(iconBorder);
+
+            // Container das funcionalidades usando Grid para alinhamento perfeito (Icon | Text)
+            var featuresGrid = new Grid 
+            { 
+                HorizontalAlignment = HorizontalAlignment.Center,
+                Margin = new Thickness(0, 0, 0, 0)
+            };
+            
+            // Colunas: Ícone (Auto) | Espaçamento (16) | Texto (*)
+            featuresGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+            featuresGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(16) });
+            featuresGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
             var features = new[]
             {
                 ("🧹", "Limpeza automática de arquivos temporários", "#10B981"),
@@ -107,22 +127,20 @@ namespace VoltrisOptimizer.UI.Views
                 ("⏰", "Agendamento automático de tarefas", "#EC4899")
             };
 
-            foreach (var (emoji, text, color) in features)
+            for (int i = 0; i < features.Length; i++)
             {
-                var featurePanel = new StackPanel 
-                { 
-                    Orientation = Orientation.Horizontal,
-                    Margin = new Thickness(0, 0, 0, 12)
-                };
+                var (emoji, text, color) = features[i];
                 
+                featuresGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+
                 // Ícone com fundo colorido
                 var emojiBorder = new Border
                 {
                     Width = 36,
                     Height = 36,
                     CornerRadius = new CornerRadius(10),
-                    Margin = new Thickness(0, 0, 14, 0),
-                    Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color)) { Opacity = 0.2 }
+                    Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(color)) { Opacity = 0.2 },
+                    Margin = new Thickness(0, 0, 0, 16) // Espaçamento vertical
                 };
                 var emojiBlock = new TextBlock
                 {
@@ -132,22 +150,30 @@ namespace VoltrisOptimizer.UI.Views
                     VerticalAlignment = VerticalAlignment.Center
                 };
                 emojiBorder.Child = emojiBlock;
-                featurePanel.Children.Add(emojiBorder);
                 
+                Grid.SetRow(emojiBorder, i);
+                Grid.SetColumn(emojiBorder, 0);
+                featuresGrid.Children.Add(emojiBorder);
+                
+                // Texto
                 var featureText = new TextBlock
                 {
                     Text = text,
                     FontSize = 14,
                     Foreground = GetBrush("TextPrimaryBrush"),
-                    VerticalAlignment = VerticalAlignment.Center
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(0, 0, 0, 16) // Espaçamento vertical igual ao ícone
                 };
-                featurePanel.Children.Add(featureText);
                 
-                featuresPanel.Children.Add(featurePanel);
+                Grid.SetRow(featureText, i);
+                Grid.SetColumn(featureText, 2);
+                featuresGrid.Children.Add(featureText);
             }
 
-            content.Children.Add(featuresPanel);
-            StepContentControl.Content = content;
+            Grid.SetRow(featuresGrid, 1);
+            rootGrid.Children.Add(featuresGrid);
+            
+            StepContentControl.Content = rootGrid;
         }
         
         private LinearGradientBrush CreateGradientBrush(string color1, string color2)

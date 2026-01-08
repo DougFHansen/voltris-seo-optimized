@@ -8,20 +8,15 @@ using System.Windows;
 
 public partial class PurchaseHandler
 {
-    /// <summary>
-    /// Manipula o clique no botão de compra
-    /// </summary>
-    /// <param name="planType">Tipo do plano (trial, pro, premium, enterprise)</param>
-    private async void OnPurchaseButtonClick(object sender, RoutedEventArgs e, string planType = "pro")
+    private async void OnPurchaseButtonClick(object sender, RoutedEventArgs e)
     {
         try
         {
             using (HttpClient client = new HttpClient())
             {
                 // URL da API com parâmetros de plano
-                // IMPORTANTE: planType deve ser: trial, pro, premium ou enterprise
                 var apiUrlBuilder = new StringBuilder("https://voltris.com.br/api/pagamento");
-                apiUrlBuilder.Append($"?plan={planType}");
+                apiUrlBuilder.Append("?plan=pro"); // Pode ser ajustado para diferentes planos
                 string apiUrl = apiUrlBuilder.ToString();
                 
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
@@ -72,17 +67,4 @@ public partial class PurchaseHandler
             MessageBox.Show($"Erro ao processar pagamento: {ex.Message}", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
-    
-    // Métodos helper para cada plano
-    private async void OnPurchaseTrialClick(object sender, RoutedEventArgs e) => 
-        await Task.Run(() => OnPurchaseButtonClick(sender, e, "trial"));
-    
-    private async void OnPurchaseProClick(object sender, RoutedEventArgs e) => 
-        await Task.Run(() => OnPurchaseButtonClick(sender, e, "pro"));
-    
-    private async void OnPurchasePremiumClick(object sender, RoutedEventArgs e) => 
-        await Task.Run(() => OnPurchaseButtonClick(sender, e, "premium"));
-    
-    private async void OnPurchaseEnterpriseClick(object sender, RoutedEventArgs e) => 
-        await Task.Run(() => OnPurchaseButtonClick(sender, e, "enterprise"));
 }

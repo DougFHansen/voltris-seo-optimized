@@ -83,13 +83,6 @@ namespace VoltrisOptimizer
         [DllImport("user32.dll")]
         private static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
 
-        // DPI Awareness enforcement - Win32 API
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern bool SetProcessDpiAwarenessContext(IntPtr dpiContext);
-
-        // DPI Awareness Context values
-        private static readonly IntPtr DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = new IntPtr(-4);
-
         private const int SW_RESTORE = 9;
         private const int SW_SHOW = 5;
 
@@ -100,21 +93,6 @@ namespace VoltrisOptimizer
 
         protected override async void OnStartup(StartupEventArgs e)
         {
-            // ============================================================
-            // ENFORCE PER-MONITOR V2 DPI AWARENESS PROGRAMMATICALLY
-            // ============================================================
-            // This ensures the app is DPI-aware even if the manifest fails
-            // and prevents Windows DPI virtualization (blurriness)
-            try
-            {
-                SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2);
-            }
-            catch (Exception ex)
-            {
-                // Log but don't fail - manifest configuration should still work
-                System.Diagnostics.Debug.WriteLine($"Failed to set DPI awareness programmatically: {ex.Message}");
-            }
-            
             base.OnStartup(e); // IMPORTANTE: Inicializar base primeiro para carregar recursos do XAML
             ToastNotificationManagerCompat.OnActivated += args => { LoggingService?.LogInfo("Toast ativado"); };
             

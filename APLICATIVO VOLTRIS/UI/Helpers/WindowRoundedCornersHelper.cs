@@ -113,17 +113,26 @@ namespace VoltrisOptimizer.UI.Helpers
         {
             try
             {
-                var width = (int)window.ActualWidth;
-                var height = (int)window.ActualHeight;
+                // OBTER DPI DA JANELA (CRÍTICO PARA CORREÇÃO DE ESCALA)
+                var dpi = System.Windows.Media.VisualTreeHelper.GetDpi(window);
+                
+                // Converter pixels lógicos (WPF) para pixels físicos (Device)
+                // Usamos Ceiling para garantir que a região cubra toda a janela visualmente
+                var width = (int)Math.Ceiling(window.ActualWidth * dpi.DpiScaleX);
+                var height = (int)Math.Ceiling(window.ActualHeight * dpi.DpiScaleY);
+                
+                // Ajustar também o raio para o DPI
+                var physicalCornerRadius = (int)Math.Round(cornerRadius * dpi.DpiScaleX);
 
                 if (width <= 0 || height <= 0) return;
 
-                // Criar região arredondada - usar cornerRadius * 2 para raio adequado
-                var hRgn = CreateRoundRectRgn(0, 0, width, height, cornerRadius * 2, cornerRadius * 2);
+                // Criar região arredondada usando coordenadas FÍSICAS
+                // Adicionamos +1 para evitar glitches de serrilhado na borda direita/inferior em alguns DPIs
+                var hRgn = CreateRoundRectRgn(0, 0, width + 1, height + 1, physicalCornerRadius * 2, physicalCornerRadius * 2);
 
                 if (hRgn != IntPtr.Zero)
                 {
-                    // Aplicar região à janela - isso recorta os cantos perfeitamente
+                    // Aplicar região à janela
                     SetWindowRgn(handle, hRgn, true);
                     // A região será liberada automaticamente pelo Windows quando a janela for destruída
                 }

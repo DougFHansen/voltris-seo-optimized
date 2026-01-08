@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>VoltrisOptimizerInstaller</AssemblyName>
+    <RootNamespace>VoltrisOptimizerInstaller</RootNamespace>
+    <Version>1.0.0.0</Version>
+    <Authors>Voltris Corporation</Authors>
+    <Company>Voltris Corporation</Company>
+    <Product>Voltris Optimizer Installer</Product>
+    <Description>Instalador do Voltris Optimizer</Description>
+    <Copyright>Copyright © VOLTRIS 2025</Copyright>
+    <PlatformTarget>x86</PlatformTarget>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <!-- Publicação self-contained single-file do instalador -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\**\*" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Resource Include="..\..\Images\voltris.png">
+      <Link>Images\voltris.png</Link>
+    </Resource>
+  </ItemGroup>
+
+  <!-- Embutir os pacotes ZIP do aplicativo como recursos do instalador -->
+  <ItemGroup>
+    <EmbeddedResource Include="Payload\x86.zip">
+      <LogicalName>VoltrisOptimizerInstaller.Payload.x86.zip</LogicalName>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Embutir o desinstalador (uninstall.exe) como recurso -->
+  <!-- Prioridade: Resources\uninstall.exe (para distribuição final) -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\uninstall.exe" Condition="Exists('Resources\uninstall.exe')">
+      <LogicalName>VoltrisOptimizerInstaller.Resources.uninstall.exe</LogicalName>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  
+
+  
+
+</Project>
+

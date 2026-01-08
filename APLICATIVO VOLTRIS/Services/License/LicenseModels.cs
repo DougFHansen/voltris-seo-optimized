@@ -4,7 +4,6 @@ namespace VoltrisOptimizer.Services.License
 {
     /// <summary>
     /// Tipos de licença disponíveis
-    /// IMPORTANTE: Deve estar 100% alinhado com o backend (Supabase)
     /// </summary>
     public enum LicenseType
     {
@@ -14,17 +13,17 @@ namespace VoltrisOptimizer.Services.License
         Trial = 0,
         
         /// <summary>
-        /// Licença Pro - R$ 49,90/mês, 1 dispositivo
+        /// Licença Standard - 1 dispositivo
         /// </summary>
-        Pro = 1,
+        Standard = 1,
         
         /// <summary>
-        /// Licença Premium - R$ 99,90/3 meses, 3 dispositivos
+        /// Licença Pro - 3 dispositivos
         /// </summary>
-        Premium = 2,
+        Pro = 2,
         
         /// <summary>
-        /// Licença Enterprise - R$ 149,90/6 meses, dispositivos ilimitados
+        /// Licença Enterprise - dispositivos ilimitados
         /// </summary>
         Enterprise = 3
     }
@@ -46,7 +45,7 @@ namespace VoltrisOptimizer.Services.License
         public string Icon { get; set; } = "M12,3L2,12H5V20H19V12H22L12,3Z";
         
         /// <summary>
-        /// Planos disponíveis (alinhados com o backend)
+        /// Planos disponíveis
         /// </summary>
         public static LicensePlan[] AvailablePlans => new[]
         {
@@ -71,20 +70,19 @@ namespace VoltrisOptimizer.Services.License
             },
             new LicensePlan
             {
-                Type = LicenseType.Pro,
-                Name = "Pro",
-                Description = "Plano mensal ideal para uso pessoal",
+                Type = LicenseType.Standard,
+                Name = "Standard",
+                Description = "Para uso pessoal em um único computador",
                 MaxDevices = 1,
-                Price = 49.90m,
-                PriceFormatted = "R$ 49,90/mês",
+                Price = 29.90m,
+                PriceFormatted = "R$ 29,90",
                 Features = new[]
                 {
                     "Todas as funcionalidades",
                     "1 dispositivo",
-                    "Renovação mensal",
-                    "Suporte prioritário",
-                    "Modo Gamer avançado",
-                    "Otimizações de rede"
+                    "Atualizações por 1 ano",
+                    "Suporte por email",
+                    "Modo Gamer básico"
                 },
                 IsPopular = false,
                 Color = "#31A8FF",
@@ -92,17 +90,17 @@ namespace VoltrisOptimizer.Services.License
             },
             new LicensePlan
             {
-                Type = LicenseType.Premium,
-                Name = "Premium",
-                Description = "Plano trimestral para múltiplos dispositivos",
+                Type = LicenseType.Pro,
+                Name = "Pro",
+                Description = "Para entusiastas com múltiplos dispositivos",
                 MaxDevices = 3,
-                Price = 99.90m,
-                PriceFormatted = "R$ 99,90 a cada 3 meses",
+                Price = 59.90m,
+                PriceFormatted = "R$ 59,90",
                 Features = new[]
                 {
                     "Todas as funcionalidades",
                     "3 dispositivos",
-                    "Renovação a cada 3 meses",
+                    "Atualizações por 1 ano",
                     "Suporte prioritário",
                     "Modo Gamer avançado",
                     "Otimizações de rede",
@@ -116,21 +114,20 @@ namespace VoltrisOptimizer.Services.License
             {
                 Type = LicenseType.Enterprise,
                 Name = "Enterprise",
-                Description = "Plano semestral para uso ilimitado e empresas",
+                Description = "Para empresas e gamers profissionais",
                 MaxDevices = 9999,
                 Price = 149.90m,
-                PriceFormatted = "R$ 149,90 a cada 6 meses",
+                PriceFormatted = "R$ 149,90",
                 Features = new[]
                 {
                     "Todas as funcionalidades",
-                    "Dispositivos ILIMITADOS",
-                    "Renovação a cada 6 meses",
+                    "Dispositivos ilimitados",
+                    "Atualizações vitalícias",
                     "Suporte 24/7",
                     "Todas as otimizações",
                     "API de integração",
                     "Painel de administração",
-                    "Implantação em lote",
-                    "Licença única para múltiplos PCs"
+                    "Implantação em lote"
                 },
                 IsPopular = false,
                 Color = "#FF4B6B",
@@ -139,15 +136,15 @@ namespace VoltrisOptimizer.Services.License
         };
         
         /// <summary>
-        /// Obtém limite de dispositivos por tipo (alinhado com backend)
+        /// Obtém limite de dispositivos por tipo
         /// </summary>
         public static int GetMaxDevices(LicenseType type)
         {
             return type switch
             {
                 LicenseType.Trial => 1,
-                LicenseType.Pro => 1,
-                LicenseType.Premium => 3,
+                LicenseType.Standard => 1,
+                LicenseType.Pro => 3,
                 LicenseType.Enterprise => 9999,
                 _ => 1
             };
@@ -213,14 +210,14 @@ namespace VoltrisOptimizer.Services.License
         public int RemainingSlots => Math.Max(0, MaxDevices - DevicesInUse);
         
         /// <summary>
-        /// Nome formatado do tipo (alinhado com backend)
+        /// Nome formatado do tipo
         /// </summary>
         public string TypeDisplayName => Type switch
         {
             LicenseType.Trial => "Trial (7 dias)",
-            LicenseType.Pro => "Pro (R$ 49,90/mês)",
-            LicenseType.Premium => "Premium (R$ 99,90/3 meses)",
-            LicenseType.Enterprise => "Enterprise (R$ 149,90/6 meses)",
+            LicenseType.Standard => "Standard",
+            LicenseType.Pro => "Pro",
+            LicenseType.Enterprise => "Enterprise",
             _ => "Desconhecido"
         };
     }

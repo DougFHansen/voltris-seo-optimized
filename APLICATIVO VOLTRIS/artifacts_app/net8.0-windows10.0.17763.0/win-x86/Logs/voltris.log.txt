@@ -1,0 +1,13 @@
+﻿[2026-01-06 03:54:50.273] [INFO] [License] Device ID: AFCD42EA486F804895BB2F3730133300
+[2026-01-06 03:54:52.382] [INFO] [License] Abrindo checkout para plano: pro
+[2026-01-06 03:54:52.480] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
+[2026-01-06 04:00:08.745] [INFO] [License] Abrindo checkout para plano: pro
+[2026-01-06 04:00:08.761] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
+[2026-01-06 04:12:57.958] [INFO] [License] Abrindo checkout para plano: pro
+[2026-01-06 04:12:57.976] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
+[2026-01-06 04:26:50.599] [INFO] [License] Abrindo checkout para plano: enterprise
+[2026-01-06 04:26:50.620] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=enterprise
+[2026-01-06 04:27:09.851] [INFO] [License] Abrindo checkout para plano: enterprise
+[2026-01-06 04:27:09.866] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=enterprise
+[2026-01-06 04:32:31.163] [INFO] [License] Abrindo checkout para plano: enterprise
+[2026-01-06 04:32:31.180] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=enterprise

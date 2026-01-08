@@ -7,13 +7,14 @@
         mc:Ignorable="d"
         Title="Licenciamento - Voltris Optimizer"
         Height="700" Width="1100"
-        MinHeight="600" MinWidth="900"
-        MaxHeight="750" MaxWidth="1200"
+        MinHeight="600" MinWidth="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         ResizeMode="CanResize"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True"
         SizeToContent="Manual">
     
     <Window.Resources>
@@ -231,8 +232,8 @@
                 </Border>
                 
                 <!-- Conteúdo principal -->
-                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Padding="40,20,40,40">
-                    <StackPanel>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="40,20,40,40">
+                    <StackPanel MinWidth="1000">
                         <!-- Header -->
                         <StackPanel HorizontalAlignment="Center" Margin="0,0,0,30">
                             <TextBlock Text="Escolha seu plano" 
@@ -341,7 +342,7 @@
                                               HorizontalAlignment="Center" Margin="0,0,0,8"/>
                                     
                                     <StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,16">
-                                        <TextBlock Text="R$ 29,90" FontSize="28" FontWeight="Bold" Foreground="#31A8FF"
+                                        <TextBlock Text="R$ 1,00" FontSize="28" FontWeight="Bold" Foreground="#31A8FF"
                                                   HorizontalAlignment="Center"/>
                                         <TextBlock Text="/ano" FontSize="13" Foreground="#6B6B80"
                                                   HorizontalAlignment="Center" Margin="0,4,0,0"/>
@@ -429,7 +430,7 @@
                                               HorizontalAlignment="Center" Margin="0,0,0,8"/>
                                     
                                     <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,0,0,16">
-                                        <TextBlock Text="R$ 59,90" FontSize="28" FontWeight="Bold" Foreground="#8B31FF"
+                                        <TextBlock Text="R$ 1,00" FontSize="28" FontWeight="Bold" Foreground="#8B31FF"
                                                   HorizontalAlignment="Center"/>
                                         <TextBlock Text="/ano" FontSize="13" Foreground="#6B6B80"
                                                   HorizontalAlignment="Center" Margin="0,4,0,0"/>
@@ -503,7 +504,7 @@
                                               HorizontalAlignment="Center" Margin="0,0,0,8"/>
                                     
                                     <StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="0,0,0,16">
-                                        <TextBlock Text="R$ 149,90" FontSize="28" FontWeight="Bold" Foreground="#FF4B6B"
+                                        <TextBlock Text="R$ 1,00" FontSize="28" FontWeight="Bold" Foreground="#FF4B6B"
                                                   HorizontalAlignment="Center"/>
                                         <TextBlock Text="/ano" FontSize="13" Foreground="#6B6B80"
                                                   HorizontalAlignment="Center" Margin="0,4,0,0"/>

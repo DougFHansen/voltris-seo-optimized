@@ -76,11 +76,10 @@
         <Border Background="{DynamicResource DarkPanelBrush}"
                 CornerRadius="16"
                 MaxWidth="700"
-                MaxHeight="600"
                 MinWidth="500"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Margin="24"
+                VerticalAlignment="Top"
+                Margin="24,60,24,60"
                 Padding="0">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="40" 
@@ -129,16 +128,14 @@
                 </Border>
                 
                 <!-- Content Area com scroll -->
-                <ScrollViewer Grid.Row="1" 
-                              VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Disabled"
-                              Padding="32,20,32,16">
-                    <ContentControl x:Name="StepContentControl">
+                <!-- Content Area com scroll removido (agora global) -->
+                <ContentControl Grid.Row="1" 
+                                x:Name="StepContentControl"
+                                Padding="32,20,32,16">
                         <ContentControl.RenderTransform>
                             <TranslateTransform/>
                         </ContentControl.RenderTransform>
-                    </ContentControl>
-                </ScrollViewer>
+                </ContentControl>
                 
                 <!-- Footer com navegação -->
                 <Border Grid.Row="2" 

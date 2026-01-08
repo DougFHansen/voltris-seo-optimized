@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8WK5/zL8jsg=",
+  "dgSpecHash": "SDxwTR1+xNM=",
   "success": true,
-  "projectFilePath": "D:\\Voltris\\Voltris\\VoltrisOptimizer.csproj",
+  "projectFilePath": "D:\\Voltris\\Voltris\\Site Voltris\\APLICATIVO VOLTRIS\\VoltrisOptimizer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VOLTRIS\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\VOLTRIS\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",

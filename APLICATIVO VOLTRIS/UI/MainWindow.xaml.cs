@@ -40,6 +40,7 @@ namespace VoltrisOptimizer.UI
         private readonly LocalizationService _localization;
         private readonly SettingsService _settings;
         private WinForms.NotifyIcon? _notifyIcon;
+        private ContextMenu? _cachedTrayMenu;
         private bool _isClosing = false;
         private IntPtr _hwnd;
         private HwndSource? _dummySource;
@@ -215,16 +216,20 @@ namespace VoltrisOptimizer.UI
         
         private void LogToFile(string message)
         {
-            try
+            // Executar em background para não travar a UI (Fire-and-forget)
+            Task.Run(() => 
             {
-                var logDir = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
-                if (!System.IO.Directory.Exists(logDir))
-                    System.IO.Directory.CreateDirectory(logDir);
-                var logFile = System.IO.Path.Combine(logDir, "window_debug.log");
-                System.IO.File.AppendAllText(logFile, 
-                    $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] {message}\n");
-            }
-            catch { }
+                try
+                {
+                    var logDir = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Logs");
+                    if (!System.IO.Directory.Exists(logDir))
+                        System.IO.Directory.CreateDirectory(logDir);
+                    var logFile = System.IO.Path.Combine(logDir, "window_debug.log");
+                    System.IO.File.AppendAllText(logFile, 
+                        $"[{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}] {message}\n");
+                }
+                catch { }
+            });
         }
 
         private void MainWindow_Loaded_Gate(object sender, RoutedEventArgs e)
@@ -494,44 +499,45 @@ namespace VoltrisOptimizer.UI
         /// <summary>
         /// Define o ícone da janela usando Win32 API para garantir que apareça na barra de tarefas e Alt+Tab
         /// </summary>
+        /// <summary>
+        /// Define o ícone da janela usando Win32 API para garantir que apareça na barra de tarefas e Alt+Tab
+        /// </summary>
         private void SetWindowIcon(IntPtr hwnd)
         {
             try
             {
-                // Tentar carregar o ícone do arquivo
-                var iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", "favicon.ico");
-                if (File.Exists(iconPath))
+                // Carregar do recurso embutido (mais seguro que arquivo solto)
+                var iconUri = new Uri("pack://application:,,,/Images/favicon.ico");
+                var resourceInfo = Application.GetResourceStream(iconUri);
+                
+                if (resourceInfo != null)
                 {
-                    try
+                    using (var iconStream = resourceInfo.Stream)
                     {
-                        // Carregar ícone grande (32x32) e pequeno (16x16)
+                        var icon = new System.Drawing.Icon(iconStream);
+                        
+                        // Criar versões grandes e pequenas do ícone
                         System.Drawing.Icon? iconLarge = null;
                         System.Drawing.Icon? iconSmall = null;
                         
-                        using (var iconStream = File.OpenRead(iconPath))
+                        try
                         {
-                            var icon = new System.Drawing.Icon(iconStream);
-                            
-                            // Criar versões grandes e pequenas do ícone
-                            try
-                            {
-                                iconLarge = new System.Drawing.Icon(icon, 32, 32);
-                            }
-                            catch
-                            {
-                                iconLarge = icon;
-                            }
-                            
-                            try
-                            {
-                                iconSmall = new System.Drawing.Icon(icon, 16, 16);
-                            }
-                            catch
-                            {
-                                iconSmall = icon;
-                            }
+                            iconLarge = new System.Drawing.Icon(icon, 32, 32);
+                        }
+                        catch
+                        {
+                            iconLarge = icon;
                         }
                         
+                        try
+                        {
+                            iconSmall = new System.Drawing.Icon(icon, 16, 16);
+                        }
+                        catch
+                        {
+                            iconSmall = icon;
+                        }
+
                         if (iconLarge != null && iconSmall != null)
                         {
                             // Definir ícone grande (32x32) - usado na barra de tarefas e Alt+Tab
@@ -544,17 +550,20 @@ namespace VoltrisOptimizer.UI
                             Win32.SetClassLongPtrSafe(hwnd, Win32.GCL_HICON, iconLarge.Handle);
                             Win32.SetClassLongPtrSafe(hwnd, Win32.GCL_HICONSM, iconSmall.Handle);
                             
-                            App.LoggingService?.LogInfo("Ícone da janela definido com sucesso via Win32 API");
+                             // Forçar atualização do ícone WPF também
+                            try 
+                            {
+                                iconStream.Position = 0;
+                                this.Icon = System.Windows.Media.Imaging.BitmapFrame.Create(iconStream);
+                            }
+                            catch (Exception ex)
+                            {
+                                App.LoggingService?.LogWarning($"Erro ao definir this.Icon WPF: {ex.Message}");
+                            }
+
+                            App.LoggingService?.LogInfo("Ícone da janela definido com sucesso via Win32 API e WPF (Resource)");
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        App.LoggingService?.LogWarning($"Erro ao definir ícone via Win32: {ex.Message}");
-                    }
-                }
-                else
-                {
-                    App.LoggingService?.LogWarning($"Arquivo de ícone não encontrado: {iconPath}");
                 }
             }
             catch (Exception ex)
@@ -565,23 +574,36 @@ namespace VoltrisOptimizer.UI
         
         /// <summary>
         /// Aplica região arredondada à janela (fallback para Windows 10)
+        /// CORRIGIDO PARA DPI: Usa pixels físicos em vez de lógicos
         /// </summary>
         private void ApplyRoundedRegion(IntPtr hwnd)
         {
             try
             {
-                int cornerRadius = 16;
-                int width = (int)ActualWidth;
-                int height = (int)ActualHeight;
+                // Obter fator de escala DPI atual
+                var dpi = VisualTreeHelper.GetDpi(this);
+                
+                // Converter pixels lógicos (WPF) para pixels físicos (Device)
+                // Usamos Floor/Ceiling para garantir que cobrimos toda a área
+                int width = (int)Math.Ceiling(ActualWidth * dpi.DpiScaleX);
+                int height = (int)Math.Ceiling(ActualHeight * dpi.DpiScaleY);
+                
+                // Ajustar raio para DPI também (tamanho visual consistente)
+                int cornerRadius = (int)Math.Round(16 * dpi.DpiScaleX);
                 
                 if (width > 0 && height > 0)
                 {
+                    // CreateRoundRectRgn usa coordenadas físicas
+                    // +1 na largura/altura para garantir que a borda direita/inferior seja desenhada corretamente se o sistema cortasse
                     IntPtr rgn = Win32.CreateRoundRectRgn(0, 0, width + 1, height + 1, cornerRadius, cornerRadius);
                     Win32.SetWindowRgn(hwnd, rgn, true);
-                    // Nota: Não deletamos rgn porque SetWindowRgn assume propriedade dele
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                // Log safe para debug se necessário
+                try { System.Diagnostics.Debug.WriteLine($"ApplyRoundedRegion Error: {ex.Message}"); } catch {}
+            }
         }
         
         /// <summary>
@@ -676,16 +698,33 @@ namespace VoltrisOptimizer.UI
             try
             {
                 LogToFile("Obtendo ícone do aplicativo...");
-                var icon = GetApplicationIcon();
+                
+                System.Drawing.Icon icon = null;
+                try 
+                {
+                    var iconUri = new Uri("pack://application:,,,/Images/favicon.ico");
+                    var resourceInfo = Application.GetResourceStream(iconUri);
+                    if (resourceInfo != null)
+                    {
+                        using (var stream = resourceInfo.Stream)
+                        {
+                            icon = new System.Drawing.Icon(stream);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogToFile($"Erro ao carregar ícone de recurso: {ex.Message}");
+                }
+
                 if (icon == null)
                 {
-                    LogToFile("ERRO: Ícone é null, usando ícone padrão do sistema");
-                    App.LoggingService?.LogError("Não foi possível obter o ícone do aplicativo para o systray");
+                    LogToFile("AVISO: Ícone não encontrado nos recursos, tentando SystemIcons.Application");
                     icon = System.Drawing.SystemIcons.Application;
                 }
                 else
                 {
-                    LogToFile("Ícone obtido com sucesso");
+                    LogToFile("Ícone obtido com sucesso via Resource Stream");
                 }
                 
                 LogToFile("Criando NotifyIcon...");
@@ -733,7 +772,12 @@ namespace VoltrisOptimizer.UI
             {
                 try
                 {
-                    var contextMenu = CreateTrayContextMenu();
+                    if (_cachedTrayMenu == null)
+                    {
+                         _cachedTrayMenu = CreateTrayContextMenu();
+                    }
+                    
+                    var contextMenu = _cachedTrayMenu;
                     
                     // Obter posição do cursor em coordenadas da tela
                     var mousePos = System.Windows.Forms.Control.MousePosition;
