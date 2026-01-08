@@ -62,7 +62,7 @@ export function GuideTemplate({
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-[#0A0A0F] via-[#121218] to-[#0A0A0F]">
+      <main className="min-h-screen bg-gradient-to-br from-[#0A0A0F] via-[#121218] to-[#0A0A0F] pt-24">
         
         {/* Hero Section */}
         <section className="relative py-20 px-4 overflow-hidden">

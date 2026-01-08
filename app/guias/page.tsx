@@ -370,11 +370,15 @@ export default function GuiasPage() {
                 >
                   <Link href={guide.href}>
                     <div className="group bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 rounded-2xl border border-[#8B31FF]/10 hover:border-[#FF4B6B]/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(139,49,255,0.1)] h-full flex flex-col cursor-pointer">
-                      {/* Icon */}
-                      <div className="mb-4 inline-block p-3 rounded-xl bg-gradient-to-r from-[#FF4B6B]/20 via-[#8B31FF]/20 to-[#31A8FF]/20 group-hover:scale-110 transition-transform duration-300">
+                      {/* Icon Header */}
+                      <div className="mb-4 inline-block p-3 rounded-xl bg-gradient-to-r from-[#FF4B6B]/20 via-[#8B31FF]/20 to-[#31A8FF]/20 group-hover:scale-110 transition-transform duration-300 relative">
                         <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]">
                           {guide.icon}
                         </div>
+                        {/* Título em branco na caixinha */}
+                        <div className="absolute -top-2 -right-2 w-3 h-3 bg-white rounded-full opacity-20"></div>
+                        <div className="absolute -top-1 -left-2 w-2 h-2 bg-white rounded-full opacity-30"></div>
+                        <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-white rounded-full opacity-25"></div>
                       </div>
 
                       {/* Category and Meta */}
