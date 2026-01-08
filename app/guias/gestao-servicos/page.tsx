@@ -1,25 +1,19 @@
-'use client';
-
-import React from 'react';
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import AdSenseBanner from '../../components/AdSenseBanner';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Limpeza Completa do Computador";
-const description = "Técnicas profissionais para limpar arquivos temporários, cache, programas desnecessários e otimizar o espaço em disco do seu computador.";
-const keywords = ['limpeza computador', 'limpeza windows', 'otimizacao disco', 'arquivos temporarios', 'desfragmentacao'];
+const title = "Guia Completo de Gestão de Serviços do Sistema";
+const description = "Configure, otimize e monitore serviços do Windows para melhor performance e segurança. Desativação inteligente de serviços desnecessários.";
+const keywords = ["gestão serviços","services.msc","otimização windows","desempenho","segurança sistema"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
-export default function LimpezaComputadorGuide() {
+export default function GestaoservicosGuide() {
   const contentSections = [
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">${title} é uma técnica essencial para profissionais de TI. Este guia apresenta uma abordagem completa e profissional para dominar esta área de especialização.</p>
+        <p class="mb-4">Este guia apresenta uma abordagem completa e profissional para dominar guia completo de gestão de serviços do sistema. 
+        Com práticas recomendadas e técnicas avançadas, você estará equipado para lidar com desafios complexos nesta área.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
@@ -36,7 +30,7 @@ export default function LimpezaComputadorGuide() {
             <ul class="text-gray-300 text-sm space-y-1">
               <li>🔧 Conhecimento básico de informática</li>
               <li>💻 Sistema Windows 10/11 atualizado</li>
-              <li>⏱️ Tempo estimado: 45 minutos</li>
+              <li>⏱️ Tempo estimado: 65 minutos</li>
               <li>📚 Nível: Intermediário</li>
             </ul>
           </div>
@@ -188,11 +182,10 @@ export default function LimpezaComputadorGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="45 minutos"
+      estimatedTime="65 minutos"
       difficultyLevel="Intermediário"
       contentSections={contentSections}
       relatedGuides={relatedGuides}
     />
   );
 }
-

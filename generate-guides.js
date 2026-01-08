@@ -320,8 +320,8 @@ guides.forEach(guide => {
   // Criar arquivo do guia
   fs.writeFileSync(filePath, generateGuideContent(guide));
   
-  console.log(\`✓ Criado: \${guide.dir}/page.tsx\`);
+  console.log(`✓ Criado: ${guide.dir}/page.tsx`);
 });
 
-console.log(\`\\n🎉 Total de \${guides.length} guias criados com sucesso!\`);
-console.log(\`📊 Progresso: 13/\${guides.length + 13} páginas concluídas\`);
+console.log(`\n🎉 Total de ${guides.length} guias criados com sucesso!`);
+console.log(`📊 Progresso: 13/${guides.length + 13} páginas concluídas`);

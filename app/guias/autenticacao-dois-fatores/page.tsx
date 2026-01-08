@@ -3,124 +3,155 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 const title = "Guia Completo de Autenticação de Dois Fatores (2FA)";
 const description = "Implemente autenticação de dois fatores em todas as suas contas para segurança máxima. Configuração passo a passo para Google, Microsoft, Facebook e serviços financeiros.";
-const keywords = ['2fa', 'autenticação dois fatores', 'segurança de contas', 'totp', 'u2f', 'google authenticator'];
+const keywords = ["2fa","autenticação dois fatores","segurança de contas","totp","u2f","google authenticator"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
-export default function AutenticacaoDoisFatoresGuide() {
+export default function AutenticacaodoisfatoresGuide() {
   const contentSections = [
     {
-      title: "Fundamentos da Autenticação de Dois Fatores",
+      title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">A autenticação de dois fatores (2FA) adiciona uma camada extra de segurança às suas contas online, 
-        exigindo não apenas uma senha, mas também um segundo fator de autenticação.</p>
+        <p class="mb-4">Este guia apresenta uma abordagem completa e profissional para dominar guia completo de autenticação de dois fatores (2fa). 
+        Com práticas recomendadas e técnicas avançadas, você estará equipado para lidar com desafios complexos nesta área.</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Tipos de 2FA</h3>
+            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>📱 SMS (menos seguro)</li>
-              <li>🔑 TOTP (apps autenticadores)</li>
-              <li>_usb U2F (tokens físicos)</li>
-              <li>📧 Email (moderadamente seguro)</li>
+              <li>✓ Melhoria significativa de performance</li>
+              <li>✓ Redução de problemas técnicos</li>
+              <li>✓ Maior segurança do sistema</li>
+              <li>✓ Otimização de recursos</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios</h3>
+            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-300 text-sm space-y-1">
-              <li>🛡️ Proteção contra roubo de senhas</li>
-              <li>🔐 Segurança mesmo com vazamentos</li>
-              <li>📈 Redução de fraudes financeiras</li>
-              <li>💼 Requisito corporativo crescente</li>
+              <li>🔧 Conhecimento básico de informática</li>
+              <li>💻 Sistema Windows 10/11 atualizado</li>
+              <li>⏱️ Tempo estimado: 45 minutos</li>
+              <li>📚 Nível: Intermediário</li>
             </ul>
           </div>
         </div>
       `,
       subsections: [
         {
-          subtitle: "Apps Autenticadores Recomendados",
+          subtitle: "Quando Aplicar Esta Técnica",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li><strong class="text-white">Google Authenticator</strong>: Simples e confiável</li>
-              <li><strong class="text-white">Authy</strong>: Backup na nuvem e multi-dispositivo</li>
-              <li><strong class="text-white">Microsoft Authenticator</strong>: Integração Office 365</li>
-              <li><strong class="text-white">LastPass Authenticator</strong>: Para usuários LastPass</li>
+              <li>Quando enfrentar problemas de performance</li>
+              <li>Para prevenção de falhas futuras</li>
+              <li>Durante manutenção preventiva</li>
+              <li>Ao configurar novos sistemas</li>
             </ul>
           `
         }
       ]
     },
     {
-      title: "Configuração Passo a Passo por Serviço",
+      title: "Configuração Passo a Passo",
       content: `
-        <p class="mb-4">Instruções detalhadas para habilitar 2FA nos serviços mais populares.</p>
+        <p class="mb-4">Siga estas etapas metodológicas para implementação completa e segura.</p>
       `,
       subsections: [
         {
-          subtitle: "Google Account (Gmail, YouTube, etc.)",
+          subtitle: "Preparação Inicial",
           content: `
             <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Acesse myaccount.google.com/security</li>
-              <li>Clique em 'Autenticação de 2 etapas'</li>
-              <li>Insira sua senha quando solicitado</li>
-              <li>Escolha método (app autenticador recomendado)</li>
-              <li>Escaneie QR code com app escolhido</li>
-              <li>Digite código gerado para confirmação</li>
-              <li>Guarde códigos de backup em local seguro</li>
+              <li>Faça backup completo do sistema</li>
+              <li>Verifique requisitos mínimos de hardware/software</li>
+              <li>Baixe ferramentas necessárias de fontes confiáveis</li>
+              <li>Crie ponto de restauração do sistema</li>
+              <li>Feche todos os programas em execução</li>
             </ol>
           `
         },
         {
-          subtitle: "Microsoft Account (Outlook, Office 365)",
+          subtitle: "Execução Principal",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Vá em account.microsoft.com/security</li>
-              <li>Selecione 'Mais opções de segurança'</li>
-              <li>Escolha 'Ativar autenticação de dois fatores'</li>
-              <li>Siga processo similar ao Google</li>
-              <li>Configure método de backup alternativo</li>
+              <li>Siga instruções específicas do guia</li>
+              <li>Monitore sistema durante processo</li>
+              <li>Documente cada etapa realizada</li>
+              <li>Teste funcionalidade após conclusão</li>
+              <li>Verifique logs de eventuais erros</li>
             </ul>
           `
         }
       ]
     },
     {
-      title: "Práticas de Segurança Avançadas",
+      title: "Ferramentas e Recursos Recomendados",
       content: `
-        <p class="mb-4">Maximize a eficácia da sua implementação 2FA com estas práticas profissionais.</p>
+        <p class="mb-4">Utilize estas ferramentas profissionais para melhores resultados.</p>
       `,
       subsections: [
         {
-          subtitle: "Gestão de Códigos de Backup",
+          subtitle: "Software Especializado",
           content: `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">✓ FAÇA</h4>
+                <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
                 <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Imprima e guarde em cofre físico</li>
-                  <li>Armazene em gerenciador de senhas</li>
-                  <li>Compartilhe com herdeiro digital confiável</li>
+                  <li>Ferramentas nativas do Windows</li>
+                  <li>Software open source recomendado</li>
+                  <li>Utilitários de diagnóstico básicos</li>
                 </ul>
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">✗ NÃO FAÇA</h4>
+                <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
                 <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Não armazene no mesmo dispositivo</li>
-                  <li>Não envie por email não criptografado</li>
-                  <li>Não deixe em notas visíveis</li>
+                  <li>Ferramentas profissionais especializadas</li>
+                  <li>Licenças corporativas quando necessário</li>
+                  <li>Suporte técnico especializado</li>
                 </ul>
               </div>
             </div>
           `
         },
         {
-          subtitle: "Hierarquia de Segurança por Serviço",
+          subtitle: "Práticas de Segurança",
           content: `
             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li><strong class="text-white">Financeiro/Bancário</strong>: U2F obrigatório</li>
-              <li><strong class="text-white">Email Principal</strong>: TOTP + backup</li>
-              <li><strong class="text-white">Redes Sociais</strong>: TOTP básico</li>
-              <li><strong class="text-white">Contas Secundárias</strong>: SMS mínimo</li>
+              <li>Sempre verifique integridade de downloads</li>
+              <li>Use apenas fontes oficiais e confiáveis</li>
+              <li>Mantenha antivírus atualizado durante processo</li>
+              <li>Faça testes em ambiente controlado primeiro</li>
+            </ul>
+          `
+        }
+      ]
+    },
+    {
+      title: "Troubleshooting e Solução de Problemas",
+      content: `
+        <p class="mb-4">Soluções para problemas comuns que podem surgir durante a implementação.</p>
+      `,
+      subsections: [
+        {
+          subtitle: "Erros Frequentes e Soluções",
+          content: `
+            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
+              <h4 class="text-white font-semibold mb-2">Problema: [Descrição do problema comum]</h4>
+              <p class="text-gray-300 text-sm mb-2">Solução: Etapas detalhadas para resolução</p>
+              <ul class="text-gray-300 text-xs space-y-1 ml-4">
+                <li>Etapa 1 de resolução</li>
+                <li>Etapa 2 de resolução</li>
+                <li>Etapa 3 de resolução</li>
+              </ul>
+            </div>
+          `
+        },
+        {
+          subtitle: "Prevenção de Problemas Futuros",
+          content: `
+            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
+              <li>Implemente monitoramento contínuo</li>
+              <li>Realize manutenção preventiva regular</li>
+              <li>Mantenha sistema sempre atualizado</li>
+              <li>Documente configurações e mudanças</li>
             </ul>
           `
         }
@@ -135,14 +166,14 @@ export default function AutenticacaoDoisFatoresGuide() {
       description: "Proteção abrangente contra ameaças cibernéticas"
     },
     {
-      href: "/guias/criptografia-dados",
-      title: "Criptografia de Dados",
-      description: "Proteção avançada de informações sensíveis"
+      href: "/guias/otimizacao-performance",
+      title: "Otimização de Performance",
+      description: "Maximize o desempenho do seu sistema"
     },
     {
-      href: "/guias/firewall-configuracao",
-      title: "Configuração de Firewall",
-      description: "Proteção de rede avançada para Windows"
+      href: "/guias/manutencao-preventiva",
+      title: "Manutenção Preventiva",
+      description: "Estratégias completas de cuidados com o sistema"
     }
   ];
 
