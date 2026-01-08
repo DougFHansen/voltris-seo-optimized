@@ -2,7 +2,7 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AdSenseBanner from '../components/AdSenseBanner';
+// AdSense removido - Política AdSense: Apenas páginas /guias
 
 export default function TermosUso() {
   return (
@@ -277,7 +277,7 @@ export default function TermosUso() {
           </div>
         </div>
       </div>
-      <AdSenseBanner />
+      {/* AdSense removido - Política AdSense: Apenas páginas /guias */}
       <Footer />
     </>
   );

@@ -191,7 +191,7 @@ export default function FAQPage() {
           </div>
         </div>
       </div>
-      <AdSenseBanner />
+      {/* AdSense removido - Política AdSense: Apenas páginas /guias */}
       <Footer />
     </>
   );

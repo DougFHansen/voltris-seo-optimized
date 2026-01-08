@@ -2,7 +2,7 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AdSenseBanner from '../components/AdSenseBanner';
+// AdSense removido - Política AdSense: Apenas páginas /guias
 
 export default function LGPD() {
   return (
@@ -161,7 +161,7 @@ export default function LGPD() {
           </div>
         </div>
       </div>
-      <AdSenseBanner />
+      {/* AdSense removido - Política AdSense: Apenas páginas /guias */}
       <Footer />
     </>
   );

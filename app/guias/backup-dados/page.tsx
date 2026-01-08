@@ -212,6 +212,96 @@ export default function BackupDadosGuide() {
               </ul>
             </div>
 
+            {/* Segurança no Backup */}
+            <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#31A8FF]/20 shadow-lg">
+              <h2 className="text-3xl font-bold text-white mb-4">Segurança no Backup de Dados</h2>
+              
+              <h3 className="text-2xl font-bold text-white mb-3 mt-6">Criptografia de Backups</h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                Para dados sensíveis, é fundamental criptografar seus backups:
+              </p>
+              
+              <div className="mb-4">
+                <h4 className="text-xl font-bold text-white mb-2">Opções de Criptografia</h4>
+                <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                  <li><strong className="text-white">BitLocker (Windows Pro/Enterprise)</strong>: Criptografia nativa do Windows para unidades inteiras</li>
+                  <li><strong className="text-white">VeraCrypt</strong>: Software gratuito de código aberto para criptografia de volumes</li>
+                  <li><strong className="text-white">7-Zip com senha</strong>: Compactação criptografada para backups individuais</li>
+                  <li><strong className="text-white">Serviços de nuvem com criptografia</strong>: Google Drive, OneDrive, Dropbox oferecem criptografia</li>
+                </ul>
+              </div>
+
+              <div className="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
+                <p className="text-white font-semibold mb-2">⚠️ Aviso de Segurança:</p>
+                <p className="text-gray-300 leading-relaxed">
+                  Se você perder a senha de um backup criptografado, os dados são irrecuperavelmente perdidos. Sempre mantenha cópias de segurança das senhas em locais seguros e separados dos backups.
+                </p>
+              </div>
+            </div>
+
+            {/* Tipos Avançados de Backup */}
+            <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#8B31FF]/20 shadow-lg">
+              <h2 className="text-3xl font-bold text-white mb-4">Tipos Avançados de Backup</h2>
+              
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-3">Backup Incremental vs Diferencial</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
+                    <h4 className="text-white font-semibold mb-2">Backup Incremental</h4>
+                    <ul className="space-y-1 text-gray-300 text-sm">
+                      <li>✓ Mais econômico em espaço</li>
+                      <li>✓ Mais rápido para backups subsequentes</li>
+                      <li>✗ Restauração mais complexa</li>
+                    </ul>
+                  </div>
+                  <div className="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
+                    <h4 className="text-white font-semibold mb-2">Backup Diferencial</h4>
+                    <ul className="space-y-1 text-gray-300 text-sm">
+                      <li>✓ Restauração mais simples</li>
+                      <li>✓ Menos vulnerável a corrupção</li>
+                      <li>✗ Cresce em tamanho com o tempo</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-3">Backup em Tempo Real</h3>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  Soluções que fazem backup contínuo de cada alteração:
+                </p>
+                <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                  <li>Serviços cloud sync (OneDrive, Google Drive, Dropbox)</li>
+                  <li>Software especializado (Acronis, Veeam)</li>
+                  <li>Snapshot automático do sistema</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Estratégias Empresariais */}
+            <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#FF4B6B]/20 shadow-lg">
+              <h2 className="text-3xl font-bold text-white mb-4">Estratégias Empresariais de Backup</h2>
+              
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-3">Compliance e Regulamentações</h3>
+                <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                  <li><strong className="text-white">LGPD/GDPR</strong>: Proteção de dados pessoais</li>
+                  <li><strong className="text-white">SOX</strong>: Requisitos financeiros</li>
+                  <li><strong className="text-white">HIPAA</strong>: Dados de saúde</li>
+                </ul>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-3">Ferramentas Corporativas</h3>
+                <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                  <li>Veeam Backup & Replication</li>
+                  <li>Acronis Cyber Protect</li>
+                  <li>Commvault Complete Backup</li>
+                  <li>Veritas NetBackup</li>
+                </ul>
+              </div>
+            </div>
+
             <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#8B31FF]/20 shadow-lg">
               <h2 className="text-3xl font-bold text-white mb-4">Frequência de Backup</h2>
               

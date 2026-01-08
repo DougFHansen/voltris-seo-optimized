@@ -3,7 +3,7 @@
 import React from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AdSenseBanner from '../components/AdSenseBanner';
+// AdSense removido - Política AdSense: Apenas páginas /guias
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -30,7 +30,7 @@ export default function ContatoPage() {
           </div>
         </section>
 
-        <AdSenseBanner />
+        {/* AdSense removido - Política AdSense: Apenas páginas /guias */}
 
         {/* Contact Information */}
         <section className="py-12 px-4 sm:px-6 lg:px-8">
@@ -177,7 +177,7 @@ export default function ContatoPage() {
           </div>
         </section>
 
-        <AdSenseBanner />
+        {/* AdSense removido - Política AdSense: Apenas páginas /guias */}
       </main>
       <Footer />
     </>

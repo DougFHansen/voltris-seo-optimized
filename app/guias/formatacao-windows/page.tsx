@@ -315,6 +315,167 @@ export default function FormatacaoWindowsGuide() {
                 </ol>
               </div>
 
+              {/* Tipos de Formatação */}
+              <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#8B31FF]/20 shadow-lg">
+                <h2 className="text-3xl font-bold text-white mb-4">Tipos de Formatação e Quando Usar Cada Uma</h2>
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3">Formatação Completa (Limpa)</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    A formatação completa remove tudo do disco rígido, incluindo sistema operacional, programas, drivers e todos os dados do usuário. Este tipo é recomendado quando:
+                  </p>
+                  <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                    <li>O computador está extremamente lento e otimizações não funcionam</li>
+                    <li>Há infecção grave por vírus ou malware</li>
+                    <li>Você está vendendo ou doando o computador</li>
+                    <li>Houve mudança significativa de hardware (processador/placa-mãe)</li>
+                    <li>O sistema operacional está corrompido e não inicia</li>
+                  </ul>
+                </div>
+
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3">Reinstalação do Windows (Upgrade)</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Este método mantém seus arquivos pessoais mas reinstala o sistema operacional. Ideal para:
+                  </p>
+                  <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                    <li>Atualização de versão do Windows (ex: Windows 10 para Windows 11)</li>
+                    <li>Quando o sistema está instável mas os arquivos estão intactos</li>
+                    <li>Problemas com atualizações do sistema</li>
+                    <li>Corrupção de arquivos do sistema, mas não dos dados pessoais</li>
+                  </ul>
+                </div>
+
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3">Formatação Rápida vs Formatação Completa</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
+                      <h4 className="text-white font-semibold mb-2">Formatação Rápida</h4>
+                      <ul className="space-y-1 text-gray-300 text-sm">
+                        <li>✓ Mais rápida (10-30 minutos)</li>
+                        <li>✓ Mantém estrutura do sistema de arquivos</li>
+                        <li>✗ Dados podem ser recuperados com ferramentas forenses</li>
+                        <li>✗ Menos segura para descarte de equipamentos</li>
+                      </ul>
+                    </div>
+                    <div className="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
+                      <h4 className="text-white font-semibold mb-2">Formatação Completa</h4>
+                      <ul className="space-y-1 text-gray-300 text-sm">
+                        <li>✓ Mais segura (dados realmente apagados)</li>
+                        <li>✓ Ideal para venda/doação de equipamentos</li>
+                        <li>✗ Leva mais tempo (1-3 horas)</li>
+                        <li>✗ Requer mais conhecimento técnico</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
+                  <p className="text-white font-semibold mb-2">💡 Recomendação Profissional:</p>
+                  <p className="text-gray-300 leading-relaxed">
+                    Para uso pessoal, a formatação completa é geralmente a melhor opção. Para empresas ou quando estiver vendendo o equipamento, considere formatação completa seguida de software especializado de eliminação de dados para garantir que informações sensíveis não possam ser recuperadas.
+                  </p>
+                </div>
+              </div>
+
+              {/* Segurança na Formatação */}
+              <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#FF4B6B]/20 shadow-lg">
+                <h2 className="text-3xl font-bold text-white mb-4">Segurança Durante e Após a Formatação</h2>
+                
+                <h3 className="text-2xl font-bold text-white mb-3 mt-6">Proteção de Dados Sensíveis</h3>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  Antes de qualquer formatação, especialmente se você planeja vender ou doar o computador, é crucial proteger seus dados pessoais:
+                </p>
+                
+                <div className="mb-4">
+                  <h4 className="text-xl font-bold text-white mb-2">1. Backup Completo e Verificado</h4>
+                  <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                    <li>Faça backup em MÚLTIPLOS locais (HD externo + nuvem)</li>
+                    <li>Verifique a integridade dos backups abrindo arquivos importantes</li>
+                    <li>Anote todas as licenças de software e chaves de ativação</li>
+                    <li>Exporte bookmarks, senhas salvas e configurações de programas</li>
+                  </ul>
+                </div>
+
+                <div className="mb-4">
+                  <h4 className="text-xl font-bold text-white mb-2">2. Eliminação Segura de Dados</h4>
+                  <p className="text-gray-300 leading-relaxed mb-2">
+                    Para dados altamente sensíveis, considere software especializado:
+                  </p>
+                  <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                    <li><strong className="text-white">DBAN (Darik's Boot and Nuke)</strong>: Software gratuito que faz eliminação completa</li>
+                    <li><strong className="text-white">Eraser</strong>: Ferramenta para Windows que sobrescreve dados múltiplas vezes</li>
+                    <li><strong className="text-white">CCleaner Drive Wiper</strong>: Função do CCleaner para limpeza segura</li>
+                  </ul>
+                </div>
+
+                <div className="mb-4">
+                  <h4 className="text-xl font-bold text-white mb-2">3. Considerações para Empresas</h4>
+                  <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                    <li>Cumprir regulamentações como LGPD, GDPR para proteção de dados</li>
+                    <li>Usar software certificado para eliminação de dados (como Blancco)</li>
+                    <li>Manter registros de descarte de equipamentos</li>
+                    <li>Considerar destruição física para HDDs muito sensíveis</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Cenários Avançados */}
+              <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#31A8FF]/20 shadow-lg">
+                <h2 className="text-3xl font-bold text-white mb-4">Cenários Avançados de Formatação</h2>
+                
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3">Formatação em Dual Boot</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Se seu computador tem dois sistemas operacionais instalados:
+                  </p>
+                  <ol className="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-4">
+                    <li>Identifique qual partição contém o Windows que deseja formatar</li>
+                    <li>Faça backup de AMBOS sistemas se necessário</li>
+                    <li>Use a mídia de instalação do Windows correspondente</li>
+                    <li>Selecione apenas a partição específica durante a formatação</li>
+                    <li>Reinstale o bootloader (GRUB) se estiver usando Linux</li>
+                  </ol>
+                </div>
+
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3">Formatação de SSD vs HDD Tradicional</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
+                      <h4 className="text-white font-semibold mb-2">SSD (Solid State Drive)</h4>
+                      <ul className="space-y-1 text-gray-300 text-sm">
+                        <li>✓ Formatação mais rápida</li>
+                        <li>✓ Menos desgaste físico</li>
+                        <li>✗ Cuidado com TRIM e otimizações específicas</li>
+                        <li>✗ Não use formatação mecânica tradicional</li>
+                      </ul>
+                    </div>
+                    <div className="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
+                      <h4 className="text-white font-semibold mb-2">HDD (Hard Disk Drive)</h4>
+                      <ul className="space-y-1 text-gray-300 text-sm">
+                        <li>✓ Formatação tradicional funciona bem</li>
+                        <li>✓ Mais tolerante a métodos antigos</li>
+                        <li>✗ Mais lenta devido à natureza mecânica</li>
+                        <li>✗ Pode apresentar setores defeituosos</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3">Formatação Remota Corporativa</h3>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Para ambientes corporativos com muitos equipamentos:
+                  </p>
+                  <ul className="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+                    <li>Usar imagens de sistema padronizadas (Sysprep)</li>
+                    <li>Implantação automatizada via ferramentas como MDT ou SCCM</li>
+                    <li>Configuração de perfis de usuário centralizados</li>
+                    <li>Integração com Active Directory e políticas de grupo</li>
+                  </ul>
+                </div>
+              </div>
+
               {/* Problemas Comuns */}
               <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#31A8FF]/20 shadow-lg">
                 <h2 className="text-3xl font-bold text-white mb-4">Problemas Comuns e Soluções</h2>
@@ -344,6 +505,20 @@ export default function FormatacaoWindowsGuide() {
                   <h3 className="text-xl font-bold text-white mb-2">Drivers não instalam</h3>
                   <p className="text-gray-300 leading-relaxed">
                     Alguns drivers podem precisar ser instalados no modo de compatibilidade ou com privilégios de administrador. Clique com botão direito no instalador &gt; Propriedades &gt; Compatibilidade &gt; Executar como administrador.
+                  </p>
+                </div>
+
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-white mb-2">Blue Screen of Death (BSOD) após formatação</h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    Pode indicar problema de hardware. Teste memória RAM com MemTest86, verifique disco rígido com CHKDSK, e atualize BIOS se necessário. Problemas comuns incluem drivers incompatíveis ou componentes defeituosos.
+                  </p>
+                </div>
+
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-white mb-2">Ativação do Windows falha</h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    Se você tinha Windows ativado antes, use a mesma chave de produto. Para versões OEM, a ativação geralmente é automática. Em caso de problemas, entre em contato com o suporte da Microsoft com prova de compra.
                   </p>
                 </div>
               </div>
