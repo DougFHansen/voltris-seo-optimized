@@ -48,8 +48,47 @@ export default function InternationalContact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log('Form submitted:', formData);
+    
+    // Format message for WhatsApp
+    const message = `*NOVO CONTATO - VOLTRIS EXTERIOR*
+
+` +
+      `*Nome:* ${formData.name}
+` +
+      `*Email:* ${formData.email}
+` +
+      `*País:* ${formData.country}
+` +
+      `*Telefone/WhatsApp:* ${formData.phone || 'Não informado'}
+` +
+      `*Serviço de Interesse:* ${formData.service || 'Não especificado'}
+
+` +
+      `*Mensagem:*
+${formData.message || 'Sem mensagem'}
+
+` +
+      `*Enviado em:* ${new Date().toLocaleString('pt-BR')}`;
+    
+    // Encode message for URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/5511996716235?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      country: '',
+      phone: '',
+      service: '',
+      message: ''
+    });
+    
+    // Show success message (you can implement a toast notification here)
+    alert('Mensagem enviada com sucesso! Você será redirecionado para o WhatsApp.');
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -60,7 +99,7 @@ export default function InternationalContact() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313]">
       <Header />
       
       {/* Hero Section */}

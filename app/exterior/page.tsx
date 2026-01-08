@@ -135,7 +135,7 @@ export default function ExteriorHomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313]">
       {/* Header - Using existing component */}
       <Header />
       
@@ -217,7 +217,7 @@ export default function ExteriorHomePage() {
 
       {/* Services Section */}
       <AnimatedSection>
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/20">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#171313]/20">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -344,7 +344,7 @@ export default function ExteriorHomePage() {
 
       {/* CTA Section */}
       <AnimatedSection>
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-900/30 to-blue-900/30">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#171313] to-[#171313]">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Pronto para Resolver Seus Problemas Tecnológicos?
