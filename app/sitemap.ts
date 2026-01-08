@@ -215,6 +215,61 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    // SEÇÃO INTERNACIONAL - Nova camada para brasileiros no exterior
+    {
+      url: `${baseUrl}/exterior`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/exterior/servicos`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/exterior/contato`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/exterior/servicos/suporte-tecnico`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/exterior/servicos/criacao-sites`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/exterior/servicos/migracao-dados`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/exterior/servicos/configuracao-redes`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/exterior/servicos/suporte-nuvem`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/exterior/servicos/consultoria`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
   ];
 
   // Adicionar dinamicamente todas as páginas de posts do blog
