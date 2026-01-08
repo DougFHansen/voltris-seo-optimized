@@ -370,15 +370,17 @@ export default function GuiasPage() {
                 >
                   <Link href={guide.href}>
                     <div className="group bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 rounded-2xl border border-[#8B31FF]/10 hover:border-[#FF4B6B]/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(139,49,255,0.1)] h-full flex flex-col cursor-pointer">
-                      {/* Category Header with Title */}
-                      <div className="mb-4 text-center">
-                        <div className="inline-block p-3 rounded-xl bg-gradient-to-r from-[#FF4B6B]/20 via-[#8B31FF]/20 to-[#31A8FF]/20 group-hover:scale-110 transition-transform duration-300 mb-2">
-                          <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]">
+                      {/* Category Header with Title Inside */}
+                      <div className="mb-4">
+                        <div className="relative inline-block p-4 rounded-xl bg-gradient-to-r from-[#FF4B6B]/20 via-[#8B31FF]/20 to-[#31A8FF]/20 group-hover:scale-110 transition-transform duration-300 w-full">
+                          <div className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-center">
                             {guide.icon}
                           </div>
-                        </div>
-                        <div className="text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                          {guide.category}
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-xs font-semibold text-white uppercase tracking-wider bg-black/20 px-2 py-1 rounded">
+                              {guide.category}
+                            </span>
+                          </div>
                         </div>
                       </div>
 
