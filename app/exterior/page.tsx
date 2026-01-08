@@ -135,7 +135,7 @@ export default function ExteriorHomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313]">
+    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313] header-spacing">
       {/* Header - Using existing component */}
       <Header />
       

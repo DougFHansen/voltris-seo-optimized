@@ -75,6 +75,11 @@
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 23, 19, 19;
   --background-end-rgb: 23, 19, 19;
+  /* Header height variables for proper spacing */
+  --header-height-mobile: 3.5rem; /* h-14 = 56px */
+  --header-height-xs: 4rem;       /* h-16 = 64px */
+  --header-height-sm: 4.5rem;      /* h-18 = 72px */
+  --header-height-lg: 5rem;        /* h-20 = 80px */
 }
 
 body {
@@ -1001,6 +1006,29 @@ html, body {
     background-clip: text !important;
     color: transparent !important;
     display: inline-block;
+  }
+}
+
+/* Header spacing utility classes - Professional implementation */
+.header-spacing {
+  padding-top: var(--header-height-mobile);
+}
+
+@media (min-width: 475px) {
+  .header-spacing {
+    padding-top: var(--header-height-xs);
+  }
+}
+
+@media (min-width: 640px) {
+  .header-spacing {
+    padding-top: var(--header-height-sm);
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-spacing {
+    padding-top: var(--header-height-lg);
   }
 }
 
