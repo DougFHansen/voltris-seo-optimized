@@ -17,7 +17,7 @@ import {
   UsersIcon
 } from '@heroicons/react/24/outline';
 import { createClient } from '@/utils/supabase/client';
-import AdSenseBanner from '@/app/components/AdSenseBanner';
+
 const supabase = createClient();
 
 const officePlans = [
@@ -327,7 +327,7 @@ export default function InstalacaoOfficePage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

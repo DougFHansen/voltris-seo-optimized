@@ -17,7 +17,7 @@ import {
   ServerIcon,
   ComputerDesktopIcon
 } from '@heroicons/react/24/outline';
-import AdSenseBanner from '../../components/AdSenseBanner';
+
 
 export default function SuporteWindowsPage() {
   const router = useRouter();
@@ -346,7 +346,7 @@ export default function SuporteWindowsPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

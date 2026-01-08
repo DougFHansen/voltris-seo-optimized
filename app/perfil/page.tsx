@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AdSenseBanner from '../components/AdSenseBanner';
+
 import { useAuth } from '@/app/hooks/useAuth';
 
 export default function ProfilePage() {
@@ -267,7 +267,7 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

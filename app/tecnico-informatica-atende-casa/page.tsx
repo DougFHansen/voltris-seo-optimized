@@ -22,7 +22,7 @@ import {
   PhoneIcon,
   ChatBubbleLeftRightIcon
 } from '@heroicons/react/24/outline';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 const services = [
   {
@@ -159,7 +159,7 @@ export default function TecnicoInformaticaAtendeCasaPage() {
             ))}
           </div>
         </section>
-        <AdSenseBanner />
+        
       </main>
       <Footer />
     </>

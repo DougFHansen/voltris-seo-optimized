@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState('');
@@ -97,7 +97,7 @@ export default function ResetPasswordPage() {
           )}
         </div>
       </div>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

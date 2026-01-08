@@ -12,7 +12,7 @@ import { posts as staticPosts } from '@/data/blog/posts';
 import { Post } from '@/types/blog';
 import { createClient } from '@/utils/supabase/client';
 import BlogHeader from '@/components/blog/BlogHeader';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -138,7 +138,6 @@ export default function BlogPage() {
           </div>
         </div>
       </main>
-      <AdSenseBanner />
       <Footer />
     </>
   );

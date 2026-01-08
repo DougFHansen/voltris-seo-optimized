@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, MapPin, Clock, Star, Users, CheckCircle, Globe, Code, Palette, Smartphone, Zap } from 'lucide-react';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 export const metadata: Metadata = {
   title: "Criar Site - Desenvolvimento de Sites Profissionais e Responsivos | VOLTRIS",
@@ -322,7 +322,7 @@ export default function CriarSitePage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

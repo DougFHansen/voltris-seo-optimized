@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Head from 'next/head';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 const services = [
   // ... (cole aqui o array de serviços do todos-os-servicos/page.tsx) ...

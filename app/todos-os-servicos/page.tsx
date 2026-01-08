@@ -20,7 +20,7 @@ import {
   DocumentTextIcon
 } from '@heroicons/react/24/outline';
 import { createClient } from '@/utils/supabase/client';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 const supabase = createClient();
 
 const services = [
@@ -489,7 +489,7 @@ export default function Servicos() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

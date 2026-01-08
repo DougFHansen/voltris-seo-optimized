@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import { RocketLaunchIcon, ShieldCheckIcon, PaintBrushIcon, CheckCircleIcon, QuestionMarkCircleIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import Head from 'next/head';
 import { createClient } from '@/utils/supabase/client';
-import AdSenseBanner from '../../components/AdSenseBanner';
+
 
 const supabase = createClient();
 
@@ -239,7 +239,7 @@ export default function InstalacaoDeProgramasPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

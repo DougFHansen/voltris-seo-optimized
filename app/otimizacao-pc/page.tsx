@@ -17,7 +17,7 @@ import {
   BoltIcon
 } from '@heroicons/react/24/outline';
 import { createClient } from '@/utils/supabase/client';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 const supabase = createClient();
 
 const otimizacaoPlans = [
@@ -436,7 +436,7 @@ export default function OtimizacaoPcPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

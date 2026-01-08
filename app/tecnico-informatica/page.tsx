@@ -18,7 +18,7 @@ import {
   PlayIcon,
   DocumentTextIcon
 } from '@heroicons/react/24/outline';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 const services = [
   {
@@ -155,7 +155,7 @@ export default function TecnicoInformaticaPage() {
             ))}
           </div>
         </section>
-        <AdSenseBanner />
+        
       </main>
       <Footer />
     </>

@@ -21,7 +21,7 @@ import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import Head from 'next/head';
 import { CheckCircle } from 'lucide-react';
-import AdSenseBanner from '../../components/AdSenseBanner';
+
 
 export default function CriacaoSitesPage() {
   const router = useRouter();
@@ -388,7 +388,7 @@ export default function CriacaoSitesPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

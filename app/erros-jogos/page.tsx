@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { Gamepad2, AlertTriangle, CheckCircle, Clock, Users, Shield } from 'lucide-react';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 export const metadata: Metadata = {
   title: 'Correção de Erros em Jogos - GTA, CS2, Cyberpunk e Mais | VOLTRIS',
@@ -709,7 +709,7 @@ export default function ErrosJogosPage() {
         </div>
       </section>
 
-      <AdSenseBanner />
+      
       <Footer />
       
       {/* Schema.org structured data for game error correction service */}

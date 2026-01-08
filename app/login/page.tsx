@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiCheckCircle, FiLoader } from 'react-icons/fi';
 import { useAuth } from '@/app/hooks/useAuth';
 import { FaWhatsapp } from 'react-icons/fa';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 import Footer from '@/components/Footer';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';

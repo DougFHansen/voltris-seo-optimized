@@ -2,7 +2,7 @@
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 export default function PoliticaPrivacidade() {
   return (
@@ -325,7 +325,7 @@ export default function PoliticaPrivacidade() {
           </div>
         </div>
       </div>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 export default function OptimizerPage() {
   return (
@@ -262,7 +262,7 @@ export default function OptimizerPage() {
           </div>
         </section>
       </div>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

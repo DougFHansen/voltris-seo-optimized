@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, MapPin, Clock, Star, Users, CheckCircle, Globe } from 'lucide-react';
-import AdSenseBanner from '../components/AdSenseBanner';
+
 
 export const metadata: Metadata = {
   title: "Técnico de Informática na Minha Região - Suporte Remoto em Todo Brasil | VOLTRIS",
@@ -336,7 +336,7 @@ export default function TecnicoInformaticaMinhaRegiaoPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

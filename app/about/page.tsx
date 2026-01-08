@@ -4,7 +4,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Head from 'next/head';
-import AdSenseBanner from '../components/AdSenseBanner';
 
 export default function AboutPage() {
   return (
@@ -461,7 +460,6 @@ export default function AboutPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
       <Footer />
     </>
   );

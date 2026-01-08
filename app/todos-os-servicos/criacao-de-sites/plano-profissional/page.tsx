@@ -16,7 +16,7 @@ import {
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
 import { createClient } from '@/utils/supabase/client';
-import AdSenseBanner from '../../../components/AdSenseBanner';
+
 
 export default function PlanoProfissionalPage() {
   const supabase = createClient();
@@ -223,7 +223,7 @@ export default function PlanoProfissionalPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );

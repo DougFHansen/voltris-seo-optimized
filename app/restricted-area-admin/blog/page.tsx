@@ -8,7 +8,7 @@ import { FiEdit2, FiTrash2, FiPlus, FiMessageSquare } from 'react-icons/fi';
 import Image from 'next/image';
 import Link from 'next/link';
 import CommentsAdmin from '@/components/admin/CommentsAdmin';
-import AdSenseBanner from '../../components/AdSenseBanner';
+
 import Footer from '@/components/Footer';
 
 type BlogPost = {
@@ -275,7 +275,7 @@ export default function BlogAdmin() {
           </div>
         </div>
       </div>
-      <AdSenseBanner />
+      
       <Footer />
     </>
   );
