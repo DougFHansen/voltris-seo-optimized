@@ -1,10 +1,3 @@
-'use client';
-
-import React from 'react';
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import AdSenseBanner from '../../components/AdSenseBanner';
-import Link from 'next/link';
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
