@@ -163,50 +163,27 @@ export default function GamersPage() {
     }
   ];
 
-  // Comparação com concorrentes
-  const competitors = [
+  // Características do VOLTRIS Optimizer
+  const voltrisFeaturesHighlight = [
     {
-      name: 'VOLTRIS Optimizer',
-      rating: '5.0',
-      advantages: [
-        'Inteligência artificial própria',
-        'Suporte para CPUs híbridas',
-        'Otimização específica por jogo',
-        'Interface em português',
-        'Modo Gamer automático'
-      ],
-      disadvantages: [],
-      color: 'from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]',
-      highlight: true
+      icon: '🤖',
+      title: 'Inteligência Artificial Avançada',
+      description: 'Algoritmos proprietários que aprendem seu estilo de jogo e otimizam automaticamente'
     },
     {
-      name: 'Razer Cortex',
-      rating: '3.5',
-      advantages: [
-        'Boa interface',
-        'Suporte a muitos jogos',
-        'Booster de memória'
-      ],
-      disadvantages: [
-        'Não otimiza hardware',
-        'Interface em inglês',
-        'Menos personalização'
-      ],
-      color: 'from-gray-500 to-gray-600'
+      icon: '⚡',
+      title: 'Otimização em Tempo Real',
+      description: 'Ajustes dinâmicos durante gameplay para máxima performance'
     },
     {
-      name: 'Game Booster 3.5',
-      rating: '2.5',
-      advantages: [
-        'Gratuito',
-        'Fácil de usar'
-      ],
-      disadvantages: [
-        'Otimizações básicas',
-        'Sem IA',
-        'Não suporta hardware moderno'
-      ],
-      color: 'from-gray-600 to-gray-700'
+      icon: '🎯',
+      title: 'Perfis Personalizados',
+      description: 'Configurações específicas para cada jogo e hardware'
+    },
+    {
+      icon: '🔧',
+      title: 'Suporte Técnico Especializado',
+      description: 'Equipe dedicada para resolver qualquer problema rapidamente'
     }
   ];
 
@@ -267,7 +244,19 @@ export default function GamersPage() {
                 <motion.button
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={() => window.open('/otimizacao-pc', '_self')}
+                  onClick={() => {
+                    // Usando requestIdleCallback para não bloquear a UI
+                    if ('requestIdleCallback' in window) {
+                      requestIdleCallback(() => {
+                        window.open('/otimizacao-pc', '_self');
+                      });
+                    } else {
+                      // Fallback para navegadores que não suportam requestIdleCallback
+                      setTimeout(() => {
+                        window.open('/otimizacao-pc', '_self');
+                      }, 0);
+                    }
+                  }}
                   className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xs sm:text-sm md:text-base shadow-lg hover:shadow-[0_0_20px_rgba(49,168,255,0.5)] transition-all duration-300 group cursor-pointer"
                 >
                   <span className="flex items-center justify-center gap-1">
@@ -507,7 +496,7 @@ export default function GamersPage() {
           </div>
         </section>
 
-        {/* Competitor Comparison */}
+        {/* Destaques Profissionais do VOLTRIS */}
         <section className="py-32 relative bg-gradient-to-b from-black/30 to-transparent">
           <div className="container mx-auto px-4">
             <motion.div 
@@ -518,92 +507,33 @@ export default function GamersPage() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-5xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
-                Comparação com Concorrentes
+                Por Que Escolher o VOLTRIS?
               </h2>
               <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
-                Veja porque o VOLTRIS Optimizer lidera o mercado brasileiro
+                Tecnologia desenvolvida especificamente para gamers brasileiros
               </p>
             </motion.div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full bg-gradient-to-br from-black/60 to-black/80 backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10">
-                <thead>
-                  <tr className="border-b border-white/20">
-                    <th className="p-6 text-left text-white font-bold text-xl">Otimizador</th>
-                    <th className="p-6 text-left text-white font-bold text-xl">Vantagens</th>
-                    <th className="p-6 text-left text-white font-bold text-xl">Limitações</th>
-                    <th className="p-6 text-center text-white font-bold text-xl">Avaliação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {competitors.map((competitor, index) => (
-                    <motion.tr
-                      key={index}
-                      initial={{ opacity: 0, x: -50 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6, delay: index * 0.2 }}
-                      className={`border-b border-white/10 last:border-b-0 ${competitor.highlight ? 'bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10' : 'hover:bg-white/5'}`}
-                    >
-                      <td className="p-6">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${competitor.color}`}></div>
-                          <span className="text-white font-bold text-lg">{competitor.name}</span>
-                          {competitor.highlight && (
-                            <span className="px-3 py-1 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white text-xs font-bold rounded-full">
-                              RECOMENDADO
-                            </span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="p-6">
-                        <ul className="space-y-2">
-                          {competitor.advantages.map((advantage, advIndex) => (
-                            <li key={advIndex} className="flex items-center gap-2 text-gray-300">
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              {advantage}
-                            </li>
-                          ))}
-                        </ul>
-                      </td>
-                      <td className="p-6">
-                        <ul className="space-y-2">
-                          {competitor.disadvantages.length > 0 ? (
-                            competitor.disadvantages.map((disadvantage, disadvIndex) => (
-                              <li key={disadvIndex} className="flex items-center gap-2 text-gray-500">
-                                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                                {disadvantage}
-                              </li>
-                            ))
-                          ) : (
-                            <li className="flex items-center gap-2 text-green-400">
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                              Nenhuma limitação significativa
-                            </li>
-                          )}
-                        </ul>
-                      </td>
-                      <td className="p-6 text-center">
-                        <div className="flex items-center justify-center gap-2">
-                          <span className="text-2xl font-bold text-[#31A8FF]">{competitor.rating}</span>
-                          <div className="flex">
-                            {[...Array(5)].map((_, i) => (
-                              <svg 
-                                key={i} 
-                                className={`w-5 h-5 ${i < Math.floor(parseFloat(competitor.rating)) ? 'text-yellow-400' : 'text-gray-600'}`} 
-                                fill="currentColor" 
-                                viewBox="0 0 20 20"
-                              >
-                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                              </svg>
-                            ))}
-                          </div>
-                        </div>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {voltrisFeaturesHighlight.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -15 }}
+                  className="group relative"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+                  
+                  <div className="relative bg-gradient-to-br from-black/60 to-black/80 backdrop-blur-xl rounded-3xl p-8 border border-white/10 h-full text-center group-hover:border-[#31A8FF]/30 transition-all duration-500">
+                    <div className="text-5xl mb-6">{feature.icon}</div>
+                    <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
+                    <p className="text-gray-400">{feature.description}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
@@ -652,7 +582,18 @@ export default function GamersPage() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => window.open('/otimizacao-pc', '_self')}
+                    onClick={() => {
+                      // Otimização para não bloquear a UI durante transições
+                      if ('requestIdleCallback' in window) {
+                        requestIdleCallback(() => {
+                          window.open('/otimizacao-pc', '_self');
+                        });
+                      } else {
+                        setTimeout(() => {
+                          window.open('/otimizacao-pc', '_self');
+                        }, 0);
+                      }
+                    }}
                     className="px-10 py-5 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xl shadow-2xl hover:shadow-[0_0_40px_rgba(49,168,255,0.5)] transition-all duration-300 flex items-center gap-3 cursor-pointer"
                   >
                     <span>📥</span>
@@ -668,7 +609,18 @@ export default function GamersPage() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    onClick={() => window.open('https://wa.me/5511996716235?text=Olá%20VOLTRIS,%20quero%20otimizar%20meu%20PC%20para%20gaming!', '_blank')}
+                    onClick={() => {
+                      // Otimização para links externos
+                      if ('requestIdleCallback' in window) {
+                        requestIdleCallback(() => {
+                          window.open('https://wa.me/5511996716235?text=Olá%20VOLTRIS,%20quero%20otimizar%20meu%20PC%20para%20gaming!', '_blank');
+                        });
+                      } else {
+                        setTimeout(() => {
+                          window.open('https://wa.me/5511996716235?text=Olá%20VOLTRIS,%20quero%20otimizar%20meu%20PC%20para%20gaming!', '_blank');
+                        }, 0);
+                      }
+                    }}
                     className="px-10 py-5 bg-transparent border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-full text-xl hover:bg-[#31A8FF] hover:text-black transition-all duration-300 flex items-center gap-3 cursor-pointer"
                   >
                     <span>💬</span>
@@ -684,10 +636,10 @@ export default function GamersPage() {
                   transition={{ delay: 0.9 }}
                 >
                   {[
-                    { icon: '⚡', text: 'Instalação Instantânea' },
+                    { icon: '🚀', text: 'Instalação Instantânea' },
                     { icon: '🇧🇷', text: 'Interface em Português' },
-                    { icon: '24/7', text: 'Suporte Premium' },
-                    { icon: '🔒', text: '100% Seguro' }
+                    { icon: '📞', text: 'Suporte Premium' },
+                    { icon: '🛡️', text: '100% Seguro' }
                   ].map((item, index) => (
                     <motion.div 
                       key={index}
