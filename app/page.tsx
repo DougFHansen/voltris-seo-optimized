@@ -251,7 +251,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      {/* Banner Principal - ULTRA MODERNO E RESPONSIVO */}
+      {/* Banner Principal - Layout Fluido e Responsivo */}
       <section
         className="w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-12 lg:px-24 bg-[#1E1E22] relative overflow-hidden"
         aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
@@ -297,8 +297,8 @@ export default function HomePage() {
           {/* Gradiente de fundo sutil */}
           <div className="absolute -z-10 w-48 h-48 sm:w-64 sm:h-64 md:w-[420px] md:h-[420px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
         </div>
-        {/* Texto e CTA - Layout fluido e adaptável */}
-        <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-6 sm:gap-8 py-12 sm:py-16 md:py-24">
+        {/* Texto e CTA - Layout fluido e adaptável com safe area */}
+        <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-6 sm:gap-8 py-12 sm:py-16 md:py-24 pb-20 md:pb-24">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 sm:mb-4 drop-shadow-lg font-sans">
             Suporte Técnico Remoto Premium 
             <motion.span
