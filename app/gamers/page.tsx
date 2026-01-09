@@ -652,7 +652,8 @@ export default function GamersPage() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-10 py-5 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xl shadow-2xl hover:shadow-[0_0_40px_rgba(49,168,255,0.5)] transition-all duration-300 flex items-center gap-3"
+                    onClick={() => window.open('/otimizacao-pc', '_self')}
+                    className="px-10 py-5 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xl shadow-2xl hover:shadow-[0_0_40px_rgba(49,168,255,0.5)] transition-all duration-300 flex items-center gap-3 cursor-pointer"
                   >
                     <span>📥</span>
                     Baixar Agora Grátis
@@ -667,7 +668,8 @@ export default function GamersPage() {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-10 py-5 bg-transparent border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-full text-xl hover:bg-[#31A8FF] hover:text-black transition-all duration-300 flex items-center gap-3"
+                    onClick={() => window.open('https://wa.me/5511996716235?text=Olá%20VOLTRIS,%20quero%20otimizar%20meu%20PC%20para%20gaming!', '_blank')}
+                    className="px-10 py-5 bg-transparent border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-full text-xl hover:bg-[#31A8FF] hover:text-black transition-all duration-300 flex items-center gap-3 cursor-pointer"
                   >
                     <span>💬</span>
                     Falar com Especialista
