@@ -216,7 +216,7 @@ export default function GamersPage() {
       <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-[#0a0a0f] via-[#121218] to-[#0a0a0f] pt-20 overflow-x-hidden">
         
         {/* Hero Section com Parallax */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-8">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-4 sm:py-8">
           <motion.div 
             className="absolute inset-0"
             style={{ y: backgroundY }}
@@ -226,19 +226,19 @@ export default function GamersPage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,75,107,0.05)_0%,transparent_50%)]"></div>
           </motion.div>
 
-          <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center max-w-6xl">
+          <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center max-w-6xl flex flex-col justify-center h-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-6 sm:mb-8"
+              className="mb-4 sm:mb-6 flex-grow flex flex-col justify-center"
             >
-              <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-black/30 backdrop-blur-xl rounded-full border border-[#31A8FF]/20 mb-6 sm:mb-8 animate-pulse">
-                <div className="w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] rounded-full animate-ping"></div>
-                <span className="text-[#31A8FF] font-semibold tracking-wide text-sm sm:text-base">OTIMIZADOR GAMER PROFISSIONAL</span>
+              <div className="inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 md:px-6 md:py-3 bg-black/30 backdrop-blur-xl rounded-full border border-[#31A8FF]/20 mb-4 sm:mb-6 md:mb-8 animate-pulse mx-auto">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-3 md:h-3 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] rounded-full animate-ping"></div>
+                <span className="text-[#31A8FF] font-semibold tracking-wide text-xs sm:text-sm md:text-base">OTIMIZADOR GAMER PROFISSIONAL</span>
               </div>
               
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 tracking-tight leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-3 sm:mb-4 md:mb-6 tracking-tight leading-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] drop-shadow-2xl">
                   VOLTRIS
                 </span>
@@ -247,7 +247,7 @@ export default function GamersPage() {
               </h1>
               
               <motion.p 
-                className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto leading-relaxed"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-300 mb-6 sm:mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
@@ -257,7 +257,7 @@ export default function GamersPage() {
             </motion.div>
 
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center mb-6 sm:mb-8 md:mb-12"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -266,13 +266,13 @@ export default function GamersPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.open('/otimizacao-pc', '_self')}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-base sm:text-lg shadow-2xl hover:shadow-[0_0_40px_rgba(49,168,255,0.5)] transition-all duration-300 group cursor-pointer w-full sm:w-auto"
+                className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-sm sm:text-base md:text-lg shadow-2xl hover:shadow-[0_0_40px_rgba(49,168,255,0.5)] transition-all duration-300 group cursor-pointer w-full sm:w-auto"
               >
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-1 sm:gap-2">
                   Começar Agora
                   <motion.span 
                     className="inline-block"
-                    animate={{ x: [0, 5, 0] }}
+                    animate={{ x: [0, 3, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}
                   >
                     →
@@ -284,9 +284,9 @@ export default function GamersPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.open('https://wa.me/5511996716235?text=Olá%20VOLTRIS,%20quero%20otimizar%20meu%20PC%20para%20gaming!', '_blank')}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-full text-base sm:text-lg hover:bg-[#31A8FF] hover:text-black transition-all duration-300 cursor-pointer w-full sm:w-auto"
+                className="px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-transparent border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-full text-sm sm:text-base md:text-lg hover:bg-[#31A8FF] hover:text-black transition-all duration-300 cursor-pointer w-full sm:w-auto"
               >
-                <span className="flex items-center justify-center gap-2">
+                <span className="flex items-center justify-center gap-1 sm:gap-2">
                   Falar com Especialista
                   <span>💬</span>
                 </span>
@@ -295,7 +295,7 @@ export default function GamersPage() {
 
             {/* Stats Cards */}
             <motion.div 
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-4xl sm:max-w-6xl mx-auto"
+              className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 md:gap-6 max-w-xs sm:max-w-2xl md:max-w-4xl lg:max-w-6xl mx-auto mb-4 sm:mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9, duration: 0.8 }}
@@ -303,17 +303,17 @@ export default function GamersPage() {
               {['+25%', '95%', '-40%', '100+'].map((value, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  className="bg-black/40 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-white/10 text-center group hover:border-[#31A8FF]/30 transition-all duration-300"
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  className="bg-black/40 backdrop-blur-xl rounded-lg sm:rounded-xl md:rounded-2xl p-2 sm:p-3 md:p-4 lg:p-6 border border-white/10 text-center group hover:border-[#31A8FF]/30 transition-all duration-300"
                 >
                   <motion.div 
-                    className="text-2xl sm:text-3xl font-bold text-[#31A8FF] mb-1 sm:mb-2 group-hover:text-[#FF4B6B] transition-colors duration-300"
-                    animate={{ scale: [1, 1.1, 1] }}
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-[#31A8FF] mb-0.5 sm:mb-1 md:mb-2 group-hover:text-[#FF4B6B] transition-colors duration-300"
+                    animate={{ scale: [1, 1.05, 1] }}
                     transition={{ repeat: Infinity, duration: 3, delay: index * 0.3 }}
                   >
                     {value}
                   </motion.div>
-                  <div className="text-xs sm:text-sm text-gray-300 font-medium">
+                  <div className="text-[0.6rem] xs:text-xs sm:text-sm md:text-base text-gray-300 font-medium">
                     {[
                       'Mais FPS',
                       'Menos Stutter',
@@ -328,13 +328,13 @@ export default function GamersPage() {
 
           {/* Scroll Indicator */}
           <motion.div 
-            className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-white/50"
-            animate={{ y: [0, 10, 0] }}
+            className="absolute bottom-2 sm:bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 text-white/60"
+            animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            <div className="flex flex-col items-center gap-1 sm:gap-2">
-              <span className="text-xs sm:text-sm">Role para explorar</span>
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex flex-col items-center gap-1">
+              <span className="text-[0.6rem] xs:text-xs sm:text-sm">Role para explorar</span>
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
             </div>
