@@ -245,16 +245,13 @@ export default function GamersPage() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => {
-                    // Usando requestIdleCallback para não bloquear a UI
-                    if ('requestIdleCallback' in window) {
-                      requestIdleCallback(() => {
-                        window.open('/otimizacao-pc', '_self');
-                      });
+                    // Scroll suave para a seção de download em vez de redirecionar
+                    const downloadSection = document.getElementById('download-section');
+                    if (downloadSection) {
+                      downloadSection.scrollIntoView({ behavior: 'smooth' });
                     } else {
-                      // Fallback para navegadores que não suportam requestIdleCallback
-                      setTimeout(() => {
-                        window.open('/otimizacao-pc', '_self');
-                      }, 0);
+                      // Fallback: redirecionar se a seção não for encontrada
+                      window.location.href = '/otimizacao-pc';
                     }
                   }}
                   className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xs sm:text-sm md:text-base shadow-lg hover:shadow-[0_0_20px_rgba(49,168,255,0.5)] transition-all duration-300 group cursor-pointer"
@@ -539,7 +536,7 @@ export default function GamersPage() {
         </section>
 
         {/* CTA Final com Microinterações */}
-        <section className="py-32 relative overflow-hidden">
+        <section id="download-section" className="py-32 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]"></div>
           
@@ -583,15 +580,13 @@ export default function GamersPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => {
-                      // Otimização para não bloquear a UI durante transições
-                      if ('requestIdleCallback' in window) {
-                        requestIdleCallback(() => {
-                          window.open('/otimizacao-pc', '_self');
-                        });
+                      // Scroll suave para o formulário de download
+                      const downloadForm = document.querySelector('form');
+                      if (downloadForm) {
+                        downloadForm.scrollIntoView({ behavior: 'smooth' });
                       } else {
-                        setTimeout(() => {
-                          window.open('/otimizacao-pc', '_self');
-                        }, 0);
+                        // Fallback: redirecionar se o formulário não for encontrado
+                        window.location.href = '/otimizacao-pc';
                       }
                     }}
                     className="px-10 py-5 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xl shadow-2xl hover:shadow-[0_0_40px_rgba(49,168,255,0.5)] transition-all duration-300 flex items-center gap-3 cursor-pointer"
@@ -637,7 +632,7 @@ export default function GamersPage() {
                 >
                   {[
                     { icon: '🚀', text: 'Instalação Instantânea' },
-                    { icon: '🇧🇷', text: 'Interface em Português' },
+                    { icon: '🇵🇹', text: 'Interface em Português' },
                     { icon: '📞', text: 'Suporte Premium' },
                     { icon: '🛡️', text: '100% Seguro' }
                   ].map((item, index) => (
