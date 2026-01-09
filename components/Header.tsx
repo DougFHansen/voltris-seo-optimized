@@ -193,7 +193,7 @@ export default function Header() {
 
             {/* Navigation Links - Desktop */}
             <div className="hidden lg:flex items-center justify-center space-x-6 xl:space-x-8">
-              <Link href={getFullPath('/')} className="text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 relative group">
+              <Link href="/" className="text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 relative group">
                 Home
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 group-hover:w-full"></span>
               </Link>
