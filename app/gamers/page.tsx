@@ -259,7 +259,7 @@ export default function GamersPage() {
               </motion.div>
 
               <motion.div 
-                className="flex flex-col xs:flex-row gap-2 sm:gap-3 md:gap-4 justify-center w-full max-w-md mx-auto mb-4 sm:mb-6"
+                className="flex justify-center w-full mb-4 sm:mb-6"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.6 }}
@@ -268,7 +268,7 @@ export default function GamersPage() {
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => window.open('/otimizacao-pc', '_self')}
-                  className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xs sm:text-sm md:text-base shadow-lg hover:shadow-[0_0_20px_rgba(49,168,255,0.5)] transition-all duration-300 group cursor-pointer w-full xs:w-auto"
+                  className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold rounded-full text-xs sm:text-sm md:text-base shadow-lg hover:shadow-[0_0_20px_rgba(49,168,255,0.5)] transition-all duration-300 group cursor-pointer"
                 >
                   <span className="flex items-center justify-center gap-1">
                     Começar
@@ -281,23 +281,11 @@ export default function GamersPage() {
                     </motion.span>
                   </span>
                 </motion.button>
-                
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => window.open('https://wa.me/5511996716235?text=Olá%20VOLTRIS,%20quero%20otimizar%20meu%20PC%20para%20gaming!', '_blank')}
-                  className="px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-transparent border border-[#31A8FF] text-[#31A8FF] font-bold rounded-full text-xs sm:text-sm md:text-base hover:bg-[#31A8FF] hover:text-black transition-all duration-300 cursor-pointer w-full xs:w-auto"
-                >
-                  <span className="flex items-center justify-center gap-1">
-                    Especialista
-                    <span className="text-xs">💬</span>
-                  </span>
-                </motion.button>
               </motion.div>
 
               {/* Stats Cards - Compact and responsive */}
               <motion.div 
-                className="grid grid-cols-2 xs:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 max-w-xs sm:max-w-sm md:max-w-md mx-auto"
+                className="grid grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 max-w-xs sm:max-w-sm md:max-w-md mx-auto"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
