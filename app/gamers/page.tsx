@@ -215,8 +215,8 @@ export default function GamersPage() {
       <Header />
       <div ref={containerRef} className="min-h-screen bg-gradient-to-br from-[#0a0a0f] via-[#121218] to-[#0a0a0f] pt-20 overflow-x-hidden">
         
-        {/* Hero Section com Parallax */}
-        <section className="relative h-screen flex flex-col overflow-hidden">
+        {/* Hero Section com Parallax - Layout Fluido e Responsivo */}
+        <section className="relative min-h-screen flex flex-col overflow-hidden">
           <motion.div 
             className="absolute inset-0"
             style={{ y: backgroundY }}
@@ -226,14 +226,14 @@ export default function GamersPage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,75,107,0.05)_0%,transparent_50%)]"></div>
           </motion.div>
 
-          <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10 flex flex-col h-full py-2 sm:py-4">
-            {/* Content Area - Takes remaining space */}
-            <div className="flex-grow flex flex-col justify-center items-center text-center">
+          <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10 flex flex-col h-full py-4 sm:py-6 md:py-8">
+            {/* Content Area - Takes remaining space with flexible distribution */}
+            <div className="flex-grow flex flex-col justify-center items-center text-center px-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="w-full"
+                className="w-full max-w-4xl"
               >
                 <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 md:px-5 md:py-2.5 bg-black/30 backdrop-blur-xl rounded-full border border-[#31A8FF]/20 mb-3 sm:mb-4 md:mb-6 animate-pulse mx-auto">
                   <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] rounded-full animate-ping"></div>
@@ -249,7 +249,7 @@ export default function GamersPage() {
                 </h1>
                 
                 <motion.p 
-                  className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed"
+                  className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-gray-300 mb-4 sm:mb-6 md:mb-8 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
@@ -295,9 +295,9 @@ export default function GamersPage() {
                 </motion.button>
               </motion.div>
 
-              {/* Stats Cards - Smaller and more compact */}
+              {/* Stats Cards - Compact and responsive */}
               <motion.div 
-                className="grid grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 max-w-xs sm:max-w-sm mx-auto"
+                className="grid grid-cols-2 xs:grid-cols-4 gap-1.5 sm:gap-2 md:gap-3 max-w-xs sm:max-w-sm md:max-w-md mx-auto"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
@@ -324,9 +324,9 @@ export default function GamersPage() {
               </motion.div>
             </div>
 
-            {/* Scroll Indicator - Always visible at bottom */}
+            {/* Scroll Indicator - Always visible at bottom with proper spacing */}
             <motion.div 
-              className="flex-shrink-0 pb-1 sm:pb-2 flex justify-center items-end"
+              className="flex-shrink-0 pb-2 sm:pb-3 md:pb-4 flex justify-center items-end"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.6 }}
@@ -337,7 +337,7 @@ export default function GamersPage() {
                 transition={{ repeat: Infinity, duration: 1.5 }}
               >
                 <span className="text-[0.5rem] xs:text-xs">Role para explorar</span>
-                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </motion.div>
