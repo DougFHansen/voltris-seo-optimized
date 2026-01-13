@@ -113,48 +113,8 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
     
     console.log(`[MERCADO PAGO DEBUG] Domínio configurado:`, dominio);
     
-    // Criar registro de pagamento no banco ANTES de criar a preferência
-    const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    
-    console.log(`[MERCADO PAGO DEBUG] Supabase configurado:`, {
-      url: supabaseUrl ? 'presente' : 'AUSENTE',
-      serviceKey: supabaseServiceKey ? 'presente' : 'AUSENTE',
-    });
-    
-    const supabase = supabaseServiceKey 
-      ? createSupabaseClient(supabaseUrl, supabaseServiceKey)
-      : await createClient();
-    
-    let paymentRecord = null;
-    
-    try {
-      console.log(`[MERCADO PAGO DEBUG] Criando registro de pagamento no banco...`);
-      
-      const { data: payment, error: paymentError } = await supabase
-        .from('payments')
-        .insert({
-          email: email || 'unknown@example.com',
-          full_name: fullName || null,
-          phone: phone || null,
-          license_type: plan,
-          amount: selectedPlan.price,
-          currency: 'BRL',
-          status: 'pending',
-        })
-        .select()
-        .single();
-      
-      if (paymentError) {
-        console.error('[MERCADO PAGO DEBUG] Erro ao criar registro no banco:', paymentError);
-      } else {
-        paymentRecord = payment;
-        console.log('[MERCADO PAGO DEBUG] Registro criado no banco:', payment.id);
-      }
-    } catch (dbError) {
-      console.error('[MERCADO PAGO DEBUG] Erro ao acessar banco:', dbError);
-    }
+    // Primeiro criar a preferência no Mercado Pago para obter o preference_id
+    console.log(`[MERCADO PAGO DEBUG] Criando preferência no Mercado Pago primeiro...`);
     
     // URL do webhook (Mercado Pago notificará aqui quando houver mudanças)
     const webhookUrl = `${dominio}/api/webhook/mercadopago`;
@@ -309,20 +269,41 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
       throw mpError;
     }
 
-    // Atualizar registro com preference_id
-    if (paymentRecord && response.id) {
-      try {
-        console.log(`[MERCADO PAGO DEBUG] Atualizando registro com preference_id...`);
-        
-        await supabase
-          .from('payments')
-          .update({ preference_id: response.id })
-          .eq('id', paymentRecord.id);
-        
-        console.log(`[MERCADO PAGO DEBUG] Registro atualizado com sucesso`);
-      } catch (updateError) {
-        console.error('[MERCADO PAGO DEBUG] Erro ao atualizar preference_id:', updateError);
+    // Agora criar o registro no banco com o preference_id
+    let paymentRecord = null;
+    
+    try {
+      console.log(`[MERCADO PAGO DEBUG] Criando registro de pagamento no banco com preference_id...`);
+      
+      const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+      const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      
+      const supabase = supabaseServiceKey 
+        ? createSupabaseClient(supabaseUrl, supabaseServiceKey)
+        : await createClient();
+      
+      const { data: payment, error: paymentError } = await supabase
+        .from('payments')
+        .insert({
+          preference_id: response.id,
+          email: email || 'unknown@example.com',
+          license_type: plan,
+          amount: selectedPlan.price,
+          currency: 'BRL',
+          status: 'pending',
+        })
+        .select()
+        .single();
+      
+      if (paymentError) {
+        console.error('[MERCADO PAGO DEBUG] Erro ao criar registro no banco:', paymentError);
+      } else {
+        paymentRecord = payment;
+        console.log('[MERCADO PAGO DEBUG] Registro criado no banco:', payment.id);
       }
+    } catch (dbError) {
+      console.error('[MERCADO PAGO DEBUG] Erro ao acessar banco:', dbError);
     }
 
     const duration = Date.now() - startTime;

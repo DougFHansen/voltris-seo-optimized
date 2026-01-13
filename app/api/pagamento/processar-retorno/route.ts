@@ -285,6 +285,26 @@ export async function POST(request: Request) {
       
       console.log(`[RETORNO MP ${requestId}] Licença gerada com sucesso:`, license.id);
       
+      // Enviar email com a licença
+      try {
+        const { sendLicenseEmail } = await import('@/services/emailService');
+        
+        await sendLicenseEmail({
+          email: dbPayment.email,
+          licenseKey: license.license_key,
+          licenseType: license.license_type,
+          maxDevices: license.max_devices,
+          expiresAt: license.expires_at,
+          amountPaid: dbPayment.amount || 0,
+          fullName: dbPayment.full_name || '',
+        });
+        
+        console.log(`[RETORNO MP ${requestId}] Email de licença enviado com sucesso`);
+      } catch (emailError) {
+        console.error(`[RETORNO MP ${requestId}] Erro ao enviar email:`, emailError);
+        // Não falhar o processo por causa do email
+      }
+      
       return NextResponse.json({
         success: true,
         payment: {

@@ -10,7 +10,7 @@ interface LicenseData {
   max_devices: number;
 }
 
-function SucessoContent() {
+function PaginaSucessoContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
@@ -25,16 +25,16 @@ function SucessoContent() {
   const collectionId = searchParams?.get('collection_id') || null;
   const status = searchParams?.get('status') || null;
   
-  console.log('[SUCESSO FINAL] Parâmetros recebidos:', { preferenceId, paymentId, collectionId, status });
+  console.log('[PAGINA SUCESSO] Parâmetros recebidos:', { preferenceId, paymentId, collectionId, status });
 
   useEffect(() => {
-    console.log('[SUCESSO FINAL] useEffect disparado com:', { preferenceId, paymentId, collectionId });
+    console.log('[PAGINA SUCESSO] useEffect disparado com:', { preferenceId, paymentId, collectionId });
     
     if (preferenceId || paymentId || collectionId) {
-      console.log('[SUCESSO FINAL] Processando pagamento...');
+      console.log('[PAGINA SUCESSO] Processando pagamento...');
       processPaymentReturn();
     } else {
-      console.log('[SUCESSO FINAL] Nenhum parâmetro encontrado');
+      console.log('[PAGINA SUCESSO] Nenhum parâmetro encontrado');
       setError('Parâmetros de pagamento não encontrados');
       setLoading(false);
     }
@@ -44,10 +44,10 @@ function SucessoContent() {
   useEffect(() => {
     if (!license && retryAttempts < maxRetries && (preferenceId || paymentId || collectionId)) {
       const timer = setTimeout(() => {
-        console.log(`[SUCESSO FINAL] Auto-retry ${retryAttempts + 1}/${maxRetries}...`);
+        console.log(`[PAGINA SUCESSO] Auto-retry ${retryAttempts + 1}/${maxRetries}...`);
         fetchLicense();
         setRetryAttempts(prev => prev + 1);
-      }, 3000); // Tentar a cada 3 segundos
+      }, 3000);
       
       return () => clearTimeout(timer);
     }
@@ -61,21 +61,21 @@ function SucessoContent() {
       const isSimulated = preferenceId && preferenceId.startsWith('SIMULADO-');
       
       if (isSimulated) {
-        console.log('[SUCESSO FINAL] Pagamento simulado detectado, buscando licença diretamente...');
+        console.log('[PAGINA SUCESSO] Pagamento simulado detectado, buscando licença diretamente...');
         await fetchLicense();
         return;
       }
       
       // Para pagamentos reais, processar normalmente
       if (paymentId && status === 'approved') {
-        console.log('[SUCESSO FINAL] Processando retorno do pagamento real...');
+        console.log('[PAGINA SUCESSO] Processando retorno do pagamento real...');
         await fetchLicense();
       } else {
         await fetchLicense();
       }
       
     } catch (err) {
-      console.error('[SUCESSO FINAL] Erro:', err);
+      console.error('[PAGINA SUCESSO] Erro:', err);
       await fetchLicense();
     }
   }
@@ -85,7 +85,7 @@ function SucessoContent() {
       setLoading(true);
       setError(null);
       
-      console.log('[SUCESSO FINAL] Buscando licença...', {
+      console.log('[PAGINA SUCESSO] Buscando licença...', {
         preference_id: preferenceId,
         payment_id: paymentId,
         collection_id: collectionId,
@@ -95,13 +95,16 @@ function SucessoContent() {
       const params = new URLSearchParams();
       if (preferenceId) params.append('preference_id', preferenceId);
       if (paymentId) params.append('payment_id', paymentId);
-      if (collectionId) params.append('payment_id', collectionId);
+      if (collectionId) params.append('collection_id', collectionId);
       
-      const response = await fetch(`/api/license/get?${params.toString()}`);
+      const apiUrl = `/api/license/get?${params.toString()}`;
+      console.log('[PAGINA SUCESSO] URL da API:', apiUrl);
+      
+      const response = await fetch(apiUrl);
       
       const data = await response.json();
       
-      console.log('[SUCESSO FINAL] Resposta da API:', {
+      console.log('[PAGINA SUCESSO] Resposta da API:', {
         status: response.status,
         success: data.success,
         has_license: !!data.license,
@@ -109,10 +112,14 @@ function SucessoContent() {
       });
       
       if (!response.ok || !data.success) {
-        // Se licença ainda está sendo gerada
+        console.log('[PAGINA SUCESSO] API retornou erro:', {
+          status: response.status,
+          statusText: response.statusText,
+          data: data
+        });
+        
         if (data.message && data.message.includes('sendo gerada')) {
           setError(data.message);
-          // Tentar novamente automaticamente após o tempo sugerido
           if (data.retry_after) {
             setTimeout(() => {
               if (!license) {
@@ -123,18 +130,24 @@ function SucessoContent() {
           return;
         }
         
-        throw new Error(data.error || data.message || 'Erro ao buscar licença');
+        // Tratar erro específico de pagamento não encontrado
+        if (data.error && data.error.includes('não encontrado')) {
+          setError(`Pagamento não encontrado. Verifique se o ID está correto: ${preferenceId || paymentId || collectionId}`);
+          return;
+        }
+        
+        throw new Error(data.error || data.message || `Erro ao buscar licença. Status: ${response.status}`);
       }
       
       if (data.license) {
-        console.log('[SUCESSO FINAL] ✅ Licença encontrada:', data.license.license_key.substring(0, 20) + '...');
+        console.log('[PAGINA SUCESSO] ✅ Licença encontrada:', data.license.license_key.substring(0, 20) + '...');
         setLicense(data.license);
         setError(null);
       } else {
         setError('Licença ainda não foi gerada. Aguarde alguns instantes e tente novamente.');
       }
     } catch (err: any) {
-      console.error('[SUCESSO FINAL] Erro ao buscar licença:', err);
+      console.error('[PAGINA SUCESSO] Erro ao buscar licença:', err);
       setError(err.message || 'Erro ao buscar licença. Tente novamente mais tarde.');
     } finally {
       setLoading(false);
@@ -287,7 +300,7 @@ function SucessoContent() {
   );
 }
 
-export default function SucessoPage() {
+export default function PaginaSucesso() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center p-4">
@@ -300,7 +313,7 @@ export default function SucessoPage() {
         </div>
       </div>
     }>
-      <SucessoContent />
+      <PaginaSucessoContent />
     </Suspense>
   );
 }

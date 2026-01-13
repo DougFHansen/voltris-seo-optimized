@@ -460,8 +460,25 @@ async function generateLicenseForPayment(
         expires_at: expiresAt.toISOString(),
       });
       
-      // TODO: Enviar email com a licença (implementar serviço de email)
-      // await sendLicenseEmail(payment.email, licenseKey);
+      // Enviar email com a licença
+      try {
+        const { sendLicenseEmail } = await import('@/services/emailService');
+        
+        await sendLicenseEmail({
+          email: payment.email,
+          licenseKey: licenseKey,
+          licenseType: licenseType,
+          maxDevices: maxDevices,
+          expiresAt: expiresAt.toISOString(),
+          amountPaid: payment.amount || 0,
+          fullName: payment.full_name || '',
+        });
+        
+        console.log('[Webhook MP] Email de licença enviado com sucesso');
+      } catch (emailError) {
+        console.error('[Webhook MP] Erro ao enviar email:', emailError);
+        // Não falhar o processo inteiro por causa do email
+      }
     }
   } catch (error: any) {
     console.error('[Webhook MP] Erro ao gerar licença:', {
