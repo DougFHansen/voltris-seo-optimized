@@ -99,21 +99,140 @@ export async function POST(request: Request) {
     // Processar notificação real
     console.log(`[WEBHOOK] Processing real notification - Type: ${body.type}, ID: ${dataId}`);
     
-    // Aqui iria o processamento real (simplificado para teste)
     if (body.type === 'payment' && dataId) {
       console.log(`[WEBHOOK] Payment notification received for ID: ${dataId}`);
       
-      // Simular processamento bem-sucedido
-      return NextResponse.json({ 
-        received: true,
-        processed: true,
-        payment_id: dataId,
-        webhook_id: webhookId,
-        message: 'Payment notification processed successfully'
-      }, {
-        status: 200,
-        headers: { 'Access-Control-Allow-Origin': '*' }
-      });
+      // Buscar dados do pagamento no Mercado Pago
+      try {
+        const accessToken = process.env.MP_ACCESS_TOKEN;
+        if (!accessToken) {
+          throw new Error('MP_ACCESS_TOKEN not configured');
+        }
+        
+        const client = new MercadoPagoConfig({ accessToken });
+        const paymentApi = new Payment(client);
+        
+        console.log(`[WEBHOOK] Fetching payment data from Mercado Pago...`);
+        const paymentData = await paymentApi.get({ id: dataId });
+        
+        console.log(`[WEBHOOK] Payment data received:`, {
+          id: paymentData.id,
+          status: paymentData.status,
+          status_detail: paymentData.status_detail,
+          payment_method: paymentData.payment_method?.type,
+          transaction_amount: paymentData.transaction_amount
+        });
+        
+        // Atualizar banco de dados
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+        
+        if (supabaseUrl && supabaseAnonKey) {
+          const { createClient: createSupabaseClient } = await import('@supabase/supabase-js');
+          const supabase = createSupabaseClient(supabaseUrl, supabaseAnonKey);
+          
+          // Buscar pagamento no banco
+          const { data: existingPayment, error: fetchError } = await supabase
+            .from('payments')
+            .select('*')
+            .eq('payment_id', dataId)
+            .single();
+          
+          if (existingPayment && !fetchError) {
+            console.log(`[WEBHOOK] Found existing payment in database:`, existingPayment.id);
+            
+            // Mapear status
+            let paymentStatus = 'pending';
+            if (paymentData.status === 'approved') {
+              paymentStatus = 'approved';
+            } else if (paymentData.status === 'rejected') {
+              paymentStatus = 'rejected';
+            } else if (paymentData.status === 'cancelled') {
+              paymentStatus = 'cancelled';
+            }
+            
+            // Atualizar pagamento
+            const updateData: any = {
+              status: paymentStatus,
+              mercado_pago_data: paymentData,
+              updated_at: new Date().toISOString()
+            };
+            
+            if (paymentData.status === 'approved' && !existingPayment.processed_at) {
+              updateData.processed_at = new Date().toISOString();
+            }
+            
+            const { error: updateError } = await supabase
+              .from('payments')
+              .update(updateData)
+              .eq('id', existingPayment.id);
+            
+            if (updateError) {
+              console.error(`[WEBHOOK] Error updating payment:`, updateError);
+            } else {
+              console.log(`[WEBHOOK] Payment updated successfully in database`);
+              
+              // Se foi aprovado, gerar licença
+              if (paymentData.status === 'approved' && !existingPayment.processed_at) {
+                console.log(`[WEBHOOK] Generating license for approved payment...`);
+                
+                // Importar função de geração de licença (simplificada)
+                try {
+                  // Gerar licença básica
+                  const licenseKey = `VOLTRIS-LIC-${Date.now().toString(36).toUpperCase().substring(0, 16)}`;
+                  
+                  const { data: license, error: licenseError } = await supabase
+                    .from('licenses')
+                    .insert({
+                      license_key: licenseKey,
+                      payment_id: existingPayment.id,
+                      email: existingPayment.email,
+                      license_type: existingPayment.license_type || 'pro',
+                      max_devices: 3,
+                      expires_at: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 ano
+                      is_active: true,
+                      activated_at: new Date().toISOString(),
+                    })
+                    .select()
+                    .single();
+                  
+                  if (licenseError) {
+                    console.error(`[WEBHOOK] Error creating license:`, licenseError);
+                  } else {
+                    console.log(`[WEBHOOK] License generated successfully:`, license.id);
+                  }
+                } catch (licenseError) {
+                  console.error(`[WEBHOOK] Error in license generation:`, licenseError);
+                }
+              }
+            }
+          }
+        }
+        
+        return NextResponse.json({ 
+          received: true,
+          processed: true,
+          payment_id: dataId,
+          payment_status: paymentData.status,
+          webhook_id: webhookId,
+          message: 'Payment notification processed successfully'
+        }, {
+          status: 200,
+          headers: { 'Access-Control-Allow-Origin': '*' }
+        });
+        
+      } catch (mpError: any) {
+        console.error(`[WEBHOOK] Error fetching payment from Mercado Pago:`, mpError.message);
+        return NextResponse.json({ 
+          received: true,
+          error: 'Failed to fetch payment data',
+          message: mpError.message,
+          webhook_id: webhookId
+        }, {
+          status: 200, // Mesmo com erro, retornar 200 para o Mercado Pago não reenviar
+          headers: { 'Access-Control-Allow-Origin': '*' }
+        });
+      }
     }
     
     // Notificação de outro tipo
