@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 interface LicenseData {
   license_key: string;
@@ -10,7 +10,7 @@ interface LicenseData {
   max_devices: number;
 }
 
-export default function PaginaSucessoSimples() {
+function PaginaSucessoSimplesContent() {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [license, setLicense] = useState<LicenseData | null>(null);
@@ -201,5 +201,21 @@ export default function PaginaSucessoSimples() {
         <p style={{ color: '#6b7280' }}>Não foi possível processar sua solicitação.</p>
       </div>
     </div>
+  );
+}
+
+export default function PaginaSucessoSimples() {
+  return (
+    <Suspense fallback={
+      <div style={{ minHeight: '100vh', backgroundColor: '#f0fdf4', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
+        <div style={{ backgroundColor: 'white', borderRadius: '1rem', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.25)', padding: '2rem', textAlign: 'center', maxWidth: '500px' }}>
+          <div style={{ width: '3rem', height: '3rem', border: '4px solid #e5e7eb', borderTopColor: '#10b981', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }}></div>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1f2937', marginBottom: '0.5rem' }}>Carregando...</h1>
+          <p style={{ color: '#6b7280' }}>Aguarde enquanto carregamos sua página.</p>
+        </div>
+      </div>
+    }>
+      <PaginaSucessoSimplesContent />
+    </Suspense>
   );
 }
