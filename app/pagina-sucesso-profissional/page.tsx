@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
 
 interface LicenseData {
   license_key: string;
@@ -73,19 +74,82 @@ function PaginaSucessoProfissional() {
 
   if (loading) {
     return (
-      <>
-        <Header />
-        <main className="bg-[#0a0a0a] min-h-screen pt-20 pb-12">
-          <div className="container mx-auto px-4 flex items-center justify-center min-h-[calc(100vh-8rem)]">
-            <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-md w-full border border-gray-200">
-              <div className="w-12 h-12 border-4 border-gray-200 border-t-[#8B31FF] rounded-full animate-spin mx-auto mb-6"></div>
-              <h1 className="text-2xl font-bold text-gray-800 mb-2">Processando pagamento...</h1>
-              <p className="text-gray-600">Aguarde enquanto buscamos sua licença.</p>
+      <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#1E1E1E] to-[#171313] flex flex-col">
+        {/* Header Moderno com Logo Animada */}
+        <header className="bg-[#171313]/80 backdrop-blur-md border-b border-[#8B31FF]/20 sticky top-0 z-50">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex items-center justify-center">
+              <div className="flex items-center space-x-3">
+                <div className="relative">
+                  <Image 
+                    src="/logo-v2.webp" 
+                    alt="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais" 
+                    width={60} 
+                    height={60} 
+                    className="h-12 w-auto logo-rotate" 
+                    style={{ maxWidth: '100%' }}
+                    priority
+                  />
+                </div>
+                <h1 className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-lg">
+                  VOLTRIS
+                </h1>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Loading Screen Completo */}
+        <main className="flex-grow flex items-center justify-center p-4">
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 text-center max-w-md w-full border border-white/20 shadow-2xl">
+            {/* Spinner com Logo do Site */}
+            <div className="relative mb-8">
+              <div className="w-20 h-20 mx-auto mb-6 relative">
+                {/* Fundo circular */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] opacity-20"></div>
+                {/* Logo girando */}
+                <div className="absolute inset-2 flex items-center justify-center">
+                  <Image 
+                    src="/logo-v2.webp" 
+                    alt="VOLTRIS" 
+                    width={40} 
+                    height={40} 
+                    className="logo-rotate w-10 h-10" 
+                  />
+                </div>
+                {/* Anel de loading */}
+                <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#8B31FF] animate-spin"></div>
+              </div>
+            </div>
+            
+            <h1 className="text-2xl font-bold text-white mb-3">Processando seu pagamento...</h1>
+            <p className="text-gray-300 mb-6">Estamos gerando sua licença exclusiva</p>
+            
+            {/* Progress indicators */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-center text-sm text-gray-400">
+                <div className="w-2 h-2 bg-[#8B31FF] rounded-full animate-pulse mr-2"></div>
+                Validando pagamento
+              </div>
+              <div className="flex items-center justify-center text-sm text-gray-400">
+                <div className="w-2 h-2 bg-gray-600 rounded-full mr-2"></div>
+                Gerando licença
+              </div>
+              <div className="flex items-center justify-center text-sm text-gray-400">
+                <div className="w-2 h-2 bg-gray-600 rounded-full mr-2"></div>
+                Enviando confirmação
+              </div>
             </div>
           </div>
         </main>
-        <Footer />
-      </>
+
+        {/* Footer Minimalista */}
+        <footer className="bg-[#171313]/50 backdrop-blur-sm border-t border-[#8B31FF]/10 py-6">
+          <div className="container mx-auto px-4 text-center">
+            <p className="text-gray-500 text-sm">© 2026 Voltris Optimizer. Todos os direitos reservados.</p>
+          </div>
+        </footer>
+      </div>
     );
   }
 
