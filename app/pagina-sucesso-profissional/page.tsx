@@ -73,25 +73,31 @@ function PaginaSucessoProfissional() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
-        <Header />
-        <main className="flex-grow flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#0a0a0a] flex flex-col overflow-hidden">
+        <div className="flex-shrink-0">
+          <Header />
+        </div>
+        <main className="flex-grow flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-md w-full border border-gray-200">
             <div className="w-12 h-12 border-4 border-gray-200 border-t-[#8B31FF] rounded-full animate-spin mx-auto mb-6"></div>
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Processando pagamento...</h1>
             <p className="text-gray-600">Aguarde enquanto buscamos sua licença.</p>
           </div>
         </main>
-        <Footer />
+        <div className="flex-shrink-0">
+          <Footer />
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
-        <Header />
-        <main className="flex-grow flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#0a0a0a] flex flex-col overflow-hidden">
+        <div className="flex-shrink-0">
+          <Header />
+        </div>
+        <main className="flex-grow flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-md w-full border border-red-200">
             <div className="text-5xl mb-6">⚠️</div>
             <h1 className="text-2xl font-bold text-red-600 mb-4">Aguarde...</h1>
@@ -104,17 +110,21 @@ function PaginaSucessoProfissional() {
             </button>
           </div>
         </main>
-        <Footer />
+        <div className="flex-shrink-0">
+          <Footer />
+        </div>
       </div>
     );
   }
 
   if (license) {
     return (
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
-        <Header />
-        <main className="flex-grow py-12 px-4">
-          <div className="max-w-4xl mx-auto">
+      <div className="min-h-screen bg-[#0a0a0a] flex flex-col overflow-hidden">
+        <div className="flex-shrink-0">
+          <Header />
+        </div>
+        <main className="flex-grow overflow-y-auto py-8 px-4">
+          <div className="max-w-4xl mx-auto pb-8">
             {/* Success Banner */}
             <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-8 mb-8 text-center">
               <div className="text-6xl mb-4">✅</div>
@@ -159,12 +169,12 @@ function PaginaSucessoProfissional() {
               {/* License Key */}
               <div className="bg-gradient-to-r from-[#8B31FF]/5 to-[#31A8FF]/5 rounded-xl p-6 border border-[#8B31FF]/20">
                 <div className="text-gray-500 text-sm font-medium mb-3">Sua Chave de Licença</div>
-                <div className="flex gap-3">
+                <div className="flex gap-3 flex-wrap">
                   <input
                     type="text"
                     value={license.license_key}
                     readOnly
-                    className="flex-1 bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#8B31FF]"
+                    className="flex-1 min-w-[200px] bg-white border border-gray-300 rounded-lg px-4 py-3 text-gray-800 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#8B31FF]"
                   />
                   <button
                     onClick={copyLicenseKey}
@@ -216,22 +226,28 @@ function PaginaSucessoProfissional() {
             </div>
           </div>
         </main>
-        <Footer />
+        <div className="flex-shrink-0">
+          <Footer />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
-      <Header />
-      <main className="flex-grow flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col overflow-hidden">
+      <div className="flex-shrink-0">
+        <Header />
+      </div>
+      <main className="flex-grow flex items-center justify-center p-4 overflow-y-auto">
         <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-md w-full border border-red-200">
           <div className="text-5xl mb-6">❌</div>
           <h1 className="text-2xl font-bold text-red-600 mb-2">Erro</h1>
           <p className="text-gray-600">Não foi possível processar sua solicitação.</p>
         </div>
       </main>
-      <Footer />
+      <div className="flex-shrink-0">
+        <Footer />
+      </div>
     </div>
   );
 }
@@ -239,16 +255,20 @@ function PaginaSucessoProfissional() {
 export default function PaginaSucessoFinal() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#0a0a0a] flex flex-col">
-        <Header />
-        <main className="flex-grow flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#0a0a0a] flex flex-col overflow-hidden">
+        <div className="flex-shrink-0">
+          <Header />
+        </div>
+        <main className="flex-grow flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-md w-full">
             <div className="w-12 h-12 border-4 border-gray-200 border-t-[#8B31FF] rounded-full animate-spin mx-auto mb-6"></div>
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Carregando...</h1>
             <p className="text-gray-600">Aguarde enquanto carregamos sua página.</p>
           </div>
         </main>
-        <Footer />
+        <div className="flex-shrink-0">
+          <Footer />
+        </div>
       </div>
     }>
       <PaginaSucessoProfissional />
