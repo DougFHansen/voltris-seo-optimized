@@ -309,23 +309,5 @@ function PaginaSucessoProfissional() {
 }
 
 export default function PaginaSucessoFinal() {
-  return (
-    <Suspense fallback={
-      <>
-        <Header />
-        <main className="bg-[#0a0a0a] min-h-screen pt-20 pb-12">
-          <div className="container mx-auto px-4 flex items-center justify-center min-h-[calc(100vh-8rem)]">
-            <div className="bg-white rounded-xl shadow-2xl p-8 text-center max-w-md w-full">
-              <div className="w-12 h-12 border-4 border-gray-200 border-t-[#8B31FF] rounded-full animate-spin mx-auto mb-6"></div>
-              <h1 className="text-2xl font-bold text-gray-800 mb-2">Carregando...</h1>
-              <p className="text-gray-600">Aguarde enquanto carregamos sua página.</p>
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </>
-    }>
-      <PaginaSucessoProfissional />
-    </Suspense>
-  );
+  return <PaginaSucessoProfissional />;
 }
