@@ -13,7 +13,7 @@ interface LicenseData {
   max_devices: number;
 }
 
-function PaginaSucessoProfissional() {
+function PaginaSucessoProfissionalClient() {
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState(true);
   const [license, setLicense] = useState<LicenseData | null>(null);
@@ -308,6 +308,28 @@ function PaginaSucessoProfissional() {
   );
 }
 
-export default function PaginaSucessoFinal() {
-  return <PaginaSucessoProfissional />;
+export default function PaginaSucessoProfissional() {
+  // Verificar se estamos no cliente antes de renderizar componentes client-side
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
+  if (!isClient) {
+    // Loading server-side
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#1E1E1E] to-[#171313] flex flex-col">
+        <div className="flex-grow flex items-center justify-center p-4">
+          <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 text-center max-w-md w-full border border-white/20 shadow-2xl">
+            <div className="w-12 h-12 border-4 border-gray-200 border-t-[#8B31FF] rounded-full animate-spin mx-auto mb-6"></div>
+            <h1 className="text-2xl font-bold text-white mb-2">Carregando...</h1>
+            <p className="text-gray-300">Aguarde enquanto carregamos sua página.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  
+  return <PaginaSucessoProfissionalClient />;
 }
