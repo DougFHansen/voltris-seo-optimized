@@ -40,18 +40,42 @@ function SucessoContent() {
     }
   }, [preferenceId, paymentId, collectionId]);
 
-  // Auto-retry para licenças pendentes
+  // Auto-retry para licenças pendentes e status pending
   useEffect(() => {
     if (!license && retryAttempts < maxRetries && (preferenceId || paymentId || collectionId)) {
       const timer = setTimeout(() => {
         console.log(`[SUCESSO FINAL] Auto-retry ${retryAttempts + 1}/${maxRetries}...`);
+        
+        // Se status for pending, verificar status real do pagamento
+        if (status === 'pending' && collectionId) {
+          checkPaymentStatus(collectionId);
+        }
+        
         fetchLicense();
         setRetryAttempts(prev => prev + 1);
       }, 3000); // Tentar a cada 3 segundos
       
       return () => clearTimeout(timer);
     }
-  }, [license, retryAttempts, preferenceId, paymentId, collectionId]);
+  }, [license, retryAttempts, preferenceId, paymentId, collectionId, status]);
+
+  async function checkPaymentStatus(paymentId: string) {
+    try {
+      console.log(`[SUCESSO FINAL] Verificando status real do pagamento ${paymentId}...`);
+      
+      const response = await fetch(`/api/check-payment-status?payment_id=${paymentId}`);
+      const data = await response.json();
+      
+      console.log(`[SUCESSO FINAL] Status do pagamento:`, data);
+      
+      if (data.status === 'approved') {
+        // Atualizar status e tentar gerar licença
+        window.location.search = window.location.search.replace(/status=pending/, 'status=approved');
+      }
+    } catch (error) {
+      console.error('[SUCESSO FINAL] Erro ao verificar status do pagamento:', error);
+    }
+  }
 
   async function processPaymentReturn() {
     try {

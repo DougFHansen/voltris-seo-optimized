@@ -19,7 +19,7 @@ namespace VoltrisOptimizer.Services.License
         public static LicenseApiService Instance => _instance ??= new LicenseApiService();
         
         private readonly HttpClient _httpClient;
-        private const string DefaultApiBaseUrl = "https://api.voltris.com/v1/license";
+        private const string DefaultApiBaseUrl = "https://voltris-seo-optimized.vercel.app/api/license";
         private readonly string _apiBaseUrl;
         private readonly JsonSerializerOptions _jsonOptions;
         
@@ -92,9 +92,11 @@ namespace VoltrisOptimizer.Services.License
             
             return await ExecuteWithRetryAsync(async () =>
             {
+                // Usar endpoint /check que funciona
+                var checkRequest = new { license_key = licenseKey };
                 var response = await _httpClient.PostAsJsonAsync(
                     $"{_apiBaseUrl}/validate", 
-                    request, 
+                    checkRequest, 
                     _jsonOptions, 
                     ct);
                 
@@ -111,8 +113,33 @@ namespace VoltrisOptimizer.Services.License
                     };
                 }
                 
-                var result = await response.Content.ReadFromJsonAsync<LicenseValidationResponse>(_jsonOptions, ct);
-                return result ?? new LicenseValidationResponse { Valid = false, ErrorMessage = "Resposta inválida" };
+                // Parsear resposta do endpoint /check
+                var rawResponse = await response.Content.ReadAsStringAsync(ct);
+                var jsonResponse = JsonDocument.Parse(rawResponse);
+                
+                if (jsonResponse.RootElement.TryGetProperty("success", out var successProp) && 
+                    successProp.GetBoolean())
+                {
+                    if (jsonResponse.RootElement.TryGetProperty("license", out var licenseProp))
+                    {
+                        return new LicenseValidationResponse 
+                        { 
+                            Valid = true,
+                            Type = licenseProp.GetProperty("license_type").GetString() ?? "pro",
+                            MaxDevices = licenseProp.GetProperty("max_devices").GetInt32(),
+                            ExpiresAt = DateTime.Parse(licenseProp.GetProperty("expires_at").GetString() ?? DateTime.Now.AddYears(1).ToString()),
+                            DeviceRegistered = true
+                        };
+                    }
+                }
+                
+                // Licença inválida
+                return new LicenseValidationResponse 
+                { 
+                    Valid = false, 
+                    ErrorMessage = "Licença inválida ou não encontrada",
+                    ErrorCode = "INVALID_LICENSE"
+                };
                 
             }, ct);
         }
@@ -281,14 +308,93 @@ namespace VoltrisOptimizer.Services.License
         /// </summary>
         public async Task<bool> IsServerReachableAsync(CancellationToken ct = default)
         {
+            App.LoggingService?.LogInfo($"[LicenseAPI] === INICIANDO TESTE DE CONECTIVIDADE ===");
+            App.LoggingService?.LogInfo($"[LicenseAPI] URL Base: {_apiBaseUrl}");
+            App.LoggingService?.LogInfo($"[LicenseAPI] Timeout configurado: {_httpClient.Timeout.TotalSeconds}s");
+            
             try
             {
-                var response = await _httpClient.GetAsync($"{_apiBaseUrl}/health", ct);
-                return response.IsSuccessStatusCode;
-            }
-            catch
-            {
+                // Verificar se o HttpClient está configurado corretamente
+                if (_httpClient == null)
+                {
+                    App.LoggingService?.LogError($"[LicenseAPI] HttpClient é NULL!");
+                    return false;
+                }
+                
+                App.LoggingService?.LogInfo($"[LicenseAPI] HttpClient configurado corretamente");
+                
+                // Usar endpoint de validação com chave de teste para verificar conectividade
+                var testKey = "VOLTRIS-LIC-TESTE-20260113-ABC123DEF456";
+                var request = new { license_key = testKey };
+                
+                App.LoggingService?.LogInfo($"[LicenseAPI] Preparando requisição POST para {_apiBaseUrl}/validate");
+                App.LoggingService?.LogInfo($"[LicenseAPI] Chave de teste: {testKey}");
+                
+                // Testar conectividade básica primeiro
+                App.LoggingService?.LogInfo($"[LicenseAPI] Testando DNS/Conectividade básica...");
+                var uri = new Uri($"{_apiBaseUrl}/validate");
+                App.LoggingService?.LogInfo($"[LicenseAPI] URI completo: {uri}");
+                
+                App.LoggingService?.LogInfo($"[LicenseAPI] ENVIANDO REQUISIÇÃO...");
+                var startTime = DateTime.Now;
+                
+                var response = await _httpClient.PostAsJsonAsync(
+                    $"{_apiBaseUrl}/validate", 
+                    request, 
+                    _jsonOptions, 
+                    ct);
+                
+                var elapsed = DateTime.Now - startTime;
+                App.LoggingService?.LogInfo($"[LicenseAPI] RESPOSTA RECEBIDA em {elapsed.TotalMilliseconds:F0}ms");
+                App.LoggingService?.LogInfo($"[LicenseAPI] Status code: {response.StatusCode}");
+                App.LoggingService?.LogInfo($"[LicenseAPI] Reason phrase: {response.ReasonPhrase}");
+                
+                var content = await response.Content.ReadAsStringAsync(ct);
+                App.LoggingService?.LogInfo($"[LicenseAPI] Conteúdo da resposta ({content.Length} caracteres): {content.Substring(0, Math.Min(300, content.Length))}...");
+                
+                if (!response.IsSuccessStatusCode)
+                {
+                    App.LoggingService?.LogWarning($"[LicenseAPI] Requisição falhou com status {response.StatusCode}, mas servidor respondeu em {elapsed.TotalMilliseconds:F0}ms");
+                    // Mesmo com erro HTTP, se chegou aqui é porque o servidor respondeu
+                    return true;
+                }
+                
+                // Parsear a resposta para confirmar que é válida
+                App.LoggingService?.LogInfo($"[LicenseAPI] Parseando resposta JSON...");
+                var jsonResponse = JsonDocument.Parse(content);
+                
+                if (jsonResponse.RootElement.TryGetProperty("success", out var successProp))
+                {
+                    var successValue = successProp.GetBoolean();
+                    App.LoggingService?.LogInfo($"[LicenseAPI] Propriedade 'success' encontrada: {successValue}");
+                    // Se tem a propriedade success, o endpoint está funcionando
+                    return successValue;
+                }
+                
+                App.LoggingService?.LogWarning($"[LicenseAPI] Propriedade 'success' não encontrada na resposta");
                 return false;
+            }
+            catch (TaskCanceledException tcex)
+            {
+                App.LoggingService?.LogError($"[LicenseAPI] TIMEOUT - Requisição cancelada após {_httpClient.Timeout.TotalSeconds}s: {tcex.Message}");
+                return false;
+            }
+            catch (HttpRequestException hrex)
+            {
+                App.LoggingService?.LogError($"[LicenseAPI] ERRO DE REDE - Não foi possível conectar: {hrex.Message}");
+                App.LoggingService?.LogError($"[LicenseAPI] Inner exception: {hrex.InnerException?.Message}");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                App.LoggingService?.LogError($"[LicenseAPI] ERRO FATAL NO TESTE DE CONECTIVIDADE: {ex}");
+                App.LoggingService?.LogError($"[LicenseAPI] Tipo da exceção: {ex.GetType().Name}");
+                App.LoggingService?.LogError($"[LicenseAPI] Stack trace: {ex.StackTrace}");
+                return false;
+            }
+            finally
+            {
+                App.LoggingService?.LogInfo($"[LicenseAPI] === FIM DO TESTE DE CONECTIVIDADE ===");
             }
         }
         

@@ -1,7 +1,7 @@
 {
   "Language": 0,
   "Theme": "Dark",
-  "StartWithWindows": true,
+  "StartWithWindows": false,
   "StartMinimized": false,
   "MinimizeToTray": true,
   "CloseToTray": true,
