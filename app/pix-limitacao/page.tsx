@@ -28,7 +28,7 @@ export default function PixLimitationPage() {
               <div>
                 <h3 className="font-semibold text-yellow-800 mb-2">Aviso Importante</h3>
                 <p className="text-yellow-700 text-sm">
-                  Devido a políticas de segurança do Mercado Pago, pagamentos via PIX estão temporariamente limitados para contas não verificadas ou em determinadas condições.
+                  Estamos realizando testes técnicos para reabilitar o PIX. Para sua conta verificada, o PIX deve funcionar normalmente.
                 </p>
               </div>
             </div>
