@@ -1,0 +1,46 @@
+{
+  "Timestamp": "2026-01-15T02:25:39.0010119-03:00",
+  "Interfaces": [
+    {
+      "Key": "{11beba5b-e609-11f0-b333-806e6f6e6963}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    },
+    {
+      "Key": "{1ef7cb82-f06a-40db-8012-547715aff03a}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    },
+    {
+      "Key": "{6ef58e1f-c622-4ce2-8247-ec357a7c491e}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    },
+    {
+      "Key": "{7851b275-e2c6-4496-b285-748923d8ac26}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    },
+    {
+      "Key": "{7dedf3b5-118d-4c7f-bf5c-96f542c22238}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    },
+    {
+      "Key": "{904d6e49-8503-45e2-b0cc-1cdaba7a17b4}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    },
+    {
+      "Key": "{bf2758fb-465d-4900-b617-10e7beec4f54}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    },
+    {
+      "Key": "{e468f4c3-1dbf-4bb2-bdab-3d9c8ba3ea3b}",
+      "TcpAckFrequency": 2,
+      "TCPNoDelay": 1
+    }
+  ],
+  "NetworkThrottlingIndex": null
+}

@@ -47,13 +47,16 @@ function SucessoContent() {
         console.log(`[SUCESSO FINAL] Auto-retry ${retryAttempts + 1}/${maxRetries}...`);
         
         // Se status for pending, verificar status real do pagamento
-        if (status === 'pending' && collectionId) {
-          checkPaymentStatus(collectionId);
+        if ((status === 'pending' || status === 'in_process') && (collectionId || paymentId)) {
+          const idToCheck = collectionId || paymentId;
+          if (idToCheck) {
+            checkPaymentStatus(idToCheck);
+          }
         }
         
         fetchLicense();
         setRetryAttempts(prev => prev + 1);
-      }, 3000); // Tentar a cada 3 segundos
+      }, 5000); // Tentar a cada 5 segundos (mais profissional)
       
       return () => clearTimeout(timer);
     }
@@ -63,17 +66,47 @@ function SucessoContent() {
     try {
       console.log(`[SUCESSO FINAL] Verificando status real do pagamento ${paymentId}...`);
       
-      const response = await fetch(`/api/check-payment-status?payment_id=${paymentId}`);
-      const data = await response.json();
+      // Primeiro verificar no Mercado Pago diretamente
+      const mpResponse = await fetch(`/api/check-payment-status?payment_id=${paymentId}`);
+      const mpData = await mpResponse.json();
       
-      console.log(`[SUCESSO FINAL] Status do pagamento:`, data);
+      console.log(`[SUCESSO FINAL] Status do Mercado Pago:`, mpData);
       
-      if (data.status === 'approved') {
-        // Atualizar status e tentar gerar licença
-        window.location.search = window.location.search.replace(/status=pending/, 'status=approved');
+      if (mpData.status === 'approved') {
+        console.log(`[SUCESSO FINAL] Pagamento aprovado! Forçando atualização...`);
+        
+        // Forçar atualização do status na página
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set('status', 'approved');
+        window.history.replaceState({}, '', newUrl.toString());
+        
+        // Forçar recarregamento para processar o status aprovado
+        window.location.reload();
+        return;
       }
+      
+      // Se ainda estiver pending/in_process, verificar no banco de dados
+      const params = new URLSearchParams();
+      if (preferenceId) params.append('preference_id', preferenceId);
+      if (paymentId) params.append('payment_id', paymentId);
+      if (collectionId) params.append('payment_id', collectionId);
+      
+      const dbResponse = await fetch(`/api/license/get?${params.toString()}`);
+      const dbData = await dbResponse.json();
+      
+      console.log(`[SUCESSO FINAL] Status do banco:`, dbData);
+      
+      if (dbData.success && dbData.license) {
+        console.log(`[SUCESSO FINAL] Licença encontrada no banco!`);
+        setLicense(dbData.license);
+        setError(null);
+      } else if (dbData.message) {
+        setError(dbData.message);
+      }
+      
     } catch (error) {
       console.error('[SUCESSO FINAL] Erro ao verificar status do pagamento:', error);
+      setError('Erro ao verificar status do pagamento. Tente novamente.');
     }
   }
 
@@ -90,13 +123,20 @@ function SucessoContent() {
         return;
       }
       
-      // Para pagamentos reais, processar normalmente
-      if (paymentId && status === 'approved') {
-        console.log('[SUCESSO FINAL] Processando retorno do pagamento real...');
-        await fetchLicense();
-      } else {
-        await fetchLicense();
+      // Para pagamentos reais, verificar status antes de processar
+      console.log(`[SUCESSO FINAL] Processando retorno do pagamento real - Status atual: ${status}`);
+      
+      // Se status é pending ou in_process, verificar status real primeiro
+      if (status === 'pending' || status === 'in_process') {
+        const idToCheck = collectionId || paymentId;
+        if (idToCheck) {
+          console.log(`[SUCESSO FINAL] Status pendente detectado, verificando status real...`);
+          await checkPaymentStatus(idToCheck);
+        }
       }
+      
+      // Buscar licença independentemente do status
+      await fetchLicense();
       
     } catch (err) {
       console.error('[SUCESSO FINAL] Erro:', err);
@@ -193,9 +233,21 @@ function SucessoContent() {
           <p className="text-gray-600 mb-6">{error}</p>
           <button
             onClick={fetchLicense}
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors mr-4"
           >
             Tentar Novamente
+          </button>
+          <button
+            onClick={() => {
+              if (collectionId) {
+                checkPaymentStatus(collectionId);
+              } else if (paymentId) {
+                checkPaymentStatus(paymentId);
+              }
+            }}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+          >
+            Verificar Status do Pagamento
           </button>
         </div>
       </div>

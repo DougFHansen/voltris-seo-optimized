@@ -167,7 +167,7 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
       back_urls: {
         success: `${dominio}/sucesso`,
         failure: `${dominio}/falha`,
-        pending: `${dominio}/sucesso`  // PIX retorna como pending!
+        pending: `${dominio}/sucesso-pending`  // PIX e outros métodos pending
       },
       auto_return: 'all',  // Redirecionar automaticamente para approved, pending e in_process
       notification_url: webhookUrl,
