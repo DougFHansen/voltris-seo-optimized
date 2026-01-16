@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 
 function SucessoPendingContent() {
   const searchParams = useSearchParams();
@@ -210,6 +210,20 @@ function SucessoPendingContent() {
   );
 }
 
-export default function SucessoPendingPage() {
-  return <SucessoPendingContent />;
+function SucessoPendingPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-100 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full p-8 md:p-12 text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-orange-600 mx-auto mb-4"></div>
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">Carregando...</h1>
+          <p className="text-gray-600">Aguarde enquanto carregamos as informações do pagamento.</p>
+        </div>
+      </div>
+    }>
+      <SucessoPendingContent />
+    </Suspense>
+  );
 }
+
+export default SucessoPendingPage;
