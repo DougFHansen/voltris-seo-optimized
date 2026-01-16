@@ -74,10 +74,10 @@ export default function TesteCartaoPage() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
             <h3 className="font-semibold text-blue-800 mb-2">ℹ️ Informações Importantes:</h3>
             <ul className="text-sm text-blue-700 space-y-1">
-              <li>• PIX reabilitado - agora disponível como opção de pagamento</li>
-              <li>• Cartão de crédito também disponível</li>
+              <li>• PIX temporariamente limitado devido a políticas de segurança do Mercado Pago</li>
+              <li>• Cartão de crédito está 100% funcional</li>
               <li>• Valor do teste: R$ 1,00</li>
-              <li>• Pagamento será processado em ambiente de produção</li>
+              <li>• <a href="/pix-limitacao" className="text-blue-600 hover:underline">Saiba mais sobre a limitação do PIX</a></li>
             </ul>
           </div>
 
