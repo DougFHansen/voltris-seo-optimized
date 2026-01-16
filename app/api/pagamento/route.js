@@ -185,7 +185,7 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
           },
         }),
       },
-      external_reference: `voltris-${plan}-${Date.now()}`,
+      external_reference: `voltris-${plan}-${Date.now()}-${Math.random().toString(36).substring(2, 10)}`,
       payment_methods: {
         excluded_payment_types: [
           { id: 'ticket' },  // Excluir boletos
@@ -213,6 +213,15 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
     
     // ⚠️ CRITICAL VALIDATION BEFORE SENDING
     console.log(`[MERCADO PAGO DEBUG] ========== VALIDAÇÃO PRÉ-ENVIO ==========`);
+    
+    // Validar campos obrigatórios para conformidade Mercado Pago
+    const itemValidation = {
+      id_presente: !!preferenceBody.items[0].id ? '✅ SIM' : '❌ NÃO',
+      description_presente: !!preferenceBody.items[0].description ? '✅ SIM' : '❌ NÃO',
+      category_id_presente: !!preferenceBody.items[0].category_id ? '✅ SIM' : '❌ NÃO',
+      external_reference_unica: !!preferenceBody.external_reference ? '✅ SIM' : '❌ NÃO',
+    };
+    
     const validationChecks = {
       token_valido: isAppUsrToken ? '✅ SIM (APP_USR-)' : '❌ NÃO',
       webhook_url_presente: !!webhookUrl ? '✅ SIM' : '❌ NÃO',
@@ -220,7 +229,9 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
       notification_url_presente: !!preferenceBody.notification_url ? '✅ SIM' : '❌ NÃO',
       preco_valido: selectedPlan.price >= 0 ? '✅ SIM' : '❌ NÃO',
       email_valido: !!payerEmail ? '✅ SIM' : '❌ NÃO',
+      ...itemValidation
     };
+    
     console.log(`[MERCADO PAGO DEBUG] Checklist de validação:`, validationChecks);
 
     let response;
