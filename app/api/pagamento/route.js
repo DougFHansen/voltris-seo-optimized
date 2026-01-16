@@ -191,9 +191,10 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
           { id: 'ticket' },  // Excluir boletos
           { id: 'atm' },     // Excluir caixas eletrônicos
         ],
-        excluded_payment_methods: [
-          { id: 'pix' },     // Excluir PIX temporariamente
-        ],
+        // PIX reabilitado com configurações seguras
+        // excluded_payment_methods: [
+        //   { id: 'pix' },     // PIX reabilitado
+        // ],
         installments: 1,
         default_installments: 1,
       },
