@@ -187,7 +187,14 @@ async function handlePaymentRequest(plan, email, fullName = '', phone = '') {
       },
       external_reference: `voltris-${plan}-${Date.now()}`,
       payment_methods: {
-        installments: 12,
+        excluded_payment_types: [
+          { id: 'ticket' },  // Excluir boletos
+          { id: 'atm' },     // Excluir caixas eletrônicos
+        ],
+        excluded_payment_methods: [
+          { id: 'pix' },     // Excluir PIX temporariamente
+        ],
+        installments: 1,
         default_installments: 1,
       },
     };
