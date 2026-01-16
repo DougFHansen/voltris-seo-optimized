@@ -21,3 +21,7 @@
 [2026-01-15 23:25:12.679] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=standard
 [2026-01-15 23:28:40.512] [INFO] [License] Abrindo checkout para plano: pro
 [2026-01-15 23:28:40.526] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
+[2026-01-16 00:01:23.535] [INFO] [License] Abrindo checkout para plano: pro
+[2026-01-16 00:01:23.552] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
+[2026-01-16 00:02:01.623] [INFO] [License] Abrindo checkout para plano: pro
+[2026-01-16 00:02:01.638] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
