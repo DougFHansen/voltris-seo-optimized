@@ -361,7 +361,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto items-center justify-center md:justify-start">
             <a
               href="/todos-os-servicos"
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-base sm:text-lg shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_24px_#8B31FF99] sm:hover:shadow-[0_0_32px_#8B31FF99] focus:scale-105 focus:shadow-[0_0_24px_#8B31FF99] sm:focus:shadow-[0_0_32px_#8B31FF99] outline-none"
+              className="px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-sm sm:text-base shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_20px_#8B31FF99] focus:scale-105 focus:shadow-[0_0_20px_#8B31FF99] outline-none"
               tabIndex={0}
               aria-label="Ver planos e preços de suporte técnico remoto VOLTRIS"
               title="Ver planos e preços de suporte técnico remoto VOLTRIS"
@@ -372,13 +372,13 @@ export default function HomePage() {
               href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20VOLTRIS%20sobre%20suporte%20t%C3%A9cnico%20ou%20cria%C3%A7%C3%A3o%20de%20site."
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center gap-2 group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8B31FF] focus:ring-offset-2 hover:bg-white hover:border-[#8B31FF]"
+              className="px-6 sm:px-7 py-2.5 sm:py-3 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center gap-2 group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8B31FF] focus:ring-offset-2 hover:bg-white hover:border-[#8B31FF]"
               tabIndex={0}
               aria-label="Falar com um especialista no WhatsApp"
               title="Falar com um especialista no WhatsApp"
             >
-              <i className="fab fa-whatsapp text-[#25D366] text-lg sm:text-xl group-hover:text-[#128C7E] transition-colors duration-300"></i>
-              <span className="font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-sm sm:drop-shadow-lg select-none text-base sm:text-lg group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] group-hover:text-transparent group-hover:bg-clip-text transition-colors duration-300" style={{letterSpacing: '0.04em'}}>Falar com um Especialista</span>
+              <i className="fab fa-whatsapp text-[#25D366] text-base sm:text-lg group-hover:text-[#128C7E] transition-colors duration-300"></i>
+              <span className="font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-sm select-none text-sm sm:text-base group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] group-hover:text-transparent group-hover:bg-clip-text transition-colors duration-300" style={{letterSpacing: '0.04em'}}>Falar com um Especialista</span>
             </a>
           </div>
           {/* Tags de serviços para SEO */}
