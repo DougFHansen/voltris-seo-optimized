@@ -165,7 +165,27 @@ export default function Header() {
 
   return (
     <>
-      <MotionDiv
+      {/* Definição de variável CSS para altura do header */}
+      <style jsx global>{`
+        :root {
+          --header-height: 80px;
+        }
+        @media (max-width: 1023px) {
+          :root {
+            --header-height: 72px;
+          }
+        }
+        @media (max-width: 639px) {
+          :root {
+            --header-height: 64px;
+          }
+        }
+        @media (max-width: 479px) {
+          :root {
+            --header-height: 56px;
+          }
+        }
+      `}</style>      <MotionDiv
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5, ease: "easeOut" }}

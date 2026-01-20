@@ -252,7 +252,22 @@ export default function HomePage() {
       <Header />
       {/* Banner Principal - Layout Fluido e Responsivo */}
       <section
-        className="w-full min-h-[calc(100dvh-80px)] flex flex-col md:flex-row items-center justify-center px-4 md:px-12 lg:px-24 bg-[#1E1E22] relative overflow-hidden"
+        className="
+          w-full
+          min-h-[calc(100dvh-var(--header-height))]
+          pt-[var(--header-height)]
+          flex
+          flex-col
+          md:flex-row
+          items-center
+          justify-center
+          px-4
+          md:px-12
+          lg:px-24
+          bg-[#1E1E22]
+          relative
+          overflow-hidden
+        "
         aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
       >
         {/* Elementos visuais 3D minimalistas - Flexível e adaptável */}
@@ -297,7 +312,7 @@ export default function HomePage() {
           <div className="absolute -z-10 w-48 h-48 sm:w-64 sm:h-64 md:w-[420px] md:h-[420px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
         </div>
         {/* Texto e CTA - Layout fluido e adaptável com safe area */}
-        <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-6 sm:gap-8 pt-10 md:pt-0 pb-20 md:pb-24">
+        <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-6 sm:gap-8 pb-20 md:pb-24">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 sm:mb-4 drop-shadow-lg font-sans">
             Suporte Técnico Remoto Premium 
             <motion.span
