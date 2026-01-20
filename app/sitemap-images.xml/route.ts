@@ -1,61 +1,59 @@
-import { posts } from '@/data/blog/posts';
-
-function escapeXml(unsafe: any) {
-  return String(unsafe || '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
-}
+import { NextResponse } from 'next/server';
 
 export async function GET() {
   const baseUrl = 'https://voltris.com.br';
-  const urls = posts.map(post => {
-    const imageUrl = post.coverImage?.startsWith('http')
-      ? post.coverImage
-      : `${baseUrl}${post.coverImage}`;
-    const title = escapeXml(post.title);
-    const description = escapeXml(post.description || post.title);
-    const slug = escapeXml(post.slug);
-    const imageLoc = escapeXml(imageUrl);
+  
+  // Images relevant for SEO
+  const images = [
+    {
+      loc: `${baseUrl}/logo.png`,
+      title: 'Logo Principal VOLTRIS',
+      caption: 'Logo oficial da VOLTRIS para identidade visual e Google Snippet'
+    },
+    {
+      loc: `${baseUrl}/logo-v2.webp`,
+      title: 'Logo VOLTRIS Versão 2',
+      caption: 'Logo atualizado da VOLTRIS em formato otimizado WebP'
+    },
+    {
+      loc: `${baseUrl}/logogoogle.webp`,
+      title: 'Logo Google VOLTRIS',
+      caption: 'Logo otimizado para integração com Google Services'
+    },
+    {
+      loc: `${baseUrl}/logopwa.webp`,
+      title: 'Logo PWA VOLTRIS',
+      caption: 'Logo para Progressive Web App da VOLTRIS'
+    },
+    {
+      loc: `${baseUrl}/about-img.webp`,
+      title: 'Imagem Sobre a Empresa',
+      caption: 'Imagem ilustrativa da equipe e serviços da VOLTRIS'
+    }
+  ];
 
-    return `
-      <url>
-        <loc>${baseUrl}/blog/${slug}</loc>
-        <image:image>
-          <image:loc>${imageLoc}</image:loc>
-          <image:title>${title}</image:title>
-          <image:caption>${description}</image:caption>
-        </image:image>
-      </url>
-    `;
-  });
-
-  const logoPngUrl = `${baseUrl}/logo.png`;
-  const logoPngEntry = `
+  // Generate XML
+  const xmlImages = images.map(img => `
     <url>
-      <loc>${baseUrl}/</loc>
+      <loc>${img.loc}</loc>
       <image:image>
-        <image:loc>${escapeXml(logoPngUrl)}</image:loc>
-        <image:title>${escapeXml('Logo Principal VOLTRIS')}</image:title>
-        <image:caption>${escapeXml('Logo principal da VOLTRIS para Google Snippet')}
-        </image:caption>
+        <image:loc>${img.loc}</image:loc>
+        <image:title><![CDATA[${img.title}]]></image:title>
+        <image:caption><![CDATA[${img.caption}]]></image:caption>
       </image:image>
     </url>
-  `;
+  `).join('');
 
-  return new Response(
-    `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-            xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-      ${logoPngEntry}
-      ${urls.join('\n')}
-    </urlset>`,
-    {
-      headers: {
-        'Content-Type': 'application/xml',
-      },
-    }
-  );
-} 
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  ${xmlImages}
+</urlset>`;
+
+  return new NextResponse(sitemap, {
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+    },
+  });
+}

@@ -1,28 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: {
-    default: "VOLTRIS Exterior - Suporte Técnico para Brasileiros no Exterior",
-    template: "%s | VOLTRIS Exterior"
-  },
-  description: "Suporte técnico especializado em português para brasileiros que moram fora do Brasil. Atendimento remoto global, criação de sites multilíngues, migração de dados internacionais e consultoria de TI para expatriados.",
+  title: 'VOLTRIS Exterior - Serviços de TI Premium para Brasileiros no Exterior',
+  description: '✓ Empresa brasileira especializada em suporte técnico remoto para expatriados ✓ Atendimento exclusivo em português ✓ Formatação, otimização e segurança digital ✓ Serviços internacionais com qualidade brasileira',
   keywords: [
-    "suporte técnico para brasileiros no exterior",
-    "atendimento remoto para expatriados",
-    "suporte técnico em português internacional",
-    "brasileiros fora do brasil suporte",
-    "expatriados brasil suporte ti",
-    "suporte técnico global brasil",
-    "serviços de ti para brasileiros no exterior",
-    "suporte remoto internacional",
-    "criação de sites para brasileiros no exterior",
-    "migração de dados internacional",
-    "consultoria ti expatriados",
-    "suporte nuvem para brasileiros",
-    "vpn para brasileiros no exterior",
-    "configuração de redes internacionais",
-    "backup internacional brasil",
-    "segurança digital para expatriados"
+    'serviços de ti para brasileiros no exterior',
+    'suporte técnico remoto internacional',
+    'empresa brasileira de tecnologia exterior',
+    'formatação de pc para expatriados',
+    'otimização de sistema internacional',
+    'suporte técnico em português para estrangeiros',
+    'tecnologia para brasileiros fora do brasil',
+    'serviços de informática internacionais',
+    'suporte remoto para expatriados brasileiros',
+    'ti premium para brasileiros no exterior'
   ],
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
@@ -36,22 +27,22 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     url: 'https://voltris.com.br/exterior',
     siteName: 'VOLTRIS Exterior',
-    title: 'VOLTRIS Exterior - Suporte Técnico para Brasileiros no Exterior',
-    description: 'Suporte técnico especializado em português para brasileiros que moram fora do Brasil. Atendimento remoto global e soluções tecnológicas internacionais.',
+    title: 'VOLTRIS Exterior - Serviços de TI Premium para Brasileiros no Exterior',
+    description: 'Empresa brasileira especializada em oferecer soluções tecnológicas de alta qualidade para expatriados. Atendimento exclusivo em português com padrões internacionais de excelência.',
     images: [
       {
-        url: '/logo-exterior.png',
+        url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'VOLTRIS Exterior - Suporte para Brasileiros no Mundo',
+        alt: 'VOLTRIS Exterior - Serviços de TI para Brasileiros no Exterior',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VOLTRIS Exterior - Suporte Técnico para Brasileiros no Exterior',
-    description: 'Suporte técnico especializado em português para brasileiros que moram fora do Brasil.',
-    images: ['/logo-exterior.png'],
+    title: 'VOLTRIS Exterior - Serviços de TI Premium para Brasileiros no Exterior',
+    description: 'Empresa brasileira de tecnologia especializada em suporte técnico remoto para expatriados. Atendimento exclusivo em português com qualidade internacional.',
+    images: ['/logo.png'],
     creator: '@voltris',
   },
   robots: {
@@ -65,5 +56,4 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  category: 'technology',
 };

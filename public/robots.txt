@@ -5,77 +5,30 @@ Allow: /
 Sitemap: https://voltris.com.br/sitemap.xml
 Sitemap: https://voltris.com.br/sitemap-images.xml
 
-# Páginas principais de SEO - Alta prioridade
-Allow: /tecnico-informatica
-Allow: /tecnico-informatica-minha-regiao
-Allow: /tecnico-informatica-atende-casa
-Allow: /criar-site
-Allow: /criadores-de-site
-Allow: /servicos
-Allow: /todos-os-servicos
-Allow: /blog
+# Otimização para crawlers
+Disallow: /*?*
+Allow: /*?$
 
-# Serviços específicos
-Allow: /formatacao
-Allow: /otimizacao-pc
-Allow: /instalacao-office
-Allow: /erros-jogos
-Allow: /optimizer
-Allow: /gamers
-
-# Páginas informativas
-Allow: /about
-Allow: /faq
-Allow: /reviews
-Allow: /lgpd
-
-# Páginas legais
-Allow: /politica-privacidade
-Allow: /termos-uso
-
-# Recursos importantes
-Allow: /api/
-Allow: /blog/
-Allow: /servicos/
-Allow: /todos-os-servicos/
-
-# Bloquear páginas administrativas e de usuário
+# Páginas administrativas
 Disallow: /restricted-area-admin/
 Disallow: /dashboard/
-Disallow: /login/
-Disallow: /profile/
-Disallow: /reset-password/
-Disallow: /auth/
+Disallow: /api/
 
-# Bloquear arquivos desnecessários
-Disallow: /*.json$
-# Disallow: /*.xml$   <-- Linha removida para liberar XML
+# Arquivos sensíveis
+Disallow: /.env
+Disallow: /package.json
+Disallow: /next.config.js
+
+# Otimização de crawl budget
 Disallow: /_next/
-Disallow: /api/auth/
+Disallow: /static/
 
-# Configurações específicas para Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
+# Páginas de teste
+Disallow: /teste-*
+Disallow: /debug-*
 
-# Configurações para Bing
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
+# Host
+Host: https://voltris.com.br
 
-# Configurações para outros crawlers importantes
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Baiduspider
-Allow: /
-Crawl-delay: 2
-
-User-agent: YandexBot
-Allow: /
-Crawl-delay: 1 
+# Crawl-delay para outros bots (opcional)
+# Crawl-delay: 10

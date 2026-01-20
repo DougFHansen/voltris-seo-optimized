@@ -25,3 +25,11 @@
 [2026-01-16 00:01:23.552] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
 [2026-01-16 00:02:01.623] [INFO] [License] Abrindo checkout para plano: pro
 [2026-01-16 00:02:01.638] [INFO] [License] Checkout aberto: https://voltris.com.br/checkout?plan=pro
+[2026-01-17 04:58:09.677] [INFO] [License] Device ID: AFCD42EA486F804895BB2F3730133300
+[2026-01-17 04:58:10.385] [INFO] [License] *** MODO ATIVAçãO DIRETA ATIVADO - CONECTIVIDADE IGNORADA ***
+[2026-01-17 04:58:10.387] [INFO] [License] Sistema pronto para ativaçãO - modo online forçado
+[2026-01-17 04:59:06.075] [INFO] [License] *** ATIVAçãO LOCAL ABSOLUTA ***
+[2026-01-17 04:59:06.076] [INFO] [License] Tentando ativar: VOLTRIS-LI...
+[2026-01-17 04:59:06.076] [INFO] [License] IGNORANDO TODAS AS VERIFICAçõES - ATIVAçãO LOCAL DIRETA
+[2026-01-17 04:59:06.076] [INFO] [License] Chave de teste detectada - ativando localmente
+[2026-01-17 04:59:06.079] [SUCCESS] [License] Licença ativada localmente com sucesso

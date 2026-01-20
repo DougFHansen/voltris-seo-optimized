@@ -15,7 +15,6 @@ export const metadata: Metadata = generateMetadata({
     "e-commerce",
     "landing page",
     "portfolio",
-    "blog",
     "site institucional"
   ],
   url: '/criar-site',

@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     url: 'https://voltris.com.br/exterior/servicos',
     siteName: 'VOLTRIS Exterior',
-    title: 'Serviços de TI Premium para Brasileiros no Exterior',
-    description: 'Soluções tecnológicas especializadas para expatriados brasileiros. Formatação remota, otimização de PC, segurança digital e suporte técnico 24/7 em português.',
+    title: '[2025] Serviços de TI Premium para Brasileiros no Exterior - VOLTRIS',
+    description: '✓ 6 serviços especializados em português ✓ Suporte técnico remoto, formatação e otimização ✓ Atendimento 24/7 para expatriados ✓ Preços em EUR/USD ✓ Qualidade brasileira internacional',
     images: [
       {
         url: '/images/servicos-exterior-og.jpg',

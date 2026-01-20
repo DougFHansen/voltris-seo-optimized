@@ -12,6 +12,8 @@ interface GuideTemplateProps {
   difficultyLevel: string;
   contentSections: ContentSection[];
   relatedGuides?: RelatedGuide[];
+  author?: string;
+  lastUpdated?: string;
 }
 
 interface ContentSection {
@@ -57,7 +59,9 @@ export function GuideTemplate({
   estimatedTime,
   difficultyLevel,
   contentSections,
-  relatedGuides = []
+  relatedGuides = [],
+  author = "Equipe Técnica Voltris",
+  lastUpdated = "Janeiro 2025"
 }: GuideTemplateProps) {
   return (
     <>
@@ -77,7 +81,8 @@ export function GuideTemplate({
             <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
               <span className="bg-[#1c1c1e] px-3 py-1 rounded-full">Tempo estimado: {estimatedTime}</span>
               <span className="bg-[#1c1c1e] px-3 py-1 rounded-full">Nível: {difficultyLevel}</span>
-              <span className="bg-[#1c1c1e] px-3 py-1 rounded-full">Atualizado: Janeiro 2025</span>
+              <span className="bg-[#1c1c1e] px-3 py-1 rounded-full">Autor: {author}</span>
+              <span className="bg-[#1c1c1e] px-3 py-1 rounded-full">Atualizado: {lastUpdated}</span>
             </div>
           </div>
         </section>

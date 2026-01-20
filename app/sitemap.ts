@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { posts } from '@/data/blog/posts';
+
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://voltris.com.br';
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: baseUrl,
       lastModified: currentDate,
-      changeFrequency: 'daily' as const,
+      changeFrequency: 'hourly' as const,
       priority: 1.0,
     },
     // LANDING PAGES SEO - Alta prioridade
@@ -133,13 +133,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
-    // BLOG - Alta prioridade (conteúdo dinâmico)
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: currentDate,
-      changeFrequency: 'daily' as const,
-      priority: 0.8,
-    },
+
     // PÁGINAS INFORMATIVAS - Média prioridade
     {
       url: `${baseUrl}/about`,
@@ -159,11 +153,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
+    // PÁGINA DE GUIAS - Prioridade MÁXIMA (conteúdo principal)
     {
       url: `${baseUrl}/guias`,
       lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/reviews`,
@@ -219,19 +214,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/exterior`,
       lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
+      changeFrequency: 'daily' as const,
       priority: 0.9,
     },
     {
       url: `${baseUrl}/exterior/servicos`,
       lastModified: currentDate,
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
+      changeFrequency: 'daily' as const,
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/exterior/contato`,
       lastModified: currentDate,
-      changeFrequency: 'monthly' as const,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/exterior/orcamento`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
@@ -272,17 +273,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Adicionar dinamicamente todas as páginas de posts do blog
-  const blogUrls = posts.map(post => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.date || currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.7,
-  }));
-
-  // Unir todas as URLs
-  return [
-    ...staticUrls,
-    ...blogUrls,
-  ];
+  return staticUrls;
 } 

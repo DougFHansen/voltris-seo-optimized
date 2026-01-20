@@ -8,9 +8,8 @@ import { ClipboardList, TicketCheck } from 'lucide-react';
 import AdminOrdersTab from './orders/AdminOrdersTab';
 import AdminTicketsTab from './tickets/AdminTicketsTab';
 import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
-import AdminBlogTab from './blog/AdminBlogTab';
 import AdminUsersTab from './users/AdminUsersTab';
-import NewPost from './blog/new/page';
+
 import NotificationTester from '../components/NotificationTester';
 
 const tabs = [
@@ -29,11 +28,7 @@ const tabs = [
     value: 'newsletter',
     icon: <FiMail size={20} className="text-[#FF4B6B]" />,
   },
-  {
-    label: 'Blog',
-    value: 'blog',
-    icon: <FiFileText size={20} className="text-[#31A8FF]" />,
-  },
+
   {
     label: 'Usuários',
     value: 'users',
@@ -103,7 +98,6 @@ export default function AdminDashboard() {
           {activeTab === 'orders' && <AdminOrdersTab />}
           {activeTab === 'tickets' && <AdminTicketsTab />}
           {activeTab === 'newsletter' && <AdminNewsletterTab />}
-          {activeTab === 'blog' && <AdminBlogTab />}
           {activeTab === 'users' && <AdminUsersTab />}
         </div>
 

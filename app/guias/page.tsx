@@ -282,6 +282,37 @@ const guides = [
     readTime: '28 min',
     difficulty: 'Intermediário',
     href: '/guias/gestao-servicos'
+  },
+  // Novos guias avançados
+  {
+    id: 'monitoramento-sistema',
+    title: 'Monitoramento Completo do Sistema Windows',
+    description: 'Aprenda a monitorar recursos do sistema em tempo real, identificar gargalos de performance e prevenir problemas.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Monitoramento',
+    readTime: '25 min',
+    difficulty: 'Intermediário',
+    href: '/guias/monitoramento-sistema'
+  },
+  {
+    id: 'rede-corporativa',
+    title: 'Configuração Profissional de Rede Corporativa',
+    description: 'Implemente uma rede corporativa segura e eficiente com segmentação de VLAN, controle de acesso e QoS.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Redes',
+    readTime: '45 min',
+    difficulty: 'Avançado',
+    href: '/guias/rede-corporativa'
+  },
+  {
+    id: 'recuperacao-dados',
+    title: 'Recuperação de Dados e Forense Digital',
+    description: 'Técnicas profissionais para recuperação de dados perdidos, análise forense digital e preservação de evidências.',
+    icon: <DocumentTextIcon className="w-8 h-8" />,
+    category: 'Recuperação',
+    readTime: '35 min',
+    difficulty: 'Avançado',
+    href: '/guias/recuperacao-dados'
   }
 ];
 
@@ -297,7 +328,9 @@ const categories = [
   'Limpeza',
   'Hardware',
   'Software',
-  'Redes'
+  'Redes',
+  'Monitoramento',
+  'Recuperação'
 ];
 
 export default function GuiasPage() {
@@ -460,7 +493,6 @@ export default function GuiasPage() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
       <Footer />
     </>
   );

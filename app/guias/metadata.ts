@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Guias e Tutoriais de Suporte Técnico | VOLTRIS',
-  description: 'Aprenda técnicas profissionais de suporte técnico, otimização e manutenção de computadores com nossos guias completos e detalhados. Formatação, otimização, segurança digital e muito mais.',
+  title: 'Guias Técnicos Completos de Suporte Windows - Aprenda com Especialistas | VOLTRIS',
+  description: '✓ 30+ guias técnicos detalhados ✓ Passo a passo profissional ✓ Formatação, otimização, segurança e manutenção de Windows ✓ Conteúdo criado por especialistas certificados ✓ Atualizado 2025',
   keywords: [
     'guias suporte técnico',
     'tutoriais informática',

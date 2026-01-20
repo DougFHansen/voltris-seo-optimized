@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Como Otimizar a Performance do Seu PC | Guia Profissional | VOLTRIS',
-  description: 'Descubra técnicas profissionais para acelerar seu computador, liberar espaço em disco, otimizar a inicialização e melhorar o desempenho geral do sistema. Guia completo passo a passo.',
+  title: '[2025] Como Otimizar a Performance do Seu PC - 12 Técnicas Comprovadas | VOLTRIS',
+  description: '✓ 12 técnicas profissionais comprovadas ✓ Aumente o desempenho em até 50% ✓ Passo a passo detalhado ✓ Liberar espaço, otimizar RAM e acelerar inicialização ✓ Atualizado Janeiro 2025',
   keywords: [
     'otimizar PC',
     'acelerar computador',

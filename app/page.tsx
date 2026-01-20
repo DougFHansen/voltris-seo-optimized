@@ -23,7 +23,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import TechFloatingElements from '@/components/TechFloatingElements';
 import { FaWhatsapp } from 'react-icons/fa';
 import dynamic from "next/dynamic";
-import HomeBlogSection from "@/components/blog/HomeBlogSection";
+
 import { ShieldCheckIcon, CloudArrowUpIcon, CogIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 import { loadFull } from 'tsparticles';
 import { Particles } from '@tsparticles/react';
@@ -781,8 +781,6 @@ export default function HomePage() {
         </section>
       </AnimatedSection>
 
-      {/* Blog Section */}
-      <HomeBlogSection />
 
       {/* FAQ Section */}
       <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden" id="doubts">

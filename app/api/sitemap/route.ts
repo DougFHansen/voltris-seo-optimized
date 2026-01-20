@@ -59,12 +59,7 @@ export async function GET(request: NextRequest) {
       changefreq: 'weekly',
       priority: '0.8'
     },
-    {
-      url: '/blog',
-      lastmod: new Date().toISOString(),
-      changefreq: 'daily',
-      priority: '0.8'
-    },
+
     {
       url: '/about',
       lastmod: new Date().toISOString(),
@@ -196,34 +191,10 @@ export async function GET(request: NextRequest) {
     priority: '0.8'
   }));
 
-  // URLs de categorias do blog
-  const blogCategoryUrls = [
-    '/blog/category/tecnologia',
-    '/blog/category/suporte-tecnico',
-    '/blog/category/windows',
-    '/blog/category/jogos',
-    '/blog/category/otimizacao',
-    '/blog/category/seguranca',
-    '/blog/category/dicas'
-  ].map(category => ({
-    url: category,
-    lastmod: new Date().toISOString(),
-    changefreq: 'weekly',
-    priority: '0.7'
-  }));
 
-  // URLs de posts do blog (exemplo)
-  const blogPostUrls = [
-    {
-      url: '/blog/gta6-guia-completo',
-      lastmod: new Date().toISOString(),
-      changefreq: 'monthly',
-      priority: '0.6'
-    }
-  ];
 
   // Combinar todas as URLs
-  const allUrls = [...mainUrls, ...serviceUrls, ...blogCategoryUrls, ...blogPostUrls];
+  const allUrls = [...mainUrls, ...serviceUrls];
 
   // Gerar XML do sitemap
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -240,6 +211,31 @@ ${allUrls.map(url => `  <url>
     <priority>${url.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;
+
+  // Also generate sitemap index referencing both sitemaps
+  const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${baseUrl}/api/sitemap</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${baseUrl}/sitemap-images.xml</loc>
+    <lastmod>${new Date().toISOString()}</lastmod>
+  </sitemap>
+</sitemapindex>`;
+
+  // Return sitemap index for root sitemap requests
+  const isRootRequest = request.nextUrl.pathname === '/sitemap.xml';
+  
+  if (isRootRequest) {
+    return new NextResponse(sitemapIndex, {
+      headers: {
+        'Content-Type': 'application/xml',
+        'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+      },
+    });
+  }
 
   return new NextResponse(sitemap, {
     headers: {
