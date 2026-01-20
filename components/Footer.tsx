@@ -89,7 +89,6 @@ export default function Footer() {
                 { name: 'Home', path: '/' },
                 { name: 'Sobre', path: '/about' },
                 { name: 'Serviços', path: '/todos-os-servicos' },
-                { name: 'Blog', path: '/blog' },
                 { name: 'Guias', path: '/guias' },
                 { name: 'Gamers', path: '/gamers' },
                 { name: 'Contato', path: '/contato' }
