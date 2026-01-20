@@ -7,16 +7,16 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect, useCallback } from 'react';
-import { 
-  FiMonitor, 
-  FiSettings, 
-  FiClock, 
-  FiBarChart2, 
-  FiDatabase, 
-  FiPrinter, 
-  FiShield, 
-  FiGlobe, 
-  FiTrendingUp 
+import {
+  FiMonitor,
+  FiSettings,
+  FiClock,
+  FiBarChart2,
+  FiDatabase,
+  FiPrinter,
+  FiShield,
+  FiGlobe,
+  FiTrendingUp
 } from 'react-icons/fi';
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer } from "lucide-react";
 import AnimatedSection from '@/components/AnimatedSection';
@@ -239,7 +239,7 @@ export default function HomePage() {
   useEffect(() => {
     try {
       if (window) (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch (e) {}
+    } catch (e) { }
   }, []);
 
   // Função para inicializar as partículas corretamente
@@ -273,57 +273,59 @@ export default function HomePage() {
         style={{ paddingTop: 'var(--header-height, 80px)' }}
       >
         {/* Container Principal para limitar largura em telas gigantes */}
-        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-8">
-          
+        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-8 h-full">
+
           {/* Elementos visuais 3D minimalistas - Flexível e adaptável */}
-          <div className="hidden lg:flex flex-1 items-center justify-center relative w-full" style={{ minHeight: '400px' }}>
-            <div className="flex flex-col gap-8 sm:gap-12 md:gap-16 items-center justify-center w-full z-10 scale-90 xl:scale-100 transition-transform duration-300">
+          <div className="hidden lg:flex flex-1 items-center justify-center relative w-full h-full max-h-[600px]">
+            <div className="flex flex-col gap-6 sm:gap-10 md:gap-12 items-center justify-center w-full z-10 scale-[0.85] lg:scale-90 xl:scale-100 transition-transform duration-300">
               {/* Linha superior */}
-              <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-left">
+              <div className="flex flex-row gap-6 sm:gap-10 md:gap-12 w-full justify-center animate-horizontal-move-left">
                 <motion.div
                   className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0, 10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <ComputerDesktopIcon className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white drop-shadow-[0_0_16px_#00A6FF99] sm:drop-shadow-[0_0_24px_#00A6FF99]" aria-label="Ícone computador 3D" />
+                  <ComputerDesktopIcon className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_16px_#00A6FF99] sm:drop-shadow-[0_0_24px_#00A6FF99]" aria-label="Ícone computador 3D" />
                 </motion.div>
                 <motion.div
                   className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ scale: [1, 1.12, 1, 0.95, 1], rotate: [0, 8, -8, 0] }}
                   transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                 >
-                  <ShieldCheckIcon className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_12px_#8B31FF99] sm:drop-shadow-[0_0_18px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
+                  <ShieldCheckIcon className="w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_12px_#8B31FF99] sm:drop-shadow-[0_0_18px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
                 </motion.div>
               </div>
               {/* Linha inferior */}
-              <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-right">
+              <div className="flex flex-row gap-6 sm:gap-10 md:gap-12 w-full justify-center animate-horizontal-move-right">
                 <motion.div
                   className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ y: [0, 12, -12, 0], scale: [1, 1.08, 1, 0.92, 1] }}
                   transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
                 >
-                  <CloudArrowUpIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
+                  <CloudArrowUpIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
                 </motion.div>
                 <motion.div
                   className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ rotate: [0, -12, 12, 0], y: [0, 8, 0, -8, 0] }}
                   transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
                 >
-                  <CogIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
+                  <CogIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
                 </motion.div>
               </div>
             </div>
             {/* Gradiente de fundo sutil */}
-            <div className="absolute -z-10 w-48 h-48 sm:w-64 sm:h-64 md:w-[420px] md:h-[420px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
+            <div className="absolute -z-10 w-40 h-40 sm:w-56 sm:h-56 md:w-[380px] md:h-[380px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
           </div>
 
-          {/* Texto e CTA - Layout fluido e adaptável com safe area */}
-          <div className="flex-1 flex flex-col items-center lg:items-start justify-center text-center lg:text-left gap-6 sm:gap-8 pb-10 sm:pb-20 pt-8 sm:pt-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 sm:mb-4 drop-shadow-lg font-sans max-w-2xl mx-auto lg:mx-0">
-              Suporte Técnico Remoto Premium 
+          {/* Texto e CTA - Layout fluido e adaptável com safe area e compactação vertical */}
+          <div className="flex-1 flex flex-col items-center lg:items-start justify-center text-center lg:text-left gap-4 sm:gap-6 pb-8 sm:pb-12 pt-4 sm:pt-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-1 sm:mb-2 drop-shadow-lg font-sans max-w-2xl mx-auto lg:mx-0">
+              Suporte Técnico
+              <br className="sm:hidden" />
+              Remoto Premium
               <motion.span
-                className="ml-1 sm:ml-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-md sm:drop-shadow-lg select-none inline-block align-middle"
-                style={{letterSpacing: '0.04em'}}
+                className="ml-1 sm:ml-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-md sm:drop-shadow-lg select-none inline-block align-middle mt-1 sm:mt-0"
+                style={{ letterSpacing: '0.04em' }}
                 initial={{ y: 0 }}
                 animate={{ y: [0, -6, 0, 6, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -331,17 +333,17 @@ export default function HomePage() {
                 VOLTRIS
               </motion.span>
             </h1>
-            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/80 mb-2 sm:mb-4 font-sans max-w-xl mx-auto lg:mx-0">
-              Formatação Avançada • Otimização de Sistemas • Segurança Digital
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-white/80 mb-2 sm:mb-3 font-sans max-w-xl mx-auto lg:mx-0">
+              Formatação Avançada • Otimização • Segurança Digital
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto lg:mx-0 mb-4 sm:mb-6 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto lg:mx-0 mb-4 sm:mb-5 leading-relaxed">
               Atendimento rápido, seguro e online. Especialistas em manutenção, proteção, performance e soluções digitais.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center justify-center lg:justify-start">
+
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-center justify-center lg:justify-start">
               <a
                 href="/todos-os-servicos"
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-base sm:text-lg shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_24px_#8B31FF99] sm:hover:shadow-[0_0_32px_#8B31FF99] text-center"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-base sm:text-lg shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_24px_#8B31FF99] sm:hover:shadow-[0_0_32px_#8B31FF99] text-center"
               >
                 Ver Planos e Preços
               </a>
@@ -349,7 +351,7 @@ export default function HomePage() {
                 href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20VOLTRIS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center justify-center gap-2 group transition-all duration-300 hover:bg-white hover:border-[#8B31FF]"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center justify-center gap-2 group transition-all duration-300 hover:bg-white hover:border-[#8B31FF]"
               >
                 <i className="fab fa-whatsapp text-[#25D366] text-lg sm:text-xl"></i>
                 <span className="font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text text-base sm:text-lg group-hover:bg-none group-hover:text-[#8B31FF] transition-colors duration-300">
@@ -358,12 +360,12 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Tags de serviços para SEO */}
-            <ul className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8 justify-center lg:justify-start max-w-2xl">
-              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF]"></span>Suporte Online</li>
-              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Manutenção</li>
-              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#FF00A0] shadow-[0_0_6px_#FF00A0]"></span>Otimização</li>
-              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Recuperação</li>
+            {/* Tags de serviços para SEO - Compactadas */}
+            <ul className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6 justify-center lg:justify-start max-w-2xl">
+              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF]"></span>Suporte Online</li>
+              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Manutenção</li>
+              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FF00A0] shadow-[0_0_6px_#FF00A0]"></span>Otimização</li>
+              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Recuperação</li>
             </ul>
           </div>
         </div>
@@ -396,16 +398,16 @@ export default function HomePage() {
               <div className="relative w-full max-w-[500px] group transition-transform duration-700 ease-out hover:rotate-y-8 preserve-3d">
                 {/* Main image container */}
                 <div className="relative overflow-hidden rounded-[10px] shadow-2xl w-full h-full">
-                  <Image 
-                    src="/about-img.webp" 
-                    alt="About Us" 
+                  <Image
+                    src="/about-img.webp"
+                    alt="About Us"
                     className="w-full h-full object-cover transition-transform duration-700 ease-out"
                     width={500}
                     height={750}
                     priority
                     fetchPriority="high"
                   />
-                  
+
                   {/* Floating elements */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out"></div>
@@ -414,7 +416,7 @@ export default function HomePage() {
 
                   {/* 3D Depth effect */}
                   <div className="absolute inset-0 rounded-[10px] shadow-[inset_0_0_30px_rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  
+
                   {/* Interactive corners */}
                   <div className="absolute inset-0 p-4">
                     <div className="absolute top-0 left-0 w-16 h-16">
@@ -439,7 +441,7 @@ export default function HomePage() {
                 <div className="absolute -bottom-10 inset-x-0 h-20 bg-black/20 blur-xl rounded-full transform scale-90 translate-z-50 transition-all duration-700 group-hover:translate-z-70 opacity-50"></div>
               </div>
             </div>
-            
+
             {/* Conteúdo de texto */}
             <div className="relative z-10 w-full md:flex-1 p-4 sm:p-6 md:p-8 flex flex-col items-center md:items-start justify-center order-1 md:order-2">
               <div className="w-full text-center mb-6 sm:mb-8">
@@ -453,16 +455,16 @@ export default function HomePage() {
                 <div className="relative w-[90vw] max-w-[1000px] group transition-transform duration-700 ease-out hover:rotate-y-8 preserve-3d">
                   {/* Main image container */}
                   <div className="relative overflow-hidden rounded-[10px] shadow-2xl w-full h-full">
-                    <Image 
-                      src="/about-img.webp" 
-                      alt="About Us" 
+                    <Image
+                      src="/about-img.webp"
+                      alt="About Us"
                       className="w-full h-full object-cover transition-transform duration-700 ease-out"
                       width={500}
                       height={750}
                       priority
                       fetchPriority="high"
                     />
-                    
+
                     {/* Floating elements */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out"></div>
@@ -471,7 +473,7 @@ export default function HomePage() {
 
                     {/* 3D Depth effect */}
                     <div className="absolute inset-0 rounded-[10px] shadow-[inset_0_0_30px_rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    
+
                     {/* Interactive corners */}
                     <div className="absolute inset-0 p-4">
                       <div className="absolute top-0 left-0 w-16 h-16">
@@ -515,8 +517,8 @@ export default function HomePage() {
                   </p>
                 )}
                 <div className="w-full flex justify-center mt-3 xs:mt-4">
-                  <button 
-                    onClick={() => setShowMoreText(!showMoreText)} 
+                  <button
+                    onClick={() => setShowMoreText(!showMoreText)}
                     className="text-xs xs:text-sm sm:text-base text-[#31A8FF] hover:text-[#31A8FF]/80 transition-colors duration-300 min-h-[44px] px-2"
                   >
                     {showMoreText ? 'Mostrar Menos' : 'Leia Mais'}
@@ -610,8 +612,8 @@ export default function HomePage() {
                   buttonHref = `/servicos?abrir=${service.id}`;
                 }
                 return (
-                  <div 
-                    key={service.id} 
+                  <div
+                    key={service.id}
                     className="group relative bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border border-[#FF4B6B]/10 flex flex-col justify-between h-full transition-all duration-500 hover:border-[#FF4B6B]/30 hover:shadow-[0_0_30px_rgba(139,49,255,0.1)] overflow-hidden"
                   >
                     <div className="relative z-10 flex flex-col items-center justify-center mb-4 sm:mb-6">
@@ -628,7 +630,7 @@ export default function HomePage() {
                       </div>
                       <p className="text-sm sm:text-base text-gray-400 text-center mb-4">{service.description}</p>
                     </div>
-                    <Link 
+                    <Link
                       href={buttonHref}
                       className="inline-flex items-center px-4 sm:px-6 py-2 rounded-lg bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-semibold hover:shadow-[0_0_20px_rgba(139,49,255,0.3)] transition-all duration-300 ease-out hover:scale-105 w-full justify-center gap-2 mt-auto relative overflow-hidden"
                     >
@@ -652,7 +654,7 @@ export default function HomePage() {
         {/* Background Effects */}
         <div className="absolute top-0 left-1/4 w-32 xs:w-48 sm:w-72 md:w-96 h-32 xs:h-48 sm:h-72 md:h-96 bg-[#FF4B6B] opacity-10 rounded-full filter blur-[100px]" />
         <div className="absolute bottom-0 right-1/4 w-32 xs:w-48 sm:w-72 md:w-96 h-32 xs:h-48 sm:h-72 md:h-96 bg-[#8B31FF] opacity-10 rounded-full filter blur-[100px]" />
-        
+
         <div className="container mx-auto px-2 xs:px-4 sm:px-6 md:px-8 relative">
           <div className="text-center mb-6 xs:mb-8 sm:mb-16">
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-3 xs:mb-4 sm:mb-6 relative inline-block">
@@ -826,7 +828,7 @@ export default function HomePage() {
               Não perca mais tempo com problemas de computador. Nossa equipe de técnicos especializados está pronta para resolver formatação, otimização, remoção de vírus e outros problemas de forma rápida e segura.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 xs:gap-4 sm:gap-6 justify-center">
-              <Link 
+              <Link
                 href="/todos-os-servicos"
                 className="inline-flex items-center px-4 xs:px-6 sm:px-8 py-2 xs:py-3 sm:py-4 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(139,49,255,0.5)] transition-all duration-300 hover:scale-105 text-sm xs:text-base sm:text-lg min-h-[44px]"
               >
@@ -835,7 +837,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
-              <Link 
+              <Link
                 href="/todos-os-servicos/criacao-de-sites"
                 className="inline-flex items-center px-4 xs:px-6 sm:px-8 py-2 xs:py-3 sm:py-4 border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-xl hover:bg-[#31A8FF] hover:text-white transition-all duration-300 text-sm xs:text-base sm:text-lg min-h-[44px]"
               >
