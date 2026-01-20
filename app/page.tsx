@@ -254,114 +254,118 @@ export default function HomePage() {
       <section
         className="
           w-full
-          min-h-[calc(100dvh-var(--header-height))]
-          pt-[var(--header-height)]
+          min-h-[calc(100dvh-80px)]
           flex
           flex-col
-          md:flex-row
+          lg:flex-row
           items-center
           justify-center
           px-4
+          sm:px-6
           md:px-12
-          lg:px-24
+          lg:px-16
+          xl:px-24
           bg-[#1E1E22]
           relative
           overflow-hidden
         "
         aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
+        style={{ paddingTop: 'var(--header-height, 80px)' }}
       >
-        {/* Elementos visuais 3D minimalistas - Flexível e adaptável */}
-        <div className="hidden md:flex flex-1 items-center justify-center relative" style={{ minHeight: '400px', height: 'auto' }}>
-          <div className="flex flex-col gap-8 sm:gap-12 md:gap-16 items-center justify-center w-full z-10">
-            {/* Linha superior */}
-            <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-left">
-              <motion.div
-                className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0, 10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <ComputerDesktopIcon className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white drop-shadow-[0_0_16px_#00A6FF99] sm:drop-shadow-[0_0_24px_#00A6FF99]" aria-label="Ícone computador 3D" />
-              </motion.div>
-              <motion.div
-                className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                animate={{ scale: [1, 1.12, 1, 0.95, 1], rotate: [0, 8, -8, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              >
-                <ShieldCheckIcon className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_12px_#8B31FF99] sm:drop-shadow-[0_0_18px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
-              </motion.div>
+        {/* Container Principal para limitar largura em telas gigantes */}
+        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-8">
+          
+          {/* Elementos visuais 3D minimalistas - Flexível e adaptável */}
+          <div className="hidden lg:flex flex-1 items-center justify-center relative w-full" style={{ minHeight: '400px' }}>
+            <div className="flex flex-col gap-8 sm:gap-12 md:gap-16 items-center justify-center w-full z-10 scale-90 xl:scale-100 transition-transform duration-300">
+              {/* Linha superior */}
+              <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-left">
+                <motion.div
+                  className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0, 10, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                >
+                  <ComputerDesktopIcon className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white drop-shadow-[0_0_16px_#00A6FF99] sm:drop-shadow-[0_0_24px_#00A6FF99]" aria-label="Ícone computador 3D" />
+                </motion.div>
+                <motion.div
+                  className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  animate={{ scale: [1, 1.12, 1, 0.95, 1], rotate: [0, 8, -8, 0] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                >
+                  <ShieldCheckIcon className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_12px_#8B31FF99] sm:drop-shadow-[0_0_18px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
+                </motion.div>
+              </div>
+              {/* Linha inferior */}
+              <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-right">
+                <motion.div
+                  className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  animate={{ y: [0, 12, -12, 0], scale: [1, 1.08, 1, 0.92, 1] }}
+                  transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+                >
+                  <CloudArrowUpIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
+                </motion.div>
+                <motion.div
+                  className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  animate={{ rotate: [0, -12, 12, 0], y: [0, 8, 0, -8, 0] }}
+                  transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+                >
+                  <CogIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
+                </motion.div>
+              </div>
             </div>
-            {/* Linha inferior */}
-            <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-right">
-              <motion.div
-                className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                animate={{ y: [0, 12, -12, 0], scale: [1, 1.08, 1, 0.92, 1] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+            {/* Gradiente de fundo sutil */}
+            <div className="absolute -z-10 w-48 h-48 sm:w-64 sm:h-64 md:w-[420px] md:h-[420px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
+          </div>
+
+          {/* Texto e CTA - Layout fluido e adaptável com safe area */}
+          <div className="flex-1 flex flex-col items-center lg:items-start justify-center text-center lg:text-left gap-6 sm:gap-8 pb-10 sm:pb-20 pt-8 sm:pt-0">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 sm:mb-4 drop-shadow-lg font-sans max-w-2xl mx-auto lg:mx-0">
+              Suporte Técnico Remoto Premium 
+              <motion.span
+                className="ml-1 sm:ml-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-md sm:drop-shadow-lg select-none inline-block align-middle"
+                style={{letterSpacing: '0.04em'}}
+                initial={{ y: 0 }}
+                animate={{ y: [0, -6, 0, 6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <CloudArrowUpIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
-              </motion.div>
-              <motion.div
-                className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                animate={{ rotate: [0, -12, 12, 0], y: [0, 8, 0, -8, 0] }}
-                transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+                VOLTRIS
+              </motion.span>
+            </h1>
+            <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/80 mb-2 sm:mb-4 font-sans max-w-xl mx-auto lg:mx-0">
+              Formatação Avançada • Otimização de Sistemas • Segurança Digital
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto lg:mx-0 mb-4 sm:mb-6 leading-relaxed">
+              Atendimento rápido, seguro e online. Especialistas em manutenção, proteção, performance e soluções digitais.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto items-center justify-center lg:justify-start">
+              <a
+                href="/todos-os-servicos"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-base sm:text-lg shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_24px_#8B31FF99] sm:hover:shadow-[0_0_32px_#8B31FF99] text-center"
               >
-                <CogIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
-              </motion.div>
+                Ver Planos e Preços
+              </a>
+              <a
+                href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20VOLTRIS"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center justify-center gap-2 group transition-all duration-300 hover:bg-white hover:border-[#8B31FF]"
+              >
+                <i className="fab fa-whatsapp text-[#25D366] text-lg sm:text-xl"></i>
+                <span className="font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text text-base sm:text-lg group-hover:bg-none group-hover:text-[#8B31FF] transition-colors duration-300">
+                  Falar no WhatsApp
+                </span>
+              </a>
             </div>
+
+            {/* Tags de serviços para SEO */}
+            <ul className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8 justify-center lg:justify-start max-w-2xl">
+              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF]"></span>Suporte Online</li>
+              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Manutenção</li>
+              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#FF00A0] shadow-[0_0_6px_#FF00A0]"></span>Otimização</li>
+              <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Recuperação</li>
+            </ul>
           </div>
-          {/* Gradiente de fundo sutil */}
-          <div className="absolute -z-10 w-48 h-48 sm:w-64 sm:h-64 md:w-[420px] md:h-[420px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
-        </div>
-        {/* Texto e CTA - Layout fluido e adaptável com safe area */}
-        <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-6 sm:gap-8 pb-20 md:pb-24">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 sm:mb-4 drop-shadow-lg font-sans">
-            Suporte Técnico Remoto Premium 
-            <motion.span
-              className="ml-1 sm:ml-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-md sm:drop-shadow-lg select-none inline-block align-middle"
-              style={{letterSpacing: '0.04em'}}
-              initial={{ y: 0 }}
-              animate={{ y: [0, -6, 0, 6, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              VOLTRIS
-            </motion.span>
-          </h1>
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-white/80 mb-4 sm:mb-6 font-sans">
-            Formatação Avançada • Otimização de Sistemas • Segurança Digital • Desenvolvimento Web
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-lg sm:max-w-xl md:max-w-2xl mb-6">
-            Atendimento rápido, seguro e 100% online. Tenha acesso a especialistas em manutenção de computadores, proteção contra ameaças, melhorias de performance e soluções digitais personalizadas.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto items-center justify-center md:justify-start">
-            <a
-              href="/todos-os-servicos"
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-base sm:text-lg shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_24px_#8B31FF99] sm:hover:shadow-[0_0_32px_#8B31FF99] focus:scale-105 focus:shadow-[0_0_24px_#8B31FF99] sm:focus:shadow-[0_0_32px_#8B31FF99] outline-none"
-              tabIndex={0}
-              aria-label="Ver planos e preços de suporte técnico remoto VOLTRIS"
-              title="Ver planos e preços de suporte técnico remoto VOLTRIS"
-            >
-              Ver Planos e Preços
-            </a>
-            <a
-              href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20VOLTRIS%20sobre%20suporte%20t%C3%A9cnico%20ou%20cria%C3%A7%C3%A3o%20de%20site."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center gap-2 group transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#8B31FF] focus:ring-offset-2 hover:bg-white hover:border-[#8B31FF]"
-              tabIndex={0}
-              aria-label="Falar com um especialista no WhatsApp"
-              title="Falar com um especialista no WhatsApp"
-            >
-              <i className="fab fa-whatsapp text-[#25D366] text-lg sm:text-xl group-hover:text-[#128C7E] transition-colors duration-300"></i>
-              <span className="font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-sm sm:drop-shadow-lg select-none text-base sm:text-lg group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] group-hover:text-transparent group-hover:bg-clip-text transition-colors duration-300" style={{letterSpacing: '0.04em'}}>Falar com um Especialista</span>
-            </a>
-          </div>
-          {/* Tags de serviços para SEO */}
-          <ul className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8 justify-center md:justify-start">
-            <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base"><span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF] sm:shadow-[0_0_8px_#8B31FF]"></span>Assistência Técnica Online</li>
-            <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base"><span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF] sm:shadow-[0_0_8px_#00A6FF]"></span>Manutenção Preventiva</li>
-            <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base"><span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#FF00A0] shadow-[0_0_6px_#FF00A0] sm:shadow-[0_0_8px_#FF00A0]"></span>Aceleração de PCs</li>
-            <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base"><span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF] sm:shadow-[0_0_8px_#00A6FF]"></span>Recuperação de Dados</li>
-            <li className="flex items-center gap-2 text-white/90 text-sm sm:text-base"><span className="inline-block w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF] sm:shadow-[0_0_8px_#8B31FF]"></span>Criação de Sites</li>
-          </ul>
         </div>
       </section>
 
