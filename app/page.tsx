@@ -252,7 +252,7 @@ export default function HomePage() {
       <Header />
       {/* Banner Principal - Layout Fluido e Responsivo */}
       <section
-        className="w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-12 lg:px-24 bg-[#1E1E22] relative overflow-hidden"
+        className="w-full min-h-[100dvh] flex flex-col md:flex-row items-center justify-center px-4 md:px-12 lg:px-24 bg-[#1E1E22] relative overflow-hidden pt-14 xs:pt-16 sm:pt-18 lg:pt-20"
         aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
       >
         {/* Elementos visuais 3D minimalistas - Desktop */}
