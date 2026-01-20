@@ -23,7 +23,6 @@ import AnimatedSection from '@/components/AnimatedSection';
 import TechFloatingElements from '@/components/TechFloatingElements';
 import { FaWhatsapp } from 'react-icons/fa';
 import dynamic from "next/dynamic";
-
 import { ShieldCheckIcon, CloudArrowUpIcon, CogIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 import { loadFull } from 'tsparticles';
 import { Particles } from '@tsparticles/react';
@@ -256,46 +255,88 @@ export default function HomePage() {
         className="w-full min-h-screen flex flex-col md:flex-row items-center justify-center px-4 md:px-12 lg:px-24 bg-[#1E1E22] relative overflow-hidden"
         aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
       >
-        {/* Elementos visuais 3D minimalistas - Flexível e adaptável */}
-        <div className="flex flex-1 items-center justify-center relative" style={{ minHeight: '400px', height: 'auto' }}>
-          <div className="flex flex-col gap-6 sm:gap-8 md:gap-12 lg:gap-16 items-center justify-center w-full z-10">
+        {/* Elementos visuais 3D minimalistas - Desktop */}
+        <div className="hidden md:flex flex-1 items-center justify-center relative" style={{ minHeight: '400px', height: 'auto' }}>
+          <div className="flex flex-col gap-8 sm:gap-12 md:gap-16 items-center justify-center w-full z-10">
             {/* Linha superior */}
-            <div className="flex flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 w-full justify-center animate-horizontal-move-left">
+            <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-left">
               <motion.div
-                className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-3 sm:p-4 md:p-5 lg:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                 animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0, 10, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <ComputerDesktopIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 xl:w-20 xl:h-20 text-white drop-shadow-[0_0_12px_#00A6FF99] sm:drop-shadow-[0_0_16px_#00A6FF99] md:drop-shadow-[0_0_24px_#00A6FF99]" aria-label="Ícone computador 3D" />
+                <ComputerDesktopIcon className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-white drop-shadow-[0_0_16px_#00A6FF99] sm:drop-shadow-[0_0_24px_#00A6FF99]" aria-label="Ícone computador 3D" />
               </motion.div>
               <motion.div
-                className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-3 sm:p-4 md:p-5 lg:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                 animate={{ scale: [1, 1.12, 1, 0.95, 1], rotate: [0, 8, -8, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               >
-                <ShieldCheckIcon className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-16 xl:h-16 text-white drop-shadow-[0_0_8px_#8B31FF99] sm:drop-shadow-[0_0_12px_#8B31FF99] md:drop-shadow-[0_0_18px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
+                <ShieldCheckIcon className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_12px_#8B31FF99] sm:drop-shadow-[0_0_18px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
               </motion.div>
             </div>
             {/* Linha inferior */}
-            <div className="flex flex-row gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 w-full justify-center animate-horizontal-move-right">
+            <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 w-full justify-center animate-horizontal-move-right">
               <motion.div
-                className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-3 sm:p-4 md:p-5 lg:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                 animate={{ y: [0, 12, -12, 0], scale: [1, 1.08, 1, 0.92, 1] }}
                 transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
               >
-                <CloudArrowUpIcon className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 text-white drop-shadow-[0_0_8px_#31A8FF99] sm:drop-shadow-[0_0_10px_#31A8FF99] md:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
+                <CloudArrowUpIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
               </motion.div>
               <motion.div
-                className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-3 sm:p-4 md:p-5 lg:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                 animate={{ rotate: [0, -12, 12, 0], y: [0, 8, 0, -8, 0] }}
                 transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
               >
-                <CogIcon className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 text-white drop-shadow-[0_0_8px_#31A8FF99] sm:drop-shadow-[0_0_10px_#31A8FF99] md:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
+                <CogIcon className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
               </motion.div>
             </div>
           </div>
           {/* Gradiente de fundo sutil */}
           <div className="absolute -z-10 w-48 h-48 sm:w-64 sm:h-64 md:w-[420px] md:h-[420px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
+        </div>
+        
+        {/* Elementos visuais 3D minimalistas - Mobile */}
+        <div className="flex md:hidden flex-1 items-center justify-center relative py-8" style={{ minHeight: '300px', height: 'auto' }}>
+          <div className="flex flex-col gap-6 items-center justify-center w-full z-10 px-4">
+            {/* Linha superior - Mobile */}
+            <div className="flex flex-row gap-6 w-full justify-center animate-horizontal-move-left">
+              <motion.div
+                className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-3 rounded-xl shadow-lg flex items-center justify-center"
+                animate={{ rotate: [0, 8, -8, 0], y: [0, -8, 0, 8, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <ComputerDesktopIcon className="w-8 h-8 text-white drop-shadow-[0_0_12px_#00A6FF99]" aria-label="Ícone computador 3D" />
+              </motion.div>
+              <motion.div
+                className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-3 rounded-xl shadow-lg flex items-center justify-center"
+                animate={{ scale: [1, 1.1, 1, 0.95, 1], rotate: [0, 6, -6, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+              >
+                <ShieldCheckIcon className="w-7 h-7 text-white drop-shadow-[0_0_8px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
+              </motion.div>
+            </div>
+            {/* Linha inferior - Mobile */}
+            <div className="flex flex-row gap-6 w-full justify-center animate-horizontal-move-right">
+              <motion.div
+                className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-3 rounded-xl shadow-lg flex items-center justify-center"
+                animate={{ y: [0, 10, -10, 0], scale: [1, 1.08, 1, 0.92, 1] }}
+                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+              >
+                <CloudArrowUpIcon className="w-7 h-7 text-white drop-shadow-[0_0_8px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
+              </motion.div>
+              <motion.div
+                className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-3 rounded-xl shadow-lg flex items-center justify-center"
+                animate={{ rotate: [0, -10, 10, 0], y: [0, 6, 0, -6, 0] }}
+                transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+              >
+                <CogIcon className="w-7 h-7 text-white drop-shadow-[0_0_8px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
+              </motion.div>
+            </div>
+          </div>
+          {/* Gradiente de fundo sutil - Mobile */}
+          <div className="absolute -z-10 w-32 h-32 rounded-full bg-gradient-to-br from-[#00A6FF]/20 via-[#8B31FF]/15 to-[#31A8FF]/10 blur-xl opacity-50 animate-pulse-slow" />
         </div>
         {/* Texto e CTA - Layout fluido e adaptável com safe area */}
         <div className="flex-1 flex flex-col items-center md:items-start justify-center text-center md:text-left gap-6 sm:gap-8 py-12 sm:py-16 md:py-24 pb-20 md:pb-24">
@@ -780,7 +821,6 @@ export default function HomePage() {
           </div>
         </section>
       </AnimatedSection>
-
 
       {/* FAQ Section */}
       <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden" id="doubts">

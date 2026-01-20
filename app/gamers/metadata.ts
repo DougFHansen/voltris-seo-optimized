@@ -1,58 +1,54 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'VOLTRIS Optimizer | Otimizador Gamer Profissional com IA | FPS Boost +25%',
-  description: 'Transforme seu PC em uma máquina de guerra gaming. O VOLTRIS Optimizer usa inteligência artificial para otimização específica por jogo, aumentando FPS em até 25%, reduzindo stutter em 95% e melhorando input lag. Suporte para CPUs híbridas, otimização de rede e muito mais. Download gratuito.',
+  title: '[2025] Otimizador de Games Profissional - Aumente FPS e Elimine Lag | VOLTRIS',
+  description: '✓ Aumente até 25% de FPS ✓ Elimine stutter e lag ✓ Otimização automática para 100+ jogos ✓ Redução de input lag em até 40% ✓ Setup instantâneo ✓ Otimizador de PC para games competitivos',
   keywords: [
-    'otimizador gamer',
-    'voltris optimizer',
-    'boost fps',
-    'reduzir stutter',
-    'otimização pc gaming',
-    'smart defrag',
-    'driver booster',
-    'iobit uninstaller',
-    'iobit optimizer',
-    'game booster',
-    'razer cortex',
-    'nvidia geforce experience',
-    'amd performance',
-    'otimizador de jogos',
-    'performance gaming',
-    'reduzir input lag',
-    'cpu optimization',
-    'gpu optimization',
-    'hybrid cpu',
-    'intel p cores',
-    'otimização de rede gamer',
-    'latência reduzida',
-    'modo gamer automático',
-    'detecção de jogos',
-    'perfil por jogo',
-    'otimização em tempo real'
+    'otimizador de games',
+    'aumentar fps em jogos',
+    'eliminar lag em games',
+    'otimização de pc para jogos',
+    'melhorar performance em games',
+    'reduzir stutter em jogos',
+    'otimizador de sistema para gaming',
+    'aumentar fps no pc',
+    'eliminar input lag',
+    'otimização de games competitivos',
+    'setup para games',
+    'performance em jogos online',
+    'otimizador de hardware para games',
+    'melhorar ping em jogos',
+    'reduzir latência em games'
   ],
+  authors: [{ name: "VOLTRIS" }],
+  creator: "VOLTRIS",
+  publisher: "VOLTRIS",
+  metadataBase: new URL('https://voltris.com.br/gamers'),
+  alternates: {
+    canonical: '/gamers',
+  },
   openGraph: {
-    title: 'VOLTRIS Optimizer | Otimizador Gamer Profissional com IA +25% FPS',
-    description: 'O otimizador gamer mais avançado do Brasil. Inteligência artificial, otimização por jogo, boost de FPS, redução de stutter e input lag. Suporte para hardware moderno e CPUs híbridas.',
-    url: 'https://voltris.com.br/gamers',
     type: 'website',
+    locale: 'pt_BR',
+    url: 'https://voltris.com.br/gamers',
+    siteName: 'VOLTRIS Gamers',
+    title: '[2025] Otimizador de Games Profissional - Aumente FPS e Elimine Lag | VOLTRIS',
+    description: 'Otimizador de PC profissional para gamers. Aumente FPS, elimine lag e stutter, reduza input lag em até 40%. Suporte para 100+ jogos com setup automático.',
     images: [
       {
-        url: 'https://voltris.com.br/images/gamers-og-image.jpg',
+        url: '/optimizer-banner.jpg',
         width: 1200,
         height: 630,
-        alt: 'VOLTRIS Optimizer - Otimizador Gamer Profissional com Inteligência Artificial'
-      }
-    ]
+        alt: 'VOLTRIS Optimizer - Otimizador de Games Profissional para Gamers',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VOLTRIS Optimizer | Boost de FPS +25% com IA',
-    description: 'Transforme seu PC em uma máquina de guerra gaming. Otimização específica por jogo, redução de stutter 95%, input lag -40%. Download gratuito.',
-    images: ['https://voltris.com.br/images/gamers-twitter-image.jpg']
-  },
-  alternates: {
-    canonical: 'https://voltris.com.br/gamers'
+    title: '[2025] Otimizador de Games Profissional - Aumente FPS e Elimine Lag | VOLTRIS',
+    description: 'Aumente até 25% de FPS, elimine stutter e lag. Otimizador de PC para games competitivos com setup automático.',
+    images: ['/optimizer-banner.jpg'],
+    creator: '@voltris',
   },
   robots: {
     index: true,
@@ -63,6 +59,6 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
-    }
-  }
-}; 
+    },
+  },
+};

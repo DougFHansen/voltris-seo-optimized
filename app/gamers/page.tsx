@@ -219,10 +219,10 @@ export default function GamersPage() {
                 
                 <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-2 sm:mb-3 md:mb-4 tracking-tight leading-tight">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] drop-shadow-2xl">
-                    VOLTRIS
+                    Otimizador de Games
                   </span>
                   <br />
-                  <span className="text-white">OPTIMIZER</span>
+                  <span className="text-white">Profissional VOLTRIS</span>
                 </h1>
                 
                 <motion.p 
@@ -231,7 +231,7 @@ export default function GamersPage() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2, duration: 0.6 }}
                 >
-                  Transforme seu PC em uma <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF] font-bold">máquina de guerra gaming</span> com inteligência artificial avançada
+                  Aumente <strong>até 25% de FPS</strong>, elimine <strong>stutter e lag</strong>, reduza <strong>input lag em 40%</strong>. O <strong>otimizador de games</strong> profissional que transforma seu PC em uma <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF] font-bold">máquina de guerra para jogos competitivos</span>
                 </motion.p>
               </motion.div>
 
@@ -332,10 +332,10 @@ export default function GamersPage() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-5xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
-                Tecnologia de Ponta
+                Benefícios do Otimizador de Games
               </h2>
               <p className="text-2xl text-gray-300 max-w-3xl mx-auto">
-                Cada funcionalidade foi projetada para extrair o máximo de performance do seu hardware gaming
+                Descubra como o otimizador de PC para games pode transformar sua experiência de jogo
               </p>
             </motion.div>
 
@@ -670,7 +670,7 @@ export default function GamersPage() {
         💬
       </motion.button>
       
-      {/* Structured Data for SEO */}
+      {/* Enhanced Structured Data for SEO */}
       <Script
         id="gamers-structured-data"
         type="application/ld+json"
@@ -678,18 +678,21 @@ export default function GamersPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "VOLTRIS Optimizer",
+            "name": "VOLTRIS Optimizer - Otimizador de Games Profissional",
+            "description": "Otimizador de PC profissional para gamers. Aumente FPS, elimine stutter e lag, reduza input lag em até 40%. Suporte para 100+ jogos com setup automático.",
             "operatingSystem": "Windows 10/11",
             "applicationCategory": "GameApplication",
             "offers": {
               "@type": "Offer",
               "price": "0",
-              "priceCurrency": "BRL"
+              "priceCurrency": "BRL",
+              "category": "Free"
             },
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "4.9",
               "bestRating": "5",
+              "worstRating": "1",
               "ratingCount": "3247"
             },
             "softwareVersion": "3.2.1",
@@ -701,7 +704,60 @@ export default function GamersPage() {
               "Boost de FPS em até 25%",
               "Redução de input lag em 40%",
               "Otimização de rede para gaming",
-              "Modo Gamer automático"
+              "Modo Gamer automático",
+              "Setup instantâneo para 100+ jogos",
+              "Monitoramento de performance em tempo real"
+            ],
+            "keywords": "otimizador de games, aumentar fps em jogos, eliminar lag em games, otimização de pc para jogos, melhorar performance em games, reduzir stutter em jogos",
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Gamers"
+            }
+          })
+        }}
+      />
+      
+      {/* FAQ Schema Markup */}
+      <Script
+        id="faq-schema-markup"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "O que é um otimizador de games?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Um otimizador de games é um software que ajusta automaticamente as configurações do sistema operacional e hardware para maximizar o desempenho em jogos, aumentando FPS e reduzindo lag e stutter."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Como o VOLTRIS Optimizer aumenta FPS?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "O VOLTRIS Optimizer aumenta FPS através de otimização de CPU (isolamento de P/E cores), priorização de processos de jogos, gerenciamento de memória RAM, configurações de GPU e redução de processos em segundo plano."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Quanto FPS posso ganhar com o otimizador?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Na maioria dos sistemas, os usuários relatam ganhos de 15-25% de FPS médio, com picos de até 40% em configurações específicas. Os resultados variam conforme hardware e jogos utilizados."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "O otimizador funciona com todos os jogos?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sim, o VOLTRIS Optimizer suporta mais de 100 jogos populares com perfis personalizados, além de detectar automaticamente novos jogos instalados e criar otimizações adequadas."
+                }
+              }
             ]
           })
         }}
