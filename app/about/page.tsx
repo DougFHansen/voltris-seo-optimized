@@ -125,6 +125,56 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Founder's Message - E-E-A-T Booster */}
+        <section className="py-20 bg-[#1c1c1e] relative overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+              <div className="w-full md:w-1/3 flex justify-center">
+                <div className="relative w-64 h-64 md:w-80 md:h-80">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] rounded-full blur-sm opacity-50"></div>
+                  <div className="absolute inset-1 bg-[#171313] rounded-full flex items-center justify-center overflow-hidden border-2 border-white/10">
+                    <i className="fas fa-user-tie text-9xl text-gray-700"></i>
+                  </div>
+                  {/* Placeholder for real photo */}
+                  <div className="absolute bottom-4 right-4 bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
+                    <p className="text-white font-bold text-sm">Douglas Hansen</p>
+                    <p className="text-blue-400 text-xs">CEO & Fundador</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full md:w-2/3">
+                <h3 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
+                  <span className="w-2 h-12 bg-gradient-to-b from-[#FF4B6B] to-[#8B31FF] rounded-full block"></span>
+                  Uma Palavra do Fundador
+                </h3>
+                <div className="space-y-4 text-gray-300 text-lg leading-relaxed italic">
+                  <p>
+                    "Quando criei a Voltris, meu objetivo não era apenas abrir mais uma empresa de TI. Eu queria acabar com a frustração que vejo todos os dias: pessoas perdendo trabalho importante por causa de vírus, gamers com lag injusto e pequenas empresas paradas por falhas técnicas simples."
+                  </p>
+                  <p>
+                    "A tecnologia deve ser libertadora, não uma dor de cabeça. Por isso, treinei minha equipe para não apenas 'consertar computadores', mas para **entender pessoas**. Cada chamado que atendemos é tratado com a urgência e o respeito de quem sabe que, do outro lado, existe alguém precisando voltar a trabalhar ou se divertir."
+                  </p>
+                  <p>
+                    "Nosso compromisso não é com máquinas, é com a sua tranquilidade. Sejam bem-vindos à nova era do suporte técnico."
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Image
+                    src="/signature.png"
+                    alt="Assinatura Douglas Hansen"
+                    width={200}
+                    height={80}
+                    className="opacity-60 invert"
+                    style={{ display: 'none' }} // Hidden until real image provided
+                  />
+                  <p className="text-2xl font-handwriting text-[#31A8FF] font-bold mt-2" style={{ fontFamily: 'cursive' }}>Douglas Hansen</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Metodology Section */}
         <section className="py-20 relative">
           <div className="container mx-auto px-4">
