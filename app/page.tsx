@@ -272,44 +272,44 @@ export default function HomePage() {
         aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
         style={{ paddingTop: 'var(--header-height, 80px)' }}
       >
-        {/* Container Principal para limitar largura em telas gigantes */}
-        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-8 h-full">
+        {/* Container Principal */}
+        <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full py-8 lg:py-0">
 
-          {/* Elementos visuais 3D minimalistas - Flexível e adaptável */}
-          <div className="hidden lg:flex flex-1 items-center justify-center relative w-full h-full max-h-[600px]">
-            <div className="flex flex-col gap-6 sm:gap-10 md:gap-12 items-center justify-center w-full z-10 scale-[0.85] lg:scale-90 xl:scale-100 transition-transform duration-300">
+          {/* Elementos visuais 3D - Ícones (Agora visíveis no mobile) */}
+          <div className="flex flex-1 order-1 lg:order-2 items-center justify-center relative w-full h-[300px] sm:h-[400px] lg:h-[600px]">
+            <div className="flex flex-col gap-4 sm:gap-6 md:gap-10 items-center justify-center w-full z-10 scale-[0.6] xs:scale-[0.7] sm:scale-90 lg:scale-100 transition-transform duration-300">
               {/* Linha superior */}
-              <div className="flex flex-row gap-6 sm:gap-10 md:gap-12 w-full justify-center animate-horizontal-move-left">
+              <div className="flex flex-row gap-4 sm:gap-8 md:gap-10 w-full justify-center animate-horizontal-move-left">
                 <motion.div
-                  className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0, 10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <ComputerDesktopIcon className="w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_16px_#00A6FF99] sm:drop-shadow-[0_0_24px_#00A6FF99]" aria-label="Ícone computador 3D" />
+                  <ComputerDesktopIcon className="w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_16px_#00A6FF99]" aria-label="Ícone computador 3D" />
                 </motion.div>
                 <motion.div
-                  className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ scale: [1, 1.12, 1, 0.95, 1], rotate: [0, 8, -8, 0] }}
                   transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                 >
-                  <ShieldCheckIcon className="w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_12px_#8B31FF99] sm:drop-shadow-[0_0_18px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
+                  <ShieldCheckIcon className="w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_12px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
                 </motion.div>
               </div>
               {/* Linha inferior */}
-              <div className="flex flex-row gap-6 sm:gap-10 md:gap-12 w-full justify-center animate-horizontal-move-right">
+              <div className="flex flex-row gap-4 sm:gap-8 md:gap-10 w-full justify-center animate-horizontal-move-right">
                 <motion.div
-                  className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ y: [0, 12, -12, 0], scale: [1, 1.08, 1, 0.92, 1] }}
                   transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
                 >
-                  <CloudArrowUpIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
+                  <CloudArrowUpIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
                 </motion.div>
                 <motion.div
-                  className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
+                  className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
                   animate={{ rotate: [0, -12, 12, 0], y: [0, 8, 0, -8, 0] }}
                   transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
                 >
-                  <CogIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99] sm:drop-shadow-[0_0_14px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
+                  <CogIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
                 </motion.div>
               </div>
             </div>
@@ -317,14 +317,25 @@ export default function HomePage() {
             <div className="absolute -z-10 w-40 h-40 sm:w-56 sm:h-56 md:w-[380px] md:h-[380px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
           </div>
 
-          {/* Texto e CTA - Layout fluido e adaptável com safe area e compactação vertical */}
-          <div className="flex-1 flex flex-col items-center lg:items-start justify-center text-center lg:text-left gap-4 sm:gap-6 pb-8 sm:pb-12 pt-4 sm:pt-0">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-1 sm:mb-2 drop-shadow-lg font-sans max-w-2xl mx-auto lg:mx-0">
-              Suporte Técnico
-              <br className="sm:hidden" />
-              Remoto Premium
+          {/* Texto e CTA - Ordem 2 no desktop (Texto Esquerda), mas visualmente texto primeiro no mobile costuma ser melhor.
+              Neste layout, vamos manter texto à esquerda no desktop.
+              No mobile, usando flex-col, o texto ficará em CIMA se order-1 for texto (o padrão).
+              Aqui forcei Icons order-1 (topo) e Texto order-2 (baixo) no mobile pela prop 'lg:order-2' na div de icons.
+              Vamos AJUSTAR: Icons topo mobile (order-1), Texto baixo (order-2)?
+              Não, geralmente texto vem antes. Vou inverter: Texto (order-1), Icons (order-2 mobile).
+              Espera, no código anterior eu pus Icons lg-order-2.
+              Então:
+              Desktop: Texto (Esq/order-1), Icons (Dir/order-2).
+              Mobile: Texto (Cima/order-1), Icons (Baixo/order-2).
+              Assim o usuário lê primeiro.
+           */}
+          <div className="flex-1 flex flex-col order-2 lg:order-1 items-center lg:items-start justify-center text-center lg:text-left gap-4 sm:gap-6 z-20">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 drop-shadow-lg font-sans max-w-2xl mx-auto lg:mx-0 break-words">
+              Suporte Técnico{' '}
+              <br className="hidden sm:block" />
+              Remoto Premium{' '}
               <motion.span
-                className="ml-1 sm:ml-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-md sm:drop-shadow-lg select-none inline-block align-middle mt-1 sm:mt-0"
+                className="block sm:inline-block text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-md sm:drop-shadow-lg select-none mt-2 sm:mt-0"
                 style={{ letterSpacing: '0.04em' }}
                 initial={{ y: 0 }}
                 animate={{ y: [0, -6, 0, 6, 0] }}
@@ -333,17 +344,18 @@ export default function HomePage() {
                 VOLTRIS
               </motion.span>
             </h1>
-            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-white/80 mb-2 sm:mb-3 font-sans max-w-xl mx-auto lg:mx-0">
-              Formatação Avançada • Otimização • Segurança Digital
+            <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-white/80 mb-2 font-sans max-w-xl mx-auto lg:mx-0">
+              Formatação Avançada • Otimização • Segurança
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto lg:mx-0 mb-4 sm:mb-5 leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-white/70 max-w-lg sm:max-w-xl md:max-w-2xl mx-auto lg:mx-0 mb-4 leading-relaxed px-4 sm:px-0">
               Atendimento rápido, seguro e online. Especialistas em manutenção, proteção, performance e soluções digitais.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto items-center justify-center lg:justify-start">
+            {/* CTAs - Wrapper com wrap para evitar corte */}
+            <div className="flex flex-wrap gap-4 w-full justify-center lg:justify-start px-2 sm:px-0">
               <a
                 href="/todos-os-servicos"
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-base sm:text-lg shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_24px_#8B31FF99] sm:hover:shadow-[0_0_32px_#8B31FF99] text-center"
+                className="flex-1 sm:flex-none min-w-[200px] px-6 py-3.5 rounded-full bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] text-white font-bold text-base sm:text-lg shadow-lg transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_24px_#8B31FF99] text-center whitespace-nowrap"
               >
                 Ver Planos e Preços
               </a>
@@ -351,21 +363,20 @@ export default function HomePage() {
                 href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20da%20VOLTRIS"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center justify-center gap-2 group transition-all duration-300 hover:bg-white hover:border-[#8B31FF]"
+                className="flex-1 sm:flex-none min-w-[200px] px-6 py-3.5 rounded-full border-2 border-[#00A6FF] bg-white/5 flex items-center justify-center gap-2 group transition-all duration-300 hover:bg-white hover:border-[#8B31FF] whitespace-nowrap"
               >
-                <i className="fab fa-whatsapp text-[#25D366] text-lg sm:text-xl"></i>
-                <span className="font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text text-base sm:text-lg group-hover:bg-none group-hover:text-[#8B31FF] transition-colors duration-300">
+                <i className="fab fa-whatsapp text-[#25D366] text-xl"></i>
+                <span className="font-extrabold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text text-base sm:text-lg group-hover:bg-none group-hover:text-[#8B31FF] transition-colors duration-300">
                   Falar no WhatsApp
                 </span>
               </a>
             </div>
 
-            {/* Tags de serviços para SEO - Compactadas */}
-            <ul className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6 justify-center lg:justify-start max-w-2xl">
-              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF]"></span>Suporte Online</li>
-              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Manutenção</li>
-              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FF00A0] shadow-[0_0_6px_#FF00A0]"></span>Otimização</li>
-              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm whitespace-nowrap"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Recuperação</li>
+            {/* Tags de serviços - Otimizadas para mobile */}
+            <ul className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6 justify-center lg:justify-start w-full px-2">
+              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm bg-white/5 px-3 py-1 rounded-full"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF]"></span>Suporte Online</li>
+              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm bg-white/5 px-3 py-1 rounded-full"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Manutenção</li>
+              <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm bg-white/5 px-3 py-1 rounded-full"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FF00A0] shadow-[0_0_6px_#FF00A0]"></span>Otimização</li>
             </ul>
           </div>
         </div>
