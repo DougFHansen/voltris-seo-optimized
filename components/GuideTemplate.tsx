@@ -63,11 +63,17 @@ export function GuideTemplate({
   author = "Equipe Técnica Voltris",
   lastUpdated = "Janeiro 2025"
 }: GuideTemplateProps) {
+  const hasCustomConclusion = contentSections.some(section =>
+    section.title.toLowerCase().includes('conclusão') ||
+    section.title.toLowerCase().includes('conclusao') ||
+    section.title.toLowerCase().includes('considerações finais')
+  );
+
   return (
     <>
       <Header />
       <main className="min-h-screen bg-gradient-to-br from-[#0A0A0F] via-[#121218] to-[#0A0A0F] pt-24">
-        
+
         {/* Hero Section */}
         <section className="relative py-20 px-4 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10"></div>
@@ -110,22 +116,22 @@ export function GuideTemplate({
         <section className="py-16 px-4">
           <div className="max-w-4xl mx-auto space-y-12">
             {contentSections.map((section, sectionIndex) => (
-              <div 
-                key={sectionIndex} 
+              <div
+                key={sectionIndex}
                 className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#FF4B6B]/20 shadow-lg"
               >
                 <h2 className="text-3xl font-bold text-white mb-4">{section.title}</h2>
-                <div 
+                <div
                   className="text-gray-300 leading-relaxed prose prose-invert max-w-none"
                   dangerouslySetInnerHTML={{ __html: section.content }}
                 />
-                
+
                 {section.subsections && (
                   <div className="mt-6 space-y-6">
                     {section.subsections.map((subsection, subIndex) => (
                       <div key={subIndex}>
                         <h3 className="text-2xl font-bold text-white mb-3">{subsection.subtitle}</h3>
-                        <div 
+                        <div
                           className="text-gray-300 leading-relaxed"
                           dangerouslySetInnerHTML={{ __html: subsection.content }}
                         />
@@ -136,42 +142,44 @@ export function GuideTemplate({
               </div>
             ))}
 
-            {/* Conclusão */}
-            <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#31A8FF]/20 shadow-lg">
-              <h2 className="text-3xl font-bold text-white mb-4">Conclusão</h2>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Este guia apresentou informações técnicas detalhadas sobre {title.toLowerCase()}, 
-                com procedimentos práticos, melhores práticas e soluções específicas para 
-                os desafios comuns encontrados nesta área de especialização.
-              </p>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Lembre-se de que a tecnologia evolui constantemente, então mantenha-se atualizado 
-                com as melhores práticas e novas ferramentas disponíveis no mercado.
-              </p>
-              <div className="bg-[#171313] p-6 rounded-lg border border-[#31A8FF]/30 mt-6">
-                <p className="text-white font-semibold mb-3 text-lg">Precisa de Assistência Profissional?</p>
+            {/* Conclusão (Generic) - Only shown if no specific conclusion exists */}
+            {!hasCustomConclusion && (
+              <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 sm:p-8 rounded-2xl border border-[#31A8FF]/20 shadow-lg">
+                <h2 className="text-3xl font-bold text-white mb-4">Conclusão</h2>
                 <p className="text-gray-300 leading-relaxed mb-4">
-                  Nossa equipe especializada está pronta para ajudar com implementações complexas, 
-                  troubleshooting avançado e consultoria técnica personalizada.
+                  Este guia apresentou informações técnicas detalhadas sobre {title.toLowerCase()},
+                  com procedimentos práticos, melhores práticas e soluções específicas para
+                  os desafios comuns encontrados nesta área de especialização.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link 
-                    href="/todos-os-servicos"
-                    className="px-6 py-3 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 text-center"
-                  >
-                    Ver Serviços Especializados
-                  </Link>
-                  <Link 
-                    href="https://wa.me/5511996716235?text=Olá!%20Preciso%20de%20ajuda%20técnica."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-xl hover:bg-[#31A8FF] hover:text-white transition-all duration-300 text-center"
-                  >
-                    Falar com Especialista
-                  </Link>
+                <p className="text-gray-300 leading-relaxed mb-4">
+                  Lembre-se de que a tecnologia evolui constantemente, então mantenha-se atualizado
+                  com as melhores práticas e novas ferramentas disponíveis no mercado.
+                </p>
+                <div className="bg-[#171313] p-6 rounded-lg border border-[#31A8FF]/30 mt-6">
+                  <p className="text-white font-semibold mb-3 text-lg">Precisa de Assistência Profissional?</p>
+                  <p className="text-gray-300 leading-relaxed mb-4">
+                    Nossa equipe especializada está pronta para ajudar com implementações complexas,
+                    troubleshooting avançado e consultoria técnica personalizada.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link
+                      href="/todos-os-servicos"
+                      className="px-6 py-3 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 text-center"
+                    >
+                      Ver Serviços Especializados
+                    </Link>
+                    <Link
+                      href="https://wa.me/5511996716235?text=Olá!%20Preciso%20de%20ajuda%20técnica."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-xl hover:bg-[#31A8FF] hover:text-white transition-all duration-300 text-center"
+                    >
+                      Falar com Especialista
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </div>
         </section>
 
@@ -182,8 +190,8 @@ export function GuideTemplate({
               <h2 className="text-3xl font-bold text-white mb-8 text-center">Guias Relacionados</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {relatedGuides.map((guide, index) => (
-                  <Link 
-                    key={index} 
+                  <Link
+                    key={index}
                     href={guide.href}
                     className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-6 rounded-xl border border-[#8B31FF]/10 hover:border-[#FF4B6B]/30 transition-all duration-300"
                   >
