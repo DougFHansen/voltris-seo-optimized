@@ -21,6 +21,7 @@ import {
   FiPhone,
   FiMail,
   FiMapPin,
+  FiCreditCard,
   FiCloud
 } from 'react-icons/fi';
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Globe, Clock } from "lucide-react";
@@ -333,6 +334,11 @@ export default function ExteriorHomePage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
+                {
+                  icon: <FiCreditCard className="text-4xl text-green-400" />,
+                  title: "Pagamento em Reais (PIX)",
+                  description: "Evite taxas de câmbio e IOF. Pague diretamente em BRL via PIX, Boleto ou Cartão Brasileiro."
+                },
                 {
                   icon: <FiUsers className="text-4xl text-purple-400" />,
                   title: "Equipe Bilíngue",
