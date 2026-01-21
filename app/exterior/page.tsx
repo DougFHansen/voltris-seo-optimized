@@ -7,15 +7,15 @@ import Footer from "@/components/Footer";
 import { useState, useEffect } from 'react';
 
 
-import { 
-  FiMonitor, 
-  FiSettings, 
-  FiClock, 
-  FiBarChart2, 
-  FiDatabase, 
-  FiPrinter, 
-  FiShield, 
-  FiGlobe, 
+import {
+  FiMonitor,
+  FiSettings,
+  FiClock,
+  FiBarChart2,
+  FiDatabase,
+  FiPrinter,
+  FiShield,
+  FiGlobe,
   FiTrendingUp,
   FiUsers,
   FiPhone,
@@ -136,16 +136,57 @@ export default function ExteriorHomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313] header-spacing">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Suporte Técnico para Brasileiros no Exterior",
+            "provider": {
+              "@type": "Organization",
+              "name": "VOLTRIS",
+              "url": "https://voltris.com.br"
+            },
+            "serviceType": "Remote Technical Support",
+            "areaServed": [
+              { "@type": "Country", "name": "United States" },
+              { "@type": "Country", "name": "Portugal" },
+              { "@type": "Country", "name": "United Kingdom" },
+              { "@type": "Country", "name": "Canada" },
+              { "@type": "Country", "name": "Australia" },
+              { "@type": "Country", "name": "Ireland" },
+              { "@type": "Country", "name": "Japan" },
+              { "@type": "Place", "name": "Worldwide" }
+            ],
+            "audience": {
+              "@type": "Audience",
+              "audienceType": "Brazilian Expatriates",
+              "geographicArea": {
+                "@type": "Place",
+                "name": "Worldwide"
+              }
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "32.90",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "description": "Premium remote support starting at $32.90"
+            }
+          })
+        }}
+      />
       {/* Header - Using existing component */}
       <Header />
-      
+
       {/* Hero Section */}
       <AnimatedSection>
         <section className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
           <TechFloatingElements />
-          
+
           <div className="max-w-7xl mx-auto text-center relative z-10">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -155,29 +196,29 @@ export default function ExteriorHomePage() {
                 <FaGlobeAmericas className="text-purple-400 text-xl" />
                 <span className="text-purple-300 font-medium">Para Brasileiros no Exterior</span>
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
                 Suporte Técnico em <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Português</span>
                 <br />para Brasileiros no Mundo
               </h1>
-              
+
               <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-                Atendimento especializado para brasileiros que moram fora do Brasil. 
-                Suporte remoto em português, com horários flexíveis e compreensão total 
+                Atendimento especializado para brasileiros que moram fora do Brasil.
+                Suporte remoto em português, com horários flexíveis e compreensão total
                 das suas necessidades tecnológicas internacionais.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link 
-                  href="/exterior/contato" 
+                <Link
+                  href="/exterior/contato"
                   className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
                 >
                   <FiPhone className="text-lg" />
                   Fale Conosco Agora
                 </Link>
-                
-                <Link 
-                  href="/exterior/servicos" 
+
+                <Link
+                  href="/exterior/servicos"
                   className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3"
                 >
                   <FiSettings className="text-lg" />
@@ -185,9 +226,9 @@ export default function ExteriorHomePage() {
                 </Link>
               </div>
             </motion.div>
-            
+
             {/* Trust indicators */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -198,13 +239,13 @@ export default function ExteriorHomePage() {
                 <h3 className="text-white font-semibold mb-2">+1.000</h3>
                 <p className="text-gray-400 text-sm">Brasileiros Atendidos</p>
               </div>
-              
+
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
                 <FiGlobe className="text-3xl text-blue-400 mx-auto mb-4" />
                 <h3 className="text-white font-semibold mb-2">30+ Países</h3>
                 <p className="text-gray-400 text-sm">Presença Global</p>
               </div>
-              
+
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
                 <FiClock className="text-3xl text-green-400 mx-auto mb-4" />
                 <h3 className="text-white font-semibold mb-2">24/7</h3>
@@ -227,7 +268,7 @@ export default function ExteriorHomePage() {
                 Soluções tecnológicas adaptadas para as necessidades específicas de brasileiros que vivem e trabalham fora do Brasil
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {internationalServices.map((service, index) => (
                 <motion.div
@@ -240,20 +281,20 @@ export default function ExteriorHomePage() {
                   <div className="mb-6">
                     {renderIcon(service.iconType)}
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
                     {service.title}
                   </h3>
-                  
+
                   <p className="text-gray-400 mb-6 leading-relaxed">
                     {service.description}
                   </p>
-                  
+
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
                       {service.price}
                     </span>
-                    <Link 
+                    <Link
                       href={service.redirect}
                       className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 hover:shadow-lg"
                     >
@@ -263,10 +304,10 @@ export default function ExteriorHomePage() {
                 </motion.div>
               ))}
             </div>
-            
+
             <div className="text-center mt-12">
-              <Link 
-                href="/exterior/todos-servicos" 
+              <Link
+                href="/exterior/todos-servicos"
                 className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-medium py-3 px-8 rounded-xl border border-gray-600 transition-all duration-300"
               >
                 <FiSettings className="text-lg" />
@@ -289,7 +330,7 @@ export default function ExteriorHomePage() {
                 Entendemos as particularidades de quem vive fora do Brasil e oferecemos soluções realmente adaptadas
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
@@ -352,25 +393,25 @@ export default function ExteriorHomePage() {
             <p className="text-gray-300 text-xl mb-8 max-w-2xl mx-auto">
               Nossa equipe especializada está pronta para ajudar você, onde quer que esteja no mundo
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                href="/exterior/contato" 
+              <Link
+                href="/exterior/contato"
                 className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 text-lg"
               >
                 <FiPhone className="text-xl" />
                 Iniciar Atendimento
               </Link>
-              
-              <Link 
-                href="/exterior/orcamento" 
+
+              <Link
+                href="/exterior/orcamento"
                 className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3 text-lg"
               >
                 <FiBarChart2 className="text-xl" />
                 Solicitar Orçamento
               </Link>
             </div>
-            
+
             <div className="mt-8 text-gray-400">
               <p className="flex items-center justify-center gap-2">
                 <FiMail className="text-purple-400" />

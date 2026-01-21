@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   publisher: "VOLTRIS",
   metadataBase: new URL('https://voltris.com.br/exterior'),
   alternates: {
-    canonical: '/exterior',
+    canonical: 'https://voltris.com.br/exterior',
   },
   openGraph: {
     type: 'website',
