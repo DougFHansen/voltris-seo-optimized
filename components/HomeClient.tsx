@@ -233,13 +233,21 @@ export default function HomeClient() {
           min-h-[100dvh]
           flex
           flex-col
+          lg:flex-row
+          items-center
+          justify-center
+          px-4
+          sm:px-6
+          md:px-12
+          lg:px-16
+          xl:px-24
           bg-[#1E1E22]
-          overflow-x-hidden
+          overflow-hidden
         "
                 aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
                 style={{ paddingTop: 'var(--header-height)' }}
             >
-                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 flex-grow my-auto py-12 lg:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-24">
+                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full py-8 lg:py-0">
                     <div className="flex flex-1 order-1 items-center justify-center relative w-full h-[280px] xs:h-[320px] sm:h-[400px] lg:h-[600px]">
                         <div className="flex flex-col gap-4 sm:gap-6 md:gap-10 items-center justify-center w-full z-10 scale-[0.6] xs:scale-[0.7] sm:scale-90 lg:scale-100 transition-transform duration-300">
                             <div className="flex flex-row gap-4 sm:gap-8 md:gap-10 w-full justify-center animate-horizontal-move-left">
@@ -359,6 +367,7 @@ export default function HomeClient() {
                                         height={750}
                                         priority
                                         fetchPriority="high"
+                                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
                                     />
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                                         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out"></div>
