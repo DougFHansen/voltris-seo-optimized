@@ -275,8 +275,8 @@ export default function HomePage() {
         {/* Container Principal */}
         <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full py-8 lg:py-0">
 
-          {/* Elementos visuais 3D - Ícones (Agora visíveis no mobile) */}
-          <div className="flex flex-1 order-1 lg:order-2 items-center justify-center relative w-full h-[300px] sm:h-[400px] lg:h-[600px]">
+          {/* Elementos visuais 3D - Ícones à Esquerda (Desktop) / Topo (Mobile) */}
+          <div className="flex flex-1 order-1 items-center justify-center relative w-full h-[280px] xs:h-[320px] sm:h-[400px] lg:h-[600px]">
             <div className="flex flex-col gap-4 sm:gap-6 md:gap-10 items-center justify-center w-full z-10 scale-[0.6] xs:scale-[0.7] sm:scale-90 lg:scale-100 transition-transform duration-300">
               {/* Linha superior */}
               <div className="flex flex-row gap-4 sm:gap-8 md:gap-10 w-full justify-center animate-horizontal-move-left">
@@ -317,19 +317,8 @@ export default function HomePage() {
             <div className="absolute -z-10 w-40 h-40 sm:w-56 sm:h-56 md:w-[380px] md:h-[380px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
           </div>
 
-          {/* Texto e CTA - Ordem 2 no desktop (Texto Esquerda), mas visualmente texto primeiro no mobile costuma ser melhor.
-              Neste layout, vamos manter texto à esquerda no desktop.
-              No mobile, usando flex-col, o texto ficará em CIMA se order-1 for texto (o padrão).
-              Aqui forcei Icons order-1 (topo) e Texto order-2 (baixo) no mobile pela prop 'lg:order-2' na div de icons.
-              Vamos AJUSTAR: Icons topo mobile (order-1), Texto baixo (order-2)?
-              Não, geralmente texto vem antes. Vou inverter: Texto (order-1), Icons (order-2 mobile).
-              Espera, no código anterior eu pus Icons lg-order-2.
-              Então:
-              Desktop: Texto (Esq/order-1), Icons (Dir/order-2).
-              Mobile: Texto (Cima/order-1), Icons (Baixo/order-2).
-              Assim o usuário lê primeiro.
-           */}
-          <div className="flex-1 flex flex-col order-2 lg:order-1 items-center lg:items-start justify-center text-center lg:text-left gap-4 sm:gap-6 z-20">
+          {/* Texto e CTA - À Direita (Desktop) / Baixo (Mobile) */}
+          <div className="flex-1 flex flex-col order-2 items-center lg:items-start justify-center text-center lg:text-left gap-4 sm:gap-6 z-20">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 drop-shadow-lg font-sans max-w-2xl mx-auto lg:mx-0 break-words">
               Suporte Técnico{' '}
               <br className="hidden sm:block" />
@@ -351,7 +340,7 @@ export default function HomePage() {
               Atendimento rápido, seguro e online. Especialistas em manutenção, proteção, performance e soluções digitais.
             </p>
 
-            {/* CTAs - Wrapper com wrap para evitar corte */}
+            {/* CTAs - Flex wrap para evitar cortes */}
             <div className="flex flex-wrap gap-4 w-full justify-center lg:justify-start px-2 sm:px-0">
               <a
                 href="/todos-os-servicos"
@@ -372,7 +361,7 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Tags de serviços - Otimizadas para mobile */}
+            {/* Tags de serviços - Otimizadas */}
             <ul className="flex flex-wrap gap-2 sm:gap-3 mt-4 sm:mt-6 justify-center lg:justify-start w-full px-2">
               <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm bg-white/5 px-3 py-1 rounded-full"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#8B31FF] shadow-[0_0_6px_#8B31FF]"></span>Suporte Online</li>
               <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm bg-white/5 px-3 py-1 rounded-full"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#00A6FF] shadow-[0_0_6px_#00A6FF]"></span>Manutenção</li>
