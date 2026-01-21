@@ -105,8 +105,8 @@ export default function Header() {
             onClick={handleLoginClick}
             disabled={loginLoading}
             className={`flex justify-center items-center gap-2 px-3 py-2 sm:px-4 rounded-lg border border-[#8B31FF]/30 bg-white/5 transition-all duration-300 ease-out hover:scale-105 hover:shadow-[0_0_20px_rgba(49,168,255,0.2)] ${loginLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
-            aria-label="Entrar na conta"
-            title="Entrar na conta"
+            aria-label="Login - Entrar na conta"
+            title="Login - Entrar na conta"
           >
             {loginLoading ? (
               <FiLoader className="w-4 h-4 animate-spin" />
@@ -120,8 +120,8 @@ export default function Header() {
           <Link
             href="/login?cadastro=1"
             className="flex items-center gap-2 px-3 py-2 sm:px-4 bg-[#23232b] border border-[#FF4B6B]/10 text-white rounded-lg hover:shadow-[0_0_20px_rgba(42,42,46,0.3)] transition-all duration-300 ease-out hover:scale-105"
-            aria-label="Criar nova conta"
-            title="Criar nova conta"
+            aria-label="Cadastro - Criar nova conta"
+            title="Cadastro - Criar nova conta"
           >
             <i className="fas fa-user-plus text-lg sm:text-xl"></i>
             <span className="hidden sm:inline">Cadastro</span>
