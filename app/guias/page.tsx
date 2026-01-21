@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     url: 'https://voltris.com.br/guias',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://voltris.com.br/guias',
+  },
 };
 
 export default function Guias() {

@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     url: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites',
+  },
 };
 
 export default function CriacaoSitesPage() {

@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     url: 'https://voltris.com.br/todos-os-servicos',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://voltris.com.br/todos-os-servicos',
+  },
 };
 
 export default function ServicosPage() {
