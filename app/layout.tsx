@@ -21,210 +21,13 @@ export const metadata: Metadata = {
     "criação de sites",
     "otimização de Windows",
     "formatação de computador",
-    "remoção de vírus",
-    "instalação de programas",
     "suporte Windows",
     "manutenção remota",
-    "tecnologia",
-    "informática",
-    "desenvolvimento web",
-    "design de sites",
-    "SEO",
-    "marketing digital",
-    "formatação remota",
-    "erros GTA",
-    "erros CS2",
-    "erros Cyberpunk",
-    "erros jogos",
-    "instalação Office",
-    "otimização PC",
-    "correção erros Windows",
-    "suporte técnico online",
-    "manutenção computador remota",
-    "formatação Windows",
-    "instalação programas remota",
-    "remoção malware",
-    "otimização sistema",
-    "recuperação dados",
-    "instalação impressora",
-    "configuração rede",
-    "backup dados",
-    "atualização Windows",
-    "driver impressora",
-    "antivírus",
-    "firewall",
-    "limpeza computador",
-    "aceleração PC",
-    "correção tela azul",
-    "erro sistema",
-    "problemas internet",
-    "configuração email",
-    "instalação software",
-    "manutenção preventiva",
-    "diagnóstico computador",
-    "reparo remoto",
-    "suporte 24h",
-    "técnico informática",
-    "assistência técnica",
-    "serviços informática",
-    "soluções tecnológicas",
     "consultoria TI",
-    "manutenção notebook",
-    "formatação notebook",
-    "otimização notebook",
-    "instalação Windows",
-    "configuração sistema",
-    "migração dados",
-    "virtualização",
-    "cloud computing",
-    "backup cloud",
+    "otimização sistema",
     "segurança digital",
-    "proteção dados",
-    "criptografia",
-    "VPN",
-    "rede doméstica",
-    "WiFi",
-    "bluetooth",
-    "periféricos",
-    "mouse",
-    "teclado",
-    "webcam",
-    "microfone",
-    "alto-falantes",
-    "headset",
-    "gamepad",
-    "joystick",
-    "controle Xbox",
-    "controle PlayStation",
-    "steering wheel",
-    "flight stick",
-    "VR headset",
-    "AR glasses",
-    "smartphone",
-    "tablet",
-    "smartwatch",
-    "smart TV",
-    "Chromecast",
-    "Fire Stick",
-    "Apple TV",
-    "Roku",
-    "consoles",
-    "Xbox",
-    "PlayStation",
-    "Nintendo",
-    "PC gaming",
-    "gaming laptop",
-    "gaming desktop",
-    "overclock",
-    "water cooling",
-    "air cooling",
-    "thermal paste",
-    "GPU",
-    "CPU",
-    "RAM",
-    "SSD",
-    "HDD",
-    "NVMe",
-    "motherboard",
-    "power supply",
-    "case",
-    "fans",
-    "RGB",
-    "LED",
-    "streaming",
-    "OBS",
-    "Streamlabs",
-    "Twitch",
-    "YouTube Gaming",
-    "Facebook Gaming",
-    "Discord",
-    "TeamSpeak",
-    "Mumble",
-    "Steam",
-    "Epic Games",
-    "Origin",
-    "Uplay",
-    "Battle.net",
-    "GOG",
-    "itch.io",
-    "Humble Bundle",
-    "Green Man Gaming",
-    "Fanatical",
-    "G2A",
-    "Kinguin",
-    "CDKeys",
-    "Nuuvem",
-    "GamersGate",
-    "IndieGala",
-    "Bundle Stars",
-    "Mac Games Store",
-    "App Store",
-    "Google Play",
-    "Microsoft Store",
-    "Sony PlayStation Store",
-    "Nintendo eShop",
-    "Xbox Store",
-    "Amazon Games",
-    "GameStop",
-    "Best Buy",
-    "Walmart",
-    "Target",
-    "Carrefour",
-    "Extra",
-    "Casas Bahia",
-    "Magazine Luiza",
-    "Americanas",
-    "Submarino",
-    "Netshoes",
-    "Kabum",
-    "Terabyte",
-    "Pichau",
-    "Amazon Brasil",
-    "Mercado Livre",
-    "OLX",
-    "Enjoei",
-    "B2W Digital",
-    "Via Varejo",
-    "Lojas Americanas",
-    "Ricardo Eletro",
-    "Fast Shop",
-    "Saraiva",
-    "Livraria Cultura",
-    "Fnac",
-    "Kalunga",
-    "Staples",
-    "Office Depot",
-    "Staples Brasil",
-    "Kalunga",
-    "Saraiva",
-    "Livraria Cultura",
-    "Fnac",
-    "Americanas",
-    "Submarino",
-    "Netshoes",
-    "Kabum",
-    "Terabyte",
-    "Pichau",
-    "Amazon Brasil",
-    "Mercado Livre",
-    "OLX",
-    "Enjoei",
-    "B2W Digital",
-    "Via Varejo",
-    "Lojas Americanas",
-    "Ricardo Eletro",
-    "Fast Shop",
-    "Saraiva",
-    "Livraria Cultura",
-    "Fnac",
-    "Kalunga",
-    "Staples",
-    "Office Depot",
-    "Staples Brasil",
-    "Kalunga",
-    "Saraiva",
-    "Livraria Cultura",
-    "Fnac"
+    "recuperação dados",
+    "instalação de programas",
   ],
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
@@ -347,7 +150,7 @@ export default function RootLayout({
         <link rel="canonical" href={canonicalUrl} />
         <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="msvalidate.01" content="92524862D63347408E773A7CD62B94DD" />
-        
+
         {/* Google tag (gtag.js) - Ads */}
         <script defer src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"></script>
         <script
@@ -360,7 +163,7 @@ export default function RootLayout({
             `
           }}
         />
-        
+
         {/* Schema.org structured data - Organization (já existe) */}
         <script
           type="application/ld+json"
@@ -430,14 +233,14 @@ export default function RootLayout({
                 "@type": "OfferCatalog",
                 "name": "Serviços de Suporte Técnico",
                 "itemListElement": [
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Criação de Site", "description": "Desenvolvimento de sites profissionais e responsivos para sua empresa ou projeto pessoal."}},
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Suporte ao Windows", "description": "Suporte remoto completo para seu sistema Windows, incluindo instalação, atualização e otimização."}},
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Formatação", "description": "Formatação remota completa do seu computador com instalação de programas essenciais."}},
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Otimização de PC", "description": "Otimização remota completa do seu computador para melhor desempenho."}},
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Recuperação de Dados", "description": "Recuperação remota de dados e arquivos importantes do seu computador."}},
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Instalação de Programas", "description": "Instalação e configuração remota de programas essenciais para seu computador."}},
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Instalação de Impressora", "description": "Instalação remota de drivers e configuração de impressoras no seu computador."}},
-                  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Remoção de Vírus", "description": "Remoção remota de vírus e proteção do seu computador."}}
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Criação de Site", "description": "Desenvolvimento de sites profissionais e responsivos para sua empresa ou projeto pessoal." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Suporte ao Windows", "description": "Suporte remoto completo para seu sistema Windows, incluindo instalação, atualização e otimização." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formatação", "description": "Formatação remota completa do seu computador com instalação de programas essenciais." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Otimização de PC", "description": "Otimização remota completa do seu computador para melhor desempenho." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Recuperação de Dados", "description": "Recuperação remota de dados e arquivos importantes do seu computador." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalação de Programas", "description": "Instalação e configuração remota de programas essenciais para seu computador." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalação de Impressora", "description": "Instalação remota de drivers e configuração de impressoras no seu computador." } },
+                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Remoção de Vírus", "description": "Remoção remota de vírus e proteção do seu computador." } }
                 ]
               }
             })
@@ -451,8 +254,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://voltris.com.br"},
-                {"@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://voltris.com.br/servicos"}
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://voltris.com.br" },
+                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://voltris.com.br/servicos" }
               ]
             })
           }}
@@ -506,20 +309,7 @@ export default function RootLayout({
             })
           }}
         />
-        <Script
-          id="adsbygoogle-init"
-          strategy="afterInteractive"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9217408182316735"
-          crossOrigin="anonymous"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (window.adsbygoogle = window.adsbygoogle || []);
-            `
-          }}
-        />
+
       </head>
       <body className={`antialiased ${roboto.className}`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
         <ClientNotificationProvider>
@@ -528,10 +318,7 @@ export default function RootLayout({
             {children}
             <ClientPWAInstall />
             <GoogleAnalytics />
-            {/* Bloco de keywords long-tail para bots (display:none, não afeta visual) */}
-            <div style={{display:'none'}} aria-hidden="true">
-              suporte técnico remoto, manutenção de computador, criação de sites profissionais, otimização de Windows, formatação de computador, remoção de vírus, instalação de programas, suporte Windows, manutenção remota, tecnologia, informática, desenvolvimento web, design de sites, SEO, marketing digital, formatação remota, erros GTA, erros CS2, erros Cyberpunk, erros jogos, instalação Office, otimização PC, correção erros Windows, suporte técnico online, manutenção computador remota, formatação Windows, instalação programas remota, remoção malware, otimização sistema, recuperação dados, instalação impressora, configuração rede, backup dados, atualização Windows, driver impressora, antivírus, firewall, limpeza computador, aceleração PC, correção tela azul, erro sistema, problemas internet, configuração email, instalação software, manutenção preventiva, diagnóstico computador, reparo remoto, suporte 24h, técnico informática, assistência técnica, serviços informática, soluções tecnológicas, consultoria TI, manutenção notebook, formatação notebook, otimização notebook, instalação Windows, configuração sistema, migração dados, virtualização, cloud computing, backup cloud, segurança digital, proteção dados, criptografia, VPN, rede doméstica, WiFi, bluetooth, periféricos, mouse, teclado, webcam, microfone, alto-falantes, headset, gamepad, joystick, controle Xbox, controle PlayStation, steering wheel, flight stick, VR headset, AR glasses, smartphone, tablet, smartwatch, smart TV, Chromecast, Fire Stick, Apple TV, Roku, consoles, Xbox, PlayStation, Nintendo, PC gaming, gaming laptop, gaming desktop, overclock, water cooling, air cooling, thermal paste, GPU, CPU, RAM, SSD, HDD, NVMe, motherboard, power supply, case, fans, RGB, LED, streaming, OBS, Streamlabs, Twitch, YouTube Gaming, Facebook Gaming, Discord, TeamSpeak, Mumble, Steam, Epic Games, Origin, Uplay, Battle.net, GOG, itch.io, Humble Bundle, Green Man Gaming, Fanatical, G2A, Kinguin, CDKeys, Nuuvem, GamersGate, IndieGala, Bundle Stars, Mac Games Store, App Store, Google Play, Microsoft Store, Sony PlayStation Store, Nintendo eShop, Xbox Store, Amazon Games, GameStop, Best Buy, Walmart, Target, Carrefour, Extra, Casas Bahia, Magazine Luiza, Americanas, Submarino, Netshoes, Kabum, Terabyte, Pichau, Amazon Brasil, Mercado Livre, OLX, Enjoei, B2W Digital, Via Varejo, Lojas Americanas, Ricardo Eletro, Fast Shop, Saraiva, Livraria Cultura, Fnac, Kalunga, Staples, Office Depot, Staples Brasil, Kalunga, Saraiva, Livraria Cultura, Fnac
-            </div>
+            {/* Keywords block removed for SEO best practices */}
           </ReactQueryProvider>
         </ClientNotificationProvider>
       </body>

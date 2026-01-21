@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Guias Técnicos Completos de Suporte Windows - Aprenda com Especialistas | VOLTRIS',
-  description: '✓ 30+ guias técnicos detalhados ✓ Passo a passo profissional ✓ Formatação, otimização, segurança e manutenção de Windows ✓ Conteúdo criado por especialistas certificados ✓ Atualizado 2025',
+  description: '✓ 50+ guias técnicos detalhados ✓ Passo a passo profissional ✓ Formatação, otimização, segurança, redes e hardware ✓ Conteúdo criado por especialistas certificados ✓ Atualizado 2025',
   keywords: [
     'guias suporte técnico',
     'tutoriais informática',
@@ -13,7 +13,11 @@ export const metadata: Metadata = {
     'manutenção preventiva computador',
     'resolver erros Windows',
     'instalação drivers',
-    'limpeza computador'
+    'limpeza computador',
+    'guia hardware',
+    'dicas internet',
+    'segurança wifi',
+    'montagem pc gamer'
   ],
   openGraph: {
     title: 'Guias e Tutoriais de Suporte Técnico | VOLTRIS',

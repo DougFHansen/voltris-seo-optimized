@@ -4,7 +4,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://voltris.com.br';
   const currentDate = new Date();
-  
+
   // URLs estáticas principais
   const staticUrls = [
     // PÁGINA PRINCIPAL - Prioridade máxima
@@ -271,6 +271,59 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
+
+    // GUIAS TÉCNICOS - Alta prioridade para SEO
+    { url: `${baseUrl}/guias/autenticacao-dois-fatores`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/automacao-tarefas`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/backup-dados`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/compartilhamento-impressoras`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/criptografia-dados`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/diagnostico-hardware`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/firewall-configuracao`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/formatacao-windows`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/gestao-pacotes`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/gestao-servicos`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/instalacao-drivers`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/limpeza-computador`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/manutencao-preventiva`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/monitoramento-sistema`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/otimizacao-performance`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/otimizacao-registro`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/overclock-processador`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/protecao-ransomware`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/recuperacao-dados`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/recuperacao-sistema`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/rede-corporativa`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/rede-domestica`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/resolver-erros-windows`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/seguranca-digital`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/substituicao-ssd`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/troubleshooting-internet`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/upgrade-memoria-ram`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/virtualizacao-vmware`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/vpn-configuracao`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    // Novos Guias (Fase 4 Expansion)
+    { url: `${baseUrl}/guias/instalacao-windows-11`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/otimizacao-jogos-pc`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/remocao-virus-malware`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/configuracao-roteador-wifi`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/atalhos-produtividade-windows`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/ssd-vs-hdd-guia`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/programas-essenciais-windows`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/limpeza-navegadores`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/privacidade-windows-telemetria`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/saude-bateria-notebook`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/guia-montagem-pc`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/solucao-problemas-audio`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/solucao-problemas-bluetooth`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/criar-pendrive-bootavel`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/teste-velocidade-internet`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/seguranca-wifi-avancada`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/extensoes-produtividade-chrome`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/identificacao-phishing`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/atualizacao-drivers-video`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/guia-compra-monitores`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: `${baseUrl}/guias/teclados-mecanicos-guia`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.8 },
   ];
 
   return staticUrls;

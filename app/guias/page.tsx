@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import AdSenseBanner from '../components/AdSenseBanner';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { 
+import {
   BookOpenIcon,
   ComputerDesktopIcon,
   ShieldCheckIcon,
@@ -313,12 +313,224 @@ const guides = [
     readTime: '35 min',
     difficulty: 'Avançado',
     href: '/guias/recuperacao-dados'
+  },
+  // Novos Guias Adicionados (Fase 4 - Expansão)
+  {
+    id: 'instalacao-windows-11',
+    title: 'Guia de Instalação Limpa do Windows 11',
+    description: 'Aprenda passo a passo como fazer uma instalação limpa do Windows 11, garantindo máximo desempenho e sistema livre de bloatware.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Windows',
+    readTime: '25 min',
+    difficulty: 'Intermediário',
+    href: '/guias/instalacao-windows-11'
+  },
+  {
+    id: 'otimizacao-jogos-pc',
+    title: 'Como Otimizar o PC para Jogos em 2025',
+    description: 'Dicas práticas para aumentar FPS, reduzir input lag e melhorar a estabilidade dos seus jogos no Windows.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Otimização',
+    readTime: '20 min',
+    difficulty: 'Intermediário',
+    href: '/guias/otimizacao-jogos-pc'
+  },
+  {
+    id: 'remocao-virus-malware',
+    title: 'Guia Completo de Remoção de Vírus e Malware',
+    description: 'Métodos seguros e eficazes para identificar e remover ameaças digitais do seu computador sem perder dados.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '30 min',
+    difficulty: 'Intermediário',
+    href: '/guias/remocao-virus-malware'
+  },
+  {
+    id: 'configuracao-roteador-wifi',
+    title: 'Como Configurar e Proteger seu Roteador Wi-Fi',
+    description: 'Melhore a segurança e o alcance da sua rede doméstica com estas configurações essenciais de roteador.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Redes',
+    readTime: '15 min',
+    difficulty: 'Básico',
+    href: '/guias/configuracao-roteador-wifi'
+  },
+  {
+    id: 'atalhos-produtividade-windows',
+    title: 'Os Melhores Atalhos de Teclado para Windows',
+    description: 'Aumente sua produtividade dominando os atalhos de teclado mais úteis do Windows 10 e 11.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Produtividade',
+    readTime: '10 min',
+    difficulty: 'Básico',
+    href: '/guias/atalhos-produtividade-windows'
+  },
+  {
+    id: 'ssd-vs-hdd-guia',
+    title: 'SSD vs HDD: Qual Escolher e Por Quê?',
+    description: 'Entenda as diferenças técnicas entre SSD e HDD e saiba qual é o melhor para o seu caso de uso.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '08 min',
+    difficulty: 'Básico',
+    href: '/guias/ssd-vs-hdd-guia'
+  },
+  {
+    id: 'programas-essenciais-windows',
+    title: '10 Programas Essenciais para Todo PC Windows Novo',
+    description: 'Acabou de formatar ou comprar um PC? Instale estes softwares gratuitos indispensáveis para o dia a dia.',
+    icon: <DocumentTextIcon className="w-8 h-8" />,
+    category: 'Software',
+    readTime: '12 min',
+    difficulty: 'Básico',
+    href: '/guias/programas-essenciais-windows'
+  },
+  {
+    id: 'limpeza-navegadores',
+    title: 'Como Limpar Cache e Cookies Corretamente',
+    description: 'Resolva problemas de carregamento de sites e proteja sua privacidade limpando os dados de navegação.',
+    icon: <BookOpenIcon className="w-8 h-8" />,
+    category: 'Internet',
+    readTime: '05 min',
+    difficulty: 'Básico',
+    href: '/guias/limpeza-navegadores'
+  },
+  {
+    id: 'privacidade-windows-telemetria',
+    title: 'Como Desativar Telemetria e Melhorar Privacidade',
+    description: 'Reduza a coleta de dados da Microsoft e ganhe um pouco de desempenho desativando recursos desnecessários.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Privacidade',
+    readTime: '15 min',
+    difficulty: 'Intermediário',
+    href: '/guias/privacidade-windows-telemetria'
+  },
+  {
+    id: 'saude-bateria-notebook',
+    title: 'Como Verificar e Preservar Bateria do Notebook',
+    description: 'Aprenda a checar o desgaste da bateria e dicas para prolongar a vida útil dela.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '08 min',
+    difficulty: 'Básico',
+    href: '/guias/saude-bateria-notebook'
+  },
+  {
+    id: 'guia-montagem-pc',
+    title: 'Guia Básico para Montar seu Primeiro PC Gamer',
+    description: 'O passo a passo fundamental para quem quer montar o próprio computador e economizar.',
+    icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '40 min',
+    difficulty: 'Avançado',
+    href: '/guias/guia-montagem-pc'
+  },
+  {
+    id: 'solucao-problemas-audio',
+    title: 'Como Resolver Problemas de Áudio no Windows',
+    description: 'Sem som? Microfone chiando? Veja como diagnosticar e consertar problemas de áudio comuns.',
+    icon: <QuestionMarkCircleIcon className="w-8 h-8" />,
+    category: 'Troubleshooting',
+    readTime: '15 min',
+    difficulty: 'Intermediário',
+    href: '/guias/solucao-problemas-audio'
+  },
+  {
+    id: 'solucao-problemas-bluetooth',
+    title: 'Resolvendo Conexão Bluetooth no PC',
+    description: 'Fones desconectando ou dispositivos não pareando? Veja como estabilizar seu Bluetooth.',
+    icon: <QuestionMarkCircleIcon className="w-8 h-8" />,
+    category: 'Troubleshooting',
+    readTime: '10 min',
+    difficulty: 'Intermediário',
+    href: '/guias/solucao-problemas-bluetooth'
+  },
+  {
+    id: 'criar-pendrive-bootavel',
+    title: 'Como Criar um Pen Drive Bootável do Windows',
+    description: 'A ferramenta essencial para formatar ou reparar PCs. Saiba como criar um usando Rufus ou Media Creation Tool.',
+    icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+    category: 'Ferramentas',
+    readTime: '12 min',
+    difficulty: 'Intermediário',
+    href: '/guias/criar-pendrive-bootavel'
+  },
+  {
+    id: 'teste-velocidade-internet',
+    title: 'Como Testar Corretamente sua Velocidade',
+    description: 'Sua internet está lenta? Aprenda a medir Ping, Download e Upload de forma precisa.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Internet',
+    readTime: '05 min',
+    difficulty: 'Básico',
+    href: '/guias/teste-velocidade-internet'
+  },
+  {
+    id: 'seguranca-wifi-avancada',
+    title: 'Dicas Avançadas para Proteger Rede Wi-Fi',
+    description: 'Vá além da senha forte. Oculte SSID, filtre MAC e crie redes de convidados.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '20 min',
+    difficulty: 'Avançado',
+    href: '/guias/seguranca-wifi-avancada'
+  },
+  {
+    id: 'extensoes-produtividade-chrome',
+    title: 'Melhores Extensões Chrome para Produtividade',
+    description: 'Turbine seu navegador com ferramentas que economizam tempo e organizam seu trabalho.',
+    icon: <BoltIcon className="w-8 h-8" />,
+    category: 'Software',
+    readTime: '10 min',
+    difficulty: 'Básico',
+    href: '/guias/extensoes-produtividade-chrome'
+  },
+  {
+    id: 'identificacao-phishing',
+    title: 'Como Identificar e Evitar Phishing',
+    description: 'Não caia em golpes. Aprenda a reconhecer e-mails falsos de bancos e serviços.',
+    icon: <ShieldCheckIcon className="w-8 h-8" />,
+    category: 'Segurança',
+    readTime: '12 min',
+    difficulty: 'Básico',
+    href: '/guias/identificacao-phishing'
+  },
+  {
+    id: 'atualizacao-drivers-video',
+    title: 'Como Atualizar Drivers de Vídeo (NVIDIA/AMD)',
+    description: 'Garanta o melhor desempenho em jogos e corrigindo bugs visuais mantendo sua GPU atualizada.',
+    icon: <WrenchScrewdriverIcon className="w-8 h-8" />,
+    category: 'Drivers',
+    readTime: '10 min',
+    difficulty: 'Intermediário',
+    href: '/guias/atualizacao-drivers-video'
+  },
+  {
+    id: 'guia-compra-monitores',
+    title: 'Como Escolher o Monitor Ideal',
+    description: 'Hz, IPS, TN, Resolução? Entenda as sopas de letrinhas e compre o monitor certo.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Hardware',
+    readTime: '15 min',
+    difficulty: 'Básico',
+    href: '/guias/guia-compra-monitores'
+  },
+  {
+    id: 'teclados-mecanicos-guia',
+    title: 'Guia Introdutório sobre Teclados Mecânicos',
+    description: 'Descubra por que todos estão trocando teclados de membrana por mecânicos e entenda os switches.',
+    icon: <ComputerDesktopIcon className="w-8 h-8" />,
+    category: 'Periféricos',
+    readTime: '12 min',
+    difficulty: 'Básico',
+    href: '/guias/teclados-mecanicos-guia'
   }
 ];
 
 const categories = [
   'Todos',
   'Formatação',
+  'Windows',
   'Otimização',
   'Segurança',
   'Backup',
@@ -329,15 +541,20 @@ const categories = [
   'Hardware',
   'Software',
   'Redes',
+  'Internet',
   'Monitoramento',
-  'Recuperação'
+  'Recuperação',
+  'Privacidade',
+  'Produtividade',
+  'Ferramentas',
+  'Periféricos'
 ];
 
 export default function GuiasPage() {
   const [selectedCategory, setSelectedCategory] = React.useState('Todos');
 
-  const filteredGuides = selectedCategory === 'Todos' 
-    ? guides 
+  const filteredGuides = selectedCategory === 'Todos'
+    ? guides
     : guides.filter(guide => guide.category === selectedCategory);
 
   return (
@@ -377,11 +594,10 @@ export default function GuiasPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                    selectedCategory === category
+                  className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${selectedCategory === category
                       ? 'bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white shadow-lg'
                       : 'bg-[#2a2a2e] text-gray-300 hover:bg-[#3a3a3e]'
-                  }`}
+                    }`}
                 >
                   {category}
                 </button>
@@ -475,13 +691,13 @@ export default function GuiasPage() {
               Se preferir que nossos técnicos façam o serviço por você, estamos disponíveis para atendimento remoto imediato e seguro.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
+              <Link
                 href="/todos-os-servicos"
                 className="px-8 py-4 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(139,49,255,0.5)] transition-all duration-300 hover:scale-105"
               >
                 Ver Nossos Serviços
               </Link>
-              <Link 
+              <Link
                 href="https://wa.me/5511996716235?text=Olá!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20suporte%20técnico."
                 target="_blank"
                 rel="noopener noreferrer"

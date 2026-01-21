@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Head from 'next/head';
+
 
 
 const services = [
@@ -106,48 +106,25 @@ export default function FAQPage() {
 
   return (
     <>
-      <Head>
-        <title>FAQ VOLTRIS - Perguntas Frequentes sobre Suporte Técnico Remoto</title>
-        <meta name="description" content="Encontre respostas para as principais dúvidas sobre nossos serviços de suporte técnico remoto, formatação de computador, otimização de Windows e criação de sites. Tire suas dúvidas aqui!" />
-        <meta name="keywords" content="faq voltris, dúvidas frequentes, suporte técnico remoto, formatação computador, otimização windows, criação sites, perguntas frequentes" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="FAQ VOLTRIS - Perguntas Frequentes sobre Suporte Técnico Remoto" />
-        <meta property="og:description" content="Encontre respostas para as principais dúvidas sobre nossos serviços de suporte técnico remoto, formatação de computador, otimização de Windows e criação de sites." />
-        <meta property="og:url" content="https://voltris.com.br/faq" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://voltris.com.br/logo.png" />
-        <meta property="og:image:alt" content="FAQ VOLTRIS - Perguntas Frequentes" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="FAQ VOLTRIS - Perguntas Frequentes sobre Suporte Técnico Remoto" />
-        <meta name="twitter:description" content="Encontre respostas para as principais dúvidas sobre nossos serviços de suporte técnico remoto, formatação de computador, otimização de Windows e criação de sites." />
-        <meta name="twitter:image" content="https://voltris.com.br/logo.png" />
-        
-        {/* Canonical */}
-        <link rel="canonical" href="https://voltris.com.br/faq" />
-        
-        {/* Schema.org structured data for FAQ page - UNIFICADO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": faqData.map(faq => ({
-                "@type": "Question",
-                "name": faq.question,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": faq.answer
-                }
-              }))
-            })
-          }}
-        />
-      </Head>
-      
+      {/* Schema.org structured data for FAQ page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqData.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
       <Header />
       <div className="min-h-screen bg-[#171313] pt-24">
         <div className="container mx-auto px-4 py-12">
@@ -156,31 +133,28 @@ export default function FAQPage() {
               Dúvidas Frequentes
             </span>
           </h1>
-          
+
           <div className="max-w-3xl mx-auto">
             {faqData.map((faq, index) => (
               <div key={index} className="mb-6">
                 <button
-                  className={`w-full text-left p-4 rounded-lg transition-all duration-300 ease-in-out flex justify-between items-center ${
-                    activeIndex === index
-                      ? 'bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white'
-                      : 'bg-[#1c1c1e] text-white hover:bg-[#2a2a2e]'
-                  }`}
+                  className={`w-full text-left p-4 rounded-lg transition-all duration-300 ease-in-out flex justify-between items-center ${activeIndex === index
+                    ? 'bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white'
+                    : 'bg-[#1c1c1e] text-white hover:bg-[#2a2a2e]'
+                    }`}
                   onClick={() => toggleFAQ(index)}
                 >
                   <span className="text-lg font-medium">{faq.question}</span>
                   <span
-                    className={`transform transition-transform duration-300 ${
-                      activeIndex === index ? 'rotate-180' : ''
-                    }`}
+                    className={`transform transition-transform duration-300 ${activeIndex === index ? 'rotate-180' : ''
+                      }`}
                   >
                     ▼
                   </span>
                 </button>
                 <div
-                  className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-                    activeIndex === index ? 'max-h-96' : 'max-h-0'
-                  }`}
+                  className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${activeIndex === index ? 'max-h-96' : 'max-h-0'
+                    }`}
                 >
                   <div className="p-4 bg-[#1c1c1e] text-[#e2e8f0] rounded-b-lg">
                     {faq.answer}
