@@ -3,6 +3,9 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Sobre a VOLTRIS | Quem Somos',
   description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
+  alternates: {
+    canonical: '/about',
+  },
   openGraph: {
     title: 'Sobre a VOLTRIS | Quem Somos',
     description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
@@ -10,7 +13,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: '/logo.png',
         width: 1200,
         height: 630,
         alt: 'Logo VOLTRIS'
@@ -21,6 +24,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sobre a VOLTRIS | Quem Somos',
     description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
-    images: ['https://voltris.com.br/logo.png']
+    images: ['/logo.png']
   }
-}; 
+};

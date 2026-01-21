@@ -1,46 +1,45 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Dicas Avançadas para Proteger sua Rede Wi-Fi";
-const description = "Vá além da senha forte. Oculte SSID, filtre MAC e crie redes de convidados.";
-const keywords = ["proteger wifi","ocultar rede","filtro mac","rede convidados"];
+const title = "Segurança Wi-Fi: Como Proteger sua Rede Doméstica de Invasores";
+const description = "Seu Wi-Fi está seguro? Aprenda a configurar WPA3, desativar WPS, esconder o SSID e criar uma rede de convidados para isolar dispositivos IoT.";
+const keywords = ["segurança wifi","wpa2 vs wpa3","configurar roteador seguro","desativar wps","rede convidados"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [
+
     {
-      title: "Introdução",
+      title: "Configurações Críticas no Roteador",
       content: `
-        <p class="mb-4">Este guia foi elaborado para resolver dúvidas comuns sobre <strong>Dicas Avançadas para Proteger sua Rede Wi-Fi</strong>. Nossa equipe técnica compilou as melhores práticas e soluções testadas para garantir que você obtenha resultados profissionais.</p>
-        <p>Abaixo, detalhamos os passos principais e conceitos fundamentais para dominar este tópico.</p>
+        <p class="mb-4 text-gray-300">Acesse seu roteador (geralmente 192.168.0.1 ou 192.168.1.1) e verifique:</p>
+          <div class="space-y-4">
+            <div class="border-l-4 border-red-500 pl-4">
+              <h4 class="text-white font-bold">Desative o WPS (Wi-Fi Protected Setup)</h4>
+              <p class="text-gray-400 text-sm">O WPS é uma falha de segurança enorme. Permite que invasores descubram sua senha em minutos via força bruta no PIN.</p>
+            </div>
+            <div class="border-l-4 border-green-500 pl-4">
+              <h4 class="text-white font-bold">Use WPA3 ou WPA2-AES</h4>
+              <p class="text-gray-400 text-sm">Nunca use WEP ou WPA-TKIP (são obsoletos e inseguros). Se seu roteador suporta WPA3, ative-o.</p>
+            </div>
+          </div>
       `,
-    },
-    
-    {
-      title: "Rede de Convidados",
-      content: `<p class="mb-4">Crie uma SSID "Guest" isolada. Assim, visitantes acessam a internet, mas não seus arquivos compartilhados locais.</p>`,
       subsections: []
     },
-    
+
     {
-      title: "Atualização de Firmware",
-      content: `<p class="mb-4">Verifique no site do fabricante do roteador se há updates. Firmwares antigos têm brechas de segurança conhecidas.</p>`,
-      subsections: []
-    },
-    
-    {
-      title: "Desativar WPS",
-      content: `<p class="mb-4">O WPS (botão de conexão fácil) é extremamente vulnerável a ataques de força bruta. Desative-o nas configurações.</p>`,
-      subsections: []
-    }
-    ,
-    {
-      title: "Conclusão e Recomendações",
+      title: "Rede de Convidados e IoT",
       content: `
-        <p class="mb-4">Esperamos que este guia sobre <strong>Dicas Avançadas para Proteger sua Rede Wi-Fi</strong> tenha sido útil. A tecnologia exige aprendizado constante e manutenção preventiva.</p>
-        <p>Se tiver dúvidas mais complexas ou precisar de assistência profissional, nossa equipe de suporte remoto está à disposição para ajudar.</p>
-      `
+        <p class="mb-4 text-gray-300">Dispositivos inteligentes (lâmpadas, alexa, geladeiras) têm segurança fraca. Se um hacker invadir sua lâmpada, ele pode acessar seu PC?</p>
+          <p class="text-gray-300">Sim, se estiverem na mesma rede. <strong>A Solução:</strong></p>
+          <ul class="list-disc list-inside text-gray-400">
+            <li>Crie uma <strong>Rede de Convidados (Guest Network)</strong> no roteador.</li>
+            <li>Conecte todas as visitas e dispositivos IoT nessa rede.</li>
+            <li>A maioria dos roteadores isola a rede de convidados da rede principal ("AP Isolation").</li>
+          </ul>
+      `,
+      subsections: []
     }
   ];
 
@@ -48,12 +47,17 @@ export default function GuidePage() {
     {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
-      description: "Melhore o desempenho do seu computador."
+      description: "Dicas para deixar seu PC mais rápido."
     },
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados contra ameaças."
+      href: "/guias/rede-domestica",
+      title: "Redes Domésticas",
+      description: "Melhore sua conexão WiFi."
+    },
+    {
+      href: "/guias/manutencao-preventiva",
+      title: "Manutenção Preventiva",
+      description: "Cuidados essenciais com o hardware."
     }
   ];
 
@@ -62,7 +66,7 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="10 min"
+      estimatedTime="10-15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
       relatedGuides={relatedGuides}

@@ -1,22 +1,10 @@
-"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Head from 'next/head';
 
 export default function SchedulingProcessPage() {
   return (
     <>
-      <Head>
-        <title>Agendamento de Serviços | Processo Profissional | Voltris</title>
-        <meta name="description" content="Entenda o processo de agendamento de serviços da Voltris: flexibilidade, confirmação rápida, checklist e atendimento premium. Garanta seu horário online!" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Agendamento de Serviços | Processo Profissional | Voltris" />
-        <meta property="og:description" content="Veja como funciona o agendamento de serviços na Voltris: escolha, confirmação, checklist e lembrete. Atendimento profissional e seguro." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://voltris.com.br/processo/agendamento" />
-        <meta property="og:image" content="https://voltris.com.br/public/about-img.webp" />
-      </Head>
       <div className="min-h-screen bg-[#171313] text-white">
         <Header />
         <main className="pt-32 sm:pt-24 pb-16 px-4">

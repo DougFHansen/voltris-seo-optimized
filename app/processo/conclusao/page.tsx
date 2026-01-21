@@ -1,22 +1,10 @@
-"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Head from 'next/head';
 
 export default function CompletionProcessPage() {
   return (
     <>
-      <Head>
-        <title>Conclusão e Garantia | Processo Profissional | Voltris</title>
-        <meta name="description" content="Veja como é feita a conclusão dos serviços Voltris: testes, documentação, garantia e suporte pós-serviço. Satisfação total!" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Conclusão e Garantia | Processo Profissional | Voltris" />
-        <meta property="og:description" content="Finalização profissional, garantia de 30 dias, suporte 24/7 e documentação completa para sua tranquilidade." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://voltris.com.br/processo/conclusao" />
-        <meta property="og:image" content="https://voltris.com.br/public/about-img.webp" />
-      </Head>
       <div className="min-h-screen bg-[#171313] text-white">
         <Header />
         <main className="pt-32 sm:pt-24 pb-16 px-4">

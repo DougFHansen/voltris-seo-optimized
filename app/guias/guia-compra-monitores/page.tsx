@@ -1,46 +1,47 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Escolher o Monitor Ideal para Trabalho e Jogos";
-const description = "Hz, IPS, TN, Resolução? Entenda as sopas de letrinhas e compre o monitor certo.";
-const keywords = ["escolher monitor","144hz vs 60hz","painel ips","monitor 4k"];
+const title = "Guia Definitivo para Comprar Monitores: Hz, IPS, TN e Resolução";
+const description = "Não compre o monitor errado! Entenda as diferenças entre painéis IPS, VA e TN, o que é taxa de atualização (Hz) e tempo de resposta.";
+const keywords = ["monitor 144hz","painel ips vs va","tempo de resposta 1ms","monitor gamer custo beneficio","hdr vale a pena"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [
+
     {
-      title: "Introdução",
+      title: "A Trindade dos Painéis: IPS vs VA vs TN",
       content: `
-        <p class="mb-4">Este guia foi elaborado para resolver dúvidas comuns sobre <strong>Como Escolher o Monitor Ideal para Trabalho e Jogos</strong>. Nossa equipe técnica compilou as melhores práticas e soluções testadas para garantir que você obtenha resultados profissionais.</p>
-        <p>Abaixo, detalhamos os passos principais e conceitos fundamentais para dominar este tópico.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+            <div class="bg-[#171313] p-4 rounded border-t-4 border-green-500">
+              <h4 class="text-white font-bold mb-2">IPS (In-Plane Switching)</h4>
+              <p class="text-gray-400 text-xs">Cores incríveis e melhores ângulos de visão. O 'queridinho' atual. Antes era lento, hoje já existem IPS rápidos (Fast IPS).</p>
+            </div>
+            <div class="bg-[#171313] p-4 rounded border-t-4 border-yellow-500">
+              <h4 class="text-white font-bold mb-2">VA (Vertical Alignment)</h4>
+              <p class="text-gray-400 text-xs">Melhor contraste (pretos profundos). Comum em telas curvas. Pode ter 'Ghosting' (rastro) em movimentos rápidos escuros.</p>
+            </div>
+            <div class="bg-[#171313] p-4 rounded border-t-4 border-red-500">
+              <h4 class="text-white font-bold mb-2">TN (Twisted Nematic)</h4>
+              <p class="text-gray-400 text-xs">O mais rápido e barato. Cores lavadas e ângulos de visão ruins. Só compre se for eSports hardcore com orçamento baixo.</p>
+            </div>
+          </div>
       `,
-    },
-    
-    {
-      title: "Tipo de Painel",
-      content: `<p class="mb-4">IPS (Cores fiéis, melhores ângulos), TN (Mais rápido, cores lavadas), VA (Contraste alto, pretos profundos).</p>`,
       subsections: []
     },
-    
+
     {
-      title: "Taxa de Atualização",
-      content: `<p class="mb-4">60Hz (Padrão escritório), 144Hz+ (Essencial para jogos competitivos de tiro), 240Hz+ (Profissional).</p>`,
-      subsections: []
-    },
-    
-    {
-      title: "Resolução x Tamanho",
-      content: `<p class="mb-4">Full HD até 24". Quad HD (2K) ideal para 27". 4K recomendado para 32" ou mais. DPI importa para nitidez de texto.</p>`,
-      subsections: []
-    }
-    ,
-    {
-      title: "Conclusão e Recomendações",
+      title: "Resolução vs Tamanho Ideal (PPI)",
       content: `
-        <p class="mb-4">Esperamos que este guia sobre <strong>Como Escolher o Monitor Ideal para Trabalho e Jogos</strong> tenha sido útil. A tecnologia exige aprendizado constante e manutenção preventiva.</p>
-        <p>Se tiver dúvidas mais complexas ou precisar de assistência profissional, nossa equipe de suporte remoto está à disposição para ajudar.</p>
-      `
+        <p class="mb-4 text-gray-300">A nitidez depende da densidade de pixels (PPI). Regra prática:</p>
+          <ul class="space-y-2 text-gray-300">
+            <li><strong>24 polegadas:</strong> 1080p (Full HD) é perfeito.</li>
+            <li><strong>27 polegadas:</strong> 1440p (Quad HD) é o ideal. 1080p aqui começa a ficar pixelado.</li>
+            <li><strong>32 polegadas ou mais:</strong> 4K (Ultra HD) é recomendado.</li>
+          </ul>
+      `,
+      subsections: []
     }
   ];
 
@@ -48,12 +49,17 @@ export default function GuidePage() {
     {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
-      description: "Melhore o desempenho do seu computador."
+      description: "Dicas para deixar seu PC mais rápido."
     },
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados contra ameaças."
+      href: "/guias/rede-domestica",
+      title: "Redes Domésticas",
+      description: "Melhore sua conexão WiFi."
+    },
+    {
+      href: "/guias/manutencao-preventiva",
+      title: "Manutenção Preventiva",
+      description: "Cuidados essenciais com o hardware."
     }
   ];
 
@@ -62,7 +68,7 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="10 min"
+      estimatedTime="10-15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
       relatedGuides={relatedGuides}

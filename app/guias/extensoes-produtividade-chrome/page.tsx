@@ -1,59 +1,81 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Melhores Extensões do Chrome para Produtividade";
-const description = "Turbine seu navegador com ferramentas que economizam tempo e organizam seu trabalho.";
-const keywords = ["extensões chrome","plugins produtividade","adblock","gerenciador senhas"];
+const title = "As Melhores Extensões Chrome para Produtividade Máxima";
+const description = "Transforme seu navegador em uma máquina de produtividade. Análise detalhada do uBlock Origin, Bitwarden, OneTab, Grammarly e outros essenciais.";
+const keywords = ["melhores extensões chrome","ublock origin","bitwarden","produtividade navegador","bloquear anuncios"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [
+
     {
-      title: "Introdução",
+      title: "Por que usar Extensões?",
       content: `
-        <p class="mb-4">Este guia foi elaborado para resolver dúvidas comuns sobre <strong>Melhores Extensões do Chrome para Produtividade</strong>. Nossa equipe técnica compilou as melhores práticas e soluções testadas para garantir que você obtenha resultados profissionais.</p>
-        <p>Abaixo, detalhamos os passos principais e conceitos fundamentais para dominar este tópico.</p>
+        <p class="mb-4 text-gray-300">O Google Chrome "puro" é rápido, mas limitado. Extensões são pequenos programas que adicionam superpoderes ao navegador. Selecionamos apenas as que são <strong>leves</strong>, <strong>seguras</strong> e <strong>gratuitas</strong>.</p>
       `,
-    },
-    
-    {
-      title: "Bloqueadores de Anúncios",
-      content: `<p class="mb-4">uBlock Origin é a referência atual. Leve, eficiente e de código aberto.</p>`,
       subsections: []
     },
-    
+
     {
-      title: "Gerenciamento de Senhas",
-      content: `<p class="mb-4">Bitwarden. Gratuito, seguro e preenche suas senhas em qualquer site/dispositivo automaticamente.</p>`,
-      subsections: []
-    },
-    
-    {
-      title: "Foco e Organização",
-      content: `<p class="mb-4">Momentum (nova guia inspiradora) ou OneTab (economiza memória RAM agrupando abas) são excelentes.</p>`,
-      subsections: []
-    }
-    ,
-    {
-      title: "Conclusão e Recomendações",
+      title: "Top 1: Segurança e Limpeza",
       content: `
-        <p class="mb-4">Esperamos que este guia sobre <strong>Melhores Extensões do Chrome para Produtividade</strong> tenha sido útil. A tecnologia exige aprendizado constante e manutenção preventiva.</p>
-        <p>Se tiver dúvidas mais complexas ou precisar de assistência profissional, nossa equipe de suporte remoto está à disposição para ajudar.</p>
-      `
+        <div class="space-y-4">
+            <div class="bg-[#1E1E22] p-4 rounded border-l-4 border-red-500">
+              <h4 class="text-white font-bold mb-1">uBlock Origin</h4>
+              <p class="text-gray-400 text-sm">Não confunda com o "AdBlock Plus". O uBlock Origin é o rei indiscutível. Ele bloqueia anúncios, rastreadores e scripts maliciosos usando pouquíssima memória (CPU/RAM). Essencial para qualquer PC.</p>
+            </div>
+            <div class="bg-[#1E1E22] p-4 rounded border-l-4 border-blue-500">
+              <h4 class="text-white font-bold mb-1">Bitwarden</h4>
+              <p class="text-gray-400 text-sm">Pare de usar a mesma senha para tudo. O Bitwarden cria e salva senhas ultra-seguras para cada site. É open-source e gratuito para uso ilimitado.</p>
+            </div>
+          </div>
+      `,
+      subsections: []
+    },
+
+    {
+      title: "Top 2: Foco e Organização",
+      content: `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-[#171313] p-4 rounded">
+              <h4 class="text-[#31A8FF] font-bold">OneTab</h4>
+              <p class="text-gray-400 text-sm mt-2">Você tem 50 abas abertas e o PC está travando? Clique no ícone do OneTab e ele converte tudo em uma lista simples em uma única aba. Economiza até 95% de memória RAM.</p>
+            </div>
+            <div class="bg-[#171313] p-4 rounded">
+              <h4 class="text-[#31A8FF] font-bold">Todoist ou TickTick</h4>
+              <p class="text-gray-400 text-sm mt-2">Tenha sua lista de tarefas sempre à mão na barra de ferramentas. Adicione sites como tarefas com um clique ("Ler depois").</p>
+            </div>
+          </div>
+      `,
+      subsections: []
+    },
+
+    {
+      title: "Cuidado: O que evitar",
+      content: `
+        <p class="text-gray-300">Evite extensões de "VPN Grátis" (elas vendem seus dados) e "Downloaders de Vídeo" desconhecidos (muitos contêm adware). Mantenha o mínimo possível instalado para não deixar o navegador pesado.</p>
+      `,
+      subsections: []
     }
   ];
 
   const relatedGuides = [
     {
+      href: "/guias/rede-domestica",
+      title: "Redes Domésticas",
+      description: "Melhore sua conexão WiFi."
+    },
+    {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
-      description: "Melhore o desempenho do seu computador."
+      description: "Deixe seu PC mais rápido."
     },
     {
       href: "/guias/seguranca-digital",
       title: "Segurança Digital",
-      description: "Proteja seus dados contra ameaças."
+      description: "Proteção contra ameaças."
     }
   ];
 
@@ -62,7 +84,7 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="10 min"
+      estimatedTime="15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
       relatedGuides={relatedGuides}

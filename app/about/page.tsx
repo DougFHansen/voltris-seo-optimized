@@ -1,105 +1,19 @@
-'use client';
-
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import Head from 'next/head';
 
 export default function AboutPage() {
   return (
     <>
-      <Head>
-        <title>Sobre a VOLTRIS - História, Missão e Valores da Empresa de Suporte Técnico</title>
-        <meta name="description" content="Conheça a história da VOLTRIS, empresa especializada em suporte técnico remoto e criação de sites. Mais de 5000 clientes atendidos com 98% de satisfação. Missão, valores e equipe qualificada." />
-        <meta name="keywords" content="sobre voltris, história voltris, missão voltris, valores voltris, empresa suporte técnico, equipe tecnologia, suporte remoto brasil" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Sobre a VOLTRIS - História, Missão e Valores da Empresa de Suporte Técnico" />
-        <meta property="og:description" content="Conheça a história da VOLTRIS, empresa especializada em suporte técnico remoto e criação de sites. Mais de 5000 clientes atendidos com 98% de satisfação." />
-        <meta property="og:url" content="https://voltris.com.br/about" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://voltris.com.br/about-img.webp" />
-        <meta property="og:image:alt" content="Sobre a VOLTRIS - Empresa de Suporte Técnico" />
-        
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Sobre a VOLTRIS - História, Missão e Valores da Empresa de Suporte Técnico" />
-        <meta name="twitter:description" content="Conheça a história da VOLTRIS, empresa especializada em suporte técnico remoto e criação de sites. Mais de 5000 clientes atendidos com 98% de satisfação." />
-        <meta name="twitter:image" content="https://voltris.com.br/about-img.webp" />
-        
-        {/* Canonical */}
-        <link rel="canonical" href="https://voltris.com.br/about" />
-        
-        {/* Schema.org structured data for about page */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "VOLTRIS",
-              "description": "Empresa especializada em suporte técnico remoto e criação de sites, com mais de 5000 clientes atendidos e 98% de satisfação.",
-              "url": "https://voltris.com.br",
-              "logo": "https://voltris.com.br/logo.png",
-              "foundingDate": "2015",
-              "numberOfEmployees": "10-50",
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "BR"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "contactType": "customer service",
-                "availableLanguage": "Portuguese",
-                "areaServed": "BR"
-              },
-              "sameAs": [
-                "https://www.facebook.com/voltris",
-                "https://www.instagram.com/voltris",
-                "https://www.linkedin.com/company/voltris"
-              ],
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Serviços de Tecnologia VOLTRIS",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Suporte Técnico Remoto",
-                      "description": "Suporte remoto especializado em sistemas Windows"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Criação de Sites",
-                      "description": "Desenvolvimento de sites responsivos e otimizados"
-                    }
-                  }
-                ]
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "reviewCount": "5000",
-                "bestRating": "5",
-                "worstRating": "1"
-              }
-            })
-          }}
-        />
-      </Head>
-      
       <Header />
+
       <main className="bg-[#171313] min-h-screen">
         {/* Hero Section */}
         <section className="pt-32 sm:pt-24 relative overflow-hidden">
           {/* Background Gradient Effects */}
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FF4B6B] opacity-10 rounded-full filter blur-[100px]" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#8B31FF] opacity-10 rounded-full filter blur-[100px]" />
-          
+
           <div className="container mx-auto px-4 py-16">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 relative inline-block">
@@ -173,12 +87,12 @@ export default function AboutPage() {
             <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-8 md:p-12 rounded-2xl shadow-xl relative overflow-hidden">
               {/* Background Accent */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
-              
+
               <div className="space-y-6 text-[#e2e8f0] text-lg leading-relaxed relative z-10">
                 <p>
                   A história da VOLTRIS começou com uma paixão genuína por tecnologia e um desejo de ajudar pessoas. Em 2014, nosso fundador, um entusiasta da tecnologia, começou prestando suporte técnico remoto para amigos e familiares, transformando problemas complexos em soluções simples e acessíveis.
                 </p>
-                
+
                 <p>
                   O que começou como uma iniciativa individual logo se transformou em algo maior. À medida que a qualidade do serviço se destacava, o boca a boca se espalhou, e mais pessoas começaram a buscar ajuda. Empresas locais também notaram a eficiência e profissionalismo do atendimento, e assim nasceu a visão do que viria a se tornar a VOLTRIS.
                 </p>
@@ -301,7 +215,7 @@ export default function AboutPage() {
                 <p className="text-[#e2e8f0] text-lg leading-relaxed mb-6">
                   Na VOLTRIS, acreditamos que a excelência técnica começa com educação e certificação contínua. Nossa equipe é composta por profissionais que possuem certificações reconhecidas internacionalmente e que participam regularmente de treinamentos e atualizações para manter-se na vanguarda das tecnologias.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h4 className="text-xl font-bold text-white mb-4">Certificações da Equipe</h4>

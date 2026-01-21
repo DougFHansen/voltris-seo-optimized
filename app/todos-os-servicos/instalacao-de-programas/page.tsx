@@ -6,9 +6,7 @@ import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { RocketLaunchIcon, ShieldCheckIcon, PaintBrushIcon, CheckCircleIcon, QuestionMarkCircleIcon, SparklesIcon } from '@heroicons/react/24/outline';
-import Head from 'next/head';
 import { createClient } from '@/utils/supabase/client';
-
 
 const supabase = createClient();
 
@@ -30,7 +28,7 @@ const programasComuns = [
   'Outlook',
   'Telegram',
   'Discord',
-  'Entre outros Programas',	
+  'Entre outros Programas',
 ];
 
 const benefits = [
@@ -96,15 +94,6 @@ export default function InstalacaoDeProgramasPage() {
 
   return (
     <>
-      <Head>
-        <title>Instalação de Programas Comuns | Instale Software Remotamente</title>
-        <meta name="description" content="Instalação de programas comuns, instalação remota de software, segurança, agilidade e suporte especializado. Instale Google Chrome, WhatsApp, Zoom, programas comuns e muito mais!" />
-        <meta name="keywords" content="instalação de programas, instalar programas remotamente, instalação profissional de software, instalar Google Chrome, instalar WhatsApp, instalar Zoom, instalar programas comuns, suporte remoto, instalação segura" />
-        <meta property="og:title" content="Instalação de Programas Comuns" />
-        <meta property="og:description" content="Instale programas comuns com segurança, agilidade e suporte remoto especializado. Atendimento imediato!" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.seusite.com/instalacao-de-programas" />
-      </Head>
       <Header />
       <main className="bg-gradient-to-br from-[#18141c] via-[#1d1923] to-[#191a23] min-h-screen">
         <section className="pt-32 pb-12 px-4 relative overflow-hidden">
@@ -239,7 +228,7 @@ export default function InstalacaoDeProgramasPage() {
           </div>
         </section>
       </main>
-      
+
       <Footer />
     </>
   );

@@ -1,46 +1,53 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Atualizar Drivers de Placa de Vídeo (NVIDIA/AMD)";
-const description = "Garanta o melhor desempenho em jogos e corrigindo bugs visuais mantendo sua GPU atualizada.";
-const keywords = ["atualizar driver video","geforce experience","amd adrenalin","driver gpu"];
+const title = "Guia Completo de Atualização de Drivers de Vídeo (NVIDIA/AMD/Intel)";
+const description = "Aprenda a instalar, atualizar e fazer o downgrade correto dos drivers da sua placa de vídeo. Evite telas pretas e bugs em jogos com o DDU.";
+const keywords = ["atualizar driver video","nvidia geforce experience","amd adrenalin","ddu display driver uninstaller","fps baixo"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [
+
     {
-      title: "Introdução",
+      title: "Por que atualizar (e quando não atualizar)",
       content: `
-        <p class="mb-4">Este guia foi elaborado para resolver dúvidas comuns sobre <strong>Como Atualizar Drivers de Placa de Vídeo (NVIDIA/AMD)</strong>. Nossa equipe técnica compilou as melhores práticas e soluções testadas para garantir que você obtenha resultados profissionais.</p>
-        <p>Abaixo, detalhamos os passos principais e conceitos fundamentais para dominar este tópico.</p>
+        <p class="mb-4 text-gray-300">Drivers de vídeo (GPU) são o software mais complexo do seu PC. Atualizar pode dar 10-20% mais performance em jogos novos.</p>
+          <div class="bg-blue-900/20 p-4 border-l-4 border-blue-500 my-4">
+            <h4 class="text-blue-400 font-bold mb-2">Regra de Ouro</h4>
+            <p class="text-gray-300 text-sm">Se tudo está funcionando bem e você não vai jogar um lançamento AAA de hoje, não precisa atualizar imediatamente. Espere uma semana para ver se a nova versão não tem bugs.</p>
+          </div>
       `,
-    },
-    
-    {
-      title: "NVIDIA",
-      content: `<p class="mb-4">Baixe o GeForce Experience. Ele notifica novos "Game Ready Drivers" e permite instalação expressa.</p>`,
       subsections: []
     },
-    
+
     {
-      title: "AMD",
-      content: `<p class="mb-4">Use o AMD Adrenalin Software. Além de drivers, oferece ferramentas de overlay e ajuste de performance.</p>`,
-      subsections: []
-    },
-    
-    {
-      title: "DDU (Instalação Limpa)",
-      content: `<p class="mb-4">Se tiver problemas, use o Display Driver Uninstaller (DDU) para remover completamente drivers antigos antes de instalar o novo.</p>`,
-      subsections: []
-    }
-    ,
-    {
-      title: "Conclusão e Recomendações",
+      title: "O Método 'Limpo' (DDU) - Para Corrigir Problemas",
       content: `
-        <p class="mb-4">Esperamos que este guia sobre <strong>Como Atualizar Drivers de Placa de Vídeo (NVIDIA/AMD)</strong> tenha sido útil. A tecnologia exige aprendizado constante e manutenção preventiva.</p>
-        <p>Se tiver dúvidas mais complexas ou precisar de assistência profissional, nossa equipe de suporte remoto está à disposição para ajudar.</p>
-      `
+        <p class="mb-4 text-gray-300">Se você trocou de placa (ex: saiu da AMD para NVIDIA) ou está tendo falhas, você PRECISA usar o DDU.</p>
+          <ol class="list-decimal list-inside space-y-3 text-gray-300">
+            <li>Baixe o <strong>Display Driver Uninstaller (DDU)</strong> do site Guru3D.</li>
+            <li>Baixe o instalador do driver novo (NVIDIA/AMD) e deixe salvo na área de trabalho.</li>
+            <li><strong>Desconecte a internet</strong> (para o Windows Update não instalar um driver genérico sozinho).</li>
+            <li>Reinicie o PC em <strong>Modo de Segurança</strong>.</li>
+            <li>Abra o DDU, selecione "GPU" e clique em <strong>"Limpar e Reiniciar"</strong>.</li>
+            <li>Ao ligar de volta (ainda sem internet), instale o driver novo que você baixou.</li>
+          </ol>
+      `,
+      subsections: []
+    },
+
+    {
+      title: "Configurações Pós-Instalação",
+      content: `
+        <p class="text-gray-300 mb-2">Depois de instalar, verifique:</p>
+          <ul class="list-disc list-inside text-gray-400">
+            <li><strong>Taxa de Atualização (Hz):</strong> O Windows pode ter resetado seu monitor para 60Hz. Vá em Configurações de Exibição -> Avançado e mude para 144Hz/165Hz.</li>
+            <li><strong>G-Sync/FreeSync:</strong> Reative no painel de controle da placa.</li>
+          </ul>
+      `,
+      subsections: []
     }
   ];
 
@@ -48,12 +55,17 @@ export default function GuidePage() {
     {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
-      description: "Melhore o desempenho do seu computador."
+      description: "Dicas para deixar seu PC mais rápido."
     },
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados contra ameaças."
+      href: "/guias/rede-domestica",
+      title: "Redes Domésticas",
+      description: "Melhore sua conexão WiFi."
+    },
+    {
+      href: "/guias/manutencao-preventiva",
+      title: "Manutenção Preventiva",
+      description: "Cuidados essenciais com o hardware."
     }
   ];
 
@@ -62,7 +74,7 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="10 min"
+      estimatedTime="10-15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
       relatedGuides={relatedGuides}

@@ -1,59 +1,78 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Criar um Pen Drive Bootável do Windows";
-const description = "A ferramenta essencial para formatar ou reparar PCs. Saiba como criar um usando Rufus ou Media Creation Tool.";
-const keywords = ["pendrive bootavel","rufus tutorial","instalação windows usb","iso windows"];
+const title = "Como Criar um Pen Drive Bootável do Windows (Todos os Métodos)";
+const description = "Guia definitivo para criar mídia de instalação do Windows 10 e 11. Aprenda a usar o Media Creation Tool e o Rufus para PCs antigos ou novos.";
+const keywords = ["pendrive bootavel","rufus windows 11","media creation tool","formatar pc usb","iso windows"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [
+
     {
-      title: "Introdução",
+      title: "Método 1: Media Creation Tool (Oficial e Recomendado)",
       content: `
-        <p class="mb-4">Este guia foi elaborado para resolver dúvidas comuns sobre <strong>Como Criar um Pen Drive Bootável do Windows</strong>. Nossa equipe técnica compilou as melhores práticas e soluções testadas para garantir que você obtenha resultados profissionais.</p>
-        <p>Abaixo, detalhamos os passos principais e conceitos fundamentais para dominar este tópico.</p>
+        <p class="mb-4 text-gray-300">Esta é a ferramenta oficial da Microsoft. É a maneira mais segura e garante que você tenha a versão mais estável e livre de vírus do Windows.</p>
+          <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-[#31A8FF]">
+            <h4 class="text-white font-bold mb-2">Passo a Passo</h4>
+            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+              <li>Acesse o site oficial da Microsoft ("Baixar Windows 10" ou "11").</li>
+              <li>Baixe a ferramenta "Media Creation Tool" e execute como Administrador.</li>
+              <li>Aceite os termos e escolha <strong>"Criar mídia de instalação"</strong>.</li>
+              <li>Insira um Pen Drive de 8GB (cuidado: ele será formatado!).</li>
+              <li>Selecione o Pen Drive na lista e aguarde o download (pode demorar 30min+).</li>
+            </ol>
+          </div>
       `,
-    },
-    
-    {
-      title: "Media Creation Tool",
-      content: `<p class="mb-4">A opção oficial e mais fácil. Baixe da Microsoft, execute e escolha "Criar mídia de instalação".</p>`,
       subsections: []
     },
-    
+
     {
-      title: "Rufus",
-      content: `<p class="mb-4">Para usuários avançados. Permite baixar ISOs, remover requisitos do Windows 11 (TPM) e criar pendrives para BIOS legadas (MBR).</p>`,
-      subsections: []
-    },
-    
-    {
-      title: "Uso",
-      content: `<p class="mb-4">Insira no PC desligado, ligue pressionando a tecla de Boot Menu (F8, F11, F12 dependendo da marca) e selecione o USB.</p>`,
-      subsections: []
-    }
-    ,
-    {
-      title: "Conclusão e Recomendações",
+      title: "Método 2: Rufus (O Canivete Suíço)",
       content: `
-        <p class="mb-4">Esperamos que este guia sobre <strong>Como Criar um Pen Drive Bootável do Windows</strong> tenha sido útil. A tecnologia exige aprendizado constante e manutenção preventiva.</p>
-        <p>Se tiver dúvidas mais complexas ou precisar de assistência profissional, nossa equipe de suporte remoto está à disposição para ajudar.</p>
-      `
+        <p class="mb-4 text-gray-300">O Rufus é ideal se você precisa de opções avançadas, como instalar Windows 11 em PC antigo (sem TPM) ou usar uma ISO específica.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-[#171313] p-4 rounded border border-gray-700">
+              <h4 class="text-white font-bold mb-2">Configuração MBR vs GPT</h4>
+              <p class="text-gray-400 text-sm">
+                <strong>GPT (UEFI):</strong> Para computadores modernos (pós-2012). Selecione "Esquema de partição: GPT" e "Sistema de destino: UEFI".<br><br>
+                <strong>MBR (Legacy):</strong> Para PCs muito antigos. Selecione "Esquema de partição: MBR".
+              </p>
+            </div>
+            <div class="bg-[#171313] p-4 rounded border border-gray-700">
+              <h4 class="text-white font-bold mb-2">Truques do Windows 11</h4>
+              <p class="text-gray-400 text-sm">Ao clicar em INICIAR no Rufus com uma ISO do Windows 11, ele perguntará se você quer <strong>remover a exigência de TPM 2.0 e Secure Boot</strong>. Marque essa opção para reviver PCs antigos!</p>
+            </div>
+          </div>
+      `,
+      subsections: []
+    },
+
+    {
+      title: "Testando o Pen Drive",
+      content: `
+        <p class="text-gray-300">Após criar, o Pen Drive não deve aparecer vazio. Ele deve ter arquivos como 'setup.exe', 'boot', 'sources'. Para usar/testar, você precisa reiniciar o PC e acessar o Boot Menu (geralmente F8, F11 ou F12).</p>
+      `,
+      subsections: []
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Melhore o desempenho do seu computador."
+      href: "/guias/manutencao-preventiva",
+      title: "Manutenção Preventiva",
+      description: "Proteja seu hardware."
     },
     {
       href: "/guias/seguranca-digital",
       title: "Segurança Digital",
-      description: "Proteja seus dados contra ameaças."
+      description: "Proteja seus dados."
+    },
+    {
+      href: "/guias/otimizacao-performance",
+      title: "Performance",
+      description: "Deixe seu PC mais rápido."
     }
   ];
 
@@ -62,8 +81,8 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="10 min"
-      difficultyLevel="Iniciante"
+      estimatedTime="20 min"
+      difficultyLevel="Intermediário"
       contentSections={contentSections}
       relatedGuides={relatedGuides}
     />

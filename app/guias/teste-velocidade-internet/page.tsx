@@ -1,59 +1,105 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Testar Corretamente sua Velocidade de Internet";
-const description = "Sua internet está lenta? Aprenda a medir Ping, Download e Upload de forma precisa.";
-const keywords = ["teste velocidade","speedtest","internet lenta","ping alto"];
+const title = "Guia Definitivo: Como Testar e Diagnosticar sua Internet";
+const description = "Sua internet cai ou trava? Aprenda a diferenciar problemas do Wi-Fi vs Operadora. Metodologia correta de teste de velocidade, ping e jitter.";
+const keywords = ["teste velocidade","speedtest","ping alto jogos","perda de pacote","internet instavel"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [
+
     {
-      title: "Introdução",
+      title: "1. A Regra de Ouro do Teste",
       content: `
-        <p class="mb-4">Este guia foi elaborado para resolver dúvidas comuns sobre <strong>Como Testar Corretamente sua Velocidade de Internet</strong>. Nossa equipe técnica compilou as melhores práticas e soluções testadas para garantir que você obtenha resultados profissionais.</p>
-        <p>Abaixo, detalhamos os passos principais e conceitos fundamentais para dominar este tópico.</p>
+        <div class="bg-[#171313] p-5 rounded-lg border border-red-500/40 mb-6">
+            <h3 class="text-red-400 font-bold text-lg mb-2">⛔ Pare de testar no Wi-Fi!</h3>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              Testes feitos no celular ou via Wi-Fi <strong>não têm validade técnica</strong> para reclamar com a operadora. O Wi-Fi sofre interferência de paredes, espelhos e vizinhos.
+              <br><br>
+              <strong>O Método Correto:</strong> Conecte um notebook ou PC diretamente ao roteador usando um cabo de rede (RJ-45) padrão CAT5e ou superior. Feche todos os programas (Steam, Torrent, Netflix) e apenas então faça o teste.
+            </p>
+          </div>
       `,
-    },
-    
-    {
-      title: "Preparação",
-      content: `<p class="mb-4">Feche downloads, streamings e jogos. Se possível, conecte via cabo Ethernet para evitar oscilação do Wi-Fi.</p>`,
       subsections: []
     },
-    
+
     {
-      title: "Melhores Sites",
-      content: `<p class="mb-4">Speedtest.net (Ookla), Fast.com (Netflix) e Brasil Banda Larga (EAQ/Anatel) são os mais confiáveis.</p>`,
-      subsections: []
-    },
-    
-    {
-      title: "Entendendo Resultados",
-      content: `<p class="mb-4">Ping < 20ms é ótimo para jogos. Download deve estar próximo do contratado. Upload geralmente é 50% do download (exceto fibra simétrica).</p>`,
-      subsections: []
-    }
-    ,
-    {
-      title: "Conclusão e Recomendações",
+      title: "2. Onde Testar? (Sites Confiáveis)",
       content: `
-        <p class="mb-4">Esperamos que este guia sobre <strong>Como Testar Corretamente sua Velocidade de Internet</strong> tenha sido útil. A tecnologia exige aprendizado constante e manutenção preventiva.</p>
-        <p>Se tiver dúvidas mais complexas ou precisar de assistência profissional, nossa equipe de suporte remoto está à disposição para ajudar.</p>
-      `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-[#1E1E22] p-4 rounded text-center">
+              <h4 class="text-white font-bold mb-1">Speedtest.net</h4>
+              <p class="text-xs text-gray-400">O padrão da indústria. Ótimo porque permite escolher o servidor de teste.</p>
+            </div>
+            <div class="bg-[#1E1E22] p-4 rounded text-center">
+              <h4 class="text-white font-bold mb-1">nPerf</h4>
+              <p class="text-xs text-gray-400">Mais completo. Testa navegação e streaming (Youtube) além da velocidade bruta.</p>
+            </div>
+            <div class="bg-[#1E1E22] p-4 rounded text-center">
+              <h4 class="text-white font-bold mb-1">Fast.com</h4>
+              <p class="text-xs text-gray-400">Da Netflix. Mede a conexão com os servidores da Netflix. Bom para saber se o streaming vai travar.</p>
+            </div>
+          </div>
+      `,
+      subsections: []
+    },
+
+    {
+      title: "3. Interpretando os Resultados (Glossário)",
+      content: `
+        <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="bg-blue-900/30 p-2 rounded text-blue-400 font-mono">Download</div>
+              <div>
+                <strong class="text-gray-200">Velocidade de Baixar</strong>
+                <p class="text-gray-400 text-sm">Importante para carregar páginas, ver vídeos e baixar jogos. É o número que a operadora vende (ex: 500 Mega).</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="bg-purple-900/30 p-2 rounded text-purple-400 font-mono">Upload</div>
+              <div>
+                <strong class="text-gray-200">Velocidade de Enviar</strong>
+                <p class="text-gray-400 text-sm">Crítico para trabalhar em casa (Teams/Zoom), fazer lives ou backup na nuvem (Google Drive). Geralmente é 50% do download.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="bg-green-900/30 p-2 rounded text-green-400 font-mono">Ping</div>
+              <div>
+                <strong class="text-gray-200">Latência (Tempo de Resposta)</strong>
+                <p class="text-gray-400 text-sm">O tempo que o dado leva para ir e voltar. Essencial para JOGOS ONLINE.
+                <br> <span class="text-green-500">0-30ms:</span> Perfeito. <span class="text-yellow-500">30-80ms:</span> Aceitável. <span class="text-red-500">100ms+:</span> Lag perceptível.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="bg-red-900/30 p-2 rounded text-red-400 font-mono">Jitter</div>
+              <div>
+                <strong class="text-gray-200">Estabilidade</strong>
+                <p class="text-gray-400 text-sm">É a variação do Ping. Se o ping oscila muito, você tem lags intermitentes (teletransporte em jogos). O ideal é jitter próximo de zero.</p>
+              </div>
+            </div>
+          </div>
+      `,
+      subsections: []
     }
   ];
 
   const relatedGuides = [
     {
+      href: "/guias/rede-domestica",
+      title: "Redes Domésticas",
+      description: "Melhore sua conexão WiFi."
+    },
+    {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
-      description: "Melhore o desempenho do seu computador."
+      description: "Deixe seu PC mais rápido."
     },
     {
       href: "/guias/seguranca-digital",
       title: "Segurança Digital",
-      description: "Proteja seus dados contra ameaças."
+      description: "Proteção contra ameaças."
     }
   ];
 
@@ -62,7 +108,7 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="10 min"
+      estimatedTime="15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
       relatedGuides={relatedGuides}

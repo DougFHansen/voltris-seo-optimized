@@ -87,29 +87,18 @@ export function LocalBusinessSchema({ services }: { services?: Array<{ name: str
       "ratingValue": "4.9",
       "reviewCount": "120"
     },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": "Ana Silva" },
-        "datePublished": "2024-06-01",
-        "reviewBody": "Ótimo atendimento, resolveu meu problema rapidamente!",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        }
-      }
-    ],
     ...(services && {
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Serviços de Suporte Técnico",
-        "itemListElement": services.map(service => ({
+        "itemListElement": services.map((service, index) => ({
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
             "name": service.name,
             "description": service.description
-          }
+          },
+          "position": index + 1
         }))
       }
     })

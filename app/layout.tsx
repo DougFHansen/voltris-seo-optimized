@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://voltris.com.br'),
   alternates: {
-    canonical: '/',
+    canonical: './',
   },
   openGraph: {
     type: 'website',
@@ -92,8 +92,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
-  const canonicalUrl = `https://voltris.com.br${pathname}`;
   return (
     <html lang="pt-br">
       <head>
@@ -135,19 +133,6 @@ export default function RootLayout({
         <meta name="distribution" content="global" />
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="7 days" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="VOLTRIS" />
-        <meta property="og:title" content="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais" />
-        <meta property="og:description" content="Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas." />
-        <meta property="og:url" content="https://voltris.com.br" />
-        <meta property="og:image" content="/logo.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais" />
-        <meta name="twitter:description" content="Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas." />
-        <meta name="twitter:image" content="/logo.png" />
-        <link rel="canonical" href={canonicalUrl} />
         <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="msvalidate.01" content="92524862D63347408E773A7CD62B94DD" />
 
@@ -214,21 +199,9 @@ export default function RootLayout({
               ],
               "aggregateRating": {
                 "@type": "AggregateRating",
-                "ratingValue": "4.9",
-                "reviewCount": "120"
+                "ratingValue": 4.9,
+                "reviewCount": 120
               },
-              "review": [
-                {
-                  "@type": "Review",
-                  "author": { "@type": "Person", "name": "Ana Silva" },
-                  "datePublished": "2024-06-01",
-                  "reviewBody": "Ótimo atendimento, resolveu meu problema rapidamente!",
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5"
-                  }
-                }
-              ],
               "hasOfferCatalog": {
                 "@type": "OfferCatalog",
                 "name": "Serviços de Suporte Técnico",

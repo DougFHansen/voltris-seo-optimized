@@ -1,22 +1,10 @@
-"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Head from 'next/head';
 
 export default function RemoteAccessProcessPage() {
   return (
     <>
-      <Head>
-        <title>Acesso Remoto Seguro | Processo Profissional | Voltris</title>
-        <meta name="description" content="Saiba como funciona o acesso remoto seguro da Voltris: criptografia, controle do cliente, transparência e conformidade LGPD." />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Acesso Remoto Seguro | Processo Profissional | Voltris" />
-        <meta property="og:description" content="Atendimento remoto com segurança, transparência e ferramentas profissionais. Veja como protegemos seus dados!" />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://voltris.com.br/processo/acesso-remoto" />
-        <meta property="og:image" content="https://voltris.com.br/public/about-img.webp" />
-      </Head>
       <div className="min-h-screen bg-[#171313] text-white">
         <Header />
         <main className="pt-32 sm:pt-24 pb-16 px-4">

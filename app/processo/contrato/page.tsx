@@ -1,22 +1,10 @@
-"use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import Head from 'next/head';
 
 export default function ContractProcessPage() {
   return (
     <>
-      <Head>
-        <title>Contrato de Serviço | Processo Profissional | Voltris</title>
-        <meta name="description" content="Conheça o contrato de serviço da Voltris: segurança, transparência, privacidade e garantias para o cliente. Leia os termos!" />
-        <meta name="robots" content="index, follow" />
-        <meta property="og:title" content="Contrato de Serviço | Processo Profissional | Voltris" />
-        <meta property="og:description" content="Veja como nosso contrato protege você: termos claros, garantias, privacidade e conformidade legal." />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://voltris.com.br/processo/contrato" />
-        <meta property="og:image" content="https://voltris.com.br/public/about-img.webp" />
-      </Head>
       <div className="min-h-screen bg-[#171313] text-white">
         <Header />
         <main className="pt-32 sm:pt-24 pb-16 px-4">
