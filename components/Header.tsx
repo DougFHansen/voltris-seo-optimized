@@ -115,9 +115,9 @@ export default function Header() {
                 className={`fas fa-user text-lg sm:text-xl ${typeof window !== 'undefined' && window.innerWidth < 640 ? 'mobile-login-gradient' : 'text-white'}`}
               ></i>
             )}
-            <span className="hidden sm:inline font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-lg select-none" style={{letterSpacing: '0.04em'}}>Login</span>
+            <span className="hidden sm:inline font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-lg select-none" style={{ letterSpacing: '0.04em' }}>Login</span>
           </button>
-          <Link 
+          <Link
             href="/login?cadastro=1"
             className="flex items-center gap-2 px-3 py-2 sm:px-4 bg-[#23232b] border border-[#FF4B6B]/10 text-white rounded-lg hover:shadow-[0_0_20px_rgba(42,42,46,0.3)] transition-all duration-300 ease-out hover:scale-105"
             aria-label="Criar nova conta"
@@ -151,7 +151,7 @@ export default function Header() {
             <span className="hidden xs:inline text-xs xs:text-sm sm:text-base">Painel</span>
           </button>
         )}
-        <button 
+        <button
           onClick={handleLogout}
           disabled={logoutLoading}
           className={`flex justify-center items-center gap-1 xs:gap-2 px-2 xs:px-3 py-2 sm:px-4 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white rounded-lg hover:shadow-[0_0_20px_rgba(139,49,255,0.3)] transition-all duration-300 ease-out hover:scale-105 min-h-[44px] ${logoutLoading ? 'opacity-60 cursor-not-allowed' : ''}`}
@@ -197,17 +197,18 @@ export default function Header() {
             <div className="flex-shrink-0 flex items-center">
               <Link href="/" className="flex items-center group">
                 <div className="relative">
-                  <Image 
-                    src="/logo-v2.webp" 
-                    alt="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais" 
-                    width={90} 
-                    height={90} 
-                    className="h-12 sm:h-15 w-auto block logo-rotate" 
-                    style={{maxWidth: '100%'}} 
+                  <Image
+                    src="/logo-v2.webp"
+                    alt="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais"
+                    width={90}
+                    height={90}
+                    className="h-12 sm:h-15 w-auto block logo-rotate"
+                    style={{ maxWidth: '100%' }}
                     priority
+                    sizes="90px"
                   />
                 </div>
-                <span className="ml-2 sm:ml-4 text-2xl sm:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-lg select-none" style={{letterSpacing: '0.04em'}}>VOLTRIS</span>
+                <span className="ml-2 sm:ml-4 text-2xl sm:text-3xl font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-lg select-none" style={{ letterSpacing: '0.04em' }}>VOLTRIS</span>
               </Link>
             </div>
 
@@ -257,8 +258,8 @@ export default function Header() {
                 <AuthButtons />
               </div>
               {/* Mobile Menu Button */}
-              <button 
-                className="lg:hidden text-white focus:outline-none p-1 xs:p-2 rounded-lg hover:bg-white/10 transition-colors min-w-[44px] min-h-[44px]" 
+              <button
+                className="lg:hidden text-white focus:outline-none p-1 xs:p-2 rounded-lg hover:bg-white/10 transition-colors min-w-[44px] min-h-[44px]"
                 onClick={toggleMobileMenu}
                 aria-label="Toggle mobile menu"
               >
@@ -276,7 +277,7 @@ export default function Header() {
                   style={{ outline: soundAnim ? '2px solid #8B31FF' : undefined }}
                 >
                   {settings.sound_enabled ? <FiVolume2 size={22} /> : <FiVolumeX size={22} />}
-                  {soundAnim && <span className="absolute inset-0 rounded-full border-2 border-blue-400 animate-pulse pointer-events-none" style={{zIndex:1}}></span>}
+                  {soundAnim && <span className="absolute inset-0 rounded-full border-2 border-blue-400 animate-pulse pointer-events-none" style={{ zIndex: 1 }}></span>}
                 </button>
               )}
             </div>
@@ -323,64 +324,64 @@ export default function Header() {
                   <h3 className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-4 text-center">
                     Navegação
                   </h3>
-                  <Link 
-                    href={getFullPath('/')} 
+                  <Link
+                    href={getFullPath('/')}
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-home w-6 h-6 mb-1"></i>
                     <span>Home</span>
                   </Link>
-                  <Link 
-                    href={getFullPath('#about')} 
+                  <Link
+                    href={getFullPath('#about')}
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-info-circle w-6 h-6 mb-1"></i>
                     <span>Sobre</span>
                   </Link>
-                  <Link 
-                    href="/servicos" 
+                  <Link
+                    href="/servicos"
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-cogs w-6 h-6 mb-1"></i>
                     <span>Serviços</span>
                   </Link>
-                  <Link 
-                    href="/gamers" 
+                  <Link
+                    href="/gamers"
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-gamepad w-6 h-6 mb-1"></i>
                     <span>Gamers</span>
                   </Link>
-                  <Link 
-                    href="/faq" 
+                  <Link
+                    href="/faq"
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-question-circle w-6 h-6 mb-1"></i>
                     <span>Dúvidas</span>
                   </Link>
-                  <Link 
-                    href="/blog" 
+                  <Link
+                    href="/blog"
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-blog w-6 h-6 mb-1"></i>
                     <span>Blog</span>
                   </Link>
-                  <Link 
-                    href="/guias" 
+                  <Link
+                    href="/guias"
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <i className="fas fa-book w-6 h-6 mb-1"></i>
                     <span>Guias</span>
                   </Link>
-                  <Link 
-                    href="/contato" 
+                  <Link
+                    href="/contato"
                     className="flex flex-col items-center justify-center px-4 py-3 text-white hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transition-all duration-300 rounded-xl hover:bg-white/5 w-full text-center"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
