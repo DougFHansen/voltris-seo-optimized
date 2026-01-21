@@ -131,7 +131,22 @@ export default function RootLayout({
             referrerPolicy="no-referrer"
           />
         </noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+        {/* Google Fonts - Optimized Loading */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          as="style"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+          media="print"
+          // @ts-ignore
+          onLoad="this.media='all'"
+        />
+        <noscript>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
+        </noscript>
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo.png" />
@@ -153,18 +168,19 @@ export default function RootLayout({
         <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="msvalidate.01" content="92524862D63347408E773A7CD62B94DD" />
 
-        {/* Google tag (gtag.js) - Ads */}
-        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XY0CKLVY2B');
-            `
-          }}
+        {/* Google tag (gtag.js) - Ads - Deferred */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"
+          strategy="afterInteractive"
         />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XY0CKLVY2B');
+          `}
+        </Script>
 
         {/* Schema.org structured data - Organization (já existe) */}
         <script
