@@ -242,12 +242,12 @@ export default function HomeClient() {
           lg:px-16
           xl:px-24
           bg-[#1E1E22]
-          overflow-hidden
+          overflow-x-hidden
         "
                 aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
                 style={{ paddingTop: 'var(--header-height)' }}
             >
-                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full py-8 lg:py-0">
+                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 flex-grow py-12 lg:py-20">
                     <div className="flex flex-1 order-1 items-center justify-center relative w-full h-[280px] xs:h-[320px] sm:h-[400px] lg:h-[600px]">
                         <div className="flex flex-col gap-4 sm:gap-6 md:gap-10 items-center justify-center w-full z-10 scale-[0.6] xs:scale-[0.7] sm:scale-90 lg:scale-100 transition-transform duration-300">
                             <div className="flex flex-row gap-4 sm:gap-8 md:gap-10 w-full justify-center animate-horizontal-move-left">
