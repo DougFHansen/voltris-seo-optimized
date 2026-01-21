@@ -3,6 +3,12 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AdSenseBanner from '@/components/AdSenseBanner';
+import { FAQSchema } from '@/components/SEOStructuredData';
+
+interface SummaryTableItem {
+  label: string;
+  value: string;
+}
 
 interface GuideTemplateProps {
   title: string;
@@ -14,6 +20,8 @@ interface GuideTemplateProps {
   relatedGuides?: RelatedGuide[];
   author?: string;
   lastUpdated?: string;
+  summaryTable?: SummaryTableItem[];
+  faqItems?: Array<{ question: string; answer: string }>;
 }
 
 interface ContentSection {
@@ -61,7 +69,9 @@ export function GuideTemplate({
   contentSections,
   relatedGuides = [],
   author = "Equipe Técnica Voltris",
-  lastUpdated = "Janeiro 2025"
+  lastUpdated = "Janeiro 2025",
+  summaryTable,
+  faqItems
 }: GuideTemplateProps) {
   const hasCustomConclusion = contentSections.some(section =>
     section.title.toLowerCase().includes('conclusão') ||
@@ -91,6 +101,22 @@ export function GuideTemplate({
               <span className="bg-[#1c1c1e] px-3 py-1 rounded-full">Atualizado: {lastUpdated}</span>
             </div>
           </div>
+
+          {/* Summary Table for Featured Snippets */}
+          {summaryTable && summaryTable.length > 0 && (
+            <div className="relative max-w-4xl mx-auto mt-12 z-10">
+              <div className="bg-[#1c1c1e] border border-[#31A8FF]/30 rounded-xl p-6 shadow-2xl mx-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-gray-700">
+                  {summaryTable.map((item, index) => (
+                    <div key={index} className="flex flex-col items-center text-center pt-4 sm:pt-0 px-4">
+                      <span className="text-[#31A8FF] font-semibold mb-1 uppercase text-xs tracking-wider">{item.label}</span>
+                      <span className="text-white font-bold text-lg">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </section>
 
         {/* Table of Contents */}
@@ -203,9 +229,27 @@ export function GuideTemplate({
             </div>
           </section>
         )}
+
+        {/* FAQ Section */}
+        {faqItems && faqItems.length > 0 && (
+          <section className="py-12 px-4 bg-[#121218]">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="text-3xl font-bold text-white mb-8 text-center">Perguntas Frequentes</h2>
+              <div className="space-y-4">
+                {faqItems.map((item, index) => (
+                  <div key={index} className="bg-[#1c1c1e] p-6 rounded-lg border border-[#31A8FF]/10">
+                    <h3 className="text-xl font-semibold text-white mb-2">{item.question}</h3>
+                    <p className="text-gray-300 text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: item.answer }} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </main>
       <AdSenseBanner />
       <Footer />
+      {faqItems && <FAQSchema faqItems={faqItems} />}
     </>
   );
 }

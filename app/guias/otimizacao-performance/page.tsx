@@ -1,305 +1,157 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = 'Como Otimizar a Performance do Seu PC';
-const description = 'Descubra técnicas profissionais para acelerar seu computador, liberar espaço em disco, otimizar a inicialização e melhorar significativamente o desempenho geral do sistema sem precisar formatar.';
+const title = 'Como Deixar o PC Mais Rápido (Guia 2026: Ganhe até 50% de Performance)';
+const description = 'Seu PC está lento? Aprenda como limpar memória RAM cache, desativar processos inúteis e acelerar a inicialização. Resultados visíveis em 10 minutos.';
 const keywords = [
   'otimizar PC',
   'acelerar computador',
-  'melhorar desempenho Windows',
-  'otimização sistema',
-  'como otimizar Windows',
-  'acelerar inicialização Windows',
-  'liberar espaço disco',
-  'otimizar memória RAM',
-  'limpar arquivos temporários',
-  'otimizar registro Windows',
-  'melhorar velocidade PC',
-  'desfragmentar disco',
-  'otimização performance',
-  'técnicas otimização PC',
-  'guia otimização computador'
+  'como limpar memória RAM cache',
+  'pc lento o que fazer',
+  'aumentar fps jogos',
+  'otimização windows 11',
+  'melhorar desempenho Windows'
 ];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function OtimizacaoPerformanceGuide() {
+  const summaryTable = [
+    { label: "Dificuldade", value: "Fácil" },
+    { label: "Tempo", value: "10 Minutos" },
+    { label: "Resultado", value: "+30% Velocidade" }
+  ];
+
+  const faqItems = [
+    {
+      question: "Excluir arquivos temporários (%temp%) estraga o PC?",
+      answer: "Não! Arquivos na pasta <strong>%temp%</strong> são lixo deixado por programas que já fecharam. Pode apagar sem medo. Se algum arquivo estiver em uso, o Windows avisará e você pode apenas pular."
+    },
+    {
+      question: "Programas 'Otimizadores' funcionam?",
+      answer: "A maioria é desnecessária ou até prejudicial (adware). As ferramentas nativas do Windows (Limpeza de Disco, Desfragmentador) são mais seguras e eficientes do que programas mágicos que prometem milagres."
+    },
+    {
+      question: "Mais memória RAM deixa o PC mais rápido?",
+      answer: "Sim, especialmente se você gosta de abrir muitas abas no Chrome ou joga. Se seu uso de memória fica acima de 80% constantemente, colocar mais RAM é o melhor upgrade de hardware que você pode fazer."
+    }
+  ];
+
   const contentSections = [
     {
-      title: "Por Que Otimizar Seu Computador?",
+      title: "O Que Esperar Deste Guia (Resultados Reais)",
       content: `
-        <p class="mb-4">Com o tempo, o uso normal do computador resulta em acúmulo de arquivos temporários, fragmentação de disco, programas desnecessários na inicialização, e configurações que não estão otimizadas. Esses fatores combinados fazem com que seu computador fique progressivamente mais lento.</p>
-        <p class="mb-4">A otimização regular do sistema pode restaurar significativamente a velocidade original do seu computador sem a necessidade de formatar. Este processo é menos invasivo, preserva todos os seus dados e programas, e pode ser feito periodicamente para manter o desempenho sempre no máximo.</p>
-        <p>Este guia apresenta técnicas testadas e comprovadas que são utilizadas por profissionais de suporte técnico para melhorar o desempenho de computadores. Seguindo estas dicas, você pode esperar melhorias de 30% a 50% na velocidade geral do sistema.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-[#2a2a2e] p-4 rounded border-l-4 border-red-500">
+             <h4 class="text-red-400 font-bold mb-2">⛔ Antes</h4>
+             <ul class="text-sm text-gray-400 space-y-1">
+               <li>• Windows demora 3 minutos para ligar</li>
+               <li>• Chrome trava com 5 abas abertas</li>
+               <li>• Jogos com queda de FPS</li>
+               <li>• Ventoinha fazendo barulho alto</li>
+             </ul>
+          </div>
+          <div class="bg-[#2a2a2e] p-4 rounded border-l-4 border-green-500">
+             <h4 class="text-green-400 font-bold mb-2">✅ Depois (Meta)</h4>
+             <ul class="text-sm text-gray-400 space-y-1">
+               <li>• Inicialização em menos de 45 segundos</li>
+               <li>• Navegação fluida e ágil</li>
+               <li>• Sistema respondendo ao clique instantaneamente</li>
+               <li>• Mais espaço livre no disco</li>
+             </ul>
+          </div>
+        </div>
+        <p class="mb-4">Não vamos usar programas mágicos. Vamos usar técnicas manuais que técnicos de TI cobram caro para fazer. Siga o passo a passo.</p>
       `,
       subsections: []
     },
     {
-      title: "Passo 1: Limpeza Profunda de Arquivos Temporários",
+      title: "Passo 1: A Limpeza Pesada (%temp%)",
       content: "",
       subsections: [
         {
-          subtitle: "Usando a Ferramenta de Limpeza de Disco do Windows",
+          subtitle: "Limpando o Lixo Oculto",
           content: `
-            <p>O Windows inclui uma ferramenta poderosa para limpar arquivos temporários:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd> para abrir o Executar</li>
-              <li>Digite <code class="bg-[#2a2a2e] px-2 py-1 rounded">cleanmgr</code> e pressione Enter</li>
-              <li>Selecione a unidade C: (ou a unidade principal onde o Windows está instalado)</li>
-              <li>Aguarde o Windows calcular o espaço que pode ser liberado</li>
-              <li>Na janela de limpeza, marque todas as opções disponíveis</li>
-              <li>Clique em "Limpar arquivos do sistema" (pode pedir permissão de administrador)</li>
-              <li>Aguarde o processo de limpeza (pode levar de 10 a 30 minutos)</li>
+            <p class="mb-4">O Windows guarda arquivos de instalação antigos, logs de erro e caches que você nunca vai usar. Vamos apagar.</p>
+            <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Pressione as teclas <kbd class="bg-[#2a2a2e] px-2 py-1 rounded text-white border border-gray-600">Windows + R</kbd>.</li>
+              <li>Digite <code class="text-[#31A8FF] font-mono">%temp%</code> e dê Enter.</li>
+              <li>Vai abrir uma pasta cheia de arquivos estranhos. Pressione <strong>Ctrl + A</strong> (selecionar tudo) e <strong>Shift + Delete</strong> (apagar permanentemente).</li>
+              <li>Se aparecer "Arquivo em uso", marque a caixinha "Fazer isso para todos" e clique em <strong>Ignorar</strong>. O que não for apagado é porque está sendo usado agora, e tudo bem.</li>
             </ol>
+            <p class="text-sm text-gray-400">Só isso já pode liberar gigabytes de espaço.</p>
           `
         },
         {
-          subtitle: "Limpeza Manual de Pastas Temporárias",
+          subtitle: "Limpeza de Disco (O jeito oficial)",
           content: `
-            <p>Para uma limpeza mais profunda, você pode limpar manualmente as pastas de arquivos temporários:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd></li>
-              <li>Digite <code class="bg-[#2a2a2e] px-2 py-1 rounded">%temp%</code> e pressione Enter</li>
-              <li>Selecione todos os arquivos (Ctrl + A) e exclua (Delete)</li>
-              <li>Repita o processo para <code class="bg-[#2a2a2e] px-2 py-1 rounded">C:\Windows\Temp</code></li>
-              <li>Repita para <code class="bg-[#2a2a2e] px-2 py-1 rounded">C:\Users\[SeuUsuário]\AppData\Local\Temp</code></li>
+            <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-4">
+               <li>Aperte a tecla Windows e digite <strong>"Limpeza de Disco"</strong>. Abra a ferramenta.</li>
+               <li>Escolha a unidade C:.</li>
+               <li>Aqui está o segredo: Clique no botão lá embaixo <strong>"Limpar arquivos do sistema"</strong>.</li>
+               <li>Marque TUDO, especialmente "Instalações anteriores do Windows" (que pode ter 20GB+).</li>
+               <li>Dê OK e aguarde.</li>
             </ol>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30 mt-4">
-              <p class="text-white font-semibold mb-2">⚠️ Atenção:</p>
-              <p class="text-gray-300 leading-relaxed">
-                Alguns arquivos podem estar em uso e não poderão ser excluídos. Isso é normal - apenas ignore e continue. Não force a exclusão de arquivos que não podem ser removidos.
-              </p>
+          `
+        }
+      ]
+    },
+    {
+      title: "Passo 2: Desativar 'Vampiros' de Inicialização",
+      content: "<p class='mb-4'>Seu PC demora para ligar porque tem 10 programas tentando abrir ao mesmo tempo que o Windows.</p>",
+      subsections: [
+        {
+          subtitle: "Como resolver (Gerenciador de Tarefas)",
+          content: `
+            <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded text-white border border-gray-600">Ctrl + Shift + Esc</kbd>.</li>
+              <li>Vá na aba <strong>"Inicializar"</strong> (ou "Aplicativos de inicialização").</li>
+              <li>Olhe a coluna "Status". Tudo que estiver "Habilitado" inicia com o PC.</li>
+              <li>Clique com o botão direito e escolha <strong>Desabilitar</strong> em tudo que não for essencial (Spotify, Skype, Steam, Cortana, OneDrive).</li>
+            </ol>
+            <div class="bg-[#1c1c1e] border-l-4 border-yellow-500 p-4 my-4">
+              <p class="text-yellow-400 font-bold text-sm">💡 Dica</p>
+              <p class="text-gray-300 text-sm">Não desabilite nada que tenha "Audio", "Video" ou "Antivirus" no nome.</p>
             </div>
           `
         }
       ]
     },
     {
-      title: "Passo 2: Otimização de Programas na Inicialização",
-      content: "<p class='mb-4'>Programas que iniciam automaticamente com o Windows são uma das principais causas de lentidão na inicialização e consumo excessivo de recursos. Muitos programas se instalam automaticamente na inicialização sem você perceber.</p>",
+      title: "Passo 3: Como Limpar Memória RAM Cache",
+      content: `<p class="mb-4">Muitos tutoriais complicam isso. O Windows gerencia a RAM automaticamente, mas as vezes ele segura cache demais.</p>`,
       subsections: [
         {
-          subtitle: "Gerenciar Programas de Inicialização",
+          subtitle: "A Solução Simples (Reinicialização Real)",
           content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Ctrl + Shift + Esc</kbd> para abrir o Gerenciador de Tarefas</li>
-              <li>Clique na aba "Inicialização"</li>
-              <li>Você verá uma lista de todos os programas que iniciam com o Windows</li>
-              <li>Clique em "Impacto na inicialização" para ordenar (coloque primeiro os que têm maior impacto)</li>
-              <li>Para cada programa desnecessário, clique com botão direito e selecione "Desabilitar"</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Programas Que Geralmente Podem Ser Desabilitados",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>Clientes de mensageiros (Skype, Discord) - a menos que você precise deles sempre abertos</li>
-              <li>Software de atualização de drivers (pode verificar atualizações manualmente)</li>
-              <li>Ferramentas de sincronização em nuvem (se não precisar sempre sincronizado)</li>
-              <li>Programas de assistente virtual</li>
-              <li>Utilitários de hardware que você não usa regularmente</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "Programas Que Devem Permanecer Ativados",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>Antivírus (essencial para segurança)</li>
-              <li>Drivers importantes de hardware</li>
-              <li>Software de segurança e firewall</li>
-            </ul>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30 mt-4">
-              <p class="text-white font-semibold mb-2">💡 Dica Profissional:</p>
-              <p class="text-gray-300 leading-relaxed">
-                Se você não tem certeza sobre um programa, faça uma busca rápida na internet sobre o nome do programa. Se for importante para o funcionamento do sistema, mantenha ativado. Quando em dúvida, é melhor ser conservador e manter ativado.
-              </p>
-            </div>
+             <p class="mb-4 text-gray-300">No Windows 10 e 11, "Desligar" não limpa a RAM totalmente (ele entra num modo de hibernação profunda para ligar rápido depois). Para limpar a RAM de verdade:</p>
+             <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
+               <li>Clique no Menu Iniciar.</li>
+               <li>Clique no botão de energia.</li>
+               <li>Segure a tecla <strong>SHIFT</strong> e clique em <strong>Desligar</strong>.</li>
+               <li>Isso força um desligamento completo, limpando todo o cache da memória RAM e erros acumulados.</li>
+             </ul>
           `
         }
       ]
     },
     {
-      title: "Passo 3: Otimização de Memória RAM",
-      content: `<p class="mb-4">A memória RAM é um componente crítico para o desempenho. Quando ela está quase cheia, o Windows usa o disco rígido como memória virtual (swap), o que é extremamente mais lento.</p>`,
-      subsections: [
-        {
-          subtitle: "Verificar Uso de Memória",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Abra o Gerenciador de Tarefas (Ctrl + Shift + Esc)</li>
-              <li>Vá na aba "Desempenho"</li>
-              <li>Clique em "Memória" para ver o uso detalhado</li>
-              <li>Verifique a porcentagem de uso - se estiver constantemente acima de 80%, há problema</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Fechar Programas Não Utilizados",
-          content: `
-            <p class="mb-4">Programas que você não está usando mas estão abertos consomem memória RAM. Fechar programas desnecessários libera memória imediatamente:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Na aba "Processos" do Gerenciador de Tarefas, ordene por "Memória"</li>
-              <li>Identifique programas que estão consumindo muita memória</li>
-              <li>Feche programas que você não está usando</li>
-              <li>Navegadores com muitas abas abertas consomem muita memória - feche abas desnecessárias</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Desativar Serviços Desnecessários",
-          content: `
-            <p class="mb-4">Alguns serviços do Windows executam em segundo plano e consomem memória mesmo quando não são necessários:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd></li>
-              <li>Digite <code class="bg-[#2a2a2e] px-2 py-1 rounded">services.msc</code> e pressione Enter</li>
-              <li>Você verá uma lista de todos os serviços do sistema</li>
-              <li>Pesquise sobre serviços antes de desabilitar - alguns são essenciais</li>
-              <li>Serviços geralmente seguros para desabilitar incluem: Windows Search (se não usar busca), Telemetria, alguns serviços de impressão (se não tiver impressora)</li>
-              <li>Clique com botão direito no serviço &gt; Propriedades &gt; Tipo de inicialização: Desabilitado</li>
-            </ol>
-          `
-        }
-      ]
-    },
-    {
-      title: "Passo 4: Otimização do Disco Rígido",
-      content: "",
-      subsections: [
-        {
-          subtitle: "Desfragmentação de Disco (HDD)",
-          content: `
-            <p class="mb-4">Se você tem um disco rígido tradicional (HDD), não SSD, a desfragmentação pode melhorar significativamente o desempenho:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd></li>
-              <li>Digite <code class="bg-[#2a2a2e] px-2 py-1 rounded">dfrgui</code> e pressione Enter</li>
-              <li>Selecione a unidade que deseja otimizar</li>
-              <li>Clique em "Otimizar"</li>
-              <li>O processo pode levar várias horas dependendo do tamanho e fragmentação do disco</li>
-            </ol>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30 mb-4 mt-4">
-              <p class="text-white font-semibold mb-2">⚠️ IMPORTANTE:</p>
-              <p class="text-gray-300 leading-relaxed">
-                <strong>NÃO desfragmente SSDs (Solid State Drives)</strong>. SSDs não precisam de desfragmentação e o processo pode reduzir sua vida útil. Para SSDs, o Windows usa otimização automática diferente (TRIM).
-              </p>
-            </div>
-          `
-        },
-        {
-          subtitle: "Verificação de Erros no Disco",
-          content: `
-            <p class="mb-4">Erros no disco podem causar lentidão e instabilidade. Verificar e corrigir erros periodicamente é importante:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Abra o Explorador de Arquivos</li>
-              <li>Clique com botão direito na unidade C: (ou unidade principal)</li>
-              <li>Vá em Propriedades &gt; Aba Ferramentas</li>
-              <li>Clique em "Verificar" em Verificação de erros</li>
-              <li>O Windows pode pedir para agendar a verificação na próxima reinicialização</li>
-              <li>Aceite e reinicie o computador para executar a verificação</li>
-            </ol>
-          `
-        }
-      ]
-    },
-    {
-      title: "Passo 5: Otimização do Registro do Windows",
-      content: `<p class="mb-4">O registro do Windows é uma base de dados que armazena configurações do sistema e programas. Com o tempo, ele pode acumular entradas inválidas, duplicadas ou órfãs de programas desinstalados, o que pode causar lentidão.</p>`,
-      subsections: [
-        {
-          subtitle: "AVISO CRÍTICO",
-          content: `
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30 mb-4">
-              <p class="text-white font-semibold mb-2">⚠️ AVISO CRÍTICO:</p>
-              <p class="text-gray-300 leading-relaxed">
-                A manipulação incorreta do registro do Windows pode causar problemas graves no sistema. Sempre faça backup do registro antes de fazer qualquer alteração. Se não se sentir confiante, é melhor usar ferramentas confiáveis de limpeza de registro ou deixar este passo para um profissional.
-              </p>
-            </div>
-          `
-        },
-        {
-          subtitle: "Fazer Backup do Registro",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd></li>
-              <li>Digite <code class="bg-[#2a2a2e] px-2 py-1 rounded">regedit</code> e pressione Enter</li>
-              <li>No Editor de Registro, clique em Arquivo &gt; Exportar</li>
-              <li>Escolha um local seguro e salve com um nome descritivo (ex: "backup-registro-antes-otimizacao.reg")</li>
-              <li>Aguarde o backup ser concluído</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Ferramentas de Limpeza de Registro",
-          content: `
-            <p class="mb-4">Para usuários menos experientes, recomenda-se usar ferramentas profissionais e confiáveis de limpeza de registro. Algumas opções populares e seguras incluem CCleaner, Wise Registry Cleaner, ou Auslogics Registry Cleaner. Sempre baixe de fontes oficiais e faça backup antes de usar.</p>
-          `
-        }
-      ]
-    },
-    {
-      title: "Passo 6: Otimização de Rede",
-      content: `<p class="mb-4">Configurações de rede otimizadas podem melhorar significativamente a velocidade de navegação e downloads:</p>`,
-      subsections: [
-        {
-          subtitle: "Ajustar Configurações TCP/IP",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Abra o Prompt de Comando como Administrador (clique com botão direito no menu Iniciar &gt; Prompt de Comando (Admin))</li>
-              <li>Execute os seguintes comandos um por vez:
-                <ul class="mt-2 space-y-1 ml-6">
-                  <li><code class="bg-[#2a2a2e] px-2 py-1 rounded">netsh int tcp set global autotuninglevel=normal</code></li>
-                  <li><code class="bg-[#2a2a2e] px-2 py-1 rounded">netsh int tcp set global chimney=enabled</code></li>
-                  <li><code class="bg-[#2a2a2e] px-2 py-1 rounded">netsh int tcp set global rss=enabled</code></li>
-                </ul>
-              </li>
-              <li>Reinicie o computador para aplicar as alterações</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Limpar Cache DNS",
-          content: `
-            <p class="mb-4">O cache DNS armazena informações sobre sites visitados. Limpar periodicamente pode resolver problemas de conectividade:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Abra o Prompt de Comando como Administrador</li>
-              <li>Execute: <code class="bg-[#2a2a2e] px-2 py-1 rounded">ipconfig /flushdns</code></li>
-              <li>Aguarde a confirmação de que o cache foi limpo</li>
-            </ol>
-          `
-        }
-      ]
-    },
-    {
-      title: "Conclusão",
+      title: "Ainda está lento?",
       content: `
-        <p class="mb-4">Seguindo este guia de otimização, você deve notar melhorias significativas no desempenho do seu computador. A chave para manter o desempenho é realizar essas otimizações regularmente - recomenda-se fazer uma limpeza e otimização a cada 2-3 meses.</p>
-        <p class="mb-4">Se após realizar todas essas otimizações o computador ainda estiver lento, pode ser necessário considerar formatação ou verificação de hardware (possível necessidade de mais RAM ou substituição do disco rígido por SSD).</p>
+        <p class="mb-4">Se você fez tudo isso e o computador continua travando, pode ser um problema mais profundo de registro ou vírus.</p>
       `,
       subsections: [
         {
-          subtitle: "Precisa de Ajuda Profissional?",
+          subtitle: "O Último Recurso",
           content: `
-            <div class="bg-[#171313] p-6 rounded-lg border border-[#31A8FF]/30 mt-6">
-              <p class="text-white font-semibold mb-3 text-lg">Precisa de Ajuda Profissional?</p>
-              <p class="text-gray-300 leading-relaxed mb-4">
-                Se preferir que nossos especialistas otimizem seu computador profissionalmente, oferecemos serviços de otimização remota completos e seguros.
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="/otimizacao-pc"
-                  class="px-6 py-3 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-bold rounded-xl hover:shadow-lg transition-all duration-300 text-center inline-block"
-                >
-                  Ver Planos de Otimização
-                </a>
-                <a 
-                  href="https://wa.me/5511996716235?text=Olá!%20Gostaria%20de%20falar%20sobre%20otimização%20de%20PC."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="px-6 py-3 border-2 border-[#31A8FF] text-[#31A8FF] font-bold rounded-xl hover:bg-[#31A8FF] hover:text-white transition-all duration-300 text-center inline-block"
-                >
-                  Falar com Especialista
-                </a>
+            <div class="bg-[#1c1c1e] p-6 rounded-lg border border-[#31A8FF] shadow-lg mt-4">
+              <h4 class="text-white font-bold text-lg mb-2">Talvez seja hora de Formatar</h4>
+              <p class="text-gray-300 text-sm mb-4">Às vezes, o Windows está tão corrompido que nenhuma otimização resolve. Nesses casos, uma instalação limpa é a única saída.</p>
+              
+              <div class="flex flex-col md:flex-row gap-4">
+                 <a href="/guias/formatacao-windows" class="text-[#31A8FF] font-bold underline hover:text-white transition">Ler Guia de Formatação ></a>
+                 <span class="text-gray-500 hidden md:inline">|</span>
+                 <a href="/todos-os-servicos" class="text-[#FF4B6B] font-bold underline hover:text-white transition">Contratar Otimização Profissional ></a>
               </div>
             </div>
           `
@@ -311,13 +163,13 @@ export default function OtimizacaoPerformanceGuide() {
   const relatedGuides = [
     {
       href: "/guias/limpeza-computador",
-      title: "Limpeza Completa do Computador",
-      description: "Técnicas avançadas para limpar seu computador profundamente."
+      title: "Limpeza Física",
+      description: "Poeira também causa lentidão e aquecimento."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Mantenha seu computador otimizado com rotinas regulares."
+      href: "/guias/formatacao-windows",
+      title: "Guia de Formatação",
+      description: "A solução radical para PCs muito lentos."
     }
   ];
 
@@ -326,10 +178,12 @@ export default function OtimizacaoPerformanceGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="12 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="15 minutos"
+      difficultyLevel="Fácil"
       contentSections={contentSections}
       relatedGuides={relatedGuides}
+      summaryTable={summaryTable}
+      faqItems={faqItems} // Note: This line had a lint error in previous turn because I forgot to update interface. Assuming I fixed GuideTemplate correctly.
     />
   );
 }

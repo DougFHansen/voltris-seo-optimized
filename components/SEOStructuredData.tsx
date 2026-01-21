@@ -138,4 +138,22 @@ export function BreadcrumbSchema({ breadcrumbs }: { breadcrumbs: Array<{ name: s
   };
 
   return <SEOStructuredData type="breadcrumb" data={data} />;
+}
+
+// Componente específico para FAQPages
+export function FAQSchema({ faqItems }: { faqItems: Array<{ question: string; answer: string }> }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  };
+
+  return <SEOStructuredData type="article" data={data} />;
 } 

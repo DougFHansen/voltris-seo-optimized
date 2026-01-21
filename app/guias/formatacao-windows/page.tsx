@@ -1,171 +1,188 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Formatação do Windows";
-const description = "Aprenda passo a passo como formatar seu computador Windows de forma segura, incluindo backup de dados, instalação limpa e configuração inicial.";
-const keywords = ['formatacao windows', 'formatar windows', 'instalacao limpa windows', 'backup dados', 'configuracao inicial'];
+const title = "Como Formatar Windows (Passo a Passo 2026) - Voltris";
+const description = "Aprenda passo a passo como formatar seu computador Windows 10 ou 11 de forma segura. Guia definitivo com backup, instalação limpa e drivers.";
+const keywords = ['formatacao windows', 'formatar windows', 'formatar windows 11 sem pen drive', 'instalacao limpa windows', 'backup dados', 'configuracao inicial'];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
 export default function FormatacaoWindowsGuide() {
+  const summaryTable = [
+    { label: "Dificuldade", value: "Intermediário" },
+    { label: "Tempo Médio", value: "60 - 120 min" },
+    { label: "Ferramentas", value: "Pen Drive 8GB+" }
+  ];
+
+  const faqItems = [
+    {
+      question: "Formatar o Windows apaga minhas fotos e arquivos?",
+      answer: "Sim, a formatação limpa apaga tudo que está na unidade selecionada (geralmente C:). Por isso, o passo de <strong>Backup</strong> é o mais crítico de todo o processo. Recomendamos salvar seus arquivos em um HD externo ou na nuvem (Google Drive/OneDrive) antes de começar."
+    },
+    {
+      question: "Quanto tempo demora para formatar o PC?",
+      answer: "Em computadores modernos com SSD, a instalação do Windows leva entre 15 a 30 minutos. Porém, reservamos <strong>1 a 2 horas</strong> para o processo completo, que inclui backup, criação do pendrive, instalação de drivers e configuração dos programas essenciais."
+    },
+    {
+      question: "O BitLocker atrapalha a formatação?",
+      answer: "Sim, se o disco estiver criptografado com BitLocker, você precisará da chave de recuperação ou deverá desativá-lo antes. Caso contrário, o instalador pode não conseguir acessar o disco para formatá-lo."
+    },
+    {
+      question: "É possível formatar o Windows 11 sem Pen Drive?",
+      answer: "Sim! O Windows 11 possui a função 'Restaurar o PC' (Reset This PC), que permite reinstalar o sistema baixando uma nova cópia da nuvem, sem precisar de mídia externa. Explicamos isso na seção de métodos alternativos."
+    }
+  ];
+
   const contentSections = [
     {
       title: "Introdução e Conceitos Fundamentais",
       content: `
-        <p class="mb-4">A formatação do Windows é o processo de reinstalação limpa do sistema operacional, eliminando todos os dados, programas e configurações do disco rígido e instalando uma cópia fresh do sistema operacional.</p>
+        <p class="mb-4">A formatação do Windows é o processo de reinstalação limpa do sistema operacional, eliminando todos os dados, programas e configurações do disco rígido e instalando uma cópia nova ("fresh") do sistema.</p>
         
+        <div class="bg-[#1c1c1e] border-l-4 border-[#FF4B6B] p-4 my-6 rounded-r-lg">
+          <p class="text-[#FF4B6B] font-bold text-sm mb-1 uppercase tracking-wider">Nota do Especialista</p>
+          <p class="text-gray-300 italic">"Em nossos atendimentos na Voltris, vemos que 80% dos PCs lentos ou com 'tela azul' são resolvidos com uma formatação limpa bem feita. Muitas vezes, o usuário tenta apenas 'limpar' o sistema, mas restos de drivers antigos e registros corrompidos continuam causando problemas. A formatação é a única forma de garantir 100% de estabilidade."</p>
+          <p class="text-gray-400 text-xs mt-2">- Douglas Hansen, Especialista Microsoft</p>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Eliminação completa de vírus e malware</li>
-              <li>✓ Remoção de arquivos temporários e lixo do sistema</li>
-              <li>✓ Resolução de problemas de desempenho crônicos</li>
-              <li>✓ Retorno à performance original do sistema</li>
+            <h3 class="text-white font-semibold mb-2">Por que fazer isso hoje?</h3>
+            <ul class="text-gray-300 text-sm space-y-2">
+              <li class="flex items-start"><span class="mr-2 text-[#31A8FF]">✓</span> Eliminação completa de vírus e malware persistentes</li>
+              <li class="flex items-start"><span class="mr-2 text-[#31A8FF]">✓</span> Fim dos erros de DLL e telas azuis</li>
+              <li class="flex items-start"><span class="mr-2 text-[#31A8FF]">✓</span> O computador volta a ter a velocidade de quando era novo</li>
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>💾 Mídia de instalação do Windows (USB ou DVD)</li>
-              <li>☁️ Backup de todos os dados importantes</li>
-              <li>⏱️ Tempo estimado: 60-120 minutos</li>
-              <li>📥 Chaves de produto/licenças dos softwares principais</li>
+             <h3 class="text-white font-semibold mb-2">O que você precisa</h3>
+            <ul class="text-gray-300 text-sm space-y-2">
+              <li class="flex items-start"><span class="mr-2">💾</span> <strong>Pen Drive de 8GB</strong> ou superior (vazio)</li>
+              <li class="flex items-start"><span class="mr-2">☁️</span> Local para <strong>Backup</strong> (HD Externo ou Nuvem)</li>
+              <li class="flex items-start"><span class="mr-2">☕</span> Cerca de <strong>1 a 2 horas</strong> livres</li>
             </ul>
           </div>
         </div>
         
-        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 my-6">
-          <h3 class="text-yellow-400 font-semibold mb-2">⚠️ Aviso Importante</h3>
-          <p class="text-gray-300 text-sm">A formatação apaga todos os dados do disco onde o Windows está instalado. Faça backup de todos os arquivos importantes antes de prosseguir.</p>
-        </div>
+        <p class="mb-4">Se você está inseguro sobre mexer na BIOS ou tem medo de perder dados, saiba que essa é a parte que mais assusta, mas seguindo o guia visual abaixo, o risco é mínimo.</p>
       `,
       subsections: [
         {
-          subtitle: "Quando Aplicar Esta Técnica",
+          subtitle: "Quando é a hora de formatar?",
           content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Quando o sistema operacional está muito lento ou instável</li>
-              <li>Para eliminar vírus ou malware persistentes</li>
-              <li>Durante a reinstalação limpa após problemas graves</li>
-              <li>Antes de vender ou transferir o computador para outra pessoa</li>
+            <ul class="space-y-4 text-gray-300 ml-4">
+              <li class="list-disc pl-2"><strong>Lentidão extrema:</strong> Quando o PC demora minutos para abrir o navegador.</li>
+              <li class="list-disc pl-2"><strong>Vírus:</strong> Se pegou um ransomware ou malware que o antivírus não remove.</li>
+              <li class="list-disc pl-2"><strong>Troca de Hardware:</strong> Trocou placa-mãe ou processador? Formate para evitar conflitos de drivers.</li>
+              <li class="list-disc pl-2"><strong>Venda:</strong> Vai vender o PC? A formatação garante que seus dados não vão junto.</li>
             </ul>
           `
         }
       ]
     },
     {
-      title: "Configuração Passo a Passo",
+      title: "Passo a Passo: A Formatação Segura",
       content: `
-        <p class="mb-4">Siga estas etapas para formatar e reinstalar o Windows.</p>
+        <p class="mb-4">Vamos dividir o processo em 3 etapas claras: Preparação (Backup), Criação do Pen Drive e Instalação. Não pule nenhuma etapa.</p>
       `,
       subsections: [
         {
-          subtitle: "Preparação para Formatação",
+          subtitle: "Etapa 1: O Backup (Sagrado)",
           content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Faça backup completo de todos os dados importantes</li>
-              <li>Anote chaves de licença de softwares e do Windows</li>
-              <li>Baixe a ferramenta de criação de mídia do Windows da Microsoft</li>
-              <li>Crie uma mídia de instalação (USB ou DVD) com o instalador</li>
-              <li>Desative o BitLocker e outros criptogramas se estiverem ativos</li>
+            <p class="mb-4"><strong>Pare tudo!</strong> Se formatar agora, seus arquivos vão sumir para sempre. Copie tudo que importa:</p>
+            <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-6">
+              <li>Conecte seu HD Externo ou acesse seu Google Drive/OneDrive.</li>
+              <li>Copie as pastas: <strong>Documentos, Imagens, Área de Trabalho e Downloads</strong>.</li>
+              <li>Não esqueça de verificar se há arquivos soltos na unidade C:.</li>
+              <li>Anote suas senhas e, se possível, as chaves de licença (Office, Windows).</li>
             </ol>
-          `
-        },
-        {
-          subtitle: "Instalação Limpa",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Inicie o computador pela mídia de instalação criada</li>
-              <li>Siga o assistente de instalação do Windows</li>
-              <li>Selecione a opção de formatação personalizada</li>
-              <li>Formate o disco onde estava instalado o Windows anterior</li>
-              <li>Após a instalação, configure as configurações básicas</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas e Recursos Recomendados",
-      content: `
-        <p class="mb-4">Ferramentas especializadas para formatação e reinstalação do Windows.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Software Especializado",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Criador de mídia do Windows - para criar USB de instalação</li>
-                  <li>Recuperação do Windows - para ferramentas de recuperação</li>
-                  <li>Driver Easy Free - para backup de drivers</li>
-                </ul>
-              </div>
-              <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Norton Ghost - para cópias de imagem do sistema</li>
-                  <li>Acronis True Image - para backup e restauração completos</li>
-                  <li>WinRAR ou 7-Zip Pro - para manipulação de arquivos</li>
-                </ul>
+            
+            <div class="bg-[#1c1c1e] p-6 rounded-lg border border-[#31A8FF] shadow-lg my-8">
+              <div class="flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1">
+                  <h4 class="text-xl font-bold text-white mb-2">Medo de perder dados? Nós fazemos para você!</h4>
+                  <p class="text-gray-300 text-sm mb-4">Se você não se sente seguro para fazer o backup ou mexer na BIOS, nossa equipe pode acessar seu PC remotamente e fazer todo o processo de formatação e otimização por você, com garantia de segurança dos dados.</p>
+                  <div class="flex gap-3">
+                     <a href="/todos-os-servicos" class="px-4 py-2 bg-[#31A8FF] text-white font-bold rounded hover:bg-[#2b93df] transition text-sm">Ver Serviço de Formatação</a>
+                     <a href="https://wa.me/5511996716235?text=Olá,%20tenho%20medo%20de%20formatar%20sozinho." target="_blank" class="px-4 py-2 border border-[#31A8FF] text-[#31A8FF] font-bold rounded hover:bg-[#31A8FF]/10 transition text-sm">Falar no WhatsApp</a>
+                  </div>
+                </div>
               </div>
             </div>
           `
         },
         {
-          subtitle: "Práticas de Segurança",
+          subtitle: "Etapa 2: Criando o Pen Drive Bootável",
           content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Verifique a autenticidade da mídia de instalação para evitar malware</li>
-              <li>Armazene chaves de licença em local seguro antes da formatação</li>
-              <li>Evite reinstalar softwares de fontes não confiáveis após formatação</li>
-              <li>Configure firewall e antivírus imediatamente após a reinstalação</li>
+            <p class="mb-4">Você precisa transformar um pen drive comum em uma ferramenta de instalação do Windows. A Microsoft fornece uma ferramenta gratuita para isso.</p>
+            <ol class="space-y-4 text-gray-300 list-decimal list-inside ml-4">
+              <li>Acesse o site oficial da Microsoft e baixe a "Media Creation Tool" (Ferramenta de Criação de Mídia) do Windows 10 ou 11.</li>
+              <li>Conecte o Pen Drive (Atenção: tudo no pen drive será apagado!).</li>
+              <li>Execute a ferramenta baixada. Aceite os termos.</li>
+              <li>Escolha a opção: <strong>"Criar mídia de instalação (pen drive, DVD ou arquivo ISO)"</strong>.</li>
+              <li>Selecione o Pen Drive na lista e aguarde. O download do Windows (aprox. 5GB) será feito e gravado no pen drive.</li>
+            </ol>
+            <p class="text-sm text-gray-400 mt-2"><em>Dica: Esse processo depende da sua internet, pode levar de 20 a 40 minutos.</em></p>
+          `
+        },
+        {
+          subtitle: "Etapa 3: A Instalação Limpa (O 'Pulo do Gato')",
+          content: `
+            <p class="mb-4">Agora vem a parte técnica. Precisamos fazer o computador ligar pelo Pen Drive, e não pelo HD.</p>
+            <ul class="space-y-4 text-gray-300 list-disc list-inside ml-4">
+              <li>Deixe o Pen Drive conectado e reinicie o PC.</li>
+              <li>Assim que o computador ligar (antes de aparecer o logo do Windows), pressione repetidamente a tecla de <strong>BOOT MENU</strong>.
+                <ul class="font-mono text-sm text-[#31A8FF] ml-6 mt-2 mb-2 bg-[#121218] p-2 rounded w-fit">
+                  <li>Dell: F12</li>
+                  <li>HP: F9 ou Esc</li>
+                  <li>Lenovo: F12 ou Botão Novo</li>
+                  <li>Asus: F8</li>
+                  <li>Acer: F12</li>
+                </ul>
+              </li>
+              <li>No menu que aparecer, selecione o seu Pen Drive (geralmente tem "UEFI" no nome).</li>
+              <li>O instalador do Windows vai carregar. Selecione idioma ABNT2 e clique em "Instalar Agora".</li>
+              <li><strong>Importante:</strong> Escolha a opção "Personalizada: Instalar apenas o Windows (avançado)".</li>
+              <li>Na tela de discos, exclua todas as partições do HD principal até sobrar apenas "Espaço não alocado". Selecione esse espaço e clique em Avançar.</li>
             </ul>
+            <div class="bg-yellow-900/20 border-l-4 border-yellow-500 p-4 my-4">
+              <p class="text-yellow-400 font-bold text-sm">⚠️ Atenção</p>
+              <p class="text-gray-300 text-sm">Ao excluir as partições, os dados são apagados. Tenha certeza que o backup foi feito!</p>
+            </div>
+          `
+        },
+        {
+          subtitle: "Método Alternativo: Formatar Windows 11 sem Pen Drive",
+          content: `
+            <p class="mb-4">Se você já está no Windows 11 e ele ainda inicia, você pode usar a função nativa de restauração:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
+              <li>Vá em <strong>Configurações > Sistema > Recuperação</strong>.</li>
+              <li>Em "Restaurar este PC", clique em <strong>Restaurar o PC</strong>.</li>
+              <li>Escolha "Remover tudo" para uma formatação limpa.</li>
+              <li>Escolha "Download da Nuvem" para baixar uma versão nova e atualizada do Windows.</li>
+              <li>Siga as instruções e aguarde o processo terminar.</li>
+            </ol>
+            <p class="text-gray-400 text-sm mt-2">Este método é mais fácil, mas menos eficaz se o Windows já estiver com vírus profundos. Para casos graves, use o método do Pen Drive.</p>
           `
         }
       ]
     },
     {
-      title: "Troubleshooting e Solução de Problemas",
+      title: "Pós-Instalação: O Que Instalar Primeiro?",
       content: `
-        <p class="mb-4">Soluções para problemas comuns durante a formatação e reinstalação do Windows.</p>
+        <p class="mb-4">O Windows está instalado. E agora? Aqui está a ordem correta para deixar a máquina voando:</p>
       `,
       subsections: [
         {
-          subtitle: "Erros Frequentes e Soluções",
+          subtitle: "1. Drivers",
           content: `
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: Computador não inicia pela mídia de instalação</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Verifique configurações de boot na BIOS/UEFI</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Acesse a BIOS/UEFI durante a inicialização (normalmente com F2, F12 ou Del)</li>
-                <li>Altere a ordem de boot para iniciar pelo dispositivo USB/CD/DVD primeiro</li>
-                <li>Desative o Secure Boot temporariamente se necessário</li>
-              </ul>
-            </div>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
-              <h4 class="text-white font-semibold mb-2">Problema: Drivers não funcionam corretamente após reinstalação</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Instale os drivers corretos para seu hardware</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Visite o site do fabricante do seu computador/hardware</li>
-                <li>Baixe os drivers específicos para seu modelo e versão do Windows</li>
-                <li>Instale os drivers de chipset, vídeo e rede primeiro</li>
-              </ul>
-            </div>
+            <p class="text-gray-300 mb-2">Não instale jogos ou programas ainda. O Windows Update vai instalar a maioria dos drivers automaticamente. Vá em Configurações > Windows Update e clique em "Verificar se há atualizações". Repita até não ter mais nada.</p>
           `
         },
         {
-          subtitle: "Prevenção de Problemas Futuros",
+          subtitle: "2. Ninite (O Segredo dos Técnicos)",
           content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Crie uma imagem de sistema após uma instalação limpa e configuração completa</li>
-              <li>Mantenha uma lista de softwares essenciais para reinstalação rápida</li>
-              <li>Configure backups automáticos regulares após a reinstalação</li>
-              <li>Documente as configurações personalizadas para fácil reimplementação</li>
-            </ul>
+            <p class="text-gray-300 mb-2">Não perca tempo baixando Chrome, WinRAR, Zoom um por um. Acesse <strong>Ninite.com</strong>, marque tudo que você usa e baixe um único instalador que instala tudo sozinho, sem "next, next" e sem barras de ferramentas indesejadas.</p>
           `
         }
       ]
@@ -175,18 +192,13 @@ export default function FormatacaoWindowsGuide() {
   const relatedGuides = [
     {
       href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      title: "Segurança Digital Pós-Formatação",
+      description: "O que instalar para não pegar vírus novamente."
     },
     {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
-    },
-    {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      description: "Ajustes finos para deixar o Windows recém-instalado ainda mais rápido."
     }
   ];
 
@@ -195,10 +207,12 @@ export default function FormatacaoWindowsGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="45 minutos"
+      estimatedTime="90 minutos"
       difficultyLevel="Intermediário"
       contentSections={contentSections}
       relatedGuides={relatedGuides}
+      summaryTable={summaryTable}
+      faqItems={faqItems}
     />
   );
 }

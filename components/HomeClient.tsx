@@ -228,8 +228,9 @@ export default function HomeClient() {
             <Header />
             <section
                 className="
+          relative
           w-full
-          min-h-[calc(100dvh-80px)]
+          min-h-[100dvh]
           flex
           flex-col
           lg:flex-row
@@ -241,11 +242,10 @@ export default function HomeClient() {
           lg:px-16
           xl:px-24
           bg-[#1E1E22]
-          relative
           overflow-hidden
         "
                 aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
-                style={{ paddingTop: 'var(--header-height, 80px)' }}
+                style={{ paddingTop: 'var(--header-height)' }}
             >
                 <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full py-8 lg:py-0">
                     <div className="flex flex-1 order-1 items-center justify-center relative w-full h-[280px] xs:h-[320px] sm:h-[400px] lg:h-[600px]">

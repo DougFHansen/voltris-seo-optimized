@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Definitivo: Como Testar e Diagnosticar sua Internet";
-const description = "Sua internet cai ou trava? Aprenda a diferenciar problemas do Wi-Fi vs Operadora. Metodologia correta de teste de velocidade, ping e jitter.";
-const keywords = ["teste velocidade","speedtest","ping alto jogos","perda de pacote","internet instavel"];
+const title = "Como Testar a Velocidade da sua Internet Corretamente";
+const description = "Speedtest, Fast.com ou nPerf? Saiba como medir sua banda larga real, entender Ping, Jitter e perda de pacotes.";
+const keywords = ["teste velocidade","speedtest","ping alto","jitter","internet lenta"];
 
 export const metadata: Metadata = createGuideMetadata(title, description, keywords);
 
@@ -11,75 +11,25 @@ export default function GuidePage() {
   const contentSections = [
 
     {
-      title: "1. A Regra de Ouro do Teste",
+      title: "O Erro Comum: Testar no Wi-Fi",
       content: `
-        <div class="bg-[#171313] p-5 rounded-lg border border-red-500/40 mb-6">
-            <h3 class="text-red-400 font-bold text-lg mb-2">⛔ Pare de testar no Wi-Fi!</h3>
-            <p class="text-gray-300 text-sm leading-relaxed">
-              Testes feitos no celular ou via Wi-Fi <strong>não têm validade técnica</strong> para reclamar com a operadora. O Wi-Fi sofre interferência de paredes, espelhos e vizinhos.
-              <br><br>
-              <strong>O Método Correto:</strong> Conecte um notebook ou PC diretamente ao roteador usando um cabo de rede (RJ-45) padrão CAT5e ou superior. Feche todos os programas (Steam, Torrent, Netflix) e apenas então faça o teste.
-            </p>
+        <p class="mb-4 text-gray-300">Você contratou 500 Mega mas só chega 100 no celular? A culpa provavelmente é do Wi-Fi, não da operadora.</p>
+          <div class="bg-red-900/20 p-4 border border-red-500/30 rounded">
+            <p class="text-gray-300 font-bold">Para valer legalmente e tecnicamente, o teste deve ser feito via CABO DE REDE (Ethernet) Cat5e ou superior, conectado diretamente ao roteador da operadora.</p>
           </div>
       `,
       subsections: []
     },
 
     {
-      title: "2. Onde Testar? (Sites Confiáveis)",
+      title: "Entendendo os Números",
       content: `
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div class="bg-[#1E1E22] p-4 rounded text-center">
-              <h4 class="text-white font-bold mb-1">Speedtest.net</h4>
-              <p class="text-xs text-gray-400">O padrão da indústria. Ótimo porque permite escolher o servidor de teste.</p>
-            </div>
-            <div class="bg-[#1E1E22] p-4 rounded text-center">
-              <h4 class="text-white font-bold mb-1">nPerf</h4>
-              <p class="text-xs text-gray-400">Mais completo. Testa navegação e streaming (Youtube) além da velocidade bruta.</p>
-            </div>
-            <div class="bg-[#1E1E22] p-4 rounded text-center">
-              <h4 class="text-white font-bold mb-1">Fast.com</h4>
-              <p class="text-xs text-gray-400">Da Netflix. Mede a conexão com os servidores da Netflix. Bom para saber se o streaming vai travar.</p>
-            </div>
-          </div>
-      `,
-      subsections: []
-    },
-
-    {
-      title: "3. Interpretando os Resultados (Glossário)",
-      content: `
-        <div class="space-y-4">
-            <div class="flex items-start gap-3">
-              <div class="bg-blue-900/30 p-2 rounded text-blue-400 font-mono">Download</div>
-              <div>
-                <strong class="text-gray-200">Velocidade de Baixar</strong>
-                <p class="text-gray-400 text-sm">Importante para carregar páginas, ver vídeos e baixar jogos. É o número que a operadora vende (ex: 500 Mega).</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="bg-purple-900/30 p-2 rounded text-purple-400 font-mono">Upload</div>
-              <div>
-                <strong class="text-gray-200">Velocidade de Enviar</strong>
-                <p class="text-gray-400 text-sm">Crítico para trabalhar em casa (Teams/Zoom), fazer lives ou backup na nuvem (Google Drive). Geralmente é 50% do download.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="bg-green-900/30 p-2 rounded text-green-400 font-mono">Ping</div>
-              <div>
-                <strong class="text-gray-200">Latência (Tempo de Resposta)</strong>
-                <p class="text-gray-400 text-sm">O tempo que o dado leva para ir e voltar. Essencial para JOGOS ONLINE.
-                <br> <span class="text-green-500">0-30ms:</span> Perfeito. <span class="text-yellow-500">30-80ms:</span> Aceitável. <span class="text-red-500">100ms+:</span> Lag perceptível.</p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <div class="bg-red-900/30 p-2 rounded text-red-400 font-mono">Jitter</div>
-              <div>
-                <strong class="text-gray-200">Estabilidade</strong>
-                <p class="text-gray-400 text-sm">É a variação do Ping. Se o ping oscila muito, você tem lags intermitentes (teletransporte em jogos). O ideal é jitter próximo de zero.</p>
-              </div>
-            </div>
-          </div>
+        <ul class="space-y-3 text-gray-300">
+            <li><strong>Download:</strong> Velocidade para baixar arquivos e carregar vídeos. É o número que a operadora vende.</li>
+            <li><strong>Upload:</strong> Importante para chamadas de vídeo, backup na nuvem e streaming (Lives). Geralmente é 50% do download na fibra.</li>
+            <li><strong>Ping (Latência):</strong> O tempo de resposta. Crucial para jogos online. Abaixo de 20ms é ótimo. Acima de 100ms causa 'lag'.</li>
+            <li><strong>Jitter:</strong> A variação do Ping. Se o ping pula de 20 para 100 e volta, o Jitter é alto (o que é péssimo para VoIP e Jogos).</li>
+          </ul>
       `,
       subsections: []
     }
@@ -87,19 +37,19 @@ export default function GuidePage() {
 
   const relatedGuides = [
     {
+      href: "/guias/otimizacao-performance",
+      title: "Otimização de Performance",
+      description: "Dicas para deixar seu PC mais rápido."
+    },
+    {
       href: "/guias/rede-domestica",
       title: "Redes Domésticas",
       description: "Melhore sua conexão WiFi."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Deixe seu PC mais rápido."
-    },
-    {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteção contra ameaças."
+      href: "/guias/manutencao-preventiva",
+      title: "Manutenção Preventiva",
+      description: "Cuidados essenciais com o hardware."
     }
   ];
 
@@ -108,7 +58,7 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="15 min"
+      estimatedTime="10-15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
       relatedGuides={relatedGuides}
