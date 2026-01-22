@@ -11,7 +11,6 @@ export default function robots(): MetadataRoute.Robots {
           '/restricted-area-admin/',
           '/api/',
           '/auth/',
-          '/_next/',
           '/admin/',
           '/private/',
           '*.json',
@@ -29,20 +28,8 @@ export default function robots(): MetadataRoute.Robots {
           '/private/',
         ],
       },
-      {
-        userAgent: 'Bingbot',
-        allow: '/',
-        disallow: [
-          '/dashboard/',
-          '/restricted-area-admin/',
-          '/api/',
-          '/auth/',
-          '/admin/',
-          '/private/',
-        ],
-      },
     ],
     sitemap: 'https://voltris.com.br/sitemap.xml',
     host: 'https://voltris.com.br',
   }
-} 
+}

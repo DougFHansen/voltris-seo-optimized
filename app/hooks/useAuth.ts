@@ -31,7 +31,7 @@ export function useAuth() {
     loading: true,
     error: null
   });
-  
+
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const retryCountRef = useRef(0);
   const maxRetries = 3;
@@ -85,7 +85,12 @@ export function useAuth() {
       clearAuthTimeout();
 
       if (error) {
-        throw error;
+        // Ignorar erro de sessão ausente, tratar como não autenticado
+        if (error.name === 'AuthSessionMissingError' || error.message?.includes('Auth session missing')) {
+          // Não lançar erro, user será undefined e cairá no bloco else do if(user)
+        } else {
+          throw error;
+        }
       }
 
       if (user) {
@@ -102,7 +107,6 @@ export function useAuth() {
         try {
           const result = await Promise.race([profilePromise, adminTimeoutPromise]);
           profile = result.data;
-          console.log('Perfil carregado:', profile); // <-- log para depuração
         } catch (profileError) {
           console.warn('Erro ao buscar perfil, assumindo vazio:', profileError);
           profile = null;
@@ -140,10 +144,30 @@ export function useAuth() {
         });
         retryCountRef.current = 0;
       }
-    } catch (error) {
+    } catch (error: any) {
       clearAuthTimeout();
-      console.error('Erro no useAuth:', error);
-      // Se todas as tentativas falharam, usar cache antigo se disponível
+
+      // Silenciar erro de sessão faltando
+      if (error?.name === 'AuthSessionMissingError' || error?.message?.includes('Auth session missing')) {
+        // Usuário não autenticado
+        authCache = {
+          user: null,
+          isAdmin: false,
+          profile: null,
+          timestamp: Date.now()
+        };
+        setAuthState({
+          user: null,
+          isAdmin: false,
+          profile: null,
+          loading: false,
+          error: null
+        });
+        retryCountRef.current = 0;
+        return;
+      }
+
+      console.error('Erro no useAuth:', error); // Se todas as tentativas falharam, usar cache antigo se disponível
       if (authCache) {
         setAuthState({
           user: authCache.user,
@@ -183,10 +207,10 @@ export function useAuth() {
         console.error('Erro ao fazer logout:', error);
         return { success: false, error };
       }
-      
+
       // Limpar cache
       authCache = null;
-      
+
       setAuthState({
         user: null,
         isAdmin: false,
@@ -194,7 +218,7 @@ export function useAuth() {
         loading: false,
         error: null
       });
-      
+
       return { success: true };
     } catch (error) {
       console.error('Erro ao fazer logout:', error);

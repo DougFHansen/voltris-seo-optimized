@@ -61,6 +61,12 @@ export default function OtimizacaoPerformanceGuide() {
              </ul>
           </div>
         </div>
+        <div class="bg-gray-800/50 p-4 rounded-lg border border-purple-500/30 mb-6">
+            <h4 class="text-purple-400 font-bold mb-2 text-sm uppercase tracking-wider">Definição Técnica: Otimização de Sistema</h4>
+            <p class="text-gray-300 text-sm">
+                Processo de remoção de gargalos de software (bloatware, serviços desnecessários, arquivos temporários) para restaurar a eficiência original do hardware. Diferente do Overclock, não força os componentes além do limite especificado pelo fabricante.
+            </p>
+        </div>
         <p class="mb-4">Não vamos usar programas mágicos. Vamos usar técnicas manuais que técnicos de TI cobram caro para fazer. Siga o passo a passo.</p>
       `,
       subsections: []
