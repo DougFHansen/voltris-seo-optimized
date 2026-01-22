@@ -173,12 +173,12 @@ export default function ServicosClient() {
     };
 
     return (
-        <>
+        <div className="relative w-full overflow-x-hidden">
             <Header />
-            <div className="min-h-screen bg-gradient-to-br from-[#0A0A0F] via-[#121218] to-[#0A0A0F] overflow-x-hidden">
+            <div className="min-h-screen bg-gradient-to-br from-[#0A0A0F] via-[#121218] to-[#0A0A0F]">
                 {/* Hero Section */}
                 <AnimatedSection>
-                    <section className="relative pt-32 pb-20 px-4 overflow-hidden">
+                    <section className="relative pt-32 pb-20 px-4">
                         <TechFloatingElements />
 
                         <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -306,40 +306,6 @@ export default function ServicosClient() {
                     </section>
                 </AnimatedSection>
 
-                {/* FAQ Section (Simplificado) */}
-                <section className="mt-24 max-w-4xl mx-auto px-4">
-                    <h2 className="text-3xl font-bold text-white mb-12 text-center">Perguntas Frequentes</h2>
-                    <div className="space-y-4">
-                        <details className="group bg-[#1E1E22] p-6 rounded-xl border border-white/5 cursor-pointer open:border-[#8B31FF]/30 transition-all">
-                            <summary className="flex items-center justify-between font-bold text-white text-lg list-none">
-                                O atendimento é realmente seguro?
-                                <span className="transform group-open:rotate-180 transition-transform">▼</span>
-                            </summary>
-                            <p className="mt-4 text-gray-400 leading-relaxed">
-                                Sim! Utilizamos softwares de acesso remoto líderes de mercado com criptografia de ponta a ponta. Você acompanha tudo o que é feito na sua tela em tempo real e pode interromper o acesso a qualquer momento.
-                            </p>
-                        </details>
-                        <details className="group bg-[#1E1E22] p-6 rounded-xl border border-white/5 cursor-pointer open:border-[#8B31FF]/30 transition-all">
-                            <summary className="flex items-center justify-between font-bold text-white text-lg list-none">
-                                E se o problema não for resolvido?
-                                <span className="transform group-open:rotate-180 transition-transform">▼</span>
-                            </summary>
-                            <p className="mt-4 text-gray-400 leading-relaxed">
-                                Nossa política é clara: se não resolvermos, você não paga (exceto taxa de diagnóstico quando aplicável). Mas temos uma taxa de sucesso de 99% em nossos atendimentos.
-                            </p>
-                        </details>
-                        <details className="group bg-[#1E1E22] p-6 rounded-xl border border-white/5 cursor-pointer open:border-[#8B31FF]/30 transition-all">
-                            <summary className="flex items-center justify-between font-bold text-white text-lg list-none">
-                                Quais formas de pagamento aceitas?
-                                <span className="transform group-open:rotate-180 transition-transform">▼</span>
-                            </summary>
-                            <p className="mt-4 text-gray-400 leading-relaxed">
-                                Aceitamos PIX (com desconto), Cartão de Crédito em até 12x e Boleto Bancário. O pagamento é processado de forma segura através da nossa plataforma.
-                            </p>
-                        </details>
-                    </div>
-                </section>
-
                 {/* FAQ Section */}
                 <AnimatedSection>
                     <section className="max-w-4xl mx-auto px-4 pb-20">
@@ -375,9 +341,8 @@ export default function ServicosClient() {
                         </div>
                     </section>
                 </AnimatedSection>
-
             </div>
             <Footer />
-        </>
+        </div>
     );
 }
