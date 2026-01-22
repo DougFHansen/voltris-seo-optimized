@@ -112,7 +112,7 @@ export default function Header() {
               <FiLoader className="w-4 h-4 animate-spin" />
             ) : (
               <i
-                className={`fas fa-user text-lg sm:text-xl ${typeof window !== 'undefined' && window.innerWidth < 640 ? 'mobile-login-gradient' : 'text-white'}`}
+                className="fas fa-user text-lg sm:text-xl mobile-login-gradient text-white"
               ></i>
             )}
             <span className="hidden sm:inline font-extrabold tracking-tight bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-lg select-none" style={{ letterSpacing: '0.04em' }}>Login</span>

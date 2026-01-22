@@ -106,31 +106,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://securepubads.g.doubleclick.net" crossOrigin="anonymous" />
         <meta name="google-adsense-account" content="ca-pub-9217408182316735" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        <link rel="preload" as="font" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2" type="font/woff2" crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          as="style"
-          crossOrigin="anonymous"
-        />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
-          media="print"
-          // @ts-ignore
-          onLoad="this.media='all'"
         />
-        <noscript>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-            crossOrigin="anonymous"
-            referrerPolicy="no-referrer"
-          />
-        </noscript>
         {/* Google Fonts - Optimized Loading */}
         <link
           rel="preload"
