@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { createClient } from '@supabase/supabase-js';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import {
     FiMonitor,
     FiSettings,
@@ -16,10 +16,9 @@ import {
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer } from "lucide-react";
 import AnimatedSection from '@/components/AnimatedSection';
 import { FaWhatsapp } from 'react-icons/fa';
-import { ShieldCheckIcon, CloudArrowUpIcon, CogIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
-import { loadFull } from 'tsparticles';
-
 import { motion } from 'framer-motion';
+import TechFloatingElements from '@/components/TechFloatingElements';
+
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -191,9 +190,7 @@ export default function HomeClient() {
         } catch (e) { }
     }, []);
 
-    const particlesInit = useCallback(async (engine: any) => {
-        await loadFull(engine);
-    }, []);
+
 
     if (minimized) {
         return (
@@ -226,11 +223,16 @@ export default function HomeClient() {
     return (
         <>
             <Header />
-            <section
-                className="
+            <div className="min-h-screen bg-[#0A0A0F] overflow-x-hidden w-full relative">
+                {/* Grid Overlay Global */}
+                <div className="fixed inset-0 pointer-events-none z-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]"></div>
+
+                <section
+                    className="
           relative
           w-full
-          min-h-[100dvh]
+          h-screen
+          min-h-[850px]
           flex
           flex-col
           lg:flex-row
@@ -241,50 +243,18 @@ export default function HomeClient() {
           md:px-12
           lg:px-16
           xl:px-24
-          bg-[#1E1E22]
+          bg-[#0A0A0F]
           overflow-hidden
         "
-                aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
-                style={{ paddingTop: 'var(--header-height)' }}
-            >
-                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full py-8 lg:py-0">
-                    <div className="flex flex-1 order-1 items-center justify-center relative w-full h-[280px] xs:h-[320px] sm:h-[400px] lg:h-[600px]">
-                        <div className="flex flex-col gap-4 sm:gap-6 md:gap-10 items-center justify-center w-full z-10 scale-[0.6] xs:scale-[0.7] sm:scale-90 lg:scale-100 transition-transform duration-300">
-                            <div className="flex flex-row gap-4 sm:gap-8 md:gap-10 w-full justify-center animate-horizontal-move-left">
-                                <motion.div
-                                    className="bg-gradient-to-br from-[#00A6FF] via-[#8B31FF] to-[#31A8FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                                    animate={{ rotate: [0, 10, -10, 0], y: [0, -10, 0, 10, 0] }}
-                                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                                >
-                                    <ComputerDesktopIcon className="w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white drop-shadow-[0_0_16px_#00A6FF99]" aria-label="Ícone computador 3D" />
-                                </motion.div>
-                                <motion.div
-                                    className="bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#00A6FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                                    animate={{ scale: [1, 1.12, 1, 0.95, 1], rotate: [0, 8, -8, 0] }}
-                                    transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                                >
-                                    <ShieldCheckIcon className="w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 text-white drop-shadow-[0_0_12px_#8B31FF99]" aria-label="Ícone escudo de segurança 3D" />
-                                </motion.div>
-                            </div>
-                            <div className="flex flex-row gap-4 sm:gap-8 md:gap-10 w-full justify-center animate-horizontal-move-right">
-                                <motion.div
-                                    className="bg-gradient-to-br from-[#31A8FF] via-[#00A6FF] to-[#8B31FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                                    animate={{ y: [0, 12, -12, 0], scale: [1, 1.08, 1, 0.92, 1] }}
-                                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-                                >
-                                    <CloudArrowUpIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99]" aria-label="Ícone nuvem 3D" />
-                                </motion.div>
-                                <motion.div
-                                    className="bg-gradient-to-br from-[#00A6FF] via-[#31A8FF] to-[#8B31FF] p-3 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl flex items-center justify-center"
-                                    animate={{ rotate: [0, -12, 12, 0], y: [0, 8, 0, -8, 0] }}
-                                    transition={{ duration: 7.5, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-                                >
-                                    <CogIcon className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-white drop-shadow-[0_0_10px_#31A8FF99]" aria-label="Ícone engrenagem 3D" />
-                                </motion.div>
-                            </div>
-                        </div>
-                        <div className="absolute -z-10 w-40 h-40 sm:w-56 sm:h-56 md:w-[380px] md:h-[380px] rounded-full bg-gradient-to-br from-[#00A6FF]/30 via-[#8B31FF]/20 to-[#31A8FF]/10 blur-2xl sm:blur-3xl opacity-60 sm:opacity-70 animate-pulse-slow" />
+                    aria-label="Banner principal de Suporte Técnico Remoto VOLTRIS"
+                    style={{ paddingTop: 'var(--header-height)' }}
+                >
+                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12 h-full py-8 lg:py-0">
+                        <TechFloatingElements />
                     </div>
+                    <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] animate-pulse"></div>
+                    <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+
 
                     <div className="flex-1 flex flex-col order-2 items-center lg:items-start justify-center text-center lg:text-left gap-4 sm:gap-6 z-20">
                         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-2 drop-shadow-lg font-sans max-w-2xl mx-auto lg:mx-0 break-words">
@@ -334,75 +304,29 @@ export default function HomeClient() {
                             <li className="flex items-center gap-1.5 text-white/90 text-xs sm:text-sm bg-white/5 px-3 py-1 rounded-full"><span className="inline-block w-1.5 h-1.5 rounded-full bg-[#FF00A0] shadow-[0_0_6px_#FF00A0]"></span>Otimização</li>
                         </ul>
                     </div>
-                </div>
-            </section>
+                </section >
 
-            <AnimatedSection direction="up" delay={0.2}>
-                <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 flex flex-col items-center" id="about">
-                    <div className="w-full flex justify-center mb-6 xs:mb-8 sm:mb-16">
-                        <div className="text-center">
-                            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] mb-3 xs:mb-4 sm:mb-6 relative inline-block">
-                                SOBRE NÓS
-                                <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]"></div>
-                            </h2>
-                            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
-                                Conheça nossa história e compromisso com a excelência em suporte técnico
-                            </p>
-                        </div>
-                    </div>
-                    <div className="flex flex-col md:flex-row items-center bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 border border-[#FF4B6B]/10 gap-3 xs:gap-4 sm:gap-6 md:gap-8 p-3 xs:p-4 sm:p-6 md:p-8 rounded-lg max-w-7xl mx-auto w-full relative overflow-hidden">
-                        <div className="absolute top-0 left-1/4 w-48 xs:w-72 h-48 xs:h-72 bg-[#FF4B6B] opacity-20 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
-                        <div className="absolute bottom-0 right-1/4 w-48 xs:w-72 h-48 xs:h-72 bg-[#8B31FF] opacity-20 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
-                        <div className="absolute bottom-0 left-1/3 w-48 xs:w-72 h-48 xs:h-72 bg-[#31A8FF] opacity-20 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
-                        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none z-0"></div>
-
-                        <div className="relative z-10 w-full md:flex-1 flex justify-center perspective hidden md:flex order-2 md:order-1">
-                            <div className="relative w-full max-w-[500px] group transition-transform duration-700 ease-out hover:rotate-y-8 preserve-3d">
-                                <div className="relative overflow-hidden rounded-[10px] shadow-2xl w-full h-full">
-                                    <Image
-                                        src="/about-img.webp"
-                                        alt="About Us"
-                                        className="w-full h-full object-cover transition-transform duration-700 ease-out"
-                                        width={500}
-                                        height={750}
-                                        priority
-                                        fetchPriority="high"
-                                        sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
-                                    />
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out"></div>
-                                        <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform translate-x-full group-hover:-translate-x-full transition-transform duration-1500 ease-in-out"></div>
-                                    </div>
-                                    <div className="absolute inset-0 rounded-[10px] shadow-[inset_0_0_30px_rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                                    <div className="absolute inset-0 p-4">
-                                        <div className="absolute top-0 left-0 w-16 h-16">
-                                            <div className="w-full h-full border-l-2 border-t-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-top-left"></div>
-                                        </div>
-                                        <div className="absolute top-0 right-0 w-16 h-16">
-                                            <div className="w-full h-full border-r-2 border-t-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-top-right"></div>
-                                        </div>
-                                        <div className="absolute bottom-0 left-0 w-16 h-16">
-                                            <div className="w-full h-full border-l-2 border-b-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-bottom-left"></div>
-                                        </div>
-                                        <div className="absolute bottom-0 right-0 w-16 h-16">
-                                            <div className="w-full h-full border-r-2 border-b-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-bottom-right"></div>
-                                        </div>
-                                    </div>
-                                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[10px]"></div>
-                                </div>
-                                <div className="absolute -bottom-10 inset-x-0 h-20 bg-black/20 blur-xl rounded-full transform scale-90 translate-z-50 transition-all duration-700 group-hover:translate-z-70 opacity-50"></div>
+                <AnimatedSection direction="up" delay={0.2}>
+                    <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 flex flex-col items-center" id="about">
+                        <div className="w-full flex justify-center mb-6 xs:mb-8 sm:mb-16">
+                            <div className="text-center">
+                                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] mb-3 xs:mb-4 sm:mb-6 relative inline-block">
+                                    SOBRE NÓS
+                                    <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]"></div>
+                                </h2>
+                                <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
+                                    Conheça nossa história e compromisso com a excelência em suporte técnico
+                                </p>
                             </div>
                         </div>
+                        <div className="flex flex-col md:flex-row items-center bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 border border-[#FF4B6B]/10 gap-3 xs:gap-4 sm:gap-6 md:gap-8 p-3 xs:p-4 sm:p-6 md:p-8 rounded-lg max-w-7xl mx-auto w-full relative overflow-hidden">
+                            <div className="absolute top-0 left-1/4 w-48 xs:w-72 h-48 xs:h-72 bg-[#FF4B6B] opacity-20 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+                            <div className="absolute bottom-0 right-1/4 w-48 xs:w-72 h-48 xs:h-72 bg-[#8B31FF] opacity-20 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+                            <div className="absolute bottom-0 left-1/3 w-48 xs:w-72 h-48 xs:h-72 bg-[#31A8FF] opacity-20 rounded-full filter blur-[100px] pointer-events-none z-0"></div>
+                            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none z-0"></div>
 
-                        <div className="relative z-10 w-full md:flex-1 p-4 sm:p-6 md:p-8 flex flex-col items-center md:items-start justify-center order-1 md:order-2">
-                            <div className="w-full text-center mb-6 sm:mb-8">
-                                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] mb-4 sm:mb-6 whitespace-nowrap">
-                                    NOSSO DIFERENCIAL
-                                </h3>
-                            </div>
-
-                            <div className="md:hidden w-full mb-6 sm:mb-8 flex items-center justify-center">
-                                <div className="relative w-[90vw] max-w-[1000px] group transition-transform duration-700 ease-out hover:rotate-y-8 preserve-3d">
+                            <div className="relative z-10 w-full md:flex-1 flex justify-center perspective hidden md:flex order-2 md:order-1">
+                                <div className="relative w-full max-w-[500px] group transition-transform duration-700 ease-out hover:rotate-y-8 preserve-3d">
                                     <div className="relative overflow-hidden rounded-[10px] shadow-2xl w-full h-full">
                                         <Image
                                             src="/about-img.webp"
@@ -412,6 +336,7 @@ export default function HomeClient() {
                                             height={750}
                                             priority
                                             fetchPriority="high"
+                                            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 500px"
                                         />
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out"></div>
@@ -438,303 +363,349 @@ export default function HomeClient() {
                                 </div>
                             </div>
 
-                            <div className="hidden md:block">
-                                <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
-                                    Somos especialistas em suporte técnico remoto e técnico de informática online, oferecendo soluções rápidas e eficientes para todo o Brasil. Nossa equipe altamente qualificada está preparada para resolver problemas de formatação, otimização, manutenção de computador e correção de erros Windows sem que você precise sair de casa.
-                                </p>
-                                <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
-                                    Com atendimento personalizado e tecnologia de ponta, garantimos a segurança dos seus dados e a qualidade do serviço. Seja para formatação completa, remoção de vírus, instalação de programas, suporte ao Windows, otimização de PC ou criação de sites profissionais, estamos prontos para atender suas necessidades com agilidade e profissionalismo.
-                                </p>
-                            </div>
-                            <div className="md:hidden">
-                                <p className="text-sm xs:text-base sm:text-lg text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
-                                    Somos especialistas em suporte técnico remoto e técnico de informática online, oferecendo soluções rápidas e eficientes para todo o Brasil.
-                                </p>
-                                {showMoreText && (
-                                    <p className="text-sm xs:text-base sm:text-lg text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
+                            <div className="relative z-10 w-full md:flex-1 p-4 sm:p-6 md:p-8 flex flex-col items-center md:items-start justify-center order-1 md:order-2">
+                                <div className="w-full text-center mb-6 sm:mb-8">
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] mb-4 sm:mb-6 whitespace-nowrap">
+                                        NOSSO DIFERENCIAL
+                                    </h3>
+                                </div>
+
+                                <div className="md:hidden w-full mb-6 sm:mb-8 flex items-center justify-center">
+                                    <div className="relative w-[90vw] max-w-[1000px] group transition-transform duration-700 ease-out hover:rotate-y-8 preserve-3d">
+                                        <div className="relative overflow-hidden rounded-[10px] shadow-2xl w-full h-full">
+                                            <Image
+                                                src="/about-img.webp"
+                                                alt="About Us"
+                                                className="w-full h-full object-cover transition-transform duration-700 ease-out"
+                                                width={500}
+                                                height={750}
+                                                priority
+                                                fetchPriority="high"
+                                            />
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out"></div>
+                                                <div className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-white/30 to-transparent transform translate-x-full group-hover:-translate-x-full transition-transform duration-1500 ease-in-out"></div>
+                                            </div>
+                                            <div className="absolute inset-0 rounded-[10px] shadow-[inset_0_0_30px_rgba(0,0,0,0.7)] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                                            <div className="absolute inset-0 p-4">
+                                                <div className="absolute top-0 left-0 w-16 h-16">
+                                                    <div className="w-full h-full border-l-2 border-t-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-top-left"></div>
+                                                </div>
+                                                <div className="absolute top-0 right-0 w-16 h-16">
+                                                    <div className="w-full h-full border-r-2 border-t-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-top-right"></div>
+                                                </div>
+                                                <div className="absolute bottom-0 left-0 w-16 h-16">
+                                                    <div className="w-full h-full border-l-2 border-b-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-bottom-left"></div>
+                                                </div>
+                                                <div className="absolute bottom-0 right-0 w-16 h-16">
+                                                    <div className="w-full h-full border-r-2 border-b-2 border-white/40 transform scale-0 group-hover:scale-100 transition-transform duration-500 origin-bottom-right"></div>
+                                                </div>
+                                            </div>
+                                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-[10px]"></div>
+                                        </div>
+                                        <div className="absolute -bottom-10 inset-x-0 h-20 bg-black/20 blur-xl rounded-full transform scale-90 translate-z-50 transition-all duration-700 group-hover:translate-z-70 opacity-50"></div>
+                                    </div>
+                                </div>
+
+                                <div className="hidden md:block">
+                                    <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
+                                        Somos especialistas em suporte técnico remoto e técnico de informática online, oferecendo soluções rápidas e eficientes para todo o Brasil. Nossa equipe altamente qualificada está preparada para resolver problemas de formatação, otimização, manutenção de computador e correção de erros Windows sem que você precise sair de casa.
+                                    </p>
+                                    <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
                                         Com atendimento personalizado e tecnologia de ponta, garantimos a segurança dos seus dados e a qualidade do serviço. Seja para formatação completa, remoção de vírus, instalação de programas, suporte ao Windows, otimização de PC ou criação de sites profissionais, estamos prontos para atender suas necessidades com agilidade e profissionalismo.
                                     </p>
-                                )}
-                                <div className="w-full flex justify-center mt-3 xs:mt-4">
-                                    <button
-                                        onClick={() => setShowMoreText(!showMoreText)}
-                                        className="text-xs xs:text-sm sm:text-base text-[#31A8FF] hover:text-[#31A8FF]/80 transition-colors duration-300 min-h-[44px] px-2"
-                                    >
-                                        {showMoreText ? 'Mostrar Menos' : 'Leia Mais'}
-                                    </button>
                                 </div>
-                            </div>
-                            <div className="mt-4 xs:mt-6 sm:mt-8 w-full flex flex-col items-center gap-4 xs:gap-6 sm:gap-8">
-                                <a href="/about" className="group relative inline-flex items-center justify-center px-4 xs:px-6 sm:px-8 py-2 sm:py-3 font-bold text-white transition-all duration-300 ease-in-out hidden md:inline-flex min-h-[44px]">
-                                    <span className="absolute inset-0 w-full h-full bg-white rounded-lg"></span>
-                                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-lg transition-transform duration-300 group-hover:scale-105"></span>
-                                    <span className="relative flex items-center gap-1 xs:gap-2 text-xs xs:text-sm sm:text-base">
-                                        SAIBA MAIS
-                                        <svg className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <div className="flex items-center justify-center gap-2 xs:gap-4 sm:gap-8">
-                                    <FiMonitor size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#FF4B6B] hover:scale-110 transition-transform duration-300" />
-                                    <FiSettings size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#8B31FF] hover:scale-110 transition-transform duration-300" />
-                                    <FiClock size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#31A8FF] hover:scale-110 transition-transform duration-300" />
-                                    <FiBarChart2 size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#FF4B6B] hover:scale-110 transition-transform duration-300" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.2}>
-                <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden bg-gradient-to-br from-[#1c1c1e]/40 to-[#2a2a2e]/40">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 md:gap-8">
-                            <div className="text-center">
-                                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text mb-1 xs:mb-2">
-                                    5000+
-                                </div>
-                                <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
-                                    Clientes Atendidos
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text mb-1 xs:mb-2">
-                                    7.9
-                                </div>
-                                <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
-                                    Avaliação Média
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text mb-1 xs:mb-2">
-                                    Imediato
-                                </div>
-                                <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
-                                    Tempo de Resposta
-                                </div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text mb-1 xs:mb-2">
-                                    100%
-                                </div>
-                                <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
-                                    Atendimento Online
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </AnimatedSection>
-
-            <AnimatedSection direction="up" delay={0.3}>
-                <section className="py-6 xs:py-8 sm:py-12 md:py-16 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden" id="services">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="w-full flex justify-center mb-6 xs:mb-8 sm:mb-16">
-                            <div className="text-center">
-                                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] mb-3 xs:mb-4 sm:mb-6 relative inline-block">
-                                    SERVIÇOS DE SUPORTE TÉCNICO REMOTO
-                                    <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]"></div>
-                                </h2>
-                                <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
-                                    Conheça todos os serviços remotos que oferecemos: formatação, otimização, remoção de vírus, instalação de programas, suporte Windows e criação de sites profissionais.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                            {services.map((service) => {
-                                let buttonHref = service.redirect;
-                                if (service.buttonText === "Contratar Serviço") {
-                                    buttonHref = `/servicos?abrir=${service.id}`;
-                                }
-                                return (
-                                    <div
-                                        key={service.id}
-                                        className="group relative bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 backdrop-blur-sm p-4 sm:p-6 md:p-8 rounded-2xl border border-[#FF4B6B]/10 flex flex-col justify-between h-full transition-all duration-500 hover:border-[#FF4B6B]/30 hover:shadow-[0_0_30px_rgba(139,49,255,0.1)] overflow-hidden"
-                                    >
-                                        <div className="relative z-10 flex flex-col items-center justify-center mb-4 sm:mb-6">
-                                            <div className="mb-3 sm:mb-4">
-                                                <span className="inline-block transition-transform duration-300 group-hover:scale-110 group-hover:drop-shadow-lg">
-                                                    {renderIcon(service.iconType)}
-                                                </span>
-                                            </div>
-                                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 text-center">{service.title}</h3>
-                                            <div className="flex items-baseline justify-center mb-2">
-                                                <span className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">
-                                                    {service.price}
-                                                </span>
-                                            </div>
-                                            <p className="text-sm sm:text-base text-gray-400 text-center mb-4">{service.description}</p>
-                                        </div>
-                                        <Link
-                                            href={buttonHref}
-                                            className="inline-flex items-center px-4 sm:px-6 py-2 rounded-lg bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-semibold hover:shadow-[0_0_20px_rgba(139,49,255,0.3)] transition-all duration-300 ease-out hover:scale-105 w-full justify-center gap-2 mt-auto relative overflow-hidden"
+                                <div className="md:hidden">
+                                    <p className="text-sm xs:text-base sm:text-lg text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
+                                        Somos especialistas em suporte técnico remoto e técnico de informática online, oferecendo soluções rápidas e eficientes para todo o Brasil.
+                                    </p>
+                                    {showMoreText && (
+                                        <p className="text-sm xs:text-base sm:text-lg text-[#F8FAFC] py-2 sm:py-3 leading-[1.6]">
+                                            Com atendimento personalizado e tecnologia de ponta, garantimos a segurança dos seus dados e a qualidade do serviço. Seja para formatação completa, remoção de vírus, instalação de programas, suporte ao Windows, otimização de PC ou criação de sites profissionais, estamos prontos para atender suas necessidades com agilidade e profissionalismo.
+                                        </p>
+                                    )}
+                                    <div className="w-full flex justify-center mt-3 xs:mt-4">
+                                        <button
+                                            onClick={() => setShowMoreText(!showMoreText)}
+                                            className="text-xs xs:text-sm sm:text-base text-[#31A8FF] hover:text-[#31A8FF]/80 transition-colors duration-300 min-h-[44px] px-2"
                                         >
-                                            <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
-                                                {service.buttonText}
-                                                <svg className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                                                </svg>
-                                            </span>
-                                        </Link>
+                                            {showMoreText ? 'Mostrar Menos' : 'Leia Mais'}
+                                        </button>
                                     </div>
-                                );
-                            })}
+                                </div>
+                                <div className="mt-4 xs:mt-6 sm:mt-8 w-full flex flex-col items-center gap-4 xs:gap-6 sm:gap-8">
+                                    <a href="/about" className="group relative inline-flex items-center justify-center px-4 xs:px-6 sm:px-8 py-2 sm:py-3 font-bold text-white transition-all duration-300 ease-in-out hidden md:inline-flex min-h-[44px]">
+                                        <span className="absolute inset-0 w-full h-full bg-white rounded-lg"></span>
+                                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-lg transition-transform duration-300 group-hover:scale-105"></span>
+                                        <span className="relative flex items-center gap-1 xs:gap-2 text-xs xs:text-sm sm:text-base">
+                                            SAIBA MAIS
+                                            <svg className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <div className="flex items-center justify-center gap-2 xs:gap-4 sm:gap-8">
+                                        <FiMonitor size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#FF4B6B] hover:scale-110 transition-transform duration-300" />
+                                        <FiSettings size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#8B31FF] hover:scale-110 transition-transform duration-300" />
+                                        <FiClock size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#31A8FF] hover:scale-110 transition-transform duration-300" />
+                                        <FiBarChart2 size={16} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 text-[#FF4B6B] hover:scale-110 transition-transform duration-300" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </AnimatedSection>
+
+                <AnimatedSection direction="up" delay={0.2}>
+                    <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden bg-gradient-to-br from-[#1c1c1e]/40 to-[#2a2a2e]/40">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 md:gap-8">
+                                <div className="text-center">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                        5000+
+                                    </div>
+                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                        Clientes Atendidos
+                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                        7.9
+                                    </div>
+                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                        Avaliação Média
+                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                        Imediato
+                                    </div>
+                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                        Tempo de Resposta
+                                    </div>
+                                </div>
+                                <div className="text-center">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                        100%
+                                    </div>
+                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                        Atendimento Online
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </AnimatedSection>
+
+                <AnimatedSection direction="up" delay={0.3}>
+                    <section className="py-6 xs:py-8 sm:py-12 md:py-16 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden" id="services">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="w-full flex justify-center mb-6 xs:mb-8 sm:mb-16">
+                                <div className="text-center">
+                                    <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] mb-3 xs:mb-4 sm:mb-6 relative inline-block">
+                                        SERVIÇOS DE SUPORTE TÉCNICO REMOTO
+                                        <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]"></div>
+                                    </h2>
+                                    <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
+                                        Conheça todos os serviços remotos que oferecemos: formatação, otimização, remoção de vírus, instalação de programas, suporte Windows e criação de sites profissionais.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {services.map((service) => {
+                                    let buttonHref = service.redirect;
+                                    if (service.buttonText === "Contratar Serviço") {
+                                        buttonHref = `/servicos?abrir=${service.id}`;
+                                    }
+                                    return (
+                                        <div
+                                            key={service.id}
+                                            className="group relative bg-[#1c1c1e]/40 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-white/5 flex flex-col justify-between h-full transition-all duration-500 hover:border-purple-500/30 hover:bg-[#1c1c1e]/60 overflow-hidden"
+                                        >
+                                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                            <div className="relative z-10 flex flex-col items-center justify-center mb-4 sm:mb-6">
+                                                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#1c1c1e] to-black border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                                                    <span className="inline-block">
+                                                        {renderIcon(service.iconType)}
+                                                    </span>
+                                                </div>
+                                                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-colors">{service.title}</h3>
+                                                <div className="flex items-baseline justify-center mb-2">
+                                                    <span className="text-lg sm:text-xl font-medium text-gray-300">
+                                                        {service.price}
+                                                    </span>
+                                                </div>
+                                                <p className="text-sm sm:text-base text-gray-400 text-center mb-4 leading-relaxed">{service.description}</p>
+                                            </div>
+                                            <Link
+                                                href={buttonHref}
+                                                className="inline-flex items-center px-4 sm:px-6 py-4 rounded-xl bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-bold hover:shadow-[0_0_20px_rgba(139,49,255,0.3)] transition-all duration-300 ease-out hover:scale-[1.02] w-full justify-center gap-2 mt-auto relative overflow-hidden shadow-lg"
+                                            >
+                                                <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
+                                                    {service.buttonText}
+                                                    <svg className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                                    </svg>
+                                                </span>
+                                            </Link>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </section>
+                </AnimatedSection>
+
+                <section id="optimizer" className="py-6 xs:py-8 sm:py-12 relative overflow-hidden bg-[#171313] px-2 xs:px-4 sm:px-6 md:px-8">
+                    <div className="absolute top-0 left-1/4 w-32 xs:w-48 sm:w-72 md:w-96 h-32 xs:h-48 sm:h-72 md:h-96 bg-[#FF4B6B] opacity-10 rounded-full filter blur-[100px]" />
+                    <div className="absolute bottom-0 right-1/4 w-32 xs:w-48 sm:w-72 md:w-96 h-32 xs:h-48 sm:h-72 md:h-96 bg-[#8B31FF] opacity-10 rounded-full filter blur-[100px]" />
+
+                    <div className="container mx-auto px-2 xs:px-4 sm:px-6 md:px-8 relative">
+                        <div className="text-center mb-6 xs:mb-8 sm:mb-16">
+                            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-3 xs:mb-4 sm:mb-6 relative inline-block">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]">
+                                    VOLTRIS OPTIMIZER
+                                </span>
+                                <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]"></div>
+                            </h2>
+                            <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
+                                Revolucione sua experiência gaming com nossa tecnologia exclusiva de otimização
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 xs:gap-6 sm:gap-8 md:gap-12 items-center">
+                            <div className="space-y-3 xs:space-y-4 sm:space-y-6 md:space-y-8">
+                                <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-3 xs:p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10 hover:border-[#8B31FF]/30 transition-all duration-300 relative overflow-hidden">
+                                    <div className="relative z-10 flex items-start gap-2 xs:gap-3 sm:gap-4">
+                                        <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-lg p-1 xs:p-2 sm:p-3">
+                                            <i className="fas fa-rocket text-white text-lg xs:text-xl sm:text-2xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">Boost de Performance</h3>
+                                            <p className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">Aumento significativo de FPS e redução de latência com otimizações exclusivas</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-3 xs:p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10 hover:border-[#8B31FF]/30 transition-all duration-300 relative overflow-hidden">
+                                    <div className="relative z-10 flex items-start gap-2 xs:gap-3 sm:gap-4">
+                                        <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-lg p-1 xs:p-2 sm:p-3">
+                                            <i className="fas fa-microchip text-white text-lg xs:text-xl sm:text-2xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">Otimização Inteligente</h3>
+                                            <p className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">Sistema adaptativo que ajusta configurações em tempo real para máxima performance</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-3 xs:p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10 hover:border-[#8B31FF]/30 transition-all duration-300 relative overflow-hidden">
+                                    <div className="relative z-10 flex items-start gap-2 xs:gap-3 sm:gap-4">
+                                        <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-lg p-1 xs:p-2 sm:p-3">
+                                            <i className="fas fa-shield-alt text-white text-lg xs:text-xl sm:text-2xl"></i>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">Estabilidade Garantida</h3>
+                                            <p className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">Elimine travamentos, stutters e outros problemas que atrapalham sua gameplay</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="relative">
+                                <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-3 xs:p-4 sm:p-6 md:p-8 rounded-2xl border border-[#FF4B6B]/10">
+                                    <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-white mb-3 xs:mb-4 sm:mb-6">Recursos Exclusivos</h3>
+                                    <ul className="space-y-2 xs:space-y-3 sm:space-y-4">
+                                        {[
+                                            "Otimização automática de memória RAM",
+                                            "Priorização inteligente de processos",
+                                            "Redução de latência de rede",
+                                            "Perfis otimizados por jogo",
+                                            "Monitoramento em tempo real",
+                                            "Atualizações automáticas"
+                                        ].map((feature, index) => (
+                                            <li key={index} className="flex items-center text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                                <i className="fas fa-check text-[#FF4B6B] mr-1 xs:mr-2 sm:mr-3"></i>
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="mt-6 sm:mt-8">
+                                        <div className="flex items-center justify-between mb-2">
+                                            <span className="text-sm sm:text-base text-white font-medium">Ganho médio de FPS</span>
+                                            <span className="text-sm sm:text-base text-[#FF4B6B] font-bold">+40%</span>
+                                        </div>
+                                        <div className="w-full bg-[#2a2a2e] rounded-full h-2">
+                                            <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] h-2 rounded-full" style={{ width: '75%' }}></div>
+                                        </div>
+                                    </div>
+
+                                    <Link
+                                        href="/gamers"
+                                        className="mt-4 xs:mt-6 sm:mt-8 w-full inline-flex items-center justify-center gap-1 xs:gap-2 px-3 xs:px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,49,255,0.5)] hover:scale-[1.02] text-xs xs:text-sm sm:text-base min-h-[44px]"
+                                    >
+                                        Saiba Mais
+                                        <i className="fas fa-arrow-right"></i>
+                                    </Link>
+                                </div>
+
+                                <div className="absolute -top-2 xs:-top-4 -right-2 xs:-right-4 w-16 xs:w-24 h-16 xs:h-24 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-full opacity-20 blur-2xl"></div>
+                                <div className="absolute -bottom-2 xs:-bottom-4 -left-2 xs:-left-4 w-20 xs:w-32 h-20 xs:h-32 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] rounded-full opacity-20 blur-2xl"></div>
+                            </div>
                         </div>
                     </div>
                 </section>
-            </AnimatedSection>
 
-            <section id="optimizer" className="py-6 xs:py-8 sm:py-12 relative overflow-hidden bg-[#171313] px-2 xs:px-4 sm:px-6 md:px-8">
-                <div className="absolute top-0 left-1/4 w-32 xs:w-48 sm:w-72 md:w-96 h-32 xs:h-48 sm:h-72 md:h-96 bg-[#FF4B6B] opacity-10 rounded-full filter blur-[100px]" />
-                <div className="absolute bottom-0 right-1/4 w-32 xs:w-48 sm:w-72 md:w-96 h-32 xs:h-48 sm:h-72 md:h-96 bg-[#8B31FF] opacity-10 rounded-full filter blur-[100px]" />
-
-                <div className="container mx-auto px-2 xs:px-4 sm:px-6 md:px-8 relative">
-                    <div className="text-center mb-6 xs:mb-8 sm:mb-16">
-                        <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold mb-3 xs:mb-4 sm:mb-6 relative inline-block">
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]">
-                                VOLTRIS OPTIMIZER
-                            </span>
-                            <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]"></div>
-                        </h2>
-                        <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
-                            Revolucione sua experiência gaming com nossa tecnologia exclusiva de otimização
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 xs:gap-6 sm:gap-8 md:gap-12 items-center">
-                        <div className="space-y-3 xs:space-y-4 sm:space-y-6 md:space-y-8">
-                            <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-3 xs:p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10 hover:border-[#8B31FF]/30 transition-all duration-300 relative overflow-hidden">
-                                <div className="relative z-10 flex items-start gap-2 xs:gap-3 sm:gap-4">
-                                    <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-lg p-1 xs:p-2 sm:p-3">
-                                        <i className="fas fa-rocket text-white text-lg xs:text-xl sm:text-2xl"></i>
-                                    </div>
-                                    <div>
-                                        <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">Boost de Performance</h3>
-                                        <p className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">Aumento significativo de FPS e redução de latência com otimizações exclusivas</p>
-                                    </div>
+                <AnimatedSection direction="up" delay={0.2}>
+                    <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="w-full flex justify-center mb-6 xs:mb-8 sm:mb-16">
+                                <div className="text-center">
+                                    <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] mb-3 xs:mb-4 sm:mb-6 relative inline-block">
+                                        O QUE NOSSOS CLIENTES DIZEM
+                                        <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]"></div>
+                                    </h2>
+                                    <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
+                                        Depoimentos reais de clientes satisfeitos com nossos serviços de suporte técnico remoto
+                                    </p>
                                 </div>
                             </div>
-
-                            <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-3 xs:p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10 hover:border-[#8B31FF]/30 transition-all duration-300 relative overflow-hidden">
-                                <div className="relative z-10 flex items-start gap-2 xs:gap-3 sm:gap-4">
-                                    <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-lg p-1 xs:p-2 sm:p-3">
-                                        <i className="fas fa-microchip text-white text-lg xs:text-xl sm:text-2xl"></i>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8">
+                                <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10">
+                                    <div className="flex items-center mb-3">
+                                        <div className="text-[#FF4B6B] text-lg sm:text-xl">★★★★★</div>
                                     </div>
-                                    <div>
-                                        <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">Otimização Inteligente</h3>
-                                        <p className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">Sistema adaptativo que ajusta configurações em tempo real para máxima performance</p>
-                                    </div>
+                                    <p className="text-sm sm:text-base text-[#e2e8f0] mb-3">
+                                        "Excelente serviço de formatação remota! Meu computador estava muito lento e agora está funcionando perfeitamente. Recomendo muito!"
+                                    </p>
+                                    <div className="text-sm text-[#8B31FF] font-semibold">- Carlos Silva, São Paulo</div>
                                 </div>
-                            </div>
-
-                            <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-3 xs:p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10 hover:border-[#8B31FF]/30 transition-all duration-300 relative overflow-hidden">
-                                <div className="relative z-10 flex items-start gap-2 xs:gap-3 sm:gap-4">
-                                    <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-lg p-1 xs:p-2 sm:p-3">
-                                        <i className="fas fa-shield-alt text-white text-lg xs:text-xl sm:text-2xl"></i>
+                                <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-4 sm:p-6 rounded-xl border border-[#8B31FF]/10">
+                                    <div className="flex items-center mb-3">
+                                        <div className="text-[#8B31FF] text-lg sm:text-xl">★★★★★</div>
                                     </div>
-                                    <div>
-                                        <h3 className="text-base xs:text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">Estabilidade Garantida</h3>
-                                        <p className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">Elimine travamentos, stutters e outros problemas que atrapalham sua gameplay</p>
+                                    <p className="text-sm sm:text-base text-[#e2e8f0] mb-3">
+                                        "Remoção de vírus rápida e eficiente. O técnico foi muito profissional e resolveu o problema em poucos minutos."
+                                    </p>
+                                    <div className="text-sm text-[#31A8FF] font-semibold">- Ana Costa, Rio de Janeiro</div>
+                                </div>
+                                <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-4 sm:p-6 rounded-xl border border-[#31A8FF]/10">
+                                    <div className="flex items-center mb-3">
+                                        <div className="text-[#31A8FF] text-lg sm:text-xl">★★★★★</div>
                                     </div>
+                                    <p className="text-sm sm:text-base text-[#e2e8f0] mb-3">
+                                        "Site criado com excelente qualidade e design moderno. Superou todas as minhas expectativas!"
+                                    </p>
+                                    <div className="text-sm text-[#FF4B6B] font-semibold">- Pedro Santos, Belo Horizonte</div>
                                 </div>
                             </div>
                         </div>
+                    </section>
+                </AnimatedSection>
 
-                        <div className="relative">
-                            <div className="bg-gradient-to-br from-[#1c1c1e] to-[#2a2a2e] p-3 xs:p-4 sm:p-6 md:p-8 rounded-2xl border border-[#FF4B6B]/10">
-                                <h3 className="text-lg xs:text-xl sm:text-2xl font-bold text-white mb-3 xs:mb-4 sm:mb-6">Recursos Exclusivos</h3>
-                                <ul className="space-y-2 xs:space-y-3 sm:space-y-4">
-                                    {[
-                                        "Otimização automática de memória RAM",
-                                        "Priorização inteligente de processos",
-                                        "Redução de latência de rede",
-                                        "Perfis otimizados por jogo",
-                                        "Monitoramento em tempo real",
-                                        "Atualizações automáticas"
-                                    ].map((feature, index) => (
-                                        <li key={index} className="flex items-center text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
-                                            <i className="fas fa-check text-[#FF4B6B] mr-1 xs:mr-2 sm:mr-3"></i>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <div className="mt-6 sm:mt-8">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm sm:text-base text-white font-medium">Ganho médio de FPS</span>
-                                        <span className="text-sm sm:text-base text-[#FF4B6B] font-bold">+40%</span>
-                                    </div>
-                                    <div className="w-full bg-[#2a2a2e] rounded-full h-2">
-                                        <div className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] h-2 rounded-full" style={{ width: '75%' }}></div>
-                                    </div>
-                                </div>
-
-                                <Link
-                                    href="/gamers"
-                                    className="mt-4 xs:mt-6 sm:mt-8 w-full inline-flex items-center justify-center gap-1 xs:gap-2 px-3 xs:px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,49,255,0.5)] hover:scale-[1.02] text-xs xs:text-sm sm:text-base min-h-[44px]"
-                                >
-                                    Saiba Mais
-                                    <i className="fas fa-arrow-right"></i>
-                                </Link>
-                            </div>
-
-                            <div className="absolute -top-2 xs:-top-4 -right-2 xs:-right-4 w-16 xs:w-24 h-16 xs:h-24 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-full opacity-20 blur-2xl"></div>
-                            <div className="absolute -bottom-2 xs:-bottom-4 -left-2 xs:-left-4 w-20 xs:w-32 h-20 xs:h-32 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] rounded-full opacity-20 blur-2xl"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <AnimatedSection direction="up" delay={0.2}>
-                <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="w-full flex justify-center mb-6 xs:mb-8 sm:mb-16">
-                            <div className="text-center">
-                                <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] mb-3 xs:mb-4 sm:mb-6 relative inline-block">
-                                    O QUE NOSSOS CLIENTES DIZEM
-                                    <div className="absolute -bottom-1 xs:-bottom-2 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-12 xs:w-16 sm:w-24 h-1 bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]"></div>
-                                </h2>
-                                <p className="text-sm xs:text-base sm:text-lg md:text-xl text-[#e2e8f0] max-w-3xl mx-auto mt-3 xs:mt-4 sm:mt-8">
-                                    Depoimentos reais de clientes satisfeitos com nossos serviços de suporte técnico remoto
-                                </p>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 sm:gap-6 md:gap-8">
-                            <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-4 sm:p-6 rounded-xl border border-[#FF4B6B]/10">
-                                <div className="flex items-center mb-3">
-                                    <div className="text-[#FF4B6B] text-lg sm:text-xl">★★★★★</div>
-                                </div>
-                                <p className="text-sm sm:text-base text-[#e2e8f0] mb-3">
-                                    "Excelente serviço de formatação remota! Meu computador estava muito lento e agora está funcionando perfeitamente. Recomendo muito!"
-                                </p>
-                                <div className="text-sm text-[#8B31FF] font-semibold">- Carlos Silva, São Paulo</div>
-                            </div>
-                            <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-4 sm:p-6 rounded-xl border border-[#8B31FF]/10">
-                                <div className="flex items-center mb-3">
-                                    <div className="text-[#8B31FF] text-lg sm:text-xl">★★★★★</div>
-                                </div>
-                                <p className="text-sm sm:text-base text-[#e2e8f0] mb-3">
-                                    "Remoção de vírus rápida e eficiente. O técnico foi muito profissional e resolveu o problema em poucos minutos."
-                                </p>
-                                <div className="text-sm text-[#31A8FF] font-semibold">- Ana Costa, Rio de Janeiro</div>
-                            </div>
-                            <div className="bg-gradient-to-br from-[#1c1c1e]/60 to-[#2a2a2e]/60 p-4 sm:p-6 rounded-xl border border-[#31A8FF]/10">
-                                <div className="flex items-center mb-3">
-                                    <div className="text-[#31A8FF] text-lg sm:text-xl">★★★★★</div>
-                                </div>
-                                <p className="text-sm sm:text-base text-[#e2e8f0] mb-3">
-                                    "Site criado com excelente qualidade e design moderno. Superou todas as minhas expectativas!"
-                                </p>
-                                <div className="text-sm text-[#FF4B6B] font-semibold">- Pedro Santos, Belo Horizonte</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </AnimatedSection>
-
-            <Footer />
+                <Footer />
+            </div >
         </>
     );
 }
