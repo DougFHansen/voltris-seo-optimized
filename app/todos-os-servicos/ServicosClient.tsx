@@ -17,7 +17,13 @@ import {
     Package,
     Printer
 } from "lucide-react";
-import { FiShield } from 'react-icons/fi';
+import {
+    FiShield, FiCheck, FiMonitor, FiSettings, FiClock, FiBarChart2,
+    FiGlobe, FiTrendingUp, FiUsers, FiPhone, FiMail, FiMapPin,
+    FiCreditCard, FiCloud, FiCheckCircle
+} from 'react-icons/fi';
+import AnimatedSection from '@/components/AnimatedSection';
+import TechFloatingElements from '@/components/TechFloatingElements';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -169,109 +175,136 @@ export default function ServicosClient() {
     return (
         <>
             <Header />
-            <main className="bg-[#171313] min-h-screen pt-24 pb-12">
-                {/* Banner Principal */}
-                <section className="relative py-20 px-4 overflow-hidden mb-16">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10 z-0" />
-                    <div className="max-w-7xl mx-auto text-center relative z-10">
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text"
-                        >
-                            Nossos Serviços
-                        </motion.h1>
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="text-gray-300 text-xl max-w-3xl mx-auto leading-relaxed"
-                        >
-                            Soluções profissionais em tecnologia com atendimento remoto especializado.
-                            <br />
-                            Rápido, seguro e sem sair de casa.
-                        </motion.p>
-                    </div>
-                </section>
+            <div className="min-h-screen bg-gradient-to-br from-[#0A0A0F] via-[#121218] to-[#0A0A0F] overflow-x-hidden">
+                {/* Hero Section */}
+                <AnimatedSection>
+                    <section className="relative pt-32 pb-20 px-4 overflow-hidden">
+                        <TechFloatingElements />
 
-                {/* Lista de Serviços */}
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {services.map((service, index) => (
+                        <div className="max-w-7xl mx-auto text-center relative z-10">
                             <motion.div
-                                key={service.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group relative bg-[#1E1E22] rounded-2xl p-8 border border-white/5 hover:border-[#8B31FF]/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,49,255,0.15)] flex flex-col"
+                                transition={{ duration: 0.8 }}
+                                className="mb-12"
                             >
-                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-t-2xl" />
-
-                                <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                                    {renderIcon(service.iconType)}
+                                <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md rounded-full px-4 py-2 mb-8 border border-white/10 hover:border-purple-500/50 transition-colors">
+                                    <span className="relative flex h-2 w-2">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                    </span>
+                                    <span className="text-gray-300 text-sm font-medium">Serviços Profissionais</span>
                                 </div>
 
-                                <h3 className="text-2xl font-bold text-white mb-4 text-center group-hover:text-[#31A8FF] transition-colors">{service.title}</h3>
+                                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
+                                    Soluções de TI <br />
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 animate-gradient-x">
+                                        Para Você e Sua Empresa
+                                    </span>
+                                </h1>
 
-                                <p className="text-gray-400 text-center mb-6 flex-grow leading-relaxed">
-                                    {service.description}
+                                <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                                    Explore nosso catálogo completo de serviços de tecnologia.
+                                    Do suporte básico à infraestrutura corporativa complexa.
                                 </p>
+                            </motion.div>
+                        </div>
+                    </section>
+                </AnimatedSection>
 
-                                <div className="space-y-3 mb-8">
-                                    {service.features.map((feature, idx) => (
-                                        <div key={idx} className="flex items-center text-gray-300 text-sm">
-                                            <div className="w-1.5 h-1.5 rounded-full bg-[#8B31FF] mr-3" />
-                                            {feature}
-                                        </div>
-                                    ))}
-                                </div>
-
-                                <div className="mt-auto">
-                                    <div className="text-center mb-6">
-                                        <span className="text-3xl font-bold text-white">{service.price}</span>
+                {/* Lista de Serviços */}
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pb-20">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {services.map((service, index) => (
+                            <AnimatedSection key={service.id} delay={index * 0.1}>
+                                <motion.div
+                                    whileHover={{ y: -5 }}
+                                    className="group relative bg-[#1E1E22]/50 backdrop-blur-sm rounded-3xl p-8 border border-white/5 hover:border-purple-500/30 transition-all duration-300 flex flex-col h-full overflow-hidden"
+                                >
+                                    {/* Gradient Border on Hover */}
+                                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500/0 via-purple-500/0 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ padding: '1px' }}>
+                                        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 animate-gradient-xy opacity-20"></div>
                                     </div>
 
-                                    <button
-                                        onClick={() => handleHireService(service.id, service.redirect === `/servicos?abrir=${service.id}` ? undefined : service.redirect)}
-                                        className="w-full py-4 rounded-xl bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white font-bold text-lg hover:shadow-[0_0_20px_rgba(139,49,255,0.4)] transition-all duration-300 transform hover:-translate-y-1"
-                                    >
-                                        {service.buttonText}
-                                    </button>
-                                </div>
-                            </motion.div>
+                                    <div className="mb-8 relative">
+                                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-800 to-black border border-gray-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                            {renderIcon(service.iconType)}
+                                        </div>
+
+                                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-colors">
+                                            {service.title}
+                                        </h3>
+
+                                        <p className="text-gray-400 leading-relaxed mb-6">
+                                            {service.description}
+                                        </p>
+                                    </div>
+
+                                    <div className="space-y-3 mb-8 flex-grow">
+                                        {service.features.map((feature, idx) => (
+                                            <div key={idx} className="flex items-center text-gray-300 text-sm group-hover:text-white transition-colors">
+                                                <FiCheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
+                                                {feature}
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    <div className="mt-auto pt-6 border-t border-gray-700/50">
+                                        <div className="flex items-end gap-2 mb-6">
+                                            <span className="text-sm text-gray-400 mb-1">A partir de</span>
+                                            <span className="text-2xl font-bold text-white">{service.price.replace('A partir de ', '')}</span>
+                                        </div>
+
+                                        <button
+                                            onClick={() => handleHireService(service.id, service.redirect === `/servicos?abrir=${service.id}` ? undefined : service.redirect)}
+                                            className="w-full py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-lg shadow-lg shadow-purple-900/20 hover:shadow-purple-900/40 hover:from-purple-500 hover:to-blue-500 transition-all duration-300 transform group-hover:scale-[1.02]"
+                                        >
+                                            {service.buttonText}
+                                        </button>
+                                    </div>
+                                </motion.div>
+                            </AnimatedSection>
                         ))}
                     </div>
                 </div>
 
                 {/* Seção de Benefícios */}
-                <section className="mt-24 max-w-7xl mx-auto px-4">
-                    <div className="bg-[#1E1E22] rounded-3xl p-8 md:p-12 border border-white/5">
-                        <h2 className="text-3xl font-bold text-white mb-12 text-center">Por que escolher a VOLTRIS?</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            <div className="text-center">
-                                <div className="w-16 h-16 bg-[#31A8FF]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <ShieldCheck className="w-8 h-8 text-[#31A8FF]" />
-                                </div>
-                                <h3 className="text-xl font-bold text-white mb-4">Segurança Total</h3>
-                                <p className="text-gray-400">Garantia de proteção dos seus dados e conexão segura durante todo o atendimento remoto.</p>
+                <AnimatedSection>
+                    <section className="mt-8 max-w-7xl mx-auto px-4 mb-24">
+                        <div className="bg-[#1E1E22]/30 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/5 relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500"></div>
+
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl font-bold text-white mb-4">Por que escolher a VOLTRIS?</h2>
+                                <p className="text-gray-400">Excelência técnica e compromisso com sua satisfação</p>
                             </div>
-                            <div className="text-center">
-                                <div className="w-16 h-16 bg-[#8B31FF]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <GaugeCircle className="w-8 h-8 text-[#8B31FF]" />
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
+                                <div className="text-center group">
+                                    <div className="w-20 h-20 bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-gray-700 group-hover:border-blue-500/50">
+                                        <ShieldCheck className="w-10 h-10 text-blue-400" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-4">Segurança Total</h3>
+                                    <p className="text-gray-400 leading-relaxed">Garantia de proteção dos seus dados e conexão segura durante todo o atendimento remoto.</p>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-4">Rapidez</h3>
-                                <p className="text-gray-400">Atendimento imediato e solução ágil para que você não perca tempo com problemas técnicos.</p>
-                            </div>
-                            <div className="text-center">
-                                <div className="w-16 h-16 bg-[#FF4B6B]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                                    <Laptop2 className="w-8 h-8 text-[#FF4B6B]" />
+                                <div className="text-center group">
+                                    <div className="w-20 h-20 bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-gray-700 group-hover:border-purple-500/50">
+                                        <GaugeCircle className="w-10 h-10 text-purple-400" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-4">Rapidez</h3>
+                                    <p className="text-gray-400 leading-relaxed">Atendimento imediato e solução ágil para que você não perca tempo com problemas técnicos.</p>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-4">Especialistas</h3>
-                                <p className="text-gray-400">Equipe técnica altamente qualificada e certificada para resolver qualquer problema.</p>
+                                <div className="text-center group">
+                                    <div className="w-20 h-20 bg-gray-800 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-gray-700 group-hover:border-green-500/50">
+                                        <Laptop2 className="w-10 h-10 text-green-400" />
+                                    </div>
+                                    <h3 className="text-xl font-bold text-white mb-4">Especialistas</h3>
+                                    <p className="text-gray-400 leading-relaxed">Equipe técnica altamente qualificada e certificada para resolver qualquer problema.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </AnimatedSection>
 
                 {/* FAQ Section (Simplificado) */}
                 <section className="mt-24 max-w-4xl mx-auto px-4">
@@ -307,7 +340,43 @@ export default function ServicosClient() {
                     </div>
                 </section>
 
-            </main>
+                {/* FAQ Section */}
+                <AnimatedSection>
+                    <section className="max-w-4xl mx-auto px-4 pb-20">
+                        <h2 className="text-3xl font-bold text-white mb-12 text-center">Perguntas Frequentes</h2>
+                        <div className="space-y-4">
+                            <details className="group bg-[#1E1E22]/50 backdrop-blur-sm p-6 rounded-2xl border border-white/5 cursor-pointer open:border-purple-500/30 transition-all duration-300 hover:bg-[#1E1E22]">
+                                <summary className="flex items-center justify-between font-bold text-white text-lg list-none">
+                                    O atendimento é realmente seguro?
+                                    <span className="transform group-open:rotate-180 transition-transform bg-white/10 rounded-full p-1"><FiCheckCircle className="w-4 h-4" /></span>
+                                </summary>
+                                <div className="mt-4 text-gray-400 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                                    Sim! Utilizamos softwares de acesso remoto líderes de mercado com criptografia de ponta a ponta. Você acompanha tudo o que é feito na sua tela em tempo real e pode interromper o acesso a qualquer momento.
+                                </div>
+                            </details>
+                            <details className="group bg-[#1E1E22]/50 backdrop-blur-sm p-6 rounded-2xl border border-white/5 cursor-pointer open:border-purple-500/30 transition-all duration-300 hover:bg-[#1E1E22]">
+                                <summary className="flex items-center justify-between font-bold text-white text-lg list-none">
+                                    E se o problema não for resolvido?
+                                    <span className="transform group-open:rotate-180 transition-transform bg-white/10 rounded-full p-1"><FiCheckCircle className="w-4 h-4" /></span>
+                                </summary>
+                                <div className="mt-4 text-gray-400 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                                    Nossa política é clara: se não resolvermos, você não paga (exceto taxa de diagnóstico quando aplicável). Mas temos uma taxa de sucesso de 99% em nossos atendimentos.
+                                </div>
+                            </details>
+                            <details className="group bg-[#1E1E22]/50 backdrop-blur-sm p-6 rounded-2xl border border-white/5 cursor-pointer open:border-purple-500/30 transition-all duration-300 hover:bg-[#1E1E22]">
+                                <summary className="flex items-center justify-between font-bold text-white text-lg list-none">
+                                    Quais formas de pagamento aceitas?
+                                    <span className="transform group-open:rotate-180 transition-transform bg-white/10 rounded-full p-1"><FiCheckCircle className="w-4 h-4" /></span>
+                                </summary>
+                                <div className="mt-4 text-gray-400 leading-relaxed pl-4 border-l-2 border-purple-500/30">
+                                    Aceitamos PIX (com desconto), Cartão de Crédito em até 12x e Boleto Bancário. O pagamento é processado de forma segura através da nossa plataforma.
+                                </div>
+                            </details>
+                        </div>
+                    </section>
+                </AnimatedSection>
+
+            </div>
             <Footer />
         </>
     );
