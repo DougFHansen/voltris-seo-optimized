@@ -1571,10 +1571,12 @@ export default function ServicesPage() {
                   </div>
                 </div>
               </div>
-
-              <CompanyInfo />
             </div>
+
+            <CompanyInfo />
+          </div>
         </main>
+
         <Footer />
         <SuccessModal isOpen={isModalOpen} onClose={handleModalClose} />
         <ReturnModal
