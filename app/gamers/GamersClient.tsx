@@ -15,9 +15,21 @@ export default function GamersClient() {
     const [activeSection, setActiveSection] = useState(0);
     const [isScrolled, setIsScrolled] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const { scrollYProgress } = useScroll();
     const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            setMousePosition({
+                x: (e.clientX / window.innerWidth - 0.5) * 20,
+                y: (e.clientY / window.innerHeight - 0.5) * 20
+            });
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
 
     // Efeito de parallax para background e navbar
     useEffect(() => {
@@ -117,63 +129,79 @@ export default function GamersClient() {
                     }}
                 />
 
-                {/* Hero Section Otimizada */}
+                {/* Hero Section Fullscreen Moderno */}
                 <AnimatedSection>
-                    <section className="relative pt-32 pb-20 px-4 min-h-[90vh] flex items-center justify-center overflow-hidden">
+                    <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
 
-                        {/* Dynamic Background */}
-                        <div className="absolute inset-0 z-0">
-                            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[120px] animate-pulse"></div>
-                            <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+                        {/* Advanced Cyberpunk Background */}
+                        <div className="absolute inset-0 z-0 bg-[#0A0A0F]">
+                            {/* Grid Overlay */}
+                            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_70%)]"></div>
+
+                            {/* Floating Orbs */}
+                            <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px] animate-pulse"></div>
+                            <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+
+                            {/* Tech Particles */}
                             <TechFloatingElements />
                         </div>
 
-                        <div className="max-w-7xl mx-auto text-center relative z-10 w-full">
+                        <div className="max-w-7xl mx-auto text-center relative z-10 w-full px-4">
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.8 }}
-                                className="mb-8"
+                                transition={{ duration: 0.8, ease: "easeOut" }}
+                                style={{
+                                    x: mousePosition.x,
+                                    y: mousePosition.y
+                                }}
+                                className="mb-8 flex flex-col items-center"
                             >
-                                <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md rounded-full px-5 py-2 mb-8 border border-white/10 hover:border-purple-500/50 transition-colors group cursor-default">
+                                <motion.div
+                                    initial={{ y: -20, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md rounded-full px-5 py-2 mb-8 border border-white/10 hover:border-purple-500/50 transition-colors group cursor-default shadow-[0_0_20px_rgba(139,49,255,0.2)]"
+                                >
                                     <span className="relative flex h-2 w-2">
                                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                         <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                                     </span>
-                                    <span className="text-gray-300 text-sm font-medium group-hover:text-white transition-colors">
-                                        Atualizado para Windows 11 e Jogos 2025
+                                    <span className="text-gray-300 text-sm font-medium group-hover:text-white transition-colors tracking-wide">
+                                        V 3.0 • DISPONÍVEL AGORA
                                     </span>
-                                </div>
+                                </motion.div>
 
-                                <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-8 leading-tight tracking-tight max-w-5xl mx-auto">
-                                    O Programa Definitivo para <br className="hidden md:block" />
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] animate-gradient-x">
-                                        Otimizar PC Gamer
+                                <h1 className="text-5xl sm:text-7xl md:text-8xl font-black text-white mb-6 leading-none tracking-tighter">
+                                    <span className="block mb-2 text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] animate-gradient-x drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">
+                                        VOLTRIS OPTIMIZER
+                                    </span>
+                                    <span className="text-4xl sm:text-5xl md:text-6xl text-white/90 font-bold tracking-tight">
+                                        ENTERPRISE EDITION
                                     </span>
                                 </h1>
 
-                                <p className="text-lg md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
-                                    Não aceite menos FPS. Otimize seu notebook ou desktop, elimine stutters e jogue como um profissional.
-                                    <span className="hidden md:inline"> A alternativa segura e eficiente aos otimizadores genéricos.</span>
+                                <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light mt-4">
+                                    A ferramenta definitiva. Aumente seu FPS, reduza lags e elimine stutters com a tecnologia proprietária de otimização de kernel.
                                 </p>
 
-                                <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-lg mx-auto">
                                     <Link
                                         href="/otimizacao-pc"
-                                        className="group relative px-8 py-4 bg-white text-black font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.3)]"
+                                        className="w-full sm:w-auto flex-1 group relative px-8 py-5 bg-white text-black font-black text-xl rounded-xl overflow-hidden transition-all hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(49,168,255,0.4)]"
                                     >
-                                        <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-0 group-hover:opacity-10 transition-opacity"></div>
-                                        <span className="relative z-10 flex items-center gap-2">
-                                            <FiZap className="w-5 h-5" />
-                                            Otimizar Meu PC Agora
+                                        <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] opacity-100 group-hover:opacity-90 transition-opacity"></div>
+                                        <span className="relative z-10 flex items-center justify-center gap-3 text-white uppercase tracking-wider">
+                                            <FiZap className="w-6 h-6 fill-white" />
+                                            Download
                                         </span>
                                     </Link>
 
                                     <Link
                                         href="/servicos"
-                                        className="px-8 py-4 bg-white/5 text-white font-medium text-lg rounded-full border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all flex items-center gap-2 backdrop-blur-sm"
+                                        className="w-full sm:w-auto flex-1 px-8 py-5 bg-black/40 text-white font-bold text-lg rounded-xl border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all flex items-center justify-center gap-2 backdrop-blur-md uppercase tracking-wide"
                                     >
-                                        Ver Todos os Serviços
+                                        Ver Recursos
                                     </Link>
                                 </div>
                             </motion.div>
