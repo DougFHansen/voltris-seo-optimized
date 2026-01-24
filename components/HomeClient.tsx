@@ -254,7 +254,7 @@ export default function HomeClient() {
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
                 </div>
 
-                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 h-full relative z-10">
+                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-8 h-full relative z-10">
 
                     {/* Left Content - Typography & CTA */}
                     {/* Using display: contents on mobile to allow reordering of children relative to the visual component */}
