@@ -277,8 +277,8 @@ export default function HomeClient() {
                             </p>
                         </div>
 
-                        {/* Buttons - Order 3 (Moved below visual on mobile) */}
-                        <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:mt-0">
+                        {/* Buttons - Order 3 (Moved below visual on mobile) - Pushed to bottom on desktop */}
+                        <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:mt-auto">
                             <a
                                 href="/todos-os-servicos"
                                 className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
