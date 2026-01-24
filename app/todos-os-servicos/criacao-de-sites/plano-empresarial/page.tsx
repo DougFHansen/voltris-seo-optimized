@@ -4,15 +4,11 @@ import { motion } from 'framer-motion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { 
-  DevicePhoneMobileIcon, 
+import {
+  DevicePhoneMobileIcon,
   DocumentTextIcon,
-  ClockIcon,
-  CursorArrowRaysIcon,
   ShoppingCartIcon,
   ChartBarIcon,
-  ServerIcon,
-  UserGroupIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
 import { createClient } from '@/utils/supabase/client';
@@ -23,54 +19,58 @@ export default function PlanoEmpresarialPage() {
   const features = [
     {
       title: 'Design Exclusivo',
-      description: 'Layout totalmente personalizado',
-      icon: <DevicePhoneMobileIcon className="w-6 h-6" />
+      description: 'Layout totalmente personalizado para sua marca.',
+      icon: <DevicePhoneMobileIcon className="w-6 h-6" />,
+      color: "text-[#FF4B6B]",
+      bg: "bg-[#FF4B6B]/10"
     },
     {
       title: 'Páginas Ilimitadas',
-      description: 'Conteúdo sem restrições',
-      icon: <DocumentTextIcon className="w-6 h-6" />
+      description: 'Conteúdo sem restrições de expansão.',
+      icon: <DocumentTextIcon className="w-6 h-6" />,
+      color: "text-[#31A8FF]",
+      bg: "bg-[#31A8FF]/10"
     },
     {
       title: 'E-commerce',
-      description: 'Loja virtual integrada',
-      icon: <ShoppingCartIcon className="w-6 h-6" />
+      description: 'Loja virtual integrada de alta conversão.',
+      icon: <ShoppingCartIcon className="w-6 h-6" />,
+      color: "text-[#8B31FF]",
+      bg: "bg-[#8B31FF]/10"
     },
     {
       title: 'Analytics Avançado',
-      description: 'Métricas e relatórios completos',
-      icon: <ChartBarIcon className="w-6 h-6" />
+      description: 'Métricas e relatórios de inteligência de dados.',
+      icon: <ChartBarIcon className="w-6 h-6" />,
+      color: "text-[#00FF94]",
+      bg: "bg-[#00FF94]/10"
     }
   ];
 
   const process = [
     {
       title: 'Consultoria Estratégica',
-      description: 'Análise profunda do seu negócio'
+      description: 'Análise profunda do seu negócio e ecossistema digital.'
     },
     {
       title: 'Planejamento Completo',
-      description: 'Definição de objetivos e KPIs'
+      description: 'Definição rigorosa de objetivos, KPIs e User Stories.'
     },
     {
-      title: 'Design Exclusivo',
-      description: 'Criação de identidade única'
+      title: 'Design System',
+      description: 'Criação de identidade visual única e escalável.'
     },
     {
       title: 'Desenvolvimento Premium',
-      description: 'Programação personalizada'
+      description: 'Arquitetura de software robusta e segura.'
     },
     {
       title: 'Otimização Avançada',
-      description: 'Performance e SEO profissional'
+      description: 'Performance extrema, SEO técnico e Segurança.'
     },
     {
-      title: 'Treinamento Completo',
-      description: 'Capacitação da sua equipe'
-    },
-    {
-      title: 'Acompanhamento',
-      description: 'Suporte prioritário 12 meses'
+      title: 'Onboarding & Suporte',
+      description: 'Capacitação da equipe e acompanhamento contínuo.'
     }
   ];
 
@@ -84,11 +84,11 @@ export default function PlanoEmpresarialPage() {
     'Suporte prioritário 12 meses',
     'Painel administrativo personalizado',
     'Treinamento completo da equipe',
-    'Integrações personalizadas',
+    'Integrações personalizadas (API)',
     'Relatórios semanais de performance',
     'Backup em tempo real',
-    'CDN para melhor performance',
-    'Monitoramento 24/7',
+    'CDN Global',
+    'Monitoramento 24/7 de Uptime',
     'Consultoria estratégica mensal'
   ];
 
@@ -117,121 +117,188 @@ export default function PlanoEmpresarialPage() {
   return (
     <>
       <Header />
-      <main className="bg-[#171313] min-h-screen pt-32">
+      <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#FF4B6B]/30">
+
+        {/* Background Effects */}
+        <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+        <div className="fixed top-0 left-0 w-[600px] h-[600px] bg-[#FF4B6B]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none z-0"></div>
+        <div className="fixed bottom-0 right-0 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none z-0"></div>
+
         {/* Hero Section */}
-        <section className="relative overflow-hidden px-4 py-16">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-[#FF4B6B]/10 to-[#8B31FF]/10"></div>
-          <div className="max-w-6xl mx-auto relative z-10">
+        <section className="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 pt-20 z-10 block">
+          <div className="max-w-6xl mx-auto text-center">
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-12"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text">
-                Plano Empresarial
-              </h1>
-              <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
-                A solução definitiva para empresas que exigem o máximo em qualidade e personalização
-              </p>
-              <div className="mt-8">
-                <span className="text-4xl font-bold text-white">R$ 3.997</span>
-                <span className="text-gray-400 ml-2">pagamento único</span>
+              <span className="w-2 h-2 rounded-full bg-[#FF4B6B] animate-pulse"></span>
+              <span className="text-xs font-bold text-[#FF4B6B] tracking-widest uppercase">Solução Corporativa</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-extrabold mb-8 text-white tracking-tight leading-tight"
+            >
+              Plano <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">Empresarial</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10"
+            >
+              A infraestrutura digital definitiva para empresas que exigem excelência, escala e personalização absoluta.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="mb-12 inline-block relative group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+              <div className="relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-[#FF4B6B]/30 p-8 rounded-3xl shadow-2xl">
+                <div className="text-sm text-slate-400 uppercase tracking-wider mb-2">Investimento Único</div>
+                <div className="flex items-baseline justify-center gap-2">
+                  <span className="text-5xl font-bold text-white">Sob Consulta</span>
+                </div>
               </div>
             </motion.div>
 
-            {/* Features Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
+            >
+              <div className="w-[1px] h-12 bg-gradient-to-b from-[#FF4B6B] to-transparent"></div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Features Grid */}
+        <section className="py-24 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {features.map((feature, index) => (
                 <motion.div
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-[#1D1919]/50 p-6 rounded-xl backdrop-blur-sm border border-[#31A8FF]/20"
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-[#0A0A0F]/50 p-8 rounded-3xl backdrop-blur-md border border-white/5 hover:border-[#FF4B6B]/30 transition-all hover:-translate-y-1"
                 >
-                  <div className="bg-gradient-to-br from-[#31A8FF]/20 to-[#FF4B6B]/20 p-3 rounded-lg inline-block mb-4">
-                    {feature.icon}
+                  <div className={`w-12 h-12 rounded-2xl ${feature.bg} flex items-center justify-center mb-6`}>
+                    <div className={feature.color}>{feature.icon}</div>
                   </div>
-                  <h3 className="text-white font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-400 text-sm">{feature.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-3">{feature.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed font-light">{feature.description}</p>
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
 
-            {/* Process Section */}
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#31A8FF] via-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text">
-                Processo de Desenvolvimento Premium
-              </h2>
-              <div className="relative">
-                <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#31A8FF] to-[#FF4B6B] rounded-full"></div>
-                <div className="space-y-12">
-                  {process.map((step, index) => (
-                    <motion.div
-                      key={step.title}
-                      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      className={`flex items-center gap-8 ${
-                        index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                      }`}
-                    >
-                      <div className="flex-1 p-6 bg-[#1D1919]/50 rounded-xl backdrop-blur-sm border border-[#31A8FF]/20">
-                        <h3 className="text-xl font-semibold text-white mb-2">{step.title}</h3>
-                        <p className="text-gray-400">{step.description}</p>
-                      </div>
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#31A8FF] to-[#FF4B6B] flex items-center justify-center text-white font-bold">
-                        {index + 1}
-                      </div>
-                      <div className="flex-1"></div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+        {/* Process Section */}
+        <section className="py-24 px-4 relative z-10 bg-[#0A0A0F]/30">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-sm font-bold tracking-[0.2em] text-[#FF4B6B] mb-4 uppercase">Excellence</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white">Processo Premium</h3>
             </div>
 
-            {/* What's Included Section */}
-            <div className="mb-16">
-              <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#31A8FF] via-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text">
-                O Que Está Incluído
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {includes.map((item, index) => (
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 h-full w-[2px] bg-gradient-to-b from-[#FF4B6B] via-[#8B31FF] to-[#FF4B6B]/10"></div>
+
+              <div className="space-y-16">
+                {process.map((step, index) => (
                   <motion.div
-                    key={item}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    key={step.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="flex items-center gap-4 p-4 bg-[#1D1919]/50 rounded-lg backdrop-blur-sm"
+                    className={`flex flex-col md:flex-row gap-8 items-start md:items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                      }`}
                   >
-                    <CheckCircleIcon className="w-6 h-6 text-[#31A8FF]" />
-                    <span className="text-gray-300">{item}</span>
+                    {/* Timeline Dot */}
+                    <div className="absolute left-[20px] md:left-1/2 md:-translate-x-1/2 w-4 h-4 rounded-full bg-[#050510] border-2 border-[#FF4B6B] mt-[26px] md:mt-0 z-10 shadow-[0_0_10px_#FF4B6B]"></div>
+
+                    {/* Content Box */}
+                    <div className="ml-12 md:ml-0 flex-1 w-full md:w-auto p-8 bg-[#0A0A0F]/80 rounded-3xl backdrop-blur-md border border-white/5 hover:border-[#FF4B6B]/20 transition-colors">
+                      <div className="text-[#FF4B6B] font-mono text-sm mb-2">0{index + 1}</div>
+                      <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                      <p className="text-slate-400 text-sm leading-relaxed">{step.description}</p>
+                    </div>
+
+                    {/* Spacer for Alternate Layout */}
+                    <div className="hidden md:block flex-1"></div>
                   </motion.div>
                 ))}
               </div>
             </div>
-
-            {/* CTA Section */}
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold mb-6 text-white">
-                Eleve Seu Negócio ao Próximo Nível
-              </h2>
-              <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
-                Tenha um site empresarial completo com todas as funcionalidades que sua empresa precisa
-              </p>
-              <Link
-                href="#"
-                onClick={e => { e.preventDefault(); handleContratarAgora(); }}
-                className="inline-block bg-gradient-to-r from-[#31A8FF] to-[#FF4B6B] text-white py-4 px-8 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105"
-              >
-                Contratar Agora
-              </Link>
-            </div>
           </div>
         </section>
+
+        {/* Included & CTA */}
+        <section className="py-24 px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+
+            <h2 className="text-3xl font-bold text-white mb-12">Infraestrutura Completa</h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16 text-left">
+              {includes.map((item, index) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="flex items-center gap-4 p-5 bg-[#0A0A0F]/50 rounded-2xl border border-white/5 hover:bg-white/[0.02]"
+                >
+                  <div className="w-8 h-8 rounded-full bg-[#FF4B6B]/10 flex items-center justify-center shrink-0">
+                    <CheckCircleIcon className="w-5 h-5 text-[#FF4B6B]" />
+                  </div>
+                  <span className="text-slate-300 font-medium">{item}</span>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10 rounded-[3rem] p-12 border border-white/10 relative overflow-hidden"
+            >
+              <div className="relative z-10">
+                <h2 className="text-4xl font-bold text-white mb-6">Eleve Seu Nível</h2>
+                <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+                  Entre em contato para uma consultoria personalizada de alto nível.
+                </p>
+                <Link
+                  href="#"
+                  onClick={e => { e.preventDefault(); handleContratarAgora(); }}
+                  className="inline-flex items-center justify-center px-12 py-5 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-white font-bold text-lg rounded-xl hover:shadow-[0_0_30px_rgba(255,75,107,0.4)] transition-all duration-300 hover:scale-105"
+                >
+                  Solicitar Proposta
+                </Link>
+              </div>
+            </motion.div>
+
+          </div>
+        </section>
+
       </main>
-      
+
       <Footer />
     </>
   );

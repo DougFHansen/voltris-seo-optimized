@@ -5,7 +5,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { RocketLaunchIcon, ShieldCheckIcon, PaintBrushIcon, CheckCircleIcon, QuestionMarkCircleIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { RocketLaunchIcon, ShieldCheckIcon, PaintBrushIcon, CheckCircleIcon, SparklesIcon, PuzzlePieceIcon, BoltIcon, CloudArrowDownIcon, CommandLineIcon } from '@heroicons/react/24/outline';
 import { createClient } from '@/utils/supabase/client';
 
 const supabase = createClient();
@@ -31,50 +31,55 @@ const programasComuns = [
   'Entre outros Programas',
 ];
 
-const benefits = [
-  {
-    title: 'Instalação Profissional',
-    description: 'Equipe especializada, instalação remota rápida e segura.',
-    icon: <RocketLaunchIcon className="w-12 h-12 text-[#FF4B6B]" />
-  },
-  {
-    title: 'Segurança Garantida',
-    description: 'Sem riscos, sem vírus, sem dor de cabeça.',
-    icon: <ShieldCheckIcon className="w-12 h-12 text-[#8B31FF]" />
-  },
-  {
-    title: 'Personalização',
-    description: 'Configuração sob medida para o seu uso.',
-    icon: <PaintBrushIcon className="w-12 h-12 text-[#31A8FF]" />
-  }
-];
-
-const faqs = [
-  {
-    question: 'Como funciona a instalação de programas?',
-    answer: 'Você escolhe o(s) programa(s) desejado(s) e um técnico realiza toda a instalação remotamente, com total segurança e acompanhamento em tempo real.'
-  },
-  {
-    question: 'Quais programas posso instalar?',
-    answer: 'Você pode instalar programas comuns como Chrome, WhatsApp, Zoom, antivírus, utilitários e muito mais.'
-  },
-  {
-    question: 'Preciso pagar por cada programa?',
-    answer: 'O valor é fixo para cada instalação, independente do programa escolhido. Consulte condições especiais para pacotes.'
-  },
-  {
-    question: 'É seguro instalar programas remotamente?',
-    answer: 'Sim! Todo o processo é feito por profissionais, com ferramentas seguras e garantia de funcionamento.'
-  },
-  {
-    question: 'Em quanto tempo posso usar o programa?',
-    answer: 'Na maioria dos casos, em menos de 1 hora após o início do atendimento você já estará usando o programa.'
-  }
-];
-
 export default function InstalacaoDeProgramasPage() {
   const [openComuns, setOpenComuns] = useState<boolean>(false);
   const router = useRouter();
+
+  const benefits = [
+    {
+      title: 'Instalação Ágil',
+      description: 'Processo realizado em tempo recorde por especialistas via acesso remoto.',
+      icon: <RocketLaunchIcon className="w-8 h-8 text-[#FF4B6B]" />,
+      bg: "bg-[#FF4B6B]/10"
+    },
+    {
+      title: 'Zero Bloatware',
+      description: 'Instalamos apenas o software original, sem barras de ferramentas ou adwares.',
+      icon: <ShieldCheckIcon className="w-8 h-8 text-[#8B31FF]" />,
+      bg: "bg-[#8B31FF]/10"
+    },
+    {
+      title: 'Configuração',
+      description: 'Ajuste fino das configurações para performance máxima no seu hardware.',
+      icon: <PaintBrushIcon className="w-8 h-8 text-[#31A8FF]" />,
+      bg: "bg-[#31A8FF]/10"
+    },
+    {
+      title: 'Versão Estável',
+      description: 'Garantimos a instalação da versão mais estável e segura disponível.',
+      icon: <CloudArrowDownIcon className="w-8 h-8 text-[#00FF94]" />,
+      bg: "bg-[#00FF94]/10"
+    }
+  ];
+
+  const faqs = [
+    {
+      question: 'Como funciona a instalação remota?',
+      answer: 'Utilizamos softwares seguros como AnyDesk ou TeamViewer. Você acompanha todo o processo na sua tela enquanto nosso técnico realiza a instalação e configuração.'
+    },
+    {
+      question: 'O valor é por programa?',
+      answer: 'Temos pacotes para instalação única ou múltiplos programas. O plano básico cobre a instalação de um pacote de softwares essenciais (Navegadores, Leitores de PDF, Comunicadores, etc).'
+    },
+    {
+      question: 'Vocês instalam software pirata?',
+      answer: 'Não. Trabalhamos exclusivamente com softwares originais, freeware (gratuitos) ou open-source. Para softwares pagos, o cliente deve possuir a licença.'
+    },
+    {
+      question: 'Qual o tempo médio de atendimento?',
+      answer: 'A maioria das instalações é concluída em menos de 30 minutos após o início do acesso remoto.'
+    }
+  ];
 
   const handleContratarAgora = async () => {
     const { data: { session } } = await supabase.auth.getSession();
@@ -95,140 +100,213 @@ export default function InstalacaoDeProgramasPage() {
   return (
     <>
       <Header />
-      <main className="bg-gradient-to-br from-[#18141c] via-[#1d1923] to-[#191a23] min-h-screen">
-        <section className="pt-32 pb-12 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10 pointer-events-none"></div>
-          <div className="max-w-4xl mx-auto text-center relative z-10">
+      <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#FF4B6B]/30">
+
+        {/* Background Effects */}
+        <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+        <div className="fixed top-0 left-1/2 w-[500px] h-[500px] bg-[#31A8FF]/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none z-0"></div>
+        <div className="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-[#8B31FF]/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none z-0"></div>
+
+        {/* Hero Section */}
+        <section className="relative min-h-[100dvh] flex flex-col items-center justify-center px-4 pt-20 z-10 block">
+
+          <div className="max-w-6xl mx-auto text-center">
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="mb-8"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text drop-shadow-lg">
-                Instalação de Programas Comuns
-              </h1>
-              <h2 className="text-xl md:text-2xl text-gray-200 font-semibold mb-2 mt-2">
-                Instale programas comuns remotamente, com segurança e agilidade.
-              </h2>
-              <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-4">
-                Instalação de programas como Google Chrome, WhatsApp, Zoom, antivírus, utilitários e muito mais. Atendimento remoto imediato!
-              </p>
-              <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF] text-white font-semibold shadow-lg animate-pulse mt-2">
-                Atendimento imediato após a compra!
-              </div>
+              <span className="w-2 h-2 rounded-full bg-[#00FF94] animate-pulse"></span>
+              <span className="text-xs font-bold text-[#00FF94] tracking-widest uppercase">Software Center</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl md:text-7xl font-extrabold mb-8 text-white tracking-tight leading-tight"
+            >
+              Instalação de <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">Softwares</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10"
+            >
+              De navegadores a suítes de edição profissional. Instalamos, configuramos e otimizamos qualquer software que você precisar.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="mb-32 inline-block relative group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+              <button
+                onClick={() => document.getElementById('lista-softwares')?.scrollIntoView({ behavior: 'smooth' })}
+                className="relative px-8 py-4 bg-[#0A0A0F] border border-white/20 hover:border-white/40 text-white font-bold rounded-xl transition-all hover:scale-105"
+              >
+                Ver Lista de Softwares
+              </button>
+            </motion.div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
+            >
+              <span className="text-[10px] uppercase tracking-[0.2em]">Scroll</span>
+              <div className="w-[1px] h-12 bg-gradient-to-b from-[#31A8FF] to-transparent"></div>
             </motion.div>
           </div>
         </section>
 
-        <section className="py-8 px-4 bg-[#1D1919]">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((benefit, idx) => (
-              <motion.div
-                key={benefit.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className="p-8 rounded-2xl bg-gradient-to-br from-[#232027] to-[#1D1919] border border-[#8B31FF]/20 shadow-xl text-center flex flex-col items-center group"
-              >
-                <div className="mb-4 transform group-hover:scale-125 transition-transform duration-300">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 drop-shadow">{benefit.title}</h3>
-                <p className="text-gray-400 text-base">{benefit.description}</p>
-              </motion.div>
-            ))}
+        {/* Benefits Section */}
+        <section className="py-24 px-4 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-[#0A0A0F]/50 p-8 rounded-3xl backdrop-blur-md border border-white/5 hover:border-white/10 transition-all hover:-translate-y-1"
+                >
+                  <div className={`w-12 h-12 rounded-2xl ${benefit.bg} flex items-center justify-center mb-6`}>
+                    {benefit.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3">{benefit.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed font-light">{benefit.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="py-12 px-4 bg-[#171313]">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-10 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">
-              Escolha o Programa para Instalar
-            </h2>
+        {/* Softwares List Section */}
+        <section id="lista-softwares" className="py-24 px-4 relative z-10 bg-[#0A0A0F]/30 backdrop-blur-sm">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-sm font-bold tracking-[0.2em] text-[#31A8FF] mb-4 uppercase">Catálogo</h2>
+              <h3 className="text-3xl md:text-5xl font-bold text-white mb-6">Programas Essenciais</h3>
+            </div>
 
-            {/* Programas Comuns */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.05 }}
-              className="mb-6 rounded-2xl border-2 border-[#31A8FF] bg-[#1D1919] shadow-2xl overflow-hidden"
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-[#0A0A0F] rounded-[2rem] border border-white/10 overflow-hidden"
             >
               <button
-                className="w-full flex justify-between items-center px-8 py-6 text-lg font-bold text-[#31A8FF] focus:outline-none hover:bg-[#232027]/80 transition-all duration-300 group"
+                className="w-full flex justify-between items-center px-8 py-6 text-lg font-bold text-white hover:bg-white/5 transition-all duration-300 group"
                 onClick={() => setOpenComuns(!openComuns)}
                 aria-expanded={openComuns}
               >
-                <span className="flex items-center gap-3">
-                  <SparklesIcon className="w-6 h-6 text-[#FF4B6B]" />
-                  Programas Comuns
+                <span className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#31A8FF]/10 flex items-center justify-center">
+                    <PuzzlePieceIcon className="w-5 h-5 text-[#31A8FF]" />
+                  </div>
+                  Expanda para ver a lista completa
                 </span>
-                <span className={`ml-4 transition-transform duration-300 ${openComuns ? 'rotate-90' : ''}`}>▶</span>
+                <span className={`w-8 h-8 rounded-full bg-white/5 flex items-center justify-center transition-transform duration-300 ${openComuns ? 'rotate-180' : ''}`}>
+                  <svg className="w-5 h-5 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </span>
               </button>
-              <AnimatePresence initial={false}>
+
+              <AnimatePresence>
                 {openComuns && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="px-8 pb-8 bg-[#232027]"
+                    className="border-t border-white/5"
                   >
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
-                      {programasComuns.map((nome) => (
-                        <li key={nome} className="flex items-center gap-2 text-gray-200 text-base">
-                          <CheckCircleIcon className="w-4 h-4 text-[#31A8FF]" /> {nome}
-                        </li>
-                      ))}
-                    </ul>
-                    <motion.button
-                      whileHover={{ scale: 1.04 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={handleContratarAgora}
-                      className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white shadow-xl hover:shadow-[0_0_40px_rgba(49,168,255,0.4)] transition-all duration-300 animate-bounce-slow"
-                    >
-                      Instalar Programas Comuns
-                      <span className="ml-2 text-base font-normal">(R$ 29,90)</span>
-                    </motion.button>
-                    <div className="text-xs text-gray-400 mt-2 text-center">Ideal para quem precisa dos programas mais usados no dia a dia!</div>
+                    <div className="px-8 py-8 bg-[#0A0A0F]">
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-4 gap-x-8 mb-10">
+                        {programasComuns.map((nome) => (
+                          <li key={nome} className="flex items-center gap-3 text-slate-300 text-sm p-3 rounded-xl hover:bg-white/5 transition-colors cursor-default">
+                            <CheckCircleIcon className="w-5 h-5 text-[#00FF94] shrink-0" />
+                            {nome}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-white/5">
+                        <div>
+                          <span className="block text-2xl font-bold text-white mb-1">R$ 49,90</span>
+                          <span className="text-sm text-slate-400">Taxa única de serviço</span>
+                        </div>
+                        <button
+                          onClick={handleContratarAgora}
+                          className="px-8 py-3 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#31A8FF]/90 transition-all shadow-lg shadow-[#31A8FF]/20"
+                        >
+                          Contratar Instalação
+                        </button>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
+              {/* Preview quando fechado (opcional) ou sempre visível se preferir a lista sempre aberta */}
             </motion.div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-10 px-4 bg-[#1D1919] border-t border-[#8B31FF]/10">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">
+        <section className="py-24 px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-16 text-white">
               Dúvidas Frequentes
-            </h3>
-            <div className="space-y-6">
-              {faqs.map((faq, idx) => (
-                <div key={faq.question} className="p-6 rounded-xl bg-gradient-to-br from-[#171313] to-[#1D1919] border border-[#8B31FF]/10 hover:border-[#FF4B6B]/30 transition-all duration-300">
-                  <h4 className="text-xl font-semibold text-white mb-2">{faq.question}</h4>
-                  <p className="text-gray-400">{faq.answer}</p>
-                </div>
+            </h2>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-6 rounded-2xl bg-[#1D1919]/50 border border-white/5 hover:border-white/10 transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-white mb-2">{faq.question}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{faq.answer}</p>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 px-4 bg-gradient-to-r from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Precisa de Ajuda com a Instalação de um Programa?</h2>
-              <p className="text-gray-300 text-lg mb-8">Fale com nossos especialistas para saber qual programa é o mais ideal para você!</p>
-              <button className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-white py-4 px-8 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105">
-                Começar Agora
-              </button>
+        {/* CTA Final */}
+        <section className="py-24 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-[3rem] overflow-hidden p-12 text-center bg-gradient-to-b from-[#1a1a2e] to-[#0A0A0F] border border-white/10">
+              <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Precisa de um software específico?</h2>
+                <p className="text-slate-400 text-lg mb-8 max-w-2xl mx-auto">
+                  Entre em contato. Nossa equipe técnica instala qualquer software compatível com Windows.
+                </p>
+                <button className="px-10 py-4 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all hover:scale-105">
+                  Falar no WhatsApp
+                </button>
+              </div>
             </div>
           </div>
         </section>
-      </main>
 
+      </main>
       <Footer />
     </>
   );

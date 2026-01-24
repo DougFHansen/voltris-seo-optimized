@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { 
+import {
   BoltIcon,
   ClockIcon,
   ShieldCheckIcon,
@@ -17,6 +17,7 @@ import {
   UsersIcon
 } from '@heroicons/react/24/outline';
 import { createClient } from '@/utils/supabase/client';
+import TechFloatingElements from '@/components/TechFloatingElements';
 
 const supabase = createClient();
 
@@ -137,285 +138,190 @@ export default function FormatacaoPage() {
   };
 
   return (
+
     <>
       <Header />
-      <main className="pt-16 sm:pt-20 bg-[#171313] min-h-screen">
+      <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30">
+
+        {/* Background Effects (Global) */}
+        <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+        <div className="fixed top-0 right-0 w-[800px] h-[800px] bg-[#31A8FF]/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow max-w-full pointer-events-none z-0"></div>
+        <div className="fixed bottom-0 left-0 w-[800px] h-[800px] bg-[#8B31FF]/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow max-w-full pointer-events-none z-0"></div>
+
         {/* Hero Section */}
-        <section className="pt-32 pb-16 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10"></div>
-          <div className="max-w-6xl mx-auto text-center relative z-10">
+        <section className="min-h-[100dvh] flex flex-col items-center justify-center relative z-10 w-full">
+          <TechFloatingElements />
+
+          <div className="container mx-auto px-4 text-center flex-grow flex flex-col items-center justify-center w-full">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-8"
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="w-full max-w-5xl"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">
-                Formatação Remota
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 hover:border-[#31A8FF]/30 transition-all cursor-default">
+                <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94] animate-pulse"></span>
+                <span className="text-xs sm:text-sm font-medium text-white tracking-wide">Serviço Premium</span>
+              </div>
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
+                Formatação <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text animate-gradient-x">Profissional</span>
               </h1>
-              <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-4">
-                Formatação remota completa do seu computador com instalação de programas essenciais. 
-                Seu PC funcionando como novo!
+
+              <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+                Restaure a performance original do seu computador com nossa formatação segura e <strong>100% remota</strong>. Backup completo incluído.
               </p>
-              <p className="text-gray-400 text-base md:text-lg max-w-3xl mx-auto">
-                A formatação de computador é um processo completo que envolve a reinstalação limpa do sistema operacional Windows, garantindo que seu computador volte a funcionar com a performance original. Realizamos este serviço de forma 100% remota, utilizando tecnologia de acesso seguro e protegido. Durante o processo, fazemos backup completo de todos os seus dados importantes, instalamos todos os drivers necessários, configuramos o sistema para máxima performance e instalamos os programas essenciais que você precisa para trabalhar ou usar o computador no dia a dia.
-              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2"
+                >
+                  <ComputerDesktopIcon className="w-5 h-5" /> Ver Planos
+                </button>
+                <a
+                  href="/contato"
+                  className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                >
+                  <UsersIcon className="w-5 h-5" /> Falar com Técnico
+                </a>
+              </div>
             </motion.div>
-            <div className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF] text-white font-semibold shadow-lg animate-pulse mt-2">
-              Backup completo dos seus dados antes da formatação!
-            </div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-slate-500 hover:text-white transition-colors"
+            onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <span className="text-xs uppercase tracking-widest">Scroll</span>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-[#31A8FF] to-transparent"></div>
+          </motion.div>
         </section>
 
         {/* Benefits Section */}
-        <section className="py-16 px-4 bg-[#1D1919]">
-          <div className="max-w-6xl mx-auto">
+        <section className="py-24 px-4 bg-[#0A0A0F] relative z-10 w-full border-t border-white/5">
+          <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {benefits.map((benefit, index) => (
-                <motion.div
+                <div
                   key={benefit.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="p-6 rounded-xl bg-gradient-to-br from-[#232027] to-[#1D1919] border border-[#8B31FF]/20 shadow-xl group transition-all duration-300"
+                  className="bg-[#121218] p-8 rounded-3xl border border-white/5 hover:border-[#31A8FF]/30 transition-all group relative overflow-hidden"
                 >
-                  <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#31A8FF]/10 rounded-full blur-[60px] -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                  <div className="mb-6 transform group-hover:scale-105 transition-transform duration-300">
                     {benefit.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">{benefit.title}</h3>
-                  <p className="text-gray-400">{benefit.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Plans Section */}
-        <section className="py-16 px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">
-              Planos de Formatação
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {formatacaoPlans.map((plan) => (
-                <div 
-                  key={plan.id} 
-                  className="group relative bg-[#1D1919]/80 backdrop-blur-sm p-8 rounded-2xl border border-[#8B31FF]/10 flex flex-col justify-between h-full transition-all duration-500 hover:border-[#FF4B6B]/30 hover:shadow-[0_0_30px_rgba(139,49,255,0.1)] overflow-hidden"
-                >
-                  {/* Efeito de brilho no hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 via-[#8B31FF]/5 to-[#31A8FF]/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
-                  {/* Efeito de partículas */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-[#FF4B6B]/10 to-transparent rounded-full blur-2xl transform -translate-x-1/2 -translate-y-1/2"></div>
-                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-[#8B31FF]/10 to-transparent rounded-full blur-2xl transform translate-x-1/2 translate-y-1/2"></div>
-                  </div>
-
-                  <div className="relative">
-                    <div className="text-center">
-                      {/* Container do ícone com efeito de brilho */}
-                      <div className="relative inline-block">
-                        <div className={`absolute inset-0 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] rounded-2xl blur-lg opacity-0 group-hover:opacity-50 transition-opacity duration-500`}></div>
-                        <div className={`relative inline-block p-4 rounded-2xl ${
-                          selectedPlan === plan.id
-                            ? 'bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-white'
-                            : 'bg-[#2a2a2e] text-gray-400 group-hover:bg-gradient-to-r group-hover:from-[#FF4B6B] group-hover:to-[#8B31FF] group-hover:text-white'
-                        } transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-3`}>
-                          {plan.icon}
-                        </div>
-                      </div>
-
-                      {/* Título com efeito de gradiente animado */}
-                      <h3 className="text-2xl font-bold text-white mb-3 mt-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#FF4B6B] group-hover:to-[#8B31FF] transition-all duration-500 relative">
-                        {plan.title}
-                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] group-hover:w-full transition-all duration-500"></span>
-                      </h3>
-
-                      {/* Preço com efeito de destaque */}
-                      <div className="flex items-baseline justify-center mb-4">
-                        <span className="text-3xl font-bold bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text relative">
-                          {plan.price}
-                          <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] opacity-50"></span>
-                        </span>
-                      </div>
-
-                      {/* Descrição com efeito de fade */}
-                      <p className="text-gray-400 text-sm mb-6 group-hover:text-gray-300 transition-colors duration-300 relative">
-                        {plan.description}
-                        <span className="absolute bottom-0 left-0 w-full h-8 bg-gradient-to-t from-[#1D1919]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
-                      </p>
-                    </div>
-
-                    {/* Lista de recursos com animação */}
-                    <div className="mb-6">
-                      <h4 className="text-lg font-semibold text-white mb-4 text-center group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#FF4B6B] group-hover:to-[#8B31FF] transition-all duration-500">
-                        Incluso:
-                      </h4>
-                      <ul className="space-y-3">
-                        {plan.features.map((feature, index) => (
-                          <li 
-                            key={index} 
-                            className="flex items-start text-gray-300 group-hover:text-gray-200 transition-colors duration-300 transform hover:translate-x-1 transition-transform"
-                          >
-                            <span className="text-[#FF4B6B] mr-2 group-hover:scale-110 transition-transform duration-300">✓</span>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Botão com efeito de gradiente animado */}
-                  <button
-                    onClick={() => router.push('/servicos?abrir=formatacao')}
-                    className="relative mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-white font-semibold rounded-xl overflow-hidden transition-all duration-500 group-hover:scale-[1.02]"
-                    style={{ marginTop: 'auto' }}
-                  >
-                    {/* Efeito de brilho no botão */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    
-                    {/* Efeito de brilho no hover */}
-                    <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-                    
-                    <span className="relative flex items-center gap-2">
-                      Contratar Plano
-                      <svg 
-                        className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path 
-                          strokeLinecap="round" 
-                          strokeLinejoin="round" 
-                          strokeWidth="2" 
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </span>
-                  </button>
+                  <h3 className="text-xl font-bold text-white mb-3">{benefit.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{benefit.description}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-16 px-4 bg-[#1D1919]">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">
-              Perguntas Frequentes
-            </h2>
-            <div className="space-y-6">
-              {faqs.map((faq, index) => (
+        {/* Plans Section */}
+        <section id="planos" className="py-24 px-4 relative z-10 w-full">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Escolha seu Plano</h2>
+              <p className="text-slate-400">Soluções flexíveis para todas as necessidades.</p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {formatacaoPlans.map((plan) => (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="p-6 rounded-xl bg-gradient-to-br from-[#171313] to-[#1D1919] border border-[#8B31FF]/10 hover:border-[#FF4B6B]/30 transition-all duration-300"
+                  key={plan.id}
+                  whileHover={{ y: -8 }}
+                  className="group relative bg-[#121218] backdrop-blur-sm p-1 rounded-3xl border border-white/5 flex flex-col h-full transition-all duration-300 hover:shadow-2xl hover:shadow-[#31A8FF]/10"
                 >
-                  <h3 className="text-xl font-semibold text-white mb-2">{faq.question}</h3>
-                  <p className="text-gray-400">{faq.answer}</p>
+                  <div className={`absolute inset-0 bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`}></div>
+                  <div className="relative h-full bg-[#121218] rounded-[22px] p-8 flex flex-col">
+
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      {plan.icon}
+                    </div>
+
+                    <h3 className="text-xl font-bold text-white mb-2">{plan.title}</h3>
+                    <div className="text-2xl font-bold text-[#31A8FF] mb-6">{plan.price}</div>
+
+                    <p className="text-slate-400 text-sm mb-8 flex-grow">
+                      {plan.description}
+                    </p>
+
+                    <button
+                      onClick={() => router.push(`/servicos?abrir=formatacao`)}
+                      className="w-full py-3 rounded-xl bg-white/5 hover:bg-white text-white hover:text-black font-semibold transition-all border border-white/10 hover:border-white"
+                    >
+                      Contratar Agora
+                    </button>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Detailed Information Section */}
-        <section className="py-16 px-4 bg-[#1D1919]">
+        {/* Detailed Info (Using modern grid) */}
+        <section className="py-24 px-4 bg-[#0A0A0F] border-t border-white/5 relative z-10 w-full">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">
-              O Que Está Incluído em Nossa Formatação?
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <div className="bg-gradient-to-br from-[#171313] to-[#1D1919] p-6 rounded-xl border border-[#8B31FF]/10">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                  <i className="fas fa-shield-alt text-[#FF4B6B] mr-3"></i>
-                  Backup Completo de Dados
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-[#121218] p-8 rounded-3xl border border-white/5 hover:border-[#8B31FF]/30 transition-all">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                  <CloudArrowUpIcon className="w-6 h-6 text-[#8B31FF]" />
+                  Backup Completo
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Antes de iniciar qualquer formatação, realizamos um backup completo e seguro de todos os seus arquivos importantes. Utilizamos armazenamento em nuvem criptografado para garantir que seus dados estejam protegidos. Fazemos backup de documentos, imagens, vídeos, favoritos do navegador, senhas salvas (com sua autorização) e configurações importantes. Este backup permanece disponível por 30 dias após a formatação, permitindo que você recupere qualquer arquivo se necessário.
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Segurança em primeiro lugar. Antes de qualquer procedimento, realizamos o backup dos seus arquivos em nuvem criptografada ou disco local seguro.
                 </p>
               </div>
-
-              <div className="bg-gradient-to-br from-[#171313] to-[#1D1919] p-6 rounded-xl border border-[#31A8FF]/10">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                  <i className="fas fa-download text-[#8B31FF] mr-3"></i>
-                  Instalação de Drivers
+              <div className="bg-[#121218] p-8 rounded-3xl border border-white/5 hover:border-[#31A8FF]/30 transition-all">
+                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                  <BoltIcon className="w-6 h-6 text-[#31A8FF]" />
+                  Drivers & Otimização
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Após a formatação, instalamos automaticamente todos os drivers necessários para seu computador funcionar perfeitamente. Isso inclui drivers de áudio, vídeo, rede, Wi-Fi, Bluetooth, impressora, scanner e todos os dispositivos conectados. Utilizamos ferramentas avançadas de detecção automática de hardware e sempre instalamos as versões mais recentes e compatíveis dos drivers, garantindo máxima estabilidade e performance.
-                </p>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#171313] to-[#1D1919] p-6 rounded-xl border border-[#FF4B6B]/10">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                  <i className="fas fa-sync-alt text-[#31A8FF] mr-3"></i>
-                  Atualização Completa do Sistema
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Instalamos todas as atualizações importantes do Windows disponíveis, garantindo que seu sistema esteja protegido contra vulnerabilidades de segurança e funcionando com as últimas correções e melhorias. O processo de atualização pode levar algum tempo dependendo da quantidade de atualizações pendentes, mas é essencial para manter seu computador seguro e estável.
-                </p>
-              </div>
-
-              <div className="bg-gradient-to-br from-[#171313] to-[#1D1919] p-6 rounded-xl border border-[#8B31FF]/10">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center">
-                  <i className="fas fa-cog text-[#FF4B6B] mr-3"></i>
-                  Otimização e Configuração
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Realizamos uma série de otimizações e configurações para garantir que seu computador tenha a melhor performance possível. Isso inclui desativação de programas desnecessários na inicialização, otimização do registro do Windows, configuração de planos de energia para máximo desempenho, e ajustes nas configurações do sistema para melhor responsividade e velocidade.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-[#171313] to-[#1D1919] p-8 rounded-2xl border border-[#8B31FF]/20">
-              <h3 className="text-2xl font-bold text-white mb-6 text-center">Por Que Formatar o Computador?</h3>
-              <div className="space-y-4 text-gray-400 leading-relaxed">
-                <p>
-                  Ao longo do tempo, o uso normal do computador pode causar acúmulo de arquivos temporários, programas desnecessários, fragmentação de disco, e até mesmo vírus ou malware que podem ser difíceis de remover completamente. Esses fatores podem fazer com que seu computador fique lento, apresente erros, trave com frequência ou tenha problemas de estabilidade.
-                </p>
-                <p>
-                  A formatação é a solução mais eficaz para resolver esses problemas. Ela remove completamente todos os arquivos e programas antigos, dando ao seu computador um "novo começo". É como reformatar um disco rígido e reconstruir tudo do zero, garantindo que você tenha um sistema limpo, rápido e livre de problemas. Após a formatação, seu computador volta a ter a velocidade e estabilidade que tinha quando era novo.
-                </p>
-                <p>
-                  Além disso, a formatação é recomendada quando você vai vender ou doar seu computador, pois garante que todas as informações pessoais sejam completamente removidas. Também é uma boa prática realizar uma formatação preventiva a cada 1-2 anos para manter o computador funcionando perfeitamente.
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Instalação dos drivers mais recentes e configuração fina do Windows para extrair o máximo de desempenho do seu hardware.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 px-4 bg-gradient-to-r from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-                Precisa Formatar seu Computador?
-              </h2>
-              <p className="text-gray-300 text-lg mb-8">
-                Fale com nossos especialistas e descubra o plano ideal para você
-              </p>
-              <button 
-                onClick={() => handleContratarAgora(formatacaoPlans[0])}
-                className="bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-white py-4 px-8 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105"
+        {/* FAQ Section */}
+        <section className="py-24 px-4 max-w-4xl mx-auto relative z-10">
+          <h2 className="text-3xl font-bold text-white text-center mb-16">Dúvidas Frequentes</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="p-6 rounded-2xl bg-[#121218] border border-white/5 hover:border-white/10 transition-all"
               >
-                Começar Agora
-              </button>
-            </motion.div>
+                <h3 className="text-lg font-bold text-white mb-2">{faq.question}</h3>
+                <p className="text-slate-400 text-sm">{faq.answer}</p>
+              </div>
+            ))}
           </div>
         </section>
+
+        {/* CTA */}
+        <section className="py-24 px-4 border-t border-white/5 relative z-10 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Seu PC Como Novo Hoje Mesmo</h2>
+            <button
+              onClick={() => handleContratarAgora(formatacaoPlans[0])}
+              className="px-10 py-5 rounded-2xl bg-white text-black font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.15)]"
+            >
+              Agendar Formatação
+            </button>
+          </div>
+        </section>
+
       </main>
-      
       <Footer />
     </>
   );
+
 } 
