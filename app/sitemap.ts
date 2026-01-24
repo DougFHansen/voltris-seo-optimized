@@ -84,5 +84,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/exterior/servicos/consultoria`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
   ];
 
-  return [...staticUrls, ...guideUrls];
+  // Local SEO Slugs
+  const localSlugs = ['sao-paulo', 'rio-de-janeiro', 'parana'];
+  const localUrls = localSlugs.map(slug => ({
+    url: `${baseUrl}/tecnico-informatica-em/${slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticUrls, ...guideUrls, ...localUrls];
 }
