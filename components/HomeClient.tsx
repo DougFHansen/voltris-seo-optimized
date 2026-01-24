@@ -15,6 +15,7 @@ import {
 } from 'react-icons/fi';
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check } from "lucide-react";
 import AnimatedSection from '@/components/AnimatedSection';
+import OptimizerMockup from '@/components/OptimizerMockup';
 import { FaWhatsapp } from 'react-icons/fa';
 import { ShieldCheckIcon, CloudArrowUpIcon, CogIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 import { loadFull } from 'tsparticles';
@@ -258,7 +259,7 @@ export default function HomeClient() {
                     {/* Left Content - Typography & CTA */}
                     {/* Using display: contents on mobile to allow reordering of children relative to the visual component */}
                     <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-4 lg:z-20">
-                        
+
                         {/* Text Content - Order 1 */}
                         <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 z-20 w-full">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
@@ -304,98 +305,7 @@ export default function HomeClient() {
                         <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[60px] rounded-full transform scale-75 animate-pulse-slow"></div>
 
                         {/* Main Glass Panel */}
-                        <motion.div
-                            className="w-full relative z-10 glass-panel rounded-2xl p-6 md:p-8 overflow-hidden transform transition-all duration-500 hover:scale-[1.01]"
-                            initial={{ opacity: 0, y: 50, rotateX: 5 }}
-                            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                            {/* Header of the fake app */}
-                            <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-                                        <Image
-                                            src="/logo.png"
-                                            alt="Voltris Logo"
-                                            width={40}
-                                            height={40}
-                                            className="w-full h-full object-contain"
-                                        />
-                                    </div>
-                                    <div>
-                                        <div className="font-extrabold text-xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Voltris Optimizer</div>
-                                        <div className="text-xs text-white/40 flex items-center gap-1">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                            Otimização Ativa
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="/voltrisoptimizer" className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-sm font-bold hover:shadow-[0_0_20px_rgba(139,49,255,0.6)] transition-all shadow-md">
-                                    Download
-                                </a>
-                            </div>
-
-                            {/* Metrics Grid */}
-                            <div className="grid grid-cols-2 gap-4 mb-6">
-                                {/* Metric 1 */}
-                                <div className="bg-white/5 rounded-xl p-4 border border-white/5 hover:bg-white/10 transition-colors">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <div className="p-2 bg-[#31A8FF]/20 rounded-lg">
-                                            <BarChart3 className="w-5 h-5 text-[#31A8FF]" />
-                                        </div>
-                                        <span className="text-xs font-bold text-[#00FF94] bg-[#00FF94]/10 px-2 py-0.5 rounded shadow-[0_0_10px_rgba(0,255,148,0.2)]">+42%</span>
-                                    </div>
-                                    <div className="text-2xl font-bold text-white mb-1">240 FPS</div>
-                                    <div className="text-xs text-white/40">Média em Jogos</div>
-                                </div>
-
-                                {/* Metric 2 */}
-                                <div className="bg-white/5 rounded-xl p-4 border border-white/5 hover:bg-white/10 transition-colors">
-                                    <div className="flex justify-between items-start mb-2">
-                                        <div className="p-2 bg-[#FF4B6B]/20 rounded-lg">
-                                            <Activity className="w-5 h-5 text-[#FF4B6B]" />
-                                        </div>
-                                        <span className="text-xs font-bold text-[#FF4B6B] bg-[#FF4B6B]/10 px-2 py-0.5 rounded animate-pulse">-15ms</span>
-                                    </div>
-                                    <div className="text-2xl font-bold text-white mb-1">12ms</div>
-                                    <div className="text-xs text-white/40">Latência de Sistema</div>
-                                </div>
-                            </div>
-
-                            {/* System Status List */}
-                            <div className="space-y-3">
-                                <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border-l-2 border-[#8B31FF]">
-                                    <div className="flex items-center gap-3">
-                                        <Cpu className="w-4 h-4 text-white/60" />
-                                        <span className="text-sm text-white/80">Otimização de Processos</span>
-                                    </div>
-                                    <span className="text-xs text-[#8B31FF] font-medium">Ativado</span>
-                                </div>
-                                <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border-l-2 border-[#31A8FF]">
-                                    <div className="flex items-center gap-3">
-                                        <MonitorSmartphone className="w-4 h-4 text-white/60" />
-                                        <span className="text-sm text-white/80">Input Lag Reduction</span>
-                                    </div>
-                                    <span className="text-xs text-[#31A8FF] font-medium">Máximo</span>
-                                </div>
-                            </div>
-
-                            {/* Decorative Graph/Line */}
-                            <div className="mt-6 pt-4 border-t border-white/5">
-                                <div className="flex items-center justify-between text-xs text-white/30 mb-2">
-                                    <span>Carga do Sistema</span>
-                                    <span>Otimizado</span>
-                                </div>
-                                <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
-                                    <motion.div
-                                        className="h-full bg-gradient-to-r from-[#8B31FF] to-[#31A8FF]"
-                                        initial={{ width: "80%" }}
-                                        animate={{ width: "40%" }}
-                                        transition={{ duration: 2, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
-                                    />
-                                </div>
-                            </div>
-                        </motion.div>
+                        <OptimizerMockup />
 
 
 
