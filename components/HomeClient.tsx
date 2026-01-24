@@ -256,22 +256,28 @@ export default function HomeClient() {
                 <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 h-full relative z-10">
 
                     {/* Left Content - Typography & CTA */}
-                    <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 z-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
-                            <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                            <span className="text-xs sm:text-sm font-medium text-white/80 tracking-wide">Novos Planos Empresariais Disponíveis</span>
+                    {/* Using display: contents on mobile to allow reordering of children relative to the visual component */}
+                    <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-4 lg:z-20">
+                        
+                        {/* Text Content - Order 1 */}
+                        <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 z-20 w-full">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
+                                <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
+                                <span className="text-xs sm:text-sm font-medium text-white/80 tracking-wide">Novos Planos Empresariais Disponíveis</span>
+                            </div>
+
+                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans">
+                                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Software de Otimização de PC</span> <br className="hidden lg:block" />
+                                <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">para Máxima Performance no Windows</span>
+                            </h1>
+
+                            <p className="text-sm sm:text-base lg:text-lg text-white/60 max-w-xl leading-relaxed font-light">
+                                Otimize computadores para jogos, trabalho e uso profissional. Mais desempenho, estabilidade e produtividade com o <strong className="text-white">Voltris Optimizer</strong>.
+                            </p>
                         </div>
 
-                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans">
-                            <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Software de Otimização de PC</span> <br className="hidden lg:block" />
-                            <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">para Máxima Performance no Windows</span>
-                        </h1>
-
-                        <p className="text-sm sm:text-base lg:text-lg text-white/60 max-w-xl leading-relaxed font-light">
-                            Otimize computadores para jogos, trabalho e uso profissional. Mais desempenho, estabilidade e produtividade com o <strong className="text-white">Voltris Optimizer</strong>.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2">
+                        {/* Buttons - Order 3 (Moved below visual on mobile) */}
+                        <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:mt-0">
                             <a
                                 href="/todos-os-servicos"
                                 className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
@@ -289,12 +295,10 @@ export default function HomeClient() {
                                 Falar com Especialista
                             </a>
                         </div>
-
-
                     </div>
 
-                    {/* Right Content - Visual Component (Dashboard Simulation) */}
-                    <div className="flex-1 w-full max-w-[600px] lg:max-w-full relative flex items-center justify-center perspective">
+                    {/* Right Content - Visual Component (Dashboard Simulation) - Order 2 on Mobile */}
+                    <div className="order-2 lg:order-none flex-1 w-full max-w-[600px] lg:max-w-full relative flex items-center justify-center perspective">
 
                         {/* Background Glow behind the card */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[60px] rounded-full transform scale-75 animate-pulse-slow"></div>
