@@ -189,6 +189,7 @@ export function GuideTemplateClient({
                             </div>
                         </div>
 
+                        <AdSenseBanner />
                         {/* Right Content (Article) */}
                         <article className="space-y-12">
                             {contentSections.map((section, sectionIndex) => (
