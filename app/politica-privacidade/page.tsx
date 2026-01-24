@@ -1,332 +1,251 @@
-"use client";
+'use client';
 
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
+import {
+  FaUserShield, FaInfoCircle, FaDatabase, FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCreditCard,
+  FaLaptop, FaNetworkWired, FaGlobe, FaDesktop, FaMemory, FaHistory, FaCogs, FaCheckCircle,
+  FaChartLine, FaShieldAlt, FaGavel, FaHandshake, FaBuilding, FaSitemap, FaCookie, FaTachometerAlt,
+  FaAd, FaCookieBite, FaEye, FaLink, FaHandPointer, FaCog, FaExternalLinkAlt, FaLock, FaUserLock,
+  FaSave, FaGraduationCap, FaExclamationTriangle, FaSyncAlt
+} from 'react-icons/fa';
 
 export default function PoliticaPrivacidade() {
   return (
     <>
       <Header />
-      <div className="pt-32 pb-20 bg-[#171313] min-h-screen">
+      <div className="pt-32 pb-20 bg-[#050510] min-h-screen relative overflow-hidden">
         {/* Background Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#FF4B6B] opacity-5 rounded-full filter blur-[100px]"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#8B31FF] opacity-5 rounded-full filter blur-[100px]"></div>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#FF4B6B]/5 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#8B31FF]/5 rounded-full blur-[120px]"></div>
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 hidden md:block"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 relative">
-          <div className="text-center mb-12">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center">
-              <i className="fas fa-user-shield text-3xl text-white"></i>
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <div className="w-24 h-24 mx-auto mb-8 rounded-3xl bg-gradient-to-br from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center shadow-[0_0_40px_rgba(139,49,255,0.3)]">
+              <FaUserShield className="text-4xl text-white" />
             </div>
-            <h1 className="text-4xl font-bold mb-4">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]">
-                Política de Privacidade
-              </span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">
+              Política de Privacidade
             </h1>
-            <p className="text-gray-400">
+            <p className="text-slate-400 font-medium bg-white/5 border border-white/10 rounded-full px-6 py-2 inline-block">
               Última atualização: {new Date().toLocaleDateString('pt-BR')}
             </p>
           </div>
 
-          <div className="prose prose-invert max-w-none">
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#FF4B6B]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-info-circle text-xl text-white"></i>
+          <div className="space-y-8">
+            {/* Seção 1 */}
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#FF4B6B]/30 transition-all duration-500 group">
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF4B6B]/10 flex items-center justify-center flex-shrink-0 text-[#FF4B6B] group-hover:scale-110 transition-transform">
+                  <FaInfoCircle className="text-2xl" />
                 </div>
-                <h2 className="text-2xl font-semibold text-white m-0">1. Introdução</h2>
+                <h2 className="text-2xl font-bold text-white m-0">1. Introdução</h2>
               </div>
-              <p className="text-gray-300 mb-0">
+              <p className="text-slate-300 leading-relaxed text-lg">
                 A Voltris está comprometida em proteger sua privacidade. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos suas informações pessoais quando você utiliza nossos serviços de suporte técnico remoto.
               </p>
             </section>
 
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#8B31FF]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-database text-xl text-white"></i>
+            {/* Seção 2 */}
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#8B31FF]/30 transition-all duration-500 group">
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#8B31FF]/10 flex items-center justify-center flex-shrink-0 text-[#8B31FF] group-hover:scale-110 transition-transform">
+                  <FaDatabase className="text-2xl" />
                 </div>
-                <h2 className="text-2xl font-semibold text-white m-0">2. Informações que Coletamos</h2>
+                <h2 className="text-2xl font-bold text-white m-0">2. Informações que Coletamos</h2>
               </div>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-medium text-white mb-3 flex items-center gap-2">
-                    <i className="fas fa-user text-[#FF4B6B]"></i>
-                    2.1 Informações Pessoais
+
+              <div className="space-y-8">
+                <div className="bg-white/[0.02] p-6 rounded-2xl border border-white/5">
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                    <FaUser className="text-[#FF4B6B]" /> 2.1 Informações Pessoais
                   </h3>
-                  <ul className="list-none pl-6 text-gray-300 space-y-2">
+                  <ul className="grid md:grid-cols-2 gap-3">
                     {[
-                      { icon: "user", text: "Nome completo" },
-                      { icon: "envelope", text: "Endereço de e-mail" },
-                      { icon: "phone", text: "Número de telefone" },
-                      { icon: "map-marker-alt", text: "Endereço físico" },
-                      { icon: "credit-card", text: "Informações de pagamento" }
+                      { icon: FaUser, text: "Nome completo" },
+                      { icon: FaEnvelope, text: "Endereço de e-mail" },
+                      { icon: FaPhone, text: "Número de telefone" },
+                      { icon: FaMapMarkerAlt, text: "Endereço físico" },
+                      { icon: FaCreditCard, text: "Informações de pagamento" }
                     ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <i className={`fas fa-${item.icon} text-[#8B31FF] w-5`}></i>
-                        {item.text}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-medium text-white mb-3 flex items-center gap-2">
-                    <i className="fas fa-laptop text-[#31A8FF]"></i>
-                    2.2 Informações Técnicas
-                  </h3>
-                  <ul className="list-none pl-6 text-gray-300 space-y-2">
-                    {[
-                      { icon: "network-wired", text: "Endereço IP" },
-                      { icon: "globe", text: "Tipo de navegador" },
-                      { icon: "desktop", text: "Sistema operacional" },
-                      { icon: "memory", text: "Informações de hardware" },
-                      { icon: "history", text: "Logs de acesso" }
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-center gap-2">
-                        <i className={`fas fa-${item.icon} text-[#FF4B6B] w-5`}></i>
-                        {item.text}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </section>
-
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#31A8FF]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-cogs text-xl text-white"></i>
-                </div>
-                <h2 className="text-2xl font-semibold text-white m-0">3. Uso das Informações</h2>
-              </div>
-              <ul className="list-none pl-6 text-gray-300 space-y-2">
-                {[
-                  { icon: "check-circle", text: "Fornecer e manter nossos serviços" },
-                  { icon: "credit-card", text: "Processar pagamentos e transações" },
-                  { icon: "envelope", text: "Enviar comunicações importantes" },
-                  { icon: "chart-line", text: "Melhorar nossos serviços" },
-                  { icon: "shield-alt", text: "Prevenir fraudes e garantir a segurança" },
-                  { icon: "gavel", text: "Cumprir obrigações legais" }
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <i className={`fas fa-${item.icon} text-[#8B31FF] w-5`}></i>
-                    {item.text}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#FF4B6B]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-handshake text-xl text-white"></i>
-                </div>
-                <h2 className="text-2xl font-semibold text-white m-0">4. Compartilhamento de Dados</h2>
-              </div>
-              <ul className="list-none pl-6 text-gray-300 space-y-2">
-                {[
-                  { icon: "users", text: "Prestadores de serviços" },
-                  { icon: "handshake", text: "Parceiros comerciais" },
-                  { icon: "building", text: "Autoridades governamentais" },
-                  { icon: "sitemap", text: "Empresas do mesmo grupo econômico" }
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <i className={`fas fa-${item.icon} text-[#31A8FF] w-5`}></i>
-                    {item.text}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#8B31FF]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-cookie text-xl text-white"></i>
-                </div>
-                <h2 className="text-2xl font-semibold text-white m-0">5. Cookies e Tecnologias Similares</h2>
-              </div>
-              <p className="text-gray-300 mb-4">
-                Utilizamos cookies e tecnologias similares para melhorar sua experiência de navegação, analisar o tráfego do site e personalizar conteúdo. Os tipos de cookies que utilizamos incluem:
-              </p>
-              <ul className="list-none pl-6 text-gray-300 space-y-2 mb-4">
-                {[
-                  { icon: "shield-alt", text: "Cookies essenciais: necessários para o funcionamento básico do site" },
-                  { icon: "tachometer-alt", text: "Cookies de desempenho: coletam informações sobre como você usa o site" },
-                  { icon: "cogs", text: "Cookies de funcionalidade: permitem que o site lembre suas preferências" },
-                  { icon: "ad", text: "Cookies de publicidade: usados para exibir anúncios relevantes" }
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <i className={`fas fa-${item.icon} text-[#FF4B6B] w-5`}></i>
-                    {item.text}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-gray-300 mb-0">
-                Você pode gerenciar ou desativar cookies através das configurações do seu navegador. No entanto, isso pode afetar a funcionalidade de algumas partes do site.
-              </p>
-            </section>
-
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#31A8FF]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-ad text-xl text-white"></i>
-                </div>
-                <h2 className="text-2xl font-semibold text-white m-0">5.1. Google AdSense</h2>
-              </div>
-              <div className="space-y-4">
-                <p className="text-gray-300 mb-0">
-                  Nosso site utiliza o <strong className="text-white">Google AdSense</strong>, um serviço de publicidade fornecido pelo Google LLC ("Google"). O Google AdSense utiliza cookies e tecnologias similares para exibir anúncios relevantes aos usuários com base em suas visitas anteriores a este e outros sites.
-                </p>
-                
-                <div>
-                  <h3 className="text-xl font-medium text-white mb-3 flex items-center gap-2">
-                    <i className="fas fa-info-circle text-[#FF4B6B]"></i>
-                    Como Funciona o Google AdSense
-                  </h3>
-                  <ul className="list-none pl-6 text-gray-300 space-y-2">
-                    {[
-                      { icon: "cookie-bite", text: "O Google AdSense utiliza cookies para coletar informações sobre seus interesses e histórico de navegação" },
-                      { icon: "chart-line", text: "Essas informações são usadas para exibir anúncios personalizados e relevantes" },
-                      { icon: "eye", text: "O Google também pode coletar dados sobre seus padrões de navegação e interação com anúncios" },
-                      { icon: "network-wired", text: "Informações como endereço IP, tipo de navegador e páginas visitadas podem ser coletadas" }
-                    ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <i className={`fas fa-${item.icon} text-[#8B31FF] w-5 mt-1`}></i>
+                      <li key={index} className="flex items-center gap-3 text-slate-300 bg-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
+                        <item.icon className="text-[#8B31FF] w-5 h-5 flex-shrink-0" />
                         <span>{item.text}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-medium text-white mb-3 flex items-center gap-2">
-                    <i className="fas fa-user-shield text-[#31A8FF]"></i>
-                    Privacidade e Controle
+                <div className="bg-white/[0.02] p-6 rounded-2xl border border-white/5">
+                  <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+                    <FaLaptop className="text-[#31A8FF]" /> 2.2 Informações Técnicas
                   </h3>
-                  <ul className="list-none pl-6 text-gray-300 space-y-2">
+                  <ul className="grid md:grid-cols-2 gap-3">
                     {[
-                      { icon: "link", text: "Para mais informações sobre como o Google utiliza seus dados, consulte a Política de Privacidade do Google" },
-                      { icon: "hand-pointer", text: "Você pode optar por desativar os cookies de publicidade personalizada através das configurações de anúncios do Google" },
-                      { icon: "cog", text: "Para gerenciar suas preferências de anúncios, acesse: https://adssettings.google.com" }
+                      { icon: FaNetworkWired, text: "Endereço IP" },
+                      { icon: FaGlobe, text: "Tipo de navegador" },
+                      { icon: FaDesktop, text: "Sistema operacional" },
+                      { icon: FaMemory, text: "Informações de hardware" },
+                      { icon: FaHistory, text: "Logs de acesso" }
                     ].map((item, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <i className={`fas fa-${item.icon} text-[#FF4B6B] w-5 mt-1`}></i>
+                      <li key={index} className="flex items-center gap-3 text-slate-300 bg-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
+                        <item.icon className="text-[#FF4B6B] w-5 h-5 flex-shrink-0" />
                         <span>{item.text}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
+              </div>
+            </section>
 
-                <div className="bg-[#2a2a2e] p-4 rounded-lg border border-[#8B31FF]/20">
-                  <p className="text-gray-300 mb-2">
-                    <strong className="text-white">Links Importantes:</strong>
-                  </p>
-                  <ul className="list-none pl-0 text-gray-300 space-y-2">
-                    <li className="flex items-center gap-2">
-                      <i className="fas fa-external-link-alt text-[#8B31FF] w-5"></i>
-                      <a 
-                        href="https://policies.google.com/privacy" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#31A8FF] hover:text-[#FF4B6B] transition-colors underline"
-                      >
-                        Política de Privacidade do Google
-                      </a>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <i className="fas fa-external-link-alt text-[#8B31FF] w-5"></i>
-                      <a 
-                        href="https://policies.google.com/technologies/ads" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#31A8FF] hover:text-[#FF4B6B] transition-colors underline"
-                      >
-                        Como o Google usa cookies em publicidade
-                      </a>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <i className="fas fa-external-link-alt text-[#8B31FF] w-5"></i>
-                      <a 
-                        href="https://adssettings.google.com" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-[#31A8FF] hover:text-[#FF4B6B] transition-colors underline"
-                      >
-                        Configurações de Anúncios do Google
-                      </a>
-                    </li>
+            {/* Seção 3 */}
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#31A8FF]/30 transition-all duration-500 group">
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#31A8FF]/10 flex items-center justify-center flex-shrink-0 text-[#31A8FF] group-hover:scale-110 transition-transform">
+                  <FaCogs className="text-2xl" />
+                </div>
+                <h2 className="text-2xl font-bold text-white m-0">3. Uso das Informações</h2>
+              </div>
+              <ul className="grid md:grid-cols-2 gap-3">
+                {[
+                  { icon: FaCheckCircle, text: "Fornecer e manter nossos serviços" },
+                  { icon: FaCreditCard, text: "Processar pagamentos e transações" },
+                  { icon: FaEnvelope, text: "Enviar comunicações importantes" },
+                  { icon: FaChartLine, text: "Melhorar nossos serviços" },
+                  { icon: FaShieldAlt, text: "Prevenir fraudes e garantir a segurança" },
+                  { icon: FaGavel, text: "Cumprir obrigações legais" }
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center gap-3 text-slate-300 bg-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
+                    <item.icon className="text-[#8B31FF] w-5 h-5 flex-shrink-0" />
+                    <span>{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Seção 4 */}
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#FF4B6B]/30 transition-all duration-500 group">
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#FF4B6B]/10 flex items-center justify-center flex-shrink-0 text-[#FF4B6B] group-hover:scale-110 transition-transform">
+                  <FaHandshake className="text-2xl" />
+                </div>
+                <h2 className="text-2xl font-bold text-white m-0">4. Compartilhamento de Dados</h2>
+              </div>
+              <ul className="grid md:grid-cols-2 gap-3">
+                {[
+                  { icon: FaUser, text: "Prestadores de serviços" },
+                  { icon: FaHandshake, text: "Parceiros comerciais" },
+                  { icon: FaBuilding, text: "Autoridades governamentais" },
+                  { icon: FaSitemap, text: "Empresas do mesmo grupo econômico" }
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center gap-3 text-slate-300 bg-white/5 p-3 rounded-xl hover:bg-white/10 transition-colors">
+                    <item.icon className="text-[#31A8FF] w-5 h-5 flex-shrink-0" />
+                    <span>{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Seção 5 */}
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#8B31FF]/30 transition-all duration-500 group">
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#8B31FF]/10 flex items-center justify-center flex-shrink-0 text-[#8B31FF] group-hover:scale-110 transition-transform">
+                  <FaCookie className="text-2xl" />
+                </div>
+                <h2 className="text-2xl font-bold text-white m-0">5. Cookies e Tecnologias</h2>
+              </div>
+              <p className="text-slate-300 mb-6">
+                Utilizamos cookies para melhorar sua experiência. Os tipos incluem:
+              </p>
+              <ul className="space-y-3">
+                {[
+                  { icon: FaShieldAlt, text: "Cookies essenciais: necessários para o funcionamento básico" },
+                  { icon: FaTachometerAlt, text: "Cookies de desempenho: análise de uso do site" },
+                  { icon: FaCogs, text: "Cookies de funcionalidade: preferências do usuário" },
+                  { icon: FaAd, text: "Cookies de publicidade: anúncios relevantes" }
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-4 text-slate-300 border-l-2 border-[#FF4B6B] pl-4 py-1">
+                    <div className="flex-1">
+                      <strong className="text-white block mb-1">{item.text.split(':')[0]}</strong>
+                      <span className="text-slate-400 text-sm">{item.text.split(':')[1]}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Seção 5.1 AdSense */}
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#31A8FF]/30 transition-all duration-500 group">
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#31A8FF]/10 flex items-center justify-center flex-shrink-0 text-[#31A8FF] group-hover:scale-110 transition-transform">
+                  <FaAd className="text-2xl" />
+                </div>
+                <h2 className="text-2xl font-bold text-white m-0">5.1. Google AdSense</h2>
+              </div>
+              <div className="space-y-6 text-slate-300">
+                <p>
+                  Utilizamos o <strong className="text-white">Google AdSense</strong> para exibir anúncios relevantes.
+                </p>
+                <div className="bg-white/5 p-6 rounded-2xl border border-white/5">
+                  <h4 className="text-white font-bold mb-4 flex gap-2 items-center"><FaInfoCircle /> Como Funciona</h4>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex gap-3"><FaCookieBite className="text-[#8B31FF] mt-1" /> Uso de cookies para coletar interesses.</li>
+                    <li className="flex gap-3"><FaChartLine className="text-[#8B31FF] mt-1" /> Exibição de anúncios personalizados.</li>
+                    <li className="flex gap-3"><FaNetworkWired className="text-[#8B31FF] mt-1" /> Coleta de IP e dados de navegação pelo Google.</li>
                   </ul>
                 </div>
 
-                <p className="text-gray-300 mb-0">
-                  Ao continuar navegando em nosso site, você consente com o uso de cookies do Google AdSense conforme descrito acima. Se você não deseja receber anúncios personalizados, pode optar por desativar essa funcionalidade através das configurações de anúncios do Google.
-                </p>
+                <div className="bg-[#0A0A0F] p-6 rounded-2xl border border-[#8B31FF]/20">
+                  <h4 className="text-white font-bold mb-4">Links Importantes</h4>
+                  <ul className="space-y-3 text-sm">
+                    {[
+                      { t: "Política de Privacidade do Google", u: "https://policies.google.com/privacy" },
+                      { t: "Como o Google usa cookies", u: "https://policies.google.com/technologies/ads" },
+                      { t: "Configurações de Anúncios", u: "https://adssettings.google.com" },
+                    ].map((l, i) => (
+                      <li key={i} className="flex items-center gap-2">
+                        <FaExternalLinkAlt className="text-[#8B31FF]" />
+                        <a href={l.u} target="_blank" rel="noopener noreferrer" className="text-[#31A8FF] hover:text-[#FF4B6B] hover:underline transition-colors">{l.t}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </section>
 
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#31A8FF]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-lock text-xl text-white"></i>
-                </div>
-                <h2 className="text-2xl font-semibold text-white m-0">7. Segurança dos Dados</h2>
-              </div>
-              <ul className="list-none pl-6 text-gray-300 space-y-2">
-                {[
-                  { icon: "key", text: "Criptografia de dados" },
-                  { icon: "user-lock", text: "Controle de acesso" },
-                  { icon: "eye", text: "Monitoramento de segurança" },
-                  { icon: "save", text: "Backup regular" },
-                  { icon: "graduation-cap", text: "Treinamento de funcionários" }
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <i className={`fas fa-${item.icon} text-[#8B31FF] w-5`}></i>
-                    {item.text}
-                  </li>
-                ))}
-              </ul>
+            {/* Seções Finais Compactadas */}
+            <div className="grid md:grid-cols-2 gap-8">
+              <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#8B31FF]/30 transition-all duration-500">
+                <h2 className="text-xl font-bold text-white mb-4 flex gap-3 items-center"><FaLock className="text-[#8B31FF]" /> 7. Segurança</h2>
+                <ul className="space-y-2 text-slate-300 text-sm">
+                  {["Criptografia de dados", "Controle de acesso", "Monitoramento", "Backup regular", "Treinamento"].map(t => (
+                    <li key={t} className="flex gap-2 items-center"><FaCheckCircle className="text-[#8B31FF]" /> {t}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#FF4B6B]/30 transition-all duration-500">
+                <h2 className="text-xl font-bold text-white mb-4 flex gap-3 items-center"><FaEnvelope className="text-[#FF4B6B]" /> 8. Contato</h2>
+                <ul className="space-y-2 text-slate-300 text-sm">
+                  <li className="flex gap-2 items-center"><FaEnvelope /> contato@voltris.com.br</li>
+                  <li className="flex gap-2 items-center"><FaPhone /> (11) 99671-6235</li>
+                  <li className="flex gap-2 items-center"><FaMapMarkerAlt /> São Paulo, SP</li>
+                </ul>
+              </section>
+            </div>
+
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 text-center">
+              <h2 className="text-xl font-bold text-white mb-2 flex justify-center gap-3 items-center"><FaSyncAlt /> 9. Alterações</h2>
+              <p className="text-slate-400 text-sm">Reservamo-nos o direito de modificar esta política a qualquer momento.</p>
             </section>
 
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#FF4B6B]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-envelope text-xl text-white"></i>
-                </div>
-                <h2 className="text-2xl font-semibold text-white m-0">8. Contato</h2>
-              </div>
-              <ul className="list-none pl-6 text-gray-300 space-y-2">
-                {[
-                  { icon: "envelope", text: "contato@voltris.com.br" },
-                  { icon: "phone", text: "(11) 99671-6235" },
-                  { icon: "map-marker-alt", text: "São Paulo, SP" }
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <i className={`fas fa-${item.icon} text-[#31A8FF] w-5`}></i>
-                    {item.text}
-                  </li>
-                ))}
-              </ul>
-            </section>
-
-            <section className="mb-12 p-6 rounded-lg bg-[#1E1E1E] border border-white/10 hover:border-[#8B31FF]/30 transition-colors duration-300">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] flex items-center justify-center flex-shrink-0">
-                  <i className="fas fa-sync-alt text-xl text-white"></i>
-                </div>
-                <h2 className="text-2xl font-semibold text-white m-0">9. Alterações na Política</h2>
-              </div>
-              <p className="text-gray-300 mb-0">
-                Reservamo-nos o direito de modificar esta política a qualquer momento. Alterações significativas serão notificadas através do site ou por e-mail.
-              </p>
-            </section>
           </div>
         </div>
       </div>
-      
       <Footer />
     </>
   );
-} 
+}

@@ -1,2 +1,0 @@
-D:\Voltris\Voltris APP\Instalador Voltris Optmizer\VoltrisUninstaller\bin\Release\net8.0-windows\win-x86\publish\uninstall.pdb
-D:\Voltris\Voltris APP\Instalador Voltris Optmizer\VoltrisUninstaller\bin\Release\net8.0-windows\win-x86\publish\uninstall.exe

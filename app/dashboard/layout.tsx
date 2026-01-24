@@ -1,33 +1,41 @@
+'use client';
 import React from 'react'
-import Sidebar from '@/components/dashboard/Sidebar'
 import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import MobileTabs from '@/components/dashboard/MobileTabs'
+import Sidebar from '@/components/dashboard/Sidebar'
 import ClientNotificationModal from './ClientNotificationModal';
 
+// Dashboard Layout Enterprise - No Scroll Global
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#1E1E1E] to-[#171313] flex flex-col overflow-x-hidden">
-      <Header />
-      <div className="flex flex-1 pt-16 md:pt-24 pb-8 justify-center items-stretch w-full">
-        <div className="w-full max-w-full px-4 md:px-6 lg:px-8 flex gap-6 min-h-[calc(100vh-8rem)]">
-          <div className="hidden md:block w-72 flex-shrink-0 h-full">
-            <div className="h-full sticky top-20 flex flex-col">
-              <Sidebar />
-            </div>
-          </div>
-          <div className="flex-1 min-w-0 flex flex-col h-full">
-            {/* Mobile Tabs - posicionadas logo abaixo do header com espaçamento premium */}
-            <div className="md:hidden mt-4 mb-6 sticky top-16 z-40 w-full">
-              <MobileTabs />
-            </div>
-            <main className="bg-[#1E1E1E]/40 backdrop-blur-xl rounded-2xl border border-gray-800/30 shadow-xl shadow-black/20 p-4 md:p-6 w-full flex-1 flex flex-col">
-              {children}
-            </main>
-          </div>
-        </div>
+    <div className="h-screen bg-[#050510] flex flex-col overflow-hidden selection:bg-[#8B31FF]/30 font-sans">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none z-0"></div>
+      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#31A8FF]/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+      {/* Header Fixo */}
+      <div className="relative z-50">
+        <Header />
       </div>
-      <Footer />
+
+      <div className="flex flex-1 min-h-0 relative z-10 pt-20 lg:pt-24 px-4 pb-4 gap-4 max-w-[1920px] mx-auto w-full">
+        {/* Sidebar Fixa - Desktop */}
+        <div className="hidden lg:block w-80 flex-shrink-0 h-full">
+          <Sidebar />
+        </div>
+
+        {/* Main Content Area - Onde o conteúdo das páginas é renderizado */}
+        <main className="flex-1 bg-[#0A0A0F]/80 backdrop-blur-2xl rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden relative group">
+          {/* Gradient Border Hint */}
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] opacity-50"></div>
+
+          {/* Content Scrollable Container */}
+          {/* As páginas devem preencher este container. Se precisarem de scroll, devem gerenciar internamente ou usar h-full */}
+          <div className="absolute inset-0 overflow-y-auto custom-scrollbar p-6 md:p-10">
+            {children}
+          </div>
+        </main>
+      </div>
+
       <ClientNotificationModal />
     </div>
   )

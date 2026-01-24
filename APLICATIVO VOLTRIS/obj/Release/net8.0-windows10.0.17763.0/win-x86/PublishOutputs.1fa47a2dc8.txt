@@ -1,9 +1,0 @@
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\runtimes\win-x86\native\WebView2Loader.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\D3DCompiler_47_cor3.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\PenImc_cor3.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\PresentationNative_cor3.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\vcruntime140_cor3.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\wpfgfx_cor3.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\WebView2Loader.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\sni.dll
-D:\Voltris\Voltris\Site Voltris\APLICATIVO VOLTRIS\bin\x86_Final_Corrected\VoltrisOptimizer.exe

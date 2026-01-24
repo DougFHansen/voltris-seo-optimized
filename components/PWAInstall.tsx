@@ -61,13 +61,13 @@ export default function PWAInstall() {
 
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    
+
     if (outcome === 'accepted') {
       console.log('User accepted the install prompt');
     } else {
       console.log('User dismissed the install prompt');
     }
-    
+
     setDeferredPrompt(null);
     setShowInstallPrompt(false);
   };
@@ -87,7 +87,7 @@ export default function PWAInstall() {
         `z-50 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] shadow-2xl border-b border-white/20 backdrop-blur-sm transition-transform duration-500
         ${isMobile
           ? 'fixed top-0 left-0 right-0 p-4 rounded-b-xl mt-[56px] md:mt-0'
-          : 'fixed top-[96px] left-6 max-w-xs w-full p-3 rounded-xl border border-white/20'}
+          : 'fixed bottom-6 left-6 max-w-xs w-full p-3 rounded-xl border border-white/20'}
         `
       }
       style={{ transform: showInstallPrompt ? 'translateY(0)' : (isMobile ? 'translateY(-120%)' : 'translateY(-40px)'), boxShadow: '0 8px 32px 0 rgba(49,168,255,0.15)' }}

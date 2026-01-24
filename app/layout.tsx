@@ -4,7 +4,7 @@ import ReactQueryProvider from "./ReactQueryProvider";
 import PWAInstall from "@/components/PWAInstall";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import CookieBanner from "@/components/CookieBanner";
-import { Roboto } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import "./globals.css";
 import ClientNotificationProvider from './components/ClientNotificationProvider';
 import ClientPWAInstall from "./components/ClientPWAInstall";
@@ -81,10 +81,10 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
-const roboto = Roboto({
-  weight: ['400', '700'],
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-inter',
 });
 
 export default function RootLayout({
@@ -112,22 +112,6 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        {/* Google Fonts - Optimized Loading */}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-          as="style"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-          media="print"
-          // @ts-ignore
-          onLoad="this.media='all'"
-        />
-        <noscript>
-          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" />
-        </noscript>
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo.png" />
@@ -298,7 +282,7 @@ export default function RootLayout({
         />
 
       </head>
-      <body className={`antialiased ${roboto.className}`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
+      <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
         <ClientNotificationProvider>
           <ReactQueryProvider>
             <CookieBanner />

@@ -13,10 +13,10 @@ import {
   FiMonitor, FiSettings, FiClock, FiBarChart2, FiDatabase,
   FiPrinter, FiShield, FiGlobe, FiTrendingUp, FiUsers,
   FiPhone, FiMail, FiMapPin, FiCreditCard, FiCloud,
-  FiCheckCircle, FiCpu, FiTool
+  FiCheckCircle, FiCpu, FiTool, FiLock
 } from 'react-icons/fi';
 import AnimatedSection from '@/components/AnimatedSection';
-import TechFloatingElements from '@/components/TechFloatingElements';
+
 
 type ServiceOption = {
   id: string;
@@ -899,105 +899,30 @@ export default function ServicesPage() {
     return isValid;
   };
 
-  const handleSubmitService = async (e?: React.FormEvent) => {
+  const handleSubmitService = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!validateForm()) return;
 
-    // Verificar autenticação atual
-    const { data: { user } } = await supabase.auth.getUser();
-    console.log('Usuário autenticado:', user);
-
-    if (!user) {
-      // Usuário não está logado - salvar dados do formulário e redirecionar para login
-      const formData = {
-        selectedServices,
-        schedulingType,
-        appointmentDateTime,
-        additionalInfo,
-        formattingAnswers,
-        totalPrice: calculateTotal(),
-        timestamp: Date.now()
-      };
-      console.log('Salvando pendingOrderData:', formData);
-      sessionStorage.setItem('pendingOrderData', JSON.stringify(formData));
-      router.push('/login?redirect=/dashboard&pendingOrder=true');
-      return;
+    let message = "Olá! Gostaria de agendar um serviço na Voltris:\n\n";
+    if (selectedServices.length > 0) {
+      message += "*Serviços Selecionados:*\n" + selectedServices.map(s => `- ${s.title}`).join('\n');
     }
 
-    // Usuário está logado - processar pedido
-    try {
-      const valor = calculateTotal();
-      const selected = selectedServices[0];
-      const PLAN_TYPES = [
-        'basico', 'profissional', 'empresarial', 'gamer', 'corporativa',
-        'Formatação Básica', 'Formatação Média', 'Formatação Avançada', 'Formatação Corporativa',
-        'Otimização Básica', 'Otimização Média', 'Otimização Avançada', 'Otimização Premium',
-        'Office 365', 'Office 2021', 'Office 2019', 'Office Empresarial'
-      ];
-      // Mapeamento seguro para plan_type
-      const PLAN_TYPE_MAP: Record<string, string> = {
-        'basico': 'basico',
-        'profissional': 'profissional',
-        'empresarial': 'empresarial',
-        'gamer': 'gamer',
-        'corporativa': 'corporativa',
-        'Formatação Básica': 'Formatação Básica',
-        'Formatação Média': 'Formatação Média',
-        'Formatação Avançada': 'Formatação Avançada',
-        'Formatação Corporativa': 'Formatação Corporativa',
-        'Otimização Básica': 'Otimização Básica',
-        'Otimização Média': 'Otimização Média',
-        'Otimização Avançada': 'Otimização Avançada',
-        'Otimização Premium': 'Otimização Premium',
-        'Office 365': 'Office 365',
-        'Office 2021': 'Office 2021',
-        'Office 2019': 'Office 2019',
-        'Office Empresarial': 'Office Empresarial',
-      };
-      let planType: string | undefined = undefined;
-      if (selected?.serviceName && PLAN_TYPE_MAP[selected.serviceName]) {
-        planType = PLAN_TYPE_MAP[selected.serviceName];
-      }
-      const apiOrderData: any = {
-        service_id: selected?.id,
-        service_name: selected?.serviceName || 'Serviço Personalizado',
-        service_description: selected?.description || '',
-        final_price: selected?.price || valor || 1,
-        total: valor > 0 ? valor : 1,
-        items: selectedServices.map(service => ({
-          service_name: service.serviceName,
-          price: service.price
-        })),
-        notes: additionalInfo || '',
-        scheduling_type: schedulingType === 'schedule' ? 'scheduled' : 'now',
-        appointment_datetime: schedulingType === 'schedule' ? appointmentDateTime : null
-      };
-      if (planType) {
-        apiOrderData.plan_type = planType;
-      }
-      console.log('Pedido enviado para API:', apiOrderData);
-      const response = await fetch('/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(apiOrderData),
-      });
-      console.log('Resposta da API:', response.status);
-      if (response.ok) {
-        const result = await response.json();
-        console.log('Pedido criado:', result);
-        sessionStorage.removeItem('pendingOrderData');
-        router.push('/dashboard?orderCreated=true');
-      } else {
-        const errorMsg = await response.text();
-        throw new Error('Erro ao criar pedido: ' + errorMsg);
-      }
-    } catch (error) {
-      console.error('Erro ao processar pedido:', error);
-      alert('Erro ao processar pedido. Por favor, tente novamente.');
+    if (schedulingType === 'now') {
+      message += "\n\n*Prefiro atendimento imediato.*";
+    } else if (schedulingType === 'schedule') {
+      message += `\n\n*Agendamento para:* ${new Date(appointmentDateTime).toLocaleString('pt-BR')}`;
     }
+
+    if (additionalInfo) {
+      message += `\n\n*Observações:* ${additionalInfo}`;
+    }
+
+    const url = `https://wa.me/5511996716235?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
   };
 
-  const totalPrice = calculateTotal();
+  const totalPrice = 0;
 
   const handleSaveProgress = async () => {
     setIsSavingProgress(true);
@@ -1101,59 +1026,35 @@ export default function ServicesPage() {
   const ServiceProcess = () => {
     return (
       <AnimatedSection>
-        <div className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Como Funciona <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Nosso Processo</span>
+        <div className="py-20 relative">
+          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-y-1/2 hidden md:block"></div>
+
+          <div className="text-center mb-16 relative z-10">
+            <span className="text-[#31A8FF] font-bold tracking-widest uppercase text-xs sm:text-sm mb-2 block">Workflow</span>
+            <h2 className="text-3xl md:text-5xl font-black text-white">
+              Como <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">Funciona?</span>
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Simples, transparente e 100% online. Resolvemos seu problema sem você sair de casa.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
             {[
-              {
-                icon: <FiClock className="w-8 h-8 text-[#FF4B6B]" />,
-                title: "1. Agendamento",
-                desc: "Escolha o serviço e o melhor horário para você.",
-                link: "/processo/agendamento",
-                color: "from-[#FF4B6B] to-[#FF4B6B]"
-              },
-              {
-                icon: <FiShield className="w-8 h-8 text-[#8B31FF]" />,
-                title: "2. Segurança",
-                desc: "Receba o contrato e garantias do serviço.",
-                link: "/processo/contrato",
-                color: "from-[#8B31FF] to-[#8B31FF]"
-              },
-              {
-                icon: <FiMonitor className="w-8 h-8 text-[#31A8FF]" />,
-                title: "3. Execução",
-                desc: "Acesso remoto seguro via AnyDesk/TeamViewer.",
-                link: "/processo/acesso-remoto",
-                color: "from-[#31A8FF] to-[#31A8FF]"
-              },
-              {
-                icon: <FiCheckCircle className="w-8 h-8 text-[#00E5FF]" />,
-                title: "4. Conclusão",
-                desc: "Testes finais e garantia de funcionamento.",
-                link: "/processo/conclusao",
-                color: "from-[#00E5FF] to-[#00E5FF]"
-              }
-            ].map((step, index) => (
-              <Link key={index} href={step.link} className="group relative">
-                <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl blur-xl"
-                  style={{ backgroundImage: `linear-gradient(to right, ${step.color.split(' ')[0]}, ${step.color.split(' ')[2]})` }}
-                />
-                <div className="relative h-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 p-6 rounded-2xl hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1">
-                  <div className="mb-4 bg-gray-900/50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-gray-700">
-                    {step.icon}
+              { icon: FiClock, title: "Agendamento", step: "01", desc: "Escolha o melhor horário na agenda." },
+              { icon: FiShield, title: "Segurança", step: "02", desc: "Contrato de serviço e garantias." },
+              { icon: FiMonitor, title: "Execução", step: "03", desc: "Acesso remoto seguro e monitorado." },
+              { icon: FiCheckCircle, title: "Conclusão", step: "04", desc: "Testes finais e aprovação." }
+            ].map((item, i) => (
+              <div key={i} className="group relative">
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-20 h-20 rounded-2xl bg-[#0A0A0F] border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-[#31A8FF]/50 transition-all duration-300 shadow-lg relative z-10">
+                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#31A8FF] text-black font-bold flex items-center justify-center text-xs shadow-lg">
+                      {item.step}
+                    </div>
+                    <item.icon className="w-8 h-8 text-white group-hover:text-[#31A8FF] transition-colors" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                  <p className="text-gray-400 text-sm">{step.desc}</p>
+                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                  <p className="text-slate-400 text-sm max-w-[200px] leading-relaxed">{item.desc}</p>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
@@ -1164,31 +1065,40 @@ export default function ServicesPage() {
   const CompanyInfo = () => {
     return (
       <AnimatedSection>
-        <div className="py-12">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">
-              Por que escolher a <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">VOLTRIS</span>?
+        <div className="py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8B31FF]/10 border border-[#8B31FF]/20 mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#8B31FF] animate-pulse"></span>
+              <span className="text-xs font-bold text-[#8B31FF] tracking-widest uppercase">Por que VOLTRIS?</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
+              <span className="text-[#e2e8f0]">Tecnologia que</span> <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">Impulsiona Resultados.</span>
             </h2>
+            <p className="text-lg text-slate-400 leading-relaxed mb-8">
+              Diferente de assistências comuns, aplicamos engenharia de software para extrair o máximo do seu equipamento. Cada bit otimizado para sua máxima performance.
+            </p>
+            <Link href="/sobre" className="inline-flex items-center gap-2 text-white border-b border-[#31A8FF] hover:text-[#31A8FF] transition-colors pb-1 font-medium group">
+              Conheça nossa história
+              <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-purple-500/30 transition-all duration-300">
-              <FiShield className="w-12 h-12 text-purple-400 mb-6" />
-              <h3 className="text-xl font-bold text-white mb-3">Garantia Absoluta</h3>
-              <p className="text-gray-400">Todos os nossos serviços possuem garantia técnica. Se o problema persistir, nós resolvemos sem custo adicional.</p>
-            </div>
-
-            <div className="bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-purple-500/30 transition-all duration-300">
-              <FiUsers className="w-12 h-12 text-blue-400 mb-6" />
-              <h3 className="text-xl font-bold text-white mb-3">Expertise Técnica</h3>
-              <p className="text-gray-400">Nossa equipe é formada por especialistas certificados, prontos para resolver desde problemas simples até os mais complexos.</p>
-            </div>
-
-            <div className="bg-gray-800/30 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 hover:border-purple-500/30 transition-all duration-300">
-              <FiTrendingUp className="w-12 h-12 text-green-400 mb-6" />
-              <h3 className="text-xl font-bold text-white mb-3">Foco em Performance</h3>
-              <p className="text-gray-400">Não apenas consertamos, nós otimizamos. Seu computador sairá do nosso atendimento melhor do que entrou.</p>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { icon: FiShield, title: "Garantia Total", desc: "Suporte pós-serviço incluso.", color: "text-[#8B31FF]", bg: "bg-[#8B31FF]/10", border: "border-[#8B31FF]/20" },
+              { icon: FiUsers, title: "Experts Reais", desc: "Equipe certificada e sênior.", color: "text-[#31A8FF]", bg: "bg-[#31A8FF]/10", border: "border-[#31A8FF]/20" },
+              { icon: FiTrendingUp, title: "Performance", desc: "Foco em FPS e velocidade.", color: "text-[#00FF94]", bg: "bg-[#00FF94]/10", border: "border-[#00FF94]/20" },
+              { icon: FiLock, title: "Segurança", desc: "Acesso criptografado e seguro.", color: "text-[#FF4B6B]", bg: "bg-[#FF4B6B]/10", border: "border-[#FF4B6B]/20" }
+            ].map((item, i) => (
+              <div key={i} className={`bg-[#0A0A0F] border border-white/5 p-6 rounded-2xl hover:border-white/20 transition-all duration-300 group`}>
+                <div className={`w-12 h-12 rounded-xl ${item.bg} border ${item.border} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  <item.icon className={`w-6 h-6 ${item.color}`} />
+                </div>
+                <h3 className="text-white font-bold mb-2">{item.title}</h3>
+                <p className="text-sm text-slate-400">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </AnimatedSection>
@@ -1256,41 +1166,56 @@ export default function ServicesPage() {
           })
         }}
       />
-      <div className="min-h-screen bg-gradient-to-br from-[#0A0A0F] via-[#121218] to-[#0A0A0F] text-white overflow-x-hidden">
+      <div className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30 text-white">
+        {/* Background Effects (from FAQ) */}
+        <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+        <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
         <Header />
 
         <AnimatedSection>
-          <section className="relative pt-32 pb-10 px-4 overflow-hidden">
-            <TechFloatingElements />
+          <section className="relative w-full h-[100dvh] flex items-center justify-center overflow-hidden bg-transparent">
 
-            <div className="max-w-7xl mx-auto text-center relative z-10">
+            <div className="container mx-auto px-4 relative z-10 text-center flex flex-col items-center justify-center h-full">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-12"
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="flex flex-col items-center"
               >
-                <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md rounded-full px-4 py-2 mb-8 border border-white/10 hover:border-purple-500/50 transition-colors">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-8 hover:bg-white/10 transition-colors cursor-default">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00FF94] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00FF94]"></span>
                   </span>
-                  <span className="text-gray-300 text-sm font-medium">Disponível para Atendimento Imediato</span>
+                  <span className="text-sm font-bold text-white tracking-widest uppercase">Atendimento Imediato</span>
                 </div>
 
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
-                  Assistência Técnica <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 animate-gradient-x">
-                    Especializada & Remota
+                <h1 className="text-5xl sm:text-6xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-[1] text-center">
+                  Atendimento e Otimização <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
+                    Remota em Qualquer Lugar do Mundo
                   </span>
                 </h1>
 
-                <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-                  Formatação, otimização e suporte técnico profissional sem sair de casa.
-                  Segurança total, garantia de satisfação e atendimento humanizado.
+                <p className="text-lg md:text-2xl text-slate-400 max-w-3xl leading-relaxed mb-12 font-light tracking-wide">
+                  A evolução da assistência técnica. Formatação, segurança e otimização de alta performance, 100% remota e segura.
                 </p>
+
+
               </motion.div>
             </div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.5, duration: 1 }}
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 text-white/30"
+            >
+              <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Scroll</span>
+              <div className="w-[1px] h-16 bg-gradient-to-b from-white/0 via-white/50 to-white/0"></div>
+            </motion.div>
           </section>
         </AnimatedSection>
 
@@ -1299,159 +1224,97 @@ export default function ServicesPage() {
 
             <ServiceProcess />
 
-            <div className="grid lg:grid-cols-3 gap-8 mb-20 relative">
+            <div id="catalogo" className="grid lg:grid-cols-3 gap-8 mb-20 relative scroll-mt-32">
               <div className="lg:col-span-2 space-y-6">
-                <div className="bg-gray-800/30 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-gray-700/50 shadow-2xl">
+                <div className="bg-[#0A0A0F]/80 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-white/10 shadow-2xl">
                   <div className="flex items-center justify-between mb-8">
                     <h2 className="text-2xl font-bold flex items-center gap-3 text-white">
-                      <span className="p-2 bg-purple-500/20 rounded-lg text-purple-400"><FiSettings /></span>
+                      <span className="p-2 bg-gradient-to-r from-[#8B31FF]/20 to-[#31A8FF]/20 rounded-xl border border-white/5 text-[#8B31FF]"><FiSettings className="w-6 h-6" /></span>
                       Catálogo de Serviços
                     </h2>
-                    <span className="text-sm text-gray-400 hidden sm:block">Selecione uma categoria</span>
+                    <span className="text-xs font-medium text-slate-500 uppercase tracking-widest hidden sm:block">Selecione uma categoria</span>
                   </div>
 
                   <div className="space-y-4">
                     {serviceCategories.map((category) => (
-                      <div key={category.id} className="rounded-xl overflow-hidden backdrop-blur-sm border border-[#8B31FF]/10 hover:border-[#8B31FF]/20 transition-all duration-300 shadow-lg shadow-black/5">
+                      <div key={category.id} className="rounded-2xl overflow-hidden bg-white/[0.02] border border-white/5 transition-all duration-300 hover:border-white/10 group">
                         <button
                           id={category.id}
                           onClick={() => toggleCategory(category.id)}
-                          className="w-full flex justify-between items-center px-4 sm:px-8 py-4 sm:py-5 text-base sm:text-lg font-bold text-white focus:outline-none bg-[#232027] hover:bg-[#232027]/80 transition-all duration-300 group"
+                          className="w-full flex justify-between items-center px-4 sm:px-6 py-5 focus:outline-none transition-all duration-300"
                         >
-                          <div className="flex items-center gap-2">
-                            <div className={`p-3.5 rounded-xl transition-all duration-300 relative ${selectedCategory?.id === category.id
-                              ? 'bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] shadow-lg shadow-[#FF4B6B]/20'
-                              : 'bg-[#232027]'
-                              } before:absolute before:inset-0 before:rounded-xl before:p-[1px] before:bg-gradient-to-r before:from-[#FF4B6B] before:via-[#8B31FF] before:to-[#31A8FF] before:-z-10 before:transition-opacity before:duration-300 ${selectedCategory?.id === category.id ? 'before:opacity-100' : 'before:opacity-0'
+                          <div className="flex items-center gap-4">
+                            <div className={`p-3 rounded-xl transition-all duration-500 relative ${selectedCategory?.id === category.id
+                              ? 'bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] shadow-[0_0_20px_rgba(139,49,255,0.3)] text-white'
+                              : 'bg-white/5 text-slate-400 group-hover:text-white group-hover:bg-white/10'
                               }`}>
-                              {category.id === 'formatacao' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-                                </svg>
-                              )}
-                              {category.id === 'otimizacao' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-                                </svg>
-                              )}
-                              {category.id === 'correcao_windows' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <circle cx="12" cy="12" r="9" stroke="#31A8FF" strokeWidth="1.5" fill="none" />
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15L15 9.75" stroke="#31A8FF" strokeWidth="1.5" />
-                                </svg>
-                              )}
-                              {category.id === 'instalacao_impressora' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0110.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0l.229 2.523a1.125 1.125 0 01-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0021 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 00-1.913-.247M6.34 18H5.25A2.25 2.25 0 013 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 011.913-.247m10.5 0a48.536 48.536 0 00-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5zm-3 0h.008v.008H15V10.5z" />
-                                </svg>
-                              )}
-                              {category.id === 'remocao_virus' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-                                </svg>
-                              )}
-                              {category.id === 'recuperacao' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3" />
-                                </svg>
-                              )}
-                              {category.id === 'instalacao_programas' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                              )}
-                              {category.id === 'suporte_windows' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-                                </svg>
-                              )}
-                              {category.id === 'criacao_sites' && (
-                                <svg className="w-6 h-6 text-[#31A8FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-                                </svg>
-                              )}
+                              {category.id === 'formatacao' && <FiMonitor className="w-6 h-6" />}
+                              {category.id === 'otimizacao' && <FiTrendingUp className="w-6 h-6" />}
+                              {category.id === 'correcao_windows' && <FiTool className="w-6 h-6" />}
+                              {category.id === 'instalacao_impressora' && <FiPrinter className="w-6 h-6" />}
+                              {category.id === 'remocao_virus' && <FiShield className="w-6 h-6" />}
+                              {category.id === 'recuperacao' && <FiDatabase className="w-6 h-6" />}
+                              {category.id === 'instalacao_programas' && <FiSettings className="w-6 h-6" />}
+                              {category.id === 'suporte_windows' && <FiCloud className="w-6 h-6" />}
+                              {category.id === 'criacao_sites' && <FiGlobe className="w-6 h-6" />}
                             </div>
-                            <h3 className={`text-xl font-semibold transition-all duration-300 ${selectedCategory?.id === category.id
-                              ? 'bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text'
-                              : 'text-white'
-                              }`}>{category.title}</h3>
+                            <div className="text-left">
+                              <h3 className={`text-lg font-bold transition-colors duration-300 ${selectedCategory?.id === category.id ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>
+                                {category.title}
+                              </h3>
+                              {/* Subtitle logic could go here if needed */}
+                            </div>
                           </div>
-                          <div className="flex items-center gap-2 sm:gap-3">
-                            {!selectedServices.some(service => service.id === category.id) &&
-                              !['instalacao_impressora', 'instalacao_programas', 'suporte_windows', 'criacao_sites'].includes(category.id) && (
-                                <span className="hidden sm:block text-sm text-gray-400 mr-2 flex items-center">Selecione uma opção</span>
-                              )}
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center h-full transition-all duration-300 ${selectedCategory?.id === category.id
-                              ? 'bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] shadow-lg shadow-[#FF4B6B]/20'
-                              : 'bg-[#232027]'
-                              }`}>
-                              <svg
-                                className={`w-5 h-5 transform transition-transform duration-300 ${selectedCategory?.id === category.id ? 'rotate-180' : ''
-                                  }`}
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                                strokeWidth="2"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M8 10l4 4 4-4"
-                                  className="text-white"
-                                />
-                              </svg>
-                            </div>
+
+                          <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 ${selectedCategory?.id === category.id ? 'bg-white text-black rotate-180' : 'bg-transparent text-slate-500 group-hover:border-white/30 group-hover:text-white'}`}>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
                           </div>
                         </button>
 
                         <div
-                          className={`transition-all duration-300 ease-in-out relative group ${openCategory === category.id
+                          className={`transition-all duration-500 ease-in-out overflow-hidden ${openCategory === category.id
                             ? 'max-h-[2000px] opacity-100'
                             : 'max-h-0 opacity-0'
-                            } overflow-hidden rounded-b-xl`}
+                            }`}
                         >
-                          <div className={`bg-gradient-to-br from-[#FF4B6B]/5 via-[#8B31FF]/5 to-[#31A8FF]/5 rounded-2xl transition-opacity duration-500 pointer-events-none w-full h-full absolute inset-0 ${openCategory === category.id ? 'opacity-100' : 'opacity-0'}`}></div>
-                          <div className="p-4 sm:p-6 pt-4 space-y-4 border-t border-gray-700/50 relative z-10">
+                          <div className="bg-[#05050A]/50 border-t border-white/5 p-4 sm:p-6 space-y-3">
                             {category.options.map((option) => (
                               <div key={option.id}>
                                 <div
                                   onClick={() => handleServiceSelect(option)}
-                                  className={`p-4 rounded-lg cursor-pointer transition-all duration-300 group ${option.redirectTo
-                                    ? 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] hover:opacity-90'
+                                  className={`p-4 rounded-xl cursor-pointer transition-all duration-300 border ${option.redirectTo
+                                    ? 'bg-[#31A8FF]/10 border-[#31A8FF]/30 hover:border-[#31A8FF]'
                                     : selectedServices.some(service => service.id === option.id)
-                                      ? 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] shadow-lg shadow-[#8B31FF]/30'
-                                      : 'bg-gray-700/50 hover:bg-gray-700'
+                                      ? 'bg-[#8B31FF]/20 border-[#8B31FF]/50 shadow-[0_0_15px_rgba(139,49,255,0.1)]'
+                                      : 'bg-white/[0.02] border-white/5 hover:border-white/20 hover:bg-white/[0.04]'
                                     }`}
                                 >
-                                  <div className="flex justify-between items-start gap-2">
-                                    <div className="flex-1 min-w-0">
-                                      <h4 className="text-base sm:text-lg font-medium flex items-center gap-2">
+                                  <div className="flex justify-between items-start gap-4">
+                                    <div className="flex-1">
+                                      <h4 className={`text-base font-bold flex items-center gap-2 ${selectedServices.some(service => service.id === option.id) ? 'text-white' : 'text-slate-200'}`}>
                                         {option.title}
-                                        {option.redirectTo ? (
-                                          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                          </svg>
-                                        ) : selectedServices.some(service => service.id === option.id) && (
-                                          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                          </svg>
+                                        {selectedServices.some(service => service.id === option.id) && !option.redirectTo && (
+                                          <FiCheckCircle className="w-4 h-4 text-[#00FF94]" />
                                         )}
+                                        {option.redirectTo && <FiGlobe className="w-4 h-4 text-[#31A8FF]" />}
                                       </h4>
-                                      <p className="text-xs sm:text-sm mt-1 text-gray-300 group-hover:text-gray-200 transition-colors duration-300">
+                                      <p className="text-xs sm:text-sm mt-1.5 text-slate-400 font-light leading-relaxed">
                                         {option.description}
                                       </p>
                                     </div>
                                     {!option.redirectTo && (
-                                      <span className={`text-base sm:text-lg font-semibold transition-all duration-300 flex-shrink-0 ${selectedServices.some(service => service.id === option.id)
-                                        ? 'text-white'
-                                        : 'text-gray-300 group-hover:text-white'
+                                      <span className={`text-sm sm:text-base font-bold whitespace-nowrap ${selectedServices.some(service => service.id === option.id)
+                                        ? 'text-[#00FF94]'
+                                        : 'text-slate-400'
                                         }`}>
-                                        R${option.price.toFixed(2).replace('.', ',')}
+                                        R$ {option.price.toFixed(2).replace('.', ',')}
                                       </span>
                                     )}
                                   </div>
                                 </div>
-                                {/* Mostra o questionário logo abaixo da opção selecionada */}
+                                {/* Diagnóstico Inline */}
                                 {category.id === 'formatacao' &&
                                   selectedServices.some(service => service.id === option.id) &&
                                   <FormattingQuestionnaire />}
@@ -1465,106 +1328,93 @@ export default function ServicesPage() {
                 </div>
               </div>
 
-              {/* Form Column */}
+              {/* Form Column Sticky */}
               <div className="lg:col-span-1">
-                <div ref={formRef} className="sticky top-24">
-                  <div className="bg-gray-800/30 backdrop-blur-md p-6 rounded-3xl border border-gray-700/50 shadow-2xl">
-                    <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-white">
-                      <span className="p-2 bg-blue-500/20 rounded-lg text-blue-400"><FiCreditCard className="w-6 h-6" /></span>
-                      Resumo do Pedido
+                <div ref={formRef} className="sticky top-32">
+                  <div className="bg-[#0A0A0F]/80 backdrop-blur-xl p-6 rounded-3xl border border-white/10 shadow-2xl relative overflow-hidden">
+                    {/* Decorative Gradient */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-b from-[#31A8FF]/20 to-transparent blur-3xl rounded-full pointer-events-none"></div>
+
+                    <h2 className="text-xl font-bold mb-6 flex items-center gap-3 text-white relative z-10">
+                      <span className="p-2 bg-gradient-to-r from-[#31A8FF]/20 to-[#8B31FF]/20 rounded-xl border border-white/5 text-[#31A8FF]"><FiTrendingUp className="w-5 h-5" /></span>
+                      Solicitação via WhatsApp
                     </h2>
 
-                    <div className="space-y-6">
-                      {/* Tipo de Agendamento */}
-                      <div>
-                        <label className="block text-sm font-medium text-gray-300 mb-2">
-                          Quando deseja ser atendido?*
+                    <div className="space-y-6 relative z-10">
+
+                      {/* Seletor de Agendamento */}
+                      <div className="space-y-3">
+                        <label className="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">
+                          Tipo de Atendimento
                         </label>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        <div className="grid grid-cols-2 gap-3">
                           <button
                             type="button"
                             onClick={() => setSchedulingType('now')}
-                            className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${schedulingType === 'now'
-                              ? 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white'
-                              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                            className={`px-3 py-4 rounded-xl text-sm font-bold transition-all duration-300 flex flex-col items-center justify-center gap-2 border ${schedulingType === 'now'
+                              ? 'bg-white text-black border-white shadow-[0_0_15px_rgba(255,255,255,0.2)]'
+                              : 'bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-white'
                               }`}
                           >
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                            <span className="text-xs sm:text-sm">Atendimento Agora</span>
+                            <FiClock className="w-5 h-5" />
+                            <span>Imediato</span>
                           </button>
                           <button
                             type="button"
                             onClick={() => setSchedulingType('schedule')}
-                            className={`px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 flex items-center justify-center gap-2 ${schedulingType === 'schedule'
-                              ? 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white'
-                              : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                            className={`px-3 py-4 rounded-xl text-sm font-bold transition-all duration-300 flex flex-col items-center justify-center gap-2 border ${schedulingType === 'schedule'
+                              ? 'bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white border-transparent shadow-[0_0_15px_rgba(139,49,255,0.3)]'
+                              : 'bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:text-white'
                               }`}
                           >
-                            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span className="text-xs sm:text-sm">Agendar Horário</span>
+                            <FiBarChart2 className="w-5 h-5" />
+                            <span>Agendar</span>
                           </button>
                         </div>
-                        {formErrors.scheduling && (
-                          <p className="mt-1 text-sm text-red-500">{formErrors.scheduling}</p>
-                        )}
+                        {formErrors.scheduling && <p className="text-xs text-red-400 pl-1">{formErrors.scheduling}</p>}
                       </div>
 
-                      {/* Data e Hora (se agendamento) */}
+                      {/* Input Data */}
                       {schedulingType === 'schedule' && (
-                        <div>
-                          <label htmlFor="datetime" className="block text-sm font-medium text-gray-300 mb-2">
-                            Data e Hora*
+                        <div className="space-y-2 animate-fadeIn">
+                          <label htmlFor="datetime" className="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">
+                            Data e Hora
                           </label>
                           <input
                             type="datetime-local"
                             id="datetime"
                             value={appointmentDateTime}
                             onChange={(e) => setAppointmentDateTime(e.target.value)}
-                            className={`w-full px-4 py-2 bg-gray-700 border ${formErrors.appointment ? 'border-red-500' : 'border-gray-600'
-                              } rounded-lg focus:outline-none focus:border-[#8B31FF] text-white`}
-                            suppressHydrationWarning
+                            className={`w-full px-4 py-3 bg-[#121218] border ${formErrors.appointment ? 'border-red-500/50' : 'border-white/10'} rounded-xl focus:outline-none focus:border-[#8B31FF] focus:bg-[#1A1A23] text-white text-sm transition-colors`}
                           />
-                          {formErrors.appointment && (
-                            <p className="mt-1 text-sm text-red-500">{formErrors.appointment}</p>
-                          )}
+                          {formErrors.appointment && <p className="text-xs text-red-400 pl-1">{formErrors.appointment}</p>}
                         </div>
                       )}
 
-                      {/* Informações Adicionais */}
-                      <div>
-                        <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-300 mb-2">
-                          Informações Adicionais (opcional)
+                      {/* Textarea */}
+                      <div className="space-y-2">
+                        <label htmlFor="additionalInfo" className="text-xs font-bold text-slate-500 uppercase tracking-widest pl-1">
+                          Observações
                         </label>
                         <textarea
                           id="additionalInfo"
                           value={additionalInfo}
                           onChange={(e) => setAdditionalInfo(e.target.value)}
-                          rows={4}
-                          className="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-[#8B31FF] text-white resize-none"
-                          placeholder="Descreva aqui qualquer informação adicional que julgar importante..."
+                          rows={3}
+                          className="w-full px-4 py-3 bg-[#121218] border border-white/10 rounded-xl focus:outline-none focus:border-[#31A8FF] focus:bg-[#1A1A23] text-white text-sm resize-none transition-colors"
+                          placeholder="Detalhes adicionais..."
                         />
                       </div>
 
-                      {/* Total e Botão de Envio */}
-                      <div className="space-y-4">
-                        <div className="p-4 bg-gray-700 rounded-lg">
-                          <div className="flex justify-between items-center">
-                            <span className="text-lg font-medium text-gray-300">Total:</span>
-                            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text">
-                              R$ {totalPrice.toFixed(2).replace('.', ',')}
-                            </span>
-                          </div>
-                        </div>
-
+                      {/* Total Box Removed, replaced with simple CTA */}
+                      <div className="pt-4 border-t border-white/10 space-y-4">
                         <button
                           onClick={handleSubmitService}
-                          className="block w-full py-3 px-4 text-center font-medium text-white bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] rounded-lg hover:opacity-90 transition-opacity duration-300"
+                          className="group w-full py-4 text-center font-bold text-white bg-[#00FF94] text-black rounded-xl hover:bg-[#00CC76] transition-all shadow-[0_0_20px_rgba(0,255,148,0.3)] relative overflow-hidden"
                         >
-                          Finalizar Pedido
+                          <span className="relative z-10 flex items-center justify-center gap-2 text-[#050510]">
+                            Solicitar Orçamento <FiPhone className="w-5 h-5" />
+                          </span>
                         </button>
                       </div>
                     </div>
