@@ -231,7 +231,7 @@ export default function HomeClient() {
                 className="
                     relative
                     w-full
-                    min-h-screen
+                    min-h-[100dvh]
                     flex
                     flex-col
                     items-center
@@ -242,8 +242,10 @@ export default function HomeClient() {
                     xl:px-24
                     bg-[#050510]
                     overflow-x-hidden
-                    pt-24
-                    pb-12
+                    pt-20
+                    pb-6
+                    lg:pt-24
+                    lg:pb-12
                 "
                 aria-label="Software de otimização de PC para Windows - Voltris Optimizer"
             >
@@ -254,20 +256,20 @@ export default function HomeClient() {
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
                 </div>
 
-                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-8 h-full relative z-10">
+                <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-8 h-full relative z-10">
 
                     {/* Left Content - Typography & CTA */}
                     {/* Using display: contents on mobile to allow reordering of children relative to the visual component */}
                     <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-4 lg:z-20">
 
                         {/* Text Content - Order 1 */}
-                        <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 z-20 w-full">
+                        <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-2 lg:gap-4 z-20 w-full lg:pb-28">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
                                 <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
                                 <span className="text-xs sm:text-sm font-medium text-white/80 tracking-wide">Novos Planos Empresariais Disponíveis</span>
                             </div>
 
-                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans">
+                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans lg:mt-12">
                                 <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Software de Otimização de PC</span> <br className="hidden lg:block" />
                                 <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">para Máxima Performance no Windows</span>
                             </h1>
@@ -277,8 +279,8 @@ export default function HomeClient() {
                             </p>
                         </div>
 
-                        {/* Buttons - Order 3 (Moved below visual on mobile) - Pushed to bottom on desktop */}
-                        <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:mt-auto">
+                        {/* Buttons - Order 3 (Moved below visual on mobile) - Fixed to bottom left on desktop */}
+                        <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:absolute lg:bottom-0 lg:left-0 lg:z-30">
                             <a
                                 href="/todos-os-servicos"
                                 className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
@@ -366,7 +368,7 @@ export default function HomeClient() {
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-4">
-                                    <a href="/about" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 transition-all duration-300">
+                                    <a href="/sobre" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 transition-all duration-300">
                                         Conheça Nossa História
                                         <ChevronRight className="w-4 h-4 ml-2" />
                                     </a>

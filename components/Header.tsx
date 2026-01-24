@@ -34,6 +34,7 @@ export default function Header() {
     { name: 'Home', path: '/' },
     { name: 'Serviços', path: '/todos-os-servicos' },
     { name: 'Guias', path: '/guias' },
+    { name: 'Sobre', path: '/sobre' },
     { name: 'Dúvidas', path: '/faq' },
     { name: 'Contato', path: '/contato' },
   ];
