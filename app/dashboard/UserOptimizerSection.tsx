@@ -49,7 +49,55 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
     };
 
     if (loading) return null;
-    if (installations.length === 0) return null;
+
+    if (installations.length === 0) {
+        return (
+            <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
+                <div className="flex items-center justify-between px-2">
+                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                        <FiMonitor className="text-[#31A8FF]" /> Meu Computador
+                    </h2>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-8 bg-[#1A1A22] border border-white/5 rounded-3xl flex flex-col items-center text-center max-w-2xl mx-auto"
+                >
+                    <div className="p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-blue-400 mb-6">
+                        <FiZap className="w-8 h-8" />
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-white mb-2">Vincule seu computador</h3>
+                    <p className="text-slate-400 mb-8 max-w-md">
+                        Acesse as informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do site.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                        <div className="bg-[#121218] border border-white/5 p-4 rounded-2xl flex items-center gap-4 text-left">
+                            <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white shrink-0 font-bold">1</div>
+                            <p className="text-xs text-slate-300">Abra o <span className="text-white font-bold">Voltris Optimizer</span> no seu PC</p>
+                        </div>
+                        <div className="bg-[#121218] border border-white/5 p-4 rounded-2xl flex items-center gap-4 text-left">
+                            <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white shrink-0 font-bold">2</div>
+                            <p className="text-xs text-slate-300">Clique em <span className="text-white font-bold">Vincular Conta</span> no topo do app</p>
+                        </div>
+                    </div>
+
+                    <div className="mt-8 pt-8 border-t border-white/5 w-full flex flex-col items-center">
+                        <p className="text-xs text-slate-500 mb-4 uppercase tracking-widest font-black">Não tem o programa?</p>
+                        <a
+                            href="https://github.com/DougFHansen/voltris-seo-optimized/releases/latest"
+                            target="_blank"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                        >
+                            Baixar Voltris Optimizer
+                        </a>
+                    </div>
+                </motion.div>
+            </div>
+        );
+    }
 
     return (
         <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
@@ -96,15 +144,15 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
 
                             <div className="flex flex-col items-end gap-2 text-right">
                                 <div className={`px-2.5 py-1 rounded-lg text-[10px] font-black tracking-widest ${inst.is_optimized
-                                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                                        : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                                    : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
                                     }`}>
                                     {inst.is_optimized ? 'OTIMIZADO' : 'SISTEMA PADRÃO'}
                                 </div>
 
                                 <div className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${inst.license_status === 'active'
-                                        ? 'text-emerald-400 bg-emerald-400/5'
-                                        : 'text-blue-400 bg-blue-400/5'
+                                    ? 'text-emerald-400 bg-emerald-400/5'
+                                    : 'text-blue-400 bg-blue-400/5'
                                     }`}>
                                     LICENÇA: {inst.license_status?.toUpperCase() || 'TRIAL'}
                                     {inst.license_status === 'trial' && inst.license_expires_at && (

@@ -13,6 +13,8 @@ import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
 import UserOptimizerSection from './UserOptimizerSection';
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
 
 // Componente de Card de Estatística Ultra-Moderno
@@ -46,7 +48,22 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => (
 );
 
 export default function DashboardPage() {
+  return (
+    <Suspense fallback={
+      <div className="h-full w-full flex items-center justify-center">
+        <div className="w-16 h-16 border-4 border-[#8B31FF] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    }>
+      <DashboardContent />
+    </Suspense>
+  );
+}
+
+function DashboardContent() {
   const { user, profile, loading } = useAuth();
+  const searchParams = useSearchParams();
+  const activeTab = searchParams.get('tab') || 'overview';
+
   const [orders, setOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -139,103 +156,94 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-shrink-0">
-          <StatCard title="Total de Pedidos" value={stats.total} icon={FiPackage} color="blue" delay={0.1} />
-          <StatCard title="Em Andamento" value={stats.pending} icon={FiActivity} color="purple" delay={0.2} />
-          <StatCard title="Concluídos" value={stats.completed} icon={FiCheckCircle} color="green" delay={0.3} />
-        </div>
-
-        {/* Voltris Optimizer - Real-time Status */}
-        <UserOptimizerSection userId={user?.id || ''} />
-
-        {/* Main Content Area - Scrollable */}
-        <div className="flex-1 min-h-0 bg-[#121218] border border-white/5 rounded-3xl overflow-hidden flex flex-col relative group">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-50 block"></div>
-
-          {/* Toolbar */}
-          <div className="p-6 border-b border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0 bg-[#121218]">
-            <div className="flex items-center gap-4 w-full sm:w-auto overflow-x-auto no-scrollbar">
-              {['all', 'pending', 'completed'].map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${filter === f
-                    ? 'bg-white text-black shadow-lg shadow-white/10'
-                    : 'text-slate-400 hover:text-white hover:bg-white/5'
-                    }`}
-                >
-                  {f === 'all' ? 'Todos' : f === 'pending' ? 'Pendentes' : 'Concluídos'}
-                </button>
-              ))}
+        {/* Conditional Sections based on Tab */}
+        {activeTab === 'overview' && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="flex flex-col gap-6 flex-1 min-h-0"
+          >
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-shrink-0">
+              <StatCard title="Total de Pedidos" value={stats.total} icon={FiPackage} color="blue" delay={0.1} />
+              <StatCard title="Em Andamento" value={stats.pending} icon={FiActivity} color="purple" delay={0.2} />
+              <StatCard title="Concluídos" value={stats.completed} icon={FiCheckCircle} color="green" delay={0.3} />
             </div>
-            <div className="relative w-full sm:w-64">
-              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-              <input
-                type="text"
-                placeholder="Buscar pedido..."
-                className="w-full bg-[#0A0A0F] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#8B31FF] transition-colors"
-              />
-            </div>
-          </div>
 
-          {/* List Content */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
-            <AnimatePresence>
-              {filteredOrders.length > 0 ? (
-                filteredOrders.map((order, i) => (
-                  <motion.div
-                    key={order.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className="bg-[#1A1A22] hover:bg-[#202028] border border-white/5 p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 group/item transition-all hover:border-white/10"
-                  >
-                    <div className="flex items-center gap-4 w-full md:w-auto">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${order.status === 'completed' ? 'bg-green-500/10 text-green-400' :
-                        order.status === 'pending' ? 'bg-purple-500/10 text-purple-400' : 'bg-slate-800 text-slate-400'
-                        }`}>
-                        <FiPackage className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-bold">Pedido #{order.id.substring(0, 8)}</h4>
-                        <p className="text-sm text-slate-400">{new Date(order.created_at).toLocaleDateString()}</p>
-                      </div>
-                    </div>
+            {/* List Content */}
+            <div className="flex-1 min-h-0 bg-[#121218] border border-white/5 rounded-3xl overflow-hidden flex flex-col relative group">
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-50 block"></div>
 
-                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-12 w-full md:w-auto">
-                      <div className="text-center md:text-left">
-                        <p className="text-xs text-slate-500 uppercase tracking-wider">Status</p>
-                        <div className={`mt-1 px-3 py-1 rounded-full text-xs font-bold inline-flex items-center gap-2 ${order.status === 'completed' ? 'bg-green-500/10 text-green-400 border border-green-500/20' :
-                          'bg-purple-500/10 text-purple-400 border border-purple-500/20'
-                          }`}>
-                          <span className={`w-1.5 h-1.5 rounded-full ${order.status === 'completed' ? 'bg-green-400' : 'bg-purple-400'} animate-pulse`}></span>
-                          {order.status === 'completed' ? 'Concluído' : 'Processando'}
-                        </div>
-                      </div>
-
-                      <div className="text-center md:text-left">
-                        <p className="text-xs text-slate-500 uppercase tracking-wider">Valor</p>
-                        <p className="text-white font-bold">R$ {order.total.toFixed(2)}</p>
-                      </div>
-
-                      <button className="opacity-0 group-hover/item:opacity-100 transition-opacity p-2 hover:bg-white/10 rounded-lg text-slate-400 hover:text-white">
-                        <FiArrowRight className="w-5 h-5" />
-                      </button>
-                    </div>
-                  </motion.div>
-                ))
-              ) : (
-                <div className="h-full flex flex-col items-center justify-center text-center p-8 opacity-50">
-                  <FiPackage className="w-16 h-16 text-slate-600 mb-4" />
-                  <h3 className="text-xl font-bold text-white mb-2">Sem pedidos por aqui</h3>
-                  <p className="text-slate-400">Seus pedidos aparecerão nesta área.</p>
+              <div className="p-6 border-b border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0 bg-[#121218]">
+                <div className="flex items-center gap-4 w-full sm:w-auto overflow-x-auto no-scrollbar">
+                  {['all', 'pending', 'completed'].map((f) => (
+                    <button
+                      key={f}
+                      onClick={() => setFilter(f)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${filter === f
+                        ? 'bg-white text-black'
+                        : 'text-slate-400 hover:text-white hover:bg-white/5'
+                        }`}
+                    >
+                      {f === 'all' ? 'Todos' : f === 'pending' ? 'Pendentes' : 'Concluídos'}
+                    </button>
+                  ))}
                 </div>
-              )}
-            </AnimatePresence>
-          </div>
+              </div>
 
-        </div>
+              <div className="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+                <AnimatePresence>
+                  {filteredOrders.length > 0 ? (
+                    filteredOrders.map((order, i) => (
+                      <motion.div
+                        key={order.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                        className="bg-[#1A1A22] border border-white/5 p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 transition-all"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${order.status === 'completed' ? 'bg-green-500/10 text-green-400' : 'bg-purple-500/10 text-purple-400'}`}>
+                            <FiPackage className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <h4 className="text-white font-bold">Pedido #{order.id.substring(0, 8)}</h4>
+                            <p className="text-sm text-slate-400">{new Date(order.created_at).toLocaleDateString()}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-8">
+                          <div className="text-right">
+                            <p className="text-xs text-slate-500 uppercase tracking-widest">Valor</p>
+                            <p className="text-white font-bold">R$ {order.total.toFixed(2)}</p>
+                          </div>
+                          <div className={`px-3 py-1 rounded-full text-[10px] font-bold ${order.status === 'completed' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-purple-500/10 text-purple-400 border border-purple-500/20'}`}>
+                            {order.status === 'completed' ? 'Concluído' : 'Processando'}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))
+                  ) : (
+                    <div className="h-full flex flex-col items-center justify-center text-center p-8 opacity-50">
+                      <FiPackage className="w-16 h-16 text-slate-600 mb-4" />
+                      <h3 className="text-xl font-bold text-white mb-2">Sem pedidos por aqui</h3>
+                      <p className="text-slate-400">Seus pedidos aparecerão nesta área.</p>
+                    </div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {activeTab === 'pc' && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex-1"
+          >
+            <UserOptimizerSection userId={user?.id || ''} />
+          </motion.div>
+        )}
       </div>
 
       {/* Invisible Setup */}

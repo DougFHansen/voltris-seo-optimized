@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { FiHome, FiShoppingBag, FiUser, FiHeadphones, FiBell, FiMenu, FiX, FiLogOut, FiMonitor } from 'react-icons/fi';
 
@@ -14,6 +14,7 @@ interface SidebarProps {
 
 export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [user, setUser] = useState<any>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const supabase = createClient();
@@ -27,10 +28,10 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
   }, [supabase.auth]);
 
   const tabs = [
-    { label: 'Visão Geral', value: 'overview', icon: FiHome, path: '/dashboard' },
-    { label: 'Meu PC', value: 'pc', icon: FiMonitor, path: '/dashboard' },
+    { label: 'Visão Geral', value: 'overview', icon: FiHome, path: '/dashboard', query: { tab: 'overview' } },
+    { label: 'Meu PC', value: 'pc', icon: FiMonitor, path: '/dashboard', query: { tab: 'pc' } },
     { label: 'Meus Pedidos', value: 'orders', icon: FiShoppingBag, path: '/dashboard/orders' },
-    { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/perfil' }, // Link direto para /perfil
+    { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/perfil' },
     { label: 'Suporte', value: 'tickets', icon: FiHeadphones, path: '/dashboard/tickets' },
     { label: 'Notificações', value: 'notifications', icon: FiBell, path: '/dashboard/notifications' }
   ];
@@ -66,14 +67,24 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
           {tabs.map((tab) => {
             const Icon = tab.icon;
             // Lógica para marcar ativo (home exact match, others startsWith)
-            const isActive = tab.path === '/dashboard'
-              ? pathname === '/dashboard'
-              : pathname.startsWith(tab.path);
+            const currentTab = searchParams.get('tab') || 'overview';
+
+            let isActive = false;
+            if (tab.path === '/dashboard' && !tab.query) {
+              // Caso base /dashboard puro
+              isActive = pathname === '/dashboard' && !searchParams.get('tab');
+            } else if (tab.query) {
+              // Caso com query param (tab=pc, etc)
+              isActive = pathname === '/dashboard' && searchParams.get('tab') === tab.query.tab;
+            } else {
+              // Outras páginas
+              isActive = pathname.startsWith(tab.path);
+            }
 
             return (
               <Link
-                href={tab.path}
-                key={tab.path}
+                href={tab.query ? { pathname: tab.path, query: tab.query } : tab.path}
+                key={tab.label}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`group flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 relative overflow-hidden ${isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/[0.03]'}`}
               >
