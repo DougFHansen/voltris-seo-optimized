@@ -5,19 +5,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
-import { FiHome, FiShoppingBag, FiUser, FiHeadphones, FiBell, FiMenu, FiX, FiLogOut, FiMonitor } from 'react-icons/fi';
+import { FiHome, FiShoppingBag, FiUser, FiHeadphones, FiBell, FiMenu, FiX, FiLogOut, FiMonitor, FiLayout } from 'react-icons/fi';
 
 interface SidebarProps {
   activeTab?: string;
   onTabChange?: (tab: string) => void;
+  mobileOpen?: boolean;
+  setMobileOpen?: (open: boolean) => void;
 }
 
-export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+export default function Sidebar({ activeTab, onTabChange, mobileOpen = false, setMobileOpen }: SidebarProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [user, setUser] = useState<any>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const supabase = createClient();
+
+  // Fechar menu ao navegar
+  useEffect(() => {
+    if (setMobileOpen) setMobileOpen(false);
+  }, [pathname, searchParams, setMobileOpen]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -29,7 +35,7 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
   const tabs = [
     { label: 'Visão Geral', value: 'overview', icon: FiHome, path: '/dashboard', query: { tab: 'overview' } },
-    { label: 'Meu PC', value: 'pc', icon: FiMonitor, path: '/dashboard', query: { tab: 'pc' } },
+    { label: 'Meu Computador', value: 'pc', icon: FiMonitor, path: '/dashboard', query: { tab: 'pc' } },
     { label: 'Meus Pedidos', value: 'orders', icon: FiShoppingBag, path: '/dashboard/orders' },
     { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/perfil' },
     { label: 'Suporte', value: 'tickets', icon: FiHeadphones, path: '/dashboard/tickets' },
@@ -43,10 +49,19 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
   const SidebarContent = () => (
     <div className="h-full flex flex-col">
-      <div className="flex-1 bg-[#121218]/90 backdrop-blur-2xl rounded-3xl border border-white/5 shadow-2xl p-6 flex flex-col relative overflow-hidden">
-        {/* Background Decor */}
+      <div className="flex-1 bg-[#121218] lg:bg-[#121218]/90 backdrop-blur-2xl rounded-tr-3xl rounded-br-3xl lg:rounded-3xl border-r lg:border border-white/5 shadow-2xl p-6 flex flex-col relative overflow-hidden h-full">
+        {/* Background Decor (Apenas Desktop para performance ou estilo) */}
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]"></div>
-        <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-[#8B31FF]/10 rounded-full blur-3xl"></div>
+
+        {/* Mobile Close Button */}
+        <div className="lg:hidden flex justify-end mb-4">
+          <button
+            onClick={() => setMobileOpen?.(false)}
+            className="p-2 bg-white/5 rounded-lg text-white hover:bg-white/10"
+          >
+            <FiX className="w-6 h-6" />
+          </button>
+        </div>
 
         {/* Profile Header */}
         <div className="flex items-center gap-4 mb-8 p-4 bg-white/[0.03] rounded-2xl border border-white/5 relative z-10 transition-all hover:bg-white/[0.05]">
@@ -63,21 +78,17 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
         </div>
 
         {/* Navigation */}
-        <nav className="space-y-2 flex-1 relative z-10 overflow-y-auto custom-scrollbar">
+        <nav className="space-y-2 flex-1 relative z-10 overflow-y-auto custom-scrollbar pr-2">
           {tabs.map((tab) => {
             const Icon = tab.icon;
-            // Lógica para marcar ativo (home exact match, others startsWith)
-            const currentTab = searchParams.get('tab') || 'overview';
 
+            // Lógica robusta de active state
             let isActive = false;
-            if (tab.path === '/dashboard' && !tab.query) {
-              // Caso base /dashboard puro
-              isActive = pathname === '/dashboard' && !searchParams.get('tab');
-            } else if (tab.query) {
-              // Caso com query param (tab=pc, etc)
-              isActive = pathname === '/dashboard' && searchParams.get('tab') === tab.query.tab;
+            if (tab.path === '/dashboard') {
+              if (!tab.query) isActive = pathname === '/dashboard' && !searchParams.get('tab');
+              else isActive = pathname === '/dashboard' && searchParams.get('tab') === tab.query.tab;
+              if (tab.value === 'overview' && pathname === '/dashboard' && !searchParams.get('tab')) isActive = true;
             } else {
-              // Outras páginas
               isActive = pathname.startsWith(tab.path);
             }
 
@@ -85,8 +96,8 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
               <Link
                 href={tab.query ? { pathname: tab.path, query: tab.query } : tab.path}
                 key={tab.label}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`group flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 relative overflow-hidden ${isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/[0.03]'}`}
+                onClick={() => setMobileOpen?.(false)}
+                className={`group flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 relative overflow-hidden flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/[0.03]'}`}
               >
                 {isActive && (
                   <motion.div
@@ -104,7 +115,7 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
         </nav>
 
         {/* Footer / Logout */}
-        <div className="pt-6 mt-6 border-t border-white/5 relative z-10">
+        <div className="pt-6 mt-6 border-t border-white/5 relative z-10 flex-shrink-0">
           <button
             onClick={handleLogout}
             className="w-full flex items-center gap-4 px-4 py-3 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all font-medium text-sm group"
@@ -119,39 +130,32 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
   return (
     <>
-      <div className="lg:hidden fixed top-20 left-4 z-40">
-        <button
-          className="p-3 rounded-xl bg-[#121218]/90 backdrop-blur-xl border border-white/10 text-white shadow-lg"
-          onClick={() => setIsMobileMenuOpen(true)}
-        >
-          <FiMenu className="w-6 h-6" />
-        </button>
-      </div>
-
-      <div className="hidden lg:block h-full w-80 flex-shrink-0">
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block h-full w-full">
         <SidebarContent />
       </div>
 
+      {/* Mobile Sidebar (Drawer) */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-[60] lg:hidden">
+        {mobileOpen && (
+          <div className="fixed inset-0 z-[110] lg:hidden">
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+              onClick={() => setMobileOpen?.(false)}
             />
+            {/* Drawer Content */}
             <motion.div
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute top-0 left-0 h-full w-4/5 max-w-sm bg-[#050510] shadow-2xl"
+              className="absolute top-0 left-0 h-full w-[85%] max-w-sm bg-[#050510] shadow-2xl"
             >
-              <div className="h-full">
-                <SidebarContent />
-              </div>
+              <SidebarContent />
             </motion.div>
           </div>
         )}

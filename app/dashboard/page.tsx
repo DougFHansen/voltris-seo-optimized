@@ -130,7 +130,7 @@ function DashboardContent() {
 
   return (
     <AuthGuard>
-      <div className="h-[calc(100vh-140px)] flex flex-col gap-6 overflow-hidden">
+      <div className="flex flex-col gap-6 w-full max-w-full pb-20 lg:pb-0">
 
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 flex-shrink-0">
@@ -171,7 +171,7 @@ function DashboardContent() {
             </div>
 
             {/* List Content */}
-            <div className="flex-1 min-h-0 bg-[#121218] border border-white/5 rounded-3xl overflow-hidden flex flex-col relative group">
+            <div className="bg-[#121218] border border-white/5 rounded-3xl overflow-hidden flex flex-col relative group">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-50 block"></div>
 
               <div className="p-6 border-b border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0 bg-[#121218]">
@@ -191,7 +191,7 @@ function DashboardContent() {
                 </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-4 space-y-3 custom-scrollbar">
+              <div className="p-4 space-y-3">
                 <AnimatePresence>
                   {filteredOrders.length > 0 ? (
                     filteredOrders.map((order, i) => (
