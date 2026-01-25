@@ -4,10 +4,19 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Zap, MessageSquare, CheckCircle2, Lock, Cpu, Server } from 'lucide-react';
+import { ShieldCheck, Zap, MessageSquare, CheckCircle2, Lock, Cpu, Server, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdquirirLicencaPage() {
+
+    // Smooth scroll para a seção de compra
+    const scrollToPurchase = () => {
+        const purchaseSection = document.getElementById('purchase-section');
+        if (purchaseSection) {
+            purchaseSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <>
             <Header />
@@ -18,36 +27,75 @@ export default function AdquirirLicencaPage() {
                 <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-[#31A8FF]/10 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none"></div>
                 <div className="absolute bottom-[-10%] left-[-5%] w-[800px] h-[800px] bg-[#8B31FF]/10 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow pointer-events-none" style={{ animationDelay: '2s' }}></div>
 
-                <section className="relative z-10 pt-32 pb-20 px-4 flex flex-col items-center justify-center min-h-[90vh]">
-
+                {/* HERO Full Screen */}
+                <section className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="max-w-4xl w-full mx-auto text-center"
+                        transition={{ duration: 0.8 }}
+                        className="max-w-4xl mx-auto text-center"
                     >
                         {/* Tagline */}
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
+                        >
                             <Lock className="w-3 h-3 text-[#31A8FF]" />
                             <span className="text-[10px] sm:text-xs font-bold text-white/70 tracking-widest uppercase">Pagamento Seguro & Ativação Imediata</span>
-                        </div>
+                        </motion.div>
 
-                        {/* Headline */}
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight text-white drop-shadow-2xl">
-                            Adquira sua Licença do <br />
+                        {/* Huge Headline */}
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 leading-[0.9] text-white drop-shadow-2xl">
+                            ADQUIRA SUA <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
-                                VOLTRIS OPTIMIZER
+                                LICENÇA VIP
                             </span>
                         </h1>
 
-                        {/* Subheadline */}
-                        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
-                            Desbloqueie o potencial máximo do seu hardware hoje mesmo.
-                            Garanta acesso vitalício ou anual com suporte técnico especializado e atualizações garantidas.
+                        <p className="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                            Desbloqueie agora o potencial máximo do seu hardware.
+                            <br className="hidden md:block" />
+                            Suporte técnico especializado e atualizações garantidas.
                         </p>
 
+                        {/* Botão de Scroll CTA */}
+                        <motion.button
+                            onClick={scrollToPurchase}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="group inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-black text-lg rounded-full shadow-[0_0_40px_rgba(255,255,255,0.3)] hover:shadow-[0_0_60px_rgba(255,255,255,0.5)] transition-all duration-300"
+                        >
+                            COMPRAR LICENÇA
+                            <ChevronDown className="w-5 h-5 animate-bounce" />
+                        </motion.button>
+
+                    </motion.div>
+
+                    {/* Scroll Indicator */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1, duration: 1 }}
+                        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
+                    >
+                        <span className="text-[10px] uppercase tracking-widest">Role para ver detalhes</span>
+                        <div className="w-[1px] h-12 bg-gradient-to-b from-slate-500 to-transparent"></div>
+                    </motion.div>
+                </section>
+
+                {/* PURCHASE SECTION (Destino do Scroll) */}
+                <section id="purchase-section" className="relative z-10 py-32 px-4 bg-[#050510]">
+                    <div className="max-w-3xl mx-auto">
+
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Atendimento Premium</h2>
+                            <p className="text-slate-400 text-lg">Fale diretamente com nosso time para liberar sua chave.</p>
+                        </div>
+
                         {/* Card Principal de Conversão */}
-                        <div className="bg-[#0A0A0E]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 max-w-3xl mx-auto shadow-2xl relative overflow-hidden group">
+                        <div className="bg-[#0A0A0E]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden group">
 
                             {/* Glow Effect on Hover */}
                             <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF]/5 to-[#8B31FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -126,7 +174,7 @@ export default function AdquirirLicencaPage() {
                             </div>
                         </div>
 
-                    </motion.div>
+                    </div>
                 </section>
                 <Footer />
             </main>
