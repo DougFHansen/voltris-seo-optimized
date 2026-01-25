@@ -6,13 +6,13 @@ import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import {
   FiPackage, FiClock, FiCheckCircle, FiRefreshCw, FiPlus,
-  FiSearch, FiFilter, FiMoreVertical, FiArrowRight, FiActivity
+  FiActivity
 } from 'react-icons/fi';
 import type { Order } from '@/types/order';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
-import UserOptimizerSection from './UserOptimizerSection';
+import MyComputerPage from './MyComputerPage';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 
@@ -130,31 +130,33 @@ function DashboardContent() {
 
   return (
     <AuthGuard>
-      <div className="flex flex-col gap-6 w-full max-w-full pb-20 lg:pb-0">
+      <div className="flex flex-col gap-6 w-full max-w-full pb-20 lg:pb-0 h-full">
 
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 flex-shrink-0">
-          <div>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-              Dashboard <span className="text-xs px-2 py-1 rounded bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20">PRO</span>
-            </h1>
-            <p className="text-slate-400 mt-1">Visão geral da sua conta e serviços ativos.</p>
-          </div>
+        {/* Header Section - Only show if NOT on 'pc' tab */}
+        {activeTab !== 'pc' && (
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 flex-shrink-0">
+            <div>
+              <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+                Dashboard <span className="text-xs px-2 py-1 rounded bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20">PRO</span>
+              </h1>
+              <p className="text-slate-400 mt-1">Visão geral da sua conta e serviços ativos.</p>
+            </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => { setIsRefreshing(true); fetchData(false).finally(() => setIsRefreshing(false)); }}
-              className="p-3 bg-[#1A1A22] border border-white/10 rounded-xl hover:bg-white/5 transition-colors text-slate-400 hover:text-white"
-              title="Atualizar"
-            >
-              <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
-            </button>
-            <Link href="/servicos" className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-              <FiPlus className="w-5 h-5" />
-              <span>Novo Pedido</span>
-            </Link>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => { setIsRefreshing(true); fetchData(false).finally(() => setIsRefreshing(false)); }}
+                className="p-3 bg-[#1A1A22] border border-white/10 rounded-xl hover:bg-white/5 transition-colors text-slate-400 hover:text-white"
+                title="Atualizar"
+              >
+                <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
+              </button>
+              <Link href="/servicos" className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                <FiPlus className="w-5 h-5" />
+                <span>Novo Pedido</span>
+              </Link>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Conditional Sections based on Tab */}
         {activeTab === 'overview' && (
@@ -235,13 +237,14 @@ function DashboardContent() {
           </motion.div>
         )}
 
+        {/* Use MyComputerPage component for 'pc' tab */}
         {activeTab === 'pc' && (
           <motion.div
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex-1"
+            className="flex-1 h-full"
           >
-            <UserOptimizerSection userId={user?.id || ''} />
+            <MyComputerPage userId={user?.id || ''} />
           </motion.div>
         )}
       </div>
