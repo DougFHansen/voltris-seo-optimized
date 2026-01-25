@@ -100,13 +100,55 @@ export default function LoginPage() {
     }
   }, [success, isAdmin, adminChecked, redirectUrl, pendingOrder]);
 
+  // --- HELPERS ---
+  const translateError = (err: string) => {
+    const msg = err.toLowerCase();
+    if (msg.includes('unable to validate email address') || msg.includes('invalid format')) return 'Formato de e-mail inválido.';
+    if (msg.includes('invalid login credentials')) return 'E-mail/Usuário ou senha incorretos.';
+    if (msg.includes('email not confirmed')) return 'E-mail não confirmado. Verifique sua caixa de entrada.';
+    if (msg.includes('user not found')) return 'Usuário não encontrado.';
+    if (msg.includes('password should be at least')) return 'A senha deve ter pelo menos 6 caracteres.';
+    if (msg.includes('user already registered')) return 'Este usuário/e-mail já está cadastrado.';
+    if (msg.includes('network error')) return 'Erro de conexão. Verifique sua internet.';
+    return 'Ocorreu um erro. Tente novamente.';
+  };
+
+  const validateEmail = (emailStr: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailStr);
+  };
+
   // --- HANDLERS ---
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setLoading(true);
     try {
-      const { data: signInData, error } = await supabase.auth.signInWithPassword({ email, password });
+      let loginEmail = email.trim();
+      const isEmail = validateEmail(loginEmail);
+
+      // Se não for e-mail, tenta buscar por username
+      if (!isEmail) {
+        try {
+          const res = await fetch('/api/v1/auth/get-email-by-username', {
+            method: 'POST',
+            body: JSON.stringify({ username: loginEmail }),
+          });
+          const data = await res.json();
+          if (data.email) {
+            loginEmail = data.email;
+          } else {
+            throw new Error('Usuário não encontrado');
+          }
+        } catch (err) {
+          throw new Error('Usuário não encontrado ou erro de conexão.');
+        }
+      }
+
+      const { data: signInData, error } = await supabase.auth.signInWithPassword({
+        email: loginEmail,
+        password
+      });
+
       if (error || !signInData.user) throw new Error(error?.message || 'Credenciais inválidas');
 
       const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', signInData.user.id).single();
@@ -117,7 +159,7 @@ export default function LoginPage() {
       if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
       setSuccess(true);
     } catch (err: any) {
-      setError(err.message);
+      setError(translateError(err.message));
     } finally {
       setLoading(false);
     }
@@ -125,9 +167,10 @@ export default function LoginPage() {
 
   const handleNextStep = () => {
     if (signupStep === 1) {
-      if (!login) return setError("Preencha o Login.");
-      if (!email) return setError("Preencha o Email.");
-      if (!password || password.length < 6) return setError("Senha precisa ter 6+ dígitos.");
+      if (!login) return setError("Preencha o Usuário.");
+      if (!email) return setError("Preencha o E-mail.");
+      if (!validateEmail(email)) return setError("Formato de e-mail inválido.");
+      if (!password || password.length < 6) return setError("A senha precisa ter pelo menos 6 dígitos.");
     }
     if (signupStep === 2) {
       if (!fullName) return setError("Preencha o Nome.");
@@ -177,7 +220,7 @@ export default function LoginPage() {
         }
       }
     } catch (err: any) {
-      setError(err.message);
+      setError(translateError(err.message));
     } finally {
       setLoading(false);
     }
@@ -247,7 +290,13 @@ export default function LoginPage() {
                     <form onSubmit={handleLogin} className="space-y-4">
                       <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-colors">
                         <Mail className="w-4 h-4 text-slate-500" />
-                        <input type="email" placeholder="Seu E-mail" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600" />
+                        <input
+                          type="text"
+                          placeholder="E-mail ou Usuário"
+                          value={email}
+                          onChange={e => setEmail(e.target.value)}
+                          className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600"
+                        />
                       </div>
                       <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-colors">
                         <Lock className="w-4 h-4 text-slate-500" />
