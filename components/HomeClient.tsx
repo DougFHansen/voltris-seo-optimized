@@ -227,6 +227,15 @@ export default function HomeClient() {
     return (
         <>
             <Header />
+            {/* Global Ambient Background Effects (Noise Overlay on Top) */}
+            <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+
+            {/* Background Gradients (Fixed Behind) */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+                <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/10 blur-[120px] mix-blend-screen animate-pulse-slow" />
+                <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/10 blur-[100px] mix-blend-screen animate-pulse-slow" style={{ animationDelay: '2s' }} />
+            </div>
+
             <section
                 className="
                     relative
@@ -249,12 +258,6 @@ export default function HomeClient() {
                 "
                 aria-label="Software de otimização de PC para Windows - Voltris Optimizer"
             >
-                {/* Background Ambient Effects - Deep Space */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/10 blur-[120px] mix-blend-screen animate-pulse-slow" />
-                    <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/10 blur-[100px] mix-blend-screen animate-pulse-slow" style={{ animationDelay: '2s' }} />
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
-                </div>
 
                 <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-8 h-full relative z-10">
 
