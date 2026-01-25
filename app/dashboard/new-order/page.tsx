@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { motion } from 'framer-motion';
@@ -19,13 +19,14 @@ interface OrderItem {
   price: number;
 }
 
-export default function NewOrderPage() {
+function NewOrderContent() {
   const [services, setServices] = useState<Service[]>([]);
   const [selectedServices, setSelectedServices] = useState<OrderItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const supabase = createClient();
 
   useEffect(() => {
     fetchServices();
@@ -50,7 +51,7 @@ export default function NewOrderPage() {
 
   const addService = (service: Service) => {
     const existingItem = selectedServices.find(item => item.service_id === service.id);
-    
+
     if (existingItem) {
       setSelectedServices(prev => prev.map(item =>
         item.service_id === service.id
@@ -72,7 +73,7 @@ export default function NewOrderPage() {
 
   const updateQuantity = (serviceId: string, quantity: number) => {
     if (quantity < 1) return;
-    
+
     setSelectedServices(prev => prev.map(item =>
       item.service_id === serviceId
         ? { ...item, quantity }
@@ -184,7 +185,7 @@ export default function NewOrderPage() {
           className="bg-[#1E1E1E] rounded-xl border border-gray-800/50 p-6 shadow-lg shadow-black/20"
         >
           <h2 className="text-xl font-semibold text-white mb-4">Carrinho</h2>
-          
+
           {selectedServices.length === 0 ? (
             <div className="text-center py-8">
               <FiShoppingCart className="w-12 h-12 text-gray-600 mx-auto mb-4" />
@@ -268,5 +269,17 @@ export default function NewOrderPage() {
         </motion.div>
       </div>
     </div>
+  );
+}
+
+export default function NewOrderPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-full">
+        <div className="w-12 h-12 border-4 border-[#FF4B6B] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    }>
+      <NewOrderContent />
+    </Suspense>
   );
 } 
