@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
-import { FiHome, FiShoppingBag, FiUser, FiHeadphones, FiBell, FiMenu, FiX, FiLogOut } from 'react-icons/fi';
+import { FiHome, FiShoppingBag, FiUser, FiHeadphones, FiBell, FiMenu, FiX, FiLogOut, FiMonitor } from 'react-icons/fi';
 
 interface SidebarProps {
   activeTab?: string;
@@ -28,6 +28,7 @@ export default function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
   const tabs = [
     { label: 'Visão Geral', value: 'overview', icon: FiHome, path: '/dashboard' },
+    { label: 'Meu PC', value: 'pc', icon: FiMonitor, path: '/dashboard' },
     { label: 'Meus Pedidos', value: 'orders', icon: FiShoppingBag, path: '/dashboard/orders' },
     { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/perfil' }, // Link direto para /perfil
     { label: 'Suporte', value: 'tickets', icon: FiHeadphones, path: '/dashboard/tickets' },
