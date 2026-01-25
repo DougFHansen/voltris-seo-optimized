@@ -19,6 +19,8 @@ import {
 import { createClient } from '@/utils/supabase/client';
 import TechFloatingElements from '@/components/TechFloatingElements';
 
+export const dynamic = 'force-dynamic';
+
 const otimizacaoPlans = [
   {
     id: "otimizacao-basica",

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         title: 'Otimização de PC - Deixe seu Computador Mais Rápido | VOLTRIS',
         description: 'Otimização completa para deixar seu PC mais rápido. Serviço remoto profissional.',
         url: 'https://voltris.com.br/otimizacao-pc',
-        type: 'service',
+        type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',
         images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'VOLTRIS - Otimização de PC' }]

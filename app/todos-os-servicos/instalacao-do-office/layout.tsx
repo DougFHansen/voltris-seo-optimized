@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         title: 'Instalação do Microsoft Office - Remoto e Profissional | VOLTRIS',
         description: 'Instalação e ativação do Microsoft Office com configuração completa.',
         url: 'https://voltris.com.br/todos-os-servicos/instalacao-do-office',
-        type: 'service',
+        type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',
         images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'VOLTRIS - Instalação Office' }]
