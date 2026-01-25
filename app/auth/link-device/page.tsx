@@ -14,22 +14,31 @@ function LinkDeviceContent() {
 
     useEffect(() => {
         const handleLinking = async () => {
+            console.log('[LINK_DEVICE] Iniciando processo de vinculação');
+            console.log('[LINK_DEVICE] installation_id:', installationId);
+
             // 1. Verificar sessão
             const { data: { session } } = await supabase.auth.getSession();
+            console.log('[LINK_DEVICE] Sessão:', session ? 'Autenticado' : 'Não autenticado');
 
             if (!session) {
                 // Redirecionar para login preservando o installation_id e o retorno para cá
                 const redirectUrl = `/auth/link-device${installationId ? `?installation_id=${installationId}` : ''}`;
+                console.log('[LINK_DEVICE] Redirecionando para login com redirect:', redirectUrl);
                 router.push(`/login?redirect=${encodeURIComponent(redirectUrl)}&installation_id=${installationId || ''}`);
                 return;
             }
 
             if (!installationId) {
+                console.log('[LINK_DEVICE] Sem installation_id, redirecionando para dashboard');
                 router.push('/dashboard?tab=pc');
                 return;
             }
 
             try {
+                console.log('[LINK_DEVICE] Chamando API de vinculação');
+                console.log('[LINK_DEVICE] Payload:', { installation_id: installationId, user_id: session.user.id });
+
                 // 2. Vincular dispositivo
                 const response = await fetch('/api/v1/install/link', {
                     method: 'POST',
@@ -40,8 +49,16 @@ function LinkDeviceContent() {
                     })
                 });
 
-                if (!response.ok) throw new Error('Falha na vinculação');
+                console.log('[LINK_DEVICE] Resposta da API:', response.status, response.statusText);
+                const responseData = await response.json();
+                console.log('[LINK_DEVICE] Dados da resposta:', responseData);
 
+                if (!response.ok) {
+                    console.error('[LINK_DEVICE] Erro na vinculação:', responseData);
+                    throw new Error('Falha na vinculação');
+                }
+
+                console.log('[LINK_DEVICE] Vinculação bem-sucedida! Redirecionando para dashboard');
                 // 3. Sucesso -> Dashboard
                 router.push('/dashboard?tab=pc&linked=true');
             } catch (err) {

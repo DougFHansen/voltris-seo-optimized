@@ -8,7 +8,13 @@ export async function POST(request: NextRequest) {
         const body = await request.json();
         const { installation_id, app_version, hardware } = body;
 
+        console.log('[API/INSTALL] Recebida requisição de registro');
+        console.log('[API/INSTALL] installation_id:', installation_id);
+        console.log('[API/INSTALL] app_version:', app_version);
+        console.log('[API/INSTALL] hardware:', hardware);
+
         if (!installation_id) {
+            console.error('[API/INSTALL] installation_id faltando');
             return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
         }
 
@@ -16,11 +22,13 @@ export async function POST(request: NextRequest) {
         const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
         if (!supabaseUrl || !supabaseServiceKey) {
+            console.error('[API/INSTALL] Configuração do banco faltando');
             return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
         }
 
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+        console.log('[API/INSTALL] Fazendo upsert da instalação...');
         // Upsert installation record
         const { error } = await supabase
             .from('installations')
@@ -37,11 +45,15 @@ export async function POST(request: NextRequest) {
                 updated_at: new Date().toISOString()
             }, { onConflict: 'id' });
 
-        if (error) throw error;
+        if (error) {
+            console.error('[API/INSTALL] Erro ao fazer upsert:', error);
+            throw error;
+        }
 
+        console.log('[API/INSTALL] Instalação registrada com sucesso!');
         return NextResponse.json({ success: true });
     } catch (error: any) {
-        console.error('[INSTALL] error:', error);
+        console.error('[API/INSTALL] Erro geral:', error);
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
