@@ -40,8 +40,31 @@ export async function POST(request: NextRequest) {
             throw error;
         }
 
+        // Verificar se o update realmente funcionou
+        console.log('[API/LINK] Verificando se o update funcionou...');
+        const { data: verification, error: verifyError } = await supabase
+            .from('installations')
+            .select('id, user_id, updated_at')
+            .eq('id', installation_id)
+            .single();
+
+        console.log('[API/LINK] Verificação:', { verification, verifyError });
+
+        if (verifyError) {
+            console.error('[API/LINK] Erro na verificação:', verifyError);
+        }
+
+        if (verification && verification.user_id !== user_id) {
+            console.error('[API/LINK] ALERTA: user_id não foi salvo corretamente!');
+            console.error('[API/LINK] Esperado:', user_id);
+            console.error('[API/LINK] Salvo:', verification.user_id);
+        }
+
         console.log('[API/LINK] Vinculação realizada com sucesso!');
-        return NextResponse.json({ success: true });
+        return NextResponse.json({
+            success: true,
+            verification: verification
+        });
     } catch (error: any) {
         console.error('[API/LINK] Erro geral:', error);
         return NextResponse.json({ error: error.message }, { status: 500 });
