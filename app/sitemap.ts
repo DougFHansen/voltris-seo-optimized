@@ -46,23 +46,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/criar-site`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${baseUrl}/criadores-de-site`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
 
-    // SERVIÇOS
+    // SERVIÇOS PRINCIPAIS
     { url: `${baseUrl}/servicos`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${baseUrl}/todos-os-servicos`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
     { url: `${baseUrl}/formatacao`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${baseUrl}/otimizacao-pc`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/optimizer`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/gamers`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${baseUrl}/erros-jogos`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+
+    // VOLTRIS OPTIMIZER
+    { url: `${baseUrl}/voltrisoptimizer`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${baseUrl}/voltrisoptimizer/como-funciona`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
 
     // SUBCATEGORIAS DE SERVIÇOS
     { url: `${baseUrl}/todos-os-servicos/criacao-de-sites`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/todos-os-servicos/suporte-windows`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${baseUrl}/todos-os-servicos/criacao-de-sites/plano-basico`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/todos-os-servicos/criacao-de-sites/plano-profissional`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/todos-os-servicos/criacao-de-sites/plano-empresarial`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/todos-os-servicos/suporte-ao-windows`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${baseUrl}/todos-os-servicos/instalacao-de-programas`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+    { url: `${baseUrl}/todos-os-servicos/instalacao-do-office`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
 
     // INSTITUCIONAL
-    { url: `${baseUrl}/about`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.6 },
-    { url: `${baseUrl}/faq`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.6 },
+    { url: `${baseUrl}/sobre`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.7 },
+    { url: `${baseUrl}/faq`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/contato`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: `${baseUrl}/lgpd`, lastModified: currentDate, changeFrequency: 'yearly' as const, priority: 0.4 },
     { url: `${baseUrl}/politica-privacidade`, lastModified: currentDate, changeFrequency: 'yearly' as const, priority: 0.4 },
