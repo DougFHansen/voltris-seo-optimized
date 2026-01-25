@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
+import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield } from 'react-icons/fi';
 
@@ -183,7 +184,13 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                     />
                                 </div>
                             </div>
-                            <button className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0">
+                            <button
+                                onClick={() => toast('Em breve: Gerenciamento Remoto', {
+                                    icon: '🚧',
+                                    style: { background: '#1A1A22', color: '#fff', border: '1px solid #333' }
+                                })}
+                                className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0"
+                            >
                                 Gerenciar
                             </button>
                         </div>
