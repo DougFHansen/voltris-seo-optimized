@@ -133,13 +133,13 @@ export default function AdquirirLicencaPage() {
                                 {/* Lado Direito: CTA */}
                                 <div className="flex flex-col space-y-6 bg-white/[0.03] p-8 rounded-2xl border border-white/5 h-full justify-between">
                                     <div className="space-y-4">
-                                        <div className="text-sm font-bold text-white uppercase tracking-widest mb-2 border-b border-white/10 pb-2">
-                                            Processo de compra
+                                        <div className="text-sm font-bold text-white uppercase tracking-widest mb-4 border-b border-white/10 pb-4">
+                                            PROCESSO DE COMPRA
                                         </div>
                                         <p className="text-sm text-slate-400 leading-relaxed">
                                             No momento, o checkout automático está em fase final de implementação.
-                                            Para garantir segurança e ativação imediata, o processo é realizado
-                                            diretamente com nossa equipe comercial.
+                                            Para garantir <strong className="text-white">segurança</strong> e <strong className="text-white">ativação imediata</strong>, o processo é realizado
+                                            diretamente com nossa equipe comercial via WhatsApp.
                                         </p>
                                     </div>
 
