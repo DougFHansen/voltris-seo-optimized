@@ -219,17 +219,47 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                 <div className="h-4 w-px bg-white/10 mx-1"></div>
 
                                 <button
-                                    onClick={async () => {
-                                        if (!window.confirm('Deseja desvincular este computador da sua conta?')) return;
-                                        const toastId = toast.loading('Desvinculando...');
-                                        try {
-                                            await fetch('/api/v1/install/unlink', {
-                                                method: 'POST',
-                                                body: JSON.stringify({ installation_id: inst.id })
-                                            });
-                                            toast.success('Desvinculado!', { id: toastId, icon: '👋' });
-                                            fetchData(); // Recarregar lista
-                                        } catch { toast.error('Erro ao desvincular', { id: toastId }); }
+                                    onClick={() => {
+                                        toast.custom((t) => (
+                                            <div className={`${t.visible ? 'animate-enter' : 'animate-leave'} max-w-sm w-full bg-[#121218] border border-white/10 shadow-2xl rounded-xl pointer-events-auto flex flex-col p-4 ring-1 ring-black/5`}>
+                                                <div className="flex items-start gap-4 mb-4">
+                                                    <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-lg">
+                                                        ⚠️
+                                                    </div>
+                                                    <div className="flex-1">
+                                                        <h1 className="text-sm font-bold text-white mb-1">Desvincular Computador?</h1>
+                                                        <p className="text-xs text-slate-400 leading-relaxed">
+                                                            Você perderá o acesso remoto e a telemetria deste dispositivo.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div className="flex gap-2 justify-end border-t border-white/5 pt-3">
+                                                    <button
+                                                        onClick={() => toast.dismiss(t.id)}
+                                                        className="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white transition-colors"
+                                                    >
+                                                        Cancelar
+                                                    </button>
+                                                    <button
+                                                        onClick={async () => {
+                                                            toast.dismiss(t.id);
+                                                            const loadingId = toast.loading('Processando...');
+                                                            try {
+                                                                await fetch('/api/v1/install/unlink', {
+                                                                    method: 'POST',
+                                                                    body: JSON.stringify({ installation_id: inst.id })
+                                                                });
+                                                                toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
+                                                                fetchData();
+                                                            } catch { toast.error('Falha ao desvincular.', { id: loadingId }); }
+                                                        }}
+                                                        className="px-4 py-1.5 text-xs bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
+                                                    >
+                                                        Sim, Desvincular
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ), { position: 'top-center', duration: Infinity });
                                     }}
                                     className="w-7 h-7 flex items-center justify-center bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors shrink-0"
                                     title="Desvincular Computador"
