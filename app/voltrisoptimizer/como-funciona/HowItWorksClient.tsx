@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
     Cpu, Layers, Zap, Search, Activity, Lock,
-    CheckCircle2, ArrowRight, Brain, Server, Video,
+    CheckCircle2, ArrowRight, Brain, Server, Video, Settings,
     MousePointer2, Briefcase, Download, ShieldCheck, Laptop
 } from 'lucide-react';
 
@@ -31,8 +31,12 @@ const StepCard = ({ number, title, desc, icon, delay }: { number: string, title:
     </motion.div>
 );
 
-const UserSegment = ({ title, icon, color, features, desc }: any) => (
+const UserSegment = ({ title, icon, color, features, desc, delay }: any) => (
     <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay, duration: 0.6 }}
         whileHover={{ y: -5 }}
         className={`p-8 rounded-3xl bg-[#0A0A0F] border border-white/5 hover:border-${color} transition-all duration-300 relative overflow-hidden`}
     >
@@ -57,7 +61,24 @@ const UserSegment = ({ title, icon, color, features, desc }: any) => (
 
 export default function HowItWorksClient() {
     const sectionRef = useRef(null);
+    const { scrollY } = useScroll();
     const { scrollYProgress } = useScroll({ target: sectionRef });
+
+    const [cpuLoad, setCpuLoad] = useState(12);
+    const [latencyLoad, setLatencyLoad] = useState(15);
+
+    // Live Data Simulation for floating cards
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCpuLoad(Math.floor(Math.random() * (15 - 5 + 1) + 5));
+            setLatencyLoad(Math.floor(Math.random() * (20 - 10 + 1) + 10));
+        }, 2000);
+        return () => clearInterval(interval);
+    }, []);
+
+    // Parallax transforms for hero cards
+    const yLeft = useTransform(scrollY, [0, 500], [0, -100]);
+    const yRight = useTransform(scrollY, [0, 500], [0, -150]);
 
     // Scale effect for diagrams
     const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
@@ -72,7 +93,91 @@ export default function HowItWorksClient() {
                 <div className="absolute top-[-20%] left-[-10%] w-[1000px] h-[1000px] bg-[#31A8FF]/5 blur-[150px] rounded-full pointer-events-none"></div>
 
                 {/* --- HEADER FULLSCREEN --- */}
-                <section className="relative min-h-[90vh] flex flex-col items-center justify-center px-4 pt-32 pb-20 overflow-hidden">
+                <section className="min-h-[100dvh] flex flex-col items-center justify-center relative z-10 perspective-1000 pt-32 md:pt-20">
+
+                    {/* Floating Tech Elements (Monitor Simulation) - Matching Original Page Style */}
+                    <div className="absolute inset-0 pointer-events-none hidden lg:block overflow-hidden">
+                        {/* Left Card - System Health */}
+                        <motion.div
+                            style={{ y: yLeft }}
+                            initial={{ opacity: 0, x: -100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                            className="absolute top-1/2 -translate-y-1/2 left-[2%] xl:left-[4%] w-[280px] bg-[#0A0A0E] border border-white/[0.08] rounded-xl shadow-2xl overflow-hidden"
+                        >
+                            <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08] bg-white/[0.01]">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)] animate-pulse"></div>
+                                    <span className="text-xs font-semibold text-white tracking-wide">Status do Kernel</span>
+                                </div>
+                                <span className="text-[10px] font-medium text-emerald-500 px-2 py-0.5 bg-emerald-500/10 rounded-full">Otimizado</span>
+                            </div>
+                            <div className="p-5 space-y-5">
+                                <div className="space-y-1.5">
+                                    <div className="flex justify-between items-center text-[11px]">
+                                        <span className="text-slate-400 font-medium">Uso de CPU</span>
+                                        <span className="text-white font-mono">{cpuLoad}%</span>
+                                    </div>
+                                    <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
+                                        <motion.div
+                                            className="h-full bg-white/80 rounded-full"
+                                            animate={{ width: `${cpuLoad}%` }}
+                                            transition={{ duration: 0.5 }}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="space-y-1.5">
+                                    <div className="flex justify-between items-center text-[11px]">
+                                        <span className="text-slate-400 font-medium">Latência DPC</span>
+                                        <span className="text-emerald-400 font-mono">{(latencyLoad / 10).toFixed(2)}ms</span>
+                                    </div>
+                                    <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
+                                        <motion.div
+                                            className="h-full bg-emerald-500 rounded-full"
+                                            animate={{ width: `${latencyLoad}%` }}
+                                            transition={{ duration: 0.5 }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Right Card - Performance Engine */}
+                        <motion.div
+                            style={{ y: yRight }}
+                            initial={{ opacity: 0, x: 100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
+                            className="absolute top-1/2 -translate-y-1/2 right-[2%] xl:right-[4%] w-[280px] bg-[#0A0A0E] border border-white/[0.08] rounded-xl shadow-2xl overflow-hidden"
+                        >
+                            <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08] bg-white/[0.01]">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-2 h-2 rounded-full bg-[#31A8FF]"></div>
+                                    <span className="text-xs font-semibold text-white tracking-wide">Motor IA</span>
+                                </div>
+                                <Activity className="w-3 h-3 text-slate-500" />
+                            </div>
+                            <div className="p-5 space-y-4">
+                                <div className="flex items-center justify-between">
+                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">Análise Ativa</span>
+                                    <div className="flex gap-0.5">
+                                        {[1, 2, 3].map(i => <div key={i} className="w-[2px] h-2 bg-emerald-500/50 rounded-full animate-pulse" style={{ animationDelay: i * 0.1 + 's' }}></div>)}
+                                    </div>
+                                </div>
+                                <div className="space-y-2">
+                                    <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
+                                        <span className="text-[11px] text-slate-400">Scheduling</span>
+                                        <span className="text-xs font-mono text-white">Prioridade Alta</span>
+                                    </div>
+                                    <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
+                                        <span className="text-[11px] text-slate-400">Memory Purge</span>
+                                        <span className="text-xs font-mono text-emerald-400">Ativo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -90,37 +195,52 @@ export default function HowItWorksClient() {
                         </svg>
                     </motion.div>
 
-                    <div className="relative z-10 max-w-5xl mx-auto text-center">
+                    <div className="container mx-auto px-4 flex-grow flex flex-col items-center justify-center text-center relative z-20">
                         <motion.div
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
-                        >
-                            <Layers className="w-4 h-4 text-[#8B31FF]" />
-                            <span className="text-xs font-bold text-white/80 tracking-widest uppercase">Arquitetura de Software</span>
-                        </motion.div>
-
-                        <motion.h1
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-8 tracking-tighter leading-[0.9]"
+                            className="max-w-5xl mx-auto"
                         >
-                            A Ciência por trás da <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
-                                Performance Extrema
-                            </span>
-                        </motion.h1>
+                            <motion.div
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
+                            >
+                                <Layers className="w-4 h-4 text-[#8B31FF]" />
+                                <span className="text-xs font-bold text-white/80 tracking-widest uppercase">Arquitetura de Software</span>
+                            </motion.div>
 
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.5, duration: 0.8 }}
-                            className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed mb-12"
-                        >
-                            O Voltris Optimizer não faz "mágica". Ele aplica engenharia de kernel, gerenciamento de threads e otimizações de I/O que o Windows não faz por padrão.
-                        </motion.p>
+                            <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+                                A Ciência por trás da <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
+                                    Performance Extrema
+                                </span>
+                            </h1>
+
+                            <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed mb-12">
+                                O Voltris Optimizer não faz "mágica". Ele aplica engenharia de kernel, gerenciamento de threads e otimizações de I/O que o Windows não faz por padrão.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row items-center gap-5 justify-center w-full max-w-lg mx-auto">
+                                <div className="flex flex-col w-full gap-2">
+                                    <a
+                                        href="https://github.com/DougFHansen/voltris-seo-optimized/releases/download/v1.0.0/VoltrisOptimizerInstaller.exe"
+                                        className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
+                                    >
+                                        <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
+                                        DOWNLOAD x64
+                                    </a>
+                                    <a
+                                        href="https://github.com/DougFHansen/voltris-seo-optimized/releases/download/v1.0.0/VoltrisOptimizerInstallerX86.exe"
+                                        className="text-[10px] text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
+                                    >
+                                        Download Versão x86 (32 bits)
+                                    </a>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
 
                     {/* Scroll Indicator */}
@@ -188,9 +308,10 @@ export default function HowItWorksClient() {
                             <UserSegment
                                 title="Gamers"
                                 icon={<MousePointer2 className="w-6 h-6" />}
-                                color="[#00FF94]" // Pass color code for Tailwind mostly handled in component logic or static classes below for clearer code
+                                color="[#00FF94]"
                                 desc="Foco total em latência e estabilidade de quadros."
                                 features={['Redução de Input Lag', 'Estabilidade 1% Low FPS', 'Network Optimization']}
+                                delay={0.1}
                             />
                             <UserSegment
                                 title="Streamers"
@@ -198,6 +319,7 @@ export default function HowItWorksClient() {
                                 color="[#8B31FF]"
                                 desc="Equilíbrio perfeito entre jogo e encode de vídeo."
                                 features={['Prioridade para OBS/Twitch', 'Sem drop de frames', 'Audio Latency Fix']}
+                                delay={0.2}
                             />
                             <UserSegment
                                 title="Empresas"
@@ -205,6 +327,7 @@ export default function HowItWorksClient() {
                                 color="[#31A8FF]"
                                 desc="Produtividade e multitarefa sem engasgos."
                                 features={['Boot Instantâneo', 'Chrome/Edge Otimizado', 'Excel/PowerBI Fluido']}
+                                delay={0.3}
                             />
                             <UserSegment
                                 title="Usuários"
@@ -212,6 +335,7 @@ export default function HowItWorksClient() {
                                 color="[#FF4B6B]"
                                 desc="Revitalize PCs antigos ou domésticos."
                                 features={['Economia de Energia', 'Sistema Limpo', 'Multimídia 4K Fluida']}
+                                delay={0.4}
                             />
                         </div>
                     </div>
@@ -321,13 +445,21 @@ export default function HowItWorksClient() {
                             Não acredite apenas em gráficos. Teste o Voltris Optimizer no seu sistema e veja os números subirem.
                         </p>
 
-                        <Link
-                            href="/otimizacao"
-                            className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-lg rounded-2xl hover:scale-105 hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] transition-all duration-300"
-                        >
-                            <Download className="w-6 h-6" />
-                            DOWNLOAD VOLTRIS OPTIMIZER
-                        </Link>
+                        <div className="flex flex-col items-center gap-4">
+                            <a
+                                href="https://github.com/DougFHansen/voltris-seo-optimized/releases/download/v1.0.0/VoltrisOptimizerInstaller.exe"
+                                className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
+                            >
+                                <Download className="w-6 h-6" />
+                                BAIXAR AGORA (x64)
+                            </a>
+                            <a
+                                href="https://github.com/DougFHansen/voltris-seo-optimized/releases/download/v1.0.0/VoltrisOptimizerInstallerX86.exe"
+                                className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
+                            >
+                                Ou baixe a versão 32 bits (x86)
+                            </a>
+                        </div>
                     </div>
                 </section>
 
@@ -337,23 +469,4 @@ export default function HowItWorksClient() {
     );
 }
 
-// Utility component used inside HowItWorksClient but defined here for brevity
-function Settings(props: any) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-            <circle cx="12" cy="12" r="3" />
-        </svg>
-    )
-}
+// Utility component removed as it is now imported from lucide-react
