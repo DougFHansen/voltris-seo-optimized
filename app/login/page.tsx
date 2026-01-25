@@ -38,6 +38,7 @@ export default function LoginPage() {
   const [redirectText, setRedirectText] = useState('Redirecionando...');
   const [redirectUrl, setRedirectUrl] = useState('');
   const [pendingOrder, setPendingOrder] = useState(false);
+  const [installationId, setInstallationId] = useState<string | null>(null);
 
   const { user, profile, loading: authLoading } = useAuth();
   const supabase = createClient();
@@ -50,8 +51,11 @@ export default function LoginPage() {
         setIsLoginView(false);
         setIsRecoveryView(false);
       }
+
+      const instId = params.get('installation_id');
+      if (instId) setInstallationId(instId);
+
       // Só ativa pendingOrder se vier EXPLICITAMENTE na URL. 
-      // Ignora sessionStorage "órfão" para evitar criar pedidos indesejados em cadastro comum.
       if (params.get('pendingOrder') === 'true') {
         setShowWhatsAppBtn(true);
         setPendingOrder(true);
@@ -60,17 +64,33 @@ export default function LoginPage() {
     }
   }, []);
 
+  const linkInstallation = async (userId: string) => {
+    if (!installationId) return;
+    try {
+      await fetch('/api/v1/install/link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ installation_id: installationId, user_id: userId })
+      });
+      console.log('Dispositivo vinculado com sucesso!');
+    } catch (err) {
+      console.error('Erro ao vincular dispositivo:', err);
+    }
+  };
+
   useEffect(() => {
     if (authLoading) return;
     if (user && !adminChecked) {
+      if (installationId) linkInstallation(user.id);
       if (!success) {
         window.location.href = isAdmin ? '/restricted-area-admin' : '/dashboard';
       }
     }
-  }, [user, authLoading, profile, success, adminChecked]);
+  }, [user, authLoading, profile, success, adminChecked, installationId]);
 
   useEffect(() => {
     if (success && adminChecked) {
+      if (user && installationId) linkInstallation(user.id);
       const timer = setTimeout(() => {
         if (pendingOrder) window.location.href = '/dashboard?pendingOrder=true';
         else if (redirectUrl) window.location.href = redirectUrl.includes('restricted') && !isAdmin ? '/dashboard' : redirectUrl;

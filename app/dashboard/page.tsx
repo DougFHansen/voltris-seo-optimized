@@ -12,6 +12,7 @@ import type { Order } from '@/types/order';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
+import UserOptimizerSection from './UserOptimizerSection';
 
 
 // Componente de Card de Estatística Ultra-Moderno
@@ -144,6 +145,9 @@ export default function DashboardPage() {
           <StatCard title="Em Andamento" value={stats.pending} icon={FiActivity} color="purple" delay={0.2} />
           <StatCard title="Concluídos" value={stats.completed} icon={FiCheckCircle} color="green" delay={0.3} />
         </div>
+
+        {/* Voltris Optimizer - Real-time Status */}
+        <UserOptimizerSection userId={user?.id || ''} />
 
         {/* Main Content Area - Scrollable */}
         <div className="flex-1 min-h-0 bg-[#121218] border border-white/5 rounded-3xl overflow-hidden flex flex-col relative group">
