@@ -331,7 +331,7 @@ export default function OptimizerClient() {
                                 Otimização inteligente para Gamers, Empresas e High-End Workstations.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-5 justify-center w-full max-w-lg mx-auto">
+                            <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full max-w-lg mx-auto">
                                 <div className="flex flex-col w-full gap-2">
                                     <a
                                         href="https://github.com/DougFHansen/voltris-seo-optimized/releases/download/v1.0.0/VoltrisOptimizerInstaller.exe"
