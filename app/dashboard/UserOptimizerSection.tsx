@@ -117,7 +117,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                     <div className="mt-8 pt-8 border-t border-white/5 w-full flex flex-col items-center">
                         <p className="text-xs text-slate-500 mb-4 uppercase tracking-widest font-black">Não tem o programa?</p>
                         <a
-                            href="https://github.com/DougFHansen/voltris-seo-optimized/releases/latest"
+                            href="https://https://www.voltris.com.br/voltrisoptimizer"
                             target="_blank"
                             className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]"
                         >

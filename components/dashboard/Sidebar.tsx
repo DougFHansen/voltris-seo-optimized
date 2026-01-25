@@ -36,8 +36,8 @@ export default function Sidebar({ activeTab, onTabChange, mobileOpen = false, se
   const tabs = [
     { label: 'Visão Geral', value: 'overview', icon: FiHome, path: '/dashboard', query: { tab: 'overview' } },
     { label: 'Meu Computador', value: 'pc', icon: FiMonitor, path: '/dashboard', query: { tab: 'pc' } },
-    { label: 'Meus Pedidos', value: 'orders', icon: FiShoppingBag, path: '/dashboard/orders' },
-    { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/perfil' },
+    { label: 'Meus Pedidos', value: 'orders', icon: FiShoppingBag, path: '/dashboard/new-order' },
+    { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/dashboard/profile' },
     { label: 'Suporte', value: 'tickets', icon: FiHeadphones, path: '/dashboard/tickets' },
     { label: 'Notificações', value: 'notifications', icon: FiBell, path: '/dashboard/notifications' }
   ];

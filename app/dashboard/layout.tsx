@@ -37,7 +37,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </button>
       </div>
 
-      <div className="flex flex-1 min-h-0 relative z-10 px-4 pb-4 pt-4 gap-4 max-w-[1920px] mx-auto w-full">
+      <div className="flex flex-1 min-h-0 relative z-10 px-0 lg:px-4 pb-0 lg:pb-4 pt-0 lg:pt-4 gap-0 lg:gap-4 max-w-[1920px] mx-auto w-full">
         {/* Sidebar Fixa - Desktop */}
         <div className="hidden lg:block w-80 flex-shrink-0 h-full">
           <Suspense fallback={<div className="w-full h-full bg-white/5 animate-pulse rounded-3xl" />}>
@@ -52,13 +52,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
 
         {/* Main Content Area - Onde o conteúdo das páginas é renderizado */}
-        <main className="flex-1 bg-[#0A0A0F]/80 backdrop-blur-2xl rounded-2xl lg:rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden relative group">
+        <main className="flex-1 bg-[#0A0A0F]/80 backdrop-blur-2xl rounded-none lg:rounded-[2.5rem] border-0 lg:border border-white/5 shadow-2xl overflow-hidden relative group">
           {/* Gradient Border Hint */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] opacity-50"></div>
 
           {/* Content Scrollable Container */}
           {/* As páginas devem preencher este container. Se precisarem de scroll, devem gerenciar internamente ou usar h-full */}
-          <div className="absolute inset-0 overflow-y-auto custom-scrollbar p-4 md:p-8 lg:p-10">
+          <div className="absolute inset-0 overflow-y-auto custom-scrollbar p-4 md:p-6 lg:p-10">
             {children}
           </div>
         </main>
