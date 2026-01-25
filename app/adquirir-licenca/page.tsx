@@ -19,7 +19,7 @@ export default function AdquirirLicencaPage() {
     return (
         <>
             <Header />
-            <main className="min-h-screen bg-[#050510] text-slate-200 font-sans selection:bg-[#31A8FF]/30 relative overflow-hidden">
+            <main className="min-h-screen bg-[#050510] text-slate-200 font-sans selection:bg-[#31A8FF]/30 relative">
 
                 {/* Background Effects */}
                 <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
@@ -83,7 +83,7 @@ export default function AdquirirLicencaPage() {
                 </section>
 
                 {/* PURCHASE SECTION (Destino do Scroll) */}
-                <section id="purchase-section" className="relative z-10 py-32 px-4 bg-[#050510]">
+                <section id="purchase-section" className="relative z-10 pt-32 pb-20 px-4 bg-[#050510]">
                     <div className="max-w-4xl mx-auto">
 
                         <div className="text-center mb-16">
