@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         title: 'Plano Profissional - Criação de Sites Avançados | VOLTRIS',
         description: 'Site completo com funcionalidades avançadas e suporte premium.',
         url: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites/plano-profissional',
-        type: 'product',
+        type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',
         images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'VOLTRIS - Plano Profissional' }]

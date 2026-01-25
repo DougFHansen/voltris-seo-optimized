@@ -19,8 +19,6 @@ import {
 import { createClient } from '@/utils/supabase/client';
 import TechFloatingElements from '@/components/TechFloatingElements';
 
-const supabase = createClient();
-
 const otimizacaoPlans = [
   {
     id: "otimizacao-basica",
@@ -90,7 +88,9 @@ const otimizacaoPlans = [
 
 export default function OtimizacaoPcPage() {
   const router = useRouter();
+  const supabase = createClient();
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+
 
   const benefits = [
     {

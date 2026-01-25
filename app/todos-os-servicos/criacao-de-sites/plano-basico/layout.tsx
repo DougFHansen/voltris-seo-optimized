@@ -11,7 +11,7 @@ export const metadata: Metadata = {
         title: 'Plano Básico - Criação de Sites Profissionais | VOLTRIS',
         description: 'Site profissional, responsivo e otimizado para SEO. Ideal para pequenos negócios.',
         url: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites/plano-basico',
-        type: 'product',
+        type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',
         images: [{ url: '/logo.png', width: 1200, height: 630, alt: 'VOLTRIS - Plano Básico' }]
