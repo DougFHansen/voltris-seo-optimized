@@ -71,13 +71,13 @@ export default function AdquirirLicencaPage() {
                     </motion.div>
 
                     {/* Scroll Indicator */}
+                    {/* Scroll Indicator */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1, duration: 1 }}
                         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500"
                     >
-                        <span className="text-[10px] uppercase tracking-widest">Role para ver detalhes</span>
                         <div className="w-[1px] h-12 bg-gradient-to-b from-slate-500 to-transparent"></div>
                     </motion.div>
                 </section>
@@ -160,7 +160,7 @@ export default function AdquirirLicencaPage() {
                             </div>
 
                             {/* Trust Footer do Card */}
-                            <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap justify-center sm:justify-between items-center gap-6">
+                            <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap justify-center items-center gap-6">
                                 <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-400 font-medium">
                                     <span className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-emerald-500" /> Pagamento seguro</span>
                                     <span className="flex items-center gap-2"><MessageSquare className="w-5 h-5 text-[#31A8FF]" /> Atendimento humano</span>
