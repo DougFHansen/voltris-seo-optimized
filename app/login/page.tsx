@@ -80,25 +80,47 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (authLoading) return;
-    if (user && !adminChecked) {
-      if (installationId) linkInstallation(user.id);
-      if (!success) {
+
+    const performRedirect = () => {
+      if (pendingOrder) {
+        window.location.href = '/dashboard?pendingOrder=true';
+      } else if (redirectUrl) {
+        // Sanitizar redirectUrl para evitar loops se for para o próprio login
+        const finalUrl = redirectUrl.includes('/login') ? '/dashboard' : redirectUrl;
+        window.location.href = finalUrl.includes('restricted') && !isAdmin ? '/dashboard' : finalUrl;
+      } else {
         window.location.href = isAdmin ? '/restricted-area-admin' : '/dashboard';
       }
+    };
+
+    if (user && !adminChecked) {
+      if (installationId) {
+        linkInstallation(user.id).then(() => {
+          if (!success) performRedirect();
+        });
+      } else if (!success) {
+        performRedirect();
+      }
     }
-  }, [user, authLoading, profile, success, adminChecked, installationId]);
+  }, [user, authLoading, profile, success, adminChecked, installationId, redirectUrl, pendingOrder, isAdmin]);
 
   useEffect(() => {
     if (success && adminChecked) {
       if (user && installationId) linkInstallation(user.id);
+
       const timer = setTimeout(() => {
-        if (pendingOrder) window.location.href = '/dashboard?pendingOrder=true';
-        else if (redirectUrl) window.location.href = redirectUrl.includes('restricted') && !isAdmin ? '/dashboard' : redirectUrl;
-        else window.location.href = isAdmin ? '/restricted-area-admin' : '/dashboard';
+        if (pendingOrder) {
+          window.location.href = '/dashboard?pendingOrder=true';
+        } else if (redirectUrl) {
+          const finalUrl = redirectUrl.includes('/login') ? '/dashboard' : redirectUrl;
+          window.location.href = finalUrl.includes('restricted') && !isAdmin ? '/dashboard' : finalUrl;
+        } else {
+          window.location.href = isAdmin ? '/restricted-area-admin' : '/dashboard';
+        }
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [success, isAdmin, adminChecked, redirectUrl, pendingOrder]);
+  }, [success, isAdmin, adminChecked, redirectUrl, pendingOrder, user, installationId]);
 
   // --- HELPERS ---
   const translateError = (err: string) => {
