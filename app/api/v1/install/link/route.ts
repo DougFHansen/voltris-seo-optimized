@@ -26,14 +26,17 @@ export async function POST(request: NextRequest) {
 
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-        console.log('[API/LINK] Atualizando instalação no banco...');
+        console.log('[API/LINK] Fazendo upsert da instalação (garantindo existência)...');
+        // Usar UPSERT para criar se não existir (fallback se o registro do app tiver falhado)
         const { error } = await supabase
             .from('installations')
-            .update({
+            .upsert({
+                id: installation_id,
                 user_id: user_id,
-                updated_at: new Date().toISOString()
-            })
-            .eq('id', installation_id);
+                updated_at: new Date().toISOString(),
+                // Campos mínimos para não quebrar constraints se for novo
+                last_heartbeat: new Date().toISOString()
+            }, { onConflict: 'id' }); // Se existir, atualiza user_id. Se não, cria.
 
         if (error) {
             console.error('[API/LINK] Erro ao atualizar:', error);
