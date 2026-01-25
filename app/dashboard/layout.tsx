@@ -1,5 +1,5 @@
 'use client';
-import React from 'react'
+import React, { Suspense } from 'react'
 import Header from '@/components/Header'
 import Sidebar from '@/components/dashboard/Sidebar'
 import ClientNotificationModal from './ClientNotificationModal';
@@ -20,7 +20,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="flex flex-1 min-h-0 relative z-10 pt-20 lg:pt-24 px-4 pb-4 gap-4 max-w-[1920px] mx-auto w-full">
         {/* Sidebar Fixa - Desktop */}
         <div className="hidden lg:block w-80 flex-shrink-0 h-full">
-          <Sidebar />
+          <Suspense fallback={<div className="w-full h-full bg-white/5 animate-pulse rounded-3xl" />}>
+            <Sidebar />
+          </Suspense>
         </div>
 
         {/* Main Content Area - Onde o conteúdo das páginas é renderizado */}
