@@ -184,15 +184,38 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                     />
                                 </div>
                             </div>
-                            <button
-                                onClick={() => toast('Em breve: Gerenciamento Remoto', {
-                                    icon: '🚧',
-                                    style: { background: '#1A1A22', color: '#fff', border: '1px solid #333' }
-                                })}
-                                className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0"
-                            >
-                                Gerenciar
-                            </button>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={async () => {
+                                        const toastId = toast.loading('⚡ Enviando comando...');
+                                        try {
+                                            await fetch('/api/v1/commands/create', {
+                                                method: 'POST',
+                                                body: JSON.stringify({ installation_id: inst.id, command_type: 'OPTIMIZE_RAM' })
+                                            });
+                                            toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
+                                        } catch { toast.error('Falha no envio', { id: toastId }); }
+                                    }}
+                                    className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0 shadow-lg shadow-white/10"
+                                >
+                                    ⚡ RAM
+                                </button>
+                                <button
+                                    onClick={async () => {
+                                        const toastId = toast.loading('🧹 Solicitando limpeza...');
+                                        try {
+                                            await fetch('/api/v1/commands/create', {
+                                                method: 'POST',
+                                                body: JSON.stringify({ installation_id: inst.id, command_type: 'CLEAN_TEMP' })
+                                            });
+                                            toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
+                                        } catch { toast.error('Falha no envio', { id: toastId }); }
+                                    }}
+                                    className="px-3 py-1 bg-[#121218] border border-white/10 text-white text-[10px] font-bold rounded-lg hover:bg-white/10 transition-colors shrink-0"
+                                >
+                                    🧹 Cache
+                                </button>
+                            </div>
                         </div>
                     </motion.div>
                 ))}
