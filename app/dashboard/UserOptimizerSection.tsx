@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield } from 'react-icons/fi';
+import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX } from 'react-icons/fi';
 
 export default function UserOptimizerSection({ userId }: { userId: string }) {
     const [installations, setInstallations] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [unlinkModalOpen, setUnlinkModalOpen] = useState(false);
+    const [selectedInstallation, setSelectedInstallation] = useState<any>(null);
     const supabase = createClient();
 
     useEffect(() => {
@@ -52,6 +54,28 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleUnlinkClick = (installation: any) => {
+        setSelectedInstallation(installation);
+        setUnlinkModalOpen(true);
+    };
+
+    const handleConfirmUnlink = async () => {
+        if (!selectedInstallation) return;
+        setUnlinkModalOpen(false);
+        const loadingId = toast.loading('Processando...');
+        try {
+            await fetch('/api/v1/install/unlink', {
+                method: 'POST',
+                body: JSON.stringify({ installation_id: selectedInstallation.id })
+            });
+            toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
+            fetchData();
+        } catch {
+            toast.error('Falha ao desvincular.', { id: loadingId });
+        }
+        setSelectedInstallation(null);
     };
 
     if (loading) return null;
@@ -106,171 +130,185 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
     }
 
     return (
-        <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
-            <div className="flex items-center justify-between px-2">
-                <h2 className="text-xl font-bold text-white flex items-center gap-2">
-                    <FiMonitor className="text-[#31A8FF]" /> Meus Computadores (Voltris)
-                </h2>
-                <span className="text-xs text-slate-500 font-medium">Sincronizado via Telemetria</span>
+        <>
+            <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
+                <div className="flex items-center justify-between px-2">
+                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                        <FiMonitor className="text-[#31A8FF]" /> Meus Computadores (Voltris)
+                    </h2>
+                    <span className="text-xs text-slate-500 font-medium">Sincronizado via Telemetria</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {installations.map((inst) => (
+                        <motion.div
+                            key={inst.id}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="bg-[#1A1A22] border border-white/5 p-5 rounded-2xl hover:border-white/10 transition-all group overflow-hidden relative"
+                        >
+                            {/* Background Glow */}
+                            <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/10' : 'bg-blue-500/10'
+                                }`}></div>
+
+                            <div className="flex justify-between items-start relative z-10">
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-2">
+                                        <div className={`w-2 h-2 rounded-full ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000
+                                            ? 'bg-emerald-400 animate-pulse'
+                                            : 'bg-slate-500'
+                                            }`}></div>
+                                        <span className="text-white font-bold text-sm tracking-tight">{inst.os_name}</span>
+                                    </div>
+
+                                    <div className="flex flex-col gap-1.5">
+                                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                                            <FiCpu className="text-[#31A8FF]" />
+                                            <span className="truncate max-w-[180px]">{inst.cpu_name}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                                            <FiShield className="text-[#8B31FF]" />
+                                            <span>v{inst.app_version} • {inst.ram_gb_total}GB RAM</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col items-end gap-2 text-right">
+                                    <div className={`px-2.5 py-1 rounded-lg text-[10px] font-black tracking-widest ${inst.is_optimized
+                                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                                        : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                        }`}>
+                                        {inst.is_optimized ? 'OTIMIZADO' : 'SISTEMA PADRÃO'}
+                                    </div>
+
+                                    <div className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${inst.license_status === 'active'
+                                        ? 'text-emerald-400 bg-emerald-400/5'
+                                        : 'text-blue-400 bg-blue-400/5'
+                                        }`}>
+                                        LICENÇA: {inst.license_status?.toUpperCase() || 'TRIAL'}
+                                        {inst.license_status === 'trial' && inst.license_expires_at && (
+                                            <span className="ml-2 opacity-60">Expira em: {new Date(inst.license_expires_at).toLocaleDateString()}</span>
+                                        )}
+                                    </div>
+
+                                    <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1.5">
+                                        {new Date(inst.last_heartbeat).toLocaleTimeString()} <FiClock />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Action Overlay */}
+                            <div className="mt-4 pt-4 border-t border-white/5 flex gap-4">
+                                <div className="flex-1">
+                                    <div className="text-[10px] uppercase text-slate-500 font-bold mb-1">Status de Performance</div>
+                                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+                                        <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: inst.is_optimized ? '100%' : '60%' }}
+                                            className={`h-full bg-gradient-to-r ${inst.is_optimized ? 'from-emerald-500 to-emerald-400' : 'from-blue-500 to-blue-400'}`}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <button
+                                        onClick={async () => {
+                                            const toastId = toast.loading('⚡ Enviando comando...');
+                                            try {
+                                                await fetch('/api/v1/commands/create', {
+                                                    method: 'POST',
+                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'OPTIMIZE_RAM' })
+                                                });
+                                                toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
+                                            } catch { toast.error('Falha no envio', { id: toastId }); }
+                                        }}
+                                        className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0 shadow-lg shadow-white/10"
+                                    >
+                                        ⚡ RAM
+                                    </button>
+                                    <button
+                                        onClick={async () => {
+                                            const toastId = toast.loading('🧹 Solicitando limpeza...');
+                                            try {
+                                                await fetch('/api/v1/commands/create', {
+                                                    method: 'POST',
+                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'CLEAN_TEMP' })
+                                                });
+                                                toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
+                                            } catch { toast.error('Falha no envio', { id: toastId }); }
+                                        }}
+                                        className="px-3 py-1 bg-[#121218] border border-white/10 text-white text-[10px] font-bold rounded-lg hover:bg-white/10 transition-colors shrink-0"
+                                    >
+                                        🧹 Cache
+                                    </button>
+
+                                    <div className="h-4 w-px bg-white/10 mx-1"></div>
+
+                                    <button
+                                        onClick={() => handleUnlinkClick(inst)}
+                                        className="w-7 h-7 flex items-center justify-center bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors shrink-0"
+                                        title="Desvincular Computador"
+                                    >
+                                        ✕
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {installations.map((inst) => (
+            {/* Modal de Confirmação */}
+            <AnimatePresence>
+                {unlinkModalOpen && (
                     <motion.div
-                        key={inst.id}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="bg-[#1A1A22] border border-white/5 p-5 rounded-2xl hover:border-white/10 transition-all group overflow-hidden relative"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        onClick={() => setUnlinkModalOpen(false)}
                     >
-                        {/* Background Glow */}
-                        <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/10' : 'bg-blue-500/10'
-                            }`}></div>
-
-                        <div className="flex justify-between items-start relative z-10">
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-2">
-                                    <div className={`w-2 h-2 rounded-full ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000
-                                        ? 'bg-emerald-400 animate-pulse'
-                                        : 'bg-slate-500'
-                                        }`}></div>
-                                    <span className="text-white font-bold text-sm tracking-tight">{inst.os_name}</span>
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-[#121218] border border-white/10 rounded-2xl p-6 max-w-md w-full shadow-2xl"
+                        >
+                            <div className="flex items-start gap-4 mb-6">
+                                <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-2xl">
+                                    ⚠️
                                 </div>
-
-                                <div className="flex flex-col gap-1.5">
-                                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                                        <FiCpu className="text-[#31A8FF]" />
-                                        <span className="truncate max-w-[180px]">{inst.cpu_name}</span>
-                                    </div>
-                                    <div className="flex items-center gap-2 text-xs text-slate-400">
-                                        <FiShield className="text-[#8B31FF]" />
-                                        <span>v{inst.app_version} • {inst.ram_gb_total}GB RAM</span>
-                                    </div>
+                                <div className="flex-1">
+                                    <h2 className="text-xl font-bold text-white mb-2">Desvincular Computador?</h2>
+                                    <p className="text-sm text-slate-400 leading-relaxed">
+                                        Você perderá o acesso remoto e a telemetria deste dispositivo.
+                                    </p>
                                 </div>
-                            </div>
-
-                            <div className="flex flex-col items-end gap-2 text-right">
-                                <div className={`px-2.5 py-1 rounded-lg text-[10px] font-black tracking-widest ${inst.is_optimized
-                                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                                    : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-                                    }`}>
-                                    {inst.is_optimized ? 'OTIMIZADO' : 'SISTEMA PADRÃO'}
-                                </div>
-
-                                <div className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${inst.license_status === 'active'
-                                    ? 'text-emerald-400 bg-emerald-400/5'
-                                    : 'text-blue-400 bg-blue-400/5'
-                                    }`}>
-                                    LICENÇA: {inst.license_status?.toUpperCase() || 'TRIAL'}
-                                    {inst.license_status === 'trial' && inst.license_expires_at && (
-                                        <span className="ml-2 opacity-60">Expira em: {new Date(inst.license_expires_at).toLocaleDateString()}</span>
-                                    )}
-                                </div>
-
-                                <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1.5">
-                                    {new Date(inst.last_heartbeat).toLocaleTimeString()} <FiClock />
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Action Overlay */}
-                        <div className="mt-4 pt-4 border-t border-white/5 flex gap-4">
-                            <div className="flex-1">
-                                <div className="text-[10px] uppercase text-slate-500 font-bold mb-1">Status de Performance</div>
-                                <div className="h-1 bg-white/5 rounded-full overflow-hidden">
-                                    <motion.div
-                                        initial={{ width: 0 }}
-                                        animate={{ width: inst.is_optimized ? '100%' : '60%' }}
-                                        className={`h-full bg-gradient-to-r ${inst.is_optimized ? 'from-emerald-500 to-emerald-400' : 'from-blue-500 to-blue-400'}`}
-                                    />
-                                </div>
-                            </div>
-                            <div className="flex gap-2 items-center">
                                 <button
-                                    onClick={async () => {
-                                        const toastId = toast.loading('⚡ Enviando comando...');
-                                        try {
-                                            await fetch('/api/v1/commands/create', {
-                                                method: 'POST',
-                                                body: JSON.stringify({ installation_id: inst.id, command_type: 'OPTIMIZE_RAM' })
-                                            });
-                                            toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
-                                        } catch { toast.error('Falha no envio', { id: toastId }); }
-                                    }}
-                                    className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0 shadow-lg shadow-white/10"
+                                    onClick={() => setUnlinkModalOpen(false)}
+                                    className="text-slate-400 hover:text-white transition-colors"
                                 >
-                                    ⚡ RAM
-                                </button>
-                                <button
-                                    onClick={async () => {
-                                        const toastId = toast.loading('🧹 Solicitando limpeza...');
-                                        try {
-                                            await fetch('/api/v1/commands/create', {
-                                                method: 'POST',
-                                                body: JSON.stringify({ installation_id: inst.id, command_type: 'CLEAN_TEMP' })
-                                            });
-                                            toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
-                                        } catch { toast.error('Falha no envio', { id: toastId }); }
-                                    }}
-                                    className="px-3 py-1 bg-[#121218] border border-white/10 text-white text-[10px] font-bold rounded-lg hover:bg-white/10 transition-colors shrink-0"
-                                >
-                                    🧹 Cache
-                                </button>
-
-                                <div className="h-4 w-px bg-white/10 mx-1"></div>
-
-                                <button
-                                    onClick={() => {
-                                        toast.custom((t) => (
-                                            <div className={`${t.visible ? 'animate-enter' : 'animate-leave'} max-w-sm w-full bg-[#121218] border border-white/10 shadow-2xl rounded-xl pointer-events-auto flex flex-col p-4 ring-1 ring-black/5`}>
-                                                <div className="flex items-start gap-4 mb-4">
-                                                    <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-lg">
-                                                        ⚠️
-                                                    </div>
-                                                    <div className="flex-1">
-                                                        <h1 className="text-sm font-bold text-white mb-1">Desvincular Computador?</h1>
-                                                        <p className="text-xs text-slate-400 leading-relaxed">
-                                                            Você perderá o acesso remoto e a telemetria deste dispositivo.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div className="flex gap-2 justify-end border-t border-white/5 pt-3">
-                                                    <button
-                                                        onClick={() => toast.dismiss(t.id)}
-                                                        className="px-3 py-1.5 text-xs font-medium text-slate-400 hover:text-white transition-colors"
-                                                    >
-                                                        Cancelar
-                                                    </button>
-                                                    <button
-                                                        onClick={async () => {
-                                                            toast.dismiss(t.id);
-                                                            const loadingId = toast.loading('Processando...');
-                                                            try {
-                                                                await fetch('/api/v1/install/unlink', {
-                                                                    method: 'POST',
-                                                                    body: JSON.stringify({ installation_id: inst.id })
-                                                                });
-                                                                toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
-                                                                fetchData();
-                                                            } catch { toast.error('Falha ao desvincular.', { id: loadingId }); }
-                                                        }}
-                                                        className="px-4 py-1.5 text-xs bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
-                                                    >
-                                                        Sim, Desvincular
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        ), { position: 'top-center', duration: Infinity });
-                                    }}
-                                    className="w-7 h-7 flex items-center justify-center bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors shrink-0"
-                                    title="Desvincular Computador"
-                                >
-                                    ✕
+                                    <FiX className="w-5 h-5" />
                                 </button>
                             </div>
-                        </div>
+                            <div className="flex gap-3 justify-end">
+                                <button
+                                    onClick={() => setUnlinkModalOpen(false)}
+                                    className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    onClick={handleConfirmUnlink}
+                                    className="px-6 py-2 text-sm bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
+                                >
+                                    Sim, Desvincular
+                                </button>
+                            </div>
+                        </motion.div>
                     </motion.div>
-                ))}
-            </div>
-        </div>
+                )}
+            </AnimatePresence>
+        </>
     );
 }
