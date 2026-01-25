@@ -184,7 +184,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                     />
                                 </div>
                             </div>
-                            <div className="flex gap-2">
+                            <div className="flex gap-2 items-center">
                                 <button
                                     onClick={async () => {
                                         const toastId = toast.loading('⚡ Enviando comando...');
@@ -214,6 +214,27 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                     className="px-3 py-1 bg-[#121218] border border-white/10 text-white text-[10px] font-bold rounded-lg hover:bg-white/10 transition-colors shrink-0"
                                 >
                                     🧹 Cache
+                                </button>
+
+                                <div className="h-4 w-px bg-white/10 mx-1"></div>
+
+                                <button
+                                    onClick={async () => {
+                                        if (!window.confirm('Deseja desvincular este computador da sua conta?')) return;
+                                        const toastId = toast.loading('Desvinculando...');
+                                        try {
+                                            await fetch('/api/v1/install/unlink', {
+                                                method: 'POST',
+                                                body: JSON.stringify({ installation_id: inst.id })
+                                            });
+                                            toast.success('Desvinculado!', { id: toastId, icon: '👋' });
+                                            fetchData(); // Recarregar lista
+                                        } catch { toast.error('Erro ao desvincular', { id: toastId }); }
+                                    }}
+                                    className="w-7 h-7 flex items-center justify-center bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors shrink-0"
+                                    title="Desvincular Computador"
+                                >
+                                    ✕
                                 </button>
                             </div>
                         </div>
