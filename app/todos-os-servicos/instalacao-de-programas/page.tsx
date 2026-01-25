@@ -155,6 +155,7 @@ export default function InstalacaoDeProgramasPage() {
               </button>
             </motion.div>
 
+
             {/* Scroll Indicator */}
             <motion.div
               initial={{ opacity: 0 }}

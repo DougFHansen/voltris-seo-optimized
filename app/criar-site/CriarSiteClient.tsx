@@ -127,6 +127,7 @@ export default function CriarSiteClient() {
                         </motion.div>
                     </div>
 
+
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -207,8 +208,8 @@ export default function CriarSiteClient() {
                                         <Link
                                             href="/todos-os-servicos/criacao-sites"
                                             className={`w-full py-4 rounded-xl text-center font-bold transition-all font-sans ${index === 1
-                                                    ? 'bg-[#31A8FF] text-white hover:bg-[#2B8FD9] shadow-[0_0_20px_rgba(49,168,255,0.3)]'
-                                                    : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
+                                                ? 'bg-[#31A8FF] text-white hover:bg-[#2B8FD9] shadow-[0_0_20px_rgba(49,168,255,0.3)]'
+                                                : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
                                                 }`}
                                         >
                                             Contratar {plan.name}

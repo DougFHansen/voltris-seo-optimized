@@ -1206,6 +1206,7 @@ export default function ServicesPage() {
               </motion.div>
             </div>
 
+
             {/* Scroll Indicator */}
             <motion.div
               initial={{ opacity: 0 }}

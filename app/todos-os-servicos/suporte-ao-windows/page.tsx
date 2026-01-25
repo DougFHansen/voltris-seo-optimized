@@ -237,6 +237,7 @@ export default function SuporteWindowsPage() {
               </button>
             </motion.div>
 
+
             {/* Scroll Indicator */}
             <motion.div
               initial={{ opacity: 0 }}

@@ -57,6 +57,7 @@ export default function AboutPage() {
             </motion.div>
           </div>
 
+
           {/* Scroll Down Indicator */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}

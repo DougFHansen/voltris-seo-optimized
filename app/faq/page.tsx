@@ -23,8 +23,8 @@ const FAQItem = ({ question, answer, icon, isOpen, onClick, index }: FAQItemProp
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
             className={`group rounded-xl border transition-all duration-500 overflow-hidden relative ${isOpen
-                    ? 'bg-gradient-to-r from-[#1a1a2e] to-[#0F111A] border-[#31A8FF]/30 shadow-[0_0_40px_rgba(49,168,255,0.05)]'
-                    : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
+                ? 'bg-gradient-to-r from-[#1a1a2e] to-[#0F111A] border-[#31A8FF]/30 shadow-[0_0_40px_rgba(49,168,255,0.05)]'
+                : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
                 }`}
         >
             {/* Active Glow Bar on Left */}
@@ -37,8 +37,8 @@ const FAQItem = ({ question, answer, icon, isOpen, onClick, index }: FAQItemProp
                 <div className="flex items-center gap-6">
                     {icon && (
                         <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-500 shadow-lg ${isOpen
-                                ? 'bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] text-white scale-110 shadow-[0_0_20px_rgba(49,168,255,0.3)]'
-                                : 'bg-[#0A0A0F] border border-white/10 text-slate-400 group-hover:border-[#31A8FF]/30 group-hover:text-[#31A8FF]'
+                            ? 'bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] text-white scale-110 shadow-[0_0_20px_rgba(49,168,255,0.3)]'
+                            : 'bg-[#0A0A0F] border border-white/10 text-slate-400 group-hover:border-[#31A8FF]/30 group-hover:text-[#31A8FF]'
                             }`}>
                             <div className="w-5 h-5 sm:w-6 sm:h-6">
                                 {icon}
@@ -52,8 +52,8 @@ const FAQItem = ({ question, answer, icon, isOpen, onClick, index }: FAQItemProp
                 </div>
 
                 <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ml-4 shrink-0 ${isOpen
-                        ? 'border-[#31A8FF] bg-[#31A8FF]/10 rotate-180'
-                        : 'border-white/10 bg-transparent group-hover:border-white/30'
+                    ? 'border-[#31A8FF] bg-[#31A8FF]/10 rotate-180'
+                    : 'border-white/10 bg-transparent group-hover:border-white/30'
                     }`}>
                     <ChevronDown className={`w-4 h-4 transition-colors duration-300 ${isOpen ? 'text-[#31A8FF]' : 'text-slate-500 group-hover:text-slate-300'
                         }`} />
@@ -142,6 +142,7 @@ export default function FAQPage() {
                             </p>
                         </motion.div>
                     </div>
+
 
                     {/* Scroll Down Indicator */}
                     <motion.div
