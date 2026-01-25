@@ -61,7 +61,7 @@ export default function AdminOrdersTab() {
         .order('created_at', { ascending: false })
         .range(from, to);
       if (filter !== 'all') query = query.eq('status', filter);
-      if (searchTerm) {}
+      if (searchTerm) { }
       const { data, error } = await query;
       if (error) throw error;
       let newOrders = data || [];
@@ -138,7 +138,7 @@ export default function AdminOrdersTab() {
 
   const filteredOrders = orders.filter(order => {
     const matchesFilter = filter === 'all' || order.status === filter;
-    const matchesSearch = 
+    const matchesSearch =
       order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       order.profiles?.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       order.profiles?.email?.toLowerCase().includes(searchTerm.toLowerCase());
@@ -232,6 +232,22 @@ export default function AdminOrdersTab() {
                 });
               }
             } else if (payload.eventType === 'INSERT') {
+              // Tocar som de alerta para novos pedidos
+              try {
+                const audio = new Audio('/alert.mp3');
+                audio.volume = 0.8;
+                audio.play().catch(e => console.warn('Erro ao tocar som:', e));
+                toast.success('💰 Novo pedido recebido!', {
+                  style: {
+                    background: '#1E1E1E',
+                    color: '#fff',
+                    border: '1px solid #8B31FF'
+                  }
+                });
+              } catch (e) {
+                console.error('Erro no audio:', e);
+              }
+
               const fullOrder = await fetchFullOrder(changedOrder.id);
               if (fullOrder) {
                 setOrders(prevOrders => {
@@ -377,7 +393,7 @@ export default function AdminOrdersTab() {
                         <span>{getStatusText(order.status, order.cancelled_by)}</span>
                       </span>
                     </div>
-                    
+
                     <div className="space-y-2">
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                         <div className="flex items-center gap-2">
@@ -393,7 +409,7 @@ export default function AdminOrdersTab() {
                           </span>
                         </div>
                       </div>
-                      
+
                       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
                         <div className="flex items-center gap-2">
                           <span className="text-gray-400 text-sm">Serviço:</span>
@@ -406,7 +422,7 @@ export default function AdminOrdersTab() {
                           </span>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-center gap-2">
                         <span className="text-gray-400 text-sm">Data:</span>
                         <span className="text-white font-medium">
@@ -421,7 +437,7 @@ export default function AdminOrdersTab() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-2">
                     <button
                       onClick={() => {
@@ -433,7 +449,7 @@ export default function AdminOrdersTab() {
                       <FiEye className="w-4 h-4" />
                       Ver Detalhes
                     </button>
-                    
+
                     <select
                       value={order.status}
                       onChange={(e) => handleStatusChange(order.id, e.target.value as Order['status'])}
@@ -478,7 +494,7 @@ export default function AdminOrdersTab() {
                 </svg>
               </button>
             </div>
-            
+
             <div className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -536,7 +552,7 @@ export default function AdminOrdersTab() {
                   </p>
                 </div>
               </div>
-              
+
               {selectedOrder.notes && (
                 <div>
                   <span className="text-gray-400 text-sm">Informações Adicionais</span>

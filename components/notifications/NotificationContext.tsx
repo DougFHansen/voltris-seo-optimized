@@ -263,10 +263,11 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
         playNotificationSound(latest.sound, vol, latest.type); // Passa o tipo para garantir 'order' = 'chime'
         lastPlayedId = latest.id;
       }
-      // Exibir toast para ticket_status
-      if (latest.type === 'ticket_status') {
+      // Exibir toast para ticket_status e pedidos
+      if (latest.type === 'ticket_status' || latest.type === 'order') {
+        const icon = latest.type === 'order' ? '🛍️' : '🎫';
         toast(latest.title + (latest.message ? ('\n' + latest.message) : ''), {
-          icon: '🎫',
+          icon: icon,
           duration: 6000,
           style: {
             background: '#18181b',
@@ -300,11 +301,11 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
           console.log('[DEBUG] postMessage: comando para tocar som:', event.data);
           handleNotificationSoundMessage(event, settings);
         };
-        window.addEventListener('message', messageHandler);
+        (window as any).addEventListener('message', messageHandler);
       }
       return () => {
         if (channel) channel.close();
-        if (messageHandler && typeof window.removeEventListener === 'function') window.removeEventListener('message', messageHandler);
+        if (messageHandler && typeof window.removeEventListener === 'function') (window as any).removeEventListener('message', messageHandler);
       };
     }
   }, [settings]);
@@ -312,10 +313,8 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (typeof window !== 'undefined' && typeof document !== 'undefined') {
       document.addEventListener('click', ensureAudioUnlocked, { once: true });
-      document.addEventListener('keydown', ensureAudioUnlocked, { once: true });
       return () => {
         document.removeEventListener('click', ensureAudioUnlocked);
-        document.removeEventListener('keydown', ensureAudioUnlocked);
       };
     }
   }, []);
@@ -398,7 +397,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   // Função para ignorar (não faz nada extra)
-  const handleDismissNotifications = () => {};
+  const handleDismissNotifications = () => { };
 
   return (
     <NotificationContext.Provider value={{
