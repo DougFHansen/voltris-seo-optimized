@@ -11,6 +11,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
     const supabase = createClient();
 
     useEffect(() => {
+        console.log('[UserOptimizerSection] userId:', userId);
         if (userId) {
             fetchData();
 
@@ -21,6 +22,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                     table: 'installations',
                     filter: `user_id=eq.${userId}`
                 }, () => {
+                    console.log('[UserOptimizerSection] Realtime update received');
                     fetchData();
                 })
                 .subscribe();
@@ -33,16 +35,19 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
 
     const fetchData = async () => {
         try {
+            console.log('[UserOptimizerSection] Buscando instalações para userId:', userId);
             const { data, error } = await supabase
                 .from('installations')
                 .select('*')
                 .eq('user_id', userId)
                 .order('last_heartbeat', { ascending: false });
 
+            console.log('[UserOptimizerSection] Resultado da query:', { data, error });
             if (error) throw error;
+            console.log('[UserOptimizerSection] Instalações encontradas:', data?.length || 0);
             setInstallations(data || []);
         } catch (err) {
-            console.error(err);
+            console.error('[UserOptimizerSection] Erro ao buscar instalações:', err);
         } finally {
             setLoading(false);
         }
