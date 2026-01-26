@@ -426,7 +426,7 @@ export default function OptimizerClient() {
                                     Segurança e Performance não são opostos. O Voltris atua em camadas profundas do Windows (Registry, Services, Kernel) para desbloquear hardware adormecido de forma segura.
                                 </p>
                             </div>
-                            <Link href="/tecnologia" className="text-[#31A8FF] font-bold hover:text-white transition-colors flex items-center gap-2">
+                            <Link href="/voltrisoptimizer/documentacao" className="text-[#31A8FF] font-bold hover:text-white transition-colors flex items-center gap-2">
                                 Documentação Técnica <ChevronDown className="-rotate-90 w-4 h-4" />
                             </Link>
                         </div>
