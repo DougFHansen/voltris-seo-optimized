@@ -44,7 +44,7 @@ const services = [
         iconType: "Laptop2",
         price: "A partir de R$ 349,90",
         buttonText: "Ver Planos",
-        redirect: "/todos-os-servicos/suporte-windows"
+        redirect: "/todos-os-servicos/suporte-ao-windows"
     },
     {
         id: "correcao_windows",
