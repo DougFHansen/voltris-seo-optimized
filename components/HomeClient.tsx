@@ -473,7 +473,7 @@ export default function HomeClient() {
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 md:gap-8">
                             <div className="text-center">
                                 <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text mb-1 xs:mb-2">
-                                    5000+
+                                    100.000+
                                 </div>
                                 <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
                                     Clientes Atendidos
@@ -481,7 +481,7 @@ export default function HomeClient() {
                             </div>
                             <div className="text-center">
                                 <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text mb-1 xs:mb-2">
-                                    7.9
+                                    8.9
                                 </div>
                                 <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
                                     Avaliação Média
