@@ -1,49 +1,51 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic'; // IMPORTANTE para evitar cache no Vercel
-
-export async function GET(request: NextRequest) {
+export async function GET(req: NextRequest) {
     try {
-        const { searchParams } = new URL(request.url);
-        const installationId = searchParams.get('installation_id');
+        const { searchParams } = new URL(req.url);
+        const machine_id = searchParams.get('machine_id');
 
-        if (!installationId) {
-            return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
+        if (!machine_id) {
+            return NextResponse.json({ error: 'Missing machine_id' }, { status: 400 });
         }
 
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-        const supabase = createClient(supabaseUrl, supabaseServiceKey);
+        const supabaseAdmin = createClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.SUPABASE_SERVICE_ROLE_KEY!
+        );
 
-        // Buscar comandos pendentes
-        const { data: commands, error } = await supabase
-            .from('device_commands')
-            .select('*')
-            .eq('installation_id', installationId)
-            .eq('status', 'pending')
-            .order('created_at', { ascending: true }); // Executar na ordem FIFO
+        // Get Device ID
+        const { data: device } = await supabaseAdmin
+            .from('devices')
+            .select('id')
+            .eq('machine_id', machine_id)
+            .single();
 
-        if (error) throw error;
-
-        // Opcional: Marcar como 'fetched' ou 'processing' aqui para evitar execução dupla
-        // Se houver comandos, vamos marcá-los como 'processing' imediatamente
-        if (commands && commands.length > 0) {
-            const commandIds = commands.map(c => c.id);
-            await supabase
-                .from('device_commands')
-                .update({ status: 'processing', updated_at: new Date().toISOString() })
-                .in('id', commandIds);
+        if (!device) {
+            return NextResponse.json({ commands: [] }); // Silent fail for unregistered devices
         }
 
-        return NextResponse.json({
-            commands: commands || [],
-            count: commands?.length || 0
-        });
+        // Get Pending Commands
+        const { data: commands, error } = await supabaseAdmin
+            .from('remote_commands')
+            .select('id, command_type, payload, status')
+            .eq('device_id', device.id)
+            .eq('status', 'pending');
 
-    } catch (error: any) {
-        console.error('[API/COMMANDS/PENDING] Erro:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        if (error) {
+            console.error(error);
+            return NextResponse.json({ commands: [] });
+        }
+
+        // Helper: Mark them as 'sent' immediately? 
+        // Usually C2 waits for 'update' from client. But to prevent loop if client fails to update?
+        // Let's leave them as pending until client ACKs execution or keep strictly 'pending'.
+        // Better practice: client pulls, executes, then updates. If client crashes, it stays pending (retried).
+
+        return NextResponse.json({ commands: commands || [] });
+
+    } catch (err) {
+        return NextResponse.json({ error: 'Server Error' }, { status: 500 });
     }
 }

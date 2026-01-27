@@ -50,5 +50,5 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   // Matcher for protected routes
-  matcher: ['/services/:path*'], // Adjust this regex to include all protected routes
+  matcher: ['/services/:path*', '/dashboard/:path*'],
 } 

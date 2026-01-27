@@ -1,48 +1,89 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod';
 
-export const runtime = 'nodejs';
+const heartbeatSchema = z.object({
+    machine_id: z.string(),
+    status: z.string(),
+    metrics: z.object({
+        cpu_usage: z.number().optional(),
+        ram_usage_percent: z.number().optional(),
+        disk_usage_percent: z.number().optional(),
+        last_boot_time_seconds: z.number().optional(),
+    }),
+    active_alerts: z.array(z.object({
+        type: z.string(),
+        level: z.string(),
+        message: z.string(),
+        timestamp: z.string().optional(),
+    })).optional(),
+});
 
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
     try {
-        const { installation_id, is_optimized } = await request.json();
+        const body = await req.json();
+        const result = heartbeatSchema.safeParse(body);
 
-        if (!installation_id) {
-            return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
+        if (!result.success) {
+            return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
         }
 
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        const { machine_id, status, metrics, active_alerts } = result.data;
 
-        if (!supabaseUrl || !supabaseServiceKey) {
-            return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
+        const supabaseAdmin = createClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.SUPABASE_SERVICE_ROLE_KEY!
+        );
+
+        // 1. Get Device ID
+        const { data: device } = await supabaseAdmin
+            .from('devices')
+            .select('id, company_id')
+            .eq('machine_id', machine_id)
+            .single();
+
+        if (!device) {
+            return NextResponse.json({ error: 'Device not found' }, { status: 404 });
         }
 
-        const supabase = createClient(supabaseUrl, supabaseServiceKey);
+        // 2. Insert Telemetry
+        await supabaseAdmin.from('telemetry_logs').insert({
+            device_id: device.id,
+            company_id: device.company_id,
+            cpu_usage: metrics.cpu_usage,
+            ram_usage_percent: metrics.ram_usage_percent,
+            disk_usage_percent: metrics.disk_usage_percent,
+            boot_time_seconds: metrics.last_boot_time_seconds,
+        });
 
-        // Update heartbeat and optimization status
-        const updateData: any = {
-            last_heartbeat: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-        };
+        // 3. Update Device Status
+        await supabaseAdmin
+            .from('devices')
+            .update({
+                status: 'online', // Implicitly online if sending heartbeat
+                last_heartbeat: new Date().toISOString(),
+                // Check if we should update 'status' column based on alerts (e.g. 'critical')
+                // For now, let's keep 'status' as connection status and use dashboard for health
+            })
+            .eq('id', device.id);
 
-        if (is_optimized !== undefined) {
-            updateData.is_optimized = is_optimized;
-            if (is_optimized) {
-                updateData.last_optimized_at = new Date().toISOString();
-            }
+        // 4. Handle Alerts
+        if (active_alerts && active_alerts.length > 0) {
+            const alertsToInsert = active_alerts.map(alert => ({
+                device_id: device.id,
+                company_id: device.company_id,
+                type: alert.type,
+                level: alert.level,
+                message: alert.message,
+                created_at: alert.timestamp || new Date().toISOString(),
+            }));
+
+            await supabaseAdmin.from('device_alerts').insert(alertsToInsert);
         }
-
-        const { error } = await supabase
-            .from('installations')
-            .update(updateData)
-            .eq('id', installation_id);
-
-        if (error) throw error;
 
         return NextResponse.json({ success: true });
-    } catch (error: any) {
-        console.error('[HEARTBEAT] error:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+    } catch (err) {
+        console.error('Heartbeat Error:', err);
+        return NextResponse.json({ error: 'Server Error' }, { status: 500 });
     }
 }

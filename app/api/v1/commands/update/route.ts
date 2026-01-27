@@ -1,37 +1,35 @@
-import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const runtime = 'nodejs';
-
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
     try {
-        const body = await request.json();
+        const body = await req.json();
         const { command_id, status, result_data } = body;
 
         if (!command_id || !status) {
-            return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+            return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
         }
 
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-        const supabase = createClient(supabaseUrl, supabaseServiceKey);
+        const supabaseAdmin = createClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.SUPABASE_SERVICE_ROLE_KEY!
+        );
 
-        const { error } = await supabase
-            .from('device_commands')
+        const { error } = await supabaseAdmin
+            .from('remote_commands')
             .update({
-                status: status, // 'completed' ou 'failed'
+                status: status,
                 result_data: result_data,
                 executed_at: new Date().toISOString(),
-                updated_at: new Date().toISOString()
             })
             .eq('id', command_id);
 
-        if (error) throw error;
+        if (error) {
+            return NextResponse.json({ error: 'Update failed' }, { status: 500 });
+        }
 
         return NextResponse.json({ success: true });
-
-    } catch (error: any) {
-        console.error('[API/COMMANDS/UPDATE] Erro:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+    } catch (err) {
+        return NextResponse.json({ error: 'Server Error' }, { status: 500 });
     }
 }
