@@ -48,7 +48,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         {/* Sidebar Instance para Mobile (Drawer Control) */}
         <div className="lg:hidden">
-          <Sidebar mobileOpen={mobileMenuOpen} setMobileOpen={setMobileMenuOpen} />
+          <Suspense fallback={null}>
+            <Sidebar mobileOpen={mobileMenuOpen} setMobileOpen={setMobileMenuOpen} />
+          </Suspense>
         </div>
 
         {/* Main Content Area - Onde o conteúdo das páginas é renderizado */}
