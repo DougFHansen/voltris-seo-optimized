@@ -64,25 +64,12 @@ export default function CompaniesPage() {
                 return;
             }
 
-            // 1. Create Company
-            const { data: companyData, error: companyError } = await supabase
-                .from('companies')
-                .insert({ name, plan_type: 'trial', max_devices: 5 })
-                .select()
-                .single();
+            // USO DE RPC (Stored Procedure) para evitar bloqueio de RLS
+            const { error } = await supabase.rpc('create_new_organization', {
+                org_name: name
+            });
 
-            if (companyError) throw companyError;
-
-            // 2. Link User a Owner
-            const { error: linkError } = await supabase
-                .from('company_users')
-                .insert({
-                    company_id: companyData.id,
-                    user_id: user.id,
-                    role: 'owner'
-                });
-
-            if (linkError) throw linkError;
+            if (error) throw error;
 
             toast.success("Organização criada com sucesso!");
             window.location.reload();
