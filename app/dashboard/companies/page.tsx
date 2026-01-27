@@ -5,6 +5,7 @@ import { createClient } from '@/utils/supabase/client';
 import { FiMonitor, FiAlertTriangle, FiCpu, FiTrendingUp } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
 export default function CompaniesPage() {
     const [loading, setLoading] = useState(true);
@@ -51,6 +52,47 @@ export default function CompaniesPage() {
         loadData();
     }, []);
 
+    const handleCreateCompany = async () => {
+        const name = window.prompt("Qual o nome da sua empresa/organização?");
+        if (!name) return;
+
+        try {
+            setLoading(true);
+            const { data: { user } } = await supabase.auth.getUser();
+            if (!user) {
+                toast.error("Você precisa estar logado.");
+                return;
+            }
+
+            // 1. Create Company
+            const { data: companyData, error: companyError } = await supabase
+                .from('companies')
+                .insert({ name, plan_type: 'trial', max_devices: 5 })
+                .select()
+                .single();
+
+            if (companyError) throw companyError;
+
+            // 2. Link User a Owner
+            const { error: linkError } = await supabase
+                .from('company_users')
+                .insert({
+                    company_id: companyData.id,
+                    user_id: user.id,
+                    role: 'owner'
+                });
+
+            if (linkError) throw linkError;
+
+            toast.success("Organização criada com sucesso!");
+            window.location.reload();
+
+        } catch (err: any) {
+            toast.error("Erro ao criar organização: " + err.message);
+            setLoading(false);
+        }
+    };
+
     if (loading) return <div className="text-white p-10">Carregando dados corporativos...</div>;
 
     if (!company) {
@@ -63,7 +105,10 @@ export default function CompaniesPage() {
                 <p className="text-slate-400 max-w-md mb-8">
                     Sua conta não está associada a nenhuma organização empresarial. Entre em contato com seu administrador.
                 </p>
-                <button className="bg-[#31A8FF] text-black font-bold px-6 py-3 rounded-xl hover:bg-[#31A8FF]/90 transition">
+                <button
+                    onClick={handleCreateCompany}
+                    className="bg-[#31A8FF] text-black font-bold px-6 py-3 rounded-xl hover:bg-[#31A8FF]/90 transition"
+                >
                     Criar Nova Organização
                 </button>
             </div>
