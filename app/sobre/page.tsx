@@ -139,7 +139,7 @@ export default function AboutPage() {
                     O que começou com suporte para amigos cresceu exponencialmente. A metodologia proprietária de otimização da Voltris — que vai além do hardware e ajusta o sistema operacional a nível de kernel — rapidamente ganhou fama entre gamers e profissionais que precisavam de estabilidade absoluta.
                   </p>
                   <p>
-                    Oficializada em 2015, hoje somos uma referência em <strong>Suporte Técnico Remoto</strong> de elite, atendendo mais de 5.000 clientes com uma taxa de satisfação de 98%. Não somos apenas técnicos; somos engenheiros de performance dedicados a fazer sua máquina voar.
+                    Oficializada em 2025, hoje somos uma referência em <strong>Suporte Técnico Remoto</strong> de elite, atendendo mais de 5.000 clientes com uma taxa de satisfação de 98%. Não somos apenas técnicos; somos engenheiros de performance dedicados a fazer sua máquina voar.
                   </p>
                 </div>
               </motion.div>
