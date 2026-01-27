@@ -11,6 +11,9 @@ export default function CompaniesPage() {
     const [loading, setLoading] = useState(true);
     const [company, setCompany] = useState<any>(null);
     const [stats, setStats] = useState({ devices: 0, alerts: 0, avgHealth: 100 });
+    const [recentAlerts, setRecentAlerts] = useState<any[]>([]);
+    const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
+    const [buyQuantity, setBuyQuantity] = useState(5);
     const supabase = createClient();
 
     useEffect(() => {
@@ -46,6 +49,17 @@ export default function CompaniesPage() {
                     alerts: alertCount || 0,
                     avgHealth: 98, // Mock calculation for now
                 });
+
+                // 4. Get Recent Alerts
+                const { data: alerts } = await supabase
+                    .from('device_alerts')
+                    .select('*, devices(hostname)')
+                    .eq('company_id', link.companies.id)
+                    .eq('is_resolved', false)
+                    .order('created_at', { ascending: false })
+                    .limit(5);
+
+                setRecentAlerts(alerts || []);
             }
             setLoading(false);
         }
@@ -80,6 +94,73 @@ export default function CompaniesPage() {
         }
     };
 
+    const handleBuyLicenses = async () => {
+        if (!company) return;
+        try {
+            const toastId = toast.loading("Processando pagamento...");
+
+            // Simular delay de API de pagamento
+            await new Promise(r => setTimeout(r, 1500));
+
+            // Atualizar no banco
+            const newMax = (company.max_devices || 0) + buyQuantity;
+
+            const { error } = await supabase
+                .from('companies')
+                .update({ max_devices: newMax, plan_type: 'pro' })
+                .eq('id', company.id);
+
+            if (error) throw error;
+
+            toast.dismiss(toastId);
+            toast.success(`${buyQuantity} Licenças adicionadas com sucesso!`);
+            setIsBuyModalOpen(false);
+            window.location.reload();
+
+        } catch (err: any) {
+            toast.error("Falha na compra: " + err.message);
+        }
+    };
+
+    const handleOptimizeAll = async () => {
+        if (!company) return;
+        if (!confirm("Isso enviará um comando de otimização para TODOS os PCs. Continuar?")) return;
+
+        try {
+            const toastId = toast.loading("Enviando comandos...");
+
+            // 1. Get all devices
+            const { data: devices } = await supabase
+                .from('devices')
+                .select('id')
+                .eq('company_id', company.id);
+
+            if (!devices?.length) {
+                toast.error("Nenhum dispositivo encontrado.");
+                return;
+            }
+
+            // 2. Insert commands for each
+            const { data: { user } } = await supabase.auth.getUser();
+            const commands = devices.map(d => ({
+                device_id: d.id,
+                company_id: company.id,
+                command_type: 'OPTIMIZE_RAM',
+                status: 'pending',
+                create_user_id: user?.id
+            }));
+
+            const { error } = await supabase.from('remote_commands').insert(commands);
+            if (error) throw error;
+
+            toast.dismiss(toastId);
+            toast.success(`${devices.length} PCs receberam a ordem de otimização.`);
+
+        } catch (err: any) {
+            toast.error("Erro ao enviar comandos: " + err.message);
+        }
+    };
+
     if (loading) return <div className="text-white p-10">Carregando dados corporativos...</div>;
 
     if (!company) {
@@ -103,19 +184,25 @@ export default function CompaniesPage() {
     }
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 relative">
             {/* Header */}
             <div className="flex justify-between items-end">
                 <div>
                     <h1 className="text-3xl font-bold text-white mb-2">{company.name}</h1>
-                    <p className="text-slate-400">Painel de Controle Corporativo • {company.plan_type.toUpperCase()}</p>
+                    <p className="text-slate-400">
+                        Painel Corporativo • {company.plan_type.toUpperCase()} •
+                        <span className="text-[#00FF94] ml-2">{stats.devices} / {company.max_devices} Licenças em Uso</span>
+                    </p>
                 </div>
                 <div className="flex gap-3">
                     <Link href="/dashboard/companies/devices" className="bg-white/5 border border-white/10 text-white px-5 py-2.5 rounded-xl hover:bg-white/10 transition flex items-center gap-2">
                         <FiMonitor /> Gerenciar PCs
                     </Link>
-                    <button className="bg-[#8B31FF] text-white px-5 py-2.5 rounded-xl hover:bg-[#8B31FF]/90 transition">
-                        Adicionar Licenças
+                    <button
+                        onClick={() => setIsBuyModalOpen(true)}
+                        className="bg-[#8B31FF] text-white px-5 py-2.5 rounded-xl hover:bg-[#8B31FF]/90 transition shadow-[0_0_20px_#8B31FF55]"
+                    >
+                        + Adicionar Licenças
                     </button>
                 </div>
             </div>
@@ -127,7 +214,7 @@ export default function CompaniesPage() {
                     value={stats.devices.toString()}
                     icon={FiMonitor}
                     color="#31A8FF"
-                    subtext="3 ativos agora"
+                    subtext={`${company.max_devices - stats.devices} licenças livres`}
                 />
                 <StatCard
                     title="Alertas Ativos"
@@ -142,14 +229,14 @@ export default function CompaniesPage() {
                     value={`${stats.avgHealth}%`}
                     icon={FiTrendingUp}
                     color="#00FF94"
-                    subtext="Performance excelente"
+                    subtext="Performance global"
                 />
                 <StatCard
                     title="CPU Média"
                     value="12%"
                     icon={FiCpu}
                     color="#8B31FF"
-                    subtext="Últimos 30 min"
+                    subtext="Consumo estável"
                 />
             </div>
 
@@ -158,16 +245,22 @@ export default function CompaniesPage() {
                 {/* Recent Alerts List */}
                 <div className="lg:col-span-2 bg-[#121218]/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6">
                     <h3 className="text-lg font-bold text-white mb-6">Alertas Recentes</h3>
-                    {stats.alerts === 0 ? (
+                    {recentAlerts.length === 0 ? (
                         <div className="text-center py-10 text-slate-500">
                             <FiTrendingUp className="w-10 h-10 mx-auto mb-3 opacity-20" />
-                            <p>Tudo certo! Nenhum problema detectado.</p>
+                            <p>Tudo certo! Nenhum alerta não resolvido.</p>
                         </div>
                     ) : (
                         <div className="space-y-4">
-                            {/* Mock Alert Items (should fetch real) */}
-                            <AlertItem device="FINANCEIRO-01" msg="Uso de RAM acima de 95%" time="2 min atrás" />
-                            <AlertItem device="DEV-03" msg="Disco C: com 2% livre" time="15 min atrás" level="critical" />
+                            {recentAlerts.map(alert => (
+                                <AlertItem
+                                    key={alert.id}
+                                    device={alert.devices?.hostname || "Unknown PC"}
+                                    msg={alert.message}
+                                    time={new Date(alert.created_at).toLocaleTimeString()}
+                                    level={alert.level.toLowerCase()}
+                                />
+                            ))}
                         </div>
                     )}
                 </div>
@@ -176,7 +269,10 @@ export default function CompaniesPage() {
                 <div className="bg-[#121218]/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6">
                     <h3 className="text-lg font-bold text-white mb-6">Ações Rápidas</h3>
                     <div className="space-y-3">
-                        <button className="w-full text-left p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group">
+                        <button
+                            onClick={handleOptimizeAll}
+                            className="w-full text-left p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group"
+                        >
                             <div className="w-8 h-8 rounded-lg bg-[#31A8FF]/20 flex items-center justify-center text-[#31A8FF] group-hover:scale-110 transition">⚡</div>
                             <span>Otimizar Todas as Máquinas</span>
                         </button>
@@ -184,13 +280,63 @@ export default function CompaniesPage() {
                             <div className="w-8 h-8 rounded-lg bg-[#00FF94]/20 flex items-center justify-center text-[#00FF94] group-hover:scale-110 transition">📄</div>
                             <span>Gerar Relatório Mensal</span>
                         </button>
-                        <button className="w-full text-left p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group">
+                        <Link href="/dashboard/companies/devices" className="w-full text-left p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group">
                             <div className="w-8 h-8 rounded-lg bg-[#FF4B6B]/20 flex items-center justify-center text-[#FF4B6B] group-hover:scale-110 transition">🔒</div>
                             <span>Gerenciar Bloqueios</span>
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
+
+            {/* BUY LICENSES MODAL */}
+            {isBuyModalOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+                    <motion.div
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        className="bg-[#121218] border border-white/10 rounded-2xl p-8 max-w-md w-full shadow-2xl relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF]"></div>
+                        <h2 className="text-2xl font-bold text-white mb-2">Adicionar Licenças</h2>
+                        <p className="text-slate-400 mb-6">Expanda sua frota de máquinas gerenciadas.</p>
+
+                        <div className="mb-8">
+                            <label className="text-sm text-slate-400 mb-2 block">Quantidade</label>
+                            <div className="flex gap-4">
+                                {[5, 10, 50, 100].map(qty => (
+                                    <button
+                                        key={qty}
+                                        onClick={() => setBuyQuantity(qty)}
+                                        className={`flex-1 py-3 rounded-xl border font-medium transition ${buyQuantity === qty ? 'bg-[#8B31FF] border-[#8B31FF] text-white' : 'bg-white/5 border-white/10 text-slate-400 hover:bg-white/10'}`}
+                                    >
+                                        +{qty}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="flex justify-between items-center bg-white/5 p-4 rounded-xl mb-6">
+                            <span className="text-slate-300">Total a pagar</span>
+                            <span className="text-xl font-bold text-white">R$ {(buyQuantity * 29.90).toFixed(2)}<span className="text-xs text-slate-500 font-normal">/mês</span></span>
+                        </div>
+
+                        <div className="flex gap-3">
+                            <button
+                                onClick={() => setIsBuyModalOpen(false)}
+                                className="flex-1 py-3 rounded-xl bg-white/5 text-slate-300 hover:bg-white/10 transition"
+                            >
+                                Cancelar
+                            </button>
+                            <button
+                                onClick={handleBuyLicenses}
+                                className="flex-1 py-3 rounded-xl bg-[#8B31FF] text-white font-bold hover:bg-[#8B31FF]/90 transition shadow-lg shadow-[#8B31FF]/20"
+                            >
+                                Confirmar e Ativar
+                            </button>
+                        </div>
+                    </motion.div>
+                </div>
+            )}
         </div>
     );
 }
