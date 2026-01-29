@@ -249,10 +249,16 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             try {
                                                 await fetch('/api/v1/commands/create', {
                                                     method: 'POST',
-                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'OPTIMIZE_RAM' })
+                                                    headers: { 'Content-Type': 'application/json' },
+                                                    body: JSON.stringify({
+                                                        installation_id: inst.id,
+                                                        command_type: 'OPTIMIZE_RAM'
+                                                    })
                                                 });
                                                 toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
-                                            } catch { toast.error('Falha no envio', { id: toastId }); }
+                                            } catch {
+                                                toast.error('Falha no envio', { id: toastId });
+                                            }
                                         }}
                                         className="flex-1 px-4 py-3 bg-white text-black text-sm font-bold rounded-xl hover:scale-105 transition-transform shadow-lg"
                                     >
@@ -264,10 +270,16 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             try {
                                                 await fetch('/api/v1/commands/create', {
                                                     method: 'POST',
-                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'CLEAN_TEMP' })
+                                                    headers: { 'Content-Type': 'application/json' },
+                                                    body: JSON.stringify({
+                                                        installation_id: inst.id,
+                                                        command_type: 'CLEAN_SYSTEM'
+                                                    })
                                                 });
                                                 toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
-                                            } catch { toast.error('Falha no envio', { id: toastId }); }
+                                            } catch {
+                                                toast.error('Falha no envio', { id: toastId });
+                                            }
                                         }}
                                         className="flex-1 px-4 py-3 bg-[#121218] border border-white/10 text-white text-sm font-bold rounded-xl hover:bg-white/10 transition-colors"
                                     >
