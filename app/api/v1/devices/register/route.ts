@@ -5,7 +5,7 @@ import { z } from 'zod';
 // Schema Validation
 const registerSchema = z.object({
     identity: z.object({
-        machine_id: z.string(),
+        machine_id: z.string(), // GUID gerado pelo app desktop (Installation ID)
         hostname: z.string().optional(),
         os_version: z.string().optional(),
         cpu_model: z.string().optional(),
@@ -27,41 +27,42 @@ export async function POST(req: NextRequest) {
 
         const { identity, app_version } = result.data;
 
-        // Initialize Admin Client (Bypass RLS for Device Registration)
-        const supabaseAdmin = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.SUPABASE_SERVICE_ROLE_KEY!
-        );
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-        // Upsert Device
+        if (!supabaseUrl || !serviceRoleKey) {
+            console.error('[API/DEVICES/REGISTER] Missing Supabase configuration');
+            return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
+        }
+
+        // Initialize Admin Client (Bypass RLS for Installation Registration)
+        const supabaseAdmin = createClient(supabaseUrl, serviceRoleKey);
+
+        // Mapear para o modelo moderno baseado em \"installations\"
+        const payload: any = {
+            id: identity.machine_id,          // installations.id = GUID do app
+            app_version: app_version ?? null,
+            cpu_name: identity.cpu_model ?? null,
+            ram_gb_total: identity.ram_total_gb ?? null,
+            os_build: identity.os_version ?? null,
+            // Campos adicionais podem ser mapeados aqui no futuro (disk_main_type, os_name, architecture, etc.)
+            updated_at: new Date().toISOString(),
+        };
+
         const { data, error } = await supabaseAdmin
-            .from('devices')
-            .upsert(
-                {
-                    machine_id: identity.machine_id,
-                    hostname: identity.hostname,
-                    os_version: identity.os_version,
-                    cpu_model: identity.cpu_model,
-                    ram_total_gb: identity.ram_total_gb,
-                    disk_serial: identity.disk_serial,
-                    mac_address: identity.mac_address,
-                    app_version: app_version,
-                    updated_at: new Date().toISOString(),
-                    // Note: company_id is NOT set here. Must be linked later or via Token if implemented.
-                },
-                { onConflict: 'machine_id' }
-            )
-            .select()
+            .from('installations')
+            .upsert(payload, { onConflict: 'id' })
+            .select('id')
             .single();
 
         if (error) {
-            console.error('Error registering device:', error);
-            return NextResponse.json({ error: 'Database error' }, { status: 500 });
+            console.error('[API/DEVICES/REGISTER] Error registering installation:', error);
+            return NextResponse.json({ error: 'Database error', details: error.message }, { status: 500 });
         }
 
-        return NextResponse.json({ success: true, device_id: data.id });
+        return NextResponse.json({ success: true, installation_id: data.id });
     } catch (err) {
-        console.error('Register API Error:', err);
+        console.error('[API/DEVICES/REGISTER] Register API Error:', err);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }
