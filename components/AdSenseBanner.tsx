@@ -1,27 +1,27 @@
 'use client';
 
+import { useId } from 'react';
 import Script from 'next/script';
+import { ADSENSE_CONFIG } from '@/app/adsense-config';
+
+const AD_CLIENT = ADSENSE_CONFIG.PUBLISHER_ID;
+const AD_SLOT = ADSENSE_CONFIG.AD_SLOTS.BANNER;
 
 export default function AdSenseBanner() {
+  const pushId = useId();
   return (
-    <>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9217408182316735"
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
+    <div className="max-w-4xl mx-auto py-8 px-4 min-h-[280px]" role="complementary" aria-label="Anúncios">
+      <ins
+        className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client={AD_CLIENT}
+        data-ad-slot={AD_SLOT}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
       />
-      <div className="max-w-4xl mx-auto py-8 px-4 min-h-[280px]">
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block' }}
-          data-ad-client="ca-pub-9217408182316735"
-          data-ad-slot="1234567890"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <Script id="adsense-init">{`(adsbygoogle = window.adsbygoogle || []).push({});`}</Script>
-      </div>
-    </>
+      <Script id={`adsense-push-${pushId}`} strategy="afterInteractive">
+        {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+      </Script>
+    </div>
   );
 }

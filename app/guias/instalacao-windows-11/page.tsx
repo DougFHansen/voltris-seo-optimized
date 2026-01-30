@@ -5,7 +5,7 @@ const title = "Guia Definitivo de Instalação Limpa do Windows 11 (2025)";
 const description = "Tutorial técnico passo a passo para instalar o Windows 11 do zero, ignorando bloatware, configurando partições corretamente e garantindo drivers atualizados.";
 const keywords = ["instalação limpa windows 11","formatar pc 2025","tpm 2.0 bypass","drivers windows 11","otimização pós formatação"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('instalacao-windows-11', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

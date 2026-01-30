@@ -5,7 +5,7 @@ const title = "Kit de Sobrevivência: Programas Essenciais para Instalar no Wind
 const description = "Lista curada dos melhores softwares gratuitos e open-source para produtividade, segurança e mídia. Diga adeus ao WinRAR e conheça o 7-Zip.";
 const keywords = ["programas essenciais pc","ninite","vlc alternativa","7zip vs winrar","melhores softwares gratis"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('programas-essenciais-windows', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

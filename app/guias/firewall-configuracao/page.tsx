@@ -5,7 +5,7 @@ const title = "Configuração Profissional de Firewall";
 const description = "Aprenda a configurar firewall do Windows para proteger seu computador contra ameaças cibernéticas e acessos não autorizados.";
 const keywords = ['firewall', 'configuração firewall', 'proteção windows', 'segurança firewall', 'configuração profissional firewall'];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('firewall-configuracao', title, description, keywords);
 
 export default function FirewallConfiguracaoGuide() {
   const contentSections = [

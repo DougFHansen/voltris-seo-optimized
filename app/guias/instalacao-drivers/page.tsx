@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Instalação e Atualização de Drivers";
-const description = "Aprenda como instalar, atualizar e gerenciar drivers do seu computador para garantir que todos os dispositivos funcionem corretamente.";
-const keywords = ['instalacao drivers', 'atualizacao drivers', 'drivers windows', 'gerenciamento drivers', 'dispositivos windows'];
+const title = "Como Instalar Drivers no Windows - Instalação e Atualização Passo a Passo";
+const description = "Aprenda como instalar driver e atualizar drivers no Windows 10/11: placa de vídeo, áudio, rede. Guia completo para instalar drivers com segurança e corrigir dispositivos.";
+const keywords = ['como instalar drivers', 'instalar driver', 'instalar drivers', 'instalacao drivers', 'atualizacao drivers', 'drivers windows', 'driver placa de vídeo', 'gerenciamento drivers', 'dispositivos windows'];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('instalacao-drivers', title, description, keywords);
 
 export default function InstalacaoDriversGuide() {
   const contentSections = [
@@ -176,18 +176,24 @@ export default function InstalacaoDriversGuide() {
     {
       href: "/guias/seguranca-digital",
       title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      description: "Proteja o PC contra vírus e malware após instalar drivers."
     },
     {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
+      description: "Acelere o sistema após atualizar os drivers."
     },
     {
       href: "/guias/manutencao-preventiva",
       title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      description: "Rotinas para manter drivers e sistema atualizados."
     }
+  ];
+
+  const externalReferences = [
+    { name: "Microsoft: Atualizar drivers no Windows", url: "https://support.microsoft.com/pt-br/windows/atualizar-drivers-no-windows-ec1f7e91-e0fd-3d26-5a0e-781d42eaf459" },
+    { name: "NVIDIA Drivers (placas de vídeo)", url: "https://www.nvidia.com/Download/index.aspx" },
+    { name: "AMD Drivers (placas de vídeo e chipset)", url: "https://www.amd.com/pt/support" },
   ];
 
   return (
@@ -199,6 +205,7 @@ export default function InstalacaoDriversGuide() {
       difficultyLevel="Intermediário"
       contentSections={contentSections}
       relatedGuides={relatedGuides}
+      externalReferences={externalReferences}
     />
   );
 }

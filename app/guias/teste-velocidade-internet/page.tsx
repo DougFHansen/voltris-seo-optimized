@@ -5,7 +5,7 @@ const title = "Como Testar a Velocidade da sua Internet Corretamente";
 const description = "Speedtest, Fast.com ou nPerf? Saiba como medir sua banda larga real, entender Ping, Jitter e perda de pacotes.";
 const keywords = ["teste velocidade","speedtest","ping alto","jitter","internet lenta"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('teste-velocidade-internet', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

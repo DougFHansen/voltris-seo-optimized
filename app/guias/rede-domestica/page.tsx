@@ -5,7 +5,7 @@ const title = "Guia Completo de Configuração de Rede Doméstica";
 const description = "Configure roteadores, extensores Wi-Fi, VLANs e segurança de rede residencial. Otimização de cobertura e performance.";
 const keywords = ["rede doméstica","roteador","wi-fi","extensor","vlan","segurança rede"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('rede-domestica', title, description, keywords);
 
 export default function RededomesticaGuide() {
   const contentSections = [

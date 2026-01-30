@@ -5,7 +5,7 @@ const title = "Como Bloquear a Telemetria e Espionagem do Windows";
 const description = "O Windows coleta muitos dados por padrão. Aprenda a configurar a privacidade, desativar a telemetria e usar ferramentas como O&O ShutUp10.";
 const keywords = ["privacidade windows","telemetria","bloquear rastreamento","o&o shutup10","cortana desativar"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('privacidade-windows-telemetria', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

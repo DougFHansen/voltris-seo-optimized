@@ -5,7 +5,7 @@ const title = "Guia Completo de Diagnóstico de Falhas de Hardware";
 const description = "Identifique problemas de componentes físicos com ferramentas especializadas. Testes de memória, disco, placa-mãe e fonte.";
 const keywords = ["diagnóstico hardware","teste componentes","memtest","crystal disk info","hwinfo"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('diagnostico-hardware', title, description, keywords);
 
 export default function DiagnosticohardwareGuide() {
   const contentSections = [

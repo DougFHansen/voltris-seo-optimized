@@ -19,7 +19,7 @@ const keywords = [
   'identificar gargalos'
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('monitoramento-sistema', title, description, keywords);
 
 export default function MonitoramentoSistemaGuide() {
   const contentSections = [

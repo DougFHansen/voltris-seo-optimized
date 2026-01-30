@@ -5,7 +5,7 @@ const title = "Guia Completo de Compartilhamento de Impressoras";
 const description = "Configure impressoras em rede, compartilhe dispositivos entre múltiplos computadores e gerencie filas de impressão corporativa.";
 const keywords = ["compartilhar impressora","impressora rede","fila impressão","airprint","google cloud print"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('compartilhamento-impressoras', title, description, keywords);
 
 export default function CompartilhamentoimpressorasGuide() {
   const contentSections = [

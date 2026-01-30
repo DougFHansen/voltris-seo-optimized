@@ -5,7 +5,7 @@ const title = "Estratégias de Backup de Dados: A Regra 3-2-1";
 const description = "Não espere perder tudo para se preocupar. Aprenda a estratégia profissional de backup 3-2-1 e proteja fotos, documentos e arquivos importantes.";
 const keywords = ["backup dados","nuvem vs hd externo","segurança dados","onedrive google drive","ransomware"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('backup-dados', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

@@ -5,7 +5,7 @@ const title = "Bluetooth não conecta ou desapareceu? Soluções Definitivas";
 const description = "Fone Bluetooth falhando ou ícone sumiu? Aprenda a reinstalar drivers, reiniciar serviços e resolver interferências de sinal.";
 const keywords = ["bluetooth sumiu windows","fone bluetooth picotando","driver bluetooth intel","emparelhamento falhou"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('solucao-problemas-bluetooth', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

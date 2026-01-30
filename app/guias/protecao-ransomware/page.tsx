@@ -11,7 +11,7 @@ const keywords = [
   "backup anti-ransomware"
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('protecao-ransomware', title, description, keywords);
 
 export default function ProtecaoRansomwareGuide() {
   const contentSections = [

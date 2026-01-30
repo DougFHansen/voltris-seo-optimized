@@ -5,7 +5,7 @@ const title = "Guia de Limpeza e Otimização de Navegadores";
 const description = "Seu Chrome ou Edge está lento? Aprenda a limpar cache, remover extensões maliciosas e resetar configurações para restaurar a velocidade original.";
 const keywords = ["limpar cache chrome","navegador lento","remover extensoes","resetar edge","browser cleanup"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('limpeza-navegadores', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Guia Completo de Formatação do Windows | Tutorial Passo a Passo | VOLTRIS',
-  description: 'Aprenda como formatar seu computador Windows de forma segura e completa. Guia passo a passo com backup de dados, instalação limpa, drivers e configuração inicial. Tutorial profissional e detalhado.',
+  title: 'Como Formatar Windows 11/10 | Guia Completo 2026',
+  description: 'Aprenda como formatar seu PC Windows de forma segura. Guia passo a passo com backup, instalação limpa, drivers e configuração. Tutorial profissional.',
   keywords: [
     'formatação Windows',
     'como formatar computador',

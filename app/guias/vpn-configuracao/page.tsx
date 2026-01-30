@@ -12,7 +12,7 @@ const keywords = [
   "internet segura"
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('vpn-configuracao', title, description, keywords);
 
 export default function VpnConfiguracaoGuide() {
   const contentSections = [

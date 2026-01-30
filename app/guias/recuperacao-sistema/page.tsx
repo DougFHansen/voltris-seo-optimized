@@ -12,7 +12,7 @@ const keywords = [
   "restauração de imagem"
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('recuperacao-sistema', title, description, keywords);
 
 export default function RecuperacaoSistemaGuide() {
   const contentSections = [

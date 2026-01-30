@@ -5,7 +5,7 @@ const title = "Guia Completo de Automação de Tarefas com Scripts";
 const description = "Automatize tarefas repetitivas do Windows com PowerShell, Batch e ferramentas de agendamento. Economize horas de trabalho manual.";
 const keywords = ["automação","scripts","powershell","batch","agendador tarefas","produtividade"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('automacao-tarefas', title, description, keywords);
 
 export default function AutomacaotarefasGuide() {
   const contentSections = [

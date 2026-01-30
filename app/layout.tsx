@@ -133,6 +133,13 @@ export default function RootLayout({
         <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="msvalidate.01" content="92524862D63347408E773A7CD62B94DD" />
 
+        {/* Bing-specific meta tags */}
+        <meta name="revisit-after" content="7 days" />
+        <meta name="content-language" content="pt-BR" />
+        <meta name="geo.region" content="BR-SP" />
+        <meta name="geo.placename" content="São Paulo" />
+        <meta name="ICBM" content="-23.5505, -46.6333" />
+
         {/* Google tag (gtag.js) - Ads - Deferred */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"
@@ -217,20 +224,7 @@ export default function RootLayout({
             })
           }}
         />
-        {/* Schema.org BreadcrumbList (estrutura base) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://voltris.com.br" },
-                { "@type": "ListItem", "position": 2, "name": "Serviços", "item": "https://voltris.com.br/servicos" }
-              ]
-            })
-          }}
-        />
+        {/* BreadcrumbList por página — não fixo no layout para evitar sinal errado em guias/serviços */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -257,9 +251,8 @@ export default function RootLayout({
                 "Início",
                 "Sobre",
                 "Serviços",
-                "FAQ",
-                "Blog",
                 "Guias",
+                "FAQ",
                 "Contato",
                 "Dashboard",
                 "Política de Privacidade",
@@ -267,11 +260,10 @@ export default function RootLayout({
               ],
               "url": [
                 "https://voltris.com.br/",
-                "https://voltris.com.br/about",
+                "https://voltris.com.br/sobre",
                 "https://voltris.com.br/servicos",
-                "https://voltris.com.br/faq",
-                "https://voltris.com.br/blog",
                 "https://voltris.com.br/guias",
+                "https://voltris.com.br/faq",
                 "https://voltris.com.br/contato",
                 "https://voltris.com.br/dashboard",
                 "https://voltris.com.br/politica-privacidade",
@@ -283,6 +275,13 @@ export default function RootLayout({
 
       </head>
       <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
+        {/* Script AdSense carregado uma vez por página (evita duplicação e conformidade com políticas) */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9217408182316735"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <ClientNotificationProvider>
           <ReactQueryProvider>
             <CookieBanner />

@@ -18,7 +18,7 @@ const keywords = [
   'administração rede'
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('rede-corporativa', title, description, keywords);
 
 export default function RedeCorporativaGuide() {
   const contentSections = [

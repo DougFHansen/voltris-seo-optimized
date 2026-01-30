@@ -5,7 +5,7 @@ const title = "Guia Definitivo para Comprar Monitores: Hz, IPS, TN e Resolução
 const description = "Não compre o monitor errado! Entenda as diferenças entre painéis IPS, VA e TN, o que é taxa de atualização (Hz) e tempo de resposta.";
 const keywords = ["monitor 144hz","painel ips vs va","tempo de resposta 1ms","monitor gamer custo beneficio","hdr vale a pena"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('guia-compra-monitores', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

@@ -5,7 +5,7 @@ const title = "Atalhos de Teclado Essenciais para Produtividade no Windows";
 const description = "Domine o Windows com atalhos de teclado que economizam horas de trabalho. Guia completo para usuários básicos e avançados, incluindo gerenciamento de janelas e desktops virtuais.";
 const keywords = ["atalhos windows","produtividade","win key","alt tab","atalhos navegador"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('atalhos-produtividade-windows', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

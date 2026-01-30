@@ -13,7 +13,7 @@ const keywords = [
   'segurança computador'
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('seguranca-digital', title, description, keywords);
 
 export default function SegurancaDigitalGuide() {
   const summaryTable = [

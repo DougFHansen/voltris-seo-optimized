@@ -5,7 +5,7 @@ const title = "Como Formatar Windows (Passo a Passo 2026) - Voltris";
 const description = "Aprenda passo a passo como formatar seu computador Windows 10 ou 11 de forma segura. Guia definitivo com backup, instalação limpa e drivers.";
 const keywords = ['formatacao windows', 'formatar windows', 'formatar windows 11 sem pen drive', 'instalacao limpa windows', 'backup dados', 'configuracao inicial'];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('formatacao-windows', title, description, keywords);
 
 export default function FormatacaoWindowsGuide() {
   const summaryTable = [
@@ -202,6 +202,12 @@ export default function FormatacaoWindowsGuide() {
     }
   ];
 
+  const externalReferences = [
+    { name: "Microsoft: Criar mídia de instalação do Windows", url: "https://support.microsoft.com/pt-br/windows/criar-m%C3%ADdia-de-instala%C3%A7%C3%A3o-do-windows-99a58364-8c02-206f-aa6f-40c3b507420d" },
+    { name: "Microsoft: Reinstalar o Windows", url: "https://support.microsoft.com/pt-br/windows/reinstalar-o-windows-10-3dd4e1a8-4f26-7c0e-0cda-6d2b0d25c0e7" },
+    { name: "Rufus (ferramenta de boot)", url: "https://rufus.ie/" },
+  ];
+
   return (
     <GuideTemplate
       title={title}
@@ -213,6 +219,7 @@ export default function FormatacaoWindowsGuide() {
       relatedGuides={relatedGuides}
       summaryTable={summaryTable}
       faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

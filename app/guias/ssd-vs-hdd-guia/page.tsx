@@ -5,7 +5,7 @@ const title = "SSD vs HDD: Guia Definitivo de Armazenamento";
 const description = "Entenda as tecnologias, saiba quando usar cada um e aprenda a migrar seu sistema para voar baixo com NVMe.";
 const keywords = ["ssd vs hd","nvme vale a pena","clonar hd para ssd","tipos de ssd","instalar ssd notebook"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('ssd-vs-hdd-guia', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

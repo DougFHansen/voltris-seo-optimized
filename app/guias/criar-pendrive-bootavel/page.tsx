@@ -5,7 +5,7 @@ const title = "Como Criar um Pen Drive Bootável do Windows (Todos os Métodos)"
 const description = "Guia definitivo para criar mídia de instalação do Windows 10 e 11. Aprenda a usar o Media Creation Tool e o Rufus para PCs antigos ou novos.";
 const keywords = ["pendrive bootavel","rufus windows 11","media creation tool","formatar pc usb","iso windows"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('criar-pendrive-bootavel', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

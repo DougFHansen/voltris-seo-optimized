@@ -56,6 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // VOLTRIS OPTIMIZER
     { url: `${baseUrl}/voltrisoptimizer`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
     { url: `${baseUrl}/voltrisoptimizer/como-funciona`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${baseUrl}/voltrisoptimizer/documentacao`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.6 },
 
     // SUBCATEGORIAS DE SERVIÇOS
     { url: `${baseUrl}/todos-os-servicos/criacao-de-sites`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },

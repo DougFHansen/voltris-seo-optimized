@@ -5,7 +5,7 @@ const title = "Guia de Otimização Extrema para Jogos (FPS Boost 2025)";
 const description = "Aprenda a configurar Windows, NVIDIA/AMD e hardware para extrair cada gota de performance, reduzir input lag e estabilizar o frametime.";
 const keywords = ["aumentar fps","otimizar windows jogos","input lag fix","nvidia painel","configuração esports"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('otimizacao-jogos-pc', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

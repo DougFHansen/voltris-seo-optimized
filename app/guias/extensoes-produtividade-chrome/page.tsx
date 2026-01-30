@@ -5,7 +5,7 @@ const title = "As Melhores Extensões Chrome para Produtividade Máxima";
 const description = "Transforme seu navegador em uma máquina de produtividade. Análise detalhada do uBlock Origin, Bitwarden, OneTab, Grammarly e outros essenciais.";
 const keywords = ["melhores extensões chrome","ublock origin","bitwarden","produtividade navegador","bloquear anuncios"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('extensoes-produtividade-chrome', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

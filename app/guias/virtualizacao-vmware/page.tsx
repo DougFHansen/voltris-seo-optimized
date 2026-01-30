@@ -5,7 +5,7 @@ const title = "Guia Completo de Virtualização com VMware/VirtualBox";
 const description = "Crie máquinas virtuais para testes, desenvolvimento e isolamento de sistemas. Configuração profissional de ambientes virtuais.";
 const keywords = ["virtualização","vmware","virtualbox","máquina virtual","isolamento","desenvolvimento"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('virtualizacao-vmware', title, description, keywords);
 
 export default function VirtualizacaovmwareGuide() {
   const contentSections = [

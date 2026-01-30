@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-    title: 'Criação de Sites Profissionais VOLTRIS - Design Responsivo e SEO Otimizado',
-    description: 'Criação de sites profissionais com design responsivo, otimização SEO e hospedagem incluída. Planos básico, profissional e empresarial. Transforme sua presença digital!',
+    title: 'Criação de Sites - Planos Básico, Profissional e Empresarial | VOLTRIS',
+    description: 'Contrate criação de sites profissionais: design responsivo, SEO e hospedagem. Planos básico, profissional e empresarial. Orçamento sem compromisso.',
     keywords: [
         'criação de sites',
         'desenvolvimento web',
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
         canonical: '/todos-os-servicos/criacao-de-sites',
     },
     openGraph: {
-        title: 'Criação de Sites Profissionais VOLTRIS - Design Responsivo e SEO Otimizado',
-        description: 'Criação de sites profissionais com design responsivo, otimização SEO e hospedagem incluída. Planos básico, profissional e empresarial.',
+        title: 'Criação de Sites - Planos Básico, Profissional e Empresarial | VOLTRIS',
+        description: 'Sites profissionais com design responsivo, SEO e hospedagem. Planos para pequenos negócios e empresas.',
         url: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites',
         type: 'website',
         images: [
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Criação de Sites Profissionais VOLTRIS - Design Responsivo e SEO Otimizado',
-        description: 'Criação de sites profissionais com design responsivo, otimização SEO e hospedagem incluída. Planos básico, profissional e empresarial.',
+        title: 'Criação de Sites - Planos Básico, Profissional e Empresarial | VOLTRIS',
+        description: 'Sites profissionais com design responsivo, SEO e hospedagem. Planos para todos os portes.',
         images: ['/logo.png'],
     },
 };

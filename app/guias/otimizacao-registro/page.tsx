@@ -5,7 +5,7 @@ const title = "Guia Completo de Otimização do Registro do Windows";
 const description = "Limpe e otimize o registro do Windows para melhor performance. Técnicas seguras de manutenção preventiva do sistema.";
 const keywords = ["otimização registro","windows registry","ccleaner","registro limpo","performance sistema"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('otimizacao-registro', title, description, keywords);
 
 export default function OtimizacaoregistroGuide() {
   const contentSections = [

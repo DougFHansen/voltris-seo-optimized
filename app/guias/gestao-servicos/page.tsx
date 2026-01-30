@@ -5,7 +5,7 @@ const title = "Guia Completo de Gestão de Serviços do Sistema";
 const description = "Configure, otimize e monitore serviços do Windows para melhor performance e segurança. Desativação inteligente de serviços desnecessários.";
 const keywords = ["gestão serviços","services.msc","otimização windows","desempenho","segurança sistema"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('gestao-servicos', title, description, keywords);
 
 export default function GestaoservicosGuide() {
   const contentSections = [

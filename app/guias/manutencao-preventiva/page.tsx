@@ -5,7 +5,7 @@ const title = "Manutenção Preventiva de Computadores";
 const description = "Rotinas de manutenção que você pode fazer regularmente para manter seu computador funcionando perfeitamente e evitar problemas futuros.";
 const keywords = ['manutencao preventiva', 'manutencao computador', 'rotinas manutencao', 'prevencao problemas', 'otimizacao sistema'];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('manutencao-preventiva', title, description, keywords);
 
 export default function ManutencaoPreventivaGuide() {
   const contentSections = [

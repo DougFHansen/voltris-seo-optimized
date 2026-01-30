@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AdSenseBanner from '@/components/AdSenseBanner';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { FAQSchema } from '@/components/SEOStructuredData';
 import { motion } from 'framer-motion';
 import { Clock, ArrowRight, BookOpen, User, Calendar, Award } from 'lucide-react';
@@ -30,6 +31,11 @@ export interface RelatedGuide {
     description: string;
 }
 
+export interface ExternalReference {
+    name: string;
+    url: string;
+}
+
 export interface GuideTemplateProps {
     title: string;
     description: string;
@@ -42,6 +48,8 @@ export interface GuideTemplateProps {
     lastUpdated?: string;
     summaryTable?: SummaryTableItem[];
     faqItems?: Array<{ question: string; answer: string }>;
+    /** Links externos para fontes oficiais (Microsoft, etc.) — melhora E-E-A-T e sinal para buscadores */
+    externalReferences?: ExternalReference[];
 }
 
 export function GuideTemplateClient({
@@ -55,7 +63,8 @@ export function GuideTemplateClient({
     author = "Equipe Técnica Voltris",
     lastUpdated = "Janeiro 2025",
     summaryTable,
-    faqItems
+    faqItems,
+    externalReferences = []
 }: GuideTemplateProps) {
     const hasCustomConclusion = contentSections.some(section =>
         section.title.toLowerCase().includes('conclusão') ||
@@ -154,6 +163,14 @@ export function GuideTemplateClient({
                 <section id="guide-content" className="py-24 px-4 relative z-10 bg-[#050510]">
                     <div className="max-w-4xl mx-auto flex flex-col gap-12">
 
+                        {/* Breadcrumbs */}
+                        <Breadcrumbs
+                            items={[
+                                { label: 'Guias', href: '/guias' },
+                                { label: title.replace(' - Voltris', '').replace(' | VOLTRIS', '').substring(0, 50) }
+                            ]}
+                        />
+
                         {/* Top Meta Info Area (Summary & Navigation) */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {/* Summary Table */}
@@ -189,7 +206,6 @@ export function GuideTemplateClient({
                             </div>
                         </div>
 
-                        <AdSenseBanner />
                         {/* Right Content (Article) */}
                         <article className="space-y-12">
                             {contentSections.map((section, sectionIndex) => (
@@ -232,6 +248,14 @@ export function GuideTemplateClient({
                                     )}
                                 </motion.div>
                             ))}
+
+                            {/* AdSense após 40% do conteúdo (posição ideal) */}
+                            {contentSections.length >= 2 && (
+                                <div className="my-16">
+                                    <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
+                                    <AdSenseBanner />
+                                </div>
+                            )}
 
                             {/* --- SEO CONTENT INJECTION: GLOBAL GLOSSARY --- */}
                             <motion.div
@@ -313,6 +337,24 @@ export function GuideTemplateClient({
                     </div>
                 </section>
 
+                {/* --- REFERÊNCIAS EXTERNAS (E-E-A-T / Bing) --- */}
+                {externalReferences.length > 0 && (
+                    <section className="py-12 px-4 border-t border-white/5 bg-[#020205]">
+                        <div className="max-w-4xl mx-auto">
+                            <h2 className="text-xl font-bold text-white mb-4">Referências e fontes oficiais</h2>
+                            <ul className="flex flex-wrap gap-3 text-sm">
+                                {externalReferences.map((ref, i) => (
+                                    <li key={i}>
+                                        <a href={ref.url} target="_blank" rel="noopener noreferrer" className="text-[#31A8FF] hover:underline">
+                                            {ref.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </section>
+                )}
+
                 {/* --- EXTRA CONTENT (FAQ & RELATED) --- */}
                 <div className="bg-[#020205] relative z-10">
                     {relatedGuides.length > 0 && (
@@ -361,7 +403,10 @@ export function GuideTemplateClient({
                     )}
                 </div>
 
-                <AdSenseBanner />
+                <div className="my-16">
+                    <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
+                    <AdSenseBanner />
+                </div>
                 <Footer />
                 {faqItems && <FAQSchema faqItems={faqItems} />}
             </main>

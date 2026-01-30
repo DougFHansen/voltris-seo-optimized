@@ -21,7 +21,7 @@ const keywords = [
   'Windows reparação'
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('resolver-erros-windows', title, description, keywords);
 
 export default function ResolverErrosWindowsGuide() {
   const contentSections = [

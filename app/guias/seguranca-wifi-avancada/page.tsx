@@ -5,7 +5,7 @@ const title = "Segurança Wi-Fi: Como Proteger sua Rede Doméstica de Invasores"
 const description = "Seu Wi-Fi está seguro? Aprenda a configurar WPA3, desativar WPS, esconder o SSID e criar uma rede de convidados para isolar dispositivos IoT.";
 const keywords = ["segurança wifi","wpa2 vs wpa3","configurar roteador seguro","desativar wps","rede convidados"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('seguranca-wifi-avancada', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

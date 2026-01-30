@@ -5,7 +5,7 @@ const title = "Guia Completo de Overclock Seguro de Processador";
 const description = "Extraia mais performance do seu CPU com overclock profissional. Monitoramento de temperatura, voltagem e estabilidade do sistema.";
 const keywords = ["overclock cpu","processador","performance","temperatura","voltagem","estabilidade"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('overclock-processador', title, description, keywords);
 
 export default function OverclockprocessadorGuide() {
   const contentSections = [

@@ -5,7 +5,7 @@ const title = "Guia Completo de Teclados Mecânicos: Switches, Tamanhos e Mods";
 const description = "Entenda tudo sobre teclados mecânicos. Diferenças entre switches Blue, Red e Brown, formatos TKL vs Full Size e como escolher o ideal para digitar ou jogar.";
 const keywords = ["teclado mecanico","switch cherry mx","outemu","tkl","hot-swappable","lubrificar switch"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('teclados-mecanicos-guia', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

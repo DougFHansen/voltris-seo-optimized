@@ -12,7 +12,7 @@ const keywords = [
   "bitlocker configuração"
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('criptografia-dados', title, description, keywords);
 
 export default function CriptografiaDadosGuide() {
   const contentSections = [

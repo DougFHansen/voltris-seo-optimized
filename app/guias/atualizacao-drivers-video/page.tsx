@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Atualização de Drivers de Vídeo (NVIDIA/AMD/Intel)";
-const description = "Aprenda a instalar, atualizar e fazer o downgrade correto dos drivers da sua placa de vídeo. Evite telas pretas e bugs em jogos com o DDU.";
-const keywords = ["atualizar driver video","nvidia geforce experience","amd adrenalin","ddu display driver uninstaller","fps baixo"];
+const title = "Driver de Vídeo e Placa de Vídeo - Instalar e Atualizar (NVIDIA/AMD/Intel)";
+const description = "Como instalar e atualizar driver de vídeo (driver placa de vídeo) no Windows. Guia NVIDIA, AMD e Intel: instalar drivers, DDU e evitar telas pretas ou FPS baixo.";
+const keywords = ["driver de video", "driver placa de vídeo", "atualizar driver video", "instalar driver placa de vídeo", "nvidia geforce experience", "amd adrenalin", "ddu display driver uninstaller", "fps baixo"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('atualizacao-drivers-video', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

@@ -5,7 +5,7 @@ const title = "Guia Completo de Gestão de Pacotes e Dependências";
 const description = "Gerencie bibliotecas, frameworks e dependências de software com npm, pip, chocolatey e outras ferramentas modernas.";
 const keywords = ["gestão pacotes","dependências","npm","pip","chocolatey","package manager"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('gestao-pacotes', title, description, keywords);
 
 export default function GestaopacotesGuide() {
   const contentSections = [

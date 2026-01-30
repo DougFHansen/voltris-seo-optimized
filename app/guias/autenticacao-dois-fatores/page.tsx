@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Autenticação de Dois Fatores (2FA)";
-const description = "Implemente autenticação de dois fatores em todas as suas contas para segurança máxima. Configuração passo a passo para Google, Microsoft, Facebook e serviços financeiros.";
-const keywords = ["2fa","autenticação dois fatores","segurança de contas","totp","u2f","google authenticator"];
+const title = "2FA - Autenticação de Dois Fatores (Guia Completo)";
+const description = "O que é 2FA e como ativar em todas as contas: Google, Microsoft, Facebook e bancos. Autenticação de dois fatores passo a passo com Google Authenticator e apps de 2FA.";
+const keywords = ["2fa", "autenticação dois fatores", "autenticacao dois fatores", "segurança de contas", "totp", "u2f", "google authenticator", "dois fatores"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('autenticacao-dois-fatores', title, description, keywords);
 
 export default function AutenticacaodoisfatoresGuide() {
   const contentSections = [

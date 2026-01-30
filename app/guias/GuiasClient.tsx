@@ -377,10 +377,10 @@ export default function GuiasClient() {
         },
         {
           slug: 'solucao-problemas-audio',
-          title: 'Solução de Problemas de Áudio',
-          description: 'Microfone ou som não funcionam? Resolva aqui.',
-          difficulty: 'Intermediário',
-          time: '20 min'
+          title: 'Corrigir Problemas de Som no Windows 10/11',
+          description: 'Saída de áudio, configurações de som e driver. Localize e corrija em minutos.',
+          difficulty: 'Iniciante',
+          time: '15–25 min'
         },
         {
           slug: 'solucao-problemas-bluetooth',
@@ -496,10 +496,9 @@ export default function GuiasClient() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/50"
+              className="text-4xl md:text-6xl lg:text-8xl font-black text-white mb-6 tracking-tight"
             >
-              Guias e Tutoriais <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]">Técnicos</span>
+              Guias Técnicos Profissionais de Windows e Suporte
             </motion.h1>
 
             <motion.p
@@ -707,7 +706,10 @@ export default function GuiasClient() {
           </div>
         </section>
       </main>
-      <AdSenseBanner />
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
+        <AdSenseBanner />
+      </div>
       <Footer />
     </>
   );

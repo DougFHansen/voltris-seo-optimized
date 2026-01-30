@@ -5,7 +5,7 @@ const title = "Limpeza Completa do Computador";
 const description = "Técnicas profissionais para limpar arquivos temporários, cache, programas desnecessários e otimizar o espaço em disco do seu computador.";
 const keywords = ['limpeza computador', 'limpeza windows', 'otimizacao disco', 'arquivos temporarios', 'desfragmentacao'];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('limpeza-computador', title, description, keywords);
 
 export default function LimpezaComputadorGuide() {
   const contentSections = [

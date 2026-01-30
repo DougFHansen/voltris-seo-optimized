@@ -5,7 +5,7 @@ const title = "Guia de Segurança e Performance para Wi-Fi Doméstico";
 const description = "Deixe sua internet mais rápida e segura configurando canais, largura de banda, DNS e criptografia WPA3 corretamente.";
 const keywords = ["configurar roteador","melhorar wifi","mudar senha wifi","dns mais rapido","segurança rede"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('configuracao-roteador-wifi', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

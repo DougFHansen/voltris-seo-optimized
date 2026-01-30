@@ -5,7 +5,7 @@ const title = "Como Maximizar a Vida Útil da Bateria do seu Notebook";
 const description = "Mitos e verdades sobre baterias de Li-ion. Aprenda como carregar, armazenar e verificar a saúde da bateria para que ela dure anos.";
 const keywords = ["bateria viciada","ciclos de bateria","calibrar bateria notebook","battery report windows","economia energia"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('saude-bateria-notebook', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

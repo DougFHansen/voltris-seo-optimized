@@ -5,7 +5,7 @@ const title = "Guia Completo de Troubleshooting de Internet";
 const description = "Diagnostique e resolva problemas de conexão, velocidade lenta e instabilidade de internet. Ferramentas profissionais de análise.";
 const keywords = ["troubleshooting internet","diagnóstico conexão","velocidade internet","ping","traceroute","dns"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('troubleshooting-internet', title, description, keywords);
 
 export default function TroubleshootinginternetGuide() {
   const contentSections = [

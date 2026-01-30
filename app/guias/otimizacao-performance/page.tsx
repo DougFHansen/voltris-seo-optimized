@@ -13,7 +13,7 @@ const keywords = [
   'melhorar desempenho Windows'
 ];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('otimizacao-performance', title, description, keywords);
 
 export default function OtimizacaoPerformanceGuide() {
   const summaryTable = [

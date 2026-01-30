@@ -3,6 +3,10 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Entrar na Área do Cliente | VOLTRIS',
   description: 'Acesse sua conta VOLTRIS para gerenciar serviços, pedidos e suporte técnico remoto. Login seguro e rápido.',
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: 'Entrar na Área do Cliente | VOLTRIS',
     description: 'Acesse sua conta VOLTRIS para gerenciar serviços, pedidos e suporte técnico remoto. Login seguro e rápido.',

@@ -23,15 +23,15 @@ export const metadata: Metadata = {
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
   publisher: "VOLTRIS",
-  metadataBase: new URL('https://voltris.com.br/gamers'),
+  metadataBase: new URL('https://voltris.com.br'),
   alternates: {
-    canonical: '/gamers',
+    canonical: '/voltrisoptimizer',
   },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://voltris.com.br/gamers',
-    siteName: 'VOLTRIS Gamers',
+    url: 'https://voltris.com.br/voltrisoptimizer',
+    siteName: 'VOLTRIS',
     title: '[2025] Otimizador de Games Profissional - Aumente FPS e Elimine Lag | VOLTRIS',
     description: 'Otimizador de PC profissional para gamers. Aumente FPS, elimine lag e stutter, reduza input lag em até 40%. Suporte para 100+ jogos com setup automático.',
     images: [

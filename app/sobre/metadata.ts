@@ -4,12 +4,12 @@ export const metadata: Metadata = {
   title: 'Sobre a VOLTRIS | Quem Somos',
   description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
   alternates: {
-    canonical: '/about',
+    canonical: '/sobre',
   },
   openGraph: {
     title: 'Sobre a VOLTRIS | Quem Somos',
     description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
-    url: 'https://voltris.com.br/about',
+    url: 'https://voltris.com.br/sobre',
     type: 'website',
     images: [
       {

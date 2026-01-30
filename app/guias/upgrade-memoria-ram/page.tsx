@@ -5,7 +5,7 @@ const title = "Guia de Upgrade de Memória RAM: Como Escolher e Instalar";
 const description = "Seu PC está lento? Mais RAM pode ser a solução. Aprenda sobre DDR3 vs DDR4 vs DDR5, frequência (MHz), latência (CL) e Dual Channel.";
 const keywords = ["upgrade ram notebook","ddr4 vs ddr5","dual channel","memoria ram pc gamer","como instalar ram"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('upgrade-memoria-ram', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

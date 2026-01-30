@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Todos os Serviços de Suporte e Criação de Sites | VOLTRIS',
-  description: 'Conheça todos os serviços oferecidos pela VOLTRIS: suporte técnico remoto, criação de sites, otimização de computadores, manutenção e muito mais. Atendimento em todo o Brasil.',
+  title: 'Serviços de TI - Suporte Técnico Remoto e Criação de Sites | VOLTRIS',
+  description: 'Suporte técnico remoto, formatação de PC, otimização Windows, criação de sites e instalação de programas. Conheça nossos serviços de TI com atendimento em todo o Brasil.',
   openGraph: {
-    title: 'Todos os Serviços de Suporte e Criação de Sites | VOLTRIS',
-    description: 'Conheça todos os serviços oferecidos pela VOLTRIS: suporte técnico remoto, criação de sites, otimização de computadores, manutenção e muito mais. Atendimento em todo o Brasil.',
+    title: 'Serviços de TI - Suporte Técnico Remoto e Criação de Sites | VOLTRIS',
+    description: 'Suporte técnico remoto, formatação, otimização e criação de sites. Serviços de TI com atendimento em todo o Brasil.',
     url: 'https://voltris.com.br/servicos',
     type: 'website',
     images: [
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Todos os Serviços de Suporte e Criação de Sites | VOLTRIS',
-    description: 'Conheça todos os serviços oferecidos pela VOLTRIS: suporte técnico remoto, criação de sites, otimização de computadores, manutenção e muito mais. Atendimento em todo o Brasil.',
+    title: 'Serviços de TI - Suporte Técnico e Criação de Sites | VOLTRIS',
+    description: 'Suporte técnico remoto, formatação, otimização e criação de sites. Atendimento em todo o Brasil.',
     images: ['https://voltris.com.br/logo.png']
   }
-}; 
+};

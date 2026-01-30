@@ -5,7 +5,7 @@ const title = "Como Identificar e Se Proteger de Phishing e Golpes Online";
 const description = "Aprenda a detectar emails falsos, sites fraudulentos e mensagens enganosas. Proteja seus dados bancários e senhas contra engenharia social.";
 const keywords = ["phishing","golpe internet","email falso","segurança bancária","verificar link"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('identificacao-phishing', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [

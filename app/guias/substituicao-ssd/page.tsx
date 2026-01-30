@@ -5,7 +5,7 @@ const title = "Upgrade para SSD: O Melhor Investimento para Seu PC";
 const description = "Trocar o HD por um SSD deixa o PC até 10x mais rápido. Guia de instalação de SSD SATA e NVMe M.2 e como clonar seu sistema.";
 const keywords = ["ssd vs hd","instalar ssd notebook","clonar hd para ssd","nvme m.2","sata 3"];
 
-export const metadata: Metadata = createGuideMetadata(title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('substituicao-ssd', title, description, keywords);
 
 export default function GuidePage() {
   const contentSections = [
