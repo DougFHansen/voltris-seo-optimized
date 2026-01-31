@@ -109,6 +109,16 @@ const services = [
         price: "R$ 49,90",
         buttonText: "Resolver",
         redirect: "/servicos?service=correcao-windows"
+    },
+    {
+        id: "tecnico_local",
+        title: "Técnico Especializado",
+        description: "Suporte avançado para hardware e infraestrutura local/remota.",
+        icon: FiUserCheck,
+        color: "from-indigo-600 to-blue-600",
+        price: "Sob Consulta",
+        buttonText: "Ver Detalhes",
+        redirect: "/tecnico-informatica"
     }
 ];
 

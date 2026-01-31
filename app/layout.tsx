@@ -8,26 +8,20 @@ import { Inter } from 'next/font/google';
 import "./globals.css";
 import ClientNotificationProvider from './components/ClientNotificationProvider';
 import ClientPWAInstall from "./components/ClientPWAInstall";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: {
     default: "VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais",
     template: "%s | VOLTRIS"
   },
-  description: "Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas. Atendimento em todo Brasil, 100% online e seguro.",
+  description: "Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas. Atendimento em todo Brasil.",
   keywords: [
     "suporte técnico remoto",
     "manutenção de computador",
     "criação de sites",
     "otimização de Windows",
-    "formatação de computador",
-    "suporte Windows",
-    "manutenção remota",
-    "consultoria TI",
-    "otimização sistema",
-    "segurança digital",
-    "recuperação dados",
-    "instalação de programas",
+    "consultoria TI"
   ],
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
@@ -47,7 +41,7 @@ export const metadata: Metadata = {
     url: 'https://voltris.com.br',
     siteName: 'VOLTRIS',
     title: 'VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais',
-    description: 'Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas. Atendimento em todo Brasil, 100% online e seguro.',
+    description: 'Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas.',
     images: [
       {
         url: '/logo.png',
@@ -60,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais',
-    description: 'Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas.',
+    description: 'Suporte técnico remoto especializado em Windows, criação de sites profissionais.',
     images: ['/logo.png'],
     creator: '@voltris',
   },
@@ -97,21 +91,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fundingchoicesmessages.google.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://tpc.googlesyndication.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://securepubads.g.doubleclick.net" crossOrigin="anonymous" />
-        <meta name="google-adsense-account" content="ca-pub-9217408182316735" />
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          crossOrigin="anonymous"
-          referrerPolicy="no-referrer"
-        />
+
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo.png" />
@@ -130,17 +110,14 @@ export default function RootLayout({
         <meta name="distribution" content="global" />
         <meta name="rating" content="general" />
         <meta name="revisit-after" content="7 days" />
-        <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
         <meta name="msvalidate.01" content="92524862D63347408E773A7CD62B94DD" />
 
-        {/* Bing-specific meta tags */}
-        <meta name="revisit-after" content="7 days" />
-        <meta name="content-language" content="pt-BR" />
+        {/* Bing-specific meta tags - Optimized */}
         <meta name="geo.region" content="BR-SP" />
         <meta name="geo.placename" content="São Paulo" />
-        <meta name="ICBM" content="-23.5505, -46.6333" />
 
-        {/* Google tag (gtag.js) - Ads - Deferred */}
+        {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"
           strategy="afterInteractive"
@@ -154,141 +131,35 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Schema.org structured data - Organization (já existe) */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais",
-              "description": "Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.",
-              "image": "https://voltris.com.br/logo.png",
-              "logo": "https://voltris.com.br/logo.png",
-              "@id": "https://voltris.com.br",
-              "url": "https://voltris.com.br",
+        {/* Schema.org Organization */}
+        <JsonLd
+          type="Organization"
+          data={{
+            name: "VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais",
+            description: "Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.",
+            url: "https://voltris.com.br",
+            logo: "https://voltris.com.br/logo.png",
+            contactPoint: [{
+              "@type": "ContactPoint",
               "telephone": "+55-11-99671-6235",
-              "email": "contato@voltris.com.br",
-              "address": {
-                "@type": "PostalAddress",
-                "addressCountry": "BR",
-                "addressRegion": "São Paulo",
-                "addressLocality": "São Paulo"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "-23.5505",
-                "longitude": "-46.6333"
-              },
-              "openingHours": "Mo-Su 08:00-22:00",
-              "priceRange": "R$ 29,90 - R$ 997,90",
-              "paymentAccepted": ["Credit Card", "Debit Card", "PIX", "Bank Transfer"],
-              "currenciesAccepted": "BRL",
-              "serviceArea": {
-                "@type": "Country",
-                "name": "Brasil"
-              },
-              "areaServed": [
-                "São Paulo", "Rio de Janeiro", "Minas Gerais", "Paraná", "Bahia", "Brasil"
-              ],
-              "hasMap": "https://goo.gl/maps/2Qw6Qw6Qw6Qw6Qw6A",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+55-11-99671-6235",
-                "email": "contato@voltris.com.br",
-                "contactType": "customer service",
-                "areaServed": "BR"
-              },
-              "sameAs": [
-                "https://www.instagram.com/voltris.com.br"
-              ],
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": 4.9,
-                "reviewCount": 120
-              },
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Serviços de Suporte Técnico",
-                "itemListElement": [
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Criação de Site", "description": "Desenvolvimento de sites profissionais e responsivos para sua empresa ou projeto pessoal." } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Suporte ao Windows", "description": "Suporte remoto completo para seu sistema Windows, incluindo instalação, atualização e otimização." } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formatação", "description": "Formatação remota completa do seu computador com instalação de programas essenciais." } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Otimização de PC", "description": "Otimização remota completa do seu computador para melhor desempenho." } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Recuperação de Dados", "description": "Recuperação remota de dados e arquivos importantes do seu computador." } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalação de Programas", "description": "Instalação e configuração remota de programas essenciais para seu computador." } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalação de Impressora", "description": "Instalação remota de drivers e configuração de impressoras no seu computador." } },
-                  { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Remoção de Vírus", "description": "Remoção remota de vírus e proteção do seu computador." } }
-                ]
-              }
-            })
-          }}
-        />
-        {/* BreadcrumbList por página — não fixo no layout para evitar sinal errado em guias/serviços */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "VOLTRIS",
-              "url": "https://voltris.com.br",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://voltris.com.br/?s={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            })
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SiteNavigationElement",
-              "name": [
-                "Início",
-                "Sobre",
-                "Serviços",
-                "Guias",
-                "FAQ",
-                "Contato",
-                "Dashboard",
-                "Política de Privacidade",
-                "Termos de Uso"
-              ],
-              "url": [
-                "https://voltris.com.br/",
-                "https://voltris.com.br/sobre",
-                "https://voltris.com.br/servicos",
-                "https://voltris.com.br/guias",
-                "https://voltris.com.br/faq",
-                "https://voltris.com.br/contato",
-                "https://voltris.com.br/dashboard",
-                "https://voltris.com.br/politica-privacidade",
-                "https://voltris.com.br/termos-uso"
-              ]
-            })
+              "contactType": "customer service",
+              "areaServed": "BR",
+              "availableLanguage": "Portuguese"
+            }],
+            sameAs: [
+              "https://www.instagram.com/voltris.com.br"
+            ]
           }}
         />
 
       </head>
       <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
-        {/* Script AdSense carregado uma vez por página (evita duplicação e conformidade com políticas) */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9217408182316735"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
         <ClientNotificationProvider>
           <ReactQueryProvider>
             <CookieBanner />
             {children}
             <ClientPWAInstall />
             <GoogleAnalytics />
-            {/* Keywords block removed for SEO best practices */}
           </ReactQueryProvider>
         </ClientNotificationProvider>
       </body>

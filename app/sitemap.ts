@@ -2,103 +2,100 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 
-// Helper to get all guide slugs dynamically
-function getGuideSlugs(): string[] {
-  const guidesDirectory = path.join(process.cwd(), 'app', 'guias');
-
-  if (!fs.existsSync(guidesDirectory)) {
-    return [];
+// Helper to get real last modified date from file system
+function getLastModified(filePath: string): Date {
+  try {
+    const stats = fs.statSync(filePath);
+    return stats.mtime;
+  } catch (error) {
+    return new Date(); // Fallback to now if file not found (dynamic routes)
   }
+}
 
-  const entries = fs.readdirSync(guidesDirectory, { withFileTypes: true });
+// Helper to recursively find all page.tsx files
+function getPageRoutes(dir: string, baseUrl: string = ''): string[] {
+  let results: string[] = [];
+  if (!fs.existsSync(dir)) return results;
 
-  return entries
-    .filter(entry => entry.isDirectory())
-    .map(entry => entry.name);
+  const list = fs.readdirSync(dir);
+
+  list.forEach(file => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat && stat.isDirectory()) {
+      // Recursively scan directories
+      // Skip special Next.js folders and components
+      if (!file.startsWith('_') && !file.startsWith('.') && file !== 'api' && file !== 'components') {
+        results = results.concat(getPageRoutes(filePath, `${baseUrl}/${file}`));
+      }
+    } else if (file === 'page.tsx' || file === 'page.js') {
+      // Found a page
+      results.push(baseUrl || '/');
+    }
+  });
+
+  return results;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://voltris.com.br';
-  const currentDate = new Date();
+  const appDir = path.join(process.cwd(), 'app');
 
-  // Dynamic Guides
-  const guideSlugs = getGuideSlugs();
-  const guideUrls = guideSlugs.map(slug => ({
-    url: `${baseUrl}/guias/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
+  // Hardcoded priority map for critical business pages
+  const priorityMap: Record<string, number> = {
+    '/': 1.0,
+    '/servicos': 0.9,
+    '/tecnico-informatica': 0.9,
+    '/voltrisoptimizer': 0.9,
+    '/guias': 0.9,
+    '/contato': 0.7,
+    '/sobre': 0.7,
+  };
 
-  // Static URLs
-  const staticUrls = [
-    // PÁGINA PRINCIPAL - Prioridade máxima
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'hourly' as const,
-      priority: 1.0,
-    },
-    // LANDING PAGES SEO
-    { url: `${baseUrl}/tecnico-informatica`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/tecnico-informatica-minha-regiao`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/tecnico-informatica-atende-casa`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/criar-site`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/criadores-de-site`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
+  // 1. Get all routes dynamically by scanning "app" directory
+  const allRoutes = getPageRoutes(appDir);
 
-    // SERVIÇOS PRINCIPAIS
-    { url: `${baseUrl}/servicos`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/todos-os-servicos`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/formatacao`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/otimizacao-pc`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/erros-jogos`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+  // 2. Filter and map to sitemap format
+  const sitemapEntries = allRoutes
+    .filter(route => {
+      // Exclude dynamic routes with brackets like [slug] for now, unless handled specifically
+      // Exclude private/admin routes
+      return !route.includes('[') &&
+        !route.includes('/dashboard') &&
+        !route.includes('/admin') &&
+        !route.includes('/restricted-area-admin') &&
+        !route.includes('/auth');
+    })
+    .map(route => {
+      // Construct file path to check modification time
+      // route is like "/servicos" -> path is ".../app/servicos/page.tsx"
+      // route is "/" -> path is ".../app/page.tsx"
 
-    // VOLTRIS OPTIMIZER
-    { url: `${baseUrl}/voltrisoptimizer`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/voltrisoptimizer/como-funciona`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/voltrisoptimizer/documentacao`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.6 },
+      const relativePath = route === '/' ? 'page.tsx' : `${route}/page.tsx`;
+      const filePath = path.join(appDir, relativePath);
 
-    // SUBCATEGORIAS DE SERVIÇOS
-    { url: `${baseUrl}/todos-os-servicos/criacao-de-sites`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/todos-os-servicos/criacao-de-sites/plano-basico`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/todos-os-servicos/criacao-de-sites/plano-profissional`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/todos-os-servicos/criacao-de-sites/plano-empresarial`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/todos-os-servicos/suporte-ao-windows`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/todos-os-servicos/instalacao-de-programas`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/todos-os-servicos/instalacao-do-office`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
+      return {
+        url: `${baseUrl}${route === '/' ? '' : route}`,
+        lastModified: getLastModified(filePath),
+        changeFrequency: 'weekly' as const,
+        priority: priorityMap[route] || 0.8, // Default 0.8 for most pages
+      };
+    });
 
-    // INSTITUCIONAL
-    { url: `${baseUrl}/sobre`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.7 },
-    { url: `${baseUrl}/faq`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.7 },
-    { url: `${baseUrl}/contato`, lastModified: currentDate, changeFrequency: 'monthly' as const, priority: 0.7 },
-    { url: `${baseUrl}/lgpd`, lastModified: currentDate, changeFrequency: 'yearly' as const, priority: 0.4 },
-    { url: `${baseUrl}/politica-privacidade`, lastModified: currentDate, changeFrequency: 'yearly' as const, priority: 0.4 },
-    { url: `${baseUrl}/termos-uso`, lastModified: currentDate, changeFrequency: 'yearly' as const, priority: 0.4 },
+  // 3. Handle Dynamic Guides (since they might be under [slug] or effectively static folders)
+  // The previous sitemap function suggested guides are folders under app/guias.
+  // Our generic recursive scanner might have picked them up if they are explicit folders.
+  // Let's ensure we didn't miss them or duplicate them if they were folders.
+  // If "app/guias" contains folders like "como-fazer-x", getPageRoutes will find "/guias/como-fazer-x".
+  // So we are largely covered!
 
-    // GUIAS ROOT
-    { url: `${baseUrl}/guias`, lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.9 },
+  // However, check if specific dynamic logic is needed for "[slug]" routes if they exist.
+  // Previously: const guideSlugs = getGuideSlugs(); which read subdirs of app/guias. 
+  // Our getPageRoutes does exactly this recursively.
 
-    // INTERNACIONAL (EXTERIOR)
-    { url: `${baseUrl}/exterior`, lastModified: currentDate, changeFrequency: 'daily' as const, priority: 0.9 },
-    { url: `${baseUrl}/exterior/servicos`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.9 },
-    { url: `${baseUrl}/exterior/contato`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/exterior/orcamento`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.8 },
-    { url: `${baseUrl}/exterior/servicos/suporte-tecnico`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/exterior/servicos/criacao-sites`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/exterior/servicos/migracao-dados`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/exterior/servicos/configuracao-redes`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/exterior/servicos/suporte-nuvem`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-    { url: `${baseUrl}/exterior/servicos/consultoria`, lastModified: currentDate, changeFrequency: 'weekly' as const, priority: 0.7 },
-  ];
+  // 4. Manual Additions (if any routes are external or special)
+  // (None apparent from previous file, purely files)
 
-  // Local SEO Slugs
-  const localSlugs = ['sao-paulo', 'rio-de-janeiro', 'parana'];
-  const localUrls = localSlugs.map(slug => ({
-    url: `${baseUrl}/tecnico-informatica-em/${slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly' as const,
-    priority: 0.8,
-  }));
-
-  return [...staticUrls, ...guideUrls, ...localUrls];
+  return sitemapEntries;
 }

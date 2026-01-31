@@ -39,10 +39,9 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/private/',
         ],
-        crawlDelay: 1,
       },
       {
-        userAgent: 'Slurp', // Yahoo
+        userAgent: 'Slurp',
         allow: '/',
         disallow: [
           '/dashboard/',
@@ -52,7 +51,6 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
           '/private/',
         ],
-        crawlDelay: 1,
       },
     ],
     sitemap: 'https://voltris.com.br/sitemap.xml',
