@@ -2,11 +2,11 @@ import { Metadata } from 'next';
 import HomeClient from '@/components/HomeClient';
 
 export const metadata: Metadata = {
-  title: 'VOLTRIS - Suporte Técnico Remoto e Criação de Sites | Atendimento Online',
+  title: 'Suporte Técnico Remoto em Informática | Otimização de PC, Formatação e Serviços de TI - VOLTRIS',
   description: 'Suporte técnico remoto especializado, formatação, otimização de PC, remoção de vírus e criação de sites profissionais. Atendimento rápido e seguro em todo o Brasil.',
   keywords: 'suporte técnico remoto, técnico de informática online, formatação de pc remoto, limpeza de vírus online, otimização de pc gamer, criação de sites profissionais, suporte windows remoto, assistência técnica informática online',
   openGraph: {
-    title: 'VOLTRIS - Suporte Técnico Remoto e Criação de Sites',
+    title: 'Suporte Técnico Remoto em Informática | Otimização de PC, Formatação e Serviços de TI - VOLTRIS',
     description: 'Soluções em informática sem sair de casa. Formatação, performance e segurança para seu computador.',
     url: 'https://voltris.com.br',
     siteName: 'Voltris',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VOLTRIS - Suporte Técnico Remoto',
+    title: 'Suporte Técnico Remoto em Informática | Otimização de PC, Formatação e Serviços de TI - VOLTRIS',
     description: 'Suporte técnico especializado e criação de sites.',
     creator: '@voltris',
   },
