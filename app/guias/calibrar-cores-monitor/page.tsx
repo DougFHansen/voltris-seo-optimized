@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 const title = "Como Calibrar as Cores do Monitor no Windows (Sem Colorímetro)";
-const description = "Seu monitor está amarelado ou "lavado"? Aprenda a usar a ferramenta nativa de calibração do Windows para ajustar Gama, Brilho e Contraste corretamente.";
+const description = 'Seu monitor está amarelado ou "lavado"? Aprenda a usar a ferramenta nativa de calibração do Windows para ajustar Gama, Brilho e Contraste corretamente.';
 const keywords = ['calibrar monitor windows', 'cores monitor lavadas', 'ajustar gama windows', 'calibração de cores tela', 'monitor amarelado'];
 
 export const metadata: Metadata = createGuideMetadata('calibrar-cores-monitor', title, description, keywords);
