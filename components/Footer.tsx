@@ -66,7 +66,7 @@ export default function Footer() {
           <div className="space-y-6">
             <h3 className="font-bold text-white text-base">Receba Novidades</h3>
             <div className="space-y-3">
-              <NewsletterForm source="footer" />
+              <NewsletterForm source="site" />
               <p className="text-xs text-slate-500 leading-relaxed">
                 Receba dicas e promoções exclusivas da Voltris diretamente no seu e-mail.
               </p>
