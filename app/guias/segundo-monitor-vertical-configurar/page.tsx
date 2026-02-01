@@ -8,6 +8,13 @@ const keywords = ['monitor vertical windows', 'virar tela windows', 'segundo mon
 export const metadata: Metadata = createGuideMetadata('segundo-monitor-vertical-configurar', title, description, keywords);
 
 export default function DualMonitorGuide() {
+    const summaryTable = [
+        { label: "Rotação", value: "Retrato (90°)" },
+        { label: "Alinhamento", value: "Topo/Centro" },
+        { label: "Lado Ideal", value: "Esquerda" },
+        { label: "Cabos", value: "Cuidado ao esticar" }
+    ];
+
     const contentSections = [
         {
             title: "Como Virar a Tela (Rotação)",
