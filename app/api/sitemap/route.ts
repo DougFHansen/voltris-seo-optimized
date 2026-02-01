@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   const baseUrl = 'https://voltris.com.br';
-  
+
   // URLs principais do site
   const mainUrls = [
     {
@@ -24,25 +24,25 @@ export async function GET(request: NextRequest) {
       priority: '0.9'
     },
     {
-      url: '/todos-os-servicos/criacao-de-sites',
+      url: '/todos-os-servicos/criacao-sites',
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: '0.8'
     },
     {
-      url: '/todos-os-servicos/criacao-de-sites/plano-basico',
+      url: '/todos-os-servicos/criacao-sites/plano-basico',
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: '0.8'
     },
     {
-      url: '/todos-os-servicos/criacao-de-sites/plano-profissional',
+      url: '/todos-os-servicos/criacao-sites/plano-profissional',
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: '0.8'
     },
     {
-      url: '/todos-os-servicos/criacao-de-sites/plano-empresarial',
+      url: '/todos-os-servicos/criacao-sites/plano-empresarial',
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: '0.8'
@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
     },
 
     {
-      url: '/about',
+      url: '/sobre',
       lastmod: new Date().toISOString(),
       changefreq: 'monthly',
       priority: '0.7'
@@ -72,12 +72,7 @@ export async function GET(request: NextRequest) {
       changefreq: 'monthly',
       priority: '0.7'
     },
-    {
-      url: '/reviews',
-      lastmod: new Date().toISOString(),
-      changefreq: 'weekly',
-      priority: '0.7'
-    },
+
     {
       url: '/login',
       lastmod: new Date().toISOString(),
@@ -85,7 +80,7 @@ export async function GET(request: NextRequest) {
       priority: '0.6'
     },
     {
-      url: '/profile',
+      url: '/perfil',
       lastmod: new Date().toISOString(),
       changefreq: 'monthly',
       priority: '0.6'
@@ -151,7 +146,7 @@ export async function GET(request: NextRequest) {
       priority: '0.8'
     },
     {
-      url: '/gamers',
+      url: '/voltrisoptimizer',
       lastmod: new Date().toISOString(),
       changefreq: 'weekly',
       priority: '0.8'
@@ -227,7 +222,7 @@ ${allUrls.map(url => `  <url>
 
   // Return sitemap index for root sitemap requests
   const isRootRequest = request.nextUrl.pathname === '/sitemap.xml';
-  
+
   if (isRootRequest) {
     return new NextResponse(sitemapIndex, {
       headers: {

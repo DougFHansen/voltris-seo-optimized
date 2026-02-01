@@ -30,7 +30,7 @@ const plans = [
         features: [
             "Design personalizado",
             "Até 10 páginas",
-            "Blog integrado",
+            "Módulo de Notícias",
             "Otimização SEO completa",
             "Analytics integrado",
             "Suporte por 90 dias",
@@ -155,6 +155,66 @@ export default function CriarSiteClient() {
                                     <div className="text-slate-500 font-medium uppercase tracking-wider text-sm font-sans">{stat.label}</div>
                                 </div>
                             ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* SEO & Performance Deep Dive - Semantic Block */}
+                <section className="py-24 px-4 bg-[#050510] relative z-10">
+                    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <div className="inline-block px-3 py-1 rounded-full bg-[#31A8FF]/10 text-[#31A8FF] text-xs font-bold mb-6 tracking-widest font-sans">CORE WEB VITALS READY</div>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight font-sans">
+                                Não é apenas design.<br />
+                                É <span className="text-[#31A8FF]">Engenharia de Conversão.</span>
+                            </h2>
+                            <div className="space-y-6 text-slate-400 font-sans">
+                                <p>
+                                    A maioria dos sites hoje são lentos e invisíveis para o Google. Nós construímos diferente. Utilizamos <strong>Next.js</strong> e renderização híbrida para garantir que seu site carregue instantaneamente.
+                                </p>
+                                <p>
+                                    <strong className="text-white">Otimização SEO Nativa:</strong> Estrutura de tags H1-H6 perfeita, metadados dinâmicos, Schema.org JSON-LD e sitemaps automáticos. Seu site nasce pronto para rankear.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="relative">
+                            <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 blur-[80px] rounded-full"></div>
+                            <div className="relative bg-[#0A0A0F] border border-white/10 rounded-3xl p-8 shadow-2xl">
+                                {/* Mockup Code Block for Tech Authority */}
+                                <div className="flex items-center gap-2 mb-4 border-b border-white/5 pb-4">
+                                    <div className="flex gap-1.5">
+                                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                    <div className="text-xs text-slate-500 font-mono">SEO_Audit.js</div>
+                                </div>
+                                <div className="space-y-2 font-mono text-xs">
+                                    <div className="flex justify-between items-center text-slate-300">
+                                        <span>Performance Score</span>
+                                        <span className="text-[#00FF94]">99/100</span>
+                                    </div>
+                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                        <div className="w-[99%] h-full bg-[#00FF94]"></div>
+                                    </div>
+
+                                    <div className="flex justify-between items-center text-slate-300 mt-4">
+                                        <span>SEO Structure</span>
+                                        <span className="text-[#00FF94]">100/100</span>
+                                    </div>
+                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                        <div className="w-full h-full bg-[#00FF94]"></div>
+                                    </div>
+
+                                    <div className="flex justify-between items-center text-slate-300 mt-4">
+                                        <span>Accessibility</span>
+                                        <span className="text-[#00FF94]">100/100</span>
+                                    </div>
+                                    <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
+                                        <div className="w-full h-full bg-[#00FF94]"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>

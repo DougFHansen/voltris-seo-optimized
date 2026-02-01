@@ -180,7 +180,7 @@ export default function CriacaoSitesClient() {
                                 </ul>
 
                                 <Link
-                                    href="/todos-os-servicos/criacao-de-sites/plano-basico"
+                                    href="/todos-os-servicos/criacao-sites/plano-basico"
                                     className="block w-full py-4 text-center rounded-xl border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all duration-300"
                                 >
                                     Ver Detalhes
@@ -216,7 +216,7 @@ export default function CriacaoSitesClient() {
                                 </ul>
 
                                 <Link
-                                    href="/todos-os-servicos/criacao-de-sites/plano-profissional"
+                                    href="/todos-os-servicos/criacao-sites/plano-profissional"
                                     className="block w-full py-4 text-center rounded-xl bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-bold hover:shadow-[0_0_20px_rgba(139,49,255,0.4)] transition-all duration-300"
                                 >
                                     Selecionar Plano
@@ -228,7 +228,7 @@ export default function CriacaoSitesClient() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                delay={0.2}
+                                transition={{ delay: 0.2 }}
                                 className="group relative bg-[#050510] border border-white/5 rounded-[2rem] p-8 hover:border-white/10 transition-all duration-300"
                             >
                                 <h3 className="text-lg font-bold text-white mb-2">E-commerce</h3>
@@ -252,7 +252,7 @@ export default function CriacaoSitesClient() {
                                 </ul>
 
                                 <Link
-                                    href="/todos-os-servicos/criacao-de-sites/plano-empresarial"
+                                    href="/todos-os-servicos/criacao-sites/plano-empresarial"
                                     className="block w-full py-4 text-center rounded-xl border border-white/10 text-white font-bold hover:bg-white hover:text-black transition-all duration-300"
                                 >
                                     Solicitar Proposta

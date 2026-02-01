@@ -12,6 +12,12 @@ import {
     FiClock,
     FiBarChart2,
     FiShield,
+    FiHelpCircle,
+    FiAlertTriangle,
+    FiCpu,
+    FiDatabase,
+    FiDownload,
+    FiPrinter,
 } from 'react-icons/fi';
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check } from "lucide-react";
 import AnimatedSection from '@/components/AnimatedSection';
@@ -29,85 +35,68 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const services = [
     {
-        id: "criacao-site",
-        title: "Criação de Site",
-        description: "Desenvolvimento de sites profissionais e responsivos para sua empresa ou projeto pessoal.",
-        iconType: "MonitorSmartphone",
+        icon: <FiMonitor className="w-8 h-8" />,
+        title: "Criação de Sites Profissionais",
+        desc: "Desenvolvimento de sites rápidos, responsivos e otimizados para Google, ideais para empresas e projetos digitais.",
         price: "A partir de R$ 997,90",
-        buttonText: "Criar Meu Site",
-        redirect: "/todos-os-servicos/criacao-de-sites"
+        link: "/todos-os-servicos/criacao-sites",
+        highlight: true
     },
     {
-        id: "suporte-windows",
-        title: "Suporte ao Windows",
-        description: "Suporte remoto completo para seu sistema Windows, incluindo instalação, atualização e otimização.",
-        iconType: "Laptop2",
+        icon: <FiHelpCircle className="w-8 h-8" />,
+        title: "Suporte Técnico Windows Remoto",
+        desc: "Suporte remoto completo para Windows: instalação, atualização, correção de erros e otimização de sistema.",
         price: "A partir de R$ 349,90",
-        buttonText: "Ver Planos",
-        redirect: "/todos-os-servicos/suporte-ao-windows"
+        link: "/suporte-ao-windows"
     },
     {
-        id: "correcao_windows",
+        icon: <FiAlertTriangle className="w-8 h-8" />,
         title: "Correção de Erros no Windows",
-        description: "Solução remota de problemas e erros no seu sistema Windows.",
-        iconType: "ShieldCheck",
-        price: "R$ 49,90",
-        buttonText: "Contratar Serviço",
-        redirect: "/servicos?service=correcao-windows"
+        desc: "Resolvemos erros de sistema, telas azuis, falhas de inicialização e problemas de desempenho no Windows.",
+        price: "A partir de R$ 49,90",
+        link: "/servicos?abrir=correcao-erro"
     },
     {
-        id: "formatacao",
-        title: "Formatação",
-        description: "Formatação remota completa do seu computador com instalação de programas essenciais.",
-        iconType: "HardDrive",
+        icon: <FiCpu className="w-8 h-8" />,
+        title: "Formatação de PC e Notebook",
+        desc: "Formatação remota completa com backup seguro, instalação limpa do Windows e programas essenciais.",
         price: "A partir de R$ 99,90",
-        buttonText: "Contratar Serviço",
-        redirect: "/servicos?service=formatacao"
+        link: "/formatacao"
     },
     {
-        id: "otimizacao",
-        title: "Otimização de PC",
-        description: "Otimização remota completa do seu computador para melhor desempenho.",
-        iconType: "GaugeCircle",
+        icon: <FiCpu className="w-8 h-8" />,
+        title: "Otimização de PC Lento",
+        desc: "Otimização remota para acelerar computadores lentos, melhorar desempenho e reduzir travamentos.",
         price: "A partir de R$ 79,90",
-        buttonText: "Contratar Serviço",
-        redirect: "/serviços?service=otimizacao"
+        link: "/otimizacao-pc"
     },
     {
-        id: "recuperacao",
-        title: "Recuperação De Dados",
-        description: "Recuperação remota de dados e arquivos importantes do seu computador.",
-        iconType: "Database",
-        price: "R$ 99,90",
-        buttonText: "Contratar Serviço",
-        redirect: "/servicos?service=recuperacao"
+        icon: <FiDatabase className="w-8 h-8" />,
+        title: "Recuperação de Dados",
+        desc: "Recuperação remota de arquivos apagados, dados corrompidos e documentos importantes.",
+        price: "A partir de R$ 99,90",
+        link: "/servicos?abrir=recuperacao"
     },
     {
-        id: "instalacao-programas",
+        icon: <FiDownload className="w-8 h-8" />,
         title: "Instalação de Programas",
-        description: "Instalação e configuração remota de programas essenciais para seu computador.",
-        iconType: "Package",
+        desc: "Instalação e configuração remota de programas essenciais para trabalho, estudo e uso pessoal.",
         price: "A partir de R$ 29,90",
-        buttonText: "Ver programas",
-        redirect: "/todos-os-servicos/instalacao-de-programas"
+        link: "/todos-os-servicos/instalacao-de-programas"
     },
     {
-        id: "instalacao_impressora",
+        icon: <FiPrinter className="w-8 h-8" />,
         title: "Instalação de Impressora",
-        description: "Instalação remota de drivers e configuração de impressoras no seu computador.",
-        iconType: "Printer",
-        price: "R$ 49,90",
-        buttonText: "Contratar Serviço",
-        redirect: "/servicos?service=impressora"
+        desc: "Configuração remota de impressoras, drivers e dispositivos conectados ao computador.",
+        price: "A partir de R$ 49,90",
+        link: "/servicos?abrir=instalacao_impressora"
     },
     {
-        id: "remocao_virus",
-        title: "Remoção de Vírus",
-        description: "Remoção remota de vírus e proteção do seu computador.",
-        iconType: "FiShield",
-        price: "R$ 39,90",
-        buttonText: "Contratar Serviço",
-        redirect: "/servicos?service=remocao-virus"
+        icon: <FiShield className="w-8 h-8" />,
+        title: "Remoção de Vírus e Malware",
+        desc: "Remoção completa de vírus, malwares e ameaças com reforço de segurança do sistema.",
+        price: "A partir de R$ 39,90",
+        link: "/servicos?abrir=remocao_virus"
     }
 ];
 
@@ -121,35 +110,7 @@ export default function HomeClient() {
     const [showMoreText, setShowMoreText] = useState(false);
     const [minimized, setMinimized] = useState(false);
 
-    const renderIcon = (iconType: string) => {
-        const iconProps = {
-            size: 32,
-            className: "drop-shadow-sm transition-transform duration-300"
-        };
 
-        switch (iconType) {
-            case "MonitorSmartphone":
-                return <MonitorSmartphone {...iconProps} className={`${iconProps.className} text-[#31A8FF]`} />;
-            case "Laptop2":
-                return <Laptop2 {...iconProps} className={`${iconProps.className} text-[#8B31FF]`} />;
-            case "ShieldCheck":
-                return <ShieldCheck {...iconProps} className={`${iconProps.className} text-[#31A8FF]`} />;
-            case "HardDrive":
-                return <HardDrive {...iconProps} className={`${iconProps.className} text-[#FF4B6B]`} />;
-            case "GaugeCircle":
-                return <GaugeCircle {...iconProps} className={`${iconProps.className} text-[#8B31FF]`} />;
-            case "Database":
-                return <Database {...iconProps} className={`${iconProps.className} text-[#31A8FF]`} />;
-            case "Package":
-                return <Package {...iconProps} className={`${iconProps.className} text-[#8B31FF]`} />;
-            case "Printer":
-                return <Printer {...iconProps} className={`${iconProps.className} text-[#31A8FF]`} />;
-            case "FiShield":
-                return <FiShield {...iconProps} className={`${iconProps.className} text-[#8B31FF] group-hover:text-[#31A8FF] group-hover:scale-110 group-hover:drop-shadow-lg transition-all duration-300`} />;
-            default:
-                return <MonitorSmartphone {...iconProps} className={`${iconProps.className} text-[#31A8FF]`} />;
-        }
-    };
 
     useEffect(() => {
         const handleAnchorScroll = () => {
@@ -521,53 +482,47 @@ export default function HomeClient() {
                                 <span className="w-2 h-2 rounded-full bg-[#31A8FF] animate-pulse"></span>
                                 <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Soluções Profissionais</span>
                             </div>
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                Serviços de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">Alta Performance</span>
-                            </h2>
-                            <p className="text-lg text-slate-400 font-light leading-relaxed">
-                                Otimização, segurança e desenvolvimento web. Escolha a solução ideal para elevar seu nível tecnológico.
+                            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
+                                Suporte Técnico Remoto em Informática, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização de PC e Serviços Windows</span>
+                            </h1>
+
+                            <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                                Atendimento online rápido para formatação, correção de erros, remoção de vírus, otimização de desempenho e desenvolvimento de sites profissionais.
                             </p>
                         </div>
 
                         {/* Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                            {services.map((service, idx) => {
-                                let buttonHref = service.redirect;
-                                if (service.buttonText === "Contratar Serviço") {
-                                    buttonHref = `/servicos?abrir=${service.id}`;
-                                }
+                            {services.map((service, idx) => (
+                                <div key={idx} className={`group relative bg-[#0A0A0F] border ${service.highlight ? 'border-[#31A8FF]' : 'border-white/5'} hover:border-[#31A8FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}>
+                                    <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-                                return (
-                                    <div key={service.id} className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#31A8FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                                        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
-                                        <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
-                                            {/* Icon Container with Glass Effect */}
-                                            <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                                <div className="transform transition-transform duration-300 group-hover:scale-110">
-                                                    {renderIcon(service.iconType)}
-                                                </div>
-                                            </div>
-
-                                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors">{service.title}</h3>
-                                            <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
-                                                {service.description}
-                                            </p>
-
-                                            <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
-                                                <div className="flex flex-col">
-                                                    <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">A partir de</span>
-                                                    <span className="text-white font-bold text-lg tracking-tight">{service.price.replace('A partir de ', '')}</span>
-                                                </div>
-
-                                                <Link href={buttonHref} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#31A8FF] group-hover:border-[#31A8FF] transition-all duration-300 shadow-md">
-                                                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-                                                </Link>
+                                    <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                                        {/* Icon Container with Glass Effect */}
+                                        <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
+                                            <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
+                                                {service.icon}
                                             </div>
                                         </div>
+
+                                        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors">{service.title}</h3>
+                                        <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                                            {service.desc}
+                                        </p>
+
+                                        <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
+                                            <div className="flex flex-col">
+                                                <span className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">A partir de</span>
+                                                <span className="text-white font-bold text-lg tracking-tight">{service.price.replace('A partir de ', '')}</span>
+                                            </div>
+
+                                            <Link href={service.link} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#31A8FF] group-hover:border-[#31A8FF] transition-all duration-300 shadow-md">
+                                                <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                            </Link>
+                                        </div>
                                     </div>
-                                )
-                            })}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>

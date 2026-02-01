@@ -15,12 +15,12 @@ export const metadata: Metadata = {
         'web design'
     ],
     alternates: {
-        canonical: '/todos-os-servicos/criacao-de-sites',
+        canonical: '/todos-os-servicos/criacao-sites',
     },
     openGraph: {
         title: 'Criação de Sites - Planos Básico, Profissional e Empresarial | VOLTRIS',
         description: 'Sites profissionais com design responsivo, SEO e hospedagem. Planos para pequenos negócios e empresas.',
-        url: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites',
+        url: 'https://voltris.com.br/todos-os-servicos/criacao-sites',
         type: 'website',
         images: [
             {

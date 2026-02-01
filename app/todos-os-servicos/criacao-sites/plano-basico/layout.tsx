@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Plano Básico de criação de sites. Site profissional, responsivo e otimizado para SEO. Ideal para pequenos negócios e profissionais autônomos. A partir de R$ 497.',
     keywords: ['plano básico site', 'site profissional barato', 'criar site básico', 'site pequeno negócio', 'site profissional autônomo'],
     alternates: {
-        canonical: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites/plano-basico'
+        canonical: 'https://voltris.com.br/todos-os-servicos/criacao-sites/plano-basico'
     },
     openGraph: {
         title: 'Plano Básico - Criação de Sites Profissionais | VOLTRIS',
         description: 'Site profissional, responsivo e otimizado para SEO. Ideal para pequenos negócios.',
-        url: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites/plano-basico',
+        url: 'https://voltris.com.br/todos-os-servicos/criacao-sites/plano-basico',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

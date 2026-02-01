@@ -20,19 +20,19 @@ const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const services = [
     {
         id: "criacao-site",
-        title: "Criação de Web Sites",
-        description: "Sites de alta performance, SEO otimizado e design responsivo.",
+        title: "Criação de Sites Profissionais e Otimizados para SEO",
+        description: "Desenvolvemos sites modernos, rápidos e responsivos, com foco em performance, SEO e conversão. Ideal para empresas que desejam presença digital profissional, carregamento rápido e melhor posicionamento no Google.",
         icon: FiLayout,
         color: "from-blue-500 to-cyan-500",
         price: "A partir de R$ 997,90",
         buttonText: "Orçar Projeto",
-        redirect: "/todos-os-servicos/criacao-de-sites",
+        redirect: "/todos-os-servicos/criacao-sites",
         highlight: true
     },
     {
         id: "suporte-windows",
-        title: "Suporte Windows Pro",
-        description: "Diagnóstico completo e reparo de sistema. Resolvemos lentidão e erros.",
+        title: "Suporte Técnico Windows Remoto",
+        description: "Diagnóstico completo, correção de erros, remoção de lentidão e falhas no Windows. Atendimento remoto para resolver problemas de sistema de forma rápida e segura.",
         icon: FiMonitor,
         color: "from-indigo-500 to-purple-500",
         price: "A partir de R$ 349,90",
@@ -42,8 +42,8 @@ const services = [
     },
     {
         id: "otimizacao",
-        title: "Otimização Gamer",
-        description: "Aumente FPS e reduza input lag com otimização de kernel.",
+        title: "Otimização de PC Gamer Remota",
+        description: "Serviço especializado em otimização de computadores gamer, aumentando FPS, reduzindo input lag e melhorando o desempenho geral do sistema para jogos.",
         icon: FiCpu,
         color: "from-purple-500 to-pink-500",
         price: "A partir de R$ 79,90",
@@ -52,8 +52,8 @@ const services = [
     },
     {
         id: "formatacao",
-        title: "Formatação Limpa",
-        description: "Instalação do zero com backup seguro e drivers atualizados.",
+        title: "Formatação de PC Remota e Instalação do Windows",
+        description: "Formatação limpa do computador com backup seguro, instalação do Windows, drivers atualizados e configurações ideais para desempenho e estabilidade.",
         icon: FiHardDrive,
         color: "from-emerald-500 to-teal-500",
         price: "A partir de R$ 99,90",
@@ -62,8 +62,8 @@ const services = [
     },
     {
         id: "recuperacao",
-        title: "Recuperação de Dados",
-        description: "Tecnologia forense para recuperar arquivos perdidos ou deletados.",
+        title: "Recuperação de Dados Profissional",
+        description: "Recuperação de arquivos perdidos, deletados ou corrompidos utilizando técnicas avançadas de análise e restauração de dados.",
         icon: FiDatabase,
         color: "from-orange-500 to-red-500",
         price: "Sob Consulta",
@@ -72,8 +72,8 @@ const services = [
     },
     {
         id: "remocao_virus",
-        title: "Segurança & Antivírus",
-        description: "Varredura profunda para remover malwares e rootkits.",
+        title: "Segurança Digital, Antivírus e Remoção de Malware",
+        description: "Varredura profunda para remoção de vírus, malwares, spywares e rootkits, garantindo segurança e proteção total do computador.",
         icon: FiShield,
         color: "from-red-500 to-rose-500",
         price: "R$ 39,90",
@@ -82,8 +82,8 @@ const services = [
     },
     {
         id: "instalacao-programas",
-        title: "Pack de Softwares",
-        description: "Instalação correta de programas essenciais e ferramentas.",
+        title: "Instalação de Programas e Softwares Essenciais",
+        description: "Instalação correta de programas essenciais, ferramentas profissionais e softwares necessários para o uso diário do computador.",
         icon: FiPackage,
         color: "from-cyan-500 to-blue-500",
         price: "A partir de R$ 29,90",
@@ -92,8 +92,8 @@ const services = [
     },
     {
         id: "instalacao_impressora",
-        title: "Periféricos",
-        description: "Configuração de impressoras e dispositivos conectados.",
+        title: "Configuração de Impressoras e Periféricos",
+        description: "Configuração remota de impressoras, scanners e dispositivos conectados, garantindo funcionamento correto e sem erros.",
         icon: FiPrinter,
         color: "from-gray-500 to-slate-500",
         price: "R$ 49,90",
@@ -102,8 +102,8 @@ const services = [
     },
     {
         id: "correcao_windows",
-        title: "Correção de Erros",
-        description: "Resolução rápida para problemas pontuais do dia a dia.",
+        title: "Correção de Erros e Problemas no Computador",
+        description: "Resolução rápida de erros do sistema, telas azuis, falhas de programas e problemas pontuais do dia a dia.",
         icon: FiActivity,
         color: "from-amber-500 to-orange-500",
         price: "R$ 49,90",
@@ -112,8 +112,8 @@ const services = [
     },
     {
         id: "tecnico_local",
-        title: "Técnico Especializado",
-        description: "Suporte avançado para hardware e infraestrutura local/remota.",
+        title: "Técnico Especializado em Informática e TI Remota",
+        description: "Atendimento avançado para hardware, infraestrutura, redes e soluções técnicas complexas, com suporte remoto especializado.",
         icon: FiUserCheck,
         color: "from-indigo-600 to-blue-600",
         price: "Sob Consulta",
@@ -165,15 +165,18 @@ export default function ServicosClient() {
                             </div>
 
                             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
-                                Soluções Digitais <br className="hidden md:block" />
+                                Serviços de Suporte<br className="hidden md:block" />
                                 <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text animate-gradient-x">
-                                    Inteligentes & Rápidas
+                                    Técnico Remoto em Informática e TI
                                 </span>
                             </h1>
 
+                            <h2 className="text-xl md:text-2xl font-semibold text-white/90 mb-6 tracking-wide">
+                                Formatação de PC, Otimização de Computador, Suporte Windows e Soluções Digitais Profissionais
+                            </h2>
+
                             <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-                                Transforme sua experiência tecnológica com nosso suporte especializado.
-                                Oferecemos desde <strong>otimizações de alta performance</strong> até soluções complexas de infraestrutura.
+                                Oferecemos serviços profissionais de suporte técnico remoto para informática e TI, atendendo clientes que precisam resolver problemas no computador de forma rápida, segura e online. Atuamos com formatação de PC, otimização de desempenho, correção de erros, segurança digital, instalação de programas e soluções avançadas de tecnologia, tudo com atendimento especializado e remoto.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -192,8 +195,6 @@ export default function ServicosClient() {
                             </div>
                         </motion.div>
                     </div>
-
-
                 </section>
 
                 {/* Catálogo com Cards Modernos */}
@@ -254,8 +255,7 @@ export default function ServicosClient() {
                 <section className="py-24 px-4 border-t border-white/5 bg-[#050510] relative overflow-hidden w-full">
                     <div className="max-w-7xl mx-auto relative z-10">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Excelência em Cada Detalhe</h2>
-                            <p className="text-slate-400">Por que somos a escolha certa para sua tecnologia.</p>
+                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Por que escolher nosso suporte técnico remoto?</h2>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -265,7 +265,7 @@ export default function ServicosClient() {
                                 <FiShield className="w-10 h-10 text-[#31A8FF] mb-6" />
                                 <h3 className="text-xl font-bold text-white mb-3">Garantia Blindada</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed">
-                                    Se não resolvermos, você não paga. Sem letras miúdas. Sua segurança e satisfação são nossa prioridade absoluta.
+                                    Se não resolvermos o problema, você não paga. Atendimento transparente, seguro e sem letras miúdas.
                                 </p>
                             </div>
 
@@ -275,7 +275,7 @@ export default function ServicosClient() {
                                 <FiZap className="w-10 h-10 text-[#8B31FF] mb-6" />
                                 <h3 className="text-xl font-bold text-white mb-3">Velocidade Extrema</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed">
-                                    Atendimento iniciado em minutos. Técnicos dedicados prontos para resolver problemas complexos rapidamente.
+                                    Atendimento iniciado em minutos, com suporte técnico remoto ágil para resolver problemas rapidamente.
                                 </p>
                             </div>
 
@@ -285,7 +285,7 @@ export default function ServicosClient() {
                                 <FiUserCheck className="w-10 h-10 text-[#FF4B6B] mb-6" />
                                 <h3 className="text-xl font-bold text-white mb-3">Especialistas Reais</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed">
-                                    Nada de bots frustrantes. Fale com engenheiros de software e técnicos certificados com anos de experiência.
+                                    Nada de robôs. Você fala diretamente com técnicos certificados e especialistas em informática e tecnologia.
                                 </p>
                             </div>
                         </div>

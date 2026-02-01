@@ -234,6 +234,45 @@ export default function TecnicoInformaticaClient({
                     </div>
                 </section>
 
+                {/* Common Problems Section - SEO Semantic Block */}
+                <section className="py-24 px-4 bg-[#0A0A0F] relative z-10 border-t border-white/5">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Expertise Técnica Comprovada</h2>
+                            <p className="text-slate-400 max-w-2xl mx-auto">Nossos especialistas lidam diariamente com os casos mais complexos de infraestrutura e software.</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {[
+                                {
+                                    title: "Lentidão Extrema",
+                                    desc: "Seu PC demora para ligar ou trava ao abrir programas básicos? Otimizamos o kernel do Windows para performance máxima."
+                                },
+                                {
+                                    title: "Tela Azul (BSOD)",
+                                    desc: "Erros críticos de sistema (PAGE_FAULT, IRQL_NOT_LESS) diagnosticados via análise de dump de memória."
+                                },
+                                {
+                                    title: "Vírus e Spyware",
+                                    desc: "Remoção cirúrgica de malwares que roubam dados ou mineram criptomoedas em segundo plano."
+                                },
+                                {
+                                    title: "Rede e Wi-Fi",
+                                    desc: "Problemas de conexão, ping alto em jogos ou roteadores desconfigurados resolvidos remotamente."
+                                }
+                            ].map((prob, i) => (
+                                <div key={i} className="bg-[#121218] p-8 rounded-2xl border border-white/5 hover:border-[#31A8FF]/20 transition-all">
+                                    <div className="w-2 h-2 rounded-full bg-[#31A8FF] mb-4"></div>
+                                    <h3 className="text-xl font-bold text-white mb-3">{prob.title}</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed">
+                                        {prob.desc}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
                 {/* CTA Section */}
                 <section className="py-24 px-4 relative z-10 text-center">
                     <div className="max-w-4xl mx-auto relative px-6 py-20 rounded-[48px] border border-white/5 bg-gradient-to-b from-[#121218] to-[#0A0A0F]">

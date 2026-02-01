@@ -35,6 +35,50 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/criacao-de-sites',
+        destination: '/criacao-sites',
+        permanent: true,
+      },
+      {
+        source: '/todos-os-servicos/criacao-de-sites',
+        destination: '/todos-os-servicos/criacao-sites',
+        permanent: true,
+      },
+      {
+        source: '/about',
+        destination: '/sobre',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/contato',
+        permanent: true,
+      },
+      {
+        source: '/services',
+        destination: '/todos-os-servicos',
+        permanent: true,
+      },
+      {
+        source: '/gamers',
+        destination: '/voltrisoptimizer',
+        permanent: true,
+      },
+      {
+        source: '/profile',
+        destination: '/perfil',
+        permanent: true,
+      },
+      {
+        source: '/admin/:path*',
+        destination: '/restricted-area-admin/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

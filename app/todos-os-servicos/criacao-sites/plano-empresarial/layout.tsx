@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Plano Empresarial de criação de sites. Solução completa para grandes empresas com sistema de gestão, integrações, dashboard administrativo e suporte dedicado 24/7.',
     keywords: ['plano empresarial site', 'site corporativo', 'site grande empresa', 'portal empresarial', 'site com dashboard'],
     alternates: {
-        canonical: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites/plano-empresarial'
+        canonical: 'https://voltris.com.br/todos-os-servicos/criacao-sites/plano-empresarial'
     },
     openGraph: {
         title: 'Plano Empresarial - Sites Corporativos de Alto Nível | VOLTRIS',
         description: 'Solução completa para grandes empresas com suporte dedicado 24/7.',
-        url: 'https://voltris.com.br/todos-os-servicos/criacao-de-sites/plano-empresarial',
+        url: 'https://voltris.com.br/todos-os-servicos/criacao-sites/plano-empresarial',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

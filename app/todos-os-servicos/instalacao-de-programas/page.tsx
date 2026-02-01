@@ -11,24 +11,23 @@ import { createClient } from '@/utils/supabase/client';
 const supabase = createClient();
 
 const programasComuns = [
-  'Google Chrome',
-  'Mozilla Firefox',
-  'WinRAR',
-  'VLC Media Player',
-  'Zoom',
-  'Skype',
-  'Spotify',
-  'WhatsApp Desktop',
-  'Microsoft Teams',
-  'PDF Reader',
-  'Java',
-  'Adobe Acrobat Reader',
-  'TeamViewer',
-  'AnyDesk',
-  'Outlook',
-  'Telegram',
-  'Discord',
-  'Entre outros Programas',
+  'Adobe Acrobat Pro 2023',
+  'Adobe After Effects 2023',
+  'Adobe Animate 2024',
+  'Adobe Audition 2023',
+  'Adobe Illustrator 2024',
+  'Adobe Illustrator 2025',
+  'Adobe InDesign 2023',
+  'Adobe Lightroom 2023',
+  'Adobe Media Encoder 2024',
+  'Adobe Photoshop 2024',
+  'Adobe Photoshop 2025',
+  'Adobe Premiere Pro 2024',
+  'Autodesk AutoCAD 2023',
+  'CorelDRAW Graphics Suite 2024',
+  'Maxon Cinema 4D',
+  'Microsoft Office (Pacote Completo)',
+  'SketchUp Pro 2023',
 ];
 
 export default function InstalacaoDeProgramasPage() {
@@ -246,7 +245,7 @@ export default function InstalacaoDeProgramasPage() {
 
                       <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 rounded-2xl bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-white/5">
                         <div>
-                          <span className="block text-2xl font-bold text-white mb-1">R$ 49,90</span>
+                          <span className="block text-2xl font-bold text-white mb-1">Valor: A combinar</span>
                           <span className="text-sm text-slate-400">Taxa única de serviço</span>
                         </div>
                         <button

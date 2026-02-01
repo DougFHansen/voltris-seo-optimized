@@ -17,5 +17,44 @@ export const metadata: Metadata = {
 };
 
 export default function ServicosPage() {
-  return <ServicosClient />;
+  return (
+    <>
+      <ServicosClient />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Suporte Técnico Remoto em Informática e TI",
+            "provider": {
+              "@type": "Organization",
+              "name": "Voltris",
+              "url": "https://voltris.com.br"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Brasil"
+            },
+            "serviceType": [
+              "Suporte Técnico Remoto",
+              "Formatação de PC",
+              "Otimização de Computador",
+              "Suporte Windows",
+              "Segurança Digital",
+              "Instalação de Programas",
+              "Criação de Sites"
+            ],
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceLocation": {
+                "@type": "VirtualLocation",
+                "url": "https://voltris.com.br"
+              }
+            }
+          })
+        }}
+      />
+    </>
+  );
 }
