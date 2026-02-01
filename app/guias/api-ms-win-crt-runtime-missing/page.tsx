@@ -40,7 +40,7 @@ export default function APIGuide() {
                 <br/>- x64 (Para Windows 64 bits).
                 <br/>- x86 (Para Windows 32 bits).
             </li>
-            <li>Execute o arquivo `.msu`.</li>
+            <li>Execute o arquivo <code>.msu</code>.</li>
             <li>Reinicie o PC.</li>
         </ol>
       `,
