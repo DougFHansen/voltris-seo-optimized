@@ -57,7 +57,7 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group z-20 relative">
-            <div className="relative w-8 h-8 md:w-9 md:h-9">
+            <div className="relative w-10 h-10 md:w-12 md:h-12">
               <Image src="/logo.png" alt="Voltris" fill className="object-contain transition-transform duration-500 group-hover:rotate-180" priority />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-tight hidden sm:block">
@@ -197,16 +197,20 @@ export default function Header() {
                     <Link
                       href="/login"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block w-full py-4 text-center text-white font-bold border border-white/10 rounded-2xl bg-white/5"
+                      className="relative flex items-center justify-center gap-2 w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 group overflow-hidden"
                     >
-                      Fazer Login
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#8B31FF]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <FiUser className="w-5 h-5 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                      <span className="font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text relative z-10">Login</span>
                     </Link>
                     <Link
                       href="/login?signup=true"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block w-full py-4 text-center bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-white font-bold rounded-2xl shadow-lg"
+                      className="relative flex items-center justify-center gap-2 w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-[#FF4B6B]/30 transition-all duration-300 group overflow-hidden"
                     >
-                      Criar Conta Grátis
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <FiUserPlus className="w-5 h-5 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                      <span className="font-bold text-white relative z-10">Cadastro</span>
                     </Link>
                   </>
                 )}

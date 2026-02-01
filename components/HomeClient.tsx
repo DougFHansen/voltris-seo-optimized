@@ -542,8 +542,8 @@ export default function HomeClient() {
                             <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
                             <span className="text-xs font-bold text-white tracking-widest uppercase">Tecnologia Exclusiva</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white tracking-tight">
-                            VOLTRIS <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">OPTIMIZER</span>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+                            <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">VOLTRIS</span> <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">OPTIMIZER</span>
                         </h2>
                         <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
                             Revolucione sua experiência gaming com nossa tecnologia de otimização a nível de kernel.

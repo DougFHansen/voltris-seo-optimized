@@ -44,7 +44,7 @@ export default function Footer() {
           {/* Col 1: Info & Brand */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2 group w-fit">
-              <div className="relative w-9 h-9">
+              <div className="relative w-12 h-12">
                 <Image src="/logo.png" alt="Voltris" fill className="object-contain logo-rotate group-hover:scale-110 transition-transform" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-tight">VOLTRIS</span>
