@@ -9,6 +9,8 @@ import "./globals.css";
 import ClientNotificationProvider from './components/ClientNotificationProvider';
 import ClientPWAInstall from "./components/ClientPWAInstall";
 import JsonLd from "@/components/JsonLd";
+import AdSense from "@/components/AdSense";
+import { ADSENSE_CONFIG } from "@/app/adsense-config";
 
 export const metadata: Metadata = {
   title: {
@@ -112,6 +114,9 @@ export default function RootLayout({
         <meta name="revisit-after" content="7 days" />
 
         <meta name="msvalidate.01" content="92524862D63347408E773A7CD62B94DD" />
+
+        {/* Google AdSense */}
+        <AdSense pId={ADSENSE_CONFIG.PUBLISHER_ID} />
 
         {/* Bing-specific meta tags - Optimized */}
         <meta name="geo.region" content="BR-SP" />
