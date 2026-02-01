@@ -1,0 +1,21 @@
+# Bing SEO & IndexNow Implementation Task List
+
+- [x] **1. Sitemap.xml Correction**
+    - [x] Audit `app/sitemap.ts` for completeness.
+    - [x] Ensure all public routes (Home, Services, LPs, Guides) are included.
+    - [x] Verify exclusion of /auth, /dashboard, /admin.
+    - [x] Ensure dynamic generation is working correctly.
+- [x] **2. IndexNow Implementation**
+    - [x] Generate IndexNow API Key.
+    - [x] Create key file in `public/`.
+    - [x] Create `app/api/indexnow/route.ts` for submission.
+- [ ] **3. Meta Descriptions & Titles Audit**
+    - [ ] Scan all `page.tsx` for duplicate metadata.
+    - [ ] Implement unique/dynamic templates for Services.
+    - [ ] Implement unique/dynamic templates for Guides.
+- [ ] **4. Backlinks & Authority Plan**
+    - [ ] Create technical plan for authority building.
+- [ ] **5. Final Verification & Report**
+    - [ ] Verify sitemap output.
+    - [ ] Verify IndexNow endpoint.
+    - [ ] Generate `RELATORIO_BING_SEO.md`.
