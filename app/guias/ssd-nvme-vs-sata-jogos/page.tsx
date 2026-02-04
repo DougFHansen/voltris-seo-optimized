@@ -18,7 +18,7 @@ export default function SSDTypeGuide() {
         { label: "Velocidade SATA", value: "Até 560 MB/s (Limite do cabo)" },
         { label: "Velocidade NVMe (Gen4)", value: "Até 7.500 MB/s" },
         { label: "Fator Decisivo", value: "DirectStorage (O futuro dos jogos)" },
-        { label: "Dificuldade", value: "Médio (Instalação física)" }
+        { label: "Dificuldade", value: "Intermediário" }
     ];
 
     const contentSections = [

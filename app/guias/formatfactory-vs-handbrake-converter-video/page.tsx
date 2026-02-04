@@ -18,7 +18,7 @@ export default function VideoConverterGuide() {
         { label: "Handbrake", value: "Focado em vídeo profissional / Alta compressão" },
         { label: "Format Factory", value: "Multiuso (Fotos, Músicas, PDFs) / Fácil" },
         { label: "Encoder 2026", value: "AV1 (Suporte por hardware em ambos)" },
-        { label: "Dificuldade", value: "Fácil (FF) / Médio (HB)" }
+        { label: "Dificuldade", value: "Intermediário" }
     ];
 
     const contentSections = [
