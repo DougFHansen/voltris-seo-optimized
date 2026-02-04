@@ -637,6 +637,329 @@ export default function RouterPortGuide() {
         }
     ];
 
+    const advancedContentSections = [
+        {
+            title: "Configurações Avançadas de NAT e Firewalls Corporativos",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              Em ambientes corporativos ou redes mais complexas, as configurações de NAT e firewall podem envolver camadas adicionais de segurança que exigem conhecimento técnico avançado. Vamos explorar as configurações mais complexas que você pode encontrar:
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Enterprise NAT Solutions</h4>
+            <p class="mb-4 text-gray-300">
+              Em redes corporativas, o NAT é frequentemente implementado com soluções enterprise que podem incluir:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>SNAT (Source NAT):</strong> Altera o IP de origem dos pacotes para um IP público compartilhado</li>
+              <li><strong>DNAT (Destination NAT):</strong> Redireciona pacotes com base no IP de destino para diferentes servidores internos</li>
+              <li><strong>Twice NAT:</strong> Aplica NAT duas vezes para segurança adicional</li>
+              <li><strong>DS-Lite (Dual-Stack Lite):</strong> Solução para escassez de IPv4 em redes IPv6</li>
+            </ul>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Firewall de Camada 7 (Application Layer)</h4>
+            <p class="mb-4 text-gray-300">
+              Firewalls modernos inspecionam não apenas portas e protocolos, mas também o conteúdo dos pacotes:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+                <h5 class="text-blue-400 font-bold mb-3">Deep Packet Inspection (DPI)</h5>
+                <p class="text-gray-300 text-sm">Capaz de identificar e filtrar tráfego com base no conteúdo do pacote, não apenas cabeçalhos</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 mt-2 text-sm">
+                  <li>Identifica jogos e aplicações específicas</li>
+                  <li>Pode bloquear ou limitar aplicações mesmo em portas abertas</li>
+                  <li>Utiliza assinaturas de tráfego para reconhecimento</li>
+                </ul>
+              </div>
+              <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
+                <h5 class="text-purple-400 font-bold mb-3">Application Control</h5>
+                <p class="text-gray-300 text-sm">Controle granular sobre aplicações mesmo que usem portas comuns</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 mt-2 text-sm">
+                  <li>Permite/bloqueia jogos específicos</li>
+                  <li>Controla recursos como voice chat ou downloads</li>
+                  <li>Implementa políticas baseadas em usuário/grupo</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Soluções para Ambientes Restritos</h4>
+            <p class="mb-4 text-gray-300">
+              Em redes corporativas, você pode enfrentar:</p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Proxy Transparente:</strong> Intercepta e redireciona tráfego sem configuração no cliente</li>
+              <li><strong>Web Application Firewall (WAF):</strong> Filtra tráfego HTTP/HTTPS para aplicações web</li>
+              <li><strong>SSL Inspection:</strong> Decodifica e inspeciona tráfego HTTPS para segurança</li>
+              <li><strong>Network Access Control (NAC):</strong> Controla quais dispositivos podem acessar a rede</li>
+            </ul>
+            `
+        },
+        {
+            title: "Análise Profunda de Protocolos e Tratamento de Pacotes",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              Para compreender completamente como as portas funcionam e como o NAT manipula os pacotes, é essencial entender o tratamento profundo de protocolos e cabeçalhos de pacotes:
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Estrutura de Pacotes TCP e UDP</h4>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-2 text-left">Campo</th>
+                    <th class="p-2 text-left">Tamanho (bits)</th>
+                    <th class="p-2 text-left">TCP</th>
+                    <th class="p-2 text-left">UDP</th>
+                    <th class="p-2 text-left">Função em Jogos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2"><strong>Source Port</strong></td>
+                    <td class="p-2">16</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">Identifica origem do tráfego</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-2"><strong>Destination Port</strong></td>
+                    <td class="p-2">16</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">Identifica destino do tráfego</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2"><strong>Sequence Number</strong></td>
+                    <td class="p-2">32</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">✗</td>
+                    <td class="p-2">Ordem de pacotes (TCP)</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-2"><strong>Checksum</strong></td>
+                    <td class="p-2">16</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">Verificação de integridade</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2"><strong>Window Size</strong></td>
+                    <td class="p-2">16</td>
+                    <td class="p-2">✓</td>
+                    <td class="p-2">✗</td>
+                    <td class="p-2">Controle de fluxo (TCP)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Tratamento de Pacotes no NAT</h4>
+            <p class="mb-4 text-gray-300">
+              O NAT modifica campos específicos dos pacotes para permitir o roteamento:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+              <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                <h5 class="text-white font-bold mb-2">Ingresso (Entrada)</h5>
+                <p class="text-sm text-gray-300">NAT altera IP de origem para IP público</p>
+                <p class="text-xs text-gray-400">Porta origem → Porta pública única</p>
+              </div>
+              <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                <h5 class="text-white font-bold mb-2">Tradução</h5>
+                <p class="text-sm text-gray-300">Tabela de mapeamento é atualizada</p>
+                <p class="text-xs text-gray-400">IP pub:porta ↔ IP priv:porta</p>
+              </div>
+              <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                <h5 class="text-white font-bold mb-2">Egresso (Saída)</h5>
+                <p class="text-sm text-gray-300">NAT reverte tradução original</p>
+                <p class="text-xs text-gray-400">IP destino é revertido para IP privado</p>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Considerações para Jogos em Tempo Real</h4>
+            <p class="mb-4 text-gray-300">
+              Jogos exigem tratamento especial devido à natureza em tempo real:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Low Latency:</strong> NAT deve processar pacotes rapidamente sem buffering</li>
+              <li><strong>Consistent Timing:</strong> Pacotes UDP não devem ser reordenados ou atrasados</li>
+              <li><strong>Connection Tracking:</strong> Tabelas de NAT devem manter estados de conexão</li>
+              <li><strong>MTU Handling:</strong> Fragmentação de pacotes deve ser gerenciada cuidadosamente</li>
+            </ul>
+            `
+        },
+        {
+            title: "Implementação de Servidores de Jogos e Balanceamento de Carga",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              Para jogos multiplayer, especialmente aqueles com servidores dedicados, o balanceamento de carga e distribuição geográfica são críticos para performance e disponibilidade:
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Arquitetura de Servidores de Jogos</h4>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
+              <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+                <h5 class="text-blue-400 font-bold mb-3">Servidores de Matchmaking</h5>
+                <p class="text-gray-300 text-sm mb-3">Responsáveis por encontrar e agrupar jogadores:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Calculam latência entre jogadores</li>
+                  <li>Consideram região geográfica</li>
+                  <li>Verificam status de NAT dos clientes</li>
+                  <li>Gerenciam filas de matchmaking</li>
+                </ul>
+              </div>
+              <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
+                <h5 class="text-purple-400 font-bold mb-3">Servidores de Jogo</h5>
+                <p class="text-gray-300 text-sm mb-3">Executam a lógica do jogo e sincronização:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Processam inputs dos jogadores</li>
+                  <li>Mantêm estado do jogo em tempo real</li>
+                  <li>Transmitem atualizações a todos os players</li>
+                  <li>Validam checagens anti-cheat</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Técnicas de Balanceamento de Carga</h4>
+            <p class="mb-4 text-gray-300">
+              Distribuição inteligente de jogadores entre servidores:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-3 text-left">Técnica</th>
+                    <th class="p-3 text-left">Descrição</th>
+                    <th class="p-3 text-left">Benefícios</th>
+                    <th class="p-3 text-left">Desvantagens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>Round Robin</strong></td>
+                    <td class="p-3">Distribui jogadores sequencialmente</td>
+                    <td class="p-3">Simples, equilibrado</td>
+                    <td class="p-3">Ignora latência geográfica</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>Geographic Routing</strong></td>
+                    <td class="p-3">Baseado na localização dos jogadores</td>
+                    <td class="p-3">Minimiza latência</td>
+                    <td class="p-3">Pode sobrecarregar regiões populares</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>Load-Based Routing</strong></td>
+                    <td class="p-3">Baseado na carga atual dos servidores</td>
+                    <td class="p-3">Evita sobrecarga</td>
+                    <td class="p-3">Pode aumentar latência</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>NAT-Aware Routing</strong></td>
+                    <td class="p-3">Considera tipo de NAT dos jogadores</td>
+                    <td class="p-3">Melhora compatibilidade</td>
+                    <td class="p-3">Mais complexo de implementar</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Infraestrutura de CDN para Jogos</h4>
+            <p class="mb-4 text-gray-300">
+              Content Delivery Networks especializados para jogos:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Edge Computing:</strong> Processamento próximo aos jogadores</li>
+              <li><strong>Multi-CDN Strategy:</strong> Uso de múltiplas CDNs para redundância</li>
+              <li><strong>Real-time Streaming:</strong> Transmissão de dados em tempo real</li>
+              <li><strong>Dynamic Content Caching:</strong> Cache de conteúdo que muda com o tempo</li>
+            </ul>
+            `
+        },
+        {
+            title: "Considerações de Segurança e Privacidade em Redes de Jogos",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              Com o aumento do jogo online, a segurança e privacidade se tornaram aspectos críticos tanto para desenvolvedores quanto para jogadores:
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Vetores de Ataque Comuns em Jogos Online</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20">
+                <h5 class="text-rose-400 font-bold mb-3">Ataques DDoS</h5>
+                <p class="text-gray-300 text-sm mb-3">Distributed Denial of Service contra servidores ou jogadores individuais:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Booter/stresser services específicos para jogos</li>
+                  <li>Ataques direcionados para causar lag ou desconexão</li>
+                  <li>Amplificação de tráfego usando protocolos UDP</li>
+                  <li>Exploração de vulnerabilidades de rede em jogos</li>
+                </ul>
+              </div>
+              <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20">
+                <h5 class="text-amber-400 font-bold mb-3">Privacy Leaks</h5>
+                <p class="text-gray-300 text-sm mb-3">Vazamento acidental de informações pessoais:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Exposição de IP real durante conexões P2P</li>
+                  <li>Informações de localização geográfica</li>
+                  <li>Dados de dispositivo e configuração</li>
+                  <li>Identidade de rede e NAT Type</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Medidas de Proteção e Mitigação</h4>
+            <p class="mb-4 text-gray-300">
+              Estratégias para proteger jogadores e infraestrutura:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-3 text-left">Camada</th>
+                    <th class="p-3 text-left">Proteção</th>
+                    <th class="p-3 text-left">Implementação</th>
+                    <th class="p-3 text-left">Efetividade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>Roteador</strong></td>
+                    <td class="p-3">SPI Firewall, DoS Protection</td>
+                    <td class="p-3">Configuração no firmware</td>
+                    <td class="p-3">Alta contra ataques básicos</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>Sistema</strong></td>
+                    <td class="p-3">Windows Firewall, Antivírus</td>
+                    <td class="p-3">Regras de aplicação/porta</td>
+                    <td class="p-3">Alta contra malware</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>Jogo</strong></td>
+                    <td class="p-3">Anti-cheat, Rate Limiting</td>
+                    <td class="p-3">Integrado ao client/server</td>
+                    <td class="p-3">Alta contra exploits</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>Servidor</strong></td>
+                    <td class="p-3">DDoS Mitigation, WAF</td>
+                    <td class="p-3">Serviço cloud/proxy reverso</td>
+                    <td class="p-3">Alta contra ataques volumétricos</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Boas Práticas de Segurança</h4>
+            <p class="mb-4 text-gray-300">
+              Medidas recomendadas para jogadores e desenvolvedores:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Firewall Granular:</strong> Permitir apenas portas necessárias para cada jogo</li>
+              <li><strong>Atualizações Regulares:</strong> Manter firmware, drivers e SO atualizados</li>
+              <li><strong>Monitoramento de Tráfego:</strong> Ferramentas para detectar atividade suspeita</li>
+              <li><strong>VPN para Jogos:</strong> Quando necessário para anonimato, mas avaliar trade-offs</li>
+              <li><strong>Configurações de Privacidade:</strong> Limitar exposição de informações no jogo</li>
+            </ul>
+            `
+        }
+    ];
+
     const faqItems = [
         {
             question: "Preciso abrir portas se já tenho UPnP habilitado?",
@@ -790,6 +1113,7 @@ export default function RouterPortGuide() {
             author="Equipe Técnica Voltris"
             lastUpdated="Fevereiro 2026"
             contentSections={contentSections}
+            advancedContentSections={advancedContentSections}
             summaryTable={summaryTable}
             faqItems={faqItems}
             externalReferences={externalReferences}

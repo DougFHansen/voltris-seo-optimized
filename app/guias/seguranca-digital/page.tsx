@@ -516,6 +516,459 @@ export default function DigitalSecurityGuide() {
     }
   ];
 
+  // Additional advanced content sections
+  const advancedContentSections = [
+    {
+      title: "12. Criptografia e Segurança de Dados em 2026",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔐 Técnicas Avançadas de Criptografia</h4>
+        <p class="mb-4 text-gray-300">
+          Em 2026, a criptografia evoluiu para enfrentar ameaças cada vez mais sofisticadas, incluindo computação quântica e técnicas avançadas de quebra de algoritmos:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+          <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-3">Criptografia Assimétrica Avançada</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• RSA-4096 e curvas elípticas P-384</li>
+              <li>• Criptografia pós-quântica (CRYSTALS-Kyber)</li>
+              <li>• Troca de chaves Diffie-Hellman estendida</li>
+              <li>• Protocolos de negociação de chaves seguras</li>
+              <li>• Forward secrecy (secreção perfeita encaminhada)</li>
+            </ul>
+          </div>
+          <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
+            <h5 class="text-purple-400 font-bold mb-3">Criptografia Simétrica Moderna</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• AES-256 com modos GCM e XTS</li>
+              <li>• ChaCha20-Poly1305 para ambientes móveis</li>
+              <li>• Criptografia homomórfica para processamento seguro</li>
+              <li>• Algoritmos de criptografia de disco (BitLocker, FileVault)</li>
+              <li>• Criptografia em tempo de execução (RTE)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Implementações Práticas de Segurança</h4>
+        <p class="mb-4 text-gray-300">
+          Técnicas avançadas para proteger dados em diferentes cenários:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Cenário</th>
+                <th class="p-3 text-left">Técnica</th>
+                <th class="p-3 text-left">Implementação</th>
+                <th class="p-3 text-left">Nível de Segurança</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Comunicação em trânsito</td>
+                <td class="p-3">TLS 1.3 + Perfect Forward Secrecy</td>
+                <td class="p-3">AES-256-GCM + ECDHE</td>
+                <td class="p-3 text-green-400">Muito Alto</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Armazenamento local</td>
+                <td class="p-3">Criptografia de disco completo</td>
+                <td class="p-3">BitLocker/XOR/XTS-AES</td>
+                <td class="p-3 text-green-400">Alto</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Dados em nuvem</td>
+                <td class="p-3">Cliente-side encryption</td>
+                <td class="p-3">AES-256 + chaves gerenciadas pelo cliente</td>
+                <td class="p-3 text-green-400">Muito Alto</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Mensagens instantâneas</td>
+                <td class="p-3">Criptografia de ponta a ponta</td>
+                <td class="p-3">Signal Protocol (Curve25519 + AES-256)</td>
+                <td class="p-3 text-green-400">Muito Alto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Criptografia em Camadas</h4>
+          <p class="text-sm text-gray-300">
+            Em 2026, a melhor prática é implementar criptografia em múltiplas camadas: criptografia de aplicação, criptografia de transporte e criptografia de armazenamento, cada uma com algoritmos diferentes para proteção máxima.
+          </p>
+        </div>
+      `
+    },
+    {
+      title: "13. Análise de Vulnerabilidades e Penetration Testing",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔍 Metodologias de Análise de Segurança</h4>
+        <p class="mb-4 text-gray-300">
+          Em 2026, a segurança proativa envolve técnicas avançadas de análise de vulnerabilidades e testes de penetração:
+        </p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
+          <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
+            <h5 class="text-green-400 font-bold mb-3">Análise de Vulnerabilidades</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Scanning com OWASP ZAP e Nessus</li>
+              <li>• Avaliação de dependências (Snyk, Dependabot)</li>
+              <li>• Análise estática de código (SAST)</li>
+              <li>• Análise dinâmica de código (DAST)</li>
+              <li>• Avaliação de segurança de containers</li>
+            </ul>
+          </div>
+          <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-3">Penetration Testing</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Metodologia PTES (Penetration Testing Execution Standard)</li>
+              <li>• Framework Metasploit para exploração</li>
+              <li>• Testes de rede, web e aplicações móveis</li>
+              <li>• Testes de engenharia social</li>
+              <li>• Avaliação de resposta a incidentes</li>
+            </ul>
+          </div>
+          <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
+            <h5 class="text-indigo-400 font-bold mb-3">Análise de Riscos</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Matrizes de probabilidade e impacto</li>
+              <li>• Análise quantitativa e qualitativa</li>
+              <li>• Modelo NIST Cybersecurity Framework</li>
+              <li>• Avaliação de maturidade de segurança</li>
+              <li>• Quantificação de riscos financeiros</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Técnicas de Identificação de Ameaças</h4>
+        <p class="mb-4 text-gray-300">
+          Metodologias para identificar e classificar ameaças cibernéticas:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h5 class="text-cyan-400 font-bold mb-2">STRIDE</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Spoofing: Falsificação de identidade</li>
+              <li>• Tampering: Alteração não autorizada de dados</li>
+              <li>• Repudiation: Negativa de ações realizadas</li>
+              <li>• Information Disclosure: Exposição de informações</li>
+              <li>• Denial of Service: Negação de serviço</li>
+              <li>• Elevation of Privilege: Elevação indevida de privilégios</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h5 class="text-purple-400 font-bold mb-2">DREAD</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Damage: Potencial de dano</li>
+              <li>• Reproducibility: Facilidade de reprodução</li>
+              <li>• Exploitability: Facilidade de exploração</li>
+              <li>• Affected Users: Número de usuários afetados</li>
+              <li>• Discoverability: Facilidade de descoberta</li>
+            </ul>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "14. Inteligência de Ameaças e Resposta a Incidentes",
+      content: `
+        <h4 class="text-white font-bold mb-3">🚨 Inteligência de Ameaças em 2026</h4>
+        <p class="mb-4 text-gray-300">
+          A inteligência de ameaças evoluiu para fornecer insights preditivos e reativos sobre ataques cibernéticos:
+        </p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
+          <div class="bg-orange-900/10 p-5 rounded-xl border border-orange-500/20">
+            <h5 class="text-orange-400 font-bold mb-3">Tipos de Inteligência</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Strategic: Visão de alto nível para tomada de decisão</li>
+              <li>• Tactical: Informações sobre TTPs (Táticas, Técnicas e Procedimentos)</li>
+              <li>• Operational: Dados sobre campanhas específicas</li>
+              <li>• Technical: Indicators of Compromise (IoCs) e IOAs</li>
+              <li>• Threat Actor Profiling: Perfil de grupos de ataque</li>
+            </ul>
+          </div>
+          <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20">
+            <h5 class="text-red-400 font-bold mb-3">Resposta a Incidentes</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Preparação e planejamento</li>
+              <li>• Identificação e análise</li>
+              <li>• Contenção, erradicação e recuperação</li>
+              <li>• Lições aprendidas e melhoria contínua</li>
+              <li>• Coordenação com órgãos reguladores</li>
+            </ul>
+          </div>
+          <div class="bg-pink-900/10 p-5 rounded-xl border border-pink-500/20">
+            <h5 class="text-pink-400 font-bold mb-3">Ferramentas de TIP</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• MISP (Malware Information Sharing Platform)</li>
+              <li>• ThreatConnect</li>
+              <li>• IBM X-Force Exchange</li>
+              <li>• Recorded Future</li>
+              <li>• AlienVault OTX</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">📊 Frameworks de Resposta a Incidentes</h4>
+        <p class="mb-4 text-gray-300">
+          Estruturas padronizadas para resposta eficaz a incidentes de segurança:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Framework</th>
+                <th class="p-3 text-left">Fases</th>
+                <th class="p-3 text-left">Foco Principal</th>
+                <th class="p-3 text-left">Aplicabilidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">NIST SP 800-61</td>
+                <td class="p-3">Preparação, Detecção, Resposta, Recuperação</td>
+                <td class="p-3">Organizações governamentais e comerciais</td>
+                <td class="p-3 text-green-400">Alta</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">SANS Incident Handler</td>
+                <td class="p-3">Preparação, Contenção, Erradicação, Recuperação</td>
+                <td class="p-3">Equipes de resposta a incidentes</td>
+                <td class="p-3 text-green-400">Alta</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">CERT Responder</td>
+                <td class="p-3">Classificação, Contenção, Aprendizado</td>
+                <td class="p-3">Centros de resposta a incidentes</td>
+                <td class="p-3 text-green-400">Alta</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">ISO 27035</td>
+                <td class="p-3">Planejamento, Detecção, Avaliação, Resposta</td>
+                <td class="p-3">Conformidade e governança</td>
+                <td class="p-3 text-yellow-400">Média</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔬 Análise Forense Digital</h4>
+        <p class="mb-4 text-gray-300">
+          Técnicas avançadas para investigação de incidentes cibernéticos:
+        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3 ml-4">
+          <li><strong>Coleta de Evidências:</strong> Imagens forenses de discos, memória RAM e redes</li>
+          <li><strong>Análise de Artifacts:</strong> Arquivos temporários, logs, histórico de navegação</li>
+          <li><strong>Timeline Analysis:</strong> Reconstrução de sequência de eventos</li>
+          <li><strong>Network Forensics:</strong> Análise de pacotes de rede e tráfego</li>
+          <li><strong>Mobile Forensics:</strong> Extração e análise de dispositivos móveis</li>
+        </ul>
+      `
+    }
+  ];
+
+  const additionalContentSections = [
+    {
+      title: "9. Segurança em Ambientes Corporativos",
+      content: `
+        <h4 class="text-white font-bold mb-3">🏢 Segurança Corporativa em 2026</h4>
+        <p class="mb-4 text-gray-300">
+          Em ambientes corporativos, a segurança digital envolve políticas, tecnologias e procedimentos coordenados:
+        </p>
+        <div class="space-y-6">
+          <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
+            <h5 class="text-green-400 font-bold mb-2">Zero Trust Architecture</h5>
+            <p class="text-gray-300 text-sm">
+              Modelo de segurança que presume desconfiança em todos os acessos:
+            </p>
+            <ul class="text-sm text-gray-300 space-y-1 mt-2">
+              <li>• Verificação contínua de identidade e dispositivos</li>
+              <li>• Acesso mínimo necessário (least privilege)</li>
+              <li>• Segmentação de rede micro e macro</li>
+              <li>• Monitoramento contínuo de atividades</li>
+              <li>• Criptografia em todos os níveis</li>
+            </ul>
+          </div>
+          <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
+            <h5 class="text-blue-400 font-bold mb-2">Governança de Segurança</h5>
+            <p class="text-gray-300 text-sm">
+              Estrutura de políticas e processos para gerenciar riscos:
+            </p>
+            <ul class="text-sm text-gray-300 space-y-1 mt-2">
+              <li>• Política de segurança da informação</li>
+              <li>• Comitê de segurança e comitê de risco</li>
+              <li>• Avaliação contínua de riscos</li>
+              <li>• Treinamento e conscientização</li>
+              <li>• Auditorias de segurança regulares</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Controles de Segurança Corporativa</h4>
+        <p class="mb-4 text-gray-300">
+          Implementações práticas de segurança em ambientes empresariais:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h5 class="text-cyan-400 font-bold mb-2">Controles Técnicos</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Firewalls e NGFW (Next Generation Firewall)</li>
+              <li>• SIEM/SOAR para detecção e resposta</li>
+              <li>• EDR (Endpoint Detection and Response)</li>
+              <li>• DLP (Data Loss Prevention)</li>
+              <li>• IAM (Identity and Access Management)</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h5 class="text-purple-400 font-bold mb-2">Controles Administrativos</h5>
+            <li>• Políticas de uso aceitável</li>
+            <li>• Procedimentos de resposta a incidentes</li>
+            <li>• Treinamento de conscientização</li>
+            <li>• Gerenciamento de mudanças de segurança</li>
+            <li>• Auditorias regulares de conformidade</li>
+            </ul>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "10. Segurança em Nuvem e Infraestrutura como Código",
+      content: `
+        <h4 class="text-white font-bold mb-3">☁️ Segurança em Ambientes Cloud</h4>
+        <p class="mb-4 text-gray-300">
+          A migração para a nuvem introduziu novos desafios e paradigmas de segurança:
+        </p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
+          <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
+            <h5 class="text-indigo-400 font-bold mb-3">Modelos de Responsabilidade</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Shared Responsibility Model (AWS, Azure, GCP)</li>
+              <li>• CSPM (Cloud Security Posture Management)</li>
+              <li>• CWPP (Cloud Workload Protection Platforms)</li>
+              <li>• Segurança em containers e serverless</li>
+              <li>• Compliance em ambientes híbridos</li>
+            </ul>
+          </div>
+          <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-3">Infraestrutura como Código (IaC)</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Terraform, Ansible, CloudFormation</li>
+              <li>• Infra as Code Security (IaC SAST)</li>
+              <li>• Policy as Code (PaC) com Open Policy Agent</li>
+              <li>• GitOps e segurança em pipelines CI/CD</li>
+              <li>• Segurança de secrets e gerenciamento de chaves</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔐 Práticas de Segurança Cloud-Native</h4>
+        <p class="mb-4 text-gray-300">
+          Implementações específicas para ambientes nativos da nuvem:
+        </p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Área</th>
+                <th class="p-3 text-left">Técnica</th>
+                <th class="p-3 text-left">Implementação</th>
+                <th class="p-3 text-left">Benefício</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Containers</td>
+                <td class="p-3">Runtime security</td>
+                <td class="p-3">Falco, Sysdig Secure</td>
+                <td class="p-3">Detecção de anomalias em tempo de execução</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Kubernetes</td>
+                <td class="p-3">Policy enforcement</td>
+                <td class="p-3">OPA Gatekeeper, Kyverno</td>
+                <td class="p-3">Aplicação de políticas de segurança</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Rede</td>
+                <td class="p-3">Microsegmentação</td>
+                <td class="p-3">NSX-T, Calico, Cilium</td>
+                <td class="p-3">Isolamento de tráfego entre workloads</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Dados</td>
+                <td class="p-3">Encryption at rest/transit</td>
+                <td class="p-3">KMS, envelope encryption</td>
+                <td class="p-3">Proteção de dados sensíveis</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `
+    },
+    {
+      title: "11. Privacidade de Dados e Conformidade Regulatória",
+      content: `
+        <h4 class="text-white font-bold mb-3">📋 Regulamentações de Privacidade em 2026</h4>
+        <p class="mb-4 text-gray-300">
+          Em 2026, as leis de proteção de dados se tornaram mais rigorosas e abrangentes:
+        </p>
+        <div class="space-y-6">
+          <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
+            <h5 class="text-green-400 font-bold mb-2">LGPD e GDPR</h5>
+            <p class="text-gray-300 text-sm">
+              Lei Geral de Proteção de Dados (Brasil) e Regulamento Geral sobre a Proteção de Dados (EU):
+            </p>
+            <ul class="text-sm text-gray-300 space-y-1 mt-2">
+              <li>• Consentimento explícito e informado</li>
+              <li>• Direito ao esquecimento</li>
+              <li>• Notificação de violação de dados em 72h</li>
+              <li>• Encarregado de proteção de dados (DPO)</li>
+              <li>• Impact Assessment (DPIA)</li>
+            </ul>
+          </div>
+          <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
+            <h5 class="text-blue-400 font-bold mb-2">Outras Regulamentações</h5>
+            <p class="text-gray-300 text-sm">
+              Outras leis importantes para conformidade:
+            </p>
+            <ul class="text-sm text-gray-300 space-y-1 mt-2">
+              <li>• CCPA/CPRA (California Consumer Privacy Act)</li>
+              <li>• HIPAA (Health Insurance Portability and Accountability Act)</li>
+              <li>• PCI DSS (Payment Card Industry Data Security Standard)</li>
+              <li>• SOX (Sarbanes-Oxley Act)</li>
+              <li>• ISO 27001/27002</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Implementações de Privacidade em Aplicações</h4>
+        <p class="mb-4 text-gray-300">
+          Técnicas para garantir a privacidade de dados em desenvolvimento de software:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h5 class="text-cyan-400 font-bold mb-2">Técnicas de Proteção</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Anonimização e pseudonimização de dados</li>
+              <li>• Privacy by Design em desenvolvimento</li>
+              <li>• Criptografia de dados sensíveis</li>
+              <li>• Minimização de dados coletados</li>
+              <li>• Consentimento granular e revogável</li>
+            </ul>
+          </div>
+          <div class="bg-gray-800 p-4 rounded-lg">
+            <h5 class="text-purple-400 font-bold mb-2">Ferramentas de Conformidade</h5>
+            <li>• Data Loss Prevention (DLP)</li>
+            <li>• Privacy Management Platforms (PMP)</li>
+            <li>• Data Discovery and Classification Tools</li>
+            <li>• Audit Logs e Reporting Systems</li>
+            <li>• Automated Compliance Monitoring</li>
+            </ul>
+          </div>
+        </div>
+      `
+    }
+  ];
+
   const faqItems = [
     {
       question: "O que é segurança digital e por que é importante em 2026?",
@@ -669,10 +1122,19 @@ export default function DigitalSecurityGuide() {
       author="Equipe de Segurança Voltris"
       lastUpdated="2026-01-20"
       contentSections={contentSections}
+      advancedContentSections={advancedContentSections}
+      additionalContentSections={additionalContentSections}
       summaryTable={summaryTable}
       faqItems={faqItems}
       externalReferences={externalReferences}
-      relatedGuides={relatedGuides}
+      relatedGuides={[
+        ...relatedGuides,
+        ...additionalContentSections.map((section, index) => ({
+          href: `#additional-section-${index}`,
+          title: section.title,
+          description: section.content.substring(0, 100) + '...'
+        }))
+      ]}
     />
   );
 }

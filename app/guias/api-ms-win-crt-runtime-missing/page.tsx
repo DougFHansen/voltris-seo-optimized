@@ -404,6 +404,368 @@ Restart-Computer
         }
     ];
 
+    const advancedContentSections = [
+        {
+            title: "Arquitetura Interna do Universal C Runtime e WinSxS",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              O Universal C Runtime (UCRT) é uma evolução arquitetônica do Microsoft Visual C++, projetada para resolver os problemas históricos do "DLL Hell" e proporcionar um ambiente de execução mais robusto e modular. A implementação do UCRT envolve componentes complexos do sistema operacional e mecanismos avançados de gerenciamento de bibliotecas compartilhadas.
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Componentes Arquitetônicos do UCRT</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+                <h5 class="text-blue-400 font-bold mb-3">Api-MS-Win-CRT-* DLLs</h5>
+                <p class="text-gray-300 text-sm mb-3">São stub DLLs que redirecionam para as DLLs reais do UCRT:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>api-ms-win-crt-runtime-l1-1-0.dll</li>
+                  <li>api-ms-win-crt-heap-l1-1-0.dll</li>
+                  <li>api-ms-win-crt-string-l1-1-0.dll</li>
+                  <li>api-ms-win-crt-stdio-l1-1-0.dll</li>
+                  <li>api-ms-win-crt-math-l1-1-0.dll</li>
+                </ul>
+              </div>
+              <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
+                <h5 class="text-purple-400 font-bold mb-3">Implementation DLLs</h5>
+                <p class="text-gray-300 text-sm mb-3">São as DLLs reais que contêm a implementação:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>ucrtbase.dll (versão release)</li>
+                  <li>ucrtbased.dll (versão debug)</li>
+                  <li>msvcp140.dll (componentes C++)</li>
+                  <li>vcruntime140.dll (runtime C++)</li>
+                  <li>vcruntime140_1.dll (componentes adicionais)</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Mecanismos de Redirecionamento do UCRT</h4>
+            <p class="mb-4 text-gray-300">
+              O sistema de redirecionamento do UCRT utiliza o Windows Side-by-Side (WinSxS) para garantir que as aplicações usem as versões corretas das bibliotecas:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-2 text-left">Componente</th>
+                    <th class="p-2 text-left">Função</th>
+                    <th class="p-2 text-left">Localização</th>
+                    <th class="p-2 text-left">Versão</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2">Api-MS-Win-CRT Stub</td>
+                    <td class="p-2">Redirecionamento</td>
+                    <td class="p-2">System32 ou SysWOW64</td>
+                    <td class="p-2">10.0.10240+</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-2">UCRTBase</td>
+                    <td class="p-2">Implementação real</td>
+                    <td class="p-2">WinSxS</td>
+                    <td class="p-2">10.0.10240+</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2">Application Manifest</td>
+                    <td class="p-2">Declara dependências</td>
+                    <td class="p-2">Mesma pasta ou recursos</td>
+                    <td class="p-2">Aplicação específica</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-2">Policy Manifest</td>
+                    <td class="p-2">Redireciona versões</td>
+                    <td class="p-2">WinSxS</td>
+                    <td class="p-2">Versão específica</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Processo de Carregamento de DLLs</h4>
+            <p class="mb-4 text-gray-300">
+              Quando uma aplicação tenta carregar uma DLL do UCRT, o sistema segue um processo complexo de resolução:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Manifest Resolution:</strong> Lê o manifesto da aplicação para identificar dependências</li>
+              <li><strong>Assembly Identity:</strong> Determina a identidade exata do assembly necessário</li>
+              <li><strong>WinSxS Lookup:</strong> Localiza a implementação correta no diretório WinSxS</li>
+              <li><strong>Activation Context:</strong> Cria um contexto de ativação para isolamento</li>
+              <li><strong>Dependency Graph:</strong> Resolve todas as dependências transitivas</li>
+              <li><strong>Load Verification:</strong> Verifica integridade e assinaturas digitais</li>
+            </ul>
+            `
+        },
+        {
+            title: "Análise Profunda do Windows Side-by-Side (WinSxS) e Política de Isolamento",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              O Windows Side-by-Side (WinSxS) é o mecanismo subjacente que permite a coexistência de múltiplas versões de componentes no mesmo sistema operacional. Este sistema é fundamental para o funcionamento correto do Universal C Runtime e evita os tradicionais conflitos de versão de DLLs conhecidos como "DLL Hell".
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Estrutura do Diretório WinSxS</h4>
+            <p class="mb-4 text-gray-300">
+              O diretório WinSxS (geralmente em C:\Windows\WinSxS) armazena todas as versões de assemblies do sistema:
+            </p>
+            <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700 mb-6">
+              <pre class="text-xs text-gray-300 overflow-x-auto">
+C:\Windows\WinSxS\
+├── amd64_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9148_none_80c0a1db1bb53e4a\
+├── amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_5d84f8aa3f92f89f\
+├── x86_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9148_none_fa8f16655058a2e0\
+├── amd64_ucrtbase.xxxx_1fc8b3b9a1e18e3b_10.0.19041.546_none_xxxxxx\
+└── Manifests\
+    ├── amd64_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9148_none_80c0a1db1bb53e4a.manifest
+              </pre>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Componentes Críticos do WinSxS</h4>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-3 text-left">Componente</th>
+                    <th class="p-3 text-left">Função</th>
+                    <th class="p-3 text-left">Critérios de Identificação</th>
+                    <th class="p-3 text-left">Localização</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3">Assembly Manifest</td>
+                    <td class="p-3">Define dependências e metadados</td>
+                    <td class="p-3">Name, Version, PublicKeyToken, ProcessorArchitecture</td>
+                    <td class="p-3">WinSxS\Manifests</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3">Policy Manifest</td>
+                    <td class="p-3">Redireciona versões para compatibilidade</td>
+                    <td class="p-3">AppliesTo, RedirectOldVersion, RedirectNewVersion</td>
+                    <td class="p-3">WinSxS\Manifests</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3">Assembly Files</td>
+                    <td class="p-3">Contém os arquivos reais do componente</td>
+                    <td class="p-3">Hash SHA256, Assinatura Digital</td>
+                    <td class="p-3">Subdiretórios no WinSxS</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3">Activation Context</td>
+                    <td class="p-3">Contexto de execução isolado</td>
+                    <td class="p-3">Application-specific, Isolated</td>
+                    <td class="p-3">Temporário (runtime)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Política de Isolamento e Segurança</h4>
+            <p class="mb-4 text-gray-300">
+              O WinSxS implementa políticas de isolamento que garantem a segurança e integridade do sistema:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Integrity Checking:</strong> Verifica a integridade dos assemblies usando hashes criptográficos</li>
+              <li><strong>Digital Signature Validation:</strong> Valida as assinaturas digitais dos componentes</li>
+              <li><strong>Version Binding:</strong> Garante que as versões corretas sejam carregadas</li>
+              <li><strong>Architecture Separation:</strong> Isola componentes x86 de x64</li>
+              <li><strong>Policy Enforcement:</strong> Aplica políticas de redirecionamento de versão</li>
+            </ul>
+            `
+        },
+        {
+            title: "Soluções Avançadas e Ferramentas de Diagnóstico",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              Para profissionais de TI e desenvolvedores, existem soluções avançadas e ferramentas de diagnóstico que permitem uma análise mais profunda de problemas relacionados ao UCRT e WinSxS. Estas ferramentas ajudam a identificar problemas complexos de dependência e configuração.
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Ferramentas de Diagnóstico Avançado</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 p-5 rounded-xl border border-cyan-500/30">
+                <h5 class="text-cyan-400 font-bold mb-3">SxSTrace</h5>
+                <p class="text-gray-300 text-sm mb-3">Ferramenta oficial da Microsoft para rastrear carregamento de assemblies:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Rastreia ativação de contextos SxS</li>
+                  <li>Mostra dependências resolvidas</li>
+                  <li>Identifica falhas de carregamento</li>
+                  <li>Gera logs detalhados</li>
+                </ul>
+              </div>
+              <div class="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 p-5 rounded-xl border border-emerald-500/30">
+                <h5 class="text-emerald-400 font-bold mb-3">Process Monitor</h5>
+                <p class="text-gray-300 text-sm mb-3">Monitora acesso a arquivos e DLLs em tempo real:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Monitora tentativas de carregamento de DLL</li>
+                  <li>Registra falhas de acesso</li>
+                  <li>Mostra caminhos de pesquisa</li>
+                  <li>Identifica bloqueios de segurança</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Comandos Avançados de Diagnóstico</h4>
+            <p class="mb-4 text-gray-300">
+              Para diagnosticar problemas complexos, utilize estes comandos no Prompt de Comando como Administrador:
+            </p>
+            <div class="bg-black/30 p-4 rounded-lg border border-gray-700 mb-6">
+              <pre class="text-xs text-gray-300 overflow-x-auto">
+# Verificar integridade do sistema
+sfc /scannow
+
+# Verificar integridade da imagem do sistema
+DISM /Online /Cleanup-Image /ScanHealth
+DISM /Online /Cleanup-Image /RestoreHealth
+
+# Verificar assemblies SxS
+sxs_tracer.exe /trace:enable /output:C:\temp\sxs_trace.etl
+
+# Verificar manifestos SxS
+Get-ChildItem "C:\Windows\WinSxS\Manifests" -Filter "*ucrtbase*" -Recurse
+
+# Verificar dependências de aplicativo
+Get-AppxPackageManifest -Package &lt;PackageName&gt; # Para apps UWP
+              </pre>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Métodos de Reparo Avançado</h4>
+            <p class="mb-4 text-gray-300">
+              Para casos persistentes de problemas com UCRT, métodos avançados de reparo podem ser necessários:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-3 text-left">Método</th>
+                    <th class="p-3 text-left">Aplicação</th>
+                    <th class="p-3 text-left">Complexidade</th>
+                    <th class="p-3 text-left">Risco</th>
+                    <th class="p-3 text-left">Efetividade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3">SxS Cleanup Reset</td>
+                    <td class="p-3">Reinicialização completa do cache SxS</td>
+                    <td class="p-3">Alta</td>
+                    <td class="p-3">Alto</td>
+                    <td class="p-3 text-emerald-400">Muito Alta</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3">Manifest Reconstruction</td>
+                    <td class="p-3">Reconstrução de manifestos danificados</td>
+                    <td class="p-3">Muito Alta</td>
+                    <td class="p-3">Alto</td>
+                    <td class="p-3 text-amber-400">Alta</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3">Registry Repair</td>
+                    <td class="p-3">Correção de entradas do registro SxS</td>
+                    <td class="p-3">Média</td>
+                    <td class="p-3">Médio</td>
+                    <td class="p-3 text-emerald-400">Alta</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3">System Restore</td>
+                    <td class="p-3">Retorno a ponto anterior funcional</td>
+                    <td class="p-3">Baixa</td>
+                    <td class="p-3">Baixo</td>
+                    <td class="p-3 text-amber-400">Variável</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            `
+        },
+        {
+            title: "Implantação em Ambientes Corporativos e Scripts de Automação",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              Em ambientes corporativos, a gestão e implantação do Universal C Runtime e Visual C++ Redistributables requer planejamento estratégico e automação para garantir consistência e conformidade em centenas ou milhares de máquinas.
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Estratégias de Implantação Corporativa</h4>
+            <p class="mb-4 text-gray-300">
+              Para grandes organizações, a implantação do UCRT e Visual C++ deve seguir melhores práticas de gerenciamento de software:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-gradient-to-br from-indigo-900/20 to-purple-900/20 p-5 rounded-xl border border-indigo-500/30">
+                <h5 class="text-indigo-400 font-bold mb-3">SCCM/Intune Deployment</h5>
+                <p class="text-gray-300 text-sm mb-3">Soluções de gerenciamento de endpoints:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Criação de pacotes de instalação</li>
+                  <li>Distribuição em lote controlada</li>
+                  <li>Relatórios de conformidade</li>
+                  <li>Rollback automático em falhas</li>
+                </ul>
+              </div>
+              <div class="bg-gradient-to-br from-amber-900/20 to-yellow-900/20 p-5 rounded-xl border border-amber-500/30">
+                <h5 class="text-amber-400 font-bold mb-3">Group Policy Integration</h5>
+                <p class="text-gray-300 text-sm mb-3">Integração com políticas de grupo:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Scripts de logon para verificação</li>
+                  <li>Políticas de segurança para DLLs</li>
+                  <li>Controle de versão centralizado</li>
+                  <li>Impedir remoção acidental</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Scripts de Automação Avançada</h4>
+            <p class="mb-4 text-gray-300">
+              Exemplos de scripts PowerShell para implantação automatizada:
+            </p>
+            <div class="bg-black/30 p-4 rounded-lg border border-gray-700 mb-6">
+              <pre class="text-xs text-gray-300 overflow-x-auto">
+# Script de verificação e instalação do UCRT
+Function Install-UCRTComponents {
+    $VCRedistX86 = "vc_redist.x86.exe"
+    $VCRedistX64 = "vc_redist.x64.exe"
+    $Params = "/quiet", "/norestart", "/repair"
+    
+    # Verificar se já está instalado
+    $InstalledX86 = Get-WmiObject -Class Win32_Product | Where-Object {
+        $_.Name -like "*Microsoft Visual C++ 2015-2022*" -and $_.Vendor -eq "Microsoft Corporation" -and $_.Version -match "^14\\."
+    } | Where-Object { $_.Name -match "x86" }
+    
+    $InstalledX64 = Get-WmiObject -Class Win32_Product | Where-Object {
+        $_.Name -like "*Microsoft Visual C++ 2015-2022*" -and $_.Vendor -eq "Microsoft Corporation" -and $_.Version -match "^14\\."
+    } | Where-Object { $_.Name -match "x64" }
+    
+    # Instalar componentes faltantes
+    if (-not $InstalledX86) {
+        Write-Host "Instalando Visual C++ x86..."
+        Start-Process -FilePath $VCRedistX86 -ArgumentList $Params -Wait
+    }
+    
+    if (-not $InstalledX64) {
+        Write-Host "Instalando Visual C++ x64..."
+        Start-Process -FilePath $VCRedistX64 -ArgumentList $Params -Wait
+    }
+    
+    # Verificar integridade do sistema
+    Write-Host "Verificando integridade do sistema..."
+    sfc /scannow
+}
+
+# Executar a função
+Install-UCRTComponents
+              </pre>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Monitoramento e Conformidade</h4>
+            <p class="mb-4 text-gray-300">
+              Para garantir a conformidade contínua, implemente mecanismos de monitoramento:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Inventory Systems:</strong> Verificação regular de componentes instalados</li>
+              <li><strong>Alert Mechanisms:</strong> Alertas para máquinas com componentes ausentes</li>
+              <li><strong>Automated Remediation:</strong> Scripts de correção automática</li>
+              <li><strong>Reporting Dashboards:</strong> Painéis de conformidade organizacional</li>
+              <li><strong>Security Scanning:</strong> Verificação de assinaturas e versões válidas</li>
+            </ul>
+            `
+        }
+    ];
+
     const faqItems = [
         {
             question: "Instalei o Visual C++ mas o erro continua. O que fazer?",
@@ -480,6 +842,8 @@ Restart-Computer
         { name: "Dependency Walker Tool", url: "http://www.dependencywalker.com/" }
     ];
 
+    const additionalContentSections: { title: string; content: string }[] = [];
+
     const relatedGuides = [
         {
             href: "/guias/corrigir-dll-faltando-vcredist-directx",
@@ -508,6 +872,8 @@ Restart-Computer
         }
     ];
 
+    const allContentSections = [...contentSections, ...additionalContentSections, ...advancedContentSections];
+
     return (
         <GuideTemplate
             title={title}
@@ -517,7 +883,9 @@ Restart-Computer
             difficultyLevel="Intermediário"
             author="Equipe Técnica Voltris"
             lastUpdated="2026-01-20"
-            contentSections={contentSections}
+            contentSections={allContentSections}
+            advancedContentSections={advancedContentSections}
+            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             faqItems={faqItems}
             externalReferences={externalReferences}

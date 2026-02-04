@@ -24,7 +24,7 @@ export default function BSODFixGuide() {
         { label: "Ferramenta Principal", value: "BlueScreenView (gratuita)" },
         { label: "Ferramenta Alternativa", value: "WhoCrashed / WinDbg" },
         { label: "Tempo de Diagnóstico", value: "15-30 minutos" },
-        { label: "Dificuldade", value: "Médio" }
+        { label: "Dificuldade", value: "Intermediário" }
     ];
 
     const contentSections = [
@@ -161,7 +161,7 @@ export default function BSODFixGuide() {
             <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
                 <li>Abra o <strong>Prompt de Comando como Administrador</strong> (busque "cmd" no menu Iniciar, clique com botão direito e escolha "Executar como administrador").</li>
                 <li>Digite o comando: <code class="bg-white/10 px-2 py-1 rounded text-[#31A8FF]">sfc /scannow</code> e pressione Enter.</li>
-                <li>Aguarde (leva 10-20 minutos). O SFC vai escanear todos os arquivos do Windows e substituir os corrompidos por cópias íntegras do cache do sistema.</li>
+                <li>Aguarde (leva 10-20 minutos). O SFC vai escanhar todos os arquivos do Windows e substituir os corrompidos por cópias íntegras do cache do sistema.</li>
                 <li>Ao finalizar, você verá uma mensagem dizendo se encontrou e corrigiu problemas.</li>
             </ol>
         </div>
@@ -352,7 +352,7 @@ export default function BSODFixGuide() {
             </p>
         </div>
         <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Descubra o modelo exato da sua placa-mãe (use o HWiNFO ou olhe físicamente no componente).</li>
+            <li>Descubra o modelo exato da sua placa-mãe (use o HWiNFO ou olhe fisicamente no componente).</li>
             <li>Vá no site do fabricante (Asus, Gigabyte, MSI, etc.) e baixe a BIOS mais recente.</li>
             <li>Leia o changelog (lista de mudanças). Se mencionar correções para "BSOD" ou "stability", vale a pena atualizar.</li>
             <li>Siga o tutorial específico do fabricante. Alguns usam utilitários dentro do Windows, outros exigem pendrive bootável.</li>
@@ -459,8 +459,862 @@ export default function BSODFixGuide() {
             </p>
         </div>
       `
+        },
+        {
+            title: "Ferramentas Profissionais para Diagnóstico de BSOD",
+            content: `
+                <div class="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-6 rounded-xl border border-purple-500/30 my-6">
+                    <h4 class="text-xl font-bold text-purple-300 mb-4">Software Avançado para Análise de Crashes</h4>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">WinDbg Preview (Microsoft)</h5>
+                    <p class="text-gray-300 mb-4">
+                        A ferramenta oficial da Microsoft para análise de dumps de memória. É mais complexa que o BlueScreenView, mas oferece insights detalhados sobre o que causou o crash:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                            <h6 class="font-bold text-green-400 mb-2">Instalação</h6>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Baixe do Microsoft Store (WinDbg Preview)</li>
+                                <li>• Abra o arquivo de dump em C:\\Windows\\Minidump</li>
+                                <li>• Configure o símbolo path: SRV*C:\\Symbols*https://msdl.microsoft.com/download/symbols</li>
+                                <li>• Execute o comando "!analyze -v" para análise detalhada</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+                            <h6 class="font-bold text-green-400 mb-2">Análise Avançada</h6>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Comando "!pool [address]" para investigar pool corruption</li>
+                                <li>• Comando "!process 0 0" para ver todos os processos ativos</li>
+                                <li>• Comando "!thread 0 0" para ver todos os threads</li>
+                                <li>• Comando "!vm" para análise de memória virtual</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">WhoCrashed Professional Edition</h5>
+                    <p class="text-gray-300 mb-4">
+                        Ferramenta comercial (com versão gratuita limitada) que automatiza parte da análise de dumps:
+                    </p>
+                    
+                    <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mb-4">
+                        <ul class="text-gray-300 space-y-2">
+                            <li>• Interface gráfica intuitiva para análise de crashes</li>
+                            <li>• Detecção automática de drivers problemáticos</li>
+                            <li>• Comparação com banco de dados de problemas conhecidos</li>
+                            <li>• Relatórios detalhados com histórico de crashes</li>
+                        </ul>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Diagnóstico de Hardware Avançado",
+            content: `
+                <div class="bg-gradient-to-r from-indigo-900/20 to-purple-900/20 p-6 rounded-xl border border-indigo-500/30 my-6">
+                    <h4 class="text-xl font-bold text-indigo-300 mb-4">Testes Profissionais para Componentes de Hardware</h4>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">Teste de Fonte de Alimentação</h5>
+                    <p class="text-gray-300 mb-4">
+                        A fonte de alimentação é frequentemente negligenciada como causa de telas azuis, mas pode ser a culpada:
+                    </p>
+                    
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full border-collapse border border-gray-700 text-sm">
+                            <thead>
+                                <tr class="bg-gray-800">
+                                    <th class="border border-gray-700 px-4 py-2 text-left">Componente</th>
+                                    <th class="border border-gray-700 px-4 py-2 text-left">Problema Comum</th>
+                                    <th class="border border-gray-700 px-4 py-2 text-left">Sintoma</th>
+                                    <th class="border border-gray-700 px-4 py-2 text-left">Solução</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-gray-800/50">
+                                    <td class="border border-gray-700 px-4 py-2">+12V (PCIe)</td>
+                                    <td class="border border-gray-700 px-4 py-2">Queda de tensão</td>
+                                    <td class="border border-gray-700 px-4 py-2">VIDEO_TDR_FAILURE</td>
+                                    <td class="border border-gray-700 px-4 py-2">Substituir fonte com potência adequada</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-700 px-4 py-2">+5V (SATA)</td>
+                                    <td class="border border-gray-700 px-4 py-2">Flutuação</td>
+                                    <td class="border border-gray-700 px-4 py-2">PAGE_FAULT_IN_NONPAGED_AREA</td>
+                                    <td class="border border-gray-700 px-4 py-2">Testar com multímetro ou substituir</td>
+                                </tr>
+                                <tr class="bg-gray-800/50">
+                                    <td class="border border-gray-700 px-4 py-2">+3.3V (Chipset)</td>
+                                    <td class="border border-gray-700 px-4 py-2">Instabilidade</td>
+                                    <td class="border border-gray-700 px-4 py-2">SYSTEM_THREAD_EXCEPTION_NOT_HANDLED</td>
+                                    <td class="border border-gray-700 px-4 py-2">Substituir fonte ou testar com multímetro</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">Teste de Placa-Mãe e CPU</h5>
+                    <p class="text-gray-300 mb-4">
+                        Problemas na placa-mãe ou CPU podem causar telas azuis específicas:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
+                            <h6 class="font-bold text-blue-400 mb-2">CPU Tests:</h6>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Use Prime95 para stress test da CPU</li>
+                                <li>• Teste de 30 minutos no modo Blend</li>
+                                <li>• Monitore temperatura com HWiNFO64</li>
+                                <li>• Se ocorrer crash, pode indicar problema de CPU ou térmica</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
+                            <h6 class="font-bold text-blue-400 mb-2">Motherboard Tests:</h6>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Verifique capacitores inchados</li>
+                                <li>• Teste slots de RAM individualmente</li>
+                                <li>• Verifique conectores SATA/M.2</li>
+                                <li>• Atualize BIOS para última versão estável</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Análise de Eventos do Sistema",
+            content: `
+                <div class="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 p-6 rounded-xl border border-cyan-500/30 my-6">
+                    <h4 class="text-xl font-bold text-cyan-300 mb-4">Log de Eventos para Identificação de Padrões</h4>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">Usando o Visualizador de Eventos</h5>
+                    <p class="text-gray-300 mb-4">
+                        O Windows registra eventos antes e após telas azuis que podem revelar padrões:
+                    </p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-green-500 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-xs font-bold text-white">1</span>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-green-400">Abrindo o Visualizador de Eventos</h6>
+                                <p class="text-sm text-gray-300">Pressione Win+R, digite "eventvwr.msc" e pressione Enter</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-green-500 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-xs font-bold text-white">2</span>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-green-400">Navegando para Logs Críticos</h6>
+                                <p class="text-sm text-gray-300">Vá para "Windows Logs" → "System" e filtre por "Critical" e "Error"</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-green-500 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-1">
+                                <span class="text-xs font-bold text-white">3</span>
+                            </div>
+                            <div>
+                                <h6 class="font-bold text-green-400">Identificando Padrões</h6>
+                                <p class="text-sm text-gray-300">Procure eventos 1001 (Kernel-Power) e 41 (Kernel-Power) que ocorrem antes do BSOD</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">Event IDs Relevantes</h5>
+                    <p class="text-gray-300 mb-4">
+                        Eventos específicos que precedem telas azuis:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
+                            <h6 class="font-bold text-red-400 mb-2">Event ID 1001</h6>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Indica que o Windows detectou um problema de integridade</li>
+                                <li>• Normalmente precede telas azuis de hardware</li>
+                                <li>• Pode indicar corrupção de memória ou falha de driver</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
+                            <h6 class="font-bold text-blue-400 mb-2">Event ID 41</h6>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Sistema desligou inesperadamente</li>
+                                <li>• Confirma que houve um crash real (não apenas reinício)</li>
+                                <li>• Útil para distinguir BSOD de outros tipos de falhas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            title: "Prevenção Proativa e Monitoramento Contínuo",
+            content: `
+                <div class="bg-gradient-to-r from-orange-900/20 to-red-900/20 p-6 rounded-xl border border-orange-500/30 my-6">
+                    <h4 class="text-xl font-bold text-orange-300 mb-4">Sistema de Monitoramento para Prevenir BSODs</h4>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">Monitoramento de Hardware</h5>
+                    <p class="text-gray-300 mb-4">
+                        Ferramentas para monitoramento contínuo e alerta precoce de problemas:
+                    </p>
+                    
+                    <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700 mb-6">
+                        <h6 class="font-bold text-yellow-400 mb-3">Soluções de Monitoramento:</h6>
+                        <ul class="text-gray-300 space-y-2">
+                            <li>• <strong>HWiNFO64:</strong> Monitoramento em tempo real de temperaturas, voltagens e fans</li>
+                            <li>• <strong>Core Temp:</strong> Monitoramento específico de CPU com alertas personalizados</li>
+                            <li>• <strong>GPU-Z:</strong> Monitoramento de GPU com log de dados</li>
+                            <li>• <strong>CrystalDiskInfo:</strong> Monitoramento de saúde de SSD/HDD</li>
+                        </ul>
+                    </div>
+                    
+                    <h5 class="text-lg font-semibold text-white mt-6 mb-3">Configurações de Alerta</h5>
+                    <p class="text-gray-300 mb-4">
+                        Configurações recomendadas para alertas de hardware:
+                    </p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse border border-gray-700 text-sm">
+                            <thead>
+                                <tr class="bg-gray-800">
+                                    <th class="border border-gray-700 px-4 py-2 text-left">Componente</th>
+                                    <th class="border border-gray-700 px-4 py-2 text-left">Limite de Alerta</th>
+                                    <th class="border border-gray-700 px-4 py-2 text-left">Ação Recomendada</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-gray-800/50">
+                                    <td class="border border-gray-700 px-4 py-2">CPU Temperature</td>
+                                    <td class="border border-gray-700 px-4 py-2">Acima de 80°C</td>
+                                    <td class="border border-gray-700 px-4 py-2">Verificar pasta térmica e airflow</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-700 px-4 py-2">GPU Temperature</td>
+                                    <td class="border border-gray-700 px-4 py-2">Acima de 85°C</td>
+                                    <td class="border border-gray-700 px-4 py-2">Limpar cooler e verificar thermal paste</td>
+                                </tr>
+                                <tr class="bg-gray-800/50">
+                                    <td class="border border-gray-700 px-4 py-2">SSD NVMe Temperature</td>
+                                    <td class="border border-gray-700 px-4 py-2">Acima de 70°C</td>
+                                    <td class="border border-gray-700 px-4 py-2">Verificar heatsink e airflow do gabinete</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-700 px-4 py-2">VRM Temperature</td>
+                                    <td class="border border-gray-700 px-4 py-2">Acima de 100°C</td>
+                                    <td class="border border-gray-700 px-4 py-2">Reduzir overclock ou melhorar refrigeração</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `
         }
     ];
+
+    const advancedContentSections = [
+    {
+      title: "Análise Profunda de Dumps de Memória e Depuração Avançada", 
+      content: `
+        <h4 class="text-white font-bold mb-3">🔬 Análise Técnica de Arquivos de Dump</h4>
+        <p class="mb-4 text-gray-300">
+          Para profissionais de suporte técnico e engenheiros de sistema, a análise detalhada de arquivos de dump permite identificar causas raiz de problemas complexos de estabilidade do sistema:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-2">Ferramentas de Análise</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• WinDbg (Windows Debugger)</li>
+              <li>• BlueScreenView (NirSoft)</li>
+              <li>• WhoCrashed (Beta Solutions)</li>
+              <li>• Crash Dump Analyzer (Sysinternals)</li>
+              <li>• dumpwin (Linux alternative)</li>
+              <li>• Volatility (Memory Forensics)</li>
+            </ul>
+          </div>
+          
+          <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
+            <h5 class="text-purple-400 font-bold mb-2">Comandos Essenciais</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• !analyze -v (análise detalhada)</li>
+              <li>• lm (listar módulos carregados)</li>
+              <li>• !pool [address] (análise de pool)</li>
+              <li>• !process 0 0 (todos os processos)</li>
+              <li>• !thread 0 0 (todos os threads)</li>
+              <li>• kb (stack trace)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">📊 Processo de Análise de Dump</h4>
+        <p class="mb-4 text-gray-300">
+          O processo sistemático para análise de dumps de memória:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Etapa</th>
+                <th class="p-3 text-left">Descrição</th>
+                <th class="p-3 text-left">Ferramenta</th>
+                <th class="p-3 text-left">Resultado Esperado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">1</td>
+                <td class="p-3">Coleta de Dumps</td>
+                <td class="p-3">Windows Crash Dumps</td>
+                <td class="p-3">Arquivos .dmp em C:\Windows\Minidump</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">2</td>
+                <td class="p-3">Configuração de Símbolos</td>
+                <td class="p-3">WinDbg</td>
+                <td class="p-3">Path: SRV*C:\Symbols*https://msdl.microsoft.com/download/symbols</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">3</td>
+                <td class="p-3">Análise Inicial</td>
+                <td class="p-3">!analyze -v</td>
+                <td class="p-3">Identificação do driver culpado</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">4</td>
+                <td class="p-3">Análise de Stack</td>
+                <td class="p-3">kb, !thread</td>
+                <td class="p-3">Sequência de chamadas que levaram ao crash</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">5</td>
+                <td class="p-3">Validação de Driver</td>
+                <td class="p-3">Driver Verifier</td>
+                <td class="p-3">Teste de estabilidade do driver problemático</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
+          <p class="text-sm text-gray-300">
+            A análise de dumps de memória requer compreensão profunda da arquitetura do kernel do Windows. Os dumps contêm cópias da memória do kernel no momento do crash, permitindo aos engenheiros rever o estado exato do sistema e identificar condições de corrida, falhas de acesso à memória ou problemas de sincronização que levaram à tela azul.
+          </p>
+        </div>
+      `
+    },
+    {
+      title: "Técnicas Avançadas de Diagnóstico de Hardware e Monitoramento Proativo",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔧 Diagnóstico de Hardware com Ferramentas Profissionais</h4>
+        <p class="mb-4 text-gray-300">
+          Diagnóstico preciso de hardware requer ferramentas especializadas e metodologias sistemáticas para isolar componentes problemáticos:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Componente</th>
+                <th class="p-3 text-left">Ferramenta Profissional</th>
+                <th class="p-3 text-left">Teste Específico</th>
+                <th class="p-3 text-left">Indicador de Falha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">RAM</td>
+                <td class="p-3">Memtest86+ / RDTSC</td>
+                <td class="p-3">Teste de memória com 13 algoritmos</td>
+                <td class="p-3">Erros ECC, falhas de paridade, problemas de timing</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">CPU</td>
+                <td class="p-3">Prime95 / Linpack / AIDA64</td>
+                <td class="p-3">Stress test vetorial</td>
+                <td class="p-3">Superaquecimento, instabilidade de cache, falhas de execução</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">GPU</td>
+                <td class="p-3">FurMark / Unigine Heaven / OCCT</td>
+                <td class="p-3">Stress test de shader e memória</td>
+                <td class="p-3">Falhas de renderização, artefatos, throttling térmico</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Fonte</td>
+                <td class="p-3">Multímetro / Osciloscópio / Power Supply Tester</td>
+                <td class="p-3">Teste de ripple e tensão sob carga</td>
+                <td class="p-3">Queda de tensão, ripple excessivo, falha sob carga</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">SSD/HDD</td>
+                <td class="p-3">CrystalDiskInfo / HD Tune / Victoria</td>
+                <td class="p-3">Leitura de SMART e scan de superfície</td>
+                <td class="p-3">Bad sectors, falhas de leitura, degradação de NAND</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🌡️ Monitoramento Proativo de Hardware</h4>
+        <p class="mb-4 text-gray-300">
+          Monitoramento contínuo permite identificar problemas antes que causem falhas catastróficas:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
+            <h5 class="text-green-400 font-bold mb-2">Temperatura</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>CPU: < 80°C em carga</li>
+              <li>GPU: < 85°C em carga</li>
+              <li>SSD: < 70°C em uso</li>
+              <li>VRM: < 90°C em carga</li>
+            </ul>
+          </div>
+          
+          <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-2">Voltagem</h5>
+            <li class="text-sm text-gray-300 space-y-1">
+              <li>+12V: ±5% da nominal</li>
+              <li>+5V: ±5% da nominal</li>
+              <li>+3.3V: ±5% da nominal</li>
+              <li>DDR4: 1.2V ±0.06V</li>
+            </li>
+          </div>
+          
+          <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
+            <h5 class="text-indigo-400 font-bold mb-2">Desempenho</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>Utilização: < 90%</li>
+              <li>Latência de RAM: < 80ns</li>
+              <li>Velocidade do disco: >80% da nominal</li>
+              <li>Fan RPM: >50% da nominal</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Prevenção de Falhas de Hardware</h4>
+        <p class="mb-4 text-gray-300">
+          Estratégias proativas para evitar problemas de hardware:
+        </p>
+        
+        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+          <li>Limpeza preventiva a cada 6 meses para remover poeira e manter fluxo de ar ideal</li>
+          <li>Substituição preventiva de componentes após 3-5 anos de uso intenso</li>
+          <li>Monitoramento contínuo com alertas configurados para limites críticos</li>
+          <li>Backup regular de dados críticos antes que falhas ocorram</li>
+          <li>Atualização de firmware de SSDs, placas-mãe e GPUs para corrigir bugs</li>
+          <li>Testes de carga periódicos para validar estabilidade do sistema</li>
+        </ul>
+      `
+    },
+    {
+      title: "Arquitetura de Estabilidade do Sistema e Recursos de Recuperação do Windows",
+      content: `
+        <h4 class="text-white font-bold mb-3">🏗️ Arquitetura de Estabilidade do Kernel do Windows</h4>
+        <p class="mb-4 text-gray-300">
+          O kernel do Windows implementa múltiplas camadas de proteção para detectar e responder a condições de erro crítico:
+        </p>
+        
+        <h4 class="text-white font-bold mb-3">Componentes de Proteção do Sistema</h4>
+        <p class="mb-4 text-gray-300">
+          Arquitetura de proteção implementada no kernel do Windows:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Componente</th>
+                <th class="p-3 text-left">Função</th>
+                <th class="p-3 text-left">Mecanismo de Proteção</th>
+                <th class="p-3 text-left">Versão de Implementação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Kernel Executive</td>
+                <td class="p-3">Gerenciamento de recursos do sistema</td>
+                <td class="p-3">Memory Protection, Pool Tracking</td>
+                <td class="p-3">Windows NT 3.1+</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Hardware Abstraction Layer (HAL)</td>
+                <td class="p-3">Interface com hardware</td>
+                <td class="p-3">Hardware Error Handling</td>
+                <td class="p-3">Windows NT 3.1+</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Driver Verifier</td>
+                <td class="p-3">Detecção de erros em drivers</td>
+                <td class="p-3">Fault Injection, Deadlock Detection</td>
+                <td class="p-3">Windows 2000+</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Kernel Patch Protection (PatchGuard)</td>
+                <td class="p-3">Proteção contra modificações ilegais</td>
+                <td class="p-3">Signature Verification, Randomization</td>
+                <td class="p-3">Windows XP SP2+</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Code Integrity (CI)</td>
+                <td class="p-3">Verificação de assinaturas de código</td>
+                <td class="p-3">Driver Signing Enforcement</td>
+                <td class="p-3">Windows Vista+</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Hypervisor-Enforced Code Integrity (HVCI)</td>
+                <td class="p-3">Execução segura de drivers</td>
+                <td class="p-3">Microvisor-based Validation</td>
+                <td class="p-3">Windows 10 TH2+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔄 Recursos de Recuperação do Windows</h4>
+        <p class="mb-4 text-gray-300">
+          O Windows oferece múltiplos mecanismos de recuperação após falhas:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-red-900/10 p-4 rounded-lg border border-red-500/20">
+            <h5 class="text-red-400 font-bold mb-2">Recuperação Automática</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>Automatic Repair (WinRE)</li>
+              <li>Startup Repair</li>
+              <li>System File Checker (SFC)</li>
+              <li>Deployment Image Servicing (DISM)</li>
+              <li>Memory Diagnostic</li>
+              <li>Boot Configuration Data (BCD) Repair</li>
+            </ul>
+          </div>
+          
+          <div class="bg-yellow-900/10 p-4 rounded-lg border border-yellow-500/20">
+            <h5 class="text-yellow-400 font-bold mb-2">Recuperação Manual</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>Safe Mode Boot Options</li>
+              <li>Command Prompt Recovery</li>
+              <li>System Restore Points</li>
+              <li>Windows Recovery Environment (WinRE)</li>
+              <li>Installation Media Recovery</li>
+              <li>Driver Rollback Features</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mt-6">
+          <h4 class="text-blue-400 font-bold mb-2">🔬 Tendências Futuras em Estabilidade de Sistemas</h4>
+          <p class="text-sm text-gray-300">
+            A próxima geração de sistemas operacionais está implementando técnicas avançadas de detecção de falhas, incluindo inteligência artificial para prever falhas antes que ocorram, virtualização leve para isolamento de drivers instáveis, e mecanismos de auto-recuperação que podem restaurar componentes críticos em tempo de execução sem interromper o sistema.
+          </p>
+        </div>
+      `
+    }
+  ];
+
+    const additionalContentSections = [
+    {
+      title: "Driver Verifier: Ferramenta Profissional para Detecção de Problemas",
+      content: `
+        <h4 class="text-white font-bold mb-3">🛡️ Utilização do Driver Verifier para Diagnóstico Profundo</h4>
+        <p class="mb-4 text-gray-300">
+          O Driver Verifier é uma ferramenta poderosa do Windows que força drivers a seguir regras rígidas de programação, ajudando a identificar problemas que normalmente não apareceriam:
+        </p>
+        
+        <h4 class="text-white font-bold mb-3">Configuração do Driver Verifier</h4>
+        <p class="mb-4 text-gray-300">
+          Passos para configurar o Driver Verifier para testes específicos:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-2">Opções Básicas</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Standard Verification (padrão)</li>
+              <li>• Pool Tracking (rastrear alocação de memória)</li>
+              <li>• IRP Logging (rastrear requisições de E/S)</li>
+              <li>• Descriptor Checking (verificar descritores)</li>
+              <li>• I/O Verification (verificar operações de E/S)</li>
+              <li>• Deadlock Detection (detectar deadlocks)</li>
+            </ul>
+          </div>
+          
+          <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
+            <h5 class="text-purple-400 font-bold mb-2">Opções Avançadas</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Force IRQL Checking (verificar níveis de interrupção)</li>
+              <li>• MINIPORT Verification (para drivers de rede)</li>
+              <li>• DMA Verification (verificar acesso direto à memória)</li>
+              <li>• Security Check (verificar permissões de acesso)</li>
+              <li>• Signature Level Verification (verificar assinaturas)</li>
+              <li>• Randomized Delay Testing (testar sob condições variáveis)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔧 Procedimento de Teste com Driver Verifier</h4>
+        <p class="mb-4 text-gray-300">
+          Como usar o Driver Verifier para identificar drivers problemáticos:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Etapa</th>
+                <th class="p-3 text-left">Comando/Ação</th>
+                <th class="p-3 text-left">Objetivo</th>
+                <th class="p-3 text-left">Resultado Esperado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">1</td>
+                <td class="p-3">verifier /standard /driver [nome_do_driver.sys]</td>
+                <td class="p-3">Configurar verificação padrão</td>
+                <td class="p-3">Driver monitorado com verificações básicas</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">2</td>
+                <td class="p-3">Reiniciar o sistema</td>
+                <td class="p-3">Aplicar configurações do verifier</td>
+                <td class="p-3">Sistema inicia com driver sob verificação</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">3</td>
+                <td class="p-3">Usar o sistema normalmente</td>
+                <td class="p-3">Submeter o driver a operações normais</td>
+                <td class="p-3">Capturar possíveis violações de segurança</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">4</td>
+                <td class="p-3">Ocorre BSOD ou evento de erro</td>
+                <td class="p-3">Verifier detecta problema no driver</td>
+                <td class="p-3">Identificação precisa do driver problemático</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">5</td>
+                <td class="p-3">verifier /reset</td>
+                <td class="p-3">Desativar verificação</td>
+                <td class="p-3">Sistema retorna ao normal</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">⚠️ Aviso Importante</h4>
+          <p class="text-sm text-gray-300">
+            O Driver Verifier pode tornar o sistema instável propositalmente para detectar problemas. Use apenas em sistemas de teste ou quando outros métodos de diagnóstico falharam. Nunca use em sistemas de produção críticos sem backup adequado.
+          </p>
+        </div>
+      `
+    },
+    {
+      title: "Análise Forense de Incidentes de Sistema e Recuperação de Dados",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔍 Análise Forense após Falhas Críticas do Sistema</h4>
+        <p class="mb-4 text-gray-300">
+          Após falhas críticas como telas azuis repetidas, é importante realizar uma análise forense para entender a causa raiz e prevenir recorrência:
+        </p>
+        
+        <h4 class="text-white font-bold mb-3">Processo de Análise Forense</h4>
+        <p class="mb-4 text-gray-300">
+          Etapas sistemáticas para investigação de falhas críticas:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
+            <h5 class="text-green-400 font-bold mb-2">Coleta de Evidências</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>Arquivos de dump do kernel</li>
+              <li>Logs do sistema e eventos</li>
+              <li>Configurações do BIOS/UEFI</li>
+              <li>Informações de hardware</li>
+            </ul>
+          </div>
+          
+          <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-2">Análise Técnica</h5>
+            <li class="text-sm text-gray-300 space-y-1">
+              <li>Análise de dumps com WinDbg</li>
+              <li>Verificação de integridade de arquivos</li>
+              <li>Testes de hardware</li>
+              <li>Revisão de drivers instalados</li>
+            </li>
+          </div>
+          
+          <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
+            <h5 class="text-indigo-400 font-bold mb-2">Relatório e Ações</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>Identificação da causa raiz</li>
+              <li>Recomendações de correção</li>
+              <li>Plano de prevenção</li>
+              <li>Implementação de soluções</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">💾 Recuperação de Dados após Falhas</h4>
+        <p class="mb-4 text-gray-300">
+          Procedimentos para recuperação de dados após falhas críticas:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Método</th>
+                <th class="p-3 text-left">Ferramenta</th>
+                <th class="p-3 text-left">Tipo de Falha</th>
+                <th class="p-3 text-left">Taxa de Sucesso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Recuperação de Volume</td>
+                <td class="p-3">TestDisk</td>
+                <td class="p-3">Tabela de partição corrompida</td>
+                <td class="p-3">85-95%</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Recuperação de Arquivos</td>
+                <td class="p-3">PhotoRec</td>
+                <td class="p-3">Arquivos excluídos ou corrompidos</td>
+                <td class="p-3">70-85%</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Imagem de Disco</td>
+                <td class="p-3">dd, ddrescue</td>
+                <td class="p-3">Falha física de disco</td>
+                <td class="p-3">60-80%</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Recuperação de RAM</td>
+                <td class="p-3">WinHex, FTK Imager</td>
+                <td class="p-3">Dados voláteis após falha</td>
+                <td class="p-3">20-40% (tempo crítico)</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Recuperação de Registro</td>
+                <td class="p-3">Registry Recon</td>
+                <td class="p-3">Corrupção do registro do sistema</td>
+                <td class="p-3">75-90%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <p class="text-sm text-gray-300 italic mb-6">
+          *Taxas de sucesso variam com a extensão da corrupção e tempo decorrido desde a falha.
+        </p>
+      `
+    },
+    {
+      title: "Considerações Legais, Éticas e de Segurança em Diagnóstico de Sistemas",
+      content: `
+        <h4 class="text-white font-bold mb-3">⚖️ Aspectos Legais e Éticos em Diagnóstico de Sistemas</h4>
+        <p class="mb-4 text-gray-300">
+          O diagnóstico e reparo de sistemas computacionais envolve considerações legais e éticas importantes, especialmente quando se trata de sistemas corporativos ou de clientes:
+        </p>
+        
+        <h4 class="text-white font-bold mb-3">Responsabilidades Legais do Técnico</h4>
+        <p class="mb-4 text-gray-300">
+          Principais obrigações legais ao diagnosticar e reparar sistemas:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Área</th>
+                <th class="p-3 text-left">Responsabilidade</th>
+                <th class="p-3 text-left">Consequência de Não Cumprimento</th>
+                <th class="p-3 text-left">Norma Aplicável</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Privacidade de Dados</td>
+                <td class="p-3">Não acessar dados pessoais desnecessários ao diagnóstico</td>
+                <td class="p-3">Multas e ações judiciais</td>
+                <td class="p-3">LGPD, GDPR</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Segurança da Informação</td>
+                <td class="p-3">Proteger dados durante o diagnóstico</td>
+                <td class="p-3">Violação de segurança</td>
+                <td class="p-3">ISO 27001, NIST</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Consentimento</td>
+                <td class="p-3">Obter permissão para procedimentos de diagnóstico</td>
+                <td class="p-3">Ações legais por invasão de privacidade</td>
+                <td class="p-3">Legislação de proteção ao consumidor</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Confidencialidade</td>
+                <td class="p-3">Manter segredo sobre informações empresariais</td>
+                <td class="p-3">Quebra de contrato e processos</td>
+                <td class="p-3">Contratos de confidencialidade</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Documentação</td>
+                <td class="p-3">Registrar todas as ações realizadas</td>
+                <td class="p-3">Falta de responsabilidade e auditoria</td>
+                <td class="p-3">Normas de governança de TI</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔒 Práticas de Segurança Durante Diagnóstico</h4>
+        <p class="mb-4 text-gray-300">
+          Medidas de segurança para proteger sistemas durante diagnóstico:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-red-900/10 p-4 rounded-lg border border-red-500/20">
+            <h5 class="text-red-400 font-bold mb-2">Proteção de Dados</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>Isolamento de rede durante diagnóstico</li>
+              <li>Uso de ambientes sandbox para testes</li>
+              <li>Restrição de acesso a dados sensíveis</li>
+              <li>Criptografia de dados em trânsito</li>
+              <li>Registro de todas as ações realizadas</li>
+              <li>Descarte seguro de informações temporárias</li>
+            </ul>
+          </div>
+          
+          <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
+            <h5 class="text-green-400 font-bold mb-2">Ética Profissional</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>Transparência sobre limitações do diagnóstico</li>
+              <li>Revelação honesta de problemas encontrados</li>
+              <li>Respeito à propriedade intelectual do cliente</li>
+              <li>Recomendações baseadas em necessidades reais</li>
+              <li>Manutenção de competência técnica atualizada</li>
+              <li>Evitar conflitos de interesse</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mt-6">
+          <h4 class="text-blue-400 font-bold mb-2">💡 Melhores Práticas para Técnicos</h4>
+          <p class="text-sm text-gray-300">
+            Ao diagnosticar e reparar sistemas, sempre documente suas ações, obtenha consentimento prévio para procedimentos invasivos, evite acessar dados desnecessários ao diagnóstico, e mantenha-se atualizado sobre as normas legais e éticas aplicáveis à sua jurisdição. A transparência e o respeito à privacidade do cliente são fundamentais para manter uma relação profissional de confiança.
+          </p>
+        </div>
+      `
+    }
+  ];
 
     const faqItems = [
         {
@@ -542,10 +1396,14 @@ export default function BSODFixGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="30 min"
-            difficultyLevel="Médio"
+            estimatedTime="45 min"
+            difficultyLevel="Avançado"
             contentSections={contentSections}
+            advancedContentSections={advancedContentSections}
+            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
             relatedGuides={relatedGuides}
         />
     );

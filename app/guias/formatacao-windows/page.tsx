@@ -418,6 +418,260 @@ export default function FormatWindowsGuide() {
     }
   ];
 
+  const advancedTips = [
+    {
+      title: "Otimização Avançada de SSD Após Formatação",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔧 Configurações Críticas para SSDs</h4>
+        <p class="text-gray-300 mb-4">
+          Após formatar e instalar o Windows em um SSD, é crucial garantir que as otimizações adequadas estejam ativadas para manter o desempenho máximo e prolongar a vida útil do dispositivo.
+        </p>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2">1. Verificação de Alinhamento de Partições</h5>
+        <p class="text-gray-300 mb-3">
+          O alinhamento de partição correto é fundamental para o desempenho de SSDs. Partições mal alinhadas podem causar degradação significativa de performance. O Windows 11, por padrão, cria partições alinhadas corretamente, mas é bom verificar:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Abra o Prompt de Comando como Administrador</li>
+          <li>Execute: <code class="bg-white/10 px-2 py-1 rounded">wmic partition get BlockSize, StartingOffset, Size</code></li>
+          <li>Verifique se StartingOffset é divisível por 4096 (4KB), o tamanho típico de bloco de SSD</li>
+        </ol>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2 mt-4">2. Ativação do TRIM Automático</h5>
+        <p class="text-gray-300 mb-3">
+          O comando TRIM informa ao SSD quais blocos de dados não estão mais em uso e podem ser apagados internamente. Isso melhora o desempenho e a vida útil:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Abra o Prompt de Comando como Administrador</li>
+          <li>Execute: <code class="bg-white/10 px-2 py-1 rounded">fsutil behavior query DisableDeleteNotify</code></li>
+          <li>Se retornar 0, o TRIM está habilitado (correto). Se retornar 1, execute: <code class="bg-white/10 px-2 py-1 rounded">fsutil behavior set DisableDeleteNotify 0</code></li>
+        </ol>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2 mt-4">3. Desfragmentação e Otimização</h5>
+        <p class="text-gray-300 mb-3">
+          Diferente de discos rígidos, SSDs NÃO devem ser desfragmentados. O Windows 11 reconhece automaticamente SSDs e desativa a desfragmentação para eles, mas você pode verificar:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Abra "Otimização e desfragmentação de unidades"</li>
+          <li>Verifique que SSDs aparecem como "Otimizado" e não "Desfragmentado"</li>
+          <li>O Windows executa automaticamente operações de otimização leves para SSDs (menos intrusivas que desfragmentação)</li>
+        </ol>
+      `
+    },
+    {
+      title: "Configurações de Energia para Máximo Desempenho",
+      content: `
+        <h4 class="text-white font-bold mb-3">⚡ Plano de Energia Ideal Após Formatação</h4>
+        <p class="text-gray-300 mb-4">
+          O plano de energia pode afetar significativamente o desempenho do seu PC, especialmente após formatação quando tudo está limpo e otimizado.
+        </p>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2">1. Configuração do Plano de Alto Desempenho</h5>
+        <p class="text-gray-300 mb-3">
+          Após formatar, configure o plano de energia para desempenho máximo:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Pressione Win + R, digite <code class="bg-white/10 px-2 py-1 rounded">powercfg.cpl</code> e pressione Enter</li>
+          <li>Selecione "Alto desempenho" ou crie um plano personalizado baseado nele</li>
+          <li>Personalize as configurações avançadas:
+            <ul class="list-disc ml-8 mt-2 space-y-1">
+              <li>Desligamento da tela: Nunca (ou tempo longo)</li>
+              <li>Modo de suspensão: Nunca</li>
+              <li>Processador: Estado mínimo de energia 100%, estado máximo 100%</li>
+              <li>Sistema: Permitir que o computador desligue o hibernar: Não</li>
+            </ul>
+          </li>
+        </ol>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2 mt-4">2. Configurações Específicas para Gamers</h5>
+        <p class="text-gray-300 mb-3">
+          Para gamers ou usuários que exigem máximo desempenho:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Desative o Gerenciamento de Energia da GPU (nas configurações da placa de vídeo)</li>
+          <li>Configure o processador para sempre rodar na frequência máxima</li>
+          <li>Desative economia de energia em dispositivos USB e outros componentes</li>
+        </ol>
+      `
+    },
+    {
+      title: "Hardening de Segurança Pós-Instalação",
+      content: `
+        <h4 class="text-white font-bold mb-3">🛡️ Medidas de Segurança Essenciais</h4>
+        <p class="text-gray-300 mb-4">
+          Após formatar e instalar o Windows limpo, é o momento ideal para implementar medidas de segurança avançadas.
+        </p>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2">1. Configurações de Privacidade do Windows 11</h5>
+        <p class="text-gray-300 mb-3">
+          O Windows 11 coleta dados de uso por padrão. Configure para maior privacidade:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Configurações → Privacidade e Segurança → Diagnóstico e feedback</li>
+          <li>Defina nível de diagnóstico para "Básico" ou "Nenhum"</li>
+          <li>Desative "Melhoria de entrada e assistência por voz"</li>
+          <li>Desative "Publicidade ID" em "Outras experiências"</li>
+          <li>Desative acesso de apps a câmera, microfone e localização (a menos que necessário)</li>
+        </ol>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2 mt-4">2. Configurações de Firewall e Proteção de Rede</h5>
+        <p class="text-gray-300 mb-3">
+          O Windows Defender Firewall é robusto, mas pode ser ajustado para proteção mais granular:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Abra wf.msc para acessar as regras avançadas de firewall</li>
+          <li>Configure regras de saída para monitorar conexões de aplicativos</li>
+          <li>Desative compartilhamento de rede (SMB) se não for necessário</li>
+          <li>Habilite o modo de auditoria para monitorar tentativas de acesso</li>
+        </ol>
+      `
+    }
+  ];
+
+  const benchmarks = [
+    {
+      label: "Velocidade de Inicialização",
+      value: "SSD NVMe: 10-15s | SSD SATA: 15-25s | HD: 45-90s",
+      description: "Tempo médio para iniciar o Windows e chegar à área de trabalho"
+    },
+    {
+      label: "Desempenho de Leitura/Escrita",
+      value: "NVMe Gen4: 5000-7000 MB/s | SATA III: 500-600 MB/s",
+      description: "Performance esperada após formatação e instalação correta"
+    },
+    {
+      label: "Uso de RAM em Idle",
+      value: "Windows 11 limpo: 1.5-2.5 GB",
+      description: "Consumo de memória RAM após inicialização limpa"
+    },
+    {
+      label: "CPU Utilização em Repouso",
+      value: "2-5% em modo ocioso",
+      description: "Percentual de uso da CPU após formatação e configuração"
+    }
+  ];
+
+  const additionalContentSections = [
+    {
+      title: "Comparativo Técnico: Windows 10 vs 11 Após Formatação",
+      content: `
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse border border-gray-700">
+            <thead>
+              <tr class="bg-gray-800">
+                <th class="border border-gray-700 px-4 py-2 text-left">Característica</th>
+                <th class="border border-gray-700 px-4 py-2 text-left">Windows 10</th>
+                <th class="border border-gray-700 px-4 py-2 text-left">Windows 11</th>
+                <th class="border border-gray-700 px-4 py-2 text-left">Análise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-gray-800/50">
+                <td class="border border-gray-700 px-4 py-2">Requisitos Mínimos</td>
+                <td class="border border-gray-700 px-4 py-2">1GHz, 4GB RAM, 64GB</td>
+                <td class="border border-gray-700 px-4 py-2">1GHz, 4GB RAM, 64GB + TPM 2.0</td>
+                <td class="border border-gray-700 px-4 py-2">Win11 tem requisitos mais rígidos</td>
+              </tr>
+              <tr class="hover:bg-gray-800/50">
+                <td class="border border-gray-700 px-4 py-2">Desempenho SSD</td>
+                <td class="border border-gray-700 px-4 py-2">Bom suporte</td>
+                <td class="border border-gray-700 px-4 py-2">Otimizações nativas para NVMe</td>
+                <td class="border border-gray-700 px-4 py-2">Win11 explora melhor SSDs modernos</td>
+              </tr>
+              <tr class="hover:bg-gray-800/50">
+                <td class="border border-gray-700 px-4 py-2">Suporte a Jogos</td>
+                <td class="border border-gray-700 px-4 py-2">DirectX 12</td>
+                <td class="border border-gray-700 px-4 py-2">DirectX 12 Ultimate + Auto HDR</td>
+                <td class="border border-gray-700 px-4 py-2">Win11 oferece mais recursos para gaming</td>
+              </tr>
+              <tr class="hover:bg-gray-800/50">
+                <td class="border border-gray-700 px-4 py-2">Segurança</td>
+                <td class="border border-gray-700 px-4 py-2">Windows Defender</td>
+                <td class="border border-gray-700 px-4 py-2">Windows Hello, Secured-core</td>
+                <td class="border border-gray-700 px-4 py-2">Win11 tem proteções mais avançadas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `
+    },
+    {
+      title: "Boas Práticas de Manutenção Pós-Formatação",
+      content: `
+        <h4 class="text-white font-bold mb-3">📅 Calendário de Manutenção Recomendado</h4>
+        <p class="text-gray-300 mb-4">
+          Após formatar e ter um sistema limpo, é importante manter a performance e segurança com uma rotina de manutenção adequada.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-5">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Rotina Semanal</h5>
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+              <li>Atualizações de segurança críticas (verificar)</li>
+              <li>Varredura rápida com antivírus</li>
+              <li>Limpeza de arquivos temporários com Disk Cleanup</li>
+              <li>Verificação de integridade do sistema: <code class="bg-white/10 px-2 py-1 rounded">sfc /scannow</code></li>
+            </ul>
+          </div>
+          
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-5">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Rotina Mensal</h5>
+            <ul class="list-disc list-inside text-gray-300 space-y-2">
+              <li>Atualizações completas do Windows</li>
+              <li>Atualização de drivers (GPU, chipset, etc.)</li>
+              <li>Varredura completa com antivírus</li>
+              <li>Backup de arquivos importantes</li>
+              <li>Verificação de disco: <code class="bg-white/10 px-2 py-1 rounded">chkdsk C: /f</code></li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Ferramentas Recomendadas para Manutenção</h4>
+        <p class="text-gray-300 mb-3">
+          Algumas ferramentas gratuitas que ajudam a manter o sistema otimizado após formatação:
+        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+          <li><strong>CCleaner:</strong> Limpeza profunda de arquivos temporários</li>
+          <li><strong>CrystalDiskInfo:</strong> Monitoramento de saúde do disco</li>
+          <li><strong>Process Explorer:</strong> Alternativa avançada ao Gerenciador de Tarefas</li>
+          <li><strong>Defraggler:</strong> Desfragmentação seletiva (não para SSDs)</li>
+          <li><strong>Speccy:</strong> Informações detalhadas sobre hardware</li>
+        </ul>
+      `
+    },
+    {
+      title: "Otimizações Específicas para Desempenho",
+      content: `
+        <h4 class="text-white font-bold mb-3">🎮 Otimizações para Gamers</h4>
+        <p class="text-gray-300 mb-4">
+          Após formatação, o Windows 11 pode ser otimizado para obter o máximo desempenho em jogos e aplicações exigentes.
+        </p>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2">1. Configurações de GPU e Renderização</h5>
+        <p class="text-gray-300 mb-3">
+          Configure as definições avançadas da GPU para desempenho máximo:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Configurações do Windows → Gráficos → Configurações de gráficos</li>
+          <li>Defina aplicativos individuais para usar GPU dedicada</li>
+          <li>Desative "Melhorar desempenho visual" em favor de "Melhor desempenho"</li>
+          <li>Configure taxa de atualização máxima do monitor nas configurações de exibição</li>
+        </ol>
+        
+        <h5 class="text-[#31A8FF] font-semibold mb-2 mt-4">2. Otimizações do Sistema</h5>
+        <p class="text-gray-300 mb-3">
+          Faça ajustes no sistema operacional para reduzir latência e aumentar FPS:
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+          <li>Desative transparências e animações do Windows (Configurações → Personalização → Cores)</li>
+          <li>Reduza efeitos visuais para melhor performance (Sistema → Sobre → Configurações avançadas do sistema → Avançado → Desempenho)</li>
+          <li>Desative serviços desnecessários via msconfig ou serviços.msc</li>
+          <li>Configure o agendamento de threads do processador (requer ferramentas de terceiros como Process Lasso)</li>
+        </ol>
+      `
+    }
+  ];
+
   const faqItems = [
     {
       question: "Formatar apaga tudo mesmo ou dá pra recuperar?",
@@ -493,6 +747,12 @@ export default function FormatWindowsGuide() {
     }
   ];
 
+  // Incorporar seções adicionais às seções principais
+  const allContentSections = [
+    ...contentSections,
+    ...additionalContentSections
+  ];
+
   return (
     <GuideTemplate
       title={title}
@@ -502,7 +762,7 @@ export default function FormatWindowsGuide() {
       difficultyLevel="Intermediário"
       author="Equipe Técnica Voltris"
       lastUpdated="Janeiro 2026"
-      contentSections={contentSections}
+      contentSections={allContentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
       faqItems={faqItems}

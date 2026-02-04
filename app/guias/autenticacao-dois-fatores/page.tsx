@@ -535,6 +535,647 @@ export default function TwoFactorGuide() {
     }
   ];
 
+  const advancedContentSections = [
+    {
+      title: "Criptografia e Protocolos de Segurança por Trás do 2FA",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔐 Fundamentos Matemáticos do 2FA</h4>
+        <p class="mb-4 text-gray-300">
+          A autenticação de dois fatores baseia-se em princípios criptográficos robustos, principalmente os algoritmos TOTP (Time-Based One-Time Password) e HOTP (HMAC-Based One-Time Password). Estes protocolos utilizam funções criptográficas baseadas em hash para gerar códigos únicos em intervalos específicos de tempo.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-2">Algoritmo TOTP (RFC 6238)</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Baseado em HMAC-SHA1/SHA256/SHA512</li>
+              <li>• Usa timestamp como variável</li>
+              <li>• Intervalo padrão de 30 segundos</li>
+              <li>• Sincronizado com relógio do servidor</li>
+              <li>• Resistente a ataques de replay</li>
+              <li>• Implementado em todos apps autenticadores</li>
+            </ul>
+          </div>
+          <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
+            <h5 class="text-purple-400 font-bold mb-2">Algoritmo HOTP (RFC 4226)</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Baseado em HMAC-SHA1</li>
+              <li>• Usa contador incremental</li>
+              <li>• Não depende de tempo</li>
+              <li>• Adequado para hardware tokens</li>
+              <li>• Menos comum em apps móveis</li>
+              <li>• Requer sincronização de contador</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔗 Processo de Geração de Código</h4>
+        <p class="mb-4 text-gray-300">
+          O processo de geração de códigos 2FA segue um padrão matemático preciso:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Etapa</th>
+                <th class="p-3 text-left">Descrição</th>
+                <th class="p-3 text-left">Fórmula Matemática</th>
+                <th class="p-3 text-left">Segurança</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">1</td>
+                <td class="p-3">Geração de chave secreta</td>
+                <td class="p-3">K = random_bytes(20)</td>
+                <td class="p-3">20 bytes aleatórios</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">2</td>
+                <td class="p-3">Codificação Base32</td>
+                <td class="p-3">Base32(K)</td>
+                <td class="p-3">Facilita QR code</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">3</td>
+                <td class="p-3">Cálculo do timestep</td>
+                <td class="p-3">T = (unix_time - T0) / TimeStep</td>
+                <td class="p-3">T = tempo sincronizado</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">4</td>
+                <td class="p-3">Cálculo HMAC</td>
+                <td class="p-3">HMAC_SHA1(K, T)</td>
+                <td class="p-3">Assinatura criptográfica</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">5</td>
+                <td class="p-3">Extração do código</td>
+                <td class="p-3">(HMAC & 0x7FFFFFFF) % 10^digits</td>
+                <td class="p-3">Código de 6 dígitos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">🔍 Curiosidade Criptográfica</h4>
+          <p class="text-sm text-gray-300">
+            A segurança do TOTP baseia-se no problema computacionalmente difícil de inverter funções hash SHA. Mesmo com poder de computação moderno, é praticamente impossível determinar a chave secreta a partir de códigos observados. A função hash é projetada para ser unidirecional, garantindo que códigos antigos não revelem informações sobre códigos futuros.
+          </p>
+        </div>
+      `
+    },
+    {
+      title: "Técnicas Avançadas de Implementação e Segurança Corporativa",
+      content: `
+        <h4 class="text-white font-bold mb-3">🏢 Implementação de 2FA em Ambientes Corporativos</h4>
+        <p class="mb-4 text-gray-300">
+          A implementação de autenticação multifatorial em ambientes empresariais envolve múltiplas camadas de segurança, integração com infraestrutura existente e considerações de usabilidade para centenas ou milhares de usuários.
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Componente</th>
+                <th class="p-3 text-left">Solução</th>
+                <th class="p-3 text-left">Integração</th>
+                <th class="p-3 text-left">Nível de Segurança</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Active Directory</td>
+                <td class="p-3">Azure MFA Server</td>
+                <td class="p-3">AD FS / NPS / Conditional Access</td>
+                <td class="p-3">Alto</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">VPN Gateway</td>
+                <td class="p-3">Radius + MFA Provider</td>
+                <td class="p-3">OpenVPN / Fortinet / Cisco</td>
+                <td class="p-3">Muito Alto</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Cloud Services</td>
+                <td class="p-3">Identity Provider (IdP)</td>
+                <td class="p-3">SAML / OAuth / OpenID Connect</td>
+                <td class="p-3">Alto</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Endpoints</td>
+                <td class="p-3">EDR + MFA Agent</td>
+                <td class="p-3">Windows Hello / Biometrics</td>
+                <td class="p-3">Muito Alto</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Email Servers</td>
+                <td class="p-3">Exchange Online Protection</td>
+                <td class="p-3">OWA / Outlook / Mobile Sync</td>
+                <td class="p-3">Alto</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Arquitetura de Segurança em Camadas</h4>
+        <p class="mb-4 text-gray-300">
+          Uma implementação robusta de 2FA corporativa inclui múltiplas camadas de proteção:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-red-900/10 p-4 rounded-lg border border-red-500/20">
+            <h5 class="text-red-400 font-bold mb-2">Prevenção</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Políticas de acesso condicional</li>
+              <li>• Monitoramento de localização</li>
+              <li>• Análise de risco de login</li>
+              <li>• Regras de IP conhecidos</li>
+            </ul>
+          </div>
+          <div class="bg-yellow-900/10 p-4 rounded-lg border border-yellow-500/20">
+            <h5 class="text-yellow-400 font-bold mb-2">Detecção</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Log de tentativas de acesso</li>
+              <li>• Alertas de anomalia</li>
+              <li>• Análise comportamental</li>
+              <li>• Monitoramento em tempo real</li>
+            </ul>
+          </div>
+          <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
+            <h5 class="text-green-400 font-bold mb-2">Resposta</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>• Bloqueio automático de contas</li>
+              <li>• Revalidação de identidade</li>
+              <li>• Notificação de incidente</li>
+              <li>• Processos de recuperação</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">📊 Métricas de Efetividade e Conformidade</h4>
+        <p class="mb-4 text-gray-300">
+          Organizações implementam métricas específicas para medir a eficácia de suas soluções de 2FA:
+        </p>
+        
+        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+          <li><strong>Taxa de adoção:</strong> Porcentagem de usuários com 2FA ativado (meta: >95%)</li>
+          <li><strong>Tempo médio de login:</strong> Impacto na produtividade (aceitável: <5 segundos)</li>
+          <li><strong>Incidentes de segurança:</strong> Redução de acessos não autorizados (>80%)</li>
+          <li><strong>Requisições de suporte:</strong> Volume de chamados relacionados a 2FA (deve diminuir)</li>
+          <li><strong>Conformidade regulatória:</strong> Cumprimento de requisitos legais (100%)</li>
+          <li><strong>Resistência a ataques:</strong> Taxa de sucesso de tentativas de bypass</li>
+        </ul>
+      `
+    },
+    {
+      title: "Tendências Futuras em Autenticação e Segurança Bio-Criptográfica",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔮 Evolução da Autenticação Multifatorial</h4>
+        <p class="mb-4 text-gray-300">
+          A segurança digital está passando por uma transformação significativa com o avanço de tecnologias biométricas, inteligência artificial e criptografia quântica. As próximas gerações de sistemas de autenticação prometem oferecer segurança superior com maior conveniência para os usuários.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3">🧠 Autenticação Baseada em Comportamento</h4>
+        <p class="mb-4 text-gray-300">
+          A biometria comportamental analisa padrões únicos de interação do usuário com dispositivos:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Característica</th>
+                <th class="p-3 text-left">Descrição</th>
+                <th class="p-3 text-left">Precisão Atual</th>
+                <th class="p-3 text-left">Implementação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Dinâmica de Digitação</td>
+                <td class="p-3">Padrões de pressionamento e pausas entre teclas</td>
+                <td class="p-3">95-98%</td>
+                <td class="p-3">Software de monitoramento</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Movimento do Mouse</td>
+                <td class="p-3">Velocidade, aceleração e padrões de movimento</td>
+                <td class="p-3">90-95%</td>
+                <td class="p-3">Análise em tempo real</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Gait Analysis</td>
+                <td class="p-3">Padrões de caminhada detectados por sensores</td>
+                <td class="p-3">85-90%</td>
+                <td class="p-3">Smartphones e wearables</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Geolocalização</td>
+                <td class="p-3">Padrões de movimento e locais frequentes</td>
+                <td class="p-3">80-85%</td>
+                <td class="p-3">GPS e redes móveis</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Voice Stress</td>
+                <td class="p-3">Variações na voz indicando estresse ou fraude</td>
+                <td class="p-3">88-92%</td>
+                <td class="p-3">Análise acústica</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🧬 Biometria Criptográfica e Chaves Quânticas</h4>
+        <p class="mb-4 text-gray-300">
+          A convergência entre biometria e criptografia está criando novas formas de autenticação:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
+            <h5 class="text-indigo-400 font-bold mb-2">Bio-Cryptographic Keys</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>Geração de chaves criptográficas a partir de características biométricas</li>
+              <li>Impossibilidade de cópia da chave sem o proprietário</li>
+              <li>Recriação da chave apenas na presença do usuário</li>
+              <li>Eliminação de armazenamento de biometria pura</li>
+              <li>Aplicação em sistemas FIDO2 e WebAuthn</li>
+            </ul>
+          </div>
+          
+          <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-2">Criptografia Pós-Quântica</h5>
+            <li class="text-sm text-gray-300 space-y-2">
+              <li>Algoritmos resistentes a ataques de computadores quânticos</li>
+              <li>Transição gradual dos atuais sistemas RSA/ECC</li>
+              <li>Padrões como CRYSTALS-Kyber e Dilithium</li>
+              <li>Implementação em sistemas de autenticação</li>
+              <li>Garantia de segurança a longo prazo</li>
+            </li>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <p class="mb-4 text-gray-300">
+          Instituições de pesquisa e empresas de tecnologia estão explorando fronteiras da autenticação digital:
+        </p>
+        
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="bg-blue-500 rounded-full p-2 mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-blue-400 font-bold">Continuous Authentication</h5>
+              <p class="text-sm text-gray-300">Universidade Carnegie Mellon está desenvolvendo sistemas que autenticam continuamente o usuário com base em múltiplas características biométricas e comportamentais, eliminando a necessidade de login repetido. Implementação prevista para 2026-2027.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3">
+            <div class="bg-green-500 rounded-full p-2 mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-green-400 font-bold">Brainwave Authentication</h5>
+              <p class="text-sm text-gray-300">Pesquisadores da UC Berkeley estão estudando a utilização de padrões de ondas cerebrais EEG como forma única de autenticação. O padrão de atividade cerebral é único para cada indivíduo e dificilmente falsificável. Testes iniciais mostram 99.2% de precisão.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3">
+            <div class="bg-purple-500 rounded-full p-2 mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-purple-400 font-bold">DNA-Based Security Tokens</h5>
+              <p class="text-sm text-gray-300">IBM e Harvard estão colaborando em pesquisas para utilizar sequências de DNA sintético como base para tokens de segurança altamente únicos e impossíveis de replicar. Cada sequência de DNA pode gerar bilhões de combinações únicas para autenticação.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">⚠️ Considerações Éticas e de Privacidade</h4>
+          <p class="text-sm text-gray-300">
+            Com a crescente sofisticação dos sistemas de autenticação biométrica, questões de privacidade e ética se tornam críticas. A coleta, armazenamento e uso de dados biométricos exigem proteção rigorosa e consentimento explícito. A criptografia homomórfica e o processamento em nuvem segura são tecnologias emergentes que permitem autenticação sem expor os dados biométricos brutos. A privacidade por design será um diferencial obrigatório nos sistemas de segurança do futuro.
+          </p>
+        </div>
+      `
+    }
+  ];
+
+  const allContentSections = [...contentSections, ...advancedContentSections];
+
+  const additionalContentSections = [
+    {
+      title: "Histórico e Evolução da Autenticação Multifatorial",
+      content: `
+        <p class="mb-4 text-gray-300">A autenticação multifatorial tem uma história rica que se estende por décadas, evoluindo desde conceitos simples até as sofisticadas soluções biométricas de hoje. A jornada reflete a constante batalha entre segurança e conveniência.</p>
+        
+        <div class="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-6 rounded-xl border border-purple-500/30 my-6">
+          <h4 class="text-xl font-bold text-purple-300 mb-4">Timeline da Evolução da Autenticação</h4>
+          
+          <div class="space-y-4">
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">1960s</span>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-bold text-white">Primeiros Cartões de Segurança</h5>
+                <p class="text-gray-300 text-sm">Introdução de cartões com informações únicas como segunda forma de autenticação.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">1984</span>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-bold text-white">RSA SecurID</h5>
+                <p class="text-gray-300 text-sm">Primeiro token de autenticação baseado em tempo (TOTP) comercializado.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">1998</span>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-bold text-white">SMS como Canal de Autenticação</h5>
+                <p class="text-gray-300 text-sm">Introdução do SMS como método de entrega de códigos de autenticação.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">2005</span>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-bold text-white">Google Authenticator</h5>
+                <p class="text-gray-300 text-sm">Popularização do TOTP em smartphones com algoritmos de geração de código.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">2011</span>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-bold text-white">FIDO Alliance Foundation</h5>
+                <p class="text-gray-300 text-sm">Início do desenvolvimento de padrões universais para autenticação sem senha.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">2014</span>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-bold text-white">WebAuthn Proposal</h5>
+                <p class="text-gray-300 text-sm">Especificação para autenticação web baseada em chaves públicas e privadas.</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="text-white font-bold text-sm">2020s</span>
+              </div>
+              <div class="flex-1">
+                <h5 class="font-bold text-white">Biometria e Chaves Passkeys</h5>
+                <p class="text-gray-300 text-sm">Integração de biometria com tecnologias de chave única (passkeys) e autenticação sem senha.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">Evolução dos Padrões de Autenticação</h4>
+        <p class="mb-4 text-gray-300">Ao longo das décadas, os padrões de autenticação evoluíram para atender a crescentes desafios de segurança:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+            <h5 class="font-bold text-green-400 mb-2">1F: Something You Know</h5>
+            <p class="text-sm text-gray-300">Senha, PIN, resposta a pergunta secreta.</p>
+          </div>
+          
+          <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+            <h5 class="font-bold text-green-400 mb-2">2F: Something You Have</h5>
+            <p class="text-sm text-gray-300">Token, smartphone, cartão inteligente.</p>
+          </div>
+          
+          <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
+            <h5 class="font-bold text-green-400 mb-2">3F: Something You Are</h5>
+            <p class="text-sm text-gray-300">Biometria, impressão digital, reconhecimento facial.</p>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "Análise de Vulnerabilidades e Ataques Contra Sistemas de 2FA",
+      content: `
+        <p class="mb-4 text-gray-300">Embora a autenticação multifatorial aumente significativamente a segurança, não é infalível. Diversos ataques demonstraram vulnerabilidades em diferentes métodos de autenticação, exigindo constante vigilância e atualização de práticas.</p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">Tipos Comuns de Ataques contra 2FA</h4>
+        <p class="mb-4 text-gray-300">Existem várias técnicas que atacantes utilizam para contornar sistemas de 2FA:</p>
+        
+        <div class="space-y-4">
+          <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
+            <h5 class="font-bold text-red-400 mb-2">SIM Swapping</h5>
+            <p class="text-gray-300 text-sm">Atacantes fingem ser a vítima para convencer operadoras a transferir o número:</p>
+            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+              <li>Engenharia social contra funcionários da operadora</li>
+              <li>Uso de informações pessoais para verificação de identidade</li>
+              <li>Recebimento de códigos SMS em dispositivo comprometido</li>
+              <li>Desativação de outros métodos de autenticação</li>
+            </ul>
+          </div>
+          
+          <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
+            <h5 class="font-bold text-red-400 mb-2">Man-in-the-Middle (MITM)</h5>
+            <p class="text-gray-300 text-sm">Interceptação de credenciais em sessões de login:</p>
+            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+              <li>Sites falsos que coletam credenciais e códigos 2FA</li>
+              <li>Proxy que intercepta requisições legítimas</li>
+              <li>Phishing sofisticado com validação em tempo real</li>
+              <li>Redirecionamento para domínios legítimos após coleta</li>
+            </ul>
+          </div>
+          
+          <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
+            <h5 class="font-bold text-red-400 mb-2">Prompt Bombing</h5>
+            <p class="text-gray-300 text-sm">Ataques contra métodos de notificação push:</p>
+            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+              <li>Saturação do dispositivo com solicitações de aprovação</li>
+              <li>Vítima eventualmente aprova uma solicitação maliciosa</li>
+              <li>Exploração da fadiga de decisões de segurança</li>
+              <li>Ataques distribuídos para contornar limites de tentativas</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">Táticas de Prevenção e Mitigação</h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Ataque</th>
+                <th class="p-3 text-left">Método de Prevenção</th>
+                <th class="p-3 text-left">Efetividade</th>
+                <th class="p-3 text-left">Implementação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>SIM Swapping</strong></td>
+                <td class="p-3">PIN de conta na operadora</td>
+                <td class="p-3 text-emerald-400">Alta</td>
+                <td class="p-3">Entre em contato com sua operadora</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>MITM Phishing</strong></td>
+                <td class="p-3">Certificados SSL e autenticação por token</td>
+                <td class="p-3 text-emerald-400">Muito Alta</td>
+                <td class="p-3">Use métodos que não dependem de SMS</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>Prompt Bombing</strong></td>
+                <td class="p-3">Limites de tentativas e notificações</td>
+                <td class="p-3 text-emerald-400">Média-Alta</td>
+                <td class="p-3">Configure alertas e timeouts adequados</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>Session Hijacking</strong></td>
+                <td class="p-3">Tokens de sessão únicos e expiração</td>
+                <td class="p-3 text-emerald-400">Alta</td>
+                <td class="p-3">Implemente tokens criptografados</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">Melhores Práticas de Segurança</h4>
+          <ul class="list-disc list-inside text-sm text-gray-300 space-y-2">
+            <li>Evite usar SMS como único método de 2FA, especialmente para contas sensíveis</li>
+            <li>Use autenticadores baseados em TOTP ou FIDO/WebAuthn quando possível</li>
+            <li>Mantenha cópias de backup de códigos de recuperação em local seguro</li>
+            <li>Monitore regularmente dispositivos e métodos de autenticação associados</li>
+            <li>Eduque-se sobre técnicas de engenharia social e phishing</li>
+            <li>Considere hardware security keys para contas críticas</li>
+          </ul>
+        </div>
+      `
+    },
+    {
+      title: "Futuro da Autenticação e Tecnologias Emergentes",
+      content: `
+        <p class="mb-4 text-gray-300">A autenticação multifatorial está em constante evolução, com novas tecnologias prometendo maior segurança e conveniência. A tendência é em direção a métodos mais transparentes e baseados em comportamento do usuário.</p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">Tecnologias de Próxima Geração</h4>
+        <p class="mb-4 text-gray-300">Novas tecnologias estão moldando o futuro da autenticação:</p>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-gradient-to-br from-blue-900/20 to-indigo-900/20 p-5 rounded-xl border border-blue-500/30">
+            <h5 class="font-bold text-blue-400 mb-3">Passkeys e WebAuthn</h5>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+              <li>Substituição de senhas por pares de chaves criptográficas</li>
+              <li>Armazenamento seguro em hardware confiável</li>
+              <li>Facilitação de login cross-platform</li>
+              <li>Eliminação de problemas de reutilização de senhas</li>
+              <li>Resistência a ataques de phishing</li>
+              <li>Integração com biometria do dispositivo</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gradient-to-br from-purple-900/20 to-pink-900/20 p-5 rounded-xl border border-purple-500/30">
+            <h5 class="font-bold text-purple-400 mb-3">Biometria Contínua</h5>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+              <li>Monitoramento contínuo do padrão de digitação</li>
+              <li>Análise de movimento do mouse e padrões de navegação</li>
+              <li>Reconhecimento facial contínuo via câmera</li>
+              <li>Verificação comportamental em tempo real</li>
+              <li>Adaptação dinâmica de requisitos de autenticação</li>
+              <li>Identificação de anomalias de comportamento</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+          <div class="bg-gradient-to-br from-cyan-900/20 to-teal-900/20 p-5 rounded-xl border border-cyan-500/30">
+            <h5 class="font-bold text-cyan-400 mb-3">IA e Análise Preditiva</h5>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+              <li>Modelos de aprendizado de máquina para detecção de fraudes</li>
+              <li>Análise preditiva de padrões de acesso</li>
+              <li>Adaptação contextual dos requisitos de autenticação</li>
+              <li>Identificação proativa de tentativas de comprometimento</li>
+              <li>Personalização dos métodos de autenticação</li>
+              <li>Minimização da fricção para usuários legítimos</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gradient-to-br from-amber-900/20 to-orange-900/20 p-5 rounded-xl border border-amber-500/30">
+            <h5 class="font-bold text-amber-400 mb-3">Blockchain e Identidade Descentralizada</h5>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+              <li>Identidade auto-soberana (Self-Sovereign Identity)</li>
+              <li>Verificação descentralizada de credenciais</li>
+              <li>Controle do usuário sobre seus próprios dados</li>
+              <li>Eliminação de provedores centralizados de identidade</li>
+              <li>Portabilidade universal de credenciais</li>
+              <li>Proteção contra violação de dados em massa</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">Tendências de Mercado e Adoção</h4>
+        <p class="mb-4 text-gray-300">A adoção dessas tecnologias está progredindo em diferentes ritmos:</p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Tecnologia</th>
+                <th class="p-3 text-left">Maturidade</th>
+                <th class="p-3 text-left">Adoção Atual</th>
+                <th class="p-3 text-left">Projeção 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>Passkeys</strong></td>
+                <td class="p-3">Alta</td>
+                <td class="p-3">Crescendo rapidamente</td>
+                <td class="p-3 text-emerald-400">Principal método de autenticação</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>Biometria Facial</strong></td>
+                <td class="p-3">Muito Alta</td>
+                <td class="p-3">Amplamente adotada</td>
+                <td class="p-3 text-emerald-400">Padrão em dispositivos móveis</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>WebAuthn</strong></td>
+                <td class="p-3">Alta</td>
+                <td class="p-3">Aumentando gradualmente</td>
+                <td class="p-3 text-emerald-400">Substituto majoritário de senhas</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>IA Behavior Analysis</strong></td>
+                <td class="p-3">Média</td>
+                <td class="p-3">Emergindo em empresas</td>
+                <td class="p-3 text-emerald-400">Método secundário comum</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `
+    }
+  ];
+
   const faqItems = [
     {
       question: "O que é autenticação de dois fatores (2FA)?",
@@ -675,6 +1316,8 @@ export default function TwoFactorGuide() {
       author="Equipe de Segurança Voltris"
       lastUpdated="2026-01-20"
       contentSections={contentSections}
+      advancedContentSections={advancedContentSections}
+      additionalContentSections={additionalContentSections}
       summaryTable={summaryTable}
       faqItems={faqItems}
       externalReferences={externalReferences}

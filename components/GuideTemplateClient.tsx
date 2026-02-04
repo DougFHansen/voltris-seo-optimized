@@ -50,6 +50,10 @@ export interface GuideTemplateProps {
     faqItems?: Array<{ question: string; answer: string }>;
     /** Links externos para fontes oficiais (Microsoft, etc.) — melhora E-E-A-T e sinal para buscadores */
     externalReferences?: ExternalReference[];
+    /** Seções avançadas de conteúdo para guias técnicos de alta profundidade */
+    advancedContentSections?: ContentSection[];
+    /** Seções adicionais de conteúdo */
+    additionalContentSections?: ContentSection[];
 }
 
 export function GuideTemplateClient({
@@ -64,7 +68,9 @@ export function GuideTemplateClient({
     lastUpdated = "Janeiro 2025",
     summaryTable,
     faqItems,
-    externalReferences = []
+    externalReferences = [],
+    advancedContentSections,
+    additionalContentSections
 }: GuideTemplateProps) {
     const hasCustomConclusion = contentSections.some(section =>
         section.title.toLowerCase().includes('conclusão') ||
@@ -248,6 +254,110 @@ export function GuideTemplateClient({
                                     )}
                                 </motion.div>
                             ))}
+
+                            {/* Advanced Content Sections */}
+                            {advancedContentSections && advancedContentSections.length > 0 && (
+                                <>
+                                    {advancedContentSections.map((section: ContentSection, sectionIndex: number) => (
+                                        <motion.div
+                                            key={`advanced-${sectionIndex}`}
+                                            id={`advanced-section-${sectionIndex}`}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true, margin: "-100px" }}
+                                            className="bg-gradient-to-br from-[#1a1a2e] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#8B31FF]/30 relative overflow-hidden"
+                                        >
+                                            {/* Decorative gradient for advanced section */}
+                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] opacity-50"></div>
+
+                                            <div className="flex items-start gap-3 mb-2">
+                                                <span className="bg-[#8B31FF]/20 text-[#8B31FF] text-xs font-bold px-2 py-1 rounded-full border border-[#8B31FF]/30">
+                                                    CONTEÚDO AVANÇADO
+                                                </span>
+                                            </div>
+
+                                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
+                                                <span className="text-[#8B31FF] text-xl opacity-50 font-mono mt-1">A{sectionIndex + 1}.</span>
+                                                {section.title}
+                                            </h2>
+
+                                            <div
+                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#8B31FF] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
+                                                dangerouslySetInnerHTML={{ __html: section.content }}
+                                            />
+
+                                            {section.subsections && (
+                                                <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-[#8B31FF]/30">
+                                                    {section.subsections.map((subsection: Subsection, subIndex: number) => (
+                                                        <div key={`advanced-sub-${subIndex}`}>
+                                                            <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
+                                                                <span className="w-2 h-2 rounded-full bg-[#8B31FF]"></span>
+                                                                {subsection.subtitle}
+                                                            </h3>
+                                                            <div
+                                                                className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
+                                                                dangerouslySetInnerHTML={{ __html: subsection.content }}
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </motion.div>
+                                    ))}
+                                </>
+                            )}
+
+                            {/* Additional Content Sections */}
+                            {additionalContentSections && additionalContentSections.length > 0 && (
+                                <>
+                                    {additionalContentSections.map((section: ContentSection, sectionIndex: number) => (
+                                        <motion.div
+                                            key={`additional-${sectionIndex}`}
+                                            id={`additional-section-${sectionIndex}`}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true, margin: "-100px" }}
+                                            className="bg-gradient-to-br from-[#2e1a1a] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#FF4B6B]/30 relative overflow-hidden"
+                                        >
+                                            {/* Decorative gradient for additional section */}
+                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] opacity-50"></div>
+
+                                            <div className="flex items-start gap-3 mb-2">
+                                                <span className="bg-[#FF4B6B]/20 text-[#FF4B6B] text-xs font-bold px-2 py-1 rounded-full border border-[#FF4B6B]/30">
+                                                    CONTEÚDO ADICIONAL
+                                                </span>
+                                            </div>
+
+                                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
+                                                <span className="text-[#FF4B6B] text-xl opacity-50 font-mono mt-1">AD{sectionIndex + 1}.</span>
+                                                {section.title}
+                                            </h2>
+
+                                            <div
+                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#FF4B6B] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
+                                                dangerouslySetInnerHTML={{ __html: section.content }}
+                                            />
+
+                                            {section.subsections && (
+                                                <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-[#FF4B6B]/30">
+                                                    {section.subsections.map((subsection: Subsection, subIndex: number) => (
+                                                        <div key={`additional-sub-${subIndex}`}>
+                                                            <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
+                                                                <span className="w-2 h-2 rounded-full bg-[#FF4B6B]"></span>
+                                                                {subsection.subtitle}
+                                                            </h3>
+                                                            <div
+                                                                className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
+                                                                dangerouslySetInnerHTML={{ __html: subsection.content }}
+                                                            />
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </motion.div>
+                                    ))}
+                                </>
+                            )}
 
                             {/* AdSense após 40% do conteúdo (posição ideal) */}
                             {contentSections.length >= 2 && (

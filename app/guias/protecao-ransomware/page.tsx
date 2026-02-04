@@ -301,6 +301,271 @@ export default function RansomwareProtectionGuide() {
     }
   ];
 
+  const advancedContentSections = [
+    {
+      title: "Análise Técnica de Ataques de Ransomware: Vetores de Infiltração e Técnicas de Persistência",
+      content: `
+        <p class="mb-4 text-gray-300">
+          Em 2026, os ataques de ransomware evoluíram para se tornarem campanhas sofisticadas que combinam múltiplas técnicas de infiltração e persistência. A análise forense desses ataques revela padrões complexos que exigem compreensão profunda dos mecanismos de segurança do sistema operacional e das redes corporativas.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔬 Vetores de Infiltração Modernos</h4>
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-sm text-gray-300 border-collapse">
+            <thead>
+              <tr class="bg-white/5 border-b border-white/10">
+                <th class="px-4 py-3 text-left text-white font-bold">Técnica</th>
+                <th class="px-4 py-3 text-left text-white font-bold">Descrição</th>
+                <th class="px-4 py-3 text-left text-white font-bold">Objetivo</th>
+                <th class="px-4 py-3 text-left text-white font-bold">Mitigação</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Supply Chain Attack</strong></td>
+                <td class="px-4 py-3">Infiltração via fornecedor de software ou serviço</td>
+                <td class="px-4 py-3">Acesso a múltiplas redes simultaneamente</td>
+                <td class="px-4 py-3 text-emerald-400">Auditoria de fornecedores, assinatura de código</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Spear Phishing Avançado</strong></td>
+                <td class="px-4 py-3">Emails altamente personalizados com anexos maliciosos</td>
+                <td class="px-4 py-3">Obtenção de credenciais válidas</td>
+                <td class="px-4 py-3 text-emerald-400">Treinamento de funcionários, DMARC/SPF</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Exploitation de Vulnerabilidades</strong></td>
+                <td class="px-4 py-3">Ataque a CVEs conhecidas em softwares não atualizados</td>
+                <td class="px-4 py-3">Acesso privilegiado ao sistema</td>
+                <td class="px-4 py-3 text-emerald-400">Gerenciamento de patch, EDR</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">VPN e RDP Comprometidos</strong></td>
+                <td class="px-4 py-3">Uso de credenciais roubadas para acesso remoto</td>
+                <td class="px-4 py-3">Entrada lateral à rede corporativa</td>
+                <td class="px-4 py-3 text-emerald-400">2FA, PAM, acesso baseado em Zero Trust</td>
+              </tr>
+              <tr class="hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Cryptojacking Concomitante</strong></td>
+                <td class="px-4 py-3">Combinação de mineração de cripto e criptografia de arquivos</td>
+                <td class="px-4 py-3">Lucro duplo com recursos do sistema</td>
+                <td class="px-4 py-3 text-emerald-400">Monitoramento de CPU, EDR avançado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Técnicas de Persistência e Evasão</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20">
+            <h5 class="text-red-400 font-bold mb-3">Técnicas de Persistência</h5>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+              <li><strong>Service Persistence:</strong> Criação de serviços do Windows com privilégios elevados</li>
+              <li><strong>WMI Events:</strong> Gatilhos WMI para execução automática em eventos do sistema</li>
+              <li><strong>Scheduled Tasks:</strong> Tarefas agendadas para reiniciar o payload</li>
+              <li><strong>Registry Autorun Keys:</strong> Chaves de registro para execução automática</li>
+              <li><strong>COM Object Hijacking:</strong> Substituição de objetos COM legítimos</li>
+            </ul>
+          </div>
+          
+          <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-3">Técnicas de Evasão</h5>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+              <li><strong>Sandbox Detection:</strong> Verificação de ambiente virtualizado</li>
+              <li><strong>Environment Checks:</strong> Análise de comportamento do sistema</li>
+              <li><strong>Timing Attacks:</strong> Execução após período de espera</li>
+              <li><strong>Code Packing:</strong> Empacotamento para evitar detecção</li>
+              <li><strong>Living off the Land:</strong> Uso de binários legítimos do sistema</li>
+            </ul>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "Arquitetura de Defesa Contra Ransomware: Implementação de Estratégias de Segurança em Camadas",
+      content: `
+        <p class="mb-4 text-gray-300">
+          A defesa eficaz contra ransomware em 2026 exige uma abordagem de segurança em camadas que integra tecnologias, processos e pessoas. A arquitetura de defesa moderna combina soluções preventivas, detectivas e reativas em um ecossistema coeso de proteção.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🏗️ Modelo de Segurança em Camadas (Defense in Depth)</h4>
+        <div class="space-y-6">
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Camada 1: Prevenção de Acesso (Perímetro)</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Controle de acesso e prevenção de entrada de ameaças:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+              <li><strong>Firewalls Avançados:</strong> NGFW com inspeção profunda de pacotes</li>
+              <li><strong>Gateway de Email:</strong> Filtragem avançada de phishing e malware</li>
+              <li><strong>Proxies de Segurança:</strong> Filtragem de tráfego web com SSL inspection</li>
+              <li><strong>VPN Segura:</strong> Autenticação multifator e acesso condicional</li>
+            </ul>
+          </div>
+          
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Camada 2: Detecção de Ameaças (Endpoint)</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Identificação e resposta a atividades maliciosas nos endpoints:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+              <li><strong>EDR (Endpoint Detection and Response):</strong> Monitoramento comportamental em tempo real</li>
+              <li><strong>XDR (Extended Detection and Response):</strong> Correlação entre múltiplas fontes de dados</li>
+              <li><strong>Antivírus Baseado em IA:</strong> Detecção de malware desconhecido</li>
+              <li><strong>Honeypots:</strong> Armadilhas para detectar movimento lateral</li>
+            </ul>
+          </div>
+          
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Camada 3: Proteção de Dados (Arquivos e Sistemas)</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Salvaguardas específicas para proteção de dados críticos:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+              <li><strong>Acesso a Pastas Controlado:</strong> Bloqueio de alterações não autorizadas</li>
+              <li><strong>Proteção de Backup:</strong> Imutabilidade e isolamento de backups</li>
+              <li><strong>Classificação de Dados:</strong> Identificação de dados sensíveis</li>
+              <li><strong>Proteção de Impressão:</strong> Controle de cópia e exportação de dados</li>
+            </ul>
+          </div>
+          
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Camada 4: Resiliência e Recuperação</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Capacidade de recuperação após um ataque bem-sucedido:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+              <li><strong>Backup 3-2-1 com Air Gap:</strong> Cópias offline e offsite</li>
+              <li><strong>Snapshot Imutáveis:</strong> Cópias não alteráveis de dados críticos</li>
+              <li><strong>Planos de Recuperação de Desastres:</strong> Procedimentos testados regularmente</li>
+              <li><strong>Orquestração de Recuperação:</strong> Automação de processos de restauração</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">📊 Framework de Implementação</h4>
+        <p class="text-gray-300 mb-4">
+          A implementação de uma arquitetura de defesa contra ransomware segue um framework estruturado:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+          <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20 text-center">
+            <h5 class="text-purple-400 font-bold mb-2">1. Avaliar</h5>
+            <p class="text-sm text-gray-300">Riscos e lacunas de segurança</p>
+          </div>
+          <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20 text-center">
+            <h5 class="text-blue-400 font-bold mb-2">2. Planejar</h5>
+            <p class="text-sm text-gray-300">Estratégia de defesa em camadas</p>
+          </div>
+          <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20 text-center">
+            <h5 class="text-green-400 font-bold mb-2">3. Implementar</h5>
+            <p class="text-sm text-gray-300">Soluções e políticas de segurança</p>
+          </div>
+          <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20 text-center">
+            <h5 class="text-amber-400 font-bold mb-2">4. Testar</h5>
+            <p class="text-sm text-gray-300">Efetividade e planos de resposta</p>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "Tecnologias de Detecção e Prevenção de Ransomware: Inteligência Artificial e Aprendizado de Máquina",
+      content: `
+        <p class="mb-4 text-gray-300">
+          Em 2026, a detecção e prevenção de ransomware baseiam-se fortemente em inteligência artificial e aprendizado de máquina. Estas tecnologias permitem identificar padrões de comportamento suspeitos antes que danos significativos ocorram, oferecendo proteção proativa contra variantes desconhecidas de malware.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🧠 Modelos de IA para Detecção de Ransomware</h4>
+        <div class="space-y-6">
+          <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-3">Machine Learning Supervisionado</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Treinamento com amostras conhecidas de ransomware e benignas para classificação:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+              <li><strong>Random Forest:</strong> Eficiente para classificação de características de arquivos</li>
+              <li><strong>SVM (Support Vector Machine):</strong> Bom para separar classes linearmente</li>
+              <li><strong>Redes Neurais Profundas:</strong> Capazes de identificar padrões complexos</li>
+              <li><strong>Gradient Boosting:</strong> Alta precisão em conjuntos de dados complexos</li>
+            </ul>
+          </div>
+          
+          <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
+            <h5 class="text-indigo-400 font-bold mb-3">Deep Learning para Análise de Comportamento</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Identificação de padrões de comportamento anômalos em tempo de execução:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+              <li><strong>LSTM Networks:</strong> Para análise de sequências de eventos</li>
+              <li><strong>Autoencoders:</strong> Para detecção de anomalias em padrões de acesso</li>
+              <li><strong>CNNs:</strong> Para análise de características de binários</li>
+              <li><strong>Transformer Models:</strong> Para análise de logs e eventos complexos</li>
+            </ul>
+          </div>
+          
+          <div class="bg-violet-900/10 p-5 rounded-xl border border-violet-500/20">
+            <h5 class="text-violet-400 font-bold mb-3">Behavioral Analysis Engines</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Sistemas que monitoram e analisam comportamento de processos em tempo real:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+              <li><strong>Process Creation Patterns:</strong> Identificação de criação de processos suspeitos</li>
+              <li><strong>File Access Patterns:</strong> Detecção de acesso em massa a arquivos</li>
+              <li><strong>Network Communication:</strong> Monitoramento de comunicação C&C</li>
+              <li><strong>Registry Modifications:</strong> Alterações em chaves críticas do sistema</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Implementações Práticas em Soluções Comerciais</h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Solução</th>
+                <th class="p-3 text-left">Técnica de IA</th>
+                <th class="p-3 text-left">Capacidade de Detecção</th>
+                <th class="p-3 text-left">Tempo de Resposta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>CrowdStrike Falcon</strong></td>
+                <td class="p-3">ML + Behavioral Analysis</td>
+                <td class="p-3">>99.9% de precisão</td>
+                <td class="p-3">Milissegundos</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>Microsoft Defender ATP</strong></td>
+                <td class="p-3">AI + Threat Intelligence</td>
+                <td class="p-3">Análise de milhões de amostras/dia</td>
+                <td class="p-3">Segundos</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>Carbon Black (VMware)</strong></td>
+                <td class="p-3">Predictive Analytics</td>
+                <td class="p-3">Análise de comportamento em tempo real</td>
+                <td class="p-3">Milissegundos</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>Varonis DatAdvantage</strong></td>
+                <td class="p-3">Análise de anomalias de dados</td>
+                <td class="p-3">Proteção de dados sensíveis</td>
+                <td class="p-3">Minutos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-[#0A0A0F] border border-[#FF4B6B]/20 rounded-xl p-6 mt-6">
+          <h4 class="text-[#FF4B6B] font-bold mb-2">💡 Considerações Técnicas</h4>
+          <p class="text-sm text-gray-300">
+            A eficácia das soluções baseadas em IA depende de dados de treinamento de alta qualidade, atualização constante dos modelos e integração com threat intelligence. A falsa sensação de segurança é um risco real se as soluções não forem acompanhadas de práticas de segurança sólidas e testes regulares de eficácia.
+          </p>
+        </div>
+      `
+    }
+  ];
+
   const faqItems = [
     {
       question: "O que é ransomware e como ele infecta meu computador?",
@@ -393,6 +658,7 @@ export default function RansomwareProtectionGuide() {
       author="Equipe de Segurança Voltris"
       lastUpdated="2026-01-20"
       contentSections={contentSections}
+      advancedContentSections={advancedContentSections}
       summaryTable={summaryTable}
       faqItems={faqItems}
       externalReferences={externalReferences}

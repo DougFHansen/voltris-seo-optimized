@@ -524,6 +524,393 @@ export default function GPUAccelerationGuide() {
         }
     ];
 
+    const advancedContentSections = [
+        {
+            title: "Arquitetura Técnica do HAGS e Integração com WDDM", 
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              O Hardware-Accelerated GPU Scheduling (HAGS) representa uma mudança arquitetônica fundamental na forma como o Windows gerencia a comunicação entre CPU e GPU. A tecnologia opera no nível do Windows Display Driver Model (WDDM), que é o framework que define como os drivers de vídeo se comunicam com o kernel do sistema operacional.
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Componentes Arquitetônicos do HAGS</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+                <h5 class="text-blue-400 font-bold mb-3">Kernel Mode Scheduler (KMS)</h5>
+                <p class="text-gray-300 text-sm mb-3">Executa no espaço do kernel do sistema operacional:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Gerencia o contexto de execução da GPU</li>
+                  <li>Coordena o acesso concorrente à GPU</li>
+                  <li>Implementa o escalonamento de tarefas baseado em hardware</li>
+                  <li>Garante a segurança e isolamento de processos</li>
+                </ul>
+              </div>
+              <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
+                <h5 class="text-purple-400 font-bold mb-3">User Mode Scheduler (UMS)</h5>
+                <p class="text-gray-300 text-sm mb-3">Executa no espaço do usuário:</p>
+                <ul class="list-disc list-inside text-gray-300 space-y-1 text-sm">
+                  <li>Interface para aplicações e APIs gráficas</li>
+                  <li>Prepara e enfileira comandos para a GPU</li>
+                  <li>Interage com o KMS para execução</li>
+                  <li>Implementa lógica específica de aplicação</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Fluxo de Execução com HAGS</h4>
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-2 text-left">Etapa</th>
+                    <th class="p-2 text-left">Componente</th>
+                    <th class="p-2 text-left">Descrição</th>
+                    <th class="p-2 text-left">Benefício com HAGS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2">1</td>
+                    <td class="p-2">Aplicação</td>
+                    <td class="p-2">Gera comandos gráficos (Draw Calls)</td>
+                    <td class="p-2">Mantém-se igual</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-2">2</td>
+                    <td class="p-2">API Gráfica (DX12/Vulkan)</td>
+                    <td class="p-2">Empacota comandos em Command Buffers</td>
+                    <td class="p-2">Mantém-se igual</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2">3</td>
+                    <td class="p-2">Driver de GPU (User Mode)</td>
+                    <td class="p-2">Processa e otimiza comandos</td>
+                    <td class="p-2">Mantém-se igual</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-2">4</td>
+                    <td class="p-2">HAGS Kernel Scheduler</td>
+                    <td class="p-2">Agenda tarefas diretamente na GPU</td>
+                    <td class="p-2">Elimina gargalo da CPU</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-2">5</td>
+                    <td class="p-2">GPU Hardware Scheduler</td>
+                    <td class="p-2">Executa tarefas na unidade de execução</td>
+                    <td class="p-2">Controle direto de hardware</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Requisitos de Hardware e Firmware</h4>
+            <p class="mb-4 text-gray-300">
+              Para que o HAGS funcione corretamente, o hardware deve suportar recursos específicos de escalonamento de hardware:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Hardware Context Switching:</strong> Capacidade da GPU de alternar entre diferentes contextos de execução rapidamente</li>
+              <li><strong>Preemptive Scheduling:</strong> Possibilidade de interromper tarefas em execução para priorizar outras</li>
+              <li><strong>Secure Buffer Management:</strong> Gerenciamento seguro de buffers de comandos para prevenir acessos indevidos</li>
+              <li><strong>Multi-Queue Support:</strong> Suporte a múltiplas filas de comandos para paralelismo eficiente</li>
+            </ul>
+            `
+        },
+        {
+            title: "Comparação Técnica com Outras Arquiteturas de Escalonamento",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              O HAGS não é a única arquitetura de escalonamento de GPU disponível. Existem diferentes abordagens implementadas em diversos sistemas operacionais e plataformas, cada uma com suas características e benefícios específicos.
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Arquiteturas de Escalonamento Comparadas</h4>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-3 text-left">Arquitetura</th>
+                    <th class="p-3 text-left">Sistema</th>
+                    <th class="p-3 text-left">CPU Role</th>
+                    <th class="p-3 text-left">GPU Role</th>
+                    <th class="p-3 text-left">Latência</th>
+                    <th class="p-3 text-left">Benefícios</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>HAGS (Windows)</strong></td>
+                    <td class="p-3">Windows 10/11</td>
+                    <td class="p-3">Minimizado</td>
+                    <td class="p-3">Principal executor</td>
+                    <td class="p-3">Baixa</td>
+                    <td class="p-3">Redução de latência, FPS consistente</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>Preemption (Linux)</strong></td>
+                    <td class="p-3">Linux (DRM/KMS)</td>
+                    <td class="p-3">Coordenação</td>
+                    <td class="p-3">Escalonamento com interrupção</td>
+                    <td class="p-3">Baixa</td>
+                    <td class="p-3">Resposta rápida, multitarefa</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>Command Queue (Vulkan)</strong></td>
+                    <td class="p-3">Multi-plataforma</td>
+                    <td class="p-3">Preparação</td>
+                    <td class="p-3">Execução em fila</td>
+                    <td class="p-3">Muito Baixa</td>
+                    <td class="p-3">Controle fino, eficiência</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>Legacy Sync (Antigo)</strong></td>
+                    <td class="p-3">Windows 7/8</td>
+                    <td class="p-3">Completo controle</td>
+                    <td class="p-3">Somente execução</td>
+                    <td class="p-3">Alta</td>
+                    <td class="p-3">Compatibilidade, simplicidade</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Integração com APIs Gráficas</h4>
+            <p class="mb-4 text-gray-300">
+              O HAGS se integra de maneiras diferentes com as principais APIs gráficas:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+              <div class="bg-gradient-to-br from-green-900/20 to-green-800/10 p-4 rounded-lg border border-green-500/30">
+                <h5 class="text-green-400 font-bold mb-2">DirectX 12</h5>
+                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                  <li>Integração nativa com HAGS</li>
+                  <li>Melhor aproveitamento</li>
+                  <li>Controle fino de recursos</li>
+                </ul>
+              </div>
+              <div class="bg-gradient-to-br from-blue-900/20 to-blue-800/10 p-4 rounded-lg border border-blue-500/30">
+                <h5 class="text-blue-400 font-bold mb-2">Vulkan</h5>
+                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                  <li>Implementação independente</li>
+                  <li>Funciona com HAGS opcional</li>
+                  <li>Portabilidade multi-plataforma</li>
+                </ul>
+              </div>
+              <div class="bg-gradient-to-br from-purple-900/20 to-purple-800/10 p-4 rounded-lg border border-purple-500/30">
+                <h5 class="text-purple-400 font-bold mb-2">OpenGL</h5>
+                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                  <li>Menor integração direta</li>
+                  <li>Depende do driver</li>
+                  <li>Menos benefícios</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Desempenho em Diferentes Configurações</h4>
+            <p class="mb-4 text-gray-300">
+              O impacto do HAGS varia significativamente com base na configuração do sistema:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Alta-end: RTX 4090 + i9-13900K:</strong> Ganho de 8-12% em jogos exigentes, redução de latência de 10-20ms</li>
+              <li><strong>Mid-range: RTX 3060 + i5-12400F:</strong> Ganho de 3-7%, redução de latência de 5-10ms</li>
+              <li><strong>Low-end: GTX 1650 + i3-10100:</strong> Pode ocorrer degradação devido à sobrecarga do hardware antigo</li>
+              <li><strong>Mobile: Laptop RTX 4060:</strong> Ganho de 5-8% com eficiência energética melhorada</li>
+            </ul>
+            `
+        },
+        {
+            title: "Otimizações Avançadas e Configurações Profissionais",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              Para usuários avançados e profissionais, existem configurações e otimizações adicionais que podem maximizar os benefícios do HAGS combinado com outras tecnologias de performance.
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Configurações do Registro do Windows para HAGS</h4>
+            <p class="mb-4 text-gray-300">
+              Além da ativação padrão pelas configurações do Windows, existem chaves avançadas no registro que podem ajustar o comportamento do HAGS:
+            </p>
+            <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700 mb-6">
+              <h5 class="text-amber-400 font-bold mb-2">Chaves do Registro Relevantes</h5>
+              <ul class="list-disc list-inside text-sm text-gray-300 space-y-2">
+                <li><strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\HwSchMode:</strong> Ativa/desativa HAGS (2=ativado, 1=desativado)</li>
+                <li><strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\DwmOptions\DwmRefreshBasedPresent:</strong> Otimiza apresentação baseada em taxa de refresh</li>
+                <li><strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\TdrLevel:</strong> Ajusta tolerância a timeouts da GPU</li>
+                <li><strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\GraphicsDrivers\Dxgkrnl\VSyncLatencyDebugEnabled:</strong> Habilita debugging de latência VSync</li>
+              </ul>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Combinação com Outras Otimizações</h4>
+            <p class="mb-4 text-gray-300">
+              O verdadeiro potencial do HAGS é alcançado quando combinado com outras tecnologias:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-3 text-left">Combinação</th>
+                    <th class="p-3 text-left">Benefício Teórico</th>
+                    <th class="p-3 text-left">Benefício Real</th>
+                    <th class="p-3 text-left">Requisitos</th>
+                    <th class="p-3 text-left">Riscos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>HAGS + Resizable BAR</strong></td>
+                    <td class="p-3">+15-25% performance</td>
+                    <td class="p-3">+8-15% performance</td>
+                    <td class="p-3">Chipset compat., BIOS</td>
+                    <td class="p-3">Instabilidade rara</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>HAGS + NVENC/AMF</strong></td>
+                    <td class="p-3">+5-10% encode perf.</td>
+                    <td class="p-3">+3-7% encode perf.</td>
+                    <td class="p-3">GPU compatível</td>
+                    <td class="p-3">Consumo energia ↑</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>HAGS + G-Sync/FreeSync</td>
+                    <td class="p-3">Latência ↓50%</td>
+                    <td class="p-3">Latência ↓30-40%</td>
+                    <td class="p-3">Monitor compatível</td>
+                    <td class="p-3">Nenhum significativo</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>HAGS + DLSS 3 Frame Gen</td>
+                    <td class="p-3">FPS ×2-3</td>
+                    <td class="p-3">FPS ×1.5-2.5</td>
+                    <td class="p-3">RTX 40 series</td>
+                    <td class="p-3">Qualidade imagem ↓</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Configurações Profissionais para Diferentes Cenários</h4>
+            <p class="mb-4 text-gray-300">
+              Recomendações específicas para diferentes tipos de uso:
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 p-5 rounded-xl border border-cyan-500/30">
+                <h5 class="text-cyan-400 font-bold mb-3">Gaming Competitivo</h5>
+                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                  <li>Ativar HAGS + Resizable BAR</li>
+                  <li>Desativar V-Sync, usar G-Sync/FreeSync</li>
+                  <li>Maximizar taxa de atualização do monitor</li>
+                  <li>Configurar prioridade do jogo como Alta</li>
+                </ul>
+              </div>
+              <div class="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 p-5 rounded-xl border border-emerald-500/30">
+                <h5 class="text-emerald-400 font-bold mb-3">Conteúdo Criativo</h5>
+                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                  <li>Ativar HAGS para melhor resposta do viewport</li>
+                  <li>Usar com Adobe Creative Suite ou Blender</li>
+                  <li>Monitorar uso de VRAM e temperatura</li>
+                  <li>Balancear entre performance e estabilidade</li>
+                </ul>
+              </div>
+            </div>
+            `
+        },
+        {
+            title: "Impacto em Desenvolvimento de Jogos e APIs",
+            content: `
+            <p class="mb-6 text-gray-300 leading-relaxed">
+              O HAGS não apenas afeta o desempenho do usuário final, mas também influencia como os desenvolvedores de jogos projetam e otimizam seus títulos. A tecnologia altera as premissas tradicionais de programação gráfica e exige adaptações nos motores de jogo.
+            </p>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Implicações para Desenvolvedores de Jogos</h4>
+            <p class="mb-4 text-gray-300">
+              Desenvolvedores precisam considerar o HAGS ao projetar sistemas gráficos:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>Command Buffer Management:</strong> Estratégias diferentes de alocação e preenchimento de buffers</li>
+              <li><strong>Resource Synchronization:</strong> Novas técnicas de sincronização entre CPU e GPU</li>
+              <li><strong>Frame Pacing:</strong> Ajustes para aproveitar melhor a redução de latência</li>
+              <li><strong>Multi-threading:</strong> Otimizações para liberar CPU para outras tarefas</li>
+            </ul>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Padrões de Projeto e Melhores Práticas</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20">
+                <h5 class="text-rose-400 font-bold mb-3">Anti-patterns</h5>
+                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                  <li>Assumir que CPU sempre gerencia GPU</li>
+                  <li>Depender de latência fixa de agendamento</li>
+                  <li>Não testar com HAGS ativado</li>
+                  <li>Ignorar mudanças no comportamento de drivers</li>
+                </ul>
+              </div>
+              <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20">
+                <h5 class="text-emerald-400 font-bold mb-3">Best Practices</h5>
+                <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                  <li>Testar com e sem HAGS ativado</li>
+                  <li>Implementar fallbacks adequados</li>
+                  <li>Monitorar latência e frametime</li>
+                  <li>Documentar comportamento específico</li>
+                </ul>
+              </div>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Ferramentas de Desenvolvimento e Debugging</h4>
+            <p class="mb-4 text-gray-300">
+              Ferramentas especializadas para trabalhar com HAGS:
+            </p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+                <thead class="bg-gray-800">
+                  <tr>
+                    <th class="p-3 text-left">Ferramenta</th>
+                    <th class="p-3 text-left">Função</th>
+                    <th class="p-3 text-left">Fabricante</th>
+                    <th class="p-3 text-left">Suporte HAGS</th>
+                    <th class="p-3 text-left">Nível de Detalhe</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>NVIDIA Nsight Graphics</strong></td>
+                    <td class="p-3">Debug e profiling gráfico</td>
+                    <td class="p-3">NVIDIA</td>
+                    <td class="p-3">Completo</td>
+                    <td class="p-3">Muito alto</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>AMD GPU PerfStudio</strong></td>
+                    <td class="p-3">Análise de performance</td>
+                    <td class="p-3">AMD</td>
+                    <td class="p-3">Parcial</td>
+                    <td class="p-3">Alto</td>
+                  </tr>
+                  <tr class="border-t border-gray-700">
+                    <td class="p-3"><strong>RenderDoc</strong></td>
+                    <td class="p-3">Captura e análise de frames</td>
+                    <td class="p-3">Independente</td>
+                    <td class="p-3">Limitado</td>
+                    <td class="p-3">Médio</td>
+                  </tr>
+                  <tr class="border-t border-gray-700 bg-gray-800/30">
+                    <td class="p-3"><strong>PIX (Microsoft)</strong></td>
+                    <td class="p-3">Análise DirectX</td>
+                    <td class="p-3">Microsoft</td>
+                    <td class="p-3">Completo</td>
+                    <td class="p-3">Muito alto</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            
+            <h4 class="text-white font-bold mb-3 mt-6">Futuro das APIs Gráficas e HAGS</h4>
+            <p class="mb-4 text-gray-300">
+              A próxima geração de APIs gráficas será projetada considerando o HAGS como padrão:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+              <li><strong>DirectX 13 (hipotético):</strong> Integração ainda mais profunda com HAGS</li>
+              <li><strong>Vulkan NextGen:</strong> Extensiones específicas para escalonamento por hardware</li>
+              <li><strong>Universal GPU Compute:</strong> Padronização de recursos de computação paralela</li>
+              <li><strong>AI-Integrated Rendering:</strong> Aprendizado de máquina para otimização de pipeline</li>
+            </ul>
+            `
+        }
+    ];
+
     const faqItems = [
         {
             question: "HAGS funciona em notebooks?",
@@ -638,6 +1025,7 @@ export default function GPUAccelerationGuide() {
             author="Equipe Técnica Voltris"
             lastUpdated="2026-01-20"
             contentSections={contentSections}
+            advancedContentSections={advancedContentSections}
             summaryTable={summaryTable}
             faqItems={faqItems}
             externalReferences={externalReferences}

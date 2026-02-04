@@ -246,6 +246,153 @@ export default function ResolverErrosWindowsGuide() {
       ]
     },
     {
+      title: "Soluções Avançadas para Erros Específicos",
+      content: "",
+      subsections: [
+        {
+          subtitle: "Erros de Driver Críticos",
+          content: `
+            <p class="mb-4">Erros de driver são uma das causas mais comuns de problemas no Windows:</p>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Soluções para Problemas de Driver</h4>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Abra o Gerenciador de Dispositivos (<code class="bg-[#2a2a2e] px-2 py-1 rounded">devmgmt.msc</code>)</li>
+              <li>Procure dispositivos com ícone amarelo (alerta) ou vermelho (erro)</li>
+              <li>Clique com botão direito e selecione "Atualizar driver"</li>
+              <li>Selecione "Pesquisar automaticamente por drivers"</li>
+              <li>Se o problema persistir, desinstale o driver e reinstale</li>
+              <li>Visite o site do fabricante para baixar drivers mais recentes</li>
+              <li>Para drivers de vídeo, use o DDU (Display Driver Uninstaller) para limpeza completa antes de reinstalar</li>
+            </ol>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Driver Verifier</h4>
+            <p class="mb-4">Para identificar drivers problemáticos:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Abra Prompt de Comando como Administrador</li>
+              <li>Execute: <code class="bg-[#2a2a2e] px-2 py-1 rounded">verifier</code></li>
+              <li>Siga o assistente para selecionar os drivers a serem verificados</li>
+              <li>Reinicie o computador e observe se ocorrem erros</li>
+              <li>Este processo pode demorar e causar reinícios inesperados</li>
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">verifier /reset</code> para desativar após o diagnóstico</li>
+            </ol>
+          `
+        },
+        {
+          subtitle: "Problemas de Boot e Partição",
+          content: `
+            <p class="mb-4">Erros relacionados ao processo de inicialização do sistema:</p>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Soluções para Problemas de Boot</h4>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>No Prompt de Comando como Administrador, execute:</li>
+              <li><code class="bg-[#2a2a2e] px-2 py-1 rounded">bootrec /fixmbr</code> - Repara o Master Boot Record</li>
+              <li><code class="bg-[#2a2a2e] px-2 py-1 rounded">bootrec /fixboot</code> - Repara o setor de boot</li>
+              <li><code class="bg-[#2a2a2e] px-2 py-1 rounded">bootrec /rebuildbcd</code> - Reconstrói o banco de dados de inicialização</li>
+              <li>Verifique se o disco de inicialização está definido corretamente na BIOS/UEFI</li>
+              <li>Verifique a integridade do disco com <code class="bg-[#2a2a2e] px-2 py-1 rounded">chkdsk C: /f /r</code></li>
+              <li>Para sistemas UEFI, verifique se o arquivo <code class="bg-[#2a2a2e] px-2 py-1 rounded">\EFI\Microsoft\Boot\BCD</code> existe</li>
+            </ol>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Ferramentas de Diagnóstico de Boot</h4>
+            <p class="mb-4">Verifique o estado do sistema de inicialização:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">msinfo32</code> para verificar o status de inicialização</li>
+              <li>Use <code class="bg-[#2a2a2e] px-2 py-1 rounded">bcdedit</code> para visualizar e editar configurações de inicialização</li>
+              <li>Verifique se o disco de inicialização está configurado como ativo</li>
+              <li>Analise o tempo de inicialização com <code class="bg-[#2a2a2e] px-2 py-1 rounded">xperf</code> para identificar gargalos</li>
+            </ol>
+          `
+        },
+        {
+          subtitle: "Erros de Registro e Configurações do Sistema",
+          content: `
+            <p class="mb-4">Problemas no registro do Windows podem causar diversos erros:</p>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Soluções para Erros de Registro</h4>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /scannow</code> primeiro para verificar arquivos de sistema</li>
+              <li>Use o Editor do Registro (<code class="bg-[#2a2a2e] px-2 py-1 rounded">regedit</code>) com cuidado para navegar no registro</li>
+              <li>Faça backup do registro antes de fazer alterações</li>
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /scanfile=filename</code> para reparar arquivos específicos</li>
+              <li>Use <code class="bg-[#2a2a2e] px-2 py-1 rounded">dism /online /cleanup-image /scanhealth</code> para verificar integridade da imagem</li>
+              <li>Se necessário, execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /offlinewim</code> para reparar imagem offline</li>
+            </ol>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Verificação de Integridade do Sistema</h4>
+            <p class="mb-4">Métodos avançados para verificar e reparar o sistema:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Verifique a integridade do sistema com <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /verifyonly</code></li>
+              <li>Use <code class="bg-[#2a2a2e] px-2 py-1 rounded">sigverif</code> para verificar assinaturas digitais de arquivos</li>
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">dism /online /cleanup-image /checkhealth</code> para verificar saúde da imagem</li>
+              <li>Use <code class="bg-[#2a2a2e] px-2 py-1 rounded">msconfig</code> para verificar configurações de inicialização</li>
+            </ol>
+          `
+        }
+      ]
+    },
+    {
+      title: "Diagnóstico de Hardware e Testes Avançados",
+      content: "",
+      subsections: [
+        {
+          subtitle: "Testes de Hardware",
+          content: `
+            <p class="mb-4">Muitos erros do Windows são causados por problemas de hardware:</p>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Testes de Memória RAM</h4>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Use o Diagnóstico de Memória do Windows (<code class="bg-[#2a2a2e] px-2 py-1 rounded">mdsched.exe</code>)</li>
+              <li>Execute o MemTest86+ em USB bootável para teste completo</li>
+              <li>Teste cada módulo de RAM individualmente</li>
+              <li>Verifique configurações de memória na BIOS/UEFI</li>
+              <li>Reduza temporariamente a velocidade da RAM para testar estabilidade</li>
+            </ol>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Testes de Disco Rígido</h4>
+            <p class="mb-4">Verificação de integridade do armazenamento:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">chkdsk C: /f /r</code> para verificar setores defeituosos</li>
+              <li>Use CrystalDiskInfo para monitorar atributos SMART do disco</li>
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">wmic diskdrive get status</code> para verificar status do disco</li>
+              <li>Use ferramentas como HD Tune para testes completos de disco</li>
+              <li>Realize backup imediato se forem detectados problemas de disco</li>
+            </ol>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Testes de Temperatura e Superaquecimento</h4>
+            <p class="mb-4">Monitoramento térmico para evitar problemas:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Use HWMonitor, Core Temp ou SpeedFan para verificar temperaturas</li>
+              <li>Monitore temperaturas da CPU, GPU e disco rígido</li>
+              <li>Valores críticos: CPU > 85°C, GPU > 85°C, HDD > 50°C</li>
+              <li>Verifique se ventoinhas estão funcionando corretamente</li>
+              <li>Lave o computador para remover poeira que impede refrigeração</li>
+            </ol>
+          `
+        },
+        {
+          subtitle: "Ferramentas de Diagnóstico do Windows",
+          content: `
+            <p class="mb-4">O Windows inclui várias ferramentas avançadas de diagnóstico:</p>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Windows Memory Diagnostic</h4>
+            <p class="mb-4">Teste de memória integrado ao sistema:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">mdsched.exe</code> no Prompt de Comando</li>
+              <li>Escolha "Reiniciar agora e verificar problemas"</li>
+              <li>O teste será realizado na próxima inicialização</li>
+              <li>Resultados estarão disponíveis no Visualizador de Eventos</li>
+            </ol>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Reliability Monitor</h4>
+            <p class="mb-4">Monitoramento de confiabilidade do sistema:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">perfmon /rel</code> para abrir o Reliability Monitor</li>
+              <li>Verifique a pontuação de confiabilidade do sistema</li>
+              <li>Analise eventos críticos e avisos recentes</li>
+              <li>Compare eventos com data e hora de problemas</li>
+            </ol>
+            <h4 class="text-xl font-bold text-white mb-2 mt-4">Performance Monitor</h4>
+            <p class="mb-4">Monitoramento avançado de desempenho:</p>
+            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+              <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">perfmon</code> para abrir o Monitor de Desempenho</li>
+              <li>Configure contadores para CPU, RAM, Disco e Rede</li>
+              <li>Analise padrões de uso durante problemas</li>
+              <li>Exporte dados para análise detalhada</li>
+            </ol>
+          `
+        }
+      ]
+    },
+    {
       title: "Quando Buscar Ajuda Profissional",
       content: `<p class="mb-4">Alguns problemas são muito complexos ou requerem conhecimento técnico avançado:</p>`,
       subsections: [
@@ -292,6 +439,58 @@ export default function ResolverErrosWindowsGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "O que significa a Tela Azul da Morte (BSOD)?",
+      answer: "A Tela Azul da Morte (BSOD) é uma mensagem de erro do Windows que aparece quando o sistema encontra um erro crítico que não pode ser recuperado. Ela geralmente indica problemas graves com drivers, hardware ou arquivos do sistema. O código de erro exibido ajuda a identificar a causa raiz do problema."
+    },
+    {
+      question: "Como posso prevenir erros do Windows?",
+      answer: "Para prevenir erros do Windows, mantenha o sistema atualizado com as últimas atualizações de segurança, use antivírus confiável, faça varreduras regulares de disco e memória, mantenha o sistema refrigerado e evite instalar software de fontes desconhecidas. Também é importante fazer backups regulares dos dados importantes."
+    },
+    {
+      question: "O que devo fazer antes de tentar resolver erros do Windows?",
+      answer: "Antes de tentar resolver erros do Windows, é importante anotar mensagens de erro exatas, código de erro (se houver), e condições em que o erro ocorreu. Faça backup de dados importantes e documente as alterações recentes no sistema. Isso ajuda a identificar a causa raiz e a reverter alterações se necessário."
+    },
+    {
+      question: "Quando devo considerar formatar o computador?",
+      answer: "Considere formatar o computador quando todos os métodos de solução de problemas tiverem sido esgotados e o sistema continuar instável. Isso inclui casos de infecção por malware resistente, corrupção grave do sistema operacional, ou quando o tempo necessário para reparar o sistema excede o tempo de reinstalação limpa."
+    },
+    {
+      question: "Como posso verificar se um erro é causado por hardware ou software?",
+      answer: "Para distinguir entre erro de hardware e software, realize testes de hardware como memória (MemTest86), disco (CrystalDiskInfo), e temperatura (HWMonitor). Se os testes de hardware passarem, o problema provavelmente é de software. Erros que ocorrem em diferentes sistemas operacionais instalados no mesmo hardware sugerem problemas de hardware."
+    },
+    {
+      question: "O que é o modo de segurança e quando devo usá-lo?",
+      answer: "O modo de segurança é uma opção de inicialização do Windows que carrega apenas os drivers e serviços essenciais. Use o modo de segurança para diagnosticar problemas de driver, remover malware, ou realizar reparos no sistema quando o Windows não inicializa normalmente. É uma ferramenta valiosa para solução de problemas."
+    },
+    {
+      question: "Como posso restaurar o sistema para um ponto anterior?",
+      answer: "Para restaurar o sistema, vá para Configurações > Atualização e Segurança > Recuperação > Iniciar > Solução de Problemas > Opções Avançadas > Restauração do Sistema. Selecione um ponto de restauração criado antes do problema ocorrer. O sistema restaurará os arquivos do sistema e configurações para aquele ponto, mas manterá seus arquivos pessoais."
+    },
+    {
+      question: "O que é o SFC e como ele ajuda a resolver erros?",
+      answer: "SFC (System File Checker) é uma ferramenta do Windows que verifica e repara arquivos do sistema corrompidos. Execute 'sfc /scannow' no Prompt de Comando como Administrador. O SFC compara os arquivos do sistema com versões corretas e substitui arquivos corrompidos ou ausentes, ajudando a resolver muitos erros relacionados a arquivos do sistema."
+    },
+    {
+      question: "Como posso verificar a integridade do disco rígido?",
+      answer: "Para verificar a integridade do disco, execute 'chkdsk C: /f /r' no Prompt de Comando como Administrador. Isso verifica o disco quanto a erros lógicos e físicos. Você também pode usar ferramentas como CrystalDiskInfo para monitorar os atributos SMART do disco, que indicam a saúde do disco e possíveis falhas iminentes."
+    },
+    {
+      question: "O que devo fazer se o Windows não inicializar?",
+      answer: "Se o Windows não inicializar, tente inicializar em modo de recuperação pressionando Shift durante a inicialização. Use a opção 'Reparar o computador' para acessar ferramentas de diagnóstico. Tente a Restauração do Sistema, Reparação Automática ou use o Prompt de Comando para executar comandos como 'sfc /scannow' ou 'bootrec /fixmbr'. Se nada funcionar, considere reinstalar o sistema operacional."
+    }
+  ];
+  
+  const externalReferences = [
+    { name: "Microsoft Support - Windows Errors", url: "https://support.microsoft.com/en-us/windows/windows-error-messages-and-codes-2f08695f-1943-43cd-a1e5-bccc787960aa" },
+    { name: "Windows Diagnostic Tools", url: "https://docs.microsoft.com/en-us/windows/client-management/troubleshoot-windows-errors" },
+    { name: "Blue Screen Error Reference", url: "https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/blue-screen-error-reference" },
+    { name: "System File Checker (SFC) Guide", url: "https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sfc" },
+    { name: "DISM Command-Line Options", url: "https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism/dism-operating-system-package-servicing" },
+    { name: "Windows Hardware Compatibility", url: "https://devicecatalog.azure.com/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/formatacao-windows",
@@ -302,6 +501,21 @@ export default function ResolverErrosWindowsGuide() {
       href: "/guias/otimizacao-performance",
       title: "Otimização de Performance",
       description: "Melhore o desempenho e evite muitos erros com otimização."
+    },
+    {
+      href: "/guias/backup-dados",
+      title: "Backup de Dados",
+      description: "Proteja seus dados antes de tentar correções complexas."
+    },
+    {
+      href: "/guias/instalacao-limpa-drivers-nvidia-amd",
+      title: "Instalação de Drivers",
+      description: "Aprenda a instalar drivers corretamente para evitar conflitos."
+    },
+    {
+      href: "/guias/limpeza-computador",
+      title: "Limpeza do Computador",
+      description: "Mantenha seu sistema limpo para melhor desempenho e estabilidade."
     }
   ];
 
@@ -310,9 +524,13 @@ export default function ResolverErrosWindowsGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="20 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="45 minutos"
+      difficultyLevel="Avançado"
+      author="Equipe Técnica Voltris"
+      lastUpdated="2026-01-20"
       contentSections={contentSections}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
       relatedGuides={relatedGuides}
     />
   );

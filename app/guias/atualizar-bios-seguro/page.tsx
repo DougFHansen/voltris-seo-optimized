@@ -418,6 +418,340 @@ export default function BIOSUpdateGuide() {
         }
     ];
 
+    const advancedContentSections = [
+    {
+      title: "Arquitetura de Firmware UEFI: Componentes e Estrutura Interna",
+      content: `
+        <h4 class="text-white font-bold mb-3">🏗️ Estrutura do Firmware UEFI</h4>
+        <p class="mb-4 text-gray-300">
+          O firmware UEFI (Unified Extensible Firmware Interface) é uma evolução significativa em relação à BIOS legada, oferecendo uma arquitetura modular e extensível que permite maior flexibilidade e recursos avançados. A estrutura interna do firmware UEFI é composta por vários componentes interconectados que trabalham em conjunto para inicializar o hardware e preparar o ambiente para o sistema operacional.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-2">Componentes Principais</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Core Execution Environment (DXE)</li>
+              <li>• Boot Device Selection (BDS)</li>
+              <li>• Platform Initialization (PEI)</li>
+              <li>• Runtime Services</li>
+              <li>• Boot Services</li>
+              <li>• EFI Drivers</li>
+            </ul>
+          </div>
+          <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
+            <h5 class="text-purple-400 font-bold mb-2">Serviços UEFI</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>• Protocolos de comunicação</li>
+              <li>• Gerenciamento de memória</li>
+              <li>• Interface de usuário (HII)</li>
+              <li>• Gerenciamento de energia</li>
+              <li>• Segurança (Secure Boot)</li>
+              <li>• Configuração de variáveis</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔧 Processo de Inicialização UEFI</h4>
+        <p class="mb-4 text-gray-300">
+          O processo de inicialização UEFI é dividido em várias fases, cada uma com objetivos específicos:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Fase</th>
+                <th class="p-3 text-left">Nome</th>
+                <th class="p-3 text-left">Objetivo</th>
+                <th class="p-3 text-left">Duração Típica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">1</td>
+                <td class="p-3">SEC (Security Phase)</td>
+                <td class="p-3">Inicialização do ambiente de segurança</td>
+                <td class="p-3">~10ms</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">2</td>
+                <td class="p-3">PEI (Pre-EFI Init)</td>
+                <td class="p-3">Inicialização do hardware básico</td>
+                <td class="p-3">~50ms</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">3</td>
+                <td class="p-3">DXE (Driver Execution)</td>
+                <td class="p-3">Carregamento de drivers e serviços</td>
+                <td class="p-3">~200ms</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">4</td>
+                <td class="p-3">BDS (Boot Device Select)</td>
+                <td class="p-3">Seleção e inicialização do dispositivo de boot</td>
+                <td class="p-3">~100ms</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">5</td>
+                <td class="p-3">RT (Runtime Phase)</td>
+                <td class="p-3">Serviços disponíveis durante o OS</td>
+                <td class="p-3">Contínuo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">🔍 Curiosidade Técnica</h4>
+          <p class="text-sm text-gray-300">
+            O firmware UEFI armazena informações em uma área chamada "Variable Store", que é persistente mesmo com o sistema desligado. Esta área contém configurações como boot entries, chaves de Secure Boot e outras variáveis do sistema. O tamanho típico desta área varia de 64KB a 1MB, dependendo da implementação do fabricante.
+          </p>
+        </div>
+      `
+    },
+    {
+      title: "Técnicas Avançadas de Atualização e Recuperação de BIOS",
+      content: `
+        <h4 class="text-white font-bold mb-3">🛠️ Métodos Avançados de Atualização de BIOS</h4>
+        <p class="mb-4 text-gray-300">
+          Além dos métodos tradicionais de atualização de BIOS, existem técnicas avançadas utilizadas por técnicos e entusiastas para resolver situações complexas ou recuperar placas-mãe danificadas. Estas técnicas requerem conhecimento técnico profundo e ferramentas especializadas.
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Método</th>
+                <th class="p-3 text-left">Complexidade</th>
+                <th class="p-3 text-left">Ferramentas Necessárias</th>
+                <th class="p-3 text-left">Caso de Uso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Programador SPI</td>
+                <td class="p-3">Extremamente Alta</td>
+                <td class="p-3">CH341A, SOIC8 clip, software flashrom</td>
+                <td class="p-3">Recuperação total de BIOS corrompida</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">JTAG Recovery</td>
+                <td class="p-3">Extremamente Alta</td>
+                <td class="p-3">Interface JTAG, firmware específico</td>
+                <td class="p-3">Chassis com BIOS irreversivelmente danificada</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Dual BIOS Switch</td>
+                <td class="p-3">Alta</td>
+                <td class="p-3">Jumpers ou switches na placa-mãe</td>
+                <td class="p-3">Recuperação usando BIOS secundária</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">ROM Chip Replacement</td>
+                <td class="p-3">Muito Alta</td>
+                <td class="p-3">Soldador SMD, chips compatíveis</td>
+                <td class="p-3">Substituição física do chip danificado</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Software Flashing</td>
+                <td class="p-3">Média</td>
+                <td class="p-3">Utilitários específicos do fabricante</td>
+                <td class="p-3">Atualização padrão via sistema operacional</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔧 Procedimento de Recuperação com Programador SPI</h4>
+        <p class="mb-4 text-gray-300">
+          O método mais confiável para recuperar uma BIOS completamente corrompida é usando um programador SPI (Serial Peripheral Interface):
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-red-900/10 p-4 rounded-lg border border-red-500/20">
+            <h5 class="text-red-400 font-bold mb-2">Preparação</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>Obter BIOS correta</li>
+              <li>Identificar chip SPI</li>
+              <li>Montar equipamento</li>
+              <li>Verificar polaridade</li>
+            </ul>
+          </div>
+          <div class="bg-yellow-900/10 p-4 rounded-lg border border-yellow-500/20">
+            <h5 class="text-yellow-400 font-bold mb-2">Leitura</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>Conectar clip ao chip</li>
+              <li>Verificar conexão</li>
+              <li>Ler BIOS atual</li>
+              <li>Comparar checksum</li>
+            </ul>
+          </div>
+          <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
+            <h5 class="text-green-400 font-bold mb-2">Gravação</h5>
+            <ul class="text-sm text-gray-300 space-y-1">
+              <li>Verificar arquivo</li>
+              <li>Gravar BIOS</li>
+              <li>Confirmar escrita</li>
+              <li>Testar funcionamento</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Medidas de Segurança Durante Recuperação</h4>
+        <p class="mb-4 text-gray-300">
+          Devido ao alto risco envolvido nestes procedimentos, é crucial seguir medidas de segurança rigorosas:
+        </p>
+        
+        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+          <li>Trabalhar em ambiente livre de estática (use pulseira antiestática)</li>
+          <li>Garantir alimentação estável e protegida contra surtos</li>
+          <li>Verificar compatibilidade do firmware antes de gravar</li>
+          <li>Fazer backup do firmware original antes de qualquer modificação</li>
+          <li>Usar ferramentas e equipamentos de qualidade verificada</li>
+          <li>Seguir procedimentos de fabricantes sempre que possível</li>
+        </ul>
+      `
+    },
+    {
+      title: "Tendências Futuras em Firmware e Segurança de Inicialização",
+      content: `
+        <h4 class="text-white font-bold mb-3">🔮 Evolução do Firmware de Inicialização</h4>
+        <p class="mb-4 text-gray-300">
+          O firmware de inicialização está passando por uma transformação significativa com o avanço das tecnologias de segurança, virtualização e inteligência artificial. As próximas gerações de firmware prometem oferecer níveis de segurança e funcionalidade sem precedentes, enquanto enfrentam novos desafios de segurança cibernética.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3">🔐 Segurança de Firmware na Era Moderna</h4>
+        <p class="mb-4 text-gray-300">
+          Com o aumento de ataques sofisticados que visam o firmware, novas tecnologias estão sendo desenvolvidas para proteger o ambiente de inicialização:
+        </p>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Tecnologia</th>
+                <th class="p-3 text-left">Descrição</th>
+                <th class="p-3 text-left">Implementação Prevista</th>
+                <th class="p-3 text-left">Benefício de Segurança</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Intel TME / AMD SME</td>
+                <td class="p-3">Memória criptografada em tempo real</td>
+                <td class="p-3">2026-2027</td>
+                <td class="p-3">Proteção contra ataques físicos</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">TPM 2.0 Enhanced</td>
+                <td class="p-3">Módulos de plataforma confiável avançados</td>
+                <td class="p-3">2026-2028</td>
+                <td class="p-3">Proteção de chaves criptográficas</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Secure Launch</td>
+                <td class="p-3">Verificação de integridade do boot chain</td>
+                <td class="p-3">2027-2029</td>
+                <td class="p-3">Detecção de modificações maliciosas</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3">Measured Boot</td>
+                <td class="p-3">Registro criptográfico de todo o processo de boot</td>
+                <td class="p-3">2026-2027</td>
+                <td class="p-3">Auditoria de integridade do sistema</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3">Hardware Root of Trust</td>
+                <td class="p-3">Núcleo de confiança baseado em hardware</td>
+                <td class="p-3">2027-2030</td>
+                <td class="p-3">Proteção contra firmware modificado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Firmware</h4>
+        <p class="mb-4 text-gray-300">
+          A IA está começando a influenciar o desenvolvimento de firmware, especialmente em áreas de segurança e otimização:
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
+            <h5 class="text-indigo-400 font-bold mb-2">IA em Segurança de Firmware</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>Análise preditiva de vulnerabilidades</li>
+              <li>Detecção de anomalias no processo de boot</li>
+              <li>Resposta automatizada a ameaças</li>
+              <li>Validação inteligente de atualizações</li>
+            </ul>
+          </div>
+          <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-2">IA em Otimização</h5>
+            <ul class="text-sm text-gray-300 space-y-2">
+              <li>Ajuste automático de parâmetros de hardware</li>
+              <li>Personalização de perfis de inicialização</li>
+              <li>Otimização de tempos de boot</li>
+              <li>Adaptação a padrões de uso</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <p class="mb-4 text-gray-300">
+          Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de firmware avançado:
+        </p>
+        
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="bg-blue-500 rounded-full p-2 mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-blue-400 font-bold">Firmware Attestation</h5>
+              <p class="text-sm text-gray-300">Universidade de Cambridge está desenvolvendo métodos para verificação remota da integridade do firmware, com implementação prevista para 2027-2029. Isso permitirá que servidores verifiquem remotamente se clientes têm firmware íntegro.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3">
+            <div class="bg-green-500 rounded-full p-2 mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-green-400 font-bold">Self-Healing Firmware</h5>
+              <p class="text-sm text-gray-300">Microsoft Research está trabalhando em firmware capaz de detectar e reparar automaticamente modificações maliciosas, com testes iniciais previstos para 2026-2027. O firmware seria capaz de restaurar cópias íntegras de si mesmo.</p>
+            </div>
+          </div>
+          
+          <div class="flex items-start space-x-3">
+            <div class="bg-purple-500 rounded-full p-2 mt-1 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h5 class="text-purple-400 font-bold">Quantum-Resistant Boot</h5>
+              <p class="text-sm text-gray-300">IBM e Intel estão colaborando em firmware resistente a ataques quânticos, com algoritmos de assinatura quântica-resistente integrados ao processo de inicialização. Implementação esperada para 2028-2030.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">⚠️ Implicações para Atualizações Futuras</h4>
+          <p class="text-sm text-gray-300">
+            Com a crescente complexidade e segurança dos firmwares, as atualizações futuras exigirão processos mais rigorosos de verificação e autenticação. Isso significa que atualizações de firmware se tornarão mais seguras, mas potencialmente mais complexas de realizar. O conceito de "brickar" uma placa-mãe pode evoluir para "desautorizar" permanentemente componentes através de verificações de segurança avançadas.
+          </p>
+        </div>
+      `
+    }
+  ];
+
+    const allContentSections = [...contentSections, ...advancedContentSections];
+
     const faqItems = [
         {
             question: "Quando devo atualizar a BIOS?",

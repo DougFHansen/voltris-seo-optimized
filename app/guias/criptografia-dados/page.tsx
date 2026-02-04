@@ -243,6 +243,239 @@ export default function EncryptionGuide() {
     }
   ];
 
+  const advancedContentSections = [
+    {
+      title: "Criptografia e Protocolos de Segurança: Fundamentos Matemáticos",
+      content: `
+        <p class="mb-4 text-gray-300">
+          A criptografia moderna baseia-se em princípios matemáticos complexos que garantem a segurança dos dados. Em 2026, os algoritmos utilizados são baseados em problemas matemáticos difíceis de resolver, como a fatoração de números primos grandes ou o problema do logaritmo discreto.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔐 Tipos de Criptografia e Suas Características</h4>
+        <div class="overflow-x-auto mb-6">
+          <table class="w-full text-sm text-gray-300 border-collapse">
+            <thead>
+              <tr class="bg-white/5 border-b border-white/10">
+                <th class="px-4 py-3 text-left text-white font-bold">Tipo</th>
+                <th class="px-4 py-3 text-left text-white font-bold">Características</th>
+                <th class="px-4 py-3 text-left text-white font-bold">Vantagens</th>
+                <th class="px-4 py-3 text-left text-white font-bold">Desvantagens</th>
+                <th class="px-4 py-3 text-left text-white font-bold">Aplicações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Simétrica (AES)</strong></td>
+                <td class="px-4 py-3">Mesma chave para criptografar/descriptografar</td>
+                <td class="px-4 py-3 text-emerald-400">Rápida, eficiente, amplamente adotada</td>
+                <td class="px-4 py-3 text-amber-400">Problema de distribuição de chaves</td>
+                <td class="px-4 py-3">Criptografia de disco, arquivos</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Assimétrica (RSA/ECC)</strong></td>
+                <td class="px-4 py-3">Chaves pública e privada diferentes</td>
+                <td class="px-4 py-3 text-emerald-400">Solução para distribuição de chaves</td>
+                <td class="px-4 py-3 text-amber-400">Mais lenta, maior consumo de recursos</td>
+                <td class="px-4 py-3">Troca de chaves, assinaturas digitais</td>
+              </tr>
+              <tr class="border-b border-white/5 hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Híbrida (TLS)</strong></td>
+                <td class="px-4 py-3">Combina simétrica e assimétrica</td>
+                <td class="px-4 py-3 text-emerald-400">O melhor dos dois mundos</td>
+                <td class="px-4 py-3 text-amber-400">Complexidade de implementação</td>
+                <td class="px-4 py-3">Conexões seguras (HTTPS, VPN)</td>
+              </tr>
+              <tr class="hover:bg-white/5">
+                <td class="px-4 py-3"><strong class="text-[#31A8FF]">Pós-Quântica</strong></td>
+                <td class="px-4 py-3">Resistente a computação quântica</td>
+                <td class="px-4 py-3 text-emerald-400">Preparação para ameaça quântica</td>
+                <td class="px-4 py-3 text-amber-400">Novos algoritmos em padronização</td>
+                <td class="px-4 py-3">Futuro da criptografia</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🧠 Fundamentos Matemáticos</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-3">Teoria dos Números</h5>
+            <p class="text-gray-300 text-sm">
+              Base para algoritmos como RSA, baseados na dificuldade de fatorar números compostos grandes em seus fatores primos.
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+              <li>Função totiente de Euler</li>
+              <li>Teorema de Fermat</li>
+              <li>Testes de primalidade</li>
+              <li>Curvas elípticas</li>
+            </ul>
+          </div>
+          
+          <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
+            <h5 class="text-purple-400 font-bold mb-3">Álgebra Linear e Campos Finitos</h5>
+            <p class="text-gray-300 text-sm">
+              Utilizados em algoritmos como AES, que opera em campos finitos GF(2^8).
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+              <li>Operações em GF(2^8)</li>
+              <li>Substituição não-linear</li>
+              <li>Transformações lineares</li>
+              <li>MixColumns e ShiftRows</li>
+            </ul>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "Implementações Avançadas de Criptografia em Sistemas Operacionais",
+      content: `
+        <p class="mb-4 text-gray-300">
+          Os sistemas operacionais modernos implementam camadas complexas de criptografia integradas ao kernel, drivers e serviços de sistema. Em 2026, a criptografia não é mais uma funcionalidade adicional, mas sim um componente fundamental da arquitetura de segurança.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Arquitetura de Criptografia no Windows 11</h4>
+        <div class="space-y-6">
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Kernel CryptoServices</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Camada de abstração que fornece primitivas criptográficas para componentes do sistema:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+              <li><strong>CNG (Cryptography Next Generation):</strong> API moderna para operações criptográficas</li>
+              <li><strong>BCrypt:</strong> Interface para algoritmos de criptografia, hashing e geração de chaves</li>
+              <li><strong>NCrypt:</strong> Interface para provedores de chaves de hardware (TPM, smart cards)</li>
+              <li><strong>WinTrust:</strong> Validação de assinaturas digitais e políticas de confiança</li>
+            </ul>
+          </div>
+          
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
+            <h5 class="text-[#31A8FF] font-bold mb-3">Driver de Sistema de Arquivos Criptografado (EFS)</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Componente do NTFS que criptografa arquivos individualmente:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+              <li>Utiliza criptografia híbrida (RSA para chave de sessão, DESX para dados)</li>
+              <li>Chaves armazenadas no repositório de chaves do usuário</li>
+              <li>Recuperação de chaves possível via agente de recuperação</li>
+              <li>Integração com Active Directory para políticas de empresa</li>
+            </ul>
+          </div>
+          
+          <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
+            <h5 class="text-[#31A8FF] font-bold mb-3">BitLocker e TPM Integration</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Sistema de criptografia de disco com integração ao Trusted Platform Module:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+              <li>Proteção de inicialização com validação de estado do sistema</li>
+              <li>Armazenamento seguro de chaves no TPM</li>
+              <li>Proteção contra ataques de inicialização fria</li>
+              <li>Proteção de runtime (VBS, Hypervisor-protected code integrity)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔧 Implementações em Outros Sistemas</h4>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+          <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
+            <h5 class="text-white font-bold mb-3">Linux (LUKS)</h5>
+            <p class="text-gray-300 text-sm">
+              <strong>Linux Unified Key Setup</strong> é o padrão para criptografia de disco no Linux.
+            </p>
+          </div>
+          
+          <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
+            <h5 class="text-white font-bold mb-3">macOS (FileVault)</h5>
+            <p class="text-gray-300 text-sm">
+              Criptografia de disco baseada em XTS-AES 128 com chaves protegidas pelo Secure Enclave.
+            </p>
+          </div>
+          
+          <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
+            <h5 class="text-white font-bold mb-3">Android/iOS</h5>
+            <p class="text-gray-300 text-sm">
+              Criptografia baseada em hardware com chaves armazenadas em TEE (Trusted Execution Environment).
+            </p>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "Tendências Futuras em Criptografia e Segurança de Dados",
+      content: `
+        <p class="mb-4 text-gray-300">
+          Com o avanço da computação quântica e novas ameaças cibernéticas, a criptografia está em constante evolução. Em 2026, novas abordagens estão sendo desenvolvidas para enfrentar desafios emergentes e garantir a proteção dos dados no futuro.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">⚛️ Criptografia Pós-Quântica</h4>
+        <div class="space-y-6">
+          <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20">
+            <h5 class="text-amber-400 font-bold mb-3">Ameaça Quântica</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Computadores quânticos suficientemente poderosos poderão quebrar algoritmos clássicos como RSA e ECC usando o algoritmo de Shor:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+              <li><strong>Estimativa:</strong> 2030-2040 para computadores quânticos capazes de quebrar RSA-2048</li>
+              <li><strong>Impacto:</strong> Toda a infraestrutura criptográfica baseada em RSA/ECC seria comprometida</li>
+              <li><strong>Preparação:</strong> Transição para algoritmos resistentes a quânticos é essencial</li>
+            </ul>
+          </div>
+          
+          <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20">
+            <h5 class="text-emerald-400 font-bold mb-3">Algoritmos Pós-Quânticos em 2026</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              O NIST já padronizou os primeiros algoritmos pós-quânticos para substituir RSA e ECC:
+            </p>
+            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+              <li><strong>Kyber:</strong> Para estabelecimento de chaves (alternativa ao Diffie-Hellman)</li>
+              <li><strong>Dilithium:</strong> Para assinaturas digitais (alternativa ao RSA/ECDSA)</li>
+              <li><strong>FALCON:</strong> Alternativa mais leve para assinaturas digitais</li>
+              <li><strong>SPHINCS+:</strong> Assinatura baseada em hashes, como fallback</li>
+            </ul>
+          </div>
+        </div>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔍 Tendências Avançadas em 2026</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-3">Homomorphic Encryption</h5>
+            <p class="text-gray-300 text-sm">
+              Permite computação em dados criptografados sem descriptografá-los. Aplicações em nuvem segura e privacidade de dados.
+            </p>
+          </div>
+          
+          <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
+            <h5 class="text-purple-400 font-bold mb-3">Zero-Knowledge Proofs</h5>
+            <p class="text-gray-300 text-sm">
+              Técnicas que permitem provar a veracidade de uma afirmação sem revelar informações adicionais. Usadas em blockchain e privacidade.
+            </p>
+          </div>
+          
+          <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20">
+            <h5 class="text-rose-400 font-bold mb-3">Secure Multi-Party Computation</h5>
+            <p class="text-gray-300 text-sm">
+              Permite que múltiplas partes computem uma função conjunta sem revelar suas entradas privadas.
+            </p>
+          </div>
+          
+          <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
+            <h5 class="text-cyan-400 font-bold mb-3">Attribute-Based Encryption</h5>
+            <p class="text-gray-300 text-sm">
+              Forma avançada de criptografia que permite controles de acesso baseados em atributos.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-[#0A0A0F] border border-[#FF4B6B]/20 rounded-xl p-6 mt-6">
+          <h4 class="text-[#FF4B6B] font-bold mb-2">💡 Considerações para Implementação</h4>
+          <p class="text-sm text-gray-300">
+            A transição para criptografia pós-quântica é um processo gradual que exige planejamento cuidadoso. Organizações devem começar a preparar sua infraestrutura para suportar novos algoritmos enquanto mantêm compatibilidade com sistemas legados. A criptografia híbrida (clássica + pós-quântica) será uma abordagem comum durante a transição.
+          </p>
+        </div>
+      `
+    }
+  ];
+
   const faqItems = [
     {
       question: "Qual é a diferença entre criptografia e compressão de arquivos?",
@@ -335,6 +568,7 @@ export default function EncryptionGuide() {
       author="Equipe de Segurança Voltris"
       lastUpdated="2026-01-20"
       contentSections={contentSections}
+      advancedContentSections={advancedContentSections}
       summaryTable={summaryTable}
       faqItems={faqItems}
       externalReferences={externalReferences}
