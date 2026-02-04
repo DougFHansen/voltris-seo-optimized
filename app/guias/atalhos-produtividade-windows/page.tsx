@@ -181,7 +181,7 @@ export default function WindowsShortcutsGuide() {
           </thead>
           <tbody>
             <tr class="border-t border-gray-700">
-              <td class="p-3"><code>Alt + `</code> (acentuação grave)</td>
+              <td class="p-3"><code>Alt + &#96;</code> (acentuação grave)</td>
               <td class="p-3">Alternar entre janelas do mesmo aplicativo (ex: abas do Chrome)</td>
             </tr>
             <tr class="border-t border-gray-700 bg-gray-800/30">
