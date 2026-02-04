@@ -1,104 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "PUBG: O Guia Definitivo para Resolver Stuttering, Travadas e Aumentar FPS (2026)";
-const description = "Seu PUBG congela na hora do tiro? Aprenda as melhores Launch Options, como escolher entre DX11 Enhanced e DX12, e otimizações de memória RAM para um jogo liso.";
-const keywords = ['pubg stuttering fix', 'aumentar fps pubg 2026', 'pubg dx11 enhanced vs dx12', 'launch options pubg', 'islc pubg', 'limpar memoria ram pubg'];
+const title = "PUBG na Steam: Como resolver Travadas e Stuttering (2026)";
+const description = "Seu PUBG trava na hora da troca de tiro? Aprenda as melhores configurações gráficas e de sistema para rodar PUBG liso na Steam em 2026.";
+const keywords = [
+    'pubg steam fix stuttering 2026 tutorial',
+    'como aumentar fps pubg pc fraco 2026',
+    'pubg travando na mira como resolver guia',
+    'melhores configurações graficas pubg 2026 competetivo',
+    'pubg dx11 vs dx11 enhanced vs dx12 qual melhor'
+];
 
 export const metadata: Metadata = createGuideMetadata('pubg-steam-fix-stuttering-travadas', title, description, keywords);
 
-export default function PUBGGuide() {
+export default function PUBGStutterFixGuide() {
     const summaryTable = [
-        { label: "DirectX", value: "DX11 Enhanced" },
-        { label: "Render Scale", value: "100" },
-        { label: "Launch Option", value: "-USEALLAVAILABLE..." },
-        { label: "RAM Fix", value: "ISLC" }
+        { label: "Versão DirectX", value: "DirectX 11 Enhanced (Recomendado)" },
+        { label: "Configuração Chave", value: "Render Scale (100% ou menos)" },
+        { label: "Check de Hardware", value: "SSD é obrigatório para cidades" },
+        { label: "Dificuldade", value: "Médio" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: Por que o PUBG trava tanto?",
+            title: "O problema crônico do PUBG",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-            PlayerUnknown's Battlegrounds é famoso por sua má otimização. Stutters (micro-travamentos) geralmente ocorrem por três motivos: Compilação de Shaders, Falta de RAM (Memory Leak) ou uso incorreto da API DirectX.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Mesmo em 2026, **PUBG: Battlegrounds** continua sendo um jogo extremamente pesado para o processador (CPU) devido ao seu mapa aberto e física complexa. O famoso "stuttering" (aquelas travadinhas de milissegundos) ocorre principalmente quando o jogo tenta carregar novas texturas de prédios ou quando muitos jogadores se encontram no mesmo local (Hot Drops). Otimizar o PUBG exige equilibrar a carga entre o processador e a placa de vídeo.
         </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "1. Escolhendo o DirectX Correto",
-            content: `
-        <p class="mb-4 text-gray-300">Nas configurações gráficas, você tem três opções. Escolher a errada = Metade do FPS.</p>
-        
-        <div class="space-y-4">
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-red-500">
-                <strong class="text-white block">DirectX 11 (Padrão)</strong>
-                <span class="text-gray-400 text-sm">Estável, mas antigo. Bom para placas muito velhas (GTX 750 Ti).</span>
-            </div>
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-green-500">
-                <strong class="text-white block">DirectX 11 Enhanced (Melhorado)</strong>
-                <span class="text-gray-400 text-sm"><strong>RECOMENDADO PARA 99% DOS JOGADORES.</strong> É a versão mais otimizada, com melhor gerenciamento de CPU e frametime mais liso. Use sempre esta.</span>
-            </div>
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-yellow-500">
-                <strong class="text-white block">DirectX 12</strong>
-                <span class="text-gray-400 text-sm">INSTÁVEL. Evite. Causa crashes e stuttering na maioria dos PCs, mesmo em high-end.</span>
-            </div>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "2. Launch Options Reais",
-            content: `
-        <p class="mb-4 text-gray-300">
-            A maioria das launch options da internet são placebo. Aqui estão as únicos que funcionam no PUBG em 2026.
-        </p>
-        <code class="block bg-[#121218] p-4 text-green-400 font-mono mb-4 select-all">
-            -USEALLAVAILABLECORES -refresh 144 -maxMem=13000 -malloc=system
-        </code>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 text-sm">
-            <li><strong>-USEALLAVAILABLECORES:</strong> Obriga a Unreal Engine a usar todos os núcleos da CPU.</li>
-            <li><strong>-refresh X:</strong> Coloque seus Hz (60, 144, 240).</li>
-            <li><strong>-maxMem=X:</strong> Limita quanta RAM o jogo pode pegar antes de limpar o lixo.
-                <br/>- Se tem 16GB RAM: 13000
-                <br/>- Se tem 8GB RAM: 7000
-                <br/>Isso força o Garbage Collector a rodar mais vezes e evita o estouro de memória.
-            </li>
-            <li><strong>-malloc=system:</strong> Deixa o Windows gerenciar a alocação de memória (melhor que o jogo).</li>
-        </ul>
       `
         },
         {
-            title: "3. O Problema do Standby Memory (ISLC)",
+            title: "1. A Escolha do DirectX (O Segredo do FPS)",
             content: `
-            <p class="mb-4 text-gray-300">
-                O PUBG enche sua memória RAM de arquivos "Standby" (Em espera) e o Windows demora para liberar. Quando a RAM enche, o jogo trava.
-            </p>
-            <p class="text-gray-300 mb-4">
-                Baixe o programa <strong>ISLC (Intelligent Standby List Cleaner)</strong>.
-            </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm">
-                <li>Configure "The list size is at least": <strong>1024 MB</strong>.</li>
-                <li>Configure "Free memory is lower than": <strong>2048 MB</strong>.</li>
-                <li>Clique em Start.</li>
-            </ul>
-            <p class="text-gray-300 mt-2">
-                Deixe aberto enquanto joga. Ele vai limpar a memória automaticamente, acabando com as travadas de meio de partida.
-            </p>
-        `
+        <p class="mb-4 text-gray-300">Dentro das configurações gráficas do PUBG, você encontrará 3 opções:</p>
+        <ul className="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>DirectX 11:</strong> Estável, mas não usa todo o poder das placas modernas.</li>
+            <li><strong>DirectX 11 Enhanced:</strong> A melhor escolha em 2026. Oferece o melhor equilíbrio de FPS e estabilidade de frametime.</li>
+            <li><strong>DirectX 12:</strong> Promete mais frames, mas costuma causar 'stutter' (travadas) terríveis em muitas GPUs durante a compilação de shaders.</li>
+        </ul >
+      `
         },
         {
-            title: "4. Configurações Gráficas Específicas",
+            title: "2. Configurações para Ganhar Vantagem",
             content: `
-            <ul class="list-disc list-inside text-gray-300 space-y-2">
-                <li><strong>Escala de Renderização:</strong> Mantenha em <strong>100</strong>. Abaixo disso fica borrado, acima perde FPS.</li>
-                <li><strong>Anti-Aliasing:</strong> Muito Baixo (Para ver mais nítido) ou Médio.</li>
-                <li><strong>Pós-Processamento:</strong> Muito Baixo (Remove borrão de profundidade).</li>
-                <li><strong>Sombras:</strong> Muito Baixo (Essencial para ver inimigos na grama).</li>
-                <li><strong>Texturas:</strong> Médio (Para não ficar feio demais, consome pouca performance).</li>
-                <li><strong>Distância de Visão:</strong> Médio ou Baixo. (Jogadores renderizam na mesma distância independente dessa config, isso só afeta prédios/árvores).</li> 
-            </ul>
-        `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Preset Competitivo 2026:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Anti-Aliasing:</strong> Ultra (Ajuda a ver inimigos de longe sem serrilhado). <br/>
+                - <strong>View Distance:</strong> Ultra (Essencial para renderizar carros e jogadores distantes). <br/>
+                - <strong>Textures:</strong> Medium/High (Depende da sua VRAM). <br/>
+                - <strong>Post-Processing/Shadows/Foliage:</strong> Very Low (Retira sombras inúteis e mato que esconde o inimigo). <br/>
+                - <strong>V-Sync/Motion Blur:</strong> Sempre DESATIVADO para evitar input lag.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Solução de Travadas via Windows",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Desativando o Fullscreen Optimizations:</strong> 
+            <br/><br/>Vá na pasta do jogo, clique com o botão direito no executável <code>TslGame.exe</code> > Propriedades > Compatibilidade. Marque a caixa <strong>'Desativar otimizações de tela inteira'</strong> e clique em 'Alterar configurações de DPI alto' e marque a última caixa. Isso força o Windows a dar prioridade total ao processo do PUBG, reduzindo drasticamente as travadas de mira.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/limitar-fps-rivatuner-nvidia",
+            title: "Estabilizar Frametime",
+            description: "Use o RivaTuner para uma gameplay fluida."
+        },
+        {
+            href: "/guias/reduzir-ping-jogos-online",
+            title: "Reduzir Ping",
+            description: "Melhore a conexão nos servidores do PUBG."
+        },
+        {
+            href: "/guias/como-usar-ddu-driver-uninstaller",
+            title: "Limpeza de Drivers",
+            description: "Se o FPS caiu após um update de driver."
         }
     ];
 
@@ -108,9 +91,10 @@ export default function PUBGGuide() {
             description={description}
             keywords={keywords}
             estimatedTime="20 min"
-            difficultyLevel="Intermediário"
+            difficultyLevel="Médio"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

@@ -1,72 +1,83 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Genshin Impact travando no PC? Correção de Stuttering e Desbloqueio de FPS (2026)";
-const description = "Seu Genshin congela a cada 10 segundos? Aprenda a corrigir o Shader Compilation Stutter e como desbloquear o FPS acima de 60 com segurança.";
-const keywords = ['genshin impact stuttering fix', 'genshin fps unlocker 2026 ban', 'genshin travando pc gamer', 'dx11 shader cache genshin', 'otimizar genshin impact pc fraco', 'melhores graficos genshin'];
+const title = "Genshin Impact travando ou com Stuttering? Como resolver no PC";
+const description = "Seu Genshin Impact sofre com quedas de FPS ao trocar de personagem ou explorar o mapa? Aprenda a otimizar o cache de shaders e as configurações gráficas.";
+const keywords = [
+    'genshin impact stuttering fix pc 2026',
+    'como aumentar fps genshin impact pc fraco',
+    'genshin impact lag ao trocar personagem fix',
+    'otimizar genshin impact windows 11 2026',
+    'melhor configuração grafica genshin impact fps'
+];
 
 export const metadata: Metadata = createGuideMetadata('genshin-impact-stuttering-fix-pc', title, description, keywords);
 
-export default function GenshinGuide() {
+export default function GenshinFixGuide() {
     const summaryTable = [
-        { label: "Limite Padrão", value: "60 FPS" },
-        { label: "Tool", value: "Genshin FPS Unlocker" },
-        { label: "Risco", value: "Baixíssimo" },
-        { label: "Stutter Fix", value: "DX11 Cache" }
+        { label: "Check #1", value: "Shader Cache (Ilimitado na GPU)" },
+        { label: "Check #2", value: "V-Sync (Desativado no Jogo)" },
+        { label: "Check #3", value: "Densidade de Multidão (Baixo)" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "O Problema do Stuttering (Travadinhas)",
+            title: "Por que o Genshin Impact dá 'stuttering'?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Genshin Impact no PC sofre de um problema crônico: ele compila os efeitos visuais (shaders) na hora que eles aparecem, em vez de carregar antes. Isso causa uma micro-travada na primeira vez que você usa uma ult ou vê um inimigo novo.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Mesmo em PCs potentes, o Genshin Impact pode sofrer com pequenas travadas ao carregar texturas de novos ambientes ou efeitos de partículas de novos ataques (Burst). Isso acontece porque o jogo usa o motor Unity, que às vezes tem dificuldades em gerenciar o streaming de assets em tempo real a partir de HDs ou SSDs lentos.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          <strong>Solução:</strong> Infelizmente, a única solução real é jogar. Depois de uns 20 minutos rodando pelo mapa, o cache é criado e o jogo fica liso. Mas você pode acelerar isso garantindo que seu driver de vídeo tenha o "Shader Cache" configurado para ILIMITADO no painel da NVIDIA.
-        </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Como Desbloquear FPS (Acima de 60)",
+            title: "1. Otimização do Cache de Shaders (NVIDIA/AMD)",
             content: `
-        <p class="mb-4 text-gray-300">
-            A HoYoverse teima em travar o jogo em 60 FPS, mesmo em PCs de R$ 20.000.
-        </p>
-        <div class="bg-gray-800 p-6 rounded-xl border border-purple-500 mb-6">
-            <h4 class="text-white font-bold mb-2">Genshin Impact FPS Unlocker</h4>
-            <p class="text-gray-300 text-sm mb-2">
-                Existe uma ferramenta open-source no GitHub (34736384/genshin-fps-unlocker) que injeta código na memória para liberar o limite.
-            </p>
-            <p class="text-yellow-400 text-sm font-bold">
-                Isso dá ban?
-            </p>
-            <p class="text-gray-300 text-sm">
-                Em 4 anos de existência da ferramenta, <strong>zero</strong> contas foram banidas por usá-la. A HoYoverse parece tolerar, desde que não seja cheat (god mode, damage hack). Mas use por sua conta e risco.
+        <p class="mb-4 text-gray-300">A solução mais eficaz é dar mais espaço para o driver armazenar os cálculos gráficos:</p>
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <p class="text-sm text-gray-300">
+                Vá no seu <strong>Painel de Controle da NVIDIA</strong> > Gerenciar Configurações em 3D > Procure por 'Tamanho do cache do sombreador' e coloque em <strong>10GB ou Ilimitado</strong>. Isso reduz drasticamente os engasgos que acontecem na primeira vez que você usa uma habilidade em cada sessão de jogo.
             </p>
         </div>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
-            <li>Baixe o unlocker.</li>
-            <li>Abra o jogo.</li>
-            <li>Abra o unlocker como Administrador.</li>
-            <li>Defina o alvo (ex: 144 FPS).</li>
-        </ol>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Configuração Gráfica Otimizada",
+            title: "2. Configurações que Comem FPS",
             content: `
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li><strong>Render Resolution:</strong> 1.0 (Nativo) ou 0.8 (PC Fraco).</li>
-            <li><strong>Shadow Quality:</strong> Low (Médio/Alto consome MUITA CPU).</li>
-            <li><strong>Visual Effects:</strong> Medium.</li>
-            <li><strong>SFX Quality:</strong> Low.</li>
-            <li><strong>Volumetric Fog:</strong> OFF (Desligue a neblina, ganha 10 FPS e clareia a visão).</li>
-            <li><strong>Motion Blur:</strong> OFF (Sempre).</li>
-        </ul>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Resolução de Renderização:</strong> Mantenha em 1.0 ou 0.8 (se o PC for muito fraco). Acima de 1.0 o peso aumenta exponencialmente.</li>
+            <li><strong>Sombra:</strong> Baixo. Sombras no Genshin são processadas pela CPU e GPU simultaneamente.</li>
+            <li><strong>Efeitos Visuais:</strong> Médio. No Alto, o FPS cai sempre que muitos personagens usam Ultimates juntos.</li>
+            <li><strong>Bloom:</strong> Desativar (Isso ajuda na clareza visual e ganho de alguns frames).</li>
+        </ul >
       `
+        },
+        {
+            title: "3. Prioridade de Processamento",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Abra o Genshin Impact, minimize o jogo e abra o Gerenciador de Tarefas. 
+            <br/>Vá na aba 'Detalhes', procure por <strong>GenshinImpact.exe</strong>, clique com o botão direito > Definir Prioridade > <strong>Acima do Normal</strong>. Isso garante que o Windows dê atenção especial ao jogo sobre processos de fundo inúteis.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers de Vídeo",
+            description: "Essencial para a performance do motor Unity."
+        },
+        {
+            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            title: "Agendamento de GPU",
+            description: "Ative para ganhar estabilidade no Windows 11."
+        },
+        {
+            href: "/guias/stardew-valley-mods-lag-fix",
+            title: "Fix Lag Mods",
+            description: "Dicas de performance para jogos Unity."
         }
     ];
 
@@ -75,10 +86,11 @@ export default function GenshinGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="10 min"
+            estimatedTime="15 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

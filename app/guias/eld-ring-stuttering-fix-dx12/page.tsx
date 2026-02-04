@@ -1,73 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Elden Ring Stuttering Fix: Corrigindo as Travadas no PC (DX12) (2026)";
-const description = "Elden Ring roda a 60 FPS e trava do nada? O problema é a compilação de shaders e o Easy Anti-Cheat. Veja como jogar offline para ter performance lisa.";
-const keywords = ['elden ring stuttering fix', 'elden ring travando pc 2026', 'como desativar easy anti cheat elden ring', 'jogar elden ring offline fps', 'dx12 shader cache elden ring', 'shadow of the erdtree fps fix'];
+const title = "Elden Ring: Como corrigir Stuttering e Travadas (DX12 Fix 2026)";
+const description = "Sofrendo com lentidão nas Terras Intermédias? Aprenda a corrigir o stuttering do Elden Ring no DirectX 12 e ganhar estabilidade em 2026.";
+const keywords = [
+    'elden ring stuttering fix 2026 windows 11',
+    'como aumentar fps elden ring pc fraco tutorial',
+    'corrigir travadas elden ring dx12 guia completo',
+    'melhores configurações elden ring performance 2026',
+    'elden ring pc lag fix nvidia amd tutorial 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('eld-ring-stuttering-fix-dx12', title, description, keywords);
 
-export default function EldenRingGuide() {
+export default function EldenRingFixGuide() {
     const summaryTable = [
-        { label: "Problema", value: "Shader Compilation" },
-        { label: "Solução 1", value: "Cache Ilimitado" },
-        { label: "Solução 2", value: "Offline (Sem EAC)" },
-        { label: "DLC", value: "Shadow of the Erdtree" }
+        { label: "Causa Principal", value: "Compilação de Shaders em tempo real" },
+        { label: "Otimização Chave", value: "Shader Cache Ilimitado (NVIDIA)" },
+        { label: "Modo Vital", value: "Desativar Ray Tracing (Se GPU for média)" },
+        { label: "Dificuldade", value: "Médio" }
     ];
 
     const contentSections = [
         {
-            title: "Por que Elden Ring trava tanto?",
+            title: "O desafio técnico de Elden Ring em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          A FromSoftware usa uma engine antiga (basicamente a mesma de Dark Souls 3) forçada a rodar em DirectX 12. Isso cria "travadas de compilação de shader". Toda vez que um efeito novo aparece na tela (um dragão cuspindo fogo), o jogo pausa por milissegundos para "aprender" aquele efeito.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Solução 1: Shader Cache Ilimitado (NVIDIA)",
-            content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
-            <li>Clique com botão direito na Área de Trabalho > <strong>Painel de Controle da NVIDIA</strong>.</li>
-            <li>Gerenciar as configurações em 3D.</li>
-            <li>Procure por <strong>Tamanho do Cache de Shader (Shader Cache Size)</strong>.</li>
-            <li>Mude para <strong>Ilimitado (Unlimited)</strong> ou <strong>10 GB</strong>.</li>
-            <li>Isso impede que o Windows apague os shaders que o jogo já aprendeu, evitando que ele trave de novo no mesmo lugar amanhã.</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Solução 2: Jogar Offline (Sem Easy Anti-Cheat)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            O Easy Anti-Cheat (EAC) fica escaneando seu PC enquanto você joga, o que causa soluços na CPU. Se você não liga para invadir/ser invadido (PvP) e mensagens no chão, jogue offline.
-        </p>
-        <div class="bg-gray-800 p-6 rounded-xl border border-red-500 mb-6">
-            <h4 class="text-white font-bold mb-2">Como Desativar o EAC (Modo Offline)</h4>
-            <ol class="list-decimal list-inside text-gray-300 text-sm ml-4">
-                <li>Vá na pasta do jogo (Steam > Gerenciar > Navegar pelos arquivos locais).</li>
-                <li>Entre na pasta <strong>Game</strong>.</li>
-                <li>Renomeie o arquivo <code>start_protected_game.exe</code> para <code>start_protected_game_original.exe</code>.</li>
-                <li>Copie o arquivo <code>eldenring.exe</code> e cole na mesma pasta.</li>
-                <li>Renomeie a CÓPIA para <code>start_protected_game.exe</code>.</li>
-                <li>Inicie o jogo pela Steam.</li>
-            </ol>
-            <p class="text-gray-300 text-sm mt-2">
-                O jogo vai abrir sem o EAC. O menu dirá "Atividade online inapropriada detectada" e entrará em modo Offline. Sua performance vai melhorar muito.
-            </p>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Dica para o DLC Shadow of the Erdtree",
-            content: `
-        <p class="text-gray-300">
-            A área do DLC é graficamente mais pesada. Reduza a "Qualidade da Grama" e "Sombras" para Médio se estiver caindo abaixo de 60 FPS lá.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Mesmo anos após o lançamento, o **Elden Ring** ainda apresenta problemas de stuttering (micro-travamentos) no Windows 11. Isso acontece principalmente devido à forma como o jogo gerencia o DirectX 12, compilando shaders enquanto você corre pelo mapa. Em 2026, com o DLC Shadow of the Erdtree exigindo ainda mais do hardware, configurar o cache de sombra e o gerenciamento de energia é essencial para uma experiência fluida.
         </p>
       `
+        },
+        {
+            title: "1. Shader Cache Ilimitado (NVIDIA)",
+            content: `
+        <p class="mb-4 text-gray-300">Este é o ajuste mais importante para acabar com os pulos de FPS:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Abra o Painel de Controle da NVIDIA.</li>
+            <li>Vá em 'Gerenciar as configurações em 3D'.</li>
+            <li>Procure por <strong>'Tamanho do Cache de Sombreador' (Shader Cache Size)</strong>.</li>
+            <li>Mude de 'Padrão' para <strong>'Ilimitado' (Unlimited)</strong> ou 10GB.</li>
+            <li>Isso impede que o jogo apague shaders antigos, reduzindo drasticamente as travadas em áreas já visitadas.</li>
+        </ol>
+      `
+        },
+        {
+            title: "2. Desativando o Ray Tracing Oculto",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Atenção ao Menu:</h4>
+            <p class="text-sm text-gray-300">
+                Muitas vezes, após uma atualização, o Elden Ring ativa o **Ray Tracing** automaticamente. Mesmo no 'Baixo', o Ray Tracing consome quase 40% da performance da sua GPU sem oferecer uma mudança visual drástica no estilo artístico do jogo. Certifique-se de que ele está DESATIVADO nas configurações gráficas para manter os 60 FPS constantes.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Prioridade de Energia e Windows 11",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Estabilidade Máxima em 2026:</strong> 
+            <br/><br/>No Windows 11, vá em Configurações > Sistema > Tela > Gráficos. Adicione o executável do Elden Ring (eldenring.exe) e defina como **'Alto Desempenho'**. Além disso, em Opções de Energia, use o plano 'Desempenho Máximo'. Isso garante que o clock do seu processador não caia durante as lutas contra chefes, onde qualquer milissegundo de lag pode ser fatal.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            title: "Agendamento GPU",
+            description: "Essencial para a fluidez do DX12."
+        },
+        {
+            href: "/guias/limitar-fps-rivatuner-nvidia",
+            title: "Limitar FPS",
+            description: "Mantenha o frame pacing perfeito."
+        },
+        {
+            href: "/guias/rtx-4060-vale-a-pena-2026",
+            title: "Performance RTX",
+            description: "Veja como placas modernas rodam o jogo."
         }
     ];
 
@@ -76,10 +88,11 @@ export default function EldenRingGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Avançado"
+            estimatedTime="20 min"
+            difficultyLevel="Médio"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

@@ -1,71 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Minecraft: OptiFine vs Sodium (Fabric) - Qual dá mais FPS em 2026?";
-const description = "O OptiFine ficou obsoleto? Testamos o mod Sodium com Iris Shaders e o resultado é chocante: 3x mais FPS e chunks carregando instantaneamente.";
-const keywords = ['minecraft optifine vs sodium', 'aumentar fps minecraft 2026', 'sodium fabric tutorial', 'iris shaders vs optifine', 'minecraft travando pc fraco', 'modpack otimizacao minecraft'];
+const title = "Sodium vs OptiFine: Qual o melhor para o Minecraft em 2026?";
+const description = "Ainda usa OptiFine? Descubra por que o Sodium se tornou o padrão para performance no Minecraft e compare os recursos de Shaders entre as duas plataformas.";
+const keywords = [
+    'sodium vs optifine comparativo 2026 minecraft',
+    'qual da mais fps optifine ou sodium fabric',
+    'melhor mod de performance para shaders minecraft',
+    'iris shader vs optifine shaders tutorial 2026',
+    'minecraft performance guia definitivo mods fraco'
+];
 
 export const metadata: Metadata = createGuideMetadata('minecraft-optifine-vs-sodium-fabric', title, description, keywords);
 
-export default function MinecraftGuide() {
+export default function SodiumVsOptiFineGuide() {
     const summaryTable = [
-        { label: "Vencedor FPS", value: "Sodium (Fabric)" },
-        { label: "Vencedor Shaders", value: "Iris (Fabric)" },
-        { label: "Vencedor Antigo", value: "OptiFine (Forge)" },
-        { label: "Features Extras", value: "OptiFine (Zoom)" }
+        { label: "OptiFine", value: "Fácil de instalar / Tudo-em-um / Código fechado" },
+        { label: "Sodium", value: "Performance Extrema / Modular / Código Aberto" },
+        { label: "Plataforma", value: "OptiFine (Forge/Nativo) | Sodium (Fabric/Quilt)" },
+        { label: "Dificuldade", value: "Médio" }
     ];
 
     const contentSections = [
         {
-            title: "O Fim da Era OptiFine",
+            title: "O Fim de um Reinado?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Durante 10 anos, o OptiFine foi o rei. Mas ele é um mod "fechado" e antigo. Uma nova geração de mods baseados no carregador <strong>Fabric</strong> reescreveu o motor de renderização do Minecraft do zero.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O **OptiFine** dominou o Minecraft por mais de uma década. Ele era a solução única para tudo: performance, shaders, mantas e zoom. No entanto, em 2026, ele se tornou uma "caixa preta" de difícil atualização. O **Sodium** surgiu para resolver isso, focando exclusivamente em renderização moderna e eficiência de memória, deixando o jogo muito mais fluido em PCs modernos e antigos.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed font-bold bg-gray-800 p-4 rounded text-center">
-            Em nossos testes num PC fraco (i3 sem GPU):
-            <br/><span class="text-red-400">Minecraft Vanilla: 40 FPS</span>
-            <br/><span class="text-yellow-400">Com OptiFine: 75 FPS</span>
-            <br/><span class="text-green-400 text-xl">Com Sodium: 210 FPS</span>
-        </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "O que é o 'Sodium' e o 'Iris'?",
+            title: "1. Performance: O fator decisivo",
             content: `
+        <p class="mb-4 text-gray-300">Em testes reais de 2026, o Sodium vence na maioria dos cenários:</p>
         <ul class="list-disc list-inside text-gray-300 space-y-3">
-            <li><strong>Sodium:</strong> Substitui o renderizador gráfico do Minecraft. Ele usa multithreading moderno (o Minecraft original usa apenas 1 núcleo). Isso corrige as travadas quando você vira a câmera rápido.</li>
-            <li><strong>Iris Shaders:</strong> É o substituto do sistema de Shaders do OptiFine. Ele roda os mesmos shaders (BSL, Complementary), mas com o dobro da performance.</li>
-            <li><strong>Lithium & Starlight:</strong> Mods complementares que otimizam a física do servidor e a iluminação, reduzindo o lag de TPS.</li>
-        </ul>
-      `,
-            subsections: []
+            <li><strong>Sodium:</strong> Reduz drasticamente o tempo de processamento de cada chunk. O FPS tende a ser mais alto e, o mais importante, mais estável (menos quedas bruscas).</li>
+            <li><strong>OptiFine:</strong> Oferece um modo "Fast Render" que pode causar bugs visuais com outros mods. O ganho de FPS é menor comparado ao Sodium em novas versões do jogo (1.18+).</li>
+        </ul >
+      `
         },
         {
-            title: "Como Instalar (O jeito fácil: Modrinth App)",
+            title: "2. Shaders e Funcionalidades",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">A Modularidade do Fabric:</h4>
+            <p class="text-sm text-gray-300">
+                Uma crítica comum ao Sodium era a falta de recursos como Shaders. Hoje, em 2026, isso foi resolvido pelo ecossistema Fabric: <br/><br/>
+                - Para <strong>Shaders</strong>, você usa o mod <strong>Iris</strong>. <br/>
+                - Para <strong>Zoom</strong>, você usa o <strong>Logical Zoom</strong> ou similares. <br/>
+                - Para <strong>Texturas Conectadas</strong>, você usa o <strong>Continuity</strong>. <br/>
+                O Sodium sozinho não faz tudo, mas o combo Sodium + Mods Auxiliares é muito mais potente que o OptiFine sozinho.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Veredito Final",
             content: `
         <p class="mb-4 text-gray-300">
-            Não tente instalar manualmente arrastando arquivos jar se você é iniciante. Use um launcher.
+            <strong>Use OptiFine se:</strong> Você quer algo extremamente simples de instalar e não joga com muitos outros mods, ou se está em uma versão muito antiga do jogo (pré-1.12).
+            <br/><br/>
+            <strong>Use Sodium se:</strong> Você joga versões modernas (1.20+) e busca o máximo de FPS possível. Em 2026, o ecossistema Fabric/Sodium é onde a inovação está acontecendo e onde você terá a melhor experiência de jogo fluido.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
-            <li>Baixe o <strong>Modrinth App</strong> (Launcher open-source).</li>
-            <li>Pesquise pelo modpack <strong>"Fabulously Optimized"</strong> ou <strong>"Simply Optimized"</strong>.</li>
-            <li>Clique em Instalar e Jogar.</li>
-            <li>Pronto. Esse modpack já vem com Sodium, Iris, Zoom (Zoomify), Capas e tudo o que o OptiFine tinha, mas rodando na engine Fabric ultra-rápida.</li>
-        </ol>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/minecraft-aumentar-fps-fabric-sodium",
+            title: "Instalar Sodium",
+            description: "Passo a passo da instalação."
         },
         {
-            title: "E se eu PRECISAR usar Forge (Mods de Tech/Magia)?",
-            content: `
-        <p class="text-gray-300 mb-4">
-            Se você joga modpacks pesados com Forge (versão 1.16, 1.12), o Sodium não funciona nativamente.
-        </p>
-        <p class="text-gray-300">
-            Procure por "Embeddium" (um port do Sodium para Forge) ou "Rubidium". Eles fazem a mesma mágica. O OptiFine hoje em dia causa muitos conflitos com outros mods e deve ser evitado a todo custo.
-        </p>
-      `
+            href: "/guias/minecraft-lag-fix-optifine-fabric",
+            title: "Remover Lag",
+            description: "Dicas extras para otimizar o Mine."
+        },
+        {
+            href: "/guias/minecraft-alocar-mais-ram",
+            title: "Alocar RAM",
+            description: "Prepare seu hardware para os mods."
         }
     ];
 
@@ -74,10 +90,11 @@ export default function MinecraftGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Iniciante"
+            estimatedTime="20 min"
+            difficultyLevel="Médio"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

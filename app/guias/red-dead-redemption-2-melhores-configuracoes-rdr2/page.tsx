@@ -1,56 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Red Dead Redemption 2 (RDR2): Guia de Gráficos Otimizados para 60 FPS (2026)";
-const description = "RDR2 é pesado até hoje. Descubra quais configurações (Água, Volumétricos e MSAA) destroem seu FPS e como deixar o jogo lindo sem travar.";
-const keywords = ['rdr2 melhores configuracoes graficas', 'red dead redemption 2 otimizar pc', 'rdr2 aumentar fps', 'qualidade da agua rdr2', 'taav vs msaa rdr2', 'rdr2 pc fraco config'];
+const title = "RDR2: Melhores Configurações de Gráficos e FPS (2026)";
+const description = "Quer rodar Red Dead Redemption 2 com visual incrível e FPS alto? Veja este guia das configurações otimizadas para PC em 2026.";
+const keywords = [
+    'melhores configurações rdr2 pc 2026 guia',
+    'red dead redemption 2 pc config fps boost',
+    'rdr2 vulkan vs dx12 qual melhor 2026',
+    'como aumentar fps no rdr2 pc fraco tutorial',
+    'rdr2 otimização de gráficos pc guia completo'
+];
 
 export const metadata: Metadata = createGuideMetadata('red-dead-redemption-2-melhores-configuracoes-rdr2', title, description, keywords);
 
-export default function RDR2Guide() {
+export default function RDR2OptimizationGuide() {
     const summaryTable = [
-        { label: "Matador de FPS", value: "Física da Água" },
-        { label: "Iluminação", value: "Médio (Otimizado)" },
-        { label: "Anti-Aliasing", value: "TAA (Apenas)" },
-        { label: "API", value: "Vulkan (Melhor)" }
+        { label: "API Recomendada", value: "Vulkan (Mais FPS) / DX12 (Mais estabilidade)" },
+        { label: "Configuração Chave", value: "Texturas (Sempre Ultra)" },
+        { label: "Check de Hardware", value: "Exige 8GB de VRAM para Ultra" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "Vulkan vs DirectX 12",
+            title: "A obra-prima que ainda pesa no PC",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O RDR2 roda nativamente na API <strong>Vulkan</strong>. Na maioria das placas (especialmente AMD), o Vulkan entrega 5 a 10 FPS a mais que o DX12. Só troque para DX12 se o Vulkan estiver fechando o jogo sozinho (Crash).
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Configurações Hub (Xbox One X Settings)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            A comunidade descobriu que as configurações do console (que é lindo) são uma mistura de Médio e Alto. Copie isso para ter pc gamer:
-        </p>
-        <div class="space-y-2 text-sm text-gray-300 bg-gray-900 p-4 rounded border border-gray-700">
-            <p><strong class="text-white">Qualidade de Iluminação:</strong> Médio (No Ultra, consome 30% da GPU à noite).</p>
-            <p><strong class="text-white">Qualidade dos Reflexos:</strong> Baixo (Reflexos em espelhos são raros, não gaste recurso nisso).</p>
-            <p><strong class="text-white">Qualidade da Água (Física):</strong> <span class="text-red-400 font-bold">2/4 (Metade)</span>. Se você deixar no máximo, a física da água calcula cada onda e mata o FPS.</p>
-            <p><strong class="text-white">Qualidade das Sombras:</strong> Alto.</p>
-            <p><strong class="text-white">Qualidade Volumétrica (Neblina):</strong> Médio. O efeito de raios de luz atravessando a neblina é lindo, mas pesado.</p>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "O Maldito MSAA",
-            content: `
-        <p class="text-gray-300 mb-4">
-            Nunca, jamais, em hipótese alguma ative o <strong>MSAA (Multisample Anti-Aliasing)</strong> no RDR2. Ele renderiza o jogo múltiplas vezes.
-        </p>
-        <p class="text-gray-300">
-            Use apenas o <strong>TAA (Temporal Anti-Aliasing)</strong> em "Médio". Se achar a imagem borrada, aumente a "Nitidez do TAA" (Sharpening) nas opções ou use o filtro da NVIDIA (Alt+F3).
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Mesmo anos após o lançamento, **Red Dead Redemption 2** continua sendo um dos jogos mais bonitos e exigentes em 2026. O segredo para rodar o jogo bem não é colocar tudo no "Médio", mas sim entender quais opções gráficas consomem 50% da sua performance e quais não mudam nada no visual. Este guia foca no equilíbrio perfeito entre fidelidade e fluidez.
         </p>
       `
+        },
+        {
+            title: "1. Vulkan vs DirectX 12 em 2026",
+            content: `
+        <p class="mb-4 text-gray-300">A escolha da API define a base da sua performance:</p>
+        <p class="text-sm text-gray-300">
+            - <strong>Vulkan:</strong> Costuma entregar 5 a 10 FPS a mais e tem frametimes mais lisos na maioria das GPUs NVIDIA e AMD modernas. É a recomendação para 2026. <br/><br/>
+            - <strong>DirectX 12:</strong> Use apenas se você estiver sofrendo com crashes aleatórios no Vulkan ou se estiver usando placas Intel Arc, que costumam preferir o DX12.
+        </p>
+      `
+        },
+        {
+            title: "2. Configurações que "Matam" o FPS",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Otimização Cirúrgica:</h4>
+            <p class="text-sm text-gray-300">
+                Para ganhar até 40% mais performance sem perder visual, mude estes itens: <br/><br/>
+                - <strong>Water Reflection/Refraction Quality:</strong> Low ou Medium. O reflexo na água do RDR2 é pesado demais para o pouco que aparece. <br/>
+                - <strong>Volumetric Lighting:</strong> Medium. Esse ajuste controla a luz entre as nuvens e neblina; no Ultra, ele destrói qualquer GPU. <br/>
+                - <strong>Shadow Quality:</strong> High (Não use Ultra). <br/>
+                - <strong>Tree Quality:</strong> Medium. RDR2 tem milhares de árvores; o processamento individual delas no talo causa quedas de FPS.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. O Único item que deve estar no ULTRA",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Texture Quality:</strong> 
+            <br/><br/>No RDR2, a diferença visual entre 'High' e 'Ultra' nas texturas é gritante. Colocar as texturas em High faz o jogo parecer borrado, com visual de console antigo. Em 2026, **sempre deixe as texturas no Ultra**, mesmo que precise reduzir todo o resto. Se a sua placa de vídeo tiver pelo menos 4GB ou 6GB de VRAM, ela aguentará o Ultra se as outras opções estiverem otimizadas.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers de Vídeo",
+            description: "Essencial para evitar bugs de textura no RDR2."
+        },
+        {
+            href: "/guias/limitar-fps-rivatuner-nvidia",
+            title: "RivaTuner (RTSS)",
+            description: "Estabilize o frametime do cavalgar."
+        },
+        {
+            href: "/guias/hdr-windows-vale-a-pena-jogos",
+            title: "HDR no Windows 11",
+            description: "Faça o pôr do sol de RDR2 brilhar de verdade."
         }
     ];
 
@@ -60,9 +90,10 @@ export default function RDR2Guide() {
             description={description}
             keywords={keywords}
             estimatedTime="15 min"
-            difficultyLevel="Intermediário"
+            difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

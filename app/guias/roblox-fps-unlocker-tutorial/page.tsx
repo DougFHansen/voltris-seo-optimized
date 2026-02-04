@@ -1,92 +1,88 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Roblox: Guia Avançado para Desbloquear FPS (Acima de 60) e Reduzir Lag (2026)";
-const description = "Cansado de jogar travado em 60 FPS? Aprenda a usar o Roblox FPS Unlocker, configurar o Bloxstrap e otimizar jogos pesados como Blox Fruits e Brookhaven.";
-const keywords = ['roblox fps unlocker 2026', 'como tirar lag roblox', 'roblox acima de 60 fps', 'bloxstrap tutorial', 'otimizar roblox pc fraco', 'client settings roblox'];
+const title = "Roblox FPS Unlocker: Como jogar acima de 60 FPS (2026)";
+const description = "Cansado de jogar Roblox travado em 60 FPS? Aprenda como usar o FPS Unlocker e as novas funções nativas do Roblox para ter mais fluidez em 2026.";
+const keywords = [
+    'roblox fps unlocker 2026 tutorial como usar',
+    'como aumentar fps no roblox pc 2026 guia',
+    'roblox fps unlocker da ban tutorial segurança',
+    'aumentar limite de frames roblox windows 11 tutorial',
+    'roblox liso 144hz 240hz como configurar 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('roblox-fps-unlocker-tutorial', title, description, keywords);
 
-export default function RobloxGuide() {
+export default function RobloxFPSUnlockerGuide() {
     const summaryTable = [
-        { label: "Ferramenta", value: "Bloxstrap / FPS Unlocker" },
-        { label: "Limite Padrão", value: "60 FPS (Travado)" },
-        { label: "Limite Novo", value: "Ilimitado" },
-        { label: "Gráficos", value: "Manual" }
+        { label: "Limite Nativo", value: "60 FPS (Padrão)" },
+        { label: "FPS Unlocker", value: "Permite até 360 FPS ou mais" },
+        { label: "Check de Ban", value: "100% Seguro (Aprovado pelo Roblox)" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: Por que o Roblox trava em 60 FPS?",
+            title: "O teto dos 60 FPS no Roblox",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-            Por padrão, a engine do Roblox limita todos os jogadores a 60 quadros por segundo (FPS). Isso é feito para evitar bugs de física em jogos antigos. Porém, em 2026, com monitores de 144Hz comuns, esse limite é horrível e causa sensação de lentidão.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Por anos, o Roblox limitou todos os jogadores a 60 FPS, independentemente de quão potente era o PC ou quão rápido era o monitor. Em 2026, com monitores de 144Hz e 240Hz se tornando o padrão, jogar a 60 FPS parece "travado". O **Roblox FPS Unlocker** é a ferramenta definitiva que remove esse limite, permitindo que o jogo use todo o potencial da sua placa de vídeo.
         </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Método 1: Bloxstrap (A Melhor Solução Moderna)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            O Bloxstrap é um substituto open-source e seguro para o launcher padrão do Roblox. Ele já vem com tudo embutido.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Baixe o <strong>Bloxstrap</strong> no GitHub oficial (pizzaboxer/bloxstrap).</li>
-            <li>Instale e abra o menu.</li>
-            <li>Vá em <strong>Fast Flags</strong>.</li>
-            <li>Procure por <strong>Framerate Limit</strong> e coloque <strong>9999</strong> ou a frequência do seu monitor (ex: 165).</li>
-            <li>Selecione também o "Rendering Mode" para <strong>D3D11</strong> ou <strong>Vulkan</strong> (Vulkan costuma ser melhor em PCs fracos).</li>
-            <li>Pronto! Abra o Roblox pelo atalho do Bloxstrap e voe.</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Método 2: rbxfpsunlocker (Clássico)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Se você não quer trocar de launcher, use o desbloqueador clássico.
-        </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li>Baixe o <strong>rbxfpsunlocker</strong> (axstin) no GitHub.</li>
-            <li>Extraia o arquivo.</li>
-            <li>Execute o <code>rbxfpsunlocker.exe</code> antes de abrir o jogo.</li>
-            <li>Ele vai ficar minimizado na bandeja do sistema. Clique com botão direito nele > FPS Cap > None.</li>
-            <li>Nota: A cada atualização do Roblox, ele pode parar de funcionar por 1 dia até ser atualizado.</li>
-        </ul>
       `
         },
         {
-            title: "3. Configurações Gráficas Corretas (In-Game)",
+            title: "1. A Novidade Nativa de 2026",
             content: `
-            <p class="mb-4 text-gray-300">
-                Nunca deixe os gráficos no "Automático". O Roblox é péssimo em adivinhar a força do seu PC.
-            </p>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
-                <li>Entre no jogo.</li>
-                <li>Aperte ESC > Configurações.</li>
-                <li>Mude "Modo de Gráficos" para <strong>Manual</strong>.</li>
-                <li>Observe a barra de qualidade:
-                    <br/>- <strong>1 a 3 barrinhas:</strong> Remove sombras e luzes complexas. (Ideal para PvP).
-                    <br/>- <strong>8 a 10 barrinhas:</strong> Ativa a renderização distante.
-                </li>
-            </ol>
-            <p class="text-green-400 mt-2 bg-gray-800 p-2 rounded">
-                Dica Pro: Use 2 ou 3 barrinhas em jogos competitivos (Bed Wars, Arsenal) para ver através de algumas paredes finas e remover fumaça.
-            </p>
-        `
+        <p class="mb-4 text-gray-300">Antes de baixar programas, veja se a opção já está disponível para você:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Abra o Roblox e entre em qualquer mapa.</li>
+            <li>Aperte <strong>Esc</strong> para abrir o menu de configurações.</li>
+            <li>Vá na aba <strong>Configurações</strong> e procure por 'Frame Rate Limit'.</li>
+            <li>Em 2026, o Roblox começou a liberar nativamente as opções de 60, 144, 240 ou Ilimitado. Se essa opção aparecer, selecione o valor condizente com o seu monitor e pronto!</li>
+        </ol>
+      `
         },
         {
-            title: "4. ClientSettings (Otimização Avançada)",
+            title: "2. Usando o RBXFPSUnlocker (Externo)",
             content: `
-            <p class="text-gray-300 mb-4">
-                Você pode criar uma pasta chamada <code>ClientSettings</code> dentro da pasta de versões do Roblox para forçar configurações.
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Para quem não tem a opção nativa:</h4>
+            <p class="text-sm text-gray-300">
+                1. Baixe o <strong>rbxfpsunlocker</strong> oficial no GitHub. <br/>
+                2. Extraia o arquivo .exe e execute-o. <br/>
+                3. Ele aparecerá como um ícone pequeno perto do relógio do Windows. <br/>
+                4. Clique com o botão direito, vá em 'FPS Cap' e selecione <strong>None</strong> para desbloquear tudo. <br/>
+                <strong>Atenção:</strong> Ele não dá ban. O próprio criador do Roblox confirmou em conferências oficiais que o uso de unlockers é permitido.
             </p>
-            <p class="text-gray-300">
-                Dentro dela, crie um arquivo <code>ClientAppSettings.json</code> com códigos FFlag para desativar texturas. (O Bloxstrap já faz isso visualmente, recomendo usar ele).
-            </p>
-        `
+        </div>
+      `
+        },
+        {
+            title: "3. Benefícios na Jogabilidade",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Por que desbloquear o FPS? 
+            <br/><br/>No Roblox, especialmente em jogos de luta ou parkour (Obby), o FPS alto reduz o **Input Lag**. Isso significa que quando você aperta a barra de espaço para pular, o personagem reage mais rápido. Se você sente que o seu pulo no Roblox falha ou tem atraso, jogar acima de 100 FPS resolverá o problema instantaneamente, dando uma vantagem competitiva real.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/roblox-fix-erro-conexao",
+            title: "Erros de Conexão",
+            description: "Resolva problemas que te impedem de entrar."
+        },
+        {
+            href: "/guias/monitor-ips-vs-va-vs-tn-jogos",
+            title: "Hertz do Monitor",
+            description: "Entenda por que o FPS alto precisa de um monitor bom."
+        },
+        {
+            href: "/guias/limitar-fps-rivatuner-nvidia",
+            title: "Limitar FPS",
+            description: "Estabilize seus quadros se o FPS oscilar muito."
         }
     ];
 
@@ -99,6 +95,7 @@ export default function RobloxGuide() {
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

@@ -1,78 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Criar um Pen Drive Bootável do Windows (Todos os Métodos)";
-const description = "Guia definitivo para criar mídia de instalação do Windows 10 e 11. Aprenda a usar o Media Creation Tool e o Rufus para PCs antigos ou novos.";
-const keywords = ["pendrive bootavel","rufus windows 11","media creation tool","formatar pc usb","iso windows"];
+const title = "Como Criar um Pendrive Bootável do Windows 11 (2026)";
+const description = "Precisa formatar o PC? Aprenda a criar um pendrive bootável oficial do Windows 11 usando a ferramenta da Microsoft ou o Rufus em 2026.";
+const keywords = [
+  'como criar pendrive bootavel windows 11 2026',
+  'criar midia de instalação windows 11 oficial guia',
+  'como usar rufus para criar pendrive bootavel tutorial',
+  'pendrive bootavel windows 11 mbr vs gpt explicacao',
+  'formatar pc com pendrive bootavel passo a passo 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('criar-pendrive-bootavel', title, description, keywords);
 
-export default function GuidePage() {
+export default function BootableUSBGuide() {
+  const summaryTable = [
+    { label: "Capacidade Mínima", value: "8GB ou mais" },
+    { label: "Formato Necessário", value: "GPT (Para UEFI) / MBR (Para Legacy/Antigos)" },
+    { label: "Ferramenta Oficial", value: "Media Creation Tool (Microsoft)" },
+    { label: "Dificuldade", value: "Intermediário" }
+  ];
+
   const contentSections = [
-
     {
-      title: "Método 1: Media Creation Tool (Oficial e Recomendado)",
+      title: "O primeiro passo para a formatação",
       content: `
-        <p class="mb-4 text-gray-300">Esta é a ferramenta oficial da Microsoft. É a maneira mais segura e garante que você tenha a versão mais estável e livre de vírus do Windows.</p>
-          <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-[#31A8FF]">
-            <h4 class="text-white font-bold mb-2">Passo a Passo</h4>
-            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
-              <li>Acesse o site oficial da Microsoft ("Baixar Windows 10" ou "11").</li>
-              <li>Baixe a ferramenta "Media Creation Tool" e execute como Administrador.</li>
-              <li>Aceite os termos e escolha <strong>"Criar mídia de instalação"</strong>.</li>
-              <li>Insira um Pen Drive de 8GB (cuidado: ele será formatado!).</li>
-              <li>Selecione o Pen Drive na lista e aguarde o download (pode demorar 30min+).</li>
-            </ol>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, você não precisa mais de DVDs para instalar o Windows. Um pendrive bootável é a forma mais rápida e segura de fazer uma instalação limpa do Windows 11. Nele, você coloca todos os arquivos de instalação de forma que o computador consiga ler as instruções de "boot" assim que é ligado, antes mesmo de entrar no HD ou SSD de hoje.
+        </p>
+      `
     },
-
     {
-      title: "Método 2: Rufus (O Canivete Suíço)",
+      title: "1. Método Oficial: Media Creation Tool",
       content: `
-        <p class="mb-4 text-gray-300">O Rufus é ideal se você precisa de opções avançadas, como instalar Windows 11 em PC antigo (sem TPM) ou usar uma ISO específica.</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-[#171313] p-4 rounded border border-gray-700">
-              <h4 class="text-white font-bold mb-2">Configuração MBR vs GPT</h4>
-              <p class="text-gray-400 text-sm">
-                <strong>GPT (UEFI):</strong> Para computadores modernos (pós-2012). Selecione "Esquema de partição: GPT" e "Sistema de destino: UEFI".<br><br>
-                <strong>MBR (Legacy):</strong> Para PCs muito antigos. Selecione "Esquema de partição: MBR".
-              </p>
-            </div>
-            <div class="bg-[#171313] p-4 rounded border border-gray-700">
-              <h4 class="text-white font-bold mb-2">Truques do Windows 11</h4>
-              <p class="text-gray-400 text-sm">Ao clicar em INICIAR no Rufus com uma ISO do Windows 11, ele perguntará se você quer <strong>remover a exigência de TPM 2.0 e Secure Boot</strong>. Marque essa opção para reviver PCs antigos!</p>
-            </div>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">Este é o método mais seguro e fácil da Microsoft:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Acesse o site oficial: <strong>microsoft.com/software-download/windows11</strong>.</li>
+            <li>Baixe a ferramenta 'Criar mídia de instalação do Windows 11'.</li>
+            <li>Conecte seu pendrive (Atenção: todos os arquivos dele serão apagados!).</li>
+            <li>Selecione 'Unidade flash USB' e siga as instruções. A ferramenta baixará a ISO mais recente e preparará o pendrive sozinha.</li>
+        </ol>
+      `
     },
-
     {
-      title: "Testando o Pen Drive",
+      title: "2. Método Avançado: RUFUS (Pule o TPM 2.0)",
       content: `
-        <p class="text-gray-300">Após criar, o Pen Drive não deve aparecer vazio. Ele deve ter arquivos como 'setup.exe', 'boot', 'sources'. Para usar/testar, você precisa reiniciar o PC e acessar o Boot Menu (geralmente F8, F11 ou F12).</p>
-      `,
-      subsections: []
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Para PCs Antigos ou Customizados:</h4>
+            <p class="text-sm text-gray-300">
+                Se o seu PC não tem suporte oficial ao TPM 2.0 ou conta com hardware mais antigo, o **Rufus** é a melhor escolha. <br/><br/>
+                Ao criar o pendrive com ele, você pode marcar opções para **remover o requisito de 4GB de RAM, TPM e Secure Boot**. Isso permite que você instale o Windows 11 em quase qualquer computador de 2026, além de permitir criar uma conta local sem precisar de internet ou e-mail da Microsoft.
+            </p>
+        </div>
+      `
+    },
+    {
+      title: "3. Diferença entre MBR e GPT",
+      content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Não erre na hora do boot:</strong> 
+            <br/><br/>- <strong>GPT (UEFI):</strong> O padrão para todos os PCs modernos. Se o seu PC foi comprado após 2015, use GPT. <br/>
+            - <strong>MBR (BIOS):</strong> Use apenas se estiver instalando em um computador muito antigo que não tem o menu de BIOS azul/moderno. <br/><br/>
+            Escolher a opção errada no Rufus fará com que o pendrive não seja reconhecido pelo computador na hora de ligar.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Proteja seu hardware."
+      href: "/guias/formatacao-windows",
+      title: "Guia de Formatação",
+      description: "O que fazer após criar o pendrive."
     },
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados."
+      href: "/guias/atualizar-bios-seguro",
+      title: "Configurar Boot",
+      description: "Como fazer o PC ler o pendrive primeiro."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Performance",
-      description: "Deixe seu PC mais rápido."
+      href: "/guias/pos-instalacao-windows-11",
+      title: "Checklist Pós-Instalação",
+      description: "Próximos passos após o Windows abrir."
     }
   ];
 
@@ -81,9 +90,10 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="20 min"
+      estimatedTime="30 min"
       difficultyLevel="Intermediário"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

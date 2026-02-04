@@ -1,76 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Monitor IPS, VA ou TN: Qual Melhor Painel para Jogos Competitivos e Trabalho? (2026)";
-const description = "Vai comprar um monitor gamer? Entenda as diferenças cruciais entre IPS, VA e TN, o que é Ghosting (Black Smearing) e por que o OLED está mudando tudo.";
-const keywords = ['monitor ips vs va vs tn', 'qual melhor painel para jogos', 'ghosting monitor va', 'melhor monitor para design', 'painel fast ips', 'oled vs ips jogos'];
+const title = "Painéis de Monitor: IPS vs VA vs TN (Qual o melhor em 2026?)";
+const description = "Entenda de uma vez por todas as diferenças entre monitores IPS, VA e TN. Saiba qual painel escolher para jogar, trabalhar ou assistir filmes em 2026.";
+const keywords = [
+    'monitor ips vs va vs tn diferença 2026',
+    'melhor painel de monitor para jogos competitivos',
+    'monitor ips ou va para trabalhar com design',
+    'vantagens e desvantagens painel tn em 2026',
+    'qual monitor tem melhor fidelidade de cor guia'
+];
 
 export const metadata: Metadata = createGuideMetadata('monitor-ips-vs-va-vs-tn-jogos', title, description, keywords);
 
-export default function PanelGuide() {
+export default function MonitorPanelGuide() {
     const summaryTable = [
-        { label: "Melhor Cor", value: "IPS / OLED" },
-        { label: "Melhor Contraste", value: "VA / OLED" },
-        { label: "Mais Rápido", value: "TN / OLED" },
-        { label: "Pior Ângulo", value: "TN" }
+        { label: "Painel TN", value: "Velocidade máxima / Cores ruins" },
+        { label: "Painel VA", value: "Contraste excelente / Rastro preto (Ghosting)" },
+        { label: "Painel IPS", value: "Fidelidade de cor / Uso universal" },
+        { label: "Dificuldade", value: "Iniciante" }
     ];
 
     const contentSections = [
         {
-            title: "Resumo Rábido: Qual escolher?",
+            title: "O Coração do seu Monitor",
             content: `
-        <ul class="space-y-4 list-none text-gray-300">
-            <li class="bg-gray-800 p-4 rounded border-l-4 border-blue-500">
-                <strong class="text-white block text-lg">IPS (In-Plane Switching)</strong>
-                <span class="text-white font-bold">O "Faz Tudo" Perfeito.</span>
-                <br/>Cores vibrantes, ótimos ângulos de visão. A tecnologia "Fast IPS" moderna alcança 360Hz com 1ms real. É a escolha padrão para 90% dos gamers hoje.
-                <br/><span class="text-red-400 text-sm">Contra: "IPS Glow" (brilho nos cantos em cenas escuras) e contraste fraco (cinza escuro em vez de preto).</span>
-            </li>
-            <li class="bg-gray-800 p-4 rounded border-l-4 border-yellow-500">
-                <strong class="text-white block text-lg">VA (Vertical Alignment)</strong>
-                <span class="text-white font-bold">O Rei do Contraste (e do Ghosting).</span>
-                <br/>Pretos profundos (quase OLED). Ótimo para filmes e jogos de história (AAA) em quarto escuro.
-                <br/><span class="text-red-400 text-sm">Contra: Black Smearing (Rastro preto). Em jogos rápidos, objetos escuros deixam um rastro fantasma horrível. Só compre VA se for modelos topo de linha (Samsung Odyssey G7/G8) que corrigem isso. Evite VAs baratos para CS2/Valorant.</span>
-            </li>
-            <li class="bg-gray-800 p-4 rounded border-l-4 border-gray-500">
-                <strong class="text-white block text-lg">TN (Twisted Nematic)</strong>
-                <span class="text-white font-bold">A Lenda Viva (Só para eSports).</span>
-                <br/>É o painel mais rápido e barato do mundo. Usado por profissionais de CS que querem 540Hz a todo custo.
-                <br/><span class="text-red-400 text-sm">Contra: Cores lavadas e horríveis. Se você olhar de lado, a imagem inverte. Só serve para jogar, não serve para ver filmes ou trabalhar.</span>
-            </li>
-        </ul>
-      `,
-            subsections: []
-        },
-        {
-            title: "O Elefante na Sala: OLED e QD-OLED",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Em 2026, os monitores OLED estão ficando acessíveis. Eles têm <strong class="text-green-400">0.03ms</strong> de resposta (instantâneo) e contraste infinito.
-        </p>
-        <p class="text-gray-300">
-            Se você tem orçamento, <strong>OLED vence todos</strong> os outros (IPS, VA e TN) em tudo, exceto em brilho máximo e risco de Burn-in (mancha na tela) se usado para trabalho estático (Excel/Word) por muitas horas.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Ao comprar um monitor em 2026, você verá essas três siglas em todo lugar. Elas se referem à tecnologia física de como os cristais líquidos se organizam dentro da tela. Não existe "o melhor absoluto", mas sim o melhor para o seu tipo de uso. Com o avanço tecnológico, os defeitos de cada tipo foram minimizados, mas as características básicas ainda definem a sua experiência visual.
         </p>
       `
         },
         {
-            title: "Glossário Técnico",
+            title: "1. IPS: O Equilíbrio Perfeito",
             content: `
-        <div class="space-y-4">
-            <div>
-                <h4 class="text-white font-bold">Ghosting</h4>
-                <p class="text-gray-400 text-sm">Rastro fantasma que segue objetos em movimento. Comum em painéis VA lentos.</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold">IPS Glow vs Backlight Bleed</h4>
-                <p class="text-gray-400 text-sm">IPS Glow é o brilho natural do painel nos cantos (muda conforme você mexe a cabeça). Backlight Bleed é defeito de fabricação (luz vazando pela borda).</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold">GtG (Gray to Gray)</h4>
-                <p class="text-gray-400 text-sm">Tempo que um pixel leva para mudar de cinza pra cinza. Não confie no "1ms" da caixa, geralmente é marketing (MPRT). Procure reviews reais (Hardware Unboxed).</p>
-            </div>
+        <p class="mb-4 text-gray-300">O IPS (In-Plane Switching) é a escolha padrão de 2026:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Prós:</strong> Cores mais vibrantes e precisas. Se você olhar o monitor por cima ou de lado, a cor não muda (ângulo de visão de 178º).</li>
+            <li><strong>Contras:</strong> Sofre com o <i>IPS Glow</i> (brilho esbranquiçado em cenas muito escuras).</li>
+            <li><strong>Ideal para:</strong> Jogos de aventura, design gráfico e uso geral.</li>
+        </ul>
+      `
+        },
+        {
+            title: "2. VA: Pretos Profundos e Imersão",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Para Cinema e Noite:</h4>
+            <p class="text-sm text-gray-300">
+                O monitor <strong>VA (Vertical Alignment)</strong> tem o melhor contraste. Enquanto um IPS faz pretos que parecem cinza escuro, o VA consegue deixar a tela realmente preta. <br/><br/>
+                - <strong>Ponto Negativo:</strong> Em movimentos ultra rápidos (como girar a câmera no Valorant), ele pode deixar um rastro escuro atrás dos objetos, conhecido como <strong>Ghosting</strong> ou <i>Black Smearing</i>.
+            </p>
         </div>
       `
+        },
+        {
+            title: "3. TN: O Rei do Mundo Competitivo (mas por pouco tempo)",
+            content: `
+        <p class="mb-4 text-gray-300">
+            O <strong>TN (Twisted Nematic)</strong> foi, durante muito tempo, o único a alcançar 1ms de resposta real. 
+            <br/><br/>Em 2026, ele ainda é encontrado em monitores ultra rápidos de 360Hz ou 540Hz usados por pro-players de CS2. As cores são "lavadas" e o ângulo de visão é horrível (se você abaixar a cabeça, a imagem inverte), mas se o seu único objetivo é a vitória competitiva em milissegundos, o TN ainda tem seu lugar.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/guia-compra-monitores",
+            title: "Guia de Compra",
+            description: "Dicas de marcas e modelos de 2026."
+        },
+        {
+            href: "/guias/calibrar-cores-monitor",
+            title: "Calibrar Monitor",
+            description: "Ajuste as cores do seu painel novo."
+        },
+        {
+            href: "/guias/hdmi-2.1-vs-displayport-1.4-diferencas",
+            title: "Cabos de Video",
+            description: "Garanta que seu cabo suporte os Hertz do painel."
         }
     ];
 
@@ -83,6 +91,7 @@ export default function PanelGuide() {
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

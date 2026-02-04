@@ -1,68 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Upgrade para SSD: O Melhor Investimento para Seu PC";
-const description = "Trocar o HD por um SSD deixa o PC até 10x mais rápido. Guia de instalação de SSD SATA e NVMe M.2 e como clonar seu sistema.";
-const keywords = ["ssd vs hd","instalar ssd notebook","clonar hd para ssd","nvme m.2","sata 3"];
+const title = "Como Instalar um SSD e Clonar o Windows (Guia 2026)";
+const description = "Vai trocar seu HD por um SSD ou fazer upgrade de NVMe? Aprenda como instalar fisicamente e clonar seu Windows sem perder nenhum arquivo em 2026.";
+const keywords = [
+  'como instalar ssd no pc e notebook 2026',
+  'clonar windows de hd para ssd tutorial gratis',
+  'como instalar ssd nvme m.2 passo a passo guia',
+  'migrar sistema para ssd novo sem formatar 2026',
+  'instalar ssd sata no notebook antigo tutorial'
+];
 
 export const metadata: Metadata = createGuideMetadata('substituicao-ssd', title, description, keywords);
 
-export default function GuidePage() {
+export default function SSDInstallationGuide() {
+  const summaryTable = [
+    { label: "Formatos", value: "SATA 2.5\" ou NVMe M.2" },
+    { label: "Software de Clonagem", value: "Macrium Reflect / Clonezilla" },
+    { label: "Vantagem", value: "Não precisa reinstalar tudo" },
+    { label: "Dificuldade", value: "Médio" }
+  ];
+
   const contentSections = [
-
     {
-      title: "SATA vs NVMe M.2",
+      title: "O maior upgrade que você pode fazer",
       content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
-            <div class="bg-[#171313] p-4 rounded border-t-4 border-blue-500">
-              <h4 class="text-white font-bold mb-1">SSD SATA (2.5")</h4>
-              <p class="text-gray-400 text-xs">Formato igual a um HD de notebook. Velocidade ~550MB/s. Compatível com qualquer PC ou notebook antigo.</p>
-            </div>
-            <div class="bg-[#171313] p-4 rounded border-t-4 border-purple-500">
-              <h4 class="text-white font-bold mb-1">NVMe M.2</h4>
-              <p class="text-gray-400 text-xs">Parece um chiclete. Ligado direto na placa-mãe. Velocidades de 3500MB/s a 7000MB/s. Requer slot M.2 no PC.</p>
-            </div>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, substituir um HD antigo por um SSD é como transformar um carro de boi em um jato. A diferença de velocidade no Windows 11 é brutante. Se você já tem um SSD e está apenas fazendo upgrade para um maior (ex: de 240GB para 1TB), a boa notícia é que você **não precisa formatar**. Você pode clonar exatamente o que tem hoje para o drive novo em poucos minutos.
+        </p>
+      `
     },
-
     {
-      title: "Clonar vs Instalação Limpa",
+      title: "1. Instalação Física: SATA vs M.2",
       content: `
-        <p class="mb-4 text-gray-300">Você comprou o SSD. E o Windows?</p>
-          <ul class="space-y-3 text-gray-300">
-            <li><strong>Clonar (Macrium Reflect):</strong> Copia seu Windows atual, programas e arquivos exatamente como estão para o SSD novo. Bom para quem não quer configurar tudo de novo.</li>
-            <li><strong>Instalação Limpa (Recomendado):</strong> Começar do zero garante performance máxima e livra o sistema de lixo acumulado.</li>
-          </ul>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">Como encaixar a peça no lugar certo:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>SSD SATA (2.5"):</strong> Usa dois cabos (um de energia da fonte e um de dados ligado na placa-mãe). Ideal para notebooks antigos ou HDs secundários.</li>
+            <li><strong>NVMe M.2 (O "pente"):</strong> Vai encaixado direto em um slot na placa-mãe e preso por um pequeno parafuso. Em 2026, certifique-se de que o slot suporta a velocidade da sua placa (Gen3, Gen4 ou Gen5).</li>
+            <li><strong>Aviso:</strong> Sempre desligue o PC da tomada e, em notebooks, desconecte a bateria antes de tocar em qualquer componente interno.</li>
+        </ul >
+      `
     },
-
     {
-      title: "Dica de Instalação",
+      title: "2. Como Clonar o Windows (Sem Formatar)",
       content: `
-        <p class="text-gray-300">Se for instalar um SSD M.2, cuidado com o parafuso minúsculo! Ele geralmente já vem na placa-mãe ou na caixa da placa-mãe, não com o SSD. Não aperte demais.</p>
-      `,
-      subsections: []
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Processo com Macrium Reflect:</h4>
+            <p class="text-sm text-gray-300">
+                1. Conecte o SSD novo no PC (use um adaptador USB-SATA se for notebook). <br/>
+                2. Abra o software de clonagem e selecione o disco antigo como **Origem** e o novo como **Destino**. <br/>
+                3. Clique em 'Copy Partitions'. Se o SSD novo for maior, estenda a partição 'C:' para ocupar o espaço todo. <br/>
+                4. Após terminar, desligue o PC, remova o disco velho e coloque o novo. O Windows ligará idêntico, mas muito mais rápido.
+            </p>
+        </div>
+      `
+    },
+    {
+      title: "3. O Primeiro Boot e Ajustes",
+      content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Iniciando o novo drive:</strong> 
+            <br/><br/>Se após a instalação o PC continuar ligando pelo disco antigo, entre na BIOS e mude a **Prioridade de Boot** para o novo SSD. Ao entrar no Windows, verifique se o comando TRIM está ativo. Caso o SSD novo não apareça no 'Este Computador', você precisará ir em 'Gerenciamento de Disco', clicar com o botão direito no espaço preto e escolher 'Novo Volume Simples' para dar uma letra (D:, E:, etc) a ele.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Proteja seu hardware."
+      href: "/guias/otimizacao-ssd-windows-11",
+      title: "Otimizar SSD",
+      description: "Ajustes de performance após a instalação."
     },
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados."
+      href: "/guias/verificar-saude-hd-ssd-crystaldiskinfo",
+      title: "Verificar Saúde",
+      description: "Teste se o seu SSD novo veio perfeito."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Performance",
-      description: "Deixe seu PC mais rápido."
+      href: "/guias/formataçao-windows",
+      title: "Formatação Limpa",
+      description: "Prefere começar do zero? Siga este guia."
     }
   ];
 
@@ -71,9 +89,10 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="20 min"
-      difficultyLevel="Intermediário"
+      estimatedTime="40 min"
+      difficultyLevel="Médio"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

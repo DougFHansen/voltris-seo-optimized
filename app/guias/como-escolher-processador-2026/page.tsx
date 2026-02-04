@@ -1,114 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia de Processadores 2026: Intel Core Ultra ou AMD Ryzen 9000? Qual escolher?";
-const description = "Vai montar um PC em 2026? Entenda as novas arquiteturas Arrow Lake (Intel) e Zen 5 (AMD), soquetes LGA 1851 vs AM5, e qual CPU entrega mais FPS por Real.";
-const keywords = ['processador 2026', 'intel core ultra vs ryzen 9000', 'melhor cpu jogos 2026', 'lga 1851 vs am5', 'ryzen 7 9800x3d vale a pena', 'intel arrow lake problemas'];
+const title = "Como Escolher o Processador (CPU) em 2026: Guia Gamer";
+const description = "Ryzen ou Intel? Saiba como escolher o melhor processador para jogos e produtividade em 2026, evitando gargalos no seu PC Gamer.";
+const keywords = [
+    'como escolher processador 2026 guia gamer',
+    'ryzen vs intel qual melhor para jogos 2026',
+    'processador para evitar gargalo rtx 4060 4070 guia',
+    'melhor cpu custo beneficio 2026 tutorial',
+    'o que é clock e nucleos processador explicacao 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('como-escolher-processador-2026', title, description, keywords);
 
-export default function CPUGuide() {
+export default function CPUBuyingGuide() {
+    const summaryTable = [
+        { label: "Uso: Jogos", value: "Ryzen 5 / Core i5 (6 a 8 núcleos)" },
+        { label: "Uso: Stream/Edição", value: "Ryzen 7 / Core i7 (8+ núcleos)" },
+        { label: "Tecnologia Chave", value: "Cache L3 (AMD 3D V-Cache)" },
+        { label: "Veredito 2026", value: "AMD leva vantagem em consumo e eficiência térmica" }
+    ];
+
     const contentSections = [
         {
-            title: "Introdução: O Fim da Nomenclatura Antiga",
+            title: "O cérebro do PC em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Se você estava acostumado com "Core i5, i7, i9", esqueça. A Intel mudou tudo em 2025/2026 com a linha <strong>Core Ultra (Série 200)</strong>. Do lado vermelho, a AMD refinou sua arquitetura Zen 5 nos Ryzen 9000.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Muitos jogadores cometem o erro de gastar tudo na placa de vídeo e economizar no processador. Em 2026, isso resulta no temido **Gargalo (Bottleneck)**: sua placa de vídeo quer entregar 200 FPS, mas seu processador é tão lento que só consegue processar a lógica do jogo a 60 FPS. Escolher a CPU certa é garantir que sua placa de vídeo consiga trabalhar em 100% de carga.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          A escolha hoje não é apenas sobre velocidade, mas sobre <strong>Eficiência Energética</strong> e <strong>Longevidade da Plataforma</strong>.
-        </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "1. AMD Ryzen 9000 (Plataforma AM5)",
+            title: "1. Núcleos: Quantos você realmente precisa?",
             content: `
-        <div class="bg-gray-800 border-l-4 border-red-600 p-6 rounded-xl mb-6">
-            <h4 class="text-white font-bold text-xl mb-2">A Escolha do Gamer (X3D)</h4>
-            <p class="text-gray-300 mb-4">
-                A AMD continua dominando o mercado de jogos com a tecnologia <strong>3D V-Cache</strong>. Processadores como o Ryzen 7 9800X3D possuem uma memória cache empilhada verticalmente que dobra o FPS em jogos competitivos como Valorant, CS2 e MMOs.
-            </p>
-            <ul class="list-disc list-inside text-gray-300 space-y-2">
-                <li><strong>Soquete AM5:</strong> Confirmado suporte até 2027+. Você compra uma placa-mãe hoje e poderá trocar de CPU no futuro.</li>
-                <li><strong>Pontos Fortes:</strong> Eficiência absurda (gasta pouca luz), performance imbatível em jogos.</li>
-                <li><strong>Pontos Fracos:</strong> Preço alto no lançamento, produtividade (render) levemente inferior à Intel no mesmo preço.</li>
-            </ul>
-        </div>
-      `,
-            subsections: []
+        <p class="mb-4 text-gray-300">Em 2026, a contagem de núcleos mudou de patamar:</p>
+        <p class="text-sm text-gray-300">
+            - <strong>4 Núcleos (Quad-Core):</strong> Já não são mais recomendados para jogos modernos, pois causam travadas (stutters) constantes. <br/>
+            - <strong>6 Núcleos (Hexa-Core):</strong> O ponto ideal de custo-benefício. Core i5 e Ryzen 5 rodam todos os jogos de 2026 com tranquilidade. <br/>
+            - <strong>8 Núcleos ou mais:</strong> Essencial apenas para quem joga e faz live simultaneamente no mesmo PC, ou para quem trabalha com renderização pesada e edição de vídeo 4K.
+        </p>
+      `
         },
         {
-            title: "2. Intel Core Ultra Série 200 (Arrow Lake)",
+            title: "2. Intel (Arquitetura Híbrida) vs AMD (3D V-Cache)",
             content: `
-        <div class="bg-gray-800 border-l-4 border-blue-600 p-6 rounded-xl mb-6">
-            <h4 class="text-white font-bold text-xl mb-2">A Revolução dos Tiles</h4>
-            <p class="text-gray-300 mb-4">
-                A Intel abandonou o design monolítico e removeu o Hyper-Threading (sim, um Core Ultra 7 agora tem threads iguais aos núcleos físicos). Isso reduziu drasticamente o consumo de energia e calor, resolvendo o problema das gerações 13/14.
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">As duas Gigantes em 2026:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Intel:</strong> Usa 'núcleos de performance' (P) e 'núcleos de eficiência' (E). É excelente para multitarefa no Windows 11, mas costuma consumir muito mais energia e esquentar mais. <br/>
+                - <strong>AMD:</strong> Em 2026, os modelos 'X3D' com empilhamento de memória cache são os reis absolutos dos jogos, entregando FPS muito mais estáveis em títulos competitivos como Warzone e Valorant.
             </p>
-            <ul class="list-disc list-inside text-gray-300 space-y-2">
-                <li><strong>Soquete LGA 1851:</strong> Nova plataforma. Requer memória DDR5 obrigatória (sem suporte a DDR4).</li>
-                <li><strong>NPU Integrada:</strong> Foco total em Inteligência Artificial local.</li>
-                <li><strong>Pontos Fortes:</strong> Excelente para trabalho (Premiere, Blender), muito frio.</li>
-                <li><strong>Pontos Fracos:</strong> Ganho em jogos foi pequeno comparado à geração 14. Plataforma cara (Placas Z890).</li>
-            </ul>
         </div>
       `
         },
         {
-            title: "3. Tabela Comparativa: Qual comprar?",
+            title: "3. O Soquete (Motherboard) e o Futuro",
             content: `
-            <table class="w-full text-left border-collapse mb-6 mt-4">
-                <thead>
-                    <tr class="text-[#31A8FF] border-b border-gray-700">
-                        <th class="p-3">Perfil de Uso</th>
-                        <th class="p-3">Recomendação AMD</th>
-                        <th class="p-3">Recomendação Intel</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-300 text-sm">
-                    <tr class="border-b border-gray-800 bg-gray-900/40">
-                        <td class="p-3 font-bold">PC Custo-Benefício</td>
-                        <td class="p-3 text-red-300">Ryzen 5 7600 (Rei do CxB)</td>
-                        <td class="p-3 text-blue-300">Core i5-12400F (Ainda vive)</td>
-                    </tr>
-                    <tr class="border-b border-gray-800">
-                        <td class="p-3 font-bold">Gamer Competitivo (360Hz)</td>
-                        <td class="p-3 text-red-300 font-bold">Ryzen 7 9800X3D</td>
-                        <td class="p-3 text-gray-500">Não compensa</td>
-                    </tr>
-                    <tr class="border-b border-gray-800 bg-gray-900/40">
-                        <td class="p-3 font-bold">Produtor de Conteúdo</td>
-                        <td class="p-3 text-red-300">Ryzen 9 9950X</td>
-                        <td class="p-3 text-blue-300 font-bold">Core Ultra 9 285K</td>
-                    </tr>
-                    <tr class="border-b border-gray-800">
-                        <td class="p-3 font-bold">Escritório / Estudos</td>
-                        <td class="p-3 text-red-300">Ryzen 5 8600G (Vídeo forte)</td>
-                        <td class="p-3 text-blue-300">Core Ultra 5 245K</td>
-                    </tr>
-                </tbody>
-            </table>
-        `
-        },
-        {
-            title: "Veredito Final",
-            content: `
-            <p class="text-gray-300 mb-4">
-                Se o seu foco é <strong>100% jogos</strong>, a AMD vence com a linha X3D. O cache extra faz diferença onde a placa de vídeo sobra (Low Resolution).
-            </p>
-            <p class="text-gray-300">
-                Se você trabalha com edição e precisa de estabilidade e QuickSync (encode de vídeo), a Intel com a nova arquitetura fria e eficiente é a melhor escolha híbrida.
-            </p>
-        `
+        <p class="mb-4 text-gray-300">
+            <strong>Pensando na frente:</strong> 
+            <br/><br/>Ao escolher um processador, você está escolhendo uma placa-mãe. Procure plataformas que terão suporte por muitos anos. Em 2026, a plataforma **AM5 da AMD** já provou ser duradoura, permitindo trocar apenas o processador no futuro sem precisar jogar a placa-mãe fora. Já a Intel costuma trocar de soquete a cada duas gerações, exigindo um upgrade mais caro.
+        </p>
+      `
         }
     ];
 
-    const summaryTable = [
-        { label: "Melhor Jogo", value: "AMD Ryzen 7 9800X3D" },
-        { label: "Melhor Trabalho", value: "Intel Ultra 9 285K" },
-        { label: "Custo-Benefício", value: "Ryzen 5 7600" },
-        { label: "Eficiência", value: "Empate (Novo Intel)" }
+    const relatedGuides = [
+        {
+            href: "/guias/overclock-processador",
+            title: "Overclock CPU",
+            description: "Extraia mais poder da sua CPU atual."
+        },
+        {
+            href: "/guias/monitorar-temperatura-pc",
+            title: "Controlar Calor",
+            description: "Evite que seu processador perca força por aquecimento."
+        },
+        {
+            href: "/guias/como-escolher-placa-de-video",
+            title: "Evitar Gargalo",
+            description: "Combine sua CPU com a GPU correta."
+        }
     ];
 
     return (
@@ -116,10 +87,11 @@ export default function CPUGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Iniciante"
+            estimatedTime="20 min"
+            difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

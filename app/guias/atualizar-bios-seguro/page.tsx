@@ -1,52 +1,88 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Atualizar a BIOS da Placa-Mãe com Segurança - Voltris";
-const description = "Atualizar a BIOS melhora a compatibilidade com memórias e processadores novos, mas é arriscado. Veja o passo a passo seguro para ASUS, Gigabyte, MSI e ASRock.";
-const keywords = ['atualizar bios', 'update bios asus', 'flash bios gigabyte', 'bios msi update', 'riscos atualizar bios'];
+const title = "Como Atualizar a BIOS com Segurança em 2026 (Guia Completo)";
+const description = "Tem medo de atualizar a BIOS? Aprenda como fazer o update da placa-mãe de forma segura, o que é Q-Flash, M-Flash e como evitar riscos de 'brickar' o PC em 2026.";
+const keywords = [
+    'como atualizar bios placa mae com segurança 2026',
+    'tutorial bios update asus gigabyte msi asrock',
+    'o que é bios e para que serve tutorial 2026',
+    'atualizar bios pelo pendrive passo a passo guia',
+    'riscos de atualizar bios e como evitar erros 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('atualizar-bios-seguro', title, description, keywords);
 
-export default function BIOSGuide() {
+export default function BIOSUpdateGuide() {
     const summaryTable = [
-        { label: "Risco", value: "Alto (Perda da Placa)" },
-        { label: "Tempo", value: "30 min" },
-        { label: "Ferramenta", value: "Pen Drive FAT32" }
+        { label: "Opcional", value: "Se o PC está estável e sem bugs" },
+        { label: "Obrigatório", value: "Suporte a nova CPU / Correções críticas de segurança" },
+        { label: "Ferramenta", value: "Pendrive formatado em FAT32" },
+        { label: "Dificuldade", value: "Avançado" }
     ];
 
     const contentSections = [
         {
-            title: "O Risco Real: Bricking",
+            title: "O que é a BIOS e por que mexer nela?",
             content: `
-        <div class="bg-red-900/20 border-l-4 border-red-500 p-4 mb-6">
-            <p class="text-red-400 font-bold">Nunca Desligue o PC</p>
-            <p class="text-gray-300 text-sm">Se a energia acabar durante a atualização, sua placa-mãe pode morrer ("brickar"). Se possível, use um No-Break ou faça em dia de tempo estável (sem chuvas).</p>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          A **BIOS** (ou UEFI) é o primeiro software que roda quando você liga o computador. Ela gerencia o hardware básico antes do Windows carregar. Diferente de um driver de vídeo, atualizar a BIOS é um processo delicado: se houver uma queda de energia no meio do processo, o computador pode parar de ligar. Em 2026, com recursos como o **BIOS Flashback**, o risco diminuiu, mas a cautela ainda é essencial.
+        </p>
+      `
+        },
+        {
+            title: "1. Quando você REALMENTE precisa atualizar?",
+            content: `
+        <p class="mb-4 text-gray-300">Não atualize a BIOS apenas por "luxo". Faça o update apenas se:</p>
+        <ul className="list-disc list-inside text-gray-300 space-y-3">
+            <li>Você comprou um processador novo que a placa-mãe não reconhece.</li>
+            <li>O fabricante lançou uma correção para bugs de estabilidade ou memória RAM.</li>
+            <li>Houve uma correção crítica de segurança (vulnerabilidades de hardware).</li>
+            <li><strong>Dica:</strong> Se o seu PC está perfeito, "time que está ganhando não se mexe".</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. O Método Seguro: Via Pendrive (M-Flash / Q-Flash)",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Passo a Passo:</h4>
+            <p class="text-sm text-gray-300">
+                1. Identifique o modelo EXATO da sua placa-mãe (use o comando <code>msinfo32</code>). <br/>
+                2. Baixe o arquivo no site oficial do fabricante (Asus, MSI, Gigabyte). <br/>
+                3. Formate um pendrive em **FAT32** e coloque o arquivo extraído nele. <br/>
+                4. Reinicie na BIOS, procure pela ferramenta de atualização e selecione o arquivo. <br/>
+                5. **Mantenha o PC ligado!** Não toque em nada até que a barra chegue em 100% e o PC reinicie sozinho.
+            </p>
         </div>
       `
         },
         {
-            title: "Passo 1: Descubra seu modelo exato",
+            title: "3. BIOS Flashback: O Salva-Vidas",
             content: `
-        <p class="mb-4">Instalar a BIOS de um modelo parecido (ex: "B450M-Gaming" vs "B450M-Gaming/BR") pode estragar tudo.</p>
-        <p class="text-gray-300">Use o <strong>CPU-Z</strong> > Aba Mainboard para ver o modelo e a versão atual.</p>
+        <p class="mb-4 text-gray-300">
+            <strong>Recurso de 2026:</strong> 
+            <br/><br/>Muitas placas-mãe modernas possuem um botão traseiro chamado **BIOS Flashback**. Ele permite que você recupere uma BIOS corrompida ou atualize para uma CPU nova sem nem precisar ter memória RAM ou processador instalados. Basta o pendrive e a fonte ligada. Se a sua placa tem esse recurso, você está muito mais seguro em caso de falhas.
+        </p>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/re-size-bar-ativar-pc-gamer",
+            title: "Ativar Re-Size BAR",
+            description: "Exige uma versão de BIOS atualizada."
         },
         {
-            title: "Passo 2: O Pen Drive FAT32",
-            content: `
-        <ol class="text-gray-300 list-decimal list-inside ml-4">
-            <li>Pegue um pen drive confiável.</li>
-            <li>Formate-o no Windows como <strong>FAT32</strong> (Não use NTFS).</li>
-            <li>Baixe o arquivo da BIOS no site da fabricante. Descompacte o arquivo.</li>
-            <li>Copie o arquivo (geralmente .CAP, .ROM ou .F20) para a raiz do pen drive.</li>
-        </ol>
-      `
+            href: "/guias/montagem-pc-gamer-erros-comuns",
+            title: "Guia de Montagem",
+            description: "Aprenda a lidar com o hardware do zero."
         },
         {
-            title: "Passo 3: M-Flash / Q-Flash / EZ Flash",
-            content: `
-        <p class="text-gray-300">Reinicie o PC, entre na BIOS (DEL). Procure pela ferramenta de Flash (o nome muda por marca). Selecione o arquivo no pen drive e aguarde a barrinha encher. O PC vai reiniciar sozinho.</p>
-      `
+            href: "/guias/diagnostico-hardware",
+            title: "Diagnóstico de Erros",
+            description: "Veja se o problema é realmente a BIOS."
         }
     ];
 
@@ -55,10 +91,11 @@ export default function BIOSGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="30 minutos"
+            estimatedTime="30 min"
             difficultyLevel="Avançado"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

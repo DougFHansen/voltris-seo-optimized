@@ -1,73 +1,80 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia de Limpeza e Otimização de Navegadores";
-const description = "Seu Chrome ou Edge está lento? Aprenda a limpar cache, remover extensões maliciosas e resetar configurações para restaurar a velocidade original.";
-const keywords = ["limpar cache chrome","navegador lento","remover extensoes","resetar edge","browser cleanup"];
+const title = "Como Limpar o Cache e Dados dos Navegadores (Chrome, Edge, Firefox)";
+const description = "Seu navegador está lento ou os sites não carregam direito? Aprenda a limpar o cache e os cookies sem perder suas senhas salvas.";
+const keywords = [
+  'limpar cache chrome 2026',
+  'como limpar cookies edge',
+  'navegador lento como resolver',
+  'limpar historico de navegação pc',
+  'limpeza profunda firefox'
+];
 
 export const metadata: Metadata = createGuideMetadata('limpeza-navegadores', title, description, keywords);
 
-export default function GuidePage() {
+export default function BrowserCleanGuide() {
+  const summaryTable = [
+    { label: "Atalho Universal", value: "Ctrl + Shift + Del" },
+    { label: "Frequência", value: "Mensal" },
+    { label: "Objetivo", value: "Velocidade e Corregir bugs de sites" },
+    { label: "Dificuldade", value: "Fácil" }
+  ];
+
   const contentSections = [
-
     {
-      title: "Por que limpar o navegador?",
+      title: "O que é Cache e por que ele envelhece?",
       content: `
-        <p class="mb-4 text-gray-300">Navegadores acumulam gigabytes de dados temporários, cookies e cache ao longo do tempo. Isso não só usa espaço em disco, como pode deixar a navegação lenta e causar erros em sites bancários ou de login.</p>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O Cache é a memória local do seu navegador. Ele guarda logos, imagens e códigos de sites que você visita sempre para que eles abram mais rápido na próxima vez. 
+        </p>
+        <p class="mb-6 text-gray-300 leading-relaxed">
+          O problema é que os sites mudam de versão. Se você tem o cache da versão "A" e o site atualizou para a versão "B", o conflito pode travar o navegador ou fazer o site não carregar botões e menus.
+        </p>
+      `
     },
-
     {
-      title: "Limpeza Profunda no Google Chrome",
+      title: "O Atalho Mágico (Ctrl + Shift + Del)",
       content: `
-        <div class="bg-[#1E1E22] p-5 rounded-lg border border-[#31A8FF]/30">
-            <h4 class="text-white font-bold mb-3">Passo a Passo</h4>
-            <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
-              <li>Pressione <strong>Ctrl + Shift + Delete</strong>.</li>
-              <li>Na janela que abrir, mude o período para <strong>"Todo o período"</strong>.</li>
-              <li>Marque: "Imagens e arquivos armazenados em cache" e "Cookies e outros dados do site".</li>
-              <li>Desmarque "Histórico de navegação" se quiser mantê-lo.</li>
-              <li>Clique em <strong>Remover dados</strong>.</li>
-            </ol>
-            <div class="mt-4 p-3 bg-red-900/20 border border-red-500/20 rounded">
-              <span class="text-red-400 font-bold text-xs">Atenção:</span> <span class="text-gray-400 text-xs">Isso desconectará você da maioria dos sites. Tenha suas senhas salvas.</span>
-            </div>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">Este atalho funciona no <strong>Chrome, Edge, Brave e Firefox</strong>.</p>
+        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+            <h4 class="text-white font-bold mb-4">O que Marcar:</h4>
+            <ul class="space-y-3 text-gray-300">
+                <li>✅ <strong>Imagens e arquivos armazenados em cache:</strong> Pode marcar sem medo.</li>
+                <li>✅ <strong>Cookies e outros dados do site:</strong> Marque se quiser deslogar de todos os sites (ajuda a resolver erros de login).</li>
+                <li>❌ <strong>Senhas e outros dados de preenchimento automático:</strong> <strong>NÃO MARQUE</strong> se você não tiver suas senhas anotadas em outro lugar.</li>
+            </ul>
+        </div>
+      `
     },
-
     {
-      title: "Removendo Extensões e Malwares (Adware)",
+      title: "Limpeza de Extensões (Bloatware do Browser)",
       content: `
-        <p class="mb-4 text-gray-300">Muitas vezes a lentidão é causada por extensões que você não instalou ou esqueceu.</p>
-          <ul class="space-y-3 text-gray-300">
-            <li><strong>Verificar:</strong> Digite <code>chrome://extensions</code> na barra de endereço.</li>
-            <li><strong>Identificar:</strong> Procure por qualquer coisa como "Coupon Finder", "Search Helper", "PDF Converter" que você não reconheça.</li>
-            <li><strong>Ação:</strong> Clique em REMOVER. Desativar não é suficiente.</li>
-          </ul>
-          <p class="mt-4 text-gray-300">Se a página inicial ou o mecanismo de busca mudaram sozinhos (ex: Yahoo Search aparecendo do nada), você precisa resetar o navegador: Configurações -> Redefinir configurações -> Restaurar configurações.</p>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">
+            Muitas vezes a lentidão não é o cache, mas as 10 extensões que você instalou e nunca mais usou.
+        </p>
+        <p class="text-gray-300">
+            Digite <code>chrome://extensions/</code> na barra de endereços do Chrome ou Edge e remova tudo o que for suspeito ou desnecessário. Extensões de VPN grátis e tradutores costumam ser os maiores causadores de lentidão.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
+      href: "/guias/atalhos-navegador-produtividade",
+      title: "Atalhos Chrome",
+      description: "Navegue como um profissional."
+    },
+    {
+      href: "/guias/extensoes-produtividade-chrome",
+      title: "Melhores Extensões",
+      description: "Quais extensões realmente valem a pena manter."
+    },
+    {
       href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Dicas para deixar seu PC mais rápido."
-    },
-    {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados."
-    },
-    {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Cuidados essenciais com o hardware."
+      title: "Otimizar PC",
+      description: "Melhore o tempo de resposta do Windows para ajudar o browser."
     }
   ];
 
@@ -76,9 +83,10 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="15-20 min"
+      estimatedTime="5 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

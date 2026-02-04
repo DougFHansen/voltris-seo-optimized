@@ -1,43 +1,89 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Wi-Fi Desconectando Sozinho? Desative a Economia de Energia - Voltris";
-const description = "Se o seu Wi-Fi cai do nada e volta, o Windows pode estar desligando sua placa de rede. Aprenda a configurar o Plano de Energia para performance máxima.";
-const keywords = ['wifi desconectando sozinho', 'internet cai toda hora', 'adaptador wifi desliga', 'configurar energia wifi', 'windows derruba wifi'];
+const title = "Wi-Fi Desconectando Sozinho no Windows 11: Como resolver (2026)";
+const description = "Seu Wi-Fi cai o tempo todo ou desconecta ao jogar? Aprenda como configurar o adaptador de rede para estabilidade máxima no Windows 11 em 2026.";
+const keywords = [
+    'wifi desconectando sozinho windows 11 como resolver 2026',
+    'rede wifi caindo toda hora notebook tutorial guia',
+    'desativar modo economia energia wifi windows 11 tutorial',
+    'estabilizar wifi para jogos online guia 2026',
+    'resetar driver wifi windows 11 tutorial passo a passo'
+];
 
 export const metadata: Metadata = createGuideMetadata('wifi-desconectando-sozinho-windows', title, description, keywords);
 
-export default function WifiDropGuide() {
+export default function WiFiFixGuide() {
+    const summaryTable = [
+        { label: "Causa Principal", value: "Gerenciamento de Energia do Adaptador" },
+        { label: "Solução Rápida", value: "Resetar Pilha TCP/IP no CMD" },
+        { label: "Check de Hardware", value: "Verificar antenas do Notebook" },
+        { label: "Dificuldade", value: "Médio" }
+    ];
+
     const contentSections = [
         {
-            title: "O Problema Oculto",
+            title: "O mistério da queda de sinal",
             content: `
-        <p class="mb-4">Por padrão, o Windows está configurado para desligar o adaptador Wi-Fi se ele achar que você não está usando muito a internet. Isso causa quedas em jogos.</p>
-      `,
-            subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Não há nada mais frustrante do que estar em uma partida importante ou em uma reunião e o Wi-Fi desconectar sem motivo aparente. Em 2026, com o Wi-Fi 6E e o Wi-Fi 7 se tornando populares, o Windows 11 tenta economizar bateria desligando o sinal quando ele acha que você não está usando ativamente. Além disso, conflitos de canais entre os vizinhos podem derrubar sua conexão no Windows 11 constantemente.
+        </p>
+      `
         },
         {
-            title: "Passo 1: Gerenciador de Dispositivos",
+            title: "1. Desativando a Economia de Energia do Adaptador",
             content: `
-        <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4">
-            <li>Botão direito no Iniciar > Gerenciador de Dispositivos.</li>
-            <li>Abra Adaptadores de Rede.</li>
-            <li>Dois cliques na sua placa Wi-Fi (Intel, Realtek, Qualcomm).</li>
-            <li>Aba <strong>Gerenciamento de Energia</strong>.</li>
-            <li><strong>DESMARQUE</strong> "O computador pode desligar o dispositivo para economizar energia".</li>
+        <p class="mb-4 text-gray-300">Este é o ajuste nº 1 para estabilidade:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Aperte Win+X e vá em <strong>Gerenciador de Dispositivos</strong>.</li>
+            <li>Expanda 'Adaptadores de rede' e clique duas vezes na sua placa Wi-Fi (ex: Intel Wi-Fi 6E).</li>
+            <li>Vá na aba <strong>Gerenciamento de Energia</strong>.</li>
+            <li>Desmarque a caixa <strong>'O computador pode desligar o dispositivo para economizar energia'</strong>.</li>
+            <li>Se a aba não aparecer, você precisará mudar o plano de energia do Windows para 'Alto Desempenho'.</li>
         </ol>
       `
         },
         {
-            title: "Passo 2: Plano de Energia",
+            title: "2. Resetando a Pilha de Rede (TCP/IP)",
             content: `
-        <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4">
-            <li>Digite "Editar Plano de Energia" no Iniciar.</li>
-            <li>Clique em "Alterar configurações de energia avançadas".</li>
-            <li>Abra "Configurações de Adaptadores Sem Fio" > "Modo de Economia de Energia".</li>
-            <li>Mude para <strong>Desempenho Máximo</strong> (tanto na bateria quanto na tomada).</li>
-        </ol>
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Comandos de Recuperação:</h4>
+            <p class="text-sm text-gray-300">
+                Se o Wi-Fi desconecta e trava o ícone de rede, use estes comandos no CMD (Admin) para limpar erros de 2026: <br/><br/>
+                - <code>netsh winsock reset</code> <br/>
+                - <code>netsh int ip reset</code> <br/>
+                - <code>ipconfig /flushdns</code> <br/>
+                Esses comandos forçam o Windows a esquecer configurações de rede corrompidas e buscar um novo endereço IP limpo do roteador.
+            </p>
+        </div>
       `
+        },
+        {
+            title: "3. Interferência e Canais de 5GHz/6GHz",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Dica de 2026:</strong> Se você mora em apartamento, o sinal 2.4GHz está saturado. 
+            <br/><br/>Tente forçar seu PC a usar apenas a frequência de <strong>5GHz ou 6GHz</strong>. No Gerenciador de Dispositivos, nas propriedades avançadas da sua placa Wi-Fi, procure por 'Preferred Band' e selecione 'Prefer 5GHz'. Isso evita que o Windows fique alternando entre as bandas, o que é a causa de 50% das quedas repentinas durante o uso.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/problemas-conexao-wifi-causa-solucao",
+            title: "Guia Geral Wi-Fi",
+            description: "Dicas para sinal fraco e alcance."
+        },
+        {
+            href: "/guias/reduzir-ping-jogos-online",
+            title: "Reduzir Ping",
+            description: "Melhore a resposta da sua rede sem fio."
+        },
+        {
+            href: "/guias/troubleshooting-internet",
+            title: "Diagnóstico de Rede",
+            description: "O que fazer se nada funcionar."
         }
     ];
 
@@ -46,9 +92,11 @@ export default function WifiDropGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="10 minutos"
-            difficultyLevel="Iniciante"
+            estimatedTime="15 min"
+            difficultyLevel="Médio"
             contentSections={contentSections}
+            summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

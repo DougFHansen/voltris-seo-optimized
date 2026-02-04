@@ -1,74 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como usar o DDU (Display Driver Uninstaller) Corretamente e Evitar Erros (2026)";
-const description = "Vai trocar de placa de vídeo ou o driver crashou? Aprenda a usar o DDU no Modo de Segurança para remover restos de drivers corrompidos da NVIDIA/AMD/Intel.";
-const keywords = ['ddu tutorial', 'display driver uninstaller como usar', 'driver nvidia não instala', 'limpar drivers de video', 'modo de segurança windows 11', 'tela preta driver amd'];
+const title = "Como usar o DDU (Display Driver Uninstaller) com Segurança";
+const description = "Problemas com drivers de vídeo? Aprenda como usar o DDU para fazer uma limpeza profunda e remover drivers da NVIDIA e AMD em 2026.";
+const keywords = [
+    'como usar ddu display driver uninstaller 2026',
+    'remover driver nvidia e amd completamente guia',
+    'ddu tutorial passo a passo windows 11 2026',
+    'corrigir erro de driver de vídeo com ddu tutorial',
+    'instalação limpa de drivers de video guia profissional'
+];
 
 export const metadata: Metadata = createGuideMetadata('como-usar-ddu-driver-uninstaller', title, description, keywords);
 
 export default function DDUGuide() {
     const summaryTable = [
-        { label: "Ferramenta", value: "DDU (Wagnardsoft)" },
-        { label: "Modo", value: "Segurança (Safe Mode)" },
-        { label: "Internet", value: "Desligada (Cabo)" },
-        { label: "Risco", value: "Médio" }
+        { label: "O que faz", value: "Apaga rastros de drivers no registro e pastas" },
+        { label: "Quando usar", value: "Mudança de GPU ou Crashes constantes" },
+        { label: "Duração", value: "15 min" },
+        { label: "Dificuldade", value: "Avançado" }
     ];
 
     const contentSections = [
         {
-            title: "Por que não apenas desinstalar pelo Painel de Controle?",
+            title: "O que é o DDU e por que ele é especial?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O desinstalador padrão do Windows deixa para trás chaves de registro, pastas ocultas e configurações de shader cache. Se você trocar uma placa NVIDIA por AMD (ou vice-versa) sem limpar isso, o Windows tentará carregar instruções da placa antiga, causando tela azul e stuttering.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O **DDU (Display Driver Uninstaller)** é a ferramenta "nuclear" para correção de drivers de vídeo. Diferente da desinstalação comum do Windows, o DDU remove chaves de registro, sobras de arquivos e drivers de monitor que o Windows geralmente deixa para trás. Em 2026, ele é essencial para resolver problemas de performance em jogos ou para preparar o PC para uma placa de vídeo nova sem precisar formatar.
         </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Passo 1: Preparação (Obrigatório)",
+            title: "1. Preparação Crítica: Modo de Segurança",
             content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Baixe o <strong>DDU</strong> no site oficial (Wagnardsoft).</li>
-            <li>Baixe o driver novo da sua placa (NVIDIA/AMD) e deixe o instalador na Área de Trabalho.</li>
-            <li><strong>DESCONECTE O CABO DE INTERNET (OU WI-FI).</strong>
-                <p class="text-red-400 text-sm mt-1 ml-6">
-                    Isso é vital. Se você reiniciar com internet, o Windows Update vai instalar um driver genérico em 3 segundos antes de você conseguir clicar no seu instalador.
-                </p>
-            </li>
+        <p class="mb-4 text-gray-300">Nunca use o DDU com o Windows em execução normal!</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Baixe o DDU apenas do site oficial (Guru3D ou Wagnardsoft).</li>
+            <li>Entre no <strong>Modo de Segurança</strong> do Windows 11.</li>
+            <li>Desconecte o seu cabo de rede ou desligue o Wi-Fi. (Isso impede que o Windows tente instalar um driver velho assim que você limpar).</li>
+            <li>Execute o DDU como administrador.</li>
         </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Passo 2: Entrando no Modo de Segurança",
-            content: `
-        <p class="mb-4 text-gray-300">
-            O DDU funciona melhor quando o Windows está com o mínimo de processos.
-        </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li>Segure a tecla <strong>SHIFT</strong> e clique em <strong>Reiniciar</strong> no Menu Iniciar.</li>
-            <li>Vá em Solução de Problemas > Opções Avançadas > Configurações de Inicialização > Reiniciar.</li>
-            <li>No menu azul que aparecer, aperte a tecla <strong>4</strong> (Habilitar Modo de Segurança).</li>
-        </ul>
       `
         },
         {
-            title: "Passo 3: A Limpeza",
+            title: "2. Executando a Limpeza",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Configuração Recomendada:</h4>
+            <p class="text-sm text-gray-300">
+                - À direita, selecione o tipo de dispositivo: <strong>GPU</strong>. <br/>
+                - Escolha a marca da sua placa antiga (NVIDIA, AMD ou Intel). <br/>
+                - Clique no botão <strong>'Limpar e Reiniciar'</strong>. <br/><br/>
+                O DDU fará todo o trabalho, criará um ponto de restauração e reiniciará o PC no modo normal com o driver básico de vídeo do Windows.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Instalando o Driver Novo",
             content: `
         <p class="mb-4 text-gray-300">
-            Agora com o PC no Modo de Segurança (resolução baixa):
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Abra o DDU.exe.</li>
-            <li>Selecione o tipo de dispositivo: <strong>GPU</strong>.</li>
-            <li>Selecione o dispositivo: <strong>NVIDIA</strong> (ou AMD/Intel).</li>
-            <li>Clique no botão: <strong>Limpar e Reiniciar</strong> (Clean and Restart).</li>
-        </ol>
-        <p class="text-gray-300 mt-4">
-            O PC vai reiniciar no modo normal. Agora instale o driver que você baixou. Só conecte a internet depois de instalar.
+            <strong>Check final em 2026:</strong> 
+            <br/><br/>Com o PC de volta ao modo normal (ainda sem internet), instale o driver que você baixou previamente. Só reconecte a internet após a instalação terminar com sucesso. Esse método garante que não existam restos de drivers antigos conflitando com os shaders e configurações do novo software, garantindo o máximo de FPS e estabilidade nos seus jogos.
         </p>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Baixar Drivers",
+            description: "Links oficiais das fabricantes."
+        },
+        {
+            href: "/guias/como-resolver-tela-azul",
+            title: "Fix Tela Azul",
+            description: "O que fazer se o erro persistir."
+        },
+        {
+            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            title: "Otimizar Placa",
+            description: "Ajuste fino pós-instalação."
         }
     ];
 
@@ -77,10 +90,11 @@ export default function DDUGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
+            estimatedTime="20 min"
             difficultyLevel="Avançado"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

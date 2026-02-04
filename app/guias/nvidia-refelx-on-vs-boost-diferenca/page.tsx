@@ -1,63 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "NVIDIA Reflex: On vs Boost - Qual a Diferença Real e Qual Usar? (2026)";
-const description = "Entenda a técnica por trás do NVIDIA Reflex. O 'Boost' esquenta a placa? Melhora o FPS? Veja quando usar cada opção para reduzir o Input Lag.";
-const keywords = ['nvidia reflex on vs boost', 'o que é nvidia reflex', 'reduzir input lag placa de video', 'gpu boost clock fixo', 'melhorar tempo de resposta monitor', 'reflex low latency mode'];
+const title = "NVIDIA Reflex: Qual a diferença entre ON e ON + BOOST? (2026)";
+const description = "Quer reduzir o atraso dos seus comandos? Aprenda como configurar o NVIDIA Reflex corretamente e saiba quando usar o modo Boost em 2026.";
+const keywords = [
+    'nvidia reflex on vs boost diferença 2026',
+    'como reduzir input lag nos jogos tutorial',
+    'nvidia reflex vale a pena para valorant e fortnite',
+    'o que faz o modo boost no nvidia reflex guia',
+    'latência do sistema pc gamer como diminuir 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('nvidia-refelx-on-vs-boost-diferenca', title, description, keywords);
 
-export default function ReflexGuide() {
+export default function NvidiaReflexGuide() {
     const summaryTable = [
-        { label: "Desktop Gamer", value: "On + Boost" },
-        { label: "Notebook", value: "On (Apenas)" },
-        { label: "Efeito", value: "Reduz Fila CPU" },
-        { label: "FPS", value: "Não Altera" }
+        { label: "Reflex OFF", value: "Padrão / Maior fila de renderização" },
+        { label: "Reflex ON", value: "Sincronia CPU-GPU / Menor latência" },
+        { label: "Reflex ON + BOOST", value: "Força clock máximo da GPU / Máxima reação" },
+        { label: "Hardware Necessário", value: "Placa NVIDIA GTX 900 ou superior" }
     ];
 
     const contentSections = [
         {
-            title: "Como funciona a Fila de Renderização?",
+            title: "O que é o NVIDIA Reflex?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Imagine que sua CPU é um cozinheiro cortando legumes e sua GPU é a panela fritando. Se o cozinheiro cortar rápido demais (300 cenouras), a panela não dá conta e forma uma fila de cenouras esperando. Essa fila é o <strong>Input Lag</strong>. O NVIDIA Reflex elimina essa fila, fazendo a CPU esperar a GPU terminar antes de mandar o próximo frame.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Diferença: On vs On+Boost",
-            content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-blue-900/20 p-6 rounded-xl border border-blue-500">
-                <h4 class="text-white font-bold mb-2">Modo ON (Ligado)</h4>
-                <p class="text-gray-300 text-sm">
-                    Apenas gerencia a fila. A placa de vídeo continua operando normalmente, baixando o clock (MHz) quando a cena é leve para economizar energia.
-                    <br/><br/><strong>Recomendado para:</strong> Notebooks Gamers (para não superaquecer) e PCs com fonte limitada.
-                </p>
-            </div>
-            <div class="bg-red-900/20 p-6 rounded-xl border border-red-500">
-                <h4 class="text-white font-bold mb-2">Modo ON + BOOST</h4>
-                <p class="text-gray-300 text-sm">
-                    Além de gerenciar a fila, ele <strong>força a GPU a rodar no Clock Máximo o tempo todo</strong>. Mesmo se você estiver olhando para uma parede cinza, a placa estará "acelerada" aguardando ação.
-                    <br/><br/>Isso elimina o micro-lag que acontece quando você sai de uma área calma para uma explosão.
-                    <br/><strong>Recomendado para:</strong> Desktops Competitivos.
-                </p>
-            </div>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Mito: NVIDIA Reflex aumenta o FPS?",
-            content: `
-        <p class="mb-4 text-gray-300">
-            <strong>NÃO.</strong> Na verdade, em alguns casos raros, ligar o Reflex pode diminuir seu FPS em 1% ou 2%.
-        </p>
-        <p class="text-gray-300">
-            Mas lembre-se: FPS não é Latência. É melhor ter 190 FPS com resposta instantânea do mouse do que 200 FPS com sensação de "mouse pesado" (floaty). Sempre deixe ligado em jogos de tiro.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em jogos competitivos de 2026, ganhar ou perder depende de milissegundos. O **NVIDIA Reflex** é uma tecnologia que remove o "congestionamento" entre o seu processador e a sua placa de vídeo. Sem o Reflex, a CPU envia os quadros para uma fila e a GPU os processa quando pode. Com o Reflex, a CPU só envia o quadro no exato momento em que a GPU está pronta, eliminando o atraso (input lag) entre o seu clique e o tiro na tela.
         </p>
       `
+        },
+        {
+            title: "1. O modo ON: O Equilíbrio Ideal",
+            content: `
+        <p class="mb-4 text-gray-300">Ao ativar apenas o 'ON', você tem os seguintes benefícios:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Latência Reduzida:</strong> Seus comandos parecem mais diretos e responsivos.</li>
+            <li><strong>Temperatura Estável:</strong> A placa de vídeo não trabalha mais do que o necessário, mantendo o PC mais silencioso.</li>
+            <li><strong>Consistência:</strong> Reduz as variações bruscas de atraso, o que ajuda na sua memória muscular de mira.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. O modo ON + BOOST: Reação Extrema",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Para cenários competitivos:</h4>
+            <p class="text-sm text-gray-300">
+                O modo <strong>ON + BOOST</strong> faz algo agressivo: ele impede que a placa de vídeo reduza o clock (velocidade) mesmo quando o jogo é leve (CPU Bound). <br/><br/>
+                Imagine que você está parado olhando para uma parede; a GPU normalmente baixaria a velocidade para economizar energia. Com o Boost, ela continua no máximo. Isso garante que, se um inimigo aparecer de repente, a resposta da GPU seja **instantânea**, sem o pequeno atraso de ela precisar "acordar" para processar o movimento.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Qual escolher em 2026?",
+            content: `
+        <p class="mb-4 text-gray-300">
+            - <strong>Use ON + BOOST</strong> se você joga profissionalmente jogos como Valorant, CS2 ou Warzone e não se importa com o barulho dos fans ou consumo de energia.
+            <br/><br/>
+            - <strong>Use apenas ON</strong> para jogos de aventura ou se você joga em um <strong>Notebook Gamer</strong>. O modo Boost em notebooks pode causar superaquecimento desnecessário, o que acaba gerando quedas de FPS por calor (Thermal Throttling), anulando qualquer benefício de latência.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/limitar-fps-rivatuner-nvidia",
+            title: "Limitar FPS",
+            description: "Combine com Reflex para latência mínima."
+        },
+        {
+            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            title: "Agendamento de GPU",
+            description: "Outra forma de reduzir latência no Windows 11."
+        },
+        {
+            href: "/guias/mousepad-speed-vs-control",
+            title: "Melhorar Mira",
+            description: "Sua reação física junto com a digital."
         }
     ];
 
@@ -66,10 +88,11 @@ export default function ReflexGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="5 min"
+            estimatedTime="10 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

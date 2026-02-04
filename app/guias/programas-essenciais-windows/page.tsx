@@ -1,78 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Kit de Sobrevivência: Programas Essenciais para Instalar no Windows";
-const description = "Lista curada dos melhores softwares gratuitos e open-source para produtividade, segurança e mídia. Diga adeus ao WinRAR e conheça o 7-Zip.";
-const keywords = ["programas essenciais pc","ninite","vlc alternativa","7zip vs winrar","melhores softwares gratis"];
+const title = "Programas Essenciais para Windows 11: O Pack Básico 2026";
+const description = "Acabou de formatar o PC? Confira a lista definitiva de softwares gratuitos e essenciais para produtividade, segurança e manutenção no Windows 11 em 2026.";
+const keywords = [
+  'melhores programas essenciais windows 11 2026',
+  'lista de softwares indispensaveis pc novo tutorial',
+  'programas gratuitos para produtividade windows guia 2026',
+  'o que instalar primeiro no windows 11 checklist',
+  'ferramentas de manutenção pc gamer essenciais 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('programas-essenciais-windows', title, description, keywords);
 
-export default function GuidePage() {
+export default function EssentialProgramsGuide() {
+  const summaryTable = [
+    { label: "Navegação", value: "Brave ou Firefox (Privacidade)" },
+    { label: "Compactação", value: "7-Zip ou NanaZip" },
+    { label: "Mídia", value: "VLC ou PotPlayer" },
+    { label: "Manutenção", value: "BleachBit (Alternativa ao CCleaner)" }
+  ];
+
   const contentSections = [
-
     {
-      title: "O Método Ninite",
+      title: "O que não pode faltar no seu PC?",
       content: `
-        <p class="mb-4 text-gray-300">Pare de baixar instaladores um por um e clicar em "Próximo" 50 vezes. Acesse <strong>ninite.com</strong>, marque os apps que quer e baixe um único instalador que faz tudo em silêncio e sem toolbars.</p>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Montar a sua "caixa de ferramentas" digital é o primeiro passo após ligar um PC novo. Em 2026, fugimos de programas pesados e cheios de anúncios. O foco agora é **velocidade, privacidade e leveza**. Aqui estão os softwares que todo usuário de Windows 11 deveria ter instalado para garantir que o computador funcione de forma inteligente e sem estresse.
+        </p>
+      `
     },
-
     {
-      title: "Lista de Ouro (Open Source & Grátis)",
+      title: "1. Utilidade Geral e Sistema",
       content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-[#171313] p-4 rounded">
-              <h4 class="text-[#31A8FF] font-bold">Utilitários</h4>
-              <ul class="text-gray-400 text-sm list-none space-y-2 mt-2">
-                <li>📦 <strong>7-Zip:</strong> Melhor que WinRAR. Abre tudo, gratuito e sem janelas chatas.</li>
-                <li>🔍 <strong>Everything:</strong> Busca arquivos no PC instantaneamente (muito melhor que a busca do Windows).</li>
-                <li>📸 <strong>ShareX:</strong> A ferramenta suprema de printscreen e gravação de tela.</li>
-              </ul>
-            </div>
-            <div class="bg-[#171313] p-4 rounded">
-              <h4 class="text-[#31A8FF] font-bold">Mídia e Internet</h4>
-              <ul class="text-gray-400 text-sm list-none space-y-2 mt-2">
-                <li>🎥 <strong>VLC Media Player:</strong> Roda qualquer vídeo, com qualquer legenda, sem precisar de codecs.</li>
-                <li>🦊 <strong>Brave ou Firefox:</strong> Alternativas focadas em privacidade ao Chrome.</li>
-                <li>🎵 <strong>Spotify/Discord:</strong> Essenciais para comunicação e música.</li>
-              </ul>
-            </div>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">Ferramentas que preenchem as lacunas do Windows:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>7-Zip / NanaZip:</strong> Abra qualquer arquivo compactado (.zip, .rar, .7z) sem propagandas e com velocidade máxima.</li>
+            <li><strong>Everything (Voidtools):</strong> Uma barra de busca que encontra qualquer arquivo no seu PC instantaneamente.</li>
+            <li><strong>Microsoft PowerToys:</strong> Um pacote de mini-ferramentas da própria Microsoft que adiciona funções de produtividade avançadas.</li>
+        </ul >
+      `
     },
-
     {
-      title: "O que NÃO instalar",
+      title: "2. Multimídia e Visualização",
       content: `
-        <div class="bg-red-900/20 p-4 rounded border border-red-500/20">
-            <ul class="list-disc list-inside text-gray-300">
-              <li><strong>uTorrent:</strong> Virou adware. Use <strong>qBittorrent</strong> (leve, open source, limpo).</li>
-              <li><strong>Antivírus Gratuitos Pesados (Avast/McAfee):</strong> O Windows Defender já é excelente. Se quiser uma varredura extra, use Malwarebytes Free.</li>
-              <li><strong>Driver Boosters:</strong> Geralmente instalam drivers errados. Baixe do site do fabricante.</li>
-            </ul>
-          </div>
-      `,
-      subsections: []
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Para ver e ouvir:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>VLC Media Player:</strong> O clássico que roda qualquer formato de vídeo sem precisar de codecs. <br/>
+                - <strong>IrfanView / HoneyView:</strong> Visualizadores de fotos que abrem imagens pesadas 10x mais rápido que o app nativo do Windows. <br/>
+                - <strong>Spotify / Tidal:</strong> Para música, dependendo da sua preferência de qualidade sonora.
+            </p>
+        </div>
+      `
+    },
+    {
+      title: "3. Segurança e Manutenção Proativa",
+      content: `
+        <p class="mb-4 text-gray-300">
+            Mantenha o seu sistema saudável sem gastar energia:
+            <br/><br/><strong>Dica de 2026:</strong> Esqueça o CCleaner. Use o <strong>BleachBit</strong> (código aberto) para limpar arquivos temporários. Para desinstalar programas de verdade (removendo até as sobras do registro), use o <strong>Revo Uninstaller</strong>. E para segurança, o **Bitwarden** é o melhor gerenciador de senhas gratuito para manter suas contas protegidas.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Dicas para deixar seu PC mais rápido."
+      href: "/guias/pos-instalacao-windows-11",
+      title: "Pós-Instalação",
+      description: "Checklist de configuração do sistema."
     },
     {
-      href: "/guias/rede-domestica",
-      title: "Redes Domésticas",
-      description: "Melhore sua conexão WiFi."
+      href: "/guias/seguranca-senhas-gerenciadores",
+      title: "Gestão de Senhas",
+      description: "Por que usar o Bitwarden em 2026."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Cuidados essenciais com o hardware."
+      href: "/guias/vlc-media-player-vs-potplayer",
+      title: "VLC vs PotPlayer",
+      description: "Comparativo de players de vídeo."
     }
   ];
 
@@ -81,9 +88,10 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="10-15 min"
+      estimatedTime="20 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

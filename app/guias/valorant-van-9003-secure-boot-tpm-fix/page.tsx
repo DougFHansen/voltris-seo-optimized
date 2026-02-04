@@ -1,83 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Erro VAN 9003 Valorant: Como Ativar Secure Boot e TPM 2.0 (Windows 11) (2026)";
-const description = "O Valorant não abre e pede Secure Boot? Veja como entrar na BIOS (Gigabyte, ASUS, MSI) e ativar o TPM 2.0 sem formatar o PC.";
-const keywords = ['erro van 9003 valorant', 'ativar secure boot gigabyte asus msi', 'tpm 2.0 valorant windows 11', 'como entrar na bios windows 11', 'valorant vanguard erro van9003', 'converter mbr para gpt sem formatar'];
+const title = "Valorant VAN 9003 e TPM 2.0: Guia por Placa-Mãe (2026)";
+const description = "Saiba como ativar o TPM 2.0 e o Secure Boot em placas ASUS, Gigabyte, MSI e ASRock para resolver o erro VAN 9003 do Valorant em 2026.";
+const keywords = [
+    'valorant van 9003 tpm 2.0 como ativar 2026',
+    'erro van 9003 placa mae gigabyte tutorial',
+    'ativar tpm 2.0 asus valorant windows 11 guia',
+    'valorant vanguard tpm 2.0 fix msi tutorial 2026',
+    'como saber se meu pc tem tpm 2.0 para valorant guia'
+];
 
 export const metadata: Metadata = createGuideMetadata('valorant-van-9003-secure-boot-tpm-fix', title, description, keywords);
 
-export default function Van9003Guide() {
+export default function ValorantTPMGuide() {
     const summaryTable = [
-        { label: "Erro", value: "VAN 9003" },
-        { label: "Causa", value: "BIOS Desconfigurada" },
-        { label: "Requisito 1", value: "UEFI (Não Legacy)" },
-        { label: "Requisito 2", value: "Secure Boot ON" }
+        { label: "ASUS", value: "Procure por PTT ou fTPM na aba Advanced" },
+        { label: "Gigabyte", value: "Intel Platform Trust Tech ou AMD fTPM" },
+        { label: "MSI", value: "Security Device Support: Enable" },
+        { label: "Dificuldade", value: "Intermediária" }
     ];
 
     const contentSections = [
         {
-            title: "Por que isso acontece no Windows 11?",
+            title: "O que é o TPM e por que o Valorant exige?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O Vanguard (Anti-Cheat do Valorant) no Windows 11 exige que seu PC garanta segurança de hardware. Isso significa que você PRECISA ter o <strong>TPM 2.0</strong> (Trusted Platform Module) e o <strong>Secure Boot</strong> ativados. Se um deles estiver desligado, o jogo bloqueia o acesso.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O **TPM 2.0** (Trusted Platform Module) é um componente de segurança que protege chaves de criptografia e identidades. Em 2026, a Riot Games usa o TPM para "marcar" o seu hardware. Se um trapaceiro for banido, o Vanguard bane o ID do TPM, tornando impossível para ele criar uma nova conta no mesmo PC. Por isso, no Windows 11, o Valorant exige que ele esteja ativado.
         </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Passo 1: Verifique se seu Disco é GPT ou MBR",
+            title: "1. Como ver se o TPM está ativo agora",
             content: `
-        <div class="bg-red-900/20 p-6 rounded-xl border border-red-500 mb-6">
-            <h4 class="text-white font-bold mb-2 text-center">⚠ ATENÇÃO ⚠</h4>
-            <p class="text-gray-300 text-sm">
-                Se você ativar o Secure Boot em um disco MBR (Antigo), <strong>SEU WINDOWS NÃO VAI MAIS INICIAR</strong>. Verifique antes!
-            </p>
-        </div>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4 mb-4">
-            <li>Win + R > Digite <code>diskmgmt.msc</code>.</li>
-            <li>Clique com botão direito no "Disco 0" (O quadrado cinza à esquerda) > Propriedades.</li>
-            <li>Aba "Volumes".</li>
-            <li>Em "Estilo de partição":
-                <br/><strong class="text-green-400">Tabela de Partição GUID (GPT)</strong> = Seguro. Prossiga.
-                <br/><strong class="text-red-400">MBR (Master Boot Record)</strong> = PERIGO. Você precisa converter para GPT antes (Pesquise: "mbr2gpt").
-            </li>
+        <p class="mb-4 text-gray-300">Não precisa abrir a BIOS para checar:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Aperte <strong>Win + R</strong> e digite <code>tpm.msc</code>.</li>
+            <li>Se aparecer 'O TPM está pronto para uso', seu problema é apenas o **Secure Boot**.</li>
+            <li>Se aparecer 'Não é possível encontrar o TPM compatível', você precisa ativá-lo na BIOS.</li>
         </ol>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Passo 2: Ativando na BIOS (Tutorial Geral)",
+            title: "2. Ativando por Marca de Placa-Mãe",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Onde encontrar a opção:</h4>
+            <ul class="text-sm text-gray-300 space-y-2">
+                <li><strong>ASUS:</strong> Advanced > PCH-FW Configuration > PTT OU Advanced > CPU Configuration > fTPM.</li>
+                <li><strong>Gigabyte:</strong> Settings > Miscellaneous > Intel Platform Trust Technology (PTT) OU Peripherals > AMD CPU fTPM.</li>
+                <li><strong>MSI:</strong> Security > Trusted Computing > Security Device Support [Enabled].</li>
+                <li><strong>ASRock:</strong> Security > Intel (R) Platform Trust Technology [Enabled].</li>
+            </ul>
+        </div>
+      `
+        },
+        {
+            title: "3. Aviso sobre Modo de BIOS (UEFI)",
             content: `
         <p class="mb-4 text-gray-300">
-            Reinicie o PC e fique apertando <strong>DEL</strong> ou <strong>F2</strong> para entrar na BIOS.
+            <strong>O Erro persiste?</strong> 
+            <br/><br/>Muitos usuários ativam o TPM mas o erro VAN 9003 continua. Isso acontece porque o Windows 11 está instalado no modo **CSM/Legacy**. Em 2026, para que o TPM e o Secure Boot funcionem para o Vanguard, o seu 'Modo da BIOS' deve estar em <strong>UEFI</strong>. Se você mudar para UEFI e o PC não der boot, significa que você precisa converter seu SSD de MBR para GPT.
         </p>
-        <div class="space-y-4">
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-blue-500">
-                <strong class="text-white block">Gigabyte</strong>
-                <p class="text-gray-300 text-sm">
-                    Aba BIOS > CSM Support: <strong>Disabled</strong>.
-                    <br/>Secure Boot: <strong>Enabled</strong>.
-                    <br/>Peripherals > Intel PTT (ou AMD fTPM): <strong>Enabled</strong>.
-                </p>
-            </div>
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-red-500">
-                <strong class="text-white block">ASUS</strong>
-                <p class="text-gray-300 text-sm">
-                    Advanced Mode (F7) > Boot > CMS: <strong>Disabled</strong>.
-                    <br/>Secure Boot > OS Type: <strong>Windows UEFI Mode</strong>.
-                </p>
-            </div>
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-gray-500">
-                <strong class="text-white block">MSI</strong>
-                <p class="text-gray-300 text-sm">
-                    Settings > Security > Trusted Computing > Security Device Support: <strong>Enable</strong>.
-                    <br/>Advanced > Windows OS Configuration > Secure Boot > <strong>Enable</strong>.
-                </p>
-            </div>
-        </div>
-      `,
-            subsections: []
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/valorant-fix-van-9003-secure-boot",
+            title: "Guia Secure Boot",
+            description: "Ative a segurança final para o Vanguard."
+        },
+        {
+            href: "/guias/criar-ponto-restauracao-windows",
+            title: "Ponto de Restauração",
+            description: "Segurança antes de mexer na BIOS."
+        },
+        {
+            href: "/guias/valorant-reduzir-input-lag",
+            title: "Reduzir Input Lag",
+            description: "Melhore sua resposta no jogo."
         }
     ];
 
@@ -87,9 +90,10 @@ export default function Van9003Guide() {
             description={description}
             keywords={keywords}
             estimatedTime="20 min"
-            difficultyLevel="Avançado"
+            difficultyLevel="Intermediária"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

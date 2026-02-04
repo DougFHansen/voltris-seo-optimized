@@ -1,69 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Erro VCRUNTIME140.dll e MSVCP140.dll não encontrado: Solução Rápida (2026)";
-const description = "Ao abrir GTA V, The Sims 4 ou Office, aparece 'VCRUNTIME140.dll está faltando'. Não baixe DLLs soltas! Veja como instalar o pacote oficial Visual Studio 2015-2022.";
-const keywords = ['vcruntime140.dll missing', 'msvcp140.dll nao encontrado', 'baixar vcruntime140.dll', 'erro the sims 4 dll', 'visual c++ 2015-2022 download'];
+const title = "VCRUNTIME140.dll não encontrado: Como resolver (2026)";
+const description = "Seu jogo ou programa não abre e diz que falta o VCRUNTIME140.dll ou MSVCP140.dll? Aprenda como instalar os redistribuíveis oficiais em 2026.";
+const keywords = [
+    'vcruntime140.dll nao encontrado como resolver 2026',
+    'faltando msvcp140.dll windows 11 tutorial guia',
+    'baixar microsoft visual c++ redistributable 2026 tutorial',
+    'como instalar dll faltando no windows 11 guia 2026',
+    'erro de sistema dll nao encontrada tutorial passo a passo'
+];
 
 export const metadata: Metadata = createGuideMetadata('vcruntime140-dll-nao-encontrado', title, description, keywords);
 
-export default function VCRuntimeGuide() {
+export default function VCRuntimeFixGuide() {
     const summaryTable = [
-        { label: "Arquivos", value: "VCRUNTIME140 / MSVCP140" },
-        { label: "Solução", value: "Instalador Oficial" },
-        { label: "Perigo", value: "Sites de DLL" },
-        { label: "Versão", value: "x86 + x64" }
+        { label: "Causa", value: "Falta do Microsoft Visual C++ Redistributable" },
+        { label: "Solução Correta", value: "Instalador Oficial da Microsoft" },
+        { label: "Risco", value: "Nunca baixe arquivos .dll soltos de sites desconhecidos" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "Por que esse erro é tão comum?",
+            title: "Por que as DLLs desaparecem?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Essas duas DLLs são bibliotecas básicas da linguagem C++ usada para criar a maioria dos jogos e programas modernos. Se você formatou o PC recentemente, elas não vêm instaladas por padrão.
-        </p>
-        <div class="bg-red-900/20 p-6 rounded-xl border border-red-500 mb-6">
-            <h4 class="text-white font-bold mb-2">⚠ NÃO BAIXE O ARQUIVO .DLL SOLTO!</h4>
-            <p class="text-gray-300 text-sm">
-                Sites como "dll-files.com" oferecem o arquivo solto. Se você baixar e colocar na pasta System32, você vai criar o erro "0xc00007b" (que é muito pior de resolver). As DLLs precisam ser registradas no sistema pelo instalador oficial.
-            </p>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "A Solução Certa (Instalador Unificado)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            A Microsoft facilitou nossa vida e criou um único instalador que contém as bibliotecas de 2015, 2017, 2019 e 2022.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
-            <li>Pesquise no Google: <strong>"Visual C++ Redistributable latest supported downloads"</strong>.</li>
-            <li>Entre no primeiro link (learn.microsoft.com).</li>
-            <li>Baixe DOIS arquivos:
-                <ul class="list-disc list-inside ml-6 mt-2 text-green-400 font-mono text-sm">
-                    <li>vc_redist.x86.exe</li>
-                    <li>vc_redist.x64.exe</li>
-                </ul>
-            </li>
-        </ol>
-        <p class="text-gray-300 border-l-4 border-yellow-500 pl-4 bg-yellow-900/20 p-2">
-            <strong>"Mas meu Windows é 64 bits, preciso do x86?"</strong>
-            <br/>SIM! Muitos jogos (como LoL e GTA V) são aplicativos de 32 bits (x86), mesmo rodando num Windows 64 bits. Eles precisam da versão x86 instalada. Instale ambos.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Passo Extra: Reparar Instalação",
-            content: `
-        <p class="text-gray-300">
-            Se você já tem instalado e o erro continua:
-            <br/>1. Baixe os instaladores acima.
-            <br/>2. Execute-os.
-            <br/>3. Em vez de "Instalar", clique no botão <strong>REPARAR</strong>.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O erro **VCRUNTIME140.dll** ou **MSVCP140.dll** acontece quando um programa tenta usar bibliotecas de código da Microsoft que não estão instaladas no seu computador. Em 2026, muitos jogos e softwares de edição exigem essas bibliotecas para converter comandos complexos em ações na tela. Se o instalador do programa falhou ao configurar esses componentes, o Windows simplesmente não saberá como rodar o aplicativo.
         </p>
       `
+        },
+        {
+            title: "1. O Perigo dos Sites de DLL",
+            content: `
+        <p class="mb-4 text-gray-300"><strong>CUIDADO:</strong> Muitos usuários cometem o erro de pesquisar a DLL no Google e baixar um arquivo solto para colar na pasta <code>System32</code>.</p>
+        <p class="text-sm text-gray-300">
+            Fazer isso em 2026 é extremamente perigoso por duas razões: <br/>
+            1. <strong>Vírus:</strong> Esses arquivos .dll costumam carregar cavalos de troia (Trojan). <br/>
+            2. <strong>Incompatibilidade:</strong> Uma DLL solta pode ter uma versão diferente da que o programa precisa, causando erros ainda mais graves de "Ponto de entrada não encontrado".
+        </p>
+      `
+        },
+        {
+            title: "2. A Solução Definitiva (Visual C++ AIO)",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Instale tudo de uma vez:</h4>
+            <p class="text-sm text-gray-300">
+                A forma mais inteligente de resolver isso em 2026 é baixar o <strong>Visual C++ Redistributable All-in-One</strong>. <br/><br/>
+                Ele é um instalador único que coloca todas as versões (2005 até 2026) nos formatos x86 e x64 do seu Windows. Isso garante que não apenas o jogo de hoje funcione, mas que nenhum programa futuro apresente erro de DLL. Basta rodar o arquivo <code>install_all.bat</code> como Administrador e aguardar a conclusão.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Corrigindo com o comando SFC",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>E se eu já tenho instalado?</strong> 
+            <br/><br/>Se você já instalou os redistribuíveis e o erro continua, sua DLL pode estar corrompida. Use o comando <code>sfc /scannow</code> no Prompt de Comando (Admin). O Windows 11 fará uma varredura nas pastas de sistema e restaurará automaticamente qualquer DLL vitais que tenham sido modificadas ou deletadas por engano.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/corrigir-dll-faltando-vcredist-directx",
+            title: "Guia DLL Geral",
+            description: "Resolva erros de DirectX e .NET."
+        },
+        {
+            href: "/guias/pos-instalacao-windows-11",
+            title: "Pós-Instalação",
+            description: "Pack de programas essenciais para o Windows."
+        },
+        {
+            href: "/guias/remocao-virus-malware",
+            title: "Limpeza de Vírus",
+            description: "Dicas se você baixou DLLs de sites suspeitos."
         }
     ];
 
@@ -72,10 +87,11 @@ export default function VCRuntimeGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="5 min"
+            estimatedTime="10 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

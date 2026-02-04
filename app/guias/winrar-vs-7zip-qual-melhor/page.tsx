@@ -1,82 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "WinRAR vs 7-Zip: Por que você deve parar de usar o WinRAR (2026)";
-const description = "O WinRAR é o compressor mais famoso, mas o 7-Zip é gratuito, mais rápido e comprime 10% mais. Veja o comparativo técnico entre RAR, ZIP e 7Z.";
-const keywords = ['winrar vs 7zip', 'qual melhor descompactador', 'winrar é pago', 'abrir arquivo 7z', 'compressao lzma2 vs rar5', '7-zip é seguro'];
+const title = "WinRAR vs 7-Zip: Qual o melhor compressor em 2026?";
+const description = "Ainda usa WinRAR? Descubra se o 7-Zip ou o novo NanaZip são opções melhores para comprimir e extrair arquivos no Windows 11 em 2026.";
+const keywords = [
+    'winrar vs 7zip qual melhor 2026 comparativo',
+    'baixar 7zip gratuito tutorial guia 2026',
+    'como comprimir arquivos para enviar por email tutorial',
+    'winrar ainda vale a pena 2026 guia',
+    'nanazip windows 11 como usar tutorial 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('winrar-vs-7zip-qual-melhor', title, description, keywords);
 
-export default function CompressGuide() {
+export default function CompressorComparisonGuide() {
     const summaryTable = [
-        { label: "Melhor Taxa", value: "7-Zip (.7z)" },
-        { label: "Mais Rápido", value: "WinRAR (.rar)" },
-        { label: "Licença", value: "7-Zip (Grátis)" },
-        { label: "Segurança", value: "7-Zip (Open Source)" }
+        { label: "WinRAR", value: "Interface Clássica / Pago (Trial eterno) / Melhor formato .rar" },
+        { label: "7-Zip", value: "Open Source / Grátis / Melhor compressão .7z" },
+        { label: "NanaZip", value: "O melhor para Windows 11 (Integração moderna)" },
+        { label: "Veredito 2026", value: "7-Zip / NanaZip para 99% dos usuários" }
     ];
 
     const contentSections = [
         {
-            title: "O Veredito Direto",
+            title: "A batalha dos arquivos compactados",
             content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div class="bg-blue-900/20 p-6 rounded-xl border border-blue-500">
-                <h4 class="text-white font-bold mb-2">7-Zip (O Vencedor)</h4>
-                <ul class="list-disc list-inside text-gray-300 text-sm">
-                    <li><strong>100% Gratuito e Código Aberto:</strong> Sem propagandas, sem "tempo de teste expirou".</li>
-                    <li><strong>Algoritmo LZMA2:</strong> Comprime arquivos, em média, 10% a 20% mais que o ZIP do Windows e 5% a mais que o RAR.</li>
-                    <li><strong>Leve:</strong> O instalador tem apenas 1MB.</li>
-                </ul>
-            </div>
-            <div class="bg-purple-900/20 p-6 rounded-xl border border-purple-500">
-                <h4 class="text-white font-bold mb-2">WinRAR (O Nostálgico)</h4>
-                <ul class="list-disc list-inside text-gray-300 text-sm">
-                    <li><strong>Pago (Shareware):</strong> Ele te cobra eternamente, mas nunca bloqueia o acesso.</li>
-                    <li><strong>Formato RAR:</strong> É um formato proprietário. O 7-Zip abre RAR, mas não pode criar arquivos RAR.</li>
-                    <li><strong>Recuperação de Erro:</strong> O WinRAR tem uma função de "Repair Archive" melhor para arquivos corrompidos.</li>
-                </ul>
-            </div>
-        </div>
-      `,
-            subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Diminuir o tamanho de arquivos para facilitar o envio e a organização continua sendo uma tarefa essencial em 2026. Por décadas, o WinRAR reinou absoluto com sua licença de teste infinita, mas o **7-Zip** e novos forks como o **NanaZip** ganharam espaço por serem tecnicamente superiores em compressão e 100% gratuitos. Vamos descobrir qual deles merece estar no seu PC hoje.
+        </p>
+      `
         },
         {
-            title: "Teste de Compressão (Benchmark)",
+            title: "1. 7-Zip: A potência gratuita",
+            content: `
+        <p class="mb-4 text-gray-300">Por que os especialistas preferem o 7-Zip?</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Código Aberto:</strong> Sem banners, sem pop-ups pedindo para você comprar nada.</li>
+            <li><strong>Formato .7z:</strong> Consegue comprimir arquivos até 10% mais que o formato .rar original em muitos casos.</li>
+            <li><strong>Segurança:</strong> Suporta criptografia AES-256 de nível militar para proteger seus arquivos com senha.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. WinRAR: O rei do .RAR",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Exclusividade e Interface:</h4>
+            <p class="text-sm text-gray-300">
+                O grande diferencial do <strong>WinRAR</strong> em 2026 é ser o único que consegue criar arquivos no formato <strong>.rar v5</strong> nativamente. <br/><br/>
+                O formato .rar é conhecido pela sua resiliência: se um arquivo compactado estiver levemente corrompido, o WinRAR tem ferramentas de 'Registro de Recuperação' que podem salvar o arquivo. Se você trabalha com downloads instáveis ou mídias antigas, o WinRAR ainda tem seu valor.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. NanaZip: A escolha para Windows 11",
             content: `
         <p class="mb-4 text-gray-300">
-            Comprimimos uma pasta de 1GB contendo imagens, textos e executáveis.
+            <strong>Dica de 2026:</strong> O maior defeito do 7-Zip é a sua interface de 1990 que não integra bem com o novo menu de botão direito do Windows 11. 
+            <br/><br/>Para resolver isso, instale o <strong>NanaZip</strong>. Ele é baseado no 7-Zip, mas foi criado especificamente para o Windows 11. Ele aparece diretamente no menu principal (sem precisar clicar em 'Mostrar mais opções') e tem um visual moderno com ícones em alta definição. É a recomendação oficial da equipe Voltris para 2026.
         </p>
-        <table class="w-full text-left border-collapse mb-6">
-            <thead>
-                <tr class="text-[#31A8FF] border-b border-gray-700">
-                    <th class="p-2">Software</th>
-                    <th class="p-2">Tamanho Final</th>
-                    <th class="p-2">Tempo</th>
-                </tr>
-            </thead>
-            <tbody class="text-gray-300 text-sm">
-                <tr class="border-b border-gray-800">
-                    <td class="p-3">Windows (ZIP Nativo)</td>
-                    <td class="p-3 text-red-400">890 MB</td>
-                    <td class="p-3">25s</td>
-                </tr>
-                <tr class="border-b border-gray-800">
-                    <td class="p-3">WinRAR (RAR5 Normal)</td>
-                    <td class="p-3 text-yellow-400">710 MB</td>
-                    <td class="p-3 text-green-400">18s</td>
-                </tr>
-                 <tr class="border-b border-gray-800 bg-green-900/20">
-                    <td class="p-3 font-bold text-green-400">7-Zip (7z Ultra)</td>
-                    <td class="p-3 font-bold">650 MB</td>
-                    <td class="p-3">45s</td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="text-gray-300">
-            <strong>Conclusão:</strong> Se você precisa enviar um arquivo grande pela internet e tem upload lento, o 7-Zip economiza tempo de envio. Se precisa arquivar rápido no seu próprio PC, o WinRAR é mais veloz.
-        </p>
-      `,
-            subsections: []
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/programas-essenciais-windows",
+            title: "Programas Essenciais",
+            description: "Veja por que o NanaZip está na nossa lista."
+        },
+        {
+            href: "/guias/atalhos-produtividade-windows",
+            title: "Produtividade",
+            description: "Atalhos para gerenciar arquivos rápido."
+        },
+        {
+            href: "/guias/seguranca-senhas-gerenciadores",
+            title: "Segurança de Arquivos",
+            description: "Aprenda a criar senhas fortes para seus .zip."
         }
     ];
 
@@ -85,10 +87,11 @@ export default function CompressGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="5 min"
+            estimatedTime="10 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

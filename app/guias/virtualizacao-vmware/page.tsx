@@ -1,183 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Virtualização com VMware/VirtualBox";
-const description = "Crie máquinas virtuais para testes, desenvolvimento e isolamento de sistemas. Configuração profissional de ambientes virtuais.";
-const keywords = ["virtualização","vmware","virtualbox","máquina virtual","isolamento","desenvolvimento"];
+const title = "Virtualização no PC: Como ativar e usar VMWare (2026)";
+const description = "Quer rodar outros sistemas dentro do seu Windows? Aprenda como ativar a virtualização na BIOS e configurar o VMWare Workstation em 2026.";
+const keywords = [
+  'como ativar virtualização na bios 2026 tutorial',
+  'vmware workstation player tutorial como usar 2026',
+  'habilitar vt-x intel e amd-v na bios guia',
+  'criar maquina virtual windows 11 tutorial 2026',
+  'virtualização desativada como resolver tutorial guia 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('virtualizacao-vmware', title, description, keywords);
 
-export default function VirtualizacaovmwareGuide() {
+export default function VirtualizationGuide() {
+  const summaryTable = [
+    { label: "Tecnologia Intel", value: "VT-x / Intel Virtualization Technology" },
+    { label: "Tecnologia AMD", value: "AMD-V / SVM Mode" },
+    { label: "Software Grátis", value: "VMWare Workstation Player" },
+    { label: "Dificuldade", value: "Médio" }
+  ];
+
   const contentSections = [
     {
-      title: "Introdução e Conceitos Fundamentais",
+      title: "O que é a Virtualização?",
       content: `
-        <p class="mb-4">A virtualização com VMware permite criar máquinas virtuais completas em seu computador físico, possibilitando executar múltiplos sistemas operacionais simultaneamente sem afetar o sistema host.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Isolamento completo de ambientes de trabalho</li>
-              <li>✓ Testes de software em ambientes seguros</li>
-              <li>✓ Execução de sistemas legados em hardware moderno</li>
-              <li>✓ Economia de recursos físicos e energia</li>
-            </ul>
-          </div>
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>💻 Processador com suporte a VT-x/AMD-V (Virtualização)</li>
-              <li>🧠 8GB+ RAM (recomendado 16GB+) para múltiplas VMs</li>
-              <li>⏱️ Tempo estimado: 60-120 minutos (instalação completa)</li>
-              <li>💾 Espaço em disco: 20GB+ por máquina virtual</li>
-            </ul>
-          </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          A **Virtualização** permite que um único computador físico funcione como se fossem vários. Em 2026, isso é usado para testar novos aplicativos sem sujar o sistema principal, rodar Linux dentro do Windows ou até para emuladores de Android. No entanto, para que softwares como o VMWare tenham performance de verdade, você primeiro precisa "dar permissão" para o processador usar esse recurso diretamente na BIOS.
+        </p>
+      `
+    },
+    {
+      title: "1. Ativando na BIOS (VT-x e AMD-V)",
+      content: `
+        <p class="mb-4 text-gray-300">Sem este passo, nenhuma máquina virtual funcionará corretamente:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Reinicie o PC e entre na BIOS (DEL ou F2).</li>
+            <li><strong>Se for Intel:</strong> Procure por 'Intel Virtualization Technology' ou 'VT-x' e mude para <strong>Enabled</strong>.</li>
+            <li><strong>Se for AMD:</strong> Procure por 'SVM Mode' ou 'Secure Virtual Machine' e mude para <strong>Enabled</strong>.</li>
+            <li>Geralmente essas opções ficam dentro do menu 'Advanced' ou 'CPU Configuration'.</li>
+        </ol>
+      `
+    },
+    {
+      title: "2. Configurando o VMWare em 2026",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Criando sua primeira VM:</h4>
+            <p class="text-sm text-gray-300">
+                1. Baixe o <strong>VMWare Workstation Player</strong> (versão gratuita para uso pessoal). <br/>
+                2. Clique em 'Create a New Virtual Machine'. <br/>
+                3. Selecione a ISO do sistema que você quer instalar (ex: Windows 11 ou Ubuntu). <br/>
+                4. <strong>Regra de Ouro:</strong> Nunca dedique mais de 50% da sua RAM e dos núcleos do seu processador para a máquina virtual. Se você tem 16GB de RAM, dê no máximo 8GB para a VM para evitar que o seu Windows principal trave.
+            </p>
         </div>
-        
-        <div class="bg-purple-900/20 border border-purple-500/30 rounded-lg p-4 my-6">
-          <h3 class="text-purple-400 font-semibold mb-2">💡 Dica Profissional</h3>
-          <p class="text-gray-300 text-sm">Habilite a virtualização na BIOS/UEFI para melhor desempenho das máquinas virtuais.</p>
-        </div>
-      `,
-      subsections: [
-        {
-          subtitle: "Quando Aplicar Esta Técnica",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Quando enfrentar problemas de performance</li>
-              <li>Para prevenção de falhas futuras</li>
-              <li>Durante manutenção preventiva</li>
-              <li>Ao configurar novos sistemas</li>
-            </ul>
-          `
-        }
-      ]
+      `
     },
     {
-      title: "Configuração Passo a Passo",
+      title: "3. Virtualização vs Hyper-V",
       content: `
-        <p class="mb-4">Siga estas etapas metodológicas para implementação completa e segura.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Preparação Inicial",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Faça backup completo do sistema</li>
-              <li>Verifique requisitos mínimos de hardware/software</li>
-              <li>Baixe ferramentas necessárias de fontes confiáveis</li>
-              <li>Crie ponto de restauração do sistema</li>
-              <li>Feche todos os programas em execução</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Execução Principal",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Siga instruções específicas do guia</li>
-              <li>Monitore sistema durante processo</li>
-              <li>Documente cada etapa realizada</li>
-              <li>Teste funcionalidade após conclusão</li>
-              <li>Verifique logs de eventuais erros</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas e Recursos Recomendados",
-      content: `
-        <p class="mb-4">Utilize estas ferramentas profissionais para melhores resultados.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Software Especializado",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas nativas do Windows</li>
-                  <li>Software open source recomendado</li>
-                  <li>Utilitários de diagnóstico básicos</li>
-                </ul>
-              </div>
-              <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas profissionais especializadas</li>
-                  <li>Licenças corporativas quando necessário</li>
-                  <li>Suporte técnico especializado</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Práticas de Segurança",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Sempre verifique integridade de downloads</li>
-              <li>Use apenas fontes oficiais e confiáveis</li>
-              <li>Mantenha antivírus atualizado durante processo</li>
-              <li>Faça testes em ambiente controlado primeiro</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Troubleshooting e Solução de Problemas",
-      content: `
-        <p class="mb-4">Soluções para problemas comuns que podem surgir durante a implementação.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Erros Frequentes e Soluções",
-          content: `
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: [Descrição do problema comum]</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Etapas detalhadas para resolução</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Etapa 1 de resolução</li>
-                <li>Etapa 2 de resolução</li>
-                <li>Etapa 3 de resolução</li>
-              </ul>
-            </div>
-          `
-        },
-        {
-          subtitle: "Prevenção de Problemas Futuros",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Implemente monitoramento contínuo</li>
-              <li>Realize manutenção preventiva regular</li>
-              <li>Mantenha sistema sempre atualizado</li>
-              <li>Documente configurações e mudanças</li>
-            </ul>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            <strong>Conflito Comum:</strong> Em 2026, o Windows 11 tem o seu próprio sistema de virtualização chamado **Hyper-V**. 
+            <br/><br/>Se você tentar rodar o VMWare e ele der erro de performance ou travar, verifique se o 'Hyper-V' e o 'Windows Sandbox' estão ativados nos 'Recursos do Windows'. Muitas vezes é necessário <strong>desativar o Hyper-V</strong> para que o VMWare tenha acesso total e direto ao hardware, garantindo muito mais fluidez.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      href: "/guias/windows-sandbox-testar-virus",
+      title: "Windows Sandbox",
+      description: "A alternativa nativa da Microsoft."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
+      href: "/guias/hyper-v-desempenho-jogos",
+      title: "Hyper-V e Jogos",
+      description: "Como a virtualização afeta o FPS."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      href: "/guias/jogos-android-no-pc-melhores-emuladores",
+      title: "Emuladores Android",
+      description: "Use a virtualização para jogar mobile no PC."
     }
   ];
 
@@ -186,9 +90,10 @@ export default function VirtualizacaovmwareGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="60 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="25 min"
+      difficultyLevel="Médio"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

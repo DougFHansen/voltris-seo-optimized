@@ -1,68 +1,88 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Modo de Jogo (Game Mode) do Windows 11: Ativar ou Desativar em 2026?";
-const description = "Antigamente o Game Mode causava travadas. E hoje? Veja como a Microsoft reescreveu o recurso na versão 24H2 e por que você deve mantê-lo ligado.";
-const keywords = ['modo de jogo windows on ou off', 'game mode windows 11 piora fps', 'otimizar windows 11 para jogos', 'prioridade de cpu jogos', 'windows game bar desativar'];
+const title = "Modo de Jogo do Windows 11: Ativar ou Desativar? (2026)";
+const description = "Você ganha ou perde FPS com o Modo de Jogo ativado? Descubra como essa função do Windows 11 prioriza seu processador e placa de vídeo em 2026.";
+const keywords = [
+    'modo de jogo windows 11 vale a pena 2026',
+    'como ativar modo de jogo windows para ganhar fps',
+    'modo de jogo windows 11 vs performance real tutorial',
+    'otimizar pc para jogos windows 11 modo de jogo',
+    'prioridade de processo modo de jogo windows guia'
+];
 
 export const metadata: Metadata = createGuideMetadata('modo-de-jogo-windows-atikvar-ou-nao', title, description, keywords);
 
 export default function GameModeGuide() {
     const summaryTable = [
-        { label: "Veredito 2026", value: "ATIVADO" },
-        { label: "Game Bar", value: "Desativar (Na maioria)" },
-        { label: "Função", value: "Suspende BG Apps" },
-        { label: "PC Fraco", value: "Ajuda Muito" }
+        { label: "O que faz", value: "Prioriza CPU e GPU para o processo do jogo" },
+        { label: "Vantagem", value: "Impede o Windows Update de instalar drivers no meio da partida" },
+        { label: "Recomendação 2026", value: "Ativar (ON)" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "A História do Game Mode (De Vilão a Herói)",
+            title: "A Evolução de um Recurso Polêmico",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Quando o Game Mode foi lançado em 2017, ele era um desastre. Ele tentava adivinhar o que era jogo e o que não era, às vezes fechando o OBS ou o Discord no meio da partida.
-        </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Hoje, no Windows 10 (22H2) e 11 (23H2/24H2), ele funciona de forma diferente. Ele não "acelera" o jogo, ele <strong>aclama o Windows</strong>. Ele impede que o Windows Update baixe coisas e pausa a indexação de arquivos enquanto um jogo está em tela cheia.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Xbox Game Bar: O Irmão Feio",
-            content: `
-        <div class="bg-yellow-900/20 p-6 rounded-xl border border-yellow-500 mb-6">
-            <h4 class="text-white font-bold mb-2">Diferencie "Game Mode" de "Game Bar"</h4>
-            <p class="text-gray-300 text-sm">
-                O "Modo de Jogo" é bom. A "Xbox Game Bar" (aquele menu que abre com Win+G) é pesada. Ela grava sua tela em segundo plano o tempo todo (DVR).
-            </p>
-            <p class="text-white mt-4 font-bold">Recomendação:</p>
-            <ul class="list-disc list-inside text-gray-300 text-sm">
-                <li>Vá em Configurações > Jogos > <strong>Modo de Jogo</strong>: LIGADO.</li>
-                <li>Vá em Configurações > Jogos > <strong>Xbox Game Bar</strong>: DESLIGADO (A menos que você use para conversar com amigos do Xbox).</li>
-            </ul>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Teste de Performance",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Em testes com um PC i5 com Cyberpunk 2077:
-        </p>
-        <ul class="list-none space-y-2 text-gray-300">
-            <li class="bg-gray-800 p-2 rounded">
-                Sem Game Mode: Média de 60 FPS, com quedas para 45 FPS (1% Low).
-            </li>
-            <li class="bg-gray-800 p-2 rounded border-l-4 border-green-500">
-                Com Game Mode: Média de 61 FPS, com quedas para 55 FPS (1% Low).
-            </li>
-        </ul>
-        <p class="mt-2 text-gray-300">
-            O ganho não é no FPS máximo, é na <strong>estabilidade</strong>.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          No passado, o **Modo de Jogo** do Windows era famoso por causar mais problemas do que soluções. Mas em 2026, com o amadurecimento do Windows 11, essa ferramenta se tornou essencial. Ela não vai fazer um milagre e te dar 50 FPS extras, mas ela garante a **estabilidade**. O Modo de Jogo age como um "leão de chácara", impedindo que outros programas interrompam sua diversão.
         </p>
       `
+        },
+        {
+            title: "1. O que acontece por trás das cortinas?",
+            content: `
+        <p class="mb-4 text-gray-300">Ao ativar o Modo de Jogo, o Windows realiza quatro ações principais:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Bloqueio de Updates:</strong> O Windows Update é impedido de baixar e instalar pacotes que usam disco e rede.</li>
+            <li><strong>Notificações Silenciadas:</strong> O sistema não mostra avisos que tiram o foco da tela cheia.</li>
+            <li><strong>Prioridade de CPU:</strong> O escalonador de tarefas reserva ciclos de processamento especificamente para o jogo.</li>
+            <li><strong>Estabilidade de Frametime:</strong> Reduz a oscilação causada por tarefas agendadas do sistema.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Como ativar corretamente",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Passo a Passo:</h4>
+            <p class="text-sm text-gray-300">
+                1. Aperte <strong>Win + I</strong> para abrir as Configurações. <br/>
+                2. Vá na aba <strong>Jogos</strong> no menu lateral. <br/>
+                3. Clique em <strong>Modo de Jogo</strong>. <br/>
+                4. Certifique-se de que a chave está em <strong>Ativado</strong>. <br/>
+                <strong>Dica:</strong> No mesmo menu, clique em 'Gráficos' e verifique se o 'Agendamento de GPU' também está ligado.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Quando deixar Desativado?",
+            content: `
+        <p class="mb-4 text-gray-300">
+            A única situação em 2026 onde o Modo de Jogo pode atrapalhar é se você for um Streamer. 
+            <br/><br/>Como o Windows prioriza 100% dos recursos para o jogo, softwares como o **OBS Studio** podem ficar com "falta de fôlego" para encodar o vídeo, causando frames pulados na sua live. Se você sente que sua stream trava mas o jogo roda bem, tente desativar o Modo de Jogo para equilibrar a distribuição de força entre o jogo e o software de gravação.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            title: "Agendamento de GPU",
+            description: "O parceiro ideal do Modo de Jogo."
+        },
+        {
+            href: "/guias/otimizacao-performance",
+            title: "Performance Geral",
+            description: "Ajuste o plano de energia do Windows."
+        },
+        {
+            href: "/guias/pos-instalacao-windows-11",
+            title: "Pós-Instalação",
+            description: "O que mais configurar no seu Windows novo."
         }
     ];
 
@@ -75,6 +95,7 @@ export default function GameModeGuide() {
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

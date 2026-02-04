@@ -1,64 +1,89 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Tela Azul DPC_WATCHDOG_VIOLATION: Como Resolver no SSD e Drivers (2026)";
-const description = "PC travando com DPC_WATCHDOG_VIOLATION? O problema quase sempre é o driver SATA do SSD ou conflito de firmware. Veja como mudar para o driver AHCI padrão.";
-const keywords = ['dpc watchdog violation ssd', 'corrigir erro dpc watchdog', 'storahci.sys fix', 'atualizar firmware ssd', 'tela azul ssd windows 10', 'mouse travando tela azul'];
+const title = "Como Resolver Erro DPC_WATCHDOG_VIOLATION (2026)";
+const description = "Seu Windows 11 travou com o erro de tela azul DPC Watchdog? Aprenda a identificar as causas e como consertar em 2026.";
+const keywords = [
+    'como resolver dpc_watchdog_violation windows 11 2026',
+    'erro tela azul dpc watchdog causas e solucao',
+    'atualizar driver sata ahci controlador tutorial 2026',
+    'pc travando dpc watchdog violation como consertar',
+    'fix dpc watchdog blue screen windows 11 tutorial'
+];
 
 export const metadata: Metadata = createGuideMetadata('dpc-watchdog-violation-como-resolver', title, description, keywords);
 
-export default function DPCGuide() {
+export default function DPCWatchdogGuide() {
     const summaryTable = [
-        { label: "Culpado", value: "Driver SATA AHCI" },
-        { label: "Arquivo", value: "storahci.sys" },
-        { label: "Solução", value: "Trocar Driver" },
-        { label: "Nível", value: "Intermediário" }
+        { label: "Causa Principal", value: "Drivers de disco incompatíveis (SSD/SATA)" },
+        { label: "Sugestão #1", value: "Trocar driver controlador AHCI" },
+        { label: "Sugestão #2", value: "Atualizar Firmware do SSD" },
+        { label: "Dificuldade", value: "Avançado" }
     ];
 
     const contentSections = [
         {
-            title: "O que significa DPC Watchdog?",
+            title: "O que é o erro de 'Violação do Cão de Guarda'?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O "Watchdog" (Cão de Guarda) é um processo do Windows que vigia se algum componente está demorando demais para responder. Se o seu SSD demora mais de 10 segundos para responder a uma leitura, o Watchdog assume que o PC travou e força uma Tela Azul para reiniciar.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, o erro **DPC_WATCHDOG_VIOLATION** ocorre quando um driver trava e o sistema não recebe resposta dele por muito tempo. O "Cão de Guarda" (Watchdog) é um cronômetro que fica vigiando os drivers: se algum parar de responder, ele gera a tela azul para salvar seus dados. Na maioria das vezes, o culpado é o driver que gerencia o seu SSD ou o controlador SATA na placa-mãe.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed font-bold text-red-400">
-            Isso é 99% das vezes causado pelo driver "iastor.sys" (Intel Rapid Storage) ou incompatibilidade de energia do SSD.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Solução Definitiva: Trocando o driver SATA",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Vamos forçar o Windows a usar o driver genérico da Microsoft, que é mais estável que o da Intel/AMD para SSDs baratos.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
-            <li>Clique com botão direito no Menu Iniciar > <strong>Gerenciador de Dispositivos</strong>.</li>
-            <li>Expanda a categoria <strong>Controladores IDE ATA/ATAPI</strong>.</li>
-            <li>Você verá algo como "Standard SATA AHCI Controller" ou "Intel(R) Chipset SATA...".</li>
-            <li>Clique com botão direito nele > <strong>Atualizar driver</strong>.</li>
-            <li>Escolha: <strong>"Procurar drivers no meu computador"</strong>.</li>
-            <li>Escolha: <strong>"Permitir que eu escolha em uma lista de drivers disponíveis"</strong>.</li>
-            <li>Selecione <strong>Controlador AHCI SATA Padrão</strong> (Standard SATA AHCI Controller).</li>
-            <li>Clique em Avançar e Reinicie o PC.</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Ajuste de Firmware do SSD",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Se seu SSD for da marca Kingston (A400) ou Crucial (BX500) e tiver firmware antigo, ele trava aleatoriamente.
-        </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li>Baixe o software da fabricante (Kingston SSD Manager / Crucial Storage Executive).</li>
-            <li>Verifique se há "Firmware Update".</li>
-            <li>Se houver, faça o update (Faça backup dos dados importantes antes, há risco minúsculo de perda).</li>
-        </ul>
       `
+        },
+        {
+            title: "1. Trocando o driver de controlador iastor.sys",
+            content: `
+        <p class="mb-4 text-gray-300">Este é o passo que resolve 90% dos casos:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Aperte <code>Win + X</code> e escolha 'Gerenciador de Dispositivos'.</li>
+            <li>Procure por 'Controladores IDE ATA/ATAPI'.</li>
+            <li>Se você vir algo como 'Intel(R) Serial ATA Storage Controller', clique com o botão direito e vá em **Atualizar Driver**.</li>
+            <li>Escolha 'Procurar drivers no meu computador' > 'Permitir que eu escolha em uma lista'.</li>
+            <li>Selecione <strong>'Controlador SATA AHCI Padrão'</strong> e clique em Avançar.</li>
+            <li>Reinicie o Windows.</li>
+        </ol>
+      `
+        },
+        {
+            title: "2. Firmware do SSD e Erros de Disco",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Check de Integridade:</h4>
+            <p class="text-sm text-gray-300">
+                Se o erro persistir em 2026, a falha pode estar no próprio SSD. <br/><br/>
+                - Baixe o software oficial da marca do seu SSD (Samsung Magician, Kingston SSD Manager, etc). <br/>
+                - Verifique se existe uma atualização de <strong>Firmware</strong> disponível. Isso corrige bugs internos do disco que causam o travamento do driver. <br/>
+                - Rode também o comando <code>chkdsk /f /r</code> no prompt de comando para garantir que não existam setores corrompidos.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Dispositivos USB e Periféricos",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Causa secundária:</strong> 
+            <br/><br/>Embora raro, drivers de adaptadores Wi-Fi USB ou softwares de controle de RGB (como o iCUE ou Armoury Crate) também podem causar DPC Watchdog se entrarem em conflito. Se você começou a ter esse erro logo após plugar algo novo, remova o dispositivo e veja se a tela azul para. Em 2026, manter o Windows 11 atualizado ajuda a Microsoft a corrigir esses conflitos automaticamente através de novos patches.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/como-resolver-tela-azul",
+            title: "Guia Tela Azul",
+            description: "Passos gerais para qualquer erro BSOD."
+        },
+        {
+            href: "/guias/otimizacao-ssd-windows-11",
+            title: "Otimizar SSD",
+            description: "Mantenha o seu disco rápido e estável."
+        },
+        {
+            href: "/guias/corrigir-dll-faltando-vcredist-directx",
+            title: "Fix DLLs",
+            description: "Resolva problemas de bibliotecas corrompidas."
         }
     ];
 
@@ -67,10 +92,11 @@ export default function DPCGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Intermediário"
+            estimatedTime="25 min"
+            difficultyLevel="Avançado"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

@@ -1,58 +1,83 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Geometry Dash Lag em Níveis com Muitos Objetos? Instale o 4GB Patch (2026)";
-const description = "Níveis como 'White Space' ou 'Change of Scene' travam seu jogo? O Geometry Dash é um aplicativo de 32-bits que precisa ser 'patcheado' para usar mais RAM.";
-const keywords = ['geometry dash 4gb patch', 'gd travando ntsw', 'geometry dash lag fix 2.2', 'melhorar fps geometry dash', 'hack fps bypass geometry dash', 'megahack v8 performance'];
+const title = "Geometry Dash: Como usar o 4GB Patch para acabar com o Lag";
+const description = "Seu Geometry Dash trava em níveis com muitos objetos? Aprenda a aplicar o patch de 4GB para permitir que o jogo use mais RAM e rode liso sem crashar.";
+const keywords = [
+    'como instalar 4gb patch geometry dash 2026',
+    'geometry dash lag fix pc 2026 tutorial',
+    'geometry dash crashando em niveis pesados como resolver',
+    'aumentar ram geometry dash 2.2 patch',
+    'megahack geometry dash 4gb patch embutido'
+];
 
 export const metadata: Metadata = createGuideMetadata('geometry-dash-4gb-patch-lag', title, description, keywords);
 
-export default function GDGuide() {
+export default function GeometryDashPatchGuide() {
     const summaryTable = [
-        { label: "Ferramenta", value: "4GB Patch" },
-        { label: "Safe?", value: "Sim (Oficial)" },
-        { label: "FPS Hack", value: "MegaHack / Geode" },
-        { label: "Lag Fix", value: "LDM" }
+        { label: "Aplicação", value: "GeomeryDash.exe" },
+        { label: "O que faz", value: "Permite usar 4GB de RAM (em vez de 2GB)" },
+        { label: "Requisito", value: "Windows 64 bits" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "O Problema do 2GB",
+            title: "Por que o Geometry Dash trava mesmo em PCs Fortes?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Por padrão, executáveis antigos (como o GD) só podem usar 2GB de RAM. Quando você carrega um nível com 300.000 objetos, o jogo atinge esse teto e crasha ou derruba o FPS para 10.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O Geometry Dash é um programa de 32 bits. Por padrão, o Windows limita esse tipo de programa a usar apenas **2GB de memória RAM**. Em níveis modernos da comunidade ("Extreme Demons") com milhares de objetos e efeitos, o jogo atinge esse limite rapidamente e fecha sozinho ou começa a rodar em câmera lenta.
         </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Como Aplicar o 4GB Patch",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Isso modifica o <code>geometry-dash.exe</code> para permitir acesso a 4GB de RAM.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
-            <li>Baixe o <strong>4GB Patch</strong> (ntcore.com).</li>
-            <li>Abra o patcher.</li>
-            <li>Navegue até a pasta da Steam (<code>steamapps/common/Geometry Dash</code>).</li>
-            <li>Selecione o executável.</li>
-            <li>Clique em OK. Vai aparecer "Executable Successfully Patched".</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Geode Mod Loader (A Nova Era)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Não use hacks antigos. Instale o <strong>Geode</strong>. É a loja de mods oficial da comunidade.
-        </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li>Dentro do Geode, instale o mod <strong>"QOLMod"</strong> ou <strong>"Performance+"</strong>.</li>
-            <li>Eles corrigem bugs de input lag e optimizam o renderizador de partículas.</li>
-            <li>Ative o <strong>Smooth Fix</strong> nas opções do jogo se tiver travamentos de áudio, mas cuidado: isso pode desincronizar a música.</li>
-        </ul>
       `
+        },
+        {
+            title: "1. Como aplicar o 4GB Patch",
+            content: `
+        <p class="mb-4 text-gray-300">O 4GB Patch é uma ferramenta minúscula que muda um "flag" dentro do executável do jogo.</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Baixe o <strong>4GB Patch</strong> (de sites confiáveis como o da NTCore).</li>
+            <li>Abra o programa e selecione o arquivo <code>GeometryDash.exe</code> na sua pasta da Steam. <br/> (Geralmente em: <code>C:/Program Files (x86)/Steam/steamapps/common/Geometry Dash</code>)</li>
+            <li>O programa dirá "Executable successfully patched!".</li>
+            <li>Pronto! Agora o jogo pode usar até 4GB de RAM, o dobro do normal.</li>
+        </ol>
+      `
+        },
+        {
+            title: "2. Mega Hack e FPS Bypass",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Alternativa Moderna:</h4>
+            <p class="text-sm text-gray-300">
+                Se você usa o <strong>Mega Hack</strong> (v7 ou v8), o patch de 4GB já vem embutido e é aplicado automaticamente. Além disso, use o 'FPS Bypass' para jogar a 144Hz ou 240Hz mesmo que o seu monitor seja 60Hz, o que reduz o input lag drasticamente nos pulos.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Dica: Smooth Fix e LDM",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Dentro do jogo, sempre ative o <strong>LDM (Low Detail Mode)</strong> nos níveis que oferecem essa opção. Desative o 'Smooth Fix' nas configurações de vídeo, pois ele pode fazer o jogo rodar em câmera lenta se o seu PC não mantiver o FPS estável, o que estraga o timing da música.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/otimizacao-performance",
+            title: "Otimizar PC",
+            description: "Aumente o desempenho geral do Windows."
+        },
+        {
+            href: "/guias/roblox-fps-unlocker-tutorial",
+            title: "FPS Unlocker",
+            description: "Dicas similares para o Roblox."
+        },
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers de Vídeo",
+            description: "Garanta que sua GPU suporte os novos efeitos da 2.2."
         }
     ];
 
@@ -61,10 +86,11 @@ export default function GDGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="5 min"
+            estimatedTime="10 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

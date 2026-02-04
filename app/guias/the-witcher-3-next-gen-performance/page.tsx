@@ -1,59 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "The Witcher 3 Next-Gen: DX11 vs DX12 e Como Rodar Leve (2026)";
-const description = "A atualização Next-Gen quebrou a performance? Veja como voltar para o DirectX 11 Clássico para ganhar 50% de FPS ou otimizar o Ray Tracing no DX12.";
-const keywords = ['witcher 3 next gen travando', 'witcher 3 dx11 vs dx12', 'como aumentar fps witcher 3 next gen', 'hairworks witcher 3 vale a pena', 'otimizar witcher 3 rtx', 'witcher 3 classic version'];
+const title = "The Witcher 3 Next Gen: Guia de Performance PC (2026)";
+const description = "Quer rodar The Witcher 3 com Ray Tracing e FPS estável? Aprenda as melhores configurações para a versão Next Gen e como evitar o stuttering em 2026.";
+const keywords = [
+    'the witcher 3 next gen performance guide 2026',
+    'como aumentar fps the witcher 3 next gen tutorial',
+    'the witcher 3 dx12 stuttering fix guia 2026',
+    'melhores configurações graficas the witcher 3 pc tutorial',
+    'the witcher 3 next gen pc fraco guia de otimização 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('the-witcher-3-next-gen-performance', title, description, keywords);
 
-export default function WitcherGuide() {
+export default function Witcher3PerformanceGuide() {
     const summaryTable = [
-        { label: "Mais FPS", value: "DX11 (Clássico)" },
-        { label: "Mais Beleza", value: "DX12 (Ray Tracing)" },
-        { label: "HairWorks", value: "Desligado" },
-        { label: "DLSS/FSR", value: "Apenas no DX12" }
+        { label: "API Recomendada", value: "DirectX 12 (Para Ray Tracing/DLSS) / DX11 (PC Fraco)" },
+        { label: "Ajuste de Ouro", value: "Densidade de Erva (Médio) / Sombras (Alto)" },
+        { label: "Tecnologia", value: "DLSS 3 / FSR 3 / XeSS" },
+        { label: "Dificuldade", value: "Média" }
     ];
 
     const contentSections = [
         {
-            title: "O Desastre do DX12",
+            title: "O Desafio da Nova Geração",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          A versão "Next-Gen" (4.0+) introduziu o DirectX 12 para suportar Ray Tracing. Porém, a implementação é um "wrapper" (uma gambiarra) em cima do código antigo, o que causa uso excessivo de CPU e stutters (travadas).
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O **The Witcher 3 Next Gen** transformou um jogo de 2015 em um título extremamente exigente para os padrões de 2026. Com a adição de **Global Illumination** via Ray Tracing e novos assets em 4K, o jogo agora exige muito mais do processador e da placa de vídeo. Se você sente que o jogo está "pesado" mesmo em hardware potente, o segredo está no balanceamento correto entre o DirectX 12 e as tecnologias de Upscaling.
         </p>
-        <div class="bg-gray-800 p-6 rounded-xl border border-green-500 mb-6">
-            <h4 class="text-white font-bold mb-2">A Solução Mágica: Voltar para DX11</h4>
-            <p class="text-gray-300 text-sm">
-                No Launcher do jogo (REDlauncher), antes de clicar em Jogar, mude a versão do DirectX de 12 para <strong>11</strong>.
-                <br/><br/>
-                <strong>Vantagens:</strong> O jogo roda liso, sem travar, e seu FPS dobra.
-                <br/><strong>Desvantagens:</strong> Você perde o Ray Tracing e o DLSS/FSR. Mas o jogo continua com texturas 4K bonitas.
+      `
+        },
+        {
+            title: "1. Ray Tracing: Vale a pena?",
+            content: `
+        <p class="mb-4 text-gray-300">Em 2026, o Ray Tracing no Witcher 3 é um comedor de performance:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>RT Global Illumination:</strong> Deixa as cores muito mais realistas, mas corta o seu FPS pela metade.</li>
+            <li><strong>Reflexos e Sombras RT:</strong> Desative este primeiro. O ganho visual é pequeno perto do custo de performance.</li>
+            <li><strong>Dica:</strong> Se você não possui uma RTX 4070 ou superior, mantenha o RT desligado e foque na configuração 'Ultra+' para o restante dos gráficos.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Otimizando configurações de alto impacto",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Máximo ganho visual:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Densidade de Erva (Foliage Density):</strong> No Ultra+, isso mata seu PC em Beauclair. Coloque no Médio ou Alto. <br/>
+                - <strong>Visibilidade da Vegetação:</strong> Alto (Garante que as árvores não apareçam do nada). <br/>
+                - <strong>Pós-processamento:</strong> Desative o 'Motion Blur' e o 'Chromatic Aberration' para uma imagem mais nítida. <br/>
+                - <strong>Nvidia HairWorks:</strong> Desative totalmente, a menos que você queira ver os pelos do Geralt em 4K custando 20 FPS.
             </p>
         </div>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Configurando o Grafico (Se você ficar no DX12)",
+            title: "3. Resolvendo Stuttering no DX12",
             content: `
         <p class="mb-4 text-gray-300">
-            Se você tem uma RTX 4000 e quer usar Ray Tracing, configure assim:
+            Muitos jogadores reclamam de travadinhas constantes na versão DirectX 12. 
+            <br/><br/><strong>Dica de 2026:</strong> Certifique-se de que o **Shader Cache** no driver da sua placa de vídeo está configurado para 'Ilimitado'. Além disso, use o <strong>DLSS Frame Generation</strong> (se disponível) ou o <strong>FSR 3.0</strong>. Essas tecnologias de geração de quadros são essenciais para manter o frametime estável nas ruas lotadas de Novigrad.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li><strong>NVIDIA HairWorks:</strong> DESLIGADO. (O cabelo do Geralt fica bonito, mas cada fio é simulado individualmente. Come 20 FPS).</li>
-            <li><strong>Ray Tracing Global Illumination:</strong> Modo Performance ou Equilibrado. O modo "Qualidade" é injogável.</li>
-            <li><strong>Densidade da Grama:</strong> Alto (No Ultra, a grama é desenhada até o horizonte infinito, matando a CPU).</li>
-        </ul>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/red-dead-redemption-2-melhores-configuracoes-rdr2",
+            title: "Otimizar RDR2",
+            description: "Dicas de performance para outro épico AAA."
         },
         {
-            title: "Modo Foto vs Gameplay",
-            content: `
-        <p class="text-gray-300">
-            O jogo tem um "Modo Foto" que aumenta os gráficos quando você pausa. Não tente jogar com essas configurações ativas o tempo todo. Use o preset "High" (Alto), não "Ultra+", se sua placa for média (RTX 3060 / RX 6600).
-        </p>
-      `
+            href: "/guias/hdr-windows-vale-a-pena-jogos",
+            title: "HDR Witcher 3",
+            description: "Melhore as cores do por do sol em Velen."
+        },
+        {
+            href: "/guias/como-usar-ddu-driver-uninstaller",
+            title: "Drivers de Vídeo",
+            description: "Limpeza essencial para o DX12 rodar liso."
         }
     ];
 
@@ -62,10 +89,11 @@ export default function WitcherGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="10 min"
-            difficultyLevel="Iniciante"
+            estimatedTime="25 min"
+            difficultyLevel="Médio"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

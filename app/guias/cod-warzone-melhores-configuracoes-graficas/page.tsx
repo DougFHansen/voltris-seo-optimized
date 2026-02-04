@@ -1,99 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Call of Duty: Warzone - Guia Definitivo de FPS e Visibilidade (2026)";
-const description = "Otimize o Warzone para rodar liso. Aprenda a configurar o upscaling (DLSS/FSR), ajustar a memória de vídeo e editar o arquivo adv_options.ini para parar de travar.";
-const keywords = ['warzone configuracao fps', 'aumentar fps warzone 3', 'melhor configuracao warzone pc', 'dlss vs fsr warzone', 'adv_options.ini warzone cores', 'visibilidade warzone'];
+const title = "COD Warzone: Melhores Configurações de FPS e Visibilidade (2026)";
+const description = "Quer ganhar vantagem no Warzone? Aprenda as configurações gráficas para 2026 que aumentam o FPS e permitem ver inimigos nas sombras sem travar.";
+const keywords = [
+    'melhores configurações warzone 2026 fps boost',
+    'como aumentar fps warzone pc fraco 2026 guia',
+    'configurar visibilidade warzone nvidia e amd tutorial',
+    'warzone settings for visibility and performance 2026',
+    'melhor driver para warzone 2026 pc gamer'
+];
 
 export const metadata: Metadata = createGuideMetadata('cod-warzone-melhores-configuracoes-graficas', title, description, keywords);
 
-export default function WarzoneGuide() {
+export default function WarzoneOptimizationGuide() {
     const summaryTable = [
-        { label: "Upscaling", value: "FidelityFX CAS" },
-        { label: "VRAM Target", value: "70-80%" },
-        { label: "Texturas", value: "Baixo (Low)" },
-        { label: "Spot Cache", value: "Ultra/High" }
+        { label: "Upscaling", value: "DLSS 3.5 (NVIDIA) / FSR 3.1 (AMD) / XeSS (Intel)" },
+        { label: "Configuração Chave", value: "Texture Resolution (Normal/High)" },
+        { label: "Vantagem", value: "Menos Input Lag com NVIDIA Reflex" },
+        { label: "Dificuldade", value: "Médio" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: O Peso do Warzone",
+            title: "O desafio de rodar Warzone em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Call of Duty Warzone é notoriamente pesado na CPU e devorador de VRAM. Diferente de jogos como Valorant, aqui a placa de vídeo trabalha muito. O segredo para um jogo fluido não é apenas colocar tudo no "Low", mas sim balancear a carga entre CPU e GPU.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, o **Call of Duty: Warzone** continua sendo um dos jogos mais pesados para o processador (CPU) devido ao grande mapa e à enorme quantidade de jogadores simultâneos. O segredo para vencer não é ter os gráficos mais bonitos, mas sim ter a maior taxa de quadros (FPS) possível com o menor atraso de resposta (Input Lag), além de conseguir enxergar inimigos escondidos em cantos escuros.
         </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "1. Configurações de Qualidade (Menu)",
-            content: `
-        <p class="mb-4 text-gray-300">Vá em Configurações > Gráficos > Qualidade.</p>
-        
-        <h3 class="text-xl text-[#31A8FF] font-bold mt-6 mb-4">1.1 Upscaling e Sharpening</h3>
-        <p class="text-gray-300 mb-4">Aqui mora a maior armadilha. Muitos ativam DLSS ou FSR para ganhar FPS, mas deixam o jogo borrado, impossibilitando ver inimigos de longe.</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
-            <li><strong>Recomendado (Competitivo):</strong> <span class="text-green-400 font-bold">FidelityFX CAS</span>. 
-                <p class="text-sm mt-1 ml-6 text-gray-400">Ele não faz upscaling (não baixa a resolução), ele aplica um filtro de nitidez que faz o jogo parecer cristalino. Defina a força em <strong>50-75%</strong>. Se sua GPU aguenta resolução nativa, use isso.</p>
-            </li>
-            <li><strong>Recomendado (PC Fraco):</strong> <span class="text-yellow-400 font-bold">DLSS (Performance)</span> ou <span class="text-yellow-400 font-bold">FSR 3.0</span>.
-                <p class="text-sm mt-1 ml-6 text-gray-400">Só use se você tiver menos de 60 FPS nativo. A imagem vai degradar um pouco.</p>
-            </li>
-        </ul>
-
-        <h3 class="text-xl text-[#31A8FF] font-bold mt-6 mb-4">1.2 VRAM Scale Target (Escala de Memória de Vídeo)</h3>
-        <p class="text-gray-300 mb-2">Define quanto da sua VRAM o jogo pode "reservar".</p>
-        <p class="bg-gray-800 p-3 rounded text-green-400 font-mono">Defina em 70% ou 80%.</p>
-        <p class="text-gray-300 text-sm mt-2">NUNCA coloque em 90%. O Windows e o Discord precisam de VRAM também. Se o Warzone pegar tudo, o jogo começa a engasgar (stutter) quando você abre o mapa ou mira.</p>
       `
         },
         {
-            title: "2. Detalhes e Texturas",
+            title: "1. Tecnologias de Upscaling (O Salvador do FPS)",
             content: `
-        <div class="space-y-4">
-            <div class="bg-gray-800/50 p-4 rounded">
-                <h4 class="text-white font-bold">Resolução de Texturas</h4>
-                <p class="text-gray-400 text-sm"><strong>Baixo (Low)</strong> ou <strong>Muito Baixo</strong>. No calor da batalha, você não vai olhar para a textura da parede. Economiza muita VRAM.</p>
-            </div>
-            <div class="bg-gray-800/50 p-4 rounded border-l-4 border-green-500">
-                <h4 class="text-white font-bold">Spot Cache (Cache de Sombras)</h4>
-                <p class="text-gray-400 text-sm">Coloque em <strong>ULTRA</strong> ou <strong>ALTO</strong>. 
-                <br/><em>"Mas Ultra não pesa?"</em> — Não! Isso define o tamanho do arquivo de cache no seu HD/SSD. Se você colocar em "Baixo", o jogo vai ter que recalcular sombras toda hora, causando lag. Se colocar no Ultra, ele salva tudo no disco e a CPU folga.</p>
-            </div>
-            <div class="bg-gray-800/50 p-4 rounded">
-                <h4 class="text-white font-bold">Streaming de Textura sob Demanda</h4>
-                <p class="text-gray-400 text-sm"><strong>DESLIGADO</strong>. Isso baixa texturas da internet enquanto você joga. Causa Packet Loss e Ping alto.</p>
-            </div>
+        <p class="mb-4 text-gray-300">Em 2026, rodar em "Resolução Nativa" é coisa do passado:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>NVIDIA DLSS:</strong> Se você tem uma RTX, use o modo 'Qualidade'. Ele reconstrói a imagem via IA, entregando mais FPS que o normal com imagem melhor que a nativa.</li>
+            <li><strong>AMD FSR 3.1:</strong> Excelente para GPUs AMD e placas NVIDIA antigas (GTX). Ative o 'Frame Generation' se o seu monitor for 144Hz+.</li>
+            <li><strong>Intel XeSS:</strong> A melhor alternativa se as outras duas apresentarem "fantasmas" (ghosting) na imagem.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Preset Competitivo 2026 (Visibilidade Máxima)",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Configurações Recomendadas:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Texture Resolution:</strong> Normal (Evite o 'Low' para não borrar inimigos de longe). <br/>
+                - <strong>Shadow Quality:</strong> Low (Limpa o cenário e facilita ver campers). <br/>
+                - <strong>Anti-Aliasing:</strong> SMAA T2X (Configuração essencial para não ter serrilhado). <br/>
+                - <strong>NVIDIA Reflex Low Latency:</strong> On + Boost (Reduz o tempo entre o clique do mouse e o tiro no jogo). <br/>
+                - <strong>World Motion Blur:</strong> Sempre DESATIVADO.
+            </p>
         </div>
       `
         },
         {
-            title: "3. Arquivo de Configuração (RendererWorkerCount)",
+            title: "3. Otimização de áudio para passos",
             content: `
-            <p class="mb-4 text-gray-300">O CoD muitas vezes erra a contagem de núcleos do seu processador.</p>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
-                <li>Vá em <code>Documentos\\Call of Duty\\players</code>.</li>
-                <li>Abra o arquivo <strong>options.3.cod22.cst</strong> (ou similar, dependendo da versão season).</li>
-                <li>Procure por <code>RendererWorkerCount</code>.</li>
-                <li>Mude o valor para o número de <strong>Núcleos Físicos</strong> do seu processador (Não threads).
-                    <br/>- Ryzen 5 5600 (6 cores / 12 threads) -> Coloque <strong>6</strong>.
-                    <br/>- i7 12700K -> Coloque o número de P-Cores (ex: 8).
-                </li>
-            </ol>
-            <p class="text-gray-300 mt-2">Isso estabiliza o uso de CPU drasticamente.</p>
-        `
+        <p class="mb-4 text-gray-300">
+            <strong>Ouvindo o Inimigo:</strong> 
+            <br/><br/>No menu de áudio do Warzone em 2026, selecione o mix de áudio **'PC'** ou **'Headphones'**. Ative a opção de **'Equalização de Loudness'** no Windows (está em propriedades de som) para aumentar o volume de sons baixos (passos) e diminuir sons altos (explosões), protegendo seus ouvidos e te dando uma vantagem tática absurda.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/nvidia-refelx-on-vs-boost-diferenca",
+            title: "NVIDIA Reflex",
+            description: "Entenda como ele reduz seu tempo de reação."
         },
         {
-            title: "Dica de Visibilidade de Cores",
-            content: `
-            <p class="text-gray-300 mb-4">Vá em Interface > Personalização de Cor.</p>
-            <ul class="list-disc list-inside text-gray-300">
-                <li>Filtro de Cor: <strong>Filtro 2</strong>.</li>
-                <li>Alvo do Filtro: <strong>Ambos (Mundo e Interface)</strong>.</li>
-                <li>Intensidade: <strong>100%</strong>.</li>
-            </ul>
-            <p class="text-gray-300 mt-2">Isso deixa o jogo mais vibrante e colorido, tirando aquele aspecto cinza e "lavado" padrão do Warzone, facilitando ver inimigos na sombra.</p>
-        `
+            href: "/guias/reduzir-ping-jogos-online",
+            title: "Reduzir Ping",
+            description: "Melhore sua conexão nos servidores da Activision."
+        },
+        {
+            href: "/guias/som-espacial-windows-configurar",
+            title: "Som Espacial",
+            description: "Ouça passos em 360 graus com precisão."
         }
     ];
 
@@ -103,9 +91,10 @@ export default function WarzoneGuide() {
             description={description}
             keywords={keywords}
             estimatedTime="20 min"
-            difficultyLevel="Intermediário"
+            difficultyLevel="Médio"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

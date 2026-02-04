@@ -1,95 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Identificar e Se Proteger de Phishing e Golpes Online";
-const description = "Aprenda a detectar emails falsos, sites fraudulentos e mensagens enganosas. Proteja seus dados bancários e senhas contra engenharia social.";
-const keywords = ["phishing","golpe internet","email falso","segurança bancária","verificar link"];
+const title = "Phishing: Como identificar sites e e-mails falsos (2026)";
+const description = "Recebeu uma mensagem estranha do banco ou do Discord? Aprenda a identificar as técnicas de Phishing mais comuns de 2026 e proteja seus dados de hackers.";
+const keywords = [
+  'como identificar phishing e-mail falso 2026',
+  'como saber se um site é seguro para por senha',
+  'golpe do discord nitro gratis como identificar',
+  'prevenir sequestro de conta steam phishing tutorial',
+  'verificar link suspeito antes de clicar guia 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('identificacao-phishing', title, description, keywords);
 
-export default function GuidePage() {
+export default function PhishingGuide() {
+  const summaryTable = [
+    { label: "O que é", value: "Engenharia social para roubar senhas" },
+    { label: "Sinal de Alerta #1", value: "Urgência ou ameaça de bloquear conta" },
+    { label: "Sinal de Alerta #2", value: "Links com erros de escrita (ex: g00gle.com)" },
+    { label: "Dificuldade", value: "Fácil" }
+  ];
+
   const contentSections = [
-
     {
-      title: "Anatomia de um Golpe de Phishing",
+      title: "O Golpe mais lucrativo de 2026",
       content: `
-        <p class="mb-4 text-gray-300">Phishing é a tentativa de criminosos de se passarem por instituições confiáveis (Bancos, Receita Federal, Correios) para roubar seus dados.</p>
-          <div class="bg-[#1E1E22] p-6 rounded-xl border border-red-500/40 my-4">
-            <h3 class="text-red-400 font-bold text-lg mb-4">Sinais de Alerta Vermelho 🚩</h3>
-            <ul class="space-y-3 text-gray-300">
-              <li class="flex items-start gap-3">
-                <span class="text-red-500 font-bold">1.</span>
-                <div>
-                  <strong>Senso de Urgência:</strong> "Sua conta será bloqueada em 24h", "Boleto vencendo hoje", "Acesso suspeito detectado".
-                  <p class="text-sm text-gray-500 mt-1">Eles querem que você aja sem pensar.</p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-red-500 font-bold">2.</span>
-                <div>
-                  <strong>Remetente Estranho:</strong> O nome diz "Suporte Banco", mas o email é <code>suporte@gmail.com</code> ou <code>comunicado@banco-seguranca-web.com</code> (domínios falsos).
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-red-500 font-bold">3.</span>
-                <div>
-                  <strong>Links Mascarados:</strong> O texto diz "Clique aqui para acessar o site do banco", mas ao passar o mouse, o link real é <code>bit.ly/xyz</code> ou um site estranho.
-                </div>
-              </li>
-            </ul>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Diferente dos vírus que tentam quebrar o código do seu computador, o **Phishing** tenta quebrar a sua desconfiança. É muito mais caro criar um malware ultra moderno do que simplesmente criar uma página de login do Instagram idêntica à original e convencer você a digitar sua senha. Em 2026, com o uso de IA para criar textos perfeitos, identificar esses golpes exige atenção aos detalhes técnicos.
+        </p>
+      `
     },
-
     {
-      title: "Técnicas de Verificação",
+      title: "1. O Teste do Cursor (Hover Test)",
       content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-[#171313] p-4 rounded-lg">
-              <h4 class="text-blue-400 font-bold mb-2">Teste do Mouseover</h4>
-              <p class="text-gray-400 text-sm">Nunca clique direto. Passe o cursor do mouse sobre o link ou botão e olhe no canto inferior esquerdo do navegador. Onde ele realmente leva?</p>
-            </div>
-            <div class="bg-[#171313] p-4 rounded-lg">
-              <h4 class="text-blue-400 font-bold mb-2">HTTPS não é garantia</h4>
-              <p class="text-gray-400 text-sm">Cadeado verde significa que a conexão é criptografada, não que o site é legítimo. Hoje, sites de phishing também usam HTTPS. Confie no domínio (ex: itau.com.br), não apenas no cadeado.</p>
-            </div>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">Nunca confie no texto azul de um link. Confie para onde ele aponta:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Antes de clicar, passe o mouse em cima do link (sem clicar!).</li>
+            <li>Olhe no canto inferior esquerdo do seu navegador. O endereço real aparecerá ali.</li>
+            <li>Se o e-mail diz ser do "PayPal", mas o endereço que aparece é <code>bit.ly/seus-reais-agora</code> ou <code>pay-pal-security-update.xyz</code>, é um golpe.</li>
+        </ol>
+      `
     },
-
     {
-      title: "O que fazer se você clicou?",
+      title: "2. Phishing via QR Code (Quishing)",
       content: `
-        <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-500">
-            <ol class="list-decimal list-inside space-y-2 text-gray-300">
-              <li><strong>Desconecte-se da internet</strong> imediatamente se baixou algum arquivo.</li>
-              <li><strong>Altere suas senhas</strong> de outro dispositivo (celular via 4G, por exemplo).</li>
-              <li>Avise seu banco se inseriu dados financeiros.</li>
-              <li>Execute um escaneamento completo de antivírus/malware.</li>
-            </ol>
-          </div>
-      `,
-      subsections: []
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">A Nova Ameaça de 2026:</h4>
+            <p class="text-sm text-gray-300">
+                Os criminosos agora enviam QR Codes por e-mail ou Discord. O objetivo é tirar o link do seu PC (onde você tem antivírus e proteções de navegador) e levá-lo para o celular, onde é muito mais difícil conferir a URL real. <strong>Nunca escaneie QR Codes de origens não solicitadas</strong>, mesmo que pareçam um brinde de jogo ou aviso de segurança.
+            </p>
+        </div>
+      `
+    },
+    {
+      title: "3. URLs com caracteres especiais (Punycode)",
+      content: `
+        <p class="mb-4 text-gray-300">
+            Hackers usam letras de outros alfabetos que são idênticas às nossas. 
+            <br/><br/>Por exemplo, o "а" (cirílico) parece igual ao nosso "a". Um site pode ser <code>аpple.com</code> e você não perceberia a diferença visualmente. 
+            <br/><strong>Dica:</strong> Sempre que for fazer login em sites importantes (Banco, Steam, Google), nunca clique em links. Digite o endereço manualmente na barra do navegador.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Dicas para deixar seu PC mais rápido."
+      href: "/guias/autenticacao-dois-fatores",
+      title: "Ativar 2FA",
+      description: "A sua barreira final contra o phishing."
     },
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados."
+      href: "/guias/seguranca-senhas-gerenciadores",
+      title: "Gerenciar Senhas",
+      description: "Use ferramentas que preenchem apenas sites reais."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Cuidados essenciais com o hardware."
+      href: "/guias/remocao-virus-malware",
+      title: "Limpeza de Vírus",
+      description: "O que fazer se você clicou no link falso."
     }
   ];
 
@@ -98,9 +87,10 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="15-20 min"
+      estimatedTime="15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

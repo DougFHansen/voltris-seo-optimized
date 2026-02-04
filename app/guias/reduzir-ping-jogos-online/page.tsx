@@ -1,142 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Reduzir o Ping em Jogos Online (Guia 2026) - Voltris";
-const description = "Tutorial completo para diminuir a latência (ping) em jogos online competitivos. Configurações de DNS, Ethernet, Registry e Roteador.";
-const keywords = ['reduzir ping jogos', 'diminuir lag jogos online', 'otimizar internet jogos', 'melhor dns jogos', 'no ping', 'lag spike', 'packet loss'];
+const title = "Como Reduzir o Ping nos Jogos Online: Guia Definitivo 2026";
+const description = "Cansado de morrer por causa do lag? Aprenda as técnicas reais para diminuir o ping e estabilizar a conexão nos seus jogos favoritos em 2026.";
+const keywords = [
+    'como reduzir o ping nos jogos online 2026 tutorial',
+    'diminuir latencia jogos pc windows 11 guia',
+    'melhor servidor dns para ping baixo 2026',
+    'como resolver lag de rede jogos pc tutorial',
+    'exitlag funciona para diminuir ping guia 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('reduzir-ping-jogos-online', title, description, keywords);
 
-export default function ReduzirPingGuide() {
+export default function ReducePingGuide() {
     const summaryTable = [
-        { label: "Dificuldade", value: "Intermediário" },
-        { label: "Tempo Médio", value: "40 min" },
-        { label: "Impacto", value: "Alto" }
-    ];
-
-    const faqItems = [
-        {
-            question: "Wi-Fi 5GHz é bom para jogar?",
-            answer: "É melhor que o 2.4GHz, mas <strong>nunca será melhor que o cabo</strong>. O Wi-Fi sofre interferência natural. Para jogos competitivos (Valorant, CS2, LoL), o cabo Ethernet (CAT5e ou superior) é obrigatório para estabilidade."
-        },
-        {
-            question: "ExitLag e NoPing realmente funcionam?",
-            answer: "Depende da sua rota. Esses programas são 'túneis' (VPNs otimizadas). Se o problema for a rota física que sua operadora faz até o servidor do jogo, eles podem ajudar muito. Se o problema for sua internet local ruim, eles não farão milagre."
-        },
-        {
-            question: "Qual o ping ideal?",
-            answer: "Para jogos FPS competitivos, abaixo de <strong>20ms</strong> é ideal. Até 50ms é aceitável. Acima de 80ms, você já começa a sentir desvantagem real."
-        }
+        { label: "Conexão", value: "Sempre Cabo Ethernet (CAT6+)" },
+        { label: "DNS Recomendado", value: "Cloudflare (1.1.1.1)" },
+        { label: "Software de Rota", value: "ExitLag / NoPing" },
+        { label: "Dificuldade", value: "Iniciante" }
     ];
 
     const contentSections = [
         {
-            title: "Entendendo o Ping e Latência",
+            title: "O que é o Ping (Latência)?",
             content: `
-        <p class="mb-4">Ping é o tempo (em milissegundos) que um pacote de dados leva para sair do seu PC, chegar ao servidor do jogo e voltar. Não confunda com velocidade de download. Você pode ter 1GB de internet e ter ping alto.</p>
-        
-        <div class="bg-[#1c1c1e] border-l-4 border-[#FF4B6B] p-4 my-6 rounded-r-lg">
-          <p class="text-[#FF4B6B] font-bold text-sm mb-1 uppercase tracking-wider">Mito Comum</p>
-          <p class="text-gray-300 italic">"Vou aumentar minha internet de 300MB para 600MB para melhorar o ping." -> <strong>Mentira.</strong> A largura de banda raramente afeta o ping, a menos que sua rede esteja congestionada por outros usuários.</p>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O **Ping** é o tempo que um comando leva para sair do seu PC, chegar ao servidor do jogo e voltar para você. Em 2026, com conexões de fibra óptica ultra rápidas, o problema raramente é a velocidade da internet (Megas), mas sim a **estabilidade da rota**. Ter 1Gbps de velocidade não garante ping baixo; o que garante é um caminho livre e curto entre você e o servidor.
+        </p>
+      `
+        },
+        {
+            title: "1. O Fim do Wi-Fi para Games",
+            content: `
+        <p class="mb-4 text-gray-300">Mesmo o Wi-Fi 7 de 2026 sofre com a física do ambiente:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Interferência:</strong> Paredes e outros eletrônicos causam oscilações.</li>
+            <li><strong>Ping Jitter:</strong> O ping no Wi-Fi pode estar em 20ms e pular para 100ms do nada.</li>
+            <li><strong>Solução:</strong> Use um cabo Ethernet. Se a distância for o problema, cabos de rede de até 20 metros mantêm 100% da performance, ao contrário do sinal sem fio.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. DNS: A lista telefônica da Internet",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Resolução mais rápida:</h4>
+            <p class="text-sm text-gray-300">
+                O DNS da sua operadora costuma ser lento e congestionado. <br/><br/>
+                Mudar para o <strong>Cloudflare (1.1.1.1)</strong> ou <strong>Google (8.8.8.8)</strong> ajuda o seu PC a encontrar o servidor do jogo de forma mais direta. Em alguns casos, essa pequena troca pode reduzir o ping em 5ms a 10ms e, o mais importante, evitar quedas de conexão.
+            </p>
         </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "1. A Regra de Ouro: Cabo Ethernet",
-            content: `
-        <p class="mb-4">Antes de mexer em qualquer configuração, elimine o Wi-Fi. O Wi-Fi funciona por ondas de rádio, sujeitas a interferência de paredes, micro-ondas e vizinhos. O cabo Ethernet é blindado e direto.</p>
-        <p class="text-gray-300 mb-2">Compre um cabo <strong>CAT6</strong> (custa barato no Mercado Livre ou Amazon). Só essa mudança pode reduzir spikes de lag de 100ms para 0ms.</p>
       `
         },
         {
-            title: "2. Otimizando o Adaptador de Rede no Windows",
+            title: "3. Softwares de Otimização de Rota",
             content: `
-        <p class="mb-4">O Windows vem configurado para economizar energia, o que é péssimo para jogos. Vamos ajustar:</p>
-      `,
-            subsections: [
-                {
-                    subtitle: "Desligar Economia de Energia",
-                    content: `
-            <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4 mb-6">
-              <li>Clique com botão direito no Iniciar > <strong>Gerenciador de Dispositivos</strong>.</li>
-              <li>Abra "Adaptadores de Rede", ache sua placa (Realtek, Intel, Killer).</li>
-              <li>Clique com botão direito > Propriedades > Aba <strong>Gerenciamento de Energia</strong>.</li>
-              <li><strong>Desmarque</strong> a opção "O computador pode desligar o dispositivo para economizar energia".</li>
-            </ol>
-          `
-                },
-                {
-                    subtitle: "Desativar Interrupção de Moderação (Interrupt Moderation)",
-                    content: `
-            <p class="text-gray-300 mb-2">Na mesma janela, vá na aba <strong>Avançado</strong>. Procure na lista por "Interrupt Moderation" (ou Moderação de Interrupção) e coloque em <strong>Disabled</strong>.</p>
-            <p class="text-xs text-gray-500">Isso faz a CPU processar os pacotes de rede imediatamente, reduzindo a latência, embora aumente levemente o uso da CPU (irrelevante em PCs modernos).</p>
-          `
-                }
-            ]
-        },
-        {
-            title: "3. Trocando o DNS (Google vs Cloudflare)",
-            content: `
-        <p class="mb-4">O DNS é a lista telefônica da internet. Um DNS rápido resolve conexões mais depressa. Recomendamos o Cloudflare (1.1.1.1) para jogos.</p>
-        <ul class="space-y-2 text-gray-300 list-none ml-4 bg-[#121218] p-4 rounded text-sm font-mono">
-          <li><strong>Cloudflare DNS (Focado em velocidade):</strong><br/>Primário: 1.1.1.1<br/>Secundário: 1.0.0.1</li>
-          <br/>
-          <li><strong>Google DNS (Estabilidade):</strong><br/>Primário: 8.8.8.8<br/>Secundário: 8.8.4.4</li>
-        </ul>
-        <p class="mt-4 mb-2 text-gray-300">Para alterar: Configurações > Rede e Internet > Ethernet > Editar atribuição de servidor DNS.</p>
-      `
-        },
-        {
-            title: "4. TCP Optimizer (Ferramenta Avançada)",
-            content: `
-        <p class="mb-4">O Windows usa configurações TCP padrão de décadas atrás. Existe uma ferramenta gratuita e segura chamada <strong>TCP Optimizer</strong> (da SpeedGuide.net) que ajusta esses valores.</p>
-        <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4">
-          <li>Baixe o TCP Optimizer 4 (execute como Administrador).</li>
-          <li>Deslize a barra de velocidade para a velocidade da sua internet.</li>
-          <li>Selecione a opção "Optimal" lá embaixo.</li>
-          <li>Clique em "Apply Changes" e reinicie o PC.</li>
-        </ol>
-        <p class="text-sm text-gray-400 mt-2">Isso ajusta o MTU, RWIN e desativa o algoritmo de Nagle, essencial para jogos.</p>
-      `
-        },
-        {
-            title: "5. Comandos de Prompt (FlushDNS)",
-            content: `
-        <p class="mb-4">As vezes o cache de rede fica corrompido. Abra o CMD como Admin e rode:</p>
-        <code class="block bg-[#121218] p-3 rounded text-[#31FF8B] font-mono text-sm mb-2">
-          ipconfig /flushdns<br/>
-          ipconfig /release<br/>
-          ipconfig /renew<br/>
-          netsh winsock reset
-        </code>
-        <p class="text-gray-300">Reinicie o computador após os comandos.</p>
+        <p class="mb-4 text-gray-300">
+            Se o seu problema é a rota da sua operadora (tráfego congestionado):
+            <br/><br/><strong>Dica de 2026:</strong> Programas como <strong>ExitLag</strong> funcionam como um "Waze" para os seus dados. Eles buscam a estrada menos movimentada até o servidor. Isso é especialmente útil se você mora longe dos servidores (ex: morar no Nordeste e jogar em servidores de São Paulo) ou se joga em servidores internacionais.
+        </p>
       `
         }
     ];
 
     const relatedGuides = [
         {
-            href: "/guias/configuracao-roteador-wifi",
-            title: "Configurar Roteador para Máxima Performance",
-            description: "Ajuste canais e configurações do seu aparelho Wi-Fi."
+            href: "/guias/reduzir-ping-regedit-cmd-jogos",
+            title: "Ajustes Avançados",
+            description: "Comandos CMD e Regedit para rede."
         },
         {
-            href: "/guias/otimizacao-performance",
-            title: "Otimizar PC para Jogos",
-            description: "Garanta que seu FPS esteja alto para acompanhar o ping baixo."
+            href: "/guias/melhor-dns-jogos-2026",
+            title: "Melhores DNS",
+            description: "Comparativo completo de servidores DNS."
         },
         {
-            href: "/guias/teste-velocidade-internet",
-            title: "Como Testar Sua Internet Corretamente",
-            description: "Entenda o que é Jitter e Packet Loss."
+            href: "/guias/perda-de-pacote-packet-loss-fix",
+            title: "Packet Loss",
+            description: "Resolva o lag que faz você teletransportar."
         }
-    ];
-
-    const externalReferences = [
-        { name: "SpeedGuide.net (TCP Optimizer)", url: "https://www.speedguide.net/downloads.php" },
-        { name: "Cloudflare 1.1.1.1", url: "https://1.1.1.1/" },
-        { name: "Intel Network Adapter Settings", url: "https://www.intel.com/content/www/us/en/support/articles/000005593/network-and-i-o/ethernet-products.html" },
     ];
 
     return (
@@ -144,13 +87,11 @@ export default function ReduzirPingGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="40 minutos"
-            difficultyLevel="Intermediário"
+            estimatedTime="15 min"
+            difficultyLevel="Iniciante"
             contentSections={contentSections}
-            relatedGuides={relatedGuides}
             summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
+            relatedGuides={relatedGuides}
         />
     );
 }

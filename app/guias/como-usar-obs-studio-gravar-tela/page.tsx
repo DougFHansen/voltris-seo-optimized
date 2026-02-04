@@ -1,77 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "OBS Studio: Como Gravar Tela sem Perder FPS (Tutorial CQP e NVENC)";
-const description = "Quer gravar seus jogos sem travar o PC? Esqueça o 'Bitrate'. Aprenda a usar o modo CQP (Qualidade Constante) do OBS e o encoder da placa de vídeo.";
-const keywords = ['obs studio gravar tela leve', 'configurar obs pc fraco', 'cqp vs cbr obs', 'nvenc vs x264', 'gravar gameplay sem lag', 'tela preta obs fix'];
+const title = "Como usar o OBS Studio para Gravar Tela (Tutorial Completo)";
+const description = "Quer gravar suas partidas ou tutoriais com qualidade profissional? Aprenda a configurar o OBS Studio para gravação de tela leve e sem lags em 2026.";
+const keywords = [
+    'como usar obs studio para gravar tela pc 2026',
+    'melhores configurações obs studio gravação fps',
+    'gravar tela e áudio do jogo simultaneamente tutorial',
+    'configurar obs studio para pc fraco gravação leve',
+    'onde baixar e como instalar obs studio oficial'
+];
 
 export const metadata: Metadata = createGuideMetadata('como-usar-obs-studio-gravar-tela', title, description, keywords);
 
-export default function OBSGuide() {
+export default function OBSRecordingGuide() {
     const summaryTable = [
-        { label: "Modo", value: "CQP (Indistinguível)" },
-        { label: "Encoder", value: "NVENC / AMF" },
-        { label: "Formato", value: "MKV (Seguro)" },
-        { label: "Admin", value: "Obrigatório" }
+        { label: "Formato de Arquivo", value: "MKV (Mais seguro) ou MP4" },
+        { label: "Encoder Recomendado", value: "NVIDIA NVENC / AMD AMF" },
+        { label: "Resolução", value: "Base 1080p / Saída 1080p" },
+        { label: "Dificuldade", value: "Média" }
     ];
 
     const contentSections = [
         {
-            title: "O Erro Comum: Usar CBR para Gravar",
+            title: "Por que o OBS Studio é o padrão da indústria?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          A maioria dos tutoriais ensina a configurar "Bitrate" (CBR) em 10.000 ou 50.000. Isso é errado para gravação. CBR (Constant Bitrate) é para <strong>Live Stream</strong>, onde a internet oscila.
-        </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Para gravar no HD, usamos <strong>CQP (Constant Quantization Parameter)</strong>. O OBS decide sozinho quanto bitrate usar dependendo da complexidade da cena. Se você olhar para o céu (simples), ele usa pouco. Se você entrar numa explosão, ele usa muito. O resultado é qualidade perfeita com arquivo menor.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Passo a Passo: Configuração Perfeita",
-            content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Abra o OBS Studio como <strong>Administrador</strong> (Isso dá prioridade máxima à GPU, evitando que a gravação trave).</li>
-            <li>Vá em Configurações > Saída.</li>
-            <li>Mude o "Modo de Saída" para <strong>Avançado</strong>.</li>
-            <li>Vá na aba <strong>Gravação</strong>.</li>
-            <li><strong>Encoder de Vídeo:</strong>
-                <ul class="list-disc list-inside ml-6 text-sm text-green-400">
-                    <li>Se tem NVIDIA: <strong>NVIDIA NVENC H.264 (new)</strong>.</li>
-                    <li>Se tem AMD: <strong>AMD HW H.264 (AVC)</strong>.</li>
-                    <li>Nunca use x264 (Processador) a menos que não tenha placa de vídeo.</li>
-                </ul>
-            </li>
-            <li><strong>Controle de Taxa de Bits:</strong> Selecione <strong>CQP</strong>.</li>
-            <li><strong>Nível de CQ:</strong>
-                <ul class="list-disc list-inside ml-6 text-sm text-yellow-400">
-                    <li>15 a 20: Qualidade Perfeita (Arquivos gigantes).</li>
-                    <li>20 a 25: Qualidade Alta (Recomendado).</li>
-                    <li>30: Qualidade Média (PC Fraco).</li>
-                </ul>
-            </li>
-            <li><strong>Predefinição (Preset):</strong> P5: Slow ou P4: Medium.</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Por que gravar em MKV e não MP4?",
-            content: `
-        <div class="bg-red-900/20 p-6 rounded-xl border border-red-500">
-            <h4 class="text-white font-bold mb-2">O perigo do MP4</h4>
-            <p class="text-gray-300 text-sm">
-                Se o OBS travar, a luz acabar ou o PC desligar durante uma gravação em MP4, <strong>o arquivo inteiro se perde para sempre</strong>. O MP4 precisa ser "fechado" corretamente.
-                <br/><br/>
-                O formato <strong>MKV</strong> não tem esse problema. Se o PC explodir, o vídeo fica salvo até o segundo da explosão.
-            </p>
-        </div>
-        <p class="text-gray-300 mt-4">
-            "Ah, mas o Premiere/Sony Vegas não aceita MKV".
-            <br/>Simples: No OBS, vá em <strong>Arquivo > Converter Gravações (Remux)</strong>. Ele transforma o MKV em MP4 em segundos, sem perder qualidade.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Diferente de gravadores simples, o **OBS Studio** (Open Broadcaster Software) oferece controle total. Ele permite separar o áudio do seu microfone do áudio do jogo, criar cenas com webcam e, o mais importante: usar o chip da sua placa de vídeo para gravar sem perder FPS no jogo. Em 2026, ele continua sendo a ferramenta mais poderosa e gratuita para criadores de conteúdo.
         </p>
       `
+        },
+        {
+            title: "1. Configurações de Saída (Aumentando a Qualidade)",
+            content: `
+        <p class="mb-4 text-gray-300">Vá em Configurações > Saída e mude o Modo de Saída para 'Avançado':</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Tipo:</strong> Padrão.</li>
+            <li><strong>Caminho da Gravação:</strong> Escolha uma pasta em um SSD rápido.</li>
+            <li><strong>Formato de Gravação:</strong> Use <strong>MKV</strong>. Se o seu PC travar ou a luz acabar, você não perde o vídeo. Depois, você pode converter para MP4 no próprio OBS (Arquivo > Remux Gravações).</li>
+            <li><strong>Encodificador:</strong> Selecione o da sua placa de vídeo (NVIDIA NVENC H.264/AV1 ou AMD HW). Isso tira o peso do seu processador.</li>
+        </ul>
+      `
+        },
+        {
+            title: "2. Gravação sem Lag em PCs Fracos",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Truque de Performance:</h4>
+            <p class="text-sm text-gray-300">
+                Se o seu vídeo está saindo "travado", mude o Controle de Taxa de Bits para <strong>CQP</strong> em vez de CBR. Use um valor de CQP entre <strong>18 e 23</strong>. Quanto menor o número, maior a qualidade e o peso do arquivo. O CQP garante que o OBS use apenas os recursos necessários para capturar a imagem com fidelidade, sem desperdiçar processamento.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Captura de Jogo vs Captura de Tela",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Captura de Jogo:</strong> É o modo mais eficiente. O OBS "trava" no jogo e nada mais aparece, preservando sua privacidade (notificações do Windows não aparecem no vídeo).
+            <br/><br/>
+            <strong>Captura de Tela:</strong> Use apenas para tutoriais onde você precisa mostrar o Windows inteiro. Em 2026, esse modo ainda consome um pouco mais de recursos do sistema que a captura direta de jogo.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/obs-studio-melhores-configuracoes-stream-2026",
+            title: "Configurar Stream",
+            description: "Aprenda a fazer Lives no Twitch/YouTube."
+        },
+        {
+            href: "/guias/grava%C3%A7%C3%A3o-tela-windows-nativa-dicas",
+            title: "Gravador Nativo",
+            description: "Uma alternativa rápida do próprio Windows."
+        },
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers de Vídeo",
+            description: "Essencial para o NVENC/AMF funcionarem bem."
         }
     ];
 
@@ -80,10 +88,11 @@ export default function OBSGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
+            estimatedTime="20 min"
             difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

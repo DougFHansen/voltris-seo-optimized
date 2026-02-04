@@ -1,68 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Verificar Saúde do HD/SSD com CrystalDiskInfo: Como Ler os Dados SMART (2026)";
-const description = "Seu PC está lento ou travando? Pode ser o HD morrendo. Aprenda a interpretar os alertas 'Alerta', 'Critico' e 'Reallocated Sectors Count' no CrystalDiskInfo.";
-const keywords = ['crystaldiskinfo como usar', 'saude do hd estado de alerta', 'hd fazendo barulho tic tac', 'reallocated sectors count o que significa', 'ssd vida util restante', 'testar hd defeito'];
+const title = "Como verificar a Saúde do HD e SSD: CrystalDiskInfo (2026)";
+const description = "Seu PC está travando ou arquivos sumindo? Aprenda a usar o CrystalDiskInfo para prever falhas no seu HD ou SSD em 2026.";
+const keywords = [
+    'como usar crystaldiskinfo 2026 tutorial guia',
+    'verificar saude do ssd windows 11 tutorial 2026',
+    'sinais que o hd esta morrendo tutorial guia',
+    'temperatura ideal ssd nvme 2026 tutorial',
+    'como ler dados smart hd e ssd guia 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('verificar-saude-hd-ssd-crystaldiskinfo', title, description, keywords);
 
-export default function SmartGuide() {
+export default function DiskHealthGuide() {
     const summaryTable = [
-        { label: "Software", value: "CrystalDiskInfo" },
-        { label: "Azul", value: "Saudável" },
-        { label: "Amarelo", value: "Alerta (Backup Já)" },
-        { label: "Vermelho", value: "Crítico (Lixo)" }
+        { label: "Status 'Saudável'", value: "Tudo certo com o seu disco" },
+        { label: "Status 'Alerta'", value: "Faça backup IMEDIATAMENTE" },
+        { label: "Parâmetro Crítico", value: "Reallocated Sectors Count" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "O que é SMART?",
+            title: "O silêncio antes do desastre",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Todo HD ou SSD tem um "boletim médico" interno chamado S.M.A.R.T. (Self-Monitoring, Analysis and Reporting Technology). Ele conta quantos erros ocorreram, quantas horas ficou ligado e quantos setores estragaram. O Windows não mostra isso fácil, mas o <strong>CrystalDiskInfo</strong> mostra.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Como Ler os Erros (O Significado do Amarelo)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Se seu Status de Saúde está <strong>Amarelo (Alerta)</strong>, olhe a lista de atributos abaixo. Os mais graves são:
-        </p>
-        <div class="space-y-4">
-            <div class="bg-yellow-900/20 p-4 rounded border-l-4 border-yellow-500">
-                <strong class="text-white block text-lg">05: Reallocated Sectors Count</strong>
-                <p class="text-gray-300 text-sm">
-                    O HD encontrou setores físicos estragados (Bad Blocks) e tentou "esconder" eles usando setores reservas. Se esse número estiver aumentando, <strong>seu HD vai morrer em breve</strong>. Faça backup HOJE.
-                </p>
-            </div>
-            <div class="bg-red-900/20 p-4 rounded border-l-4 border-red-500">
-                <strong class="text-white block text-lg">C5: Current Pending Sector Count</strong>
-                <p class="text-gray-300 text-sm">
-                    Setores instáveis que o HD não conseguiu ler. Isso causa travamentos e tela azul no Windows. É sinal de degradação da superfície magnética.
-                </p>
-            </div>
-            <div class="bg-blue-900/20 p-4 rounded border-l-4 border-blue-500">
-                <strong class="text-white block text-lg">SSD: Life Remaining (Vida Útil)</strong>
-                <p class="text-gray-300 text-sm">
-                    SSDs morrem quando atingem o limite de escrita (TBW). Se estiver abaixo de 10%, comece a planejar a compra de um novo.
-                </p>
-            </div>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Temperatura Importa?",
-            content: `
-        <p class="text-gray-300 mb-4">
-            Sim!
-            <br/>- <strong>HD (Mecânico):</strong> Ideal entre 30°C e 45°C. Acima de 50°C a vida útil cai pela metade.
-            <br/>- <strong>SSD (NVMe):</strong> Eles esquentam mais (até 70°C em carga máxima é aceitável). Se passar de 80°C, ele diminui a velocidade (Throttling).
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Diferente de uma ventoinha que faz barulho ao quebrar, um SSD ou HD morre em silêncio. Em 2026, com o aumento das velocidades dos NVMe Gen 5, o calor tornou-se o maior vilão da vida útil. O **CrystalDiskInfo** é a ferramenta padrão da indústria para ler os dados S.M.A.R.T. (Self-Monitoring, Analysis and Reporting Technology) do seu hardware, permitindo que você saiba exatamente quanta "vida" seu disco ainda tem antes de perder suas fotos e documentos.
         </p>
       `
+        },
+        {
+            title: "1. Baixando e Entendendo as Cores",
+            content: `
+        <p class="mb-4 text-gray-300">Ao abrir o CrystalDiskInfo, olhe para a cor do status:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Azul/Verde:</strong> Saúde boa. Nenhum erro crítico detectado.</li>
+            <li><strong>Amarelo (Alerta):</strong> Existem setores danificados ou desgastados. O disco pode falhar a qualquer momento. Se vir esta cor, mova seus arquivos importantes para a nuvem ou outro HD agora mesmo.</li>
+            <li><strong>Vermelho (Crítico):</strong> O disco já está falhando. O Windows pode travar com telas azuis constantes.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Verificando o Desgaste (SSD TBW)",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Quilometragem do seu SSD:</h4>
+            <p class="text-sm text-gray-300">
+                Nos SSDs, procure por <strong>'Total Host Writes'</strong>. <br/><br/>
+                Isso mostra quantos Terabytes de dados já foram gravados no drive desde que ele saiu da fábrica. Cada SSD tem um limite de gravação (TBW). Se o seu SSD tem 100TB de limite e você já gravou 90TB, ele começará a apresentar lentidões ou mudar para o modo 'Apenas Leitura' para se proteger. Em 2026, monitore isso se você trabalha com edição de vídeo ou torrents constantes.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. A importância da Temperatura",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>O perigo do calor:</strong> 
+            <br/><br/>SSDs NVMe de 2026 operam em temperaturas altas, mas não devem passar dos 70°C por muito tempo. Se o CrystalDiskInfo mostrar o status em vermelho por causa da temperatura, seu SSD entrará em 'Thermal Throttling' e ficará mais lento que um HD antigo. Considere comprar um dissipador de calor (heatsink) se as temperaturas estiverem constantemente acima de 65°C.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/ssd-vs-hd-qual-melhor",
+            title: "SSD vs HD",
+            description: "Diferenças de tecnologia e durabilidade."
+        },
+        {
+            href: "/guias/otimizacao-ssd-windows-11",
+            title: "Otimizar SSD",
+            description: "Dicas para aumentar a vida útil."
+        },
+        {
+            href: "/guias/recuperacao-dados",
+            title: "Recuperar Dados",
+            description: "O que fazer se o disco já falhou."
         }
     ];
 
@@ -71,10 +87,11 @@ export default function SmartGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="5 min"
+            estimatedTime="15 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

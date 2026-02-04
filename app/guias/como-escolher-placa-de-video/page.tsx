@@ -1,47 +1,88 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia de Compra: Como Escolher Placa de Vídeo (GPU) em 2026";
-const description = "RTX 5000, RX 8000 ou Intel Arc? Aprenda a analisar VRAM, largura de banda e compatibilidade com sua fonte e processador antes de comprar.";
-const keywords = ['escolher placa de video', 'guia gpu 2026', 'gargalo processador', 'fonte para rtx', 'vram suficiente jogos'];
+const title = "Como Escolher a Placa de Vídeo Ideal em 2026";
+const description = "RTX, RX ou Arc? Aprenda como escolher a melhor placa de vídeo para o seu orçamento, monitor e objetivos no PC Gamer em 2026.";
+const keywords = [
+    'como escolher placa de video 2026 guia',
+    'melhor placa de video custo beneficio 2026 tutorial',
+    'rtx vs rx vs intel arc qual escolher 2026',
+    'placa de video para 1080p vs 1440p guia completo',
+    'vram necessária para jogos em 2026 tutorial'
+];
 
 export const metadata: Metadata = createGuideMetadata('como-escolher-placa-de-video', title, description, keywords);
 
-export default function GPUGuide() {
+export default function GPUBuyingGuide() {
     const summaryTable = [
-        { label: "Prioridade", value: "Orçamento" },
-        { label: "Complexidade", value: "Alta" },
+        { label: "Uso: 1080p", value: "RTX 4060 / RX 7600 / Arc A750" },
+        { label: "Uso: 1440p (2K)", value: "RTX 4070 Super / RX 7800 XT" },
+        { label: "VRAM Mínima (2026)", value: "8GB (Entrada) / 12GB (Ideal)" },
+        { label: "Dificuldade", value: "Médio" }
     ];
 
     const contentSections = [
         {
-            title: "1. A Regra da VRAM (Memória de Vídeo)",
+            title: "O coração do PC Gamer em 2026",
             content: `
-        <p class="mb-4">Em 2026, jogos modernos estão exigindo cada vez mais memória de vídeo. Ignorar isso é o erro #1.</p>
-        <ul class="text-gray-300 list-disc list-inside space-y-2 ml-4">
-            <li><strong>8GB:</strong> O mínimo absoluto para 1080p. Já sofre em jogos Triple-A no Ultra.</li>
-            <li><strong>12GB:</strong> O ideal para durar alguns anos jogando em 1080p/1440p.</li>
-            <li><strong>16GB+:</strong> Obrigatório para 4K, edição de vídeo ou Inteligência Artificial.</li>
-        </ul>
-      `,
-            subsections: []
-        },
-        {
-            title: "2. Gargalo (Bottleneck): Não compre GPU demais para CPU de menos",
-            content: `
-        <p class="mb-4">Se você colocar uma RTX 4070 num Core i3 antigo, você jogou dinheiro fora. O processador não consegue enviar dados rápido o suficiente para a placa.</p>
-        <p class="text-gray-300 text-sm">Regra prática: Sua placa de vídeo deve custar aproximadamente <strong>2x o preço do seu processador</strong> para estar equilibrado.</p>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, a placa de vídeo (GPU) é o componente mais caro e importante do seu setup. Não adianta ter o melhor processador do mundo se a sua GPU não consegue processar os efeitos de luz modernos (Ray Tracing) ou as texturas pesadas dos jogos de última geração. Escolher bem em 2026 significa olhar além do "poder bruto" e focar também nas tecnologias de IA e eficiência energética.
+        </p>
       `
         },
         {
-            title: "3. A Fonte de Alimentação (PSU)",
+            title: "1. VRAM: A armadilha da memória",
             content: `
-        <div class="bg-red-900/20 border-l-4 border-red-500 p-4 mb-4">
-            <p class="text-red-400 font-bold">Risco de Queima</p>
-            <p class="text-gray-300 text-sm">Nunca use adaptadores molex para ligar placa de vídeo. Se sua fonte não tem os cabos PCI-E necessários, troque a fonte.</p>
+        <p class="mb-4 text-gray-300">Em 2026, a quantidade de memória de vídeo (VRAM) é vital:</p>
+        <p class="text-sm text-gray-300">
+            Jogos lançados em 2026 estão consumindo cada vez mais memória devido ao aumento da qualidade das texturas. <br/><br/>
+            - <strong>8GB:</strong> É o "mínimo para sobreviver" em 1080p. Em alguns jogos, você precisará reduzir a qualidade das texturas. <br/>
+            - <strong>12GB ou 16GB:</strong> É o ponto ideal para longevidade. Se você quer ficar 4 anos sem trocar de placa, procure modelos com pelo menos 12GB.
+        </p>
+      `
+        },
+        {
+            title: "2. NVIDIA vs AMD vs Intel em 2026",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Qual Marca Escolher?</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>NVIDIA:</strong> Melhor tecnologia de IA (DLSS 3.5), Ray Tracing superior e ideal para quem faz Stream ou edição de vídeo. <br/>
+                - <strong>AMD:</strong> Melhor custo por cada frame. Geralmente são mais baratas e oferecem mais VRAM bruta na mesma faixa de preço da concorrência. <br/>
+                - <strong>Intel Arc:</strong> A terceira via. Oferecem excelente performance em 2026 pelo preço, mas ainda podem ter problemas em jogos muito antigos (DiretX 9).
+            </p>
         </div>
-        <p class="text-gray-300">Verifique a recomendação do fabricante. Se a caixa pede 650W, compre 750W para ter folga e silêncio.</p>
       `
+        },
+        {
+            title: "3. Casamento com o Monitor",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Não desperdice dinheiro:</strong> 
+            <br/><br/>Se o seu monitor é 1080p 60Hz, comprar uma RTX 4080 é jogar dinheiro fora, pois você nunca verá o poder total da placa. <br/><br/>
+            - Para <strong>1080p</strong>, foque em placas de entrada e média-baixa. <br/>
+            - Para <strong>1440p (QHD)</strong>, você precisará de placas com barramento de memória maior (192 bits ou mais). <br/>
+            - Para <strong>4K</strong>, o investimento é alto e exige placas topo de linha com pelo menos 16GB de VRAM.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/rtx-4060-vale-a-pena-2026",
+            title: "Review RTX 4060",
+            description: "A placa mais popular de 2026 sob análise."
+        },
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Instalar Placa",
+            description: "Como preparar o Windows para a placa nova."
+        },
+        {
+            href: "/guias/aceleracao-hardware-gpu-agendamento",
+            title: "Performance Max",
+            description: "Extraia cada FPS da sua nova GPU."
         }
     ];
 
@@ -50,10 +91,11 @@ export default function GPUGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="20 minutos"
+            estimatedTime="25 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

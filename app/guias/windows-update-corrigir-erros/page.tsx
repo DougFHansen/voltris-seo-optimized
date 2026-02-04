@@ -1,86 +1,92 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Windows Update Travado ou com Erro? Use este Script para Corrigir (2026)";
-const description = "O Windows Update não baixa? Dá erro 0x80070002? Aprenda a resetar completamente os componentes de atualização usando o CMD e limpar a pasta SoftwareDistribution.";
-const keywords = ['windows update erro', 'resetar windows update cmd', 'erro 0x80070002', 'windows update travado em 0', 'limpar softwaredistribution', 'corrigir atualizacao windows 11'];
+const title = "Erro no Windows Update: Como destravar e corrigir (2026)";
+const description = "Seu Windows Update não baixa atualizações ou trava em uma porcentagem? Aprenda como resetar os serviços de atualização no Windows 11 em 2026.";
+const keywords = [
+    'erro windows update como resolver 2026 tutorial',
+    'windows update travado em 0 ou 100 como resolver guia',
+    'resetar serviços do windows update tutorial 2026',
+    'limpar pasta softwaredistribution windows 11 tutorial',
+    'corrigir erro de download windows update guia 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('windows-update-corrigir-erros', title, description, keywords);
 
-export default function WinUpdateGuide() {
+export default function WindowsUpdateFixGuide() {
     const summaryTable = [
-        { label: "Ferramenta", value: "CMD (Admin)" },
-        { label: "Risco", value: "Baixo" },
-        { label: "Tempo", value: "5 Minutos" },
-        { label: "Requer", value: "Reinicialização" }
+        { label: "Erro Famoso", value: "0x80070005 ou 0x80240017" },
+        { label: "Solução Rápida", value: "Solução de Problemas do Windows" },
+        { label: "Pasta Crítica", value: "C:\\Windows\\SoftwareDistribution" },
+        { label: "Dificuldade", value: "Médio" }
     ];
 
     const contentSections = [
         {
             title: "Por que o Windows Update trava?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O Windows Update é complexo. Ele depende de serviços de criptografia, rede e instaladores em segundo plano. Se o PC desligar no meio de um download ou a internet cair, os arquivos na pasta temporária (SoftwareDistribution) corrompem e o serviço trava para sempre.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Solução 1: O Script Definitivo de Reset",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Não perca tempo com a "Solução de Problemas" do Windows, ela nunca funciona. Vamos parar os serviços na força bruta, limpar o cache e reiniciar tudo limpo.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-4 ml-4">
-            <li>Abra o <strong>Bloco de Notas</strong>.</li>
-            <li>Cole o código abaixo (exatamente assim):</li>
-        </ol>
-
-        <div class="bg-black p-4 rounded-xl border border-gray-700 my-4 overflow-x-auto">
-            <pre class="text-green-400 font-mono text-sm leading-6">
-net stop wuauserv
-net stop cryptSvc
-net stop bits
-net stop msiserver
-Ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old
-Ren C:\\Windows\\System32\\catroot2 catroot2.old
-net start wuauserv
-net start cryptSvc
-net start bits
-net start msiserver
-pause
-            </pre>
-        </div>
-
-        <ol start={3} class="list-decimal list-inside text-gray-300 space-y-4 ml-4">
-            <li>Clique em Arquivo > Salvar Como.</li>
-            <li>Nomeie como <strong>fix_update.bat</strong> (o .bat é importante!).</li>
-            <li>Em "Tipo", selecione <strong>Todos os arquivos</strong>.</li>
-            <li>Salva na Área de Trabalho.</li>
-            <li>Clique com botão direito no arquivo criado > <strong>Executar como Administrador</strong>.</li>
-        </ol>
-
-        <p class="mt-4 text-gray-300 bg-gray-800 p-4 rounded">
-            O script vai parar o Windows Update, renomear a pasta corrompida (forçando o Windows a criar uma nova zerada) e reiniciar os serviços. Depois disso, reinicie o PC e tente atualizar.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Solução 2: O Comando DISM e SFC",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Se o script acima não funcionar, pode ser que arquivos de sistema do próprio Windows estejam faltando.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
-            <li>Abra o CMD como Administrador.</li>
-            <li>Digite: <code class="text-yellow-400 select-all">DISM /Online /Cleanup-Image /RestoreHealth</code> e dê Enter. (Isso pode demorar 20 minutos).</li>
-            <li>Quando terminar, digite: <code class="text-yellow-400 select-all">sfc /scannow</code> e dê Enter.</li>
-        </ol>
-        <p class="mt-2 text-gray-300">
-            O DISM baixa arquivos originais direto dos servidores da Microsoft para substituir os corrompidos no seu PC.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O **Windows Update** é o coração da segurança do seu PC em 2026. Mas, por vezes, um arquivo de atualização baixado pode vir corrompido, "travando" toda a fila de downloads futuros. Se o seu Windows 11 diz 'Houve um erro' ou fica parado em 99% por horas, o problema quase sempre está nos arquivos temporários antigos que impedem o sistema de processar os novos.
         </p>
       `
+        },
+        {
+            title: "1. A Solução Nativa (O primeiro passo)",
+            content: `
+        <p class="mb-4 text-gray-300">Antes de comandos complexos, tente a ferramenta oficial:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Vá em Configurações > Sistema > <strong>Solução de Problemas</strong>.</li>
+            <li>Clique em 'Outras soluções de problemas'.</li>
+            <li>Encontre o 'Windows Update' e clique em <strong>Executar</strong>.</li>
+            <li>O Windows tentará reiniciar os serviços e limpar pequenos erros de cache automaticamente. Reinicie o PC após o término.</li>
+        </ol>
+      `
+        },
+        {
+            title: "2. Reset Profundo: SoftwareDistribution",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Limpando a lousa:</h4>
+            <p class="text-sm text-gray-300">
+                Se nada resolveu, precisamos apagar a pasta onde o Windows guarda os arquivos de update: <br/><br/>
+                1. Abra o CMD como Administrador e digite para parar os serviços: <br/>
+                   - <code>net stop wuauserv</code> <br/>
+                   - <code>net stop bits</code> <br/>
+                2. Vá na pasta <code>C:\\Windows\\SoftwareDistribution</code> e <strong>delete tudo</strong> o que houver lá dentro. <br/>
+                3. Volte ao CMD e digite para ligar os serviços: <br/>
+                   - <code>net start wuauserv</code> <br/>
+                   - <code>net start bits</code> <br/>
+                Agora, tente procurar atualizações novamente. O Windows criará arquivos novos e limpos.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. O "Último Recurso" em 2026",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Assistente de Atualização:</strong> 
+            <br/><br/>Se o Windows Update sumiu ou dá erro constante mesmo após o reset, baixe o <strong>Assistente de Atualização do Windows 11</strong> diretamente do site da Microsoft. Ele funciona de forma independente do sistema, forçando a instalação da versão mais recente sem depender da fila de downloads travada do Painel de Controle.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/como-resolver-tela-azul",
+            title: "Tela Azul no Update",
+            description: "O que fazer se o PC travar na instalação."
+        },
+        {
+            href: "/guias/pos-instalacao-windows-11",
+            title: "Otimizar Sistema",
+            description: "Garanta que seu PC suporte novas versões."
+        },
+        {
+            href: "/guias/criar-ponto-restauracao-windows",
+            title: "Antes de Atualizar",
+            description: "Proteja seu sistema contra updates bugados."
         }
     ];
 
@@ -89,10 +95,11 @@ pause
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Avançado"
+            estimatedTime="25 min"
+            difficultyLevel="Médio"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

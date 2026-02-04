@@ -1,70 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Epic Games Launcher Lento e Travando PC? Como Otimizar e Reduzir Uso de CPU (2026)";
-const description = "O Launcher da Epic consome 20% da sua CPU só de ficar aberto? Veja como desativar o Web Helper e as notificações para deixá-lo leve como a Steam.";
-const keywords = ['epic games launcher lento', 'epic games consome muita cpu', 'otimizar epic games launcher', 'epic web helper cpu', 'desativar notificacoes epic games', 'epic games travando pc'];
+const title = "Epic Games Launcher Lento ou Pesando na CPU? Como Fix (2026)";
+const description = "O launcher da Epic Games está travando seu PC ou consumindo muita CPU em repouso? Aprenda como otimizar o Epic Launcher no Windows 11 em 2026.";
+const keywords = [
+    'epic games launcher lento como resolver 2026',
+    'diminuir uso de cpu epic games launcher guia',
+    'epic games launcher travando windows 11 tutorial',
+    'otimizar inicialização epic games launcher 2026',
+    'launcher da epic consumindo muita ram como fix guia'
+];
 
 export const metadata: Metadata = createGuideMetadata('epic-games-launcher-lento-cpu-fix', title, description, keywords);
 
-export default function EpicLagGuide() {
+export default function EpicGamesFixGuide() {
     const summaryTable = [
-        { label: "Problema", value: "Uso alto de CPU" },
-        { label: "Culpado", value: "Epic Web Helper" },
-        { label: "Solução 1", value: "Editar Target" },
-        { label: "Solução 2", value: "Minimizar" }
+        { label: "Problema #1", value: "Alto uso de CPU em segundo plano (Webview)" },
+        { label: "Problema #2", value: "Download lento mesmo com fibra" },
+        { label: "Solução Chave", value: "Limites de taxa de download e Modo Econômico" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "Por que a Epic é tão pesada?",
+            title: "O "peso" da Epic Games em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Diferente da Steam que é nativa, o Launcher da Epic é basicamente um monte de páginas web rodando dentro de um navegador Unreal Engine. Isso cria vários processos chamados "EpicWebHelper.exe" que comem RAM e CPU.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Passo 1: Desativar a Loja Pesada (Target Fix)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Podemos forçar o launcher a abrir de um jeito mais simples? Não, mas podemos melhorar.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
-            <li>Vá nas Configurações do Launcher (Letra inicial do seu nome > Configurações).</li>
-            <li>Desmarque <strong>"Minimizar para a bandeja do sistema"</strong>. (Queremos que ele feche de verdade quando clicamos no X).</li>
-            <li>Desmarque <strong>"Exibir Notificações de Jogos Grátis"</strong> (Isso roda um processo de fundo).</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Passo 2: O Truque do Launcher Options",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Vamos editar o atalho para limitar a renderização.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Clique com botão direito no atalho da Epic Games na Área de Trabalho > Propriedades.</li>
-            <li>No campo <strong>Destino (Target)</strong>, vá até o final da linha, dê um Espaço e cole:</li>
-        </ol>
-        <div class="bg-black border border-gray-700 p-4 rounded-lg mt-2 mb-4 font-mono text-yellow-400 text-sm break-all">
-            -OpenGL -LimitUserTracker
-        </div>
-        <p class="text-gray-300">
-            Dê OK. Isso força o launcher a usar uma renderização mais simples e desliga parte do rastreamento de usuário.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Solução Definitiva: Heroic Games Launcher",
-            content: `
-        <p class="text-gray-300 mb-4">
-            Se você está cansado da Epic, use o <strong>Heroic Games Launcher</strong>. É um app open-source, ultra leve, que loga na sua conta da Epic e baixa seus jogos. Ele não consome nada de RAM. É seguro e muito usado no Steam Deck.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Embora a **Epic Games Store** ofereça jogos incríveis de graça toda semana, o seu programa inicializador (Launcher) é conhecido por ser pesado. Construído com tecnologias web, ele pode consumir mais processador que o próprio jogo se estiver mal configurado. Em 2026, com computadores multitarefa, manter o launcher "quieto" enquanto você não está jogando é essencial para a saúde do sistema.
         </p>
       `
+        },
+        {
+            title: "1. Reduzindo o Uso de CPU em Repouso",
+            content: `
+        <p class="mb-4 text-gray-300">O launcher costuma "observar" o hardware o tempo todo. Desative isso:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Abra o Epic Games Launcher e clique no ícone do seu perfil no topo direito.</li>
+            <li>Vá em <strong>Configurações</strong>.</li>
+            <li>Desmarque a opção <strong>'Habilitar Navegação por Voz'</strong> e <strong>'Minimizar para a Bandeja do Sistema'</strong> (se preferir que ele feche de verdade).</li>
+            <li>Marque a opção <strong>'Modo de Pouca Energia'</strong> (se disponível). Isso reduz as animações da loja, aliviando o uso da sua GPU e CPU 2026.</li>
+        </ol>
+      `
+        },
+        {
+            title: "2. Corrigindo Downloads Lentos",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Truque de Largura de Banda:</h4>
+            <p class="text-sm text-gray-300">
+                Muitas vezes, downloads na Epic travam em 0B/s ou ficam muito lentos. <br/><br/>
+                No menu de Configurações, procure por <strong>'Limitar downloads'</strong>. Coloque um valor muito alto, como 1000000 (um milhão de KB/s). Por algum motivo técnico do código da Epic, colocar um limite manual forçado muitas vezes "destrava" a velocidade máxima da sua conexão em 2026.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. O Inicializador Limpo (Startup)",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Não deixe ele ligar com o PC:</strong> 
+            <br/><br/>A maior causa de lentidão ao ligar o computador é o Epic Launcher tentando verificar atualizações logo no primeiro segundo do Windows 11. <br/><br/>
+            Vá nas configurações do launcher e desmarque **'Executar na inicialização do computador'**. Só abra a loja quando você REALMENTE for jogar. Isso economizará cerca de 300MB de RAM e vários ciclos de CPU desde o momento do boot.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/limpar-cache-dns-ip-flushdns",
+            title: "Aumentar Velocidade",
+            description: "Melhore sua rede para downloads na Epic."
+        },
+        {
+            href: "/guias/limpar-memoria-ram-windows",
+            title: "Liberar RAM",
+            description: "Dicas para o Windows rodar mais leve."
+        },
+        {
+            href: "/guias/atalhos-produtividade-windows",
+            title: "Atalhos Úteis",
+            description: "Navegue mais rápido pelo Windows 11."
         }
     ];
 
@@ -74,9 +90,10 @@ export default function EpicLagGuide() {
             description={description}
             keywords={keywords}
             estimatedTime="10 min"
-            difficultyLevel="Intermediário"
+            difficultyLevel="Fácil"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

@@ -1,91 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Atalhos de Teclado Essenciais para Produtividade no Windows";
-const description = "Domine o Windows com atalhos de teclado que economizam horas de trabalho. Guia completo para usuários básicos e avançados, incluindo gerenciamento de janelas e desktops virtuais.";
-const keywords = ["atalhos windows","produtividade","win key","alt tab","atalhos navegador"];
+const title = "Atalhos do Windows: Como navegar no sistema sem o mouse";
+const description = "Domine o Windows 11 com os atalhos de teclado mais úteis para produtividade. Aprenda a gerenciar janelas, áreas de trabalho e ferramentas ocultas em 2026.";
+const keywords = [
+  'melhores atalhos windows 11 produtividade 2026',
+  'como usar atalhos de janelas windows snap layout',
+  'atalhos teclado windows para abrir gerenciador de tarefas',
+  'alternar entre area de trabalho virtual atalho',
+  'comando de atalho para tirar print da tela windows'
+];
 
 export const metadata: Metadata = createGuideMetadata('atalhos-produtividade-windows', title, description, keywords);
 
-export default function GuidePage() {
+export default function WindowsShortcutsGuide() {
+  const summaryTable = [
+    { label: "Mudar de Janela", value: "Alt + Tab" },
+    { label: "Abrir Explorer", value: "Win + E" },
+    { label: "Bloquear PC", value: "Win + L" },
+    { label: "Captura de Tela", value: "Win + Shift + S" }
+  ];
+
   const contentSections = [
-
     {
-      title: "Atalhos de Gerenciamento de Janelas",
+      title: "O Teclado é mais rápido que o Mouse",
       content: `
-        <p class="mb-4 text-gray-300">O gerenciamento eficiente de janelas é a base da produtividade. Pare de arrastar janelas com o mouse e comece a usar o teclado.</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-[#1E1E22] p-4 rounded-lg border-l-4 border-[#31A8FF]">
-              <h4 class="text-white font-bold mb-2">Snap Layouts</h4>
-              <ul class="space-y-2 text-sm text-gray-400">
-                <li><strong class="text-[#31A8FF]">Win + ← / →</strong>: Fixar janela na metade esquerda ou direita.</li>
-                <li><strong class="text-[#31A8FF]">Win + ↑ / ↓</strong>: Maximizar ou minimizar janela.</li>
-                <li><strong class="text-[#31A8FF]">Win + Z</strong>: Abrir menu de layouts de encaixe (Windows 11).</li>
-              </ul>
-            </div>
-            <div class="bg-[#1E1E22] p-4 rounded-lg border-l-4 border-[#8B31FF]">
-              <h4 class="text-white font-bold mb-2">Desktops Virtuais</h4>
-              <ul class="space-y-2 text-sm text-gray-400">
-                <li><strong class="text-[#8B31FF]">Win + Tab</strong>: Visão de Tarefas (Timeline).</li>
-                <li><strong class="text-[#8B31FF]">Win + Ctrl + D</strong>: Criar novo desktop virtual.</li>
-                <li><strong class="text-[#8B31FF]">Win + Ctrl + ← / →</strong>: Alternar entre desktops.</li>
-              </ul>
-            </div>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          No Windows 11, a Microsoft adicionou dezenas de novos atalhos para facilitar a vida de quem trabalha com muitas janelas abertas. Usar a tecla <strong>Windows (Win)</strong> em combinação com outras teclas pode transformar ações que levariam segundos de "caça aos ícones" em algo instantâneo.
+        </p>
+      `
     },
-
     {
-      title: "Navegação e Sistema",
+      title: "1. Organização de Janelas (Snap Layouts)",
       content: `
-        <div class="prose prose-invert max-w-none">
-            <p>Atalhos que controlam o sistema operacional e a exploração de arquivos.</p>
-            <table class="w-full text-left text-sm text-gray-400 border-collapse">
-              <thead class="bg-[#171313] text-gray-200">
-                <tr><th class="p-2 border border-gray-700">Atalho</th><th class="p-2 border border-gray-700">Função</th></tr>
-              </thead>
-              <tbody>
-                <tr><td class="p-2 border border-gray-700 font-mono text-[#31A8FF]">Win + E</td><td class="p-2 border border-gray-700">Abrir Explorador de Arquivos</td></tr>
-                <tr><td class="p-2 border border-gray-700 font-mono text-[#31A8FF]">Win + X</td><td class="p-2 border border-gray-700">Menu Link Rápido (Menu Iniciar 'secreto')</td></tr>
-                <tr><td class="p-2 border border-gray-700 font-mono text-[#31A8FF]">Win + L</td><td class="p-2 border border-gray-700">Bloquear o computador instantaneamente</td></tr>
-                <tr><td class="p-2 border border-gray-700 font-mono text-[#31A8FF]">Win + V</td><td class="p-2 border border-gray-700">Histórico da Área de Transferência (Clipboard)</td></tr>
-                <tr><td class="p-2 border border-gray-700 font-mono text-[#31A8FF]">Win + Shift + S</td><td class="p-2 border border-gray-700">Captura de Tela (Snipping Tool)</td></tr>
-              </tbody>
-            </table>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">Pare de redimensionar janelas manualmente:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Win + Seta para Esquerda/Direita:</strong> "Gruda" a janela em metade da tela.</li>
+            <li><strong>Win + Z:</strong> Abre o menu de layouts de encaixe (exclusivo Windows 11).</li>
+            <li><strong>Win + D:</strong> Minimiza tudo e mostra a área de trabalho. Aperte novamente para voltar tudo como estava.</li>
+            <li><strong>Win + M:</strong> Minimiza todas as janelas (diferente do Win+D, ele não 'restaura' ao apertar de novo).</li>
+        </ul >
+      `
     },
-
     {
-      title: "Dica Pro: Histórico da Área de Transferência",
+      title: "2. Ferramentas Indispensáveis",
       content: `
-        <div class="bg-gradient-to-r from-[#171313] to-[#1E1E22] p-6 rounded-xl border border-yellow-500/30">
-            <h3 class="text-yellow-400 font-bold mb-3 flex items-center gap-2">🚀 Recurso Subestimado</h3>
-            <p class="text-gray-300 mb-4">Muitos usuários ignoram o <strong>Win + V</strong>. Ao ativá-lo, você pode copiar vários itens (textos, imagens) sequencialmente e depois colar qualquer um deles escolhendo na lista. Isso elimina a necessidade de alternar janelas repetidamente para copiar e colar.</p>
-            <p class="text-sm text-gray-500">Nota: Requer ativação na primeira vez que você pressiona o atalho.</p>
-          </div>
-      `,
-      subsections: []
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Poupe Cliques:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Win + V:</strong> Abre o <strong>Histórico da Área de Transferência</strong>. Permite escolher entre os últimos 20 itens que você copiou (textos ou fotos). <br/>
+                - <strong>Win + . (ponto):</strong> Abre o seletor de Emojis, GIFs e Símbolos matemáticos. <br/>
+                - <strong>Ctrl + Shift + Esc:</strong> Abre o Gerenciador de Tarefas direto, sem passar pela tela azul do 'Ctrl+Alt+Del'. <br/>
+                - <strong>Win + I:</strong> Abre as Configurações do Windows.
+            </p>
+        </div>
+      `
+    },
+    {
+      title: "3. Áreas de Trabalho Virtuais",
+      content: `
+        <p class="mb-4 text-gray-300">
+            Quer separar o trabalho dos jogos sem fechar nada? 
+            <br/>Aperte <strong>Win + Tab</strong> para ver todas as áreas de trabalho. Use <strong>Ctrl + Win + D</strong> para criar uma nova e <strong>Ctrl + Win + Setas</strong> para alternar entre elas. É como ter dois ou três monitores em um só.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
+      href: "/guias/atalhos-navegador-produtividade",
+      title: "Atalhos Navegador",
+      description: "Combine com os atalhos do Windows."
+    },
+    {
+      href: "/guias/grava%C3%A7%C3%A3o-tela-windows-nativa-dicas",
+      title: "Gravar Tela",
+      description: "Atalhos para capturar vídeos."
+    },
+    {
       href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Dicas para deixar seu PC mais rápido."
-    },
-    {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados."
-    },
-    {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Cuidados essenciais com o hardware."
+      title: "Otimizar Sistema",
+      description: "Melhore a resposta do sistema aos comandos."
     }
   ];
 
@@ -94,9 +90,10 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="15-20 min"
+      estimatedTime="15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

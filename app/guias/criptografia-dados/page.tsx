@@ -1,216 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Criptografia de Dados Pessoais";
-const description = "Aprenda a criptografar seus dados pessoais para proteção máxima contra vazamentos e acessos não autorizados. Técnicas profissionais para Windows, macOS e Linux.";
+const title = "Criptografia de Dados: Como Proteger seus Arquivos em 2026";
+const description = "Quer manter seus documentos privados a salvo de olhares curiosos? Aprenda as melhores ferramentas de criptografia para Windows 11 em 2026.";
 const keywords = [
-  "criptografia de dados",
-  "proteção de arquivos",
-  "encryptar documentos",
-  "segurança de dados pessoais",
-  "veracrypt tutorial",
-  "bitlocker configuração"
+  'como criptografar arquivos e pastas windows 11 2026',
+  'melhores programas de criptografia gratuita tutorial',
+  'veracrypt tutorial passo a passo 2026 guia',
+  'criptografar pendrive com senha tutorial completo',
+  'proteger documentos sensiveis no pc guia 2026'
 ];
 
 export const metadata: Metadata = createGuideMetadata('criptografia-dados', title, description, keywords);
 
-export default function CriptografiaDadosGuide() {
+export default function EncryptionGuide() {
+  const summaryTable = [
+    { label: "Nível Básico", value: "Criptografia Diferencial do Windows (EFS)" },
+    { label: "Nível Médio", value: "BitLocker (Versões Pro do Windows)" },
+    { label: "Nível Avançado", value: "VeraCrypt (Open Source / Máxima Segurança)" },
+    { label: "Dificuldade", value: "Médio" }
+  ];
+
   const contentSections = [
     {
-      title: "Fundamentos da Criptografia de Dados",
+      title: "Privacidade na Era Digital de 2026",
       content: `
-        <p class="mb-4">A criptografia é o processo de codificar informações de forma que apenas pessoas autorizadas possam acessá-las. 
-        No contexto de dados pessoais, isso significa transformar seus arquivos em formato ilegível sem a chave de decodificação correta.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Tipos de Criptografia</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Criptografia Simétrica (mesma chave)</li>
-              <li>✓ Criptografia Assimétrica (chaves pública/privada)</li>
-              <li>✓ Criptografia Híbrida (combinação)</li>
-            </ul>
-          </div>
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Níveis de Proteção</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔒 Nível Básico: Senhas simples</li>
-              <li>🔐 Nível Intermediário: Criptografia de arquivos</li>
-              <li>🛡️ Nível Avançado: Criptografia de disco completo</li>
-            </ul>
-          </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, salvar seus arquivos sem proteção é um risco enorme. Se o seu notebook for roubado, quem estiver com ele poderá acessar suas fotos, senhas salvas em navegadores e documentos bancários bastando apenas conectar o seu HD em outro computador. A **criptografia** transforma seus dados em um código ilegível que só pode ser decifrado por quem tiver a senha mestra.
+        </p>
+      `
+    },
+    {
+      title: "1. VeraCrypt: O sucessor do TrueCrypt",
+      content: `
+        <p class="mb-4 text-gray-300">A ferramenta preferida de especialistas em 2026:</p>
+        <p class="text-sm text-gray-300">
+            O <strong>VeraCrypt</strong> é um software de código aberto que permite criar "contêineres" criptografados. Imagine um arquivo que, quando aberto com o VeraCrypt e a senha correta, aparece no Windows como um novo disco (ex: Disco Z:). <br/><br/>
+            - <strong>Vantagem:</strong> É imune a acessos até de agências de inteligência se a senha for forte. <br/>
+            - <strong>Uso no Pendrive:</strong> Você pode criptografar um pendrive inteiro, garantindo que se ele for perdido, ninguém verá o conteúdo.
+        </p>
+      `
+    },
+    {
+      title: "2. Criptografia Nativa do Windows (EFS)",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Proteção Rápida de Pastas:</h4>
+            <p class="text-sm text-gray-300">
+                1. Clique com o botão direito numa pasta e vá em **Propriedades**. <br/>
+                2. Clique em **Avançados**. <br/>
+                3. Marque a caixa <strong>'Criptografar o conteúdo para proteger os dados'</strong>. <br/><br/>
+                Diferente do BitLocker, isso protege apenas os arquivos selecionados. **Cuidado:** Se você formatar o Windows e não tiver feito backup da sua chave de segurança do EFS, você nunca mais conseguirá abrir esses arquivos.
+            </p>
         </div>
-        
-        <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
-          <p class="text-white font-semibold mb-2">💡 Importante:</p>
-          <p class="text-gray-300">Nunca armazene a chave de criptografia junto com os dados criptografados. 
-          Use gerenciadores de senhas seguros e considere backup offline das chaves críticas.</p>
-        </div>
-      `,
-      subsections: [
-        {
-          subtitle: "Algoritmos de Criptografia Recomendados",
-          content: `
-            <p class="mb-3">Os algoritmos mais seguros e amplamente utilizados atualmente:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li><strong class="text-white">AES-256</strong>: Padrão militar, usado pelo governo dos EUA</li>
-              <li><strong class="text-white">Twofish</strong>: Sucessor do Blowfish, muito seguro</li>
-              <li><strong class="text-white">ChaCha20</strong>: Moderno e eficiente em processadores móveis</li>
-              <li><strong class="text-white">RSA-4096</strong>: Para criptografia assimétrica e assinaturas digitais</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "Quando Aplicar Criptografia",
-          content: `
-            <p class="mb-3">Cenários que exigem criptografia obrigatória:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Documentos financeiros e fiscais</li>
-              <li>Dados médicos e de saúde</li>
-              <li>Informações de clientes e fornecedores</li>
-              <li>Projetos empresariais confidenciais</li>
-              <li>Fotos e vídeos pessoais sensíveis</li>
-            </ul>
-          `
-        }
-      ]
+      `
     },
     {
-      title: "Criptografia de Arquivos Individuais",
+      title: "3. Boas Práticas de Senhas em 2026",
       content: `
-        <p class="mb-4">Ideal para proteger documentos específicos sem impactar o desempenho do sistema. 
-        Perfeito para arquivos sensíveis que você acessa ocasionalmente.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "7-Zip com Criptografia AES-256",
-          content: `
-            <p class="mb-3">Método gratuito e eficaz para compactação e criptografia:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Baixe e instale 7-Zip (7-zip.org)</li>
-              <li>Selecione os arquivos a serem criptografados</li>
-              <li>Clique com botão direito &gt; 7-Zip &gt; Adicionar para arquivo</li>
-              <li>Escolha formato .7z (melhor compressão e segurança)</li>
-              <li>Na seção 'Criptografia', selecione AES-256</li>
-              <li>Digite e confirme uma senha forte</li>
-              <li>Clique OK para criar o arquivo criptografado</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "VeraCrypt para Containers Criptografados",
-          content: `
-            <p class="mb-3">Cria volumes virtuais criptografados que funcionam como unidades separadas:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Faça download do VeraCrypt (veracrypt.fr)</li>
-              <li>Crie um container de tamanho adequado (ex: 10GB)</li>
-              <li>Escolha algoritmo AES-Twofish-Serpent (cascade)</li>
-              <li>Defina senha mestra forte (mínimo 20 caracteres)</li>
-              <li>Monte o volume como uma nova unidade no Windows Explorer</li>
-              <li>Use normalmente como qualquer outra pasta</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Criptografia de Disco Completo",
-      content: `
-        <p class="mb-4">Protege todo o conteúdo do disco rígido, incluindo sistema operacional. 
-        Ideal para laptops, dispositivos móveis e computadores de uso pessoal.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "BitLocker (Windows Pro/Enterprise)",
-          content: `
-            <p class="mb-3">Solução nativa da Microsoft com integração profunda:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Verifique se seu Windows suporta BitLocker (Pro ou Enterprise)</li>
-              <li>Vá em Painel de Controle &gt; Sistema e Segurança &gt; BitLocker</li>
-              <li>Selecione a unidade a ser criptografada</li>
-              <li>Escolha método de desbloqueio (senha, smart card, TPM)</li>
-              <li>Configure backup da chave de recuperação</li>
-              <li>Inicie a criptografia (pode levar horas dependendo do tamanho)</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "FileVault (macOS)",
-          content: `
-            <p class="mb-3">Criptografia nativa do macOS com desempenho otimizado:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Acesse Preferências do Sistema &gt; Segurança e Privacidade</li>
-              <li>Clique na aba FileVault</li>
-              <li>Clique em Ativar FileVault</li>
-              <li>Escolha método de desbloqueio (conta iCloud ou chave de recuperação)</li>
-              <li>Siga as instruções para reiniciar e completar a criptografia</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Gerenciamento de Chaves e Senhas",
-      content: `
-        <p class="mb-4">A segurança da criptografia depende tanto do algoritmo quanto do gerenciamento adequado das chaves de acesso.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Boas Práticas para Senhas",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">✓ FAÇA</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Use mínimo 16 caracteres</li>
-                  <li>Combine maiúsculas, minúsculas, números e símbolos</li>
-                  <li>Use frases memoráveis (passphrases)</li>
-                  <li>Armazene em gerenciador de senhas</li>
-                </ul>
-              </div>
-              <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">✗ NÃO FAÇA</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Não reutilize senhas</li>
-                  <li>Não use informações pessoais óbvias</li>
-                  <li>Não compartilhe senhas por email/instant messaging</li>
-                  <li>Não anote senhas em papel visível</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Backup de Chaves de Recuperação",
-          content: `
-            <p class="mb-3">Sempre faça backup seguro das chaves de recuperação:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Imprima chave de recuperação e guarde em cofre físico</li>
-              <li>Armazene cópia em conta de armazenamento seguro (LastPass, 1Password)</li>
-              <li>Compartilhe com pessoa de confiança (herdeiro digital)</li>
-              <li>Use serviço de depósito digital notarial se disponível</li>
-            </ul>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            <strong>O elo mais fraco:</strong> 
+            <br/><br/>A criptografia mais forte do mundo não serve de nada se a sua senha for "123456". Em 2026, com o uso de IA para quebrar senhas (brute force), use frases longas no lugar de palavras curtas. <br/><br/>
+            Exemplo: <i>"Meu_Gato_Preto_Comeu_2_Peixes_Em_2026"</i> é infinitamente mais difícil de quebrar do que uma senha complexa curta como <i>"G@to2026!"</i>.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      href: "/guias/seguranca-senhas-gerenciadores",
+      title: "Gerenciar Senhas",
+      description: "Armazene suas chaves de criptografia com segurança."
     },
     {
-      href: "/guias/firewall-configuracao",
-      title: "Configuração de Firewall",
-      description: "Proteção de rede avançada para Windows"
+      href: "/guias/bitlocker-desempenho-jogos-ssd",
+      title: "Impacto do BitLocker",
+      description: "Entenda o custo de performance da criptografia."
     },
     {
-      href: "/guias/backup-dados",
-      title: "Backup de Dados",
-      description: "Estratégias completas de proteção de informações"
+      href: "/guias/autenticacao-dois-fatores",
+      title: "Proteção 2FA",
+      description: "Adicione mais camadas às suas contas."
     }
   ];
 
@@ -219,9 +90,10 @@ export default function CriptografiaDadosGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="75 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="20 min"
+      difficultyLevel="Médio"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

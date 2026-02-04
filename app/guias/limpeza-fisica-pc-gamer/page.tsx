@@ -1,41 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Limpar PC Gamer Corretamente (Sem estragar) - Voltris";
-const description = "Poeira causa aquecimento e lentidão. Aprenda a limpar ventoinhas, trocar pasta térmica e usar ar comprimido. O que NÃO usar (secador, aspirador).";
-const keywords = ['limpar pc gamer', 'limpeza computador', 'trocar pasta termica', 'poeira pc aquecendo', 'latas ar comprimido'];
+const title = "Como Limpar seu PC Gamer Corretamente (Guia de Limpeza Física)";
+const description = "Seu PC está cheio de poeira? Aprenda a limpar as ventoinhas, a placa de vídeo e o gabinete com segurança, usando as ferramentas certas para não queimar nada.";
+const keywords = [
+    'como limpar pc gamer por dentro 2026',
+    'ferramentas para limpeza de pc gamer profissional',
+    'como limpar placa de vídeo por dentro poeira',
+    'limpeza de poeira pc gamer ar comprimido',
+    'pc esquentando muito por causa de poeira fix'
+];
 
 export const metadata: Metadata = createGuideMetadata('limpeza-fisica-pc-gamer', title, description, keywords);
 
-export default function CleaningGuide() {
+export default function PhysicalCleaningGuide() {
     const summaryTable = [
+        { label: "Ferramenta Vital", value: "Pincel Antiestático ou Ar Comprimido" },
+        { label: "O que NÃO usar", value: "Secador de cabelo quente ou pano úmido" },
         { label: "Frequência", value: "A cada 6 meses" },
-        { label: "Material", value: "Pincel ESD, Ar Comprimido" },
+        { label: "Dificuldade", value: "Média" }
     ];
 
     const contentSections = [
         {
-            title: "O que NÃO fazer (Erros Fatais)",
+            title: "A Poeira: O inimigo silencioso do FPS",
             content: `
-        <ul class="space-y-3 text-red-300 list-disc list-inside ml-4 bg-red-900/20 p-4 rounded border border-red-500/30">
-            <li><strong>NUNCA use aspirador de pó comum:</strong> Eles geram eletricidade estática na ponta do bocal que pode queimar a placa-mãe instantaneamente apenas ao chegar perto.</li>
-            <li><strong>NUNCA sopre com a boca:</strong> Saliva é ácida e condutiva. Uma gota microscópica na placa pode oxidar circuitos em semanas.</li>
-            <li><strong>NUNCA gire as ventoinhas com ar forte:</strong> Se elas girarem muito rápido desligadas, elas funcionam como geradores e mandam voltagem reversa para a placa-mãe. Segure-as com o dedo.</li>
-        </ul>
-      `,
-            subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          A poeira atua como um "cobertor" térmico. Ela se acumula entre as aletas dos dissipadores de calor do processador e da placa de vídeo, impedindo que o ar fresco passe. Isso faz com que as temperaturas subam e o PC reduza o desempenho. Além disso, a poeira pode absorver umidade e causar **curto-circuito** em componentes sensíveis.
+        </p>
+      `
         },
         {
-            title: "O Método Correto",
+            title: "1. Preparação e Segurança",
             content: `
-        <p class="text-gray-300 mb-4">Desligue a fonte da tomada e aperte o botão Power por 10 segundos para descarregar capacitores.</p>
-        <ol class="space-y-4 text-gray-300 list-decimal list-inside ml-4">
-            <li>Use um pincel macio (de preferência antiestático) para soltar a poeira das ventoinhas e dissipadores.</li>
-            <li>Use uma lata de ar comprimido ou soprador elétrico específico para empurrar a poeira para fora do gabinete.</li>
-            <li>Limpe os filtros de poeira do gabinete com água e sabão (seque bem antes de colocar).</li>
-            <li>Use Álcool Isopropílico 99% (não álcool de cozinha) para limpar contatos se necessário.</li>
+        <p class="mb-4 text-gray-300">Antes de abrir o gabinete, siga este protocolo:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Desligue o PC e <strong>remova o cabo da tomada</strong>.</li>
+            <li>Segure o botão Power por 5 segundos para descarregar os capacitores da fonte.</li>
+            <li>Toque em algo metálico aterrado (como a parte traseira sem pintura do gabinete) para descarregar sua eletricidade estática.</li>
+            <li>Coloque o gabinete em uma superfície seca e bem iluminada.</li>
         </ol>
       `
+        },
+        {
+            title: "2. Limpando as Ventoinhas (Fans)",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Dica de Ouro:</h4>
+            <p class="text-sm text-gray-300">
+                Nunca deixe uma ventoinha "girar loucamente" ao usar ar comprimido ou soprador. Isso pode gerar energia elétrica (efeito dínamo) e queimar a placa-mãe. <strong>Segure a hélice com o dedo</strong> enquanto limpa as pás com o pincel ou ar.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. O que usar para uma limpeza profunda?",
+            content: `
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Álcool Isopropílico (99%):</strong> Único líquido permitido para limpar contatos de memória RAM e placa de vídeo. Ele evapora instantaneamente e não contém água.</li>
+            <li><strong>Limpa Contatos:</strong> Excelente para tirar oxidação dos slots da placa-mãe.</li>
+            <li><strong>Pincel de Cerdas Macias:</strong> Use para tirar a poeira "grossa" dos filtros de ar na frente e embaixo do gabinete.</li>
+        </ul >
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/importancia-pasta-termica-pc",
+            title: "Pasta Térmica",
+            description: "Aproveite a limpeza para trocar a pasta."
+        },
+        {
+            href: "/guias/gabinete-gamer-airflow-importancia",
+            title: "Airflow Gabinete",
+            description: "Mantenha o ar circulando corretamente."
+        },
+        {
+            href: "/guias/cable-management-organizacao-cabos-pc",
+            title: "Cable Management",
+            description: "Organize os cabos para facilitar a próxima limpeza."
         }
     ];
 
@@ -44,10 +88,11 @@ export default function CleaningGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="40 minutos"
-            difficultyLevel="Iniciante"
+            estimatedTime="45 min"
+            difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

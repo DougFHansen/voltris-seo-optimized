@@ -1,76 +1,88 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Regedit e CMD para Reduzir Ping: TcpAckFrequency e TCPNoDelay (Guia 2026)";
-const description = "Aprenda a editar o Registro do Windows para desativar o algoritmo de Nagle, forçando o envio instantâneo de pacotes de jogos.";
-const keywords = ['reduzir ping regedit', 'tcpackfrequency valor', 'tcpnodelay regedit', 'desativar algoritmo nagle', 'cmd diminuir ping', 'otimizar rede windows 11'];
+const title = "Ajustes de Registro (Regedit) para Reduzir o Ping (2026)";
+const description = "Quer o menor atraso possível? Aprenda a modificar o Registro do Windows e usar comandos CMD para otimizar o TCP/IP e ganhar vantagem nos jogos em 2026.";
+const keywords = [
+    'reduzir ping regedit windows 11 tutorial 2026',
+    'otimizar tcp noakcl regedit games guia',
+    'comandos cmd para melhorar internet jogos 2026',
+    'desativar algoritimo de nagle windows 11 tutorial',
+    'ajuste de rede avançado regedit valorant cs2'
+];
 
 export const metadata: Metadata = createGuideMetadata('reduzir-ping-regedit-cmd-jogos', title, description, keywords);
 
-export default function RegeditGuide() {
+export default function AdvancedPingFixGuide() {
     const summaryTable = [
-        { label: "Risco", value: "Médio" },
-        { label: "Efeito", value: "Reduz Jitter" },
-        { label: "Chave 1", value: "TcpAckFrequency" },
-        { label: "Chave 2", value: "TCPNoDelay" }
+        { label: "Ajuste Principal", value: "TCPNoDelay (Algoritmo de Nagle)" },
+        { label: "Comando Vital", value: "netsh int tcp set global autotuninglevel" },
+        { label: "Ferramenta Pro", value: "TCP Optimizer" },
+        { label: "Dificuldade", value: "Alta" }
     ];
 
     const contentSections = [
         {
-            title: "O Que é o Algoritmo de Nagle?",
+            title: "Otimização no Nível do Protocolo",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O Windows foi feito para transferir arquivos grandes. Por padrão, ele espera acumular um montinho de dados pequenos antes de enviá-los de uma vez (para economizar banda). Isso é o <strong>Algoritmo de Nagle</strong>.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O Windows 11 não vem configurado para jogadores por padrão. Ele usa o **Algoritmo de Nagle**, que segura pequenos pacotes de dados para enviá-los em um "lote" maior, economizando largura de banda. Em 2026, isso é péssimo para jogos, pois causa um pequeno atraso (delay) em cada ação que você faz. Ao mexer no registro, forçamos o Windows a enviar cada pacote no exato momento em que ele é gerado.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Para jogos, isso é terrível. Cada clique do mouse é um dado pequeno. Se o Windows "esperar juntar", você tem lag. Vamos desligar isso.
-        </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Passo 1: Descobrir seu IP",
+            title: "1. Desativando o Algoritmo de Nagle (Regedit)",
             content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4 mb-4">
-            <li>Abra o CMD.</li>
-            <li>Digite <code>ipconfig</code>.</li>
-            <li>Anote o "Endereço IPv4" (Ex: 192.168.0.15) e o "ID da Interface" não aparece aqui, vamos achar no Regedit.</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Passo 2: O Editor de Registro",
-            content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Win + R, digite <code>regedit</code>.</li>
-            <li>Navegue até: <br/><code class="text-green-400 text-xs">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces</code></li>
-            <li>Você verá várias pastas com nomes estranhos (Ex: <strong>{7A5...}</strong>).</li>
-            <li>Clique uma por uma até encontrar aquela que tem o seu <strong>DhcpIPAddress</strong> igual ao IP que você anotou no passo 1. Essa é a sua placa de rede ativa.</li>
+        <p class="mb-4 text-gray-300">Este é o ajuste mais famoso para MMORPGs e jogos competitivos:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Aperte <strong>Win + R</strong> e digite <code>regedit</code>.</li>
+            <li>Vá em: <code>HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces</code>.</li>
+            <li>Encontre a pasta que contém o seu endereço de IP (geralmente a com mais arquivos).</li>
+            <li>Crie dois valores DWORD (32 bits) chamados: <strong>TcpAckFrequency</strong> e <strong>TCPNoDelay</strong>.</li>
+            <li>Mude o valor de ambos para <strong>1</strong>. Reinicie o PC.</li>
         </ol>
       `
         },
         {
-            title: "Passo 3: Criando as Chaves Mágicas",
+            title: "2. Comandos CMD: Otimizando o TCP/IP",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Poder do Prompt:</h4>
+            <p class="text-sm text-gray-300">
+                Abra o CMD como Administrador e digite: <br/><br/>
+                - <code>netsh int tcp set global autotuninglevel=disabled</code> (Evita que o Windows tente gerenciar janelas de recebimento dinâmico). <br/>
+                - <code>netsh int tcp set global chimney=enabled</code> (Descarrega o processamento do TCP para a placa de rede). <br/>
+                - <code>netsh int tcp set global ecncapability=disabled</code> (Reduz latência em roteadores de 2026 que não suportam ECN).
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Aviso de Segurança",
             content: `
         <p class="mb-4 text-gray-300">
-            Dentro dessa pasta da sua interface:
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-4 ml-4">
-            <li>Clique com botão direito no vazio > Novo > <strong>Valor DWORD (32 bits)</strong>.
-                <br/>Nomeie: <strong class="text-yellow-400">TcpAckFrequency</strong>.
-                <br/>Valor: <strong>1</strong> (Hexadecimal).
-            </li>
-            <li>Crie outro DWORD.
-                <br/>Nomeie: <strong class="text-yellow-400">TCPNoDelay</strong>.
-                <br/>Valor: <strong>1</strong>.
-            </li>
-            <li>Reinicie o PC.</li>
-        </ol>
-        <p class="text-white mt-4 font-bold bg-green-900/20 p-4 rounded">
-            Resultado: O Windows agora envia CADA pacote individualmente assim que ele é criado (ACK 1). Isso reduz a latência de envio em 5ms a 10ms.
+            <strong>Cuidado:</strong> Mexer no registro pode causar instabilidades se feito incorretamente. 
+            <br/><br/>Antes de aplicar esses ajustes, crie sempre um **Ponto de Restauração**. Embora esses comandos melhorem o ping, em algumas conexões de fibra óptica de baixa qualidade, eles podem causar instabilidade no download. Se sentir que sua velocidade de download caiu muito, volte as configurações para o padrão (Autotuninglevel=normal).
         </p>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/criar-ponto-restauracao-windows",
+            title: "Criar Restauração",
+            description: "Segurança antes de mexer no Regedit."
+        },
+        {
+            href: "/guias/reduzir-ping-jogos-online",
+            title: "Guia de Ping",
+            description: "Dicas de hardware e cabos."
+        },
+        {
+            href: "/guias/melhor-dns-jogos-2026",
+            title: "Melhores DNS",
+            description: "Acompanhe os ajustes de registro com o DNS certo."
         }
     ];
 
@@ -79,10 +91,11 @@ export default function RegeditGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
+            estimatedTime="30 min"
             difficultyLevel="Avançado"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

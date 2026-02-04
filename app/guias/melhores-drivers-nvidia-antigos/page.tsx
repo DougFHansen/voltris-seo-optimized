@@ -1,70 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Melhores Drivers NVIDIA Antigos para FPS e Estabilidade (Lista 2026)";
-const description = "Driver novo nem sempre é melhor. Conheça as versões lendárias (537.58, 457.30) que a comunidade competitiva usa para ter menor latência no CS2 e Valorant.";
-const keywords = ['melhor driver nvidia cs2', 'driver nvidia 537.58', 'driver nvidia mais leve', 'latencia driver nvidia', 'fps drop driver novo', 'reverter driver nvidia'];
+const title = "Drivers Antigos da NVIDIA: Quando vale a pena fazer o Rollback?";
+const description = "Seu FPS caiu depois de atualizar o driver da NVIDIA? Descubra quais são as versões mais estáveis e aprenda a voltar para um driver antigo com segurança em 2026.";
+const keywords = [
+    'melhores drivers nvidia para performance 2026',
+    'como voltar driver nvidia anterior rollback tutorial',
+    'driver nvidia causando queda de fps como resolver',
+    'versão estável driver geforce para rtx e gtx 2026',
+    'download drivers nvidia antigos oficial guia'
+];
 
 export const metadata: Metadata = createGuideMetadata('melhores-drivers-nvidia-antigos', title, description, keywords);
 
-export default function DriverGuide() {
+export default function NvidiaRollbackGuide() {
     const summaryTable = [
-        { label: "O Rei Atual", value: "537.58" },
-        { label: "O Clássico", value: "457.30" },
-        { label: "RTX 4000+", value: "Mais Novo" },
-        { label: "GTX 1000", value: "Antigos" }
+        { label: "Motivo principal", value: "Bugs em versões 'Game Ready' novas" },
+        { label: "Onde baixar", value: "NVIDIA Advanced Driver Search" },
+        { label: "Ferramenta Útil", value: "NVCleaner (Remove telemetria)" },
+        { label: "Dificuldade", value: "Intermediária" }
     ];
 
     const contentSections = [
         {
-            title: "Por que usar drivers antigos?",
+            title: "O Mito do 'Sempre Atualizado'",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          A cada atualização, a NVIDIA adiciona suporte para novos jogos AAA e novas placas. Isso aumenta o tamanho do driver ("Bloatware"). Para quem joga apenas CS2 ou Valorant em uma placa antiga (GTX 1060, 1650), drivers novos muitas vezes trazem stutters.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, a NVIDIA lança drivers quase semanalmente. Embora tragam suporte para os jogos mais novos, muitos desses drivers podem introduzir bugs em títulos que você já joga (como stuttering no Warzone ou crashes no LoL). Às vezes, a versão lançada há 3 meses é muito mais estável para a sua placa específica do que a versão lançada hoje. O segredo da performance constante é o **equilíbrio**, não a novidade.
         </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "O Hall da Fama dos Drivers",
+            title: "1. Como identificar um Driver Ruim?",
             content: `
-        <div class="space-y-4">
-            <div class="bg-blue-900/20 p-4 rounded border-l-4 border-blue-500">
-                <strong class="text-white block text-lg">Versão 537.58 (Lançado: Out/2023)</strong>
-                <p class="text-gray-300 text-sm">
-                    Considerado pela comunidade o driver <strong>mais estável da era moderna</strong>. Funciona perfeitamente em RTX 2000, 3000 e 4000. Tem input lag extremamente baixo e quase zero stutters no CS2.
-                </p>
-            </div>
-             <div class="bg-yellow-900/20 p-4 rounded border-l-4 border-yellow-500">
-                <strong class="text-white block text-lg">Versão 457.30 (Lançado: 2020)</strong>
-                <p class="text-gray-300 text-sm">
-                    Lendário para a série <strong>GTX 1000 (1050 Ti, 1060)</strong> e 1600. É super leve. Porém, muitos jogos novos (The Finals, COD MW3) podem se recusar a abrir com ele. Use apenas se você só joga eSports antigos.
-                </p>
-            </div>
-            <div class="bg-green-900/20 p-4 rounded border-l-4 border-green-500">
-                <strong class="text-white block text-lg">Versão Mais Recente</strong>
-                <p class="text-gray-300 text-sm">
-                    Use o mais recente APENAS se você joga lançamentos AAA (Cyberpunk, Alan Wake 2) ou tem uma RTX 4070/4080/4090. Placas novas precisam de otimizações novas.
-                </p>
-            </div>
-        </div>
-      `,
-            subsections: []
+        <p class="mb-4 text-gray-300">Fique atento a estes sinais após uma atualização:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Latência DPC alta:</strong> O áudio começa a "estalar" ou picotar do nada.</li>
+            <li><strong>Quedas de FPS (1% Low):</strong> O jogo marca 100 FPS, mas você sente travadinhas constantes.</li>
+            <li><strong>Artefatos Visuais:</strong> Cores piscando ou texturas pretas que não existiam antes.</li>
+        </ul >
+      `
         },
         {
-            title: "Como instalar driver antigo sem bugar tudo?",
+            title: "2. Onde encontrar as pérolas da NVIDIA",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Busca Avançada:</h4>
+            <p class="text-sm text-gray-300">
+                Não use o botão de download comum. Pesquise por <strong>'NVIDIA Advanced Driver Search'</strong>. Lá você terá acesso à lista completa de versões. Em 2026, as versões marcadas como <strong>'Studio Driver'</strong> costumam ser mais testadas e estáveis para quem não quer ser um "betatester" de novas tecnologias problemáticas.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Fazendo o Rollback Profissional",
             content: `
         <p class="mb-4 text-gray-300">
-            Você não pode simplesmente instalar por cima.
+            Para voltar a uma versão antiga sem dar erro:
+            <br/>1. Baixe a versão antiga desejada.
+            <br/>2. Use o <strong>DDU</strong> (Display Driver Uninstaller) para apagar o driver atual em Modo de Segurança.
+            <br/>3. Instale o driver antigo com o PC desconectado da internet.
+            <br/><strong>Dica:</strong> Use o <strong>NVCleaner</strong> durante a instalação para remover o "bloatware" da NVIDIA, como telemetria e o Shield Streaming, economizando processos em segundo plano.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
-            <li>Baixe o driver específico no site "NVIDIA Advanced Driver Search".</li>
-            <li>Baixe o <strong>NVCleanstall</strong> (Software incrível que remove a telemetria do instalador da NVIDIA).</li>
-            <li>Use o NVCleanstall para selecionar o arquivo que você baixou.</li>
-            <li>Marque apenas: "Display Driver" e "PhysX". Desmarque tudo o resto (GeForce Experience, USB-C Driver, Telemetry).</li>
-            <li>Instale.</li>
-        </ol>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/como-usar-ddu-driver-uninstaller",
+            title: "Guia DDU",
+            description: "Aprenda a limpar drivers profundamente."
+        },
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers Oficiais",
+            description: "Dicas sobre as marcas NVIDIA/AMD."
+        },
+        {
+            href: "/guias/micro-stuttering-em-jogos-causas",
+            title: "Micro-stuttering",
+            description: "Entenda por que o driver causa travadas."
         }
     ];
 
@@ -73,10 +89,11 @@ export default function DriverGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Avançado"
+            estimatedTime="25 min"
+            difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

@@ -1,96 +1,83 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "League of Legends: Guia Completo para Corrigir Queda de FPS e Travamento (2026)";
-const description = "Seu LoL está travando nas teamfights? Aprenda a configurar o modo DX9 Legacy, otimizar o Cliente Riot e usar a Reparação Hextech para estabilizar seu FPS.";
-const keywords = ['lol fps drop fix', 'aumentar fps league of legends', 'lol travando teamfight', 'modo dx9 legacy lol', 'cliente lol lento', 'otimizar cliente riot'];
+const title = "League of Legends: Como resolver quedas de FPS e Travadas (2026)";
+const description = "Seu LoL está travando em lutas de equipe (Teamfights)? Aprenda as melhores configurações para ganhar FPS e remover o lag no League of Legends em 2026.";
+const keywords = [
+    'league of legends queda de fps 2026 como resolver',
+    'lol travando na teamfight pc fraco tutorial',
+    'melhores configurações de video lol para fps',
+    'como aumentar fps league of legends notebook gamer 2026',
+    'corrigir erro de lag de entrada lol windows 11'
+];
 
 export const metadata: Metadata = createGuideMetadata('league-of-legends-fps-drop-fix', title, description, keywords);
 
-export default function LoLGuide() {
+export default function LoLPerformanceGuide() {
     const summaryTable = [
-        { label: "Cliente", value: "Modo Leve" },
-        { label: "DX9 Legacy", value: "Ativado" },
-        { label: "Tela", value: "Sem Moldura" },
-        { label: "Sons", value: "Desativados" }
+        { label: "Modo de Janela", value: "Sem Bordas (Borderless) ou Tela Cheia" },
+        { label: "Check de Hardware", value: "Desativar Movimento Relativo (In-game)" },
+        { label: "Sombras", value: "DESATIVADO (Ganho massivo de FPS)" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: Otimização do LoL",
+            title: "O Desafio do LoL em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-            League of Legends deveria rodar em qualquer calculadora, mas o spaghetti code da Riot faz com que PCs gamers sofram quedas de FPS brutais durante teamfights. Vamos resolver isso atacando as duas frentes: O Cliente (Lobby) e o Jogo (In-Game).
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Mesmo em 2026, o **League of Legends** continua sendo um jogo que depende muito de um único núcleo do processador (Single-Core Performance). É comum ver jogadores com placas de vídeo potentes sofrendo com quedas de FPS para menos de 60 durante lutas com muitos efeitos visuais. O segredo para estabilizar o LoL não é apenas baixar tudo para o mínimo, mas sim configurar o Windows para não interromper o processo do jogo.
         </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "1. Otimizando o Cliente Riot (Lobby)",
-            content: `
-        <p class="mb-4 text-gray-300">O cliente do LoL é feito em Chromium (como um navegador web) e consome muita CPU, mesmo quando o jogo já começou.</p>
-        
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Abra o Cliente e faça login.</li>
-            <li>Clique na engrenagem (Configurações) no canto superior direito.</li>
-            <li>Na aba <strong>Geral</strong>, marque:
-                <ul class="list-disc list-inside ml-6 mt-2 text-green-400">
-                    <li>[x] Habilitar modo de Configuração Leve.</li>
-                    <li>[x] Fechar cliente durante as partidas. (Isso é OBRIGATÓRIO para PC fraco. Libera uns 500MB de RAM e 10% de CPU).</li>
-                </ul>
-            </li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "2. Configurações In-Game (Vídeo e Som)",
-            content: `
-        <p class="mb-4 text-gray-300">Dentro de uma partida (use o modo Treino):</p>
-        
-        <h3 class="text-xl text-[#31A8FF] font-bold mt-6 mb-4">2.1 Vídeo</h3>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li><strong>Resolução:</strong> Use a nativa do monitor.</li>
-            <li><strong>Modo de Tela:</strong> <span class="text-yellow-400">Sem Moldura (Borderless)</span> costuma ser mais estável no LoL para Alt-Tab, mas <span class="text-green-400">Tela Cheia</span> dá mais FPS puro. Teste os dois.</li>
-            <li><strong>Anti-Aliasing:</strong> Desligado.</li>
-            <li><strong>Aguardar Sincronização Vertical:</strong> Desligado.</li>
-            <li><strong>Limite de FPS:</strong> 144 (Se seu monitor for 144Hz) ou Ilimitado. Alguns PCs antigos rodam melhor travado em 60 ou 80 FPS para evitar superaquecimento.</li>
-        </ul>
-
-        <h3 class="text-xl text-[#31A8FF] font-bold mt-6 mb-4">2.2 Áudio (Dica Secreta)</h3>
-        <p class="text-gray-300 mb-2">Parece mentira, mas o motor de áudio do LoL causa lag.</p>
-        <p class="text-gray-300">Vá em Áudio e clique em <strong>"Desabilitar todos os sons"</strong> se você estiver realmente desesperado por performance. Se não, pelo menos desabilite a <span class="text-yellow-400">Música</span> e o <span class="text-yellow-400">Ambiente</span>.</p>
       `
         },
         {
-            title: "3. O Truque do Modo DX9 Legacy",
+            title: "1. A Configuração 'Mágica' das Sombras",
             content: `
-            <p class="mb-4 text-gray-300">
-                O LoL atualizou para DX11 recentemente, o que causou problemas em placas antigas. Você pode forçar o modo antigo.
-            </p>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
-                <li>Vá na pasta Config do LoL (geralmente <code>C:\\Riot Games\\League of Legends\\Config</code>).</li>
-                <li>Abra o arquivo <strong>game.cfg</strong> com Bloco de Notas.</li>
-                <li>Adicione a seguinte linha na seção <code>[General]</code>:</li>
-            </ol>
-            <code class="block bg-[#121218] p-3 my-4 text-green-400 font-mono text-center">RefererDx9LegacyMode=1</code>
-            <p class="text-gray-300 text-sm">
-                Isso força o jogo a usar o DirectX 9. Se o jogo parar de abrir, apague a linha.
-            </p>
-        `
+        <p class="mb-4 text-gray-300">No League of Legends, as sombras são processadas totalmente pela CPU:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Sombras:</strong> Coloque em <strong>Desativado</strong>. Sim, o jogo perde um pouco de profundidade visual, mas as quedas de FPS em lutas de equipe serão reduzidas em até 40%.</li>
+            <li><strong>Qualidade dos Personagens:</strong> Pode manter no Médio ou Alto, o impacto é baixo.</li>
+            <li><strong>Qualidade dos Efeitos:</strong> Se estiver no Ultra, as skills (habilidades) podem causar travadinhas quando são usadas pela primeira vez na partida. Recomendamos o <strong>Médio</strong>.</li>
+        </ul >
+      `
         },
         {
-            title: "4. Reparação Hextech (Corrigir Arquivos)",
+            title: "2. DirectX 9 de Legado (Dica para PCs Antigos)",
             content: `
-            <p class="mb-4 text-gray-300">
-                A cada atualização, arquivos sobram e causam conflito.
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Compatibilidade:</h4>
+            <p class="text-sm text-gray-300">
+                Se você joga em um PC muito antigo que não suporta bem o DirectX 11, o LoL tem uma opção secreta no cliente (engrenagem) chamada <strong>'Preferir Modo de Legado DX9'</strong>. Isso pode estabilizar o FPS em máquinas de 2015-2018, mas evite usá-lo em PCs modernos de 2026, pois o DX11 é muito mais eficiente em hardware recente.
             </p>
-            <ul class="list-disc list-inside text-gray-300">
-                <li>Baixe a <strong>Ferramenta de Reparo Hextech</strong> oficial da Riot.</li>
-                <li>Marque as opções "Reinstalar Patch" e "Limpar Firewall".</li>
-                <li>Inicie a reparação. Isso resolve 90% dos crashs misteriosos.</li>
-            </ul>
-        `
+        </div>
+      `
+        },
+        {
+            title: "3. Limite de FPS e Input Lag",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Nunca deixe o FPS como "Ilimitado". Se o seu monitor é de 75Hz e seu PC alcança 200 FPS, a CPU está trabalhando dobrado sem necessidade, o que causa calor e eventuais quedas bruscas. 
+            <br/><br/><strong>Dica:</strong> Trave o FPS em um valor estável que seu PC consiga manter sempre (ex: 144 FPS). Isso garante um <strong>Frametime</strong> constante, o que é muito mais importante para a sua memória muscular de cliques do que um número alto que oscila.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/league-of-legends-tela-preta-carregamento",
+            title: "Erro de Tela Preta",
+            description: "Resolva problemas ao entrar na partida."
+        },
+        {
+            href: "/guias/reduzir-ping-jogos-online",
+            title: "Reduzir Ping",
+            description: "Dicas de rede para evitar o 'Lag' no LoL."
+        },
+        {
+            href: "/guias/otimizacao-performance",
+            title: "Performance Windows",
+            description: "Ajuste o Windows para jogos leves."
         }
     ];
 
@@ -103,6 +90,7 @@ export default function LoLGuide() {
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

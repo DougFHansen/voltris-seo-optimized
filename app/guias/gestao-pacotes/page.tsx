@@ -1,192 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Gestão de Pacotes e Dependências";
-const description = "Gerencie bibliotecas, frameworks e dependências de software com npm, pip, chocolatey e outras ferramentas modernas.";
-const keywords = ["gestão pacotes","dependências","npm","pip","chocolatey","package manager"];
+const title = "Gestão de Pacotes no Windows: Como usar o Winget (Passo a Passo)";
+const description = "Cansado de entrar em 10 sites para baixar programas? Aprenda a usar o Winget, o gerenciador de pacotes oficial da Microsoft, para instalar e atualizar tudo via terminal.";
+const keywords = [
+  'como usar winget windows 11 tutorial 2026',
+  'instalar programas pelo terminal windows winget',
+  'atualizar todos os apps de uma vez winget upgrade',
+  'gerenciador de pacotes windows como funciona',
+  'winget vs chocolatey 2026 comparação'
+];
 
 export const metadata: Metadata = createGuideMetadata('gestao-pacotes', title, description, keywords);
 
-export default function GestaopacotesGuide() {
+export default function PackageManagementGuide() {
+  const summaryTable = [
+    { label: "Ferramenta", value: "Winget (Nativo do Windows)" },
+    { label: "Comando de instalação", value: "winget install [nome]" },
+    { label: "Atualizar Tudo", value: "winget upgrade --all" },
+    { label: "Dificuldade", value: "Fácil" }
+  ];
+
   const contentSections = [
     {
-      title: "Introdução e Conceitos Fundamentais",
+      title: "O que é um Gerenciador de Pacotes?",
       content: `
-        <p class="mb-4">A gestão de pacotes é o processo sistemático de instalar, atualizar, configurar e remover software em sistemas Windows, garantindo compatibilidade, segurança e desempenho otimizado dos aplicativos.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Evita conflitos entre versões de software</li>
-              <li>✓ Automatiza atualizações de segurança</li>
-              <li>✓ Simplifica processos de implantação empresarial</li>
-              <li>✓ Reduz tempo de manutenção em 70%</li>
-            </ul>
-          </div>
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>📦 Chocolatey, Scoop ou winget instalado</li>
-              <li>💻 Windows 10/11 com PowerShell 5.1+</li>
-              <li>⏱️ Tempo estimado: 45-75 minutos</li>
-              <li>🔑 Permissões de administrador no sistema</li>
-            </ul>
-          </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em vez de abrir o Chrome, pesquisar "NVIDIA drivers", entrar no site, baixar o .exe e clicar 10 vezes em "Avançar", você pode simplesmente digitar um comando. O **Winget** é a loja da Microsoft em forma de linha de comando. Ele é seguro, rápido e automatiza a instalação de mais de 4.000 programas populares.
+        </p>
+      `
+    },
+    {
+      title: "1. Comandos Básicos do Winget",
+      content: `
+        <p class="mb-4 text-gray-300">Abra o PowerShell ou o CMD e teste estes comandos:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><code>winget search [nome]</code>: Procura se o programa está disponível (ex: <code>winget search discord</code>).</li>
+            <li><code>winget install [nome]</code>: Baixa e instala o programa silenciosamente.</li>
+            <li><code>winget list</code>: Mostra todos os programas instalados no seu PC.</li>
+            <li><code>winget uninstall [nome]</code>: Remove o programa de forma limpa.</li>
+        </ul>
+      `
+    },
+    {
+      title: "2. O Comando Mágico: Atualizar Tudo",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">A rotina perfeita:</h4>
+            <p class="text-sm text-gray-300">
+                Uma vez por semana, abra o terminal e digite: <br/>
+                <code>winget upgrade --all</code> <br/><br/>
+                O Windows vai verificar todos os seus programas (Chrome, Spotify, Steam, Drivers) e atualizar todos eles automaticamente para a versão mais segura, sem que você precise abrir um por um.
+            </p>
         </div>
-        
-        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4 my-6">
-          <h3 class="text-green-400 font-semibold mb-2">✅ Dica Essencial</h3>
-          <p class="text-gray-300 text-sm">Use ambientes virtuais para testar pacotes antes de instalar em produção.</p>
-        </div>
-      `,
-      subsections: [
-        {
-          subtitle: "Quando Aplicar Esta Técnica",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Quando for necessário instalar múltiplos softwares de forma automatizada</li>
-              <li>Para padronizar a instalação de pacotes em vários computadores</li>
-              <li>Durante a configuração de ambientes de desenvolvimento</li>
-              <li>Ao implementar políticas de software em ambientes corporativos</li>
-            </ul>
-          `
-        }
-      ]
+      `
     },
     {
-      title: "Configuração Passo a Passo",
+      title: "3. Winget.run: Interface Web",
       content: `
-        <p class="mb-4">Siga estas etapas para gerenciar pacotes de software no Windows.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Configuração do Gerenciador de Pacotes",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Instale um gerenciador de pacotes como Chocolatey, Scoop ou winget</li>
-              <li>Configure repositórios adicionais se necessário</li>
-              <li>Crie uma lista de pacotes essenciais para sua necessidade</li>
-              <li>Teste a instalação de alguns pacotes para verificar funcionamento</li>
-              <li>Documente os pacotes instalados e suas versões</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Instalação e Atualização de Pacotes",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Use comandos para instalar múltiplos pacotes de uma vez</li>
-              <li>Configure atualizações automáticas periódicas</li>
-              <li>Verifique dependências e compatibilidades entre pacotes</li>
-              <li>Monitore logs de instalação para detectar erros</li>
-              <li>Mantenha um registro das versões instaladas</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas e Recursos Recomendados",
-      content: `
-        <p class="mb-4">Ferramentas especializadas para gerenciamento de pacotes no Windows.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Software Especializado",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Chocolatey - gerenciador de pacotes popular para Windows</li>
-                  <li>Scoop - alternativa leve e moderna ao Chocolatey</li>
-                  <li>winget - gerenciador nativo do Windows Package Manager</li>
-                </ul>
-              </div>
-              <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>System Center Configuration Manager (SCCM)</li>
-                  <li>PDQ Deploy - para implantação em larga escala</li>
-                  <li>ManageEngine Desktop Central - solução corporativa completa</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Práticas de Segurança",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Verifique assinaturas digitais dos pacotes antes da instalação</li>
-              <li>Use repositórios oficiais e confiáveis apenas</li>
-              <li>Mantenha logs detalhados de todas as instalações</li>
-              <li>Teste pacotes em ambiente isolado antes de implantação em massa</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Troubleshooting e Solução de Problemas",
-      content: `
-        <p class="mb-4">Soluções para problemas comuns no gerenciamento de pacotes.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Erros Frequentes e Soluções",
-          content: `
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: Pacote não encontrado no repositório</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Verifique nome correto e disponibilidade do pacote</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Procure pelo pacote usando o comando de busca do gerenciador</li>
-                <li>Verifique se o repositório está corretamente configurado</li>
-                <li>Confirme se o pacote existe para a arquitetura do seu sistema</li>
-              </ul>
-            </div>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
-              <h4 class="text-white font-semibold mb-2">Problema: Dependências conflitantes entre pacotes</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Resolva conflitos de dependências manualmente</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Identifique quais pacotes estão causando o conflito</li>
-                <li>Instale pacotes em ordem específica para evitar dependências</li>
-                <li>Considere usar ambientes isolados para pacotes problemáticos</li>
-              </ul>
-            </div>
-          `
-        },
-        {
-          subtitle: "Prevenção de Problemas Futuros",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Mantenha uma lista atualizada de pacotes aprovados e testados</li>
-              <li>Implemente controle de versão para pacotes críticos</li>
-              <li>Planeje atualizações durante janelas de manutenção programadas</li>
-              <li>Documente procedimentos de rollback para reversão de atualizações problemáticas</li>
-            </ul>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            Se você não gosta de decorar nomes, acesse o site <strong>winget.run</strong>. Lá você pode selecionar todos os programas que deseja (como se estivesse montando um carrinho de compras) e o site vai gerar um único comando para você colar no seu terminal. É a forma mais rápida de configurar um PC recém-formatado.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      href: "/guias/pos-instalacao-windows-11",
+      title: "Pós-Instalação",
+      description: "Use o winget para montar seu setup novo."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
+      href: "/guias/remover-bloatware-windows-powershell",
+      title: "Remover Bloatware",
+      description: "Winget também ajuda a limpar o sistema."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      href: "/guias/automacao-tarefas",
+      title: "Automações",
+      description: "Agende atualizações de apps via winget."
     }
   ];
 
@@ -195,9 +88,10 @@ export default function GestaopacotesGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="50 minutos"
+      estimatedTime="15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

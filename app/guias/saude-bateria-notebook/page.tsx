@@ -1,77 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Como Maximizar a Vida Útil da Bateria do seu Notebook";
-const description = "Mitos e verdades sobre baterias de Li-ion. Aprenda como carregar, armazenar e verificar a saúde da bateria para que ela dure anos.";
-const keywords = ["bateria viciada","ciclos de bateria","calibrar bateria notebook","battery report windows","economia energia"];
+const title = "Como verificar e aumentar a Saúde da Bateria do Notebook (2026)";
+const description = "Sua bateria dura pouco? Aprenda como gerar o relatório oficial de bateria do Windows 11 e dicas para fazer ela durar muito mais em 2026.";
+const keywords = [
+  'verificar saude bateria notebook windows 11 2026',
+  'como gerar battery report windows 11 tutorial',
+  'bateria de notebook viciada como resolver guia 2026',
+  'aumentar vida util bateria notebook gamer tutorial',
+  'limitar carga da bateria notebook para 80 por cento'
+];
 
 export const metadata: Metadata = createGuideMetadata('saude-bateria-notebook', title, description, keywords);
 
-export default function GuidePage() {
+export default function BatteryHealthGuide() {
+  const summaryTable = [
+    { label: "Comando Chave", value: "powercfg /batteryreport" },
+    { label: "Carga Ideal", value: "Entre 20% e 80%" },
+    { label: "Vilão", value: "Calor Excessivo" },
+    { label: "Dificuldade", value: "Fácil" }
+  ];
+
   const contentSections = [
-
     {
-      title: "Mitos Comuns sobre Baterias",
+      title: "O desgaste natural das baterias",
       content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div class="bg-[#171313] p-4 rounded border border-red-500/20">
-              <h4 class="text-red-400 font-bold mb-1">Mito: "Viciar a Bateria"</h4>
-              <p class="text-gray-400 text-sm">Baterias modernas de Lítio não têm 'efeito memória'. Você não precisa descarregar tudo antes de carregar.</p>
-            </div>
-            <div class="bg-[#171313] p-4 rounded border border-green-500/20">
-              <h4 class="text-green-400 font-bold mb-1">Verdade: Calor Mata</h4>
-              <p class="text-gray-400 text-sm">O maior inimigo da bateria é o calor excessivo. Nunca use o notebook em cima de cobertores ou almofadas que bloqueiem a ventilação.</p>
-            </div>
-          </div>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, as baterias de íon-lítio ainda são a tecnologia padrão e, infelizmente, elas têm uma vida útil limitada a ciclos de carga. Toda vez que você carrega de 0 a 100%, você "gasta" um ciclo. Se o seu notebook descarrega muito rápido, pode ser que a sua bateria já tenha perdido a capacidade original (Design Capacity). O primeiro passo é descobrir o estado real dela.
+        </p>
+      `
     },
-
     {
-      title: "A Regra 20-80% (Para Longevidade Extrema)",
+      title: "1. Gerando o Battery Report Oficial",
       content: `
-        <p class="mb-4 text-gray-300">Quimicamente, baterias ficam mais estressadas nos extremos (0% e 100%). Para maximizar a vida útil (anos de uso):</p>
-          <ul class="list-disc list-inside space-y-2 text-gray-300">
-            <li>Tente manter a carga entre 20% e 80% no dia a dia.</li>
-            <li>Muitos notebooks modernos (Dell, Lenovo, Asus) têm uma configuração de <strong>"Limite de Carga"</strong> ou <strong>"Modo de Conservação"</strong> que impede o carregamento acima de 60% ou 80% quando conectado na tomada. Ative isso se você usa o notebook sempre na mesa!</li>
-          </ul>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">O Windows tem uma ferramenta oculta de diagnóstico muito precisa:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Pesquise por <strong>CMD</strong> no Menu Iniciar e execute como administrador.</li>
+            <li>Digite o comando: <code>powercfg /batteryreport</code> e dê Enter.</li>
+            <li>O Windows salvará um arquivo HTML em uma pasta do sistema. Vá até o local indicado e abra o arquivo no navegador.</li>
+            <li>Compare os valores: **Design Capacity** (Capacidade de fábrica) vs **Full Charge Capacity** (Capacidade atual). Se a atual for menor que 70% da original, a bateria está degradada.</li>
+        </ol>
+      `
     },
-
     {
-      title: "Gerando um Relatório de Saúde (Windows)",
+      title: "2. O Segredo dos 80% (Battery Limiter)",
       content: `
-        <div class="bg-[#1E1E22] p-5 rounded-lg">
-            <p class="mb-3 text-gray-300">O Windows tem uma ferramenta secreta para diagnóstico:</p>
-            <ol class="list-decimal list-inside space-y-2 font-mono text-sm text-gray-400">
-              <li>Abra o Prompt de Comando (CMD) como Administrador.</li>
-              <li>Digite: <span class="text-[#31A8FF]">powercfg /batteryreport</span></li>
-              <li>Pressione Enter.</li>
-              <li>Abra o arquivo HTML gerado (o caminho será mostrado).</li>
-            </ol>
-            <p class="mt-3 text-gray-300 text-sm">Compare a <strong>Design Capacity</strong> (Capacidade Original) com a <strong>Full Charge Capacity</strong> (Capacidade Atual). Se a atual for menos de 50% da original, considere trocar a bateria.</p>
-          </div>
-      `,
-      subsections: []
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Preservando a Vida Útil:</h4>
+            <p class="text-sm text-gray-300">
+                O estado que mais estressa as células da bateria é estar em 100% ou em 0%. Em 2026, quase todos os fabricantes (Asus, Dell, Acer, Lenovo) oferecem um software que permite **limitar a carga em 80%**. <br/><br/>
+                Se você usa o notebook muito tempo ligado na tomada, ative essa opção! Isso impede que a bateria fique "fritando" na voltagem máxima constantemente, dobrando a vida útil dela ao longo dos anos.
+            </p>
+        </div>
+      `
+    },
+    {
+      title: "3. Dicas Rápidas para o Dia a Dia",
+      content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Fuja do Calor:</strong> 
+            <br/><br/>O calor é o maior inimigo da química da bateria. Se você joga e sente o notebook fervendo, o calor interno está degradando as células. Use uma base cooler. <br/><br/>
+            <strong>Brilho da Tela:</strong> Reduzir o brilho de 100% para 70% pode dar até 40 minutos extras de autonomia. Ative também o 'Economia de Bateria' automaticamente quando ela atingir 30%.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Dicas para deixar seu PC mais rápido."
+      href: "/guias/calibrar-bateria-notebook",
+      title: "Calibrar Bateria",
+      description: "Aprenda a recalibrar se a porcentagem estiver errada."
     },
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital",
-      description: "Proteja seus dados."
+      href: "/guias/otimizacoes-para-notebook-gamer",
+      title: "Otimizar Notebook",
+      description: "Melhore a performance enquanto economiza carga."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Cuidados essenciais com o hardware."
+      href: "/guias/monitorar-temperatura-pc",
+      title: "Monitorar Calor",
+      description: "Mantenha o sistema frio para preservar peças."
     }
   ];
 
@@ -80,9 +89,10 @@ export default function GuidePage() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="15-20 min"
+      estimatedTime="15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

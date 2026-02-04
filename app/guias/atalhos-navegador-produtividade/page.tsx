@@ -1,42 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "50 Atalhos de Navegador para Dobrar sua Produtividade - Voltris";
-const description = "Pare de usar o mouse para tudo. Aprenda atalhos essenciais para Chrome, Edge e Firefox: reabrir abas fechadas, navegar entre guias e gerenciar favoritos.";
-const keywords = ['atalhos chrome', 'atalhos teclado navegador', 'reabrir aba fechada', 'produtividade pc', 'edge atalhos'];
+const title = "Atalhos de Navegador: O Manual da Produtividade (Chrome/Edge)";
+const description = "Você ainda usa o mouse para fechar abas? Aprenda os atalhos de teclado essenciais para Chrome, Edge e Brave que vão salvar horas do seu dia em 2026.";
+const keywords = [
+    'melhores atalhos de navegador chrome 2026',
+    'como reabrir aba fechada atalho teclado',
+    'atalhos produtividade navegador edge e brave',
+    'alternar entre abas do navegador atalho windows',
+    'limpar cache do navegador atalho rapido'
+];
 
 export const metadata: Metadata = createGuideMetadata('atalhos-navegador-produtividade', title, description, keywords);
 
-export default function ShortcutsGuide() {
+export default function BrowserShortcutsGuide() {
     const summaryTable = [
-        { label: "Categoria", value: "Produtividade" },
-        { label: "Nível", value: "Todos" }
+        { label: "Reabrir Aba", value: "Ctrl + Shift + T" },
+        { label: "Nova Aba Anônima", value: "Ctrl + Shift + N" },
+        { label: "Fechar Aba atual", value: "Ctrl + W" },
+        { label: "Pular para barra de busca", value: "Ctrl + L" }
     ];
 
     const contentSections = [
         {
-            title: "Os 'Salva-Vidas' (Tem que decorar)",
+            title: "Por que usar atalhos?",
             content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-            <div class="bg-[#121218] p-4 rounded border-l-4 border-[#31A8FF]">
-                <code class="text-xl text-white font-bold block mb-2">Ctrl + Shift + T</code>
-                <p class="text-gray-400 text-sm">Fechou uma aba sem querer? Ele reabre a última aba fechada. Funciona várias vezes seguidas.</p>
-            </div>
-             <div class="bg-[#121218] p-4 rounded border-l-4 border-[#31FF8B]">
-                <code class="text-xl text-white font-bold block mb-2">Ctrl + L</code>
-                <p class="text-gray-400 text-sm">Seleciona a barra de endereços para você digitar um site ou busca na hora.</p>
-            </div>
-            <div class="bg-[#121218] p-4 rounded border-l-4 border-[#FF4B6B]">
-                <code class="text-xl text-white font-bold block mb-2">Ctrl + W</code>
-                <p class="text-gray-400 text-sm">Fecha a aba atual instantaneamente.</p>
-            </div>
-             <div class="bg-[#121218] p-4 rounded border-l-4 border-yellow-400">
-                <code class="text-xl text-white font-bold block mb-2">Ctrl + Shift + N</code>
-                <p class="text-gray-400 text-sm">Abre uma janela de Navegação Anônima.</p>
-            </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Cada vez que você tira a mão do teclado para procurar o ícone 'X' de fechar uma aba com o mouse, você perde cerca de 2 segundos. Somando isso ao longo de um dia de trabalho ou estudo, você desperdiça minutos preciosos. Em 2026, dominar os atalhos do navegador é o que diferencia um usuário comum de um "Power User".
+        </p>
+      `
+        },
+        {
+            title: "1. Gestão de Abas: O básico que você deve saber",
+            content: `
+        <p class="mb-4 text-gray-300">Pare de se perder entre dezenas de abas abertas:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Ctrl + T:</strong> Abre uma nova aba instantaneamente.</li>
+            <li><strong>Ctrl + Shift + T:</strong> O "salva-vidas". Reabre a última aba que você fechou acidentalmente.</li>
+            <li><strong>Ctrl + 1 até 8:</strong> Pula direto para a aba naquela posição. <strong>Ctrl + 9</strong> pula para a última aba.</li>
+            <li><strong>Ctrl + Tab:</strong> Alterna entre as abas para a direita. <strong>Ctrl + Shift + Tab</strong> faz o mesmo para a esquerda.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Navegação Ninja",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Pulo de Página:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Ctrl + L:</strong> Seleciona a URL/Barra de busca. Digite e dê Enter sem clicar em nada. <br/>
+                - <strong>Ctrl + F:</strong> Abre a caixa de busca na página atual. <br/>
+                - <strong>Spacebar:</strong> Rola para baixo uma página inteira. <strong>Shift + Spacebar</strong> rola para cima. <br/>
+                - <strong>Ctrl + R:</strong> Recarrega a página. <strong>Ctrl + Shift + R</strong> recarrega limpando o cache (útil quando o site trava).
+            </p>
         </div>
-      `,
-            subsections: []
+      `
+        },
+        {
+            title: "3. Limpeza Expressa",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Precisa limpar o histórico ou o cache rapidamente? 
+            <br/>Aperte <strong>Ctrl + Shift + Delete</strong>. Isso abrirá direto a janela de limpeza de dados de navegação, economizando 5 cliques pelos menus de configurações do Chrome ou Edge.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/atalhos-produtividade-windows",
+            title: "Atalhos Windows",
+            description: "Aumente sua agilidade no sistema como um todo."
+        },
+        {
+            href: "/guias/limpar-cache-navegador-chrome-edge",
+            title: "Guia de Cache",
+            description: "Por que e quando limpar seus dados."
+        },
+        {
+            href: "/guias/extensoes-produtividade-chrome",
+            title: "Extensões Úteis",
+            description: "Melhore ainda mais sua navegação."
         }
     ];
 
@@ -45,10 +90,11 @@ export default function ShortcutsGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="5 minutos"
+            estimatedTime="10 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

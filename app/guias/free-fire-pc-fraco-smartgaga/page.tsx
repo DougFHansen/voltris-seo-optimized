@@ -1,69 +1,86 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Free Fire em PC Fraco: SmartGaGa, BlueStacks Lite ou LDPlayer? (2026)";
-const description = "Seu PC tem 2GB ou 4GB de RAM e você quer jogar Free Fire? Esqueça o BlueStacks 5. Veja como instalar o SmartGaGa modificado (Android 4) para rodar liso.";
-const keywords = ['free fire pc fraco 2gb ram', 'smartgaga download 2026', 'bluestacks lite pc fraco', 'melhor emulador free fire pc da xuxa', 'sensibilidade y smartgaga', 'configurar hud free fire pc'];
+const title = "Free Fire em PC Fraco: Como configurar o SmartGaGa (2026)";
+const description = "Quer jogar Free Fire sem travamentos no seu PC ou Notebook com 2GB ou 4GB de RAM? Aprenda a configurar o SmartGaGa, o emulador mais leve do mercado.";
+const keywords = [
+    'free fire pc fraco smartgaga 2026 download',
+    'como instalar smartgaga atualizado free fire',
+    'configurar sensibilidade smartgaga free fire',
+    'emulador android para pc 2gb de ram free fire',
+    'smartgaga free fire nao abre como resolver'
+];
 
 export const metadata: Metadata = createGuideMetadata('free-fire-pc-fraco-smartgaga', title, description, keywords);
 
-export default function FFGuide() {
+export default function SmartGaGaFFGuide() {
     const summaryTable = [
-        { label: "PC da NASA", value: "BlueStacks 5" },
-        { label: "PC Médio", value: "LDPlayer" },
-        { label: "PC Xuxa (2GB)", value: "SmartGaGa" },
-        { label: "Sistema", value: "Windows 7 Lite" }
+        { label: "RAM Recomendada", value: "2GB a 4GB" },
+        { label: "Versão Android", value: "KitKat (4.4) ou Nougat (7.1)" },
+        { label: "Vantagem", value: "Não exige Virtualização (VT) obrigatória" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "Por que emuladores travam tanto?",
+            title: "Por que escolher o SmartGaGa em 2026?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O Free Fire é leve, mas emular o Android dentro do Windows é pesado. O BlueStacks moderno exige instruções de processador (AVX) que PCs antigos (Core 2 Duo, i3 1ª Gen) não têm, causando tela azul ou lentidão.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Enquanto BlueStacks e LDPlayer evoluíram para máquinas potentes, o **SmartGaGa** continua sendo o "queridinho" de quem tem computadores modestos. Ele utiliza um motor gráfico diferente, chamado Titan Engine, que consome pouquíssima CPU e permite que o Free Fire rode liso mesmo em máquinas que nem possuem placa de vídeo dedicada.
         </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "A Salvação: SmartGaGa (Titan Engine)",
+            title: "1. Configuração de Performance no Emulador",
             content: `
-        <div class="bg-blue-900/20 p-6 rounded-xl border border-blue-500 mb-6">
-            <h4 class="text-white font-bold mb-2">SmartGaGa 1.1 (Modificado)</h4>
-            <p class="text-gray-300 text-sm">
-                O SmartGaGa original morreu, mas a comunidade brasileira mantém versões modificadas (como o <strong>SmartGaGa do HTzinho</strong>).
-                <br/><br/>
-                Ele não usa virtualização pesada. Ele roda uma versão "capada" do Android 4.4 KitKat que consome apenas <strong>200MB de RAM</strong>. É a única opção viável para PC sem placa de vídeo.
+        <p class="mb-4 text-gray-300">Abra as configurações (ícone da engrenagem) do SmartGaGa:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>CPU:</strong> Coloque a metade do que seu PC tem (Se tem 4 núcleos, coloque 2).</li>
+            <li><strong>RAM:</strong> Coloque 1024MB (se tiver 2GB no PC) ou 2048MB (se tiver 4GB no PC).</li>
+            <li><strong>Renderizador:</strong> DirectX (Geralmente melhor para quem não tem GPU dedicada) ou OpenGL (Melhor para quem tem NVIDIA/AMD).</li>
+            <li><strong>Resolução:</strong> 960x540 ou 1280x720. Quanto menor, mais FPS.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Sensibilidade e Mapeamento (HUD)",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Ajuste de "Capa":</h4>
+            <p class="text-sm text-gray-300">
+                O SmartGaGa é famoso pela sua sensibilidade Y rápida. Para não "pinar", vá nas configurações de controles e ajuste a Sensibilidade Y para um valor entre 1.0 e 2.0. Desative a 'Aceleração de Mouse' no Windows para ter movimentos mais consistentes.
             </p>
         </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Configuração Suprema para PC Fraco (SmartGaGa)",
-            content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Baixe uma versão modificada confiável no YouTube.</li>
-            <li>Na instalação, escolha o diretório raiz (C:\\SmartGaGa) para evitar erros de permissão.</li>
-            <li>Abra as configurações (Engrenagem):
-                <ul class="list-disc list-inside ml-6 mt-2 text-green-400 text-sm">
-                    <li><strong>Android:</strong> 4.4.2 (O mais leve).</li>
-                    <li><strong>CPU:</strong> 1 Core (Sim, funciona bem).</li>
-                    <li><strong>RAM:</strong> 1024M (1GB).</li>
-                    <li><strong>Render:</strong> DirectX (Para quem não tem placa de vídeo).</li>
-                    <li><strong>Resolução:</strong> 800x600 ou 640x480 (Gráfico de Minecraft, mas 60 FPS cravado).</li>
-                </ul>
-            </li>
-        </ol>
       `
         },
         {
-            title: "Sensibilidade Y (O Bug do Capa)",
+            title: "3. Corrigindo o erro de Tela Preta",
             content: `
-        <p class="text-gray-300">
-            No mapeamento de teclas, você pode alterar a "Sensibilidade Y" (Vertical) para ser maior que a X (Horizontal). Coloque Y=2.0 ou 3.0. Isso facilita subir capa com o mouse mexendo pouco a mão.
+        <p class="mb-4 text-gray-300">
+            Se o Free Fire abre e fica em uma tela preta infinita:
+            <br/>1. Vá nas configurações do Android dentro do emulador.
+            <br/>2. Vá em Aplicativos > Free Fire > <strong>Limpar Cache</strong>.
+            <br/>3. Verifique se você instalou a versão 'x86' ou 'ARM' correta do APK do Free Fire (geralmente a versão da Amazon App Store é a mais estável para emuladores).
         </p>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/bluestacks-vs-ldplayer-qual-mais-leve",
+            title: "Comparar Emuladores",
+            description: "Veja outras opções para PC fraco."
+        },
+        {
+            href: "/guias/otimizacao-performance",
+            title: "Otimizar PC",
+            description: "Prepare o Windows para rodar emuladores."
+        },
+        {
+            href: "/guias/jogos-android-no-pc-melhores-emuladores",
+            title: "Melhores Emuladores",
+            description: "Guia geral de apps Android no PC."
         }
     ];
 
@@ -72,10 +89,11 @@ export default function FFGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Intermediário"
+            estimatedTime="20 min"
+            difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

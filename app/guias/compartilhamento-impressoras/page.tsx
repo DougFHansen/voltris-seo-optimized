@@ -1,192 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Compartilhamento de Impressoras";
-const description = "Configure impressoras em rede, compartilhe dispositivos entre múltiplos computadores e gerencie filas de impressão corporativa.";
-const keywords = ["compartilhar impressora","impressora rede","fila impressão","airprint","google cloud print"];
+const title = "Como Compartilhar Impressoras na Rede Windows (2026)";
+const description = "Quer imprimir de qualquer PC da casa? Aprenda como configurar o compartilhamento de impressoras no Windows 11 de forma simples e segura em 2026.";
+const keywords = [
+  'como compartilhar impressora na rede windows 11 2026',
+  'erro ao compartilhar impressora 0x0000011b tutorial',
+  'instalar impressora compartilhada em outro pc guia',
+  'compartilhamento de arquivos e impressoras windows 11 tutorial',
+  'configurar impressora wifi rede domestica guia 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('compartilhamento-impressoras', title, description, keywords);
 
-export default function CompartilhamentoimpressorasGuide() {
+export default function PrinterSharingGuide() {
+  const summaryTable = [
+    { label: "Método Principal", value: "Compartilhamento de Rede Windows (SMB)" },
+    { label: "Dica de Segurança", value: "Desativar compartilhamento por senha (se confiável)" },
+    { label: "Erro Comum", value: "Bloqueio por Firewall / Credenciais" },
+    { label: "Dificuldade", value: "Médio" }
+  ];
+
   const contentSections = [
     {
-      title: "Introdução e Conceitos Fundamentais",
+      title: "Por que compartilhar sua impressora?",
       content: `
-        <p class="mb-4">O compartilhamento de impressoras permite que múltiplos computadores em uma rede utilizem uma única impressora, eliminando a necessidade de comprar equipamentos separados para cada usuário e centralizando a gestão de impressão.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Redução de 60-80% nos custos de impressão</li>
-              <li>✓ Gestão centralizada de filas de impressão</li>
-              <li>✓ Menor consumo de energia elétrica</li>
-              <li>✓ Facilidade de manutenção e suprimentos</li>
-            </ul>
-          </div>
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>🖨️ Impressora com conexão USB/Ethernet</li>
-              <li>🌐 Rede local (WiFi ou cabeada) funcionando</li>
-              <li>⏱️ Tempo estimado: 30-45 minutos</li>
-              <li>👤 Permissões de administrador na rede</li>
-            </ul>
-          </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Ter uma impressora para cada computador é caro e desnecessário. Em 2026, mesmo que sua impressora não tenha Wi-Fi nativo, você pode transformá-la em uma "impressora de rede" conectando-a via USB em um PC e liberando o acesso para todos os outros notebooks e desktops da casa ou escritório através do Windows 11.
+        </p>
+      `
+    },
+    {
+      title: "1. Ativando a Descoberta de Rede",
+      content: `
+        <p class="mb-4 text-gray-300">Antes de tudo, os computadores precisam "se ver" na rede:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Vá em Painel de Controle > Rede e Internet > Central de Rede e Compartilhamento.</li>
+            <li>Clique em 'Alterar as configurações de compartilhamento avançadas'.</li>
+            <li>Ative a <strong>'Descoberta de rede'</strong> e o <strong>'Compartilhamento de arquivo e impressora'</strong>.</li>
+            <li><strong>Dica:</strong> Em redes domésticas privadas, desative o 'Compartilhamento protegido por senha' para facilitar a conexão entre os PCs.</li>
+        </ol>
+      `
+    },
+    {
+      title: "2. Preparando a Impressora Host",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">No PC onde a impressora está plugada:</h4>
+            <p class="text-sm text-gray-300">
+                1. Vá em Configurações > Dispositivos > Impressoras e Scanners. <br/>
+                2. Selecione sua impressora e clique em **Propriedades da Impressora**. <br/>
+                3. Vá na aba **Compartilhamento** e marque 'Compartilhar esta impressora'. <br/>
+                4. Dê um nome simples (ex: Impressora_Sala) para evitar erros de espaço no nome.
+            </p>
         </div>
-        
-        <div class="bg-orange-900/20 border border-orange-500/30 rounded-lg p-4 my-6">
-          <h3 class="text-orange-400 font-semibold mb-2">⚠️ Importante</h3>
-          <p class="text-gray-300 text-sm">Certifique-se de que todos os computadores estão na mesma rede antes de iniciar o compartilhamento.</p>
-        </div>
-      `,
-      subsections: [
-        {
-          subtitle: "Quando Aplicar Esta Técnica",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Quando múltiplos usuários precisam acessar a mesma impressora</li>
-              <li>Para centralizar a administração de impressão em rede</li>
-              <li>Durante a configuração de ambientes de escritório</li>
-              <li>Ao implementar políticas de economia de recursos</li>
-            </ul>
-          `
-        }
-      ]
+      `
     },
     {
-      title: "Configuração Passo a Passo",
+      title: "3. Conectando nos outros computadores",
       content: `
-        <p class="mb-4">Siga estas etapas para configurar o compartilhamento de impressoras no Windows.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Configuração da Impressora no Servidor",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Instale a impressora no computador que será o servidor de impressão</li>
-              <li>Verifique se ela imprime corretamente localmente</li>
-              <li>Abra o Painel de Controle > Dispositivos e Impressoras</li>
-              <li>Clique com botão direito na impressora e selecione "Impressora Propriedades"</li>
-              <li>Vá para a aba "Compartilhamento" e marque "Compartilhar esta impressora"</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Configuração nos Clientes",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Acesse "Adicionar impressora" nos clientes</li>
-              <li>Selecione "Conectar a uma impressora remota"</li>
-              <li>Insira o caminho UNC (\\NOME_DO_SERVIDOR\NOME_DA_IMPRESSORA)</li>
-              <li>Instale os drivers necessários se solicitado</li>
-              <li>Teste a impressão a partir do cliente</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas e Recursos Recomendados",
-      content: `
-        <p class="mb-4">Ferramentas essenciais para gerenciamento de impressoras compartilhadas.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Software Especializado",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Gerenciador de Dispositivos do Windows</li>
-                  <li>Serviços de Impressão integrados ao SO</li>
-                  <li>Ferramentas de diagnóstico de rede (ping, net view)</li>
-                </ul>
-              </div>
-              <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Soluções de gerenciamento de impressão empresarial (PaperCut)</li>
-                  <li>Sistemas de autenticação para liberar impressão</li>
-                  <li>Ferramentas de auditoria e relatórios de uso</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Práticas de Segurança",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Limite o acesso às impressoras compartilhadas a usuários autorizados</li>
-              <li>Configure autenticação para impressão de documentos sensíveis</li>
-              <li>Monitore logs de impressão para detectar uso indevido</li>
-              <li>Atualize regularmente os drivers das impressoras para segurança</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Troubleshooting e Solução de Problemas",
-      content: `
-        <p class="mb-4">Soluções para problemas comuns com impressoras compartilhadas.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Erros Frequentes e Soluções",
-          content: `
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: Cliente não consegue encontrar impressora compartilhada</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Verifique configurações de rede e firewall</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Verifique se o compartilhamento de arquivos e impressoras está ativado</li>
-                <li>Confirme que os firewalls permitem tráfego de impressão</li>
-                <li>Teste conectividade entre cliente e servidor (ping)</li>
-              </ul>
-            </div>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
-              <h4 class="text-white font-semibold mb-2">Problema: Erros de driver na estação cliente</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Instale os drivers corretos no servidor e cliente</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Instale os drivers compatíveis com o SO do cliente no servidor</li>
-                <li>Adicione manualmente os drivers no servidor de impressão</li>
-                <li>Verifique compatibilidade de arquitetura (32/64 bits)</li>
-              </ul>
-            </div>
-          `
-        },
-        {
-          subtitle: "Prevenção de Problemas Futuros",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Mantenha drivers de impressora atualizados em todos os sistemas</li>
-              <li>Implemente políticas de uso para evitar sobrecarga do servidor</li>
-              <li>Planeje a substituição de impressoras antigas regularmente</li>
-              <li>Documente configurações de acesso e permissões para cada impressora</li>
-            </ul>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            <strong>O passo final:</strong> 
+            <br/><br/>No outro computador, abra o Explorer e digite o endereço IP do PC host (ex: <code>\\\\192.168.1.10</code>). Você verá o ícone da impressora compartilhada. Clique com o botão direito e selecione **'Conectar'**. O Windows baixará os drivers automaticamente do PC host e a impressora aparecerá pronta para o uso no Word, Excel ou qualquer outro programa em 2026.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
+      href: "/guias/instalar-impressora-wifi",
+      title: "Impressora Wi-Fi",
+      description: "Como configurar sem precisar de fios."
+    },
+    {
+      href: "/guias/atalhos-produtividade-windows",
+      title: "Produtividade",
+      description: "Atalhos para imprimir mais rápido."
+    },
+    {
       href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
-    },
-    {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
-    },
-    {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      title: "Segurança de Rede",
+      description: "Proteja seu compartilhamento contra invasores."
     }
   ];
 
@@ -195,9 +90,10 @@ export default function CompartilhamentoimpressorasGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="40 minutos"
-      difficultyLevel="Iniciante"
+      estimatedTime="15 min"
+      difficultyLevel="Médio"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

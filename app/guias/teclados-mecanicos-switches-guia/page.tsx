@@ -1,82 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia de Teclados Mecânicos 2026: Switches Ópticos, Magnéticos e Hall Effect";
-const description = "Blue, Red, Brown ou Rapid Trigger? Entenda a revolução dos teclados magnéticos (Wooting, Razer Huntsman) e qual switch escolher para digitar ou jogar.";
-const keywords = ['teclado mecanico switch', 'hall effect keyboard', 'wooting 60he vale a pena', 'switch optico vs mecanico', 'rapid trigger explicado', 'melhor teclado valorant'];
+const title = "Switches de Teclado Mecânico: Guia de Cores e Tipos (2026)";
+const description = "Blue, Red, Brown ou Silver? Aprenda a diferença entre todos os switches de teclado mecânico e escolha o ideal para o seu estilo em 2026.";
+const keywords = [
+    'guia de switches teclado mecanico 2026 cores',
+    'diferença switch azul vermelho marrom tutorial 2026',
+    'melhor switch para digitar silencioso guia 2026',
+    'switch red vs switch blue qual mais barulhento tutorial',
+    'o que é switch optico teclado mecanico guia'
+];
 
 export const metadata: Metadata = createGuideMetadata('teclados-mecanicos-switches-guia', title, description, keywords);
 
-export default function KeyboardGuide() {
+export default function SwitchGuide() {
     const summaryTable = [
-        { label: "Melhor Jogo", value: "Magnético (HE)" },
-        { label: "Melhor Escrita", value: "Mecânico (Tátil)" },
-        { label: "Mais Rápido", value: "Rapid Trigger" },
-        { label: "Custo-Benefício", value: "Óptico" }
+        { label: "Switch Blue", value: "Clicky (Barulhento) / Feedback Tátil" },
+        { label: "Switch Red", value: "Linear (Silencioso) / Rápido para Games" },
+        { label: "Switch Brown", value: "Tátil (Silencioso) / Versátil (Trabalho + Jogo)" },
+        { label: "Switch Silver", value: "Linear Ultra Rápido / Baixa Ativação" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: O Fim do Teclado Mecânico Tradicional",
+            title: "O coração do seu Teclado",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Até 2023, a discussão era "Cherry MX Red vs Blue". Em 2026, isso é passado. A nova meta competitiva são os <strong>Switches Magnéticos (Hall Effect)</strong> com tecnologia Rapid Trigger. Se você joga Valorant, CS2 ou osu! em nível alto, teclado mecânico comum virou desvantagem.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O **Switch** é a mola e o mecanismo que fica embaixo de cada tecla. É ele quem define se a sua digitação será barulhenta, macia, rápida ou pesada. Em 2026, com o avanço da customização, as cores tradicionais (Azul, Vermelho e Marrom) ganharam variações silenciosas e versões ópticas extremamente duráveis. Escolher o switch certo é a parte mais importante para o seu conforto a longo prazo.
         </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "1. O que é Rapid Trigger? (A Revolução)",
+            title: "1. As Cores Clássicas (A hierarquia)",
             content: `
-        <div class="bg-[#121218] border border-gray-700 p-6 rounded-xl mb-6">
-            <h4 class="text-white font-bold mb-4">Como funciona o Mecânico Comum:</h4>
-            <p class="text-gray-400 text-sm mb-4">
-                Você aperta a tecla -> Ela desce 2mm -> Ativa -> Você solta -> Ela sobe 2mm -> Desativa. Existe um "ponto fixo" de reset.
-            </p>
-            <h4 class="text-white font-bold mb-4">Como funciona o Rapid Trigger (Magnético):</h4>
-            <p class="text-green-400 text-sm">
-                Você aperta a tecla -> Ela desce 0.1mm -> Ativa.
-                <br/>Você solta a tecla 0.1mm -> Ela desativa INSTANTANEAMENTE.
-            </p>
-            <p class="text-gray-300 mt-4">
-                Isso permite que você faça "strafe" (ADAD) no Valorant/CS2 com uma velocidade desumana. Você para de andar no exato milissegundo em que pensa em parar. Teclados como <strong>Wooting 60HE</strong>, <strong>Razer Huntsman V3 Pro</strong> e <strong>DrunkDeer</strong> usam isso.
+        <p class="mb-4 text-gray-300">Entenda qual o seu perfil de uso:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Blue (Azul):</strong> Faz um "click" audível. Ótimo para quem gosta da sensação de máquina de escrever, mas pode irritar quem mora com você ou colegas de trabalho.</li>
+            <li><strong>Red (Vermelho):</strong> É linear, ou seja, desce reto sem resistência. É o favorito dos gamers competitivos pela leveza e velocidade.</li>
+            <li><strong>Brown (Marrom):</strong> O equilíbrio. Tem o "degrauzinho" tátil do azul, mas sem o barulho alto. Perfeito para quem faz home office e também joga.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Switches Ópticos vs Mecânicos",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Velocidade da Luz:</h4>
+            <p class="text-sm text-gray-300">
+                Switches ópticos de 2026 usam um feixe de luz para registrar o clique em vez de contato metálico. <br/><br/>
+                - <strong>Durabilidade:</strong> Como não há atrito entre metais, eles não sofrem com o 'Double Click' e duram o dobro de um switch comum. <br/>
+                - <strong>Performance:</strong> O tempo de resposta é quase instantâneo (abaixo de 0.2ms). Marcas como Razer e SteelSeries dominam esta tecnologia em seus modelos de elite.
             </p>
         </div>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "2. Guia de Switches Tradicionais (Para Digitação e Custo-Benefício)",
+            title: "3. O fenómeno 'Thock' em 2026",
             content: `
-        <p class="mb-4 text-gray-300">Se você não quer gastar R$ 1.000 num teclado magnético, os mecânicos ainda são ótimos.</p>
-        
-        <ul class="space-y-4 list-none text-gray-300">
-            <li class="bg-blue-900/20 p-4 rounded border-l-4 border-blue-500">
-                <strong class="text-blue-400 block">Switch Blue (Clicky)</strong>
-                Faz barulho de máquina de escrever. Ótimo para digitar (você sente o clique), péssimo para jogar (pesado e barulhento no Discord).
-            </li>
-            <li class="bg-red-900/20 p-4 rounded border-l-4 border-red-500">
-                <strong class="text-red-400 block">Switch Red (Linear)</strong>
-                Suave, desce direto sem clique. O favorito dos gamers tradicionais. Leve e rápido.
-            </li>
-            <li class="bg-yellow-900/20 p-4 rounded border-l-4 border-yellow-700">
-                <strong class="text-yellow-600 block">Switch Brown (Tátil)</strong>
-                O meio termo. Tem um "degrau" tátil silencioso. Bom híbrido para quem trabalha e joga.
-            </li>
-        </ul>
-      `,
-            subsections: []
+        <p class="mb-4 text-gray-300">
+            Você já deve ter visto vídeos de teclados com som "acolchoado" e gostoso de ouvir. 
+            <br/><br/><strong>Dica:</strong> Para conseguir esse som (conhecido como Thock), procure por switches **Pre-lubed** (lubrificados de fábrica). Marcas como Gateron e Akko oferecem switches lubrificados que eliminam o som de "mola rangendo", tornando a digitação muito mais premium e satisfatória sem que você precise abrir o teclado.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/teclados-mecanicos-guia",
+            title: "Escolher Teclado",
+            description: "Formatos e tecnologias de montagem."
         },
         {
-            title: "3. Switches Ópticos (O Meio Termo)",
-            content: `
-            <p class="mb-4 text-gray-300">
-                Teclados ópticos usam luz infravermelha para detectar o clique. São imunes a "Double Click" (veja nosso guia sobre isso) e mais rápidos que os mecânicos, mas não têm a função analógica dos magnéticos.
-            </p>
-            <p class="text-gray-300">
-                São uma excelente escolha para quem quer durabilidade extrema e rapidez sem pagar o preço do Hall Effect.
-            </p>
-        `
+            href: "/guias/teclado-mecanico-vs-membrana-qual-o-melhor",
+            title: "Mecânico vs Membrana",
+            description: "Diferenças fundamentais entre tecnologias."
+        },
+        {
+            href: "/guias/perifericos-gamer-vale-a-pena-marcas",
+            title: "Marcas de Teclado",
+            description: "Onde encontrar os melhores switches."
         }
     ];
 
@@ -85,10 +88,11 @@ export default function KeyboardGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="15 min"
+            estimatedTime="20 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

@@ -1,62 +1,83 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Stardew Valley com Lag (Mods)? Instale o SpriteMaster e Otimize o SMAPI (2026)";
-const description = "Colocou 200 mods no Stardew Valley e o loading demora 5 minutos? Aprenda a acelerar o SMAPI e usar o SpriteMaster para dobrar o FPS.";
-const keywords = ['stardew valley lag mods', 'smapi demorando carregar', 'spritemaster stardew valley', 'stardew valley expanded travando', 'aumentar fps stardew valley', 'clear cache smapi'];
+const title = "Stardew Valley com Lag? Como otimizar Mods e o SMAPI (2026)";
+const description = "Seu Stardew Valley demora para abrir ou trava com muitos mods? Aprenda a otimizar o SMAPI e as configurações de vídeo para uma fazenda sem lag.";
+const keywords = [
+    'stardew valley lag fix mods 2026',
+    'como acelerar carregamento smapi stardew valley',
+    'stardew valley travando no pc com muitos mods fix',
+    'otimizar desempenho stardew valley 1.6 modded',
+    'smapi consumindo muita memoria como resolver'
+];
 
 export const metadata: Metadata = createGuideMetadata('stardew-valley-mods-lag-fix', title, description, keywords);
 
-export default function StardewGuide() {
+export default function StardewLagGuide() {
     const summaryTable = [
-        { label: "Mod Essencial", value: "SpriteMaster" },
-        { label: "Carregamento", value: "FastLoads" },
-        { label: "SMAPI", value: "Console Off" },
-        { label: "RAM", value: "4GB+" }
+        { label: "Check #1", value: "Ajustar Mod: SpriteMaster (Reduz lag de desenho)" },
+        { label: "Check #2", value: "Desativar 'Zoom Level' automático" },
+        { label: "Destaque", value: "Atualizar para a versão 64 bits do Java" },
+        { label: "Dificuldade", value: "Fácil" }
     ];
 
     const contentSections = [
         {
-            title: "O Problema dos Mods (SMAPI)",
+            title: "Por que o Stardew Valley trava?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          O Stardew Valley é leve. O SMAPI (carregador de mods) não é. Quando você instala o "Stardew Valley Expanded" + 100 mods, o jogo precisa recalcular texturas a cada frame.
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "A Solução: SpriteMaster",
-            content: `
-        <div class="bg-blue-900/20 p-6 rounded-xl border border-blue-500 mb-6">
-            <h4 class="text-white font-bold mb-2">SpriteMaster Resample</h4>
-            <p class="text-gray-300 text-sm">
-                Esse mod faz duas coisas:
-                <br/>1. Suaviza os gráficos (você pode desligar isso se gostar dos pixels).
-                <br/>2. <strong>Otimiza o código do jogo</strong> (Isso é o importante).
-            </p>
-            <p class="text-white mt-4 font-bold">Como configurar:</p>
-            <ul class="list-disc list-inside text-gray-300 text-sm">
-                <li>Baixe o SpriteMaster no Nexus Mods.</li>
-                <li>Instale na pasta Mods.</li>
-                <li>Dentro do jogo, aperte <strong>F11</strong> para abrir o menu do mod.</li>
-                <li>Desmarque "Resample" (se quiser pixel art original).</li>
-                <li>Mantenha "Optimize" ligado. Isso reduz o tempo de loading pela metade.</li>
-            </ul>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Acelerar o SMAPI (Tirar o Console)",
-            content: `
-        <p class="text-gray-300 mb-4">
-            Aquela janela preta cheia de texto colorido que abre junto com o jogo consome CPU para escrever os logs.
-        </p>
-        <p class="text-gray-300">
-            Adicione <code>--no-terminal</code> nas opções de inicialização da Steam. A janela preta some e o jogo abre mais rápido (mas você não verá erros de mods se crashar).
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O Stardew Valley é um jogo leve, mas o motor **SMAPI** (necessário para rodar mods) pode ficar extremamente pesado se você tiver mais de 50 mods instalados. O jogo tenta carregar todas as texturas modificadas para a memória de uma vez só. Em 2026, com a versão 1.6 e além, o gerenciamento de memória se tornou o principal culpado pelas travadas ao salvar o dia.
         </p>
       `
+        },
+        {
+            title: "1. SpriteMaster: O Mod que salva seu FPS",
+            content: `
+        <p class="mb-4 text-gray-300">Se você joga com mods, o **SpriteMaster** é obrigatório por dois motivos:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>Resampling:</strong> Ele melhora o visual dos pixels sem pesar.</li>
+            <li><strong>Otimização de Memória:</strong> Ele reescreve a forma como o jogo carrega imagens, reduzindo o tempo de carregamento inicial em até 70%.</li>
+            <li><strong>Dica:</strong> Se você não gosta do efeito de "suavização" nos gráficos, você pode desativar o visual e manter apenas as otimizações de código nas configurações do mod.</li>
+        </ul >
+      `
+        },
+        {
+            title: "2. Corrigindo o Lag no Modo Janela",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Dica de Vídeo:</h4>
+            <p class="text-sm text-gray-300">
+                O Stardew Valley tem um bug conhecido no Windows 10/11 onde o FPS cai pela metade se você usar o modo 'Janela sem Bordas'. Mude para o modo <strong>'Tela Cheia' (Fullscreen)</strong> real nas opções de vídeo do jogo para garantir que sua placa de vídeo foque 100% no pixel art.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Otimização do Consoles do SMAPI",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Sempre que você abre o jogo, o console do SMAPI (janela preta) mostra muitos textos. Se houver muitos erros em vermelho, o jogo travará tentando carregar mods quebrados. 
+            <br/>Vá ao site <strong>smapi.io/log</strong>, cole seu registro e veja quais mods precisam de atualização. Manter o SMAPI limpo de erros é a forma mais eficaz de evitar que o jogo feche sozinho no meio de um festival.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/genshin-impact-stuttering-fix-pc",
+            title: "Genshin Stuttering",
+            description: "Dicas de performance para jogos Unity."
+        },
+        {
+            href: "/guias/otimizacao-performance",
+            title: "Otimizar PC",
+            description: "Prepare o Windows para rodar jogos modded."
+        },
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers de Vídeo",
+            description: "Ajuste sua GPU para melhores cores no pixel art."
         }
     ];
 
@@ -65,10 +86,11 @@ export default function StardewGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="10 min"
+            estimatedTime="20 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

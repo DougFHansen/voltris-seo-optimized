@@ -1,176 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = 'Recuperação de Dados e Forense Digital';
-const description = 'Técnicas profissionais para recuperação de dados perdidos, análise forense digital e preservação de evidências eletrônicas. Soluções para HDD, SSD, pendrives e mídias danificadas.';
+const title = "Recuperação de Dados: Como recuperar arquivos deletados (2026)";
+const description = "Apagou algo importante sem querer? Aprenda as técnicas profissionais de recuperação de dados em HDs, SSDs e pendrives com o guia atualizado para 2026.";
 const keywords = [
-  'recuperação dados',
-  'forense digital',
-  'dados perdidos',
-  'recuperação SSD',
-  'recuperação HDD',
-  'análise forense',
-  'evidências digitais',
-  'softwares recuperação',
-  'backup forense',
-  'preservação dados',
-  'formatação acidental',
-  'deleção arquivos'
+  'como recuperar arquivos deletados do pc 2026 tutorial',
+  'melhor programa recuperar fotos apagadas hd guia',
+  'recuperar dados de pendrive corrompido tutorial 2026',
+  'recuperação de arquivos ssd windows 11 passo a passo',
+  'software de recuperação de dados gratuito pro 2026'
 ];
 
 export const metadata: Metadata = createGuideMetadata('recuperacao-dados', title, description, keywords);
 
-export default function RecuperacaoDadosGuide() {
+export default function GeneralDataRecoveryGuide() {
+  const summaryTable = [
+    { label: "Software Grátis #1", value: "Recuva (Iniciante)" },
+    { label: "Software Grátis #2", value: "PhotoRec (Profissional/Sem interface)" },
+    { label: "Software Pago", value: "EaseUS Data Recovery / R-Studio" },
+    { label: "Dificuldade", value: "Média" }
+  ];
+
   const contentSections = [
     {
-      title: "Quando a Recuperação de Dados é Possível",
+      title: "O dado nunca some de verdade (no início)",
       content: `
-        <p class="mb-4">A recuperação de dados depende fundamentalmente de NÃO SOBRESCREVER os dados originais. Quanto mais rápido você agir após a perda de dados, maiores são as chances de sucesso.</p>
-        <p class="mb-4">Situações recuperáveis:</p>
-        <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-          <li>Formatação acidental de partições</li>
-          <li>Deleção de arquivos importantes</li>
-          <li>Corrupção do sistema de arquivos</li>
-          <li>Falhas de firmware em drives</li>
-          <li>Danos físicos leves em mídias</li>
-        </ul>
-        <p>Situações críticas requerem profissionais especializados devido ao risco de perda permanente.</p>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Quando você deleta um arquivo no Windows 11 em 2026, o sistema não apaga os dados físicos do disco. Ele apenas "esquece" onde o arquivo está e marca aquele espaço como "livre para ser usado". A recuperação é possível enquanto nenhum novo arquivo for escrito por cima daquele espaço. Por isso, a regra de ouro é: **PARE de usar o PC ou pendrive** no exato momento em que perceber a perda de dados.
+        </p>
+      `
     },
     {
-      title: "Primeiros Passos Após Perda de Dados",
-      content: "",
-      subsections: [
-        {
-          subtitle: "Parar Imediatamente o Uso do Dispositivo",
-          content: `
-            <p>Ações imediatas cruciais:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li><strong>NÃO ligue o computador</strong> se for HD interno</li>
-              <li><strong>NÃO continue usando</strong> pendrives ou discos externos</li>
-              <li><strong>NÃO instale novos softwares</strong> no dispositivo afetado</li>
-              <li><strong>NÃO tente reparos DIY</strong> em drives danificados</li>
-              <li><strong>Documente</strong> exatamente o que aconteceu</li>
-            </ol>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30 mt-4">
-              <p class="text-white font-semibold mb-2">⚠️ Atenção Crítica:</p>
-              <p class="text-gray-300 leading-relaxed">
-                Qualquer escrita no dispositivo pode tornar os dados irrecuperáveis permanentemente.
-              </p>
-            </div>
-          `
-        },
-        {
-          subtitle: "Documentação e Preservação de Evidências",
-          content: `
-            <p>Para casos forenses ou jurídicos:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>Fotografe o dispositivo antes de qualquer manipulação</li>
-              <li>Registre datas, horários e circunstâncias da perda</li>
-              <li>Mantenha cadeia de custódia documentada</li>
-              <li>Evite tocar em áreas sensíveis do dispositivo</li>
-              <li>Use luvas antiestáticas se manipular hardware</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas de Recuperação Software",
-      content: "",
-      subsections: [
-        {
-          subtitle: "Recuperação para Usuários Avançados",
-          content: `
-            <p>Softwares gratuitos e pagos eficazes:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li><strong>Recuva (Gratuito):</strong> Interface simples, bom para iniciantes</li>
-              <li><strong>PhotoRec/TestDisk:</strong> Open-source, muito eficaz</li>
-              <li><strong>R-Studio:</strong> Profissional, recuperação avançada</li>
-              <li><strong>GetDataBack:</strong> Especializado em NTFS/FAT</li>
-              <li><strong>DMDE:</strong> Recuperação complexa de sistemas danificados</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "Processo de Recuperação Básico",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Baixe o software em um computador diferente</li>
-              <li>Conecte o drive afetado como secundário (não boot)</li>
-              <li>Execute varredura profunda do sistema de arquivos</li>
-              <li>Pré-visualize arquivos antes da recuperação</li>
-              <li>Salve os dados recuperados em outro dispositivo</li>
-            </ol>
-          `
-        }
-      ]
-    },
-    {
-      title: "Casos Específicos de Recuperação",
-      content: "",
-      subsections: [
-        {
-          subtitle: "SSD e NVMe (Desafios Específicos)",
-          content: `
-            <p>Recuperação em unidades de estado sólido:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>TRIM pode tornar dados permanentemente irrecuperáveis</li>
-              <li>Controladores proprietários complicam análise</li>
-              <li>Recuperação mais complexa devido à natureza flash</li>
-              <li>Softwares especializados como R-Studio SSD</li>
-              <li>Menor taxa de sucesso comparado a HDDs</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "Drives Danificados Fisicamente",
-          content: `
-            <p>Sinais de falha mecânica:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>Ruídos anormais (cliques, chiados)</li>
-              <li>Temperaturas excessivas</li>
-              <li>Vibrações ou movimentos estranhos</li>
-              <li>Falhas intermitentes de leitura</li>
-            </ul>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30 mt-4">
-              <p class="text-white font-semibold mb-2">🛠️ Solução Profissional:</p>
-              <p class="text-gray-300 leading-relaxed">
-                Laboratórios especializados em clean rooms com equipamentos de microsoldagem e substituição de cabeças de leitura.
-              </p>
-            </div>
-          `
-        }
-      ]
-    },
-    {
-      title: "Forense Digital e Análise Profissional",
+      title: "1. Recuperação em HDDs e Pendrives",
       content: `
-        <p>Para casos complexos envolvendo:</p>
-        <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-          <li>Investigações jurídicas e policiais</li>
-          <li>Violações de segurança corporativa</li>
-          <li>Recuperação de evidências deletadas</li>
-          <li>Análise de malware e intrusões</li>
-          <li>Preservação de dados para litígios</li>
-        </ul>
-        <p>Profissionais certificados utilizam metodologias ISO/IEC 27037 e mantêm cadeia de custódia rigorosa.</p>
-      `,
-      subsections: []
+        <p class="mb-4 text-gray-300">Como os discos mecânicos e pendrives não limpam os dados sozinhos, a taxa de sucesso é alta:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Instale o <strong>Recuva</strong> em um disco diferente do que você quer recuperar.</li>
+            <li>Selecione o modo 'Verificação Profunda' (Deep Scan).</li>
+            <li>Aguarde a lista de arquivos aparecer. Verde significa recuperável, vermelho significa que o arquivo já foi parcialmente sobrescrito.</li>
+            <li>Salve os arquivos recuperados sempre em um <strong>dispositivo externo</strong> (HD Externo ou Nuvem).</li>
+        </ol>
+      `
+    },
+    {
+      title: "2. O desafio do SSD: O comando TRIM",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Atenção com SSDs:</h4>
+            <p class="text-sm text-gray-300">
+                SSDs modernos de 2026 usam uma função chamada <strong>TRIM</strong>. Poucos minutos após você deletar um arquivo, o SSD faz a "limpeza física" das células de memória para manter a velocidade. Isso torna a recuperação em SSDs muito mais difícil do que em HDs. Se você apagou algo no SSD, desligue o PC imediatamente e procure por softwares especializados como o <strong>R-Studio</strong>.
+            </p>
+        </div>
+      `
+    },
+    {
+      title: "3. Forense Digital em 2026",
+      content: `
+        <p class="mb-4 text-gray-300">
+            Para casos onde o sistema de arquivos está destruído (partição RAW):
+            <br/><br/><strong>Dica:</strong> Use o <strong>TestDisk</strong>. Ele é uma ferramenta de linha de comando poderosa que consegue reconstruir tabelas de partição inteiras. Ele não recupera apenas um arquivo, ele recupera o disco todo que "sumiu" do Meu Computador. Requer paciência e leitura cuidadosa dos comandos, mas é a salvação de muitos técnicos em 2026.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/backup-dados",
-      title: "Como Fazer Backup dos Seus Dados",
-      description: "Métodos eficazes para proteger seus dados importantes preventivamente."
+      href: "/guias/recuperacao-dados-hd-corrompido",
+      title: "HD Corrompido",
+      description: "Foco em danos físicos e erros de leitura."
     },
     {
-      href: "/guias/diagnostico-hardware",
-      title: "Diagnóstico de Falhas de Hardware",
-      description: "Identifique problemas físicos em componentes do seu sistema."
+      href: "/guias/backup-dados",
+      title: "Prevenção",
+      description: "Como nunca mais perder um arquivo."
+    },
+    {
+      href: "/guias/verificar-saude-hd-ssd-crystaldiskinfo",
+      title: "Saúde do Disco",
+      description: "Saiba quando seu HD vai falhar."
     }
   ];
 
@@ -179,12 +87,11 @@ export default function RecuperacaoDadosGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="35 minutos"
-      difficultyLevel="Avançado"
+      estimatedTime="40 min"
+      difficultyLevel="Intermediário"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
-      author="Equipe Técnica Voltris"
-      lastUpdated="Janeiro 2025"
     />
   );
 }

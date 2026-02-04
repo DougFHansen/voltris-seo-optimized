@@ -1,72 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Perda de Pacote (Packet Loss): Como Identificar e Resolver (Modem e Roteador) (2026)";
-const description = "Seu boneco teletransporta ou o tiro não registra? Isso é Packet Loss. Aprenda a testar se o problema é no seu cabo, no Wi-Fi ou na Operadora.";
-const keywords = ['packet loss fix', 'perda de pacote como resolver', 'teste de packet loss cmd', 'boneco teletransportando jogo', 'cabo ethernet vs wifi packet loss', 'trocar cabo rede cat5e cat6'];
+const title = "Perda de Pacote (Packet Loss): Como diagnosticar e resolver (2026)";
+const description = "Seu personagem está 'teletransportando' ou o jogo trava do nada? Aprenda a resolver a Perda de Pacote e estabilize sua conexão para jogos em 2026.";
+const keywords = [
+    'como resolver perda de pacote jogos 2026 tutorial',
+    'packet loss fix valorant cs2 lol guia',
+    'o que causa perda de pacote no wifi tutorial 2026',
+    'comando cmd para ver perda de pacotes tutorial',
+    'exitlag resolve perda de pacotes guia definitivo'
+];
 
 export const metadata: Metadata = createGuideMetadata('perda-de-pacote-packet-loss-fix', title, description, keywords);
 
 export default function PacketLossGuide() {
     const summaryTable = [
-        { label: "Sintoma", value: "Teletransporte" },
-        { label: "Causa #1", value: "Wi-Fi (Sinal)" },
-        { label: "Causa #2", value: "Cabo Ruim" },
-        { label: "Teste", value: "Pathping" }
+        { label: "O que é", value: "Dados que 'somem' entre seu PC e o Servidor" },
+        { label: "Sintoma", value: "Teletransporte, ações que não saem" },
+        { label: "Causa #1", value: "Internet via Wi-Fi ou Cabos ruins" },
+        { label: "Solução Pro", value: "Software de Rotas (ExitLag/NoPing)" }
     ];
 
     const contentSections = [
         {
-            title: "Diagnóstico: Onde está o defeito?",
+            title: "O que é o Packet Loss?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Packet Loss é quando você envia "Eu atirei", mas a carta se perde no correio e nunca chega no servidor. O servidor acha que você não atirou.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Imagine que você está jogando Valorant. Você clica para atirar, mas o tiro não sai. No segundo seguinte, você aparece morto em outro lugar. Isso é o **Packet Loss**. Ao contrário do "Ping alto" (onde o dado demora a chegar), na Perda de Pacote o dado **simplesmente não chega**. Em 2026, com redes 5G e fibra óptica, a perda de pacotes geralmente acontece dentro da sua casa ou na "rota" que a sua operadora usa.
         </p>
-        <p class="mb-4 text-gray-300 font-bold">
-            Vamos usar o comando <code>pathping</code> para rastrear a rota.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
-            <li>Abra o CMD.</li>
-            <li>Digite: <code>pathping 8.8.8.8</code> (Vamos testar a rota até o Google).</li>
-            <li>Espere uns 3 minutos. Ele vai listar cada salto (hop).</li>
-        </ol>
-      `,
-            subsections: []
-        },
-        {
-            title: "Interpretando o Resultado",
-            content: `
-        <div class="space-y-4">
-            <div class="bg-red-900/20 p-4 rounded border-l-4 border-red-500">
-                <strong class="text-white block">Perda no Salto 0 ou 1 (Seu Roteador)</strong>
-                <p class="text-gray-300 text-sm">
-                    Se aparecer "1% Loss" logo na primeira linha, o problema é NA SUA CASA.
-                    <br/>- Se usa Wi-Fi: É interferência. Mude para cabo ou canal 5GHz.
-                    <br/>- Se usa Cabo: Seu cabo está quebrado ou a porta do roteador está oxidada. Troque o cabo.
-                </p>
-            </div>
-            <div class="bg-yellow-900/20 p-4 rounded border-l-4 border-yellow-500">
-                <strong class="text-white block">Perda no Salto 2 ou 3 (ISP)</strong>
-                <p class="text-gray-300 text-sm">
-                    Isso é na rede do seu provedor (poste da rua/central). Ligue para eles e envie o print desse teste. Eles são obrigados a arrumar.
-                </p>
-            </div>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Hardware: Cat5e vs Cat6",
-            content: `
-        <p class="text-gray-300 mb-4">
-            Muitos usam cabos de rede de 10 anos atrás.
-        </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li><strong>Cat5 (Sem o 'e'):</strong> Lixo. Jogue fora. Suporta só 100Mbps.</li>
-            <li><strong>Cat5e:</strong> Padrão. Suporta 1Gbps. Bom para até 50 metros.</li>
-            <li><strong>Cat6:</strong> Blindado. Tem um plástico no meio que separa os fios para evitar interferência elétrica. Melhora MUITO a estabilidade em distâncias longas. Invista em um Cat6.</li>
-        </ul>
       `
+        },
+        {
+            title: "1. Diagnóstico via CMD",
+            content: `
+        <p class="mb-4 text-gray-300">Descubra onde o dado está sumindo:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Abra o Prompt de Comando (CMD).</li>
+            <li>Digite: <code>ping google.com -t</code>.</li>
+            <li>Deixe rodar por 1 minuto. Observe se aparece a mensagem <strong>'Esgotado o tempo limite do pedido'</strong>.</li>
+            <li>Se aparecer mais de 1%, você tem um problema físico na sua rede ou na sua operadora.</li>
+        </ol>
+      `
+        },
+        {
+            title: "2. Wi-Fi vs Cabo (O Grande Culpado)",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Inimigo do Gamer:</h4>
+            <p class="text-sm text-gray-300">
+                O Wi-Fi, mesmo o Wi-Fi 6 ou 7 de 2026, sofre interferências de paredes, fornos micro-ondas e redes de vizinhos. Essas interferências causam quedas momentâneas de pacotes. <strong>Para jogos competitivos, o cabo Ethernet (preferencialmente CAT6) é obrigatório</strong>. Se você não puder passar um cabo, considere adaptadores Powerline, que usam a fiação elétrica da casa.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Problemas de Rota da Operadora",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Às vezes, sua internet está perfeita, mas o "caminho" que ela faz até o servidor do jogo está congestionado. 
+            <br/><br/><strong>Dica:</strong> Use softwares de tunelamento como <strong>ExitLag</strong> ou <strong>NoPing</strong> em 2026. Eles não diminuem o seu ping fisicamente, mas eles mudam a sua rota para uma estrada privada e livre de trânsito, o que elimina quase 100% da perda de pacotes causada pela infraestrutura da sua operadora.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/reduzir-ping-jogos-online",
+            title: "Reduzir Ping",
+            description: "Dicas extras de conectividade."
+        },
+        {
+            href: "/guias/melhor-dns-jogos-2026",
+            title: "Melhor DNS",
+            description: "Ajude o sistema a encontrar rotas melhores."
+        },
+        {
+            href: "/guias/troubleshooting-internet",
+            title: "Reparo de Rede",
+            description: "Como resetar drivers de rede bugados."
         }
     ];
 
@@ -79,6 +91,7 @@ export default function PacketLossGuide() {
             difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

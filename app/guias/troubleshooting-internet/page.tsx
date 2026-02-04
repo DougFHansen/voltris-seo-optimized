@@ -1,183 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Guia Completo de Troubleshooting de Internet";
-const description = "Diagnostique e resolva problemas de conexão, velocidade lenta e instabilidade de internet. Ferramentas profissionais de análise.";
-const keywords = ["troubleshooting internet","diagnóstico conexão","velocidade internet","ping","traceroute","dns"];
+const title = "Internet Lenta ou Caindo? Guia de Troubleshooting 2026";
+const description = "Sua internet não está funcionando como deveria? Aprenda o passo a passo para diagnosticar e resolver problemas de conexão no Windows 11 em 2026.";
+const keywords = [
+  'internet lenta o que fazer 2026 tutorial',
+  'como resolver wifi caindo windows 11 guia 2026',
+  'passo a passo consertar rede internet pc tutorial',
+  'internet conectada mas nao navega como resolver 2026',
+  'resetar configurações de rede windows 11 tutorial'
+];
 
 export const metadata: Metadata = createGuideMetadata('troubleshooting-internet', title, description, keywords);
 
-export default function TroubleshootinginternetGuide() {
+export default function InternetTroubleshootingGuide() {
+  const summaryTable = [
+    { label: "Primeiro Passo", value: "Reiniciar Roteador (30 segundos desligado)" },
+    { label: "Check Físico", value: "Cabo Ethernet CAT6 ou Superior" },
+    { label: "Solução Pro", value: "Reset de Rede do Windows 11" },
+    { label: "Dificuldade", value: "Iniciante" }
+  ];
+
   const contentSections = [
     {
-      title: "Introdução e Conceitos Fundamentais",
+      title: "O diagnóstico de 2026",
       content: `
-        <p class="mb-4">O troubleshooting de internet envolve diagnosticar e resolver problemas de conectividade, como lentidão, desconexões frequentes, DNS não resolvendo, ou impossibilidade de acessar certos sites/serviços.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Identificação precisa da causa raiz do problema</li>
-              <li>✓ Resolução eficiente de problemas de conectividade</li>
-              <li>✓ Otimização da velocidade e estabilidade da conexão</li>
-              <li>✓ Melhoria na experiência de navegação</li>
-            </ul>
-          </div>
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>🌐 Acesso físico ao modem/roteador</li>
-              <li>💻 Computador com Windows PowerShell ou CMD</li>
-              <li>⏱️ Tempo estimado: 30-60 minutos</li>
-              <li>📞 Informações do provedor de internet (ISP)</li>
-            </ul>
-          </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Estar desconectado em 2026 é como estar no escuro. Muitas vezes, o problema da sua internet não é a operadora, mas sim um erro de configuração no seu Windows 11 ou uma falha de hardware na sua própria rede doméstica. Antes de ligar para o suporte técnico e esperar horas no telefone, siga este roteiro lógico para identificar e resolver o problema sozinho.
+        </p>
+      `
+    },
+    {
+      title: "1. A Regra do 'Cabo de Ouro'",
+      content: `
+        <p class="mb-4 text-gray-300">O problema é no Wi-Fi ou no sinal que chega da rua?</p>
+        <p class="text-sm text-gray-300">
+            O teste mais importante é conectar um computador via **cabo** diretamente no roteador. Se a internet funcionar perfeitamente no cabo, mas falhar no Wi-Fi, o problema é puramente a sua rede sem fio (interferência ou canal saturado). Se a internet continuar lenta no cabo, o problema pode estar no roteador, no cabo da rua ou nas configurações profundas do seu Windows.
+        </p>
+      `
+    },
+    {
+      title: "2. Resetando a Rede do Windows 11",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Limpando erros de software:</h4>
+            <p class="text-sm text-gray-300">
+                Se o seu computador diz 'Conectado, mas sem internet', o Windows pode estar com um registro de rede travado. <br/><br/>
+                1. Vá em Configurações > Rede e Internet > Configurações avançadas de rede. <br/>
+                2. Clique em <strong>Restauração da rede</strong>. <br/>
+                3. Clique em 'Restaurar agora'. O Windows desinstalará e reinstalará todos os adaptadores de rede, apagando qualquer configuração errada que esteja impedindo a navegação.
+            </p>
         </div>
-        
-        <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4 my-6">
-          <h3 class="text-green-400 font-semibold mb-2">💡 Dica Profissional</h3>
-          <p class="text-gray-300 text-sm">Sempre comece o troubleshooting verificando conexão física antes de tentar soluções complexas.</p>
-        </div>
-      `,
-      subsections: [
-        {
-          subtitle: "Quando Aplicar Esta Técnica",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Quando enfrentar problemas de performance</li>
-              <li>Para prevenção de falhas futuras</li>
-              <li>Durante manutenção preventiva</li>
-              <li>Ao configurar novos sistemas</li>
-            </ul>
-          `
-        }
-      ]
+      `
     },
     {
-      title: "Configuração Passo a Passo",
+      title: "3. O problema das atualizações do Windows",
       content: `
-        <p class="mb-4">Siga estas etapas metodológicas para implementação completa e segura.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Preparação Inicial",
-          content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
-              <li>Faça backup completo do sistema</li>
-              <li>Verifique requisitos mínimos de hardware/software</li>
-              <li>Baixe ferramentas necessárias de fontes confiáveis</li>
-              <li>Crie ponto de restauração do sistema</li>
-              <li>Feche todos os programas em execução</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Execução Principal",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Siga instruções específicas do guia</li>
-              <li>Monitore sistema durante processo</li>
-              <li>Documente cada etapa realizada</li>
-              <li>Teste funcionalidade após conclusão</li>
-              <li>Verifique logs de eventuais erros</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas e Recursos Recomendados",
-      content: `
-        <p class="mb-4">Utilize estas ferramentas profissionais para melhores resultados.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Software Especializado",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas nativas do Windows</li>
-                  <li>Software open source recomendado</li>
-                  <li>Utilitários de diagnóstico básicos</li>
-                </ul>
-              </div>
-              <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
-                  <li>Ferramentas profissionais especializadas</li>
-                  <li>Licenças corporativas quando necessário</li>
-                  <li>Suporte técnico especializado</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Práticas de Segurança",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Sempre verifique integridade de downloads</li>
-              <li>Use apenas fontes oficiais e confiáveis</li>
-              <li>Mantenha antivírus atualizado durante processo</li>
-              <li>Faça testes em ambiente controlado primeiro</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Troubleshooting e Solução de Problemas",
-      content: `
-        <p class="mb-4">Soluções para problemas comuns que podem surgir durante a implementação.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Erros Frequentes e Soluções",
-          content: `
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: [Descrição do problema comum]</h4>
-              <p class="text-gray-300 text-sm mb-2">Solução: Etapas detalhadas para resolução</p>
-              <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                <li>Etapa 1 de resolução</li>
-                <li>Etapa 2 de resolução</li>
-                <li>Etapa 3 de resolução</li>
-              </ul>
-            </div>
-          `
-        },
-        {
-          subtitle: "Prevenção de Problemas Futuros",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Implemente monitoramento contínuo</li>
-              <li>Realize manutenção preventiva regular</li>
-              <li>Mantenha sistema sempre atualizado</li>
-              <li>Documente configurações e mudanças</li>
-            </ul>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            <strong>Dica de 2026:</strong> O Windows Update às vezes instala drivers "genéricos" que causam instabilidade no Wi-Fi. 
+            <br/><br/>Verifique no site do fabricante do seu notebook ou placa-mãe se há um driver de rede (Intel, Realtek ou Killer) mais recente. Instalar o driver oficial muitas vezes resolve quedas de conexão constantes que o reset de rede não conseguiu consertar.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      href: "/guias/como-limpar-cache-dns-ip-flushdns",
+      title: "Limpar Cache DNS",
+      description: "Resolva erros de sites que não abrem."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
+      href: "/guias/problemas-conexao-wifi-causa-solucao",
+      title: "Problemas Wi-Fi",
+      description: "Dicas específicas para sinal sem fio."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      href: "/guias/reduzir-ping-jogos-online",
+      title: "Reduzir Ping",
+      description: "Otimize para uma conexão mais rápida."
     }
   ];
 
@@ -186,9 +87,10 @@ export default function TroubleshootinginternetGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="55 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="20 min"
+      difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

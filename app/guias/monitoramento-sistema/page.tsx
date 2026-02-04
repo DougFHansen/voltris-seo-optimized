@@ -1,212 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = 'Monitoramento Completo do Sistema Windows';
-const description = 'Aprenda a monitorar recursos do sistema em tempo real, identificar gargalos de performance e prevenir problemas antes que eles afetem seu trabalho. Ferramentas profissionais e métricas essenciais.';
+const title = "Monitoramento de Sistema: Melhores Ferramentas para 2026";
+const description = "Saiba exatamente o que está acontecendo com o seu PC! Conheça as melhores ferramentas para monitorar FPS, uso de CPU, GPU e temperatura em tempo real.";
 const keywords = [
-  'monitoramento sistema',
-  'performance Windows',
-  'uso CPU',
-  'uso memória RAM',
-  'monitoramento disco',
-  'temperatura sistema',
-  'ferramentas monitoramento',
-  'Task Manager avançado',
-  'Resource Monitor',
-  'Performance Monitor',
-  'análise sistema',
-  'otimização performance',
-  'identificar gargalos'
+  'melhores ferramentas monitoramento pc gamer 2026',
+  'como monitorar temperatura cpu e gpu windows 11',
+  'hwinfo64 vs msi afterburner qual o melhor tutorial',
+  'ver uso de ram e processador em jogos 2026 guia',
+  'monitorar desempenho pc completo software gratuito'
 ];
 
 export const metadata: Metadata = createGuideMetadata('monitoramento-sistema', title, description, keywords);
 
-export default function MonitoramentoSistemaGuide() {
+export default function SystemMonitoringGuide() {
+  const summaryTable = [
+    { label: "MSI Afterburner", value: "Melhor para FPS e Uso de GPU em jogos" },
+    { label: "HWiNFO64", value: "Melhor para Sensores Detalhados (Tensão, Hotspot)" },
+    { label: "FPS Monitor", value: "Interface visual bonita (Pago)" },
+    { label: "Dificuldade", value: "Intermediário" }
+  ];
+
   const contentSections = [
     {
-      title: "Importância do Monitoramento do Sistema",
+      title: "Por que monitorar seu PC?",
       content: `
-        <p class="mb-4">O monitoramento contínuo do sistema permite identificar problemas de performance antes que eles impactem sua produtividade. Muitos usuários só percebem que há um problema quando o computador já está extremamente lento ou travando.</p>
-        <p class="mb-4">Com monitoramento proativo, você pode:</p>
-        <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-          <li>Identificar programas que consomem recursos excessivos</li>
-          <li>Prevenir superaquecimento de componentes</li>
-          <li>Detectar vazamentos de memória</li>
-          <li>Planejar upgrades de hardware</li>
-          <li>Otimizar o uso de recursos do sistema</li>
-        </ul>
-        <p>Esta prática é essencial tanto para usuários domésticos quanto para ambientes corporativos, onde downtime pode ter custos significativos.</p>
-      `,
-      subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, com processadores que fazem "boost" automático baseado na temperatura, não saber como seu hardware está se comportando é um erro. O monitoramento permite identificar gargalos (CPU a 100% e GPU a 40%), superaquecimento antes que o PC desligue sozinho e até problemas de voltagem na fonte que podem queimar seus componentes. Conhecimento é poder para qualquer entusiasta de PC.
+        </p>
+      `
     },
     {
-      title: "Ferramentas de Monitoramento Nativas do Windows",
-      content: "",
-      subsections: [
-        {
-          subtitle: "Gerenciador de Tarefas Avançado",
-          content: `
-            <p>O Gerenciador de Tarefas vai além do básico:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Ctrl + Shift + Esc</kbd></li>
-              <li>Vá na aba "Desempenho" para visão geral</li>
-              <li>Clique em cada componente (CPU, Memória, Disco, Rede) para detalhes</li>
-              <li>Na aba "Detalhes", veja todos os processos em execução</li>
-              <li>Ordene por colunas para identificar os maiores consumidores de recursos</li>
-            </ol>
-            <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30 mt-4">
-              <p class="text-white font-semibold mb-2">💡 Dica Profissional:</p>
-              <p class="text-gray-300 leading-relaxed">
-                Configure o Gerenciador de Tarefas para iniciar minimizado: Opções > Iniciar minimizado na área de notificação.
-              </p>
-            </div>
-          `
-        },
-        {
-          subtitle: "Monitor de Recursos (Resource Monitor)",
-          content: `
-            <p>Ferramenta mais detalhada que o Gerenciador de Tarefas:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd></li>
-              <li>Digite <code class="bg-[#2a2a2e] px-2 py-1 rounded">resmon</code> e pressione Enter</li>
-              <li>Visualize uso detalhado de CPU, Disco, Rede e Memória</li>
-              <li>Identifique processos associados a arquivos e portas específicas</li>
-              <li>Monitore processos em espera e bloqueios de recursos</li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Monitor de Desempenho (Performance Monitor)",
-          content: `
-            <p>Para monitoramento avançado e histórico:</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
-              <li>Pressione <kbd class="bg-[#2a2a2e] px-2 py-1 rounded">Windows + R</kbd></li>
-              <li>Digite <code class="bg-[#2a2a2e] px-2 py-1 rounded">perfmon</code> e pressione Enter</li>
-              <li>Adicione contadores para monitorar métricas específicas</li>
-              <li>Crie logs históricos de performance</li>
-              <li>Configure alertas para valores críticos</li>
-            </ol>
-          `
-        }
-      ]
-    },
-    {
-      title: "Métricas Críticas para Monitorar",
-      content: "",
-      subsections: [
-        {
-          subtitle: "CPU (Processador)",
-          content: `
-            <p>Indicadores importantes:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li><strong>Uso médio:</strong> Ideal abaixo de 80% durante uso normal</li>
-              <li><strong>Picos:</strong> Momentâneos acima de 90% são normais</li>
-              <li><strong>Temperatura:</strong> Abaixo de 80°C sob carga</li>
-              <li><strong>Frequência:</strong> Deve variar conforme demanda</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "Memória RAM",
-          content: `
-            <p>Parâmetros essenciais:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li><strong>Uso total:</strong> Abaixo de 85% do total disponível</li>
-              <li><strong>Commit charge:</strong> Não deve ultrapassar memória física</li>
-              <li><strong>Paging:</strong> Taxa de paginação baixa (< 10 MB/s)</li>
-              <li><strong>Standby list:</strong> Grande parte da memória deve estar aqui</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "Disco Rígido/SSD",
-          content: `
-            <p>Métricas de armazenamento:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li><strong>Utilização:</strong> Abaixo de 100% continuamente</li>
-              <li><strong>Latência média:</strong> Abaixo de 100ms para HDD, 10ms para SSD</li>
-              <li><strong>Taxa de transferência:</strong> Próxima às especificações do drive</li>
-              <li><strong>Fila de espera:</strong> Abaixo de 2 para bom desempenho</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas de Terceiros Recomendadas",
-      content: "",
-      subsections: [
-        {
-          subtitle: "HWiNFO64",
-          content: `
-            <p>Monitoramento completo de hardware:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>Temperaturas de todos os componentes</li>
-              <li>Voltagens e frequências reais</li>
-              <li>Informações detalhadas de hardware</li>
-              <li>Histórico de leituras</li>
-              <li>Alertas configuráveis</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "Process Explorer",
-          content: `
-            <p>Substituto avançado do Gerenciador de Tarefas:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>Hierarquia completa de processos</li>
-              <li>Handles e DLLs carregadas</li>
-              <li>Análise de consumo detalhada</li>
-              <li>Kill de processos problemáticos</li>
-            </ul>
-          `
-        },
-        {
-          subtitle: "CrystalDiskInfo",
-          content: `
-            <p>Específico para saúde de discos:</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
-              <li>Status S.M.A.R.T. em tempo real</li>
-              <li>Temperatura do disco</li>
-              <li>Horas de uso acumuladas</li>
-              <li>Previsão de falhas</li>
-            </ul>
-          `
-        }
-      ]
-    },
-    {
-      title: "Criação de Scripts de Monitoramento",
+      title: "1. MSI Afterburner: O Rei dos Frames",
       content: `
-        <p>Você pode automatizar o monitoramento com scripts PowerShell:</p>
-        <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30 mt-4">
-          <p class="text-white font-semibold mb-2">📝 Script de Monitoramento Básico:</p>
-          <pre class="text-gray-300 text-sm overflow-x-auto">
-# Monitorar uso de CPU e memória
-while ($true) {
-  $cpu = (Get-Counter "\Processor(_Total)\% Processor Time").CounterSamples.CookedValue
-  $mem = (Get-Counter "\Memory\Available MBytes").CounterSamples.CookedValue
-  
-  Write-Host "CPU: $([math]::Round($cpu, 2))% | Memória Disponível: $mem MB" -ForegroundColor Green
-  Start-Sleep 5
-}
-          </pre>
+        <p class="mb-4 text-gray-300">Indispensável para qualquer gamer que queira ver dados enquanto joga:</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3">
+            <li><strong>On-Screen Display (OSD):</strong> Coloca um gráfico de FPS e frametime no canto da tela sem que você precise sair do jogo.</li>
+            <li><strong>Versatilidade:</strong> Funciona em placas de vídeo de todas as marcas (NVIDIA, AMD, Intel).</li>
+            <li><strong>Check de Thermal Throttling:</strong> Permite ver se o clock da GPU cai quando chega em 83ºC.</li>
+        </ul >
+      `
+    },
+    {
+      title: "2. HWiNFO64: A Bíblia dos Sensores",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Informação Profissional:</h4>
+            <p class="text-sm text-gray-300">
+                Se o Afterburner te mostra o básico, o <strong>HWiNFO64</strong> te mostra tudo. <br/><br/>
+                Ele lê sensores que outros programas ignoram, como a temperatura dos módulos de memória (VRAM), a velocidade de rotação exata de cada fan e até se sua placa-mãe está entregando a energia correta. Em 2026, ele é a ferramenta nº 1 para diagnosticar telas azuis e problemas de hardware instável.
+            </p>
         </div>
-      `,
-      subsections: []
+      `
+    },
+    {
+      title: "3. Dica: Xbox Game Bar (Win + G)",
+      content: `
+        <p class="mb-4 text-gray-300">
+            Não quer instalar nada? 
+            <br/><br/>O Windows 11 tem um monitor nativo leve. Basta apertar <strong>Win + G</strong> e abrir o widget de 'Desempenho'. Ele mostra o uso de CPU, GPU, VRAM, RAM e FPS de forma simples e discreta. É o ideal para quem não quer telas cheias de números e gráficos, mas quer ter uma ideia do que está pesando no PC.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/diagnostico-hardware",
-      title: "Diagnóstico de Falhas de Hardware",
-      description: "Identifique problemas físicos de componentes com ferramentas especializadas."
+      href: "/guias/monitorar-temperatura-pc",
+      title: "Monitorar Temperatura",
+      description: "Aprofunde-se no controle térmico."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Técnicas avançadas para melhorar o desempenho do seu sistema."
+      href: "/guias/overclock-gpu-msi-afterburner",
+      title: "Usar Afterburner",
+      description: "Tutorial passo a passo de configuração."
+    },
+    {
+      href: "/guias/diagnostico-hardware",
+      title: "Diagnóstico",
+      description: "O que fazer com os dados coletados."
     }
   ];
 
@@ -215,12 +87,11 @@ while ($true) {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="25 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="15 min"
+      difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
-      author="Equipe Técnica Voltris"
-      lastUpdated="Janeiro 2025"
     />
   );
 }

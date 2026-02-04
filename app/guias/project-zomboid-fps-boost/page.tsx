@@ -1,70 +1,87 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Project Zomboid FPS Boost: Como Rodar com Hordas Gigantes sem Travar (2026)";
-const description = "Louisville está injogável? O sangue no chão e o zoom matam seu FPS. Veja como configurar o arquivo .bat para alocar mais RAM e os mods essenciais de limpeza.";
-const keywords = ['project zomboid fps boost', 'zomboid travando muito zoombie', 'aumentar memoria ram project zomboid', 'melhores mods performance zomboid', 'rain wash blood mod', 'desativar sangue zomboid'];
+const title = "Project Zomboid: Como aumentar o FPS e alocar mais RAM (2026)";
+const description = "Sofrendo com lag no Project Zomboid? Aprenda a alocar mais memória RAM e configurar os gráficos para rodar hordas gigantes sem travar em 2026.";
+const keywords = [
+    'project zomboid aumentar fps 2026 tutorial',
+    'como alocar mais ram project zomboid guia 2026',
+    'project zomboid lag fix hordas gigantes tutorial',
+    'project zomboid melhores configurações graficas 2026',
+    'project zomboid server lag fix tutorial guia'
+];
 
 export const metadata: Metadata = createGuideMetadata('project-zomboid-fps-boost', title, description, keywords);
 
-export default function ZomboidGuide() {
+export default function ProjectZomboidGuide() {
     const summaryTable = [
-        { label: "Matador de FPS", value: "Poças de Sangue" },
-        { label: "Mod Essencial", value: "Rain Wash" },
-        { label: "RAM", value: "Editar .BAT" },
-        { label: "Zoom", value: "250% é pesado" }
+        { label: "Configuração Chave", value: "RAM Alocada (JSON Edit)" },
+        { label: "Vilão do FPS", value: "Sangue no chão / Zoom Distante" },
+        { label: "Duração do Guia", value: "15 min" },
+        { label: "Dificuldade", value: "Médio" }
     ];
 
     const contentSections = [
         {
-            title: "Desativando o Sangue (Blood Decals)",
+            title: "O desafio de sobreviver ao Lag",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Cada zumbi morto deixa uma poça. Depois de matar 500 zumbis, o jogo precisa renderizar 500 poças. Isso explode a CPU.
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Project Zomboid é um jogo incrível, mas a sua engine (baseada em Java) tem dificuldades extremas para gerenciar centenas de zumbis simultâneos no Windows 11 em 2026. Por padrão, o jogo vem configurado para usar pouca memória RAM, o que causa travadas (stuttering) constantes assim que você entra em cidades grandes como Louisville. Otimizar o jogo exige mexer "sob o capô" dos arquivos do sistema.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
-            <li>Vá em Opções > Exibição.</li>
-            <li><strong>Decalques de Sangue (Blood Decals):</strong> Mude de 100% para <strong>10%</strong> ou <strong>Nenhum</strong>.</li>
-            <li>Isso triplica o FPS em cidades grandes.</li>
-        </ul>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Alocando Mais RAM Manualmente",
+            title: "1. Alocando mais Memória RAM",
+            content: `
+        <p class="mb-4 text-gray-300">Este é o ajuste mais importante para evitar crashes:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Vá na pasta de instalação do jogo (Steam > Botão direito > Navegar pelos arquivos locais).</li>
+            <li>Procure o arquivo <strong>ProjectZomboid64.json</strong>.</li>
+            <li>Abra-o com o Bloco de Notas. Procure a linha que começa com <code>-Xmx</code>.</li>
+            <li>Mude para <code>-Xmx8g</code> (se você tiver 16GB de RAM) ou <code>-Xmx4g</code> (se tiver 8GB).</li>
+            <li>Salve o arquivo. Agora o jogo tem permissão para usar mais ram para carregar o mapa.</li>
+        </ol>
+      `
+        },
+        {
+            title: "2. Gráficos: O Peso das Hordas",
+            content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Configurações Críticas em 2026:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Blood Decals (Sangue):</strong> Coloque em 'None'. Cada mancha de sangue no chão é um objeto que o jogo precisa processar para sempre. Em hordas, isso mata o seu FPS. <br/>
+                - <strong>Zoom Levels:</strong> Desative o zoom máximo. Quanto mais longe a câmera está, mais o jogo precisa renderizar, causando lag de processamento. <br/>
+                - <strong>Lighting Quality:</strong> Mude para 'Low'. As sombras dinâmicas de árvores pesam muito no motor Java do Zomboid.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "3. Dica para Multiplayer (Servidores)",
             content: `
         <p class="mb-4 text-gray-300">
-            O jogo vem configurado para usar pouco. Se você tem 16GB, dê mais comida pro bicho.
+            <strong>Desincronização:</strong> 
+            <br/><br/>Se você vê zumbis "teleportando", o problema é o **Update Rate**. Nas configurações de rede do jogo, garanta que o 'Display FPS' esteja ativo. Se o seu FPS estiver alto mas os outros jogadores travam, tente desativar o 'Steam Overlay', que costuma ter conflito com a interface Java do Project Zomboid em 2026.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
-            <li>Vá na pasta do jogo na Steam.</li>
-            <li>Clique direito no arquivo <code>ProjectZomboid64.json</code> (ou edite o arquivo .bat se usar versão antiga).</li>
-            <li>Procure por <code>-Xmx3072m</code> (Isso significa 3GB).</li>
-            <li>Mude para <code>-Xmx8192m</code> (8GB) se você tiver 16GB de RAM.</li>
-            <li>Salve e abra o jogo. O loading vai ser instantâneo.</li>
-        </ol>
-      `,
-            subsections: []
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/limpar-memoria-ram-windows",
+            title: "Limpar RAM",
+            description: "Libere memória antes de abrir o Zomboid."
         },
         {
-            title: "Mods Obrigatórios",
-            content: `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-blue-500">
-                <strong class="text-white block">Rain Wash</strong>
-                <p class="text-gray-300 text-sm">
-                    Faz a chuva limpar o sangue do chão automaticamente. Mantém seu save leve a longo prazo.
-                </p>
-            </div>
-            <div class="bg-gray-800 p-4 rounded border-l-4 border-green-500">
-                <strong class="text-white block">Better FPS</strong>
-                <p class="text-gray-300 text-sm">
-                    Otimiza a renderização de zumbis distantes.
-                </p>
-            </div>
-        </div>
-      `,
-            subsections: []
+            href: "/guias/reduzir-ping-jogos-online",
+            title: "Reduzir Ping",
+            description: "Melhore sua conexão em servidores MP."
+        },
+        {
+            href: "/guias/como-escolher-processador-2026",
+            title: "Upgrade de CPU",
+            description: "Por que o clock alto ajuda no Project Zomboid."
         }
     ];
 
@@ -74,9 +91,10 @@ export default function ZomboidGuide() {
             description={description}
             keywords={keywords}
             estimatedTime="15 min"
-            difficultyLevel="Intermediário"
+            difficultyLevel="Médio"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

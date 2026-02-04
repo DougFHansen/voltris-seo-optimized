@@ -1,264 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "2FA - Autenticação de Dois Fatores (Guia Completo)";
-const description = "O que é 2FA e como ativar em todas as contas: Google, Microsoft, Facebook e bancos. Autenticação de dois fatores passo a passo com Google Authenticator e apps de 2FA.";
-const keywords = ["2fa", "autenticação dois fatores", "autenticacao dois fatores", "segurança de contas", "totp", "u2f", "google authenticator", "dois fatores"];
+const title = "Autenticação de Dois Fatores (2FA): O Guia Definitivo (2026)";
+const description = "Sua senha não é mais suficiente! Aprenda como usar o 2FA para proteger suas contas do Insta, Google e Discord contra hackers em 2026.";
+const keywords = [
+  'como ativar autenticação de dois fatores guia 2026',
+  'melhores apps de 2fa google authenticator vs authy',
+  'proteger conta instagram e facebook 2FA tutorial',
+  'por que usar autenticação em duas etapas guia 2026',
+  'recuperar conta com 2FA ativado tutorial completo'
+];
 
 export const metadata: Metadata = createGuideMetadata('autenticacao-dois-fatores', title, description, keywords);
 
-export default function AutenticacaodoisfatoresGuide() {
+export default function TwoFactorGuide() {
+  const summaryTable = [
+    { label: "O que é", value: "Uma segunda chave além da senha" },
+    { label: "Canais", value: "Apps (Melhor), SMS (Inseguro), E-mail (Médio)" },
+    { label: "Apps Sugeridos", value: "Authy / Aegis / Microsoft Authenticator" },
+    { label: "Dificuldade", value: "Fácil" }
+  ];
+
   const contentSections = [
     {
-      title: "Introdução e Conceitos Fundamentais",
+      title: "Senha sozinha é perigoso",
       content: `
-        <p class="mb-4">A autenticação de dois fatores (2FA) é uma camada essencial de segurança que requer duas formas diferentes de verificação da sua identidade antes de conceder acesso às suas contas online.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Proteção contra roubo de senhas</li>
-              <li>✓ Segurança mesmo em caso de vazamento</li>
-              <li>✓ Alerta imediato de tentativas suspeitas</li>
-              <li>✓ Conformidade com regulamentações</li>
-            </ul>
-          </div>
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>📱 Smartphone com câmera</li>
-              <li>🌐 Contas em serviços compatíveis</li>
-              <li>⏱️ Tempo estimado: 30-45 minutos</li>
-              <li>📚 Nível: Básico a Intermediário</li>
-            </ul>
-          </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, com o aumento massivo de vazamentos de dados, as chances da sua senha principal já estar em alguma lista de criminosos é alta. A **Autenticação de Dois Fatores (2FA)** adiciona uma camada extra: mesmo que o hacker tenha a sua senha, ele não conseguirá entrar porque não possui o seu celular físico para ver o código que muda a cada 30 segundos.
+        </p>
+      `
+    },
+    {
+      title: "1. Por que evitar o SMS em 2026?",
+      content: `
+        <p class="mb-4 text-gray-300">Evite códigos via mensagem de texto (SMS) sempre que possível:</p>
+        <p class="text-sm text-gray-300">
+            Hackers usam uma técnica chamada **SIM Swap** (clonagem de chip) para receber os seus códigos de SMS no celular deles. Em 2026, a forma mais segura de 2FA são os **Aplicativos Autenticadores** ou chaves físicas (YubiKey). Os apps geram os códigos localmente, sem depender da rede da operadora, tornando a invasão quase impossível via internet.
+        </p>
+      `
+    },
+    {
+      title: "2. Como configurar o 2FA nas Redes Sociais",
+      content: `
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Checklist de Proteção:</h4>
+            <p class="text-sm text-gray-300">
+                - <strong>Instagram/Facebook:</strong> Vá em Central de Contas > Senha e Segurança > Autenticação de dois fatores. <br/>
+                - <strong>Google:</strong> Acesse 'Segurança' na sua conta e ative a Verificação em duas etapas. <br/>
+                - <strong>WhatsApp:</strong> Ative a 'Confirmação em duas etapas' nas configurações de conta. <br/><br/>
+                Sempre escolha a opção 'App de Autenticação' em vez de SMS.
+            </p>
         </div>
-        
-        <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 my-6">
-          <h3 class="text-blue-400 font-semibold mb-2">ℹ️ Importante</h3>
-          <p class="text-gray-300 text-sm">Sempre configure métodos de backup antes de ativar o 2FA para evitar perder acesso às suas contas.</p>
-        </div>
-      `,
-      subsections: [
-        {
-          subtitle: "Quando Aplicar o 2FA",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Email pessoal e profissional principal</li>
-              <li>Contas bancárias e financeiras</li>
-              <li>Redes sociais com informações pessoais</li>
-              <li>Serviços de nuvem (Google Drive, Dropbox)</li>
-              <li>Lojas online com dados de pagamento</li>
-            </ul>
-          `
-        }
-      ]
+      `
     },
     {
-      title: "Configuração Passo a Passo",
+      title: "3. O Erro Fatal: Perder o celular com 2FA",
       content: `
-        <p class="mb-4">Siga este procedimento detalhado para configurar 2FA em suas contas mais importantes com segurança máxima.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Preparação Inicial",
-          content: `
-            <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4">
-              <li>
-                <strong>Escolha um Gerenciador de Senhas:</strong>
-                <ul class="ml-6 mt-1 space-y-1 text-sm">
-                  <li>LastPass, Bitwarden ou 1Password</li>
-                  <li>Armazene todas as senhas principais nele</li>
-                  <li>Ative autenticação biométrica no gerenciador</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Prepare Métodos de Backup:</strong>
-                <ul class="ml-6 mt-1 space-y-1 text-sm">
-                  <li>Salve códigos de recuperação em local seguro</li>
-                  <li>Configure número de telefone alternativo</li>
-                  <li>Tenha acesso a email secundário</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Verifique Dispositivos:</strong>
-                <ul class="ml-6 mt-1 space-y-1 text-sm">
-                  <li>Garanta que smartphone tenha bateria suficiente</li>
-                  <li>Confirme conexão com internet estável</li>
-                  <li>Atualize apps de autenticação (Google Authenticator, Authy)</li>
-                </ul>
-              </li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Configuração por Tipo de 2FA",
-          content: `
-            <div class="space-y-4">
-              <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-                <h4 class="text-white font-semibold mb-2">1. App Authenticator (Mais Seguro)</h4>
-                <ul class="text-gray-300 text-sm space-y-1 ml-4">
-                  <li>Baixe Google Authenticator, Authy ou Microsoft Authenticator</li>
-                  <li>Vá para Configurações de Segurança da conta</li>
-                  <li>Escaneie o QR Code com o app</li>
-                  <li>Salve os códigos de backup fornecidos</li>
-                </ul>
-              </div>
-              
-              <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-                <h4 class="text-white font-semibold mb-2">2. SMS (Menos Seguro)</h4>
-                <ul class="text-gray-300 text-sm space-y-1 ml-4">
-                  <li>Forneça número de telefone verificado</li>
-                  <li>Atenção: Vulnerável a roubo de chip SIM</li>
-                  <li>Use apenas quando app authenticator não for possível</li>
-                </ul>
-              </div>
-              
-              <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-                <h4 class="text-white font-semibold mb-2">3. Chave de Segurança Física</h4>
-                <ul class="text-gray-300 text-sm space-y-1 ml-4">
-                  <li>YubiKey, Titan Security Key ou similar</li>
-                  <li>Mais seguro, mas requer compra de dispositivo</li>
-                  <li>Ideal para contas de alto valor (email principal, bancos)</li>
-                </ul>
-              </div>
-            </div>
-          `
-        }
-      ]
-    },
-    {
-      title: "Ferramentas e Recursos Recomendados",
-      content: `
-        <p class="mb-4">Estas ferramentas especializadas oferecem implementação segura e gerenciamento eficiente do 2FA.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Apps Authenticator",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-3">Gratuitos (Recomendados)</h4>
-                <ul class="text-gray-300 text-sm space-y-2">
-                  <li><strong>Google Authenticator:</strong> Simples e confiável</li>
-                  <li><strong>Microsoft Authenticator:</strong> Excelente para contas Microsoft</li>
-                  <li><strong>Authy:</strong> Backup na nuvem e multi-dispositivo</li>
-                  <li><strong>FreeOTP:</strong> Open source e leve</li>
-                </ul>
-              </div>
-              <div class="bg-[#171313] p-4 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-3">Pagos (Funcionalidades Avançadas)</h4>
-                <ul class="text-gray-300 text-sm space-y-2">
-                  <li><strong>1Password:</strong> Gerenciador + 2FA integrado</li>
-                  <li><strong>LastPass Authenticator:</strong> Sincronização premium</li>
-                  <li><strong>Yubico Authenticator:</strong> Para chaves de segurança YubiKey</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Práticas de Segurança Avançadas",
-          content: `
-            <div class="space-y-3">
-              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3">
-                <h4 class="text-red-400 font-semibold mb-2">⚠️ Nunca Faça Isso:</h4>
-                <ul class="text-gray-300 text-sm ml-4">
-                  <li>Não use SMS como único método de 2FA</li>
-                  <li>Não salve códigos de backup em fotos do celular</li>
-                  <li>Não ignore avisos de atividade suspeita</li>
-                  <li>Não use 2FA em redes Wi-Fi públicas sem VPN</li>
-                </ul>
-              </div>
-              
-              <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-                <li>Ative 2FA em ordem de criticidade: email → bancos → redes sociais</li>
-                <li>Use gerenciador de senhas para armazenar códigos de backup</li>
-                <li>Configure notificações push para alertas de login</li>
-                <li>Revise periodicamente dispositivos autorizados nas contas</li>
-              </ul>
-            </div>
-          `
-        }
-      ]
-    },
-    {
-      title: "Troubleshooting e Solução de Problemas",
-      content: `
-        <p class="mb-4">Soluções específicas para problemas comuns com autenticação de dois fatores.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Erros Frequentes e Soluções",
-          content: `
-            <div class="space-y-4">
-              <div class="bg-[#171313] p-4 rounded-lg border border-red-500/30">
-                <h4 class="text-red-400 font-semibold mb-2">Erro: "Código 2FA Inválido"</h4>
-                <p class="text-gray-300 text-sm mb-3">Solução: Sincronize hora do dispositivo</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                  <li>No Android: Configurações → Data e hora → Hora automática</li>
-                  <li>No iPhone: Configurações → Geral → Data e hora → Hora automática</li>
-                  <li>Alternativa: Reinicie o app authenticator</li>
-                </ul>
-              </div>
-              
-              <div class="bg-[#171313] p-4 rounded-lg border border-yellow-500/30">
-                <h4 class="text-yellow-400 font-semibold mb-2">Problema: Perdi o Smartphone com 2FA</h4>
-                <p class="text-gray-300 text-sm mb-3">Solução: Use métodos de backup configurados</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                  <li>Acesse a conta pelo site oficial</li>
-                  <li>Use códigos de recuperação salvos</li>
-                  <li>Entre em contato com suporte técnico</li>
-                  <li>Altere senha imediatamente após recuperar acesso</li>
-                </ul>
-              </div>
-              
-              <div class="bg-[#171313] p-4 rounded-lg border border-blue-500/30">
-                <h4 class="text-blue-400 font-semibold mb-2">Erro: "Conta Bloqueada por Segurança"</h4>
-                <p class="text-gray-300 text-sm mb-3">Solução: Verificação de identidade</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                  <li>Verifique email de segurança enviado pela conta</li>
-                  <li>Siga processo de verificação por documento</li>
-                  <li>Agende ligação com suporte se necessário</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Prevenção de Problemas Futuros",
-          content: `
-            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
-              <h4 class="text-green-400 font-semibold mb-3">📅 Plano de Manutenção 2FA</h4>
-              <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-                <li><strong>Mensal:</strong> Revise dispositivos autorizados nas contas</li>
-                <li><strong>Trimestral:</strong> Atualize apps authenticator</li>
-                <li><strong>Semestral:</strong> Renove códigos de backup</li>
-                <li><strong>Anual:</strong> Avalie necessidade de chaves físicas de segurança</li>
-              </ul>
-            </div>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            <strong>Backup é Vital:</strong> 
+            <br/><br/>Se você formatar seu celular ou perdê-lo e não tiver os **Códigos de Reserva**, você pode ficar trancado fora da sua própria conta para sempre. Ao ativar o 2FA, o site mostrará uma lista de códigos (Backup Codes). **Salve-os em um papel físico ou em um local seguro fora do celular.** Aplicativos como o <i>Authy</i> ou <i>Microsoft Authenticator</i> permitem backup na nuvem, o que facilita a vida se você trocar de dispositivo.
+        </p>
+      `
     }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      href: "/guias/seguranca-senhas-gerenciadores",
+      title: "Gerenciar Senhas",
+      description: "A primeira camada de proteção."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
+      href: "/guias/identificacao-phishing",
+      title: "Cuidado com Golpes",
+      description: "Como hackers tentam burlar o seu 2FA."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      href: "/guias/protecao-dados-privacidade",
+      title: "Privacidade Digital",
+      description: "Mais dicas para se proteger online em 2026."
     }
   ];
 
@@ -267,9 +87,10 @@ export default function AutenticacaodoisfatoresGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="45 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="15 min"
+      difficultyLevel="Iniciante"
       contentSections={contentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
     />
   );

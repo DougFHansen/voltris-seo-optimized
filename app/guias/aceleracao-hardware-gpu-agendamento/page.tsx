@@ -1,64 +1,89 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Agendamento de GPU Acelerado por Hardware (HAGS): O que é e como ativar? (2026)";
-const description = "Essa opção do Windows promete mais FPS. É verdade? Descubra como o HAGS funciona e por que ele é obrigatório para usar DLSS 3 e Frame Gen.";
-const keywords = ['agendamento de gpu acelerado por hardware', 'hags windows 11', 'hardware accelerated gpu scheduling on vs off', 'dlss 3 precisa de hags', 'melhorar fps hags', 'gpu scheduler'];
+const title = "Agendamento de GPU acelerado por hardware: Como ativar e ganhar FPS";
+const description = "Entenda o que é o Hardware-Accelerated GPU Scheduling (HAGS) no Windows 11 e como ele reduz a latência e aumenta o FPS em placas NVIDIA e AMD.";
+const keywords = [
+    'agendamento de gpu acelerado por hardware como ativar',
+    'hags windows 11 vale a pena',
+    'reduzir latência jogos windows 11 gpu',
+    'ganhar fps nvidia acceleration 2026',
+    'hardware accelerated gpu scheduling performance'
+];
 
 export const metadata: Metadata = createGuideMetadata('aceleracao-hardware-gpu-agendamento', title, description, keywords);
 
-export default function HAGSGuide() {
+export default function GPUAccelerationGuide() {
     const summaryTable = [
-        { label: "Obrigatório para", value: "DLSS 3 / Frame Gen" },
-        { label: "Ganha FPS?", value: "Pouco (1-2%)" },
-        { label: "Ajuda CPU?", value: "Sim" },
-        { label: "Bug", value: "OBS (Antigo)" }
+        { label: "O que faz", value: "Dá controle da memória à GPU" },
+        { label: "Ganhos em FPS", value: "2% a 10%" },
+        { label: "Latência", value: "Redução de Input Lag" },
+        { label: "Requisito", value: "Windows 10 (2004) ou Windows 11" }
     ];
 
     const contentSections = [
         {
-            title: "O que o HAGS faz?",
+            title: "O que é o Agendamento de GPU?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          Tradicionalmente, a CPU é a gerente da GPU. Ela que manda a GPU desenhar cada quadro. Com o <strong>Hardware Accelerated GPU Scheduling (HAGS)</strong>, o Windows passa essa responsabilidade de gerenciamento para a própria GPU (que tem um chip dedicado pra isso).
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Tradicionalmente, o Windows é quem gerencia o que a sua placa de vídeo deve processar. Com o **Agendamento de GPU Acelerado por Hardware (HAGS)**, o Windows passa essa responsabilidade diretamente para o processador da placa de vídeo. 
         </p>
         <p class="mb-6 text-gray-300 leading-relaxed">
-          Isso tira uma carga minúscula da CPU. Em processadores fracos, ajuda. Em fortes, não muda nada.
+          Isso remove a "burocracia" do sistema operacional, diminuindo a carga sobre o seu processador (CPU) e permitindo que a imagem chegue mais rápido ao monitor.
         </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Por que você PRECISA ativar em 2026?",
+            title: "Como Ativar Passo a Passo",
             content: `
-        <div class="bg-blue-900/20 p-6 rounded-xl border border-blue-500 mb-6">
-            <h4 class="text-white font-bold mb-2">DLSS 3 Frame Generation</h4>
-            <p class="text-gray-300 text-sm">
-                Se você tem uma placa RTX 4000 (4060, 4070...), o recurso de Frame Generation (que cria quadros falsos para dobrar o FPS) <strong>EXIGE</strong> que o HAGS esteja ligado. Sem ele, a opção nem aparece no jogo.
-            </p>
-        </div>
-      `,
-            subsections: []
-        },
-        {
-            title: "Como Ativar",
-            content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Aperte <strong>Win + I</strong> (Configurações).</li>
-            <li>Sistema > Tela > <strong>Elementos Gráficos</strong>.</li>
-            <li>Clique em "Alterar configurações de gráficos padrão" (texto azul).</li>
-            <li>Ative: <strong>Agendamento de GPU acelerado por hardware</strong>.</li>
-            <li>Reinicie o PC.</li>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Abra as <strong>Configurações</strong> do Windows.</li>
+            <li>Vá em Sistema > Tela > <strong>Gráficos</strong>.</li>
+            <li>Clique em "Alterar configurações de gráficos padrão".</li>
+            <li>Ative a chave <strong>Agendamento de GPU acelerado por hardware</strong>.</li>
+            <li>Reinicie o seu computador para aplicar a mudança.</li>
         </ol>
       `
         },
         {
-            title: "Problema conhecido: OBS Studio",
+            title: "Quem deve ativar?",
             content: `
-        <p class="text-gray-300">
-            Antigamente, o HAGS fazia o OBS travar. Isso foi corrigido em 2024. Se seu OBS ainda trava com HAGS, atualize o OBS e abra-o como Administrador.
+        <p class="mb-4 text-gray-300">
+            Este recurso é quase obrigatório para usuários de placas NVIDIA <strong>série RTX 30 e 40</strong>, especialmente se você pretende usar o <strong>Frame Generation (DLSS 3)</strong>, que exige que o HAGS esteja ligado.
+        </p>
+        <div class="bg-yellow-900/10 p-5 rounded-xl border border-yellow-500/30">
+            <h4 class="text-yellow-400 font-bold mb-2">Cuidado:</h4>
+            <p class="text-sm text-gray-300">
+                Em algumas placas de vídeo muito antigas (série GTX 10 ou RX 500), este recurso pode causar instabilidade em vez de ganhos. Se o seu jogo começar a crashar após ativar, volte e desative.
+            </p>
+        </div>
+      `
+        },
+        {
+            title: "Performance e Frame Generation",
+            content: `
+        <p class="mb-4 text-gray-300">
+            Se você joga títulos pesados como Cyberpunk 2077 ou Alan Wake 2, o HAGS ajuda a estabilizar os "Frametimes", que é o tempo de entrega de cada quadro. Isso resulta em uma experiência muito mais fluida, mesmo que o FPS médio não suba drasticamente.
         </p>
       `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/otimizacao-performance",
+            title: "Performance Geral",
+            description: "Combine com o modo de alto desempenho."
+        },
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers de Vídeo",
+            description: "O HAGS exige drivers WDDM 2.7 ou superior."
+        },
+        {
+            href: "/guias/re-size-bar-ativar-pc-gamer",
+            title: "Resizable BAR",
+            description: "Outro recurso vital de comunicação CPU-GPU."
         }
     ];
 
@@ -67,10 +92,11 @@ export default function HAGSGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="5 min"
+            estimatedTime="10 min"
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

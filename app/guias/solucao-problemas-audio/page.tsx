@@ -1,198 +1,89 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Corrigir Problemas de Som no Windows 10/11 - Saída de Áudio, Configurações e Driver";
-const description = "Guia definitivo para corrigir problemas de som no Windows: saída de áudio, configurações de som, som do sistema e áudio do Windows. Localize e resolva em minutos. Passo a passo para Windows 10 e 11.";
+const title = "Como Resolver Problemas de Áudio no Windows (2026)";
+const description = "Seu PC está sem som ou com som chiando? Aprenda como diagnosticar e resolver erros de áudio no Windows 11 com este guia passo a passo em 2026.";
 const keywords = [
-  "corrigir problemas de som",
-  "corrigir saída de som",
-  "localizar e corrigir problemas som",
-  "saida de som",
-  "som do sistema",
-  "corrigir problemas de audio",
-  "configurações som",
-  "opções de áudio",
-  "ajustando configurações saída áudio",
-  "corrigir problema de som",
-  "áudio",
-  "reiniciar configurações de som",
-  "audio do windows",
-  "corrigir problemas de áudio",
-  "corrigir problemas de som windows 10",
-  "corrigir problemas reprodução som",
-  "windows sem som",
-  "driver realtek",
-  "dispositivo de saída de áudio",
+  'windows 11 sem som como resolver 2026',
+  'corrigir audio chiando ou estalando windows tutorial',
+  'habilitar saida de audio hdmi windows 11 guia',
+  'driver de som nao instalado como resolver 2026',
+  'erro de som no windows 11 gerenciador de dispositivos'
 ];
 
 export const metadata: Metadata = createGuideMetadata('solucao-problemas-audio', title, description, keywords);
 
-export default function SolucaoProblemasAudioGuide() {
+export default function AudioTroubleshootingGuide() {
   const summaryTable = [
-    { label: "Dificuldade", value: "Iniciante a Intermediário" },
-    { label: "Tempo", value: "15–25 min" },
-    { label: "Sistema", value: "Windows 10 / Windows 11" },
-  ];
-
-  const faqItems = [
-    {
-      question: "Como corrigir problemas de som no Windows 10?",
-      answer: "Verifique o dispositivo de saída (ícone de som na barra de tarefas), reinicie o serviço \"Áudio do Windows\" em services.msc, atualize o driver de áudio no Gerenciador de Dispositivos e desative aperfeiçoamentos de som nas propriedades do dispositivo. Este guia traz o passo a passo completo.",
-    },
-    {
-      question: "Por que não há saída de som no meu PC?",
-      answer: "As causas mais comuns são: dispositivo de saída errado (ex.: HDMI sem áudio), volume em mudo, cabo P2 na entrada errada (use a porta verde), driver de áudio desatualizado ou serviço de áudio travado. Siga as etapas deste guia para localizar e corrigir.",
-    },
-    {
-      question: "Como reiniciar as configurações de som no Windows?",
-      answer: "Abra services.msc (Win + R), localize \"Windows Audio\" e \"Windows Audio Endpoint Builder\", clique com o botão direito em cada um e escolha Reiniciar. Se o som ainda falhar, reinicie o PC ou reinstale o driver de áudio.",
-    },
-    {
-      question: "O que fazer quando o áudio do Windows não funciona?",
-      answer: "Confirme que o dispositivo de saída correto está selecionado, reinicie os serviços de áudio, desative efeitos sonoros nas propriedades do dispositivo e, se necessário, atualize ou reinstale o driver de áudio (Realtek, Intel, etc.) pelo Gerenciador de Dispositivos.",
-    },
+    { label: "Sintoma Comum", value: "Ícone de som com 'X' vermelho" },
+    { label: "Causa Provável", value: "Driver genérico ou Serviço parado" },
+    { label: "Solução Chave", value: "Windows Audio Service Reset" },
+    { label: "Dificuldade", value: "Fácil" }
   ];
 
   const contentSections = [
     {
-      title: "Introdução: Localizar e Corrigir Problemas de Som",
+      title: "O caos do áudio no Windows 11",
       content: `
-        <p class="mb-4 text-gray-300 leading-relaxed">Problemas de som no Windows são muito comuns: <strong>saída de áudio</strong> que não funciona, <strong>som do sistema</strong> que some ou <strong>configurações de áudio</strong> que parecem erradas. Este guia ajuda você a <strong>localizar e corrigir</strong> a causa em poucos minutos, no Windows 10 e no Windows 11.</p>
-        <p class="mb-4 text-gray-300">As causas mais frequentes são dispositivo de saída errado, volume em mudo, driver desatualizado ou serviço de áudio travado. Abaixo, seguimos do mais simples ao mais avançado.</p>
-      `,
-      subsections: [],
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Em 2026, com a multiplicidade de dispositivos (Headsets USB, Bluetooth, Monitores com som, Caixas de som P2), o Windows 11 frequentemente se perde ao decidir por onde o som deve sair. Além disso, atualizações de sistema podem corromper os drivers da **Realtek** ou da sua GPU (HDMI Audio), resultando no temido silêncio total ou em áudio distorcido.
+        </p>
+      `
     },
     {
-      title: "1. Verificar Dispositivo de Saída de Áudio (Saída de Som)",
+      title: "1. O Básico: Selecionando o Dispositivo",
       content: `
-        <p class="mb-4 text-gray-300">O Windows pode estar enviando o <strong>som</strong> para o monitor HDMI (que às vezes não tem caixas), para fones Bluetooth desligados ou para um dispositivo que você não está usando.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Como escolher a saída de som correta",
-          content: `
-            <ul class="list-decimal list-inside space-y-2 text-gray-300">
-              <li>Clique no <strong>ícone de som</strong> na barra de tarefas (canto direito).</li>
-              <li>Clique na seta ou no nome do dispositivo atual (ex.: "Alto-falantes (Realtek)").</li>
-              <li>Selecione o dispositivo que você está usando: <strong>Alto-falantes</strong>, <strong>Fones P2</strong>, <strong>HDMI</strong> ou <strong>Bluetooth</strong>.</li>
-              <li>Verifique se o volume não está em mudo e se a barra está em nível audível.</li>
-            </ul>
-          `,
-        },
-      ],
+        <p class="mb-4 text-gray-300">Antes de técnicos avançados, cheque o obvio:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Clique no ícone de volume (ou <code>Win + A</code>).</li>
+            <li>Clique no ícone de saída de som (ao lado da barra de volume).</li>
+            <li>Certifique-se de que o dispositivo correto está selecionado (ex: Realtek Audio em vez de NVIDIA Output).</li>
+            <li>Verifique se o botão 'Mudo' não está ativado por acidente no fone ou no teclado.</li>
+        </ol>
+      `
     },
     {
-      title: "2. Verificações Físicas (Cabos e Volume)",
+      title: "2. Resetando os Serviços de Áudio",
       content: `
-        <p class="mb-4 text-gray-300">Antes de mexer em driver ou configurações, confirme o básico:</p>
-        <ul class="list-disc list-inside space-y-2 text-gray-300">
-          <li><strong>Cabo P2 (fone/caixa):</strong> Conecte na porta <strong>verde</strong> (saída de som). Azul é entrada (microfone), rosa é microfone.</li>
-          <li><strong>Volume físico:</strong> Caixas de som e monitores costumam ter botão de volume; verifique se não está no mudo ou no mínimo.</li>
-          <li><strong>HDMI:</strong> Se usa TV ou monitor por HDMI, alguns modelos não reproduzem áudio; nesse caso, escolha "Alto-falantes" ou uma saída P2 no Windows.</li>
-        </ul>
-      `,
-      subsections: [],
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h4 class="text-white font-bold mb-2">Comando de Ressuscitação:</h4>
+            <p class="text-sm text-gray-300">
+                Se o som sumiu e não volta mesmo reiniciando, o serviço 'Audiosrv' pode ter travado. <br/><br/>
+                1. Aperte <code>Win + R</code>, digite <code>services.msc</code>. <br/>
+                2. Procure por <strong>Áudio do Windows</strong>. <br/>
+                3. Clique com o botão direito e escolha <strong>'Reiniciar'</strong>. Faça o mesmo para o serviço 'Construtor de Pontos de Extremidade de Áudio'.
+            </p>
+        </div>
+      `
     },
     {
-      title: "3. Reiniciar Configurações de Som e Serviço de Áudio do Windows",
+      title: "3. Corrigindo o Áudio Chiando (Sample Rate)",
       content: `
-        <p class="mb-4 text-gray-300">Se o <strong>som do sistema</strong> parou do nada, reiniciar o serviço de áudio costuma resolver. Isso equivale a <strong>reiniciar as configurações de som</strong> sem alterar suas preferências.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Passo a passo: reiniciar serviços de áudio",
-          content: `
-            <div class="bg-[#1E1E22] p-4 rounded-lg border border-gray-700 font-mono text-sm text-gray-300 space-y-2">
-              <p>1. Pressione <strong>Win + R</strong>, digite <strong>services.msc</strong> e Enter.</p>
-              <p>2. Procure por <strong>"Windows Audio"</strong> (ou "Áudio do Windows").</p>
-              <p>3. Clique com o botão direito → <strong>Reiniciar</strong>.</p>
-              <p>4. Faça o mesmo para <strong>"Windows Audio Endpoint Builder"</strong>.</p>
-              <p>5. Aguarde alguns segundos e teste o som novamente.</p>
-            </div>
-          `,
-        },
-      ],
-    },
-    {
-      title: "4. Ajustando as Configurações de Saída de Áudio e Opções de Áudio",
-      content: `
-        <p class="mb-4 text-gray-300">As <strong>configurações de som</strong> e as <strong>opções de áudio</strong> podem estar com dispositivo errado ou com efeitos que causam falha. Ajuste assim:</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Abrir Configurações de Som no Windows 10/11",
-          content: `
-            <p class="text-gray-300 mb-2">Clique com o botão direito no ícone de som na barra de tarefas → <strong>Configurações de som</strong> (ou "Configurações de reprodução"). Em Windows 11: Configurações → Sistema → Som.</p>
-            <p class="text-gray-300">Em "Escolha onde reproduzir o som", selecione o dispositivo correto. Em "Volume", confirme que não está em 0 ou mudo.</p>
-          `,
-        },
-        {
-          subtitle: "Desativar aperfeiçoamentos (corrigir problemas de reprodução de som)",
-          content: `
-            <p class="text-gray-300 mb-2">Drivers antigos às vezes falham com efeitos de som. Para <strong>corrigir problemas de reprodução de som</strong>:</p>
-            <ul class="list-disc list-inside text-gray-300 space-y-1">
-              <li>Em Configurações de som, clique em <strong>Mais configurações de som</strong> (ou "Propriedades do dispositivo").</li>
-              <li>Vá na aba <strong>Aperfeiçoamentos</strong>.</li>
-              <li>Marque <strong>"Desativar todos os efeitos sonoros"</strong> e aplique.</li>
-            </ul>
-          `,
-        },
-      ],
-    },
-    {
-      title: "5. Corrigir Problemas de Áudio com o Driver (Realtek, Intel, etc.)",
-      content: `
-        <p class="mb-4 text-gray-300">Se o <strong>áudio do Windows</strong> ainda não funcionar, o <strong>driver de áudio</strong> pode estar desatualizado, corrompido ou em conflito. Use o Gerenciador de Dispositivos:</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Atualizar ou reinstalar driver de áudio",
-          content: `
-            <ul class="list-decimal list-inside space-y-2 text-gray-300">
-              <li>Pressione <strong>Win + X</strong> → <strong>Gerenciador de Dispositivos</strong>.</li>
-              <li>Expanda <strong>"Entradas e saídas de áudio"</strong> ou <strong>"Controladores de som, vídeo e jogos"</strong>.</li>
-              <li>Clique com o botão direito no dispositivo de áudio (ex.: Realtek) → <strong>Atualizar driver</strong> → "Procurar drivers na Internet".</li>
-              <li>Se não resolver: mesmo menu → <strong>Desinstalar dispositivo</strong> → reinicie o PC; o Windows reinstala o driver na inicialização.</li>
-            </ul>
-            <p class="text-gray-300 mt-4">Para placas de som dedicadas (ex.: Creative), baixe o driver mais recente no site do fabricante.</p>
-          `,
-        },
-      ],
-    },
-    {
-      title: "6. Solução de Problemas Automática do Windows",
-      content: `
-        <p class="mb-4 text-gray-300">O Windows 10 e o Windows 11 têm um assistente que tenta <strong>corrigir problemas de som</strong> automaticamente:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-1">
-          <li>Configurações → Sistema → Som → em "Avançado", procure por <strong>Solucionar problemas de som</strong> ou "Reparar" ao lado do dispositivo.</li>
-          <li>Ou: Painel de Controle → Solução de Problemas → Reprodução de áudio.</li>
-        </ul>
-      `,
-      subsections: [],
-    },
+        <p class="mb-4 text-gray-300">
+            <strong>Som "estourado" ou com estalos:</strong> 
+            <br/><br/>Isso geralmente acontece quando a frequência de amostragem do Windows é maior do que o seu fone suporta. <br/><br/>
+            Vá em Painel de Controle > Som > Propriedades do seu dispositivo > Avançado. Mude para <strong>24 bits, 48000 Hz</strong>. Em 2026, essa é a frequência padrão que garante compatibilidade total com jogos e vídeos de alta fidelidade sem causar bugs de processamento na CPU.
+        </p>
+      `
+    }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/instalacao-drivers",
-      title: "Instalação e Atualização de Drivers",
-      description: "Atualize o driver de áudio e outros dispositivos.",
+      href: "/guias/corrigir-audio-chiado-windows",
+      title: "Áudio Estático",
+      description: "Dicas profundas para eliminar ruídos elétricos."
     },
     {
-      href: "/guias/resolver-erros-windows",
-      title: "Resolver Erros Comuns do Windows",
-      description: "Telas azuis e travamentos que podem afetar o áudio.",
+      href: "/guias/som-espacial-windows-configurar",
+      title: "Som Espacial",
+      description: "Aprenda a ativar efeitos de som 360°."
     },
     {
-      href: "/guias/solucao-problemas-bluetooth",
-      title: "Solução de Problemas Bluetooth",
-      description: "Se o som for por fone ou caixa Bluetooth.",
-    },
-  ];
-
-  const externalReferences = [
-    { name: "Microsoft: Corrigir problemas de som no Windows", url: "https://support.microsoft.com/pt-br/windows/corrigir-problemas-de-som-no-windows-73025246-b61c-40fb-671a-2535c7f736c5" },
-    { name: "Microsoft: Configurações de áudio no Windows", url: "https://support.microsoft.com/pt-br/windows/configurar-configura%C3%A7%C3%B5es-de-som-no-windows-20dc0e83-70e4-8cc1-7e8e-7d0e1e4e7e4e" },
+      href: "/guias/aumentar-volume-microfone-windows",
+      title: "Volume Microfone",
+      description: "Resolva problemas de gravação e voz baixa."
+    }
   ];
 
   return (
@@ -200,13 +91,11 @@ export default function SolucaoProblemasAudioGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="15–25 min"
+      estimatedTime="15 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
-      relatedGuides={relatedGuides}
       summaryTable={summaryTable}
-      faqItems={faqItems}
-      externalReferences={externalReferences}
+      relatedGuides={relatedGuides}
     />
   );
 }

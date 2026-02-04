@@ -1,40 +1,84 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Overclock de Placa de Vídeo Seguro com MSI Afterburner - Voltris";
-const description = "Ganhe 10-15%  mais FPS em jogos de graça. Guia passo a passo para usar o MSI Afterburner sem queimar sua GPU. Safe overclocking 2026. ";
-const keywords = ['overclock gpu', 'msi afterburner tutorial', 'aumentar fps jogos', 'overclock seguro', 'undervolt gpu'];
+const title = "Overclock de GPU com MSI Afterburner: Guia Seguro (2026)";
+const description = "Quer ganhar FPS extra de graça? Aprenda como usar o MSI Afterburner para fazer overclock na sua placa de vídeo com segurança total em 2026.";
+const keywords = [
+    'como fazer overclock placa de video msi afterburner 2026',
+    'msi afterburner tutorial passo a passo 2026',
+    'ganhar fps com overclock gpu guia seguro',
+    'overclock rtx 4060 msi afterburner tutorial',
+    'configurar curva de ventoinha msi afterburner 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('overclock-gpu-msi-afterburner', title, description, keywords);
 
-export default function OverclockGuide() {
+export default function GPUOverclockGuide() {
     const summaryTable = [
-        { label: "Ganho FPS", value: "+10% a 15%" },
-        { label: "Risco", value: "Baixo (Se seguir o guia)" },
-        { label: "Software", value: "MSI Afterburner" }
+        { label: "Ferramenta", value: "MSI Afterburner (Oficial)" },
+        { label: "Ganhos Estimados", value: "5% a 15% de FPS" },
+        { label: "Risco", value: "Baixo (Se não mexer na voltagem)" },
+        { label: "Dificuldade", value: "Intermediário" }
     ];
 
     const contentSections = [
         {
-            title: "O que é Overclock Seguro?",
+            title: "O que é o Overclock de GPU?",
             content: `
-        <p class="mb-4">As placas de vídeo vêm de fábrica com uma margem de segurança enorme. Overclock seguro significa usar essa margem sem aumentar a voltagem (Core Voltage), o que elimina o risco de queimar o chip. O máximo que vai acontecer é o jogo fechar e você ter que diminuir um pouco.</p>
-      `,
-            subsections: []
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          Fazer overclock significa aumentar a velocidade de operação da sua placa de vídeo para que ela processe quadros mais rapidamente. Em 2026, com o MSI Afterburner, esse processo é muito mais seguro do que era antigamente, pois as placas modernas possuem limitadores de energia que impedem que elas "queimem" por excesso de clock.
+        </p>
+      `
         },
         {
-            title: "Passo a Passo no Afterburner",
+            title: "1. Preparação: O download correto",
             content: `
-        <ol class="space-y-4 text-gray-300 list-decimal list-inside ml-4">
-            <li>Baixe o MSI Afterburner (site oficial msi.com/Landing/afterburner).</li>
-            <li>Aumente o <strong>Power Limit</strong> para o máximo (isso apenas permite que a placa use mais energia se precisar, não força nada).</li>
-            <li>Aumente o <strong>Core Clock</strong> em +50MHz. Clique em Aplicar (Check).</li>
-            <li>Rode um jogo pesado por 10 minutos.</li>
-            <li>Se não travou, aumente mais +25MHz e repita.</li>
-            <li>Quando o jogo fechar ou aparecerem artefatos (riscos na tela), diminua -25MHz. Esse é seu limite estável.</li>
-            <li>Repita o processo para o <strong>Memory Clock</strong> (geralmente aguenta +500MHz ou mais).</li>
+        <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30 mb-6">
+            <p class="text-red-400 font-bold mb-2">Atenção ao Site Oficial!</p>
+            <p class="text-sm text-gray-300">
+                Em 2026, existem centenas de sites falsos do MSI Afterburner que instalam mineradores de vírus. Baixe **apenas** no domínio oficial <code>msi.com</code>.
+            </p>
+        </div>
+        <p class="mb-4 text-gray-300">Antes de começar, tenha um benchmark aberto (como Unigine Heaven ou 3DMark) para testar a estabilidade.</p>
+      `
+        },
+        {
+            title: "2. Passo a Passo do Overclock",
+            content: `
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li><strong>Core Clock:</strong> Aumente em passos de +25 MHz. Teste por 2 minutos no benchmark. Se não houver travamentos ou "riscos" na tela (artifacts), aumente mais 25.</li>
+            <li><strong>Memory Clock:</strong> Garante maior largura de banda. Aumente em passos de +100 MHz.</li>
+            <li><strong>Power Limit:</strong> Arraste o slider para o máximo. Isso permite que a placa use mais energia se precisar manter um clock alto.</li>
+            <li><strong>Fan Curve:</strong> Clique no ícone de engrenagem > Ventoinha. Crie uma curva agressiva (ex: 70% de velocidade quando chegar a 70°C).</li>
         </ol>
       `
+        },
+        {
+            title: "3. Identificando Instabilidade",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Como saber se exagerei?</strong> 
+            <br/><br/>Se durante o jogo você notar flashes coloridos, texturas piscando ou se o driver de vídeo "resetar" (a tela pisca e volta para a área de trabalho), você atingiu o limite. Volte ao Afterburner e reduza os valores em 50 MHz. O segredo de um bom overclock em 2026 não é o valor mais alto, mas sim o valor mais alto que consegue rodar por horas sem nenhum erro.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/atualizacao-drivers-video",
+            title: "Drivers de Vídeo",
+            description: "Essencial para estabilidade no overclock."
+        },
+        {
+            href: "/guias/testar-fonte-pc-multimetro",
+            title: "Testar Fonte",
+            description: "Garanta que sua fonte aguenta o consumo extra."
+        },
+        {
+            href: "/guias/limitar-fps-rivatuner-nvidia",
+            title: "RivaTuner (RTSS)",
+            description: "Acompanhe o consumo e temperatura em tempo real."
         }
     ];
 
@@ -43,10 +87,11 @@ export default function OverclockGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="45 minutos"
-            difficultyLevel="Avançado"
+            estimatedTime="40 min"
+            difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }

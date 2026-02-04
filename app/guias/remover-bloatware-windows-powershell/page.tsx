@@ -1,64 +1,85 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
-const title = "Remover Bloatware do Windows 10/11: Script PowerShell para PC Mais Leve (2026)";
-const description = "Seu Windows veio cheio de lixo (Xbox, Clima, Notícias)? Use este comando seguro do PowerShell para desinstalar apps nativos que não saem pelo Painel de Controle.";
-const keywords = ['remover bloatware windows 11', 'desinstalar xbox game bar powershell', 'debloater windows 2026', 'script limpeza windows 10', 'pc lento cheio de programas', 'remover cortana'];
+const title = "Remover Bloatware do Windows 11 com PowerShell (2026)";
+const description = "Cansado de apps inúteis no Windows? Aprenda a usar scripts de PowerShell para remover bloatware e deixar seu sistema muito mais leve e rápido em 2026.";
+const keywords = [
+    'remover bloatware windows 11 powershell skip 2026',
+    'script para limpar windows 11 apps inuteis tutorial',
+    'win11debloat powershell guia completo 2026',
+    'remover cortana e edge windows 11 comando powershell',
+    'otimizar windows 11 para games removendo lixo 2026'
+];
 
 export const metadata: Metadata = createGuideMetadata('remover-bloatware-windows-powershell', title, description, keywords);
 
-export default function BloatwareGuide() {
+export default function BloatwareRemovalGuide() {
     const summaryTable = [
-        { label: "Ferramenta", value: "PowerShell" },
-        { label: "Método", value: "Winget / Script" },
-        { label: "Risco", value: "Baixo" },
-        { label: "Ganha FPS?", value: "Libera RAM" }
+        { label: "Ferramenta", value: "PowerShell (Admin)" },
+        { label: "O que remove", value: "Apps nativos, Telemetria, Widgets" },
+        { label: "Risco", value: "Moderado (Crie um ponto de restauração)" },
+        { label: "Dificuldade", value: "Intermediário" }
     ];
 
     const contentSections = [
         {
-            title: "O que é Bloatware?",
+            title: "O que é Bloatware e por que remover?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
-          São aplicativos pré-instalados pela Microsoft ou pela fabricante do PC (Dell, HP) que você nunca usa, mas que ficam rodando em segundo plano consumindo RAM e enviando dados. Exemplos: "Vincular ao Telefone", "Cortana", "Dicas", "Hub de Comentários".
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O Windows 11 em 2026 vem "recheado" de aplicativos que 99% dos usuários nunca abrem: Jogos de cartas, ferramentas de notícias, ferramentas de chat da Microsoft e telemetria constante. Esse "lixo" digital (Bloatware) consome memória RAM e ciclos do processador em segundo plano. Usar o PowerShell permite remover esses itens de forma profunda, algo que o Painel de Controle comum não permite.
         </p>
-      `,
-            subsections: []
+      `
         },
         {
-            title: "Método Moderno: Win10Debloater (GUI)",
+            title: "1. Preparação: Ponto de Restauração",
             content: `
-        <p class="mb-4 text-gray-300">
-            A comunidade criou uma ferramenta com interface gráfica que facilita tudo. Não precisa digitar códigos complexos.
-        </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
-            <li>Abra o <strong>PowerShell</strong> como Administrador.</li>
-            <li>Copie e cole este comando mágico:</li>
-        </ol>
-        <div class="bg-black border border-gray-700 p-4 rounded-lg mt-4 mb-4 font-mono text-blue-400 text-sm break-all">
-            iwr -useb https://git.io/debloat | iex
-        </div>
-        <p class="text-gray-300">
-            Vai abrir uma janela. Clique em:
-            <br/>1. <strong>"Remove All Bloatware"</strong> (Remove o lixo seguro).
-            <br/>2. <strong>"Disable Cortana"</strong> (Mata a assistente).
-            <br/>3. <strong>"Stop Edge PDF Takeover"</strong> (Impede o Edge de roubar seus PDFs).
-        </p>
-      `,
-            subsections: []
-        },
-        {
-            title: "Método Manual (Se você tem medo de scripts)",
-            content: `
-        <p class="text-gray-300 mb-4">
-            Você pode remover um por um usando o comando <code>Get-AppxPackage</code>.
-        </p>
-        <div class="bg-gray-800 p-4 rounded text-sm text-gray-300 space-y-2">
-            <p><strong class="text-white">Remover Xbox:</strong><br/><code>Get-AppxPackage *xbox* | Remove-AppxPackage</code></p>
-            <p><strong class="text-white">Remover Clima/Notícias:</strong><br/><code>Get-AppxPackage *bingweather* | Remove-AppxPackage</code></p>
-            <p><strong class="text-white">Remover Calculadora (Cuidado):</strong><br/><code>Get-AppxPackage *calc* | Remove-AppxPackage</code></p>
+        <div class="bg-yellow-900/10 p-5 rounded-xl border border-yellow-500/30 mb-6">
+            <p class="text-yellow-400 font-bold mb-2">Segurança em primeiro lugar!</p>
+            <p class="text-sm text-gray-300">
+                Como vamos mexer em arquivos do sistema, é **obrigatório** criar um ponto de restauração. Pesquise por 'Criar ponto de restauração' no Windows e clique em 'Criar'. Se algo parar de funcionar (como a Microsoft Store), você pode voltar no tempo facilmente.
+            </p>
         </div>
       `
+        },
+        {
+            title: "2. O Script Recomendado em 2026",
+            content: `
+        <p class="mb-4 text-gray-300">O método mais seguro e atualizado é o <strong>Win11Debloat</strong> ou o script de Chris Titus:</p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <li>Clique com o botão direito no botão Iniciar e escolha <strong>Terminal (Administrador)</strong> ou PowerShell.</li>
+            <li>Cole o seguinte comando (Script de C. Titus): <code>irm christitus.com/win | iex</code></li>
+            <li>Uma interface gráfica será aberta. Vá na aba <strong>Tweaks</strong>.</li>
+            <li>Selecione 'Desktop' para aplicar as otimizações recomendadas.</li>
+            <li>Clique em 'Run Tweaks' e observe o PowerShell remover centenas de processos inúteis.</li>
+        </ol>
+      `
+        },
+        {
+            title: "3. O que acontece após o Debloat?",
+            content: `
+        <p class="mb-4 text-gray-300">
+            <strong>Resultados imediatos:</strong> 
+            <br/><br/>Após a reinicialização, você notará que o uso de memória RAM em repouso cairá de 4GB-5GB para algo próximo de 2GB-2.5GB. O menu Iniciar ficará instantâneo e você não verá mais notícias ou anúncios intrusivos. Em jogos, isso se traduz em menos picos de lag (stuttering) causados por serviços de fundo tentando atualizar enquanto você joga.
+        </p>
+      `
+        }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/criar-ponto-restauracao-windows",
+            title: "Ponto de Restauração",
+            description: "Aprenda a criar a salvaguarda do sistema."
+        },
+        {
+            href: "/guias/otimizacao-performance",
+            title: "Performance Extrema",
+            description: "Próximos passos após remover o bloatware."
+        },
+        {
+            href: "/guias/privacidade-windows-telemetria",
+            title: "Guia de Telemetria",
+            description: "Entenda o que o script está desativando."
         }
     ];
 
@@ -67,10 +88,11 @@ export default function BloatwareGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="10 min"
+            estimatedTime="20 min"
             difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
         />
     );
 }
