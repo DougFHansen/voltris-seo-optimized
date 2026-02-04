@@ -445,7 +445,7 @@ export default function WindowsUpdateFixGuide() {
       `
         },
         {
-            title: "12. Scripts e Comandos Avançados para Resolução de Problemas",
+            title: "10. Scripts e Comandos Avançados para Resolução de Problemas",
             content: `
         <h4 class="text-white font-bold mb-3">💻 Scripts PowerShell para Automação</h4>
         <p class="mb-4 text-gray-300">
@@ -521,10 +521,9 @@ Reset-WindowsUpdate
             </p>
         </div>
       `
-        }
-    ],
+        },
         {
-            title: "10. Ferramentas Avançadas de Diagnóstico e Reparo",
+            title: "11. Ferramentas Avançadas de Diagnóstico e Reparo",
             content: `
         <h4 class="text-white font-bold mb-3">🛠️ Ferramentas Profissionais de Troubleshooting</h4>
         <p class="mb-4 text-gray-300">
@@ -592,7 +591,7 @@ Reset-WindowsUpdate
       `
         },
         {
-            title: "11. Prevenção Avançada e Boas Práticas Corporativas",
+            title: "12. Prevenção Avançada e Boas Práticas Corporativas",
             content: `
         <h4 class="text-white font-bold mb-3">🛡️ Estratégias Corporativas de Gestão de Atualizações</h4>
         <p class="mb-4 text-gray-300">
@@ -750,7 +749,7 @@ Get-Service -Name wuauserv, bits, cryptsvc, msiserver | Select-Object Name, Stat
             answer: "Você pode monitorar o progresso nas Configurações > Atualização e Segurança > Atualizações do Windows. Além disso, o Visualizador de Eventos mostra detalhes em tempo real, e o comando 'wuauclt /reportnow' pode forçar uma verificação de status. Ferramentas como Process Monitor podem acompanhar atividades em nível de sistema."
         }
     ];
-    
+
     const externalReferences = [
         { name: "Catálogo de Atualizações da Microsoft", url: "https://catalog.update.microsoft.com/" },
         { name: "Solucionador de Problemas do Windows Update", url: "https://support.microsoft.com/pt-br/help/4027322/windows-update-troubleshooter" },
