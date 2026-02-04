@@ -64,7 +64,247 @@ export default function EncryptionGuide() {
             Exemplo: <i>"Meu_Gato_Preto_Comeu_2_Peixes_Em_2026"</i> é infinitamente mais difícil de quebrar do que uma senha complexa curta como <i>"G@to2026!"</i>.
         </p>
       `
+    },
+    {
+      title: "4. BitLocker: Criptografia de Disco Inteiro do Windows",
+      content: `
+        <p class="mb-4 text-gray-300">
+          O <strong>BitLocker</strong> é a solução de criptografia de disco completo do Windows, disponível nas versões Pro, Enterprise e Education. Ele criptografa o disco inteiro (ou volumes individuais) e oferece proteção contra acesso físico não autorizado.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Como Ativar o BitLocker no Windows 11</h4>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
+          <li>Acesse <strong>Painel de Controle > Sistema e Segurança > BitLocker</strong> ou procure por "BitLocker" no menu Iniciar.</li>
+          <li>Selecione o disco que deseja criptografar (normalmente C: para o disco do sistema).</li>
+          <li>Escolha como deseja desbloquear o disco: senha ou smart card.</li>
+          <li>O Windows solicitará que você faça backup da chave de recuperação. <strong>Essa etapa é crucial!</strong> Armazene em local seguro (impresso, nuvem criptografada ou pendrive).</li>
+          <li>Escolha o modo de criptografia (recomendado: XTS-AES 256-bit).</li>
+          <li>Clique em "Criptografar disco" e aguarde o processo (pode levar horas em discos grandes).</li>
+        </ol>
+        
+        <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
+          <h4 class="text-amber-400 font-bold mb-2">⚠️ Cuidados Importantes com o BitLocker</h4>
+          <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+            <li>Sempre mantenha sua chave de recuperação em local seguro e acessível</li>
+            <li>Não formate o Windows sem ter acesso à chave de recuperação</li>
+            <li>Verifique se o TPM (Trusted Platform Module) está ativado na BIOS para melhor segurança</li>
+            <li>Desative o BitLocker antes de trocar placas-mãe ou fazer upgrades que possam afetar a inicialização</li>
+          </ul>
+        </div>
+      `
+    },
+    {
+      title: "5. Criptografia em Nuvem: Protegendo Dados Online",
+      content: `
+        <p class="mb-4 text-gray-300">
+          Com o aumento do armazenamento em nuvem, a criptografia de dados antes de enviar para serviços como Google Drive, OneDrive ou Dropbox se tornou essencial. A criptografia de ponta a ponta (E2E) garante que nem mesmo os provedores de nuvem possam acessar seus dados.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔐 Soluções de Criptografia para Nuvem</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+          <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
+            <h5 class="text-white font-bold mb-3">Cryptomator</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Ferramenta gratuita e open-source que cria "vaults" criptografados em qualquer serviço de nuvem. Funciona como uma pasta virtual criptografada que você monta quando precisa acessar seus arquivos.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+              <li>Compatível com Google Drive, OneDrive, Dropbox, etc.</li>
+              <li>Sem armazenamento adicional necessário</li>
+              <li>Chave de criptografia local (serviços não têm acesso)</li>
+            </ul>
+          </div>
+          
+          <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
+            <h5 class="text-white font-bold mb-3">Boxcryptor</h5>
+            <p class="text-gray-300 text-sm mb-3">
+              Solução comercial com interface mais amigável, suporte a mais serviços e funcionalidades avançadas de compartilhamento.
+            </p>
+            <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+              <li>Interface intuitiva</li>
+              <li>Suporte a mais serviços de nuvem</li>
+              <li>Compartilhamento seguro de arquivos criptografados</li>
+            </ul>
+          </div>
+        </div>
+      `
+    },
+    {
+      title: "6. Criptografia de Disco em SSDs e NVMe",
+      content: `
+        <p class="mb-4 text-gray-300">
+          Muitos SSDs modernos possuem criptografia de hardware nativa, que é mais rápida e eficiente do que a criptografia por software. Esta funcionalidade, chamada de Self-Encrypting Drive (SED), utiliza o padrão IEEE 1667 ou Opal para proteger os dados.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔒 Vantagens da Criptografia de Hardware</h4>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+          <li><strong>Performance:</strong> Não afeta o desempenho do SSD (criptografia ocorre no hardware)</li>
+          <li><strong>Segurança:</strong> Chave criptográfica armazenada no próprio chip do SSD</li>
+          <li><strong>Transparência:</strong> Sistema operacional não precisa saber que os dados estão criptografados</li>
+          <li><strong>Reset seguro:</strong> Pode apagar a chave criptográfica rapidamente, tornando todos os dados inacessíveis</li>
+        </ul>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🔧 Ativação em SSDs Suportados</h4>
+        <p class="mb-4 text-gray-300">
+          A ativação varia conforme o fabricante e modelo do SSD. Geralmente é feita através de ferramentas específicas como:
+        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+          <li><strong>Intel SSD Toolbox</strong> para SSDs Intel</li>
+          <li><strong>Samsung Magician</strong> para SSDs Samsung</li>
+          <li><strong>Tools específicos</strong> de outros fabricantes (Crucial, Western Digital, etc.)</li>
+        </ul>
+      `
+    },
+    {
+      title: "7. Criptografia para Ambientes Corporativos",
+      content: `
+        <p class="mb-4 text-gray-300">
+          Em ambientes empresariais, a criptografia de dados deve ser gerenciada centralmente para garantir conformidade com regulamentações como LGPD, GDPR e SOX. Soluções corporativas oferecem deploy em larga escala, políticas centralizadas e auditoria de segurança.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">🏢 Soluções Corporativas de Criptografia</h4>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+            <thead class="bg-gray-800">
+              <tr>
+                <th class="p-3 text-left">Solução</th>
+                <th class="p-3 text-left">Tipo</th>
+                <th class="p-3 text-left">Benefícios</th>
+                <th class="p-3 text-left">Considerações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>Microsoft BitLocker MDE</strong></td>
+                <td class="p-3">Disco inteiro</td>
+                <td class="p-3">Integração com Microsoft 365, políticas centralizadas</td>
+                <td class="p-3">Requer licença Enterprise</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>McAfee Endpoint Encryption</strong></td>
+                <td class="p-3">Disco inteiro + arquivos</td>
+                <td class="p-3">Multiplataforma, gestão centralizada</td>
+                <td class="p-3">Custo elevado</td>
+              </tr>
+              <tr class="border-t border-gray-700">
+                <td class="p-3"><strong>Symantec Endpoint Encryption</strong></td>
+                <td class="p-3">Disco inteiro + arquivos</td>
+                <td class="p-3">Alta segurança, conformidade regulatória</td>
+                <td class="p-3">Curva de aprendizado</td>
+              </tr>
+              <tr class="border-t border-gray-700 bg-gray-800/30">
+                <td class="p-3"><strong>IBM Security Guardium</strong></td>
+                <td class="p-3">Dados em repouso e em trânsito</td>
+                <td class="p-3">Proteção de dados sensíveis, auditoria</td>
+                <td class="p-3">Mais complexo para pequenas organizações</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `
+    },
+    {
+      title: "8. Criptografia e Desempenho: O Trade-off",
+      content: `
+        <p class="mb-4 text-gray-300">
+          A criptografia adiciona uma camada de processamento que pode afetar o desempenho do sistema. No entanto, com os hardwares modernos, o impacto é geralmente mínimo graças a instruções criptográficas nativas nas CPUs.
+        </p>
+        
+        <h4 class="text-white font-bold mb-3 mt-6">⚡ Impacto no Desempenho por Tipo de Criptografia</h4>
+        <div class="space-y-4 mt-4">
+          <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
+            <h5 class="text-green-400 font-bold mb-2">Criptografia de Hardware (SEDs):</h5>
+            <p class="text-gray-300 text-sm">
+              <strong>Impacto:</strong> Praticamente nulo. A criptografia ocorre no controller do SSD, sem uso da CPU.
+            </p>
+          </div>
+          
+          <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+            <h5 class="text-blue-400 font-bold mb-2">Criptografia de Software com AES-NI:</h5>
+            <p class="text-gray-300 text-sm">
+              <strong>Impacto:</strong> 2-5% em desempenho de disco. CPUs modernas (Intel/AMD pós-2015) têm instruções AES-NI que aceleram a criptografia.
+            </p>
+          </div>
+          
+          <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20">
+            <h5 class="text-amber-400 font-bold mb-2">Criptografia de Software sem AES-NI:</h5>
+            <p class="text-gray-300 text-sm">
+              <strong>Impacto:</strong> 10-20% em desempenho de disco. CPUs antigas dependem da CPU para processamento criptográfico.
+            </p>
+          </div>
+        </div>
+        
+        <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20 mt-6">
+          <h4 class="text-purple-400 font-bold mb-2">🎮 Impacto em Jogos e Aplicações Intensivas</h4>
+          <p class="text-sm text-gray-300">
+            Para jogos e aplicações intensivas em I/O, a criptografia pode causar micro-stutters em sistemas com hardware mais antigo. Em SSDs modernos com criptografia de hardware (SEDs), o impacto é imperceptível na maioria dos casos.
+          </p>
+        </div>
+      `
     }
+  ];
+
+  const faqItems = [
+    {
+      question: "Qual é a diferença entre criptografia e compressão de arquivos?",
+      answer: "<strong>Criptografia</strong> transforma dados em um formato ilegível para proteger a privacidade, enquanto <strong>compressão</strong> reduz o tamanho dos arquivos para economizar espaço. É possível ter ambos: arquivos criptografados e comprimidos (ex: um arquivo .zip criptografado). A criptografia protege contra acesso não autorizado, enquanto a compressão economiza espaço em disco."
+    },
+    {
+      question: "O BitLocker é mais seguro que o VeraCrypt?",
+      answer: "Ambos são seguros, mas têm finalidades diferentes: <strong>BitLocker</strong> criptografa o disco inteiro e se integra ao Windows com suporte a TPM (Trusted Platform Module), sendo mais conveniente para uso diário. <strong>VeraCrypt</strong> oferece mais flexibilidade (volumes ocultos, senhas plausíveis), é open-source e pode ser usado em qualquer sistema. Para segurança máxima, VeraCrypt tem mais opções avançadas, mas BitLocker é mais prático para uso corporativo."
+    },
+    {
+      question: "Posso usar criptografia em pendrives USB?",
+      answer: "Sim, e é altamente recomendado! Você pode usar <strong>VeraCrypt</strong> para criptografar um pendrive inteiro ou criar volumes criptografados dentro dele. Também é possível usar <strong>BitLocker To Go</strong> (nas versões Pro do Windows) para criptografar pendrives. Isso protege seus dados caso o pendrive seja perdido ou roubado."
+    },
+    {
+      question: "O que acontece se eu esquecer a senha de um volume criptografado?",
+      answer: "Infelizmente, <strong>não há como recuperar os dados</strong> se você esquecer a senha de um volume criptografado com algoritmos fortes como AES. A criptografia é projetada para ser irrecuperável sem a chave correta. Por isso, é essencial manter sua senha em local seguro e usar técnicas de memorização confiáveis ou gerenciadores de senhas."
+    },
+    {
+      question: "Criptografia protege contra vírus e malware?",
+      answer: "<strong>Não diretamente.</strong> A criptografia protege contra acesso físico não autorizado (alguém que pegue seu disco), mas não protege contra malware que já está no sistema e tem permissão para acessar os arquivos. Um vírus pode criptografar seus arquivos com uma senha diferente (ransomware) ou simplesmente apagar os dados. Criptografia e antivírus são complementares, não substitutos."
+    },
+    {
+      question: "Como criar uma senha forte para criptografia?",
+      answer: "Use frases longas em vez de palavras curtas: <em>\"Minha_Familia_Tem_5_Membros_E_Nascemos_em_2026\"</em> é mais seguro que <em>\"P@ssw0rd123\"</em>. Inclua números, símbolos e variações de maiúsculas/minúsculas. Use um gerenciador de senhas para gerar e armazenar senhas únicas e fortes. Quanto mais longa a frase, mais tempo levará para ser quebrada por força bruta."
+    },
+    {
+      question: "Existe alguma maneira de acelerar a criptografia de disco?",
+      answer: "A velocidade de criptografia depende principalmente da velocidade do disco e da CPU. Discos mais rápidos (SSDs NVMe) criptografam mais rapidamente que HDs tradicionais. CPUs com instruções AES-NI aceleram o processamento criptográfico. Algumas ferramentas permitem ajustar o uso de CPU durante a criptografia para não interferir em outras tarefas. A criptografia de hardware (SEDs) é a mais rápida, pois ocorre no controller do disco."
+    },
+    {
+      question: "Posso criptografar um disco que já contém dados?",
+      answer: "Sim, tanto o <strong>BitLocker</strong> quanto o <strong>VeraCrypt</strong> podem criptografar discos com dados existentes. O processo pode levar bastante tempo (horas ou dias para discos grandes), mas os dados permanecem acessíveis durante a criptografia. O Windows permite continuar usando o computador normalmente, embora o desempenho possa ser afetado durante o processo."
+    },
+    {
+      question: "Criptografia de disco afeta o desempenho do SSD?",
+      answer: "Em SSDs modernos com suporte a criptografia de hardware (SEDs), o impacto é praticamente nulo. Em SSDs sem criptografia de hardware, o impacto é pequeno (2-5%) se a CPU tiver instruções AES-NI. Em CPUs mais antigas, o impacto pode ser maior (10-20%). Para jogos e aplicações intensivas, a criptografia de hardware é a melhor opção."
+    },
+    {
+      question: "Como verificar se meu disco está criptografado?",
+      answer: "No Windows, vá ao <strong>Explorador de Arquivos</strong> e clique com botão direito no disco > <strong>Propriedades</strong>. Se o BitLocker estiver ativado, aparecerá uma opção para desativar. No caso de VeraCrypt, o volume criptografado aparece como uma unidade separada quando montado. Você também pode usar o PowerShell com o comando <em>Get-BitLockerVolume</em> para verificar o status de criptografia de todos os volumes."
+    },
+    {
+      question: "Criptografia protege contra roubo de identidade?",
+      answer: "A criptografia protege contra acesso físico aos dados no dispositivo roubado, impedindo que ladrões acessem suas informações pessoais, senhas e documentos. No entanto, se suas contas online já estiverem comprometidas (senhas vazadas, etc.), a criptografia do disco não protege contra roubo de identidade digital. É importante usar autenticação multifator (2FA) e gerenciadores de senhas para proteção completa."
+    },
+    {
+      question: "Qual algoritmo de criptografia é mais seguro em 2026?",
+      answer: "Em 2026, o <strong>AES (Advanced Encryption Standard)</strong> com chave de 256 bits é considerado o padrão ouro para criptografia simétrica. Tanto o VeraCrypt quanto o BitLocker usam AES-256. Outras opções seguras incluem Serpent e Twofish. Para criptografia assimétrica (chaves públicas/privadas), RSA-4096 e algoritmos pós-quânticos como CRYSTALS-Kyber estão ganhando adoção. O AES-256 é considerado seguro contra computação quântica no curto prazo."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "VeraCrypt - Site Oficial", url: "https://www.veracrypt.fr/en/Home.html" },
+    { name: "Microsoft BitLocker - Documentação", url: "https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview" },
+    { name: "NIST Guidelines on Cryptography", url: "https://csrc.nist.gov/publications/detail/sp/800-175b/final" },
+    { name: "AES Encryption Explained", url: "https://csrc.nist.gov/pubs/fips/197/final" },
+    { name: "Cryptomator - Criptografia para Nuvem", url: "https://cryptomator.org/" },
+    { name: "IEEE 1667 Standard for SEDs", url: "https://standards.ieee.org/ieee/1667/6291/" },
+    { name: "TPM Security Best Practices", url: "https://trustedcomputinggroup.org/resource/tpm-library-specification/" },
+    { name: "LGPD - Lei Geral de Proteção de Dados", url: "https://www.gov.br/mds/pt-br/lgpd" },
+    { name: "GDPR Compliance and Encryption", url: "https://gdpr-info.eu/art-32-gdpr/" },
+    { name: "Quantum Computing and Cryptography", url: "https://csrc.nist.gov/projects/post-quantum-cryptography" }
   ];
 
   const relatedGuides = [
@@ -90,11 +330,51 @@ export default function EncryptionGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="20 min"
-      difficultyLevel="Médio"
+      estimatedTime="40 min"
+      difficultyLevel="Intermediário"
+      author="Equipe de Segurança Voltris"
+      lastUpdated="2026-01-20"
       contentSections={contentSections}
       summaryTable={summaryTable}
-      relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
+      relatedGuides={[
+        {
+          href: "/guias/seguranca-senhas-gerenciadores",
+          title: "Gerenciar Senhas",
+          description: "Armazene suas chaves de criptografia com segurança."
+        },
+        {
+          href: "/guias/bitlocker-desempenho-jogos-ssd",
+          title: "Impacto do BitLocker",
+          description: "Entenda o custo de performance da criptografia."
+        },
+        {
+          href: "/guias/autenticacao-dois-fatores",
+          title: "Proteção 2FA",
+          description: "Adicione mais camadas às suas contas."
+        },
+        {
+          href: "/guias/backup-dados",
+          title: "Backup de Dados",
+          description: "Aprenda a proteger cópias de segurança com criptografia."
+        },
+        {
+          href: "/guias/protecao-ransomware",
+          title: "Proteção contra Ransomware",
+          description: "Como a criptografia ajuda a proteger contra criptovírus."
+        },
+        {
+          href: "/guias/privacidade-windows-telemetria",
+          title: "Privacidade no Windows",
+          description: "Proteja sua privacidade além da criptografia."
+        },
+        {
+          href: "/guias/firewall-configuracao",
+          title: "Configuração de Firewall",
+          description: "Adicione proteção de rede aos seus dados criptografados."
+        }
+      ]}
     />
   );
 }
