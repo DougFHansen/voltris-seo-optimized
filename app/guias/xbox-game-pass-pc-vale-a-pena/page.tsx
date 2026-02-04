@@ -23,7 +23,7 @@ export default function GamePassValueGuide() {
 
     const contentSections = [
         {
-            title: "O "Netflix" dos Videogames em 2026",
+            title: "O \"Netflix\" dos Videogames em 2026",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
           O **Xbox Game Pass** revolucionou a forma como consumimos jogos. Em 2026, com os jogos AAA (lançamentos de ponta) custando frequentemente acima de R$ 350,00, a proposta de pagar uma mensalidade fixa para ter centenas de títulos à disposição parece tentadora. Porém, o serviço mudou: novos níveis de assinatura e a inclusão da Activision-Blizzard no catálogo transformaram o cenário.

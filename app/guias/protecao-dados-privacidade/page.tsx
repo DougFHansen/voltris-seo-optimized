@@ -42,7 +42,7 @@ export default function PrivacyProtectionGuide() {
       `
         },
         {
-            title: "2. Redes Sociais e a "Bolha" Digital",
+            title: "2. Redes Sociais e a \"Bolha\" Digital",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Checklist de Configuração:</h4>
@@ -55,7 +55,7 @@ export default function PrivacyProtectionGuide() {
       `
         },
         {
-            title: "3. O Mito do "Modo Incógnito"",
+            title: "3. O Mito do \"Modo Incógnito\"",
             content: `
         <p class="mb-4 text-gray-300">
             <strong>Cuidado:</strong> 

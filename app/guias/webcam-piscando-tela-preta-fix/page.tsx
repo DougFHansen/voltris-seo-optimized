@@ -57,7 +57,7 @@ export default function WebcamFixGuide() {
       `
         },
         {
-            title: "3. O "Limite" do barramento USB",
+            title: "3. O \"Limite\" do barramento USB",
             content: `
         <p class="mb-4 text-gray-300">
             <strong>Sua webcam pisca sem parar?</strong> 

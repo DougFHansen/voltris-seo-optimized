@@ -55,7 +55,7 @@ export default function HibernationGuide() {
       `
         },
         {
-            title: "3. O "Início Rápido" do Windows (Dica de Ouro)",
+            title: "3. O \"Início Rápido\" do Windows (Dica de Ouro)",
             content: `
         <p class="mb-4 text-gray-300">
             Você sabia que quando você clica em "Desligar" no Windows 11, ele não desliga de verdade? 

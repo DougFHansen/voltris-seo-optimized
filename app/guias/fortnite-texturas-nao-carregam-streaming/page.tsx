@@ -56,7 +56,7 @@ export default function FortniteTexturesFixGuide() {
       `
         },
         {
-            title: "3. O "Modo HDD" e a Qualidade dos Shaders",
+            title: "3. O \"Modo HDD\" e a Qualidade dos Shaders",
             content: `
         <p class="mb-4 text-gray-300">
             <strong>Check final 2026:</strong> 

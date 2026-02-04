@@ -23,7 +23,7 @@ export default function PasswordManagerGuide() {
 
     const contentSections = [
         {
-            title: "O fim da era das senhas "fáceis"",
+            title: "O fim da era das senhas \"fáceis\"",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
           Em 2026, usar senhas como "123456" ou o nome do seu pet é pedir para ser hackeado. Com o uso de IAs para quebra de senhas (Brute Force), uma senha simples é descoberta em milissegundos. O problema é que o ser humano não consegue decorar 50 senhas complexas de 20 caracteres cada. É aqui que entram os **Gerenciadores de Senha**: você só precisa decorar UMA senha mestre, e ele cuida de todo o resto.

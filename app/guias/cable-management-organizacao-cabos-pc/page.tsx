@@ -31,7 +31,7 @@ export default function CableManagementGuide() {
       `
         },
         {
-            title: "1. A regra do "Caminho de Trás"",
+            title: "1. A regra do \"Caminho de Trás\"",
             content: `
         <p class="mb-4 text-gray-300">O maior segredo é esconder a bagunça:</p>
         <p class="text-sm text-gray-300">

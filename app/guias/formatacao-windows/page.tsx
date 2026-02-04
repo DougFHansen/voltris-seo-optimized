@@ -23,7 +23,7 @@ export default function FormatWindowsGuide() {
 
   const contentSections = [
     {
-      title: "O "Reset" Total do seu Computador em 2026",
+      title: "O \"Reset\" Total do seu Computador em 2026",
       content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
           Formatar o Windows é a solução definitiva quando nenhuma otimização funciona mais. Seja por acumulo de erros no registro, vírus teimosos ou apenas o desejo de ter aquele sentimento de "PC novo", uma instalação limpa é o melhor presente que você pode dar ao seu hardware em 2026. Neste guia, vamos focar no método de **Instalação Limpa via USB**, que é superior ao 'Restaurar o PC' das configurações.

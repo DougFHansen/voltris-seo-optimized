@@ -31,7 +31,7 @@ export default function CyberpunkOptimizationGuide() {
       `
         },
         {
-            title: "1. O "HDD Mode": Não é apenas para HDs antigos",
+             title: "1. O \"HDD Mode\": Não é apenas para HDs antigos",
             content: `
         <p class="mb-4 text-gray-300">Este ajuste pode salvar o seu gameplay even em SSDs comuns:</p>
         <p class="text-sm text-gray-300">

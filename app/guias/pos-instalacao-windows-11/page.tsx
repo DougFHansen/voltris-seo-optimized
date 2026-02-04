@@ -23,7 +23,7 @@ export default function PostInstallationGuide() {
 
     const contentSections = [
         {
-            title: "O perigo do computador "pelado"",
+            title: "O perigo do computador \"pelado\"",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
           Muitos usuários acham que, ao terminar a instalação do Windows 11, o trabalho acabou. Na verdade, os primeiros 30 minutos após o primeiro boot são cruciais. É nesse momento que você define se o seu sistema será estável e rápido ou se ele começará a acumular erros de DLL e instabilidades de driver. Siga esta ordem cronológica para um setup perfeito em 2026.

@@ -55,7 +55,7 @@ export default function BudgetPCGuide() {
       `
         },
         {
-            title: "3. O "Pulo do Gato": Peças Usadas",
+            title: "3. O \"Pulo do Gato\": Peças Usadas",
             content: `
         <p class="mb-4 text-gray-300">
             Se o orçamento estiver muito apertado, considere comprar a <strong>Placa de Vídeo e o Processador usados</strong> (com procedência). Gabinete, Fonte e SSD devem ser sempre comprados <strong>NOVOS</strong>, pois são as peças que mais sofrem desgaste físico ou que podem queimar o resto do seu sistema se falharem.

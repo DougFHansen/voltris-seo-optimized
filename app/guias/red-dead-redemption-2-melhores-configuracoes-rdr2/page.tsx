@@ -41,7 +41,7 @@ export default function RDR2OptimizationGuide() {
       `
         },
         {
-            title: "2. Configurações que "Matam" o FPS",
+            title: "2. Configurações que \"Matam\" o FPS",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Otimização Cirúrgica:</h4>

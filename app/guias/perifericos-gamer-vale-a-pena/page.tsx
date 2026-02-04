@@ -43,7 +43,7 @@ export default function GamingPeripheralsGuide() {
       `
         },
         {
-            title: "2. Teclados: O "Pay to Win" do Rapid Trigger",
+            title: "2. Teclados: O \"Pay to Win\" do Rapid Trigger",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A Tecnologia Hall Effect:</h4>
@@ -54,7 +54,7 @@ export default function GamingPeripheralsGuide() {
       `
         },
         {
-            title: "3. Áudio: Fuja do "7.1 Virtual"",
+            title: "3. Áudio: Fuja do \"7.1 Virtual\"",
             content: `
         <p class="mb-4 text-gray-300">
             <strong>Qualidade Estéreo:</strong> 

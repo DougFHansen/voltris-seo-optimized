@@ -57,7 +57,7 @@ export default function ValorantDX11Guide() {
       `
         },
         {
-            title: "3. O "Golpe" das Placas Remarcadas",
+            title: "3. O \"Golpe\" das Placas Remarcadas",
             content: `
         <p class="mb-4 text-gray-300">
             <strong>Cuidado em 2026:</strong> 

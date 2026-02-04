@@ -57,7 +57,7 @@ export default function PreventiveMaintenanceGuide() {
       `
         },
         {
-            title: "3. O "Seguro" dos seus Dados",
+            title: "3. O \"Seguro\" dos seus Dados",
             content: `
         <p class="mb-4 text-gray-300">
             Hardware a gente compra outro, mas seus dados (fotos, documentos, save de jogos) são únicos. A manutenção definitiva é ter um backup. 

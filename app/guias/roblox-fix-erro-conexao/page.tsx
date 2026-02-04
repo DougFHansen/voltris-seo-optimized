@@ -31,7 +31,7 @@ export default function RobloxConnectionFixGuide() {
       `
         },
         {
-            title: "1. Limpando o "Lixo" do Roblox",
+            title: "1. Limpando o \"Lixo\" do Roblox",
             content: `
         <p class="mb-4 text-gray-300">Arquivos corrompidos de sessões antigas causam erros de conexão:</p>
         <ol class="list-decimal list-inside text-gray-300 space-y-3">

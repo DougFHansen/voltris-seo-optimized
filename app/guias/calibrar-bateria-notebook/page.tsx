@@ -23,7 +23,7 @@ export default function BatteryCalibrationGuide() {
 
     const contentSections = [
         {
-            title: "Por que a bateria "mente"?",
+            title: "Por que a bateria \"mente\"?",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
           Com o passar do tempo em 2026, o sensor digital que mede a carga da bateria (Fuel Gauge) pode perder o sincronismo com a capacidade química real das células. Isso faz com que o Windows ache que você ainda tem 15% de bateria, quando na verdade ela já está no fim, causando o desligamento repentino do notebook. A **calibração** não recupera uma bateria morta, mas faz com que a porcentagem mostrada seja real.

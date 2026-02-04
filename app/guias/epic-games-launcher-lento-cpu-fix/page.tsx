@@ -23,7 +23,7 @@ export default function EpicGamesFixGuide() {
 
     const contentSections = [
         {
-            title: "O "peso" da Epic Games em 2026",
+            title: "O \"peso\" da Epic Games em 2026",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
           Embora a **Epic Games Store** ofereça jogos incríveis de graça toda semana, o seu programa inicializador (Launcher) é conhecido por ser pesado. Construído com tecnologias web, ele pode consumir mais processador que o próprio jogo se estiver mal configurado. Em 2026, com computadores multitarefa, manter o launcher "quieto" enquanto você não está jogando é essencial para a saúde do sistema.

@@ -62,7 +62,7 @@ export default function WindowsUpdateFixGuide() {
       `
         },
         {
-            title: "3. O "Último Recurso" em 2026",
+            title: "3. O \"Último Recurso\" em 2026",
             content: `
         <p class="mb-4 text-gray-300">
             <strong>Assistente de Atualização:</strong> 

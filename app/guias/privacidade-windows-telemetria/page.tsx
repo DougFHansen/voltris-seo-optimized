@@ -55,7 +55,7 @@ export default function PrivacyGuide() {
       `
     },
     {
-      title: "3. O "Poder" do PowerShell",
+      title: "3. O \"Poder\" do PowerShell",
       content: `
         <p class="mb-4 text-gray-300">
             <strong>Limpeza Profunda em 2026:</strong> 

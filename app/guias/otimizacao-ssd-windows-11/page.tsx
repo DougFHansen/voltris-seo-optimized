@@ -55,7 +55,7 @@ export default function SSDOptimizationGuide() {
       `
         },
         {
-            title: "3. O "Over- Provisioning" e o Espaço Livre",
+            title: "3. O \"Over-Provisioning\" e o Espaço Livre",
         content: `
         <p class="mb-4 text-gray-300">
             <strong>A Regra dos 15%:</strong> 

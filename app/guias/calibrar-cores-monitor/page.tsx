@@ -43,7 +43,7 @@ export default function MonitorCalibrationGuide() {
       `
         },
         {
-            title: "2. Perfis ICC: O "DNA" do seu Monitor",
+            title: "2. Perfis ICC: O \"DNA\" do seu Monitor",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Upgrade Profissional:</h4>
