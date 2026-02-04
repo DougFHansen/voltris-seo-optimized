@@ -32,13 +32,25 @@ function extractGuideMetadata(guideDir) {
     const titleMatch = content.match(/const title = "(.*?)"/);
     const title = titleMatch ? titleMatch[1] : `Guia ${guideDir}`;
     
-    // Extrair descrição
-    const descriptionMatch = content.match(/const description = "(.*?)"/);
+    // Extrair descrição - usando regex que considera aspas duplas escapadas
+    const descriptionMatch = content.match(/const description = "((?:[^"\\]|\\.)*)";/);
     const description = descriptionMatch ? descriptionMatch[1] : 'Descrição não disponível';
     
     // Extrair dificuldade do summaryTable
     const difficultyMatch = content.match(/label:\s*"Dificuldade",\s*value:\s*"([^"]+)"/);
-    const difficulty = difficultyMatch ? difficultyMatch[1] : 'Intermediário';
+    let difficulty = difficultyMatch ? difficultyMatch[1] : 'Intermediário';
+    
+    // Converter valores de dificuldade para os valores aceitos
+    if (difficulty === 'Fácil' || difficulty === 'Iniciante') {
+        difficulty = 'Iniciante';
+    } else if (difficulty === 'Médio' || difficulty === 'Intermediário' || difficulty === 'Intermediária') {
+        difficulty = 'Intermediário';
+    } else if (difficulty === 'Alta' || difficulty === 'Avançado') {
+        difficulty = 'Avançado';
+    } else {
+        // Para valores compostos ou outros, padronizar para Intermediário como fallback
+        difficulty = 'Intermediário';
+    }
     
     // Extrair tempo estimado do summaryTable ou do return do GuideTemplate
     const timeMatch = content.match(/estimatedTime["']?\s*[:=]\s*["']([^"']+)["']/);
@@ -233,7 +245,10 @@ categories.forEach((category, idx) => {
 `;
     
     category.guides.forEach(guide => {
-        outputCode += `        { slug: '${guide.slug}', title: '${guide.title.replace(/'/g, "\\'")}', description: '${guide.description.replace(/'/g, "\\'")}', difficulty: '${guide.difficulty}', time: '${guide.time}' },\n`;
+        // Usar JSON.stringify para escapar corretamente os caracteres especiais
+        const escapedTitle = JSON.stringify(guide.title).slice(1, -1); // Remover as aspas externas
+        const escapedDescription = JSON.stringify(guide.description).slice(1, -1); // Remover as aspas externas
+        outputCode += `        { slug: '${guide.slug}', title: '${escapedTitle}', description: '${escapedDescription}', difficulty: '${guide.difficulty}', time: '${guide.time}' },\n`;
     });
     
     outputCode += `      ]
