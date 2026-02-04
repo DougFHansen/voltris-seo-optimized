@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { GuideTemplate, createGuideMetadata } from '@/components/GuideMetadata';
+import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 const title = "Hibernação vs Suspensão: Qual o melhor para o seu PC? (2026)";
 const description = "Você desliga o PC toda noite ou apenas fecha a tampa? Aprenda a diferença entre Hibernar e Suspender e descubra qual modo preserva mais o seu hardware.";

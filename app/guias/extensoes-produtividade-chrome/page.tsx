@@ -52,7 +52,7 @@ export default function BrowserExtensionsGuide() {
       `
     },
     {
-      title: "3. Cuidado com o "Spyware" em 2026",
+      title: "3. Cuidado com o \"Spyware\" em 2026",
       content: `
         <p class="mb-4 text-gray-300">
             <strong>Segurança em primeiro lugar:</strong> 
