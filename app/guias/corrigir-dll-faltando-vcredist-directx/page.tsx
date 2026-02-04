@@ -31,7 +31,7 @@ export default function DLLFixGuide() {
       `
         },
         {
-            title: "1. Visual C++: O "All in One" (A Solução Mágica)",
+             title: "1. Visual C++: O \"All in One\" (A Solução Mágica)",
             content: `
         <p class="mb-4 text-gray-300">Em vez de baixar um por um, instale o pacote completo:</p>
         <p class="text-sm text-gray-300">
