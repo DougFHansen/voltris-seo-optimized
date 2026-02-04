@@ -246,9 +246,16 @@ categories.forEach((category, idx) => {
     
     category.guides.forEach(guide => {
         // Usar JSON.stringify para escapar corretamente os caracteres especiais
-        const escapedTitle = JSON.stringify(guide.title).slice(1, -1); // Remover as aspas externas
-        const escapedDescription = JSON.stringify(guide.description).slice(1, -1); // Remover as aspas externas
-        outputCode += `        { slug: '${guide.slug}', title: '${escapedTitle}', description: '${escapedDescription}', difficulty: '${guide.difficulty}', time: '${guide.time}' },\n`;
+        // Usar JSON.stringify para escapar corretamente os caracteres especiais
+        // Depois, escapar aspas simples para que não interfiram na string delimitada por aspas simples
+        const jsonTitle = JSON.stringify(guide.title);
+        const jsonDescription = JSON.stringify(guide.description);
+        
+        // Remover as aspas externas e escapar aspas simples para uso em strings de aspas simples
+        const escapedTitle = jsonTitle.slice(1, -1).replace(/'/g, "\\'");
+        const escapedDescription = jsonDescription.slice(1, -1).replace(/'/g, "\\'");
+        
+        outputCode += '        { slug: \'' + guide.slug + '\', title: \'' + escapedTitle + '\', description: \'' + escapedDescription + '\', difficulty: \'' + guide.difficulty + '\', time: \'' + guide.time + '\' },\n';
     });
     
     outputCode += `      ]
