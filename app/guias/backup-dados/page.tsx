@@ -54,7 +54,7 @@ export default function DataBackupGuide() {
       `
     },
     {
-      title: "3. O "Backup Frio" (Cold Backup)",
+      title: "3. O \"Backup Frio\" (Cold Backup)",
       content: `
         <p class="mb-4 text-gray-300">
             <strong>Proteção contra Ransomware:</strong> 
