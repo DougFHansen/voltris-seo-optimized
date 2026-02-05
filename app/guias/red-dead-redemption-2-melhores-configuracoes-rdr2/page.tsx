@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'red-dead-redemption-2-melhores-configuracoes-rdr2',
+  title: "RDR2: Melhores Configurações de Gráficos e FPS (2026)",
+  description: "Quer rodar Red Dead Redemption 2 com visual incrível e FPS alto? Veja este guia das configurações otimizadas para PC em 2026.",
+  category: 'rede-seguranca',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "RDR2: Melhores Configurações de Gráficos e FPS (2026)";
 const description = "Quer rodar Red Dead Redemption 2 com visual incrível e FPS alto? Veja este guia das configurações otimizadas para PC em 2026.";
 const keywords = [

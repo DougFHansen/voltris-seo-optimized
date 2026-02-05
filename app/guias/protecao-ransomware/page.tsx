@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'protecao-ransomware',
+  title: "Proteção contra Ransomware: Como blindar seu PC em 2026",
+  description: "Seus arquivos foram sequestrados? Aprenda como se proteger de Ransomwares, ativar a proteção nativa do Windows 11 e fazer backups seguros em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '45 min'
+};
+
 const title = "Proteção contra Ransomware: Como blindar seu PC em 2026";
 const description = "Seus arquivos foram sequestrados? Aprenda como se proteger de Ransomwares, ativar a proteção nativa do Windows 11 e fazer backups seguros em 2026.";
 const keywords = [

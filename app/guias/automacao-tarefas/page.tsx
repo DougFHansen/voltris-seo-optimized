@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'automacao-tarefas',
+  title: "Automação de Tarefas no Windows 11 (2026)",
+  description: "Pare de fazer trabalho repetitivo! Aprenda a usar o Power Automate, Agendador de Tarefas e Scripts para automatizar seu PC em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Automação de Tarefas no Windows 11 (2026)";
 const description = "Pare de fazer trabalho repetitivo! Aprenda a usar o Power Automate, Agendador de Tarefas e Scripts para automatizar seu PC em 2026.";
 const keywords = [

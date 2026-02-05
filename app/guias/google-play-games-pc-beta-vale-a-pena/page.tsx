@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'google-play-games-pc-beta-vale-a-pena',
+  title: "Google Play Games no PC: Vale a pena em 2026? (Review)",
+  description: "Descubra se o Google Play Games oficial para PC é melhor que emuladores como o BlueStacks para jogar no Windows 11 em 2026. Review completo.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "Google Play Games no PC: Vale a pena em 2026? (Review)";
 const description = "Descubra se o Google Play Games oficial para PC é melhor que emuladores como o BlueStacks para jogar no Windows 11 em 2026. Review completo.";
 const keywords = [

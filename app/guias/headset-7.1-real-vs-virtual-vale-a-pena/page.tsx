@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'headset-7.1-real-vs-virtual-vale-a-pena',
+  title: "Headset 7.1 Virtual vs Real: Qual a diferença em 2026?",
+  description: "Vale a pena pagar mais caro por um headset 7.1? Descubra como funciona o som surround virtual e por que o som estéreo de qualidade ainda é o rei para ...",
+  category: 'perifericos',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Headset 7.1 Virtual vs Real: Qual a diferença em 2026?";
 const description = "Vale a pena pagar mais caro por um headset 7.1? Descubra como funciona o som surround virtual e por que o som estéreo de qualidade ainda é o rei para os games.";
 const keywords = [

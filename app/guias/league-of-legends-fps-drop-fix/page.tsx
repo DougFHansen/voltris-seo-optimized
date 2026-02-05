@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'league-of-legends-fps-drop-fix',
+  title: "League of Legends: Como resolver quedas de FPS e Travadas (2026)",
+  description: "Seu LoL está travando em lutas de equipe (Teamfights)? Aprenda as melhores configurações para ganhar FPS e remover o lag no League of Legends em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "League of Legends: Como resolver quedas de FPS e Travadas (2026)";
 const description = "Seu LoL está travando em lutas de equipe (Teamfights)? Aprenda as melhores configurações para ganhar FPS e remover o lag no League of Legends em 2026.";
 const keywords = [

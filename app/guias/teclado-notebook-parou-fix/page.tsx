@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'teclado-notebook-parou-fix',
+  title: "Teclado do Notebook Parou: Como resolver (Guia 2026)",
+  description: "Metade do seu teclado não funciona ou ele parou totalmente? Aprenda a diagnosticar problemas de driver, sujeira e hardware no seu notebook em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Teclado do Notebook Parou: Como resolver (Guia 2026)";
 const description = "Metade do seu teclado não funciona ou ele parou totalmente? Aprenda a diagnosticar problemas de driver, sujeira e hardware no seu notebook em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'fortnite-texturas-nao-carregam-streaming',
+  title: "Fortnite: Texturas não carregam? Veja como resolver (2026)",
+  description: "Seu Fortnite está com construções invisíveis ou texturas borradas? Aprenda como forçar o carregamento de texturas no guia de 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Fortnite: Texturas não carregam? Veja como resolver (2026)";
 const description = "Seu Fortnite está com construções invisíveis ou texturas borradas? Aprenda como forçar o carregamento de texturas no guia de 2026.";
 const keywords = [

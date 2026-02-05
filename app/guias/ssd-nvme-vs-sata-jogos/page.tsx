@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'ssd-nvme-vs-sata-jogos',
+  title: "SSD NVMe vs SATA: Qual a real diferença em Jogos? (2026)",
+  description: "3500MB/s vs 550MB/s. O NVMe M.2 realmente carrega jogos mais rápido que o SSD SATA comum? Veja comparativos de load time e DirectStorage em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "SSD NVMe vs SATA: Qual a real diferença em Jogos? (2026)";
 const description = "3500MB/s vs 550MB/s. O NVMe M.2 realmente carrega jogos mais rápido que o SSD SATA comum? Veja comparativos de load time e DirectStorage em 2026.";
 const keywords = [

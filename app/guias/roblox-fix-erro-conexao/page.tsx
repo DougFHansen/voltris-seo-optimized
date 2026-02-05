@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'roblox-fix-erro-conexao',
+  title: "Roblox: Como resolver Erro de Conexão (ID 277 / 279)",
+  description: "Sua partida de Roblox caiu? Aprenda a resolver os erros de conexão 277, 279 e outros problemas de ping no Roblox em 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Roblox: Como resolver Erro de Conexão (ID 277 / 279)";
 const description = "Sua partida de Roblox caiu? Aprenda a resolver os erros de conexão 277, 279 e outros problemas de ping no Roblox em 2026.";
 const keywords = [

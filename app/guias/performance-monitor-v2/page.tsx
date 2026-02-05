@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'performance-monitor-v2',
+  title: "Como Medir a Performance do seu PC: Guia de Benchmarks 2026",
+  description: "Seu PC está rendendo o que deveria? Aprenda a usar o Cinebench, 3DMark e UserBenchmark para comparar seus resultados com outros usuários e detectar ga...",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "Como Medir a Performance do seu PC: Guia de Benchmarks 2026";
 const description = "Seu PC está rendendo o que deveria? Aprenda a usar o Cinebench, 3DMark e UserBenchmark para comparar seus resultados com outros usuários e detectar gargalos.";
 const keywords = [

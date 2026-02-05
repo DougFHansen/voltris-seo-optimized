@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'valorant-reduzir-input-lag',
+  title: "Como Reduzir o Input Lag no Valorant: Guia Completo (2026)",
+  description: "Sente o mouse pesado no Valorant? Aprenda como reduzir o input lag, configurar o NVIDIA Reflex e otimizar o Windows 11 para máxima resposta em 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Como Reduzir o Input Lag no Valorant: Guia Completo (2026)";
 const description = "Sente o mouse pesado no Valorant? Aprenda como reduzir o input lag, configurar o NVIDIA Reflex e otimizar o Windows 11 para máxima resposta em 2026.";
 const keywords = [

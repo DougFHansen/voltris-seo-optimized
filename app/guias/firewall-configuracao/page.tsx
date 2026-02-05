@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'firewall-configuracao',
+  title: "Guia Completo de Configuração do Firewall do Windows (2026)",
+  description: "Quer proteger seu PC contra invasões? Aprenda como configurar o Firewall do Windows 11 corretamente para jogos e segurança em 2026.",
+  category: 'rede-seguranca',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Guia Completo de Configuração do Firewall do Windows (2026)";
 const description = "Quer proteger seu PC contra invasões? Aprenda como configurar o Firewall do Windows 11 corretamente para jogos e segurança em 2026.";
 const keywords = [

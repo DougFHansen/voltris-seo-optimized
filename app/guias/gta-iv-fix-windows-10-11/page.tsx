@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gta-iv-fix-windows-10-11',
+  title: "GTA IV Fix: Como rodar liso no Windows 10 e 11 (2026)",
+  description: "O GTA IV para PC é famoso por ser mal otimizado. Aprenda a instalar o DXVK, FusionFix e corrigir o lag e erros de câmera no Windows moderno.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "GTA IV Fix: Como rodar liso no Windows 10 e 11 (2026)";
 const description = "O GTA IV para PC é famoso por ser mal otimizado. Aprenda a instalar o DXVK, FusionFix e corrigir o lag e erros de câmera no Windows moderno.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'steam-tarda-baixar-lento-fix',
+  title: "Download Lento na Steam? Como Acelerar ao Máximo sua Conexão (2026)",
+  description: "Sua internet é de 500 Mega mas a Steam baixa a 2MB/s? O problema pode ser a 'Região de Download' ou o cache corrompido. Veja como resolver.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '5 min'
+};
+
 const title = "Download Lento na Steam? Como Acelerar ao Máximo sua Conexão (2026)";
 const description = "Sua internet é de 500 Mega mas a Steam baixa a 2MB/s? O problema pode ser a 'Região de Download' ou o cache corrompido. Veja como resolver.";
 const keywords = ['steam download lento', 'aumentar velocidade download steam', 'limpar cache steam', 'mudar regiao download steam', 'steam limitando banda', 'steam download cai para 0'];

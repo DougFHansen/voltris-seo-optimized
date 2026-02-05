@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pasta-windows-winsxs-gigante-como-limpar',
+  title: "Pasta WinSxS Gigante: Como limpar e ganhar espaço no Windows 11",
+  description: "Sua pasta Windows está ocupando muito espaço? Aprenda o que é a pasta WinSxS e qual a forma segura de diminuir seu tamanho sem estragar o sistema em 2...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Pasta WinSxS Gigante: Como limpar e ganhar espaço no Windows 11";
 const description = "Sua pasta Windows está ocupando muito espaço? Aprenda o que é a pasta WinSxS e qual a forma segura de diminuir seu tamanho sem estragar o sistema em 2026.";
 const keywords = [

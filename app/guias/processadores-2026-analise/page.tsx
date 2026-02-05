@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'processadores-2026-analise',
+  title: "Processadores em 2026: Guia Completo e Análise de Performance",
+  description: "Ryzen ou Intel? Entenda as novas arquiteturas de processadores de 2026 e saiba como escolher a melhor CPU para jogos e trabalho multitarefa.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Processadores em 2026: Guia Completo e Análise de Performance";
 const description = "Ryzen ou Intel? Entenda as novas arquiteturas de processadores de 2026 e saiba como escolher a melhor CPU para jogos e trabalho multitarefa.";
 const keywords = [

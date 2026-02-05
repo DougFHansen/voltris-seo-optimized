@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'manutencao-preventiva',
+  title: "Manutenção Preventiva de Computadores",
+  description: "Rotinas de manutenção que você pode fazer regularmente para manter seu computador funcionando perfeitamente e evitar problemas futuros.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '45 minutos'
+};
+
 const title = "Manutenção Preventiva de Computadores";
 const description = "Rotinas de manutenção que você pode fazer regularmente para manter seu computador funcionando perfeitamente e evitar problemas futuros. Guia completo com mais de 2000 palavras de conteúdo especializado para manutenção profissional de sistemas.";
 const keywords = ['manutencao preventiva', 'manutencao computador', 'rotinas manutencao', 'prevencao problemas', 'otimizacao sistema', 'limpeza computador', 'desfragmentacao disco', 'otimizacao windows', 'manutencao hardware', 'backup sistema', 'limpeza registro', 'verificacao erros disco', 'atualizacao drivers', 'monitoramento desempenho'];

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'nvidia-refelx-on-vs-boost-diferenca',
+  title: "NVIDIA Reflex: Qual a diferença entre ON e ON + BOOST? (2026)",
+  description: "Quer reduzir o atraso dos seus comandos? Aprenda como configurar o NVIDIA Reflex corretamente e saiba quando usar o modo Boost em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "NVIDIA Reflex: Qual a diferença entre ON e ON + BOOST? (2026)";
 const description = "Quer reduzir o atraso dos seus comandos? Aprenda como configurar o NVIDIA Reflex corretamente e saiba quando usar o modo Boost em 2026.";
 const keywords = [

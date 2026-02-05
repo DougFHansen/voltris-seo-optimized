@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'league-of-legends-tela-preta-carregamento',
+  title: "LoL: Como resolver a Tela Preta no Carregamento em 2026",
+  description: "Seu League of Legends fica com a tela preta após a seleção de campeão? Aprenda a corrigir este erro de conexão e firewall para não perder mais PDL.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "LoL: Como resolver a Tela Preta no Carregamento em 2026";
 const description = "Seu League of Legends fica com a tela preta após a seleção de campeão? Aprenda a corrigir este erro de conexão e firewall para não perder mais PDL.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'verificar-saude-hd-ssd-crystaldiskinfo',
+  title: "Como verificar a Saúde do HD e SSD: CrystalDiskInfo (2026)",
+  description: "Seu PC está travando ou arquivos sumindo? Aprenda a usar o CrystalDiskInfo para prever falhas no seu HD ou SSD em 2026.",
+  category: 'hardware',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Como verificar a Saúde do HD e SSD: CrystalDiskInfo (2026)";
 const description = "Seu PC está travando ou arquivos sumindo? Aprenda a usar o CrystalDiskInfo para prever falhas no seu HD ou SSD em 2026.";
 const keywords = [

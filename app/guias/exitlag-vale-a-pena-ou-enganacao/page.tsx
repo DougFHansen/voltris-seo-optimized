@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'exitlag-vale-a-pena-ou-enganacao',
+  title: "ExitLag Vale a Pena em 2026? Analisando o Ping e Rota",
+  description: "Sofrendo com lag e ping alto no Warzone ou Valorant? Descubra se o ExitLag realmente funciona ou se é apenas marketing no guia de 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "ExitLag Vale a Pena em 2026? Analisando o Ping e Rota";
 const description = "Sofrendo com lag e ping alto no Warzone ou Valorant? Descubra se o ExitLag realmente funciona ou se é apenas marketing no guia de 2026.";
 const keywords = [

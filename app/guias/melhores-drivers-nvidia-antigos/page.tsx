@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'melhores-drivers-nvidia-antigos',
+  title: "Drivers Antigos da NVIDIA: Quando vale a pena fazer o Rollback?",
+  description: "Seu FPS caiu depois de atualizar o driver da NVIDIA? Descubra quais são as versões mais estáveis e aprenda a voltar para um driver antigo com seguranç...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Drivers Antigos da NVIDIA: Quando vale a pena fazer o Rollback?";
 const description = "Seu FPS caiu depois de atualizar o driver da NVIDIA? Descubra quais são as versões mais estáveis e aprenda a voltar para um driver antigo com segurança em 2026.";
 const keywords = [

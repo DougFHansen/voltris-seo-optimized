@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'calibrar-cores-monitor',
+  title: "Como Calibrar as Cores do Monitor em 2026 (Guia Completo)",
+  description: "Sente que as cores do seu monitor estão 'lavadas' ou amareladas? Aprenda como calibrar o Windows 11 para ter cores reais e vibrantes em 2026.",
+  category: 'perifericos',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Como Calibrar as Cores do Monitor em 2026 (Guia Completo)";
 const description = "Sente que as cores do seu monitor estão 'lavadas' ou amareladas? Aprenda como calibrar o Windows 11 para ter cores reais e vibrantes em 2026.";
 const keywords = [

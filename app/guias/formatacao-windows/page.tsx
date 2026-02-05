@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'formatacao-windows',
+  title: "Como Formatar o Windows 11: Guia Completo Passo a Passo (2026)",
+  description: "Seu PC está lento, travando ou com vírus? Aprenda como formatar o Windows 11 do zero com instalação limpa via pendrive, particionamento correto e conf...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '60 min'
+};
+
 const title = "Como Formatar o Windows 11: Guia Completo Passo a Passo (2026)";
 const description = "Seu PC está lento, travando ou com vírus? Aprenda como formatar o Windows 11 do zero com instalação limpa via pendrive, particionamento correto e configuração pós-instalação para máxima performance em 2026.";
 const keywords = [

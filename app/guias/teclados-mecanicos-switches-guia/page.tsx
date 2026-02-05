@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'teclados-mecanicos-switches-guia',
+  title: "Switches de Teclado Mecânico: Guia de Cores e Tipos (2026)",
+  description: "Blue, Red, Brown ou Silver? Aprenda a diferença entre todos os switches de teclado mecânico e escolha o ideal para o seu estilo em 2026.",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Switches de Teclado Mecânico: Guia de Cores e Tipos (2026)";
 const description = "Blue, Red, Brown ou Silver? Aprenda a diferença entre todos os switches de teclado mecânico e escolha o ideal para o seu estilo em 2026.";
 const keywords = [

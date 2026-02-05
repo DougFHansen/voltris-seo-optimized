@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'eld-ring-stuttering-fix-dx12',
+  title: "Elden Ring: Como corrigir Stuttering e Travadas (DX12 Fix 2026)",
+  description: "Sofrendo com lentidão nas Terras Intermédias? Aprenda a corrigir o stuttering do Elden Ring no DirectX 12 e ganhar estabilidade em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Elden Ring: Como corrigir Stuttering e Travadas (DX12 Fix 2026)";
 const description = "Sofrendo com lentidão nas Terras Intermédias? Aprenda a corrigir o stuttering do Elden Ring no DirectX 12 e ganhar estabilidade em 2026.";
 const keywords = [

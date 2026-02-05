@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'streamlabs-vs-obs-qual-usar',
+  title: "Streamlabs vs OBS Studio: Qual usar para Lives em 2026? (Comparativo Real)",
+  description: "O Streamlabs é bonito, mas pesado. O OBS Studio é feio, mas leve. Veja testes de uso de CPU/RAM e decida qual o melhor para o seu PC.",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "Streamlabs vs OBS Studio: Qual usar para Lives em 2026? (Comparativo Real)";
 const description = "O Streamlabs é bonito, mas pesado. O OBS Studio é feio, mas leve. Veja testes de uso de CPU/RAM e decida qual o melhor para o seu PC.";
 const keywords = ['streamlabs vs obs studio', 'qual programa de stream é mais leve', 'obs studio consome menos cpu', 'streamlabs travando jogos', 'plugins obs', 'obs live tiktok vertical'];

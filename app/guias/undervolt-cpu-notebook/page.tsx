@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'undervolt-cpu-notebook',
+  title: "Undervolt de CPU em Notebook: Como reduzir o calor (2026)",
+  description: "Seu notebook ferve enquanto você joga? Aprenda como fazer undervolt na CPU para reduzir a temperatura em até 10°C sem perder performance em 2026.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '45 min'
+};
+
 const title = "Undervolt de CPU em Notebook: Como reduzir o calor (2026)";
 const description = "Seu notebook ferve enquanto você joga? Aprenda como fazer undervolt na CPU para reduzir a temperatura em até 10°C sem perder performance em 2026.";
 const keywords = [

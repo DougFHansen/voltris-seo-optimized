@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'aceleracao-hardware-gpu-agendamento',
+  title: "Agendamento de GPU Acelerado por Hardware (HAGS): Guia Completo 2026",
+  description: "Aprenda TUDO sobre Hardware-Accelerated GPU Scheduling (HAGS) no Windows 11: como ativar, ganhos reais de FPS, redução de input lag, compatibilidade c...",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '35 min'
+};
+
 const title = "Agendamento de GPU Acelerado por Hardware (HAGS): Guia Completo 2026";
 const description = "Aprenda TUDO sobre Hardware-Accelerated GPU Scheduling (HAGS) no Windows 11: como ativar, ganhos reais de FPS, redução de input lag, compatibilidade com NVIDIA RTX/AMD RX, e quando você DEVE ou NÃO DEVE ativar esse recurso em 2026.";
 const keywords = [

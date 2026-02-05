@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gta-iv-complete-edition-lag-fix',
+  title: "GTA IV: Como resolver o Lag e Stuttering (Complete Edition 2026)",
+  description: "O GTA 4 roda mal no seu PC potente? Aprenda a usar o DXVK e o FusionFix para transformar o port mal otimizado em um jogo fluido e moderno.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "GTA IV: Como resolver o Lag e Stuttering (Complete Edition 2026)";
 const description = "O GTA 4 roda mal no seu PC potente? Aprenda a usar o DXVK e o FusionFix para transformar o port mal otimizado em um jogo fluido e moderno.";
 const keywords = [

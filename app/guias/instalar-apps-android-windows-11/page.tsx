@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'instalar-apps-android-windows-11',
+  title: "Como rodar Apps de Android no Windows 11 (Sem Emulador)",
+  description: "Quer usar Instagram, TikTok ou jogos de celular direto no Windows 11? Aprenda a configurar o Subsistema Windows para Android (WSA) e a Amazon Appstore...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Como rodar Apps de Android no Windows 11 (Sem Emulador)";
 const description = "Quer usar Instagram, TikTok ou jogos de celular direto no Windows 11? Aprenda a configurar o Subsistema Windows para Android (WSA) e a Amazon Appstore.";
 const keywords = [

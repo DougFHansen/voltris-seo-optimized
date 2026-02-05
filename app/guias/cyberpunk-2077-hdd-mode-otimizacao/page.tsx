@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'cyberpunk-2077-hdd-mode-otimizacao',
+  title: "Cyberpunk 2077: Otimização HDD Mode e FPS no Windows 11 (2026)",
+  description: "Sofrendo com travadas no Cyberpunk 2077? Aprenda a configurar o HDD Mode, DLSS 3.5 e como ganhar frames em Night City em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Cyberpunk 2077: Otimização HDD Mode e FPS no Windows 11 (2026)";
 const description = "Sofrendo com travadas no Cyberpunk 2077? Aprenda a configurar o HDD Mode, DLSS 3.5 e como ganhar frames em Night City em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gestao-pacotes',
+  title: "Gestão de Pacotes no Windows: Como usar o Winget (Passo a Passo)",
+  description: "Cansado de entrar em 10 sites para baixar programas? Aprenda a usar o Winget, o gerenciador de pacotes oficial da Microsoft, para instalar e atualizar...",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Gestão de Pacotes no Windows: Como usar o Winget (Passo a Passo)";
 const description = "Cansado de entrar em 10 sites para baixar programas? Aprenda a usar o Winget, o gerenciador de pacotes oficial da Microsoft, para instalar e atualizar tudo via terminal.";
 const keywords = [

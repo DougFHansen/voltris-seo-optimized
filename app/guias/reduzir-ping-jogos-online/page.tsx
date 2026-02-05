@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'reduzir-ping-jogos-online',
+  title: "Como Reduzir o Ping nos Jogos Online: Guia Definitivo 2026",
+  description: "Cansado de morrer por causa do lag? Aprenda as técnicas reais para diminuir o ping e estabilizar a conexão nos seus jogos favoritos em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Como Reduzir o Ping nos Jogos Online: Guia Definitivo 2026";
 const description = "Cansado de morrer por causa do lag? Aprenda as técnicas reais para diminuir o ping e estabilizar a conexão nos seus jogos favoritos em 2026.";
 const keywords = [

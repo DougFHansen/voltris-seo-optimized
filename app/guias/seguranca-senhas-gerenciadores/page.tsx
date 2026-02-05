@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'seguranca-senhas-gerenciadores',
+  title: "Gerenciadores de Senha: Por que você precisa de um em 2026",
+  description: "Pare de usar a mesma senha para tudo! Aprenda como usar gerenciadores de senha (Bitwarden, Proton Pass) para blindar suas contas em 2026.",
+  category: 'rede-seguranca',
+  difficulty: 'Iniciante',
+  time: '35 min'
+};
+
 const title = "Gerenciadores de Senha: Por que você precisa de um em 2026";
 const description = "Pare de usar a mesma senha para tudo! Aprenda como usar gerenciadores de senha (Bitwarden, Proton Pass) para blindar suas contas em 2026.";
 const keywords = [

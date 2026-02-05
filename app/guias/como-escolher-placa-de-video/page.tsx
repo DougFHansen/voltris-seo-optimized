@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'como-escolher-placa-de-video',
+  title: "Como Escolher a Placa de Vídeo Ideal em 2026",
+  description: "RTX, RX ou Arc? Aprenda como escolher a melhor placa de vídeo para o seu orçamento, monitor e objetivos no PC Gamer em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Como Escolher a Placa de Vídeo Ideal em 2026";
 const description = "RTX, RX ou Arc? Aprenda como escolher a melhor placa de vídeo para o seu orçamento, monitor e objetivos no PC Gamer em 2026.";
 const keywords = [

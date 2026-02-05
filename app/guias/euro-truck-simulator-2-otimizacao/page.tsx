@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'euro-truck-simulator-2-otimizacao',
+  title: "Euro Truck Simulator 2: Melhores Configurações de FPS (2026)",
+  description: "O ETS2 está travando em cidades grandes? Aprenda como otimizar o Euro Truck Simulator 2 para rodar liso no seu PC em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Euro Truck Simulator 2: Melhores Configurações de FPS (2026)";
 const description = "O ETS2 está travando em cidades grandes? Aprenda como otimizar o Euro Truck Simulator 2 para rodar liso no seu PC em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'diagnostico-hardware',
+  title: "Diagnóstico de Hardware: Como testar as peças do PC (2026)",
+  description: "Seu PC está travando ou não liga? Aprenda a fazer um diagnóstico de hardware para testar Memória, SSD, Placa de Vídeo e Processador em 2026.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '45 min'
+};
+
 const title = "Diagnóstico de Hardware: Como testar as peças do PC (2026)";
 const description = "Seu PC está travando ou não liga? Aprenda a fazer um diagnóstico de hardware para testar Memória, SSD, Placa de Vídeo e Processador em 2026.";
 const keywords = [

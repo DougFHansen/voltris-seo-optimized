@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'rtx-4060-vale-a-pena-2026',
+  title: "RTX 4060 Vale a Pena em 2026? Análise de Performance",
+  description: "Ainda compensa comprar a RTX 4060 em 2026? Veja o desempenho em jogos atuais, o impacto do DLSS 3.5 e se os 8GB de VRAM são suficientes.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "RTX 4060 Vale a Pena em 2026? Análise de Performance";
 const description = "Ainda compensa comprar a RTX 4060 em 2026? Veja o desempenho em jogos atuais, o impacto do DLSS 3.5 e se os 8GB de VRAM são suficientes.";
 const keywords = [

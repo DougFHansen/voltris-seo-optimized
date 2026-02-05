@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'hard-reset-celular-formatar',
+  title: "Como fazer Hard Reset no Celular: Samsung, Motorola e Xiaomi",
+  description: "Esqueceu a senha do celular ou ele está travando? Aprenda a fazer o Hard Reset completo pelos botões físicos (Recovery Mode) com segurança.",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "Como fazer Hard Reset no Celular: Samsung, Motorola e Xiaomi";
 const description = "Esqueceu a senha do celular ou ele está travando? Aprenda a fazer o Hard Reset completo pelos botões físicos (Recovery Mode) com segurança.";
 const keywords = [

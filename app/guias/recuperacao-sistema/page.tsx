@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'recuperacao-sistema',
+  title: "Guia Completo de Recuperação do Sistema Windows",
+  description: "Aprenda a recuperar seu sistema Windows após falhas, corrupção ou problemas graves. Restaure seu computador para estado funcional com métodos profissi...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '90 minutos'
+};
+
 const title = "Guia Completo de Recuperação do Sistema Windows";
 const description = "Aprenda a recuperar seu sistema Windows após falhas, corrupção ou problemas graves. Restaure seu computador para estado funcional com métodos profissionais.";
 const keywords = [

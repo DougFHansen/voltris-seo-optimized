@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'minecraft-lag-fix-optifine-fabric',
+  title: "Minecraft Lag Fix: OptiFine vs Fabric (Sodium) em 2026",
+  description: "Seu Minecraft está travando? Aprenda a instalar o OptiFine ou o Fabric com Sodium para ganhar muito FPS e rodar Shaders mesmo em PC fraco.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Minecraft Lag Fix: OptiFine vs Fabric (Sodium) em 2026";
 const description = "Seu Minecraft está travando? Aprenda a instalar o OptiFine ou o Fabric com Sodium para ganhar muito FPS e rodar Shaders mesmo em PC fraco.";
 const keywords = [

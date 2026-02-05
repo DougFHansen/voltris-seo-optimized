@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'melhor-dns-jogos-2026',
+  title: "Melhor DNS para Jogos em 2026: Google, Cloudflare ou Level3?",
+  description: "Cansado de lag e perda de pacotes? Descubra qual o melhor DNS para reduzir seu ping e estabilizar a conexão em jogos competitivos no Windows em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Melhor DNS para Jogos em 2026: Google, Cloudflare ou Level3?";
 const description = "Cansado de lag e perda de pacotes? Descubra qual o melhor DNS para reduzir seu ping e estabilizar a conexão em jogos competitivos no Windows em 2026.";
 const keywords = [

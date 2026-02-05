@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'monitorar-temperatura-pc',
+  title: "Como Monitorar a Temperatura do PC e Notebook (Guia 2026)",
+  description: "Seu PC está esquentando demais? Aprenda a monitorar as temperaturas da CPU e GPU, entenda os limites seguros e saiba quando é hora de limpar em 2026.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Como Monitorar a Temperatura do PC e Notebook (Guia 2026)";
 const description = "Seu PC está esquentando demais? Aprenda a monitorar as temperaturas da CPU e GPU, entenda os limites seguros e saiba quando é hora de limpar em 2026.";
 const keywords = [

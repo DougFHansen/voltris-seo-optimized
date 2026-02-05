@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'perda-de-pacote-packet-loss-fix',
+  title: "Perda de Pacote (Packet Loss): Como diagnosticar e resolver (2026)",
+  description: "Seu personagem está 'teletransportando' ou o jogo trava do nada? Aprenda a resolver a Perda de Pacote e estabilize sua conexão para jogos em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Perda de Pacote (Packet Loss): Como diagnosticar e resolver (2026)";
 const description = "Seu personagem está 'teletransportando' ou o jogo trava do nada? Aprenda a resolver a Perda de Pacote e estabilize sua conexão para jogos em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'water-cooler-vs-air-cooler-qual-escolher',
+  title: "Water Cooler vs Air Cooler: Qual escolher em 2026?",
+  description: "Seu processador está esquentando muito? Comparamos a eficiência, barulho e durabilidade dos Water Coolers e Air Coolers em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Water Cooler vs Air Cooler: Qual escolher em 2026?";
 const description = "Seu processador está esquentando muito? Comparamos a eficiência, barulho e durabilidade dos Water Coolers e Air Coolers em 2026.";
 const keywords = [

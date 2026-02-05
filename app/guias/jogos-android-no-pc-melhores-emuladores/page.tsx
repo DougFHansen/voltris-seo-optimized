@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'jogos-android-no-pc-melhores-emuladores',
+  title: "Melhores Emuladores Android para PC em 2026: Qual escolher?",
+  description: "Quer jogar games de celular no computador? Comparamos os melhores emuladores de Android (BlueStacks, LDPlayer, MEmu e MSI) para te ajudar a escolher o...",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Melhores Emuladores Android para PC em 2026: Qual escolher?";
 const description = "Quer jogar games de celular no computador? Comparamos os melhores emuladores de Android (BlueStacks, LDPlayer, MEmu e MSI) para te ajudar a escolher o mais rápido.";
 const keywords = [

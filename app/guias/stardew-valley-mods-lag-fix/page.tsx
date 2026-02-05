@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'stardew-valley-mods-lag-fix',
+  title: "Stardew Valley com Lag? Como otimizar Mods e o SMAPI (2026)",
+  description: "Seu Stardew Valley demora para abrir ou trava com muitos mods? Aprenda a otimizar o SMAPI e as configurações de vídeo para uma fazenda sem lag.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Stardew Valley com Lag? Como otimizar Mods e o SMAPI (2026)";
 const description = "Seu Stardew Valley demora para abrir ou trava com muitos mods? Aprenda a otimizar o SMAPI e as configurações de vídeo para uma fazenda sem lag.";
 const keywords = [

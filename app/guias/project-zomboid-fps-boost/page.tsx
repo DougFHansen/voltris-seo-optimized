@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'project-zomboid-fps-boost',
+  title: "Project Zomboid: Como aumentar o FPS e alocar mais RAM (2026)",
+  description: "Sofrendo com lag no Project Zomboid? Aprenda a alocar mais memória RAM e configurar os gráficos para rodar hordas gigantes sem travar em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Project Zomboid: Como aumentar o FPS e alocar mais RAM (2026)";
 const description = "Sofrendo com lag no Project Zomboid? Aprenda a alocar mais memória RAM e configurar os gráficos para rodar hordas gigantes sem travar em 2026.";
 const keywords = [

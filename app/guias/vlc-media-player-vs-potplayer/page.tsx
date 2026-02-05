@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'vlc-media-player-vs-potplayer',
+  title: "VLC vs PotPlayer: Qual o melhor player de vídeo em 2026?",
+  description: "Procurando o melhor player de vídeo para o Windows 11? Comparamos o clássico VLC com o ultra-customizável PotPlayer em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "VLC vs PotPlayer: Qual o melhor player de vídeo em 2026?";
 const description = "Procurando o melhor player de vídeo para o Windows 11? Comparamos o clássico VLC com o ultra-customizável PotPlayer em 2026.";
 const keywords = [

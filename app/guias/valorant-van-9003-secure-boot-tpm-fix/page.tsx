@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'valorant-van-9003-secure-boot-tpm-fix',
+  title: "Valorant VAN 9003 e TPM 2.0: Guia por Placa-Mãe (2026)",
+  description: "Saiba como ativar o TPM 2.0 e o Secure Boot em placas ASUS, Gigabyte, MSI e ASRock para resolver o erro VAN 9003 do Valorant em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Valorant VAN 9003 e TPM 2.0: Guia por Placa-Mãe (2026)";
 const description = "Saiba como ativar o TPM 2.0 e o Secure Boot em placas ASUS, Gigabyte, MSI e ASRock para resolver o erro VAN 9003 do Valorant em 2026.";
 const keywords = [

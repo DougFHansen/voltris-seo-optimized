@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'compartilhamento-impressoras',
+  title: "Como Compartilhar Impressoras na Rede Windows (2026)",
+  description: "Quer imprimir de qualquer PC da casa? Aprenda como configurar o compartilhamento de impressoras no Windows 11 de forma simples e segura em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Como Compartilhar Impressoras na Rede Windows (2026)";
 const description = "Quer imprimir de qualquer PC da casa? Aprenda como configurar o compartilhamento de impressoras no Windows 11 de forma simples e segura em 2026.";
 const keywords = [

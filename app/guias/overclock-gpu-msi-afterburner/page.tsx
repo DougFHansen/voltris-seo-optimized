@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'overclock-gpu-msi-afterburner',
+  title: "Overclock de GPU com MSI Afterburner: Guia Seguro (2026)",
+  description: "Quer ganhar FPS extra de graça? Aprenda como usar o MSI Afterburner para fazer overclock na sua placa de vídeo com segurança total em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '40 min'
+};
+
 const title = "Overclock de GPU com MSI Afterburner: Guia Seguro (2026)";
 const description = "Quer ganhar FPS extra de graça? Aprenda como usar o MSI Afterburner para fazer overclock na sua placa de vídeo com segurança total em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gestao-servicos',
+  title: "Gestão de Serviços do Windows: O que desativar com segurança",
+  description: "Seu Windows tem centenas de serviços rodando sem necessidade. Aprenda a gerenciar o services.msc para liberar memória RAM e CPU sem quebrar o sistema.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "Gestão de Serviços do Windows: O que desativar com segurança";
 const description = "Seu Windows tem centenas de serviços rodando sem necessidade. Aprenda a gerenciar o services.msc para liberar memória RAM e CPU sem quebrar o sistema.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'corrigir-dll-faltando-vcredist-directx',
+  title: "Como Corrigir DLL Faltando: VCRedist e DirectX (Guia 2026)",
+  description: "Seu jogo não abre por falta de .dll? Aprenda a instalar corretamente o Visual C++ Redistributable e o DirectX para rodar qualquer jogo em 2026.",
+  category: 'windows-erros',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Como Corrigir DLL Faltando: VCRedist e DirectX (Guia 2026)";
 const description = "Seu jogo não abre por falta de .dll? Aprenda a instalar corretamente o Visual C++ Redistributable e o DirectX para rodar qualquer jogo em 2026.";
 const keywords = [

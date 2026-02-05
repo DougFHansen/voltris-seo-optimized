@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'ssd-vs-hd-qual-melhor',
+  title: "SSD vs HD em 2026: Qual a melhor escolha para o seu PC?",
+  description: "Ainda vale a pena comprar um Hard Drive (HD)? Veja o comparativo definitivo entre SSD e HD em performance, preço e durabilidade em 2026.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "SSD vs HD em 2026: Qual a melhor escolha para o seu PC?";
 const description = "Ainda vale a pena comprar um Hard Drive (HD)? Veja o comparativo definitivo entre SSD e HD em performance, preço e durabilidade em 2026.";
 const keywords = [

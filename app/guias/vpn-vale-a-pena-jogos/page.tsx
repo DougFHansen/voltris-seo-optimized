@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'vpn-vale-a-pena-jogos',
+  title: "VPN para Jogos: Vale a pena ou aumenta o Lag? (2026)",
+  description: "Será que usar VPN realmente diminui o ping nos jogos online? Descubra a verdade sobre VPNs de games e quando elas são úteis em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "VPN para Jogos: Vale a pena ou aumenta o Lag? (2026)";
 const description = "Será que usar VPN realmente diminui o ping nos jogos online? Descubra a verdade sobre VPNs de games e quando elas são úteis em 2026.";
 const keywords = [

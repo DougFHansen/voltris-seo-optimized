@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'backup-automatico-nuvem',
+  title: "Backup Automático na Nuvem: Como configurar em 2026",
+  description: "Nunca mais perca seus arquivos! Aprenda como configurar o backup automático no Google Drive, OneDrive e iCloud no Windows 11 em 2026.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Backup Automático na Nuvem: Como configurar em 2026";
 const description = "Nunca mais perca seus arquivos! Aprenda como configurar o backup automático no Google Drive, OneDrive e iCloud no Windows 11 em 2026.";
 const keywords = [

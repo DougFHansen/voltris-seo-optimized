@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'otimizacoes-para-notebook-gamer',
+  title: "Otimização para Notebook Gamer: Mais FPS e Frieza (2026)",
+  description: "Seu notebook gamer esquenta muito ou trava em jogos? Aprenda técnicas de undervolt, limpeza e configurações de energia para 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Otimização para Notebook Gamer: Mais FPS e Frieza (2026)";
 const description = "Seu notebook gamer esquenta muito ou trava em jogos? Aprenda técnicas de undervolt, limpeza e configurações de energia para 2026.";
 const keywords = [

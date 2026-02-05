@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'limpeza-navegadores',
+  title: "Como Limpar o Cache e Dados dos Navegadores (Chrome, Edge, Firefox)",
+  description: "Seu navegador está lento ou os sites não carregam direito? Aprenda a limpar o cache e os cookies sem perder suas senhas salvas.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "Como Limpar o Cache e Dados dos Navegadores (Chrome, Edge, Firefox)";
 const description = "Seu navegador está lento ou os sites não carregam direito? Aprenda a limpar o cache e os cookies sem perder suas senhas salvas.";
 const keywords = [

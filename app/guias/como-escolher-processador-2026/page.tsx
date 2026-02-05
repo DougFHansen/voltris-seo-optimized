@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'como-escolher-processador-2026',
+  title: "Como Escolher o Processador (CPU) em 2026: Guia Gamer",
+  description: "Ryzen ou Intel? Saiba como escolher o melhor processador para jogos e produtividade em 2026, evitando gargalos no seu PC Gamer.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Como Escolher o Processador (CPU) em 2026: Guia Gamer";
 const description = "Ryzen ou Intel? Saiba como escolher o melhor processador para jogos e produtividade em 2026, evitando gargalos no seu PC Gamer.";
 const keywords = [

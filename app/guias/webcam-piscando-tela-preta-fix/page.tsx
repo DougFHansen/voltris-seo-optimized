@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'webcam-piscando-tela-preta-fix',
+  title: "Webcam Piscando ou com Tela Preta: Como resolver (2026)",
+  description: "Sua webcam trava, fica preta ou fica piscando durante reuniões? Aprenda a resolver problemas de driver e privacidade no Windows 11 em 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Webcam Piscando ou com Tela Preta: Como resolver (2026)";
 const description = "Sua webcam trava, fica preta ou fica piscando durante reuniões? Aprenda a resolver problemas de driver e privacidade no Windows 11 em 2026.";
 const keywords = [

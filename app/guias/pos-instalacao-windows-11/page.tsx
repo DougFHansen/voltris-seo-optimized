@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pos-instalacao-windows-11',
+  title: "Setup Pós-Instalação: O que instalar no Windows 11 em 2026",
+  description: "Acabou de formatar o PC? Veja a lista definitiva com os drivers e programas essenciais que não podem faltar no seu Windows 11 em 2026.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '45 min'
+};
+
 const title = "Setup Pós-Instalação: O que instalar no Windows 11 em 2026";
 const description = "Acabou de formatar o PC? Veja a lista definitiva com os drivers e programas essenciais que não podem faltar no seu Windows 11 em 2026.";
 const keywords = [

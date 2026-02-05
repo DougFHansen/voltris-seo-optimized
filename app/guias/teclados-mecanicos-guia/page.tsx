@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'teclados-mecanicos-guia',
+  title: "Teclados Mecânicos em 2026: O que saber antes de comprar",
+  description: "Quer entrar no mundo dos teclados mecânicos? Conheça as novas tecnologias de 2026, como Rapid Trigger, Hall Effect e teclados Hot-swappable.",
+  category: 'perifericos',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Teclados Mecânicos em 2026: O que saber antes de comprar";
 const description = "Quer entrar no mundo dos teclados mecânicos? Conheça as novas tecnologias de 2026, como Rapid Trigger, Hall Effect e teclados Hot-swappable.";
 const keywords = [

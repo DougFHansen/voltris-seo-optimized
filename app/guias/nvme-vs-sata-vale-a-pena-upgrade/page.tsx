@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'nvme-vs-sata-vale-a-pena-upgrade',
+  title: "NVMe vs SATA: Vale a pena o upgrade para Jogos e Trabalho?",
+  description: "Entenda se a velocidade de 7.000 MB/s de um SSD NVMe realmente faz diferença na prática ou se um SSD SATA ainda é suficiente para você em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "NVMe vs SATA: Vale a pena o upgrade para Jogos e Trabalho?";
 const description = "Entenda se a velocidade de 7.000 MB/s de um SSD NVMe realmente faz diferença na prática ou se um SSD SATA ainda é suficiente para você em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'identificacao-phishing',
+  title: "Phishing: Como identificar sites e e-mails falsos (2026)",
+  description: "Recebeu uma mensagem estranha do banco ou do Discord? Aprenda a identificar as técnicas de Phishing mais comuns de 2026 e proteja seus dados de hacker...",
+  category: 'rede-seguranca',
+  difficulty: 'Iniciante',
+  time: '30 min'
+};
+
 const title = "Phishing: Como identificar sites e e-mails falsos (2026)";
 const description = "Recebeu uma mensagem estranha do banco ou do Discord? Aprenda a identificar as técnicas de Phishing mais comuns de 2026 e proteja seus dados de hackers.";
 const keywords = [

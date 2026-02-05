@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'god-of-war-pc-memory-leak-fix',
+  title: "God of War PC: Erro de Memória Cheia e Memory Leak Fix",
+  description: "Seu God of War no PC trava após algumas horas de jogo? Aprenda a corrigir o erro de 'Memória Insuficiente' e o vazamento de memória (Memory Leak).",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "God of War PC: Erro de Memória Cheia e Memory Leak Fix";
 const description = "Seu God of War no PC trava após algumas horas de jogo? Aprenda a corrigir o erro de 'Memória Insuficiente' e o vazamento de memória (Memory Leak).";
 const keywords = [

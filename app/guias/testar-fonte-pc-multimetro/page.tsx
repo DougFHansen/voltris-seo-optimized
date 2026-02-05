@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'testar-fonte-pc-multimetro',
+  title: "Como Testar Fonte de PC com Multímetro (Guia 2026)",
+  description: "Seu PC não liga ou desliga do nada? Aprenda como testar as voltagens da sua fonte de alimentação usando um multímetro de forma segura em 2026.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "Como Testar Fonte de PC com Multímetro (Guia 2026)";
 const description = "Seu PC não liga ou desliga do nada? Aprenda como testar as voltagens da sua fonte de alimentação usando um multímetro de forma segura em 2026.";
 const keywords = [

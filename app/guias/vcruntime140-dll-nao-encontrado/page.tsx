@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'vcruntime140-dll-nao-encontrado',
+  title: "VCRUNTIME140.dll não encontrado: Como resolver (2026)",
+  description: "Seu jogo ou programa não abre e diz que falta o VCRUNTIME140.dll ou MSVCP140.dll? Aprenda como instalar os redistribuíveis oficiais em 2026.",
+  category: 'windows-erros',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "VCRUNTIME140.dll não encontrado: Como resolver (2026)";
 const description = "Seu jogo ou programa não abre e diz que falta o VCRUNTIME140.dll ou MSVCP140.dll? Aprenda como instalar os redistribuíveis oficiais em 2026.";
 const keywords = [

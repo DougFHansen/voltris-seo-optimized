@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'guia-montagem-pc',
+  title: "Guia Passo a Passo de Montagem de PC Gamer/Workstation",
+  description: "Monte seu próprio computador com confiança. Tutorial detalhado cobrindo desde a instalação da CPU até o gerenciamento de cabos e primeiro boot.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '15-20 min'
+};
+
 const title = "Guia Passo a Passo de Montagem de PC Gamer/Workstation";
 const description = "Monte seu próprio computador com confiança. Tutorial detalhado cobrindo desde a instalação da CPU até o gerenciamento de cabos e primeiro boot.";
 const keywords = ["montar pc","instalar cpu","pasta termica","conectar painel frontal pc","organização de cabos"];

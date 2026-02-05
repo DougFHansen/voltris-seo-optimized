@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'otimizacao-registro',
+  title: "Guia Completo de Otimização do Registro do Windows",
+  description: "Limpe e otimize o registro do Windows para melhor performance. Técnicas seguras de manutenção preventiva do sistema.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '50 minutos'
+};
+
 const title = "Guia Completo de Otimização do Registro do Windows";
 const description = "Limpe e otimize o registro do Windows para melhor performance. Técnicas seguras de manutenção preventiva do sistema.";
 const keywords = ["otimização registro","windows registry","ccleaner","registro limpo","performance sistema"];

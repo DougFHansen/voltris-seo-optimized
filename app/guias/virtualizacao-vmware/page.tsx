@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'virtualizacao-vmware',
+  title: "Virtualização no PC: Como ativar e usar VMWare (2026)",
+  description: "Quer rodar outros sistemas dentro do seu Windows? Aprenda como ativar a virtualização na BIOS e configurar o VMWare Workstation em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Virtualização no PC: Como ativar e usar VMWare (2026)";
 const description = "Quer rodar outros sistemas dentro do seu Windows? Aprenda como ativar a virtualização na BIOS e configurar o VMWare Workstation em 2026.";
 const keywords = [

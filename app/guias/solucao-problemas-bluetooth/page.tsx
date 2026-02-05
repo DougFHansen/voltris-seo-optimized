@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'solucao-problemas-bluetooth',
+  title: "Problemas de Bluetooth no Windows 11: Guia de Correção (2026)",
+  description: "Seu controle ou fone bluetooth não conecta ou fica desconectando? Aprenda como resolver erros de bluetooth no Windows 11 em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Problemas de Bluetooth no Windows 11: Guia de Correção (2026)";
 const description = "Seu controle ou fone bluetooth não conecta ou fica desconectando? Aprenda como resolver erros de bluetooth no Windows 11 em 2026.";
 const keywords = [

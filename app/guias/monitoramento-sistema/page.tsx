@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'monitoramento-sistema',
+  title: "Monitoramento de Sistema: Melhores Ferramentas para 2026",
+  description: "Saiba exatamente o que está acontecendo com o seu PC! Conheça as melhores ferramentas para monitorar FPS, uso de CPU, GPU e temperatura em tempo real.",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Monitoramento de Sistema: Melhores Ferramentas para 2026";
 const description = "Saiba exatamente o que está acontecendo com o seu PC! Conheça as melhores ferramentas para monitorar FPS, uso de CPU, GPU e temperatura em tempo real.";
 const keywords = [

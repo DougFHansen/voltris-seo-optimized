@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'guia-compra-monitores',
+  title: "Guia de Compra: Como escolher o melhor Monitor Gamer em 2026",
+  description: "IPS, VA, OLED ou TN? Painel curvo ou plano? Aprenda o que observar (Hertz, Tempo de Resposta e HDR) para não errar na compra do seu monitor.",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Guia de Compra: Como escolher o melhor Monitor Gamer em 2026";
 const description = "IPS, VA, OLED ou TN? Painel curvo ou plano? Aprenda o que observar (Hertz, Tempo de Resposta e HDR) para não errar na compra do seu monitor.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'is-valorant-dying-state-of-game',
+  title: "O Valorant está morrendo? Uma análise do estado do jogo em 2026",
+  description: "Será que o Valorant ainda vale a pena? Analisamos os números de jogadores, atualizações de agentes e o cenário competitivo para saber se o jogo da Rio...",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "O Valorant está morrendo? Uma análise do estado do jogo em 2026";
 const description = "Será que o Valorant ainda vale a pena? Analisamos os números de jogadores, atualizações de agentes e o cenário competitivo para saber se o jogo da Riot está em declínio.";
 const keywords = [

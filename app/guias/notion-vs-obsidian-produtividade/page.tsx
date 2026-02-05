@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'notion-vs-obsidian-produtividade',
+  title: "Notion vs Obsidian: Qual o melhor para produtividade em 2026?",
+  description: "Buscando o segundo cérebro perfeito? Comparamos o Notion e o Obsidian para te ajudar a escolher entre a nuvem colaborativa ou as notas locais ultra rá...",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Notion vs Obsidian: Qual o melhor para produtividade em 2026?";
 const description = "Buscando o segundo cérebro perfeito? Comparamos o Notion e o Obsidian para te ajudar a escolher entre a nuvem colaborativa ou as notas locais ultra rápidas.";
 const keywords = [

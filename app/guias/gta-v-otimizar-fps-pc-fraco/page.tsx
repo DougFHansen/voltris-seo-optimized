@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gta-v-otimizar-fps-pc-fraco',
+  title: "GTA V: Melhores Configurações para PC Fraco (Dicas de FPS)",
+  description: "Seu GTA V trava muito ou roda em câmera lenta? Aprenda as configurações gráficas secretas para ganhar FPS e rodar o jogo fluido em qualquer PC em 2026...",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "GTA V: Melhores Configurações para PC Fraco (Dicas de FPS)";
 const description = "Seu GTA V trava muito ou roda em câmera lenta? Aprenda as configurações gráficas secretas para ganhar FPS e rodar o jogo fluido em qualquer PC em 2026. Guia completo com mais de 2000 palavras de conteúdo especializado para jogadores com hardware limitado.";
 const keywords = [

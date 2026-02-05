@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'instalar-impressora-wifi',
+  title: "Como instalar Impressora Wi-Fi no PC (Guia Definitivo)",
+  description: "Comprou uma impressora Wi-Fi e não consegue conectar? Aprenda a configurar impressoras HP, Epson, Canon e Brother na sua rede sem fio passo a passo.",
+  category: 'rede-seguranca',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Como instalar Impressora Wi-Fi no PC (Guia Definitivo)";
 const description = "Comprou uma impressora Wi-Fi e não consegue conectar? Aprenda a configurar impressoras HP, Epson, Canon e Brother na sua rede sem fio passo a passo.";
 const keywords = [

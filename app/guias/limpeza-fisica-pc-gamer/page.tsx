@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'limpeza-fisica-pc-gamer',
+  title: "Como Limpar seu PC Gamer Corretamente (Guia de Limpeza Física)",
+  description: "Seu PC está cheio de poeira? Aprenda a limpar as ventoinhas, a placa de vídeo e o gabinete com segurança, usando as ferramentas certas para não queima...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '45 min'
+};
+
 const title = "Como Limpar seu PC Gamer Corretamente (Guia de Limpeza Física)";
 const description = "Seu PC está cheio de poeira? Aprenda a limpar as ventoinhas, a placa de vídeo e o gabinete com segurança, usando as ferramentas certas para não queimar nada.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'erro-disco-100-porcento-gerenciador-tarefas',
+  title: "Como Resolver Erro de Disco 100% no Windows 11 (2026)",
+  description: "Seu PC está lento e travando com o Disco em 100% no Gerenciador de Tarefas? Aprenda como resolver esse erro de performance em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Como Resolver Erro de Disco 100% no Windows 11 (2026)";
 const description = "Seu PC está lento e travando com o Disco em 100% no Gerenciador de Tarefas? Aprenda como resolver esse erro de performance em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gta-v-err-gfx-d3d-init-crash',
+  title: "GTA V: Erro ERR_GFX_D3D_INIT (Como Resolver em 2026)",
+  description: "Seu GTA V trava com a mensagem 'ERR_GFX_D3D_INIT'? Aprenda a corrigir este erro clássico resetando o DirectX e limpando os arquivos do jogo.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "GTA V: Erro ERR_GFX_D3D_INIT (Como Resolver em 2026)";
 const description = "Seu GTA V trava com a mensagem 'ERR_GFX_D3D_INIT'? Aprenda a corrigir este erro clássico resetando o DirectX e limpando os arquivos do jogo.";
 const keywords = [

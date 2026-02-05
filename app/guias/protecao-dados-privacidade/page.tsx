@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'protecao-dados-privacidade',
+  title: "Privacidade Digital: Como proteger seus dados em 2026",
+  description: "Você está sendo rastreado? Saiba como proteger sua privacidade online, configurar redes sociais e evitar vazamentos de dados pessoais em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '35 min'
+};
+
 const title = "Privacidade Digital: Como proteger seus dados em 2026";
 const description = "Você está sendo rastreado? Saiba como proteger sua privacidade online, configurar redes sociais e evitar vazamentos de dados pessoais em 2026.";
 const keywords = [

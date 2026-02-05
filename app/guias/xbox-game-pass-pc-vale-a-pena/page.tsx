@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'xbox-game-pass-pc-vale-a-pena',
+  title: "Xbox Game Pass para PC: Vale a pena em 2026? (Análise)",
+  description: "Será que o Xbox Game Pass ainda é o melhor custo-benefício para gamers em 2026? Analisamos o catálogo, preço e as vantagens do serviço.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Xbox Game Pass para PC: Vale a pena em 2026? (Análise)";
 const description = "Será que o Xbox Game Pass ainda é o melhor custo-benefício para gamers em 2026? Analisamos o catálogo, preço e as vantagens do serviço.";
 const keywords = [

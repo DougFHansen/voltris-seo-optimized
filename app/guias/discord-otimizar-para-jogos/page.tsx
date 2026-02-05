@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'discord-otimizar-para-jogos',
+  title: "Como Otimizar o Discord para Jogos Online (2026)",
+  description: "O Discord está causando lag nos seus jogos? Aprenda a configurar a aceleração de hardware e a sobreposição para ganhar FPS em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Como Otimizar o Discord para Jogos Online (2026)";
 const description = "O Discord está causando lag nos seus jogos? Aprenda a configurar a aceleração de hardware e a sobreposição para ganhar FPS em 2026. Guia completo com mais de 2000 palavras de conteúdo especializado para jogadores competitivos.";
 const keywords = [

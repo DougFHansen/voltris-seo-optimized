@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'mu-online-reduzir-lag-muvoltris',
+  title: "Mu Online: Como tirar o Lag e aumentar o FPS em 2026",
+  description: "Sofrendo com travadas no Mu Online? Aprenda a otimizar o motor clássico do Mu para rodar liso em invasões e castelos, mesmo em PCs fracos.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Mu Online: Como tirar o Lag e aumentar o FPS em 2026";
 const description = "Sofrendo com travadas no Mu Online? Aprenda a otimizar o motor clássico do Mu para rodar liso em invasões e castelos, mesmo em PCs fracos.";
 const keywords = [

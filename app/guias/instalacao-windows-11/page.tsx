@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'instalacao-windows-11',
+  title: "Como Instalar o Windows 11: Guia Completo e Requisitos de TPM 2.0",
+  description: "Quer migrar para o Windows 11? Aprenda a verificar a compatibilidade, ativar o TPM 2.0 na BIOS e como fazer uma instalação limpa para máxima performan...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '45 min'
+};
+
 const title = "Como Instalar o Windows 11: Guia Completo e Requisitos de TPM 2.0";
 const description = "Quer migrar para o Windows 11? Aprenda a verificar a compatibilidade, ativar o TPM 2.0 na BIOS e como fazer uma instalação limpa para máxima performance.";
 const keywords = [

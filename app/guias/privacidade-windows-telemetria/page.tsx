@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'privacidade-windows-telemetria',
+  title: "Privacidade no Windows 11: Como desativar a Telemetria (2026)",
+  description: "O Windows 11 coleta muitos dados? Aprenda como desativar a telemetria, anúncios e rastreamento da Microsoft para mais privacidade e performance em 202...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Privacidade no Windows 11: Como desativar a Telemetria (2026)";
 const description = "O Windows 11 coleta muitos dados? Aprenda como desativar a telemetria, anúncios e rastreamento da Microsoft para mais privacidade e performance em 2026.";
 const keywords = [

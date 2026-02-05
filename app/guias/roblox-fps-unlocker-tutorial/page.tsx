@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'roblox-fps-unlocker-tutorial',
+  title: "Roblox FPS Unlocker: Como jogar acima de 60 FPS (2026)",
+  description: "Cansado de jogar Roblox travado em 60 FPS? Aprenda como usar o FPS Unlocker e as novas funções nativas do Roblox para ter mais fluidez em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Roblox FPS Unlocker: Como jogar acima de 60 FPS (2026)";
 const description = "Cansado de jogar Roblox travado em 60 FPS? Aprenda como usar o FPS Unlocker e as novas funções nativas do Roblox para ter mais fluidez em 2026.";
 const keywords = [

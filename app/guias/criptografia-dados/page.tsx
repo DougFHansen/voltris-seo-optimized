@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'criptografia-dados',
+  title: "Criptografia de Dados: Como Proteger seus Arquivos em 2026",
+  description: "Quer manter seus documentos privados a salvo de olhares curiosos? Aprenda as melhores ferramentas de criptografia para Windows 11 em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '40 min'
+};
+
 const title = "Criptografia de Dados: Como Proteger seus Arquivos em 2026";
 const description = "Quer manter seus documentos privados a salvo de olhares curiosos? Aprenda as melhores ferramentas de criptografia para Windows 11 em 2026.";
 const keywords = [

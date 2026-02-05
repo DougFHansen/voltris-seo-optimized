@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'vpn-configuracao',
+  title: "Guia Completo de Configuração de VPN para Privacidade Online",
+  description: "Aprenda a configurar VPN profissional para proteger sua privacidade online, acessar conteúdo bloqueado e trabalhar remotamente com segurança.",
+  category: 'rede-seguranca',
+  difficulty: 'Intermediário',
+  time: '60 minutos'
+};
+
 const title = "Guia Completo de Configuração de VPN para Privacidade Online";
 const description = "Aprenda a configurar VPN profissional para proteger sua privacidade online, acessar conteúdo bloqueado e trabalhar remotamente com segurança.";
 const keywords = [

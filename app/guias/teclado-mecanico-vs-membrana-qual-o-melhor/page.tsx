@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'teclado-mecanico-vs-membrana-qual-o-melhor',
+  title: "Teclado Mecânico vs Membrana: Qual o melhor em 2026?",
+  description: "Ainda vale a pena comprar teclado de membrana? Comparamos durabilidade, velocidade e o custo-benefício dos teclados mecânicos em 2026.",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Teclado Mecânico vs Membrana: Qual o melhor em 2026?";
 const description = "Ainda vale a pena comprar teclado de membrana? Comparamos durabilidade, velocidade e o custo-benefício dos teclados mecânicos em 2026.";
 const keywords = [

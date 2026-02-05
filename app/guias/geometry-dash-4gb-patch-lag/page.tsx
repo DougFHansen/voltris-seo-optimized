@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'geometry-dash-4gb-patch-lag',
+  title: "Geometry Dash: Como usar o 4GB Patch para acabar com o Lag",
+  description: "Seu Geometry Dash trava em níveis com muitos objetos? Aprenda a aplicar o patch de 4GB para permitir que o jogo use mais RAM e rode liso sem crashar.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Geometry Dash: Como usar o 4GB Patch para acabar com o Lag";
 const description = "Seu Geometry Dash trava em níveis com muitos objetos? Aprenda a aplicar o patch de 4GB para permitir que o jogo use mais RAM e rode liso sem crashar.";
 const keywords = [

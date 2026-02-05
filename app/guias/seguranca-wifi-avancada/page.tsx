@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'seguranca-wifi-avancada',
+  title: "Segurança Wi-Fi: Como Proteger sua Rede Doméstica de Invasores",
+  description: "Seu Wi-Fi está seguro? Aprenda a configurar WPA3, desativar WPS, esconder o SSID e criar uma rede de convidados para isolar dispositivos IoT.",
+  category: 'rede-seguranca',
+  difficulty: 'Intermediário',
+  time: '10-15 min'
+};
+
 const title = "Segurança Wi-Fi: Como Proteger sua Rede Doméstica de Invasores";
 const description = "Seu Wi-Fi está seguro? Aprenda a configurar WPA3, desativar WPS, esconder o SSID e criar uma rede de convidados para isolar dispositivos IoT.";
 const keywords = ["segurança wifi","wpa2 vs wpa3","configurar roteador seguro","desativar wps","rede convidados"];

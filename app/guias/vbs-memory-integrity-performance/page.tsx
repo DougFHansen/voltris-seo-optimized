@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'vbs-memory-integrity-performance',
+  title: "VBS e Integridade da Memória: Desativar para ganhar FPS? (2026)",
+  description: "Descubra se desativar o VBS (Virtualization-Based Security) no Windows 11 realmente aumenta o desempenho em jogos em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "VBS e Integridade da Memória: Desativar para ganhar FPS? (2026)";
 const description = "Descubra se desativar o VBS (Virtualization-Based Security) no Windows 11 realmente aumenta o desempenho em jogos em 2026.";
 const keywords = [

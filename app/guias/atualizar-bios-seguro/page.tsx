@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'atualizar-bios-seguro',
+  title: "Como Atualizar a BIOS com Segurança em 2026: Guia Completo e Definitivo",
+  description: "Tem medo de atualizar a BIOS? Aprenda como fazer o update da placa-mãe de forma segura, o que é Q-Flash, M-Flash, BIOS Flashback, como evitar riscos d...",
+  category: 'hardware',
+  difficulty: 'Avançado',
+  time: '45 min'
+};
+
 const title = "Como Atualizar a BIOS com Segurança em 2026: Guia Completo e Definitivo";
 const description = "Tem medo de atualizar a BIOS? Aprenda como fazer o update da placa-mãe de forma segura, o que é Q-Flash, M-Flash, BIOS Flashback, como evitar riscos de 'brickar' o PC, e quando VOCÊ REALMENTE deve atualizar sua BIOS em 2026.";
 const keywords = [

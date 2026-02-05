@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'limpeza-computador',
+  title: "Limpeza Completa do Computador",
+  description: "Técnicas profissionais para limpar arquivos temporários, cache, programas desnecessários e otimizar o espaço em disco do seu computador.",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '45 minutos'
+};
+
 const title = "Limpeza Completa do Computador";
 const description = "Técnicas profissionais para limpar arquivos temporários, cache, programas desnecessários e otimizar o espaço em disco do seu computador. Guia completo com mais de 2000 palavras de conteúdo especializado para manutenção profissional de sistemas.";
 const keywords = ['limpeza computador', 'limpeza windows', 'otimizacao disco', 'arquivos temporarios', 'desfragmentacao', 'ccleaner', 'limpeza registro', 'otimizacao sistema', 'liberacao espaco', 'desinstalacao programas', 'limpeza navegadores'];

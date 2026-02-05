@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'calibrar-bateria-notebook',
+  title: "Como Calibrar a Bateria do Notebook em 2026 (Fix Porcentagem)",
+  description: "Seu notebook desliga do nada mesmo marcando 20%? Aprenda a calibrar a bateria para ter uma leitura precisa de quanto tempo de carga você ainda tem.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '6 horas'
+};
+
 const title = "Como Calibrar a Bateria do Notebook em 2026 (Fix Porcentagem)";
 const description = "Seu notebook desliga do nada mesmo marcando 20%? Aprenda a calibrar a bateria para ter uma leitura precisa de quanto tempo de carga você ainda tem.";
 const keywords = [

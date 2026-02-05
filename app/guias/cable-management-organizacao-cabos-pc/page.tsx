@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'cable-management-organizacao-cabos-pc',
+  title: "Cable Management: Como organizar os cabos do PC (2026)",
+  description: "O interior do seu PC parece um ninho de pássaro? Aprenda técnicas de Cable Management para melhorar o visual e o airflow do seu setup em 2026.",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '1 hora'
+};
+
 const title = "Cable Management: Como organizar os cabos do PC (2026)";
 const description = "O interior do seu PC parece um ninho de pássaro? Aprenda técnicas de Cable Management para melhorar o visual e o airflow do seu setup em 2026.";
 const keywords = [

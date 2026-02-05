@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'bitlocker-desempenho-jogos-ssd',
+  title: "BitLocker consome FPS? Impacto em SSDs e Jogos (2026)",
+  description: "Descubra se a criptografia BitLocker diminui o desempenho do seu SSD e causa quedas de FPS nos seus jogos no Windows 11 em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '40 min'
+};
+
 const title = "BitLocker consome FPS? Impacto em SSDs e Jogos (2026)";
 const description = "Descubra se a criptografia BitLocker diminui o desempenho do seu SSD e causa quedas de FPS nos seus jogos no Windows 11 em 2026.";
 const keywords = [

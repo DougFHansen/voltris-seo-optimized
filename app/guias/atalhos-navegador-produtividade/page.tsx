@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'atalhos-navegador-produtividade',
+  title: "Atalhos de Navegador: O Manual Completo de Produtividade 2026",
+  description: "Você ainda usa o mouse para fechar abas? Aprenda os 50+ atalhos essenciais de teclado para Chrome, Edge, Brave e Firefox que vão TRIPLICAR sua produti...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '35 min'
+};
+
 const title = "Atalhos de Navegador: O Manual Completo de Produtividade 2026";
 const description = "Você ainda usa o mouse para fechar abas? Aprenda os 50+ atalhos essenciais de teclado para Chrome, Edge, Brave e Firefox que vão TRIPLICAR sua produtividade e economizar horas do seu dia em 2026. Guia definitivo com atalhos secretos!";
 const keywords = [

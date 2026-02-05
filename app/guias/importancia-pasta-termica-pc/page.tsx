@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'importancia-pasta-termica-pc',
+  title: "Pasta Térmica: Tudo o que você precisa saber (Guia 2026)",
+  description: "Seu PC está se desligando sozinho? Saiba quando trocar a pasta térmica, qual a melhor marca e como aplicar corretamente para reduzir a temperatura.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "Pasta Térmica: Tudo o que você precisa saber (Guia 2026)";
 const description = "Seu PC está se desligando sozinho? Saiba quando trocar a pasta térmica, qual a melhor marca e como aplicar corretamente para reduzir a temperatura.";
 const keywords = [

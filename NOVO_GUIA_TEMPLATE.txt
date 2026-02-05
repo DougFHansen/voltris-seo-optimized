@@ -1,0 +1,53 @@
+Para criar um novo guia e ele aparecer automaticamente no site:
+
+1. Crie uma pasta em 'app/guias/', ex: 'app/guias/meu-novo-guia'
+2. Crie o arquivo 'page.tsx' dentro dela.
+3. Copie este template e preencha os dados:
+
+---------------------------------------------------------
+import GuideTemplate from "@/components/GuideTemplate";
+import { Metadata } from "next";
+
+// --- METADADOS PARA AUTOMAÇÃO (IMPORTANTE) ---
+// O site lê isso automaticamente para exibir na lista de guias.
+export const guideMetadata = {
+  id: 'meu-novo-guia', // Deve ser igual ao nome da pasta
+  title: "Título do Guia Aqui",
+  description: "Descrição curta para aparecer no card.",
+  category: 'otimizacao', // Escolha uma: otimizacao, games-fix, windows-erros, hardware, perifericos, software, rede-seguranca, windows-geral
+  difficulty: 'Iniciante', // Iniciante, Intermediário, Avançado
+  time: '10 min'
+};
+
+// --- METADADOS PARA SEO (GOOGLE) ---
+const title = guideMetadata.title;
+const description = guideMetadata.description;
+const keywords = ["palavra-chave 1", "palavra-chave 2"];
+
+export const metadata: Metadata = {
+  title: `${title} | VOLTRIS`,
+  description,
+  keywords,
+  // ... resto da config de metadata
+};
+
+export default function GuidePage() {
+  return (
+    <GuideTemplate
+      title={title}
+      description={description}
+      // ...
+    />
+  );
+}
+---------------------------------------------------------
+
+Categorias Disponíveis (IDs):
+- otimizacao (Otimização & FPS)
+- games-fix (Correção de Jogos)
+- windows-erros (Erros do Windows)
+- hardware (Hardware & Montagem)
+- perifericos (Periféricos & Setup)
+- software (Software & Utils)
+- rede-seguranca (Rede & Segurança)
+- windows-geral (Windows & Sistema)

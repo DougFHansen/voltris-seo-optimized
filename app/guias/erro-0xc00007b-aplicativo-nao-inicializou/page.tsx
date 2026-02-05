@@ -1,37 +1,46 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'erro-0xc00007b-aplicativo-nao-inicializou',
+  title: "Como Resolver Erro 0xc00007b: Guia Definitivo (2026)",
+  description: "Seu jogo ou programa não abre e mostra erro 0xc00007b 'O aplicativo não pôde ser inicializado corretamente'? Aprenda as 7 soluções definitivas para co...",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Como Resolver Erro 0xc00007b: Guia Definitivo (2026)";
 const description = "Seu jogo ou programa não abre e mostra erro 0xc00007b 'O aplicativo não pôde ser inicializado corretamente'? Aprenda as 7 soluções definitivas para corrigir incompatibilidade de DLLs, Visual C++ e DirectX no Windows 11 em 2026.";
 const keywords = [
-    'como resolver erro 0xc00007b windows 11 2026',
-    'aplicativo não inicializou corretamente 0xc00007b fix',
-    'corrigir erro de dll 64 bits e 32 bits tutorial',
-    'instalar visual c++ para corrigir erro 0xc00007b guia',
-    'erro ao abrir jogo 0xc00007b solucao definitiva 2026',
-    'visual c++ redistributable all in one download',
-    'directx erro 0xc00007b como resolver',
-    'net framework erro inicialização 0xc00007b'
+  'como resolver erro 0xc00007b windows 11 2026',
+  'aplicativo não inicializou corretamente 0xc00007b fix',
+  'corrigir erro de dll 64 bits e 32 bits tutorial',
+  'instalar visual c++ para corrigir erro 0xc00007b guia',
+  'erro ao abrir jogo 0xc00007b solucao definitiva 2026',
+  'visual c++ redistributable all in one download',
+  'directx erro 0xc00007b como resolver',
+  'net framework erro inicialização 0xc00007b'
 ];
 
 export const metadata: Metadata = createGuideMetadata('erro-0xc00007b-aplicativo-nao-inicializou', title, description, keywords);
 
 export default function Error07bFixGuide() {
-    const summaryTable = [
-        { label: "Código de Erro", value: "0xc00007b (STATUS_INVALID_IMAGE_FORMAT)" },
-        { label: "Significado Técnico", value: "Incompatibilidade 32-bit vs 64-bit DLL" },
-        { label: "Causa #1", value: "Visual C++ Redistributable corrompido (70%)" },
-        { label: "Causa #2", value: "DirectX faltando ou desatualizado (20%)" },
-        { label: "Causa #3", value: ".NET Framework incompatível (10%)" },
-        { label: "Solução Rápida", value: "Visual C++ All-in-One Installer" },
-        { label: "Taxa de Sucesso", value: "95% dos casos resolvidos" },
-        { label: "Dificuldade", value: "Médio" }
-    ];
+  const summaryTable = [
+    { label: "Código de Erro", value: "0xc00007b (STATUS_INVALID_IMAGE_FORMAT)" },
+    { label: "Significado Técnico", value: "Incompatibilidade 32-bit vs 64-bit DLL" },
+    { label: "Causa #1", value: "Visual C++ Redistributable corrompido (70%)" },
+    { label: "Causa #2", value: "DirectX faltando ou desatualizado (20%)" },
+    { label: "Causa #3", value: ".NET Framework incompatível (10%)" },
+    { label: "Solução Rápida", value: "Visual C++ All-in-One Installer" },
+    { label: "Taxa de Sucesso", value: "95% dos casos resolvidos" },
+    { label: "Dificuldade", value: "Médio" }
+  ];
 
-    const contentSections = [
-        {
-            title: "O Que É o Erro 0xc00007b (E Por Que Ele Aparece)",
-            content: `
+  const contentSections = [
+    {
+      title: "O Que É o Erro 0xc00007b (E Por Que Ele Aparece)",
+      content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
           O erro <strong>0xc00007b</strong> (código técnico: <code>STATUS_INVALID_IMAGE_FORMAT</code>) é um dos mais comuns no Windows 11 ao tentar abrir jogos ou programas. A mensagem completa geralmente é: <em>"O aplicativo não pôde ser inicializado corretamente (0xc00007b). Clique em OK para fechar o aplicativo."</em>
         </p>
@@ -51,10 +60,10 @@ export default function Error07bFixGuide() {
           <li>Praticamente qualquer jogo/programa que use DirectX ou Visual C++</li>
         </ul>
       `
-        },
-        {
-            title: "Solução #1: Visual C++ Redistributable All-in-One (Taxa de Sucesso: 80%)",
-            content: `
+    },
+    {
+      title: "Solução #1: Visual C++ Redistributable All-in-One (Taxa de Sucesso: 80%)",
+      content: `
         <p class="mb-4 text-gray-300">
           Esta é a solução que resolve <strong>80% dos casos</strong>. O problema está nos pacotes Microsoft Visual C++ Redistributable corrompidos ou faltando.
         </p>
@@ -97,10 +106,10 @@ export default function Error07bFixGuide() {
           </p>
         </div>
       `
-        },
-        {
-            title: "Solução #2: DirectX End-User Runtime (Para Jogos)",
-            content: `
+    },
+    {
+      title: "Solução #2: DirectX End-User Runtime (Para Jogos)",
+      content: `
         <p class="mb-4 text-gray-300">
           Se a Solução #1 não resolveu e você está tentando abrir um <strong>jogo</strong>, o problema pode ser DirectX faltando.
         </p>
@@ -120,10 +129,10 @@ export default function Error07bFixGuide() {
           <li>Reinicie o PC e teste o jogo novamente.</li>
         </ol>
       `
-        },
-        {
-            title: "Solução #3: .NET Framework 4.8 (Para Programas Específicos)",
-            content: `
+    },
+    {
+      title: "Solução #3: .NET Framework 4.8 (Para Programas Específicos)",
+      content: `
         <p class="mb-4 text-gray-300">
           Alguns programas (especialmente softwares de trabalho como AutoCAD, Adobe, etc) dependem do .NET Framework.
         </p>
@@ -138,10 +147,10 @@ export default function Error07bFixGuide() {
           <strong>Nota:</strong> O Windows 11 já vem com .NET 5/6/7, mas programas antigos exigem o .NET Framework 4.8 (branch legado).
         </p>
       `
-        },
-        {
-            title: "Solução #4: Verificar Integridade dos Arquivos do Sistema (SFC/DISM)",
-            content: `
+    },
+    {
+      title: "Solução #4: Verificar Integridade dos Arquivos do Sistema (SFC/DISM)",
+      content: `
         <p class="mb-4 text-gray-300">
           Se você já instalou todos os runtimes e o erro persiste, pode haver corrupção nos arquivos do próprio Windows.
         </p>
@@ -167,10 +176,10 @@ export default function Error07bFixGuide() {
           <li>Reinicie o PC.</li>
         </ol>
       `
-        },
-        {
-            title: "Solução #5: Remover DLLs Baixadas Manualmente (Erro Comum!)",
-            content: `
+    },
+    {
+      title: "Solução #5: Remover DLLs Baixadas Manualmente (Erro Comum!)",
+      content: `
         <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20 mb-6">
           <h4 class="text-rose-400 font-bold mb-2 flex items-center gap-2">
             <span>🚫</span> NUNCA Baixe DLLs de Sites Aleatórios!
@@ -193,10 +202,10 @@ export default function Error07bFixGuide() {
           <li>Após deletar, reinstale Visual C++ e DirectX (Soluções #1 e #2) para que as DLLs corretas sejam instaladas.</li>
         </ol>
       `
-        },
-        {
-            title: "Solução #6: Reinstalar o Programa/Jogo em Modo Administrador",
-            content: `
+    },
+    {
+      title: "Solução #6: Reinstalar o Programa/Jogo em Modo Administrador",
+      content: `
         <p class="mb-4 text-gray-300">
           Às vezes, o programa foi instalado incorretamente (sem permissões adequadas) ou está tentando acessar arquivos protegidos.
         </p>
@@ -220,10 +229,10 @@ export default function Error07bFixGuide() {
           <li>Aplique e teste.</li>
         </ol>
       `
-        },
-        {
-            title: "Solução #7: Atualizar Windows e Drivers (Última Tentativa)",
-            content: `
+    },
+    {
+      title: "Solução #7: Atualizar Windows e Drivers (Última Tentativa)",
+      content: `
         <p class="mb-4 text-gray-300">
           Em casos raros, o erro pode ser causado por bugs no próprio Windows ou drivers de GPU desatualizados.
         </p>
@@ -242,10 +251,10 @@ export default function Error07bFixGuide() {
           <li><strong>Intel:</strong> Use o Intel Driver & Support Assistant.</li>
         </ul>
       `
-        },
-        {
-            title: "Resumo: Ordem de Soluções (Do Mais Fácil ao Mais Avançado)",
-            content: `
+    },
+    {
+      title: "Resumo: Ordem de Soluções (Do Mais Fácil ao Mais Avançado)",
+      content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
           <h4 class="text-blue-400 font-bold mb-4">📋 Checklist de Ações (Siga Nesta Ordem)</h4>
           <ol class="list-decimal text-gray-300 space-y-3 ml-6">
@@ -263,98 +272,98 @@ export default function Error07bFixGuide() {
           </p>
         </div>
       `
-        }
-    ];
+    }
+  ];
 
-    const faqItems = [
-        {
-            question: "O erro 0xc00007b pode danificar meu computador?",
-            answer: "Não! O erro 0xc00007b é apenas uma mensagem de incompatibilidade de arquivos DLL. Ele impede o programa de abrir para PROTEGER seu sistema de crash. Não causa nenhum dano ao hardware ou arquivos do Windows. É apenas frustrante, mas inofensivo."
-        },
-        {
-            question: "Por que meu jogo funcionava antes e agora aparece esse erro?",
-            answer: "Isso geralmente acontece depois de: (1) Uma atualização do Windows que substituiu DLLs antigas, (2) Instalação/desinstalação de outro programa que mexeu nos Visual C++ Redistributables, (3) Atualização automática do jogo que mudou a arquitetura de 32-bit para 64-bit (ou vice-versa), ou (4) Você tentou 'corrigir' outra DLL e acabou bagunçando o sistema."
-        },
-        {
-            question: "Preciso pagar por algum programa para resolver o erro 0xc00007b?",
-            answer: "NÃO! Todas as soluções deste guia são GRATUITAS. Visual C++ Redistributable, DirectX End-User Runtime, .NET Framework - todos são softwares oficiais da Microsoft e totalmente gratuitos. Desconfie de sites que cobram para 'consertar' esse erro automaticamente; geralmente são golpes."
-        },
-        {
-            question: "O erro 0xc00007b é diferente do erro 0xc000007b (sem o 'c' extra)?",
-            answer: "Não, é o MESMO erro! O código correto é 0xc00007b (com dois zeros após o 'xc'). Algumas pessoas escrevem errado como 0xc000007b ou 0xc0000007b, mas todos se referem ao erro de incompatibilidade de arquitetura DLL."
-        },
-        {
-            question: "Após instalar Visual C++ All-in-One, ainda tenho erro. O que fazer?",
-            answer: "Se a Solução #1 não funcionou, prossiga para: (1) Instalar DirectX End-User Runtime (se for jogo), (2) Rodar o comando SFC /scannow para reparar arquivos do Windows, (3) Reinstalar o jogo/programa como Administrador. A combinação dessas 4 etapas resolve 99% dos casos."
-        },
-        {
-            question: "Posso apenas reinstalar o Windows para resolver o erro?",
-            answer: "Pode, mas é DESNECESSÁRIO e demorado. O erro 0xc00007b não é um problema do sistema operacional, mas sim de runtimes (Visual C++, DirectX, .NET). Reinstalar tudo leva 2-3 horas e você pode resolver o erro em 15 minutos seguindo as Soluções #1 e #2 deste guia."
-        },
-        {
-            question: "O erro aparece em TODOS os meus jogos/programas. O que isso significa?",
-            answer: "Isso indica que você tem um problema SISTEMÁTICO com DLLs do Windows. Provavelmente você: (1) Baixou várias DLLs avulsas e colocou nas pastas do sistema, ou (2) Tem corrupção grave nos arquivos do Windows. Solução: Desinstale TODOS os Visual C++ Redistributables, rode DISM + SFC /scannow, reinstale Visual C++ All-in-One, depois DirectX."
-        },
-        {
-            question: "Por que o erro 0xc00007b é mais comum em jogos do que em programas?",
-            answer: "Jogos dependem MUITO de DirectX e Visual C++ (especialmente jogos de 2005-2015). Programas de trabalho (Word, Excel) usam outras bibliotecas. Além disso, muitos jogos são lançados em 32-bit para compatibilidade com PCs antigos, mas tentam rodar em sistemas 64-bit modernos, causando conflito."
-        },
-        {
-            question: "Meu antivírus bloqueou o Visual C++ All-in-One. É seguro?",
-            answer: "Sim, É SEGURO! Alguns antivírus bloqueiam o All-in-One porque ele instala múltiplos programas de uma vez (comportamento que parece 'suspeito'). Baixe APENAS de fontes confiáveis (TechPowerUp, GitHub oficial da comunidade). Adicione uma exceção no antivírus temporáriamente para instalar."
-        },
-        {
-            question: "Posso ter 32-bit E 64-bit do Visual C++ instalados ao mesmo tempo?",
-            answer: "Sim, e você DEVE ter ambos! O Windows 11 é 64-bit, mas precisa das versões 32-bit (x86) das DLLs para rodar programas antigos. O instalador All-in-One já instala ambas as versões automaticamente. Não desinstale apenas uma delas!"
-        },
-        {
-            question: "O erro 0xc00007b pode ser causado por HD corrompido?",
-            answer: "Raramente, mas é possível. Se o setor do HD onde estão as DLLs (pasta System32) estiver com bad sectors, as DLLs podem ficar corrompidas. Teste seu HD com CrystalDiskInfo. Se houver problemas, rode o comando 'chkdsk /f /r' no CMD como Administrador (leva 1-2 horas)."
-        },
-        {
-            question: "Depois de resolver o erro, preciso manter os runtimes atualizados?",
-            answer: "O Windows Update já atualiza automaticamente os Visual C++ Redistributables instalados. Não precisa atualizar manualmente. Porém, se instalar um jogo/programa MUITO antigo (de 2005-2010), ele pode pedir versões específicas antigas - nesse caso, o próprio instalador do jogo instalará automaticamente."
-        }
-    ];
+  const faqItems = [
+    {
+      question: "O erro 0xc00007b pode danificar meu computador?",
+      answer: "Não! O erro 0xc00007b é apenas uma mensagem de incompatibilidade de arquivos DLL. Ele impede o programa de abrir para PROTEGER seu sistema de crash. Não causa nenhum dano ao hardware ou arquivos do Windows. É apenas frustrante, mas inofensivo."
+    },
+    {
+      question: "Por que meu jogo funcionava antes e agora aparece esse erro?",
+      answer: "Isso geralmente acontece depois de: (1) Uma atualização do Windows que substituiu DLLs antigas, (2) Instalação/desinstalação de outro programa que mexeu nos Visual C++ Redistributables, (3) Atualização automática do jogo que mudou a arquitetura de 32-bit para 64-bit (ou vice-versa), ou (4) Você tentou 'corrigir' outra DLL e acabou bagunçando o sistema."
+    },
+    {
+      question: "Preciso pagar por algum programa para resolver o erro 0xc00007b?",
+      answer: "NÃO! Todas as soluções deste guia são GRATUITAS. Visual C++ Redistributable, DirectX End-User Runtime, .NET Framework - todos são softwares oficiais da Microsoft e totalmente gratuitos. Desconfie de sites que cobram para 'consertar' esse erro automaticamente; geralmente são golpes."
+    },
+    {
+      question: "O erro 0xc00007b é diferente do erro 0xc000007b (sem o 'c' extra)?",
+      answer: "Não, é o MESMO erro! O código correto é 0xc00007b (com dois zeros após o 'xc'). Algumas pessoas escrevem errado como 0xc000007b ou 0xc0000007b, mas todos se referem ao erro de incompatibilidade de arquitetura DLL."
+    },
+    {
+      question: "Após instalar Visual C++ All-in-One, ainda tenho erro. O que fazer?",
+      answer: "Se a Solução #1 não funcionou, prossiga para: (1) Instalar DirectX End-User Runtime (se for jogo), (2) Rodar o comando SFC /scannow para reparar arquivos do Windows, (3) Reinstalar o jogo/programa como Administrador. A combinação dessas 4 etapas resolve 99% dos casos."
+    },
+    {
+      question: "Posso apenas reinstalar o Windows para resolver o erro?",
+      answer: "Pode, mas é DESNECESSÁRIO e demorado. O erro 0xc00007b não é um problema do sistema operacional, mas sim de runtimes (Visual C++, DirectX, .NET). Reinstalar tudo leva 2-3 horas e você pode resolver o erro em 15 minutos seguindo as Soluções #1 e #2 deste guia."
+    },
+    {
+      question: "O erro aparece em TODOS os meus jogos/programas. O que isso significa?",
+      answer: "Isso indica que você tem um problema SISTEMÁTICO com DLLs do Windows. Provavelmente você: (1) Baixou várias DLLs avulsas e colocou nas pastas do sistema, ou (2) Tem corrupção grave nos arquivos do Windows. Solução: Desinstale TODOS os Visual C++ Redistributables, rode DISM + SFC /scannow, reinstale Visual C++ All-in-One, depois DirectX."
+    },
+    {
+      question: "Por que o erro 0xc00007b é mais comum em jogos do que em programas?",
+      answer: "Jogos dependem MUITO de DirectX e Visual C++ (especialmente jogos de 2005-2015). Programas de trabalho (Word, Excel) usam outras bibliotecas. Além disso, muitos jogos são lançados em 32-bit para compatibilidade com PCs antigos, mas tentam rodar em sistemas 64-bit modernos, causando conflito."
+    },
+    {
+      question: "Meu antivírus bloqueou o Visual C++ All-in-One. É seguro?",
+      answer: "Sim, É SEGURO! Alguns antivírus bloqueiam o All-in-One porque ele instala múltiplos programas de uma vez (comportamento que parece 'suspeito'). Baixe APENAS de fontes confiáveis (TechPowerUp, GitHub oficial da comunidade). Adicione uma exceção no antivírus temporáriamente para instalar."
+    },
+    {
+      question: "Posso ter 32-bit E 64-bit do Visual C++ instalados ao mesmo tempo?",
+      answer: "Sim, e você DEVE ter ambos! O Windows 11 é 64-bit, mas precisa das versões 32-bit (x86) das DLLs para rodar programas antigos. O instalador All-in-One já instala ambas as versões automaticamente. Não desinstale apenas uma delas!"
+    },
+    {
+      question: "O erro 0xc00007b pode ser causado por HD corrompido?",
+      answer: "Raramente, mas é possível. Se o setor do HD onde estão as DLLs (pasta System32) estiver com bad sectors, as DLLs podem ficar corrompidas. Teste seu HD com CrystalDiskInfo. Se houver problemas, rode o comando 'chkdsk /f /r' no CMD como Administrador (leva 1-2 horas)."
+    },
+    {
+      question: "Depois de resolver o erro, preciso manter os runtimes atualizados?",
+      answer: "O Windows Update já atualiza automaticamente os Visual C++ Redistributables instalados. Não precisa atualizar manualmente. Porém, se instalar um jogo/programa MUITO antigo (de 2005-2010), ele pode pedir versões específicas antigas - nesse caso, o próprio instalador do jogo instalará automaticamente."
+    }
+  ];
 
-    const externalReferences = [
-        { name: "Microsoft Visual C++ Downloads", url: "https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist" },
-        { name: "DirectX End-User Runtime", url: "https://www.microsoft.com/download/details.aspx?id=35" },
-        { name: ".NET Framework 4.8", url: "https://dotnet.microsoft.com/download/dotnet-framework/net48" }
-    ];
+  const externalReferences = [
+    { name: "Microsoft Visual C++ Downloads", url: "https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist" },
+    { name: "DirectX End-User Runtime", url: "https://www.microsoft.com/download/details.aspx?id=35" },
+    { name: ".NET Framework 4.8", url: "https://dotnet.microsoft.com/download/dotnet-framework/net48" }
+  ];
 
-    const relatedGuides = [
-        {
-            href: "/guias/corrigir-dll-faltando-vcredist-directx",
-            title: "Guia de Runtimes",
-            description: "Entenda por que as DLLs são importantes."
-        },
-        {
-            href: "/guias/pos-instalacao-windows-11",
-            title: "Checklist Windows",
-            description: "Tudo o que você deve ter instalado."
-        },
-        {
-            href: "/guias/como-resolver-tela-azul",
-            title: "Problemas de Boot",
-            description: "O que fazer se o Windows sequer ligar."
-        }
-    ];
+  const relatedGuides = [
+    {
+      href: "/guias/corrigir-dll-faltando-vcredist-directx",
+      title: "Guia de Runtimes",
+      description: "Entenda por que as DLLs são importantes."
+    },
+    {
+      href: "/guias/pos-instalacao-windows-11",
+      title: "Checklist Windows",
+      description: "Tudo o que você deve ter instalado."
+    },
+    {
+      href: "/guias/como-resolver-tela-azul",
+      title: "Problemas de Boot",
+      description: "O que fazer se o Windows sequer ligar."
+    }
+  ];
 
-    return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="20 min"
-            difficultyLevel="Médio"
-            author="Equipe Técnica Voltris"
-            lastUpdated="Janeiro 2026"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
-    );
+  return (
+    <GuideTemplate
+      title={title}
+      description={description}
+      keywords={keywords}
+      estimatedTime="20 min"
+      difficultyLevel="Médio"
+      author="Equipe Técnica Voltris"
+      lastUpdated="Janeiro 2026"
+      contentSections={contentSections}
+      summaryTable={summaryTable}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
+      relatedGuides={relatedGuides}
+    />
+  );
 }

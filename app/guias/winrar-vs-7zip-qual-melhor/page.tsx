@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'winrar-vs-7zip-qual-melhor',
+  title: "WinRAR vs 7-Zip: Qual o melhor compressor em 2026?",
+  description: "Ainda usa WinRAR? Descubra se o 7-Zip ou o novo NanaZip são opções melhores para comprimir e extrair arquivos no Windows 11 em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "WinRAR vs 7-Zip: Qual o melhor compressor em 2026?";
 const description = "Ainda usa WinRAR? Descubra se o 7-Zip ou o novo NanaZip são opções melhores para comprimir e extrair arquivos no Windows 11 em 2026.";
 const keywords = [

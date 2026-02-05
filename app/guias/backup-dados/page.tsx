@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'backup-dados',
+  title: "Guia Completo de Backup de Dados: A Regra 3-2-1 (2026)",
+  description: "Aprenda como fazer backup profissional dos seus dados com a regra 3-2-1. Tutorial completo sobre backup em HD externo, nuvem, imagem do sistema e prot...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '60 min'
+};
+
 const title = "Guia Completo de Backup de Dados: A Regra 3-2-1 (2026)";
 const description = "Aprenda como fazer backup profissional dos seus dados com a regra 3-2-1. Tutorial completo sobre backup em HD externo, nuvem, imagem do sistema e proteção contra ransomware em 2026.";
 const keywords = [

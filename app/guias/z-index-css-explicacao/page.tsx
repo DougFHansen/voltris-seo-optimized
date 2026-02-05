@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'z-index-css-explicacao',
+  title: "z-index no CSS: Guia Definitivo e Empilhamento (2026)",
+  description: "Entenda de uma vez por todas como funciona o z-index no CSS, por que ele 'ignora' alguns elementos e como dominar o Stacking Context em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "z-index no CSS: Guia Definitivo e Empilhamento (2026)";
 const description = "Entenda de uma vez por todas como funciona o z-index no CSS, por que ele 'ignora' alguns elementos e como dominar o Stacking Context em 2026.";
 const keywords = [

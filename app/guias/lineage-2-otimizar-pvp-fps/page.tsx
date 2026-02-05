@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'lineage-2-otimizar-pvp-fps',
+  title: "Lineage 2: Como aumentar o FPS em PVP e Cidades (2026)",
+  description: "Sofrendo com 10 FPS nas cidades do Lineage 2? Aprenda a otimizar o motor antigo do L2 para rodar fluido em Mass PVPs e Cercos de Castelo.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Lineage 2: Como aumentar o FPS em PVP e Cidades (2026)";
 const description = "Sofrendo com 10 FPS nas cidades do Lineage 2? Aprenda a otimizar o motor antigo do L2 para rodar fluido em Mass PVPs e Cercos de Castelo.";
 const keywords = [

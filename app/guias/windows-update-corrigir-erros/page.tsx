@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'windows-update-corrigir-erros',
+  title: "Erro no Windows Update: Como destravar e corrigir (2026)",
+  description: "Seu Windows Update não baixa atualizações ou trava em uma porcentagem? Aprenda como resetar os serviços de atualização no Windows 11 em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Erro no Windows Update: Como destravar e corrigir (2026)";
 const description = "Seu Windows Update não baixa atualizações ou trava em uma porcentagem? Aprenda como resetar os serviços de atualização no Windows 11 em 2026.";
 const keywords = [

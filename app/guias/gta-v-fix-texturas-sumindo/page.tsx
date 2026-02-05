@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gta-v-fix-texturas-sumindo',
+  title: "GTA V: Como resolver Texturas Sumindo ou Demorando para Carregar",
+  description: "Seu mapa do GTA V fica invisível ou as texturas demoram a aparecer? Aprenda a resolver o bug de carregamento de assets em 2026 no PC.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "GTA V: Como resolver Texturas Sumindo ou Demorando para Carregar";
 const description = "Seu mapa do GTA V fica invisível ou as texturas demoram a aparecer? Aprenda a resolver o bug de carregamento de assets em 2026 no PC.";
 const keywords = [

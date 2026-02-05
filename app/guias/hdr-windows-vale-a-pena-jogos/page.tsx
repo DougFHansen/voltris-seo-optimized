@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'hdr-windows-vale-a-pena-jogos',
+  title: "HDR no Windows: Vale a pena ativar em Jogos? (2026)",
+  description: "Quer cores mais vibrantes e sombras realistas? Aprenda como configurar o HDR no Windows 11 corretamente e saiba se o seu monitor suporta de verdade.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "HDR no Windows: Vale a pena ativar em Jogos? (2026)";
 const description = "Quer cores mais vibrantes e sombras realistas? Aprenda como configurar o HDR no Windows 11 corretamente e saiba se o seu monitor suporta de verdade.";
 const keywords = [

@@ -745,6 +745,15 @@ export default function OBSRecordingGuide() {
 import psutil
 import time
 
+export const guideMetadata = {
+  id: 'como-usar-obs-studio-gravar-tela',
+  title: "Como usar o OBS Studio para Gravar Tela (Tutorial Completo)",
+  description: "Quer gravar suas partidas ou tutoriais com qualidade profissional? Aprenda a configurar o OBS Studio para gravação de tela leve e sem lags em 2026.",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 def check_system_resources():
     # Obtém informações de performance
     cpu_percent = psutil.cpu_percent(interval=1)

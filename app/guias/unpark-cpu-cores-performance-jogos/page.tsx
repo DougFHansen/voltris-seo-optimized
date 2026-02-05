@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'unpark-cpu-cores-performance-jogos',
+  title: "CPU Core Parking: Como desativar para ganhar FPS (2026)",
+  description: "Seu processador está 'dormindo' enquanto você joga? Aprenda como desativar o Core Parking no Windows 11 e estabilizar seus frames em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "CPU Core Parking: Como desativar para ganhar FPS (2026)";
 const description = "Seu processador está 'dormindo' enquanto você joga? Aprenda como desativar o Core Parking no Windows 11 e estabilizar seus frames em 2026.";
 const keywords = [

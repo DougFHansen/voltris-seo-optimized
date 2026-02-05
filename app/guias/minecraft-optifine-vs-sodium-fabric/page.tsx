@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'minecraft-optifine-vs-sodium-fabric',
+  title: "Sodium vs OptiFine: Qual o melhor para o Minecraft em 2026?",
+  description: "Ainda usa OptiFine? Descubra por que o Sodium se tornou o padrão para performance no Minecraft e compare os recursos de Shaders entre as duas platafor...",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Sodium vs OptiFine: Qual o melhor para o Minecraft em 2026?";
 const description = "Ainda usa OptiFine? Descubra por que o Sodium se tornou o padrão para performance no Minecraft e compare os recursos de Shaders entre as duas plataformas.";
 const keywords = [

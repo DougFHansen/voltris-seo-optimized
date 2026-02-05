@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'dpc-watchdog-violation-como-resolver',
+  title: "Como Resolver Erro DPC_WATCHDOG_VIOLATION (2026)",
+  description: "Seu Windows 11 travou com o erro de tela azul DPC Watchdog? Aprenda a identificar as causas e como consertar em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Avançado',
+  time: '25 min'
+};
+
 const title = "Como Resolver Erro DPC_WATCHDOG_VIOLATION (2026)";
 const description = "Seu Windows 11 travou com o erro de tela azul DPC Watchdog? Aprenda a identificar as causas e como consertar em 2026.";
 const keywords = [

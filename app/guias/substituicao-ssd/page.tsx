@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'substituicao-ssd',
+  title: "Como Instalar um SSD e Clonar o Windows (Guia 2026)",
+  description: "Vai trocar seu HD por um SSD ou fazer upgrade de NVMe? Aprenda como instalar fisicamente e clonar seu Windows sem perder nenhum arquivo em 2026.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '40 min'
+};
+
 const title = "Como Instalar um SSD e Clonar o Windows (Guia 2026)";
 const description = "Vai trocar seu HD por um SSD ou fazer upgrade de NVMe? Aprenda como instalar fisicamente e clonar seu Windows sem perder nenhum arquivo em 2026.";
 const keywords = [

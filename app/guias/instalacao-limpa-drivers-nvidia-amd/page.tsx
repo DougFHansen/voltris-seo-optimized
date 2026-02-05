@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'instalacao-limpa-drivers-nvidia-amd',
+  title: "Instalação Limpa de Drivers: Como fazer do jeito certo (2026)",
+  description: "Seu driver de vídeo está travando ou com performance baixa? Aprenda a fazer uma instalação limpa dos drivers NVIDIA e AMD sem deixar restos no sistema...",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Instalação Limpa de Drivers: Como fazer do jeito certo (2026)";
 const description = "Seu driver de vídeo está travando ou com performance baixa? Aprenda a fazer uma instalação limpa dos drivers NVIDIA e AMD sem deixar restos no sistema.";
 const keywords = [

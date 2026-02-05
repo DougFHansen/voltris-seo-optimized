@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'limpeza-disco-profunda-arquivos-temporarios',
+  title: "Limpeza de Disco Profunda: Como liberar Gigabytes no Windows",
+  description: "Seu SSD está cheio? Aprenda a fazer uma limpeza profunda no Windows 11 para apagar arquivos temporários, sobras de atualizações e lixo do sistema.",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Limpeza de Disco Profunda: Como liberar Gigabytes no Windows";
 const description = "Seu SSD está cheio? Aprenda a fazer uma limpeza profunda no Windows 11 para apagar arquivos temporários, sobras de atualizações e lixo do sistema.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'limpar-memoria-ram-windows',
+  title: "Como Limpar Memória RAM no Windows 10 e 11 (Sem programas)",
+  description: "Seu PC está ficando lento com muitas abas abertas? Aprenda a liberar memória RAM de forma segura usando comandos nativos e o ISLC em 2026.",
+  category: 'hardware',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Como Limpar Memória RAM no Windows 10 e 11 (Sem programas)";
 const description = "Seu PC está ficando lento com muitas abas abertas? Aprenda a liberar memória RAM de forma segura usando comandos nativos e o ISLC em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'hard-reset-fones-bluetooth-fix',
+  title: "Fone Bluetooth só funciona um lado? Como fazer Hard Reset",
+  description: "Seu fone TWS parou de parear ou só sai som de um lado? Aprenda a resetar fones Xiaomi, JBL, Lenovo e QCY para voltarem ao padrão de fábrica.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Fone Bluetooth só funciona um lado? Como fazer Hard Reset";
 const description = "Seu fone TWS parou de parear ou só sai som de um lado? Aprenda a resetar fones Xiaomi, JBL, Lenovo e QCY para voltarem ao padrão de fábrica.";
 const keywords = [

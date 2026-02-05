@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'como-resolver-tela-azul',
+  title: "Tela Azul no Windows 11: Como Resolver (Guia Completo 2026)",
+  description: "Seu PC travou na tela azul (BSOD)? Aprenda como identificar os códigos de erro, usar o BlueScreenView, corrigir drivers e resolver travamentos permane...",
+  category: 'windows-erros',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "Tela Azul no Windows 11: Como Resolver (Guia Completo 2026)";
 const description = "Seu PC travou na tela azul (BSOD)? Aprenda como identificar os códigos de erro, usar o BlueScreenView, corrigir drivers e resolver travamentos permanentemente no Windows 11 em 2026.";
 const keywords = [

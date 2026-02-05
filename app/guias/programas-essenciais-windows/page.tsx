@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'programas-essenciais-windows',
+  title: "Programas Essenciais para Windows 11: O Pack Básico 2026",
+  description: "Acabou de formatar o PC? Confira a lista definitiva de softwares gratuitos e essenciais para produtividade, segurança e manutenção no Windows 11 em 20...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Programas Essenciais para Windows 11: O Pack Básico 2026";
 const description = "Acabou de formatar o PC? Confira a lista definitiva de softwares gratuitos e essenciais para produtividade, segurança e manutenção no Windows 11 em 2026.";
 const keywords = [

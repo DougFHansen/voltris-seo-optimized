@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'windows-sandbox-testar-virus',
+  title: "Windows Sandbox: Como testar arquivos suspeitos com segurança (2026)",
+  description: "Quer abrir um arquivo mas tem medo de vírus? Aprenda como ativar e usar o Windows Sandbox, a área isolada do Windows 11 para testes em 2026.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Windows Sandbox: Como testar arquivos suspeitos com segurança (2026)";
 const description = "Quer abrir um arquivo mas tem medo de vírus? Aprenda como ativar e usar o Windows Sandbox, a área isolada do Windows 11 para testes em 2026.";
 const keywords = [

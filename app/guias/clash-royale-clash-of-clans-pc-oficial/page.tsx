@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'clash-royale-clash-of-clans-pc-oficial',
+  title: "Como rodar Clash Royale e Clash of Clans no PC Oficialmente (2026)",
+  description: "Chega de emuladores lentos! Aprenda como jogar Clash Royale e Clash of Clans no seu computador usando o Google Play Games oficial em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Como rodar Clash Royale e Clash of Clans no PC Oficialmente (2026)";
 const description = "Chega de emuladores lentos! Aprenda como jogar Clash Royale e Clash of Clans no seu computador usando o Google Play Games oficial em 2026.";
 const keywords = [

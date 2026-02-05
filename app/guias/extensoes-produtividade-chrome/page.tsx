@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'extensoes-produtividade-chrome',
+  title: "Melhores Extensões de Produtividade para Chrome e Edge em 2026",
+  description: "Quer turbinar seu navegador? Conheça as melhores extensões de 2026 para bloquear anúncios, gerenciar senhas e aumentar sua produtividade online.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Melhores Extensões de Produtividade para Chrome e Edge em 2026";
 const description = "Quer turbinar seu navegador? Conheça as melhores extensões de 2026 para bloquear anúncios, gerenciar senhas e aumentar sua produtividade online.";
 const keywords = [

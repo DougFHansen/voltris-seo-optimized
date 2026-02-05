@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'debloating-windows-11',
+  title: "Debloating Windows 11: Guia Definitivo 2026",
+  description: "O Windows 11 vem cheio de programas que você não usa. Aprenda a fazer o debloat completo usando scripts seguros e libere memória RAM e CPU para jogos ...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Debloating Windows 11: Guia Definitivo 2026";
 const description = "O Windows 11 vem cheio de programas que você não usa. Aprenda a fazer o debloat completo usando scripts seguros e libere memória RAM e CPU para jogos em 2026.";
 const keywords = [

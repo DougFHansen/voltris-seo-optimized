@@ -724,6 +724,15 @@ export default function OBSStreamGuide() {
             <pre class="text-green-400 text-sm">import obspython as obs
 import time
 
+export const guideMetadata = {
+  id: 'obs-studio-melhores-configuracoes-stream-2026',
+  title: "OBS Studio: Melhores Configurações para Live Stream (2026)",
+  description: "Quer fazer Live na Twitch ou YouTube sem travar? Aprenda a configurar o bitrate, o codificador e a resolução do OBS Studio para uma transmissão profis...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 def check_performance():
     # Obtém informações de performance
     stats = obs.obs_get_stats()

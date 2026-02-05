@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'monitor-ips-vs-va-vs-tn-jogos',
+  title: "Painéis de Monitor: IPS vs VA vs TN (Qual o melhor em 2026?)",
+  description: "Entenda de uma vez por todas as diferenças entre monitores IPS, VA e TN. Saiba qual painel escolher para jogar, trabalhar ou assistir filmes em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Painéis de Monitor: IPS vs VA vs TN (Qual o melhor em 2026?)";
 const description = "Entenda de uma vez por todas as diferenças entre monitores IPS, VA e TN. Saiba qual painel escolher para jogar, trabalhar ou assistir filmes em 2026.";
 const keywords = [

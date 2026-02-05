@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pubg-steam-fix-stuttering-travadas',
+  title: "PUBG na Steam: Como resolver Travadas e Stuttering (2026)",
+  description: "Seu PUBG trava na hora da troca de tiro? Aprenda as melhores configurações gráficas e de sistema para rodar PUBG liso na Steam em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "PUBG na Steam: Como resolver Travadas e Stuttering (2026)";
 const description = "Seu PUBG trava na hora da troca de tiro? Aprenda as melhores configurações gráficas e de sistema para rodar PUBG liso na Steam em 2026.";
 const keywords = [

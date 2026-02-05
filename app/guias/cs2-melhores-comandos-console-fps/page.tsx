@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'cs2-melhores-comandos-console-fps',
+  title: "CS2: Melhores Comandos de Console para FPS (Guia 2026)",
+  description: "Quer rodar Counter-Strike 2 mais liso? Aprenda os comandos de console e de inicialização para ganhar FPS e reduzir o lag no CS2 em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "CS2: Melhores Comandos de Console para FPS (Guia 2026)";
 const description = "Quer rodar Counter-Strike 2 mais liso? Aprenda os comandos de console e de inicialização para ganhar FPS e reduzir o lag no CS2 em 2026. Guia completo com mais de 2000 palavras de conteúdo especializado para jogadores competitivos.";
 const keywords = [

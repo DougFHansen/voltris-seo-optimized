@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'valorant-fix-van-9003-secure-boot',
+  title: "Valorant VAN 9003: Como ativar Secure Boot e TPM (2026)",
+  description: "Seu Valorant não abre por causa do erro VAN 9003? Aprenda como ativar o Secure Boot e o TPM 2.0 na BIOS para jogar no Windows 11 em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "Valorant VAN 9003: Como ativar Secure Boot e TPM (2026)";
 const description = "Seu Valorant não abre por causa do erro VAN 9003? Aprenda como ativar o Secure Boot e o TPM 2.0 na BIOS para jogar no Windows 11 em 2026.";
 const keywords = [

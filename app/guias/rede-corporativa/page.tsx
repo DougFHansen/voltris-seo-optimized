@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'rede-corporativa',
+  title: "Guia rede-corporativa",
+  description: "Descrição não disponível",
+  category: 'rede-seguranca',
+  difficulty: 'Intermediário',
+  time: '45 minutos'
+};
+
 const title = 'Configuração Profissional de Rede Corporativa';
 const description = 'Implemente uma rede corporativa segura e eficiente com segmentação de VLAN, controle de acesso, QoS e monitoramento profissional. Soluções para pequenas e médias empresas.';
 const keywords = [

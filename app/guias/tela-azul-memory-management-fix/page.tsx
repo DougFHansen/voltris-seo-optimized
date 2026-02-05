@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'tela-azul-memory-management-fix',
+  title: "Tela Azul MEMORY_MANAGEMENT: Como resolver (2026)",
+  description: "Seu Windows 11 trava com o erro MEMORY MANAGEMENT? Aprenda a testar sua RAM e corrigir erros de sistema para acabar com esse BSOD em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '35 min'
+};
+
 const title = "Tela Azul MEMORY_MANAGEMENT: Como resolver (2026)";
 const description = "Seu Windows 11 trava com o erro MEMORY MANAGEMENT? Aprenda a testar sua RAM e corrigir erros de sistema para acabar com esse BSOD em 2026.";
 const keywords = [

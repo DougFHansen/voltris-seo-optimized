@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pc-lento-formatar-vs-limpar',
+  title: "PC Lento: Formatar ou Limpar? Qual a melhor escolha em 2026?",
+  description: "Seu computador está demorando para ligar ou abrir programas? Descubra se uma limpeza de sistema resolve ou se chegou a hora de formatar seu PC com o g...",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '30 min'
+};
+
 const title = "PC Lento: Formatar ou Limpar? Qual a melhor escolha em 2026?";
 const description = "Seu computador está demorando para ligar ou abrir programas? Descubra se uma limpeza de sistema resolve ou se chegou a hora de formatar seu PC com o guia 2026.";
 const keywords = [

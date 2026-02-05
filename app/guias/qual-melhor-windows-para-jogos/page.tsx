@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'qual-melhor-windows-para-jogos',
+  title: "Qual o melhor Windows para Jogos em 2026? (Comparativo)",
+  description: "Windows 10, Windows 11 ou Versões Modificadas (Lite)? Descubra qual sistema operacional entrega o melhor FPS e estabilidade em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Qual o melhor Windows para Jogos em 2026? (Comparativo)";
 const description = "Windows 10, Windows 11 ou Versões Modificadas (Lite)? Descubra qual sistema operacional entrega o melhor FPS e estabilidade em 2026.";
 const keywords = [

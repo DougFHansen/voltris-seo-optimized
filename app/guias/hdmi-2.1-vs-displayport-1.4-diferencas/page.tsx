@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'hdmi-2.1-vs-displayport-1.4-diferencas',
+  title: "HDMI 2.1 vs DisplayPort 2.1: Qual usar no seu Monitor em 2026?",
+  description: "Confuso sobre qual cabo usar? Aprenda as diferenças reais entre HDMI e DisplayPort para atingir 144Hz, 240Hz ou 4K no seu PC gamer em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "HDMI 2.1 vs DisplayPort 2.1: Qual usar no seu Monitor em 2026?";
 const description = "Confuso sobre qual cabo usar? Aprenda as diferenças reais entre HDMI e DisplayPort para atingir 144Hz, 240Hz ou 4K no seu PC gamer em 2026.";
 const keywords = [

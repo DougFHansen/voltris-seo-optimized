@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'montagem-pc-gamer-erros-comuns',
+  title: "Montagem de PC Gamer: Os 7 erros que podem queimar tudo",
+  description: "Vai montar seu primeiro PC? Evite os erros fatais como esquecer o espelho da placa-mãe, ligar cabos errado ou usar a fonte de cabeça para baixo.",
+  category: 'games-fix',
+  difficulty: 'Avançado',
+  time: '1 hora'
+};
+
 const title = "Montagem de PC Gamer: Os 7 erros que podem queimar tudo";
 const description = "Vai montar seu primeiro PC? Evite os erros fatais como esquecer o espelho da placa-mãe, ligar cabos errado ou usar a fonte de cabeça para baixo.";
 const keywords = [

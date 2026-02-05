@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'melhores-navegadores-custo-beneficio',
+  title: "Melhores Navegadores em 2026: Chrome, Brave ou Edge?",
+  description: "Cansado do navegador lento e cheio de anúncios? Comparamos os melhores navegadores de 2026 focados em performance, privacidade e economia de RAM.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Melhores Navegadores em 2026: Chrome, Brave ou Edge?";
 const description = "Cansado do navegador lento e cheio de anúncios? Comparamos os melhores navegadores de 2026 focados em performance, privacidade e economia de RAM.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'onde-baixar-planilhas-excel-gratis',
+  title: "Onde baixar Planilhas Excel Grátis: Controle Financeiro e Gestão",
+  description: "Procurando modelos prontos de Excel para se organizar? Listamos os melhores sites para baixar planilhas gratuitas de gastos, estoques e cronogramas em...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "Onde baixar Planilhas Excel Grátis: Controle Financeiro e Gestão";
 const description = "Procurando modelos prontos de Excel para se organizar? Listamos os melhores sites para baixar planilhas gratuitas de gastos, estoques e cronogramas em 2026.";
 const keywords = [

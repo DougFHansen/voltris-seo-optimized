@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'recuperacao-dados',
+  title: "Recuperação de Dados: Como recuperar arquivos deletados (2026)",
+  description: "Apagou algo importante sem querer? Aprenda as técnicas profissionais de recuperação de dados em HDs, SSDs e pendrives com o guia atualizado para 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '40 min'
+};
+
 const title = "Recuperação de Dados: Como recuperar arquivos deletados (2026)";
 const description = "Apagou algo importante sem querer? Aprenda as técnicas profissionais de recuperação de dados em HDs, SSDs e pendrives com o guia atualizado para 2026.";
 const keywords = [

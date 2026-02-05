@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pc-gamer-barato-custo-beneficio-2026',
+  title: "PC Gamer Barato em 2026: Guia de Peças Custo-Benefício",
+  description: "Quer montar um PC para rodar tudo sem gastar uma fortuna? Veja nossa lista de peças recomendadas (CPU, GPU, RAM) para o melhor custo-benefício em 2026...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "PC Gamer Barato em 2026: Guia de Peças Custo-Benefício";
 const description = "Quer montar um PC para rodar tudo sem gastar uma fortuna? Veja nossa lista de peças recomendadas (CPU, GPU, RAM) para o melhor custo-benefício em 2026.";
 const keywords = [

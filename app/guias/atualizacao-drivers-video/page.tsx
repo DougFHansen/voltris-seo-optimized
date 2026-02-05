@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'atualizacao-drivers-video',
+  title: "Como Atualizar Drivers de Vídeo (NVIDIA, AMD e Intel) em 2026: Guia Completo",
+  description: "Seu jogo está travando, com artefatos gráficos ou baixo FPS? Aprenda as 7 formas definitivas de manter seus drivers de vídeo (NVIDIA, AMD, Intel Arc) ...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '45 min'
+};
+
 const title = "Como Atualizar Drivers de Vídeo (NVIDIA, AMD e Intel) em 2026: Guia Completo";
 const description = "Seu jogo está travando, com artefatos gráficos ou baixo FPS? Aprenda as 7 formas definitivas de manter seus drivers de vídeo (NVIDIA, AMD, Intel Arc) atualizados, como fazer instalação limpa, drivers WHQL, Game Ready e Studio, e como resolver problemas comuns em 2026.";
 const keywords = [

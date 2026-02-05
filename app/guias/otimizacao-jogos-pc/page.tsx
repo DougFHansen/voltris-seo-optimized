@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'otimizacao-jogos-pc',
+  title: "Guia de Otimização Extrema para Jogos (FPS Boost 2025)",
+  description: "Aprenda a configurar Windows, NVIDIA/AMD e hardware para extrair cada gota de performance, reduzir input lag e estabilizar o frametime.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '35 min'
+};
+
 // Seção adicional de conteúdo avançado para otimização de jogos
 
 const title = "Guia de Otimização Extrema para Jogos (FPS Boost 2025)";

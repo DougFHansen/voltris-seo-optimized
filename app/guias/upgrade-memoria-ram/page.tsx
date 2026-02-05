@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'upgrade-memoria-ram',
+  title: "Upgrade de Memória RAM: Guia de Compatibilidade (2026)",
+  description: "Quer colocar mais RAM no seu PC ou Notebook? Aprenda como escolher a frequência correta, DDR4 vs DDR5 e como ativar o Dual Channel em 2026.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Upgrade de Memória RAM: Guia de Compatibilidade (2026)";
 const description = "Quer colocar mais RAM no seu PC ou Notebook? Aprenda como escolher a frequência correta, DDR4 vs DDR5 e como ativar o Dual Channel em 2026.";
 const keywords = [

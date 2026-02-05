@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'hyper-v-desempenho-jogos',
+  title: "Hyper-V: Ativar ou Desativar para ganhar Performance em Jogos?",
+  description: "Descubra se o Hyper-V (VBS) está roubando seus frames! Aprenda como funciona a virtualização do Windows e saiba quando desativar para ganhar FPS em 20...",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Hyper-V: Ativar ou Desativar para ganhar Performance em Jogos?";
 const description = "Descubra se o Hyper-V (VBS) está roubando seus frames! Aprenda como funciona a virtualização do Windows e saiba quando desativar para ganhar FPS em 2026.";
 const keywords = [

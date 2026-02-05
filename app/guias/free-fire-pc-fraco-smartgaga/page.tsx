@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'free-fire-pc-fraco-smartgaga',
+  title: "Free Fire em PC Fraco: Como configurar o SmartGaGa (2026)",
+  description: "Quer jogar Free Fire sem travamentos no seu PC ou Notebook com 2GB ou 4GB de RAM? Aprenda a configurar o SmartGaGa, o emulador mais leve do mercado.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Free Fire em PC Fraco: Como configurar o SmartGaGa (2026)";
 const description = "Quer jogar Free Fire sem travamentos no seu PC ou Notebook com 2GB ou 4GB de RAM? Aprenda a configurar o SmartGaGa, o emulador mais leve do mercado.";
 const keywords = [

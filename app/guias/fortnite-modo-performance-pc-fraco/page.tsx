@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'fortnite-modo-performance-pc-fraco',
+  title: "Fortnite Modo Performance: Como ganhar FPS em 2026",
+  description: "Quer rodar Fortnite a 240 FPS ou em um PC fraco? Aprenda como configurar o Modo Desempenho e otimizar o Windows 11 para o jogo em 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Fortnite Modo Performance: Como ganhar FPS em 2026";
 const description = "Quer rodar Fortnite a 240 FPS ou em um PC fraco? Aprenda como configurar o Modo Desempenho e otimizar o Windows 11 para o jogo em 2026.";
 const keywords = [

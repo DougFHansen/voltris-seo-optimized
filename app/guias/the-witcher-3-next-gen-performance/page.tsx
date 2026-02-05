@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'the-witcher-3-next-gen-performance',
+  title: "The Witcher 3 Next Gen: Guia de Performance PC (2026)",
+  description: "Quer rodar The Witcher 3 com Ray Tracing e FPS estável? Aprenda as melhores configurações para a versão Next Gen e como evitar o stuttering em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '25 min'
+};
+
 const title = "The Witcher 3 Next Gen: Guia de Performance PC (2026)";
 const description = "Quer rodar The Witcher 3 com Ray Tracing e FPS estável? Aprenda as melhores configurações para a versão Next Gen e como evitar o stuttering em 2026.";
 const keywords = [

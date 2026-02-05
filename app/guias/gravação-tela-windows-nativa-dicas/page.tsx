@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gravação-tela-windows-nativa-dicas',
+  title: "Como Gravar Tela no Windows sem instalar nada (2026)",
+  description: "Precisa gravar uma aula, tutorial ou gameplay rápida? Aprenda a usar a Ferramenta de Captura e a Xbox Game Bar nativas do Windows 10 e 11.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Como Gravar Tela no Windows sem instalar nada (2026)";
 const description = "Precisa gravar uma aula, tutorial ou gameplay rápida? Aprenda a usar a Ferramenta de Captura e a Xbox Game Bar nativas do Windows 10 e 11.";
 const keywords = [

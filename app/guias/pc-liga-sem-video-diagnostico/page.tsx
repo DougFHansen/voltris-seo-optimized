@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pc-liga-sem-video-diagnostico',
+  title: "PC Liga mas não dá Vídeo: Guia de Diagnóstico 2026",
+  description: "Seu computador liga, as ventoinhas giram, mas a tela continua preta? Aprenda a diagnosticar e resolver problemas de hardware sem gastar dinheiro em 20...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "PC Liga mas não dá Vídeo: Guia de Diagnóstico 2026";
 const description = "Seu computador liga, as ventoinhas giram, mas a tela continua preta? Aprenda a diagnosticar e resolver problemas de hardware sem gastar dinheiro em 2026.";
 const keywords = [

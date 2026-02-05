@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'bluestacks-vs-ldplayer-qual-mais-leve',
+  title: "BlueStacks vs LDPlayer: Qual o Emulador mais leve? (2026)",
+  description: "Quer jogar Free Fire ou apps de Android no PC? Veja o comparativo de performance entre BlueStacks e LDPlayer em 2026 e descubra qual é o melhor para P...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "BlueStacks vs LDPlayer: Qual o Emulador mais leve? (2026)";
 const description = "Quer jogar Free Fire ou apps de Android no PC? Veja o comparativo de performance entre BlueStacks e LDPlayer em 2026 e descubra qual é o melhor para PC fraco.";
 const keywords = [

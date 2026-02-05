@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'mouse-clique-duplo-falhando-fix',
+  title: "Mouse com Clique Duplo ou Falhando? Como consertar sem gastar",
+  description: "Seu mouse está clicando sozinho ou falhando ao arrastar? Aprenda a resolver problemas de 'Double Click' com software e limpeza física simples.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Mouse com Clique Duplo ou Falhando? Como consertar sem gastar";
 const description = "Seu mouse está clicando sozinho ou falhando ao arrastar? Aprenda a resolver problemas de 'Double Click' com software e limpeza física simples.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'upgrade-pc-antigo-vale-a-pena',
+  title: "Upgrade em PC Antigo: Ainda vale a pena em 2026?",
+  description: "Seu PC de 5 anos atrás está lento? Descubra quais componentes valem o upgrade e quando é melhor economizar para um computador novo em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Upgrade em PC Antigo: Ainda vale a pena em 2026?";
 const description = "Seu PC de 5 anos atrás está lento? Descubra quais componentes valem o upgrade e quando é melhor economizar para um computador novo em 2026.";
 const keywords = [

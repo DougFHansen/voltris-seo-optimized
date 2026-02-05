@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'troubleshooting-internet',
+  title: "Internet Lenta ou Caindo? Guia de Troubleshooting 2026",
+  description: "Sua internet não está funcionando como deveria? Aprenda o passo a passo para diagnosticar e resolver problemas de conexão no Windows 11 em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Internet Lenta ou Caindo? Guia de Troubleshooting 2026";
 const description = "Sua internet não está funcionando como deveria? Aprenda o passo a passo para diagnosticar e resolver problemas de conexão no Windows 11 em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'excluir-conta-instagram-definitivamente',
+  title: "Como Excluir sua Conta do Instagram Definitivamente (2026)",
+  description: "Cansado do Reels? Aprenda como excluir ou desativar temporariamente sua conta do Instagram pelo celular ou PC no guia atualizado de 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Como Excluir sua Conta do Instagram Definitivamente (2026)";
 const description = "Cansado do Reels? Aprenda como excluir ou desativar temporariamente sua conta do Instagram pelo celular ou PC no guia atualizado de 2026.";
 const keywords = [

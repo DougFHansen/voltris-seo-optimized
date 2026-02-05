@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import GuiasClient from './GuiasClient';
+import { getAllGuides } from '@/lib/guides';
 
 export const metadata: Metadata = {
   title: 'Guias e Tutoriais Técnicos | VOLTRIS',
@@ -17,5 +18,6 @@ export const metadata: Metadata = {
 };
 
 export default function Guias() {
-  return <GuiasClient />;
+  const guides = getAllGuides();
+  return <GuiasClient initialGuides={guides} />;
 }

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'autenticacao-dois-fatores',
+  title: "Autenticação de Dois Fatores (2FA): O Guia Definitivo (2026)",
+  description: "Sua senha não é mais suficiente! Aprenda como usar o 2FA para proteger suas contas do Insta, Google e Discord contra hackers em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '25 min'
+};
+
 const title = "Autenticação de Dois Fatores (2FA): O Guia Definitivo (2026)";
 const description = "Sua senha não é mais suficiente! Aprenda como usar o 2FA para proteger suas contas do Insta, Google e Discord contra hackers em 2026.";
 const keywords = [

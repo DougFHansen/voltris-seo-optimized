@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'seguranca-digital',
+  title: "Guia de Segurança Digital em 2026: Fuja de Golpes e Invasões",
+  description: "Saiba como se proteger contra phishing, roubo de contas e golpes comuns no WhatsApp e Redes Sociais em 2026. Guia completo de higiene digital.",
+  category: 'rede-seguranca',
+  difficulty: 'Iniciante',
+  time: '30 min'
+};
+
 const title = "Guia de Segurança Digital em 2026: Fuja de Golpes e Invasões";
 const description = "Saiba como se proteger contra phishing, roubo de contas e golpes comuns no WhatsApp e Redes Sociais em 2026. Guia completo de higiene digital.";
 const keywords = [

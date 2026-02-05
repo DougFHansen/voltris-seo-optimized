@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'como-limpar-cache-dns-ip-flushdns',
+  title: "Como Limpar o Cache do DNS (FlushDNS) no Windows 11 (2026)",
+  description: "Sites não carregam ou ping alto nos jogos? Aprenda como limpar o cache do DNS e resetar seu IP no Windows 11 usando comandos rápidos em 2026.",
+  category: 'rede-seguranca',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "Como Limpar o Cache do DNS (FlushDNS) no Windows 11 (2026)";
 const description = "Sites não carregam ou ping alto nos jogos? Aprenda como limpar o cache do DNS e resetar seu IP no Windows 11 usando comandos rápidos em 2026.";
 const keywords = [

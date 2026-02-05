@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'terraria-tmodloader-64bit-fix',
+  title: "tModLoader 64-bit: Como rodar Terraria com muitos Mods (2026)",
+  description: "Seu Terraria trava por falta de memória ao usar mods? Aprenda como instalar e configurar o tModLoader 64-bit para usar toda a sua RAM em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "tModLoader 64-bit: Como rodar Terraria com muitos Mods (2026)";
 const description = "Seu Terraria trava por falta de memória ao usar mods? Aprenda como instalar e configurar o tModLoader 64-bit para usar toda a sua RAM em 2026.";
 const keywords = [

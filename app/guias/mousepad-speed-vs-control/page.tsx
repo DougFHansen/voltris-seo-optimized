@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'mousepad-speed-vs-control',
+  title: "Mousepad Speed vs Control: Qual escolher para seu jogo? (2026)",
+  description: "Você sabia que o seu mousepad pode ser o motivo de você errar tantos tiros? Entenda a diferença entre tecidos Speed, Control e Híbridos em 2026.",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "Mousepad Speed vs Control: Qual escolher para seu jogo? (2026)";
 const description = "Você sabia que o seu mousepad pode ser o motivo de você errar tantos tiros? Entenda a diferença entre tecidos Speed, Control e Híbridos em 2026.";
 const keywords = [

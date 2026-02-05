@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'saude-bateria-notebook',
+  title: "Como verificar e aumentar a Saúde da Bateria do Notebook (2026)",
+  description: "Sua bateria dura pouco? Aprenda como gerar o relatório oficial de bateria do Windows 11 e dicas para fazer ela durar muito mais em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Como verificar e aumentar a Saúde da Bateria do Notebook (2026)";
 const description = "Sua bateria dura pouco? Aprenda como gerar o relatório oficial de bateria do Windows 11 e dicas para fazer ela durar muito mais em 2026.";
 const keywords = [

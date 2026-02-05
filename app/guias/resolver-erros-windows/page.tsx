@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'resolver-erros-windows',
+  title: "Guia resolver-erros-windows",
+  description: "Descrição não disponível",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 minutos'
+};
+
 const title = 'Como Resolver Erros Comuns do Windows';
 const description = 'Guia completo para diagnosticar e resolver os erros mais frequentes no Windows. Aprenda a lidar com tela azul (BSOD), travamentos, mensagens de erro, problemas de inicialização e outros erros comuns do sistema operacional.';
 const keywords = [

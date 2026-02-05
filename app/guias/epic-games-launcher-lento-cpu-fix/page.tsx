@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'epic-games-launcher-lento-cpu-fix',
+  title: "Epic Games Launcher Lento ou Pesando na CPU? Como Fix (2026)",
+  description: "O launcher da Epic Games está travando seu PC ou consumindo muita CPU em repouso? Aprenda como otimizar o Epic Launcher no Windows 11 em 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Epic Games Launcher Lento ou Pesando na CPU? Como Fix (2026)";
 const description = "O launcher da Epic Games está travando seu PC ou consumindo muita CPU em repouso? Aprenda como otimizar o Epic Launcher no Windows 11 em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 're-size-bar-ativar-pc-gamer',
+  title: "Como ativar o Re-Size BAR para ganhar FPS no PC Gamer (2026)",
+  description: "Quer mais performance na sua RTX ou RX? Aprenda como ativar o Resizable BAR na BIOS e no Windows para tirar o gargalo da sua GPU em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Avançado',
+  time: '20 min'
+};
+
 const title = "Como ativar o Re-Size BAR para ganhar FPS no PC Gamer (2026)";
 const description = "Quer mais performance na sua RTX ou RX? Aprenda como ativar o Resizable BAR na BIOS e no Windows para tirar o gargalo da sua GPU em 2026.";
 const keywords = [

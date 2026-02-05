@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'limitar-fps-rivatuner-nvidia',
+  title: "Como Limitar o FPS com RivaTuner e NVIDIA (Frametime Perfeito)",
+  description: "Quer acabar com o stuttering e ter uma imagem fluida? Aprenda a limitar o seu FPS usando o RivaTuner (RTSS) e o Painel de Controle da NVIDIA em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "Como Limitar o FPS com RivaTuner e NVIDIA (Frametime Perfeito)";
 const description = "Quer acabar com o stuttering e ter uma imagem fluida? Aprenda a limitar o seu FPS usando o RivaTuner (RTSS) e o Painel de Controle da NVIDIA em 2026.";
 const keywords = [

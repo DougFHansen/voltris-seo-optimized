@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'sync-vertical-g-sync-free-sync-explicacao',
+  title: "G-Sync vs FreeSync vs V-Sync: Qual usar em 2026?",
+  description: "Entenda as diferenças entre V-Sync, G-Sync e FreeSync. Saiba como acabar com o Screen Tearing (tela rasgando) e reduzir o input lag em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "G-Sync vs FreeSync vs V-Sync: Qual usar em 2026?";
 const description = "Entenda as diferenças entre V-Sync, G-Sync e FreeSync. Saiba como acabar com o Screen Tearing (tela rasgando) e reduzir o input lag em 2026.";
 const keywords = [

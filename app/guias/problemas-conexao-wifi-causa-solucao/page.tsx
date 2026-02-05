@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'problemas-conexao-wifi-causa-solucao',
+  title: "Problemas de Wi-Fi: Como resolver quedas e sinal fraco (2026)",
+  description: "Seu Wi-Fi vive caindo ou a velocidade está baixa? Aprenda a configurar seu roteador e o Windows 11 para ter uma conexão Wi-Fi estável em 2026.",
+  category: 'rede-seguranca',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Problemas de Wi-Fi: Como resolver quedas e sinal fraco (2026)";
 const description = "Seu Wi-Fi vive caindo ou a velocidade está baixa? Aprenda a configurar seu roteador e o Windows 11 para ter uma conexão Wi-Fi estável em 2026.";
 const keywords = [

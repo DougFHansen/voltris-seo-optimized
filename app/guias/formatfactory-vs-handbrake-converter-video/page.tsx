@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'formatfactory-vs-handbrake-converter-video',
+  title: "FormatFactory vs Handbrake: Qual o melhor conversor? (2026)",
+  description: "Quer converter vídeos sem perder qualidade? Comparamos o FormatFactory e o Handbrake para descobrir qual o melhor em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "FormatFactory vs Handbrake: Qual o melhor conversor? (2026)";
 const description = "Quer converter vídeos sem perder qualidade? Comparamos o FormatFactory e o Handbrake para descobrir qual o melhor em 2026.";
 const keywords = [

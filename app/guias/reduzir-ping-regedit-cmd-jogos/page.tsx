@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'reduzir-ping-regedit-cmd-jogos',
+  title: "Ajustes de Registro (Regedit) para Reduzir o Ping (2026)",
+  description: "Quer o menor atraso possível? Aprenda a modificar o Registro do Windows e usar comandos CMD para otimizar o TCP/IP e ganhar vantagem nos jogos em 2026...",
+  category: 'otimizacao',
+  difficulty: 'Avançado',
+  time: '30 min'
+};
+
 const title = "Ajustes de Registro (Regedit) para Reduzir o Ping (2026)";
 const description = "Quer o menor atraso possível? Aprenda a modificar o Registro do Windows e usar comandos CMD para otimizar o TCP/IP e ganhar vantagem nos jogos em 2026.";
 const keywords = [

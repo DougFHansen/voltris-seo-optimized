@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'minecraft-lento-como-ganhar-fps',
+  title: "Minecraft Lento: Como ganhar FPS em qualquer PC em 2026",
+  description: "Seu Minecraft está rodando como um slide? Aprenda a otimizar o Windows e o Java para rodar o Minecraft liso, mesmo em computadores e notebooks antigos...",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Minecraft Lento: Como ganhar FPS em qualquer PC em 2026";
 const description = "Seu Minecraft está rodando como um slide? Aprenda a otimizar o Windows e o Java para rodar o Minecraft liso, mesmo em computadores e notebooks antigos.";
 const keywords = [

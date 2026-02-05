@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'configuracao-roteador-wifi',
+  title: "Guia de Configuração de Roteador Wi-Fi (2026)",
+  description: "Sua internet está lenta? Aprenda como configurar seu roteador, mudar o canal do Wi-Fi e colocar uma senha forte para máxima estabilidade em 2026.",
+  category: 'rede-seguranca',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Guia de Configuração de Roteador Wi-Fi (2026)";
 const description = "Sua internet está lenta? Aprenda como configurar seu roteador, mudar o canal do Wi-Fi e colocar uma senha forte para máxima estabilidade em 2026.";
 const keywords = [

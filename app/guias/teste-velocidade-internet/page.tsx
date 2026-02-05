@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'teste-velocidade-internet',
+  title: "Teste de Velocidade de Internet: Como ler os resultados (2026)",
+  description: "Sua internet está entregando o que você paga? Aprenda a fazer o teste de velocidade corretamente e entenda o que é Ping, Jitter e Megas em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Teste de Velocidade de Internet: Como ler os resultados (2026)";
 const description = "Sua internet está entregando o que você paga? Aprenda a fazer o teste de velocidade corretamente e entenda o que é Ping, Jitter e Megas em 2026.";
 const keywords = [

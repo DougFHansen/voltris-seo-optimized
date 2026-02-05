@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'usb-nao-reconhecido-reset-drivers',
+  title: "Dispositivo USB não reconhecido: Como resolver (2026)",
+  description: "Seu pendrive, mouse ou teclado parou de funcionar e o Windows diz 'Dispositivo USB Desconhecido'? Aprenda a resetar os drivers em 2026.",
+  category: 'windows-erros',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Dispositivo USB não reconhecido: Como resolver (2026)";
 const description = "Seu pendrive, mouse ou teclado parou de funcionar e o Windows diz 'Dispositivo USB Desconhecido'? Aprenda a resetar os drivers em 2026.";
 const keywords = [

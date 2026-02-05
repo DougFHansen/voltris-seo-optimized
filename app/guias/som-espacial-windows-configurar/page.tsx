@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'som-espacial-windows-configurar',
+  title: "Som Espacial no Windows 11: Como ativar e configurar (2026)",
+  description: "Quer ouvir passos com precisão nos jogos? Aprenda como ativar o Windows Sonic, Dolby Atmos e DTS:X para ter som espacial em 2026.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Som Espacial no Windows 11: Como ativar e configurar (2026)";
 const description = "Quer ouvir passos com precisão nos jogos? Aprenda como ativar o Windows Sonic, Dolby Atmos e DTS:X para ter som espacial em 2026.";
 const keywords = [

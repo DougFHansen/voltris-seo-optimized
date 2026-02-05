@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'segundo-monitor-vertical-configurar',
+  title: "Como configurar um Segundo Monitor na Vertical (2026)",
+  description: "Quer mais produtividade ou facilitar a leitura do chat na stream? Aprenda como colocar seu segundo monitor na vertical no Windows 11 em 2026.",
+  category: 'perifericos',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "Como configurar um Segundo Monitor na Vertical (2026)";
 const description = "Quer mais produtividade ou facilitar a leitura do chat na stream? Aprenda como colocar seu segundo monitor na vertical no Windows 11 em 2026.";
 const keywords = [

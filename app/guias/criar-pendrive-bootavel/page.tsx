@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'criar-pendrive-bootavel',
+  title: "Como Criar um Pendrive Bootável do Windows 11 (2026)",
+  description: "Precisa formatar o PC? Aprenda a criar um pendrive bootável oficial do Windows 11 usando a ferramenta da Microsoft ou o Rufus em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '30 min'
+};
+
 const title = "Como Criar um Pendrive Bootável do Windows 11 (2026)";
 const description = "Precisa formatar o PC? Aprenda a criar um pendrive bootável oficial do Windows 11 usando a ferramenta da Microsoft ou o Rufus em 2026.";
 const keywords = [

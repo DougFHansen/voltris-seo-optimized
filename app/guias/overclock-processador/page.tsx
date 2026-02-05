@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'overclock-processador',
+  title: "Overclock de Processador (CPU): Vale a pena em 2026?",
+  description: "Aprenda como aumentar a frequência do seu processador Intel ou AMD com segurança. Guia sobre multiplicadores, voltagem e resfriamento em 2026.",
+  category: 'hardware',
+  difficulty: 'Avançado',
+  time: '60 min'
+};
+
 const title = "Overclock de Processador (CPU): Vale a pena em 2026?";
 const description = "Aprenda como aumentar a frequência do seu processador Intel ou AMD com segurança. Guia sobre multiplicadores, voltagem e resfriamento em 2026.";
 const keywords = [

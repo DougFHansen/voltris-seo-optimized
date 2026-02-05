@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'smart-delivery-xbox-pc-como-funciona',
+  title: "Smart Delivery Xbox: Como funciona no PC e Console (2026)",
+  description: "Entenda o que é o Smart Delivery da Microsoft e como ele garante que você sempre tenha a melhor versão do jogo no seu PC ou Xbox em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Smart Delivery Xbox: Como funciona no PC e Console (2026)";
 const description = "Entenda o que é o Smart Delivery da Microsoft e como ele garante que você sempre tenha a melhor versão do jogo no seu PC ou Xbox em 2026.";
 const keywords = [

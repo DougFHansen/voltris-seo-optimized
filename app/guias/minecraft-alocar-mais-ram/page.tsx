@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'minecraft-alocar-mais-ram',
+  title: "Como Alocar mais Memória RAM no Minecraft (Launcher Original e TLauncher)",
+  description: "Seu Minecraft está travando ou dando erro de 'Out of Memory'? Aprenda a alocar mais RAM para o jogo e melhore o carregamento de chunks em 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Como Alocar mais Memória RAM no Minecraft (Launcher Original e TLauncher)";
 const description = "Seu Minecraft está travando ou dando erro de 'Out of Memory'? Aprenda a alocar mais RAM para o jogo e melhore o carregamento de chunks em 2026.";
 const keywords = [

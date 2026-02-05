@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'cadeira-gamer-vs-escritorio-ergonomia',
+  title: "Cadeira Gamer vs Escritório: Qual a melhor para sua coluna? (2026)",
+  description: "Sofrendo com dor nas costas? Descubra as principais diferenças entre cadeiras gamer e ergonômicas de escritório e qual escolher em 2026.",
+  category: 'perifericos',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Cadeira Gamer vs Escritório: Qual a melhor para sua coluna? (2026)";
 const description = "Sofrendo com dor nas costas? Descubra as principais diferenças entre cadeiras gamer e ergonômicas de escritório e qual escolher em 2026.";
 const keywords = [

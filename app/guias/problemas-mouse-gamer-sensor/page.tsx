@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'problemas-mouse-gamer-sensor',
+  title: "Problemas no Sensor do Mouse: Como resolver a Mira 'Pulando' (2026)",
+  description: "Seu mouse gamer está dando 'pixel skip' ou a mira trava do nada? Aprenda a limpar o sensor e configurar o LOD e o Polling Rate em 2026.",
+  category: 'perifericos',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Problemas no Sensor do Mouse: Como resolver a Mira 'Pulando' (2026)";
 const description = "Seu mouse gamer está dando 'pixel skip' ou a mira trava do nada? Aprenda a limpar o sensor e configurar o LOD e o Polling Rate em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'teclado-desconfigurado-abnt2-ansi',
+  title: "Teclado Desconfigurado: Como mudar para ABNT2 ou ANSI (2026)",
+  description: "Seu teclado está trocando o @ pelo \\\\" ou não tem o Ç? Aprenda como configurar o idioma e o layout do teclado no Windows 11 em 2026.",
+  category: 'perifericos',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "Teclado Desconfigurado: Como mudar para ABNT2 ou ANSI (2026)";
 const description = "Seu teclado está trocando o @ pelo \" ou não tem o Ç? Aprenda como configurar o idioma e o layout do teclado no Windows 11 em 2026.";
 const keywords = [

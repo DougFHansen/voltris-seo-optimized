@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pesquisar-arquivos-windows-mais-rapido',
+  title: "Como Pesquisar Arquivos no Windows Mais Rápido (2026)",
+  description: "A busca do Windows 11 é lenta? Aprenda como usar o Everything e otimizar a indexação para achar qualquer arquivo instantaneamente em 2026.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '10 min'
+};
+
 const title = "Como Pesquisar Arquivos no Windows Mais Rápido (2026)";
 const description = "A busca do Windows 11 é lenta? Aprenda como usar o Everything e otimizar a indexação para achar qualquer arquivo instantaneamente em 2026.";
 const keywords = [

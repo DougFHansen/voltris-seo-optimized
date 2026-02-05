@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'perifericos-gamer-vale-a-pena',
+  title: "Periféricos Gamer em 2026: Quando vale a pena investir?",
+  description: "Mouse, Teclado, Headset: O que realmente muda sua gameplay e o que é puro marketing? Guia completo sobre periféricos de alto desempenho em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Periféricos Gamer em 2026: Quando vale a pena investir?";
 const description = "Mouse, Teclado, Headset: O que realmente muda sua gameplay e o que é puro marketing? Guia completo sobre periféricos de alto desempenho em 2026.";
 const keywords = [

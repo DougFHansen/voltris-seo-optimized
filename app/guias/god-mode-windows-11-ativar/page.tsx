@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'god-mode-windows-11-ativar',
+  title: "God Mode no Windows 11: Como ativar o painel secreto",
+  description: "Quer ter acesso a todas as configurações do Windows em uma única pasta? Aprenda a ativar o famoso 'God Mode' (Modo Deus) no Windows 11 e 10.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "God Mode no Windows 11: Como ativar o painel secreto";
 const description = "Quer ter acesso a todas as configurações do Windows em uma única pasta? Aprenda a ativar o famoso 'God Mode' (Modo Deus) no Windows 11 e 10.";
 const keywords = [

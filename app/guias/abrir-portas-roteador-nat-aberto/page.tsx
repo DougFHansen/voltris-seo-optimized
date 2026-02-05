@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'abrir-portas-roteador-nat-aberto',
+  title: "Como Abrir Portas do Roteador e Ter NAT Aberto: Guia 2026",
+  description: "Sofrendo com NAT Restrito no Warzone, GTA, FIFA ou jogos online? Aprenda o passo a passo completo para configurar Port Forwarding, UPnP e DMZ no rotea...",
+  category: 'rede-seguranca',
+  difficulty: 'Avançado',
+  time: '60 min'
+};
+
 const title = "Como Abrir Portas do Roteador e Ter NAT Aberto: Guia 2026";
 const description = "Sofrendo com NAT Restrito no Warzone, GTA, FIFA ou jogos online? Aprenda o passo a passo completo para configurar Port Forwarding, UPnP e DMZ no roteador, conseguir NAT Aberto e jogar sem lag ou desconexões em 2026.";
 const keywords = [

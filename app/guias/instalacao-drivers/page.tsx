@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'instalacao-drivers',
+  title: "Como Instalar Drivers no Windows - Instalação e Atualização Passo a Passo",
+  description: "Aprenda como instalar driver e atualizar drivers no Windows 10/11: placa de vídeo, áudio, rede. Guia completo para instalar drivers com segurança e co...",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '45 minutos'
+};
+
 const title = "Como Instalar Drivers no Windows - Instalação e Atualização Passo a Passo";
 const description = "Aprenda como instalar driver e atualizar drivers no Windows 10/11: placa de vídeo, áudio, rede. Guia completo para instalar drivers com segurança e corrigir dispositivos.";
 const keywords = ['como instalar drivers', 'instalar driver', 'instalar drivers', 'instalacao drivers', 'atualizacao drivers', 'drivers windows', 'driver placa de vídeo', 'gerenciamento drivers', 'dispositivos windows'];

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'limpar-cache-navegador-chrome-edge',
+  title: "Como Limpar o Cache do Navegador (Chrome, Edge e Firefox)",
+  description: "Seus sites estão demorando para carregar ou aparecendo com erro? Aprenda a limpar o cache e os cookies do seu navegador para navegar mais rápido.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "Como Limpar o Cache do Navegador (Chrome, Edge e Firefox)";
 const description = "Seus sites estão demorando para carregar ou aparecendo com erro? Aprenda a limpar o cache e os cookies do seu navegador para navegar mais rápido.";
 const keywords = [

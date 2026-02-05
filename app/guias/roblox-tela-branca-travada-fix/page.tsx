@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'roblox-tela-branca-travada-fix',
+  title: "Roblox Tela Branca: Como resolver o erro de inicialização (2026)",
+  description: "Seu Roblox abre mas fica travado em uma tela branca ou cinza? Aprenda a resolver problemas de renderização e compatibilidade no Roblox em 2026.",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Roblox Tela Branca: Como resolver o erro de inicialização (2026)";
 const description = "Seu Roblox abre mas fica travado em uma tela branca ou cinza? Aprenda a resolver problemas de renderização e compatibilidade no Roblox em 2026.";
 const keywords = [

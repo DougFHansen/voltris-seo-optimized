@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'gabinete-gamer-airflow-importancia',
+  title: "Airflow no Gabinete: Como gelar seu PC e evitar o Thermal Throttling",
+  description: "Seu PC está esquentando demais e perdendo FPS? Aprenda a configurar o fluxo de ar (Airflow) correto com ventoinhas, pressão positiva e exaustão.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Airflow no Gabinete: Como gelar seu PC e evitar o Thermal Throttling";
 const description = "Seu PC está esquentando demais e perdendo FPS? Aprenda a configurar o fluxo de ar (Airflow) correto com ventoinhas, pressão positiva e exaustão.";
 const keywords = [

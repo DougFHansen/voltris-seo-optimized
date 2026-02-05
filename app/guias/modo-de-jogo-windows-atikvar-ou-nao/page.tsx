@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'modo-de-jogo-windows-atikvar-ou-nao',
+  title: "Modo de Jogo do Windows 11: Ativar ou Desativar? (2026)",
+  description: "Você ganha ou perde FPS com o Modo de Jogo ativado? Descubra como essa função do Windows 11 prioriza seu processador e placa de vídeo em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "Modo de Jogo do Windows 11: Ativar ou Desativar? (2026)";
 const description = "Você ganha ou perde FPS com o Modo de Jogo ativado? Descubra como essa função do Windows 11 prioriza seu processador e placa de vídeo em 2026.";
 const keywords = [

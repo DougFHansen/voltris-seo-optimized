@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'minecraft-aumentar-fps-fabric-sodium',
+  title: "Minecraft: Como aumentar o FPS com Fabric e Sodium (2026)",
+  description: "O OptiFine não é mais o rei. Aprenda a instalar o Sodium e o Iris Shader para ter o Minecraft mais fluido e bonito do mundo em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Minecraft: Como aumentar o FPS com Fabric e Sodium (2026)";
 const description = "O OptiFine não é mais o rei. Aprenda a instalar o Sodium e o Iris Shader para ter o Minecraft mais fluido e bonito do mundo em 2026.";
 const keywords = [

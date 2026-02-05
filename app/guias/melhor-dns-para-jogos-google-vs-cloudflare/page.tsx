@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'melhor-dns-para-jogos-google-vs-cloudflare',
+  title: "Qual o Melhor DNS para Jogos? Google (8.8.8.8) vs Cloudflare (1.1.1.1) (2026)",
+  description: "Mudar o DNS diminui o ping? Testamos os principais servidores DNS do mundo para descobrir qual resolve rotas mais rápido e melhora a conexão.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '10 min'
+};
+
 const title = "Qual o Melhor DNS para Jogos? Google (8.8.8.8) vs Cloudflare (1.1.1.1) (2026)";
 const description = "Mudar o DNS diminui o ping? Testamos os principais servidores DNS do mundo para descobrir qual resolve rotas mais rápido e melhora a conexão.";
 const keywords = ['melhor dns jogos 2026', 'dns google vs cloudflare', 'dns diminui ping', 'como mudar dns windows 11', 'dns para valorant', 'opendns jogos'];

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'pobreza-digital-pc-fraco-produtividade',
+  title: "Pobreza Digital: Como ser Produtivo com um PC Fraco em 2026",
+  description: "Você não precisa do PC mais caro para estudar ou trabalhar. Aprenda as técnicas de otimização extrema e softwares leves para vencer a pobreza digital ...",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Pobreza Digital: Como ser Produtivo com um PC Fraco em 2026";
 const description = "Você não precisa do PC mais caro para estudar ou trabalhar. Aprenda as técnicas de otimização extrema e softwares leves para vencer a pobreza digital em 2026.";
 const keywords = [

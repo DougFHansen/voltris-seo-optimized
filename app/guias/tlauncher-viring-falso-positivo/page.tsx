@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'tlauncher-viring-falso-positivo',
+  title: "TLauncher é seguro? Review e Segurança em 2026",
+  description: "Descubra se o TLauncher ainda é confiável em 2026. Analisamos as polêmicas de spyware, vírus e quais as melhores alternativas seguras para jogar Minec...",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "TLauncher é seguro? Review e Segurança em 2026";
 const description = "Descubra se o TLauncher ainda é confiável em 2026. Analisamos as polêmicas de spyware, vírus e quais as melhores alternativas seguras para jogar Minecraft.";
 const keywords = [

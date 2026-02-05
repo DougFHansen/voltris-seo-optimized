@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'rede-domestica',
+  title: "Guia Completo de Configuração de Rede Doméstica",
+  description: "Configure roteadores, extensores Wi-Fi, VLANs e segurança de rede residencial. Otimização de cobertura e performance.",
+  category: 'rede-seguranca',
+  difficulty: 'Intermediário',
+  time: '80 minutos'
+};
+
 const title = "Guia Completo de Configuração de Rede Doméstica";
 const description = "Configure roteadores, extensores Wi-Fi, VLANs e segurança de rede residencial. Otimização de cobertura e performance.";
 const keywords = ["rede doméstica","roteador","wi-fi","extensor","vlan","segurança rede"];

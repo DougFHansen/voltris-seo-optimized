@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'hollow-knight-stuttering-fix-mod',
+  title: "Hollow Knight: Como remover o Stuttering e Micro-travadas",
+  description: "Sofrendo com pequenas travadas no Hollow Knight mesmo em um PC potente? Aprenda a configurar o V-Sync e usar mods para uma jogabilidade fluida em 2026...",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Hollow Knight: Como remover o Stuttering e Micro-travadas";
 const description = "Sofrendo com pequenas travadas no Hollow Knight mesmo em um PC potente? Aprenda a configurar o V-Sync e usar mods para uma jogabilidade fluida em 2026.";
 const keywords = [

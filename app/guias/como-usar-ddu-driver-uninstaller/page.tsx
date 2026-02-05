@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'como-usar-ddu-driver-uninstaller',
+  title: "Como usar o DDU (Display Driver Uninstaller) com Segurança",
+  description: "Problemas com drivers de vídeo? Aprenda como usar o DDU para fazer uma limpeza profunda e remover drivers da NVIDIA e AMD em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Avançado',
+  time: '20 min'
+};
+
 const title = "Como usar o DDU (Display Driver Uninstaller) com Segurança";
 const description = "Problemas com drivers de vídeo? Aprenda como usar o DDU para fazer uma limpeza profunda e remover drivers da NVIDIA e AMD em 2026.";
 const keywords = [

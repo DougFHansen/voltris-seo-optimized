@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'ssd-vs-hdd-guia',
+  title: "SSD vs HDD: Guia Definitivo de Armazenamento",
+  description: "Entenda as tecnologias, saiba quando usar cada um e aprenda a migrar seu sistema para voar baixo com NVMe.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "SSD vs HDD: Guia Definitivo de Armazenamento";
 const description = "Entenda as tecnologias, saiba quando usar cada um e aprenda a migrar seu sistema para voar baixo com NVMe.";
 const keywords = ["ssd vs hd","nvme vale a pena","clonar hd para ssd","tipos de ssd","instalar ssd notebook"];

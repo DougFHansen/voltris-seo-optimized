@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'manutencao-preventiva-computador',
+  title: "Manutenção Preventiva de Computador: Como evitar gastos no futuro",
+  description: "Aprenda a rotina ideal de manutenção preventiva para o seu PC ou Notebook. Saiba o que fazer a cada mês para garantir que seu computador dure 10 anos ...",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Manutenção Preventiva de Computador: Como evitar gastos no futuro";
 const description = "Aprenda a rotina ideal de manutenção preventiva para o seu PC ou Notebook. Saiba o que fazer a cada mês para garantir que seu computador dure 10 anos ou mais.";
 const keywords = [

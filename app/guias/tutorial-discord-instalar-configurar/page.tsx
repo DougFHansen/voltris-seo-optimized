@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'tutorial-discord-instalar-configurar',
+  title: "Discord: Guia Completo de Instalação e Configuração (2026)",
+  description: "Quer começar no Discord mas não sabe como configurar? Aprenda a criar servidores, ajustar o áudio para não vazar eco e proteger sua conta com seguranç...",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '20 min'
+};
+
 const title = "Discord: Guia Completo de Instalação e Configuração (2026)";
 const description = "Quer começar no Discord mas não sabe como configurar? Aprenda a criar servidores, ajustar o áudio para não vazar eco e proteger sua conta com segurança.";
 const keywords = [

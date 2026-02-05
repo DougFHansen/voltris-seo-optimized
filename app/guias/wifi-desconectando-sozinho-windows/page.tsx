@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'wifi-desconectando-sozinho-windows',
+  title: "Wi-Fi Desconectando Sozinho no Windows 11: Como resolver (2026)",
+  description: "Seu Wi-Fi cai o tempo todo ou desconecta ao jogar? Aprenda como configurar o adaptador de rede para estabilidade máxima no Windows 11 em 2026.",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Wi-Fi Desconectando Sozinho no Windows 11: Como resolver (2026)";
 const description = "Seu Wi-Fi cai o tempo todo ou desconecta ao jogar? Aprenda como configurar o adaptador de rede para estabilidade máxima no Windows 11 em 2026.";
 const keywords = [

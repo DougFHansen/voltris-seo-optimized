@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'otimizacao-performance',
+  title: "Otimização de Performance: Como deixar seu PC voando em 2026",
+  description: "Seu Windows está lento? Aprenda as melhores técnicas de otimização de sistema para reduzir o uso de RAM e CPU e ter a máxima performance em jogos e tr...",
+  category: 'otimizacao',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Otimização de Performance: Como deixar seu PC voando em 2026";
 const description = "Seu Windows está lento? Aprenda as melhores técnicas de otimização de sistema para reduzir o uso de RAM e CPU e ter a máxima performance em jogos e trabalho.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'atalhos-produtividade-windows',
+  title: "Atalhos do Windows: O Manual Completo de Produtividade 2026",
+  description: "Domine o Windows 11 com os 60+ atalhos de teclado mais úteis para produtividade. Aprenda a gerenciar janelas, áreas de trabalho virtuais, ferramentas ...",
+  category: 'software',
+  difficulty: 'Intermediário',
+  time: '60 min'
+};
+
 const title = "Atalhos do Windows: O Manual Completo de Produtividade 2026";
 const description = "Domine o Windows 11 com os 60+ atalhos de teclado mais úteis para produtividade. Aprenda a gerenciar janelas, áreas de trabalho virtuais, ferramentas ocultas e atalhos secretos que vão triplicar sua velocidade no sistema em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'criar-ponto-restauracao-windows',
+  title: "Como Criar um Ponto de Restauração no Windows 11 (2026)",
+  description: "Vai instalar um driver novo ou mexer no registro? Aprenda como criar um Ponto de Restauração para proteger seu Windows contra erros em 2026.",
+  category: 'software',
+  difficulty: 'Iniciante',
+  time: '5 min'
+};
+
 const title = "Como Criar um Ponto de Restauração no Windows 11 (2026)";
 const description = "Vai instalar um driver novo ou mexer no registro? Aprenda como criar um Ponto de Restauração para proteger seu Windows contra erros em 2026.";
 const keywords = [

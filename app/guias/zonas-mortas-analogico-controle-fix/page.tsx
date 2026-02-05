@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'zonas-mortas-analogico-controle-fix',
+  title: "Drift no Controle? Como configurar Zonas Mortas (Deadzone) no PC",
+  description: "Seu personagem anda sozinho ou a câmera mexe sem você tocar no controle? Aprenda a configurar zonas mortas no Windows e na Steam para corrigir o Drift...",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Drift no Controle? Como configurar Zonas Mortas (Deadzone) no PC";
 const description = "Seu personagem anda sozinho ou a câmera mexe sem você tocar no controle? Aprenda a configurar zonas mortas no Windows e na Steam para corrigir o Drift.";
 const keywords = [

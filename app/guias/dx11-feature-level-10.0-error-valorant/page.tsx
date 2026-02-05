@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'dx11-feature-level-10.0-error-valorant',
+  title: "Erro DX11 Feature Level 10.0 no Valorant: Como Resolver (2026)",
+  description: "Seu Valorant não abre com erro de Feature Level 10.0? Aprenda como corrigir erros de DirectX e rodar o jogo no Windows 11 em 2026.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Erro DX11 Feature Level 10.0 no Valorant: Como Resolver (2026)";
 const description = "Seu Valorant não abre com erro de Feature Level 10.0? Aprenda como corrigir erros de DirectX e rodar o jogo no Windows 11 em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'perifericos-gamer-vale-a-pena-marcas',
+  title: "Marcas de Periféricos Gamer: Quais valem a pena em 2026?",
+  description: "Logitech, Razer, Corsair ou marcas chinesas? Descubra quais são as marcas de periféricos que entregam durabilidade e performance real em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Intermediário',
+  time: '15 min'
+};
+
 const title = "Marcas de Periféricos Gamer: Quais valem a pena em 2026?";
 const description = "Logitech, Razer, Corsair ou marcas chinesas? Descubra quais são as marcas de periféricos que entregam durabilidade e performance real em 2026.";
 const keywords = [

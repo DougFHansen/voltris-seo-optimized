@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'genshin-impact-stuttering-fix-pc',
+  title: "Genshin Impact travando ou com Stuttering? Como resolver no PC",
+  description: "Seu Genshin Impact sofre com quedas de FPS ao trocar de personagem ou explorar o mapa? Aprenda a otimizar o cache de shaders e as configurações gráfic...",
+  category: 'games-fix',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Genshin Impact travando ou com Stuttering? Como resolver no PC";
 const description = "Seu Genshin Impact sofre com quedas de FPS ao trocar de personagem ou explorar o mapa? Aprenda a otimizar o cache de shaders e as configurações gráficas.";
 const keywords = [

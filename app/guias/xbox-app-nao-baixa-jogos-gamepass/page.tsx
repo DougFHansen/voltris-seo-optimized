@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'xbox-app-nao-baixa-jogos-gamepass',
+  title: "Xbox App não baixa jogos? Como resolver (Guia 2026)",
+  description: "Seu download no Xbox Game Pass travou em 0% ou dá erro? Aprenda como resetar os Serviços de Jogos e baixar tudo normalmente em 2026.",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Xbox App não baixa jogos? Como resolver (Guia 2026)";
 const description = "Seu download no Xbox Game Pass travou em 0% ou dá erro? Aprenda como resetar os Serviços de Jogos e baixar tudo normalmente em 2026.";
 const keywords = [

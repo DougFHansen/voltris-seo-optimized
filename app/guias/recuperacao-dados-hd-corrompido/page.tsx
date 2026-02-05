@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'recuperacao-dados-hd-corrompido',
+  title: "Recuperação de Dados: Como salvar arquivos de um HD Corrompido",
+  description: "Seu HD parou de aparecer no Windows ou pede para formatar? Aprenda as técnicas de recuperação de fotos e documentos usando ferramentas profissionais (...",
+  category: 'windows-geral',
+  difficulty: 'Avançado',
+  time: '2 horas'
+};
+
 const title = "Recuperação de Dados: Como salvar arquivos de um HD Corrompido";
 const description = "Seu HD parou de aparecer no Windows ou pede para formatar? Aprenda as técnicas de recuperação de fotos e documentos usando ferramentas profissionais (sem pagar nada).";
 const keywords = [

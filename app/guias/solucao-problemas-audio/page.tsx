@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'solucao-problemas-audio',
+  title: "Como Resolver Problemas de Áudio no Windows (2026)",
+  description: "Seu PC está sem som ou com som chiando? Aprenda como diagnosticar e resolver erros de áudio no Windows 11 com este guia passo a passo em 2026.",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '15 min'
+};
+
 const title = "Como Resolver Problemas de Áudio no Windows (2026)";
 const description = "Seu PC está sem som ou com som chiando? Aprenda como diagnosticar e resolver erros de áudio no Windows 11 com este guia passo a passo em 2026.";
 const keywords = [

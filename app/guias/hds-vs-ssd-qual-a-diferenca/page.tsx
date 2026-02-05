@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'hds-vs-ssd-qual-a-diferenca',
+  title: "HD vs SSD: Qual a diferença e qual escolher em 2026?",
+  description: "Ainda vale a pena comprar um HD? Entenda as diferenças de velocidade entre HD, SSD SATA e NVMe e como escolher o melhor para o seu PC Gamer.",
+  category: 'hardware',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "HD vs SSD: Qual a diferença e qual escolher em 2026?";
 const description = "Ainda vale a pena comprar um HD? Entenda as diferenças de velocidade entre HD, SSD SATA e NVMe e como escolher o melhor para o seu PC Gamer.";
 const keywords = [

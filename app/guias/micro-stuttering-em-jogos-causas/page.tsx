@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'micro-stuttering-em-jogos-causas',
+  title: "Micro-Stuttering em Jogos: O que é e como acabar com ele",
+  description: "Seu jogo marca FPS alto mas parece travado? Aprenda a identificar o Micro-Stuttering e saiba como estabilizar o Frametime para uma fluidez perfeita em...",
+  category: 'otimizacao',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "Micro-Stuttering em Jogos: O que é e como acabar com ele";
 const description = "Seu jogo marca FPS alto mas parece travado? Aprenda a identificar o Micro-Stuttering e saiba como estabilizar o Frametime para uma fluidez perfeita em 2026.";
 const keywords = [

@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'api-ms-win-crt-runtime-missing',
+  title: "api-ms-win-crt-runtime-l1-1-0.dll Faltando: Guia Definitivo 2026",
+  description: "Seu programa/jogo não abre e mostra erro 'api-ms-win-crt-runtime-l1-1-0.dll ausente'? Aprenda as 5 soluções definitivas para corrigir DLL faltando, in...",
+  category: 'windows-geral',
+  difficulty: 'Iniciante',
+  time: '30 min'
+};
+
 const title = "api-ms-win-crt-runtime-l1-1-0.dll Faltando: Guia Definitivo 2026";
 const description = "Seu programa/jogo não abre e mostra erro 'api-ms-win-crt-runtime-l1-1-0.dll ausente'? Aprenda as 5 soluções definitivas para corrigir DLL faltando, instalar Visual C++ Redistributable corretamente e evitar sites maliciosos de DLL em 2026.";
 const keywords = [

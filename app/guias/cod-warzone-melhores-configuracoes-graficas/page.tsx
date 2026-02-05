@@ -1,6 +1,15 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
+export const guideMetadata = {
+  id: 'cod-warzone-melhores-configuracoes-graficas',
+  title: "COD Warzone: Melhores Configurações de FPS e Visibilidade (2026)",
+  description: "Quer ganhar vantagem no Warzone? Aprenda as configurações gráficas para 2026 que aumentam o FPS e permitem ver inimigos nas sombras sem travar.",
+  category: 'games-fix',
+  difficulty: 'Intermediário',
+  time: '20 min'
+};
+
 const title = "COD Warzone: Melhores Configurações de FPS e Visibilidade (2026)";
 const description = "Quer ganhar vantagem no Warzone? Aprenda as configurações gráficas para 2026 que aumentam o FPS e permitem ver inimigos nas sombras sem travar.";
 const keywords = [
