@@ -57,6 +57,7 @@ export function getAllGuides(): GuideMetadata[] {
                         if (normalizedCategory === 'games') normalizedCategory = 'games-fix';
                         if (normalizedCategory === 'rede') normalizedCategory = 'rede-seguranca';
                         if (normalizedCategory === 'seguranca') normalizedCategory = 'rede-seguranca';
+                        if (normalizedCategory === 'emuladores') normalizedCategory = 'emulacao';
 
                         const metadata: GuideMetadata = {
                             id: file, // Use folder name as ID/Slug
