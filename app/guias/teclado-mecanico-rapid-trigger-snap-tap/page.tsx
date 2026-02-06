@@ -179,7 +179,7 @@ export default function KeyboardGuide() {
         },
         {
             question: "Funciona em MOBA?",
-            answer: "Ajuda menos. Em LoL você "spama" skills, Rapid Trigger ajuda a spamar Q do Karthus mais rápido, mas não revolucionário como em FPS."
+            answer: "Ajuda menos. Em LoL você 'spama' skills, Rapid Trigger ajuda a spamar Q do Karthus mais rápido, mas não revolucionário como em FPS."
         },
         {
             question: "Preciso de software rodando?",
