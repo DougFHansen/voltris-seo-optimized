@@ -2,93 +2,138 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
-  id: 'limpeza-fisica-pc-gamer',
-  title: "Como Limpar seu PC Gamer Corretamente (Guia de Limpeza Física)",
-  description: "Seu PC está cheio de poeira? Aprenda a limpar as ventoinhas, a placa de vídeo e o gabinete com segurança, usando as ferramentas certas para não queima...",
-  category: 'software',
-  difficulty: 'Intermediário',
-  time: '45 min'
+    id: 'limpeza-fisica-pc-gamer',
+    title: "Limpeza Física de PC Gamer: Guia Completo e Seguro (2026)",
+    description: "Poeira causa superaquecimento e curto-circuito. Aprenda a limpar seu PC com segurança usando pincel, ar comprimido e álcool isopropílico. Não use secador de cabelo!",
+    category: 'hardware',
+    difficulty: 'Iniciante',
+    time: '45 min'
 };
 
-const title = "Como Limpar seu PC Gamer Corretamente (Guia de Limpeza Física)";
-const description = "Seu PC está cheio de poeira? Aprenda a limpar as ventoinhas, a placa de vídeo e o gabinete com segurança, usando as ferramentas certas para não queimar nada.";
+const title = "Como Limpar o PC Gamer Corretamente: O Fim do Superaquecimento";
+const description = "Seu PC está 'bufando' e esquentando? Provavelmente é poeira nos filtros e dissipadores. Veja o passo a passo para desmontar, limpar e trocar a pasta térmica.";
+
 const keywords = [
-    'como limpar pc gamer por dentro 2026',
-    'ferramentas para limpeza de pc gamer profissional',
-    'como limpar placa de vídeo por dentro poeira',
-    'limpeza de poeira pc gamer ar comprimido',
-    'pc esquentando muito por causa de poeira fix'
+    'como limpar pc gamer poeira',
+    'pode usar secador de cabelo limpar pc',
+    'limpar placa de video com pincel pode',
+    'alcool isopropilico placa mae',
+    'trocar pasta termica frequencia',
+    'limpar filtro de poeira gabinete',
+    'organizar cabos pc gamer',
+    'limpeza de fans ventoinhas barulho'
 ];
 
 export const metadata: Metadata = createGuideMetadata('limpeza-fisica-pc-gamer', title, description, keywords);
 
-export default function PhysicalCleaningGuide() {
+export default function CleaningGuide() {
     const summaryTable = [
-        { label: "Ferramenta Vital", value: "Pincel Antiestático ou Ar Comprimido" },
-        { label: "O que NÃO usar", value: "Secador de cabelo quente ou pano úmido" },
-        { label: "Frequência", value: "A cada 6 meses" },
-        { label: "Dificuldade", value: "Média" }
+        { label: "Ferramentas", value: "Pincel Macio, Ar Comprimido" },
+        { label: "Pasta Térmica", value: "Trocar a cada 1-2 anos" },
+        { label: "Líquido", value: "Apenas Álcool Isopropílico (99%)" },
+        { label: "Proibido", value: "Secador Quente, Água, Veja" },
+        { label: "Risco", value: "Estática (Descarregue antes)" },
+        { label: "Frequência", value: "Limpeza leve a cada 3 meses" }
     ];
 
     const contentSections = [
         {
-            title: "A Poeira: O inimigo silencioso do FPS",
+            title: "Por que limpar?",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          A poeira atua como um "cobertor" térmico. Ela se acumula entre as aletas dos dissipadores de calor do processador e da placa de vídeo, impedindo que o ar fresco passe. Isso faz com que as temperaturas subam e o PC reduza o desempenho. Além disso, a poeira pode absorver umidade e causar **curto-circuito** em componentes sensíveis.
+          A poeira age como um cobertor térmico, impedindo o calor de sair das peças. Além disso, em dias úmidos, a poeira pode conduzir eletricidade e queimar a placa-mãe. PC limpo roda mais frio, mais silencioso e dura mais.
         </p>
       `
         },
         {
-            title: "1. Preparação e Segurança",
+            title: "O que você precisa",
             content: `
-        <p class="mb-4 text-gray-300">Antes de abrir o gabinete, siga este protocolo:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
-            <li>Desligue o PC e <strong>remova o cabo da tomada</strong>.</li>
-            <li>Segure o botão Power por 5 segundos para descarregar os capacitores da fonte.</li>
-            <li>Toque em algo metálico aterrado (como a parte traseira sem pintura do gabinete) para descarregar sua eletricidade estática.</li>
-            <li>Coloque o gabinete em uma superfície seca e bem iluminada.</li>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <li><strong>Pincel de cerdas macias</strong> (tipo trincha de pintura nova).</li>
+            <li><strong>Soprador de ar / Lata de Ar Comprimido</strong> (Ideal).</li>
+            <li><strong>Pano de microfibra</strong>.</li>
+            <li><strong>Álcool Isopropílico 99%</strong> (Para limpar contatos e pasta velha).</li>
+            <li><strong>Pasta Térmica</strong> (Se for remover o cooler do processador).</li>
+            <li>Chave Philips.</li>
+        </ul>
+      `
+        },
+        {
+            title: "Passo a Passo Seguro",
+            content: `
+        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+            <li><strong>Desligue tudo:</strong> Tire o PC da tomada. Aperte o botão Power algumas vezes para descarregar a energia residual dos capacitores.</li>
+            <li><strong>Abra a lateral:</strong> Remova o vidro/tampa.</li>
+            <li><strong>Ventoinhas (Fans):</strong> Use o pincel para soltar a poeira das pás. Segure a pá com o dedo para ela não girar loucamente se usar ar comprimido (girar muito rápido pode gerar voltagem reversa e queimar o motor).</li>
+            <li><strong>Filtros de Poeira:</strong> Remova os filtros (frente/baixo) e lave-os com água. Seque 100% antes de colocar de volta.</li>
+            <li><strong>Placa de Vídeo:</strong> Limpe apenas a carcaça e o backplate com pincel. O ideal é soprar ar no dissipador.</li>
         </ol>
-      `
-        },
-        {
-            title: "2. Limpando as Ventoinhas (Fans)",
-            content: `
-        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dica de Ouro:</h4>
-            <p class="text-sm text-gray-300">
-                Nunca deixe uma ventoinha "girar loucamente" ao usar ar comprimido ou soprador. Isso pode gerar energia elétrica (efeito dínamo) e queimar a placa-mãe. <strong>Segure a hélice com o dedo</strong> enquanto limpa as pás com o pincel ou ar.
-            </p>
-        </div>
-      `
-        },
-        {
-            title: "3. O que usar para uma limpeza profunda?",
-            content: `
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
-            <li><strong>Álcool Isopropílico (99%):</strong> Único líquido permitido para limpar contatos de memória RAM e placa de vídeo. Ele evapora instantaneamente e não contém água.</li>
-            <li><strong>Limpa Contatos:</strong> Excelente para tirar oxidação dos slots da placa-mãe.</li>
-            <li><strong>Pincel de Cerdas Macias:</strong> Use para tirar a poeira "grossa" dos filtros de ar na frente e embaixo do gabinete.</li>
-        </ul >
       `
         }
     ];
 
+    const advancedContentSections = [
+        {
+            title: "Troca de Pasta Térmica (Avançado)",
+            content: `
+            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
+                <h4 class="text-orange-400 font-bold mb-4 text-xl">Só faça se necessário</h4>
+                <p class="text-gray-300 mb-4">
+                    Não troque a pasta térmica de uma placa de vídeo nova (perde garantia). Do processador, troque se as temperaturas estiverem altas.
+                </p>
+                <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4 text-sm">
+                    <li>Solte os parafusos do cooler em X (cruz).</li>
+                    <li>Gire levemente o cooler para soltar (se for AMD, cuidado para não arrancar o processador junto).</li>
+                    <li>Limpe a pasta velha cinza com papel toalha e Álcool Isopropílico até brilhar.</li>
+                    <li>Aplique uma gota do tamanho de uma ervilha no centro.</li>
+                    <li>Recoloque o cooler.</li>
+                </ol>
+            </div>
+            `
+        }
+    ];
+
+    const additionalContentSections = [
+        {
+            title: "Erro Comum: Secador de Cabelo",
+            content: `
+            <p class="mb-4 text-gray-300">
+                Nunca use secador no modo quente. O calor excessivo pode derreter soldas ou plásticos. No modo frio é aceitável, mas aspirador de pó é perigoso (gera muita estática no bico de plástico). O melhor é soprador específico para eletrônicos.
+            </p>
+            `
+        }
+    ];
+
+    const faqItems = [
+        {
+            question: "Borracha branca limpa memória RAM?",
+            answer: "Sim. A borracha escolar branca é excelente para limpar os contatos dourados da memória RAM e placa de vídeo se o PC não estiver dando vídeo. Passe levemente e tire os farelos depois."
+        },
+        {
+            question: "Com que frequência devo limpar?",
+            answer: "Depende do ambiente. Chão carpete/animais de estimação = a cada 2-3 meses. Ambiente limpo/ar condicionado = a cada 6 meses."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Linus Tech Tips - PC Cleaning Guide", url: "https://www.youtube.com/watch?v=W9T6WGFmam0" }
+    ];
+
     const relatedGuides = [
         {
+            href: "/guias/monitorar-temperatura-pc",
+            title: "Monitorar Temps",
+            description: "Veja o 'antes e depois' da limpeza."
+        },
+        {
+            href: "/guias/verificar-saude-hd-ssd-crystaldiskinfo",
+            title: "Saúde Peças",
+            description: "Cheque se o calor não danificou nada."
+        },
+        {
             href: "/guias/importancia-pasta-termica-pc",
-            title: "Pasta Térmica",
-            description: "Aproveite a limpeza para trocar a pasta."
-        },
-        {
-            href: "/guias/gabinete-gamer-airflow-importancia",
-            title: "Airflow Gabinete",
-            description: "Mantenha o ar circulando corretamente."
-        },
-        {
-            href: "/guias/cable-management-organizacao-cabos-pc",
-            title: "Cable Management",
-            description: "Organize os cabos para facilitar a próxima limpeza."
+            title: "Guia Pasta Térmica",
+            description: "Qual comprar? Prata ou Cerâmica?"
         }
     ];
 
@@ -98,10 +143,14 @@ export default function PhysicalCleaningGuide() {
             description={description}
             keywords={keywords}
             estimatedTime="45 min"
-            difficultyLevel="Intermediário"
+            difficultyLevel="Iniciante"
             contentSections={contentSections}
+            advancedContentSections={advancedContentSections}
+            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

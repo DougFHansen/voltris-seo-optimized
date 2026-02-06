@@ -43,7 +43,7 @@ export default function SSDOptimizationGuide() {
             title: "A Revolução do Armazenamento Sólido em 2026",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          Em 2026, o SSD (Solid State Drive) não é apenas um componente de luxo—é o coração da performance de qualquer PC. Com a popularização dos drives <strong>NVMe Gen5 atingindo velocidades teóricas de 14.000 MB/s</strong> e a tecnologia DirectStorage se tornando padrão nos jogos AAA, a forma como o Windows gerencia o armazenamento mudou drasticamente.
+          Em 2026, o SSD (Solid State Drive) não é apenas um componente de luxo—é o coração da performance de qualquer PC. Com a popularização dos drives <strong>NVMe Gen5 atingindo velocidades teóricas de 14.000 MB/s</strong> e a tecnologia <a href="https://devblogs.microsoft.com/directx/directstorage-api-available-on-pc/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 underline">DirectStorage</a> se tornando padrão nos jogos AAA, a forma como o Windows gerencia o armazenamento mudou drasticamente.
         </p>
         <p class="mb-6 text-gray-300 leading-relaxed">
           No entanto, muitos usuários ainda tratam seus SSDs modernos como se fossem HDs mecânicos antigos, ou pior: aplicam "otimizações" obsoletas de 2015 que prejudicam a performance em vez de ajudar. O Windows 11 é inteligente, mas sua configuração padrão é conservadora, priorizando compatibilidade em vez de desempenho bruto.
@@ -76,6 +76,75 @@ export default function SSDOptimizationGuide() {
             Para otimizar, você precisa entender como um SSD funciona. Diferente de um HD que grava dados magneticamente, um SSD armazena elétrons em células de memória NAND Flash.
         </p>
         
+        <!-- SVG Technical Diagram: SSD Architecture & TRIM -->
+        <div class="my-8 bg-[#0F111A] p-6 rounded-xl border border-white/5 flex flex-col items-center">
+            <h4 class="text-white font-bold mb-6 text-center">Ciclo de Vida de um Bloco NAND Flash</h4>
+            <svg viewBox="0 0 800 300" class="w-full h-auto text-gray-300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Styles -->
+                <defs>
+                    <linearGradient id="blockGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+                    </linearGradient>
+                    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#334155" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+
+                <!-- Step 1: New Block -->
+                <g transform="translate(50, 50)">
+                    <rect x="0" y="0" width="120" height="120" rx="8" fill="url(#blockGrad)" stroke="#31A8FF" stroke-width="2"/>
+                    <rect x="10" y="10" width="100" height="100" fill="url(#grid)" opacity="0.5"/>
+                    <text x="60" y="-15" text-anchor="middle" fill="#31A8FF" font-weight="bold" font-size="14">1. Bloco Limpo</text>
+                    <text x="60" y="65" text-anchor="middle" fill="#94a3b8" font-size="12">Escrita Rápida</text>
+                    <text x="60" y="85" text-anchor="middle" fill="#94a3b8" font-size="10">(Páginas Vazias)</text>
+                </g>
+
+                <!-- Arrow 1 -->
+                <g transform="translate(190, 100)">
+                    <path d="M 0 0 L 30 0" stroke="#475569" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <polygon points="30,0 22,-4 22,4" fill="#475569"/>
+                </g>
+
+                <!-- Step 2: Used Block -->
+                <g transform="translate(240, 50)">
+                    <rect x="0" y="0" width="120" height="120" rx="8" fill="url(#blockGrad)" stroke="#fbbf24" stroke-width="2"/>
+                    <rect x="10" y="10" width="100" height="100" fill="#fbbf24" opacity="0.2"/>
+                    <text x="60" y="-15" text-anchor="middle" fill="#fbbf24" font-weight="bold" font-size="14">2. Bloco Cheio</text>
+                    <text x="60" y="65" text-anchor="middle" fill="#94a3b8" font-size="12">Dados Válidos + Lixo</text>
+                </g>
+
+                <!-- Arrow 2 -->
+                <g transform="translate(380, 100)">
+                    <path d="M 0 0 L 30 0" stroke="#475569" stroke-width="2"/>
+                     <polygon points="30,0 22,-4 22,4" fill="#475569"/>
+                </g>
+
+                <!-- Step 3: TRIM -->
+                <g transform="translate(430, 50)">
+                    <rect x="0" y="0" width="120" height="120" rx="8" fill="url(#blockGrad)" stroke="#10b981" stroke-width="2"/>
+                     <!-- Partial Data -->
+                    <rect x="10" y="10" width="100" height="40" fill="#10b981" opacity="0.3"/>
+                    <text x="60" y="-15" text-anchor="middle" fill="#10b981" font-weight="bold" font-size="14">3. Comando TRIM</text>
+                    <text x="60" y="150" text-anchor="middle" fill="#94a3b8" font-size="11" width="120">
+                        O Windows avisa o SSD:
+                        <tspan x="60" dy="14">"Esse lixo pode ser apagado"</tspan>
+                    </text>
+                </g>
+
+                <!-- Step 4: Garbage Collection -->
+                 <g transform="translate(620, 50)">
+                    <rect x="0" y="0" width="120" height="120" rx="8" fill="url(#blockGrad)" stroke="#8b5cf6" stroke-width="2"/>
+                     <circle cx="60" cy="60" r="30" stroke="#8b5cf6" stroke-width="2" fill="none" stroke-dasharray="4 4">
+                        <animateTransform attributeName="transform" type="rotate" from="0 60 60" to="360 60 60" dur="4s" repeatCount="indefinite"/>
+                     </circle>
+                    <text x="60" y="-15" text-anchor="middle" fill="#8b5cf6" font-weight="bold" font-size="14">4. Garbage Coll.</text>
+                    <text x="60" y="65" text-anchor="middle" fill="#fff" font-size="10">Auto-Limpeza</text>
+                </g>
+            </svg>
+            <p class="text-xs text-gray-500 mt-4 italic">Figura 1: Representação simplificada de como o SSD gerencia dados e a importância do TRIM.</p>
+        </div>
+        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-[#0A0A0F] border border-white/10 p-5 rounded-xl">
                 <h4 class="text-white font-bold mb-2">O Problema da Escrita</h4>
@@ -96,7 +165,7 @@ export default function SSDOptimizationGuide() {
             title: "Passo 1: Verificação e Ativação do TRIM (Fundamental)",
             content: `
         <p class="mb-4 text-gray-300">
-            O TRIM é o comando mais importante para a saúde do SSD. Ele informa ao controlador quais páginas de dados podem ser apagadas com segurança em segundo plano (Garbage Collection).
+            O TRIM é o comando mais importante para a saúde do SSD. Ele informa ao controlador quais páginas de dados podem ser apagadas com segurança em segundo plano (Garbage Collection). Você pode consultar a documentação oficial da Microsoft sobre o comando <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">fsutil aqui</a>.
         </p>
 
         <h4 class="text-white font-bold mb-3 mt-6">Como verificar se o TRIM está ativo:</h4>
@@ -131,8 +200,8 @@ export default function SSDOptimizationGuide() {
         </p>
 
         <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4 mb-6">
-            <li><strong>Samsung:</strong> Drives 970/980/990 PRO possuem drivers NVMe específicos que melhoram a latência. Baixe no site <em>Samsung Magician</em>.</li>
-            <li><strong>Western Digital / Phison:</strong> Geralmente usam o driver padrão do Windows, mas oferecem softwares (Dashboard) para atualização de Firmware.</li>
+            <li><strong>Samsung:</strong> Drives 970/980/990 PRO possuem drivers NVMe específicos que melhoram a latência. Baixe no site oficial <a href="https://semiconductor.samsung.com/consumer-storage/magician/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Samsung Magician</a>.</li>
+            <li><strong>Western Digital:</strong> Utilize o <a href="https://support-en.wd.com/app/answers/detailweb/a_id/31759/~/install-western-digital-dashboard-for-drive-performance-monitoring" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">WD Dashboard</a> para garantir que o firmware esteja atualizado e o "Game Mode" (se disponível) ativado.</li>
         </ul>
 
         <h4 class="text-white font-bold mb-3">⚠️ Atualização de Firmware (Crítico)</h4>
@@ -345,7 +414,29 @@ export default function SSDOptimizationGuide() {
                     </tbody>
                 </table>
             </div>
-            <p class="text-gray-300 text-sm">Use o <strong>CrystalDiskInfo</strong> ou a aba de Saúde do Voltris Optimizer para ler esses dados mensalmente.</p>
+            <p class="text-gray-300 text-sm">Use o <a href="https://crystalmark.info/en/software/crystaldiskinfo/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">CrystalDiskInfo</a> ou a aba de Saúde do Voltris Optimizer para ler esses dados mensalmente.</p>
+            `
+        },
+        {
+            title: "Conclusão e Veredito: Vale a Pena Otimizar?",
+            content: `
+            <div class="bg-white/5 p-6 rounded-xl border border-white/10">
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    Otimizar um SSD no Windows 11 não é sobre "ganhar 500 FPS", mas sim sobre <strong>consistência</strong> e <strong>longevidade</strong>. Ao garantir que o TRIM esteja ativo e que o espaço livre seja respeitado (Over-Provisioning), você assegura que seu investimento em hardware dure anos sem degradação de performance.
+                </p>
+                <p class="text-gray-300 leading-relaxed">
+                    Para usuários casuais, a manutenção automática do Windows 11 já faz um bom trabalho. Para entusiastas, profissionais e gamers que exigem latência zero, os ajustes finos de cache e desativação de serviços inúteis apresentados neste guia são o diferencial entre um sistema "básico" e um sistema <span class="text-[#31A8FF] font-bold">otimizado</span>.
+                </p>
+                <div class="mt-6 pt-6 border-t border-white/10 flex items-center gap-4">
+                    <span class="text-sm text-slate-500 uppercase tracking-widest font-bold">Próximos Passos:</span>
+                    <a href="/voltrisoptimizer" class="text-[#31A8FF] hover:text-white font-medium transition-colors text-sm">
+                        Instalar Voltris Optimizer →
+                    </a>
+                    <a href="/guias/debloating-windows-11" class="text-slate-400 hover:text-white font-medium transition-colors text-sm">
+                        Continuar Otimizando o Windows →
+                    </a>
+                </div>
+            </div>
             `
         }
     ];

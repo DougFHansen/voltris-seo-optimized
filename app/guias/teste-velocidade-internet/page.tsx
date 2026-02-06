@@ -3,91 +3,157 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
   id: 'teste-velocidade-internet',
-  title: "Teste de Velocidade de Internet: Como ler os resultados (2026)",
-  description: "Sua internet está entregando o que você paga? Aprenda a fazer o teste de velocidade corretamente e entenda o que é Ping, Jitter e Megas em 2026.",
-  category: 'windows-geral',
+  title: "Teste de Velocidade Internet: Jitter, Ping e Bufferbloat (2026)",
+  description: "Seu Speedtest dá 500 Mega mas o jogo trava? Você está sofrendo de Bufferbloat. Aprenda a testar a qualidade real da sua conexão e diagnosticar perda de pacotes.",
+  category: 'rede-seguranca',
   difficulty: 'Iniciante',
   time: '10 min'
 };
 
-const title = "Teste de Velocidade de Internet: Como ler os resultados (2026)";
-const description = "Sua internet está entregando o que você paga? Aprenda a fazer o teste de velocidade corretamente e entenda o que é Ping, Jitter e Megas em 2026.";
+const title = "Além do Speedtest: Como Medir a Estabilidade da Internet para Jogos";
+const description = "Ter 1 Gigabit não adianta se o Jitter for alto. Entenda os números que realmente importam para o Gamer: Ping carregado (Loaded Latency) e Packet Lost.";
+
 const keywords = [
-  'teste de velocidade internet 2026 guia',
-  'como saber velocidade real da internet tutorial',
-  'o que é jitter e ping no teste de velocidade 2026',
-  'melhor site para testar velocidade internet guia',
-  'internet lenta o que fazer teste de velocidade 2026'
+  'teste de velocidade internet ping real',
+  'o que é jitter na internet',
+  'bufferbloat test waveform',
+  'speedtest falso',
+  'internet oscilando muito o que fazer',
+  'packet loss test',
+  'qual velocidade de upload para streamar',
+  'ping alto com internet boa'
 ];
 
 export const metadata: Metadata = createGuideMetadata('teste-velocidade-internet', title, description, keywords);
 
-export default function SpeedTestGuide() {
+export default function SpeedtestGuide() {
   const summaryTable = [
-    { label: "Sites Recomendados", value: "Speedtest.net / Fast.com / Simet" },
-    { label: "Unidade de Medida", value: "Mbps (Megabits por segundo)" },
-    { label: "Fator Game", value: "Ping e Jitter são mais importantes que Megas" },
-    { label: "Dificuldade", value: "Iniciante" }
+    { label: "Site Padrão", value: "Speedtest.net" },
+    { label: "Site Avançado", value: "Waveform Bufferbloat" },
+    { label: "Jitter Ideal", value: "Abaixo de 5ms" },
+    { label: "Packet Loss", value: "0% (Zero Tolerância)" },
+    { label: "Latência Sob Carga", value: "Crucial para casas cheias" },
+    { label: "Download", value: "Pouco importa para jogar" }
   ];
 
   const contentSections = [
     {
-      title: "Entendendo os números da sua Fibra",
+      title: "Pare de olhar apenas o Download",
       content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          Em 2026, é comum termos conexões de 500 Mega ou 1 Giga em casa. No entanto, muitos usuários se frustram ao ver que o download está rápido, mas o vídeo da reunião trava ou o jogo dá lag. Isso acontece porque a velocidade (largura de banda) é apenas **uma parte** da qualidade da sua conexão. Aprender a interpretar o Ping e o Jitter no teste de velocidade é essencial para diagnosticar problemas reais.
+          Jogos online consomem pouquíssima banda (menos de 1 Mega de download). O que importa é a velocidade com que os dados viajam (Latência/Ping) e a consistência dessa viagem (Jitter).
         </p>
-      `
-    },
-    {
-      title: "1. Download vs Upload vs Ping",
-      content: `
-        <p class="mb-4 text-gray-300">Entenda cada métrica do seu teste:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
-            <li><strong>Download:</strong> A velocidade com que você recebe dados (Netflix, baixar jogos).</li>
-            <li><strong>Upload:</strong> A velocidade com que você envia dados (Postar vídeos, enviar sua webcam em chamadas). Em 2026, conexões de fibra devem ser simétricas (Download igual ao Upload).</li>
-            <li><strong>Ping (Latência):</strong> O tempo de resposta. Para jogos, qualquer valor acima de 50ms começa a ser prejudicial.</li>
-        </ul >
-      `
-    },
-    {
-      title: "2. O vilão invisível: Jitter",
-      content: `
-        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Instabilidade da Rede:</h4>
-            <p class="text-sm text-gray-300">
-                O <strong>Jitter</strong> mede a variação do seu ping. Se o seu ping é 20ms agora e 80ms no próximo segundo, você tem um Jitter alto. <br/><br/>
-                Mesmo que sua internet seja de 1 Giga, um Jitter alto fará sua voz falhar no Discord e seu personagem "teletransportar" nos jogos. Em 2026, um Jitter aceitável deve estar abaixo de 5ms. Se estiver acima disso, o problema pode ser o seu Wi-Fi ou um cabo de rede danificado.
+
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 my-8">
+            <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
+                <span class="text-xl">📈</span> Monitor de Rota Voltris
+            </h4>
+            <p class="text-gray-300 mb-4">
+                O Ping testado no navegador nem sempre reflete o jogo. O <strong>Voltris Optimizer</strong> traça a rota (Traceroute) do seu PC até os servidores de São Paulo (AWS, Riot, Valve) e mostra onde está o gargalo: na sua casa, no provedor ou no servidor do jogo.
             </p>
+            <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
+                Testar Rota de Jogo
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
         </div>
       `
     },
     {
-      title: "3. Como fazer o teste corretamente",
+      title: "O Teste Real: Waveform",
       content: `
         <p class="mb-4 text-gray-300">
-            <strong>Não cometa este erro:</strong> Nunca teste sua velocidade pelo Wi-Fi se quiser saber se a operadora está entregando o contratado. 
-            <br/><br/><strong>Dica de 2026:</strong> Conecte seu computador via cabo e desligue outros dispositivos que usem muita banda (como TVs 4K ou celulares baixando updates). Use o site <strong>Speedtest.net</strong> e verifique se o servidor de teste é o mais próximo da sua cidade. Se o resultado for 20% menor que o contratado, você tem motivos legais para reclamar com o suporte técnico.
+            Esqueça o Fast.com ou MinhaConexão. Acesse <strong>waveform.com/tools/bufferbloat</strong>.
+        </p>
+        <p class="text-gray-300 mb-2 font-bold">O que ele mede?</p>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <li><strong>Unloaded Ping:</strong> Seu ping quando ninguém está usando a Internet.</li>
+            <li><strong>Download Active Ping:</strong> Seu ping enquanto alguém baixa um arquivo pesado. Se esse número subir de 20ms para 200ms, você sofre de <strong>Bufferbloat</strong>.</li>
+            <li><strong>Nota (Grau):</strong> Se tirar C, D ou F, seu roteador é ruim em gerenciar tráfego.</li>
+        </ul>
+      `
+    },
+    {
+      title: "O que é Jitter?",
+      content: `
+        <p class="mb-4 text-gray-300">
+            Jitter é a variação do ping.
+            <br/>Cenário A: Ping estável em 50ms. (Ótimo).
+            <br/>Cenário B: Ping varia entre 20ms, 80ms, 30ms, 100ms. (Péssimo).
+        </p>
+        <p class="text-gray-300">
+            Jitter alto causa "teleportes" e bonecos patinando no jogo. Geralmente é causado por Wi-Fi instável ou rota ruim da operadora.
         </p>
       `
     }
   ];
 
+  const advancedContentSections = [
+    {
+      title: "Como resolver Bufferbloat (SQM)",
+      content: `
+            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
+                <h4 class="text-white font-bold mb-4 text-xl">Smart Queue Management</h4>
+                <p class="text-gray-300 mb-4">
+                    Se você tirou nota baixa no Waveform:
+                </p>
+                <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+                    <li>Ative o QoS no seu roteador.</li>
+                    <li>Limite a velocidade máxima em 95% do total contratado. (Ex: Se tem 100 Mega, limite em 95 Mega).</li>
+                    <li>Isso impede que o buffer do roteador encha, mantendo a fila livre para os pacotes do jogo passarem na frente do download.</li>
+                </ol>
+            </div>
+            `
+    }
+  ];
+
+  const additionalContentSections = [
+    {
+      title: "Packet Loss (Perda de Pacote)",
+      content: `
+            <p class="mb-4 text-gray-300">
+                Abra o CMD (Prompt de Comando) e digite: <code>ping google.com -n 50</code>.
+            </p>
+            <p class="text-gray-300 text-sm">
+                Ele fará 50 testes. No final, veja "Perdidos". Deve ser 0 (0% de perda). Se tiver 1% ou mais, chame o técnico da operadora. Há defeito físico na fiação, fibra dobrada ou roteador morrendo. Não há software que resolva perda de pacote física.
+            </p>
+            `
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: "Speedtest via Wi-Fi vale?",
+      answer: "Para medir a velocidade da fibra, não. O Wi-Fi é o gargalo. Para medir a qualidade do seu Wi-Fi, sim. Se no cabo bate 500 Mega e no Wi-Fi bate 50, seu roteador é fraco."
+    },
+    {
+      question: "5G Móvel serve para jogar?",
+      answer: "O 5G melhorou muito, com pings de 20ms. É melhor que muito Wi-Fi ruim, mas ainda sofre com Jitter dependendo do clima e horário. Use como backup."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Waveform Bufferbloat Test", url: "https://www.waveform.com/tools/bufferbloat" },
+    { name: "Speedtest by Ookla", url: "https://www.speedtest.net/" }
+  ];
+
   const relatedGuides = [
     {
-      href: "/guias/reduzir-ping-jogos-online",
-      title: "Reduzir Ping",
-      description: "Dicas para estabilizar sua latência."
+      href: "/guias/configuracao-roteador-wifi",
+      title: "Configurar QoS",
+      description: "Resolva o bufferbloat configurando o roteador."
     },
     {
-      href: "/guias/melhor-dns-jogos-2026",
-      title: "Melhores DNS",
-      description: "Melhore a resposta da sua navegação."
+      href: "/guias/perda-de-pacote-packet-loss-fix",
+      title: "Packet Loss",
+      description: "Diagnóstico profundo de perda de pacotes."
     },
     {
-      href: "/guias/problemas-conexao-wifi-causa-solucao",
-      title: "Soluções Wi-Fi",
-      description: "Melhore o sinal sem fio da sua casa."
+      href: "/guias/como-limpar-cache-dns-ip-flushdns",
+      title: "Resetar Conexão",
+      description: "Se os testes falharem, tente resetar."
     }
   ];
 
@@ -99,8 +165,12 @@ export default function SpeedTestGuide() {
       estimatedTime="10 min"
       difficultyLevel="Iniciante"
       contentSections={contentSections}
+      advancedContentSections={advancedContentSections}
+      additionalContentSections={additionalContentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

@@ -2,260 +2,181 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
-  id: 'otimizacao-registro',
-  title: "Guia Completo de Otimização do Registro do Windows",
-  description: "Limpe e otimize o registro do Windows para melhor performance. Técnicas seguras de manutenção preventiva do sistema.",
+  id: 'otimizacao-registro-windows',
+  title: "Otimização de Registro do Windows: Tweaks Reais vs Mitos (2026)",
+  description: "Aprenda quais chaves do Regedit realmente melhoram a latência e responsividade (MenuShowDelay, Win32Priority) e quais são puro efeito placebo.",
   category: 'otimizacao',
-  difficulty: 'Intermediário',
-  time: '50 minutos'
+  difficulty: 'Avançado',
+  time: '25 min'
 };
 
-const title = "Guia Completo de Otimização do Registro do Windows";
-const description = "Limpe e otimize o registro do Windows para melhor performance. Técnicas seguras de manutenção preventiva do sistema.";
-const keywords = ["otimização registro","windows registry","ccleaner","registro limpo","performance sistema"];
+const title = "Guia de Regedit: Otimizações de Verdade para Windows 11 (Sem Placebo)";
+const description = "Pare de copiar arquivos .reg da internet que estragam seu PC. Saiba exatamente o que o MenuShowDelay, WaitToKillServiceTimeout e SystemResponsiveness fazem.";
 
-export const metadata: Metadata = createGuideMetadata('otimizacao-registro', title, description, keywords);
+const keywords = [
+  'melhores tweaks regedit windows 11',
+  'diminuir delay menu iniciar regedit',
+  'win32priorityseparation jogos valor ideal',
+  'networkthrottlingindex ffffffff funciona',
+  'desativar dvr jogos regedit',
+  'systemresponsiveness games',
+  'backup registro windows como fazer',
+  'regedit mouse fix acceleration'
+];
 
-export default function OtimizacaoregistroGuide() {
+export const metadata: Metadata = createGuideMetadata('otimizacao-registro-windows', title, description, keywords);
+
+export default function RegistryGuide() {
+  const summaryTable = [
+    { label: "Ferramenta", value: "Editor de Registro (Regedit)" },
+    { label: "Risco", value: "Alto (Faça Backup!)" },
+    { label: "MenuShowDelay", value: "Deixa menus instantâneos" },
+    { label: "Prioridade de CPU", value: "Prioriza programa em foco" },
+    { label: "Mito", value: "Regedit não aumenta FPS bruto" },
+    { label: "Foco", value: "Responsividade e Latência" }
+  ];
+
   const contentSections = [
     {
-      title: "Introdução e Conceitos Fundamentais",
+      title: "O que é o Registro do Windows?",
       content: `
-        <p class="mb-4">A otimização do registro do Windows é uma técnica essencial para melhorar o desempenho do sistema, resolver problemas de estabilidade e eliminar entradas inválidas que acumulam com o uso prolongado do sistema operacional.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>✓ Melhoria de até 30% na velocidade de inicialização</li>
-              <li>✓ Redução de erros de aplicativos e sistema</li>
-              <li>✓ Liberação de espaço em disco</li>
-              <li>✓ Maior estabilidade do sistema</li>
-            </ul>
-          </div>
-          <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>🔧 Conhecimento intermediário de Windows</li>
-              <li>💻 Windows 10/11 (administrador)</li>
-              <li>⏱️ Tempo estimado: 45-60 minutos</li>
-              <li>💾 Backup do sistema obrigatório</li>
-            </ul>
-          </div>
+        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+          O Registro é o cérebro do Windows. É um banco de dados gigante onde ficam todas as configurações. Alterar valores aqui pode mudar comportamentos profundos que não existem no menu de Configurações.
+        </p>
+
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 my-8">
+            <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
+                <span class="text-xl">⚠️</span> Backup Automático Voltris
+            </h4>
+            <p class="text-gray-300 mb-4">
+                Um erro de digitação no Regedit pode impedir o Windows de ligar. O <strong>Voltris Optimizer</strong> faz um backup automático de chaves críticas antes de aplicar qualquer otimização, permitindo desfazer tudo com um clique se algo der errado.
+            </p>
+            <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
+                Otimizar com Segurança
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
         </div>
-        
-        <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-4 my-6">
-          <h3 class="text-yellow-400 font-semibold mb-2">⚠️ Aviso Importante</h3>
-          <p class="text-gray-300 text-sm">Sempre crie um ponto de restauração do sistema antes de modificar o registro. Erros no registro podem causar instabilidade do sistema.</p>
-        </div>
-      `,
-      subsections: [
-        {
-          subtitle: "Quando Aplicar Esta Técnica",
-          content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-              <li>Computador com lentidão significativa na inicialização</li>
-              <li>Erros frequentes de aplicativos "não encontrado"</li>
-              <li>Problemas após desinstalação de programas</li>
-              <li>Preparação para reinstalação do Windows</li>
-              <li>Manutenção preventiva a cada 6 meses</li>
-            </ul>
-          `
-        }
-      ]
+      `
     },
     {
-      title: "Configuração Passo a Passo",
+      title: "Tweak 1: Menus Instantâneos (MenuShowDelay)",
       content: `
-        <p class="mb-4">Siga este procedimento detalhado para otimizar o registro do Windows com segurança máxima.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Preparação Inicial",
-          content: `
-            <ol class="space-y-3 text-gray-300 list-decimal list-inside ml-4">
-              <li>
-                <strong>Criar Ponto de Restauração:</strong>
-                <ul class="ml-6 mt-1 space-y-1 text-sm">
-                  <li>Pressione Win + R, digite "rstrui.exe"</li>
-                  <li>Selecione "Criar um ponto de restauração"</li>
-                  <li>Dê nome descritivo como "Antes_Otimização_Registro"</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Fechar Programas:</strong>
-                <ul class="ml-6 mt-1 space-y-1 text-sm">
-                  <li>Finalize todos os navegadores web</li>
-                  <li>Feche aplicativos de produtividade</li>
-                  <li>Encerre programas em execução na bandeja do sistema</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Verificar Espaço em Disco:</strong>
-                <ul class="ml-6 mt-1 space-y-1 text-sm">
-                  <li>Garanta pelo menos 5GB livres na unidade C:</li>
-                  <li>Use Disk Cleanup para liberar espaço temporário</li>
-                </ul>
-              </li>
-            </ol>
-          `
-        },
-        {
-          subtitle: "Otimização com Regedit",
-          content: `
-            <div class="space-y-4">
-              <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-                <h4 class="text-white font-semibold mb-2">1. Limpeza de Chaves Orfãs</h4>
-                <ul class="text-gray-300 text-sm space-y-1 ml-4">
-                  <li>Abra Regedit (Win + R → regedit)</li>
-                  <li>Navegue para HKEY_LOCAL_MACHINE\SOFTWARE</li>
-                  <li>Procure por pastas de programas desinstalados</li>
-                  <li>Exclua chaves de programas não existentes</li>
-                </ul>
-              </div>
-              
-              <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-                <h4 class="text-white font-semibold mb-2">2. Otimização de Valores</h4>
-                <ul class="text-gray-300 text-sm space-y-1 ml-4">
-                  <li>HKEY_CURRENT_USER\Control Panel\Desktop\MenuShowDelay = 400</li>
-                  <li>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\LargeSystemCache = 1</li>
-                  <li>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\DelayedApps = 0</li>
-                </ul>
-              </div>
-            </div>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            O Windows espera 400ms (quase meio segundo) propositalmente antes de abrir um submenu quando você passa o mouse. Vamos zerar isso.
+        </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
+            <li>Win + R > regedit.</li>
+            <li>Navegue até: <code>HKEY_CURRENT_USER\\Control Panel\\Desktop</code>.</li>
+            <li>No lado direito, ache <strong>MenuShowDelay</strong>.</li>
+            <li>Mude o valor de 400 para <strong>0</strong> (ou 50 se achar muito rápido).</li>
+            <li>Reinicie o PC. A sensação de fluidez é imediata.</li>
+        </ol>
+      `
     },
     {
-      title: "Ferramentas e Recursos Recomendados",
+      title: "Tweak 2: Prioridade de Jogos (Win32PrioritySeparation)",
       content: `
-        <p class="mb-4">Estas ferramentas especializadas oferecem análise profunda e limpeza segura do registro do Windows.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Software Especializado",
-          content: `
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-3">Ferramentas Gratuitas</h4>
-                <ul class="text-gray-300 text-sm space-y-2">
-                  <li><strong>CCleaner Free:</strong> Análise e limpeza básica do registro</li>
-                  <li><strong>Glary Utilities:</strong> Suite completa de otimização</li>
-                  <li><strong>Wise Registry Cleaner:</strong> Foco específico em limpeza de registro</li>
-                  <li><strong>Registry Finder:</strong> Pesquisa avançada no registro</li>
+        <p class="mb-4 text-gray-300">
+            Define quanta CPU o Windows dá para o programa em primeiro plano (Jogo) vs serviços de fundo.
+        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <li>Caminho: <code>HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl</code>.</li>
+            <li>Chave: <strong>Win32PrioritySeparation</strong>.</li>
+            <li>Valor (Hexadecimal):
+                <ul class="ml-6 mt-1 text-[#31A8FF]">
+                    <li><strong>26</strong> (Hex) ou 38 (Decimal): Padrão otimizado para processos em primeiro plano. Equilíbrio ideal para a maioria.</li>
+                    <li><strong>16</strong> (Hex) ou 22 (Decimal): Foco agressivo no primeiro plano. Pode causar stutter em Discord/OBS de fundo.</li>
                 </ul>
-              </div>
-              <div class="bg-[#171313] p-4 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-3">Soluções Pagas</h4>
-                <ul class="text-gray-300 text-sm space-y-2">
-                  <li><strong>CCleaner Professional:</strong> Backup automático e agendamento</li>
-                  <li><strong>Reg Organizer:</strong> Edição avançada e monitoramento</li>
-                  <li><strong>Registry Mechanic:</strong> Reparação inteligente de entradas</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Práticas de Segurança Avançadas",
-          content: `
-            <div class="space-y-3">
-              <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-3">
-                <h4 class="text-red-400 font-semibold mb-2">⚠️ Nunca Exclua Estas Chaves:</h4>
-                <ul class="text-gray-300 text-sm ml-4">
-                  <li>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows</li>
-                  <li>HKEY_CURRENT_USER\Software\Microsoft</li>
-                  <li>Chaves relacionadas a drivers de hardware</li>
-                </ul>
-              </div>
-              
-              <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-                <li>Faça backup completo do registro antes de qualquer modificação</li>
-                <li>Use modo de segurança para operações críticas</li>
-                <li>Mantenha cópias de segurança em locais diferentes</li>
-                <li>Teste o sistema após cada modificação importante</li>
-              </ul>
-            </div>
-          `
-        }
-      ]
+            </li>
+        </ul>
+      `
     },
     {
-      title: "Troubleshooting e Solução de Problemas",
+      title: "Tweak 3: Throttling de Rede (NetworkThrottlingIndex)",
       content: `
-        <p class="mb-4">Soluções específicas para erros comuns durante a otimização do registro do Windows.</p>
-      `,
-      subsections: [
-        {
-          subtitle: "Erros Frequentes e Soluções",
-          content: `
-            <div class="space-y-4">
-              <div class="bg-[#171313] p-4 rounded-lg border border-red-500/30">
-                <h4 class="text-red-400 font-semibold mb-2">Erro: "Acesso Negado ao Registro"</h4>
-                <p class="text-gray-300 text-sm mb-3">Solução: Execute o Regedit como administrador</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                  <li>Pressione Ctrl + Shift + Esc para abrir Gerenciador de Tarefas</li>
-                  <li>Clique com botão direito em Regedit → Executar como administrador</li>
-                  <li>Ou use comando: runas /user:Administrator regedit</li>
-                </ul>
-              </div>
-              
-              <div class="bg-[#171313] p-4 rounded-lg border border-yellow-500/30">
-                <h4 class="text-yellow-400 font-semibold mb-2">Problema: Sistema Fica Lento Após Otimização</h4>
-                <p class="text-gray-300 text-sm mb-3">Solução: Restaurar ponto de restauração</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                  <li>Pressione Win + R, digite "rstrui"</li>
-                  <li>Selecione o ponto de restauração criado antes da otimização</li>
-                  <li>Siga o assistente para restauração completa</li>
-                </ul>
-              </div>
-              
-              <div class="bg-[#171313] p-4 rounded-lg border border-blue-500/30">
-                <h4 class="text-blue-400 font-semibold mb-2">Erro: "Falha ao Iniciar Aplicativo"</h4>
-                <p class="text-gray-300 text-sm mb-3">Solução: Recriar entradas do registro perdidas</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
-                  <li>Reinstale o aplicativo problemático</li>
-                  <li>Use sfc /scannow no Prompt de Comando</li>
-                  <li>Execute DISM /Online /Cleanup-Image /RestoreHealth</li>
-                </ul>
-              </div>
-            </div>
-          `
-        },
-        {
-          subtitle: "Prevenção de Problemas Futuros",
-          content: `
-            <div class="bg-green-900/20 border border-green-500/30 rounded-lg p-4">
-              <h4 class="text-green-400 font-semibold mb-3">📅 Plano de Manutenção Recomendado</h4>
-              <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
-                <li><strong>Mensal:</strong> Verificação rápida de chaves órfãs</li>
-                <li><strong>Trimestral:</strong> Otimização completa com backup</li>
-                <li><strong>Semestral:</strong> Análise profunda com ferramentas especializadas</li>
-                <li><strong>Anual:</strong> Revisão completa e documentação do sistema</li>
-              </ul>
-            </div>
-          `
-        }
-      ]
+        <p class="mb-4 text-gray-300">
+            O Windows limita o tráfego de rede de processos não-multimídia para economizar bateria/recursos. Em redes Gigabit modernas, isso é desnecessário.
+        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <li>Caminho: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile</code>.</li>
+            <li>Chave: <strong>NetworkThrottlingIndex</strong>.</li>
+            <li>Valor padrão: 10 (Decimal).</li>
+            <li>Mude para: <strong>FFFFFFFF</strong> (Hexadecimal). Isso desativa o limitador completamente.</li>
+        </ul>
+      `
     }
+  ];
+
+  const advancedContentSections = [
+    {
+      title: "CUIDADO: O Mito do 'LargeSystemCache'",
+      content: `
+            <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
+                <h4 class="text-yellow-400 font-bold mb-4 text-xl">Não ative isso!</h4>
+                <p class="text-gray-300 mb-4">
+                    Muitos guias mandam ativar o <code>LargeSystemCache</code> dizendo que melhora jogos. Isso é FALSO. Essa configuração é para SERVIDORES de arquivos.
+                </p>
+                <p class="text-gray-300 text-sm">
+                    Ativar isso em um PC Gamer faz o Windows roubar toda a memória RAM física para cache de disco, tirando RAM do jogo e causando travamentos (Swap). Mantenha em 0.
+                </p>
+            </div>
+            `
+    }
+  ];
+
+  const additionalContentSections = [
+    {
+      title: "GameDVR (Gravação de Fundo)",
+      content: `
+            <p class="mb-4 text-gray-300">
+                Se você não usa o Xbox Game Bar para clipar, desative via Regedit para garantir que ele não está gravando escondido.
+            </p>
+            <p class="text-gray-300 text-sm font-mono">
+                HKEY_CURRENT_USER\\System\\GameConfigStore -> GameDVR_Enabled = 0.<br/>
+                HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR -> AllowGameDVR = 0.
+            </p>
+            `
+    }
+  ];
+
+  const faqItems = [
+    {
+      question: "Como faço backup do registro?",
+      answer: "No Regedit, clique em 'Arquivo' (topo esquerdo) > 'Exportar'. Salve como 'Backup_Antes_De_Mexer.reg'. Se algo der errado, é só dar duplo clique nesse arquivo para restaurar tudo."
+    },
+    {
+      question: "Cleaners de registro (CCleaner) prestam?",
+      answer: "Eles removem chaves órfãs (de programas desinstalados), o que libera alguns KB de espaço, mas NÃO melhora desempenho. O risco de deletar uma chave importante é maior que o benefício. O Windows moderno lida bem com chaves órfãs."
+    },
+    {
+      question: "Preciso reiniciar?",
+      answer: "Sim. Nenhuma alteração no Registro (HKEY_LOCAL_MACHINE) tem efeito até o Windows reiniciar e reler o banco de dados."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Microsoft Docs - Registry Optimization", url: "https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/role/file-server/" },
+    { name: "Backup Registry Guide", url: "https://support.microsoft.com/en-us/topic/how-to-back-up-and-restore-the-registry-in-windows-855140ad-e318-2a13-2829-d428a2ab0692" }
   ];
 
   const relatedGuides = [
     {
-      href: "/guias/seguranca-digital",
-      title: "Segurança Digital Completa",
-      description: "Proteção abrangente contra ameaças cibernéticas"
+      href: "/guias/reduzir-ping-regedit-cmd-jogos",
+      title: "Regedit Network",
+      description: "Chaves focadas em TcpAckFrequency e Nagle."
     },
     {
-      href: "/guias/otimizacao-performance",
-      title: "Otimização de Performance",
-      description: "Maximize o desempenho do seu sistema"
+      href: "/guias/otimizacao-ssd-windows-11",
+      title: "SSD Tweaks",
+      description: "Ajustes de registro para storport."
     },
     {
-      href: "/guias/manutencao-preventiva",
-      title: "Manutenção Preventiva",
-      description: "Estratégias completas de cuidados com o sistema"
+      href: "/guias/debloating-windows-11",
+      title: "Limpeza Geral",
+      description: "Menos processos = Registro menos acessado."
     }
   ];
 
@@ -264,10 +185,15 @@ export default function OtimizacaoregistroGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="50 minutos"
-      difficultyLevel="Intermediário"
+      estimatedTime="25 min"
+      difficultyLevel="Avançado"
       contentSections={contentSections}
+      advancedContentSections={advancedContentSections}
+      additionalContentSections={additionalContentSections}
+      summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

@@ -76,9 +76,22 @@ const CATEGORY_CONFIG = [
   {
     id: 'windows-geral',
     title: 'Windows & Sistema',
-    description: 'Manutenção e Instalação',
     icon: Monitor,
     color: '#31A8FF'
+  },
+  {
+    id: 'emulacao',
+    title: 'Emulação & Retrô',
+    description: 'Yuzu, Cemu, PS2 e Clássicos',
+    icon: Gamepad,
+    color: '#FFB800'
+  },
+  {
+    id: 'linux',
+    title: 'Linux & Steam Deck',
+    description: 'SteamOS, Proton e Bazzite',
+    icon: Monitor,
+    color: '#FF4B6B'
   }
 ];
 

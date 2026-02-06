@@ -44,15 +44,25 @@ export function getAllGuides(): GuideMetadata[] {
                         const getValue = (key: string) => {
                             // Match key: "value" or key: 'value'
                             // Capture group 1 is the content inside quotes
-                            const m = block.match(new RegExp(`${key}:\\s*["']((?:[^"'\\]|\\\\.)*)["']`));
+                            const m = block.match(new RegExp(`${key}:\\s*["']((?:[^"'\\\\]|\\\\.)*)["']`));
                             return m ? m[1].replace(/\\"/g, '"').replace(/\\'/g, "'") : '';
                         };
+
+                        const rawCategory = getValue('category') || 'outros';
+                        let normalizedCategory = rawCategory.toLowerCase();
+
+                        // Normalização de categorias para bater com os IDs do frontend
+                        if (normalizedCategory === 'windows') normalizedCategory = 'windows-geral';
+                        if (normalizedCategory === 'jogos') normalizedCategory = 'games-fix';
+                        if (normalizedCategory === 'games') normalizedCategory = 'games-fix';
+                        if (normalizedCategory === 'rede') normalizedCategory = 'rede-seguranca';
+                        if (normalizedCategory === 'seguranca') normalizedCategory = 'rede-seguranca';
 
                         const metadata: GuideMetadata = {
                             id: file, // Use folder name as ID/Slug
                             title: getValue('title'),
                             description: getValue('description'),
-                            category: getValue('category') || 'outros', // Fallback
+                            category: normalizedCategory,
                             difficulty: getValue('difficulty') || 'Iniciante',
                             time: getValue('time') || '10 min'
                         };
