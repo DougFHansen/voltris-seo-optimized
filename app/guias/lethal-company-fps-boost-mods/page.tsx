@@ -11,7 +11,7 @@ export const guideMetadata = {
 };
 
 const title = "Lethal Company (2026): Performance e Mods";
-const description = "O jogo viral "low poly" roda em qualquer batata? Quase. Quando você instala 50 mods e coloca 16 pessoas no servidor, a história muda.";
+const description = "O jogo viral 'low poly' roda em qualquer batata? Quase. Quando você instala 50 mods e coloca 16 pessoas no servidor, a história muda.";
 
 const keywords = [
     'lethal company fps boost mod 2026',
