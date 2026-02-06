@@ -109,7 +109,7 @@ export default function LinuxGuide() {
         <p class="mb-4 text-gray-300">
             - <strong>AMD:</strong> É on-board. Os drivers MESA já vêm no Kernel Linux. É a melhor experiência (plug and play).
             - <strong>Nvidia:</strong> Historicamente problemático, mas no driver 555+ (Beta) o Wayland e HDR funcionam bem.
-            <br/>No Bazzite/Nobara, selecione a ISO "Nvidia" para já vir tudo pronto. Não tente instalar driver `.run` manual do site da Nvidia, você vai quebrar o sistema.
+            <br/>No Bazzite/Nobara, selecione a ISO "Nvidia" para já vir tudo pronto. Não tente instalar driver <code>.run</code> manual do site da Nvidia, você vai quebrar o sistema.
         </p>
       `
         },
