@@ -11,7 +11,7 @@ export const guideMetadata = {
 };
 
 const title = "Windows Update Travado ou com Erro? Guia de Reparo Definitivo (2026)";
-const description = "Se o seu PC não atualiza, você está vulnerável. Descubra como forçar a atualização, limpar a pasta SoftwareDistribution e usar o DISM para consertar o update.",
+const description = "Se o seu PC não atualiza, você está vulnerável. Descubra como forçar a atualização, limpar a pasta SoftwareDistribution e usar o DISM para consertar o update.";
 
 const keywords = [
     'windows update erro 0x80070002 resolver',
