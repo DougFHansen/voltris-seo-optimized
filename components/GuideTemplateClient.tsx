@@ -367,61 +367,9 @@ export function GuideTemplateClient({
                                 </div>
                             )}
 
-                            {/* --- SEO CONTENT INJECTION: GLOBAL GLOSSARY --- */}
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                className="bg-[#0A0A0F] border border-white/5 rounded-3xl p-8 md:p-10 relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B31FF]/5 blur-[60px] rounded-full point-events-none"></div>
-                                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                    <BookOpen className="w-6 h-6 text-[#8B31FF]" />
-                                    Glossário Técnico Fundamental
-                                </h3>
-                                <p className="text-slate-400 mb-8 text-sm">
-                                    Para garantir que você entenda todos os termos técnicos mencionados em nossos guias, preparamos este glossário rápido com as definições mais importantes do mundo da tecnologia.
-                                </p>
+                            {/* --- SEO CONTENT INJECTION: GLOBAL GLOSSARY - MOVED TO /glossario --- */}
 
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
-                                    <div>
-                                        <h4 className="text-[#31A8FF] font-bold text-sm uppercase tracking-wider mb-2">BIOS / UEFI</h4>
-                                        <p className="text-slate-400 text-sm leading-relaxed">
-                                            O sistema básico que roda antes do Windows. É lá que configuramos a ordem de boot (para formatar) e ajustes de hardware como XMP para memória RAM.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-[#31A8FF] font-bold text-sm uppercase tracking-wider mb-2">Drivers</h4>
-                                        <p className="text-slate-400 text-sm leading-relaxed">
-                                            Programas que ensinam o Windows a conversar com seu hardware (placa de vídeo, som, wi-fi). Drivers desatualizados são a causa nº 1 de telas azuis e lentidão.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-[#FF4B6B] font-bold text-sm uppercase tracking-wider mb-2">Malware vs Vírus</h4>
-                                        <p className="text-slate-400 text-sm leading-relaxed">
-                                            Malware é qualquer software malicioso. Vírus é um tipo específico que se replica. Hoje, o maior perigo é o <strong>Ransomware</strong>, que sequestra seus dados e pede resgate.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-[#31FF8B] font-bold text-sm uppercase tracking-wider mb-2">SSD (Solid State Drive)</h4>
-                                        <p className="text-slate-400 text-sm leading-relaxed">
-                                            Armazenamento moderno, 10x mais rápido que os HDs antigos. Se seu PC demora mais de 1 minuto para ligar, a culpa provavelmente é da falta de um SSD.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-[#E11D48] font-bold text-sm uppercase tracking-wider mb-2">FPS / Hz</h4>
-                                        <p className="text-slate-400 text-sm leading-relaxed">
-                                            FPS é quantos quadros seu PC gera por segundo. Hz é quantos quadros seu monitor consegue mostrar. Para jogos competitivos, quanto maior, melhor.
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-[#FFB800] font-bold text-sm uppercase tracking-wider mb-2">Bloatware</h4>
-                                        <p className="text-slate-400 text-sm leading-relaxed">
-                                            Programas inúteis que já vêm pré-instalados no PC (fábrica) ou que instalamos sem querer junto com outros sofwares. Eles consomem RAM e processamento à toa.
-                                        </p>
-                                    </div>
-                                </div>
-                            </motion.div>
+                            {/* Conclusion */}
 
                             {/* Conclusion */}
                             {!hasCustomConclusion && (

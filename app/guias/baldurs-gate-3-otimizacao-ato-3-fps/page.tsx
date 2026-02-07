@@ -3,197 +3,182 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'baldurs-gate-3-otimizacao-ato-3-fps',
-    title: "Baldur's Gate 3 (2026): Otimização do Ato 3, DLSS e Mods de Câmera",
-    description: "O Ato 3 em Baldur's Gate trava? Aprenda a otimizar a CPU na cidade baixa, usar DLSS para ganhar 30 FPS e ativar a Câmera Livre para screenshots.",
+    title: "Baldur's Gate 3: Otimização Definitiva do Ato 3 (2026)",
+    description: "Chegou na Cidade Baixa e o FPS caiu pela metade? Aprenda a otimizar a CPU, configurar DLSS/FSR corretamente e usar Mods essenciais para estabilizar o jogo.",
     category: 'jogos',
     difficulty: 'Intermediário',
     time: '30 min'
 };
 
-const title = "Baldur's Gate 3 (2026): Performance no Ato 3";
-const description = "BG3 é uma obra-prima, mas a Cidade Baixa (Ato 3) é um pesadelo para CPUs. Vamos aliviar a carga e manter a imersão.";
+const title = "Baldur's Gate 3: Otimização Definitiva do Ato 3 (2026)";
+const description = "O Ato 3 de Baldur's Gate 3 é famoso por destruir processadores. Com centenas de NPCs simulados ao mesmo tempo, sua GPU sobra e sua CPU chora. Aprenda os segredos para rodar liso.";
 
 const keywords = [
-    'baldurs gate 3 ato 3 travando muito fix',
-    'bg3 melhores configurações graficas pc fraco',
-    'camera nativa bg3 mod wasd movement',
-    'dlss vs dlaa baldurs gate 3 qualidade',
-    'vulkan vs dx11 bg3 crash',
-    'crowd density bg3 performance',
-    'hdd mode bg3 texture loading',
-    'shadow quality medium vs low',
-    'voltris optimizer larian studios',
-    'fsr 2.2 bg3 update'
+    'baldurs gate 3 ato 3 travando muito fix 2026',
+    'bg3 cidade baixa fps drop solucao',
+    'melhores configuracoes graficas bg3 pc fraco',
+    'dlss vs fsr 2.2 baldurs gate 3 qualidade',
+    'vulkan vs dx11 qual usar nvidia amd',
+    'hdd mode lento ssd travando',
+    'native camera tweaks mod tutorial'
 ];
 
 export const metadata: Metadata = createGuideMetadata('baldurs-gate-3-otimizacao-ato-3-fps', title, description, keywords);
 
 export default function BG3Guide() {
     const summaryTable = [
-        { label: "API", value: "DX11 (Estável) / Vulkan" },
-        { label: "DLSS", value: "Quality" },
-        { label: "Model Quality", value: "High (Personagens)" },
-        { label: "Shadows", value: "Medium" },
-        { label: "Crowd", value: "Low (Ato 3)" },
-        { label: "God Rays", value: "Off" },
-        { label: "HDD Mode", value: "Auto" }
+        { label: "O Vilão", value: "CPU (Gargalo de IA/NPCs)" },
+        { label: "API Recomendada", value: "DX11 (NVIDIA) / Vulkan (AMD)" },
+        { label: "DLSS", value: "Quality (Para GPU) / Native AA (Visual)" },
+        { label: "HDD Mode", value: "DESLIGADO (Se tiver SSD)" },
+        { label: "Dynamic Crowds", value: "DESLIGADO (Ganho massivo)" },
+        { label: "Mods Essenciais", value: "Native Camera + WASD" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: O Gargalo da CPU",
+            title: "Por que o Ato 3 é tão pesado?",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          No Ato 1 e 2, o jogo é leve. No Ato 3, a quantidade de NPCs na tela triplica. Isso não pesa na placa de vídeo, pesa no processador (IA, pathfinding). A única solução real é reduzir a complexidade da simulação.
+          Diferente dos atos 1 (floresta) e 2 (escuridão), a Cidade Baixa no Ato 3 tem <strong>centenas de NPCs</strong>, cada um com sua própria rotina de inteligência artificial, pathfinding e inventário. Isso cria um gargalo brutal na <strong>CPU (Processador)</strong>. Mexer na resolução ou qualidade de textura (que usam GPU) ajuda POUCO aqui. O foco deve ser aliviar o processador.
         </p>
       `
         },
         {
-            title: "Capítulo 1: Vulkan vs DirectX 11",
+            title: "Configurações Críticas (Video Settings)",
             content: `
+        <p class="mb-4 text-gray-300">
+          Acesse Opções > Vídeo. Estas são as únicas que realmente importam para a CPU:
+        </p>
+        
         <div class="space-y-4">
-            <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
-                <h4 class="text-[#31A8FF] font-bold mb-1">Qual escolher?</h4>
-                <p class="text-gray-400 text-xs text-justify">
-                    No launcher da Larian:
-                    <br/>- <strong>DirectX 11:</strong> Mais estável, menos crashes, carregamento um pouco mais lento. Recomendado para Nvidia.
-                    <br/>- <strong>Vulkan:</strong> Melhor performance de CPU (Ato 3), mas pode ter glitches visuais ou fechar do nada. Recomendado para AMD/Steam Deck.
-                    <br/>Teste o Vulkan primeiro. Se travar, vá de DX11.
+            <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20">
+                <h4 class="text-red-400 font-bold mb-2">Dynamic Crowds (Multidão Dinâmica)</h4>
+                <p class="text-sm text-gray-300">
+                    <strong>Recomendação: DESLIGADO.</strong>
+                    <br/>Isso faz com que NPCs "inúteis" de fundo tenham comportamento complexo. Desligar transforma eles em "cenário", economizando muito tempo de CPU.
+                </p>
+            </div>
+            
+            <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
+                <h4 class="text-blue-400 font-bold mb-2">Slow HDD Mode (Modo HDD Lento)</h4>
+                <p class="text-sm text-gray-300">
+                    <strong>Recomendação: DESLIGADO (Se você tem SSD).</strong>
+                    <br/>Se ligado, o jogo comprime agressivamente as texturas na RAM e a CPU precisa descomprimir na hora de usar. Isso causa stuttering em CPUs fracas. Só ligue se você realmente estiver rodando num HD mecânico antigo (o que não é recomendado para BG3).
+                </p>
+            </div>
+
+            <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
+                <h4 class="text-green-400 font-bold mb-2">Fog Quality (Qualidade de Névoa)</h4>
+                <p class="text-sm text-gray-300">
+                    <strong>Recomendação: BAIXO.</strong>
+                    <br/>A névoa volumétrica é renderizada em "fatias" (raymarching). No Ultra, ela abusa da GPU e CPU para cálculos de iluminação. No Baixo, ela ainda é bonita e ganha 10-15 FPS.
                 </p>
             </div>
         </div>
       `
         },
         {
-            title: "Capítulo 2: Configurações Gráficas (Otimizadas)",
+            title: "DLSS vs FSR: Qual usar?",
             content: `
-        <p class="mb-4 text-gray-300">
-            - <strong>Model Quality:</strong> High. (Não baixe isso, os rostos ficam feios e você passa 50% do tempo em diálogos close-up).
-            - <strong>Shadow Quality:</strong> Medium.
-            - <strong>Cloud Quality:</strong> Low. Ninguém olha pro céu.
-            - <strong>Fog Quality:</strong> Low. A neblina é pesada.
-            - <strong>Instance Distance:</strong> Medium. Reduz a distância que objetos pequenos (pedras, grama) aparecem.
-        </p>
-      `
-        },
-        {
-            title: "Capítulo 3: Bloqueio de FPS (Cap)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            BG3 é um jogo lento (turn-based). Rodar a 144 FPS faz sua GPU gritar e esquentar à toa.
-            <br/>Limite o FPS a <strong>60</strong> ou <strong>72</strong>.
-            <br/>Isso deixa a GPU fria e silenciosa, sem perder fluidez real no combate tático.
-        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+            <li><strong>NVIDIA RTX (20/30/40):</strong> Use <strong>DLSS Quality</strong>. Ele renderiza em 1440p/1080p e faz upscale para 4K melhor que a imagem nativa (o TAA nativo do jogo é meio borrado).</li>
+            <li><strong>AMD / GTX Antigas:</strong> Use <strong>FSR 2.2 Quality</strong>. Não use o FSR 1.0 (fica horrível).</li>
+            <li><strong>DLAA (Deep Learning Anti-Aliasing):</strong> Para quem tem GPU sobrando (RTX 4080/4090). É a imagem nativa com o antialiasing de IA da Nvidia. Imagem perfeita, mas pesado.</li>
+        </ul>
       `
         }
     ];
 
     const advancedContentSections = [
         {
-            title: "Capítulo 4: DLSS e DLAA",
+            title: "API: Vulkan ou DirectX 11?",
             content: `
         <p class="mb-4 text-gray-300">
-            - <strong>DLSS Quality:</strong> Use se quiser mais FPS. A implementação é ótima.
-            - <strong>DLAA (Deep Learning Anti-Aliasing):</strong> Use se tiver FPS sobrando (RTX 4080). É melhor que o TAA nativo, a imagem fica cristalina, mas custa performance.
-            - <strong>FSR 2.2:</strong> Use se não tiver Nvidia. É decente, mas tem um pouco de "shimmering" em cabelos.
+          No launcher da Larian, você escolhe.
         </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
+                <h5 class="font-bold text-white mb-2">DirectX 11 (Padrão)</h5>
+                <p class="text-sm text-gray-300">
+                    Mais estável, menos crashes, melhor para NVIDIA. Porém, tem um overhead de CPU um pouco maior que o Vulkan.
+                </p>
+            </div>
+            <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-white mb-2">Vulkan</h5>
+                <p class="text-sm text-gray-300">
+                    Recomendado para AMD Radeon e Linux (Steam Deck). Tem melhor gerenciamento de multi-threading da CPU (bom para o Ato 3), mas pode ter bugs visuais ou crashes aleatórios ("Device Lost").
+                </p>
+            </div>
+        </div>
       `
         },
         {
-            title: "Capítulo 5: Otimização do Ato 3 (Crowd)",
+            title: "Mods de Qualidade de Vida (QoL)",
             content: `
+        <h4 class="text-white font-bold mb-3">Jogue como um RPG de Ação</h4>
         <p class="mb-4 text-gray-300">
-            Opção: "Dynamic Crowd" ou <strong>"Slow HDD Mode"</strong>.
-            <br/>Ativar o HDD Mode pode ajudar a CPU a não travar tentando carregar mil texturas de NPCs ao mesmo tempo na cidade.
-            <br/>Reduza a resolução das sombras e a Oclusão Ambiental especificamente nessa área.
+            A câmera isométrica é clássica, mas ver o mundo de perto é incrível.
         </p>
-      `
-        },
-        {
-            title: "Capítulo 6: Mod de Câmera (WASD)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            O jogo controla pelo mouse (Point & Click).
-            <br/>O mod <strong>"WASD Character Movement"</strong> permite andar com WASD e girar a câmera com o mouse, parecendo um RPG de ação em terceira pessoa (como Dragon Age). Imersão total.
-        </p>
-      `
-        },
-        {
-            title: "Capítulo 7: God Rays (Raios de Deus)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Desative <strong>"God Rays"</strong> e <strong>"Bloom"</strong> se tiver sensibilidade à luz ou quiser imagem mais limpa. O Bloom do BG3 é muito forte e "estoura" o branco em cenas de sonho.
-        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <li><strong>Native Camera Tweaks:</strong> Libera o zoom e inclinação. Permite ver o céu e o horizonte (o jogo renderiza tudo, você só não vê).</li>
+            <li><strong>WASD Character Movement:</strong> Permite andar com WASD como em Skyrim ou Witcher, em vez de clicar com o mouse. Imersão total.</li>
+        </ul>
+        <p class="text-xs text-gray-500 mt-2">Instale via BG3 Mod Manager. Requer Script Extender.</p>
       `
         }
     ];
 
     const additionalContentSections = [
         {
-            title: "Capítulo 8: Save Games (Lentidão)",
+            title: "Comando de Inicialização (Steam)",
             content: `
-            <p class="mb-4 text-gray-300">
-                Se o jogo demora pra salvar ou carregar, é porque você tem 500 saves.
-                <br/>A nuvem da Steam (Larian Cross-Save) demora pra sincronizar.
-                <br/>Delete saves antigos (Quicksaves) regularmente. Mantenha só os últimos 10.
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 9: Launcher Bypass",
-            content: `
-            <p class="mb-4 text-gray-300">
-                O Larian Launcher fica aberto comendo RAM.
-                <br/>Na Steam, opções de inicialização: <code>--skip-launcher</code>.
-                <br/>O jogo abre direto, economizando 200MB de RAM.
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 10: SSD Obrigatório",
-            content: `
-            <p class="mb-4 text-gray-300">
-                Não tente jogar BG3 no HD. As texturas do chão não carregam e você cai no void.
-            </p>
-            `
+        <h4 class="text-white font-bold mb-3">Pular o Launcher</h4>
+        <p class="mb-4 text-gray-300">
+            O launcher da Larian fica aberto em segundo plano comendo RAM.
+            <br/>Vá na Steam > Botão Direito no Jogo > Propriedades > Opções de Inicialização:
+            <br/><code class="bg-black p-1 rounded">--skip-launcher</code>
+        </p>
+      `
         }
     ];
 
     const faqItems = [
         {
-            question: "Funciona no Steam Deck?",
-            answer: "Sim, verificado. Use FSR Balanceado e travado a 30 FPS para bateria durar 2h. No Ato 3 cai para 20 FPS, é normal hardware portátil não aguentar a CPU."
+            question: "O jogo fecha sozinho (Crash) no Ato 3, o que fazer?",
+            answer: "Geralmente é falta de VRAM ou RAM. Feche o navegador (Chrome) enquanto joga. Se tiver 16GB de RAM, aumente o arquivo de paginação do Windows para 20GB. Verifique a integridade dos arquivos na Steam."
         },
         {
-            question: "Modo Honra (Honor Mode) crashou, perdi o save?",
-            answer: "Se o jogo crashar (não Alt+F4), o save continua válido. Se morrer, vira Custom Mode. Faça backup manual da pasta de save se tiver medo de bugs."
+            question: "O SSD faz diferença?",
+            answer: "Sim, ABSOLUTA. BG3 carrega texturas o tempo todo. Num HD mecânico, você verá texturas borradas (pop-in) por segundos e o jogo vai travar ao andar. Instale num SSD NVMe ou SATA obrigatoriamente."
         },
         {
-            question: "Tela dividida (Co-op Local)?",
-            answer: "Funciona, mas o jogo renderiza duas instâncias. O FPS cai pela metade. Requer GPU forte (3060Ti+)."
+            question: "Vale a pena travar o FPS?",
+            answer: "Sim. Em jogos de turno, 60 FPS é perfeito. Travar em 60 (ou até 45 no Steam Deck) deixa a frametime linha reta, o que passa a sensação de fluidez mesmo que o número seja baixo."
         }
     ];
 
     const externalReferences = [
         { name: "Nexus Mods BG3", url: "https://www.nexusmods.com/baldursgate3" },
-        { name: "Larian Forums", url: "https://forums.larian.com/" }
+        { name: "BG3 Mod Manager", url: "https://github.com/LaughingLeader/BG3ModManager" },
+        { name: "Script Extender", url: "https://github.com/Norbyte/bg3se" }
     ];
 
     const relatedGuides = [
         {
+            href: "/guias/nvidia-painel-controle-melhores-configuracoes",
+            title: "Painel NVIDIA",
+            description: "Configure o driver para performance máxima."
+        },
+        {
             href: "/guias/otimizacao-ssd-windows-11",
-            title: "SSD",
-            description: "Loadings rápidos."
+            title: "Otimizar SSD",
+            description: "Garanta que seu SSD está na velocidade máxima."
         },
         {
-            href: "/guias/cheat-engine-speedhack-jogos-offline",
-            title: "Cheat Engine",
-            description: "Acelerar combates fáceis."
-        },
-        {
-            href: "/guias/teclado-mecanico-rapid-trigger-snap-tap",
-            title: "Teclado",
-            description: "Melhor conforto."
+            href: "/guias/steam-launch-options-comandos-fps-boost",
+            title: "Launch Options",
+            description: "Códigos secretos da Steam."
         }
     ];
 
@@ -204,13 +189,15 @@ export default function BG3Guide() {
             keywords={keywords}
             estimatedTime="30 min"
             difficultyLevel="Intermediário"
+            author="Equipe Gamer Voltris"
+            lastUpdated="2026-02-06"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
-            relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            relatedGuides={relatedGuides}
         />
     );
 }

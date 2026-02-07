@@ -3,134 +3,105 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'bluestacks-otimizacao-free-fire-pubg',
-    title: "BlueStacks 5 (2026): Configuração Leve para Free Fire e 90 FPS",
-    description: "Seu emulador trava? Guia definitivo de virtualização (VT-x), modo Eco, Root e mapeamento de teclas para subir capa no Free Fire.",
-    category: 'emuladores',
+    title: "Free Fire e PUBG Mobile: A Configuração Perfeita no BlueStacks (2026)",
+    description: "Quer subir capa fácil? Aprenda a configurar a Sensibilidade Y, Smart Controls e 90 FPS cravados para dominar o lobby no emulador.",
+    category: 'jogos',
     difficulty: 'Intermediário',
-    time: '35 min'
+    time: '25 min'
 };
 
-const title = "BlueStacks 5 Turbo: Otimização Máxima (2026)";
-const description = "Emuladores de Android são pesados por natureza. Aprenda a configurar o BlueStacks para consumir menos RAM e rodar Free Fire e PUBG Mobile a 90 FPS cravados.";
+const title = "Free Fire e PUBG: Otimização Competitiva (2026)";
+const description = "Jogar no emulador dá vantagem, mas só se estiver configurado certo. Se a mira treme ou o jogo trava na 'bolha', você vai perder. Este é o guia de pro player.";
 
 const keywords = [
-    'bluestacks 5 travando pc fraco 2026',
-    'como ativar virtualização vt-x bios',
-    'free fire 90 fps bluestacks config',
-    'bluestacks modo eco ram',
-    'sensibilidade y free fire emulador',
-    'root bluestacks 5 facil',
-    'bs tweaker 6 download',
-    'bluestacks tela azul hyper-v',
-    'melhor resolução para emulador free fire',
-    'voltris optimizer bluestacks priority'
+    'sensibilidade y free fire emulador bluestacks 5',
+    'pubg mobile 90 fps emulador config',
+    'smart controls falhando bluestacks',
+    'melhor dpi mouse para free fire emulador',
+    'como esticar a tela free fire emulador (stretch res)',
+    'hud personalizado emulador layout'
 ];
 
 export const metadata: Metadata = createGuideMetadata('bluestacks-otimizacao-free-fire-pubg', title, description, keywords);
 
-export default function BlueStacksGuide() {
+export default function GameConfigGuide() {
     const summaryTable = [
-        { label: "Engine", value: "Nougat 32-bit (Leve)" },
-        { label: "Cores", value: "Metade dos reais" },
-        { label: "RAM", value: "4GB (Máx)" },
-        { label: "Graphics", value: "OpenGL" },
-        { label: "FPS", value: "90 ou 240" },
-        { label: "Device", value: "Asus ROG Phone 2" },
-        { label: "Hyper-V", value: "OFF (Crucial)" }
+        { label: "Jogo", value: "Free Fire / PUBG Mobile" },
+        { label: "FPS Alvo", value: "90 (Suave)" },
+        { label: "Gráficos", value: "Suave (Smooth) / Alto FPS" },
+        { label: "Sensibilidade Y", value: "Maior que X (Capa fácil)" },
+        { label: "DPI Mouse", value: "800 ou 1000 (Padrão Pro)" },
+        { label: "Modo", value: "Shooting Mode (F1)" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: Virtualização é Obrigatória",
+            title: "Configuração Interna do Jogo (O Segredo)",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          Sem VT-x (SVM na AMD) ativado na BIOS, o BlueStacks usa apenas 1 núcleo da CPU e roda a 5 FPS. Esse é o erro #1. Reinicie seu PC, entre na BIOS e ative a Virtualização antes de tudo.
+          Não adianta ter um PC da NASA e colocar o gráfico no Ultra. Jogadores profissionais usam tudo no <strong>Mínimo (Suave)</strong> para ver os inimigos melhor (sem sombras e mato) e ter o FPS máximo.
         </p>
-      `
-        },
-        {
-            title: "Capítulo 1: Escolhendo a Instância (Nougat vs Pie)",
-            content: `
-        <div class="space-y-4">
-             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
-                <h4 class="text-[#31A8FF] font-bold mb-1">Nougat 32-bit (Recomendado)</h4>
-                <p class="text-gray-400 text-xs">A versão mais leve e compatível com Free Fire. Use esta se tiver menos de 8GB de RAM.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-orange-900/10 p-4 rounded-lg border border-orange-500/20">
+                <h4 class="text-orange-400 font-bold mb-2">Free Fire Max</h4>
+                <ul class="list-disc ml-4 text-sm text-gray-300">
+                    <li><strong>Gráficos:</strong> Suave.</li>
+                    <li><strong>Alto FPS:</strong> ALTO (Isso libera 60/90fps).</li>
+                    <li><strong>Sombra:</strong> Desligado.</li>
+                    <li><strong>Minimapa:</strong> Rotacionando.</li>
+                </ul>
             </div>
-             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
-                <h4 class="text-[#31A8FF] font-bold mb-1">Pie 64-bit (Beta)</h4>
-                <p class="text-gray-400 text-xs">Melhor para jogos novos (Genshin, TFT), mas consome 30% mais RAM.</p>
-            </div>
-             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
-                <h4 class="text-[#31A8FF] font-bold mb-1">Android 11</h4>
-                <p class="text-gray-400 text-xs">Ainda instável em 2026. Evite.</p>
+            <div class="bg-yellow-900/10 p-4 rounded-lg border border-yellow-500/20">
+                <h4 class="text-yellow-400 font-bold mb-2">PUBG Mobile</h4>
+                <ul class="list-disc ml-4 text-sm text-gray-300">
+                    <li><strong>Gráficos:</strong> Suave (Smooth).</li>
+                    <li><strong>Taxa de Quadros:</strong> 90 fps (Se disponível) ou Extremo.</li>
+                    <li><strong>Estilo:</strong> Colorido (Ajuda a ver inimigos na grama).</li>
+                    <li><strong>Anti-aliasing:</strong> Desligado.</li>
+                </ul>
             </div>
         </div>
       `
         },
         {
-            title: "Capítulo 2: Alocação de Recursos (CPU e RAM)",
+            title: "Mecânica de Mira: Sensibilidade X e Y",
             content: `
         <p class="mb-4 text-gray-300">
-            Configurações > Desempenho.
-            <br/>- <strong>Alocação de CPU:</strong> Selecione a METADE dos seus núcleos físicos. (Ex: Se tem um i5 de 6 núcleos, coloque 3 ou 4. Nunca coloque todos, o Windows precisa respirar).
-            <br/>- <strong>Alocação de Memória:</strong> 4GB (4096MB) é o ideal. Mais que isso é desperdício para jogos mobile, menos que 2GB trava.
+          No BlueStacks, abra o Editor de Controles (Teclado lateral) > Clique com botão direito no ícone de "Mira" (F1).
         </p>
-      `
-        },
-        {
-            title: "Capítulo 3: Gráficos e FPS",
-            content: `
-        <p class="mb-4 text-gray-300">
-            - <strong>Motor Gráfico:</strong> Desempenho.
-            - <strong>Renderizador:</strong> OpenGL (Mais estável que DirectX para emulação Android).
-            - <strong>Taxa de Quadros:</strong> Ative "Taxa de quadros alta". Coloque em 90 ou 240.
-            <br/><em>Dica Pro:</em> Ative "Mostrar FPS durante o jogo" para monitorar quedas.
-        </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+            <li><strong>Sensibilidade X (Horizontal):</strong> Deixe entre 1.0 e 1.5. Você quer girar rápido, mas com controle.</li>
+            <li><strong>Sensibilidade Y (Vertical):</strong> Aqui está o segredo do "Capa". Deixe entre <strong>1.8 e 2.5</strong>.
+                <br/><span class="text-xs text-green-400 ml-6">Por que? O movimento de subir a mira para a cabeça exige menos movimento físico do mouse, fazendo a mira "grudar" na cabeça mais fácil.</span></li>
+            <li><strong>Ajustes (Tweaks):</strong> Use <code>16450</code> ou <code>21058</code> (valores hexadecimais de ajuste de mouse do BlueStacks que reduzem a aceleração e bugs de giro 360).</li>
+        </ul>
       `
         }
     ];
 
     const advancedContentSections = [
         {
-            title: "Capítulo 4: Perfil do Dispositivo (ROG Phone)",
+            title: "Tela Esticada (Stretch Resolution)",
             content: `
+        <h4 class="text-white font-bold mb-3">Hitbox Maior = Mais Kills</h4>
         <p class="mb-4 text-gray-300">
-            Configurações > Telefone.
-            <br/>Selecione <strong>ASUS ROG Phone 2</strong>.
-            <br/>Por quê? Esse perfil libera a opção de 90 FPS dentro do Free Fire e PUBG. Se usar perfil de Samsung S10/S20, o jogo limita a 60 FPS.
+            Muitos pros usam resoluções quadradas (ex: 1280x1024) esticadas para preencher o monitor 16:9.
+            <br/>Isso faz os personagens parecerem "mais gordos", facilitando acertar tiros.
+            <br/><strong>Como fazer:</strong>
+            <br/>1. No Painel da NVIDIA/AMD, crie uma resolução personalizada (Ex: 1440x1080).
+            <br/>2. No BlueStacks > Visualização > Resolução Personalizada > 1440x1080.
+            <br/>3. O jogo vai ficar estranho no menu, mas no jogo é vantagem pura.
         </p>
       `
         },
         {
-            title: "Capítulo 5: Otimização do Windows (Hyper-V)",
+            title: "Smart Controls (Controles Inteligentes)",
             content: `
-        <p class="mb-4 text-gray-300">
-            O BlueStacks odeia o Hyper-V (virtualização da Microsoft).
-            <br/>Abra o CMD como Admin e digite:
-            <br/><code>bcdedit /set hypervisorlaunchtype off</code>
-            <br/>Reinicie o PC. Isso resolve 99% das Telas Azuis (BSOD) ao abrir o emulador.
-        </p>
-      `
-        },
-        {
-            title: "Capítulo 6: BS Tweaker 6 (Root)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Para usuários avançados. O BS Tweaker permite:
-            <br/>- Fazer Root (para usar GlTools e mudar gráficos do jogo).
-            <br/>- Remover anúncios do BlueStacks.
-            <br/>- Comprimir o disco (liberar espaço).
-            <br/>Use com cuidado.
-        </p>
-      `
-        },
-        {
-            title: "Capítulo 7: Sensibilidade Y (Capa)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            No editor de controles:
-            <br/>Aumente a <strong>Sensibilidade do Mouse Y</strong> (Vertical).
-            <br/>Geralmente usa-se X=1.0 e Y=1.5 ou 2.0. Isso facilita puxar a mira para cima (subir capa) com pouco movimento do mouse.
+        <p class="mb-4 text-gray-400">
+            O BlueStacks usa IA para saber se você está no mapa, no loot ou atirando.
+            <br/>Às vezes buga após um update do jogo.
+            <br/><strong>Solução:</strong> Se a tecla de gelo ou loot parar de funcionar, abra o editor de controles > "Atualizar Controles" (ícone de nuvem). A equipe do BS atualiza os perfis em horas após um update do Garena.
         </p>
       `
         }
@@ -138,69 +109,52 @@ export default function BlueStacksGuide() {
 
     const additionalContentSections = [
         {
-            title: "Capítulo 8: Modo Eco (Multiboxing)",
+            title: "Dicas de DPI do Mouse",
             content: `
-            <p class="mb-4 text-gray-300">
-                Se você joga jogos de Gacha (Reroll) e abre 4 janelas.
-                <br/>Ative o <strong>Modo Eco</strong> nas instâncias secundárias. Isso limita o FPS delas a 5 e corta o som, permitindo rodar 10 contas ao mesmo tempo.
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 9: Limpeza de Disco",
-            content: `
-            <p class="mb-4 text-gray-300">
-                O emulador cria um arquivo .vdi que só cresce. Mesmo desinstalando apps, ele não diminui.
-                <br/>Use a ferramenta "Disk Cleanup" dentro das configurações do BlueStacks a cada mês para recuperar 10-20GB de espaço no SSD.
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 10: MSI App Player vs BlueStacks",
-            content: `
-            <p class="mb-4 text-gray-300">
-                O MSI App Player é uma versão "Lite" do BlueStacks 4.
-                <br/>Para PCs EXTREMAMENTE fracos (2GB RAM), o MSI antigo ainda roda melhor que o BlueStacks 5. Mas para PCs modernos, o BS5 é superior.
-            </p>
-            `
+        <h4 class="text-white font-bold mb-3">800 vs 1600 DPI</h4>
+        <p class="mb-4 text-gray-300">
+            Emuladores sofrem com "Pixel Skipping" se o DPI for muito baixo com sensibilidade alta no jogo.
+            <br/>Recomendação: Use <strong>1000 DPI</strong> no mouse e ajuste a sensibilidade dentro do emulador para ficar confortável. Evite DPIs extremos (400 ou 4000).
+        </p>
+      `
         }
     ];
 
     const faqItems = [
         {
-            question: "Free Fire fecha sozinho (Crash)?",
-            answer: "Geralmente é falta de RAM. Feche o Chrome. Tente mudar o renderizador de OpenGL para DirectX. Se não resolver, crie uma nova instância Nougat 32-bit limpa."
+            question: "O jogo fechou sozinho (Crash).",
+            answer: "Geralmente é falta de RAM alocada. Aloque 4GB no emulador. Se continuar, mude o renderizador gráfico de OpenGL para DirectX ou vice-versa."
         },
         {
-            question: "Mouse travando (pixel skipping)?",
-            answer: "Ajuste o DPI do emulador para o mesmo DPI do seu mouse (ex: 800 ou 1600). DPIs diferentes podem causar imprecisão."
+            question: "Banimento por 'Uso de Software de Terceiros'?",
+            answer: "Nunca use macros de 'No Recoil' ou scripts que alteram arquivos do jogo. O BlueStacks em si é permitido, mas scripts de trapaça dão ban. Use apenas as funções nativas de mapeamento de teclas."
         },
         {
-            question: "Posso ser banido por usar emulador?",
-            answer: "No Free Fire, você cai na 'lista de emuladores' e joga separado do mobile (ou em salas mistas específicas). Se usar bypass (fingir que é mobile), SIM, você será banido. Jogue limpo."
+            question: "Qual tecla usar para Suspensão (Liberar Mouse)?",
+            answer: "A maioria usa a tecla <strong>X</strong>, <strong>F1</strong> ou <strong>Ctrl</strong>. Escolha uma que não atrapalhe sua movimentação (WASD). Suspenda o mouse a cada 5 segundos para resetar o sensor e evitar o bug do analógico travar."
         }
     ];
 
     const externalReferences = [
-        { name: "BS Tweaker (Ferramenta Root)", url: "https://bstweaker.tk/" },
-        { name: "BlueStacks Support", url: "https://support.bluestacks.com/" }
+        { name: "BlueStacks X e Y Config", url: "https://support.bluestacks.com/hc/en-us/articles/360058920952-How-to-adjust-mouse-sensitivity-on-BlueStacks-5" },
+        { name: "Mouse DPI Analyzer", url: "https://www.mouse-sensitivity.com/dpianalyzer/" }
     ];
 
     const relatedGuides = [
         {
-            href: "/guias/windows-defender-otimizacao-jogos",
-            title: "Defender",
-            description: "Adicione a pasta do BlueStacks nas exclusões."
+            href: "/guias/bluestacks-ldplayer-otimizacao-free-fire-120fps",
+            title: "Otimizar BlueStacks",
+            description: "Comece por aqui se estiver travando."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
-            title: "SSD",
-            description: "Loading rápido."
+            href: "/guias/reduzir-input-lag-teclado-mouse",
+            title: "Input Lag",
+            description: "Reduza o atraso do clique."
         },
         {
-            href: "/guias/como-escolher-mouse-gamer",
-            title: "Mouse",
-            description: "Essencial para emulador."
+            href: "/guias/network-throttling-index-ping-jogos",
+            title: "Ping Baixo",
+            description: "Como melhorar a conexão."
         }
     ];
 
@@ -209,15 +163,17 @@ export default function BlueStacksGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="35 min"
+            estimatedTime="25 min"
             difficultyLevel="Intermediário"
+            author="Voltris Pro Gamers"
+            lastUpdated="2026-02-06"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
-            relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            relatedGuides={relatedGuides}
         />
     );
 }

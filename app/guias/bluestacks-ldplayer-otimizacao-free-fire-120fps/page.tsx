@@ -3,83 +3,81 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'bluestacks-ldplayer-otimizacao-free-fire-120fps',
-    title: "Android no PC (2026): Bluestacks vs LDPlayer Otimizados",
-    description: "Rode Free Fire, CoD Mobile e Ragnarok em 120FPS no emulador. Guia de Virtualização (VT-x), Root e Debloat para remover anúncios.",
+    title: "Android no PC (2026): O Guia Definitivo de Otimização (120 FPS)",
+    description: "Quer rodar Free Fire, PUBG ou Ragnarok liso no PC? Aprenda a configurar BlueStacks e LDPlayer, ativar Virtualização (VT-x) e debloatar o emulador.",
     category: 'emulacao',
     difficulty: 'Intermediário',
-    time: '20 min'
+    time: '30 min'
 };
 
-const title = "Emulador Android: Max FPS e Zero Lag";
-const description = "Emuladores Android pesam mais que jogos de PC se mal configurados. Aprenda a alocar RAM correta e ativar a Virtualização na BIOS para voar.";
+const title = "Android no PC (2026): O Guia Definitivo de Otimização (120 FPS)";
+const description = "Emuladores Android são pesados por natureza. Sem a configuração certa, até um PC Gamer sofre. Aprenda a alocar núcleos, RAM e ativar a virtualização para voar.";
 
 const keywords = [
     'melhor emulador android para pc fraco 2026',
-    'bluestacks 5 vs ldplayer 9 desempenho',
-    'ativar virtualização vt-x bios',
-    'free fire 90 fps emulador bug',
-    'cod mobile emulador detectado bypass',
-    'como fazer root bluestacks 5 bs tweaker',
-    'voltris optimizer mobile',
-    'tft mobile pc'
+    'bluestacks 5 configuração 120 fps free fire',
+    'ldplayer 9 otimizacao leve',
+    'ativar virtualização vt-x bios para emulador',
+    'como fazer root bluestacks 5 bstweaker 6',
+    'tft mobile pc desempenho'
 ];
 
 export const metadata: Metadata = createGuideMetadata('bluestacks-ldplayer-otimizacao-free-fire-120fps', title, description, keywords);
 
 export default function AndroidEmuGuide() {
     const summaryTable = [
-        { label: "Emulador", value: "LDPlayer 9 (Leve) / BS 5" },
-        { label: "CPU", value: "4 Cores (Recomendado)" },
-        { label: "RAM", value: "4GB (Máximo)" },
-        { label: "Virtualização", value: "ON (Obrigatório)" },
-        { label: "Root", value: "Opcional (BS Tweaker)" },
-        { label: "Hyper-V", value: "OFF (Conflito)" },
-        { label: "FPS", value: "90/120 Hz" }
+        { label: "O Melhor para FPS", value: "LDPlayer 9 (Leve)" },
+        { label: "O Mais Compatível", value: "BlueStacks 5 (Estável)" },
+        { label: "Requisito #1", value: "Virtualização (VT-x) ON" },
+        { label: "CPU Cores", value: "4 Núcleos (Ideal)" },
+        { label: "RAM", value: "4 GB (Não coloque mais)" },
+        { label: "Hyper-V", value: "DESLIGADO (Importante)" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: Virtualização (VT-x / SVM)",
+            title: "Passo 0: A Regra de Ouro (Virtualização)",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          99% dos problemas de lentidão ("Lagado") no emulador são porque a Virtualização está desligada na BIOS. Sem isso, o emulador roda usando apenas 1 núcleo em modo software.
+          99% dos casos de "emulador travando" são culpa da Virtualização desligada.
+          <br/>Sem VT-x (Intel) ou SVM (AMD) ativados na BIOS, o emulador roda em "Modo Software" usando apenas 1 núcleo, o que é inútil para jogos.
+          <br/><strong>Ação:</strong> Reinicie o PC, entre na BIOS e ative a Virtualização AGORA.
         </p>
       `
         },
         {
-            title: "Capítulo 1: Bluestacks 5 vs LDPlayer 9",
-            content: `
-        <div class="space-y-4">
-            <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
-                <h4 class="text-[#31A8FF] font-bold mb-1">Qual escolher?</h4>
-                <p class="text-gray-400 text-xs text-justify">
-                    - <strong>Bluestacks 5 (Nougat 64-bit):</strong> O mais compatível e seguro. Ótimo para jogos pesados.
-                    - <strong>LDPlayer 9:</strong> Muito mais leve. Consome menos RAM. Ideal para PCs fracos ou para abrir 4 janelas ao mesmo tempo (Multi-Instance). Cuidado com os anúncios na home.
-                </p>
-            </div>
-        </div>
-      `
-        },
-        {
-            title: "Capítulo 2: Configuração Ideal",
+            title: "BlueStacks 5: Configuração Competitiva",
             content: `
         <p class="mb-4 text-gray-300">
-            No menu de Engrenagem (Settings):
-            <br/>- <strong>CPU:</strong> 4 Núcleos (Se você tem um processador de 6 núcleos ou mais). Se tiver um Dual Core, coloque 2.
-            <br/>- <strong>RAM:</strong> 4GB (4096MB). Não coloque 8GB, o Android não usa e você tira do Windows.
-            <br/>- <strong>Resolusion:</strong> 1600x900 ou 1920x1080. (720p se tiver PC muito fraco).
-            <br/>- <strong>DPI:</strong> 240 (Padrão) ou 320 (Melhor mira).
+          O BS5 é o padrão da indústria. Vamos configurá-lo para performance máxima.
         </p>
+        <ol class="list-decimal list-inside text-gray-300 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+            <li>Abra as Configurações (Engrenagem).</li>
+            <li><strong>Performance:</strong>
+                <ul class="list-disc ml-8 mt-2 text-sm text-gray-400">
+                    <li>CPU: Escolha "Médio (2 núcleos)" se tiver um i3/i5 antigo. Escolha "Alto (4 núcleos)" se tiver um Ryzen 5/i7 recente. <strong>NUNCA use todos os núcleos.</strong> O Windows precisa de folga.</li>
+                    <li>RAM: "Alto (4 GB)". O Android x86 de 32 bits não usa mais que isso eficientemente.</li>
+                    <li>Modo de Desempenho: "Alta Performance".</li>
+                    <li>Taxa de Quadros: Ative "FPS Alto" e arraste para 120 ou 240.</li>
+                </ul>
+            </li>
+            <li><strong>Visualização:</strong> Use 1600x900 (Melhor que 1080p para FPS) ou 1280x720 (PC Fraco).</li>
+            <li><strong>Gráficos:</strong> 
+                <br/>- Engine: Desempenho (Legacy).
+                <br/>- Renderizador: OpenGL (Mais estável) ou Vulkan (Teste se tiver AMD).
+                <br/>- Texturas ASTC: Desativado (Software decode pesa CPU).
+            </li>
+        </ol>
       `
         },
         {
-            title: "Capítulo 3: Desbloqueando 120 FPS",
+            title: "LDPlayer 9: A Escolha Leve",
             content: `
         <p class="mb-4 text-gray-300">
-            Para Free Fire e outros:
-            <br/>1. Ative "Enable High Frame Rate" nas configurações do emulador.
-            <br/>2. Arraste a barra para 90 ou 120.
-            <br/>3. Selecione o perfil de dispositivo "ASUS ROG Phone 2". Isso engana o jogo para liberar a opção de alto FPS no menu interno do jogo.
+           Para PCs mais fracos ou quem quer resposta de mouse (input lag) menor, o LDPlayer 9 é superior.
+           <br/>1. Vá em Settings > Advanced.
+           <br/>2. CPU: 2 Cores | RAM: 3072M (3GB).
+           <br/>3. Model: Escolha "ROG Phone II" para desbloquear 90/120 FPS em jogos como PUBG e Free Fire.
         </p>
       `
         }
@@ -87,46 +85,36 @@ export default function AndroidEmuGuide() {
 
     const advancedContentSections = [
         {
-            title: "Capítulo 4: O Problema do Hyper-V",
+            title: "Otimizações de Sistema (Debloat)",
             content: `
+        <h4 class="text-white font-bold mb-3">Removendo o Lixo</h4>
         <p class="mb-4 text-gray-300">
-            O Windows tem um recurso chamado Hyper-V (usado para WSL e Sandbox).
-            <br/>O Hyper-V <strong>bloqueia</strong> a virtualização dos emuladores Android, causando tela azul ou lentidão extrema.
-            <br/>Se o Bluestacks avisar "Hyper-V detected", rode o comando de reparo deles ou desative o Hyper-V no "Ativar ou desativar recursos do Windows". A menos que usem a versão "Hyper-V Compatible" (beta).
+            Emuladores vêm cheios de "Launchers" pesados e apps patrocinados.
         </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-white mb-2">BS Tweaker (Para BlueStacks)</h5>
+                <p class="text-sm text-gray-300">
+                    Baixe o BS Tweaker 6. Ele permite fazer Root, remover anúncios e desativar abas "Game Center" que consomem RAM à toa.
+                </p>
+            </div>
+            <div class="bg-gray-800/50 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-white mb-2">Nova Launcher</h5>
+                <p class="text-sm text-gray-300">
+                    Instale o Nova Launcher na Play Store do emulador e defina como padrão. A tela inicial ficará limpa e leve, sem carregar banners de propaganda.
+                </p>
+            </div>
+        </div>
       `
         },
         {
-            title: "Capítulo 5: Mapeamento de Teclas (Keybinds)",
+            title: "Hyper-V: O Inimigo",
             content: `
         <p class="mb-4 text-gray-300">
-            O "Smart Controls" do Bluestacks geralmente falha após updates do jogo.
-            <br/>Aprenda a mapear manualmente:
-            <br/>Abra o Editor de Controles.
-            <br/>Arraste o "D-Pad" para o analógico.
-            <br/>Arraste "Aim, Pan and Shoot" para o meio da tela (isso faz o mouse sumir e virar a câmera).
-            <br/>Arraste "Tap spot" para os botões de tiro/pular.
-        </p>
-      `
-        },
-        {
-            title: "Capítulo 6: Debloat (BS Tweaker)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            O "BS Tweaker" é uma ferramenta não-oficial poderosa (apenas para Bluestacks).
-            <br/>Permite fazer Root, remover os anúncios da aba "Game Center" e mudar configurações ocultas. Use com cuidado.
-            <br/>No LDPlayer, você pode pagar o Premium para remover ads ou usar DNS Adblock (ver guia de DNS) para bloquear domínios de propaganda.
-        </p>
-      `
-        },
-        {
-            title: "Capítulo 7: Macro e Multi-Instance",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Para jogos de Gacha (Ragnarok, Summoners War):
-            <br/>Use o Gerenciador de Multi-Instância para abrir 4 janelas.
-            <br/>Use a ferramenta "Sync Operations" para clicar em uma janela e repetir o clique em todas as 4. Ótimo para Reroll.
-            <br/>Defina as instâncias secundárias para 1 Core / 2GB RAM e 20 FPS ("Eco Mode") para não travar o PC.
+            Se seu emulador dá Tela Azul (BSOD) ou parece lento, é o Hyper-V do Windows atrapalhando a virtualização do emulador.
+            <br/>Abra o CMD como Admin e digite:
+            <br/><code class="bg-black p-1 rounded">bcdedit /set hypervisorlaunchtype off</code>
+            <br/>Reinicie o PC. (Isso desativa o Subsistema Linux/Docker, mas salva o emulador).
         </p>
       `
         }
@@ -134,59 +122,53 @@ export default function AndroidEmuGuide() {
 
     const additionalContentSections = [
         {
-            title: "Capítulo 8: Sensibilidade Y",
+            title: "Dicas de Mapeamento (Smart Keymapping)",
             content: `
-            <p class="mb-4 text-gray-300">
-                Jogadores de Free Fire mudam a Sensibilidade Y (Vertical) para ser maior que a X (Horizontal). Ajuda a "subir capa".
-                <br/>No editor de controles, clique com botão direito no ícone de "Aim" e ajuste Sensitivity Y para 1.5 ou 2.0.
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 9: Emulador no Notebook",
-            content: `
-            <p class="mb-4 text-gray-300">
-                Certifique-se de que o emulador está usando a GPU Dedicada (Nvidia) e não a Intel HD.
-                <br/>Painel Nvidia > Gerenciar configurações 3D > Configurações do Programa > Add HD-Player.exe > Processador NVIDIA de alto desempenho.
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 10: Google Play Services",
-            content: `
-            <p class="mb-4 text-gray-300">
-                Se a Play Store travar, limpe os dados do app "Google Play Services" nas configurações do Android emulado. É um bug comum.
-            </p>
-            `
+        <h4 class="text-white font-bold mb-3">Subindo Capa</h4>
+        <p class="mb-4 text-gray-300">
+            Use as configs de "Smart Controls" do BlueStacks para o Free Fire. Elas detectam automaticamente se você está no menu ou no jogo, liberando o mouse sozinho.
+            <br/>Ajuste a sensibilidade Y (Vertical) para ser maior que a X (Horizontal) para facilitar headshots.
+        </p>
+      `
         }
     ];
 
     const faqItems = [
         {
-            question: "Dá ban usar emulador?",
-            answer: "No Free Fire, não (mas você cai na fila só de emuladores). No CoD Mobile, SIM (se não usar o Gameloop oficial). No PUBG Mobile, só Gameloop é seguro."
+            question: "Qual o melhor emulador para PC com 4GB RAM?",
+            answer: "LDPlayer versão 3 ou 5 (32 bits). É extremamente leve. O BlueStacks 5 também roda bem se configurado no modo Eco."
         },
         {
-            question: "Windows 11 roda Android nativo (WSA)?",
-            answer: "Sim, o 'Windows Subsystem for Android', mas foi descontinuado pela Microsoft em 2025. Não tem aceleração 3D boa para jogos. Use LDPlayer/Bluestacks."
+            question: "Fui banido do COD Mobile/PUBG usando emulador?",
+            answer: "Jogos competitivos separam emuladores em lobbies de emuladores. Se você usar hacks ou tentar esconder que está emulando (Bypass), você será banido. Jogue limpo."
+        },
+        {
+            question: "Devo usar 64-bit (Pie/Nougat)?",
+            answer: "Geralmente NÃO. A versão 32-bit (Nougat) é mais leve e compatível. Só use 64-bit se o jogo exigir (ex: TFT, Genshin Impact)."
         }
     ];
 
     const externalReferences = [
-        { name: "BS Tweaker", url: "https://bstweaker.tk/" },
-        { name: "LDPlayer Optimize", url: "https://www.ldplayer.net/blog/how-to-allocate-ram-and-cpu-to-ldplayer.html" }
+        { name: "BlueStacks 5 Download", url: "https://www.bluestacks.com/" },
+        { name: "LDPlayer 9 Download", url: "https://pt.ldplayer.net/" },
+        { name: "BS Tweaker (Ferramenta Root)", url: "https://bstweaker.tk/" }
     ];
 
     const relatedGuides = [
         {
-            href: "/guias/bios-otimizacao-xmp-tpm",
-            title: "BIOS",
-            description: "Ativar Virtualização."
+            href: "/guias/atualizar-bios-seguro",
+            title: "Habilitar VT-x",
+            description: "Tutorial de BIOS."
         },
         {
-            href: "/guias/dns-mais-rapido-para-jogos-benchmark",
-            title: "DNS",
-            description: "Bloquear ads."
+            href: "/guias/otimizacao-ssd-windows-11",
+            title: "SSD Rápido",
+            description: "Carregue o emulador em 5 segundos."
+        },
+        {
+            href: "/guias/como-escolher-processador-2026",
+            title: "Processador para Emular",
+            description: "O que importa mais: núcleos ou clock?"
         }
     ];
 
@@ -195,15 +177,17 @@ export default function AndroidEmuGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="20 min"
+            estimatedTime="30 min"
             difficultyLevel="Intermediário"
+            author="Voltris Emu Team"
+            lastUpdated="2026-02-06"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
-            relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            relatedGuides={relatedGuides}
         />
     );
 }

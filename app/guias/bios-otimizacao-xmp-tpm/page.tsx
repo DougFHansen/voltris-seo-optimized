@@ -3,203 +3,182 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'bios-otimizacao-xmp-tpm',
-    title: "BIOS Otimizada (2026): XMP, Re-Size BAR e PBO",
-    description: "Seu PC está rodando com freio de mão puxado? Aprenda a ativar o XMP da RAM, Re-Size BAR para GPU e configurar a BIOS para performance máxima.",
+    title: "O Guia Definitivo da BIOS (UEFI) 2026: XMP, PBO e Re-Size BAR",
+    description: "Seu PC Gamer está rodando com o freio de mão puxado. Aprenda a entrar na BIOS e ativar o XMP da RAM, Re-Size BAR para GPU e configurar TPM 2.0 para Valorant.",
     category: 'hardware',
     difficulty: 'Avançado',
     time: '45 min'
 };
 
-const title = "BIOS Tuning (2026): Performance Grátis";
-const description = "Muitos compram RAM de 3200MHz mas ela roda a 2133MHz porque esqueceram da BIOS. Este guia desbloqueia o potencial oculto do seu hardware.";
+const title = "O Guia Definitivo da BIOS (UEFI) 2026: Desbloqueie a Performance Oculta";
+const description = "Muitos usuários compram Memória RAM de 3200MHz, mas ela roda a 2133MHz porque esqueceram de configurar a BIOS. Este guia ensina passo-a-passo como otimizar sua placa-mãe ASUS, Gigabyte, MSI ou ASRock.";
 
 const keywords = [
-    'como ativar xmp bios asus gigabyte msi',
-    'resize bar ativado ou desativado jogos',
-    'precision boost overdrive amd pbo2',
-    'desativar c-states bios fps boost',
-    'virtualization svm vt-d ativar',
-    'tpm 2.0 secure boot valorant',
-    'atualizar bios seguro 2026',
-    'fan curve bios silencioso',
-    'voltris optimizer bios settings',
-    'configurar bios para windows 11'
+    'como ativar xmp bios asus gigabyte msi 2026',
+    'o que é resize bar nvidia amd ativar',
+    'precision boost overdrive pbo ryzen tutorial',
+    'como entrar na bios windows 11 uefi',
+    'tpm 2.0 secure boot valorant erro van9003',
+    'virtualizacao svm vt-x emulador android',
+    'fan curve bios silencioso'
 ];
 
 export const metadata: Metadata = createGuideMetadata('bios-otimizacao-xmp-tpm', title, description, keywords);
 
 export default function BiosGuide() {
     const summaryTable = [
-        { label: "RAM Speed", value: "XMP / DOCP ON" },
-        { label: "GPU Access", value: "Re-Size BAR ON" },
-        { label: "Boot", value: "UEFI / Secure Boot" },
-        { label: "Virtualization", value: "ON (Jogos Android)" },
-        { label: "CPU Power", value: "PBO (AMD) / Turbo (Intel)" },
-        { label: "C-States", value: "Disabled (Latência)" },
-        { label: "Fans", value: "PWM Mode" }
+        { label: "RAM Speed", value: "XMP / DOCP / EXPO (Ativar)" },
+        { label: "GPU Boost", value: "Re-Size BAR (Ativar)" },
+        { label: "CPU Boost", value: "PBO (AMD) / Turbo (Intel)" },
+        { label: "Segurança", value: "Secure Boot + TPM 2.0" },
+        { label: "Emulação", value: "SVM / VT-x (Ativar)" },
+        { label: "Boot Rápido", value: "Fast Boot (Desativar se tiver bugs)" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: A Tela Preta Assustadora",
+            title: "Passo 0: Entrando na BIOS (O Portal)",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          Entrar na BIOS (Del ou F2 no boot) assusta muita gente, mas é lá que a mágica acontece. Não tenha medo. Se algo der errado, basta "Reset to Default" ou tirar a bateria da placa-mãe.
+          A BIOS (agora chamada UEFI) é o sistema operacional da sua placa-mãe.
         </p>
-      `
-        },
-        {
-            title: "Capítulo 1: D.O.C.P / X.M.P / EXPO (Memória RAM)",
-            content: `
-        <div class="space-y-4">
-            <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
-                <h4 class="text-[#31A8FF] font-bold mb-1">O Erro Mais Comum</h4>
-                <p class="text-gray-400 text-xs text-justify">
-                    Memórias RAM vêm de fábrica em velocidade segura (JEDEC), geralmente 2133MHz ou 2666MHz.
-                    <br/>Para usar os 3200MHz, 3600MHz ou 6000MHz (DDR5) que você pagou, você <strong class="text-emerald-400">PRECISA</strong> ativar o perfil XMP (Intel) ou D.O.C.P/EXPO (AMD) na primeira tela da BIOS.
-                    <br/>Ganho de FPS: 10% a 30% em jogos competitivos.
-                </p>
-            </div>
+        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
+          <h4 class="text-blue-400 font-bold mb-2">Como Acessar</h4>
+          <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+            <li><strong>Método Clássico:</strong> Reinicie o PC e aperte freneticamente a tecla <code>DEL</code> ou <code>F2</code> assim que a tela ligar.</li>
+            <li><strong>Método Moderno (Se o SSD for rápido demais):</strong> No Windows, segure a tecla <code>SHIFT</code> e clique em Reiniciar.
+                <br/>Vá em Solução de Problemas > Opções Avançadas > <strong>Configurações de Firmware UEFI</strong> > Reiniciar.</li>
+          </ol>
         </div>
       `
         },
         {
-            title: "Capítulo 2: Re-Size BAR / Smart Access Memory",
+            title: "1. XMP / DOCP / EXPO (Memória RAM)",
             content: `
         <p class="mb-4 text-gray-300">
-            <strong>Above 4G Decoding:</strong> Enable.
-            <br/><strong>Re-Size BAR Support:</strong> Enable.
-            <br/>Isso permite que a CPU acesse toda a VRAM da placa de vídeo de uma vez só, em vez de pequenos blocos de 256MB.
-            <br/>Jogos como Assassin's Creed Valhalla, Cyberpunk e CS2 ganham performance grátis (5-10%).
-            <br/><em>Requisito:</em> GPU Nvidia RTX 3000+ ou AMD RX 6000+. Partição do disco em estilo GPT (UEFI).
+          Esta é a configuração OBRIGATÓRIA #1.
+          <br/>Sua memória RAM vem de fábrica rodando no padrão JEDEC lento (ex: 2133MHz ou 4800MHz DDR5). O XMP é o perfil de overclock seguro testado pela fábrica.
         </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+            <li><strong>Intel:</strong> Procure por "XMP" (Extreme Memory Profile).</li>
+            <li><strong>AMD (ASUS):</strong> Chama-se "DOCP".</li>
+            <li><strong>AMD (Outros / DDR5):</strong> Chama-se "EXPO".</li>
+            <li><strong>Ação:</strong> Mude de "Disabled" para "Profile 1". Salve e reinicie.</li>
+            <li><strong>Benefício:</strong> Até 20% mais FPS em jogos CPU-bound (Warzone, Valorant).</li>
+        </ul>
       `
         },
         {
-            title: "Capítulo 3: Secure Boot e TPM 2.0 (Valorant)",
+            title: "2. Re-Size BAR / SAM (Smart Access Memory)",
             content: `
         <p class="mb-4 text-gray-300">
-            Para jogar Valorant no Windows 11, é obrigatório:
-            <br/>- <strong>TPM 2.0 (fTPM ou PTT):</strong> Enable.
-            <br/>- <strong>Secure Boot:</strong> Enable (Mode: Standard).
-            <br/>Se você não ativar isso, o Vanguard bloqueia o jogo. Se sua opção "Secure Boot" estiver cinza, desative o "CSM (Compatibility Support Module)" para forçar o modo UEFI puro.
+            Tecnologia de 2020+ que permite ao processador acessar toda a VRAM da placa de vídeo de uma só vez, em vez de pequenos pedaços de 256MB.
         </p>
+        <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
+            <h4 class="text-green-400 font-bold mb-2">Como Ativar</h4>
+            <p class="text-sm text-gray-300">
+                Geralmente fica na aba "Advanced" ou "PCI Subsystem Settings".
+                <br/>1. Ative "Above 4G Decoding".
+                <br/>2. Ative "Re-Size BAR Support" para <strong>Auto</strong> ou <strong>Enabled</strong>.
+                <br/>3. Requer: GPU RTX 3000+ ou Radeon RX 6000+.
+            </p>
+        </div>
       `
         }
     ];
 
     const advancedContentSections = [
         {
-            title: "Capítulo 4: PBO e Undervolt (AMD Ryzen)",
+            title: "3. Virtualização (SVM / VT-x)",
             content: `
+        <h4 class="text-white font-bold mb-3">Para Emuladores e Docker</h4>
         <p class="mb-4 text-gray-300">
-            Se usa AMD Ryzen:
-            <br/>Procure <strong>Precision Boost Overdrive (PBO)</strong>.
-            <br/>Configure o <strong>Curve Optimizer</strong> para "Negative" e comece com "-15" ou "-20".
-            <br/>Isso faz a CPU usar menos voltagem, esquentar menos e, consequentemente, atingir clocks mais altos (Boost) por mais tempo. É um overclock seguro e frio.
+            Se você joga Free Fire no Bluestacks/LDPlayer, ou programa usando Docker/WSL2, você PRECISA disso.
+            <br/>Sem a virtualização de hardware, emuladores rodam a 10 FPS travando.
         </p>
+        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <li><strong>AMD:</strong> Procure por "SVM Mode" (Secure Virtual Machine). Fica em CPU Configuration.</li>
+            <li><strong>Intel:</strong> Procure por "Intel Virtualization Technology" ou "VT-x/VT-d".</li>
+        </ul>
       `
         },
         {
-            title: "Capítulo 5: Power Limits (Intel)",
+            title: "4. TPM 2.0 e Secure Boot (Valorant)",
             content: `
         <p class="mb-4 text-gray-300">
-            Em CPUs Intel (13th/14th Gen), as placas-mãe liberam energia ilimitada (4096W) por padrão, causando superaquecimento e instabilidade.
-            <br/>Procure "Long Duration Power Limit" (PL1) e "Short Duration" (PL2).
-            <br/>Defina conforme a spec da Intel (ex: 253W para i9, 181W para i7). Isso evita crash em compilação de shaders.
+            O anti-cheat Vanguard do Valorant (e o Windows 11) exigem essas tecnologias de segurança.
         </p>
-      `
-        },
-        {
-            title: "Capítulo 6: Global C-States (Latência)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            C-States são modos de economia de energia onde o núcleo da CPU "dorme" quando não usado.
-            <br/>Para jogos competitivos extremos (e evitar gaguejos/stutters): <strong>Desative (Disable)</strong> o "Global C-State Control".
-            <br/>Desvantagem: A CPU consome mais energia em idle e não baixa o clock. Use só se souber o que está fazendo.
-        </p>
-      `
-        },
-        {
-            title: "Capítulo 7: Fan Curves (Curva de Ventoinha)",
-            content: `
-        <p class="mb-4 text-gray-300">
-            Configure suas fans na BIOS (Q-Fan / Smart Fan).
-            <br/>Defina o modo como <strong>PWM</strong> (para fans 4 pinos).
-            <br/>Crie uma curva agressiva: Se CPU > 70°C, Fan = 100%.
-            <br/>Evite o modo "Silent" para jogos. Use "Standard" ou "Turbo".
-        </p>
+        <div class="space-y-4">
+            <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
+                <h5 class="font-bold text-white mb-2">Secure Boot</h5>
+                <p class="text-sm text-gray-300">
+                    Deve estar em "Windows UEFI Mode". Se estiver "Other OS", mude.
+                    <br/>Nota: Se você mudar isso e o Windows não bootar, é porque seu Windows foi instalado em modo Legacy (antigo). Você precisará converter o disco de MBR para GPT.
+                </p>
+            </div>
+            <div class="bg-gray-800/50 p-4 rounded-lg border border-yellow-500/30">
+                <h5 class="font-bold text-white mb-2">fTPM / PTT</h5>
+                <p class="text-sm text-gray-300">
+                    TPM de Firmware.
+                    <br/>AMD: "AMD fTPM switch".
+                    <br/>Intel: "Intel PTT" (Platform Trust Technology).
+                </p>
+            </div>
+        </div>
       `
         }
     ];
 
     const additionalContentSections = [
         {
-            title: "Capítulo 8: Boot Rápido (Fast Boot)",
+            title: "Curva de Fans (Silêncio ou Performance)",
             content: `
-            <p class="mb-4 text-gray-300">
-                <strong>Memory Context Restore (AMD):</strong> Enable. (Faz o boot do DDR5 levar 15s em vez de 60s).
-                <br/><strong>Fast Boot:</strong> Enable (Pula verificação de USBs na inicialização).
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 9: Atualização de BIOS (Flash)",
-            content: `
-            <p class="mb-4 text-gray-300">
-                Manter a BIOS atualizada melhora a estabilidade da RAM e segurança.
-                <br/>Baixe do site do fabricante, coloque num Pendrive (FAT32), e use a ferramenta "Ez Flash" ou "Q-Flash" dentro da BIOS.
-                <br/><strong>NUNCA</strong> desligue o PC durante o update (risco de brickar).
-            </p>
-            `
-        },
-        {
-            title: "Capítulo 10: Virtualização (Emuladores)",
-            content: `
-            <p class="mb-4 text-gray-300">
-                Se você usa BlueStacks ou Docker:
-                <br/>Ative <strong>Intel Virtualization Technology (VT-x)</strong> ou <strong>AMD SVM Mode</strong>.
-                <br/>Sem isso, emuladores rodam a 1 FPS.
-            </p>
-            `
+        <h4 class="text-white font-bold mb-3">Q-Fan / Smart Fan</h4>
+        <p class="mb-4 text-gray-300">
+            Todas as BIOS modernas têm uma ferramenta gráfica de ventiladores.
+            <br/>Configure seus fans do gabinete (Case Fans) para ficarem desligados ou em 20% até a CPU bater 50°C. Isso torna o PC silencioso navegando na internet.
+            <br/>Configure para subir rápido para 100% quando bater 75°C.
+        </p>
+      `
         }
     ];
 
     const faqItems = [
         {
-            question: "Perco garantia mudando a BIOS?",
-            answer: "Geralmente não. Ativar XMP é um recurso padrão suportado. Fazer overvolting manual (mexer em voltagens de VCore perigosas) pode degradar a CPU."
+            question: "Atualizar a BIOS melhora performance?",
+            answer: "Geralmente não melhora FPS diretamente, mas melhora a ESTABILIDADE da memória RAM (permitindo XMP mais alto) e compatibilidade com novas CPUs."
         },
         {
-            question: "PC não liga depois de ativar XMP?",
-            answer: "Sua RAM pode estar instável ou a controladora da CPU não aguenta. Tente ativar o XMP e baixar a frequência manualmente um pouco (ex: de 3600 para 3400). Ou resete a BIOS (Clear CMOS) para voltar a ligar."
+            question: "Resetei a BIOS e o Windows sumiu!",
+            answer: "Você provavelmente resetou o modo de boot. Procure por CSM (Compatibility Support Module). Se o Windows foi instalado em Legacy, ative o CSM. Se foi em UEFI, desative o CSM."
         },
         {
-            question: "O que é CSM?",
-            answer: "Compatibility Support Module. É o modo legado para Windows 7. Para Windows 10/11 e Re-Size BAR, o CSM deve estar DESLIGADO (Disabled)."
+            question: "O que é 'Fast Boot'?",
+            answer: "O Fast Boot pula verificações de USB e hardware na inicialização para ligar mais rápido. Porém, ele pode impedir que você entre na BIOS (o teclado não liga a tempo) e causar bugs com periféricos USB. Recomendamos deixar desligado em PCs Gamer High-End (SSDs já são rápidos o suficiente)."
         }
     ];
 
     const externalReferences = [
-        { name: "Guia Asus BIOS", url: "https://www.asus.com/support/" },
-        { name: "AMD Ryzen Master", url: "https://www.amd.com/en/technologies/ryzen-master" }
+        { name: "CPU-Z (Verificar XMP)", url: "https://www.cpuid.com/softwares/cpu-z.html" },
+        { name: "HWMonitor (Verificar Temps)", url: "https://www.cpuid.com/softwares/hwmonitor.html" },
+        { name: "ASUS BIOS Guide", url: "https://www.asus.com/support/FAQ/1013015/" }
     ];
 
     const relatedGuides = [
         {
-            href: "/guias/instalacao-windows-11",
-            title: "Windows 11",
-            description: "Requer TPU e Secure Boot."
+            href: "/guias/atualizar-bios-seguro",
+            title: "Como Atualizar BIOS",
+            description: "O passo a passo seguro para update."
         },
         {
-            href: "/guias/bluestacks-otimizacao-free-fire-pubg",
-            title: "BlueStacks",
-            description: "Requer Virtualização."
+            href: "/guias/como-escolher-memoria-ram",
+            title: "Memória RAM",
+            description: "Entenda latência e frequência."
         },
         {
-            href: "/guias/otimizacao-ssd-windows-11",
-            title: "SSD",
-            description: "Modo AHCI/NVMe na BIOS."
+            href: "/guias/valorant-van-9003-secure-boot-tpm-fix",
+            title: "Erro VAN 9003",
+            description: "Resolvendo o erro de TPM no Valorant."
         }
     ];
 
@@ -210,13 +189,15 @@ export default function BiosGuide() {
             keywords={keywords}
             estimatedTime="45 min"
             difficultyLevel="Avançado"
+            author="Equipe Hardware Voltris"
+            lastUpdated="2026-02-06"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
-            relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            relatedGuides={relatedGuides}
         />
     );
 }
