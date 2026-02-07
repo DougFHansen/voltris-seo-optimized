@@ -78,8 +78,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       return {
         url: `${baseUrl}${route === '/' ? '' : route}`,
         lastModified: getLastModified(filePath),
-        changeFrequency: 'weekly' as const,
-        priority: priorityMap[route] || 0.8, // Default 0.8 for most pages
+        changeFrequency: 'daily' as const,
+        priority: priorityMap[route] || (route.startsWith('/guias/') ? 0.9 : 0.8),
       };
     });
 

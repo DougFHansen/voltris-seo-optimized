@@ -77,6 +77,16 @@ const nextConfig = {
         destination: '/restricted-area-admin/:path*',
         permanent: true,
       },
+      {
+        source: '/blog/:slug*',
+        destination: '/guias',
+        permanent: true,
+      },
+      {
+        source: '/blog',
+        destination: '/guias',
+        permanent: true,
+      },
     ];
   },
   async headers() {
