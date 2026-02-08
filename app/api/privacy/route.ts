@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const supabase = createClient();
+        const supabase = await createClient();
 
         // Create deletion request
         const { data: request, error } = await supabase
@@ -96,7 +96,7 @@ export async function GET(req: NextRequest) {
             );
         }
 
-        const supabase = createClient();
+        const supabase = await createClient();
 
         const { data: request, error } = await supabase
             .from('user_deletion_requests')
@@ -132,7 +132,7 @@ async function processDataDeletion(
     scope?: any
 ) {
     try {
-        const supabase = createClient();
+        const supabase = await createClient();
 
         // Update status to processing
         await supabase
@@ -201,7 +201,7 @@ async function processDataDeletion(
         console.error('[Privacy] Deletion processing error:', error);
 
         // Mark as failed
-        const supabase = createClient();
+        const supabase = await createClient();
         await supabase
             .from('user_deletion_requests')
             .update({ status: 'failed' })
@@ -218,7 +218,7 @@ export async function PUT(req: NextRequest) {
         const body = await req.json();
         const { user_id, access_type, resource_type, resource_id, query_filters, rows_accessed } = body;
 
-        const supabase = createClient();
+        const supabase = await createClient();
 
         // Get client info
         const ip_address = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || '';
@@ -259,7 +259,7 @@ export async function PUT(req: NextRequest) {
  */
 export async function DELETE(req: NextRequest) {
     try {
-        const supabase = createClient();
+        const supabase = await createClient();
 
         // Get all retention policies
         const { data: policies, error } = await supabase
@@ -343,7 +343,7 @@ export async function PATCH(req: NextRequest) {
             );
         }
 
-        const supabase = createClient();
+        const supabase = await createClient();
 
         // Collect all user data
         const userData: any = {};

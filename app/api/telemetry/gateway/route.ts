@@ -127,7 +127,7 @@ async function logDeprecationWarning(
  */
 export async function POST(req: NextRequest) {
     const startTime = Date.now();
-    const supabase = createClient();
+    const supabase = await createClient();
 
     try {
         const body = await req.json();

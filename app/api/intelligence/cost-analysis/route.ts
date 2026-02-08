@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { period_start, period_end, analysis_type } = body;
 
-        const supabase = createClient();
+        const supabase = await createClient();
 
         const period = {
             start: period_start || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
@@ -378,7 +378,7 @@ export async function GET(req: NextRequest) {
         const type = searchParams.get('type') || 'feature';
         const limit = parseInt(searchParams.get('limit') || '50');
 
-        const supabase = createClient();
+        const supabase = await createClient();
 
         let data;
         if (type === 'feature') {

@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { period_start, period_end, analysis_types } = body;
 
-        const supabase = createClient();
+        const supabase = await createClient();
 
         const results: any = {
             analysis_period: {
