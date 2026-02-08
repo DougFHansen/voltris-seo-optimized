@@ -53,7 +53,10 @@ export interface GuideTemplateProps {
     /** Seções avançadas de conteúdo para guias técnicos de alta profundidade */
     advancedContentSections?: ContentSection[];
     /** Seções adicionais de conteúdo */
+    /** Seções adicionais de conteúdo */
     additionalContentSections?: ContentSection[];
+    /** Exibir CTA do Voltris Optimizer */
+    showVoltrisOptimizerCTA?: boolean;
 }
 
 export function GuideTemplateClient({
@@ -70,7 +73,8 @@ export function GuideTemplateClient({
     faqItems,
     externalReferences = [],
     advancedContentSections,
-    additionalContentSections
+    additionalContentSections,
+    showVoltrisOptimizerCTA = false
 }: GuideTemplateProps) {
     const hasCustomConclusion = contentSections.some(section =>
         section.title.toLowerCase().includes('conclusão') ||
@@ -364,6 +368,64 @@ export function GuideTemplateClient({
                                 <div className="my-16">
                                     <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
                                     <AdSenseBanner />
+                                </div>
+                            )}
+
+                            {showVoltrisOptimizerCTA && (
+                                <div className="mt-16 mb-16 relative group">
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-3xl opacity-50 group-hover:opacity-80 blur-xl transition duration-500"></div>
+                                    <div className="relative bg-[#020205] border border-white/10 rounded-2xl p-8 md:p-12 overflow-hidden flex flex-col md:flex-row items-center gap-10">
+
+                                        {/* Background Effects */}
+                                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#31A8FF]/10 blur-[100px] rounded-full"></div>
+
+                                        <div className="flex-1 space-y-6 z-10 text-center md:text-left">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+                                                <Award className="w-3 h-3" /> Solução Automática
+                                            </div>
+                                            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
+                                                Cansado de fazer tudo <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">manualmente?</span>
+                                            </h3>
+                                            <p className="text-slate-400 text-lg leading-relaxed">
+                                                O <strong>Voltris Optimizer</strong> aplica todas as correções deste guia (e mais 200 outras) com um único clique. Otimize Processos, Rede, Input Lag e FPS instantaneamente.
+                                            </p>
+                                            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                                                <Link href="/optimizer" className="px-8 py-4 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2">
+                                                    Baixar Voltris Optimizer
+                                                    <ArrowRight className="w-5 h-5" />
+                                                </Link>
+                                                <Link href="/funcionalidades" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center">
+                                                    Ver Funcionalidades
+                                                </Link>
+                                            </div>
+                                            <p className="text-xs text-slate-500 flex items-center justify-center md:justify-start gap-2">
+                                                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                                Compatível com Windows 10 e 11
+                                            </p>
+                                        </div>
+
+                                        <div className="w-full md:w-1/3 flex justify-center z-10 relative">
+                                            {/* Mockup simplificado CSS-only do Optimizer */}
+                                            <div className="relative w-64 h-48 bg-[#0F0F16] rounded-xl border border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 flex flex-col overflow-hidden">
+                                                <div className="h-8 bg-[#1A1A24] border-b border-white/5 flex items-center px-3 gap-2">
+                                                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
+                                                    <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
+                                                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                                                </div>
+                                                <div className="flex-1 p-4 flex flex-col gap-3">
+                                                    <div className="h-2 w-1/2 bg-white/10 rounded"></div>
+                                                    <div className="h-20 bg-[#31A8FF]/10 border border-[#31A8FF]/20 rounded-lg flex items-center justify-center">
+                                                        <span className="text-[#31A8FF] font-bold text-sm">OTIMIZAR AGORA</span>
+                                                    </div>
+                                                    <div className="space-y-2">
+                                                        <div className="h-1 w-full bg-white/5 rounded"></div>
+                                                        <div className="h-1 w-3/4 bg-white/5 rounded"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="absolute -inset-4 bg-[#31A8FF]/20 blur-2xl -z-10"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             )}
 
