@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
-        const { events, session_id, device_id } = body;
+        const { events, session_id, device_id: machine_id } = body;
 
         if (!Array.isArray(events) || events.length === 0) {
             return NextResponse.json({ success: true, message: 'No events to process' });
@@ -16,10 +16,26 @@ export async function POST(req: NextRequest) {
             process.env.SUPABASE_SERVICE_ROLE_KEY!
         );
 
+        // 1. Resolver UUID
+        const { data: device } = await supabase
+            .from('devices')
+            .select('id')
+            .eq('machine_id', machine_id)
+            .single();
+
+        // Se não achar o device, podemos tentar usar o session_id ou ignorar (logar erro)
+        // Mas por segurança, se não achou, não inserimos ou usamos null se permitido
+        if (!device) {
+            console.warn(`[Telemetry] Device not found for machine_id: ${machine_id}. Skipping batch.`);
+            return NextResponse.json({ success: false, error: 'Device not found' });
+        }
+
+        const real_device_id = device.id;
+
         // Preparar eventos para inserção em lote
         const formattedEvents = events.map((e: any) => ({
             session_id: session_id, // Pode vir no body principal ou em cada evento
-            device_id: device_id,
+            device_id: real_device_id,
             event_type: e.event_type,
             feature_name: e.feature_name,
             action_name: e.action_name,
