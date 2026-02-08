@@ -18,7 +18,14 @@ export interface AdminSession {
             name: string;
             plan_type: string;
         } | null;
+        profile?: any; // To allow profile access
     };
+
+    last_activity?: {
+        type: string;
+        name: string;
+        time: string;
+    } | null;
 
     // Calculated for UI
     is_online: boolean;

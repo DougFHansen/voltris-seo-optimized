@@ -28,7 +28,39 @@ export async function GET(req: NextRequest) {
 
         if (error) throw error;
 
-        // 2. Calculate Stats
+        // 2. Fetch Last Event for each Active Session
+        // Note: Doing this properly via SQL join would be better, but Supabase JS doesn't support lateral joins easily.
+        // For < 100 active sessions, a second query is fine.
+        let sessionsWithActivity = activeSessions || [];
+
+        if (activeSessions && activeSessions.length > 0) {
+            const sessionIds = activeSessions.map(s => s.id);
+
+            // Fetch the very last event for these sessions
+            // We can't easily "group by session and take 1" in one simple query without RPC
+            // So we'll fetch recent events and filter in memory (acceptable for dashboard scale)
+            const { data: recentEvents } = await supabase
+                .from('telemetry_events')
+                .select('session_id, event_type, feature_name, action_name, created_at')
+                .in('session_id', sessionIds)
+                .order('created_at', { ascending: false })
+                .limit(activeSessions.length * 5); // Heuristic limit
+
+            // Map latest event to session
+            sessionsWithActivity = activeSessions.map(session => {
+                const latestEvent = recentEvents?.find(e => e.session_id === session.id);
+                return {
+                    ...session,
+                    last_activity: latestEvent ? {
+                        type: latestEvent.event_type,
+                        name: `${latestEvent.feature_name || ''} - ${latestEvent.action_name || ''}`,
+                        time: latestEvent.created_at
+                    } : null
+                };
+            });
+        }
+
+        // 3. Stats Calculation (existing code)
         const now = new Date();
         const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
 
@@ -49,7 +81,7 @@ export async function GET(req: NextRequest) {
         const peakConcurrent = Math.max(activeSessions?.length || 0, 0);
 
         return NextResponse.json({
-            sessions: activeSessions || [],
+            sessions: sessionsWithActivity,
             stats: {
                 active_now: activeSessions?.length || 0,
                 idle_now: activeSessions?.filter(s => s.status === 'idle').length || 0,

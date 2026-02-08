@@ -141,6 +141,7 @@ export default function AdminLiveMonitor() {
                             <TableHeader>
                                 <TableRow className="hover:bg-transparent border-stone-800">
                                     <TableHead>Dispositivo</TableHead>
+                                    <TableHead>Atividade Recente</TableHead>
                                     <TableHead>Cliente / Plano</TableHead>
                                     <TableHead>Status</TableHead>
                                     <TableHead>Hardware (CPU / GPU / RAM)</TableHead>
@@ -151,36 +152,61 @@ export default function AdminLiveMonitor() {
                             <TableBody>
                                 {sessions.length === 0 ? (
                                     <TableRow>
-                                        <TableCell colSpan={6} className="h-24 text-center text-muted-foreground">
+                                        <TableCell colSpan={7} className="h-24 text-center text-muted-foreground">
                                             Nenhuma sessão ativa encontrada.
                                         </TableCell>
                                     </TableRow>
                                 ) : (
                                     sessions.map((session) => {
-                                        const dev = session.device || {};
+                                        const dev = session.device || {
+                                            machine_id: '',
+                                            hostname: '',
+                                            os_version: '',
+                                            company: null,
+                                            profile: null
+                                        };
                                         // @ts-ignore - profile vem no join do supabase
                                         const profile = dev.profile?.[0] || dev.profile || {};
 
                                         return (
                                             <TableRow key={session.id} className="border-stone-800 hover:bg-stone-900/50">
                                                 <TableCell className="font-medium">
-                                                    <div className="flex flex-col">
-                                                        <span className="flex items-center gap-2" title={dev.hostname}>
-                                                            <MonitorSmartphone className="h-3 w-3 text-stone-400" />
+                                                    <div className="flex flex-col max-w-[180px]">
+                                                        <span className="flex items-center gap-2 truncate font-semibold text-stone-200" title={dev.hostname}>
+                                                            <MonitorSmartphone className="h-3 w-3 text-stone-400 shrink-0" />
                                                             {dev.hostname || 'Desconhecido'}
                                                         </span>
-                                                        <span className="text-[10px] text-muted-foreground font-mono" title={dev.machine_id}>
-                                                            {dev.machine_id?.substring(0, 8)}...
-                                                        </span>
+                                                        <code className="text-[10px] text-stone-500 font-mono mt-1 break-all select-all hover:text-stone-300 transition-colors cursor-text">
+                                                            {dev.machine_id}
+                                                        </code>
                                                     </div>
                                                 </TableCell>
+
+                                                <TableCell>
+                                                    {session.last_activity ? (
+                                                        <div className="flex flex-col text-xs">
+                                                            <span className="font-medium text-stone-300 truncate max-w-[150px]" title={session.last_activity.name}>
+                                                                {session.last_activity.name}
+                                                            </span>
+                                                            <span className="text-[10px] text-stone-500 flex items-center gap-1">
+                                                                <Clock className="w-3 h-3" />
+                                                                {new Date(session.last_activity.time).toLocaleTimeString()}
+                                                            </span>
+                                                        </div>
+                                                    ) : (
+                                                        <span className="text-[10px] text-stone-600 italic">
+                                                            Aguardando ação...
+                                                        </span>
+                                                    )}
+                                                </TableCell>
+
                                                 <TableCell>
                                                     <div className="flex flex-col">
-                                                        <span className="font-medium text-xs">
-                                                            {(dev.company as any)?.name || 'Usuário Grátis'}
+                                                        <span className="font-medium text-xs text-stone-300">
+                                                            {dev.company?.name || 'Usuário Grátis'}
                                                         </span>
-                                                        <span className="text-[10px] text-muted-foreground capitalize">
-                                                            {(dev.company as any)?.plan_type || 'Personal'}
+                                                        <span className="text-[10px] text-stone-500 capitalize">
+                                                            {dev.company?.plan_type || 'Personal'}
                                                         </span>
                                                     </div>
                                                 </TableCell>
@@ -201,27 +227,28 @@ export default function AdminLiveMonitor() {
                                                                 {profile.gpu_model}
                                                             </span>
                                                             <div className="flex gap-2 mt-0.5 text-stone-400">
-                                                                <span className="bg-stone-800 px-1 rounded flex items-center gap-1">
+                                                                <span className="bg-stone-800 px-1.5 py-0.5 rounded flex items-center gap-1 border border-stone-700/50">
                                                                     Ram: {profile.ram_total_gb ? Math.round(profile.ram_total_gb) : '?'}GB
                                                                 </span>
-                                                                <span className="bg-stone-800 px-1 rounded" title={profile.windows_build}>
+                                                                <span className="bg-stone-800 px-1.5 py-0.5 rounded border border-stone-700/50" title={profile.windows_build}>
                                                                     {profile.os_version || 'Win'}
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     ) : (
-                                                        <span className="text-[10px] text-muted-foreground italic">
-                                                            Coletando dados...
+                                                        <span className="text-[10px] text-muted-foreground italic flex items-center gap-1">
+                                                            <span className="animate-spin h-2 w-2 border-2 border-stone-600 border-t-stone-400 rounded-full"></span>
+                                                            Coletando...
                                                         </span>
                                                     )}
                                                 </TableCell>
 
                                                 <TableCell>
-                                                    <Badge variant="secondary" className="font-mono text-[10px]">
+                                                    <Badge variant="secondary" className="font-mono text-[10px] bg-stone-800 text-stone-400 hover:bg-stone-700">
                                                         v{session.app_version || '1.0'}
                                                     </Badge>
                                                 </TableCell>
-                                                <TableCell className="text-right font-mono text-xs text-muted-foreground">
+                                                <TableCell className="text-right font-mono text-xs text-stone-500">
                                                     {new Date(session.last_heartbeat_at).toLocaleTimeString()}
                                                 </TableCell>
                                             </TableRow>
