@@ -19,7 +19,8 @@ export async function GET(req: NextRequest) {
                     machine_id, 
                     hostname, 
                     os_version,
-                    company:companies (name, plan_type)
+                    company:companies (name, plan_type),
+                    profile:device_profiles (*)
                 )
             `)
             .in('status', ['active', 'idle'])
