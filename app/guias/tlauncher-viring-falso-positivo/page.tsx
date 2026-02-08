@@ -247,7 +247,7 @@ export default function TLauncherSecurityGuide() {
         <div class="space-y-8 mt-8">
             <div class="border-l-2 border-gray-600 pl-6">
                 <h4 class="text-white font-bold text-xl mb-2">Fase 1: O Backup Cirúrgico</h4>
-                <p class="text-gray-400 text-sm mb-4">Não copie a pasta `.minecraft` inteira, pois ela pode conter arquivos infectados. Vamos copiar apenas o essencial.</p>
+                <p class="text-gray-400 text-sm mb-4">Não copie a pasta <code>.minecraft</code> inteira, pois ela pode conter arquivos infectados. Vamos copiar apenas o essencial.</p>
                 <ol class="list-decimal list-inside text-gray-300 space-y-3">
                     <li>Crie uma pasta na Área de Trabalho chamada "Backup MC".</li>
                     <li>Aperte <code>Win + R</code>, digite <code>%appdata%</code> e entre em <code>.minecraft</code>.</li>
