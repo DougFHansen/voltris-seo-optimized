@@ -44,6 +44,14 @@ export async function POST(req: NextRequest) {
                 updated_at: new Date().toISOString()
             }, { onConflict: 'device_id' });
 
+        // Update Hostname in devices table
+        if (body.hostname) {
+            await supabase
+                .from('devices')
+                .update({ hostname: body.hostname })
+                .eq('id', device_id);
+        }
+
         if (error) {
             console.error('Check your supabase schema for device_profiles table', error);
             throw error;

@@ -63,9 +63,16 @@ ALTER TABLE public.telemetry_events ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.performance_metrics ENABLE ROW LEVEL SECURITY;
 
 -- Permitir INSERT público (o app manda dados), mas SELECT apenas para admin (service_role ignora RLS, admin dashboard usa service role ou admin user)
+DROP POLICY IF EXISTS "Apps can insert profiles" ON public.device_profiles;
 CREATE POLICY "Apps can insert profiles" ON public.device_profiles FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Apps can update profiles" ON public.device_profiles;
 CREATE POLICY "Apps can update profiles" ON public.device_profiles FOR UPDATE USING (true);
+
+DROP POLICY IF EXISTS "Apps can insert events" ON public.telemetry_events;
 CREATE POLICY "Apps can insert events" ON public.telemetry_events FOR INSERT WITH CHECK (true);
+
+DROP POLICY IF EXISTS "Apps can insert metrics" ON public.performance_metrics;
 CREATE POLICY "Apps can insert metrics" ON public.performance_metrics FOR INSERT WITH CHECK (true);
 
 -- Indexação para Alta Performance no Dashboard
