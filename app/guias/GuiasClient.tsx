@@ -18,12 +18,20 @@ import {
   LayoutGrid,
   Headphones,
   Gamepad,
-  AlertTriangle
+  AlertTriangle,
+  Brain
 } from 'lucide-react';
 import { GuideMetadata } from '@/lib/guides';
 
 // Configuração das Categorias (Visual apenas)
 const CATEGORY_CONFIG = [
+  {
+    id: 'inteligencia-artificial',
+    title: 'IA & Desenvolvimento (2026)',
+    description: 'AI Agents, LLMs Locais, RAG e Vibe Coding',
+    icon: Brain,
+    color: '#8B31FF'
+  },
   {
     id: 'otimizacao',
     title: 'Otimização & FPS',
