@@ -3,114 +3,138 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'o-que-sao-ai-agents-guia-completo',
-    title: "O que são AI Agents? O Guia Completo para Criar Agentes Autônomos (2026)",
-    description: "Entenda a revolução dos Agentes de IA. Diferença entre Chatbot e Agent, tutorial de CrewAI vs LangChain e como criar seu primeiro trabalhador digital autônomo.",
+    title: "O que são AI Agents? Guia Definitivo de Agentes Autônomos e CrewAI (2026)",
+    description: "Dossiê completo sobre a revolução da Internet Agêntica. Aprenda a arquitetura cognitiva dos agentes, tutorial prático de CrewAI com Python e como criar trabalhadores digitais que pensam.",
     category: 'inteligencia-artificial',
     difficulty: 'Intermediário',
-    time: '25 min'
+    time: '45 min'
 };
 
-const title = "O que são AI Agents? O Guia Completo para Criar Agentes Autônomos (2026)";
-const description = "Entenda a revolução dos Agentes de IA. Diferença entre Chatbot e Agent, tutorial de CrewAI vs LangChain e como criar seu primeiro trabalhador digital autônomo.";
+const title = "O que são AI Agents? Guia Definitivo de Agentes Autônomos e CrewAI (2026)";
+const description = "Dossiê completo sobre a revolução da Internet Agêntica. Aprenda a arquitetura cognitiva dos agentes, tutorial prático de CrewAI com Python e como criar trabalhadores digitais que pensam.";
 const keywords = [
-    'ai agents tutorial python 2026',
-    'crewai vs langchain comparison',
-    'como criar um agente de ia autonomo',
-    'agentes de ia para automação empresarial',
-    'autogen microsoft tutorial',
-    'diferenca chatbot e ai agent',
-    'o que sao agentes autonomos'
+    'ai agents python tutorial completo 2026',
+    'crewai passo a passo agente autonomo',
+    'langchain vs crewai vs autogen qual melhor',
+    'como criar equipe de ia autonoma',
+    'arquitetura cognitiva agentes memoria rag',
+    'agentes de vendas autonomos ia',
+    'custo api gpt-4 para agentes'
 ];
 
 export const metadata: Metadata = createGuideMetadata('o-que-sao-ai-agents-guia-completo', title, description, keywords);
 
 export default function AIAgentsGuide() {
     const summaryTable = [
-        { label: "Tecnologia Principal", value: "LLMs (GPT-4, Claude 3.5, Llama 3)" },
-        { label: "Framework Popular", value: "LangChain & CrewAI" },
-        { label: "Principal Uso", value: "Automação de Tarefas Complexas" },
-        { label: "Diferencial", value: "Capacidade de usar Ferramentas (Tools)" },
-        { label: "Custo", value: "Varia (API Usage)" }
+        { label: "Tecnologia Base", value: "LLMs (GPT-4o, Claude 3.5)" },
+        { label: "Framework Líder", value: "CrewAI (Orquestração)" },
+        { label: "Principal Uso", value: "Automação de Processos Inteiros" },
+        { label: "Custo Médio", value: "$0.10 - $2.00 por execução" },
+        { label: "Nível Técnico", value: "Python Intermediário" }
     ];
 
     const contentSections = [
         {
-            title: "Introdução: A Era dos Agentes Digitais",
+            title: "Introdução: Bem-vindos à Internet Agêntica",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          Até 2024, interagíamos com a IA através de "Chats". Você perguntava, ela respondia. Em 2026, entramos na era "Agentic" (Agêntica). Agora, a IA não apenas fala; ela <strong>faz</strong>.
+          Até 2024, vivemos a era dos "Chatbots". Você fazia uma pergunta ao ChatGPT (` + "`Prompt`" + `), e ele te dava uma resposta (` + "`Completion`" + `). Era uma interação passiva.
         </p>
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          <strong>AI Agents (Agentes de IA)</strong> são sistemas que usam um LLM (Large Language Model) como "cérebro" para raciocinar, planejar e executar ações no mundo real. Eles podem navegar na web, enviar e-mails, escrever código, testar softwares e até contratar outros agentes para ajudar. Enquanto um Chatbot é um consultor passivo, um Agente é um funcionário ativo.
+          Em 2026, entramos na era <strong>Agêntica</strong>. Um <strong>AI Agent</strong> não espera você perguntar. Ele recebe um objetivo amplo (ex: "Descubra prospects no LinkedIn e mande e-mails personalizados") e trabalha sozinho por horas. Ele navega na web, ele raciocina se encontrou a pessoa certa, ele usa ferramentas (CRM, Gmail) e ele corrige seus próprios erros.
         </p>
+        <div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 rounded-r-lg my-8">
+            <h4 class="text-purple-400 font-bold text-xl mb-2">A Definição Técnica</h4>
+            <p class="text-gray-300 text-lg">
+                <em>"Um Agente é um sistema que usa um LLM como cérebro para perceber o ambiente, raciocinar sobre como atingir um objetivo e executar ações usando ferramentas."</em>
+            </p>
+        </div>
       `
         },
         {
-            title: "A Anatomia de um Agente: Como eles funcionam?",
+            title: "Capítulo 1: Anatomia de um Agente (Arquitetura Cognitiva)",
             content: `
-        <p class="mb-4 text-gray-300">
-            Para entender como construir um, você precisa entender as 4 partes fundamentais de um Agente Moderno:
+        <p class="mb-6 text-gray-300 text-lg">
+            Para construir um agente, você não escreve "ifs" e "elses". Você projeta uma mente. Andrew Ng e Andrej Karpathy definem a arquitetura moderna em 4 pilares:
         </p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="bg-gray-800 p-6 rounded-xl border border-purple-500/30">
-                <h4 class="text-purple-400 font-bold mb-2">1. O Cérebro (Brain)</h4>
-                <p class="text-gray-300 text-sm">
-                    É o LLM (ex: GPT-4o, Claude 3.5 Sonnet). Ele recebe o objetivo ("Pesquise sobre X e escreva um resumo") e quebra isso em passos lógicos.
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+            <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all">
+                <div class="text-4xl mb-4">🧠</div>
+                <h4 class="text-blue-400 font-bold text-xl mb-2">1. O Cérebro (Core LLM)</h4>
+                <p class="text-gray-400">
+                    O modelo de linguagem (GPT-4o, Claude 3.5 Sonnet). Ele não armazena dados, ele processa lógica. Ele decide "O que fazer a seguir?".
+                    <br/><strong class="text-white">Dica 2026:</strong> Claude 3.5 Sonnet é atualmente o melhor "raciocinador" para agentes, superando o GPT-4o em seguir instruções complexas.
                 </p>
             </div>
-            <div class="bg-gray-800 p-6 rounded-xl border border-blue-500/30">
-                <h4 class="text-blue-400 font-bold mb-2">2. Ferramentas (Tools)</h4>
-                <p class="text-gray-300 text-sm">
-                    São as "mãos" do agente. Pode ser uma Calculadora, uma ferramenta de Busca no Google (SerpAPI), um acesso ao Banco de Dados ou um terminal Python.
+            
+            <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-green-500/50 transition-all">
+                <div class="text-4xl mb-4">🛠️</div>
+                <h4 class="text-green-400 font-bold text-xl mb-2">2. Ferramentas (Tool Use)</h4>
+                <p class="text-gray-400">
+                    Sem ferramentas, o agente é apenas um cérebro numa jarra. As ferramentas conectam ele ao mundo:
+                    <ul class="list-disc list-inside mt-2 text-sm">
+                        <li><strong>Google Search (Serper):</strong> Para ler a internet atual.</li>
+                        <li><strong>Python Repl:</strong> Para fazer cálculos (LLMs são ruins de matemática).</li>
+                        <li><strong>API do Gmail/Slack:</strong> Para se comunicar.</li>
+                    </ul>
                 </p>
             </div>
-            <div class="bg-gray-800 p-6 rounded-xl border border-green-500/30">
-                <h4 class="text-green-400 font-bold mb-2">3. Memória (Memory)</h4>
-                <p class="text-gray-300 text-sm">
-                    Agentes precisam lembrar do que fizeram no passo anterior. Usamos <strong>Vetores (RAG)</strong> para memória de longo prazo e histórico de chat para curto prazo.
+
+            <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-yellow-500/50 transition-all">
+                <div class="text-4xl mb-4">💾</div>
+                <h4 class="text-yellow-400 font-bold text-xl mb-2">3. Memória (RAG + Context)</h4>
+                <p class="text-gray-400">
+                    <strong>Curto Prazo:</strong> O histórico da conversa atual.
+                    <br/><strong>Longo Prazo:</strong> Bancos de dados vetoriais (Pinecone, ChromaDB) onde o agente guarda informações para acessar semanas depois.
                 </p>
             </div>
-            <div class="bg-gray-800 p-6 rounded-xl border border-yellow-500/30">
-                <h4 class="text-yellow-400 font-bold mb-2">4. Planejamento (Planning)</h4>
-                <p class="text-gray-300 text-sm">
-                    Técnicas como <em>Chain-of-Thought (CoT)</em> ou <em>ReAct (Reason + Act)</em> permitem que o agente critique seu próprio plano antes de executar.
+
+            <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-red-500/50 transition-all">
+                <div class="text-4xl mb-4">🗺️</div>
+                <h4 class="text-red-400 font-bold text-xl mb-2">4. Planejamento (ReAct)</h4>
+                <p class="text-gray-400">
+                    A capacidade de quebrar uma tarefa grande ("Ficar rico") em subtarefas executáveis. O agente faz um pensamento crítico: <em>"Eu tentei X e falhou, então agora vou tentar Y."</em>
                 </p>
             </div>
         </div>
       `
         },
         {
-            title: "CrewAI vs LangChain vs AutoGen: Qual escolher?",
+            title: "Capítulo 2: Batalha dos Frameworks (CrewAI vs LangChain)",
             content: `
         <p class="mb-6 text-gray-300">
-            Existem dezenas de frameworks, mas esses três dominam o mercado em 2026.
+            Você não precisa codar tudo do zero. Existem frameworks que facilitam a orquestração.
         </p>
 
-        <div class="overflow-x-auto mb-6">
+        <div class="overflow-x-auto mb-8">
             <table class="w-full text-left text-sm text-gray-300 border-collapse border border-gray-700 rounded-lg">
-                <thead class="bg-gray-800 text-white">
+                <thead class="bg-gray-900 text-white uppercase tracking-wider">
                     <tr>
-                        <th class="p-3 border border-gray-700">Framework</th>
-                        <th class="p-3 border border-gray-700">Melhor Para...</th>
-                        <th class="p-3 border border-gray-700">Curva de Aprendizado</th>
+                        <th class="p-4 border border-gray-700">Framework</th>
+                        <th class="p-4 border border-gray-700">Filosofia</th>
+                        <th class="p-4 border border-gray-700">Curva de Aprendizado</th>
+                        <th class="p-4 border border-gray-700">Veredito 2026</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="p-3 border border-gray-700 font-bold text-green-400">CrewAI</td>
-                        <td class="p-3 border border-gray-700">Times de Agentes (Multi-Agent). Foco em "Role Playing" (ex: "Você é um Pesquisador Sênior").</td>
-                        <td class="p-3 border border-gray-700">Baixa (Fácil)</td>
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                        <td class="p-4 border border-gray-700 font-bold text-orange-400">CrewAI</td>
+                        <td class="p-4 border border-gray-700">Focado em "Equipes" e "Roleplay". Você define cargos (Analista, Redator) e eles conversam.</td>
+                        <td class="p-4 border border-gray-700">⭐⭐ (Fácil)</td>
+                        <td class="p-4 border border-gray-700 text-green-400 font-bold">A Escolha Padrão</td>
                     </tr>
-                    <tr class="bg-gray-900/50">
-                        <td class="p-3 border border-gray-700 font-bold text-blue-400">LangChain</td>
-                        <td class="p-3 border border-gray-700">Construção de baixo nível. Controle total sobre cada passo e integração complexa.</td>
-                        <td class="p-3 border border-gray-700">Alta (Difícil)</td>
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                        <td class="p-4 border border-gray-700 font-bold text-blue-400">LangChain / LangGraph</td>
+                        <td class="p-4 border border-gray-700">Baixo nível. Controle grafo a grafo. Extremamente flexível, mas verboso.</td>
+                        <td class="p-4 border border-gray-700">⭐⭐⭐⭐⭐ (Difícil)</td>
+                        <td class="p-4 border border-gray-700 text-gray-400">Para Engenheiros Sênior</td>
                     </tr>
-                    <tr>
-                        <td class="p-3 border border-gray-700 font-bold text-purple-400">Microsoft AutoGen</td>
-                        <td class="p-3 border border-gray-700">Agentes que conversam entre si para resolver bugs de código. Ótimo para Devs.</td>
-                        <td class="p-3 border border-gray-700">Média</td>
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                        <td class="p-4 border border-gray-700 font-bold text-purple-400">Microsoft AutoGen</td>
+                        <td class="p-4 border border-gray-700">Agentes conversacionais focados em geração de código.</td>
+                        <td class="p-4 border border-gray-700">⭐⭐⭐ (Médio)</td>
+                        <td class="p-4 border border-gray-700 text-gray-400">Para Dev Tools</td>
                     </tr>
                 </tbody>
             </table>
@@ -118,77 +142,135 @@ export default function AIAgentsGuide() {
       `
         },
         {
-            title: "Tutorial Prático: Seu Primeiro Agente com CrewAI (Python)",
+            title: "Capítulo 3: Tutorial Prático - Sua Agência de Notícias Automatizada",
             content: `
         <p class="mb-4 text-gray-300">
-            Vamos criar uma equipe simples: Um <strong>Pesquisador</strong> que busca novidades sobre IA e um <strong>Redator</strong> que escreve um post para LinkedIn.
+            Vamos botar a mão na massa. Vamos usar <strong>Python</strong> e <strong>CrewAI</strong> para criar uma empresa que funciona enquanto você dorme.
+            <br/>Nossa empresa terá dois funcionários digitais:
         </p>
+        <ul class="list-disc list-inside text-gray-300 mb-6 ml-4">
+            <li><strong>Agente 1 (Jornalista):</strong> Varre a internet atrás de novidades sobre um tema.</li>
+            <li><strong>Agente 2 (Editor Chefe):</strong> Transforma os dados técnicos em um post viral para LinkedIn.</li>
+        </ul>
 
-        <div class="bg-gray-900 border border-gray-700 p-4 rounded-lg font-mono text-sm overflow-x-auto">
+        <div class="bg-[#1e1e1e] border border-gray-700 p-6 rounded-xl font-mono text-sm overflow-x-auto shadow-2xl">
+            <div class="flex items-center gap-2 mb-4 text-gray-500 border-b border-gray-700 pb-2">
+                <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                <span class="ml-2">main.py</span>
+            </div>
 <pre><code class="language-python text-gray-300">
+import os
 from crewai import Agent, Task, Crew, Process
 from langchain_community.tools import DuckDuckGoSearchRun
 
-# 1. Definir as Ferramentas
+# 0. Configuração (Você precisa de uma chave da OpenAI ou Anthropic)
+os.environ["OPENAI_API_KEY"] = "sk-..."
+
+# 1. Ferramentas
+# Damos aos agentes a capacidade de pesquisar no Google
 search_tool = DuckDuckGoSearchRun()
 
-# 2. Definir os Agentes
+# 2. Definindo os Agentes (Os Funcionários)
 pesquisador = Agent(
-    role='Analista de Tendências de IA',
-    goal='Descobrir as notícias mais quentes sobre IA hoje',
-    backstory='Você é um especialista em tecnologia obcecado por novidades.',
-    tools=[search_tool],
-    verbose=True
+    role='Analista Sênior de Tecnologia',
+    goal='Descobrir as tendências mais recentes e impactantes sobre IA',
+    backstory="""Você é um analista veterano com faro para notícias que 
+    vão mudar o mercado. Você ignora hype e foca em fatos.""",
+    verbose=True, # Mostra o pensamento do agente no terminal
+    allow_delegation=False,
+    tools=[search_tool] # Ele pode usar o Google!
 )
 
 redator = Agent(
-    role='Copywriter de LinkedIn',
-    goal='Escrever um post engajador sobre as descobertas',
-    backstory='Você escreve posts virais usando emojis e linguagem corporativa.',
-    verbose=True
+    role='Estrategista de Conteúdo LinkedIn',
+    goal='Escrever posts que viralizam baseados em fatos técnicos',
+    backstory="""Você transforma assuntos complexos em narrativas 
+    envolventes. Você usa formatação, emojis e gatilhos mentais.""",
+    verbose=True,
+    allow_delegation=True
 )
 
-# 3. Definir as Tarefas
+# 3. Definindo as Tarefas (O Trabalho)
 tarefa_pesquisa = Task(
-    description='Pesquise as 3 principais notícias de IA das últimas 24h.',
-    agent=pesquisador
+    description="""Pesquise as 3 principais novidades sobre 'AI Agents' 
+    nas últimas 24 horas. Identifique empresas, lançamentos e polêmicas.""",
+    agent=pesquisador,
+    expected_output="Um resumo técnico de 3 parágrafos com fontes."
 )
 
 tarefa_escrita = Task(
-    description='Escreva um post curto para o LinkedIn baseado na pesquisa.',
-    agent=redator
+    description="""Baseado na pesquisa do analista, escreva um post para 
+    o LinkedIn. O post deve ter um gancho forte, 3 bullet points e 
+    uma chamada para ação (CTA) no final.""",
+    agent=redator,
+    expected_output="Um texto formatado em Markdown pronto para publicar."
 )
 
-# 4. Executar a Equipe (Crew)
-equipe = Crew(
+# 4. Formando a Equipe e Rodando
+tech_news_crew = Crew(
     agents=[pesquisador, redator],
     tasks=[tarefa_pesquisa, tarefa_escrita],
-    process=Process.sequential
+    process=Process.sequential, # Um trabalha depois do outro
+    verbose=2
 )
 
-resultado = equipe.kickoff()
+print("### Iniciando a Reunião Matinal dos Agentes ###")
+resultado = tech_news_crew.kickoff()
+
+print("######################")
+print("## POST FINAL GERADO ##")
+print("######################")
 print(resultado)
 </code></pre>
         </div>
-        <p class="text-sm text-gray-400 mt-2">
-            Este código simples orquestra dois "cérebros" separados. O primeiro usa a ferramenta de busca para ler a internet real. O segundo recebe o texto do primeiro e o formata. Isso é automação agêntica.
-        </p>
+        
+        <div class="mt-6 p-6 bg-blue-900/10 border border-blue-500/30 rounded-xl">
+            <h4 class="text-blue-400 font-bold text-lg mb-2">O que acontece quando você roda isso?</h4>
+            <ol class="list-decimal list-inside text-gray-300 space-y-2">
+                <li>O script inicia. O <strong>Pesquisador</strong> acessa o DuckDuckGo.</li>
+                <li>Ele lê vários sites (o LLM lê e resume). Se não achar nada bom, ele refaz a busca com outros termos (autonomia!).</li>
+                <li>Quando satisfeito, ele passa o relatório para o <strong>Redator</strong>.</li>
+                <li>O Redator lê, critica, e escreve o post no estilo pedido.</li>
+                <li>O resultado final aparece na sua tela. Você acabou de economizar 2 horas de trabalho.</li>
+            </ol>
+        </div>
       `
         },
         {
-            title: "O Futuro: O que esperar em 2026/2027?",
+            title: "Capítulo 4: Custos e Desafios Reais",
             content: `
-        <ul class="list-disc list-inside text-gray-300 space-y-4">
-            <li>
-                <strong>LAMs (Large Action Models):</strong> Modelos treinados não para falar, mas para clicar em interfaces (UI). Ex: Rabbit R1 e a nova geração da OpenAI.
-            </li>
-            <li>
-                <strong>Agentes no SO:</strong> O Windows e macOS terão agentes nativos que "veem" o que você faz na tela e automatizam fluxos sem API.
-            </li>
-            <li>
-                <strong>Economia de Agentes:</strong> Marketplaces onde você aluga um "Agente Vendedor" ou "Agente Designer" por hora.
-            </li>
-        </ul>
+        <p class="mb-4 text-gray-300">
+            Nem tudo são flores. Rodar agentes custa dinheiro e exige supervisão.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-red-500">
+                <h5 class="text-red-400 font-bold mb-2">💸 O Custo da "Loopite"</h5>
+                <p class="text-sm text-gray-300">
+                    Agentes podem entrar em loops infinitos ("Tentei pesquisar, falhou. Tentei de novo, falhou..."). Se você usar GPT-4, isso pode queimar $10 em minutos.
+                    <br/><strong>Solução:</strong> Use modelos mais baratos (GPT-4o-mini ou Haiku) para tarefas simples e estabeleça um limite de "max_iterations".
+                </p>
+            </div>
+            <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-yellow-500">
+                <h5 class="text-yellow-400 font-bold mb-2">🐌 Latência</h5>
+                <p class="text-sm text-gray-300">
+                    Ao contrário de um chat instantâneo, um agente pode levar 2 a 5 minutos para completar uma tarefa complexa de pesquisa. Eles são feitos para trabalhar em background ("Fire and Forget"), não para conversas em tempo real.
+                </p>
+            </div>
+        </div>
+      `
+        },
+        {
+            title: "Conclusão: O Futuro do Trabalho",
+            content: `
+        <p class="text-gray-300 text-lg leading-relaxed">
+            A revolução dos AI Agents não é sobre substituir humanos, mas sobre <strong>superpoderes</strong>. Imagine ter 10 estagiários digitais incansáveis trabalhando para você. Um lê notícias, outro organiza seu CRM, outro responde e-mails básicos.
+        </p>
+        <p class="mt-4 text-gray-300 text-lg leading-relaxed">
+            Quem dominar frameworks como CrewAI agora (2026) será o "Arquiteto de Agentes" do futuro, uma das profissões mais bem pagas da década. Comece pequeno, teste, falhe barato e escale seus agentes.
+        </p>
       `
         }
     ];
@@ -196,18 +278,18 @@ print(resultado)
     const relatedGuides = [
         {
             href: "/guias/como-programar-com-ia-vibe-coding",
-            title: "Vibe Coding: O que é?",
-            description: "Aprenda a programar usando IA sem escrever código boilerplate."
+            title: "Vibe Coding",
+            description: "Use IA para escrever o código dos seus agentes 10x mais rápido."
         },
         {
             href: "/guias/rodar-llm-local-pc-ollama",
-            title: "IA Local (Privacidade)",
-            description: "Como rodar Llama 3 e Mistral no seu próprio PC."
+            title: "Agentes Grátis (Local)",
+            description: "Como rodar o cérebro do seu agente (Llama 3) no seu próprio PC para custo zero."
         },
         {
-            href: "/guias/automacao-tarefas",
-            title: "Automação Clássica",
-            description: "Diferença entre Scripts Python simples e Agentes Inteligentes."
+            href: "/guias/melhores-navegadores-custo-beneficio",
+            title: "Browser Use",
+            description: "Ferramentas para agentes navegarem na web (MultiOn, Selenium)."
         }
     ];
 
@@ -216,7 +298,7 @@ print(resultado)
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="25 min"
+            estimatedTime="45 min"
             difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}

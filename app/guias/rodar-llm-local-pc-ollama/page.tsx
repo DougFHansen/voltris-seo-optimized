@@ -3,143 +3,187 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'rodar-llm-local-pc-ollama',
-    title: "Como Rodar Inteligência Artificial Local no PC: Guia Definitivo (2026)",
-    description: "Tenha seu próprio ChatGPT privado e grátis. Tutorial de instalação do Ollama e LM Studio para rodar Llama 3, Mistral e DeepSeek R1 offline usando sua GPU.",
+    title: "Como Rodar Llama 3 e DeepSeek Local no PC: O Guia de Hardware (2026)",
+    description: "Transforme seu PC em uma central de IA privada. Dossiê completo de VRAM (Quantização), Ollama, LM Studio e RAG Offline para documentos confidenciais.",
     category: 'inteligencia-artificial',
-    difficulty: 'Intermediário',
-    time: '30 min'
+    difficulty: 'Avançado',
+    time: '40 min'
 };
 
-const title = "Como Rodar Inteligência Artificial Local no PC: Guia Definitivo (2026)";
-const description = "Tenha seu próprio ChatGPT privado e grátis. Tutorial de instalação do Ollama e LM Studio para rodar Llama 3, Mistral e DeepSeek R1 offline usando sua GPU.";
+const title = "Como Rodar Llama 3 e DeepSeek Local no PC: O Guia de Hardware (2026)";
+const description = "Transforme seu PC em uma central de IA privada. Dossiê completo de VRAM (Quantização), Ollama, LM Studio e RAG Offline para documentos confidenciais.";
 const keywords = [
-    'como rodar chatgpt local pc',
-    'ollama tutorial windows',
+    'placa de video para ia barata 2026',
+    'quanto de vram precisa para rodar llama 3 70b',
+    'ollama tutorial windows wsl2 completo',
     'lm studio vs ollama qual melhor',
-    'deepseek r1 local requirements',
-    'placa de video para ia vram necessaria',
-    'llama 3 8b vs 70b memoria ram',
-    'privacidade llm local'
+    'como instalar deepseek r1 localmente',
+    'privacidade ia local vs chatgpt',
+    'quantizacao q4_k_m explicacao'
 ];
 
 export const metadata: Metadata = createGuideMetadata('rodar-llm-local-pc-ollama', title, description, keywords);
 
 export default function LocalLLMGuide() {
     const summaryTable = [
-        { label: "Software Recomendado", value: "Ollama (Simples) / LM Studio (Visual)" },
-        { label: "Modelo Iniciante", value: "Llama 3 8B (Meta)" },
-        { label: "Requisito Mínimo", value: "8GB RAM + GPU 4GB VRAM" },
-        { label: "Privacidade", value: "100% Offline (Air-Gapped)" },
-        { label: "Custo", value: "Grátis (Open Source)" }
+        { label: "Hardware Crítico", value: "VRAM (Memória de Vídeo)" },
+        { label: "Software #1", value: "Ollama (Linha de Comando)" },
+        { label: "Software #2", value: "LM Studio (Interface Chat)" },
+        { label: "Custo Mensal", value: "R$ 0,00 (Energia Elétrica)" },
+        { label: "Privacidade", value: "Offline (Air-Gapped)" }
     ];
 
     const contentSections = [
         {
-            title: "Por que rodar IA Localmente?",
+            title: "Introdução: O Fim das Assinaturas de IA",
             content: `
         <p class="mb-6 text-gray-300 leading-relaxed text-lg">
-          Enquanto o mundo paga US$ 20/mês pelo ChatGPT Plus, uma revolução silenciosa acontece nos PCs domésticos. Modelos de "Peso Aberto" (Open Weights) como o <strong>Llama 3 (Meta)</strong> e <strong>Mistral (França)</strong> agora rodam em computadores comuns com qualidade surpreendente.
+          Você paga R$ 100/mês no ChatGPT Plus? Pare.
+          <br/><br/>
+          Em 2026, modelos de código aberto ("Open Weights") como o <strong>Llama 3 (Meta)</strong> e <strong>DeepSeek (China)</strong> alcançaram ou superaram o GPT-4 em raciocínio. A melhor parte? Você pode rodá-los no seu próprio computador <em>gamer</em>, sem internet, sem censorship e sem taxas mensais.
         </p>
-        <div class="grid md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-gray-800 p-5 rounded-lg border-t-4 border-green-500">
-                <h4 class="text-green-400 font-bold mb-2">🔒 Privacidade Total</h4>
-                <p class="text-gray-400 text-sm">
-                    Seus dados nunca saem do seu quarto. Ideal para analisar documentos sensíveis, códigos proprietários ou conversas pessoais.
-                </p>
-            </div>
-            <div class="bg-gray-800 p-5 rounded-lg border-t-4 border-blue-500">
-                <h4 class="text-blue-400 font-bold mb-2">💸 Custo Zero</h4>
-                <p class="text-gray-400 text-sm">
-                    Sem assinaturas mensais. O único custo é a eletricidade da sua placa de vídeo.
-                </p>
-            </div>
-            <div class="bg-gray-800 p-5 rounded-lg border-t-4 border-purple-500">
-                <h4 class="text-purple-400 font-bold mb-2">⚡ Sem Censura</h4>
-                <p class="text-gray-400 text-sm">
-                    Você controla o modelo. Pode rodar versões "Uncensored" (Dolphin) que respondem a qualquer pergunta sem filtros morais corporativos.
-                </p>
-            </div>
+        <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-green-500 my-8">
+            <h4 class="text-green-400 font-bold text-xl mb-2">Por que rodar Local?</h4>
+            <ul class="list-disc list-inside text-gray-300 text-lg space-y-2">
+                <li><strong>Privacidade Absoluta:</strong> Seus documentos médicos ou códigos da empresa nunca saem do seu SSD.</li>
+                <li><strong>Sem Censura:</strong> Você controla o alinhamento moral do modelo.</li>
+                <li><strong>Latência Zero:</strong> Respostas instantâneas, sem esperar fila de servidor.</li>
+            </ul>
         </div>
       `
         },
         {
-            title: "Requisitos de Hardware: O que eu preciso?",
+            title: "Capítulo 1: Hardware - A Matemática da VRAM",
             content: `
-        <p class="mb-4 text-gray-300">
-            A regra de ouro em IA Local é <strong>VRAM (Memória de Vídeo)</strong>. Quanto mais VRAM sua GPU tiver, maior e mais inteligente o modelo que você pode rodar.
+        <p class="mb-6 text-gray-300 text-lg">
+            Para rodar IA, você não precisa de CPU forte. Você precisa de <strong>VRAM (Memória da Placa de Vídeo)</strong>. O modelo inteiro precisa caber na VRAM para ser rápido.
         </p>
-
-        <div class="overflow-x-auto mb-6">
+        
+        <h4 class="text-white font-bold text-xl mb-4">Tabela de Requisitos Reais (2026)</h4>
+        <div class="overflow-x-auto mb-8">
             <table class="w-full text-left text-sm text-gray-300 border-collapse border border-gray-700 rounded-lg">
-                <thead class="bg-gray-800 text-white">
+                <thead class="bg-gray-900 text-white uppercase tracking-wider">
                     <tr>
-                        <th class="p-3 border border-gray-700">Modelo (Tamanho)</th>
-                        <th class="p-3 border border-gray-700">GPU Mínima (VRAM)</th>
-                        <th class="p-3 border border-gray-700">GPU Recomendada</th>
+                        <th class="p-4 border border-gray-700">Modelo (Tamanho)</th>
+                        <th class="p-4 border border-gray-700">VRAM Mínima (Q4)</th>
+                        <th class="p-4 border border-gray-700">Placa Ideal (Custo/Ben.)</th>
+                        <th class="p-4 border border-gray-700">Uso Recomendado</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="p-3 border border-gray-700 font-bold">Llama 3 8B (Rápido)</td>
-                        <td class="p-3 border border-gray-700">6 GB (GTX 1660)</td>
-                        <td class="p-3 border border-gray-700 text-green-400">8 GB (RTX 3060 / 4060)</td>
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                        <td class="p-4 border border-gray-700 font-bold text-blue-400">Llama 3 8B (Pequeno)</td>
+                        <td class="p-4 border border-gray-700">6 GB</td>
+                        <td class="p-4 border border-gray-700">RTX 3060 / 4060 (8GB)</td>
+                        <td class="p-4 border border-gray-700 text-gray-400">Chat rápido, Resumos, Emails.</td>
                     </tr>
-                    <tr class="bg-gray-900/50">
-                        <td class="p-3 border border-gray-700 font-bold">Mistral Large (Inteligente)</td>
-                        <td class="p-3 border border-gray-700">12 GB (RTX 3060 12GB)</td>
-                        <td class="p-3 border border-gray-700 text-green-400">16 GB (RTX 4060 Ti 16GB)</td>
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                        <td class="p-4 border border-gray-700 font-bold text-purple-400">Llama 3 70B (Médio)</td>
+                        <td class="p-4 border border-gray-700">24 GB (Gargalo!)</td>
+                        <td class="p-4 border border-gray-700">RTX 3090 / 4090 (24GB)</td>
+                        <td class="p-4 border border-gray-700 text-gray-400">Raciocínio complexo, Programação, Matemática.</td>
                     </tr>
-                    <tr>
-                        <td class="p-3 border border-gray-700 font-bold">Llama 3 70B (Gênio)</td>
-                        <td class="p-3 border border-gray-700">2x 24GB (RTX 3090/4090)</td>
-                        <td class="p-3 border border-gray-700 text-yellow-400">MacBook M3 Max (Unified Memory)</td>
+                    <tr class="hover:bg-gray-800/50 transition-colors">
+                        <td class="p-4 border border-gray-700 font-bold text-red-400">DeepSeek R1 128B (Monstro)</td>
+                        <td class="p-4 border border-gray-700">48-64 GB</td>
+                        <td class="p-4 border border-gray-700 text-yellow-400">Mac Studio M2 Ultra (Unified RAM)</td>
+                        <td class="p-4 border border-gray-700 text-gray-400">Pesquisa Científica, Nível GPT-5.</td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        
+        <p class="text-gray-400 text-sm italic mb-8">
+            * <strong>Q4 (Quantização 4-bit):</strong> É uma técnica de compressão que reduz o tamanho do modelo em 70% com perda mínima (quase imperceptível) de inteligência. A maioria das pessoas roda em Q4 ou Q5.
+        </p>
       `
         },
         {
-            title: "Método 1: Ollama (O Caminho Fácil)",
+            title: "Capítulo 2: Ollama (A Solução Elegante)",
             content: `
         <p class="mb-4 text-gray-300">
-            O <strong>Ollama</strong> democratizou a IA local. Ele é um executável simples que baixa e roda modelos em segundos.
+            O <strong>Ollama</strong> (ollama.com) é o "Docker da IA". Ele encapsula toda a complexidade em um comando simples.
         </p>
+
+        <div class="bg-[#1e1e1e] border border-gray-700 p-6 rounded-xl font-mono text-sm overflow-x-auto shadow-2xl space-y-4">
+            <div>
+                <p class="text-gray-500 mb-1"># 1. Instalar (Windows/Linux/Mac)</p>
+                <p class="text-green-400">https://ollama.com/download</p>
+            </div>
+            <div>
+                <p class="text-gray-500 mb-1"># 2. Baixar e Rodar o Llama 3 (8 Bilhões de Parâmetros)</p>
+                <p class="text-green-400">ollama run llama3</p>
+            </div>
+            <div>
+                <p class="text-gray-500 mb-1"># 3. Rodar um Modelo de Programação (Code)</p>
+                <p class="text-green-400">ollama run deepseek-coder-v2</p>
+            </div>
+            <div>
+                <p class="text-gray-500 mb-1"># 4. Criar um Personagem Customizado (Modelfile)</p>
+                <p class="text-white">Crie um arquivo chamado 'MarioFile' com:</p>
+                <pre class="text-blue-300 pl-4 py-2">
+FROM llama3
+SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 'Wahoo!'."
+                </pre>
+                <p class="text-green-400">ollama create Mario -f MarioFile</p>
+                <p class="text-green-400">ollama run Mario</p>
+            </div>
+        </div>
+
+        <div class="mt-6 flex gap-4">
+            <div class="bg-blue-900/20 p-4 rounded text-sm text-blue-200 border border-blue-500/30 w-full">
+                <strong>Vantagem:</strong> Roda como um serviço em background na porta <code>11434</code>. Você pode conectar apps externos (Obsidian, VS Code) nele via API local.
+            </div>
+        </div>
+      `
+        },
+        {
+            title: "Capítulo 3: RAG Local (Conversar com seus PDF)",
+            content: `
+        <p class="mb-4 text-gray-300">
+            O Santo Graal da produtividade: Fazer perguntas sobre seus próprios documentos (PDFs, Contratos, Notas) sem enviar nada para a nuvem.
+        </p>
+        
+        <h4 class="text-white font-bold text-lg mb-2">Ferramenta: AnythingLLM (Desktop)</h4>
         <ol class="list-decimal list-inside text-gray-300 space-y-4 bg-gray-900 border border-gray-700 p-6 rounded-xl">
             <li>
-                <strong>Baixar:</strong> Acesse <a href="https://ollama.com" target="_blank" class="text-blue-400 hover:underline">ollama.com</a> e instale a versão para Windows ou Linux (WSL2).
+                <strong>Instalar:</strong> Baixe o <a href="https://useanything.com/" class="text-blue-400 hover:underline">AnythingLLM Desktop</a>. É um app tudo-em-um (vetores, interface, modelo).
             </li>
             <li>
-                <strong>Terminal:</strong> Abra o PowerShell ou CMD.
+                <strong>Configurar:</strong> Na tela inicial, ele detectará se você tem o Ollama instalado. Selecione "Ollama" como provedor de Inferência.
             </li>
             <li>
-                <strong>Rodar Llama 3:</strong> Digite:
-                <div class="mt-2 bg-black p-3 rounded font-mono text-green-400">ollama run llama3</div>
-                <p class="mt-2 text-sm text-gray-400">Ele baixará cerca de 4.7GB.</p>
+                <strong>Ingerir Documentos:</strong> Arraste sua pasta de "Contratos 2024" para a área de upload. O app vai "vetorizar" (transformar texto em números) tudo localmente.
             </li>
             <li>
-                <strong>Rodar DeepSeek Coder:</strong> Para programação, digite:
-                <div class="mt-2 bg-black p-3 rounded font-mono text-green-400">ollama run deepseek-coder</div>
+                <strong>Perguntar:</strong> "Qual foi o valor total dos contratos de Janeiro?"
+            </li>
+            <li>
+                <strong>Mágica:</strong> O modelo vai ler os trechos relevantes dos seus PDFs e responder com precisão. Nada saiu do seu PC.
             </li>
         </ol>
       `
         },
         {
-            title: "Método 2: LM Studio (Interface Visual)",
+            title: "Capítulo 4: Mac vs PC (A Guerra dos Chips)",
             content: `
-        <p class="mb-4 text-gray-300">
-            Se você tem medo de tela preta (terminal), o <strong>LM Studio</strong> é para você. Ele parece um app de chat normal.
-        </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
-            <li>Baixe em <a href="https://lmstudio.ai" target="_blank" class="text-blue-400 hover:underline">lmstudio.ai</a>.</li>
-            <li>Na barra de busca, digite "Hermes 3" ou "Phi 3".</li>
-            <li>Ele mostra no lado direito se sua GPU aguenta rodar (barra verde "Likely to run").</li>
-            <li>Clique em Download, espere terminar e clique em "Chat" na esquerda.</li>
-        </ul>
-        <p class="mt-4 text-gray-300 bg-purple-900/20 p-4 rounded border border-purple-500/20">
-            <strong>Dica Avançada (Quantização):</strong> Você verá termos como "Q4_K_M" ou "Q8_0". Isso é a compressão.
-            <br/>Q4 (4-bit) perde pouquíssima qualidade e usa metade da memória do Q8. <strong>Sempre prefira Q4_K_M ou Q5_K_M</strong> para melhor custo-benefício.
-        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gradient-to-br from-green-900/20 to-green-900/0 border border-green-500/30 p-6 rounded-xl">
+                <h4 class="text-green-400 font-bold text-xl mb-2">PC (NVIDIA)</h4>
+                <p class="text-gray-300 text-sm">
+                    <strong>Prós:</strong> Mais barato para modelos pequenos. CUDA é o padrão da indústria.
+                    <br/><strong>Contras:</strong> Memória VRAM é limitada. Uma RTX 4090 tem 24GB e custa R$ 12.000. Rodar modelos de 70B exige duas placas (SLI/NVLink), o que é complexo.
+                </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-gray-200/10 to-gray-200/0 border border-gray-500/30 p-6 rounded-xl">
+                <h4 class="text-white font-bold text-xl mb-2">Mac (Apple Silicon)</h4>
+                <p class="text-gray-300 text-sm">
+                    <strong>Prós:</strong> Memória Unificada! Um Mac Studio com 192GB de RAM pode alocar 140GB para VRAM. Isso permite rodar modelos gigantes (Llama 3 400B) que precisariam de 8 placas RTX 4090.
+                    <br/><strong>Contras:</strong> Inferência (Tokens/s) é mais lenta que na NVIDIA. Custo inicial altíssimo.
+                </p>
+            </div>
+        </div>
       `
         }
     ];
@@ -148,17 +192,17 @@ export default function LocalLLMGuide() {
         {
             href: "/guias/como-escolher-placa-de-video",
             title: "Guia de GPU",
-            description: "Qual placa de vídeo tem mais VRAM pelo menor preço?"
+            description: "Analise técnica das melhores placas (RTX 3060 vs 4060) para IA custo-benefício."
         },
         {
             href: "/guias/o-que-sao-ai-agents-guia-completo",
             title: "AI Agents",
-            description: "Conecte seu Ollama local ao CrewAI para agentes gratuitos."
+            description: "Use seu Llama 3 local para alimentar agentes autônomos sem pagar API."
         },
         {
-            href: "/guias/debloat-windows-11-otimizacao-powershell",
-            title: "Otimizar Windows",
-            description: "Libere RAM fechando processos inúteis para o modelo usar."
+            href: "/guias/otimizacao-ssd-windows-11",
+            title: "SSD Rápido",
+            description: "Carregar modelos de 20GB exige um NVMe veloz. Veja como otimizar."
         }
     ];
 
@@ -167,8 +211,8 @@ export default function LocalLLMGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="30 min"
-            difficultyLevel="Intermediário"
+            estimatedTime="40 min"
+            difficultyLevel="Avançado"
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
