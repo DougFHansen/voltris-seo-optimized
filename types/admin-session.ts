@@ -27,6 +27,8 @@ export interface AdminSession {
         time: string;
     } | null;
 
+    health_score?: number | null;
+
     // Calculated for UI
     is_online: boolean;
 }

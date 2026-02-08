@@ -211,9 +211,22 @@ export default function AdminLiveMonitor() {
                                                     </div>
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Badge variant="outline" className={getStatusColor(session.status)}>
-                                                        {session.status.toUpperCase()}
-                                                    </Badge>
+                                                    <div className="flex flex-col gap-1">
+                                                        <Badge variant="outline" className={getStatusColor(session.status)}>
+                                                            {session.status.toUpperCase()}
+                                                        </Badge>
+                                                        {session.health_score != null && (
+                                                            <Badge
+                                                                variant="secondary"
+                                                                className={`text-[9px] border-none ${session.health_score >= 80 ? 'bg-emerald-500/10 text-emerald-500' :
+                                                                    session.health_score >= 50 ? 'bg-yellow-500/10 text-yellow-500' :
+                                                                        'bg-red-500/10 text-red-500'
+                                                                    }`}
+                                                            >
+                                                                HEALTH: {session.health_score}%
+                                                            </Badge>
+                                                        )}
+                                                    </div>
                                                 </TableCell>
 
                                                 {/* HARDWARE PROFILE */}

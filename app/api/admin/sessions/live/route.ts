@@ -41,21 +41,26 @@ export async function GET(req: NextRequest) {
             // So we'll fetch recent events and filter in memory (acceptable for dashboard scale)
             const { data: recentEvents } = await supabase
                 .from('telemetry_events')
-                .select('session_id, event_type, feature_name, action_name, created_at')
+                .select('session_id, event_type, feature_name, action_name, created_at, metadata')
                 .in('session_id', sessionIds)
                 .order('created_at', { ascending: false })
-                .limit(activeSessions.length * 5); // Heuristic limit
+                .limit(activeSessions.length * 8); // Heuristic limit
 
             // Map latest event to session
             sessionsWithActivity = activeSessions.map(session => {
                 const latestEvent = recentEvents?.find(e => e.session_id === session.id);
+                // Search specifically for System Health to get the latest score even if not the absolute latest event
+                const healthEvent = recentEvents?.find(e => e.session_id === session.id && e.event_type === 'SYSTEM_HEALTH');
+
                 return {
                     ...session,
                     last_activity: latestEvent ? {
                         type: latestEvent.event_type,
                         name: `${latestEvent.feature_name || ''} - ${latestEvent.action_name || ''}`,
-                        time: latestEvent.created_at
-                    } : null
+                        time: latestEvent.created_at,
+                        metadata: latestEvent.metadata
+                    } : null,
+                    health_score: healthEvent?.metadata?.health_score || null
                 };
             });
         }
