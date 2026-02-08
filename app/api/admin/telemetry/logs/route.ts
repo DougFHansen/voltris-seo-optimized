@@ -27,6 +27,8 @@ export async function GET() {
 
         if (error) throw error;
 
+        console.log('[Telemetry Logs API] Raw logs count:', logs?.length || 0);
+        console.log('[Telemetry Logs API] First log sample:', logs?.[0]);
 
         const formattedLogs = logs?.map((log: any) => ({
             id: log.id,
@@ -44,6 +46,9 @@ export async function GET() {
             hostname: log.device?.hostname || 'Unknown',
             status: log.device?.status || 'offline'
         })) || [];
+
+        console.log('[Telemetry Logs API] Formatted logs count:', formattedLogs.length);
+        console.log('[Telemetry Logs API] First formatted log:', formattedLogs[0]);
 
         return NextResponse.json({ logs: formattedLogs });
 

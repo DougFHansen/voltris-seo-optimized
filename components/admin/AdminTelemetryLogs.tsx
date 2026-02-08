@@ -39,12 +39,18 @@ export default function AdminTelemetryLogs() {
     const fetchLogs = async () => {
         try {
             const res = await fetch('/api/admin/telemetry/logs');
+            console.log('[AdminTelemetryLogs] Response status:', res.status, res.ok);
             if (res.ok) {
                 const data = await res.json();
+                console.log('[AdminTelemetryLogs] Data received:', data);
+                console.log('[AdminTelemetryLogs] Logs count:', data.logs?.length || 0);
                 setLogs(data.logs);
+            } else {
+                const errorText = await res.text();
+                console.error('[AdminTelemetryLogs] API error:', res.status, errorText);
             }
         } catch (error) {
-            console.error('Failed to fetch logs', error);
+            console.error('[AdminTelemetryLogs] Failed to fetch logs', error);
         } finally {
             setLoading(false);
         }

@@ -10,7 +10,7 @@ export async function GET() {
             .from('telemetry_events')
             .select('metadata')
             .eq('event_type', 'SYSTEM_HEALTH')
-            .order('timestamp', { ascending: false })
+            .order('created_at', { ascending: false })
             .limit(100);
 
         const scores = healthEvents?.map((e: any) => e.metadata?.health_score || 0) || [];
@@ -22,7 +22,7 @@ export async function GET() {
             .from('telemetry_events')
             .select('*', { count: 'exact', head: true })
             .eq('event_type', 'EXCEPTION')
-            .gte('timestamp', yesterday);
+            .gte('created_at', yesterday);
 
         // 3. Popular Features
         const { data: featureEvents } = await supabase
