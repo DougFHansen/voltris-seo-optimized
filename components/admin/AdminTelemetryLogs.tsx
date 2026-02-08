@@ -72,110 +72,178 @@ export default function AdminTelemetryLogs() {
         log.feature_name.toLowerCase().includes(filter.toLowerCase())
     );
 
+    const [selectedLog, setSelectedLog] = useState<TelemetryEvent | null>(null);
+
+    // ... (rest of filtering logic)
+
     return (
-        <Card className="border-stone-800 bg-stone-950/40 backdrop-blur-sm">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-                <CardTitle className="text-xl flex items-center gap-2">
-                    <Terminal className="h-5 w-5 text-blue-500" />
-                    Fluxo de Telemetria Enterprise
-                </CardTitle>
-                <div className="flex items-center gap-3">
-                    <div className="relative">
-                        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-stone-500" />
-                        <input
-                            type="text"
-                            placeholder="Filtrar eventos..."
-                            className="pl-9 pr-4 py-2 bg-stone-900/50 border border-stone-800 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 w-64"
-                            value={filter}
-                            onChange={(e) => setFilter(e.target.value)}
-                        />
+        <>
+            <Card className="border-stone-800 bg-stone-950/40 backdrop-blur-sm">
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
+                    <CardTitle className="text-xl flex items-center gap-2">
+                        <Terminal className="h-5 w-5 text-blue-500" />
+                        Fluxo de Telemetria Enterprise
+                    </CardTitle>
+                    <div className="flex items-center gap-3">
+                        <div className="relative">
+                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-stone-500" />
+                            <input
+                                type="text"
+                                placeholder="Filtrar eventos..."
+                                className="pl-9 pr-4 py-2 bg-stone-900/50 border border-stone-800 rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 w-64"
+                                value={filter}
+                                onChange={(e) => setFilter(e.target.value)}
+                            />
+                        </div>
+                        <Badge variant="outline" className="font-mono text-[10px] uppercase">
+                            Real-time Stream
+                        </Badge>
                     </div>
-                    <Badge variant="outline" className="font-mono text-[10px] uppercase">
-                        Real-time Stream
-                    </Badge>
-                </div>
-            </CardHeader>
-            <CardContent>
-                <div className="rounded-xl border border-stone-800 bg-stone-900/20 overflow-hidden">
-                    <Table>
-                        <TableHeader className="bg-stone-900/40">
-                            <TableRow className="hover:bg-transparent border-stone-800">
-                                <TableHead className="w-[180px]">Timestamp</TableHead>
-                                <TableHead className="w-[150px]">Tipo</TableHead>
-                                <TableHead>Dispositivo</TableHead>
-                                <TableHead>Feature / Ação</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead className="text-right">Detalhes</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {loading ? (
-                                <TableRow>
-                                    <TableCell colSpan={6} className="h-64 text-center">
-                                        <div className="flex flex-col items-center gap-2">
-                                            <Activity className="h-8 w-8 text-blue-500 animate-pulse" />
-                                            <span className="text-stone-500 animate-pulse">Sincronizando logs...</span>
-                                        </div>
-                                    </TableCell>
+                </CardHeader>
+                <CardContent>
+                    <div className="rounded-xl border border-stone-800 bg-stone-900/20 overflow-hidden">
+                        <Table>
+                            <TableHeader className="bg-stone-900/40">
+                                <TableRow className="hover:bg-transparent border-stone-800">
+                                    <TableHead className="w-[180px]">Timestamp</TableHead>
+                                    <TableHead className="w-[150px]">Tipo</TableHead>
+                                    <TableHead>Dispositivo</TableHead>
+                                    <TableHead>Feature / Ação</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead className="text-right">Detalhes</TableHead>
                                 </TableRow>
-                            ) : filteredLogs.length === 0 ? (
-                                <TableRow>
-                                    <TableCell colSpan={6} className="h-64 text-center text-stone-500">
-                                        Nenhum evento encontrado para o filtro aplicado.
-                                    </TableCell>
-                                </TableRow>
-                            ) : (
-                                filteredLogs.map((log) => (
-                                    <TableRow key={log.id} className="border-stone-800/50 hover:bg-stone-800/30 transition-colors group">
-                                        <TableCell className="font-mono text-xs text-stone-500">
-                                            {new Date(log.timestamp).toLocaleString()}
-                                        </TableCell>
-                                        <TableCell>
-                                            <Badge variant="outline" className={`text-[10px] font-bold ${getEventBadge(log.event_type)}`}>
-                                                {log.event_type}
-                                            </Badge>
-                                        </TableCell>
-                                        <TableCell>
-                                            <div className="flex flex-col">
-                                                <span className="text-sm font-medium text-stone-300">{log.hostname || 'Desconhecido'}</span>
-                                                <span className="text-[10px] text-stone-600 font-mono truncate max-w-[120px]">{log.machine_id}</span>
+                            </TableHeader>
+                            <TableBody>
+                                {loading ? (
+                                    <TableRow>
+                                        <TableCell colSpan={6} className="h-64 text-center">
+                                            <div className="flex flex-col items-center gap-2">
+                                                <Activity className="h-8 w-8 text-blue-500 animate-pulse" />
+                                                <span className="text-stone-500 animate-pulse">Sincronizando logs...</span>
                                             </div>
-                                        </TableCell>
-                                        <TableCell>
-                                            <div className="flex items-center gap-2">
-                                                <span className="px-1.5 py-0.5 rounded bg-stone-800 text-stone-400 text-[10px] font-medium uppercase tracking-wider">
-                                                    {log.feature_name}
-                                                </span>
-                                                <span className="text-stone-300 text-xs">
-                                                    {log.action_name}
-                                                </span>
-                                            </div>
-                                        </TableCell>
-                                        <TableCell>
-                                            {log.success ? (
-                                                <Badge className="bg-emerald-500/20 text-emerald-500 border-none hover:bg-emerald-500/20 text-[10px]">SUCCESS</Badge>
-                                            ) : (
-                                                <div className="flex items-center gap-1.5 text-red-500">
-                                                    <AlertCircle className="h-3 w-3" />
-                                                    <span className="text-[10px] font-bold">FAILURE</span>
-                                                </div>
-                                            )}
-                                        </TableCell>
-                                        <TableCell className="text-right">
-                                            <button
-                                                className="text-[10px] text-stone-500 hover:text-blue-400 font-mono underline decoration-stone-700 underline-offset-4"
-                                                onClick={() => console.log('Metadata:', log.metadata)}
-                                            >
-                                                VIEW_JSON
-                                            </button>
                                         </TableCell>
                                     </TableRow>
-                                ))
-                            )}
-                        </TableBody>
-                    </Table>
+                                ) : filteredLogs.length === 0 ? (
+                                    <TableRow>
+                                        <TableCell colSpan={6} className="h-64 text-center text-stone-500">
+                                            Nenhum evento encontrado para o filtro aplicado.
+                                        </TableCell>
+                                    </TableRow>
+                                ) : (
+                                    filteredLogs.map((log) => (
+                                        <TableRow key={log.id} className="border-stone-800/50 hover:bg-stone-800/30 transition-colors group">
+                                            <TableCell className="font-mono text-xs text-stone-500">
+                                                {new Date(log.timestamp).toLocaleString()}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Badge variant="outline" className={`text-[10px] font-bold ${getEventBadge(log.event_type)}`}>
+                                                    {log.event_type}
+                                                </Badge>
+                                            </TableCell>
+                                            <TableCell>
+                                                <div className="flex flex-col">
+                                                    <span className="text-sm font-medium text-stone-300">{log.hostname || 'Desconhecido'}</span>
+                                                    <span className="text-[10px] text-stone-600 font-mono truncate max-w-[120px]">{log.machine_id}</span>
+                                                </div>
+                                            </TableCell>
+                                            <TableCell>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="px-1.5 py-0.5 rounded bg-stone-800 text-stone-400 text-[10px] font-medium uppercase tracking-wider">
+                                                        {log.feature_name}
+                                                    </span>
+                                                    <span className="text-stone-300 text-xs">
+                                                        {log.action_name}
+                                                    </span>
+                                                </div>
+                                            </TableCell>
+                                            <TableCell>
+                                                {log.success ? (
+                                                    <Badge className="bg-emerald-500/20 text-emerald-500 border-none hover:bg-emerald-500/20 text-[10px]">SUCCESS</Badge>
+                                                ) : (
+                                                    <div className="flex items-center gap-1.5 text-red-500">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        <span className="text-[10px] font-bold">FAILURE</span>
+                                                    </div>
+                                                )}
+                                            </TableCell>
+                                            <TableCell className="text-right">
+                                                <button
+                                                    className="text-[10px] text-stone-500 hover:text-blue-400 font-mono underline decoration-stone-700 underline-offset-4 cursor-pointer"
+                                                    onClick={() => setSelectedLog(log)}
+                                                >
+                                                    VIEW_JSON
+                                                </button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+                                )}
+                            </TableBody>
+                        </Table>
+                    </div>
+                </CardContent>
+            </Card>
+
+            {/* JSON Viewer Modal */}
+            {selectedLog && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+                    <div
+                        className="w-full max-w-2xl bg-stone-950 border border-stone-800 rounded-xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-800 bg-stone-900/50">
+                            <div className="flex items-center gap-3">
+                                <Terminal className="h-5 w-5 text-blue-500" />
+                                <h3 className="font-semibold text-stone-200">Detalhes do Evento</h3>
+                            </div>
+                            <button
+                                onClick={() => setSelectedLog(null)}
+                                className="text-stone-500 hover:text-white transition-colors text-2xl leading-none"
+                            >
+                                &times;
+                            </button>
+                        </div>
+
+                        <div className="p-6 max-h-[70vh] overflow-y-auto">
+                            <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
+                                <div className="p-3 rounded-lg bg-stone-900/50 border border-stone-800">
+                                    <span className="block text-[10px] uppercase text-stone-500 font-bold mb-1">Evento</span>
+                                    <span className="font-mono text-blue-400">{selectedLog.event_type}</span>
+                                </div>
+                                <div className="p-3 rounded-lg bg-stone-900/50 border border-stone-800">
+                                    <span className="block text-[10px] uppercase text-stone-500 font-bold mb-1">Feature</span>
+                                    <span className="text-stone-300">{selectedLog.feature_name} / {selectedLog.action_name}</span>
+                                </div>
+                                <div className="p-3 rounded-lg bg-stone-900/50 border border-stone-800">
+                                    <span className="block text-[10px] uppercase text-stone-500 font-bold mb-1">Dispositivo</span>
+                                    <span className="text-stone-300">{selectedLog.hostname}</span>
+                                </div>
+                                <div className="p-3 rounded-lg bg-stone-900/50 border border-stone-800">
+                                    <span className="block text-[10px] uppercase text-stone-500 font-bold mb-1">Timestamp</span>
+                                    <span className="text-stone-300">{new Date(selectedLog.timestamp).toLocaleString()}</span>
+                                </div>
+                            </div>
+
+                            <div className="relative group">
+                                <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <Badge variant="outline" className="bg-stone-900 text-stone-500 border-stone-700 text-[10px]">JSON</Badge>
+                                </div>
+                                <pre className="p-4 rounded-lg bg-stone-950 border border-stone-800 overflow-x-auto text-xs font-mono text-emerald-400 leading-relaxed custom-scrollbar">
+                                    {JSON.stringify(selectedLog.metadata || {}, null, 2)}
+                                </pre>
+                            </div>
+                        </div>
+
+                        <div className="px-6 py-4 border-t border-stone-800 bg-stone-900/30 flex justify-end">
+                            <button
+                                onClick={() => setSelectedLog(null)}
+                                className="px-4 py-2 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-300 text-sm font-medium transition-colors"
+                            >
+                                Fechar
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </CardContent>
-        </Card>
+            )}
+        </>
     );
 }
