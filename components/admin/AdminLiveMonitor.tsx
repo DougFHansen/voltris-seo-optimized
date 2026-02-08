@@ -140,11 +140,11 @@ export default function AdminLiveMonitor() {
                         <Table>
                             <TableHeader>
                                 <TableRow className="hover:bg-transparent border-stone-800">
-                                    <TableHead className="w-[200px]">Dispositivo / Host</TableHead>
-                                    <TableHead>Cliente / Tipo</TableHead>
+                                    <TableHead>Dispositivo</TableHead>
+                                    <TableHead>Cliente / Plano</TableHead>
                                     <TableHead>Status</TableHead>
-                                    <TableHead>Versão App</TableHead>
-                                    <TableHead>Início</TableHead>
+                                    <TableHead>Hardware (CPU / GPU / RAM)</TableHead>
+                                    <TableHead>Versão</TableHead>
                                     <TableHead className="text-right">Último Sinal</TableHead>
                                 </TableRow>
                             </TableHeader>
@@ -156,47 +156,77 @@ export default function AdminLiveMonitor() {
                                         </TableCell>
                                     </TableRow>
                                 ) : (
-                                    sessions.map((session) => (
-                                        <TableRow key={session.id} className="border-stone-800 hover:bg-stone-900/50">
-                                            <TableCell className="font-medium">
-                                                <div className="flex flex-col">
-                                                    <span className="flex items-center gap-2">
-                                                        <MonitorSmartphone className="h-3 w-3 text-stone-400" />
-                                                        {session.device?.hostname || 'Desconhecido'}
-                                                    </span>
-                                                    <span className="text-xs text-muted-foreground font-mono">
-                                                        {session.device?.machine_id?.substring(0, 8)}...
-                                                    </span>
-                                                </div>
-                                            </TableCell>
-                                            <TableCell>
-                                                <div className="flex flex-col">
-                                                    <span className="font-medium">
-                                                        {session.device?.company?.name || 'Usuário Grátis'}
-                                                    </span>
-                                                    <span className="text-xs text-muted-foreground capitalize">
-                                                        {session.device?.company?.plan_type || 'Personal'}
-                                                    </span>
-                                                </div>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Badge variant="outline" className={getStatusColor(session.status)}>
-                                                    {session.status.toUpperCase()}
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Badge variant="secondary" className="font-mono text-xs">
-                                                    v{session.app_version || '1.0.0'}
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="text-muted-foreground text-sm">
-                                                {new Date(session.started_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                                            </TableCell>
-                                            <TableCell className="text-right font-mono text-xs text-muted-foreground">
-                                                {new Date(session.last_heartbeat_at).toLocaleTimeString()}
-                                            </TableCell>
-                                        </TableRow>
-                                    ))
+                                    sessions.map((session) => {
+                                        const dev = session.device || {};
+                                        // @ts-ignore - profile vem no join do supabase
+                                        const profile = dev.profile?.[0] || dev.profile || {};
+
+                                        return (
+                                            <TableRow key={session.id} className="border-stone-800 hover:bg-stone-900/50">
+                                                <TableCell className="font-medium">
+                                                    <div className="flex flex-col">
+                                                        <span className="flex items-center gap-2" title={dev.hostname}>
+                                                            <MonitorSmartphone className="h-3 w-3 text-stone-400" />
+                                                            {dev.hostname || 'Desconhecido'}
+                                                        </span>
+                                                        <span className="text-[10px] text-muted-foreground font-mono" title={dev.machine_id}>
+                                                            {dev.machine_id?.substring(0, 8)}...
+                                                        </span>
+                                                    </div>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <div className="flex flex-col">
+                                                        <span className="font-medium text-xs">
+                                                            {(dev.company as any)?.name || 'Usuário Grátis'}
+                                                        </span>
+                                                        <span className="text-[10px] text-muted-foreground capitalize">
+                                                            {(dev.company as any)?.plan_type || 'Personal'}
+                                                        </span>
+                                                    </div>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Badge variant="outline" className={getStatusColor(session.status)}>
+                                                        {session.status.toUpperCase()}
+                                                    </Badge>
+                                                </TableCell>
+
+                                                {/* HARDWARE PROFILE */}
+                                                <TableCell>
+                                                    {profile.cpu_model ? (
+                                                        <div className="flex flex-col text-[10px] max-w-[250px]">
+                                                            <span className="font-semibold truncate text-stone-300" title={profile.cpu_model}>
+                                                                {profile.cpu_model.replace("Intel(R) Core(TM) ", "").replace("AMD Ryzen ", "Ryzen ")}
+                                                            </span>
+                                                            <span className="truncate text-stone-500" title={profile.gpu_model}>
+                                                                {profile.gpu_model}
+                                                            </span>
+                                                            <div className="flex gap-2 mt-0.5 text-stone-400">
+                                                                <span className="bg-stone-800 px-1 rounded flex items-center gap-1">
+                                                                    Ram: {profile.ram_total_gb ? Math.round(profile.ram_total_gb) : '?'}GB
+                                                                </span>
+                                                                <span className="bg-stone-800 px-1 rounded" title={profile.windows_build}>
+                                                                    {profile.os_version || 'Win'}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <span className="text-[10px] text-muted-foreground italic">
+                                                            Coletando dados...
+                                                        </span>
+                                                    )}
+                                                </TableCell>
+
+                                                <TableCell>
+                                                    <Badge variant="secondary" className="font-mono text-[10px]">
+                                                        v{session.app_version || '1.0'}
+                                                    </Badge>
+                                                </TableCell>
+                                                <TableCell className="text-right font-mono text-xs text-muted-foreground">
+                                                    {new Date(session.last_heartbeat_at).toLocaleTimeString()}
+                                                </TableCell>
+                                            </TableRow>
+                                        )
+                                    })
                                 )}
                             </TableBody>
                         </Table>
