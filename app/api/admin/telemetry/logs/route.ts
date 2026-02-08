@@ -14,22 +14,39 @@ export async function GET() {
                 feature_name,
                 action_name,
                 success,
-                timestamp,
-                machine_id,
+                created_at,
+                duration_ms,
+                error_code,
                 metadata,
-                device:devices(hostname)
+                device_id,
+                session_id,
+                device:devices(machine_id, hostname, status)
             `)
-            .order('timestamp', { ascending: false })
+            .order('created_at', { ascending: false })
             .limit(100);
 
         if (error) throw error;
 
-        const formattedLogs = logs.map((log: any) => ({
-            ...log,
-            hostname: log.device?.hostname || 'Unknown'
-        }));
+
+        const formattedLogs = logs?.map((log: any) => ({
+            id: log.id,
+            timestamp: log.created_at,
+            event_type: log.event_type,
+            feature_name: log.feature_name,
+            action_name: log.action_name,
+            success: log.success,
+            duration_ms: log.duration_ms,
+            error_code: log.error_code,
+            metadata: log.metadata,
+            device_id: log.device_id,
+            session_id: log.session_id,
+            machine_id: log.device?.machine_id || 'Unknown',
+            hostname: log.device?.hostname || 'Unknown',
+            status: log.device?.status || 'offline'
+        })) || [];
 
         return NextResponse.json({ logs: formattedLogs });
+
     } catch (error) {
         console.error('Logs API Error:', error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
