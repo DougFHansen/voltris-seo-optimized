@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/utils/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -32,7 +32,7 @@ export default function AdminLiveMonitor() {
     });
     const [loading, setLoading] = useState(true);
 
-    const supabase = createClientComponentClient();
+    const supabase = createClient();
 
     // Poll every 5 seconds for live data (simple & robust for admin dash)
     // Could use Realtime subscription for even faster updates
