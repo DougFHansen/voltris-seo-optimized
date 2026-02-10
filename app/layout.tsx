@@ -94,20 +94,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="preconnect" href="https://grainy-gradients.vercel.app" crossOrigin="anonymous" />
 
-        {/* CSS Crítico Inline para eliminar bloqueio de renderização */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-          *{box-sizing:border-box;margin:0;padding:0}
-          body{font-family:Roboto,sans-serif;background:#171313;color:#fff;overflow-x:hidden}
-          .fixed{position:fixed}
-          .relative{position:relative}
-          .z-50{z-index:50}
-          .z-100{z-index:100}
-          .flex{display:flex}
-          .hidden{display:none}
-          @media(min-width:768px){.md\\:flex{display:flex}.md\\:hidden{display:none}}
-        `}} />
-
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/logo.png" />

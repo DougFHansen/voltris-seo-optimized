@@ -7,6 +7,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
+          '/blog/',
           '/dashboard/',
           '/restricted-area-admin/',
           '/api/',
@@ -20,6 +21,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Googlebot',
         allow: '/',
         disallow: [
+          '/blog/',
           '/dashboard/',
           '/restricted-area-admin/',
           '/api/',
@@ -32,6 +34,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'bingbot',
         allow: '/',
         disallow: [
+          '/blog/',
           '/dashboard/',
           '/restricted-area-admin/',
           '/api/',
@@ -44,6 +47,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Slurp',
         allow: '/',
         disallow: [
+          '/blog/',
           '/dashboard/',
           '/restricted-area-admin/',
           '/api/',

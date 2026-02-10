@@ -19,12 +19,9 @@ import {
     FiDownload,
     FiPrinter,
 } from 'react-icons/fi';
-import { ChevronRight, Cpu, Wrench, Rocket, ShieldCheck, Zap, Check } from "lucide-react";
+import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check } from "lucide-react";
+import AnimatedSection from '@/components/AnimatedSection';
 import dynamic from 'next/dynamic';
-
-const AnimatedSection = dynamic(() => import('@/components/AnimatedSection'), {
-    ssr: true
-});
 
 const OptimizerMockup = dynamic(() => import('@/components/OptimizerMockup'), {
     loading: () => <div className="w-full h-[400px] bg-white/5 animate-pulse rounded-2xl" />,
