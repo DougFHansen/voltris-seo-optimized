@@ -58,8 +58,15 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group z-20 relative">
-            <div className="relative w-10 h-10 md:w-12 md:h-12">
-              <Image src="/logo.png" alt="Voltris" fill className="object-contain transition-transform duration-500 group-hover:rotate-180" priority />
+            <div className="relative">
+              <Image
+                src="/logo.png"
+                alt="Voltris"
+                width={70}
+                height={70}
+                className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-500 group-hover:rotate-180"
+                priority
+              />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-tight hidden sm:block">
               VOLTRIS

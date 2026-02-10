@@ -9,6 +9,7 @@ const nextConfig = {
       'react-icons',
       'framer-motion',
     ],
+    optimizeCss: true,
   },
   serverExternalPackages: ['sharp'],
   images: {
