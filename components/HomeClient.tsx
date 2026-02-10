@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
@@ -30,6 +29,8 @@ const OptimizerMockup = dynamic(() => import('@/components/OptimizerMockup'), {
 const FaWhatsapp = dynamic(() => import('react-icons/fa').then(mod => mod.FaWhatsapp), {
     ssr: false
 });
+
+const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
 
 import { motion } from 'framer-motion';

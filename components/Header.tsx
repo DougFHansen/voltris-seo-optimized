@@ -66,6 +66,7 @@ export default function Header() {
                 height={70}
                 className="w-10 h-10 md:w-12 md:h-12 object-contain transition-transform duration-500 group-hover:rotate-180"
                 priority
+                fetchPriority="high"
               />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-tight hidden sm:block">

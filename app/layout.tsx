@@ -92,7 +92,9 @@ export default function RootLayout({
     <html lang="pt-br">
       <head>
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://grainy-gradients.vercel.app" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
 
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -135,6 +137,13 @@ export default function RootLayout({
             gtag('config', 'G-XY0CKLVY2B');
           `}
         </Script>
+
+        {/* Font Awesome 6 support for legacy components - lazy loaded */}
+        <Script
+          src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+        />
 
         {/* Schema.org Organization */}
         <JsonLd

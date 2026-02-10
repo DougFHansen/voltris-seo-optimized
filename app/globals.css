@@ -1026,21 +1026,6 @@ body {
 }
 
 /* Otimização de exibição de fonte para Font Awesome (Cloudflare CDN) */
-@font-face {
-  font-family: "Font Awesome 5 Free";
-  font-style: normal;
-  font-weight: 900;
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2") format("woff2");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Font Awesome 5 Brands";
-  font-style: normal;
-  font-weight: 400;
-  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-brands-400.woff2") format("woff2");
-  font-display: swap;
-}
 
 @media (max-width: 639px) {
   .mobile-login-gradient {

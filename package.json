@@ -71,9 +71,10 @@
     "npm": ">=8.0.0"
   },
   "browserslist": [
-    "last 2 years",
-    "> 0.5%",
+    "last 1 year",
+    "> 0.8%",
     "not dead",
-    "not op_mini all"
+    "not op_mini all",
+    "not ie 11"
   ]
 }
