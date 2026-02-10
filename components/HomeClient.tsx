@@ -1,11 +1,10 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { createClient } from '@supabase/supabase-js';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import {
     FiMonitor,
     FiSettings,

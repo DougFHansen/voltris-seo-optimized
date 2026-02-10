@@ -40,10 +40,9 @@ interface TicketListProps {
   onRefresh?: () => void;
 }
 
-export default function TicketList({ 
-  tickets, 
+export default function TicketList({
+  tickets,
   isAdmin = false,
-  onTicketClick,
   onStatusChange,
   onRefresh
 }: TicketListProps) {
@@ -83,7 +82,7 @@ export default function TicketList({
 
   const handleStatusChange = async (ticketId: string, newStatus: Ticket['status']) => {
     if (!onStatusChange) return;
-    
+
     try {
       await onStatusChange(ticketId, newStatus);
       if (onRefresh) onRefresh();
@@ -102,7 +101,7 @@ export default function TicketList({
     try {
       setIsSubmitting(true);
       console.log('Iniciando envio de mensagem...');
-      
+
       const supabase = createClient();
       // Primeiro, inserir a mensagem
       const { data: insertData, error: insertError } = await supabase
@@ -161,15 +160,16 @@ export default function TicketList({
         console.log('Atualizando lista de tickets...');
         onRefresh();
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const err = error as any;
       console.error('Erro detalhado ao enviar mensagem:', {
-        error,
-        message: error?.message,
-        details: error?.details,
-        hint: error?.hint,
-        code: error?.code
+        error: err,
+        message: err?.message,
+        details: err?.details,
+        hint: err?.hint,
+        code: err?.code
       });
-      toast.error(error?.message || 'Erro ao enviar mensagem. Por favor, tente novamente.');
+      toast.error(err?.message || 'Erro ao enviar mensagem. Por favor, tente novamente.');
     } finally {
       setIsSubmitting(false);
     }
@@ -235,7 +235,7 @@ export default function TicketList({
   // Função utilitária para saber se o usuário pode enviar mensagem
   const canUserSendMessage = (ticket: Ticket, userId: string | null) => {
     if (!userId) return false;
-    
+
     // Se o ticket estiver resolvido, ninguém pode enviar mensagem
     if (ticket.status === 'Resolvido' || ticket.status === 'Finalizado') {
       return false;
@@ -247,7 +247,7 @@ export default function TicketList({
     }
 
     const lastMessage = ticket.messages[ticket.messages.length - 1];
-    
+
     // Se a última mensagem for do admin, o usuário pode responder
     if (lastMessage.profiles?.is_admin) {
       return true;
@@ -307,7 +307,7 @@ export default function TicketList({
                     </span>
                     <span className={`px-3 py-1 rounded-full text-sm ${getPriorityColor(ticket.priority)}`}>
                       {ticket.priority === 'high' ? 'Alta' :
-                       ticket.priority === 'medium' ? 'Média' : 'Baixa'}
+                        ticket.priority === 'medium' ? 'Média' : 'Baixa'}
                     </span>
                     {isTicketRespondido(ticket) && (
                       <span className="ml-2 px-2 py-1 rounded-full text-xs bg-green-600/20 text-green-400 border border-green-600/30">Respondido</span>
@@ -352,7 +352,7 @@ export default function TicketList({
                     <div className="border-t border-gray-800 pt-4">
                       <h4 className="text-sm font-medium text-gray-300 mb-3">Mensagens</h4>
                       <div className="space-y-3">
-                        {ticketMessages.map((message, idx) => {
+                        {ticketMessages.map((message) => {
                           const isSentByMe = userId && message.user_id === userId;
                           const senderName = message.profiles?.full_name || message.profiles?.email || 'Usuário';
                           const initials = getInitials(message.profiles?.full_name);
@@ -393,7 +393,7 @@ export default function TicketList({
                                   </div>
                                   <p className="text-sm text-white">{message.content}</p>
                                   {/* Seta do balão */}
-                                  <span className={`absolute bottom-0 ${isSentByMe ? 'right-[-8px]' : 'left-[-8px]'} w-4 h-4 overflow-hidden`}> 
+                                  <span className={`absolute bottom-0 ${isSentByMe ? 'right-[-8px]' : 'left-[-8px]'} w-4 h-4 overflow-hidden`}>
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                       <polygon points={isSentByMe ? '0,16 16,16 16,0' : '16,16 0,16 0,0'} fill={isSentByMe ? '#FF4B6B' : '#23272f'} />
                                     </svg>

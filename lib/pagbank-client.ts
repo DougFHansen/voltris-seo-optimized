@@ -26,11 +26,12 @@ export async function createCheckout(data: PagBankCheckoutRequest): Promise<PagB
     try {
         const response = await pagBankClient.post<PagBankCheckoutResponse>('/checkouts', data);
         return response.data;
-    } catch (error: any) {
+    } catch (error: unknown) {
         // Melhor tratamento de erro para debug
-        if (error.response) {
-            console.error('PagBank API Error:', JSON.stringify(error.response.data, null, 2));
-            throw new Error(`PagBank Error: ${JSON.stringify(error.response.data)}`);
+        const err = error as any;
+        if (err.response) {
+            console.error('PagBank API Error:', JSON.stringify(err.response.data, null, 2));
+            throw new Error(`PagBank Error: ${JSON.stringify(err.response.data)}`);
         }
         throw error;
     }

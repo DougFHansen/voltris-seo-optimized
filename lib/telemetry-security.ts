@@ -3,7 +3,7 @@
  * Redis-based distributed rate limiting (production-ready)
  */
 
-import { createClient } from '@supabase/supabase-js';
+
 
 // Rate limit tiers
 export const RATE_LIMITS = {
@@ -76,8 +76,8 @@ const PII_PATTERNS = {
     cpf: /\b\d{3}\.\d{3}\.\d{3}-\d{2}\b/g
 };
 
-export function detectAndRedactPII(payload: any): {
-    redacted: any;
+export function detectAndRedactPII(payload: Record<string, unknown>): {
+    redacted: Record<string, unknown>;
     piiFound: string[];
 } {
     const piiFound: string[] = [];
@@ -143,12 +143,12 @@ export interface EventLineage {
     storage_latency_ms: number;
 }
 
-export function trackEventLineage(event: any): EventLineage {
+export function trackEventLineage(event: Record<string, unknown>): EventLineage {
     const now = Date.now();
 
     return {
-        event_id: event.event_id || crypto.randomUUID(),
-        received_at: event.received_at || now,
+        event_id: (event.event_id as string) || crypto.randomUUID(),
+        received_at: (event.received_at as number) || now,
         validated_at: 0,
         stored_at: 0,
         processed_at: 0,
