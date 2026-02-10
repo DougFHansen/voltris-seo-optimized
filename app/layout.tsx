@@ -91,15 +91,22 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        <link rel="dns-prefetch" href="https://fundingchoicesmessages.google.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fundingchoicesmessages.google.com" />
         <link rel="preconnect" href="https://grainy-gradients.vercel.app" crossOrigin="anonymous" />
+
+        {/* CSS Crítico Inline para eliminar bloqueio de renderização */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+          *{box-sizing:border-box;margin:0;padding:0}
+          body{font-family:Roboto,sans-serif;background:#171313;color:#fff;overflow-x:hidden}
+          .fixed{position:fixed}
+          .relative{position:relative}
+          .z-50{z-index:50}
+          .z-100{z-index:100}
+          .flex{display:flex}
+          .hidden{display:none}
+          @media(min-width:768px){.md\\:flex{display:flex}.md\\:hidden{display:none}}
+        `}} />
 
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -132,9 +139,9 @@ export default function RootLayout({
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"
-          strategy="afterInteractive"
+          strategy="worker"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="worker">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

@@ -10,7 +10,17 @@ const nextConfig = {
       'framer-motion',
     ],
   },
-  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  modularizeImports: {
+    'react-icons/fi': {
+      transform: 'react-icons/fi/{{member}}',
+    },
+    'lucide-react': {
+      transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+    },
+  },
   serverExternalPackages: ['sharp'],
   images: {
     formats: ['image/webp', 'image/avif'],

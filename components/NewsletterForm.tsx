@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useTransition } from 'react';
 import { createClient } from '@/utils/supabase/client';
 
 interface NewsletterFormProps {
@@ -13,10 +13,18 @@ export default function NewsletterForm({ source }: NewsletterFormProps) {
   const [errorMessage, setErrorMessage] = useState('');
   const supabase = createClient();
   const [mounted, setMounted] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    startTransition(() => {
+      setEmail(value);
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,7 +83,7 @@ export default function NewsletterForm({ source }: NewsletterFormProps) {
         <input
           type="email"
           value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+          onChange={handleEmailChange}
           placeholder="Seu melhor e-mail"
           className="w-full px-4 py-2 bg-[#171313] border border-[#8B31FF]/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#FF4B6B] transition-colors duration-300 text-center"
           required

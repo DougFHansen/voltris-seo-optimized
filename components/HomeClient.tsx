@@ -19,17 +19,22 @@ import {
     FiDownload,
     FiPrinter,
 } from 'react-icons/fi';
-import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check } from "lucide-react";
-import AnimatedSection from '@/components/AnimatedSection';
+import { ChevronRight, Cpu, Wrench, Rocket, ShieldCheck, Zap, Check } from "lucide-react";
 import dynamic from 'next/dynamic';
+
+const AnimatedSection = dynamic(() => import('@/components/AnimatedSection'), {
+    ssr: true
+});
 
 const OptimizerMockup = dynamic(() => import('@/components/OptimizerMockup'), {
     loading: () => <div className="w-full h-[400px] bg-white/5 animate-pulse rounded-2xl" />,
     ssr: false
 });
-import { FaWhatsapp } from 'react-icons/fa';
-import { ShieldCheckIcon, CloudArrowUpIcon, CogIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
-import { loadFull } from 'tsparticles';
+
+const FaWhatsapp = dynamic(() => import('react-icons/fa').then(mod => mod.FaWhatsapp), {
+    ssr: false
+});
+
 
 import { motion } from 'framer-motion';
 
@@ -154,9 +159,7 @@ export default function HomeClient() {
 
 
 
-    const particlesInit = useCallback(async (engine: any) => {
-        await loadFull(engine);
-    }, []);
+
 
     if (minimized) {
         return (
@@ -230,9 +233,9 @@ export default function HomeClient() {
 
                             {/* Text Content - Order 1 */}
                             <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-2 lg:gap-4 z-20 w-full lg:pb-28">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 border border-[#31A8FF]/30 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
                                     <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                    <span className="text-xs sm:text-sm font-medium text-slate-200 tracking-wide">Novos Planos Empresariais Disponíveis</span>
+                                    <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">Novos Planos Empresariais Disponíveis</span>
                                 </div>
 
                                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans lg:mt-12">
