@@ -13,7 +13,7 @@ export default function AdSense({ pId }: { pId: string }) {
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pId}`}
       crossOrigin="anonymous"
-      strategy="afterInteractive" // Mudado de lazyOnload para afterInteractive para carregamento mais estável
+      strategy="lazyOnload" // Adiado para não impactar LCP/FCP
     />
   );
 }

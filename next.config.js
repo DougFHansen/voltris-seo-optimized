@@ -9,8 +9,8 @@ const nextConfig = {
       'react-icons',
       'framer-motion',
     ],
-    optimizeCss: true,
   },
+  swcMinify: true,
   serverExternalPackages: ['sharp'],
   images: {
     formats: ['image/webp', 'image/avif'],

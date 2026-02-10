@@ -21,7 +21,12 @@ import {
 } from 'react-icons/fi';
 import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check } from "lucide-react";
 import AnimatedSection from '@/components/AnimatedSection';
-import OptimizerMockup from '@/components/OptimizerMockup';
+import dynamic from 'next/dynamic';
+
+const OptimizerMockup = dynamic(() => import('@/components/OptimizerMockup'), {
+    loading: () => <div className="w-full h-[400px] bg-white/5 animate-pulse rounded-2xl" />,
+    ssr: false
+});
 import { FaWhatsapp } from 'react-icons/fa';
 import { ShieldCheckIcon, CloudArrowUpIcon, CogIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 import { loadFull } from 'tsparticles';
