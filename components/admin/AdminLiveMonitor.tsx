@@ -48,7 +48,22 @@ export default function AdminLiveMonitor() {
             if (!res.ok) return;
             const data = await res.json();
 
-            setSessions(data.sessions);
+            // LÓGICA DE AGRUPAMENTO PROFISSIONAL:
+            // Se houver múltiplas sessões para o mesmo machine_id (computador), 
+            // mostramos apenas a mais recente para evitar poluição no dashboard.
+            const uniqueSessionsMap = new Map<string, AdminSession>();
+
+            (data.sessions || []).forEach((session: AdminSession) => {
+                const mid = session.device?.machine_id;
+                if (!mid) return;
+
+                const existing = uniqueSessionsMap.get(mid);
+                if (!existing || new Date(session.last_heartbeat_at) > new Date(existing.last_heartbeat_at)) {
+                    uniqueSessionsMap.set(mid, session);
+                }
+            });
+
+            setSessions(Array.from(uniqueSessionsMap.values()));
             setStats(data.stats);
             setLoading(false);
         } catch (error) {

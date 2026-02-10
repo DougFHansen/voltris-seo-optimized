@@ -15,39 +15,56 @@ export async function POST(req: NextRequest) {
             process.env.SUPABASE_SERVICE_ROLE_KEY!
         );
 
-        // 1. Resolve Device (Thread-Safe Upsert)
-        // Isso garante que o dispositivo exista e seu hostname esteja atualizado
-        const { data: device, error: devError } = await supabase
+        // 1. Resolve Device with Duplicate Protection (Merge Logic)
+        // Buscamos todos os dispositivos com esse machine_id para evitar duplicatas no dashboard
+        const { data: existingDevices } = await supabase
             .from('devices')
-            .upsert({
-                machine_id: machine_id,
-                hostname: hostname || 'Unknown-Node',
-                status: 'online',
-                last_heartbeat: new Date().toISOString(),
-                app_version: app_version
-            }, { onConflict: 'machine_id' })
-            .select('id')
-            .single();
+            .select('id, hostname')
+            .eq('machine_id', machine_id);
 
-        if (devError || !device) {
-            console.error('[SESSION] Failed to resolve device:', devError);
-            return NextResponse.json({ error: 'Device sync failed' }, { status: 500 });
+        let deviceId: string;
+
+        if (existingDevices && existingDevices.length > 0) {
+            // Se houver mais de um, usamos o primeiro e poderíamos marcar os outros como obsoletos
+            deviceId = existingDevices[0].id;
+
+            // Atualizar o registro principal com o hostname real e status online
+            await supabase
+                .from('devices')
+                .update({
+                    hostname: hostname || existingDevices[0].hostname || 'Voltris-Node',
+                    status: 'online',
+                    last_heartbeat: new Date().toISOString(),
+                    app_version: app_version
+                })
+                .eq('id', deviceId);
+
+            // Limpeza de Sessões Antigas para TODOS os IDs vinculados a esse machine_id
+            const allDeviceIds = existingDevices.map(d => d.id);
+            await supabase
+                .from('sessions')
+                .update({ status: 'timeout', ended_at: new Date().toISOString() })
+                .in('device_id', allDeviceIds)
+                .in('status', ['active', 'idle']);
+        } else {
+            // Criar novo dispositivo se não existir
+            const { data: newDevice, error: createError } = await supabase
+                .from('devices')
+                .insert({
+                    machine_id: machine_id,
+                    hostname: hostname || 'Voltris-Node',
+                    status: 'online',
+                    last_heartbeat: new Date().toISOString(),
+                    app_version: app_version
+                })
+                .select('id')
+                .single();
+
+            if (createError) throw createError;
+            deviceId = newDevice.id;
         }
 
-        const deviceId = device.id;
-
-        // 2. Lingering Session Cleanup
-        // Encerramos sessões que ficaram "penduradas" para não poluir o dashboard
-        await supabase
-            .from('sessions')
-            .update({
-                status: 'timeout',
-                ended_at: new Date().toISOString()
-            })
-            .eq('device_id', deviceId)
-            .in('status', ['active', 'idle']);
-
-        // 3. Create Fresh Session
+        // 2. Iniciar Nova Sessão Limpa
         const { data: session, error: sessionError } = await supabase
             .from('sessions')
             .insert({
@@ -60,21 +77,14 @@ export async function POST(req: NextRequest) {
             .select()
             .single();
 
-        if (sessionError || !session) {
-            console.error('[SESSION] Failed to create session:', sessionError);
-            return NextResponse.json({ error: 'Session creation failed' }, { status: 500 });
-        }
+        if (sessionError) throw sessionError;
 
-        // 4. Log APP_OPEN Event
+        // 3. Registrar Evento de Abertura
         await supabase.from('session_events').insert({
             session_id: session.id,
             device_id: deviceId,
             event_type: 'APP_OPEN',
-            metadata: {
-                app_version,
-                hostname: hostname || 'Unknown',
-                source: 'desktop_app'
-            }
+            metadata: { hostname: hostname, app_version }
         });
 
         return NextResponse.json({
@@ -84,7 +94,7 @@ export async function POST(req: NextRequest) {
         });
 
     } catch (err: any) {
-        console.error('[SESSION] Global Error:', err);
-        return NextResponse.json({ error: err.message || 'Server Error' }, { status: 500 });
+        console.error('[SESSION_START] Critical Error:', err);
+        return NextResponse.json({ error: err.message }, { status: 500 });
     }
 }

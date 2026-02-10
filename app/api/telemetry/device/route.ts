@@ -30,32 +30,46 @@ export async function POST(req: NextRequest) {
             process.env.SUPABASE_SERVICE_ROLE_KEY!
         );
 
-        // 1. Upsert Device (Thread-Safe via onConflict machine_id)
-        // Isso garante que o registro do dispositivo exista antes do perfil
-        const { data: device, error: devError } = await supabase
+        // 1. Resolve Device with Duplicate Protection
+        const { data: existingDevices } = await supabase
             .from('devices')
-            .upsert({
-                machine_id: machine_id,
-                hostname: hostname || 'Unknown-Node',
-                status: 'online',
-                last_heartbeat: new Date().toISOString(),
-                app_version: app_version || '1.0.0'
-            }, {
-                onConflict: 'machine_id',
-                ignoreDuplicates: false // Queremos atualizar campos se houver conflito
-            })
-            .select('id')
-            .single();
+            .select('id, hostname')
+            .eq('machine_id', machine_id);
 
-        if (devError || !device) {
-            console.error('[TELEMETRY] Failed to upsert device:', devError);
-            return NextResponse.json({ error: 'Device sync failed', details: devError }, { status: 500 });
+        let deviceInternalId: string;
+
+        if (existingDevices && existingDevices.length > 0) {
+            deviceInternalId = existingDevices[0].id;
+
+            // Atualizar hostname e status do dispositivo principal
+            await supabase
+                .from('devices')
+                .update({
+                    hostname: hostname || existingDevices[0].hostname || 'Voltris-Node',
+                    status: 'online',
+                    last_heartbeat: new Date().toISOString(),
+                    app_version: app_version || '1.0.0'
+                })
+                .eq('id', deviceInternalId);
+        } else {
+            // Criar se não existir
+            const { data: newDevice, error: createError } = await supabase
+                .from('devices')
+                .insert({
+                    machine_id: machine_id,
+                    hostname: hostname || 'Voltris-Node',
+                    status: 'online',
+                    last_heartbeat: new Date().toISOString(),
+                    app_version: app_version || '1.0.0'
+                })
+                .select('id')
+                .single();
+
+            if (createError) throw createError;
+            deviceInternalId = newDevice.id;
         }
 
-        const deviceInternalId = device.id;
-
         // 2. Upsert Device Profile (Hardware Details)
-        // Usamos o ID interno (UUID) do banco para manter integridade referencial
         const { error: profileError } = await supabase
             .from('device_profiles')
             .upsert({
