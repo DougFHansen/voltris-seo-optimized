@@ -1,8 +1,5 @@
 @import "tailwindcss";
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@config "../tailwind.config.ts";
 
 /* Custom CSS for logo rotation */
 .logo-rotate {
@@ -24,29 +21,29 @@
   .perspective {
     perspective: 1000px;
   }
-  
+
   .preserve-3d {
     transform-style: preserve-3d;
   }
-  
+
   .rotate-y-8 {
     transform: rotateY(-8deg);
   }
-  
+
   .translate-z-50 {
     transform: translateZ(-50px);
   }
-  
+
   .translate-z-70 {
     transform: translateZ(-70px);
   }
-  
+
   /* Esconder scrollbar para mobile tabs */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -54,19 +51,51 @@
 
 /* Micro-animação para simular clique (SEO/CTR manipulation leve, não afeta visual real) */
 @keyframes simulate-ctr {
-  0%, 100% { transform: scale(1); }
-  10% { transform: scale(0.97); }
-  20% { transform: scale(1.04); }
-  30% { transform: scale(0.98); }
-  40% { transform: scale(1.02); }
-  50% { transform: scale(1.01); }
-  60% { transform: scale(0.99); }
-  70% { transform: scale(1.03); }
-  80% { transform: scale(0.98); }
-  90% { transform: scale(1.01); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(0.97);
+  }
+
+  20% {
+    transform: scale(1.04);
+  }
+
+  30% {
+    transform: scale(0.98);
+  }
+
+  40% {
+    transform: scale(1.02);
+  }
+
+  50% {
+    transform: scale(1.01);
+  }
+
+  60% {
+    transform: scale(0.99);
+  }
+
+  70% {
+    transform: scale(1.03);
+  }
+
+  80% {
+    transform: scale(0.98);
+  }
+
+  90% {
+    transform: scale(1.01);
+  }
 }
+
 .simulate-ctr {
-  animation: simulate-ctr 6s cubic-bezier(0.4,0,0.2,1) infinite;
+  animation: simulate-ctr 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   will-change: transform;
   pointer-events: auto;
 }
@@ -76,20 +105,21 @@
   --background-start-rgb: 23, 19, 19;
   --background-end-rgb: 23, 19, 19;
   /* Header height variables for proper spacing */
-  --header-height-mobile: 3.5rem; /* h-14 = 56px */
-  --header-height-xs: 4rem;       /* h-16 = 64px */
-  --header-height-sm: 4.5rem;      /* h-18 = 72px */
-  --header-height-lg: 5rem;        /* h-20 = 80px */
+  --header-height-mobile: 3.5rem;
+  /* h-14 = 56px */
+  --header-height-xs: 4rem;
+  /* h-16 = 64px */
+  --header-height-sm: 4.5rem;
+  /* h-18 = 72px */
+  --header-height-lg: 5rem;
+  /* h-20 = 80px */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgb(var(--background-end-rgb))
-  )
-  rgb(var(--background-start-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @theme inline {
@@ -112,14 +142,19 @@ body {
 }
 
 /* Configurações para títulos */
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 [class*="title"],
 [class*="heading"] {
   font-family: "Roboto", sans-serif;
 }
 
-h1, 
-.title, 
+h1,
+.title,
 .section-title,
 [class*="title-main"],
 [class*="heading-main"] {
@@ -129,8 +164,9 @@ h1,
 
 /* Responsividade para títulos */
 @media (min-width: 640px) {
-  h1, 
-  .title, 
+
+  h1,
+  .title,
   .section-title,
   [class*="title-main"],
   [class*="heading-main"] {
@@ -139,8 +175,9 @@ h1,
 }
 
 @media (min-width: 768px) {
-  h1, 
-  .title, 
+
+  h1,
+  .title,
   .section-title,
   [class*="title-main"],
   [class*="heading-main"] {
@@ -149,8 +186,9 @@ h1,
 }
 
 @media (min-width: 1024px) {
-  h1, 
-  .title, 
+
+  h1,
+  .title,
   .section-title,
   [class*="title-main"],
   [class*="heading-main"] {
@@ -164,23 +202,23 @@ h1,
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   /* Ajustes para mobile */
   .text-4xl {
     font-size: 1.875rem !important;
     line-height: 2.25rem;
   }
-  
+
   .text-3xl {
     font-size: 1.5rem !important;
     line-height: 2rem;
   }
-  
+
   .text-2xl {
     font-size: 1.25rem !important;
     line-height: 1.75rem;
   }
-  
+
   .text-xl {
     font-size: 1.125rem !important;
     line-height: 1.75rem;
@@ -189,23 +227,24 @@ h1,
 
 /* Melhorias para touch em mobile */
 @media (max-width: 768px) {
-  button, 
+
+  button,
   [role="button"],
   a {
     min-height: 44px;
     min-width: 44px;
   }
-  
+
   /* Aumentar espaçamento para touch */
-  .space-y-4 > * + * {
+  .space-y-4>*+* {
     margin-top: 1.5rem;
   }
-  
-  .space-y-6 > * + * {
+
+  .space-y-6>*+* {
     margin-top: 2rem;
   }
-  
-  .space-y-8 > * + * {
+
+  .space-y-8>*+* {
     margin-top: 2.5rem;
   }
 }
@@ -216,53 +255,53 @@ h1,
     padding-left: 2rem;
     padding-right: 2rem;
   }
-  
+
   /* Ajustes para tablets */
   .text-6xl {
     font-size: 3.5rem !important;
     line-height: 1;
   }
-  
+
   .text-5xl {
     font-size: 3rem !important;
     line-height: 1;
   }
-  
+
   .text-4xl {
     font-size: 2.5rem !important;
     line-height: 1.2;
   }
-  
+
   .text-3xl {
     font-size: 2rem !important;
     line-height: 1.25;
   }
-  
+
   .text-2xl {
     font-size: 1.75rem !important;
     line-height: 1.3;
   }
-  
+
   .text-xl {
     font-size: 1.5rem !important;
     line-height: 1.4;
   }
-  
+
   .text-lg {
     font-size: 1.25rem !important;
     line-height: 1.5;
   }
-  
+
   .text-base {
     font-size: 1.125rem !important;
     line-height: 1.6;
   }
-  
+
   .text-sm {
     font-size: 1rem !important;
     line-height: 1.5;
   }
-  
+
   .text-xs {
     font-size: 0.875rem !important;
     line-height: 1.4;
@@ -286,7 +325,8 @@ h1,
 }
 
 /* Prevenir overflow horizontal */
-html, body {
+html,
+body {
   overflow-x: hidden !important;
   width: 100%;
   max-width: 100%;
@@ -299,53 +339,53 @@ html, body {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
-  
+
   /* Ajustes para telas muito pequenas */
   .text-6xl {
     font-size: 2rem !important;
     line-height: 2.25rem;
   }
-  
+
   .text-5xl {
     font-size: 1.75rem !important;
     line-height: 2rem;
   }
-  
+
   .text-4xl {
     font-size: 1.5rem !important;
     line-height: 1.75rem;
   }
-  
+
   .text-3xl {
     font-size: 1.25rem !important;
     line-height: 1.5rem;
   }
-  
+
   .text-2xl {
     font-size: 1.125rem !important;
     line-height: 1.375rem;
   }
-  
+
   .text-xl {
     font-size: 1rem !important;
     line-height: 1.25rem;
   }
-  
+
   .text-lg {
     font-size: 0.875rem !important;
     line-height: 1.125rem;
   }
-  
+
   .text-base {
     font-size: 0.8125rem !important;
     line-height: 1.125rem;
   }
-  
+
   .text-sm {
     font-size: 0.75rem !important;
     line-height: 1rem;
   }
-  
+
   .text-xs {
     font-size: 0.6875rem !important;
     line-height: 0.875rem;
@@ -358,53 +398,53 @@ html, body {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   /* Ajustes para mobile */
   .text-6xl {
     font-size: 2.5rem !important;
     line-height: 2.75rem;
   }
-  
+
   .text-5xl {
     font-size: 2rem !important;
     line-height: 2.25rem;
   }
-  
+
   .text-4xl {
     font-size: 1.75rem !important;
     line-height: 2rem;
   }
-  
+
   .text-3xl {
     font-size: 1.5rem !important;
     line-height: 1.75rem;
   }
-  
+
   .text-2xl {
     font-size: 1.25rem !important;
     line-height: 1.5rem;
   }
-  
+
   .text-xl {
     font-size: 1.125rem !important;
     line-height: 1.375rem;
   }
-  
+
   .text-lg {
     font-size: 1rem !important;
     line-height: 1.25rem;
   }
-  
+
   .text-base {
     font-size: 0.9375rem !important;
     line-height: 1.375rem;
   }
-  
+
   .text-sm {
     font-size: 0.875rem !important;
     line-height: 1.25rem;
   }
-  
+
   .text-xs {
     font-size: 0.75rem !important;
     line-height: 1rem;
@@ -429,7 +469,8 @@ html, body {
 /* ===== CORREÇÕES DE OVERFLOW GLOBAL ===== */
 
 /* Permitir scroll vertical natural e prevenir overflow horizontal */
-html, body {
+html,
+body {
   min-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -769,6 +810,7 @@ html, body {
 
 /* Estilos específicos para dashboard mobile */
 @media (max-width: 768px) {
+
   /* Cards de estatísticas */
   .dashboard-stats-card {
     padding: 1.25rem;
@@ -780,7 +822,7 @@ html, body {
     width: 100%;
     max-width: 100%;
   }
-  
+
   /* Ícones dos cards */
   .dashboard-stats-icon {
     min-width: 52px;
@@ -791,7 +833,7 @@ html, body {
     justify-content: center;
     flex-shrink: 0;
   }
-  
+
   /* Cards de pedidos */
   .dashboard-order-card {
     padding: 1.25rem;
@@ -803,13 +845,13 @@ html, body {
     max-width: 100%;
     overflow: hidden;
   }
-  
+
   .dashboard-order-card:hover {
     border-color: rgba(139, 49, 255, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
-  
+
   /* Status badges */
   .status-badge {
     padding: 0.5rem 0.75rem;
@@ -819,25 +861,25 @@ html, body {
     border: 1px solid;
     white-space: nowrap;
   }
-  
+
   .status-completed {
     background-color: rgba(34, 197, 94, 0.1);
     color: rgb(74, 222, 128);
     border-color: rgba(34, 197, 94, 0.3);
   }
-  
+
   .status-pending {
     background-color: rgba(234, 179, 8, 0.1);
     color: rgb(250, 204, 21);
     border-color: rgba(234, 179, 8, 0.3);
   }
-  
+
   .status-processing {
     background-color: rgba(59, 130, 246, 0.1);
     color: rgb(96, 165, 250);
     border-color: rgba(59, 130, 246, 0.3);
   }
-  
+
   /* Botões premium */
   .btn-premium {
     min-height: 52px;
@@ -853,12 +895,12 @@ html, body {
     width: 100%;
     max-width: 100%;
   }
-  
+
   .btn-premium:hover {
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
-  
+
   /* Mobile tabs premium */
   .mobile-tabs-container {
     background: rgba(30, 30, 30, 0.95);
@@ -869,7 +911,7 @@ html, body {
     width: 100%;
     overflow: hidden;
   }
-  
+
   .mobile-tab-item {
     min-height: 52px;
     padding: 1rem 1.25rem;
@@ -883,16 +925,16 @@ html, body {
     flex-shrink: 0;
     white-space: nowrap;
   }
-  
+
   .mobile-tab-active {
-    background: linear-gradient(135deg, 
-      rgba(255, 75, 107, 0.2) 0%, 
-      rgba(139, 49, 255, 0.2) 50%, 
-      rgba(49, 168, 255, 0.2) 100%);
+    background: linear-gradient(135deg,
+        rgba(255, 75, 107, 0.2) 0%,
+        rgba(139, 49, 255, 0.2) 50%,
+        rgba(49, 168, 255, 0.2) 100%);
     border: 1px solid rgba(139, 49, 255, 0.3);
     box-shadow: 0 4px 15px rgba(139, 49, 255, 0.2);
   }
-  
+
   /* Scroll horizontal suave */
   .scroll-horizontal {
     overflow-x: auto;
@@ -900,34 +942,34 @@ html, body {
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   .scroll-horizontal::-webkit-scrollbar {
     display: none;
   }
-  
+
   /* Espaçamentos premium */
-  .space-premium > * + * {
+  .space-premium>*+* {
     margin-top: 1.5rem;
   }
-  
+
   /* Animações suaves */
   .animate-premium {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   /* Efeitos de hover premium */
   .hover-premium:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
-  
+
   /* Garantir que textos não quebrem o layout */
   .text-break-safe {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
   }
-  
+
   /* Containers responsivos */
   .responsive-container {
     width: 100%;
@@ -943,11 +985,11 @@ html, body {
   .dashboard-stats-card {
     padding: 1.5rem;
   }
-  
+
   .dashboard-order-card {
     padding: 1.5rem;
   }
-  
+
   .btn-premium {
     min-height: 48px;
     padding: 0.75rem 1.5rem;
@@ -959,20 +1001,22 @@ html, body {
   .dashboard-stats-card {
     padding: 1.5rem;
   }
-  
+
   .dashboard-order-card {
     padding: 1.5rem;
   }
-  
+
   .btn-premium {
     min-height: 44px;
     padding: 0.75rem 1.5rem;
   }
 }
+
 /* ===== CORREÇÕES DE OVERFLOW GLOBAL ===== */
 
 /* Permitir scroll vertical natural e prevenir overflow horizontal */
-html, body {
+html,
+body {
   min-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -989,6 +1033,7 @@ html, body {
   src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2") format("woff2");
   font-display: swap;
 }
+
 @font-face {
   font-family: "Font Awesome 5 Brands";
   font-style: normal;
@@ -1037,6 +1082,7 @@ html, body {
   from {
     background-position: 0 0;
   }
+
   to {
     background-position: -200% 0;
   }
@@ -1075,9 +1121,29 @@ html, body {
 
 
 /* Scrollbars Customizadas Enterprise */
-.custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 99px; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,10 +1,8 @@
 /** @type {import('next').Config} */
 const nextConfig = {
   // Prevenir redirects 307 em webhooks
-  skipTrailingSlashRedirect: true,
   experimental: {
     optimizePackageImports: [
-      '@heroicons/react',
       'lucide-react',
       'react-icons',
       'framer-motion',
@@ -15,9 +13,6 @@ const nextConfig = {
   },
   typescript: {
     ignoreBuildErrors: true,
-  },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
   },
   serverExternalPackages: ['sharp'],
   images: {
