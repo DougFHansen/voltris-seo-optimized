@@ -91,10 +91,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <head>
-        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://grainy-gradients.vercel.app" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://grainy-gradients.vercel.app" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
 
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -102,39 +102,25 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#8B31FF" />
         <meta name="msapplication-TileColor" content="#8B31FF" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="VOLTRIS" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="application-name" content="VOLTRIS" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="language" content="Portuguese" />
-        <meta name="geo.region" content="BR" />
-        <meta name="geo.country" content="Brasil" />
-        <meta name="distribution" content="global" />
-        <meta name="rating" content="general" />
-        <meta name="revisit-after" content="7 days" />
-
-        <meta name="msvalidate.01" content="92524862D63347408E773A7CD62B94DD" />
 
         {/* Google AdSense */}
         <AdSense pId={ADSENSE_CONFIG.PUBLISHER_ID} />
 
-        {/* Bing-specific meta tags - Optimized */}
-        <meta name="geo.region" content="BR-SP" />
-        <meta name="geo.placename" content="São Paulo" />
-
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"
-          strategy="worker"
+          strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="worker">
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-XY0CKLVY2B');
+            gtag('config', 'G-XY0CKLVY2B', {
+              page_path: window.location.pathname,
+            });
           `}
         </Script>
 

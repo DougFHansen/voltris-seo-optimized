@@ -2,10 +2,12 @@
 const nextConfig = {
   // Prevenir redirects 307 em webhooks
   experimental: {
+    optimizeCss: true,
     optimizePackageImports: [
       'lucide-react',
       'react-icons',
       'framer-motion',
+      '@heroicons/react',
     ],
   },
   eslint: {
