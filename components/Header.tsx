@@ -142,6 +142,7 @@ export default function Header() {
             <button
               className="p-2 text-white"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
             >
               {isMobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
             </button>
@@ -165,7 +166,7 @@ export default function Header() {
                     key={link.path}
                     href={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-2xl font-bold py-4 border-b border-white/5 flex items-center justify-between group ${pathname === link.path ? 'text-white' : 'text-slate-500 hover:text-white'
+                    className={`text-2xl font-bold py-4 border-b border-white/5 flex items-center justify-between group ${pathname === link.path ? 'text-white' : 'text-slate-400 hover:text-white'
                       }`}
                   >
                     <span className="group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">

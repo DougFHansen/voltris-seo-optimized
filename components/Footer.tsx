@@ -53,10 +53,10 @@ export default function Footer() {
               Soluções em informática remota para todo o Brasil. Tecnologia de ponta e segurança.
             </p>
             <div className="flex gap-3">
-              <a href="https://instagram.com/voltristech" target="_blank" className="p-2.5 rounded-xl bg-white/5 hover:bg-[#E1306C]/10 hover:text-[#E1306C] text-slate-400 transition-all border border-transparent hover:border-[#E1306C]/20">
+              <a href="https://instagram.com/voltristech" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-[#E1306C]/10 hover:text-[#E1306C] text-slate-400 transition-all border border-transparent hover:border-[#E1306C]/20" aria-label="Siga-nos no Instagram">
                 <FiInstagram className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com/company/voltris" target="_blank" className="p-2.5 rounded-xl bg-white/5 hover:bg-[#0077B5]/10 hover:text-[#0077B5] text-slate-400 transition-all border border-transparent hover:border-[#0077B5]/20">
+              <a href="https://linkedin.com/company/voltris" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-[#0077B5]/10 hover:text-[#0077B5] text-slate-400 transition-all border border-transparent hover:border-[#0077B5]/20" aria-label="Siga-nos no LinkedIn">
                 <FiLinkedin className="w-5 h-5" />
               </a>
             </div>
@@ -67,7 +67,7 @@ export default function Footer() {
             <h3 className="font-bold text-white text-base">Receba Novidades</h3>
             <div className="space-y-3">
               <NewsletterForm source="site" />
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 Receba dicas e promoções exclusivas da Voltris diretamente no seu e-mail.
               </p>
             </div>
@@ -131,12 +131,12 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left space-y-1">
-            <p className="text-xs font-semibold text-slate-500">CNPJ: 47.241.737/0001-60</p>
-            <p className="text-xs text-slate-600">© {year} VOLTRIS. Todos os direitos reservados.</p>
+            <p className="text-xs font-semibold text-slate-400">CNPJ: 47.241.737/0001-60</p>
+            <p className="text-xs text-slate-400">© {year} VOLTRIS. Todos os direitos reservados.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
             {links.legal.map(l => (
-              <Link key={l.path} href={l.path} className="text-xs text-slate-500 hover:text-white transition-colors relative group">
+              <Link key={l.path} href={l.path} className="text-xs text-slate-400 hover:text-white transition-colors relative group">
                 {l.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>

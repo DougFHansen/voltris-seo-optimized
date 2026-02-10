@@ -89,12 +89,12 @@ export default function OptimizerMockup() {
                     </div>
                     <div>
                         <div className="font-extrabold text-xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Voltris Optimizer</div>
-                        <div className="text-xs text-white/40 flex items-center gap-1.5">
+                        <div className="text-xs text-slate-400 flex items-center gap-1.5">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                             </span>
-                            Otimização Ativa • <span className="text-white/30">{scannedCount} items verificados</span>
+                            Otimização Ativa • <span className="text-slate-500">{scannedCount} items verificados</span>
                         </div>
                     </div>
                 </div>
@@ -125,9 +125,9 @@ export default function OptimizerMockup() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2 }}
                     >
-                        {fps} <span className="text-base font-normal text-white/40">FPS</span>
+                        {fps} <span className="text-base font-normal text-slate-400">FPS</span>
                     </motion.div>
-                    <div className="text-xs text-white/40">Média em Jogos</div>
+                    <div className="text-xs text-slate-400">Média em Jogos</div>
                 </div>
 
                 {/* Metric 2 - Latency */}
@@ -148,7 +148,7 @@ export default function OptimizerMockup() {
                     >
                         {latency}ms
                     </motion.div>
-                    <div className="text-xs text-white/40">Latência de Sistema</div>
+                    <div className="text-xs text-slate-400">Latência de Sistema</div>
                 </div>
             </div>
 
@@ -167,8 +167,8 @@ export default function OptimizerMockup() {
                             <Server className="w-4 h-4 text-[#8B31FF]" />
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-sm text-white/90 font-medium">Otimizando Processo</span>
-                            <span className="text-xs text-white/40 font-mono">{currentProcess}</span>
+                            <span className="text-sm text-white font-medium">Otimizando Processo</span>
+                            <span className="text-xs text-slate-400 font-mono">{currentProcess}</span>
                         </div>
                     </div>
                     <span className="text-xs text-[#8B31FF] font-medium relative z-10 animate-pulse">Ativo...</span>
@@ -176,10 +176,10 @@ export default function OptimizerMockup() {
 
                 <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border-l-2 border-[#31A8FF]">
                     <div className="flex items-center gap-3">
-                        <MonitorSmartphone className="w-4 h-4 text-white/60" />
+                        <MonitorSmartphone className="w-4 h-4 text-slate-300" />
                         <div className="flex flex-col">
-                            <span className="text-sm text-white/80">Input Lag Reduction</span>
-                            <span className="text-[10px] text-white/30 uppercase tracking-wider">{currentAction}</span>
+                            <span className="text-sm text-slate-200">Input Lag Reduction</span>
+                            <span className="text-[10px] text-slate-400 uppercase tracking-wider">{currentAction}</span>
                         </div>
                     </div>
                     <span className="text-xs text-[#31A8FF] font-medium">Máximo</span>
@@ -188,7 +188,7 @@ export default function OptimizerMockup() {
 
             {/* Decorative Graph/Line - More Dynamic */}
             <div className="mt-4 pt-4 border-t border-white/5">
-                <div className="flex items-center justify-between text-xs text-white/30 mb-2">
+                <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
                     <span>Carga do Sistema</span>
                     <span className="text-[#00FF94]">Otimizado em Tempo Real</span>
                 </div>
