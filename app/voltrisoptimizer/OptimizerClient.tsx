@@ -334,14 +334,14 @@ export default function OptimizerClient() {
                             <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full max-w-lg mx-auto">
                                 <div className="flex flex-col w-full gap-2">
                                     <a
-                                        href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.1/VoltrisOptimizerInstaller.exe"
+                                        href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
                                         className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                     >
                                         <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
                                         DOWNLOAD x64
                                     </a>
                                     <a
-                                        href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.1/VoltrisOptimizerInstallerX86.exe"
+                                        href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
                                         className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
                                     >
                                         Download Versão x86 (32 bits)
@@ -545,14 +545,14 @@ export default function OptimizerClient() {
 
                         <div className="flex flex-col items-center gap-4">
                             <a
-                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.1/VoltrisOptimizerInstaller.exe"
+                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
                                 className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
                             >
                                 <Download className="w-6 h-6" />
                                 BAIXAR AGORA (x64)
                             </a>
                             <a
-                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.1/VoltrisOptimizerInstallerX86.exe"
+                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
                                 className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
                             >
                                 Ou baixe a versão 32 bits (x86)

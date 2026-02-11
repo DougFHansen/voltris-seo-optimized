@@ -129,14 +129,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                         <p className="text-xs text-slate-500 mb-6 uppercase tracking-widest font-bold">Não tem o programa?</p>
                         <div className="flex flex-col items-center gap-3">
                             <a
-                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.1/VoltrisOptimizerInstaller.exe"
+                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
                                 className="group relative px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-xl overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-3"
                             >
                                 <FiDownload className="w-5 h-5 group-hover:translate-y-[2px] transition-transform duration-300" />
                                 DOWNLOAD x64
                             </a>
                             <a
-                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.1/VoltrisOptimizerInstallerX86.exe"
+                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
                                 className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium opacity-80 hover:opacity-100"
                             >
                                 Download Versão x86 (32 bits)
