@@ -128,6 +128,12 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     <div className="pt-12 border-t border-white/10">
                         <p className="text-xs text-slate-500 mb-6 uppercase tracking-widest font-bold">Não tem o programa?</p>
                         <div className="flex flex-col items-center gap-3">
+                            <div className="flex items-center gap-2 mb-2">
+                                <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
+                                    v1.0.0.2
+                                </span>
+                            </div>
                             <a
                                 href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
                                 className="group relative px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-xl overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-3"

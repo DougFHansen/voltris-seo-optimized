@@ -331,29 +331,38 @@ export default function OptimizerClient() {
                                 Otimização inteligente para Gamers, Empresas e High-End Workstations.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full max-w-lg mx-auto">
-                                <div className="flex flex-col w-full gap-2">
-                                    <a
-                                        href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
-                                        className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
-                                    >
-                                        <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
-                                        DOWNLOAD x64
-                                    </a>
-                                    <a
-                                        href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
-                                        className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
-                                    >
-                                        Download Versão x86 (32 bits)
-                                    </a>
+                            <div className="flex flex-col items-center gap-3 w-full max-w-lg mx-auto">
+                                <div className="flex items-center gap-2">
+                                    <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                    <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
+                                        v1.0.0.2
+                                    </span>
                                 </div>
 
-                                <Link
-                                    href="/voltrisoptimizer/como-funciona"
-                                    className="w-full px-6 py-3 bg-white/[0.03] text-white font-medium text-base rounded-lg border border-white/10 hover:bg-white/[0.08] hover:border-white/20 transition-all flex items-center justify-center backdrop-blur-md"
-                                >
-                                    Como Funciona
-                                </Link>
+                                <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full">
+                                    <div className="flex flex-col w-full gap-2">
+                                        <a
+                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
+                                            className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
+                                        >
+                                            <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
+                                            DOWNLOAD x64
+                                        </a>
+                                        <a
+                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
+                                            className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
+                                        >
+                                            Download Versão x86 (32 bits)
+                                        </a>
+                                    </div>
+
+                                    <Link
+                                        href="/voltrisoptimizer/como-funciona"
+                                        className="w-full px-6 py-3 bg-white/[0.03] text-white font-medium text-base rounded-lg border border-white/10 hover:bg-white/[0.08] hover:border-white/20 transition-all flex items-center justify-center backdrop-blur-md"
+                                    >
+                                        Como Funciona
+                                    </Link>
+                                </div>
                             </div>
                         </motion.div>
                     </div>
@@ -544,6 +553,12 @@ export default function OptimizerClient() {
                         </p>
 
                         <div className="flex flex-col items-center gap-4">
+                            <div className="flex items-center gap-2 mb-2">
+                                <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
+                                    v1.0.0.2
+                                </span>
+                            </div>
                             <a
                                 href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
                                 className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
