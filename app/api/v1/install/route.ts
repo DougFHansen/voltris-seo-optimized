@@ -37,9 +37,11 @@ export async function POST(request: NextRequest) {
                 app_version: app_version,
                 cpu_name: hardware?.cpu_name,
                 ram_gb_total: hardware?.ram_gb_total,
-                disk_main_type: hardware?.disk_main_type,
+                gpu_name: hardware?.gpu_name,
+                disk_type: hardware?.disk_type || hardware?.disk_main_type, // Suportar ambos os nomes
                 os_name: hardware?.os_name,
                 os_build: hardware?.os_build,
+                windows_edition: hardware?.windows_edition,
                 architecture: hardware?.architecture,
                 last_heartbeat: new Date().toISOString(),
                 updated_at: new Date().toISOString()

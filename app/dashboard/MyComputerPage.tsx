@@ -210,8 +210,16 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         <span className="text-sm truncate">{inst.cpu_name}</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-slate-300">
-                                        <FiShield className="text-[#8B31FF] w-5 h-5" />
-                                        <span className="text-sm">v{inst.app_version} • {inst.ram_gb_total}GB RAM</span>
+                                        <FiZap className="text-[#8B31FF] w-5 h-5" />
+                                        <span className="text-sm truncate">{inst.gpu_name || 'GPU não detectada'}</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-slate-300">
+                                        <FiShield className="text-emerald-400 w-5 h-5" />
+                                        <span className="text-sm">{inst.ram_gb_total}GB RAM • {inst.disk_type || 'HDD'}</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-slate-400">
+                                        <FiActivity className="w-4 h-4" />
+                                        <span className="text-xs">v{inst.app_version}</span>
                                     </div>
                                     <div className="flex items-center gap-3 text-slate-400">
                                         <FiClock className="w-4 h-4" />
