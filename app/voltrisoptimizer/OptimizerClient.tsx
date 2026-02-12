@@ -686,72 +686,63 @@ export default function OptimizerClient() {
                                         IconComponent: Zap,
                                         title: 'Otimização Automática',
                                         desc: 'Auto otimização completa do sistema com um clique. Acelera inicialização, navegação e abertura de programas.',
-                                        color: 'from-[#FF4B6B] to-[#FF8F6B]',
-                                        iconColor: '#FF4B6B',
+                                        iconClass: 'text-[#FF4B6B]',
                                         bgGlow: 'bg-[#FF4B6B]/20'
                                     },
                                     {
                                         IconComponent: Database,
                                         title: 'Otimização de RAM',
                                         desc: 'Liberação inteligente de memória RAM que mantém seu computador responsivo mesmo com múltiplos programas abertos.',
-                                        color: 'from-[#8B31FF] to-[#B96BFF]',
-                                        iconColor: '#8B31FF',
+                                        iconClass: 'text-[#8B31FF]',
                                         bgGlow: 'bg-[#8B31FF]/20'
                                     },
                                     {
                                         IconComponent: Activity,
                                         title: 'Limpeza de Sistema',
                                         desc: 'Remove arquivos temporários, cache e lixo do sistema para liberar espaço e melhorar desempenho.',
-                                        color: 'from-[#31A8FF] to-[#6BA8FF]',
-                                        iconColor: '#31A8FF',
+                                        iconClass: 'text-[#31A8FF]',
                                         bgGlow: 'bg-[#31A8FF]/20'
                                     },
                                     {
                                         IconComponent: Wifi,
                                         title: 'Otimização de Rede',
                                         desc: 'Ajustes TCP/IP para reduzir latência, ping e melhorar velocidade de conexão em jogos online.',
-                                        color: 'from-[#00E5FF] to-[#00FFCA]',
-                                        iconColor: '#00E5FF',
+                                        iconClass: 'text-[#00E5FF]',
                                         bgGlow: 'bg-[#00E5FF]/20'
                                     },
                                     {
                                         IconComponent: Brain,
                                         title: 'Modo Gamer Inteligente',
                                         desc: 'IA adaptativa que prioriza recursos para jogos, desativa processos desnecessários e maximiza FPS automaticamente.',
-                                        color: 'from-[#FFD700] to-[#FFAA00]',
-                                        iconColor: '#FFD700',
+                                        iconClass: 'text-[#FFD700]',
                                         bgGlow: 'bg-[#FFD700]/20'
                                     },
                                     {
                                         IconComponent: ShieldCheck,
                                         title: 'Ponto de Restauração',
                                         desc: 'Cria backup automático do sistema antes de otimizações para garantir segurança total.',
-                                        color: 'from-[#00FF94] to-[#00CC76]',
-                                        iconColor: '#00FF94',
+                                        iconClass: 'text-[#00FF94]',
                                         bgGlow: 'bg-[#00FF94]/20'
                                     },
                                     {
                                         IconComponent: Gauge,
                                         title: 'Plano de Energia',
                                         desc: 'Configura perfil de alto desempenho para extrair máxima potência do hardware.',
-                                        color: 'from-[#FF6B9D] to-[#C44569]',
-                                        iconColor: '#FF6B9D',
+                                        iconClass: 'text-[#FF6B9D]',
                                         bgGlow: 'bg-[#FF6B9D]/20'
                                     },
                                     {
                                         IconComponent: Cpu,
                                         title: 'Análise de Sistema',
                                         desc: 'Diagnóstico completo do PC identificando gargalos e problemas de performance.',
-                                        color: 'from-[#9B59B6] to-[#8E44AD]',
-                                        iconColor: '#9B59B6',
+                                        iconClass: 'text-[#9B59B6]',
                                         bgGlow: 'bg-[#9B59B6]/20'
                                     },
                                     {
                                         IconComponent: Layers,
                                         title: 'Reparo do Sistema',
                                         desc: 'Corrige erros do Windows, arquivos corrompidos e problemas de estabilidade.',
-                                        color: 'from-[#3498DB] to-[#2980B9]',
-                                        iconColor: '#3498DB',
+                                        iconClass: 'text-[#3498DB]',
                                         bgGlow: 'bg-[#3498DB]/20'
                                     }
                                 ].map((item, i) => {
@@ -772,7 +763,7 @@ export default function OptimizerClient() {
                                             {/* Content */}
                                             <div className="relative z-10">
                                                 <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                                                    <Icon className="w-7 h-7 group-hover:scale-110 transition-transform duration-300" style={{ color: item.iconColor }} />
+                                                    <Icon className={`w-7 h-7 ${item.iconClass} group-hover:scale-110 transition-transform duration-300`} />
                                                 </div>
                                                 <h3 className="text-lg font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-300">{item.title}</h3>
                                                 <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">{item.desc}</p>
