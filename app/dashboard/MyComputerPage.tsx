@@ -247,99 +247,197 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     </div>
                                 </div>
 
-                                {/* Actions */}
-                                <div className="space-y-3 pt-6 border-t border-white/10">
-                                    <div className="flex gap-3">
-                                        <button
-                                            onClick={async () => {
-                                                const toastId = toast.loading('⚡ Enviando comando...');
-                                                try {
-                                                    await fetch('/api/v1/commands/create', {
-                                                        method: 'POST',
-                                                        headers: { 'Content-Type': 'application/json' },
-                                                        body: JSON.stringify({
-                                                            installation_id: inst.id,
-                                                            command_type: 'OPTIMIZE_RAM'
-                                                        })
-                                                    });
-                                                    toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
-                                                } catch {
-                                                    toast.error('Falha no envio', { id: toastId });
-                                                }
-                                            }}
-                                            className="flex-1 px-4 py-3 bg-white text-black text-sm font-bold rounded-xl hover:scale-105 transition-transform shadow-lg"
-                                        >
-                                            ⚡ Otimizar Agora
-                                        </button>
-                                        <button
-                                            onClick={async () => {
-                                                const toastId = toast.loading('🧹 Solicitando limpeza...');
-                                                try {
-                                                    await fetch('/api/v1/commands/create', {
-                                                        method: 'POST',
-                                                        headers: { 'Content-Type': 'application/json' },
-                                                        body: JSON.stringify({
-                                                            installation_id: inst.id,
-                                                            command_type: 'CLEAN_SYSTEM'
-                                                        })
-                                                    });
-                                                    toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
-                                                } catch {
-                                                    toast.error('Falha no envio', { id: toastId });
-                                                }
-                                            }}
-                                            className="flex-1 px-4 py-3 bg-[#121218] border border-white/10 text-white text-sm font-bold rounded-xl hover:bg-white/10 transition-colors"
-                                        >
-                                            🧹 Limpeza Rápida
-                                        </button>
+                                {/* Remote Control Panel */}
+                                <div className="space-y-4 pt-6 border-t border-white/10">
+                                    {/* Quick Actions */}
+                                    <div>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Ações Rápidas</h3>
+                                        <div className="grid grid-cols-2 gap-2">
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('⚡ Enviando comando...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'OPTIMIZE_RAM'
+                                                            })
+                                                        });
+                                                        toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-white text-black text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                ⚡ Otimizar RAM
+                                            </button>
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('🧹 Solicitando limpeza...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'CLEAN_SYSTEM'
+                                                            })
+                                                        });
+                                                        toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-[#121218] border border-white/10 text-white text-xs font-bold rounded-lg hover:bg-white/10 transition-colors"
+                                            >
+                                                🧹 Limpeza Rápida
+                                            </button>
+                                        </div>
                                     </div>
-                                    
-                                    {/* Botões de Controle de Energia */}
-                                    <div className="flex gap-3">
-                                        <button
-                                            onClick={async () => {
-                                                if (!confirm('⚠️ Tem certeza que deseja REINICIAR o computador?\n\nO sistema será reiniciado em 10 segundos.')) return;
-                                                const toastId = toast.loading('🔄 Enviando comando de reinicialização...');
-                                                try {
-                                                    await fetch('/api/v1/commands/create', {
-                                                        method: 'POST',
-                                                        headers: { 'Content-Type': 'application/json' },
-                                                        body: JSON.stringify({
-                                                            installation_id: inst.id,
-                                                            command_type: 'RESTART'
-                                                        })
-                                                    });
-                                                    toast.success('Reinicialização agendada!', { id: toastId, icon: '🔄' });
-                                                } catch {
-                                                    toast.error('Falha no envio', { id: toastId });
-                                                }
-                                            }}
-                                            className="flex-1 px-4 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-bold rounded-xl hover:scale-105 transition-transform shadow-lg"
-                                        >
-                                            🔄 Reiniciar
-                                        </button>
-                                        <button
-                                            onClick={async () => {
-                                                if (!confirm('⚠️ Tem certeza que deseja DESLIGAR o computador?\n\nO sistema será desligado em 10 segundos.')) return;
-                                                const toastId = toast.loading('🔴 Enviando comando de desligamento...');
-                                                try {
-                                                    await fetch('/api/v1/commands/create', {
-                                                        method: 'POST',
-                                                        headers: { 'Content-Type': 'application/json' },
-                                                        body: JSON.stringify({
-                                                            installation_id: inst.id,
-                                                            command_type: 'SHUTDOWN'
-                                                        })
-                                                    });
-                                                    toast.success('Desligamento agendado!', { id: toastId, icon: '🔴' });
-                                                } catch {
-                                                    toast.error('Falha no envio', { id: toastId });
-                                                }
-                                            }}
-                                            className="flex-1 px-4 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-bold rounded-xl hover:scale-105 transition-transform shadow-lg"
-                                        >
-                                            🔴 Desligar
-                                        </button>
+
+                                    {/* System Tools */}
+                                    <div>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Ferramentas do Sistema</h3>
+                                        <div className="grid grid-cols-2 gap-2">
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('💾 Criando ponto de restauração...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'CREATE_RESTORE_POINT'
+                                                            })
+                                                        });
+                                                        toast.success('Comando enviado!', { id: toastId, icon: '💾' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
+                                            >
+                                                💾 Restauração
+                                            </button>
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('🔧 Iniciando reparo...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'REPAIR_SYSTEM'
+                                                            })
+                                                        });
+                                                        toast.success('Reparo iniciado!', { id: toastId, icon: '🔧' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
+                                            >
+                                                🔧 Reparo DISM
+                                            </button>
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('📊 Analisando sistema...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'ANALYZE_SYSTEM'
+                                                            })
+                                                        });
+                                                        toast.success('Análise iniciada!', { id: toastId, icon: '📊' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
+                                            >
+                                                📊 Analisar
+                                            </button>
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('🧹 Executando limpeza profunda...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'DEEP_CLEAN'
+                                                            })
+                                                        });
+                                                        toast.success('Limpeza profunda iniciada!', { id: toastId, icon: '🧹' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
+                                            >
+                                                🧹 Limpeza Ultra
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Power Control */}
+                                    <div>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Controle de Energia</h3>
+                                        <div className="grid grid-cols-2 gap-2">
+                                            <button
+                                                onClick={async () => {
+                                                    if (!confirm('⚠️ Tem certeza que deseja REINICIAR o computador?\n\nO sistema será reiniciado em 10 segundos.')) return;
+                                                    const toastId = toast.loading('🔄 Enviando comando...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'RESTART'
+                                                            })
+                                                        });
+                                                        toast.success('Reinicialização agendada!', { id: toastId, icon: '🔄' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                🔄 Reiniciar
+                                            </button>
+                                            <button
+                                                onClick={async () => {
+                                                    if (!confirm('⚠️ Tem certeza que deseja DESLIGAR o computador?\n\nO sistema será desligado em 10 segundos.')) return;
+                                                    const toastId = toast.loading('🔴 Enviando comando...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'SHUTDOWN'
+                                                            })
+                                                        });
+                                                        toast.success('Desligamento agendado!', { id: toastId, icon: '🔴' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                🔴 Desligar
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
