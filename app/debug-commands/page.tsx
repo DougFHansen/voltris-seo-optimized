@@ -113,6 +113,18 @@ export default function DebugCommandsPage() {
                                         >
                                             Test CLEAN
                                         </button>
+                                        <button
+                                            onClick={() => testCommand(inst.id, 'RESTART')}
+                                            className="px-3 py-2 bg-orange-500 hover:bg-orange-600 rounded text-xs font-bold"
+                                        >
+                                            🔄 RESTART
+                                        </button>
+                                        <button
+                                            onClick={() => testCommand(inst.id, 'SHUTDOWN')}
+                                            className="px-3 py-2 bg-red-500 hover:bg-red-600 rounded text-xs font-bold"
+                                        >
+                                            🔴 SHUTDOWN
+                                        </button>
                                     </div>
                                 </div>
                                 <div className="text-xs text-slate-400 mt-2">
