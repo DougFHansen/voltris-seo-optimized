@@ -9,6 +9,7 @@ import {
     FiPower, FiTarget, FiSettings 
 } from 'react-icons/fi';
 import ConfirmModal from '../components/ConfirmModal';
+import LicenseExpiredModal from '../components/LicenseExpiredModal';
 
 export default function MyComputerPage({ userId }: { userId: string }) {
     const [installations, setInstallations] = useState<any[]>([]);
@@ -21,6 +22,10 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     const [restartModalOpen, setRestartModalOpen] = useState(false);
     const [shutdownModalOpen, setShutdownModalOpen] = useState(false);
     const [currentInstallationId, setCurrentInstallationId] = useState<string>('');
+    
+    // Modal de licença expirada
+    const [licenseModalOpen, setLicenseModalOpen] = useState(false);
+    const [licenseInfo, setLicenseInfo] = useState<any>(null);
     
     const supabase = createClient();
 
@@ -85,6 +90,12 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     };
 
     const sendCommand = async (installationId: string, commandType: string, loadingMsg: string, successMsg: string) => {
+        // Validar licença antes de enviar comando
+        const licenseValid = await validateLicense(installationId);
+        if (!licenseValid) {
+            return; // Modal de licença já foi aberto
+        }
+        
         const toastId = toast.loading(loadingMsg);
         try {
             await fetch('/api/v1/commands/create', {
@@ -98,6 +109,26 @@ export default function MyComputerPage({ userId }: { userId: string }) {
             toast.success(successMsg, { id: toastId });
         } catch {
             toast.error('Falha no envio', { id: toastId });
+        }
+    };
+
+    const validateLicense = async (installationId: string): Promise<boolean> => {
+        try {
+            const response = await fetch(`/api/v1/license/validate?installation_id=${installationId}`);
+            const data = await response.json();
+            
+            if (data.valid) {
+                return true;
+            }
+            
+            // Licença inválida - mostrar modal
+            setLicenseInfo(data);
+            setLicenseModalOpen(true);
+            return false;
+        } catch (error) {
+            console.error('Erro ao validar licença:', error);
+            toast.error('Erro ao validar licença');
+            return false;
         }
     };
 
@@ -528,6 +559,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     </motion.div>
                 )}
             </AnimatePresence>
+            
+            {/* Modal de Licença Expirada */}
+            <LicenseExpiredModal
+                isOpen={licenseModalOpen}
+                onClose={() => setLicenseModalOpen(false)}
+                trialDaysRemaining={licenseInfo?.trial_days_remaining || 0}
+                reason={licenseInfo?.reason || 'trial_expired'}
+            />
         </>
     );
 }
