@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
     FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX, FiDownload, 
-    FiPower, FiTarget, FiRefreshCw, FiTool, FiWifi, FiGamepad, FiSettings 
+    FiPower, FiTarget, FiSettings 
 } from 'react-icons/fi';
 import ConfirmModal from '../components/ConfirmModal';
 
@@ -305,7 +305,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     {/* Modo Gamer */}
                                     <div>
                                         <h3 className="text-xs uppercase font-bold text-slate-500 mb-3 flex items-center gap-2">
-                                            <FiGamepad className="w-3 h-3" />
+                                            <FiZap className="w-3 h-3" />
                                             Modo Gamer
                                         </h3>
                                         <div className="grid grid-cols-2 gap-2">
