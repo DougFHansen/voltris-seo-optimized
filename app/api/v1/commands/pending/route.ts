@@ -15,37 +15,34 @@ export async function GET(req: NextRequest) {
             process.env.SUPABASE_SERVICE_ROLE_KEY!
         );
 
-        // Get Device ID
-        const { data: device } = await supabaseAdmin
-            .from('devices')
+        // Buscar installation_id usando machine_id
+        const { data: installation } = await supabaseAdmin
+            .from('installations')
             .select('id')
-            .eq('machine_id', machine_id)
+            .eq('id', machine_id)
             .single();
 
-        if (!device) {
+        if (!installation) {
             return NextResponse.json({ commands: [] }); // Silent fail for unregistered devices
         }
 
-        // Get Pending Commands
+        // Buscar comandos pendentes na tabela device_commands
         const { data: commands, error } = await supabaseAdmin
-            .from('remote_commands')
-            .select('id, command_type, payload, status')
-            .eq('device_id', device.id)
-            .eq('status', 'pending');
+            .from('device_commands')
+            .select('id, command_type, payload, status, created_at')
+            .eq('installation_id', installation.id)
+            .eq('status', 'pending')
+            .order('created_at', { ascending: true });
 
         if (error) {
-            console.error(error);
+            console.error('[API/COMMANDS/PENDING] Error:', error);
             return NextResponse.json({ commands: [] });
         }
-
-        // Helper: Mark them as 'sent' immediately? 
-        // Usually C2 waits for 'update' from client. But to prevent loop if client fails to update?
-        // Let's leave them as pending until client ACKs execution or keep strictly 'pending'.
-        // Better practice: client pulls, executes, then updates. If client crashes, it stays pending (retried).
 
         return NextResponse.json({ commands: commands || [] });
 
     } catch (err) {
+        console.error('[API/COMMANDS/PENDING] Server Error:', err);
         return NextResponse.json({ error: 'Server Error' }, { status: 500 });
     }
 }
