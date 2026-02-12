@@ -673,34 +673,68 @@ export default function OptimizerClient() {
                                 </p>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                                 {[
                                     {
-                                        icon: <Laptop className="w-6 h-6" />,
-                                        title: 'Como Deixar o PC Mais Rápido',
-                                        desc: 'Otimização automática que acelera inicialização, navegação e abertura de programas sem conhecimento técnico necessário.',
+                                        icon: <Zap className="w-6 h-6 text-[#FF4B6B]" />,
+                                        title: 'Otimização Automática',
+                                        desc: 'Auto otimização completa do sistema com um clique. Acelera inicialização, navegação e abertura de programas.',
                                         color: 'from-[#FF4B6B] to-[#FF8F6B]'
                                     },
                                     {
-                                        icon: <Database className="w-6 h-6" />,
-                                        title: 'Limpar RAM Automaticamente',
+                                        icon: <Database className="w-6 h-6 text-[#8B31FF]" />,
+                                        title: 'Otimização de RAM',
                                         desc: 'Liberação inteligente de memória RAM que mantém seu computador responsivo mesmo com múltiplos programas abertos.',
                                         color: 'from-[#8B31FF] to-[#B96BFF]'
                                     },
                                     {
-                                        icon: <Zap className="w-6 h-6" />,
-                                        title: 'Melhorar Desempenho do Windows',
-                                        desc: 'Otimizações profundas no Windows 10 e 11 que eliminam travamentos e tornam o sistema mais fluido.',
+                                        icon: <Activity className="w-6 h-6 text-[#31A8FF]" />,
+                                        title: 'Limpeza de Sistema',
+                                        desc: 'Remove arquivos temporários, cache e lixo do sistema para liberar espaço e melhorar desempenho.',
                                         color: 'from-[#31A8FF] to-[#6BA8FF]'
+                                    },
+                                    {
+                                        icon: <Wifi className="w-6 h-6 text-[#00E5FF]" />,
+                                        title: 'Otimização de Rede',
+                                        desc: 'Ajustes TCP/IP para reduzir latência, ping e melhorar velocidade de conexão em jogos online.',
+                                        color: 'from-[#00E5FF] to-[#00FFCA]'
+                                    },
+                                    {
+                                        icon: <Settings className="w-6 h-6 text-[#FFD700]" />,
+                                        title: 'Modo Gamer',
+                                        desc: 'Perfil especial que prioriza recursos para jogos, desativa processos desnecessários e maximiza FPS.',
+                                        color: 'from-[#FFD700] to-[#FFAA00]'
+                                    },
+                                    {
+                                        icon: <ShieldCheck className="w-6 h-6 text-[#00FF94]" />,
+                                        title: 'Ponto de Restauração',
+                                        desc: 'Cria backup automático do sistema antes de otimizações para garantir segurança total.',
+                                        color: 'from-[#00FF94] to-[#00CC76]'
+                                    },
+                                    {
+                                        icon: <Gauge className="w-6 h-6 text-[#FF6B9D]" />,
+                                        title: 'Plano de Energia',
+                                        desc: 'Configura perfil de alto desempenho para extrair máxima potência do hardware.',
+                                        color: 'from-[#FF6B9D] to-[#C44569]'
+                                    },
+                                    {
+                                        icon: <Cpu className="w-6 h-6 text-[#9B59B6]" />,
+                                        title: 'Análise de Sistema',
+                                        desc: 'Diagnóstico completo do PC identificando gargalos e problemas de performance.',
+                                        color: 'from-[#9B59B6] to-[#8E44AD]'
+                                    },
+                                    {
+                                        icon: <Layers className="w-6 h-6 text-[#3498DB]" />,
+                                        title: 'Reparo do Sistema',
+                                        desc: 'Corrige erros do Windows, arquivos corrompidos e problemas de estabilidade.',
+                                        color: 'from-[#3498DB] to-[#2980B9]'
                                     }
                                 ].map((item, i) => (
-                                    <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-all group">
-                                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                                            <div className={`text-transparent bg-clip-text bg-gradient-to-br ${item.color}`}>
-                                                {item.icon}
-                                            </div>
+                                    <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all group">
+                                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                                            {item.icon}
                                         </div>
-                                        <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                        <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
                                         <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                                     </div>
                                 ))}

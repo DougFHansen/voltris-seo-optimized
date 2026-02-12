@@ -650,16 +650,22 @@ export default function HomeClient() {
                             <div className="lg:col-span-2 bg-[#0A0A0F]/50 backdrop-blur-md border border-white/5 rounded-3xl p-8 flex flex-col justify-center">
                                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                                     <Zap className="w-6 h-6 text-[#EAB308]" />
-                                    Recursos Premium da Tecnologia SaaS
+                                    Funcionalidades Remotas via Painel Web
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {[
+                                        "Otimização Automática Completa",
                                         "Otimização de RAM em Tempo Real", 
-                                        "Controle Remoto via Painel Web", 
-                                        "Redução de Ping (TcpNoDelay)",
-                                        "Perfis para Jogos Competitivos", 
-                                        "Gestão de Performance Corporativa", 
-                                        "Tecnologia Brasileira Inovadora"
+                                        "Limpeza Profunda de Sistema",
+                                        "Otimização de Rede (TCP/IP)",
+                                        "Modo Gamer (Prioridade Máxima)",
+                                        "Criação de Ponto de Restauração",
+                                        "Configuração de Plano de Energia",
+                                        "Análise Completa do Sistema",
+                                        "Reparo Automático do Windows",
+                                        "Controle Remoto (Reiniciar/Desligar)",
+                                        "Perfis para Jogos Competitivos",
+                                        "Monitoramento em Tempo Real"
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 text-slate-300 p-3 rounded-lg hover:bg-white/5 transition-colors">
                                             <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
