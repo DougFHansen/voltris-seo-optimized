@@ -226,7 +226,7 @@ export default function AdminLiveMonitor() {
                                                             </span>
                                                             <span className="text-[10px] text-stone-500 flex items-center gap-1">
                                                                 <Clock className="w-3 h-3" />
-                                                                {new Date(session.last_activity.time).toLocaleTimeString()}
+                                                                {new Date(session.last_activity.time).toLocaleTimeString('pt-BR')}
                                                             </span>
                                                         </div>
                                                     ) : (

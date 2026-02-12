@@ -46,27 +46,25 @@ export async function GET(req: NextRequest) {
         if (activeSessions && activeSessions.length > 0) {
             const sessionIds = activeSessions.map(s => s.id);
 
-            // Fetch the very last event for these sessions
-            // We can't easily "group by session and take 1" in one simple query without RPC
-            // So we'll fetch recent events and filter in memory (acceptable for dashboard scale)
+            // Fetch the very last event for these sessions using a more efficient query
             const { data: recentEvents } = await supabase
                 .from('telemetry_events')
                 .select('session_id, event_type, feature_name, action_name, created_at, metadata')
                 .in('session_id', sessionIds)
-                .order('created_at', { ascending: false })
-                .limit(activeSessions.length * 8); // Heuristic limit
+                .order('created_at', { ascending: false });
 
             // Map latest event to session
             sessionsWithActivity = activeSessions.map(session => {
+                // Get the absolute latest event for this session
                 const latestEvent = recentEvents?.find(e => e.session_id === session.id);
-                // Search specifically for System Health to get the latest score even if not the absolute latest event
+                // Search specifically for System Health to get the latest score
                 const healthEvent = recentEvents?.find(e => e.session_id === session.id && e.event_type === 'SYSTEM_HEALTH');
 
                 return {
                     ...session,
                     last_activity: latestEvent ? {
                         type: latestEvent.event_type,
-                        name: `${latestEvent.feature_name || ''} - ${latestEvent.action_name || ''}`,
+                        name: latestEvent.action_name || `${latestEvent.feature_name || ''} - ${latestEvent.action_name || ''}`,
                         time: latestEvent.created_at,
                         metadata: latestEvent.metadata
                     } : null,
