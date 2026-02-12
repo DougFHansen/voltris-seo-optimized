@@ -4,13 +4,21 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX, FiDownload } from 'react-icons/fi';
+import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX, FiDownload, FiPower, FiTarget } from 'react-icons/fi';
+import ConfirmModal from '../components/ConfirmModal';
 
 export default function MyComputerPage({ userId }: { userId: string }) {
     const [installations, setInstallations] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [unlinkModalOpen, setUnlinkModalOpen] = useState(false);
     const [selectedInstallation, setSelectedInstallation] = useState<any>(null);
+    
+    // Modais de confirmação
+    const [preparePcModalOpen, setPreparePcModalOpen] = useState(false);
+    const [restartModalOpen, setRestartModalOpen] = useState(false);
+    const [shutdownModalOpen, setShutdownModalOpen] = useState(false);
+    const [currentInstallationId, setCurrentInstallationId] = useState<string>('');
+    
     const supabase = createClient();
 
     useEffect(() => {
@@ -332,22 +340,9 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 🚀 Auto Otimizar
                                             </button>
                                             <button
-                                                onClick={async () => {
-                                                    if (!confirm('⚠️ Otimização Completa (Prepare PC)\n\nEsta operação irá:\n• Criar ponto de restauração\n• Otimizar RAM e Serviços\n• Configurar plano de energia\n• Limpar sistema\n• Otimizar rede\n\nTempo estimado: 5-10 minutos\n\nDeseja continuar?')) return;
-                                                    const toastId = toast.loading('🎯 Iniciando otimização completa...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'PREPARE_PC'
-                                                            })
-                                                        });
-                                                        toast.success('Otimização completa iniciada!', { id: toastId, icon: '🎯' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
+                                                onClick={() => {
+                                                    setCurrentInstallationId(inst.id);
+                                                    setPreparePcModalOpen(true);
                                                 }}
                                                 className="px-3 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
                                             >
@@ -522,44 +517,18 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Controle de Energia</h3>
                                         <div className="grid grid-cols-2 gap-2">
                                             <button
-                                                onClick={async () => {
-                                                    if (!confirm('⚠️ Tem certeza que deseja REINICIAR o computador?\n\nO sistema será reiniciado em 10 segundos.')) return;
-                                                    const toastId = toast.loading('🔄 Enviando comando...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'RESTART'
-                                                            })
-                                                        });
-                                                        toast.success('Reinicialização agendada!', { id: toastId, icon: '🔄' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
+                                                onClick={() => {
+                                                    setCurrentInstallationId(inst.id);
+                                                    setRestartModalOpen(true);
                                                 }}
                                                 className="px-3 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
                                             >
                                                 🔄 Reiniciar
                                             </button>
                                             <button
-                                                onClick={async () => {
-                                                    if (!confirm('⚠️ Tem certeza que deseja DESLIGAR o computador?\n\nO sistema será desligado em 10 segundos.')) return;
-                                                    const toastId = toast.loading('🔴 Enviando comando...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'SHUTDOWN'
-                                                            })
-                                                        });
-                                                        toast.success('Desligamento agendado!', { id: toastId, icon: '🔴' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
+                                                onClick={() => {
+                                                    setCurrentInstallationId(inst.id);
+                                                    setShutdownModalOpen(true);
                                                 }}
                                                 className="px-3 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
                                             >
@@ -574,7 +543,108 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 </div>
             </div>
 
-            {/* Modal de Confirmação */}
+            {/* Modal Prepare PC */}
+            <ConfirmModal
+                isOpen={preparePcModalOpen}
+                onClose={() => setPreparePcModalOpen(false)}
+                onConfirm={async () => {
+                    const toastId = toast.loading('🎯 Iniciando otimização completa...');
+                    try {
+                        await fetch('/api/v1/commands/create', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                installation_id: currentInstallationId,
+                                command_type: 'PREPARE_PC'
+                            })
+                        });
+                        toast.success('Otimização completa iniciada!', { id: toastId, icon: '🎯' });
+                    } catch {
+                        toast.error('Falha no envio', { id: toastId });
+                    }
+                }}
+                title="Otimização Completa (Prepare PC)"
+                message="Esta operação irá otimizar completamente seu sistema"
+                details={[
+                    'Criar ponto de restauração',
+                    'Otimizar RAM e Serviços',
+                    'Configurar plano de energia',
+                    'Limpar sistema',
+                    'Otimizar rede'
+                ]}
+                confirmText="Iniciar Otimização"
+                cancelText="Cancelar"
+                confirmColor="green"
+                icon={<FiTarget className="w-6 h-6 text-emerald-400" />}
+            />
+
+            {/* Modal Restart */}
+            <ConfirmModal
+                isOpen={restartModalOpen}
+                onClose={() => setRestartModalOpen(false)}
+                onConfirm={async () => {
+                    const toastId = toast.loading('🔄 Enviando comando...');
+                    try {
+                        await fetch('/api/v1/commands/create', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                installation_id: currentInstallationId,
+                                command_type: 'RESTART'
+                            })
+                        });
+                        toast.success('Reinicialização agendada!', { id: toastId, icon: '🔄' });
+                    } catch {
+                        toast.error('Falha no envio', { id: toastId });
+                    }
+                }}
+                title="Reiniciar Computador"
+                message="O sistema será reiniciado em 10 segundos"
+                details={[
+                    'Salve todos os arquivos abertos',
+                    'Feche aplicativos importantes',
+                    'O computador reiniciará automaticamente'
+                ]}
+                confirmText="Reiniciar Agora"
+                cancelText="Cancelar"
+                confirmColor="orange"
+                icon={<FiPower className="w-6 h-6 text-orange-400" />}
+            />
+
+            {/* Modal Shutdown */}
+            <ConfirmModal
+                isOpen={shutdownModalOpen}
+                onClose={() => setShutdownModalOpen(false)}
+                onConfirm={async () => {
+                    const toastId = toast.loading('🔴 Enviando comando...');
+                    try {
+                        await fetch('/api/v1/commands/create', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                installation_id: currentInstallationId,
+                                command_type: 'SHUTDOWN'
+                            })
+                        });
+                        toast.success('Desligamento agendado!', { id: toastId, icon: '🔴' });
+                    } catch {
+                        toast.error('Falha no envio', { id: toastId });
+                    }
+                }}
+                title="Desligar Computador"
+                message="O sistema será desligado em 10 segundos"
+                details={[
+                    'Salve todos os arquivos abertos',
+                    'Feche aplicativos importantes',
+                    'O computador desligará automaticamente'
+                ]}
+                confirmText="Desligar Agora"
+                cancelText="Cancelar"
+                confirmColor="red"
+                icon={<FiPower className="w-6 h-6 text-red-400" />}
+            />
+
+            {/* Modal de Confirmação de Unlink */}
             <AnimatePresence>
                 {unlinkModalOpen && (
                     <motion.div
