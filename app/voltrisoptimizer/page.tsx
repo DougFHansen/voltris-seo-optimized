@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import OptimizerClient from './OptimizerClient';
 
 export const metadata: Metadata = {
-  title: 'Voltris Optimizer | Software de Performance para Windows Enterprise e Gamers',
-  description: 'A plataforma definitiva de otimização de sistemas. Aumente FPS em jogos, acelere processos corporativos e recupere a performance do seu PC. Tecnologia de ponta para Windows.',
+  title: 'VOLTRIS OPTIMIZER | Primeiro Software Brasileiro SaaS de Otimização de PC com Controle Remoto',
+  description: 'Software de otimização de PC profissional com controle remoto via web. Aumente FPS em jogos, otimize Windows para streamers, acelere computadores corporativos. Tecnologia SaaS brasileira inovadora para gamers, empresas e usuários domésticos.',
   keywords: [
     // Cluster: Core / Otimização Geral
     'otimizar windows',
@@ -11,21 +11,51 @@ export const metadata: Metadata = {
     'software de otimização',
     'limpeza de sistema',
     'pc lento soluções',
+    'pc lento solução',
+    'como deixar o pc mais rápido',
+    'programa para deixar pc mais rápido',
+    'otimizar computador automaticamente',
+    'limpar ram automaticamente',
+    'melhorar desempenho do windows',
+    'programa para melhorar desempenho do windows',
     'alternativa ccleaner',
     'melhor otimizador windows 11',
+    'melhor otimizador windows 10',
     'desempenho máximo pc',
 
     // Cluster: Gamers
     'aumentar fps',
+    'aumentar fps em jogos',
+    'melhorar fps',
+    'como aumentar fps',
     'reduzir input lag',
+    'reduzir lag no windows',
     'otimizador jogos',
+    'otimizar pc para jogos',
+    'otimização de pc gamer',
     'game booster profissional',
     'fps boost windows',
     'reduzir ping jogos',
     'estabilidade frame time',
+    'otimizar windows para jogos',
+    'melhorar desempenho em jogos',
+    'otimização para jogos competitivos',
+
+    // Cluster: Streamers
+    'melhorar fps para live',
+    'otimizar pc para live',
+    'reduzir lag no windows para streaming',
+    'otimização para OBS',
+    'melhorar desempenho para OBS',
+    'otimizar pc para streaming',
 
     // Cluster: Enterprise / B2B
     'otimização pc corporativo',
+    'otimização remota de computadores',
+    'gerenciamento remoto de performance',
+    'software saas de otimização empresarial',
+    'controle de desempenho de máquinas corporativas',
+    'gestão de performance windows via nuvem',
     'manutenção preventiva ti',
     'acelerar computador escritório',
     'produtividade windows',
@@ -38,14 +68,23 @@ export const metadata: Metadata = {
     'gerenciamento threads cpu',
     'redução latência dpc',
     'otimização tcp ip',
-    'debloat windows seguro'
+    'debloat windows seguro',
+    'software saas brasileiro',
+    'controle remoto via web',
+    'tecnologia saas',
+
+    // Cluster: Inovação
+    'primeiro software brasileiro saas',
+    'tecnologia brasileira',
+    'inovação brasileira',
+    'software brasileiro de otimização'
   ],
   openGraph: {
-    title: 'Voltris Optimizer | Engenharia de Performance para Windows',
-    description: 'Transforme seu computador com o software líder em otimização. Ideal para Gamers, Empresas e Profissionais que exigem velocidade e estabilidade.',
+    title: 'VOLTRIS OPTIMIZER | Primeiro Software Brasileiro SaaS de Otimização com Controle Remoto',
+    description: 'Software de otimização profissional com controle remoto via web. Aumente FPS, otimize para streaming, acelere empresas. Tecnologia SaaS brasileira inovadora.',
     url: 'https://voltris.com.br/voltrisoptimizer',
     type: 'website',
-    siteName: 'Voltris Technology',
+    siteName: 'VOLTRIS Technology',
     images: [
       {
         url: 'https://voltris.com.br/og-optimizer-enterprise.jpg', // Placeholder para imagem real

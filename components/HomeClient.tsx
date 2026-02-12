@@ -542,58 +542,104 @@ export default function HomeClient() {
                         <div className="text-center mb-16 max-w-4xl mx-auto">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
                                 <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                <span className="text-xs font-bold text-white tracking-widest uppercase">Tecnologia Exclusiva</span>
+                                <span className="text-xs font-bold text-white tracking-widest uppercase">Primeiro Software SaaS Brasileiro com Controle Remoto</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
                                 <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">VOLTRIS</span> <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">OPTIMIZER</span>
                             </h2>
-                            <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed">
-                                Revolucione sua experiência gaming com nossa tecnologia de otimização a nível de kernel.
-                                Estabilidade forçada, latência anulada e FPS desbloqueado.
+                            <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-4">
+                                Software de otimização de PC com tecnologia SaaS e controle remoto via web.
+                                Aumente FPS em jogos, otimize para streaming e acelere computadores corporativos.
+                            </p>
+                            <p className="text-base text-slate-500 leading-relaxed">
+                                Tecnologia inovadora brasileira para gamers, streamers, empresas e usuários domésticos.
+                                Execute otimizações remotamente de qualquer lugar do mundo através do painel web.
                             </p>
                         </div>
 
                         {/* Bento Grid Layout */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                            {/* Feature 1 */}
+                            {/* Feature 1 - Gamers */}
                             <div className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-[#FF4B6B]/30 transition-all duration-500 overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <div className="relative z-10">
                                     <div className="w-12 h-12 rounded-xl bg-[#FF4B6B]/10 flex items-center justify-center mb-6 text-[#FF4B6B] group-hover:scale-110 transition-transform duration-300">
                                         <Rocket className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3">Boost de Performance</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        Algoritmos que redirecionam recursos de CPU/GPU para o jogo em primeiro plano, garantindo picos de FPS estáveis.
+                                    <h3 className="text-xl font-bold text-white mb-3">Para Gamers e Streamers</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                                        Aumente FPS, reduza input lag e elimine travamentos em jogos competitivos. Otimização específica para Valorant, CS2, League of Legends e streaming com OBS.
                                     </p>
+                                    <ul className="space-y-2 text-xs text-slate-500">
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#FF4B6B]" />
+                                            Redução de lag no Windows
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#FF4B6B]" />
+                                            Melhor desempenho para OBS
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#FF4B6B]" />
+                                            Frames estáveis (1% Lows)
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
-                            {/* Feature 2 */}
+                            {/* Feature 2 - Empresas */}
                             <div className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-[#8B31FF]/30 transition-all duration-500 overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#8B31FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <div className="relative z-10">
                                     <div className="w-12 h-12 rounded-xl bg-[#8B31FF]/10 flex items-center justify-center mb-6 text-[#8B31FF] group-hover:scale-110 transition-transform duration-300">
                                         <Cpu className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3">Otimização Inteligente</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        IA adaptativa que aprende seu padrão de uso e encerra processos inúteis sem comprometer o sistema.
+                                    <h3 className="text-xl font-bold text-white mb-3">Para Empresas</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                                        Gestão remota de performance via nuvem. Otimize toda frota de computadores corporativos de qualquer lugar através do painel web SaaS.
                                     </p>
+                                    <ul className="space-y-2 text-xs text-slate-500">
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#8B31FF]" />
+                                            Controle remoto via web
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#8B31FF]" />
+                                            Redução de custos com TI
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#8B31FF]" />
+                                            Produtividade aumentada
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
 
-                            {/* Feature 3 */}
+                            {/* Feature 3 - Usuários Comuns */}
                             <div className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-[#31A8FF]/30 transition-all duration-500 overflow-hidden">
                                 <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                 <div className="relative z-10">
                                     <div className="w-12 h-12 rounded-xl bg-[#31A8FF]/10 flex items-center justify-center mb-6 text-[#31A8FF] group-hover:scale-110 transition-transform duration-300">
                                         <ShieldCheck className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3">Estabilidade Garantida</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed">
-                                        Adeus Stutters. Nossa rede de otimização nivela o frametime para uma jogabilidade manteiga.
+                                    <h3 className="text-xl font-bold text-white mb-3">Para Uso Doméstico</h3>
+                                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                                        PC lento? Solução definitiva. Programa para deixar PC mais rápido, limpar RAM automaticamente e melhorar desempenho do Windows 10 e 11.
                                     </p>
+                                    <ul className="space-y-2 text-xs text-slate-500">
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#31A8FF]" />
+                                            Otimização automática
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#31A8FF]" />
+                                            Sistema responsivo
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <Check className="w-3 h-3 text-[#31A8FF]" />
+                                            Revitalização de PCs antigos
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -604,12 +650,16 @@ export default function HomeClient() {
                             <div className="lg:col-span-2 bg-[#0A0A0F]/50 backdrop-blur-md border border-white/5 rounded-3xl p-8 flex flex-col justify-center">
                                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                                     <Zap className="w-6 h-6 text-[#EAB308]" />
-                                    Recursos Premium
+                                    Recursos Premium da Tecnologia SaaS
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {[
-                                        "Otimização de RAM em Tempo Real", "Priorização de Processos (High Priority)", "Redução de Ping (TcpNoDelay)",
-                                        "Perfis de Jogos (Valorant, CS2, CoD)", "Monitoramento de Temp/Uso", "Updates Automáticos (Cloud)"
+                                        "Otimização de RAM em Tempo Real", 
+                                        "Controle Remoto via Painel Web", 
+                                        "Redução de Ping (TcpNoDelay)",
+                                        "Perfis para Jogos Competitivos", 
+                                        "Gestão de Performance Corporativa", 
+                                        "Tecnologia Brasileira Inovadora"
                                     ].map((item, i) => (
                                         <div key={i} className="flex items-center gap-3 text-slate-300 p-3 rounded-lg hover:bg-white/5 transition-colors">
                                             <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
@@ -630,14 +680,38 @@ export default function HomeClient() {
                                         +40%
                                     </div>
                                     <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]">
-                                        FPS INSTANTÂNEO
+                                        PERFORMANCE
                                     </div>
 
                                     <div className="w-full mt-8">
                                         <Link href="/voltrisoptimizer" className="block w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:scale-[1.02] transition-transform active:scale-[0.98]">
-                                            EXPERIMENTAR AGORA
+                                            CONHECER VOLTRIS OPTIMIZER
                                         </Link>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* SEO Content Block */}
+                        <div className="mt-12 bg-[#0A0A0F]/30 backdrop-blur-sm border border-white/5 rounded-2xl p-8 max-w-5xl mx-auto">
+                            <h3 className="text-2xl font-bold text-white mb-4 text-center">
+                                O Primeiro Software Brasileiro SaaS de Otimização com Controle Remoto
+                            </h3>
+                            <p className="text-slate-400 leading-relaxed text-center mb-6">
+                                O <strong className="text-white">VOLTRIS OPTIMIZER</strong> é uma tecnologia inovadora desenvolvida no Brasil, sendo o primeiro software SaaS nacional com capacidade de <strong className="text-white">controle remoto de otimização via web</strong>. Nossa plataforma permite que você execute funções de otimização, limpeza de RAM e processamento avançado de qualquer lugar do mundo através do painel online.
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                                <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
+                                    <div className="text-3xl font-bold text-[#31A8FF] mb-2">SaaS</div>
+                                    <div className="text-sm text-slate-400">Tecnologia em Nuvem</div>
+                                </div>
+                                <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
+                                    <div className="text-3xl font-bold text-[#8B31FF] mb-2">Remoto</div>
+                                    <div className="text-sm text-slate-400">Controle via Web</div>
+                                </div>
+                                <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
+                                    <div className="text-3xl font-bold text-[#FF4B6B] mb-2">Brasil</div>
+                                    <div className="text-sm text-slate-400">Inovação Nacional</div>
                                 </div>
                             </div>
                         </div>

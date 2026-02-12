@@ -507,6 +507,273 @@ export default function OptimizerClient() {
                     </div>
                 </section>
 
+                {/* --- SEO SECTION: PARA GAMERS E STREAMERS --- */}
+                <section className="py-32 relative z-10 bg-[#050510]">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-16">
+                                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                                    Otimização de PC para <span className="bg-gradient-to-r from-[#00FF94] to-[#31A8FF] text-transparent bg-clip-text">Gamers e Streamers</span>
+                                </h2>
+                                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                                    O primeiro software brasileiro SaaS com controle remoto de otimização. Aumente FPS, reduza lag e elimine travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                                <div className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-8 hover:border-[#00FF94]/30 transition-all">
+                                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                                        <Video className="w-6 h-6 text-[#00FF94]" />
+                                        Para Streamers Profissionais
+                                    </h3>
+                                    <p className="text-slate-400 mb-6 leading-relaxed">
+                                        Transmita em alta qualidade sem comprometer o desempenho do jogo. Nossa tecnologia otimiza OBS, Streamlabs e XSplit para lives sem drops de frames.
+                                    </p>
+                                    <ul className="space-y-3">
+                                        {[
+                                            'Redução de lag durante transmissões ao vivo',
+                                            'Otimização específica para OBS Studio',
+                                            'Melhor desempenho em streaming simultâneo',
+                                            'Priorização de processos de captura'
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                                                <CheckCircle2 className="w-5 h-5 text-[#00FF94] shrink-0 mt-0.5" />
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-8 hover:border-[#FF4B6B]/30 transition-all">
+                                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                                        <MousePointer2 className="w-6 h-6 text-[#FF4B6B]" />
+                                        Para Gamers Competitivos
+                                    </h3>
+                                    <p className="text-slate-400 mb-6 leading-relaxed">
+                                        Maximize seu potencial competitivo com otimizações que reduzem input lag e garantem frames estáveis nos momentos críticos.
+                                    </p>
+                                    <ul className="space-y-3">
+                                        {[
+                                            'Aumento de FPS em jogos competitivos',
+                                            'Redução de input lag e latência de rede',
+                                            'Estabilidade de frame time (1% lows)',
+                                            'Otimização para jogos online e eSports'
+                                        ].map((item, i) => (
+                                            <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
+                                                <CheckCircle2 className="w-5 h-5 text-[#FF4B6B] shrink-0 mt-0.5" />
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8">
+                                <h3 className="text-xl font-bold text-white mb-4">Como Melhorar FPS no Windows 10 e 11</h3>
+                                <p className="text-slate-400 leading-relaxed mb-4">
+                                    O VOLTRIS OPTIMIZER utiliza técnicas avançadas de otimização de kernel do Windows para liberar recursos do sistema e direcionar toda a potência do hardware para seus jogos. Diferente de programas convencionais de limpeza, nossa tecnologia atua em nível profundo do sistema operacional.
+                                </p>
+                                <p className="text-slate-400 leading-relaxed">
+                                    Ideal para quem busca <strong className="text-white">otimizar PC para jogos</strong>, <strong className="text-white">melhorar desempenho no Windows</strong>, <strong className="text-white">limpar memória RAM automaticamente</strong> e <strong className="text-white">deixar o computador mais rápido</strong> sem precisar fazer upgrade de hardware.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SEO SECTION: PARA EMPRESAS --- */}
+                <section className="py-32 relative z-10 bg-[#08080C]">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
+                                        <Briefcase className="w-3 h-3 text-[#31A8FF]" />
+                                        <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Solução Enterprise</span>
+                                    </div>
+                                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                                        Otimização Remota de <span className="bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">Computadores Corporativos</span>
+                                    </h2>
+                                    <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+                                        Primeira plataforma SaaS brasileira de gerenciamento remoto de performance para empresas. Otimize toda sua frota de computadores de qualquer lugar do mundo através do painel web.
+                                    </p>
+                                    
+                                    <div className="space-y-4 mb-8">
+                                        <div className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#31A8FF]/20 transition-all">
+                                            <div className="w-10 h-10 rounded-lg bg-[#31A8FF]/10 flex items-center justify-center shrink-0">
+                                                <BarChart3 className="w-5 h-5 text-[#31A8FF]" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-white font-bold mb-1">Gestão de Performance via Nuvem</h4>
+                                                <p className="text-sm text-slate-400">Monitore e otimize máquinas corporativas remotamente através do dashboard web</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#8B31FF]/20 transition-all">
+                                            <div className="w-10 h-10 rounded-lg bg-[#8B31FF]/10 flex items-center justify-center shrink-0">
+                                                <Lock className="w-5 h-5 text-[#8B31FF]" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-white font-bold mb-1">Software SaaS de Otimização Empresarial</h4>
+                                                <p className="text-sm text-slate-400">Tecnologia inovadora no Brasil: controle total via web sem necessidade de acesso físico</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#FF4B6B]/20 transition-all">
+                                            <div className="w-10 h-10 rounded-lg bg-[#FF4B6B]/10 flex items-center justify-center shrink-0">
+                                                <Activity className="w-5 h-5 text-[#FF4B6B]" />
+                                            </div>
+                                            <div>
+                                                <h4 className="text-white font-bold mb-1">Controle de Desempenho de Máquinas Corporativas</h4>
+                                                <p className="text-sm text-slate-400">Reduza chamados de TI e aumente produtividade com otimização preventiva</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="relative">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[80px] rounded-full"></div>
+                                    <div className="relative bg-[#0A0A0F] border border-white/5 rounded-3xl p-8">
+                                        <h3 className="text-2xl font-bold text-white mb-6">Benefícios Corporativos</h3>
+                                        <div className="space-y-6">
+                                            {[
+                                                { title: 'Redução de Custos com TI', desc: 'Menos chamados técnicos e maior vida útil do hardware' },
+                                                { title: 'Produtividade Aumentada', desc: 'Colaboradores com máquinas rápidas e responsivas' },
+                                                { title: 'Gestão Centralizada', desc: 'Controle toda frota de PCs através de um único painel' },
+                                                { title: 'Tecnologia Brasileira', desc: 'Primeiro software SaaS nacional com controle remoto de otimização' }
+                                            ].map((benefit, i) => (
+                                                <div key={i} className="flex items-start gap-3">
+                                                    <div className="w-6 h-6 rounded-full bg-[#31A8FF]/20 flex items-center justify-center shrink-0 mt-1">
+                                                        <CheckCircle2 className="w-4 h-4 text-[#31A8FF]" />
+                                                    </div>
+                                                    <div>
+                                                        <h4 className="text-white font-bold text-sm mb-1">{benefit.title}</h4>
+                                                        <p className="text-xs text-slate-400">{benefit.desc}</p>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SEO SECTION: PARA USUÁRIOS COMUNS --- */}
+                <section className="py-32 relative z-10 bg-[#050510]">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-16">
+                                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                                    PC Lento? <span className="bg-gradient-to-r from-[#FF4B6B] to-[#FF8F6B] text-transparent bg-clip-text">Solução Definitiva</span>
+                                </h2>
+                                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                                    Programa para deixar PC mais rápido e otimizar computador automaticamente. Ideal para uso doméstico, home office e navegação diária.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                                {[
+                                    {
+                                        icon: <Laptop className="w-6 h-6" />,
+                                        title: 'Como Deixar o PC Mais Rápido',
+                                        desc: 'Otimização automática que acelera inicialização, navegação e abertura de programas sem conhecimento técnico necessário.',
+                                        color: 'from-[#FF4B6B] to-[#FF8F6B]'
+                                    },
+                                    {
+                                        icon: <Database className="w-6 h-6" />,
+                                        title: 'Limpar RAM Automaticamente',
+                                        desc: 'Liberação inteligente de memória RAM que mantém seu computador responsivo mesmo com múltiplos programas abertos.',
+                                        color: 'from-[#8B31FF] to-[#B96BFF]'
+                                    },
+                                    {
+                                        icon: <Zap className="w-6 h-6" />,
+                                        title: 'Melhorar Desempenho do Windows',
+                                        desc: 'Otimizações profundas no Windows 10 e 11 que eliminam travamentos e tornam o sistema mais fluido.',
+                                        color: 'from-[#31A8FF] to-[#6BA8FF]'
+                                    }
+                                ].map((item, i) => (
+                                    <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-all group">
+                                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                                            <div className={`text-transparent bg-clip-text bg-gradient-to-br ${item.color}`}>
+                                                {item.icon}
+                                            </div>
+                                        </div>
+                                        <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                                        <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8 lg:p-12">
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <h3 className="text-3xl font-bold text-white mb-4">Programa para Melhorar Desempenho do Windows</h3>
+                                        <p className="text-slate-400 leading-relaxed mb-6">
+                                            O VOLTRIS OPTIMIZER é a solução completa para quem busca <strong className="text-white">otimizar computador automaticamente</strong> sem complicação. Nossa tecnologia identifica e resolve problemas de lentidão, travamentos e alto consumo de recursos.
+                                        </p>
+                                        <p className="text-slate-400 leading-relaxed">
+                                            Diferente de outros programas, não apenas limpamos arquivos temporários - nós reconfiguramos o Windows para extrair máxima performance do seu hardware, seja ele novo ou antigo.
+                                        </p>
+                                    </div>
+                                    <div className="bg-[#0A0A0F] border border-white/5 rounded-xl p-6">
+                                        <h4 className="text-lg font-bold text-white mb-4">Problemas que Resolvemos:</h4>
+                                        <ul className="space-y-3">
+                                            {[
+                                                'PC lento para iniciar',
+                                                'Travamentos constantes',
+                                                'Alto uso de memória RAM',
+                                                'Programas demorando para abrir',
+                                                'Navegador lento e travando',
+                                                'Sistema operacional pesado'
+                                            ].map((problem, i) => (
+                                                <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
+                                                    <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
+                                                        <Check className="w-3 h-3 text-green-500" />
+                                                    </div>
+                                                    {problem}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SEO SECTION: TECNOLOGIA E INOVAÇÃO --- */}
+                <section className="py-32 relative z-10 bg-[#08080C]">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-6xl mx-auto text-center">
+                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                                Tecnologia <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Inovadora Brasileira</span>
+                            </h2>
+                            <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+                                O VOLTRIS OPTIMIZER é o primeiro software brasileiro SaaS com tecnologia de controle remoto de otimização via web. Uma solução profissional e enterprise desenvolvida com tecnologia moderna.
+                            </p>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {[
+                                    { icon: <Radio className="w-6 h-6" />, title: 'Controle Remoto via Web', desc: 'Execute otimizações de qualquer lugar do mundo através do painel online' },
+                                    { icon: <Brain className="w-6 h-6" />, title: 'Tecnologia SaaS', desc: 'Plataforma baseada em nuvem com atualizações automáticas e inteligência artificial' },
+                                    { icon: <ShieldCheck className="w-6 h-6" />, title: 'Solução Profissional', desc: 'Desenvolvida com padrões enterprise para uso doméstico e corporativo' },
+                                    { icon: <Zap className="w-6 h-6" />, title: 'Inovação Nacional', desc: 'Primeira tecnologia brasileira de otimização remota do mercado' }
+                                ].map((feature, i) => (
+                                    <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-[#31A8FF]/30 transition-all group">
+                                        <div className="w-12 h-12 rounded-xl bg-[#31A8FF]/10 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                                            <div className="text-[#31A8FF]">{feature.icon}</div>
+                                        </div>
+                                        <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
+                                        <p className="text-sm text-slate-400 leading-relaxed">{feature.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* --- FAQ SECTION --- */}
                 <section className="py-24 relative z-10 max-w-3xl mx-auto px-4">
                     <h2 className="text-3xl font-bold text-white text-center mb-12 tracking-tight">Perguntas Frequentes</h2>
@@ -534,6 +801,18 @@ export default function OptimizerClient() {
                             isOpen={openFaqIndex === 3}
                             question="Qual a diferença para o CCleaner?"
                             answer="O CCleaner limpa arquivos temporários. O Voltris reconfigura a engenharia do Windows (Serviços, Threads, Rede, Energia) para performance. São categorias diferentes de software."
+                        />
+                        <FAQItem
+                            onClick={() => setOpenFaqIndex(openFaqIndex === 4 ? null : 4)}
+                            isOpen={openFaqIndex === 4}
+                            question="Como funciona o controle remoto via web?"
+                            answer="Após instalar o software, você pode acessar o painel web de qualquer lugar e executar otimizações remotamente. É a primeira tecnologia SaaS brasileira com esse recurso, ideal para empresas e usuários que gerenciam múltiplos computadores."
+                        />
+                        <FAQItem
+                            onClick={() => setOpenFaqIndex(openFaqIndex === 5 ? null : 5)}
+                            isOpen={openFaqIndex === 5}
+                            question="Funciona para aumentar FPS em jogos?"
+                            answer="Sim! O Voltris Optimizer é amplamente utilizado por gamers e streamers para aumentar FPS, reduzir input lag e eliminar travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite. Nossa tecnologia otimiza o sistema especificamente para gaming."
                         />
                     </div>
                 </section>
