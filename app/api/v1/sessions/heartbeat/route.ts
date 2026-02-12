@@ -5,7 +5,7 @@ import { z } from 'zod';
 const heartbeatSchema = z.object({
     session_id: z.string().uuid(),
     machine_id: z.string().uuid(),
-    status: z.enum(['active', 'idle']).optional(),
+    status: z.enum(['active', 'idle', 'closed']).optional(),
     health_score: z.number().min(0).max(100).optional(),
     event: z.object({
         event_type: z.string(),
@@ -55,6 +55,10 @@ export async function POST(req: NextRequest) {
 
         if (status) {
             updateData.status = status;
+            // Se status é closed, definir ended_at
+            if (status === 'closed') {
+                updateData.ended_at = new Date().toISOString();
+            }
         }
 
         if (health_score !== undefined) {

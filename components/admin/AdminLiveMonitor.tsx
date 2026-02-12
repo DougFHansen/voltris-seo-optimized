@@ -35,11 +35,32 @@ export default function AdminLiveMonitor() {
     const supabase = createClient();
 
     // Poll every 5 seconds for live data (simple & robust for admin dash)
-    // Could use Realtime subscription for even faster updates
+    // Also use Realtime subscription for instant updates
     useEffect(() => {
         fetchData();
         const interval = setInterval(fetchData, 5000);
-        return () => clearInterval(interval);
+        
+        // Subscribe to realtime changes on sessions table
+        const channel = supabase
+            .channel('admin-sessions')
+            .on(
+                'postgres_changes',
+                {
+                    event: '*',
+                    schema: 'public',
+                    table: 'sessions'
+                },
+                () => {
+                    // Refetch data when sessions change
+                    fetchData();
+                }
+            )
+            .subscribe();
+        
+        return () => {
+            clearInterval(interval);
+            supabase.removeChannel(channel);
+        };
     }, []);
 
     const fetchData = async () => {
@@ -228,7 +249,9 @@ export default function AdminLiveMonitor() {
                                                 <TableCell>
                                                     <div className="flex flex-col gap-1">
                                                         <Badge variant="outline" className={getStatusColor(session.status)}>
-                                                            {session.status.toUpperCase()}
+                                                            {session.status === 'active' ? 'ATIVO' : 
+                                                             session.status === 'idle' ? 'INATIVO' : 
+                                                             'DESCONECTADO'}
                                                         </Badge>
                                                         {session.health_score != null && (
                                                             <Badge
@@ -238,7 +261,7 @@ export default function AdminLiveMonitor() {
                                                                         'bg-red-500/10 text-red-500'
                                                                     }`}
                                                             >
-                                                                HEALTH: {session.health_score}%
+                                                                SAÚDE: {session.health_score}%
                                                             </Badge>
                                                         )}
                                                     </div>

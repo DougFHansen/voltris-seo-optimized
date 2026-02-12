@@ -10,6 +10,16 @@ export async function GET(req: NextRequest) {
             process.env.SUPABASE_SERVICE_ROLE_KEY!
         );
 
+        // 0. Clean up old sessions (mark as closed if no heartbeat for 5 minutes)
+        await supabase
+            .from('sessions')
+            .update({
+                status: 'closed',
+                ended_at: new Date().toISOString(),
+            })
+            .in('status', ['active', 'idle'])
+            .lt('last_heartbeat_at', new Date(Date.now() - 5 * 60 * 1000).toISOString());
+
         // 1. Get Active Sessions (Online Now) with detailed info
         const { data: activeSessions, error } = await supabase
             .from('sessions')
