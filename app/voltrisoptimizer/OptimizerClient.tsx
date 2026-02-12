@@ -8,7 +8,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import {
     Cpu, Gauge, Wifi, Settings,
     MousePointer2, Layers, CheckCircle2, XCircle,
-    ChevronDown, Download, BarChart3, Radio, Briefcase, Minus, Laptop, Video, Zap, Activity, ShieldCheck, Database, Brain
+    ChevronDown, Download, BarChart3, Radio, Briefcase, Minus, Laptop, Video, Zap, Activity, ShieldCheck, Database, Brain, Lock, Check
 } from 'lucide-react';
 
 // --- COMPONENTS ---
