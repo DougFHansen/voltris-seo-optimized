@@ -658,7 +658,7 @@ export default function HomeClient() {
                                         "Otimização de RAM em Tempo Real", 
                                         "Limpeza Profunda de Sistema",
                                         "Otimização de Rede (TCP/IP)",
-                                        "Modo Gamer (Prioridade Máxima)",
+                                        "Modo Gamer Inteligente com IA",
                                         "Criação de Ponto de Restauração",
                                         "Configuração de Plano de Energia",
                                         "Análise Completa do Sistema",

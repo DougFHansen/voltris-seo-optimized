@@ -665,79 +665,128 @@ export default function OptimizerClient() {
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-16">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF4B6B]/10 border border-[#FF4B6B]/20 mb-6">
+                                    <Radio className="w-3 h-3 text-[#FF4B6B] animate-pulse" />
+                                    <span className="text-xs font-bold text-[#FF4B6B] tracking-widest uppercase">Controle Remoto via Web</span>
+                                </div>
                                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
                                     PC Lento? <span className="bg-gradient-to-r from-[#FF4B6B] to-[#FF8F6B] text-transparent bg-clip-text">Solução Definitiva</span>
                                 </h2>
-                                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed mb-4">
                                     Programa para deixar PC mais rápido e otimizar computador automaticamente. Ideal para uso doméstico, home office e navegação diária.
+                                </p>
+                                <p className="text-base text-slate-500 max-w-2xl mx-auto">
+                                    Execute todas as otimizações remotamente de qualquer lugar do mundo através do painel web.
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                                 {[
                                     {
-                                        icon: <Zap className="w-6 h-6 text-[#FF4B6B]" />,
+                                        icon: Zap,
                                         title: 'Otimização Automática',
                                         desc: 'Auto otimização completa do sistema com um clique. Acelera inicialização, navegação e abertura de programas.',
-                                        color: 'from-[#FF4B6B] to-[#FF8F6B]'
+                                        color: 'from-[#FF4B6B] to-[#FF8F6B]',
+                                        iconColor: 'text-[#FF4B6B]',
+                                        bgGlow: 'bg-[#FF4B6B]/20'
                                     },
                                     {
-                                        icon: <Database className="w-6 h-6 text-[#8B31FF]" />,
+                                        icon: Database,
                                         title: 'Otimização de RAM',
                                         desc: 'Liberação inteligente de memória RAM que mantém seu computador responsivo mesmo com múltiplos programas abertos.',
-                                        color: 'from-[#8B31FF] to-[#B96BFF]'
+                                        color: 'from-[#8B31FF] to-[#B96BFF]',
+                                        iconColor: 'text-[#8B31FF]',
+                                        bgGlow: 'bg-[#8B31FF]/20'
                                     },
                                     {
-                                        icon: <Activity className="w-6 h-6 text-[#31A8FF]" />,
+                                        icon: Activity,
                                         title: 'Limpeza de Sistema',
                                         desc: 'Remove arquivos temporários, cache e lixo do sistema para liberar espaço e melhorar desempenho.',
-                                        color: 'from-[#31A8FF] to-[#6BA8FF]'
+                                        color: 'from-[#31A8FF] to-[#6BA8FF]',
+                                        iconColor: 'text-[#31A8FF]',
+                                        bgGlow: 'bg-[#31A8FF]/20'
                                     },
                                     {
-                                        icon: <Wifi className="w-6 h-6 text-[#00E5FF]" />,
+                                        icon: Wifi,
                                         title: 'Otimização de Rede',
                                         desc: 'Ajustes TCP/IP para reduzir latência, ping e melhorar velocidade de conexão em jogos online.',
-                                        color: 'from-[#00E5FF] to-[#00FFCA]'
+                                        color: 'from-[#00E5FF] to-[#00FFCA]',
+                                        iconColor: 'text-[#00E5FF]',
+                                        bgGlow: 'bg-[#00E5FF]/20'
                                     },
                                     {
-                                        icon: <Settings className="w-6 h-6 text-[#FFD700]" />,
-                                        title: 'Modo Gamer',
-                                        desc: 'Perfil especial que prioriza recursos para jogos, desativa processos desnecessários e maximiza FPS.',
-                                        color: 'from-[#FFD700] to-[#FFAA00]'
+                                        icon: Brain,
+                                        title: 'Modo Gamer Inteligente',
+                                        desc: 'IA adaptativa que prioriza recursos para jogos, desativa processos desnecessários e maximiza FPS automaticamente.',
+                                        color: 'from-[#FFD700] to-[#FFAA00]',
+                                        iconColor: 'text-[#FFD700]',
+                                        bgGlow: 'bg-[#FFD700]/20'
                                     },
                                     {
-                                        icon: <ShieldCheck className="w-6 h-6 text-[#00FF94]" />,
+                                        icon: ShieldCheck,
                                         title: 'Ponto de Restauração',
                                         desc: 'Cria backup automático do sistema antes de otimizações para garantir segurança total.',
-                                        color: 'from-[#00FF94] to-[#00CC76]'
+                                        color: 'from-[#00FF94] to-[#00CC76]',
+                                        iconColor: 'text-[#00FF94]',
+                                        bgGlow: 'bg-[#00FF94]/20'
                                     },
                                     {
-                                        icon: <Gauge className="w-6 h-6 text-[#FF6B9D]" />,
+                                        icon: Gauge,
                                         title: 'Plano de Energia',
                                         desc: 'Configura perfil de alto desempenho para extrair máxima potência do hardware.',
-                                        color: 'from-[#FF6B9D] to-[#C44569]'
+                                        color: 'from-[#FF6B9D] to-[#C44569]',
+                                        iconColor: 'text-[#FF6B9D]',
+                                        bgGlow: 'bg-[#FF6B9D]/20'
                                     },
                                     {
-                                        icon: <Cpu className="w-6 h-6 text-[#9B59B6]" />,
+                                        icon: Cpu,
                                         title: 'Análise de Sistema',
                                         desc: 'Diagnóstico completo do PC identificando gargalos e problemas de performance.',
-                                        color: 'from-[#9B59B6] to-[#8E44AD]'
+                                        color: 'from-[#9B59B6] to-[#8E44AD]',
+                                        iconColor: 'text-[#9B59B6]',
+                                        bgGlow: 'bg-[#9B59B6]/20'
                                     },
                                     {
-                                        icon: <Layers className="w-6 h-6 text-[#3498DB]" />,
+                                        icon: Layers,
                                         title: 'Reparo do Sistema',
                                         desc: 'Corrige erros do Windows, arquivos corrompidos e problemas de estabilidade.',
-                                        color: 'from-[#3498DB] to-[#2980B9]'
+                                        color: 'from-[#3498DB] to-[#2980B9]',
+                                        iconColor: 'text-[#3498DB]',
+                                        bgGlow: 'bg-[#3498DB]/20'
                                     }
-                                ].map((item, i) => (
-                                    <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all group">
-                                        <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                                            {item.icon}
-                                        </div>
-                                        <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
-                                        <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
-                                    </div>
-                                ))}
+                                ].map((item, i) => {
+                                    const IconComponent = item.icon;
+                                    return (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: i * 0.1 }}
+                                            viewport={{ once: true }}
+                                            whileHover={{ y: -8, scale: 1.02 }}
+                                            className="relative bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all duration-300 group overflow-hidden"
+                                        >
+                                            {/* Glow Effect on Hover */}
+                                            <div className={`absolute -inset-1 ${item.bgGlow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
+                                            
+                                            {/* Content */}
+                                            <div className="relative z-10">
+                                                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                                                    <IconComponent className={`w-7 h-7 ${item.iconColor} group-hover:scale-110 transition-transform duration-300`} />
+                                                </div>
+                                                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-300">{item.title}</h3>
+                                                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">{item.desc}</p>
+                                            </div>
+
+                                            {/* Remote Badge */}
+                                            <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <div className="px-2 py-1 bg-white/10 backdrop-blur-sm rounded-md border border-white/20">
+                                                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">Remoto</span>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
                             </div>
 
                             <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8 lg:p-12">
