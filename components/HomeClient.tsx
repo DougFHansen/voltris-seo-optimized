@@ -691,7 +691,7 @@ export default function HomeClient() {
 
                                     <div className="w-full mt-8">
                                         <Link href="/voltrisoptimizer" className="block w-full py-4 rounded-xl bg-white font-bold text-lg hover:scale-[1.02] transition-transform active:scale-[0.98]">
-                                            <span className="text-black">CONHECER </span>
+                                            <span className="text-black">CONHECER</span>{' '}
                                             <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">VOLTRIS OPTIMIZER</span>
                                         </Link>
                                     </div>

@@ -683,7 +683,7 @@ export default function OptimizerClient() {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                                 {[
                                     {
-                                        icon: <Zap className="w-7 h-7" />,
+                                        IconComponent: Zap,
                                         title: 'Otimização Automática',
                                         desc: 'Auto otimização completa do sistema com um clique. Acelera inicialização, navegação e abertura de programas.',
                                         color: 'from-[#FF4B6B] to-[#FF8F6B]',
@@ -691,7 +691,7 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#FF4B6B]/20'
                                     },
                                     {
-                                        icon: <Database className="w-7 h-7" />,
+                                        IconComponent: Database,
                                         title: 'Otimização de RAM',
                                         desc: 'Liberação inteligente de memória RAM que mantém seu computador responsivo mesmo com múltiplos programas abertos.',
                                         color: 'from-[#8B31FF] to-[#B96BFF]',
@@ -699,7 +699,7 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#8B31FF]/20'
                                     },
                                     {
-                                        icon: <Activity className="w-7 h-7" />,
+                                        IconComponent: Activity,
                                         title: 'Limpeza de Sistema',
                                         desc: 'Remove arquivos temporários, cache e lixo do sistema para liberar espaço e melhorar desempenho.',
                                         color: 'from-[#31A8FF] to-[#6BA8FF]',
@@ -707,7 +707,7 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#31A8FF]/20'
                                     },
                                     {
-                                        icon: <Wifi className="w-7 h-7" />,
+                                        IconComponent: Wifi,
                                         title: 'Otimização de Rede',
                                         desc: 'Ajustes TCP/IP para reduzir latência, ping e melhorar velocidade de conexão em jogos online.',
                                         color: 'from-[#00E5FF] to-[#00FFCA]',
@@ -715,7 +715,7 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#00E5FF]/20'
                                     },
                                     {
-                                        icon: <Brain className="w-7 h-7" />,
+                                        IconComponent: Brain,
                                         title: 'Modo Gamer Inteligente',
                                         desc: 'IA adaptativa que prioriza recursos para jogos, desativa processos desnecessários e maximiza FPS automaticamente.',
                                         color: 'from-[#FFD700] to-[#FFAA00]',
@@ -723,7 +723,7 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#FFD700]/20'
                                     },
                                     {
-                                        icon: <ShieldCheck className="w-7 h-7" />,
+                                        IconComponent: ShieldCheck,
                                         title: 'Ponto de Restauração',
                                         desc: 'Cria backup automático do sistema antes de otimizações para garantir segurança total.',
                                         color: 'from-[#00FF94] to-[#00CC76]',
@@ -731,7 +731,7 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#00FF94]/20'
                                     },
                                     {
-                                        icon: <Gauge className="w-7 h-7" />,
+                                        IconComponent: Gauge,
                                         title: 'Plano de Energia',
                                         desc: 'Configura perfil de alto desempenho para extrair máxima potência do hardware.',
                                         color: 'from-[#FF6B9D] to-[#C44569]',
@@ -739,7 +739,7 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#FF6B9D]/20'
                                     },
                                     {
-                                        icon: <Cpu className="w-7 h-7" />,
+                                        IconComponent: Cpu,
                                         title: 'Análise de Sistema',
                                         desc: 'Diagnóstico completo do PC identificando gargalos e problemas de performance.',
                                         color: 'from-[#9B59B6] to-[#8E44AD]',
@@ -747,45 +747,46 @@ export default function OptimizerClient() {
                                         bgGlow: 'bg-[#9B59B6]/20'
                                     },
                                     {
-                                        icon: <Layers className="w-7 h-7" />,
+                                        IconComponent: Layers,
                                         title: 'Reparo do Sistema',
                                         desc: 'Corrige erros do Windows, arquivos corrompidos e problemas de estabilidade.',
                                         color: 'from-[#3498DB] to-[#2980B9]',
                                         iconColor: '#3498DB',
                                         bgGlow: 'bg-[#3498DB]/20'
                                     }
-                                ].map((item, i) => (
-                                    <motion.div
-                                        key={i}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ delay: i * 0.1 }}
-                                        viewport={{ once: true }}
-                                        whileHover={{ y: -8, scale: 1.02 }}
-                                        className="relative bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all duration-300 group overflow-hidden"
-                                    >
-                                        {/* Glow Effect on Hover */}
-                                        <div className={`absolute -inset-1 ${item.bgGlow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
-                                        
-                                        {/* Content */}
-                                        <div className="relative z-10">
-                                            <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                                                <div style={{ color: item.iconColor }} className="group-hover:scale-110 transition-transform duration-300">
-                                                    {item.icon}
+                                ].map((item, i) => {
+                                    const Icon = item.IconComponent;
+                                    return (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: i * 0.1 }}
+                                            viewport={{ once: true }}
+                                            whileHover={{ y: -8, scale: 1.02 }}
+                                            className="relative bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all duration-300 group overflow-hidden"
+                                        >
+                                            {/* Glow Effect on Hover */}
+                                            <div className={`absolute -inset-1 ${item.bgGlow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
+                                            
+                                            {/* Content */}
+                                            <div className="relative z-10">
+                                                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                                                    <Icon className="w-7 h-7 group-hover:scale-110 transition-transform duration-300" style={{ color: item.iconColor }} />
+                                                </div>
+                                                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-300">{item.title}</h3>
+                                                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">{item.desc}</p>
+                                            </div>
+
+                                            {/* Remote Badge */}
+                                            <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <div className="px-2 py-1 bg-white/10 backdrop-blur-sm rounded-md border border-white/20">
+                                                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">Remoto</span>
                                                 </div>
                                             </div>
-                                            <h3 className="text-lg font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-300">{item.title}</h3>
-                                            <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">{item.desc}</p>
-                                        </div>
-
-                                        {/* Remote Badge */}
-                                        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <div className="px-2 py-1 bg-white/10 backdrop-blur-sm rounded-md border border-white/20">
-                                                <span className="text-[10px] font-bold text-white uppercase tracking-wider">Remoto</span>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ))}
+                                        </motion.div>
+                                    );
+                                })}
                             </div>
 
                             <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8 lg:p-12">
