@@ -40,9 +40,26 @@ export async function GET(req: NextRequest) {
 
         console.log('[API/LICENSE/VALIDATE] Instalação encontrada:', installation);
 
-        // Verificar se tem licença ativa
+        // PRIORIDADE 1: Verificar se tem licença ativa
         if (installation.license_status === 'active' && installation.license_key) {
             console.log('[API/LICENSE/VALIDATE] ✅ Licença ativa encontrada');
+            
+            // Verificar se a licença expirou (se tiver data de expiração)
+            if (installation.license_expires_at) {
+                const expiresAt = new Date(installation.license_expires_at);
+                const now = new Date();
+                
+                if (expiresAt < now) {
+                    console.log('[API/LICENSE/VALIDATE] ❌ Licença expirada');
+                    return NextResponse.json({
+                        valid: false,
+                        license_status: 'expired',
+                        reason: 'license_expired',
+                        message: 'Licença expirada. Renove para continuar.'
+                    });
+                }
+            }
+            
             return NextResponse.json({
                 valid: true,
                 license_status: 'active',
@@ -51,17 +68,17 @@ export async function GET(req: NextRequest) {
             });
         }
 
-        // Verificar período de trial (7 dias)
-        const createdAt = new Date(installation.created_at);
-        const now = new Date();
-        const daysSinceInstall = Math.floor((now.getTime() - createdAt.getTime()) / (1000 * 60 * 60 * 24));
-        const trialDaysRemaining = Math.max(0, 7 - daysSinceInstall);
-
-        console.log('[API/LICENSE/VALIDATE] Dias desde instalação:', daysSinceInstall);
-        console.log('[API/LICENSE/VALIDATE] Dias de trial restantes:', trialDaysRemaining);
-
-        if (trialDaysRemaining > 0) {
-            console.log('[API/LICENSE/VALIDATE] ✅ Trial ativo');
+        // PRIORIDADE 2: Verificar status de trial (sincronizado pelo programa)
+        // O programa envia o status real do trial via /api/v1/license/sync
+        if (installation.license_status === 'trial') {
+            console.log('[API/LICENSE/VALIDATE] ✅ Trial ativo (sincronizado pelo programa)');
+            
+            // Calcular dias restantes baseado em created_at como fallback
+            const createdAt = new Date(installation.created_at);
+            const now = new Date();
+            const daysSinceInstall = Math.floor((now.getTime() - createdAt.getTime()) / (1000 * 60 * 60 * 24));
+            const trialDaysRemaining = Math.max(0, 7 - daysSinceInstall);
+            
             return NextResponse.json({
                 valid: true,
                 license_status: 'trial',
@@ -70,8 +87,21 @@ export async function GET(req: NextRequest) {
             });
         }
 
-        // Trial expirado e sem licença
-        console.log('[API/LICENSE/VALIDATE] ❌ Trial expirado e sem licença');
+        // PRIORIDADE 3: Status 'expired' ou 'revoked'
+        if (installation.license_status === 'expired' || installation.license_status === 'revoked') {
+            console.log('[API/LICENSE/VALIDATE] ❌ Licença expirada ou revogada');
+            return NextResponse.json({
+                valid: false,
+                license_status: installation.license_status,
+                reason: installation.license_status === 'revoked' ? 'license_revoked' : 'trial_expired',
+                message: installation.license_status === 'revoked' 
+                    ? 'Licença revogada. Entre em contato com o suporte.'
+                    : 'Período de teste expirado. Ative uma licença para continuar.'
+            });
+        }
+
+        // FALLBACK: Se não tem status definido, considerar trial expirado
+        console.log('[API/LICENSE/VALIDATE] ❌ Status indefinido - considerando expirado');
         return NextResponse.json({
             valid: false,
             license_status: 'expired',
