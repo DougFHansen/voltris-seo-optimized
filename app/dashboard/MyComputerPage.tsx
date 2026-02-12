@@ -333,6 +333,28 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             </button>
                                             <button
                                                 onClick={async () => {
+                                                    if (!confirm('⚠️ Otimização Completa (Prepare PC)\n\nEsta operação irá:\n• Criar ponto de restauração\n• Otimizar RAM e Serviços\n• Configurar plano de energia\n• Limpar sistema\n• Otimizar rede\n\nTempo estimado: 5-10 minutos\n\nDeseja continuar?')) return;
+                                                    const toastId = toast.loading('🎯 Iniciando otimização completa...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'PREPARE_PC'
+                                                            })
+                                                        });
+                                                        toast.success('Otimização completa iniciada!', { id: toastId, icon: '🎯' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                🎯 Prepare PC
+                                            </button>
+                                            <button
+                                                onClick={async () => {
                                                     const toastId = toast.loading('🌐 Otimizando rede...');
                                                     try {
                                                         await fetch('/api/v1/commands/create', {
@@ -348,7 +370,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                         toast.error('Falha no envio', { id: toastId });
                                                     }
                                                 }}
-                                                className="px-3 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 text-xs font-bold rounded-lg hover:bg-teal-500/10 transition-colors"
                                             >
                                                 🌐 Otimizar Rede
                                             </button>
