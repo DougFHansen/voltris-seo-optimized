@@ -6,7 +6,13 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { command_id, status, result_data } = body;
 
+        console.log('[API/COMMANDS/UPDATE] ===== INÍCIO =====');
+        console.log('[API/COMMANDS/UPDATE] command_id:', command_id);
+        console.log('[API/COMMANDS/UPDATE] status:', status);
+        console.log('[API/COMMANDS/UPDATE] result_data:', JSON.stringify(result_data));
+
         if (!command_id || !status) {
+            console.error('[API/COMMANDS/UPDATE] Parâmetros inválidos!');
             return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
         }
 
@@ -15,6 +21,7 @@ export async function POST(req: NextRequest) {
             process.env.SUPABASE_SERVICE_ROLE_KEY!
         );
 
+        console.log('[API/COMMANDS/UPDATE] Atualizando comando no banco...');
         const { error } = await supabaseAdmin
             .from('device_commands')
             .update({
@@ -25,13 +32,15 @@ export async function POST(req: NextRequest) {
             .eq('id', command_id);
 
         if (error) {
-            console.error('[API/COMMANDS/UPDATE] Error:', error);
+            console.error('[API/COMMANDS/UPDATE] Erro ao atualizar:', error);
             return NextResponse.json({ error: 'Update failed' }, { status: 500 });
         }
 
+        console.log('[API/COMMANDS/UPDATE] ✅ Comando atualizado com sucesso!');
+        console.log('[API/COMMANDS/UPDATE] ===== FIM =====');
         return NextResponse.json({ success: true });
     } catch (err) {
-        console.error('[API/COMMANDS/UPDATE] Server Error:', err);
+        console.error('[API/COMMANDS/UPDATE] Erro geral:', err);
         return NextResponse.json({ error: 'Server Error' }, { status: 500 });
     }
 }
