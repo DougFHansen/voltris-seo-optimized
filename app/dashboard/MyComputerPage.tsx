@@ -268,7 +268,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         }}
                                         className="flex-1 px-4 py-3 bg-white text-black text-sm font-bold rounded-xl hover:scale-105 transition-transform shadow-lg"
                                     >
-                                        ⚡ Otimizar RAM
+                                        ⚡ Otimizar Agora
                                     </button>
                                     <button
                                         onClick={async () => {
@@ -289,7 +289,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         }}
                                         className="flex-1 px-4 py-3 bg-[#121218] border border-white/10 text-white text-sm font-bold rounded-xl hover:bg-white/10 transition-colors"
                                     >
-                                        🧹 Limpar Cache
+                                        🧹 Limpeza Rápida
                                     </button>
                                 </div>
                             </div>
