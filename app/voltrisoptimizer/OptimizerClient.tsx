@@ -771,7 +771,7 @@ export default function OptimizerClient() {
                                             
                                             {/* Content */}
                                             <div className="relative z-10">
-                                                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-10 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                                                <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
                                                     <Icon className="w-7 h-7 group-hover:scale-110 transition-transform duration-300" style={{ color: item.iconColor }} />
                                                 </div>
                                                 <h3 className="text-lg font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-300">{item.title}</h3>
