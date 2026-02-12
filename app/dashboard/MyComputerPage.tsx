@@ -298,6 +298,104 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         </div>
                                     </div>
 
+                                    {/* Advanced Optimizations */}
+                                    <div>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Otimizações Avançadas</h3>
+                                        <div className="grid grid-cols-2 gap-2">
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('🚀 Iniciando otimização automática...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'AUTO_OPTIMIZE_PERFORMANCE'
+                                                            })
+                                                        });
+                                                        toast.success('Otimização automática iniciada!', { id: toastId, icon: '🚀' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                🚀 Auto Otimizar
+                                            </button>
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('🌐 Otimizando rede...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'OPTIMIZE_NETWORK'
+                                                            })
+                                                        });
+                                                        toast.success('Otimização de rede iniciada!', { id: toastId, icon: '🌐' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                🌐 Otimizar Rede
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Gamer Mode */}
+                                    <div>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Modo Gamer</h3>
+                                        <div className="grid grid-cols-2 gap-2">
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('🎮 Ativando modo gamer...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'ENABLE_GAMER_MODE'
+                                                            })
+                                                        });
+                                                        toast.success('Modo Gamer ativado!', { id: toastId, icon: '🎮' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                🎮 Ativar
+                                            </button>
+                                            <button
+                                                onClick={async () => {
+                                                    const toastId = toast.loading('🎮 Desativando modo gamer...');
+                                                    try {
+                                                        await fetch('/api/v1/commands/create', {
+                                                            method: 'POST',
+                                                            headers: { 'Content-Type': 'application/json' },
+                                                            body: JSON.stringify({
+                                                                installation_id: inst.id,
+                                                                command_type: 'DISABLE_GAMER_MODE'
+                                                            })
+                                                        });
+                                                        toast.success('Modo Gamer desativado!', { id: toastId, icon: '🎮' });
+                                                    } catch {
+                                                        toast.error('Falha no envio', { id: toastId });
+                                                    }
+                                                }}
+                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 text-xs font-bold rounded-lg hover:bg-purple-500/10 transition-colors"
+                                            >
+                                                🎮 Desativar
+                                            </button>
+                                        </div>
+                                    </div>
+
                                     {/* System Tools */}
                                     <div>
                                         <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Ferramentas do Sistema</h3>
