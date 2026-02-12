@@ -4,7 +4,10 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX, FiDownload, FiPower, FiTarget } from 'react-icons/fi';
+import { 
+    FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX, FiDownload, 
+    FiPower, FiTarget, FiRefreshCw, FiTool, FiWifi, FiGamepad, FiSettings 
+} from 'react-icons/fi';
 import ConfirmModal from '../components/ConfirmModal';
 
 export default function MyComputerPage({ userId }: { userId: string }) {
@@ -81,6 +84,23 @@ export default function MyComputerPage({ userId }: { userId: string }) {
         setSelectedInstallation(null);
     };
 
+    const sendCommand = async (installationId: string, commandType: string, loadingMsg: string, successMsg: string) => {
+        const toastId = toast.loading(loadingMsg);
+        try {
+            await fetch('/api/v1/commands/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    installation_id: installationId,
+                    command_type: commandType
+                })
+            });
+            toast.success(successMsg, { id: toastId });
+        } catch {
+            toast.error('Falha no envio', { id: toastId });
+        }
+    };
+
     if (loading) {
         return (
             <div className="h-full w-full flex items-center justify-center">
@@ -92,7 +112,6 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     if (installations.length === 0) {
         return (
             <div className="flex flex-col items-center justify-center h-full max-w-4xl mx-auto px-4">
-                {/* Header Centralizado */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -105,7 +124,6 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     <p className="text-slate-400 text-lg">Gerencie seu dispositivo Voltris Optimizer</p>
                 </motion.div>
 
-                {/* Empty State Card */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -120,7 +138,6 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                         Acesse informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do dashboard.
                     </p>
 
-                    {/* Steps */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                         <div className="bg-[#0A0A0F] border border-white/5 p-6 rounded-2xl text-left">
                             <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-white font-bold text-lg mb-4">1</div>
@@ -132,7 +149,6 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                         </div>
                     </div>
 
-                    {/* Download Section - Estilo Voltris Optimizer */}
                     <div className="pt-12 border-t border-white/10">
                         <p className="text-xs text-slate-500 mb-6 uppercase tracking-widest font-bold">Não tem o programa?</p>
                         <div className="flex flex-col items-center gap-3">
@@ -165,7 +181,6 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     return (
         <>
             <div className="space-y-8">
-                {/* Header Centralizado */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -178,8 +193,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     <p className="text-slate-400 text-lg">Sincronizado via Telemetria</p>
                 </motion.div>
 
-                {/* Computers Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-7xl mx-auto">
                     {installations.map((inst) => (
                         <motion.div
                             key={inst.id}
@@ -188,9 +202,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                             whileHover={{ y: -5 }}
                             className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-8 rounded-3xl hover:border-[#31A8FF]/30 transition-all group overflow-hidden relative"
                         >
-                            {/* Background Glow */}
-                            <div className={`absolute -right-12 -top-12 w-32 h-32 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'
-                                }`}></div>
+                            <div className={`absolute -right-12 -top-12 w-32 h-32 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
 
                             <div className="relative z-10">
                                 {/* Header */}
@@ -265,76 +277,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
 
                                 {/* Remote Control Panel */}
                                 <div className="space-y-4 pt-6 border-t border-white/10">
-                                    {/* Quick Actions */}
+                                    {/* Otimização Inteligente */}
                                     <div>
-                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Ações Rápidas</h3>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3 flex items-center gap-2">
+                                            <FiTarget className="w-3 h-3" />
+                                            Otimização Inteligente
+                                        </h3>
                                         <div className="grid grid-cols-2 gap-2">
                                             <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('⚡ Enviando comando...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'OPTIMIZE_RAM'
-                                                            })
-                                                        });
-                                                        toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
-                                                className="px-3 py-2.5 bg-white text-black text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
-                                            >
-                                                ⚡ Otimizar RAM
-                                            </button>
-                                            <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('🧹 Solicitando limpeza...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'CLEAN_SYSTEM'
-                                                            })
-                                                        });
-                                                        toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
-                                                className="px-3 py-2.5 bg-[#121218] border border-white/10 text-white text-xs font-bold rounded-lg hover:bg-white/10 transition-colors"
-                                            >
-                                                🧹 Limpeza Rápida
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    {/* Advanced Optimizations */}
-                                    <div>
-                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Otimizações Avançadas</h3>
-                                        <div className="grid grid-cols-2 gap-2">
-                                            <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('🚀 Iniciando otimização automática...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'AUTO_OPTIMIZE_PERFORMANCE'
-                                                            })
-                                                        });
-                                                        toast.success('Otimização automática iniciada!', { id: toastId, icon: '🚀' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
+                                                onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', '🚀 Iniciando otimização automática...', 'Otimização automática iniciada!')}
                                                 className="px-3 py-2.5 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
                                             >
                                                 🚀 Auto Otimizar
@@ -348,72 +299,24 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             >
                                                 🎯 Prepare PC
                                             </button>
-                                            <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('🌐 Otimizando rede...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'OPTIMIZE_NETWORK'
-                                                            })
-                                                        });
-                                                        toast.success('Otimização de rede iniciada!', { id: toastId, icon: '🌐' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
-                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 text-xs font-bold rounded-lg hover:bg-teal-500/10 transition-colors"
-                                            >
-                                                🌐 Otimizar Rede
-                                            </button>
                                         </div>
                                     </div>
 
-                                    {/* Gamer Mode */}
+                                    {/* Modo Gamer */}
                                     <div>
-                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Modo Gamer</h3>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3 flex items-center gap-2">
+                                            <FiGamepad className="w-3 h-3" />
+                                            Modo Gamer
+                                        </h3>
                                         <div className="grid grid-cols-2 gap-2">
                                             <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('🎮 Ativando modo gamer...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'ENABLE_GAMER_MODE'
-                                                            })
-                                                        });
-                                                        toast.success('Modo Gamer ativado!', { id: toastId, icon: '🎮' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
+                                                onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', '🎮 Ativando modo gamer...', 'Modo Gamer ativado!')}
                                                 className="px-3 py-2.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
                                             >
                                                 🎮 Ativar
                                             </button>
                                             <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('🎮 Desativando modo gamer...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'DISABLE_GAMER_MODE'
-                                                            })
-                                                        });
-                                                        toast.success('Modo Gamer desativado!', { id: toastId, icon: '🎮' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
+                                                onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', '🎮 Desativando modo gamer...', 'Modo Gamer desativado!')}
                                                 className="px-3 py-2.5 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 text-xs font-bold rounded-lg hover:bg-purple-500/10 transition-colors"
                                             >
                                                 🎮 Desativar
@@ -421,90 +324,61 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         </div>
                                     </div>
 
-                                    {/* System Tools */}
+                                    {/* Ações Rápidas */}
                                     <div>
-                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Ferramentas do Sistema</h3>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3 flex items-center gap-2">
+                                            <FiZap className="w-3 h-3" />
+                                            Ações Rápidas
+                                        </h3>
+                                        <div className="grid grid-cols-3 gap-2">
+                                            <button
+                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', '⚡ Enviando comando...', 'Comando enviado!')}
+                                                className="px-3 py-2.5 bg-white text-black text-xs font-bold rounded-lg hover:scale-105 transition-transform shadow-lg"
+                                            >
+                                                ⚡ RAM
+                                            </button>
+                                            <button
+                                                onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', '🧹 Solicitando limpeza...', 'Limpeza agendada!')}
+                                                className="px-3 py-2.5 bg-[#121218] border border-white/10 text-white text-xs font-bold rounded-lg hover:bg-white/10 transition-colors"
+                                            >
+                                                🧹 Limpar
+                                            </button>
+                                            <button
+                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', '🌐 Otimizando rede...', 'Otimização de rede iniciada!')}
+                                                className="px-3 py-2.5 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 text-xs font-bold rounded-lg hover:bg-teal-500/10 transition-colors"
+                                            >
+                                                🌐 Rede
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Ferramentas do Sistema */}
+                                    <div>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3 flex items-center gap-2">
+                                            <FiSettings className="w-3 h-3" />
+                                            Ferramentas do Sistema
+                                        </h3>
                                         <div className="grid grid-cols-2 gap-2">
                                             <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('💾 Criando ponto de restauração...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'CREATE_RESTORE_POINT'
-                                                            })
-                                                        });
-                                                        toast.success('Comando enviado!', { id: toastId, icon: '💾' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
+                                                onClick={() => sendCommand(inst.id, 'CREATE_RESTORE_POINT', '💾 Criando ponto de restauração...', 'Comando enviado!')}
                                                 className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
                                             >
                                                 💾 Restauração
                                             </button>
                                             <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('🔧 Iniciando reparo...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'REPAIR_SYSTEM'
-                                                            })
-                                                        });
-                                                        toast.success('Reparo iniciado!', { id: toastId, icon: '🔧' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
+                                                onClick={() => sendCommand(inst.id, 'REPAIR_SYSTEM', '🔧 Iniciando reparo...', 'Reparo iniciado!')}
                                                 className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
                                             >
-                                                🔧 Reparo DISM
+                                                🔧 Reparo
                                             </button>
                                             <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('📊 Analisando sistema...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'ANALYZE_SYSTEM'
-                                                            })
-                                                        });
-                                                        toast.success('Análise iniciada!', { id: toastId, icon: '📊' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
+                                                onClick={() => sendCommand(inst.id, 'ANALYZE_SYSTEM', '📊 Analisando sistema...', 'Análise iniciada!')}
                                                 className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
                                             >
                                                 📊 Analisar
                                             </button>
                                             <button
-                                                onClick={async () => {
-                                                    const toastId = toast.loading('🧹 Executando limpeza profunda...');
-                                                    try {
-                                                        await fetch('/api/v1/commands/create', {
-                                                            method: 'POST',
-                                                            headers: { 'Content-Type': 'application/json' },
-                                                            body: JSON.stringify({
-                                                                installation_id: inst.id,
-                                                                command_type: 'DEEP_CLEAN'
-                                                            })
-                                                        });
-                                                        toast.success('Limpeza profunda iniciada!', { id: toastId, icon: '🧹' });
-                                                    } catch {
-                                                        toast.error('Falha no envio', { id: toastId });
-                                                    }
-                                                }}
+                                                onClick={() => sendCommand(inst.id, 'DEEP_CLEAN', '🧹 Executando limpeza profunda...', 'Limpeza profunda iniciada!')}
                                                 className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
                                             >
                                                 🧹 Limpeza Ultra
@@ -512,9 +386,12 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         </div>
                                     </div>
 
-                                    {/* Power Control */}
+                                    {/* Controle de Energia */}
                                     <div>
-                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3">Controle de Energia</h3>
+                                        <h3 className="text-xs uppercase font-bold text-slate-500 mb-3 flex items-center gap-2">
+                                            <FiPower className="w-3 h-3" />
+                                            Controle de Energia
+                                        </h3>
                                         <div className="grid grid-cols-2 gap-2">
                                             <button
                                                 onClick={() => {
@@ -548,20 +425,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={preparePcModalOpen}
                 onClose={() => setPreparePcModalOpen(false)}
                 onConfirm={async () => {
-                    const toastId = toast.loading('🎯 Iniciando otimização completa...');
-                    try {
-                        await fetch('/api/v1/commands/create', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                installation_id: currentInstallationId,
-                                command_type: 'PREPARE_PC'
-                            })
-                        });
-                        toast.success('Otimização completa iniciada!', { id: toastId, icon: '🎯' });
-                    } catch {
-                        toast.error('Falha no envio', { id: toastId });
-                    }
+                    await sendCommand(currentInstallationId, 'PREPARE_PC', '🎯 Iniciando otimização completa...', 'Otimização completa iniciada!');
                 }}
                 title="Otimização Completa (Prepare PC)"
                 message="Esta operação irá otimizar completamente seu sistema"
@@ -583,20 +447,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={restartModalOpen}
                 onClose={() => setRestartModalOpen(false)}
                 onConfirm={async () => {
-                    const toastId = toast.loading('🔄 Enviando comando...');
-                    try {
-                        await fetch('/api/v1/commands/create', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                installation_id: currentInstallationId,
-                                command_type: 'RESTART'
-                            })
-                        });
-                        toast.success('Reinicialização agendada!', { id: toastId, icon: '🔄' });
-                    } catch {
-                        toast.error('Falha no envio', { id: toastId });
-                    }
+                    await sendCommand(currentInstallationId, 'RESTART', '🔄 Enviando comando...', 'Reinicialização agendada!');
                 }}
                 title="Reiniciar Computador"
                 message="O sistema será reiniciado em 10 segundos"
@@ -616,20 +467,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={shutdownModalOpen}
                 onClose={() => setShutdownModalOpen(false)}
                 onConfirm={async () => {
-                    const toastId = toast.loading('🔴 Enviando comando...');
-                    try {
-                        await fetch('/api/v1/commands/create', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                installation_id: currentInstallationId,
-                                command_type: 'SHUTDOWN'
-                            })
-                        });
-                        toast.success('Desligamento agendado!', { id: toastId, icon: '🔴' });
-                    } catch {
-                        toast.error('Falha no envio', { id: toastId });
-                    }
+                    await sendCommand(currentInstallationId, 'SHUTDOWN', '🔴 Enviando comando...', 'Desligamento agendado!');
                 }}
                 title="Desligar Computador"
                 message="O sistema será desligado em 10 segundos"
@@ -671,25 +509,19 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         Você perderá o acesso remoto e a telemetria deste dispositivo.
                                     </p>
                                 </div>
-                                <button
-                                    onClick={() => setUnlinkModalOpen(false)}
-                                    className="text-slate-400 hover:text-white transition-colors"
-                                >
-                                    <FiX className="w-5 h-5" />
-                                </button>
                             </div>
-                            <div className="flex gap-3 justify-end">
+                            <div className="flex gap-3">
                                 <button
                                     onClick={() => setUnlinkModalOpen(false)}
-                                    className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                                    className="flex-1 px-4 py-3 bg-white/5 text-white rounded-lg hover:bg-white/10 transition-colors font-medium"
                                 >
                                     Cancelar
                                 </button>
                                 <button
                                     onClick={handleConfirmUnlink}
-                                    className="px-6 py-2 text-sm bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
+                                    className="flex-1 px-4 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-bold"
                                 >
-                                    Sim, Desvincular
+                                    Desvincular
                                 </button>
                             </div>
                         </motion.div>
