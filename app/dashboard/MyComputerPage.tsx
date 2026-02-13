@@ -403,7 +403,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 🔧 Reparo
                                             </button>
                                             <button
-                                                onClick={() => senLdCommand(inst.id, 'ANALYZE_SYSTEM', '📊 Analisando sistema...', 'Análise iniciada!')}
+                                                onClick={() => sendCommand(inst.id, 'ANALYZE_SYSTEM', '📊 Analisando sistema...', 'Análise iniciada!')}
                                                 className="px-3 py-2.5 bg-[#0A0A0F] border border-white/5 text-white text-xs font-bold rounded-lg hover:bg-white/5 transition-colors"
                                             >
                                                 📊 Analisar Limpeza
