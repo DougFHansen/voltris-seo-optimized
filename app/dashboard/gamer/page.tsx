@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { createClient } from '@/utils/supabase/client';
-import { toast } from 'sonner';
+import { toast } from 'react-hot-toast';
 
 export default function GamerPage() {
     const [loading, setLoading] = useState(false);
