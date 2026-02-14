@@ -667,7 +667,12 @@ export default function FormatWindowsGuide() {
           <li>Desative "Suspensão Rápida" se tiver problemas de inicialização</li>
         </ol>
       `
-    } de energia pode afetar significativamente o desempenho do seu PC, especialmente após formatação quando tudo está limpo e otimizado.
+    },
+    {
+      title: "Configuração de Energia e Desempenho",
+      content: `
+        <p class="text-gray-300 mb-4">
+          O plano de energia pode afetar significativamente o desempenho do seu PC, especialmente após formatação quando tudo está limpo e otimizado.
         </p>
         
         <h5 class="text-[#31A8FF] font-semibold mb-2">1. Configuração do Plano de Alto Desempenho</h5>
