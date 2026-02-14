@@ -1083,12 +1083,6 @@ export default function FormatWindowsGuide() {
     `
   };
 
-  const externalReferences = [
-    { name: "Microsoft - Download Oficial do Windows 11", url: "https://www.microsoft.com/pt-br/software-download/windows11" },
-    { name: "Rufus - Ferramenta de Criação de Pendrive Bootável", url: "https://rufus.ie/pt_BR/" },
-    { name: "Microsoft - Requisitos do Sistema Windows 11", url: "https://www.microsoft.com/pt-br/windows/windows-11-specifications" }
-  ];
-
   const relatedGuides = [
     {
       href: "/guias/criar-pendrive-bootavel",
@@ -1109,7 +1103,6 @@ export default function FormatWindowsGuide() {
 
   // Incorporar seções adicionais às seções principais
   const allContentSections = [
-    eeAtSection,
     ...contentSections,
     ...additionalContentSections,
     expandedFaqSection,
