@@ -214,30 +214,84 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     return (
         <>
             <div className="h-full w-full flex flex-col overflow-hidden">
-                {/* Header - Fixed height */}
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-center py-2 sm:py-3 flex-shrink-0"
-                >
-                    <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 flex flex-col sm:flex-row items-center justify-center gap-2">
-                        <FiMonitor className="text-[#31A8FF] w-5 h-5 sm:w-6 sm:h-6" />
+                {/* Header - Minimal */}
+                <div className="flex-shrink-0 text-center py-2 border-b border-white/5">
+                    <h1 className="text-base sm:text-lg font-bold text-white flex items-center justify-center gap-2">
+                        <FiMonitor className="text-[#31A8FF] w-4 h-4 sm:w-5 sm:h-5" />
                         <span>Meu Computador</span>
                     </h1>
-                    <p className="text-slate-400 text-xs">Sincronizado via Telemetria</p>
-                </motion.div>
+                </div>
 
-                {/* Content - Flexible with scale */}
-                <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar px-2">
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 pb-3 max-w-7xl mx-auto">
+                {/* Content - Fills remaining space, NO SCROLL */}
+                <div className="flex-1 min-h-0 p-2">
+                    <div className="h-full grid grid-cols-1 xl:grid-cols-2 gap-2 auto-rows-fr">
                         {installations.map((inst) => (
                         <motion.div
                             key={inst.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            whileHover={{ y: -5 }}
-                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all group overflow-hidden relative"
+                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-2 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-hidden relative flex flex-col min-h-0"
                         >
+                            <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
+
+                            <div className="relative z-10 flex-1 flex flex-col min-h-0 overflow-hidden">
+                                {/* Header - Compact */}
+                                <div className="flex justify-between items-center mb-2 gap-2 flex-shrink-0">
+                                    <div className="flex items-center gap-1.5 min-w-0 flex-1">
+                                        <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000 ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'}`}></div>
+                                        <span className="text-white font-bold text-xs truncate">{inst.os_name}</span>
+                                    </div>
+                                    <button onClick={() => handleUnlinkClick(inst)} className="p-1 bg-red-500/10 text-red-500 rounded hover:bg-red-500/20 transition-colors flex-shrink-0" title="Desvincular">
+                                        <FiX className="w-3 h-3" />
+                                    </button>
+                                </div>
+
+                                {/* Hardware - Ultra Compact */}
+                                <div className="space-y-1 mb-2 flex-shrink-0 text-[10px]">
+                                    <div className="flex items-center gap-1.5 text-slate-300 overflow-hidden">
+                                        <FiCpu className="text-[#31A8FF] w-3 h-3 flex-shrink-0" />
+                                        <span className="truncate">{inst.cpu_name}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5 text-slate-300 overflow-hidden">
+                                        <FiZap className="text-[#8B31FF] w-3 h-3 flex-shrink-0" />
+                                        <span className="truncate">{inst.gpu_name || 'GPU não detectada'}</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5 text-slate-300">
+                                        <FiShield className="text-emerald-400 w-3 h-3 flex-shrink-0" />
+                                        <span>{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
+                                    </div>
+                                </div>
+
+                                {/* Status */}
+                                <div className="flex gap-1 mb-2 flex-shrink-0">
+                                    <div className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400' : 'bg-blue-500/10 text-blue-400'}`}>
+                                        {inst.is_optimized ? '✓' : 'PADRÃO'}
+                                    </div>
+                                    <div className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-blue-500/10 text-blue-400'}`}>
+                                        {inst.license_status?.toUpperCase() || 'TRIAL'}
+                                    </div>
+                                </div>
+
+                                {/* Controls - Scrollable if needed */}
+                                <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-1 pt-2 border-t border-white/10">
+                                    <div className="grid grid-cols-2 gap-1">
+                                        <button onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', '🚀', 'OK')} className="px-1.5 py-1 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🚀</button>
+                                        <button onClick={() => { setCurrentInstallationId(inst.id); setPreparePcModalOpen(true); }} className="px-1.5 py-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🎯</button>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-1">
+                                        <button onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', '🎮', 'ON')} className="px-1.5 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🎮 ON</button>
+                                        <button onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', '🎮', 'OFF')} className="px-1.5 py-1 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 text-[9px] font-bold rounded hover:bg-purple-500/10 transition-colors">🎮 OFF</button>
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-1">
+                                        <button onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', '⚡', 'OK')} className="px-1 py-1 bg-white text-black text-[9px] font-bold rounded hover:scale-105 transition-transform">⚡</button>
+                                        <button onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', '🧹', 'OK')} className="px-1 py-1 bg-[#121218] border border-white/10 text-white text-[9px] font-bold rounded hover:bg-white/10 transition-colors">🧹</button>
+                                        <button onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', '🌐', 'OK')} className="px-1 py-1 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 text-[9px] font-bold rounded hover:bg-teal-500/10 transition-colors">🌐</button>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-1">
+                                        <button onClick={() => { setCurrentInstallationId(inst.id); setRestartModalOpen(true); }} className="px-1.5 py-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🔄</button>
+                                        <button onClick={() => { setCurrentInstallationId(inst.id); setShutdownModalOpen(true); }} className="px-1.5 py-1 bg-gradient-to-r from-red-500 to-red-600 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🔴</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
                             <div className={`absolute -right-12 -top-12 w-32 h-32 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
 
                             <div className="relative z-10">
