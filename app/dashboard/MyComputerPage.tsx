@@ -213,77 +213,77 @@ export default function MyComputerPage({ userId }: { userId: string }) {
 
     return (
         <>
-            <div className="h-full w-full flex flex-col">
+            <div className="h-full w-full flex flex-col overflow-hidden">
                 {/* Header - Fixed height */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center py-3 sm:py-4 flex-shrink-0"
+                    className="text-center py-2 sm:py-3 flex-shrink-0"
                 >
-                    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 flex flex-col sm:flex-row items-center justify-center gap-2">
-                        <FiMonitor className="text-[#31A8FF] w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
+                    <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 flex flex-col sm:flex-row items-center justify-center gap-2">
+                        <FiMonitor className="text-[#31A8FF] w-5 h-5 sm:w-6 sm:h-6" />
                         <span>Meu Computador</span>
                     </h1>
-                    <p className="text-slate-400 text-xs sm:text-sm">Sincronizado via Telemetria</p>
+                    <p className="text-slate-400 text-xs">Sincronizado via Telemetria</p>
                 </motion.div>
 
-                {/* Content - Flexible height with internal scroll if needed */}
-                <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar px-2 sm:px-4">
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 sm:gap-4 pb-4">
+                {/* Content - Flexible with scale */}
+                <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar px-2">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-3 pb-3 max-w-7xl mx-auto">
                         {installations.map((inst) => (
                         <motion.div
                             key={inst.id}
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             whileHover={{ y: -5 }}
-                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-4 sm:p-5 rounded-xl hover:border-[#31A8FF]/30 transition-all group overflow-hidden relative"
+                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all group overflow-hidden relative"
                         >
                             <div className={`absolute -right-12 -top-12 w-32 h-32 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
 
                             <div className="relative z-10">
                                 {/* Header */}
-                                <div className="flex justify-between items-start mb-4 gap-2">
+                                <div className="flex justify-between items-start mb-2 gap-2">
                                     <div className="flex items-center gap-2 min-w-0 flex-1 overflow-hidden">
-                                        <div className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000
+                                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000
                                             ? 'bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.6)]'
                                             : 'bg-slate-500'
                                             }`}></div>
-                                        <span className="text-white font-bold text-base sm:text-lg truncate">{inst.os_name}</span>
+                                        <span className="text-white font-bold text-sm truncate">{inst.os_name}</span>
                                     </div>
                                     <button
                                         onClick={() => handleUnlinkClick(inst)}
-                                        className="p-2 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors flex-shrink-0"
+                                        className="p-1.5 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors flex-shrink-0"
                                         title="Desvincular"
                                     >
                                         <FiX className="w-4 h-4" />
                                     </button>
                                 </div>
 
-                                {/* Hardware Info - Compact */}
-                                <div className="space-y-2 mb-4">
+                                {/* Hardware Info */}
+                                <div className="space-y-1.5 mb-2">
                                     <div className="flex items-center gap-2 text-slate-300 min-w-0 overflow-hidden">
-                                        <FiCpu className="text-[#31A8FF] w-4 h-4 flex-shrink-0" />
-                                        <span className="text-sm truncate">{inst.cpu_name}</span>
+                                        <FiCpu className="text-[#31A8FF] w-3.5 h-3.5 flex-shrink-0" />
+                                        <span className="text-xs truncate">{inst.cpu_name}</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-slate-300 min-w-0 overflow-hidden">
-                                        <FiZap className="text-[#8B31FF] w-4 h-4 flex-shrink-0" />
-                                        <span className="text-sm truncate">{inst.gpu_name || 'GPU não detectada'}</span>
+                                        <FiZap className="text-[#8B31FF] w-3.5 h-3.5 flex-shrink-0" />
+                                        <span className="text-xs truncate">{inst.gpu_name || 'GPU não detectada'}</span>
                                     </div>
                                     <div className="flex items-center gap-2 text-slate-300">
-                                        <FiShield className="text-emerald-400 w-4 h-4 flex-shrink-0" />
-                                        <span className="text-sm">{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
+                                        <FiShield className="text-emerald-400 w-3.5 h-3.5 flex-shrink-0" />
+                                        <span className="text-xs">{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
                                     </div>
                                 </div>
 
-                                {/* Status Badges - Compact */}
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    <div className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${inst.is_optimized
+                                {/* Status Badges */}
+                                <div className="flex flex-wrap gap-1.5 mb-2">
+                                    <div className={`px-2 py-1 rounded-md text-[10px] font-bold whitespace-nowrap ${inst.is_optimized
                                         ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
                                         : 'bg-blue-500/10 text-blue-400 border border-blue-500/30'
                                         }`}>
-                                        {inst.is_optimized ? '✓ OTIMIZADO' : 'PADRÃO'}
+                                        {inst.is_optimized ? '✓ OK' : 'PADRÃO'}
                                     </div>
-                                    <div className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${inst.license_status === 'active'
+                                    <div className={`px-2 py-1 rounded-md text-[10px] font-bold whitespace-nowrap ${inst.license_status === 'active'
                                         ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
                                         : 'bg-blue-500/10 text-blue-400 border border-blue-500/30'
                                         }`}>
