@@ -932,41 +932,6 @@ export default function FormatWindowsGuide() {
     }
   ];
 
-  const eeAtSection = {
-    title: "Por Que Você Pode Confiar Neste Guia (EEAT)",
-    content: `
-      <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-500/30 mb-8">
-        <h4 class="text-[#31A8FF] font-bold text-xl mb-4">👨‍💻 Experiência e Expertise</h4>
-        <p class="text-gray-300 mb-4">
-          Este guia foi desenvolvido com base em <strong>15 anos de experiência técnica</strong> em suporte e manutenção de sistemas Windows, tendo realizado mais de <strong>10.000 formatações e instalações limpas</strong> em ambientes domésticos, corporativos e de alta performance.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-black/30 p-4 rounded-lg">
-            <h5 class="text-white font-bold mb-2">📊 Dados Reais</h5>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>• 10.000+ instalações Windows realizadas</li>
-              <li>• 98.7% taxa de sucesso na primeira tentativa</li>
-              <li>• Suporte a 50+ modelos de hardware diferentes</li>
-              <li>• Especialização em migração HD → SSD</li>
-            </ul>
-          </div>
-          <div class="bg-black/30 p-4 rounded-lg">
-            <h5 class="text-white font-bold mb-2">🎓 Certificações</h5>
-            <ul class="text-gray-300 text-sm space-y-1">
-              <li>• Microsoft Certified Professional (MCP)</li>
-              <li>• CompTIA A+ Certified</li>
-              <li>• Especialista em UEFI/GPT desde 2012</li>
-              <li>• Consultor de otimização de sistemas</li>
-            </ul>
-          </div>
-        </div>
-        <p class="text-gray-400 text-sm mt-4 italic">
-          Última atualização: Fevereiro 2026 | Testado em Windows 11 Build 26100+ | Validado em hardware Intel 13ª/14ª Gen e AMD Ryzen 7000
-        </p>
-      </div>
-    `
-  };
-
   const expandedFaqSection = {
     title: "FAQ Expandido: Perguntas Frequentes Sobre Formatação Windows 11",
     content: `
