@@ -223,8 +223,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     <p className="text-xs text-slate-400 mt-1">Gerencie seus dispositivos remotamente</p>
                 </div>
 
-                {/* Content - Responsive with scroll */}
-                <div className="flex-1 min-h-0 p-4 overflow-y-auto">
+                {/* Content - Responsive with modern scroll */}
+                <div className="flex-1 min-h-0 p-4 overflow-y-auto custom-scrollbar-modern">
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 auto-rows-min">
                         {installations.map((inst) => (
                         <motion.div

@@ -1132,3 +1132,58 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+
+/* Modern Custom Scrollbar - Enterprise/SaaS Style */
+.custom-scrollbar-modern {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 49, 255, 0.3) transparent;
+}
+
+.custom-scrollbar-modern::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar-modern::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+  margin: 4px 0;
+}
+
+.custom-scrollbar-modern::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, 
+    rgba(49, 168, 255, 0.4) 0%, 
+    rgba(139, 49, 255, 0.6) 50%, 
+    rgba(255, 75, 107, 0.4) 100%
+  );
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.3s ease;
+}
+
+.custom-scrollbar-modern::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, 
+    rgba(49, 168, 255, 0.7) 0%, 
+    rgba(139, 49, 255, 0.9) 50%, 
+    rgba(255, 75, 107, 0.7) 100%
+  );
+  box-shadow: 0 0 10px rgba(139, 49, 255, 0.5);
+}
+
+.custom-scrollbar-modern::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, 
+    rgba(49, 168, 255, 0.9) 0%, 
+    rgba(139, 49, 255, 1) 50%, 
+    rgba(255, 75, 107, 0.9) 100%
+  );
+}
+
+/* Firefox */
+@supports (scrollbar-color: auto) {
+  .custom-scrollbar-modern {
+    scrollbar-color: rgba(139, 49, 255, 0.6) rgba(255, 255, 255, 0.02);
+    scrollbar-width: thin;
+  }
+}
