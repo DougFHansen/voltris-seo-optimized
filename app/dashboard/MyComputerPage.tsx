@@ -214,80 +214,197 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     return (
         <>
             <div className="h-full w-full flex flex-col overflow-hidden">
-                {/* Header - Minimal */}
-                <div className="flex-shrink-0 text-center py-2 border-b border-white/5">
-                    <h1 className="text-base sm:text-lg font-bold text-white flex items-center justify-center gap-2">
-                        <FiMonitor className="text-[#31A8FF] w-4 h-4 sm:w-5 sm:h-5" />
+                {/* Header - Professional */}
+                <div className="flex-shrink-0 text-center py-4 border-b border-white/10 bg-[#0A0A0F]/50">
+                    <h1 className="text-lg sm:text-xl font-bold text-white flex items-center justify-center gap-2.5">
+                        <FiMonitor className="text-[#31A8FF] w-5 h-5 sm:w-6 sm:h-6" />
                         <span>Meu Computador</span>
                     </h1>
+                    <p className="text-xs text-slate-400 mt-1">Gerencie seus dispositivos remotamente</p>
                 </div>
 
-                {/* Content - Fills remaining space, NO SCROLL */}
-                <div className="flex-1 min-h-0 p-2">
-                    <div className="h-full grid grid-cols-1 xl:grid-cols-2 gap-2 auto-rows-fr">
+                {/* Content - Fills remaining space */}
+                <div className="flex-1 min-h-0 p-4">
+                    <div className="h-full grid grid-cols-1 xl:grid-cols-2 gap-4 content-start">
                         {installations.map((inst) => (
                         <motion.div
                             key={inst.id}
-                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-2 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-hidden relative flex flex-col min-h-0"
+                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-hidden relative flex flex-col"
                         >
                             <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
 
-                            <div className="relative z-10 flex-1 flex flex-col min-h-0 overflow-hidden">
-                                {/* Header - Compact */}
-                                <div className="flex justify-between items-center mb-2 gap-2 flex-shrink-0">
-                                    <div className="flex items-center gap-1.5 min-w-0 flex-1">
-                                        <div className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000 ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'}`}></div>
-                                        <span className="text-white font-bold text-xs truncate">{inst.os_name}</span>
+                            <div className="relative z-10 flex flex-col">
+                                {/* Header - Centered */}
+                                <div className="flex justify-center items-center mb-3 gap-2 flex-shrink-0 relative">
+                                    <div className="flex items-center gap-2 min-w-0">
+                                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000 ? 'bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50' : 'bg-slate-500'}`}></div>
+                                        <span className="text-white font-bold text-sm truncate">{inst.os_name}</span>
                                     </div>
-                                    <button onClick={() => handleUnlinkClick(inst)} className="p-1 bg-red-500/10 text-red-500 rounded hover:bg-red-500/20 transition-colors flex-shrink-0" title="Desvincular">
-                                        <FiX className="w-3 h-3" />
+                                    <button onClick={() => handleUnlinkClick(inst)} className="absolute right-0 p-1.5 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors flex-shrink-0" title="Desvincular">
+                                        <FiX className="w-3.5 h-3.5" />
                                     </button>
                                 </div>
 
-                                {/* Hardware - Ultra Compact */}
-                                <div className="space-y-1 mb-2 flex-shrink-0 text-[10px]">
-                                    <div className="flex items-center gap-1.5 text-slate-300 overflow-hidden">
-                                        <FiCpu className="text-[#31A8FF] w-3 h-3 flex-shrink-0" />
+                                {/* Hardware - Centered */}
+                                <div className="space-y-1.5 mb-3 flex-shrink-0 text-[11px]">
+                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden">
+                                        <FiCpu className="text-[#31A8FF] w-3.5 h-3.5 flex-shrink-0" />
                                         <span className="truncate">{inst.cpu_name}</span>
                                     </div>
-                                    <div className="flex items-center gap-1.5 text-slate-300 overflow-hidden">
-                                        <FiZap className="text-[#8B31FF] w-3 h-3 flex-shrink-0" />
+                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden">
+                                        <FiZap className="text-[#8B31FF] w-3.5 h-3.5 flex-shrink-0" />
                                         <span className="truncate">{inst.gpu_name || 'GPU não detectada'}</span>
                                     </div>
-                                    <div className="flex items-center gap-1.5 text-slate-300">
-                                        <FiShield className="text-emerald-400 w-3 h-3 flex-shrink-0" />
+                                    <div className="flex items-center justify-center gap-2 text-slate-300">
+                                        <FiShield className="text-emerald-400 w-3.5 h-3.5 flex-shrink-0" />
                                         <span>{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
                                     </div>
                                 </div>
 
-                                {/* Status */}
-                                <div className="flex gap-1 mb-2 flex-shrink-0">
-                                    <div className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400' : 'bg-blue-500/10 text-blue-400'}`}>
-                                        {inst.is_optimized ? '✓' : 'PADRÃO'}
+                                {/* Status - Centered */}
+                                <div className="flex justify-center gap-1.5 mb-3 flex-shrink-0">
+                                    <div className={`px-2 py-1 rounded-md text-[10px] font-bold ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
+                                        {inst.is_optimized ? '✓ OTIMIZADO' : 'PADRÃO'}
                                     </div>
-                                    <div className={`px-1.5 py-0.5 rounded text-[9px] font-bold ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-blue-500/10 text-blue-400'}`}>
+                                    <div className={`px-2 py-1 rounded-md text-[10px] font-bold ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
                                         {inst.license_status?.toUpperCase() || 'TRIAL'}
                                     </div>
                                 </div>
 
-                                {/* Controls - Scrollable if needed */}
-                                <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-1 pt-2 border-t border-white/10">
-                                    <div className="grid grid-cols-2 gap-1">
-                                        <button onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', '🚀', 'OK')} className="px-1.5 py-1 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🚀</button>
-                                        <button onClick={() => { setCurrentInstallationId(inst.id); setPreparePcModalOpen(true); }} className="px-1.5 py-1 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🎯</button>
+                                {/* Controls - Categorized Professional Layout */}
+                                <div className="space-y-3 py-3 border-t border-white/10">
+                                    {/* OTIMIZAÇÃO E CORREÇÃO */}
+                                    <div>
+                                        <div className="flex items-center gap-1.5 mb-1.5">
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
+                                            <span className="text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider">Otimização e Correção</span>
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-1.5">
+                                            <button 
+                                                onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', '🚀 Otimizando...', 'Otimização concluída!')} 
+                                                className="group relative px-2 py-2 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white rounded-lg hover:shadow-lg hover:shadow-[#31A8FF]/20 transition-all duration-200 overflow-hidden"
+                                            >
+                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                <div className="relative flex items-center justify-center gap-1.5">
+                                                    <FiZap className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[10px] font-bold truncate">Otimizar</span>
+                                                </div>
+                                            </button>
+                                            <button 
+                                                onClick={() => { setCurrentInstallationId(inst.id); setPreparePcModalOpen(true); }} 
+                                                className="group relative px-2 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200 overflow-hidden"
+                                            >
+                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                <div className="relative flex items-center justify-center gap-1.5">
+                                                    <FiTarget className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[10px] font-bold truncate">Prepare PC</span>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="grid grid-cols-2 gap-1">
-                                        <button onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', '🎮', 'ON')} className="px-1.5 py-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🎮 ON</button>
-                                        <button onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', '🎮', 'OFF')} className="px-1.5 py-1 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 text-[9px] font-bold rounded hover:bg-purple-500/10 transition-colors">🎮 OFF</button>
+
+                                    {/* MODO GAMER */}
+                                    <div>
+                                        <div className="flex items-center gap-1.5 mb-1.5">
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+                                            <span className="text-[9px] font-bold text-purple-400 uppercase tracking-wider">Modo Gamer</span>
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-1.5">
+                                            <button 
+                                                onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', '🎮 Ativando...', 'Modo Gamer ativado!')} 
+                                                className="group relative px-2 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-200 overflow-hidden"
+                                            >
+                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                <div className="relative flex items-center justify-center gap-1.5">
+                                                    <FiSettings className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[10px] font-bold truncate">Ativar</span>
+                                                </div>
+                                            </button>
+                                            <button 
+                                                onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', '🎮 Desativando...', 'Modo Gamer desativado!')} 
+                                                className="group relative px-2 py-2 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-all duration-200"
+                                            >
+                                                <div className="relative flex items-center justify-center gap-1.5">
+                                                    <FiSettings className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[10px] font-bold truncate">Desativar</span>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="grid grid-cols-3 gap-1">
-                                        <button onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', '⚡', 'OK')} className="px-1 py-1 bg-white text-black text-[9px] font-bold rounded hover:scale-105 transition-transform">⚡</button>
-                                        <button onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', '🧹', 'OK')} className="px-1 py-1 bg-[#121218] border border-white/10 text-white text-[9px] font-bold rounded hover:bg-white/10 transition-colors">🧹</button>
-                                        <button onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', '🌐', 'OK')} className="px-1 py-1 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 text-[9px] font-bold rounded hover:bg-teal-500/10 transition-colors">🌐</button>
+
+                                    {/* FERRAMENTAS DO SISTEMA */}
+                                    <div>
+                                        <div className="flex items-center gap-1.5 mb-1.5">
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
+                                            <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider">Ferramentas</span>
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
+                                        </div>
+                                        <div className="grid grid-cols-3 gap-1.5">
+                                            <button 
+                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', '⚡ Limpando RAM...', 'RAM otimizada!')} 
+                                                className="group relative px-1.5 py-2 bg-white text-black rounded-lg hover:shadow-lg hover:shadow-white/20 transition-all duration-200 overflow-hidden"
+                                                title="Otimizar RAM"
+                                            >
+                                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                                                <div className="relative flex flex-col items-center justify-center gap-0.5">
+                                                    <FiZap className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] font-bold">RAM</span>
+                                                </div>
+                                            </button>
+                                            <button 
+                                                onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', '🧹 Limpando...', 'Sistema limpo!')} 
+                                                className="group relative px-1.5 py-2 bg-[#121218] border border-white/10 text-white rounded-lg hover:bg-white/10 transition-all duration-200"
+                                                title="Limpar Sistema"
+                                            >
+                                                <div className="relative flex flex-col items-center justify-center gap-0.5">
+                                                    <FiShield className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] font-bold">Limpar</span>
+                                                </div>
+                                            </button>
+                                            <button 
+                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', '🌐 Otimizando...', 'Rede otimizada!')} 
+                                                className="group relative px-1.5 py-2 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 rounded-lg hover:bg-teal-500/10 transition-all duration-200"
+                                                title="Otimizar Rede"
+                                            >
+                                                <div className="relative flex flex-col items-center justify-center gap-0.5">
+                                                    <FiMonitor className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] font-bold">Rede</span>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div className="grid grid-cols-2 gap-1">
-                                        <button onClick={() => { setCurrentInstallationId(inst.id); setRestartModalOpen(true); }} className="px-1.5 py-1 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🔄</button>
-                                        <button onClick={() => { setCurrentInstallationId(inst.id); setShutdownModalOpen(true); }} className="px-1.5 py-1 bg-gradient-to-r from-red-500 to-red-600 text-white text-[9px] font-bold rounded hover:scale-105 transition-transform">🔴</button>
+
+                                    {/* ENERGIA */}
+                                    <div>
+                                        <div className="flex items-center gap-1.5 mb-1.5">
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
+                                            <span className="text-[9px] font-bold text-orange-400 uppercase tracking-wider">Energia</span>
+                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
+                                        </div>
+                                        <div className="grid grid-cols-2 gap-1.5">
+                                            <button 
+                                                onClick={() => { setCurrentInstallationId(inst.id); setRestartModalOpen(true); }} 
+                                                className="group relative px-2 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-200 overflow-hidden"
+                                            >
+                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                <div className="relative flex items-center justify-center gap-1.5">
+                                                    <FiPower className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[10px] font-bold truncate">Reiniciar</span>
+                                                </div>
+                                            </button>
+                                            <button 
+                                                onClick={() => { setCurrentInstallationId(inst.id); setShutdownModalOpen(true); }} 
+                                                className="group relative px-2 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:shadow-lg hover:shadow-red-500/20 transition-all duration-200 overflow-hidden"
+                                            >
+                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                <div className="relative flex items-center justify-center gap-1.5">
+                                                    <FiPower className="w-3.5 h-3.5 flex-shrink-0" />
+                                                    <span className="text-[10px] font-bold truncate">Desligar</span>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
