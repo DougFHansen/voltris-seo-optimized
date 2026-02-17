@@ -184,23 +184,23 @@ export default function CompaniesPage() {
     }
 
     return (
-        <div className="space-y-8 relative">
+        <div className="space-y-6 sm:space-y-8 relative w-full max-w-full overflow-hidden custom-scrollbar-modern">
             {/* Header */}
-            <div className="flex justify-between items-end">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold text-white mb-2">{company.name}</h1>
-                    <p className="text-slate-400">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2">{company.name}</h1>
+                    <p className="text-xs sm:text-sm text-slate-400 break-words">
                         Painel Corporativo • {company.plan_type.toUpperCase()} •
                         <span className="text-[#00FF94] ml-2">{stats.devices} / {company.max_devices} Licenças em Uso</span>
                     </p>
                 </div>
-                <div className="flex gap-3">
-                    <Link href="/dashboard/companies/devices" className="bg-white/5 border border-white/10 text-white px-5 py-2.5 rounded-xl hover:bg-white/10 transition flex items-center gap-2">
-                        <FiMonitor /> Gerenciar PCs
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full lg:w-auto">
+                    <Link href="/dashboard/companies/devices" className="bg-white/5 border border-white/10 text-white px-4 sm:px-5 py-2.5 rounded-xl hover:bg-white/10 transition flex items-center justify-center gap-2 text-sm sm:text-base min-h-[44px]">
+                        <FiMonitor className="w-4 h-4" /> Gerenciar PCs
                     </Link>
                     <button
                         onClick={() => setIsBuyModalOpen(true)}
-                        className="bg-[#8B31FF] text-white px-5 py-2.5 rounded-xl hover:bg-[#8B31FF]/90 transition shadow-[0_0_20px_#8B31FF55]"
+                        className="bg-[#8B31FF] text-white px-4 sm:px-5 py-2.5 rounded-xl hover:bg-[#8B31FF]/90 transition shadow-[0_0_20px_#8B31FF55] text-sm sm:text-base min-h-[44px]"
                     >
                         + Adicionar Licenças
                     </button>
@@ -208,7 +208,7 @@ export default function CompaniesPage() {
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                 <StatCard
                     title="Total de PCs"
                     value={stats.devices.toString()}
@@ -241,10 +241,10 @@ export default function CompaniesPage() {
             </div>
 
             {/* Main Content Areas */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                 {/* Recent Alerts List */}
-                <div className="lg:col-span-2 bg-[#121218]/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6">
-                    <h3 className="text-lg font-bold text-white mb-6">Alertas Recentes</h3>
+                <div className="lg:col-span-2 bg-[#121218]/50 backdrop-blur-xl border border-white/5 rounded-2xl sm:rounded-3xl p-4 sm:p-6">
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6">Alertas Recentes</h3>
                     {recentAlerts.length === 0 ? (
                         <div className="text-center py-10 text-slate-500">
                             <FiTrendingUp className="w-10 h-10 mx-auto mb-3 opacity-20" />
@@ -266,23 +266,23 @@ export default function CompaniesPage() {
                 </div>
 
                 {/* Quick Actions */}
-                <div className="bg-[#121218]/50 backdrop-blur-xl border border-white/5 rounded-3xl p-6">
-                    <h3 className="text-lg font-bold text-white mb-6">Ações Rápidas</h3>
-                    <div className="space-y-3">
+                <div className="bg-[#121218]/50 backdrop-blur-xl border border-white/5 rounded-2xl sm:rounded-3xl p-4 sm:p-6">
+                    <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6">Ações Rápidas</h3>
+                    <div className="space-y-2 sm:space-y-3">
                         <button
                             onClick={handleOptimizeAll}
-                            className="w-full text-left p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group"
+                            className="w-full text-left p-3 sm:p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group min-h-[52px]"
                         >
-                            <div className="w-8 h-8 rounded-lg bg-[#31A8FF]/20 flex items-center justify-center text-[#31A8FF] group-hover:scale-110 transition">⚡</div>
-                            <span>Otimizar Todas as Máquinas</span>
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#31A8FF]/20 flex items-center justify-center text-[#31A8FF] group-hover:scale-110 transition flex-shrink-0">⚡</div>
+                            <span className="text-sm sm:text-base">Otimizar Todas as Máquinas</span>
                         </button>
-                        <button className="w-full text-left p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group">
-                            <div className="w-8 h-8 rounded-lg bg-[#00FF94]/20 flex items-center justify-center text-[#00FF94] group-hover:scale-110 transition">📄</div>
-                            <span>Gerar Relatório Mensal</span>
+                        <button className="w-full text-left p-3 sm:p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group min-h-[52px]">
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#00FF94]/20 flex items-center justify-center text-[#00FF94] group-hover:scale-110 transition flex-shrink-0">📄</div>
+                            <span className="text-sm sm:text-base">Gerar Relatório Mensal</span>
                         </button>
-                        <Link href="/dashboard/companies/devices" className="w-full text-left p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group">
-                            <div className="w-8 h-8 rounded-lg bg-[#FF4B6B]/20 flex items-center justify-center text-[#FF4B6B] group-hover:scale-110 transition">🔒</div>
-                            <span>Gerenciar Bloqueios</span>
+                        <Link href="/dashboard/companies/devices" className="w-full text-left p-3 sm:p-4 bg-white/5 rounded-xl hover:bg-white/10 transition flex items-center gap-3 text-slate-300 hover:text-white group min-h-[52px]">
+                            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#FF4B6B]/20 flex items-center justify-center text-[#FF4B6B] group-hover:scale-110 transition flex-shrink-0">🔒</div>
+                            <span className="text-sm sm:text-base">Gerenciar Bloqueios</span>
                         </Link>
                     </div>
                 </div>

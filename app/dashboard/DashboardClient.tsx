@@ -130,28 +130,28 @@ function DashboardContent() {
 
   return (
     <AuthGuard>
-      <div className="flex flex-col gap-6 w-full max-w-full pb-20 lg:pb-0 h-full">
+      <div className="flex flex-col gap-4 sm:gap-6 w-full max-w-full pb-20 lg:pb-0 h-full overflow-y-auto custom-scrollbar-modern">
 
         {/* Header Section - Only show if NOT on 'pc' tab */}
         {activeTab !== 'pc' && (
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 flex-shrink-0">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 flex-shrink-0 px-2 sm:px-0">
             <div>
-              <h1 className="text-3xl font-bold text-white flex items-center gap-3">
-                Dashboard <span className="text-xs px-2 py-1 rounded bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20">PRO</span>
+              <h1 className="text-2xl sm:text-3xl font-bold text-white flex items-center gap-2 sm:gap-3 flex-wrap">
+                Dashboard <span className="text-[10px] sm:text-xs px-2 py-1 rounded bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20">PRO</span>
               </h1>
-              <p className="text-slate-400 mt-1">Visão geral da sua conta e serviços ativos.</p>
+              <p className="text-sm sm:text-base text-slate-400 mt-1">Visão geral da sua conta e serviços ativos.</p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={() => { setIsRefreshing(true); fetchData(false).finally(() => setIsRefreshing(false)); }}
-                className="p-3 bg-[#1A1A22] border border-white/10 rounded-xl hover:bg-white/5 transition-colors text-slate-400 hover:text-white"
+                className="p-2.5 sm:p-3 bg-[#1A1A22] border border-white/10 rounded-xl hover:bg-white/5 transition-colors text-slate-400 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center"
                 title="Atualizar"
               >
-                <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
+                <FiRefreshCw className={`w-4 h-4 sm:w-5 sm:h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
               </button>
-              <Link href="/servicos" className="flex items-center gap-2 px-6 py-3 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-                <FiPlus className="w-5 h-5" />
+              <Link href="/servicos" className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.2)] text-sm sm:text-base min-h-[44px]">
+                <FiPlus className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span>Novo Pedido</span>
               </Link>
             </div>
@@ -166,23 +166,23 @@ function DashboardContent() {
             className="flex flex-col gap-6 flex-1 min-h-0"
           >
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-shrink-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 flex-shrink-0 px-2 sm:px-0">
               <StatCard title="Total de Pedidos" value={stats.total} icon={FiPackage} color="blue" delay={0.1} />
               <StatCard title="Em Andamento" value={stats.pending} icon={FiActivity} color="purple" delay={0.2} />
               <StatCard title="Concluídos" value={stats.completed} icon={FiCheckCircle} color="green" delay={0.3} />
             </div>
 
             {/* List Content */}
-            <div className="bg-[#121218] border border-white/5 rounded-3xl overflow-hidden flex flex-col relative group">
+            <div className="bg-[#121218] border border-white/5 rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col relative group mx-2 sm:mx-0">
               <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-50 block"></div>
 
-              <div className="p-6 border-b border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0 bg-[#121218]">
-                <div className="flex items-center gap-4 w-full sm:w-auto overflow-x-auto no-scrollbar">
+              <div className="p-4 sm:p-6 border-b border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 flex-shrink-0 bg-[#121218]">
+                <div className="flex items-center gap-2 sm:gap-4 w-full overflow-x-auto no-scrollbar pb-2 sm:pb-0">
                   {['all', 'pending', 'completed'].map((f) => (
                     <button
                       key={f}
                       onClick={() => setFilter(f)}
-                      className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${filter === f
+                      className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all whitespace-nowrap min-h-[40px] ${filter === f
                         ? 'bg-white text-black'
                         : 'text-slate-400 hover:text-white hover:bg-white/5'
                         }`}
@@ -193,7 +193,7 @@ function DashboardContent() {
                 </div>
               </div>
 
-              <div className="p-4 space-y-3">
+              <div className="p-3 sm:p-4 space-y-3 overflow-y-auto custom-scrollbar-modern max-h-[600px]">
                 <AnimatePresence>
                   {filteredOrders.length > 0 ? (
                     filteredOrders.map((order, i) => (
@@ -202,23 +202,23 @@ function DashboardContent() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="bg-[#1A1A22] border border-white/5 p-4 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 transition-all"
+                        className="bg-[#1A1A22] border border-white/5 p-3 sm:p-4 rounded-xl sm:rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 transition-all"
                       >
-                        <div className="flex items-center gap-4">
-                          <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${order.status === 'completed' ? 'bg-green-500/10 text-green-400' : 'bg-purple-500/10 text-purple-400'}`}>
-                            <FiPackage className="w-5 h-5" />
+                        <div className="flex items-center gap-3 sm:gap-4 w-full md:w-auto">
+                          <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${order.status === 'completed' ? 'bg-green-500/10 text-green-400' : 'bg-purple-500/10 text-purple-400'}`}>
+                            <FiPackage className="w-4 h-4 sm:w-5 sm:h-5" />
                           </div>
-                          <div>
-                            <h4 className="text-white font-bold">Pedido #{order.id.substring(0, 8)}</h4>
-                            <p className="text-sm text-slate-400">{new Date(order.created_at).toLocaleDateString()}</p>
+                          <div className="min-w-0 flex-1">
+                            <h4 className="text-sm sm:text-base text-white font-bold truncate">Pedido #{order.id.substring(0, 8)}</h4>
+                            <p className="text-xs sm:text-sm text-slate-400">{new Date(order.created_at).toLocaleDateString()}</p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-8">
-                          <div className="text-right">
-                            <p className="text-xs text-slate-500 uppercase tracking-widest">Valor</p>
-                            <p className="text-white font-bold">R$ {order.total.toFixed(2)}</p>
+                        <div className="flex items-center gap-4 sm:gap-8 w-full md:w-auto justify-between md:justify-end">
+                          <div className="text-left md:text-right">
+                            <p className="text-[10px] sm:text-xs text-slate-500 uppercase tracking-widest">Valor</p>
+                            <p className="text-sm sm:text-base text-white font-bold">R$ {order.total.toFixed(2)}</p>
                           </div>
-                          <div className={`px-3 py-1 rounded-full text-[10px] font-bold ${order.status === 'completed' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-purple-500/10 text-purple-400 border border-purple-500/20'}`}>
+                          <div className={`px-2 sm:px-3 py-1 rounded-full text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${order.status === 'completed' ? 'bg-green-500/10 text-green-400 border border-green-500/20' : 'bg-purple-500/10 text-purple-400 border border-purple-500/20'}`}>
                             {order.status === 'completed' ? 'Concluído' : 'Processando'}
                           </div>
                         </div>
