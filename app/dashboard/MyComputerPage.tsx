@@ -223,17 +223,17 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     <p className="text-xs text-slate-400 mt-1">Gerencie seus dispositivos remotamente</p>
                 </div>
 
-                {/* Content - Fills remaining space */}
-                <div className="flex-1 min-h-0 p-4">
-                    <div className="h-full grid grid-cols-1 xl:grid-cols-2 gap-4 content-start">
+                {/* Content - Responsive with scroll */}
+                <div className="flex-1 min-h-0 p-4 overflow-y-auto">
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 auto-rows-min">
                         {installations.map((inst) => (
                         <motion.div
                             key={inst.id}
-                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-hidden relative flex flex-col"
+                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-hidden relative w-full max-w-2xl mx-auto"
                         >
                             <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
 
-                            <div className="relative z-10 flex flex-col">
+                            <div className="relative z-10">
                                 {/* Header - Centered */}
                                 <div className="flex justify-center items-center mb-3 gap-2 flex-shrink-0 relative">
                                     <div className="flex items-center gap-2 min-w-0">
@@ -245,39 +245,39 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     </button>
                                 </div>
 
-                                {/* Hardware - Centered */}
-                                <div className="space-y-1.5 mb-3 flex-shrink-0 text-[11px]">
-                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden">
-                                        <FiCpu className="text-[#31A8FF] w-3.5 h-3.5 flex-shrink-0" />
-                                        <span className="truncate">{inst.cpu_name}</span>
+                                {/* Hardware - Centered & Responsive */}
+                                <div className="space-y-1.5 mb-3 flex-shrink-0 text-[10px] sm:text-[11px]">
+                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
+                                        <FiCpu className="text-[#31A8FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                        <span className="truncate text-center">{inst.cpu_name}</span>
                                     </div>
-                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden">
-                                        <FiZap className="text-[#8B31FF] w-3.5 h-3.5 flex-shrink-0" />
-                                        <span className="truncate">{inst.gpu_name || 'GPU não detectada'}</span>
+                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
+                                        <FiZap className="text-[#8B31FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                        <span className="truncate text-center">{inst.gpu_name || 'GPU não detectada'}</span>
                                     </div>
                                     <div className="flex items-center justify-center gap-2 text-slate-300">
-                                        <FiShield className="text-emerald-400 w-3.5 h-3.5 flex-shrink-0" />
+                                        <FiShield className="text-emerald-400 w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
                                         <span>{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
                                     </div>
                                 </div>
 
-                                {/* Status - Centered */}
-                                <div className="flex justify-center gap-1.5 mb-3 flex-shrink-0">
-                                    <div className={`px-2 py-1 rounded-md text-[10px] font-bold ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
+                                {/* Status - Centered & Responsive */}
+                                <div className="flex flex-wrap justify-center gap-1.5 mb-3 flex-shrink-0">
+                                    <div className={`px-2 py-1 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
                                         {inst.is_optimized ? '✓ OTIMIZADO' : 'PADRÃO'}
                                     </div>
-                                    <div className={`px-2 py-1 rounded-md text-[10px] font-bold ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
+                                    <div className={`px-2 py-1 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
                                         {inst.license_status?.toUpperCase() || 'TRIAL'}
                                     </div>
                                 </div>
 
-                                {/* Controls - Categorized Professional Layout */}
-                                <div className="space-y-3 py-3 border-t border-white/10">
+                                {/* Controls - Responsive Categorized Layout */}
+                                <div className="space-y-2.5 sm:space-y-3 py-3 border-t border-white/10">
                                     {/* OTIMIZAÇÃO E CORREÇÃO */}
                                     <div>
                                         <div className="flex items-center gap-1.5 mb-1.5">
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
-                                            <span className="text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider">Otimização e Correção</span>
+                                            <span className="text-[8px] sm:text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider whitespace-nowrap px-1">Otimização e Correção</span>
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
                                         </div>
                                         <div className="grid grid-cols-2 gap-1.5">
@@ -287,8 +287,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             >
                                                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
                                                 <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiZap className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[10px] font-bold truncate">Otimizar</span>
+                                                    <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Otimizar</span>
                                                 </div>
                                             </button>
                                             <button 
@@ -297,8 +297,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             >
                                                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
                                                 <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiTarget className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[10px] font-bold truncate">Prepare PC</span>
+                                                    <FiTarget className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Prepare PC</span>
                                                 </div>
                                             </button>
                                         </div>
@@ -308,7 +308,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     <div>
                                         <div className="flex items-center gap-1.5 mb-1.5">
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
-                                            <span className="text-[9px] font-bold text-purple-400 uppercase tracking-wider">Modo Gamer</span>
+                                            <span className="text-[8px] sm:text-[9px] font-bold text-purple-400 uppercase tracking-wider whitespace-nowrap px-1">Modo Gamer</span>
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
                                         </div>
                                         <div className="grid grid-cols-2 gap-1.5">
@@ -318,8 +318,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             >
                                                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
                                                 <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiSettings className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[10px] font-bold truncate">Ativar</span>
+                                                    <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Ativar</span>
                                                 </div>
                                             </button>
                                             <button 
@@ -327,8 +327,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 className="group relative px-2 py-2 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-all duration-200"
                                             >
                                                 <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiSettings className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[10px] font-bold truncate">Desativar</span>
+                                                    <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Desativar</span>
                                                 </div>
                                             </button>
                                         </div>
@@ -338,7 +338,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     <div>
                                         <div className="flex items-center gap-1.5 mb-1.5">
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
-                                            <span className="text-[9px] font-bold text-emerald-400 uppercase tracking-wider">Ferramentas</span>
+                                            <span className="text-[8px] sm:text-[9px] font-bold text-emerald-400 uppercase tracking-wider whitespace-nowrap px-1">Ferramentas</span>
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
                                         </div>
                                         <div className="grid grid-cols-3 gap-1.5">
@@ -349,8 +349,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             >
                                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
                                                 <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                    <FiZap className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] font-bold">RAM</span>
+                                                    <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[8px] sm:text-[9px] font-bold">RAM</span>
                                                 </div>
                                             </button>
                                             <button 
@@ -359,8 +359,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 title="Limpar Sistema"
                                             >
                                                 <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                    <FiShield className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] font-bold">Limpar</span>
+                                                    <FiShield className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[8px] sm:text-[9px] font-bold">Limpar</span>
                                                 </div>
                                             </button>
                                             <button 
@@ -369,8 +369,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 title="Otimizar Rede"
                                             >
                                                 <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                    <FiMonitor className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] font-bold">Rede</span>
+                                                    <FiMonitor className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[8px] sm:text-[9px] font-bold">Rede</span>
                                                 </div>
                                             </button>
                                         </div>
@@ -380,7 +380,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     <div>
                                         <div className="flex items-center gap-1.5 mb-1.5">
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
-                                            <span className="text-[9px] font-bold text-orange-400 uppercase tracking-wider">Energia</span>
+                                            <span className="text-[8px] sm:text-[9px] font-bold text-orange-400 uppercase tracking-wider whitespace-nowrap px-1">Energia</span>
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
                                         </div>
                                         <div className="grid grid-cols-2 gap-1.5">
@@ -390,8 +390,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             >
                                                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
                                                 <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiPower className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[10px] font-bold truncate">Reiniciar</span>
+                                                    <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Reiniciar</span>
                                                 </div>
                                             </button>
                                             <button 
@@ -400,8 +400,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                             >
                                                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
                                                 <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiPower className="w-3.5 h-3.5 flex-shrink-0" />
-                                                    <span className="text-[10px] font-bold truncate">Desligar</span>
+                                                    <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Desligar</span>
                                                 </div>
                                             </button>
                                         </div>
