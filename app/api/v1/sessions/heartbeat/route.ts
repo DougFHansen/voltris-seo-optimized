@@ -102,15 +102,21 @@ export async function POST(req: NextRequest) {
                 .from('telemetry_events')
                 .insert({
                     session_id: session_id,
+                    device_id: session.device_id,  // CORREÇÃO: Adicionar device_id para JOIN funcionar
                     event_type: event.event_type,
                     feature_name: event.feature_name || 'System',
                     action_name: event.action_name || 'Heartbeat',
+                    success: event.success !== undefined ? event.success : true,
+                    duration_ms: event.duration_ms || 0,
+                    error_code: event.error_code || null,
                     metadata: event.metadata || {},
                     created_at: new Date().toISOString()
                 });
 
             if (eventError) {
                 console.error(`[API/HEARTBEAT] Erro ao inserir evento: ${eventError.message}`);
+            } else {
+                console.log(`[API/HEARTBEAT] Evento registrado com sucesso: ${event.event_type} (device_id: ${session.device_id})`);
             }
         }
 

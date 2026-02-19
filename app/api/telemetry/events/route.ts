@@ -35,13 +35,13 @@ export async function POST(req: NextRequest) {
         // Preparar eventos para inserção em lote
         const formattedEvents = events.map((e: any) => ({
             session_id: session_id, // Pode vir no body principal ou em cada evento
-            device_id: real_device_id,
+            device_id: real_device_id,  // CORREÇÃO: Adicionar device_id
             event_type: e.event_type,
             feature_name: e.feature_name,
             action_name: e.action_name,
-            duration_ms: e.duration_ms,
-            success: e.success,
-            error_code: e.error_code,
+            duration_ms: e.duration_ms || 0,
+            success: e.success !== undefined ? e.success : true,
+            error_code: e.error_code || null,
             metadata: e.metadata, // JSON extra
             created_at: e.timestamp || new Date().toISOString()
         }));
