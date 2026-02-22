@@ -11,8 +11,6 @@ const STATIC_ASSETS = [
   '/robots.txt',
   '/sitemap.xml',
   '/sitemap-images.xml',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/webfonts/fa-solid-900.woff2',
 ];
 
 // Recursos para cache dinâmico
@@ -272,4 +270,4 @@ async function cleanupOldCaches() {
   } catch (error) {
     console.error('Cache cleanup failed:', error);
   }
-} 
+}

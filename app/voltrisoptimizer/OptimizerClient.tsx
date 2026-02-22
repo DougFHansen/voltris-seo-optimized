@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import SoftwareApplicationSchema from '@/components/SEOStructuredData';
 import Link from 'next/link';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import {
@@ -190,7 +191,7 @@ export default function OptimizerClient() {
                             {/* Card Header */}
                             <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08] bg-white/[0.01]">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)] animate-pulse"></div>
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
                                     <span className="text-xs font-semibold text-white tracking-wide">Saúde do Sistema</span>
                                 </div>
                                 <span className="text-[10px] font-medium text-emerald-500 px-2 py-0.5 bg-emerald-500/10 rounded-full">Otimizado</span>
@@ -267,7 +268,7 @@ export default function OptimizerClient() {
                                 <div className="flex items-center justify-between pb-2">
                                     <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">Otimização em Tempo Real</span>
                                     <div className="flex gap-0.5">
-                                        {[1, 2, 3].map(i => <div key={i} className="w-[2px] h-2 bg-emerald-500/50 rounded-full animate-pulse" style={{ animationDelay: i * 0.1 + 's' }}></div>)}
+                                        {[1, 2, 3].map(i => <div key={i} className="w-[2px] h-2 bg-emerald-500/50 rounded-full" style={{ animationDelay: i * 0.1 + 's' }}></div>)}
                                     </div>
                                 </div>
 
@@ -335,7 +336,7 @@ export default function OptimizerClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.0.4
+                                        v1.0.0.5
                                     </span>
                                 </div>
 
@@ -471,7 +472,7 @@ export default function OptimizerClient() {
 
                             <div className="text-center mb-16">
                                 <h2 className="text-3xl font-bold text-white mb-4">Por que a Elite Escolhe Voltris?</h2>
-                                <p className="text-slate-400">Comparação técnica com "otimizadores" comuns de mercado.</p>
+                                <h3 className="text-xl font-medium text-slate-400 mb-2">Comparação técnica com "otimizadores" comuns de mercado</h3>
                             </div>
 
                             <div className="space-y-1">
@@ -666,7 +667,7 @@ export default function OptimizerClient() {
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-16">
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF4B6B]/10 border border-[#FF4B6B]/20 mb-6">
-                                    <Radio className="w-3 h-3 text-[#FF4B6B] animate-pulse" />
+                                    <Radio className="w-3 h-3 text-[#FF4B6B]" />
                                     <span className="text-xs font-bold text-[#FF4B6B] tracking-widest uppercase">Controle Remoto via Web</span>
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
@@ -909,7 +910,7 @@ export default function OptimizerClient() {
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                    v1.0.0.4
+                                    v1.0.0.5
                                 </span>
                             </div>
                             <a
@@ -934,6 +935,30 @@ export default function OptimizerClient() {
 
                 <Footer />
             </main>
+            
+            <SoftwareApplicationSchema
+                name="VOLTRIS OPTIMIZER"
+                description="VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto para gamers, empresas e uso doméstico. Setup instantâneo, tecnologia nacional inovadora."
+                url="https://voltris.com.br/voltrisoptimizer"
+                applicationCategory="GameApplication"
+                operatingSystem="Windows"
+                offers={{
+                    price: "0",
+                    priceCurrency: "BRL",
+                    availability: "https://schema.org/InStock"
+                }}
+                features={[
+                    "Aumento de FPS em jogos",
+                    "Eliminação de stutter e lag",
+                    "Otimização automática para 100+ jogos",
+                    "Redução de input lag",
+                    "Controle remoto via web",
+                    "Otimização para streamers",
+                    "Otimização para empresas"
+                ]}
+                softwareVersion="1.0.0.5"
+                datePublished="2024-01-01"
+            />
         </>
     );
 }

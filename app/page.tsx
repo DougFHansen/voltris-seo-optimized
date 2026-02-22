@@ -4,7 +4,27 @@ import HomeClient from '@/components/HomeClient';
 export const metadata: Metadata = {
   title: 'Suporte Técnico Remoto em Informática | VOLTRIS OPTIMIZER - Otimização de PC, Formatação e Serviços de TI',
   description: 'Suporte técnico remoto especializado, VOLTRIS OPTIMIZER (software SaaS de otimização com controle remoto), formatação, otimização de PC, remoção de vírus e criação de sites profissionais. Atendimento rápido e seguro em todo o Brasil.',
-  keywords: 'suporte técnico remoto, técnico de informática online, formatação de pc remoto, limpeza de vírus online, otimização de pc gamer, voltris optimizer, software saas brasileiro, controle remoto de otimização, aumentar fps, melhorar desempenho windows, criação de sites profissionais, suporte windows remoto, assistência técnica informática online, otimizar pc para jogos, pc lento solução',
+  keywords: [
+    'suporte técnico remoto',
+    'técnico de informática online',
+    'formatação de pc remoto',
+    'limpeza de vírus online',
+    'otimização de pc gamer',
+    'voltris optimizer',
+    'software saas brasileiro',
+    'controle remoto de otimização',
+    'aumentar fps',
+    'melhorar desempenho windows',
+    'criação de sites profissionais',
+    'suporte windows remoto',
+    'assistência técnica informática online',
+    'otimizar pc para jogos',
+    'pc lento solução',
+    'serviços de ti',
+    'manutenção de computador',
+    'otimização de sistema',
+    'remoção de malware'
+  ],
   openGraph: {
     title: 'Suporte Técnico Remoto em Informática | VOLTRIS OPTIMIZER - Otimização de PC, Formatação e Serviços de TI',
     description: 'Soluções em informática sem sair de casa. VOLTRIS OPTIMIZER (primeiro software SaaS brasileiro com controle remoto), formatação, performance e segurança para seu computador.',

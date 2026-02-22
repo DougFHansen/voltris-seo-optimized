@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+dimport { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -54,15 +54,15 @@ export default function GuidePage() {
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-black/30 p-4 rounded-lg">
-              <h4 class="font-bold text-blue-400 mb-2">FPS (Frames Per Second)</h4>
+              <h3 class="font-bold text-blue-400 mb-2">FPS (Frames Per Second)</h3>
               <p class="text-gray-300">Quantidade de quadros renderizados por segundo. Valores acima de 144 FPS são ideais para monitores de alta taxa de atualização.</p>
             </div>
             <div class="bg-black/30 p-4 rounded-lg">
-              <h4 class="font-bold text-purple-400 mb-2">Input Lag</h4>
+              <h3 class="font-bold text-purple-400 mb-2">Input Lag</h3>
               <p class="text-gray-300">Tempo entre o comando do jogador e a resposta na tela. Deve ser inferior a 16ms para competição.</p>
             </div>
             <div class="bg-black/30 p-4 rounded-lg">
-              <h4 class="font-bold text-green-400 mb-2">Frame Time</h4>
+              <h3 class="font-bold text-green-400 mb-2">Frame Time</h3>
               <p class="text-gray-300">Tempo necessário para renderizar cada frame. Quanto mais estável, melhor a experiência de jogo.</p>
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function GuidePage() {
             <div class="prose prose-invert max-w-none">
               <p>Para maximizar o desempenho do jogo, você pode desativar temporariamente serviços que consomem recursos:</p>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Serviços que podem ser desativados:</h4>
+              <h3 class="text-lg font-bold text-white mt-4 mb-2">Serviços que podem ser desativados:</h3>
               <ul class="list-disc list-inside space-y-2 text-gray-300">
                 <li><strong>Superfetch/Serviço de Pré-busca</strong>: Em sistemas com SSD, este serviço pode causar picos de uso de disco.</li>
                 <li><strong>Windows Search</strong>: Desative se você não usa a busca do Windows com frequência.</li>
@@ -119,7 +119,7 @@ export default function GuidePage() {
               </ul>
               
               <div class="bg-yellow-900/30 p-4 rounded-lg border border-yellow-500/30 mt-4">
-                <h5 class="font-bold text-yellow-400 mb-2">⚠️ Aviso Importante:</h5>
+                <h3 class="font-bold text-yellow-400 mb-2">⚠️ Aviso Importante:</h3>
                 <p class="text-gray-300 text-sm">Desativar serviços de segurança pode expor seu sistema a riscos. Faça isso apenas temporariamente e se você entender as implicações de segurança.</p>
               </div>
             </div>
@@ -144,7 +144,7 @@ export default function GuidePage() {
                 </ul>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Configurações Adicionais de CPU:</h4>
+              <h3 class="text-lg font-bold text-white mt-4 mb-2">Configurações Adicionais de CPU:</h3>
               <p class="text-gray-300">Desative o Core Parking para manter todos os núcleos disponíveis:</p>
               <div class="bg-black p-4 rounded border border-green-500/30 font-mono text-sm text-green-400 mt-2">
                 <p>Abra o Prompt de Comando como administrador e execute:</p>
@@ -201,10 +201,10 @@ export default function GuidePage() {
                 <li>Adicione as configurações específicas:</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Configurações Recomendadas por Gênero:</h4>
+              <h3 class="text-lg font-bold text-white mt-4 mb-2">Configurações Recomendadas por Gênero:</h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
-                  <h5 class="font-bold text-blue-400 mb-2">Jogos Competitivos (CS2, Valorant, Apex)</h5>
+                  <h3 class="font-bold text-blue-400 mb-2">Jogos Competitivos (CS2, Valorant, Apex)</h3>
                   <ul class="list-disc list-inside text-gray-300 text-sm">
                     <li>Modo de Latência Baixa: Ultra</li>
                     <li>Sincronização Vertical: Desativada</li>
@@ -213,7 +213,7 @@ export default function GuidePage() {
                   </ul>
                 </div>
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-purple-500/30">
-                  <h5 class="font-bold text-purple-400 mb-2">Jogos Single Player (Cyberpunk, Witcher)</h5>
+                  <h3 class="font-bold text-purple-400 mb-2">Jogos Single Player (Cyberpunk, Witcher)</h3>
                   <ul class="list-disc list-inside text-gray-300 text-sm">
                     <li>Modo de Latência Baixa: Normal</li>
                     <li>Sincronização Vertical: G-Sync/FreeSync</li>
@@ -510,7 +510,7 @@ export default function GuidePage() {
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-black/30 p-4 rounded-lg">
-              <h4 class="font-bold text-purple-400 mb-2">UEFI/BIOS Avançado</h4>
+              <h3 class="font-bold text-purple-400 mb-2">UEFI/BIOS Avançado</h3>
               <p class="text-gray-300 text-sm">Além das configurações básicas, existem parâmetros ocultos que podem ser ajustados para melhorar o desempenho:</p>
               <ul class="mt-2 text-xs text-gray-400 space-y-1">
                 <li>• Load Optimized Defaults (depois personalize)</li>
@@ -521,7 +521,7 @@ export default function GuidePage() {
               </ul>
             </div>
             <div class="bg-black/30 p-4 rounded-lg">
-              <h4 class="font-bold text-blue-400 mb-2">Configurações de Armazenamento</h4>
+              <h3 class="font-bold text-blue-400 mb-2">Configurações de Armazenamento</h3>
               <p class="text-gray-300 text-sm">Otimizações específicas para unidades de armazenamento:</p>
               <ul class="mt-2 text-xs text-gray-400 space-y-1">
                 <li>• AHCI Mode em vez de RAID (menor latência)</li>
@@ -539,21 +539,21 @@ export default function GuidePage() {
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
           <div class="bg-[#171313] p-4 rounded-xl border border-[#31A8FF]/30">
-            <h4 class="font-bold text-[#31A8FF] mb-2">CPU Overclocking</h4>
+            <h3 class="font-bold text-[#31A8FF] mb-2">CPU Overclocking</h3>
             <p class="text-sm text-gray-300">Aumente o multiplicador base (non-X CPUs) ou use o ratio (X-series) com acompanhamento de tensão adequada.</p>
           </div>
           <div class="bg-[#171313] p-4 rounded-xl border border-[#FF4B6B]/30">
-            <h4 class="font-bold text-[#FF4B6B] mb-2">GPU Overclocking</h4>
+            <h3 class="font-bold text-[#FF4B6B] mb-2">GPU Overclocking</h3>
             <p class="text-sm text-gray-300">Use ferramentas como MSI Afterburner ou EVGA Precision para pequenos incrementos no core clock e memory clock.</p>
           </div>
           <div class="bg-[#171313] p-4 rounded-xl border border-[#8B31FF]/30">
-            <h4 class="font-bold text-[#8B31FF] mb-2">RAM Overclocking</h4>
+            <h3 class="font-bold text-[#8B31FF] mb-2">RAM Overclocking</h3>
             <p class="text-sm text-gray-300">Ative XMP/DOCP e ajuste manualmente os tempos (timings) para maior estabilidade e performance.</p>
           </div>
         </div>
         
         <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mt-6">
-          <h4 class="font-bold text-yellow-400 mb-2">⚠️ Avisos Importantes:</h4>
+          <h3 class="font-bold text-yellow-400 mb-2">⚠️ Avisos Importantes:</h3>
           <ul class="text-sm text-gray-300 space-y-1">
             <li>• Sempre teste a estabilidade após qualquer overclock</li>
             <li>• Monitore temperaturas constantemente</li>
@@ -612,14 +612,14 @@ export default function GuidePage() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
           <div classn="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
-            <h4 class="font-bold text-blue-400 mb-2">QoS Packet Scheduler</h4>
+            <h3 class="font-bold text-blue-400 mb-2">QoS Packet Scheduler</h3>
             <p class="text-sm text-gray-300">Desative o QoS para permitir que jogos utilizem toda a largura de banda disponível:</p>
             <div class="bg-black p-2 rounded mt-2 font-mono text-xs text-green-400">netsh interface ipv4 set global chimney=enabled</div>
             <div class="bg-black p-2 rounded mt-1 font-mono text-xs text-green-400">netsh interface tcp set global autotuninglevel=normal</div>
           </div>
           
           <div class="bg-[#1E1E22] p-4 rounded-lg border border-green-500/30">
-            <h4 class="font-bold text-green-400 mb-2">Prioridade de Processos de Rede</h4>
+            <h3 class="font-bold text-green-400 mb-2">Prioridade de Processos de Rede</h3>
             <p class="text-sm text-gray-300">Ajuste a prioridade de processos de rede para minimizar atrasos:</p>
             <div class="bg-black p-2 rounded mt-2 font-mono text-xs text-green-400">netsh interface tcp set global rss=enabled</div>
             <div class="bg-black p-2 rounded mt-1 font-mono text-xs text-green-400">netsh interface tcp set global dca=enabled</div>
@@ -633,21 +633,21 @@ export default function GuidePage() {
           <li class="flex items-start gap-3 p-3 bg-[#1A1A1A] rounded-lg border border-gray-700">
             <span class="text-green-400 mt-1">✓</span>
             <div>
-              <h5 class="font-bold text-white">Ethernet Priority & VLAN</h5>
+              <h3 class="font-bold text-white">Ethernet Priority & VLAN</h3>
               <p class="text-sm text-gray-300">Configure prioridade para tráfego de jogo nas configurações da placa de rede</p>
             </div>
           </li>
           <li class="flex items-start gap-3 p-3 bg-[#1A1A1A] rounded-lg border border-gray-700">
             <span class="text-green-400 mt-1">✓</span>
             <div>
-              <h5 class="font-bold text-white">Game Mode nos Roteadores</h5>
+              <h3 class="font-bold text-white">Game Mode nos Roteadores</h3>
               <p class="text-sm text-gray-300">Ative o modo de jogo se seu roteador suportar para priorizar dispositivos de jogo</p>
             </div>
           </li>
           <li class="flex items-start gap-3 p-3 bg-[#1A1A1A] rounded-lg border border-gray-700">
             <span class="text-green-400 mt-1">✓</span>
             <div>
-              <h5 class="font-bold text-white">WMM (Wi-Fi Multimedia)</h5>
+              <h3 class="font-bold text-white">WMM (Wi-Fi Multimedia)</h3>
               <p class="text-sm text-gray-300">Para conexões Wi-Fi, habilite WMM para priorizar tráfego de áudio/vídeo/jogo</p>
             </div>
           </li>
@@ -812,15 +812,15 @@ export default function GuidePage() {
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
           <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-            <h4 class="font-bold text-white mb-2">Hardware Flexível</h4>
+            <h3 class="font-bold text-white mb-2">Hardware Flexível</h3>
             <p class="text-sm text-gray-300">Escolha componentes com boa capacidade de upgrade e suporte a futuras tecnologias.</p>
           </div>
           <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-            <h4 class="font-bold text-white mb-2">Sistema Modular</h4>
+            <h3 class="font-bold text-white mb-2">Sistema Modular</h3>
             <p class="text-sm text-gray-300">Configure seu sistema de forma modular para facilitar atualizações e experimentação.</p>
           </div>
           <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-            <h4 class="font-bold text-white mb-2">Conhecimento Atualizado</h4>
+            <h3 class="font-bold text-white mb-2">Conhecimento Atualizado</h3>
             <p class="text-sm text-gray-300">Mantenha-se informado sobre novas tecnologias e como elas afetam a otimização de jogos.</p>
           </div>
         </div>

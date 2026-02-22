@@ -227,7 +227,7 @@ export default function HowItWorksClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.0.4
+                                        v1.0.0.5
                                     </span>
                                 </div>
 
@@ -458,7 +458,7 @@ export default function HowItWorksClient() {
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                    v1.0.0.4
+                                    v1.0.0.5
                                 </span>
                             </div>
                             <a

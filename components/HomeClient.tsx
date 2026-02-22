@@ -195,8 +195,8 @@ export default function HomeClient() {
 
                 {/* Background Gradients (Fixed Behind) */}
                 <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-                    <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen animate-pulse-slow" />
-                    <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen animate-pulse-slow" style={{ animationDelay: '2s' }} />
+                    <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen" />
+                    <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen" />
                 </div>
 
                 <section
@@ -270,7 +270,7 @@ export default function HomeClient() {
                         <div className="order-2 lg:order-none flex-1 w-full max-w-[600px] lg:max-w-full relative flex items-center justify-center perspective">
 
                             {/* Background Glow behind the card */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[60px] rounded-full transform scale-75 animate-pulse-slow"></div>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[60px] rounded-full transform scale-75"></div>
 
                             {/* Main Glass Panel */}
                             <OptimizerMockup />

@@ -69,11 +69,8 @@ export default function OptimizerMockup() {
     }, []);
 
     return (
-        <motion.div
+        <div
             className="w-full relative z-10 glass-panel rounded-2xl p-6 md:p-8 overflow-hidden transform transition-all duration-500 hover:scale-[1.01] border border-white/10 bg-[#0A0A0F]/60 backdrop-blur-xl shadow-2xl"
-            initial={{ opacity: 0, y: 50, rotateX: 5 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
         >
             {/* Header of the fake app */}
             <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
@@ -118,15 +115,11 @@ export default function OptimizerMockup() {
                             +42%
                         </span>
                     </div>
-                    <motion.div
+                    <div
                         className="text-3xl font-bold text-white mb-1 tracking-tight"
-                        key={fps}
-                        initial={{ opacity: 0.5, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
                     >
                         {fps} <span className="text-base font-normal text-slate-400">FPS</span>
-                    </motion.div>
+                    </div>
                     <div className="text-xs text-slate-400">Média em Jogos</div>
                 </div>
 
@@ -139,15 +132,11 @@ export default function OptimizerMockup() {
                         </div>
                         <span className="text-xs font-bold text-[#FF4B6B] bg-[#FF4B6B]/10 px-2 py-0.5 rounded animate-pulse">-15ms</span>
                     </div>
-                    <motion.div
+                    <div
                         className="text-3xl font-bold text-white mb-1 tracking-tight"
-                        key={latency}
-                        initial={{ opacity: 0.5, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
                     >
                         {latency}ms
-                    </motion.div>
+                    </div>
                     <div className="text-xs text-slate-400">Latência de Sistema</div>
                 </div>
             </div>
@@ -156,11 +145,8 @@ export default function OptimizerMockup() {
             <div className="space-y-3 relative mb-6">
                 {/* Dynamic Activity Item */}
                 <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border-l-2 border-[#8B31FF]/50 relative overflow-hidden">
-                    <motion.div
+                    <div
                         className="absolute inset-0 bg-[#8B31FF]/10 z-0"
-                        initial={{ x: "-100%" }}
-                        animate={{ x: "100%" }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
                     />
                     <div className="flex items-center gap-3 relative z-10">
                         <div className="w-8 h-8 rounded bg-[#8B31FF]/20 flex items-center justify-center">
@@ -194,23 +180,17 @@ export default function OptimizerMockup() {
                 </div>
                 <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden flex gap-0.5">
                     {Array.from({ length: 20 }).map((_, i) => (
-                        <motion.div
+                        <div
                             key={i}
                             className="h-full bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] rounded-full"
-                            animate={{
-                                height: ["20%", "60%", "100%", "40%"],
-                                opacity: [0.3, 1, 0.5]
+                            style={{ 
+                                width: '5%',
+                                height: `${Math.random() * 80 + 20}%`
                             }}
-                            transition={{
-                                duration: Math.random() * 2 + 1,
-                                repeat: Infinity,
-                                delay: i * 0.05
-                            }}
-                            style={{ width: '5%' }}
                         />
                     ))}
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 }

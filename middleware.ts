@@ -31,8 +31,8 @@ export async function middleware(request: NextRequest) {
 
   const { data, error } = await supabase.auth.getSession()
 
-  // Example: Protect the /services route
-  const protectedRoutes = ['/services'] // Add other routes here as needed
+  // Example: Protect the dashboard and admin routes
+  const protectedRoutes = ['/dashboard', '/admin'] // Add other routes here as needed
 
   const isProtectedRoute = protectedRoutes.some(route => request.nextUrl.pathname.startsWith(route));
 
@@ -51,4 +51,4 @@ export async function middleware(request: NextRequest) {
 export const config = {
   // Matcher for protected routes
   matcher: ['/services/:path*', '/dashboard/:path*'],
-} 
+}

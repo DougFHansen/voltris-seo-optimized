@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { BarChart3, ShoppingCart, User, Ticket } from 'lucide-react';
 
 export default function MobileTabs() {
   const pathname = usePathname();
@@ -12,25 +13,25 @@ export default function MobileTabs() {
     {
       label: 'Visão Geral',
       value: 'overview',
-      icon: <i className="fas fa-chart-line text-lg"></i>,
+      icon: <BarChart3 size={20} />,
       path: '/dashboard'
     },
     {
       label: 'Meus Pedidos',
       value: 'orders',
-      icon: <i className="fas fa-shopping-cart text-lg"></i>,
+      icon: <ShoppingCart size={20} />,
       path: '/dashboard/orders'
     },
     {
       label: 'Meu Perfil',
       value: 'profile',
-      icon: <i className="fas fa-user text-lg"></i>,
+      icon: <User size={20} />,
       path: '/dashboard/profile'
     },
     {
       label: 'Tickets',
       value: 'tickets',
-      icon: <i className="fas fa-ticket-alt text-lg"></i>,
+      icon: <Ticket size={20} />,
       path: '/dashboard/tickets'
     }
   ];
@@ -86,4 +87,4 @@ export default function MobileTabs() {
       </div>
     </div>
   );
-} 
+}

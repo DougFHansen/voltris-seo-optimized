@@ -45,14 +45,14 @@ export default function DataBackupGuide() {
         
         <div class="space-y-4">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-                <h4 class="text-blue-400 font-bold mb-2">3 Cópias dos Dados</h4>
+                <h3 class="text-blue-400 font-bold mb-2">3 Cópias dos Dados</h3>
                 <p class="text-sm text-gray-300">
                     Você precisa ter o arquivo original + 2 cópias. Se tiver só uma cópia, não é backup, é esperança.
                 </p>
             </div>
             
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
-                <h4 class="text-purple-400 font-bold mb-2">2 Mídias Diferentes</h4>
+                <h3 class="text-purple-400 font-bold mb-2">2 Mídias Diferentes</h3>
                 <p class="text-sm text-gray-300">
                     Não adianta ter 3 cópias no mesmo HD. Se o HD queimar, todas morrem.
                     <br/>Mídia 1: SSD Interno do PC (Original).
@@ -61,7 +61,7 @@ export default function DataBackupGuide() {
             </div>
 
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
-                <h4 class="text-green-400 font-bold mb-2">1 Cópia Off-site (Fora de Casa)</h4>
+                <h3 class="text-green-400 font-bold mb-2">1 Cópia Off-site (Fora de Casa)</h3>
                 <p class="text-sm text-gray-300">
                     Se sua casa pegar fogo ou entrarem ladrões e levarem PC e HD Externo, você perdeu tudo?
                     <br/>A cópia Off-site (geralmente Nuvem) te salva de desastres físicos locais.
@@ -85,13 +85,13 @@ export default function DataBackupGuide() {
       content: `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-teal-500/30">
-                <h5 class="font-bold text-white mb-2">Hasleo Backup Suite (Grátis)</h5>
+                <h3 class="font-bold text-white mb-2">Hasleo Backup Suite (Grátis)</h3>
                 <p class="text-sm text-gray-300">
                     O sucessor espiritual do Macrium Reflect Free (que foi descontinuado). Interface limpa, suporta backup incremental, diferencial, clonagem de disco e criação de pendrive de boot de emergência (WinPE). Totalmente gratuito e sem anúncios.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
-                <h5 class="font-bold text-white mb-2">Veeam Agent for Windows (Free)</h5>
+                <h3 class="font-bold text-white mb-2">Veeam Agent for Windows (Free)</h3>
                 <p class="text-sm text-gray-300">
                     Padrão corporativo. Robusto, extremamente confiável, mas com interface mais complexa. Se você quer o software que protege servidores de bancos, use o Veeam.
                 </p>

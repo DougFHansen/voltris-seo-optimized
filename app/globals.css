@@ -1025,7 +1025,7 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Otimização de exibição de fonte para Font Awesome (Cloudflare CDN) */
+/* Otimização de exibição de fonte */
 
 @media (max-width: 639px) {
   .mobile-login-gradient {

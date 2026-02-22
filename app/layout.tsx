@@ -124,13 +124,6 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Font Awesome 6 support for legacy components - lazy loaded */}
-        <Script
-          src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
-          strategy="lazyOnload"
-          crossOrigin="anonymous"
-        />
-
         {/* Schema.org Organization */}
         <JsonLd
           type="Organization"

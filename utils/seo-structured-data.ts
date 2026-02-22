@@ -89,3 +89,70 @@ export function generateWebsiteJsonLd() {
     }
   };
 }
+
+export function generateSoftwareApplicationSchema({
+  name,
+  description,
+  url,
+  applicationCategory,
+  operatingSystem,
+  offers,
+  features,
+  softwareVersion,
+  datePublished,
+  dateModified
+}: {
+  name: string;
+  description: string;
+  url: string;
+  applicationCategory: string;
+  operatingSystem: string;
+  offers: {
+    price: string;
+    priceCurrency: string;
+    availability: string;
+  };
+  features: string[];
+  softwareVersion: string;
+  datePublished: string;
+  dateModified: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: name,
+    description: description,
+    url: url,
+    applicationCategory: applicationCategory,
+    operatingSystem: operatingSystem,
+    offers: {
+      '@type': 'Offer',
+      price: offers.price,
+      priceCurrency: offers.priceCurrency,
+      availability: offers.availability,
+      seller: {
+        '@type': 'Organization',
+        name: 'VOLTRIS'
+      }
+    },
+    features: features,
+    softwareVersion: softwareVersion,
+    datePublished: datePublished,
+    dateModified: dateModified,
+    creator: {
+      '@type': 'Organization',
+      name: 'VOLTRIS',
+      url: 'https://voltris.com.br'
+    },
+    softwareHelp: {
+      '@type': 'CreativeWork',
+      url: 'https://voltris.com.br/voltrisoptimizer/documentacao'
+    },
+    softwareRequirements: [
+      'Windows 10',
+      'Windows 11',
+      'DirectX 11',
+      '6 GB livres em disco'
+    ]
+  };
+}

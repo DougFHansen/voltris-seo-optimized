@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
+import { ShoppingCart, Clock, CheckCircle, Ticket, UserEdit } from 'lucide-react';
 
 interface Activity {
   type: 'order' | 'ticket' | 'other';
@@ -58,19 +59,19 @@ export default function OverviewTab() {
       title: 'Total de Pedidos',
       value: orders.length,
       color: 'from-[#FF4B6B] to-[#8B31FF]',
-      icon: <i className="fas fa-shopping-cart text-[#FF4B6B]"></i>
+      icon: <ShoppingCart className="text-[#FF4B6B]" size={20} />
     },
     {
       title: 'Pedidos Pendentes',
       value: orders.filter(order => order.status === 'pending').length,
       color: 'from-[#8B31FF] to-[#31A8FF]',
-      icon: <i className="fas fa-clock text-[#8B31FF]"></i>
+      icon: <Clock className="text-[#8B31FF]" size={20} />
     },
     {
       title: 'Pedidos Concluídos',
       value: orders.filter(order => order.status === 'completed').length,
       color: 'from-[#31A8FF] to-[#FF4B6B]',
-      icon: <i className="fas fa-check-circle text-[#31A8FF]"></i>
+      icon: <CheckCircle className="text-[#31A8FF]" size={20} />
     }
   ];
 
@@ -81,21 +82,21 @@ export default function OverviewTab() {
       title: 'Pedido #1234',
       time: '2 horas atrás',
       status: 'success',
-      icon: <i className="fas fa-shopping-cart text-[#8B31FF]"></i>
+      icon: <ShoppingCart className="text-[#8B31FF]" size={16} />
     },
     {
       type: 'ticket',
       title: 'Ticket de Suporte #5678',
       time: '5 horas atrás',
       status: 'in_progress',
-      icon: <i className="fas fa-ticket-alt text-[#FF4B6B]"></i>
+      icon: <Ticket className="text-[#FF4B6B]" size={16} />
     },
     {
       type: 'other',
       title: 'Atualização de Perfil',
       time: '1 dia atrás',
       status: 'success',
-      icon: <i className="fas fa-user-edit text-[#31A8FF]"></i>
+      icon: <UserEdit className="text-[#31A8FF]" size={16} />
     }
   ];
 
@@ -184,7 +185,7 @@ export default function OverviewTab() {
           className="bg-[#1E1E1E]/80 backdrop-blur-xl p-6 rounded-2xl border border-gray-800/30"
         >
           <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i className="fas fa-shopping-cart text-[#8B31FF]"></i>
+            <ShoppingCart className="text-[#8B31FF]" size={18} />
             Últimos Pedidos
           </h3>
           <div className="space-y-4">
@@ -225,7 +226,9 @@ export default function OverviewTab() {
           className="bg-[#1E1E1E]/80 backdrop-blur-xl p-6 rounded-2xl border border-gray-800/30"
         >
           <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-            <i className="fas fa-history text-[#8B31FF]"></i>
+            <svg className="w-5 h-5 text-[#8B31FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             Atividade Recente
           </h3>
           <div className="space-y-4">
