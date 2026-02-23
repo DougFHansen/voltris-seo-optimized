@@ -1,4 +1,4 @@
-dimport { Metadata } from 'next';
+import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
@@ -611,7 +611,7 @@ export default function GuidePage() {
         <p class="mb-4 text-gray-300 leading-relaxed">Além das configurações de protocolo TCP/IP, o Windows tem recursos específicos que podem ser ajustados:</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-          <div classn="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
+          <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
             <h3 class="font-bold text-blue-400 mb-2">QoS Packet Scheduler</h3>
             <p class="text-sm text-gray-300">Desative o QoS para permitir que jogos utilizem toda a largura de banda disponível:</p>
             <div class="bg-black p-2 rounded mt-2 font-mono text-xs text-green-400">netsh interface ipv4 set global chimney=enabled</div>

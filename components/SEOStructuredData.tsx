@@ -58,3 +58,34 @@ export default function SoftwareApplicationSchema({
     />
   );
 }
+
+interface FAQSchemaProps {
+  faqItems: Array<{
+    question: string;
+    answer: string;
+  }>;
+}
+
+export function FAQSchema({ faqItems }: FAQSchemaProps) {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer.replace(/<[^>]*>/g, '') // Remover tags HTML da resposta
+      }
+    }))
+  };
+
+  return (
+    <Script
+      id="faq-schema"
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      strategy="afterInteractive"
+    />
+  );
+}
