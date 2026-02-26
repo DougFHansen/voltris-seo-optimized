@@ -174,9 +174,17 @@ const optimizedServices = [
 
 export default function InternationalServicesOptimized() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313] header-spacing">
+    <div className="min-h-screen bg-[#050510] relative overflow-x-hidden pt-16 md:pt-20">
+      {/* Global Ambient Background Effects (Noise Overlay on Top) */}
+      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+
+      {/* Background Gradients (Fixed Behind) */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen" />
+      </div>
       <Header />
-      
+
       {/* Hero Section otimizada para SEO */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
@@ -184,17 +192,17 @@ export default function InternationalServicesOptimized() {
             <FiGlobe className="text-purple-400 text-xl" />
             <span className="text-purple-300 font-medium">Serviços Internacionais</span>
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Serviços de <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">TI Premium</span> para Brasileiros no Exterior
           </h1>
-          
+
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-            A VOLTRIS é uma empresa brasileira de tecnologia especializada em oferecer soluções de suporte técnico remoto de alta qualidade para expatriados. 
-            Com atendimento exclusivo em português, resolvemos problemas de formatação de PC, otimização de sistemas, segurança digital e muito mais, 
+            A VOLTRIS é uma empresa brasileira de tecnologia especializada em oferecer soluções de suporte técnico remoto de alta qualidade para expatriados.
+            Com atendimento exclusivo em português, resolvemos problemas de formatação de PC, otimização de sistemas, segurança digital e muito mais,
             adaptando nossos serviços às necessidades específicas de brasileiros que vivem e trabalham fora do Brasil.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
               <FiAward className="text-purple-400 text-3xl mb-4 mx-auto" />
@@ -221,7 +229,7 @@ export default function InternationalServicesOptimized() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-16">
             Nossos Serviços Especializados
           </h2>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {optimizedServices.map((service, index) => (
               <div
@@ -232,16 +240,16 @@ export default function InternationalServicesOptimized() {
                   <div className="flex-shrink-0">
                     {service.icon}
                   </div>
-                  
+
                   <div className="flex-grow">
                     <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors">
                       {service.title}
                     </h3>
-                    
+
                     <p className="text-gray-400 mb-6 leading-relaxed">
                       {service.description}
                     </p>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                       <div>
                         <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
@@ -257,7 +265,7 @@ export default function InternationalServicesOptimized() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
                         <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                           <FiAward className="text-yellow-400" />
@@ -273,7 +281,7 @@ export default function InternationalServicesOptimized() {
                         </ul>
                       </div>
                     </div>
-                    
+
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-gray-700">
                       <div>
                         <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
@@ -282,16 +290,16 @@ export default function InternationalServicesOptimized() {
                         <p className="text-sm text-gray-400">{service.currency}</p>
                         <p className="text-xs text-gray-500 mt-1">Tempo estimado: {service.estimatedTime}</p>
                       </div>
-                      
+
                       <div className="flex gap-3">
-                        <Link 
+                        <Link
                           href={`/exterior/servicos/${service.id}`}
                           className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 hover:shadow-lg text-sm"
                         >
                           Saiba Mais
                         </Link>
-                        
-                        <Link 
+
+                        <Link
                           href="/exterior/contato"
                           className="border border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 text-sm"
                         >
@@ -313,7 +321,7 @@ export default function InternationalServicesOptimized() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-16">
             Por que uma Empresa Brasileira pode Atender Internacionalmente?
           </h2>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
@@ -322,42 +330,42 @@ export default function InternationalServicesOptimized() {
                   Profissionais Certificados
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Nossa equipe é composta por técnicos de informática certificados internacionalmente, 
-                  com experiência em ambientes multiculturais e conhecimento profundo das particularidades 
+                  Nossa equipe é composta por técnicos de informática certificados internacionalmente,
+                  com experiência em ambientes multiculturais e conhecimento profundo das particularidades
                   tecnológicas que brasileiros enfrentam no exterior.
                 </p>
               </div>
-              
+
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
                 <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-3">
                   <FiGlobe className="text-blue-400" />
                   Infraestrutura Global
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Utilizamos ferramentas e plataformas de acesso remoto de padrão internacional, 
-                  com servidores distribuídos globalmente para garantir conexões estáveis e seguras 
+                  Utilizamos ferramentas e plataformas de acesso remoto de padrão internacional,
+                  com servidores distribuídos globalmente para garantir conexões estáveis e seguras
                   independente da localização do cliente.
                 </p>
               </div>
-              
+
               <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
                 <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-3">
                   <FiShield className="text-green-400" />
                   Segurança e Privacidade
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Mantemos rigorosos padrões de segurança digital, com criptografia de ponta a ponta 
-                  em todas as conexões e políticas claras de privacidade de dados, garantindo que 
+                  Mantemos rigorosos padrões de segurança digital, com criptografia de ponta a ponta
+                  em todas as conexões e políticas claras de privacidade de dados, garantindo que
                   suas informações permaneçam protegidas durante todo o processo.
                 </p>
               </div>
             </div>
-            
+
             <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-500/30">
               <h3 className="text-2xl font-bold text-white mb-6 text-center">
                 Nossa Diferença Competitiva
               </h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-purple-500 rounded-full mt-2 flex-shrink-0"></div>
@@ -366,7 +374,7 @@ export default function InternationalServicesOptimized() {
                     <p className="text-gray-400 text-sm">Comunicamos de forma clara e natural, evitando barreiras linguísticas</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
@@ -374,7 +382,7 @@ export default function InternationalServicesOptimized() {
                     <p className="text-gray-400 text-sm">Compreendemos as necessidades específicas de brasileiros expatriados</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
@@ -382,7 +390,7 @@ export default function InternationalServicesOptimized() {
                     <p className="text-gray-400 text-sm">Custo-benefício superior comparado a empresas locais do exterior</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 flex-shrink-0"></div>
                   <div>
@@ -402,68 +410,68 @@ export default function InternationalServicesOptimized() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-16">
             Perguntas Frequentes
           </h2>
-          
+
           <div className="space-y-6">
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-bold text-white mb-3">
                 Vale a pena formatar o PC remotamente?
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Sim, a formatação remota oferece diversos benefícios: você economiza tempo e dinheiro ao evitar deslocamentos, 
-                recebe atendimento especializado em português, tem backup garantido dos seus dados importantes e 
-                o processo é realizado por profissionais experientes que entendem as particularidades do ambiente tecnológico 
-                brasileiro no exterior. Além disso, a configuração pós-formatação é otimizada especificamente para o país 
+                Sim, a formatação remota oferece diversos benefícios: você economiza tempo e dinheiro ao evitar deslocamentos,
+                recebe atendimento especializado em português, tem backup garantido dos seus dados importantes e
+                o processo é realizado por profissionais experientes que entendem as particularidades do ambiente tecnológico
+                brasileiro no exterior. Além disso, a configuração pós-formatação é otimizada especificamente para o país
                 onde você reside.
               </p>
             </div>
-            
+
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-bold text-white mb-3">
                 Como funciona a otimização de PC à distância?
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Utilizamos ferramentas de acesso remoto seguras e criptografadas para conectar ao seu computador. 
-                Realizamos uma análise completa do sistema, identificamos processos desnecessários, limpamos arquivos 
-                temporários, otimizamos o registro do Windows, ajustamos configurações de performance e configuramos 
-                recursos do sistema para maximizar a eficiência. Todo o processo é monitorado em tempo real com sua 
+                Utilizamos ferramentas de acesso remoto seguras e criptografadas para conectar ao seu computador.
+                Realizamos uma análise completa do sistema, identificamos processos desnecessários, limpamos arquivos
+                temporários, otimizamos o registro do Windows, ajustamos configurações de performance e configuramos
+                recursos do sistema para maximizar a eficiência. Todo o processo é monitorado em tempo real com sua
                 autorização e aprovação.
               </p>
             </div>
-            
+
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-bold text-white mb-3">
                 Posso confiar em uma empresa de TI online?
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                A confiança em serviços de TI online depende da credibilidade da empresa. A VOLTRIS possui anos de 
-                experiência no mercado brasileiro, equipe certificada internacionalmente, utiliza ferramentas de acesso 
-                remoto de padrão empresarial com criptografia de ponta a ponta, e mantém política transparente de 
+                A confiança em serviços de TI online depende da credibilidade da empresa. A VOLTRIS possui anos de
+                experiência no mercado brasileiro, equipe certificada internacionalmente, utiliza ferramentas de acesso
+                remoto de padrão empresarial com criptografia de ponta a ponta, e mantém política transparente de
                 privacidade de dados. Além disso, oferecemos garantia de satisfação e suporte pós-atendimento.
               </p>
             </div>
-            
+
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-bold text-white mb-3">
                 Qual a diferença entre suporte técnico local e remoto internacional?
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                O suporte técnico remoto internacional oferece vantagens significativas: acesso a profissionais 
-                especializados independentemente da sua localização geográfica, atendimento em português com 
-                compreensão cultural das necessidades brasileiras no exterior, preços geralmente mais competitivos 
-                que empresas locais, e a conveniência de resolver problemas sem sair de casa. A VOLTRIS combina 
+                O suporte técnico remoto internacional oferece vantagens significativas: acesso a profissionais
+                especializados independentemente da sua localização geográfica, atendimento em português com
+                compreensão cultural das necessidades brasileiras no exterior, preços geralmente mais competitivos
+                que empresas locais, e a conveniência de resolver problemas sem sair de casa. A VOLTRIS combina
                 a qualidade do atendimento local com a praticidade do suporte remoto.
               </p>
             </div>
-            
+
             <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
               <h3 className="text-xl font-bold text-white mb-3">
                 Como é feita a segurança dos meus dados durante o atendimento remoto?
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Implementamos múltiplas camadas de segurança: todas as conexões utilizam criptografia SSL/TLS de 256 bits, 
-                requerem autenticação de dois fatores, são registradas em logs de auditoria, e nossos técnicos 
-                seguem rigorosos protocolos de privacidade. Além disso, você mantém controle total durante todo 
-                o processo, podendo encerrar a sessão a qualquer momento. Garantimos conformidade com as melhores 
+                Implementamos múltiplas camadas de segurança: todas as conexões utilizam criptografia SSL/TLS de 256 bits,
+                requerem autenticação de dois fatores, são registradas em logs de auditoria, e nossos técnicos
+                seguem rigorosos protocolos de privacidade. Além disso, você mantém controle total durante todo
+                o processo, podendo encerrar a sessão a qualquer momento. Garantimos conformidade com as melhores
                 práticas de segurança da informação internacionais.
               </p>
             </div>
@@ -478,30 +486,30 @@ export default function InternationalServicesOptimized() {
             Pronto para uma Experiência Tecnológica Premium?
           </h2>
           <p className="text-gray-300 text-xl mb-8 leading-relaxed">
-            Nossa equipe especializada está preparada para oferecer soluções tecnológicas de alta qualidade, 
-            adaptadas especificamente para as necessidades de brasileiros que vivem e trabalham fora do Brasil. 
-            Com atendimento exclusivo em português e padrões internacionais de excelência, transformamos seus 
+            Nossa equipe especializada está preparada para oferecer soluções tecnológicas de alta qualidade,
+            adaptadas especificamente para as necessidades de brasileiros que vivem e trabalham fora do Brasil.
+            Com atendimento exclusivo em português e padrões internacionais de excelência, transformamos seus
             desafios tecnológicos em soluções eficientes e confiáveis.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link 
-              href="/exterior/contato" 
+            <Link
+              href="/exterior/contato"
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 text-lg"
             >
               <FiPhone className="text-xl" />
               Entrar em Contato
             </Link>
-            
-            <Link 
-              href="/exterior/orcamento" 
+
+            <Link
+              href="/exterior/orcamento"
               className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3 text-lg"
             >
               <FiBarChart2 className="text-xl" />
               Solicitar Orçamento Personalizado
             </Link>
           </div>
-          
+
           <div className="text-gray-400">
             <p className="flex items-center justify-center gap-2">
               <FiMail className="text-purple-400" />

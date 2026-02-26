@@ -34,6 +34,7 @@ const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
 
 import { motion } from 'framer-motion';
+import JsonLd from "@/components/JsonLd";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -189,6 +190,56 @@ export default function HomeClient() {
     return (
         <>
             <Header />
+            <JsonLd
+                type="SoftwareApplication"
+                data={{
+                    name: "Voltris Optimizer",
+                    operatingSystem: "Windows 10, Windows 11",
+                    applicationCategory: "UtilitiesApplication",
+                    description: "Software avançado de otimização de PC para gamers e profissionais. Aumenta FPS, reduz latência de kernel e melhora o desempenho do sistema Windows.",
+                    offers: {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "BRL"
+                    },
+                    aggregateRating: {
+                        "@type": "AggregateRating",
+                        "ratingValue": "4.9",
+                        "reviewCount": "1250"
+                    }
+                }}
+            />
+            <JsonLd
+                type="FAQPage"
+                data={{
+                    mainEntity: [
+                        {
+                            "@type": "Question",
+                            "name": "Como aumentar o FPS em jogos no Windows?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Para aumentar o FPS, você pode usar o Voltris Optimizer para desabilitar serviços inúteis do Windows, otimizar o plano de energia, limpar arquivos temporários e ajustar a latência do sistema para o hardware específico."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "A VOLTRIS faz formatação de PC remota?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Sim, realizamos formatação de computador e notebook de forma remota e segura, com backup de dados e instalação de drivers otimizados para máxima performance."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Como o Voltris Optimizer melhora o desempenho do trabalho?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "O software remove processos em segundo plano que consomem CPU e RAM, garantindo que suas ferramentas de trabalho (Office, Adobe, Navegadores) tenham prioridade máxima de hardware."
+                            }
+                        }
+                    ]
+                }}
+            />
             <main>
                 {/* Global Ambient Background Effects (Noise Overlay on Top) */}
                 <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
@@ -655,7 +706,7 @@ export default function HomeClient() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     {[
                                         "Otimização Automática Completa",
-                                        "Otimização de RAM em Tempo Real", 
+                                        "Otimização de RAM em Tempo Real",
                                         "Limpeza Profunda de Sistema",
                                         "Otimização de Rede (TCP/IP)",
                                         "Modo Gamer Inteligente com IA",

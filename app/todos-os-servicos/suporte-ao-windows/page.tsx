@@ -324,7 +324,10 @@ export default function SuporteWindowsPage() {
                   </ul>
 
                   <button
-                    onClick={() => handleContratarAgora(plan)}
+                    onClick={() => {
+                      const message = `Olá, gostaria de contratar o plano ${encodeURIComponent(plan.name)} de suporte ao Windows`;
+                      window.open(`https://wa.me/5511996716235?text=${message}`, '_blank');
+                    }}
                     className={`w-full py-4 rounded-xl font-bold text-white transition-all duration-300 ${plan.btnColor}`}
                   >
                     Assinar Agora

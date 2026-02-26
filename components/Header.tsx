@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const { user, isAdmin, loading, signOut } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
@@ -30,14 +31,21 @@ export default function Header() {
     window.location.href = '/login';
   };
 
-  const navLinks = [
+  const mainNavLinks = [
     { name: 'Home', path: '/' },
-    { name: 'Serviços', path: '/todos-os-servicos' },
+    { name: 'Serviços', path: '/servicos' },
     { name: 'Guias', path: '/guias' },
-    { name: 'Download', path: '/voltrisoptimizer' },
     { name: 'Sobre', path: '/sobre' },
     { name: 'Dúvidas', path: '/faq' },
     { name: 'Contato', path: '/contato' },
+  ];
+
+  const servicesNavLinks = [
+    { name: 'Formatação Windows', path: '/formatar-windows' },
+    { name: 'Otimização PC', path: '/otimizacao-pc' },
+    { name: 'Assistência Técnica', path: '/assistencia-tecnica' },
+    { name: 'Suporte Internacional', path: '/exterior' },
+    { name: 'Software Voltris', path: '/voltris-optimizer' },
   ];
 
   return (
@@ -76,7 +84,7 @@ export default function Header() {
 
           {/* Desktop Nav - Centralizado */}
           <nav className="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            {navLinks.map((link) => {
+            {mainNavLinks.map((link) => {
               const isActive = pathname === link.path;
               return (
                 <Link
@@ -96,6 +104,48 @@ export default function Header() {
                 </Link>
               );
             })}
+            {/* Dropdown para Serviços */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsServicesDropdownOpen(true)}
+              onMouseLeave={() => setIsServicesDropdownOpen(false)}
+            >
+              <button 
+                className={`text-sm font-medium transition-all duration-300 relative group py-2
+                  ${pathname.startsWith('/formatar-windows') || pathname.startsWith('/otimizacao-pc') || pathname.startsWith('/assistencia-tecnica') || pathname.startsWith('/voltris-optimizer') || pathname.startsWith('/exterior') 
+                    ? 'text-white' 
+                    : 'text-slate-400 hover:text-white'}
+                  hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#31A8FF] hover:via-[#8B31FF] hover:to-[#FF4B6B]
+                `}
+                aria-haspopup="true"
+                aria-expanded={isServicesDropdownOpen}
+              >
+                Soluções
+                <span className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] transition-all duration-300 rounded-full
+                  ${(pathname.startsWith('/formatar-windows') || pathname.startsWith('/otimizacao-pc') || pathname.startsWith('/assistencia-tecnica') || pathname.startsWith('/voltris-optimizer') || pathname.startsWith('/exterior')) 
+                    ? 'w-full opacity-100' 
+                    : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}
+                `}></span>
+              </button>
+              <div className={`absolute left-0 mt-2 w-48 bg-gray-800/95 backdrop-blur-lg rounded-lg shadow-lg py-2 transition-all duration-300 z-50 border border-gray-700 ${
+                isServicesDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+              }`}>
+                {servicesNavLinks.map((link) => {
+                  const isActive = pathname === link.path;
+                  return (
+                    <Link
+                      key={link.path}
+                      href={link.path}
+                      className={`block px-4 py-2 text-sm transition-all duration-300
+                        ${isActive ? 'text-white bg-gray-700/50' : 'text-slate-300 hover:text-white hover:bg-gray-700/30'}
+                      `}
+                    >
+                      {link.name}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
           </nav>
 
           {/* Actions */}
@@ -169,7 +219,7 @@ export default function Header() {
           >
             <div className="flex flex-col h-full p-6">
               <nav className="flex flex-col gap-1 mt-4">
-                {navLinks.map(link => (
+                {mainNavLinks.map(link => (
                   <Link
                     key={link.path}
                     href={link.path}
@@ -183,6 +233,28 @@ export default function Header() {
                     <span className="text-white/20 group-hover:text-[#8B31FF] transition-colors">→</span>
                   </Link>
                 ))}
+                {/* Serviços Dropdown Mobile */}
+                <details className="group border-b border-white/5">
+                  <summary className="text-2xl font-bold py-4 flex items-center justify-between cursor-pointer text-slate-400 hover:text-white">
+                    <span className="group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">
+                      Soluções
+                    </span>
+                    <span className="text-white/20 group-hover:text-[#8B31FF] transition-colors">▼</span>
+                  </summary>
+                  <div className="ml-4 pb-2">
+                    {servicesNavLinks.map(link => (
+                      <Link
+                        key={link.path}
+                        href={link.path}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`block text-xl font-bold py-2 border-b border-white/5 ${pathname === link.path ? 'text-white' : 'text-slate-400 hover:text-white'
+                          }`}
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </div>
+                </details>
               </nav>
 
               <div className="mt-auto pb-8 space-y-4">

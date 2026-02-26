@@ -14,7 +14,7 @@ const serviceData = {
     icon: <FiDatabase className="text-6xl text-purple-400" />,
     features: [
       "Formatação Básica - Sistema + Drivers essenciais",
-      "Formatação Média - Sistema + Drivers + Programas básicos", 
+      "Formatação Média - Sistema + Drivers + Programas básicos",
       "Formatação Avançada - Sistema completo + Office + Software especializado",
       "Configuração para trabalho remoto internacional",
       "Instalação de softwares regionais",
@@ -333,17 +333,25 @@ const serviceData = {
 export default async function ServiceDetailPage({ params }: { params: Promise<{ service: string }> }) {
   const { service } = await params;
   const serviceId = service;
-  
+
   const serviceObj = serviceData[serviceId as keyof typeof serviceData];
-  
+
   if (!serviceObj) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313] header-spacing">
+      <div className="min-h-screen bg-[#050510] relative overflow-x-hidden pt-16 md:pt-20">
+        {/* Global Ambient Background Effects (Noise Overlay on Top) */}
+        <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+
+        {/* Background Gradients (Fixed Behind) */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+          <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen" />
+          <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen" />
+        </div>
         <Header />
         <div className="container mx-auto px-4 py-20 text-center">
           <h1 className="text-3xl font-bold text-white mb-4">Serviço não encontrado</h1>
-          <Link 
-            href="/exterior/servicos" 
+          <Link
+            href="/exterior/servicos"
             className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300"
           >
             <FiArrowLeft />
@@ -356,9 +364,17 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313] header-spacing">
+    <div className="min-h-screen bg-[#050510] relative overflow-x-hidden pt-16 md:pt-20">
+      {/* Global Ambient Background Effects (Noise Overlay on Top) */}
+      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+
+      {/* Background Gradients (Fixed Behind) */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen" />
+      </div>
       <Header />
-      
+
       {/* Breadcrumb */}
       <section className="py-6 px-4">
         <div className="max-w-7xl mx-auto">
@@ -403,11 +419,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                   </div>
                 </div>
               </div>
-              
+
               <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                 {serviceObj.description}
               </p>
-              
+
               <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
                 <h3 className="text-lg font-bold text-white mb-4">Investimento</h3>
                 <div className="flex items-baseline gap-2">
@@ -418,7 +434,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -429,7 +445,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 <FiUsers className="text-purple-400" />
                 Benefícios do Serviço
               </h3>
-              
+
               <ul className="space-y-3">
                 {serviceObj.benefits.map((benefit, index) => (
                   <li key={index} className="flex items-start gap-3">
@@ -451,7 +467,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               <h2 className="text-3xl font-bold text-white mb-6">
                 O que está incluso
               </h2>
-              
+
               <ul className="space-y-4">
                 {serviceObj.features.map((feature, index) => (
                   <li key={index} className="flex items-start gap-3">
@@ -461,12 +477,12 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
                 ))}
               </ul>
             </div>
-            
+
             <div>
               <h2 className="text-3xl font-bold text-white mb-6">
                 Nosso Processo
               </h2>
-              
+
               <div className="space-y-6">
                 {serviceObj.process.map((step, index) => (
                   <div key={index} className="flex items-start gap-4">
@@ -491,25 +507,25 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <p className="text-xl text-gray-300 mb-8">
             Nossa equipe especializada está pronta para atender você com qualidade internacional
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Link 
-              href="/exterior/contato" 
+            <Link
+              href="/exterior/contato"
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3 text-lg"
             >
               <FiPhone className="text-xl" />
               Solicitar Serviço
             </Link>
-            
-            <Link 
-              href="/exterior/servicos" 
+
+            <Link
+              href="/exterior/servicos"
               className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3 text-lg"
             >
               <FiArrowLeft className="text-xl" />
               Ver Outros Serviços
             </Link>
           </div>
-          
+
           <div className="text-gray-400">
             <p className="flex items-center justify-center gap-2">
               <FiMail className="text-purple-400" />

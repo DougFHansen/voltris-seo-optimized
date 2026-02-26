@@ -2,22 +2,22 @@
 
 import Link from 'next/link';
 import {
-  Zap,
-  Shield,
-  TrendingUp,
   Wrench,
+  Shield,
   Clock,
-  Star,
   CheckCircle2,
+  Star,
+  MapPin,
+  Phone,
+  MessageCircle,
   Monitor,
   Cpu,
-  Database,
-  Gamepad2,
+  HardDrive,
+  Wifi,
+  Zap,
   Download,
   ArrowRight,
-  ChevronRight,
-  MessageCircle,
-  Phone
+  ChevronRight
 } from 'lucide-react';
 import Header from '@/components/Header';
 import dynamic from 'next/dynamic';
@@ -25,76 +25,76 @@ import JsonLd from '@/components/JsonLd';
 
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
-export default function PcOptimizationPage() {
-  const benefits = [
+export default function TechnicalSupportPage() {
+  const services = [
     {
-      icon: <Zap className="w-8 h-8 text-blue-500" />,
-      title: "Aumento de Velocidade",
-      description: "Seu PC vai iniciar e abrir programas até 3x mais rápido"
+      icon: <HardDrive className="w-8 h-8 text-blue-500" />,
+      title: "Reparo de Hardware",
+      description: "Substituição de peças danificadas, upgrade e manutenção preventiva",
+      includes: ["Troca de HD/SSD", "Substituição de memória", "Reparo de placa-mãe", "Troca de cooler"]
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-green-500" />,
-      title: "Mais FPS em Jogos",
-      description: "Aumente seu FPS em até 40% com otimizações específicas"
+      icon: <Wrench className="w-8 h-8 text-green-500" />,
+      title: "Manutenção Preventiva",
+      description: "Limpeza, lubrificação e ajustes para prolongar a vida útil do equipamento",
+      includes: ["Limpeza de cooler", "Substituição de pasta térmica", "Verificação de cabos", "Calibração de bateria"]
     },
     {
-      icon: <Shield className="w-8 h-8 text-purple-500" />,
-      title: "Sistema Mais Seguro",
-      description: "Remoção de ameaças e configurações de segurança otimizadas"
+      icon: <Monitor className="w-8 h-8 text-purple-500" />,
+      title: "Configuração e Instalação",
+      description: "Instalação de sistemas operacionais, programas e configurações avançadas",
+      includes: ["Instalação de Windows", "Configuração de drivers", "Instalação de programas", "Configuração de rede"]
     },
     {
-      icon: <Clock className="w-8 h-8 text-cyan-500" />,
-      title: "Mais Produtividade",
-      description: "Tarefas diárias executadas mais rapidamente, economizando tempo"
+      icon: <Wifi className="w-8 h-8 text-cyan-500" />,
+      title: "Redes e Conectividade",
+      description: "Configuração de redes Wi-Fi, cabeamento e resolução de problemas de conectividade",
+      includes: ["Configuração de roteadores", "Redes Wi-Fi", "Problemas de conexão", "Compartilhamento de impressoras"]
     }
   ];
 
-  const services = [
+  const benefits = [
     {
-      icon: <Gamepad2 className="w-8 h-8 text-blue-500" />,
-      title: "Otimização para Jogos",
-      description: "Aumente FPS, reduza input lag e melhore a experiência de gaming",
-      includes: ["Ajustes de GPU", "Configurações de rede", "Otimização de RAM", "Redução de stutter"]
+      icon: <Shield className="w-8 h-8 text-blue-500" />,
+      title: "Técnicos Certificados",
+      description: "Profissionais treinados e experientes em diferentes marcas e modelos"
     },
     {
-      icon: <Monitor className="w-8 h-8 text-green-500" />,
-      title: "Otimização de Sistema",
-      description: "Acelere inicialização, abertura de programas e navegação",
-      includes: ["Limpeza de sistema", "Desfragmentação", "Remoção de bloatware", "Configurações de energia"]
+      icon: <Clock className="w-8 h-8 text-green-500" />,
+      title: "Atendimento Rápido",
+      description: "Diagnóstico em até 24h e reparos realizados com agilidade"
     },
     {
-      icon: <Cpu className="w-8 h-8 text-purple-500" />,
-      title: "Otimização Profissional",
-      description: "Para empresas e usuários avançados com necessidades específicas",
-      includes: ["Configurações avançadas", "Otimização de rede", "Personalização", "Suporte técnico"]
+      icon: <CheckCircle2 className="w-8 h-8 text-purple-500" />,
+      title: "Garantia de Qualidade",
+      description: "Todos os serviços contam com garantia contra defeitos de execução"
     },
     {
-      icon: <Database className="w-8 h-8 text-cyan-500" />,
-      title: "Otimização de Banco de Dados",
-      description: "Para estações de trabalho com softwares pesados",
-      includes: ["Ajustes de I/O", "Otimização de cache", "Configurações de memória", "Desempenho de disco"]
+      icon: <MapPin className="w-8 h-8 text-cyan-500" />,
+      title: "Atendimento Local",
+      description: "Atendimento em domicílio ou em nosso laboratório especializado"
     }
   ];
 
   const testimonials = [
     {
-      name: "João Silva",
-      role: "Designer Gráfico",
-      text: "Meu PC estava horrível, com programas travando. Depois da otimização, tudo roda perfeitamente!",
+      name: "Fernanda Alves",
+      role: "Cliente",
+      text: "Excelente serviço! Meu notebook estava com problema de superaquecimento e resolveram rapidamente. Recomendo demais!",
       rating: 5,
       color: "from-[#FF4B6B] to-[#FF8F6B]"
     },
     {
-      name: "Patrícia Costa",
-      role: "Streammer",
-      text: "Minha transmissão melhorou absurdamente. Agora tenho mais FPS e menos problemas de conexão.",
+      name: "Marcos Oliveira",
+      role: "Cliente",
+      text: "Precisei de assistência emergencial para meu desktop. Equipe super profissional e preço justo.",
       rating: 5,
       color: "from-[#8B31FF] to-[#B96BFF]"
     },
     {
-      name: "Roberto Oliveira",
-      role: "Empresário",
-      text: "Contratei para otimizar os PCs da empresa. A produtividade aumentou consideravelmente.",
+      name: "Carla Santos",
+      role: "Cliente",
+      text: "Fiz a manutenção preventiva do meu computador e ele voltou a funcionar como novo. Excelente trabalho!",
       rating: 5,
       color: "from-[#31A8FF] to-[#6BA8FF]"
     }
@@ -106,19 +106,20 @@ export default function PcOptimizationPage() {
       <JsonLd
         type="Service"
         data={{
-          name: "Otimização Profissional de PC e Performance Windows",
-          description: "Serviço especializado de tuning e otimização de Windows para máxima velocidade, aumento de FPS em jogos e produtividade empresarial.",
+          name: "Assistência Técnica de Informática e Suporte Remoto",
+          description: "Manutenção de computadores, reparo de hardware e suporte técnico remoto 24h para hardware e software em todo o Brasil.",
           provider: {
             "@type": "Organization",
             "name": "VOLTRIS",
             "url": "https://voltris.com.br"
           },
-          serviceType: "Informática e Tecnologia",
+          serviceType: "Suporte Técnico",
           areaServed: { "@type": "Country", "name": "Brasil" },
           offers: {
             "@type": "Offer",
-            "price": "49.90",
-            "priceCurrency": "BRL"
+            "price": "0.00",
+            "priceCurrency": "BRL",
+            "description": "Orçamento Gratuito"
           }
         }}
       />
@@ -128,18 +129,18 @@ export default function PcOptimizationPage() {
           mainEntity: [
             {
               "@type": "Question",
-              "name": "Quanto FPS ganho com a otimização da VOLTRIS?",
+              "name": "Como funciona a assistência técnica remota?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Nossa otimização costuma entregar entre 20% a 40% de ganho de FPS, dependendo do hardware e do jogo, além de reduzir stuttering e input lag."
+                "text": "Através de softwares seguros de acesso remoto, nossos técnicos resolvem problemas de software, vírus e lentidão sem você sair de casa."
               }
             },
             {
               "@type": "Question",
-              "name": "O serviço de otimização de PC é seguro?",
+              "name": "Vocês consertam hardware de notebook?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "Totalmente. Não fazemos overclock de hardware de risco. Nossos ajustes são feitos via registro de software e serviços do Windows para garantir estabilidade e vida útil dos componentes."
+                "text": "Sim, possuímos laboratório avançado para reparos em placas-mãe, troca de telas e componentes de hardware em geral."
               }
             }
           ]
@@ -158,32 +159,32 @@ export default function PcOptimizationPage() {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 border border-[#31A8FF]/30 backdrop-blur-md mb-4">
                   <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                  <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">Otimização Profissional de PC</span>
+                  <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">Assistência Técnica Especializada</span>
                 </div>
 
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans mb-6">
-                  <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Otimização de PC Windows</span> <br className="hidden lg:block" />
-                  <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">Máxima Performance para Jogos, Trabalho e Empresas</span>
+                  <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Assistência Técnica de Informática</span> <br className="hidden lg:block" />
+                  <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">Suporte Remoto e Presencial em Todo Brasil</span>
                 </h1>
 
                 <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                  Serviço profissional de otimização de sistema Windows. Aumentamos o FPS em jogos,
-                  reduzimos o input lag e aceleramos o desempenho geral para profissionais e empresas em todo o Brasil.
+                  Serviço especializado em reparo, manutenção e suporte técnico de computadores.
+                  Atendimento remoto instantâneo para todo o Brasil e presencial com técnicos certificados.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Link
-                    href="/todos-os-servicos/otimizacao-pc"
+                    href="/todos-os-servicos/assistencia-tecnica"
                     className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
                   >
-                    <span className="mr-2">Solicitar Otimização</span>
+                    <span className="mr-2">Abrir Chamado</span>
                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                   <Link
                     href="https://wa.me/5511996716235"
                     className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
                   >
-                    <MessageCircle className="mr-2" />
+                    <MessageCircle className="mr-2" size={20} />
                     Falar no WhatsApp
                   </Link>
                 </div>
@@ -191,15 +192,15 @@ export default function PcOptimizationPage() {
                 <div className="flex flex-wrap gap-6 text-sm text-gray-400">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="text-green-500" size={20} />
-                    <span>Técnicos Certificados</span>
+                    <span>Orçamento Grátis</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="text-green-500" size={20} />
-                    <span>Garantia de 30 dias</span>
+                    <span>Peças Originais</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="text-green-500" size={20} />
-                    <span>Resultados Comprovados</span>
+                    <span>Garantia de 3 meses</span>
                   </div>
                 </div>
               </div>
@@ -209,27 +210,26 @@ export default function PcOptimizationPage() {
                   <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg h-64 flex items-center justify-center">
                     <div className="text-center">
                       <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] mb-4">
-                        <Zap className="w-8 h-8 text-white" />
+                        <Wrench className="w-8 h-8 text-white" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">Otimização de PC</h3>
-                      <p className="text-gray-300 text-sm">Aumente velocidade e desempenho do seu computador</p>
+                      <h3 className="text-xl font-bold text-white mb-2">Assistência Técnica</h3>
+                      <p className="text-gray-300 text-sm">Reparo e manutenção de computadores</p>
                     </div>
                   </div>
-                  <div className="mt-6 grid grid-cols-3 gap-4">
-                    <div className="flex flex-col items-center text-center">
-                      <TrendingUp className="text-[#00FF94] mb-2" size={24} />
-                      <p className="font-bold text-white">+3x</p>
-                      <p className="text-xs text-slate-400">Velocidade</p>
+                  <div className="mt-6 grid grid-cols-2 gap-4">
+                    <div className="flex items-center gap-3">
+                      <Clock className="text-[#31A8FF]" size={24} />
+                      <div>
+                        <p className="font-bold text-white">Atendimento</p>
+                        <p className="text-sm text-slate-400">24/7</p>
+                      </div>
                     </div>
-                    <div className="flex flex-col items-center text-center">
-                      <Zap className="text-[#EAB308] mb-2" size={24} />
-                      <p className="font-bold text-white">+40%</p>
-                      <p className="text-xs text-slate-400">FPS</p>
-                    </div>
-                    <div className="flex flex-col items-center text-center">
-                      <Clock className="text-[#31A8FF] mb-2" size={24} />
-                      <p className="font-bold text-white">-60%</p>
-                      <p className="text-xs text-slate-400">Tempo de inicialização</p>
+                    <div className="flex items-center gap-3">
+                      <Shield className="text-[#00FF94]" size={24} />
+                      <div>
+                        <p className="font-bold text-white">Garantia</p>
+                        <p className="text-sm text-slate-400">3 meses</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -244,20 +244,20 @@ export default function PcOptimizationPage() {
           <div className="max-w-6xl mx-auto px-4 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">500+</div>
-                <p className="text-slate-400">PCs Otimizados</p>
+                <div className="text-3xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">1000+</div>
+                <p className="text-slate-400">Reparos Realizados</p>
               </div>
               <div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text">98%</div>
-                <p className="text-slate-400">Satisfação</p>
+                <div className="text-3xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text">99%</div>
+                <p className="text-slate-400">Taxa de Sucesso</p>
               </div>
               <div>
                 <div className="text-3xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text">7+</div>
                 <p className="text-slate-400">Anos de Experiência</p>
               </div>
               <div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">24/7</div>
-                <p className="text-slate-400">Suporte</p>
+                <div className="text-3xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">24h</div>
+                <p className="text-slate-400">Prazo Diagnóstico</p>
               </div>
             </div>
           </div>
@@ -270,13 +270,13 @@ export default function PcOptimizationPage() {
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
                 <span className="w-2 h-2 rounded-full bg-[#31A8FF] animate-pulse"></span>
-                <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Benefícios da Otimização</span>
+                <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Por que escolher nossa assistência?</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                Transforme seu PC com nossa <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização Profissional</span>
+                Benefícios exclusivos que <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">fazem a diferença</span>
               </h2>
               <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                Resultados comprovados para diferentes necessidades
+                O que nos diferencia no mercado de assistência técnica
               </p>
             </div>
 
@@ -307,10 +307,10 @@ export default function PcOptimizationPage() {
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                Tipos de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização</span>
+                Nossos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Serviços</span>
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Serviços específicos para diferentes necessidades
+                Soluções completas para seu computador
               </p>
             </div>
 
@@ -321,7 +321,7 @@ export default function PcOptimizationPage() {
                   <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
                     <div className="flex items-start gap-4">
                       <div className="mt-1">
-                        <div className="w-12 h-12 rounded-xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
+                        <div className="w-16 h-16 rounded-xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
                           <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
                             {service.icon}
                           </div>
@@ -354,10 +354,10 @@ export default function PcOptimizationPage() {
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                Nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Processo</span>
+                Como <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Funciona</span>
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Um processo claro e eficiente para otimizar seu PC
+                Um processo simples e transparente para seu reparo
               </p>
             </div>
 
@@ -365,23 +365,23 @@ export default function PcOptimizationPage() {
               {[
                 {
                   step: 1,
-                  title: "Análise Inicial",
-                  description: "Diagnosticamos seu PC para identificar gargalos e problemas"
+                  title: "Agendamento",
+                  description: "Entre em contato e agende seu atendimento"
                 },
                 {
                   step: 2,
-                  title: "Planejamento",
-                  description: "Elaboramos um plano personalizado de otimização"
+                  title: "Diagnóstico",
+                  description: "Analisamos seu equipamento para identificar o problema"
                 },
                 {
                   step: 3,
-                  title: "Execução",
-                  description: "Aplicamos as otimizações de forma segura e eficiente"
+                  title: "Orçamento",
+                  description: "Apresentamos o orçamento sem compromisso"
                 },
                 {
                   step: 4,
-                  title: "Testes",
-                  description: "Validamos os resultados e garantimos a qualidade"
+                  title: "Reparo",
+                  description: "Realizamos o reparo com garantia e qualidade"
                 }
               ].map((item, index) => (
                 <div key={index} className="text-center group">
@@ -405,7 +405,7 @@ export default function PcOptimizationPage() {
                 O Que Nossos Clientes <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Dizem</span>
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                Resultados reais de quem já otimizou seu PC conosco
+                Histórias reais de satisfação
               </p>
             </div>
 
@@ -472,21 +472,21 @@ export default function PcOptimizationPage() {
                 </div>
               </Link>
 
-              <Link href="/assistencia-tecnica" className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+              <Link href="/otimizacao-pc" className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
-                  <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#8B31FF]/10 group-hover:border-[#8B31FF]/20 transition-all duration-300 shadow-lg">
-                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#8B31FF]">
-                      <Wrench className="w-8 h-8" />
+                  <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
+                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#EAB308]">
+                      <Zap className="w-8 h-8" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Assistência Técnica</h3>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Otimização de PC</h3>
                   <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                    Reparo de hardware e manutenção preventiva
+                    Aumente FPS em jogos e velocidade do sistema
                   </p>
                   <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
-                    <span className="text-[#8B31FF] text-sm font-medium">Saiba mais</span>
-                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#8B31FF] group-hover:border-[#8B31FF] transition-all duration-300 shadow-md">
+                    <span className="text-[#31A8FF] text-sm font-medium">Saiba mais</span>
+                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#31A8FF] group-hover:border-[#31A8FF] transition-all duration-300 shadow-md">
                       <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                   </div>
@@ -521,24 +521,24 @@ export default function PcOptimizationPage() {
         <section className="py-20 px-4 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Pronto para otimizar seu PC?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Precisa de assistência técnica?</h2>
             <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-              Receba um orçamento personalizado em minutos
+              Entre em contato agora e receba um diagnóstico gratuito
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/todos-os-servicos/otimizacao-pc"
+                href="/todos-os-servicos/assistencia-tecnica"
                 className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
               >
-                <span className="mr-2">Solicitar Otimização</span>
+                <span className="mr-2">Abrir Chamado</span>
                 <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
                 href="tel:+5511996716235"
                 className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
               >
-                <Phone className="mr-2" />
+                <Phone className="mr-2" size={20} />
                 (11) 99671-6235
               </Link>
             </div>

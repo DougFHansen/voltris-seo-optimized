@@ -277,7 +277,11 @@ export default function PlanoBasicoPage() {
                 </p>
                 <Link
                   href="#"
-                  onClick={e => { e.preventDefault(); handleContratarAgora(); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const message = 'Olá, gostaria de contratar o Plano Essencial de Criação de Site';
+                    window.open(`https://wa.me/5511996716235?text=${encodeURIComponent(message)}`, '_blank');
+                  }}
                   className="inline-flex items-center justify-center px-12 py-5 bg-white text-black font-bold text-lg rounded-xl hover:bg-slate-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:scale-105"
                 >
                   Contratar Plano Essencial

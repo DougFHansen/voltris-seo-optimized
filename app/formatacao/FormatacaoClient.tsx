@@ -249,7 +249,10 @@ export default function FormatacaoClient() {
                                         </p>
 
                                         <button
-                                            onClick={() => router.push(`/servicos?abrir=formatacao`)}
+                                            onClick={() => {
+                                              const message = 'Olá, gostaria de contratar o serviço de formatação de Windows';
+                                              window.open(`https://wa.me/5511996716235?text=${encodeURIComponent(message)}`, '_blank');
+                                            }}
                                             className="w-full py-3 rounded-xl bg-white/5 hover:bg-white text-white hover:text-black font-semibold transition-all border border-white/10 hover:border-white"
                                         >
                                             Contratar Agora
@@ -308,7 +311,10 @@ export default function FormatacaoClient() {
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Seu PC Como Novo Hoje Mesmo</h2>
                         <button
-                            onClick={() => handleContratarAgora(formatacaoPlans[0])}
+                            onClick={() => {
+                              const message = `Olá, gostaria de contratar o plano ${encodeURIComponent(formatacaoPlans[0].title)} de formatação de Windows`;
+                              window.open(`https://wa.me/5511996716235?text=${message}`, '_blank');
+                            }}
                             className="px-10 py-5 rounded-2xl bg-white text-black font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.15)]"
                         >
                             Agendar Formatação

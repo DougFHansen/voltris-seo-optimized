@@ -46,10 +46,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const priorityMap: Record<string, number> = {
     '/': 1.0,
     '/servicos': 0.9,
+    '/todos-os-servicos': 0.9,
+    '/formatar-windows': 0.9,
+    '/otimizacao-pc': 0.9,
+    '/assistencia-tecnica': 0.9,
+    '/voltris-optimizer': 0.9,
+    '/servicos-combinados': 0.8,
+    '/servicos-sp': 0.8,
+    '/integracao-servicos': 0.8,
+    '/cluster-conteudo': 0.7,
     '/tecnico-informatica': 0.9,
     '/voltrisoptimizer': 0.9,
     '/guias': 0.9,
-    '/contato': 0.7,
+    '/contato': 0.8,
     '/sobre': 0.7,
   };
 
@@ -94,8 +103,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Previously: const guideSlugs = getGuideSlugs(); which read subdirs of app/guias. 
   // Our getPageRoutes does exactly this recursively.
 
-  // 4. Manual Additions (if any routes are external or special)
-  // (None apparent from previous file, purely files)
+  // 4. Handle Dynamic Strategic Routes (Regional Coverage - All 27 Federative Units)
+  const regionalSlugs = [
+    'sao-paulo', 'rio-de-janeiro', 'belo-horizonte', 'curitiba',
+    'porto-alegre', 'salvador', 'brasilia', 'fortaleza',
+    'recife', 'goiania', 'florianopolis', 'manaus',
+    'belem', 'vitoria', 'campo-grande', 'cuiaba',
+    'sao-luis', 'natal', 'joao-pessoa', 'maceio',
+    'teresina', 'aracaju', 'palmas', 'rio-branco',
+    'porto-velho', 'boa-vista', 'macapa'
+  ];
 
-  return sitemapEntries;
+  const regionalRoutes = regionalSlugs.map(slug => ({
+    url: `${baseUrl}/tecnico-informatica-em/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.8,
+  }));
+
+  return [...sitemapEntries, ...regionalRoutes];
 }

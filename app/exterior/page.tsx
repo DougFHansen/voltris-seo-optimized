@@ -136,7 +136,15 @@ export default function ExteriorHomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#171313] via-[#171313] to-[#171313] header-spacing">
+    <div className="min-h-screen bg-[#050510] relative overflow-x-hidden pt-16 md:pt-20">
+      {/* Global Ambient Background Effects (Noise Overlay on Top) */}
+      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+
+      {/* Background Gradients (Fixed Behind) */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen" />
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -282,7 +282,11 @@ export default function PlanoProfissionalPage() {
                 </p>
                 <Link
                   href="#"
-                  onClick={e => { e.preventDefault(); handleContratarAgora(); }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const message = 'Olá, gostaria de contratar o Plano Profissional de Criação de Site';
+                    window.open(`https://wa.me/5511996716235?text=${encodeURIComponent(message)}`, '_blank');
+                  }}
                   className="inline-flex items-center justify-center px-12 py-5 bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-bold text-lg rounded-xl hover:shadow-[0_0_30px_rgba(139,49,255,0.4)] transition-all duration-300 hover:scale-105"
                 >
                   Contratar Plano Profissional

@@ -263,7 +263,10 @@ export default function InstalacaoOfficePage() {
                         <span className="text-4xl font-bold text-white">{plan.price}</span>
                       </div>
                       <button
-                        onClick={() => handleContratarAgora(plan)}
+                        onClick={() => {
+                          const message = `Olá, gostaria de contratar o plano ${encodeURIComponent(plan.title)} de instalação do Office`;
+                          window.open(`https://wa.me/5511996716235?text=${message}`, '_blank');
+                        }}
                         className="w-full py-4 px-8 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(255,75,107,0.4)] transition-all hover:scale-105"
                       >
                         Contratar Agora

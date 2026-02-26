@@ -7,11 +7,35 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Gamepad2, AlertTriangle, CheckCircle, Clock, Users, Shield, Zap, Terminal, Cpu } from 'lucide-react';
 import TechFloatingElements from '@/components/TechFloatingElements';
+import JsonLd from '@/components/JsonLd';
 
 export default function ErrosJogosClient() {
     return (
         <>
             <Header />
+            <JsonLd
+                type="FAQPage"
+                data={{
+                    mainEntity: [
+                        {
+                            "@type": "Question",
+                            "name": "Como corrigir erros do Vanguard no Valorant?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Corrigimos erros do Vanguard ajustando as configurações de Secure Boot e TPM 2.0 no registro do Windows de forma remota."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "O que fazer se o GTA V fechar sozinho?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Resolvemos crashes do GTA e FiveM limpando caches de scripts corrompidos e ajustando DLLs do sistema para evitar conflitos."
+                            }
+                        }
+                    ]
+                }}
+            />
             <main className="bg-[#020205] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#FF4B6B]/30">
 
                 {/* Background Effects (Global) - Gamer Optimized */}

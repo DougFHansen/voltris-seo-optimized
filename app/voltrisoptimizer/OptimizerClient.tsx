@@ -342,19 +342,19 @@ export default function OptimizerClient() {
 
                                 <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full">
                                     <div className="flex flex-col w-full gap-2">
-                                        <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
+                                        <Link
+                                            href="/voltris-optimizer"
                                             className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                         >
                                             <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
-                                            DOWNLOAD x64
-                                        </a>
-                                        <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
+                                            BAIXAR SOFTWARE
+                                        </Link>
+                                        <Link
+                                            href="/voltris-optimizer"
                                             className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
                                         >
-                                            Download Versão x86 (32 bits)
-                                        </a>
+                                            Versão para todos os sistemas
+                                        </Link>
                                     </div>
 
                                     <Link
@@ -913,19 +913,19 @@ export default function OptimizerClient() {
                                     v1.0.0.5
                                 </span>
                             </div>
-                            <a
-                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstaller.exe"
+                            <Link
+                                href="/voltris-optimizer"
                                 className="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
                             >
                                 <Download className="w-6 h-6" />
-                                BAIXAR AGORA (x64)
-                            </a>
-                            <a
-                                href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
+                                BAIXAR SOFTWARE
+                            </Link>
+                            <Link
+                                href="/voltris-optimizer"
                                 className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
                             >
-                                Ou baixe a versão 32 bits (x86)
-                            </a>
+                                Visite nossa página de otimização
+                            </Link>
                         </div>
                         <div className="mt-6">
                             <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">Compatível com Windows 10 & 11</span>

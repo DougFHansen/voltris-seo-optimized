@@ -274,7 +274,10 @@ export default function OtimizacaoPcClient() {
                                         </p>
 
                                         <button
-                                            onClick={() => handleContratarAgora(plan)}
+                                            onClick={() => {
+                                              const message = `Olá, gostaria de contratar o plano ${encodeURIComponent(plan.title)} de otimização de PC`;
+                                              window.open(`https://wa.me/5511996716235?text=${message}`, '_blank');
+                                            }}
                                             className="w-full py-3 rounded-xl bg-white/5 hover:bg-white text-white hover:text-black font-semibold transition-all border border-white/10 hover:border-white"
                                         >
                                             Contratar
@@ -351,7 +354,10 @@ export default function OtimizacaoPcClient() {
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Acelere seu PC Agora</h2>
                         <button
-                            onClick={() => handleContratarAgora(otimizacaoPlans[0])}
+                            onClick={() => {
+                              const message = `Olá, gostaria de contratar o plano ${encodeURIComponent(otimizacaoPlans[0].title)} de otimização de PC`;
+                              window.open(`https://wa.me/5511996716235?text=${message}`, '_blank');
+                            }}
                             className="px-10 py-5 rounded-2xl bg-white text-black font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_40px_rgba(255,255,255,0.15)]"
                         >
                             Começar Otimização
