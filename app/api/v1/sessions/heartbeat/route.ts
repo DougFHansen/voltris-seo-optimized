@@ -133,21 +133,27 @@ export async function POST(req: NextRequest) {
             }
         }
 
-        // 4. Atualizar health check da instalação (Dispositivo)
-        // Isso garante que o dashboard mostre o status "Online" corretamente
+        // 4. Atualizar health check da instalação E do dispositivo
+        // Isso garante que o dashboard mostre o status "Online" corretamente em ambos os sistemas (Legado/Novo)
         if (machine_id) {
-            const { error: deviceError } = await supabaseAdmin
-                .from('installations') // Assumindo que a tabela de dispositivos é 'installations' baseado no código anterior
+            // Sincronizar 'installations' (Legado/Compatibilidade)
+            await supabaseAdmin
+                .from('installations')
                 .update({
                     last_heartbeat: new Date().toISOString()
                 })
-                .eq('id', machine_id); // Atualiza pelo ID da máquina
+                .eq('id', machine_id);
 
-            if (deviceError) {
-                console.error(`[API/HEARTBEAT] Erro ao atualizar instalação: ${deviceError.message}`);
-            } else {
-                // console.log(`[API/HEARTBEAT] Instalação ${machine_id} atualizada.`);
-            }
+            // Sincronizar 'devices' (Core do Dashboard Admin / Enterprise)
+            await supabaseAdmin
+                .from('devices')
+                .update({
+                    last_heartbeat: new Date().toISOString(),
+                    status: status || 'online' // Garantir que fique 'online' se estiver enviando heartbeat
+                })
+                .eq('machine_id', machine_id);
+
+            console.log(`[API/HEARTBEAT] Status atualizado para dispositivo: ${machine_id}`);
         }
 
         return NextResponse.json({ success: true, timestamp: new Date().toISOString() });

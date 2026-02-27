@@ -2,23 +2,25 @@ import { Metadata } from 'next';
 import ErrosJogosClient from './ErrosJogosClient';
 
 export const metadata: Metadata = {
-  title: 'Correção de Erros em Jogos - GTA, CS2, Cyberpunk e Mais | VOLTRIS',
-  description: 'Correção de erros em jogos populares como GTA, CS2, Cyberpunk 2077, Valorant, League of Legends e outros. Suporte técnico especializado em jogos. Atendimento remoto 24h.',
+  title: 'Correção de Erros em Jogos: VAN9003, GTA V, CS2, Roblox e + | VOLTRIS',
+  description: 'Solução imediata para erros críticos: VAN9003 (Valorant), crashes no GTA V/FiveM, Erros de VAC no CS2, Erro 268 no Roblox e falhas de DLL. Suporte técnico gamer remoto especializado.',
   keywords: [
-    'erros GTA', 'erros CS2', 'erros Cyberpunk', 'erros jogos', 'correção erros jogos',
-    'suporte técnico gamer', 'fps baixo fix', 'erro dll jogo', 'crash jogo fix', 'valorant vanguard fix'
+    'correção de erros em jogos', 'VAN9003 fix valorant', 'vanguard secure boot fix',
+    'GTA V crash loading fix', 'FiveM handshake error', 'CS2 VAC verification fix',
+    'Roblox error 268 fix', 'Minecraft OpenGL 65542 fix', 'Fortnite EAC error',
+    'erro de DLL jogo', '0xc000007b fix', 'suporte gamer remoto', 'voltris optimizer games'
   ],
   openGraph: {
-    title: 'Correção de Erros em Jogos - GTA, CS2, Cyberpunk e Mais | VOLTRIS',
-    description: 'Correção de erros em jogos populares como GTA, CS2, Cyberpunk 2077, Valorant, League of Legends e outros. Atendimento remoto 24h.',
+    title: 'Correção de Erros em Jogos - Suporte Técnico Gamer Especializado | VOLTRIS',
+    description: 'Resolvemos VAN9003, crashes no GTA, Erros de VAC e Roblox 268 remotamente em minutos. Volte a jogar agora!',
     url: 'https://voltris.com.br/erros-jogos',
     type: 'website',
-    images: [{ url: '/remotebanner.jpg', width: 1200, height: 630 }]
+    images: [{ url: '/logo-seo-gamer.png', width: 1200, height: 630 }]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Correção de Erros em Jogos - GTA, CS2, Cyberpunk e Mais | VOLTRIS',
-    images: ['/remotebanner.jpg']
+    title: 'Corrija Erros no Valorant, GTA, CS2 e Roblox Agora | VOLTRIS',
+    images: ['/logo-seo-gamer.png']
   }
 };
 

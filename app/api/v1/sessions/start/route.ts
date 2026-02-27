@@ -127,6 +127,7 @@ export async function POST(req: NextRequest) {
             .from('telemetry_events')
             .insert({
                 session_id: newSession.id,
+                device_id: device.id, // VITAL: Adicionar device_id para JOIN no painel Admin
                 event_type: 'APP_START',
                 feature_name: 'System',
                 action_name: 'Application Started',
