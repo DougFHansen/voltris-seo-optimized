@@ -174,7 +174,7 @@ export default function TechnicalSupportPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Link
-                    href="/todos-os-servicos/assistencia-tecnica"
+                    href="https://wa.me/5511996716235"
                     className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
                   >
                     <span className="mr-2">Abrir Chamado</span>
@@ -528,7 +528,7 @@ export default function TechnicalSupportPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/todos-os-servicos/assistencia-tecnica"
+                href="https://wa.me/5511996716235"
                 className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
               >
                 <span className="mr-2">Abrir Chamado</span>

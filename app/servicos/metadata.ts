@@ -3,18 +3,6 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Serviços de TI - Suporte Técnico Remoto e Criação de Sites | VOLTRIS',
   description: 'Suporte técnico remoto, formatação de PC, otimização Windows, criação de sites e instalação de programas. Conheça nossos serviços de TI com atendimento em todo o Brasil.',
-  keywords: [
-    'serviços de ti',
-    'suporte técnico remoto',
-    'formatação de pc',
-    'otimização windows',
-    'criação de sites',
-    'instalação de programas',
-    'assistência técnica',
-    'manutenção de computador',
-    'limpeza de vírus',
-    'configuração de sistema'
-  ],
   openGraph: {
     title: 'Serviços de TI - Suporte Técnico Remoto e Criação de Sites | VOLTRIS',
     description: 'Suporte técnico remoto, formatação, otimização e criação de sites. Serviços de TI com atendimento em todo o Brasil.',

@@ -41,11 +41,35 @@ export default function Header() {
   ];
 
   const servicesNavLinks = [
-    { name: 'Formatação Windows', path: '/formatar-windows' },
-    { name: 'Otimização PC', path: '/otimizacao-pc' },
-    { name: 'Assistência Técnica', path: '/assistencia-tecnica' },
-    { name: 'Suporte Internacional', path: '/exterior' },
-    { name: 'Software Voltris', path: '/voltris-optimizer' },
+    {
+      category: 'Software Expert',
+      items: [
+        { name: 'Voltris Optimizer', path: '/voltrisoptimizer', desc: 'Performance Máxima' },
+        { name: 'Assinar PRO', path: '/adquirir-licenca', desc: 'Ativação de Licença' },
+      ]
+    },
+    {
+      category: 'Suporte Gamer',
+      items: [
+        { name: 'Otimização Gamer', path: '/otimizacao-pc', desc: 'FPS & Input Lag' },
+        { name: 'Erros em Jogos', path: '/erros-jogos', desc: 'GTA, CS2 e mais' },
+      ]
+    },
+    {
+      category: 'Assistência Técnica',
+      items: [
+        { name: 'Formatação Windows', path: '/formatar-windows', desc: 'Sistema Limpo' },
+        { name: 'Manutenção de PC', path: '/manutencao-computador', desc: 'Hardware & Limpeza' },
+        { name: 'Suporte Remoto', path: '/suporte-tecnico-remoto', desc: 'Atendimento Online' },
+        { name: 'Internacional', path: '/exterior', desc: 'Suporte no Exterior' },
+      ]
+    },
+    {
+      category: 'Web & Design',
+      items: [
+        { name: 'Criação de Sites', path: '/criar-site', desc: 'Sites Profissionais' },
+      ]
+    },
   ];
 
   return (
@@ -83,7 +107,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Nav - Centralizado */}
-          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <nav className="hidden md:flex items-center gap-8 h-full absolute left-1/2 -translate-x-1/2">
             {mainNavLinks.map((link) => {
               const isActive = pathname === link.path;
               return (
@@ -105,15 +129,15 @@ export default function Header() {
               );
             })}
             {/* Dropdown para Serviços */}
-            <div 
-              className="relative"
+            <div
+              className="relative h-full flex items-center"
               onMouseEnter={() => setIsServicesDropdownOpen(true)}
               onMouseLeave={() => setIsServicesDropdownOpen(false)}
             >
-              <button 
+              <button
                 className={`text-sm font-medium transition-all duration-300 relative group py-2
-                  ${pathname.startsWith('/formatar-windows') || pathname.startsWith('/otimizacao-pc') || pathname.startsWith('/assistencia-tecnica') || pathname.startsWith('/voltris-optimizer') || pathname.startsWith('/exterior') 
-                    ? 'text-white' 
+                  ${servicesNavLinks.some(cat => cat.items.some(item => pathname === item.path))
+                    ? 'text-white'
                     : 'text-slate-400 hover:text-white'}
                   hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#31A8FF] hover:via-[#8B31FF] hover:to-[#FF4B6B]
                 `}
@@ -122,28 +146,54 @@ export default function Header() {
               >
                 Soluções
                 <span className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] transition-all duration-300 rounded-full
-                  ${(pathname.startsWith('/formatar-windows') || pathname.startsWith('/otimizacao-pc') || pathname.startsWith('/assistencia-tecnica') || pathname.startsWith('/voltris-optimizer') || pathname.startsWith('/exterior')) 
-                    ? 'w-full opacity-100' 
+                  ${servicesNavLinks.some(cat => cat.items.some(item => pathname === item.path))
+                    ? 'w-full opacity-100'
                     : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'}
                 `}></span>
               </button>
-              <div className={`absolute left-0 mt-2 w-48 bg-gray-800/95 backdrop-blur-lg rounded-lg shadow-lg py-2 transition-all duration-300 z-50 border border-gray-700 ${
-                isServicesDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-              }`}>
-                {servicesNavLinks.map((link) => {
-                  const isActive = pathname === link.path;
-                  return (
-                    <Link
-                      key={link.path}
-                      href={link.path}
-                      className={`block px-4 py-2 text-sm transition-all duration-300
-                        ${isActive ? 'text-white bg-gray-700/50' : 'text-slate-300 hover:text-white hover:bg-gray-700/30'}
-                      `}
-                    >
-                      {link.name}
-                    </Link>
-                  );
-                })}
+              <div className={`absolute left-1/2 -translate-x-1/2 top-full w-[550px] bg-[#0A0A12]/95 backdrop-blur-2xl rounded-b-3xl rounded-t-none shadow-2xl py-8 px-8 transition-all duration-300 z-50 border border-white/10 border-t-0 ${isServicesDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
+                }`}>
+                <div className="grid grid-cols-2 gap-x-10 gap-y-8">
+                  {servicesNavLinks.map((cat) => (
+                    <div key={cat.category} className="space-y-4">
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-white/5 pb-2">
+                        <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+                          {cat.category}
+                        </span>
+                      </h4>
+                      <div className="space-y-2">
+                        {cat.items.map((item) => {
+                          const isActive = pathname === item.path;
+                          return (
+                            <Link
+                              key={item.path}
+                              href={item.path}
+                              className={`group/item block p-2 rounded-xl transition-all duration-300
+                                ${isActive ? 'bg-white/5 border-white/10' : 'hover:bg-white/[0.03] border-transparent'}
+                                border
+                              `}
+                            >
+                              <div className="flex flex-col">
+                                <span className={`text-sm font-bold transition-colors ${isActive ? 'text-white' : 'text-slate-300 group-hover/item:text-white'}`}>
+                                  {item.name}
+                                </span>
+                                <span className="text-[10px] text-slate-500 font-medium tracking-tight">
+                                  {item.desc}
+                                </span>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* Footer do Dropdown */}
+                <div className="mt-8 pt-6 border-t border-white/5">
+                  <Link href="/servicos" className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 text-white text-xs font-bold transition-all uppercase tracking-widest">
+                    Ver Todos os Serviços <span className="text-[#31A8FF]">→</span>
+                  </Link>
+                </div>
               </div>
             </div>
           </nav>
@@ -241,17 +291,31 @@ export default function Header() {
                     </span>
                     <span className="text-white/20 group-hover:text-[#8B31FF] transition-colors">▼</span>
                   </summary>
-                  <div className="ml-4 pb-2">
-                    {servicesNavLinks.map(link => (
-                      <Link
-                        key={link.path}
-                        href={link.path}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block text-xl font-bold py-2 border-b border-white/5 ${pathname === link.path ? 'text-white' : 'text-slate-400 hover:text-white'
-                          }`}
-                      >
-                        {link.name}
-                      </Link>
+                  <div className="ml-4 pb-4 space-y-6">
+                    {servicesNavLinks.map(cat => (
+                      <div key={cat.category} className="space-y-2">
+                        <h4 className="text-[10px] font-black uppercase tracking-widest opacity-70">
+                          <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+                            {cat.category}
+                          </span>
+                        </h4>
+                        <div className="flex flex-col gap-1">
+                          {cat.items.map(item => (
+                            <Link
+                              key={item.path}
+                              href={item.path}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className={`block text-lg font-bold py-2 ${pathname === item.path ? 'text-white' : 'text-slate-400 hover:text-white'
+                                }`}
+                            >
+                              <div className="flex flex-col">
+                                <span>{item.name}</span>
+                                <span className="text-[10px] text-slate-500 font-medium -mt-1">{item.desc}</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     ))}
                   </div>
                 </details>

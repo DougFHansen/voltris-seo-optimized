@@ -1,15 +1,15 @@
 'use client';
 
 import Link from 'next/link';
-import { 
-  Zap, 
-  Shield, 
-  TrendingUp, 
-  Download, 
-  Star, 
-  CheckCircle2, 
-  Users, 
-  Award, 
+import {
+  Zap,
+  Shield,
+  TrendingUp,
+  Download,
+  Star,
+  CheckCircle2,
+  Users,
+  Award,
   Clock,
   Play,
   Cpu,
@@ -124,23 +124,23 @@ export default function VoltrisOptimizerPage() {
                   Aumente FPS e Performance
                 </h1>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Voltris Optimizer: O primeiro software brasileiro SaaS de otimização de PC com controle remoto. 
+                  Voltris Optimizer: O primeiro software brasileiro SaaS de otimização de PC com controle remoto.
                   Aumente FPS em jogos, otimize Windows e acelere seus computadores.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <Link 
-                    href="/voltris-optimizer/trial" 
+                  <Link
+                    href="/voltrisoptimizer"
                     className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl text-center transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20"
                   >
                     <Play className="w-5 h-5" />
                     Experimentar Grátis
                   </Link>
-                  <Link 
-                    href="/voltris-optimizer/comprar" 
+                  <Link
+                    href="/adquirir-licenca"
                     className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-center transition-all shadow-lg shadow-blue-500/20"
                   >
-                    Assinar Pro
+                    Assinar PRO
                   </Link>
                 </div>
 
@@ -254,11 +254,10 @@ export default function VoltrisOptimizerPage() {
 
             <div className="grid md:grid-cols-3 gap-8">
               {pricingPlans.map((plan, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-gray-800/30 backdrop-blur rounded-2xl p-8 border ${
-                    plan.popular ? 'border-[#8B31FF] relative shadow-lg shadow-[#8B31FF]/20' : 'border-gray-700/50'
-                  } hover:border-[#8B31FF]/70 transition-all group`}
+                <div
+                  key={index}
+                  className={`bg-gray-800/30 backdrop-blur rounded-2xl p-8 border ${plan.popular ? 'border-[#8B31FF] relative shadow-lg shadow-[#8B31FF]/20' : 'border-gray-700/50'
+                    } hover:border-[#8B31FF]/70 transition-all group`}
                 >
                   {plan.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -267,11 +266,11 @@ export default function VoltrisOptimizerPage() {
                       </span>
                     </div>
                   )}
-                  
+
                   <h3 className="text-2xl font-bold mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">{plan.name}</h3>
                   <div className="text-4xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text mb-2">{plan.price}</div>
                   <div className="text-gray-400 mb-6">{plan.period}</div>
-                  
+
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-3">
@@ -281,20 +280,14 @@ export default function VoltrisOptimizerPage() {
                     ))}
                   </ul>
 
-                  <Link 
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const message = `Olá, gostaria de ${plan.name === 'Grátis' ? 'experimentar' : 'assinar'} o plano ${encodeURIComponent(plan.name)}`;
-                      window.open(`https://wa.me/5511996716235?text=${message}`, '_blank');
-                    }}
-                    className={`block w-full py-3 px-6 rounded-lg text-center font-bold transition-all ${
-                      plan.popular 
-                        ? 'bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B] hover:from-[#9B41FF] hover:to-[#FF5B7B] shadow-lg shadow-[#8B31FF]/30' 
+                  <Link
+                    href="/voltrisoptimizer"
+                    className={`block w-full py-3 px-6 rounded-lg text-center font-bold transition-all ${plan.popular
+                        ? 'bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B] hover:from-[#9B41FF] hover:to-[#FF5B7B] shadow-lg shadow-[#8B31FF]/30'
                         : plan.name === 'Grátis'
-                        ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg shadow-green-500/20'
-                        : 'bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 border border-gray-600'
-                    }`}
+                          ? 'bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 shadow-lg shadow-green-500/20'
+                          : 'bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 border border-gray-600'
+                      }`}
                   >
                     {plan.cta}
                   </Link>
@@ -387,17 +380,17 @@ export default function VoltrisOptimizerPage() {
             <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
               Comece gratuitamente e veja os resultados imediatamente
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                href="/voltris-optimizer/trial" 
+              <Link
+                href="/voltrisoptimizer"
                 className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl text-center transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20"
               >
                 <Download className="w-5 h-5" />
                 Baixar Grátis Agora
               </Link>
-              <Link 
-                href="/demo" 
+              <Link
+                href="/demo"
                 className="bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 text-white font-bold py-4 px-8 rounded-xl text-center transition-all border border-gray-600"
               >
                 Ver Demonstração

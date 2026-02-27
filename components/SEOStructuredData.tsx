@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Script from 'next/script';
 import { generateSoftwareApplicationSchema } from '../utils/seo-structured-data';
@@ -32,7 +32,7 @@ export default function SoftwareApplicationSchema({
     availability: 'https://schema.org/InStock'
   },
   features = [],
-  softwareVersion = '1.0.0.5',
+  softwareVersion = '1.0.0.6',
   datePublished = '2024-01-01',
   dateModified = new Date().toISOString()
 }: SoftwareApplicationSchemaProps) {

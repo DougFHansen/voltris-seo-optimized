@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog e Guias Técnicos | Dicas de Formatação, Otimização e Manutenção - VOLTRIS',
+  title: 'Guias e Tutoriais Técnicos | Dicas de Formatação, Otimização e Manutenção - VOLTRIS',
   description: 'Artigos e guias técnicos sobre formatação de Windows, otimização de PC, assistência técnica e dicas de manutenção. Aprenda a deixar seu computador mais rápido e seguro.',
   keywords: [
-    'blog técnico',
     'guias técnicos',
+    'tutoriais de informática',
     'dicas de formatação',
     'tutorial otimização pc',
     'como otimizar windows',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: 'https://voltris.com.br/cluster-conteudo'
   },
   openGraph: {
-    title: 'Blog e Guias Técnicos | Dicas de Formatação, Otimização e Manutenção - VOLTRIS',
+    title: 'Guias e Tutoriais Técnicos | Dicas de Formatação, Otimização e Manutenção - VOLTRIS',
     description: 'Artigos e guias técnicos sobre formatação de Windows, otimização de PC, assistência técnica e dicas de manutenção. Aprenda a deixar seu computador mais rápido e seguro.',
     url: 'https://voltris.com.br/cluster-conteudo',
     type: 'website',

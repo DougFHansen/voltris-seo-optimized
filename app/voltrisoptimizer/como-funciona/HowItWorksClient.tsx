@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useRef, useState, useEffect } from 'react';
 import Header from '@/components/Header';
@@ -128,7 +128,7 @@ export default function HowItWorksClient() {
                                 </div>
                                 <div className="space-y-1.5">
                                     <div className="flex justify-between items-center text-[11px]">
-                                        <span className="text-slate-400 font-medium">Latência DPC</span>
+                                        <span className="text-slate-400 font-medium">LatÃªncia DPC</span>
                                         <span className="text-emerald-400 font-mono">{(latencyLoad / 10).toFixed(2)}ms</span>
                                     </div>
                                     <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
@@ -159,7 +159,7 @@ export default function HowItWorksClient() {
                             </div>
                             <div className="p-5 space-y-4">
                                 <div className="flex items-center justify-between">
-                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">Análise Ativa</span>
+                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">AnÃ¡lise Ativa</span>
                                     <div className="flex gap-0.5">
                                         {[1, 2, 3].map(i => <div key={i} className="w-[2px] h-2 bg-emerald-500/50 rounded-full animate-pulse" style={{ animationDelay: i * 0.1 + 's' }}></div>)}
                                     </div>
@@ -213,21 +213,21 @@ export default function HowItWorksClient() {
                             </motion.div>
 
                             <h1 className="text-5xl md:text-7xl lg:text-9xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
-                                A Ciência por trás da <br />
+                                A CiÃªncia por trÃ¡s da <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
                                     Performance Extrema
                                 </span>
                             </h1>
 
                             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light leading-relaxed mb-12">
-                                O Voltris Optimizer não faz "mágica". Ele aplica engenharia de kernel, gerenciamento de threads e otimizações de I/O que o Windows não faz por padrão.
+                                O Voltris Optimizer nÃ£o faz "mÃ¡gica". Ele aplica engenharia de kernel, gerenciamento de threads e otimizaÃ§Ãµes de I/O que o Windows nÃ£o faz por padrÃ£o.
                             </p>
 
                             <div className="flex flex-col items-center gap-3 w-full max-w-lg mx-auto">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                    <span className="text-xs text-slate-500 font-medium">VersÃ£o Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.0.5
+                                        v1.0.0.6
                                     </span>
                                 </div>
 
@@ -244,7 +244,7 @@ export default function HowItWorksClient() {
                                             href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
                                             className="text-[10px] text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
                                         >
-                                            Download Versão x86 (32 bits)
+                                            Download VersÃ£o x86 (32 bits)
                                         </a>
                                     </div>
                                 </div>
@@ -268,9 +268,9 @@ export default function HowItWorksClient() {
                 <section className="py-32 relative z-10 bg-[#08080C] border-t border-white/5">
                     <div className="container mx-auto px-4">
                         <div className="text-center mb-24">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Workflow de Otimização</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Workflow de OtimizaÃ§Ã£o</h2>
                             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                                Diferente de scripts simples, o Voltris opera em um ciclo contínuo de diagnóstico e ajuste.
+                                Diferente de scripts simples, o Voltris opera em um ciclo contÃ­nuo de diagnÃ³stico e ajuste.
                             </p>
                         </div>
 
@@ -280,8 +280,8 @@ export default function HowItWorksClient() {
 
                             <StepCard
                                 number="01"
-                                title="Diagnóstico Profundo"
-                                desc="Nossa IA analisa seu hardware (CPU, GPU, RAM) e identifica gargalos, drivers desatualizados e serviços do Windows que estão consumindo recursos desnecessariamente."
+                                title="DiagnÃ³stico Profundo"
+                                desc="Nossa IA analisa seu hardware (CPU, GPU, RAM) e identifica gargalos, drivers desatualizados e serviÃ§os do Windows que estÃ£o consumindo recursos desnecessariamente."
                                 icon={<Search className="w-6 h-6" />}
                                 delay={0.2}
                             />
@@ -295,7 +295,7 @@ export default function HowItWorksClient() {
                             <StepCard
                                 number="03"
                                 title="Monitoramento Ativo"
-                                desc="O sistema continua rodando em background com consumo minimalista, garantindo que novos processos não degradem a performance conquistada."
+                                desc="O sistema continua rodando em background com consumo minimalista, garantindo que novos processos nÃ£o degradem a performance conquistada."
                                 icon={<Activity className="w-6 h-6" />}
                                 delay={0.6}
                             />
@@ -307,9 +307,9 @@ export default function HowItWorksClient() {
                 <section className="py-32 relative z-10">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-col md:flex-row items-center justify-between mb-16 max-w-7xl mx-auto">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Soluções Adaptativas</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">SoluÃ§Ãµes Adaptativas</h2>
                             <p className="text-slate-400 text-lg md:text-right max-w-md mt-4 md:mt-0">
-                                O Voltris muda seu comportamento baseado no que você faz.
+                                O Voltris muda seu comportamento baseado no que vocÃª faz.
                             </p>
                         </div>
 
@@ -318,15 +318,15 @@ export default function HowItWorksClient() {
                                 title="Gamers"
                                 icon={<MousePointer2 className="w-6 h-6" />}
                                 color="[#00FF94]"
-                                desc="Foco total em latência e estabilidade de quadros."
-                                features={['Redução de Input Lag', 'Estabilidade 1% Low FPS', 'Network Optimization']}
+                                desc="Foco total em latÃªncia e estabilidade de quadros."
+                                features={['ReduÃ§Ã£o de Input Lag', 'Estabilidade 1% Low FPS', 'Network Optimization']}
                                 delay={0.1}
                             />
                             <UserSegment
                                 title="Streamers"
                                 icon={<Video className="w-6 h-6" />}
                                 color="[#8B31FF]"
-                                desc="Equilíbrio perfeito entre jogo e encode de vídeo."
+                                desc="EquilÃ­brio perfeito entre jogo e encode de vÃ­deo."
                                 features={['Prioridade para OBS/Twitch', 'Sem drop de frames', 'Audio Latency Fix']}
                                 delay={0.2}
                             />
@@ -335,15 +335,15 @@ export default function HowItWorksClient() {
                                 icon={<Briefcase className="w-6 h-6" />}
                                 color="[#31A8FF]"
                                 desc="Produtividade e multitarefa sem engasgos."
-                                features={['Boot Instantâneo', 'Chrome/Edge Otimizado', 'Excel/PowerBI Fluido']}
+                                features={['Boot InstantÃ¢neo', 'Chrome/Edge Otimizado', 'Excel/PowerBI Fluido']}
                                 delay={0.3}
                             />
                             <UserSegment
-                                title="Usuários"
+                                title="UsuÃ¡rios"
                                 icon={<Laptop className="w-6 h-6" />}
                                 color="[#FF4B6B]"
-                                desc="Revitalize PCs antigos ou domésticos."
-                                features={['Economia de Energia', 'Sistema Limpo', 'Multimídia 4K Fluida']}
+                                desc="Revitalize PCs antigos ou domÃ©sticos."
+                                features={['Economia de Energia', 'Sistema Limpo', 'MultimÃ­dia 4K Fluida']}
                                 delay={0.4}
                             />
                         </div>
@@ -357,9 +357,9 @@ export default function HowItWorksClient() {
                     <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-16 max-w-7xl">
                         <div className="flex-1 space-y-12">
                             <div>
-                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Otimização de Nível Kernel</h2>
+                                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">OtimizaÃ§Ã£o de NÃ­vel Kernel</h2>
                                 <p className="text-slate-400 text-lg leading-relaxed">
-                                    O Windows padrão vem configurado para "compatibilidade", não performance. O Voltris altera parâmetros profundos que a Microsoft esconde.
+                                    O Windows padrÃ£o vem configurado para "compatibilidade", nÃ£o performance. O Voltris altera parÃ¢metros profundos que a Microsoft esconde.
                                 </p>
                             </div>
 
@@ -370,7 +370,7 @@ export default function HowItWorksClient() {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-white mb-2">Thread Scheduling</h3>
-                                        <p className="text-slate-400 text-sm">Realocamos threads de sistema para núcleos secundários, deixando os núcleos primários da CPU livres para suas aplicações pesadas.</p>
+                                        <p className="text-slate-400 text-sm">Realocamos threads de sistema para nÃºcleos secundÃ¡rios, deixando os nÃºcleos primÃ¡rios da CPU livres para suas aplicaÃ§Ãµes pesadas.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-6">
@@ -379,7 +379,7 @@ export default function HowItWorksClient() {
                                     </div>
                                     <div>
                                         <h3 className="text-xl font-bold text-white mb-2">Memory Management</h3>
-                                        <p className="text-slate-400 text-sm">Limpeza agressiva de Standby List e otimização de cache L3 para evitar micro-stutters durante gameplay ou renderização.</p>
+                                        <p className="text-slate-400 text-sm">Limpeza agressiva de Standby List e otimizaÃ§Ã£o de cache L3 para evitar micro-stutters durante gameplay ou renderizaÃ§Ã£o.</p>
                                     </div>
                                 </div>
                                 <div className="flex gap-6">
@@ -387,8 +387,8 @@ export default function HowItWorksClient() {
                                         <ShieldCheck className="w-6 h-6 text-[#00FF94]" />
                                     </div>
                                     <div>
-                                        <h3 className="text-xl font-bold text-white mb-2">Segurança Preservada</h3>
-                                        <p className="text-slate-400 text-sm">Diferente de scripts duvidosos, não removemos componentes vitais de segurança (como Defender ou Windows Update), apenas os configuramos para não atrapalhar.</p>
+                                        <h3 className="text-xl font-bold text-white mb-2">SeguranÃ§a Preservada</h3>
+                                        <p className="text-slate-400 text-sm">Diferente de scripts duvidosos, nÃ£o removemos componentes vitais de seguranÃ§a (como Defender ou Windows Update), apenas os configuramos para nÃ£o atrapalhar.</p>
                                     </div>
                                 </div>
                             </div>
@@ -448,17 +448,17 @@ export default function HowItWorksClient() {
 
                     <div className="max-w-4xl mx-auto relative z-10">
                         <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-                            Pronto para sentir a diferença?
+                            Pronto para sentir a diferenÃ§a?
                         </h2>
                         <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto font-light">
-                            Não acredite apenas em gráficos. Teste o Voltris Optimizer no seu sistema e veja os números subirem.
+                            NÃ£o acredite apenas em grÃ¡ficos. Teste o Voltris Optimizer no seu sistema e veja os nÃºmeros subirem.
                         </p>
 
                         <div className="flex flex-col items-center gap-4">
                             <div className="flex items-center gap-2 mb-2">
-                                <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                <span className="text-xs text-slate-500 font-medium">VersÃ£o Atual:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                    v1.0.0.5
+                                    v1.0.0.6
                                 </span>
                             </div>
                             <a
@@ -472,7 +472,7 @@ export default function HowItWorksClient() {
                                 href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
                                 className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
                             >
-                                Ou baixe a versão 32 bits (x86)
+                                Ou baixe a versÃ£o 32 bits (x86)
                             </a>
                         </div>
                     </div>

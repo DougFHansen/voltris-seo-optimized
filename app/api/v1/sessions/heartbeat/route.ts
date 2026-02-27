@@ -12,7 +12,10 @@ const heartbeatSchema = z.object({
         event_type: z.string(),
         feature_name: z.string().optional(),
         action_name: z.string().optional(),
-        metadata: z.record(z.any()).optional(),
+        success: z.boolean().optional(),
+        duration_ms: z.number().optional(),
+        error_code: z.string().optional(),
+        metadata: z.record(z.string(), z.unknown()).optional(),
     }).optional().nullable(), // Permitir null/undefined explicitamente
 });
 
@@ -20,8 +23,18 @@ export async function POST(req: NextRequest) {
     console.log('[API/HEARTBEAT] Recebendo heartbeat...');
 
     try {
-        const body = await req.json();
-        
+        let body;
+        try {
+            const text = await req.text();
+            if (!text) {
+                return NextResponse.json({ error: 'Empty request body' }, { status: 400 });
+            }
+            body = JSON.parse(text);
+        } catch (e) {
+            console.error('[API/HEARTBEAT] Erro ao parsear JSON:', e);
+            return NextResponse.json({ error: 'Invalid JSON input' }, { status: 400 });
+        }
+
         // Log para debug (seguro, sem dados sensíveis)
         console.log(`[API/HEARTBEAT] Payload recebido Sessão: ${body.session_id}, Maquina: ${body.machine_id}`);
 
@@ -30,9 +43,9 @@ export async function POST(req: NextRequest) {
 
         if (!result.success) {
             console.error('[API/HEARTBEAT] Erro de validação Zod:', JSON.stringify(result.error.format(), null, 2));
-            return NextResponse.json({ 
-                error: 'Invalid payload', 
-                details: result.error.format() 
+            return NextResponse.json({
+                error: 'Invalid payload',
+                details: result.error.format()
             }, { status: 400 });
         }
 
@@ -44,9 +57,9 @@ export async function POST(req: NextRequest) {
 
         if (!supabaseUrl || !serviceRoleKey) {
             console.error('[API/HEARTBEAT] ERRO CRÍTICO: Variáveis de ambiente do Supabase não configuradas (SUPABASE_SERVICE_ROLE_KEY faltando?)');
-            return NextResponse.json({ 
-                error: 'Server misconfiguration', 
-                message: 'Database credentials missing check if SUPABASE_SERVICE_ROLE_KEY is set.' 
+            return NextResponse.json({
+                error: 'Server misconfiguration',
+                message: 'Database credentials missing check if SUPABASE_SERVICE_ROLE_KEY is set.'
             }, { status: 500 });
         }
 
@@ -97,7 +110,7 @@ export async function POST(req: NextRequest) {
         // 3. Registrar evento de telemetria (se houver e não for nulo)
         if (event && event.event_type) {
             console.log(`[API/HEARTBEAT] Registrando evento: ${event.event_type}`);
-            
+
             const { error: eventError } = await supabaseAdmin
                 .from('telemetry_events')
                 .insert({
@@ -123,26 +136,26 @@ export async function POST(req: NextRequest) {
         // 4. Atualizar health check da instalação (Dispositivo)
         // Isso garante que o dashboard mostre o status "Online" corretamente
         if (machine_id) {
-             const { error: deviceError } = await supabaseAdmin
+            const { error: deviceError } = await supabaseAdmin
                 .from('installations') // Assumindo que a tabela de dispositivos é 'installations' baseado no código anterior
-                .update({ 
+                .update({
                     last_heartbeat: new Date().toISOString()
                 })
                 .eq('id', machine_id); // Atualiza pelo ID da máquina
-                
-             if (deviceError) {
-                 console.error(`[API/HEARTBEAT] Erro ao atualizar instalação: ${deviceError.message}`);
-             } else {
-                 // console.log(`[API/HEARTBEAT] Instalação ${machine_id} atualizada.`);
-             }
+
+            if (deviceError) {
+                console.error(`[API/HEARTBEAT] Erro ao atualizar instalação: ${deviceError.message}`);
+            } else {
+                // console.log(`[API/HEARTBEAT] Instalação ${machine_id} atualizada.`);
+            }
         }
 
         return NextResponse.json({ success: true, timestamp: new Date().toISOString() });
 
     } catch (err: any) {
         console.error('[API/HEARTBEAT] Exceção não tratada:', err);
-        return NextResponse.json({ 
-            error: 'Internal Server Error', 
+        return NextResponse.json({
+            error: 'Internal Server Error',
             message: err.message || 'Unknown error'
         }, { status: 500 });
     }

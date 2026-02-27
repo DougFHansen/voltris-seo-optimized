@@ -1,101 +1,65 @@
 'use client';
 
 import Link from 'next/link';
-import {
-    Zap,
-    Shield,
-    TrendingUp,
-    Wrench,
-    Clock,
-    Star,
-    CheckCircle2,
-    Monitor,
-    Cpu,
-    Database,
-    Gamepad2,
-    Download,
-    ArrowRight,
-    ChevronRight,
-    MessageCircle,
-    Phone
-} from 'lucide-react';
+import { Phone, MapPin, CheckCircle2, Star, Clock, Shield, CreditCard, MessageCircle, Zap, Wrench, Monitor, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
 import dynamic from 'next/dynamic';
 
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
-export default function OtimizacaoPcClient() {
-    const benefits = [
+export default function FormatarWindowsClient() {
+    const faqItems = [
         {
-            icon: <Zap className="w-8 h-8 text-blue-500" />,
-            title: "Aumento de Velocidade",
-            description: "Seu PC vai iniciar e abrir programas até 3x mais rápido"
+            question: "Quanto tempo leva a formatação?",
+            answer: "Normalmente entre 2 a 4 horas, dependendo do tamanho do HD/SSD e da quantidade de drivers a serem instalados."
         },
         {
-            icon: <TrendingUp className="w-8 h-8 text-green-500" />,
-            title: "Mais FPS em Jogos",
-            description: "Aumente seu FPS em até 40% com otimizações específicas"
+            question: "Perco meus arquivos durante a formatação?",
+            answer: "Sim, a formatação apaga todos os dados do disco. Por isso, fazemos cópia de segurança antes do processo."
         },
         {
-            icon: <Shield className="w-8 h-8 text-purple-500" />,
-            title: "Sistema Mais Seguro",
-            description: "Remoção de ameaças e configurações de segurança otimizadas"
+            question: "Vocês reinstalam meus programas?",
+            answer: "Instalamos os programas essenciais. Lista completa de programas pode ser combinada previamente."
         },
         {
-            icon: <Clock className="w-8 h-8 text-cyan-500" />,
-            title: "Mais Produtividade",
-            description: "Tarefas diárias executadas mais rapidamente, economizando tempo"
+            question: "Oferecem garantia do serviço?",
+            answer: "Sim, oferecemos 30 dias de garantia contra problemas relacionados à formatação."
         }
     ];
 
-    const services = [
+    const pricingPlans = [
         {
-            icon: <Gamepad2 className="w-8 h-8 text-blue-500" />,
-            title: "Otimização para Jogos",
-            description: "Aumente FPS, reduza input lag e melhore a experiência de gaming",
-            includes: ["Ajustes de GPU", "Configurações de rede", "Otimização de RAM", "Redução de stutter"]
+            name: "Formatação Básica",
+            price: "R$ 120",
+            features: [
+                "Instalação limpa do Windows",
+                "Atualizações essenciais",
+                "Principais drivers",
+                "Antivirus básico"
+            ]
         },
         {
-            icon: <Monitor className="w-8 h-8 text-green-500" />,
-            title: "Otimização de Sistema",
-            description: "Acelere inicialização, abertura de programas e navegação",
-            includes: ["Limpeza de sistema", "Desfragmentação", "Remoção de bloatware", "Configurações de energia"]
+            name: "Formatação Premium",
+            price: "R$ 180",
+            features: [
+                "Tudo da básica +",
+                "Todos os drivers atualizados",
+                "Otimização de sistema",
+                "Programas solicitados",
+                "Configurações personalizadas"
+            ],
+            popular: true
         },
         {
-            icon: <Cpu className="w-8 h-8 text-purple-500" />,
-            title: "Otimização Profissional",
-            description: "Para empresas e usuários avançados com necessidades específicas",
-            includes: ["Configurações avançadas", "Otimização de rede", "Personalização", "Suporte técnico"]
-        },
-        {
-            icon: <Database className="w-8 h-8 text-cyan-500" />,
-            title: "Otimização de Banco de Dados",
-            description: "Para estações de trabalho com softwares pesados",
-            includes: ["Ajustes de I/O", "Otimização de cache", "Configurações de memória", "Desempenho de disco"]
-        }
-    ];
-
-    const testimonials = [
-        {
-            name: "João Silva",
-            role: "Designer Gráfico",
-            text: "Meu PC estava horrível, com programas travando. Depois da otimização, tudo roda perfeitamente!",
-            rating: 5,
-            color: "from-[#FF4B6B] to-[#FF8F6B]"
-        },
-        {
-            name: "Patrícia Costa",
-            role: "Streammer",
-            text: "Minha transmissão melhorou absurdamente. Agora tenho mais FPS e menos problemas de conexão.",
-            rating: 5,
-            color: "from-[#8B31FF] to-[#B96BFF]"
-        },
-        {
-            name: "Roberto Oliveira",
-            role: "Empresário",
-            text: "Contratei para otimizar os PCs da empresa. A produtividade aumentou consideravelmente.",
-            rating: 5,
-            color: "from-[#31A8FF] to-[#6BA8FF]"
+            name: "Formatação Gamer",
+            price: "R$ 250",
+            features: [
+                "Tudo da premium +",
+                "Drivers para jogos",
+                "Otimização para gaming",
+                "Programas de streaming",
+                "Configurações para FPS"
+            ]
         }
     ];
 
@@ -114,32 +78,31 @@ export default function OtimizacaoPcClient() {
                         <div>
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 border border-[#31A8FF]/30 backdrop-blur-md mb-4">
                                 <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">Otimização Profissional de PC</span>
+                                <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">Formatação Profissional de Windows</span>
                             </div>
 
                             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans mb-6">
-                                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Otimização de PC Windows</span> <br className="hidden lg:block" />
-                                <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">Máxima Performance para Jogos, Trabalho e Empresas</span>
+                                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Formatação de Windows</span> <br className="hidden lg:block" />
+                                <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">Profissional e Otimizada em Todo Brasil</span>
                             </h1>
 
                             <p className="text-lg text-slate-300 mb-8 leading-relaxed">
-                                Serviço profissional de otimização de sistema Windows. Aumentamos o FPS em jogos,
-                                reduzimos o input lag e aceleramos o desempenho geral para profissionais e empresas em todo o Brasil.
+                                Instalação limpa, drivers atualizados e configurações otimizadas. Seu PC como novo em folha em poucas horas com nosso serviço especializado de formatação Windows.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-8">
                                 <Link
-                                    href="/todos-os-servicos/otimizacao-pc"
+                                    href="/todos-os-servicos/formatacao-windows"
                                     className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
                                 >
-                                    <span className="mr-2">Solicitar Otimização</span>
+                                    <span className="mr-2">Solicitar Orçamento</span>
                                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                                 <Link
                                     href="https://wa.me/5511996716235"
                                     className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
                                 >
-                                    <MessageCircle className="mr-2" />
+                                    <MessageCircle className="mr-2" size={20} />
                                     Falar no WhatsApp
                                 </Link>
                             </div>
@@ -147,15 +110,15 @@ export default function OtimizacaoPcClient() {
                             <div className="flex flex-wrap gap-6 text-sm text-gray-400">
                                 <div className="flex items-center gap-2">
                                     <CheckCircle2 className="text-green-500" size={20} />
-                                    <span>Técnicos Certificados</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-green-500" size={20} />
                                     <span>Garantia de 30 dias</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <CheckCircle2 className="text-green-500" size={20} />
-                                    <span>Resultados Comprovados</span>
+                                    <span>Sem surpresas</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle2 className="text-green-500" size={20} />
+                                    <span>Orçamento em minutos</span>
                                 </div>
                             </div>
                         </div>
@@ -165,27 +128,26 @@ export default function OtimizacaoPcClient() {
                                 <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg h-64 flex items-center justify-center">
                                     <div className="text-center">
                                         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] mb-4">
-                                            <Zap className="w-8 h-8 text-white" />
+                                            <Wrench className="w-8 h-8 text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-white mb-2">Otimização de PC</h3>
-                                        <p className="text-gray-300 text-sm">Aumente velocidade e desempenho do seu computador</p>
+                                        <h3 className="text-xl font-bold text-white mb-2">Processo de Formatação</h3>
+                                        <p className="text-gray-300 text-sm">Instalação limpa e configuração otimizada do Windows</p>
                                     </div>
                                 </div>
-                                <div className="mt-6 grid grid-cols-3 gap-4">
-                                    <div className="flex flex-col items-center text-center">
-                                        <TrendingUp className="text-[#00FF94] mb-2" size={24} />
-                                        <p className="font-bold text-white">+3x</p>
-                                        <p className="text-xs text-slate-400">Velocidade</p>
+                                <div className="mt-6 grid grid-cols-2 gap-4">
+                                    <div className="flex items-center gap-3">
+                                        <Clock className="text-[#31A8FF]" size={24} />
+                                        <div>
+                                            <p className="font-bold text-white">Tempo Médio</p>
+                                            <p className="text-sm text-slate-400">2-4 horas</p>
+                                        </div>
                                     </div>
-                                    <div className="flex flex-col items-center text-center">
-                                        <Zap className="text-[#EAB308] mb-2" size={24} />
-                                        <p className="font-bold text-white">+40%</p>
-                                        <p className="text-xs text-slate-400">FPS</p>
-                                    </div>
-                                    <div className="flex flex-col items-center text-center">
-                                        <Clock className="text-[#31A8FF] mb-2" size={24} />
-                                        <p className="font-bold text-white">-60%</p>
-                                        <p className="text-xs text-slate-400">Tempo de inicialização</p>
+                                    <div className="flex items-center gap-3">
+                                        <Shield className="text-[#00FF94]" size={24} />
+                                        <div>
+                                            <p className="font-bold text-white">Garantia</p>
+                                            <p className="text-sm text-slate-400">30 dias</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -194,14 +156,14 @@ export default function OtimizacaoPcClient() {
                 </div>
             </section>
 
-            {/* Stats Section */}
+            {/* Trust Indicators */}
             <section className="py-16 bg-[#050510] relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         <div>
                             <div className="text-3xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">500+</div>
-                            <p className="text-slate-400">PCs Otimizados</p>
+                            <p className="text-slate-400">Computadores Formatados</p>
                         </div>
                         <div>
                             <div className="text-3xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text">98%</div>
@@ -219,84 +181,66 @@ export default function OtimizacaoPcClient() {
                 </div>
             </section>
 
-            {/* Benefits Section */}
+            {/* Pricing Section */}
             <section className="py-20 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blur-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
                             <span className="w-2 h-2 rounded-full bg-[#31A8FF] animate-pulse"></span>
-                            <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Benefícios da Otimização</span>
+                            <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Planos de Formatação</span>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            Transforme seu PC com nossa <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização Profissional</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight tracking-tight">
+                            Escolha o plano ideal para sua <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Formatação Windows</span>
                         </h2>
                         <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                            Resultados comprovados para diferentes necessidades
+                            Planos personalizados para diferentes necessidades e perfis de uso
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-                        {benefits.map((benefit, index) => (
-                            <div key={index} className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                <div className="relative z-10 text-center">
-                                    <div className="mx-auto mb-6">
-                                        <div className="w-16 h-16 rounded-xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mx-auto group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                            <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
-                                                {benefit.icon}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <h3 className="text-xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">{benefit.title}</h3>
-                                    <p className="text-slate-400">{benefit.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* Services Section */}
-            <section className="py-20 bg-[#050510] px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
-                <div className="max-w-6xl mx-auto relative z-10">
-                    <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            Tipos de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização</span>
-                        </h2>
-                        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                            Serviços específicos para diferentes necessidades
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-                        {services.map((service, index) => (
-                            <div key={index} className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                    <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+                        {pricingPlans.map((plan, index) => (
+                            <div
+                                key={index}
+                                className={`group relative bg-[#0A0A0F] border ${plan.popular ? 'border-[#31A8FF]' : 'border-white/5'
+                                    } hover:border-[#31A8FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}
+                            >
                                 <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
-                                    <div className="flex items-start gap-4">
-                                        <div className="mt-1">
-                                            <div className="w-12 h-12 rounded-xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                                <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
-                                                    {service.icon}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-2xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">{service.title}</h3>
-                                            <p className="text-slate-400 mb-4">{service.description}</p>
 
-                                            <ul className="space-y-2">
-                                                {service.includes.map((item, idx) => (
-                                                    <li key={idx} className="flex items-center gap-2">
-                                                        <CheckCircle2 className="text-[#00FF94]" size={16} />
-                                                        <span className="text-sm text-slate-300">{item}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                                    {plan.popular && (
+                                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 border border-[#31A8FF]/30 mb-6">
+                                            <span className="w-2 h-2 rounded-full bg-[#31A8FF] animate-pulse"></span>
+                                            <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Mais Popular</span>
                                         </div>
+                                    )}
+
+                                    <h3 className="text-xl font-bold text-white mb-4 group-hover:text-[#31A8FF] transition-colors">{plan.name}</h3>
+
+                                    <div className="text-4xl font-bold mb-6">
+                                        <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">{plan.price}</span>
                                     </div>
+
+                                    <ul className="space-y-3 mb-8 flex-1">
+                                        {plan.features.map((feature, idx) => (
+                                            <li key={idx} className="flex items-start gap-3">
+                                                <CheckCircle2 className="text-[#00FF94] mt-0.5 flex-shrink-0" size={20} />
+                                                <span className="text-slate-300">{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <Link
+                                        href="#"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            const message = `Olá, gostaria de contratar o plano ${encodeURIComponent(plan.name)} de formatação de Windows`;
+                                            window.open(`https://wa.me/5511996716235?text=${message}`, '_blank');
+                                        }}
+                                        className="w-full py-3 px-6 rounded-lg text-center font-bold transition-all bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#31A8FF]/30 text-white"
+                                    >
+                                        Contratar Agora
+                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -305,15 +249,15 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* Process Section */}
-            <section className="py-20 px-4 relative overflow-hidden">
+            <section className="py-20 bg-[#050510] px-4 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            Nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Processo</span>
+                            Nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Processo de Formatação</span>
                         </h2>
                         <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                            Um processo claro e eficiente para otimizar seu PC
+                            Um processo claro e transparente para sua tranquilidade
                         </p>
                     </div>
 
@@ -322,22 +266,22 @@ export default function OtimizacaoPcClient() {
                             {
                                 step: 1,
                                 title: "Análise Inicial",
-                                description: "Diagnosticamos seu PC para identificar gargalos e problemas"
+                                description: "Diagnosticamos seu PC para identificar necessidades específicas"
                             },
                             {
                                 step: 2,
-                                title: "Planejamento",
-                                description: "Elaboramos um plano personalizado de otimização"
+                                title: "Backup",
+                                description: "Salvamos seus arquivos importantes antes da formatação"
                             },
                             {
                                 step: 3,
-                                title: "Execução",
-                                description: "Aplicamos as otimizações de forma segura e eficiente"
+                                title: "Formatação",
+                                description: "Instalamos o Windows limpo com drivers atualizados"
                             },
                             {
                                 step: 4,
-                                title: "Testes",
-                                description: "Validamos os resultados e garantimos a qualidade"
+                                title: "Finalização",
+                                description: "Testamos o sistema e entregamos seu PC como novo"
                             }
                         ].map((item, index) => (
                             <div key={index} className="text-center group">
@@ -353,7 +297,7 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* Testimonials */}
-            <section className="py-20 bg-[#050510] px-4 relative overflow-hidden">
+            <section className="py-20 px-4 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
@@ -361,12 +305,31 @@ export default function OtimizacaoPcClient() {
                             O Que Nossos Clientes <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Dizem</span>
                         </h2>
                         <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-                            Resultados reais de quem já otimizou seu PC conosco
+                            Histórias reais de satisfação e confiança
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                        {testimonials.map((testimonial, index) => (
+                        {[
+                            {
+                                name: "Carlos Silva",
+                                text: "Meu notebook estava horrível, com vírus e lento. Depois da formatação, voltou a ser como novo!",
+                                rating: 5,
+                                color: "from-[#FF4B6B] to-[#FF8F6B]"
+                            },
+                            {
+                                name: "Ana Costa",
+                                text: "Serviço rápido e profissional. Meu computador agora voa, recomendo demais!",
+                                rating: 5,
+                                color: "from-[#8B31FF] to-[#B96BFF]"
+                            },
+                            {
+                                name: "Pedro Oliveira",
+                                text: "Excelente trabalho, atendimento impecável. Valeu cada centavo investido.",
+                                rating: 5,
+                                color: "from-[#31A8FF] to-[#6BA8FF]"
+                            }
+                        ].map((testimonial, index) => (
                             <div key={index} className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
                                 <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-white/20 transition-all"></div>
 
@@ -384,11 +347,38 @@ export default function OtimizacaoPcClient() {
                                     </div>
                                     <div>
                                         <div className="font-bold text-white text-sm">{testimonial.name}</div>
-                                        <div className="text-xs text-slate-400 uppercase tracking-wider font-medium">{testimonial.role}</div>
                                     </div>
                                 </div>
                             </div>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Contact Section */}
+            <section className="py-20 bg-[#050510] px-4 relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Pronto para formatar seu Windows?</h2>
+                    <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+                        Entre em contato agora e receba um orçamento personalizado em minutos
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Link
+                            href="/todos-os-servicos/formatacao-windows"
+                            className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
+                        >
+                            <span className="mr-2">Solicitar Orçamento</span>
+                            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                        <Link
+                            href="tel:+5511996716235"
+                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
+                        >
+                            <Phone className="mr-2" size={20} />
+                            (11) 99671-6235
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -407,17 +397,17 @@ export default function OtimizacaoPcClient() {
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                        <Link href="/formatar-windows" className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                        <Link href="/otimizacao-pc" className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
                             <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
                                 <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
-                                        <Download className="w-8 h-8" />
+                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#00FF94]">
+                                        <Zap className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Formatação de Windows</h3>
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors">Otimização de PC</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                                    Instalação limpa e configurações otimizadas
+                                    Aumente FPS em jogos e velocidade do sistema
                                 </p>
                                 <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
                                     <span className="text-[#31A8FF] text-sm font-medium">Saiba mais</span>
@@ -436,7 +426,7 @@ export default function OtimizacaoPcClient() {
                                         <Wrench className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Assistência Técnica</h3>
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#8B31FF] transition-colors">Assistência Técnica</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-6">
                                     Reparo de hardware e manutenção preventiva
                                 </p>
@@ -457,7 +447,7 @@ export default function OtimizacaoPcClient() {
                                         <Monitor className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Voltris Optimizer</h3>
+                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors">Voltris Optimizer</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-6">
                                     Software de otimização contínua
                                 </p>
@@ -473,30 +463,17 @@ export default function OtimizacaoPcClient() {
                 </div>
             </section>
 
-            {/* CTA Section */}
+            {/* FAQ Section */}
             <section className="py-20 px-4 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Pronto para otimizar seu PC?</h2>
-                    <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-                        Receba um orçamento personalizado em minutos
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link
-                            href="/todos-os-servicos/otimizacao-pc"
-                            className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
-                        >
-                            <span className="mr-2">Solicitar Otimização</span>
-                            <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                        <Link
-                            href="tel:+5511996716235"
-                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
-                        >
-                            <Phone className="mr-2" />
-                            (11) 99671-6235
-                        </Link>
+                <div className="max-w-4xl mx-auto relative z-10">
+                    <div className="space-y-6">
+                        {faqItems.map((faq, index) => (
+                            <div key={index} className="bg-[#0A0A0F]/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
+                                <h3 className="font-bold text-lg text-white mb-3">{faq.question}</h3>
+                                <p className="text-slate-300" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

@@ -249,10 +249,7 @@ export default function InstalacaoDeProgramasPage() {
                           <span className="text-sm text-slate-400">Taxa única de serviço</span>
                         </div>
                         <button
-                          onClick={() => {
-                            const message = 'Olá, gostaria de contratar o serviço de instalação de programas';
-                            window.open(`https://wa.me/5511996716235?text=${encodeURIComponent(message)}`, '_blank');
-                          }}
+                          onClick={handleContratarAgora}
                           className="px-8 py-3 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#31A8FF]/90 transition-all shadow-lg shadow-[#31A8FF]/20"
                         >
                           Contratar Instalação

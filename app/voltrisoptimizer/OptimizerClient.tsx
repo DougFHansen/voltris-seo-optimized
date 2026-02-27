@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
@@ -91,24 +91,24 @@ export default function OptimizerClient() {
             id: 'gamers',
             title: 'Gamers & Competitivos',
             icon: <MousePointer2 className="w-6 h-6 text-[#00FF94]" />,
-            desc: 'Para quem busca performance extrema. Elimine input lag, otimize o frame-time e garanta a máxima prioridade de hardware para seus jogos.',
-            features: ['Redução de Input Lag', 'Frames Estáveis (1% Lows)', 'Foco em Jogos Competitivos'],
+            desc: 'Para quem busca performance extrema. Elimine input lag, otimize o frame-time e garanta a mÃ¡xima prioridade de hardware para seus jogos.',
+            features: ['ReduÃ§Ã£o de Input Lag', 'Frames EstÃ¡veis (1% Lows)', 'Foco em Jogos Competitivos'],
             color: 'border-[#00FF94]/30'
         },
         {
             id: 'enterprise',
             title: 'Empresas & Startups',
             icon: <Briefcase className="w-6 h-6 text-[#31A8FF]" />,
-            desc: 'Aumente a eficiência operacional. Otimização de frota de PCs para reduzir chamados de TI, acelerar inicialização e fluxos de trabalho.',
-            features: ['Produtividade Aumentada', 'Boot Rápido', 'Estabilidade em Softwares Corporativos'],
+            desc: 'Aumente a eficiÃªncia operacional. OtimizaÃ§Ã£o de frota de PCs para reduzir chamados de TI, acelerar inicializaÃ§Ã£o e fluxos de trabalho.',
+            features: ['Produtividade Aumentada', 'Boot RÃ¡pido', 'Estabilidade em Softwares Corporativos'],
             color: 'border-[#31A8FF]/30'
         },
         {
             id: 'common',
-            title: 'Uso Diário & Home Office',
+            title: 'Uso DiÃ¡rio & Home Office',
             icon: <Laptop className="w-6 h-6 text-[#FF4B6B]" />,
             desc: 'Recupere a velocidade do pc. Ideal para navegar na web, assistir streaming e multitarefas sem os travamentos de um sistema sobrecarregado.',
-            features: ['Sistema Responsivo', 'Navegação Fluida', 'Revitalização de PCs Antigos'],
+            features: ['Sistema Responsivo', 'NavegaÃ§Ã£o Fluida', 'RevitalizaÃ§Ã£o de PCs Antigos'],
             color: 'border-[#FF4B6B]/30'
         }
     ];
@@ -118,46 +118,46 @@ export default function OptimizerClient() {
         {
             icon: <Cpu className="w-8 h-8" />,
             title: 'Gerenciamento de Threads',
-            desc: 'Algoritmo proprietário que ajusta a afinidade de CPU para garantir que processos críticos tenham prioridade absoluta.',
+            desc: 'Algoritmo proprietÃ¡rio que ajusta a afinidade de CPU para garantir que processos crÃ­ticos tenham prioridade absoluta.',
             gradient: 'from-[#FF4B6B] to-[#FF8F4B]'
         },
         {
             icon: <Layers className="w-8 h-8" />,
             title: 'Deep Debloat',
-            desc: 'Remoção cirúrgica de bloatwares e telemetria do Windows que consomem recursos silenciosamente.',
+            desc: 'RemoÃ§Ã£o cirÃºrgica de bloatwares e telemetria do Windows que consomem recursos silenciosamente.',
             gradient: 'from-[#8B31FF] to-[#B070FF]'
         },
         {
             icon: <Wifi className="w-8 h-8" />,
-            title: 'Otimização TCP/IP',
-            desc: 'Ajuste fino da pilha de rede do Windows para reduzir latência, jitter e bufferbloat em conexões.',
+            title: 'OtimizaÃ§Ã£o TCP/IP',
+            desc: 'Ajuste fino da pilha de rede do Windows para reduzir latÃªncia, jitter e bufferbloat em conexÃµes.',
             gradient: 'from-[#31A8FF] to-[#5FC2FF]'
         },
         {
             icon: <Database className="w-8 h-8" />,
-            title: 'Otimização de I/O',
-            desc: 'Priorização de entrada e saída de dados no disco e memória para carregamentos instantâneos.',
+            title: 'OtimizaÃ§Ã£o de I/O',
+            desc: 'PriorizaÃ§Ã£o de entrada e saÃ­da de dados no disco e memÃ³ria para carregamentos instantÃ¢neos.',
             gradient: 'from-[#00E5FF] to-[#00FFCA]'
         },
         {
             icon: <ShieldCheck className="w-8 h-8" />,
-            title: 'Segurança & Privacidade',
-            desc: 'Fortalecimento de políticas de segurança e desativação de rastreadores invasivos do sistema.',
+            title: 'SeguranÃ§a & Privacidade',
+            desc: 'Fortalecimento de polÃ­ticas de seguranÃ§a e desativaÃ§Ã£o de rastreadores invasivos do sistema.',
             gradient: 'from-[#FFD700] to-[#FFAA00]'
         },
         {
             icon: <Settings className="w-8 h-8" />,
             title: 'Perfis Adaptativos',
-            desc: 'Otimizações que se adaptam automaticamente ao hardware detectado (Intel/AMD/NVIDIA).',
+            desc: 'OtimizaÃ§Ãµes que se adaptam automaticamente ao hardware detectado (Intel/AMD/NVIDIA).',
             gradient: 'from-[#FF0055] to-[#FF5588]'
         }
     ];
 
     const stats = [
-        { value: '+40%', label: 'Performance', sub: 'Ganho médio' },
-        { value: '-35%', label: 'Latência', sub: 'Redução de atraso' },
-        { value: '100%', label: 'Segurança', sub: 'Zero coleta de dados' },
-        { value: '24/7', label: 'Estabilidade', sub: 'Uso contínuo' },
+        { value: '+40%', label: 'Performance', sub: 'Ganho mÃ©dio' },
+        { value: '-35%', label: 'LatÃªncia', sub: 'ReduÃ§Ã£o de atraso' },
+        { value: '100%', label: 'SeguranÃ§a', sub: 'Zero coleta de dados' },
+        { value: '24/7', label: 'Estabilidade', sub: 'Uso contÃ­nuo' },
     ];
 
     return (
@@ -192,7 +192,7 @@ export default function OptimizerClient() {
                             <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08] bg-white/[0.01]">
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
-                                    <span className="text-xs font-semibold text-white tracking-wide">Saúde do Sistema</span>
+                                    <span className="text-xs font-semibold text-white tracking-wide">SaÃºde do Sistema</span>
                                 </div>
                                 <span className="text-[10px] font-medium text-emerald-500 px-2 py-0.5 bg-emerald-500/10 rounded-full">Otimizado</span>
                             </div>
@@ -217,7 +217,7 @@ export default function OptimizerClient() {
                                 {/* Latency Row */}
                                 <div className="space-y-1.5">
                                     <div className="flex justify-between items-center text-[11px]">
-                                        <span className="text-slate-400 font-medium">Latência do Sistema</span>
+                                        <span className="text-slate-400 font-medium">LatÃªncia do Sistema</span>
                                         <span className="text-emerald-400 font-mono">{(latencyLoad / 10).toFixed(2)}ms</span>
                                     </div>
                                     <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
@@ -235,7 +235,7 @@ export default function OptimizerClient() {
                                 {/* Meta Stats */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Processos em 2º Plano</div>
+                                        <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Processos em 2Âº Plano</div>
                                         <div className="text-xs text-white font-mono">Otimizando...</div>
                                     </div>
                                     <div>
@@ -266,7 +266,7 @@ export default function OptimizerClient() {
                             <div className="p-5 space-y-5">
                                 {/* Subtitle */}
                                 <div className="flex items-center justify-between pb-2">
-                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">Otimização em Tempo Real</span>
+                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">OtimizaÃ§Ã£o em Tempo Real</span>
                                     <div className="flex gap-0.5">
                                         {[1, 2, 3].map(i => <div key={i} className="w-[2px] h-2 bg-emerald-500/50 rounded-full" style={{ animationDelay: i * 0.1 + 's' }}></div>)}
                                     </div>
@@ -280,20 +280,20 @@ export default function OptimizerClient() {
                                     </div>
 
                                     <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
-                                        <span className="text-[11px] text-slate-400">Alocação de Rec.</span>
+                                        <span className="text-[11px] text-slate-400">AlocaÃ§Ã£o de Rec.</span>
                                         <span className="text-xs font-mono text-[#31A8FF]">CPU Prioridade Alta</span>
                                     </div>
 
                                     <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
-                                        <span className="text-[11px] text-slate-400">Índice de Estabilidade</span>
+                                        <span className="text-[11px] text-slate-400">Ãndice de Estabilidade</span>
                                         <span className="text-xs font-mono text-emerald-400">99.9%</span>
                                     </div>
                                 </div>
 
                                 {/* Footer Mode */}
                                 <div className="pt-2 border-t border-white/[0.06] flex justify-between items-center">
-                                    <span className="text-[10px] text-slate-500">Modo de Otimização</span>
-                                    <span className="text-[10px] font-bold text-white px-2 py-0.5 border border-white/10 rounded">LATÊNCIA MÍNIMA</span>
+                                    <span className="text-[10px] text-slate-500">Modo de OtimizaÃ§Ã£o</span>
+                                    <span className="text-[10px] font-bold text-white px-2 py-0.5 border border-white/10 rounded">LATÃŠNCIA MÃNIMA</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -327,16 +327,16 @@ export default function OptimizerClient() {
                             </h1>
 
                             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light mb-12 leading-relaxed tracking-wide">
-                                <span className="text-white font-medium">Performance Engineering</span> para quem exige o máximo.
+                                <span className="text-white font-medium">Performance Engineering</span> para quem exige o mÃ¡ximo.
                                 <br className="hidden md:block" />
-                                Otimização inteligente para Gamers, Empresas e High-End Workstations.
+                                OtimizaÃ§Ã£o inteligente para Gamers, Empresas e High-End Workstations.
                             </p>
 
                             <div className="flex flex-col items-center gap-3 w-full max-w-lg mx-auto">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                    <span className="text-xs text-slate-500 font-medium">VersÃ£o Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.0.5
+                                        v1.0.0.6
                                     </span>
                                 </div>
 
@@ -353,7 +353,7 @@ export default function OptimizerClient() {
                                             href="/voltris-optimizer"
                                             className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
                                         >
-                                            Versão para todos os sistemas
+                                            VersÃ£o para todos os sistemas
                                         </Link>
                                     </div>
 
@@ -373,9 +373,9 @@ export default function OptimizerClient() {
                 <section className="py-32 relative z-10 bg-[#050510]">
                     <div className="container mx-auto px-4">
                         <div className="text-center mb-20">
-                            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Uma Plataforma. Múltiplos Perfis.</h2>
+                            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Uma Plataforma. MÃºltiplos Perfis.</h2>
                             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-                                O Voltris Optimizer identifica seu perfil e adapta as otimizações de Kernel para entregar o que você precisa.
+                                O Voltris Optimizer identifica seu perfil e adapta as otimizaÃ§Ãµes de Kernel para entregar o que vocÃª precisa.
                             </p>
                         </div>
 
@@ -431,13 +431,13 @@ export default function OptimizerClient() {
                     <div className="container mx-auto px-4">
                         <div className="flex flex-col md:flex-row items-end justify-between mb-20 max-w-7xl mx-auto gap-8">
                             <div className="max-w-2xl">
-                                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Engenharia Sob o Capô</h2>
+                                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Engenharia Sob o CapÃ´</h2>
                                 <p className="text-slate-400 text-lg leading-relaxed">
-                                    Segurança e Performance não são opostos. O Voltris atua em camadas profundas do Windows (Registry, Services, Kernel) para desbloquear hardware adormecido de forma segura.
+                                    SeguranÃ§a e Performance nÃ£o sÃ£o opostos. O Voltris atua em camadas profundas do Windows (Registry, Services, Kernel) para desbloquear hardware adormecido de forma segura.
                                 </p>
                             </div>
                             <Link href="/voltrisoptimizer/documentacao" className="text-[#31A8FF] font-bold hover:text-white transition-colors flex items-center gap-2">
-                                Documentação Técnica <ChevronDown className="-rotate-90 w-4 h-4" />
+                                DocumentaÃ§Ã£o TÃ©cnica <ChevronDown className="-rotate-90 w-4 h-4" />
                             </Link>
                         </div>
 
@@ -472,15 +472,15 @@ export default function OptimizerClient() {
 
                             <div className="text-center mb-16">
                                 <h2 className="text-3xl font-bold text-white mb-4">Por que a Elite Escolhe Voltris?</h2>
-                                <h3 className="text-xl font-medium text-slate-400 mb-2">Comparação técnica com "otimizadores" comuns de mercado</h3>
+                                <h3 className="text-xl font-medium text-slate-400 mb-2">ComparaÃ§Ã£o tÃ©cnica com "otimizadores" comuns de mercado</h3>
                             </div>
 
                             <div className="space-y-1">
                                 {[
-                                    { feat: 'Engenharia de Performance Real (Não só "Limpeza")', us: true, others: false },
-                                    { feat: 'Otimização para Softwares Corporativos & ERPs', us: true, others: false },
+                                    { feat: 'Engenharia de Performance Real (NÃ£o sÃ³ "Limpeza")', us: true, others: false },
+                                    { feat: 'OtimizaÃ§Ã£o para Softwares Corporativos & ERPs', us: true, others: false },
                                     { feat: 'Zero Coleta de Dados/Spyware (Privacidade)', us: true, others: false },
-                                    { feat: 'Backup Automático (Ponto de Restauração)', us: true, others: true },
+                                    { feat: 'Backup AutomÃ¡tico (Ponto de RestauraÃ§Ã£o)', us: true, others: true },
                                     { feat: 'Suporte Humano Dedicado', us: true, others: false },
                                     { feat: 'Ajustes Seguros de Kernel (Registry)', us: true, others: false },
                                 ].map((row, i) => (
@@ -514,10 +514,10 @@ export default function OptimizerClient() {
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-16">
                                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                    Otimização de PC para <span className="bg-gradient-to-r from-[#00FF94] to-[#31A8FF] text-transparent bg-clip-text">Gamers e Streamers</span>
+                                    OtimizaÃ§Ã£o de PC para <span className="bg-gradient-to-r from-[#00FF94] to-[#31A8FF] text-transparent bg-clip-text">Gamers e Streamers</span>
                                 </h2>
                                 <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
-                                    O primeiro software brasileiro SaaS com controle remoto de otimização. Aumente FPS, reduza lag e elimine travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite.
+                                    O primeiro software brasileiro SaaS com controle remoto de otimizaÃ§Ã£o. Aumente FPS, reduza lag e elimine travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite.
                                 </p>
                             </div>
 
@@ -532,10 +532,10 @@ export default function OptimizerClient() {
                                     </p>
                                     <ul className="space-y-3">
                                         {[
-                                            'Redução de lag durante transmissões ao vivo',
-                                            'Otimização específica para OBS Studio',
-                                            'Melhor desempenho em streaming simultâneo',
-                                            'Priorização de processos de captura'
+                                            'ReduÃ§Ã£o de lag durante transmissÃµes ao vivo',
+                                            'OtimizaÃ§Ã£o especÃ­fica para OBS Studio',
+                                            'Melhor desempenho em streaming simultÃ¢neo',
+                                            'PriorizaÃ§Ã£o de processos de captura'
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
                                                 <CheckCircle2 className="w-5 h-5 text-[#00FF94] shrink-0 mt-0.5" />
@@ -551,14 +551,14 @@ export default function OptimizerClient() {
                                         Para Gamers Competitivos
                                     </h3>
                                     <p className="text-slate-400 mb-6 leading-relaxed">
-                                        Maximize seu potencial competitivo com otimizações que reduzem input lag e garantem frames estáveis nos momentos críticos.
+                                        Maximize seu potencial competitivo com otimizaÃ§Ãµes que reduzem input lag e garantem frames estÃ¡veis nos momentos crÃ­ticos.
                                     </p>
                                     <ul className="space-y-3">
                                         {[
                                             'Aumento de FPS em jogos competitivos',
-                                            'Redução de input lag e latência de rede',
+                                            'ReduÃ§Ã£o de input lag e latÃªncia de rede',
                                             'Estabilidade de frame time (1% lows)',
-                                            'Otimização para jogos online e eSports'
+                                            'OtimizaÃ§Ã£o para jogos online e eSports'
                                         ].map((item, i) => (
                                             <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
                                                 <CheckCircle2 className="w-5 h-5 text-[#FF4B6B] shrink-0 mt-0.5" />
@@ -572,10 +572,10 @@ export default function OptimizerClient() {
                             <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8">
                                 <h3 className="text-xl font-bold text-white mb-4">Como Melhorar FPS no Windows 10 e 11</h3>
                                 <p className="text-slate-400 leading-relaxed mb-4">
-                                    O VOLTRIS OPTIMIZER utiliza técnicas avançadas de otimização de kernel do Windows para liberar recursos do sistema e direcionar toda a potência do hardware para seus jogos. Diferente de programas convencionais de limpeza, nossa tecnologia atua em nível profundo do sistema operacional.
+                                    O VOLTRIS OPTIMIZER utiliza tÃ©cnicas avanÃ§adas de otimizaÃ§Ã£o de kernel do Windows para liberar recursos do sistema e direcionar toda a potÃªncia do hardware para seus jogos. Diferente de programas convencionais de limpeza, nossa tecnologia atua em nÃ­vel profundo do sistema operacional.
                                 </p>
                                 <p className="text-slate-400 leading-relaxed">
-                                    Ideal para quem busca <strong className="text-white">otimizar PC para jogos</strong>, <strong className="text-white">melhorar desempenho no Windows</strong>, <strong className="text-white">limpar memória RAM automaticamente</strong> e <strong className="text-white">deixar o computador mais rápido</strong> sem precisar fazer upgrade de hardware.
+                                    Ideal para quem busca <strong className="text-white">otimizar PC para jogos</strong>, <strong className="text-white">melhorar desempenho no Windows</strong>, <strong className="text-white">limpar memÃ³ria RAM automaticamente</strong> e <strong className="text-white">deixar o computador mais rÃ¡pido</strong> sem precisar fazer upgrade de hardware.
                                 </p>
                             </div>
                         </div>
@@ -590,23 +590,23 @@ export default function OptimizerClient() {
                                 <div>
                                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
                                         <Briefcase className="w-3 h-3 text-[#31A8FF]" />
-                                        <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Solução Enterprise</span>
+                                        <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">SoluÃ§Ã£o Enterprise</span>
                                     </div>
                                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                        Otimização Remota de <span className="bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">Computadores Corporativos</span>
+                                        OtimizaÃ§Ã£o Remota de <span className="bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">Computadores Corporativos</span>
                                     </h2>
                                     <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-                                        Primeira plataforma SaaS brasileira de gerenciamento remoto de performance para empresas. Otimize toda sua frota de computadores de qualquer lugar do mundo através do painel web.
+                                        Primeira plataforma SaaS brasileira de gerenciamento remoto de performance para empresas. Otimize toda sua frota de computadores de qualquer lugar do mundo atravÃ©s do painel web.
                                     </p>
-                                    
+
                                     <div className="space-y-4 mb-8">
                                         <div className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#31A8FF]/20 transition-all">
                                             <div className="w-10 h-10 rounded-lg bg-[#31A8FF]/10 flex items-center justify-center shrink-0">
                                                 <BarChart3 className="w-5 h-5 text-[#31A8FF]" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold mb-1">Gestão de Performance via Nuvem</h4>
-                                                <p className="text-sm text-slate-400">Monitore e otimize máquinas corporativas remotamente através do dashboard web</p>
+                                                <h4 className="text-white font-bold mb-1">GestÃ£o de Performance via Nuvem</h4>
+                                                <p className="text-sm text-slate-400">Monitore e otimize mÃ¡quinas corporativas remotamente atravÃ©s do dashboard web</p>
                                             </div>
                                         </div>
 
@@ -615,8 +615,8 @@ export default function OptimizerClient() {
                                                 <Lock className="w-5 h-5 text-[#8B31FF]" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold mb-1">Software SaaS de Otimização Empresarial</h4>
-                                                <p className="text-sm text-slate-400">Tecnologia inovadora no Brasil: controle total via web sem necessidade de acesso físico</p>
+                                                <h4 className="text-white font-bold mb-1">Software SaaS de OtimizaÃ§Ã£o Empresarial</h4>
+                                                <p className="text-sm text-slate-400">Tecnologia inovadora no Brasil: controle total via web sem necessidade de acesso fÃ­sico</p>
                                             </div>
                                         </div>
 
@@ -625,8 +625,8 @@ export default function OptimizerClient() {
                                                 <Activity className="w-5 h-5 text-[#FF4B6B]" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold mb-1">Controle de Desempenho de Máquinas Corporativas</h4>
-                                                <p className="text-sm text-slate-400">Reduza chamados de TI e aumente produtividade com otimização preventiva</p>
+                                                <h4 className="text-white font-bold mb-1">Controle de Desempenho de MÃ¡quinas Corporativas</h4>
+                                                <p className="text-sm text-slate-400">Reduza chamados de TI e aumente produtividade com otimizaÃ§Ã£o preventiva</p>
                                             </div>
                                         </div>
                                     </div>
@@ -635,13 +635,13 @@ export default function OptimizerClient() {
                                 <div className="relative">
                                     <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[80px] rounded-full"></div>
                                     <div className="relative bg-[#0A0A0F] border border-white/5 rounded-3xl p-8">
-                                        <h3 className="text-2xl font-bold text-white mb-6">Benefícios Corporativos</h3>
+                                        <h3 className="text-2xl font-bold text-white mb-6">BenefÃ­cios Corporativos</h3>
                                         <div className="space-y-6">
                                             {[
-                                                { title: 'Redução de Custos com TI', desc: 'Menos chamados técnicos e maior vida útil do hardware' },
-                                                { title: 'Produtividade Aumentada', desc: 'Colaboradores com máquinas rápidas e responsivas' },
-                                                { title: 'Gestão Centralizada', desc: 'Controle toda frota de PCs através de um único painel' },
-                                                { title: 'Tecnologia Brasileira', desc: 'Primeiro software SaaS nacional com controle remoto de otimização' }
+                                                { title: 'ReduÃ§Ã£o de Custos com TI', desc: 'Menos chamados tÃ©cnicos e maior vida Ãºtil do hardware' },
+                                                { title: 'Produtividade Aumentada', desc: 'Colaboradores com mÃ¡quinas rÃ¡pidas e responsivas' },
+                                                { title: 'GestÃ£o Centralizada', desc: 'Controle toda frota de PCs atravÃ©s de um Ãºnico painel' },
+                                                { title: 'Tecnologia Brasileira', desc: 'Primeiro software SaaS nacional com controle remoto de otimizaÃ§Ã£o' }
                                             ].map((benefit, i) => (
                                                 <div key={i} className="flex items-start gap-3">
                                                     <div className="w-6 h-6 rounded-full bg-[#31A8FF]/20 flex items-center justify-center shrink-0 mt-1">
@@ -661,7 +661,7 @@ export default function OptimizerClient() {
                     </div>
                 </section>
 
-                {/* --- SEO SECTION: PARA USUÁRIOS COMUNS --- */}
+                {/* --- SEO SECTION: PARA USUÃRIOS COMUNS --- */}
                 <section className="py-32 relative z-10 bg-[#050510]">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto">
@@ -671,13 +671,13 @@ export default function OptimizerClient() {
                                     <span className="text-xs font-bold text-[#FF4B6B] tracking-widest uppercase">Controle Remoto via Web</span>
                                 </div>
                                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                    PC Lento? <span className="bg-gradient-to-r from-[#FF4B6B] to-[#FF8F6B] text-transparent bg-clip-text">Solução Definitiva</span>
+                                    PC Lento? <span className="bg-gradient-to-r from-[#FF4B6B] to-[#FF8F6B] text-transparent bg-clip-text">SoluÃ§Ã£o Definitiva</span>
                                 </h2>
                                 <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed mb-4">
-                                    Programa para deixar PC mais rápido e otimizar computador automaticamente. Ideal para uso doméstico, home office e navegação diária.
+                                    Programa para deixar PC mais rÃ¡pido e otimizar computador automaticamente. Ideal para uso domÃ©stico, home office e navegaÃ§Ã£o diÃ¡ria.
                                 </p>
                                 <p className="text-base text-slate-500 max-w-2xl mx-auto">
-                                    Execute todas as otimizações remotamente de qualquer lugar do mundo através do painel web.
+                                    Execute todas as otimizaÃ§Ãµes remotamente de qualquer lugar do mundo atravÃ©s do painel web.
                                 </p>
                             </div>
 
@@ -685,57 +685,57 @@ export default function OptimizerClient() {
                                 {[
                                     {
                                         IconComponent: Zap,
-                                        title: 'Otimização Automática',
-                                        desc: 'Auto otimização completa do sistema com um clique. Acelera inicialização, navegação e abertura de programas.',
+                                        title: 'OtimizaÃ§Ã£o AutomÃ¡tica',
+                                        desc: 'Auto otimizaÃ§Ã£o completa do sistema com um clique. Acelera inicializaÃ§Ã£o, navegaÃ§Ã£o e abertura de programas.',
                                         iconClass: 'text-[#FF4B6B]',
                                         bgGlow: 'bg-[#FF4B6B]/20'
                                     },
                                     {
                                         IconComponent: Database,
-                                        title: 'Otimização de RAM',
-                                        desc: 'Liberação inteligente de memória RAM que mantém seu computador responsivo mesmo com múltiplos programas abertos.',
+                                        title: 'OtimizaÃ§Ã£o de RAM',
+                                        desc: 'LiberaÃ§Ã£o inteligente de memÃ³ria RAM que mantÃ©m seu computador responsivo mesmo com mÃºltiplos programas abertos.',
                                         iconClass: 'text-[#8B31FF]',
                                         bgGlow: 'bg-[#8B31FF]/20'
                                     },
                                     {
                                         IconComponent: Activity,
                                         title: 'Limpeza de Sistema',
-                                        desc: 'Remove arquivos temporários, cache e lixo do sistema para liberar espaço e melhorar desempenho.',
+                                        desc: 'Remove arquivos temporÃ¡rios, cache e lixo do sistema para liberar espaÃ§o e melhorar desempenho.',
                                         iconClass: 'text-[#31A8FF]',
                                         bgGlow: 'bg-[#31A8FF]/20'
                                     },
                                     {
                                         IconComponent: Wifi,
-                                        title: 'Otimização de Rede',
-                                        desc: 'Ajustes TCP/IP para reduzir latência, ping e melhorar velocidade de conexão em jogos online.',
+                                        title: 'OtimizaÃ§Ã£o de Rede',
+                                        desc: 'Ajustes TCP/IP para reduzir latÃªncia, ping e melhorar velocidade de conexÃ£o em jogos online.',
                                         iconClass: 'text-[#00E5FF]',
                                         bgGlow: 'bg-[#00E5FF]/20'
                                     },
                                     {
                                         IconComponent: Brain,
                                         title: 'Modo Gamer Inteligente',
-                                        desc: 'IA adaptativa que prioriza recursos para jogos, desativa processos desnecessários e maximiza FPS automaticamente.',
+                                        desc: 'IA adaptativa que prioriza recursos para jogos, desativa processos desnecessÃ¡rios e maximiza FPS automaticamente.',
                                         iconClass: 'text-[#FFD700]',
                                         bgGlow: 'bg-[#FFD700]/20'
                                     },
                                     {
                                         IconComponent: ShieldCheck,
-                                        title: 'Ponto de Restauração',
-                                        desc: 'Cria backup automático do sistema antes de otimizações para garantir segurança total.',
+                                        title: 'Ponto de RestauraÃ§Ã£o',
+                                        desc: 'Cria backup automÃ¡tico do sistema antes de otimizaÃ§Ãµes para garantir seguranÃ§a total.',
                                         iconClass: 'text-[#00FF94]',
                                         bgGlow: 'bg-[#00FF94]/20'
                                     },
                                     {
                                         IconComponent: Gauge,
                                         title: 'Plano de Energia',
-                                        desc: 'Configura perfil de alto desempenho para extrair máxima potência do hardware.',
+                                        desc: 'Configura perfil de alto desempenho para extrair mÃ¡xima potÃªncia do hardware.',
                                         iconClass: 'text-[#FF6B9D]',
                                         bgGlow: 'bg-[#FF6B9D]/20'
                                     },
                                     {
                                         IconComponent: Cpu,
-                                        title: 'Análise de Sistema',
-                                        desc: 'Diagnóstico completo do PC identificando gargalos e problemas de performance.',
+                                        title: 'AnÃ¡lise de Sistema',
+                                        desc: 'DiagnÃ³stico completo do PC identificando gargalos e problemas de performance.',
                                         iconClass: 'text-[#9B59B6]',
                                         bgGlow: 'bg-[#9B59B6]/20'
                                     },
@@ -760,7 +760,7 @@ export default function OptimizerClient() {
                                         >
                                             {/* Glow Effect on Hover */}
                                             <div className={`absolute -inset-1 ${item.bgGlow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
-                                            
+
                                             {/* Content */}
                                             <div className="relative z-10">
                                                 <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
@@ -786,10 +786,10 @@ export default function OptimizerClient() {
                                     <div>
                                         <h3 className="text-3xl font-bold text-white mb-4">Programa para Melhorar Desempenho do Windows</h3>
                                         <p className="text-slate-400 leading-relaxed mb-6">
-                                            O VOLTRIS OPTIMIZER é a solução completa para quem busca <strong className="text-white">otimizar computador automaticamente</strong> sem complicação. Nossa tecnologia identifica e resolve problemas de lentidão, travamentos e alto consumo de recursos.
+                                            O VOLTRIS OPTIMIZER Ã© a soluÃ§Ã£o completa para quem busca <strong className="text-white">otimizar computador automaticamente</strong> sem complicaÃ§Ã£o. Nossa tecnologia identifica e resolve problemas de lentidÃ£o, travamentos e alto consumo de recursos.
                                         </p>
                                         <p className="text-slate-400 leading-relaxed">
-                                            Diferente de outros programas, não apenas limpamos arquivos temporários - nós reconfiguramos o Windows para extrair máxima performance do seu hardware, seja ele novo ou antigo.
+                                            Diferente de outros programas, nÃ£o apenas limpamos arquivos temporÃ¡rios - nÃ³s reconfiguramos o Windows para extrair mÃ¡xima performance do seu hardware, seja ele novo ou antigo.
                                         </p>
                                     </div>
                                     <div className="bg-[#0A0A0F] border border-white/5 rounded-xl p-6">
@@ -798,7 +798,7 @@ export default function OptimizerClient() {
                                             {[
                                                 'PC lento para iniciar',
                                                 'Travamentos constantes',
-                                                'Alto uso de memória RAM',
+                                                'Alto uso de memÃ³ria RAM',
                                                 'Programas demorando para abrir',
                                                 'Navegador lento e travando',
                                                 'Sistema operacional pesado'
@@ -818,7 +818,7 @@ export default function OptimizerClient() {
                     </div>
                 </section>
 
-                {/* --- SEO SECTION: TECNOLOGIA E INOVAÇÃO --- */}
+                {/* --- SEO SECTION: TECNOLOGIA E INOVAÃ‡ÃƒO --- */}
                 <section className="py-32 relative z-10 bg-[#08080C]">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto text-center">
@@ -826,15 +826,15 @@ export default function OptimizerClient() {
                                 Tecnologia <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Inovadora Brasileira</span>
                             </h2>
                             <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-                                O VOLTRIS OPTIMIZER é o primeiro software brasileiro SaaS com tecnologia de controle remoto de otimização via web. Uma solução profissional e enterprise desenvolvida com tecnologia moderna.
+                                O VOLTRIS OPTIMIZER Ã© o primeiro software brasileiro SaaS com tecnologia de controle remoto de otimizaÃ§Ã£o via web. Uma soluÃ§Ã£o profissional e enterprise desenvolvida com tecnologia moderna.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {[
-                                    { icon: <Radio className="w-6 h-6" />, title: 'Controle Remoto via Web', desc: 'Execute otimizações de qualquer lugar do mundo através do painel online' },
-                                    { icon: <Brain className="w-6 h-6" />, title: 'Tecnologia SaaS', desc: 'Plataforma baseada em nuvem com atualizações automáticas e inteligência artificial' },
-                                    { icon: <ShieldCheck className="w-6 h-6" />, title: 'Solução Profissional', desc: 'Desenvolvida com padrões enterprise para uso doméstico e corporativo' },
-                                    { icon: <Zap className="w-6 h-6" />, title: 'Inovação Nacional', desc: 'Primeira tecnologia brasileira de otimização remota do mercado' }
+                                    { icon: <Radio className="w-6 h-6" />, title: 'Controle Remoto via Web', desc: 'Execute otimizaÃ§Ãµes de qualquer lugar do mundo atravÃ©s do painel online' },
+                                    { icon: <Brain className="w-6 h-6" />, title: 'Tecnologia SaaS', desc: 'Plataforma baseada em nuvem com atualizaÃ§Ãµes automÃ¡ticas e inteligÃªncia artificial' },
+                                    { icon: <ShieldCheck className="w-6 h-6" />, title: 'SoluÃ§Ã£o Profissional', desc: 'Desenvolvida com padrÃµes enterprise para uso domÃ©stico e corporativo' },
+                                    { icon: <Zap className="w-6 h-6" />, title: 'InovaÃ§Ã£o Nacional', desc: 'Primeira tecnologia brasileira de otimizaÃ§Ã£o remota do mercado' }
                                 ].map((feature, i) => (
                                     <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-[#31A8FF]/30 transition-all group">
                                         <div className="w-12 h-12 rounded-xl bg-[#31A8FF]/10 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
@@ -856,38 +856,38 @@ export default function OptimizerClient() {
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 0 ? null : 0)}
                             isOpen={openFaqIndex === 0}
-                            question="O Voltris Optimizer serve para PC de escritório?"
-                            answer="Sim. Empresas utilizam o Voltris para revitalizar parques de máquinas, evitando a compra prematura de hardware novo. Ele acelera o boot, abertura de planilhas e navegação."
+                            question="O Voltris Optimizer serve para PC de escritÃ³rio?"
+                            answer="Sim. Empresas utilizam o Voltris para revitalizar parques de mÃ¡quinas, evitando a compra prematura de hardware novo. Ele acelera o boot, abertura de planilhas e navegaÃ§Ã£o."
                         />
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 1 ? null : 1)}
                             isOpen={openFaqIndex === 1}
-                            question="É seguro? Corre risco de formatar?"
-                            answer="Totalmente seguro. Nossas otimizações são reversíveis e criamos pontos de restauração automáticos. Não formatamos a máquina, apenas ajustamos o sistema para eficiência máxima."
+                            question="Ã‰ seguro? Corre risco de formatar?"
+                            answer="Totalmente seguro. Nossas otimizaÃ§Ãµes sÃ£o reversÃ­veis e criamos pontos de restauraÃ§Ã£o automÃ¡ticos. NÃ£o formatamos a mÃ¡quina, apenas ajustamos o sistema para eficiÃªncia mÃ¡xima."
                         />
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 2 ? null : 2)}
                             isOpen={openFaqIndex === 2}
                             question="Funciona em PC fraco (Low End)?"
-                            answer="Sim! PCs com hardware limitado são os que mais se beneficiam. Ao desativar serviços inúteis do Windows, liberamos RAM e CPU para o que realmente importa."
+                            answer="Sim! PCs com hardware limitado sÃ£o os que mais se beneficiam. Ao desativar serviÃ§os inÃºteis do Windows, liberamos RAM e CPU para o que realmente importa."
                         />
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 3 ? null : 3)}
                             isOpen={openFaqIndex === 3}
-                            question="Qual a diferença para o CCleaner?"
-                            answer="O CCleaner limpa arquivos temporários. O Voltris reconfigura a engenharia do Windows (Serviços, Threads, Rede, Energia) para performance. São categorias diferentes de software."
+                            question="Qual a diferenÃ§a para o CCleaner?"
+                            answer="O CCleaner limpa arquivos temporÃ¡rios. O Voltris reconfigura a engenharia do Windows (ServiÃ§os, Threads, Rede, Energia) para performance. SÃ£o categorias diferentes de software."
                         />
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 4 ? null : 4)}
                             isOpen={openFaqIndex === 4}
                             question="Como funciona o controle remoto via web?"
-                            answer="Após instalar o software, você pode acessar o painel web de qualquer lugar e executar otimizações remotamente. É a primeira tecnologia SaaS brasileira com esse recurso, ideal para empresas e usuários que gerenciam múltiplos computadores."
+                            answer="ApÃ³s instalar o software, vocÃª pode acessar o painel web de qualquer lugar e executar otimizaÃ§Ãµes remotamente. Ã‰ a primeira tecnologia SaaS brasileira com esse recurso, ideal para empresas e usuÃ¡rios que gerenciam mÃºltiplos computadores."
                         />
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 5 ? null : 5)}
                             isOpen={openFaqIndex === 5}
                             question="Funciona para aumentar FPS em jogos?"
-                            answer="Sim! O Voltris Optimizer é amplamente utilizado por gamers e streamers para aumentar FPS, reduzir input lag e eliminar travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite. Nossa tecnologia otimiza o sistema especificamente para gaming."
+                            answer="Sim! O Voltris Optimizer Ã© amplamente utilizado por gamers e streamers para aumentar FPS, reduzir input lag e eliminar travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite. Nossa tecnologia otimiza o sistema especificamente para gaming."
                         />
                     </div>
                 </section>
@@ -903,14 +903,14 @@ export default function OptimizerClient() {
                         </h2>
                         <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-light">
                             Performance profissional ao alcance de um clique.<br />
-                            A escolha padrão para quem valoriza tempo e eficiência.
+                            A escolha padrÃ£o para quem valoriza tempo e eficiÃªncia.
                         </p>
 
                         <div className="flex flex-col items-center gap-4">
                             <div className="flex items-center gap-2 mb-2">
-                                <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                <span className="text-xs text-slate-500 font-medium">VersÃ£o Atual:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                    v1.0.0.5
+                                    v1.0.0.6
                                 </span>
                             </div>
                             <Link
@@ -924,21 +924,21 @@ export default function OptimizerClient() {
                                 href="/voltris-optimizer"
                                 className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
                             >
-                                Visite nossa página de otimização
+                                Visite nossa pÃ¡gina de otimizaÃ§Ã£o
                             </Link>
                         </div>
                         <div className="mt-6">
-                            <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">Compatível com Windows 10 & 11</span>
+                            <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">CompatÃ­vel com Windows 10 & 11</span>
                         </div>
                     </div>
                 </section>
 
                 <Footer />
             </main>
-            
+
             <SoftwareApplicationSchema
                 name="VOLTRIS OPTIMIZER"
-                description="VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto para gamers, empresas e uso doméstico. Setup instantâneo, tecnologia nacional inovadora."
+                description="VOLTRIS OPTIMIZER: Software brasileiro de otimizaÃ§Ã£o de PC. Aumente atÃ© 25% de FPS, elimine stutter e lag, otimizaÃ§Ã£o automÃ¡tica para 100+ jogos, reduÃ§Ã£o de input lag em atÃ© 40%. SoluÃ§Ã£o SaaS com controle remoto para gamers, empresas e uso domÃ©stico. Setup instantÃ¢neo, tecnologia nacional inovadora."
                 url="https://voltris.com.br/voltrisoptimizer"
                 applicationCategory="GameApplication"
                 operatingSystem="Windows"
@@ -949,14 +949,14 @@ export default function OptimizerClient() {
                 }}
                 features={[
                     "Aumento de FPS em jogos",
-                    "Eliminação de stutter e lag",
-                    "Otimização automática para 100+ jogos",
-                    "Redução de input lag",
+                    "EliminaÃ§Ã£o de stutter e lag",
+                    "OtimizaÃ§Ã£o automÃ¡tica para 100+ jogos",
+                    "ReduÃ§Ã£o de input lag",
                     "Controle remoto via web",
-                    "Otimização para streamers",
-                    "Otimização para empresas"
+                    "OtimizaÃ§Ã£o para streamers",
+                    "OtimizaÃ§Ã£o para empresas"
                 ]}
-                softwareVersion="1.0.0.5"
+                softwareVersion="1.0.0.6"
                 datePublished="2024-01-01"
             />
         </>

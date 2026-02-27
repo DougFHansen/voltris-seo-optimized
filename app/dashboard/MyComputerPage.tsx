@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
@@ -17,13 +17,13 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     const [unlinkModalOpen, setUnlinkModalOpen] = useState(false);
     const [selectedInstallation, setSelectedInstallation] = useState<any>(null);
     
-    // Modais de confirmação
+    // Modais de confirmaÃ§Ã£o
     const [preparePcModalOpen, setPreparePcModalOpen] = useState(false);
     const [restartModalOpen, setRestartModalOpen] = useState(false);
     const [shutdownModalOpen, setShutdownModalOpen] = useState(false);
     const [currentInstallationId, setCurrentInstallationId] = useState<string>('');
     
-    // Modal de licença expirada
+    // Modal de licenÃ§a expirada
     const [licenseModalOpen, setLicenseModalOpen] = useState(false);
     const [licenseInfo, setLicenseInfo] = useState<any>(null);
     
@@ -81,7 +81,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 method: 'POST',
                 body: JSON.stringify({ installation_id: selectedInstallation.id })
             });
-            toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
+            toast.success('Dispositivo removido.', { id: loadingId, icon: 'ðŸ—‘ï¸' });
             fetchData();
         } catch {
             toast.error('Falha ao desvincular.', { id: loadingId });
@@ -90,10 +90,10 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     };
 
     const sendCommand = async (installationId: string, commandType: string, loadingMsg: string, successMsg: string) => {
-        // Validar licença antes de enviar comando
+        // Validar licenÃ§a antes de enviar comando
         const licenseValid = await validateLicense(installationId);
         if (!licenseValid) {
-            return; // Modal de licença já foi aberto
+            return; // Modal de licenÃ§a jÃ¡ foi aberto
         }
         
         const toastId = toast.loading(loadingMsg);
@@ -121,13 +121,13 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 return true;
             }
             
-            // Licença inválida - mostrar modal
+            // LicenÃ§a invÃ¡lida - mostrar modal
             setLicenseInfo(data);
             setLicenseModalOpen(true);
             return false;
         } catch (error) {
-            console.error('Erro ao validar licença:', error);
-            toast.error('Erro ao validar licença');
+            console.error('Erro ao validar licenÃ§a:', error);
+            toast.error('Erro ao validar licenÃ§a');
             return false;
         }
     };
@@ -167,7 +167,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
 
                         <h3 className="text-base sm:text-lg font-bold text-white mb-2">Vincule seu computador</h3>
                         <p className="text-slate-400 text-xs sm:text-sm mb-4 max-w-xl mx-auto">
-                            Acesse informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do dashboard.
+                            Acesse informaÃ§Ãµes em tempo real da sua mÃ¡quina, status de otimizaÃ§Ã£o e gerencie sua licenÃ§a diretamente do dashboard.
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
@@ -182,12 +182,12 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                         </div>
 
                         <div className="pt-4 border-t border-white/10">
-                            <p className="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">Não tem o programa?</p>
+                            <p className="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">NÃ£o tem o programa?</p>
                             <div className="flex flex-col items-center gap-2">
                                 <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
-                                    <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
+                                    <span className="text-xs text-slate-500 font-medium">VersÃ£o Atual:</span>
                                     <span className="px-2 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.0.5
+                                        v1.0.0.6
                                     </span>
                                 </div>
                                 <a
@@ -201,7 +201,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
                                     className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors font-medium opacity-80 hover:opacity-100"
                                 >
-                                    Download Versão x86 (32 bits)
+                                    Download VersÃ£o x86 (32 bits)
                                 </a>
                             </div>
                         </div>
@@ -253,18 +253,18 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     </div>
                                     <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
                                         <FiZap className="text-[#8B31FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                        <span className="truncate text-center">{inst.gpu_name || 'GPU não detectada'}</span>
+                                        <span className="truncate text-center">{inst.gpu_name || 'GPU nÃ£o detectada'}</span>
                                     </div>
                                     <div className="flex items-center justify-center gap-2 text-slate-300">
                                         <FiShield className="text-emerald-400 w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                        <span>{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
+                                        <span>{inst.ram_gb_total}GB â€¢ {inst.disk_type || 'HDD'}</span>
                                     </div>
                                 </div>
 
                                 {/* Status - Centered & Responsive */}
                                 <div className="flex flex-wrap justify-center gap-1.5 mb-2 flex-shrink-0">
                                     <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
-                                        {inst.is_optimized ? '✓ OTIMIZADO' : 'PADRÃO'}
+                                        {inst.is_optimized ? 'âœ“ OTIMIZADO' : 'PADRÃƒO'}
                                     </div>
                                     <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
                                         {inst.license_status?.toUpperCase() || 'TRIAL'}
@@ -273,16 +273,16 @@ export default function MyComputerPage({ userId }: { userId: string }) {
 
                                 {/* Controls - Responsive Categorized Layout */}
                                 <div className="space-y-2 py-2.5 border-t border-white/10">
-                                    {/* OTIMIZAÇÃO E CORREÇÃO */}
+                                    {/* OTIMIZAÃ‡ÃƒO E CORREÃ‡ÃƒO */}
                                     <div>
                                         <div className="flex items-center gap-1.5 mb-1">
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
-                                            <span className="text-[8px] sm:text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider whitespace-nowrap px-1">Otimização e Correção</span>
+                                            <span className="text-[8px] sm:text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider whitespace-nowrap px-1">OtimizaÃ§Ã£o e CorreÃ§Ã£o</span>
                                             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
                                         </div>
                                         <div className="grid grid-cols-2 gap-1.5">
                                             <button 
-                                                onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', '🚀 Otimizando...', 'Otimização concluída!')} 
+                                                onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', 'ðŸš€ Otimizando...', 'OtimizaÃ§Ã£o concluÃ­da!')} 
                                                 className="group relative px-2 py-1.5 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white rounded-lg hover:shadow-lg hover:shadow-[#31A8FF]/20 transition-all duration-200 overflow-hidden"
                                             >
                                                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
@@ -313,7 +313,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         </div>
                                         <div className="grid grid-cols-2 gap-1.5">
                                             <button 
-                                                onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', '🎮 Ativando...', 'Modo Gamer ativado!')} 
+                                                onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', 'ðŸŽ® Ativando...', 'Modo Gamer ativado!')} 
                                                 className="group relative px-2 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-200 overflow-hidden"
                                             >
                                                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
@@ -323,7 +323,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 </div>
                                             </button>
                                             <button 
-                                                onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', '🎮 Desativando...', 'Modo Gamer desativado!')} 
+                                                onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', 'ðŸŽ® Desativando...', 'Modo Gamer desativado!')} 
                                                 className="group relative px-2 py-1.5 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-all duration-200"
                                             >
                                                 <div className="relative flex items-center justify-center gap-1.5">
@@ -343,7 +343,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                         </div>
                                         <div className="grid grid-cols-3 gap-1.5">
                                             <button 
-                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', '⚡ Limpando RAM...', 'RAM otimizada!')} 
+                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', 'âš¡ Limpando RAM...', 'RAM otimizada!')} 
                                                 className="group relative px-1.5 py-1.5 bg-white text-black rounded-lg hover:shadow-lg hover:shadow-white/20 transition-all duration-200 overflow-hidden"
                                                 title="Otimizar RAM"
                                             >
@@ -354,7 +354,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 </div>
                                             </button>
                                             <button 
-                                                onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', '🧹 Limpando...', 'Sistema limpo!')} 
+                                                onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', 'ðŸ§¹ Limpando...', 'Sistema limpo!')} 
                                                 className="group relative px-1.5 py-1.5 bg-[#121218] border border-white/10 text-white rounded-lg hover:bg-white/10 transition-all duration-200"
                                                 title="Limpar Sistema"
                                             >
@@ -364,7 +364,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                                 </div>
                                             </button>
                                             <button 
-                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', '🌐 Otimizando...', 'Rede otimizada!')} 
+                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', 'ðŸŒ Otimizando...', 'Rede otimizada!')} 
                                                 className="group relative px-1.5 py-1.5 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 rounded-lg hover:bg-teal-500/10 transition-all duration-200"
                                                 title="Otimizar Rede"
                                             >
@@ -419,18 +419,18 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={preparePcModalOpen}
                 onClose={() => setPreparePcModalOpen(false)}
                 onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'PREPARE_PC', '🎯 Iniciando otimização completa...', 'Otimização completa iniciada!');
+                    await sendCommand(currentInstallationId, 'PREPARE_PC', 'ðŸŽ¯ Iniciando otimizaÃ§Ã£o completa...', 'OtimizaÃ§Ã£o completa iniciada!');
                 }}
-                title="Otimização Completa (Prepare PC)"
-                message="Esta operação irá otimizar completamente seu sistema"
+                title="OtimizaÃ§Ã£o Completa (Prepare PC)"
+                message="Esta operaÃ§Ã£o irÃ¡ otimizar completamente seu sistema"
                 details={[
-                    'Criar ponto de restauração',
-                    'Otimizar RAM e Serviços',
+                    'Criar ponto de restauraÃ§Ã£o',
+                    'Otimizar RAM e ServiÃ§os',
                     'Configurar plano de energia',
                     'Limpar sistema',
                     'Otimizar rede'
                 ]}
-                confirmText="Iniciar Otimização"
+                confirmText="Iniciar OtimizaÃ§Ã£o"
                 cancelText="Cancelar"
                 confirmColor="green"
                 icon={<FiTarget className="w-6 h-6 text-emerald-400" />}
@@ -441,14 +441,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={restartModalOpen}
                 onClose={() => setRestartModalOpen(false)}
                 onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'RESTART', '🔄 Enviando comando...', 'Reinicialização agendada!');
+                    await sendCommand(currentInstallationId, 'RESTART', 'ðŸ”„ Enviando comando...', 'ReinicializaÃ§Ã£o agendada!');
                 }}
                 title="Reiniciar Computador"
-                message="O sistema será reiniciado em 10 segundos"
+                message="O sistema serÃ¡ reiniciado em 10 segundos"
                 details={[
                     'Salve todos os arquivos abertos',
                     'Feche aplicativos importantes',
-                    'O computador reiniciará automaticamente'
+                    'O computador reiniciarÃ¡ automaticamente'
                 ]}
                 confirmText="Reiniciar Agora"
                 cancelText="Cancelar"
@@ -461,14 +461,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={shutdownModalOpen}
                 onClose={() => setShutdownModalOpen(false)}
                 onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'SHUTDOWN', '🔴 Enviando comando...', 'Desligamento agendado!');
+                    await sendCommand(currentInstallationId, 'SHUTDOWN', 'ðŸ”´ Enviando comando...', 'Desligamento agendado!');
                 }}
                 title="Desligar Computador"
-                message="O sistema será desligado em 10 segundos"
+                message="O sistema serÃ¡ desligado em 10 segundos"
                 details={[
                     'Salve todos os arquivos abertos',
                     'Feche aplicativos importantes',
-                    'O computador desligará automaticamente'
+                    'O computador desligarÃ¡ automaticamente'
                 ]}
                 confirmText="Desligar Agora"
                 cancelText="Cancelar"
@@ -476,7 +476,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 icon={<FiPower className="w-6 h-6 text-red-400" />}
             />
 
-            {/* Modal de Confirmação de Unlink */}
+            {/* Modal de ConfirmaÃ§Ã£o de Unlink */}
             <AnimatePresence>
                 {unlinkModalOpen && (
                     <motion.div
@@ -495,12 +495,12 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                         >
                             <div className="flex items-start gap-4 mb-6">
                                 <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-2xl">
-                                    ⚠️
+                                    âš ï¸
                                 </div>
                                 <div className="flex-1">
                                     <h2 className="text-xl font-bold text-white mb-2">Desvincular Computador?</h2>
                                     <p className="text-sm text-slate-400 leading-relaxed">
-                                        Você perderá o acesso remoto e a telemetria deste dispositivo.
+                                        VocÃª perderÃ¡ o acesso remoto e a telemetria deste dispositivo.
                                     </p>
                                 </div>
                             </div>
@@ -523,7 +523,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 )}
             </AnimatePresence>
             
-            {/* Modal de Licença Expirada */}
+            {/* Modal de LicenÃ§a Expirada */}
             <LicenseExpiredModal
                 isOpen={licenseModalOpen}
                 onClose={() => setLicenseModalOpen(false)}

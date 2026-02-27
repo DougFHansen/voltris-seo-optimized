@@ -19,11 +19,18 @@ export default function Footer() {
       { name: 'Contato', path: '/contato' },
     ],
     services: [
-      { name: 'Formatação', id: 'formatacao' },
-      { name: 'Otimização', id: 'otimizacao' },
-      { name: 'Recuperação de Dados', id: 'recuperacao' },
-      { name: 'Instalação de Softwares', id: 'instalacao_programas' },
-      { name: 'Remoção de Vírus', id: 'remocao_virus' },
+      { name: 'Formatação Windows', path: '/formatar-windows' },
+      { name: 'Otimização Gamer', path: '/otimizacao-pc' },
+      { name: 'Erros em Jogos', path: '/erros-jogos' },
+      { name: 'Manutenção de PC', path: '/manutencao-computador' },
+      { name: 'Criação de Sites', path: '/criar-site' },
+      { name: 'Suporte Remoto', path: '/suporte-tecnico-remoto' },
+    ],
+    cities: [
+      { name: 'São Paulo', path: '/tecnico-informatica-em/sao-paulo' },
+      { name: 'Rio de Janeiro', path: '/tecnico-informatica-em/rio-de-janeiro' },
+      { name: 'Belo Horizonte', path: '/tecnico-informatica-em/belo-horizonte' },
+      { name: 'Curitiba', path: '/tecnico-informatica-em/curitiba' },
     ],
     legal: [
       { name: 'Privacidade', path: '/politica-privacidade' },
@@ -99,8 +106,8 @@ export default function Footer() {
             <h3 className="font-bold text-white text-base">Nossos Serviços</h3>
             <ul className="space-y-3">
               {links.services.map(l => (
-                <li key={l.id}>
-                  <Link href={`/servicos?abrir=${l.id}`} className="text-slate-400 hover:text-[#8B31FF] text-sm transition-colors flex items-center gap-2 group">
+                <li key={l.path}>
+                  <Link href={l.path} className="text-slate-400 hover:text-[#8B31FF] text-sm transition-colors flex items-center gap-2 group">
                     <span className="w-0 group-hover:w-2 h-0.5 bg-[#8B31FF] transition-all duration-300"></span>
                     {l.name}
                   </Link>
@@ -109,7 +116,22 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 5: Contact */}
+          {/* Col 5: Regional SEO */}
+          <div className="space-y-6">
+            <h3 className="font-bold text-white text-base">Atendimento Local</h3>
+            <ul className="space-y-3">
+              {links.cities.map(l => (
+                <li key={l.path}>
+                  <Link href={l.path} className="text-slate-400 hover:text-[#00FF94] text-sm transition-colors flex items-center gap-2 group">
+                    <span className="w-0 group-hover:w-2 h-0.5 bg-[#00FF94] transition-all duration-300"></span>
+                    {l.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 6: Contact */}
           <div className="space-y-6">
             <h3 className="font-bold text-white text-base">Contato</h3>
             <ul className="space-y-4">
