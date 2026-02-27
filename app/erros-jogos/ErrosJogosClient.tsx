@@ -322,19 +322,24 @@ export default function ErrosJogosClient() {
                 </section>
 
                 {/* CTA Final */}
-                <section className="py-32 px-4 text-center relative z-10">
-                    <div className="max-w-5xl mx-auto py-24 px-10 rounded-[64px] bg-[#0A0A1A] border border-white/5 relative overflow-hidden">
+                <section className="py-16 px-4 text-center relative z-10">
+                    <div className="max-w-5xl mx-auto py-16 px-6 md:px-12 rounded-[48px] bg-[#0A0A1A] border border-white/5 relative overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/10 via-[#8B31FF]/10 to-[#31A8FF]/10 opacity-50"></div>
                         <div className="relative z-20">
-                            <h2 className="text-5xl md:text-8xl font-black text-white italic uppercase tracking-tighter mb-10 leading-none">
-                                ESTÁ ESPERANDO <br /> <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">O PRÓXIMO CRASH?</span>
+                            <h2 className="text-4xl md:text-6xl font-black text-white italic uppercase tracking-tighter mb-8 leading-[1.1] px-2">
+                                ESTÁ ESPERANDO <br />
+                                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text px-2">
+                                    O PRÓXIMO CRASH?
+                                </span>
                             </h2>
-                            <p className="text-slate-400 text-xl mb-12 max-w-2xl mx-auto font-light">Garanta sua jogatina hoje. Atendimento imediato 24h via acesso remoto.</p>
+                            <p className="text-slate-400 text-lg mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                                Garanta sua jogatina hoje. Atendimento imediato 24h via acesso remoto.
+                            </p>
                             <Link
                                 href="/servicos?abrir=correcao_windows"
-                                className="inline-flex px-14 py-7 rounded-2xl bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white font-black text-2xl hover:scale-105 transition-all duration-300 uppercase italic shadow-[0_20px_60px_rgba(49,168,255,0.3)]"
+                                className="inline-flex px-10 py-5 rounded-xl bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white font-black text-xl hover:scale-105 transition-all duration-300 uppercase italic shadow-[0_15px_40px_rgba(49,168,255,0.25)] items-center"
                             >
-                                <Zap className="w-8 h-8 fill-white mr-3" /> Reparar Meu Jogo Agora
+                                <Zap className="w-6 h-6 fill-white mr-3" /> Reparar Meu Jogo Agora
                             </Link>
                         </div>
                     </div>
