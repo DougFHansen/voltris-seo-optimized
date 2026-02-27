@@ -3,49 +3,33 @@ import { Metadata } from 'next';
 import CriarSiteClient from './CriarSiteClient';
 
 export const metadata: Metadata = {
-  title: "Criar Site - Desenvolvimento de Sites Profissionais e Responsivos | VOLTRIS",
-  description: "Criar site profissional e responsivo para sua empresa. Desenvolvimento web moderno, SEO otimizado, design personalizado e suporte completo. Sites que convertem visitantes em clientes.",
+  title: "Criação de Sites Profissionais: Superando Wix e WordPress | VOLTRIS",
+  description: "Crie um site profissional com performance superior ao Wix e WordPress. Desenvolvimento Next.js ultra-rápido, SEO 10/10 nativo e design premium. O melhor custo-benefício para sua empresa.",
   keywords: [
-    "criar site",
-    "criar site profissional",
-    "desenvolvimento de sites",
-    "criação de sites",
-    "site responsivo",
-    "site empresarial",
-    "design de sites",
-    "desenvolvimento web",
-    "site institucional",
-    "site e-commerce",
-    "landing page",
-    "site otimizado SEO",
-    "site moderno",
-    "site personalizado",
-    "programação web",
-    "frontend development",
-    "site WordPress",
-    "site React",
-    "site Next.js",
-    "site mobile first"
+    "criar site profissional", "criação de sites de alta performance", "desenvolvimento web premium",
+    "site melhor que wix", "site melhor que wordpress", "como criar um site que vende",
+    "empresa de criação de sites", "site responsivo e rápido", "SEO 10/10 para sites",
+    "desenvolvedor next.js brasil", "site institucional moderno", "landing page que converte",
+    "voltris criação de sites", "site otimizado para google e bing"
   ],
   openGraph: {
-    title: "Criar Site - Desenvolvimento de Sites Profissionais e Responsivos | VOLTRIS",
-    description: "Criar site profissional e responsivo para sua empresa. Desenvolvimento web moderno, SEO otimizado, design personalizado e suporte completo.",
+    title: "Criação de Sites Profissionais: Alta Performance Superior | VOLTRIS",
+    description: "Sua empresa merece um site que carrega em milissegundos. Esqueça soluções genéricas. Vá de VOLTRIS.",
     url: "https://voltris.com.br/criar-site",
     type: "website",
     images: [
       {
-        url: "/remotebanner.jpg",
+        url: "/logo-seo-web.png",
         width: 1200,
         height: 630,
-        alt: "Criar Site - Desenvolvimento Web Profissional VOLTRIS"
+        alt: "Criação de Sites Profissionais VOLTRIS"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Criar Site - Desenvolvimento de Sites Profissionais e Responsivos | VOLTRIS",
-    description: "Criar site profissional e responsivo para sua empresa. Desenvolvimento web moderno e SEO otimizado.",
-    images: ["/remotebanner.jpg"]
+    title: "Crie um Site Profissional Superior ao WordPress | VOLTRIS",
+    images: ["/logo-seo-web.png"]
   },
   alternates: {
     canonical: "https://voltris.com.br/criar-site"
