@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-hot-toast';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-    FiMonitor, FiCpu, FiZap, FiShield, FiX, FiDownload, 
-    FiPower, FiTarget, FiSettings 
+import {
+    FiMonitor, FiCpu, FiZap, FiShield, FiX, FiDownload,
+    FiPower, FiTarget, FiSettings
 } from 'react-icons/fi';
 import ConfirmModal from '../components/ConfirmModal';
 import LicenseExpiredModal from '../components/LicenseExpiredModal';
@@ -16,17 +16,17 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     const [loading, setLoading] = useState(true);
     const [unlinkModalOpen, setUnlinkModalOpen] = useState(false);
     const [selectedInstallation, setSelectedInstallation] = useState<any>(null);
-    
-    // Modais de confirmaÃ§Ã£o
+
+    // Modais de confirmação
     const [preparePcModalOpen, setPreparePcModalOpen] = useState(false);
     const [restartModalOpen, setRestartModalOpen] = useState(false);
     const [shutdownModalOpen, setShutdownModalOpen] = useState(false);
     const [currentInstallationId, setCurrentInstallationId] = useState<string>('');
-    
-    // Modal de licenÃ§a expirada
+
+    // Modal de licença expirada
     const [licenseModalOpen, setLicenseModalOpen] = useState(false);
     const [licenseInfo, setLicenseInfo] = useState<any>(null);
-    
+
     const supabase = createClient();
 
     useEffect(() => {
@@ -81,7 +81,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 method: 'POST',
                 body: JSON.stringify({ installation_id: selectedInstallation.id })
             });
-            toast.success('Dispositivo removido.', { id: loadingId, icon: 'ðŸ—‘ï¸' });
+            toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
             fetchData();
         } catch {
             toast.error('Falha ao desvincular.', { id: loadingId });
@@ -90,12 +90,12 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     };
 
     const sendCommand = async (installationId: string, commandType: string, loadingMsg: string, successMsg: string) => {
-        // Validar licenÃ§a antes de enviar comando
+        // Validar licença antes de enviar comando
         const licenseValid = await validateLicense(installationId);
         if (!licenseValid) {
-            return; // Modal de licenÃ§a jÃ¡ foi aberto
+            return; // Modal de licença já foi aberto
         }
-        
+
         const toastId = toast.loading(loadingMsg);
         try {
             await fetch('/api/v1/commands/create', {
@@ -116,18 +116,18 @@ export default function MyComputerPage({ userId }: { userId: string }) {
         try {
             const response = await fetch(`/api/v1/license/validate?installation_id=${installationId}`);
             const data = await response.json();
-            
+
             if (data.valid) {
                 return true;
             }
-            
-            // LicenÃ§a invÃ¡lida - mostrar modal
+
+            // Licença inválida - mostrar modal
             setLicenseInfo(data);
             setLicenseModalOpen(true);
             return false;
         } catch (error) {
-            console.error('Erro ao validar licenÃ§a:', error);
-            toast.error('Erro ao validar licenÃ§a');
+            console.error('Erro ao validar licença:', error);
+            toast.error('Erro ao validar licença');
             return false;
         }
     };
@@ -167,7 +167,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
 
                         <h3 className="text-base sm:text-lg font-bold text-white mb-2">Vincule seu computador</h3>
                         <p className="text-slate-400 text-xs sm:text-sm mb-4 max-w-xl mx-auto">
-                            Acesse informaÃ§Ãµes em tempo real da sua mÃ¡quina, status de otimizaÃ§Ã£o e gerencie sua licenÃ§a diretamente do dashboard.
+                            Acesse informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do dashboard.
                         </p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
@@ -182,10 +182,10 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                         </div>
 
                         <div className="pt-4 border-t border-white/10">
-                            <p className="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">NÃ£o tem o programa?</p>
+                            <p className="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">Não tem o programa?</p>
                             <div className="flex flex-col items-center gap-2">
                                 <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
-                                    <span className="text-xs text-slate-500 font-medium">VersÃ£o Atual:</span>
+                                    <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                     <span className="px-2 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
                                         v1.0.0.6
                                     </span>
@@ -201,7 +201,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                     href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.2/VoltrisOptimizerInstallerX86.exe"
                                     className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors font-medium opacity-80 hover:opacity-100"
                                 >
-                                    Download VersÃ£o x86 (32 bits)
+                                    Download Versão x86 (32 bits)
                                 </a>
                             </div>
                         </div>
@@ -227,188 +227,188 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 <div className="flex-1 min-h-0 p-4 overflow-y-auto custom-scrollbar-modern">
                     <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 pb-6">
                         {installations.map((inst) => (
-                        <motion.div
-                            key={inst.id}
-                            className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-visible relative w-full max-w-2xl mx-auto h-fit"
-                        >
-                            <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
+                            <motion.div
+                                key={inst.id}
+                                className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-visible relative w-full max-w-2xl mx-auto h-fit"
+                            >
+                                <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
 
-                            <div className="relative z-10">
-                                {/* Header - Centered */}
-                                <div className="flex justify-center items-center mb-2 gap-2 flex-shrink-0 relative">
-                                    <div className="flex items-center gap-2 min-w-0">
-                                        <div className={`w-2 h-2 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000 ? 'bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50' : 'bg-slate-500'}`}></div>
-                                        <span className="text-white font-bold text-sm truncate">{inst.os_name}</span>
+                                <div className="relative z-10">
+                                    {/* Header - Centered */}
+                                    <div className="flex justify-center items-center mb-2 gap-2 flex-shrink-0 relative">
+                                        <div className="flex items-center gap-2 min-w-0">
+                                            <div className={`w-2 h-2 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000 ? 'bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50' : 'bg-slate-500'}`}></div>
+                                            <span className="text-white font-bold text-sm truncate">{inst.os_name}</span>
+                                        </div>
+                                        <button onClick={() => handleUnlinkClick(inst)} className="absolute right-0 p-1.5 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors flex-shrink-0" title="Desvincular">
+                                            <FiX className="w-3.5 h-3.5" />
+                                        </button>
                                     </div>
-                                    <button onClick={() => handleUnlinkClick(inst)} className="absolute right-0 p-1.5 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors flex-shrink-0" title="Desvincular">
-                                        <FiX className="w-3.5 h-3.5" />
-                                    </button>
+
+                                    {/* Hardware - Centered & Responsive */}
+                                    <div className="space-y-1 mb-2 flex-shrink-0 text-[10px] sm:text-[11px]">
+                                        <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
+                                            <FiCpu className="text-[#31A8FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                            <span className="truncate text-center">{inst.cpu_name}</span>
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
+                                            <FiZap className="text-[#8B31FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                            <span className="truncate text-center">{inst.gpu_name || 'GPU não detectada'}</span>
+                                        </div>
+                                        <div className="flex items-center justify-center gap-2 text-slate-300">
+                                            <FiShield className="text-emerald-400 w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                            <span>{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
+                                        </div>
+                                    </div>
+
+                                    {/* Status - Centered & Responsive */}
+                                    <div className="flex flex-wrap justify-center gap-1.5 mb-2 flex-shrink-0">
+                                        <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
+                                            {inst.is_optimized ? '✓ OTIMIZADO' : 'PADRÃO'}
+                                        </div>
+                                        <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
+                                            {inst.license_status?.toUpperCase() || 'TRIAL'}
+                                        </div>
+                                    </div>
+
+                                    {/* Controls - Responsive Categorized Layout */}
+                                    <div className="space-y-2 py-2.5 border-t border-white/10">
+                                        {/* OTIMIZAÇÃO E CORREÇÃO */}
+                                        <div>
+                                            <div className="flex items-center gap-1.5 mb-1">
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
+                                                <span className="text-[8px] sm:text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider whitespace-nowrap px-1">Otimização e Correção</span>
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-1.5">
+                                                <button
+                                                    onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', '🚀 Otimizando...', 'Otimização concluída!')}
+                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white rounded-lg hover:shadow-lg hover:shadow-[#31A8FF]/20 transition-all duration-200 overflow-hidden"
+                                                >
+                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                    <div className="relative flex items-center justify-center gap-1.5">
+                                                        <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Otimizar</span>
+                                                    </div>
+                                                </button>
+                                                <button
+                                                    onClick={() => { setCurrentInstallationId(inst.id); setPreparePcModalOpen(true); }}
+                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200 overflow-hidden"
+                                                >
+                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                    <div className="relative flex items-center justify-center gap-1.5">
+                                                        <FiTarget className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Prepare PC</span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* MODO GAMER */}
+                                        <div>
+                                            <div className="flex items-center gap-1.5 mb-1">
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+                                                <span className="text-[8px] sm:text-[9px] font-bold text-purple-400 uppercase tracking-wider whitespace-nowrap px-1">Modo Gamer</span>
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-1.5">
+                                                <button
+                                                    onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', '🎮 Ativando...', 'Modo Gamer ativado!')}
+                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-200 overflow-hidden"
+                                                >
+                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                    <div className="relative flex items-center justify-center gap-1.5">
+                                                        <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Ativar</span>
+                                                    </div>
+                                                </button>
+                                                <button
+                                                    onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', '🎮 Desativando...', 'Modo Gamer desativado!')}
+                                                    className="group relative px-2 py-1.5 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-all duration-200"
+                                                >
+                                                    <div className="relative flex items-center justify-center gap-1.5">
+                                                        <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Desativar</span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* FERRAMENTAS DO SISTEMA */}
+                                        <div>
+                                            <div className="flex items-center gap-1.5 mb-1">
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
+                                                <span className="text-[8px] sm:text-[9px] font-bold text-emerald-400 uppercase tracking-wider whitespace-nowrap px-1">Ferramentas</span>
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
+                                            </div>
+                                            <div className="grid grid-cols-3 gap-1.5">
+                                                <button
+                                                    onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', '⚡ Limpando RAM...', 'RAM otimizada!')}
+                                                    className="group relative px-1.5 py-1.5 bg-white text-black rounded-lg hover:shadow-lg hover:shadow-white/20 transition-all duration-200 overflow-hidden"
+                                                    title="Otimizar RAM"
+                                                >
+                                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                                                    <div className="relative flex flex-col items-center justify-center gap-0.5">
+                                                        <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[8px] sm:text-[9px] font-bold">RAM</span>
+                                                    </div>
+                                                </button>
+                                                <button
+                                                    onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', '🧹 Limpando...', 'Sistema limpo!')}
+                                                    className="group relative px-1.5 py-1.5 bg-[#121218] border border-white/10 text-white rounded-lg hover:bg-white/10 transition-all duration-200"
+                                                    title="Limpar Sistema"
+                                                >
+                                                    <div className="relative flex flex-col items-center justify-center gap-0.5">
+                                                        <FiShield className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[8px] sm:text-[9px] font-bold">Limpar</span>
+                                                    </div>
+                                                </button>
+                                                <button
+                                                    onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', '🌐 Otimizando...', 'Rede otimizada!')}
+                                                    className="group relative px-1.5 py-1.5 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 rounded-lg hover:bg-teal-500/10 transition-all duration-200"
+                                                    title="Otimizar Rede"
+                                                >
+                                                    <div className="relative flex flex-col items-center justify-center gap-0.5">
+                                                        <FiMonitor className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[8px] sm:text-[9px] font-bold">Rede</span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        {/* ENERGIA */}
+                                        <div>
+                                            <div className="flex items-center gap-1.5 mb-1">
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
+                                                <span className="text-[8px] sm:text-[9px] font-bold text-orange-400 uppercase tracking-wider whitespace-nowrap px-1">Energia</span>
+                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-1.5">
+                                                <button
+                                                    onClick={() => { setCurrentInstallationId(inst.id); setRestartModalOpen(true); }}
+                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-200 overflow-hidden"
+                                                >
+                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                    <div className="relative flex items-center justify-center gap-1.5">
+                                                        <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Reiniciar</span>
+                                                    </div>
+                                                </button>
+                                                <button
+                                                    onClick={() => { setCurrentInstallationId(inst.id); setShutdownModalOpen(true); }}
+                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:shadow-lg hover:shadow-red-500/20 transition-all duration-200 overflow-hidden"
+                                                >
+                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                                                    <div className="relative flex items-center justify-center gap-1.5">
+                                                        <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
+                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Desligar</span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                {/* Hardware - Centered & Responsive */}
-                                <div className="space-y-1 mb-2 flex-shrink-0 text-[10px] sm:text-[11px]">
-                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
-                                        <FiCpu className="text-[#31A8FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                        <span className="truncate text-center">{inst.cpu_name}</span>
-                                    </div>
-                                    <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
-                                        <FiZap className="text-[#8B31FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                        <span className="truncate text-center">{inst.gpu_name || 'GPU nÃ£o detectada'}</span>
-                                    </div>
-                                    <div className="flex items-center justify-center gap-2 text-slate-300">
-                                        <FiShield className="text-emerald-400 w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                        <span>{inst.ram_gb_total}GB â€¢ {inst.disk_type || 'HDD'}</span>
-                                    </div>
-                                </div>
-
-                                {/* Status - Centered & Responsive */}
-                                <div className="flex flex-wrap justify-center gap-1.5 mb-2 flex-shrink-0">
-                                    <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
-                                        {inst.is_optimized ? 'âœ“ OTIMIZADO' : 'PADRÃƒO'}
-                                    </div>
-                                    <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
-                                        {inst.license_status?.toUpperCase() || 'TRIAL'}
-                                    </div>
-                                </div>
-
-                                {/* Controls - Responsive Categorized Layout */}
-                                <div className="space-y-2 py-2.5 border-t border-white/10">
-                                    {/* OTIMIZAÃ‡ÃƒO E CORREÃ‡ÃƒO */}
-                                    <div>
-                                        <div className="flex items-center gap-1.5 mb-1">
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
-                                            <span className="text-[8px] sm:text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider whitespace-nowrap px-1">OtimizaÃ§Ã£o e CorreÃ§Ã£o</span>
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-1.5">
-                                            <button 
-                                                onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', 'ðŸš€ Otimizando...', 'OtimizaÃ§Ã£o concluÃ­da!')} 
-                                                className="group relative px-2 py-1.5 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white rounded-lg hover:shadow-lg hover:shadow-[#31A8FF]/20 transition-all duration-200 overflow-hidden"
-                                            >
-                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Otimizar</span>
-                                                </div>
-                                            </button>
-                                            <button 
-                                                onClick={() => { setCurrentInstallationId(inst.id); setPreparePcModalOpen(true); }} 
-                                                className="group relative px-2 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200 overflow-hidden"
-                                            >
-                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiTarget className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Prepare PC</span>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    {/* MODO GAMER */}
-                                    <div>
-                                        <div className="flex items-center gap-1.5 mb-1">
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
-                                            <span className="text-[8px] sm:text-[9px] font-bold text-purple-400 uppercase tracking-wider whitespace-nowrap px-1">Modo Gamer</span>
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-1.5">
-                                            <button 
-                                                onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', 'ðŸŽ® Ativando...', 'Modo Gamer ativado!')} 
-                                                className="group relative px-2 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-200 overflow-hidden"
-                                            >
-                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Ativar</span>
-                                                </div>
-                                            </button>
-                                            <button 
-                                                onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', 'ðŸŽ® Desativando...', 'Modo Gamer desativado!')} 
-                                                className="group relative px-2 py-1.5 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-all duration-200"
-                                            >
-                                                <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Desativar</span>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    {/* FERRAMENTAS DO SISTEMA */}
-                                    <div>
-                                        <div className="flex items-center gap-1.5 mb-1">
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
-                                            <span className="text-[8px] sm:text-[9px] font-bold text-emerald-400 uppercase tracking-wider whitespace-nowrap px-1">Ferramentas</span>
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
-                                        </div>
-                                        <div className="grid grid-cols-3 gap-1.5">
-                                            <button 
-                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', 'âš¡ Limpando RAM...', 'RAM otimizada!')} 
-                                                className="group relative px-1.5 py-1.5 bg-white text-black rounded-lg hover:shadow-lg hover:shadow-white/20 transition-all duration-200 overflow-hidden"
-                                                title="Otimizar RAM"
-                                            >
-                                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
-                                                <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                    <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[8px] sm:text-[9px] font-bold">RAM</span>
-                                                </div>
-                                            </button>
-                                            <button 
-                                                onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', 'ðŸ§¹ Limpando...', 'Sistema limpo!')} 
-                                                className="group relative px-1.5 py-1.5 bg-[#121218] border border-white/10 text-white rounded-lg hover:bg-white/10 transition-all duration-200"
-                                                title="Limpar Sistema"
-                                            >
-                                                <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                    <FiShield className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[8px] sm:text-[9px] font-bold">Limpar</span>
-                                                </div>
-                                            </button>
-                                            <button 
-                                                onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', 'ðŸŒ Otimizando...', 'Rede otimizada!')} 
-                                                className="group relative px-1.5 py-1.5 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 rounded-lg hover:bg-teal-500/10 transition-all duration-200"
-                                                title="Otimizar Rede"
-                                            >
-                                                <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                    <FiMonitor className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[8px] sm:text-[9px] font-bold">Rede</span>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-
-                                    {/* ENERGIA */}
-                                    <div>
-                                        <div className="flex items-center gap-1.5 mb-1">
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
-                                            <span className="text-[8px] sm:text-[9px] font-bold text-orange-400 uppercase tracking-wider whitespace-nowrap px-1">Energia</span>
-                                            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-1.5">
-                                            <button 
-                                                onClick={() => { setCurrentInstallationId(inst.id); setRestartModalOpen(true); }} 
-                                                className="group relative px-2 py-1.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-200 overflow-hidden"
-                                            >
-                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Reiniciar</span>
-                                                </div>
-                                            </button>
-                                            <button 
-                                                onClick={() => { setCurrentInstallationId(inst.id); setShutdownModalOpen(true); }} 
-                                                className="group relative px-2 py-1.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:shadow-lg hover:shadow-red-500/20 transition-all duration-200 overflow-hidden"
-                                            >
-                                                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                <div className="relative flex items-center justify-center gap-1.5">
-                                                    <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                    <span className="text-[9px] sm:text-[10px] font-bold truncate">Desligar</span>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
@@ -419,18 +419,18 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={preparePcModalOpen}
                 onClose={() => setPreparePcModalOpen(false)}
                 onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'PREPARE_PC', 'ðŸŽ¯ Iniciando otimizaÃ§Ã£o completa...', 'OtimizaÃ§Ã£o completa iniciada!');
+                    await sendCommand(currentInstallationId, 'PREPARE_PC', '🎯 Iniciando otimização completa...', 'Otimização completa iniciada!');
                 }}
-                title="OtimizaÃ§Ã£o Completa (Prepare PC)"
-                message="Esta operaÃ§Ã£o irÃ¡ otimizar completamente seu sistema"
+                title="Otimização Completa (Prepare PC)"
+                message="Esta operação irá otimizar completamente seu sistema"
                 details={[
-                    'Criar ponto de restauraÃ§Ã£o',
-                    'Otimizar RAM e ServiÃ§os',
+                    'Criar ponto de restauração',
+                    'Otimizar RAM e Serviços',
                     'Configurar plano de energia',
                     'Limpar sistema',
                     'Otimizar rede'
                 ]}
-                confirmText="Iniciar OtimizaÃ§Ã£o"
+                confirmText="Iniciar Otimização"
                 cancelText="Cancelar"
                 confirmColor="green"
                 icon={<FiTarget className="w-6 h-6 text-emerald-400" />}
@@ -441,14 +441,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={restartModalOpen}
                 onClose={() => setRestartModalOpen(false)}
                 onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'RESTART', 'ðŸ”„ Enviando comando...', 'ReinicializaÃ§Ã£o agendada!');
+                    await sendCommand(currentInstallationId, 'RESTART', '🔄 Enviando comando...', 'Reinicialização agendada!');
                 }}
                 title="Reiniciar Computador"
-                message="O sistema serÃ¡ reiniciado em 10 segundos"
+                message="O sistema será reiniciado em 10 segundos"
                 details={[
                     'Salve todos os arquivos abertos',
                     'Feche aplicativos importantes',
-                    'O computador reiniciarÃ¡ automaticamente'
+                    'O computador reiniciará automaticamente'
                 ]}
                 confirmText="Reiniciar Agora"
                 cancelText="Cancelar"
@@ -461,14 +461,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 isOpen={shutdownModalOpen}
                 onClose={() => setShutdownModalOpen(false)}
                 onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'SHUTDOWN', 'ðŸ”´ Enviando comando...', 'Desligamento agendado!');
+                    await sendCommand(currentInstallationId, 'SHUTDOWN', '🔴 Enviando comando...', 'Desligamento agendado!');
                 }}
                 title="Desligar Computador"
-                message="O sistema serÃ¡ desligado em 10 segundos"
+                message="O sistema será desligado em 10 segundos"
                 details={[
                     'Salve todos os arquivos abertos',
                     'Feche aplicativos importantes',
-                    'O computador desligarÃ¡ automaticamente'
+                    'O computador desligará automaticamente'
                 ]}
                 confirmText="Desligar Agora"
                 cancelText="Cancelar"
@@ -476,7 +476,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 icon={<FiPower className="w-6 h-6 text-red-400" />}
             />
 
-            {/* Modal de ConfirmaÃ§Ã£o de Unlink */}
+            {/* Modal de Confirmação de Unlink */}
             <AnimatePresence>
                 {unlinkModalOpen && (
                     <motion.div
@@ -500,7 +500,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                 <div className="flex-1">
                                     <h2 className="text-xl font-bold text-white mb-2">Desvincular Computador?</h2>
                                     <p className="text-sm text-slate-400 leading-relaxed">
-                                        VocÃª perderÃ¡ o acesso remoto e a telemetria deste dispositivo.
+                                        Você perderá o acesso remoto e a telemetria deste dispositivo.
                                     </p>
                                 </div>
                             </div>
@@ -522,8 +522,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     </motion.div>
                 )}
             </AnimatePresence>
-            
-            {/* Modal de LicenÃ§a Expirada */}
+
+            {/* Modal de Licença Expirada */}
             <LicenseExpiredModal
                 isOpen={licenseModalOpen}
                 onClose={() => setLicenseModalOpen(false)}
