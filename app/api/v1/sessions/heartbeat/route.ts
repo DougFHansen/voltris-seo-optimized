@@ -148,7 +148,7 @@ export async function POST(req: NextRequest) {
             await supabaseAdmin
                 .from('devices')
                 .update({
-                    last_heartbeat: new Date().toISOString(),
+                    last_heartbeat_at: new Date().toISOString(),
                     status: status || 'online' // Garantir que fique 'online' se estiver enviando heartbeat
                 })
                 .eq('machine_id', machine_id);

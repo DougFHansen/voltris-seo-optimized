@@ -50,10 +50,15 @@ export async function POST(req: NextRequest) {
 
         if (existingDevice) {
             device = existingDevice;
-            // Update hostname if changed
+            // Update hostname and app_version if changed
             await supabaseAdmin
                 .from('devices')
-                .update({ hostname, updated_at: new Date().toISOString() })
+                .update({
+                    hostname,
+                    app_version,
+                    last_heartbeat_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString()
+                })
                 .eq('id', existingDevice.id);
         } else {
             // Create new device
@@ -62,8 +67,10 @@ export async function POST(req: NextRequest) {
                 .insert({
                     machine_id,
                     hostname,
+                    app_version,
                     os_version: hardware.os_version,
                     architecture: hardware.architecture || 'x64',
+                    last_heartbeat_at: new Date().toISOString(),
                 })
                 .select('id')
                 .single();
