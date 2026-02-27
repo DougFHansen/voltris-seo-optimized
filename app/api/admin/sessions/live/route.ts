@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
                 ended_at: new Date().toISOString(),
             })
             .in('status', ['active', 'idle'])
-            .lt('last_heartbeat_at', new Date(Date.now() - 5 * 60 * 1000).toISOString());
+            .lt('last_heartbeat_at', new Date(Date.now() - 3 * 60 * 1000).toISOString());
 
         // 1. Get Active Sessions (Online Now) with detailed info
         const { data: activeSessions, error } = await supabase

@@ -285,7 +285,7 @@ export default function OptimizerClient() {
                                     </div>
 
                                     <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
-                                        <span className="text-[11px] text-slate-400">Ãndice de Estabilidade</span>
+                                        <span className="text-[11px] text-slate-400">Índice de Estabilidade</span>
                                         <span className="text-xs font-mono text-emerald-400">99.9%</span>
                                     </div>
                                 </div>
@@ -293,7 +293,7 @@ export default function OptimizerClient() {
                                 {/* Footer Mode */}
                                 <div className="pt-2 border-t border-white/[0.06] flex justify-between items-center">
                                     <span className="text-[10px] text-slate-500">Modo de Otimização</span>
-                                    <span className="text-[10px] font-bold text-white px-2 py-0.5 border border-white/10 rounded">LATÃŠNCIA MÃNIMA</span>
+                                    <span className="text-[10px] font-bold text-white px-2 py-0.5 border border-white/10 rounded">LATÊNCIA MÍNIMA</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -431,7 +431,7 @@ export default function OptimizerClient() {
                     <div className="container mx-auto px-4">
                         <div className="flex flex-col md:flex-row items-end justify-between mb-20 max-w-7xl mx-auto gap-8">
                             <div className="max-w-2xl">
-                                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Engenharia Sob o CapÃ´</h2>
+                                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Engenharia Sob o Capô</h2>
                                 <p className="text-slate-400 text-lg leading-relaxed">
                                     Segurança e Performance não são opostos. O Voltris atua em camadas profundas do Windows (Registry, Services, Kernel) para desbloquear hardware adormecido de forma segura.
                                 </p>
@@ -661,7 +661,7 @@ export default function OptimizerClient() {
                     </div>
                 </section>
 
-                {/* --- SEO SECTION: PARA USUÃRIOS COMUNS --- */}
+                {/* --- SEO SECTION: PARA USUÁRIOS COMUNS --- */}
                 <section className="py-32 relative z-10 bg-[#050510]">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto">

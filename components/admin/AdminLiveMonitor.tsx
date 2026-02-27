@@ -39,7 +39,7 @@ export default function AdminLiveMonitor() {
     useEffect(() => {
         fetchData();
         const interval = setInterval(fetchData, 5000);
-        
+
         // Subscribe to realtime changes on sessions table
         const channel = supabase
             .channel('admin-sessions')
@@ -56,7 +56,7 @@ export default function AdminLiveMonitor() {
                 }
             )
             .subscribe();
-        
+
         return () => {
             clearInterval(interval);
             supabase.removeChannel(channel);
@@ -249,9 +249,9 @@ export default function AdminLiveMonitor() {
                                                 <TableCell>
                                                     <div className="flex flex-col gap-1">
                                                         <Badge variant="outline" className={getStatusColor(session.status)}>
-                                                            {session.status === 'active' ? 'ATIVO' : 
-                                                             session.status === 'idle' ? 'INATIVO' : 
-                                                             'DESCONECTADO'}
+                                                            {session.status === 'active' ? 'ATIVO' :
+                                                                session.status === 'idle' ? 'INATIVO' :
+                                                                    'OFFLINE'}
                                                         </Badge>
                                                         {session.health_score != null && (
                                                             <Badge

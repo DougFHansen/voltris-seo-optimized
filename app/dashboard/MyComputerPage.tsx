@@ -495,7 +495,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                         >
                             <div className="flex items-start gap-4 mb-6">
                                 <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-2xl">
-                                    âš ï¸
+                                    ⚠️
                                 </div>
                                 <div className="flex-1">
                                     <h2 className="text-xl font-bold text-white mb-2">Desvincular Computador?</h2>
