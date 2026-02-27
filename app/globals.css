@@ -324,13 +324,22 @@ h1,
   }
 }
 
-/* Prevenir overflow horizontal */
-html,
-body {
-  overflow-x: hidden !important;
+/* Prevenir overflow horizontal no root */
+html {
+  overflow-x: hidden;
   width: 100%;
   max-width: 100%;
   scroll-behavior: smooth;
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  overflow-y: visible !important;
 }
 
 /* Melhorias de responsividade premium */
@@ -464,19 +473,6 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* ===== CORREÇÕES DE OVERFLOW GLOBAL ===== */
-
-/* Permitir scroll vertical natural e prevenir overflow horizontal */
-html,
-body {
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  width: 100%;
-  max-width: 100%;
-  scroll-behavior: smooth;
 }
 
 /* Container do formulário de login */
@@ -1012,19 +1008,6 @@ body {
   }
 }
 
-/* ===== CORREÇÕES DE OVERFLOW GLOBAL ===== */
-
-/* Permitir scroll vertical natural e prevenir overflow horizontal */
-html,
-body {
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  width: 100%;
-  max-width: 100%;
-  scroll-behavior: smooth;
-}
-
 /* Otimização de exibição de fonte */
 
 @media (max-width: 639px) {
@@ -1152,11 +1135,10 @@ body {
 }
 
 .custom-scrollbar-modern::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, 
-    rgba(49, 168, 255, 0.4) 0%, 
-    rgba(139, 49, 255, 0.6) 50%, 
-    rgba(255, 75, 107, 0.4) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(49, 168, 255, 0.4) 0%,
+      rgba(139, 49, 255, 0.6) 50%,
+      rgba(255, 75, 107, 0.4) 100%);
   border-radius: 10px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -1164,20 +1146,18 @@ body {
 }
 
 .custom-scrollbar-modern::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, 
-    rgba(49, 168, 255, 0.7) 0%, 
-    rgba(139, 49, 255, 0.9) 50%, 
-    rgba(255, 75, 107, 0.7) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(49, 168, 255, 0.7) 0%,
+      rgba(139, 49, 255, 0.9) 50%,
+      rgba(255, 75, 107, 0.7) 100%);
   box-shadow: 0 0 10px rgba(139, 49, 255, 0.5);
 }
 
 .custom-scrollbar-modern::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(180deg, 
-    rgba(49, 168, 255, 0.9) 0%, 
-    rgba(139, 49, 255, 1) 50%, 
-    rgba(255, 75, 107, 0.9) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(49, 168, 255, 0.9) 0%,
+      rgba(139, 49, 255, 1) 50%,
+      rgba(255, 75, 107, 0.9) 100%);
 }
 
 /* Firefox */
