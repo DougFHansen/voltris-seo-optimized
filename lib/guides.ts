@@ -35,17 +35,18 @@ export function getAllGuides(): GuideMetadata[] {
                     const content = fs.readFileSync(pagePath, 'utf8');
 
                     // Regex to extract the guideMetadata object literal
-                    const match = content.match(/export const guideMetadata = {([\s\S]*?)};/);
+                    // Matches: export const guideMetadata[: Type] = { ... }[;]
+                    const match = content.match(/export const guideMetadata(?:\s*:\s*[\w<>\[\]]+)?\s*=\s*{([\s\S]*?)}(?:;|\s|$)/);
 
                     if (match) {
                         const block = match[1];
 
                         // Helper to extract values safely
                         const getValue = (key: string) => {
-                            // Match key: "value" or key: 'value'
-                            // Capture group 1 is the content inside quotes
-                            const m = block.match(new RegExp(`${key}:\\s*["']((?:[^"'\\\\]|\\\\.)*)["']`));
-                            return m ? m[1].replace(/\\"/g, '"').replace(/\\'/g, "'") : '';
+                            // Match key: "value" or key: 'value' or key: `value`
+                            // Capture group 1 is the content inside quotes/ticks
+                            const m = block.match(new RegExp(`${key}:\\s*["'\`]((?:[^"'\\\\\`]|\\\\.)*)["'\`]`));
+                            return m ? m[1].replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\\`/g, "`") : '';
                         };
 
                         const rawCategory = getValue('category') || 'outros';

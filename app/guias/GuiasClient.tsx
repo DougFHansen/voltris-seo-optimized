@@ -111,6 +111,13 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
+  // Determina se estamos em modo de busca (termo > 2 caracteres)
+  const isSearching = searchTerm.length >= 2;
+
+  // Se estiver buscando, ignora o filtro de categoria para mostrar todos os resultados relevantes
+  const effectivelySelectedCategory = isSearching ? 'all' : selectedCategory;
+
+
   // Merge os guias recebidos com a configuração de categorias
   const filteredCategories = CATEGORY_CONFIG.map(config => {
     // Filtra os guias que pertencem a esta categoria
@@ -129,11 +136,22 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
     };
   }).filter(category =>
     // Mostra a categoria se:
-    // 1. Ela foi selecionada (ou todas)
+    // 1. Ela foi selecionada (ou todas) - usamos effectivelySelectedCategory aqui
     // 2. E ela tem guias após o filtro de busca
-    (selectedCategory === 'all' || category.id === selectedCategory) &&
+    (effectivelySelectedCategory === 'all' || category.id === effectivelySelectedCategory) &&
     category.guides.length > 0
   );
+
+  const totalResults = filteredCategories.reduce((acc, cat) => acc + cat.guides.length, 0);
+
+  const handleSearchKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && totalResults > 0) {
+      const contentSection = document.getElementById('content-section');
+      if (contentSection) {
+        contentSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const getDifficultyColor = (diff: string) => {
     switch (diff) {
@@ -198,11 +216,32 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                     placeholder="Pesquise por erro, jogo ou componente..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={handleSearchKeyPress}
                     className="w-full px-6 py-5 bg-transparent border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:border-[#31A8FF]/50 text-lg transition-all"
                   />
                   <Search className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-slate-500 group-hover:text-[#31A8FF] transition-colors" />
                 </div>
               </div>
+
+              {/* Feedback Imediato da Busca */}
+              {isSearching && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 flex items-center justify-center gap-4 text-sm"
+                >
+                  <span className="text-slate-400">
+                    Encontramos <span className="text-white font-bold">{totalResults}</span> {totalResults === 1 ? 'guia' : 'guias'} para sua busca.
+                  </span>
+                  <button
+                    onClick={() => document.getElementById('content-section')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="text-[#31A8FF] font-black hover:underline flex items-center gap-1"
+                  >
+                    Ver resultados <ArrowRight className="w-3 h-3" />
+                  </button>
+                </motion.div>
+              )}
+
             </motion.div>
           </div>
 
@@ -223,7 +262,7 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
           <div className="max-w-7xl mx-auto">
 
             {/* Category Filter Cards */}
-            <div className="flex flex-wrap justify-center gap-3 mb-16">
+            <div className={`flex flex-wrap justify-center gap-3 mb-16 transition-all duration-500 ${isSearching ? 'opacity-30 pointer-events-none grayscale blur-[2px]' : 'opacity-100'}`}>
               <button
                 onClick={() => setSelectedCategory('all')}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all border ${selectedCategory === 'all'
