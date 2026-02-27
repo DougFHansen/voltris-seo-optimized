@@ -4,10 +4,10 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET(req: NextRequest) {
     try {
         const { searchParams } = new URL(req.url);
-        const machine_id = searchParams.get('machine_id');
+        const machine_id = searchParams.get('machine_id') || searchParams.get('device_id');
 
         console.log('[API/COMMANDS/PENDING] ===== INÍCIO =====');
-        console.log('[API/COMMANDS/PENDING] machine_id:', machine_id);
+        console.log('[API/COMMANDS/PENDING] machine_id/device_id:', machine_id);
 
         if (!machine_id) {
             console.error('[API/COMMANDS/PENDING] machine_id faltando!');
