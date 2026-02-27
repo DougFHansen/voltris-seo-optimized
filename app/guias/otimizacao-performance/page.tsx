@@ -345,6 +345,7 @@ export default function PerformanceOptimizationGuide() {
       relatedGuides={relatedGuides}
       faqItems={faqItems}
       externalReferences={externalReferences}
+      showVoltrisOptimizerCTA={true}
     />
   );
 }

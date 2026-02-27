@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
-  id: 'remover-bloatware-windows-powershell',
-  title: "Remover Bloatware do Windows 11 com PowerShell (2026)",
-  description: "Cansado de apps inúteis no Windows? Aprenda a usar scripts de PowerShell para remover bloatware e deixar seu sistema muito mais leve e rápido em 2026.",
-  category: 'software',
-  difficulty: 'Intermediário',
-  time: '20 min'
+    id: 'remover-bloatware-windows-powershell',
+    title: "Remover Bloatware do Windows 11 com PowerShell (2026)",
+    description: "Cansado de apps inúteis no Windows? Aprenda a usar scripts de PowerShell para remover bloatware e deixar seu sistema muito mais leve e rápido em 2026.",
+    category: 'software',
+    difficulty: 'Intermediário',
+    time: '20 min'
 };
 
 const title = "Remover Bloatware do Windows 11 com PowerShell (2026)";
@@ -102,6 +102,7 @@ export default function BloatwareRemovalGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            showVoltrisOptimizerCTA={true}
         />
     );
 }

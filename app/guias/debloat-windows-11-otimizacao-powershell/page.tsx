@@ -140,7 +140,33 @@ export default function DebloatGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
-            showVoltrisOptimizerCTA={true}
-        />
+            showVoltrisOptimizerCTA={false}
+        >
+            <div className="mt-12 p-8 rounded-3xl bg-gradient-to-br from-[#121218] to-[#050510] border border-white/5 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                    <div className="flex flex-col md:flex-row items-center gap-8">
+                        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="m12 14 4-4" /><path d="M3.34 19a10 10 0 1 1 17.32 0" /><path d="m9.01 19 1.74-4.63a2 2 0 0 1 2.5-1.12l4.63 1.74" /></svg>
+                        </div>
+                        <div className="flex-grow text-center md:text-left">
+                            <h3 className="text-2xl font-bold text-white mb-2">Otimização Automática com Voltris Optimizer</h3>
+                            <p className="text-slate-400 mb-6 max-w-2xl">
+                                O <strong>Voltris Optimizer</strong> aplica todas as correções deste guia (e mais 200 outras) com um único clique. Otimize Processos, Rede, Input Lag e FPS instantaneamente.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstaller.exe" className="px-8 py-4 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2">
+                                    Baixar Agora (x64)
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-y-[2px] transition-transform"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                                </a>
+                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstallerX86.exe" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
+                                    Para sistemas x86
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </GuideTemplate>
     );
 }

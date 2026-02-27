@@ -390,13 +390,13 @@ export function GuideTemplateClient({
                                                 O <strong>Voltris Optimizer</strong> aplica todas as correções deste guia (e mais 200 outras) com um único clique. Otimize Processos, Rede, Input Lag e FPS instantaneamente.
                                             </p>
                                             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                                                <Link href="/optimizer" className="px-8 py-4 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2">
+                                                <Link href="/voltrisoptimizer" className="px-8 py-4 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2">
                                                     Baixar Voltris Optimizer
                                                     <ArrowRight className="w-5 h-5" />
                                                 </Link>
-                                                <Link href="/funcionalidades" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center">
-                                                    Ver Funcionalidades
-                                                </Link>
+                                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstallerX86.exe" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
+                                                    Versão x86
+                                                </a>
                                             </div>
                                             <p className="text-xs text-slate-500 flex items-center justify-center md:justify-start gap-2">
                                                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
