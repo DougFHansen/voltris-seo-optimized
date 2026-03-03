@@ -56,6 +56,7 @@ export async function POST(req: NextRequest) {
                 .update({
                     hostname,
                     app_version,
+                    status: 'online', // Ensures device appears online immediately upon app launch
                     last_heartbeat_at: new Date().toISOString(),
                     updated_at: new Date().toISOString()
                 })
@@ -68,6 +69,7 @@ export async function POST(req: NextRequest) {
                     machine_id,
                     hostname,
                     app_version,
+                    status: 'online', // Emite status imediato
                     os_version: hardware.os_version,
                     architecture: hardware.architecture || 'x64',
                     last_heartbeat_at: new Date().toISOString(),
