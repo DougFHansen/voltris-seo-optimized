@@ -394,7 +394,7 @@ export function GuideTemplateClient({
                                                     Baixar Voltris Optimizer
                                                     <ArrowRight className="w-5 h-5" />
                                                 </Link>
-                                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstallerX86.exe" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
+                                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstallerX86.exe" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
                                                     Versão x86
                                                 </a>
                                             </div>

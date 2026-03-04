@@ -227,21 +227,21 @@ export default function HowItWorksClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.6
+                                        v1.0.0.7
                                     </span>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row items-center gap-5 justify-center w-full">
                                     <div className="flex flex-col w-full gap-2">
                                         <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstaller.exe"
+                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstaller.exe"
                                             className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                         >
                                             <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
                                             DOWNLOAD x64
                                         </a>
                                         <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstallerX86.exe"
+                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstallerX86.exe"
                                             className="text-[10px] text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
                                         >
                                             Download Versão x86 (32 bits)
@@ -458,19 +458,19 @@ export default function HowItWorksClient() {
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-xs text-slate-500 font-medium tracking-widest uppercase">Versão de Engenharia:</span>
                                 <span className="px-3 py-1 bg-[#31A8FF]/10 border border-[#31A8FF]/20 rounded-md text-sm font-bold text-[#31A8FF]">
-                                    v1.6
+                                    v1.0.0.7
                                 </span>
                             </div>
                             <div className="flex flex-col items-center gap-2 w-full max-w-md">
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstaller.exe"
+                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstaller.exe"
                                     className="w-full inline-flex items-center justify-center gap-4 px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-2xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300 transform"
                                 >
                                     <Zap className="w-6 h-6" />
                                     BAIXAR SOFTWARE (x64)
                                 </a>
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstallerX86.exe"
+                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstallerX86.exe"
                                     className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
                                 >
                                     Para sistemas Windows x86
