@@ -39,28 +39,24 @@ export async function POST(req: NextRequest) {
         console.log(`[CHECKOUT ${requestId}] 🔍 Preparando inserção no Supabase para ${customer.email}`);
 
         // 3. PERSISTÊNCIA ANTERIOR (REQUISITO 2)
-        const { data: dbPayment, error: dbError } = await supabase
-            .from('payments')
-            .insert([{
-                preference_id: referenceId,
-                email: customer.email,
-                full_name: (customer.name || 'Cliente Voltris').substring(0, 200),
-                license_type: license_type || 'pro',
-                amount: totalAmount,
-                status: 'pending'
-            }])
-            .select()
-            .single();
+        // Tentamos salvar, mas se falhar não travamos o pagamento do cliente (Fail-soft)
+        try {
+            const { error: dbError } = await supabase
+                .from('payments')
+                .insert([{
+                    preference_id: referenceId,
+                    email: customer.email,
+                    full_name: (customer.name || 'Cliente Voltris').substring(0, 200),
+                    license_type: license_type || 'pro',
+                    amount: totalAmount,
+                    status: 'pending'
+                }]);
 
-        if (dbError) {
-            console.error(`[CHECKOUT ${requestId}] ❌ Erro Detalhado Supabase:`, dbError);
-            return NextResponse.json(
-                {
-                    error: 'Falha no banco de dados',
-                    details: `[Supabase ${dbError.code || 'ERR'}]: ${dbError.message || 'Erro de conexão ou schema'}`
-                },
-                { status: 500 }
-            );
+            if (dbError) {
+                console.error(`[CHECKOUT ${requestId}] ⚠️ Erro não bloqueante Supabase:`, dbError);
+            }
+        } catch (e) {
+            console.error(`[CHECKOUT ${requestId}] ⚠️ Falha na conexão Supabase:`, e);
         }
 
         // 4. CONSTRUÇÃO DO PAYLOAD PAGBANK
@@ -73,11 +69,12 @@ export async function POST(req: NextRequest) {
         const phoneNumber = cleanPhone.substring(2);
 
         const customerPayload: any = {
-            name: customer.name,
+            name: (customer.name || 'Comprador de Testes').substring(0, 60),
             email: customer.email,
         };
 
-        if (cleanTaxId) {
+        // Só envia tax_id se tiver o tamanho correto para evitar erro de 'invalid_value'
+        if (cleanTaxId && (cleanTaxId.length === 11 || cleanTaxId.length === 14)) {
             customerPayload.tax_id = cleanTaxId;
         }
 
