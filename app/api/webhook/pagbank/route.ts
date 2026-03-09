@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
         const { data: payment, error: fetchError } = await supabase
             .from('payments')
             .select('*')
-            .eq('preference_id', referenceId)
+            .eq('reference_id', referenceId)
             .single();
 
         if (fetchError || !payment) {
@@ -73,9 +73,8 @@ export async function POST(req: NextRequest) {
             .from('payments')
             .update({
                 status: newInternalStatus,
-                payment_id: pagbankId,
-                processed_at: status === 'PAID' ? new Date().toISOString() : null,
-                mercado_pago_data: { ...payment.mercado_pago_data, pagbank_event: event } // Reutilizando coluna para dados gerais
+                pagbank_id: pagbankId,
+                updated_at: new Date().toISOString()
             })
             .eq('id', payment.id);
 
@@ -90,10 +89,11 @@ export async function POST(req: NextRequest) {
             // Chamar RPC ou Função SQL para gerar licença
             // Usaremos a função calculate_expiry_date definida no SQL
             const { data: licenseData, error: licenseError } = await supabase
-                .rpc('generate_complete_license_v2', {
+                .rpc('generate_complete_license_v3', {
                     p_payment_id: payment.id,
+                    p_user_id: payment.user_id,
                     p_email: payment.email,
-                    p_license_type: payment.license_type
+                    p_plan_type: payment.plan_type
                 });
 
             if (licenseError) {
@@ -123,7 +123,7 @@ export async function POST(req: NextRequest) {
                         maxDevices: license.max_devices,
                         expiresAt: license.expires_at,
                         amountPaid: Number(payment.amount),
-                        fullName: payment.full_name || undefined
+                        fullName: payment.customer_name || undefined
                     });
                 }
             }

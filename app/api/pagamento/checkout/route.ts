@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
     try {
         const body = await req.json();
-        const { items, customer, license_type = 'pro' } = body;
+        const { items, customer, license_type = 'pro', user_id } = body;
 
         // 1. VALIDAÇÃO DE INPUT
         if (!items || items.length === 0) return NextResponse.json({ error: 'Itens obrigatórios' }, { status: 400 });
@@ -44,10 +44,12 @@ export async function POST(req: NextRequest) {
             const { error: dbError } = await supabase
                 .from('payments')
                 .insert([{
-                    preference_id: referenceId,
+                    reference_id: referenceId,
+                    user_id: user_id || null,
                     email: customer.email,
-                    full_name: (customer.name || 'Cliente Voltris').substring(0, 200),
-                    license_type: license_type || 'pro',
+                    customer_name: (customer.name || 'Cliente Voltris').substring(0, 200),
+                    customer_tax_id: cleanTaxId || null,
+                    plan_type: license_type || 'pro',
                     amount: totalAmount,
                     status: 'pending'
                 }]);

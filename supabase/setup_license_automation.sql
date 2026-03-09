@@ -1,110 +1,166 @@
--- =====================================================
--- ESTRUTURA PARA PAGAMENTOS E LICENÇAS - VOLTRIS
--- Execute este script no SQL Editor do Supabase
--- =====================================================
+-- ==========================================
+-- VOLTRIS OPTIMIZER - SISTEMA DE LICENCIAMENTO PRO
+-- SCRIPT DE RESET E CONFIGURAÇÃO COMPLETA (V3)
+-- ALINHADO COM: LicenseGenerator, LicenseManager.cs e Checkout
+-- ==========================================
 
--- 1. TABELA DE PAGAMENTOS (ESSENCIAL PARA O CHECKOUT)
-CREATE TABLE IF NOT EXISTS public.payments (
+-- Habilitar extensões necessárias
+CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+-- 1. LIMPEZA TOTAL (OPCIONAL - CUIDADO)
+DROP TABLE IF EXISTS public.licenses CASCADE;
+DROP TABLE IF EXISTS public.payments CASCADE;
+DROP TABLE IF EXISTS public.audit_logs CASCADE;
+
+-- 2. TABELA DE PAGAMENTOS (PAGBANK)
+CREATE TABLE public.payments (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    preference_id TEXT UNIQUE NOT NULL, -- ID que enviamos ao PagBank
-    payment_id TEXT, -- ID que o PagBank nos devolve
+    user_id UUID REFERENCES auth.users(id),
     email TEXT NOT NULL,
-    full_name TEXT,
-    license_type TEXT NOT NULL DEFAULT 'pro',
+    reference_id TEXT UNIQUE NOT NULL, -- ID do PagBank (VOLTRIS-...)
+    pagbank_id TEXT, -- ID da transação no PagBank
     amount DECIMAL(10,2) NOT NULL,
-    status TEXT NOT NULL DEFAULT 'pending', -- pending, approved, cancelled, rejected
-    processed_at TIMESTAMPTZ,
-    mercado_pago_data JSONB, -- Usamos para guardar o log completo do PagBank
-    created_at TIMESTAMPTZ DEFAULT NOW()
+    status TEXT NOT NULL DEFAULT 'pending', -- pending, authorized, paid, declined
+    plan_type TEXT NOT NULL, -- trial, standard, pro, enterprise
+    customer_name TEXT,
+    customer_tax_id TEXT, -- CPF/CNPJ
+    created_at TIMESTAMPTZ DEFAULT now(),
+    updated_at TIMESTAMPTZ DEFAULT now()
 );
 
--- 2. TABELA DE LOGS DE AUDITORIA
-CREATE TABLE IF NOT EXISTS public.audit_logs (
+-- 3. TABELA DE LICENÇAS (COMPATÍVEL COM GERADOR C#)
+CREATE TABLE public.licenses (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    event TEXT NOT NULL,
-    details JSONB,
-    severity TEXT DEFAULT 'info',
-    created_at TIMESTAMPTZ DEFAULT NOW()
+    payment_id UUID REFERENCES public.payments(id),
+    user_id UUID REFERENCES auth.users(id),
+    email TEXT NOT NULL,
+    client_id TEXT NOT NULL, -- Parte ID da licença (ex: 230697)
+    license_key TEXT UNIQUE NOT NULL, -- Chave Completa (VOLTRIS-PRO-...)
+    license_type TEXT NOT NULL, -- trial, standard, pro, enterprise
+    max_devices INTEGER DEFAULT 1,
+    is_active BOOLEAN DEFAULT true,
+    expires_at TIMESTAMPTZ NOT NULL,
+    activated_at TIMESTAMPTZ,
+    last_device_id TEXT, 
+    created_at TIMESTAMPTZ DEFAULT now()
 );
 
--- 3. AJUSTE NA TABELA DE LICENÇAS (Garantir que comporte o payment_id)
--- Se a tabela de licenças já existir, apenas adicionamos a coluna se necessário
-DO $$ 
-BEGIN 
-    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='licenses' AND column_name='payment_id') THEN
-        ALTER TABLE public.licenses ADD COLUMN payment_id UUID REFERENCES public.payments(id);
-    END IF;
-END $$;
+-- 4. LOGS DE AUDITORIA
+CREATE TABLE public.audit_logs (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    event_type TEXT NOT NULL,
+    metadata JSONB,
+    created_at TIMESTAMPTZ DEFAULT now()
+);
 
--- 4. FUNÇÃO RPC PARA GERAÇÃO ATÔMICA DE LICENÇA
-CREATE OR REPLACE FUNCTION generate_complete_license_v2(
-    p_payment_id UUID,
-    p_email TEXT,
-    p_license_type TEXT
-) RETURNS JSONB AS $$
+-- 5. FUNÇÃO PARA GERAR ASSINATURA (ALGORITMO C#)
+CREATE OR REPLACE FUNCTION public.generate_voltris_signature(p_content TEXT)
+RETURNS TEXT AS $$
 DECLARE
-    v_license_key TEXT;
-    v_max_devices INTEGER;
-    v_expiry_date TIMESTAMPTZ;
-    v_client_id TEXT;
-    v_result JSONB;
+    v_secret TEXT := 'VOLTRIS_SECRET_LICENSE_KEY_2025';
+    v_hash TEXT;
 BEGIN
-    -- 1. Verificar se já existe licença para este pagamento
-    IF EXISTS (SELECT 1 FROM licenses WHERE payment_id = p_payment_id) THEN
-        SELECT json_build_object('success', true, 'msg', 'License already exists') INTO v_result;
-        RETURN v_result;
-    END IF;
+    -- SHA256(Content + Secret) -> Hex Uppercase -> First 16 chars
+    v_hash := upper(encode(digest(p_content || v_secret, 'sha256'), 'hex'));
+    RETURN substring(v_hash from 1 for 16);
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
-    -- 2. Obter configurações do plano (Ajuste conforme sua lógica de max_devices)
-    v_max_devices := 1; 
+-- 6. FUNÇÃO PARA GERAR LICENÇA COMPLETA
+CREATE OR REPLACE FUNCTION public.generate_complete_license_v3(
+    p_payment_id UUID,
+    p_user_id UUID,
+    p_email TEXT,
+    p_plan_type TEXT
+)
+RETURNS JSONB AS $$
+DECLARE
+    v_client_id TEXT;
+    v_plan_code TEXT;
+    v_max_devices INTEGER;
+    v_valid_until DATE;
+    v_json_content TEXT;
+    v_signature TEXT;
+    v_final_key TEXT;
+    v_license_id UUID;
+    v_valid_until_str TEXT;
+    v_key_date_str TEXT;
+BEGIN
+    -- 1. Determinar Configurações do Plano
+    CASE lower(p_plan_type)
+        WHEN 'trial' THEN 
+            v_plan_code := 'TRI';
+            v_max_devices := 1;
+            v_valid_until := CURRENT_DATE + INTERVAL '15 days';
+        WHEN 'standard' THEN 
+            v_plan_code := 'STA';
+            v_max_devices := 1;
+            v_valid_until := CURRENT_DATE + INTERVAL '1 year';
+        WHEN 'pro' THEN 
+            v_plan_code := 'PRO';
+            v_max_devices := 3;
+            v_valid_until := CURRENT_DATE + INTERVAL '1 year';
+        WHEN 'enterprise' THEN 
+            v_plan_code := 'ENT';
+            v_max_devices := 9999;
+            v_valid_until := CURRENT_DATE + INTERVAL '100 years';
+        ELSE
+            v_plan_code := 'STA';
+            v_max_devices := 1;
+            v_valid_until := CURRENT_DATE + INTERVAL '1 year';
+    END CASE;
 
-    -- 3. Calcular data de expiração (Assume que existe a função calculate_expiry_date)
-    BEGIN
-        v_expiry_date := calculate_expiry_date(p_license_type);
-    EXCEPTION WHEN OTHERS THEN
-        v_expiry_date := NOW() + interval '1 year';
-    END;
+    -- 2. Gerar Client ID Aleatório (6 dígitos - igual ao formatado no gerador)
+    v_client_id := floor(random() * (999999-100000+1) + 100000)::TEXT;
 
-    -- 4. Gerar chave única
-    v_client_id := UPPER(SUBSTRING(REPLACE(p_payment_id::TEXT, '-', ''), 1, 8));
-    
-    -- Usar função de hashing se existir, senão gerar randômico
-    BEGIN
-        v_license_key := generate_license_key(v_client_id, v_expiry_date::DATE, p_license_type);
-    EXCEPTION WHEN OTHERS THEN
-        v_license_key := UPPER(SUBSTRING(REPLACE(gen_random_uuid()::TEXT, '-', ''), 1, 16));
-    END;
+    -- 3. Preparar Formatos de Data
+    v_valid_until_str := to_char(v_valid_until, 'YYYY-MM-DD'); -- Formato JSON
+    v_key_date_str := to_char(v_valid_until, 'YYYYMMDD');    -- Formato Chave
 
-    -- 5. Inserir Licença
-    INSERT INTO licenses (
-        license_key,
-        payment_id,
-        email,
-        license_type,
-        max_devices,
-        expires_at,
-        is_active,
-        created_at
+    -- 4. Criar JSON de Conteúdo (EXATAMENTE como no C#)
+    -- Format: {"id":"123456","validUntil":"2025-12-31","plan":"pro","maxDevices":3}
+    v_json_content := format('{"id":"%s","validUntil":"%s","plan":"%s","maxDevices":%s}', 
+                             v_client_id, v_valid_until_str, lower(p_plan_type), v_max_devices);
+
+    -- 5. Gerar Assinatura
+    v_signature := public.generate_voltris_signature(v_json_content);
+
+    -- 6. Montar Chave Final
+    -- Format: VOLTRIS-PRO-123456-20251231-HASH16
+    v_final_key := format('VOLTRIS-%s-%s-%s-%s', v_plan_code, v_client_id, v_key_date_str, v_signature);
+
+    -- 7. Salvar no Banco
+    INSERT INTO public.licenses (
+        payment_id, user_id, email, client_id, license_key, 
+        license_type, max_devices, expires_at
     ) VALUES (
-        v_license_key,
-        p_payment_id,
-        p_email,
-        p_license_type,
-        v_max_devices,
-        v_expiry_date,
-        true,
-        NOW()
-    );
+        p_payment_id, p_user_id, p_email, v_client_id, v_final_key, 
+        p_plan_type, v_max_devices, v_valid_until
+    ) RETURNING id INTO v_license_id;
 
-    v_result := json_build_object(
-        'success', true, 
-        'license_key', v_license_key, 
-        'expires_at', v_expiry_date
+    RETURN jsonb_build_object(
+        'license_id', v_license_id,
+        'license_key', v_final_key,
+        'expires_at', v_valid_until
     );
-    
-    RETURN v_result;
 
 EXCEPTION WHEN OTHERS THEN
-    RETURN json_build_object('success', false, 'error', SQLERRM);
+    INSERT INTO public.audit_logs (event_type, metadata) 
+    VALUES ('LICENSE_GEN_ERROR', jsonb_build_object('error', SQLERRM, 'email', p_email));
+    RETURN NULL;
 END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+$$ LANGUAGE plpgsql;
+
+-- 7. POLÍTICAS DE SEGURANÇA (RLS)
+ALTER TABLE public.payments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.licenses ENABLE ROW LEVEL SECURITY;
+
+-- Usuários só veem seus próprios registros
+CREATE POLICY "Users can view own payments" ON public.payments FOR SELECT USING (auth.uid() = user_id);
+CREATE POLICY "Users can view own licenses" ON public.licenses FOR SELECT USING (auth.uid() = user_id OR email = (SELECT (auth.jwt() ->> 'email')));
+
+-- Service role pode fazer tudo
+DROP POLICY IF EXISTS "Service role full access on payments" ON public.payments;
+CREATE POLICY "Service role full access on payments" ON public.payments FOR ALL USING (true);
+DROP POLICY IF EXISTS "Service role full access on licenses" ON public.licenses;
+CREATE POLICY "Service role full access on licenses" ON public.licenses FOR ALL USING (true);
