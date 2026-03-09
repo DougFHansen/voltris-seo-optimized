@@ -109,6 +109,25 @@ function DashboardContent() {
     if (user) fetchData();
   }, [user, fetchData]);
 
+  // DETECTAR SUCESSO NO CHECKOUT (PAGBANK)
+  useEffect(() => {
+    const success = searchParams.get('checkout_success');
+    if (success === 'true') {
+      toast.success('Pagamento aprovado! Sua licença já está disponível na sua conta.', {
+        duration: 8000,
+        position: 'top-center',
+        icon: '🚀',
+        style: {
+          background: '#121218',
+          color: '#fff',
+          border: '1px solid rgba(49, 168, 255, 0.2)',
+        },
+      });
+      // Forçar atualização para mostrar o novo pedido/licença
+      fetchData(false);
+    }
+  }, [searchParams, fetchData]);
+
   const filteredOrders = orders.filter(order => filter === 'all' || order.status === filter);
 
   const stats = {

@@ -55,12 +55,18 @@ export default function LoginPage() {
       const instId = params.get('installation_id');
       if (instId) setInstallationId(instId);
 
+      // NOVO: Detectar se vem de um checkout com sucesso
+      if (params.get('checkout_success') === 'true') {
+        setIsLoginView(false); // Sugerir cadastro para novos compradores
+        setPendingOrder(true);
+      }
+
       // Só ativa pendingOrder se vier EXPLICITAMENTE na URL. 
-      if (params.get('pendingOrder') === 'true') {
+      if (params.get('pendingOrder') === 'true' || params.get('checkout_success') === 'true') {
         setShowWhatsAppBtn(true);
         setPendingOrder(true);
       }
-      setRedirectUrl(params.get('redirect') || '');
+      setRedirectUrl(params.get('redirect') || (params.get('checkout_success') === 'true' ? '/dashboard?checkout_success=true' : ''));
     }
   }, []);
 
