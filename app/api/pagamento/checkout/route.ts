@@ -43,17 +43,22 @@ export async function POST(req: NextRequest) {
             .insert({
                 preference_id: referenceId,
                 email: customer.email,
-                full_name: customer.name,
+                full_name: customer.name || 'Cliente Voltris',
                 license_type: license_type,
                 amount: totalAmount,
-                status: 'pending'
+                status: 'pending',
+                mercado_pago_data: { checkout_request: requestId }
             })
             .select()
             .single();
 
         if (dbError) {
-            console.error(`[CHECKOUT ${requestId}] ❌ Erro ao criar pagamento no DB:`, dbError);
-            throw new Error('Falha ao registrar intenção de pagamento');
+            console.error(`[CHECKOUT ${requestId}] ❌ Erro Crítico Supabase:`, {
+                code: dbError.code,
+                message: dbError.message,
+                details: dbError.details
+            });
+            throw new Error(`Erro ao salvar intenção de pagamento: ${dbError.message}`);
         }
 
         // 4. CONSTRUÇÃO DO PAYLOAD PAGBANK
