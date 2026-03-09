@@ -73,8 +73,11 @@ export async function POST(req: NextRequest) {
             email: customer.email,
         };
 
-        // Só envia tax_id se tiver o tamanho correto para evitar erro de 'invalid_value'
-        if (cleanTaxId && (cleanTaxId.length === 11 || cleanTaxId.length === 14)) {
+        // FORÇA BRUTA: Se for sandbox, nunca envia tax_id para não travar o teste
+        if (process.env.PAGBANK_ENV === 'sandbox') {
+            console.log(`[CHECKOUT ${requestId}] 🛠️ Sandbox Mode: Removendo tax_id para evitar erro.`);
+            // tax_id removido
+        } else if (cleanTaxId && (cleanTaxId.length === 11 || cleanTaxId.length === 14)) {
             customerPayload.tax_id = cleanTaxId;
         }
 
