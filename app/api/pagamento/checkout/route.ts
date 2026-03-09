@@ -34,31 +34,33 @@ export async function POST(req: NextRequest) {
         const referenceId = `VOLTRIS-${Date.now()}-${Math.random().toString(36).substring(7).toUpperCase()}`;
 
         // Calcular total
-        const totalAmount = items.reduce((acc: number, item: any) => acc + (item.price * (item.quantity || 1)), 0);
+        const totalAmount = items.reduce((acc: number, item: any) => acc + (Number(item.price || 0) * (item.quantity || 1)), 0);
+
+        console.log(`[CHECKOUT ${requestId}] 🔍 Preparando inserção no Supabase para ${customer.email}`);
 
         // 3. PERSISTÊNCIA ANTERIOR (REQUISITO 2)
-        // Criar registro 'pending' para garantir rastreabilidade
         const { data: dbPayment, error: dbError } = await supabase
             .from('payments')
-            .insert({
+            .insert([{
                 preference_id: referenceId,
                 email: customer.email,
-                full_name: customer.name || 'Cliente Voltris',
-                license_type: license_type,
+                full_name: (customer.name || 'Cliente Voltris').substring(0, 200),
+                license_type: license_type || 'pro',
                 amount: totalAmount,
-                status: 'pending',
-                mercado_pago_data: { checkout_request: requestId }
-            })
+                status: 'pending'
+            }])
             .select()
             .single();
 
         if (dbError) {
-            console.error(`[CHECKOUT ${requestId}] ❌ Erro Crítico Supabase:`, {
-                code: dbError.code,
-                message: dbError.message,
-                details: dbError.details
-            });
-            throw new Error(`Erro ao salvar intenção de pagamento: ${dbError.message}`);
+            console.error(`[CHECKOUT ${requestId}] ❌ Erro Detalhado Supabase:`, dbError);
+            return NextResponse.json(
+                {
+                    error: 'Falha no banco de dados',
+                    details: `[Supabase ${dbError.code || 'ERR'}]: ${dbError.message || 'Erro de conexão ou schema'}`
+                },
+                { status: 500 }
+            );
         }
 
         // 4. CONSTRUÇÃO DO PAYLOAD PAGBANK
