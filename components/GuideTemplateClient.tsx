@@ -57,6 +57,7 @@ export interface GuideTemplateProps {
     additionalContentSections?: ContentSection[];
     /** Exibir CTA do Voltris Optimizer */
     showVoltrisOptimizerCTA?: boolean;
+    children?: React.ReactNode;
 }
 
 export function GuideTemplateClient({
@@ -74,7 +75,8 @@ export function GuideTemplateClient({
     externalReferences = [],
     advancedContentSections,
     additionalContentSections,
-    showVoltrisOptimizerCTA = false
+    showVoltrisOptimizerCTA = false,
+    children
 }: GuideTemplateProps) {
     const hasCustomConclusion = contentSections.some(section =>
         section.title.toLowerCase().includes('conclusão') ||
@@ -394,7 +396,7 @@ export function GuideTemplateClient({
                                                     Baixar Voltris Optimizer
                                                     <ArrowRight className="w-5 h-5" />
                                                 </Link>
-                                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstallerX86.exe" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
+                                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstallerX86.exe" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
                                                     Versão x86
                                                 </a>
                                             </div>
@@ -432,6 +434,7 @@ export function GuideTemplateClient({
                             {/* --- SEO CONTENT INJECTION: GLOBAL GLOSSARY - MOVED TO /glossario --- */}
 
                             {/* Conclusion */}
+                            {children}
 
                             {/* Conclusion */}
                             {!hasCustomConclusion && (

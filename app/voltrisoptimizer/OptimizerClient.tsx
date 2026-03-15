@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
@@ -336,21 +336,21 @@ export default function OptimizerClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.0.7
+                                        v1.0.0.8
                                     </span>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full">
                                     <div className="flex flex-col w-full gap-2">
                                         <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstaller.exe"
+                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstaller.exe"
                                             className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                         >
                                             <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
                                             BAIXAR SOFTWARE
                                         </a>
                                         <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.7/VoltrisOptimizerInstallerX86.exe"
+                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstallerX86.exe"
                                             className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
                                         >
                                             Para sistemas Windows x86
@@ -910,19 +910,19 @@ export default function OptimizerClient() {
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                    v1.6
+                                    v1.8
                                 </span>
                             </div>
                             <div className="flex flex-col items-center gap-2 w-full max-w-sm">
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstaller.exe"
+                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstaller.exe"
                                     className="inline-flex items-center gap-4 w-full justify-center px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
                                 >
                                     <Download className="w-6 h-6" />
                                     BAIXAR SOFTWARE
                                 </a>
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.6/VoltrisOptimizerInstallerX86.exe"
+                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstallerX86.exe"
                                     className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
                                 >
                                     Para sistemas Windows x86
@@ -958,7 +958,7 @@ export default function OptimizerClient() {
                     "Otimização para streamers",
                     "Otimização para empresas"
                 ]}
-                softwareVersion="1.6"
+                softwareVersion="1.8"
                 datePublished="2024-01-01"
             />
         </>
