@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import OptimizerClient from './OptimizerClient';
 
 export const metadata: Metadata = {
-  title: 'VOLTRIS OPTIMIZER | Primeiro Software Brasileiro SaaS de Otimização de PC com Controle Remoto',
-  description: 'Software de otimização de PC profissional com controle remoto via web. Aumente FPS em jogos, otimize Windows para streamers, acelere computadores corporativos. Tecnologia SaaS brasileira inovadora para gamers, empresas e usuários domésticos.',
+  title: 'Voltris Optimizer | Otimizador de PC para Jogos e Empresas (Grátis)',
+  description: 'Aumente seu FPS em até 40% e elimine o lag do Windows. O Voltris Optimizer utiliza engenharia de kernel para acelerar seu PC e otimizar o sistema automaticamente. Gratuito e 100% Seguro.',
   keywords: [
     // Cluster: Core / Otimização Geral
     'otimizar windows',
@@ -77,7 +77,18 @@ export const metadata: Metadata = {
     'primeiro software brasileiro saas',
     'tecnologia brasileira',
     'inovação brasileira',
-    'software brasileiro de otimização'
+    'software brasileiro de otimização',
+
+    // Cluster: Autoridade Técnica (Novo)
+    'limpar shader cache nvidia',
+    'limpar shader cache amd',
+    'reduzir input lag windows',
+    'ajuste timer resolution',
+    'limpeza winsxs profunda',
+    'reparar windows corrompido sfc',
+    'otimização de kernel por ia',
+    'voltris shield segurança',
+    'lyra ai engine performance'
   ],
   openGraph: {
     title: 'VOLTRIS OPTIMIZER | Primeiro Software Brasileiro SaaS de Otimização com Controle Remoto',

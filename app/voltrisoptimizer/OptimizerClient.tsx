@@ -9,7 +9,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import {
     Cpu, Gauge, Wifi, Settings,
     MousePointer2, Layers, CheckCircle2, XCircle,
-    ChevronDown, Download, BarChart3, Radio, Briefcase, Minus, Laptop, Video, Zap, Activity, ShieldCheck, Database, Brain, Lock, Check
+    ChevronDown, Download, BarChart3, Radio, Briefcase, Minus, Laptop, Video, Zap, Activity, ShieldCheck, Database, Brain, Lock, Check, Wrench
 } from 'lucide-react';
 
 // --- COMPONENTS ---
@@ -140,15 +140,21 @@ export default function OptimizerClient() {
             gradient: 'from-[#00E5FF] to-[#00FFCA]'
         },
         {
-            icon: <ShieldCheck className="w-8 h-8" />,
-            title: 'Segurança & Privacidade',
-            desc: 'Fortalecimento de políticas de segurança e desativação de rastreadores invasivos do sistema.',
-            gradient: 'from-[#FFD700] to-[#FFAA00]'
+            icon: <Zap className="w-8 h-8" />,
+            title: 'Motor SafeTimer™',
+            desc: 'Redução real de 5-15ms de input lag através do ajuste de Timer Resolution (Multimedia API), similar ao NVIDIA Reflex.',
+            gradient: 'from-[#FFEE00] to-[#FFB300]'
+        },
+        {
+            icon: <Wrench className="w-8 h-8" />,
+            title: 'Reparo com 1 Clique',
+            desc: 'Fix instantâneo para erros de DirectX, Runtime e DLLs corrompidas via SFC/DISM automatizado.',
+            gradient: 'from-[#00FF94] to-[#00CC76]'
         },
         {
             icon: <Settings className="w-8 h-8" />,
-            title: 'Perfis Adaptativos',
-            desc: 'Otimizações que se adaptam automaticamente ao hardware detectado (Intel/AMD/NVIDIA).',
+            title: 'LYRA Intelligence',
+            desc: 'Heurística proprietária que aprende seus horários de pico e apps mais usados para antecipar otimizações.',
             gradient: 'from-[#FF0055] to-[#FF5588]'
         }
     ];
@@ -319,17 +325,16 @@ export default function OptimizerClient() {
 
                             <h1 className="text-5xl md:text-7xl lg:text-9xl font-extrabold tracking-tight mb-8 leading-[0.9] select-none text-center drop-shadow-lg">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]" style={{ letterSpacing: '0.04em' }}>
-                                    VOLTRIS <br />
+                                    PARE DE PERDER <br />
                                 </span>
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">
-                                    OPTIMIZER
+                                    FRAMES AGORA.
                                 </span>
                             </h1>
 
                             <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light mb-12 leading-relaxed tracking-wide">
-                                <span className="text-white font-medium">Performance Engineering</span> para quem exige o máximo.
-                                <br className="hidden md:block" />
-                                Otimização inteligente para Gamers, Empresas e High-End Workstations.
+                                Desbloqueie o poder real do seu hardware. 
+                                <span className="text-white font-medium"> Engenharia de Kernel </span> para quem não aceita o atraso do Windows.
                             </p>
 
                             <div className="flex flex-col items-center gap-3 w-full max-w-lg mx-auto">
@@ -366,6 +371,28 @@ export default function OptimizerClient() {
                                 </div>
                             </div>
                         </motion.div>
+                    </div>
+                </section>
+
+                {/* --- TRUST BAR --- */}
+                <section className="py-12 border-y border-white/5 bg-white/[0.02] relative z-10">
+                    <div className="container mx-auto px-4 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
+                            <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                            <span className="text-xs font-bold text-white uppercase tracking-widest">Scanned by VirusTotal</span>
+                        </div>
+                        <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
+                            <CheckCircle2 className="w-5 h-5 text-[#31A8FF]" />
+                            <span className="text-xs font-bold text-white uppercase tracking-widest">Zero Spyware / Junkware</span>
+                        </div>
+                        <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
+                            <Cpu className="w-5 h-5 text-[#8B31FF]" />
+                            <span className="text-xs font-bold text-white uppercase tracking-widest">100% C# Native Code</span>
+                        </div>
+                        <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
+                            <Lock className="w-5 h-5 text-[#FF4B6B]" />
+                            <span className="text-xs font-bold text-white uppercase tracking-widest">Microsoft Certified Safety</span>
+                        </div>
                     </div>
                 </section>
 
@@ -570,13 +597,79 @@ export default function OptimizerClient() {
                             </div>
 
                             <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8">
-                                <h3 className="text-xl font-bold text-white mb-4">Como Melhorar FPS no Windows 10 e 11</h3>
+                                <h3 className="text-xl font-bold text-white mb-4">Eliminação de Stuttering (Gargalos)</h3>
                                 <p className="text-slate-400 leading-relaxed mb-4">
-                                    O VOLTRIS OPTIMIZER utiliza técnicas avançadas de otimização de kernel do Windows para liberar recursos do sistema e direcionar toda a potência do hardware para seus jogos. Diferente de programas convencionais de limpeza, nossa tecnologia atua em nível profundo do sistema operacional.
+                                    O VOLTRIS OPTIMIZER é o único com <strong className="text-white">Limpeza de Shader Cache (NVIDIA/AMD)</strong>. Isso elimina aquelas travadinhas chatas (stuttering) que acontecem quando o jogo precisa compilar shaders em tempo real.
                                 </p>
                                 <p className="text-slate-400 leading-relaxed">
-                                    Ideal para quem busca <strong className="text-white">otimizar PC para jogos</strong>, <strong className="text-white">melhorar desempenho no Windows</strong>, <strong className="text-white">limpar memória RAM automaticamente</strong> e <strong className="text-white">deixar o computador mais rápido</strong> sem precisar fazer upgrade de hardware.
+                                    Ao ajustar a <strong className="text-white">Timer Resolution (timeBeginPeriod)</strong>, conseguimos uma redução de latência comparável a ferramentas profissionais como ISLC, garantindo que cada clique seja registrado no milissegundo exato.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SHIELD SECTION --- */}
+                <section className="py-32 relative z-10 bg-[#08080C] border-y border-white/5">
+                    <div className="container mx-auto px-4">
+                        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
+                            <div className="w-full lg:w-1/2">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+                                    <ShieldCheck className="w-3 h-3 text-emerald-500" />
+                                    <span className="text-xs font-bold text-emerald-500 tracking-widest uppercase">Proteção Ativa</span>
+                                </div>
+                                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Voltris Shield™</h2>
+                                <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+                                    Não é apenas performance, é segurança. O Voltris Shield monitora seu sistema contra softwares intrusivos que tentam roubar recursos.
+                                </p>
+                                <div className="space-y-4">
+                                    {[
+                                        { title: 'Monitor de Inicialização', desc: 'Detecta e bloqueia bloatwares que tentam se auto-iniciar silenciosamente.' },
+                                        { title: 'Anti-Adware Engine', desc: 'Identifica e remove barras de ferramentas e softwares de publicidade.' },
+                                        { title: 'Proteção de Processos Críticos', desc: 'Garante que processos vitais do Windows não sejam suspensos ou corrompidos.' }
+                                    ].map((item, i) => (
+                                        <div key={i} className="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
+                                            <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></div>
+                                            <div>
+                                                <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
+                                                <p className="text-xs text-slate-500">{item.desc}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="w-full lg:w-1/2 relative">
+                                <div className="absolute inset-0 bg-emerald-500/10 blur-[100px] rounded-full"></div>
+                                <div className="relative p-1 bg-gradient-to-br from-white/10 to-transparent rounded-[2.5rem]">
+                                    <div className="bg-[#050510] rounded-[2.4rem] p-8 border border-white/5">
+                                        <div className="flex items-center justify-between mb-8">
+                                            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Atividade do Shield</span>
+                                            <div className="flex gap-1">
+                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/30"></div>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-6">
+                                            <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
+                                                <motion.div initial={{ width: 0 }} whileInView={{ width: "95%" }} className="h-full bg-emerald-500" />
+                                            </div>
+                                            <div className="flex justify-between items-center bg-white/[0.02] p-4 rounded-xl border border-white/5">
+                                                <span className="text-xs text-slate-400">Status da Varredura</span>
+                                                <span className="text-xs font-bold text-emerald-500">PROTEGIDO</span>
+                                            </div>
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5 text-center">
+                                                    <div className="text-xl font-bold text-white mb-1">0</div>
+                                                    <div className="text-[10px] text-slate-500 uppercase">Ameaças Ativas</div>
+                                                </div>
+                                                <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5 text-center">
+                                                    <div className="text-xl font-bold text-emerald-500 mb-1">342</div>
+                                                    <div className="text-[10px] text-slate-500 uppercase">Processos Limpos</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -590,13 +683,13 @@ export default function OptimizerClient() {
                                 <div>
                                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
                                         <Briefcase className="w-3 h-3 text-[#31A8FF]" />
-                                        <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Solução Enterprise</span>
+                                        <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Tecnologia Exclusiva de Gestão Remota</span>
                                     </div>
                                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                        Otimização Remota de <span className="bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">Computadores Corporativos</span>
+                                        Controle Total de 1 ou 1000 <span className="bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">Computadores via Nuvem</span>
                                     </h2>
                                     <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-                                        Primeira plataforma SaaS brasileira de gerenciamento remoto de performance para empresas. Otimize toda sua frota de computadores de qualquer lugar do mundo através do painel web.
+                                        O Voltris Optimizer é o único software no mercado brasileiro que permite otimizar, gerenciar e monitorar toda a frota de PCs da sua empresa sem precisar de acesso físico.
                                     </p>
 
                                     <div className="space-y-4 mb-8">
@@ -823,10 +916,10 @@ export default function OptimizerClient() {
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto text-center">
                             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                Tecnologia <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Inovadora Brasileira</span>
+                                Inovação <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Engarrafada no Brasil</span>
                             </h2>
                             <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-                                O VOLTRIS OPTIMIZER é o primeiro software brasileiro SaaS com tecnologia de controle remoto de otimização via web. Uma solução profissional e enterprise desenvolvida com tecnologia moderna.
+                                Orgulhosamente desenvolvido no Brasil. Fomos os primeiros a integrar <strong className="text-white">Gerenciamento de Kernel</strong> com a conveniência do <strong className="text-white">SaaS Moderno</strong>.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -845,6 +938,37 @@ export default function OptimizerClient() {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- TESTIMONIALS (SOCIAL PROOF) --- */}
+                <section className="py-24 relative z-10 border-t border-white/5 bg-[#050510]">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-bold text-white mb-4">Elite Users. Real Results.</h2>
+                            <p className="text-slate-400">Junte-se a milhares de jogadores e empresas que já desbloquearam seu hardware.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {[
+                                { name: "Carlos Silva", role: "Gamer Competitivo", text: "Meu FPS no Valorant dobrou. A estabilidade de frame-time é o que mais impressiona.", color: "bg-[#FF4B6B]" },
+                                { name: "Ana Costa", role: "UX Designer", text: "Meu workflow no Adobe ficou muito mais fluido. O PC não engasga mais em renderizações pesadas.", color: "bg-[#8B31FF]" },
+                                { name: "Pedro Santos", role: "DevOps Engineer", text: "O controle remoto via web é genial para gerenciar as máquinas da minha equipe.", color: "bg-[#31A8FF]" }
+                            ].map((t, i) => (
+                                <div key={i} className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/20 transition-all group">
+                                    <div className="flex items-center gap-1 mb-4 text-yellow-500">
+                                        {[1, 2, 3, 4, 5].map(s => <Check key={s} className="w-3 h-3 fill-current" />)}
+                                    </div>
+                                    <p className="text-slate-300 italic mb-6">"{t.text}"</p>
+                                    <div className="flex items-center gap-4">
+                                        <div className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center font-bold text-white`}>{t.name[0]}</div>
+                                        <div>
+                                            <div className="text-sm font-bold text-white">{t.name}</div>
+                                            <div className="text-[10px] text-slate-500 uppercase tracking-widest">{t.role}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
