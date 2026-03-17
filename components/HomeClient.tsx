@@ -2,7 +2,6 @@
 import React from "react";
 import Header from "@/components/Header";
 import Link from "next/link";
-import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
 import {
     FiMonitor,
@@ -35,11 +34,6 @@ const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
 import { motion } from 'framer-motion';
 import JsonLd from "@/components/JsonLd";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 const services = [
     {
