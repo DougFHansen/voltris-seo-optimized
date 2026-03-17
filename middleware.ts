@@ -49,6 +49,20 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher for protected routes
-  matcher: ['/services/:path*', '/dashboard/:path*'],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public (public folder)
+     * - api (api routes are handled independently)
+     * - assets (custom static folders)
+     */
+    '/((?!_next/static|_next/image|favicon.ico|api|assets|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff2?|ttf)$).*)',
+    // Excluir explicitamente rotas que não precisam de middleware de auth
+    '/((?!login|register|forgot-password).*)',
+    '/dashboard/:path*',
+    '/admin/:path*',
+  ],
 }

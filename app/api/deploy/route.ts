@@ -159,83 +159,36 @@ export async function GET(req: NextRequest) {
 }
 
 /**
- * Analyze deploy impact
+ * Analyze deploy impact using Supabase RPC for efficiency
+ * Moves heavy JS calculations to the database.
  */
 async function analyzeDeployImpact(
     supabase: any,
     deployVersion: string,
-    beforeWindow: any,
+    beforeWindow: any, // Mantido apenas para compatibilidade de assinatura se necessário
     afterWindow: any
 ) {
     try {
-        // Get metrics before and after deploy
-        const metricsBefore = await getWindowMetrics(supabase, beforeWindow);
-        const metricsAfter = await getWindowMetrics(supabase, afterWindow);
-
-        // Calculate changes
-        const performance_change = calculatePercentChange(
-            metricsBefore.avg_duration_ms,
-            metricsAfter.avg_duration_ms
-        );
-
-        const crash_rate_change = calculatePercentChange(
-            metricsBefore.crash_rate,
-            metricsAfter.crash_rate
-        );
-
-        const error_rate_change = calculatePercentChange(
-            metricsBefore.error_rate,
-            metricsAfter.error_rate
-        );
-
-        // Detect new bugs
-        const newBugs = await detectNewBugs(supabase, beforeWindow, afterWindow);
-
-        // Calculate health score (0-100, higher is better)
-        const health_score = calculateDeployHealthScore({
-            performance_change,
-            crash_rate_change,
-            error_rate_change,
-            new_bugs_count: newBugs.length,
+        // 1. Chamar a função SQL (RPC) no Supabase - Muito mais eficiente!
+        const { data: correlationData, error } = await supabase.rpc('analyze_deploy_impact_rpc', {
+            target_deploy_version: deployVersion,
+            hours_window: 24 // Ou parametrizado
         });
 
-        const rollback_recommended = health_score < 50;
+        if (error) throw error;
+
+        // 2. Enriquecer com dados de adoção de features
+        const feature_adoption = await analyzeFeatureAdoption(supabase, beforeWindow, afterWindow);
 
         const correlation = {
-            deploy_version: deployVersion,
+            ...correlationData,
+            feature_adoption_change: feature_adoption,
             analysis_start: afterWindow.start,
             analysis_end: afterWindow.end,
-
-            // Performance Impact
-            avg_performance_change_pct: performance_change,
-            p95_latency_change_ms: metricsAfter.p95_latency_ms - metricsBefore.p95_latency_ms,
-
-            // Stability
-            crash_rate_before: metricsBefore.crash_rate,
-            crash_rate_after: metricsAfter.crash_rate,
-            crash_rate_change_pct: crash_rate_change,
-            error_rate_before: metricsBefore.error_rate,
-            error_rate_after: metricsAfter.error_rate,
-            error_rate_change_pct: error_rate_change,
-
-            // Bugs
-            new_bugs_count: newBugs.length,
-            new_bug_patterns: newBugs.map((b: any) => b.pattern_signature),
-            resolved_bugs_count: 0, // TODO: Implement
-
-            // User Impact
-            affected_users: metricsAfter.unique_users,
-            user_satisfaction_score: calculateSatisfactionScore(metricsAfter),
-
-            // Feature Usage
-            feature_adoption_change: await analyzeFeatureAdoption(supabase, beforeWindow, afterWindow),
-
-            // Overall Health
-            deploy_health_score: health_score,
-            rollback_recommended,
+            updated_at: new Date().toISOString()
         };
 
-        // Store correlation metrics
+        // 3. Persistir métricas (upsert)
         await supabase.from('deploy_correlation_metrics').upsert(correlation, {
             onConflict: 'deploy_version,analysis_start,analysis_end',
         });

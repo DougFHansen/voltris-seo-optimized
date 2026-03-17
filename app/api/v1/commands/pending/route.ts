@@ -54,7 +54,14 @@ export async function GET(req: NextRequest) {
         }
         console.log('[API/COMMANDS/PENDING] ===== FIM =====');
 
-        return NextResponse.json({ commands: commands || [] });
+        return NextResponse.json(
+            { commands: commands || [] },
+            { 
+                headers: {
+                    'Cache-Control': 'private, s-maxage=10, stale-while-revalidate=5'
+                }
+            }
+        );
 
     } catch (err) {
         console.error('[API/COMMANDS/PENDING] Erro geral:', err);
