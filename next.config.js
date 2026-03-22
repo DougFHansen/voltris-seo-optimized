@@ -60,7 +60,7 @@ const nextConfig = {
       { source: '/blog', destination: '/guias', permanent: true },
 
       // ============================================================
-      // EMERGENCY BLOCK FOR DESKTOP APP TELEMETRY (Save Vercel Functions/Requests)
+      // EMERGENCY BLOCK FOR DESKTOP APP TELEMETRY E SPAM (Save Vercel Functions/Requests)
       // Redireciona tudo para localhost para matar a requisição direto no PC do cliente
       // ============================================================
       { source: '/api/telemetry/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
@@ -69,6 +69,9 @@ const nextConfig = {
       { source: '/api/v1/sessions/start', destination: 'http://127.0.0.1/api-desativada', permanent: true },
       { source: '/api/admin/sessions/live', destination: 'http://127.0.0.1/api-desativada', permanent: true },
       { source: '/api/admin/telemetry/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
+      { source: '/api/v1/license/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
+      { source: '/api/v1/commands/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
+      { source: '/api/v1/install/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
 
       // ============================================================
       // CONSOLIDAÇÃO DE GUIAS DUPLICADOS — SEO / AdSense Fix
