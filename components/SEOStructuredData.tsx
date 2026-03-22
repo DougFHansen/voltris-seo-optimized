@@ -32,7 +32,7 @@ export default function SoftwareApplicationSchema({
     availability: 'https://schema.org/InStock'
   },
   features = [],
-  softwareVersion = '1.0.0.8',
+  softwareVersion = '1.0.0.9',
   datePublished = '2024-01-01',
   dateModified = new Date().toISOString()
 }: SoftwareApplicationSchemaProps) {

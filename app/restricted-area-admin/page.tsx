@@ -9,8 +9,6 @@ import AdminOrdersTab from './orders/AdminOrdersTab';
 import AdminTicketsTab from './tickets/AdminTicketsTab';
 import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
 import AdminUsersTab from './users/AdminUsersTab';
-import AdminOptimizerTab from './AdminOptimizerTab';
-
 import NotificationTester from '../components/NotificationTester';
 
 const tabs = [
@@ -30,16 +28,6 @@ const tabs = [
     icon: <FiMail size={20} className="text-[#FF4B6B]" />,
   },
 
-  {
-    label: 'Usuários',
-    value: 'users',
-    icon: <FiUsers size={20} className="text-[#31A8FF]" />,
-  },
-  {
-    label: 'Optimizer',
-    value: 'optimizer',
-    icon: <FiZap size={20} className="text-[#FFD700]" />,
-  },
 ];
 
 export default function AdminDashboard() {
@@ -105,7 +93,6 @@ export default function AdminDashboard() {
           {activeTab === 'tickets' && <AdminTicketsTab />}
           {activeTab === 'newsletter' && <AdminNewsletterTab />}
           {activeTab === 'users' && <AdminUsersTab />}
-          {activeTab === 'optimizer' && <AdminOptimizerTab />}
         </div>
 
         {/* Testador de Notificações Push - Apenas para Administradores */}
