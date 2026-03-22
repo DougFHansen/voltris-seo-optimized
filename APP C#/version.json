@@ -1,6 +1,0 @@
-{
-  "latestVersion": "1.0.0.9",
-  "downloadUrl": "https://github.com/DougFHansen/voltris-seo-optimized/releases/latest",
-  "changelog": "SaaS Update Engine Evolution\n• Redesign completo da UI de atualização\n• Motor de instalação blindado contra locks\n• Sincronização automática x86/x64\n• Sistema de auto-restart enterprise",
-  "mandatory": true
-}

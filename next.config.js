@@ -59,21 +59,7 @@ const nextConfig = {
       { source: '/blog/:slug*', destination: '/guias', permanent: true },
       { source: '/blog', destination: '/guias', permanent: true },
 
-      // ============================================================
-      // EMERGENCY BLOCK FOR DESKTOP APP TELEMETRY E SPAM (Save Vercel Functions/Requests)
-      // Redireciona tudo para localhost para matar a requisição direto no PC do cliente
-      // ============================================================
-      { source: '/api/telemetry/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/telemetry/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/sessions/heartbeat', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/sessions/start', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/admin/sessions/live', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/admin/telemetry/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      
-      // Apenas os endpoints culpados pelo polling infinito em loop
-      { source: '/api/v1/license/sync', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/commands/pending', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/install/status', destination: 'http://127.0.0.1/api-desativada', permanent: true },
+      // Redirecionamentos de bloqueios foram removidos porque o 308 Redirect causava um loop infinito de Retry no C# HttpClient.
 
       // ============================================================
       // CONSOLIDAÇÃO DE GUIAS DUPLICADOS — SEO / AdSense Fix
@@ -167,6 +153,29 @@ const nextConfig = {
       // Grupo: formatação windows (2 duplicatas → 1 canônico)
       { source: '/guias/formatacao-windows', destination: '/guias/formatacao-limpa-windows-11-rufus-gpt', permanent: true },
     ];
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        // ============================================================
+        // STATIC MOCK ROUTES FOR DESKTOP APP
+        // Ao invés de redirecionar (o que causa HTTP Exception no C# e force Retry Infinito),
+        // nós devolvemos um JSON estático (Edge Cache, custo zero de CPU) com 200 OK.
+        // O App em C# entende que deu certo e volta a dormir pelo intervalo programado.
+        // O beforeFiles garante que o rewrite atue antes do route.ts original ser chamado,
+        // economizando milhares de execuções de Vercel Functions por segundo.
+        // ============================================================
+        { source: '/api/telemetry/:path*', destination: '/api-mock.json' },
+        { source: '/api/v1/telemetry/:path*', destination: '/api-mock.json' },
+        { source: '/api/v1/sessions/heartbeat', destination: '/api-mock.json' },
+        { source: '/api/v1/sessions/start', destination: '/api-mock.json' },
+        { source: '/api/admin/sessions/live', destination: '/api-mock.json' },
+        { source: '/api/admin/telemetry/:path*', destination: '/api-mock.json' },
+        { source: '/api/v1/license/sync', destination: '/api-mock.json' },
+        { source: '/api/v1/commands/pending', destination: '/api-mock.json' },
+        { source: '/api/v1/install/status', destination: '/api-mock.json' },
+      ]
+    };
   },
   headers: async () => [
     {
