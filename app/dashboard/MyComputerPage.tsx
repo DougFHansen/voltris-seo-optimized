@@ -187,18 +187,18 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                                 <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
                                     <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
                                     <span className="px-2 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.0.9
+                                        v1.0.1.0
                                     </span>
                                 </div>
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstaller.exe"
+                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstaller.exe"
                                     className="w-full sm:w-auto group relative px-5 py-2.5 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-xs rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                 >
                                     <FiDownload className="w-3.5 h-3.5 group-hover:translate-y-[2px] transition-transform duration-300 flex-shrink-0" />
                                     <span className="whitespace-nowrap">DOWNLOAD x64</span>
                                 </a>
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstallerX86.exe"
+                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
                                     className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors font-medium opacity-80 hover:opacity-100"
                                 >
                                     Para sistemas Windows x86
