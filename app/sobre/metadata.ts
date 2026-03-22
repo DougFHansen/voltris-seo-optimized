@@ -1,29 +1,16 @@
-import { Metadata } from 'next';
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Sobre a VOLTRIS | Quem Somos',
-  description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
+  title: 'Sobre a Voltris | Especialistas em Otimização e Suporte Técnico',
+  description: 'Conheça a história da Voltris, nosso fundador Douglas Felipe Moraes Gonçalves, nossa missão e a metodologia técnica que diferencia nosso suporte de otimização de sistemas Windows.',
   alternates: {
     canonical: '/sobre',
   },
   openGraph: {
-    title: 'Sobre a VOLTRIS | Quem Somos',
-    description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
-    url: 'https://voltris.com.br/sobre',
+    title: 'Sobre a Voltris | Especialistas em Otimização e Suporte Técnico',
+    description: 'Conheça a história da Voltris, nosso fundador Douglas Felipe Moraes Gonçalves, nossa missão e a metodologia técnica que diferencia nosso suporte.',
     type: 'website',
-    images: [
-      {
-        url: '/logo.png',
-        width: 1200,
-        height: 630,
-        alt: 'Logo VOLTRIS'
-      }
-    ]
+    locale: 'pt_BR',
+    url: 'https://voltris.com.br/sobre',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sobre a VOLTRIS | Quem Somos',
-    description: 'Conheça a história, missão e valores da VOLTRIS. Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.',
-    images: ['/logo.png']
-  }
-};
+}

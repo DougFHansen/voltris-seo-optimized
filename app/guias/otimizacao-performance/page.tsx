@@ -338,14 +338,22 @@ export default function PerformanceOptimizationGuide() {
       keywords={keywords}
       estimatedTime="35 min"
       difficultyLevel="Intermediário"
-      author="Equipe Técnica Voltris"
-      lastUpdated="Janeiro 2026"
+      author="Douglas F. Hansen"
+      lastUpdated="Março 2026"
       contentSections={allContentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
       faqItems={faqItems}
       externalReferences={externalReferences}
       showVoltrisOptimizerCTA={true}
+      keyPoints={[
+        'Como os efeitos visuais do Windows consomem GPU e como desativá-los',
+        'Plano de energia correto para liberar o potencial máximo da CPU',
+        'Controle de apps na inicialização para reduzir tempo de boot',
+        'Ajustes avançados via Regedit para desativar Activity Feed',
+        'Limpeza profunda de disco com DISM e comandos CMD',
+        'Configurações de GPU para desempenho máximo em jogos (NVIDIA e AMD)',
+      ]}
     />
   );
 }

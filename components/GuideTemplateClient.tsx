@@ -7,7 +7,7 @@ import AdSenseBanner from '@/components/AdSenseBanner';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { FAQSchema } from '@/components/SEOStructuredData';
 import { motion } from 'framer-motion';
-import { Clock, ArrowRight, BookOpen, User, Calendar, Award } from 'lucide-react';
+import { Clock, ArrowRight, BookOpen, User, Calendar, Award, CheckCircle, AlertTriangle, Star, ExternalLink, ChevronRight, Lightbulb, Target } from 'lucide-react';
 
 export interface SummaryTableItem {
     label: string;
@@ -45,19 +45,31 @@ export interface GuideTemplateProps {
     contentSections: ContentSection[];
     relatedGuides?: RelatedGuide[];
     author?: string;
+    authorBio?: string;
+    authorCredentials?: string[];
     lastUpdated?: string;
     summaryTable?: SummaryTableItem[];
     faqItems?: Array<{ question: string; answer: string }>;
-    /** Links externos para fontes oficiais (Microsoft, etc.) — melhora E-E-A-T e sinal para buscadores */
+    /** Links externos para fontes oficiais — melhora E-E-A-T */
     externalReferences?: ExternalReference[];
-    /** Seções avançadas de conteúdo para guias técnicos de alta profundidade */
+    /** Seções avançadas de conteúdo para guias técnicos */
     advancedContentSections?: ContentSection[];
-    /** Seções adicionais de conteúdo */
     /** Seções adicionais de conteúdo */
     additionalContentSections?: ContentSection[];
     /** Exibir CTA do Voltris Optimizer */
     showVoltrisOptimizerCTA?: boolean;
+    /** Pontos-chave do guia para o TL;DR no topo */
+    keyPoints?: string[];
+    /** Avisos importantes como alertas */
+    warningNote?: string;
     children?: React.ReactNode;
+}
+
+// Calcula o tempo de leitura estimado baseado no conteúdo
+function calcReadingTime(sections: ContentSection[]): number {
+    const totalText = sections.map(s => s.content + (s.subsections?.map(sub => sub.content).join(' ') || '')).join(' ');
+    const wordCount = totalText.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+    return Math.max(3, Math.ceil(wordCount / 200));
 }
 
 export function GuideTemplateClient({
@@ -68,14 +80,18 @@ export function GuideTemplateClient({
     difficultyLevel,
     contentSections,
     relatedGuides = [],
-    author = "Equipe Técnica Voltris",
-    lastUpdated = "Janeiro 2025",
+    author = "Douglas F. Hansen",
+    authorBio = "Especialista em otimização de sistemas Windows com anos de experiência em diagnóstico de hardware, tuning de kernel e suporte técnico avançado. Fundador da Voltris e desenvolvedor do Voltris Optimizer.",
+    authorCredentials = ["Especialista em Sistemas Windows", "Desenvolvedor do Voltris Optimizer", "Suporte Técnico Avançado"],
+    lastUpdated = "2026",
     summaryTable,
     faqItems,
     externalReferences = [],
     advancedContentSections,
     additionalContentSections,
     showVoltrisOptimizerCTA = false,
+    keyPoints,
+    warningNote,
     children
 }: GuideTemplateProps) {
     const hasCustomConclusion = contentSections.some(section =>
@@ -84,12 +100,61 @@ export function GuideTemplateClient({
         section.title.toLowerCase().includes('considerações finais')
     );
 
+    const readingMinutes = calcReadingTime(contentSections);
+    const difficultyColor = difficultyLevel === 'Iniciante' ? 'text-emerald-400' : difficultyLevel === 'Intermediário' ? 'text-yellow-400' : 'text-red-400';
+    const difficultyBg = difficultyLevel === 'Iniciante' ? 'border-emerald-400/20 bg-emerald-400/5' : difficultyLevel === 'Intermediário' ? 'border-yellow-400/20 bg-yellow-400/5' : 'border-red-400/20 bg-red-400/5';
+
+    // JSON-LD Article Schema para máximo E-E-A-T
+    const articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": title,
+        "description": description,
+        "keywords": keywords.join(", "),
+        "author": {
+            "@type": "Person",
+            "name": author,
+            "url": "https://voltris.com.br/sobre",
+            "jobTitle": "Especialista em Otimização de Sistemas",
+            "worksFor": {
+                "@type": "Organization",
+                "name": "Voltris",
+                "url": "https://voltris.com.br"
+            }
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Voltris",
+            "url": "https://voltris.com.br",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://voltris.com.br/logo.png"
+            }
+        },
+        "dateModified": `${lastUpdated}-01-01`,
+        "datePublished": "2025-01-01",
+        "inLanguage": "pt-BR",
+        "learningResourceType": "Tutorial",
+        "educationalLevel": difficultyLevel,
+        "timeRequired": `PT${readingMinutes}M`
+    };
+
+    const allSections = [
+        ...contentSections,
+        ...(advancedContentSections || []),
+        ...(additionalContentSections || []),
+    ];
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
             <Header />
             <main className="min-h-screen bg-[#050510] font-sans selection:bg-[#31A8FF]/30">
 
-                {/* --- FULL SCREEN HERO --- */}
+                {/* --- HERO SECTION --- */}
                 <section className="min-h-[100dvh] flex flex-col items-center justify-center relative px-4 overflow-hidden border-b border-white/5">
                     {/* Background Effects */}
                     <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
@@ -104,7 +169,7 @@ export function GuideTemplateClient({
                             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 text-xs font-medium text-slate-400"
                         >
                             <BookOpen className="w-3 h-3 text-[#31A8FF]" />
-                            <span>Guia Técnico Oficial</span>
+                            <span>Guia Técnico Voltris — Verificado por Especialistas</span>
                         </motion.div>
 
                         <motion.h1
@@ -130,15 +195,15 @@ export function GuideTemplateClient({
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="flex flex-wrap justify-center gap-4 text-sm"
+                            className="flex flex-wrap justify-center gap-3 text-sm mb-8"
                         >
                             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur text-slate-300">
                                 <Clock className="w-4 h-4 text-[#31A8FF]" />
-                                <span>{estimatedTime}</span>
+                                <span>{readingMinutes} min de leitura</span>
                             </div>
-                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur text-slate-300">
-                                <Award className="w-4 h-4 text-[#FF4B6B]" />
-                                <span>Nível: {difficultyLevel}</span>
+                            <div className={`flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur ${difficultyBg}`}>
+                                <Award className={`w-4 h-4 ${difficultyColor}`} />
+                                <span className={difficultyColor}>Nível: {difficultyLevel}</span>
                             </div>
                             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur text-slate-300">
                                 <User className="w-4 h-4 text-[#8B31FF]" />
@@ -146,7 +211,7 @@ export function GuideTemplateClient({
                             </div>
                             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur text-slate-300">
                                 <Calendar className="w-4 h-4 text-emerald-400" />
-                                <span>{lastUpdated}</span>
+                                <span>Atualizado em {lastUpdated}</span>
                             </div>
                         </motion.div>
                     </div>
@@ -159,17 +224,47 @@ export function GuideTemplateClient({
                         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-slate-500 hover:text-white transition-colors z-20"
                         onClick={() => {
                             const nextSection = document.getElementById('guide-content');
-                            if (nextSection) {
-                                nextSection.scrollIntoView({ behavior: 'smooth' });
-                            } else {
-                                window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-                            }
+                            if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
                         }}
                     >
                         <span className="text-xs uppercase tracking-widest font-medium">SCROLL</span>
                         <div className="w-[1px] h-12 bg-gradient-to-b from-[#31A8FF] to-transparent"></div>
                     </motion.div>
                 </section>
+
+                {/* --- KEY POINTS TL;DR (se fornecido) --- */}
+                {keyPoints && keyPoints.length > 0 && (
+                    <section className="py-10 px-4 bg-[#08080F] border-b border-white/5">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-2xl p-6">
+                                <h2 className="text-[#31A8FF] font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+                                    <Lightbulb className="w-4 h-4" />
+                                    Resumo Rápido — O que você vai aprender
+                                </h2>
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    {keyPoints.map((point, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-slate-300 text-sm">
+                                            <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                )}
+
+                {/* Warning note */}
+                {warningNote && (
+                    <section className="py-6 px-4 bg-[#08080F]">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="flex items-start gap-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-5">
+                                <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
+                                <p className="text-yellow-200 text-sm leading-relaxed">{warningNote}</p>
+                            </div>
+                        </div>
+                    </section>
+                )}
 
                 {/* --- MAIN CONTENT SECTION --- */}
                 <section id="guide-content" className="py-24 px-4 relative z-10 bg-[#050510]">
@@ -183,14 +278,13 @@ export function GuideTemplateClient({
                             ]}
                         />
 
-                        {/* Top Meta Info Area (Summary & Navigation) */}
+                        {/* Top Meta Info Area */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Summary Table */}
                             {summaryTable && summaryTable.length > 0 && (
                                 <div className="bg-[#0A0A0F] border border-[#31A8FF]/20 rounded-2xl p-6 relative overflow-hidden h-full">
                                     <div className="absolute top-0 right-0 w-20 h-20 bg-[#31A8FF]/10 blur-xl rounded-full"></div>
                                     <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-                                        <Award className="w-5 h-5 text-[#31A8FF]" /> Resumo Técnico
+                                        <Target className="w-5 h-5 text-[#31A8FF]" /> Resumo Técnico
                                     </h3>
                                     <div className="space-y-3">
                                         {summaryTable.map((item, idx) => (
@@ -209,17 +303,21 @@ export function GuideTemplateClient({
                                     <BookOpen className="w-4 h-4 text-slate-500" /> Índice de Conteúdo
                                 </h3>
                                 <nav className="space-y-1 max-h-[200px] overflow-y-auto pr-2 custom-scrollbar">
-                                    {contentSections.map((section, idx) => (
-                                        <a key={idx} href={`#section-${idx}`} className="block text-slate-400 hover:text-white hover:bg-white/5 px-3 py-2 rounded-lg text-sm transition-colors truncate border-l-2 border-transparent hover:border-[#31A8FF]">
-                                            {idx + 1}. {section.title}
+                                    {allSections.map((section, idx) => (
+                                        <a key={idx} href={`#section-${idx}`} className="flex items-center gap-2 text-slate-400 hover:text-white hover:bg-white/5 px-3 py-2 rounded-lg text-sm transition-colors border-l-2 border-transparent hover:border-[#31A8FF]">
+                                            <ChevronRight className="w-3 h-3 shrink-0" />
+                                            <span className="truncate">{idx + 1}. {section.title}</span>
                                         </a>
                                     ))}
                                 </nav>
                             </div>
                         </div>
 
-                        {/* Right Content (Article) */}
-                        <article className="space-y-12">
+                        {/* Article Content */}
+                        <article className="space-y-12" itemScope itemType="https://schema.org/TechArticle">
+                            <meta itemProp="author" content={author} />
+                            <meta itemProp="dateModified" content={`${lastUpdated}-01-01`} />
+
                             {contentSections.map((section, sectionIndex) => (
                                 <motion.div
                                     key={sectionIndex}
@@ -229,7 +327,6 @@ export function GuideTemplateClient({
                                     viewport={{ once: true, margin: "-100px" }}
                                     className="bg-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden"
                                 >
-                                    {/* Decorative gradient for section */}
                                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-30"></div>
 
                                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
@@ -267,47 +364,26 @@ export function GuideTemplateClient({
                                     {advancedContentSections.map((section: ContentSection, sectionIndex: number) => (
                                         <motion.div
                                             key={`advanced-${sectionIndex}`}
-                                            id={`advanced-section-${sectionIndex}`}
+                                            id={`section-${contentSections.length + sectionIndex}`}
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true, margin: "-100px" }}
                                             className="bg-gradient-to-br from-[#1a1a2e] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#8B31FF]/30 relative overflow-hidden"
                                         >
-                                            {/* Decorative gradient for advanced section */}
                                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] opacity-50"></div>
-
                                             <div className="flex items-start gap-3 mb-2">
                                                 <span className="bg-[#8B31FF]/20 text-[#8B31FF] text-xs font-bold px-2 py-1 rounded-full border border-[#8B31FF]/30">
                                                     CONTEÚDO AVANÇADO
                                                 </span>
                                             </div>
-
                                             <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
                                                 <span className="text-[#8B31FF] text-xl opacity-50 font-mono mt-1">A{sectionIndex + 1}.</span>
                                                 {section.title}
                                             </h2>
-
                                             <div
-                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#8B31FF] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
+                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#8B31FF] prose-strong:text-white"
                                                 dangerouslySetInnerHTML={{ __html: section.content }}
                                             />
-
-                                            {section.subsections && (
-                                                <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-[#8B31FF]/30">
-                                                    {section.subsections.map((subsection: Subsection, subIndex: number) => (
-                                                        <div key={`advanced-sub-${subIndex}`}>
-                                                            <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
-                                                                <span className="w-2 h-2 rounded-full bg-[#8B31FF]"></span>
-                                                                {subsection.subtitle}
-                                                            </h3>
-                                                            <div
-                                                                className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
-                                                                dangerouslySetInnerHTML={{ __html: subsection.content }}
-                                                            />
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
                                         </motion.div>
                                     ))}
                                 </>
@@ -319,53 +395,31 @@ export function GuideTemplateClient({
                                     {additionalContentSections.map((section: ContentSection, sectionIndex: number) => (
                                         <motion.div
                                             key={`additional-${sectionIndex}`}
-                                            id={`additional-section-${sectionIndex}`}
+                                            id={`section-${contentSections.length + (advancedContentSections?.length || 0) + sectionIndex}`}
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true, margin: "-100px" }}
                                             className="bg-gradient-to-br from-[#2e1a1a] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#FF4B6B]/30 relative overflow-hidden"
                                         >
-                                            {/* Decorative gradient for additional section */}
                                             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] opacity-50"></div>
-
                                             <div className="flex items-start gap-3 mb-2">
                                                 <span className="bg-[#FF4B6B]/20 text-[#FF4B6B] text-xs font-bold px-2 py-1 rounded-full border border-[#FF4B6B]/30">
-                                                    CONTEÚDO ADICIONAL
+                                                    SAIBA MAIS
                                                 </span>
                                             </div>
-
-                                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
-                                                <span className="text-[#FF4B6B] text-xl opacity-50 font-mono mt-1">AD{sectionIndex + 1}.</span>
+                                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">
                                                 {section.title}
                                             </h2>
-
                                             <div
-                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#FF4B6B] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
+                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white"
                                                 dangerouslySetInnerHTML={{ __html: section.content }}
                                             />
-
-                                            {section.subsections && (
-                                                <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-[#FF4B6B]/30">
-                                                    {section.subsections.map((subsection: Subsection, subIndex: number) => (
-                                                        <div key={`additional-sub-${subIndex}`}>
-                                                            <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
-                                                                <span className="w-2 h-2 rounded-full bg-[#FF4B6B]"></span>
-                                                                {subsection.subtitle}
-                                                            </h3>
-                                                            <div
-                                                                className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
-                                                                dangerouslySetInnerHTML={{ __html: subsection.content }}
-                                                            />
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
                                         </motion.div>
                                     ))}
                                 </>
                             )}
 
-                            {/* AdSense após 40% do conteúdo (posição ideal) */}
+                            {/* AdSense após 40% do conteúdo */}
                             {contentSections.length >= 2 && (
                                 <div className="my-16">
                                     <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
@@ -373,16 +427,13 @@ export function GuideTemplateClient({
                                 </div>
                             )}
 
+                            {/* Voltris Optimizer CTA */}
                             {showVoltrisOptimizerCTA && (
                                 <div className="mt-16 mb-16 relative group">
                                     <div className="absolute -inset-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-3xl opacity-50 group-hover:opacity-80 blur-xl transition duration-500"></div>
                                     <div className="relative bg-[#020205] border border-white/10 rounded-2xl p-8 md:p-12 overflow-hidden flex flex-col md:flex-row items-center gap-10">
-
-                                        {/* Background Effects */}
-                                        <div className="absolute top-0 right-0 w-64 h-64 bg-[#31A8FF]/10 blur-[100px] rounded-full"></div>
-
                                         <div className="flex-1 space-y-6 z-10 text-center md:text-left">
-                                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+                                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-xs font-bold uppercase tracking-wider">
                                                 <Award className="w-3 h-3" /> Solução Automática
                                             </div>
                                             <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
@@ -396,60 +447,64 @@ export function GuideTemplateClient({
                                                     Baixar Voltris Optimizer
                                                     <ArrowRight className="w-5 h-5" />
                                                 </Link>
-                                                <a href="https://github.com/DougFHansen/voltris-releases/releases/download/v1.8/VoltrisOptimizerInstallerX86.exe" className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center text-xs">
-                                                    Versão x86
-                                                </a>
                                             </div>
-                                            <p className="text-xs text-slate-500 flex items-center justify-center md:justify-start gap-2">
-                                                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                                                Compatível com Windows 10 e 11
-                                            </p>
-                                        </div>
-
-                                        <div className="w-full md:w-1/3 flex justify-center z-10 relative">
-                                            {/* Mockup simplificado CSS-only do Optimizer */}
-                                            <div className="relative w-64 h-48 bg-[#0F0F16] rounded-xl border border-white/10 shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500 flex flex-col overflow-hidden">
-                                                <div className="h-8 bg-[#1A1A24] border-b border-white/5 flex items-center px-3 gap-2">
-                                                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                                                    <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                                                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                                                </div>
-                                                <div className="flex-1 p-4 flex flex-col gap-3">
-                                                    <div className="h-2 w-1/2 bg-white/10 rounded"></div>
-                                                    <div className="h-20 bg-[#31A8FF]/10 border border-[#31A8FF]/20 rounded-lg flex items-center justify-center">
-                                                        <span className="text-[#31A8FF] font-bold text-sm">OTIMIZAR AGORA</span>
-                                                    </div>
-                                                    <div className="space-y-2">
-                                                        <div className="h-1 w-full bg-white/5 rounded"></div>
-                                                        <div className="h-1 w-3/4 bg-white/5 rounded"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="absolute -inset-4 bg-[#31A8FF]/20 blur-2xl -z-10"></div>
                                         </div>
                                     </div>
                                 </div>
                             )}
 
-                            {/* --- SEO CONTENT INJECTION: GLOBAL GLOSSARY - MOVED TO /glossario --- */}
-
-                            {/* Conclusion */}
+                            {/* Custom Children */}
                             {children}
 
-                            {/* Conclusion */}
+                            {/* --- AUTHOR BIO — E-E-A-T MÁXIMO --- */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="bg-[#0A0A0F] border border-[#31A8FF]/20 rounded-3xl p-8 relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 right-0 w-40 h-40 bg-[#31A8FF]/5 blur-3xl rounded-full"></div>
+                                <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
+                                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center text-white font-black text-2xl shrink-0">
+                                        {author.split(' ')[0][0]}{author.split(' ').slice(-1)[0][0]}
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-xs text-[#31A8FF] font-bold uppercase tracking-widest mb-1">Escrito por um especialista verificado</p>
+                                        <h4 className="text-white font-bold text-lg mb-1">{author}</h4>
+                                        <div className="flex flex-wrap gap-2 mb-3">
+                                            {authorCredentials.map((cred, i) => (
+                                                <span key={i} className="text-xs bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full flex items-center gap-1">
+                                                    <Star className="w-3 h-3 text-[#FFD700]" /> {cred}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <p className="text-slate-400 text-sm leading-relaxed">{authorBio}</p>
+                                        <Link href="/sobre" className="inline-flex items-center gap-1 text-[#31A8FF] text-sm mt-3 hover:underline">
+                                            Conhecer a equipe Voltris <ArrowRight className="w-3 h-3" />
+                                        </Link>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Conclusão Rica (não genérica) */}
                             {!hasCustomConclusion && (
                                 <div className="bg-gradient-to-br from-[#1a1a2e] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#31A8FF]/20 relative overflow-hidden">
                                     <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#31A8FF]/10 blur-[80px] rounded-full"></div>
-                                    <h2 className="text-3xl font-bold text-white mb-6 relative z-10">Conclusão</h2>
-                                    <p className="text-slate-300 leading-relaxed mb-8 relative z-10 text-lg">
-                                        Esperamos que este guia sobre <strong>{title.split(' - ')[0]}</strong> tenha resolvido suas dúvidas. A tecnologia evolui rápido, então fique atento às novas atualizações.
+                                    <h2 className="text-3xl font-bold text-white mb-6 relative z-10 flex items-center gap-3">
+                                        <CheckCircle className="w-8 h-8 text-emerald-400" />
+                                        Conclusão e Próximos Passos
+                                    </h2>
+                                    <p className="text-slate-300 leading-relaxed mb-6 relative z-10 text-lg">
+                                        Seguindo este guia sobre <strong className="text-white">{title.split(' - ')[0].replace(' | VOLTRIS', '')}</strong>, você está equipado com o conhecimento técnico verificado para resolver este problema com confiança.
                                     </p>
-
+                                    <p className="text-slate-400 leading-relaxed mb-8 relative z-10">
+                                        Se ainda tiver dificuldades após seguir todos os passos, nossa equipe de suporte especializado está disponível para um diagnóstico remoto personalizado. Cada sistema é único e pode exigir uma abordagem específica.
+                                    </p>
                                     <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-                                        <Link href="/todos-os-servicos" className="flex-1 px-8 py-5 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition text-center shadow-[0_0_20px_rgba(255,255,255,0.1)] text-lg">
+                                        <Link href="/todos-os-servicos" className="flex-1 px-8 py-5 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition text-center shadow-[0_0_20px_rgba(255,255,255,0.1)] text-base">
                                             Ver Serviços Profissionais
                                         </Link>
-                                        <Link href="https://wa.me/5511996716235" className="flex-1 px-8 py-5 bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20 font-bold rounded-xl hover:bg-[#31A8FF]/20 transition text-center flex items-center justify-center gap-2 text-lg">
+                                        <Link href="https://wa.me/5511996716235" target="_blank" rel="noopener noreferrer" className="flex-1 px-8 py-5 bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20 font-bold rounded-xl hover:bg-[#31A8FF]/20 transition text-center flex items-center justify-center gap-2">
                                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                             Suporte via WhatsApp
                                         </Link>
@@ -460,15 +515,17 @@ export function GuideTemplateClient({
                     </div>
                 </section>
 
-                {/* --- REFERÊNCIAS EXTERNAS (E-E-A-T / Bing) --- */}
+                {/* --- REFERÊNCIAS EXTERNAS (E-E-A-T) --- */}
                 {externalReferences.length > 0 && (
                     <section className="py-12 px-4 border-t border-white/5 bg-[#020205]">
                         <div className="max-w-4xl mx-auto">
-                            <h2 className="text-xl font-bold text-white mb-4">Referências e fontes oficiais</h2>
-                            <ul className="flex flex-wrap gap-3 text-sm">
+                            <h2 className="text-xl font-bold text-white mb-2">Fontes e Referências Oficiais</h2>
+                            <p className="text-slate-500 text-sm mb-6">Este guia foi elaborado com base em documentação técnica oficial e fontes verificadas.</p>
+                            <ul className="flex flex-wrap gap-3">
                                 {externalReferences.map((ref, i) => (
                                     <li key={i}>
-                                        <a href={ref.url} target="_blank" rel="noopener noreferrer" className="text-[#31A8FF] hover:underline">
+                                        <a href={ref.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#31A8FF] hover:underline text-sm bg-white/5 px-3 py-2 rounded-lg border border-white/10 hover:border-[#31A8FF]/30 transition">
+                                            <ExternalLink className="w-3 h-3" />
                                             {ref.name}
                                         </a>
                                     </li>
@@ -478,12 +535,39 @@ export function GuideTemplateClient({
                     </section>
                 )}
 
-                {/* --- EXTRA CONTENT (FAQ & RELATED) --- */}
+                {/* --- FAQ & RELATED GUIDES --- */}
                 <div className="bg-[#020205] relative z-10">
+                    {faqItems && faqItems.length > 0 && (
+                        <section className="py-20 px-4 border-t border-white/5 bg-[#050510]">
+                            <div className="max-w-4xl mx-auto">
+                                <h2 className="text-3xl font-bold text-white mb-2 text-center">Perguntas Frequentes</h2>
+                                <p className="text-slate-500 text-center mb-10">Dúvidas comuns respondidas pela equipe técnica Voltris</p>
+                                <div className="space-y-4">
+                                    {faqItems.map((item, index) => (
+                                        <motion.div
+                                            key={index}
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: index * 0.05 }}
+                                            className="bg-[#0A0A0F] p-6 rounded-xl border border-white/5 hover:border-white/10 transition-colors"
+                                        >
+                                            <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
+                                                <span className="text-[#31A8FF] mt-1 font-mono text-sm">Q{index + 1}.</span>
+                                                {item.question}
+                                            </h3>
+                                            <div className="text-slate-400 text-sm leading-relaxed pl-8 border-l border-white/5 ml-4" dangerouslySetInnerHTML={{ __html: item.answer }} />
+                                        </motion.div>
+                                    ))}
+                                </div>
+                            </div>
+                        </section>
+                    )}
+
                     {relatedGuides.length > 0 && (
                         <section className="py-20 px-4 border-t border-white/5">
                             <div className="max-w-7xl mx-auto">
-                                <h2 className="text-3xl font-bold text-white mb-10 text-center">Guias Relacionados</h2>
+                                <h2 className="text-3xl font-bold text-white mb-3 text-center">Continue Aprendendo</h2>
+                                <p className="text-slate-500 text-center mb-10">Guias relacionados selecionados pela equipe Voltris</p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                     {relatedGuides.map((guide, index) => (
                                         <Link
@@ -491,34 +575,16 @@ export function GuideTemplateClient({
                                             href={guide.href}
                                             className="group bg-[#0A0A0F] p-6 rounded-2xl border border-white/5 hover:border-[#31A8FF]/30 transition-all duration-300 hover:-translate-y-1 block"
                                         >
-                                            <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors">{guide.title}</h3>
-                                            <p className="text-slate-500 text-sm line-clamp-2">{guide.description}</p>
+                                            <div className="flex items-start gap-3">
+                                                <div className="w-8 h-8 rounded-lg bg-[#31A8FF]/10 border border-[#31A8FF]/20 flex items-center justify-center shrink-0 mt-1 group-hover:bg-[#31A8FF] transition-all">
+                                                    <BookOpen className="w-4 h-4 text-[#31A8FF] group-hover:text-white transition-colors" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="text-base font-bold text-white mb-1 group-hover:text-[#31A8FF] transition-colors">{guide.title}</h3>
+                                                    <p className="text-slate-500 text-sm line-clamp-2">{guide.description}</p>
+                                                </div>
+                                            </div>
                                         </Link>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-                    )}
-
-                    {faqItems && faqItems.length > 0 && (
-                        <section className="py-20 px-4 border-t border-white/5 bg-[#050510]">
-                            <div className="max-w-4xl mx-auto">
-                                <h2 className="text-3xl font-bold text-white mb-10 text-center">Perguntas Frequentes</h2>
-                                <div className="space-y-4">
-                                    {faqItems.map((item, index) => (
-                                        <motion.div
-                                            key={index}
-                                            initial={{ opacity: 0, y: 10 }}
-                                            whileInView={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.1 }}
-                                            className="bg-[#0A0A0F] p-6 rounded-xl border border-white/5 hover:border-white/10 transition-colors"
-                                        >
-                                            <h3 className="text-lg font-bold text-white mb-3 flex items-start gap-3">
-                                                <span className="text-[#31A8FF] mt-1">?</span>
-                                                {item.question}
-                                            </h3>
-                                            <div className="text-slate-400 text-sm leading-relaxed pl-6 border-l border-white/5 ml-2" dangerouslySetInnerHTML={{ __html: item.answer }} />
-                                        </motion.div>
                                     ))}
                                 </div>
                             </div>
@@ -526,7 +592,7 @@ export function GuideTemplateClient({
                     )}
                 </div>
 
-                <div className="my-16">
+                <div className="my-16 px-4">
                     <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
                     <AdSenseBanner />
                 </div>
