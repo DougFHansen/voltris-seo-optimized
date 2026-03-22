@@ -36,9 +36,29 @@ export default function LoginPage() {
   const [adminChecked, setAdminChecked] = useState(false);
   const [showWhatsAppBtn, setShowWhatsAppBtn] = useState(false);
   const [redirectText, setRedirectText] = useState('Redirecionando...');
-  const [redirectUrl, setRedirectUrl] = useState('');
-  const [pendingOrder, setPendingOrder] = useState(false);
-  const [installationId, setInstallationId] = useState<string | null>(null);
+  const [redirectUrl, setRedirectUrl] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('redirect') || (params.get('checkout_success') === 'true' ? '/dashboard?checkout_success=true' : '');
+    }
+    return '';
+  });
+  
+  const [pendingOrder, setPendingOrder] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('pendingOrder') === 'true' || params.get('checkout_success') === 'true';
+    }
+    return false;
+  });
+
+  const [installationId, setInstallationId] = useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('installation_id');
+    }
+    return null;
+  });
 
   const { user, profile, loading: authLoading } = useAuth();
   const supabase = createClient();
@@ -52,21 +72,13 @@ export default function LoginPage() {
         setIsRecoveryView(false);
       }
 
-      const instId = params.get('installation_id');
-      if (instId) setInstallationId(instId);
-
-      // NOVO: Detectar se vem de um checkout com sucesso
       if (params.get('checkout_success') === 'true') {
         setIsLoginView(false); // Sugerir cadastro para novos compradores
-        setPendingOrder(true);
       }
 
-      // Só ativa pendingOrder se vier EXPLICITAMENTE na URL. 
       if (params.get('pendingOrder') === 'true' || params.get('checkout_success') === 'true') {
         setShowWhatsAppBtn(true);
-        setPendingOrder(true);
       }
-      setRedirectUrl(params.get('redirect') || (params.get('checkout_success') === 'true' ? '/dashboard?checkout_success=true' : ''));
     }
   }, []);
 
