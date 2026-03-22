@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>VoltrisOptimizerInstaller</AssemblyName>
+    <RootNamespace>VoltrisOptimizerInstaller</RootNamespace>
+    <Version>1.0.0.7</Version>
+    <Authors>Voltris Corporation</Authors>
+    <Company>Voltris Corporation</Company>
+    <Product>Voltris Optimizer Installer</Product>
+    <Description>Instalador do Voltris Optimizer</Description>
+    <Copyright>Copyright Â© VOLTRIS 2025</Copyright>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <!-- PublicaÃ§Ã£o self-contained single-file do instalador -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    
+    <!-- OTIMIZAÃ‡ÃƒO DE TAMANHO -->
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  
+  <!-- IMAGENS E ÃCONES -->
+  <ItemGroup>
+    <Resource Include="favicon.ico" />
+    <Resource Include="..\..\Images\voltris.png">
+      <Link>Images\voltris.png</Link>
+    </Resource>
+  </ItemGroup>
+  
+  <!-- PAYLOAD ESPECÃFICO POR ARQUITETURA -->
+  <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x86'">
+    <EmbeddedResource Include="..\..\@Resources\VOLTris_Optimizer_x86.zip">
+      <LogicalName>VoltrisOptimizerInstaller.Payload.zip</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\@Resources\uninstall_x86.exe">
+      <LogicalName>VoltrisOptimizerInstaller.Resources.uninstall.exe</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-x64'">
+    <EmbeddedResource Include="..\..\@Resources\VOLTris_Optimizer_x64.zip">
+      <LogicalName>VoltrisOptimizerInstaller.Payload.zip</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\@Resources\uninstall_x64.exe">
+      <LogicalName>VoltrisOptimizerInstaller.Resources.uninstall.exe</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

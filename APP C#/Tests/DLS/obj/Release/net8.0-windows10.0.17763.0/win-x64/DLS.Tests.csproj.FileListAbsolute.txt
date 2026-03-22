@@ -1,0 +1,6 @@
+D:\Desktop\APLICATIVO VOLTRIS\Tests\DLS\bin\Release\net8.0-windows10.0.17763.0\win-x64\.msCoverageSourceRootsMapping_DLS.Tests
+D:\Desktop\APLICATIVO VOLTRIS\Tests\DLS\obj\Release\net8.0-windows10.0.17763.0\win-x64\DLS.Tests.csproj.AssemblyReference.cache
+D:\Desktop\APLICATIVO VOLTRIS\Tests\DLS\obj\Release\net8.0-windows10.0.17763.0\win-x64\DLS.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\Desktop\APLICATIVO VOLTRIS\Tests\DLS\obj\Release\net8.0-windows10.0.17763.0\win-x64\DLS.Tests.AssemblyInfoInputs.cache
+D:\Desktop\APLICATIVO VOLTRIS\Tests\DLS\obj\Release\net8.0-windows10.0.17763.0\win-x64\DLS.Tests.AssemblyInfo.cs
+D:\Desktop\APLICATIVO VOLTRIS\Tests\DLS\obj\Release\net8.0-windows10.0.17763.0\win-x64\DLS.Tests.csproj.CoreCompileInputs.cache

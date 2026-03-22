@@ -1,0 +1,568 @@
+<UserControl x:Class="VoltrisOptimizer.Core.SystemIntelligenceProfiler.UI.Views.ProfilerQuestionnaireView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:VoltrisOptimizer.Core.SystemIntelligenceProfiler.UI.ViewModels"
+             mc:Ignorable="d" 
+             Background="Transparent"
+             UseLayoutRounding="True"
+             SnapsToDevicePixels="True"
+             TextOptions.TextRenderingMode="ClearType"
+             TextOptions.TextFormattingMode="Display">
+
+    <UserControl.DataContext>
+        <vm:ProfilerQuestionnaireViewModel/>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <vm:StringToBoolConverter x:Key="StringToBoolConverter"/>
+        
+        <!-- [ICONS] Geometrias Vetoriais -->
+        <PathGeometry x:Key="GamerIcon" Figures="M19,5H5V15H19V5M19,3A2,2 0 0,1 21,5V15A2,2 0 0,1 19,17H5A2,2 0 0,1 3,15V5A2,2 0 0,1 5,3H19M11,8H13V12H11V8M13,8H17V10H13V8M7,8H9V12H7V8M15,8H17V12H15V8Z"/>
+        <PathGeometry x:Key="WorkIcon" Figures="M14,6V4H10V6H14M14,19H10V14H14V19M20,6H16V4C16,2.89 15.1,2 14,2H10C8.89,2 8,2.89 8,4V6H4C2.89,6 2,6.89 2,8V19C2,20.11 2.89,21 4,21H20C21.11,21 22,20.11 22,19V8C22,6.89 21.11,6 20,6Z"/>
+        <PathGeometry x:Key="CreativeIcon" Figures="M17.5,12A1.5,1.5 0 0,1 16,10.5A1.5,1.5 0 0,1 17.5,9A1.5,1.5 0 0,1 19,10.5A1.5,1.5 0 0,1 17.5,12M14.5,8A1.5,1.5 0 0,1 13,6.5A1.5,1.5 0 0,1 14.5,5A1.5,1.5 0 0,1 16,6.5A1.5,1.5 0 0,1 14.5,8M9.5,8A1.5,1.5 0 0,1 8,6.5A1.5,1.5 0 0,1 9.5,5A1.5,1.5 0 0,1 11,6.5A1.5,1.5 0 0,1 9.5,8M6.5,12A1.5,1.5 0 0,1 5,10.5A1.5,1.5 0 0,1 6.5,9A1.5,1.5 0 0,1 8,10.5A1.5,1.5 0 0,1 6.5,12M12,3A9,9 0 0,0 3,12A9,9 0 0,0 12,21A1.5,1.5 0 0,0 13.5,19.5C13.5,19.11 13.35,18.76 13.11,18.5C12.88,18.23 12.73,17.88 12.73,17.5A0.77,0.77 0 0,1 13.5,16.73H15.27C18.91,16.73 21.86,13.78 21.86,10.14C21.86,6.2 17.43,3 12,3Z"/>
+        <PathGeometry x:Key="CodeIcon" Figures="M14.6,16.6L19.2,12L14.6,7.4L16,6L22,12L16,18L14.6,16.6M9.4,16.6L4.8,12L9.4,7.4L8,6L2,12L8,18L9.4,16.6Z"/>
+        <PathGeometry x:Key="EnterpriseIcon" Figures="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M17.13,17C15.92,18.85 14.11,20.24 12,20.92C9.89,20.24 8.08,18.85 6.87,17C6.53,16.5 6.24,16 6,15.47C6,13.82 8.71,12.47 12,12.47C15.29,12.47 18,13.79 18,15.47C17.76,16 17.47,16.5 17.13,17Z"/>
+        
+        <!-- [ICON AI] Ícone moderno de IA - Chip Neural -->
+        <PathGeometry x:Key="AIChipIcon" Figures="M9,2V8H11V11H13V8H15V2H13V5H11V2M2,9V15H5V13H8V11H5V9M16,9V11H19V13H22V9H19V11H16V9M11,13V19H13V16H15V22H17V13H15V14H13V13M5,16V22H7V19H9V16H7V18H5V16"/>
+        
+        <!-- [ICON] Checkmark para checkbox -->
+        <PathGeometry x:Key="CheckmarkIcon" Figures="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"/>
+
+        <CornerRadius x:Key="CardRadius">16</CornerRadius>
+        
+        <!-- 🎨 ESTILO MODERNO: Checkbox Enterprise -->
+        <Style x:Key="ModernCheckBoxStyle" TargetType="CheckBox">
+            <Setter Property="FontSize" Value="12.5"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Checkbox customizado -->
+                            <Border x:Name="CheckBoxBorder"
+                                    Grid.Column="0"
+                                    Width="20" Height="20"
+                                    CornerRadius="6"
+                                    BorderThickness="2"
+                                    BorderBrush="#40FFFFFF"
+                                    Background="#10FFFFFF"
+                                    Margin="0,0,10,0"
+                                    VerticalAlignment="Center">
+                                <Viewbox Margin="3">
+                                    <Path x:Name="CheckMark"
+                                          Data="{StaticResource CheckmarkIcon}"
+                                          Fill="White"
+                                          Stretch="Uniform"
+                                          Opacity="0"/>
+                                </Viewbox>
+                            </Border>
+                            
+                            <!-- Texto -->
+                            <TextBlock x:Name="ContentText"
+                                       Grid.Column="1"
+                                       Text="{TemplateBinding Content}"
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       Foreground="{TemplateBinding Foreground}"/>
+                        </Grid>
+                        
+                        <ControlTemplate.Triggers>
+                            <!-- Hover -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#8B31FF"/>
+                                <Setter TargetName="CheckBoxBorder" Property="Background" Value="#208B31FF"/>
+                                <Setter TargetName="ContentText" Property="Foreground" Value="White"/>
+                            </Trigger>
+                            
+                            <!-- Checked -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#8B31FF"/>
+                                <Setter TargetName="CheckBoxBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#8B31FF" Offset="0"/>
+                                            <GradientStop Color="#31A8FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="CheckMark" Property="Opacity" Value="1"/>
+                                <Setter TargetName="ContentText" Property="Foreground" Value="White"/>
+                                <Setter TargetName="ContentText" Property="FontWeight" Value="SemiBold"/>
+                            </Trigger>
+                            
+                            <!-- Checked + Hover -->
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="True"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="CheckBoxBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#9B41FF" Offset="0"/>
+                                            <GradientStop Color="#41B8FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 🎨 ESTILO ENTERPRISE: Cards modernos com ícones coloridos -->
+        <Style x:Key="EnterpriseUsageCardStyle" TargetType="RadioButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="MinHeight" Value="68"/> 
+            <Setter Property="MinWidth" Value="95"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="OuterBorder"
+                                Background="{DynamicResource BgCard}"
+                                BorderBrush="{DynamicResource BorderSubtle}"
+                                BorderThickness="1.5"
+                                CornerRadius="18"
+                                Margin="4"
+                                Padding="10,8"
+                                Cursor="Hand">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0" Color="#8B31FF"/>
+                            </Border.Effect>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                
+                                <!-- Ícone com fundo colorido -->
+                                <Border x:Name="IconContainer" 
+                                        Width="26" Height="26" 
+                                        CornerRadius="8"
+                                        HorizontalAlignment="Left"
+                                        Background="#20FFFFFF">
+                                    <Viewbox Margin="5">
+                                        <Path x:Name="IconPath" 
+                                              Data="{TemplateBinding Tag}" 
+                                              Fill="#8B31FF" 
+                                              Stretch="Uniform"/>
+                                    </Viewbox>
+                                </Border>
+                                
+                                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" Margin="0,6,0,0">
+                                    <TextBlock x:Name="TitleText" 
+                                               Text="{TemplateBinding Content}" 
+                                               FontSize="11.5" 
+                                               FontWeight="SemiBold" 
+                                               Foreground="{DynamicResource TextSecondary}"
+                                               TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="OuterBorder" Property="Background" Value="{DynamicResource BgElevated}"/>
+                                <Setter TargetName="OuterBorder" Property="BorderBrush" Value="#8B31FF"/>
+                                <Setter TargetName="OuterBorder" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.3" Color="#8B31FF"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="OuterBorder" Property="BorderBrush" Value="#8B31FF"/>
+                                <Setter TargetName="OuterBorder" Property="BorderThickness" Value="2"/>
+                                <Setter TargetName="OuterBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#208B31FF" Offset="0"/>
+                                            <GradientStop Color="#1531A8FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="TitleText" Property="Foreground" Value="White"/>
+                                <Setter TargetName="TitleText" Property="FontWeight" Value="Bold"/>
+                                <Setter TargetName="IconPath" Property="Fill" Value="White"/>
+                                <Setter TargetName="IconContainer" Property="Background" Value="#40FFFFFF"/>
+                                <Setter TargetName="OuterBorder" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.5" Color="#8B31FF"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="EnterpriseStrategyCardStyle" TargetType="RadioButton">
+            <Setter Property="MinHeight" Value="58"/>
+            <Setter Property="MinWidth" Value="150"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="CardBorder"
+                                Background="{DynamicResource BgCard}"
+                                BorderBrush="{DynamicResource BorderSubtle}"
+                                BorderThickness="1.5"
+                                CornerRadius="18"
+                                Margin="4"
+                                Padding="14,10"
+                                Cursor="Hand">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0" Color="#31A8FF"/>
+                            </Border.Effect>
+                            <StackPanel>
+                                <TextBlock x:Name="Header" 
+                                           Text="{TemplateBinding Content}" 
+                                           FontSize="12.5" 
+                                           FontWeight="SemiBold" 
+                                           Foreground="{DynamicResource TextSecondary}"/>
+                                <TextBlock x:Name="Desc" 
+                                           Text="{TemplateBinding Tag}" 
+                                           FontSize="9.5" 
+                                           Foreground="{DynamicResource TextTertiary}" 
+                                           Margin="0,4,0,0" 
+                                           TextWrapping="Wrap" 
+                                           Opacity="0.75"
+                                           LineHeight="14"/>
+                            </StackPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="#31A8FF"/>
+                                <Setter TargetName="CardBorder" Property="Background" Value="{DynamicResource BgElevated}"/>
+                                <Setter TargetName="CardBorder" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.3" Color="#31A8FF"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CardBorder" Property="BorderBrush" Value="#31A8FF"/>
+                                <Setter TargetName="CardBorder" Property="BorderThickness" Value="2"/>
+                                <Setter TargetName="CardBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#2031A8FF" Offset="0"/>
+                                            <GradientStop Color="#1531D4FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="Header" Property="Foreground" Value="White"/>
+                                <Setter TargetName="Header" Property="FontWeight" Value="Bold"/>
+                                <Setter TargetName="Desc" Property="Foreground" Value="White"/>
+                                <Setter TargetName="Desc" Property="Opacity" Value="0.9"/>
+                                <Setter TargetName="CardBorder" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.5" Color="#31A8FF"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 🎨 ESTILO MODERNO: CheckBox Enterprise com Branding Voltris -->
+        <Style x:Key="VoltrisModernCheckBox" TargetType="CheckBox">
+            <Setter Property="FontSize" Value="12.5"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSecondary}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Grid Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <!-- Container do CheckBox -->
+                            <Border x:Name="CheckBoxBorder"
+                                    Grid.Column="0"
+                                    Width="22" Height="22"
+                                    Background="{DynamicResource BgCard}"
+                                    BorderBrush="{DynamicResource BorderSubtle}"
+                                    BorderThickness="1.5"
+                                    CornerRadius="7"
+                                    Margin="0,0,12,0"
+                                    VerticalAlignment="Center">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0" Color="#8B31FF"/>
+                                </Border.Effect>
+                                
+                                <!-- Ícone de Check -->
+                                <Viewbox x:Name="CheckIcon" 
+                                         Width="14" Height="14"
+                                         Opacity="0">
+                                    <Path Data="M9,20.42L2.79,14.21L5.62,11.38L9,14.77L18.88,4.88L21.71,7.71L9,20.42Z"
+                                          Fill="White"
+                                          Stretch="Uniform"/>
+                                </Viewbox>
+                            </Border>
+                            
+                            <!-- Texto do CheckBox -->
+                            <TextBlock x:Name="ContentText"
+                                       Grid.Column="1"
+                                       Text="{TemplateBinding Content}"
+                                       VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       FontSize="{TemplateBinding FontSize}"
+                                       FontWeight="{TemplateBinding FontWeight}"
+                                       TextWrapping="Wrap"/>
+                        </Grid>
+                        
+                        <ControlTemplate.Triggers>
+                            <!-- Hover State -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#8B31FF"/>
+                                <Setter TargetName="CheckBoxBorder" Property="Background" Value="{DynamicResource BgElevated}"/>
+                                <Setter TargetName="ContentText" Property="Foreground" Value="White"/>
+                            </Trigger>
+                            
+                            <!-- Checked State -->
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckBoxBorder" Property="BorderBrush" Value="#8B31FF"/>
+                                <Setter TargetName="CheckBoxBorder" Property="BorderThickness" Value="0"/>
+                                <Setter TargetName="CheckBoxBorder" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#8B31FF" Offset="0"/>
+                                            <GradientStop Color="#31A8FF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="CheckIcon" Property="Opacity" Value="1"/>
+                                <Setter TargetName="ContentText" Property="Foreground" Value="White"/>
+                                <Setter TargetName="ContentText" Property="FontWeight" Value="SemiBold"/>
+                                <Setter TargetName="CheckBoxBorder" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="6" ShadowDepth="1" Opacity="0.4" Color="#8B31FF"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            
+                            <!-- Checked + Hover -->
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="True"/>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="CheckBoxBorder" Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="8" ShadowDepth="2" Opacity="0.6" Color="#8B31FF"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- 🏗️ ARQUITETURA ENTERPRISE - RECONSTRUÇÃO COMPLETA -->
+    <Grid>
+        <Border Background="{DynamicResource BgSubtle}" 
+                CornerRadius="24" 
+                BorderBrush="{DynamicResource BorderSubtle}" 
+                BorderThickness="1.5"
+                SnapsToDevicePixels="True"
+                UseLayoutRounding="True">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="40" Opacity="0.4" ShadowDepth="10"/>
+            </Border.Effect>
+
+            <Grid Margin="32">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/> <!-- Header -->
+                    <RowDefinition Height="*"/>    <!-- Content -->
+                    <RowDefinition Height="Auto"/> <!-- Actions -->
+                </Grid.RowDefinitions>
+
+                <!-- HEADER -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,32">
+                    <TextBlock Text="VOLTRIS CORE ENGINE" 
+                               FontSize="12" FontWeight="Black" 
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               Opacity="0.8">
+                        <TextBlock.Foreground>
+                            <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                                <GradientStop Color="#FF4B6B" Offset="0"/>
+                                <GradientStop Color="#8B31FF" Offset="0.5"/>
+                                <GradientStop Color="#31A8FF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="Selecione o Perfil de Otimização Ideal" 
+                               FontSize="32" FontWeight="Bold" 
+                               Foreground="White" Margin="0,6,0,0"
+                               HorizontalAlignment="Center"
+                               FontFamily="Segoe UI Variable Display, Segoe UI, Tahoma"/>
+                    <TextBlock Text="Configure o sistema de acordo com seu padrão de uso para otimizações personalizadas" 
+                               FontSize="15" Foreground="{DynamicResource TextSecondary}" 
+                               Margin="0,12,0,0" Opacity="0.85" TextWrapping="Wrap" 
+                               MaxWidth="750" HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               LineHeight="22"/>
+                </StackPanel>
+
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <!-- CONTENT ZONE -->
+                <!-- ═══════════════════════════════════════════════════════════ -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6.5*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- LEFT COL: SELECTIONS -->
+                    <ScrollViewer Grid.Column="0" Margin="0,0,24,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <!-- Genre Selection -->
+                            <TextBlock Text="COMO VOCÊ UTILIZA SEU EQUIPAMENTO?" 
+                                       FontSize="13" FontWeight="Black" 
+                                       Foreground="{DynamicResource TextMuted}" 
+                                       Margin="0,0,0,16"/>
+                            
+                            <WrapPanel Margin="0,0,0,32">
+                                <RadioButton Content="🎮 Gamer Competitivo" Tag="{StaticResource GamerIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding UseCase, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Gamer Competitivo', Mode=TwoWay}"/>
+                                <RadioButton Content="💼 Trabalho / Office" Tag="{StaticResource WorkIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding UseCase, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Trabalho', Mode=TwoWay}"/>
+                                <RadioButton Content="🎬 Vídeo / Design" Tag="{StaticResource CreativeIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding UseCase, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Criador de Conteúdo', Mode=TwoWay}"/>
+                                <RadioButton Content="💻 Programação / Dev" Tag="{StaticResource CodeIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding UseCase, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Desenvolvimento / Code', Mode=TwoWay}"/>
+                                <RadioButton Content="🏢 Enterprise Seguro" Tag="{StaticResource EnterpriseIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding UseCase, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Corporativo / Segurança', Mode=TwoWay}"/>
+                                <RadioButton Content="⚖️ Uso Geral" Tag="{StaticResource AIChipIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding UseCase, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Uso Familiar Casual', Mode=TwoWay}"/>
+                            </WrapPanel>
+
+                            <!-- Strategy Selection -->
+                            <TextBlock Text="ESTRATÉGIA DE PERFORMANCE" 
+                                       FontSize="13" FontWeight="Black" 
+                                       Foreground="{DynamicResource TextMuted}" 
+                                       Margin="0,0,0,16"/>
+
+                            <WrapPanel Margin="0,0,0,32">
+                                <RadioButton Content="Performance Extrema" Tag="{StaticResource GamerIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding Strategy, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Performance Extrema', Mode=TwoWay}"/>
+                                <RadioButton Content="Equilibrado" Tag="{StaticResource EnterpriseIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding Strategy, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Equilibrado', Mode=TwoWay}"/>
+                                <RadioButton Content="Máxima Retenção de Bateria" Tag="{StaticResource WorkIcon}" 
+                                             Style="{StaticResource EnterpriseUsageCardStyle}" 
+                                             IsChecked="{Binding Strategy, Converter={StaticResource StringToBoolConverter}, ConverterParameter='Máxima Retenção de Bateria', Mode=TwoWay}"/>
+                            </WrapPanel>
+
+                            <!-- Specialized Configurations -->
+                            <TextBlock Text="CONFIGURAÇÕES ESPECIALIZADAS" 
+                                       FontSize="13" FontWeight="Black" 
+                                       Foreground="{DynamicResource TextMuted}" 
+                                       Margin="0,0,0,16"/>
+
+                            <Grid Margin="0,0,0,12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <CheckBox Content="Otimizar Driver de GPU" IsChecked="{Binding OptimizeGPU}" Style="{StaticResource ModernCheckBoxStyle}" Margin="0,0,0,12"/>
+                                    <CheckBox Content="Reset de Stack de Rede" IsChecked="{Binding ResetNetwork}" Style="{StaticResource ModernCheckBoxStyle}" Margin="0,0,0,12"/>
+                                    <CheckBox Content="Priorizar I/O de Disco" IsChecked="{Binding OptimizeDisk}" Style="{StaticResource ModernCheckBoxStyle}" Margin="0,0,0,12"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <CheckBox Content="Limpeza de Lixo de Sistema" IsChecked="{Binding CleanSystem}" Style="{StaticResource ModernCheckBoxStyle}" Margin="0,0,0,12"/>
+                                    <CheckBox Content="Otimizar para Notebook / Bateria" IsChecked="{Binding IsLaptop}" Style="{StaticResource ModernCheckBoxStyle}" Margin="0,0,0,12"/>
+                                    <CheckBox Content="Reiniciar Serviços Criticos" IsChecked="{Binding AutoRestartServices}" Style="{StaticResource ModernCheckBoxStyle}" Margin="0,0,0,12"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- RIGHT COL: AI VISUALS -->
+                    <Border Grid.Column="1" 
+                            Background="{DynamicResource BgCard}" 
+                            BorderBrush="{DynamicResource BorderSubtle}" 
+                            BorderThickness="1.5" 
+                            CornerRadius="24" 
+                            Padding="24" 
+                            VerticalAlignment="Stretch">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel Grid.Row="0">
+                                <Border Width="56" Height="56" 
+                                        Background="{DynamicResource VoltrisGradient}" 
+                                        CornerRadius="16" 
+                                        HorizontalAlignment="Left">
+                                    <Viewbox Margin="14">
+                                        <Path Data="{StaticResource AIChipIcon}" 
+                                              Fill="White" Stretch="Uniform"/>
+                                    </Viewbox>
+                                </Border>
+                                <TextBlock Text="Motor Lyra AI" 
+                                           FontSize="22" FontWeight="Bold" 
+                                           Foreground="White" Margin="0,18,0,10"/>
+                                <TextBlock Text="O motor de inteligência calibrará o gerenciamento de energia e prioridades de processo baseados no hardware identificado para garantir a sincronia total." 
+                                           FontSize="12" Foreground="{DynamicResource TextSecondary}" 
+                                           TextWrapping="Wrap" Opacity="0.8" LineHeight="18"/>
+                            </StackPanel>
+
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- ACTIONS ZONE -->
+                <Grid Grid.Row="2" Margin="0,32,0,0">
+                    <Button x:Name="ConfirmButton"
+                            Click="ConfirmButton_Click"
+                            HorizontalAlignment="Center" 
+                            MinWidth="320" MaxWidth="480" 
+                            Height="58"
+                            Style="{DynamicResource PrimaryButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="INICIAR ANÁLISE PROFUNDA" 
+                                       FontSize="15" FontWeight="Bold" 
+                                       VerticalAlignment="Center"/>
+                            <Path Data="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" 
+                                  Fill="White" Width="18" Height="18" 
+                                  Stretch="Uniform" Margin="14,0,0,0" 
+                                  VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

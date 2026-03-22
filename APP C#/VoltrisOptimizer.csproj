@@ -1,0 +1,179 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Images\favicon.ico</ApplicationIcon>
+    <AssemblyName>VoltrisOptimizer</AssemblyName>
+    <StartupObject>VoltrisOptimizer.Program</StartupObject>
+    <RootNamespace>VoltrisOptimizer</RootNamespace>
+    <Version>1.0.0.9</Version>
+    <AssemblyVersion>1.0.0.9</AssemblyVersion>
+    <FileVersion>1.0.0.9</FileVersion>
+    <Authors>VOLTRIS</Authors>
+    <Company>Voltris Corporation</Company>
+    <Product>Voltris Optimizer</Product>
+    <Description>Sistema Profissional de OtimizaÃ§Ã£o para Windows 10/11</Description>
+    <Copyright>Copyright Â© VOLTRIS 2025</Copyright>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <DefaultItemExcludes>$(DefaultItemExcludes);**\obj\**;**\bin\**;LicenseGenerator\**;RyTuneX-main\**;bACKUP VOLTRIS\**;VOLTRIS BACKUP\**;ANALISAR\**;TaskbarX-master\**;VoltrisBlur-main\**</DefaultItemExcludes>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <!-- PublicaÃ§Ã£o controlada via perfis Publish-x64/Publish-x86 -->
+  </PropertyGroup>
+
+  <!-- Remover PublishDir custom para usar diretÃ³rio padrÃ£o 'bin/Release/.../publish' -->
+
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <OutputPath>artifacts_app\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <OutputPath>artifacts_app\</OutputPath>
+    <!-- CONFIGURAÃ‡Ã•ES DE OTIMIZAÃ‡ÃƒO PARA RELEASE -->
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineConstants>RELEASE</DefineConstants>
+    
+    <!-- OtimizaÃ§Ãµes AOT/JIT -->
+    <TieredCompilation>true</TieredCompilation>
+    <TieredCompilationQuickJit>true</TieredCompilationQuickJit>
+    
+    <!-- ARQUIVOS SOLTOS POR PADRÃƒO (Enterprise Build) -->
+    <!-- SerÃ¡ controlado via parÃ¢metros do dotnet publish -->
+    <PublishSingleFile>false</PublishSingleFile>
+    <EnableCompressionInSingleFile>false</EnableCompressionInSingleFile>
+    
+    <!-- NÃ£o usar trim - quebra reflection em WPF -->
+    <PublishTrimmed>false</PublishTrimmed>
+    
+    <!-- OtimizaÃ§Ãµes de performance -->
+    <ServerGarbageCollection>false</ServerGarbageCollection>
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.6" />
+    <PackageReference Include="Microsoft.Diagnostics.Tracing.TraceEvent" Version="3.1.30" />
+    <PackageReference Include="System.Management" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2478.35" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="8.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  
+
+  <ItemGroup>
+    <Compile Remove="**\obj\**\*.AssemblyInfo.cs" />
+    <Compile Remove="**\obj\**\.NETCoreApp,Version=v*.AssemblyAttributes.cs" />
+  
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\**\*" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Images\Voltris FUNDO TRANSPARENTE.png" />
+    <None Remove="Images\VosRENTE.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\voltris.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\favicon.ico" />
+  </ItemGroup>
+
+  <!-- â”€â”€ DLLS extras: copiadas para o output automaticamente â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+
+  <!-- Coloque DLLs de terceiros em DLLS\ e elas serÃ£o copiadas com o exe  -->
+  <!--   DLLS\VoltrisBlur\VoltrisBlur.dll â†’ output\VoltrisBlur\ -->
+  <!--   DLLS\outra.dll                             â†’ output\outra.dll        -->
+  <ItemGroup>
+    <None Include="DLLS\**\*" Condition="Exists('DLLS')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </None>
+  </ItemGroup>
+
+  <!-- Copiando arquivos de ícones para o build final -->
+  <ItemGroup>
+    <Content Include="Windows11Icons\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cursor\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Compile Remove="Backend\**" />
+    <Compile Remove="Site Voltris\**" />
+    <Compile Remove="Installer\**" />
+    <Compile Remove="Instalador Voltris Optmizer\**" />
+    <Compile Remove="Launcher MuVoltris\**" />
+    <Compile Remove="Update\**" />
+    <Compile Remove="SPLASH\**" />
+    <Compile Remove="Tests\**" />
+    <Compile Remove="Services\PaymentService.cs" />
+    <Compile Remove="Services\GeminiService.cs" />
+    <Compile Remove="LicenseGenerator\**" />
+    <Compile Remove="ESTUDAR SERVICES (NÃƒO COMPILAR)\**" />
+    <Compile Remove="OtimizaÃ§Ãµes\**" />
+    <Compile Remove="RyTuneX-main\**" />
+    <Compile Remove="bACKUP VOLTRIS\**" />
+    <Compile Remove="VOLTRIS BACKUP\**" />
+    <Compile Remove="TaskbarX-master\**" />
+    <Compile Remove="VoltrisBlur-main\**" />
+    <Compile Remove="**\*.backup.cs" />
+    <Page Remove="OtimizaÃ§Ãµes\**" />
+    <Page Remove="ESTUDAR SERVICES (NÃƒO COMPILAR)\**" />
+    <Page Remove="Installer\**" />
+    <Page Remove="Instalador Voltris Optmizer\**" />
+    <Page Remove="Launcher MuVoltris\**" />
+    <Page Remove="Update\**" />
+    <Page Remove="SPLASH\**" />
+    <Page Remove="Tests\**" />
+    <Page Remove="RyTuneX-main\**" />
+    <Page Remove="TaskbarX-master\**" />
+    <Page Remove="VoltrisBlur-main\**" />
+    <Page Remove="bACKUP VOLTRIS\**" />
+    <Page Remove="VOLTRIS BACKUP\**" />
+    <Page Remove="UI\Windows\CheckoutWindow.xaml" />
+    <Compile Remove="UI\Windows\CheckoutWindow.xaml.cs" />
+    <Page Remove="UI\Views\UpgradeProView.xaml" />
+    <Compile Remove="UI\Views\UpgradeProView.xaml.cs" />
+    <Page Remove="UI\Themes\SidebarPremiumMarkup.xaml" />
+    <None Remove="SPLASH\**" />
+    <None Remove="Installer\**" />
+    <None Remove="Instalador Voltris Optmizer\**" />
+    <None Remove="Launcher MuVoltris\**" />
+    <None Remove="Update\**" />
+    <None Remove="Tests\**" />
+    <None Remove="RyTuneX-main\**" />
+    <None Remove="TaskbarX-master\**" />
+    <None Remove="VoltrisBlur-main\**" />
+    <None Remove="bACKUP VOLTRIS\**" />
+    <None Remove="VOLTRIS BACKUP\**" />
+    <Resource Remove="Installer\**" />
+    <Resource Remove="Instalador Voltris Optmizer\**" />
+    <Resource Remove="Launcher MuVoltris\**" />
+    <Resource Remove="Update\**" />
+    <Resource Remove="RyTuneX-main\**" />
+    <Resource Remove="TaskbarX-master\**" />
+    <Resource Remove="VoltrisBlur-main\**" />
+    <Resource Remove="bACKUP VOLTRIS\**" />
+    <Resource Remove="VOLTRIS BACKUP\**" />
+  </ItemGroup>
+</Project>
+

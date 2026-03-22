@@ -69,9 +69,11 @@ const nextConfig = {
       { source: '/api/v1/sessions/start', destination: 'http://127.0.0.1/api-desativada', permanent: true },
       { source: '/api/admin/sessions/live', destination: 'http://127.0.0.1/api-desativada', permanent: true },
       { source: '/api/admin/telemetry/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/license/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/commands/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
-      { source: '/api/v1/install/:path*', destination: 'http://127.0.0.1/api-desativada', permanent: true },
+      
+      // Apenas os endpoints culpados pelo polling infinito em loop
+      { source: '/api/v1/license/sync', destination: 'http://127.0.0.1/api-desativada', permanent: true },
+      { source: '/api/v1/commands/pending', destination: 'http://127.0.0.1/api-desativada', permanent: true },
+      { source: '/api/v1/install/status', destination: 'http://127.0.0.1/api-desativada', permanent: true },
 
       // ============================================================
       // CONSOLIDAÇÃO DE GUIAS DUPLICADOS — SEO / AdSense Fix

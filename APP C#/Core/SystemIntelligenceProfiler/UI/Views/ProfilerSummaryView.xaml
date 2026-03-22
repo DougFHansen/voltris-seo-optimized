@@ -1,0 +1,252 @@
+<UserControl x:Class="VoltrisOptimizer.Core.SystemIntelligenceProfiler.UI.Views.ProfilerSummaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:VoltrisOptimizer.UI.Converters"
+             mc:Ignorable="d" Background="Transparent" UseLayoutRounding="True" SnapsToDevicePixels="True"
+             TextOptions.TextRenderingMode="ClearType"
+             TextOptions.TextFormattingMode="Display">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <conv:ActionToIconConverter x:Key="ActionToIcon"/>
+        <conv:CircularProgressConverter x:Key="CircularProgressConverter"/>
+        
+        <Style x:Key="EliteRecommendationCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource BgCard}"/>
+            <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="Padding" Value="16,14"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="BorderThickness" Value="1.2"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}"/>
+            <Setter Property="MinHeight" Value="70"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="{DynamicResource BorderHover}"/>
+                    <Setter Property="Background" Value="{DynamicResource BgElevated}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <!-- Root Grid: allows multiple children (Viewbox + Overlays) -->
+    <Grid>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- MAIN CONTENT: Viewbox ensures full responsiveness         -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- MAIN CONTENT: Responsive Layout                           -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <Border Padding="28" MaxWidth="1200" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <!-- GRID MESTRE: 3 ZONAS OBRIGATÓRIAS -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>  <!-- ZONA 0: Header -->
+                    <RowDefinition Height="*"/>     <!-- ZONA 1: Conteúdo -->
+                    <RowDefinition Height="Auto"/>  <!-- ZONA 2: Ações -->
+                </Grid.RowDefinitions>
+
+                <!-- ZONA 0: HEADER -->
+                <StackPanel Grid.Row="0" Margin="0,0,0,24" HorizontalAlignment="Center">
+                    <TextBlock Text="ARQUITETURA DE OTIMIZAÇÃO"
+                               FontSize="12" FontWeight="Black"
+                               HorizontalAlignment="Center">
+                        <TextBlock.Foreground>
+                            <StaticResource ResourceKey="VoltrisGradientHorizontalBrush"/>
+                        </TextBlock.Foreground>
+                    </TextBlock>
+                    <TextBlock Text="Relatório DNA de Performance"
+                               FontSize="32" FontWeight="Bold"
+                               Foreground="White" Margin="0,6,0,0"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Calibrações inteligentes baseadas no perfil de hardware detectado"
+                               FontSize="14" Foreground="{DynamicResource TextSecondary}"
+                               Margin="0,8,0,0" Opacity="0.85" TextWrapping="Wrap"
+                               MaxWidth="750" HorizontalAlignment="Center"
+                               TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- ZONA 1: CONTEÚDO PRINCIPAL -->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6.5*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- COLUNA ESQUERDA: Lista de Recomendações -->
+                    <Grid Grid.Column="0" Margin="0,0,24,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0"
+                                   Text="CALIBRAÇÕES PRIORITÁRIAS IDENTIFICADAS"
+                                   FontSize="14" FontWeight="Bold"
+                                   Foreground="{DynamicResource TextMuted}"
+                                   Margin="0,0,0,16"/>
+
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" BorderThickness="0">
+                            <ItemsControl x:Name="RecommendationsList" ItemsSource="{Binding Recommendations}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource EliteRecommendationCardStyle}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <Border Grid.Column="0" Width="42" Height="42"
+                                                        CornerRadius="12" Margin="0,0,16,0"
+                                                        Background="#158B31FF">
+                                                    <Viewbox Margin="10">
+                                                        <Path Data="{Binding Type, Converter={StaticResource ActionToIcon}}"
+                                                              Fill="{DynamicResource BrandPurple}"/>
+                                                    </Viewbox>
+                                                </Border>
+
+                                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Name}"
+                                                               FontSize="16" FontWeight="Bold"
+                                                               Foreground="White" TextTrimming="CharacterEllipsis"/>
+                                                    <TextBlock Text="{Binding Explanation}"
+                                                               FontSize="13" Foreground="{DynamicResource TextSecondary}"
+                                                               Margin="0,4,0,0" Opacity="0.85" TextWrapping="Wrap"/>
+                                                </StackPanel>
+
+                                                <Grid Grid.Column="2" VerticalAlignment="Center">
+                                                    <CheckBox IsChecked="{Binding IsSelected}" Style="{DynamicResource ModernCheckBoxStyle}"/>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Grid>
+
+                    <!-- COLUNA DIREITA: Score e Diagnóstico -->
+                    <Border Grid.Column="1"
+                            Style="{DynamicResource PremiumCard}"
+                            Padding="24"
+                            VerticalAlignment="Stretch">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                                <TextBlock Grid.Row="0"
+                                           Text="SCORE DE EFICIÊNCIA DO KERNEL"
+                                           FontSize="13" FontWeight="Black"
+                                           Foreground="{DynamicResource TextMuted}"
+                                           HorizontalAlignment="Center"/>
+
+                                <Viewbox Grid.Row="1" VerticalAlignment="Center" Margin="0,12" MaxWidth="200" MaxHeight="200"
+                                         TextOptions.TextFormattingMode="Ideal" TextOptions.TextRenderingMode="Auto">
+                                    <Grid Width="200" Height="200">
+                                        <Ellipse Stroke="{DynamicResource BorderSubtle}" StrokeThickness="18" Width="200" Height="200"/>
+
+                                        <Ellipse x:Name="ProgressCircle"
+                                                 Width="200" Height="200"
+                                                 StrokeThickness="18"
+                                                 StrokeDashCap="Round"
+                                                 RenderTransformOrigin="0.5,0.5">
+                                            <Ellipse.Stroke>
+                                                <StaticResource ResourceKey="VoltrisGradient"/>
+                                            </Ellipse.Stroke>
+                                            <Ellipse.RenderTransform>
+                                                <RotateTransform Angle="-90"/>
+                                            </Ellipse.RenderTransform>
+                                            <Ellipse.StrokeDashArray>
+                                                <MultiBinding Converter="{StaticResource CircularProgressConverter}">
+                                                    <Binding Path="Score"/>
+                                                </MultiBinding>
+                                            </Ellipse.StrokeDashArray>
+                                        </Ellipse>
+
+                                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                            <TextBlock Text="{Binding Score, StringFormat={}{0:F0}}"
+                                                       FontSize="68" FontWeight="Bold"
+                                                       Foreground="White" HorizontalAlignment="Center"/>
+                                            <TextBlock Text="PT"
+                                                       FontSize="15" FontWeight="Black"
+                                                       Opacity="0.4" Foreground="White"
+                                                       HorizontalAlignment="Center" Margin="0,2,0,0"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Viewbox>
+
+                                <Border Grid.Row="2"
+                                        Background="#0AFFFFFF"
+                                        CornerRadius="14"
+                                        Padding="16">
+                                    <TextBlock Text="Diagnóstico Lyra AI"
+                                               FontSize="13" FontWeight="Bold"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center">
+                                        <TextBlock.Foreground>
+                                            <StaticResource ResourceKey="VoltrisGradient"/>
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <!-- ZONA 2: AÇÕES -->
+                    <Grid Grid.Row="2" Margin="0,24,0,0">
+                        <Button x:Name="ApplyAllButton"
+                                HorizontalAlignment="Center"
+                                MinWidth="280" MaxWidth="420"
+                                Height="56"
+                                Style="{DynamicResource PrimaryButton}"
+                                Click="ApplyAllButton_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="SINCRONIZAR KERNEL AGORA"
+                                           FontSize="16" FontWeight="Bold"
+                                           VerticalAlignment="Center"/>
+                                <Path Data="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"
+                                      Fill="White" Width="18" Height="18"
+                                      Stretch="Uniform" Margin="12,0,0,0"
+                                      VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!-- OVERLAYS: Toast e Celebração (inside root Grid)           -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <Border x:Name="ToastPanel" Visibility="Collapsed" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                Margin="0,0,0,120" Background="#DD222222" CornerRadius="12" Padding="20,10" Opacity="0">
+            <TextBlock x:Name="ToastText" Foreground="White" FontSize="14" FontWeight="SemiBold"/>
+        </Border>
+
+        <Grid x:Name="CelebrationOverlay" Visibility="Collapsed" Background="#F00A0A0A" Opacity="0">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Viewbox x:Name="SuccessIcon" Width="100" Height="100" Margin="0,0,0,32">
+                    <Path Data="M12,2A10,10 0 1,0 22,12A10,10 0 0,0 12,2M10,17L5,12L6.41,10.59L10,14.17L17.59,6.58L19,8L10,17Z" Fill="{DynamicResource StatusSuccess}"/>
+                    <Viewbox.RenderTransform>
+                        <ScaleTransform CenterX="50" CenterY="50"/>
+                    </Viewbox.RenderTransform>
+                </Viewbox>
+                <TextBlock Text="CALIBRAÇÃO CONCLUÍDA" FontSize="32" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="OptimizationCountText" Text="24 otimizações aplicadas" FontSize="18" Foreground="{DynamicResource TextSecondary}" Margin="0,8,0,48" HorizontalAlignment="Center"/>
+
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock x:Name="RedirectText" Text="Próximo passo em 3..." FontSize="14" Foreground="{DynamicResource TextMuted}" HorizontalAlignment="Center" Margin="0,0,0,12"/>
+                    <Border Width="200" Height="4" Background="#20FFFFFF" CornerRadius="2">
+                        <Border x:Name="RedirectProgress" Width="0" Height="4" HorizontalAlignment="Left" Background="{DynamicResource VoltrisGradient}" CornerRadius="2"/>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</UserControl>
