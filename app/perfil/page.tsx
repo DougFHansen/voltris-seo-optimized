@@ -35,10 +35,10 @@ export default function ProfilePage() {
           profile.cep;
 
         if (isComplete) {
-          // Se estiver completo, verifica se não estamos forçando a edição
           const params = new URLSearchParams(window.location.search);
           if (!params.get('force')) {
-            router.replace('/dashboard');
+            const next = params.get('redirect') || '/dashboard';
+            router.replace(next);
             return;
           }
         }
@@ -123,7 +123,9 @@ export default function ProfilePage() {
       if (error) throw error;
 
       await refreshAuth();
-      router.replace('/dashboard');
+      const params = new URLSearchParams(window.location.search);
+      const next = params.get('redirect') || '/dashboard';
+      router.replace(next);
     } catch (err: any) {
       setError(err.message || 'Erro ao salvar.');
     } finally {

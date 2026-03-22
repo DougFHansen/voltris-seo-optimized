@@ -95,15 +95,17 @@ export async function GET(request: NextRequest) {
 
         console.log('✅ [OAuth Callback] Perfil encontrado:', profile);
 
+        const next = searchParams.get('next') || '/dashboard';
+
         // Se campos obrigatórios estão faltando, redirecionar para completar cadastro
         const missingFields = !profile?.phone || !profile?.city || !profile?.state || !profile?.cep;
         
         if (missingFields) {
           console.log('🔍 [OAuth Callback] Perfil incompleto, redirecionando para completar cadastro');
-          return NextResponse.redirect(`${origin}/perfil?completar=1&google=1`);
+          return NextResponse.redirect(`${origin}/perfil?completar=1&google=1${next ? `&redirect=${encodeURIComponent(next)}` : ''}`);
         } else {
-          console.log('✅ [OAuth Callback] Perfil completo, redirecionando para dashboard');
-          return NextResponse.redirect(`${origin}/dashboard`);
+          console.log('✅ [OAuth Callback] Perfil completo, redirecionando para:', next);
+          return NextResponse.redirect(`${origin}${next}`);
         }
       }
     } catch (error) {

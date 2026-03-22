@@ -16,6 +16,16 @@ function AdquirirLicencaContent() {
     const [isProcessing, setIsProcessing] = useState<string | null>(null);
 
     const installationId = searchParams.get('installation_id');
+    const planFromUrl = searchParams.get('plan');
+    const [hasAttemptedAutoPurchase, setHasAttemptedAutoPurchase] = useState(false);
+
+    // Efeito para disparar compra automática após login se vier via redirect
+    useEffect(() => {
+        if (!authLoading && user && planFromUrl && !hasAttemptedAutoPurchase && !isProcessing) {
+            setHasAttemptedAutoPurchase(true);
+            handlePurchase(planFromUrl);
+        }
+    }, [authLoading, user, planFromUrl, hasAttemptedAutoPurchase, isProcessing]);
 
     // Smooth scroll para a seção de compra
     const scrollToPurchase = () => {
@@ -30,7 +40,8 @@ function AdquirirLicencaContent() {
 
         if (!user) {
             toast.error("Você precisa estar logado para continuar.");
-            router.push(`/login?redirect=/adquirir-licenca?plan=${planType}${installationId ? `&installation_id=${installationId}` : ''}`);
+            const redirectPath = `/adquirir-licenca?plan=${planType}${installationId ? `&installation_id=${installationId}` : ''}`;
+            router.push(`/login?redirect=${encodeURIComponent(redirectPath)}`);
             return;
         }
 

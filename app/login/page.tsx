@@ -340,7 +340,7 @@ export default function LoginPage() {
 
                       {/* Google Button Wrapper - Centered */}
                       <div className="w-full flex justify-center">
-                        <GoogleLoginButton onSuccess={() => { }} onError={() => { }} disabled={loading} />
+                        <GoogleLoginButton onSuccess={() => { }} onError={() => { }} disabled={loading} redirect={redirectUrl} />
                       </div>
                     </form>
                   )}

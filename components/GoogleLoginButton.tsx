@@ -9,9 +9,10 @@ interface GoogleLoginButtonProps {
     onSuccess?: () => void;
     onError?: (error: string) => void;
     disabled?: boolean;
+    redirect?: string;
 }
 
-export default function GoogleLoginButton({ onSuccess, onError, disabled }: GoogleLoginButtonProps) {
+export default function GoogleLoginButton({ onSuccess, onError, disabled, redirect }: GoogleLoginButtonProps) {
     const [loading, setLoading] = useState(false);
     const supabase = createClient();
 
@@ -21,7 +22,7 @@ export default function GoogleLoginButton({ onSuccess, onError, disabled }: Goog
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                    redirectTo: `${window.location.origin}/auth/callback`,
+                   redirectTo: `${window.location.origin}/auth/callback${redirect ? `?next=${encodeURIComponent(redirect)}` : ''}`,
                 },
             });
 
