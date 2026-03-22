@@ -229,33 +229,42 @@ function DashboardContent() {
           <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="space-y-4">
             {licenses.length > 0 ? (
               licenses.map((lic, i) => (
-                <div key={lic.id} className="bg-[#121218] border border-white/10 p-6 rounded-3xl relative overflow-hidden group">
-                  <div className={`absolute top-0 right-0 w-32 h-32 ${lic.is_active ? 'bg-green-500/5' : 'bg-red-500/5'} blur-3xl`}></div>
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
-                    <div className="flex items-center gap-4">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${lic.is_active ? 'bg-green-500/10 text-green-400' : 'bg-slate-500/10 text-slate-400'}`}>
-                        <FiCheckCircle className="w-6 h-6" />
+                <div key={lic.id} className="bg-[#0A0A0E]/80 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] relative overflow-hidden group hover:border-[#31A8FF]/30 transition-all duration-500 shadow-2xl">
+                  <div className={`absolute -top-10 -right-10 w-40 h-40 ${lic.is_active ? 'bg-[#31A8FF]/10' : 'bg-red-500/10'} blur-[80px] rounded-full`}></div>
+                  
+                  <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 relative z-10">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                      <div className={`w-20 h-20 rounded-[1.5rem] flex items-center justify-center ${lic.is_active ? 'bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF]' : 'bg-slate-500/10 text-slate-400'} shadow-lg group-hover:scale-110 transition-transform duration-500`}>
+                        <FiCheckCircle className="w-10 h-10" />
                       </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <h4 className="text-white font-black text-lg uppercase">{lic.license_type} PLAN</h4>
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${lic.is_active ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
-                            {lic.is_active ? 'Ativa' : 'Inativa'}
+                      
+                      <div className="space-y-2">
+                        <div className="flex flex-wrap items-center gap-3">
+                          <h4 className="text-2xl font-black text-white uppercase tracking-tighter">{lic.license_type}</h4>
+                          <span className={`px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${lic.is_active ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'}`}>
+                            {lic.is_active ? 'ATIVA' : 'SUSPENSA'}
                           </span>
                         </div>
-                        <p className="text-slate-500 text-sm">Expira em: {new Date(lic.expires_at).toLocaleDateString()}</p>
+                        
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-1">
+                          <p className="text-slate-400 text-sm font-medium">Expira em: <span className="text-white">{new Date(lic.expires_at).toLocaleDateString('pt-BR')}</span></p>
+                          <div className={`hidden sm:block w-1 h-1 rounded-full ${lic.is_active ? 'bg-emerald-500' : 'bg-red-500'}`}></div>
+                          <p className="text-slate-400 text-sm font-medium">Dispositivos: <span className="text-[#31A8FF] font-bold">{lic.devices_in_use}/{lic.max_devices}</span></p>
+                        </div>
                       </div>
                     </div>
 
-                    <div className="w-full md:w-auto flex flex-col gap-2">
-                      <p className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Chave de Ativação</p>
-                      <div className="flex items-center gap-2 bg-black/40 border border-white/5 p-3 rounded-2xl">
-                        <code className="text-[#31A8FF] font-mono font-bold text-sm sm:text-base">{lic.license_key}</code>
+                    <div className="w-full lg:w-auto flex flex-col gap-3">
+                      <span className="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-black">Chave de Ativação Única</span>
+                      <div className="flex items-center gap-3 bg-white/5 border border-white/10 p-4 rounded-2xl group-hover:border-[#31A8FF]/50 transition-colors">
+                        <code className="text-[#31A8FF] font-mono font-black text-sm sm:text-lg select-all letter-spacing-1">{lic.license_key}</code>
+                        <div className="w-px h-6 bg-white/10 mx-2"></div>
                         <button
-                          onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Chave copiada!'); }}
-                          className="p-2 hover:bg-white/10 rounded-lg transition-colors text-slate-400 hover:text-white"
+                          onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Chave copiada para a área de transferência!'); }}
+                          className="p-2 hover:bg-[#31A8FF]/20 rounded-xl transition-all text-[#31A8FF] hover:text-white"
+                          title="Copiar Chave"
                         >
-                          <FiRefreshCw className="w-4 h-4" />
+                          <FiRefreshCw className="w-5 h-5" />
                         </button>
                       </div>
                     </div>
@@ -263,11 +272,15 @@ function DashboardContent() {
                 </div>
               ))
             ) : (
-              <div className="bg-[#121218] border border-white/5 rounded-3xl p-12 text-center">
-                <FiPackage className="w-16 h-16 text-slate-800 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-white mb-2">Nenhuma licença encontrada</h3>
-                <p className="text-slate-500 mb-6">Você ainda não possui licenças ativas vinculadas a este e-mail.</p>
-                <Link href="/servicos" className="inline-block px-8 py-3 bg-white text-black font-bold rounded-xl">Comprar Agora</Link>
+              <div className="bg-[#0A0A0E] border border-white/5 rounded-[2.5rem] p-16 text-center shadow-2xl">
+                <div className="w-24 h-24 bg-white/5 rounded-3xl flex items-center justify-center mx-auto mb-8 border border-white/10">
+                   <FiPackage className="w-12 h-12 text-slate-700" />
+                </div>
+                <h3 className="text-3xl font-black text-white mb-4 tracking-tighter uppercase">Nenhuma Licença Ativa</h3>
+                <p className="text-slate-400 mb-10 max-w-md mx-auto leading-relaxed">Libere o poder total do Voltris Optimizer adquirindo um de nossos planos profissionais.</p>
+                <Link href="/adquirir-licenca" className="inline-flex items-center px-10 py-5 bg-[#31A8FF] hover:bg-[#1070FF] text-white font-black text-lg rounded-2xl transition-all shadow-[0_10px_30px_rgba(49,168,255,0.3)] hover:scale-[1.05]">
+                  ADQUIRIR LICENÇA
+                </Link>
               </div>
             )}
           </motion.div>
