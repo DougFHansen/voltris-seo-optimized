@@ -14,9 +14,7 @@ function AdquirirLicencaContent() {
     const searchParams = useSearchParams();
     const { user, loading: authLoading } = useAuth();
     const [isProcessing, setIsProcessing] = useState<string | null>(null);
-    const [showCpfModal, setShowCpfModal] = useState<string | null>(null); // planType sendo comprado
-    const [cpf, setCpf] = useState('');
-    const [cpfError, setCpfError] = useState('');
+    const [billingCycle, setBillingCycle] = useState<'month' | 'year'>('month');
 
     const installationId = searchParams.get('installation_id');
     const planFromUrl = searchParams.get('plan');
@@ -25,7 +23,7 @@ function AdquirirLicencaContent() {
     useEffect(() => {
         if (!authLoading && user && planFromUrl && !hasAttemptedAutoPurchase && !isProcessing) {
             setHasAttemptedAutoPurchase(true);
-            handlePurchase(planFromUrl);
+            handlePurchase(planFromUrl, (searchParams.get('period') as 'month' | 'year') || 'month');
         }
     }, [authLoading, user, planFromUrl, hasAttemptedAutoPurchase, isProcessing]);
 
@@ -36,17 +34,12 @@ function AdquirirLicencaContent() {
         }
     };
 
-    const formatCpf = (v: string) => {
-        const n = v.replace(/\D/g, '').substring(0, 11);
-        return n.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    };
-
-    const handlePurchase = async (planType: string) => {
+    const handlePurchase = async (planType: string, period: 'month' | 'year' = billingCycle) => {
         if (authLoading) return;
 
         if (!user) {
             toast.error("Você precisa estar logado para continuar.");
-            const redirectPath = `/adquirir-licenca?plan=${planType}${installationId ? `&installation_id=${installationId}` : ''}`;
+            const redirectPath = `/adquirir-licenca?plan=${planType}&period=${period}${installationId ? `&installation_id=${installationId}` : ''}`;
             router.push(`/login?redirect=${encodeURIComponent(redirectPath)}`);
             return;
         }
@@ -55,12 +48,13 @@ function AdquirirLicencaContent() {
 
         try {
             toast.loading("Iniciando checkout seguro com Stripe...");
-            
+
             const response = await fetch('/api/stripe/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     license_type: planType,
+                    billing_period: period,
                     user_id: user.id || null,
                     customer_email: user.email,
                     customer_name: user?.user_metadata?.full_name || 'Usuário Voltris',
@@ -81,6 +75,11 @@ function AdquirirLicencaContent() {
             setIsProcessing(null);
             toast.dismiss();
         }
+    };
+
+    const prices = {
+        month: { standard: '49,90', pro: '349,90', enterprise: '1490,90' },
+        year: { standard: '369,90', pro: '789,90', enterprise: '5.489,90' }
     };
 
     return (
@@ -138,9 +137,42 @@ function AdquirirLicencaContent() {
 
             {/* PLANS SECTION */}
             <section id="purchase-section" className="relative z-10 py-20 px-4">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-7xl mx-auto text-center">
+                    
+                    {/* Billing Cycle Toggle */}
+                    <div className="flex flex-col items-center mb-16">
+                        <div className="bg-white/5 border border-white/10 p-1.5 rounded-2xl flex items-center gap-1 backdrop-blur-xl relative">
+                            <button
+                                onClick={() => setBillingCycle('month')}
+                                className={`px-8 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 relative z-10 ${billingCycle === 'month' ? 'text-black' : 'text-slate-400 hover:text-white'}`}
+                            >
+                                Mensal
+                            </button>
+                            <button
+                                onClick={() => setBillingCycle('year')}
+                                className={`px-8 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 relative z-10 ${billingCycle === 'year' ? 'text-black' : 'text-slate-400 hover:text-white'}`}
+                            >
+                                Anual
+                            </button>
+                            
+                            <motion.div
+                                animate={{ x: billingCycle === 'month' ? 0 : '100.5%' }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                                className="absolute top-1.5 left-1.5 bottom-1.5 w-[calc(50%-6px)] bg-white rounded-xl z-0 shadow-lg"
+                            />
+                        </div>
+                        {billingCycle === 'year' && (
+                            <motion.div 
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="mt-4 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-black tracking-widest text-emerald-400 uppercase"
+                            >
+                                Economize até 40% no anual
+                            </motion.div>
+                        )}
+                    </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
 
                         {/* Standard Plan */}
                         <motion.div
@@ -156,27 +188,30 @@ function AdquirirLicencaContent() {
                                 <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter">Standard</h3>
                                 <p className="text-slate-500 text-sm mb-6">Essencial para um único PC.</p>
 
-                                <div className="mb-8">
-                                    <span className="text-4xl font-black text-white">R$ 1,00</span>
-                                    <span className="text-slate-500 text-lg font-medium">/ano</span>
+                                <div className="mb-8 overflow-hidden h-14">
+                                    <motion.div
+                                        key={billingCycle}
+                                        initial={{ y: 20, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        className="flex items-baseline gap-1"
+                                    >
+                                        <span className="text-4xl font-black text-white">R$ {prices[billingCycle].standard}</span>
+                                        <span className="text-slate-500 text-lg font-medium">/{billingCycle === 'month' ? 'mês' : 'ano'}</span>
+                                    </motion.div>
                                 </div>
 
                                 <ul className="space-y-4 mb-10">
                                     <li className="flex items-center gap-3 text-sm text-slate-300">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                                        <span>✓ 1 Dispositivo ativado</span>
-                                    </li>
-                                    <li className="flex items-center gap-3 text-sm text-slate-300 opacity-50">
-                                        <CheckCircle2 className="w-5 h-5 text-slate-600 shrink-0" />
-                                        <span className="line-through">Ativação em 3 computadores</span>
+                                        <span>1 Dispositivo</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-slate-300">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                                        <span>Otimização Windows Pro</span>
+                                        <span>Otimização Básica</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-slate-300">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                                        <span>Suporte via Ticket / Email</span>
+                                        <span>Suporte por Email</span>
                                     </li>
                                 </ul>
                             </div>
@@ -208,27 +243,34 @@ function AdquirirLicencaContent() {
                                 <h3 className="text-3xl font-black text-white mb-2 uppercase tracking-tighter">Pro Gamer</h3>
                                 <p className="text-slate-400 text-sm mb-6 font-medium">A escolha para entusiastas.</p>
 
-                                <div className="mb-8">
-                                    <span className="text-5xl font-black text-white">R$ 1,00</span>
-                                    <span className="text-[#8B31FF] text-xl font-black">/ano</span>
+                                <div className="mb-8 overflow-hidden h-14">
+                                    <motion.div
+                                        key={billingCycle}
+                                        initial={{ y: 20, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        className="flex items-baseline gap-1"
+                                    >
+                                        <span className="text-5xl font-black text-white">R$ {prices[billingCycle].pro}</span>
+                                        <span className="text-[#8B31FF] text-xl font-black">/{billingCycle === 'month' ? 'mês' : 'ano'}</span>
+                                    </motion.div>
                                 </div>
 
                                 <ul className="space-y-4 mb-10">
                                     <li className="flex items-center gap-3 text-sm text-white font-medium">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                                        <span>3 Dispositivos simultâneos</span>
+                                        <span>3 Dispositivos</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-white font-medium">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                                        <span>Otimização Ultra-Low Latency</span>
+                                        <span>Otimização Gamer</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-white font-medium">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                                        <span>Suporte Prioritário VIP</span>
+                                        <span>Suporte Prioritário</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-white font-medium">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                                        <span>Limpeza Profunda Automática</span>
+                                        <span>Limpeza Profunda</span>
                                     </li>
                                 </ul>
                             </div>
@@ -254,29 +296,36 @@ function AdquirirLicencaContent() {
                                     <Crown className="w-7 h-7" />
                                 </div>
                                 <h3 className="text-2xl font-black text-white mb-2 uppercase tracking-tighter">Enterprise</h3>
-                                <p className="text-slate-500 text-sm mb-6">Para lan houses e empresas.</p>
+                                <p className="text-slate-500 text-sm mb-6">Para empresas.</p>
 
-                                <div className="mb-8">
-                                    <span className="text-4xl font-black text-white">R$ 1,00</span>
-                                    <span className="text-[#FF4B6B] text-lg font-bold">/ano</span>
+                                <div className="mb-8 overflow-hidden h-14">
+                                    <motion.div
+                                        key={billingCycle}
+                                        initial={{ y: 20, opacity: 0 }}
+                                        animate={{ y: 0, opacity: 1 }}
+                                        className="flex items-baseline gap-1"
+                                    >
+                                        <span className="text-4xl font-black text-white">R$ {prices[billingCycle].enterprise}</span>
+                                        <span className="text-[#FF4B6B] text-lg font-bold">/{billingCycle === 'month' ? 'mês' : 'ano'}</span>
+                                    </motion.div>
                                 </div>
 
                                 <ul className="space-y-4 mb-10">
                                     <li className="flex items-center gap-3 text-sm text-slate-300 font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] to-[#FFD700]">
                                         <CheckCircle2 className="w-5 h-5 text-[#FF4B6B] shrink-0" />
-                                        <span>Dispositivos ILIMITADOS</span>
+                                        <span>Dispositivos Ilimitados</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-slate-300">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                                        <span>Acesso a todas as APIs</span>
+                                        <span>Todas as Otimizações</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-slate-300">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                                        <span>Suporte 24/7 WhatsApp VIP</span>
+                                        <span>Suporte VIP WhatsApp</span>
                                     </li>
                                     <li className="flex items-center gap-3 text-sm text-slate-300">
                                         <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                                        <span>Sem mensalidades ocultas</span>
+                                        <span>API de Integração</span>
                                     </li>
                                 </ul>
                             </div>
@@ -286,7 +335,7 @@ function AdquirirLicencaContent() {
                                 disabled={isProcessing !== null}
                                 className="w-full py-4 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:border-[#FF4B6B] hover:text-[#FF4B6B] transition-all duration-300 disabled:opacity-50"
                             >
-                                {isProcessing === 'enterprise' ? 'Processando...' : 'Obter Vitalício'}
+                                {isProcessing === 'enterprise' ? 'Processando...' : `Obter Enterprise ${billingCycle === 'month' ? 'Mensal' : 'Anual'}`}
                             </button>
                         </motion.div>
 

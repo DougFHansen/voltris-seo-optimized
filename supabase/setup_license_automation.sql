@@ -71,7 +71,8 @@ CREATE OR REPLACE FUNCTION public.generate_complete_license_v3(
     p_payment_id UUID,
     p_user_id UUID,
     p_email TEXT,
-    p_plan_type TEXT
+    p_plan_type TEXT,
+    p_billing_period TEXT DEFAULT 'month' -- 'month' ou 'year'
 )
 RETURNS JSONB AS $$
 DECLARE
@@ -85,7 +86,15 @@ DECLARE
     v_license_id UUID;
     v_valid_until_str TEXT;
     v_key_date_str TEXT;
+    v_interval INTERVAL;
 BEGIN
+    -- Determinar intervalo
+    IF p_billing_period = 'year' THEN
+        v_interval := INTERVAL '1 year';
+    ELSE
+        v_interval := INTERVAL '1 month';
+    END IF;
+
     -- 1. Determinar Configurações do Plano
     CASE lower(p_plan_type)
         WHEN 'trial' THEN 
@@ -95,19 +104,19 @@ BEGIN
         WHEN 'standard' THEN 
             v_plan_code := 'STA';
             v_max_devices := 1;
-            v_valid_until := CURRENT_DATE + INTERVAL '1 month';
+            v_valid_until := CURRENT_DATE + v_interval;
         WHEN 'pro' THEN 
             v_plan_code := 'PRO';
             v_max_devices := 3;
-            v_valid_until := CURRENT_DATE + INTERVAL '1 month';
+            v_valid_until := CURRENT_DATE + v_interval;
         WHEN 'enterprise' THEN 
             v_plan_code := 'ENT';
             v_max_devices := 9999;
-            v_valid_until := CURRENT_DATE + INTERVAL '100 years';
+            v_valid_until := CURRENT_DATE + v_interval;
         ELSE
             v_plan_code := 'STA';
             v_max_devices := 1;
-            v_valid_until := CURRENT_DATE + INTERVAL '1 month';
+            v_valid_until := CURRENT_DATE + v_interval;
     END CASE;
 
     -- 2. Gerar Client ID Aleatório (6 dígitos - igual ao formatado no gerador)

@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS public.subscriptions (
     user_id UUID REFERENCES auth.users(id) ON DELETE SET NULL,
     email TEXT NOT NULL,
     plan_type TEXT NOT NULL,
+    billing_period TEXT DEFAULT 'month', -- month, year
     status TEXT NOT NULL DEFAULT 'PENDING',  -- ACTIVE, SUSPENDED, CANCELED, PENDING
     payment_id UUID REFERENCES public.payments(id) ON DELETE SET NULL,
     next_billing_at TIMESTAMPTZ,
@@ -35,17 +36,15 @@ CREATE INDEX IF NOT EXISTS idx_subscriptions_status ON public.subscriptions(stat
 
 -- RLS
 ALTER TABLE public.subscriptions ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.pagbank_plans ENABLE ROW LEVEL SECURITY;
 
 -- Usuários veem apenas suas próprias assinaturas
+DROP POLICY IF EXISTS "Users view own subscriptions" ON public.subscriptions;
 CREATE POLICY "Users view own subscriptions" ON public.subscriptions
     FOR SELECT USING (auth.uid() = user_id OR email = (SELECT auth.jwt() ->> 'email'));
 
 -- Service role acesso total
+DROP POLICY IF EXISTS "Service role full access subscriptions" ON public.subscriptions;
 CREATE POLICY "Service role full access subscriptions" ON public.subscriptions
-    FOR ALL USING (true);
-
-CREATE POLICY "Service role full access plans" ON public.pagbank_plans
     FOR ALL USING (true);
 
 -- ============================================================
@@ -61,6 +60,7 @@ DECLARE
     v_sub RECORD;
     v_license RECORD;
     v_new_expires_at TIMESTAMPTZ;
+    v_interval INTERVAL;
 BEGIN
     -- Buscar assinatura
     SELECT * INTO v_sub
@@ -71,8 +71,14 @@ BEGIN
         RETURN jsonb_build_object('error', 'Assinatura não encontrada');
     END IF;
 
-    -- Calcular nova data de expiração (+ 31 dias para mensal)
-    v_new_expires_at := now() + INTERVAL '31 days';
+    -- Calcular nova data de expiração
+    IF v_sub.billing_period = 'year' THEN
+        v_interval := INTERVAL '1 year + 1 day'; -- margem de segurança
+    ELSE
+        v_interval := INTERVAL '31 days';
+    END IF;
+
+    v_new_expires_at := now() + v_interval;
 
     -- Verificar se já existe licença ativa para esse usuário/email
     SELECT * INTO v_license
@@ -102,7 +108,8 @@ BEGIN
             p_payment_id,
             v_sub.user_id,
             v_sub.email,
-            v_sub.plan_type
+            v_sub.plan_type,
+            v_sub.billing_period
         );
     END IF;
 END;
