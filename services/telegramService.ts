@@ -2,6 +2,16 @@
  * Serviço de Integração com Telegram
  * Usado para enviar notificações de eventos importantes no site
  */
+
+function escapeHtml(unsafe: string) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export const TelegramService = {
   /**
    * Envia uma mensagem para o chat configurado via variáveis de ambiente
@@ -11,16 +21,15 @@ export const TelegramService = {
     const chatId = process.env.TELEGRAM_CHAT_ID;
 
     if (!token || !chatId) {
-      console.warn('Telegram API credentials missing. Notification will not be sent.');
+      console.warn('[Telegram] Credentials missing. Key names: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID');
       return;
     }
 
     try {
-      const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      const url = `https://api.telegram.org/bot${token}/sendMessage`;
+      const response = await fetch(url, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           chat_id: chatId,
           text: message,
@@ -29,11 +38,15 @@ export const TelegramService = {
       });
 
       if (!response.ok) {
-        const error = await response.json();
-        console.error('Error sending Telegram notification:', error);
+        const errorData = await response.json().catch(() => ({}));
+        console.error('[Telegram] API Error:', {
+          status: response.status,
+          statusText: response.statusText,
+          error: errorData
+        });
       }
     } catch (error) {
-      console.error('Failed to send Telegram notification:', error);
+      console.error('[Telegram] Fetch failed:', error);
     }
   },
 
@@ -42,15 +55,18 @@ export const TelegramService = {
    */
   async notifyDownload(fileName: string, pageUrl: string) {
     const timestamp = new Date().toLocaleString('pt-BR');
-    const message = `
-🚀 <b>Novo Download Iniciado!</b>
+    const safeFileName = escapeHtml(fileName);
+    const safePageUrl = escapeHtml(pageUrl);
 
-📁 <b>Arquivo:</b> ${fileName}
-🌐 <b>Página:</b> ${pageUrl}
-⏰ <b>Data/Hora:</b> ${timestamp}
-
-#voptimizer #download #voltris
-    `.trim();
+    const message = [
+      `🚀 <b>Novo Download Iniciado!</b>`,
+      ``,
+      `📁 <b>Arquivo:</b> ${safeFileName}`,
+      `🌐 <b>Página:</b> ${safePageUrl}`,
+      `⏰ <b>Data/Hora:</b> ${timestamp}`,
+      ``,
+      `#voptimizer #download #voltris`
+    ].join('\n');
 
     return this.sendMessage(message);
   }
