@@ -61,29 +61,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const supabase = supabaseRef.current;
 
-    // 1. Tentar pegar a sessão imediatamente para reduzir o tempo de "loading"
-    const checkInitialSession = async () => {
-      // Se já estamos buscando via onAuthStateChange, não precisamos repetir
-      if (fetchingRef.current) return;
-      
-      try {
-        const { data: { session } } = await supabase.auth.getSession();
-        if (session?.user && !authState.user) {
-          await fetchProfile(session.user);
-        } else if (!session && authState.loading) {
-          // Se não tem sessão e ainda consta como carregando, liberar
-          setAuthState(prev => ({ ...prev, loading: false }));
-        }
-      } catch (err) {
-        setAuthState(prev => ({ ...prev, loading: false }));
-      }
-    };
-
-    checkInitialSession();
-
-    // 2. onAuthStateChange - Fonte de verdade para eventos subsequentes
+    // onAuthStateChange é a fonte de verdade — dispara INITIAL_SESSION na montagem
+    // e todos os eventos subsequentes. Não precisamos de getUser() separado.
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      // Evitar chamadas paralelas se já estivermos gerenciando uma mudança
+      // Evitar chamadas paralelas
       if (fetchingRef.current) return;
       fetchingRef.current = true;
 
@@ -93,6 +74,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         } else if (session?.user) {
           await fetchProfile(session.user);
         } else if (event === 'INITIAL_SESSION' && !session) {
+          // Sem sessão na inicialização
           setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
         }
       } finally {
@@ -100,19 +82,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     });
 
-    // 3. Fallback de Segurança - Garantir que o loading não fique travado para sempre
-    const timer = setTimeout(() => {
-      setAuthState(prev => {
-        if (prev.loading) return { ...prev, loading: false };
-        return prev;
-      });
-    }, 5000); // 5 segundos de limite máximo para o spinner de auth
-
-    return () => {
-      subscription.unsubscribe();
-      clearTimeout(timer);
-    };
-  }, [fetchProfile, authState.user, authState.loading]);
+    return () => subscription.unsubscribe();
+  }, [fetchProfile]);
 
   const signOut = useCallback(async () => {
     try {

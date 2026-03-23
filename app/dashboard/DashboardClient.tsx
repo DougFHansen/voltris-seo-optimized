@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
@@ -70,7 +70,7 @@ function DashboardContent() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isRecovering, setIsRecovering] = useState(false);
   const [filter, setFilter] = useState('all');
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   // Lógica de Redirecionamento (Google Only)
   useEffect(() => {
@@ -92,25 +92,17 @@ function DashboardContent() {
     try {
       if (showLoading) setIsLoading(true);
 
-      // 1. Buscar Pedidos
-      const { data: ordersData, error: ordersError } = await supabase
-        .from('orders')
-        .select('*')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false });
+      // Executar buscas em paralelo para performance máxima
+      const [ordersRes, licensesRes] = await Promise.all([
+        supabase.from('orders').select('*').eq('user_id', user.id).order('created_at', { ascending: false }),
+        supabase.from('licenses').select('*').eq('email', user.email).order('created_at', { ascending: false })
+      ]);
 
-      if (ordersError) throw ordersError;
-      setOrders(ordersData || []);
-
-      // 2. Buscar Licenças (Vinculadas ao e-mail)
-      const { data: licensesData, error: licensesError } = await supabase
-        .from('licenses')
-        .select('*')
-        .eq('email', user.email)
-        .order('created_at', { ascending: false });
-
-      if (!licensesError) {
-        setLicenses(licensesData || []);
+      if (ordersRes.error) throw ordersRes.error;
+      setOrders(ordersRes.data || []);
+      
+      if (!licensesRes.error) {
+        setLicenses(licensesRes.data || []);
       }
 
     } catch (error) {
@@ -122,14 +114,8 @@ function DashboardContent() {
   }, [user, supabase]);
 
   useEffect(() => {
-    if (user) {
-      fetchData();
-    } else if (!loading) {
-      // Se o auth carregou e não temos usuário, o AuthGuard vai redirecionar.
-      // Paramos de mostrar o spinner local para permitir que o AuthGuard renderize.
-      setIsLoading(false);
-    }
-  }, [user, loading, fetchData]);
+    if (user) fetchData();
+  }, [user, fetchData]);
 
   // DETECTAR SUCESSO NO CHECKOUT (PAGBANK)
   // Usar ref separado para evitar chamar mais de uma vez
@@ -217,7 +203,7 @@ function DashboardContent() {
     active: licenses.filter(l => l.is_active).length
   };
 
-  if (isLoading && loading) {
+  if (isLoading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
@@ -18,7 +18,7 @@ export default function Sidebar({ activeTab, onTabChange, mobileOpen = false, se
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [user, setUser] = useState<any>(null);
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   // Fechar menu ao navegar
   useEffect(() => {
