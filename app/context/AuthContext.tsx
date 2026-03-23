@@ -68,8 +68,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     let mounted = true;
 
     async function initSession() {
+      // Fail-safe: Se o banco demorar mais de 2.5s para responder, libera o loading o mais rápido possível.
+      const timeout = setTimeout(() => {
+        if (mounted) {
+          setAuthState(prev => prev.loading ? { ...prev, loading: false } : prev);
+          console.warn('[AUTH] Timeout de segurança atingido. Liberando loading forçadamente.');
+        }
+      }, 2500);
+
       try {
         const { data: { session } } = await supabase.auth.getSession();
+        clearTimeout(timeout);
+        
         if (mounted) {
           if (session?.user) {
             await fetchProfile(session.user);
@@ -78,6 +88,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           }
         }
       } catch (err) {
+        clearTimeout(timeout);
         if (mounted) setAuthState(prev => ({ ...prev, loading: false }));
       }
     }
@@ -89,8 +100,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (event === 'SIGNED_OUT') {
         setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
-      } else if (session?.user) {
+      } else if (session?.user && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'USER_UPDATED')) {
         await fetchProfile(session.user);
+      } else if (event === 'INITIAL_SESSION' && !session) {
+        setAuthState(prev => ({ ...prev, loading: false }));
       }
     });
 

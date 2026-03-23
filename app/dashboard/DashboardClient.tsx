@@ -113,7 +113,14 @@ function DashboardContent() {
   }, [user, supabase]);
 
   useEffect(() => {
-    if (user) fetchData();
+    if (user) {
+      // Segurança: Destravar carregamento se houver lentidão na rede (3s)
+      const timeout = setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
+
+      fetchData().finally(() => clearTimeout(timeout));
+    }
   }, [user, fetchData]);
 
   // DETECTAR SUCESSO NO CHECKOUT (STRIPE)
