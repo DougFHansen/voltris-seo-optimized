@@ -44,7 +44,6 @@ function LoginContent() {
   const [signupStep, setSignupStep] = useState(1); // 1, 2, 3
 
   const [isAdmin, setIsAdmin] = useState(false);
-  const [adminChecked, setAdminChecked] = useState(false);
   const [showWhatsAppBtn, setShowWhatsAppBtn] = useState(false);
   const [redirectText, setRedirectText] = useState('Redirecionando...');
   
@@ -52,7 +51,7 @@ function LoginContent() {
   const pendingOrder = searchParams.get('pendingOrder') === 'true';
   const installationId = searchParams.get('installation_id');
 
-  const { user, profile, loading: authLoading } = useAuth();
+  const { user, profile, loading: authLoading, isAdmin: authIsAdmin } = useAuth();
   const supabase = createClient();
 
   // --- EFFECTS ---
@@ -85,43 +84,29 @@ function LoginContent() {
   const getFinalRedirect = useCallback(() => {
     // Se houver redirectUrl válido (ex: /adquirir-licenca?plan=pro), tem prioridade máxima
     if (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login')) {
-      // Bloquear rotas restritas para não-admins
-      if (redirectUrl.includes('restricted') && !isAdmin) return '/dashboard';
+      if (redirectUrl.includes('restricted') && !authIsAdmin) return '/dashboard';
       return redirectUrl;
     }
-
-    // Pedido pendente sem redirect específico
     if (pendingOrder) return '/dashboard?pendingOrder=true';
+    return authIsAdmin ? '/restricted-area-admin' : '/dashboard';
+  }, [redirectUrl, pendingOrder, authIsAdmin]);
 
-    // Default baseado em privilégios
-    return isAdmin ? '/restricted-area-admin' : '/dashboard';
-  }, [redirectUrl, pendingOrder, isAdmin]);
-
+  // Se o usuário já está logado ao chegar na página de login, redirecionar imediatamente
   useEffect(() => {
-    if (authLoading) return;
+    if (authLoading || success) return;
 
-    if (user && !adminChecked) {
+    if (user) {
+      const dest = getFinalRedirect();
       if (installationId) {
         linkInstallation(user.id).then(() => {
-          if (!success) window.location.href = getFinalRedirect();
+          window.location.href = dest;
         });
-      } else if (!success) {
-        window.location.href = getFinalRedirect();
+      } else {
+        window.location.href = dest;
       }
-      setAdminChecked(true); // Evitar loops
     }
-  }, [user, authLoading, adminChecked, success, installationId, getFinalRedirect]);
-
-  useEffect(() => {
-    if (success && adminChecked) {
-      if (user && installationId) linkInstallation(user.id);
-
-      const timer = setTimeout(() => {
-        window.location.href = getFinalRedirect();
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [success, adminChecked, user, installationId, getFinalRedirect]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, authLoading]);
 
   // --- HELPERS ---
   const translateError = (err: string) => {
@@ -174,13 +159,21 @@ function LoginContent() {
 
       if (error || !signInData.user) throw new Error(error?.message || 'Credenciais inválidas');
 
-      const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', signInData.user.id).single();
-      const admin = (profile?.is_admin) || signInData.user.user_metadata?.is_admin === true;
+      const { data: profileData } = await supabase.from('profiles').select('is_admin').eq('id', signInData.user.id).single();
+      const admin = profileData?.is_admin || signInData.user.user_metadata?.is_admin === true;
 
-      setIsAdmin(admin);
-      setAdminChecked(true);
-      if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
+      if (installationId) await linkInstallation(signInData.user.id);
+
       setSuccess(true);
+
+      // Redirecionar diretamente após login bem-sucedido
+      const dest = (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login'))
+        ? (redirectUrl.includes('restricted') && !admin ? '/dashboard' : redirectUrl)
+        : (pendingOrder ? '/dashboard?pendingOrder=true' : (admin ? '/restricted-area-admin' : '/dashboard'));
+
+      setTimeout(() => {
+        window.location.href = dest;
+      }, 800);
     } catch (err: any) {
       setError(translateError(err.message));
     } finally {
@@ -224,11 +217,17 @@ function LoginContent() {
         }
 
         if (session) {
-          // Login com sucesso
-          setIsAdmin(false);
-          setAdminChecked(true); // CRUCIAL para liberar o redirect
           setSuccess(true);
           if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
+
+          // Redirecionar diretamente após cadastro
+          const dest = (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login'))
+            ? redirectUrl
+            : '/dashboard';
+
+          setTimeout(() => {
+            window.location.href = dest;
+          }, 800);
         } else {
           // Requer confirmação de email
           setRedirectText("Cadastro realizado! Verifique seu e-mail para confirmar.");
