@@ -9,6 +9,8 @@ const nextConfig = {
       'framer-motion',
       '@heroicons/react',
     ],
+    // Tenta evitar redirecionamentos em POSTs para /api
+    skipTrailingSlashRedirect: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
