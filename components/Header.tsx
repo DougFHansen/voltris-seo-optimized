@@ -14,6 +14,15 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const { user, isAdmin, loading, signOut } = useAuth();
+  
+  // FAIL-SAFE: Trava de segurança para evitar o spinner infinito. 
+  // Se demorar mais de 1.8s, forçamos o carregamento visual dos botões.
+  const [forceLoaded, setForceLoaded] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setForceLoaded(true), 1800);
+    return () => clearTimeout(timer);
+  }, []);
+
   const router = useRouter();
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -200,7 +209,7 @@ export default function Header() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4 z-20 relative">
-            {loading ? (
+            {loading && !forceLoaded ? (
               <FiLoader className="w-5 h-5 animate-spin text-slate-500" />
             ) : user ? (
               <>
