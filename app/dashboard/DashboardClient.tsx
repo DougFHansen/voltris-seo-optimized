@@ -122,8 +122,14 @@ function DashboardContent() {
   }, [user, supabase]);
 
   useEffect(() => {
-    if (user) fetchData();
-  }, [user, fetchData]);
+    if (user) {
+      fetchData();
+    } else if (!loading) {
+      // Se o auth carregou e não temos usuário, o AuthGuard vai redirecionar.
+      // Paramos de mostrar o spinner local para permitir que o AuthGuard renderize.
+      setIsLoading(false);
+    }
+  }, [user, loading, fetchData]);
 
   // DETECTAR SUCESSO NO CHECKOUT (PAGBANK)
   // Usar ref separado para evitar chamar mais de uma vez
@@ -211,7 +217,7 @@ function DashboardContent() {
     active: licenses.filter(l => l.is_active).length
   };
 
-  if (isLoading) {
+  if (isLoading && loading) {
     return (
       <div className="h-full w-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
