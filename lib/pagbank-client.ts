@@ -44,10 +44,14 @@ export async function createPlan(data: any): Promise<any> {
 
 export async function createPaymentLink(data: any): Promise<any> {
     try {
+        console.log('[PAGBANK] Criando link de pagamento (fallback v3)');
         const response = await pagBankClient.post('/payment-links', data);
         return response.data;
     } catch (error: any) {
-        console.error('PagBank Link Error:', JSON.stringify(error.response?.data || error.message, null, 2));
+        if (error.response) {
+            console.error('PagBank Link Error:', JSON.stringify(error.response.data, null, 2));
+            throw new Error(`PagBank Link Error: ${JSON.stringify(error.response.data)}`);
+        }
         throw error;
     }
 }
