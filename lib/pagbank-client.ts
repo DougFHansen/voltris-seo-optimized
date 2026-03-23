@@ -21,7 +21,8 @@ export const pagBankClient = axios.create({
     headers: {
         'Authorization': `Bearer ${TOKEN}`,
         'Content-Type': 'application/json',
-        'User-Agent': 'Voltris/1.0 (Integration; next.js; app-router)'
+        'Accept': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
     },
     timeout: 30000, // 30 segundos
 });
@@ -32,7 +33,8 @@ export async function createPlan(data: any): Promise<any> {
             headers: {
                 'Authorization': `Bearer ${TOKEN}`,
                 'Content-Type': 'application/json',
-                'User-Agent': 'Voltris/1.0'
+                'Accept': 'application/json',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
             }
         });
         return response.data;
