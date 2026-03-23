@@ -55,9 +55,9 @@ function AdquirirLicencaContent() {
 
         try {
             const planData: any = {
-                standard: { id: 'std_monthly', name: 'Licença Standard Mensal', price: 1.00 },
-                pro: { id: 'pro_monthly', name: 'Licença Pro Mensal', price: 1.00 },
-                enterprise: { id: 'ent_lt', name: 'Licença Enterprise', price: 1.00 }
+                standard: { id: 'std_annual', name: 'Licença Standard Anual', price: 1.00 },
+                pro: { id: 'pro_annual', name: 'Licença Pro Anual', price: 1.00 },
+                enterprise: { id: 'ent_annual', name: 'Licença Enterprise Anual', price: 1.00 }
             };
 
             const selectedPlan = planData[planType];
@@ -171,8 +171,8 @@ function AdquirirLicencaContent() {
                                 <p className="text-slate-500 text-sm mb-6">Essencial para um único PC.</p>
 
                                 <div className="mb-8">
-                                    <span className="text-4xl font-black text-white">R$ 1</span>
-                                    <span className="text-slate-500 text-lg font-medium">/mês</span>
+                                    <span className="text-4xl font-black text-white">R$ 149,90</span>
+                                    <span className="text-slate-500 text-lg font-medium">/ano</span>
                                 </div>
 
                                 <ul className="space-y-4 mb-10">
@@ -223,8 +223,8 @@ function AdquirirLicencaContent() {
                                 <p className="text-slate-400 text-sm mb-6 font-medium">A escolha para entusiastas.</p>
 
                                 <div className="mb-8">
-                                    <span className="text-5xl font-black text-white">R$ 1</span>
-                                    <span className="text-[#8B31FF] text-xl font-black">/mês</span>
+                                    <span className="text-5xl font-black text-white">R$ 449,90</span>
+                                    <span className="text-[#8B31FF] text-xl font-black">/ano</span>
                                 </div>
 
                                 <ul className="space-y-4 mb-10">
@@ -271,8 +271,8 @@ function AdquirirLicencaContent() {
                                 <p className="text-slate-500 text-sm mb-6">Para lan houses e empresas.</p>
 
                                 <div className="mb-8">
-                                    <span className="text-4xl font-black text-white">R$ 1</span>
-                                    <span className="text-[#FF4B6B] text-lg font-bold">/vitalício</span>
+                                    <span className="text-4xl font-black text-white">R$ 1490,90</span>
+                                    <span className="text-[#FF4B6B] text-lg font-bold">/ano</span>
                                 </div>
 
                                 <ul className="space-y-4 mb-10">
