@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { BarChart3, Activity, Cpu, MonitorSmartphone, Check, Zap, Server } from "lucide-react";
+import { notifyDownload } from "@/utils/notifications";
 
 const PROCESSES = [
     "chrome.exe",
@@ -95,7 +96,11 @@ export default function OptimizerMockup() {
                         </div>
                     </div>
                 </div>
-                <a href="/voltrisoptimizer" className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-sm font-bold hover:shadow-[0_0_20px_rgba(139,49,255,0.6)] transition-all shadow-md relative overflow-hidden group">
+                <a
+                    href="/voltrisoptimizer"
+                    onClick={() => notifyDownload('Mockup Download Click (Redirect to Page)')}
+                    className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-sm font-bold hover:shadow-[0_0_20px_rgba(139,49,255,0.6)] transition-all shadow-md relative overflow-hidden group"
+                >
                     <span className="relative z-10">Download</span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 </a>

@@ -1,5 +1,4 @@
-'use client';
-
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -8,6 +7,8 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { FAQSchema } from '@/components/SEOStructuredData';
 import { motion } from 'framer-motion';
 import { Clock, ArrowRight, BookOpen, User, Calendar, Award, CheckCircle, AlertTriangle, Star, ExternalLink, ChevronRight, Lightbulb, Target } from 'lucide-react';
+
+import { notifyDownload } from '@/utils/notifications';
 
 export interface SummaryTableItem {
     label: string;
@@ -138,6 +139,22 @@ export function GuideTemplateClient({
         "educationalLevel": difficultyLevel,
         "timeRequired": `PT${readingMinutes}M`
     };
+
+    // Auto-track download clicks in HTML content (dangerouslySetInnerHTML)
+    useEffect(() => {
+        const handleContentClick = (e: MouseEvent) => {
+            const target = e.target as HTMLElement;
+            const link = target.closest('a');
+            if (link && link.href && (link.href.toLowerCase().endsWith('.exe') || link.href.includes('github.com/DougFHansen/voltris-releases'))) {
+                const fileName = link.href.split('/').pop() || 'Unknown File';
+                notifyDownload(`Automatic Guide link click: ${fileName}`);
+            }
+        };
+
+        const article = document.querySelector('article');
+        article?.addEventListener('click', handleContentClick, { capture: true });
+        return () => article?.removeEventListener('click', handleContentClick);
+    }, []);
 
     const allSections = [
         ...contentSections,
@@ -443,7 +460,11 @@ export function GuideTemplateClient({
                                                 O <strong>Voltris Optimizer</strong> aplica todas as correções deste guia (e mais 200 outras) com um único clique. Otimize Processos, Rede, Input Lag e FPS instantaneamente.
                                             </p>
                                             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                                                <Link href="/voltrisoptimizer" className="px-8 py-4 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2">
+                                                <Link
+                                                    href="/voltrisoptimizer"
+                                                    onClick={() => notifyDownload(`Guide CTA Click - ${title}`)}
+                                                    className="px-8 py-4 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2"
+                                                >
                                                     Baixar Voltris Optimizer
                                                     <ArrowRight className="w-5 h-5" />
                                                 </Link>

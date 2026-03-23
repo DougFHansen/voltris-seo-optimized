@@ -9,6 +9,7 @@ import { useAuth } from '@/app/hooks/useAuth';
 import { FiMenu, FiX, FiLogOut, FiLayout, FiLoader, FiUser, FiUserPlus } from 'react-icons/fi';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { notifyDownload } from '@/utils/notifications';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -177,6 +178,7 @@ export default function Header() {
                             <Link
                               key={item.path}
                               href={item.path}
+                              onClick={() => item.path === '/voltrisoptimizer' && notifyDownload('Header Menu Click')}
                               className={`group/item block p-2 rounded-xl transition-all duration-300
                                 ${isActive ? 'bg-white/5 border-white/10' : 'hover:bg-white/[0.03] border-transparent'}
                                 border
@@ -313,7 +315,10 @@ export default function Header() {
                             <Link
                               key={item.path}
                               href={item.path}
-                              onClick={() => setIsMobileMenuOpen(false)}
+                              onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                if (item.path === '/voltrisoptimizer') notifyDownload('Mobile Header Menu Click');
+                              }}
                               className={`block text-lg font-bold py-2 ${pathname === item.path ? 'text-white' : 'text-slate-400 hover:text-white'
                                 }`}
                             >

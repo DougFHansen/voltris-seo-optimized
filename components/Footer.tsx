@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NewsletterForm from './NewsletterForm';
 import { FiInstagram, FiLinkedin, FiMail, FiMapPin, FiPhone, FiClock } from 'react-icons/fi';
+import { notifyDownload } from '@/utils/notifications';
 
 export default function Footer() {
   const [year, setYear] = useState<number | null>(null);
@@ -93,7 +94,11 @@ export default function Footer() {
             <ul className="space-y-3">
               {links.quick.map(l => (
                 <li key={l.path}>
-                  <Link href={l.path} className="text-slate-400 hover:text-[#31A8FF] text-sm transition-colors flex items-center gap-2 group">
+                  <Link
+                    href={l.path}
+                    onClick={() => l.path === '/voltrisoptimizer' && notifyDownload('Footer Quick Link Click')}
+                    className="text-slate-400 hover:text-[#31A8FF] text-sm transition-colors flex items-center gap-2 group"
+                  >
                     <span className="w-0 group-hover:w-2 h-0.5 bg-[#31A8FF] transition-all duration-300"></span>
                     {l.name}
                   </Link>

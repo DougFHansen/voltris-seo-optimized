@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { notifyDownload } from '@/utils/notifications';
 
 export default function VoltrisOptimizerPage() {
   const features = [
@@ -131,6 +132,7 @@ export default function VoltrisOptimizerPage() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Link
                     href="/voltrisoptimizer"
+                    onClick={() => notifyDownload('Landing Page CTA - Hero')}
                     className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl text-center transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20"
                   >
                     <Play className="w-5 h-5" />
@@ -282,6 +284,7 @@ export default function VoltrisOptimizerPage() {
 
                   <Link
                     href="/voltrisoptimizer"
+                    onClick={() => notifyDownload(`Pricing Plan CTA - ${plan.name}`)}
                     className={`block w-full py-3 px-6 rounded-lg text-center font-bold transition-all ${plan.popular
                         ? 'bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B] hover:from-[#9B41FF] hover:to-[#FF5B7B] shadow-lg shadow-[#8B31FF]/30'
                         : plan.name === 'Grátis'
@@ -384,6 +387,7 @@ export default function VoltrisOptimizerPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/voltrisoptimizer"
+                onClick={() => notifyDownload('Landing Page CTA - Bottom')}
                 className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl text-center transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20"
               >
                 <Download className="w-5 h-5" />
