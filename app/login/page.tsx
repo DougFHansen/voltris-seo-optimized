@@ -90,53 +90,44 @@ function LoginContent() {
     }
   };
 
+  const getFinalRedirect = useCallback(() => {
+    // Caso de pedido pendente tem prioridade
+    if (pendingOrder) return '/dashboard?pendingOrder=true';
+
+    // Se houver redirectUrl válido, sanitizá-lo
+    if (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login')) {
+      return (redirectUrl.includes('restricted') && !isAdmin) ? '/dashboard' : redirectUrl;
+    }
+
+    // Default baseado em privilégios
+    return isAdmin ? '/restricted-area-admin' : '/dashboard';
+  }, [redirectUrl, pendingOrder, isAdmin]);
+
   useEffect(() => {
     if (authLoading) return;
-
-    const performRedirect = () => {
-      if (pendingOrder) {
-        window.location.href = '/dashboard?pendingOrder=true';
-      } else if (redirectUrl) {
-        // Sanitizar redirectUrl para evitar loops se for para o próprio login
-        const finalUrl = redirectUrl.includes('/login') ? '/dashboard' : redirectUrl;
-        window.location.href = finalUrl.includes('restricted') && !isAdmin ? '/dashboard' : finalUrl;
-      } else {
-        window.location.href = isAdmin ? '/restricted-area-admin' : '/dashboard';
-      }
-    };
 
     if (user && !adminChecked) {
       if (installationId) {
         linkInstallation(user.id).then(() => {
-          if (!success) performRedirect();
+          if (!success) window.location.href = getFinalRedirect();
         });
       } else if (!success) {
-        performRedirect();
+        window.location.href = getFinalRedirect();
       }
+      setAdminChecked(true); // Evitar loops
     }
-  }, [user, authLoading, profile, success, adminChecked, installationId, redirectUrl, pendingOrder, isAdmin]);
+  }, [user, authLoading, adminChecked, success, installationId, getFinalRedirect]);
 
   useEffect(() => {
     if (success && adminChecked) {
       if (user && installationId) linkInstallation(user.id);
 
       const timer = setTimeout(() => {
-        if (pendingOrder) {
-          window.location.href = '/dashboard?pendingOrder=true';
-        } else if (redirectUrl) {
-          // Prevenir redirecionamento para Home caso redirectUrl esteja vazio
-          const finalUrl = (!redirectUrl || redirectUrl === '/' || redirectUrl.includes('/login')) 
-            ? '/dashboard' 
-            : redirectUrl;
-
-          window.location.href = finalUrl.includes('restricted') && !isAdmin ? '/dashboard' : finalUrl;
-        } else {
-          window.location.href = isAdmin ? '/restricted-area-admin' : '/dashboard';
-        }
+        window.location.href = getFinalRedirect();
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [success, isAdmin, adminChecked, redirectUrl, pendingOrder, user, installationId]);
+  }, [success, adminChecked, user, installationId, getFinalRedirect]);
 
   // --- HELPERS ---
   const translateError = (err: string) => {
