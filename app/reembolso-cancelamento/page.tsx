@@ -48,6 +48,24 @@ export default function ReembolsoCancelamento() {
               </p>
             </section>
 
+            {/* Sobre os Produtos e Serviços - REQUISITO STRIPE */}
+            <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 hover:border-[#8B31FF]/30 transition-all duration-500 group">
+              <div className="flex items-center gap-5 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-[#8B31FF]/10 flex items-center justify-center flex-shrink-0 text-[#8B31FF] group-hover:scale-110 transition-transform">
+                  <FaFileContract className="text-2xl" />
+                </div>
+                <h2 className="text-2xl font-bold text-white m-0">Sobre os Produtos e Serviços</h2>
+              </div>
+              <div className="space-y-4 text-slate-300">
+                <p>
+                  A <strong>VOLTRIS</strong> comercializa licenças de software para o aplicativo <strong>Voltris Optimizer</strong>, uma ferramenta digital de otimização de sistemas Windows focada em melhorar o desempenho, reduzir a latência e aumentar a produtividade computacional.
+                </p>
+                <p>
+                  Oferecemos também serviços especializados de suporte técnico remoto para diagnóstico e otimização de hardware e software. Todos os nossos produtos são entregues de forma 100% digital, por meio de e-mail e download direto no nosso site oficial.
+                </p>
+              </div>
+            </section>
+
             {/* Direito de Arrependimento */}
             <section className="p-8 rounded-3xl bg-[#121218]/50 backdrop-blur-xl border border-white/5 border-l-4 border-l-emerald-500 hover:border-[#8B31FF]/30 transition-all duration-500 group">
               <div className="flex items-center gap-5 mb-6">
