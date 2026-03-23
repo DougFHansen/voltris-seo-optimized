@@ -34,17 +34,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const fetchingRef = useRef(false);
 
   const fetchProfile = useCallback(async (user: User | null) => {
-    if (!user) {
-      setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
-      return;
-    }
-
     try {
-      const { data: profile } = await supabaseRef.current
+      if (!user) {
+        setAuthState(prev => ({ ...prev, user: null, isAdmin: false, profile: null, loading: false }));
+        return;
+      }
+
+      const { data: profile, error } = await supabaseRef.current
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
+
+      if (error && error.code !== 'PGRST116') {
+        console.warn('[AUTH] Erro ao buscar perfil:', error.message);
+      }
 
       setAuthState({
         user,
@@ -53,36 +57,47 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         loading: false,
         error: null,
       });
-    } catch {
-      setAuthState({ user, isAdmin: false, profile: null, loading: false, error: null });
+    } catch (err: any) {
+      console.error('[AUTH] Falha inesperada no fetchProfile:', err);
+      setAuthState(prev => ({ ...prev, loading: false, user }));
     }
   }, []);
 
   useEffect(() => {
     const supabase = supabaseRef.current;
+    let mounted = true;
 
-    // onAuthStateChange é a fonte de verdade — dispara INITIAL_SESSION na montagem
-    // e todos os eventos subsequentes. Não precisamos de getUser() separado.
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      // Evitar chamadas paralelas
-      if (fetchingRef.current) return;
-      fetchingRef.current = true;
-
+    async function initSession() {
       try {
-        if (event === 'SIGNED_OUT') {
-          setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
-        } else if (session?.user) {
-          await fetchProfile(session.user);
-        } else if (event === 'INITIAL_SESSION' && !session) {
-          // Sem sessão na inicialização
-          setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
+        const { data: { session } } = await supabase.auth.getSession();
+        if (mounted) {
+          if (session?.user) {
+            await fetchProfile(session.user);
+          } else {
+            setAuthState(prev => ({ ...prev, loading: false }));
+          }
         }
-      } finally {
-        fetchingRef.current = false;
+      } catch (err) {
+        if (mounted) setAuthState(prev => ({ ...prev, loading: false }));
+      }
+    }
+
+    initSession();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (!mounted) return;
+
+      if (event === 'SIGNED_OUT') {
+        setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
+      } else if (session?.user) {
+        await fetchProfile(session.user);
       }
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
   }, [fetchProfile]);
 
   const signOut = useCallback(async () => {
