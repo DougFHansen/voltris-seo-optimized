@@ -62,8 +62,6 @@ export async function POST(req: NextRequest) {
             timestamp: new Date().toISOString(),
         };
 
-        const supabase = await createClient();
-
         switch (analysis_type) {
             case 'feature':
                 results.feature_costs = await analyzeFeatureCosts(supabase, period);
