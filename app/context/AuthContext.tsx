@@ -68,13 +68,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     let mounted = true;
 
     async function initSession() {
-      // Fail-safe: Se o banco demorar mais de 2.5s para responder, libera o loading o mais rápido possível.
+      // Fail-safe: Se o banco demorar mais de 10s para responder, libera o loading o mais rápido possível.
       const timeout = setTimeout(() => {
         if (mounted) {
           setAuthState(prev => prev.loading ? { ...prev, loading: false } : prev);
-          console.warn('[AUTH] Timeout de segurança atingido. Liberando loading forçadamente.');
+          console.warn('[AUTH] Timeout de segurança atingido (10s). Liberando loading forçadamente.');
         }
-      }, 2500);
+      }, 10000);
 
       try {
         const { data: { session } } = await supabase.auth.getSession();

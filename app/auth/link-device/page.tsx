@@ -3,9 +3,11 @@
 import { useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
+import { useAuth } from '@/app/hooks/useAuth';
 import { Loader2 } from 'lucide-react';
 
 function LinkDeviceContent() {
+    const { user, loading: authLoading } = useAuth();
     const router = useRouter();
     const searchParams = useSearchParams();
     const supabase = createClient();
@@ -14,14 +16,14 @@ function LinkDeviceContent() {
 
     useEffect(() => {
         const handleLinking = async () => {
+            // Aguardar o AuthProvider resolver o estado inicial
+            if (authLoading) return;
+
             console.log('[LINK_DEVICE] Iniciando processo de vinculação');
             console.log('[LINK_DEVICE] installation_id:', installationId);
+            console.log('[LINK_DEVICE] Usuário Autenticado:', user ? user.email : 'Nenhum');
 
-            // 1. Verificar sessão
-            const { data: { session } } = await supabase.auth.getSession();
-            console.log('[LINK_DEVICE] Sessão:', session ? 'Autenticado' : 'Não autenticado');
-
-            if (!session) {
+            if (!user) {
                 // Redirecionar para login preservando o installation_id e o retorno para cá
                 const redirectUrl = `/auth/link-device${installationId ? `?installation_id=${installationId}` : ''}`;
                 console.log('[LINK_DEVICE] Redirecionando para login com redirect:', redirectUrl);
@@ -37,7 +39,7 @@ function LinkDeviceContent() {
 
             try {
                 console.log('[LINK_DEVICE] Chamando API de vinculação');
-                console.log('[LINK_DEVICE] Payload:', { installation_id: installationId, user_id: session.user.id });
+                console.log('[LINK_DEVICE] Payload:', { installation_id: installationId, user_id: user.id });
 
                 // 2. Vincular dispositivo
                 const response = await fetch('/api/v1/install/link', {
@@ -45,7 +47,7 @@ function LinkDeviceContent() {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         installation_id: installationId,
-                        user_id: session.user.id
+                        user_id: user.id
                     })
                 });
 
@@ -68,7 +70,7 @@ function LinkDeviceContent() {
         };
 
         handleLinking();
-    }, [installationId, router, supabase]);
+    }, [installationId, router, user, authLoading]);
 
     return (
         <div className="h-screen w-full bg-[#050510] flex flex-col items-center justify-center text-white">
