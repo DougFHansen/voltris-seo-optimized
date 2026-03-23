@@ -109,7 +109,7 @@ export default function ProfileClient() {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-6">
         <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
-        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing User Identity...</p>
+        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Sincronizando Identidade do Usuário...</p>
       </div>
     );
   }
@@ -143,7 +143,7 @@ export default function ProfileClient() {
                    <div className="flex items-center gap-3 justify-center md:justify-start">
                       <h1 className="text-4xl font-black text-white italic uppercase tracking-tighter">{profile?.full_name || 'Agente de Otimização'}</h1>
                       <div className="px-3 py-1 bg-[#8B31FF]/10 border border-[#8B31FF]/20 rounded-full">
-                         <span className="text-[10px] font-black text-[#8B31FF] uppercase tracking-widest">Premium Node</span>
+                         <span className="text-[10px] font-black text-[#8B31FF] uppercase tracking-widest">Nó Premium</span>
                       </div>
                    </div>
                    <p className="text-white/40 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
@@ -156,7 +156,7 @@ export default function ProfileClient() {
                    </div>
                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
                       <FiActivity className="w-4 h-4 text-[#00FF88]" />
-                      <span className="text-[10px] font-black text-white uppercase tracking-widest">Status: Active</span>
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest">Status: Ativo</span>
                    </div>
                 </div>
              </div>
@@ -166,7 +166,7 @@ export default function ProfileClient() {
                   onClick={() => setIsEditing(true)}
                   className="px-8 py-4 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 transition-all shadow-3xl text-sm"
                 >
-                  Edit Profile
+                  Editar Perfil
                 </button>
              )}
           </div>
@@ -185,19 +185,19 @@ export default function ProfileClient() {
                <div className="p-3 bg-[#31A8FF]/10 text-[#31A8FF] rounded-2xl">
                  <FiUser className="w-6 h-6" />
                </div>
-               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Personal <span className="text-[#31A8FF]">Data</span></h3>
+               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Dados <span className="text-[#31A8FF]">Pessoais</span></h3>
             </div>
 
             <div className="space-y-8">
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Authentication Email</label>
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">E-mail de Autenticação</label>
                  <div className="p-5 rounded-2xl bg-black/40 border border-white/5 text-white/40 italic font-bold">
                     {user?.email}
                  </div>
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Operational Name</label>
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Nome Operacional</label>
                  {isEditing ? (
                     <input
                       type="text"
@@ -214,7 +214,7 @@ export default function ProfileClient() {
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Secure Contact Line</label>
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Linha de Contato Segura</label>
                  {isEditing ? (
                     <input
                       type="tel"
@@ -242,12 +242,12 @@ export default function ProfileClient() {
                <div className="p-3 bg-[#8B31FF]/10 text-[#8B31FF] rounded-2xl">
                  <FiMapPin className="w-6 h-6" />
                </div>
-               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Geographic <span className="text-[#8B31FF]">Link</span></h3>
+               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Link <span className="text-[#8B31FF]">Geográfico</span></h3>
             </div>
 
             <div className="space-y-8">
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Base Address</label>
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Endereço Base</label>
                  {isEditing ? (
                     <input
                       type="text"
@@ -265,7 +265,7 @@ export default function ProfileClient() {
 
                <div className="grid grid-cols-2 gap-6">
                  <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">City / District</label>
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Cidade / Distrito</label>
                    {isEditing ? (
                       <input
                         type="text"
@@ -280,7 +280,7 @@ export default function ProfileClient() {
                    )}
                  </div>
                  <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">State Code</label>
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Código do Estado</label>
                    {isEditing ? (
                       <input
                         type="text"
@@ -297,7 +297,7 @@ export default function ProfileClient() {
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">System CEP Code</label>
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Código CEP do Sistema</label>
                  {isEditing ? (
                     <input
                       type="text"
@@ -334,14 +334,14 @@ export default function ProfileClient() {
                         onClick={() => { setIsEditing(false); }} 
                         className="px-6 py-3 rounded-xl bg-white/5 text-white/60 font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all"
                       >
-                        Abort Changes
+                        Abortar Alterações
                       </button>
                       <button 
                         onClick={handleSave} 
                         disabled={saving}
                         className="px-8 py-3 rounded-xl bg-[#00FF88] text-black font-black uppercase text-[10px] tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#00FF88]/20 disabled:grayscale"
                       >
-                        {saving ? 'Saving System...' : 'Synchronize Identity'}
+                        {saving ? 'Salvando Sistema...' : 'Sincronizar Identidade'}
                       </button>
                    </div>
                 </div>

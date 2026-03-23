@@ -96,9 +96,9 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center text-xs font-black text-white shadow-[0_0_20px_rgba(49,168,255,0.3)]">V</div>
                <div className="flex flex-col">
                  <span className="font-black text-[10px] tracking-[0.2em] uppercase text-white/90">Voltris Optimizer</span>
-                 <span className="text-[9px] font-bold text-[#31A8FF] uppercase tracking-widest">Dashboard Pro</span>
+                 <span className="text-[9px] font-bold text-[#31A8FF] uppercase tracking-widest">Painel Pro</span>
                </div>
-             </div>
+            </div>
              <button onClick={() => setMobileMenuOpen(true)} className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">
                 <FiMenu className="w-5 h-5 text-white" />
              </button>

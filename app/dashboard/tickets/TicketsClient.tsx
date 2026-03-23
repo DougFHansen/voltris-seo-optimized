@@ -131,9 +131,9 @@ export default function TicketsClient() {
         <div className="space-y-2">
            <div className="flex items-center gap-3">
              <div className="w-2 h-8 bg-gradient-to-b from-[#8B31FF] to-[#31A8FF] rounded-full"></div>
-             <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Command <span className="text-[#8B31FF] not-italic">Support</span></h2>
+             <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Suporte de <span className="text-[#8B31FF] not-italic">Comando</span></h2>
            </div>
-           <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Neural interface for technical assistance</p>
+           <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Interface neural para assistência técnica</p>
         </div>
 
         <div className="flex items-center gap-4 w-full md:w-auto">
@@ -144,10 +144,10 @@ export default function TicketsClient() {
                 onChange={e => setFilter(e.target.value)}
                 className="w-full md:w-56 pl-11 pr-6 py-4 rounded-2xl bg-[#0A0A10]/50 border border-white/5 text-white/40 group-hover:text-white font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#8B31FF] transition-all appearance-none cursor-pointer"
               >
-                <option value="all">ALL FREQUENCIES</option>
-                <option value="Aberto">OPEN NODES</option>
-                <option value="Em Análise">UNDER REVIEW</option>
-                <option value="Resolvido">RESOLVED</option>
+                 <option value="all">TODAS AS FREQUÊNCIAS</option>
+                <option value="Aberto">NÓS ABERTOS</option>
+                <option value="Em Análise">EM ANÁLISE</option>
+                <option value="Resolvido">RESOLVIDO</option>
               </select>
            </div>
            <button 
@@ -155,7 +155,7 @@ export default function TicketsClient() {
              className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-3xl text-xs whitespace-nowrap"
            >
               <FiPlus className="w-4 h-4" />
-              Open Sublink
+              Abrir Sublink
            </button>
         </div>
       </div>
@@ -163,7 +163,7 @@ export default function TicketsClient() {
       {isLoading ? (
         <div className="flex flex-col items-center justify-center py-20 gap-6 opacity-30">
           <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
-          <p className="font-black uppercase tracking-[0.3em] text-[10px]">Scanning Uplinks...</p>
+          <p className="font-black uppercase tracking-[0.3em] text-[10px]">Escaneando Uplinks...</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -188,9 +188,9 @@ export default function TicketsClient() {
                              <Icon className="w-6 h-6" />
                           </div>
                           <div className="flex flex-col items-end">
-                             <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] mb-1">Priority</span>
+                             <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] mb-1">Prioridade</span>
                              <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border border-white/5 ${ticket.priority === 'high' ? 'text-red-400 bg-red-400/5' : ticket.priority === 'medium' ? 'text-amber-400 bg-amber-400/5' : 'text-emerald-400 bg-emerald-400/5'}`}>
-                                {ticket.priority.toUpperCase()}
+                                {ticket.priority === 'high' ? 'URGENTE' : ticket.priority === 'medium' ? 'MÉDIA' : 'BAIXA'}
                              </span>
                           </div>
                        </div>
@@ -205,8 +205,8 @@ export default function TicketsClient() {
                              <span className="text-[9px] font-black text-white/10 uppercase tracking-widest">ID Hash</span>
                              <span className="text-[10px] font-black text-[#8B31FF] uppercase font-mono tracking-widest">#{ticket.id.slice(0, 6)}</span>
                           </div>
-                          <div className="flex items-center gap-2 text-white/20 group-hover:text-white transition-colors">
-                             <span className="text-[10px] font-black uppercase tracking-widest italic">Review Transmission</span>
+                           <div className="flex items-center gap-2 text-white/20 group-hover:text-white transition-colors">
+                             <span className="text-[10px] font-black uppercase tracking-widest italic">Revisar Transmissão</span>
                              <FiArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                           </div>
                        </div>
@@ -215,11 +215,11 @@ export default function TicketsClient() {
                 );
               })
             ) : (
-              <div className={`col-span-full p-24 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
+               <div className={`col-span-full p-24 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
                  <FiInbox className="w-20 h-20 text-white/5" />
                  <div className="space-y-2">
-                    <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">No Active Uplinks</h3>
-                    <p className="text-white/20 font-bold text-xs uppercase tracking-[0.2em]">You have no technical support frequency active at the moment.</p>
+                    <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">Nenhum Uplink Ativo</h3>
+                    <p className="text-white/20 font-bold text-xs uppercase tracking-[0.2em]">Você não tem frequências de suporte técnico ativas no momento.</p>
                  </div>
               </div>
             )}
@@ -234,54 +234,52 @@ export default function TicketsClient() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={() => setShowCreateForm(false)} />
             <motion.div initial={{ scale: 0.9, y: 30 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 30 }} className={`relative w-full max-w-2xl p-12 rounded-[4rem] border border-white/10 shadow-3xl ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
                <button onClick={() => setShowCreateForm(false)} className="absolute top-10 right-10 p-3 rounded-2xl bg-white/5 text-white/40 hover:text-white transition-all"><FiX size={24} /></button>
-               
-               <div className="flex items-center gap-6 mb-12">
+                              <div className="flex items-center gap-6 mb-12">
                  <div className="w-20 h-20 rounded-[2rem] bg-[#8B31FF]/10 border border-[#8B31FF]/20 flex items-center justify-center text-[#8B31FF] shadow-lg shadow-[#8B31FF]/10">
                    <FiTerminal className="w-10 h-10" />
                  </div>
                  <div className="space-y-1">
-                   <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter">New <span className="text-[#8B31FF] not-italic">Sublink</span></h3>
-                   <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">Establish interface with Voltris Tech</p>
+                   <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter">Novo <span className="text-[#8B31FF] not-italic">Sublink</span></h3>
+                   <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">Estabelecer interface com a Voltris Tech</p>
                  </div>
                </div>
-
-               <form onSubmit={handleCreateTicket} className="space-y-10">
+                <form onSubmit={handleCreateTicket} className="space-y-10">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-4">
-                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Transmission Subject</label>
+                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Assunto da Transmissão</label>
                       <input 
                         type="text" required 
                         value={newTicket.title} onChange={e => setNewTicket({...newTicket, title: e.target.value})}
                         className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/5" 
-                        placeholder="Define problem space..."
+                        placeholder="Defina o espaço do problema..."
                       />
                     </div>
                     <div className="space-y-4">
-                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Priority Protocol</label>
+                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Protocolo de Prioridade</label>
                       <select 
                         value={newTicket.priority} onChange={e => setNewTicket({...newTicket, priority: e.target.value as any})}
                         className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white/40 focus:text-white focus:border-[#8B31FF] outline-none transition-all appearance-none uppercase font-black text-[10px] tracking-widest cursor-pointer"
                       >
-                         <option value="low">Standard Priority</option>
-                         <option value="medium">Medium Priority</option>
-                         <option value="high">Urgent Response Required</option>
+                         <option value="low">Prioridade Padrão</option>
+                         <option value="medium">Prioridade Média</option>
+                         <option value="high">Resposta Urgente Necessária</option>
                       </select>
                     </div>
                   </div>
-                  <div className="space-y-4">
-                    <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Data Payload (Description)</label>
+                   <div className="space-y-4">
+                    <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Carga de Dados (Descrição)</label>
                     <textarea 
                       required rows={6}
                       value={newTicket.description} onChange={e => setNewTicket({...newTicket, description: e.target.value})}
                       className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/5 resize-none" 
-                      placeholder="Identify specific hardware or software failure markers..."
+                      placeholder="Identifique marcadores específicos de falha de hardware ou software..."
                     />
                   </div>
                   <button 
                     type="submit" disabled={isCreating}
                     className="w-full py-6 rounded-3xl bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-black uppercase italic text-xs tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
                   >
-                    {isCreating ? 'Transmitting Data...' : 'Broadcast Sublink Request'}
+                    {isCreating ? 'Transmitindo Dados...' : 'Transmitir Pedido de Sublink'}
                   </button>
                </form>
             </motion.div>
@@ -302,11 +300,11 @@ export default function TicketsClient() {
                     <div className={`p-4 rounded-2xl ${statusConfig(selectedTicket.status).bg} ${statusConfig(selectedTicket.status).color} border ${statusConfig(selectedTicket.status).border}`}>
                        {React.createElement(statusConfig(selectedTicket.status).icon, { className: 'w-6 h-6' })}
                     </div>
-                    <div className="space-y-1">
+                     <div className="space-y-1">
                       <h4 className="text-xl font-black text-white uppercase italic tracking-tighter truncate max-w-[200px] md:max-w-md">{selectedTicket.title}</h4>
-                      <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Transmission Channel: <span className="text-[#8B31FF]">#{selectedTicket.id.slice(0, 12)}</span></p>
+                      <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Canal de Transmissão: <span className="text-[#8B31FF]">#{selectedTicket.id.slice(0, 12)}</span></p>
                     </div>
-                  </div>
+                 </div>
                   <button onClick={() => setShowTicketModal(false)} className="p-3 bg-white/5 text-white/20 hover:text-white rounded-2xl transition-all"><FiX size={24} /></button>
                </div>
 
@@ -325,9 +323,9 @@ export default function TicketsClient() {
                             <p className="text-sm font-bold leading-relaxed whitespace-pre-wrap uppercase tracking-wide italic">{msg.content}</p>
                             <div className={`absolute top-0 ${isMe ? '-right-1' : '-left-1'} w-3 h-3 bg-inherit border-inherit rotate-45`}></div>
                          </div>
-                         <span className="mt-3 px-2 text-[8px] font-black text-white/20 uppercase tracking-[0.3em] font-mono">
-                            {isMe ? 'TRANSMITTER' : 'RESONANCE CORE'} • {new Date(msg.created_at).toLocaleTimeString()}
-                         </span>
+                          <span className="mt-3 px-2 text-[8px] font-black text-white/20 uppercase tracking-[0.3em] font-mono">
+                            {isMe ? 'TRANSMISSOR' : 'NÚCLEO DE RESSONÂNCIA'} • {new Date(msg.created_at).toLocaleTimeString()}
+                          </span>
                       </motion.div>
                     );
                   })}
@@ -335,12 +333,12 @@ export default function TicketsClient() {
 
                {/* Broadcast Input Station */}
                <div className="p-8 bg-black/60 border-t border-white/10">
-                  <div className="relative group">
+                   <div className="relative group">
                      <textarea 
                         rows={1}
                         value={replyText}
                         onChange={e => setReplyText(e.target.value)}
-                        placeholder="Inject resonance sequence (Your reply)..."
+                        placeholder="Injete a sequência de ressonância (Sua resposta)..."
                         className="w-full bg-white/5 border border-white/5 rounded-3xl pl-8 pr-24 py-6 text-white text-sm font-bold focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 resize-none"
                      />
                      <button 
@@ -348,16 +346,16 @@ export default function TicketsClient() {
                        disabled={!replyText.trim() || isSendingReply}
                        className="absolute right-3 top-3 bottom-3 px-6 bg-[#8B31FF] text-white rounded-2xl font-black uppercase italic text-[10px] tracking-widest flex items-center gap-3 transition-all hover:scale-105 active:scale-95 disabled:grayscale disabled:opacity-30"
                      >
-                        {isSendingReply ? 'Syncing...' : (
+                        {isSendingReply ? 'Sincronizando...' : (
                           <>
-                            <span className="hidden md:block">Transmit</span>
+                            <span className="hidden md:block">Transmitir</span>
                             <FiSend className="w-4 h-4" />
                           </>
                         )}
                      </button>
                   </div>
-                  <p className="mt-4 text-center text-[9px] font-black text-white/10 uppercase tracking-[0.2em] font-mono">Neural interface secured by Voltris Protocol v.4.0</p>
-               </div>
+                   <p className="mt-4 text-center text-[9px] font-black text-white/10 uppercase tracking-[0.2em] font-mono">Interface neural protegida pelo Protocolo Voltris v.4.0</p>
+                </div>
 
             </motion.div>
           </div>

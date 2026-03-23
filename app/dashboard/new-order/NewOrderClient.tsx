@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiPlus, FiTrash2, FiShoppingCart, FiPackage, FiCheck, FiArrowRight, FiInfo } from 'react-icons/fi';
+import { FiPlus, FiTrash2, FiShoppingCart, FiPackage, FiCheck, FiArrowRight, FiInfo, FiRefreshCw } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 import { useDashboard } from '@/app/context/DashboardContext';
 
@@ -131,9 +131,9 @@ export default function NewOrderClient() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-3">
           <div className="w-2 h-8 bg-gradient-to-b from-[#FF4B6B] to-[#8B31FF] rounded-full"></div>
-          <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">New <span className="text-[#FF4B6B] not-italic">Order</span></h2>
+          <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Novo <span className="text-[#FF4B6B] not-italic">Pedido</span></h2>
         </div>
-        <p className="text-white/40 font-bold text-xs uppercase tracking-widest pl-5 font-mono">Select infrastructure modules for deployment</p>
+        <p className="text-white/40 font-bold text-xs uppercase tracking-widest pl-5 font-mono">Selecione módulos de infraestrutura para implantação</p>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-10 items-start">
@@ -141,7 +141,7 @@ export default function NewOrderClient() {
         {/* Services Market */}
         <div className="xl:col-span-7 flex flex-col gap-6">
           <h3 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
-            <FiPackage className="text-[#31A8FF]" /> Available Modules
+            <FiPackage className="text-[#31A8FF]" /> Módulos Disponíveis
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -173,7 +173,7 @@ export default function NewOrderClient() {
                     className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl bg-white text-black font-black uppercase italic text-[10px] tracking-widest transition-all hover:scale-[1.02] active:scale-95 shadow-2xl"
                    >
                      <FiPlus className="w-4 h-4" />
-                     Add to Deployment
+                     Adicionar à Implantação
                    </button>
                 </div>
               </motion.div>
@@ -184,7 +184,7 @@ export default function NewOrderClient() {
         {/* Tactical Cart / Checkout */}
         <div className="xl:col-span-5 sticky top-28 flex flex-col gap-6">
           <h3 className="text-white font-black text-xs uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
-            <FiShoppingCart className="text-[#FF4B6B]" /> Deployment Manifest
+            <FiShoppingCart className="text-[#FF4B6B]" /> Manifesto de Implantação
           </h3>
 
           <div className={`p-8 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10] border-white/5 shadow-3xl'}`}>
@@ -199,8 +199,8 @@ export default function NewOrderClient() {
                     <FiShoppingCart className="w-10 h-10" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-white font-black uppercase italic tracking-tighter">Manifest Empty</p>
-                    <p className="text-white/20 text-[10px] font-bold uppercase tracking-widest">Awaiting module selection</p>
+                    <p className="text-white font-black uppercase italic tracking-tighter">Manifesto Vazio</p>
+                    <p className="text-white/20 text-[10px] font-bold uppercase tracking-widest">Aguardando seleção de módulos</p>
                   </div>
                 </motion.div>
               ) : (
@@ -240,7 +240,7 @@ export default function NewOrderClient() {
 
                   <div className="pt-8 border-t border-white/5 space-y-8">
                     <div className="flex justify-between items-center">
-                       <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Total Investment</span>
+                       <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Investimento Total</span>
                        <span className="text-3xl font-black text-white italic tracking-tighter">R$ {calculateTotal().toFixed(2)}</span>
                     </div>
 
@@ -260,7 +260,7 @@ export default function NewOrderClient() {
                             <FiRefreshCw className="w-5 h-5 animate-spin" />
                           ) : (
                             <>
-                              <span>Initialize Procurement</span>
+                              <span>Inicializar Aquisição</span>
                               <FiArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </>
                           )}

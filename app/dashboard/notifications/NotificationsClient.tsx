@@ -47,19 +47,19 @@ export default function NotificationsClient() {
                 <div className="space-y-2">
                    <div className="flex items-center gap-3">
                      <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
-                     <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Neural <span className="text-[#31A8FF] not-italic">Feed</span></h2>
+                     <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Feed <span className="text-[#31A8FF] not-italic">Neural</span></h2>
                    </div>
-                   <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">System event logs and synchronization pings</p>
+                   <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Logs de eventos do sistema e pings de sincronização</p>
                 </div>
 
                 <div className="flex items-center gap-4">
                    <div className="px-5 py-2 rounded-2xl bg-white/5 border border-white/5 flex items-center gap-3">
                       <div className={`w-2 h-2 rounded-full ${unreadCount > 0 ? 'bg-[#31A8FF] animate-pulse' : 'bg-white/10'}`}></div>
-                      <span className="text-[10px] font-black text-white uppercase tracking-widest">{unreadCount} UNREAD EVENTS</span>
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest">{unreadCount} EVENTOS NÃO LIDOS</span>
                    </div>
                    {unreadCount > 0 && (
                       <button className="text-[10px] font-black text-[#31A8FF] uppercase tracking-widest hover:text-white transition-colors">
-                        Clear Frequency
+                        Limpar Frequência
                       </button>
                    )}
                 </div>
@@ -117,7 +117,7 @@ export default function NotificationsClient() {
                                                           <FiClock className="w-3 h-3" />
                                                           {new Date(notif.created_at).toLocaleDateString()}
                                                        </div>
-                                                       <span className="text-[9px] font-bold text-white/10 uppercase tracking-[0.2em] font-mono">{notif.type.toUpperCase()} TRANSMISSION</span>
+                                                       <span className="text-[9px] font-bold text-white/10 uppercase tracking-[0.2em] font-mono">TRANSMISSÃO {notif.type.toUpperCase()}</span>
                                                     </div>
                                                 </div>
                                                 <p className={`text-xs font-bold leading-relaxed uppercase tracking-wider ${notif.read ? 'text-white/20' : 'text-white/40'}`}>
@@ -138,8 +138,8 @@ export default function NotificationsClient() {
                                <FiCheckCircle className="absolute -bottom-2 -right-2 w-10 h-10 text-[#00FF88] bg-[#0A0A10] rounded-full p-2 border border-white/10" />
                             </div>
                             <div className="space-y-4">
-                              <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">Frequency Silent</h3>
-                              <p className="text-white/20 font-bold text-[10px] uppercase tracking-[0.3em] max-w-sm">Neural nodes are functioning within normal parameters. No recent disruptions detected.</p>
+                              <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">Frequência Silenciosa</h3>
+                              <p className="text-white/20 font-bold text-[10px] uppercase tracking-[0.3em] max-w-sm">Os nós neurais estão funcionando dentro dos parâmetros normais. Nenhuma interrupção recente detectada.</p>
                             </div>
                         </div>
                     )}

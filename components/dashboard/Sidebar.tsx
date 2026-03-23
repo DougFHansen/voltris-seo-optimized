@@ -152,7 +152,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
         >
           <FiLogOut className="w-5 h-5 group-hover:-translate-x-1 transition-transform flex-shrink-0" />
           {(!collapsed || isMobile) && (
-            <span className="font-black text-[10px] uppercase tracking-[0.2em]">Logout</span>
+            <span className="font-black text-[10px] uppercase tracking-[0.2em]">Sair</span>
           )}
         </button>
       </div>

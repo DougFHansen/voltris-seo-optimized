@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useCallback } from 'react';
+import { useState, useEffect, Suspense, useCallback, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 // Header/Footer not imported to ensure clean full screen
@@ -52,8 +52,7 @@ function LoginContent() {
   const installationId = searchParams.get('installation_id');
 
   const { user, profile, loading: authLoading, isAdmin: authIsAdmin } = useAuth();
-  const supabase = createClient();
-
+  const supabase = useMemo(() => createClient(), []);
   // --- EFFECTS ---
   useEffect(() => {
     if (searchParams.get('cadastro') === '1' || searchParams.get('signup') === 'true') {
@@ -114,11 +113,11 @@ function LoginContent() {
     if (msg.includes('unable to validate email address') || msg.includes('invalid format')) return 'Formato de e-mail inválido.';
     if (msg.includes('invalid login credentials')) return 'E-mail/Usuário ou senha incorretos.';
     if (msg.includes('email not confirmed')) return 'E-mail não confirmado. Verifique sua caixa de entrada.';
-    if (msg.includes('user not found')) return 'Usuário não encontrado.';
+    if (msg.includes('user not found') || msg.includes('usuário não encontrado')) return 'Este usuário não foi encontrado.';
     if (msg.includes('password should be at least')) return 'A senha deve ter pelo menos 6 caracteres.';
     if (msg.includes('user already registered')) return 'Este usuário/e-mail já está cadastrado.';
     if (msg.includes('network error')) return 'Erro de conexão. Verifique sua internet.';
-    return 'Ocorreu um erro. Tente novamente.';
+    return 'Ocorreu um erro técnico. Tente novamente.';
   };
 
   const validateEmail = (emailStr: string) => {
@@ -309,32 +308,78 @@ function LoginContent() {
 
                   {/* --- LOGIN FORM --- */}
                   {isLoginView && !isRecoveryView && (
-                    <form onSubmit={handleLogin} className="space-y-4">
-                      <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-colors">
-                        <Mail className="w-4 h-4 text-slate-500" />
-                        <input
-                          type="text"
-                          placeholder="E-mail ou Usuário"
-                          value={email}
-                          onChange={e => setEmail(e.target.value)}
-                          className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600"
-                        />
+                    <form 
+                      onSubmit={handleLogin} 
+                      className="space-y-4 p-0 m-0 w-full"
+                    >
+                      <div className="space-y-4">
+                        <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all group/input">
+                          <Mail className="w-4 h-4 text-slate-500 group-focus-within/input:text-[#31A8FF] transition-colors" />
+                          <input
+                            type="text"
+                            placeholder="E-mail ou Usuário"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600 appearance-none"
+                            autoComplete="username"
+                            required
+                          />
+                        </div>
+                        <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all group/input">
+                          <Lock className="w-4 h-4 text-slate-500 group-focus-within/input:text-[#31A8FF] transition-colors" />
+                          <input 
+                            type="password" 
+                            placeholder="Sua Senha" 
+                            value={password} 
+                            onChange={e => setPassword(e.target.value)} 
+                            className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600 appearance-none" 
+                            autoComplete="current-password"
+                            required
+                          />
+                        </div>
                       </div>
-                      <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-colors">
-                        <Lock className="w-4 h-4 text-slate-500" />
-                        <input type="password" placeholder="Sua Senha" value={password} onChange={e => setPassword(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600" />
-                      </div>
+
                       <div className="flex justify-end">
-                        <button type="button" onClick={() => setIsRecoveryView(true)} className="text-xs text-slate-500 hover:text-[#31A8FF]">Esqueci a senha</button>
+                        <button type="button" onClick={() => setIsRecoveryView(true)} className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors font-medium">Esqueci a senha</button>
                       </div>
-                      {error && <p className="text-red-400 text-xs text-center">{error}</p>}
-                      <button type="submit" disabled={loading} className="w-full py-3 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] hover:brightness-110 text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-[#8B31FF]/20 flex items-center justify-center gap-2">
-                        {loading && <Loader2 className="w-4 h-4 animate-spin" />} Entrar
+
+                      {error && (
+                        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
+                          <p className="text-red-400 text-xs text-center font-bold tracking-tight">{error}</p>
+                        </motion.div>
+                      )}
+
+                      <button 
+                        type="submit" 
+                        disabled={loading} 
+                        className="w-full py-3 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] hover:brightness-110 active:scale-[0.98] text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-[#8B31FF]/20 flex items-center justify-center gap-2"
+                      >
+                        {loading ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                            <span>Entrando...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Entrar no Painel</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </>
+                        )}
                       </button>
 
-                      {/* Google Button Wrapper - Centered */}
+                      <div className="py-2 flex items-center gap-4">
+                        <div className="h-px flex-1 bg-white/5"></div>
+                        <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">OU</span>
+                        <div className="h-px flex-1 bg-white/5"></div>
+                      </div>
+
                       <div className="w-full flex justify-center">
-                        <GoogleLoginButton onSuccess={() => { }} onError={() => { }} disabled={loading} redirect={redirectUrl} />
+                        <GoogleLoginButton 
+                          onSuccess={() => {}} 
+                          onError={(err) => setError(translateError(err))} 
+                          disabled={loading} 
+                          redirect={redirectUrl} 
+                        />
                       </div>
                     </form>
                   )}

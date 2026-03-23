@@ -36,6 +36,7 @@ interface NotificationContextProps {
   loading: boolean;
   showPermissionModal: boolean;
   setShowPermissionModal: (show: boolean) => void;
+  markAsRead: (id: string) => Promise<void>;
   markAllAsRead: () => Promise<void>;
   refreshNotifications: () => Promise<void>;
   updateSettings: (settings: Partial<NotificationSettings>) => Promise<void>;
@@ -52,6 +53,7 @@ const NotificationContext = createContext<NotificationContextProps | undefined>(
  * - loading: status de carregamento
  * - showPermissionModal: exibe modal de permissão
  * - setShowPermissionModal: controla modal
+ * - markAsRead: marca uma notificação como lida
  * - markAllAsRead: marca todas como lidas
  * - refreshNotifications: recarrega notificações
  * - updateSettings: atualiza configurações
@@ -321,6 +323,15 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
+  const markAsRead = async (id: string) => {
+    if (!user) return;
+    await supabase.current
+      .from('notifications')
+      .update({ read: true })
+      .eq('id', id);
+    setNotifications(notifications.map(n => n.id === id ? { ...n, read: true } : n));
+  };
+
   const markAllAsRead = async () => {
     if (!user) return;
     await supabase.current
@@ -407,6 +418,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       loading,
       showPermissionModal,
       setShowPermissionModal,
+      markAsRead,
       markAllAsRead,
       refreshNotifications,
       updateSettings,

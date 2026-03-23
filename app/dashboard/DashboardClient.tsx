@@ -60,7 +60,7 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-1">Status</span>
              <div className="flex items-center gap-1.5">
                <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-r ${colors[color]}`}></div>
-               <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">Live</span>
+               <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">ATIVO</span>
              </div>
           </div>
         </div>
@@ -195,10 +195,10 @@ function DashboardContent() {
         <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-1">
             <div className="flex items-center gap-3">
-              <h1 className="text-4xl lg:text-5xl font-black text-white tracking-tighter uppercase italic">Control <span className="text-[#31A8FF] not-italic">Center</span></h1>
+              <h1 className="text-4xl lg:text-5xl font-black text-white tracking-tighter uppercase italic">Centro de <span className="text-[#31A8FF] not-italic">Controle</span></h1>
               <div className="px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-[9px] font-black uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(49,168,255,0.15)] animate-pulse">Pro v2.0</div>
             </div>
-            <p className="text-white/40 font-bold text-sm tracking-wide uppercase">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'VOLTRIS USER'}</span></p>
+            <p className="text-white/40 font-bold text-sm tracking-wide uppercase">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO VOLTRIS'}</span></p>
           </div>
 
           <div className="flex items-center gap-3">
@@ -212,8 +212,9 @@ function DashboardContent() {
             </motion.button>
             <Link href="/servicos">
               <motion.button
-                whileHover={{ scale: 1.05, shadow: "0 0 30px rgba(49,168,255,0.3)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(49,168,255,0.3)" }}
                 whileTap={{ scale: 0.95 }}
+
                 className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black uppercase italic tracking-[0.15em] rounded-2xl shadow-2xl text-xs"
               >
                 <FiPlus className="w-4 h-4" />
@@ -226,9 +227,9 @@ function DashboardContent() {
         {/* Custom Modern Tabs */}
         <div className={`p-1.5 rounded-[2rem] w-fit flex gap-1 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5`}>
           {[
-            { id: 'overview', label: 'Overview', icon: FiActivity },
+            { id: 'overview', label: 'Visão Geral', icon: FiActivity },
             { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
-            { id: 'pc', label: 'Computador', icon: FiMonitor }
+            { id: 'pc', label: 'Meu Computador', icon: FiMonitor }
           ].map((tab) => (
             <Link key={tab.id} href={`/dashboard?tab=${tab.id}`}>
               <div className={`
@@ -258,8 +259,7 @@ function DashboardContent() {
                 <StatCard title="Serviços Adquiridos" value={stats.totalOrders} icon={FiPackage} color="blue" delay={0.1} />
                 <StatCard title="Licenças Disponíveis" value={stats.activeLicenses} icon={FiCheckCircle} color="purple" delay={0.2} />
                 <StatCard title="Instâncias Vinculadas" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
-                
-                {/* Tactical Billboard */}
+                   {/* Tactical Billboard */}
                 <div className={`md:col-span-2 lg:col-span-3 p-10 rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
                    <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 opacity-30"></div>
                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
@@ -268,7 +268,7 @@ function DashboardContent() {
                           <FiActivity className="w-8 h-8 text-[#31A8FF]" />
                         </div>
                         <h2 className="text-3xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Sua infraestrutura está <span className="text-[#00FF88] not-italic">Segura</span></h2>
-                        <p className="text-white/40 font-bold max-w-xl">Todos os seus serviços estão monitorados por nossa rede neural. Use as abas de Licenças ou Computador para gerenciar individualmente seus produtos.</p>
+                        <p className="text-white/40 font-bold max-w-xl">Todos os seus serviços estão sendo monitorados pela nossa rede neural. Use as abas de Licenças ou Computador para gerenciar individualmente seus produtos.</p>
                      </div>
                      <Link href="/voltrisoptimizer" className="px-10 py-5 bg-white text-black font-black uppercase italic text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl">
                         Acessar Documentação Voltris
@@ -336,7 +336,7 @@ function DashboardContent() {
 
                           {/* Key Section - Dark Box */}
                           <div className="bg-black/40 rounded-[2rem] p-6 border border-white/5 group-hover:border-[#31A8FF]/20 transition-all">
-                             <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.3em] mb-4 block">Chave Criptografada</span>
+                             <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.3em] mb-4 block">Chave de Ativação</span>
                              <div className="flex items-center justify-between gap-4">
                                 <code className="flex-1 font-mono text-base font-black text-white tracking-widest truncate select-all">{lic.license_key}</code>
                                 <div className="flex items-center gap-2">
@@ -366,9 +366,9 @@ function DashboardContent() {
                                    <span className="text-[10px] font-black text-[#31A8FF] uppercase tracking-widest">Vinculado</span>
                                 </div>
                              </div>
-                             <Link href="/voltrisoptimizer" className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
-                                Download App <FiPlus className="w-3 h-3" />
-                             </Link>
+                              <Link href="/voltrisoptimizer" className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
+                                 Baixar App <FiPlus className="w-3 h-3" />
+                              </Link>
                           </div>
                         </div>
                       </motion.div>

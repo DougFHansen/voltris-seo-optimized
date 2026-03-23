@@ -160,7 +160,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
           <div className="w-16 h-16 border-t-4 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
           <div className="absolute inset-0 w-16 h-16 border-b-4 border-l-4 border-[#8B31FF] rounded-full animate-spin-reverse opacity-50"></div>
         </div>
-        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Establishing Secure Uplink...</p>
+        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Estabelecendo Uplink Seguro...</p>
       </div>
     );
   }
@@ -173,14 +173,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
         <div className="space-y-2">
           <div className="flex items-center gap-3">
             <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
-            <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter">Instance <span className="text-[#31A8FF] not-italic">Manager</span></h2>
+            <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter">Gerenciador de <span className="text-[#31A8FF] not-italic">Instâncias</span></h2>
           </div>
-          <p className="text-white/40 font-bold text-xs uppercase tracking-widest pl-5 font-mono">Real-time hardware telemetry and control</p>
+          <p className="text-white/40 font-bold text-xs uppercase tracking-widest pl-5 font-mono">Telemetria e controle de hardware em tempo real</p>
         </div>
 
         <Link href="/voltrisoptimizer" className="flex items-center gap-3 px-8 py-4 voltris-glass border border-[#31A8FF]/20 rounded-2xl text-[#31A8FF] hover:bg-[#31A8FF] hover:text-white transition-all group shadow-2xl">
           <FiDownload className="w-5 h-5 group-hover:animate-bounce" />
-          <span className="text-[10px] font-black uppercase tracking-[0.2em]">Deploy Optimizer</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em]">DOWNLOAD OPTIMIZER</span>
         </Link>
       </div>
 
@@ -191,11 +191,11 @@ export default function MyComputerPage({ userId }: { userId: string }) {
              <FiPlus className="absolute -top-2 -right-2 w-10 h-10 text-[#31A8FF] animate-pulse" />
            </div>
            <div className="space-y-3">
-             <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">No Active Nodes Detected</h3>
-             <p className="text-white/30 font-bold text-xs uppercase tracking-[0.2em] max-w-sm mx-auto leading-relaxed">Initialize Voltris Optimizer on your personal computer to establish a management link.</p>
+             <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">Nenhum Nó Ativo Detectado</h3>
+             <p className="text-white/30 font-bold text-xs uppercase tracking-[0.2em] max-w-sm mx-auto leading-relaxed">Inicialize o Voltris Optimizer em seu computador pessoal para estabelecer um link de gerenciamento.</p>
            </div>
            <Link href="/voltrisoptimizer" className="mt-4 px-10 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-110 active:scale-95 transition-all shadow-3xl text-xs">
-              Obtain Deployment Package
+              Obter Pacote de Implantação
            </Link>
         </div>
       ) : (
@@ -233,7 +233,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     <div className="flex flex-col gap-2 pt-2">
                       <div className={`mx-auto px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] inline-flex items-center gap-2 border ${device.is_online ? 'text-[#00FF88] border-[#00FF88]/20 bg-[#00FF88]/5' : 'text-slate-500 border-white/5 bg-white/5'}`}>
                         <div className={`w-2 h-2 rounded-full ${device.is_online ? 'bg-[#00FF88] animate-pulse' : 'bg-slate-500'}`}></div>
-                        {device.is_online ? 'Live Connection' : 'Link Lost'}
+                        {device.is_online ? 'Conexão Ativa' : 'Link Perdido'}
                       </div>
                       <p className="text-[10px] font-bold text-white/20 uppercase tracking-widest font-mono">Telemetry: {new Date(device.last_heartbeat || device.last_active).toLocaleString()}</p>
                     </div>
@@ -244,7 +244,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                     className="mt-10 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-500/5 border border-red-500/10 text-[10px] font-black uppercase tracking-widest text-red-500/40 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/30 transition-all active:scale-95"
                   >
                     <FiTrash2 className="w-3.5 h-3.5" />
-                    Terminate Connection
+                    Encerrar Conexão
                   </button>
                 </div>
 
@@ -254,10 +254,10 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                   {/* Real-time Status Ribbons */}
                   <div className="grid grid-cols-2 md:grid-cols-4 border-b border-white/5 bg-black/20">
                     {[
-                      { label: 'Network', value: device.is_online ? 'Encrypted' : 'Standby', icon: FiActivity, color: device.is_online ? 'text-[#31A8FF]' : 'text-slate-500' },
-                      { label: 'Optimizer', value: device.is_optimized ? 'Active' : 'Standby', icon: FiZap, color: device.is_optimized ? 'text-[#8B31FF]' : 'text-slate-500' },
-                      { label: 'Protection', value: 'Shield Active', icon: FiShield, color: 'text-emerald-400' },
-                      { label: 'Protocol', value: device.is_licensed ? 'Full Access' : 'Restricted', icon: FiCheck, color: device.is_licensed ? 'text-[#31A8FF]' : 'text-red-400' },
+                      { label: 'Rede', value: device.is_online ? 'Criptografada' : 'Espera', icon: FiActivity, color: device.is_online ? 'text-[#31A8FF]' : 'text-slate-500' },
+                      { label: 'Optimizer', value: device.is_optimized ? 'Ativo' : 'Espera', icon: FiZap, color: device.is_optimized ? 'text-[#8B31FF]' : 'text-slate-500' },
+                      { label: 'Proteção', value: 'Escudo Ativo', icon: FiShield, color: 'text-emerald-400' },
+                      { label: 'Protocolo', value: device.is_licensed ? 'Acesso Total' : 'Restrito', icon: FiCheck, color: device.is_licensed ? 'text-[#31A8FF]' : 'text-red-400' },
                     ].map((stat, i) => (
                       <div key={i} className="p-7 border-r border-white/5 flex flex-col gap-2 group/stat relative overflow-hidden">
                         <div className="absolute inset-0 bg-white/0 group-hover/stat:bg-white/[0.02] transition-all"></div>
@@ -278,15 +278,15 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                        <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-[#31A8FF]/30 transition-all group/hw">
                           <div className="p-4 rounded-2xl bg-[#31A8FF]/10 text-[#31A8FF] shadow-[0_0_20px_rgba(49,168,255,0.1)] group-hover/hw:scale-110 transition-transform"><FiCpu className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
-                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Primary Processor Module</span>
-                            <span className="text-sm font-black text-white uppercase italic tracking-tight truncate leading-tight">{device.cpu || 'Undetected Processor'}</span>
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Módulo do Processador Primário</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight truncate leading-tight">{device.cpu || 'Processador Não Detectado'}</span>
                           </div>
                        </div>
                        <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-[#8B31FF]/30 transition-all group/hw">
                           <div className="p-4 rounded-2xl bg-[#8B31FF]/10 text-[#8B31FF] shadow-[0_0_20px_rgba(139,49,255,0.1)] group-hover/hw:scale-110 transition-transform"><FiActivity className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
-                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Dynamic Memory Allocation</span>
-                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight">{device.ram || 'Memory Not Found'}</span>
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Alocação Dinâmica de Memória</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight">{device.ram || 'Memória Não Encontrada'}</span>
                           </div>
                        </div>
                     </div>
@@ -296,14 +296,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                        <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-[#FF4B6B]/30 transition-all group/hw">
                           <div className="p-4 rounded-2xl bg-[#FF4B6B]/10 text-[#FF4B6B] shadow-[0_0_20px_rgba(255,75,107,0.1)] group-hover/hw:scale-110 transition-transform"><FiMonitor className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
-                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Visual Computation Unit</span>
-                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight truncate">{device.gpu || 'Hardware Accelerated Graphics'}</span>
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Unidade de Computação Visual</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight truncate">{device.gpu || 'Gráficos Acelerados por Hardware'}</span>
                           </div>
                        </div>
                        <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-emerald-400/30 transition-all group/hw">
                           <div className="p-4 rounded-2xl bg-emerald-400/10 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.1)] group-hover/hw:scale-110 transition-transform"><FiHardDrive className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
-                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Operating System Kernel</span>
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Kernel do Sistema Operacional</span>
                             <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight">{device.os || 'Windows Master Build'}</span>
                           </div>
                        </div>
@@ -314,27 +314,27 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                   {/* Remote Command Terminal (Uplink Controls) */}
                   <div className="p-10 border-t border-white/5 bg-black/10 grid grid-cols-2 md:grid-cols-5 gap-5">
                     <RemoteAction 
-                      icon={FiZap} label="Optimize" color="blue" 
+                      icon={FiZap} label="Otimizar" color="blue" 
                       onClick={() => handleRemoteCommand(device.id, 'optimize')}
                       loading={commandLoading === `${device.id}-optimize`}
                     />
                     <RemoteAction 
-                      icon={FiTerminal} label="Prepare PC" color="emerald" 
+                      icon={FiTerminal} label="Preparar PC" color="emerald" 
                       onClick={() => handleRemoteCommand(device.id, 'prepare')}
                       loading={commandLoading === `${device.id}-prepare`}
                     />
                     <RemoteAction 
-                      icon={FiRefreshCw} label="Reboot Link" color="amber" 
+                      icon={FiRefreshCw} label="Reiniciar Link" color="amber" 
                       onClick={() => handleRemoteCommand(device.id, 'restart')}
                       loading={commandLoading === `${device.id}-restart`}
                     />
                     <RemoteAction 
-                      icon={FiPower} label="Shut Down" color="red" 
+                      icon={FiPower} label="Desligar" color="red" 
                       onClick={() => handleRemoteCommand(device.id, 'shutdown')}
                       loading={commandLoading === `${device.id}-shutdown`}
                     />
                     <RemoteAction 
-                      icon={FiShield} label="Gamer Mode" color="blue" 
+                      icon={FiShield} label="Modo Gamer" color="blue" 
                       onClick={() => handleRemoteCommand(device.id, 'gamer')}
                       loading={commandLoading === `${device.id}-gamer`}
                     />
@@ -364,11 +364,11 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                <div className="w-24 h-24 rounded-[2.5rem] bg-red-500/10 flex items-center justify-center text-red-500 mb-8 border border-red-500/20 shadow-inner">
                  <FiAlertCircle className="w-12 h-12" />
                </div>
-               <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter mb-4">Command <span className="text-red-500">Termination</span></h3>
+               <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter mb-4">Terminação de <span className="text-red-500">Comando</span></h3>
                <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed mb-12 max-w-sm">Você está removendo este nó da rede neural Voltris. Todos os privilégios de otimização remota serão revogados instantaneamente.</p>
                <div className="flex w-full gap-5">
-                  <button onClick={() => setShowUnlinkModal(null)} className="flex-1 py-5 rounded-3xl bg-white/5 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white/10 transition-all active:scale-95">Abort Mission</button>
-                  <button onClick={() => handleUnlink(showUnlinkModal)} className="flex-1 py-5 rounded-3xl bg-red-500 text-white font-black uppercase text-[10px] tracking-[0.2em] shadow-[0_20px_40px_rgba(239,68,68,0.3)] hover:scale-105 active:scale-95 transition-all">Execute Unlink</button>
+                  <button onClick={() => setShowUnlinkModal(null)} className="flex-1 py-5 rounded-3xl bg-white/5 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white/10 transition-all active:scale-95">Abortar Missão</button>
+                  <button onClick={() => handleUnlink(showUnlinkModal)} className="flex-1 py-5 rounded-3xl bg-red-500 text-white font-black uppercase text-[10px] tracking-[0.2em] shadow-[0_20px_40px_rgba(239,68,68,0.3)] hover:scale-105 active:scale-95 transition-all">Executar Desvinculação</button>
                </div>
             </motion.div>
           </div>
