@@ -1,16 +1,22 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { createClient } from '@/utils/supabase/client';
-import { FiMonitor, FiCpu, FiHardDrive, FiActivity, FiSearch, FiRefreshCw, FiLock, FiTrash2, FiZap } from 'react-icons/fi';
+import { 
+  FiMonitor, FiCpu, FiHardDrive, FiActivity, 
+  FiSearch, FiRefreshCw, FiLock, FiTrash2, FiZap,
+  FiTerminal, FiShield, FiTrendingUp, FiCheckCircle, FiX
+} from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
+import { useDashboard } from '@/app/context/DashboardContext';
 
 export default function DevicesPage() {
+    const { transparencyMode } = useDashboard();
     const [loading, setLoading] = useState(true);
     const [devices, setDevices] = useState<any[]>([]);
     const [search, setSearch] = useState('');
-    const supabase = createClient();
+    const supabase = useMemo(() => createClient(), []);
 
     useEffect(() => {
         fetchDevices();
@@ -18,33 +24,33 @@ export default function DevicesPage() {
 
     const fetchDevices = async () => {
         setLoading(true);
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-            // Simple join to get company ID then devices
-            // Ideally use RLS, but for client-side we first find the company
-            const { data: link } = await supabase.from('company_users').select('company_id').eq('user_id', user.id).single();
-            if (link) {
-                const { data } = await supabase
-                    .from('devices')
-                    .select('*')
-                    .eq('company_id', link.company_id)
-                    .order('last_heartbeat', { ascending: false });
-                setDevices(data || []);
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                const { data: link } = await supabase.from('company_users').select('company_id').eq('user_id', user.id).single();
+                if (link) {
+                    const { data } = await supabase
+                        .from('devices')
+                        .select('*')
+                        .eq('company_id', link.company_id)
+                        .order('last_heartbeat', { ascending: false });
+                    setDevices(data || []);
+                }
             }
+        } catch (error) {
+            console.error('Error fetching devices:', error);
+        } finally {
+            setLoading(false);
         }
-        setLoading(false);
     };
 
     const sendCommand = async (deviceId: string, type: string) => {
-        // 1. Get User/Company (Context)
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
 
-        // 2. Fetch company_id (cached or refetched)
         const { data: link } = await supabase.from('company_users').select('company_id').eq('user_id', user.id).single();
         if (!link) return;
 
-        // 3. Insert Command
         const { error } = await supabase.from('remote_commands').insert({
             device_id: deviceId,
             company_id: link.company_id,
@@ -54,16 +60,18 @@ export default function DevicesPage() {
         });
 
         if (error) {
-            toast.error("Falha ao enviar comando");
+            toast.error("Protocol Error: Broadcast Failed");
         } else {
-            toast.success(`Comando ${type} enviado!`);
+            toast.success(`Broadcasting ${type}...`, {
+                icon: '🛰️',
+                style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
+            });
         }
     };
 
     const handleLock = (device: any) => {
         if (confirm(`Bloquear licença de ${device.hostname}?`)) {
             sendCommand(device.id, 'REMOTE_LOCK');
-            // Update local state optimistic (or refetch)
         }
     };
 
@@ -73,42 +81,55 @@ export default function DevicesPage() {
     );
 
     return (
-        <div className="space-y-6">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                <div>
-                    <h1 className="text-3xl font-bold text-white">Dispositivos Gerenciados</h1>
-                    <p className="text-slate-400">Gerencie sua frota de computadores remotamente</p>
+        <div className="flex flex-col gap-10">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+                <div className="space-y-2">
+                   <div className="flex items-center gap-3">
+                     <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
+                     <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Managed <span className="text-[#31A8FF] not-italic">Nodes</span></h2>
+                   </div>
+                   <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Fleet-wide telemetry and remote administration</p>
                 </div>
-                <div className="flex gap-3 w-full md:w-auto">
-                    <div className="relative flex-1 md:w-64">
-                        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+
+                <div className="flex items-center gap-4 w-full md:w-auto">
+                    <div className="relative group flex-1 md:flex-none">
+                        <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-[#31A8FF] transition-colors" />
                         <input
                             type="text"
-                            placeholder="Buscar PC..."
+                            placeholder="SCAN FOR NODE ID..."
                             value={search}
                             onChange={e => setSearch(e.target.value)}
-                            className="w-full bg-[#121218] border border-white/10 rounded-xl pl-10 pr-4 py-2.5 text-white placeholder:text-slate-600 focus:outline-none focus:border-[#31A8FF]"
+                            className="w-full md:w-64 pl-11 pr-6 py-4 rounded-2xl bg-[#0A0A10]/50 border border-white/5 text-white/40 group-hover:text-white font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#31A8FF] transition-all placeholder:text-white/5"
                         />
                     </div>
-                    <button onClick={fetchDevices} className="bg-white/5 p-3 rounded-xl text-white hover:bg-white/10 transition">
-                        <FiRefreshCw className={loading ? "animate-spin" : ""} />
+                    <button 
+                      onClick={fetchDevices} 
+                      className={`p-4 rounded-2xl bg-white/5 text-white hover:bg-white/10 transition-all border border-white/5 ${loading ? 'opacity-50' : ''}`}
+                    >
+                        <FiRefreshCw className={loading ? "animate-spin" : "w-5 h-5"} />
                     </button>
                 </div>
             </div>
 
-            <div className="grid gap-4">
-                <AnimatePresence>
+            {/* Device Stream */}
+            <div className="grid grid-cols-1 gap-6">
+                <AnimatePresence mode="popLayout">
                     {loading ? (
-                        // Skeleton
-                        [1, 2, 3].map(i => <div key={i} className="h-24 bg-white/5 rounded-2xl animate-pulse" />)
+                        [1, 2, 3].map(i => (
+                          <div key={i} className={`h-32 rounded-[2.5rem] border border-white/5 animate-pulse ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`} />
+                        ))
                     ) : filteredDevices.length === 0 ? (
-                        <div className="text-center py-20 text-slate-500">
-                            <FiMonitor className="w-12 h-12 mx-auto mb-4 opacity-20" />
-                            <p>Nenhum dispositivo encontrado.</p>
+                        <div className={`py-40 flex flex-col items-center justify-center text-center gap-10 rounded-[4rem] border border-white/5 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
+                            <FiMonitor className="w-20 h-20 text-white/5" />
+                            <div className="space-y-4">
+                              <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">No Active Nodes</h3>
+                              <p className="text-white/20 font-bold text-[10px] uppercase tracking-[0.3em] max-w-sm">Scan yielded zero management IDs associated with this company uplink.</p>
+                            </div>
                         </div>
                     ) : (
                         filteredDevices.map(device => (
-                            <DeviceCard key={device.id} device={device} onCommand={sendCommand} onLock={handleLock} />
+                            <DeviceCard key={device.id} device={device} onCommand={sendCommand} onLock={handleLock} transparencyMode={transparencyMode} />
                         ))
                     )}
                 </AnimatePresence>
@@ -117,68 +138,100 @@ export default function DevicesPage() {
     );
 }
 
-function DeviceCard({ device, onCommand, onLock }: any) {
-    const isOnline = device.last_heartbeat && (new Date().getTime() - new Date(device.last_heartbeat).getTime()) < 1000 * 60 * 15; // 15 min threshold
+function DeviceCard({ device, onCommand, onLock, transparencyMode }: any) {
+    const isOnline = device.last_heartbeat && (new Date().getTime() - new Date(device.last_heartbeat).getTime()) < 1000 * 60 * 15; 
 
     return (
         <motion.div
+            layout
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-[#121218]/80 backdrop-blur-xl border border-white/5 rounded-2xl p-5 flex flex-col md:flex-row items-center gap-6 group hover:border-white/10 transition-colors"
+            exit={{ opacity: 0, scale: 0.95 }}
+            className={`group p-8 rounded-[3rem] border transition-all duration-500 overflow-hidden relative flex flex-col xl:flex-row items-center gap-10
+              ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'} 
+              hover:border-[#31A8FF]/40
+            `}
         >
-            {/* Icon / Status */}
-            <div className="relative">
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl ${isOnline ? 'bg-[#31A8FF]/10 text-[#31A8FF]' : 'bg-slate-800/50 text-slate-500'}`}>
+            {/* Status Nucleus */}
+            <div className="relative shrink-0">
+                <div className={`w-20 h-20 rounded-[2rem] flex items-center justify-center text-3xl transition-transform group-hover:scale-110 group-hover:rotate-3 shadow-lg 
+                  ${isOnline ? 'bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20 shadow-[#31A8FF]/5' : 'bg-slate-800/20 text-white/10 border border-white/5'}`}>
                     <FiMonitor />
                 </div>
-                <div className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-[#121218] ${isOnline ? 'bg-[#00FF94]' : 'bg-slate-500'}`} />
+                {isOnline && (
+                  <div className="absolute -inset-2 bg-[#31A8FF]/20 blur-xl rounded-full animate-pulse-slow"></div>
+                )}
+                <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-4 ${transparencyMode ? 'border-[#0a0a12]' : 'border-[#12121A]'} ${isOnline ? 'bg-[#00FF88] shadow-[0_0_10px_#00FF88]' : 'bg-slate-600'}`} />
             </div>
 
-            {/* Info */}
-            <div className="flex-1 text-center md:text-left min-w-0 w-full">
-                <h3 className="text-lg font-bold text-white truncate">{device.hostname || "PC Desconhecido"}</h3>
-                <p className="text-xs text-slate-500 font-mono mb-2">{device.machine_id}</p>
-                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-slate-400">
-                    <span className="flex items-center gap-1"><FiCpu /> {device.cpu_model?.split(' ')[0] || 'CPU'}</span>
-                    <span className="flex items-center gap-1"><FiActivity /> {device.ram_total_gb} GB RAM</span>
-                    <span className="flex items-center gap-1"><FiHardDrive /> {device.os_version}</span>
+            {/* Information Hub */}
+            <div className="flex-1 text-center xl:text-left min-w-0 w-full space-y-4">
+                <div className="space-y-1">
+                   <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter truncate leading-none">{device.hostname || "UNIDENTIFIED NODE"}</h3>
+                   <div className="flex items-center justify-center xl:justify-start gap-4">
+                      <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] font-mono">HASH: <span className="text-[#31A8FF]">{device.machine_id?.slice(0, 16)}</span></span>
+                      <div className={`px-3 py-0.5 rounded-full border text-[9px] font-black uppercase tracking-widest ${isOnline ? 'bg-[#00FF88]/10 text-[#00FF88] border-[#00FF88]/20' : 'bg-white/5 text-white/20 border-white/10'}`}>
+                         {isOnline ? 'Active Link' : 'Dormant'}
+                      </div>
+                   </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-center xl:justify-start gap-6 pt-2">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                       <FiCpu className="text-[#31A8FF] w-4 h-4" />
+                       <span>{device.cpu_model?.split(' ')[0] || 'CPU'}</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                       <FiActivity className="text-[#8B31FF] w-4 h-4" />
+                       <span>{device.ram_total_gb}GB RAM</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                       <FiShield className="text-[#FF4B6B] w-4 h-4" />
+                       <span>{device.os_version?.slice(0, 12)}</span>
+                    </div>
                 </div>
             </div>
 
-            {/* Metrics (Mini) */}
-            <div className="hidden lg:flex gap-4 px-4 border-l border-white/5">
-                <div className="text-center w-16">
-                    <div className="text-lg font-bold text-white">12%</div>
-                    <div className="text-[10px] text-slate-500 uppercase">CPU</div>
+            {/* Tactical Sensors (Mockup) */}
+            <div className="hidden 2xl:flex gap-10 px-10 border-x border-white/5">
+                <div className="space-y-2 text-center w-20">
+                    <div className="text-2xl font-black text-white italic leading-none">12%</div>
+                    <div className="text-[9px] font-black text-[#31A8FF] uppercase tracking-widest">Load</div>
                 </div>
-                <div className="text-center w-16">
-                    <div className="text-lg font-bold text-white">45%</div>
-                    <div className="text-[10px] text-slate-500 uppercase">RAM</div>
+                <div className="space-y-2 text-center w-20">
+                    <div className="text-2xl font-black text-white italic leading-none">45%</div>
+                    <div className="text-[9px] font-black text-[#8B31FF] uppercase tracking-widest">Usage</div>
                 </div>
             </div>
 
-            {/* Actions */}
-            <div className="flex items-center gap-2 w-full md:w-auto mt-4 md:mt-0">
+            {/* Remote Command Terminal */}
+            <div className="flex items-center gap-4 w-full xl:w-auto mt-4 xl:mt-0">
                 <button
                     onClick={() => onCommand(device.id, 'OPTIMIZE_RAM')}
-                    title="Otimizar RAM"
-                    className="flex-1 md:flex-none p-3 rounded-xl bg-[#31A8FF]/10 text-[#31A8FF] hover:bg-[#31A8FF] hover:text-white transition-all font-medium flex justify-center items-center gap-2"
+                    className="flex-1 xl:flex-none px-6 py-4 rounded-2xl bg-white text-black font-black uppercase italic tracking-widest text-[10px] hover:scale-105 transition-all shadow-3xl flex items-center justify-center gap-3"
                 >
-                    <FiZap /> <span className="md:hidden">Otimizar</span>
+                    <FiZap className="w-4 h-4" />
+                    <span>Optimize Node</span>
                 </button>
                 <button
                     onClick={() => onLock(device)}
-                    title="Bloquear Acesso"
-                    className="p-3 rounded-xl bg-[#FF4B6B]/10 text-[#FF4B6B] hover:bg-[#FF4B6B] hover:text-white transition-all"
+                    title="Lock Transmission"
+                    className="p-4 rounded-2xl bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500 hover:text-white transition-all shadow-lg shadow-red-500/5 flex items-center justify-center"
                 >
-                    <FiLock />
+                    <FiLock className="w-5 h-5" />
                 </button>
                 <button
-                    title="Remover"
-                    className="p-3 rounded-xl bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white transition-all"
+                    title="Terminate Uplink"
+                    className="p-4 rounded-2xl bg-white/5 text-white/20 border border-white/5 hover:bg-white/10 hover:text-white transition-all flex items-center justify-center"
                 >
-                    <FiTrash2 />
+                    <FiTrash2 className="w-5 h-5" />
                 </button>
+            </div>
+            
+            {/* Heartbeat Pulse */}
+            <div className="absolute right-10 top-6 flex items-center gap-2">
+               <span className="text-[8px] font-black text-white/10 uppercase tracking-[0.2em] font-mono">Last Pulse </span>
+               <span className="text-[9px] font-bold text-white/30 font-mono italic">{new Date(device.last_heartbeat).toLocaleTimeString()}</span>
             </div>
         </motion.div>
     )

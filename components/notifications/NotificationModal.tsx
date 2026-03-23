@@ -3,9 +3,11 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNotificationContext } from './NotificationContext';
-import { FiBell, FiCheck, FiX } from 'react-icons/fi';
+import { FiBell, FiCheck, FiX, FiShield, FiCpu } from 'react-icons/fi';
+import { useDashboard } from '@/app/context/DashboardContext';
 
 export default function NotificationModal() {
+  const { transparencyMode } = useDashboard();
   const { showPermissionModal, setShowPermissionModal, updateSettings } = useNotificationContext();
 
   if (!showPermissionModal) return null;
@@ -21,57 +23,74 @@ export default function NotificationModal() {
 
   return (
     <AnimatePresence>
-      <motion.div
-        className="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={handleDismiss}
-      >
+      <div className="fixed inset-0 z-[10000] flex items-center justify-center p-6">
         <motion.div
-          className="bg-[#0A0A0F] border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-8 max-w-sm w-full relative overflow-hidden"
-          initial={{ y: 20, opacity: 0, scale: 0.95 }}
+          className="absolute inset-0 bg-black/90 backdrop-blur-md"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={handleDismiss}
+        />
+        
+        <motion.div
+          className={`relative w-full max-w-lg p-12 rounded-[4rem] border border-white/10 shadow-3xl overflow-hidden
+            ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}
+          `}
+          initial={{ y: 50, opacity: 0, scale: 0.9 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
-          exit={{ y: 20, opacity: 0, scale: 0.95 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+          exit={{ y: 50, opacity: 0, scale: 0.9 }}
+          transition={{ type: 'spring', stiffness: 150, damping: 20 }}
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Background Gradient Decoration */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#31A8FF]/5 blur-3xl -z-10"></div>
-          <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#8B31FF]/5 blur-3xl -z-10"></div>
-
-          <div className="flex flex-col items-center text-center gap-6">
-            <div className="w-16 h-16 bg-gradient-to-br from-[#31A8FF]/20 to-[#8B31FF]/20 border border-[#31A8FF]/30 rounded-2xl flex items-center justify-center">
-              <FiBell className="w-8 h-8 text-[#31A8FF]" />
+          {/* Visual Accents */}
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]"></div>
+          <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#31A8FF]/5 blur-[100px] rounded-full"></div>
+          
+          <div className="flex flex-col items-center text-center gap-10">
+            <div className="relative">
+              <div className="w-24 h-24 rounded-[2.5rem] bg-gradient-to-br from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 flex items-center justify-center text-[#31A8FF] shadow-2xl relative z-10">
+                <FiBell className="w-10 h-10 animate-float" />
+              </div>
+              <div className="absolute inset-0 rounded-[2.5rem] bg-[#31A8FF] blur-3xl opacity-20 animate-pulse"></div>
             </div>
 
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-2">Notificações VOLTRIS</h2>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                Deseja ativar as notificações?<br />
-                Receba alertas em tempo real sobre seus dispositivos, pedidos e atualizações críticas.
-              </p>
+            <div className="space-y-4">
+              <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">Neural <span className="text-[#31A8FF] not-italic">Sync</span></h2>
+              <div className="flex flex-col gap-2">
+                 <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed">
+                   Establish a persistent resonance link for real-time telemetry updates and critical security pings.
+                 </p>
+                 <div className="flex items-center justify-center gap-4 pt-2">
+                    <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+                       <FiShield className="w-3 h-3 text-[#00FF88]" />
+                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">ENCRYPTED</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+                       <FiCpu className="w-3 h-3 text-[#31A8FF]" />
+                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">LOW OVERHEAD</span>
+                    </div>
+                 </div>
+              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 w-full">
+            <div className="flex flex-col gap-4 w-full pt-4">
               <button
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white font-bold rounded-xl shadow-lg shadow-[#31A8FF]/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                className="w-full py-6 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white font-black uppercase italic tracking-[0.3em] rounded-3xl shadow-3xl hover:scale-[1.03] active:scale-95 transition-all flex items-center justify-center gap-4 text-xs"
                 onClick={handleEnable}
               >
-                <FiCheck className="w-4 h-4" />
-                <span>Sim, Ativar</span>
+                <FiCheck className="w-5 h-5" />
+                <span>Initialize Link</span>
               </button>
               <button
-                className="flex-1 px-6 py-3 bg-white/5 hover:bg-white/10 text-slate-300 font-bold rounded-xl border border-white/10 transition-all flex items-center justify-center gap-2"
+                className="w-full py-5 text-white/20 hover:text-white/60 font-black uppercase tracking-[0.3em] text-[10px] transition-all"
                 onClick={handleDismiss}
               >
-                <FiX className="w-4 h-4" />
-                <span>Não Agora</span>
+                Decline Interaction
               </button>
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </AnimatePresence>
   );
 } 

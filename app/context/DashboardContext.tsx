@@ -48,11 +48,6 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('dashboard_sidebar_collapsed', String(collapsed));
   };
 
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <DashboardContext.Provider
       value={{
@@ -67,6 +62,7 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     </DashboardContext.Provider>
   );
 }
+
 
 export function useDashboard() {
   const context = useContext(DashboardContext);
