@@ -54,30 +54,32 @@ function AdquirirLicencaContent() {
         setIsProcessing(planType);
 
         try {
-            // 1. Registrar pagamento no banco e obter reference_id
-            const response = await fetch('/api/pagamento/checkout', {
+            toast.loading("Iniciando checkout seguro com Stripe...");
+            
+            const response = await fetch('/api/stripe/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    items: [{ id: `${planType}_annual`, name: `Licença ${planType.toUpperCase()} - Voltris`, price: 1.00, quantity: 1 }],
-                    customer: { name: user.user_metadata?.full_name || '', email: user.email },
                     license_type: planType,
-                    user_id: user.id
-                })
+                    user_id: user.id || null,
+                    customer_email: user.email,
+                    customer_name: user?.user_metadata?.full_name || 'Usuário Voltris',
+                }),
             });
 
             const data = await response.json();
 
-            if (data.checkout_url) {
-                window.location.href = data.checkout_url;
+            if (data.url) {
+                window.location.href = data.url;
             } else {
-                throw new Error(data.error || 'Erro ao criar checkout');
+                throw new Error(data.error || 'Erro ao criar sessão do Stripe');
             }
         } catch (error: any) {
-            console.error('Erro no checkout:', error);
-            toast.error(`Erro ao processar: ${error.message}`);
+            console.error('Erro no checkout Stripe:', error);
+            toast.error(`Falha no checkout: ${error.message}`);
         } finally {
             setIsProcessing(null);
+            toast.dismiss();
         }
     };
 
