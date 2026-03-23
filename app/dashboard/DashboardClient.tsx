@@ -251,20 +251,20 @@ function DashboardContent() {
         </div>
 
         {/* Tabs Switcher */}
-        <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar py-1">
+        <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto no-scrollbar py-3 px-1">
           {['overview', 'licenses', 'pc'].map((tab) => (
             <Link
               key={tab}
               href={`/dashboard?tab=${tab}`}
-              className={`px-4 py-2.5 rounded-xl text-sm font-bold transition-all whitespace-nowrap min-h-[44px] flex items-center gap-2 ${activeTab === tab
-                ? 'bg-[#31A8FF] text-white shadow-[0_0_20px_rgba(49,168,255,0.3)]'
-                : 'bg-[#1A1A22] text-slate-400 hover:text-white border border-white/5'
+              className={`px-5 py-3 rounded-2xl text-sm font-bold transition-all whitespace-nowrap flex items-center gap-2 group relative ${activeTab === tab
+                ? 'bg-[#31A8FF] text-white shadow-[0_8px_20px_rgba(49,168,255,0.25)] scale-105'
+                : 'bg-[#1A1A22] text-slate-400 hover:text-white border border-white/5 hover:bg-white/5'
                 }`}
             >
               {tab === 'overview' && <FiActivity className="w-4 h-4" />}
               {tab === 'licenses' && <FiCheckCircle className="w-4 h-4" />}
               {tab === 'pc' && <FiPackage className="w-4 h-4" />}
-              {tab === 'overview' ? 'Geral' : tab === 'licenses' ? 'Minhas Licenças' : 'Meu Computador'}
+              <span>{tab === 'overview' ? 'Geral' : tab === 'licenses' ? 'Minhas Licenças' : 'Meu Computador'}</span>
             </Link>
           ))}
         </div>

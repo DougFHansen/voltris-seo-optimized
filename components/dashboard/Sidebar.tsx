@@ -98,7 +98,7 @@ export default function Sidebar({ activeTab, onTabChange, mobileOpen = false, se
                 href={tab.query ? { pathname: tab.path, query: tab.query } : tab.path}
                 key={tab.label}
                 onClick={() => setMobileOpen?.(false)}
-                className={`group flex items-center gap-4 px-4 py-3.5 rounded-xl transition-all duration-300 relative overflow-hidden flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/[0.03]'}`}
+                className={`group flex items-center gap-4 px-4 py-4 rounded-xl transition-all duration-300 relative flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/[0.03]'}`}
               >
                 {isActive && (
                   <motion.div
