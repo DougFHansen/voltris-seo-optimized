@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createCheckout, getPaymentLink, createPlan, createPaymentLink } from '@/lib/pagbank-client';
 import { createAdminClient } from '@/utils/supabase/admin';
 
+export const runtime = 'nodejs';
+export const preferredRegion = 'gru1'; // São Paulo — mesmo país do PagBank
+
 /**
  * API DE CHECKOUT & ASSINATURA (HÍBRIDA)
  * 

@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/utils/supabase/admin';
 import axios from 'axios';
 
+export const runtime = 'nodejs';
+export const preferredRegion = 'gru1'; // São Paulo — mesmo país do PagBank
+
 /**
  * API DE ASSINATURA RECORRENTE — PAGBANK
  *

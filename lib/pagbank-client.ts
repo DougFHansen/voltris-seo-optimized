@@ -22,9 +22,8 @@ export const pagBankClient = axios.create({
         'Authorization': `Bearer ${TOKEN}`,
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
     },
-    timeout: 30000, // 30 segundos
+    timeout: 30000,
 });
 
 export async function createPlan(data: any): Promise<any> {
@@ -34,7 +33,6 @@ export async function createPlan(data: any): Promise<any> {
                 'Authorization': `Bearer ${TOKEN}`,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
             }
         });
         return response.data;
@@ -46,13 +44,20 @@ export async function createPlan(data: any): Promise<any> {
 
 export async function createPaymentLink(data: any): Promise<any> {
     try {
-        console.log('[PAGBANK] Criando link de pagamento (fallback v3)');
+        console.log('[PAGBANK] Criando link de pagamento');
         const response = await pagBankClient.post('/payment-links', data);
         return response.data;
     } catch (error: any) {
         if (error.response) {
-            console.error('PagBank Link Error:', JSON.stringify(error.response.data, null, 2));
-            throw new Error(`PagBank Link Error: ${JSON.stringify(error.response.data)}`);
+            // Se a resposta for HTML (Cloudflare block), dar mensagem clara
+            const responseData = error.response.data;
+            const isHtml = typeof responseData === 'string' && responseData.includes('<!DOCTYPE');
+            if (isHtml) {
+                console.error('[PAGBANK] Bloqueado por Cloudflare — IP do servidor não autorizado');
+                throw new Error('PagBank bloqueou a requisição (Cloudflare). Verifique a região do servidor.');
+            }
+            console.error('PagBank Link Error:', JSON.stringify(responseData, null, 2));
+            throw new Error(`PagBank Link Error: ${JSON.stringify(responseData)}`);
         }
         throw error;
     }
