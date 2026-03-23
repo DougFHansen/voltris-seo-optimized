@@ -68,7 +68,6 @@ function DashboardContent() {
   const [licenses, setLicenses] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  const [isRecovering, setIsRecovering] = useState(false);
   const [filter, setFilter] = useState('all');
   const supabase = useMemo(() => createClient(), []);
 
@@ -117,83 +116,28 @@ function DashboardContent() {
     if (user) fetchData();
   }, [user, fetchData]);
 
-  // DETECTAR SUCESSO NO CHECKOUT (PAGBANK)
+  // DETECTAR SUCESSO NO CHECKOUT (STRIPE)
   // Usar ref separado para evitar chamar mais de uma vez
   const [licenseConfirmed, setLicenseConfirmed] = useState(false);
 
+  // SUCESSO NO CHECKOUT (RELATÓRIO STRIPE)
   useEffect(() => {
     const success = searchParams.get('checkout_success');
-    const refId = searchParams.get('ref');
+    if (success !== 'true' || loading) return;
 
-    // Aguardar user estar carregado E não ter confirmado ainda
-    if (success !== 'true' || loading || licenseConfirmed) return;
-    // ref é obrigatório para o fallback funcionar no sandbox
-    if (!refId) return;
+    // Toast de boas-vindas
+    toast.success('Pagamento iniciado! Sua licença será ativada em breves instantes.', {
+      duration: 5000,
+      position: 'top-center',
+      icon: '🚀',
+      style: { background: '#121218', color: '#fff' },
+    });
 
-    setLicenseConfirmed(true); // Marcar para não chamar duas vezes
-
-    const confirmLicense = async () => {
-      try {
-        const body: any = { reference_id: refId };
-        if (user?.email) body.email = user.email;
-        if (user?.id) body.user_id = user.id;
-
-        console.log('[Dashboard] Confirmando licença para ref:', refId);
-
-        const res = await fetch('/api/pagamento/confirmar-licenca', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-
-        const data = await res.json();
-        console.log('[Dashboard] Resposta confirmar-licenca:', data);
-
-        if (data.license) {
-          toast.success('Pagamento aprovado! Sua licença está disponível abaixo.', {
-            duration: 8000,
-            position: 'top-center',
-            icon: '🚀',
-            style: { background: '#121218', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' },
-          });
-          await fetchData(false);
-        } else if (data.error) {
-          console.error('[Dashboard] Erro ao confirmar licença:', data.error, data.details);
-          toast.error('Erro ao processar licença. Contate o suporte.', { duration: 6000 });
-        } else {
-          // Sem licença e sem erro — tentar novamente em 4s
-          setTimeout(async () => {
-            await fetchData(false);
-          }, 4000);
-          toast('Processando pagamento...', { duration: 4000, icon: '⏳', style: { background: '#121218', color: '#fff' } });
-        }
-      } catch (e) {
-        console.error('[Dashboard] Erro ao confirmar licença:', e);
-      }
-    };
-
-    confirmLicense();
-  }, [searchParams, user, loading, licenseConfirmed, fetchData]);
-
-  const handleRecoverLicense = async () => {
-    setIsRecovering(true);
-    try {
-      const res = await fetch('/api/pagamento/recuperar-licenca', { method: 'POST' });
-      const data = await res.json();
-      if (!res.ok) { toast.error('Erro ao verificar pagamentos.'); return; }
-      if (!data.found) { toast('Nenhum pagamento encontrado.', { icon: 'ℹ️' }); return; }
-      if (data.generated > 0) {
-        toast.success(`${data.generated} licença(s) recuperada(s)!`, { duration: 8000, icon: '🎉' });
-        await fetchData(false);
-      } else if (data.already_existed > 0) {
-        toast('Licenças já ativas no sistema.', { icon: '✅' });
-        await fetchData(false);
-      } else {
-        toast('Nenhuma licença pendente.', { icon: 'ℹ️' });
-      }
-    } catch { toast.error('Erro de conexão.'); }
-    finally { setIsRecovering(false); }
-  };
+    // Refresh inicial e após delay curto (esperando webhook)
+    fetchData(false);
+    const timer = setTimeout(() => fetchData(false), 5000);
+    return () => clearTimeout(timer);
+  }, [searchParams, loading, fetchData]);
 
   const filteredOrders = orders.filter(order => filter === 'all' || order.status === filter);
 
@@ -287,14 +231,10 @@ function DashboardContent() {
                 <p className="text-sm text-amber-200 font-medium">Pagou mas a licença não apareceu?</p>
               </div>
               <button
-                onClick={handleRecoverLicense}
-                disabled={isRecovering}
-                className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-black font-bold text-sm rounded-xl transition-all whitespace-nowrap"
+                onClick={() => fetchData(true)}
+                className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black font-bold text-sm rounded-xl transition-all whitespace-nowrap"
               >
-                {isRecovering
-                  ? <><FiRefreshCw className="w-4 h-4 animate-spin" /> Verificando...</>
-                  : <><FiSearch className="w-4 h-4" /> Verificar Pagamentos</>
-                }
+                <FiRefreshCw className="w-4 h-4" /> Atualizar Status
               </button>
             </div>
 

@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
             // Atualiza status do pagamento no Supabase
             await supabase.from('payments')
-                .update({ status: 'approved', pagbank_id: session.id }) // pagbank_id ainda usado como campo genérico ID transação
+                .update({ status: 'approved', pagbank_id: session.id }) // ID transação (Stripe Session ID)
                 .eq('reference_id', referenceId);
 
             // Chama o RPC para gerar a licença

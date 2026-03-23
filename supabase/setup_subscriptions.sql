@@ -1,13 +1,12 @@
--- ============================================================
--- VOLTRIS — SISTEMA DE ASSINATURAS RECORRENTES (PAGBANK)
+-- VOLTRIS — SISTEMA DE ASSINATURAS RECORRENTES (STRIPE)
 -- Execute este script no SQL Editor do Supabase
 -- ============================================================
 
--- Tabela para armazenar os IDs dos planos criados no PagBank
-CREATE TABLE IF NOT EXISTS public.pagbank_plans (
+-- Tabela para armazenar os IDs dos planos criados no Stripe
+CREATE TABLE IF NOT EXISTS public.stripe_plans (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     plan_type TEXT UNIQUE NOT NULL,          -- standard, pro, enterprise
-    pagbank_plan_id TEXT UNIQUE NOT NULL,    -- ID retornado pelo PagBank
+    pagbank_plan_id TEXT UNIQUE NOT NULL,    -- ID retornado pelo provedor (mantendo nome coluna p/ compatibilidade)
     name TEXT NOT NULL,
     amount_cents INTEGER NOT NULL,
     created_at TIMESTAMPTZ DEFAULT now()
