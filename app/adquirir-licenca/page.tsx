@@ -157,7 +157,7 @@ function AdquirirLicencaContent() {
                                 <p className="text-slate-500 text-sm mb-6">Essencial para um único PC.</p>
 
                                 <div className="mb-8">
-                                    <span className="text-4xl font-black text-white">R$ 149,90</span>
+                                    <span className="text-4xl font-black text-white">R$ 1,00</span>
                                     <span className="text-slate-500 text-lg font-medium">/ano</span>
                                 </div>
 
@@ -209,7 +209,7 @@ function AdquirirLicencaContent() {
                                 <p className="text-slate-400 text-sm mb-6 font-medium">A escolha para entusiastas.</p>
 
                                 <div className="mb-8">
-                                    <span className="text-5xl font-black text-white">R$ 449,90</span>
+                                    <span className="text-5xl font-black text-white">R$ 1,00</span>
                                     <span className="text-[#8B31FF] text-xl font-black">/ano</span>
                                 </div>
 
@@ -257,7 +257,7 @@ function AdquirirLicencaContent() {
                                 <p className="text-slate-500 text-sm mb-6">Para lan houses e empresas.</p>
 
                                 <div className="mb-8">
-                                    <span className="text-4xl font-black text-white">R$ 1490,90</span>
+                                    <span className="text-4xl font-black text-white">R$ 1,00</span>
                                     <span className="text-[#FF4B6B] text-lg font-bold">/ano</span>
                                 </div>
 

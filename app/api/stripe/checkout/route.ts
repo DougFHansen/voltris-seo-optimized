@@ -5,9 +5,9 @@ import { createAdminClient } from '@/utils/supabase/admin';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://voltris.com.br';
 
 const PLAN_CONFIG: Record<string, { name: string; amount: number; interval: 'year' | 'month' | null }> = {
-  standard:   { name: 'Licença Standard Anual',      amount: 149.90,  interval: 'year' },
-  pro:        { name: 'Licença Pro Gamer Anual',     amount: 449.90,  interval: 'year' },
-  enterprise: { name: 'Licença Enterprise Vitalícia', amount: 1490.90, interval: null }, // Vitalício pode ser pagamento único
+  standard:   { name: 'Licença Standard Anual',      amount: 1.00,  interval: 'year' },
+  pro:        { name: 'Licença Pro Gamer Anual',     amount: 1.00,  interval: 'year' },
+  enterprise: { name: 'Licença Enterprise Vitalícia', amount: 1.00,  interval: null }, // Vitalício pode ser pagamento único
 };
 
 export async function POST(req: NextRequest) {
