@@ -17,7 +17,6 @@ export const pagBankClient = axios.create({
     headers: {
         'Authorization': `Bearer ${TOKEN}`,
         'Content-Type': 'application/json',
-        'x-api-version': '4.0',
     },
     timeout: 30000, // 30 segundos
 });
@@ -44,7 +43,9 @@ export async function createPaymentLink(data: any): Promise<any> {
 
 export async function createCheckout(data: PagBankCheckoutRequest): Promise<PagBankCheckoutResponse> {
     try {
-        const response = await pagBankClient.post<PagBankCheckoutResponse>('/checkouts', data);
+        const response = await pagBankClient.post<PagBankCheckoutResponse>('/checkouts', data, {
+            headers: { 'x-api-version': '4.0' } // Checkout v4 exige este header
+        });
         return response.data;
     } catch (error: unknown) {
         // Melhor tratamento de erro para debug

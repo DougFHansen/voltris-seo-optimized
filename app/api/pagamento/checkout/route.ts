@@ -55,6 +55,7 @@ export async function POST(req: NextRequest) {
             if (!planId) throw new Error('Não foi possível registrar o plano de assinatura. Verifique as credenciais no Vercel.');
 
             // b) Criar LINK DE PAGAMENTO DE ASSINATURA (Hosted Page)
+            // IMPORTANTE: PagBank não permite "items" e "subscription" simultâneos.
             const payload = {
                 name: `Assinatura - ${license_type.toUpperCase()}`,
                 description: `Acesso Mensal - ${license_type.toUpperCase()}`,
@@ -63,15 +64,9 @@ export async function POST(req: NextRequest) {
                 subscription: {
                     plan: { id: planId }
                 },
-                items: [{
-                   reference_id: `plan-${license_type}`,
-                   name: `Plano ${license_type.toUpperCase()}`,
-                   quantity: 1,
-                   unit_amount: Math.round(totalAmount * 100)
-                }],
                 customer: {
-                    name: customer.name || 'Cliente Voltris' as string,
-                    email: customer.email as string
+                    name: customer.name || 'Cliente Voltris',
+                    email: customer.email
                 },
                 notification_urls: [`${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`],
                 redirect_url: `${baseUrl}/dashboard?checkout_success=true&ref=${referenceId}`
@@ -120,7 +115,10 @@ export async function POST(req: NextRequest) {
 
     } catch (error: any) {
         console.error(`[CHECKOUT ${requestId}] 💥 Falha Crítica:`, error.message);
-        return NextResponse.json({ error: 'Erro ao processar pagamento', details: error.message }, { status: 500 });
+        return NextResponse.json({ 
+            error: `Erro ao processar: ${error.message}`, 
+            details: error.message 
+        }, { status: 500 });
     }
 }
 
@@ -137,7 +135,7 @@ async function ensurePlan(type: string, amount: number, supabase: any, baseUrl: 
         name: `Voltris Optimizer - ${type.toUpperCase()} Mensal`,
         interval: { unit: 'MONTH', length: 1 },
         amount: { value: Math.round(amount * 100), currency: 'BRL' },
-        payment_method: { type: 'CREDIT_CARD' }, // Recorrência automática exige cartão
+        payment_methods: ['CREDIT_CARD'], // Formato corrigido para array de strings (API Subscriptions)
         notification_urls: [`${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`]
     };
 
