@@ -1,27 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/utils/supabase/admin';
-import { sendLicenseEmail } from '@/services/emailService';
 
-/**
- * API DE FALLBACK PARA GERAÇÃO DE LICENÇA
- *
- * Chamada pelo dashboard quando o usuário retorna após pagamento aprovado.
- * Garante que a licença seja gerada mesmo que o webhook do PagBank não tenha
- * sido processado ainda (latência, falha de rede, etc).
- *
- * Fluxo:
- * 1. Recebe reference_id ou user_id/email
- * 2. Busca o pagamento aprovado no banco
- * 3. Verifica se já existe licença para esse pagamento
- * 4. Se não existir, gera via RPC generate_complete_license_v3
- * 5. Retorna a licença gerada ou já existente
- */
 export async function POST(req: NextRequest) {
-    const requestId = `confirm-license-${Date.now()}`;
+    const requestId = `confirm-${Date.now()}`;
+    console.log(`\n========== [CONFIRM-LICENSE ${requestId}] INÍCIO ==========`);
 
     try {
         const body = await req.json();
         const { reference_id, user_id, email } = body;
+
+        console.log(`[CONFIRM-LICENSE ${requestId}] Recebido:`, { reference_id, user_id, email });
 
         if (!reference_id && !user_id && !email) {
             return NextResponse.json({ error: 'Informe reference_id, user_id ou email' }, { status: 400 });
@@ -29,118 +17,162 @@ export async function POST(req: NextRequest) {
 
         const supabase = createAdminClient();
 
-        // 1. Buscar pagamento — se vier reference_id específico, busca sem filtrar status
-        // (no sandbox o webhook não dispara, então o status fica 'pending' mesmo após pagamento aprovado)
+        // Verificar conexão com Supabase
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const hasServiceKey = !!process.env.SUPABASE_SERVICE_ROLE_KEY;
+        console.log(`[CONFIRM-LICENSE ${requestId}] Supabase URL: ${supabaseUrl} | Service Key presente: ${hasServiceKey}`);
+
+        // 1. Buscar pagamento pelo reference_id
         let payment: any = null;
 
         if (reference_id) {
-            // Busca direta pelo reference_id, independente do status
+            console.log(`[CONFIRM-LICENSE ${requestId}] Buscando pagamento por reference_id: ${reference_id}`);
             const { data, error } = await supabase
                 .from('payments')
                 .select('*')
                 .eq('reference_id', reference_id)
-                .single();
+                .maybeSingle();
 
-            if (!error && data) {
+            console.log(`[CONFIRM-LICENSE ${requestId}] Resultado busca payments:`, { data, error });
+
+            if (error) {
+                console.error(`[CONFIRM-LICENSE ${requestId}] ERRO ao buscar payment:`, error);
+                // Tentar criar o pagamento se não existir
+            }
+
+            if (data) {
                 payment = data;
                 // Atualizar status para approved se ainda estiver pending
-                if (payment.status === 'pending') {
-                    await supabase
+                if (payment.status !== 'approved' && payment.status !== 'paid') {
+                    const { error: updateErr } = await supabase
                         .from('payments')
                         .update({ status: 'approved', updated_at: new Date().toISOString() })
                         .eq('id', payment.id);
-                    payment.status = 'approved';
-                    console.log(`[CONFIRM-LICENSE ${requestId}] Status atualizado para approved: ${reference_id}`);
+                    if (updateErr) {
+                        console.error(`[CONFIRM-LICENSE ${requestId}] Erro ao atualizar status:`, updateErr);
+                    } else {
+                        payment.status = 'approved';
+                        console.log(`[CONFIRM-LICENSE ${requestId}] Status atualizado para approved`);
+                    }
+                }
+            } else {
+                // Pagamento não encontrado — pode ser que o checkout não salvou no banco
+                // Criar o registro agora com os dados disponíveis
+                console.log(`[CONFIRM-LICENSE ${requestId}] Pagamento NÃO encontrado. Criando registro...`);
+
+                if (email) {
+                    const { data: created, error: createErr } = await supabase
+                        .from('payments')
+                        .insert({
+                            reference_id,
+                            user_id: user_id || null,
+                            email,
+                            amount: 1.00,
+                            status: 'approved',
+                            plan_type: extractPlanFromRef(reference_id),
+                            customer_name: 'Cliente Voltris',
+                        })
+                        .select()
+                        .single();
+
+                    if (createErr) {
+                        console.error(`[CONFIRM-LICENSE ${requestId}] Erro ao criar payment:`, createErr);
+                        return NextResponse.json({
+                            error: 'Pagamento não encontrado e não foi possível criar',
+                            details: createErr.message,
+                            debug: { reference_id, email }
+                        }, { status: 404 });
+                    }
+                    payment = created;
+                    console.log(`[CONFIRM-LICENSE ${requestId}] Payment criado:`, payment.id);
+                } else {
+                    return NextResponse.json({
+                        error: 'Pagamento não encontrado no banco de dados',
+                        debug: { reference_id, tip: 'O checkout pode ter falhado ao salvar no banco' }
+                    }, { status: 404 });
                 }
             }
-        } else {
-            // Busca por user_id ou email — só pagamentos aprovados
-            let q = supabase
-                .from('payments')
-                .select('*')
-                .in('status', ['approved', 'paid', 'PAID'])
-                .order('created_at', { ascending: false })
-                .limit(1);
-
-            if (user_id) q = q.eq('user_id', user_id);
-            else if (email) q = q.eq('email', email);
-
-            const { data } = await q;
-            payment = data?.[0] || null;
         }
 
         if (!payment) {
-            console.log(`[CONFIRM-LICENSE ${requestId}] Pagamento não encontrado`);
-            return NextResponse.json({ license: null, message: 'Pagamento não encontrado' });
+            return NextResponse.json({ error: 'Pagamento não encontrado', license: null });
         }
 
-        console.log(`[CONFIRM-LICENSE ${requestId}] Pagamento: ${payment.reference_id} | Status: ${payment.status}`);
+        console.log(`[CONFIRM-LICENSE ${requestId}] Payment encontrado: id=${payment.id} | status=${payment.status} | plan=${payment.plan_type} | email=${payment.email}`);
 
-        // 2. Verificar se licença já existe para esse pagamento
-        const { data: existingLicense } = await supabase
+        // 2. Verificar se licença já existe
+        const { data: existingLicense, error: licCheckErr } = await supabase
             .from('licenses')
             .select('*')
             .eq('payment_id', payment.id)
-            .single();
+            .maybeSingle();
+
+        console.log(`[CONFIRM-LICENSE ${requestId}] Licença existente:`, { existingLicense, licCheckErr });
 
         if (existingLicense) {
-            console.log(`[CONFIRM-LICENSE ${requestId}] Licença já existe: ${existingLicense.license_key}`);
+            console.log(`[CONFIRM-LICENSE ${requestId}] ✅ Licença já existe: ${existingLicense.license_key}`);
             return NextResponse.json({ license: existingLicense, already_existed: true });
         }
 
-        // 3. Licença não existe — gerar agora via RPC
-        console.log(`[CONFIRM-LICENSE ${requestId}] Gerando licença para ${payment.email} | Plano: ${payment.plan_type}`);
-
-        const { data: licenseData, error: licenseError } = await supabase
+        // 3. Tentar RPC primeiro
+        console.log(`[CONFIRM-LICENSE ${requestId}] Tentando RPC generate_complete_license_v3...`);
+        const { data: rpcData, error: rpcError } = await supabase
             .rpc('generate_complete_license_v3', {
                 p_payment_id: payment.id,
                 p_user_id: payment.user_id || null,
                 p_email: payment.email,
-                p_plan_type: payment.plan_type
+                p_plan_type: payment.plan_type || 'standard'
             });
 
-        if (licenseError || !licenseData) {
-            console.error(`[CONFIRM-LICENSE ${requestId}] Erro na RPC:`, licenseError);
+        console.log(`[CONFIRM-LICENSE ${requestId}] RPC resultado:`, { rpcData, rpcError });
 
-            // Fallback: gerar licença diretamente no Node.js com o mesmo algoritmo do C#
-            const generatedLicense = await generateLicenseDirectly(supabase, payment, requestId);
-            if (!generatedLicense) {
-                return NextResponse.json({ error: 'Falha ao gerar licença', details: licenseError?.message }, { status: 500 });
+        if (!rpcError && rpcData) {
+            // Buscar licença recém-criada pela RPC
+            const { data: newLic } = await supabase
+                .from('licenses')
+                .select('*')
+                .eq('payment_id', payment.id)
+                .maybeSingle();
+
+            if (newLic) {
+                console.log(`[CONFIRM-LICENSE ${requestId}] ✅ Licença gerada via RPC: ${newLic.license_key}`);
+                sendEmailSafe(payment, newLic);
+                return NextResponse.json({ license: newLic, generated_now: true, method: 'rpc' });
             }
-
-            await sendLicenseEmailSafe(payment, generatedLicense);
-            return NextResponse.json({ license: generatedLicense, generated_now: true });
         }
 
-        // 4. Buscar licença recém-gerada
-        const { data: newLicense } = await supabase
-            .from('licenses')
-            .select('*')
-            .eq('payment_id', payment.id)
-            .single();
+        // 4. Fallback Node.js — gera a licença diretamente
+        console.log(`[CONFIRM-LICENSE ${requestId}] RPC falhou (${rpcError?.message}). Usando fallback Node.js...`);
+        const license = await generateLicenseNode(supabase, payment, requestId);
 
-        if (newLicense) {
-            await sendLicenseEmailSafe(payment, newLicense);
+        if (!license) {
+            return NextResponse.json({
+                error: 'Falha ao gerar licença',
+                details: rpcError?.message,
+                debug: { payment_id: payment.id, plan: payment.plan_type }
+            }, { status: 500 });
         }
 
-        console.log(`[CONFIRM-LICENSE ${requestId}] ✅ Licença gerada com sucesso`);
-        return NextResponse.json({ license: newLicense, generated_now: true });
+        console.log(`[CONFIRM-LICENSE ${requestId}] ✅ Licença gerada via Node.js: ${license.license_key}`);
+        sendEmailSafe(payment, license);
+        return NextResponse.json({ license, generated_now: true, method: 'nodejs' });
 
     } catch (error: any) {
-        console.error(`[CONFIRM-LICENSE ${requestId}] Erro fatal:`, error.message);
+        console.error(`[CONFIRM-LICENSE ${requestId}] ERRO FATAL:`, error);
         return NextResponse.json({ error: 'Erro interno', details: error.message }, { status: 500 });
     }
 }
 
-/**
- * Fallback: gera a licença diretamente em Node.js usando o mesmo algoritmo do C#
- * Usado quando a RPC do Supabase falha (ex: função não existe no banco)
- */
-async function generateLicenseDirectly(supabase: any, payment: any, requestId: string) {
+// Extrai o tipo de plano do reference_id (ex: VOLTRIS-1774229678802-OGJ1GK)
+// Como não temos o plano no ref, usa 'standard' como padrão
+function extractPlanFromRef(_ref: string): string {
+    return 'standard';
+}
+
+async function generateLicenseNode(supabase: any, payment: any, requestId: string) {
     try {
         const crypto = await import('crypto');
         const SECRET_KEY = 'VOLTRIS_SECRET_LICENSE_KEY_2025';
-
         const planType = (payment.plan_type || 'standard').toLowerCase();
 
         const planConfig: Record<string, { code: string; maxDevices: number; daysValid: number }> = {
@@ -151,30 +183,20 @@ async function generateLicenseDirectly(supabase: any, payment: any, requestId: s
         };
 
         const config = planConfig[planType] || planConfig['standard'];
-
-        // Gerar client_id de 6 dígitos
         const clientId = String(Math.floor(Math.random() * 900000) + 100000);
 
-        // Calcular data de validade
         const validUntil = new Date();
         validUntil.setDate(validUntil.getDate() + config.daysValid);
-        const validUntilStr = validUntil.toISOString().split('T')[0]; // YYYY-MM-DD
-        const keyDateStr = validUntilStr.replace(/-/g, '');            // YYYYMMDD
+        const validUntilStr = validUntil.toISOString().split('T')[0];
+        const keyDateStr = validUntilStr.replace(/-/g, '');
 
-        // Montar JSON exatamente como o C#
         const jsonContent = `{"id":"${clientId}","validUntil":"${validUntilStr}","plan":"${planType}","maxDevices":${config.maxDevices}}`;
-
-        // SHA256(content + secret) -> hex uppercase -> primeiros 16 chars
-        const combined = jsonContent + SECRET_KEY;
-        const hash = crypto.createHash('sha256').update(combined, 'utf8').digest('hex').toUpperCase();
+        const hash = crypto.createHash('sha256').update(jsonContent + SECRET_KEY, 'utf8').digest('hex').toUpperCase();
         const signature = hash.substring(0, 16);
-
-        // Montar chave final: VOLTRIS-PRO-123456-20251231-HASH16
         const licenseKey = `VOLTRIS-${config.code}-${clientId}-${keyDateStr}-${signature}`;
 
-        console.log(`[CONFIRM-LICENSE ${requestId}] Licença gerada via Node.js: ${licenseKey}`);
+        console.log(`[CONFIRM-LICENSE ${requestId}] Inserindo licença no banco: ${licenseKey}`);
 
-        // Salvar no banco
         const { data: inserted, error: insertError } = await supabase
             .from('licenses')
             .insert({
@@ -185,6 +207,7 @@ async function generateLicenseDirectly(supabase: any, payment: any, requestId: s
                 license_key: licenseKey,
                 license_type: planType,
                 max_devices: config.maxDevices,
+                devices_in_use: 0,
                 is_active: true,
                 expires_at: validUntil.toISOString(),
             })
@@ -192,19 +215,20 @@ async function generateLicenseDirectly(supabase: any, payment: any, requestId: s
             .single();
 
         if (insertError) {
-            console.error(`[CONFIRM-LICENSE ${requestId}] Erro ao salvar licença:`, insertError);
+            console.error(`[CONFIRM-LICENSE ${requestId}] Erro ao inserir licença:`, insertError);
             return null;
         }
 
         return inserted;
     } catch (err: any) {
-        console.error(`[CONFIRM-LICENSE ${requestId}] Erro no fallback:`, err.message);
+        console.error(`[CONFIRM-LICENSE ${requestId}] Erro no fallback Node.js:`, err.message);
         return null;
     }
 }
 
-async function sendLicenseEmailSafe(payment: any, license: any) {
+async function sendEmailSafe(payment: any, license: any) {
     try {
+        const { sendLicenseEmail } = await import('@/services/emailService');
         await sendLicenseEmail({
             email: payment.email,
             licenseKey: license.license_key,
@@ -215,6 +239,6 @@ async function sendLicenseEmailSafe(payment: any, license: any) {
             fullName: payment.customer_name || undefined
         });
     } catch (e) {
-        console.warn('Falha ao enviar email de licença (não bloqueante):', e);
+        console.warn('Email não enviado (não bloqueante):', e);
     }
 }
