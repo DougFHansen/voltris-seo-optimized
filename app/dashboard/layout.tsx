@@ -76,8 +76,11 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
 
         {/* Mobile Swipe-out Sidebar */}
         <div className="lg:hidden">
-          <Sidebar mobileOpen={mobileMenuOpen} setMobileOpen={setMobileMenuOpen} />
+          <Suspense fallback={null}>
+            <Sidebar mobileOpen={mobileMenuOpen} setMobileOpen={setMobileMenuOpen} />
+          </Suspense>
         </div>
+
 
         {/* Content Viewport - The Central Stage */}
         <main className={`flex-1 flex flex-col min-h-0 overflow-hidden relative transition-all duration-700
