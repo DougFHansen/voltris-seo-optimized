@@ -54,29 +54,13 @@ function AdquirirLicencaContent() {
         setIsProcessing(planType);
 
         try {
-            const planData: any = {
-                standard: { id: 'std_annual', name: 'Licença Standard Anual', price: 1.00 },
-                pro: { id: 'pro_annual', name: 'Licença Pro Anual', price: 1.00 },
-                enterprise: { id: 'ent_annual', name: 'Licença Enterprise Anual', price: 1.00 }
-            };
-
-            const selectedPlan = planData[planType];
-
+            // 1. Registrar pagamento no banco e obter reference_id
             const response = await fetch('/api/pagamento/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    items: [{
-                        id: selectedPlan.id,
-                        name: selectedPlan.name,
-                        price: selectedPlan.price,
-                        quantity: 1
-                    }],
-                    customer: {
-                        name: user.user_metadata?.full_name || '',
-                        email: user.email,
-                        phone: user.user_metadata?.phone || '',
-                    },
+                    items: [{ id: `${planType}_annual`, name: `Licença ${planType.toUpperCase()} - Voltris`, price: 1.00, quantity: 1 }],
+                    customer: { name: user.user_metadata?.full_name || '', email: user.email },
                     license_type: planType,
                     user_id: user.id
                 })
@@ -86,6 +70,19 @@ function AdquirirLicencaContent() {
 
             if (data.checkout_url) {
                 window.location.href = data.checkout_url;
+            } else if (data.reference_id && data.fallback_url) {
+                // Fallback: redirecionar para URL do PagBank diretamente
+                window.location.href = data.fallback_url;
+            } else if (data.manual_payment) {
+                // Fallback manual: redirecionar para WhatsApp com dados do pedido
+                toast('Redirecionando para finalizar via WhatsApp...', {
+                    icon: '💬',
+                    duration: 3000,
+                    style: { background: '#121218', color: '#fff' },
+                });
+                setTimeout(() => {
+                    window.open(data.whatsapp_url, '_blank');
+                }, 1500);
             } else {
                 throw new Error(data.error || 'Erro ao criar checkout');
             }
