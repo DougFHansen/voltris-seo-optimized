@@ -1,29 +1,30 @@
 import { NextResponse } from 'next/server';
+import { createClient } from '@/utils/supabase/server';
 
 export const runtime = 'nodejs';
 
 /**
  * Cria test users (vendedor e comprador) no Mercado Pago
- * Necessário para testar pagamentos no sandbox
+ * Necessário para testar pagamentos no sandbox — APENAS ADMIN
  */
 export async function POST(request: Request) {
+  // SEGURANÇA: Apenas admins podem criar test users
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
+  if (!profile?.is_admin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
   const debugId = `create-users-${Date.now()}`;
-  
-  console.log(`[CREATE TEST USERS] ========== INÍCIO ${debugId} ==========`);
-  
+
   try {
     const accessToken = process.env.MP_ACCESS_TOKEN;
-    
+
     if (!accessToken) {
-      return NextResponse.json({
-        error: 'MP_ACCESS_TOKEN não configurado',
-      }, { status: 500 });
+      return NextResponse.json({ error: 'MP_ACCESS_TOKEN não configurado' }, { status: 500 });
     }
 
-    console.log(`[CREATE TEST USERS] Token configurado, criando users...`);
-
     // Criar test user VENDEDOR
-    console.log(`[CREATE TEST USERS] Criando VENDEDOR...`);
     const sellerResponse = await fetch('https://api.mercadopago.com/users/test_user', {
       method: 'POST',
       headers: {

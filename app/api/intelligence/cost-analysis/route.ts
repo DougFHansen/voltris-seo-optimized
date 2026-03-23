@@ -42,10 +42,15 @@ const REVENUE = {
  */
 export async function POST(req: NextRequest) {
     try {
+        // SEGURANÇA: Verificar se é admin
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
+        if (!profile?.is_admin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
         const body = await req.json();
         const { period_start, period_end, analysis_type } = body;
-
-        const supabase = await createClient();
 
         const period = {
             start: period_start || new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
@@ -56,6 +61,8 @@ export async function POST(req: NextRequest) {
             analysis_period: period,
             timestamp: new Date().toISOString(),
         };
+
+        const supabase = await createClient();
 
         switch (analysis_type) {
             case 'feature':
@@ -374,6 +381,13 @@ async function generateCostSummary(supabase: any, period: any) {
  */
 export async function GET(req: NextRequest) {
     try {
+        // SEGURANÇA: Verificar se é admin
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
+        if (!profile?.is_admin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
         const { searchParams } = new URL(req.url);
         const type = searchParams.get('type') || 'feature';
         const limit = parseInt(searchParams.get('limit') || '50');

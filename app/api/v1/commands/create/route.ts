@@ -3,19 +3,46 @@ import { createClient } from '@supabase/supabase-js';
 
 export const runtime = 'nodejs';
 
+// Rate limiting simples em memória
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 30; // requisições por minuto por IP
+
+function checkRateLimit(ip: string): boolean {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+    if (!entry || now >= entry.resetAt) {
+        rateLimitMap.set(ip, { count: 1, resetAt: now + 60000 });
+        return true;
+    }
+    if (entry.count >= RATE_LIMIT) return false;
+    entry.count++;
+    return true;
+}
+
 export async function POST(request: NextRequest) {
+    // Rate limiting
+    const ip = request.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
+    if (!checkRateLimit(ip)) {
+        return NextResponse.json({ error: 'Too Many Requests' }, { status: 429 });
+    }
+
     try {
         const body = await request.json();
         const { installation_id, command_type, payload } = body;
 
-        console.log('[API/COMMANDS/CREATE] ===== INÍCIO =====');
-        console.log('[API/COMMANDS/CREATE] installation_id:', installation_id);
-        console.log('[API/COMMANDS/CREATE] command_type:', command_type);
-        console.log('[API/COMMANDS/CREATE] payload:', payload);
-
         if (!installation_id || !command_type) {
-            console.error('[API/COMMANDS/CREATE] Parâmetros faltando!');
             return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+        }
+
+        // Validar tipos permitidos de comando para evitar injeção de comandos arbitrários
+        const ALLOWED_COMMANDS = ['optimize', 'scan', 'update_settings', 'heartbeat', 'report_status'];
+        if (!ALLOWED_COMMANDS.includes(command_type)) {
+            return NextResponse.json({ error: 'Invalid command_type' }, { status: 400 });
+        }
+
+        // Validar formato do installation_id (UUID)
+        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(installation_id)) {
+            return NextResponse.json({ error: 'Invalid installation_id format' }, { status: 400 });
         }
 
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -23,7 +50,6 @@ export async function POST(request: NextRequest) {
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
         // Verificar se a instalação existe
-        console.log('[API/COMMANDS/CREATE] Verificando se instalação existe...');
         const { data: installation, error: installError } = await supabase
             .from('installations')
             .select('id, user_id')
@@ -31,37 +57,30 @@ export async function POST(request: NextRequest) {
             .single();
 
         if (installError || !installation) {
-            console.error('[API/COMMANDS/CREATE] Instalação não encontrada:', installError);
             return NextResponse.json({ error: 'Installation not found' }, { status: 404 });
         }
 
-        console.log('[API/COMMANDS/CREATE] Instalação encontrada:', installation);
+        // Sanitizar payload — aceitar apenas objetos simples
+        const safePayload = payload && typeof payload === 'object' && !Array.isArray(payload)
+            ? payload
+            : {};
 
-        // Criar comando na tabela device_commands
-        console.log('[API/COMMANDS/CREATE] Criando comando...');
         const { data, error } = await supabase
             .from('device_commands')
             .insert({
                 installation_id: installation.id,
                 command_type,
-                payload: payload || {},
+                payload: safePayload,
                 status: 'pending'
             })
             .select()
             .single();
 
-        if (error) {
-            console.error('[API/COMMANDS/CREATE] Erro ao inserir comando:', error);
-            throw error;
-        }
+        if (error) throw error;
 
-        console.log('[API/COMMANDS/CREATE] Comando criado com sucesso:', data);
-        console.log('[API/COMMANDS/CREATE] ===== FIM =====');
-        
         return NextResponse.json({ success: true, command: data });
-
     } catch (error: any) {
-        console.error('[API/COMMANDS/CREATE] Erro geral:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        console.error('[API/COMMANDS/CREATE] Erro:', error);
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
     }
 }

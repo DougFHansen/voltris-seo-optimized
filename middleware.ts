@@ -1,68 +1,76 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+const SECURITY_HEADERS = {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'X-XSS-Protection': '1; mode=block',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+}
+
 export async function middleware(request: NextRequest) {
-  let response = NextResponse.next()
+    let response = NextResponse.next()
 
-  // Verificar se as variáveis de ambiente estão configuradas
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    // Aplicar headers de segurança em todas as respostas
+    Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
+        response.headers.set(key, value)
+    })
 
-  // Se as variáveis não estiverem configuradas, apenas retornar a resposta sem autenticação
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return response
-  }
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-  const supabase = createServerClient(
-    supabaseUrl,
-    supabaseAnonKey,
-    {
-      cookies: {
-        get: (name: string) => request.cookies.get(name)?.value,
-        set: (name: string, value: string, options: CookieOptions) => {
-          request.cookies.set({ name, value, ...options })
-        },
-        remove: (name: string, options: CookieOptions) => {
-          request.cookies.set({ name, value: '', ...options })
-        },
-      },
+    if (!supabaseUrl || !supabaseAnonKey) {
+        return response
     }
-  )
 
-  const { data, error } = await supabase.auth.getSession()
+    const supabase = createServerClient(
+        supabaseUrl,
+        supabaseAnonKey,
+        {
+            cookies: {
+                get: (name: string) => request.cookies.get(name)?.value,
+                set: (name: string, value: string, options: CookieOptions) => {
+                    request.cookies.set({ name, value, ...options })
+                    response = NextResponse.next({ request })
+                    response.cookies.set({ name, value, ...options })
+                    // Reaplicar headers após criar nova response
+                    Object.entries(SECURITY_HEADERS).forEach(([k, v]) => {
+                        response.headers.set(k, v)
+                    })
+                },
+                remove: (name: string, options: CookieOptions) => {
+                    request.cookies.set({ name, value: '', ...options })
+                    response = NextResponse.next({ request })
+                    response.cookies.set({ name, value: '', ...options })
+                    Object.entries(SECURITY_HEADERS).forEach(([k, v]) => {
+                        response.headers.set(k, v)
+                    })
+                },
+            },
+        }
+    )
 
-  // Example: Protect the dashboard and admin routes
-  const protectedRoutes = ['/dashboard', '/admin'] // Add other routes here as needed
+    // SEGURO: getUser() valida o token no servidor, getSession() não valida
+    const { data: { user } } = await supabase.auth.getUser()
 
-  const isProtectedRoute = protectedRoutes.some(route => request.nextUrl.pathname.startsWith(route));
+    const protectedRoutes = ['/dashboard', '/restricted-area-admin']
+    const isProtectedRoute = protectedRoutes.some(route =>
+        request.nextUrl.pathname.startsWith(route)
+    )
 
-  if (isProtectedRoute && !data.session) {
-    // Redirect to login page if not authenticated
-    const loginUrl = new URL('/login', request.url)
-    // Optional: Add a 'next' parameter to redirect back after login
-    // loginUrl.searchParams.set('next', request.nextUrl.pathname);
-    return NextResponse.redirect(loginUrl)
-  }
+    if (isProtectedRoute && !user) {
+        const loginUrl = new URL('/login', request.url)
+        loginUrl.searchParams.set('next', request.nextUrl.pathname)
+        return NextResponse.redirect(loginUrl)
+    }
 
-  // Allow authenticated users or unprotected routes to proceed
-  return response
+    return response
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public (public folder)
-     * - api (api routes are handled independently)
-     * - assets (custom static folders)
-     */
-    '/((?!_next/static|_next/image|favicon.ico|api|assets|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff2?|ttf)$).*)',
-    // Excluir explicitamente rotas que não precisam de middleware de auth
-    '/((?!login|register|forgot-password).*)',
-    '/dashboard/:path*',
-    '/admin/:path*',
-  ],
+    matcher: [
+        '/((?!_next/static|_next/image|favicon.ico|assets|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff2?|ttf)$).*)',
+    ],
 }

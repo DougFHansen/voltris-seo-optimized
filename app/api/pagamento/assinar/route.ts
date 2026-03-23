@@ -273,7 +273,7 @@ async function generateLicense(supabase: any, payment: any, planType: string, re
 
 async function generateLicenseNodeFallback(supabase: any, payment: any, planType: string) {
     const crypto = await import('crypto');
-    const SECRET = 'VOLTRIS_SECRET_LICENSE_KEY_2025';
+    const SECRET = process.env.LICENSE_SECRET_KEY || 'VOLTRIS_SECRET_LICENSE_KEY_2025';
     const planConfig: Record<string, { code: string; maxDevices: number; daysValid: number }> = {
         standard:   { code: 'STA', maxDevices: 1,    daysValid: 31 },
         pro:        { code: 'PRO', maxDevices: 3,    daysValid: 31 },

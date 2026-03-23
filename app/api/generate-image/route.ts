@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { createClient as createServerClient } from '@/utils/supabase/server';
 
 export async function POST(request: NextRequest) {
   try {
+    // SEGURANÇA: Exigir autenticação de admin para gerar imagens
+    const supabase = await createServerClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
+    if (!profile?.is_admin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
     const { description } = await request.json();
 
     console.log('Descrição recebida:', description);
@@ -14,8 +22,7 @@ export async function POST(request: NextRequest) {
     }
 
     const unsplashAccessKey = process.env.UNSPLASH_ACCESS_KEY;
-    console.log('UNSPLASH_ACCESS_KEY:', unsplashAccessKey);
-    
+
     if (!unsplashAccessKey) {
       return NextResponse.json(
         { error: 'API key do Unsplash não configurada' },
