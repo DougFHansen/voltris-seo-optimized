@@ -62,7 +62,7 @@ export default function DashboardClient() {
 function DashboardContent() {
   const { user, profile, loading } = useAuth();
   const searchParams = useSearchParams();
-  const activeTab = searchParams.get('tab') || 'overview';
+  const activeTab = searchParams.get('tab') || (searchParams.get('checkout_success') === 'true' ? 'licenses' : 'overview');
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [licenses, setLicenses] = useState<any[]>([]);
@@ -127,20 +127,52 @@ function DashboardContent() {
   // DETECTAR SUCESSO NO CHECKOUT (PAGBANK)
   useEffect(() => {
     const success = searchParams.get('checkout_success');
-    if (success === 'true') {
-      toast.success('Pagamento aprovado! Sua licença já está disponível na aba Licenças.', {
-        duration: 8000,
-        position: 'top-center',
-        icon: '🚀',
-        style: {
-          background: '#121218',
-          color: '#fff',
-          border: '1px solid rgba(49, 168, 255, 0.2)',
-        },
-      });
-      fetchData(false);
+    const refId = searchParams.get('ref');
+
+    if (success === 'true' && user) {
+      // Chamar API de fallback para garantir que a licença foi gerada
+      // (cobre casos onde o webhook do PagBank teve latência ou falhou)
+      const confirmLicense = async () => {
+        try {
+          const body: any = { email: user.email };
+          if (refId) body.reference_id = refId;
+          if (user.id) body.user_id = user.id;
+
+          const res = await fetch('/api/pagamento/confirmar-licenca', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+          });
+
+          const data = await res.json();
+
+          if (data.license) {
+            toast.success('Pagamento aprovado! Sua licença está disponível abaixo.', {
+              duration: 8000,
+              position: 'top-center',
+              icon: '🚀',
+              style: { background: '#121218', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' },
+            });
+          } else {
+            // Licença ainda não processada — tentar novamente em 5s
+            setTimeout(() => fetchData(false), 5000);
+            toast('Processando seu pagamento...', {
+              duration: 5000,
+              icon: '⏳',
+              style: { background: '#121218', color: '#fff' },
+            });
+          }
+        } catch (e) {
+          console.error('Erro ao confirmar licença:', e);
+        } finally {
+          // Sempre atualizar os dados após tentativa
+          fetchData(false);
+        }
+      };
+
+      confirmLicense();
     }
-  }, [searchParams, fetchData]);
+  }, [searchParams, user, fetchData]);
 
   const filteredOrders = orders.filter(order => filter === 'all' || order.status === filter);
 

@@ -98,11 +98,9 @@ export async function POST(req: NextRequest) {
 
             if (licenseError) {
                 console.error(`[PAGBANK WEBHOOK ${requestId}] ❌ Erro ao gerar licença RPC:`, licenseError);
-                // Salvar falha no log para intervenção manual
                 await supabase.from('audit_logs').insert({
-                    event: 'license_generation_failed',
-                    details: { payment_id: payment.id, error: licenseError },
-                    severity: 'critical'
+                    event_type: 'license_generation_failed',
+                    metadata: { payment_id: payment.id, error: licenseError }
                 });
             } else {
                 console.log(`[PAGBANK WEBHOOK ${requestId}] ✅ Licença gerada com sucesso.`);
