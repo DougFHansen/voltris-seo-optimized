@@ -6,6 +6,10 @@ const BASE_URL = PAGBANK_ENV === 'production'
     ? 'https://api.pagseguro.com'
     : 'https://sandbox.api.pagseguro.com';
 
+const SUBSCRIPTIONS_URL = PAGBANK_ENV === 'production'
+    ? 'https://api.assinaturas.pagseguro.com'
+    : 'https://sandbox.api.assinaturas.pagseguro.com';
+
 const TOKEN = process.env.PAGBANK_TOKEN;
 
 if (!TOKEN) {
@@ -17,13 +21,20 @@ export const pagBankClient = axios.create({
     headers: {
         'Authorization': `Bearer ${TOKEN}`,
         'Content-Type': 'application/json',
+        'User-Agent': 'Voltris/1.0 (Integration; next.js; app-router)'
     },
     timeout: 30000, // 30 segundos
 });
 
 export async function createPlan(data: any): Promise<any> {
     try {
-        const response = await pagBankClient.post('/plans', data);
+        const response = await axios.post(`${SUBSCRIPTIONS_URL}/plans`, data, {
+            headers: {
+                'Authorization': `Bearer ${TOKEN}`,
+                'Content-Type': 'application/json',
+                'User-Agent': 'Voltris/1.0'
+            }
+        });
         return response.data;
     } catch (error: any) {
         console.error('PagBank Plan Error:', JSON.stringify(error.response?.data || error.message, null, 2));
