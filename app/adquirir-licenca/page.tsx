@@ -48,9 +48,9 @@ function AdquirirLicencaContent() {
         setIsProcessing(planType);
         try {
             const planData: any = {
-                standard: { id: 'std_1yr', name: 'Licença Standard', price: 99.00 },
-                pro: { id: 'pro_1yr', name: 'Licença Pro', price: 199.00 },
-                enterprise: { id: 'ent_lt', name: 'Licença Enterprise', price: 499.00 }
+                standard: { id: 'std_1yr', name: 'Licença Standard', price: 1.00 },
+                pro: { id: 'pro_1yr', name: 'Licença Pro', price: 1.00 },
+                enterprise: { id: 'ent_lt', name: 'Licença Enterprise', price: 1.00 }
             };
 
             const selectedPlan = planData[planType];

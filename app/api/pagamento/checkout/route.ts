@@ -100,8 +100,12 @@ export async function POST(req: NextRequest) {
                 reference_id: item.id || 'item-1',
                 name: item.name,
                 quantity: item.quantity || 1,
-                unit_amount: Math.round(Number(item.price) * 100) // Garante centavos e evita decimais
+                unit_amount: Math.round(Number(item.price) * 100)
             })),
+            payment_methods: [
+                { type: 'CREDIT_CARD' },
+                { type: 'DEBIT_CARD' }
+            ],
             notification_urls: [
                 `${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`
             ],
