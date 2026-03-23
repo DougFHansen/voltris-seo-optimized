@@ -141,8 +141,21 @@ export default function HomeClient() {
     useEffect(() => {
         if (typeof window !== 'undefined') {
             const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
             const error = params.get('error');
             const errorDescription = params.get('error_description');
+
+            // Fallback: Supabase às vezes redireciona o ?code= para a home
+            // quando a Redirect URL não está na whitelist ou há race condition.
+            // Capturamos aqui e mandamos para o callback correto.
+            if (code) {
+                const savedRedirect = sessionStorage.getItem('oauth_redirect_after_login');
+                sessionStorage.removeItem('oauth_redirect_after_login');
+                const nextParam = savedRedirect ? `&next=${encodeURIComponent(savedRedirect)}` : '';
+                window.location.replace(`/auth/callback?code=${encodeURIComponent(code)}${nextParam}`);
+                return;
+            }
+
             if (error) {
                 alert(`Erro de autenticação: ${error}\n${errorDescription || ''}`);
             }

@@ -19,6 +19,14 @@ export default function GoogleLoginButton({ onSuccess, onError, disabled, redire
     const handleGoogleLogin = async () => {
         try {
             setLoading(true);
+
+            // Salvar destino no sessionStorage antes de sair para o OAuth
+            // Isso garante que mesmo se o Supabase redirecionar para a home,
+            // o fallback consegue recuperar o destino correto
+            if (redirect) {
+                sessionStorage.setItem('oauth_redirect_after_login', redirect);
+            }
+
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
