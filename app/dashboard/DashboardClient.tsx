@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import {
   FiPackage, FiClock, FiCheckCircle, FiRefreshCw, FiPlus,
-  FiActivity
+  FiActivity, FiAlertTriangle, FiSearch
 } from 'react-icons/fi';
 import type { Order } from '@/types/order';
 import { createClient } from '@/utils/supabase/client';
@@ -68,6 +68,7 @@ function DashboardContent() {
   const [licenses, setLicenses] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isRecovering, setIsRecovering] = useState(false);
   const [filter, setFilter] = useState('all');
   const supabase = createClient();
 
@@ -182,6 +183,26 @@ function DashboardContent() {
     confirmLicense();
   }, [searchParams, user, loading, licenseConfirmed, fetchData]);
 
+  const handleRecoverLicense = async () => {
+    setIsRecovering(true);
+    try {
+      const res = await fetch('/api/pagamento/recuperar-licenca', { method: 'POST' });
+      const data = await res.json();
+      if (!res.ok) { toast.error('Erro ao verificar pagamentos.'); return; }
+      if (!data.found) { toast('Nenhum pagamento encontrado.', { icon: 'ℹ️' }); return; }
+      if (data.generated > 0) {
+        toast.success(`${data.generated} licença(s) recuperada(s)!`, { duration: 8000, icon: '🎉' });
+        await fetchData(false);
+      } else if (data.already_existed > 0) {
+        toast('Licenças já ativas no sistema.', { icon: '✅' });
+        await fetchData(false);
+      } else {
+        toast('Nenhuma licença pendente.', { icon: 'ℹ️' });
+      }
+    } catch { toast.error('Erro de conexão.'); }
+    finally { setIsRecovering(false); }
+  };
+
   const filteredOrders = orders.filter(order => filter === 'all' || order.status === filter);
 
   const stats = {
@@ -267,6 +288,24 @@ function DashboardContent() {
         {/* LICENSES TAB */}
         {activeTab === 'licenses' && (
           <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} className="space-y-4">
+            {/* Recovery Banner */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-amber-500/10 border border-amber-500/30 rounded-2xl px-5 py-4">
+              <div className="flex items-center gap-3">
+                <FiAlertTriangle className="w-5 h-5 text-amber-400 flex-shrink-0" />
+                <p className="text-sm text-amber-200 font-medium">Pagou mas a licença não apareceu?</p>
+              </div>
+              <button
+                onClick={handleRecoverLicense}
+                disabled={isRecovering}
+                className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-black font-bold text-sm rounded-xl transition-all whitespace-nowrap"
+              >
+                {isRecovering
+                  ? <><FiRefreshCw className="w-4 h-4 animate-spin" /> Verificando...</>
+                  : <><FiSearch className="w-4 h-4" /> Verificar Pagamentos</>
+                }
+              </button>
+            </div>
+
             {licenses.length > 0 ? (
               licenses.map((lic, i) => (
                 <div key={lic.id} className="bg-[#0A0A0E]/80 backdrop-blur-xl border border-white/10 p-8 rounded-[2rem] relative overflow-hidden group hover:border-[#31A8FF]/30 transition-all duration-500 shadow-2xl">
