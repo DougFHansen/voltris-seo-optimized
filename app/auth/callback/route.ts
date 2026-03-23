@@ -6,6 +6,8 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get('code');
   const error = searchParams.get('error');
   const errorDescription = searchParams.get('error_description');
+  // 'next' pode vir como query param (OAuth Google passa via redirectTo) ou como parâmetro direto
+  const next = searchParams.get('next') || '/';
 
   console.log('🔍 [OAuth Callback] Iniciando callback');
   console.log('🔍 [OAuth Callback] Código:', code ? 'SIM' : 'NÃO');
@@ -87,8 +89,7 @@ export async function GET(request: NextRequest) {
               console.log('✅ [OAuth Callback] Perfil criado manualmente com sucesso');
             }
             
-            const next = searchParams.get('next') || '/dashboard';
-            return NextResponse.redirect(`${origin}/perfil?completar=1&google=1${next ? `&redirect=${encodeURIComponent(next)}` : ''}`);
+            return NextResponse.redirect(`${origin}/perfil?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
           }
           
           return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao buscar perfil do usuário')}`);
@@ -96,17 +97,17 @@ export async function GET(request: NextRequest) {
 
         console.log('✅ [OAuth Callback] Perfil encontrado:', profile);
 
-        const next = searchParams.get('next') || '/dashboard';
-
         // Se campos obrigatórios estão faltando, redirecionar para completar cadastro
         const missingFields = !profile?.phone || !profile?.city || !profile?.state || !profile?.cep;
         
         if (missingFields) {
           console.log('🔍 [OAuth Callback] Perfil incompleto, redirecionando para completar cadastro');
-          return NextResponse.redirect(`${origin}/perfil?completar=1&google=1${next ? `&redirect=${encodeURIComponent(next)}` : ''}`);
+          return NextResponse.redirect(`${origin}/perfil?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
         } else {
           console.log('✅ [OAuth Callback] Perfil completo, redirecionando para:', next);
-          return NextResponse.redirect(`${origin}${next}`);
+          // Se next é '/', redirecionar para dashboard como fallback
+          const finalDestination = next === '/' ? '/dashboard' : next;
+          return NextResponse.redirect(`${origin}${finalDestination}`);
         }
       }
     } catch (error) {

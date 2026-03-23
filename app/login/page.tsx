@@ -48,8 +48,8 @@ function LoginContent() {
   const [showWhatsAppBtn, setShowWhatsAppBtn] = useState(false);
   const [redirectText, setRedirectText] = useState('Redirecionando...');
   
-  const redirectUrl = searchParams.get('redirect') || (searchParams.get('checkout_success') === 'true' ? '/dashboard?checkout_success=true' : '');
-  const pendingOrder = searchParams.get('pendingOrder') === 'true' || searchParams.get('checkout_success') === 'true';
+  const redirectUrl = searchParams.get('redirect') || '';
+  const pendingOrder = searchParams.get('pendingOrder') === 'true';
   const installationId = searchParams.get('installation_id');
 
   const { user, profile, loading: authLoading } = useAuth();
@@ -60,14 +60,6 @@ function LoginContent() {
     if (searchParams.get('cadastro') === '1' || searchParams.get('signup') === 'true') {
       setIsLoginView(false);
       setIsRecoveryView(false);
-    }
-
-    if (searchParams.get('checkout_success') === 'true') {
-      setIsLoginView(false); // Sugerir cadastro para novos compradores
-    }
-
-    if (searchParams.get('pendingOrder') === 'true' || searchParams.get('checkout_success') === 'true') {
-      setShowWhatsAppBtn(true);
     }
 
     const urlError = searchParams.get('error');
@@ -91,13 +83,15 @@ function LoginContent() {
   };
 
   const getFinalRedirect = useCallback(() => {
-    // Caso de pedido pendente tem prioridade
-    if (pendingOrder) return '/dashboard?pendingOrder=true';
-
-    // Se houver redirectUrl válido, sanitizá-lo
+    // Se houver redirectUrl válido (ex: /adquirir-licenca?plan=pro), tem prioridade máxima
     if (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login')) {
-      return (redirectUrl.includes('restricted') && !isAdmin) ? '/dashboard' : redirectUrl;
+      // Bloquear rotas restritas para não-admins
+      if (redirectUrl.includes('restricted') && !isAdmin) return '/dashboard';
+      return redirectUrl;
     }
+
+    // Pedido pendente sem redirect específico
+    if (pendingOrder) return '/dashboard?pendingOrder=true';
 
     // Default baseado em privilégios
     return isAdmin ? '/restricted-area-admin' : '/dashboard';
