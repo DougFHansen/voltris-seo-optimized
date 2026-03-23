@@ -36,6 +36,7 @@ export default function Footer() {
       { name: 'Privacidade', path: '/politica-privacidade' },
       { name: 'Termos de Uso', path: '/termos-uso' },
       { name: 'LGPD', path: '/lgpd' },
+      { name: 'Reembolso e Cancelamento', path: '/reembolso-cancelamento' },
     ]
   };
 
