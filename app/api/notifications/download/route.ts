@@ -15,12 +15,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing fileName' }, { status: 400 });
     }
 
-    // Enviar notificação para o Telegram via service (sem aguardar para não travar o cliente)
-    TelegramService.notifyDownload(fileName, pageUrl || 'Desconhecida')
-      .then(() => console.log(`[API] Telegram notification sent for: ${fileName}`))
-      .catch(err => console.error('[API] Telegram notification failed:', err));
+    // Enviar notificação para o Telegram via service (usar await para Vercel não desligar)
+    try {
+      await TelegramService.notifyDownload(fileName, pageUrl || 'Desconhecida');
+      console.log(`[API] Telegram notification sent for: ${fileName}`);
+    } catch (err) {
+      console.error('[API] Telegram notification failed:', err);
+    }
 
-    return NextResponse.json({ success: true, message: 'Notification queued' });
+    return NextResponse.json({ success: true, message: 'Notification sent' });
   } catch (error) {
     console.error('[API] Download notification error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
