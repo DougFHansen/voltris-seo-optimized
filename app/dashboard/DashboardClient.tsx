@@ -125,54 +125,62 @@ function DashboardContent() {
   }, [user, fetchData]);
 
   // DETECTAR SUCESSO NO CHECKOUT (PAGBANK)
+  // Usar ref separado para evitar chamar mais de uma vez
+  const [licenseConfirmed, setLicenseConfirmed] = useState(false);
+
   useEffect(() => {
     const success = searchParams.get('checkout_success');
     const refId = searchParams.get('ref');
 
-    if (success === 'true' && user) {
-      // Chamar API de fallback para garantir que a licença foi gerada
-      // (cobre casos onde o webhook do PagBank teve latência ou falhou)
-      const confirmLicense = async () => {
-        try {
-          const body: any = { email: user.email };
-          if (refId) body.reference_id = refId;
-          if (user.id) body.user_id = user.id;
+    // Aguardar user estar carregado E não ter confirmado ainda
+    if (success !== 'true' || loading || licenseConfirmed) return;
+    // ref é obrigatório para o fallback funcionar no sandbox
+    if (!refId) return;
 
-          const res = await fetch('/api/pagamento/confirmar-licenca', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
+    setLicenseConfirmed(true); // Marcar para não chamar duas vezes
+
+    const confirmLicense = async () => {
+      try {
+        const body: any = { reference_id: refId };
+        if (user?.email) body.email = user.email;
+        if (user?.id) body.user_id = user.id;
+
+        console.log('[Dashboard] Confirmando licença para ref:', refId);
+
+        const res = await fetch('/api/pagamento/confirmar-licenca', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+
+        const data = await res.json();
+        console.log('[Dashboard] Resposta confirmar-licenca:', data);
+
+        if (data.license) {
+          toast.success('Pagamento aprovado! Sua licença está disponível abaixo.', {
+            duration: 8000,
+            position: 'top-center',
+            icon: '🚀',
+            style: { background: '#121218', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' },
           });
-
-          const data = await res.json();
-
-          if (data.license) {
-            toast.success('Pagamento aprovado! Sua licença está disponível abaixo.', {
-              duration: 8000,
-              position: 'top-center',
-              icon: '🚀',
-              style: { background: '#121218', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' },
-            });
-          } else {
-            // Licença ainda não processada — tentar novamente em 5s
-            setTimeout(() => fetchData(false), 5000);
-            toast('Processando seu pagamento...', {
-              duration: 5000,
-              icon: '⏳',
-              style: { background: '#121218', color: '#fff' },
-            });
-          }
-        } catch (e) {
-          console.error('Erro ao confirmar licença:', e);
-        } finally {
-          // Sempre atualizar os dados após tentativa
-          fetchData(false);
+          await fetchData(false);
+        } else if (data.error) {
+          console.error('[Dashboard] Erro ao confirmar licença:', data.error, data.details);
+          toast.error('Erro ao processar licença. Contate o suporte.', { duration: 6000 });
+        } else {
+          // Sem licença e sem erro — tentar novamente em 4s
+          setTimeout(async () => {
+            await fetchData(false);
+          }, 4000);
+          toast('Processando pagamento...', { duration: 4000, icon: '⏳', style: { background: '#121218', color: '#fff' } });
         }
-      };
+      } catch (e) {
+        console.error('[Dashboard] Erro ao confirmar licença:', e);
+      }
+    };
 
-      confirmLicense();
-    }
-  }, [searchParams, user, fetchData]);
+    confirmLicense();
+  }, [searchParams, user, loading, licenseConfirmed, fetchData]);
 
   const filteredOrders = orders.filter(order => filter === 'all' || order.status === filter);
 

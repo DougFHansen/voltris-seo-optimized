@@ -86,44 +86,89 @@ export async function POST(req: NextRequest) {
         if (status === 'PAID') {
             console.log(`[PAGBANK WEBHOOK ${requestId}] 🔑 Iniciando geração de licença para ${payment.email}`);
 
-            // Chamar RPC ou Função SQL para gerar licença
-            // Usaremos a função calculate_expiry_date definida no SQL
-            const { data: licenseData, error: licenseError } = await supabase
-                .rpc('generate_complete_license_v3', {
-                    p_payment_id: payment.id,
-                    p_user_id: payment.user_id,
-                    p_email: payment.email,
-                    p_plan_type: payment.plan_type
-                });
+            // Verificar se é renovação de assinatura
+            const isSubscriptionRenewal = !!event.data.subscription;
 
-            if (licenseError) {
-                console.error(`[PAGBANK WEBHOOK ${requestId}] ❌ Erro ao gerar licença RPC:`, licenseError);
-                await supabase.from('audit_logs').insert({
-                    event_type: 'license_generation_failed',
-                    metadata: { payment_id: payment.id, error: licenseError }
-                });
-            } else {
-                console.log(`[PAGBANK WEBHOOK ${requestId}] ✅ Licença gerada com sucesso.`);
-
-                // 5. ENVIAR EMAIL DE ENTREGA
-                // Buscamos a licença recém gerada para ter todos os campos
-                const { data: license } = await supabase
-                    .from('licenses')
-                    .select('*')
-                    .eq('payment_id', payment.id)
-                    .single();
-
-                if (license) {
-                    await sendLicenseEmail({
-                        email: payment.email,
-                        licenseKey: license.license_key,
-                        licenseType: license.license_type,
-                        maxDevices: license.max_devices,
-                        expiresAt: license.expires_at,
-                        amountPaid: Number(payment.amount),
-                        fullName: payment.customer_name || undefined
+            if (isSubscriptionRenewal && event.data.subscription) {
+                // Renovar licença existente
+                const { data: renewData, error: renewError } = await supabase
+                    .rpc('renew_subscription_license', {
+                        p_subscription_pagbank_id: event.data.subscription.id,
+                        p_payment_id: payment.id,
                     });
+
+                if (renewError) {
+                    console.error(`[PAGBANK WEBHOOK ${requestId}] ❌ Erro ao renovar licença:`, renewError);
+                } else {
+                    console.log(`[PAGBANK WEBHOOK ${requestId}] ✅ Licença renovada:`, renewData);
+                    // Atualizar próxima cobrança na tabela subscriptions
+                    const nextBilling = new Date();
+                    nextBilling.setMonth(nextBilling.getMonth() + 1);
+                    await supabase
+                        .from('subscriptions')
+                        .update({ next_billing_at: nextBilling.toISOString(), updated_at: new Date().toISOString() })
+                        .eq('pagbank_subscription_id', event.data.subscription.id);
                 }
+            } else {
+                // Pagamento avulso — gerar nova licença
+                const { data: licenseData, error: licenseError } = await supabase
+                    .rpc('generate_complete_license_v3', {
+                        p_payment_id: payment.id,
+                        p_user_id: payment.user_id,
+                        p_email: payment.email,
+                        p_plan_type: payment.plan_type
+                    });
+
+                if (licenseError) {
+                    console.error(`[PAGBANK WEBHOOK ${requestId}] ❌ Erro ao gerar licença RPC:`, licenseError);
+                    await supabase.from('audit_logs').insert({
+                        event_type: 'license_generation_failed',
+                        metadata: { payment_id: payment.id, error: licenseError }
+                    });
+                } else {
+                    console.log(`[PAGBANK WEBHOOK ${requestId}] ✅ Licença gerada com sucesso.`);
+
+                    const { data: license } = await supabase
+                        .from('licenses')
+                        .select('*')
+                        .eq('payment_id', payment.id)
+                        .single();
+
+                    if (license) {
+                        await sendLicenseEmail({
+                            email: payment.email,
+                            licenseKey: license.license_key,
+                            licenseType: license.license_type,
+                            maxDevices: license.max_devices,
+                            expiresAt: license.expires_at,
+                            amountPaid: Number(payment.amount),
+                            fullName: payment.customer_name || undefined
+                        });
+                    }
+                }
+            }
+        }
+
+        // Tratar cancelamento de assinatura
+        if (status === 'CANCELED' && event.data.subscription) {
+            await supabase
+                .from('subscriptions')
+                .update({ status: 'CANCELED', canceled_at: new Date().toISOString(), updated_at: new Date().toISOString() })
+                .eq('pagbank_subscription_id', event.data.subscription.id);
+
+            // Desativar licença
+            const { data: sub } = await supabase
+                .from('subscriptions')
+                .select('email, plan_type')
+                .eq('pagbank_subscription_id', event.data.subscription.id)
+                .single();
+
+            if (sub) {
+                await supabase
+                    .from('licenses')
+                    .update({ is_active: false })
+                    .eq('email', sub.email)
+                    .eq('license_type', sub.plan_type);
             }
         }
 

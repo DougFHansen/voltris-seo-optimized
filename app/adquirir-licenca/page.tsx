@@ -14,12 +14,14 @@ function AdquirirLicencaContent() {
     const searchParams = useSearchParams();
     const { user, loading: authLoading } = useAuth();
     const [isProcessing, setIsProcessing] = useState<string | null>(null);
+    const [showCpfModal, setShowCpfModal] = useState<string | null>(null); // planType sendo comprado
+    const [cpf, setCpf] = useState('');
+    const [cpfError, setCpfError] = useState('');
 
     const installationId = searchParams.get('installation_id');
     const planFromUrl = searchParams.get('plan');
     const [hasAttemptedAutoPurchase, setHasAttemptedAutoPurchase] = useState(false);
 
-    // Efeito para disparar compra automática após login se vier via redirect
     useEffect(() => {
         if (!authLoading && user && planFromUrl && !hasAttemptedAutoPurchase && !isProcessing) {
             setHasAttemptedAutoPurchase(true);
@@ -27,12 +29,16 @@ function AdquirirLicencaContent() {
         }
     }, [authLoading, user, planFromUrl, hasAttemptedAutoPurchase, isProcessing]);
 
-    // Smooth scroll para a seção de compra
     const scrollToPurchase = () => {
         const purchaseSection = document.getElementById('purchase-section');
         if (purchaseSection) {
             purchaseSection.scrollIntoView({ behavior: 'smooth' });
         }
+    };
+
+    const formatCpf = (v: string) => {
+        const n = v.replace(/\D/g, '').substring(0, 11);
+        return n.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
     };
 
     const handlePurchase = async (planType: string) => {
@@ -45,12 +51,32 @@ function AdquirirLicencaContent() {
             return;
         }
 
+        // Abrir modal para coletar CPF (obrigatório para assinatura recorrente)
+        setShowCpfModal(planType);
+    };
+
+    const handleConfirmSubscription = async () => {
+        if (!showCpfModal || !user) return;
+
+        const cleanCpf = cpf.replace(/\D/g, '');
+        if (cleanCpf.length !== 11) {
+            setCpfError('CPF inválido. Digite os 11 dígitos.');
+            return;
+        }
+        setCpfError('');
+
+        const planType = showCpfModal;
+        setShowCpfModal(null);
         setIsProcessing(planType);
+
         try {
+            // Para assinatura recorrente, usar a API /assinar
+            // O cartão é tokenizado pelo PagBank.js no frontend — aqui usamos checkout
+            // como fallback enquanto o PagBank.js não está integrado
             const planData: any = {
-                standard: { id: 'std_1yr', name: 'Licença Standard', price: 1.00 },
-                pro: { id: 'pro_1yr', name: 'Licença Pro', price: 1.00 },
-                enterprise: { id: 'ent_lt', name: 'Licença Enterprise', price: 1.00 }
+                standard:   { id: 'std_monthly', name: 'Licença Standard Mensal', price: 1.00 },
+                pro:        { id: 'pro_monthly', name: 'Licença Pro Gamer Mensal', price: 1.00 },
+                enterprise: { id: 'ent_lt',      name: 'Licença Enterprise Vitalícia', price: 1.00 }
             };
 
             const selectedPlan = planData[planType];
@@ -68,7 +94,8 @@ function AdquirirLicencaContent() {
                     customer: {
                         name: user.user_metadata?.full_name || 'Usuário Voltris',
                         email: user.email,
-                        phone: user.user_metadata?.phone || ''
+                        phone: user.user_metadata?.phone || '',
+                        tax_id: cleanCpf,
                     },
                     license_type: planType,
                     user_id: user.id
@@ -92,6 +119,45 @@ function AdquirirLicencaContent() {
 
     return (
         <main className="min-h-screen bg-[#050510] text-slate-200 font-sans selection:bg-[#31A8FF]/30 relative pb-20">
+
+                {/* Modal CPF */}
+                {showCpfModal && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            className="bg-[#0A0A0F] border border-white/10 rounded-3xl p-8 w-full max-w-sm shadow-2xl"
+                        >
+                            <div className="h-1 w-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] rounded-full mb-6" />
+                            <h3 className="text-xl font-black text-white mb-1">Confirmar CPF</h3>
+                            <p className="text-slate-400 text-sm mb-6">Necessário para emissão da nota fiscal e cobrança recorrente.</p>
+                            <input
+                                type="text"
+                                placeholder="000.000.000-00"
+                                value={cpf}
+                                onChange={e => setCpf(formatCpf(e.target.value))}
+                                maxLength={14}
+                                className="w-full bg-[#121218] border border-white/10 rounded-xl px-4 py-3 text-white text-sm outline-none focus:border-[#31A8FF] transition-colors mb-2"
+                            />
+                            {cpfError && <p className="text-red-400 text-xs mb-4">{cpfError}</p>}
+                            <div className="flex gap-3 mt-4">
+                                <button
+                                    onClick={() => { setShowCpfModal(null); setCpf(''); setCpfError(''); }}
+                                    className="flex-1 py-3 rounded-xl border border-white/10 text-slate-400 hover:text-white text-sm transition-colors"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    onClick={handleConfirmSubscription}
+                                    disabled={isProcessing !== null}
+                                    className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-bold text-sm hover:brightness-110 transition-all disabled:opacity-50"
+                                >
+                                    Continuar
+                                </button>
+                            </div>
+                        </motion.div>
+                    </div>
+                )}
 
                 {/* Global Ambient Background Effects */}
                 <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
@@ -165,7 +231,7 @@ function AdquirirLicencaContent() {
                                     
                                     <div className="mb-8">
                                         <span className="text-4xl font-black text-white">R$ 99</span>
-                                        <span className="text-slate-500 text-lg font-medium">/ano</span>
+                                        <span className="text-slate-500 text-lg font-medium">/mês</span>
                                     </div>
                                     
                                     <ul className="space-y-4 mb-10">
@@ -217,7 +283,7 @@ function AdquirirLicencaContent() {
                                     
                                     <div className="mb-8">
                                         <span className="text-5xl font-black text-white">R$ 199</span>
-                                        <span className="text-[#8B31FF] text-xl font-black">/ano</span>
+                                        <span className="text-[#8B31FF] text-xl font-black">/mês</span>
                                     </div>
                                     
                                     <ul className="space-y-4 mb-10">

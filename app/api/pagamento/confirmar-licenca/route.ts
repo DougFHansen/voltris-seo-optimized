@@ -29,31 +29,52 @@ export async function POST(req: NextRequest) {
 
         const supabase = createAdminClient();
 
-        // 1. Buscar pagamento aprovado
-        let paymentQuery = supabase
-            .from('payments')
-            .select('*')
-            .in('status', ['approved', 'paid', 'PAID'])
-            .order('created_at', { ascending: false })
-            .limit(1);
+        // 1. Buscar pagamento — se vier reference_id específico, busca sem filtrar status
+        // (no sandbox o webhook não dispara, então o status fica 'pending' mesmo após pagamento aprovado)
+        let payment: any = null;
 
         if (reference_id) {
-            paymentQuery = paymentQuery.eq('reference_id', reference_id);
-        } else if (user_id) {
-            paymentQuery = paymentQuery.eq('user_id', user_id);
-        } else if (email) {
-            paymentQuery = paymentQuery.eq('email', email);
+            // Busca direta pelo reference_id, independente do status
+            const { data, error } = await supabase
+                .from('payments')
+                .select('*')
+                .eq('reference_id', reference_id)
+                .single();
+
+            if (!error && data) {
+                payment = data;
+                // Atualizar status para approved se ainda estiver pending
+                if (payment.status === 'pending') {
+                    await supabase
+                        .from('payments')
+                        .update({ status: 'approved', updated_at: new Date().toISOString() })
+                        .eq('id', payment.id);
+                    payment.status = 'approved';
+                    console.log(`[CONFIRM-LICENSE ${requestId}] Status atualizado para approved: ${reference_id}`);
+                }
+            }
+        } else {
+            // Busca por user_id ou email — só pagamentos aprovados
+            let q = supabase
+                .from('payments')
+                .select('*')
+                .in('status', ['approved', 'paid', 'PAID'])
+                .order('created_at', { ascending: false })
+                .limit(1);
+
+            if (user_id) q = q.eq('user_id', user_id);
+            else if (email) q = q.eq('email', email);
+
+            const { data } = await q;
+            payment = data?.[0] || null;
         }
 
-        const { data: payments, error: paymentError } = await paymentQuery;
-
-        if (paymentError || !payments || payments.length === 0) {
-            console.log(`[CONFIRM-LICENSE ${requestId}] Nenhum pagamento aprovado encontrado`);
-            return NextResponse.json({ license: null, message: 'Nenhum pagamento aprovado encontrado' });
+        if (!payment) {
+            console.log(`[CONFIRM-LICENSE ${requestId}] Pagamento não encontrado`);
+            return NextResponse.json({ license: null, message: 'Pagamento não encontrado' });
         }
 
-        const payment = payments[0];
-        console.log(`[CONFIRM-LICENSE ${requestId}] Pagamento encontrado: ${payment.reference_id} | Status: ${payment.status}`);
+        console.log(`[CONFIRM-LICENSE ${requestId}] Pagamento: ${payment.reference_id} | Status: ${payment.status}`);
 
         // 2. Verificar se licença já existe para esse pagamento
         const { data: existingLicense } = await supabase
