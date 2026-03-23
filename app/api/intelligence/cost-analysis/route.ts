@@ -390,8 +390,6 @@ export async function GET(req: NextRequest) {
         const type = searchParams.get('type') || 'feature';
         const limit = parseInt(searchParams.get('limit') || '50');
 
-        const supabase = await createClient();
-
         let data;
         if (type === 'feature') {
             const { data: costs } = await supabase
