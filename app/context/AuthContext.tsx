@@ -110,6 +110,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
 export function useAuth() {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  if (!ctx) {
+    // Fora do AuthProvider (ex: prerender SSG) — retorna estado neutro
+    return {
+      user: null,
+      isAdmin: false,
+      profile: null,
+      loading: false,
+      error: null,
+      signOut: async () => ({ success: false }),
+      refreshAuth: async () => {},
+    } as AuthContextValue;
+  }
   return ctx;
 }

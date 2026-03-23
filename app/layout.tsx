@@ -151,16 +151,16 @@ export default function RootLayout({
 
       </head>
       <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
-        <ClientNotificationProvider>
-          <ReactQueryProvider>
-            <AuthProvider>
+        <AuthProvider>
+          <ClientNotificationProvider>
+            <ReactQueryProvider>
               <CookieBanner />
               {children}
               <ClientPWAInstall />
               <GoogleAnalytics />
-            </AuthProvider>
-          </ReactQueryProvider>
-        </ClientNotificationProvider>
+            </ReactQueryProvider>
+          </ClientNotificationProvider>
+        </AuthProvider>
       </body>
     </html>
   );
