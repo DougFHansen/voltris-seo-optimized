@@ -22,6 +22,26 @@ export const pagBankClient = axios.create({
     timeout: 30000, // 30 segundos
 });
 
+export async function createPlan(data: any): Promise<any> {
+    try {
+        const response = await pagBankClient.post('/plans', data);
+        return response.data;
+    } catch (error: any) {
+        console.error('PagBank Plan Error:', JSON.stringify(error.response?.data || error.message, null, 2));
+        throw error;
+    }
+}
+
+export async function createPaymentLink(data: any): Promise<any> {
+    try {
+        const response = await pagBankClient.post('/payment-links', data);
+        return response.data;
+    } catch (error: any) {
+        console.error('PagBank Link Error:', JSON.stringify(error.response?.data || error.message, null, 2));
+        throw error;
+    }
+}
+
 export async function createCheckout(data: PagBankCheckoutRequest): Promise<PagBankCheckoutResponse> {
     try {
         const response = await pagBankClient.post<PagBankCheckoutResponse>('/checkouts', data);

@@ -95,11 +95,11 @@ BEGIN
         WHEN 'standard' THEN 
             v_plan_code := 'STA';
             v_max_devices := 1;
-            v_valid_until := CURRENT_DATE + INTERVAL '1 year';
+            v_valid_until := CURRENT_DATE + INTERVAL '1 month';
         WHEN 'pro' THEN 
             v_plan_code := 'PRO';
             v_max_devices := 3;
-            v_valid_until := CURRENT_DATE + INTERVAL '1 year';
+            v_valid_until := CURRENT_DATE + INTERVAL '1 month';
         WHEN 'enterprise' THEN 
             v_plan_code := 'ENT';
             v_max_devices := 9999;
@@ -107,7 +107,7 @@ BEGIN
         ELSE
             v_plan_code := 'STA';
             v_max_devices := 1;
-            v_valid_until := CURRENT_DATE + INTERVAL '1 year';
+            v_valid_until := CURRENT_DATE + INTERVAL '1 month';
     END CASE;
 
     -- 2. Gerar Client ID Aleatório (6 dígitos - igual ao formatado no gerador)

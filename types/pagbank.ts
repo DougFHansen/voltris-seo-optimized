@@ -5,7 +5,7 @@
 export interface PagBankCustomer {
     name: string;
     email: string;
-    tax_id: string;
+    tax_id?: string;
     phones?: Array<{
         country: string;
         area: string;

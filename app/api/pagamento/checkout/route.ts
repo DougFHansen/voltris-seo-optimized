@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createCheckout, getPaymentLink } from '@/lib/pagbank-client';
-import { PagBankCheckoutRequest } from '@/types/pagbank';
+import { createCheckout, getPaymentLink, createPlan, createPaymentLink } from '@/lib/pagbank-client';
 import { createAdminClient } from '@/utils/supabase/admin';
 
 /**
- * API DE CHECKOUT PAGBANK (PRODUÇÃO)
+ * API DE CHECKOUT & ASSINATURA (HÍBRIDA)
  * 
- * Este endpoint cria o registro no banco de dados ANTES de enviar ao PagBank
- * e processa a criação do checkout para redirecionamento.
+ * Agora focada em automação total:
+ * 1. Enterprise -> Checkout único (Vitalício)
+ * 2. Standard/Pro -> Checkout de Assinatura (Mensal Recorrente)
  */
 
 export async function POST(req: NextRequest) {
@@ -17,120 +17,129 @@ export async function POST(req: NextRequest) {
         const body = await req.json();
         const { items, customer, license_type = 'pro', user_id } = body;
 
-        // 1. VALIDAÇÃO DE INPUT
         if (!items || items.length === 0) return NextResponse.json({ error: 'Itens obrigatórios' }, { status: 400 });
-        if (!customer || !customer.email) return NextResponse.json({ error: 'Email obrigatório' }, { status: 400 });
-
-        // 2. SANITIZAÇÃO DE CPF (TAX_ID) - REQUISITO 4
-        let cleanTaxId = '';
-        if (customer.tax_id) {
-            cleanTaxId = customer.tax_id.replace(/\D/g, '');
-            if (cleanTaxId.length !== 11 && cleanTaxId.length !== 14) {
-                return NextResponse.json({ error: 'CPF/CNPJ inválido' }, { status: 400 });
-            }
-        }
 
         const supabase = createAdminClient();
         const referenceId = `VOLTRIS-${Date.now()}-${Math.random().toString(36).substring(7).toUpperCase()}`;
-
-        // Calcular total
         const totalAmount = items.reduce((acc: number, item: any) => acc + (Number(item.price || 0) * (item.quantity || 1)), 0);
 
-        console.log(`[CHECKOUT ${requestId}] 🔍 Preparando inserção no Supabase para ${customer.email}`);
+        console.log(`[CHECKOUT ${requestId}] 🛒 Iniciando processamento para ${customer.email} (${license_type})`);
 
-        // 3. PERSISTÊNCIA ANTERIOR (REQUISITO 2)
-        // Tentamos salvar, mas se falhar não travamos o pagamento do cliente (Fail-soft)
+        // 1. PERSISTÊNCIA INICIAL NO BANCO
         try {
-            const { error: dbError } = await supabase
-                .from('payments')
-                .insert([{
-                    reference_id: referenceId,
-                    user_id: user_id || null,
-                    email: customer.email,
-                    customer_name: (customer.name || 'Cliente Voltris').substring(0, 200),
-                    customer_tax_id: cleanTaxId || null,
-                    plan_type: license_type || 'pro',
-                    amount: totalAmount,
-                    status: 'pending'
-                }]);
-
-            if (dbError) {
-                console.error(`[CHECKOUT ${requestId}] ⚠️ Erro não bloqueante Supabase:`, dbError);
-            }
+            await supabase.from('payments').insert([{
+                reference_id: referenceId,
+                user_id: user_id || null,
+                email: customer.email,
+                customer_name: (customer.name || 'Cliente Voltris').substring(0, 200),
+                plan_type: license_type,
+                amount: totalAmount,
+                status: 'pending'
+            }]);
         } catch (e) {
-            console.error(`[CHECKOUT ${requestId}] ⚠️ Falha na conexão Supabase:`, e);
+            console.error(`[CHECKOUT ${requestId}] ⚠️ Erro Supabase (não-bloqueante):`, e);
         }
 
-        // 4. CONSTRUÇÃO DO PAYLOAD PAGBANK
         const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://voltris.com.br';
         const webhookToken = process.env.PAGBANK_WEBHOOK_AUTH_TOKEN;
 
-        // Limpar telefone (Remover tudo que não é dígito)
-        const cleanPhone = (customer.phone || '').replace(/\D/g, '');
-        const phoneArea = cleanPhone.substring(0, 2);
-        const phoneNumber = cleanPhone.substring(2);
+        // 2. LÓGICA DE ASSINATURA vs VENDA ÚNICA
+        const isRecurring = license_type === 'standard' || license_type === 'pro';
 
-        const customerPayload: any = {
-            name: (customer.name || 'Comprador de Testes').substring(0, 60),
-            email: customer.email,
-        };
+        if (isRecurring) {
+            console.log(`[CHECKOUT ${requestId}] 🔄 Criando ASSINATURA RECORRENTE`);
+            
+            // a) Tentar obter ou criar o PLANO no PagBank
+            const planId = await ensurePlan(license_type, totalAmount, supabase, baseUrl, webhookToken);
+            
+            if (!planId) throw new Error('Falha ao instanciar plano de assinatura no PagBank');
 
-        // FORÇA BRUTA: Se for sandbox, nunca envia tax_id para não travar o teste
-        if (process.env.PAGBANK_ENV === 'sandbox') {
-            console.log(`[CHECKOUT ${requestId}] 🛠️ Sandbox Mode: Removendo tax_id para evitar erro.`);
-            // tax_id removido
-        } else if (cleanTaxId && (cleanTaxId.length === 11 || cleanTaxId.length === 14)) {
-            customerPayload.tax_id = cleanTaxId;
+            // b) Criar LINK DE PAGAMENTO DE ASSINATURA (Hosted Page)
+            const payload = {
+                name: `Assinatura Mensal - ${license_type.toUpperCase()}`,
+                description: `Acesso Mensal Voltris Optimizer - ${license_type.toUpperCase()}`,
+                reference_id: referenceId,
+                payment_methods: [{ type: 'CREDIT_CARD' as const }], // Recorrência exige Cartão de Crédito
+                subscription: {
+                    plan: { id: planId }
+                },
+                customer: {
+                    name: customer.name || 'Cliente Voltris' as string,
+                    email: customer.email as string
+                },
+                notification_urls: [`${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`],
+                redirect_url: `${baseUrl}/dashboard?checkout_success=true&ref=${referenceId}`
+            };
+
+            const linkRes = await createPaymentLink(payload);
+            const checkoutUrl = linkRes.links.find((l: any) => l.rel === 'PAY')?.href;
+
+            if (!checkoutUrl) throw new Error('Não foi possível gerar link de assinatura');
+
+            return NextResponse.json({ success: true, checkout_url: checkoutUrl, reference_id: referenceId });
+
+        } else {
+            console.log(`[CHECKOUT ${requestId}] 💳 Criando VENDA ÚNICA (ENTERPRISE/VITALÍCIO)`);
+            
+            // Checkout v4 clássico (Orders)
+            const checkoutData = {
+                reference_id: referenceId,
+                customer: { name: customer.name || 'Cliente Voltris' as string, email: customer.email as string },
+                items: items.map((item: any) => ({
+                    reference_id: item.id || 'item-1',
+                    name: item.name,
+                    quantity: item.quantity || 1,
+                    unit_amount: Math.round(Number(item.price) * 100)
+                })),
+                payment_methods: [
+                    { type: 'CREDIT_CARD' as const }, 
+                    { type: 'PIX' as const }, 
+                    { type: 'BOLETO' as const }
+                ],
+                notification_urls: [`${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`],
+                redirect_url: `${baseUrl}/dashboard?checkout_success=true&ref=${referenceId}`,
+            };
+
+            const checkoutResponse = await createCheckout(checkoutData);
+            const paymentUrl = getPaymentLink(checkoutResponse);
+
+            return NextResponse.json({ success: true, checkout_url: paymentUrl, reference_id: referenceId });
         }
-
-        // Só adicionar fone se tiver o formato mínimo (DDD + 8 ou 9 dígitos)
-        if (phoneArea && phoneNumber.length >= 8) {
-            customerPayload.phones = [{
-                type: 'MOBILE',
-                country: '55',
-                area: phoneArea,
-                number: phoneNumber
-            }];
-        }
-
-        const checkoutData: PagBankCheckoutRequest = {
-            reference_id: referenceId,
-            customer: customerPayload,
-            items: items.map((item: any) => ({
-                reference_id: item.id || 'item-1',
-                name: item.name,
-                quantity: item.quantity || 1,
-                unit_amount: Math.round(Number(item.price) * 100)
-            })),
-            payment_methods: [
-                { type: 'CREDIT_CARD' },
-                { type: 'DEBIT_CARD' }
-            ],
-            notification_urls: [
-                `${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`
-            ],
-            redirect_url: `${baseUrl}/dashboard?checkout_success=true&ref=${referenceId}`,
-        };
-
-        console.log(`[CHECKOUT ${requestId}] 🔄 Criando Checkout no PagBank...`);
-        const checkoutResponse = await createCheckout(checkoutData);
-        const paymentUrl = getPaymentLink(checkoutResponse);
-
-        if (!paymentUrl) {
-            throw new Error('Link de pagamento não retornado pelo PagBank');
-        }
-
-        return NextResponse.json({
-            success: true,
-            checkout_url: paymentUrl,
-            reference_id: referenceId
-        });
 
     } catch (error: any) {
-        console.error(`[CHECKOUT ${requestId}] 💥 Erro:`, error.message);
-        return NextResponse.json(
-            { error: 'Falha ao processar checkout', details: error.message },
-            { status: 500 }
-        );
+        console.error(`[CHECKOUT ${requestId}] 💥 Falha Crítica:`, error.message);
+        return NextResponse.json({ error: 'Erro ao processar pagamento', details: error.message }, { status: 500 });
+    }
+}
+
+/** 
+ * Garante que o plano mensal existe no PagBank para o tipo de licença 
+ */
+async function ensurePlan(type: string, amount: number, supabase: any, baseUrl: string, webhookToken: string | undefined): Promise<string | null> {
+    const { data: existing } = await supabase.from('pagbank_plans').select('pagbank_plan_id').eq('plan_type', type).single();
+    if (existing) return existing.pagbank_plan_id;
+
+    console.log(`[PLAN] Criando novo plano no PagBank: ${type}`);
+    const planPayload = {
+        reference_id: `VOLTRIS-PLAN-${type.toUpperCase()}`,
+        name: `Voltris Optimizer - ${type.toUpperCase()} Mensal`,
+        interval: { unit: 'MONTH', length: 1 },
+        amount: { value: Math.round(amount * 100), currency: 'BRL' },
+        payment_method: { type: 'CREDIT_CARD' }, // Recorrência automática exige cartão
+        notification_urls: [`${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`]
+    };
+
+    try {
+        const plan = await createPlan(planPayload);
+        await supabase.from('pagbank_plans').insert({
+            plan_type: type,
+            pagbank_plan_id: plan.id,
+            name: planPayload.name,
+            amount_cents: planPayload.amount.value
+        });
+        return plan.id;
+    } catch (e) {
+        console.error('[PLAN] Erro ao criar plano:', e);
+        return null;
     }
 }
