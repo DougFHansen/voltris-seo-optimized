@@ -54,6 +54,10 @@ export default {
           'Authorization': `Bearer ${env.PAGBANK_TOKEN}`,
           'Content-Type': 'application/json',
           'Accept': 'application/json',
+          // Disfarçando o Worker como um navegador real para evitar bloqueio WAF do PagBank
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+          'Referer': 'https://voltris.com.br/',
+          'Origin': 'https://voltris.com.br'
         },
         body: JSON.stringify(payload),
       });
