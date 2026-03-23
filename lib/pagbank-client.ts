@@ -1,67 +1,84 @@
-/**
- * PagBank Client — via Cloudflare Worker Proxy
- *
- * O Vercel (AWS us-east-1) é bloqueado pelo Cloudflare do PagBank.
- * Solução: todas as chamadas passam pelo Worker da Cloudflare,
- * que roda em edge brasileiro e não é bloqueado.
- *
- * Worker URL: configurada em PAGBANK_PROXY_URL no Vercel.
- */
-
-import { PagBankCheckoutRequest, PagBankCheckoutResponse } from '@/types/pagbank';
-
-const PROXY_URL = process.env.PAGBANK_PROXY_URL; // ex: https://voltris-pagbank-proxy.SEU-USER.workers.dev
-const PROXY_SECRET = process.env.PAGBANK_PROXY_SECRET;
-
-if (!PROXY_URL) {
-  console.warn('⚠️ PAGBANK_PROXY_URL não definida — chamadas ao PagBank vão falhar.');
-}
+import axios from 'axios';
 
 /**
- * Faz uma chamada POST ao PagBank via proxy Worker.
+ * PagSeguro Legacy Client (V2)
+ * 
+ * Esta API é mais estável contra bloqueios de Firewall/WAF
+ * pois é usada por milhões de integrações legadas.
  */
-async function callPagBankViaProxy(endpoint: string, payload: any): Promise<any> {
-  if (!PROXY_URL) {
-    throw new Error('PAGBANK_PROXY_URL não configurada. Configure o Cloudflare Worker primeiro.');
-  }
 
-  const res = await fetch(PROXY_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-proxy-secret': PROXY_SECRET || '',
-    },
-    body: JSON.stringify({ endpoint, payload }),
-  });
+const PAGBANK_ENV = process.env.PAGBANK_ENV || 'sandbox';
+const BASE_URL = PAGBANK_ENV === 'production'
+    ? 'https://ws.pagseguro.uol.com.br/v2/checkout'
+    : 'https://ws.sandbox.pagseguro.uol.com.br/v2/checkout';
 
-  const text = await res.text();
+const REDIRECT_URL = PAGBANK_ENV === 'production'
+    ? 'https://pagseguro.uol.com.br/v2/checkout/payment.html'
+    : 'https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html';
 
-  if (!res.ok) {
-    let errData: any = {};
-    try { errData = JSON.parse(text); } catch { errData = { raw: text }; }
-    console.error(`[PAGBANK PROXY] Erro ${res.status}:`, errData);
-    throw new Error(`PagBank Error (${res.status}): ${errData.error || text.substring(0, 200)}`);
-  }
+const EMAIL = 'douglasfelipebecker@gmail.com';
+const TOKEN = process.env.PAGBANK_TOKEN;
 
-  return JSON.parse(text);
+/**
+ * Cria um código de checkout usando a API V2 (Legada)
+ * Retorna a URL de redirecionamento final.
+ */
+export async function createLegacyCheckout(data: any): Promise<string> {
+    try {
+        console.log(`[PAGSEGURO V2] Iniciando checkout para ${data.customer_email}`);
+
+        // Converter o payload JSON para x-www-form-urlencoded (formato da v2)
+        const params = new URLSearchParams();
+        params.append('email', EMAIL);
+        params.append('token', TOKEN || '');
+        params.append('currency', 'BRL');
+        params.append('reference', data.reference_id);
+        
+        // Itens
+        data.items.forEach((item: any, index: number) => {
+            const i = index + 1;
+            params.append(`itemId${i}`, item.reference_id || `item${i}`);
+            params.append(`itemDescription${i}`, item.name);
+            params.append(`itemAmount${i}`, (item.unit_amount / 100).toFixed(2));
+            params.append(`itemQuantity${i}`, item.quantity.toString());
+        });
+
+        // Cliente
+        params.append('senderName', data.customer_name || 'Cliente Voltris');
+        params.append('senderEmail', data.customer_email);
+        
+        // URLs
+        params.append('redirectURL', data.redirect_url);
+        params.append('notificationURL', data.notification_url);
+
+        const response = await axios.post(BASE_URL, params.toString(), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+                // User agent genérico para evitar WAF
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            }
+        });
+
+        // A API V2 responde em XML. Vamos extrair o <code> usando Regex simples
+        const match = response.data.match(/<code>(.*?)<\/code>/);
+        if (match && match[1]) {
+            const code = match[1];
+            console.log(`[PAGSEGURO V2] Código gerado: ${code}`);
+            return `${REDIRECT_URL}?code=${code}`;
+        }
+
+        throw new Error(`Resposta inválida do PagSeguro: ${response.data}`);
+
+    } catch (error: any) {
+        if (error.response) {
+            console.error('[PAGSEGURO V2 ERROR]', error.response.data);
+            throw new Error(`Erro PagSeguro V2: ${error.response.status}`);
+        }
+        throw error;
+    }
 }
 
-export async function createPaymentLink(data: any): Promise<any> {
-  console.log('[PAGBANK] Criando payment link via proxy');
-  return callPagBankViaProxy('/payment-links', data);
-}
-
-export async function createCheckout(data: PagBankCheckoutRequest): Promise<PagBankCheckoutResponse> {
-  console.log('[PAGBANK] Criando checkout via proxy');
-  return callPagBankViaProxy('/checkouts', data);
-}
-
-export async function createPlan(data: any): Promise<any> {
-  console.log('[PAGBANK] Criando plano via proxy');
-  return callPagBankViaProxy('/plans', data);
-}
-
-export function getPaymentLink(response: PagBankCheckoutResponse): string | undefined {
-  const payLink = response.links?.find((link: any) => link.rel === 'PAY');
-  return payLink?.href;
+// Helpers para compatibilidade
+export function getPaymentLink(code: string): string {
+    return code; // Na v2 a função já retorna a URL completa
 }

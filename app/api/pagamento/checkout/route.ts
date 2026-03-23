@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createPaymentLink, getPaymentLink } from '@/lib/pagbank-client';
+import { createLegacyCheckout, getPaymentLink } from '@/lib/pagbank-client';
 import { createAdminClient } from '@/utils/supabase/admin';
 
 export const runtime = 'nodejs';
@@ -44,47 +44,39 @@ export async function POST(req: NextRequest) {
       console.error(`[CHECKOUT ${requestId}] Erro Supabase:`, e);
     }
 
-    // 2. Criar Payment Link via proxy Cloudflare Worker
-    const checkoutResponse = await createPaymentLink({
-      name: plan.name,
-      reference_id: referenceId,
-      expiration_date: '2030-12-31T23:59:59-03:00',
-      customer: {
-        name: customer.name || 'Cliente Voltris',
-        email: customer.email,
-      },
-      items: [{
-        reference_id: license_type,
-        name: plan.name,
-        quantity: 1,
-        unit_amount: plan.amountCents,
-      }],
-      payment_methods: [
-        { type: 'CREDIT_CARD' },
-        { type: 'PIX' },
-        { type: 'BOLETO' },
-      ],
-      notification_urls: [`${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`],
-      redirect_url: `${baseUrl}/dashboard?checkout_success=true&ref=${referenceId}&tab=licenses`,
-    });
+    // 2. CRIAR CHECKOUT V2 (LEGADO) — ÚLTIMA CARTA PARA BYPASS DE FIREWALL
+    try {
+        const checkoutUrl = await createLegacyCheckout({
+            reference_id: referenceId,
+            customer_name: customer.name || 'Cliente Voltris',
+            customer_email: customer.email,
+            items: [{
+                reference_id: license_type,
+                name: plan.name,
+                quantity: 1,
+                unit_amount: plan.amountCents // R$ 1,00 para teste
+            }],
+            notification_url: `${baseUrl}/api/webhook/pagbank?auth=${webhookToken}`,
+            redirect_url: `${baseUrl}/dashboard?checkout_success=true&ref=${referenceId}&tab=licenses`,
+        });
 
-    const paymentUrl = getPaymentLink(checkoutResponse);
+        console.log(`[CHECKOUT ${requestId}] ✅ URL V2 gerada: ${checkoutUrl}`);
 
-    if (!paymentUrl) {
-      console.error(`[CHECKOUT ${requestId}] Sem URL na resposta:`, checkoutResponse);
-      throw new Error('PagBank não retornou URL de pagamento.');
+        return NextResponse.json({
+            success: true,
+            checkout_url: checkoutUrl,
+            reference_id: referenceId,
+        });
+
+    } catch (error: any) {
+        console.error(`[CHECKOUT ${requestId}] Erro V2:`, error.message);
+        throw error;
     }
-
-    console.log(`[CHECKOUT ${requestId}] ✅ URL gerada: ${paymentUrl}`);
-
-    return NextResponse.json({
-      success: true,
-      checkout_url: paymentUrl,
-      reference_id: referenceId,
-    });
-
-  } catch (error: any) {
-    console.error(`[CHECKOUT ${requestId}] Falha:`, error.message);
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
+} catch (error: any) {
+    console.error(`[CHECKOUT ${requestId}] Falha Geral:`, error.message);
+    return NextResponse.json({ 
+        error: `Erro ao processar: ${error.message}`, 
+        details: error.message 
+    }, { status: 500 });
+}
 }
