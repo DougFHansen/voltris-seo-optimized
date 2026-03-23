@@ -50,7 +50,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
           className="absolute -bottom-[20%] -left-[10%] w-[1000px] h-[1000px] bg-gradient-to-tr from-[#8B31FF]/10 via-transparent to-transparent rounded-full blur-[120px]" 
         />
         
-        {/* Technical Grid (Subtle) */}
+        {/* Neural Grid Overlay - Tactical aesthetic */}
         <div className="absolute inset-0 opacity-[0.02] mix-blend-screen" 
           style={{ backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)', backgroundSize: '60px 60px' }}
         />

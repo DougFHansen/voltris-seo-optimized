@@ -6,8 +6,10 @@ import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import {
   FiPackage, FiClock, FiCheckCircle, FiRefreshCw, FiPlus,
-  FiActivity, FiAlertTriangle, FiSearch, FiCopy, FiExternalLink, FiCpu, FiShield
+  FiActivity, FiAlertTriangle, FiSearch, FiCopy, FiExternalLink, FiCpu, FiShield,
+  FiMonitor
 } from 'react-icons/fi';
+
 import type { Order } from '@/types/order';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
