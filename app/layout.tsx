@@ -15,18 +15,22 @@ import { ADSENSE_CONFIG } from "@/app/adsense-config";
 
 export const metadata: Metadata = {
   title: {
-    default: "VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais",
+    default: "VOLTRIS - Otimização de PC, Performance Gamer e Suporte Técnico",
     template: "%s | VOLTRIS"
   },
-  description: "Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas. Atendimento em todo Brasil.",
+  description: "A maior autoridade em performance gamer e otimização de Windows do Brasil. Baixe o Voltris Optimizer, confira nossos 300+ guias de FPS e solicite suporte técnico especializado.",
   keywords: [
+    "otimização de pc",
+    "aumentar fps",
+    "performance gamer",
+    "voltris optimizer",
     "suporte técnico remoto",
-    "manutenção de computador",
-    "criação de sites",
-    "otimização de Windows",
-    "consultoria TI"
+    "otimização windows",
+    "redutor de lag",
+    "melhores configurações windows",
+    "especialista em performance pc"
   ],
-  authors: [{ name: "VOLTRIS" }],
+  authors: [{ name: "VOLTRIS - Especialista em Performance" }],
   creator: "VOLTRIS",
   publisher: "VOLTRIS",
   formatDetection: {

@@ -75,9 +75,17 @@ export default function MyComputerPage({ userId }: { userId: string }) {
       const processedData = (data || []).map(device => {
         const lastHeartbeat = new Date(device.last_heartbeat || device.last_active);
         const diffMinutes = (now.getTime() - lastHeartbeat.getTime()) / (1000 * 60);
+        
+        // Mapear campos do banco de dados para o que o componente espera
         return {
           ...device,
-          is_online: diffMinutes < 5
+          is_online: diffMinutes < 5,
+          // Se não tiver pc_name no banco (instalações antigas), usar o ID como fallback parcial ou generic
+          pc_name: device.pc_name || `PC-${device.id.substring(0, 4).toUpperCase()}`,
+          cpu: device.cpu_name,
+          gpu: device.gpu_name,
+          ram: device.ram_gb_total ? `${device.ram_gb_total} GB` : undefined,
+          os: device.os_name
         };
       });
 

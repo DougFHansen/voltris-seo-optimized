@@ -6,10 +6,11 @@ export const runtime = 'nodejs';
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { installation_id, app_version, hardware } = body;
+        const { installation_id, user_id, app_version, hardware } = body;
 
         console.log('[API/INSTALL] Recebida requisição de registro');
         console.log('[API/INSTALL] installation_id:', installation_id);
+        console.log('[API/INSTALL] user_id:', user_id);
         console.log('[API/INSTALL] app_version:', app_version);
         console.log('[API/INSTALL] hardware:', hardware);
 
@@ -29,23 +30,32 @@ export async function POST(request: NextRequest) {
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
         console.log('[API/INSTALL] Fazendo upsert da instalação...');
-        // Upsert installation record
+        
+        // Dados para upsert
+        const upsertData: any = {
+            id: installation_id,
+            pc_name: hardware?.pc_name,
+            app_version: app_version,
+            cpu_name: hardware?.cpu_name,
+            ram_gb_total: hardware?.ram_gb_total,
+            gpu_name: hardware?.gpu_name,
+            disk_type: hardware?.disk_type || hardware?.disk_main_type,
+            os_name: hardware?.os_name,
+            os_build: hardware?.os_build,
+            windows_edition: hardware?.windows_edition,
+            architecture: hardware?.architecture,
+            last_heartbeat: new Date().toISOString(),
+            updated_at: new Date().toISOString()
+        };
+
+        // Só incluir user_id se ele vier na requisição, para não sobrescrever com null se já estiver vinculado
+        if (user_id) {
+            upsertData.user_id = user_id;
+        }
+
         const { error } = await supabase
             .from('installations')
-            .upsert({
-                id: installation_id,
-                app_version: app_version,
-                cpu_name: hardware?.cpu_name,
-                ram_gb_total: hardware?.ram_gb_total,
-                gpu_name: hardware?.gpu_name,
-                disk_type: hardware?.disk_type || hardware?.disk_main_type, // Suportar ambos os nomes
-                os_name: hardware?.os_name,
-                os_build: hardware?.os_build,
-                windows_edition: hardware?.windows_edition,
-                architecture: hardware?.architecture,
-                last_heartbeat: new Date().toISOString(),
-                updated_at: new Date().toISOString()
-            }, { onConflict: 'id' });
+            .upsert(upsertData, { onConflict: 'id' });
 
         if (error) {
             console.error('[API/INSTALL] Erro ao fazer upsert:', error);

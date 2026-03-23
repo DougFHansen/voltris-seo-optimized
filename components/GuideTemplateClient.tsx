@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import AdSenseBanner from '@/components/AdSenseBanner';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { FAQSchema } from '@/components/SEOStructuredData';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Clock, ArrowRight, BookOpen, User, Calendar, Award, CheckCircle, AlertTriangle, Star, ExternalLink, ChevronRight, Lightbulb, Target } from 'lucide-react';
 
 import { notifyDownload } from '@/utils/notifications';
@@ -92,7 +92,7 @@ export function GuideTemplateClient({
     externalReferences = [],
     advancedContentSections,
     additionalContentSections,
-    showVoltrisOptimizerCTA = false,
+    showVoltrisOptimizerCTA = true,
     keyPoints,
     warningNote,
     children
@@ -103,44 +103,69 @@ export function GuideTemplateClient({
         section.title.toLowerCase().includes('considerações finais')
     );
 
+    const { scrollYProgress } = useScroll();
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    });
+
     const readingMinutes = calcReadingTime(contentSections);
     const difficultyColor = difficultyLevel === 'Iniciante' ? 'text-emerald-400' : difficultyLevel === 'Intermediário' ? 'text-yellow-400' : 'text-red-400';
     const difficultyBg = difficultyLevel === 'Iniciante' ? 'border-emerald-400/20 bg-emerald-400/5' : difficultyLevel === 'Intermediário' ? 'border-yellow-400/20 bg-yellow-400/5' : 'border-red-400/20 bg-red-400/5';
 
-    // JSON-LD Article Schema para máximo E-E-A-T
-    const articleSchema = {
-        "@context": "https://schema.org",
-        "@type": "TechArticle",
-        "headline": title,
-        "description": description,
-        "keywords": keywords.join(", "),
-        "author": {
-            "@type": "Person",
-            "name": author,
-            "url": "https://voltris.com.br/sobre",
-            "jobTitle": "Especialista em Otimização de Sistemas",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "Voltris",
-                "url": "https://voltris.com.br"
-            }
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Voltris",
-            "url": "https://voltris.com.br",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://voltris.com.br/logo.png"
-            }
-        },
-        "dateModified": `${lastUpdated}-01-01`,
-        "datePublished": "2025-01-01",
-        "inLanguage": "pt-BR",
-        "learningResourceType": "Tutorial",
-        "educationalLevel": difficultyLevel,
-        "timeRequired": `PT${readingMinutes}M`
-    };
+  // JSON-LD Article Schema para máximo E-E-A-T
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": title,
+    "description": description,
+    "keywords": keywords.join(", "),
+    "author": {
+      "@type": "Person",
+      "name": author,
+      "url": "https://voltris.com.br/sobre",
+      "jobTitle": "Especialista em Otimização de Sistemas",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Voltris",
+        "url": "https://voltris.com.br"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Voltris",
+      "url": "https://voltris.com.br",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://voltris.com.br/logo.png"
+      }
+    },
+    "dateModified": `${lastUpdated}-01-01`,
+    "datePublished": "2025-01-01",
+    "inLanguage": "pt-BR",
+    "learningResourceType": "Tutorial",
+    "educationalLevel": difficultyLevel,
+    "timeRequired": `PT${readingMinutes}M`
+  };
+
+  // JSON-LD HowTo Schema - Isso faz o Google mostrar o guia como um "Passo a Passo" rico nos resultados
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": title,
+    "description": description,
+    "totalTime": `PT${readingMinutes}M`,
+    "step": contentSections.map((section, idx) => ({
+      "@type": "HowToStep",
+      "url": `https://voltris.com.br/guias/${title.toLowerCase().replace(/\s+/g, '-')}/#section-${idx}`,
+      "name": section.title,
+      "itemListElement": [{
+        "@type": "HowToDirection",
+        "text": section.content.replace(/<[^>]*>/g, '').substring(0, 500)
+      }]
+    }))
+  };
 
     // Auto-track download clicks in HTML content (dangerouslySetInnerHTML)
     useEffect(() => {
@@ -164,13 +189,50 @@ export function GuideTemplateClient({
         ...(additionalContentSections || []),
     ];
 
-    return (
-        <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-            />
-            <Header />
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <Header />
+
+      {/* Barra de Progresso de Leitura Viral */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] z-[100] origin-left"
+        style={{ scaleX }}
+      />
+
+      {/* Viral Floating Share Buttons (Discord & WhatsApp) */}
+      <div className="fixed bottom-8 left-8 flex flex-col gap-4 z-50 animate-in slide-in-from-left duration-700">
+        <a
+          href={`https://wa.me/?text=Olha%20esse%20guia%20da%20Voltris:%20${title}%20-%20https://voltris.com.br/guias`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 p-3 bg-emerald-500 rounded-2xl shadow-xl hover:scale-110 active:scale-95 transition-all text-white"
+          title="Compartilhar no WhatsApp"
+        >
+          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.767 5.767 0 1.267.405 2.436 1.091 3.394l-.72 2.625 2.695-.71c.82.493 1.776.78 2.7.78 3.181 0 5.767-2.586 5.767-5.767 0-3.181-2.588-5.767-5.766-5.767zm3.39 8.161c-.146.417-.86.762-1.192.812-.331.05-1.118.06-2.115-.262-.997-.322-2.126-1.182-2.812-1.868-.686-.686-1.228-1.503-1.428-2.314-.05-.201-.06-.5-.03-.782s.11-.53.251-.672c.14-.141.312-.221.463-.221s.201.01.291.02c.091.011.201.021.312.282.11.261.382.934.422 1.024s.06.191.01.291c-.05.101-.11.201-.191.291-.08.09-.17.201-.25.291-.08.09-.171.182-.07.362.101.181.442.734.954 1.192.511.458 1.144.751 1.344.832.2.081.312.06.422-.06.11-.121.472-.553.593-.744.12-.191.251-.151.412-.101.161.05.994.472 1.165.553.171.08.281.121.322.191.04.07.04.412-.11.832z"/></svg>
+        </a>
+        <a
+          href={`https://discord.com/channels/@me`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center gap-3 p-3 bg-blue-600 rounded-2xl shadow-xl hover:scale-110 active:scale-95 transition-all text-white"
+          title="Compartilhar com amigos no Discord"
+        >
+          <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.069.069 0 0 0-.032.027C.533 9.048-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        </a>
+
+        {/* Floating Author Tooltip */}
+        <div className="absolute left-16 top-0 hidden group-hover/btn:flex bg-white/10 backdrop-blur rounded-lg p-2 text-[10px] text-slate-400 border border-white/5 whitespace-nowrap">
+          Conteúdo verificado por {author}
+        </div>
+      </div>
             <main className="min-h-screen bg-[#050510] font-sans selection:bg-[#31A8FF]/30">
 
                 {/* --- HERO SECTION --- */}
