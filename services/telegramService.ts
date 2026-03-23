@@ -17,11 +17,12 @@ export const TelegramService = {
    * Envia uma mensagem para o chat configurado via variáveis de ambiente
    */
   async sendMessage(message: string) {
-    const token = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
+    // Limpando aspas ou espaços que o Vercel ou .env.local podem injetar acidentalmente
+    const token = (process.env.TELEGRAM_BOT_TOKEN || "").replace(/['"]/g, "").trim();
+    const chatId = (process.env.TELEGRAM_CHAT_ID || "").replace(/['"]/g, "").trim();
 
     if (!token || !chatId) {
-      console.warn('[Telegram] Credentials missing. Key names: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID');
+      console.warn('[Telegram] Credentials missing or empty. Check: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID');
       return;
     }
 
