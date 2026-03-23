@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/app/hooks/useAuth';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -10,58 +10,27 @@ interface AuthGuardProps {
 }
 
 export default function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
-  const { user, isAdmin, loading, error } = useAuth();
+  const { user, isAdmin, loading } = useAuth();
   const router = useRouter();
-  const [hasRedirected, setHasRedirected] = useState(false);
 
   useEffect(() => {
-    if (!loading && !hasRedirected) {
-      if (!user) {
-        setHasRedirected(true);
-        router.push('/login');
-        return;
-      }
-
-      if (requireAdmin && !isAdmin) {
-        setHasRedirected(true);
-        router.push('/dashboard');
-        return;
-      }
+    if (loading) return;
+    if (!user) {
+      router.push('/login');
+      return;
     }
-  }, [user, isAdmin, loading, requireAdmin, router, hasRedirected]);
+    if (requireAdmin && !isAdmin) {
+      router.push('/dashboard');
+    }
+  }, [user, isAdmin, loading, requireAdmin, router]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#171313] text-white">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[#FF4B6B] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-sm text-gray-400">Carregando...</p>
-        </div>
-      </div>
-    );
-  }
+  // Enquanto carrega, não bloqueia — o DashboardClient já tem seu próprio spinner
+  if (loading) return null;
 
-  if (!user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#171313] text-white">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[#FF4B6B] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-sm text-gray-400">Redirecionando para login...</p>
-        </div>
-      </div>
-    );
-  }
+  // Sem usuário: não renderiza nada (redirect em andamento)
+  if (!user) return null;
 
-  if (requireAdmin && !isAdmin) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#171313] text-white">
-        <div className="text-center">
-          <div className="w-12 h-12 border-4 border-[#FF4B6B] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-sm text-gray-400">Redirecionando para dashboard...</p>
-        </div>
-      </div>
-    );
-  }
+  if (requireAdmin && !isAdmin) return null;
 
   return <>{children}</>;
-} 
+}

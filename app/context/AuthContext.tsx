@@ -1,0 +1,115 @@
+'use client';
+
+import { createContext, useContext, useEffect, useRef, useState, useCallback, ReactNode } from 'react';
+import { createClient } from '@/utils/supabase/client';
+import { User } from '@supabase/supabase-js';
+
+interface AuthState {
+  user: User | null;
+  isAdmin: boolean;
+  profile: any | null;
+  loading: boolean;
+  error: string | null;
+}
+
+interface AuthContextValue extends AuthState {
+  signOut: () => Promise<{ success: boolean; error?: any }>;
+  refreshAuth: () => Promise<void>;
+}
+
+const AuthContext = createContext<AuthContextValue | null>(null);
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [authState, setAuthState] = useState<AuthState>({
+    user: null,
+    isAdmin: false,
+    profile: null,
+    loading: true,
+    error: null,
+  });
+
+  // Usar ref para o cliente Supabase — evita recriar em cada render
+  const supabaseRef = useRef(createClient());
+  // Evitar chamadas paralelas simultâneas
+  const fetchingRef = useRef(false);
+
+  const fetchProfile = useCallback(async (user: User | null) => {
+    if (!user) {
+      setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
+      return;
+    }
+
+    try {
+      const { data: profile } = await supabaseRef.current
+        .from('profiles')
+        .select('*')
+        .eq('id', user.id)
+        .single();
+
+      setAuthState({
+        user,
+        isAdmin: profile?.is_admin ?? false,
+        profile: profile ?? null,
+        loading: false,
+        error: null,
+      });
+    } catch {
+      setAuthState({ user, isAdmin: false, profile: null, loading: false, error: null });
+    }
+  }, []);
+
+  useEffect(() => {
+    const supabase = supabaseRef.current;
+
+    // onAuthStateChange é a fonte de verdade — dispara INITIAL_SESSION na montagem
+    // e todos os eventos subsequentes. Não precisamos de getUser() separado.
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      // Evitar chamadas paralelas
+      if (fetchingRef.current) return;
+      fetchingRef.current = true;
+
+      try {
+        if (event === 'SIGNED_OUT') {
+          setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
+        } else if (session?.user) {
+          await fetchProfile(session.user);
+        } else if (event === 'INITIAL_SESSION' && !session) {
+          // Sem sessão na inicialização
+          setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
+        }
+      } finally {
+        fetchingRef.current = false;
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [fetchProfile]);
+
+  const signOut = useCallback(async () => {
+    try {
+      const { error } = await supabaseRef.current.auth.signOut();
+      if (error) return { success: false, error };
+      return { success: true };
+    } catch (error) {
+      return { success: false, error };
+    }
+  }, []);
+
+  const refreshAuth = useCallback(async () => {
+    setAuthState(prev => ({ ...prev, loading: true }));
+    const { data: { session } } = await supabaseRef.current.auth.getSession();
+    await fetchProfile(session?.user ?? null);
+  }, [fetchProfile]);
+
+  return (
+    <AuthContext.Provider value={{ ...authState, signOut, refreshAuth }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth() {
+  const ctx = useContext(AuthContext);
+  if (!ctx) throw new Error('useAuth must be used within AuthProvider');
+  return ctx;
+}

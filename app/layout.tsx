@@ -8,6 +8,7 @@ import { Inter } from 'next/font/google';
 import "./globals.css";
 import ClientNotificationProvider from './components/ClientNotificationProvider';
 import ClientPWAInstall from "./components/ClientPWAInstall";
+import { AuthProvider } from '@/app/context/AuthContext';
 import JsonLd from "@/components/JsonLd";
 import AdSense from "@/components/AdSense";
 import { ADSENSE_CONFIG } from "@/app/adsense-config";
@@ -152,10 +153,12 @@ export default function RootLayout({
       <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
         <ClientNotificationProvider>
           <ReactQueryProvider>
-            <CookieBanner />
-            {children}
-            <ClientPWAInstall />
-            <GoogleAnalytics />
+            <AuthProvider>
+              <CookieBanner />
+              {children}
+              <ClientPWAInstall />
+              <GoogleAnalytics />
+            </AuthProvider>
           </ReactQueryProvider>
         </ClientNotificationProvider>
       </body>
