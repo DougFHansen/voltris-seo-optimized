@@ -1,12 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
-import { FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, FiEdit3, FiSave, FiX } from 'react-icons/fi';
+import { 
+  FiUser, FiMail, FiPhone, FiMapPin, FiCalendar, 
+  FiEdit3, FiSave, FiX, FiShield, FiLock, 
+  FiCpu, FiCheckCircle, FiActivity
+} from 'react-icons/fi';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
+import { useDashboard } from '@/app/context/DashboardContext';
 
 interface Profile {
   id: string;
@@ -22,7 +27,8 @@ interface Profile {
 }
 
 export default function ProfileClient() {
-  const { user, refreshAuth } = useAuth();
+  const { transparencyMode } = useDashboard();
+  const { user } = useAuth();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -35,12 +41,11 @@ export default function ProfileClient() {
     state: '',
     cep: ''
   });
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
 
   useEffect(() => {
     const fetchProfile = async () => {
       if (!user) return;
-
       try {
         const { data, error } = await supabase
           .from('profiles')
@@ -49,8 +54,6 @@ export default function ProfileClient() {
           .single();
 
         if (error) throw error;
-
-        console.log('Perfil carregado:', data);
         setProfile(data);
         setFormData({
           full_name: data.full_name || '',
@@ -61,19 +64,16 @@ export default function ProfileClient() {
           cep: data.cep || ''
         });
       } catch (error) {
-        console.error('Erro ao carregar perfil:', error);
-        toast.error('Erro ao carregar dados do perfil');
+        console.error('Error fetching profile:', error);
       } finally {
         setLoading(false);
       }
     };
-
     fetchProfile();
   }, [user, supabase]);
 
   const handleSave = async () => {
     if (!user) return;
-
     setSaving(true);
     try {
       const { error } = await supabase
@@ -86,282 +86,270 @@ export default function ProfileClient() {
 
       if (error) throw error;
 
-      toast.success('Perfil atualizado com sucesso!');
+      toast.success('Perfil atualizado!', {
+        icon: '✅',
+        style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
+      });
       setIsEditing(false);
-
-      // Refresh profile data
+      
       const { data: updatedData } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
-      console.log('Perfil atualizado:', updatedData);
       setProfile(updatedData);
     } catch (error) {
-      console.error('Erro ao salvar perfil:', error);
       toast.error('Erro ao salvar perfil');
     } finally {
       setSaving(false);
     }
   };
 
-  const handleCancel = () => {
-    if (profile) {
-      setFormData({
-        full_name: profile.full_name || '',
-        phone: profile.phone || '',
-        address: profile.address || '',
-        city: profile.city || '',
-        state: profile.state || '',
-        cep: profile.cep || ''
-      });
-    }
-    setIsEditing(false);
-  };
-
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[50vh] w-full">
-        <div className="w-12 h-12 border-4 border-[#FF4B6B] border-t-transparent rounded-full animate-spin"></div>
+      <div className="flex flex-col items-center justify-center h-64 gap-6">
+        <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
+        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Syncing User Identity...</p>
       </div>
     );
   }
 
   return (
     <AuthGuard>
-      <div className="space-y-6 w-full max-w-full overflow-hidden">
-        {/* Header - Mobile Premium */}
+      <div className="flex flex-col gap-10">
+        
+        {/* Profile Identity Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative overflow-hidden bg-gradient-to-br from-[#1E1E1E]/90 to-[#171313]/90 backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-gray-800/30 w-full"
+          className={`relative p-10 rounded-[3.5rem] border overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10] border-white/5 shadow-3xl'}`}
         >
-          <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <div className="bg-gradient-to-br from-[#FF4B6B] to-[#8B31FF] rounded-xl p-3 shadow-lg">
-                  <FiUser className="w-6 h-6 md:w-8 md:h-8 text-white" />
+          <div className="absolute -right-20 -top-20 w-[600px] h-[600px] bg-[#8B31FF]/5 blur-[150px] rounded-full"></div>
+          
+          <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left">
+             <div className="relative group">
+                <div className="w-40 h-40 rounded-[3rem] bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] p-[2px] shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                   <div className="w-full h-full rounded-[2.85rem] bg-[#0A0A10] flex items-center justify-center overflow-hidden">
+                      <FiUser className="w-16 h-16 text-white/20 group-hover:text-white group-hover:scale-110 transition-all duration-500" />
+                   </div>
                 </div>
-                <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text break-words">
-                  Meu Perfil
-                </h1>
-              </div>
-              <p className="text-base md:text-lg text-gray-300 break-words">Gerencie suas informações pessoais</p>
-            </div>
-            <div className="flex items-center gap-4 text-sm text-gray-400">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span>Ativo</span>
-              </div>
-            </div>
+                <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl bg-[#00FF88] flex items-center justify-center shadow-lg border-4 border-[#0A0A10]">
+                   <FiCheckCircle className="w-6 h-6 text-black" />
+                </div>
+             </div>
+
+             <div className="flex-1 space-y-4">
+                <div className="space-y-1">
+                   <div className="flex items-center gap-3 justify-center md:justify-start">
+                      <h1 className="text-4xl font-black text-white italic uppercase tracking-tighter">{profile?.full_name || 'Agente de Otimização'}</h1>
+                      <div className="px-3 py-1 bg-[#8B31FF]/10 border border-[#8B31FF]/20 rounded-full">
+                         <span className="text-[10px] font-black text-[#8B31FF] uppercase tracking-widest">Premium Node</span>
+                      </div>
+                   </div>
+                   <p className="text-white/40 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
+                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
+                      <FiCpu className="w-4 h-4 text-[#31A8FF]" />
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest">ID: {user?.id.slice(0, 8).toUpperCase()}</span>
+                   </div>
+                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
+                      <FiActivity className="w-4 h-4 text-[#00FF88]" />
+                      <span className="text-[10px] font-black text-white uppercase tracking-widest">Status: Active</span>
+                   </div>
+                </div>
+             </div>
+
+             {!isEditing && (
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="px-8 py-4 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 transition-all shadow-3xl text-sm"
+                >
+                  Edit Profile
+                </button>
+             )}
           </div>
         </motion.div>
 
-        {/* Profile Form - Mobile Premium */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-[#1E1E1E]/40 backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-gray-800/30 w-full"
-        >
-          <div className="flex flex-col gap-6 w-full">
-            {/* Email Section */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <FiMail className="w-5 h-5 text-[#8B31FF] flex-shrink-0" />
-                <h2 className="text-lg font-semibold text-white">Email</h2>
-              </div>
-              <div className="bg-[#171313] rounded-xl p-4">
-                <p className="text-gray-400 text-sm">Email da Conta</p>
-                <p className="text-white font-medium break-all">{user?.email}</p>
-                <p className="text-gray-500 text-xs mt-1">O email não pode ser alterado</p>
-              </div>
+        {/* Form Sections */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          
+          {/* Detailed Information */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'}`}
+          >
+            <div className="flex items-center gap-4 mb-10">
+               <div className="p-3 bg-[#31A8FF]/10 text-[#31A8FF] rounded-2xl">
+                 <FiUser className="w-6 h-6" />
+               </div>
+               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Personal <span className="text-[#31A8FF]">Data</span></h3>
             </div>
 
-            {/* Personal Information */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <FiUser className="w-5 h-5 text-[#8B31FF] flex-shrink-0" />
-                  <h2 className="text-lg font-semibold text-white">Informações Pessoais</h2>
-                </div>
-                {!isEditing ? (
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#8B31FF]/10 text-[#8B31FF] rounded-xl hover:bg-[#8B31FF]/20 transition-colors duration-300 min-h-[44px]"
-                  >
-                    <FiEdit3 className="w-4 h-4" />
-                    Editar
-                  </button>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={handleSave}
-                      disabled={saving}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#8B31FF] text-white rounded-xl hover:bg-[#8B31FF]/80 transition-colors duration-300 disabled:opacity-50 min-h-[44px]"
-                    >
-                      {saving ? (
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      ) : (
-                        <FiSave className="w-4 h-4" />
-                      )}
-                      Salvar
-                    </button>
-                    <button
-                      onClick={handleCancel}
-                      className="flex items-center gap-2 px-4 py-2 bg-gray-600/10 text-gray-400 rounded-xl hover:bg-gray-600/20 transition-colors duration-300 min-h-[44px]"
-                    >
-                      <FiX className="w-4 h-4" />
-                      Cancelar
-                    </button>
-                  </div>
-                )}
-              </div>
+            <div className="space-y-8">
+               <div className="space-y-3">
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Authentication Email</label>
+                 <div className="p-5 rounded-2xl bg-black/40 border border-white/5 text-white/40 italic font-bold">
+                    {user?.email}
+                 </div>
+               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-400">Nome Completo</label>
-                  {isEditing ? (
+               <div className="space-y-3">
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Operational Name</label>
+                 {isEditing ? (
                     <input
                       type="text"
                       value={formData.full_name}
                       onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#171313] border border-gray-800/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#8B31FF] transition-colors duration-300 min-h-[52px]"
-                      placeholder="Digite seu nome completo"
+                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
+                      placeholder="Identificação do Agente"
                     />
-                  ) : (
-                    <div className="px-4 py-3 bg-[#171313] rounded-xl">
-                      <p className="text-white break-words">{profile?.full_name || 'Não informado'}</p>
+                 ) : (
+                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      {profile?.full_name || 'Pendente'}
                     </div>
-                  )}
-                </div>
+                 )}
+               </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-400">Telefone</label>
-                  {isEditing ? (
+               <div className="space-y-3">
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Secure Contact Line</label>
+                 {isEditing ? (
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#171313] border border-gray-800/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#8B31FF] transition-colors duration-300 min-h-[52px]"
-                      placeholder="(11) 99999-9999"
+                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
+                      placeholder="+55 (00) 00000-0000"
                     />
-                  ) : (
-                    <div className="px-4 py-3 bg-[#171313] rounded-xl">
-                      <p className="text-white break-words">{profile?.phone || 'Não informado'}</p>
+                 ) : (
+                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      {profile?.phone || 'Pendente'}
                     </div>
-                  )}
-                </div>
-              </div>
+                 )}
+               </div>
+            </div>
+          </motion.div>
+
+          {/* Secure Location Link */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'}`}
+          >
+            <div className="flex items-center gap-4 mb-10">
+               <div className="p-3 bg-[#8B31FF]/10 text-[#8B31FF] rounded-2xl">
+                 <FiMapPin className="w-6 h-6" />
+               </div>
+               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Geographic <span className="text-[#8B31FF]">Link</span></h3>
             </div>
 
-            {/* Address Information */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <FiMapPin className="w-5 h-5 text-[#8B31FF] flex-shrink-0" />
-                <h2 className="text-lg font-semibold text-white">Endereço</h2>
-              </div>
-
-              <div className="space-y-4 w-full">
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-400">Endereço</label>
-                  {isEditing ? (
+            <div className="space-y-8">
+               <div className="space-y-3">
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Base Address</label>
+                 {isEditing ? (
                     <input
                       type="text"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#171313] border border-gray-800/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#8B31FF] transition-colors duration-300 min-h-[52px]"
-                      placeholder="Rua, número, complemento"
+                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                      placeholder="Vila, Logradouro, Número"
                     />
-                  ) : (
-                    <div className="px-4 py-3 bg-[#171313] rounded-xl">
-                      <p className="text-white break-words">{profile?.address || 'Não informado'}</p>
+                 ) : (
+                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      {profile?.address || 'Pendente'}
                     </div>
-                  )}
-                </div>
+                 )}
+               </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-400">Cidade</label>
-                    {isEditing ? (
+               <div className="grid grid-cols-2 gap-6">
+                 <div className="space-y-3">
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">City / District</label>
+                   {isEditing ? (
                       <input
                         type="text"
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#171313] border border-gray-800/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#8B31FF] transition-colors duration-300 min-h-[52px]"
-                        placeholder="São Paulo"
+                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
                       />
-                    ) : (
-                      <div className="px-4 py-3 bg-[#171313] rounded-xl">
-                        <p className="text-white break-words">{profile?.city || 'Não informado'}</p>
+                   ) : (
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                        {profile?.city || 'PD'}
                       </div>
-                    )}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-400">Estado</label>
-                    {isEditing ? (
+                   )}
+                 </div>
+                 <div className="space-y-3">
+                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">State Code</label>
+                   {isEditing ? (
                       <input
                         type="text"
                         value={formData.state}
                         onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#171313] border border-gray-800/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#8B31FF] transition-colors duration-300 min-h-[52px]"
-                        placeholder="SP"
+                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
                       />
-                    ) : (
-                      <div className="px-4 py-3 bg-[#171313] rounded-xl">
-                        <p className="text-white break-words">{profile?.state || 'Não informado'}</p>
+                   ) : (
+                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                        {profile?.state || 'PD'}
                       </div>
-                    )}
-                  </div>
+                   )}
+                 </div>
+               </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-400">CEP</label>
-                    {isEditing ? (
-                      <input
-                        type="text"
-                        value={formData.cep}
-                        onChange={(e) => setFormData({ ...formData, cep: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#171313] border border-gray-800/30 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#8B31FF] transition-colors duration-300 min-h-[52px]"
-                        placeholder="00000-000"
-                      />
-                    ) : (
-                      <div className="px-4 py-3 bg-[#171313] rounded-xl">
-                        <p className="text-white break-words">{profile?.cep && profile.cep.trim() !== '' ? profile.cep : 'Não informado'}</p>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+               <div className="space-y-3">
+                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">System CEP Code</label>
+                 {isEditing ? (
+                    <input
+                      type="text"
+                      value={formData.cep}
+                      onChange={(e) => setFormData({ ...formData, cep: e.target.value })}
+                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                    />
+                 ) : (
+                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      {profile?.cep || 'Pendente'}
+                    </div>
+                 )}
+               </div>
             </div>
+          </motion.div>
+        </div>
 
-            {/* Account Information */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <FiCalendar className="w-5 h-5 text-[#8B31FF] flex-shrink-0" />
-                <h2 className="text-lg font-semibold text-white">Informações da Conta</h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-                <div className="bg-[#171313] rounded-xl p-4">
-                  <p className="text-gray-400 text-sm">Data de Criação</p>
-                  <p className="text-white font-medium">
-                    {profile?.created_at ? new Date(profile.created_at).toLocaleDateString('pt-BR') : 'N/A'}
-                  </p>
+        {/* Footer Actions */}
+        <AnimatePresence>
+          {isEditing && (
+             <motion.div 
+               initial={{ opacity: 0, y: 50 }}
+               animate={{ opacity: 1, y: 0 }}
+               exit={{ opacity: 0, y: 50 }}
+               className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[150] w-[90%] max-w-2xl"
+             >
+                <div className="bg-[#0A0A10]/90 backdrop-blur-2xl border border-white/10 p-6 rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.8)] flex items-center justify-between gap-6">
+                   <div className="flex flex-col">
+                      <span className="text-xs font-black text-white italic uppercase tracking-tighter">Modo de Edição</span>
+                      <span className="text-[9px] font-bold text-white/40 uppercase tracking-widest leading-none">Você possui alterações não salvas</span>
+                   </div>
+                   <div className="flex gap-4">
+                      <button 
+                        onClick={() => { setIsEditing(false); }} 
+                        className="px-6 py-3 rounded-xl bg-white/5 text-white/60 font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all"
+                      >
+                        Abort Changes
+                      </button>
+                      <button 
+                        onClick={handleSave} 
+                        disabled={saving}
+                        className="px-8 py-3 rounded-xl bg-[#00FF88] text-black font-black uppercase text-[10px] tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-[#00FF88]/20 disabled:grayscale"
+                      >
+                        {saving ? 'Saving System...' : 'Synchronize Identity'}
+                      </button>
+                   </div>
                 </div>
+             </motion.div>
+          )}
+        </AnimatePresence>
 
-                <div className="bg-[#171313] rounded-xl p-4">
-                  <p className="text-gray-400 text-sm">Última Atualização</p>
-                  <p className="text-white font-medium">
-                    {profile?.updated_at ? new Date(profile.updated_at).toLocaleDateString('pt-BR') : 'N/A'}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </AuthGuard>
   );
-} 
+}

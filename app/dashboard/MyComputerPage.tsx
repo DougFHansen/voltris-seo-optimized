@@ -1,535 +1,380 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { createClient } from '@/utils/supabase/client';
-import { toast } from 'react-hot-toast';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-    FiMonitor, FiCpu, FiZap, FiShield, FiX, FiDownload,
-    FiPower, FiTarget, FiSettings
+import { createClient } from '@/utils/supabase/client';
+import { 
+  FiMonitor, FiCpu, FiHardDrive, FiActivity, FiZap, 
+  FiPower, FiRefreshCw, FiAlertCircle, FiCheck, FiX, 
+  FiShield, FiDownload, FiHash, FiUser, FiInfo, FiTrash2,
+  FiTerminal, FiSettings, FiPlus
 } from 'react-icons/fi';
-import ConfirmModal from '../components/ConfirmModal';
-import LicenseExpiredModal from '../components/LicenseExpiredModal';
+import { toast } from 'react-hot-toast';
+import { useDashboard } from '@/app/context/DashboardContext';
+import Link from 'next/link';
+
+interface DeviceData {
+  id: string;
+  pc_name: string;
+  os: string;
+  cpu: string;
+  gpu: string;
+  ram: string;
+  installation_date: string;
+  last_active: string;
+  last_heartbeat: string;
+  is_online: boolean;
+  is_optimized: boolean;
+  is_licensed: boolean;
+  license_key: string;
+}
+
+// Action Button Component for Remote Commands
+const RemoteAction = ({ icon: Icon, label, color, onClick, loading }: any) => (
+  <motion.button
+    whileHover={{ scale: 1.05, y: -2 }}
+    whileTap={{ scale: 0.95 }}
+    disabled={loading}
+    onClick={onClick}
+    className={`
+      flex flex-col items-center justify-center gap-3 p-4 rounded-3xl border transition-all duration-300 group
+      ${color === 'blue' ? 'bg-[#31A8FF]/10 border-[#31A8FF]/20 text-[#31A8FF] hover:bg-[#31A8FF] hover:text-white' : ''}
+      ${color === 'red' ? 'bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500 hover:text-white' : ''}
+      ${color === 'amber' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-white' : ''}
+      ${color === 'emerald' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400 hover:bg-emerald-500 hover:text-white' : ''}
+      ${loading ? 'opacity-50 cursor-not-allowed' : ''}
+    `}
+  >
+    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:border-transparent transition-colors">
+      <Icon className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
+    </div>
+    <span className="text-[10px] font-black uppercase tracking-widest">{label}</span>
+  </motion.button>
+);
 
 export default function MyComputerPage({ userId }: { userId: string }) {
-    const [installations, setInstallations] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [unlinkModalOpen, setUnlinkModalOpen] = useState(false);
-    const [selectedInstallation, setSelectedInstallation] = useState<any>(null);
+  const { transparencyMode } = useDashboard();
+  const [devices, setDevices] = useState<DeviceData[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [commandLoading, setCommandLoading] = useState<string | null>(null);
+  const [showUnlinkModal, setShowUnlinkModal] = useState<string | null>(null);
+  const supabase = useMemo(() => createClient(), []);
 
-    // Modais de confirmação
-    const [preparePcModalOpen, setPreparePcModalOpen] = useState(false);
-    const [restartModalOpen, setRestartModalOpen] = useState(false);
-    const [shutdownModalOpen, setShutdownModalOpen] = useState(false);
-    const [currentInstallationId, setCurrentInstallationId] = useState<string>('');
+  const fetchDevices = useCallback(async () => {
+    try {
+      const { data, error } = await supabase
+        .from('installations')
+        .select('*')
+        .eq('user_id', userId)
+        .order('last_heartbeat', { ascending: false });
 
-    // Modal de licença expirada
-    const [licenseModalOpen, setLicenseModalOpen] = useState(false);
-    const [licenseInfo, setLicenseInfo] = useState<any>(null);
+      if (error) throw error;
+      
+      // Calculate online status based on heartbeat (e.g., last 5 minutes)
+      const now = new Date();
+      const processedData = (data || []).map(device => {
+        const lastHeartbeat = new Date(device.last_heartbeat || device.last_active);
+        const diffMinutes = (now.getTime() - lastHeartbeat.getTime()) / (1000 * 60);
+        return {
+          ...device,
+          is_online: diffMinutes < 5
+        };
+      });
 
-    const supabase = createClient();
-
-    useEffect(() => {
-        if (userId) {
-            fetchData();
-
-            const channel = supabase
-                .channel(`user-installs-${userId}`)
-                .on('postgres_changes' as any, {
-                    event: '*',
-                    table: 'installations',
-                    filter: `user_id=eq.${userId}`
-                }, () => {
-                    fetchData();
-                })
-                .subscribe();
-
-            return () => {
-                supabase.removeChannel(channel);
-            };
-        }
-    }, [userId]);
-
-    const fetchData = async () => {
-        try {
-            const { data, error } = await supabase
-                .from('installations')
-                .select('*')
-                .eq('user_id', userId)
-                .order('last_heartbeat', { ascending: false });
-
-            if (error) throw error;
-            setInstallations(data || []);
-        } catch (err) {
-            console.error('[MyComputerPage] Erro:', err);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    const handleUnlinkClick = (installation: any) => {
-        setSelectedInstallation(installation);
-        setUnlinkModalOpen(true);
-    };
-
-    const handleConfirmUnlink = async () => {
-        if (!selectedInstallation) return;
-        setUnlinkModalOpen(false);
-        const loadingId = toast.loading('Processando...');
-        try {
-            await fetch('/api/v1/install/unlink', {
-                method: 'POST',
-                body: JSON.stringify({ installation_id: selectedInstallation.id })
-            });
-            toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
-            fetchData();
-        } catch {
-            toast.error('Falha ao desvincular.', { id: loadingId });
-        }
-        setSelectedInstallation(null);
-    };
-
-    const sendCommand = async (installationId: string, commandType: string, loadingMsg: string, successMsg: string) => {
-        // Validar licença antes de enviar comando
-        const licenseValid = await validateLicense(installationId);
-        if (!licenseValid) {
-            return; // Modal de licença já foi aberto
-        }
-
-        const toastId = toast.loading(loadingMsg);
-        try {
-            await fetch('/api/v1/commands/create', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    installation_id: installationId,
-                    command_type: commandType
-                })
-            });
-            toast.success(successMsg, { id: toastId });
-        } catch {
-            toast.error('Falha no envio', { id: toastId });
-        }
-    };
-
-    const validateLicense = async (installationId: string): Promise<boolean> => {
-        try {
-            const response = await fetch(`/api/v1/license/validate?installation_id=${installationId}`);
-            const data = await response.json();
-
-            if (data.valid) {
-                return true;
-            }
-
-            // Licença inválida - mostrar modal
-            setLicenseInfo(data);
-            setLicenseModalOpen(true);
-            return false;
-        } catch (error) {
-            console.error('Erro ao validar licença:', error);
-            toast.error('Erro ao validar licença');
-            return false;
-        }
-    };
-
-    if (loading) {
-        return (
-            <div className="h-full w-full flex items-center justify-center">
-                <div className="w-12 h-12 border-4 border-[#31A8FF] border-t-transparent rounded-full animate-spin"></div>
-            </div>
-        );
+      setDevices(processedData);
+    } catch (error) {
+      console.error('Error fetching devices:', error);
+    } finally {
+      setLoading(false);
     }
+  }, [userId, supabase]);
 
-    if (installations.length === 0) {
-        return (
-            <div className="h-full w-full flex items-center justify-center p-4">
-                <div className="w-full max-w-4xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-center mb-6"
-                    >
-                        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 flex flex-col sm:flex-row items-center justify-center gap-2">
-                            <FiMonitor className="text-[#31A8FF] w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" />
-                            <span>Meu Computador</span>
-                        </h1>
-                        <p className="text-slate-400 text-xs sm:text-sm">Gerencie seu dispositivo Voltris Optimizer</p>
-                    </motion.div>
+  useEffect(() => {
+    fetchDevices();
+    const interval = setInterval(fetchDevices, 30000);
+    
+    // Real-time updates
+    const channel = supabase
+      .channel('public:installations')
+      .on('postgres_changes', { event: '*', table: 'installations', filter: `user_id=eq.${userId}` }, fetchDevices)
+      .subscribe();
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="w-full bg-[#121218]/60 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-6 text-center"
-                    >
-                        <div className="p-3 bg-[#31A8FF]/10 rounded-xl border border-[#31A8FF]/20 text-[#31A8FF] mb-4 w-fit mx-auto">
-                            <FiZap className="w-8 h-8" />
-                        </div>
+    return () => {
+      clearInterval(interval);
+      supabase.removeChannel(channel);
+    };
+  }, [fetchDevices, supabase, userId]);
 
-                        <h3 className="text-base sm:text-lg font-bold text-white mb-2">Vincule seu computador</h3>
-                        <p className="text-slate-400 text-xs sm:text-sm mb-4 max-w-xl mx-auto">
-                            Acesse informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do dashboard.
-                        </p>
+  const handleRemoteCommand = async (deviceId: string, command: string) => {
+    setCommandLoading(`${deviceId}-${command}`);
+    
+    try {
+      const { error } = await supabase.from('commands').insert({
+        installation_id: deviceId,
+        command_type: command,
+        status: 'pending'
+      });
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                            <div className="bg-[#0A0A0F] border border-white/5 p-3 rounded-lg text-left">
-                                <div className="w-7 h-7 bg-white/5 rounded-lg flex items-center justify-center text-white font-bold text-xs mb-2">1</div>
-                                <p className="text-xs text-slate-300">Abra o <span className="text-white font-bold">Voltris Optimizer</span> no seu PC</p>
-                            </div>
-                            <div className="bg-[#0A0A0F] border border-white/5 p-3 rounded-lg text-left">
-                                <div className="w-7 h-7 bg-white/5 rounded-lg flex items-center justify-center text-white font-bold text-xs mb-2">2</div>
-                                <p className="text-xs text-slate-300">Clique em <span className="text-white font-bold">Vincular Conta</span> no topo do app</p>
-                            </div>
-                        </div>
+      if (error) throw error;
 
-                        <div className="pt-4 border-t border-white/10">
-                            <p className="text-xs text-slate-500 mb-3 uppercase tracking-widest font-bold">Não tem o programa?</p>
-                            <div className="flex flex-col items-center gap-2">
-                                <div className="flex flex-wrap items-center justify-center gap-2 mb-2">
-                                    <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
-                                    <span className="px-2 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
-                                        v1.0.1.0
-                                    </span>
-                                </div>
-                                <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstaller.exe"
-                                    className="w-full sm:w-auto group relative px-5 py-2.5 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-xs rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
-                                >
-                                    <FiDownload className="w-3.5 h-3.5 group-hover:translate-y-[2px] transition-transform duration-300 flex-shrink-0" />
-                                    <span className="whitespace-nowrap">DOWNLOAD x64</span>
-                                </a>
-                                <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
-                                    className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors font-medium opacity-80 hover:opacity-100"
-                                >
-                                    Para sistemas Windows x86
-                                </a>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
-        );
+      toast.success(`Comando '${command.toUpperCase()}' enviado!`, {
+        icon: '🛰️',
+        style: { 
+          background: 'rgba(10, 10, 15, 0.9)', 
+          color: '#fff', 
+          border: '1px solid rgba(49, 168, 255, 0.2)',
+          backdropFilter: 'blur(10px)',
+          borderRadius: '1rem'
+        }
+      });
+    } catch (err) {
+      toast.error('Falha ao enviar comando');
+    } finally {
+      setCommandLoading(null);
     }
+  };
 
+  const handleUnlink = async (id: string) => {
+    const loadingId = toast.loading('Desvinculando hardware...');
+    try {
+      const response = await fetch('/api/v1/install/unlink', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ installation_id: id })
+      });
+      
+      if (!response.ok) throw new Error();
+      
+      toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
+      fetchDevices();
+      setShowUnlinkModal(null);
+    } catch (error) {
+      toast.error('Falha ao desvincular.', { id: loadingId });
+    }
+  };
+
+  if (loading) {
     return (
-        <>
-            <div className="h-full w-full flex flex-col overflow-hidden">
-                {/* Header - Professional */}
-                <div className="flex-shrink-0 text-center py-4 border-b border-white/10 bg-[#0A0A0F]/50">
-                    <h1 className="text-lg sm:text-xl font-bold text-white flex items-center justify-center gap-2.5">
-                        <FiMonitor className="text-[#31A8FF] w-5 h-5 sm:w-6 sm:h-6" />
-                        <span>Meu Computador</span>
-                    </h1>
-                    <p className="text-xs text-slate-400 mt-1">Gerencie seus dispositivos remotamente</p>
-                </div>
-
-                {/* Content - Responsive with modern scroll */}
-                <div className="flex-1 min-h-0 p-4 overflow-y-auto custom-scrollbar-modern">
-                    <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4 pb-6">
-                        {installations.map((inst) => (
-                            <motion.div
-                                key={inst.id}
-                                className="bg-[#121218]/60 backdrop-blur-md border border-white/10 p-3 rounded-xl hover:border-[#31A8FF]/30 transition-all overflow-visible relative w-full max-w-2xl mx-auto h-fit"
-                            >
-                                <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl ${inst.is_optimized ? 'bg-emerald-500/20' : 'bg-blue-500/20'}`}></div>
-
-                                <div className="relative z-10">
-                                    {/* Header - Centered */}
-                                    <div className="flex justify-center items-center mb-2 gap-2 flex-shrink-0 relative">
-                                        <div className="flex items-center gap-2 min-w-0">
-                                            <div className={`w-2 h-2 rounded-full flex-shrink-0 ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000 ? 'bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50' : 'bg-slate-500'}`}></div>
-                                            <span className="text-white font-bold text-sm truncate">{inst.os_name}</span>
-                                        </div>
-                                        <button onClick={() => handleUnlinkClick(inst)} className="absolute right-0 p-1.5 bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors flex-shrink-0" title="Desvincular">
-                                            <FiX className="w-3.5 h-3.5" />
-                                        </button>
-                                    </div>
-
-                                    {/* Hardware - Centered & Responsive */}
-                                    <div className="space-y-1 mb-2 flex-shrink-0 text-[10px] sm:text-[11px]">
-                                        <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
-                                            <FiCpu className="text-[#31A8FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                            <span className="truncate text-center">{inst.cpu_name}</span>
-                                        </div>
-                                        <div className="flex items-center justify-center gap-2 text-slate-300 overflow-hidden px-2">
-                                            <FiZap className="text-[#8B31FF] w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                            <span className="truncate text-center">{inst.gpu_name || 'GPU não detectada'}</span>
-                                        </div>
-                                        <div className="flex items-center justify-center gap-2 text-slate-300">
-                                            <FiShield className="text-emerald-400 w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                            <span>{inst.ram_gb_total}GB • {inst.disk_type || 'HDD'}</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Status - Centered & Responsive */}
-                                    <div className="flex flex-wrap justify-center gap-1.5 mb-2 flex-shrink-0">
-                                        <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.is_optimized ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
-                                            {inst.is_optimized ? '✓ OTIMIZADO' : 'PADRÃO'}
-                                        </div>
-                                        <div className={`px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold whitespace-nowrap ${inst.license_status === 'active' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'}`}>
-                                            {inst.license_status?.toUpperCase() || 'TRIAL'}
-                                        </div>
-                                    </div>
-
-                                    {/* Controls - Responsive Categorized Layout */}
-                                    <div className="space-y-2 py-2.5 border-t border-white/10">
-                                        {/* OTIMIZAÇÃO E CORREÇÃO */}
-                                        <div>
-                                            <div className="flex items-center gap-1.5 mb-1">
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
-                                                <span className="text-[8px] sm:text-[9px] font-bold text-[#31A8FF] uppercase tracking-wider whitespace-nowrap px-1">Otimização e Correção</span>
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
-                                            </div>
-                                            <div className="grid grid-cols-2 gap-1.5">
-                                                <button
-                                                    onClick={() => sendCommand(inst.id, 'AUTO_OPTIMIZE_PERFORMANCE', '🚀 Otimizando...', 'Otimização concluída!')}
-                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-white rounded-lg hover:shadow-lg hover:shadow-[#31A8FF]/20 transition-all duration-200 overflow-hidden"
-                                                >
-                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                    <div className="relative flex items-center justify-center gap-1.5">
-                                                        <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Otimizar</span>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    onClick={() => { setCurrentInstallationId(inst.id); setPreparePcModalOpen(true); }}
-                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-200 overflow-hidden"
-                                                >
-                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                    <div className="relative flex items-center justify-center gap-1.5">
-                                                        <FiTarget className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Prepare PC</span>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        {/* MODO GAMER */}
-                                        <div>
-                                            <div className="flex items-center gap-1.5 mb-1">
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
-                                                <span className="text-[8px] sm:text-[9px] font-bold text-purple-400 uppercase tracking-wider whitespace-nowrap px-1">Modo Gamer</span>
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent"></div>
-                                            </div>
-                                            <div className="grid grid-cols-2 gap-1.5">
-                                                <button
-                                                    onClick={() => sendCommand(inst.id, 'ENABLE_GAMER_MODE', '🎮 Ativando...', 'Modo Gamer ativado!')}
-                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-200 overflow-hidden"
-                                                >
-                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                    <div className="relative flex items-center justify-center gap-1.5">
-                                                        <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Ativar</span>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    onClick={() => sendCommand(inst.id, 'DISABLE_GAMER_MODE', '🎮 Desativando...', 'Modo Gamer desativado!')}
-                                                    className="group relative px-2 py-1.5 bg-[#0A0A0F] border border-purple-500/30 text-purple-400 rounded-lg hover:bg-purple-500/10 transition-all duration-200"
-                                                >
-                                                    <div className="relative flex items-center justify-center gap-1.5">
-                                                        <FiSettings className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Desativar</span>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        {/* FERRAMENTAS DO SISTEMA */}
-                                        <div>
-                                            <div className="flex items-center gap-1.5 mb-1">
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
-                                                <span className="text-[8px] sm:text-[9px] font-bold text-emerald-400 uppercase tracking-wider whitespace-nowrap px-1">Ferramentas</span>
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
-                                            </div>
-                                            <div className="grid grid-cols-3 gap-1.5">
-                                                <button
-                                                    onClick={() => sendCommand(inst.id, 'OPTIMIZE_RAM', '⚡ Limpando RAM...', 'RAM otimizada!')}
-                                                    className="group relative px-1.5 py-1.5 bg-white text-black rounded-lg hover:shadow-lg hover:shadow-white/20 transition-all duration-200 overflow-hidden"
-                                                    title="Otimizar RAM"
-                                                >
-                                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
-                                                    <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                        <FiZap className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[8px] sm:text-[9px] font-bold">RAM</span>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    onClick={() => sendCommand(inst.id, 'CLEAN_SYSTEM', '🧹 Limpando...', 'Sistema limpo!')}
-                                                    className="group relative px-1.5 py-1.5 bg-[#121218] border border-white/10 text-white rounded-lg hover:bg-white/10 transition-all duration-200"
-                                                    title="Limpar Sistema"
-                                                >
-                                                    <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                        <FiShield className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[8px] sm:text-[9px] font-bold">Limpar</span>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    onClick={() => sendCommand(inst.id, 'OPTIMIZE_NETWORK', '🌐 Otimizando...', 'Rede otimizada!')}
-                                                    className="group relative px-1.5 py-1.5 bg-[#0A0A0F] border border-teal-500/30 text-teal-400 rounded-lg hover:bg-teal-500/10 transition-all duration-200"
-                                                    title="Otimizar Rede"
-                                                >
-                                                    <div className="relative flex flex-col items-center justify-center gap-0.5">
-                                                        <FiMonitor className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[8px] sm:text-[9px] font-bold">Rede</span>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                        {/* ENERGIA */}
-                                        <div>
-                                            <div className="flex items-center gap-1.5 mb-1">
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
-                                                <span className="text-[8px] sm:text-[9px] font-bold text-orange-400 uppercase tracking-wider whitespace-nowrap px-1">Energia</span>
-                                                <div className="h-px flex-1 bg-gradient-to-r from-transparent via-orange-500/30 to-transparent"></div>
-                                            </div>
-                                            <div className="grid grid-cols-2 gap-1.5">
-                                                <button
-                                                    onClick={() => { setCurrentInstallationId(inst.id); setRestartModalOpen(true); }}
-                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-200 overflow-hidden"
-                                                >
-                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                    <div className="relative flex items-center justify-center gap-1.5">
-                                                        <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Reiniciar</span>
-                                                    </div>
-                                                </button>
-                                                <button
-                                                    onClick={() => { setCurrentInstallationId(inst.id); setShutdownModalOpen(true); }}
-                                                    className="group relative px-2 py-1.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:shadow-lg hover:shadow-red-500/20 transition-all duration-200 overflow-hidden"
-                                                >
-                                                    <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
-                                                    <div className="relative flex items-center justify-center gap-1.5">
-                                                        <FiPower className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
-                                                        <span className="text-[9px] sm:text-[10px] font-bold truncate">Desligar</span>
-                                                    </div>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </div>
-
-            {/* Modal Prepare PC */}
-            <ConfirmModal
-                isOpen={preparePcModalOpen}
-                onClose={() => setPreparePcModalOpen(false)}
-                onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'PREPARE_PC', '🎯 Iniciando otimização completa...', 'Otimização completa iniciada!');
-                }}
-                title="Otimização Completa (Prepare PC)"
-                message="Esta operação irá otimizar completamente seu sistema"
-                details={[
-                    'Criar ponto de restauração',
-                    'Otimizar RAM e Serviços',
-                    'Configurar plano de energia',
-                    'Limpar sistema',
-                    'Otimizar rede'
-                ]}
-                confirmText="Iniciar Otimização"
-                cancelText="Cancelar"
-                confirmColor="green"
-                icon={<FiTarget className="w-6 h-6 text-emerald-400" />}
-            />
-
-            {/* Modal Restart */}
-            <ConfirmModal
-                isOpen={restartModalOpen}
-                onClose={() => setRestartModalOpen(false)}
-                onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'RESTART', '🔄 Enviando comando...', 'Reinicialização agendada!');
-                }}
-                title="Reiniciar Computador"
-                message="O sistema será reiniciado em 10 segundos"
-                details={[
-                    'Salve todos os arquivos abertos',
-                    'Feche aplicativos importantes',
-                    'O computador reiniciará automaticamente'
-                ]}
-                confirmText="Reiniciar Agora"
-                cancelText="Cancelar"
-                confirmColor="orange"
-                icon={<FiPower className="w-6 h-6 text-orange-400" />}
-            />
-
-            {/* Modal Shutdown */}
-            <ConfirmModal
-                isOpen={shutdownModalOpen}
-                onClose={() => setShutdownModalOpen(false)}
-                onConfirm={async () => {
-                    await sendCommand(currentInstallationId, 'SHUTDOWN', '🔴 Enviando comando...', 'Desligamento agendado!');
-                }}
-                title="Desligar Computador"
-                message="O sistema será desligado em 10 segundos"
-                details={[
-                    'Salve todos os arquivos abertos',
-                    'Feche aplicativos importantes',
-                    'O computador desligará automaticamente'
-                ]}
-                confirmText="Desligar Agora"
-                cancelText="Cancelar"
-                confirmColor="red"
-                icon={<FiPower className="w-6 h-6 text-red-400" />}
-            />
-
-            {/* Modal de Confirmação de Unlink */}
-            <AnimatePresence>
-                {unlinkModalOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-                        onClick={() => setUnlinkModalOpen(false)}
-                    >
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="bg-[#121218] border border-white/10 rounded-2xl p-6 max-w-md w-full shadow-2xl"
-                        >
-                            <div className="flex items-start gap-4 mb-6">
-                                <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-2xl">
-                                    ⚠️
-                                </div>
-                                <div className="flex-1">
-                                    <h2 className="text-xl font-bold text-white mb-2">Desvincular Computador?</h2>
-                                    <p className="text-sm text-slate-400 leading-relaxed">
-                                        Você perderá o acesso remoto e a telemetria deste dispositivo.
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="flex gap-3">
-                                <button
-                                    onClick={() => setUnlinkModalOpen(false)}
-                                    className="flex-1 px-4 py-3 bg-white/5 text-white rounded-lg hover:bg-white/10 transition-colors font-medium"
-                                >
-                                    Cancelar
-                                </button>
-                                <button
-                                    onClick={handleConfirmUnlink}
-                                    className="flex-1 px-4 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors font-bold"
-                                >
-                                    Desvincular
-                                </button>
-                            </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Modal de Licença Expirada */}
-            <LicenseExpiredModal
-                isOpen={licenseModalOpen}
-                onClose={() => setLicenseModalOpen(false)}
-                trialDaysRemaining={licenseInfo?.trial_days_remaining || 0}
-                reason={licenseInfo?.reason || 'trial_expired'}
-            />
-        </>
+      <div className="flex flex-col items-center justify-center h-64 gap-6">
+        <div className="relative">
+          <div className="w-16 h-16 border-t-4 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
+          <div className="absolute inset-0 w-16 h-16 border-b-4 border-l-4 border-[#8B31FF] rounded-full animate-spin-reverse opacity-50"></div>
+        </div>
+        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Establishing Secure Uplink...</p>
+      </div>
     );
+  }
+
+  return (
+    <div className="flex flex-col gap-10">
+      
+      {/* Page Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="space-y-2">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
+            <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter">Instance <span className="text-[#31A8FF] not-italic">Manager</span></h2>
+          </div>
+          <p className="text-white/40 font-bold text-xs uppercase tracking-widest pl-5 font-mono">Real-time hardware telemetry and control</p>
+        </div>
+
+        <Link href="/voltrisoptimizer" className="flex items-center gap-3 px-8 py-4 voltris-glass border border-[#31A8FF]/20 rounded-2xl text-[#31A8FF] hover:bg-[#31A8FF] hover:text-white transition-all group shadow-2xl">
+          <FiDownload className="w-5 h-5 group-hover:animate-bounce" />
+          <span className="text-[10px] font-black uppercase tracking-[0.2em]">Deploy Optimizer</span>
+        </Link>
+      </div>
+
+      {devices.length === 0 ? (
+        <div className={`p-24 rounded-[4rem] border border-white/5 text-center flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
+           <div className="relative">
+             <FiMonitor className="w-20 h-20 text-white/5" />
+             <FiPlus className="absolute -top-2 -right-2 w-10 h-10 text-[#31A8FF] animate-pulse" />
+           </div>
+           <div className="space-y-3">
+             <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">No Active Nodes Detected</h3>
+             <p className="text-white/30 font-bold text-xs uppercase tracking-[0.2em] max-w-sm mx-auto leading-relaxed">Initialize Voltris Optimizer on your personal computer to establish a management link.</p>
+           </div>
+           <Link href="/voltrisoptimizer" className="mt-4 px-10 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-110 active:scale-95 transition-all shadow-3xl text-xs">
+              Obtain Deployment Package
+           </Link>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-10">
+          {devices.map((device) => (
+            <motion.div
+              key={device.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`group relative rounded-[3.5rem] border overflow-hidden transition-all duration-700
+                ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-[0_50px_100px_rgba(0,0,0,0.4)]'}
+                hover:border-[#31A8FF]/40
+              `}
+            >
+              {/* Device Status Glow Backdrop */}
+              <div className={`absolute -right-40 -top-40 w-[600px] h-[600px] ${device.is_online ? 'bg-[#00FF88]/5' : 'bg-white/5'} blur-[150px] rounded-full transition-all duration-1000 group-hover:opacity-100 opacity-60`}></div>
+
+              <div className="relative z-10 flex flex-col xl:flex-row">
+                
+                {/* Visual Identity / Host Info */}
+                <div className="p-10 xl:w-96 flex flex-col items-center justify-center text-center border-b xl:border-b-0 xl:border-r border-white/5 xl:bg-white/[0.02]">
+                  <div className="relative mb-8">
+                    <div className={`w-40 h-40 rounded-[3rem] flex items-center justify-center text-white relative transition-all duration-700 group-hover:rotate-3 group-hover:scale-110 ${device.is_online ? 'bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]' : 'bg-white/5 grayscale opacity-30'}`}>
+                       <FiMonitor className="w-16 h-16 relative z-10" />
+                       {device.is_online && <div className="absolute inset-0 rounded-[3rem] blur-2xl opacity-60 bg-gradient-to-br from-[#31A8FF] to-[#FF4B6B] animate-pulse"></div>}
+                       <div className="absolute inset-2 border border-white/20 rounded-[2.5rem] opacity-30"></div>
+                    </div>
+                    <div className={`absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl border-4 ${transparencyMode ? 'border-[#0F0F1A]' : 'border-[#12121A]'} flex items-center justify-center z-20 shadow-2xl ${device.is_online ? 'bg-[#00FF88] shadow-[#00FF88]/30' : 'bg-slate-700'}`}>
+                       {device.is_online ? <FiZap className="w-6 h-6 text-black" /> : <FiPower className="w-6 h-6 text-white" />}
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-1 w-full">
+                    <h3 className="text-3xl font-black text-white uppercase italic tracking-widest truncate px-4">{device.pc_name}</h3>
+                    <div className="flex flex-col gap-2 pt-2">
+                      <div className={`mx-auto px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] inline-flex items-center gap-2 border ${device.is_online ? 'text-[#00FF88] border-[#00FF88]/20 bg-[#00FF88]/5' : 'text-slate-500 border-white/5 bg-white/5'}`}>
+                        <div className={`w-2 h-2 rounded-full ${device.is_online ? 'bg-[#00FF88] animate-pulse' : 'bg-slate-500'}`}></div>
+                        {device.is_online ? 'Live Connection' : 'Link Lost'}
+                      </div>
+                      <p className="text-[10px] font-bold text-white/20 uppercase tracking-widest font-mono">Telemetry: {new Date(device.last_heartbeat || device.last_active).toLocaleString()}</p>
+                    </div>
+                  </div>
+
+                  <button 
+                    onClick={() => setShowUnlinkModal(device.id)}
+                    className="mt-10 flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-500/5 border border-red-500/10 text-[10px] font-black uppercase tracking-widest text-red-500/40 hover:text-red-500 hover:bg-red-500/10 hover:border-red-500/30 transition-all active:scale-95"
+                  >
+                    <FiTrash2 className="w-3.5 h-3.5" />
+                    Terminate Connection
+                  </button>
+                </div>
+
+                {/* Main Content Area */}
+                <div className="flex-1 flex flex-col">
+                  
+                  {/* Real-time Status Ribbons */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 border-b border-white/5 bg-black/20">
+                    {[
+                      { label: 'Network', value: device.is_online ? 'Encrypted' : 'Standby', icon: FiActivity, color: device.is_online ? 'text-[#31A8FF]' : 'text-slate-500' },
+                      { label: 'Optimizer', value: device.is_optimized ? 'Active' : 'Standby', icon: FiZap, color: device.is_optimized ? 'text-[#8B31FF]' : 'text-slate-500' },
+                      { label: 'Protection', value: 'Shield Active', icon: FiShield, color: 'text-emerald-400' },
+                      { label: 'Protocol', value: device.is_licensed ? 'Full Access' : 'Restricted', icon: FiCheck, color: device.is_licensed ? 'text-[#31A8FF]' : 'text-red-400' },
+                    ].map((stat, i) => (
+                      <div key={i} className="p-7 border-r border-white/5 flex flex-col gap-2 group/stat relative overflow-hidden">
+                        <div className="absolute inset-0 bg-white/0 group-hover/stat:bg-white/[0.02] transition-all"></div>
+                        <div className="flex items-center justify-between text-white/20 relative z-10">
+                          <span className="text-[9px] font-black uppercase tracking-[0.2em]">{stat.label}</span>
+                          <stat.icon className="w-5 h-5 opacity-40 group-hover/stat:scale-125 group-hover/stat:rotate-12 transition-all duration-500" />
+                        </div>
+                        <span className={`text-[11px] font-black uppercase italic tracking-[0.1em] relative z-10 ${stat.color}`}>{stat.value}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Hardware Specification Architecture */}
+                  <div className="flex-1 p-10 grid grid-cols-1 md:grid-cols-2 gap-10 bg-white/[0.01]">
+                    
+                    {/* CPU & RAM Architecture */}
+                    <div className="space-y-8">
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-[#31A8FF]/30 transition-all group/hw">
+                          <div className="p-4 rounded-2xl bg-[#31A8FF]/10 text-[#31A8FF] shadow-[0_0_20px_rgba(49,168,255,0.1)] group-hover/hw:scale-110 transition-transform"><FiCpu className="w-8 h-8" /></div>
+                          <div className="flex flex-col min-w-0">
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Primary Processor Module</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight truncate leading-tight">{device.cpu || 'Undetected Processor'}</span>
+                          </div>
+                       </div>
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-[#8B31FF]/30 transition-all group/hw">
+                          <div className="p-4 rounded-2xl bg-[#8B31FF]/10 text-[#8B31FF] shadow-[0_0_20px_rgba(139,49,255,0.1)] group-hover/hw:scale-110 transition-transform"><FiActivity className="w-8 h-8" /></div>
+                          <div className="flex flex-col min-w-0">
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Dynamic Memory Allocation</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight">{device.ram || 'Memory Not Found'}</span>
+                          </div>
+                       </div>
+                    </div>
+
+                    {/* GPU & OS Architecture */}
+                    <div className="space-y-8">
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-[#FF4B6B]/30 transition-all group/hw">
+                          <div className="p-4 rounded-2xl bg-[#FF4B6B]/10 text-[#FF4B6B] shadow-[0_0_20px_rgba(255,75,107,0.1)] group-hover/hw:scale-110 transition-transform"><FiMonitor className="w-8 h-8" /></div>
+                          <div className="flex flex-col min-w-0">
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Visual Computation Unit</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight truncate">{device.gpu || 'Hardware Accelerated Graphics'}</span>
+                          </div>
+                       </div>
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:border-emerald-400/30 transition-all group/hw">
+                          <div className="p-4 rounded-2xl bg-emerald-400/10 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.1)] group-hover/hw:scale-110 transition-transform"><FiHardDrive className="w-8 h-8" /></div>
+                          <div className="flex flex-col min-w-0">
+                            <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1.5">Operating System Kernel</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight">{device.os || 'Windows Master Build'}</span>
+                          </div>
+                       </div>
+                    </div>
+
+                  </div>
+
+                  {/* Remote Command Terminal (Uplink Controls) */}
+                  <div className="p-10 border-t border-white/5 bg-black/10 grid grid-cols-2 md:grid-cols-5 gap-5">
+                    <RemoteAction 
+                      icon={FiZap} label="Optimize" color="blue" 
+                      onClick={() => handleRemoteCommand(device.id, 'optimize')}
+                      loading={commandLoading === `${device.id}-optimize`}
+                    />
+                    <RemoteAction 
+                      icon={FiTerminal} label="Prepare PC" color="emerald" 
+                      onClick={() => handleRemoteCommand(device.id, 'prepare')}
+                      loading={commandLoading === `${device.id}-prepare`}
+                    />
+                    <RemoteAction 
+                      icon={FiRefreshCw} label="Reboot Link" color="amber" 
+                      onClick={() => handleRemoteCommand(device.id, 'restart')}
+                      loading={commandLoading === `${device.id}-restart`}
+                    />
+                    <RemoteAction 
+                      icon={FiPower} label="Shut Down" color="red" 
+                      onClick={() => handleRemoteCommand(device.id, 'shutdown')}
+                      loading={commandLoading === `${device.id}-shutdown`}
+                    />
+                    <RemoteAction 
+                      icon={FiShield} label="Gamer Mode" color="blue" 
+                      onClick={() => handleRemoteCommand(device.id, 'gamer')}
+                      loading={commandLoading === `${device.id}-gamer`}
+                    />
+                  </div>
+
+                </div>
+              </div>
+              
+              {/* Bottom Progress Bar Decor */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#31A8FF]/30 to-transparent"></div>
+            </motion.div>
+          ))}
+        </div>
+      )}
+
+      {/* Advanced Confirmation Overlay */}
+      <AnimatePresence>
+        {showUnlinkModal && (
+          <div className="fixed inset-0 z-[250] flex items-center justify-center p-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={() => setShowUnlinkModal(null)} />
+            <motion.div 
+              initial={{ scale: 0.9, y: 30, rotateX: 20 }} 
+              animate={{ scale: 1, y: 0, rotateX: 0 }} 
+              exit={{ scale: 0.9, y: 30, rotateX: 20 }} 
+              className={`relative w-full max-w-lg p-12 rounded-[4rem] border border-white/10 shadow-[0_0_100px_rgba(239,68,68,0.2)] flex flex-col items-center text-center ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}
+            >
+               <div className="w-24 h-24 rounded-[2.5rem] bg-red-500/10 flex items-center justify-center text-red-500 mb-8 border border-red-500/20 shadow-inner">
+                 <FiAlertCircle className="w-12 h-12" />
+               </div>
+               <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter mb-4">Command <span className="text-red-500">Termination</span></h3>
+               <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed mb-12 max-w-sm">Você está removendo este nó da rede neural Voltris. Todos os privilégios de otimização remota serão revogados instantaneamente.</p>
+               <div className="flex w-full gap-5">
+                  <button onClick={() => setShowUnlinkModal(null)} className="flex-1 py-5 rounded-3xl bg-white/5 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white/10 transition-all active:scale-95">Abort Mission</button>
+                  <button onClick={() => handleUnlink(showUnlinkModal)} className="flex-1 py-5 rounded-3xl bg-red-500 text-white font-black uppercase text-[10px] tracking-[0.2em] shadow-[0_20px_40px_rgba(239,68,68,0.3)] hover:scale-105 active:scale-95 transition-all">Execute Unlink</button>
+               </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+    </div>
+  );
 }

@@ -1,12 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import { createClient } from '@/utils/supabase/client';
 import { toast } from 'react-hot-toast';
 import { useAuth } from '@/app/hooks/useAuth';
-import { FiPlus, FiMessageSquare, FiClock, FiCheckCircle, FiAlertCircle, FiX, FiSend, FiInbox } from 'react-icons/fi';
+import { 
+  FiPlus, FiMessageSquare, FiClock, FiCheckCircle, 
+  FiAlertCircle, FiX, FiSend, FiInbox, FiFilter,
+  FiTerminal, FiActivity, FiArrowRight, FiShield
+} from 'react-icons/fi';
+import { useDashboard } from '@/app/context/DashboardContext';
 
 interface Ticket {
   id: string;
@@ -19,8 +24,9 @@ interface Ticket {
 }
 
 export default function TicketsClient() {
+  const { transparencyMode } = useDashboard();
   const { user } = useAuth();
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
   const [filter, setFilter] = useState('all');
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -28,9 +34,9 @@ export default function TicketsClient() {
   const [selectedTicket, setSelectedTicket] = useState<Ticket | null>(null);
   const [showTicketModal, setShowTicketModal] = useState(false);
   const [messages, setMessages] = useState<any[]>([]);
-  const [loadingMessages, setLoadingMessages] = useState(false);
+  const [replyText, setReplyText] = useState('');
+  const [isSendingReply, setIsSendingReply] = useState(false);
 
-  // Queries e Realtime
   const { data: tickets = [], refetch, isLoading } = useQuery({
     queryKey: ['tickets', user?.id],
     queryFn: async () => {
@@ -50,14 +56,11 @@ export default function TicketsClient() {
     return () => { supabase.removeChannel(channel); };
   }, [user, refetch, supabase]);
 
-  // Carregar mensagens quando abrir modal
   useEffect(() => {
     const fetchMessages = async () => {
       if (!selectedTicket) return;
-      setLoadingMessages(true);
       const { data } = await supabase.from('ticket_messages').select('*').eq('ticket_id', selectedTicket.id).order('created_at', { ascending: true });
       setMessages(data || []);
-      setLoadingMessages(false);
     };
     if (selectedTicket && showTicketModal) fetchMessages();
   }, [selectedTicket, showTicketModal, supabase]);
@@ -67,11 +70,9 @@ export default function TicketsClient() {
     setIsCreating(true);
     try {
       if (!user) throw new Error('Usuário não autenticado');
-
       const { data: ticket, error } = await supabase.from('tickets').insert([{
         title: newTicket.title, status: 'Aberto', user_id: user.id, priority: newTicket.priority
       }]).select().single();
-
       if (error) throw error;
 
       await supabase.from('ticket_messages').insert({ ticket_id: ticket.id, content: newTicket.description, user_id: user.id });
@@ -79,7 +80,10 @@ export default function TicketsClient() {
       setNewTicket({ title: '', description: '', priority: 'medium' });
       setShowCreateForm(false);
       refetch();
-      toast.success('Ticket criado!');
+      toast.success('Ticket de suporte aberto!', {
+        icon: '🎫',
+        style: { background: 'rgba(10, 10, 15, 0.9)', color: '#fff', border: '1px solid rgba(49, 168, 255, 0.2)' }
+      });
     } catch (err: any) {
       toast.error(err.message);
     } finally {
@@ -87,171 +91,276 @@ export default function TicketsClient() {
     }
   };
 
-  const statusConfig = (status: string) => {
-    switch (status) {
-      case 'Aberto': return { color: 'yellow', icon: FiClock };
-      case 'Em Análise': return { color: 'blue', icon: FiClock };
-      case 'Resolvido': return { color: 'green', icon: FiCheckCircle };
-      case 'Finalizado': return { color: 'gray', icon: FiCheckCircle };
-      default: return { color: 'gray', icon: FiClock };
+  const handleSendReply = async () => {
+    if (!replyText.trim() || !selectedTicket || !user) return;
+    setIsSendingReply(true);
+    try {
+      const { error } = await supabase.from('ticket_messages').insert({
+        ticket_id: selectedTicket.id,
+        content: replyText,
+        user_id: user.id
+      });
+      if (error) throw error;
+      setReplyText('');
+      const { data } = await supabase.from('ticket_messages').select('*').eq('ticket_id', selectedTicket.id).order('created_at', { ascending: true });
+      setMessages(data || []);
+    } catch (error) {
+       toast.error('Falha ao enviar mensagem');
+    } finally {
+       setIsSendingReply(false);
     }
   };
 
-  const priorityLabel = (p: string) => ({ low: 'Baixa', medium: 'Média', high: 'Alta' }[p] || p);
-  const priorityColor = (p: string) => ({ low: 'text-green-400', medium: 'text-yellow-400', high: 'text-red-400' }[p] || 'text-gray-400');
+  const statusConfig = (status: string) => {
+    switch (status) {
+      case 'Aberto': return { color: 'text-amber-400', bg: 'bg-amber-400/10', border: 'border-amber-400/20', icon: FiClock };
+      case 'Em Análise': return { color: 'text-[#31A8FF]', bg: 'bg-[#31A8FF]/10', border: 'border-[#31A8FF]/20', icon: FiActivity };
+      case 'Resolvido': return { color: 'text-[#00FF88]', bg: 'bg-[#00FF88]/10', border: 'border-[#00FF88]/20', icon: FiCheckCircle };
+      case 'Finalizado': return { color: 'text-slate-400', bg: 'bg-slate-400/10', border: 'border-slate-400/10', icon: FiShield };
+      default: return { color: 'text-slate-400', bg: 'bg-slate-400/10', border: 'border-slate-400/10', icon: FiInbox };
+    }
+  };
 
   const filteredTickets = tickets.filter(t => filter === 'all' || t.status === filter);
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-        <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Suporte Técnico</h1>
-          <p className="text-slate-400">Abra chamados e acompanhe suas solicitações.</p>
+    <div className="flex flex-col gap-10">
+      
+      {/* Header Area */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+        <div className="space-y-2">
+           <div className="flex items-center gap-3">
+             <div className="w-2 h-8 bg-gradient-to-b from-[#8B31FF] to-[#31A8FF] rounded-full"></div>
+             <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Command <span className="text-[#8B31FF] not-italic">Support</span></h2>
+           </div>
+           <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Neural interface for technical assistance</p>
         </div>
-        <div className="flex gap-3 w-full md:w-auto">
-          <select
-            value={filter} onChange={e => setFilter(e.target.value)}
-            className="bg-[#121218] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-[#8B31FF] flex-1 md:w-48 appearance-none cursor-pointer"
-          >
-            <option value="all">Todos os Tickets</option>
-            <option value="Aberto">Abertos</option>
-            <option value="Em Análise">Em Análise</option>
-            <option value="Resolvido">Resolvidos</option>
-          </select>
-          <button onClick={() => setShowCreateForm(true)} className="flex items-center gap-2 px-6 py-2.5 bg-[#8B31FF] hover:bg-[#7A20EE] text-white rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(139,49,255,0.2)] whitespace-nowrap">
-            <FiPlus /> Novo Ticket
-          </button>
-        </div>
-      </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <AnimatePresence>
-          {filteredTickets.length > 0 ? filteredTickets.map((ticket, i) => {
-            const { color, icon: Icon } = statusConfig(ticket.status);
-            return (
-              <motion.div
-                key={ticket.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
-                onClick={() => { setSelectedTicket(ticket); setShowTicketModal(true); }}
-                className="bg-[#121218]/60 backdrop-blur-md border border-white/5 rounded-2xl p-6 hover:border-[#8B31FF]/30 transition-all cursor-pointer group hover:-translate-y-1"
+        <div className="flex items-center gap-4 w-full md:w-auto">
+           <div className="relative group flex-1 md:flex-none">
+              <FiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-[#8B31FF] transition-colors" />
+              <select 
+                value={filter} 
+                onChange={e => setFilter(e.target.value)}
+                className="w-full md:w-56 pl-11 pr-6 py-4 rounded-2xl bg-[#0A0A10]/50 border border-white/5 text-white/40 group-hover:text-white font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#8B31FF] transition-all appearance-none cursor-pointer"
               >
-                <div className="flex justify-between items-start mb-4">
-                  <div className={`p-3 rounded-xl bg-${color}-500/10 text-${color}-400 border border-${color}-500/20`}>
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <span className={`text-xs font-bold px-2 py-1 rounded bg-white/5 border border-white/10 ${priorityColor(ticket.priority)}`}>
-                    {priorityLabel(ticket.priority)}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2 line-clamp-1">{ticket.title}</h3>
-                <p className="text-slate-400 text-sm line-clamp-2 mb-4 h-10">{ticket.description}</p>
-
-                <div className="flex justify-between items-center text-xs text-slate-500 border-t border-white/5 pt-4">
-                  <span>#{ticket.id.slice(0, 6)}</span>
-                  <span>{new Date(ticket.created_at).toLocaleDateString()}</span>
-                </div>
-              </motion.div>
-            );
-          }) : (
-            <div className="col-span-full py-20 text-center opacity-50 flex flex-col items-center">
-              <FiInbox className="w-16 h-16 text-slate-600 mb-4" />
-              <p className="text-xl text-white font-bold">Nenhum ticket encontrado</p>
-              <p className="text-slate-400">Use o botão acima para abrir um chamado.</p>
-            </div>
-          )}
-        </AnimatePresence>
+                <option value="all">ALL FREQUENCIES</option>
+                <option value="Aberto">OPEN NODES</option>
+                <option value="Em Análise">UNDER REVIEW</option>
+                <option value="Resolvido">RESOLVED</option>
+              </select>
+           </div>
+           <button 
+             onClick={() => setShowCreateForm(true)}
+             className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-3xl text-xs whitespace-nowrap"
+           >
+              <FiPlus className="w-4 h-4" />
+              Open Sublink
+           </button>
+        </div>
       </div>
 
-      {/* Create Modal */}
+      {isLoading ? (
+        <div className="flex flex-col items-center justify-center py-20 gap-6 opacity-30">
+          <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
+          <p className="font-black uppercase tracking-[0.3em] text-[10px]">Scanning Uplinks...</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredTickets.length > 0 ? (
+              filteredTickets.map((ticket, i) => {
+                const config = statusConfig(ticket.status);
+                const Icon = config.icon;
+                return (
+                  <motion.div
+                    key={ticket.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    whileHover={{ y: -5 }}
+                    onClick={() => { setSelectedTicket(ticket); setShowTicketModal(true); }}
+                    className={`group p-8 rounded-[3rem] border transition-all duration-500 cursor-pointer overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'} hover:border-[#8B31FF]/40`}
+                  >
+                    <div className="relative z-10 flex flex-col h-full gap-6">
+                       <div className="flex justify-between items-start">
+                          <div className={`p-4 rounded-2xl ${config.bg} ${config.border} ${config.color} shadow-lg transition-transform group-hover:scale-110 group-hover:rotate-3`}>
+                             <Icon className="w-6 h-6" />
+                          </div>
+                          <div className="flex flex-col items-end">
+                             <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] mb-1">Priority</span>
+                             <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border border-white/5 ${ticket.priority === 'high' ? 'text-red-400 bg-red-400/5' : ticket.priority === 'medium' ? 'text-amber-400 bg-amber-400/5' : 'text-emerald-400 bg-emerald-400/5'}`}>
+                                {ticket.priority.toUpperCase()}
+                             </span>
+                          </div>
+                       </div>
+
+                       <div className="space-y-2">
+                         <h3 className="text-xl font-black text-white uppercase italic tracking-tighter truncate leading-none">{ticket.title}</h3>
+                         <p className="text-white/30 text-xs font-bold line-clamp-2 leading-relaxed uppercase tracking-wider">{ticket.description}</p>
+                       </div>
+
+                       <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                          <div className="flex flex-col">
+                             <span className="text-[9px] font-black text-white/10 uppercase tracking-widest">ID Hash</span>
+                             <span className="text-[10px] font-black text-[#8B31FF] uppercase font-mono tracking-widest">#{ticket.id.slice(0, 6)}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-white/20 group-hover:text-white transition-colors">
+                             <span className="text-[10px] font-black uppercase tracking-widest italic">Review Transmission</span>
+                             <FiArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                          </div>
+                       </div>
+                    </div>
+                  </motion.div>
+                );
+              })
+            ) : (
+              <div className={`col-span-full p-24 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
+                 <FiInbox className="w-20 h-20 text-white/5" />
+                 <div className="space-y-2">
+                    <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">No Active Uplinks</h3>
+                    <p className="text-white/20 font-bold text-xs uppercase tracking-[0.2em]">You have no technical support frequency active at the moment.</p>
+                 </div>
+              </div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
+
+      {/* Modern Ticket Creation Modal */}
       <AnimatePresence>
         {showCreateForm && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="bg-[#121218] border border-white/10 rounded-3xl p-8 max-w-lg w-full relative">
-              <button onClick={() => setShowCreateForm(false)} className="absolute top-6 right-6 text-slate-400 hover:text-white"><FiX size={24} /></button>
-              <h2 className="text-2xl font-bold text-white mb-6">Novo Ticket</h2>
-              <form onSubmit={handleCreateTicket} className="space-y-4">
-                <div>
-                  <label className="text-sm text-slate-400 mb-1 block">Assunto</label>
-                  <input type="text" value={newTicket.title} onChange={e => setNewTicket({ ...newTicket, title: e.target.value })} className="w-full bg-[#0A0A0F] border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#8B31FF] outline-none" required />
-                </div>
-                <div>
-                  <label className="text-sm text-slate-400 mb-1 block">Prioridade</label>
-                  <select value={newTicket.priority} onChange={e => setNewTicket({ ...newTicket, priority: e.target.value as any })} className="w-full bg-[#0A0A0F] border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#8B31FF] outline-none appearance-none">
-                    <option value="low">Baixa</option>
-                    <option value="medium">Média</option>
-                    <option value="high">Alta</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-sm text-slate-400 mb-1 block">Descrição</label>
-                  <textarea value={newTicket.description} onChange={e => setNewTicket({ ...newTicket, description: e.target.value })} rows={4} className="w-full bg-[#0A0A0F] border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#8B31FF] outline-none resize-none" required />
-                </div>
-                <div className="pt-4 flex justify-end gap-3">
-                  <button type="button" onClick={() => setShowCreateForm(false)} className="px-5 py-2.5 rounded-xl border border-white/10 text-white hover:bg-white/5">Cancelar</button>
-                  <button type="submit" disabled={isCreating} className="px-6 py-2.5 rounded-xl bg-[#8B31FF] text-white font-bold hover:bg-[#7A20EE] disabled:opacity-50">{isCreating ? 'Enviando...' : 'Criar Chamado'}</button>
-                </div>
-              </form>
+          <div className="fixed inset-0 z-[300] flex items-center justify-center p-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={() => setShowCreateForm(false)} />
+            <motion.div initial={{ scale: 0.9, y: 30 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 30 }} className={`relative w-full max-w-2xl p-12 rounded-[4rem] border border-white/10 shadow-3xl ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
+               <button onClick={() => setShowCreateForm(false)} className="absolute top-10 right-10 p-3 rounded-2xl bg-white/5 text-white/40 hover:text-white transition-all"><FiX size={24} /></button>
+               
+               <div className="flex items-center gap-6 mb-12">
+                 <div className="w-20 h-20 rounded-[2rem] bg-[#8B31FF]/10 border border-[#8B31FF]/20 flex items-center justify-center text-[#8B31FF] shadow-lg shadow-[#8B31FF]/10">
+                   <FiTerminal className="w-10 h-10" />
+                 </div>
+                 <div className="space-y-1">
+                   <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter">New <span className="text-[#8B31FF] not-italic">Sublink</span></h3>
+                   <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">Establish interface with Voltris Tech</p>
+                 </div>
+               </div>
+
+               <form onSubmit={handleCreateTicket} className="space-y-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Transmission Subject</label>
+                      <input 
+                        type="text" required 
+                        value={newTicket.title} onChange={e => setNewTicket({...newTicket, title: e.target.value})}
+                        className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/5" 
+                        placeholder="Define problem space..."
+                      />
+                    </div>
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Priority Protocol</label>
+                      <select 
+                        value={newTicket.priority} onChange={e => setNewTicket({...newTicket, priority: e.target.value as any})}
+                        className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white/40 focus:text-white focus:border-[#8B31FF] outline-none transition-all appearance-none uppercase font-black text-[10px] tracking-widest cursor-pointer"
+                      >
+                         <option value="low">Standard Priority</option>
+                         <option value="medium">Medium Priority</option>
+                         <option value="high">Urgent Response Required</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Data Payload (Description)</label>
+                    <textarea 
+                      required rows={6}
+                      value={newTicket.description} onChange={e => setNewTicket({...newTicket, description: e.target.value})}
+                      className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/5 resize-none" 
+                      placeholder="Identify specific hardware or software failure markers..."
+                    />
+                  </div>
+                  <button 
+                    type="submit" disabled={isCreating}
+                    className="w-full py-6 rounded-3xl bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-black uppercase italic text-xs tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
+                  >
+                    {isCreating ? 'Transmitting Data...' : 'Broadcast Sublink Request'}
+                  </button>
+               </form>
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
 
-      {/* Details/Chat Modal */}
+      {/* Details/Chat Uplink Modal */}
       <AnimatePresence>
         {showTicketModal && selectedTicket && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md" onClick={() => setShowTicketModal(false)}>
-            <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} onClick={e => e.stopPropagation()} className="bg-[#121218] border border-white/10 rounded-3xl w-full max-w-3xl h-[80vh] flex flex-col overflow-hidden relative">
-              {/* Header */}
-              <div className="p-6 border-b border-white/5 flex justify-between items-center bg-[#1A1A22]">
-                <div>
-                  <h2 className="text-xl font-bold text-white mb-1">{selectedTicket.title}</h2>
-                  <p className="text-sm text-slate-400 flex items-center gap-2">
-                    <span className={`w-2 h-2 rounded-full ${{ 'Aberto': 'bg-yellow-500', 'Em Análise': 'bg-blue-500', 'Resolvido': 'bg-green-500' }[selectedTicket.status] || 'bg-gray-500'}`}></span>
-                    {selectedTicket.status} • #{selectedTicket.id.slice(0, 8)}
-                  </p>
-                </div>
-                <button onClick={() => setShowTicketModal(false)} className="p-2 hover:bg-white/5 rounded-full"><FiX className="text-white" size={24} /></button>
-              </div>
+          <div className="fixed inset-0 z-[350] flex items-center justify-center p-6 pb-0 md:pb-6">
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/98 backdrop-blur-2xl" onClick={() => setShowTicketModal(false)} />
+            <motion.div initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }} onClick={e => e.stopPropagation()} className={`relative w-full max-w-4xl h-full md:h-[90vh] flex flex-col overflow-hidden rounded-t-[3rem] md:rounded-[4rem] border border-white/10 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A12]'}`}>
+               
+               {/* Modal Navigation Header */}
+               <div className="px-10 py-8 bg-black/40 border-b border-white/5 flex justify-between items-center">
+                  <div className="flex items-center gap-6">
+                    <div className={`p-4 rounded-2xl ${statusConfig(selectedTicket.status).bg} ${statusConfig(selectedTicket.status).color} border ${statusConfig(selectedTicket.status).border}`}>
+                       {React.createElement(statusConfig(selectedTicket.status).icon, { className: 'w-6 h-6' })}
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-xl font-black text-white uppercase italic tracking-tighter truncate max-w-[200px] md:max-w-md">{selectedTicket.title}</h4>
+                      <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Transmission Channel: <span className="text-[#8B31FF]">#{selectedTicket.id.slice(0, 12)}</span></p>
+                    </div>
+                  </div>
+                  <button onClick={() => setShowTicketModal(false)} className="p-3 bg-white/5 text-white/20 hover:text-white rounded-2xl transition-all"><FiX size={24} /></button>
+               </div>
 
-              {/* Chat Area */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar bg-[#0A0A0F]">
-                {loadingMessages ? (
-                  <div className="flex justify-center"><div className="w-8 h-8 border-2 border-[#8B31FF] border-t-transparent rounded-full animate-spin"></div></div>
-                ) : messages.length > 0 ? (
-                  messages.map((msg) => {
-                    const isMe = msg.user_id === user?.id; // Assumindo que user_id da mensagem é de quem enviou
-                    // Se for suporte, user_id seria diferente. Mas a lógica original salvava com user_id do criador para a descrição inicial.
-                    // Em um sistema real, suporte teria ID diferente.
-                    // Vou assumir que user_id == user.id é 'Eu'.
+               {/* Communications Stream */}
+               <div className="flex-1 overflow-y-auto p-10 space-y-10 custom-scrollbar-modern">
+                  {messages.map((msg, i) => {
+                    const isMe = msg.user_id === user?.id;
                     return (
-                      <div key={msg.id} className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}>
-                        <div className={`p-4 rounded-2xl max-w-[80%] ${isMe ? 'bg-[#8B31FF]/20 text-white rounded-tr-none border border-[#8B31FF]/30' : 'bg-[#1E1E24] text-slate-200 rounded-tl-none border border-white/5'}`}>
-                          <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
-                        </div>
-                        <span className="text-[10px] text-slate-600 mt-2 px-1">{new Date(msg.created_at).toLocaleString()}</span>
-                      </div>
+                      <motion.div 
+                        initial={{ opacity: 0, x: isMe ? 20 : -20 }} 
+                        animate={{ opacity: 1, x: 0 }} 
+                        key={i} 
+                        className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}
+                      >
+                         <div className={`group relative p-6 rounded-[2.5rem] max-w-[85%] md:max-w-[70%] border transition-all duration-300 ${isMe ? 'bg-[#8B31FF]/10 border-[#8B31FF]/20 text-white rounded-tr-none' : 'bg-white/5 border-white/10 text-white/80 rounded-tl-none'}`}>
+                            <p className="text-sm font-bold leading-relaxed whitespace-pre-wrap uppercase tracking-wide italic">{msg.content}</p>
+                            <div className={`absolute top-0 ${isMe ? '-right-1' : '-left-1'} w-3 h-3 bg-inherit border-inherit rotate-45`}></div>
+                         </div>
+                         <span className="mt-3 px-2 text-[8px] font-black text-white/20 uppercase tracking-[0.3em] font-mono">
+                            {isMe ? 'TRANSMITTER' : 'RESONANCE CORE'} • {new Date(msg.created_at).toLocaleTimeString()}
+                         </span>
+                      </motion.div>
                     );
-                  })
-                ) : (
-                  <p className="text-center text-slate-500">Sem mensagens.</p>
-                )}
-              </div>
+                  })}
+               </div>
 
-              {/* Input Area (Mockup for now, as DB structure for replies wasn't fully detailed in previous files) */}
-              <div className="p-4 bg-[#1A1A22] border-t border-white/5">
-                <div className="relative">
-                  <input type="text" placeholder="Digite sua resposta... (Funcionalidade em breve)" disabled className="w-full bg-[#0A0A0F] border border-white/10 rounded-xl pl-4 pr-12 py-3.5 text-white focus:border-[#8B31FF] outline-none disabled:opacity-50 disabled:cursor-not-allowed" />
-                  <button disabled className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-[#8B31FF] rounded-lg text-white disabled:opacity-50"><FiSend className="w-4 h-4" /></button>
-                </div>
-                <p className="text-[10px] text-center text-slate-600 mt-2">Para suporte imediato, contate via WhatsApp.</p>
-              </div>
+               {/* Broadcast Input Station */}
+               <div className="p-8 bg-black/60 border-t border-white/10">
+                  <div className="relative group">
+                     <textarea 
+                        rows={1}
+                        value={replyText}
+                        onChange={e => setReplyText(e.target.value)}
+                        placeholder="Inject resonance sequence (Your reply)..."
+                        className="w-full bg-white/5 border border-white/5 rounded-3xl pl-8 pr-24 py-6 text-white text-sm font-bold focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 resize-none"
+                     />
+                     <button 
+                       onClick={handleSendReply}
+                       disabled={!replyText.trim() || isSendingReply}
+                       className="absolute right-3 top-3 bottom-3 px-6 bg-[#8B31FF] text-white rounded-2xl font-black uppercase italic text-[10px] tracking-widest flex items-center gap-3 transition-all hover:scale-105 active:scale-95 disabled:grayscale disabled:opacity-30"
+                     >
+                        {isSendingReply ? 'Syncing...' : (
+                          <>
+                            <span className="hidden md:block">Transmit</span>
+                            <FiSend className="w-4 h-4" />
+                          </>
+                        )}
+                     </button>
+                  </div>
+                  <p className="mt-4 text-center text-[9px] font-black text-white/10 uppercase tracking-[0.2em] font-mono">Neural interface secured by Voltris Protocol v.4.0</p>
+               </div>
+
             </motion.div>
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
