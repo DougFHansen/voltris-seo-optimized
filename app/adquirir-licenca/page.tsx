@@ -70,19 +70,6 @@ function AdquirirLicencaContent() {
 
             if (data.checkout_url) {
                 window.location.href = data.checkout_url;
-            } else if (data.reference_id && data.fallback_url) {
-                // Fallback: redirecionar para URL do PagBank diretamente
-                window.location.href = data.fallback_url;
-            } else if (data.manual_payment) {
-                // Fallback manual: redirecionar para WhatsApp com dados do pedido
-                toast('Redirecionando para finalizar via WhatsApp...', {
-                    icon: '💬',
-                    duration: 3000,
-                    style: { background: '#121218', color: '#fff' },
-                });
-                setTimeout(() => {
-                    window.open(data.whatsapp_url, '_blank');
-                }, 1500);
             } else {
                 throw new Error(data.error || 'Erro ao criar checkout');
             }

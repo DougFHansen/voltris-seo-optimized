@@ -1,86 +1,67 @@
-import axios from 'axios';
+/**
+ * PagBank Client — via Cloudflare Worker Proxy
+ *
+ * O Vercel (AWS us-east-1) é bloqueado pelo Cloudflare do PagBank.
+ * Solução: todas as chamadas passam pelo Worker da Cloudflare,
+ * que roda em edge brasileiro e não é bloqueado.
+ *
+ * Worker URL: configurada em PAGBANK_PROXY_URL no Vercel.
+ */
+
 import { PagBankCheckoutRequest, PagBankCheckoutResponse } from '@/types/pagbank';
 
-const PAGBANK_ENV = process.env.PAGBANK_ENV || 'sandbox';
-const BASE_URL = PAGBANK_ENV === 'production'
-    ? 'https://api.pagseguro.com'
-    : 'https://sandbox.api.pagseguro.com';
+const PROXY_URL = process.env.PAGBANK_PROXY_URL; // ex: https://voltris-pagbank-proxy.SEU-USER.workers.dev
+const PROXY_SECRET = process.env.PAGBANK_PROXY_SECRET;
 
-const SUBSCRIPTIONS_URL = PAGBANK_ENV === 'production'
-    ? 'https://api.assinaturas.pagseguro.com'
-    : 'https://sandbox.api.assinaturas.pagseguro.com';
-
-const TOKEN = process.env.PAGBANK_TOKEN;
-
-if (!TOKEN) {
-    console.warn('⚠️ PAGBANK_TOKEN não está definido nas variáveis de ambiente.');
+if (!PROXY_URL) {
+  console.warn('⚠️ PAGBANK_PROXY_URL não definida — chamadas ao PagBank vão falhar.');
 }
 
-export const pagBankClient = axios.create({
-    baseURL: BASE_URL,
-    headers: {
-        'Authorization': `Bearer ${TOKEN}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    },
-    timeout: 30000,
-});
+/**
+ * Faz uma chamada POST ao PagBank via proxy Worker.
+ */
+async function callPagBankViaProxy(endpoint: string, payload: any): Promise<any> {
+  if (!PROXY_URL) {
+    throw new Error('PAGBANK_PROXY_URL não configurada. Configure o Cloudflare Worker primeiro.');
+  }
 
-export async function createPlan(data: any): Promise<any> {
-    try {
-        const response = await axios.post(`${SUBSCRIPTIONS_URL}/plans`, data, {
-            headers: {
-                'Authorization': `Bearer ${TOKEN}`,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }
-        });
-        return response.data;
-    } catch (error: any) {
-        console.error('PagBank Plan Error:', JSON.stringify(error.response?.data || error.message, null, 2));
-        throw error;
-    }
+  const res = await fetch(PROXY_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-proxy-secret': PROXY_SECRET || '',
+    },
+    body: JSON.stringify({ endpoint, payload }),
+  });
+
+  const text = await res.text();
+
+  if (!res.ok) {
+    let errData: any = {};
+    try { errData = JSON.parse(text); } catch { errData = { raw: text }; }
+    console.error(`[PAGBANK PROXY] Erro ${res.status}:`, errData);
+    throw new Error(`PagBank Error (${res.status}): ${errData.error || text.substring(0, 200)}`);
+  }
+
+  return JSON.parse(text);
 }
 
 export async function createPaymentLink(data: any): Promise<any> {
-    try {
-        console.log('[PAGBANK] Criando link de pagamento');
-        const response = await pagBankClient.post('/payment-links', data);
-        return response.data;
-    } catch (error: any) {
-        if (error.response) {
-            // Se a resposta for HTML (Cloudflare block), dar mensagem clara
-            const responseData = error.response.data;
-            const isHtml = typeof responseData === 'string' && responseData.includes('<!DOCTYPE');
-            if (isHtml) {
-                console.error('[PAGBANK] Bloqueado por Cloudflare — IP do servidor não autorizado');
-                throw new Error('PagBank bloqueou a requisição (Cloudflare). Verifique a região do servidor.');
-            }
-            console.error('PagBank Link Error:', JSON.stringify(responseData, null, 2));
-            throw new Error(`PagBank Link Error: ${JSON.stringify(responseData)}`);
-        }
-        throw error;
-    }
+  console.log('[PAGBANK] Criando payment link via proxy');
+  return callPagBankViaProxy('/payment-links', data);
 }
 
 export async function createCheckout(data: PagBankCheckoutRequest): Promise<PagBankCheckoutResponse> {
-    try {
-        const response = await pagBankClient.post<PagBankCheckoutResponse>('/checkouts', data, {
-            headers: { 'x-api-version': '4.0' } // Checkout v4 exige este header
-        });
-        return response.data;
-    } catch (error: unknown) {
-        // Melhor tratamento de erro para debug
-        const err = error as any;
-        if (err.response) {
-            console.error('PagBank API Error:', JSON.stringify(err.response.data, null, 2));
-            throw new Error(`PagBank Error: ${JSON.stringify(err.response.data)}`);
-        }
-        throw error;
-    }
+  console.log('[PAGBANK] Criando checkout via proxy');
+  return callPagBankViaProxy('/checkouts', data);
+}
+
+export async function createPlan(data: any): Promise<any> {
+  console.log('[PAGBANK] Criando plano via proxy');
+  return callPagBankViaProxy('/plans', data);
 }
 
 export function getPaymentLink(response: PagBankCheckoutResponse): string | undefined {
-    const payLink = response.links.find(link => link.rel === 'PAY');
-    return payLink?.href;
+  const payLink = response.links?.find((link: any) => link.rel === 'PAY');
+  return payLink?.href;
 }
