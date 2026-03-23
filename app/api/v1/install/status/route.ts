@@ -6,10 +6,8 @@ export const runtime = 'nodejs';
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
-        const installation_id = searchParams.get('installation_id');
-
-        console.log('[API/STATUS] Verificando status de vinculação');
-        console.log('[API/STATUS] installation_id:', installation_id);
+        const raw_id = searchParams.get('installation_id');
+        const installation_id = raw_id?.trim();
 
         if (!installation_id) {
             console.error('[API/STATUS] installation_id faltando');
@@ -26,19 +24,20 @@ export async function GET(request: NextRequest) {
 
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-        console.log('[API/STATUS] Consultando instalação...');
+        console.log(`[API/STATUS] Consultando ID: ${installation_id}`);
         const { data: installation, error } = await supabase
             .from('installations')
             .select(`
                 id,
                 user_id,
-                updated_at
+                updated_at,
+                last_heartbeat
             `)
             .eq('id', installation_id)
             .single();
 
         if (error) {
-            console.error('[API/STATUS] Erro na consulta:', error);
+            console.warn(`[API/STATUS] ID não encontrado no banco [404]: ${installation_id}`);
             return NextResponse.json({ 
                 linked: null, 
                 user_email: null,
@@ -46,56 +45,44 @@ export async function GET(request: NextRequest) {
             }, { status: 404 });
         }
 
-        console.log('[API/STATUS] Instalação encontrada:', installation);
-
         // Verificar se está vinculado (tem user_id)
         const isLinked = installation && installation.user_id ? true : false;
         let userEmail = null;
 
-        if (isLinked && installation.user_id) {
+        if (isLinked) {
+            console.log(`[API/STATUS] ID ${installation_id} está vinculado ao usuário ${installation.user_id}`);
             // Buscar email do usuário na tabela auth.users via admin API
             try {
-                const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(installation.user_id);
+                const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(installation.user_id!);
                 
                 if (!userError && user) {
                     userEmail = user.email;
-                    console.log('[API/STATUS] Email encontrado via auth.users:', userEmail);
                 } else {
-                    console.error('[API/STATUS] Erro ao buscar usuário:', userError);
-                    
-                    // Fallback: tentar buscar na tabela profiles
-                    const { data: profile, error: profileError } = await supabase
+                    // Fallback para profiles se o admin API falhar ou não tiver email lá
+                    const { data: profile } = await supabase
                         .from('profiles')
                         .select('email')
-                        .eq('id', installation.user_id)
+                        .eq('id', installation.user_id!)
                         .single();
-                    
-                    if (!profileError && profile) {
-                        userEmail = profile.email;
-                        console.log('[API/STATUS] Email encontrado via profiles:', userEmail);
-                    } else {
-                        console.error('[API/STATUS] Erro ao buscar perfil:', profileError);
-                    }
+                    userEmail = profile?.email;
                 }
-            } catch (profileErr) {
-                console.error('[API/STATUS] Erro ao buscar email:', profileErr);
+            } catch (authErr) {
+                console.error('[API/STATUS] Erro ao buscar email do usuário:', authErr);
             }
+        } else {
+            console.log(`[API/STATUS] ID ${installation_id} existe mas ainda não está vinculado.`);
         }
 
-        console.log('[API/STATUS] Status final:', { linked: isLinked, email: userEmail });
-
         return NextResponse.json({
-            linked: isLinked ? installation.user_id : null, // Retorna o user_id se vinculado, null se não
+            linked: isLinked ? (installation.user_id as string) : null, 
+            is_linked: isLinked,
+            user_id: isLinked ? installation.user_id : null,
             user_email: userEmail,
             installation_id: installation_id,
             last_updated: installation.updated_at
         });
     } catch (error: any) {
-        console.error('[API/STATUS] Erro geral:', error);
-        return NextResponse.json({ 
-            linked: null,
-            user_email: null, 
-            error: error.message 
-        }, { status: 500 });
+        console.error('[API/STATUS] Erro inesperado:', error);
+        return NextResponse.json({ linked: null, error: error.message }, { status: 500 });
     }
-}
+}

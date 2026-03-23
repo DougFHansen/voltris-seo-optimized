@@ -29,20 +29,25 @@ export async function POST(request: NextRequest) {
 
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-        console.log('[API/INSTALL] Fazendo upsert da instalação...');
+        console.log('[API/INSTALL] Fazendo upsert da instalação (resiliente)...');
         
-        // Dados para upsert
+        // Mapeamento resiliente: tenta ler o padrão novo, depois fallbacks de chaves que o app antigo envia
+        const cpuName = hardware?.cpu_name || hardware?.cpu || hardware?.processor;
+        const gpuName = hardware?.gpu_name || hardware?.gpu || hardware?.graphics;
+        const ramTotal = hardware?.ram_gb_total || hardware?.ram || hardware?.memory;
+        const pcName = hardware?.pc_name || hardware?.hostname || hardware?.pc;
+
         const upsertData: any = {
-            id: installation_id,
-            pc_name: hardware?.pc_name,
+            id: installation_id.trim(),
+            pc_name: pcName,
             app_version: app_version,
-            cpu_name: hardware?.cpu_name,
-            ram_gb_total: hardware?.ram_gb_total,
-            gpu_name: hardware?.gpu_name,
-            disk_type: hardware?.disk_type || hardware?.disk_main_type,
-            os_name: hardware?.os_name,
-            os_build: hardware?.os_build,
-            windows_edition: hardware?.windows_edition,
+            cpu_name: cpuName,
+            ram_gb_total: ramTotal,
+            gpu_name: gpuName,
+            disk_type: hardware?.disk_type || hardware?.disk_main_type || hardware?.disk,
+            os_name: hardware?.os_name || hardware?.os,
+            os_build: hardware?.os_build || hardware?.build,
+            windows_edition: hardware?.windows_edition || hardware?.edition,
             architecture: hardware?.architecture,
             last_heartbeat: new Date().toISOString(),
             updated_at: new Date().toISOString()
