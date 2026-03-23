@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 // Header/Footer not imported to ensure clean full screen
 import Link from 'next/link';
@@ -14,6 +14,17 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { Mail, Lock, User, Phone as PhoneIcon, MapPin, ArrowLeft, Loader2, CheckCircle, ArrowRight } from 'lucide-react';
 
 export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#050510]" />}>
+      <LoginContent />
+    </Suspense>
+  );
+}
+
+function LoginContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   // --- STATES ---
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -36,51 +47,34 @@ export default function LoginPage() {
   const [adminChecked, setAdminChecked] = useState(false);
   const [showWhatsAppBtn, setShowWhatsAppBtn] = useState(false);
   const [redirectText, setRedirectText] = useState('Redirecionando...');
-  const [redirectUrl, setRedirectUrl] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('redirect') || (params.get('checkout_success') === 'true' ? '/dashboard?checkout_success=true' : '');
-    }
-    return '';
-  });
   
-  const [pendingOrder, setPendingOrder] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('pendingOrder') === 'true' || params.get('checkout_success') === 'true';
-    }
-    return false;
-  });
-
-  const [installationId, setInstallationId] = useState<string | null>(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('installation_id');
-    }
-    return null;
-  });
+  const redirectUrl = searchParams.get('redirect') || (searchParams.get('checkout_success') === 'true' ? '/dashboard?checkout_success=true' : '');
+  const pendingOrder = searchParams.get('pendingOrder') === 'true' || searchParams.get('checkout_success') === 'true';
+  const installationId = searchParams.get('installation_id');
 
   const { user, profile, loading: authLoading } = useAuth();
   const supabase = createClient();
 
   // --- EFFECTS ---
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const params = new URLSearchParams(window.location.search);
-      if (params.get('cadastro') === '1') {
-        setIsLoginView(false);
-        setIsRecoveryView(false);
-      }
-
-      if (params.get('checkout_success') === 'true') {
-        setIsLoginView(false); // Sugerir cadastro para novos compradores
-      }
-
-      if (params.get('pendingOrder') === 'true' || params.get('checkout_success') === 'true') {
-        setShowWhatsAppBtn(true);
-      }
+    if (searchParams.get('cadastro') === '1' || searchParams.get('signup') === 'true') {
+      setIsLoginView(false);
+      setIsRecoveryView(false);
     }
-  }, []);
+
+    if (searchParams.get('checkout_success') === 'true') {
+      setIsLoginView(false); // Sugerir cadastro para novos compradores
+    }
+
+    if (searchParams.get('pendingOrder') === 'true' || searchParams.get('checkout_success') === 'true') {
+      setShowWhatsAppBtn(true);
+    }
+
+    const urlError = searchParams.get('error');
+    if (urlError) {
+      setError(decodeURIComponent(urlError));
+    }
+  }, [searchParams]);
 
   const linkInstallation = async (userId: string) => {
     if (!installationId) return;
@@ -130,7 +124,11 @@ export default function LoginPage() {
         if (pendingOrder) {
           window.location.href = '/dashboard?pendingOrder=true';
         } else if (redirectUrl) {
-          const finalUrl = redirectUrl.includes('/login') ? '/dashboard' : redirectUrl;
+          // Prevenir redirecionamento para Home caso redirectUrl esteja vazio
+          const finalUrl = (!redirectUrl || redirectUrl === '/' || redirectUrl.includes('/login')) 
+            ? '/dashboard' 
+            : redirectUrl;
+
           window.location.href = finalUrl.includes('restricted') && !isAdmin ? '/dashboard' : finalUrl;
         } else {
           window.location.href = isAdmin ? '/restricted-area-admin' : '/dashboard';

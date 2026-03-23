@@ -1,13 +1,23 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import { motion } from 'framer-motion';
 import { User, Phone, MapPin, CheckCircle, Loader2, AlertCircle, ArrowRight } from 'lucide-react';
 
 export default function ProfilePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#050510] flex items-center justify-center"><Loader2 className="w-10 h-10 text-[#31A8FF] animate-spin" /></div>}>
+      <ProfileContent />
+    </Suspense>
+  );
+}
+
+function ProfileContent() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { user, profile, loading, refreshAuth } = useAuth();
   const [form, setForm] = useState({
     full_name: '',
@@ -20,7 +30,6 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
   const [isChecking, setIsChecking] = useState(true);
-  const router = useRouter();
   const supabase = createClient();
 
   useEffect(() => {
@@ -35,9 +44,8 @@ export default function ProfilePage() {
           profile.cep;
 
         if (isComplete) {
-          const params = new URLSearchParams(window.location.search);
-          if (!params.get('force')) {
-            const next = params.get('redirect') || '/dashboard';
+          const next = searchParams.get('redirect') || '/dashboard';
+          if (!searchParams.get('force')) {
             router.replace(next);
             return;
           }
@@ -54,7 +62,7 @@ export default function ProfilePage() {
       }
       setIsChecking(false);
     }
-  }, [profile, loading, router]);
+  }, [profile, loading, router, searchParams]);
 
   // Máscaras
   const formatPhone = (value: string) => {
@@ -108,7 +116,7 @@ export default function ProfilePage() {
     try {
       if (!user) throw new Error('Usuário não autenticado');
 
-      const { error } = await supabase
+      const { error: updateError } = await supabase
         .from('profiles')
         .update({
           full_name: form.full_name,
@@ -120,11 +128,10 @@ export default function ProfilePage() {
         })
         .eq('id', user.id);
 
-      if (error) throw error;
+      if (updateError) throw updateError;
 
       await refreshAuth();
-      const params = new URLSearchParams(window.location.search);
-      const next = params.get('redirect') || '/dashboard';
+      const next = searchParams.get('redirect') || '/dashboard';
       router.replace(next);
     } catch (err: any) {
       setError(err.message || 'Erro ao salvar.');
@@ -143,7 +150,6 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-[#050510] relative flex items-center justify-center overflow-hidden py-12 px-4 font-sans">
-      {/* Background Ambience */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
       <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-[#31A8FF]/10 rounded-full blur-[120px]"></div>
       <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#8B31FF]/10 rounded-full blur-[120px]"></div>
@@ -154,7 +160,6 @@ export default function ProfilePage() {
         className="w-full max-w-2xl relative z-10"
       >
         <div className="bg-[#0A0A0F]/80 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
-          {/* Header Line */}
           <div className="h-1 w-full bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]"></div>
 
           <div className="p-8 md:p-12">

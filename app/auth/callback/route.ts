@@ -87,7 +87,8 @@ export async function GET(request: NextRequest) {
               console.log('✅ [OAuth Callback] Perfil criado manualmente com sucesso');
             }
             
-            return NextResponse.redirect(`${origin}/perfil?completar=1&google=1`);
+            const next = searchParams.get('next') || '/dashboard';
+            return NextResponse.redirect(`${origin}/perfil?completar=1&google=1${next ? `&redirect=${encodeURIComponent(next)}` : ''}`);
           }
           
           return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao buscar perfil do usuário')}`);
