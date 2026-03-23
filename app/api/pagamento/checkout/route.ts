@@ -52,17 +52,23 @@ export async function POST(req: NextRequest) {
             // a) Tentar obter ou criar o PLANO no PagBank
             const planId = await ensurePlan(license_type, totalAmount, supabase, baseUrl, webhookToken);
             
-            if (!planId) throw new Error('Falha ao instanciar plano de assinatura no PagBank');
+            if (!planId) throw new Error('Não foi possível registrar o plano de assinatura. Verifique as credenciais no Vercel.');
 
             // b) Criar LINK DE PAGAMENTO DE ASSINATURA (Hosted Page)
             const payload = {
-                name: `Assinatura Mensal - ${license_type.toUpperCase()}`,
-                description: `Acesso Mensal Voltris Optimizer - ${license_type.toUpperCase()}`,
+                name: `Assinatura - ${license_type.toUpperCase()}`,
+                description: `Acesso Mensal - ${license_type.toUpperCase()}`,
                 reference_id: referenceId,
-                payment_methods: [{ type: 'CREDIT_CARD' as const }], // Recorrência exige Cartão de Crédito
+                payment_methods: [{ type: 'CREDIT_CARD' as const }],
                 subscription: {
                     plan: { id: planId }
                 },
+                items: [{
+                   reference_id: `plan-${license_type}`,
+                   name: `Plano ${license_type.toUpperCase()}`,
+                   quantity: 1,
+                   unit_amount: Math.round(totalAmount * 100)
+                }],
                 customer: {
                     name: customer.name || 'Cliente Voltris' as string,
                     email: customer.email as string
@@ -71,12 +77,18 @@ export async function POST(req: NextRequest) {
                 redirect_url: `${baseUrl}/dashboard?checkout_success=true&ref=${referenceId}`
             };
 
-            const linkRes = await createPaymentLink(payload);
-            const checkoutUrl = linkRes.links.find((l: any) => l.rel === 'PAY')?.href;
+            try {
+                const linkRes = await createPaymentLink(payload);
+                const checkoutUrl = linkRes.links.find((l: any) => l.rel === 'PAY')?.href;
 
-            if (!checkoutUrl) throw new Error('Não foi possível gerar link de assinatura');
+                if (!checkoutUrl) throw new Error('Não foi possível gerar link de assinatura');
 
-            return NextResponse.json({ success: true, checkout_url: checkoutUrl, reference_id: referenceId });
+                return NextResponse.json({ success: true, checkout_url: checkoutUrl, reference_id: referenceId });
+            } catch (err: any) {
+                const pgError = err.response?.data || err.message;
+                console.error(`[PAGBANK LINK ERROR]`, JSON.stringify(pgError));
+                throw new Error(`PagBank recusou criação do link: ${JSON.stringify(pgError)}`);
+            }
 
         } else {
             console.log(`[CHECKOUT ${requestId}] 💳 Criando VENDA ÚNICA (ENTERPRISE/VITALÍCIO)`);
@@ -138,8 +150,8 @@ async function ensurePlan(type: string, amount: number, supabase: any, baseUrl: 
             amount_cents: planPayload.amount.value
         });
         return plan.id;
-    } catch (e) {
-        console.error('[PLAN] Erro ao criar plano:', e);
+    } catch (e: any) {
+        console.error('[PLAN CREATE ERROR]', JSON.stringify(e.response?.data || e.message));
         return null;
     }
 }
