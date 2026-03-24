@@ -4,9 +4,10 @@ import React, { Suspense, useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import Sidebar from '@/components/dashboard/Sidebar';
 import ClientNotificationModal from './ClientNotificationModal';
-import { FiMenu, FiMinimize2, FiMaximize2, FiSettings } from 'react-icons/fi';
+import { FiMenu, FiMinimize2, FiMaximize2, FiSettings, FiLayout, FiCreditCard, FiMonitor } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DashboardProvider, useDashboard } from '@/app/context/DashboardContext';
+import Link from 'next/link';
 
 // Inner component to access context
 function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
@@ -82,82 +83,96 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
         </div>
 
 
-        {/* Content Viewport - The Central Stage */}
-        <main className={`flex-1 flex flex-col min-h-0 overflow-hidden relative transition-all duration-700
-          ${transparencyMode 
-            ? 'rounded-none lg:rounded-[3.5rem] voltris-glass shadow-[0_40px_100px_rgba(0,0,0,0.6)]' 
-            : 'rounded-none lg:rounded-[3.5rem] bg-[#0A0A12] border border-white/5'
-          }
-        `}>
+      {/* Content Viewport - The Central Stage */}
+      <main className={`flex-1 flex flex-col min-h-0 overflow-hidden relative transition-all duration-700 w-full
+        ${transparencyMode 
+          ? 'rounded-none lg:rounded-[3.5rem] voltris-glass shadow-[0_40px_100px_rgba(0,0,0,0.6)]' 
+          : 'rounded-none lg:rounded-[3.5rem] bg-[#0A0A12] border border-white/5'
+        }
+      `}>
           
-          {/* Mobile Navigation Bar */}
-          <div className={`lg:hidden flex items-center justify-between px-6 px-safe py-4 transition-all duration-300 z-[60] ${scrolled ? 'bg-black/60 backdrop-blur-2xl border-b border-white/10' : 'bg-transparent'}`}>
-             <div className="flex items-center gap-3">
-               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center text-xs font-black text-white shadow-[0_0_20px_rgba(49,168,255,0.3)]">V</div>
-               <div className="flex flex-col">
-                 <span className="font-black text-[10px] tracking-[0.2em] uppercase text-white/90">Voltris Optimizer</span>
-                 <span className="text-[9px] font-bold text-[#31A8FF] uppercase tracking-widest">Painel Pro</span>
-               </div>
-            </div>
-             <button onClick={() => setMobileMenuOpen(true)} className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">
-                <FiMenu className="w-5 h-5 text-white" />
-             </button>
+        {/* Mobile Navigation Bar - Fixed at top with blur */}
+        <div className={`lg:hidden flex items-center justify-between px-6 py-4 transition-all duration-300 z-[60] sticky top-0 ${scrolled ? 'bg-[#050510]/80 backdrop-blur-2xl border-b border-white/10' : 'bg-transparent'}`}>
+           <div className="flex items-center gap-3">
+             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center text-xs font-black text-white shadow-[0_0_20px_rgba(49,168,255,0.3)]">V</div>
+             <div className="flex flex-col">
+               <span className="font-black text-[10px] tracking-[0.2em] uppercase text-white/90">Voltris</span>
+               <span className="text-[9px] font-bold text-[#31A8FF] uppercase tracking-widest leading-none">Painel Pro</span>
+             </div>
           </div>
+           <button onClick={() => setMobileMenuOpen(true)} className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">
+              <FiMenu className="w-5 h-5 text-white" />
+           </button>
+        </div>
 
-          {/* Premium Animated Progress Line (Top Decor) */}
-          <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#31A8FF] to-transparent opacity-20 z-20"></div>
+        {/* Premium Animated Progress Line (Top Decor) */}
+        <div className="absolute top-0 left-0 w-full h-[1.5px] bg-gradient-to-r from-transparent via-[#31A8FF] to-transparent opacity-20 z-20"></div>
 
-          {/* Scrolling Page Content Container */}
-          <div 
-            id="main-dashboard-scroll"
-            className="flex-1 overflow-y-auto custom-scrollbar-modern px-4 sm:px-8 lg:px-12 py-2 sm:py-6 lg:py-10 relative z-10 scroll-smooth"
+        {/* Scrolling Page Content Container */}
+        <div 
+          id="main-dashboard-scroll"
+          className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar-modern px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-10 relative z-10 scroll-smooth"
+        >
+           <motion.div 
+             key={transparencyMode ? 'glass' : 'solid'}
+             initial={{ opacity: 0, y: 30 }}
+             animate={{ opacity: 1, y: 0 }}
+             transition={{ type: "spring", damping: 25, stiffness: 100 }}
+             className="h-full min-h-fit"
+           >
+             {children}
+             {/* Padding mobile bottom to account for Bottom Nav */}
+             <div className="h-28 lg:h-0"></div>
+           </motion.div>
+        </div>
+
+        {/* Mobile Bottom Navigation - Quick Access Tabs */}
+        <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] w-[90%] max-w-[400px]">
+           <nav className="flex items-center justify-around p-2.5 rounded-[2rem] bg-[#0A0A0F]/90 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              {[
+                { id: 'overview', icon: FiLayout, label: 'Início', path: '/dashboard?tab=overview' },
+                { id: 'licenses', icon: FiCreditCard, label: 'Licenças', path: '/dashboard?tab=licenses' },
+                { id: 'pc', icon: FiMonitor, label: 'PC', path: '/dashboard?tab=pc' },
+                { id: 'support', icon: FiSettings, label: 'Suporte', path: '/dashboard/tickets' }
+              ].map((item) => (
+                <Link key={item.id} href={item.path} className="flex flex-col items-center gap-1.5 px-4 py-2 rounded-2xl transition-all">
+                   <item.icon className={`w-5 h-5 ${item.path.includes('tab=overview') ? 'text-white' : 'text-white/40'}`} />
+                   <span className="text-[8px] font-black uppercase tracking-widest text-white/40">{item.label}</span>
+                </Link>
+              ))}
+           </nav>
+        </div>
+
+        {/* Floating UI Elements Hook (Desktop only) */}
+        <div className="absolute bottom-8 right-8 z-[70] hidden xl:flex flex-col gap-4">
+          <motion.button 
+            whileHover={{ scale: 1.05, x: -5 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleTransparency}
+            className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#31A8FF] transition-colors group"
+            title={transparencyMode ? 'Desativar Transparência' : 'Ativar Transparência'}
           >
-             <motion.div 
-               key={transparencyMode ? 'glass' : 'solid'}
-               initial={{ opacity: 0, y: 30 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ type: "spring", damping: 25, stiffness: 100 }}
-               className="h-full min-h-fit"
-             >
-               {children}
-               {/* Padding mobile bottom to account for floating elements if any */}
-               <div className="h-20 lg:h-0"></div>
-             </motion.div>
-          </div>
-
-          {/* Floating UI Elements Hook (Transparency Control, Settings, etc) */}
-          <div className="absolute bottom-8 right-8 z-[70] hidden xl:flex flex-col gap-4">
-            <motion.button 
-              whileHover={{ scale: 1.05, x: -5 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={toggleTransparency}
-              className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#31A8FF] transition-colors group"
-              title={transparencyMode ? 'Desativar Transparência' : 'Ativar Transparência'}
-            >
-              {transparencyMode ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
-              <div className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                {transparencyMode ? 'Modo Sólido' : 'Modo Transparente'}
-              </div>
-            </motion.button>
-            
-            <motion.button 
-              whileHover={{ scale: 1.05, x: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#8B31FF] transition-colors group"
-            >
-              <FiSettings className="w-5 h-5" />
-              <div className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                Configurações UI
-              </div>
-            </motion.button>
-          </div>
-        </main>
-      </div>
-
-      <ClientNotificationModal />
-      
-      {/* Mobile-only Bottom Navigation for quick actions if needed (optional) */}
+            {transparencyMode ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
+            <div className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              {transparencyMode ? 'Modo Sólido' : 'Modo Transparente'}
+            </div>
+          </motion.button>
+          
+          <motion.button 
+            whileHover={{ scale: 1.05, x: -5 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#8B31FF] transition-colors group"
+          >
+            <FiSettings className="w-5 h-5" />
+            <div className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              Configurações UI
+            </div>
+          </motion.button>
+        </div>
+      </main>
     </div>
+    <ClientNotificationModal />
+  </div>
   );
 }
 

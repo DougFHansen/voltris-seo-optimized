@@ -43,7 +43,7 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, type: "spring", stiffness: 100 }}
-      className={`relative group overflow-hidden p-6 rounded-[2.5rem] border transition-all duration-500
+      className={`relative group overflow-hidden p-5 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] border transition-all duration-500
         ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}
         hover:border-white/20 hover:-translate-y-2
       `}
@@ -51,29 +51,29 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
       <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${colors[color]} opacity-5 blur-[60px] group-hover:opacity-15 transition-all duration-700`}></div>
       
       <div className="relative z-10 flex flex-col h-full justify-between">
-        <div className="flex justify-between items-start mb-6">
-          <div className={`p-4 rounded-2xl bg-gradient-to-br ${colors[color]} shadow-lg flex items-center justify-center text-white relative`}>
-            <Icon className="w-6 h-6" />
+        <div className="flex justify-between items-start mb-4 sm:mb-6">
+          <div className={`p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${colors[color]} shadow-lg flex items-center justify-center text-white relative`}>
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
             <div className={`absolute inset-0 rounded-2xl blur-lg opacity-40 bg-gradient-to-br ${colors[color]}`}></div>
           </div>
           <div className="flex flex-col items-end">
-             <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-1">Status</span>
+             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-1">Status</span>
              <div className="flex items-center gap-1.5">
                <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-r ${colors[color]}`}></div>
-               <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">ATIVO</span>
+               <span className="text-[9px] sm:text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">ATIVO</span>
              </div>
           </div>
         </div>
 
         <div>
-          <p className="text-white/40 text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
+           <p className="text-white/40 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
           <div className="flex items-baseline gap-2">
-            <h3 className="text-4xl font-black text-white tracking-tighter">{value}</h3>
+            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tighter">{value}</h3>
           </div>
         </div>
 
         {/* Decorative Progress Line */}
-        <div className="mt-8 relative h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+        <div className="mt-6 sm:mt-8 relative h-1 w-full bg-white/5 rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: '100%' }}
@@ -224,25 +224,27 @@ function DashboardContent() {
           </div>
         </header>
 
-        {/* Custom Modern Tabs */}
-        <div className={`p-1.5 rounded-[2rem] w-fit flex gap-1 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5`}>
-          {[
-            { id: 'overview', label: 'Visão Geral', icon: FiActivity },
-            { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
-            { id: 'pc', label: 'Meu Computador', icon: FiMonitor }
-          ].map((tab) => (
-            <Link key={tab.id} href={`/dashboard?tab=${tab.id}`}>
-              <div className={`
-                flex items-center gap-2 px-8 py-3.5 rounded-2xl text-[11px] font-black uppercase tracking-[0.15em] transition-all
-                ${activeTab === tab.id 
-                  ? 'bg-white text-black shadow-xl scale-105' 
-                  : 'text-white/40 hover:text-white hover:bg-white/5'}
-              `}>
-                <tab.icon className={`w-4 h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
-                {tab.label}
-              </div>
-            </Link>
-          ))}
+        {/* Custom Modern Tabs - Responsive Scrollable on Mobile */}
+        <div className="w-full max-w-full overflow-hidden">
+          <div className={`p-1.5 rounded-[2rem] w-fit min-w-full sm:min-w-0 flex gap-1 overflow-x-auto no-scrollbar scroll-smooth ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5`}>
+            {[
+              { id: 'overview', label: 'Visão Geral', icon: FiActivity },
+              { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
+              { id: 'pc', label: 'Meu Computador', icon: FiMonitor }
+            ].map((tab) => (
+              <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
+                <div className={`
+                  flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-2xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.15em] transition-all whitespace-nowrap
+                  ${activeTab === tab.id 
+                    ? 'bg-white text-black shadow-xl scale-[1.02] sm:scale-105' 
+                    : 'text-white/40 hover:text-white hover:bg-white/5'}
+                `}>
+                  <tab.icon className={`w-4 h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
+                  {tab.label}
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Tab Content Rendering */}
@@ -254,23 +256,23 @@ function DashboardContent() {
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
               >
                 <StatCard title="Serviços Adquiridos" value={stats.totalOrders} icon={FiPackage} color="blue" delay={0.1} />
                 <StatCard title="Licenças Disponíveis" value={stats.activeLicenses} icon={FiCheckCircle} color="purple" delay={0.2} />
                 <StatCard title="Instâncias Vinculadas" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
                    {/* Tactical Billboard */}
-                <div className={`md:col-span-2 lg:col-span-3 p-10 rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
+                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
                    <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 opacity-30"></div>
-                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
+                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
                      <div className="space-y-4">
                         <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit mx-auto lg:mx-0">
                           <FiActivity className="w-8 h-8 text-[#31A8FF]" />
                         </div>
-                        <h2 className="text-3xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Sua infraestrutura está <span className="text-[#00FF88] not-italic">Segura</span></h2>
-                        <p className="text-white/40 font-bold max-w-xl">Todos os seus serviços estão sendo monitorados pela nossa rede neural. Use as abas de Licenças ou Computador para gerenciar individualmente seus produtos.</p>
+                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Sua infraestrutura está <span className="text-[#00FF88] not-italic">Segura</span></h2>
+                        <p className="text-white/40 font-bold text-xs sm:text-sm max-w-xl">Todos os seus serviços estão sendo monitorados pela nossa rede neural. Use as abas de Licenças ou Computador para gerenciar individualmente seus produtos.</p>
                      </div>
-                     <Link href="/voltrisoptimizer" className="px-10 py-5 bg-white text-black font-black uppercase italic text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl">
+                     <Link href="/voltrisoptimizer" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl">
                         Acessar Documentação Voltris
                      </Link>
                    </div>
@@ -287,15 +289,15 @@ function DashboardContent() {
                 className="space-y-6"
               >
                 {/* Urgent Warning if needed */}
-                <div className="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-[2rem] bg-amber-400/10 border border-amber-400/30 backdrop-blur-xl">
-                   <div className="w-14 h-14 rounded-2xl bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
-                      <FiAlertTriangle className="w-7 h-7" />
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-[2rem] bg-amber-400/10 border border-amber-400/30 backdrop-blur-xl">
+                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+                      <FiAlertTriangle className="w-6 h-6 sm:w-7 sm:h-7" />
                    </div>
                    <div className="flex-1 text-center sm:text-left">
-                      <h4 className="font-black text-white uppercase italic tracking-wider">Sincronização de Pagamento</h4>
-                      <p className="text-amber-200/60 text-xs font-bold uppercase tracking-widest mt-1">Se o seu pedido não apareceu imediatamente, clique no botão de sincronização.</p>
+                      <h4 className="font-black text-white uppercase italic tracking-wider text-sm sm:text-base">Sincronização de Pagamento</h4>
+                      <p className="text-amber-200/60 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">Se o seu pedido não apareceu imediatamente, clique no botão de sincronização.</p>
                    </div>
-                   <button onClick={() => fetchData(true)} className="px-8 py-4 bg-amber-400 text-black font-black uppercase italic text-xs rounded-xl shadow-xl hover:scale-105 transition-all">
+                   <button onClick={() => fetchData(true)} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-amber-400 text-black font-black uppercase italic text-[10px] sm:text-xs rounded-xl shadow-xl hover:scale-105 transition-all">
                       Sync Agora
                    </button>
                 </div>
@@ -308,7 +310,7 @@ function DashboardContent() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className={`group relative p-8 rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} hover:border-[#31A8FF]/40`}
+                        className={`group relative p-6 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} hover:border-[#31A8FF]/40`}
                       >
                         {/* Interactive Background Elements */}
                         <div className={`absolute -right-20 -bottom-20 w-80 h-80 ${lic.is_active ? 'bg-[#31A8FF]/10' : 'bg-red-500/10'} blur-[100px] rounded-full group-hover:scale-110 transition-transform duration-700`}></div>
