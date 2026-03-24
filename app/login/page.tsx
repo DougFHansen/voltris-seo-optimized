@@ -151,32 +151,52 @@ function LoginContent() {
         }
       }
 
+      console.log('🔄 Iniciando login para:', loginEmail);
       const { data: signInData, error } = await supabase.auth.signInWithPassword({
         email: loginEmail,
         password
       });
 
       if (error || !signInData.user) throw new Error(error?.message || 'Credenciais inválidas');
+      console.log('✅ Login bem-sucedido:', signInData.user.id);
 
-      const { data: profileData } = await supabase.from('profiles').select('is_admin').eq('id', signInData.user.id).single();
-      const admin = profileData?.is_admin || signInData.user.user_metadata?.is_admin === true;
+      // Busca admin de forma fail-safe
+      let admin = signInData.user.user_metadata?.is_admin === true;
+      try {
+        const profilePromise = supabase.from('profiles').select('is_admin').eq('id', signInData.user.id).single();
+        const timeoutPromise = new Promise((_, r) => setTimeout(() => r(new Error('TIMEOUT')), 2500));
+        const { data: profileData } = await Promise.race([profilePromise, timeoutPromise]) as any;
+        if (profileData) admin = profileData.is_admin || admin;
+      } catch (err) {
+        console.warn('⚠️ [AUTH] Erro ou timeout ao buscar admin no login, prosseguindo com metadados.');
+      }
 
-      if (installationId) await linkInstallation(signInData.user.id);
+      // Link de instalação em background para não travar o login
+      if (installationId) {
+        linkInstallation(signInData.user.id).catch(err => console.error('Erro linkInstallation:', err));
+      }
 
       setSuccess(true);
+      if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
 
       // Redirecionar diretamente após login bem-sucedido
       const dest = (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login'))
         ? (redirectUrl.includes('restricted') && !admin ? '/dashboard' : redirectUrl)
         : (pendingOrder ? '/dashboard?pendingOrder=true' : (admin ? '/restricted-area-admin' : '/dashboard'));
 
+      console.log('🚀 Redirecionando para:', dest);
+
+      // Reduzir delay do timeout para feedback mais rápido
       setTimeout(() => {
         window.location.href = dest;
-      }, 800);
+      }, 400);
     } catch (err: any) {
+      console.error('❌ Erro no handleLogin:', err);
       setError(translateError(err.message));
+      setLoading(false); // Garantir que desativa o loading em caso de erro
     } finally {
-      setLoading(false);
+      // O loading só deve ficar true se success for false e não houver erro
+      // Mas se o redirect demorar, o botão pode mostrar o spinner ainda.
     }
   };
 

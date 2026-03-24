@@ -40,11 +40,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      const { data: profile, error } = await supabaseRef.current
+      // Adicionar timeout para a busca de perfil
+      const profilePromise = supabaseRef.current
         .from('profiles')
         .select('*')
         .eq('id', user.id)
         .single();
+
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('TIMEOUT')), 5000)
+      );
+
+      const { data: profile, error } = await Promise.race([profilePromise, timeoutPromise]) as any;
 
       if (error && error.code !== 'PGRST116') {
         console.warn('[AUTH] Erro ao buscar perfil:', error.message);
@@ -59,7 +66,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
     } catch (err: any) {
       console.error('[AUTH] Falha inesperada no fetchProfile:', err);
-      setAuthState(prev => ({ ...prev, loading: false, user }));
+      // Fallback: Se der erro ou timeout no perfil, ainda assim liberamos o login com o objeto user
+      setAuthState(prev => ({ 
+        ...prev, 
+        user, 
+        loading: false,
+        profile: prev.profile || null,
+        isAdmin: prev.isAdmin || false 
+      }));
     }
   }, []);
 
@@ -82,9 +96,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         
         if (mounted) {
           if (session?.user) {
+            setAuthState(prev => ({ ...prev, user: session.user, loading: true }));
             await fetchProfile(session.user);
           } else {
-            setAuthState(prev => ({ ...prev, loading: false }));
+            setAuthState(prev => ({ ...prev, user: null, loading: false }));
           }
         }
       } catch (err) {
@@ -101,6 +116,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (event === 'SIGNED_OUT') {
         setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
       } else if (session?.user && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'USER_UPDATED')) {
+        // MUITO IMPORTANTE: Seta o usuário IMEDIATAMENTE antes de buscar o perfil
+        // Isso remove o estado de "deslogado" do header instantaneamente após o OAuth
+        setAuthState(prev => ({ ...prev, user: session.user, loading: true }));
         await fetchProfile(session.user);
       } else if (event === 'INITIAL_SESSION' && !session) {
         setAuthState(prev => ({ ...prev, loading: false }));

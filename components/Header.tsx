@@ -211,7 +211,7 @@ export default function Header() {
 
           {/* Actions */}
           <div className="hidden md:flex items-center gap-4 z-20 relative">
-            {loading && !forceLoaded ? (
+            {loading && !user && !forceLoaded ? (
               <FiLoader className="w-5 h-5 animate-spin text-slate-500" />
             ) : user ? (
               <>
