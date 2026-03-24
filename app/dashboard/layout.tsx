@@ -57,8 +57,8 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
         />
       </div>
 
-      {/* Header - Adaptive & Floating Style */}
-      <div className={`relative z-[100] transition-all duration-500`}>
+      {/* Header - Adaptive & Floating Style - Desktop Only to avoid mobile navigation conflicts */}
+      <div className={`hidden lg:block relative z-[100] transition-all duration-500`}>
         <Header />
       </div>
 
@@ -111,7 +111,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
         {/* Scrolling Page Content Container */}
         <div 
           id="main-dashboard-scroll"
-          className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar-modern px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-10 relative z-10 scroll-smooth"
+          className="flex-1 w-full max-w-full overflow-y-auto overflow-x-hidden custom-scrollbar-modern px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-10 relative z-10 scroll-smooth"
         >
            <motion.div 
              key={transparencyMode ? 'glass' : 'solid'}

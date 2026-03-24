@@ -192,13 +192,13 @@ function DashboardContent() {
       <div className="flex flex-col gap-8 w-full max-w-full h-full">
 
         {/* Dashboard Header - Premium UI */}
-        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-1">
-            <div className="flex items-center gap-3">
-              <h1 className="text-4xl lg:text-5xl font-black text-white tracking-tighter uppercase italic">Centro de <span className="text-[#31A8FF] not-italic">Controle</span></h1>
-              <div className="px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-[9px] font-black uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(49,168,255,0.15)] animate-pulse">Pro v2.0</div>
+        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 min-w-0">
+          <div className="space-y-1 sm:space-y-2 min-w-0">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              <h1 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tighter uppercase italic truncate">Centro de <span className="text-[#31A8FF] not-italic">Controle</span></h1>
+              <div className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(49,168,255,0.15)]">Pro v2.0</div>
             </div>
-            <p className="text-white/40 font-bold text-sm tracking-wide uppercase">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO VOLTRIS'}</span></p>
+            <p className="text-white/40 font-bold text-[10px] sm:text-sm tracking-wide uppercase truncate">Operação tática disponível para <span className="text-[#8B31FF] truncate">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
           </div>
 
           <div className="flex items-center gap-3">
@@ -224,27 +224,31 @@ function DashboardContent() {
           </div>
         </header>
 
-        {/* Custom Modern Tabs - Responsive Scrollable on Mobile */}
-        <div className="w-full max-w-full overflow-hidden">
-          <div className={`p-1.5 rounded-[2rem] w-fit min-w-full sm:min-w-0 flex gap-1 overflow-x-auto no-scrollbar scroll-smooth ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5`}>
-            {[
-              { id: 'overview', label: 'Visão Geral', icon: FiActivity },
-              { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
-              { id: 'pc', label: 'Meu Computador', icon: FiMonitor }
-            ].map((tab) => (
-              <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
-                <div className={`
-                  flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-3.5 rounded-2xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.15em] transition-all whitespace-nowrap
-                  ${activeTab === tab.id 
-                    ? 'bg-white text-black shadow-xl scale-[1.02] sm:scale-105' 
-                    : 'text-white/40 hover:text-white hover:bg-white/5'}
-                `}>
-                  <tab.icon className={`w-4 h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
-                  {tab.label}
-                </div>
-              </Link>
-            ))}
+        {/* Custom Modern Tabs - Enhanced Mobile Responsivity */}
+        <div className="w-full relative group min-w-0 overflow-hidden">
+          <div className="w-full overflow-x-auto scrollbar-hide scroll-smooth flex justify-start sm:justify-start">
+            <div className={`p-1 sm:p-1.5 rounded-full sm:rounded-[2rem] w-max flex flex-nowrap gap-1 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5`}>
+              {[
+                { id: 'overview', label: 'Visão Geral', icon: FiActivity },
+                { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
+                { id: 'pc', label: 'Meu Computador', icon: FiMonitor }
+              ].map((tab) => (
+                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
+                  <div className={`
+                    flex items-center gap-1.5 sm:gap-2 px-4 sm:px-8 py-2 sm:py-3.5 rounded-full sm:rounded-2xl text-[9px] sm:text-[11px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-all whitespace-nowrap
+                    ${activeTab === tab.id 
+                      ? 'bg-white text-black shadow-xl' 
+                      : 'text-white/40 hover:text-white hover:bg-white/5'}
+                  `}>
+                    <tab.icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
+                    {tab.label}
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
+          {/* Fade effect to indicate more content */}
+          <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-[#050510] to-transparent pointer-events-none sm:hidden"></div>
         </div>
 
         {/* Tab Content Rendering */}
