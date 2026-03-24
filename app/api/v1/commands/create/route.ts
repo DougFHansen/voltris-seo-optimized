@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Validar tipos permitidos de comando para evitar injeção de comandos arbitrários
-        const ALLOWED_COMMANDS = ['optimize', 'scan', 'update_settings', 'heartbeat', 'report_status'];
+        const ALLOWED_COMMANDS = ['optimize', 'scan', 'update_settings', 'heartbeat', 'report_status', 'prepare_pc', 'gamer_mode', 'shutdown', 'restart_link'];
         if (!ALLOWED_COMMANDS.includes(command_type)) {
             return NextResponse.json({ error: 'Invalid command_type' }, { status: 400 });
         }

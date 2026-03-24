@@ -17,18 +17,21 @@ function LinkDeviceContent() {
 
     useEffect(() => {
         const handleLinking = async () => {
-            // Aguardar o AuthProvider resolver o estado inicial
-            if (authLoading) return;
-
             console.log('[LINK_DEVICE] Iniciando processo de vinculação');
             console.log('[LINK_DEVICE] installation_id:', installationId);
+            console.log('[LINK_DEVICE] authLoading:', authLoading, '| user:', user?.id ?? 'null');
 
-            if (!user) {
+            // Se não há usuário e o auth já resolveu, redirecionar imediatamente
+            // Se ainda está carregando, aguardar apenas se não tiver certeza do estado
+            if (!user && !authLoading) {
                 // Redirecionar para login preservando o installation_id e o retorno para cá
                 const redirectUrl = `/auth/link-device${installationId ? `?installation_id=${installationId}` : ''}`;
                 router.push(`/login?redirect=${encodeURIComponent(redirectUrl)}&installation_id=${installationId || ''}`);
                 return;
             }
+
+            // Ainda carregando — aguardar próxima execução do effect
+            if (authLoading) return;
 
             if (!installationId) {
                 router.push('/dashboard?tab=pc');

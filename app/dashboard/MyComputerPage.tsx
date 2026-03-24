@@ -116,14 +116,32 @@ export default function MyComputerPage({ userId }: { userId: string }) {
   const handleRemoteCommand = async (deviceId: string, command: string) => {
     setCommandLoading(`${deviceId}-${command}`);
     
+    // Mapear os command_types do UI para os tipos aceitos pela API
+    const commandTypeMap: Record<string, string> = {
+      optimize: 'optimize',
+      prepare: 'prepare_pc',
+      restart: 'restart_link',
+      shutdown: 'shutdown',
+      gamer: 'gamer_mode',
+    };
+
+    const apiCommandType = commandTypeMap[command] || command;
+    
     try {
-      const { error } = await supabase.from('commands').insert({
-        installation_id: deviceId,
-        command_type: command,
-        status: 'pending'
+      const response = await fetch('/api/v1/commands/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          installation_id: deviceId,
+          command_type: apiCommandType,
+          payload: { source: 'dashboard', original_command: command }
+        })
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || 'Falha ao enviar comando');
+      }
 
       toast.success(`Comando '${command.toUpperCase()}' enviado!`, {
         icon: '🛰️',
@@ -135,8 +153,8 @@ export default function MyComputerPage({ userId }: { userId: string }) {
           borderRadius: '1rem'
         }
       });
-    } catch (err) {
-      toast.error('Falha ao enviar comando');
+    } catch (err: any) {
+      toast.error(`Falha ao enviar comando: ${err.message || 'Erro desconhecido'}`);
     } finally {
       setCommandLoading(null);
     }
