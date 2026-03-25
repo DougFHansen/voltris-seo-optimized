@@ -32,6 +32,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const supabaseRef = useRef(createClient());
   // Evitar chamadas paralelas simultâneas
   const fetchingRef = useRef(false);
+  // Ref para acessar o estado atual dentro de callbacks (evita stale closure)
+  const authStateRef = useRef(authState);
+  authStateRef.current = authState;
 
   const fetchProfile = useCallback(async (user: User | null) => {
     try {
@@ -116,10 +119,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (event === 'SIGNED_OUT') {
         setAuthState({ user: null, isAdmin: false, profile: null, loading: false, error: null });
       } else if (session?.user && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'USER_UPDATED')) {
-        // MUITO IMPORTANTE: Seta o usuário IMEDIATAMENTE antes de buscar o perfil
-        // Isso remove o estado de "deslogado" do header instantaneamente após o OAuth
-        setAuthState(prev => ({ ...prev, user: session.user, loading: true }));
-        await fetchProfile(session.user);
+        // TOKEN_REFRESHED acontece quando o usuário volta para a aba (visibilitychange).
+        // NÃO setar loading=true se já temos user+profile — evita flash de "Sincronizando..."
+        const isTokenRefresh = event === 'TOKEN_REFRESHED';
+        const currentState = authStateRef.current;
+        const alreadyHasData = currentState.user && currentState.profile && !currentState.loading;
+
+        if (isTokenRefresh && alreadyHasData) {
+          // Refresh silencioso — atualiza user sem mostrar loading
+          setAuthState(prev => ({ ...prev, user: session.user }));
+          // Buscar perfil em background sem bloquear UI
+          fetchProfile(session.user);
+        } else {
+          // Login inicial ou update de usuário — mostrar loading normalmente
+          setAuthState(prev => ({ ...prev, user: session.user, loading: true }));
+          await fetchProfile(session.user);
+        }
       } else if (event === 'INITIAL_SESSION' && !session) {
         setAuthState(prev => ({ ...prev, loading: false }));
       }
