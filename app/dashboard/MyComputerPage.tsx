@@ -7,7 +7,7 @@ import {
   FiMonitor, FiCpu, FiHardDrive, FiActivity, FiZap, 
   FiPower, FiRefreshCw, FiAlertCircle, FiCheck, FiX, 
   FiShield, FiDownload, FiHash, FiUser, FiInfo, FiTrash2,
-  FiTerminal, FiSettings, FiPlus
+  FiTerminal, FiSettings, FiPlus, FiSearch
 } from 'react-icons/fi';
 import { toast } from 'react-hot-toast';
 import { useDashboard } from '@/app/context/DashboardContext';

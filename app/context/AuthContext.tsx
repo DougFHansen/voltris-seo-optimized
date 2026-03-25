@@ -43,7 +43,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      // Adicionar timeout para a busca de perfil
+      // Adicionar timeout para a busca de perfil (15s — Supabase pode demorar no cold start)
       const profilePromise = supabaseRef.current
         .from('profiles')
         .select('*')
@@ -51,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         .single();
 
       const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('TIMEOUT')), 5000)
+        setTimeout(() => reject(new Error('TIMEOUT')), 15000)
       );
 
       const { data: profile, error } = await Promise.race([profilePromise, timeoutPromise]) as any;
