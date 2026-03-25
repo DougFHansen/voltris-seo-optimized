@@ -43,33 +43,40 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return;
       }
 
-      // Adicionar timeout para a busca de perfil (15s — Supabase pode demorar no cold start)
-      const profilePromise = supabaseRef.current
-        .from('profiles')
-        .select('*')
-        .eq('id', user.id)
-        .single();
-
-      const timeoutPromise = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('TIMEOUT')), 15000)
-      );
-
-      const { data: profile, error } = await Promise.race([profilePromise, timeoutPromise]) as any;
-
-      if (error && error.code !== 'PGRST116') {
-        console.warn('[AUTH] Erro ao buscar perfil:', error.message);
-      }
-
-      setAuthState({
+      // CORREÇÃO: Liberar o user IMEDIATAMENTE (loading=false) e buscar profile em background.
+      // Isso evita que o dashboard fique travado em "Sincronizando..." quando o Supabase está lento.
+      setAuthState(prev => ({
+        ...prev,
         user,
-        isAdmin: profile?.is_admin ?? false,
-        profile: profile ?? null,
-        loading: false,
-        error: null,
-      });
+        loading: false, // Liberar UI imediatamente com o user
+      }));
+
+      // Buscar profile em background (não bloqueia a UI)
+      try {
+        const { data: profile, error } = await supabaseRef.current
+          .from('profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+
+        if (error && error.code !== 'PGRST116') {
+          console.warn('[AUTH] Erro ao buscar perfil:', error.message);
+        }
+
+        // Atualizar com profile quando chegar (sem setar loading)
+        setAuthState(prev => ({
+          ...prev,
+          user, // Manter user atualizado
+          isAdmin: profile?.is_admin ?? prev.isAdmin,
+          profile: profile ?? prev.profile,
+          error: null,
+        }));
+      } catch (profileErr: any) {
+        console.warn('[AUTH] Perfil indisponível (background):', profileErr.message);
+        // Não bloquear — user já está liberado
+      }
     } catch (err: any) {
       console.error('[AUTH] Falha inesperada no fetchProfile:', err);
-      // Fallback: Se der erro ou timeout no perfil, ainda assim liberamos o login com o objeto user
       setAuthState(prev => ({ 
         ...prev, 
         user, 
