@@ -174,8 +174,8 @@ const nextConfig = {
         { source: '/api/admin/sessions/live', destination: '/api-mock.json' },
         { source: '/api/admin/telemetry/:path*', destination: '/api-mock.json' },
         { source: '/api/v1/license/sync', destination: '/api-mock.json' },
-        { source: '/api/v1/commands/pending', destination: '/api-mock.json' },
-        { source: '/api/v1/install/status', destination: '/api-mock.json' },
+        // REMOVIDO: /api/v1/commands/pending — agora é real (comandos remotos do dashboard)
+        // REMOVIDO: /api/v1/install/status — agora é real (vinculação de conta)
       ]
     };
   },
