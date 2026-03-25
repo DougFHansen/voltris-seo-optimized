@@ -35,7 +35,26 @@ export async function POST(request: NextRequest) {
         }
 
         // Validar tipos permitidos de comando para evitar injeção de comandos arbitrários
-        const ALLOWED_COMMANDS = ['optimize', 'scan', 'update_settings', 'heartbeat', 'report_status', 'prepare_pc', 'gamer_mode', 'shutdown', 'restart_link'];
+        const ALLOWED_COMMANDS = [
+            // Sistema
+            'optimize', 'quick_optimize', 'quick_cleanup', 'shutdown', 'restart_link', 'prepare_pc',
+            // Limpeza
+            'cleanup_analyze', 'cleanup_execute',
+            // Reparo
+            'repair_full', 'repair_dism_sfc', 'repair_disk_cleanup',
+            // Gamer
+            'gamer_mode', 'gamer_activate', 'gamer_deactivate', 'gamer_scan_games',
+            // Rede
+            'network_optimize', 'network_flush_dns', 'network_reset_winsock', 'network_reset_tcp',
+            // Desempenho
+            'performance_optimize', 'performance_revert',
+            // Shield
+            'shield_toggle', 'shield_quick_scan', 'shield_full_scan', 'shield_adware_scan',
+            // Drivers
+            'drivers_scan', 'drivers_update_all',
+            // Interno
+            'heartbeat', 'scan', 'update_settings', 'report_status'
+        ];
         if (!ALLOWED_COMMANDS.includes(command_type)) {
             return NextResponse.json({ error: 'Invalid command_type' }, { status: 400 });
         }

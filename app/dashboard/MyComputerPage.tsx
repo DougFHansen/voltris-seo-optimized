@@ -29,26 +29,24 @@ interface DeviceData {
   license_key: string;
 }
 
-// Action Button Component for Remote Commands
+// Action Button Component for Remote Commands — Compact Version
 const RemoteAction = ({ icon: Icon, label, color, onClick, loading }: any) => (
   <motion.button
-    whileHover={{ scale: 1.05, y: -2 }}
-    whileTap={{ scale: 0.95 }}
+    whileHover={{ scale: 1.03 }}
+    whileTap={{ scale: 0.97 }}
     disabled={loading}
     onClick={onClick}
     className={`
-      flex flex-col items-center justify-center gap-3 p-4 rounded-3xl border transition-all duration-300 group
-      ${color === 'blue' ? 'bg-[#31A8FF]/10 border-[#31A8FF]/20 text-[#31A8FF] hover:bg-[#31A8FF] hover:text-white' : ''}
-      ${color === 'red' ? 'bg-red-500/10 border-red-500/20 text-red-400 hover:bg-red-500 hover:text-white' : ''}
-      ${color === 'amber' ? 'bg-amber-500/10 border-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-white' : ''}
-      ${color === 'emerald' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400 hover:bg-emerald-500 hover:text-white' : ''}
-      ${loading ? 'opacity-50 cursor-not-allowed' : ''}
+      flex items-center gap-2 px-3 py-2.5 rounded-xl border transition-all duration-200 group text-left
+      ${color === 'blue' ? 'bg-[#31A8FF]/5 border-[#31A8FF]/10 text-[#31A8FF] hover:bg-[#31A8FF]/15 hover:border-[#31A8FF]/30' : ''}
+      ${color === 'red' ? 'bg-red-500/5 border-red-500/10 text-red-400 hover:bg-red-500/15 hover:border-red-500/30' : ''}
+      ${color === 'amber' ? 'bg-amber-500/5 border-amber-500/10 text-amber-400 hover:bg-amber-500/15 hover:border-amber-500/30' : ''}
+      ${color === 'emerald' ? 'bg-emerald-500/5 border-emerald-500/10 text-emerald-400 hover:bg-emerald-500/15 hover:border-emerald-500/30' : ''}
+      ${loading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
     `}
   >
-    <div className="p-3 rounded-2xl bg-white/5 border border-white/10 group-hover:border-transparent transition-colors">
-      <Icon className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-    </div>
-    <span className="text-[10px] font-black uppercase tracking-widest">{label}</span>
+    <Icon className={`w-3.5 h-3.5 shrink-0 ${loading ? 'animate-spin' : ''}`} />
+    <span className="text-[9px] font-black uppercase tracking-wider truncate">{label}</span>
   </motion.button>
 );
 
@@ -116,25 +114,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
   const handleRemoteCommand = async (deviceId: string, command: string) => {
     setCommandLoading(`${deviceId}-${command}`);
     
-    // Mapear os command_types do UI para os tipos aceitos pela API
-    const commandTypeMap: Record<string, string> = {
-      optimize: 'optimize',
-      prepare: 'prepare_pc',
-      restart: 'restart_link',
-      shutdown: 'shutdown',
-      gamer: 'gamer_mode',
-    };
-
-    const apiCommandType = commandTypeMap[command] || command;
-    
     try {
       const response = await fetch('/api/v1/commands/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           installation_id: deviceId,
-          command_type: apiCommandType,
-          payload: { source: 'dashboard', original_command: command }
+          command_type: command,
+          payload: { source: 'dashboard', timestamp: new Date().toISOString() }
         })
       });
 
@@ -143,7 +130,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
         throw new Error(errData.error || 'Falha ao enviar comando');
       }
 
-      toast.success(`Comando '${command.toUpperCase()}' enviado!`, {
+      toast.success(`Comando '${command}' enviado!`, {
         icon: '🛰️',
         style: { 
           background: 'rgba(10, 10, 15, 0.9)', 
@@ -154,7 +141,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
         }
       });
     } catch (err: any) {
-      toast.error(`Falha ao enviar comando: ${err.message || 'Erro desconhecido'}`);
+      toast.error(`Falha: ${err.message || 'Erro desconhecido'}`);
     } finally {
       setCommandLoading(null);
     }
@@ -337,33 +324,80 @@ export default function MyComputerPage({ userId }: { userId: string }) {
 
                   </div>
 
-                  {/* Remote Command Terminal (Uplink Controls) */}
-                  <div className="p-10 border-t border-white/5 bg-black/10 grid grid-cols-2 md:grid-cols-5 gap-5">
-                    <RemoteAction 
-                      icon={FiZap} label="Otimizar" color="blue" 
-                      onClick={() => handleRemoteCommand(device.id, 'optimize')}
-                      loading={commandLoading === `${device.id}-optimize`}
-                    />
-                    <RemoteAction 
-                      icon={FiTerminal} label="Preparar PC" color="emerald" 
-                      onClick={() => handleRemoteCommand(device.id, 'prepare')}
-                      loading={commandLoading === `${device.id}-prepare`}
-                    />
-                    <RemoteAction 
-                      icon={FiRefreshCw} label="Reiniciar Link" color="amber" 
-                      onClick={() => handleRemoteCommand(device.id, 'restart')}
-                      loading={commandLoading === `${device.id}-restart`}
-                    />
-                    <RemoteAction 
-                      icon={FiPower} label="Desligar" color="red" 
-                      onClick={() => handleRemoteCommand(device.id, 'shutdown')}
-                      loading={commandLoading === `${device.id}-shutdown`}
-                    />
-                    <RemoteAction 
-                      icon={FiShield} label="Modo Gamer" color="blue" 
-                      onClick={() => handleRemoteCommand(device.id, 'gamer')}
-                      loading={commandLoading === `${device.id}-gamer`}
-                    />
+                  {/* Remote Command Terminal — ALL SECTIONS */}
+                  <div className="border-t border-white/5 bg-black/10">
+                    {/* Section Header */}
+                    <div className="px-8 pt-6 pb-3">
+                      <h4 className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em]">Painel de Controle Remoto</h4>
+                    </div>
+
+                    {/* Dashboard */}
+                    <div className="px-8 pb-4">
+                      <p className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.2em] mb-3">⚡ Dashboard</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <RemoteAction icon={FiZap} label="Otimizar" color="blue" onClick={() => handleRemoteCommand(device.id, 'quick_optimize')} loading={commandLoading === `${device.id}-quick_optimize`} />
+                        <RemoteAction icon={FiTrash2} label="Limpeza" color="emerald" onClick={() => handleRemoteCommand(device.id, 'quick_cleanup')} loading={commandLoading === `${device.id}-quick_cleanup`} />
+                        <RemoteAction icon={FiTerminal} label="Preparar PC" color="emerald" onClick={() => handleRemoteCommand(device.id, 'prepare_pc')} loading={commandLoading === `${device.id}-prepare_pc`} />
+                        <RemoteAction icon={FiRefreshCw} label="Reiniciar" color="amber" onClick={() => handleRemoteCommand(device.id, 'restart_link')} loading={commandLoading === `${device.id}-restart_link`} />
+                      </div>
+                    </div>
+
+                    {/* Limpeza */}
+                    <div className="px-8 pb-4">
+                      <p className="text-[9px] font-black text-[#00FF88] uppercase tracking-[0.2em] mb-3">🧹 Limpeza</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <RemoteAction icon={FiSearch} label="Analisar" color="emerald" onClick={() => handleRemoteCommand(device.id, 'cleanup_analyze')} loading={commandLoading === `${device.id}-cleanup_analyze`} />
+                        <RemoteAction icon={FiTrash2} label="Limpar Tudo" color="emerald" onClick={() => handleRemoteCommand(device.id, 'cleanup_execute')} loading={commandLoading === `${device.id}-cleanup_execute`} />
+                      </div>
+                    </div>
+
+                    {/* Reparo */}
+                    <div className="px-8 pb-4">
+                      <p className="text-[9px] font-black text-[#FFAA00] uppercase tracking-[0.2em] mb-3">🔧 Reparo</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <RemoteAction icon={FiSettings} label="DISM + SFC" color="amber" onClick={() => handleRemoteCommand(device.id, 'repair_dism_sfc')} loading={commandLoading === `${device.id}-repair_dism_sfc`} />
+                        <RemoteAction icon={FiHardDrive} label="Limpeza Disco" color="amber" onClick={() => handleRemoteCommand(device.id, 'repair_disk_cleanup')} loading={commandLoading === `${device.id}-repair_disk_cleanup`} />
+                      </div>
+                    </div>
+
+                    {/* Gamer */}
+                    <div className="px-8 pb-4">
+                      <p className="text-[9px] font-black text-[#8B31FF] uppercase tracking-[0.2em] mb-3">🎮 Modo Gamer</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <RemoteAction icon={FiZap} label="Ativar" color="blue" onClick={() => handleRemoteCommand(device.id, 'gamer_activate')} loading={commandLoading === `${device.id}-gamer_activate`} />
+                        <RemoteAction icon={FiPower} label="Desativar" color="red" onClick={() => handleRemoteCommand(device.id, 'gamer_deactivate')} loading={commandLoading === `${device.id}-gamer_deactivate`} />
+                      </div>
+                    </div>
+
+                    {/* Rede */}
+                    <div className="px-8 pb-4">
+                      <p className="text-[9px] font-black text-[#00BFFF] uppercase tracking-[0.2em] mb-3">🌐 Rede</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <RemoteAction icon={FiActivity} label="Otimizar Rede" color="blue" onClick={() => handleRemoteCommand(device.id, 'network_optimize')} loading={commandLoading === `${device.id}-network_optimize`} />
+                        <RemoteAction icon={FiRefreshCw} label="Flush DNS" color="blue" onClick={() => handleRemoteCommand(device.id, 'network_flush_dns')} loading={commandLoading === `${device.id}-network_flush_dns`} />
+                        <RemoteAction icon={FiSettings} label="Reset Winsock" color="blue" onClick={() => handleRemoteCommand(device.id, 'network_reset_winsock')} loading={commandLoading === `${device.id}-network_reset_winsock`} />
+                        <RemoteAction icon={FiTerminal} label="Reset TCP/IP" color="blue" onClick={() => handleRemoteCommand(device.id, 'network_reset_tcp')} loading={commandLoading === `${device.id}-network_reset_tcp`} />
+                      </div>
+                    </div>
+
+                    {/* Shield */}
+                    <div className="px-8 pb-4">
+                      <p className="text-[9px] font-black text-[#FF4B6B] uppercase tracking-[0.2em] mb-3">🛡️ Voltris Shield</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <RemoteAction icon={FiShield} label="Scan Rápido" color="red" onClick={() => handleRemoteCommand(device.id, 'shield_quick_scan')} loading={commandLoading === `${device.id}-shield_quick_scan`} />
+                        <RemoteAction icon={FiShield} label="Scan Completo" color="red" onClick={() => handleRemoteCommand(device.id, 'shield_full_scan')} loading={commandLoading === `${device.id}-shield_full_scan`} />
+                        <RemoteAction icon={FiAlertCircle} label="Scan Adware" color="red" onClick={() => handleRemoteCommand(device.id, 'shield_adware_scan')} loading={commandLoading === `${device.id}-shield_adware_scan`} />
+                      </div>
+                    </div>
+
+                    {/* Sistema */}
+                    <div className="px-8 pb-6">
+                      <p className="text-[9px] font-black text-red-400 uppercase tracking-[0.2em] mb-3">⚠️ Sistema</p>
+                      <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                        <RemoteAction icon={FiPower} label="Desligar" color="red" onClick={() => handleRemoteCommand(device.id, 'shutdown')} loading={commandLoading === `${device.id}-shutdown`} />
+                        <RemoteAction icon={FiRefreshCw} label="Reiniciar" color="amber" onClick={() => handleRemoteCommand(device.id, 'restart_link')} loading={commandLoading === `${device.id}-restart_link`} />
+                      </div>
+                    </div>
                   </div>
 
                 </div>
