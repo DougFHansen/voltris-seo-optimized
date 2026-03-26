@@ -8,6 +8,7 @@ export async function GET(request: NextRequest) {
         const { searchParams } = new URL(request.url);
         const raw_id = searchParams.get('installation_id');
         const installation_id = raw_id?.trim();
+        const since = searchParams.get('since'); // ISO timestamp — só retorna vinculado se updated_at > since
 
         if (!installation_id) {
             console.error('[API/STATUS] installation_id faltando');
@@ -46,7 +47,21 @@ export async function GET(request: NextRequest) {
         }
 
         // Verificar se está vinculado (tem user_id)
-        const isLinked = installation && installation.user_id ? true : false;
+        // Se `since` foi passado, só considerar vinculado se a vinculação ocorreu APÓS esse timestamp
+        // Isso evita detectar vinculações antigas de sessões anteriores
+        let isLinked = installation && installation.user_id ? true : false;
+        if (isLinked && since) {
+            try {
+                const sinceDate = new Date(since);
+                const updatedAt = new Date(installation.updated_at);
+                if (updatedAt <= sinceDate) {
+                    console.log(`[API/STATUS] Vinculação existente mas anterior ao since (${since}), ignorando`);
+                    isLinked = false;
+                }
+            } catch {
+                // Se o parse falhar, ignorar o filtro
+            }
+        }
         let userEmail = null;
 
         if (isLinked) {
@@ -85,4 +100,4 @@ export async function GET(request: NextRequest) {
         console.error('[API/STATUS] Erro inesperado:', error);
         return NextResponse.json({ linked: null, error: error.message }, { status: 500 });
     }
-}
+}

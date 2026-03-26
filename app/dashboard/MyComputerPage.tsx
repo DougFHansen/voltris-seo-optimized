@@ -337,8 +337,6 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                       <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                         <RemoteAction icon={FiZap} label="Otimizar" color="blue" onClick={() => handleRemoteCommand(device.id, 'quick_optimize')} loading={commandLoading === `${device.id}-quick_optimize`} />
                         <RemoteAction icon={FiTrash2} label="Limpeza" color="emerald" onClick={() => handleRemoteCommand(device.id, 'quick_cleanup')} loading={commandLoading === `${device.id}-quick_cleanup`} />
-                        <RemoteAction icon={FiTerminal} label="Preparar PC" color="emerald" onClick={() => handleRemoteCommand(device.id, 'prepare_pc')} loading={commandLoading === `${device.id}-prepare_pc`} />
-                        <RemoteAction icon={FiRefreshCw} label="Reiniciar" color="amber" onClick={() => handleRemoteCommand(device.id, 'restart_link')} loading={commandLoading === `${device.id}-restart_link`} />
                       </div>
                     </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
@@ -136,13 +136,17 @@ function DashboardContent() {
     } finally {
       if (showLoading) setIsLoading(false);
     }
-  }, [user, supabase]);
+  }, [user?.id, user?.email, supabase]); // Depende apenas do ID e email, não do objeto user inteiro
 
+  // Carregar dados apenas na montagem e quando o ID do usuário mudar de fato
+  const userIdRef = useRef<string | undefined>(undefined);
   useEffect(() => {
-    if (user) {
-      fetchData();
-    }
-  }, [user, fetchData]);
+    if (!user?.id) return;
+    // Só buscar se o ID mudou (evita refetch em token refresh que recria o objeto user)
+    if (userIdRef.current === user.id) return;
+    userIdRef.current = user.id;
+    fetchData();
+  }, [user?.id, fetchData]);
 
   useEffect(() => {
     const success = searchParams.get('checkout_success');
@@ -415,4 +419,4 @@ function DashboardContent() {
       </div>
     </AuthGuard>
   );
-}
+}

@@ -399,6 +399,538 @@ export default function OptimizerClient() {
                     </div>
                 </section>
 
+                {/* --- COMPLETE FUNCTIONALITY SHOWCASE --- */}
+                <section className="py-32 relative z-10 bg-gradient-to-b from-[#050510] to-[#08080C]">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-20">
+                            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Funcionalidades Completas do Voltris Optimizer</h2>
+                            <p className="text-slate-400 text-lg max-w-3xl mx-auto">
+                                Conheça todas as 25 ferramentas profissionais que transformam seu PC em uma máquina de alta performance
+                            </p>
+                        </div>
+
+                        {/* PRINCIPAL Section */}
+                        <div className="mb-24">
+                            <div className="text-center mb-12">
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#31A8FF] mb-4">🎯 SEÇÃO PRINCIPAL</h3>
+                                <p className="text-slate-400">Ferramentas essenciais para otimização do dia a dia</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {/* Dashboard */}
+                                <motion.div
+                                    whileHover={{ y: -5, scale: 1.02 }}
+                                    className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-[#31A8FF]/30 transition-all relative overflow-hidden"
+                                >
+                                    <div className="w-12 h-12 bg-[#31A8FF]/10 rounded-xl flex items-center justify-center mb-4">
+                                        <Gauge className="w-6 h-6 text-[#31A8FF]" />
+                                    </div>
+                                    <h4 className="text-lg font-bold text-white mb-2">Dashboard</h4>
+                                    <p className="text-slate-400 text-sm mb-4">Monitoramento em tempo real</p>
+                                    <ul className="text-xs text-slate-500 space-y-2">
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#31A8FF]" />
+                                            CPU, RAM, Disco, Temp
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#31A8FF]" />
+                                            Health Score 0-100
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#31A8FF]" />
+                                            Ações rápidas
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#31A8FF]" />
+                                            Status do sistema
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#31A8FF]" />
+                                            Métricas em tempo real
+                                        </li>
+                                    </ul>
+                                </motion.div>
+
+                                {/* Performance */}
+                                <motion.div
+                                    whileHover={{ y: -5, scale: 1.02 }}
+                                    className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-[#00FF94]/30 transition-all relative overflow-hidden"
+                                >
+                                    <div className="w-12 h-12 bg-[#00FF94]/10 rounded-xl flex items-center justify-center mb-4">
+                                        <Cpu className="w-6 h-6 text-[#00FF94]" />
+                                    </div>
+                                    <h4 className="text-lg font-bold text-white mb-2">Desempenho</h4>
+                                    <p className="text-slate-400 text-sm mb-4">Otimização inteligente</p>
+                                    <ul className="text-xs text-slate-500 space-y-2">
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00FF94]" />
+                                            Perfil automático
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00FF94]" />
+                                            Detecção Intel/AMD
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00FF94]" />
+                                            RAM DDR3/4/5
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00FF94]" />
+                                            SSD/HDD/NVMe
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00FF94]" />
+                                            Overclock seguro
+                                        </li>
+                                    </ul>
+                                </motion.div>
+
+                                {/* Limpeza */}
+                                <motion.div
+                                    whileHover={{ y: -5, scale: 1.02 }}
+                                    className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 transition-all relative overflow-hidden"
+                                >
+                                    <div className="w-12 h-12 bg-[#8B31FF]/10 rounded-xl flex items-center justify-center mb-4">
+                                        <Database className="w-6 h-6 text-[#8B31FF]" />
+                                    </div>
+                                    <h4 className="text-lg font-bold text-white mb-2">Limpeza</h4>
+                                    <p className="text-slate-400 text-sm mb-4">Sistema ultra seguro</p>
+                                    <ul className="text-xs text-slate-500 space-y-2">
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#8B31FF]" />
+                                            Análise primeiro
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#8B31FF]" />
+                                            Arquivos temporários
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#8B31FF]" />
+                                            Cache navegadores
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#8B31FF]" />
+                                            Downloads antigos
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#8B31FF]" />
+                                            Console de logs
+                                        </li>
+                                    </ul>
+                                </motion.div>
+
+                                {/* Rede */}
+                                <motion.div
+                                    whileHover={{ y: -5, scale: 1.02 }}
+                                    className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-[#00E5FF]/30 transition-all relative overflow-hidden"
+                                >
+                                    <div className="w-12 h-12 bg-[#00E5FF]/10 rounded-xl flex items-center justify-center mb-4">
+                                        <Wifi className="w-6 h-6 text-[#00E5FF]" />
+                                    </div>
+                                    <h4 className="text-lg font-bold text-white mb-2">Rede</h4>
+                                    <p className="text-slate-400 text-sm mb-4">Otimização completa</p>
+                                    <ul className="text-xs text-slate-500 space-y-2">
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00E5FF]" />
+                                            DNS otimizados
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00E5FF]" />
+                                            Google/Cloudflare DNS
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00E5FF]" />
+                                            Flush DNS cache
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00E5FF]" />
+                                            Reset Winsock
+                                        </li>
+                                        <li className="flex items-center gap-2">
+                                            <CheckCircle2 className="w-3 h-3 text-[#00E5FF]" />
+                                            TCP/IP stack
+                                        </li>
+                                    </ul>
+                                </motion.div>
+                            </div>
+                        </div>
+
+                        {/* MÓDULOS Section */}
+                        <div className="mb-24">
+                            <div className="text-center mb-12">
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#8B31FF] mb-4">⚡ SEÇÃO MÓDULOS</h3>
+                                <p className="text-slate-400">Ferramentas especializadas para máximo desempenho</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                {/* Gamer */}
+                                <motion.div
+                                    whileHover={{ y: -5 }}
+                                    className="p-8 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-[#FF4B6B]/30 transition-all relative overflow-hidden"
+                                >
+                                    <div className="flex items-center mb-6">
+                                        <div className="w-16 h-16 bg-[#FF4B6B]/10 rounded-xl flex items-center justify-center mr-6">
+                                            <MousePointer2 className="w-8 h-8 text-[#FF4B6B]" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-2xl font-bold text-white mb-2">Modo Gamer</h4>
+                                            <p className="text-slate-400">Performance extrema para jogos</p>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <h5 className="font-semibold text-[#FF4B6B] mb-3">Detecção Automática:</h5>
+                                            <ul className="text-sm text-slate-400 space-y-2">
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    Steam (200+ jogos)
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    Epic Games Store
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    Battle.net
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    Ubisoft Connect
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    Jogos independentes
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h5 className="font-semibold text-[#FF4B6B] mb-3">Otimizações:</h5>
+                                            <ul className="text-sm text-slate-400 space-y-2">
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    +40% FPS médio
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    -60% latência
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    0ms input lag
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    Prioridade CPU máxima
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                    RAM dedicada
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </motion.div>
+
+                                {/* Voltris Shield */}
+                                <motion.div
+                                    whileHover={{ y: -5 }}
+                                    className="p-8 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-[#FF0055]/30 transition-all relative overflow-hidden"
+                                >
+                                    <div className="flex items-center mb-6">
+                                        <div className="w-16 h-16 bg-[#FF0055]/10 rounded-xl flex items-center justify-center mr-6">
+                                            <ShieldCheck className="w-8 h-8 text-[#FF0055]" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-2xl font-bold text-white mb-2">Voltris Shield</h4>
+                                            <p className="text-slate-400">Proteção avançada total</p>
+                                        </div>
+                                    </div>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <h5 className="font-semibold text-[#FF0055] mb-3">Scans Disponíveis:</h5>
+                                            <ul className="text-sm text-slate-400 space-y-2">
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Scan Rápido
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Scan Completo
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Scan Adware
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Scan Customizado
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Proteção 24/7
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h5 className="font-semibold text-[#FF0055] mb-3">Proteção Contra:</h5>
+                                            <ul className="text-sm text-slate-400 space-y-2">
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Malware/Ransomware
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Spyware/Adware
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    Toolbars/Hijackers
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    PUPs
+                                                </li>
+                                                <li className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-4 h-4 text-[#FF0055]" />
+                                                    100% detecção
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </div>
+                        </div>
+
+                        {/* STREAMING Section */}
+                        <div className="mb-24">
+                            <div className="text-center mb-12">
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#FF4B6B] mb-4">🎥 SEÇÃO STREAMING</h3>
+                                <p className="text-slate-400">Ferramentas para criadores de conteúdo</p>
+                            </div>
+                            
+                            <motion.div
+                                whileHover={{ y: -5 }}
+                                className="p-8 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-[#FF4B6B]/30 transition-all relative overflow-hidden max-w-4xl mx-auto"
+                            >
+                                <div className="flex items-center mb-6">
+                                    <div className="w-16 h-16 bg-[#FF4B6B]/10 rounded-xl flex items-center justify-center mr-6">
+                                        <Video className="w-8 h-8 text-[#FF4B6B]" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-2xl font-bold text-white mb-2">Stream Hub</h4>
+                                        <p className="text-slate-400">Central para streamers e criadores de conteúdo</p>
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div>
+                                        <h5 className="font-semibold text-[#FF4B6B] mb-3">Otimização:</h5>
+                                        <ul className="text-sm text-slate-400 space-y-2">
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                OBS/Streamlabs
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                Prioridade streaming
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                Redução de lag
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 className="font-semibold text-[#FF4B6B] mb-3">Performance:</h5>
+                                        <ul className="text-sm text-slate-400 space-y-2">
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                CPU dedicada
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                RAM otimizada
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                Rede estável
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 className="font-semibold text-[#FF4B6B] mb-3">Qualidade:</h5>
+                                        <ul className="text-sm text-slate-400 space-y-2">
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                1080p/60fps
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                4K/30fps
+                                            </li>
+                                            <li className="flex items-center gap-2">
+                                                <CheckCircle2 className="w-4 h-4 text-[#FF4B6B]" />
+                                                Sem drops
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
+
+                        {/* FERRAMENTAS Section */}
+                        <div className="mb-24">
+                            <div className="text-center mb-12">
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#FFEE00] mb-4">🛠️ SEÇÃO FERRAMENTAS</h3>
+                                <p className="text-slate-400">6 ferramentas essenciais de personalização e configuração</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {[
+                                    { name: 'Personalizar', icon: <Settings />, color: '#FFEE00', desc: 'Customização visual completa', features: ['Temas Dark/Light', 'Transparência', 'Centralização taskbar', 'Cores personalizadas'] },
+                                    { name: 'Tela', icon: <Video />, color: '#31A8FF', desc: 'Configurações avançadas', features: ['Resolução ideal', 'Taxa de refresh', 'Múltiplos monitores', 'HDR calibration'] },
+                                    { name: 'Energia', icon: <Zap />, color: '#00FF94', desc: 'Planos inteligentes', features: ['Performance vs economia', 'Otimização bateria', 'Perfis adaptativos', 'Modo turbo'] },
+                                    { name: 'Segurança', icon: <Lock />, color: '#FF0055', desc: 'Configurações avançadas', features: ['Firewall avançado', 'Controle UAC', 'Permissões apps', 'Proteção em camadas'] },
+                                    { name: 'Privacidade', icon: <ShieldCheck />, color: '#8B31FF', desc: 'Controle total de dados', features: ['Telemetria Windows', 'Coleta de dados', 'Privacidade apps', 'Anti-tracking'] },
+                                    { name: 'Debloat', icon: <Minus />, color: '#FF4B6B', desc: 'Remoção de bloatware', features: ['Apps pré-instalados', 'Componentes desnecessários', 'Otimização sistema', 'Windows lite'] }
+                                ].map((tool, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        whileHover={{ y: -5, scale: 1.02 }}
+                                        className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-opacity-30 transition-all relative overflow-hidden"
+                                        style={{ borderColor: `${tool.color}30` }}
+                                    >
+                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${tool.color}10` }}>
+                                            <div className="w-6 h-6" style={{ color: tool.color }}>{tool.icon}</div>
+                                        </div>
+                                        <h4 className="text-lg font-bold text-white mb-2">{tool.name}</h4>
+                                        <p className="text-slate-400 text-sm mb-4">{tool.desc}</p>
+                                        <ul className="text-xs text-slate-500 space-y-2">
+                                            {tool.features.map((feature, fIdx) => (
+                                                <li key={fIdx} className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-3 h-3" style={{ color: tool.color }} />
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* MONITORAMENTO Section */}
+                        <div className="mb-24">
+                            <div className="text-center mb-12">
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#00E5FF] mb-4">📊 SEÇÃO MONITORAMENTO</h3>
+                                <p className="text-slate-400">4 ferramentas para análise e diagnóstico completo</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {[
+                                    { name: 'Dispositivo', icon: <Laptop />, color: '#00E5FF', desc: 'Informações detalhadas', features: ['Hardware completo', 'Drivers atualizados', 'Versões sistema', 'Especificações'] },
+                                    { name: 'Benchmark', icon: <BarChart3 />, color: '#FFB300', desc: 'Testes de performance', features: ['CPU, GPU, RAM', 'Comparações', 'Histórico', 'Scores globais'] },
+                                    { name: 'Diagnóstico', icon: <Activity />, color: '#31A8FF', desc: 'Verificação completa', features: ['Saúde do sistema', 'Erros críticos', 'Componentes', 'Relatórios'] },
+                                    { name: 'Histórico', icon: <Brain />, color: '#8B31FF', desc: 'Timeline completa', features: ['Otimizações', 'Alterações', 'Atividades', 'Logs detalhados'] }
+                                ].map((tool, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        whileHover={{ y: -5, scale: 1.02 }}
+                                        className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-opacity-30 transition-all relative overflow-hidden"
+                                        style={{ borderColor: `${tool.color}30` }}
+                                    >
+                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${tool.color}10` }}>
+                                            <div className="w-6 h-6" style={{ color: tool.color }}>{tool.icon}</div>
+                                        </div>
+                                        <h4 className="text-lg font-bold text-white mb-2">{tool.name}</h4>
+                                        <p className="text-slate-400 text-sm mb-4">{tool.desc}</p>
+                                        <ul className="text-xs text-slate-500 space-y-2">
+                                            {tool.features.map((feature, fIdx) => (
+                                                <li key={fIdx} className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-3 h-3" style={{ color: tool.color }} />
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* SERVIÇOS Section */}
+                        <div className="mb-24">
+                            <div className="text-center mb-12">
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#FF8F4B] mb-4">⚙️ SEÇÃO SERVIÇOS</h3>
+                                <p className="text-slate-400">3 ferramentas para automação e controle avançado</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {[
+                                    { name: 'Agendador', icon: <Activity />, color: '#FF8F4B', desc: 'Manutenção automática', features: ['Agendamentos', 'Tarefas recorrentes', 'Manutenção programada', 'Automação completa'] },
+                                    { name: 'Logs', icon: <Database />, color: '#6B7280', desc: 'Eventos detalhados', features: ['Eventos sistema', 'Erros e avisos', 'Logs em tempo real', 'Exportação'] },
+                                    { name: 'Serviços Pro', icon: <Settings />, color: '#FFEE00', desc: 'Recursos avançados', features: ['Funções avançadas', 'Configurações pro', 'Otimizações expert', 'Suporte prioritário'] }
+                                ].map((tool, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        whileHover={{ y: -5, scale: 1.02 }}
+                                        className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-opacity-30 transition-all relative overflow-hidden"
+                                        style={{ borderColor: `${tool.color}30` }}
+                                    >
+                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${tool.color}10` }}>
+                                            <div className="w-6 h-6" style={{ color: tool.color }}>{tool.icon}</div>
+                                        </div>
+                                        <h4 className="text-lg font-bold text-white mb-2">{tool.name}</h4>
+                                        <p className="text-slate-400 text-sm mb-4">{tool.desc}</p>
+                                        <ul className="text-xs text-slate-500 space-y-2">
+                                            {tool.features.map((feature, fIdx) => (
+                                                <li key={fIdx} className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-3 h-3" style={{ color: tool.color }} />
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* SISTEMA Section */}
+                        <div>
+                            <div className="text-center mb-12">
+                                <h3 className="text-2xl md:text-3xl font-bold text-[#6B7280] mb-4">🔧 SEÇÃO SISTEMA</h3>
+                                <p className="text-slate-400">3 ferramentas essenciais para manutenção do Windows</p>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                {[
+                                    { name: 'Reparo', icon: <Wrench />, color: '#31A8FF', desc: 'Correção automática', features: ['Erros Windows', 'Correção automática', 'Reparo profundo', 'Sistema estável'] },
+                                    { name: 'Sistema', icon: <Settings />, color: '#6B7280', desc: 'Configurações avançadas', features: ['Componentes Windows', 'Configurações ocultas', 'Otimizações sistema', 'Controle total'] },
+                                    { name: 'Drivers', icon: <Cpu />, color: '#00FF94', desc: 'Gerenciamento completo', features: ['Atualização automática', 'Compatibilidade', 'Backup drivers', 'Versões otimizadas'] }
+                                ].map((tool, idx) => (
+                                    <motion.div
+                                        key={idx}
+                                        whileHover={{ y: -5, scale: 1.02 }}
+                                        className="p-6 rounded-2xl bg-[#0A0A0F] border border-white/5 hover:border-opacity-30 transition-all relative overflow-hidden"
+                                        style={{ borderColor: `${tool.color}30` }}
+                                    >
+                                        <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: `${tool.color}10` }}>
+                                            <div className="w-6 h-6" style={{ color: tool.color }}>{tool.icon}</div>
+                                        </div>
+                                        <h4 className="text-lg font-bold text-white mb-2">{tool.name}</h4>
+                                        <p className="text-slate-400 text-sm mb-4">{tool.desc}</p>
+                                        <ul className="text-xs text-slate-500 space-y-2">
+                                            {tool.features.map((feature, fIdx) => (
+                                                <li key={fIdx} className="flex items-center gap-2">
+                                                    <CheckCircle2 className="w-3 h-3" style={{ color: tool.color }} />
+                                                    {feature}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* --- SEGMENTS SECTION --- */}
                 <section className="py-32 relative z-10 bg-[#050510]">
                     <div className="container mx-auto px-4">
