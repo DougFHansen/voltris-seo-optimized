@@ -632,59 +632,59 @@ export default function OptimizerClient() {
                             className="text-center mb-20"
                         >
                             <div className="flex items-center justify-center mb-8">
-                                <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] opacity-50 animate-pulse" />
-                                    <div className="relative z-10 text-white text-4xl">
+                                <div className="w-32 h-32 rounded-4xl bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] flex items-center justify-center relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-60 animate-pulse" />
+                                    <div className="relative z-10 text-white text-5xl">
                                         <Rocket />
                                     </div>
                                 </div>
                             </div>
                             
-                            <div className="space-y-6">
-                                <div className="flex items-center justify-center gap-4">
-                                    <h1 className="text-4xl md:text-6xl font-black bg-gradient-to-r from-white via-[#31A8FF] to-[#8B31FF] bg-clip-text text-transparent">
-                                        Voltris Enterprise Suite
+                            <div className="space-y-8">
+                                <div className="flex items-center justify-center gap-6">
+                                    <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-white via-[#31A8FF] to-[#8B31FF] bg-clip-text text-transparent">
+                                        Suite Voltris Enterprise
                                     </h1>
-                                    <div className="px-4 py-2 rounded-full bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] flex items-center gap-2">
-                                        <Sparkles className="w-4 h-4 text-white" />
-                                        <span className="text-sm font-bold text-white">25 Tools</span>
+                                    <div className="px-6 py-3 rounded-full bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] flex items-center gap-3 shadow-2xl">
+                                        <Sparkles className="w-5 h-5 text-white" />
+                                        <span className="text-lg font-bold text-white">25 Ferramentas</span>
                                     </div>
                                 </div>
-                                <p className="text-xl text-slate-400 max-w-4xl mx-auto leading-relaxed">
-                                    Transform your PC into an enterprise-grade machine with our comprehensive suite of 25 professional optimization tools. 
-                                    Built with cutting-edge technology and designed for maximum performance.
+                                <p className="text-2xl text-slate-300 max-w-5xl mx-auto leading-relaxed">
+                                    Transforme seu PC em uma máquina de nível empresarial com nossa suite completa de 25 ferramentas profissionais de otimização. 
+                                    Construída com tecnologia de ponta e projetada para performance máxima.
                                 </p>
                                 
                                 {/* Premium Stats */}
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mt-16">
                                     <MetricCard
                                         icon={<Target />}
                                         title="Performance"
                                         value="+400%"
-                                        subtitle="Average performance gain"
+                                        subtitle="Ganho médio de performance"
                                         trend="up"
                                         color="from-[#00FF94] to-[#00CC76]"
                                     />
                                     <MetricCard
                                         icon={<Shield />}
-                                        title="Security"
+                                        title="Segurança"
                                         value="100%"
-                                        subtitle="Zero data collection"
+                                        subtitle="Zero coleta de dados"
                                         color="from-[#FF0055] to-[#FF5588]"
                                     />
                                     <MetricCard
                                         icon={<Users />}
-                                        title="Users"
+                                        title="Usuários"
                                         value="1M+"
-                                        subtitle="Active professionals"
+                                        subtitle="Profissionais ativos"
                                         trend="up"
                                         color="from-[#31A8FF] to-[#5FC2FF]"
                                     />
                                     <MetricCard
                                         icon={<Star />}
-                                        title="Rating"
+                                        title="Avaliação"
                                         value="4.9"
-                                        subtitle="Industry leading"
+                                        subtitle="Líder do setor"
                                         trend="up"
                                         color="from-[#FFEE00] to-[#FFB300]"
                                     />
@@ -692,12 +692,12 @@ export default function OptimizerClient() {
                             </div>
                         </motion.div>
 
-                        {/* PRINCIPAL Section - Premium */}
+                        {/* SEÇÃO PRINCIPAL - Premium */}
                         <div className="mb-32">
                             <CategoryHeader
                                 icon={<Monitor />}
-                                title="Core Performance Suite"
-                                description="Essential tools for day-to-day optimization and maximum system efficiency"
+                                title="PRINCIPAL"
+                                description="Ferramentas essenciais para otimização do dia a dia e máxima eficiência do sistema"
                                 color="from-[#31A8FF] to-[#5FC2FF]"
                                 count={4}
                             />
@@ -706,14 +706,14 @@ export default function OptimizerClient() {
                                 {/* Dashboard */}
                                 <FeatureCard
                                     icon={<Gauge />}
-                                    title="Command Center"
-                                    description="Real-time monitoring dashboard with advanced metrics and instant optimization controls"
+                                    title="Dashboard"
+                                    description="Painel de controle em tempo real com métricas avançadas e controles instantâneos de otimização"
                                     features={[
-                                        "Real-time CPU, RAM, Disk monitoring",
-                                        "Health Score algorithm (0-100)",
-                                        "One-click optimization actions",
-                                        "Advanced system status tracking",
-                                        "Performance metrics visualization"
+                                        "Monitoramento CPU, RAM, Disco em tempo real",
+                                        "Health Score algoritmo (0-100)",
+                                        "Ações de otimização com um clique",
+                                        "Status avançado do sistema",
+                                        "Visualização de métricas de performance"
                                     ]}
                                     gradient="from-[#31A8FF] to-[#5FC2FF]"
                                     delay={0.1}
@@ -722,14 +722,14 @@ export default function OptimizerClient() {
                                 {/* Performance */}
                                 <FeatureCard
                                     icon={<Rocket />}
-                                    title="Performance Engine"
-                                    description="Intelligent hardware detection and automatic optimization based on your system profile"
+                                    title="Desempenho"
+                                    description="Detecção inteligente de hardware e otimização automática baseada no perfil do seu sistema"
                                     features={[
-                                        "Automatic Intel/AMD detection",
-                                        "DDR3/4/5 RAM optimization",
-                                        "SSD/HDD/NVMe acceleration",
-                                        "Safe overclock algorithms",
-                                        "Adaptive performance profiles"
+                                        "Detecção automática Intel/AMD",
+                                        "Otimização RAM DDR3/4/5",
+                                        "Aceleração SSD/HDD/NVMe",
+                                        "Algoritmos seguros de overclock",
+                                        "Perfis de performance adaptativos"
                                     ]}
                                     gradient="from-[#00FF94] to-[#00CC76]"
                                     delay={0.2}
@@ -738,14 +738,14 @@ export default function OptimizerClient() {
                                 {/* Limpeza */}
                                 <FeatureCard
                                     icon={<Database />}
-                                    title="Smart Cleaner"
-                                    description="Advanced cleaning system with dual verification and maximum safety protocols"
+                                    title="Limpeza"
+                                    description="Sistema avançado de limpeza com verificação dupla e protocolos de segurança máximos"
                                     features={[
-                                        "Pre-analysis verification system",
-                                        "Temporary files cleanup",
-                                        "Multi-browser cache optimization",
-                                        "Smart download management",
-                                        "Advanced logging console"
+                                        "Sistema de verificação pré-análise",
+                                        "Limpeza de arquivos temporários",
+                                        "Otimização de cache multi-navegador",
+                                        "Gerenciamento inteligente de downloads",
+                                        "Console de logging avançado"
                                     ]}
                                     gradient="from-[#8B31FF] to-[#B070FF]"
                                     delay={0.3}
@@ -754,14 +754,14 @@ export default function OptimizerClient() {
                                 {/* Rede */}
                                 <FeatureCard
                                     icon={<Wifi />}
-                                    title="Network Optimizer"
-                                    description="Complete connectivity optimization with advanced DNS management and repair tools"
+                                    title="Rede"
+                                    description="Otimização completa de conectividade com gerenciamento avançado de DNS e ferramentas de reparo"
                                     features={[
-                                        "Optimized DNS servers",
-                                        "Google/Cloudflare integration",
-                                        "DNS cache management",
-                                        "Winsock reset tools",
-                                        "TCP/IP stack optimization"
+                                        "Servidores DNS otimizados",
+                                        "Integração Google/Cloudflare",
+                                        "Gerenciamento de cache DNS",
+                                        "Ferramentas de reset Winsock",
+                                        "Otimização de stack TCP/IP"
                                     ]}
                                     gradient="from-[#00E5FF] to-[#00FFCA]"
                                     delay={0.4}
@@ -769,12 +769,12 @@ export default function OptimizerClient() {
                             </div>
                         </div>
 
-                        {/* MÓDULOS Section - Premium */}
+                        {/* SEÇÃO MÓDULOS - Premium */}
                         <div className="mb-32">
                             <CategoryHeader
                                 icon={<Bolt />}
-                                title="Professional Modules"
-                                description="Specialized tools for maximum performance in gaming and security"
+                                title="MÓDULOS"
+                                description="Ferramentas especializadas para performance máxima em gaming e segurança"
                                 color="from-[#8B31FF] to-[#FF4B6B]"
                                 count={2}
                             />
@@ -789,85 +789,85 @@ export default function OptimizerClient() {
                                     className="relative group"
                                 >
                                     {/* Background Gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-[#FF8F4B]/5 rounded-3xl blur-2xl group-hover:from-[#FF4B6B]/10 group-hover:to-[#FF8F4B]/10 transition-all duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-[#FF8F4B]/5 rounded-4xl blur-3xl group-hover:from-[#FF4B6B]/10 group-hover:to-[#FF8F4B]/10 transition-all duration-700" />
                                     
                                     {/* Card */}
-                                    <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-3xl p-10 group-hover:border-[#FF4B6B]/30 transition-all duration-500">
+                                    <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-4xl p-12 group-hover:border-[#FF4B6B]/30 transition-all duration-500">
                                         {/* Header */}
                                         <div className="flex items-start justify-between mb-8">
-                                            <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center relative overflow-hidden">
-                                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] opacity-50 animate-pulse" />
-                                                <div className="relative z-10 text-white text-3xl">
+                                            <div className="w-24 h-24 rounded-4xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center relative overflow-hidden">
+                                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] opacity-60 animate-pulse" />
+                                                <div className="relative z-10 text-white text-4xl">
                                                     <MousePointer2 />
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#FF8F4B]">
-                                                <Play className="w-4 h-4 text-white" />
-                                                <span className="text-sm font-bold text-white">GAMING MODE</span>
+                                            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#FF8F4B]">
+                                                <Play className="w-5 h-5 text-white" />
+                                                <span className="text-base font-bold text-white">MODO GAMER</span>
                                             </div>
                                         </div>
                                         
                                         {/* Content */}
-                                        <div className="space-y-6">
-                                            <h3 className="text-3xl font-bold text-white">Gamer Professional</h3>
-                                            <p className="text-lg text-slate-400 leading-relaxed">
-                                                Extreme performance optimization with intelligent game detection and specialized enhancement algorithms
+                                        <div className="space-y-8">
+                                            <h3 className="text-4xl font-bold text-white">Gamer</h3>
+                                            <p className="text-xl text-slate-300 leading-relaxed">
+                                                Otimização de performance extrema com detecção inteligente de jogos e algoritmos especializados de enhancement
                                             </p>
                                             
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                 <div>
-                                                    <h4 className="text-xl font-semibold text-[#FF4B6B] mb-4 flex items-center gap-2">
-                                                        <Target className="w-5 h-5" />
-                                                        Auto Detection
+                                                    <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                                        <Target className="w-6 h-6" />
+                                                        Detecção Automática
                                                     </h4>
-                                                    <ul className="space-y-3">
+                                                    <ul className="space-y-4">
                                                         {[
-                                                            "Steam (200+ games)",
+                                                            "Steam (200+ jogos)",
                                                             "Epic Games Store",
-                                                            "Battle.net platform",
+                                                            "Plataforma Battle.net",
                                                             "Ubisoft Connect",
-                                                            "Indie games support"
+                                                            "Suporte para jogos independentes"
                                                         ].map((item, idx) => (
                                                             <motion.div
                                                                 key={idx}
                                                                 initial={{ opacity: 0, x: -20 }}
                                                                 whileInView={{ opacity: 1, x: 0 }}
                                                                 transition={{ delay: 0.3 + idx * 0.1 }}
-                                                                className="flex items-center gap-3"
+                                                                className="flex items-center gap-4"
                                                             >
-                                                                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
-                                                                    <Check className="w-4 h-4 text-white" />
+                                                                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
+                                                                    <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300">{item}</span>
+                                                                <span className="text-slate-300 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
                                                 </div>
                                                 
                                                 <div>
-                                                    <h4 className="text-xl font-semibold text-[#FF4B6B] mb-4 flex items-center gap-2">
-                                                        <TrendingUp className="w-5 h-5" />
-                                                        Performance Gains
+                                                    <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                                        <TrendingUp className="w-6 h-6" />
+                                                        Ganhos de Performance
                                                     </h4>
-                                                    <ul className="space-y-3">
+                                                    <ul className="space-y-4">
                                                         {[
-                                                            "+40% average FPS",
-                                                            "-60% latency reduction",
+                                                            "+40% FPS médio",
+                                                            "-60% redução de latência",
                                                             "0ms input lag",
-                                                            "Maximum CPU priority",
-                                                            "Dedicated RAM allocation"
+                                                            "Prioridade máxima de CPU",
+                                                            "Alocação dedicada de RAM"
                                                         ].map((item, idx) => (
                                                             <motion.div
                                                                 key={idx}
                                                                 initial={{ opacity: 0, x: -20 }}
                                                                 whileInView={{ opacity: 1, x: 0 }}
                                                                 transition={{ delay: 0.4 + idx * 0.1 }}
-                                                                className="flex items-center gap-3"
+                                                                className="flex items-center gap-4"
                                                             >
-                                                                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
-                                                                    <Check className="w-4 h-4 text-white" />
+                                                                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
+                                                                    <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300">{item}</span>
+                                                                <span className="text-slate-300 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
@@ -886,85 +886,85 @@ export default function OptimizerClient() {
                                     className="relative group"
                                 >
                                     {/* Background Gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF0055]/5 to-[#FF5588]/5 rounded-3xl blur-2xl group-hover:from-[#FF0055]/10 group-hover:to-[#FF5588]/10 transition-all duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF0055]/5 to-[#FF5588]/5 rounded-4xl blur-3xl group-hover:from-[#FF0055]/10 group-hover:to-[#FF5588]/10 transition-all duration-700" />
                                     
                                     {/* Card */}
-                                    <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-3xl p-10 group-hover:border-[#FF0055]/30 transition-all duration-500">
+                                    <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-4xl p-12 group-hover:border-[#FF0055]/30 transition-all duration-500">
                                         {/* Header */}
                                         <div className="flex items-start justify-between mb-8">
-                                            <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center relative overflow-hidden">
-                                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF0055] to-[#FF5588] opacity-50 animate-pulse" />
-                                                <div className="relative z-10 text-white text-3xl">
+                                            <div className="w-24 h-24 rounded-4xl bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center relative overflow-hidden">
+                                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF0055] to-[#FF5588] opacity-60 animate-pulse" />
+                                                <div className="relative z-10 text-white text-4xl">
                                                     <ShieldCheck />
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-[#FF0055] to-[#FF5588]">
-                                                <Shield className="w-4 h-4 text-white" />
-                                                <span className="text-sm font-bold text-white">MAXIMUM SECURITY</span>
+                                            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF0055] to-[#FF5588]">
+                                                <Shield className="w-5 h-5 text-white" />
+                                                <span className="text-base font-bold text-white">SEGURANÇA MÁXIMA</span>
                                             </div>
                                         </div>
                                         
                                         {/* Content */}
-                                        <div className="space-y-6">
-                                            <h3 className="text-3xl font-bold text-white">Voltris Shield Pro</h3>
-                                            <p className="text-lg text-slate-400 leading-relaxed">
-                                                Advanced multi-layered protection system with real-time monitoring and intelligent threat detection
+                                        <div className="space-y-8">
+                                            <h3 className="text-4xl font-bold text-white">Voltris Shield</h3>
+                                            <p className="text-xl text-slate-300 leading-relaxed">
+                                                Sistema de proteção multicamadas avançado com monitoramento em tempo real e detecção inteligente de ameaças
                                             </p>
                                             
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                 <div>
-                                                    <h4 className="text-xl font-semibold text-[#FF0055] mb-4 flex items-center gap-2">
-                                                        <Monitor className="w-5 h-5" />
-                                                        Scan Options
+                                                    <h4 className="text-2xl font-semibold text-[#FF0055] mb-6 flex items-center gap-3">
+                                                        <Monitor className="w-6 h-6" />
+                                                        Opções de Scan
                                                     </h4>
-                                                    <ul className="space-y-3">
+                                                    <ul className="space-y-4">
                                                         {[
-                                                            "Quick Scan (5 min)",
-                                                            "Deep System Scan",
-                                                            "Adware Specialist",
-                                                            "Custom Folder Scan",
-                                                            "24/7 Real-time Protection"
+                                                            "Scan Rápido (5 min)",
+                                                            "Scan Profundo do Sistema",
+                                                            "Especialista em Adware",
+                                                            "Scan Personalizado de Pasta",
+                                                            "Proteção 24/7 em Tempo Real"
                                                         ].map((item, idx) => (
                                                             <motion.div
                                                                 key={idx}
                                                                 initial={{ opacity: 0, x: -20 }}
                                                                 whileInView={{ opacity: 1, x: 0 }}
                                                                 transition={{ delay: 0.4 + idx * 0.1 }}
-                                                                className="flex items-center gap-3"
+                                                                className="flex items-center gap-4"
                                                             >
-                                                                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center">
-                                                                    <Check className="w-4 h-4 text-white" />
+                                                                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center">
+                                                                    <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300">{item}</span>
+                                                                <span className="text-slate-300 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
                                                 </div>
                                                 
                                                 <div>
-                                                    <h4 className="text-xl font-semibold text-[#FF0055] mb-4 flex items-center gap-2">
-                                                        <Lock className="w-5 h-5" />
-                                                        Protection Matrix
+                                                    <h4 className="text-2xl font-semibold text-[#FF0055] mb-6 flex items-center gap-3">
+                                                        <Lock className="w-6 h-6" />
+                                                        Matriz de Proteção
                                                     </h4>
-                                                    <ul className="space-y-3">
+                                                    <ul className="space-y-4">
                                                         {[
                                                             "Malware & Ransomware",
                                                             "Spyware & Adware",
-                                                            "Browser Hijackers",
-                                                            "PUPs Detection",
-                                                            "100% Detection Rate"
+                                                            "Sequestradores de Navegador",
+                                                            "Detecção de PUPs",
+                                                            "Taxa de Detecção 100%"
                                                         ].map((item, idx) => (
                                                             <motion.div
                                                                 key={idx}
                                                                 initial={{ opacity: 0, x: -20 }}
                                                                 whileInView={{ opacity: 1, x: 0 }}
                                                                 transition={{ delay: 0.5 + idx * 0.1 }}
-                                                                className="flex items-center gap-3"
+                                                                className="flex items-center gap-4"
                                                             >
-                                                                <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center">
-                                                                    <Check className="w-4 h-4 text-white" />
+                                                                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center">
+                                                                    <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300">{item}</span>
+                                                                <span className="text-slate-300 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
@@ -976,12 +976,12 @@ export default function OptimizerClient() {
                             </div>
                         </div>
 
-                        {/* STREAMING Section - Premium */}
+                        {/* SEÇÃO STREAMING - Premium */}
                         <div className="mb-32">
                             <CategoryHeader
                                 icon={<Video />}
-                                title="Creator Suite"
-                                description="Professional streaming tools for content creators and live performers"
+                                title="STREAMING"
+                                description="Ferramentas profissionais de streaming para criadores de conteúdo e performers ao vivo"
                                 color="from-[#FF4B6B] to-[#FF8F4B]"
                                 count={1}
                             />
@@ -990,99 +990,99 @@ export default function OptimizerClient() {
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 whileHover={{ y: -8 }}
-                                className="relative group max-w-5xl mx-auto"
+                                className="relative group max-w-6xl mx-auto"
                             >
                                 {/* Background Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-[#FF8F4B]/5 rounded-3xl blur-2xl group-hover:from-[#FF4B6B]/10 group-hover:to-[#FF8F4B]/10 transition-all duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-[#FF8F4B]/5 rounded-4xl blur-3xl group-hover:from-[#FF4B6B]/10 group-hover:to-[#FF8F4B]/10 transition-all duration-700" />
                                 
                                 {/* Card */}
-                                <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-3xl p-12 group-hover:border-[#FF4B6B]/30 transition-all duration-500">
+                                <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-4xl p-16 group-hover:border-[#FF4B6B]/30 transition-all duration-500">
                                     {/* Header */}
-                                    <div className="flex items-center justify-between mb-10">
-                                        <div className="flex items-center gap-6">
-                                            <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center relative overflow-hidden">
-                                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] opacity-50 animate-pulse" />
-                                                <div className="relative z-10 text-white text-3xl">
+                                    <div className="flex items-center justify-between mb-12">
+                                        <div className="flex items-center gap-8">
+                                            <div className="w-24 h-24 rounded-4xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center relative overflow-hidden">
+                                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] opacity-60 animate-pulse" />
+                                                <div className="relative z-10 text-white text-4xl">
                                                     <Video />
                                                 </div>
                                             </div>
                                             <div>
-                                                <h3 className="text-3xl font-bold text-white mb-2">Stream Hub Pro</h3>
-                                                <p className="text-slate-400">Professional streaming optimization center</p>
+                                                <h3 className="text-4xl font-bold text-white mb-3">Stream Hub</h3>
+                                                <p className="text-slate-300 text-lg">Centro profissional de otimização de streaming</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#FF8F4B]">
-                                            <Radio className="w-4 h-4 text-white" />
-                                            <span className="text-sm font-bold text-white">LIVE READY</span>
+                                        <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#FF8F4B]">
+                                            <Radio className="w-5 h-5 text-white" />
+                                            <span className="text-base font-bold text-white">READY TO GO</span>
                                         </div>
                                     </div>
                                     
                                     {/* Features Grid */}
-                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                                         <div>
-                                            <h4 className="text-xl font-semibold text-[#FF4B6B] mb-4 flex items-center gap-2">
-                                                <Settings className="w-5 h-5" />
-                                                Optimization
+                                            <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                                <Settings className="w-6 h-6" />
+                                                Otimização
                                             </h4>
-                                            <ul className="space-y-3">
-                                                {["OBS/Streamlabs Pro", "Streaming Priority", "Lag Reduction Engine"].map((item, idx) => (
+                                            <ul className="space-y-4">
+                                                {["OBS/Streamlabs Pro", "Prioridade de Streaming", "Motor de Redução de Lag"].map((item, idx) => (
                                                     <motion.div
                                                         key={idx}
                                                         initial={{ opacity: 0, x: -20 }}
                                                         whileInView={{ opacity: 1, x: 0 }}
                                                         transition={{ delay: 0.2 + idx * 0.1 }}
-                                                        className="flex items-center gap-3"
+                                                        className="flex items-center gap-4"
                                                     >
-                                                        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
-                                                            <Check className="w-4 h-4 text-white" />
+                                                        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
+                                                            <Check className="w-5 h-5 text-white" />
                                                         </div>
-                                                        <span className="text-slate-300">{item}</span>
+                                                        <span className="text-slate-300 text-lg">{item}</span>
                                                     </motion.div>
                                                 ))}
                                             </ul>
                                         </div>
                                         
                                         <div>
-                                            <h4 className="text-xl font-semibold text-[#FF4B6B] mb-4 flex items-center gap-2">
-                                                <Cpu className="w-5 h-5" />
+                                            <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                                <Cpu className="w-6 h-6" />
                                                 Performance
                                             </h4>
-                                            <ul className="space-y-3">
-                                                {["Dedicated CPU Core", "RAM Optimization", "Network Stability"].map((item, idx) => (
+                                            <ul className="space-y-4">
+                                                {["Núcleo CPU Dedicado", "Otimização de RAM", "Estabilidade de Rede"].map((item, idx) => (
                                                     <motion.div
                                                         key={idx}
                                                         initial={{ opacity: 0, x: -20 }}
                                                         whileInView={{ opacity: 1, x: 0 }}
                                                         transition={{ delay: 0.3 + idx * 0.1 }}
-                                                        className="flex items-center gap-3"
+                                                        className="flex items-center gap-4"
                                                     >
-                                                        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
-                                                            <Check className="w-4 h-4 text-white" />
+                                                        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
+                                                            <Check className="w-5 h-5 text-white" />
                                                         </div>
-                                                        <span className="text-slate-300">{item}</span>
+                                                        <span className="text-slate-300 text-lg">{item}</span>
                                                     </motion.div>
                                                 ))}
                                             </ul>
                                         </div>
                                         
                                         <div>
-                                            <h4 className="text-xl font-semibold text-[#FF4B6B] mb-4 flex items-center gap-2">
-                                                <Star className="w-5 h-5" />
-                                                Quality
+                                            <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                                <Star className="w-6 h-6" />
+                                                Qualidade
                                             </h4>
-                                            <ul className="space-y-3">
+                                            <ul className="space-y-4">
                                                 {["1080p/60fps Pro", "4K/30fps Ultra", "Zero Frame Drops"].map((item, idx) => (
                                                     <motion.div
                                                         key={idx}
                                                         initial={{ opacity: 0, x: -20 }}
                                                         whileInView={{ opacity: 1, x: 0 }}
                                                         transition={{ delay: 0.4 + idx * 0.1 }}
-                                                        className="flex items-center gap-3"
+                                                        className="flex items-center gap-4"
                                                     >
-                                                        <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
-                                                            <Check className="w-4 h-4 text-white" />
+                                                        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
+                                                            <Check className="w-5 h-5 text-white" />
                                                         </div>
-                                                        <span className="text-slate-300">{item}</span>
+                                                        <span className="text-slate-300 text-lg">{item}</span>
                                                     </motion.div>
                                                 ))}
                                             </ul>
@@ -1092,12 +1092,12 @@ export default function OptimizerClient() {
                             </motion.div>
                         </div>
 
-                        {/* FERRAMENTAS Section - Premium */}
+                        {/* SEÇÃO FERRAMENTAS - Premium */}
                         <div className="mb-32">
                             <CategoryHeader
                                 icon={<Settings />}
-                                title="Customization Suite"
-                                description="6 essential tools for complete system personalization and configuration"
+                                title="FERRAMENTAS"
+                                description="6 ferramentas essenciais para personalização completa do sistema e configuração"
                                 color="from-[#FFEE00] to-[#FFB300]"
                                 count={6}
                             />
@@ -1105,58 +1105,58 @@ export default function OptimizerClient() {
                             <ToolGrid 
                                 tools={[
                                     { 
-                                        name: 'Visual Studio', 
+                                        name: 'Personalizar', 
                                         icon: <Settings />, 
                                         color: 'from-[#FFEE00] to-[#FFB300]', 
-                                        desc: 'Advanced visual customization engine', 
-                                        features: ['Dark/Light themes', 'Smart transparency', 'Taskbar centering', 'Custom color schemes'] 
+                                        desc: 'Motor avançado de customização visual', 
+                                        features: ['Temas Dark/Light', 'Transparência inteligente', 'Centralização da taskbar', 'Esquemas de cores personalizados'] 
                                     },
                                     { 
-                                        name: 'Display Pro', 
+                                        name: 'Tela', 
                                         icon: <Monitor />, 
                                         color: 'from-[#31A8FF] to-[#5FC2FF]', 
-                                        desc: 'Professional display management', 
-                                        features: ['Optimal resolution', 'Refresh rate optimization', 'Multi-monitor support', 'HDR calibration'] 
+                                        desc: 'Gerenciamento profissional de display', 
+                                        features: ['Resolução ideal', 'Otimização de taxa de refresh', 'Suporte multi-monitor', 'Calibração HDR'] 
                                     },
                                     { 
-                                        name: 'Power Manager', 
+                                        name: 'Energia', 
                                         icon: <Bolt />, 
                                         color: 'from-[#00FF94] to-[#00CC76]', 
-                                        desc: 'Intelligent power optimization', 
-                                        features: ['Performance vs economy', 'Battery optimization', 'Adaptive profiles', 'Turbo mode'] 
+                                        desc: 'Otimização inteligente de energia', 
+                                        features: ['Performance vs economia', 'Otimização de bateria', 'Perfis adaptativos', 'Modo turbo'] 
                                     },
                                     { 
-                                        name: 'Security Center', 
+                                        name: 'Segurança', 
                                         icon: <Lock />, 
                                         color: 'from-[#FF0055] to-[#FF5588]', 
-                                        desc: 'Advanced security configuration', 
-                                        features: ['Next-gen firewall', 'UAC control', 'App permissions', 'Multi-layer protection'] 
+                                        desc: 'Configuração avançada de segurança', 
+                                        features: ['Firewall de última geração', 'Controle UAC', 'Permissões de aplicativos', 'Proteção multicamadas'] 
                                     },
                                     { 
-                                        name: 'Privacy Guard', 
+                                        name: 'Privacidade', 
                                         icon: <ShieldCheck />, 
                                         color: 'from-[#8B31FF] to-[#B070FF]', 
-                                        desc: 'Complete privacy control system', 
-                                        features: ['Windows telemetry', 'Data collection control', 'App privacy', 'Anti-tracking'] 
+                                        desc: 'Sistema completo de controle de privacidade', 
+                                        features: ['Telemetria do Windows', 'Controle de coleta de dados', 'Privacidade de aplicativos', 'Anti-tracking'] 
                                     },
                                     { 
-                                        name: 'System Cleaner', 
+                                        name: 'Debloat', 
                                         icon: <Minus />, 
                                         color: 'from-[#FF4B6B] to-[#FF8F4B]', 
-                                        desc: 'Professional bloatware removal', 
-                                        features: ['Pre-installed apps', 'Unnecessary components', 'System optimization', 'Windows Lite'] 
+                                        desc: 'Remoção profissional de bloatware', 
+                                        features: ['Aplicativos pré-instalados', 'Componentes desnecessários', 'Otimização do sistema', 'Windows Lite'] 
                                     }
                                 ]}
                                 columns={3}
                             />
                         </div>
 
-                        {/* MONITORAMENTO Section - Premium */}
+                        {/* SEÇÃO MONITORAMENTO - Premium */}
                         <div className="mb-32">
                             <CategoryHeader
                                 icon={<BarChart3 />}
-                                title="Analytics Suite"
-                                description="4 professional tools for complete system analysis and diagnostics"
+                                title="MONITORAMENTO"
+                                description="4 ferramentas profissionais para análise completa do sistema e diagnósticos"
                                 color="from-[#00E5FF] to-[#00FFCA]"
                                 count={4}
                             />
@@ -1164,44 +1164,44 @@ export default function OptimizerClient() {
                             <ToolGrid 
                                 tools={[
                                     { 
-                                        name: 'Device Inspector', 
+                                        name: 'Dispositivo', 
                                         icon: <Laptop />, 
                                         color: 'from-[#00E5FF] to-[#00FFCA]', 
-                                        desc: 'Complete hardware information system', 
-                                        features: ['Full hardware analysis', 'Driver status', 'System versions', 'Technical specifications'] 
+                                        desc: 'Sistema completo de informações de hardware', 
+                                        features: ['Análise completa de hardware', 'Status dos drivers', 'Versões do sistema', 'Especificações técnicas'] 
                                     },
                                     { 
-                                        name: 'Benchmark Pro', 
+                                        name: 'Benchmark', 
                                         icon: <BarChart3 />, 
                                         color: 'from-[#FFB300] to-[#FF8F4B]', 
-                                        desc: 'Professional performance testing', 
-                                        features: ['CPU/GPU/RAM tests', 'Performance comparisons', 'Historical tracking', 'Global scores'] 
+                                        desc: 'Testes profissionais de performance', 
+                                        features: ['Testes de CPU/GPU/RAM', 'Comparações de performance', 'Acompanhamento histórico', 'Scores globais'] 
                                     },
                                     { 
-                                        name: 'System Doctor', 
+                                        name: 'Diagnóstico', 
                                         icon: <Activity />, 
                                         color: 'from-[#31A8FF] to-[#5FC2FF]', 
-                                        desc: 'Complete system health check', 
-                                        features: ['System health analysis', 'Critical error detection', 'Component diagnostics', 'Detailed reports'] 
+                                        desc: 'Verificação completa da saúde do sistema', 
+                                        features: ['Análise da saúde do sistema', 'Detecção de erros críticos', 'Diagnósticos de componentes', 'Relatórios detalhados'] 
                                     },
                                     { 
-                                        name: 'Timeline Pro', 
+                                        name: 'Histórico', 
                                         icon: <Brain />, 
                                         color: 'from-[#8B31FF] to-[#B070FF]', 
-                                        desc: 'Advanced activity timeline', 
-                                        features: ['Optimization history', 'Change tracking', 'Activity monitoring', 'Detailed logging'] 
+                                        desc: 'Timeline avançada de atividades', 
+                                        features: ['Histórico de otimizações', 'Acompanhamento de mudanças', 'Monitoramento de atividades', 'Logging detalhado'] 
                                     }
                                 ]}
                                 columns={4}
                             />
                         </div>
 
-                        {/* SERVIÇOS Section - Premium */}
+                        {/* SEÇÃO SERVIÇOS - Premium */}
                         <div className="mb-32">
                             <CategoryHeader
                                 icon={<Server />}
-                                title="Automation Suite"
-                                description="3 professional tools for advanced automation and system control"
+                                title="SERVIÇOS"
+                                description="3 ferramentas profissionais para automação avançada e controle do sistema"
                                 color="from-[#FF8F4B] to-[#FFB300]"
                                 count={3}
                             />
@@ -1209,37 +1209,37 @@ export default function OptimizerClient() {
                             <ToolGrid 
                                 tools={[
                                     { 
-                                        name: 'Task Scheduler', 
+                                        name: 'Agendador', 
                                         icon: <Activity />, 
                                         color: 'from-[#FF8F4B] to-[#FFB300]', 
-                                        desc: 'Professional automation engine', 
-                                        features: ['Advanced scheduling', 'Recurring tasks', 'Maintenance automation', 'Complete workflow'] 
+                                        desc: 'Motor profissional de automação', 
+                                        features: ['Agendamento avançado', 'Tarefas recorrentes', 'Automação de manutenção', 'Workflow completo'] 
                                     },
                                     { 
-                                        name: 'Log Analyzer', 
+                                        name: 'Logs', 
                                         icon: <Database />, 
                                         color: 'from-[#6B7280] to-[#9CA3AF]', 
-                                        desc: 'Professional event analysis', 
-                                        features: ['System events', 'Error analysis', 'Real-time logging', 'Advanced export'] 
+                                        desc: 'Análise profissional de eventos', 
+                                        features: ['Eventos do sistema', 'Análise de erros', 'Logging em tempo real', 'Exportação avançada'] 
                                     },
                                     { 
-                                        name: 'Enterprise Tools', 
+                                        name: 'Serviços Pro', 
                                         icon: <Settings />, 
                                         color: 'from-[#FFEE00] to-[#FFB300]', 
-                                        desc: 'Professional advanced features', 
-                                        features: ['Advanced functions', 'Professional settings', 'Expert optimizations', 'Priority support'] 
+                                        desc: 'Recursos avançados profissionais', 
+                                        features: ['Funções avançadas', 'Configurações profissionais', 'Otimizações expert', 'Suporte prioritário'] 
                                     }
                                 ]}
                                 columns={3}
                             />
                         </div>
 
-                        {/* SISTEMA Section - Premium */}
+                        {/* SEÇÃO SISTEMA - Premium */}
                         <div>
                             <CategoryHeader
                                 icon={<Terminal />}
-                                title="System Core"
-                                description="3 essential tools for Windows maintenance and advanced system control"
+                                title="SISTEMA"
+                                description="3 ferramentas essenciais para manutenção do Windows e controle avançado do sistema"
                                 color="from-[#6B7280] to-[#9CA3AF]"
                                 count={3}
                             />
@@ -1247,25 +1247,25 @@ export default function OptimizerClient() {
                             <ToolGrid 
                                 tools={[
                                     { 
-                                        name: 'Repair Engine', 
+                                        name: 'Reparo', 
                                         icon: <Wrench />, 
                                         color: 'from-[#31A8FF] to-[#5FC2FF]', 
-                                        desc: 'Automatic system repair', 
-                                        features: ['Windows error fixing', 'Automatic correction', 'Deep repair algorithms', 'System stability'] 
+                                        desc: 'Reparo automático do sistema', 
+                                        features: ['Correção de erros do Windows', 'Correção automática', 'Algoritmos de reparo profundo', 'Estabilidade do sistema'] 
                                     },
                                     { 
-                                        name: 'System Control', 
+                                        name: 'Sistema', 
                                         icon: <Settings />, 
                                         color: 'from-[#6B7280] to-[#9CA3AF]', 
-                                        desc: 'Advanced system configuration', 
-                                        features: ['Windows components', 'Hidden settings', 'System optimizations', 'Full control'] 
+                                        desc: 'Configuração avançada do sistema', 
+                                        features: ['Componentes do Windows', 'Configurações ocultas', 'Otimizações do sistema', 'Controle total'] 
                                     },
                                     { 
-                                        name: 'Driver Manager', 
+                                        name: 'Drivers', 
                                         icon: <Cpu />, 
                                         color: 'from-[#00FF94] to-[#00CC76]', 
-                                        desc: 'Professional driver management', 
-                                        features: ['Automatic updates', 'Compatibility checking', 'Driver backup', 'Optimized versions'] 
+                                        desc: 'Gerenciamento profissional de drivers', 
+                                        features: ['Atualizações automáticas', 'Verificação de compatibilidade', 'Backup de drivers', 'Versões otimizadas'] 
                                     }
                                 ]}
                                 columns={3}
