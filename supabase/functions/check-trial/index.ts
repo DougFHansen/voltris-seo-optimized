@@ -62,10 +62,13 @@ serve(async (req) => {
                     req.headers.get('x-real-ip') || 
                     'unknown'
     
-    console.log(`[CHECK-TRIAL] 📥 Request from IP: ${clientIP}`)
+    // Extrair apenas o primeiro IP (se houver múltiplos)
+    const firstIP = clientIP.includes(',') ? clientIP.split(',')[0].trim() : clientIP
+    
+    console.log(`[CHECK-TRIAL] 📥 Request from IP: ${firstIP}`)
 
-    if (!checkRateLimit(clientIP)) {
-      console.log(`[CHECK-TRIAL] 🚫 Rate limit exceeded for IP: ${clientIP}`)
+    if (!checkRateLimit(firstIP)) {
+      console.log(`[CHECK-TRIAL] 🚫 Rate limit exceeded for IP: ${firstIP}`)
       return new Response(
         JSON.stringify({ 
           success: false, 
@@ -250,7 +253,7 @@ serve(async (req) => {
           hwid_hash: hwidHash,
           hwid_components: body.components,
           trial_expires_at: trialExpiresAt.toISOString(),
-          activation_ip: clientIP === 'unknown' ? null : clientIP,
+          activation_ip: firstIP === 'unknown' ? null : firstIP,
           user_agent: req.headers.get('user-agent') || 'unknown'
         })
         .select()
