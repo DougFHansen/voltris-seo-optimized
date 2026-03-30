@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
 export const runtime = 'nodejs';
 
@@ -7,69 +8,70 @@ export async function POST(request: NextRequest) {
     try {
         const { installation_id, user_id } = await request.json();
 
-        console.log('[API/LINK] Recebida requisição de vinculação');
-        console.log('[API/LINK] installation_id:', installation_id);
-        console.log('[API/LINK] user_id:', user_id);
+        console.log('[API/LINK] Recebida requisição de vinculação segura');
 
         if (!installation_id || !user_id) {
-            console.error('[API/LINK] Parâmetros faltando');
-            return NextResponse.json({ error: 'Missing installation_id or user_id' }, { status: 400 });
+            return NextResponse.json({ error: 'Parâmetros de identificação ausentes.' }, { status: 400 });
         }
 
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+        // --- VALIDAÇÃO DE SEGURANÇA "ANTI-HACKER" ---
+        // Verificar se o user_id enviado corresponde ao usuário autenticado na sessão (via cookies)
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+        const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
-        if (!supabaseUrl || !supabaseServiceKey) {
-            console.error('[API/LINK] Configuração do banco faltando');
-            return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
+        let response = NextResponse.next();
+        const serverSupabase = createServerClient(
+            supabaseUrl,
+            supabaseAnonKey,
+            {
+                cookies: {
+                    get: (name: string) => request.cookies.get(name)?.value,
+                    set: (name: string, value: string, options: CookieOptions) => {},
+                    remove: (name: string, options: CookieOptions) => {},
+                },
+            }
+        );
+
+        const { data: { user }, error: authError } = await serverSupabase.auth.getUser();
+
+        if (authError || !user) {
+            console.error('[API/LINK] Tentativa de vinculação sem sessão ativa.');
+            return NextResponse.json({ error: 'Sessão expirada ou inválida. Por favor, faça login novamente.' }, { status: 401 });
         }
 
-        const supabase = createClient(supabaseUrl, supabaseServiceKey);
+        if (user.id !== user_id) {
+            console.error(`[API/LINK] ALERTA DE SEGURANÇA: Sessão (${user.id}) não condiz com Payload (${user_id})`);
+            return NextResponse.json({ error: 'Violação de integridade detectada. Acesso negado.' }, { status: 403 });
+        }
 
-        console.log('[API/LINK] Fazendo upsert da instalação (garantindo existência)...');
-        // Usar UPSERT para criar se não existir (fallback se o registro do app tiver falhado)
-        const { error } = await supabase
+        // --- FIM DA VALIDAÇÃO ---
+
+        // Se passou, usar o SERVICE ROLE para forçar a vinculação no banco
+        const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+
+        const { error } = await supabaseAdmin
             .from('installations')
             .upsert({
                 id: installation_id,
                 user_id: user_id,
                 updated_at: new Date().toISOString(),
-                // Campos mínimos para não quebrar constraints se for novo
                 last_heartbeat: new Date().toISOString()
-            }, { onConflict: 'id' }); // Se existir, atualiza user_id. Se não, cria.
+            }, { onConflict: 'id' });
 
         if (error) {
-            console.error('[API/LINK] Erro ao atualizar:', error);
+            console.error('[API/LINK] Erro no banco de dados:', error);
             throw error;
         }
 
-        // Verificar se o update realmente funcionou
-        console.log('[API/LINK] Verificando se o update funcionou...');
-        const { data: verification, error: verifyError } = await supabase
-            .from('installations')
-            .select('id, user_id, updated_at')
-            .eq('id', installation_id)
-            .single();
-
-        console.log('[API/LINK] Verificação:', { verification, verifyError });
-
-        if (verifyError) {
-            console.error('[API/LINK] Erro na verificação:', verifyError);
-        }
-
-        if (verification && verification.user_id !== user_id) {
-            console.error('[API/LINK] ALERTA: user_id não foi salvo corretamente!');
-            console.error('[API/LINK] Esperado:', user_id);
-            console.error('[API/LINK] Salvo:', verification.user_id);
-        }
-
-        console.log('[API/LINK] Vinculação realizada com sucesso!');
+        console.log(`[API/LINK] Vinculação realizada para ${user.email} con sucesso.`);
         return NextResponse.json({
             success: true,
-            verification: verification
+            message: 'Dispositivo vinculado com total segurança.'
         });
+        
     } catch (error: any) {
-        console.error('[API/LINK] Erro geral:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        console.error('[API/LINK] Erro crítico:', error);
+        return NextResponse.json({ error: 'Erro interno no processamento do link.' }, { status: 500 });
     }
 }
