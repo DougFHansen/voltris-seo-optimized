@@ -50,8 +50,8 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
     >
       <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${colors[color]} opacity-5 blur-[60px] group-hover:opacity-15 transition-all duration-700`}></div>
       
-      <div className="relative z-10 flex flex-col h-full justify-between">
-        <div className="flex justify-between items-start mb-4 sm:mb-6">
+      <div className="relative z-10 flex flex-col h-full justify-center gap-4 sm:gap-6">
+        <div className="flex justify-between items-start">
           <div className={`p-3 sm:p-4 rounded-2xl bg-gradient-to-br ${colors[color]} shadow-lg flex items-center justify-center text-white relative`}>
             <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
             <div className={`absolute inset-0 rounded-2xl blur-lg opacity-40 bg-gradient-to-br ${colors[color]}`}></div>
@@ -60,12 +60,12 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
              <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-1">Status</span>
              <div className="flex items-center gap-1.5">
                <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-r ${colors[color]}`}></div>
-               <span className="text-[9px] sm:text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">ATIVO</span>
+               <span className="text-[9px] sm:text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">SINCRONIZADO</span>
              </div>
           </div>
         </div>
 
-        <div>
+        <div className="space-y-1">
            <p className="text-white/40 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
           <div className="flex items-baseline gap-2">
             <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tighter">{value}</h3>
@@ -73,7 +73,7 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
         </div>
 
         {/* Decorative Progress Line */}
-        <div className="mt-6 sm:mt-8 relative h-1 w-full bg-white/5 rounded-full overflow-hidden">
+        <div className="relative h-1 w-full bg-white/5 rounded-full overflow-hidden mt-2">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: '100%' }}
@@ -200,12 +200,26 @@ function DashboardContent() {
       ) : (
         <div className="flex flex-col gap-8 w-full max-w-full min-h-screen">
         {/* Dashboard Header - Premium UI */}
-        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-center lg:text-left">
-          <div className="space-y-2 flex-1 min-w-0 flex flex-col items-center lg:items-start">
+        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-center lg:text-left">
+          <div className="space-y-1.5 flex-1 min-w-0 flex flex-col items-center lg:items-start w-full">
             <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-3">
-              <h1 className="text-xl xs:text-2xl sm:text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic leading-tight">Centro de <span className="text-[#31A8FF] not-italic">Controle</span></h1>
+              <h1 className="text-xl xs:text-2xl sm:text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic leading-tight break-words">Centro de <span className="text-[#31A8FF] not-italic">Painel</span></h1>
+              
+              {/* Hardware ID Protection Status Badge */}
+               <div className={`flex items-center gap-2 px-3 py-1 rounded-full border backdrop-blur-md transition-all duration-500
+                 ${hardwareIDProtection 
+                   ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' 
+                   : 'bg-red-500/10 border-red-500/20 text-red-400'}
+               `}>
+                 <div className={`w-1.5 h-1.5 rounded-full animate-pulse shadow-lg
+                   ${hardwareIDProtection ? 'bg-emerald-400 shadow-emerald-500/50' : 'bg-red-400 shadow-red-500/50'}
+                 `}></div>
+                 <span className="text-[9px] font-black uppercase tracking-widest leading-none">
+                   PROT HID: {hardwareIDProtection ? 'ATIVA' : 'OFFLINE'}
+                 </span>
+               </div>
             </div>
-            <p className="text-white/40 font-bold text-[9px] sm:text-xs tracking-wide uppercase px-4 lg:px-0 opacity-80">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
+            <p className="text-white/40 font-bold text-[8px] xs:text-[10px] sm:text-xs tracking-wide uppercase px-2 lg:px-0 opacity-80 line-clamp-1">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
           </div>
 
           <div className="flex items-center justify-center lg:justify-end gap-3 px-4 lg:px-0">
@@ -231,23 +245,22 @@ function DashboardContent() {
         </header>
 
         {/* Custom Modern Tabs - Enhanced Mobile Responsivity */}
-        <div className="w-full h-auto flex flex-col items-center justify-center py-2 sm:py-4">
-          <div className={`p-1 rounded-full sm:rounded-[2rem] flex items-center justify-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all`}>
+        <div className="w-full flex items-center justify-center py-1 sm:py-4 overflow-x-hidden">
+          <div className={`p-1 rounded-full flex items-center justify-center gap-0.5 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all max-w-[95%] sm:max-w-none`}>
               {[
-                { id: 'overview', label: 'Visão Geral', icon: FiActivity },
+                { id: 'overview', label: 'Dashboard', icon: FiActivity },
                 { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
-                { id: 'pc', label: 'Meu Computador', icon: FiMonitor }
+                { id: 'pc', label: 'Monitor', icon: FiMonitor }
               ].map((tab) => (
-                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0 flex items-center justify-center">
+                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
                   <div className={`
-                    flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-8 py-2.5 sm:py-3.5 rounded-full sm:rounded-2xl text-[8.5px] sm:text-[11px] font-black uppercase tracking-[0.05em] sm:tracking-[0.15em] transition-all whitespace-nowrap
+                    flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-2 sm:py-3 rounded-full sm:rounded-2xl text-[8px] xs:text-[10px] sm:text-[11px] font-black uppercase tracking-[0.05em] sm:tracking-[0.15em] transition-all whitespace-nowrap
                     ${activeTab === tab.id 
                       ? 'bg-white text-black shadow-lg shadow-white/10' 
                       : 'text-white/40 hover:text-white hover:bg-white/5'}
                   `}>
-                    <tab.icon className={`w-3.5 sm:w-4 h-3.5 sm:h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
-                    <span className="hidden xs:inline-block">{tab.label}</span>
-                    <span className="xs:hidden">{tab.label.split(' ')[0]}</span>
+                    <tab.icon className={`w-3 sm:w-4 h-3 sm:h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
+                    <span className="inline-block">{tab.label}</span>
                   </div>
                 </Link>
               ))}
@@ -276,11 +289,11 @@ function DashboardContent() {
                         <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit mx-auto lg:mx-0">
                           <FiActivity className="w-8 h-8 text-[#31A8FF]" />
                         </div>
-                        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Sua infraestrutura está <span className="text-[#00FF88] not-italic">Segura</span></h2>
-                        <p className="text-white/40 font-bold text-xs sm:text-sm max-w-xl">Todos os seus serviços estão sendo monitorados pela nossa rede neural. Use as abas de Licenças ou Computador para gerenciar individualmente seus produtos.</p>
+                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Sua infraestrutura está <span className="text-[#00FF88] not-italic">Segura</span></h2>
+                        <p className="text-white/40 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Todos os seus serviços estão sendo monitorados pela nossa rede neural em tempo real.</p>
                      </div>
-                     <Link href="/voltrisoptimizer" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl">
-                        Acessar Documentação Voltris
+                     <Link href="/voltrisdashboard" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest text-center">
+                        Acessar Voltris Dashboard
                      </Link>
                    </div>
                 </div>
