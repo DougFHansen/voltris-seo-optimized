@@ -65,7 +65,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
             className="flex flex-col"
           >
             <span className="font-black text-xs tracking-[0.3em] uppercase text-white leading-none mb-1">Voltris</span>
-            <span className="text-[10px] font-bold text-[#31A8FF] uppercase tracking-widest leading-none">Optimizer</span>
+            <span className="text-[10px] font-bold text-[#31A8FF] uppercase tracking-widest leading-none">Dashboard</span>
           </motion.div>
         )}
       </div>
