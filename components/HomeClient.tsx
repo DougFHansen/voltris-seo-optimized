@@ -773,8 +773,8 @@ export default function HomeClient() {
                                 </h3>
                             </div>
 
-                            {/* Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                            {/* Grid: 1 col → 2 cols (sm/640px) → 3 cols (lg/1024px) */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7">
                                 {[
                                     {
                                         name: "Carlos Silva",
@@ -801,36 +801,40 @@ export default function HomeClient() {
                                         color: "from-[#31A8FF] to-[#6BA8FF]"
                                     }
                                 ].map((review, i) => (
-                                    <div key={i} className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+                                    <div key={i} className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-6 sm:p-7 lg:p-8 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col">
                                         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-white/20 transition-all"></div>
 
                                         {/* Quote Icon */}
-                                        <div className="absolute top-6 right-8 text-white/5 text-6xl font-serif leading-none select-none">"</div>
+                                        <div className="absolute top-5 right-6 text-white/5 text-5xl font-serif leading-none select-none">"</div>
 
                                         {/* Stars */}
-                                        <div className="flex items-center gap-1 mb-6 text-yellow-400">
+                                        <div className="flex items-center gap-1 mb-5 text-yellow-400">
                                             {[...Array(5)].map((_, s) => (
-                                                <svg key={s} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                                <svg key={s} className="w-4 h-4 fill-current shrink-0" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                                             ))}
                                         </div>
 
-                                        <p className="text-slate-300 leading-relaxed mb-8 relative z-10">
-                                            "{review.text}"
+                                        {/* Review text – ocupa o espaço restante para alinhar o footer */}
+                                        <p className="text-slate-300 leading-relaxed mb-6 relative z-10 flex-1 text-sm sm:text-base">
+                                            &ldquo;{review.text}&rdquo;
                                         </p>
 
-                                        <div className="flex items-center gap-4">
-                                            <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-lg shadow-lg relative`}>
+                                        {/* Author */}
+                                        <div className="flex items-center gap-3 mt-auto">
+                                            {/* Avatar */}
+                                            <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-base shadow-lg relative shrink-0`}>
                                                 {review.initial}
                                                 <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-0.5 border-2 border-[#0A0A0F]">
-                                                    <Check className="w-3 h-3 text-white" />
+                                                    <Check className="w-2.5 h-2.5 text-white" />
                                                 </div>
                                             </div>
-                                            <div>
-                                                <div className="font-bold text-white text-sm flex items-center gap-1">
-                                                    {review.name}
-                                                    <span className="text-[10px] text-green-400 font-normal border border-green-400/30 bg-green-400/10 rounded-full px-2 py-0.5 ml-1">Compra Verificada</span>
+                                            {/* Info */}
+                                            <div className="min-w-0">
+                                                <div className="flex flex-wrap items-center gap-1.5">
+                                                    <span className="font-bold text-white text-sm leading-tight">{review.name}</span>
+                                                    <span className="text-[10px] text-green-400 font-semibold border border-green-400/30 bg-green-400/10 rounded-full px-2 py-0.5 whitespace-nowrap">Compra Verificada</span>
                                                 </div>
-                                                <div className="text-xs text-slate-400 uppercase tracking-wider font-medium">{review.role}</div>
+                                                <div className="text-xs text-slate-400 uppercase tracking-wider font-medium mt-0.5">{review.role}</div>
                                             </div>
                                         </div>
                                     </div>
