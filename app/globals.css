@@ -326,6 +326,7 @@ h1,
 
 /* Prevenir overflow horizontal no root */
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
   width: 100%;
   max-width: 100%;

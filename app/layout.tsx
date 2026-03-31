@@ -148,7 +148,7 @@ export default function RootLayout({
         />
 
       </head>
-      <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Otimização de PC e Suporte Técnico Especializado">
+      <body className={`antialiased ${inter.className} ${inter.variable} font-sans overflow-x-hidden`} role="document" aria-label="VOLTRIS - Otimização de PC e Suporte Técnico Especializado">
         <AuthProvider>
           <ClientNotificationProvider>
             <ReactQueryProvider>
