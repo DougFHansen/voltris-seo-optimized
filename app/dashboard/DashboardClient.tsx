@@ -205,7 +205,6 @@ function DashboardContent() {
           <div className="space-y-1 sm:space-y-2 flex-1 min-w-0">
             <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
               <h1 className="text-xl xs:text-2xl sm:text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic leading-tight">Centro de <span className="text-[#31A8FF] not-italic">Controle</span></h1>
-              <div className="px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-[8px] sm:text-[9px] font-black uppercase tracking-[0.2em] shadow-[0_0_15px_rgba(49,168,255,0.15)]">Pro v2.0</div>
             </div>
             <p className="text-white/40 font-bold text-[9px] sm:text-xs tracking-wide uppercase">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
           </div>

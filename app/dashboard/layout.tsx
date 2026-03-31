@@ -145,8 +145,8 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
            </nav>
         </div>
 
-        {/* Floating UI Elements Hook (Desktop only) - Discreto e no Extremo Direito */}
-        <div className="absolute bottom-8 right-4 z-[70] hidden xl:flex flex-col gap-3">
+        {/* Floating UI Elements Hook (Desktop only) - Discreto e no Canto Extremo */}
+        <div className="absolute bottom-8 right-2 z-[70] hidden xl:flex flex-col gap-3">
           <motion.button 
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
