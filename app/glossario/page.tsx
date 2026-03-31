@@ -5,7 +5,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { BookOpen } from 'lucide-react';
-import AdSenseBanner from '@/components/AdSenseBanner';
 
 export default function GlossarioPage() {
 
@@ -131,9 +130,7 @@ export default function GlossarioPage() {
                         </a>
                     </div>
 
-                    <div className="mt-16">
-                        <AdSenseBanner />
-                    </div>
+
                 </div>
             </main>
 

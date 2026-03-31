@@ -10,8 +10,6 @@ import ClientNotificationProvider from './components/ClientNotificationProvider'
 import ClientPWAInstall from "./components/ClientPWAInstall";
 import { AuthProvider } from '@/app/context/AuthContext';
 import JsonLd from "@/components/JsonLd";
-import AdSense from "@/components/AdSense";
-import { ADSENSE_CONFIG } from "@/app/adsense-config";
 
 export const metadata: Metadata = {
   title: {
@@ -47,21 +45,21 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
     url: 'https://voltris.com.br',
     siteName: 'VOLTRIS',
-    title: 'VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais',
-    description: 'Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas.',
+    title: 'VOLTRIS - Otimização de PC e Suporte Técnico Especializado',
+    description: 'Suporte técnico remoto especializado em Windows, otimização de computadores e manutenção de sistemas de alta performance.',
     images: [
       {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'VOLTRIS - Suporte Técnico Remoto e Criação de Sites',
+        alt: 'VOLTRIS - Otimização de PC e Suporte Técnico',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais',
-    description: 'Suporte técnico remoto especializado em Windows, criação de sites profissionais.',
+    title: 'VOLTRIS - Otimização de PC e Suporte Técnico Especializado',
+    description: 'Suporte técnico remoto especializado em Windows e otimização de computadores.',
     images: ['/logo.png'],
     creator: '@voltris',
   },
@@ -102,7 +100,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://grainy-gradients.vercel.app" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
 
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
@@ -112,9 +109,6 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#8B31FF" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta name="language" content="Portuguese" />
-
-        {/* Google AdSense */}
-        <AdSense pId={ADSENSE_CONFIG.PUBLISHER_ID} />
 
         {/* Google tag (gtag.js) */}
         <Script
@@ -136,8 +130,8 @@ export default function RootLayout({
         <JsonLd
           type="Organization"
           data={{
-            name: "VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais",
-            description: "Especialistas em suporte técnico remoto, criação de sites e soluções digitais para todo o Brasil.",
+            name: "VOLTRIS - Otimização de PC e Suporte Técnico Especializado",
+            description: "Especialistas em suporte técnico remoto e otimização de computadores para máxima performance em todo o Brasil.",
             url: "https://voltris.com.br",
             logo: "https://voltris.com.br/logo.png",
             contactPoint: [{
@@ -154,7 +148,7 @@ export default function RootLayout({
         />
 
       </head>
-      <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Suporte Técnico Remoto e Criação de Sites Profissionais">
+      <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Otimização de PC e Suporte Técnico Especializado">
         <AuthProvider>
           <ClientNotificationProvider>
             <ReactQueryProvider>

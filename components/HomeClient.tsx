@@ -37,68 +37,36 @@ import JsonLd from "@/components/JsonLd";
 
 const services = [
     {
-        icon: <FiMonitor className="w-8 h-8" />,
-        title: "Criação de Sites Profissionais",
-        desc: "Desenvolvimento de sites rápidos, responsivos e otimizados para Google, ideais para empresas e projetos digitais.",
-        price: "A partir de R$ 997,90",
-        link: "/todos-os-servicos/criacao-sites",
+        icon: <Zap className="w-8 h-8" />,
+        title: "Voltris Optimizer (SaaS)",
+        desc: "Aumente FPS, reduza input lag e otimize o Windows com apenas 1 clique usando nosso software de alta performance.",
+        price: "Licença a partir de R$ 49,90",
+        link: "/voltrisoptimizer",
         highlight: true
     },
     {
-        icon: <FiHelpCircle className="w-8 h-8" />,
-        title: "Suporte Técnico Windows Remoto",
-        desc: "Suporte remoto completo para Windows: instalação, atualização, correção de erros e otimização de sistema.",
-        price: "A partir de R$ 349,90",
-        link: "/suporte-ao-windows"
+        icon: <Activity className="w-8 h-8" />,
+        title: "Otimização Avançada Gamer",
+        desc: "Acesso remoto por especialista para overclock de RAM, CPU e tunning profundo de kernel voltado para eSports.",
+        price: "A partir de R$ 149,90",
+        link: "/otimizacao-pc",
+        highlight: true
     },
     {
         icon: <FiAlertTriangle className="w-8 h-8" />,
         title: "Correção de Erros no Windows",
-        desc: "Resolvemos erros de sistema, telas azuis, falhas de inicialização e problemas de desempenho no Windows.",
+        desc: "Resolvemos erros de sistema, telas azuis, falhas de inicialização e problemas de desempenho no Windows remotamente.",
         price: "A partir de R$ 49,90",
-        link: "/servicos?abrir=correcao-erro"
-    },
-    {
-        icon: <FiCpu className="w-8 h-8" />,
-        title: "Formatação de PC e Notebook",
-        desc: "Formatação remota completa com backup seguro, instalação limpa do Windows e programas essenciais.",
-        price: "A partir de R$ 99,90",
-        link: "/formatacao"
-    },
-    {
-        icon: <FiCpu className="w-8 h-8" />,
-        title: "Otimização de PC Lento",
-        desc: "Otimização remota para acelerar computadores lentos, melhorar desempenho e reduzir travamentos.",
-        price: "A partir de R$ 79,90",
-        link: "/otimizacao-pc"
-    },
-    {
-        icon: <FiDatabase className="w-8 h-8" />,
-        title: "Recuperação de Dados",
-        desc: "Recuperação remota de arquivos apagados, dados corrompidos e documentos importantes.",
-        price: "A partir de R$ 99,90",
-        link: "/servicos?abrir=recuperacao"
-    },
-    {
-        icon: <FiDownload className="w-8 h-8" />,
-        title: "Instalação de Programas",
-        desc: "Instalação e configuração remota de programas essenciais para trabalho, estudo e uso pessoal.",
-        price: "A partir de R$ 29,90",
-        link: "/todos-os-servicos/instalacao-de-programas"
-    },
-    {
-        icon: <FiPrinter className="w-8 h-8" />,
-        title: "Instalação de Impressora",
-        desc: "Configuração remota de impressoras, drivers e dispositivos conectados ao computador.",
-        price: "A partir de R$ 49,90",
-        link: "/servicos?abrir=instalacao_impressora"
+        link: "/suporte-ao-windows",
+        highlight: false
     },
     {
         icon: <FiShield className="w-8 h-8" />,
-        title: "Remoção de Vírus e Malware",
-        desc: "Remoção completa de vírus, malwares e ameaças com reforço de segurança do sistema.",
-        price: "A partir de R$ 39,90",
-        link: "/servicos?abrir=remocao_virus"
+        title: "Suporte Técnico Expresso",
+        desc: "Remoção de vírus, malwares e formatação remota completa com backup seguro para PCs e Notebooks.",
+        price: "A partir de R$ 99,90",
+        link: "/formatacao",
+        highlight: false
     }
 ];
 
@@ -551,32 +519,37 @@ export default function HomeClient() {
                                 </p>
                             </div>
 
-                            {/* Grid */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                            {/* Grid - Refocado */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
                                 {services.map((service, idx) => (
-                                    <div key={idx} className={`group relative bg-[#0A0A0F] border ${service.highlight ? 'border-[#31A8FF]' : 'border-white/5'} hover:border-[#31A8FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}>
+                                    <div key={idx} className={`group relative bg-[#0A0A0F] border ${service.highlight ? 'border-[#31A8FF]/50 shadow-[0_0_30px_rgba(49,168,255,0.1)]' : 'border-white/5'} hover:border-[#31A8FF]/80 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}>
                                         <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
                                         <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                                            {/* Glow Effect para destaques */}
+                                            {service.highlight && (
+                                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#31A8FF]/10 blur-[50px] rounded-full pointer-events-none"></div>
+                                            )}
+
                                             {/* Icon Container with Glass Effect */}
-                                            <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
+                                            <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-6 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg relative z-10">
                                                 <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
                                                     {service.icon}
                                                 </div>
                                             </div>
 
-                                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors">{service.title}</h3>
-                                            <p className="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3">
+                                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors relative z-10">{service.title}</h3>
+                                            <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow relative z-10">
                                                 {service.desc}
                                             </p>
 
-                                            <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
+                                            <div className="w-full pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
                                                 <div className="flex flex-col">
                                                     <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">A partir de</span>
                                                     <span className="text-white font-bold text-lg tracking-tight">{service.price.replace('A partir de ', '')}</span>
                                                 </div>
 
-                                                <Link href={service.link} className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#31A8FF] group-hover:border-[#31A8FF] transition-all duration-300 shadow-md" aria-label={`Ver mais sobre ${service.title}`}>
+                                                <Link href={service.link} className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${service.highlight ? 'bg-[#31A8FF] text-white hover:bg-[#2b93df]' : 'bg-white/5 border border-white/10 text-white group-hover:bg-white/10'}`} aria-label={`Ver mais sobre ${service.title}`}>
                                                     <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                                                 </Link>
                                             </div>
@@ -846,11 +819,17 @@ export default function HomeClient() {
                                         </p>
 
                                         <div className="flex items-center gap-4">
-                                            <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
+                                            <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-lg shadow-lg relative`}>
                                                 {review.initial}
+                                                <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-0.5 border-2 border-[#0A0A0F]">
+                                                    <Check className="w-3 h-3 text-white" />
+                                                </div>
                                             </div>
                                             <div>
-                                                <div className="font-bold text-white text-sm">{review.name}</div>
+                                                <div className="font-bold text-white text-sm flex items-center gap-1">
+                                                    {review.name}
+                                                    <span className="text-[10px] text-green-400 font-normal border border-green-400/30 bg-green-400/10 rounded-full px-2 py-0.5 ml-1">Compra Verificada</span>
+                                                </div>
                                                 <div className="text-xs text-slate-400 uppercase tracking-wider font-medium">{review.role}</div>
                                             </div>
                                         </div>

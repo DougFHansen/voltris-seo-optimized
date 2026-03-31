@@ -27,6 +27,44 @@ interface LocalTecnicoClientProps {
 }
 
 export default function LocalTecnicoClient({ locationName, stateAbbr, regionalContext }: LocalTecnicoClientProps) {
+    const idx = (locationName.length + (stateAbbr ? stateAbbr.length : 0)) % 3;
+
+    const heroTitles = [
+        <h1 key="0" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
+            Técnico de <span className="inline-block py-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Informática em {locationName}</span>
+        </h1>,
+        <h1 key="1" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
+            Suporte de <span className="inline-block py-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text italic">TI Remoto em {locationName}</span>
+        </h1>,
+        <h1 key="2" className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
+            Assistência <span className="inline-block py-1 bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Premium em {locationName}</span>
+        </h1>
+    ];
+
+    const heroDescriptions = [
+        <p key="0" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+            Manutenção de computadores, otimização de PC Gamer e suporte técnico remoto de elite. O melhor serviço de tecnologia de <strong>{locationName}</strong> disponível 24h por dia.
+        </p>,
+        <p key="1" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+            A mais alta performance para o seu computador em <strong>{locationName}</strong>. Atendimento remoto e expresso para formatação, remoção de vírus e ganho de FPS.
+        </p>,
+        <p key="2" className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+            Especialistas em diagnóstico de hardware e software operando diretamente em <strong>{locationName}</strong> através da nossa infraestrutura remota 100% segura.
+        </p>
+    ];
+
+    const localH2 = [
+        <h2 key="0" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+            O Suporte que <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">{locationName}</span> Confia
+        </h2>,
+        <h2 key="1" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+            Atendimento Exclusivo para <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B]">{locationName}</span>
+        </h2>,
+        <h2 key="2" className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+            Tecnologia de Ponta em <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00FF94] to-[#31A8FF]">{locationName}</span>
+        </h2>
+    ];
+
     return (
         <>
             <Header />
@@ -53,14 +91,8 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                                 <span className="text-xs sm:text-sm font-bold text-white tracking-widest uppercase">Atendimento Premium em {locationName} - {stateAbbr}</span>
                             </div>
 
-                            {/* Title with fix for clipping (padding + line-height) */}
-                            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter leading-[1.1] px-2">
-                                Técnico de <span className="inline-block py-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text italic">Informática em {locationName}</span>
-                            </h1>
-
-                            <p className="text-lg md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-                                Manutenção de computadores, otimização de PC Gamer e suporte técnico remoto de elite. O melhor serviço de tecnologia de <strong>{locationName}</strong> disponível 24h por dia.
-                            </p>
+                            {heroTitles[idx]}
+                            {heroDescriptions[idx]}
 
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
                                 <Link
@@ -87,9 +119,7 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                 <section className="py-24 px-4 bg-[#0A0A0F]/80 backdrop-blur-xl border-y border-white/5 relative z-10">
                     <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="space-y-8">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
-                                O Suporte que <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">{locationName}</span> Confia
-                            </h2>
+                            {localH2[idx]}
                             <p className="text-slate-400 text-lg leading-relaxed font-light">
                                 Atendemos todas as regiões de <strong>{locationName}</strong>, incluindo {regionalContext.neighborhoods.slice(0, 4).join(', ')} e arredores.
                                 Entendemos a urgência de quem trabalha ou joga na {stateAbbr === 'SP' ? 'maior metrópole do país' : 'sua região'}.

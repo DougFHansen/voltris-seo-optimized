@@ -185,6 +185,8 @@ function DashboardContent() {
     computers: licenses.reduce((acc, curr) => acc + (curr.devices_in_use || 0), 0)
   };
 
+  const hardwareIDProtection = stats.activeLicenses > 0;
+
   return (
     <AuthGuard>
       {isLoading ? (

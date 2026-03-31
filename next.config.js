@@ -1,6 +1,7 @@
 /** @type {import('next').Config} */
 const nextConfig = {
-  // Prevenir redirects 307 em webhooks
+  // Tenta evitar redirecionamentos em POSTs para /api
+  skipTrailingSlashRedirect: true,
   experimental: {
     optimizeCss: true,
     optimizePackageImports: [
@@ -9,8 +10,6 @@ const nextConfig = {
       'framer-motion',
       '@heroicons/react',
     ],
-    // Tenta evitar redirecionamentos em POSTs para /api
-    skipTrailingSlashRedirect: true,
   },
   eslint: {
     ignoreDuringBuilds: true,

@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AdSenseBanner from '@/components/AdSenseBanner';
 import { motion } from 'framer-motion';
 import {
   Monitor,
@@ -401,8 +400,6 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
         </section>
       </main>
       <div className="max-w-4xl mx-auto px-4 py-8">
-        <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
-        <AdSenseBanner />
       </div>
       <Footer />
     </>

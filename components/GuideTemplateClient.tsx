@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import AdSenseBanner from '@/components/AdSenseBanner';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { FAQSchema } from '@/components/SEOStructuredData';
 import { motion, useScroll, useSpring } from 'framer-motion';
@@ -500,13 +499,7 @@ export function GuideTemplateClient({
                                 </>
                             )}
 
-                            {/* AdSense após 40% do conteúdo */}
-                            {contentSections.length >= 2 && (
-                                <div className="my-16">
-                                    <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
-                                    <AdSenseBanner />
-                                </div>
-                            )}
+
 
                             {/* Voltris Optimizer CTA */}
                             {showVoltrisOptimizerCTA && (
@@ -677,10 +670,7 @@ export function GuideTemplateClient({
                     )}
                 </div>
 
-                <div className="my-16 px-4">
-                    <p className="text-center text-xs text-slate-600 mb-2 uppercase tracking-wider">Publicidade</p>
-                    <AdSenseBanner />
-                </div>
+
                 <Footer />
                 {faqItems && <FAQSchema faqItems={faqItems} />}
             </main>

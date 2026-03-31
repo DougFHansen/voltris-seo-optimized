@@ -52,18 +52,24 @@ export async function middleware(request: NextRequest) {
         }
     )
 
-    // SEGURO: getUser() valida o token no servidor, getSession() não valida
-    const { data: { user } } = await supabase.auth.getUser()
-
     const protectedRoutes = ['/dashboard', '/restricted-area-admin']
     const isProtectedRoute = protectedRoutes.some(route =>
         request.nextUrl.pathname.startsWith(route)
     )
 
-    if (isProtectedRoute && !user) {
-        const loginUrl = new URL('/login', request.url)
-        loginUrl.searchParams.set('next', request.nextUrl.pathname)
-        return NextResponse.redirect(loginUrl)
+    // Otimização de Performance: Ignorar getUser() (API Call) se o usuário não tem cookies de sessão
+    // e está acessando uma rota pública (ex: home, guias). Reduz TTFB em 100-200ms para anônimos.
+    const hasAuthCookie = request.cookies.getAll().some(c => c.name.includes('supabase') || c.name.includes('sb-'));
+
+    if (isProtectedRoute || hasAuthCookie) {
+        // SEGURO: getUser() valida o token no servidor, getSession() não valida
+        const { data: { user } } = await supabase.auth.getUser()
+
+        if (isProtectedRoute && !user) {
+            const loginUrl = new URL('/login', request.url)
+            loginUrl.searchParams.set('next', request.nextUrl.pathname)
+            return NextResponse.redirect(loginUrl)
+        }
     }
 
     return response
