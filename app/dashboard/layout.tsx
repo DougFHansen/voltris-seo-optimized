@@ -8,12 +8,14 @@ import { FiMenu, FiMinimize2, FiMaximize2, FiSettings, FiLayout, FiCreditCard, F
 import { motion, AnimatePresence } from 'framer-motion';
 import { DashboardProvider, useDashboard } from '@/app/context/DashboardContext';
 import Link from 'next/link';
+import UISettingsModal from './UISettingsModal';
 
 // Inner component to access context
 function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
   const { transparencyMode, toggleTransparency, sidebarCollapsed, setSidebarCollapsed } = useDashboard();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = (e: any) => {
@@ -67,8 +69,8 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
         
         {/* Sidebar - Modern App Structure */}
         <aside className={`hidden lg:block transition-all duration-500 ease-in-out h-full ${sidebarCollapsed ? 'w-24' : 'w-72 xl:w-80'}`}>
-          <div className={`w-full h-full rounded-[2.5rem] voltris-glass transition-all duration-500 overflow-hidden shadow-2xl relative group`}>
-             <div className="absolute inset-0 bg-gradient-to-b from-[#31A8FF]/5 via-transparent to-[#8B31FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+          <div className={`w-full h-full rounded-[2.5rem] voltris-glass transition-all duration-500 overflow-visible shadow-2xl relative group`}>
+             <div className="absolute inset-0 bg-gradient-to-b from-[#31A8FF]/5 via-transparent to-[#8B31FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-[2.5rem]"></div>
              <Suspense fallback={<div className="w-full h-full animate-pulse bg-white/5" />}>
                <Sidebar collapsed={sidebarCollapsed} setCollapsed={setSidebarCollapsed} />
              </Suspense>
@@ -144,27 +146,28 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
         </div>
 
         {/* Floating UI Elements Hook (Desktop only) */}
-        <div className="absolute bottom-8 right-8 z-[70] hidden xl:flex flex-col gap-4">
+        <div className="absolute bottom-8 left-8 z-[70] hidden xl:flex flex-col gap-4">
           <motion.button 
-            whileHover={{ scale: 1.05, x: -5 }}
+            whileHover={{ scale: 1.05, x: 5 }}
             whileTap={{ scale: 0.95 }}
             onClick={toggleTransparency}
             className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#31A8FF] transition-colors group"
             title={transparencyMode ? 'Desativar Transparência' : 'Ativar Transparência'}
           >
             {transparencyMode ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
-            <div className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <div className="absolute left-full ml-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
               {transparencyMode ? 'Modo Sólido' : 'Modo Transparente'}
             </div>
           </motion.button>
           
           <motion.button 
-            whileHover={{ scale: 1.05, x: -5 }}
+            whileHover={{ scale: 1.05, x: 5 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setIsSettingsOpen(true)}
             className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#8B31FF] transition-colors group"
           >
             <FiSettings className="w-5 h-5" />
-            <div className="absolute right-full mr-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <div className="absolute left-full ml-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
               Configurações UI
             </div>
           </motion.button>
@@ -172,6 +175,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
       </main>
     </div>
     <ClientNotificationModal />
+    <UISettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
   </div>
   );
 }
