@@ -141,12 +141,20 @@ function DashboardContent() {
   // Carregar dados apenas na montagem e quando o ID do usuário mudar de fato
   const userIdRef = useRef<string | undefined>(undefined);
   useEffect(() => {
+    // Se o auth terminou de carregar e não temos usuário, paramos o loading local
+    // para permitir que o AuthGuard execute o redirecionamento.
+    if (!loading && !user) {
+      setIsLoading(false);
+      return;
+    }
+
     if (!user?.id) return;
+    
     // Só buscar se o ID mudou (evita refetch em token refresh que recria o objeto user)
     if (userIdRef.current === user.id) return;
     userIdRef.current = user.id;
     fetchData();
-  }, [user?.id, fetchData]);
+  }, [user?.id, loading, fetchData]);
 
   useEffect(() => {
     const success = searchParams.get('checkout_success');
@@ -177,23 +185,20 @@ function DashboardContent() {
     computers: licenses.reduce((acc, curr) => acc + (curr.devices_in_use || 0), 0)
   };
 
-  if (isLoading) {
-    return (
-      <div className="h-full w-full flex items-center justify-center">
-        <div className="flex flex-col items-center gap-6">
-          <div className="relative">
-            <div className="w-20 h-20 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
-            <div className="absolute inset-0 w-20 h-20 border-t-4 border-[#8B31FF] rounded-full animate-spin-slow"></div>
-          </div>
-          <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Sincronizando com Supabase Cloud...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <AuthGuard>
-      <div className="flex flex-col gap-8 w-full max-w-full h-full">
+      {isLoading ? (
+        <div className="h-full w-full flex items-center justify-center min-h-[400px]">
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative">
+              <div className="w-20 h-20 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
+              <div className="absolute inset-0 w-20 h-20 border-t-4 border-[#8B31FF] rounded-full animate-spin-slow"></div>
+            </div>
+            <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Sincronizando com Supabase Cloud...</p>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-8 w-full max-w-full h-full">
 
         {/* Dashboard Header - Premium UI */}
         <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 min-w-0">
@@ -416,7 +421,8 @@ function DashboardContent() {
             )}
           </AnimatePresence>
         </div>
-      </div>
+        </div>
+      )}
     </AuthGuard>
   );
 }
