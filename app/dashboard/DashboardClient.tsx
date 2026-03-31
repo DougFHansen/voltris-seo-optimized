@@ -198,18 +198,17 @@ function DashboardContent() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-8 w-full max-w-full h-full">
-
+        <div className="flex flex-col gap-8 w-full max-w-full min-h-screen">
         {/* Dashboard Header - Premium UI */}
-        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
-          <div className="space-y-1 sm:space-y-2 flex-1 min-w-0">
-            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+        <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-center lg:text-left">
+          <div className="space-y-2 flex-1 min-w-0 flex flex-col items-center lg:items-start">
+            <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-3">
               <h1 className="text-xl xs:text-2xl sm:text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic leading-tight">Centro de <span className="text-[#31A8FF] not-italic">Controle</span></h1>
             </div>
-            <p className="text-white/40 font-bold text-[9px] sm:text-xs tracking-wide uppercase">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
+            <p className="text-white/40 font-bold text-[9px] sm:text-xs tracking-wide uppercase px-4 lg:px-0 opacity-80">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-center lg:justify-end gap-3 px-4 lg:px-0">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -218,12 +217,11 @@ function DashboardContent() {
             >
               <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
             </motion.button>
-            <Link href="/servicos">
+            <Link href="/servicos" className="flex-1 lg:flex-none">
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(49,168,255,0.3)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(49, 168, 255, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
-
-                className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black uppercase italic tracking-[0.15em] rounded-2xl shadow-2xl text-xs"
+                className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black uppercase italic tracking-[0.15em] rounded-2xl shadow-2xl text-xs"
               >
                 <FiPlus className="w-4 h-4" />
                 <span>Nova Aquisição</span>
@@ -233,21 +231,21 @@ function DashboardContent() {
         </header>
 
         {/* Custom Modern Tabs - Enhanced Mobile Responsivity */}
-        <div className="w-full h-auto flex justify-center items-center py-2 sm:py-0">
-          <div className={`p-1 rounded-full sm:rounded-[2rem] flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all`}>
+        <div className="w-full h-auto flex flex-col items-center justify-center py-2 sm:py-4">
+          <div className={`p-1 rounded-full sm:rounded-[2rem] flex items-center justify-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all`}>
               {[
                 { id: 'overview', label: 'Visão Geral', icon: FiActivity },
                 { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
                 { id: 'pc', label: 'Meu Computador', icon: FiMonitor }
               ].map((tab) => (
-                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
+                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0 flex items-center justify-center">
                   <div className={`
-                    flex items-center justify-center gap-1 sm:gap-2 px-2.5 sm:px-8 py-1.5 sm:py-3.5 rounded-full sm:rounded-2xl text-[8px] sm:text-[11px] font-black uppercase tracking-[0.05em] sm:tracking-[0.15em] transition-all whitespace-nowrap
+                    flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-8 py-2.5 sm:py-3.5 rounded-full sm:rounded-2xl text-[8.5px] sm:text-[11px] font-black uppercase tracking-[0.05em] sm:tracking-[0.15em] transition-all whitespace-nowrap
                     ${activeTab === tab.id 
                       ? 'bg-white text-black shadow-lg shadow-white/10' 
                       : 'text-white/40 hover:text-white hover:bg-white/5'}
                   `}>
-                    <tab.icon className={`w-3 sm:w-4 h-3 sm:h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
+                    <tab.icon className={`w-3.5 sm:w-4 h-3.5 sm:h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
                     <span className="hidden xs:inline-block">{tab.label}</span>
                     <span className="xs:hidden">{tab.label.split(' ')[0]}</span>
                   </div>
