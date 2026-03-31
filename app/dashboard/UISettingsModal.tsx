@@ -10,7 +10,14 @@ interface UISettingsModalProps {
 }
 
 export default function UISettingsModal({ isOpen, onClose }: UISettingsModalProps) {
-  const { transparencyMode, toggleTransparency, sidebarCollapsed, setSidebarCollapsed } = useDashboard();
+  const { 
+    transparencyMode, 
+    toggleTransparency, 
+    sidebarCollapsed, 
+    setSidebarCollapsed,
+    hardwareIDProtection,
+    toggleHardwareIDProtection
+  } = useDashboard();
 
   return (
     <AnimatePresence>
@@ -106,16 +113,22 @@ export default function UISettingsModal({ isOpen, onClose }: UISettingsModalProp
                     </div>
                  </button>
 
-                 {/* Notification Settings (Mockup) */}
-                 <div className="p-6 rounded-[2rem] bg-white/5 border border-white/5 opacity-50 flex flex-col gap-4 text-left grayscale cursor-not-allowed">
+                 {/* Hardware ID Protection Mode */}
+                 <button 
+                   onClick={toggleHardwareIDProtection}
+                   className={`p-6 rounded-[2rem] border transition-all duration-300 flex flex-col gap-4 text-left group
+                     ${hardwareIDProtection ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-white/5 border-white/5 text-white/40 hover:border-white/10'}
+                   `}
+                 >
                     <div className="flex items-center justify-between w-full">
                        <FiShield className="w-6 h-6" />
+                       {hardwareIDProtection && <FiCheck className="w-5 h-5" />}
                     </div>
                     <div>
-                       <h4 className="font-black uppercase italic tracking-wider text-sm mb-1 text-white">Segurança Avançada</h4>
-                       <p className="text-[9px] font-bold uppercase tracking-widest opacity-60">Proteção de hardware ID em tempo real</p>
+                       <h4 className="font-black uppercase italic tracking-wider text-sm mb-1 text-white">Proteção HID</h4>
+                       <p className="text-[9px] font-bold uppercase tracking-widest opacity-60">Segurança de Hardware ID em tempo real</p>
                     </div>
-                 </div>
+                 </button>
               </div>
 
               <div className="pt-6 border-t border-white/5">

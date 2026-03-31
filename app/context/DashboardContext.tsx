@@ -8,6 +8,9 @@ interface DashboardContextType {
   toggleTransparency: () => void;
   sidebarCollapsed: boolean;
   setSidebarCollapsed: (collapsed: boolean) => void;
+  hardwareIDProtection: boolean;
+  setHardwareIDProtection: (protected_mode: boolean) => void;
+  toggleHardwareIDProtection: () => void;
 }
 
 const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
@@ -15,6 +18,7 @@ const DashboardContext = createContext<DashboardContextType | undefined>(undefin
 export function DashboardProvider({ children }: { children: ReactNode }) {
   const [transparencyMode, setTransparencyMode] = useState(true);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [hardwareIDProtection, setHardwareIDProtection] = useState(true);
   const [mounted, setMounted] = useState(false);
 
   // Initialize from localStorage
@@ -27,6 +31,11 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     const savedSidebar = localStorage.getItem('dashboard_sidebar_collapsed');
     if (savedSidebar !== null) {
       setSidebarCollapsed(savedSidebar === 'true');
+    }
+
+    const savedHID = localStorage.getItem('dashboard_hid_protection');
+    if (savedHID !== null) {
+      setHardwareIDProtection(savedHID === 'true');
     }
     
     setMounted(true);
@@ -48,6 +57,17 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('dashboard_sidebar_collapsed', String(collapsed));
   };
 
+  const handleSetHardwareIDProtection = (protected_mode: boolean) => {
+    setHardwareIDProtection(protected_mode);
+    localStorage.setItem('dashboard_hid_protection', String(protected_mode));
+  };
+
+  const handleToggleHardwareID = () => {
+    const newVal = !hardwareIDProtection;
+    setHardwareIDProtection(newVal);
+    localStorage.setItem('dashboard_hid_protection', String(newVal));
+  };
+
   return (
     <DashboardContext.Provider
       value={{
@@ -56,6 +76,9 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
         toggleTransparency: handleToggleTransparency,
         sidebarCollapsed,
         setSidebarCollapsed: handleSetSidebarCollapsed,
+        hardwareIDProtection,
+        setHardwareIDProtection: handleSetHardwareIDProtection,
+        toggleHardwareIDProtection: handleToggleHardwareID,
       }}
     >
       {children}
