@@ -145,29 +145,29 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
            </nav>
         </div>
 
-        {/* Floating UI Elements Hook (Desktop only) */}
-        <div className="absolute bottom-8 left-8 z-[70] hidden xl:flex flex-col gap-4">
+        {/* Floating UI Elements Hook (Desktop only) - Discreto e à Direita */}
+        <div className="absolute bottom-10 right-10 z-[70] hidden xl:flex flex-col gap-3">
           <motion.button 
-            whileHover={{ scale: 1.05, x: 5 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={toggleTransparency}
-            className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#31A8FF] transition-colors group"
-            title={transparencyMode ? 'Desativar Transparência' : 'Ativar Transparência'}
+            className="p-3 rounded-2xl voltris-glass shadow-2xl flex items-center justify-center text-white/50 hover:text-[#31A8FF] transition-all group border border-white/5 hover:border-[#31A8FF]/30"
+            title={transparencyMode ? 'Modo Sólido' : 'Modo Transparente'}
           >
-            {transparencyMode ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
-            <div className="absolute left-full ml-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            {transparencyMode ? <FiMinimize2 className="w-4 h-4" /> : <FiMaximize2 className="w-4 h-4" />}
+            <div className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-black/90 backdrop-blur-xl text-[9px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
               {transparencyMode ? 'Modo Sólido' : 'Modo Transparente'}
             </div>
           </motion.button>
           
           <motion.button 
-            whileHover={{ scale: 1.05, x: 5 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             onClick={() => setIsSettingsOpen(true)}
-            className="p-4 rounded-3xl voltris-glass shadow-2xl flex items-center justify-center text-white/70 hover:text-[#8B31FF] transition-colors group"
+            className="p-3 rounded-2xl voltris-glass shadow-2xl flex items-center justify-center text-white/50 hover:text-[#8B31FF] transition-all group border border-white/5 hover:border-[#8B31FF]/30"
           >
-            <FiSettings className="w-5 h-5" />
-            <div className="absolute left-full ml-4 px-4 py-2 rounded-xl bg-black/80 backdrop-blur-xl text-[10px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            <FiSettings className="w-4 h-4" />
+            <div className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-black/90 backdrop-blur-xl text-[9px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
               Configurações UI
             </div>
           </motion.button>
