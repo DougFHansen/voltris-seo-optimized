@@ -126,7 +126,7 @@ export default function Header() {
           </Link>
 
           {/* ── Nav Desktop (lg+) ─────────────────────── */}
-          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 h-full flex-1 justify-center overflow-hidden">
+          <nav className="hidden lg:flex items-center gap-5 xl:gap-7 h-full flex-1 justify-center relative z-20">
             {mainNavLinks.map((link) => {
               const isActive = pathname === link.path;
               return (
