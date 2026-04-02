@@ -11,7 +11,8 @@ import GoogleLoginButton from '@/components/GoogleLoginButton';
 
 // Icons
 import { FaWhatsapp } from 'react-icons/fa';
-import { Mail, Lock, User, Phone as PhoneIcon, MapPin, ArrowLeft, Loader2, CheckCircle, ArrowRight } from 'lucide-react';
+import { Mail, Lock, User, Phone as PhoneIcon, MapPin, ArrowLeft, Loader2, CheckCircle, ArrowRight, Smartphone as FiSmartphone, Key as FiKey } from 'lucide-react';
+import { toast } from 'react-hot-toast';
 
 export default function LoginPage() {
   return (
@@ -47,6 +48,9 @@ function LoginContent() {
   const [isRecoveryView, setIsRecoveryView] = useState(false);
   const [signupStep, setSignupStep] = useState(1); // 1, 2, 3
 
+  const [isMfaChallenge, setIsMfaChallenge] = useState(false);
+  const [mfaCode, setMfaCode] = useState('');
+  const [isVerifyingMfa, setIsVerifyingMfa] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [passwordStrength, setPasswordStrength] = useState(0);
@@ -133,14 +137,23 @@ function LoginContent() {
     if (authLoading || success) return;
 
     if (user) {
-      const dest = getFinalRedirect();
-      if (installationId) {
-        linkInstallation(user.id).then(() => {
+      const checkMfaAndRedirect = async () => {
+        const { data: mfaData } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+        if (mfaData?.nextLevel === 'aal2' && mfaData?.currentLevel !== 'aal2') {
+          setIsMfaChallenge(true);
+          return;
+        }
+
+        const dest = getFinalRedirect();
+        if (installationId) {
+          linkInstallation(user.id).then(() => {
+            window.location.href = dest;
+          });
+        } else {
           window.location.href = dest;
-        });
-      } else {
-        window.location.href = dest;
-      }
+        }
+      };
+      checkMfaAndRedirect();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, authLoading]);
@@ -163,6 +176,34 @@ function LoginContent() {
   };
 
   // --- HANDLERS ---
+  const handleMfaVerify = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (mfaCode.length < 6) return;
+    setIsVerifyingMfa(true);
+    setError(null);
+    try {
+      const { data: factorsData } = await supabase.auth.mfa.listFactors();
+      const factor = factorsData?.all?.find(f => f.status === 'verified');
+      if (!factor) throw new Error('Nenhum verificador ativo encontrado.');
+
+      const { error } = await supabase.auth.mfa.challengeAndVerify({
+        factorId: factor.id,
+        code: mfaCode
+      });
+      if (error) throw error;
+
+      toast.success('Autenticação confirmada!');
+      setSuccess(true);
+      
+      const dest = getFinalRedirect();
+      window.location.href = dest;
+    } catch (err: any) {
+      setError('Código de autenticação incorreto.');
+    } finally {
+      setIsVerifyingMfa(false);
+    }
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
@@ -197,6 +238,14 @@ function LoginContent() {
 
       if (error || !signInData.user) throw new Error(error?.message || 'Credenciais inválidas');
       console.log('✅ Login bem-sucedido:', signInData.user.id);
+
+      // --- MFA CHECK ---
+      const { data: mfaData } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (mfaData?.nextLevel === 'aal2' && mfaData?.currentLevel !== 'aal2') {
+        setIsMfaChallenge(true);
+        setLoading(false);
+        return;
+      }
 
       // Busca admin de forma fail-safe
       let admin = signInData.user.user_metadata?.is_admin === true;
@@ -525,6 +574,59 @@ function LoginContent() {
                   </div>
                   <h2 className="text-2xl font-bold text-white mb-2">Sucesso!</h2>
                   <p className="text-emerald-400/80 text-sm max-w-[250px] font-medium animate-pulse">{redirectText}</p>
+                </motion.div>
+              ) : isMfaChallenge ? (
+                <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="space-y-6 py-6 text-center">
+                  <div className="w-16 h-16 bg-[#31A8FF]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-3xl">
+                    <FiSmartphone className="w-8 h-8 text-[#31A8FF]" />
+                  </div>
+                  <div className="space-y-2">
+                    <h2 className="text-xl font-black text-white italic uppercase tracking-tighter">Autenticação 2FA</h2>
+                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed px-4">Proteção Voltris: Digite o código de 6 dígitos do seu Google Authenticator.</p>
+                  </div>
+
+                  <form onSubmit={handleMfaVerify} className="space-y-6">
+                     <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-4 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all">
+                        <FiKey className="w-5 h-5 text-slate-500" />
+                        <input 
+                          type="text" 
+                          placeholder="000 000" 
+                          maxLength={6}
+                          value={mfaCode}
+                          onChange={e => setMfaCode(e.target.value.replace(/\D/g, ''))}
+                          className="bg-transparent w-full text-white text-xl font-black tracking-[0.4em] outline-none placeholder:tracking-normal placeholder:text-slate-600 text-center"
+                          autoFocus
+                        />
+                     </div>
+
+                     {error && (
+                        <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
+                          <p className="text-red-400 text-[10px] font-bold uppercase tracking-widest text-center">{error}</p>
+                        </div>
+                     )}
+
+                     <button 
+                      type="submit" 
+                      disabled={isVerifyingMfa || mfaCode.length < 6}
+                      className="w-full py-4 bg-white text-black font-black uppercase italic text-xs rounded-xl shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50"
+                     >
+                       {isVerifyingMfa ? 'Verificando...' : 'Confirmar e Acessar'}
+                     </button>
+
+                     <button 
+                      type="button"
+                      onClick={() => { 
+                        setIsMfaChallenge(false); 
+                        setMfaCode(''); 
+                        setError(null); 
+                        supabase.auth.signOut();
+                        window.location.reload(); 
+                      }}
+                      className="w-full text-white/20 hover:text-white/40 text-[9px] font-black uppercase tracking-widest transition-all"
+                     >
+                       Sair da Sessão
+                     </button>
+                  </form>
                 </motion.div>
               ) : (
                 <motion.div key={isLoginView ? 'login' : 'signup'} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-4">

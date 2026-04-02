@@ -15,6 +15,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
 import MyComputerPage from './MyComputerPage';
+import SecurityPage from './SecurityPage';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import { useDashboard } from '@/app/context/DashboardContext';
@@ -264,7 +265,8 @@ function DashboardContent() {
                 { id: 'overview', label: 'Dashboard', icon: FiActivity },
                 { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
                 { id: 'orders', label: 'Pedidos', icon: FiPackage },
-                { id: 'pc', label: 'Monitor', icon: FiMonitor }
+                { id: 'pc', label: 'Monitor', icon: FiMonitor },
+                { id: 'security', label: 'Segurança', icon: FiShield }
               ].map((tab) => (
                 <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
                   <div className={`
@@ -552,6 +554,18 @@ function DashboardContent() {
                 className="h-full"
               >
                 <MyComputerPage userId={user?.id || ''} />
+              </motion.div>
+            )}
+
+            {activeTab === 'security' && (
+              <motion.div 
+                key="security"
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                className="h-full"
+              >
+                <SecurityPage />
               </motion.div>
             )}
           </AnimatePresence>

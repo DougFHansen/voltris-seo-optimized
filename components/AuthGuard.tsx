@@ -3,6 +3,7 @@
 import { useAuth } from '@/app/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { createClient } from '@/utils/supabase/client';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ interface AuthGuardProps {
 export default function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
   const { user, isAdmin, profile, loading } = useAuth();
   const router = useRouter();
+  const supabase = createClient();
 
   useEffect(() => {
     if (loading) return;
@@ -19,6 +21,17 @@ export default function AuthGuard({ children, requireAdmin = false }: AuthGuardP
       router.push('/login');
       return;
     }
+
+    // MFA Enforcement Logic
+    const checkMfa = async () => {
+      const { data, error } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (error) return;
+      if (data.nextLevel === 'aal2' && data.currentLevel !== 'aal2') {
+        router.push('/login?mfa=challenge');
+      }
+    };
+    checkMfa();
+
     if (requireAdmin && !isAdmin) {
       // Wait until profile is fetched before redirecting
       if (profile === null) return;
