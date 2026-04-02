@@ -109,6 +109,7 @@ function DashboardContent() {
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [licenses, setLicenses] = useState<any[]>([]);
+  const [installationsCount, setInstallationsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const supabase = useMemo(() => createClient(), []);
@@ -118,9 +119,10 @@ function DashboardContent() {
     try {
       if (showLoading) setIsLoading(true);
 
-      const [ordersRes, licensesRes] = await Promise.all([
+      const [ordersRes, licensesRes, installationsRes] = await Promise.all([
         supabase.from('orders').select('*').eq('user_id', user.id).order('created_at', { ascending: false }),
-        supabase.from('licenses').select('*').eq('email', user.email).order('created_at', { ascending: false })
+        supabase.from('licenses').select('*').eq('email', user.email).order('created_at', { ascending: false }),
+        supabase.from('installations').select('id', { count: 'exact', head: true }).eq('user_id', user.id)
       ]);
 
       if (ordersRes.error) throw ordersRes.error;
@@ -129,6 +131,8 @@ function DashboardContent() {
       if (!licensesRes.error) {
         setLicenses(licensesRes.data || []);
       }
+
+      setInstallationsCount(installationsRes.count || 0);
 
     } catch (error) {
       console.error('Erro:', error);
@@ -182,7 +186,7 @@ function DashboardContent() {
   const stats = {
     totalOrders: orders.length,
     activeLicenses: licenses.filter(l => l.is_active).length,
-    computers: licenses.reduce((acc, curr) => acc + (curr.devices_in_use || 0), 0)
+    computers: installationsCount
   };
 
   const hardwareIDProtection = stats.activeLicenses > 0;
@@ -252,6 +256,7 @@ function DashboardContent() {
               {[
                 { id: 'overview', label: 'Dashboard', icon: FiActivity },
                 { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
+                { id: 'orders', label: 'Pedidos', icon: FiPackage },
                 { id: 'pc', label: 'Monitor', icon: FiMonitor }
               ].map((tab) => (
                 <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
@@ -413,6 +418,87 @@ function DashboardContent() {
                        </Link>
                     </div>
                   )}
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === 'orders' && (
+              <motion.div 
+                key="orders"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                className="space-y-6"
+              >
+                <div className={`p-8 rounded-[2rem] sm:rounded-[3rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} shadow-2xl`}>
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
+                    <div className="flex items-center gap-4">
+                      <div className="p-4 bg-gradient-to-br from-[#31A8FF] to-[#1070FF] rounded-2xl text-white shadow-lg shadow-blue-500/20">
+                        <FiPackage className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-black text-white italic uppercase tracking-tighter">Histórico de Pedidos</h2>
+                        <p className="text-white/30 text-[10px] font-black uppercase tracking-widest mt-1">Acompanhe todos os seus serviços e licenças</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left">
+                      <thead>
+                        <tr className="border-b border-white/5">
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Serviço / Licença</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em] hidden sm:table-cell">Data</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Valor</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/5">
+                        {orders.length > 0 ? (
+                          orders.map((order, idx) => (
+                            <tr key={order.id} className="group hover:bg-white/5 active:bg-white/10 transition-colors">
+                              <td className="py-6 px-2">
+                                <div className="flex flex-col">
+                                  <span className="text-sm font-black text-white uppercase italic tracking-tight">{order.service_name}</span>
+                                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">{order.plan_type || 'STANDARD'}</span>
+                                </div>
+                              </td>
+                              <td className="py-6 px-2 hidden sm:table-cell">
+                                <span className="text-xs font-bold text-white/40 uppercase tracking-widest">
+                                  {new Date(order.created_at).toLocaleDateString('pt-BR')}
+                                </span>
+                              </td>
+                              <td className="py-6 px-2">
+                                <span className="text-xs font-black text-[#31A8FF]">
+                                  R$ {(order.total || order.final_price || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                                </span>
+                              </td>
+                              <td className="py-6 px-2">
+                                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border w-fit
+                                  ${order.status === 'completed' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                                    order.status === 'cancelled' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
+                                    'bg-amber-500/10 border-amber-500/20 text-amber-400'}
+                                `}>
+                                  <div className={`w-1 h-1 rounded-full ${order.status === 'completed' ? 'bg-emerald-400' : order.status === 'cancelled' ? 'bg-red-400' : 'bg-amber-400 animate-pulse'}`}></div>
+                                  <span className="text-[10px] font-black uppercase tracking-widest leading-none">
+                                    {order.status === 'completed' ? 'CONCLUÍDO' : 
+                                     order.status === 'cancelled' ? 'CANCELADO' : 
+                                     order.status === 'processing' ? 'EM FILA' : 'PENDENTE'}
+                                  </span>
+                                </div>
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
+                            <td colSpan={4} className="py-20 text-center">
+                              <p className="text-white/20 font-black uppercase tracking-[0.3em] text-[10px]">Nenhum pedido encontrado no registro tático.</p>
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </motion.div>
             )}
