@@ -48,6 +48,40 @@ function LoginContent() {
   const [signupStep, setSignupStep] = useState(1); // 1, 2, 3
 
   const [isAdmin, setIsAdmin] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState(0);
+
+  // --- PASSWORD STRENGTH LOGIC ---
+  const getPasswordStrength = (pass: string) => {
+    let score = 0;
+    if (!pass) return 0;
+    if (pass.length >= 8) score++;
+    if (/[A-Z]/.test(pass)) score++;
+    if (/[0-9]/.test(pass)) score++;
+    if (/[^A-Za-z0-9]/.test(pass)) score++; // Special char
+    if (pass.length >= 12) score++; // Bonus for length
+    return score;
+  };
+
+  useEffect(() => {
+    setPasswordStrength(getPasswordStrength(password));
+  }, [password]);
+
+  const strengthColor = () => {
+    if (passwordStrength === 0) return 'bg-white/10';
+    if (passwordStrength <= 1) return 'bg-red-500';
+    if (passwordStrength === 2) return 'bg-orange-500';
+    if (passwordStrength === 3) return 'bg-yellow-500';
+    return 'bg-emerald-500';
+  };
+
+  const strengthText = () => {
+    if (!password) return '';
+    if (passwordStrength <= 1) return 'Muito Fraca';
+    if (passwordStrength === 2) return 'Regular';
+    if (passwordStrength === 3) return 'Forte';
+    return 'Muito Forte';
+  };
   const [showWhatsAppBtn, setShowWhatsAppBtn] = useState(false);
   const [redirectText, setRedirectText] = useState('Redirecionando...');
   
@@ -209,7 +243,10 @@ function LoginContent() {
       if (!login) return setError("Preencha o Usuário.");
       if (!email) return setError("Preencha o E-mail.");
       if (!validateEmail(email)) return setError("Formato de e-mail inválido.");
-      if (!password || password.length < 6) return setError("A senha precisa ter pelo menos 6 dígitos.");
+      
+      // Validação de Senha Forte (Nivel Stripe/Enterprise)
+      if (password.length < 8) return setError("A senha deve ter pelo menos 8 caracteres.");
+      if (passwordStrength < 3) return setError("Sua senha é fraca. Use letras maiúsculas, números e símbolos.");
       
       // Validação Profissional de Existência e Descartáveis
       setLoading(true);
@@ -477,7 +514,7 @@ function LoginContent() {
                         <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all group/input">
                           <Lock className="w-4 h-4 text-slate-500 group-focus-within/input:text-[#31A8FF] transition-colors" />
                           <input 
-                            type="password" 
+                            type={showPassword ? "text" : "password"} 
                             placeholder="Sua Senha" 
                             value={password} 
                             onChange={e => setPassword(e.target.value)} 
@@ -485,6 +522,13 @@ function LoginContent() {
                             autoComplete="current-password"
                             required
                           />
+                          <button 
+                            type="button" 
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="text-slate-500 hover:text-white transition-colors"
+                          >
+                            <User className="w-4 h-4" />
+                          </button>
                         </div>
                       </div>
 
@@ -540,7 +584,36 @@ function LoginContent() {
                         <div className="space-y-3">
                           <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><User className="w-4 h-4 text-slate-500" /><input type="text" placeholder="Usuário (Login)" value={login} onChange={e => setLogin(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
                           <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><Mail className="w-4 h-4 text-slate-500" /><input type="email" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><Lock className="w-4 h-4 text-slate-500" /><input type="password" placeholder="Senha" value={password} onChange={e => setPassword(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3">
+                            <Lock className="w-4 h-4 text-slate-500" />
+                            <input 
+                              type={showPassword ? "text" : "password"} 
+                              placeholder="Senha" 
+                              value={password} 
+                              onChange={e => setPassword(e.target.value)} 
+                              className="bg-transparent w-full text-white text-sm outline-none" 
+                            />
+                            <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-slate-500">
+                                <Lock className="w-4 h-4" />
+                            </button>
+                          </div>
+
+                          {/* Password Strength Meter */}
+                          <div className="space-y-2 mt-1 px-1">
+                            <div className="flex justify-between items-center">
+                              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Segurança</span>
+                              <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${passwordStrength === 0 ? 'text-slate-600' : (passwordStrength <= 1 ? 'text-red-500' : (passwordStrength === 2 ? 'text-orange-500' : 'text-emerald-500'))}`}>
+                                {strengthText()}
+                              </span>
+                            </div>
+                            <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                              <motion.div 
+                                className={`h-full ${strengthColor()} transition-all duration-500`}
+                                initial={{ width: 0 }}
+                                animate={{ width: `${(passwordStrength / 5) * 100}%` }}
+                              />
+                            </div>
+                          </div>
                         </div>
                       )}
                       {signupStep === 2 && (
