@@ -240,7 +240,12 @@ function DashboardContent() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => { setIsRefreshing(true); fetchData(false).finally(() => setIsRefreshing(false)); }}
+              onClick={() => { 
+                setIsRefreshing(true); 
+                fetchData(false)
+                  .then(() => toast.success('Dados atualizados!'))
+                  .finally(() => setIsRefreshing(false)); 
+              }}
               className={`p-4 rounded-2xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
             >
               <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -252,7 +257,7 @@ function DashboardContent() {
                 className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black uppercase italic tracking-[0.15em] rounded-2xl shadow-2xl text-xs"
               >
                 <FiPlus className="w-4 h-4" />
-                <span>Nova Aquisição</span>
+                <span>Novo Pedido</span>
               </motion.button>
             </Link>
           </div>
