@@ -37,6 +37,16 @@ export default function SecurityPage() {
   const onEnroll = async () => {
     setIsEnrolling(true);
     try {
+      // 1. Limpeza de fatores não verificados para evitar erro de "friendly name already exists"
+      const { data: existingFactors } = await supabase.auth.mfa.listFactors();
+      if (existingFactors?.all) {
+        const unverified = existingFactors.all.filter(f => f.status === 'unverified');
+        for (const f of unverified) {
+          await supabase.auth.mfa.unenroll({ factorId: f.id });
+        }
+      }
+
+      // 2. Iniciar novo enrollment
       const { data, error } = await supabase.auth.mfa.enroll({
         factorType: 'totp',
         issuer: 'Voltris',
@@ -176,13 +186,10 @@ export default function SecurityPage() {
                 className="bg-black/40 rounded-[2rem] p-8 sm:p-10 border border-[#31A8FF]/30 space-y-8"
               >
                 <div className="flex flex-col lg:flex-row items-center gap-10">
-                  <div className="bg-white p-4 rounded-3xl shadow-[0_0_50px_rgba(255,255,255,0.1)]">
-                    <img 
-                      src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(enrollData.totp.qr_code)}`}
-                      alt="MFA QR Code"
-                      className="w-40 h-40"
-                    />
-                  </div>
+                  <div 
+                    className="bg-white p-4 rounded-3xl shadow-[0_0_50px_rgba(255,255,255,0.1)] w-48 h-48 flex items-center justify-center overflow-hidden"
+                    dangerouslySetInnerHTML={{ __html: enrollData.totp.qr_code }}
+                  />
                   
                   <div className="space-y-6 flex-1 text-center lg:text-left">
                     <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">Escaneie o QR Code</h4>
