@@ -186,10 +186,13 @@ export default function SecurityPage() {
                 className="bg-black/40 rounded-[2rem] p-8 sm:p-10 border border-[#31A8FF]/30 space-y-8"
               >
                 <div className="flex flex-col lg:flex-row items-center gap-10">
-                  <div 
-                    className="bg-white p-4 rounded-3xl shadow-[0_0_50px_rgba(255,255,255,0.1)] w-48 h-48 flex items-center justify-center overflow-hidden"
-                    dangerouslySetInnerHTML={{ __html: enrollData.totp.qr_code }}
-                  />
+                  <div className="bg-white p-4 rounded-3xl shadow-[0_0_50px_rgba(255,255,255,0.1)] w-48 h-48 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(enrollData.totp.uri)}`}
+                      alt="MFA QR Code"
+                      className="w-full h-full"
+                    />
+                  </div>
                   
                   <div className="space-y-6 flex-1 text-center lg:text-left">
                     <h4 className="text-xl font-black text-white italic uppercase tracking-tighter">Escaneie o QR Code</h4>
