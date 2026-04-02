@@ -296,7 +296,7 @@ function DashboardContent() {
               >
                 <StatCard title="Serviços Adquiridos" value={stats.totalOrders} icon={FiPackage} color="blue" delay={0.1} />
                 <StatCard title="Licenças Disponíveis" value={stats.activeLicenses} icon={FiCheckCircle} color="purple" delay={0.2} />
-                <StatCard title="Instâncias Vinculadas" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
+                <StatCard title="Computadores Vinculados" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
                    {/* Tactical Billboard */}
                 <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
                    <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 opacity-30"></div>
