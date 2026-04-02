@@ -36,13 +36,13 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
   }, [supabase.auth]);
 
   const tabs = [
-    { label: 'Visão Geral', value: 'overview', icon: FiHome, path: '/dashboard', query: { tab: 'overview' } },
-    { label: 'Meu Computador', value: 'pc', icon: FiMonitor, path: '/dashboard', query: { tab: 'pc' } },
-    { label: 'Minhas Licenças', value: 'licenses', icon: FiCreditCard, path: '/dashboard', query: { tab: 'licenses' } },
-    { label: 'Novos Pedidos', value: 'orders', icon: FiShoppingBag, path: '/dashboard/new-order' },
-    { label: 'Empresas', value: 'companies', icon: FiLayout, path: '/dashboard/companies' },
-    { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/dashboard/profile' },
-    { label: 'Suporte', value: 'tickets', icon: FiHeadphones, path: '/dashboard/tickets' },
+    { label: 'Visão Geral', value: 'overview', icon: FiHome, path: '/dashboard', query: { tab: 'overview' }, color: '#31A8FF' },
+    { label: 'Meu Computador', value: 'pc', icon: FiMonitor, path: '/dashboard', query: { tab: 'pc' }, color: '#00C9A7' },
+    { label: 'Minhas Licenças', value: 'licenses', icon: FiCreditCard, path: '/dashboard', query: { tab: 'licenses' }, color: '#8B31FF' },
+    { label: 'Novos Pedidos', value: 'orders', icon: FiShoppingBag, path: '/dashboard/new-order', color: '#FF4B6B' },
+    { label: 'Empresas', value: 'companies', icon: FiLayout, path: '/dashboard/companies', color: '#FF9F43' },
+    { label: 'Meu Perfil', value: 'profile', icon: FiUser, path: '/dashboard/profile', color: '#00D2FF' },
+    { label: 'Suporte', value: 'tickets', icon: FiHeadphones, path: '/dashboard/tickets', color: '#FF3E3E' },
   ];
 
   const handleLogout = async () => {
@@ -128,17 +128,32 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
                 {isActive && (
                   <motion.div
                     layoutId="sidebar-active"
-                    className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-white/5 rounded-2xl"
+                    className="absolute inset-0 rounded-2xl"
+                    style={{ 
+                      background: `linear-gradient(to right, ${tab.color}15, transparent)`,
+                      border: `1px solid ${tab.color}20`
+                    }}
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                <Icon className={`w-5 h-5 relative z-10 transition-all duration-300 ${isActive ? 'text-[#31A8FF] scale-110' : 'group-hover:text-[#31A8FF]'}`} />
+                <Icon 
+                  className={`w-5 h-5 relative z-10 transition-all duration-300 ${isActive ? 'scale-110' : ''}`} 
+                  style={{ color: isActive ? tab.color : 'inherit' }}
+                />
                 {(!collapsed || isMobile) && (
-                  <span className={`relative z-10 font-bold text-xs uppercase tracking-widest transition-all ${isActive ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'}`}>
+                  <span className={`relative z-10 font-bold text-xs uppercase tracking-widest transition-all ${isActive ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'}`} style={{ color: isActive ? tab.color : 'inherit' }}>
                     {tab.label}
                   </span>
                 )}
-                {isActive && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-6 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-r-full shadow-[0_0_20px_#31A8FF]"></div>}
+                {isActive && (
+                  <div 
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-6 rounded-r-full" 
+                    style={{ 
+                      background: `linear-gradient(to bottom, ${tab.color}, ${tab.color}bb)`,
+                      boxShadow: `0 0 15px ${tab.color}`
+                    }}
+                  ></div>
+                )}
               </Link>
             );
          })}
