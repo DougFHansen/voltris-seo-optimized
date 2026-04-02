@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Phone, MapPin, CheckCircle2, Star, Clock, Shield, CreditCard, MessageCircle, Zap, Wrench, Monitor, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
+import DOMPurify from 'isomorphic-dompurify';
 import dynamic from 'next/dynamic';
 
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
@@ -471,7 +472,7 @@ export default function FormatarWindowsClient() {
                         {faqItems.map((faq, index) => (
                             <div key={index} className="bg-[#0A0A0F]/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
                                 <h3 className="font-bold text-lg text-white mb-3">{faq.question}</h3>
-                                <p className="text-slate-300" dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                                <p className="text-slate-300" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(faq.answer) }} />
                             </div>
                         ))}
                     </div>

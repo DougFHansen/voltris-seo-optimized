@@ -65,10 +65,25 @@ export async function middleware(request: NextRequest) {
         // SEGURO: getUser() valida o token no servidor, getSession() não valida
         const { data: { user } } = await supabase.auth.getUser()
 
-        if (isProtectedRoute && !user) {
-            const loginUrl = new URL('/login', request.url)
-            loginUrl.searchParams.set('next', request.nextUrl.pathname)
-            return NextResponse.redirect(loginUrl)
+        if (isProtectedRoute) {
+            if (!user) {
+                const loginUrl = new URL('/login', request.url)
+                loginUrl.searchParams.set('next', request.nextUrl.pathname)
+                return NextResponse.redirect(loginUrl)
+            }
+
+            // SEGURANÇA EXTRA: Bloquear acesso admin no middleware se não for admin
+            if (request.nextUrl.pathname.startsWith('/restricted-area-admin')) {
+                const { data: profile } = await supabase
+                    .from('profiles')
+                    .select('is_admin')
+                    .eq('id', user.id)
+                    .single()
+
+                if (!profile?.is_admin) {
+                    return NextResponse.redirect(new URL('/dashboard', request.url))
+                }
+            }
         }
     }
 

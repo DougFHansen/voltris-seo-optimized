@@ -105,7 +105,7 @@ export default function FAQPage() {
         {
             icon: <CreditCard className="w-5 h-5" />,
             question: "Quais as formas de pagamento?",
-            answer: "Aceitamos PIX (com aprovação imediata), cartões de crédito em até 12x e boleto bancário. Utilizamos gateways de pagamento seguros como Mercado Pago para garantir a segurança da sua transação."
+            answer: "Aceitamos PIX (com aprovação imediata), cartões de crédito em até 12x e boleto bancário. Utilizamos gateways de pagamento seguros e líderes mundiais para garantir a criptografia e segurança total da sua transação."
         },
         {
             icon: <HelpCircle className="w-5 h-5" />,
