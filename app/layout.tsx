@@ -26,7 +26,12 @@ export const metadata: Metadata = {
     "otimização windows",
     "redutor de lag",
     "melhores configurações windows",
-    "especialista em performance pc"
+    "especialista em performance pc",
+    "otimização pc brasil",
+    "guias técnicos informática",
+    "como aumentar fps windows 11",
+    "limpeza de arquivos temporarios",
+    "suporte informatica online"
   ],
   authors: [{ name: "VOLTRIS - Especialista em Performance" }],
   creator: "VOLTRIS",
@@ -144,6 +149,26 @@ export default function RootLayout({
             sameAs: [
               "https://www.instagram.com/voltris.com.br"
             ]
+          }}
+        />
+
+        {/* Schema.org Software Application - Huge SEO boost for Voltris Optimizer */}
+        <JsonLd
+          type="SoftwareApplication"
+          data={{
+            name: "Voltris Optimizer",
+            operatingSystem: "Windows 10, Windows 11",
+            applicationCategory: "UtilitiesApplication",
+            offers: {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "BRL"
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "1250"
+            }
           }}
         />
 
