@@ -51,8 +51,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12 items-start">
 
           {/* Col 1: Info & Brand */}
-          <div className="space-y-6">
-            <Link href="/" className="flex items-center gap-2 group w-fit">
+          <div className="space-y-6 flex flex-col items-center md:items-start text-center md:text-left">
+            <Link href="/" className="flex items-center gap-2 group">
               <div className="relative">
                 <Image
                   src="/logo.png"
@@ -64,10 +64,10 @@ export default function Footer() {
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-tight">VOLTRIS</span>
             </Link>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
               Soluções em informática remota para todo o Brasil. Tecnologia de ponta e segurança.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 justify-center md:justify-start">
               <a href="https://instagram.com/voltristech" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-[#E1306C]/10 hover:text-[#E1306C] text-slate-400 transition-all border border-transparent hover:border-[#E1306C]/20" aria-label="Siga-nos no Instagram">
                 <FiInstagram className="w-5 h-5" />
               </a>
@@ -78,7 +78,7 @@ export default function Footer() {
           </div>
 
           {/* Col 2: Newsletter */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-center md:text-left">
             <h3 className="font-bold text-white text-base">Receba Novidades</h3>
             <div className="space-y-3">
               <NewsletterForm source="site" />
@@ -89,9 +89,9 @@ export default function Footer() {
           </div>
 
           {/* Col 3: Links */}
-          <div className="space-y-6 pl-0 lg:pl-4">
+          <div className="space-y-6 pl-0 lg:pl-4 text-center md:text-left">
             <h3 className="font-bold text-white text-base">Links Rápidos</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 flex flex-col items-center md:items-start">
               {links.quick.map(l => (
                 <li key={l.path}>
                   <Link
@@ -108,9 +108,9 @@ export default function Footer() {
           </div>
 
           {/* Col 4: Services */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-center md:text-left">
             <h3 className="font-bold text-white text-base">Nossos Serviços</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 flex flex-col items-center md:items-start">
               {links.services.map(l => (
                 <li key={l.path}>
                   <Link href={l.path} className="text-slate-400 hover:text-[#8B31FF] text-sm transition-colors flex items-center gap-2 group">
@@ -123,9 +123,9 @@ export default function Footer() {
           </div>
 
           {/* Col 5: Regional SEO */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-center md:text-left">
             <h3 className="font-bold text-white text-base">Atendimento Local</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 flex flex-col items-center md:items-start">
               {links.cities.map(l => (
                 <li key={l.path}>
                   <Link href={l.path} className="text-slate-400 hover:text-[#00FF94] text-sm transition-colors flex items-center gap-2 group">
@@ -138,23 +138,23 @@ export default function Footer() {
           </div>
 
           {/* Col 6: Contact */}
-          <div className="space-y-6">
+          <div className="space-y-6 text-center md:text-left">
             <h3 className="font-bold text-white text-base">Contato</h3>
-            <ul className="space-y-4">
-              <li className="group flex items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
-                <FiPhone className="w-5 h-5 text-[#31A8FF] mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
+            <ul className="space-y-4 flex flex-col items-center md:items-start">
+              <li className="group flex items-center md:items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
+                <FiPhone className="w-5 h-5 text-[#31A8FF] shrink-0 group-hover:scale-110 transition-transform" />
                 <span>(11) 99671-6235</span>
               </li>
-              <li className="group flex items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
-                <FiMail className="w-5 h-5 text-[#8B31FF] mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
-                <span className="break-all">contato@voltristech.com.br</span>
+              <li className="group flex items-center md:items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors text-center md:text-left">
+                <FiMail className="w-5 h-5 text-[#8B31FF] shrink-0 group-hover:scale-110 transition-transform" />
+                <span className="break-all whitespace-normal">contato@voltristech.com.br</span>
               </li>
-              <li className="group flex items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
-                <FiMapPin className="w-5 h-5 text-[#31A8FF] mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
+              <li className="group flex items-center md:items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
+                <FiMapPin className="w-5 h-5 text-[#31A8FF] shrink-0 group-hover:scale-110 transition-transform" />
                 <span>São Paulo, SP</span>
               </li>
-              <li className="group flex items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
-                <FiClock className="w-5 h-5 text-[#FF4B6B] mt-0.5 shrink-0 group-hover:scale-110 transition-transform" />
+              <li className="group flex items-center md:items-start gap-3 text-sm text-slate-400 hover:text-white transition-colors">
+                <FiClock className="w-5 h-5 text-[#FF4B6B] shrink-0 group-hover:scale-110 transition-transform" />
                 <span>Seg-Sex 7h-19h30<br />Sáb 8h30-19h30</span>
               </li>
             </ul>
