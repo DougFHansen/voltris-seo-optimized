@@ -11,6 +11,8 @@ import { Clock, ArrowRight, BookOpen, User, Calendar, Award, CheckCircle, AlertT
 
 import { notifyDownload } from '@/utils/notifications';
 import DOMPurify from 'isomorphic-dompurify';
+import OptimizerMockup from '@/components/OptimizerMockup';
+import { Download, Zap } from 'lucide-react';
 
 export interface SummaryTableItem {
     label: string;
@@ -182,6 +184,39 @@ export function GuideTemplateClient({
         article?.addEventListener('click', handleContentClick, { capture: true });
         return () => article?.removeEventListener('click', handleContentClick);
     }, []);
+
+    // Componente Interno de Banner para Reuso Estratégico
+    const VoltrisOptimizerBanner = ({ isSecondary = false }) => (
+        <div className={`my-12 relative group ${isSecondary ? 'opacity-90 scale-95' : ''}`}>
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-3xl opacity-30 group-hover:opacity-60 blur-xl transition duration-500"></div>
+            <div className="relative bg-[#050510]/80 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 overflow-hidden flex flex-col xl:flex-row items-center gap-12">
+                <div className="flex-1 space-y-6 z-10 text-center xl:text-left">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-[10px] font-black uppercase tracking-[0.2em]">
+                        <Zap className="w-3 h-3 fill-current" /> Otimização Recomendada
+                    </div>
+                    <h3 className="text-3xl md:text-5xl font-black text-white leading-tight uppercase italic tracking-tighter">
+                        Não faça no <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">Manual.</span>
+                    </h3>
+                    <p className="text-slate-400 text-lg leading-relaxed font-bold">
+                        O <span className="text-white">Voltris Optimizer</span> automatiza todo este guia e remove o delay do seu Windows em segundos.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center xl:justify-start">
+                        <Link
+                            href="/voltrisoptimizer"
+                            onClick={() => notifyDownload(`Guide CTA Click - ${title}`)}
+                            className="px-10 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_20px_50px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3 group"
+                        >
+                            <span>Baixar Agora</span>
+                            <Download className="w-5 h-5 group-hover:animate-bounce" />
+                        </Link>
+                    </div>
+                </div>
+                <div className="w-full xl:w-[450px] shrink-0">
+                    <OptimizerMockup />
+                </div>
+            </div>
+        </div>
+    );
 
     const allSections = [
         ...contentSections,
@@ -400,43 +435,47 @@ export function GuideTemplateClient({
                             <meta itemProp="dateModified" content={`${lastUpdated}-01-01`} />
 
                             {contentSections.map((section, sectionIndex) => (
-                                <motion.div
-                                    key={sectionIndex}
-                                    id={`section-${sectionIndex}`}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-100px" }}
-                                    className="bg-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden"
-                                >
-                                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-30"></div>
+                                <React.Fragment key={sectionIndex}>
+                                    <motion.div
+                                        id={`section-${sectionIndex}`}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        className="bg-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden"
+                                    >
+                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-30"></div>
 
-                                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
-                                        <span className="text-[#31A8FF] text-xl opacity-50 font-mono mt-1">0{sectionIndex + 1}.</span>
-                                        {section.title}
-                                    </h2>
+                                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
+                                            <span className="text-[#31A8FF] text-xl opacity-50 font-mono mt-1">0{sectionIndex + 1}.</span>
+                                            {section.title}
+                                        </h2>
 
-                                    <div
-                                        className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#31A8FF] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
-                                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
-                                    />
+                                        <div
+                                            className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#31A8FF] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
+                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
+                                        />
 
-                                    {section.subsections && (
-                                        <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-white/5">
-                                            {section.subsections.map((subsection, subIndex) => (
-                                                <div key={subIndex}>
-                                                    <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
-                                                        <span className="w-2 h-2 rounded-full bg-[#FF4B6B]"></span>
-                                                        {subsection.subtitle}
-                                                    </h3>
-                                                    <div
-                                                        className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
-                                                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(subsection.content) }}
-                                                    />
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </motion.div>
+                                        {section.subsections && (
+                                            <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-white/5">
+                                                {section.subsections.map((subsection, subIndex) => (
+                                                    <div key={subIndex}>
+                                                        <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
+                                                            <span className="w-2 h-2 rounded-full bg-[#FF4B6B]"></span>
+                                                            {subsection.subtitle}
+                                                        </h3>
+                                                        <div
+                                                            className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
+                                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(subsection.content) }}
+                                                        />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </motion.div>
+
+                                    {/* Banner Estratégico após o primeiro capítulo */}
+                                    {sectionIndex === 0 && showVoltrisOptimizerCTA && <VoltrisOptimizerBanner isSecondary={true} />}
+                                </React.Fragment>
                             ))}
 
                             {/* Advanced Content Sections */}
@@ -502,35 +541,8 @@ export function GuideTemplateClient({
 
 
 
-                            {/* Voltris Optimizer CTA */}
-                            {showVoltrisOptimizerCTA && (
-                                <div className="mt-16 mb-16 relative group">
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-3xl opacity-50 group-hover:opacity-80 blur-xl transition duration-500"></div>
-                                    <div className="relative bg-[#020205] border border-white/10 rounded-2xl p-8 md:p-12 overflow-hidden flex flex-col md:flex-row items-center gap-10">
-                                        <div className="flex-1 space-y-6 z-10 text-center md:text-left">
-                                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-xs font-bold uppercase tracking-wider">
-                                                <Award className="w-3 h-3" /> Solução Automática
-                                            </div>
-                                            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight">
-                                                Cansado de fazer tudo <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">manualmente?</span>
-                                            </h3>
-                                            <p className="text-slate-400 text-lg leading-relaxed">
-                                                O <strong>Voltris Optimizer</strong> aplica todas as correções deste guia (e mais 200 outras) com um único clique. Otimize Processos, Rede, Input Lag e FPS instantaneamente.
-                                            </p>
-                                            <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                                                <Link
-                                                    href="/voltrisoptimizer"
-                                                    onClick={() => notifyDownload(`Guide CTA Click - ${title}`)}
-                                                    className="px-8 py-4 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all shadow-[0_0_30px_rgba(49,168,255,0.4)] flex items-center justify-center gap-2"
-                                                >
-                                                    Baixar Voltris Optimizer
-                                                    <ArrowRight className="w-5 h-5" />
-                                                </Link>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
+                            {/* Voltris Optimizer CTA Final */}
+                            {showVoltrisOptimizerCTA && <VoltrisOptimizerBanner />}
 
                             {/* Custom Children */}
                             {children}
@@ -674,6 +686,25 @@ export function GuideTemplateClient({
 
                 <Footer />
                 {faqItems && <FAQSchema faqItems={faqItems} />}
+
+                {/* Botão Flutuante de Download Rápido (Conversão Viral) */}
+                {showVoltrisOptimizerCTA && (
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="fixed bottom-8 right-8 z-[100]"
+                    >
+                        <Link
+                            href="/voltrisoptimizer"
+                            onClick={() => notifyDownload(`Floating Link Click - ${title}`)}
+                            className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black rounded-full shadow-[0_10px_40px_rgba(49,168,255,0.4)] hover:scale-110 active:scale-95 transition-all text-xs uppercase tracking-widest group"
+                        >
+                            <Zap className="w-4 h-4 fill-current group-hover:animate-pulse" />
+                            <span className="hidden sm:inline">Baixar Optimizer</span>
+                            <span className="sm:hidden">Baixar</span>
+                        </Link>
+                    </motion.div>
+                )}
             </main>
         </>
     );
