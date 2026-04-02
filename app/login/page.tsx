@@ -364,29 +364,42 @@ function LoginContent() {
     const formattedCep = formatCEP(v);
     setCep(formattedCep);
 
-    const cleanCep = formattedCep.replace('-', '');
+    const cleanCep = formattedCep.replace(/\D/g, '');
     if (cleanCep.length === 8) {
       setIsCepLoading(true);
       setIsCepValid(false);
       setError(null);
+      
       try {
-        const response = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
-        const data = await response.json();
+        console.log('🔍 Validando CEP via Servidor:', cleanCep);
+        const response = await fetch('/api/v1/auth/validate-cep', {
+          method: 'POST',
+          body: JSON.stringify({ cep: cleanCep }),
+          headers: { 'Content-Type': 'application/json' }
+        });
         
-        if (data.erro) {
-          setError("Este CEP não existe na base oficial dos Correios.");
+        const resData = await response.json();
+        console.log('✅ Resposta do Servidor:', resData);
+        
+        if (!resData.valid) {
+          setError(resData.error || "Este CEP não existe. Digite um CEP real.");
           setCity(''); setNeighborhood(''); setState(''); setStreet('');
           setIsCepValid(false);
         } else {
-          setCity(data.localidade || '');
-          setNeighborhood(data.bairro || '');
-          setState(data.uf || '');
-          setStreet(data.logradouro || '');
+          // Extrair dados da resposta do servidor
+          const { street, neighborhood, city, state } = resData.data;
+          
+          setCity(city || '');
+          setNeighborhood(neighborhood || '');
+          setState(state || '');
+          setStreet(street || '');
           setError(null);
           setIsCepValid(true);
+          console.log('🎯 Endereço preenchido com sucesso!');
         }
       } catch (err) {
-        setError("Erro ao validar CEP. Tente novamente.");
+        console.error('❌ Erro na validação de CEP:', err);
+        setError("Erro de rede ao validar CEP. Tente novamente.");
         setIsCepValid(false);
       } finally {
         setIsCepLoading(false);
