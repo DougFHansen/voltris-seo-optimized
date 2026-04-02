@@ -248,13 +248,27 @@ function LoginContent() {
       if (password.length < 8) return setError("A senha deve ter pelo menos 8 caracteres.");
       if (passwordStrength < 3) return setError("Sua senha é fraca. Use letras maiúsculas, números e símbolos.");
       
-      // Validação Profissional de Existência e Descartáveis
       setLoading(true);
       setError(null);
       try {
+        // Validação de Existência (E-mail e Usuário) no Sistema
+        const availabilityRes = await fetch('/api/v1/auth/check-availability', {
+          method: 'POST',
+          body: JSON.stringify({ email: email.trim(), login: login.trim() }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const availability = await availabilityRes.json();
+        if (!availability.available) {
+          setError(availability.error || "Este e-mail ou usuário já está em uso.");
+          setLoading(false);
+          return;
+        }
+
+        // Validação Profissional de DNS e Descartáveis
         const response = await fetch('/api/v1/auth/validate-email', {
           method: 'POST',
           body: JSON.stringify({ email: email.trim() }),
+          headers: { 'Content-Type': 'application/json' }
         });
         const data = await response.json();
         if (!data.valid) {
@@ -263,7 +277,7 @@ function LoginContent() {
           return;
         }
       } catch (err) {
-        setError("Erro crítico de validação de e-mail. Tente novamente.");
+        setError("Erro crítico de validação. Tente novamente.");
         setLoading(false);
         return;
       } finally {
@@ -276,6 +290,29 @@ function LoginContent() {
       if (!phone) return setError("Preencha o WhatsApp.");
       if (!validateBrazilianPhone(phone)) {
         return setError("Número de WhatsApp inválido ou DDD inexistente.");
+      }
+
+      setLoading(true);
+      setError(null);
+      try {
+        // Validação de Telefone Duplicado no Sistema (Step 2)
+        const availabilityRes = await fetch('/api/v1/auth/check-availability', {
+          method: 'POST',
+          body: JSON.stringify({ phone: phone.trim() }),
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const availability = await availabilityRes.json();
+        if (!availability.available) {
+          setError(availability.error || "Este WhatsApp já está sendo usado.");
+          setLoading(false);
+          return;
+        }
+      } catch (err) {
+        setError("Erro de rede. Tente novamente.");
+        setLoading(false);
+        return;
+      } finally {
+        setLoading(false);
       }
     }
     setError(null);
