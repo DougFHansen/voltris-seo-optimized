@@ -267,21 +267,27 @@ function DashboardContent() {
         <div className="w-full flex items-center justify-start sm:justify-center py-2 sm:py-4 overflow-x-auto scrollbar-hide px-2 sm:px-0">
           <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all min-w-max sm:min-w-0`}>
               {[
-                { id: 'overview', label: 'Dashboard', icon: FiActivity },
-                { id: 'licenses', label: 'Licenças', icon: FiCheckCircle },
-                { id: 'orders', label: 'Pedidos', icon: FiPackage },
-                { id: 'pc', label: 'Monitor', icon: FiMonitor },
-                { id: 'security', label: 'Segurança', icon: FiShield }
+                { id: 'overview', label: 'Dashboard', icon: FiActivity, color: '#31A8FF' },
+                { id: 'licenses', label: 'Licenças', icon: FiCheckCircle, color: '#8B31FF' },
+                { id: 'orders', label: 'Pedidos', icon: FiPackage, color: '#FF4B6B' },
+                { id: 'pc', label: 'Monitor', icon: FiMonitor, color: '#00C9A7' },
+                { id: 'security', label: 'Segurança', icon: FiShield, color: '#FFD700' }
               ].map((tab) => (
                 <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
                   <div className={`
                     flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[9px] sm:text-[11px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-all whitespace-nowrap
                     ${activeTab === tab.id 
-                      ? 'bg-white text-black shadow-lg shadow-white/10' 
+                      ? 'bg-white text-black' 
                       : 'text-white/40 hover:text-white hover:bg-white/5'}
-                  `}>
-                    <tab.icon className={`w-3.5 sm:w-4 h-3.5 sm:h-4 ${activeTab === tab.id ? 'text-black' : 'text-white/20'}`} />
-                    <span className="inline-block">{tab.label}</span>
+                  `}
+                  style={{ 
+                    boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none'
+                  }}>
+                    <tab.icon 
+                      className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-colors`} 
+                      style={{ color: activeTab === tab.id ? tab.color : 'rgba(255,255,255,0.2)' }}
+                    />
+                    <span className="inline-block" style={{ color: activeTab === tab.id ? 'black' : 'inherit' }}>{tab.label}</span>
                   </div>
                 </Link>
               ))}
