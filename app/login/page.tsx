@@ -35,6 +35,9 @@ function LoginContent() {
   const [neighborhood, setNeighborhood] = useState('');
   const [state, setState] = useState('');
   const [cep, setCep] = useState('');
+  const [street, setStreet] = useState('');
+  const [number, setNumber] = useState('');
+  const [isCepLoading, setIsCepLoading] = useState(false);
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -216,12 +219,15 @@ function LoginContent() {
   };
 
   const handleSignUp = async () => {
+    if (!cep || !state || !city || !street || !number) {
+      return setError("Por favor, preencha o endereço completo.");
+    }
     setError(null);
     setLoading(true);
     try {
       const { data: signUpData, error } = await supabase.auth.signUp({
         email, password,
-        options: { data: { full_name: fullName, phone, city, neighborhood, state, cep, login } },
+        options: { data: { full_name: fullName, phone, city, neighborhood, state, cep, street, number, login } },
       });
       if (error) throw error;
 
@@ -279,6 +285,36 @@ function LoginContent() {
   // Formatters
   const formatPhone = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 11 ? n.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3') : v; };
   const formatCEP = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 8 ? n.replace(/(\d{5})(\d{3})/, '$1-$2') : v; };
+
+  const handleCepChange = async (v: string) => {
+    const formattedCep = formatCEP(v);
+    setCep(formattedCep);
+
+    const cleanCep = formattedCep.replace('-', '');
+    if (cleanCep.length === 8) {
+      setIsCepLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
+        const data = await response.json();
+        
+        if (data.erro) {
+          setError("CEP não encontrado.");
+          setCity(''); setNeighborhood(''); setState(''); setStreet('');
+        } else {
+          setCity(data.localidade || '');
+          setNeighborhood(data.bairro || '');
+          setState(data.uf || '');
+          setStreet(data.logradouro || '');
+          setError(null);
+        }
+      } catch (err) {
+        setError("Erro ao buscar CEP.");
+      } finally {
+        setIsCepLoading(false);
+      }
+    }
+  };
 
   return (
     <div className="h-[100dvh] w-full bg-[#050510] relative overflow-hidden flex items-center justify-center font-sans selection:bg-[#31A8FF]/30">
@@ -423,11 +459,24 @@ function LoginContent() {
                       {signupStep === 3 && (
                         <div className="space-y-3">
                           <div className="grid grid-cols-2 gap-3">
-                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="CEP" value={cep} onChange={e => setCep(formatCEP(e.target.value))} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-2 focus-within:border-[#31A8FF] transition-all">
+                              <input 
+                                type="text" 
+                                placeholder="CEP" 
+                                value={cep} 
+                                onChange={e => handleCepChange(e.target.value)} 
+                                className="bg-transparent w-full text-white text-sm outline-none" 
+                              />
+                              {isCepLoading && <Loader2 className="w-4 h-4 text-[#31A8FF] animate-spin" />}
+                            </div>
                             <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="UF" maxLength={2} value={state} onChange={e => setState(e.target.value.toUpperCase())} className="bg-transparent w-full text-white text-sm outline-none" /></div>
                           </div>
+                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Rua / Logradouro" value={street} onChange={e => setStreet(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                          <div className="grid grid-cols-3 gap-3">
+                            <div className="col-span-2 bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Bairro" value={neighborhood} onChange={e => setNeighborhood(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Nº" value={number} onChange={e => setNumber(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                          </div>
                           <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Cidade" value={city} onChange={e => setCity(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Bairro" value={neighborhood} onChange={e => setNeighborhood(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
                         </div>
                       )}
 
