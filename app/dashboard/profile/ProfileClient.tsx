@@ -141,7 +141,7 @@ export default function ProfileClient() {
              <div className="flex-1 space-y-4">
                 <div className="space-y-1">
                    <div className="flex items-center gap-3 justify-center md:justify-start">
-                      <h1 className="text-2xl font-black text-white uppercase tracking-tighter">{profile?.full_name || 'Agente de Otimização'}</h1>
+                      <h1 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-tight break-words">{profile?.full_name || 'Agente de Otimização'}</h1>
                    </div>
                    <p className="text-white/40 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
                 </div>

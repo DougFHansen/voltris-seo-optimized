@@ -217,7 +217,7 @@ function DashboardContent() {
         <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-center lg:text-left">
           <div className="space-y-1.5 flex-1 min-w-0 flex flex-col items-center lg:items-start w-full">
             <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-3">
-              <h1 className="text-lg xs:text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-black text-white tracking-tighter uppercase italic leading-tight break-words">Centro de <span className="text-[#31A8FF] not-italic">Painel</span></h1>
+              <h1 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-3xl font-black text-white tracking-tighter uppercase italic leading-none break-words">Centro de <span className="text-[#31A8FF] not-italic">Painel</span></h1>
               
               {/* Hardware ID Protection Status Badge */}
                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border backdrop-blur-md transition-all duration-500
