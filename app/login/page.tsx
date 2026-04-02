@@ -38,6 +38,7 @@ function LoginContent() {
   const [street, setStreet] = useState('');
   const [number, setNumber] = useState('');
   const [isCepLoading, setIsCepLoading] = useState(false);
+  const [isCepValid, setIsCepValid] = useState(false);
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -203,16 +204,42 @@ function LoginContent() {
     }
   };
 
-  const handleNextStep = () => {
+  const handleNextStep = async () => {
     if (signupStep === 1) {
       if (!login) return setError("Preencha o Usuário.");
       if (!email) return setError("Preencha o E-mail.");
       if (!validateEmail(email)) return setError("Formato de e-mail inválido.");
       if (!password || password.length < 6) return setError("A senha precisa ter pelo menos 6 dígitos.");
+      
+      // Validação Profissional de Existência e Descartáveis
+      setLoading(true);
+      setError(null);
+      try {
+        const response = await fetch('/api/v1/auth/validate-email', {
+          method: 'POST',
+          body: JSON.stringify({ email: email.trim() }),
+        });
+        const data = await response.json();
+        if (!data.valid) {
+          setError(data.error || "Este e-mail é inválido.");
+          setLoading(false);
+          return;
+        }
+      } catch (err) {
+        setError("Erro crítico de validação de e-mail. Tente novamente.");
+        setLoading(false);
+        return;
+      } finally {
+        setLoading(false);
+      }
     }
+    
     if (signupStep === 2) {
-      if (!fullName) return setError("Preencha o Nome.");
+      if (!fullName) return setError("Preencha o Nome Completo.");
       if (!phone) return setError("Preencha o WhatsApp.");
+      if (!validateBrazilianPhone(phone)) {
+        return setError("Número de WhatsApp inválido ou DDD inexistente.");
+      }
     }
     setError(null);
     setSignupStep(prev => prev + 1);
@@ -221,6 +248,9 @@ function LoginContent() {
   const handleSignUp = async () => {
     if (!cep || !state || !city || !street || !number) {
       return setError("Por favor, preencha o endereço completo.");
+    }
+    if (!isCepValid) {
+      return setError("O CEP informado é inválido. Por favor, utilize um CEP real.");
     }
     setError(null);
     setLoading(true);
@@ -286,6 +316,25 @@ function LoginContent() {
   const formatPhone = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 11 ? n.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3') : v; };
   const formatCEP = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 8 ? n.replace(/(\d{5})(\d{3})/, '$1-$2') : v; };
 
+  const validateBrazilianPhone = (v: string) => {
+    const n = v.replace(/\D/g, '');
+    // Verifica tamanho 11 (DDD + 9 + 8 dígitos)
+    if (n.length !== 11) return false;
+    // O nono dígito (pos 2) deve ser obrigatoriamente 9 para celulares
+    if (n[2] !== '9') return false;
+    // Lista de DDDs válidos no Brasil
+    const validDDDs = [
+      '11','12','13','14','15','16','17','18','19',
+      '21','22','24','27','28','31','32','33','34','35','37','38',
+      '41','42','43','44','45','46','47','48','49',
+      '51','53','54','55','61','62','63','64','65','66','67','68','69',
+      '71','73','74','75','77','79','81','82','83','84','85','86','87','88','89',
+      '91','92','93','94','95','96','97','98','99'
+    ];
+    if (!validDDDs.includes(n.substring(0, 2))) return false;
+    return true;
+  };
+
   const handleCepChange = async (v: string) => {
     const formattedCep = formatCEP(v);
     setCep(formattedCep);
@@ -293,26 +342,32 @@ function LoginContent() {
     const cleanCep = formattedCep.replace('-', '');
     if (cleanCep.length === 8) {
       setIsCepLoading(true);
+      setIsCepValid(false);
       setError(null);
       try {
         const response = await fetch(`https://viacep.com.br/ws/${cleanCep}/json/`);
         const data = await response.json();
         
         if (data.erro) {
-          setError("CEP não encontrado.");
+          setError("Este CEP não existe na base oficial dos Correios.");
           setCity(''); setNeighborhood(''); setState(''); setStreet('');
+          setIsCepValid(false);
         } else {
           setCity(data.localidade || '');
           setNeighborhood(data.bairro || '');
           setState(data.uf || '');
           setStreet(data.logradouro || '');
           setError(null);
+          setIsCepValid(true);
         }
       } catch (err) {
-        setError("Erro ao buscar CEP.");
+        setError("Erro ao validar CEP. Tente novamente.");
+        setIsCepValid(false);
       } finally {
         setIsCepLoading(false);
       }
+    } else {
+      setIsCepValid(false);
     }
   };
 

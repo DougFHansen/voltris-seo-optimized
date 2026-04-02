@@ -55,19 +55,19 @@ export default function NotificationModal() {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">Neural <span className="text-[#31A8FF] not-italic">Sync</span></h2>
+              <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">Ativar <span className="text-[#31A8FF] not-italic">Notificações</span></h2>
               <div className="flex flex-col gap-2">
-                 <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed">
-                   Establish a persistent resonance link for real-time telemetry updates and critical security pings.
+                 <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed px-4">
+                   Estabeleça uma conexão direta para receber atualizações em tempo real e avisos críticos de segurança.
                  </p>
                  <div className="flex items-center justify-center gap-4 pt-2">
                     <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
                        <FiShield className="w-3 h-3 text-[#00FF88]" />
-                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">ENCRYPTED</span>
+                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">CRIPTOGRAFADO</span>
                     </div>
                     <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
                        <FiCpu className="w-3 h-3 text-[#31A8FF]" />
-                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">LOW OVERHEAD</span>
+                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">BAIXO CONSUMO</span>
                     </div>
                  </div>
               </div>
@@ -79,13 +79,13 @@ export default function NotificationModal() {
                 onClick={handleEnable}
               >
                 <FiCheck className="w-5 h-5" />
-                <span>Initialize Link</span>
+                <span>Iniciar Conexão</span>
               </button>
               <button
                 className="w-full py-5 text-white/20 hover:text-white/60 font-black uppercase tracking-[0.3em] text-[10px] transition-all"
                 onClick={handleDismiss}
               >
-                Decline Interaction
+                Agora não
               </button>
             </div>
           </div>
