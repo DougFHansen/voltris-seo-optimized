@@ -155,7 +155,7 @@ export default function TicketsClient() {
              className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-3xl text-xs whitespace-nowrap"
            >
               <FiPlus className="w-4 h-4" />
-              Abrir Sublink
+              Abrir Suporte
            </button>
         </div>
       </div>
@@ -231,55 +231,73 @@ export default function TicketsClient() {
       <AnimatePresence>
         {showCreateForm && (
           <div className="fixed inset-0 z-[300] flex items-center justify-center p-6">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={() => setShowCreateForm(false)} />
-            <motion.div initial={{ scale: 0.9, y: 30 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.9, y: 30 }} className={`relative w-full max-w-2xl p-12 rounded-[4rem] border border-white/10 shadow-3xl ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
-               <button onClick={() => setShowCreateForm(false)} className="absolute top-10 right-10 p-3 rounded-2xl bg-white/5 text-white/40 hover:text-white transition-all"><FiX size={24} /></button>
-                              <div className="flex items-center gap-6 mb-12">
-                 <div className="w-20 h-20 rounded-[2rem] bg-[#8B31FF]/10 border border-[#8B31FF]/20 flex items-center justify-center text-[#8B31FF] shadow-lg shadow-[#8B31FF]/10">
-                   <FiTerminal className="w-10 h-10" />
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }} 
+              className="absolute inset-0 bg-black/95 backdrop-blur-md" 
+              onClick={() => setShowCreateForm(false)} 
+            />
+            <motion.div 
+              initial={{ scale: 0.9, y: 30 }} 
+              animate={{ scale: 1, y: 0 }} 
+              exit={{ scale: 0.9, y: 30 }} 
+              className={`relative w-full max-w-2xl p-8 md:p-12 rounded-[3.5rem] border border-white/10 shadow-3xl overflow-y-auto max-h-[95vh] custom-scrollbar-modern ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}
+            >
+               <button onClick={() => setShowCreateForm(false)} className="absolute top-8 right-8 p-3 rounded-2xl bg-white/5 text-white/40 hover:text-white transition-all z-20"><FiX size={20} /></button>
+               
+               <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-10 text-center md:text-left relative z-10">
+                 <div className="w-16 h-16 md:w-20 md:h-20 rounded-[2rem] bg-[#8B31FF]/10 border border-[#8B31FF]/20 flex items-center justify-center text-[#8B31FF] shadow-lg shadow-[#8B31FF]/10 shrink-0">
+                   <FiTerminal className="w-8 h-8 md:w-10 md:h-10" />
                  </div>
                  <div className="space-y-1">
-                   <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter">Novo <span className="text-[#8B31FF] not-italic">Sublink</span></h3>
-                   <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">Estabelecer interface com a Voltris Tech</p>
+                   <h3 className="text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter">Novo <span className="text-[#8B31FF] not-italic">Suporte</span></h3>
+                   <p className="text-white/40 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] font-mono leading-none">Estabelecer interface com a Voltris Tech</p>
                  </div>
                </div>
-                <form onSubmit={handleCreateTicket} className="space-y-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Assunto da Transmissão</label>
+
+                <form onSubmit={handleCreateTicket} className="space-y-8 relative z-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                      <label className="text-[9px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono ml-4">Assunto da Transmissão</label>
                       <input 
                         type="text" required 
                         value={newTicket.title} onChange={e => setNewTicket({...newTicket, title: e.target.value})}
-                        className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/5" 
-                        placeholder="Defina o espaço do problema..."
+                        className="w-full px-6 py-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 text-xs font-bold uppercase tracking-wider" 
+                        placeholder="Defina o espaço do problema.."
                       />
                     </div>
-                    <div className="space-y-4">
-                      <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Protocolo de Prioridade</label>
-                      <select 
-                        value={newTicket.priority} onChange={e => setNewTicket({...newTicket, priority: e.target.value as any})}
-                        className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white/40 focus:text-white focus:border-[#8B31FF] outline-none transition-all appearance-none uppercase font-black text-[10px] tracking-widest cursor-pointer"
-                      >
-                         <option value="low">Prioridade Padrão</option>
-                         <option value="medium">Prioridade Média</option>
-                         <option value="high">Resposta Urgente Necessária</option>
-                      </select>
+                    <div className="space-y-3">
+                      <label className="text-[9px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono ml-4">Prioridade</label>
+                      <div className="relative group">
+                        <select 
+                          value={newTicket.priority} onChange={e => setNewTicket({...newTicket, priority: e.target.value as any})}
+                          className="w-full px-6 py-5 rounded-2xl bg-white/5 border border-white/10 text-white/60 focus:text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all appearance-none uppercase font-black text-[9px] tracking-widest cursor-pointer"
+                        >
+                           <option value="low" className="bg-[#050510]">PRIORIDADE PADRÃO</option>
+                           <option value="medium" className="bg-[#050510]">PRIORIDADE MÉDIA</option>
+                           <option value="high" className="bg-[#050510]">RESPOSTA URGENTE</option>
+                        </select>
+                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-20 group-hover:opacity-100 transition-opacity">
+                          <FiArrowRight className="w-4 h-4 rotate-90" />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                   <div className="space-y-4">
-                    <label className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono">Carga de Dados (Descrição)</label>
+                   <div className="space-y-3">
+                    <label className="text-[9px] font-black text-[#8B31FF] uppercase tracking-[0.3em] font-mono ml-4">Carga de Dados (Descrição)</label>
                     <textarea 
-                      required rows={6}
+                      required rows={5}
                       value={newTicket.description} onChange={e => setNewTicket({...newTicket, description: e.target.value})}
-                      className="w-full p-6 rounded-3xl bg-black/60 border border-white/5 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/5 resize-none" 
+                      className="w-full p-6 rounded-3xl bg-white/5 border border-white/10 text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 resize-none text-xs font-bold leading-relaxed tracking-wider" 
                       placeholder="Identifique marcadores específicos de falha de hardware ou software..."
                     />
                   </div>
                   <button 
                     type="submit" disabled={isCreating}
-                    className="w-full py-6 rounded-3xl bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] text-white font-black uppercase italic text-xs tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50"
+                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#8B31FF] bg-[length:200%_auto] hover:bg-right text-white font-black uppercase italic text-[11px] tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-500 disabled:opacity-50"
                   >
-                    {isCreating ? 'Transmitindo Dados...' : 'Transmitir Pedido de Sublink'}
+                    {isCreating ? 'Transmitindo Dados...' : 'Transmitir Pedido de Suporte'}
                   </button>
                </form>
             </motion.div>
