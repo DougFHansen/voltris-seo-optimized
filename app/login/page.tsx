@@ -254,10 +254,35 @@ function LoginContent() {
     }
     setError(null);
     setLoading(true);
+
     try {
+      // 1. Bloqueio Profissional de WhatsApp Duplicado
+      const cleanPhone = phone.replace(/\D/g, '');
+      const { data: directCheck } = await supabase
+        .from('profiles')
+        .select('id')
+        .or(`phone.eq.${phone},phone.ilike.%${cleanPhone}%`)
+        .maybeSingle();
+
+      if (directCheck) {
+        setLoading(false);
+        return setError("Este WhatsApp já está em uma conta. Use outro número.");
+      }
+
       const { data: signUpData, error } = await supabase.auth.signUp({
         email, password,
-        options: { data: { full_name: fullName, phone, city, neighborhood, state, cep, street, number, login } },
+        options: { 
+          data: { 
+            full_name: fullName, 
+            phone, 
+            city, 
+            neighborhood, 
+            state, 
+            cep, 
+            address: `${street}, ${number}`,
+            login 
+          } 
+        },
       });
       if (error) throw error;
 
@@ -524,14 +549,68 @@ function LoginContent() {
                               />
                               {isCepLoading && <Loader2 className="w-4 h-4 text-[#31A8FF] animate-spin" />}
                             </div>
-                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="UF" maxLength={2} value={state} onChange={e => setState(e.target.value.toUpperCase())} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                              <input 
+                                type="text" 
+                                placeholder="UF" 
+                                maxLength={2} 
+                                readOnly={isCepValid}
+                                value={state} 
+                                onChange={e => !isCepValid && setState(e.target.value.toUpperCase())} 
+                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              />
+                            </div>
                           </div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Rua / Logradouro" value={street} onChange={e => setStreet(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                            <input 
+                              type="text" 
+                              placeholder="Rua / Logradouro" 
+                              readOnly={isCepValid}
+                              value={street} 
+                              onChange={e => !isCepValid && setStreet(e.target.value)} 
+                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                            />
+                          </div>
                           <div className="grid grid-cols-3 gap-3">
-                            <div className="col-span-2 bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Bairro" value={neighborhood} onChange={e => setNeighborhood(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Nº" value={number} onChange={e => setNumber(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                            <div className="col-span-2 bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                              <input 
+                                type="text" 
+                                placeholder="Bairro" 
+                                readOnly={isCepValid}
+                                value={neighborhood} 
+                                onChange={e => !isCepValid && setNeighborhood(e.target.value)} 
+                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              />
+                            </div>
+                            <div className="bg-[#121218] border border-[#31A8FF]/30 rounded-xl px-4 py-3 focus-within:border-[#31A8FF] transition-all bg-gradient-to-br from-[#31A8FF]/5 to-transparent">
+                              <input 
+                                type="text" 
+                                placeholder="Nº" 
+                                value={number} 
+                                onChange={e => setNumber(e.target.value)} 
+                                className="bg-transparent w-full text-white text-sm outline-none placeholder:text-[#31A8FF]/40 font-bold" 
+                              />
+                            </div>
                           </div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3"><input type="text" placeholder="Cidade" value={city} onChange={e => setCity(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                            <input 
+                              type="text" 
+                              placeholder="Cidade" 
+                              readOnly={isCepValid}
+                              value={city} 
+                              onChange={e => !isCepValid && setCity(e.target.value)} 
+                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                            />
+                          </div>
+                          {isCepValid && (
+                            <button 
+                              type="button"
+                              onClick={() => { setCep(''); setIsCepValid(false); setStreet(''); setNeighborhood(''); setCity(''); setState(''); }}
+                              className="text-[10px] text-[#FF4B6B] font-bold uppercase tracking-widest hover:underline text-center w-full mt-1"
+                            >
+                              Corrigir CEP / Digitar Manualmente
+                            </button>
+                          )}
                         </div>
                       )}
 

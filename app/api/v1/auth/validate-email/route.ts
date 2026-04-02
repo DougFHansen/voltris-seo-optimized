@@ -27,6 +27,12 @@ export async function POST(req: NextRequest) {
 
         // 2. Verificar se o domínio possui registros MX (Mail Exchange)
         // Isso garante que o domínio de fato pode receber e-mails.
+        const commonTLDs = ['com', 'br', 'net', 'org', 'gov', 'me', 'io', 'co', 'app', 'dev', 'edu'];
+        const tld = domain.split('.').pop()?.toLowerCase();
+        if (tld && tld.length < 2) {
+             return NextResponse.json({ valid: false, error: 'O domínio do e-mail é inválido.' });
+        }
+
         try {
             const mxRecords = await dns.resolveMx(domain);
             if (!mxRecords || mxRecords.length === 0) {
@@ -46,6 +52,9 @@ export async function POST(req: NextRequest) {
 
     } catch (error: any) {
         console.error('[EMAIL VALIDATION ERROR]', error);
-        return NextResponse.json({ valid: true }); // Fallback para não bloquear o cadastro em caso de erro na API interna
+        return NextResponse.json({ 
+            valid: false, 
+            error: 'O domínio do e-mail não existe ou está inacessível.' 
+        });
     }
 }
