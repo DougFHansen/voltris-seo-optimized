@@ -141,10 +141,7 @@ export default function ProfileClient() {
              <div className="flex-1 space-y-4">
                 <div className="space-y-1">
                    <div className="flex items-center gap-3 justify-center md:justify-start">
-                      <h1 className="text-4xl font-black text-white italic uppercase tracking-tighter">{profile?.full_name || 'Agente de Otimização'}</h1>
-                      <div className="px-3 py-1 bg-[#8B31FF]/10 border border-[#8B31FF]/20 rounded-full">
-                         <span className="text-[10px] font-black text-[#8B31FF] uppercase tracking-widest">Nó Premium</span>
-                      </div>
+                      <h1 className="text-2xl font-black text-white uppercase tracking-tighter">{profile?.full_name || 'Agente de Otimização'}</h1>
                    </div>
                    <p className="text-white/40 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
                 </div>

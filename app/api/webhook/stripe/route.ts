@@ -30,14 +30,16 @@ export async function POST(req: NextRequest) {
             const billingPeriod = session.metadata?.billing_period || 'month';
             const subscriptionId = session.subscription as string;
 
-            console.log(`[STRIPE WEBHOOK] Checkout completado para ${email} (Ref: ${referenceId})`);
+            const type = session.metadata?.type || 'license';
+
+            console.log(`[STRIPE WEBHOOK] Checkout completado para ${email} (Ref: ${referenceId}, Tipo: ${type})`);
 
             // 1. Atualiza status do pagamento no Supabase
             await supabase.from('payments')
                 .update({ status: 'approved', pagbank_id: session.id })
                 .eq('reference_id', referenceId);
 
-            // 2. Registra a assinatura
+            // 2. Registra a assinatura (apenas se for licença)
             if (subscriptionId) {
                 await supabase.from('subscriptions').upsert({
                     reference_id: referenceId,
@@ -50,17 +52,21 @@ export async function POST(req: NextRequest) {
                 }, { onConflict: 'pagbank_subscription_id' });
             }
 
-            // 3. Chama o RPC para gerar a licença correta
-            const { data, error } = await supabase.rpc('generate_complete_license_v3', {
-                p_payment_id: null,
-                p_user_id: userId,
-                p_email: email,
-                p_plan_type: licenseType,
-                p_billing_period: billingPeriod
-            });
+            // 3. Chama o RPC apenas para licenças
+            if (type === 'license') {
+                const { data, error } = await supabase.rpc('generate_complete_license_v3', {
+                    p_payment_id: null,
+                    p_user_id: userId,
+                    p_email: email,
+                    p_plan_type: licenseType,
+                    p_billing_period: billingPeriod
+                });
 
-            if (error) console.error('[STRIPE WEBHOOK] Erro ao gerar licença:', error);
-            else console.log(`[STRIPE WEBHOOK] ✅ Licença ${billingPeriod} gerada com sucesso.`);
+                if (error) console.error('[STRIPE WEBHOOK] Erro ao gerar licença:', error);
+                else console.log(`[STRIPE WEBHOOK] ✅ Licença ${billingPeriod} gerada com sucesso.`);
+            } else {
+                console.log(`[STRIPE WEBHOOK] ✅ Serviço ${licenseType} registrado como aprovado.`);
+            }
 
             break;
         }

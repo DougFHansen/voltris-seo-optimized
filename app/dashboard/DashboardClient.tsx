@@ -108,6 +108,7 @@ function DashboardContent() {
   const activeTab = searchParams.get('tab') || (searchParams.get('checkout_success') === 'true' ? 'licenses' : 'overview');
 
   const [orders, setOrders] = useState<Order[]>([]);
+  const [payments, setPayments] = useState<any[]>([]);
   const [licenses, setLicenses] = useState<any[]>([]);
   const [installationsCount, setInstallationsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -119,14 +120,16 @@ function DashboardContent() {
     try {
       if (showLoading) setIsLoading(true);
 
-      const [ordersRes, licensesRes, installationsRes] = await Promise.all([
+      const [ordersRes, licensesRes, installationsRes, paymentsRes] = await Promise.all([
         supabase.from('orders').select('*').eq('user_id', user.id).order('created_at', { ascending: false }),
         supabase.from('licenses').select('*').eq('email', user.email).order('created_at', { ascending: false }),
-        supabase.from('installations').select('id', { count: 'exact', head: true }).eq('user_id', user.id)
+        supabase.from('installations').select('id', { count: 'exact', head: true }).eq('user_id', user.id),
+        supabase.from('payments').select('*').eq('user_id', user.id).order('created_at', { ascending: false })
       ]);
 
       if (ordersRes.error) throw ordersRes.error;
       setOrders(ordersRes.data || []);
+      setPayments(paymentsRes.data || []);
       
       if (!licensesRes.error) {
         setLicenses(licensesRes.data || []);
@@ -164,10 +167,14 @@ function DashboardContent() {
     const success = searchParams.get('checkout_success');
     if (success !== 'true' || loading) return;
 
-    toast.success('Pedido confirmado! Processando sua licença...', {
+    const type = searchParams.get('type');
+    const successMsg = type === 'service' ? 'Serviço adquirido com sucesso!' : 'Pedido confirmado! Processando sua licença...';
+    const successIcon = type === 'service' ? '🛠️' : '💎';
+
+    toast.success(successMsg, {
       duration: 6000,
       position: 'top-center',
-      icon: '💎',
+      icon: successIcon,
       style: { 
         background: 'rgba(10, 10, 15, 0.9)', 
         color: '#fff',
@@ -184,7 +191,7 @@ function DashboardContent() {
   }, [searchParams, loading, fetchData]);
 
   const stats = {
-    totalOrders: orders.length,
+    totalOrders: orders.length + payments.length,
     activeLicenses: licenses.filter(l => l.is_active).length,
     computers: installationsCount
   };
@@ -454,36 +461,69 @@ function DashboardContent() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-white/5">
-                        {orders.length > 0 ? (
-                          orders.map((order, idx) => (
-                            <tr key={order.id} className="group hover:bg-white/5 active:bg-white/10 transition-colors">
+                        {/* Mesclagem de Pedidos e Pagamentos */}
+                        {[
+                          ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
+                          ...payments.map(p => {
+                            const isService = ['formatacao', 'otimizacao', 'correcao', 'impressora', 'virus', 'recuperacao'].some(key => p.plan_type?.includes(key));
+                            return { 
+                              ...p, 
+                              display_type: isService ? 'SERVICE' : 'LICENSE', 
+                              display_name: isService ? (p.plan_type?.replace(/_/g, ' ').toUpperCase() || 'SERVIÇO') : `LICENÇA: ${p.plan_type?.toUpperCase()}`, 
+                              display_plan: isService ? 'SERVIÇO PROFISSIONAL' : 'SUPORTE PRIORITÁRIO', 
+                              amount: p.amount 
+                            };
+                          })
+                        ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).length > 0 ? (
+                          [
+                            ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
+                            ...payments.map(p => {
+                              const isService = ['formatacao', 'otimizacao', 'correcao', 'impressora', 'virus', 'recuperacao'].some(key => p.plan_type?.includes(key));
+                              return { 
+                                ...p, 
+                                display_type: isService ? 'SERVICE' : 'LICENSE', 
+                                display_name: isService ? (p.plan_type?.replace(/_/g, ' ').toUpperCase() || 'SERVIÇO') : `LICENÇA: ${p.plan_type?.toUpperCase()}`, 
+                                display_plan: isService ? 'SERVIÇO PROFISSIONAL' : 'SUPORTE PRIORITÁRIO', 
+                                amount: p.amount 
+                              };
+                            })
+                          ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((item, idx) => (
+                            <tr key={item.id + idx} className="group hover:bg-white/5 active:bg-white/10 transition-colors">
                               <td className="py-6 px-2">
                                 <div className="flex flex-col">
-                                  <span className="text-sm font-black text-white uppercase italic tracking-tight">{order.service_name}</span>
-                                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">{order.plan_type || 'STANDARD'}</span>
+                                  <span className="text-sm font-black text-white uppercase italic tracking-tight">{item.display_name}</span>
+                                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">
+                                    {item.display_type === 'LICENSE' ? (
+                                      <span className="text-[#31A8FF]">💎 PRODUTO DIGITAL</span>
+                                    ) : item.display_type === 'SERVICE' ? (
+                                      <span className="text-[#8B31FF]">🛠️ SERVIÇO TÉCNICO</span>
+                                    ) : (
+                                      item.display_plan || 'PERSONALIZADO'
+                                    )}
+                                  </span>
                                 </div>
                               </td>
                               <td className="py-6 px-2 hidden sm:table-cell">
                                 <span className="text-xs font-bold text-white/40 uppercase tracking-widest">
-                                  {new Date(order.created_at).toLocaleDateString('pt-BR')}
+                                  {new Date(item.created_at).toLocaleDateString('pt-BR')}
                                 </span>
                               </td>
                               <td className="py-6 px-2">
-                                <span className="text-xs font-black text-[#31A8FF]">
-                                  R$ {(order.total || order.final_price || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                                <span className="text-xs font-black text-[#00FF88]">
+                                  R$ {(item.amount || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                                 </span>
                               </td>
                               <td className="py-6 px-2">
                                 <div className={`flex items-center gap-2 px-3 py-1 rounded-full border w-fit
-                                  ${order.status === 'completed' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
-                                    order.status === 'cancelled' ? 'bg-red-500/10 border-red-500/20 text-red-400' :
+                                  ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                                    (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-500/10 border-red-500/20 text-red-400' :
                                     'bg-amber-500/10 border-amber-500/20 text-amber-400'}
                                 `}>
-                                  <div className={`w-1 h-1 rounded-full ${order.status === 'completed' ? 'bg-emerald-400' : order.status === 'cancelled' ? 'bg-red-400' : 'bg-amber-400 animate-pulse'}`}></div>
+                                  <div className={`w-1 h-1 rounded-full ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-400' : (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-400' : 'bg-amber-400 animate-pulse'}`}></div>
                                   <span className="text-[10px] font-black uppercase tracking-widest leading-none">
-                                    {order.status === 'completed' ? 'CONCLUÍDO' : 
-                                     order.status === 'cancelled' ? 'CANCELADO' : 
-                                     order.status === 'processing' ? 'EM FILA' : 'PENDENTE'}
+                                    {(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'APROVADO' : 
+                                     (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'CANCELADO' : 
+                                     'PROCESSANDO'}
                                   </span>
                                 </div>
                               </td>
@@ -492,7 +532,7 @@ function DashboardContent() {
                         ) : (
                           <tr>
                             <td colSpan={4} className="py-20 text-center">
-                              <p className="text-white/20 font-black uppercase tracking-[0.3em] text-[10px]">Nenhum pedido encontrado no registro tático.</p>
+                              <p className="text-white/20 font-black uppercase tracking-[0.3em] text-[10px]">Nenhum pedido ou pagamento encontrado.</p>
                             </td>
                           </tr>
                         )}

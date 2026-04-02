@@ -13,9 +13,11 @@ import {
   FiMonitor, FiSettings, FiClock, FiBarChart2, FiDatabase,
   FiPrinter, FiShield, FiGlobe, FiTrendingUp, FiUsers,
   FiPhone, FiMail, FiMapPin, FiCreditCard, FiCloud,
-  FiCheckCircle, FiCpu, FiTool, FiLock
+  FiCheckCircle, FiCpu, FiTool, FiLock, FiShoppingCart
 } from 'react-icons/fi';
 import AnimatedSection from '@/components/AnimatedSection';
+import { useAuth } from '@/app/hooks/useAuth';
+import { toast } from 'react-hot-toast';
 
 
 type ServiceOption = {
@@ -145,6 +147,8 @@ export default function ServicesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const hasScrolled = useRef(false);
   const [isReturnModalOpen, setIsReturnModalOpen] = useState(false);
+  const { user, loading: authLoading } = useAuth();
+  const [isProcessingCheckout, setIsProcessingCheckout] = useState(false);
   const [hasInitialized, setHasInitialized] = useState(false);
   const [initialServiceParam, setInitialServiceParam] = useState<string | null>(null);
   const [shouldScroll, setShouldScroll] = useState(true);
@@ -304,34 +308,35 @@ export default function ServicesPage() {
     },
   ];
 
-  // Check authentication status and restore form data if available
   useEffect(() => {
     const checkAuthAndRestoreForm = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setIsAuthenticated(!!session);
+      if (authLoading) return;
+      setIsAuthenticated(!!user);
 
-      if (session) {
-        const savedFormData = sessionStorage.getItem('serviceFormData');
-        if (savedFormData) {
+      const savedFormData = sessionStorage.getItem('serviceFormData');
+      if (savedFormData && user) {
           try {
             const formData = JSON.parse(savedFormData);
-            setSelectedServices(formData.selectedServices);
-            setSchedulingType(formData.schedulingType);
-            setAppointmentDateTime(formData.appointmentDateTime);
-            setAdditionalInfo(formData.additionalInfo);
-            setFormattingAnswers(formData.formattingAnswers);
-
-            if (validateForm()) {
-              await handleSubmitService();
+            
+            // Se o usuário acabou de logar e tem um serviço selecionado pronto para checkout
+            if (formData.readyForCheckout && formData.selectedServices?.[0]) {
+               sessionStorage.removeItem('serviceFormData'); // Limpa para evitar loop
+               processCheckout(formData.selectedServices[0]);
+            } else {
+              // Apenas restaura os dados se não for checkout imediato
+              setSelectedServices(formData.selectedServices || []);
+              setSchedulingType(formData.schedulingType || null);
+              setAppointmentDateTime(formData.appointmentDateTime || '');
+              setAdditionalInfo(formData.additionalInfo || '');
+              setFormattingAnswers(formData.formattingAnswers || {});
             }
           } catch (error) {
             console.error('Error restoring form data:', error);
           }
-        }
       }
     };
     checkAuthAndRestoreForm();
-  }, [supabase.auth]);
+  }, [user, authLoading]);
 
   // Efeito único para lidar com a inicialização do serviço
   useEffect(() => {
@@ -899,27 +904,64 @@ export default function ServicesPage() {
     return isValid;
   };
 
+  const processCheckout = async (service: ServiceOption) => {
+    if (!user) {
+        // Salva o estado para processar após o login
+        const formData = {
+            selectedServices: [service],
+            schedulingType,
+            appointmentDateTime,
+            additionalInfo,
+            formattingAnswers,
+            readyForCheckout: true
+        };
+        sessionStorage.setItem('serviceFormData', JSON.stringify(formData));
+        toast.error("Para prosseguir com a aquisição, realize o login ou cadastre-se.");
+        router.push(`/login?redirect=/servicos`);
+        return;
+    }
+
+    setIsProcessingCheckout(true);
+    toast.loading(`Iniciando checkout seguro para ${service.title}...`);
+
+    try {
+        const response = await fetch('/api/stripe/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                license_type: service.id,
+                user_id: user.id,
+                customer_email: user.email,
+                customer_name: user.user_metadata?.full_name || 'Cliente Voltris',
+            }),
+        });
+
+        const data = await response.json();
+        if (data.url) {
+            window.location.href = data.url;
+        } else {
+            throw new Error(data.error || 'Erro ao gerar sessão de pagamento');
+        }
+    } catch (error: any) {
+        toast.error(`Falha no checkout: ${error.message}`);
+        console.error('Checkout error:', error);
+    } finally {
+        setIsProcessingCheckout(false);
+        toast.dismiss();
+    }
+  };
+
   const handleSubmitService = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!validateForm()) return;
 
-    let message = "Olá! Gostaria de agendar um serviço na Voltris:\n\n";
-    if (selectedServices.length > 0) {
-      message += "*Serviços Selecionados:*\n" + selectedServices.map(s => `- ${s.title}`).join('\n');
+    const mainService = selectedServices[0];
+    if (!mainService) {
+        toast.error("Selecione um serviço para continuar.");
+        return;
     }
 
-    if (schedulingType === 'now') {
-      message += "\n\n*Prefiro atendimento imediato.*";
-    } else if (schedulingType === 'schedule') {
-      message += `\n\n*Agendamento para:* ${new Date(appointmentDateTime).toLocaleString('pt-BR')}`;
-    }
-
-    if (additionalInfo) {
-      message += `\n\n*Observações:* ${additionalInfo}`;
-    }
-
-    const url = `https://wa.me/5511996716235?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    processCheckout(mainService);
   };
 
   const totalPrice = 0;
@@ -1337,8 +1379,8 @@ export default function ServicesPage() {
                     <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-b from-[#31A8FF]/20 to-transparent blur-3xl rounded-full pointer-events-none"></div>
 
                     <h2 className="text-xl font-bold mb-6 flex items-center gap-3 text-white relative z-10">
-                      <span className="p-2 bg-gradient-to-r from-[#31A8FF]/20 to-[#8B31FF]/20 rounded-xl border border-white/5 text-[#31A8FF]"><FiTrendingUp className="w-5 h-5" /></span>
-                      Solicitação via WhatsApp
+                      <span className="p-2 bg-gradient-to-r from-[#31A8FF]/20 to-[#8B31FF]/20 rounded-xl border border-white/5 text-[#31A8FF]"><FiShoppingCart className="w-5 h-5" /></span>
+                      Finalizar Pedido
                     </h2>
 
                     <div className="space-y-6 relative z-10">
@@ -1411,10 +1453,11 @@ export default function ServicesPage() {
                       <div className="pt-4 border-t border-white/10 space-y-4">
                         <button
                           onClick={handleSubmitService}
-                          className="group w-full py-4 text-center font-bold text-white bg-[#00FF94] text-black rounded-xl hover:bg-[#00CC76] transition-all shadow-[0_0_20px_rgba(0,255,148,0.3)] relative overflow-hidden"
+                          disabled={isProcessingCheckout}
+                          className="group w-full py-4 text-center font-bold text-white bg-white rounded-xl hover:bg-[#F3F4F6] transition-all shadow-[0_20px_50px_rgba(255,255,255,0.1)] relative overflow-hidden disabled:opacity-50"
                         >
                           <span className="relative z-10 flex items-center justify-center gap-2 text-[#050510]">
-                            Solicitar Orçamento <FiPhone className="w-5 h-5" />
+                            {isProcessingCheckout ? 'PROCESSANDO...' : 'CONCLUIR ADQUISIÇÃO'} <FiShoppingCart className="w-5 h-5" />
                           </span>
                         </button>
                       </div>
