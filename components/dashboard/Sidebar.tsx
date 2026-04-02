@@ -137,8 +137,8 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
                   />
                 )}
                 <Icon 
-                  className={`w-5 h-5 relative z-10 transition-all duration-300 ${isActive ? 'scale-110' : ''}`} 
-                  style={{ color: isActive ? tab.color : 'inherit' }}
+                  className={`w-5 h-5 relative z-10 transition-all duration-300 ${isActive ? 'scale-110' : 'opacity-70 group-hover:opacity-100'}`} 
+                  style={{ color: tab.color }}
                 />
                 {(!collapsed || isMobile) && (
                   <span className={`relative z-10 font-bold text-xs uppercase tracking-widest transition-all ${isActive ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'}`} style={{ color: isActive ? tab.color : 'inherit' }}>

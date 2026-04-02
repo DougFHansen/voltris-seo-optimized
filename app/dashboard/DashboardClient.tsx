@@ -284,8 +284,8 @@ function DashboardContent() {
                     boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none'
                   }}>
                     <tab.icon 
-                      className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-colors`} 
-                      style={{ color: activeTab === tab.id ? tab.color : 'rgba(255,255,255,0.2)' }}
+                      className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-colors ${activeTab === tab.id ? '' : 'opacity-60'}`} 
+                      style={{ color: tab.color }}
                     />
                     <span className="inline-block" style={{ color: activeTab === tab.id ? 'black' : 'inherit' }}>{tab.label}</span>
                   </div>
