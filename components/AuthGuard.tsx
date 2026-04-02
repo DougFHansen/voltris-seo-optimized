@@ -10,7 +10,7 @@ interface AuthGuardProps {
 }
 
 export default function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
-  const { user, isAdmin, loading } = useAuth();
+  const { user, isAdmin, profile, loading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
@@ -20,9 +20,11 @@ export default function AuthGuard({ children, requireAdmin = false }: AuthGuardP
       return;
     }
     if (requireAdmin && !isAdmin) {
+      // Wait until profile is fetched before redirecting
+      if (profile === null) return;
       router.push('/dashboard');
     }
-  }, [user, isAdmin, loading, requireAdmin, router]);
+  }, [user, isAdmin, profile, loading, requireAdmin, router]);
 
   // Enquanto carrega o estado inicial de SESSÃO, não bloqueia nada (para evitar flickering) ou aguarda
   // Mas se já temos o usuário, podemos renderizar, mesmo que o perfil ainda esteja em loading

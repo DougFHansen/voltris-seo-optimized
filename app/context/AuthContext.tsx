@@ -67,8 +67,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setAuthState(prev => ({
           ...prev,
           user, // Manter user atualizado
-          isAdmin: profile?.is_admin ?? prev.isAdmin,
-          profile: profile ?? prev.profile,
+          isAdmin: profile?.is_admin ?? false,
+          profile: profile ?? {}, // Retorna objeto vazio se não houver perfil, em vez de null (null significa 'carregando')
           error: null,
         }));
       } catch (profileErr: any) {
@@ -81,7 +81,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         ...prev, 
         user, 
         loading: false,
-        profile: prev.profile || null,
+        profile: prev.profile || {}, // Em caso de erro o perfil também precisa deixar de ser null para avançar
         isAdmin: prev.isAdmin || false 
       }));
     }

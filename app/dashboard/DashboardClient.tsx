@@ -7,7 +7,7 @@ import Link from 'next/link';
 import {
   FiPackage, FiClock, FiCheckCircle, FiRefreshCw, FiPlus,
   FiActivity, FiAlertTriangle, FiSearch, FiCopy, FiExternalLink, FiCpu, FiShield,
-  FiMonitor
+  FiMonitor, FiDownload
 } from 'react-icons/fi';
 
 import type { Order } from '@/types/order';
@@ -289,13 +289,13 @@ function DashboardContent() {
                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
                      <div className="space-y-4">
                         <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit mx-auto lg:mx-0">
-                          <FiActivity className="w-8 h-8 text-[#31A8FF]" />
+                          <FiDownload className="w-8 h-8 text-[#31A8FF]" />
                         </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Sua infraestrutura está <span className="text-[#00FF88] not-italic">Segura</span></h2>
-                        <p className="text-white/40 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Todos os seus serviços estão sendo monitorados pela nossa rede neural em tempo real.</p>
+                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Performance Máxima <span className="text-[#31A8FF] not-italic">Liberada</span></h2>
+                        <p className="text-white/40 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Baixe o Voltris Optimizer agora para aplicar os ajustes de hardware e eliminar o input lag em segundos.</p>
                      </div>
-                     <Link href="/voltrisdashboard" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest text-center">
-                        Acessar Voltris Dashboard
+                     <Link href="/voltrisoptimizer" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest text-center">
+                        Baixar Voltris Optimizer
                      </Link>
                    </div>
                 </div>
