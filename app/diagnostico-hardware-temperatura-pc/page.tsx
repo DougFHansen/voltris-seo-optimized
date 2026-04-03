@@ -18,7 +18,7 @@ export default function DiagnosticoHardwareTemperatura() {
           O superaquecimento é a causa número 1 de perda de performance em jogos (Power Throttling). Se a sua CPU atinge 95°C, o Windows reduz o clock para evitar o derretimento do chip. Isso causa travamentos irremediáveis no FPS.
         </p>
         <p class="mb-6 text-gray-300 leading-relaxed">
-            Monitorar a saúde dos seus componentes (`S.M.A.R.T` de SSD, voltagem da fonte, ciclos de uso) é essencial para garantir a longevidade do investimento.
+            Monitorar a saúde dos seus componentes (<code>S.M.A.R.T</code> de SSD, voltagem da fonte, ciclos de uso) é essencial para garantir a longevidade do investimento.
         </p>
       `
         },
@@ -26,7 +26,7 @@ export default function DiagnosticoHardwareTemperatura() {
             title: "Ferramentas Clássicas (HWMonitor, CrystalDiskInfo)",
             content: `
         <p class="mb-4 text-gray-300">
-            Você pode instalar várias ferramentas isoladas para monitorar seu hardware. O `CrystalDiskInfo` é o padrão para testar a saúde do seu SSD ou HD. O `HWMonitor` é o mais simples para ver picos de voltagem e temperatura.
+            Você pode instalar várias ferramentas isoladas para monitorar seu hardware. O <code>CrystalDiskInfo</code> é o padrão para testar a saúde do seu SSD ou HD. O <code>HWMonitor</code> é o mais simples para ver picos de voltagem e temperatura.
         </p>
       `
         },
@@ -38,7 +38,7 @@ export default function DiagnosticoHardwareTemperatura() {
         </p>
         <ul class="space-y-4 text-slate-300">
             <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Real-time Monitoring:** Veja uso e temperatura da CPU/GPU sem precisar alternar entre janelas.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Hardware Scan:** Verifica a saúde SMART do seu disco em busca de setores defeituosos que causam lentidão.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Hardware Scan:** Verifica a saúde <code>S.M.A.R.T</code> do seu disco em busca de setores defeituosos que causam lentidão.</li>
             <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Error Logs:** Analisa logs do Visualizador de Eventos para encontrar erros de driver antes que eles causem Tela Azul (BSOD).</li>
         </ul>
       `
