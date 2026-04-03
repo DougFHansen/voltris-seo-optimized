@@ -766,6 +766,23 @@ function LoginContent() {
                               />
                             </div>
                           </div>
+
+                          <div className="py-2 flex items-center gap-4">
+                            <div className="h-px flex-1 bg-white/5"></div>
+                            <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">OU</span>
+                            <div className="h-px flex-1 bg-white/5"></div>
+                          </div>
+
+                          <div className="w-full flex justify-center">
+                            <GoogleLoginButton 
+                              onSuccess={() => {}} 
+                              onError={(err) => setError(translateError(err))} 
+                              disabled={loading} 
+                              redirect={redirectUrl} 
+                              label="Cadastrar com o Google"
+                              isSignup={true}
+                            />
+                          </div>
                         </div>
                       )}
                       {signupStep === 2 && (
