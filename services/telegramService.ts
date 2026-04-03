@@ -70,5 +70,49 @@ export const TelegramService = {
     ].join('\n');
 
     return this.sendMessage(message);
+  },
+
+  /**
+   * Notifica acesso a uma página estratégica
+   */
+  async notifyPageView(pageName: string, pageUrl: string) {
+    const timestamp = new Date().toLocaleString('pt-BR');
+    const safePageName = escapeHtml(pageName);
+    const safePageUrl = escapeHtml(pageUrl);
+
+    const message = [
+      `👁 <b>Novo Acesso Detectado!</b>`,
+      ``,
+      `🏙 <b>Página:</b> ${safePageName}`,
+      `🌐 <b>URL:</b> ${safePageUrl}`,
+      `⏰ <b>Data/Hora:</b> ${timestamp}`,
+      ``,
+      `#voptimizer #acesso #leads`
+    ].join('\n');
+
+    return this.sendMessage(message);
+  },
+
+  /**
+   * Notifica clique em botão de compra
+   */
+  async notifyPurchaseClick(planDetails: string, pageUrl: string) {
+    const timestamp = new Date().toLocaleString('pt-BR');
+    const safePlanDetails = escapeHtml(planDetails);
+    const safePageUrl = escapeHtml(pageUrl);
+
+    const message = [
+      `💳 <b>Intenção de Compra!</b>`,
+      ``,
+      `🎟 <b>Detalhes:</b> ${safePlanDetails}`,
+      `🌐 <b>URL:</b> ${safePageUrl}`,
+      `⏰ <b>Data/Hora:</b> ${timestamp}`,
+      ``,
+      `🚨 🔥 <b>USUÁRIO EM CHECKOUT!</b> 🔥 🚨`,
+      ``,
+      `#voptimizer #vendas #checkout #stripe`
+    ].join('\n');
+
+    return this.sendMessage(message);
   }
 };

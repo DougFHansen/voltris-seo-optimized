@@ -8,6 +8,7 @@ import { ShieldCheck, Zap, MessageSquare, CheckCircle2, Lock, Cpu, Server, Chevr
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toast } from 'react-hot-toast';
+import { notifyPageView, notifyPurchaseAttempt } from '@/utils/notifications';
 
 function AdquirirLicencaContent() {
     const router = useRouter();
@@ -27,6 +28,11 @@ function AdquirirLicencaContent() {
         }
     }, [authLoading, user, planFromUrl, hasAttemptedAutoPurchase, isProcessing]);
 
+    // Notificar acesso à página de licenças
+    useEffect(() => {
+        notifyPageView("Página de Licenças (Exterior)");
+    }, []);
+
     const scrollToPurchase = () => {
         const purchaseSection = document.getElementById('purchase-section');
         if (purchaseSection) {
@@ -45,6 +51,9 @@ function AdquirirLicencaContent() {
         }
 
         setIsProcessing(planType);
+
+        // Notificar tentativa de compra no Telegram
+        notifyPurchaseAttempt(planType, period);
 
         try {
             toast.loading("Iniciando checkout seguro com Stripe...");

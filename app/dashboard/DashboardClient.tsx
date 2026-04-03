@@ -19,6 +19,7 @@ import SecurityPage from './SecurityPage';
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import { useDashboard } from '@/app/context/DashboardContext';
+import { notifyPageView } from '@/utils/notifications';
 
 
 // Componente de Card de Estatística Ultra-Moderno
@@ -163,6 +164,13 @@ function DashboardContent() {
     userIdRef.current = user.id;
     fetchData();
   }, [user?.id, loading, fetchData]);
+
+  // Notificar visualização da aba de licenças no Dashboard
+  useEffect(() => {
+    if (activeTab === 'licenses') {
+      notifyPageView("Aba de Licenças (Dashboard Interno)");
+    }
+  }, [activeTab]);
 
   useEffect(() => {
     const success = searchParams.get('checkout_success');
