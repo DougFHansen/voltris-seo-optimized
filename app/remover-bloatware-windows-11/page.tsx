@@ -36,7 +36,7 @@ export default function RemoverBloatwareWindows() {
             Você pode remover apps via PowerShell com privilégios de Administrador. Para remover um app específico:
             <br/><code>Get-AppxPackage *nome-do-app* | Remove-AppxPackage</code>.
             <br/><br/>
-            No entanto, remover componentes como a **Cortana** ou o **Teams** manualmente é um processo que envolve chaves de registro complexas e permissões de sistema (`TrustedInstaller`).
+            No entanto, remover componentes como a **Cortana** ou o **Teams** manualmente é um processo que envolve chaves de registro complexas e permissões de sistema (<code>TrustedInstaller</code>).
         </p>
       `
         },
