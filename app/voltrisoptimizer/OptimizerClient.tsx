@@ -537,15 +537,31 @@ export default function OptimizerClient() {
                             transition={{ duration: 0.8 }}
                             className="max-w-5xl mx-auto"
                         >
-                            <motion.div
-                                initial={{ opacity: 0, y: -20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.2 }}
-                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8"
-                            >
-                                <Brain className="w-3 h-3 text-[#31A8FF] mr-1" />
-                                <span className="text-[10px] sm:text-xs font-bold text-white/70 tracking-widest uppercase">Performance Inteligente com I.A.</span>
-                            </motion.div>
+                            <div className="flex flex-col items-center gap-4 mb-8">
+                                <motion.div
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+                                >
+                                    <Brain className="w-3 h-3 text-[#31A8FF] mr-1" />
+                                    <span className="text-[10px] sm:text-xs font-bold text-white/70 tracking-widest uppercase">Performance Inteligente com I.A.</span>
+                                </motion.div>
+
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
+                                    className="group relative inline-flex items-center gap-2 px-6 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-xl shadow-[0_0_30px_rgba(16,185,129,0.1)] hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all cursor-default"
+                                >
+                                    <div className="relative flex h-2 w-2">
+                                        <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></div>
+                                        <div className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></div>
+                                    </div>
+                                    <span className="text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] italic">Teste Grátis por 15 Dias</span>
+                                    <Sparkles className="w-3 h-3 text-emerald-400 ml-1 group-hover:rotate-12 transition-transform" />
+                                </motion.div>
+                            </div>
 
                             <h1 className="text-5xl md:text-7xl lg:text-9xl font-extrabold tracking-tight mb-8 leading-[0.9] select-none text-center drop-shadow-lg">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]" style={{ letterSpacing: '0.04em' }}>
@@ -579,10 +595,16 @@ export default function OptimizerClient() {
                                             <Download className="w-4 h-4 group-hover:translate-y-[2px] transition-transform duration-300" />
                                             BAIXAR SOFTWARE
                                         </a>
+                                        <div className="mt-2 text-center">
+                                            <span className="text-[10px] sm:text-xs text-slate-500 font-medium flex items-center justify-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                                                <ShieldCheck className="w-3 h-3 text-emerald-500" /> 
+                                                Licença trial de 15 dias inclusa no download
+                                            </span>
+                                        </div>
                                         <a
                                             href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x86)')}
-                                            className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
+                                            className="mt-1 text-[10px] text-slate-600 hover:text-[#31A8FF] transition-colors text-center font-medium block"
                                         >
                                             Para sistemas Windows x86
                                         </a>
