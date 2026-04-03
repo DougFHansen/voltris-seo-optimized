@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/app/hooks/useAuth';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
+import { notifyPageView } from '@/utils/notifications';
 
 // Icons
 import { FaWhatsapp } from 'react-icons/fa';
@@ -107,6 +108,13 @@ function LoginContent() {
       setError(decodeURIComponent(urlError));
     }
   }, [searchParams]);
+
+  // Notificar intenção de cadastro
+  useEffect(() => {
+    if (!isLoginView) {
+      notifyPageView("Página de Cadastro - Início (Intenção)");
+    }
+  }, [isLoginView]);
 
   const linkInstallation = async (userId: string) => {
     if (!installationId) return;
@@ -428,6 +436,9 @@ function LoginContent() {
             ? redirectUrl
             : '/dashboard';
 
+          // Notificar sucesso no Telegram (Formulário Normal)
+          notifyPageView(`Novo Cadastro Realizado: ${email} (Via Formulário)`);
+
           setTimeout(() => {
             window.location.href = dest;
           }, 800);
@@ -711,6 +722,8 @@ function LoginContent() {
                           onError={(err) => setError(translateError(err))} 
                           disabled={loading} 
                           redirect={redirectUrl} 
+                          label={isLoginView ? "Continuar com Google" : "Cadastrar com o Google"}
+                          isSignup={!isLoginView}
                         />
                       </div>
                     </form>

@@ -10,9 +10,11 @@ interface GoogleLoginButtonProps {
     onError?: (error: string) => void;
     disabled?: boolean;
     redirect?: string;
+    label?: string;
+    isSignup?: boolean;
 }
 
-export default function GoogleLoginButton({ onSuccess, onError, disabled, redirect }: GoogleLoginButtonProps) {
+export default function GoogleLoginButton({ onSuccess, onError, disabled, redirect, label = "Continuar com Google", isSignup }: GoogleLoginButtonProps) {
     const [loading, setLoading] = useState(false);
     const supabase = createClient();
 
@@ -20,9 +22,12 @@ export default function GoogleLoginButton({ onSuccess, onError, disabled, redire
         try {
             setLoading(true);
 
+            // Se for cadastro, salvar intenção no sessionStorage 
+            if (isSignup) {
+                sessionStorage.setItem('voltris_signup_intent', 'google');
+            }
+
             // Salvar destino no sessionStorage antes de sair para o OAuth
-            // Isso garante que mesmo se o Supabase redirecionar para a home,
-            // o fallback consegue recuperar o destino correto
             if (redirect) {
                 sessionStorage.setItem('oauth_redirect_after_login', redirect);
             }
@@ -30,7 +35,7 @@ export default function GoogleLoginButton({ onSuccess, onError, disabled, redire
             const { error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
                 options: {
-                   redirectTo: `${window.location.origin}/auth/callback${redirect ? `?next=${encodeURIComponent(redirect)}` : ''}`,
+                   redirectTo: `${window.location.origin}/auth/callback${redirect ? `?next=${encodeURIComponent(redirect)}` : ''}${isSignup ? `${redirect ? '&' : '?'}signup=true` : ''}`,
                 },
             });
 
@@ -57,7 +62,7 @@ export default function GoogleLoginButton({ onSuccess, onError, disabled, redire
             ) : (
                 <FcGoogle className="w-5 h-5 group-hover:scale-110 transition-transform" />
             )}
-            Continuar com Google
+            {label}
         </button>
     );
 }

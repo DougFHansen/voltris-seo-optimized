@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
+import { TelegramService } from '@/services/telegramService';
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -87,6 +88,16 @@ export async function GET(request: NextRequest) {
               }
             } else {
               console.log('✅ [OAuth Callback] Perfil criado manualmente com sucesso');
+              
+              // Notificar Sucesso no Telegram (Novo Cadastro via Google)
+              try {
+                await TelegramService.notifyPageView(
+                  `Novo Cadastro Realizado: ${data.user.email} (Via Google)`, 
+                  `${origin}/login`
+                );
+              } catch (err) {
+                console.error('Erro ao notificar Telegram no callback:', err);
+              }
             }
             
             return NextResponse.redirect(`${origin}/perfil?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
