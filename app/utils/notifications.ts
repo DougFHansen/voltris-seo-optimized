@@ -130,3 +130,144 @@ export async function notifyCustom(title: string, body: string, data?: Record<st
     type: 'general'
   });
 }
+
+// Notificação de visualização de página para Telegram
+export async function notifyPageView(pageName: string, additionalData?: Record<string, any>) {
+  try {
+    const browserInfo = await import('./browserFingerprint').then(m => m.getBrowserNotificationInfo());
+    const locationData = await getUserLocation();
+    
+    const response = await fetch('/api/notifications/event', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        eventType: 'PAGE_VIEW',
+        details: pageName,
+        pageUrl: window.location.href,
+        browserInfo,
+        location: locationData,
+        timestamp: new Date().toISOString(),
+        ...additionalData
+      }),
+    });
+
+    if (response.ok) {
+      console.log('📊 Notificação de página enviada para Telegram');
+      return true;
+    } else {
+      console.error('❌ Erro ao enviar notificação de página:', response.status);
+      return false;
+    }
+  } catch (error) {
+    console.error('❌ Erro ao enviar notificação de página:', error);
+    return false;
+  }
+}
+
+// Notificação de tentativa de compra para Telegram
+export async function notifyPurchaseAttempt(planType: string, period: string, additionalData?: Record<string, any>) {
+  try {
+    const browserInfo = await import('./browserFingerprint').then(m => m.getBrowserNotificationInfo());
+    const locationData = await getUserLocation();
+    
+    const response = await fetch('/api/notifications/event', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        eventType: 'PURCHASE_CLICK',
+        details: `Plano: ${planType} (${period})`,
+        pageUrl: window.location.href,
+        browserInfo,
+        location: locationData,
+        planType,
+        period,
+        timestamp: new Date().toISOString(),
+        ...additionalData
+      }),
+    });
+
+    if (response.ok) {
+      console.log('💳 Notificação de compra enviada para Telegram');
+      return true;
+    } else {
+      console.error('❌ Erro ao enviar notificação de compra:', response.status);
+      return false;
+    }
+  } catch (error) {
+    console.error('❌ Erro ao enviar notificação de compra:', error);
+    return false;
+  }
+}
+
+// Notificação de download para Telegram
+export async function notifyDownload(fileName: string, additionalData?: Record<string, any>) {
+  try {
+    const browserInfo = await import('./browserFingerprint').then(m => m.getBrowserNotificationInfo());
+    const locationData = await getUserLocation();
+    
+    const response = await fetch('/api/notifications/download', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fileName,
+        pageUrl: window.location.href,
+        browserInfo,
+        location: locationData,
+        timestamp: new Date().toISOString(),
+        ...additionalData
+      }),
+    });
+
+    if (response.ok) {
+      console.log('📥 Notificação de download enviada para Telegram');
+      return true;
+    } else {
+      console.error('❌ Erro ao enviar notificação de download:', response.status);
+      return false;
+    }
+  } catch (error) {
+    console.error('❌ Erro ao enviar notificação de download:', error);
+    return false;
+  }
+}
+
+// Função para obter localização do usuário (respeitando privacidade)
+async function getUserLocation(): Promise<{
+  country?: string;
+  region?: string;
+  city?: string;
+  timezone?: string;
+  ip?: string;
+}> {
+  try {
+    // Usar uma API gratuita de geolocalização por IP
+    const response = await fetch('https://ipapi.co/json/');
+    if (response.ok) {
+      const data = await response.json();
+      return {
+        country: data.country_name || 'Desconhecido',
+        region: data.region || 'Desconhecido',
+        city: data.city || 'Desconhecido',
+        timezone: data.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
+        ip: data.ip ? data.ip.replace(/\d+\.\d+\.\d+\./, 'xxx.xxx.xxx.') : 'Desconhecido' // Ofuscar IP parcialmente
+      };
+    }
+  } catch (error) {
+    console.warn('Não foi possível obter localização:', error);
+  }
+
+  // Fallback para informações básicas
+  return {
+    country: 'Desconhecido',
+    region: 'Desconhecido',
+    city: 'Desconhecido',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+    ip: 'Desconhecido'
+  };
+}

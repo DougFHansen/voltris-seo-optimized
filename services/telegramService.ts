@@ -3,6 +3,28 @@
  * Usado para enviar notificações de eventos importantes no site
  */
 
+interface BrowserInfo {
+  browser: string;
+  version: string;
+  engine: string;
+  os: string;
+  deviceType: 'desktop' | 'mobile' | 'tablet';
+  language: string;
+  timezone: string;
+  screenResolution: string;
+  platform: string;
+  isMobile: boolean;
+  isBot: boolean;
+}
+
+interface LocationInfo {
+  country?: string;
+  region?: string;
+  city?: string;
+  timezone?: string;
+  ip?: string;
+}
+
 function escapeHtml(unsafe: string) {
   return unsafe
     .replace(/&/g, "&amp;")
@@ -10,6 +32,33 @@ function escapeHtml(unsafe: string) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+function formatBrowserInfo(browserInfo?: BrowserInfo): string {
+  if (!browserInfo) return '📱 <b>Navegador:</b> Desconhecido';
+  
+  const deviceIcon = browserInfo.isMobile ? '📱' : '🖥️';
+  const botWarning = browserInfo.isBot ? ' 🤖' : '';
+  
+  return [
+    `${deviceIcon} <b>Navegador:</b> ${browserInfo.browser} ${browserInfo.version}${botWarning}`,
+    `⚙️ <b>Engine:</b> ${browserInfo.engine}`,
+    `💻 <b>Sistema:</b> ${browserInfo.os}`,
+    `📏 <b>Tela:</b> ${browserInfo.screenResolution}`,
+    `🌐 <b>Idioma:</b> ${browserInfo.language}`
+  ].join('\n');
+}
+
+function formatLocationInfo(location?: LocationInfo): string {
+  if (!location) return '🌍 <b>Localização:</b> Desconhecida';
+  
+  return [
+    `🌍 <b>País:</b> ${location.country}`,
+    `📍 <b>Região:</b> ${location.region}`,
+    `🏙️ <b>Cidade:</b> ${location.city}`,
+    `🕐 <b>Fuso:</b> ${location.timezone}`,
+    `🔌 <b>IP:</b> ${location.ip}`
+  ].join('\n');
 }
 
 export const TelegramService = {
@@ -54,7 +103,7 @@ export const TelegramService = {
   /**
    * Notifica que um download foi iniciado
    */
-  async notifyDownload(fileName: string, pageUrl: string) {
+  async notifyDownload(fileName: string, pageUrl: string, browserInfo?: BrowserInfo, location?: LocationInfo) {
     const timestamp = new Date().toLocaleString('pt-BR');
     const safeFileName = escapeHtml(fileName);
     const safePageUrl = escapeHtml(pageUrl);
@@ -66,6 +115,12 @@ export const TelegramService = {
       `🌐 <b>Página:</b> ${safePageUrl}`,
       `⏰ <b>Data/Hora:</b> ${timestamp}`,
       ``,
+      `📊 <b>Informações do Dispositivo:</b>`,
+      formatBrowserInfo(browserInfo),
+      ``,
+      `🗺️ <b>Localização:</b>`,
+      formatLocationInfo(location),
+      ``,
       `#voptimizer #download #voltris`
     ].join('\n');
 
@@ -75,7 +130,7 @@ export const TelegramService = {
   /**
    * Notifica acesso a uma página estratégica
    */
-  async notifyPageView(pageName: string, pageUrl: string) {
+  async notifyPageView(pageName: string, pageUrl: string, browserInfo?: BrowserInfo, location?: LocationInfo) {
     const timestamp = new Date().toLocaleString('pt-BR');
     const safePageName = escapeHtml(pageName);
     const safePageUrl = escapeHtml(pageUrl);
@@ -87,6 +142,12 @@ export const TelegramService = {
       `🌐 <b>URL:</b> ${safePageUrl}`,
       `⏰ <b>Data/Hora:</b> ${timestamp}`,
       ``,
+      `📊 <b>Informações do Dispositivo:</b>`,
+      formatBrowserInfo(browserInfo),
+      ``,
+      `🗺️ <b>Localização:</b>`,
+      formatLocationInfo(location),
+      ``,
       `#voptimizer #acesso #leads`
     ].join('\n');
 
@@ -96,7 +157,7 @@ export const TelegramService = {
   /**
    * Notifica clique em botão de compra
    */
-  async notifyPurchaseClick(planDetails: string, pageUrl: string) {
+  async notifyPurchaseClick(planDetails: string, pageUrl: string, browserInfo?: BrowserInfo, location?: LocationInfo) {
     const timestamp = new Date().toLocaleString('pt-BR');
     const safePlanDetails = escapeHtml(planDetails);
     const safePageUrl = escapeHtml(pageUrl);
@@ -107,6 +168,12 @@ export const TelegramService = {
       `🎟 <b>Detalhes:</b> ${safePlanDetails}`,
       `🌐 <b>URL:</b> ${safePageUrl}`,
       `⏰ <b>Data/Hora:</b> ${timestamp}`,
+      ``,
+      `📊 <b>Informações do Dispositivo:</b>`,
+      formatBrowserInfo(browserInfo),
+      ``,
+      `🗺️ <b>Localização:</b>`,
+      formatLocationInfo(location),
       ``,
       `🚨 🔥 <b>USUÁRIO EM CHECKOUT!</b> 🔥 🚨`,
       ``,
