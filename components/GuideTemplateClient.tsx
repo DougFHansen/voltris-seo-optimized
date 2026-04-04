@@ -72,8 +72,8 @@ export interface GuideTemplateProps {
 
 // Calcula o tempo de leitura estimado baseado no conteúdo
 function calcReadingTime(sections: ContentSection[]): number {
-    const totalText = sections.map(s => s.content + (s.subsections?.map(sub => sub.content).join(' ') || '')).join(' ');
-    const wordCount = totalText.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
+    const totalText = sections.map(s => (s.content || '') + (s.subsections?.map(sub => sub.content || '').join(' ') || '')).join(' ');
+    const wordCount = (totalText || '').replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length;
     return Math.max(3, Math.ceil(wordCount / 200));
 }
 
