@@ -161,10 +161,10 @@ export function GuideTemplateClient({
     "step": contentSections.map((section, idx) => ({
       "@type": "HowToStep",
       "url": `https://voltris.com.br/guias/${title.toLowerCase().replace(/\s+/g, '-')}/#section-${idx}`,
-      "name": section.title,
+      "name": section.title || '',
       "itemListElement": [{
         "@type": "HowToDirection",
-        "text": section.content.replace(/<[^>]*>/g, '').substring(0, 500)
+        "text": (section.content || '').replace(/<[^>]*>/g, '').substring(0, 500)
       }]
     }))
   };
@@ -452,7 +452,7 @@ export function GuideTemplateClient({
 
                                         <div
                                             className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#31A8FF] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
-                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
+                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content || '') }}
                                         />
 
                                         {section.subsections && (
@@ -465,7 +465,7 @@ export function GuideTemplateClient({
                                                         </h3>
                                                         <div
                                                             className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
-                                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(subsection.content) }}
+                                                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(subsection.content || '') }}
                                                         />
                                                     </div>
                                                 ))}
@@ -502,7 +502,7 @@ export function GuideTemplateClient({
                                             </h2>
                                             <div
                                                 className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#8B31FF] prose-strong:text-white"
-                                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
+                                                dangerouslySetInnerHTML={{ __html: section.content ? DOMPurify.sanitize(section.content) : '' }}
                                             />
                                         </motion.div>
                                     ))}
@@ -532,7 +532,7 @@ export function GuideTemplateClient({
                                             </h2>
                                             <div
                                                 className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white"
-                                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
+                                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content || '') }}
                                             />
                                         </motion.div>
                                     ))}
