@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: "Suporte Técnico Remoto Especializado em Windows | VOLTRIS",
-  description: "Suporte técnico remoto especializado em Windows, formatação, otimização e recuperação de dados. Atendimento 100% online e seguro em todo Brasil.",
+  description: "PC LENTO? Resolvemos AGORA! Formatação, otimização e suporte técnico 100% online. Especialistas em Windows com atendimento imediato em todo Brasil.",
   keywords: [
     "suporte técnico remoto",
     "manutenção de computador",

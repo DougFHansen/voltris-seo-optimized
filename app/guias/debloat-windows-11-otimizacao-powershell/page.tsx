@@ -3,15 +3,15 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'debloat-windows-11-otimizacao-powershell',
-    title: "Guia Definitivo de Debloat Windows 11: Remova Bloatware e Zere Processos (2026)",
-    description: "Seu Windows 11 consome 4GB de RAM parado? Aprenda a remover apps inúteis (Candy Crush, Xbox, Clima) com PowerShell e reduza o uso de CPU em 30%.",
+    title: "Windows 11 LENTO? Libere 2GB RAM AGORA! (PowerShell 2026)",
+    description: "PC consumindo 4GB+ RAM sem motivo? Remova Candy Crush, Xbox e apps inúteis em 5 minutos. Ganhe ATÉ 30% performance + estabilidade para jogos.",
     category: 'otimizacao',
     difficulty: 'Avançado',
     time: '45 min'
 };
 
-const title = "Guia Definitivo de Debloat Windows 11: Remova Bloatware e Zere Processos (2026)";
-const description = "Seu Windows 11 consome 4GB de RAM parado? Aprenda a remover apps inúteis (Candy Crush, Xbox, Clima) com PowerShell e reduza o uso de CPU em 30%.";
+const title = "Windows 11 LENTO? Libere 2GB RAM AGORA! (PowerShell 2026)";
+const description = "PC consumindo 4GB+ RAM sem motivo? Remova Candy Crush, Xbox e apps inúteis em 5 minutos. Ganhe ATÉ 30% performance + estabilidade para jogos.";
 const keywords = [
     'debloat windows 11 powershell script 2026',
     'como aumetar fps removendo processos windows',

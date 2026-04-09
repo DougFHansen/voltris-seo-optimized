@@ -3,15 +3,15 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'valorant-reduzir-input-lag-fps-boost-config',
-    title: "Valorant (2026): Guia FPS Boost e Input Lag Zero",
-    description: "Otimize o Valorant para rodar liso. Configurações de Nvidia Reflex, Windows, prioridade de CPU e como resolver quedas de FPS.",
+    title: "Valorant: CHEGUE AO RADIANTE! (0ms Input Lag 2026)",
+    description: "Quer subir de elo RAPIDAMENTE? Configurações PRO para 240 FPS + input lag ZERO. Atire primeiro e ganhe mais duelos com otimização extrema!",
     category: 'otimizacao',
     difficulty: 'Intermediário',
     time: '15 min'
 };
 
-const title = "Valorant Radiante: Otimização Extrema";
-const description = "No Valorant, FPS alto reduz o input lag mesmo se seu monitor for 60Hz. Aprenda a tirar todo o peso do Windows para focar 100% da CPU no Vanguard e no jogo.";
+const title = "Valorant: CHEGUE AO RADIANTE! (0ms Input Lag 2026)";
+const description = "Quer subir de elo RAPIDAMENTE? Configurações PRO para 240 FPS + input lag ZERO. Atire primeiro e ganhe mais duelos com otimização extrema!";
 
 const keywords = [
     'valorant fps boost pack low end pc',

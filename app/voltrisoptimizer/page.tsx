@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import OptimizerClient from './OptimizerClient';
+import ReviewSchema, { voltrisOptimizerReviews } from '@/components/ReviewSchema';
 
 export const metadata: Metadata = {
   title: 'Voltris Optimizer | Otimizador de PC para Jogos e Empresas (Grátis)',
@@ -123,5 +124,17 @@ export const metadata: Metadata = {
 };
 
 export default function OptimizerPage() {
-  return <OptimizerClient />;
+  return (
+    <>
+      <ReviewSchema 
+        productName="Voltris Optimizer"
+        description="Software brasileiro de otimização de PC com controle remoto via web. Aumenta FPS em até 40% e elimina lag do Windows."
+        brand="VOLTRIS"
+        aggregateRating={4.8}
+        reviewCount={1247}
+        reviews={voltrisOptimizerReviews}
+      />
+      <OptimizerClient />
+    </>
+  );
 }

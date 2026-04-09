@@ -3,15 +3,15 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'overwatch-2-otimizacao-fps-input-lag-reduce-buffering',
-    title: "Overwatch 2 (2026): Otimização Competitiva (600 FPS)",
-    description: "Guia definitivo para Overwatch 2. Configurações de Render Scale, Reduce Buffering, Nvidia Reflex e como reduzir o Input Lag ao mínimo absoluto.",
+    title: "Overwatch 2: ALCANCE GRANDMASTER! (Config Pro 2026)",
+    description: "Quer subir de elo RÁPIDO? Configurações EXATAS dos pros da OWL para 600 FPS + 0ms input lag. Veja inimigos antes deles te verem!",
     category: 'otimizacao',
     difficulty: 'Intermediário',
     time: '15 min'
 };
 
-const title = "Overwatch 2 Pro Guide: FPS e Visibilidade";
-const description = "Overwatch é um jogo caótico. Para subir de elo (Grandmaster), você precisa ver o que está acontecendo e reagir rápido. Aprenda os segredos gráficos que os profissionais da OWL usam.";
+const title = "Overwatch 2: ALCANCE GRANDMASTER! (Config Pro 2026)";
+const description = "Quer subir de elo RÁPIDO? Configurações EXATAS dos pros da OWL para 600 FPS + 0ms input lag. Veja inimigos antes deles te verem!";
 
 const keywords = [
     'overwatch 2 reduce buffering on or off',

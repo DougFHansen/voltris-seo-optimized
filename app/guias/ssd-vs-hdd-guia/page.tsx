@@ -1,17 +1,18 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import FAQSchema, { ssdFAQs } from '@/components/FAQSchema';
 
 export const guideMetadata = {
     id: 'ssd-vs-hdd-guia',
-    title: "SSD vs HDD vs NVMe: Guia Definitivo e Comparativo Completo (2026)",
-    description: "Qual a diferença real entre SSD SATA, NVMe M.2 e HD mecânico? Benchmarks reais, análise de custo-benefício e quando vale a pena fazer o upgrade. Guia técnico completo para 2026.",
+    title: "SSD vs HDD vs NVMe: Qual Vale a Pena em 2026? (Testes Reais)",
+    description: "Ganhe ATÉ 10x VELOCIDADE no seu PC! Comparamos SSD SATA, NVMe M.2 e HD com benchmarks reais. Descubra qual upgrade dá o melhor custo-benefício para jogos e trabalho.",
     category: 'hardware',
     difficulty: 'Iniciante',
     time: '20 min'
 };
 
-const title = "SSD vs HDD vs NVMe: Guia Definitivo e Comparativo Completo (2026)";
-const description = "Confuso entre SSD SATA, NVMe M.2 e HD mecânico? Entenda as diferenças técnicas, veja benchmarks reais, saiba qual escolher para jogos, trabalho e servidor, e descubra se vale a pena fazer o upgrade agora.";
+const title = "SSD vs HDD vs NVMe: Qual Vale a Pena em 2026? (Testes Reais)";
+const description = "Ganhe ATÉ 10x VELOCIDADE no seu PC! Comparamos SSD SATA, NVMe M.2 e HD com benchmarks reais. Descubra qual upgrade dá o melhor custo-benefício para jogos e trabalho.";
 const keywords = [
     'ssd vs hdd diferenca completa 2026',
     'nvme m2 vs ssd sata qual mais rapido',
@@ -266,19 +267,22 @@ export default function SSDvsHDDGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="20 min"
-            difficultyLevel="Iniciante"
-            lastUpdated="Março 2026"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            relatedGuides={relatedGuides}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            keyPoints={keyPoints}
-        />
+        <>
+            <FAQSchema faqs={ssdFAQs} />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="20 min"
+                difficultyLevel="Iniciante"
+                lastUpdated="Março 2026"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                relatedGuides={relatedGuides}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                keyPoints={keyPoints}
+            />
+        </>
     );
 }

@@ -1,17 +1,18 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import FAQSchema, { dnsFAQs } from '@/components/FAQSchema';
 
 export const guideMetadata = {
     id: 'melhor-dns-jogos-2026',
-    title: "Melhor DNS para Jogos em 2026: Cloudflare vs Google vs ISP",
-    description: "Reduza o tempo de resolução e melhore a estabilidade da conexão. Testamos Cloudflare (1.1.1.1), Google (8.8.8.8) e OpenDNS para descobrir qual oferece menor latência e maior segurança.",
+    title: "DNS para Jogos: REDUZA PING AGORA! (Teste 2026)",
+    description: "Cansado de desconectar do LoL/Valorant? Descubra qual DNS (Cloudflare vs Google) realmente reduz lag e evita quedas. Configuração em 2 minutos para jogos online!",
     category: 'rede-seguranca',
     difficulty: 'Iniciante',
     time: '15 min'
 };
 
-const title = "Qual o Melhor DNS para Jogos? Guia Comparativo e Configuração (2026)";
-const description = "DNS não é mágico, mas um servidor ruim pode te desconectar do LoL ou Valorant. Aprenda a escolher e configurar o DNS mais rápido para sua região.";
+const title = "DNS para Jogos: REDUZA PING AGORA! (Teste 2026)";
+const description = "Cansado de desconectar do LoL/Valorant? Descubra qual DNS (Cloudflare vs Google) realmente reduz lag e evita quedas. Configuração em 2 minutos para jogos online!";
 
 const keywords = [
     'melhor dns para jogos 2026 brasil',
@@ -180,19 +181,22 @@ export default function DNSGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Iniciante"
-            contentSections={contentSections}
-            advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
-            summaryTable={summaryTable}
-            relatedGuides={relatedGuides}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-        />
+        <>
+            <FAQSchema faqs={dnsFAQs} />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="15 min"
+                difficultyLevel="Iniciante"
+                contentSections={contentSections}
+                advancedContentSections={advancedContentSections}
+                additionalContentSections={additionalContentSections}
+                summaryTable={summaryTable}
+                relatedGuides={relatedGuides}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+            />
+        </>
     );
 }
