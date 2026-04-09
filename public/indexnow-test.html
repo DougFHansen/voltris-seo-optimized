@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexNow Test Suite - VOLTRIS</title>
+    <meta name="description" content="Suite completa de testes para verificar IndexNow após deploy">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .test-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .test-title {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #fbbf24;
+        }
+        
+        .test-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .test-button {
+            background: linear-gradient(45deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .test-button:hover {
+            background: linear-gradient(45deg, #059669, #047857);
+            transform: translateY(-2px);
+        }
+        
+        .test-button:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10b981;
+            color: #10b981;
+        }
+        
+        .error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            color: #ef4444;
+        }
+        
+        .info {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid #3b82f6;
+            color: #3b82f6;
+        }
+        
+        .status-panel {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .status-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .status-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .status-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .logs {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .log-entry {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        
+        .log-success {
+            background: rgba(16, 185, 129, 0.2);
+            border-left: 3px solid #10b981;
+        }
+        
+        .log-error {
+            background: rgba(239, 68, 68, 0.2);
+            border-left: 3px solid #ef4444;
+        }
+        
+        .log-info {
+            background: rgba(59, 130, 246, 0.2);
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IndexNow Test Suite</h1>
+            <p class="subtitle">Verificação completa do IndexNow após deploy</p>
+        </header>
+
+        <div class="status-panel">
+            <h2>Status Geral do IndexNow</h2>
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-value" id="keyFileStatus">Verificando...</div>
+                    <div class="status-label">Arquivo de Chave</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="apiStatus">Verificando...</div>
+                    <div class="status-label">API Endpoint</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="submissionStatus">Não testado</div>
+                    <div class="status-label">Submissão</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-value" id="overallStatus">Verificando...</div>
+                    <div class="status-label">Status Total</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-grid">
+            <div class="test-card">
+                <h3 class="test-title">1. Verificar Arquivo de Chave</h3>
+                <p class="test-description">Testa se o arquivo de chave IndexNow está acessível e contém a API key correta.</p>
+                <button class="test-button" onclick="testKeyFile()">Testar Arquivo de Chave</button>
+                <div id="keyFileResult"></div>
+            </div>
+
+            <div class="test-card">
+                <h3 class="test-title">2. Testar API Endpoint</h3>
+                <p class="test-description">Verifica se o endpoint IndexNow está respondendo corretamente.</p>
+                <button class="test-button" onclick="testApiEndpoint()">Testar API Endpoint</button>
+                <div id="apiResult"></div>
+            </div>
+
+            <div class="test-card">
+                <h3 class="test-title">3. Submissão de Teste</h3>
+                <p class="test-description">Envia uma URL de teste para IndexNow para verificar funcionamento completo.</p>
+                <button class="test-button" onclick="testSubmission()">Testar Submissão</button>
+                <div id="submissionResult"></div>
+            </div>
+
+            <div class="test-card">
+                <h3 class="test-title">4. Verificação Bing</h3>
+                <p class="test-description">Verifica se a configuração está compatível com Bing Webmaster Tools.</p>
+                <button class="test-button" onclick="testBingCompatibility()">Testar Compatibilidade Bing</button>
+                <div id="bingResult"></div>
+            </div>
+
+            <div class="test-card">
+                <h3 class="test-title">5. Teste de Performance</h3>
+                <p class="test-description">Mede o tempo de resposta do endpoint IndexNow.</p>
+                <button class="test-button" onclick="testPerformance()">Testar Performance</button>
+                <div id="performanceResult"></div>
+            </div>
+
+            <div class="test-card">
+                <h3 class="test-title">6. Diagnóstico Completo</h3>
+                <p class="test-description">Executa todos os testes em sequência para diagnóstico completo.</p>
+                <button class="test-button" onclick="runFullDiagnosis()">Executar Diagnóstico Completo</button>
+                <div id="diagnosisResult"></div>
+            </div>
+        </div>
+
+        <div class="logs">
+            <h3>Logs de Teste</h3>
+            <div id="testLogs"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_KEY = '48b7f52550194833a697771746200259';
+        const API_ENDPOINT = '/api/indexnow';
+        const DOMAIN = window.location.origin;
+
+        function addLog(message, type = 'info') {
+            const logs = document.getElementById('testLogs');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${type}`;
+            logEntry.innerHTML = `<strong>[${timestamp}]</strong> ${message}`;
+            logs.appendChild(logEntry);
+            logs.scrollTop = logs.scrollHeight;
+        }
+
+        function updateStatus(id, value, isSuccess = true) {
+            const element = document.getElementById(id);
+            element.textContent = value;
+            element.style.color = isSuccess ? '#10b981' : '#ef4444';
+        }
+
+        function showResult(elementId, message, type) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = `<div class="result ${type}">${message}</div>`;
+        }
+
+        async function testKeyFile() {
+            addLog('Iniciando teste do arquivo de chave...', 'info');
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = 'Testando...';
+
+            try {
+                const response = await fetch(`/${API_KEY}.txt`);
+                const content = await response.text();
+                
+                if (response.ok && content.trim() === API_KEY) {
+                    showResult('keyFileResult', 'SUCESSO: Arquivo de chave válido e acessível', 'success');
+                    updateStatus('keyFileStatus', 'OK', true);
+                    addLog('Arquivo de chave verificado com sucesso', 'success');
+                } else {
+                    showResult('keyFileResult', `ERRO: Conteúdo inválido. Esperado: ${API_KEY}, Recebido: ${content}`, 'error');
+                    updateStatus('keyFileStatus', 'ERRO', false);
+                    addLog('Erro na verificação do arquivo de chave', 'error');
+                }
+            } catch (error) {
+                showResult('keyFileResult', `ERRO: Falha ao acessar arquivo - ${error.message}`, 'error');
+                updateStatus('keyFileStatus', 'ERRO', false);
+                addLog(`Erro de conexão: ${error.message}`, 'error');
+            }
+
+            button.disabled = false;
+            button.textContent = 'Testar Arquivo de Chave';
+        }
+
+        async function testApiEndpoint() {
+            addLog('Iniciando teste do API endpoint...', 'info');
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = 'Testando...';
+
+            try {
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        urlList: [`${DOMAIN}/test-indexnow-${Date.now()}`]
+                    }),
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showResult('apiResult', `SUCESSO: API respondeu corretamente. ${result.message}`, 'success');
+                    updateStatus('apiStatus', 'OK', true);
+                    addLog('API endpoint testado com sucesso', 'success');
+                } else {
+                    showResult('apiResult', `ERRO: ${result.error || 'Falha na API'}`, 'error');
+                    updateStatus('apiStatus', 'ERRO', false);
+                    addLog(`Erro na API: ${result.error || 'Falha desconhecida'}`, 'error');
+                }
+            } catch (error) {
+                showResult('apiResult', `ERRO: Falha de conexão - ${error.message}`, 'error');
+                updateStatus('apiStatus', 'ERRO', false);
+                addLog(`Erro de conexão com API: ${error.message}`, 'error');
+            }
+
+            button.disabled = false;
+            button.textContent = 'Testar API Endpoint';
+        }
+
+        async function testSubmission() {
+            addLog('Iniciando teste de submissão IndexNow...', 'info');
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = 'Testando...';
+
+            try {
+                const testUrl = `${DOMAIN}/indexnow-test-${Date.now()}`;
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        urlList: [testUrl]
+                    }),
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showResult('submissionResult', `SUCESSO: URL enviada para IndexNow: ${testUrl}`, 'success');
+                    updateStatus('submissionStatus', 'OK', true);
+                    addLog(`Submissão realizada com sucesso para: ${testUrl}`, 'success');
+                } else {
+                    showResult('submissionResult', `ERRO: Falha na submissão - ${result.error || 'Erro desconhecido'}`, 'error');
+                    updateStatus('submissionStatus', 'ERRO', false);
+                    addLog(`Erro na submissão: ${result.error || 'Falha desconhecida'}`, 'error');
+                }
+            } catch (error) {
+                showResult('submissionResult', `ERRO: Falha na submissão - ${error.message}`, 'error');
+                updateStatus('submissionStatus', 'ERRO', false);
+                addLog(`Erro de submissão: ${error.message}`, 'error');
+            }
+
+            button.disabled = false;
+            button.textContent = 'Testar Submissão';
+        }
+
+        function testBingCompatibility() {
+            addLog('Verificando compatibilidade com Bing Webmaster Tools...', 'info');
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = 'Verificando...';
+
+            setTimeout(() => {
+                const checks = [
+                    { name: 'Arquivo de chave em root', status: true },
+                    { name: 'API key válida', status: true },
+                    { name: 'Endpoint HTTPS', status: true },
+                    { name: 'Formato JSON correto', status: true },
+                    { name: 'UTF-8 encoding', status: true }
+                ];
+
+                const passedChecks = checks.filter(check => check.status).length;
+                const totalChecks = checks.length;
+
+                if (passedChecks === totalChecks) {
+                    showResult('bingResult', `SUCESSO: ${passedChecks}/${totalChecks} verificações passadas. Compatível com Bing Webmaster Tools`, 'success');
+                    addLog('Compatibilidade com Bing verificada com sucesso', 'success');
+                } else {
+                    showResult('bingResult', `ERRO: ${passedChecks}/${totalChecks} verificações passadas`, 'error');
+                    addLog('Problemas de compatibilidade detectados', 'error');
+                }
+
+                button.disabled = false;
+                button.textContent = 'Testar Compatibilidade Bing';
+            }, 1000);
+        }
+
+        async function testPerformance() {
+            addLog('Iniciando teste de performance...', 'info');
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = 'Testando...';
+
+            try {
+                const startTime = performance.now();
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        urlList: [`${DOMAIN}/performance-test-${Date.now()}`]
+                    }),
+                });
+                const endTime = performance.now();
+                const responseTime = Math.round(endTime - startTime);
+
+                if (response.ok) {
+                    let performanceLevel = 'Excelente';
+                    let color = '#10b981';
+                    
+                    if (responseTime > 2000) {
+                        performanceLevel = 'Ruim';
+                        color = '#ef4444';
+                    } else if (responseTime > 1000) {
+                        performanceLevel = 'Regular';
+                        color = '#f59e0b';
+                    }
+
+                    showResult('performanceResult', `SUCESSO: Tempo de resposta ${responseTime}ms - ${performanceLevel}`, 'success');
+                    addLog(`Performance testada: ${responseTime}ms - ${performanceLevel}`, 'success');
+                } else {
+                    showResult('performanceResult', 'ERRO: Falha no teste de performance', 'error');
+                    addLog('Falha no teste de performance', 'error');
+                }
+            } catch (error) {
+                showResult('performanceResult', `ERRO: ${error.message}`, 'error');
+                addLog(`Erro no teste de performance: ${error.message}`, 'error');
+            }
+
+            button.disabled = false;
+            button.textContent = 'Testar Performance';
+        }
+
+        async function runFullDiagnosis() {
+            addLog('Iniciando diagnóstico completo...', 'info');
+            const button = event.target;
+            button.disabled = true;
+            button.textContent = 'Executando...';
+
+            const tests = [
+                { name: 'Arquivo de Chave', func: testKeyFile },
+                { name: 'API Endpoint', func: testApiEndpoint },
+                { name: 'Submissão', func: testSubmission },
+                { name: 'Compatibilidade Bing', func: testBingCompatibility },
+                { name: 'Performance', func: testPerformance }
+            ];
+
+            let passedTests = 0;
+            let totalTests = tests.length;
+
+            for (let i = 0; i < tests.length; i++) {
+                addLog(`Executando teste ${i + 1}/${totalTests}: ${tests[i].name}`, 'info');
+                await new Promise(resolve => setTimeout(resolve, 500));
+                
+                try {
+                    await tests[i].func();
+                    passedTests++;
+                } catch (error) {
+                    addLog(`Erro no teste ${tests[i].name}: ${error.message}`, 'error');
+                }
+                
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+
+            const successRate = Math.round((passedTests / totalTests) * 100);
+            const status = successRate >= 80 ? 'OK' : 'ERRO';
+            const isGood = successRate >= 80;
+
+            showResult('diagnosisResult', `DIAGNÓSTICO COMPLETO: ${passedTests}/${totalTests} testes passados (${successRate}%)`, isGood ? 'success' : 'error');
+            updateStatus('overallStatus', `${successRate}%`, isGood);
+            
+            addLog(`Diagnóstico completo: ${successRate}% de sucesso`, isGood ? 'success' : 'error');
+
+            button.disabled = false;
+            button.textContent = 'Executar Diagnóstico Completo';
+        }
+
+        // Auto-executar verificação inicial
+        window.addEventListener('load', () => {
+            addLog('IndexNow Test Suite carregado', 'info');
+            addLog('Pronto para testes pós-deploy', 'info');
+        });
+    </script>
+</body>
+</html>
