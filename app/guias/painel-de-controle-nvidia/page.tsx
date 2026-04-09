@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import JsonLdGuide from '@/components/JsonLdGuide';
 
 export const guideMetadata = {
   id: 'painel-de-controle-nvidia',
@@ -34,6 +35,14 @@ export default function PainelControleNVIDIAGuide() {
         { label: "Nível de Dificuldade", value: "Intermediário" },
         { label: "Tempo Estimado", value: "20 minutos" },
         { label: "Impacto no FPS", value: "+15-25% de ganho" }
+    ];
+
+    const steps = [
+        { name: "Abrir Painel NVIDIA", text: "Clique com o botão direito na área de trabalho e selecione 'Painel de Controle NVIDIA' ou pesquise no menu Iniciar." },
+        { name: "Configurar Modo de Energia", text: "Vá para 'Gerenciamento de Configurações 3D' e configure 'Modo de Energia' para 'Prefer Máximo Desempenho'." },
+        { name: "Ajustar Configurações de Jogos", text: "Configure 'Monitor Tecnológico', 'Latência Baixa' e 'Taxa de Quadros' para máximo desempenho." },
+        { name: "Otimizar Configurações Globais", text: "Ajuste 'Shader Cache', 'Pré-renderização de Quadros' e outras configurações globais." },
+        { name: "Aplicar e Testar", text: "Clique em 'Aplicar' e teste os jogos para verificar o ganho de FPS." }
     ];
 
     const contentSections = [
@@ -216,17 +225,30 @@ export default function PainelControleNVIDIAGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="20 min"
-            difficultyLevel="Intermediário"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
+        <>
+            <JsonLdGuide
+                title={title}
+                description={description}
+                url="https://voltris.com.br/guias/painel-de-controle-nvidia"
+                image="https://voltris.com.br/logo.png"
+                estimatedTime="20"
+                difficulty="Intermediário"
+                category="Configuração NVIDIA"
+                steps={steps}
+                faqItems={faqItems}
+            />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="20 min"
+                difficultyLevel="Intermediário"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                relatedGuides={relatedGuides}
+            />
+        </>
     );
 }

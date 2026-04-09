@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import JsonLdGuide from '@/components/JsonLdGuide';
 
 export const guideMetadata = {
   id: 'conectar-impressora-sem-fio-windows',
@@ -33,6 +34,14 @@ export default function ConectarImpressoraSemFioWindowsGuide() {
         { label: "Nível de Dificuldade", value: "Iniciante" },
         { label: "Tempo Estimado", value: "8 minutos" },
         { label: "Suporte Principal", value: "Wi-Fi, USB, Ethernet" }
+    ];
+
+    const steps = [
+        { name: "Verificar Compatibilidade", text: "Verifique se sua impressora suporta conexão Wi-Fi e se é compatível com Windows 10/11." },
+        { name: "Preparar a Impressora", text: "Ligue a impressora, ative o Wi-Fi e coloque-a em modo de pareamento." },
+        { name: "Conectar via Wi-Fi Direct", text: "Use o método Wi-Fi Direct para conexão direta sem roteador." },
+        { name: "Configurar no Windows", text: "Adicione a impressora através do Painel de Controle do Windows." },
+        { name: "Testar e Validar", text: "Imprima uma página de teste para confirmar que a conexão está funcionando." }
     ];
 
     const contentSections = [
@@ -306,17 +315,30 @@ export default function ConectarImpressoraSemFioWindowsGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="8 min"
-            difficultyLevel="Iniciante"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
+        <>
+            <JsonLdGuide
+                title={title}
+                description={description}
+                url="https://voltris.com.br/guias/conectar-impressora-sem-fio-windows"
+                image="https://voltris.com.br/logo.png"
+                estimatedTime="8"
+                difficulty="Iniciante"
+                category="Impressora Sem Fio"
+                steps={steps}
+                faqItems={faqItems}
+            />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="8 min"
+                difficultyLevel="Iniciante"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                relatedGuides={relatedGuides}
+            />
+        </>
     );
 }

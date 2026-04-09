@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import JsonLdGuide from '@/components/JsonLdGuide';
 
 export const guideMetadata = {
   id: 'discord-otimizacao-gamer',
@@ -40,6 +41,14 @@ export default function DiscordOtimizacaoGamerGuide() {
         { label: "Nível de Dificuldade", value: "Iniciante" },
         { label: "Tempo Estimado", value: "12 minutos" },
         { label: "Impacto na Performance", value: "Melhorias significativas" }
+    ];
+
+    const steps = [
+        { name: "Configurar Áudio", text: "Acesse Configurações de Usuário > Voz e Vídeo para configurar microfone e áudio com qualidade profissional." },
+        { name: "Otimizar Overlay", text: "Configure o overlay in-game para exibir informações importantes sem impactar performance." },
+        { name: "Configurar Notificações", text: "Ajuste notificações para receber apenas mensagens importantes durante jogos." },
+        { name: "Ativar Atividade de Jogo", text: "Habilite a detecção automática de jogos para exibir status e integrações." },
+        { name: "Testar e Ajustar", text: "Teste todas as configurações em um jogo e ajuste conforme necessário." }
     ];
 
     const contentSections = [
@@ -298,17 +307,30 @@ export default function DiscordOtimizacaoGamerGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="12 min"
-            difficultyLevel="Iniciante"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
+        <>
+            <JsonLdGuide
+                title={title}
+                description={description}
+                url="https://voltris.com.br/guias/discord-otimizacao-gamer"
+                image="https://voltris.com.br/logo.png"
+                estimatedTime="12"
+                difficulty="Iniciante"
+                category="Discord Gamer"
+                steps={steps}
+                faqItems={faqItems}
+            />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="12 min"
+                difficultyLevel="Iniciante"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                relatedGuides={relatedGuides}
+            />
+        </>
     );
 }

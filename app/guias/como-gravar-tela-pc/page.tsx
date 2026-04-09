@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import JsonLdGuide from '@/components/JsonLdGuide';
 
 export const guideMetadata = {
   id: 'como-gravar-tela-pc',
@@ -44,6 +45,14 @@ export default function ComoGravarTelaPCGuide() {
         { label: "Tempo Estimado", value: "10 minutos" },
         { label: "Software Recomendado", value: "OBS Studio" },
         { label: "Qualidade Ideal", value: "1080p 60fps" }
+    ];
+
+    const steps = [
+        { name: "Preparar Hardware e Software", text: "Verifique se seu PC atende aos requisitos mínimos e baixe os softwares necessários como OBS Studio." },
+        { name: "Instalar OBS Studio", text: "Baixe e instale o OBS Studio, configurando-o para gravação com qualidade profissional." },
+        { name: "Configurar Fontes de Captura", text: "Adicione fontes de captura de tela, jogos e webcam para criar sua cena de gravação." },
+        { name: "Ajustar Configurações de Gravação", text: "Configure bitrate, resolução, FPS e áudio para qualidade ideal." },
+        { name: "Testar e Gravar", text: "Faça um teste rápido e inicie a gravação do seu conteúdo." }
     ];
 
     const contentSections = [
@@ -292,17 +301,30 @@ export default function ComoGravarTelaPCGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Iniciante"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
+        <>
+            <JsonLdGuide
+                title={title}
+                description={description}
+                url="https://voltris.com.br/guias/como-gravar-tela-pc"
+                image="https://voltris.com.br/logo.png"
+                estimatedTime="15"
+                difficulty="Iniciante"
+                category="Gravação de Tela"
+                steps={steps}
+                faqItems={faqItems}
+            />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="15 min"
+                difficultyLevel="Iniciante"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                relatedGuides={relatedGuides}
+            />
+        </>
     );
 }

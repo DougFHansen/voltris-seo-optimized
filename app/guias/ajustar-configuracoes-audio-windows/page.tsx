@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import JsonLdGuide from '@/components/JsonLdGuide';
 
 export const guideMetadata = {
   id: 'ajustar-configuracoes-audio-windows',
@@ -35,6 +36,14 @@ export default function AjustarAudioWindowsGuide() {
         { label: "Nível de Dificuldade", value: "Intermediário" },
         { label: "Tempo Estimado", value: "12 minutos" },
         { label: "Problemas Resolvidos", value: "5+ problemas comuns" }
+    ];
+
+    const steps = [
+        { name: "Verificar Hardware e Drivers", text: "Use o Gerenciador de Dispositivos para verificar se sua placa de som está funcionando corretamente." },
+        { name: "Abrir Painel de Som", text: "Clique com o botão direito no ícone de som e selecione 'Abrir Mixer de Volume' ou 'Painel de Som'." },
+        { name: "Configurar Dispositivos", text: "Selecione seu dispositivo de saída padrão e configure as propriedades avançadas." },
+        { name: "Ajustar Configurações Avançadas", text: "Configure formato exclusivo, melhorias de áudio e buffer para otimização." },
+        { name: "Testar e Validar", text: "Teste o áudio com diferentes aplicativos e ajuste conforme necessário." }
     ];
 
     const contentSections = [
@@ -315,17 +324,30 @@ export default function AjustarAudioWindowsGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="12 min"
-            difficultyLevel="Intermediário"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
+        <>
+            <JsonLdGuide
+                title={title}
+                description={description}
+                url="https://voltris.com.br/guias/ajustar-configuracoes-audio-windows"
+                image="https://voltris.com.br/logo.png"
+                estimatedTime="12"
+                difficulty="Intermediário"
+                category="Áudio Windows"
+                steps={steps}
+                faqItems={faqItems}
+            />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="12 min"
+                difficultyLevel="Intermediário"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                relatedGuides={relatedGuides}
+            />
+        </>
     );
 }

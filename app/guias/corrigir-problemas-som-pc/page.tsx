@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import JsonLdGuide from '@/components/JsonLdGuide';
 
 export const guideMetadata = {
   id: 'corrigir-problemas-som-pc',
@@ -35,6 +36,14 @@ export default function CorrigirProblemasSomPCGuide() {
         { label: "Nível de Dificuldade", value: "Intermediário" },
         { label: "Tempo Estimado", value: "15 minutos" },
         { label: "Problemas Resolvidos", value: "5+ problemas comuns" }
+    ];
+
+    const steps = [
+        { name: "Diagnosticar o Problema", text: "Use o Solucionador de Problemas de Áudio do Windows para identificar a causa raiz." },
+        { name: "Verificar Hardware", text: "Teste diferentes fones, cabos e portas para isolar problemas de hardware." },
+        { name: "Atualizar Drivers", text: "Baixe e instale os drivers mais recentes do fabricante da sua placa de som." },
+        { name: "Configurar Serviços", text: "Reinicie os serviços de áudio do Windows e verifique configurações do sistema." },
+        { name: "Testar e Validar", text: "Teste o áudio com diferentes aplicativos e ajuste conforme necessário." }
     ];
 
     const contentSections = [
@@ -259,17 +268,30 @@ export default function CorrigirProblemasSomPCGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="15 min"
-            difficultyLevel="Intermediário"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
+        <>
+            <JsonLdGuide
+                title={title}
+                description={description}
+                url="https://voltris.com.br/guias/corrigir-problemas-som-pc"
+                image="https://voltris.com.br/logo.png"
+                estimatedTime="15"
+                difficulty="Intermediário"
+                category="Problemas de Som"
+                steps={steps}
+                faqItems={faqItems}
+            />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="15 min"
+                difficultyLevel="Intermediário"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                relatedGuides={relatedGuides}
+            />
+        </>
     );
 }

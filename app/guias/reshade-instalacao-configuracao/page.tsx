@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
+import JsonLdGuide from '@/components/JsonLdGuide';
 
 export const guideMetadata = {
   id: 'reshade-instalacao-configuracao',
@@ -39,6 +40,14 @@ export default function ReShadeGuide() {
         { label: "Nível de Dificuldade", value: "Avançado" },
         { label: "Tempo Estimado", value: "25 minutos" },
         { label: "Impacto Visual", value: "Gráfico ultra-realista" }
+    ];
+
+    const steps = [
+        { name: "Baixar ReShade", text: "Acesse reshade.me e baixe a versão mais recente do instalador." },
+        { name: "Executar Instalador", text: "Execute o instalador e selecione o executável do jogo desejado." },
+        { name: "Configurar API", text: "Escolha a API correta (DirectX 11 para jogos modernos)." },
+        { name: "Baixar Shaders", text: "Baixe shaders populares do fórum oficial e extraia para a pasta reshade-shaders." },
+        { name: "Testar e Configurar", text: "Inicie o jogo, pressione SHIFT+F2 e configure os shaders desejados." }
     ];
 
     const contentSections = [
@@ -312,17 +321,30 @@ export default function ReShadeGuide() {
     ];
 
     return (
-        <GuideTemplate
-            title={title}
-            description={description}
-            keywords={keywords}
-            estimatedTime="25 min"
-            difficultyLevel="Avançado"
-            contentSections={contentSections}
-            summaryTable={summaryTable}
-            faqItems={faqItems}
-            externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
-        />
+        <>
+            <JsonLdGuide
+                title={title}
+                description={description}
+                url="https://voltris.com.br/guias/reshade-instalacao-configuracao"
+                image="https://voltris.com.br/logo.png"
+                estimatedTime="25"
+                difficulty="Avançado"
+                category="ReShade Graphics"
+                steps={steps}
+                faqItems={faqItems}
+            />
+            <GuideTemplate
+                title={title}
+                description={description}
+                keywords={keywords}
+                estimatedTime="25 min"
+                difficultyLevel="Avançado"
+                contentSections={contentSections}
+                summaryTable={summaryTable}
+                faqItems={faqItems}
+                externalReferences={externalReferences}
+                relatedGuides={relatedGuides}
+            />
+        </>
     );
 }
