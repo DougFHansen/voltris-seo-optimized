@@ -157,7 +157,7 @@ const nextConfig = {
 
       // Grupo: formatação windows (2 duplicatas → 1 canônico)
       { source: '/guias/formatacao-windows', destination: '/guias/formatacao-limpa-windows-11-rufus-gpt', permanent: true },
-      { source: '/guias/gta-v:-como-resolver-texturas-sumindo-ou-demorando-para-carregar', destination: '/guias/gta-v-fix-texturas-sumindo', permanent: true },
+      { source: '/guias/gta-v-como-resolver-texturas-sumindo-ou-demorando-para-carregar', destination: '/guias/gta-v-fix-texturas-sumindo', permanent: true },
     ];
   },
   async rewrites() {
