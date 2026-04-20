@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
-  id: 'otimizacao-registro-windows',
+  id: 'otimizacao-registro',
   title: "Otimização de Registro do Windows: Tweaks Reais vs Mitos (2026)",
   description: "Aprenda quais chaves do Regedit realmente melhoram a latência e responsividade (MenuShowDelay, Win32Priority) e quais são puro efeito placebo.",
   category: 'otimizacao',
@@ -24,7 +24,7 @@ const keywords = [
   'regedit mouse fix acceleration'
 ];
 
-export const metadata: Metadata = createGuideMetadata('otimizacao-registro-windows', title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('otimizacao-registro', title, description, keywords);
 
 export default function RegistryGuide() {
   const summaryTable = [

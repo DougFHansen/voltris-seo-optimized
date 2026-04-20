@@ -1,9 +1,10 @@
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
 interface JsonLdGuideProps {
   title: string;
   description: string;
-  url: string;
+  url?: string;
   image?: string;
   datePublished?: string;
   dateModified?: string;
@@ -29,6 +30,8 @@ export default function JsonLdGuide({
   faqItems,
   steps
 }: JsonLdGuideProps) {
+  const pathname = usePathname();
+  const finalUrl = url || `https://voltris.com.br${pathname}`;
   
   const structuredData = {
     '@context': 'https://schema.org',
@@ -36,7 +39,7 @@ export default function JsonLdGuide({
     name: title,
     description,
     image,
-    url,
+    url: finalUrl,
     datePublished,
     dateModified,
     author: {

@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { FAQSchema } from '@/components/SEOStructuredData';
 import { motion, useScroll, useSpring } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 import { Clock, ArrowRight, BookOpen, User, Calendar, Award, CheckCircle, AlertTriangle, Star, ExternalLink, ChevronRight, Lightbulb, Target } from 'lucide-react';
 
 import { notifyDownload } from '@/utils/notifications';
@@ -99,6 +100,7 @@ export function GuideTemplateClient({
     warningNote,
     children
 }: GuideTemplateProps) {
+    const pathname = usePathname();
     const hasCustomConclusion = contentSections.some(section =>
         section.title.toLowerCase().includes('conclusão') ||
         section.title.toLowerCase().includes('conclusao') ||
@@ -160,7 +162,7 @@ export function GuideTemplateClient({
     "totalTime": `PT${readingMinutes}M`,
     "step": contentSections.map((section, idx) => ({
       "@type": "HowToStep",
-      "url": `https://voltris.com.br/guias/${title.toLowerCase().replace(/\s+/g, '-')}/#section-${idx}`,
+      "url": `https://voltris.com.br${pathname}/#section-${idx}`,
       "name": section.title || '',
       "itemListElement": [{
         "@type": "HowToDirection",

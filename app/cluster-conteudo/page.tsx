@@ -63,24 +63,28 @@ export default function ContentClusterPage() {
   const popularArticles = [
     {
       title: "Como aumentar FPS em qualquer jogo",
+      slug: "gta-v-fix-texturas-sumindo",
       excerpt: "Descubra como aumentar o FPS em seus jogos favoritos com algumas configurações simples...",
       category: "Otimização de PC",
       date: "2024-01-15"
     },
     {
       title: "Formatação de Windows: Guia completo",
+      slug: "formatacao-limpa-windows-11-rufus-gpt",
       excerpt: "Um guia completo sobre como formatar seu Windows corretamente, desde o backup até a instalação...",
       category: "Formatação",
       date: "2024-01-10"
     },
     {
       title: "Sinais de que seu PC precisa de manutenção",
+      slug: "manutencao-preventiva-computador",
       excerpt: "Reconheça os sinais que indicam que seu computador precisa de assistência técnica...",
       category: "Assistência",
       date: "2024-01-05"
     },
     {
       title: "Como limpar o Windows sem perder arquivos",
+      slug: "limpeza-disco-profunda-arquivos-temporarios",
       excerpt: "Aprenda a limpar seu Windows de forma segura sem perder seus arquivos importantes...",
       category: "Otimização",
       date: "2024-01-01"
@@ -176,7 +180,7 @@ export default function ContentClusterPage() {
                 <h3 className="text-xl font-bold mb-3">{article.title}</h3>
                 <p className="text-gray-400 mb-4">{article.excerpt}</p>
                 <Link 
-                  href={`/guias/${article.title.toLowerCase().replace(/[^\w\s]/gi, '').replace(/\s+/g, '-')}`}
+                  href={`/guias/${article.slug}`}
                   className="text-blue-400 hover:text-blue-300 font-medium"
                 >
                   Ler artigo completo →
