@@ -85,10 +85,10 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-300 ${
           scrolled || !isHome || isMobileMenuOpen
-            ? 'bg-[#050510]/80 backdrop-blur-xl h-16'
-            : 'bg-transparent h-20'
+            ? 'bg-[#050510]/80 backdrop-blur-xl'
+            : 'bg-transparent'
         }`}
       >
         {/* Linha Separadora Profissional */}
@@ -286,13 +286,21 @@ export default function Header() {
           </div>
 
           {/* ── Hamburger (abaixo de lg / <1024px) ──── */}
-          <div className="lg:hidden z-50 ml-auto shrink-0">
+          <div className="lg:hidden z-[101] ml-auto shrink-0">
             <button
-              className="p-2 text-white"
+              className="p-2 text-white transition-transform duration-200 hover:scale-110 active:scale-95"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+              style={{ willChange: 'transform' }}
             >
-              {isMobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+              <div className="relative w-6 h-6">
+                <FiMenu 
+                  className={`absolute inset-0 transition-all duration-200 ${isMobileMenuOpen ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'}`} 
+                />
+                <FiX 
+                  className={`absolute inset-0 transition-all duration-200 ${isMobileMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'}`} 
+                />
+              </div>
             </button>
           </div>
         </div>
@@ -302,10 +310,12 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-[90] bg-[#050510]/98 backdrop-blur-xl lg:hidden pt-16"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="fixed inset-0 z-[95] bg-[#050510]/98 backdrop-blur-xl lg:hidden pt-16"
+            style={{ willChange: 'opacity' }}
           >
             <div className="flex flex-col h-full overflow-y-auto">
               <nav className="flex flex-col gap-1 px-6 pt-4">
