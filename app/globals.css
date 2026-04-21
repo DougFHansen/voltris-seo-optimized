@@ -10,11 +10,19 @@
   transform: rotate(180deg);
 }
 
-/* Ensure smooth transitions */
+/* Ensure smooth transitions - EXCLUDE hamburger menu elements */
 * {
   transition-property: transform, opacity, color, background-color, border-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Fix for hamburger menu flickering - exclude from global transitions */
+.hamburger-button,
+.hamburger-button *,
+.mobile-menu-drawer,
+.mobile-menu-drawer * {
+  transition: none !important;
 }
 
 @layer utilities {
@@ -455,8 +463,25 @@ body {
 }
 
 /* Melhorar performance de scroll */
-* {
+html {
   scroll-behavior: smooth;
+}
+
+/* Performance optimizations for mobile menu */
+.mobile-menu-optimized {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Prevent subpixel rendering issues */
+.hamburger-icon {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
 }
 
 /* Melhorar acessibilidade */

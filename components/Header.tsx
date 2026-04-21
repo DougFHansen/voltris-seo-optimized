@@ -85,9 +85,9 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-300 ${
+        className={`mobile-menu-optimized fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-300 ${
           scrolled || !isHome || isMobileMenuOpen
-            ? 'bg-[#050510]/80 backdrop-blur-xl'
+            ? 'bg-[#050510]/80 backdrop-blur-lg'
             : 'bg-transparent'
         }`}
       >
@@ -288,17 +288,16 @@ export default function Header() {
           {/* ── Hamburger (abaixo de lg / <1024px) ──── */}
           <div className="lg:hidden z-[101] ml-auto shrink-0">
             <button
-              className="p-2 text-white transition-transform duration-200 hover:scale-110 active:scale-95"
+              className="hamburger-button hamburger-icon mobile-menu-optimized p-2 text-white hover:scale-110 active:scale-95"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
-              style={{ willChange: 'transform' }}
             >
-              <div className="relative w-6 h-6">
+              <div className="relative w-6 h-6 hamburger-icon">
                 <FiMenu 
-                  className={`absolute inset-0 transition-all duration-200 ${isMobileMenuOpen ? 'opacity-0 rotate-90 scale-0' : 'opacity-100 rotate-0 scale-100'}`} 
+                  className={`absolute inset-0 hamburger-icon transition-opacity duration-150 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} 
                 />
                 <FiX 
-                  className={`absolute inset-0 transition-all duration-200 ${isMobileMenuOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-0'}`} 
+                  className={`absolute inset-0 hamburger-icon transition-opacity duration-150 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'}`} 
                 />
               </div>
             </button>
@@ -307,15 +306,14 @@ export default function Header() {
       </header>
 
       {/* ── Mobile / Tablet Drawer ───────────────────── */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed inset-0 z-[95] bg-[#050510]/98 backdrop-blur-xl lg:hidden pt-16"
-            style={{ willChange: 'opacity' }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="mobile-menu-drawer mobile-menu-optimized fixed inset-0 z-[95] bg-[#050510]/98 backdrop-blur-lg lg:hidden pt-16"
           >
             <div className="flex flex-col h-full overflow-y-auto">
               <nav className="flex flex-col gap-1 px-6 pt-4">
