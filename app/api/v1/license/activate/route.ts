@@ -40,10 +40,10 @@ export async function POST(request: NextRequest) {
 
         const supabase = await createClient();
 
-        // 1. Buscar a licença
+        // 1. Buscar a licença com license_display_name
         const { data: license, error: licError } = await supabase
             .from('licenses')
-            .select('*')
+            .select('*, license_display_name')
             .eq('license_key', licenseKey)
             .single();
 
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
                 success: true,
                 message: 'Dashboard: Device already authorized.',
                 licenseType: license.license_type,
-                licenseDisplayName: getLicenseDisplayName(license.license_type),
+                licenseDisplayName: license.license_display_name || getLicenseDisplayName(license.license_type),
                 expiresAt: license.expires_at ? new Date(license.expires_at).toISOString() : null,
                 maxDevices: license.max_devices
             });
@@ -137,7 +137,7 @@ export async function POST(request: NextRequest) {
             success: true,
             message: 'License successfully activated on this device!',
             licenseType: license.license_type,
-            licenseDisplayName: getLicenseDisplayName(license.license_type),
+            licenseDisplayName: license.license_display_name || getLicenseDisplayName(license.license_type),
             expiresAt: license.expires_at ? new Date(license.expires_at).toISOString() : null,
             maxDevices: license.max_devices
         });
