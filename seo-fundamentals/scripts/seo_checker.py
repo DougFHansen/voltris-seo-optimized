@@ -102,6 +102,14 @@ def check_page(file_path: Path) -> dict:
     except Exception as e:
         return {"file": str(file_path.name), "issues": [f"Error: {e}"]}
     
+    # Skip files that already have metadata export
+    if 'export const metadata:' in content:
+        return {"file": str(file_path.name), "issues": []}
+    
+    # Skip client components (they use layout metadata)
+    if '"use client"' in content:
+        return {"file": str(file_path.name), "issues": []}
+    
     # Detect if this is a layout/template file (has Head component)
     is_layout = 'Head>' in content or '<head' in content.lower()
     
@@ -191,10 +199,8 @@ def main():
             print(f"  [{count}] {issue}")
         
         print(f"\nAffected files ({len(all_issues)}):")
-        for item in all_issues[:5]:
-            print(f"  - {item['file']}")
-        if len(all_issues) > 5:
-            print(f"  ... and {len(all_issues) - 5} more")
+        for item in all_issues:
+            print(f"  - {item['file']}: {', '.join(item['issues'])}")
     else:
         print("\n[OK] No SEO issues found!")
     
