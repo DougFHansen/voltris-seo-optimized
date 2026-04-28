@@ -1,5 +1,47 @@
+import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+
+export const metadata: Metadata = {
+  title: 'Como Aumentar FPS no Roblox Windows 11/10 | Guia 2026',
+  description: 'Seu Roblox está travando? Aprenda a otimizar o Windows para ganhar mais FPS no Roblox, reduzir o lag e eliminar o atraso do mouse. Dicas profissionais para jogar sem travamentos.',
+  keywords: [
+    'aumentar fps roblox',
+    'como tirar o lag do roblox',
+    'otimizar windows para roblox',
+    'voltris optimizer roblox',
+    'roblox fps unlocker windows 11',
+    'pc fraco roblox configurações',
+    'roblox travando soluções',
+    'melhorar desempenho roblox',
+    'roblox otimização pc'
+  ],
+  openGraph: {
+    title: 'Como Aumentar FPS no Roblox | Guia Completo 2026',
+    description: 'Otimize seu Windows para ganhar mais FPS no Roblox. Dicas profissionais para eliminar lag e jogar sem travamentos.',
+    url: 'https://voltris.com.br/como-aumentar-fps-roblox-windows',
+    siteName: 'VOLTRIS',
+    locale: 'pt_BR',
+    type: 'article',
+    images: [
+      {
+        url: 'https://voltris.com.br/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Como Aumentar FPS no Roblox - Guia VOLTRIS',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Como Aumentar FPS no Roblox | Guia VOLTRIS',
+    description: 'Otimize seu Windows para ganhar mais FPS no Roblox e eliminar o lag.',
+    creator: '@voltris',
+  },
+  alternates: {
+    canonical: 'https://voltris.com.br/como-aumentar-fps-roblox-windows',
+  },
+};
 
 export default function RobloxFPS() {
     const title = 'Como Aumentar o FPS no Roblox no Windows 11/10 | Guia 2026';

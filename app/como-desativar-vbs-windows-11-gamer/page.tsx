@@ -1,5 +1,47 @@
+import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+
+export const metadata: Metadata = {
+  title: 'Como Desativar VBS Windows 11 para Ganhar FPS | Guia Gamer 2026',
+  description: 'Aprenda a desativar a Segurança Baseada em Virtualização (VBS) e o Isolamento de Núcleo (HVCI). Recupere até 25% de performance em jogos pesados e competitivos no Windows 11.',
+  keywords: [
+    'como desativar vbs windows 11 gamer',
+    'vbs vs performance windows 11',
+    'desativar isolamento de núcleo fps',
+    'voltris dna vbs bypass',
+    'melhorar fps windows 11 virtualização',
+    'hvci off windows 11 gamer',
+    'virtualization based security desativar',
+    'aumentar fps desativando vbs',
+    'windows 11 gamer performance'
+  ],
+  openGraph: {
+    title: 'Como Desativar VBS Windows 11 | Guia Gamer para Aumentar FPS',
+    description: 'Desative VBS e HVCI para ganhar até 25% de performance em jogos. Guia completo para gamers Windows 11.',
+    url: 'https://voltris.com.br/como-desativar-vbs-windows-11-gamer',
+    siteName: 'VOLTRIS',
+    locale: 'pt_BR',
+    type: 'article',
+    images: [
+      {
+        url: 'https://voltris.com.br/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Como Desativar VBS Windows 11 - Guia VOLTRIS',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Como Desativar VBS Windows 11 | Guia Gamer VOLTRIS',
+    description: 'Desative VBS para ganhar até 25% de performance em jogos Windows 11.',
+    creator: '@voltris',
+  },
+  alternates: {
+    canonical: 'https://voltris.com.br/como-desativar-vbs-windows-11-gamer',
+  },
+};
 
 export default function DesativarVBS() {
     const title = 'Como Desativar o VBS no Windows 11 para Ganhar FPS (Guia Gamer 2026)';

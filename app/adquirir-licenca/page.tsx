@@ -1,5 +1,4 @@
-"use client";
-
+import { Metadata } from 'next';
 import React, { useState, useEffect, Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -9,6 +8,48 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toast } from 'react-hot-toast';
 import { notifyPageView, notifyPurchaseAttempt } from '@/utils/notifications';
+
+export const metadata: Metadata = {
+  title: 'Comprar Licença VOLTRIS | Planos de Otimização de PC',
+  description: 'Adquira sua licença VOLTRIS Optimizer. Planos mensais e anuais com acesso remoto, suporte 24/7 e atualizações automáticas. Otimização profissional para seu PC.',
+  keywords: [
+    'comprar voltris',
+    'licença voltris optimizer',
+    'planos voltris',
+    'preço voltris',
+    'assinar voltris',
+    'comprar software otimização',
+    'licença otimização pc',
+    'planos mensais anuais',
+    'voltris preços',
+    'comprar licença saas'
+  ],
+  openGraph: {
+    title: 'Comprar Licença VOLTRIS | Planos de Otimização Profissional',
+    description: 'Escolha seu plano VOLTRIS Optimizer. Otimização avançada de PC com suporte especializado e acesso remoto.',
+    url: 'https://voltris.com.br/adquirir-licenca',
+    siteName: 'VOLTRIS',
+    locale: 'pt_BR',
+    type: 'website',
+    images: [
+      {
+        url: 'https://voltris.com.br/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Comprar Licença VOLTRIS - Planos de Otimização',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Comprar Licença VOLTRIS | Planos de Otimização',
+    description: 'Escolha seu plano VOLTRIS Optimizer com otimização avançada e suporte especializado.',
+    creator: '@voltris',
+  },
+  alternates: {
+    canonical: 'https://voltris.com.br/adquirir-licenca',
+  },
+};
 
 function AdquirirLicencaContent() {
     const router = useRouter();

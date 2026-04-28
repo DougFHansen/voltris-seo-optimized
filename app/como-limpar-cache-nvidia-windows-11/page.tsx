@@ -1,5 +1,47 @@
+import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+
+export const metadata: Metadata = {
+  title: 'Como Limpar Cache NVIDIA Windows 11 | Shader Cache 2026',
+  description: 'Jogos com micro-travamentos? Aprenda a limpar o Shader Cache da NVIDIA para resolver problemas de performance e garantir fluidez em novos updates de drivers. Guia completo.',
+  keywords: [
+    'como limpar cache nvidia windows 11',
+    'shader cache nvidia reset',
+    'limpar dxcache nvidia',
+    'voltris ultra cleaner nvidia',
+    'corrigir stuttering nvidia windows 11',
+    'apagar cache driver de vídeo',
+    'nvidia shader cache limpeza',
+    'dxcache glcache delete',
+    'nvidia performance problems'
+  ],
+  openGraph: {
+    title: 'Como Limpar Cache NVIDIA Windows 11 | Guia Shader Cache 2026',
+    description: 'Resolva micro-travamentos e problemas de performance limpando o Shader Cache da NVIDIA. Guia completo para Windows 11.',
+    url: 'https://voltris.com.br/como-limpar-cache-nvidia-windows-11',
+    siteName: 'VOLTRIS',
+    locale: 'pt_BR',
+    type: 'article',
+    images: [
+      {
+        url: 'https://voltris.com.br/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Como Limpar Cache NVIDIA Windows 11 - Guia VOLTRIS',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Como Limpar Cache NVIDIA Windows 11 | Guia VOLTRIS',
+    description: 'Resolva micro-travamentos limpando o Shader Cache da NVIDIA.',
+    creator: '@voltris',
+  },
+  alternates: {
+    canonical: 'https://voltris.com.br/como-limpar-cache-nvidia-windows-11',
+  },
+};
 
 export default function LimparCacheNvidia() {
     const title = 'Como Limpar o Cache da NVIDIA no Windows 11 (Shader Cache 2026)';

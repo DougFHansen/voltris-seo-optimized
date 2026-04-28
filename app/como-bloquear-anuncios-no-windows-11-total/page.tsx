@@ -1,5 +1,47 @@
+import { Metadata } from 'next';
 import React from 'react';
 import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+
+export const metadata: Metadata = {
+  title: 'Como Bloquear Anúncios Windows 11 | Guia Definitivo 2026',
+  description: 'Windows 11 cheio de propagandas? Aprenda a remover anúncios do Menu Iniciar, Explorador de Arquivos e Tela de Bloqueio de forma permanente e gratuita. Guia completo.',
+  keywords: [
+    'bloquear anúncios windows 11 menu iniciar',
+    'tirar propagandas windows 11 definitivo',
+    'desativar anúncios explorer windows 11',
+    'voltris optimizer adblocker',
+    'limpar windows 11 anúncios',
+    'como remover sugestões apps microsoft',
+    'windows 11 sem propagandas',
+    'desativar tailored experiences',
+    'remover anúncios microsoft store'
+  ],
+  openGraph: {
+    title: 'Como Bloquear Anúncios Windows 11 | Guia Completo 2026',
+    description: 'Remova todas as propagandas do Windows 11. Guia definitivo para Menu Iniciar, Explorador de Arquivos e Tela de Bloqueio.',
+    url: 'https://voltris.com.br/como-bloquear-anuncios-no-windows-11-total',
+    siteName: 'VOLTRIS',
+    locale: 'pt_BR',
+    type: 'article',
+    images: [
+      {
+        url: 'https://voltris.com.br/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Como Bloquear Anúncios Windows 11 - Guia VOLTRIS',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Como Bloquear Anúncios Windows 11 | Guia VOLTRIS',
+    description: 'Remova todas as propagandas do Windows 11 de forma permanente e gratuita.',
+    creator: '@voltris',
+  },
+  alternates: {
+    canonical: 'https://voltris.com.br/como-bloquear-anuncios-no-windows-11-total',
+  },
+};
 
 export default function BloquearAnuncios() {
     const title = 'Como Bloquear Todos os Anúncios do Windows 11 | Guia Definitivo 2026';
