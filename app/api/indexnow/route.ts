@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid URL list' }, { status: 400 });
     }
 
-    const apiKey = '48b7f52550194833a697771746200259';
+    const apiKey = 'dc9bd7eedab94ddca8eb96ea792838d4';
     const host = 'voltris.com.br';
     const keyLocation = `https://${host}/${apiKey}.txt`;
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { Metadata } from 'next';
 import Link from 'next/link';
 import {
   Wrench,
@@ -24,6 +25,50 @@ import dynamic from 'next/dynamic';
 import JsonLd from '@/components/JsonLd';
 
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
+
+export const metadata: Metadata = {
+  title: 'Assistência Técnica VOLTRIS | Reparo e Manutenção de Computadores',
+  description: 'Assistência técnica especializada em computadores, notebooks e redes. Reparo de hardware, manutenção preventiva, instalação de sistemas e configuração avançada em todo o Brasil.',
+  keywords: [
+    'assistência técnica',
+    'reparo de computador',
+    'manutenção de pc',
+    'tecnico informatica',
+    'assistência notebook',
+    'reparo hardware',
+    'instalação windows',
+    'configuração rede',
+    'limpeza computador',
+    'substituição peças',
+    'manutenção preventiva',
+    'suporte técnico hardware'
+  ],
+  openGraph: {
+    title: 'Assistência Técnica VOLTRIS | Reparo e Manutenção Especializada',
+    description: 'Serviços completos de assistência técnica para computadores e notebooks. Reparo, manutenção e configuração por especialistas.',
+    url: 'https://voltris.com.br/assistencia-tecnica',
+    siteName: 'VOLTRIS',
+    locale: 'pt_BR',
+    type: 'website',
+    images: [
+      {
+        url: 'https://voltris.com.br/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Assistência Técnica VOLTRIS - Reparo de Computadores',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Assistência Técnica VOLTRIS | Reparo e Manutenção',
+    description: 'Serviços completos de assistência técnica especializada em computadores.',
+    creator: '@voltris',
+  },
+  alternates: {
+    canonical: 'https://voltris.com.br/assistencia-tecnica',
+  },
+};
 
 export default function TechnicalSupportPage() {
   const services = [
