@@ -1,5 +1,3 @@
-'use client';
-
 import { Metadata } from 'next';
 import Link from 'next/link';
 import {
@@ -15,16 +13,14 @@ import {
   Cpu,
   HardDrive,
   Wifi,
-  Zap,
   Download,
   ArrowRight,
   ChevronRight
 } from 'lucide-react';
 import Header from '@/components/Header';
-import dynamic from 'next/dynamic';
+import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 
-const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
 export const metadata: Metadata = {
   title: 'Assistência Técnica VOLTRIS | Reparo e Manutenção de Computadores',
@@ -522,7 +518,7 @@ export default function TechnicalSupportPage() {
                 <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
                   <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
                     <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#EAB308]">
-                      <Zap className="w-8 h-8" />
+                      <div className="w-8 h-8 text-[#EAB308]">⚡</div>
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Otimização de PC</h3>

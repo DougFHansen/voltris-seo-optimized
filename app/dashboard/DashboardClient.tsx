@@ -596,18 +596,3 @@ function DashboardContent() {
   );
 }
 
-export default function DashboardWrapper() {
-  return (
-    <>
-      <Head>
-        <title>Dashboard VOLTRIS - Área Restrita</title>
-        <meta name="description" content="Painel administrativo VOLTRIS - Acesso exclusivo para clientes." />
-        <meta name="robots" content="noindex, nofollow" />
-        <meta property="og:title" content="Dashboard VOLTRIS - Área Restrita" />
-        <meta property="og:description" content="Painel administrativo exclusivo para clientes VOLTRIS." />
-        <meta property="og:type" content="website" />
-      </Head>
-      <DashboardClient />
-    </>
-  );
-}

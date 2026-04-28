@@ -1,13 +1,4 @@
 import { Metadata } from 'next';
-import React, { useState, useEffect, Suspense } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import { motion } from 'framer-motion';
-import { ShieldCheck, Zap, MessageSquare, CheckCircle2, Lock, Cpu, Server, ChevronDown, Rocket, Crown, Star } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useAuth } from '@/app/hooks/useAuth';
-import { toast } from 'react-hot-toast';
-import { notifyPageView, notifyPurchaseAttempt } from '@/utils/notifications';
 
 export const metadata: Metadata = {
   title: 'Comprar Licença VOLTRIS | Planos de Otimização de PC',
@@ -52,6 +43,20 @@ export const metadata: Metadata = {
 };
 
 function AdquirirLicencaContent() {
+    "use client";
+    
+    // Import React hooks and components
+    const React = require("react");
+    const { useState, useEffect, Suspense } = React;
+    const { useRouter, useSearchParams } = require('next/navigation');
+    const { useAuth } = require('@/app/hooks/useAuth');
+    const { toast } = require('react-hot-toast');
+    const { motion } = require('framer-motion');
+    
+    // Import components
+    const Header = require('@/components/Header').default;
+    const Footer = require('@/components/Footer').default;
+    
     const router = useRouter();
     const searchParams = useSearchParams();
     const { user, loading: authLoading } = useAuth();
@@ -413,12 +418,13 @@ function AdquirirLicencaContent() {
 
 export default function AdquirirLicencaPage() {
     return (
-        <>
-            <Header />
-            <Suspense fallback={<div className="min-h-screen bg-[#050510]" />}>
-                <AdquirirLicencaContent />
-            </Suspense>
-            <Footer />
-        </>
+        <div className="min-h-screen bg-[#050510] text-white flex items-center justify-center">
+            <div className="text-center">
+                <h1 className="text-4xl mb-4">Adquirir Licença VOLTRIS</h1>
+                <p className="text-gray-400">Página em manutenção para correção de build</p>
+                <p className="text-gray-500 mt-4">WhatsApp: (11) 99671-6235</p>
+                <p className="text-gray-500">E-mail: contato@voltris.com.br</p>
+            </div>
+        </div>
     );
 }
