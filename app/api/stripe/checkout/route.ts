@@ -7,16 +7,16 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://voltris.com.br';
 const PRICE_MAP: Record<string, any> = {
   // Licenças (Assinaturas)
   standard: {
-    month: { name: 'Licença Standard Mensal', amount: 49.90, mode: 'subscription' },
-    year:  { name: 'Licença Standard Anual',  amount: 369.90, mode: 'subscription' },
+    month: { name: 'Licença Standard Mensal', amount: 9.90, mode: 'subscription' },
+    year:  { name: 'Licença Standard Anual',  amount: 79.90, mode: 'subscription' },
   },
   pro: {
-    month: { name: 'Licença Pro Gamer Mensal', amount: 349.90, mode: 'subscription' },
-    year:  { name: 'Licença Pro Gamer Anual',  amount: 789.90, mode: 'subscription' },
+    month: { name: 'Licença Pro Gamer Mensal', amount: 69.90, mode: 'subscription' },
+    year:  { name: 'Licença Pro Gamer Anual',  amount: 149.90, mode: 'subscription' },
   },
   enterprise: {
-    month: { name: 'Licença Enterprise Mensal', amount: 1490.90, mode: 'subscription' },
-    year:  { name: 'Licença Enterprise Anual',  amount: 5489.90, mode: 'subscription' },
+    month: { name: 'Licença Enterprise Mensal', amount: 299.90, mode: 'subscription' },
+    year:  { name: 'Licença Enterprise Anual',  amount: 1099.90, mode: 'subscription' },
   },
   // Serviços (Pagamento Único)
   formatacao_basica: { name: 'Formatação Básica', amount: 99.90, mode: 'payment' },
