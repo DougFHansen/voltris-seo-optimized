@@ -88,7 +88,7 @@ export default function NotificationsClient() {
                                     {/* Timeline Marker */}
                                     <div className="hidden md:flex flex-col items-center pt-8 relative z-10 shrink-0">
                                        <div className={`w-20 h-[1px] ${notif.read ? 'bg-gray-200' : 'bg-[#31A8FF]/40'} absolute right-0 top-[2.75rem] -mr-10`}></div>
-                                       <div className={`w-2.5 h-2.5 rounded-full border-2 ${transparencyMode ? 'border-white' : 'border-white'} z-20 transition-all duration-500 scale-125
+                                       <div className={`w-2.5 h-2.5 rounded-full border-2 ${transparencyMode ? 'border-gray-200' : 'border-gray-200'} z-20 transition-all duration-500 scale-125
                                           ${notif.read ? 'bg-gray-300' : 'bg-[#31A8FF] shadow-[0_0_15px_rgba(49,168,255,0.8)]'}`}></div>
                                     </div>
 

@@ -161,7 +161,7 @@ function DeviceCard({ device, onCommand, onLock, transparencyMode }: any) {
                 {isOnline && (
                   <div className="absolute -inset-2 bg-[#31A8FF]/20 blur-xl rounded-full animate-pulse-slow"></div>
                 )}
-                <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-4 ${transparencyMode ? 'border-white' : 'border-white'} ${isOnline ? 'bg-[#00FF88] shadow-[0_0_10px_#00FF88]' : 'bg-gray-400'}`} />
+                <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-4 ${transparencyMode ? 'border-gray-200' : 'border-gray-200'} ${isOnline ? 'bg-[#00FF88] shadow-[0_0_10px_#00FF88]' : 'bg-gray-400'}`} />
             </div>
 
             {/* Information Hub */}
