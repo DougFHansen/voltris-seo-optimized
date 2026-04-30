@@ -131,18 +131,18 @@ export default function TicketsClient() {
         <div className="space-y-2">
            <div className="flex items-center gap-3">
              <div className="w-2 h-8 bg-gradient-to-b from-[#8B31FF] to-[#31A8FF] rounded-full"></div>
-             <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Suporte de <span className="text-[#8B31FF] not-italic">Comando</span></h2>
+             <h2 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Suporte de <span className="text-[#8B31FF] not-italic">Comando</span></h2>
            </div>
-           <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Interface neural para assistência técnica</p>
+           <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Interface neural para assistência técnica</p>
         </div>
 
         <div className="flex items-center gap-4 w-full md:w-auto">
            <div className="relative group flex-1 md:flex-none">
-              <FiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-[#8B31FF] transition-colors" />
+              <FiFilter className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-[#8B31FF] transition-colors" />
               <select 
                 value={filter} 
                 onChange={e => setFilter(e.target.value)}
-                className="w-full md:w-56 pl-11 pr-6 py-4 rounded-2xl bg-[#0A0A10]/50 border border-white/5 text-white/40 group-hover:text-white font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#8B31FF] transition-all appearance-none cursor-pointer"
+                className="w-full md:w-56 pl-11 pr-6 py-4 rounded-2xl bg-white border border-gray-200 text-gray-500 group-hover:text-gray-900 font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#8B31FF] transition-all appearance-none cursor-pointer shadow-sm"
               >
                  <option value="all">TODAS AS FREQUÊNCIAS</option>
                 <option value="Aberto">NÓS ABERTOS</option>
@@ -163,7 +163,7 @@ export default function TicketsClient() {
       {isLoading ? (
         <div className="flex flex-col items-center justify-center py-20 gap-6 opacity-30">
           <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
-          <p className="font-black uppercase tracking-[0.3em] text-[10px]">Escaneando Uplinks...</p>
+          <p className="font-black uppercase tracking-[0.3em] text-[10px] text-gray-500">Escaneando Uplinks...</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -180,7 +180,7 @@ export default function TicketsClient() {
                     animate={{ opacity: 1, scale: 1 }}
                     whileHover={{ y: -5 }}
                     onClick={() => { setSelectedTicket(ticket); setShowTicketModal(true); }}
-                    className={`group p-8 rounded-[3rem] border transition-all duration-500 cursor-pointer overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'} hover:border-[#8B31FF]/40`}
+                    className={`group p-8 rounded-[3rem] border transition-all duration-500 cursor-pointer overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'} hover:border-[#8B31FF]/40`}
                   >
                     <div className="relative z-10 flex flex-col h-full gap-6">
                        <div className="flex justify-between items-start">
@@ -188,24 +188,24 @@ export default function TicketsClient() {
                              <Icon className="w-6 h-6" />
                           </div>
                           <div className="flex flex-col items-end">
-                             <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] mb-1">Prioridade</span>
-                             <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border border-white/5 ${ticket.priority === 'high' ? 'text-red-400 bg-red-400/5' : ticket.priority === 'medium' ? 'text-amber-400 bg-amber-400/5' : 'text-emerald-400 bg-emerald-400/5'}`}>
+                             <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-1">Prioridade</span>
+                             <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border border-gray-200 ${ticket.priority === 'high' ? 'text-red-600 bg-red-100' : ticket.priority === 'medium' ? 'text-amber-600 bg-amber-100' : 'text-emerald-600 bg-emerald-100'}`}>
                                 {ticket.priority === 'high' ? 'URGENTE' : ticket.priority === 'medium' ? 'MÉDIA' : 'BAIXA'}
                              </span>
                           </div>
                        </div>
 
                        <div className="space-y-2">
-                         <h3 className="text-xl font-black text-white uppercase italic tracking-tighter truncate leading-none">{ticket.title}</h3>
-                         <p className="text-white/30 text-xs font-bold line-clamp-2 leading-relaxed uppercase tracking-wider">{ticket.description}</p>
+                         <h3 className="text-xl font-black text-gray-900 uppercase italic tracking-tighter truncate leading-none">{ticket.title}</h3>
+                         <p className="text-gray-500 text-xs font-bold line-clamp-2 leading-relaxed uppercase tracking-wider">{ticket.description}</p>
                        </div>
 
-                       <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                       <div className="mt-auto pt-6 border-t border-gray-200 flex items-center justify-between">
                           <div className="flex flex-col">
-                             <span className="text-[9px] font-black text-white/10 uppercase tracking-widest">ID Hash</span>
+                             <span className="text-[9px] font-black text-gray-300 uppercase tracking-widest">ID Hash</span>
                              <span className="text-[10px] font-black text-[#8B31FF] uppercase font-mono tracking-widest">#{ticket.id.slice(0, 6)}</span>
                           </div>
-                           <div className="flex items-center gap-2 text-white/20 group-hover:text-white transition-colors">
+                           <div className="flex items-center gap-2 text-gray-400 group-hover:text-gray-900 transition-colors">
                              <span className="text-[10px] font-black uppercase tracking-widest italic">Revisar Transmissão</span>
                              <FiArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                           </div>
@@ -215,11 +215,11 @@ export default function TicketsClient() {
                 );
               })
             ) : (
-               <div className={`col-span-full p-24 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
-                 <FiInbox className="w-20 h-20 text-white/5" />
+               <div className={`col-span-full p-24 rounded-[4rem] text-center border border-gray-200 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-gray-50 shadow-xl'}`}>
+                 <FiInbox className="w-20 h-20 text-gray-300" />
                  <div className="space-y-2">
-                    <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">Nenhum Uplink Ativo</h3>
-                    <p className="text-white/20 font-bold text-xs uppercase tracking-[0.2em]">Você não tem frequências de suporte técnico ativas no momento.</p>
+                    <h3 className="text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Nenhum Uplink Ativo</h3>
+                    <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em]">Você não tem frequências de suporte técnico ativas no momento.</p>
                  </div>
               </div>
             )}
@@ -235,24 +235,24 @@ export default function TicketsClient() {
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               exit={{ opacity: 0 }} 
-              className="absolute inset-0 bg-black/95 backdrop-blur-md" 
+              className="absolute inset-0 bg-black/80 backdrop-blur-md" 
               onClick={() => setShowCreateForm(false)} 
             />
             <motion.div 
               initial={{ scale: 0.9, y: 30 }} 
               animate={{ scale: 1, y: 0 }} 
               exit={{ scale: 0.9, y: 30 }} 
-              className={`relative w-full max-w-2xl p-8 md:p-12 rounded-[3.5rem] border border-white/10 shadow-3xl overflow-y-auto max-h-[95vh] custom-scrollbar-modern ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}
+              className={`relative w-full max-w-2xl p-8 md:p-12 rounded-[3.5rem] border border-gray-200 shadow-xl overflow-y-auto max-h-[95vh] custom-scrollbar-modern ${transparencyMode ? 'voltris-glass' : 'bg-white'}`}
             >
-               <button onClick={() => setShowCreateForm(false)} className="absolute top-8 right-8 p-3 rounded-2xl bg-white/5 text-white/40 hover:text-white transition-all z-20"><FiX size={20} /></button>
+               <button onClick={() => setShowCreateForm(false)} className="absolute top-8 right-8 p-3 rounded-2xl bg-gray-100 text-gray-400 hover:text-gray-900 transition-all z-20"><FiX size={20} /></button>
                
                <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-10 text-center md:text-left relative z-10">
                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-[2rem] bg-[#8B31FF]/10 border border-[#8B31FF]/20 flex items-center justify-center text-[#8B31FF] shadow-lg shadow-[#8B31FF]/10 shrink-0">
                    <FiTerminal className="w-8 h-8 md:w-10 md:h-10" />
                  </div>
                  <div className="space-y-1">
-                   <h3 className="text-3xl md:text-4xl font-black text-white italic uppercase tracking-tighter">Novo <span className="text-[#8B31FF] not-italic">Suporte</span></h3>
-                   <p className="text-white/40 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] font-mono leading-none">Estabelecer interface com a Voltris Tech</p>
+                   <h3 className="text-3xl md:text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Novo <span className="text-[#8B31FF] not-italic">Suporte</span></h3>
+                   <p className="text-gray-500 text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] font-mono leading-none">Estabelecer interface com a Voltris Tech</p>
                  </div>
                </div>
 
@@ -263,7 +263,7 @@ export default function TicketsClient() {
                       <input 
                         type="text" required 
                         value={newTicket.title} onChange={e => setNewTicket({...newTicket, title: e.target.value})}
-                        className="w-full px-6 py-5 rounded-2xl bg-white/5 border border-white/10 text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 text-xs font-bold uppercase tracking-wider" 
+                        className="w-full px-6 py-5 rounded-2xl bg-white border border-gray-200 text-gray-900 focus:border-[#8B31FF] focus:bg-gray-50 outline-none transition-all placeholder:text-gray-400 text-xs font-bold uppercase tracking-wider shadow-sm" 
                         placeholder="Defina o espaço do problema.."
                       />
                     </div>
@@ -272,7 +272,7 @@ export default function TicketsClient() {
                       <div className="relative group">
                         <select 
                           value={newTicket.priority} onChange={e => setNewTicket({...newTicket, priority: e.target.value as any})}
-                          className="w-full px-6 py-5 rounded-2xl bg-white/5 border border-white/10 text-white/60 focus:text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all appearance-none uppercase font-black text-[9px] tracking-widest cursor-pointer"
+                          className="w-full px-6 py-5 rounded-2xl bg-white border border-gray-200 text-gray-600 focus:text-gray-900 focus:border-[#8B31FF] focus:bg-gray-50 outline-none transition-all appearance-none uppercase font-black text-[9px] tracking-widest cursor-pointer shadow-sm"
                         >
                            <option value="low" className="bg-[#050510]">PRIORIDADE PADRÃO</option>
                            <option value="medium" className="bg-[#050510]">PRIORIDADE MÉDIA</option>
@@ -289,7 +289,7 @@ export default function TicketsClient() {
                     <textarea 
                       required rows={5}
                       value={newTicket.description} onChange={e => setNewTicket({...newTicket, description: e.target.value})}
-                      className="w-full p-6 rounded-3xl bg-white/5 border border-white/10 text-white focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 resize-none text-xs font-bold leading-relaxed tracking-wider" 
+                      className="w-full p-6 rounded-3xl bg-white border border-gray-200 text-gray-900 focus:border-[#8B31FF] focus:bg-gray-50 outline-none transition-all placeholder:text-gray-400 resize-none text-xs font-bold leading-relaxed tracking-wider shadow-sm" 
                       placeholder="Identifique marcadores específicos de falha de hardware ou software..."
                     />
                   </div>
@@ -309,21 +309,21 @@ export default function TicketsClient() {
       <AnimatePresence>
         {showTicketModal && selectedTicket && (
           <div className="fixed inset-0 z-[350] flex items-center justify-center p-6 pb-0 md:pb-6">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/98 backdrop-blur-2xl" onClick={() => setShowTicketModal(false)} />
-            <motion.div initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }} onClick={e => e.stopPropagation()} className={`relative w-full max-w-4xl h-full md:h-[90vh] flex flex-col overflow-hidden rounded-t-[3rem] md:rounded-[4rem] border border-white/10 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A12]'}`}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/80 backdrop-blur-2xl" onClick={() => setShowTicketModal(false)} />
+            <motion.div initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 100, opacity: 0 }} onClick={e => e.stopPropagation()} className={`relative w-full max-w-4xl h-full md:h-[90vh] flex flex-col overflow-hidden rounded-t-[3rem] md:rounded-[4rem] border border-gray-200 ${transparencyMode ? 'voltris-glass' : 'bg-white'}`}>
                
                {/* Modal Navigation Header */}
-               <div className="px-10 py-8 bg-black/40 border-b border-white/5 flex justify-between items-center">
+               <div className="px-10 py-8 bg-gray-100 border-b border-gray-200 flex justify-between items-center">
                   <div className="flex items-center gap-6">
                     <div className={`p-4 rounded-2xl ${statusConfig(selectedTicket.status).bg} ${statusConfig(selectedTicket.status).color} border ${statusConfig(selectedTicket.status).border}`}>
                        {React.createElement(statusConfig(selectedTicket.status).icon, { className: 'w-6 h-6' })}
                     </div>
                      <div className="space-y-1">
-                      <h4 className="text-xl font-black text-white uppercase italic tracking-tighter truncate max-w-[200px] md:max-w-md">{selectedTicket.title}</h4>
-                      <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Canal de Transmissão: <span className="text-[#8B31FF]">#{selectedTicket.id.slice(0, 12)}</span></p>
+                      <h4 className="text-xl font-black text-gray-900 uppercase italic tracking-tighter truncate max-w-[200px] md:max-w-md">{selectedTicket.title}</h4>
+                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Canal de Transmissão: <span className="text-[#8B31FF]">#{selectedTicket.id.slice(0, 12)}</span></p>
                     </div>
                  </div>
-                  <button onClick={() => setShowTicketModal(false)} className="p-3 bg-white/5 text-white/20 hover:text-white rounded-2xl transition-all"><FiX size={24} /></button>
+                  <button onClick={() => setShowTicketModal(false)} className="p-3 bg-gray-100 text-gray-400 hover:text-gray-900 rounded-2xl transition-all"><FiX size={24} /></button>
                </div>
 
                {/* Communications Stream */}
@@ -337,11 +337,11 @@ export default function TicketsClient() {
                         key={i} 
                         className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}
                       >
-                         <div className={`group relative p-6 rounded-[2.5rem] max-w-[85%] md:max-w-[70%] border transition-all duration-300 ${isMe ? 'bg-[#8B31FF]/10 border-[#8B31FF]/20 text-white rounded-tr-none' : 'bg-white/5 border-white/10 text-white/80 rounded-tl-none'}`}>
+                         <div className={`group relative p-6 rounded-[2.5rem] max-w-[85%] md:max-w-[70%] border transition-all duration-300 ${isMe ? 'bg-[#8B31FF]/10 border-[#8B31FF]/20 text-gray-900 rounded-tr-none' : 'bg-gray-100 border-gray-200 text-gray-900 rounded-tl-none'}`}>
                             <p className="text-sm font-bold leading-relaxed whitespace-pre-wrap uppercase tracking-wide italic">{msg.content}</p>
                             <div className={`absolute top-0 ${isMe ? '-right-1' : '-left-1'} w-3 h-3 bg-inherit border-inherit rotate-45`}></div>
                          </div>
-                          <span className="mt-3 px-2 text-[8px] font-black text-white/20 uppercase tracking-[0.3em] font-mono">
+                          <span className="mt-3 px-2 text-[8px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">
                             {isMe ? 'TRANSMISSOR' : 'NÚCLEO DE RESSONÂNCIA'} • {new Date(msg.created_at).toLocaleTimeString()}
                           </span>
                       </motion.div>
@@ -350,14 +350,14 @@ export default function TicketsClient() {
                </div>
 
                {/* Broadcast Input Station */}
-               <div className="p-8 bg-black/60 border-t border-white/10">
+               <div className="p-8 bg-gray-100 border-t border-gray-200">
                    <div className="relative group">
                      <textarea 
                         rows={1}
                         value={replyText}
                         onChange={e => setReplyText(e.target.value)}
                         placeholder="Injete a sequência de ressonância (Sua resposta)..."
-                        className="w-full bg-white/5 border border-white/5 rounded-3xl pl-8 pr-24 py-6 text-white text-sm font-bold focus:border-[#8B31FF] focus:bg-white/[0.08] outline-none transition-all placeholder:text-white/10 resize-none"
+                        className="w-full bg-white border border-gray-200 rounded-3xl pl-8 pr-24 py-6 text-gray-900 text-sm font-bold focus:border-[#8B31FF] focus:bg-gray-50 outline-none transition-all placeholder:text-gray-400 resize-none shadow-sm"
                      />
                      <button 
                        onClick={handleSendReply}
@@ -372,7 +372,7 @@ export default function TicketsClient() {
                         )}
                      </button>
                   </div>
-                   <p className="mt-4 text-center text-[9px] font-black text-white/10 uppercase tracking-[0.2em] font-mono">Interface neural protegida pelo Protocolo Voltris v.4.0</p>
+                   <p className="mt-4 text-center text-[9px] font-black text-gray-400 uppercase tracking-[0.2em] font-mono">Interface neural protegida pelo Protocolo Voltris v.4.0</p>
                 </div>
 
             </motion.div>
