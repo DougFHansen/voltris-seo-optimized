@@ -147,11 +147,11 @@ export default function ProfileClient() {
                 </div>
 
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
-                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
+                   <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-xl border border-gray-200">
                       <FiCpu className="w-4 h-4 text-[#31A8FF]" />
                       <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">ID: {user?.id.slice(0, 8).toUpperCase()}</span>
                    </div>
-                   <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
+                   <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-xl border border-gray-200">
                       <FiActivity className="w-4 h-4 text-[#00FF88]" />
                       <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">Status: Ativo</span>
                    </div>
@@ -176,7 +176,7 @@ export default function ProfileClient() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'}`}
+            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}
           >
             <div className="flex items-center gap-4 mb-10">
                <div className="p-3 bg-[#31A8FF]/10 text-[#31A8FF] rounded-2xl">
@@ -200,11 +200,11 @@ export default function ProfileClient() {
                       type="text"
                       value={formData.full_name}
                       onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
+                      className="w-full p-5 rounded-2xl bg-gray-100 border border-gray-300 text-gray-900 focus:border-[#31A8FF] outline-none transition-all placeholder:text-gray-400"
                       placeholder="Identificação do Agente"
                     />
                  ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                    <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 font-bold">
                       {profile?.full_name || 'Pendente'}
                     </div>
                  )}
@@ -217,11 +217,11 @@ export default function ProfileClient() {
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#31A8FF]/20 text-white focus:border-[#31A8FF] outline-none transition-all placeholder:text-white/10"
+                      className="w-full p-5 rounded-2xl bg-gray-100 border border-gray-300 text-gray-900 focus:border-[#31A8FF] outline-none transition-all placeholder:text-gray-400"
                       placeholder="+55 (00) 00000-0000"
                     />
                  ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                    <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 font-bold">
                       {profile?.phone || 'Pendente'}
                     </div>
                  )}
@@ -233,7 +233,7 @@ export default function ProfileClient() {
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'}`}
+            className={`p-10 rounded-[3.5rem] border ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}
           >
             <div className="flex items-center gap-4 mb-10">
                <div className="p-3 bg-[#8B31FF]/10 text-[#8B31FF] rounded-2xl">
@@ -250,11 +250,11 @@ export default function ProfileClient() {
                       type="text"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                      className="w-full p-5 rounded-2xl bg-gray-100 border border-gray-300 text-gray-900 focus:border-[#8B31FF] outline-none transition-all placeholder:text-gray-400"
                       placeholder="Vila, Logradouro, Número"
                     />
                  ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                    <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 font-bold">
                       {profile?.address || 'Pendente'}
                     </div>
                  )}
@@ -268,10 +268,10 @@ export default function ProfileClient() {
                         type="text"
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                        className="w-full p-5 rounded-2xl bg-gray-100 border border-gray-300 text-gray-900 focus:border-[#8B31FF] outline-none transition-all placeholder:text-gray-400"
                       />
                    ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 font-bold">
                         {profile?.city || 'PD'}
                       </div>
                    )}
@@ -283,10 +283,10 @@ export default function ProfileClient() {
                         type="text"
                         value={formData.state}
                         onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                        className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                        className="w-full p-5 rounded-2xl bg-gray-100 border border-gray-300 text-gray-900 focus:border-[#8B31FF] outline-none transition-all placeholder:text-gray-400"
                       />
                    ) : (
-                      <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                      <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 font-bold">
                         {profile?.state || 'PD'}
                       </div>
                    )}
@@ -300,10 +300,10 @@ export default function ProfileClient() {
                       type="text"
                       value={formData.cep}
                       onChange={(e) => setFormData({ ...formData, cep: e.target.value })}
-                      className="w-full p-5 rounded-2xl bg-black/60 border border-[#8B31FF]/20 text-white focus:border-[#8B31FF] outline-none transition-all placeholder:text-white/10"
+                      className="w-full p-5 rounded-2xl bg-gray-100 border border-gray-300 text-gray-900 focus:border-[#8B31FF] outline-none transition-all placeholder:text-gray-400"
                     />
                  ) : (
-                    <div className="p-5 rounded-2xl bg-white/5 border border-white/5 text-white font-bold">
+                    <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 font-bold">
                       {profile?.cep || 'Pendente'}
                     </div>
                  )}
