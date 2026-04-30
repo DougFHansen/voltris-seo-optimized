@@ -47,8 +47,8 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, type: "spring", stiffness: 100 }}
       className={`relative group overflow-hidden p-5 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] border transition-all duration-500
-        ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}
-        hover:border-white/20 hover:-translate-y-2
+        ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}
+        hover:border-gray-300 hover:-translate-y-2
       `}
     >
       <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${colors[color]} opacity-5 blur-[60px] group-hover:opacity-15 transition-all duration-700`}></div>
@@ -60,23 +60,23 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
             <div className={`absolute inset-0 rounded-2xl blur-lg opacity-40 bg-gradient-to-br ${colors[color]}`}></div>
           </div>
           <div className="flex flex-col items-end">
-             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-white/30 mb-1">Status</span>
+             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">Status</span>
              <div className="flex items-center gap-1.5">
                <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-r ${colors[color]}`}></div>
-               <span className="text-[9px] sm:text-[10px] font-bold text-white/50 uppercase tracking-widest leading-none">SINCRONIZADO</span>
+               <span className="text-[9px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-widest leading-none">SINCRONIZADO</span>
              </div>
           </div>
         </div>
 
         <div className="space-y-1">
-           <p className="text-white/40 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
+           <p className="text-gray-500 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
           <div className="flex items-baseline gap-2">
-            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tighter">{value}</h3>
+            <h3 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tighter">{value}</h3>
           </div>
         </div>
 
         {/* Decorative Progress Line */}
-        <div className="relative h-1 w-full bg-white/5 rounded-full overflow-hidden mt-2">
+        <div className="relative h-1 w-full bg-gray-200 rounded-full overflow-hidden mt-2">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: '100%' }}
@@ -95,7 +95,7 @@ export default function DashboardClient() {
       <div className="h-full w-full flex items-center justify-center">
         <div className="flex flex-col items-center gap-6">
           <div className="w-20 h-20 border-t-4 border-l-4 border-b-4 border-transparent border-r-4 border-r-[#31A8FF] rounded-full animate-spin"></div>
-          <p className="text-white/40 font-black uppercase tracking-[0.3em] text-xs animate-pulse">Iniciando Terminal...</p>
+          <p className="text-gray-500 font-black uppercase tracking-[0.3em] text-xs animate-pulse">Iniciando Terminal...</p>
         </div>
       </div>
     }>
@@ -217,7 +217,7 @@ function DashboardContent() {
               <div className="w-20 h-20 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
               <div className="absolute inset-0 w-20 h-20 border-t-4 border-[#8B31FF] rounded-full animate-spin-slow"></div>
             </div>
-            <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Sincronizando com Supabase Cloud...</p>
+            <p className="text-gray-500 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Sincronizando com Supabase Cloud...</p>
           </div>
         </div>
       ) : (
@@ -226,7 +226,7 @@ function DashboardContent() {
         <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-center lg:text-left">
           <div className="space-y-1.5 flex-1 min-w-0 flex flex-col items-center lg:items-start w-full">
             <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-3">
-              <h1 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-3xl font-black text-white tracking-tighter uppercase italic leading-none break-words">Centro de <span className="text-[#31A8FF] not-italic">Painel</span></h1>
+              <h1 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-3xl font-black text-gray-900 tracking-tighter uppercase italic leading-none break-words">Centro de <span className="text-[#31A8FF] not-italic">Painel</span></h1>
               
               {/* Hardware ID Protection Status Badge */}
                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border backdrop-blur-md transition-all duration-500
@@ -242,7 +242,7 @@ function DashboardContent() {
                  </span>
                </div>
             </div>
-            <p className="text-white/40 font-bold text-[8px] xs:text-[10px] sm:text-xs tracking-wide uppercase px-2 lg:px-0 opacity-80 line-clamp-1">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
+            <p className="text-gray-500 font-bold text-[8px] xs:text-[10px] sm:text-xs tracking-wide uppercase px-2 lg:px-0 opacity-80 line-clamp-1">Operação tática disponível para <span className="text-[#8B31FF]">{profile?.full_name?.toUpperCase() || 'USUÁRIO'}</span></p>
           </div>
 
           <div className="flex items-center justify-center lg:justify-end gap-3 px-4 lg:px-0">
@@ -255,7 +255,7 @@ function DashboardContent() {
                   .then(() => toast.success('Dados atualizados!'))
                   .finally(() => setIsRefreshing(false)); 
               }}
-              className={`p-4 rounded-2xl bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
+              className={`p-4 rounded-2xl bg-gray-100 border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-200 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
             >
               <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
             </motion.button>
@@ -274,7 +274,7 @@ function DashboardContent() {
 
         {/* Custom Modern Tabs - Enhanced Mobile Responsivity */}
         <div className="w-full flex items-center justify-start sm:justify-center py-2 sm:py-4 overflow-x-auto scrollbar-hide px-2 sm:px-0">
-          <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-[#12121A]'} border border-white/5 shadow-2xl transition-all min-w-max sm:min-w-0`}>
+          <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-gray-100'} border border-gray-200 shadow-xl transition-all min-w-max sm:min-w-0`}>
               {[
                 { id: 'overview', label: 'Dashboard', icon: FiActivity, color: '#31A8FF' },
                 { id: 'licenses', label: 'Licenças', icon: FiCheckCircle, color: '#8B31FF' },
@@ -318,15 +318,15 @@ function DashboardContent() {
                 <StatCard title="Licenças Disponíveis" value={stats.activeLicenses} icon={FiCheckCircle} color="purple" delay={0.2} />
                 <StatCard title="Computadores Vinculados" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
                    {/* Tactical Billboard */}
-                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}>
+                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-gray-200 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-white shadow-xl'}`}>
                    <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 opacity-30"></div>
                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
                      <div className="space-y-4">
-                        <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit mx-auto lg:mx-0">
+                        <div className="p-3 bg-gray-100 border border-gray-200 rounded-2xl w-fit mx-auto lg:mx-0">
                           <FiDownload className="w-8 h-8 text-[#31A8FF]" />
                         </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Performance Máxima <span className="text-[#31A8FF] not-italic">Liberada</span></h2>
-                        <p className="text-white/40 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Baixe o Voltris Optimizer agora para aplicar os ajustes de hardware e eliminar o input lag em segundos.</p>
+                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Performance Máxima <span className="text-[#31A8FF] not-italic">Liberada</span></h2>
+                        <p className="text-gray-500 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Baixe o Voltris Optimizer agora para aplicar os ajustes de hardware e eliminar o input lag em segundos.</p>
                      </div>
                      <Link href="/voltrisoptimizer" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest text-center">
                         Baixar Voltris Optimizer
@@ -345,13 +345,13 @@ function DashboardContent() {
                 className="space-y-6"
               >
                 {/* Urgent Warning if needed */}
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-[2rem] bg-amber-400/10 border border-amber-400/30 backdrop-blur-xl">
-                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-400/20 flex items-center justify-center text-amber-400 shrink-0">
+                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-[2rem] bg-amber-50 border border-amber-200 backdrop-blur-xl">
+                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
                       <FiAlertTriangle className="w-6 h-6 sm:w-7 sm:h-7" />
                    </div>
                    <div className="flex-1 text-center sm:text-left">
-                      <h4 className="font-black text-white uppercase italic tracking-wider text-sm sm:text-base">Sincronização de Pagamento</h4>
-                      <p className="text-amber-200/60 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">Se o seu pedido não apareceu imediatamente, clique no botão de sincronização.</p>
+                      <h4 className="font-black text-gray-900 uppercase italic tracking-wider text-sm sm:text-base">Sincronização de Pagamento</h4>
+                      <p className="text-amber-700 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">Se o seu pedido não apareceu imediatamente, clique no botão de sincronização.</p>
                    </div>
                    <button onClick={() => fetchData(true)} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-amber-400 text-black font-black uppercase italic text-[10px] sm:text-xs rounded-xl shadow-xl hover:scale-105 transition-all">
                       Sync Agora
@@ -366,7 +366,7 @@ function DashboardContent() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className={`group relative p-6 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} hover:border-[#31A8FF]/40`}
+                        className={`group relative p-6 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'} hover:border-[#31A8FF]/40`}
                       >
                         {/* Interactive Background Elements */}
                         <div className={`absolute -right-20 -bottom-20 w-80 h-80 ${lic.is_active ? 'bg-[#31A8FF]/10' : 'bg-red-500/10'} blur-[100px] rounded-full group-hover:scale-110 transition-transform duration-700`}></div>
@@ -375,32 +375,32 @@ function DashboardContent() {
                           {/* Card Top */}
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white relative ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF]' : 'bg-white/5 border border-white/10'}`}>
+                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white relative ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF]' : 'bg-gray-100 border border-gray-200'}`}>
                                 <FiCheckCircle className="w-8 h-8" />
                                 <div className={`absolute inset-0 blur-lg opacity-40 ${lic.is_active ? 'bg-[#31A8FF]' : 'bg-transparent'}`}></div>
                               </div>
                               <div className="flex flex-col">
-                                <h4 className="text-xl font-black text-white uppercase italic tracking-tighter">{lic.license_type}</h4>
+                                <h4 className="text-xl font-black text-gray-900 uppercase italic tracking-tighter">{lic.license_type}</h4>
                                 <span className={`text-[9px] font-black tracking-[0.2em] px-3 py-1 rounded-full uppercase w-fit mt-1 border ${lic.is_active ? 'bg-emerald-400/10 text-emerald-400 border-emerald-400/20' : 'bg-red-400/10 text-red-400 border-red-400/20'}`}>
                                    {lic.is_active ? 'Ativa' : 'Expirada'}
                                 </span>
                               </div>
                             </div>
                             <div className="hidden sm:flex flex-col items-end">
-                               <span className="text-[10px] font-black text-white/30 uppercase tracking-widest mb-1">Validade</span>
-                               <span className="text-sm font-black text-white italic">{new Date(lic.expires_at).toLocaleDateString('pt-BR')}</span>
+                               <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Validade</span>
+                               <span className="text-sm font-black text-gray-900 italic">{new Date(lic.expires_at).toLocaleDateString('pt-BR')}</span>
                             </div>
                           </div>
 
                           {/* Key Section - Dark Box */}
-                          <div className="bg-black/40 rounded-[2rem] p-6 border border-white/5 group-hover:border-[#31A8FF]/20 transition-all">
+                          <div className="bg-gray-100 rounded-[2rem] p-6 border border-gray-200 group-hover:border-[#31A8FF]/20 transition-all">
                              <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.3em] mb-4 block">Chave de Ativação</span>
                              <div className="flex items-center justify-between gap-4">
-                                <code className="flex-1 font-mono text-base font-black text-white tracking-widest truncate select-all">{lic.license_key}</code>
+                                <code className="flex-1 font-mono text-base font-black text-gray-900 tracking-widest truncate select-all">{lic.license_key}</code>
                                 <div className="flex items-center gap-2">
                                   <button
                                     onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Key copiada!'); }}
-                                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-white/60 hover:text-white transition-all border border-white/10"
+                                    className="p-3 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-900 transition-all border border-gray-300"
                                     title="Copiar Chave"
                                   >
                                     <FiCopy className="w-4 h-4" />
@@ -413,15 +413,15 @@ function DashboardContent() {
                           </div>
 
                           {/* Footer Info */}
-                          <div className="flex items-center justify-between border-t border-white/5 pt-6">
+                          <div className="flex items-center justify-between border-t border-gray-200 pt-6">
                              <div className="flex items-center gap-8">
                                 <div className="flex flex-col">
-                                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Dispositivos</span>
-                                   <span className="text-sm font-black text-white">{lic.devices_in_use}/{lic.max_devices}</span>
+                                   <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Dispositivos</span>
+                                   <span className="text-sm font-black text-gray-900">{lic.devices_in_use}/{lic.max_devices}</span>
                                 </div>
                                 <div className="flex flex-col">
-                                   <span className="text-[9px] font-black text-white/30 uppercase tracking-widest mb-1">Hardware ID</span>
-                                   <span className="text-[10px] font-black text-[#00FF88] uppercase tracking-widest">Vinculado</span>
+                                   <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Hardware ID</span>
+                                   <span className="text-[10px] font-black text-green-700 uppercase tracking-widest">Vinculado</span>
                                 </div>
                              </div>
                               <Link href="/voltrisoptimizer" className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
@@ -432,13 +432,13 @@ function DashboardContent() {
                       </motion.div>
                     ))
                   ) : (
-                    <div className={`col-span-1 xl:col-span-2 p-20 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A0F]'}`}>
-                       <div className="w-24 h-24 rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center text-white/20">
+                    <div className={`col-span-1 xl:col-span-2 p-20 rounded-[4rem] text-center border border-gray-200 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-gray-50 shadow-xl'}`}>
+                       <div className="w-24 h-24 rounded-[2rem] bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400">
                           <FiShield className="w-12 h-12" />
                        </div>
                        <div className="space-y-4">
-                         <h3 className="text-4xl font-black text-white uppercase italic tracking-tighter">Armazém de Licenças Vazio</h3>
-                         <p className="text-white/30 font-bold max-w-lg mx-auto uppercase tracking-wide text-xs">Você ainda não possui licenças operacionais vinculadas a esta conta. Adquira uma agora para desbloquear o Optimizer.</p>
+                         <h3 className="text-4xl font-black text-gray-900 uppercase italic tracking-tighter">Armazém de Licenças Vazio</h3>
+                         <p className="text-gray-500 font-bold max-w-lg mx-auto uppercase tracking-wide text-xs">Você ainda não possui licenças operacionais vinculadas a esta conta. Adquira uma agora para desbloquear o Optimizer.</p>
                        </div>
                        <Link href="/adquirir-licenca">
                           <button className="px-12 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 transition-all shadow-3xl">
@@ -459,15 +459,15 @@ function DashboardContent() {
                 exit={{ opacity: 0, y: 30 }}
                 className="space-y-6"
               >
-                <div className={`p-8 rounded-[2rem] sm:rounded-[3rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5'} shadow-2xl`}>
+                <div className={`p-8 rounded-[2rem] sm:rounded-[3rem] border ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}>
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
                     <div className="flex items-center gap-4">
                       <div className="p-4 bg-gradient-to-br from-[#31A8FF] to-[#1070FF] rounded-2xl text-white shadow-lg shadow-blue-500/20">
                         <FiPackage className="w-6 h-6" />
                       </div>
                       <div>
-                        <h2 className="text-2xl font-black text-white italic uppercase tracking-tighter">Histórico de Pedidos</h2>
-                        <p className="text-white/30 text-[10px] font-black uppercase tracking-widest mt-1">Acompanhe todos os seus serviços e licenças</p>
+                        <h2 className="text-2xl font-black text-gray-900 italic uppercase tracking-tighter">Histórico de Pedidos</h2>
+                        <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mt-1">Acompanhe todos os seus serviços e licenças</p>
                       </div>
                     </div>
                   </div>
@@ -475,14 +475,14 @@ function DashboardContent() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left">
                       <thead>
-                        <tr className="border-b border-white/5">
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Serviço / Licença</th>
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em] hidden sm:table-cell">Data</th>
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Valor</th>
-                          <th className="pb-4 px-2 text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">Status</th>
+                        <tr className="border-b border-gray-200">
+                          <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Serviço / Licença</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] hidden sm:table-cell">Data</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Valor</th>
+                          <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Status</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-white/5">
+                      <tbody className="divide-y divide-gray-200">
                         {/* Mesclagem de Pedidos e Pagamentos */}
                         {[
                           ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
@@ -510,11 +510,11 @@ function DashboardContent() {
                               };
                             })
                           ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((item, idx) => (
-                            <tr key={item.id + idx} className="group hover:bg-white/5 active:bg-white/10 transition-colors">
+                            <tr key={item.id + idx} className="group hover:bg-gray-50 active:bg-gray-100 transition-colors">
                               <td className="py-6 px-2">
                                 <div className="flex flex-col">
-                                  <span className="text-sm font-black text-white uppercase italic tracking-tight">{item.display_name}</span>
-                                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-widest mt-1">
+                                  <span className="text-sm font-black text-gray-900 uppercase italic tracking-tight">{item.display_name}</span>
+                                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">
                                     {item.display_type === 'LICENSE' ? (
                                       <span className="text-[#31A8FF]">💎 PRODUTO DIGITAL</span>
                                     ) : item.display_type === 'SERVICE' ? (
@@ -526,12 +526,12 @@ function DashboardContent() {
                                 </div>
                               </td>
                               <td className="py-6 px-2 hidden sm:table-cell">
-                                <span className="text-xs font-bold text-white/40 uppercase tracking-widest">
+                                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">
                                   {new Date(item.created_at).toLocaleDateString('pt-BR')}
                                 </span>
                               </td>
                               <td className="py-6 px-2">
-                                <span className="text-xs font-black text-[#00FF88]">
+                                <span className="text-xs font-black text-green-700">
                                   R$ {(item.amount || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                                 </span>
                               </td>
@@ -541,7 +541,7 @@ function DashboardContent() {
                                     (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-500/10 border-red-500/20 text-red-400' :
                                     'bg-amber-500/10 border-amber-500/20 text-amber-400'}
                                 `}>
-                                  <div className={`w-1 h-1 rounded-full ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-400' : (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-400' : 'bg-amber-400 animate-pulse'}`}></div>
+                                  <div className={`w-1 h-1 rounded-full ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-600' : (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-600' : 'bg-amber-600 animate-pulse'}`}></div>
                                   <span className="text-[10px] font-black uppercase tracking-widest leading-none">
                                     {(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'APROVADO' : 
                                      (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'CANCELADO' : 
@@ -554,7 +554,7 @@ function DashboardContent() {
                         ) : (
                           <tr>
                             <td colSpan={4} className="py-20 text-center">
-                              <p className="text-white/20 font-black uppercase tracking-[0.3em] text-[10px]">Nenhum pedido ou pagamento encontrado.</p>
+                              <p className="text-gray-400 font-black uppercase tracking-[0.3em] text-[10px]">Nenhum pedido ou pagamento encontrado.</p>
                             </td>
                           </tr>
                         )}
