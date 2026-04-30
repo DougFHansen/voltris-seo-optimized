@@ -77,16 +77,16 @@ export default function GamerClient() {
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-8 bg-gradient-to-b from-[#FF4B6B] to-[#FF9B31] rounded-full"></div>
-                    <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Protocolo <span className="text-[#FF4B6B] not-italic">Gamer</span></h2>
+                    <h2 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Protocolo <span className="text-[#FF4B6B] not-italic">Gamer</span></h2>
                 </div>
-                <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Overclock neural e supressão de latência</p>
+                <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Overclock neural e supressão de latência</p>
             </div>
 
             {/* Neural Switch Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              className={`group relative p-12 rounded-[4rem] border transition-all duration-700 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10] border-white/5 shadow-3xl'}`}
+              className={`group relative p-12 rounded-[4rem] border transition-all duration-700 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}
             >
                {/* Background Effects */}
                <div className={`absolute -right-40 -top-40 w-[600px] h-[600px] ${gamerModeActive ? 'bg-[#FF4B6B]/10' : 'bg-[#31A8FF]/5'} blur-[150px] rounded-full transition-all duration-1000`}></div>
@@ -95,8 +95,8 @@ export default function GamerClient() {
                   <div className="flex items-center gap-10">
                      <div className="relative">
                         <div className={`w-40 h-40 rounded-[3rem] p-[2px] transition-all duration-700 shadow-2xl ${gamerModeActive ? 'bg-gradient-to-br from-[#FF4B6B] to-[#FF9B31] rotate-3' : 'bg-white/5 grayscale'}`}>
-                           <div className="w-full h-full rounded-[2.85rem] bg-[#0A0A10] flex items-center justify-center">
-                              {gamerModeActive ? <FiZap className="w-16 h-16 text-[#FF4B6B] animate-pulse" /> : <FiZapOff className="w-16 h-16 text-white/10" />}
+                           <div className="w-full h-full rounded-[2.85rem] bg-gray-100 flex items-center justify-center">
+                              {gamerModeActive ? <FiZap className="w-16 h-16 text-[#FF4B6B] animate-pulse" /> : <FiZapOff className="w-16 h-16 text-gray-300" />}
                            </div>
                         </div>
                         {gamerModeActive && (
@@ -106,14 +106,14 @@ export default function GamerClient() {
 
                      <div className="space-y-3">
                         <div className="flex items-center gap-4">
-                           <span className={`text-4xl font-black italic uppercase tracking-tighter ${gamerModeActive ? 'text-white' : 'text-white/20'}`}>
+                           <span className={`text-4xl font-black italic uppercase tracking-tighter ${gamerModeActive ? 'text-gray-900' : 'text-gray-400'}`}>
                               {gamerModeActive ? 'Ultra Ativo' : 'Protocolo Inativo'}
                            </span>
-                           <div className={`px-4 py-1 rounded-full border ${gamerModeActive ? 'bg-[#00FF88]/10 border-[#00FF88]/20 text-[#00FF88]' : 'bg-white/5 border-white/10 text-white/20'}`}>
+                           <div className={`px-4 py-1 rounded-full border ${gamerModeActive ? 'bg-emerald-100 border-emerald-200 text-emerald-700' : 'bg-gray-100 border-gray-200 text-gray-400'}`}>
                               <span className="text-[10px] font-black uppercase tracking-widest">{gamerModeActive ? 'Performance Máxima' : 'Ocioso'}</span>
                            </div>
                         </div>
-                        <p className="text-white/40 font-bold text-xs uppercase tracking-widest leading-relaxed max-w-md">
+                        <p className="text-gray-500 font-bold text-xs uppercase tracking-widest leading-relaxed max-w-md">
                            {gamerModeActive 
                              ? 'O sistema está priorizando o pool de threads e os shaders da GPU. Entropia de fundo minimizada.' 
                              : 'Ative para redirecionar os recursos do sistema para o núcleo de processamento visual primário.'}
@@ -148,15 +148,15 @@ export default function GamerClient() {
                    initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
                    transition={{ delay: i * 0.1 }}
-                   className={`p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}`}
+                   className={`p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative group ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}
                  >
                     <div className="relative z-10 flex flex-col gap-6 items-center text-center">
-                       <div className={`p-5 rounded-2xl bg-white/5 border border-white/5 group-hover:bg-white/10 group-hover:scale-110 transition-all ${mod.color}`}>
+                       <div className={`p-5 rounded-2xl bg-gray-100 border border-gray-200 group-hover:bg-gray-200 group-hover:scale-110 transition-all ${mod.color}`}>
                           <mod.icon className="w-8 h-8" />
                        </div>
                        <div className="space-y-1">
-                          <h4 className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">{mod.label}</h4>
-                          <span className="text-2xl font-black text-white uppercase italic tracking-tighter">{mod.status}</span>
+                          <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">{mod.label}</h4>
+                          <span className="text-2xl font-black text-gray-900 uppercase italic tracking-tighter">{mod.status}</span>
                        </div>
                     </div>
                     {/* Interior Progress Bar Decor */}
@@ -172,8 +172,8 @@ export default function GamerClient() {
                     <FiAlertCircle className="w-8 h-8" />
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-black text-white uppercase italic tracking-tighter">Nenhum Nó Vinculado Detectado</p>
-                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Conecte seu PC à Rede Neural Voltris para habilitar a troca remota de protocolos.</p>
+                    <p className="text-sm font-black text-gray-900 uppercase italic tracking-tighter">Nenhum Nó Vinculado Detectado</p>
+                    <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Conecte seu PC à Rede Neural Voltris para habilitar a troca remota de protocolos.</p>
                   </div>
                </div>
             )}
