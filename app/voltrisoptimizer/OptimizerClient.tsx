@@ -33,7 +33,7 @@ const MetricCard = ({ icon, title, value, subtitle, trend, color }: {
             <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-[0.03] rounded-2xl blur-xl group-hover:opacity-[0.08] transition-all duration-500`} />
             
             {/* Card Content */}
-            <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-2xl p-8 group-hover:border-white/[0.10] transition-all duration-300">
+            <div className="relative bg-white border border-gray-200 rounded-2xl p-8 group-hover:border-gray-300 transition-all duration-300 shadow-sm">
                 {/* Icon Container */}
                 <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${color} flex items-center justify-center mb-6 relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-white/20 rounded-2xl animate-pulse" />
@@ -42,21 +42,21 @@ const MetricCard = ({ icon, title, value, subtitle, trend, color }: {
                 
                 {/* Content */}
                 <div className="space-y-3">
-                    <p className="text-sm font-medium text-slate-500 uppercase tracking-wider">{title}</p>
+                    <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">{title}</p>
                     <div className="flex items-baseline gap-3">
                         <h3 className={`text-4xl font-black bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
                             {value}
                         </h3>
                         {trend && (
                             <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
-                                trend === 'up' ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'
+                                trend === 'up' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
                             }`}>
                                 {trend === 'up' ? <TrendingUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3 rotate-180" />}
                                 12%
                             </div>
                         )}
                     </div>
-                    <p className="text-sm text-slate-400">{subtitle}</p>
+                    <p className="text-sm text-gray-600">{subtitle}</p>
                 </div>
             </div>
         </motion.div>
@@ -96,8 +96,8 @@ const FeatureCard = ({
             <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-[0.02] rounded-3xl blur-2xl transition-all duration-700 ${isHovered ? 'opacity-[0.08] scale-110' : ''}`} />
             
             {/* Card */}
-            <div className={`relative bg-[#0A0A0F] border border-white/[0.05] rounded-3xl p-8 transition-all duration-500 ${
-                isHovered ? 'border-white/[0.15] shadow-[0_20px_60px_rgba(0,0,0,0.3)]' : ''
+            <div className={`relative bg-white border border-gray-200 rounded-2xl p-8 transition-all duration-500 shadow-sm ${
+                isHovered ? 'border-gray-300 shadow-lg' : ''
             } ${isExpanded ? 'md:col-span-2' : ''}`}>
                 {/* Header */}
                 <div className="flex items-start justify-between mb-6">
@@ -105,16 +105,16 @@ const FeatureCard = ({
                         <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-50 animate-pulse`} />
                         <div className="relative z-10 text-white text-xl">{icon}</div>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.05] border border-white/[0.10]">
-                        <Sparkles className="w-4 h-4 text-[#31A8FF]" />
-                        <span className="text-xs font-medium text-[#31A8FF]">Premium</span>
+                    <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200">
+                        <Sparkles className="w-4 h-4 text-blue-600" />
+                        <span className="text-xs font-medium text-blue-600">Premium</span>
                     </div>
                 </div>
                 
                 {/* Content */}
                 <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-white">{title}</h3>
-                    <p className="text-slate-400 leading-relaxed">{description}</p>
+                    <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{description}</p>
                     
                     {/* Features */}
                     <div className={`grid gap-3 ${isExpanded ? 'md:grid-cols-2' : ''}`}>
@@ -129,7 +129,7 @@ const FeatureCard = ({
                                 <div className={`w-6 h-6 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center flex-shrink-0`}>
                                     <Check className="w-4 h-4 text-white" />
                                 </div>
-                                <span className="text-sm text-slate-300">{feature}</span>
+                                <span className="text-sm text-gray-700">{feature}</span>
                             </motion.div>
                         ))}
                     </div>
@@ -170,13 +170,13 @@ const CategoryHeader = ({
             
             <div className="space-y-4">
                 <div className="flex items-center justify-center gap-4">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white">{title}</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{title}</h2>
                     <div className={`px-4 py-2 rounded-full bg-gradient-to-r ${color} flex items-center gap-2`}>
                         <Package className="w-4 h-4 text-white" />
                         <span className="text-sm font-bold text-white">{count} tools</span>
                     </div>
                 </div>
-                <p className="text-lg text-slate-400 max-w-2xl mx-auto">{description}</p>
+                <p className="text-lg text-gray-500 max-w-2xl mx-auto">{description}</p>
             </div>
         </motion.div>
     );
@@ -198,10 +198,9 @@ const ToolGrid = ({ tools, columns = 4 }: { tools: any[], columns?: number }) =>
                     <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-[0.02] rounded-2xl blur-xl group-hover:opacity-[0.08] transition-all duration-500`} />
                     
                     {/* Card */}
-                    <div className={`relative bg-[#0A0A0F] border border-white/[0.05] rounded-2xl p-6 group-hover:border-opacity-30 transition-all duration-300`}
-                         style={{ borderColor: `${tool.color}30` }}>
+                    <div className="relative bg-white border border-gray-200 rounded-2xl p-6 group-hover:border-gray-300 transition-all duration-300 shadow-sm">
                         {/* Icon */}
-                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110`}
+                        <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 bg-gray-100`}
                              style={{ backgroundColor: `${tool.color}10` }}>
                             <div className="w-7 h-7 transition-colors duration-300" style={{ color: tool.color }}>
                                 {tool.icon}
@@ -210,10 +209,10 @@ const ToolGrid = ({ tools, columns = 4 }: { tools: any[], columns?: number }) =>
                         
                         {/* Content */}
                         <div className="space-y-3">
-                            <h4 className="text-xl font-bold text-white group-hover:text-opacity-100 transition-colors">
+                            <h4 className="text-xl font-bold text-gray-900 group-hover:text-opacity-100 transition-colors">
                                 {tool.name}
                             </h4>
-                            <p className="text-sm text-slate-400 leading-relaxed">{tool.desc}</p>
+                            <p className="text-sm text-gray-600 leading-relaxed">{tool.desc}</p>
                             
                             {/* Features */}
                             <div className="space-y-2">
@@ -223,14 +222,14 @@ const ToolGrid = ({ tools, columns = 4 }: { tools: any[], columns?: number }) =>
                                              style={{ backgroundColor: `${tool.color}20` }}>
                                             <CheckCircle2 className="w-2.5 h-2.5" style={{ color: tool.color }} />
                                         </div>
-                                        <span className="text-xs text-slate-500">{feature}</span>
+                                        <span className="text-xs text-gray-500">{feature}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
                         
                         {/* Hover Overlay */}
-                        <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 rounded-2xl pointer-events-none transition-opacity duration-300 group-hover:opacity-[0.02]`} />
+                        <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 rounded-2xl pointer-events-none transition-opacity duration-300 group-hover:opacity-[0.05]`} />
                     </div>
                 </motion.div>
             ))}
@@ -242,21 +241,21 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
     return (
         <motion.div
             className={`group rounded-xl border transition-all duration-500 overflow-hidden relative ${isOpen
-                ? 'bg-gradient-to-r from-[#1a1a2e] to-[#0F111A] border-[#31A8FF]/30 shadow-[0_0_40px_rgba(49,168,255,0.05)]'
-                : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
+                ? 'bg-white border-blue-300 shadow-sm'
+                : 'bg-white border-gray-200 hover:border-gray-300'
                 }`}
         >
-            <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#8B31FF] to-[#FF4B6B] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 to-purple-600 transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} />
             <button
                 onClick={onClick}
                 className="w-full p-6 flex items-center justify-between text-left focus:outline-none relative z-10"
             >
-                <span className={`text-lg font-medium tracking-tight transition-colors duration-300 ${isOpen ? 'text-white' : 'text-slate-300 group-hover:text-white'}`}>
+                <span className={`text-lg font-medium tracking-tight transition-colors duration-300 ${isOpen ? 'text-gray-900' : 'text-gray-700 group-hover:text-gray-900'}`}>
                     {question}
                 </span>
-                <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ml-4 shrink-0 ${isOpen ? 'border-[#8B31FF] bg-[#8B31FF]/10 rotate-180' : 'border-white/10 bg-transparent group-hover:border-white/30'
+                <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ml-4 shrink-0 ${isOpen ? 'border-blue-600 bg-blue-100 rotate-180' : 'border-gray-200 bg-transparent group-hover:border-gray-300'
                     }`}>
-                    <ChevronDown className={`w-4 h-4 transition-colors duration-300 ${isOpen ? 'text-[#8B31FF]' : 'text-slate-500'}`} />
+                    <ChevronDown className={`w-4 h-4 transition-colors duration-300 ${isOpen ? 'text-blue-600' : 'text-gray-500'}`} />
                 </div>
             </button>
             <AnimatePresence>
@@ -267,7 +266,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: { question: string, answ
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <div className="px-6 pb-6 text-slate-400 leading-relaxed border-t border-white/5 pt-4 mx-6">
+                        <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-200 pt-4 mx-6">
                             {answer}
                         </div>
                     </motion.div>
@@ -393,15 +392,12 @@ export default function OptimizerClient() {
     return (
         <>
             <Header />
-            <main className="bg-[#050510] min-h-screen relative font-sans selection:bg-[#31A8FF]/30 overflow-hidden">
-
-                {/* Global Ambient Background Effects */}
-                <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+            <main className="bg-gray-50 min-h-screen relative font-sans selection:bg-blue-100 overflow-hidden">
 
                 {/* Deep Space Gradients */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-[#31A8FF]/10 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow"></div>
-                    <div className="absolute bottom-[-10%] left-[-5%] w-[800px] h-[800px] bg-[#8B31FF]/10 blur-[120px] rounded-full mix-blend-screen animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+                    <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-blue-100/30 blur-[120px] rounded-full animate-pulse-slow"></div>
+                    <div className="absolute bottom-[-10%] left-[-5%] w-[800px] h-[800px] bg-purple-100/30 blur-[120px] rounded-full animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
                 </div>
 
                 {/* --- HERO SECTION --- */}
@@ -416,15 +412,15 @@ export default function OptimizerClient() {
                             initial={{ opacity: 0, x: -100 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                            className="absolute top-1/2 -translate-y-1/2 left-[2%] xl:left-[2%] w-[280px] bg-[#0A0A0E] border border-white/[0.08] rounded-xl shadow-2xl overflow-hidden"
+                            className="absolute top-1/2 -translate-y-1/2 left-[2%] xl:left-[2%] w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden"
                         >
                             {/* Card Header */}
-                            <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08] bg-white/[0.01]">
+                            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 bg-gray-50">
                                 <div className="flex items-center gap-3">
                                     <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]"></div>
-                                    <span className="text-xs font-semibold text-white tracking-wide">Saúde do Sistema</span>
+                                    <span className="text-xs font-semibold text-gray-900 tracking-wide">Saúde do Sistema</span>
                                 </div>
-                                <span className="text-[10px] font-medium text-emerald-500 px-2 py-0.5 bg-emerald-500/10 rounded-full">Otimizado</span>
+                                <span className="text-[10px] font-medium text-emerald-600 px-2 py-0.5 bg-emerald-100 rounded-full">Otimizado</span>
                             </div>
 
                             {/* Card Content */}
@@ -432,12 +428,12 @@ export default function OptimizerClient() {
                                 {/* CPU Load Row */}
                                 <div className="space-y-1.5">
                                     <div className="flex justify-between items-center text-[11px]">
-                                        <span className="text-slate-400 font-medium">Uso de CPU</span>
-                                        <span className="text-white font-mono">{cpuLoad}%</span>
+                                        <span className="text-gray-500 font-medium">Uso de CPU</span>
+                                        <span className="text-gray-900 font-mono">{cpuLoad}%</span>
                                     </div>
-                                    <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
+                                    <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
                                         <motion.div
-                                            className="h-full bg-white/80 rounded-full"
+                                            className="h-full bg-gray-800 rounded-full"
                                             animate={{ width: `${cpuLoad}%` }}
                                             transition={{ duration: 0.5 }}
                                         />
@@ -447,10 +443,10 @@ export default function OptimizerClient() {
                                 {/* Latency Row */}
                                 <div className="space-y-1.5">
                                     <div className="flex justify-between items-center text-[11px]">
-                                        <span className="text-slate-400 font-medium">Latência do Sistema</span>
-                                        <span className="text-emerald-400 font-mono">{(latencyLoad / 10).toFixed(2)}ms</span>
+                                        <span className="text-gray-500 font-medium">Latência do Sistema</span>
+                                        <span className="text-emerald-600 font-mono">{(latencyLoad / 10).toFixed(2)}ms</span>
                                     </div>
-                                    <div className="h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
+                                    <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
                                         <motion.div
                                             className="h-full bg-emerald-500 rounded-full"
                                             animate={{ width: `${latencyLoad}%` }}
@@ -460,17 +456,17 @@ export default function OptimizerClient() {
                                 </div>
 
                                 {/* Divider */}
-                                <div className="h-px w-full bg-white/[0.06]"></div>
+                                <div className="h-px w-full bg-gray-200"></div>
 
                                 {/* Meta Stats */}
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Processos em 2Âº Plano</div>
-                                        <div className="text-xs text-white font-mono">Otimizando...</div>
+                                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Processos em 2Âº Plano</div>
+                                        <div className="text-xs text-gray-900 font-mono">Otimizando...</div>
                                     </div>
                                     <div>
-                                        <div className="text-[10px] text-slate-500 uppercase tracking-wider mb-1">Perfil</div>
-                                        <div className="text-xs text-[#31A8FF] font-medium">Alta Perf.</div>
+                                        <div className="text-[10px] text-gray-500 uppercase tracking-wider mb-1">Perfil</div>
+                                        <div className="text-xs text-blue-600 font-medium">Alta Perf.</div>
                                     </div>
                                 </div>
                             </div>
@@ -482,21 +478,21 @@ export default function OptimizerClient() {
                             initial={{ opacity: 0, x: 100 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-                            className="absolute top-1/2 -translate-y-1/2 right-[2%] xl:right-[2%] w-[280px] bg-[#0A0A0E] border border-white/[0.08] rounded-xl shadow-2xl overflow-hidden"
+                            className="absolute top-1/2 -translate-y-1/2 right-[2%] xl:right-[2%] w-[280px] bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden"
                         >
                             {/* Card Header */}
-                            <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.08] bg-white/[0.01]">
+                            <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 bg-gray-50">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-2 h-2 rounded-full bg-[#31A8FF]"></div>
-                                    <span className="text-xs font-semibold text-white tracking-wide">Motor de Performance</span>
+                                    <div className="w-2 h-2 rounded-full bg-blue-600"></div>
+                                    <span className="text-xs font-semibold text-gray-900 tracking-wide">Motor de Performance</span>
                                 </div>
-                                <Activity className="w-3 h-3 text-slate-500" />
+                                <Activity className="w-3 h-3 text-gray-500" />
                             </div>
 
                             <div className="p-5 space-y-5">
                                 {/* Subtitle */}
                                 <div className="flex items-center justify-between pb-2">
-                                    <span className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">Otimização em Tempo Real</span>
+                                    <span className="text-[10px] font-medium text-gray-500 uppercase tracking-widest">Otimização em Tempo Real</span>
                                     <div className="flex gap-0.5">
                                         {[1, 2, 3].map(i => <div key={i} className="w-[2px] h-2 bg-emerald-500/50 rounded-full" style={{ animationDelay: i * 0.1 + 's' }}></div>)}
                                     </div>
@@ -504,26 +500,26 @@ export default function OptimizerClient() {
 
                                 {/* Metrics Stack - Clean List */}
                                 <div className="space-y-3">
-                                    <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
-                                        <span className="text-[11px] text-slate-400">Carga Ativa</span>
-                                        <span className="text-xs font-mono text-white">Jogos / Render</span>
+                                    <div className="flex justify-between items-center p-2 rounded-lg bg-gray-100 border border-gray-200">
+                                        <span className="text-[11px] text-gray-500">Carga Ativa</span>
+                                        <span className="text-xs font-mono text-gray-900">Jogos / Render</span>
                                     </div>
 
-                                    <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
-                                        <span className="text-[11px] text-slate-400">Alocação de Rec.</span>
-                                        <span className="text-xs font-mono text-[#31A8FF]">CPU Prioridade Alta</span>
+                                    <div className="flex justify-between items-center p-2 rounded-lg bg-gray-100 border border-gray-200">
+                                        <span className="text-[11px] text-gray-500">Alocação de Rec.</span>
+                                        <span className="text-xs font-mono text-blue-600">CPU Prioridade Alta</span>
                                     </div>
 
-                                    <div className="flex justify-between items-center p-2 rounded-lg bg-white/[0.03] border border-white/[0.02]">
-                                        <span className="text-[11px] text-slate-400">Índice de Estabilidade</span>
-                                        <span className="text-xs font-mono text-emerald-400">99.9%</span>
+                                    <div className="flex justify-between items-center p-2 rounded-lg bg-gray-100 border border-gray-200">
+                                        <span className="text-[11px] text-gray-500">Índice de Estabilidade</span>
+                                        <span className="text-xs font-mono text-emerald-600">99.9%</span>
                                     </div>
                                 </div>
 
                                 {/* Footer Mode */}
-                                <div className="pt-2 border-t border-white/[0.06] flex justify-between items-center">
-                                    <span className="text-[10px] text-slate-500">Modo de Otimização</span>
-                                    <span className="text-[10px] font-bold text-white px-2 py-0.5 border border-white/10 rounded">LATÊNCIA MÍNIMA</span>
+                                <div className="pt-2 border-t border-gray-200 flex justify-between items-center">
+                                    <span className="text-[10px] text-gray-500">Modo de Otimização</span>
+                                    <span className="text-[10px] font-bold text-gray-900 px-2 py-0.5 border border-gray-200 rounded">LATÊNCIA MÍNIMA</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -542,24 +538,24 @@ export default function OptimizerClient() {
                                     initial={{ opacity: 0, y: -20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+                                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-blue-200 shadow-sm"
                                 >
-                                    <Brain className="w-3 h-3 text-[#31A8FF] mr-1" />
-                                    <span className="text-[10px] sm:text-xs font-bold text-white/70 tracking-widest uppercase">Performance Inteligente com I.A.</span>
+                                    <Brain className="w-3 h-3 text-blue-600 mr-1" />
+                                    <span className="text-[10px] sm:text-xs font-bold text-gray-700 tracking-widest uppercase">Performance Inteligente com I.A.</span>
                                 </motion.div>
 
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ delay: 0.4, type: "spring", stiffness: 200 }}
-                                    className="group relative inline-flex items-center gap-2 px-6 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-xl shadow-[0_0_30px_rgba(16,185,129,0.1)] hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all cursor-default"
+                                    className="group relative inline-flex items-center gap-2 px-6 py-1.5 rounded-full bg-emerald-100 border border-emerald-200 shadow-sm hover:bg-emerald-200 hover:border-emerald-300 transition-all cursor-default"
                                 >
                                     <div className="relative flex h-2 w-2">
-                                        <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></div>
-                                        <div className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></div>
+                                        <div className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></div>
+                                        <div className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></div>
                                     </div>
-                                    <span className="text-[11px] font-black text-emerald-400 uppercase tracking-[0.2em] italic">Teste Grátis por 15 Dias</span>
-                                    <Sparkles className="w-3 h-3 text-emerald-400 ml-1 group-hover:rotate-12 transition-transform" />
+                                    <span className="text-[11px] font-black text-emerald-700 uppercase tracking-[0.2em] italic">Teste Grátis por 15 Dias</span>
+                                    <Sparkles className="w-3 h-3 text-emerald-600 ml-1 group-hover:rotate-12 transition-transform" />
                                 </motion.div>
                             </div>
 
@@ -572,15 +568,15 @@ export default function OptimizerClient() {
                                 </span>
                             </h1>
 
-                            <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto font-light mb-12 leading-relaxed tracking-wide">
+                            <p className="text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto mb-12 leading-relaxed tracking-wide">
                                 Desbloqueie o poder real do seu hardware. 
-                                <span className="text-white font-medium"> Engenharia de Kernel </span> para quem não aceita o atraso do Windows.
+                                <span className="text-gray-900 font-medium"> Engenharia de Kernel </span> para quem não aceita o atraso do Windows.
                             </p>
 
                             <div className="flex flex-col items-center gap-3 w-full max-w-lg mx-auto">
                                 <div className="flex items-center gap-2">
-                                    <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
-                                    <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
+                                    <span className="text-xs text-gray-500 font-medium">Versão Atual:</span>
+                                    <span className="px-2.5 py-1 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-md text-xs font-bold text-blue-600">
                                         v1.0.1.1
                                     </span>
                                 </div>
@@ -596,15 +592,15 @@ export default function OptimizerClient() {
                                             BAIXAR SOFTWARE
                                         </a>
                                         <div className="mt-2 text-center">
-                                            <span className="text-[10px] sm:text-xs text-slate-500 font-medium flex items-center justify-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                                                <ShieldCheck className="w-3 h-3 text-emerald-500" /> 
+                                            <span className="text-[10px] sm:text-xs text-gray-500 font-medium flex items-center justify-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
+                                                <ShieldCheck className="w-3 h-3 text-emerald-600" /> 
                                                 Licença trial de 15 dias inclusa no download
                                             </span>
                                         </div>
                                         <a
                                             href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x86)')}
-                                            className="mt-1 text-[10px] text-slate-600 hover:text-[#31A8FF] transition-colors text-center font-medium block"
+                                            className="mt-1 text-[10px] text-gray-600 hover:text-blue-600 transition-colors text-center font-medium block"
                                         >
                                             Para sistemas Windows x86
                                         </a>
@@ -612,7 +608,7 @@ export default function OptimizerClient() {
 
                                     <Link
                                         href="/voltrisoptimizer/como-funciona"
-                                        className="w-full px-6 py-3 bg-white/[0.03] text-white font-medium text-base rounded-lg border border-white/10 hover:bg-white/[0.08] hover:border-white/20 transition-all flex items-center justify-center backdrop-blur-md"
+                                        className="w-full px-6 py-3 bg-white text-gray-900 border border-gray-200 font-medium text-base rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center justify-center"
                                     >
                                         Como Funciona
                                     </Link>
@@ -623,29 +619,29 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- TRUST BAR --- */}
-                <section className="py-12 border-y border-white/5 bg-white/[0.02] relative z-10">
+                <section className="py-12 border-y border-gray-200 bg-white relative z-10">
                     <div className="container mx-auto px-4 flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 hover:opacity-100 transition-opacity">
                         <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
-                            <ShieldCheck className="w-5 h-5 text-emerald-500" />
-                            <span className="text-xs font-bold text-white uppercase tracking-widest">Scanned by VirusTotal</span>
+                            <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                            <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">Scanned by VirusTotal</span>
                         </div>
                         <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
-                            <CheckCircle2 className="w-5 h-5 text-[#31A8FF]" />
-                            <span className="text-xs font-bold text-white uppercase tracking-widest">Zero Spyware / Junkware</span>
+                            <CheckCircle2 className="w-5 h-5 text-blue-600" />
+                            <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">Zero Spyware / Junkware</span>
                         </div>
                         <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
-                            <Cpu className="w-5 h-5 text-[#8B31FF]" />
-                            <span className="text-xs font-bold text-white uppercase tracking-widest">100% C# Native Code</span>
+                            <Cpu className="w-5 h-5 text-purple-600" />
+                            <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">100% C# Native Code</span>
                         </div>
                         <div className="flex items-center gap-3 grayscale hover:grayscale-0 transition-all">
-                            <Lock className="w-5 h-5 text-[#FF4B6B]" />
-                            <span className="text-xs font-bold text-white uppercase tracking-widest">Microsoft Certified Safety</span>
+                            <Lock className="w-5 h-5 text-pink-600" />
+                            <span className="text-xs font-bold text-gray-900 uppercase tracking-widest">Microsoft Certified Safety</span>
                         </div>
                     </div>
                 </section>
 
                 {/* --- PREMIUM ENTERPRISE FUNCTIONALITY SHOWCASE --- */}
-                <section className="py-32 relative z-10 bg-gradient-to-b from-[#050510] via-[#08080C] to-[#0A0A0F]">
+                <section className="py-32 relative z-10 bg-white">
                     <div className="container mx-auto px-4">
                         {/* Section Header */}
                         <motion.div
@@ -664,15 +660,15 @@ export default function OptimizerClient() {
                             
                             <div className="space-y-8">
                                 <div className="flex items-center justify-center gap-6">
-                                    <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-white via-[#31A8FF] to-[#8B31FF] bg-clip-text text-transparent">
+                                    <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 bg-clip-text text-transparent">
                                         Suite Voltris Enterprise
                                     </h1>
-                                    <div className="px-6 py-3 rounded-full bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] flex items-center gap-3 shadow-2xl">
+                                    <div className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center gap-3 shadow-lg">
                                         <Sparkles className="w-5 h-5 text-white" />
                                         <span className="text-lg font-bold text-white">25 Ferramentas</span>
                                     </div>
                                 </div>
-                                <p className="text-2xl text-slate-300 max-w-5xl mx-auto leading-relaxed">
+                                <p className="text-2xl text-gray-500 max-w-5xl mx-auto leading-relaxed">
                                     Transforme seu PC em uma máquina de nível empresarial com nossa suite completa de 25 ferramentas profissionais de otimização. 
                                     Construída com tecnologia de ponta e projetada para performance máxima.
                                 </p>
@@ -811,10 +807,10 @@ export default function OptimizerClient() {
                                     className="relative group"
                                 >
                                     {/* Background Gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-[#FF8F4B]/5 rounded-4xl blur-3xl group-hover:from-[#FF4B6B]/10 group-hover:to-[#FF8F4B]/10 transition-all duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-orange-100/50 rounded-4xl blur-3xl group-hover:from-pink-200/50 group-hover:to-orange-200/50 transition-all duration-700" />
                                     
                                     {/* Card */}
-                                    <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-4xl p-12 group-hover:border-[#FF4B6B]/30 transition-all duration-500">
+                                    <div className="relative bg-white border border-gray-200 rounded-3xl p-12 group-hover:border-pink-300 transition-all duration-500 shadow-sm">
                                         {/* Header */}
                                         <div className="flex items-start justify-between mb-8">
                                             <div className="w-24 h-24 rounded-4xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center relative overflow-hidden">
@@ -823,7 +819,7 @@ export default function OptimizerClient() {
                                                     <MousePointer2 />
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#FF8F4B]">
+                                            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-600 to-orange-500">
                                                 <Play className="w-5 h-5 text-white" />
                                                 <span className="text-base font-bold text-white">MODO GAMER</span>
                                             </div>
@@ -831,14 +827,14 @@ export default function OptimizerClient() {
                                         
                                         {/* Content */}
                                         <div className="space-y-8">
-                                            <h3 className="text-4xl font-bold text-white">Gamer</h3>
-                                            <p className="text-xl text-slate-300 leading-relaxed">
+                                            <h3 className="text-4xl font-bold text-gray-900">Gamer</h3>
+                                            <p className="text-xl text-gray-600 leading-relaxed">
                                                 Otimização de performance extrema com detecção inteligente de jogos e algoritmos especializados de enhancement
                                             </p>
                                             
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                 <div>
-                                                    <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                                    <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                         <Target className="w-6 h-6" />
                                                         Detecção Automática
                                                     </h4>
@@ -860,14 +856,14 @@ export default function OptimizerClient() {
                                                                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
                                                                     <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300 text-lg">{item}</span>
+                                                                <span className="text-gray-700 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
                                                 </div>
                                                 
                                                 <div>
-                                                    <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                                    <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                         <TrendingUp className="w-6 h-6" />
                                                         Ganhos de Performance
                                                     </h4>
@@ -889,7 +885,7 @@ export default function OptimizerClient() {
                                                                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
                                                                     <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300 text-lg">{item}</span>
+                                                                <span className="text-gray-700 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
@@ -908,10 +904,10 @@ export default function OptimizerClient() {
                                     className="relative group"
                                 >
                                     {/* Background Gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-[#FF0055]/5 to-[#FF5588]/5 rounded-4xl blur-3xl group-hover:from-[#FF0055]/10 group-hover:to-[#FF5588]/10 transition-all duration-700" />
+                                    <div className="absolute inset-0 bg-gradient-to-br from-red-100/50 to-rose-100/50 rounded-4xl blur-3xl group-hover:from-red-200/50 group-hover:to-rose-200/50 transition-all duration-700" />
                                     
                                     {/* Card */}
-                                    <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-4xl p-12 group-hover:border-[#FF0055]/30 transition-all duration-500">
+                                    <div className="relative bg-white border border-gray-200 rounded-3xl p-12 group-hover:border-red-300 transition-all duration-500 shadow-sm">
                                         {/* Header */}
                                         <div className="flex items-start justify-between mb-8">
                                             <div className="w-24 h-24 rounded-4xl bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center relative overflow-hidden">
@@ -920,7 +916,7 @@ export default function OptimizerClient() {
                                                     <ShieldCheck />
                                                 </div>
                                             </div>
-                                            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF0055] to-[#FF5588]">
+                                            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-red-600 to-rose-500">
                                                 <Shield className="w-5 h-5 text-white" />
                                                 <span className="text-base font-bold text-white">SEGURANÇA MÁXIMA</span>
                                             </div>
@@ -928,14 +924,14 @@ export default function OptimizerClient() {
                                         
                                         {/* Content */}
                                         <div className="space-y-8">
-                                            <h3 className="text-4xl font-bold text-white">Voltris Shield</h3>
-                                            <p className="text-xl text-slate-300 leading-relaxed">
+                                            <h3 className="text-4xl font-bold text-gray-900">Voltris Shield</h3>
+                                            <p className="text-xl text-gray-600 leading-relaxed">
                                                 Sistema de proteção multicamadas avançado com monitoramento em tempo real e detecção inteligente de ameaças
                                             </p>
                                             
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                 <div>
-                                                    <h4 className="text-2xl font-semibold text-[#FF0055] mb-6 flex items-center gap-3">
+                                                    <h4 className="text-2xl font-semibold text-red-600 mb-6 flex items-center gap-3">
                                                         <Monitor className="w-6 h-6" />
                                                         Opções de Scan
                                                     </h4>
@@ -957,14 +953,14 @@ export default function OptimizerClient() {
                                                                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center">
                                                                     <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300 text-lg">{item}</span>
+                                                                <span className="text-gray-700 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
                                                 </div>
                                                 
                                                 <div>
-                                                    <h4 className="text-2xl font-semibold text-[#FF0055] mb-6 flex items-center gap-3">
+                                                    <h4 className="text-2xl font-semibold text-red-600 mb-6 flex items-center gap-3">
                                                         <Lock className="w-6 h-6" />
                                                         Matriz de Proteção
                                                     </h4>
@@ -986,7 +982,7 @@ export default function OptimizerClient() {
                                                                 <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF0055] to-[#FF5588] flex items-center justify-center">
                                                                     <Check className="w-5 h-5 text-white" />
                                                                 </div>
-                                                                <span className="text-slate-300 text-lg">{item}</span>
+                                                                <span className="text-gray-700 text-lg">{item}</span>
                                                             </motion.div>
                                                         ))}
                                                     </ul>
@@ -1015,10 +1011,10 @@ export default function OptimizerClient() {
                                 className="relative group max-w-6xl mx-auto"
                             >
                                 {/* Background Effect */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-[#FF8F4B]/5 rounded-4xl blur-3xl group-hover:from-[#FF4B6B]/10 group-hover:to-[#FF8F4B]/10 transition-all duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-orange-100/50 rounded-4xl blur-3xl group-hover:from-pink-200/50 group-hover:to-orange-200/50 transition-all duration-700" />
                                 
                                 {/* Card */}
-                                <div className="relative bg-[#0A0A0F] border border-white/[0.05] rounded-4xl p-16 group-hover:border-[#FF4B6B]/30 transition-all duration-500">
+                                <div className="relative bg-white border border-gray-200 rounded-3xl p-16 group-hover:border-pink-300 transition-all duration-500 shadow-sm">
                                     {/* Header */}
                                     <div className="flex items-center justify-between mb-12">
                                         <div className="flex items-center gap-8">
@@ -1029,11 +1025,11 @@ export default function OptimizerClient() {
                                                 </div>
                                             </div>
                                             <div>
-                                                <h3 className="text-4xl font-bold text-white mb-3">Stream Hub</h3>
-                                                <p className="text-slate-300 text-lg">Centro profissional de otimização de streaming</p>
+                                                <h3 className="text-4xl font-bold text-gray-900 mb-3">Stream Hub</h3>
+                                                <p className="text-gray-600 text-lg">Centro profissional de otimização de streaming</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#FF4B6B] to-[#FF8F4B]">
+                                        <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-pink-600 to-orange-500">
                                             <Radio className="w-5 h-5 text-white" />
                                             <span className="text-base font-bold text-white">READY TO GO</span>
                                         </div>
@@ -1042,7 +1038,7 @@ export default function OptimizerClient() {
                                     {/* Features Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                                         <div>
-                                            <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                            <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                 <Settings className="w-6 h-6" />
                                                 Otimização
                                             </h4>
@@ -1058,14 +1054,14 @@ export default function OptimizerClient() {
                                                         <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
                                                             <Check className="w-5 h-5 text-white" />
                                                         </div>
-                                                        <span className="text-slate-300 text-lg">{item}</span>
+                                                        <span className="text-gray-700 text-lg">{item}</span>
                                                     </motion.div>
                                                 ))}
                                             </ul>
                                         </div>
                                         
                                         <div>
-                                            <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                            <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                 <Cpu className="w-6 h-6" />
                                                 Performance
                                             </h4>
@@ -1081,14 +1077,14 @@ export default function OptimizerClient() {
                                                         <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
                                                             <Check className="w-5 h-5 text-white" />
                                                         </div>
-                                                        <span className="text-slate-300 text-lg">{item}</span>
+                                                        <span className="text-gray-700 text-lg">{item}</span>
                                                     </motion.div>
                                                 ))}
                                             </ul>
                                         </div>
                                         
                                         <div>
-                                            <h4 className="text-2xl font-semibold text-[#FF4B6B] mb-6 flex items-center gap-3">
+                                            <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                 <Star className="w-6 h-6" />
                                                 Qualidade
                                             </h4>
@@ -1104,7 +1100,7 @@ export default function OptimizerClient() {
                                                         <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#FF4B6B] to-[#FF8F4B] flex items-center justify-center">
                                                             <Check className="w-5 h-5 text-white" />
                                                         </div>
-                                                        <span className="text-slate-300 text-lg">{item}</span>
+                                                        <span className="text-gray-700 text-lg">{item}</span>
                                                     </motion.div>
                                                 ))}
                                             </ul>
@@ -1297,11 +1293,11 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- SEGMENTS SECTION --- */}
-                <section className="py-32 relative z-10 bg-[#050510]">
+                <section className="py-32 relative z-10 bg-gray-100">
                     <div className="container mx-auto px-4">
                         <div className="text-center mb-20">
-                            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Uma Plataforma. Múltiplos Perfis.</h2>
-                            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">Uma Plataforma. Múltiplos Perfis.</h2>
+                            <p className="text-gray-500 text-lg max-w-2xl mx-auto">
                                 O Voltris Optimizer identifica seu perfil e adapta as otimizações de Kernel para entregar o que você precisa.
                             </p>
                         </div>
@@ -1311,22 +1307,22 @@ export default function OptimizerClient() {
                                 <motion.div
                                     key={idx}
                                     whileHover={{ y: -10 }}
-                                    className={`p-10 rounded-[2rem] bg-[#0A0A0F] border ${seg.color} border-opacity-20 hover:border-opacity-100 transition-all duration-300 relative group overflow-hidden flex flex-col`}
+                                    className={`p-10 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 relative group overflow-hidden flex flex-col shadow-sm`}
                                 >
                                     {/* Abstract BG Icon */}
                                     <div className="absolute top-[-20px] right-[-20px] opacity-[0.03] group-hover:opacity-[0.08] transition-opacity scale-[3]">
                                         {seg.icon}
                                     </div>
 
-                                    <div className="mb-8 p-4 bg-white/5 rounded-2xl w-fit border border-white/5 backdrop-blur-sm group-hover:scale-110 transition-transform">{seg.icon}</div>
-                                    <h3 className="text-2xl font-bold text-white mb-4 leading-tight">{seg.title}</h3>
-                                    <p className="text-slate-400 mb-8 text-sm leading-relaxed flex-grow">{seg.desc}</p>
+                                    <div className="mb-8 p-4 bg-gray-100 rounded-2xl w-fit border border-gray-200 group-hover:scale-110 transition-transform">{seg.icon}</div>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">{seg.title}</h3>
+                                    <p className="text-gray-600 mb-8 text-sm leading-relaxed flex-grow">{seg.desc}</p>
 
-                                    <div className="pt-8 border-t border-white/5">
+                                    <div className="pt-8 border-t border-gray-200">
                                         <ul className="space-y-3">
                                             {seg.features.map((feat, fIdx) => (
-                                                <li key={fIdx} className="flex items-center gap-3 text-sm text-slate-300 font-medium">
-                                                    <CheckCircle2 className="w-4 h-4 text-[#31A8FF] shrink-0" />
+                                                <li key={fIdx} className="flex items-center gap-3 text-sm text-gray-700 font-medium">
+                                                    <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
                                                     {feat}
                                                 </li>
                                             ))}
@@ -1339,14 +1335,14 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- STATS BAR --- */}
-                <section className="py-16 relative z-10 border-y border-white/5 bg-[#08080C]">
+                <section className="py-16 relative z-10 border-y border-gray-200 bg-white">
                     <div className="container mx-auto px-4">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-6xl mx-auto text-center">
                             {stats.map((stat, idx) => (
                                 <div key={idx} className="group">
-                                    <h3 className="text-4xl md:text-6xl font-black text-white mb-2 tracking-tight group-hover:text-[#31A8FF] transition-colors">{stat.value}</h3>
-                                    <p className="text-xs md:text-sm font-bold text-slate-500 uppercase tracking-widest mb-1">{stat.label}</p>
-                                    <p className="text-[10px] md:text-xs text-slate-600 font-medium">{stat.sub}</p>
+                                    <h3 className="text-4xl md:text-6xl font-black text-gray-900 mb-2 tracking-tight group-hover:text-blue-600 transition-colors">{stat.value}</h3>
+                                    <p className="text-xs md:text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">{stat.label}</p>
+                                    <p className="text-[10px] md:text-xs text-gray-600 font-medium">{stat.sub}</p>
                                 </div>
                             ))}
                         </div>
@@ -1354,16 +1350,16 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- DEEP TECH FEATURES --- */}
-                <section className="py-32 relative z-10">
+                <section className="py-32 relative z-10 bg-gray-50">
                     <div className="container mx-auto px-4">
                         <div className="flex flex-col md:flex-row items-end justify-between mb-20 max-w-7xl mx-auto gap-8">
                             <div className="max-w-2xl">
-                                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white tracking-tight">Engenharia Sob o Capô</h2>
-                                <p className="text-slate-400 text-lg leading-relaxed">
+                                <h2 className="text-3xl md:text-5xl font-bold mb-6 text-gray-900 tracking-tight">Engenharia Sob o Capô</h2>
+                                <p className="text-gray-500 text-lg leading-relaxed">
                                     Segurança e Performance não são opostos. O Voltris atua em camadas profundas do Windows (Registry, Services, Kernel) para desbloquear hardware adormecido de forma segura.
                                 </p>
                             </div>
-                            <Link href="/voltrisoptimizer/documentacao" className="text-[#31A8FF] font-bold hover:text-white transition-colors flex items-center gap-2">
+                            <Link href="/voltrisoptimizer/documentacao" className="text-blue-600 font-bold hover:text-blue-700 transition-colors flex items-center gap-2">
                                 Documentação Técnica <ChevronDown className="-rotate-90 w-4 h-4" />
                             </Link>
                         </div>
@@ -1376,15 +1372,15 @@ export default function OptimizerClient() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.1 }}
                                     whileHover={{ y: -5 }}
-                                    className="group p-8 rounded-[2rem] bg-[#0A0A0F] border border-white/5 hover:border-[#31A8FF]/30 transition-all relative overflow-hidden"
+                                    className="group p-8 rounded-2xl bg-white border border-gray-200 hover:border-blue-300 transition-all relative overflow-hidden shadow-sm"
                                 >
-                                    <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${feature.gradient} opacity-[0.03] blur-[50px] rounded-full group-hover:opacity-[0.1] transition-opacity`}></div>
-                                    <div className={`w-14 h-14 rounded-2xl bg-[#141419] border border-white/5 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform relative z-10 shadow-lg`}>
+                                    <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-br ${feature.gradient} opacity-[0.05] blur-[50px] rounded-full group-hover:opacity-[0.15] transition-opacity`}></div>
+                                    <div className={`w-14 h-14 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 mb-6 group-hover:scale-110 transition-transform relative z-10 shadow-sm`}>
                                         <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-20 rounded-2xl transition-opacity`}></div>
                                         <div className="relative z-10">{feature.icon}</div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3 relative z-10">{feature.title}</h3>
-                                    <p className="text-slate-400 relative z-10 text-sm leading-relaxed">{feature.desc}</p>
+                                    <h3 className="text-xl font-bold text-gray-900 mb-3 relative z-10">{feature.title}</h3>
+                                    <p className="text-gray-600 relative z-10 text-sm leading-relaxed">{feature.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -1392,14 +1388,14 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- COMPARISON TABLE (E-E-A-T) --- */}
-                <section className="py-24 relative z-10 bg-[#08080C]">
+                <section className="py-24 relative z-10 bg-gray-100">
                     <div className="container mx-auto px-4">
-                        <div className="max-w-5xl mx-auto bg-[#0A0A0E] rounded-[3rem] border border-white/5 p-8 md:p-12 overflow-hidden relative">
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-[#31A8FF] to-transparent opacity-50"></div>
+                        <div className="max-w-5xl mx-auto bg-white rounded-3xl border border-gray-200 p-8 md:p-12 overflow-hidden relative shadow-sm">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[1px] bg-gradient-to-r from-transparent via-blue-600 to-transparent opacity-50"></div>
 
                             <div className="text-center mb-16">
-                                <h2 className="text-3xl font-bold text-white mb-4">Por que a Elite Escolhe Voltris?</h2>
-                                <h3 className="text-xl font-medium text-slate-400 mb-2">Comparação técnica com "otimizadores" comuns de mercado</h3>
+                                <h2 className="text-3xl font-bold text-gray-900 mb-4">Por que a Elite Escolhe Voltris?</h2>
+                                <h3 className="text-xl font-medium text-gray-500 mb-2">Comparação técnica com "otimizadores" comuns de mercado</h3>
                             </div>
 
                             <div className="space-y-1">
@@ -1411,19 +1407,19 @@ export default function OptimizerClient() {
                                     { feat: 'Suporte Humano Dedicado', us: true, others: false },
                                     { feat: 'Ajustes Seguros de Kernel (Registry)', us: true, others: false },
                                 ].map((row, i) => (
-                                    <div key={i} className="flex items-center justify-between p-5 border-b border-white/[0.03] last:border-0 hover:bg-white/[0.02] transition-colors rounded-xl">
-                                        <span className="font-medium text-slate-300 text-sm md:text-base">{row.feat}</span>
+                                    <div key={i} className="flex items-center justify-between p-5 border-b border-gray-200 last:border-0 hover:bg-gray-50 transition-colors rounded-xl">
+                                        <span className="font-medium text-gray-700 text-sm md:text-base">{row.feat}</span>
                                         <div className="flex items-center gap-12 md:gap-24 pr-4">
                                             <div className="flex flex-col items-center opacity-40 grayscale group-hover:grayscale-0 transition-all">
                                                 <span className="text-[10px] uppercase tracking-wider mb-2 md:hidden font-semibold">Outros</span>
-                                                {row.others ? <CheckCircle2 className="w-5 h-5 text-slate-400" /> : <Minus className="w-5 h-5 text-slate-600" />}
+                                                {row.others ? <CheckCircle2 className="w-5 h-5 text-gray-400" /> : <Minus className="w-5 h-5 text-gray-600" />}
                                             </div>
                                             <div className="flex flex-col items-center relative">
-                                                <span className="text-[10px] text-[#31A8FF] uppercase tracking-wider mb-2 md:hidden font-bold">Voltris</span>
+                                                <span className="text-[10px] text-blue-600 uppercase tracking-wider mb-2 md:hidden font-bold">Voltris</span>
                                                 {row.us ? (
                                                     <div className="relative">
-                                                        <div className="absolute inset-0 bg-[#31A8FF] blur-md opacity-40"></div>
-                                                        <CheckCircle2 className="w-6 h-6 text-[#31A8FF] relative z-10" />
+                                                        <div className="absolute inset-0 bg-blue-600 blur-md opacity-40"></div>
+                                                        <CheckCircle2 className="w-6 h-6 text-blue-600 relative z-10" />
                                                     </div>
                                                 ) : <XCircle className="w-6 h-6 text-red-500" />}
                                             </div>
@@ -1436,25 +1432,25 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- SEO SECTION: PARA GAMERS E STREAMERS --- */}
-                <section className="py-32 relative z-10 bg-[#050510]">
+                <section className="py-32 relative z-10 bg-white">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-16">
-                                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                    Otimização de PC para <span className="bg-gradient-to-r from-[#00FF94] to-[#31A8FF] text-transparent bg-clip-text">Gamers e Streamers</span>
+                                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                                    Otimização de PC para <span className="bg-gradient-to-r from-emerald-500 to-blue-600 text-transparent bg-clip-text">Gamers e Streamers</span>
                                 </h2>
-                                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed">
+                                <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
                                     O primeiro software brasileiro SaaS com controle remoto de otimização. Aumente FPS, reduza lag e elimine travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite.
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                                <div className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-8 hover:border-[#00FF94]/30 transition-all">
-                                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                        <Video className="w-6 h-6 text-[#00FF94]" />
+                                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-emerald-300 transition-all shadow-sm">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                                        <Video className="w-6 h-6 text-emerald-600" />
                                         Para Streamers Profissionais
                                     </h3>
-                                    <p className="text-slate-400 mb-6 leading-relaxed">
+                                    <p className="text-gray-600 mb-6 leading-relaxed">
                                         Transmita em alta qualidade sem comprometer o desempenho do jogo. Nossa tecnologia otimiza OBS, Streamlabs e XSplit para lives sem drops de frames.
                                     </p>
                                     <ul className="space-y-3">
@@ -1464,20 +1460,20 @@ export default function OptimizerClient() {
                                             'Melhor desempenho em streaming simultâneo',
                                             'Priorização de processos de captura'
                                         ].map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
-                                                <CheckCircle2 className="w-5 h-5 text-[#00FF94] shrink-0 mt-0.5" />
+                                            <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                                                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                                                 <span>{item}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
 
-                                <div className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-8 hover:border-[#FF4B6B]/30 transition-all">
-                                    <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                                        <MousePointer2 className="w-6 h-6 text-[#FF4B6B]" />
+                                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-pink-300 transition-all shadow-sm">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                                        <MousePointer2 className="w-6 h-6 text-pink-600" />
                                         Para Gamers Competitivos
                                     </h3>
-                                    <p className="text-slate-400 mb-6 leading-relaxed">
+                                    <p className="text-gray-600 mb-6 leading-relaxed">
                                         Maximize seu potencial competitivo com otimizações que reduzem input lag e garantem frames estáveis nos momentos críticos.
                                     </p>
                                     <ul className="space-y-3">
@@ -1487,8 +1483,8 @@ export default function OptimizerClient() {
                                             'Estabilidade de frame time (1% lows)',
                                             'Otimização para jogos online e eSports'
                                         ].map((item, i) => (
-                                            <li key={i} className="flex items-start gap-3 text-sm text-slate-300">
-                                                <CheckCircle2 className="w-5 h-5 text-[#FF4B6B] shrink-0 mt-0.5" />
+                                            <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
+                                                <CheckCircle2 className="w-5 h-5 text-pink-600 shrink-0 mt-0.5" />
                                                 <span>{item}</span>
                                             </li>
                                         ))}
@@ -1496,13 +1492,13 @@ export default function OptimizerClient() {
                                 </div>
                             </div>
 
-                            <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8">
-                                <h3 className="text-xl font-bold text-white mb-4">Eliminação de Stuttering (Gargalos)</h3>
-                                <p className="text-slate-400 leading-relaxed mb-4">
-                                    O VOLTRIS OPTIMIZER é o único com <strong className="text-white">Limpeza de Shader Cache (NVIDIA/AMD)</strong>. Isso elimina aquelas travadinhas chatas (stuttering) que acontecem quando o jogo precisa compilar shaders em tempo real.
+                            <div className="bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 rounded-2xl p-8">
+                                <h3 className="text-xl font-bold text-gray-900 mb-4">Eliminação de Stuttering (Gargalos)</h3>
+                                <p className="text-gray-600 leading-relaxed mb-4">
+                                    O VOLTRIS OPTIMIZER é o único com <strong className="text-gray-900">Limpeza de Shader Cache (NVIDIA/AMD)</strong>. Isso elimina aquelas travadinhas chatas (stuttering) que acontecem quando o jogo precisa compilar shaders em tempo real.
                                 </p>
-                                <p className="text-slate-400 leading-relaxed">
-                                    Ao ajustar a <strong className="text-white">Timer Resolution (timeBeginPeriod)</strong>, conseguimos uma redução de latência comparável a ferramentas profissionais como ISLC, garantindo que cada clique seja registrado no milissegundo exato.
+                                <p className="text-gray-600 leading-relaxed">
+                                    Ao ajustar a <strong className="text-gray-900">Timer Resolution (timeBeginPeriod)</strong>, conseguimos uma redução de latência comparável a ferramentas profissionais como ISLC, garantindo que cada clique seja registrado no milissegundo exato.
                                 </p>
                             </div>
                         </div>
@@ -1510,16 +1506,16 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- SHIELD SECTION --- */}
-                <section className="py-32 relative z-10 bg-[#08080C] border-y border-white/5">
+                <section className="py-32 relative z-10 bg-gray-100 border-y border-gray-200">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
                             <div className="w-full lg:w-1/2">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 border border-emerald-200 mb-6">
                                     <ShieldCheck className="w-3 h-3 text-emerald-500" />
                                     <span className="text-xs font-bold text-emerald-500 tracking-widest uppercase">Proteção Ativa</span>
                                 </div>
-                                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Voltris Shield™</h2>
-                                <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+                                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Voltris Shield™</h2>
+                                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                                     Não é apenas performance, é segurança. O Voltris Shield monitora seu sistema contra softwares intrusivos que tentam roubar recursos.
                                 </p>
                                 <div className="space-y-4">
@@ -1528,43 +1524,43 @@ export default function OptimizerClient() {
                                         { title: 'Anti-Adware Engine', desc: 'Identifica e remove barras de ferramentas e softwares de publicidade.' },
                                         { title: 'Proteção de Processos Críticos', desc: 'Garante que processos vitais do Windows não sejam suspensos ou corrompidos.' }
                                     ].map((item, i) => (
-                                        <div key={i} className="flex gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5">
-                                            <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></div>
+                                        <div key={i} className="flex gap-4 p-4 rounded-xl bg-white border border-gray-200">
+                                            <div className="w-2 h-2 rounded-full bg-emerald-600 mt-2 shrink-0"></div>
                                             <div>
-                                                <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
-                                                <p className="text-xs text-slate-500">{item.desc}</p>
+                                                <h4 className="text-gray-900 font-bold text-sm mb-1">{item.title}</h4>
+                                                <p className="text-xs text-gray-500">{item.desc}</p>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
                             </div>
                             <div className="w-full lg:w-1/2 relative">
-                                <div className="absolute inset-0 bg-emerald-500/10 blur-[100px] rounded-full"></div>
-                                <div className="relative p-1 bg-gradient-to-br from-white/10 to-transparent rounded-[2.5rem]">
-                                    <div className="bg-[#050510] rounded-[2.4rem] p-8 border border-white/5">
+                                <div className="absolute inset-0 bg-emerald-200/50 blur-[100px] rounded-full"></div>
+                                <div className="relative p-1 bg-gradient-to-br from-white/50 to-transparent rounded-[2.5rem]">
+                                    <div className="bg-white rounded-[2.4rem] p-8 border border-gray-200 shadow-sm">
                                         <div className="flex items-center justify-between mb-8">
-                                            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Atividade do Shield</span>
+                                            <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Atividade do Shield</span>
                                             <div className="flex gap-1">
-                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/30"></div>
+                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></div>
+                                                <div className="w-1.5 h-1.5 rounded-full bg-emerald-600/30"></div>
                                             </div>
                                         </div>
                                         <div className="space-y-6">
-                                            <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-                                                <motion.div initial={{ width: 0 }} whileInView={{ width: "95%" }} className="h-full bg-emerald-500" />
+                                            <div className="h-2 w-full bg-gray-200 rounded-full overflow-hidden">
+                                                <motion.div initial={{ width: 0 }} whileInView={{ width: "95%" }} className="h-full bg-emerald-600" />
                                             </div>
-                                            <div className="flex justify-between items-center bg-white/[0.02] p-4 rounded-xl border border-white/5">
-                                                <span className="text-xs text-slate-400">Status da Varredura</span>
-                                                <span className="text-xs font-bold text-emerald-500">PROTEGIDO</span>
+                                            <div className="flex justify-between items-center bg-gray-100 p-4 rounded-xl border border-gray-200">
+                                                <span className="text-xs text-gray-500">Status da Varredura</span>
+                                                <span className="text-xs font-bold text-emerald-600">PROTEGIDO</span>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4">
-                                                <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5 text-center">
-                                                    <div className="text-xl font-bold text-white mb-1">0</div>
-                                                    <div className="text-[10px] text-slate-500 uppercase">Ameaças Ativas</div>
+                                                <div className="bg-gray-100 p-4 rounded-xl border border-gray-200 text-center">
+                                                    <div className="text-xl font-bold text-gray-900 mb-1">0</div>
+                                                    <div className="text-[10px] text-gray-500 uppercase">Ameaças Ativas</div>
                                                 </div>
-                                                <div className="bg-white/[0.02] p-4 rounded-xl border border-white/5 text-center">
-                                                    <div className="text-xl font-bold text-emerald-500 mb-1">342</div>
-                                                    <div className="text-[10px] text-slate-500 uppercase">Processos Limpos</div>
+                                                <div className="bg-gray-100 p-4 rounded-xl border border-gray-200 text-center">
+                                                    <div className="text-xl font-bold text-emerald-600 mb-1">342</div>
+                                                    <div className="text-[10px] text-gray-500 uppercase">Processos Limpos</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1576,59 +1572,59 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- SEO SECTION: PARA EMPRESAS --- */}
-                <section className="py-32 relative z-10 bg-[#08080C]">
+                <section className="py-32 relative z-10 bg-white">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                                 <div>
-                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
-                                        <Briefcase className="w-3 h-3 text-[#31A8FF]" />
-                                        <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Tecnologia Exclusiva de Gestão Remota</span>
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 mb-6">
+                                        <Briefcase className="w-3 h-3 text-blue-600" />
+                                        <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Tecnologia Exclusiva de Gestão Remota</span>
                                     </div>
-                                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                        Controle Total de 1 ou 1000 <span className="bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">Computadores via Nuvem</span>
+                                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                                        Controle Total de 1 ou 1000 <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-transparent bg-clip-text">Computadores via Nuvem</span>
                                     </h2>
-                                    <p className="text-lg text-slate-400 mb-8 leading-relaxed">
+                                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                                         O Voltris Optimizer é o único software no mercado brasileiro que permite otimizar, gerenciar e monitorar toda a frota de PCs da sua empresa sem precisar de acesso físico.
                                     </p>
 
                                     <div className="space-y-4 mb-8">
-                                        <div className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#31A8FF]/20 transition-all">
-                                            <div className="w-10 h-10 rounded-lg bg-[#31A8FF]/10 flex items-center justify-center shrink-0">
-                                                <BarChart3 className="w-5 h-5 text-[#31A8FF]" />
+                                        <div className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 transition-all shadow-sm">
+                                            <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center shrink-0">
+                                                <BarChart3 className="w-5 h-5 text-blue-600" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold mb-1">Gestão de Performance via Nuvem</h4>
-                                                <p className="text-sm text-slate-400">Monitore e otimize máquinas corporativas remotamente através do dashboard web</p>
+                                                <h4 className="text-gray-900 font-bold mb-1">Gestão de Performance via Nuvem</h4>
+                                                <p className="text-sm text-gray-600">Monitore e otimize máquinas corporativas remotamente através do dashboard web</p>
                                             </div>
                                         </div>
 
-                                        <div className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#8B31FF]/20 transition-all">
-                                            <div className="w-10 h-10 rounded-lg bg-[#8B31FF]/10 flex items-center justify-center shrink-0">
-                                                <Lock className="w-5 h-5 text-[#8B31FF]" />
+                                        <div className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-xl hover:border-purple-300 transition-all shadow-sm">
+                                            <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center shrink-0">
+                                                <Lock className="w-5 h-5 text-purple-600" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold mb-1">Software SaaS de Otimização Empresarial</h4>
-                                                <p className="text-sm text-slate-400">Tecnologia inovadora no Brasil: controle total via web sem necessidade de acesso físico</p>
+                                                <h4 className="text-gray-900 font-bold mb-1">Software SaaS de Otimização Empresarial</h4>
+                                                <p className="text-sm text-gray-600">Tecnologia inovadora no Brasil: controle total via web sem necessidade de acesso físico</p>
                                             </div>
                                         </div>
 
-                                        <div className="flex items-start gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#FF4B6B]/20 transition-all">
-                                            <div className="w-10 h-10 rounded-lg bg-[#FF4B6B]/10 flex items-center justify-center shrink-0">
-                                                <Activity className="w-5 h-5 text-[#FF4B6B]" />
+                                        <div className="flex items-start gap-4 p-4 bg-white border border-gray-200 rounded-xl hover:border-pink-300 transition-all shadow-sm">
+                                            <div className="w-10 h-10 rounded-lg bg-pink-100 flex items-center justify-center shrink-0">
+                                                <Activity className="w-5 h-5 text-pink-600" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold mb-1">Controle de Desempenho de Máquinas Corporativas</h4>
-                                                <p className="text-sm text-slate-400">Reduza chamados de TI e aumente produtividade com otimização preventiva</p>
+                                                <h4 className="text-gray-900 font-bold mb-1">Controle de Desempenho de Máquinas Corporativas</h4>
+                                                <p className="text-sm text-gray-600">Reduza chamados de TI e aumente produtividade com otimização preventiva</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="relative">
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[80px] rounded-full"></div>
-                                    <div className="relative bg-[#0A0A0F] border border-white/5 rounded-3xl p-8">
-                                        <h3 className="text-2xl font-bold text-white mb-6">Benefícios Corporativos</h3>
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/50 to-purple-200/50 blur-[80px] rounded-full"></div>
+                                    <div className="relative bg-white border border-gray-200 rounded-3xl p-8 shadow-sm">
+                                        <h3 className="text-2xl font-bold text-gray-900 mb-6">Benefícios Corporativos</h3>
                                         <div className="space-y-6">
                                             {[
                                                 { title: 'Redução de Custos com TI', desc: 'Menos chamados técnicos e maior vida útil do hardware' },
@@ -1637,12 +1633,12 @@ export default function OptimizerClient() {
                                                 { title: 'Tecnologia Brasileira', desc: 'Primeiro software SaaS nacional com controle remoto de otimização' }
                                             ].map((benefit, i) => (
                                                 <div key={i} className="flex items-start gap-3">
-                                                    <div className="w-6 h-6 rounded-full bg-[#31A8FF]/20 flex items-center justify-center shrink-0 mt-1">
-                                                        <CheckCircle2 className="w-4 h-4 text-[#31A8FF]" />
+                                                    <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
+                                                        <CheckCircle2 className="w-4 h-4 text-blue-600" />
                                                     </div>
                                                     <div>
-                                                        <h4 className="text-white font-bold text-sm mb-1">{benefit.title}</h4>
-                                                        <p className="text-xs text-slate-400">{benefit.desc}</p>
+                                                        <h4 className="text-gray-900 font-bold text-sm mb-1">{benefit.title}</h4>
+                                                        <p className="text-xs text-gray-600">{benefit.desc}</p>
                                                     </div>
                                                 </div>
                                             ))}
@@ -1655,21 +1651,21 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- SEO SECTION: PARA USUÁRIOS COMUNS --- */}
-                <section className="py-32 relative z-10 bg-[#050510]">
+                <section className="py-32 relative z-10 bg-gray-50">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto">
                             <div className="text-center mb-16">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FF4B6B]/10 border border-[#FF4B6B]/20 mb-6">
-                                    <Radio className="w-3 h-3 text-[#FF4B6B]" />
-                                    <span className="text-xs font-bold text-[#FF4B6B] tracking-widest uppercase">Controle Remoto via Web</span>
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-100 border border-pink-200 mb-6">
+                                    <Radio className="w-3 h-3 text-pink-600" />
+                                    <span className="text-xs font-bold text-pink-600 tracking-widest uppercase">Controle Remoto via Web</span>
                                 </div>
-                                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                    PC Lento? <span className="bg-gradient-to-r from-[#FF4B6B] to-[#FF8F6B] text-transparent bg-clip-text">Solução Definitiva</span>
+                                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                                    PC Lento? <span className="bg-gradient-to-r from-pink-600 to-orange-500 text-transparent bg-clip-text">Solução Definitiva</span>
                                 </h2>
-                                <p className="text-lg text-slate-400 max-w-3xl mx-auto leading-relaxed mb-4">
+                                <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed mb-4">
                                     Programa para deixar PC mais rápido e otimizar computador automaticamente. Ideal para uso doméstico, home office e navegação diária.
                                 </p>
-                                <p className="text-base text-slate-500 max-w-2xl mx-auto">
+                                <p className="text-base text-gray-600 max-w-2xl mx-auto">
                                     Execute todas as otimizações remotamente de qualquer lugar do mundo através do painel web.
                                 </p>
                             </div>
@@ -1680,64 +1676,64 @@ export default function OptimizerClient() {
                                         IconComponent: Zap,
                                         title: 'Otimização Automática',
                                         desc: 'Auto otimização completa do sistema com um clique. Acelera inicialização, navegação e abertura de programas.',
-                                        iconClass: 'text-[#FF4B6B]',
-                                        bgGlow: 'bg-[#FF4B6B]/20'
+                                        iconClass: 'text-pink-600',
+                                        bgGlow: 'bg-pink-200/50'
                                     },
                                     {
                                         IconComponent: Database,
                                         title: 'Otimização de RAM',
                                         desc: 'Liberação inteligente de memória RAM que mantém seu computador responsivo mesmo com múltiplos programas abertos.',
-                                        iconClass: 'text-[#8B31FF]',
-                                        bgGlow: 'bg-[#8B31FF]/20'
+                                        iconClass: 'text-purple-600',
+                                        bgGlow: 'bg-purple-200/50'
                                     },
                                     {
                                         IconComponent: Activity,
                                         title: 'Limpeza de Sistema',
                                         desc: 'Remove arquivos temporários, cache e lixo do sistema para liberar espaço e melhorar desempenho.',
-                                        iconClass: 'text-[#31A8FF]',
-                                        bgGlow: 'bg-[#31A8FF]/20'
+                                        iconClass: 'text-blue-600',
+                                        bgGlow: 'bg-blue-200/50'
                                     },
                                     {
                                         IconComponent: Wifi,
                                         title: 'Otimização de Rede',
                                         desc: 'Ajustes TCP/IP para reduzir latência, ping e melhorar velocidade de conexão em jogos online.',
-                                        iconClass: 'text-[#00E5FF]',
-                                        bgGlow: 'bg-[#00E5FF]/20'
+                                        iconClass: 'text-cyan-500',
+                                        bgGlow: 'bg-cyan-200/50'
                                     },
                                     {
                                         IconComponent: Brain,
                                         title: 'Modo Gamer Inteligente',
                                         desc: 'IA adaptativa que prioriza recursos para jogos, desativa processos desnecessários e maximiza FPS automaticamente.',
-                                        iconClass: 'text-[#FFD700]',
-                                        bgGlow: 'bg-[#FFD700]/20'
+                                        iconClass: 'text-yellow-500',
+                                        bgGlow: 'bg-yellow-200/50'
                                     },
                                     {
                                         IconComponent: ShieldCheck,
                                         title: 'Ponto de Restauração',
                                         desc: 'Cria backup automático do sistema antes de otimizações para garantir segurança total.',
-                                        iconClass: 'text-[#00FF94]',
-                                        bgGlow: 'bg-[#00FF94]/20'
+                                        iconClass: 'text-emerald-500',
+                                        bgGlow: 'bg-emerald-200/50'
                                     },
                                     {
                                         IconComponent: Gauge,
                                         title: 'Plano de Energia',
                                         desc: 'Configura perfil de alto desempenho para extrair máxima potência do hardware.',
-                                        iconClass: 'text-[#FF6B9D]',
-                                        bgGlow: 'bg-[#FF6B9D]/20'
+                                        iconClass: 'text-pink-500',
+                                        bgGlow: 'bg-pink-200/50'
                                     },
                                     {
                                         IconComponent: Cpu,
                                         title: 'Análise de Sistema',
                                         desc: 'Diagnóstico completo do PC identificando gargalos e problemas de performance.',
-                                        iconClass: 'text-[#9B59B6]',
-                                        bgGlow: 'bg-[#9B59B6]/20'
+                                        iconClass: 'text-purple-500',
+                                        bgGlow: 'bg-purple-200/50'
                                     },
                                     {
                                         IconComponent: Layers,
                                         title: 'Reparo do Sistema',
                                         desc: 'Corrige erros do Windows, arquivos corrompidos e problemas de estabilidade.',
-                                        iconClass: 'text-[#3498DB]',
-                                        bgGlow: 'bg-[#3498DB]/20'
+                                        iconClass: 'text-blue-500',
+                                        bgGlow: 'bg-blue-200/50'
                                     }
                                 ].map((item, i) => {
                                     const Icon = item.IconComponent;
@@ -1749,24 +1745,24 @@ export default function OptimizerClient() {
                                             transition={{ delay: i * 0.1 }}
                                             viewport={{ once: true }}
                                             whileHover={{ y: -8, scale: 1.02 }}
-                                            className="relative bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-white/10 transition-all duration-300 group overflow-hidden"
+                                            className="relative bg-white border border-gray-200 rounded-2xl p-6 hover:border-gray-300 transition-all duration-300 group overflow-hidden shadow-sm"
                                         >
                                             {/* Glow Effect on Hover */}
-                                            <div className={`absolute -inset-1 ${item.bgGlow} blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
+                                            <div className={`absolute -inset-1 ${item.bgGlow} blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500 rounded-2xl`}></div>
 
                                             {/* Content */}
                                             <div className="relative z-10">
-                                                <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                                                <div className="w-14 h-14 rounded-xl bg-gray-100 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm">
                                                     <Icon className={`w-7 h-7 ${item.iconClass} group-hover:scale-110 transition-transform duration-300`} />
                                                 </div>
-                                                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all duration-300">{item.title}</h3>
-                                                <p className="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors duration-300">{item.desc}</p>
+                                                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-all duration-300">{item.title}</h3>
+                                                <p className="text-gray-600 text-sm leading-relaxed group-hover:text-gray-500 transition-colors duration-300">{item.desc}</p>
                                             </div>
 
                                             {/* Remote Badge */}
                                             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <div className="px-2 py-1 bg-white/10 backdrop-blur-sm rounded-md border border-white/20">
-                                                    <span className="text-[10px] font-bold text-white uppercase tracking-wider">Remoto</span>
+                                                <div className="px-2 py-1 bg-gray-100 backdrop-blur-sm rounded-md border border-gray-200">
+                                                    <span className="text-[10px] font-bold text-gray-700 uppercase tracking-wider">Remoto</span>
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -1774,19 +1770,19 @@ export default function OptimizerClient() {
                                 })}
                             </div>
 
-                            <div className="bg-gradient-to-r from-[#0A0A0F] to-[#0E0E14] border border-white/5 rounded-2xl p-8 lg:p-12">
+                            <div className="bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200 rounded-2xl p-8 lg:p-12">
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                                     <div>
-                                        <h3 className="text-3xl font-bold text-white mb-4">Programa para Melhorar Desempenho do Windows</h3>
-                                        <p className="text-slate-400 leading-relaxed mb-6">
-                                            O VOLTRIS OPTIMIZER é a solução completa para quem busca <strong className="text-white">otimizar computador automaticamente</strong> sem complicação. Nossa tecnologia identifica e resolve problemas de lentidão, travamentos e alto consumo de recursos.
+                                        <h3 className="text-3xl font-bold text-gray-900 mb-4">Programa para Melhorar Desempenho do Windows</h3>
+                                        <p className="text-gray-600 leading-relaxed mb-6">
+                                            O VOLTRIS OPTIMIZER é a solução completa para quem busca <strong className="text-gray-900">otimizar computador automaticamente</strong> sem complicação. Nossa tecnologia identifica e resolve problemas de lentidão, travamentos e alto consumo de recursos.
                                         </p>
-                                        <p className="text-slate-400 leading-relaxed">
+                                        <p className="text-gray-600 leading-relaxed">
                                             Diferente de outros programas, não apenas limpamos arquivos temporários - nós reconfiguramos o Windows para extrair máxima performance do seu hardware, seja ele novo ou antigo.
                                         </p>
                                     </div>
-                                    <div className="bg-[#0A0A0F] border border-white/5 rounded-xl p-6">
-                                        <h4 className="text-lg font-bold text-white mb-4">Problemas que Resolvemos:</h4>
+                                    <div className="bg-white border border-gray-200 rounded-xl p-6">
+                                        <h4 className="text-lg font-bold text-gray-900 mb-4">Problemas que Resolvemos:</h4>
                                         <ul className="space-y-3">
                                             {[
                                                 'PC lento para iniciar',
@@ -1796,9 +1792,9 @@ export default function OptimizerClient() {
                                                 'Navegador lento e travando',
                                                 'Sistema operacional pesado'
                                             ].map((problem, i) => (
-                                                <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
-                                                    <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                                                        <Check className="w-3 h-3 text-green-500" />
+                                                <li key={i} className="flex items-center gap-3 text-sm text-gray-700">
+                                                    <div className="w-5 h-5 rounded-full bg-emerald-100 flex items-center justify-center shrink-0">
+                                                        <Check className="w-3 h-3 text-emerald-600" />
                                                     </div>
                                                     {problem}
                                                 </li>
@@ -1811,15 +1807,15 @@ export default function OptimizerClient() {
                     </div>
                 </section>
 
-                {/* --- SEO SECTION: TECNOLOGIA E INOVAÃ‡ÃƒO --- */}
-                <section className="py-32 relative z-10 bg-[#08080C]">
+                {/* --- SEO SECTION: TECNOLOGIA E INOVAÇÃO --- */}
+                <section className="py-32 relative z-10 bg-gray-100">
                     <div className="container mx-auto px-4">
                         <div className="max-w-6xl mx-auto text-center">
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 tracking-tight">
-                                Inovação <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Engarrafada no Brasil</span>
+                            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                                Inovação <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">Engarrafada no Brasil</span>
                             </h2>
-                            <p className="text-lg text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-                                Orgulhosamente desenvolvido no Brasil. Fomos os primeiros a integrar <strong className="text-white">Gerenciamento de Kernel</strong> com a conveniência do <strong className="text-white">SaaS Moderno</strong>.
+                            <p className="text-lg text-gray-500 max-w-3xl mx-auto mb-12 leading-relaxed">
+                                Orgulhosamente desenvolvido no Brasil. Fomos os primeiros a integrar <strong className="text-gray-900">Gerenciamento de Kernel</strong> com a conveniência do <strong className="text-gray-900">SaaS Moderno</strong>.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1829,12 +1825,12 @@ export default function OptimizerClient() {
                                     { icon: <ShieldCheck className="w-6 h-6" />, title: 'Solução Profissional', desc: 'Desenvolvida com padrões enterprise para uso doméstico e corporativo' },
                                     { icon: <Zap className="w-6 h-6" />, title: 'Inovação Nacional', desc: 'Primeira tecnologia brasileira de otimização remota do mercado' }
                                 ].map((feature, i) => (
-                                    <div key={i} className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 hover:border-[#31A8FF]/30 transition-all group">
-                                        <div className="w-12 h-12 rounded-xl bg-[#31A8FF]/10 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
-                                            <div className="text-[#31A8FF]">{feature.icon}</div>
+                                    <div key={i} className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-blue-300 transition-all group shadow-sm">
+                                        <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                                            <div className="text-blue-600">{feature.icon}</div>
                                         </div>
-                                        <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-                                        <p className="text-sm text-slate-400 leading-relaxed">{feature.desc}</p>
+                                        <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                                        <p className="text-sm text-gray-600 leading-relaxed">{feature.desc}</p>
                                     </div>
                                 ))}
                             </div>
@@ -1843,28 +1839,28 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- TESTIMONIALS (SOCIAL PROOF) --- */}
-                <section className="py-24 relative z-10 border-t border-white/5 bg-[#050510]">
+                <section className="py-24 relative z-10 border-t border-gray-200 bg-white">
                     <div className="container mx-auto px-4">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl font-bold text-white mb-4">Elite Users. Real Results.</h2>
-                            <p className="text-slate-400">Junte-se a milhares de jogadores e empresas que já desbloquearam seu hardware.</p>
+                            <h2 className="text-3xl font-bold text-gray-900 mb-4">Elite Users. Real Results.</h2>
+                            <p className="text-gray-500">Junte-se a milhares de jogadores e empresas que já desbloquearam seu hardware.</p>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
-                                { name: "Carlos Silva", role: "Gamer Competitivo", text: "Meu FPS no Valorant dobrou. A estabilidade de frame-time é o que mais impressiona.", color: "bg-[#FF4B6B]" },
-                                { name: "Ana Costa", role: "UX Designer", text: "Meu workflow no Adobe ficou muito mais fluido. O PC não engasga mais em renderizações pesadas.", color: "bg-[#8B31FF]" },
-                                { name: "Pedro Santos", role: "DevOps Engineer", text: "O controle remoto via web é genial para gerenciar as máquinas da minha equipe.", color: "bg-[#31A8FF]" }
+                                { name: "Carlos Silva", role: "Gamer Competitivo", text: "Meu FPS no Valorant dobrou. A estabilidade de frame-time é o que mais impressiona.", color: "bg-pink-600" },
+                                { name: "Ana Costa", role: "UX Designer", text: "Meu workflow no Adobe ficou muito mais fluido. O PC não engasga mais em renderizações pesadas.", color: "bg-purple-600" },
+                                { name: "Pedro Santos", role: "DevOps Engineer", text: "O controle remoto via web é genial para gerenciar as máquinas da minha equipe.", color: "bg-blue-600" }
                             ].map((t, i) => (
-                                <div key={i} className="p-8 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-white/20 transition-all group">
+                                <div key={i} className="p-8 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 transition-all group shadow-sm">
                                     <div className="flex items-center gap-1 mb-4 text-yellow-500">
                                         {[1, 2, 3, 4, 5].map(s => <Check key={s} className="w-3 h-3 fill-current" />)}
                                     </div>
-                                    <p className="text-slate-300 italic mb-6">"{t.text}"</p>
+                                    <p className="text-gray-600 italic mb-6">"{t.text}"</p>
                                     <div className="flex items-center gap-4">
                                         <div className={`w-10 h-10 rounded-full ${t.color} flex items-center justify-center font-bold text-white`}>{t.name[0]}</div>
                                         <div>
-                                            <div className="text-sm font-bold text-white">{t.name}</div>
-                                            <div className="text-[10px] text-slate-500 uppercase tracking-widest">{t.role}</div>
+                                            <div className="text-sm font-bold text-gray-900">{t.name}</div>
+                                            <div className="text-[10px] text-gray-500 uppercase tracking-widest">{t.role}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -1874,8 +1870,8 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- FAQ SECTION --- */}
-                <section className="py-24 relative z-10 max-w-3xl mx-auto px-4">
-                    <h2 className="text-3xl font-bold text-white text-center mb-12 tracking-tight">Perguntas Frequentes</h2>
+                <section className="py-24 relative z-10 max-w-3xl mx-auto px-4 bg-gray-50">
+                    <h2 className="text-3xl font-bold text-gray-900 text-center mb-12 tracking-tight">Perguntas Frequentes</h2>
                     <div className="space-y-4">
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 0 ? null : 0)}
@@ -1917,23 +1913,23 @@ export default function OptimizerClient() {
                 </section>
 
                 {/* --- FINAL CTA --- */}
-                <section className="py-40 px-4 text-center relative overflow-hidden">
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-[#FF4B6B]/5 via-[#8B31FF]/10 to-[#31A8FF]/5 blur-[120px] rounded-[100%] -z-10 pointer-events-none"></div>
+                <section className="py-40 px-4 text-center relative overflow-hidden bg-white">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-gradient-to-r from-pink-100/50 via-purple-100/50 to-blue-100/50 blur-[120px] rounded-[100%] -z-10 pointer-events-none"></div>
 
                     <div className="max-w-4xl mx-auto relative z-10">
-                        <h2 className="text-4xl md:text-6xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+                        <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-8 tracking-tighter leading-[0.9]">
                             SEU POTENCIAL. <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8B31FF] to-[#31A8FF] drop-shadow-lg">DESBLOQUEADO.</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">DESBLOQUEADO.</span>
                         </h2>
-                        <p className="text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-light">
+                        <p className="text-xl text-gray-500 mb-12 max-w-2xl mx-auto font-light">
                             Performance profissional ao alcance de um clique.<br />
                             A escolha padrão para quem valoriza tempo e eficiência.
                         </p>
 
                         <div className="flex flex-col items-center gap-4">
                             <div className="flex items-center gap-2 mb-2">
-                                <span className="text-xs text-slate-500 font-medium">Versão Atual:</span>
-                                <span className="px-2.5 py-1 bg-gradient-to-r from-[#31A8FF]/10 to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-md text-xs font-bold text-[#31A8FF]">
+                                <span className="text-xs text-gray-500 font-medium">Versão Atual:</span>
+                                <span className="px-2.5 py-1 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-md text-xs font-bold text-blue-600">
                                     v1.8
                                 </span>
                             </div>
@@ -1941,7 +1937,7 @@ export default function OptimizerClient() {
                                 <a
                                     href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstaller.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x64) - Bottom CTA')}
-                                    className="inline-flex items-center gap-4 w-full justify-center px-12 py-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
+                                    className="inline-flex items-center gap-4 w-full justify-center px-12 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
                                 >
                                     <Download className="w-6 h-6" />
                                     BAIXAR SOFTWARE
@@ -1949,14 +1945,14 @@ export default function OptimizerClient() {
                                 <a
                                     href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x86) - Bottom CTA')}
-                                    className="text-sm text-slate-500 hover:text-[#31A8FF] transition-colors font-medium border-b border-transparent hover:border-[#31A8FF]"
+                                    className="text-sm text-gray-500 hover:text-blue-600 transition-colors font-medium border-b border-transparent hover:border-blue-600"
                                 >
                                     Para sistemas Windows x86
                                 </a>
                             </div>
                         </div>
                         <div className="mt-6">
-                            <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">Compatível com Windows 10 & 11</span>
+                            <span className="text-xs text-gray-500 uppercase tracking-widest font-bold">Compatível com Windows 10 & 11</span>
                         </div>
                     </div>
                 </section>

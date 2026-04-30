@@ -85,18 +85,11 @@ export default function Header() {
   return (
     <>
       <header
-        className={`mobile-menu-optimized fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-300 ${
-          scrolled || !isHome || isMobileMenuOpen
-            ? 'bg-[#050510]/80 backdrop-blur-lg'
-            : 'bg-transparent'
-        }`}
+        className="mobile-menu-optimized fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-300 bg-white/95 backdrop-blur-lg border-b border-gray-200"
       >
-        {/* Linha Separadora Profissional */}
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/15 to-transparent shadow-[0_1px_0_0_rgba(255,255,255,0.05)]" />
-
         {/* Linha Neon Fina – ativa no scroll */}
         <div
-          className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#31A8FF]/0 via-[#8B31FF]/50 to-[#FF4B6B]/0 opacity-0 transition-opacity duration-500 ${
+          className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-blue-600/0 via-purple-600/50 to-pink-600/0 opacity-0 transition-opacity duration-500 ${
             scrolled ? 'opacity-100' : ''
           }`}
         />
@@ -127,27 +120,19 @@ export default function Header() {
 
           {/* ── Nav Desktop (lg+) ─────────────────────── */}
           <nav className="hidden lg:flex items-center gap-5 xl:gap-7 h-full flex-1 justify-center relative z-20">
-            {mainNavLinks.map((link) => {
-              const isActive = pathname === link.path;
-              return (
-                <Link
-                  key={link.path}
-                  href={link.path}
-                  className={`text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap shrink-0 ${
-                    isActive ? 'text-white' : 'text-slate-400'
-                  } hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#31A8FF] hover:via-[#8B31FF] hover:to-[#FF4B6B]`}
-                >
-                  {link.name}
-                  <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] transition-all duration-300 rounded-full ${
-                      isActive
-                        ? 'w-full opacity-100'
-                        : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
-                    }`}
-                  />
-                </Link>
-              );
-            })}
+            {mainNavLinks.map((link) => (
+              <Link
+                key={link.path}
+                href={link.path}
+                className="text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap shrink-0 text-gray-700"
+                style={{ '--hover-color': '#2563eb' } as any}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
+                onMouseLeave={(e) => e.currentTarget.style.color = ''}
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 h-[2px] bg-blue-600 transition-all duration-300 rounded-full w-0 opacity-0 group-hover:w-full group-hover:opacity-100" />
+              </Link>
+            ))}
 
             {/* Dropdown Soluções */}
             <div
@@ -156,27 +141,20 @@ export default function Header() {
               onMouseLeave={() => setIsServicesDropdownOpen(false)}
             >
               <button
-                className={`text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap ${
-                  servicesNavLinks.some((cat) => cat.items.some((item) => pathname === item.path))
-                    ? 'text-white'
-                    : 'text-slate-400 hover:text-white'
-                } hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-[#31A8FF] hover:via-[#8B31FF] hover:to-[#FF4B6B]`}
+                className="text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap text-gray-700"
+                style={{ '--hover-color': '#2563eb' } as any}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#2563eb'}
+                onMouseLeave={(e) => e.currentTarget.style.color = ''}
                 aria-haspopup="true"
                 aria-expanded={isServicesDropdownOpen}
               >
                 Soluções
-                <span
-                  className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] transition-all duration-300 rounded-full ${
-                    servicesNavLinks.some((cat) => cat.items.some((item) => pathname === item.path))
-                      ? 'w-full opacity-100'
-                      : 'w-0 opacity-0 group-hover:w-full group-hover:opacity-100'
-                  }`}
-                />
+                <span className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transition-all duration-300 rounded-full w-0 opacity-0 group-hover:w-full group-hover:opacity-100" />
               </button>
 
               {/* Dropdown Panel */}
               <div
-                className={`absolute left-1/2 -translate-x-1/2 top-full w-[550px] bg-[#0A0A12]/95 backdrop-blur-2xl rounded-b-3xl rounded-t-none shadow-2xl py-8 px-8 transition-all duration-300 z-50 border border-white/10 border-t-0 ${
+                className={`absolute left-1/2 -translate-x-1/2 top-full w-[550px] bg-white/95 backdrop-blur-2xl rounded-b-2xl rounded-t-none shadow-xl py-8 px-8 transition-all duration-300 z-50 border border-gray-200 border-t-0 ${
                   isServicesDropdownOpen
                     ? 'opacity-100 visible translate-y-0'
                     : 'opacity-0 invisible -translate-y-2'
@@ -185,8 +163,8 @@ export default function Header() {
                 <div className="grid grid-cols-2 gap-x-10 gap-y-8">
                   {servicesNavLinks.map((cat) => (
                     <div key={cat.category} className="space-y-4">
-                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-white/5 pb-2">
-                        <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+                      <h4 className="text-[10px] font-black uppercase tracking-[0.2em] border-b border-gray-200 pb-2">
+                        <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
                           {cat.category}
                         </span>
                       </h4>
@@ -202,19 +180,19 @@ export default function Header() {
                               }
                               className={`group/item block p-2 rounded-xl transition-all duration-300 border ${
                                 isActive
-                                  ? 'bg-white/5 border-white/10'
-                                  : 'hover:bg-white/[0.03] border-transparent'
+                                  ? 'bg-blue-50 border-blue-200'
+                                  : 'hover:bg-gray-50 border-transparent'
                               }`}
                             >
                               <div className="flex flex-col">
                                 <span
                                   className={`text-sm font-bold transition-colors ${
-                                    isActive ? 'text-white' : 'text-slate-300 group-hover/item:text-white'
+                                    isActive ? 'text-blue-600' : 'text-gray-700 group-hover/item:text-blue-600'
                                   }`}
                                 >
                                   {item.name}
                                 </span>
-                                <span className="text-[10px] text-slate-500 font-medium tracking-tight">
+                                <span className="text-[10px] text-gray-500 font-medium tracking-tight">
                                   {item.desc}
                                 </span>
                               </div>
@@ -225,12 +203,12 @@ export default function Header() {
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 pt-6 border-t border-white/5">
+                <div className="mt-8 pt-6 border-t border-gray-200">
                   <Link
                     href="/servicos"
-                    className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 text-white text-xs font-bold transition-all uppercase tracking-widest"
+                    className="flex items-center justify-center gap-2 py-3 rounded-2xl bg-gray-50 border border-gray-200 hover:bg-gray-100 text-gray-700 text-xs font-bold transition-all uppercase tracking-widest"
                   >
-                    Ver Todos os Serviços <span className="text-[#31A8FF]">→</span>
+                    Ver Todos os Serviços <span className="text-blue-600">→</span>
                   </Link>
                 </div>
               </div>
@@ -265,21 +243,29 @@ export default function Header() {
               <div className="flex items-center gap-2">
                 <Link
                   href="/login"
-                  className="relative flex items-center gap-1.5 px-4 xl:px-5 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 group overflow-hidden whitespace-nowrap"
+                  className="relative flex items-center gap-1.5 px-4 xl:px-5 py-2 rounded-2xl border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 group overflow-hidden whitespace-nowrap shadow-sm"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#8B31FF]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <FiUser className="w-4 h-4 text-white relative z-10 group-hover:scale-110 transition-transform duration-300 shrink-0" />
-                  <span className="font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text relative z-10 text-sm">
+                  <svg className="w-4 h-4 relative z-10 group-hover:scale-110 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="vg-desktop" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#31A8FF" />
+                        <stop offset="50%" stopColor="#8B31FF" />
+                        <stop offset="100%" stopColor="#FF4B6B" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="url(#vg-desktop)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <circle cx="12" cy="7" r="4" stroke="url(#vg-desktop)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="font-bold text-gray-900 relative z-10 text-sm">
                     Login
                   </span>
                 </Link>
                 <Link
                   href="/login?signup=true"
-                  className="relative flex items-center gap-1.5 px-4 xl:px-5 py-2 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-[#FF4B6B]/30 transition-all duration-300 group overflow-hidden whitespace-nowrap"
+                  className="relative flex items-center gap-1.5 px-4 xl:px-5 py-2 rounded-2xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] hover:from-white hover:via-white hover:to-white transition-all duration-300 group overflow-hidden whitespace-nowrap shadow-sm hover:shadow-md"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <FiUserPlus className="w-4 h-4 text-white relative z-10 group-hover:scale-110 transition-transform duration-300 shrink-0" />
-                  <span className="font-bold text-white relative z-10 text-sm">Cadastro</span>
+                  <FiUserPlus className="w-4 h-4 text-white group-hover:text-gray-900 relative z-10 group-hover:scale-110 transition-transform duration-300 shrink-0" />
+                  <span className="font-bold text-white group-hover:text-gray-900 relative z-10 text-sm">Cadastro</span>
                 </Link>
               </div>
             )}
@@ -288,7 +274,7 @@ export default function Header() {
           {/* ── Hamburger (abaixo de lg / <1024px) ──── */}
           <div className="lg:hidden z-[101] ml-auto shrink-0">
             <button
-              className="hamburger-button hamburger-icon mobile-menu-optimized p-2 text-white hover:scale-110 active:scale-95"
+              className="hamburger-button hamburger-icon mobile-menu-optimized p-2 text-gray-900 hover:scale-110 active:scale-95"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
             >
@@ -313,7 +299,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15, ease: "easeOut" }}
-            className="mobile-menu-drawer mobile-menu-optimized fixed inset-0 z-[95] bg-[#050510]/98 backdrop-blur-lg lg:hidden pt-16"
+            className="mobile-menu-drawer mobile-menu-optimized fixed inset-0 z-[95] bg-white/98 backdrop-blur-lg lg:hidden pt-16"
           >
             <div className="flex flex-col h-full overflow-y-auto">
               <nav className="flex flex-col gap-1 px-6 pt-4">
@@ -322,30 +308,26 @@ export default function Header() {
                     key={link.path}
                     href={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`text-2xl font-bold py-4 border-b border-white/5 flex items-center justify-between group ${
-                      pathname === link.path ? 'text-white' : 'text-slate-400 hover:text-white'
+                    className={`text-2xl font-bold py-4 border-b border-gray-200 flex items-center justify-between group ${
+                      pathname === link.path ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
                     }`}
                   >
-                    <span className="group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">
-                      {link.name}
-                    </span>
-                    <span className="text-white/20 group-hover:text-[#8B31FF] transition-colors">→</span>
+                    <span>{link.name}</span>
+                    <span className="text-gray-300 group-hover:text-blue-600 transition-colors">→</span>
                   </Link>
                 ))}
 
                 {/* Soluções Accordion Mobile */}
-                <details className="group border-b border-white/5">
-                  <summary className="text-2xl font-bold py-4 flex items-center justify-between cursor-pointer text-slate-400 hover:text-white list-none">
-                    <span className="group-open:text-transparent group-open:bg-clip-text group-open:bg-gradient-to-r group-open:from-[#31A8FF] group-open:via-[#8B31FF] group-open:to-[#FF4B6B] transition-all">
-                      Soluções
-                    </span>
-                    <span className="text-white/20 group-hover:text-[#8B31FF] transition-colors group-open:rotate-180 inline-block transition-transform">▼</span>
+                <details className="group border-b border-gray-200">
+                  <summary className="text-2xl font-bold py-4 flex items-center justify-between cursor-pointer text-gray-700 hover:text-blue-600 list-none">
+                    <span>Soluções</span>
+                    <span className="text-gray-300 group-hover:text-blue-600 transition-colors group-open:rotate-180 inline-block transition-transform">▼</span>
                   </summary>
                   <div className="ml-4 pb-4 space-y-6">
                     {servicesNavLinks.map((cat) => (
                       <div key={cat.category} className="space-y-2">
-                        <h4 className="text-[10px] font-black uppercase tracking-widest opacity-70">
-                          <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+                          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
                             {cat.category}
                           </span>
                         </h4>
@@ -359,7 +341,7 @@ export default function Header() {
                                 if (item.path === '/voltrisoptimizer') notifyDownload('Mobile Header Menu Click');
                               }}
                               className={`block text-lg font-bold py-2 ${
-                                pathname === item.path ? 'text-white' : 'text-slate-400 hover:text-white'
+                                pathname === item.path ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
                               }`}
                             >
                               <div className="flex flex-col">
@@ -381,13 +363,13 @@ export default function Header() {
                     <Link
                       href="/dashboard"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-[#31A8FF] text-white font-bold shadow-lg shadow-[#31A8FF]/20"
+                      className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-600/20"
                     >
                       <FiLayout /> Acessar Dashboard
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-white/5 text-red-400 font-bold"
+                      className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-gray-100 text-red-600 font-bold"
                     >
                       <FiLogOut /> Sair
                     </button>
@@ -397,22 +379,28 @@ export default function Header() {
                     <Link
                       href="/login"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="relative flex items-center justify-center gap-2 w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 group overflow-hidden"
+                      className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl border border-gray-200 bg-white hover:bg-gray-50 text-gray-900 font-bold transition-all"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#8B31FF]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <FiUser className="w-5 h-5 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                      <span className="font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text relative z-10">
-                        Login
-                      </span>
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id="vg-mobile" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#31A8FF" />
+                            <stop offset="50%" stopColor="#8B31FF" />
+                            <stop offset="100%" stopColor="#FF4B6B" />
+                          </linearGradient>
+                        </defs>
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="url(#vg-mobile)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        <circle cx="12" cy="7" r="4" stroke="url(#vg-mobile)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>Login</span>
                     </Link>
                     <Link
                       href="/login?signup=true"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="relative flex items-center justify-center gap-2 w-full py-4 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/[0.08] hover:border-[#FF4B6B]/30 transition-all duration-300 group overflow-hidden"
+                      className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] hover:from-white hover:via-white hover:to-white text-white hover:text-gray-900 font-bold transition-all group"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <FiUserPlus className="w-5 h-5 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" />
-                      <span className="font-bold text-white relative z-10">Cadastro</span>
+                      <FiUserPlus className="w-5 h-5 text-white group-hover:text-gray-900" />
+                      <span className="text-white group-hover:text-gray-900">Cadastro</span>
                     </Link>
                   </>
                 )}

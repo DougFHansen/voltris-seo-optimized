@@ -87,33 +87,33 @@ export default function OtimizacaoWindowsJogosPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-gradient-to-b from-[#050510] to-gray-900 text-white pt-16">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 text-gray-900 pt-16">
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 px-4">
-          <div className="absolute inset-0 bg-[url('/background-grid.svg')] opacity-10"></div>
+          <div className="absolute inset-0 bg-[url('/background-grid.svg')] opacity-5"></div>
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="text-center mb-16">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
                   Otimização de Windows para Jogos
                 </span>
                 <br />
-                <span className="text-white">Guia Completo 2026</span>
+                <span className="text-gray-900">Guia Completo 2026</span>
               </h1>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
                 Configurações profissionais de Windows para maximizar FPS, reduzir lag e melhorar desempenho em jogos.
                 Guias específicos para cada título e caso de uso.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
                   href="/voltrisoptimizer"
-                  className="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-green-500/20"
+                  className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-md"
                 >
                   Baixar Voltris Optimizer
                 </Link>
                 <Link
                   href="/servicos"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-blue-500/20"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-md"
                 >
                   Serviços de Otimização
                 </Link>
@@ -125,7 +125,7 @@ export default function OtimizacaoWindowsJogosPage() {
         {/* Game Optimizations Grid */}
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
               Otimizações por Jogo e Caso de Uso
             </h2>
             
@@ -134,20 +134,20 @@ export default function OtimizacaoWindowsJogosPage() {
                 <Link
                   key={index}
                   href={game.url}
-                  className="bg-gray-800/30 backdrop-blur rounded-2xl p-6 border border-gray-700/30 hover:border-[#8B31FF]/50 transition-all group"
+                  className="bg-white/80 backdrop-blur rounded-2xl p-6 border border-gray-200 hover:border-purple-400 transition-all group"
                 >
                   <div className="flex items-start gap-4">
                     <div className="text-4xl group-hover:scale-110 transition-transform">
                       {game.icon}
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">
+                      <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">
                         {game.title}
                       </h3>
-                      <p className="text-gray-400 text-sm mb-3 group-hover:text-gray-300 transition-colors">
+                      <p className="text-gray-600 text-sm mb-3 group-hover:text-gray-500 transition-colors">
                         {game.description}
                       </p>
-                      <span className="text-[#8B31FF] text-sm font-medium group-hover:translate-x-1 transition-transform inline-block">
+                      <span className="text-purple-600 text-sm font-medium group-hover:translate-x-1 transition-transform inline-block">
                         Ver guia →
                       </span>
                     </div>
@@ -159,17 +159,17 @@ export default function OtimizacaoWindowsJogosPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 px-4">
+        <section className="py-20 bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
               Precisa de Ajuda Profissional?
             </h2>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Nossa equipe pode otimizar seu PC remotamente com configurações personalizadas para seus jogos favoritos.
             </p>
             <Link
               href="/contato"
-              className="bg-gradient-to-r from-[#8B31FF] to-[#FF4B6B] hover:from-[#9B41FF] hover:to-[#FF5B7B] text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-[#8B31FF]/30 inline-block"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-md inline-block"
             >
               Falar com Especialista
             </Link>

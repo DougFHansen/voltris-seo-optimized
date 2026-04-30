@@ -190,23 +190,23 @@ export function GuideTemplateClient({
     // Componente Interno de Banner para Reuso Estratégico
     const VoltrisOptimizerBanner = ({ isSecondary = false }) => (
         <div className={`my-12 relative group ${isSecondary ? 'opacity-90 scale-95' : ''}`}>
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-3xl opacity-30 group-hover:opacity-60 blur-xl transition duration-500"></div>
-            <div className="relative bg-[#050510]/80 backdrop-blur-3xl border border-white/10 rounded-[2.5rem] p-8 md:p-12 overflow-hidden flex flex-col xl:flex-row items-center gap-12">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl opacity-30 group-hover:opacity-60 blur-xl transition duration-500"></div>
+            <div className="relative bg-white/95 backdrop-blur-3xl border border-gray-200 rounded-[2.5rem] p-8 md:p-12 overflow-hidden flex flex-col xl:flex-row items-center gap-12 shadow-xl">
                 <div className="flex-1 space-y-6 z-10 text-center xl:text-left">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 text-[#31A8FF] text-[10px] font-black uppercase tracking-[0.2em]">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-700 text-[10px] font-black uppercase tracking-[0.2em]">
                         <Zap className="w-3 h-3 fill-current" /> Otimização Recomendada
                     </div>
-                    <h3 className="text-3xl md:text-5xl font-black text-white leading-tight uppercase italic tracking-tighter">
-                        Não faça no <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">Manual.</span>
+                    <h3 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight uppercase italic tracking-tighter">
+                        Não faça no <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Manual.</span>
                     </h3>
-                    <p className="text-slate-400 text-lg leading-relaxed font-bold">
-                        O <span className="text-white">Voltris Optimizer</span> automatiza todo este guia e remove o delay do seu Windows em segundos.
+                    <p className="text-gray-600 text-lg leading-relaxed font-bold">
+                        O <span className="text-gray-900">Voltris Optimizer</span> automatiza todo este guia e remove o delay do seu Windows em segundos.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center xl:justify-start">
                         <Link
                             href="/voltrisoptimizer"
                             onClick={() => notifyDownload(`Guide CTA Click - ${title}`)}
-                            className="px-10 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-[0_20px_50px_rgba(255,255,255,0.1)] flex items-center justify-center gap-3 group"
+                            className="px-10 py-5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
                         >
                             <span>Baixar Agora</span>
                             <Download className="w-5 h-5 group-hover:animate-bounce" />
@@ -270,23 +270,22 @@ export function GuideTemplateClient({
           Conteúdo verificado por {author}
         </div>
       </div>
-            <main className="min-h-screen bg-[#050510] font-sans selection:bg-[#31A8FF]/30">
+            <main className="min-h-screen bg-gray-50 font-sans selection:bg-blue-100">
 
                 {/* --- HERO SECTION --- */}
-                <section className="min-h-[100dvh] flex flex-col items-center justify-center relative px-4 overflow-hidden border-b border-white/5">
+                <section className="min-h-[80dvh] flex flex-col items-center justify-center relative px-4 overflow-hidden border-b border-gray-200">
                     {/* Background Effects */}
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
-                    <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
-                    <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+                    <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-100/30 blur-[150px] rounded-full pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-purple-100/30 blur-[150px] rounded-full pointer-events-none"></div>
 
-                    <div className="relative max-w-5xl mx-auto text-center z-10 flex-grow flex flex-col items-center justify-center">
+                    <div className="relative max-w-5xl mx-auto text-center z-10 flex-grow flex flex-col items-center justify-center py-20">
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 text-xs font-medium text-slate-400"
+                            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-blue-200 shadow-sm mb-8 text-xs font-medium text-gray-600"
                         >
-                            <BookOpen className="w-3 h-3 text-[#31A8FF]" />
+                            <BookOpen className="w-3 h-3 text-blue-600" />
                             <span>Guia Técnico Voltris — Verificado por Especialistas</span>
                         </motion.div>
 
@@ -294,7 +293,7 @@ export function GuideTemplateClient({
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 tracking-tight leading-tight"
+                            className="text-4xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 tracking-tight leading-tight"
                         >
                             {title.replace(" - Voltris", "").replace(" | VOLTRIS", "")}
                         </motion.h1>
@@ -303,7 +302,7 @@ export function GuideTemplateClient({
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.2 }}
-                            className="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto leading-relaxed font-light"
+                            className="text-lg md:text-xl text-gray-500 mb-10 max-w-3xl mx-auto leading-relaxed"
                         >
                             {description}
                         </motion.p>
@@ -315,20 +314,20 @@ export function GuideTemplateClient({
                             transition={{ delay: 0.3 }}
                             className="flex flex-wrap justify-center gap-3 text-sm mb-8"
                         >
-                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur text-slate-300">
-                                <Clock className="w-4 h-4 text-[#31A8FF]" />
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700">
+                                <Clock className="w-4 h-4 text-blue-600" />
                                 <span>{readingMinutes} min de leitura</span>
                             </div>
-                            <div className={`flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur ${difficultyBg}`}>
+                            <div className={`flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm ${difficultyBg}`}>
                                 <Award className={`w-4 h-4 ${difficultyColor}`} />
                                 <span className={difficultyColor}>Nível: {difficultyLevel}</span>
                             </div>
-                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur text-slate-300">
-                                <User className="w-4 h-4 text-[#8B31FF]" />
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700">
+                                <User className="w-4 h-4 text-purple-600" />
                                 <span>{author}</span>
                             </div>
-                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur text-slate-300">
-                                <Calendar className="w-4 h-4 text-emerald-400" />
+                            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700">
+                                <Calendar className="w-4 h-4 text-emerald-600" />
                                 <span>Atualizado em {lastUpdated}</span>
                             </div>
                         </motion.div>
@@ -339,30 +338,30 @@ export function GuideTemplateClient({
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
-                        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-slate-500 hover:text-white transition-colors z-20"
+                        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-gray-400 hover:text-gray-900 transition-colors z-20"
                         onClick={() => {
                             const nextSection = document.getElementById('guide-content');
                             if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
                         }}
                     >
                         <span className="text-xs uppercase tracking-widest font-medium">SCROLL</span>
-                        <div className="w-[1px] h-12 bg-gradient-to-b from-[#31A8FF] to-transparent"></div>
+                        <div className="w-[1px] h-12 bg-gradient-to-b from-blue-600 to-transparent"></div>
                     </motion.div>
                 </section>
 
                 {/* --- KEY POINTS TL;DR (se fornecido) --- */}
                 {keyPoints && keyPoints.length > 0 && (
-                    <section className="py-10 px-4 bg-[#08080F] border-b border-white/5">
+                    <section className="py-10 px-4 bg-white border-b border-gray-200">
                         <div className="max-w-4xl mx-auto">
-                            <div className="bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 border border-[#31A8FF]/20 rounded-2xl p-6">
-                                <h2 className="text-[#31A8FF] font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+                            <div className="bg-gradient-to-r from-blue-50 via-transparent to-purple-50 border border-blue-200 rounded-2xl p-6">
+                                <h2 className="text-blue-600 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
                                     <Lightbulb className="w-4 h-4" />
                                     Resumo Rápido — O que você vai aprender
                                 </h2>
                                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                     {keyPoints.map((point, i) => (
-                                        <li key={i} className="flex items-start gap-3 text-slate-300 text-sm">
-                                            <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                                        <li key={i} className="flex items-start gap-3 text-gray-700 text-sm">
+                                            <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                                             {point}
                                         </li>
                                     ))}
@@ -374,18 +373,18 @@ export function GuideTemplateClient({
 
                 {/* Warning note */}
                 {warningNote && (
-                    <section className="py-6 px-4 bg-[#08080F]">
+                    <section className="py-6 px-4 bg-gray-50">
                         <div className="max-w-4xl mx-auto">
-                            <div className="flex items-start gap-4 bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-5">
-                                <AlertTriangle className="w-5 h-5 text-yellow-400 shrink-0 mt-0.5" />
-                                <p className="text-yellow-200 text-sm leading-relaxed">{warningNote}</p>
+                            <div className="flex items-start gap-4 bg-yellow-50 border border-yellow-200 rounded-xl p-5">
+                                <AlertTriangle className="w-5 h-5 text-yellow-600 shrink-0 mt-0.5" />
+                                <p className="text-yellow-800 text-sm leading-relaxed">{warningNote}</p>
                             </div>
                         </div>
                     </section>
                 )}
 
                 {/* --- MAIN CONTENT SECTION --- */}
-                <section id="guide-content" className="py-24 px-4 relative z-10 bg-[#050510]">
+                <section id="guide-content" className="py-24 px-4 relative z-10 bg-gray-100">
                     <div className="max-w-4xl mx-auto flex flex-col gap-12">
 
                         {/* Breadcrumbs */}
@@ -399,16 +398,16 @@ export function GuideTemplateClient({
                         {/* Top Meta Info Area */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {summaryTable && summaryTable.length > 0 && (
-                                <div className="bg-[#0A0A0F] border border-[#31A8FF]/20 rounded-2xl p-6 relative overflow-hidden h-full">
-                                    <div className="absolute top-0 right-0 w-20 h-20 bg-[#31A8FF]/10 blur-xl rounded-full"></div>
-                                    <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-                                        <Target className="w-5 h-5 text-[#31A8FF]" /> Resumo Técnico
+                                <div className="bg-white border border-blue-200 rounded-2xl p-6 relative overflow-hidden h-full shadow-sm">
+                                    <div className="absolute top-0 right-0 w-20 h-20 bg-blue-100 blur-xl rounded-full"></div>
+                                    <h3 className="text-gray-900 font-bold mb-4 flex items-center gap-2">
+                                        <Target className="w-5 h-5 text-blue-600" /> Resumo Técnico
                                     </h3>
                                     <div className="space-y-3">
                                         {summaryTable.map((item, idx) => (
-                                            <div key={idx} className="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 last:pb-0">
-                                                <span className="text-slate-500 text-sm">{item.label}</span>
-                                                <span className="text-white font-medium text-sm text-right">{item.value}</span>
+                                            <div key={idx} className="flex justify-between items-center border-b border-gray-200 pb-2 last:border-0 last:pb-0">
+                                                <span className="text-gray-500 text-sm">{item.label}</span>
+                                                <span className="text-gray-900 font-medium text-sm text-right">{item.value}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -416,13 +415,13 @@ export function GuideTemplateClient({
                             )}
 
                             {/* Table of Contents */}
-                            <div className="bg-[#0A0A0F] border border-white/5 rounded-2xl p-6 h-full">
-                                <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wider text-slate-500 flex items-center gap-2">
-                                    <BookOpen className="w-4 h-4 text-slate-500" /> Índice de Conteúdo
+                            <div className="bg-white border border-gray-200 rounded-2xl p-6 h-full shadow-sm">
+                                <h3 className="text-gray-900 font-bold mb-4 text-sm uppercase tracking-wider text-gray-500 flex items-center gap-2">
+                                    <BookOpen className="w-4 h-4 text-gray-500" /> Índice de Conteúdo
                                 </h3>
                                 <nav className="space-y-1 max-h-[200px] overflow-y-auto pr-2 custom-scrollbar">
                                     {allSections.map((section, idx) => (
-                                        <a key={idx} href={`#section-${idx}`} className="flex items-center gap-2 text-slate-400 hover:text-white hover:bg-white/5 px-3 py-2 rounded-lg text-sm transition-colors border-l-2 border-transparent hover:border-[#31A8FF]">
+                                        <a key={idx} href={`#section-${idx}`} className="flex items-center gap-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-lg text-sm transition-colors border-l-2 border-transparent hover:border-blue-600">
                                             <ChevronRight className="w-3 h-3 shrink-0" />
                                             <span className="truncate">{idx + 1}. {section.title}</span>
                                         </a>
@@ -443,30 +442,30 @@ export function GuideTemplateClient({
                                         initial={{ opacity: 0, y: 20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true, margin: "-100px" }}
-                                        className="bg-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-white/5 relative overflow-hidden"
+                                        className="bg-white p-8 md:p-12 rounded-2xl border border-gray-200 shadow-sm relative overflow-hidden"
                                     >
-                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-30"></div>
+                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-50"></div>
 
-                                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
-                                            <span className="text-[#31A8FF] text-xl opacity-50 font-mono mt-1">0{sectionIndex + 1}.</span>
+                                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight flex items-start gap-4">
+                                            <span className="text-blue-600 text-xl opacity-50 font-mono mt-1">0{sectionIndex + 1}.</span>
                                             {section.title}
                                         </h2>
 
                                         <div
-                                            className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#31A8FF] prose-strong:text-white prose-ul:list-disc prose-ol:list-decimal"
+                                            className="text-gray-700 leading-8 prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-blue-600 prose-strong:text-gray-900 prose-ul:list-disc prose-ol:list-decimal"
                                             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content || '') }}
                                         />
 
                                         {section.subsections && (
-                                            <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-white/5">
+                                            <div className="mt-10 space-y-10 pl-0 md:pl-8 md:border-l-2 md:border-gray-200">
                                                 {section.subsections.map((subsection, subIndex) => (
                                                     <div key={subIndex}>
-                                                        <h3 className="text-2xl font-bold text-white mb-5 flex items-center gap-3">
-                                                            <span className="w-2 h-2 rounded-full bg-[#FF4B6B]"></span>
+                                                        <h3 className="text-2xl font-bold text-gray-900 mb-5 flex items-center gap-3">
+                                                            <span className="w-2 h-2 rounded-full bg-pink-600"></span>
                                                             {subsection.subtitle}
                                                         </h3>
                                                         <div
-                                                            className="text-slate-400 leading-relaxed prose prose-invert max-w-none"
+                                                            className="text-gray-600 leading-relaxed prose max-w-none"
                                                             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(subsection.content || '') }}
                                                         />
                                                     </div>
@@ -490,20 +489,20 @@ export function GuideTemplateClient({
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true, margin: "-100px" }}
-                                            className="bg-gradient-to-br from-[#1a1a2e] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#8B31FF]/30 relative overflow-hidden"
+                                            className="bg-gradient-to-br from-purple-50 to-white p-8 md:p-12 rounded-2xl border border-purple-200 shadow-sm relative overflow-hidden"
                                         >
-                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] opacity-50"></div>
+                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 opacity-50"></div>
                                             <div className="flex items-start gap-3 mb-2">
-                                                <span className="bg-[#8B31FF]/20 text-[#8B31FF] text-xs font-bold px-2 py-1 rounded-full border border-[#8B31FF]/30">
+                                                <span className="bg-purple-100 text-purple-700 text-xs font-bold px-2 py-1 rounded-full border border-purple-200">
                                                     CONTEÚDO AVANÇADO
                                                 </span>
                                             </div>
-                                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight flex items-start gap-4">
-                                                <span className="text-[#8B31FF] text-xl opacity-50 font-mono mt-1">A{sectionIndex + 1}.</span>
+                                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight flex items-start gap-4">
+                                                <span className="text-purple-600 text-xl opacity-50 font-mono mt-1">A{sectionIndex + 1}.</span>
                                                 {section.title}
                                             </h2>
                                             <div
-                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white prose-a:text-[#8B31FF] prose-strong:text-white"
+                                                className="text-gray-700 leading-8 prose prose-lg max-w-none prose-headings:text-gray-900 prose-a:text-purple-600 prose-strong:text-gray-900"
                                                 dangerouslySetInnerHTML={{ __html: section.content ? DOMPurify.sanitize(section.content) : '' }}
                                             />
                                         </motion.div>
@@ -521,19 +520,19 @@ export function GuideTemplateClient({
                                             initial={{ opacity: 0, y: 20 }}
                                             whileInView={{ opacity: 1, y: 0 }}
                                             viewport={{ once: true, margin: "-100px" }}
-                                            className="bg-gradient-to-br from-[#2e1a1a] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#FF4B6B]/30 relative overflow-hidden"
+                                            className="bg-gradient-to-br from-pink-50 to-white p-8 md:p-12 rounded-2xl border border-pink-200 shadow-sm relative overflow-hidden"
                                         >
-                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] opacity-50"></div>
+                                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 opacity-50"></div>
                                             <div className="flex items-start gap-3 mb-2">
-                                                <span className="bg-[#FF4B6B]/20 text-[#FF4B6B] text-xs font-bold px-2 py-1 rounded-full border border-[#FF4B6B]/30">
+                                                <span className="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded-full border border-pink-200">
                                                     SAIBA MAIS
                                                 </span>
                                             </div>
-                                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">
+                                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">
                                                 {section.title}
                                             </h2>
                                             <div
-                                                className="text-slate-300 leading-8 prose prose-invert prose-lg max-w-none prose-headings:text-white"
+                                                className="text-gray-700 leading-8 prose prose-lg max-w-none prose-headings:text-gray-900"
                                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content || '') }}
                                             />
                                         </motion.div>
@@ -554,25 +553,25 @@ export function GuideTemplateClient({
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="bg-[#0A0A0F] border border-[#31A8FF]/20 rounded-3xl p-8 relative overflow-hidden"
+                                className="bg-white border border-blue-200 rounded-2xl p-8 relative overflow-hidden shadow-sm"
                             >
-                                <div className="absolute top-0 right-0 w-40 h-40 bg-[#31A8FF]/5 blur-3xl rounded-full"></div>
+                                <div className="absolute top-0 right-0 w-40 h-40 bg-blue-100 blur-3xl rounded-full"></div>
                                 <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
                                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center text-white font-black text-2xl shrink-0">
                                         {author.split(' ')[0][0]}{author.split(' ').slice(-1)[0][0]}
                                     </div>
                                     <div className="flex-1">
-                                        <p className="text-xs text-[#31A8FF] font-bold uppercase tracking-widest mb-1">Escrito por um especialista verificado</p>
-                                        <h4 className="text-white font-bold text-lg mb-1">{author}</h4>
+                                        <p className="text-xs text-blue-600 font-bold uppercase tracking-widest mb-1">Escrito por um especialista verificado</p>
+                                        <h4 className="text-gray-900 font-bold text-lg mb-1">{author}</h4>
                                         <div className="flex flex-wrap gap-2 mb-3">
                                             {authorCredentials.map((cred, i) => (
-                                                <span key={i} className="text-xs bg-white/5 border border-white/10 text-slate-400 px-2 py-1 rounded-full flex items-center gap-1">
-                                                    <Star className="w-3 h-3 text-[#FFD700]" /> {cred}
+                                                <span key={i} className="text-xs bg-gray-100 border border-gray-200 text-gray-600 px-2 py-1 rounded-full flex items-center gap-1">
+                                                    <Star className="w-3 h-3 text-yellow-500" /> {cred}
                                                 </span>
                                             ))}
                                         </div>
-                                        <p className="text-slate-400 text-sm leading-relaxed">{authorBio}</p>
-                                        <Link href="/sobre" className="inline-flex items-center gap-1 text-[#31A8FF] text-sm mt-3 hover:underline">
+                                        <p className="text-gray-600 text-sm leading-relaxed">{authorBio}</p>
+                                        <Link href="/sobre" className="inline-flex items-center gap-1 text-blue-600 text-sm mt-3 hover:underline">
                                             Conhecer a equipe Voltris <ArrowRight className="w-3 h-3" />
                                         </Link>
                                     </div>
@@ -581,23 +580,23 @@ export function GuideTemplateClient({
 
                             {/* Conclusão Rica (não genérica) */}
                             {!hasCustomConclusion && (
-                                <div className="bg-gradient-to-br from-[#1a1a2e] to-[#0A0A0F] p-8 md:p-12 rounded-3xl border border-[#31A8FF]/20 relative overflow-hidden">
-                                    <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#31A8FF]/10 blur-[80px] rounded-full"></div>
-                                    <h2 className="text-3xl font-bold text-white mb-6 relative z-10 flex items-center gap-3">
-                                        <CheckCircle className="w-8 h-8 text-emerald-400" />
+                                <div className="bg-gradient-to-br from-blue-50 to-white p-8 md:p-12 rounded-2xl border border-blue-200 shadow-sm relative overflow-hidden">
+                                    <div className="absolute -right-20 -top-20 w-64 h-64 bg-blue-100/50 blur-[80px] rounded-full"></div>
+                                    <h2 className="text-3xl font-bold text-gray-900 mb-6 relative z-10 flex items-center gap-3">
+                                        <CheckCircle className="w-8 h-8 text-emerald-600" />
                                         Conclusão e Próximos Passos
                                     </h2>
-                                    <p className="text-slate-300 leading-relaxed mb-6 relative z-10 text-lg">
-                                        Seguindo este guia sobre <strong className="text-white">{title.split(' - ')[0].replace(' | VOLTRIS', '')}</strong>, você está equipado com o conhecimento técnico verificado para resolver este problema com confiança.
+                                    <p className="text-gray-700 leading-relaxed mb-6 relative z-10 text-lg">
+                                        Seguindo este guia sobre <strong className="text-gray-900">{title.split(' - ')[0].replace(' | VOLTRIS', '')}</strong>, você está equipado com o conhecimento técnico verificado para resolver este problema com confiança.
                                     </p>
-                                    <p className="text-slate-400 leading-relaxed mb-8 relative z-10">
+                                    <p className="text-gray-600 leading-relaxed mb-8 relative z-10">
                                         Se ainda tiver dificuldades após seguir todos os passos, nossa equipe de suporte especializado está disponível para um diagnóstico remoto personalizado. Cada sistema é único e pode exigir uma abordagem específica.
                                     </p>
                                     <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-                                        <Link href="/todos-os-servicos" className="flex-1 px-8 py-5 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition text-center shadow-[0_0_20px_rgba(255,255,255,0.1)] text-base">
+                                        <Link href="/todos-os-servicos" className="flex-1 px-8 py-5 bg-white text-gray-900 border border-gray-200 font-bold rounded-xl hover:bg-gray-50 transition text-center shadow-sm text-base">
                                             Ver Serviços Profissionais
                                         </Link>
-                                        <Link href="https://wa.me/5511996716235" target="_blank" rel="noopener noreferrer" className="flex-1 px-8 py-5 bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20 font-bold rounded-xl hover:bg-[#31A8FF]/20 transition text-center flex items-center justify-center gap-2">
+                                        <Link href="https://wa.me/5511996716235" target="_blank" rel="noopener noreferrer" className="flex-1 px-8 py-5 bg-blue-50 text-blue-600 border border-blue-200 font-bold rounded-xl hover:bg-blue-100 transition text-center flex items-center justify-center gap-2">
                                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                             Suporte via WhatsApp
                                         </Link>

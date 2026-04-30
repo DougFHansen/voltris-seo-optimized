@@ -17,16 +17,16 @@ export default function WifiFix() {
         {
             title: "Por que sua Wi-Fi desconecta sem motivo no Windows 11?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Wi-Fi que 'cai e volta' no Windows 11 é, na maioria das vezes, um erro de configuração de energia. O sistema operacional tenta desativar a placa de rede wireless para economizar bateria em notebooks, mas acaba quebrando o link com o roteador.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Se você está em meio a uma reunião online ou jogando competitivamente, cada micro-desconexão é um desastre. Além disso, a configuração de **Roaming** do Windows pode estar forçando o PC a tentar conectar em redes piores constantemente. Calibrar isso é vital.
         </p>
         
-        <div class="bg-amber-500/10 border border-amber-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-amber-400 font-black mb-2 flex items-center gap-2">Desativando o 'Consumo Inteligente'</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-amber-100 border border-amber-200 p-6 rounded-2xl my-6">
+            <h4 class="text-amber-700 font-black mb-2 flex items-center gap-2">Desativando o 'Consumo Inteligente'</h4>
+            <p class="text-gray-600 text-sm">
                 No Gerenciador de Dispositivos, dentro da sua Placa de Rede, existe a aba <b>Gerenciamento de Energia</b>. Desmarcar a opção 'O computador pode desligar o dispositivo para economizar energia' é a solução definitiva para 90% dos notebooks Windows.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function WifiFix() {
         {
             title: "O Problema da Agressividade de Roaming",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Se você tem mais de um repetidor ou ponto de Wi-Fi, o Windows 11 pode estar 'pulando' entre eles com muita frequência. Definir o **Roaming Aggressiveness** para o valor <b>'Lowest'</b> obriga o Windows a manter a conexão estável com o sinal atual até que ele realmente seja desconectado.
             <br/><br/>
             Caminho: <b>Gerenciador de Dispositivos > Placa de Rede > Avançado > Roaming Aggressiveness</b>.
@@ -45,13 +45,13 @@ export default function WifiFix() {
         {
             title: "Estabilização com o Voltris Wireless Optimizer",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com a sua conexão sem fio através da ferramenta de <code>Stability Shield</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Universal Network Flush:** Limpa arquivos de roteamento corrompidos que impedem o PC de reconectar automaticamente.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Packet Loss Fix:** Calibra o tamanho dos pacotes MTU para evitar perda de dados em sinais fracos de Wi-Fi.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Background Scanning Off:** Impede que o Windows escaneie outras redes enquanto você está no jogo, eliminando picos de ping repentinos.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Universal Network Flush:** Limpa arquivos de roteamento corrompidos que impedem o PC de reconectar automaticamente.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Packet Loss Fix:** Calibra o tamanho dos pacotes MTU para evitar perda de dados em sinais fracos de Wi-Fi.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Background Scanning Off:** Impede que o Windows escaneie outras redes enquanto você está no jogo, eliminando picos de ping repentinos.</li>
         </ul>
       `
         }

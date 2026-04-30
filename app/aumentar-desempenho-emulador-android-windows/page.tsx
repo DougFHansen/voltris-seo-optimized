@@ -17,16 +17,16 @@ export default function EmuladorFPS() {
         {
             title: "Por que Emuladores Android são tão pesados no Windows 11?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           Emuladores como **Bluestacks**, **LDPlayer** e **Nox** rodam uma versão completa do Android dentro do seu Windows. Isso exige que o seu processador trabalhe em dobro para traduzir comandos móveis para a arquitetura do seu PC.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Se o recurso <b>Hyper-V</b> ou o <b>VBS (Segurança Baseada em Virtualização)</b> do Windows 11 estiverem ativados de forma incorreta, eles entrarão em conflito com o motor do emulador, causando quedas constantes de frames por segundo (FPS).
         </p>
         
-        <div class="bg-indigo-500/10 border border-indigo-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-indigo-400 font-black mb-2 flex items-center gap-2">Configuração Ouro: VT na BIOS</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-indigo-100 border border-indigo-200 p-6 rounded-2xl my-6">
+            <h4 class="text-indigo-700 font-black mb-2 flex items-center gap-2">Configuração Ouro: VT na BIOS</h4>
+            <p class="text-gray-600 text-sm">
                 Certifique-se de que a <b>Tecnologia de Virtualização Intel (VT-x)</b> ou <b>AMD-V (SVM)</b> está ativa na BIOS do seu computador. Sem isso, o Windows é forçado a emular via software, o que é infinitamente mais lento e instável.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function EmuladorFPS() {
         {
             title: "O Ponto Chave: Engine de Renderização",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             A maioria dos emuladores permite escolher entre <b>OpenGL</b>, <b>DirectX</b> ou até <b>Vulkan</b>. No Windows 11, otimizar como o sistema operacional entrega a potência da GPU para o processo <code>Bluestacks.exe</code> é o que separa um jogo travado de uma experiência de 120 FPS.
             <br/><br/>
             Sempre desative o 'Isolamento de Núcleo' no Windows se o seu foco for apenas jogos móveis de alta performance.
@@ -45,13 +45,13 @@ export default function EmuladorFPS() {
         {
             title: "Otimizando para Emulação com o Voltris Optimizer",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com as camadas de virtualização do Windows para garantir que o emulador receba prioridade total.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Hyper-V Disabler:** Desativa os módulos que causam lentidão em VMs de emuladores.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **RAM Purge:** Libera Gigabytes de memória RAM para que o emulador Android tenha folga total.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Graphics Priority:** Registra o seu emulador como uma 'Aplicação Profissional' no agendador da GPU do Windows.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Hyper-V Disabler:** Desativa os módulos que causam lentidão em VMs de emuladores.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **RAM Purge:** Libera Gigabytes de memória RAM para que o emulador Android tenha folga total.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Graphics Priority:** Registra o seu emulador como uma 'Aplicação Profissional' no agendador da GPU do Windows.</li>
         </ul>
       `
         }

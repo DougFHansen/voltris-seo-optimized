@@ -17,16 +17,16 @@ export default function LimparDirectX() {
         {
             title: "Por que limpar o cache do DirectX?",
           content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O DirectX (DX11, DX12) é o canal de comunicação entre o seu jogo e a sua placa de vídeo. Para acelerar o carregamento, o Windows cria um 'banco de dados' de shaders pré-processados. Quando você atualiza o driver ou o jogo, esse banco de dados antigo torna-se inútil e começa a causar conflitos, gerando o famoso <b>Stuttering</b>.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Muitos jogadores atribuem o travamento ao hardware fraco, mas, na verdade, o culpado é o Windows 11 'lendo' shaders zumbis que não batem mais com a versão atual da API do jogo.
         </p>
         
-        <div class="bg-blue-500/10 border border-blue-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-[#31A8FF] font-black mb-2 flex items-center gap-2">Limpeza via Limpeza de Disco Nativa</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-blue-100 border border-blue-200 p-6 rounded-2xl my-6">
+            <h4 class="text-blue-600 font-black mb-2 flex items-center gap-2">Limpeza via Limpeza de Disco Nativa</h4>
+            <p class="text-gray-600 text-sm">
                 O Windows 11 possui uma opção escondida na ferramenta 'Limpeza de Disco' chamada <b>Cache do Sombreador do DirectX</b>. Ativá-la periodicamente garante que o driver gráfico reconstrua apenas o que é estritamente necessário para o seu hardware atual.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function LimparDirectX() {
         {
             title: "A Diferença entre DX11 e DX12 no Cache",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             A API DirectX 12 é muito mais agressiva no uso de shaders. Ao limpar o cache, você forçará uma pequena re-compilação na próxima vez que abrir o jogo. Isso garantirá que o seu processador não tente carregar arquivos corrompidos que levam a <b>Crashes de driver (TDR Errors)</b> no meio da partida.
         </p>
       `
@@ -43,13 +43,13 @@ export default function LimparDirectX() {
         {
             title: "Otimização Avançada com o Voltris Ultra Cleaner",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com os shaders através da ferramenta <code>Ultra Hardware Diagnostics & Cleanup</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Deep Graphics Reset:** Um clique para resetar os pipelines de vídeo sem precisar reinstalar drivers.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **VRAM Management:** Limpa os registros de vídeo residuais que ocupam espaço desnecessário no seu chip gráfico.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Shader Affinity:** Calibra a entrega de CPU para a compilação inicial de shaders, tornando o primeiro boot do jogo muito mais rápido.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Deep Graphics Reset:** Um clique para resetar os pipelines de vídeo sem precisar reinstalar drivers.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **VRAM Management:** Limpa os registros de vídeo residuais que ocupam espaço desnecessário no seu chip gráfico.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Shader Affinity:** Calibra a entrega de CPU para a compilação inicial de shaders, tornando o primeiro boot do jogo muito mais rápido.</li>
         </ul>
       `
         }

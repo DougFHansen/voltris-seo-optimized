@@ -17,16 +17,16 @@ export default function RemoverDuplicados() {
         {
             title: "Por que você tem tantos arquivos duplicados no Windows 11?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Windows 11 facilita muito a cópia de arquivos, mas dificulta a organização. Cargas de trabalho com **Google Drive**, **OneDrive** ou **Dropbox** costumam criar cópias locais indevidas. Além disso, downloads repetidos e backups manuais geram um lixo digital que 'sufoca' o armazenamento.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Arquivos duplicados não apenas ocupam espaço; eles confundem o Windows Search, tornam a indexação do antivírus mais lenta e fazem o seu backup demorar o dobro do tempo necessário.
         </p>
         
-        <div class="bg-blue-500/10 border border-blue-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-[#31A8FF] font-black mb-2 flex items-center gap-2">O Perigo do Nome de Arquivos</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-blue-100 border border-blue-200 p-6 rounded-2xl my-6">
+            <h4 class="text-blue-600 font-black mb-2 flex items-center gap-2">O Perigo do Nome de Arquivos</h4>
+            <p class="text-gray-600 text-sm">
                 Confiar apenas no nome do arquivo é um erro. Dois arquivos chamados <code>foto1.jpg</code> podem ser diferentes, enquanto <code>IMG_2024.jpg</code> e <code>Copiar_de_FOTO.jpg</code> podem ser identicos. O segredo está na **Assinatura Digital (Hash)** do conteúdo.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function RemoverDuplicados() {
         {
             title: "A Diferença entre MD5 e SHA para Limpeza",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Ferramentas profissionais de limpeza como a Voltris geram uma <b>'impressão digital'</b> de cada arquivo. Isso garante 100% de precisão: se a assinatura for a mesma, o arquivo é exatamente o mesmo bit a bit, mesmo que o nome e a data de criação sejam diferentes.
             <br/><br/>
             Remover duplicatas bit-a-bit é a única forma de garantir que você não apagará por engano um arquivo importante.
@@ -45,13 +45,13 @@ export default function RemoverDuplicados() {
         {
             title: "Otimizando o Espaço com o Voltris Ultra Cleaner",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Ultra Cleaner** possui uma ferramenta inteligente de <code>Duplicate Finder & Merger</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Smart Selection:** Marca automaticamente apenas as cópias menores ou mais recentes, preservando o original.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Deep Content Scan:** Identifica duplicatas baseadas no conteúdo real da imagem ou vídeo.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Preview Mode:** Veja o que será apagado antes de confirmar a exclusão definitiva.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Smart Selection:** Marca automaticamente apenas as cópias menores ou mais recentes, preservando o original.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Deep Content Scan:** Identifica duplicatas baseadas no conteúdo real da imagem ou vídeo.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Preview Mode:** Veja o que será apagado antes de confirmar a exclusão definitiva.</li>
         </ul>
       `
         }

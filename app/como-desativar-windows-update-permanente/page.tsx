@@ -17,16 +17,16 @@ export default function DesativarUpdate() {
         {
             title: "O Windows Update: Amigo ou Vilão da sua Performance?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Windows Update é vital para a segurança, mas a forma agressiva com que a Microsoft o impõe é o que causa frustração. Imagine estar no meio de uma partida importante de Valorant ou terminando um render de 5 horas e o Windows decidir que 'é hora de reiniciar'.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Além dos reinícios, o processo de busca e download de atualizações (Wuauserv e BITS) consome rede e CPU de forma aleatória, gerando o famoso <b>Micro-Stuttering</b> (lag repentino) no seu sistema.
         </p>
         
-        <div class="bg-red-500/10 border border-red-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-red-400 font-black mb-2 flex items-center gap-2">Configuração Critica: Conexão Limitada</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-red-100 border border-red-200 p-6 rounded-2xl my-6">
+            <h4 class="text-red-700 font-black mb-2 flex items-center gap-2">Configuração Critica: Conexão Limitada</h4>
+            <p class="text-gray-600 text-sm">
                 Uma das formas mais 'sábias' de pausar as atualizações automáticas sem quebrar o sistema é configurar sua internet como uma <b>Conexão Limitada (Metered Connection)</b> nas propriedades do Wi-Fi ou Ethernet. O Windows respeitará seu limite de dados e parará de baixar itens pesados sem sua permissão expressa.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function DesativarUpdate() {
         {
             title: "Bloqueio via Política de Grupo (Gpedit.msc)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Se você tem a versão Pro do Windows 11, pode usar o Editor de Políticas de Grupo para definir que o sistema deve apenas 'avisar' sobre atualizações em vez de baixá-las.
             <br/><br/>
             Caminho: <b>Configuração do Computador > Modelos Administrativos > Componentes do Windows > Windows Update > Configurar Atualizações Automáticas > Desabilitar</b>.
@@ -47,13 +47,13 @@ export default function DesativarUpdate() {
         {
             title: "O Controle Total do Voltris Optimizer: Update Filter",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com o Windows Update de forma inteligente, permitindo que você ative ou pause com um único clique.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#ef4444] mt-1.5 shrink-0"></div> **Permanent Stop:** Desativa os serviços disparadores que o Windows tenta religar automaticamente.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#ef4444] mt-1.5 shrink-0"></div> **Driver Update Block:** Impede que o Windows instale drivers de vídeo genéricos que estragam sua performance de jogo.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#ef4444] mt-1.5 shrink-0"></div> **One-Click Restore:** Precisa atualizar para um novo recurso? Basta clicar em restaurar no Voltris e o sistema volta ao padrão.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-red-600 mt-1.5 shrink-0"></div> **Permanent Stop:** Desativa os serviços disparadores que o Windows tenta religar automaticamente.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-red-600 mt-1.5 shrink-0"></div> **Driver Update Block:** Impede que o Windows instale drivers de vídeo genéricos que estragam sua performance de jogo.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-red-600 mt-1.5 shrink-0"></div> **One-Click Restore:** Precisa atualizar para um novo recurso? Basta clicar em restaurar no Voltris e o sistema volta ao padrão.</li>
         </ul>
       `
         }

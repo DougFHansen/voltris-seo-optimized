@@ -17,16 +17,16 @@ export default function LimpezaAutomatica() {
         {
             title: "O que são Arquivos Temporários e por que eles pesam no PC?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           Toda vez que você instala um app, navega na internet ou descompacta um arquivo, o Windows 11 cria cópias temporárias nessas pastas. Elas deveriam sumir sozinhas, mas o sistema costuma "esquecer" giga-bytes de dados lá.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Acúmulo de arquivos temporários causa lentidão no acesso rápido ao disco (SSD/HDD), pode corromper caches de instalação e, em casos extremos, impedir atualizações essenciais por falta de espaço.
         </p>
         
-        <div class="bg-[#31A8FF]/10 border border-[#31A8FF]/30 p-6 rounded-2xl my-6">
-            <h4 class="text-[#31A8FF] font-black mb-2 flex items-center gap-2">Sensor de Armazenamento (Storage Sense)</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-blue-100 border border-blue-200 p-6 rounded-2xl my-6">
+            <h4 class="text-blue-600 font-black mb-2 flex items-center gap-2">Sensor de Armazenamento (Storage Sense)</h4>
+            <p class="text-gray-600 text-sm">
                 O recurso nativo do Windows 11 é um bom começo. Vá em <b>Configurações > Sistema > Armazenamento</b> e ative o Sensor. Ele limpa a lixeira e a pasta de downloads após um determinado período.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function LimpezaAutomatica() {
         {
             title: "Automatização via Agendador de Tarefas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Para uma limpeza mais agressiva, você pode criar uma tarefa que roda ao iniciar o Windows:
             <br/><br/>
             Comando Executável: <code>cleanmgr.exe /sagerun:1</code>
@@ -47,13 +47,13 @@ export default function LimpezaAutomatica() {
         {
             title: "A Vantagem do Voltris Ultra Cleaner",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Ultra Cleaner** foi desenhado para ir onde o Windows não vai. Ele escaneia mais de 50 áreas críticas do sistema que acumulam lixo.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Deep Registry Sanitization:** Remove referências a arquivos que não existem mais.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Universal Browser Cleaner:** Limpa caches de todos os navegadores instalados de uma vez.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **One-Click Automation:** Configure para limpar o sistema toda vez que o PC atingir um limite de lixo.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Deep Registry Sanitization:** Remove referências a arquivos que não existem mais.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Universal Browser Cleaner:** Limpa caches de todos os navegadores instalados de uma vez.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **One-Click Automation:** Configure para limpar o sistema toda vez que o PC atingir um limite de lixo.</li>
         </ul>
       `
         }

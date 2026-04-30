@@ -17,16 +17,16 @@ export default function DesativarCopilot() {
         {
             title: "Por que remover o Copilot do Windows 11?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Copilot é a nova Inteligência Artificial da Microsoft, mas para muitos usuários, ele é apenas mais um 'bloatware' que ocupa espaço visual na barra de tarefas e consome recursos de sistema continuamente no fundo.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Além do consumo de RAM (aproximadamente 300MB a 500MB em standby), o Copilot envia dados de uso do seu Windows para os servidores de I.A. da Microsoft. Se você busca **Privacidade Total** e Performance máxima, desativá-lo é uma prioridade.
         </p>
         
-        <div class="bg-indigo-500/10 border border-indigo-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-indigo-400 font-black mb-2 flex items-center gap-2">Removendo o Ícone via Barra de Tarefas</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-indigo-100 border border-indigo-200 p-6 rounded-2xl my-6">
+            <h4 class="text-indigo-700 font-black mb-2 flex items-center gap-2">Removendo o Ícone via Barra de Tarefas</h4>
+            <p class="text-gray-600 text-sm">
                 O passo básico é clicar com o botões direito na Barra de Tarefas > Configurações da Barra de Tarefas e desmarcar o Copilot. Isso apenas **ESCONDE** o ícone, mas o serviço continua rodando no Gerenciador de Tarefas. Para remover a raiz, precisamos de Tweaks de Registro.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function DesativarCopilot() {
         {
             title: "Desativação via Editor de Registro (HKEY)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Você pode desativar o Copilot em toda a conta de usuário criando uma chave específica no Registro:
             <br/><br/>
             Caminho: <code>HKEY_CURRENT_USER\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot</code>.
@@ -47,13 +47,13 @@ export default function DesativarCopilot() {
         {
             title: "A Vantagem do Voltris Privacy Shield",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com o Copilot de forma cirúrgica, permitindo que você ative ou desative com um clique sem precisar mexer em ferramentas perigosas como o <code>Regedit</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Full De-AI:** Remove todos os rastreadores de inteligência artificial de uma vez.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **RAM Recovery:** Libera imediatamente o espaço ocupado pelos processos <code>msedge_ai.exe</code>.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Telemetry Block:** Bloqueia o tráfego de dados do Copilot para os servidores da Microsoft.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Full De-AI:** Remove todos os rastreadores de inteligência artificial de uma vez.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **RAM Recovery:** Libera imediatamente o espaço ocupado pelos processos <code>msedge_ai.exe</code>.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Telemetry Block:** Bloqueia o tráfego de dados do Copilot para os servidores da Microsoft.</li>
         </ul>
       `
         }

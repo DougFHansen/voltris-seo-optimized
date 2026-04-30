@@ -17,16 +17,16 @@ export default function DesativarAppsFundo() {
         {
             title: "Por que existem aplicativos rodando sem eu ter aberto?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Windows 11 adota um modelo de 'suspensão' para apps. Ao instalar ferramentas da Microsoft Store ou até nativas como a Calculadora, Relógio e Câmera, o sistema as mantém carregadas em segundo plano para que abram instantaneamente.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O problema é que, em conjunto, esse 'carregamento rápido' acaba roubando centenas de MBs da sua RAM e ciclos de processamento constantes para verificar notificações e updates de telemetria.
         </p>
         
-        <div class="bg-indigo-500/10 border border-indigo-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-indigo-400 font-black mb-2 flex items-center gap-2">Configuração Oculta: App Permissions</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-indigo-100 border border-indigo-200 p-6 rounded-2xl my-6">
+            <h4 class="text-indigo-700 font-black mb-2 flex items-center gap-2">Configuração Oculta: App Permissions</h4>
+            <p class="text-gray-600 text-sm">
                 No Windows 11, o botão global de 'Desativar Apps de Fundo' do Windows 10 desapareceu das configurações fáceis. Agora, é necessário ir app por app em <b>Configurações > Aplicativos > Aplicativos Instalados > Opções Avançadas</b>. Nossa ferramenta traz o botão global de volta!
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function DesativarAppsFundo() {
         {
             title: "O Papel da Telemetria no Segundo Plano",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             A maioria dos apps que rodam no fundo estão vigiando o seu comportamento. Ao desativar as permissões de background, você não apenas economiza RAM, mas blinda sua <b>Privacidade.</b>
             <br/><br/>
             Mesmo itens como o 'Xbox Game Bar' podem ser suspensos com segurança se você não grava gameplays nativos do sistema.
@@ -45,13 +45,13 @@ export default function DesativarAppsFundo() {
         {
             title: "O Gerenciamento Profissional com Voltris Optimizer",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com os apps de fundo através do <code>App Freeze & Deep Cleanup</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Universal App Disable:** Um clique para desativar TUDO que não é essencial no segundo plano.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Process Killer:** Identifica processos de background que continuam ativos após o fechamento de um app principal.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Resource Recovery:** Devolve ao sistema a memória 'vazada' (Memory Leak) por aplicativos mal otimizados.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Universal App Disable:** Um clique para desativar TUDO que não é essencial no segundo plano.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Process Killer:** Identifica processos de background que continuam ativos após o fechamento de um app principal.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Resource Recovery:** Devolve ao sistema a memória 'vazada' (Memory Leak) por aplicativos mal otimizados.</li>
         </ul>
       `
         }

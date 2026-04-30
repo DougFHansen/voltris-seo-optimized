@@ -17,15 +17,15 @@ export default function MouseAcceleration() {
         {
             title: "O que é a Aceleração do Mouse e por que prejudica?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           Por padrão, o Windows 11 ativa o recurso <b>Aprimorar Precisão do Ponteiro</b> (Enhance Pointer Precision). Esse recurso ajusta a velocidade do cursor baseado na <i>rapidez</i> com que você move o mouse — quanto mais rápido você move, mais distância o cursor percorre.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Para o uso cotidiano isso parece conveniente, mas para jogadores competitivos, isso destrói a consistência da mira. Cada movimento do mouse precisa ser 1:1, puro e previsível.
         </p>
-        <div class="bg-red-500/10 border border-red-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-red-400 font-black mb-2">Desativando via Configurações</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-red-100 border border-red-200 p-6 rounded-2xl my-6">
+            <h4 class="text-red-700 font-black mb-2">Desativando via Configurações</h4>
+            <p class="text-gray-600 text-sm">
                 Caminho: <b>Painel de Controle {`>`} Mouse {`>`} Opções do Ponteiro {`>`} desmarcar "Aprimorar a precisão do ponteiro"</b>. Este é o passo número 1 de qualquer setup competitivo sério.
             </p>
         </div>
@@ -34,7 +34,7 @@ export default function MouseAcceleration() {
         {
             title: "Raw Input: O Padrão Dos Pros",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Nos jogos modernos como Valorant e CS2, existe uma opção de <b>Raw Input</b> que bypassa completamente as configurações do Windows e lê o sensor do mouse diretamente. Ativar isso dentro do jogo garante que nem mesmo o Windows possa interferir no movimento da sua mira.
             <br/><br/>
             Com o Voltris, garantimos que o driver de mouse tenha prioridade de interrupção máxima para que nem Raw Input encontre latência de sistema.
@@ -44,13 +44,13 @@ export default function MouseAcceleration() {
         {
             title: "Calibração Profissional com o Voltris",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O <b>Voltris Optimizer</b> oferece controle total sobre a cadeia de input de periféricos.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> <b>Pointer Precision OFF:</b> Desativa via Registro para tornar permanente.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> <b>USB Polling Priority:</b> Garante que o mouse seja lido no máximo de 1000Hz sem interrupções.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> <b>SPI Speed Fix:</b> Corrige valores de velocidade de ponteiro do Registro para a escala correta de 6/11.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> <b>Pointer Precision OFF:</b> Desativa via Registro para tornar permanente.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> <b>USB Polling Priority:</b> Garante que o mouse seja lido no máximo de 1000Hz sem interrupções.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> <b>SPI Speed Fix:</b> Corrige valores de velocidade de ponteiro do Registro para a escala correta de 6/11.</li>
         </ul>
       `
         }

@@ -17,16 +17,16 @@ export default function SSDHealth() {
         {
             title: "Por que o SSD do seu Windows 11 pode estar com os dias contados?",
           content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           Diferente dos HDs antigos, os SSDs possuem um limite físico de quantas vezes cada bloco de memória pode ser gravado. Isso é o <b>TBW (TeraBytes Written)</b>. Se o seu Windows 11 estiver gravando telemetria e arquivos temporários de forma desenfreada, você está 'gastando' a vida do seu SSD sem nem ver.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Se você sente que o Windows 11 está demorando para iniciar ou que as abas do navegador estão 'congelando', o motivo pode ser um SSD morrendo ou superaquecido (Thermal Throttling).
         </p>
         
-        <div class="bg-red-500/10 border border-red-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-red-400 font-black mb-2 flex items-center gap-2">Configuração Critica: Habilitar o TRIM</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-red-100 border border-red-200 p-6 rounded-2xl my-6">
+            <h4 class="text-red-700 font-black mb-2 flex items-center gap-2">Configuração Critica: Habilitar o TRIM</h4>
+            <p class="text-gray-600 text-sm">
                 O comando <b>TRIM</b> avisa ao SSD quais blocos de dados não são mais necessários, permitindo que o disco os limpe internamente. Se o TRIM estiver desativado no Windows, seu SSD terá um desempenho deplorável. Com o Voltris Optimizer, verificamos e ativamos isso em segundos.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function SSDHealth() {
         {
             title: "Como ler os dados S.M.A.R.T. nativamente",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             O Windows 11 agora permite ver a saúde básica nas configurações do sistema.
             <br/><br/>
             Caminho: <b>Configurações > Sistema > Armazenamento > Configurações de armazenamento avançadas > Discos e volumes</b>.
@@ -47,13 +47,13 @@ export default function SSDHealth() {
         {
             title: "A Vantagem do Voltris Smart Disk Health Monitor",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com a saúde do seu SSD através da ferramenta <code>Ultra Hardware Diagnostics</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Health Tracker:** Mostra exatamente quanto da vida útil do SSD já foi gasta.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Temperature Overwatch:** Alerta visual se o seu SSD NVMe atingir temperaturas que causem lag ou perda de dados.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Silent Optimization:** Reduz as gravações inúteis do Windows para prolongar os anos de vida do seu hardware original.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Health Tracker:** Mostra exatamente quanto da vida útil do SSD já foi gasta.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Temperature Overwatch:** Alerta visual se o seu SSD NVMe atingir temperaturas que causem lag ou perda de dados.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Silent Optimization:** Reduz as gravações inúteis do Windows para prolongar os anos de vida do seu hardware original.</li>
         </ul>
       `
         }

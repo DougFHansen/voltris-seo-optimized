@@ -17,7 +17,7 @@ import { toast } from 'react-hot-toast';
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#050510]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-gray-50" />}>
       <LoginContent />
     </Suspense>
   );
@@ -73,7 +73,7 @@ function LoginContent() {
   }, [password]);
 
   const strengthColor = () => {
-    if (passwordStrength === 0) return 'bg-white/10';
+    if (passwordStrength === 0) return 'bg-gray-200';
     if (passwordStrength <= 1) return 'bg-red-500';
     if (passwordStrength === 2) return 'bg-orange-500';
     if (passwordStrength === 3) return 'bg-yellow-500';
@@ -544,34 +544,34 @@ function LoginContent() {
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-[#050510] relative overflow-hidden flex items-center justify-center font-sans selection:bg-[#31A8FF]/30">
+    <div className="h-[100dvh] w-full bg-gray-50 relative overflow-hidden flex items-center justify-center font-sans selection:bg-blue-200/30">
 
       {/* Backgrounds */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[120px] rounded-full"></div>
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-200/30 blur-[120px] rounded-full"></div>
 
       {/* Back Button */}
-      <Link href="/" className="absolute top-8 left-8 z-50 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group px-4 py-2 rounded-full hover:bg-white/5">
+      <Link href="/" className="absolute top-8 left-8 z-50 flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group px-4 py-2 rounded-full hover:bg-gray-200">
         {/* Arrow Colored by Brand - Primary Pink */}
-        <ArrowLeft className="w-4 h-4 text-[#FF4B6B] group-hover:-translate-x-1 transition-transform" />
+        <ArrowLeft className="w-4 h-4 text-pink-600 group-hover:-translate-x-1 transition-transform" />
         <span className="text-sm font-medium">Voltar</span>
       </Link>
 
       {/* Card */}
       <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="w-full max-w-[400px] mx-4 relative z-10">
-        <div className="bg-[#0A0A0F]/90 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden relative">
+        <div className="bg-white/90 backdrop-blur-xl border border-gray-200 rounded-3xl shadow-lg overflow-hidden relative">
           {/* Gradient Border Top */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF]"></div>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600"></div>
 
           <div className="p-8">
             {/* Header Centered Flex */}
             <div className="flex flex-col items-center justify-center mb-6 w-full text-center">
               {/* Titulo Reduzido - text-sm */}
-              <h1 className="text-sm font-bold text-white tracking-tight mb-1 whitespace-nowrap">
+              <h1 className="text-sm font-bold text-gray-900 tracking-tight mb-1 whitespace-nowrap">
                 {isRecoveryView ? 'Recuperação' : (isLoginView ? 'Bem-vindo' : 'Criar Conta')}
               </h1>
               {/* Subtitulo Micro - text-[10px] */}
-              <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
+              <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">
                 {isRecoveryView ? 'Redefinir Senha' : (isLoginView ? 'Acesse o Painel' : `Etapa ${signupStep} de 3`)}
               </p>
             </div>
@@ -580,46 +580,46 @@ function LoginContent() {
               {success ? (
                 <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="text-center py-10 flex flex-col items-center relative">
                   <div className="absolute inset-0 bg-emerald-500/20 blur-[50px] rounded-full pointer-events-none"></div>
-                  <div className="relative z-10 w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-                    <CheckCircle className="w-10 h-10 text-emerald-400" />
+                  <div className="relative z-10 w-20 h-20 rounded-full bg-emerald-100 border border-emerald-200 flex items-center justify-center mb-6 shadow-md">
+                    <CheckCircle className="w-10 h-10 text-emerald-600" />
                   </div>
-                  <h2 className="text-2xl font-bold text-white mb-2">Sucesso!</h2>
-                  <p className="text-emerald-400/80 text-sm max-w-[250px] font-medium animate-pulse">{redirectText}</p>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">Sucesso!</h2>
+                  <p className="text-emerald-600 text-sm max-w-[250px] font-medium animate-pulse">{redirectText}</p>
                 </motion.div>
               ) : isMfaChallenge ? (
                 <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="space-y-6 py-6 text-center">
-                  <div className="w-16 h-16 bg-[#31A8FF]/10 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-3xl">
-                    <FiSmartphone className="w-8 h-8 text-[#31A8FF]" />
+                  <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                    <FiSmartphone className="w-8 h-8 text-blue-600" />
                   </div>
                   <div className="space-y-2">
-                    <h2 className="text-xl font-black text-white italic uppercase tracking-tighter">Autenticação 2FA</h2>
-                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-relaxed px-4">Proteção Voltris: Digite o código de 6 dígitos do seu Google Authenticator.</p>
+                    <h2 className="text-xl font-black text-gray-900 italic uppercase tracking-tighter">Autenticação 2FA</h2>
+                    <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest leading-relaxed px-4">Proteção Voltris: Digite o código de 6 dígitos do seu Google Authenticator.</p>
                   </div>
 
                   <form onSubmit={handleMfaVerify} className="space-y-6">
-                     <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-4 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all">
-                        <FiKey className="w-5 h-5 text-slate-500" />
+                     <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-4 flex items-center gap-3 focus-within:border-blue-300 transition-all">
+                        <FiKey className="w-5 h-5 text-gray-500" />
                         <input 
                           type="text" 
                           placeholder="000 000" 
                           maxLength={6}
                           value={mfaCode}
                           onChange={e => setMfaCode(e.target.value.replace(/\D/g, ''))}
-                          className="bg-transparent w-full text-white text-xl font-black tracking-[0.4em] outline-none placeholder:tracking-normal placeholder:text-slate-600 text-center"
+                          className="bg-transparent w-full text-gray-900 text-xl font-black tracking-[0.4em] outline-none placeholder:tracking-normal placeholder:text-gray-400 text-center"
                           autoFocus
                         />
                      </div>
 
                      {error && (
-                        <div className="p-2 rounded-lg bg-red-500/10 border border-red-500/20">
-                          <p className="text-red-400 text-[10px] font-bold uppercase tracking-widest text-center">{error}</p>
+                        <div className="p-2 rounded-lg bg-red-100 border border-red-200">
+                          <p className="text-red-600 text-[10px] font-bold uppercase tracking-widest text-center">{error}</p>
                         </div>
                      )}
 
                      <button 
                       type="submit" 
                       disabled={isVerifyingMfa || mfaCode.length < 6}
-                      className="w-full py-4 bg-white text-black font-black uppercase italic text-xs rounded-xl shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50"
+                      className="w-full py-4 bg-gray-900 text-white font-black uppercase italic text-xs rounded-xl shadow-md hover:bg-gray-800 active:scale-[0.98] transition-all disabled:opacity-50"
                      >
                        {isVerifyingMfa ? 'Verificando...' : 'Confirmar e Acessar'}
                      </button>
@@ -633,7 +633,7 @@ function LoginContent() {
                         supabase.auth.signOut();
                         window.location.reload(); 
                       }}
-                      className="w-full text-white/20 hover:text-white/40 text-[9px] font-black uppercase tracking-widest transition-all"
+                      className="w-full text-gray-400 hover:text-gray-600 text-[9px] font-black uppercase tracking-widest transition-all"
                      >
                        Sair da Sessão
                      </button>
@@ -649,33 +649,33 @@ function LoginContent() {
                       className="space-y-4 p-0 m-0 w-full"
                     >
                       <div className="space-y-4">
-                        <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all group/input">
-                          <Mail className="w-4 h-4 text-slate-500 group-focus-within/input:text-[#31A8FF] transition-colors" />
+                        <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-blue-300 transition-all group/input">
+                          <Mail className="w-4 h-4 text-gray-500 group-focus-within/input:text-blue-600 transition-colors" />
                           <input
                             type="text"
                             placeholder="E-mail ou Usuário"
                             value={email}
                             onChange={e => setEmail(e.target.value)}
-                            className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600 appearance-none"
+                            className="bg-transparent w-full text-gray-900 text-sm outline-none placeholder:text-gray-400 appearance-none"
                             autoComplete="username"
                             required
                           />
                         </div>
-                        <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-[#31A8FF] transition-all group/input">
-                          <Lock className="w-4 h-4 text-slate-500 group-focus-within/input:text-[#31A8FF] transition-colors" />
+                        <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3 focus-within:border-blue-300 transition-all group/input">
+                          <Lock className="w-4 h-4 text-gray-500 group-focus-within/input:text-blue-600 transition-colors" />
                           <input 
                             type={showPassword ? "text" : "password"} 
                             placeholder="Sua Senha" 
                             value={password} 
                             onChange={e => setPassword(e.target.value)} 
-                            className="bg-transparent w-full text-white text-sm outline-none placeholder:text-slate-600 appearance-none" 
+                            className="bg-transparent w-full text-gray-900 text-sm outline-none placeholder:text-gray-400 appearance-none" 
                             autoComplete="current-password"
                             required
                           />
                           <button 
                             type="button" 
                             onClick={() => setShowPassword(!showPassword)}
-                            className="text-slate-500 hover:text-white transition-colors"
+                            className="text-gray-500 hover:text-gray-900 transition-colors"
                           >
                             <User className="w-4 h-4" />
                           </button>
@@ -683,19 +683,19 @@ function LoginContent() {
                       </div>
 
                       <div className="flex justify-end">
-                        <button type="button" onClick={() => setIsRecoveryView(true)} className="text-xs text-slate-500 hover:text-[#31A8FF] transition-colors font-medium">Esqueci a senha</button>
+                        <button type="button" onClick={() => setIsRecoveryView(true)} className="text-xs text-gray-500 hover:text-blue-600 transition-colors font-medium">Esqueci a senha</button>
                       </div>
 
                       {error && (
-                        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
-                          <p className="text-red-400 text-xs text-center font-bold tracking-tight">{error}</p>
+                        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-3 rounded-lg bg-red-100 border border-red-200">
+                          <p className="text-red-600 text-xs text-center font-bold tracking-tight">{error}</p>
                         </motion.div>
                       )}
 
                       <button 
                         type="submit" 
                         disabled={loading} 
-                        className="w-full py-3 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] hover:brightness-110 active:scale-[0.98] text-white font-bold rounded-xl text-sm transition-all shadow-lg shadow-[#8B31FF]/20 flex items-center justify-center gap-2"
+                        className="w-full py-3 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:brightness-110 active:scale-[0.98] text-white font-bold rounded-xl text-sm transition-all shadow-md flex items-center justify-center gap-2"
                       >
                         {loading ? (
                           <>
@@ -711,9 +711,9 @@ function LoginContent() {
                       </button>
 
                       <div className="py-2 flex items-center gap-4">
-                        <div className="h-px flex-1 bg-white/5"></div>
-                        <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">OU</span>
-                        <div className="h-px flex-1 bg-white/5"></div>
+                        <div className="h-px flex-1 bg-gray-200"></div>
+                        <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">OU</span>
+                        <div className="h-px flex-1 bg-gray-200"></div>
                       </div>
 
                       <div className="w-full flex justify-center">
@@ -734,18 +734,18 @@ function LoginContent() {
                     <div className="space-y-4">
                       {signupStep === 1 && (
                         <div className="space-y-3">
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><User className="w-4 h-4 text-slate-500" /><input type="text" placeholder="Usuário (Login)" value={login} onChange={e => setLogin(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><Mail className="w-4 h-4 text-slate-500" /><input type="email" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3">
-                            <Lock className="w-4 h-4 text-slate-500" />
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3"><User className="w-4 h-4 text-gray-500" /><input type="text" placeholder="Usuário (Login)" value={login} onChange={e => setLogin(e.target.value)} className="bg-transparent w-full text-gray-900 text-sm outline-none" /></div>
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3"><Mail className="w-4 h-4 text-gray-500" /><input type="email" placeholder="E-mail" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-gray-900 text-sm outline-none" /></div>
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3">
+                            <Lock className="w-4 h-4 text-gray-500" />
                             <input 
                               type={showPassword ? "text" : "password"} 
                               placeholder="Senha" 
                               value={password} 
                               onChange={e => setPassword(e.target.value)} 
-                              className="bg-transparent w-full text-white text-sm outline-none" 
+                              className="bg-transparent w-full text-gray-900 text-sm outline-none" 
                             />
-                            <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-slate-500">
+                            <button type="button" onClick={() => setShowPassword(!showPassword)} className="text-gray-500">
                                 <Lock className="w-4 h-4" />
                             </button>
                           </div>
@@ -753,12 +753,12 @@ function LoginContent() {
                           {/* Password Strength Meter */}
                           <div className="space-y-2 mt-1 px-1">
                             <div className="flex justify-between items-center">
-                              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Segurança</span>
-                              <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${passwordStrength === 0 ? 'text-slate-600' : (passwordStrength <= 1 ? 'text-red-500' : (passwordStrength === 2 ? 'text-orange-500' : 'text-emerald-500'))}`}>
+                              <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Segurança</span>
+                              <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${passwordStrength === 0 ? 'text-gray-400' : (passwordStrength <= 1 ? 'text-red-500' : (passwordStrength === 2 ? 'text-orange-500' : 'text-emerald-500'))}`}>
                                 {strengthText()}
                               </span>
                             </div>
-                            <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div className="h-1 w-full bg-gray-200 rounded-full overflow-hidden">
                               <motion.div 
                                 className={`h-full ${strengthColor()} transition-all duration-500`}
                                 initial={{ width: 0 }}
@@ -768,9 +768,9 @@ function LoginContent() {
                           </div>
 
                           <div className="py-2 flex items-center gap-4">
-                            <div className="h-px flex-1 bg-white/5"></div>
-                            <span className="text-[10px] font-bold text-white/10 uppercase tracking-widest">OU</span>
-                            <div className="h-px flex-1 bg-white/5"></div>
+                            <div className="h-px flex-1 bg-gray-200"></div>
+                            <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest">OU</span>
+                            <div className="h-px flex-1 bg-gray-200"></div>
                           </div>
 
                           <div className="w-full flex justify-center">
@@ -787,24 +787,24 @@ function LoginContent() {
                       )}
                       {signupStep === 2 && (
                         <div className="space-y-3">
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><User className="w-4 h-4 text-slate-500" /><input type="text" placeholder="Nome Completo" value={fullName} onChange={e => setFullName(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><PhoneIcon className="w-4 h-4 text-slate-500" /><input type="tel" placeholder="WhatsApp" value={phone} onChange={e => setPhone(formatPhone(e.target.value))} className="bg-transparent w-full text-white text-sm outline-none" /></div>
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3"><User className="w-4 h-4 text-gray-500" /><input type="text" placeholder="Nome Completo" value={fullName} onChange={e => setFullName(e.target.value)} className="bg-transparent w-full text-gray-900 text-sm outline-none" /></div>
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3"><PhoneIcon className="w-4 h-4 text-gray-500" /><input type="tel" placeholder="WhatsApp" value={phone} onChange={e => setPhone(formatPhone(e.target.value))} className="bg-transparent w-full text-gray-900 text-sm outline-none" /></div>
                         </div>
                       )}
                       {signupStep === 3 && (
                         <div className="space-y-3">
                           <div className="grid grid-cols-2 gap-3">
-                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-2 focus-within:border-[#31A8FF] transition-all">
+                            <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-2 focus-within:border-blue-300 transition-all">
                               <input 
                                 type="text" 
                                 placeholder="CEP" 
                                 value={cep} 
                                 onChange={e => handleCepChange(e.target.value)} 
-                                className="bg-transparent w-full text-white text-sm outline-none" 
+                                className="bg-transparent w-full text-gray-900 text-sm outline-none" 
                               />
-                              {isCepLoading && <Loader2 className="w-4 h-4 text-[#31A8FF] animate-spin" />}
+                              {isCepLoading && <Loader2 className="w-4 h-4 text-blue-600 animate-spin" />}
                             </div>
-                            <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                            <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3">
                               <input 
                                 type="text" 
                                 placeholder="UF" 
@@ -812,56 +812,56 @@ function LoginContent() {
                                 readOnly={isCepValid}
                                 value={state} 
                                 onChange={e => !isCepValid && setState(e.target.value.toUpperCase())} 
-                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                                className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                               />
                             </div>
                           </div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3">
                             <input 
                               type="text" 
                               placeholder="Rua / Logradouro" 
                               readOnly={isCepValid}
                               value={street} 
                               onChange={e => !isCepValid && setStreet(e.target.value)} 
-                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                             />
                           </div>
                           <div className="grid grid-cols-3 gap-3">
-                            <div className="col-span-2 bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                            <div className="col-span-2 bg-gray-100 border border-gray-200 rounded-xl px-4 py-3">
                               <input 
                                 type="text" 
                                 placeholder="Bairro" 
                                 readOnly={isCepValid}
                                 value={neighborhood} 
                                 onChange={e => !isCepValid && setNeighborhood(e.target.value)} 
-                                className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                                className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                               />
                             </div>
-                            <div className="bg-[#121218] border border-[#31A8FF]/30 rounded-xl px-4 py-3 focus-within:border-[#31A8FF] transition-all bg-gradient-to-br from-[#31A8FF]/5 to-transparent">
+                            <div className="bg-gray-100 border border-blue-300 rounded-xl px-4 py-3 focus-within:border-blue-300 transition-all bg-gradient-to-br from-blue-100/50 to-transparent">
                               <input 
                                 type="text" 
                                 placeholder="Nº" 
                                 value={number} 
                                 onChange={e => setNumber(e.target.value)} 
-                                className="bg-transparent w-full text-white text-sm outline-none placeholder:text-[#31A8FF]/40 font-bold" 
+                                className="bg-transparent w-full text-gray-900 text-sm outline-none placeholder:text-blue-600/40 font-bold" 
                               />
                             </div>
                           </div>
-                          <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3">
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3">
                             <input 
                               type="text" 
                               placeholder="Cidade" 
                               readOnly={isCepValid}
                               value={city} 
                               onChange={e => !isCepValid && setCity(e.target.value)} 
-                              className={`bg-transparent w-full text-white text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                             />
                           </div>
                           {isCepValid && (
                             <button 
                               type="button"
                               onClick={() => { setCep(''); setIsCepValid(false); setStreet(''); setNeighborhood(''); setCity(''); setState(''); }}
-                              className="text-[10px] text-[#FF4B6B] font-bold uppercase tracking-widest hover:underline text-center w-full mt-1"
+                              className="text-[10px] text-pink-600 font-bold uppercase tracking-widest hover:underline text-center w-full mt-1"
                             >
                               Corrigir CEP / Digitar Manualmente
                             </button>
@@ -869,11 +869,11 @@ function LoginContent() {
                         </div>
                       )}
 
-                      {error && <p className="text-red-400 text-xs text-center">{error}</p>}
+                      {error && <p className="text-red-600 text-xs text-center">{error}</p>}
 
                       <div className="flex gap-3 pt-2">
-                        {signupStep > 1 && <button onClick={() => setSignupStep(prev => prev - 1)} className="px-4 py-3 rounded-xl border border-white/10 text-slate-400 hover:text-white text-sm">Voltar</button>}
-                        <button onClick={signupStep < 3 ? handleNextStep : handleSignUp} disabled={loading} className="flex-1 py-3 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] text-white font-bold rounded-xl text-sm shadow-lg hover:brightness-110">
+                        {signupStep > 1 && <button onClick={() => setSignupStep(prev => prev - 1)} className="px-4 py-3 rounded-xl border border-gray-200 text-gray-500 hover:text-gray-900 text-sm">Voltar</button>}
+                        <button onClick={signupStep < 3 ? handleNextStep : handleSignUp} disabled={loading} className="flex-1 py-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold rounded-xl text-sm shadow-md hover:brightness-110">
                           {loading ? <Loader2 className="w-4 h-4 animate-spin mx-auto" /> : (signupStep < 3 ? 'Próximo' : 'Concluir')}
                         </button>
                       </div>
@@ -883,20 +883,20 @@ function LoginContent() {
                   {/* --- RECOVERY --- */}
                   {isRecoveryView && (
                     <div className="space-y-4">
-                      <p className="text-slate-400 text-sm text-center">Digite seu email para receber o link.</p>
-                      <div className="bg-[#121218] border border-white/10 rounded-xl px-4 py-3 flex items-center gap-3"><Mail className="w-4 h-4 text-slate-500" /><input type="email" placeholder="E-mail cadastrado" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-white text-sm outline-none" /></div>
-                      <button onClick={handlePasswordRecovery} disabled={loading} className="w-full py-3 bg-[#31A8FF] text-white font-bold rounded-xl text-sm">Enviar Link</button>
-                      <button onClick={() => setIsRecoveryView(false)} className="w-full text-center text-xs text-slate-500">Voltar</button>
+                      <p className="text-gray-600 text-sm text-center">Digite seu email para receber o link.</p>
+                      <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3"><Mail className="w-4 h-4 text-gray-500" /><input type="email" placeholder="E-mail cadastrado" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-gray-900 text-sm outline-none" /></div>
+                      <button onClick={handlePasswordRecovery} disabled={loading} className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl text-sm">Enviar Link</button>
+                      <button onClick={() => setIsRecoveryView(false)} className="w-full text-center text-xs text-gray-500">Voltar</button>
                     </div>
                   )}
 
-                  <div className="pt-4 border-t border-white/5 text-center">
+                  <div className="pt-4 border-t border-gray-200 text-center">
                     {!isRecoveryView && (
                       <div className="space-y-3">
-                        <button onClick={() => { setIsLoginView(!isLoginView); setSignupStep(1); setError(null); }} className="text-sm text-slate-400">
+                        <button onClick={() => { setIsLoginView(!isLoginView); setSignupStep(1); setError(null); }} className="text-sm text-gray-600">
                           {isLoginView ? 'Não tem conta? ' : 'Já tem conta? '}
 
-                          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] hover:opacity-80 transition-opacity">
+                          <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:opacity-80 transition-opacity">
                             {isLoginView ? 'Cadastre-se' : 'Faça Login'}
                           </span>
 

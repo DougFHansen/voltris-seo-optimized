@@ -216,20 +216,18 @@ export default function HomeClient() {
                 }}
             />
             <main className="relative">
-                {/* Global Ambient Background Effects (Noise Overlay on Top) */}
-                <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
-
                 {/* Background Gradients (Fixed Behind) */}
                 <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-                    <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen" />
-                    <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen" />
+                    <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[120px]" />
+                    <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-100/50 to-blue-100/50 blur-[100px]" />
                 </div>
-
                 <section
                     className="
                     relative
                     w-full
-                    min-h-[100dvh]
+                    min-h-screen
+                    bg-gradient-to-b from-gray-50 via-white to-gray-100
+                    overflow-hidden
                     flex
                     flex-col
                     items-center
@@ -256,18 +254,18 @@ export default function HomeClient() {
 
                             {/* Text Content - Order 1 */}
                             <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-2 lg:gap-4 z-20 w-full lg:pb-28">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 border border-[#31A8FF]/30 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
-                                    <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                    <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">Novos Planos Empresariais Disponíveis</span>
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border border-blue-200 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
+                                    <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
+                                    <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text tracking-wide">Novos Planos Empresariais Disponíveis</span>
                                 </div>
 
-                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans lg:mt-12">
-                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Software de Otimização de PC</span> <br className="hidden lg:block" />
-                                    <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">para Máxima Performance no Windows</span>
+                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight font-sans lg:mt-12">
+                                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">Software de Otimização de PC</span> <br className="hidden lg:block" />
+                                    <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-700">Para Máxima Performance no Windows</span>
                                 </h1>
 
-                                <p className="text-sm sm:text-base lg:text-lg text-slate-300 max-w-xl leading-relaxed font-light">
-                                    Otimize computadores para jogos, trabalho e uso profissional. Mais desempenho, estabilidade e produtividade com o <strong className="text-white">Voltris Optimizer</strong>.
+                                <p className="text-sm sm:text-base lg:text-lg text-gray-500 max-w-xl leading-relaxed">
+                                    Otimize computadores para jogos, trabalho e uso profissional. Mais desempenho, estabilidade e produtividade com o <strong className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Voltris Optimizer</strong>.
                                 </p>
                             </div>
 
@@ -275,7 +273,7 @@ export default function HomeClient() {
                             <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:absolute lg:bottom-0 lg:left-0 lg:z-30">
                                 <a
                                     href="/todos-os-servicos"
-                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
+                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg hover:shadow-xl"
                                 >
                                     <span className="mr-2">Ver Planos e Preços</span>
                                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -284,7 +282,7 @@ export default function HomeClient() {
                                     href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20otimiza%C3%A7%C3%A3o%20da%20VOLTRIS"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                 >
                                     <FaWhatsapp className="mr-2 text-lg" />
                                     Falar com Especialista
@@ -307,11 +305,10 @@ export default function HomeClient() {
                     </div>
                 </section>
                 <AnimatedSection direction="up" delay={0.2}>
-                    <section id="about" className="relative py-20 lg:py-32 bg-[#050510] overflow-hidden">
+                    <section id="about" className="relative py-20 lg:py-32 bg-white overflow-hidden">
                         {/* Background Ambience */}
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
-                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#31A8FF]/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
-                        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#8B31FF]/10 blur-[120px] rounded-full mix-blend-screen pointer-events-none"></div>
+                        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[120px] rounded-full pointer-events-none"></div>
+                        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-purple-100/50 to-blue-100/50 blur-[120px] rounded-full pointer-events-none"></div>
 
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -319,40 +316,40 @@ export default function HomeClient() {
                                 {/* Left Column: Semantic SEO Content */}
                                 <div className="flex flex-col gap-8 text-center lg:text-left">
                                     <div>
-                                        <h2 className="text-sm font-bold tracking-[0.2em] text-[#31A8FF] mb-4 uppercase">
+                                        <h2 className="text-sm font-bold tracking-[0.2em] text-blue-600 mb-4 uppercase">
                                             Quem Somos
                                         </h2>
-                                        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.1] tracking-tight mb-6">
+                                        <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-[1.1] tracking-tight mb-6">
                                             Redefinindo o Padrão de <br className="hidden lg:block" />
-                                            <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+                                            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
                                                 Engenharia & Performance
                                             </span>
                                         </h3>
-                                        <p className="text-lg text-slate-400 leading-relaxed font-light">
-                                            A <strong>Voltris</strong> não é apenas uma assistência técnica convencional. Somos um laboratório de tecnologia especializado em extrair o <strong>máximo potencial do seu hardware</strong> através de otimizações a nível de kernel, limpeza profunda e segurança corporativa.
+                                        <p className="text-lg text-gray-500 leading-relaxed">
+                                            A <strong className="text-gray-700">Voltris</strong> não é apenas uma assistência técnica convencional. Somos um laboratório de tecnologia especializado em extrair o <strong className="text-gray-700">máximo potencial do seu hardware</strong> através de otimizações a nível de kernel, limpeza profunda e segurança corporativa.
                                         </p>
                                     </div>
 
                                     <div className="space-y-6">
-                                        <div className="flex flex-col sm:flex-row gap-5 items-center lg:items-start text-center sm:text-left p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-[#31A8FF]/30 transition-colors duration-300">
-                                            <div className="w-12 h-12 rounded-xl bg-[#31A8FF]/10 flex items-center justify-center shrink-0 border border-[#31A8FF]/20 shadow-[0_0_15px_rgba(49,168,255,0.1)]">
-                                                <Cpu className="w-6 h-6 text-[#31A8FF]" />
+                                        <div className="flex flex-col sm:flex-row gap-5 items-center lg:items-start text-center sm:text-left p-6 rounded-2xl bg-white border border-gray-200 shadow-sm hover:border-blue-300 hover:shadow-md transition-all duration-200">
+                                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center shrink-0 border border-blue-200">
+                                                <Cpu className="w-6 h-6 text-blue-600" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold text-lg mb-1">Otimização de Hardware (Overclock & Tweak)</h4>
-                                                <p className="text-slate-400 text-sm leading-relaxed">
+                                                <h4 className="text-gray-900 font-semibold text-lg mb-1">Otimização de Hardware (Overclock & Tweak)</h4>
+                                                <p className="text-gray-500 text-sm leading-relaxed">
                                                     Ajustes finos em voltagem e frequências para garantir FPS estável e menor latência em jogos competitivos.
                                                 </p>
                                             </div>
                                         </div>
 
-                                        <div className="flex flex-col sm:flex-row gap-5 items-center lg:items-start text-center sm:text-left p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-[#FF4B6B]/30 transition-colors duration-300">
-                                            <div className="w-12 h-12 rounded-xl bg-[#FF4B6B]/10 flex items-center justify-center shrink-0 border border-[#FF4B6B]/20 shadow-[0_0_15px_rgba(255,75,107,0.1)]">
-                                                <Wrench className="w-6 h-6 text-[#FF4B6B]" />
+                                        <div className="flex flex-col sm:flex-row gap-5 items-center lg:items-start text-center sm:text-left p-6 rounded-2xl bg-white border border-gray-200 shadow-sm hover:border-pink-300 hover:shadow-md transition-all duration-200">
+                                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center shrink-0 border border-pink-200">
+                                                <Wrench className="w-6 h-6 text-pink-600" />
                                             </div>
                                             <div>
-                                                <h4 className="text-white font-bold text-lg mb-1">Suporte Técnico Remoto</h4>
-                                                <p className="text-slate-400 text-sm leading-relaxed">
+                                                <h4 className="text-gray-900 font-semibold text-lg mb-1">Suporte Técnico Remoto</h4>
+                                                <p className="text-gray-500 text-sm leading-relaxed">
                                                     Resolução de problemas complexos de software, drivers e sistema operacional sem que você precise sair de casa.
                                                 </p>
                                             </div>
@@ -360,7 +357,7 @@ export default function HomeClient() {
                                     </div>
 
                                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-4">
-                                        <a href="/sobre" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 transition-all duration-300">
+                                        <a href="/sobre" className="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
                                             Conheça Nossa História
                                             <ChevronRight className="w-4 h-4 ml-2" />
                                         </a>
@@ -370,36 +367,35 @@ export default function HomeClient() {
                                 {/* Right Column: Modern Tech Visual (Terminal Representation) */}
                                 <div className="relative w-full max-w-[500px] mx-auto perspective-1000">
                                     {/* Glow Effect */}
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF] to-[#8B31FF] blur-[80px] opacity-20 rounded-full animate-pulse-slow"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-blue-200/50 to-purple-200/50 blur-[80px] opacity-50 rounded-full animate-pulse-slow"></div>
 
                                     {/* Glass Card Container */}
                                     <motion.div
-                                        className="relative w-full aspect-[4/5] sm:aspect-square bg-[#0A0A0F]/90 backdrop-blur-xl rounded-3xl border border-white/10 shadow-2xl overflow-hidden flex flex-col"
+                                        className="relative w-full aspect-[4/5] sm:aspect-square bg-gradient-to-br from-gray-50 to-gray-100 backdrop-blur-xl rounded-3xl border border-gray-200 shadow-2xl overflow-hidden flex flex-col"
                                         initial={{ rotateY: -5, opacity: 0 }}
                                         whileInView={{ rotateY: 0, opacity: 1 }}
                                         transition={{ duration: 1, ease: "easeOut" }}
                                         viewport={{ once: true }}
                                     >
                                         {/* Terminal Header */}
-                                        <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-white/[0.02]">
+                                        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gray-50">
                                             <div className="flex gap-2">
-                                                <div className="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
-                                                <div className="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
-                                                <div className="w-3 h-3 rounded-full bg-[#28C840]"></div>
+                                                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                                                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                                <div className="w-3 h-3 rounded-full bg-green-500"></div>
                                             </div>
-                                            <div className="text-xs text-white/30 font-mono">root@voltris-core:~</div>
+                                            <div className="text-xs text-gray-500 font-mono">root@voltris-core:~</div>
                                         </div>
 
                                         {/* Terminal Content */}
-                                        <div className="p-6 font-mono text-xs sm:text-sm text-slate-300 space-y-4 flex-1 overflow-hidden relative">
-                                            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none"></div>
+                                        <div className="p-6 font-mono text-xs sm:text-sm text-gray-600 space-y-4 flex-1 overflow-hidden relative">
 
                                             <motion.div
                                                 initial={{ opacity: 0, x: -10 }}
                                                 whileInView={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: 0.5 }}
                                             >
-                                                <span className="text-[#8B31FF]">➜</span> <span className="text-[#31A8FF]">initialize</span> --mode=performance_boost
+                                                <span className="text-purple-600">➜</span> <span className="text-blue-600">initialize</span> --mode=performance_boost
                                             </motion.div>
 
                                             <motion.div
@@ -408,10 +404,10 @@ export default function HomeClient() {
                                                 transition={{ delay: 1 }}
                                                 className="space-y-1 pl-4 border-l-2 border-[#31A8FF]/20"
                                             >
-                                                <div className="text-[#31A8FF]">[INFO] Loading core modules...</div>
-                                                <div>Analyzed Processes: <span className="text-green-400">12,405</span></div>
-                                                <div>Optimized Services: <span className="text-green-400">58</span></div>
-                                                <div>Network Latency: <span className="text-red-400 line-through mr-2">45ms</span> <span className="text-green-400">12ms</span></div>
+                                                <div className="text-blue-600">[INFO] Loading core modules...</div>
+                                                <div>Analyzed Processes: <span className="text-green-600">12,405</span></div>
+                                                <div>Optimized Services: <span className="text-green-600">58</span></div>
+                                                <div>Network Latency: <span className="text-red-500 line-through mr-2">45ms</span> <span className="text-green-600">12ms</span></div>
                                             </motion.div>
 
                                             <motion.div
@@ -419,21 +415,21 @@ export default function HomeClient() {
                                                 whileInView={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: 2 }}
                                             >
-                                                <span className="text-[#8B31FF]">➜</span> <span className="text-[#FF4B6B]">security_check</span> --deep-scan
+                                                <span className="text-purple-600">➜</span> <span className="text-pink-600">security_check</span> --deep-scan
                                             </motion.div>
 
                                             <motion.div
                                                 initial={{ opacity: 0 }}
                                                 whileInView={{ opacity: 1 }}
                                                 transition={{ delay: 2.5 }}
-                                                className="bg-white/5 p-3 rounded-lg border border-white/5"
+                                                className="bg-gray-100 p-3 rounded-lg border border-gray-200"
                                             >
                                                 <div className="flex items-center justify-between mb-2">
-                                                    <span>Threat Detection</span>
-                                                    <span className="text-green-400">Active</span>
+                                                    <span className="text-gray-700">Threat Detection</span>
+                                                    <span className="text-green-600">Active</span>
                                                 </div>
-                                                <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
-                                                    <div className="h-full bg-[#00FF94] w-full animate-progress-indeterminate"></div>
+                                                <div className="w-full bg-gray-200 h-1.5 rounded-full overflow-hidden">
+                                                    <div className="h-full bg-green-500 w-full animate-progress-indeterminate"></div>
                                                 </div>
                                             </motion.div>
 
@@ -441,10 +437,10 @@ export default function HomeClient() {
                                                 initial={{ opacity: 0 }}
                                                 whileInView={{ opacity: 1 }}
                                                 transition={{ delay: 3.5 }}
-                                                className="pt-4 text-green-400 font-bold"
+                                                className="pt-4 text-green-600 font-semibold"
                                             >
                                                 SUCCESS: System is now running at 100% efficiency.
-                                                <span className="inline-block w-2 h-4 bg-green-400 ml-1 animate-pulse align-middle"></span>
+                                                <span className="inline-block w-2 h-4 bg-green-500 ml-1 animate-pulse align-middle"></span>
                                             </motion.div>
                                         </div>
                                     </motion.div>
@@ -456,39 +452,38 @@ export default function HomeClient() {
                 </AnimatedSection>
 
                 <AnimatedSection direction="up" delay={0.2}>
-                    <section className="py-6 xs:py-8 sm:py-12 px-2 xs:px-4 sm:px-6 md:px-8 overflow-x-hidden bg-[#050510] relative">
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
-                        <div className="max-w-6xl mx-auto relative z-10">
+                    <section className="py-16 px-6 overflow-x-hidden bg-gray-50 relative">
+                        <div className="max-w-7xl mx-auto relative z-10">
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 xs:gap-4 sm:gap-6 md:gap-8">
                                 <div className="text-center">
-                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-transparent bg-clip-text mb-1 xs:mb-2">
                                         100.000+
                                     </div>
-                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                    <div className="text-xs xs:text-sm sm:text-base text-gray-500">
                                         Clientes Atendidos
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 text-transparent bg-clip-text mb-1 xs:mb-2">
                                         8.9
                                     </div>
-                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                    <div className="text-xs xs:text-sm sm:text-base text-gray-500">
                                         Avaliação Média
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 via-pink-600 to-purple-600 text-transparent bg-clip-text mb-1 xs:mb-2">
                                         Imediato
                                     </div>
-                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                    <div className="text-xs xs:text-sm sm:text-base text-gray-500">
                                         Tempo de Resposta
                                     </div>
                                 </div>
                                 <div className="text-center">
-                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text mb-1 xs:mb-2">
+                                    <div className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 text-transparent bg-clip-text mb-1 xs:mb-2">
                                         100%
                                     </div>
-                                    <div className="text-xs xs:text-sm sm:text-base text-[#e2e8f0]">
+                                    <div className="text-xs xs:text-sm sm:text-base text-gray-500">
                                         Atendimento Online
                                     </div>
                                 </div>
@@ -498,23 +493,23 @@ export default function HomeClient() {
                 </AnimatedSection>
 
                 <AnimatedSection direction="up" delay={0.3}>
-                    <section id="services" className="relative py-24 lg:py-32 bg-[#050510] overflow-hidden">
+                    <section id="services" className="relative py-20 lg:py-32 bg-gray-100 overflow-hidden">
                         {/* Background Glows */}
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-[#31A8FF]/5 to-transparent blur-[100px] pointer-events-none"></div>
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-blue-100/50 to-transparent blur-[100px] pointer-events-none"></div>
 
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
                             {/* Header */}
                             <div className="text-center mb-20 max-w-3xl mx-auto">
-                                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
-                                    <span className="w-2 h-2 rounded-full bg-[#31A8FF] animate-pulse"></span>
-                                    <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Soluções Profissionais</span>
+                                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 border border-blue-200 mb-6">
+                                    <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                                    <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Soluções Profissionais</span>
                                 </div>
-                                <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
-                                    Suporte Técnico Remoto em Informática, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização de PC e Serviços Windows</span>
+                                <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
+                                    Suporte Técnico Remoto em Informática, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Otimização de PC e Serviços Windows</span>
                                 </h2>
 
-                                <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
+                                <p className="text-lg md:text-xl text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed">
                                     Atendimento online rápido para formatação, correção de erros, remoção de vírus, otimização de desempenho e desenvolvimento de sites profissionais.
                                 </p>
                             </div>
@@ -522,35 +517,33 @@ export default function HomeClient() {
                             {/* Grid - Refocado */}
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
                                 {services.map((service, idx) => (
-                                    <div key={idx} className={`group relative bg-[#0A0A0F] border ${service.highlight ? 'border-[#31A8FF]/50 shadow-[0_0_30px_rgba(49,168,255,0.1)]' : 'border-white/5'} hover:border-[#31A8FF]/80 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl`}>
-                                        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
-                                        <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                                    <div key={idx} className={`group relative bg-white border ${service.highlight ? 'border-blue-300 shadow-[0_0_40px_rgba(59,130,246,0.15)]' : 'border-gray-200'} hover:border-blue-400 rounded-2xl p-1 overflow-hidden transition-all duration-200 hover:-translate-y-1 hover:shadow-md`}>
+                                        <div className="relative h-full bg-white rounded-[16px] p-8 flex flex-col items-start overflow-hidden">
                                             {/* Glow Effect para destaques */}
                                             {service.highlight && (
-                                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#31A8FF]/10 blur-[50px] rounded-full pointer-events-none"></div>
+                                                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[50px] rounded-full pointer-events-none"></div>
                                             )}
 
                                             {/* Icon Container with Glass Effect */}
-                                            <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-6 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg relative z-10">
-                                                <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
+                                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200 flex items-center justify-center mb-6 group-hover:from-blue-100 group-hover:to-purple-100 group-hover:border-blue-300 transition-all duration-200 shadow-sm relative z-10">
+                                                <div className="transform transition-transform duration-200 group-hover:scale-110 text-blue-600">
                                                     {service.icon}
                                                 </div>
                                             </div>
 
-                                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors relative z-10">{service.title}</h3>
-                                            <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-grow relative z-10">
+                                            <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors relative z-10">{service.title}</h3>
+                                            <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow relative z-10">
                                                 {service.desc}
                                             </p>
 
-                                            <div className="w-full pt-6 border-t border-white/5 flex items-center justify-between relative z-10">
+                                            <div className="w-full pt-6 border-t border-gray-200 flex items-center justify-between relative z-10">
                                                 <div className="flex flex-col">
-                                                    <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">A partir de</span>
-                                                    <span className="text-white font-bold text-lg tracking-tight">{service.price.replace('A partir de ', '')}</span>
+                                                    <span className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">A partir de</span>
+                                                    <span className="text-gray-900 font-bold text-lg tracking-tight">{service.price.replace('A partir de ', '')}</span>
                                                 </div>
 
-                                                <Link href={service.link} className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${service.highlight ? 'bg-[#31A8FF] text-white hover:bg-[#2b93df]' : 'bg-white/5 border border-white/10 text-white group-hover:bg-white/10'}`} aria-label={`Ver mais sobre ${service.title}`}>
-                                                    <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                                                <Link href={service.link} className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 shadow-sm ${service.highlight ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700' : 'bg-gray-100 border border-gray-200 text-gray-600 group-hover:bg-gray-200 group-hover:border-gray-300'}`} aria-label={`Ver mais sobre ${service.title}`}>
+                                                    <ChevronRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1" />
                                                 </Link>
                                             </div>
                                         </div>
@@ -561,28 +554,27 @@ export default function HomeClient() {
                     </section>
                 </AnimatedSection>
 
-                <section id="optimizer" className="relative py-20 lg:py-32 bg-[#050510] overflow-hidden">
+                <section id="optimizer" className="relative py-20 lg:py-32 bg-white overflow-hidden">
                     {/* Background Elements */}
-                    <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
-                    <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
-                    <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
+                    <div className="absolute top-1/4 -right-20 w-[600px] h-[600px] bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
+                    <div className="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-gradient-to-br from-purple-100/50 to-blue-100/50 blur-[150px] rounded-full pointer-events-none animate-pulse-slow"></div>
 
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
                         {/* Header */}
                         <div className="text-center mb-16 max-w-4xl mx-auto">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4">
-                                <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                <span className="text-xs font-bold text-white tracking-widest uppercase">Primeiro Software SaaS Brasileiro com Controle Remoto</span>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 backdrop-blur-md mb-4">
+                                <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
+                                <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Primeiro Software SaaS Brasileiro com Controle Remoto</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
-                                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">VOLTRIS</span> <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">OPTIMIZER</span>
+                                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">VOLTRIS</span> <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-transparent bg-clip-text">OPTIMIZER</span>
                             </h2>
-                            <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed mb-4">
+                            <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed mb-4">
                                 Software de otimização de PC com tecnologia SaaS e controle remoto via web.
                                 Aumente FPS em jogos, otimize para streaming e acelere computadores corporativos.
                             </p>
-                            <p className="text-base text-slate-500 leading-relaxed">
+                            <p className="text-base text-gray-500 leading-relaxed">
                                 Tecnologia inovadora brasileira para gamers, streamers, empresas e usuários domésticos.
                                 Execute otimizações remotamente de qualquer lugar do mundo através do painel web.
                             </p>
@@ -591,27 +583,27 @@ export default function HomeClient() {
                         {/* Bento Grid Layout */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                             {/* Feature 1 - Gamers */}
-                            <div className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-[#FF4B6B]/30 transition-all duration-500 overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#FF4B6B]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-pink-300 transition-all duration-200 overflow-hidden shadow-sm hover:shadow-md">
+                                <div className="absolute inset-0 bg-gradient-to-br from-pink-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                                 <div className="relative z-10">
-                                    <div className="w-12 h-12 rounded-xl bg-[#FF4B6B]/10 flex items-center justify-center mb-6 text-[#FF4B6B] group-hover:scale-110 transition-transform duration-300">
+                                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center mb-6 text-pink-600 group-hover:scale-110 transition-transform duration-200 border border-pink-200">
                                         <Rocket className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3">Para Gamers e Streamers</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Para Gamers e Streamers</h3>
+                                    <p className="text-gray-500 text-sm leading-relaxed mb-4">
                                         Aumente FPS, reduza input lag e elimine travamentos em jogos competitivos. Otimização específica para Valorant, CS2, League of Legends e streaming com OBS.
                                     </p>
-                                    <ul className="space-y-2 text-xs text-slate-500">
+                                    <ul className="space-y-2 text-xs text-gray-500">
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#FF4B6B]" />
+                                            <Check className="w-3 h-3 text-pink-600" />
                                             Redução de lag no Windows
                                         </li>
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#FF4B6B]" />
+                                            <Check className="w-3 h-3 text-pink-600" />
                                             Melhor desempenho para OBS
                                         </li>
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#FF4B6B]" />
+                                            <Check className="w-3 h-3 text-pink-600" />
                                             Frames estáveis (1% Lows)
                                         </li>
                                     </ul>
@@ -619,27 +611,27 @@ export default function HomeClient() {
                             </div>
 
                             {/* Feature 2 - Empresas */}
-                            <div className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-[#8B31FF]/30 transition-all duration-500 overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#8B31FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-purple-300 transition-all duration-200 overflow-hidden shadow-sm hover:shadow-md">
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-blue-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                                 <div className="relative z-10">
-                                    <div className="w-12 h-12 rounded-xl bg-[#8B31FF]/10 flex items-center justify-center mb-6 text-[#8B31FF] group-hover:scale-110 transition-transform duration-300">
+                                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-100 to-blue-100 flex items-center justify-center mb-6 text-purple-600 group-hover:scale-110 transition-transform duration-200 border border-purple-200">
                                         <Cpu className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3">Para Empresas</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Para Empresas</h3>
+                                    <p className="text-gray-500 text-sm leading-relaxed mb-4">
                                         Gestão remota de performance via nuvem. Otimize toda frota de computadores corporativos de qualquer lugar através do painel web SaaS.
                                     </p>
-                                    <ul className="space-y-2 text-xs text-slate-500">
+                                    <ul className="space-y-2 text-xs text-gray-500">
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#8B31FF]" />
+                                            <Check className="w-3 h-3 text-purple-600" />
                                             Controle remoto via web
                                         </li>
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#8B31FF]" />
+                                            <Check className="w-3 h-3 text-purple-600" />
                                             Redução de custos com TI
                                         </li>
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#8B31FF]" />
+                                            <Check className="w-3 h-3 text-purple-600" />
                                             Produtividade aumentada
                                         </li>
                                     </ul>
@@ -647,27 +639,27 @@ export default function HomeClient() {
                             </div>
 
                             {/* Feature 3 - Usuários Comuns */}
-                            <div className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-[#31A8FF]/30 transition-all duration-500 overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-blue-300 transition-all duration-200 overflow-hidden shadow-sm hover:shadow-md">
+                                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                                 <div className="relative z-10">
-                                    <div className="w-12 h-12 rounded-xl bg-[#31A8FF]/10 flex items-center justify-center mb-6 text-[#31A8FF] group-hover:scale-110 transition-transform duration-300">
+                                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center mb-6 text-blue-600 group-hover:scale-110 transition-transform duration-200 border border-blue-200">
                                         <ShieldCheck className="w-6 h-6" />
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-3">Para Uso Doméstico</h3>
-                                    <p className="text-slate-400 text-sm leading-relaxed mb-4">
+                                    <h3 className="text-xl font-semibold text-gray-900 mb-3">Para Uso Doméstico</h3>
+                                    <p className="text-gray-500 text-sm leading-relaxed mb-4">
                                         PC lento? Solução definitiva. Programa para deixar PC mais rápido, limpar RAM automaticamente e melhorar desempenho do Windows 10 e 11.
                                     </p>
-                                    <ul className="space-y-2 text-xs text-slate-500">
+                                    <ul className="space-y-2 text-xs text-gray-500">
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#31A8FF]" />
+                                            <Check className="w-3 h-3 text-blue-600" />
                                             Otimização automática
                                         </li>
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#31A8FF]" />
+                                            <Check className="w-3 h-3 text-blue-600" />
                                             Sistema responsivo
                                         </li>
                                         <li className="flex items-center gap-2">
-                                            <Check className="w-3 h-3 text-[#31A8FF]" />
+                                            <Check className="w-3 h-3 text-blue-600" />
                                             Revitalização de PCs antigos
                                         </li>
                                     </ul>
@@ -678,52 +670,102 @@ export default function HomeClient() {
                         {/* Bottom Section: Features List & Metric Highlight */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                             {/* List */}
-                            <div className="lg:col-span-2 bg-[#0A0A0F]/50 backdrop-blur-md border border-white/5 rounded-3xl p-8 flex flex-col justify-center">
-                                <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                                    <Zap className="w-6 h-6 text-[#EAB308]" />
+                            <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-8 flex flex-col justify-center shadow-sm hover:shadow-md transition-all duration-200">
+                                <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center gap-3">
+                                    <Zap className="w-6 h-6 text-yellow-500" />
                                     Funcionalidades Remotas via Painel Web
                                 </h3>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {[
-                                        "Otimização Automática Completa",
-                                        "Otimização de RAM em Tempo Real",
-                                        "Limpeza Profunda de Sistema",
-                                        "Otimização de Rede (TCP/IP)",
-                                        "Modo Gamer Inteligente com IA",
-                                        "Criação de Ponto de Restauração",
-                                        "Configuração de Plano de Energia",
-                                        "Análise Completa do Sistema",
-                                        "Reparo Automático do Windows",
-                                        "Controle Remoto (Reiniciar/Desligar)",
-                                        "Perfis para Jogos Competitivos",
-                                        "Monitoramento em Tempo Real"
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3 text-slate-300 p-3 rounded-lg hover:bg-white/5 transition-colors">
-                                            <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                                                <Check className="w-3 h-3 text-green-500" />
-                                            </div>
-                                            <span className="text-sm font-medium">{item}</span>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
                                         </div>
-                                    ))}
+                                        <span className="text-sm font-medium text-gray-700">Otimização Automática Completa</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Otimização de RAM em Tempo Real</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Limpeza Profunda de Sistema</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Otimização de Rede TCP-IP</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Modo Gamer Inteligente com IA</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Criação de Ponto de Restauração</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Configuração de Plano de Energia</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Análise Completa do Sistema</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Reparo Automático do Windows</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Controle Remoto Reiniciar-Desligar</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Perfis para Jogos Competitivos</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 text-gray-600 p-3 rounded-lg hover:bg-gray-50 hover:border-gray-300 border border-transparent transition-all">
+                                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                                            <Check className="w-3 h-3 text-green-600" />
+                                        </div>
+                                        <span className="text-sm font-medium text-gray-700">Monitoramento em Tempo Real</span>
+                                    </div>
                                 </div>
                             </div>
 
                             {/* Metric Card */}
-                            <div className="relative bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-3xl p-[1px] group overflow-hidden">
+                            <div className="relative bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 rounded-2xl p-[1px] group overflow-hidden shadow-lg hover:shadow-xl transition-all duration-200">
                                 <div className="absolute inset-0 bg-white/20 blur opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                <div className="bg-[#0A0A0F] h-full rounded-[23px] p-8 flex flex-col items-center justify-center text-center relative z-10">
-                                    <div className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Ganho Médio</div>
-                                    <div className="text-7xl font-black text-white mb-2 tracking-tighter group-hover:scale-110 transition-transform duration-500">
+                                <div className="bg-white h-full rounded-[15px] p-8 flex flex-col items-center justify-center text-center relative z-10">
+                                    <div className="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-2">Ganho Médio</div>
+                                    <div className="text-7xl font-black text-gray-900 mb-2 tracking-tighter group-hover:scale-110 transition-transform duration-200">
                                         +40%
                                     </div>
-                                    <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF4B6B] to-[#31A8FF]">
+                                    <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-blue-600">
                                         PERFORMANCE
                                     </div>
 
                                     <div className="w-full mt-8">
-                                        <Link href="/voltrisoptimizer" className="block w-full py-4 rounded-xl bg-white font-bold text-lg hover:scale-[1.02] transition-transform active:scale-[0.98]">
-                                            <span className="text-black">CONHECER</span>{' '}
-                                            <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">VOLTRIS OPTIMIZER</span>
+                                        <Link href="/voltrisoptimizer" className="block w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 font-bold text-lg text-white hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl">
+                                            CONHECER VOLTRIS OPTIMIZER
                                         </Link>
                                     </div>
                                 </div>
@@ -731,25 +773,25 @@ export default function HomeClient() {
                         </div>
 
                         {/* SEO Content Block */}
-                        <div className="mt-12 bg-[#0A0A0F]/30 backdrop-blur-sm border border-white/5 rounded-2xl p-8 max-w-5xl mx-auto">
-                            <h3 className="text-2xl font-bold text-white mb-4 text-center">
+                        <div className="mt-12 bg-white border border-gray-200 rounded-2xl p-8 max-w-5xl mx-auto shadow-sm hover:shadow-md transition-all duration-200">
+                            <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
                                 O Primeiro Software Brasileiro SaaS de Otimização com Controle Remoto
                             </h3>
-                            <p className="text-slate-400 leading-relaxed text-center mb-6">
-                                O <strong className="text-white">VOLTRIS OPTIMIZER</strong> é uma tecnologia inovadora desenvolvida no Brasil, sendo o primeiro software SaaS nacional com capacidade de <strong className="text-white">controle remoto de otimização via web</strong>. Nossa plataforma permite que você execute funções de otimização, limpeza de RAM e processamento avançado de qualquer lugar do mundo através do painel online.
+                            <p className="text-gray-500 leading-relaxed text-center mb-6">
+                                O <strong className="text-gray-700">VOLTRIS OPTIMIZER</strong> é uma tecnologia inovadora desenvolvida no Brasil, sendo o primeiro software SaaS nacional com capacidade de <strong className="text-gray-700">controle remoto de otimização via web</strong>. Nossa plataforma permite que você execute funções de otimização, limpeza de RAM e processamento avançado de qualquer lugar do mundo através do painel online.
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                                <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
-                                    <div className="text-3xl font-bold text-[#31A8FF] mb-2">SaaS</div>
-                                    <div className="text-sm text-slate-400">Tecnologia em Nuvem</div>
+                                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-gray-100 transition-colors">
+                                    <div className="text-3xl font-bold text-blue-600 mb-2">SaaS</div>
+                                    <div className="text-sm text-gray-500">Tecnologia em Nuvem</div>
                                 </div>
-                                <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
-                                    <div className="text-3xl font-bold text-[#8B31FF] mb-2">Remoto</div>
-                                    <div className="text-sm text-slate-400">Controle via Web</div>
+                                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-gray-100 transition-colors">
+                                    <div className="text-3xl font-bold text-purple-600 mb-2">Remoto</div>
+                                    <div className="text-sm text-gray-500">Controle via Web</div>
                                 </div>
-                                <div className="p-4 bg-white/[0.02] rounded-xl border border-white/5">
-                                    <div className="text-3xl font-bold text-[#FF4B6B] mb-2">Brasil</div>
-                                    <div className="text-sm text-slate-400">Inovação Nacional</div>
+                                <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-gray-100 transition-colors">
+                                    <div className="text-3xl font-bold text-pink-600 mb-2">Brasil</div>
+                                    <div className="text-sm text-gray-500">Inovação Nacional</div>
                                 </div>
                             </div>
                         </div>
@@ -758,18 +800,17 @@ export default function HomeClient() {
                 </section>
 
                 <AnimatedSection direction="up" delay={0.2}>
-                    <section className="relative py-20 lg:py-32 bg-[#050510] overflow-hidden">
+                    <section className="relative py-20 lg:py-32 bg-gray-50 overflow-hidden">
                         {/* Background Elements */}
-                        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#31A8FF]/5 blur-[120px] rounded-full pointer-events-none"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[120px] rounded-full pointer-events-none"></div>
 
                         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                             {/* Header */}
                             <div className="text-center mb-16 max-w-3xl mx-auto">
-                                <h2 className="text-sm font-bold tracking-[0.2em] text-[#31A8FF] mb-4 uppercase">Depoimentos</h2>
-                                <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
+                                <h2 className="text-sm font-semibold tracking-[0.2em] text-blue-600 mb-4 uppercase">Depoimentos</h2>
+                                <h3 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
                                     O que dizem sobre a <br />
-                                    <span className="bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-transparent bg-clip-text">Experiência Voltris</span>
+                                    <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-transparent bg-clip-text">Experiência Voltris</span>
                                 </h3>
                             </div>
 
@@ -801,11 +842,11 @@ export default function HomeClient() {
                                         color: "from-[#31A8FF] to-[#6BA8FF]"
                                     }
                                 ].map((review, i) => (
-                                    <div key={i} className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-6 sm:p-7 lg:p-8 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl flex flex-col">
-                                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-white/20 transition-all"></div>
+                                    <div key={i} className="group relative bg-white border border-gray-200 rounded-2xl p-6 sm:p-7 lg:p-8 hover:border-blue-300 transition-all duration-200 hover:-translate-y-1 hover:shadow-md flex flex-col">
+                                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent group-hover:via-blue-200 transition-all"></div>
 
                                         {/* Quote Icon */}
-                                        <div className="absolute top-5 right-6 text-white/5 text-5xl font-serif leading-none select-none">"</div>
+                                        <div className="absolute top-5 right-6 text-gray-200 text-5xl font-serif leading-none select-none">&quot;</div>
 
                                         {/* Stars */}
                                         <div className="flex items-center gap-1 mb-5 text-yellow-400">
@@ -815,26 +856,26 @@ export default function HomeClient() {
                                         </div>
 
                                         {/* Review text – ocupa o espaço restante para alinhar o footer */}
-                                        <p className="text-slate-300 leading-relaxed mb-6 relative z-10 flex-1 text-sm sm:text-base">
+                                        <p className="text-gray-600 leading-relaxed mb-6 relative z-10 flex-1 text-sm sm:text-base">
                                             &ldquo;{review.text}&rdquo;
                                         </p>
 
                                         {/* Author */}
                                         <div className="flex items-center gap-3 mt-auto">
                                             {/* Avatar */}
-                                            <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-base shadow-lg relative shrink-0`}>
+                                            <div className={`w-11 h-11 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-base shadow-md relative shrink-0 border-2 border-white/20`}>
                                                 {review.initial}
-                                                <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-0.5 border-2 border-[#0A0A0F]">
+                                                <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-0.5 border-2 border-white">
                                                     <Check className="w-2.5 h-2.5 text-white" />
                                                 </div>
                                             </div>
                                             {/* Info */}
                                             <div className="min-w-0">
                                                 <div className="flex flex-wrap items-center gap-1.5">
-                                                    <span className="font-bold text-white text-sm leading-tight">{review.name}</span>
-                                                    <span className="text-[10px] text-green-400 font-semibold border border-green-400/30 bg-green-400/10 rounded-full px-2 py-0.5 whitespace-nowrap">Compra Verificada</span>
+                                                    <span className="font-semibold text-gray-900 text-sm leading-tight">{review.name}</span>
+                                                    <span className="text-[10px] text-green-600 font-semibold border border-green-200 bg-green-50 rounded-full px-2 py-0.5 whitespace-nowrap">Compra Verificada</span>
                                                 </div>
-                                                <div className="text-xs text-slate-400 uppercase tracking-wider font-medium mt-0.5">{review.role}</div>
+                                                <div className="text-xs text-gray-500 uppercase tracking-wider font-medium mt-0.5">{review.role}</div>
                                             </div>
                                         </div>
                                     </div>

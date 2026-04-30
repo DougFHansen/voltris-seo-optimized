@@ -141,12 +141,11 @@ export default function ServicosClient() {
     return (
         <>
             <Header />
-            <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30">
+            <main className="bg-gray-50 min-h-screen relative overflow-x-hidden font-sans selection:bg-blue-100">
 
                 {/* Background Effects (Global) */}
-                <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
-                <div className="fixed top-0 right-0 w-[800px] h-[800px] bg-[#31A8FF]/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow max-w-full pointer-events-none z-0"></div>
-                <div className="fixed bottom-0 left-0 w-[800px] h-[800px] bg-[#8B31FF]/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-slow max-w-full pointer-events-none z-0"></div>
+                <div className="fixed top-0 right-0 w-[800px] h-[800px] bg-blue-100/30 rounded-full blur-[120px] max-w-full pointer-events-none z-0"></div>
+                <div className="fixed bottom-0 left-0 w-[800px] h-[800px] bg-purple-100/30 rounded-full blur-[120px] max-w-full pointer-events-none z-0"></div>
 
                 {/* Hero Section */}
                 <section className="min-h-[100dvh] flex flex-col items-center justify-center relative z-10 w-full">
@@ -159,36 +158,36 @@ export default function ServicosClient() {
                             transition={{ duration: 0.8, ease: "easeOut" }}
                             className="w-full max-w-5xl"
                         >
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 hover:border-[#31A8FF]/30 transition-all cursor-default">
-                                <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94] animate-pulse"></span>
-                                <span className="text-xs sm:text-sm font-medium text-white tracking-wide">Tecnologia de Ponta</span>
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-200 shadow-sm mb-8 hover:border-blue-300 transition-all cursor-default">
+                                <span className="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)] animate-pulse"></span>
+                                <span className="text-xs sm:text-sm font-medium text-gray-700 tracking-wide">Tecnologia de Ponta</span>
                             </div>
 
-                            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-8 leading-[1.1] tracking-tight">
+                            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-8 leading-[1.1] tracking-tight">
                                 Serviços de Suporte<br className="hidden md:block" />
-                                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text animate-gradient-x">
+                                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text animate-gradient-x">
                                     Técnico Remoto em Informática e TI
                                 </span>
                             </h1>
 
-                            <h2 className="text-xl md:text-2xl font-semibold text-white/90 mb-6 tracking-wide">
+                            <h2 className="text-xl md:text-2xl font-semibold text-gray-700 mb-6 tracking-wide">
                                 Formatação de PC, Otimização de Computador, Suporte Windows e Soluções Digitais Profissionais
                             </h2>
 
-                            <p className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+                            <p className="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto mb-12 leading-relaxed">
                                 Oferecemos serviços profissionais de suporte técnico remoto para informática e TI, atendendo clientes que precisam resolver problemas no computador de forma rápida, segura e online. Atuamos com formatação de PC, otimização de desempenho, correção de erros, segurança digital, instalação de programas e soluções avançadas de tecnologia, tudo com atendimento especializado e remoto.
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
                                 <button
                                     onClick={() => document.getElementById('servicos-lista')?.scrollIntoView({ behavior: 'smooth' })}
-                                    className="px-8 py-4 rounded-xl bg-white text-black font-bold hover:bg-slate-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2"
+                                    className="px-8 py-4 rounded-xl bg-white text-gray-900 border border-gray-200 font-bold hover:bg-gray-50 transition-all shadow-sm flex items-center justify-center gap-2"
                                 >
                                     <FiMonitor className="w-5 h-5" /> Explorar Serviços
                                 </button>
                                 <a
                                     href="/contato"
-                                    className="px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                                    className="px-8 py-4 rounded-xl bg-white border border-gray-200 text-gray-900 font-bold hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
                                 >
                                     <FiMail className="w-5 h-5" /> Falar com Especialista
                                 </a>
@@ -198,46 +197,46 @@ export default function ServicosClient() {
                 </section>
 
                 {/* Catálogo com Cards Modernos */}
-                <section id="servicos-lista" className="py-24 px-4 bg-[#0A0A0F] relative z-10 w-full">
+                <section id="servicos-lista" className="py-24 px-4 bg-gray-100 relative z-10 w-full">
                     <div className="max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {services.map((service, index) => (
                                 <AnimatedSection key={service.id} delay={index * 0.05}>
                                     <motion.div
                                         whileHover={{ y: -8, scale: 1.01 }}
-                                        className="group relative h-full bg-[#121218] rounded-3xl p-1 overflow-hidden transition-all duration-300 shadow-2xl hover:shadow-[#31A8FF]/10"
+                                        className="group relative h-full bg-white rounded-2xl p-1 overflow-hidden transition-all duration-300 shadow-sm hover:shadow-lg border border-gray-200"
                                     >
                                         {/* Borda Gradiente no Hover */}
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-40 transition-opacity duration-500 blur-xl`}></div>
-                                        <div className="absolute inset-0 bg-[#121218] m-[1px] rounded-[23px] z-0"></div>
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 blur-xl`}></div>
+                                        <div className="absolute inset-0 bg-white m-[1px] rounded-[15px] z-0"></div>
 
                                         {/* Conteúdo do Card */}
                                         <div className="relative z-10 p-7 flex flex-col h-full">
                                             <div className="flex justify-between items-start mb-6">
-                                                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} p-[1px] shadow-lg`}>
-                                                    <div className="w-full h-full bg-[#16161E] rounded-[15px] flex items-center justify-center">
-                                                        <service.icon className="w-6 h-6 text-white" />
+                                                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} p-[1px] shadow-sm`}>
+                                                    <div className="w-full h-full bg-white rounded-[15px] flex items-center justify-center">
+                                                        <service.icon className="w-6 h-6 text-gray-700" />
                                                     </div>
                                                 </div>
                                                 {service.highlight && (
-                                                    <span className="bg-white/5 border border-white/10 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                                    <span className="bg-blue-50 border border-blue-200 text-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                                                         Popular
                                                     </span>
                                                 )}
                                             </div>
 
-                                            <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-slate-300 transition-all">{service.title}</h3>
-                                            <p className="text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+                                            <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-all">{service.title}</h3>
+                                            <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
                                                 {service.description}
                                             </p>
 
-                                            <div className="border-t border-white/5 pt-6 mt-auto">
+                                            <div className="border-t border-gray-200 pt-6 mt-auto">
                                                 <div className="flex items-center justify-between mb-4">
-                                                    <span className="text-white font-semibold">{service.price}</span>
+                                                    <span className="text-gray-900 font-semibold">{service.price}</span>
                                                 </div>
                                                 <button
                                                     onClick={() => handleHireService(service.id, service.redirect.startsWith('/servicos?abrir=') ? undefined : service.redirect)}
-                                                    className="w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/20 text-white font-medium text-sm transition-all flex items-center justify-center gap-2 group-hover:bg-white group-hover:text-black"
+                                                    className="w-full py-3 rounded-xl bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-900 font-medium text-sm transition-all flex items-center justify-center gap-2"
                                                 >
                                                     {service.buttonText}
                                                     <FiArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -252,39 +251,39 @@ export default function ServicosClient() {
                 </section>
 
                 {/* Trust Section - Estilo "Bento Grid" ou Cards Horizontais */}
-                <section className="py-24 px-4 border-t border-white/5 bg-[#050510] relative overflow-hidden w-full">
+                <section className="py-24 px-4 border-t border-gray-200 bg-white relative overflow-hidden w-full">
                     <div className="max-w-7xl mx-auto relative z-10">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Por que escolher nosso suporte técnico remoto?</h2>
+                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Por que escolher nosso suporte técnico remoto?</h2>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {/* Card 1 */}
-                            <div className="bg-[#121218] p-8 rounded-3xl border border-white/5 hover:border-[#31A8FF]/30 transition-all group relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#31A8FF]/10 rounded-full blur-[60px] -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-50"></div>
-                                <FiShield className="w-10 h-10 text-[#31A8FF] mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">Garantia Blindada</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">
+                            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-blue-300 transition-all group relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 blur-[60px] -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                                <FiShield className="w-10 h-10 text-blue-600 mb-6" />
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">Garantia Blindada</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">
                                     Se não resolvermos o problema, você não paga. Atendimento transparente, seguro e sem letras miúdas.
                                 </p>
                             </div>
 
                             {/* Card 2 */}
-                            <div className="bg-[#121218] p-8 rounded-3xl border border-white/5 hover:border-[#8B31FF]/30 transition-all group relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B31FF]/10 rounded-full blur-[60px] -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-50"></div>
-                                <FiZap className="w-10 h-10 text-[#8B31FF] mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">Velocidade Extrema</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">
+                            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-purple-300 transition-all group relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-100 blur-[60px] -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                                <FiZap className="w-10 h-10 text-purple-600 mb-6" />
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">Velocidade Extrema</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">
                                     Atendimento iniciado em minutos, com suporte técnico remoto ágil para resolver problemas rapidamente.
                                 </p>
                             </div>
 
                             {/* Card 3 */}
-                            <div className="bg-[#121218] p-8 rounded-3xl border border-white/5 hover:border-[#FF4B6B]/30 transition-all group relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF4B6B]/10 rounded-full blur-[60px] -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-50"></div>
-                                <FiUserCheck className="w-10 h-10 text-[#FF4B6B] mb-6" />
-                                <h3 className="text-xl font-bold text-white mb-3">Especialistas Reais</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">
+                            <div className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-pink-300 transition-all group relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-pink-100 blur-[60px] -mr-16 -mt-16 transition-opacity group-hover:opacity-100 opacity-50"></div>
+                                <FiUserCheck className="w-10 h-10 text-pink-600 mb-6" />
+                                <h3 className="text-xl font-bold text-gray-900 mb-3">Especialistas Reais</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">
                                     Nada de robôs. Você fala diretamente com técnicos certificados e especialistas em informática e tecnologia.
                                 </p>
                             </div>

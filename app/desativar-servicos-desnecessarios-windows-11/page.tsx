@@ -17,16 +17,16 @@ export default function DesativarServicos() {
         {
             title: "O que são Serviços e por que o Windows 11 tem tantos?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           Serviços são pequenos programas que rodam "atrás das cortinas" desde o momento em que você liga o computador. O grande problema é que o Windows 11 ativa dezenas de serviços focados em tablets, sensores que você não tem e impressoras que você nunca usará.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Cada serviço ativo consome uma fatia da sua memória RAM e, periodicamente, solicita processamento da sua CPU para verificar <code>status</code>. Em computadores voltados para jogos ou edição, o acúmulo desses micro-processos gera o <b>Latency Spike</b> (picos de latência).
         </p>
         
-        <div class="bg-blue-500/10 border border-blue-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-[#31A8FF] font-black mb-2 flex items-center gap-2">Regra de Ouro: Manual vs Desativado</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-blue-100 border border-blue-200 p-6 rounded-2xl my-6">
+            <h4 class="text-blue-600 font-black mb-2 flex items-center gap-2">Regra de Ouro: Manual vs Desativado</h4>
+            <p class="text-gray-600 text-sm">
                 Sempre que possível, coloque um serviço em <code>Manual</code> em vez de Desativado. No modo Manual, o serviço só acorda se um programa realmente solicitar ele. Isso preserva a estabilidade do sistema.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function DesativarServicos() {
         {
             title: "Três Serviços de 'Alto Impacto' para Otimizar Agora",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Alguns serviços são famosos por drenar recursos sem que o usuário perceba:
             <br/><br/>
             1. <b>SysMain (Antigo Superfetch):</b> Preenche sua RAM antecipadamente com apps 'prováveis'. Em SSDs modernos, ele causa mais lentidão por excesso de escrita do que ganho real de velocidade.
@@ -49,13 +49,13 @@ export default function DesativarServicos() {
         {
             title: "Gerenciamento Inteligente com Voltris Optimizer",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** elimina o risco de 'quebrar' o sistema. Nosso gerenciador de serviços possui perfis testados em larga escala para diferentes perfis de uso.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Safe Tweak:** Desativa apenas o que é 100% inútil para o usuário comum.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Gaming Mode:** Corta serviços de impressão e telemetria profunda para o máximo desempenho gamer.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Rollback:** Um clique para voltar no tempo e restaurar as configurações originais da Microsoft.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Safe Tweak:** Desativa apenas o que é 100% inútil para o usuário comum.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Gaming Mode:** Corta serviços de impressão e telemetria profunda para o máximo desempenho gamer.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Rollback:** Um clique para voltar no tempo e restaurar as configurações originais da Microsoft.</li>
         </ul>
       `
         }

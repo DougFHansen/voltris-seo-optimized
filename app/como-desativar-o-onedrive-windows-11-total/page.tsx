@@ -17,16 +17,16 @@ export default function DesativarOneDrive() {
         {
             title: "Por que remover o OneDrive do seu Windows 11?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O **Microsoft OneDrive** é uma excelente ferramenta se você a usa conscientemente, mas no Windows 11, ele vem pré-ativado e sequestra as suas principais pastas (Documentos, Desktop e Fotos) para a nuvem. Isso gera picos de <b>Disco 100%</b> toda vez que você cria um arquivo novo no PC.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Muitos jogadores sentem picos de lag repentinos causados pelo OneDrive iniciando uma sincronização massiva no meio de uma partida. Desativá-lo na raiz é a única forma de garantir um sistema purificado.
         </p>
         
-        <div class="bg-red-500/10 border border-red-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-red-400 font-black mb-2 flex items-center gap-2">Removendo o Ícone da Barra Lateral</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-red-100 border border-red-200 p-6 rounded-2xl my-6">
+            <h4 class="text-red-700 font-black mb-2 flex items-center gap-2">Removendo o Ícone da Barra Lateral</h4>
+            <p class="text-gray-600 text-sm">
                 Mesmo após desinstalar o Painel de Controle, a 'pasta fantasma' do OneDrive continua no seu Explorador de Arquivos. Para removê-la definitivamente, é necessário entrar no Registro do Windows (Regedit) e apagar a chave de <b>ID de Navegação</b>. O Voltris faz isso em 1 segundo por você.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function DesativarOneDrive() {
         {
             title: "O Ponto Chave: Backup de Arquivos Locais",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Ao desativar o OneDrive, seus arquivos permanecem no seu HD/SSD. O Windows simplesmente deixará de fazer o upload para a nuvem. Recomendamos que você faça o backup manual uma vez por mês ou use ferramentas de nuvem via navegador apenas se necessário.
             <br/><br/>
             Caminho de desinstalação segura: <b>Configurações > Aplicativos > Aplicativos Instalados > Pesquisar por 'OneDrive' > Desinstalar</b>.
@@ -45,13 +45,13 @@ export default function DesativarOneDrive() {
         {
             title: "A Vantagem do Voltris Optimizer: OneDrive Blocker",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com a invasividade da nuvem através da ferramenta <code>Privacy & Resource Shield</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Full OneDrive Stop:** Desativa todos os gatilhos silenciosos que o Windows usa para tentar reinstalar a nuvem.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Explorer Cleanup:** Remove completamente a aba do OneDrive da barra lateral do seu sistema operacional.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **RAM Purge:** Libera a memória de vídeo e processamento que o processo <code>OneDrive.exe</code> rouba periodicamente.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Full OneDrive Stop:** Desativa todos os gatilhos silenciosos que o Windows usa para tentar reinstalar a nuvem.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Explorer Cleanup:** Remove completamente a aba do OneDrive da barra lateral do seu sistema operacional.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **RAM Purge:** Libera a memória de vídeo e processamento que o processo <code>OneDrive.exe</code> rouba periodicamente.</li>
         </ul>
       `
         }

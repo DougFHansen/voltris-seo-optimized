@@ -85,7 +85,7 @@ export default function NewsletterForm({ source }: NewsletterFormProps) {
           value={email}
           onChange={handleEmailChange}
           placeholder="Seu melhor e-mail"
-          className="w-full px-4 py-2 bg-[#171313] border border-[#8B31FF]/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#FF4B6B] transition-colors duration-300 text-center"
+          className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors duration-300 text-center"
           required
         />
       )}
@@ -94,7 +94,7 @@ export default function NewsletterForm({ source }: NewsletterFormProps) {
           type="email"
           defaultValue=""
           placeholder="Seu melhor e-mail"
-          className="w-full px-4 py-2 bg-[#171313] border border-[#8B31FF]/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#FF4B6B] transition-colors duration-300 text-center"
+          className="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors duration-300 text-center"
           required
           readOnly
         />
@@ -102,15 +102,15 @@ export default function NewsletterForm({ source }: NewsletterFormProps) {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full px-4 py-2 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 disabled:opacity-50"
+        className="w-full px-4 py-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-lg font-semibold hover:opacity-90 transition-all duration-300 disabled:opacity-50"
       >
         {status === 'loading' ? 'Enviando...' : 'Inscrever-se'}
       </button>
       {status === 'success' && (
-        <p className="text-green-500 text-sm">Inscrição realizada com sucesso!</p>
+        <p className="text-emerald-600 text-sm">Inscrição realizada com sucesso!</p>
       )}
       {status === 'error' && (
-        <p className="text-red-500 text-sm">{errorMessage}</p>
+        <p className="text-red-600 text-sm">{errorMessage}</p>
       )}
     </form>
   );

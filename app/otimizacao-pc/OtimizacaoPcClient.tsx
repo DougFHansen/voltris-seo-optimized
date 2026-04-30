@@ -100,29 +100,28 @@ export default function OtimizacaoPcClient() {
     ];
 
     return (
-        <div className="min-h-screen bg-[#050510] text-white">
+        <div className="min-h-screen bg-gray-50 text-gray-900">
             <Header />
             {/* Hero Section */}
             <section className="relative py-20 md:py-32 px-4">
                 {/* Background Ambience */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
-                <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[#8B31FF]/30 blur-[120px] mix-blend-screen" />
-                <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[#31A8FF]/30 blur-[100px] mix-blend-screen" />
+                <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-purple-100/50 blur-[120px] pointer-events-none" />
+                <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-100/50 blur-[100px] pointer-events-none" />
 
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="grid md:grid-cols-2 gap-12 items-center">
                         <div>
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 border border-[#31A8FF]/30 backdrop-blur-md mb-4">
-                                <span className="flex h-2 w-2 rounded-full bg-[#00FF94] shadow-[0_0_8px_#00FF94]"></span>
-                                <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-wide">Otimização Profissional de PC</span>
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 border border-blue-200 backdrop-blur-md mb-4">
+                                <span className="flex h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></span>
+                                <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text tracking-wide">Otimização Profissional de PC</span>
                             </div>
 
-                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight font-sans mb-6">
-                                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Otimização de PC Windows</span> <br className="hidden lg:block" />
-                                <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-white/95">Máxima Performance para Jogos, Trabalho e Empresas</span>
+                            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight font-sans mb-6">
+                                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">Otimização de PC Windows</span> <br className="hidden lg:block" />
+                                <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-700">Máxima Performance para Jogos, Trabalho e Empresas</span>
                             </h1>
 
-                            <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                                 Serviço profissional de otimização de sistema Windows. Aumentamos o FPS em jogos,
                                 reduzimos o input lag e aceleramos o desempenho geral para profissionais e empresas em todo o Brasil.
                             </p>
@@ -130,62 +129,62 @@ export default function OtimizacaoPcClient() {
                             <div className="flex flex-col sm:flex-row gap-4 mb-8">
                                 <Link
                                     href="/todos-os-servicos/otimizacao-pc"
-                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
+                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg hover:shadow-xl"
                                 >
                                     <span className="mr-2">Solicitar Otimização</span>
                                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                                 <Link
                                     href="https://wa.me/5511996716235"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
                                 >
                                     <MessageCircle className="mr-2" />
                                     Falar no WhatsApp
                                 </Link>
                             </div>
 
-                            <div className="flex flex-wrap gap-6 text-sm text-gray-400">
+                            <div className="flex flex-wrap gap-6 text-sm text-gray-500">
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-green-500" size={20} />
+                                    <CheckCircle2 className="text-emerald-600" size={20} />
                                     <span>Técnicos Certificados</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-green-500" size={20} />
+                                    <CheckCircle2 className="text-emerald-600" size={20} />
                                     <span>Garantia de 30 dias</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-green-500" size={20} />
+                                    <CheckCircle2 className="text-emerald-600" size={20} />
                                     <span>Resultados Comprovados</span>
                                 </div>
                             </div>
                         </div>
 
                         <div className="relative">
-                            <div className="bg-[#0A0A0F]/80 backdrop-blur-xl rounded-3xl p-6 border border-white/10 shadow-2xl">
-                                <div className="bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg h-64 flex items-center justify-center">
+                            <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-6 border border-gray-200 shadow-2xl">
+                                <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg h-64 flex items-center justify-center">
                                     <div className="text-center">
-                                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] mb-4">
+                                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 mb-4">
                                             <Zap className="w-8 h-8 text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-white mb-2">Otimização de PC</h3>
-                                        <p className="text-gray-300 text-sm">Aumente velocidade e desempenho do seu computador</p>
+                                        <h3 className="text-xl font-bold text-gray-900 mb-2">Otimização de PC</h3>
+                                        <p className="text-gray-600 text-sm">Aumente velocidade e desempenho do seu computador</p>
                                     </div>
                                 </div>
                                 <div className="mt-6 grid grid-cols-3 gap-4">
                                     <div className="flex flex-col items-center text-center">
-                                        <TrendingUp className="text-[#00FF94] mb-2" size={24} />
-                                        <p className="font-bold text-white">+3x</p>
-                                        <p className="text-xs text-slate-400">Velocidade</p>
+                                        <TrendingUp className="text-emerald-600 mb-2" size={24} />
+                                        <p className="font-bold text-gray-900">+3x</p>
+                                        <p className="text-xs text-gray-500">Velocidade</p>
                                     </div>
                                     <div className="flex flex-col items-center text-center">
-                                        <Zap className="text-[#EAB308] mb-2" size={24} />
-                                        <p className="font-bold text-white">+40%</p>
-                                        <p className="text-xs text-slate-400">FPS</p>
+                                        <Zap className="text-yellow-500 mb-2" size={24} />
+                                        <p className="font-bold text-gray-900">+40%</p>
+                                        <p className="text-xs text-gray-500">FPS</p>
                                     </div>
                                     <div className="flex flex-col items-center text-center">
-                                        <Clock className="text-[#31A8FF] mb-2" size={24} />
-                                        <p className="font-bold text-white">-60%</p>
-                                        <p className="text-xs text-slate-400">Tempo de inicialização</p>
+                                        <Clock className="text-blue-600 mb-2" size={24} />
+                                        <p className="font-bold text-gray-900">-60%</p>
+                                        <p className="text-xs text-gray-500">Tempo de inicialização</p>
                                     </div>
                                 </div>
                             </div>
@@ -195,61 +194,59 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* Stats Section */}
-            <section className="py-16 bg-[#050510] relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+            <section className="py-16 bg-white relative overflow-hidden">
                 <div className="max-w-6xl mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         <div>
-                            <div className="text-3xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">500+</div>
-                            <p className="text-slate-400">PCs Otimizados</p>
+                            <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">500+</div>
+                            <p className="text-gray-500">PCs Otimizados</p>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] text-transparent bg-clip-text">98%</div>
-                            <p className="text-slate-400">Satisfação</p>
+                            <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-blue-600 to-pink-600 text-transparent bg-clip-text">98%</div>
+                            <p className="text-gray-500">Satisfação</p>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#FF4B6B] to-[#8B31FF] text-transparent bg-clip-text">7+</div>
-                            <p className="text-slate-400">Anos de Experiência</p>
+                            <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-pink-600 to-purple-600 text-transparent bg-clip-text">7+</div>
+                            <p className="text-gray-500">Anos de Experiência</p>
                         </div>
                         <div>
-                            <div className="text-3xl font-bold bg-gradient-to-r from-[#FF4B6B] via-[#31A8FF] to-[#8B31FF] text-transparent bg-clip-text">24/7</div>
-                            <p className="text-slate-400">Suporte</p>
+                            <div className="text-3xl font-bold bg-gradient-to-r from-pink-600 via-blue-600 to-purple-600 text-transparent bg-clip-text">24/7</div>
+                            <p className="text-gray-500">Suporte</p>
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Benefits Section */}
-            <section className="py-20 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+            <section className="py-20 px-4 relative overflow-hidden bg-gray-50">
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20 mb-6">
-                            <span className="w-2 h-2 rounded-full bg-[#31A8FF] animate-pulse"></span>
-                            <span className="text-xs font-bold text-[#31A8FF] tracking-widest uppercase">Benefícios da Otimização</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 border border-blue-200 mb-6">
+                            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                            <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Benefícios da Otimização</span>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            Transforme seu PC com nossa <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização Profissional</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
+                            Transforme seu PC com nossa <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Otimização Profissional</span>
                         </h2>
-                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                             Resultados comprovados para diferentes necessidades
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                         {benefits.map((benefit, index) => (
-                            <div key={index} className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div key={index} className="group relative bg-white border border-gray-200 rounded-3xl p-8 hover:border-gray-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                 <div className="relative z-10 text-center">
                                     <div className="mx-auto mb-6">
-                                        <div className="w-16 h-16 rounded-xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mx-auto group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                            <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
+                                        <div className="w-16 h-16 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center mx-auto group-hover:bg-blue-100 group-hover:border-blue-200 transition-all duration-300 shadow-sm">
+                                            <div className="transform transition-transform duration-300 group-hover:scale-110 text-blue-600">
                                                 {benefit.icon}
                                             </div>
                                         </div>
                                     </div>
-                                    <h3 className="text-xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">{benefit.title}</h3>
-                                    <p className="text-slate-400">{benefit.description}</p>
+                                    <h3 className="text-xl font-bold mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">{benefit.title}</h3>
+                                    <p className="text-gray-600">{benefit.description}</p>
                                 </div>
                             </div>
                         ))}
@@ -258,40 +255,39 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* Services Section */}
-            <section className="py-20 bg-[#050510] px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+            <section className="py-20 bg-white px-4 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            Tipos de <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Otimização</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
+                            Tipos de <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Otimização</span>
                         </h2>
-                        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             Serviços específicos para diferentes necessidades
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                         {services.map((service, index) => (
-                            <div key={index} className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                                <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                            <div key={index} className="group relative bg-white border border-gray-200 hover:border-purple-300 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                                <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                <div className="relative h-full bg-gray-50 rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
                                     <div className="flex items-start gap-4">
                                         <div className="mt-1">
-                                            <div className="w-12 h-12 rounded-xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                                <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
+                                            <div className="w-12 h-12 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center group-hover:bg-blue-100 group-hover:border-blue-200 transition-all duration-300 shadow-sm">
+                                                <div className="transform transition-transform duration-300 group-hover:scale-110 text-blue-600">
                                                     {service.icon}
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
-                                            <h3 className="text-2xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">{service.title}</h3>
-                                            <p className="text-slate-400 mb-4">{service.description}</p>
+                                            <h3 className="text-2xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">{service.title}</h3>
+                                            <p className="text-gray-600 mb-4">{service.description}</p>
 
                                             <ul className="space-y-2">
                                                 {service.includes.map((item, idx) => (
                                                     <li key={idx} className="flex items-center gap-2">
-                                                        <CheckCircle2 className="text-[#00FF94]" size={16} />
-                                                        <span className="text-sm text-slate-300">{item}</span>
+                                                        <CheckCircle2 className="text-emerald-600" size={16} />
+                                                        <span className="text-sm text-gray-700">{item}</span>
                                                     </li>
                                                 ))}
                                             </ul>
@@ -305,14 +301,13 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* Process Section */}
-            <section className="py-20 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+            <section className="py-20 px-4 relative overflow-hidden bg-gray-50">
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            Nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Processo</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
+                            Nosso <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Processo</span>
                         </h2>
-                        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             Um processo claro e eficiente para otimizar seu PC
                         </p>
                     </div>
@@ -341,11 +336,11 @@ export default function OtimizacaoPcClient() {
                             }
                         ].map((item, index) => (
                             <div key={index} className="text-center group">
-                                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center text-2xl font-bold mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-2xl font-bold mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300">
                                     {item.step}
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">{item.title}</h3>
-                                <p className="text-slate-400">{item.description}</p>
+                                <h3 className="text-xl font-bold mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">{item.title}</h3>
+                                <p className="text-gray-600">{item.description}</p>
                             </div>
                         ))}
                     </div>
@@ -353,38 +348,37 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* Testimonials */}
-            <section className="py-20 bg-[#050510] px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+            <section className="py-20 bg-white px-4 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            O Que Nossos Clientes <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Dizem</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
+                            O Que Nossos Clientes <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Dizem</span>
                         </h2>
-                        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             Resultados reais de quem já otimizou seu PC conosco
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
                         {testimonials.map((testimonial, index) => (
-                            <div key={index} className="group relative bg-[#0A0A0F]/80 backdrop-blur-xl border border-white/5 rounded-3xl p-8 hover:border-white/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent group-hover:via-white/20 transition-all"></div>
+                            <div key={index} className="group relative bg-white border border-gray-200 rounded-3xl p-8 hover:border-gray-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                                <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent group-hover:via-gray-300 transition-all"></div>
 
-                                <div className="flex items-center gap-1 mb-6 text-yellow-400">
+                                <div className="flex items-center gap-1 mb-6 text-yellow-500">
                                     {[...Array(testimonial.rating)].map((_, i) => (
                                         <Star key={i} className="w-4 h-4 fill-current" />
                                     ))}
                                 </div>
 
-                                <p className="text-slate-300 mb-8 relative z-10 italic">"{testimonial.text}"</p>
+                                <p className="text-gray-600 mb-8 relative z-10 italic">"{testimonial.text}"</p>
 
                                 <div className="flex items-center gap-4">
-                                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-white font-bold text-lg shadow-lg`}>
+                                    <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.color} flex items-center justify-center text-white font-bold text-lg shadow-md`}>
                                         {testimonial.name.charAt(0)}
                                     </div>
                                     <div>
-                                        <div className="font-bold text-white text-sm">{testimonial.name}</div>
-                                        <div className="text-xs text-slate-400 uppercase tracking-wider font-medium">{testimonial.role}</div>
+                                        <div className="font-bold text-gray-900 text-sm">{testimonial.name}</div>
+                                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{testimonial.role}</div>
                                     </div>
                                 </div>
                             </div>
@@ -394,76 +388,75 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* Related Services */}
-            <section className="py-20 bg-[#050510] px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+            <section className="py-20 bg-gray-50 px-4 relative overflow-hidden">
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
-                            Serviços <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]">Relacionados</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
+                            Serviços <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Relacionados</span>
                         </h2>
-                        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             Combine com outros serviços para resultados ainda melhores
                         </p>
                     </div>
 
                     <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                        <Link href="/formatar-windows" className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                            <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
-                                <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
+                        <Link href="/formatar-windows" className="group relative bg-white border border-gray-200 hover:border-purple-300 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                            <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative h-full bg-gray-50 rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                                <div className="w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center mb-8 group-hover:bg-blue-100 group-hover:border-blue-200 transition-all duration-300 shadow-sm">
+                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-blue-600">
                                         <Download className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Formatação de Windows</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">Formatação de Windows</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed mb-6">
                                     Instalação limpa e configurações otimizadas
                                 </p>
-                                <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
-                                    <span className="text-[#31A8FF] text-sm font-medium">Saiba mais</span>
-                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#31A8FF] group-hover:border-[#31A8FF] transition-all duration-300 shadow-md">
+                                <div className="mt-auto w-full pt-6 border-t border-gray-200 flex items-center justify-between">
+                                    <span className="text-blue-600 text-sm font-medium">Saiba mais</span>
+                                    <div className="w-12 h-12 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
                                         <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                                     </div>
                                 </div>
                             </div>
                         </Link>
 
-                        <Link href="/assistencia-tecnica" className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                            <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
-                                <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#8B31FF]/10 group-hover:border-[#8B31FF]/20 transition-all duration-300 shadow-lg">
-                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#8B31FF]">
+                        <Link href="/assistencia-tecnica" className="group relative bg-white border border-gray-200 hover:border-purple-300 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                            <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative h-full bg-gray-50 rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                                <div className="w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center mb-8 group-hover:bg-purple-100 group-hover:border-purple-200 transition-all duration-300 shadow-sm">
+                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-purple-600">
                                         <Wrench className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Assistência Técnica</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">Assistência Técnica</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed mb-6">
                                     Reparo de hardware e manutenção preventiva
                                 </p>
-                                <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
-                                    <span className="text-[#8B31FF] text-sm font-medium">Saiba mais</span>
-                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#8B31FF] group-hover:border-[#8B31FF] transition-all duration-300 shadow-md">
+                                <div className="mt-auto w-full pt-6 border-t border-gray-200 flex items-center justify-between">
+                                    <span className="text-purple-600 text-sm font-medium">Saiba mais</span>
+                                    <div className="w-12 h-12 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 group-hover:bg-purple-600 group-hover:border-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
                                         <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                                     </div>
                                 </div>
                             </div>
                         </Link>
 
-                        <Link href="/voltris-optimizer" className="group relative bg-[#0A0A0F] border border-white/5 hover:border-[#8B31FF]/30 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                            <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                            <div className="relative h-full bg-[#0E0E12] rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
-                                <div className="w-16 h-16 rounded-2xl bg-[#1A1A22]/50 backdrop-blur-sm border border-white/5 flex items-center justify-center mb-8 group-hover:bg-[#31A8FF]/10 group-hover:border-[#31A8FF]/20 transition-all duration-300 shadow-lg">
-                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-[#31A8FF]">
+                        <Link href="/voltris-optimizer" className="group relative bg-white border border-gray-200 hover:border-purple-300 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                            <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                            <div className="relative h-full bg-gray-50 rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
+                                <div className="w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center mb-8 group-hover:bg-blue-100 group-hover:border-blue-200 transition-all duration-300 shadow-sm">
+                                    <div className="transform transition-transform duration-300 group-hover:scale-110 text-blue-600">
                                         <Monitor className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#31A8FF] group-hover:via-[#8B31FF] group-hover:to-[#FF4B6B] transition-all">Voltris Optimizer</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">Voltris Optimizer</h3>
+                                <p className="text-gray-600 text-sm leading-relaxed mb-6">
                                     Software de otimização contínua
                                 </p>
-                                <div className="mt-auto w-full pt-6 border-t border-white/5 flex items-center justify-between">
-                                    <span className="text-[#31A8FF] text-sm font-medium">Saiba mais</span>
-                                    <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-[#31A8FF] group-hover:border-[#31A8FF] transition-all duration-300 shadow-md">
+                                <div className="mt-auto w-full pt-6 border-t border-gray-200 flex items-center justify-between">
+                                    <span className="text-blue-600 text-sm font-medium">Saiba mais</span>
+                                    <div className="w-12 h-12 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-700 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
                                         <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                                     </div>
                                 </div>
@@ -474,25 +467,24 @@ export default function OtimizacaoPcClient() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+            <section className="py-20 px-4 relative overflow-hidden bg-white">
                 <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Pronto para otimizar seu PC?</h2>
-                    <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Pronto para otimizar seu PC?</h2>
+                    <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
                         Receba um orçamento personalizado em minutos
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
                             href="/todos-os-servicos/otimizacao-pc"
-                            className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-white/10 border border-white/10 rounded-lg hover:bg-white hover:text-black hover:border-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white/50 backdrop-blur-sm overflow-hidden"
+                            className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg hover:shadow-xl"
                         >
                             <span className="mr-2">Solicitar Otimização</span>
                             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                         <Link
                             href="tel:+5511996716235"
-                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
+                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
                         >
                             <Phone className="mr-2" />
                             (11) 99671-6235

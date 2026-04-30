@@ -17,18 +17,54 @@ interface FAQItemProps {
 }
 
 const FAQItem = ({ question, answer, icon, isOpen, onClick, index }: FAQItemProps) => {
+    const getIconClass = () => {
+        if (isOpen) {
+            return "w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-500 shadow-sm bg-gradient-to-br from-blue-600 to-purple-600 text-white scale-110 shadow-md";
+        }
+        return "w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-500 shadow-sm bg-gray-100 border border-gray-200 text-gray-500 group-hover:border-blue-300 group-hover:text-blue-600";
+    };
+
+    const getContainerClass = () => {
+        if (isOpen) {
+            return "group rounded-xl border transition-all duration-500 overflow-hidden relative bg-white border-blue-300 shadow-sm";
+        }
+        return "group rounded-xl border transition-all duration-500 overflow-hidden relative bg-white border-gray-200 hover:border-gray-300";
+    };
+
+    const getGlowBarClass = () => {
+        return isOpen ? "opacity-100" : "opacity-0";
+    };
+
+    const getTextClass = () => {
+        if (isOpen) {
+            return "text-lg sm:text-xl font-medium tracking-tight transition-colors duration-300 text-gray-900";
+        }
+        return "text-lg sm:text-xl font-medium tracking-tight transition-colors duration-300 text-gray-700 group-hover:text-gray-900";
+    };
+
+    const getChevronContainerClass = () => {
+        if (isOpen) {
+            return "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ml-4 shrink-0 border-blue-600 bg-blue-100 rotate-180";
+        }
+        return "w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ml-4 shrink-0 border-gray-200 bg-transparent group-hover:border-gray-300";
+    };
+
+    const getChevronIconClass = () => {
+        if (isOpen) {
+            return "w-4 h-4 transition-colors duration-300 text-blue-600";
+        }
+        return "w-4 h-4 transition-colors duration-300 text-gray-500 group-hover:text-gray-700";
+    };
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
-            className={`group rounded-xl border transition-all duration-500 overflow-hidden relative ${isOpen
-                ? 'bg-gradient-to-r from-[#1a1a2e] to-[#0F111A] border-[#31A8FF]/30 shadow-[0_0_40px_rgba(49,168,255,0.05)]'
-                : 'bg-white/[0.02] border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
-                }`}
+            className={getContainerClass()}
         >
             {/* Active Glow Bar on Left */}
-            <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={"absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-600 to-purple-600 transition-opacity duration-300 " + getGlowBarClass()} />
 
             <button
                 onClick={onClick}
@@ -36,27 +72,19 @@ const FAQItem = ({ question, answer, icon, isOpen, onClick, index }: FAQItemProp
             >
                 <div className="flex items-center gap-6">
                     {icon && (
-                        <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-500 shadow-lg ${isOpen
-                            ? 'bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] text-white scale-110 shadow-[0_0_20px_rgba(49,168,255,0.3)]'
-                            : 'bg-[#0A0A0F] border border-white/10 text-slate-400 group-hover:border-[#31A8FF]/30 group-hover:text-[#31A8FF]'
-                            }`}>
+                        <div className={getIconClass()}>
                             <div className="w-5 h-5 sm:w-6 sm:h-6">
                                 {icon}
                             </div>
                         </div>
                     )}
-                    <span className={`text-lg sm:text-xl font-medium tracking-tight transition-colors duration-300 ${isOpen ? 'text-white' : 'text-slate-300 group-hover:text-white'
-                        }`}>
+                    <span className={getTextClass()}>
                         {question}
                     </span>
                 </div>
 
-                <div className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ml-4 shrink-0 ${isOpen
-                    ? 'border-[#31A8FF] bg-[#31A8FF]/10 rotate-180'
-                    : 'border-white/10 bg-transparent group-hover:border-white/30'
-                    }`}>
-                    <ChevronDown className={`w-4 h-4 transition-colors duration-300 ${isOpen ? 'text-[#31A8FF]' : 'text-slate-500 group-hover:text-slate-300'
-                        }`} />
+                <div className={getChevronContainerClass()}>
+                    <ChevronDown className={getChevronIconClass()} />
                 </div>
             </button>
 
@@ -68,7 +96,7 @@ const FAQItem = ({ question, answer, icon, isOpen, onClick, index }: FAQItemProp
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                        <div className="px-6 pb-8 pl-[88px] sm:pl-[104px] pr-6 sm:pr-12 text-slate-400 leading-8 text-[1.05rem] font-light relative z-10 border-t border-white/5 pt-6 mt-2 mx-6 sm:mx-8">
+                        <div className="px-6 pb-8 pl-[88px] sm:pl-[104px] pr-6 sm:pr-12 text-gray-600 leading-8 text-[1.05rem] relative z-10 border-t border-gray-200 pt-6 mt-2 mx-6 sm:mx-8">
                             {answer}
                         </div>
                     </motion.div>
@@ -117,11 +145,10 @@ export default function FAQPage() {
     return (
         <>
             <Header />
-            <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30">
+            <main className="bg-gray-50 min-h-screen relative overflow-x-hidden font-sans selection:bg-blue-100">
                 {/* Background Effects */}
-                <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
-                <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
-                <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+                <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-100/30 blur-[150px] rounded-full pointer-events-none"></div>
+                <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-purple-100/30 blur-[150px] rounded-full pointer-events-none"></div>
 
                 {/* Hero Section */}
                 <section className="min-h-[100dvh] flex flex-col items-center justify-center relative z-10">
@@ -131,13 +158,13 @@ export default function FAQPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h2 className="text-sm font-bold tracking-[0.2em] text-[#31A8FF] mb-6 uppercase">
+                            <h2 className="text-sm font-bold tracking-[0.2em] text-blue-600 mb-6 uppercase">
                                 Central de Ajuda
                             </h2>
-                            <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-8">
-                                Dúvidas <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Frequentes</span>
+                            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 tracking-tight mb-8">
+                                Dúvidas <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">Frequentes</span>
                             </h1>
-                            <p className="text-lg text-slate-400 max-w-2xl mx-auto font-light">
+                            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
                                 Tudo o que você precisa saber sobre nossa metodologia de engenharia de performance e suporte premium.
                             </p>
                         </motion.div>
@@ -149,10 +176,10 @@ export default function FAQPage() {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
-                        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-slate-500 hover:text-white transition-colors"
+                        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-gray-400 hover:text-gray-900 transition-colors"
                     >
                         <span className="text-xs uppercase tracking-widest">Scroll</span>
-                        <div className="w-[1px] h-12 bg-gradient-to-b from-[#31A8FF] to-transparent"></div>
+                        <div className="w-[1px] h-12 bg-gradient-to-b from-blue-600 to-transparent"></div>
                     </motion.div>
                 </section>
 
@@ -180,25 +207,25 @@ export default function FAQPage() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="max-w-4xl mx-auto rounded-[3rem] bg-gradient-to-r from-[#1a1a2e] to-[#0F111A] border border-white/5 p-8 md:p-12 text-center relative overflow-hidden group"
+                            className="max-w-4xl mx-auto rounded-3xl bg-white border border-gray-200 p-8 md:p-12 text-center relative overflow-hidden group shadow-sm"
                         >
                             {/* Glow Effect */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-r from-[#31A8FF]/10 via-[#8B31FF]/10 to-[#FF4B6B]/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-r from-blue-100/50 via-purple-100/50 to-pink-100/50 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                className="w-20 h-20 mx-auto bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] rounded-2xl flex items-center justify-center mb-8 shadow-lg relative z-10"
+                                className="w-20 h-20 mx-auto bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-8 shadow-lg relative z-10"
                             >
                                 <MessageCircle className="w-10 h-10 text-white" />
                             </motion.div>
 
-                            <h2 className="text-3xl font-bold text-white mb-4 relative z-10">Ainda tem dúvidas?</h2>
-                            <p className="text-slate-400 mb-8 max-w-lg mx-auto relative z-10">
+                            <h2 className="text-3xl font-bold text-gray-900 mb-4 relative z-10">Ainda tem dúvidas?</h2>
+                            <p className="text-gray-500 mb-8 max-w-lg mx-auto relative z-10">
                                 Nossa equipe de especialistas está pronta para analisar seu caso específico e recomendar a melhor solução.
                             </p>
 
-                            <Link href="/contato" className="relative z-10 inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transform hover:scale-105 duration-200">
+                            <Link href="/contato" className="relative z-10 inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors shadow-sm hover:shadow-md transform hover:scale-105 duration-200">
                                 Falar com Especialista
                             </Link>
                         </motion.div>

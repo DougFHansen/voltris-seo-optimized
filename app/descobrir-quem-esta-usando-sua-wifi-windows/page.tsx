@@ -17,16 +17,16 @@ export default function WifiSecurity() {
         {
             title: "Por que estranhos na sua Wi-Fi deixam o PC Lento?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           Muitas vezes você otimiza o Windows 11 inteiro, mas o seu ping em jogos ou a velocidade de download continuam oscilando. O motivo pode estar no seu roteador: dispositivos desconhecidos (celulares de vizinhos, TVs inteligentes de terceiros) consumindo sua largura de banda.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Esse tráfego 'parasita' gera o <b>Bufferbloat</b>, que é quando a sua rede fica congestionada de pedidos de pacotes, forçando sua placa de rede e o Windows a trabalharem em dobro para gerenciar as rotas. Identificar e banir esses dispositivos é vital para a sua performance global.
         </p>
         
-        <div class="bg-blue-500/10 border border-blue-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-[#31A8FF] font-black mb-2 flex items-center gap-2">Comando de Ouro: ARP -A</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-blue-100 border border-blue-200 p-6 rounded-2xl my-6">
+            <h4 class="text-blue-600 font-black mb-2 flex items-center gap-2">Comando de Ouro: ARP -A</h4>
+            <p class="text-gray-600 text-sm">
                 Abra o CMD (Prompt de Comando) e digite <code>arp -a</code>. O Windows listará todos os endereços IP e MAC que estão interagindo com a sua rede local agora. Se houver mais dispositivos do que você tem em casa, você tem um intruso.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function WifiSecurity() {
         {
             title: "Segurança de Rede Nativa do Windows 11",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             O Windows 11 possui um recurso de 'Descoberta de Rede' que permite ver os dispositivos conectados. No entanto, é necessário que o seu perfil de rede esteja em <b>Privado</b> para que o sistema consiga escanear o ambiente sem que o Firewall bloqueie a visão.
             <br/><br/>
             Caminho: <b>Central de Rede e Compartilhamento > Configurações de compartilhamento avançadas > Descoberta de rede</b>.
@@ -45,13 +45,13 @@ export default function WifiSecurity() {
         {
             title: "Proteção de Rede com Voltris Optimizer",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** blinda a sua conexão através do <code>Network Shield e DNS Protection</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Net Tweak:** Otimiza os pacotes da sua placa wireless para evitar interferência de redes vizinhas.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **DNS Protection:** Impede que sites maliciosos acessem a configuração do seu roteador via ataques de DNS.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Background Sync Killer:** Desativa os processos do Windows que 'compartilham' dados de rede com outros usuários na web de forma automática.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Net Tweak:** Otimiza os pacotes da sua placa wireless para evitar interferência de redes vizinhas.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **DNS Protection:** Impede que sites maliciosos acessem a configuração do seu roteador via ataques de DNS.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Background Sync Killer:** Desativa os processos do Windows que 'compartilham' dados de rede com outros usuários na web de forma automática.</li>
         </ul>
       `
         }

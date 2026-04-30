@@ -59,16 +59,16 @@ export default function LimparCacheNvidia() {
         {
             title: "O que é o Shader Cache e por que ele trava seu jogo?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O **Shader Cache** é um banco de dados que seu driver da NVIDIA cria para armazenar códigos pré-compilados do motor gráfico dos seus jogos. Isso deveria acelerar o carregamento, mas quando o cache fica muito grande ou corrompido (especialmente após um update de driver), ele causa micro-travamentos constantes.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Se você sente que o seu Windows 11 está com lag mesmo em menus simples ou que o seu FPS está oscilando, limpar as pastas <code>DXCache</code> e <code>GLCache</code> é o passo obrigatório de limpeza técnica.
         </p>
         
-        <div class="bg-emerald-500/10 border border-emerald-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-emerald-400 font-black mb-2 flex items-center gap-2">Configuração Pro: Shader Cache Size</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-emerald-100 border border-emerald-200 p-6 rounded-2xl my-6">
+            <h4 class="text-emerald-700 font-black mb-2 flex items-center gap-2">Configuração Pro: Shader Cache Size</h4>
+            <p class="text-gray-600 text-sm">
                 No Painel de Controle da NVIDIA, recomendamos definir o <code>Shader Cache Size</code> para **Unbreakable** ou **Unlimited**. Isso evita que o Windows sobrescreva arquivos importantes, mas exige que você faça a limpeza manual (ou automática com o Voltris) se o driver mudar.
             </p>
         </div>
@@ -77,7 +77,7 @@ export default function LimparCacheNvidia() {
         {
             title: "Como Limpar Manualmente (Sem quebrar o Driver)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Você deve fechar todos os seus jogos e navegar até:
             <br/><br/>
             <code>%LOCALAPPDATA%\\NVIDIA\\DXCache</code>
@@ -89,13 +89,13 @@ export default function LimparCacheNvidia() {
         {
             title: "A Vantagem do Voltris Ultra Cleaner GPU-Fix",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Ultra Cleaner** possui um módulo exclusivo para limpeza de kernels de vídeo que o Windows ignora.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Deep Driver Flush:** Limpa registros de versões de drivers antigas que conflitam com a atual.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Auto DXCache Reset:** Agenda limpezas periódicas de shaders para garantir a estabilidade do PC.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **VRAM Management:** Libera a memória de vídeo reservada por processos zumbis do Windows.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Deep Driver Flush:** Limpa registros de versões de drivers antigas que conflitam com a atual.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Auto DXCache Reset:** Agenda limpezas periódicas de shaders para garantir a estabilidade do PC.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **VRAM Management:** Libera a memória de vídeo reservada por processos zumbis do Windows.</li>
         </ul>
       `
         }

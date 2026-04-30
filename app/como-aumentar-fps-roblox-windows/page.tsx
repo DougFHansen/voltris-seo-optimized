@@ -59,16 +59,16 @@ export default function RobloxFPS() {
         {
             title: "Por que o Roblox trava tanto no Windows 11?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Roblox parece um jogo simples, mas ele exige muito da **CPU** para processar a física e o mapa em tempo real. No Windows 11, o sistema costuma dar prioridade à atualizações e telemetria, deixando o Roblox 'em segundo plano'.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Se você joga em um PC ou Notebook mais antigo, o segredo não é trocar de computador, mas sim limpar o 'lixo' do Windows que está impedindo o processador de focar 100% no jogo.
         </p>
         
-        <div class="bg-indigo-500/10 border border-indigo-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-indigo-400 font-black mb-2 flex items-center gap-2">Dica: Modo de Janela vs Tela Cheia</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-indigo-100 border border-indigo-200 p-6 rounded-2xl my-6">
+            <h4 class="text-indigo-700 font-black mb-2 flex items-center gap-2">Dica: Modo de Janela vs Tela Cheia</h4>
+            <p class="text-gray-600 text-sm">
                 Sempre use o Roblox em modo **Tela Cheia (Alt+Enter)**. Isso permite que o Windows aplique as <code>Fullscreen Optimizations</code>, que reduzem drasticamente o atraso entre o comando e a ação na tela.
             </p>
         </div>
@@ -77,7 +77,7 @@ export default function RobloxFPS() {
         {
             title: "Removendo o Limite de FPS nativo",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Muitos não sabem, mas o Roblox é bloqueado a 60 FPS por padrão. Usar ferramentas de 'Unlocker' é seguro, mas você deve garantir que seu Windows esteja otimizado para que a CPU e a GPU consigam entregar os novos quadros sem interrupções.
             <br/><br/>
             Com o Voltris Optimizer, você limpa os agendamentos de tarefas que interrompem o seu gameplay a cada milissegundo.
@@ -87,13 +87,13 @@ export default function RobloxFPS() {
         {
             title: "Otimizando com o Voltris Optimizer: Roblox Boost",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** é a ferramenta secreta dos jogadores competitivos de Roblox. Com poucos cliques, você remove toda a gordura do Windows que causa o lag.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **RAM Squeezer:** Libera até 2GB de memória RAM ocupada por serviços inúteis do Windows.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **CPU Parking Bypass:** Força todos os núcleos do seu processador a trabalharem para o Roblox.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **App Cleaner:** Limpa os logs de erro que o Roblox acumula e que geram o erro de 'Disconexão'.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **RAM Squeezer:** Libera até 2GB de memória RAM ocupada por serviços inúteis do Windows.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **CPU Parking Bypass:** Força todos os núcleos do seu processador a trabalharem para o Roblox.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **App Cleaner:** Limpa os logs de erro que o Roblox acumula e que geram o erro de 'Disconexão'.</li>
         </ul>
       `
         }

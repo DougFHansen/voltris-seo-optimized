@@ -27,11 +27,10 @@ export default function AboutPage() {
     <>
       <Header />
 
-      <main className="bg-[#050510] min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30">
+      <main className="bg-gray-50 min-h-screen relative overflow-x-hidden font-sans selection:bg-blue-100">
         {/* Global Ambient Effects */}
-        <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#31A8FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#8B31FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/30 blur-[150px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-purple-100/30 blur-[150px] rounded-full pointer-events-none"></div>
 
         {/* Hero Section */}
         <section className="min-h-[100dvh] flex flex-col items-center justify-center relative z-10">
@@ -42,16 +41,16 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-sm font-bold tracking-[0.2em] text-[#31A8FF] mb-6 uppercase">
+              <h2 className="text-sm font-bold tracking-[0.2em] text-blue-600 mb-6 uppercase">
                 Nossa Essência
               </h2>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-8 leading-[1.1]">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight mb-8 leading-[1.1]">
                 Mais que Suporte Técnico. <br />
-                <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">
                   Engenharia de Performance.
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto font-light">
+              <p className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
                 Somos um laboratório de tecnologia focado em extrair o máximo potencial do seu hardware e garantir estabilidade absoluta para o seu dia a dia.
               </p>
             </motion.div>
@@ -63,10 +62,10 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-slate-500 hover:text-white transition-colors"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-gray-400 hover:text-gray-900 transition-colors"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <div className="w-[1px] h-12 bg-gradient-to-b from-[#31A8FF] to-transparent"></div>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-blue-600 to-transparent"></div>
           </motion.div>
         </section>
 
@@ -100,15 +99,15 @@ export default function AboutPage() {
                 <motion.div
                   key={idx}
                   variants={fadeInUp}
-                  className="group p-8 rounded-[32px] bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 relative overflow-hidden"
+                  className="group p-8 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#31A8FF]/5 via-transparent to-[#FF4B6B]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-transparent to-pink-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-                  <div className="w-16 h-16 rounded-2xl bg-[#0A0A0F] border border-white/10 flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 transition-transform duration-500 relative z-10">
+                  <div className="w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center mb-6 shadow-inner group-hover:scale-110 transition-transform duration-500 relative z-10">
                     {item.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 relative z-10">{item.title}</h3>
-                  <p className="text-slate-400 leading-relaxed text-sm relative z-10">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4 relative z-10">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm relative z-10">
                     {item.desc}
                   </p>
                 </motion.div>
@@ -127,13 +126,13 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
               >
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
+                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
                   De uma garagem para <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#31A8FF] to-[#8B31FF]">todo o Brasil.</span>
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">todo o Brasil.</span>
                 </h2>
-                <div className="space-y-6 text-slate-400 text-lg leading-relaxed font-light">
+                <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
                   <p>
-                    A história da <strong className="text-white font-semibold">Voltris</strong> começou em 2025, não como uma empresa, mas como um desafio. Douglas Felipe Moraes Gonçalves, nosso fundador, percebeu que a maioria das "assistências técnicas" se limitava a formatar computadores sem entender a raiz dos problemas de performance.
+                    A história da <strong className="text-gray-900 font-semibold">Voltris</strong> começou em 2025, não como uma empresa, mas como um desafio. Douglas Felipe Moraes Gonçalves, nosso fundador, percebeu que a maioria das "assistências técnicas" se limitava a formatar computadores sem entender a raiz dos problemas de performance.
                   </p>
                   <p>
                     O que começou com suporte para amigos cresceu exponencialmente. A metodologia proprietária de otimização da Voltris — que vai além do hardware e ajusta o sistema operacional a nível de kernel — rapidamente ganhou fama entre gamers e profissionais que precisavam de estabilidade absoluta.
@@ -146,11 +145,11 @@ export default function AboutPage() {
 
               <div className="relative">
                 {/* Decorative Tech Elements */}
-                <div className="absolute -top-10 -right-10 w-64 h-64 bg-[#31A8FF] opacity-10 blur-[80px] rounded-full"></div>
+                <div className="absolute -top-10 -right-10 w-64 h-64 bg-blue-200 opacity-30 blur-[80px] rounded-full"></div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
                   {/* Decorative background glow for the grid */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#31A8FF]/5 blur-[100px] rounded-full pointer-events-none"></div>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50 blur-[100px] rounded-full pointer-events-none"></div>
 
                   <div className="space-y-6">
                     {/* Card 1: 2025 */}
@@ -158,17 +157,17 @@ export default function AboutPage() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="group relative h-56 rounded-[2rem] bg-[#0F111A] border border-white/5 p-8 flex flex-col justify-end overflow-hidden hover:border-[#FF4B6B]/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(255,75,107,0.15)]"
+                      className="group relative h-56 rounded-2xl bg-white border border-gray-200 p-8 flex flex-col justify-end overflow-hidden hover:border-pink-300 transition-all duration-500 hover:shadow-lg"
                     >
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF4B6B]/10 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-[#FF4B6B]/20 transition-all duration-500"></div>
-                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 transition-transform duration-500">
-                        <Clock className="w-6 h-6 text-[#FF4B6B]" />
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-pink-100 blur-[50px] rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-pink-200 transition-all duration-500"></div>
+                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-gray-100 border border-gray-200 group-hover:scale-110 transition-transform duration-500">
+                        <Clock className="w-6 h-6 text-pink-600" />
                       </div>
 
-                      <span className="text-5xl font-bold bg-gradient-to-r from-[#FF4B6B] to-[#FF8F6B] text-transparent bg-clip-text relative z-10">
+                      <span className="text-5xl font-bold bg-gradient-to-r from-pink-600 to-rose-500 text-transparent bg-clip-text relative z-10">
                         2025
                       </span>
-                      <span className="text-slate-400 text-sm font-medium mt-3 relative z-10 leading-relaxed">
+                      <span className="text-gray-600 text-sm font-medium mt-3 relative z-10 leading-relaxed">
                         O início de uma nova era na metodologia de otimização de hardware.
                       </span>
                     </motion.div>
@@ -178,22 +177,21 @@ export default function AboutPage() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="group relative h-72 rounded-[2rem] bg-gradient-to-br from-[#1a1a2e] to-[#0F111A] border border-white/10 p-8 flex flex-col justify-end overflow-hidden hover:border-[#31A8FF]/50 transition-all duration-500 hover:shadow-[0_0_50px_rgba(49,168,255,0.2)]"
+                      className="group relative h-72 rounded-2xl bg-white border border-gray-200 p-8 flex flex-col justify-end overflow-hidden hover:border-blue-300 transition-all duration-500 hover:shadow-lg"
                     >
-                      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-                      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-[#31A8FF]/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-blue-100 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-[#31A8FF]/10 border border-[#31A8FF]/20 group-hover:bg-[#31A8FF] group-hover:text-black transition-all duration-500">
-                        <Users className="w-6 h-6 text-[#31A8FF] group-hover:text-black" />
+                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-blue-100 border border-blue-200 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        <Users className="w-6 h-6 text-blue-600 group-hover:text-white" />
                       </div>
 
-                      <span className="text-6xl font-bold text-white tracking-tight relative z-10 group-hover:scale-105 transition-transform duration-500 origin-bottom-left">
+                      <span className="text-6xl font-bold text-gray-900 tracking-tight relative z-10 group-hover:scale-105 transition-transform duration-500 origin-bottom-left">
                         5k+
                       </span>
-                      <span className="text-[#31A8FF] text-sm font-bold uppercase tracking-wider mt-2 mb-1 relative z-10">
+                      <span className="text-blue-600 text-sm font-bold uppercase tracking-wider mt-2 mb-1 relative z-10">
                         Clientes Ativos
                       </span>
-                      <span className="text-slate-400 text-sm relative z-10 leading-relaxed">
+                      <span className="text-gray-600 text-sm relative z-10 leading-relaxed">
                         Gamers e profissionais que confiam na nossa tecnologia diariamente.
                       </span>
                     </motion.div>
@@ -205,21 +203,21 @@ export default function AboutPage() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3 }}
-                      className="group relative h-72 rounded-[2rem] bg-[#0F111A] border border-white/5 p-8 flex flex-col justify-end overflow-hidden hover:border-[#8B31FF]/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(139,49,255,0.15)]"
+                      className="group relative h-72 rounded-2xl bg-white border border-gray-200 p-8 flex flex-col justify-end overflow-hidden hover:border-purple-300 transition-all duration-500 hover:shadow-lg"
                     >
-                      <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#8B31FF]/10 blur-[60px] rounded-full translate-y-1/2 -translate-x-1/2 group-hover:bg-[#8B31FF]/20 transition-all duration-500"></div>
+                      <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-100 blur-[60px] rounded-full translate-y-1/2 -translate-x-1/2 group-hover:bg-purple-200 transition-all duration-500"></div>
 
-                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 transition-transform duration-500">
-                        <Award className="w-6 h-6 text-[#8B31FF]" />
+                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-gray-100 border border-gray-200 group-hover:scale-110 transition-transform duration-500">
+                        <Award className="w-6 h-6 text-purple-600" />
                       </div>
 
                       <div className="relative z-10 mb-2">
                         <div className="flex items-end gap-2">
-                          <span className="text-6xl font-bold text-white">98</span>
-                          <span className="text-4xl font-bold text-[#8B31FF] mb-2">%</span>
+                          <span className="text-6xl font-bold text-gray-900">98</span>
+                          <span className="text-4xl font-bold text-purple-600 mb-2">%</span>
                         </div>
                       </div>
-                      <span className="text-slate-400 text-sm font-medium relative z-10 leading-relaxed">
+                      <span className="text-gray-600 text-sm font-medium relative z-10 leading-relaxed">
                         De taxa de satisfação (NPS). Qualidade que não se discute, se comprova.
                       </span>
                     </motion.div>
@@ -229,18 +227,18 @@ export default function AboutPage() {
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4 }}
-                      className="group relative h-56 rounded-[2rem] bg-[#0F111A] border border-white/5 p-8 flex flex-col justify-end overflow-hidden hover:border-[#31A8FF]/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(49,168,255,0.15)]"
+                      className="group relative h-56 rounded-2xl bg-white border border-gray-200 p-8 flex flex-col justify-end overflow-hidden hover:border-blue-300 transition-all duration-500 hover:shadow-lg"
                     >
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-white/5 border border-white/5 group-hover:scale-110 transition-transform duration-500">
-                        <Activity className="w-6 h-6 text-[#31A8FF]" />
+                      <div className="absolute top-6 right-6 p-3 rounded-xl bg-gray-100 border border-gray-200 group-hover:scale-110 transition-transform duration-500">
+                        <Activity className="w-6 h-6 text-blue-600" />
                       </div>
 
-                      <span className="text-5xl font-bold text-white relative z-10 group-hover:text-[#31A8FF] transition-colors duration-300">
+                      <span className="text-5xl font-bold text-gray-900 relative z-10 group-hover:text-blue-600 transition-colors duration-300">
                         24/7
                       </span>
-                      <span className="text-slate-400 text-sm font-medium mt-3 relative z-10 leading-relaxed">
+                      <span className="text-gray-600 text-sm font-medium mt-3 relative z-10 leading-relaxed">
                         Monitoramento ininterrupto e suporte sempre que você precisar.
                       </span>
                     </motion.div>
@@ -252,11 +250,11 @@ export default function AboutPage() {
         </section>
 
         {/* Methodology - Tech Focus */}
-        <section className="py-20 bg-[#0A0A0F] border-y border-white/5 relative z-10">
+        <section className="py-20 bg-white border-y border-gray-200 relative z-10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Metodologia <span className="text-[#31A8FF]">Voltris</span></h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Metodologia <span className="text-blue-600">Voltris</span></h2>
+              <p className="text-gray-500 max-w-2xl mx-auto">
                 Nosso processo é científico. Não "achamos" o problema; nós o isolamos, analisamos e resolvemos com precisão cirúrgica.
               </p>
             </div>
@@ -269,11 +267,11 @@ export default function AboutPage() {
                 { icon: Globe2, title: "Monitoramento Ativo", desc: "Acompanhamento pós-serviço para garantir estabilidade a longo prazo." }
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center group">
-                  <div className="w-20 h-20 rounded-full bg-[#1A1D26] border border-white/5 flex items-center justify-center mb-6 group-hover:bg-[#31A8FF] group-hover:text-black transition-all duration-300 shadow-xl">
-                    <item.icon className="w-8 h-8 text-[#31A8FF] group-hover:text-black transition-colors duration-300" />
+                  <div className="w-20 h-20 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-lg">
+                    <item.icon className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -281,14 +279,14 @@ export default function AboutPage() {
         </section>
 
         {/* Founder Quote */}
-        <section className="py-24 relative z-10">
+        <section className="py-24 relative z-10 bg-gray-100">
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto bg-gradient-to-r from-[#1A1D26] to-[#0F111A] rounded-[40px] p-8 md:p-16 border border-white/5 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-96 h-96 bg-[#8B31FF]/10 blur-[100px] rounded-full"></div>
+            <div className="max-w-5xl mx-auto bg-white rounded-3xl p-8 md:p-16 border border-gray-200 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-purple-100/50 blur-[100px] rounded-full"></div>
 
               <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
-                <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] p-[2px] shadow-2xl shrink-0">
-                  <div className="w-full h-full rounded-full bg-[#0F111A] flex items-center justify-center overflow-hidden relative">
+                <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 p-[2px] shadow-lg shrink-0">
+                  <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                     <Image
                       src="/ceo.jpg"
                       alt="Douglas Felipe Moraes Gonçalves"
@@ -299,13 +297,13 @@ export default function AboutPage() {
                 </div>
 
                 <div className="flex-1 text-center md:text-left">
-                  <BookOpen className="w-10 h-10 text-[#31A8FF] mb-6 mx-auto md:mx-0 opacity-50" />
-                  <h3 className="text-2xl md:text-3xl font-light text-white italic leading-relaxed mb-8">
+                  <BookOpen className="w-10 h-10 text-blue-600 mb-6 mx-auto md:mx-0 opacity-50" />
+                  <h3 className="text-2xl md:text-3xl font-light text-gray-900 italic leading-relaxed mb-8">
                     "A tecnologia deve ser libertadora, não uma dor de cabeça. Na Voltris, não consertamos apenas computadores; nós devolvemos tempo e tranquilidade para as pessoas."
                   </h3>
                   <div>
-                    <p className="text-[#31A8FF] font-bold text-lg tracking-wide uppercase">Douglas Felipe Moraes Gonçalves</p>
-                    <p className="text-slate-500 text-sm">CEO & Fundador</p>
+                    <p className="text-blue-600 font-bold text-lg tracking-wide uppercase">Douglas Felipe Moraes Gonçalves</p>
+                    <p className="text-gray-500 text-sm">CEO & Fundador</p>
                   </div>
                 </div>
               </div>

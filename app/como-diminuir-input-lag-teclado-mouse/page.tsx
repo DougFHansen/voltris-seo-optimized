@@ -17,16 +17,16 @@ export default function InputLagPerifericos() {
         {
             title: "O Problema da Aceleração do Mouse (Enhance Pointer Precision)",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Windows 11 vem com um recurso de "Precisão do Ponteiro" ativado por padrão. Ironicamente, ele faz o oposto para jogadores: ele varia a velocidade do cursor baseada na velocidade do movimento da sua mão. 
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Isso quebra a **Memória Muscular.** Para ter precisão no <code>headshot</code>, 1cm no seu mousepad deve SEMPRE resultar na mesma distância na tela. Desativar isso via Painel de Controle é o básico, mas existem chaves de registro ocultas que mantêm resíduos de aceleração.
         </p>
         
-        <div class="bg-amber-500/10 border border-amber-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-amber-400 font-black mb-2 flex items-center gap-2">Interrupt Moderation: O "Serial Killer" do Clique</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-amber-100 border border-amber-200 p-6 rounded-2xl my-6">
+            <h4 class="text-amber-700 font-black mb-2 flex items-center gap-2">Interrupt Moderation: O "Serial Killer" do Clique</h4>
+            <p class="text-gray-600 text-sm">
                 As controladoras USB do Windows tentam economizar energia agrupando interrupções. Isso gera um intervalo de espera minúsculo, mas que os Pro Players sentem como um "floaty mouse". Desativar a economia de energia em todos os hubs USB no Gerenciador de Dispositivos é vital.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function InputLagPerifericos() {
         {
             title: "Otimizando a Taxa de Resposta (Polling Rate)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Maus modernos operam a <code>1000Hz</code>, <code>4000Hz</code> ou até <code>8000Hz</code>. Se o seu Windows não estiver otimizado para lidar com essa enxurrada de dados, você sentirá quedas de FPS ao mover o mouse rapidamente.
             <br/><br/>
             Para os teclados, o ajuste de <b>Repeat Delay</b> no Registro deve ser reduzido para o valor mínimo (0), permitindo que comandos sucessivos sejam lidos sem o atraso nativo do sistema operacional.
@@ -45,13 +45,13 @@ export default function InputLagPerifericos() {
         {
             title: "A Solução Automática da Voltris: Zero Latency",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** atua diretamente na camada de comunicação entre o hardware e o software (Kernel). Com um clique, ele aplica o famoso <code>Mouse Registry Fix</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Timer Precision:** Sincroniza o timer do sistema para 0.500ms constantes (Superior ao Timer Resolution comum).</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **USB Latency Fix:** Desativa seletivamente a economia de energia dos periféricos de jogo.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Interrupt Affinity:** Garante que o processamento do mouse não seja interrompido por tarefas de áudio ou rede.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Timer Precision:** Sincroniza o timer do sistema para 0.500ms constantes (Superior ao Timer Resolution comum).</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **USB Latency Fix:** Desativa seletivamente a economia de energia dos periféricos de jogo.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Interrupt Affinity:** Garante que o processamento do mouse não seja interrompido por tarefas de áudio ou rede.</li>
         </ul>
       `
         }

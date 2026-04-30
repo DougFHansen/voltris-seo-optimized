@@ -59,16 +59,16 @@ export default function BloquearAnuncios() {
         {
             title: "O Windows 11 virou um Outdoor Digital?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           Por padrão, a Microsoft injeta 'sugestões de aplicativos' no seu **Menu Iniciar**, 'dicas de uso' no seu **Explorador de Arquivos** e até anúncios na sua **Tela de Bloqueio**. Isso não apenas polui a interface, como consome rede e processamento para baixar as novas propagandas.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Se você pagou pelo Windows, ele deve ser uma ferramenta de trabalho, e não uma vitrine. Nosso objetivo é purificar o Windows 11 de volta ao seu estado profissional e minimalista.
         </p>
         
-        <div class="bg-indigo-500/10 border border-indigo-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-indigo-400 font-black mb-2 flex items-center gap-2">Removendo a 'Experiência Personalizada'</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-indigo-100 border border-indigo-200 p-6 rounded-2xl my-6">
+            <h4 class="text-indigo-700 font-black mb-2 flex items-center gap-2">Removendo a 'Experiência Personalizada'</h4>
+            <p class="text-gray-600 text-sm">
                 A Microsoft usa o recurso de <b>Tailored Experiences</b> para rastrear seus cliques e sugerir compras na Microsoft Store. Desativar isso em <b>Configurações > Privacidade e Segurança > Geral</b> é o primeiro passo para o silêncio comercial.
             </p>
         </div>
@@ -77,7 +77,7 @@ export default function BloquearAnuncios() {
         {
             title: "Ocultando Anúncios no Explorador de Arquivos",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Muitas vezes, ao abrir o Explorador de Arquivos, aparece um banner sugerindo o uso do OneDrive ou Office 365.
             <br/><br/>
             Caminho: <b>Explorador de Arquivos > Três Pontinhos (...) > Opções > Exibir > Desmarcar 'Mostrar notificações do provedor de sincronização'</b>.
@@ -89,13 +89,13 @@ export default function BloquearAnuncios() {
         {
             title: "Proteção Total com o Voltris Optimizer: Privacy Shield",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com os anúncios sistêmicos através da ferramenta de <code>Privacy Shield</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Universal AdBlocker:** Um clique para desativar todos os pontos de injeção de publicidade do sistema.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Cloud Consumer Off:** Bloqueia a rede de conteúdo da Microsoft que envia sugestões de apps silenciosos.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Spotlight Filter:** Mantém os papéis de parede bonitos, mas desativa os links clicáveis que aparecem na Tela de Bloqueio.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Universal AdBlocker:** Um clique para desativar todos os pontos de injeção de publicidade do sistema.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Cloud Consumer Off:** Bloqueia a rede de conteúdo da Microsoft que envia sugestões de apps silenciosos.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Spotlight Filter:** Mantém os papéis de parede bonitos, mas desativa os links clicáveis que aparecem na Tela de Bloqueio.</li>
         </ul>
       `
         }

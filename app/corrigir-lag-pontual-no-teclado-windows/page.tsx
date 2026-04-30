@@ -17,16 +17,16 @@ export default function LagTeclado() {
         {
             title: "Por que o meu teclado está atrasado no Windows 11?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O lag no teclado (input lag) no Windows 11 pode ter origens profundas no sistema operacional. Duas causas principais são: recursos de acessibilidade mal configurados (Teclas de Filtragem) e o <b>USB Selective Suspend</b>, que tenta desligar a porta USB para economizar energia.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Se você sente que precisa apertar as teclas com força ou que algumas letras demoram para aparecer, seu Windows não está processando as interrupções de hardware com a prioridade necessária. Fazer o ajuste no registro para a **Taxa de Repetição** é vital.
         </p>
         
-        <div class="bg-amber-500/10 border border-amber-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-amber-400 font-black mb-2 flex items-center gap-2">Desativando a Acessibilidade Traiçoeira</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-amber-100 border border-amber-200 p-6 rounded-2xl my-6">
+            <h4 class="text-amber-700 font-black mb-2 flex items-center gap-2">Desativando a Acessibilidade Traiçoeira</h4>
+            <p class="text-gray-600 text-sm">
                 As <b>Teclas de Filtragem (Filter Keys)</b> são desenhadas para ignorar cliques rápidos ou repetidos. Para quem digita rápido ou joga, isso gera uma sensação de lag constante. Desativar isso em <b>Configurações > Acessibilidade > Teclado</b> é o primeiro passo.
             </p>
         </div>
@@ -35,7 +35,7 @@ export default function LagTeclado() {
         {
             title: "Aceleração da Taxa de Repetição via Registro",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Você pode forçar o Windows a repetir comandos de teclado de forma muito mais agressiva ajustando o <code>KeyboardResponse</code> no registro.
             <br/><br/>
             Caminho: <code>HKEY_CURRENT_USER\\Control Panel\\Accessibility\\Keyboard Response</code>.
@@ -47,13 +47,13 @@ export default function LagTeclado() {
         {
             title: "A Solução Automática do Voltris Latency Optimizer",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O **Voltris Optimizer** lida com a latência de periféricos através da ferramenta <code>Universal Latency Fix</code>.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **USB Power Shield:** Impede que o Windows tente desligar o seu teclado para economizar energia.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Interrupt Priority:** Dá ao driver de teclado a maior prioridade possível no processador.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#10b981] mt-1.5 shrink-0"></div> **Scan Code Fix:** Corrige erros de mapeamento que levam a teclas que não funcionam ou demoram a responder.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **USB Power Shield:** Impede que o Windows tente desligar o seu teclado para economizar energia.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Interrupt Priority:** Dá ao driver de teclado a maior prioridade possível no processador.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-emerald-600 mt-1.5 shrink-0"></div> **Scan Code Fix:** Corrige erros de mapeamento que levam a teclas que não funcionam ou demoram a responder.</li>
         </ul>
       `
         }

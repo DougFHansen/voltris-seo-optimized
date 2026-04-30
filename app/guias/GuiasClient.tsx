@@ -154,31 +154,30 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
 
   const getDifficultyColor = (diff: string) => {
     switch (diff) {
-      case 'Iniciante': return 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20';
-      case 'Intermediário': return 'text-amber-400 bg-amber-400/10 border-amber-400/20';
-      case 'Avançado': return 'text-rose-400 bg-rose-400/10 border-rose-400/20';
-      default: return 'text-slate-400 bg-slate-400/10 border-slate-400/20';
+      case 'Iniciante': return 'text-emerald-600 bg-emerald-50 border-emerald-200';
+      case 'Intermediário': return 'text-amber-600 bg-amber-50 border-amber-200';
+      case 'Avançado': return 'text-rose-600 bg-rose-50 border-rose-200';
+      default: return 'text-gray-600 bg-gray-50 border-gray-200';
     }
   };
 
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-[#050510] font-sans selection:bg-[#31A8FF]/30">
+      <main className="min-h-screen bg-gray-50 font-sans selection:bg-blue-100">
 
         {/* --- HERO SECTION --- */}
-        <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden border-b border-white/5 pt-20">
-          <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
-          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#31A8FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
-          <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#8B31FF]/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+        <section className="min-h-screen flex flex-col items-center justify-center relative px-4 overflow-hidden border-b border-gray-200 pt-20">
+          <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-blue-100/30 blur-[150px] rounded-full pointer-events-none"></div>
+          <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-purple-100/30 blur-[150px] rounded-full pointer-events-none"></div>
 
           <div className="relative max-w-5xl mx-auto text-center z-10 flex-grow flex flex-col items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 text-xs font-medium text-slate-400"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-blue-200 shadow-sm mb-8 text-xs font-medium text-gray-600"
             >
-              <BookOpen className="w-3 h-3 text-[#31A8FF]" />
+              <BookOpen className="w-3 h-3 text-blue-600" />
               <span>Base de Conhecimento v2.0</span>
             </motion.div>
 
@@ -186,7 +185,7 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
+              className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tight"
             >
               Guias Técnicos Especializados
             </motion.h1>
@@ -195,7 +194,7 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
+              className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed"
             >
               Acervo atualizado diariamente com soluções para Windows, Jogos, Hardware e Redes.
             </motion.p>
@@ -208,17 +207,17 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
               className="w-full max-w-2xl mx-auto"
             >
               <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
-                <div className="relative bg-[#0A0A0F] rounded-2xl">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
+                <div className="relative bg-white rounded-2xl shadow-sm">
                   <input
                     type="text"
                     placeholder="Pesquise por erro, jogo ou componente..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={handleSearchKeyPress}
-                    className="w-full px-6 py-5 bg-transparent border border-white/10 rounded-2xl text-white placeholder-slate-500 focus:outline-none focus:border-[#31A8FF]/50 text-lg transition-all"
+                    className="w-full px-6 py-5 bg-transparent border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-lg transition-all"
                   />
-                  <Search className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-slate-500 group-hover:text-[#31A8FF] transition-colors" />
+                  <Search className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" />
                 </div>
               </div>
 
@@ -229,12 +228,12 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                   animate={{ opacity: 1, y: 0 }}
                   className="mt-4 flex items-center justify-center gap-4 text-sm"
                 >
-                  <span className="text-slate-400">
-                    Encontramos <span className="text-white font-bold">{totalResults}</span> {totalResults === 1 ? 'guia' : 'guias'} para sua busca.
+                  <span className="text-gray-500">
+                    Encontramos <span className="text-gray-900 font-bold">{totalResults}</span> {totalResults === 1 ? 'guia' : 'guias'} para sua busca.
                   </span>
                   <button
                     onClick={() => document.getElementById('content-section')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="text-[#31A8FF] font-black hover:underline flex items-center gap-1"
+                    className="text-blue-600 font-black hover:underline flex items-center gap-1"
                   >
                     Ver resultados <ArrowRight className="w-3 h-3" />
                   </button>
@@ -249,15 +248,15 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-slate-500 hover:text-white transition-colors"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-gray-400 hover:text-gray-900 transition-colors"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
-            <div className="w-[1px] h-12 bg-gradient-to-b from-[#31A8FF] to-transparent"></div>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-blue-600 to-transparent"></div>
           </motion.div>
         </section>
 
         {/* --- CONTENT SECTION --- */}
-        <section id="content-section" className="py-12 px-4 bg-[#050510] relative z-10">
+        <section id="content-section" className="py-12 px-4 bg-gray-100 relative z-10">
           <div className="max-w-7xl mx-auto">
 
             {/* Category Filter Cards */}
@@ -265,8 +264,8 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
               <button
                 onClick={() => setSelectedCategory('all')}
                 className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all border ${selectedCategory === 'all'
-                  ? 'bg-white text-black border-white hover:bg-slate-200'
-                  : 'bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:border-white/10 hover:text-white'
+                  ? 'bg-white text-gray-900 border-gray-200 hover:bg-gray-50'
+                  : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:text-gray-900'
                   }`}
               >
                 Todos
@@ -276,27 +275,27 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all flex items-center gap-2 border ${selectedCategory === category.id
-                    ? 'bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.2)]'
-                    : 'bg-white/5 text-slate-400 border-white/5 hover:bg-white/10 hover:border-white/10 hover:text-white'
+                    ? 'bg-white text-gray-900 border-gray-200 shadow-sm'
+                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 hover:text-gray-900'
                     }`}
                 >
-                  <category.icon className={`w-4 h-4 ${selectedCategory === category.id ? 'text-black' : ''}`} />
+                  <category.icon className={`w-4 h-4 ${selectedCategory === category.id ? 'text-gray-900' : ''}`} />
                   {category.title}
                 </button>
               ))}
             </div>
 
             {filteredCategories.length === 0 ? (
-              <div className="text-center py-24 bg-white/5 rounded-3xl border border-white/5">
-                <Search className="w-16 h-16 text-slate-600 mx-auto mb-6" />
-                <h3 className="text-2xl font-bold text-white mb-2">Nenhum guia encontrado</h3>
-                <p className="text-slate-400 mb-8 max-w-sm mx-auto">Não encontramos guias compatíveis com sua busca. Tente palavras-chaves diferentes.</p>
+              <div className="text-center py-24 bg-white rounded-2xl border border-gray-200 shadow-sm">
+                <Search className="w-16 h-16 text-gray-400 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Nenhum guia encontrado</h3>
+                <p className="text-gray-500 mb-8 max-w-sm mx-auto">Não encontramos guias compatíveis com sua busca. Tente palavras-chaves diferentes.</p>
                 <button
                   onClick={() => {
                     setSearchTerm('');
                     setSelectedCategory('all');
                   }}
-                  className="px-8 py-3 bg-[#31A8FF] text-white font-bold rounded-xl hover:bg-[#2b93df] transition-all hover:shadow-[0_0_30px_rgba(49,168,255,0.3)]"
+                  className="px-8 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-sm"
                 >
                   Limpar Filtros
                 </button>
@@ -311,13 +310,13 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6 }}
                   >
-                    <div className="flex items-center gap-4 mb-10 border-b border-white/5 pb-6">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br from-white/5 to-white/0 border border-white/5`}>
-                        <category.icon className="w-6 h-6 text-white" />
+                    <div className="flex items-center gap-4 mb-10 border-b border-gray-200 pb-6">
+                      <div className={`p-3 rounded-xl bg-gradient-to-br from-gray-50 to-white border border-gray-200`}>
+                        <category.icon className="w-6 h-6 text-gray-700" />
                       </div>
                       <div>
-                        <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">{category.title}</h2>
-                        <p className="text-slate-500 text-sm mt-1">{category.description}</p>
+                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">{category.title}</h2>
+                        <p className="text-gray-500 text-sm mt-1">{category.description}</p>
                       </div>
                     </div>
 
@@ -329,10 +328,10 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                           className="group relative h-full"
                         >
                           <Link href={`/guias/${guide.id}`} className="block h-full relative z-20 focus:outline-none">
-                            <div className="h-full bg-[#0A0A0F] hover:bg-[#0F0F16] rounded-2xl border border-white/5 hover:border-[#31A8FF]/30 p-8 transition-all duration-300 relative overflow-hidden flex flex-col">
+                            <div className="h-full bg-white hover:bg-gray-50 rounded-2xl border border-gray-200 hover:border-blue-300 p-8 transition-all duration-300 relative overflow-hidden flex flex-col shadow-sm">
 
                               {/* Subtle Glow Effect on Hover */}
-                              <div className="absolute top-0 right-0 w-32 h-32 bg-[#31A8FF]/5 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100/50 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
 
                               <div className="flex justify-between items-start mb-6 relative z-10">
                                 <div className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${getDifficultyColor(guide.difficulty)}`}>
@@ -340,20 +339,20 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                                 </div>
                               </div>
 
-                              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#31A8FF] transition-colors leading-tight relative z-10">
+                              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight relative z-10">
                                 {guide.title}
                               </h3>
 
-                              <p className="text-slate-400 text-sm mb-8 leading-relaxed line-clamp-2 flex-grow relative z-10">
+                              <p className="text-gray-600 text-sm mb-8 leading-relaxed line-clamp-2 flex-grow relative z-10">
                                 {guide.description}
                               </p>
 
-                              <div className="flex items-center justify-between pt-6 border-t border-white/5 mt-auto relative z-10">
-                                <div className="flex items-center gap-2 text-slate-500 text-xs font-medium">
+                              <div className="flex items-center justify-between pt-6 border-t border-gray-200 mt-auto relative z-10">
+                                <div className="flex items-center gap-2 text-gray-500 text-xs font-medium">
                                   <Clock className="w-4 h-4" />
                                   {guide.time}
                                 </div>
-                                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#31A8FF] group-hover:text-white transition-all text-slate-500">
+                                <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all text-gray-500">
                                   <ArrowRight className="w-4 h-4" />
                                 </div>
                               </div>
@@ -370,19 +369,18 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
         </section>
 
         {/* --- CTA SECTION --- */}
-        <section className="py-24 px-4 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050510] to-[#0A0A0F]"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#31A8FF]/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <section className="py-24 px-4 relative overflow-hidden bg-white">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-100/30 blur-[120px] rounded-full pointer-events-none"></div>
 
           <div className="max-w-4xl mx-auto text-center relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Precisa de Ajuda Profissional?</h2>
-            <p className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">Precisa de Ajuda Profissional?</h2>
+            <p className="text-lg text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed">
               Tentou resolver e não conseguiu? Nossos especialistas podem acessar seu PC remotamente e corrigir o problema para você.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Link
                 href="/todos-os-servicos"
-                className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-slate-200 transition-all shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:scale-105"
+                className="px-8 py-4 bg-white text-gray-900 border border-gray-200 font-bold rounded-xl hover:bg-gray-50 transition-all shadow-sm hover:scale-105"
               >
                 Ver Serviços Especializados
               </Link>
@@ -390,9 +388,9 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                 href="https://wa.me/5511996716235?text=Olá!%20Li%20os%20guias%20mas%20preciso%20de%20ajuda%20especializada."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-white/5 text-white border border-white/10 font-bold rounded-xl hover:bg-white/10 hover:border-white/20 transition-all flex items-center justify-center gap-2 backdrop-blur-md"
+                className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all flex items-center justify-center gap-2 shadow-sm"
               >
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 Falar com Especialista
               </Link>
             </div>

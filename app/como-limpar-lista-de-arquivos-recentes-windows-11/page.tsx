@@ -17,15 +17,15 @@ export default function LimparRecentes() {
         {
             title: "Por que o Windows guarda um histórico de tudo que você abre?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Windows 11 mantém registros de todos os arquivos que você abriu recentemente no Explorador de Arquivos, no Menu Iniciar e em apps do Office. Esse recurso foi pensado para conveniência, mas em computadores compartilhados (família, trabalho), expõe seus documentos para qualquer pessoa que usar a máquina.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Além da privacidade, o histórico de arquivos recentes cresce com o tempo e lentifica a indexação do Windows Search, já que o sistema tenta manter todos esses arquivos acessíveis rapidamente.
         </p>
-        <div class="bg-indigo-500/10 border border-indigo-500/30 p-6 rounded-2xl my-6">
-            <h4 class="text-indigo-400 font-black mb-2">Limpeza Rápida pelo Explorador</h4>
-            <p class="text-gray-300 text-sm">
+        <div class="bg-indigo-100 border border-indigo-200 p-6 rounded-2xl my-6">
+            <h4 class="text-indigo-700 font-black mb-2">Limpeza Rápida pelo Explorador</h4>
+            <p class="text-gray-600 text-sm">
                 No Explorador de Arquivos, clique no menu reticências (…) {`>`} Opções {`>`} Privacidade {`>`} Limpar. Também desmarque os dois checkboxes de histórico para novos arquivos. Esta é a opção rápida, mas o Voltris garante que os dados do Registro sejam limpos também.
             </p>
         </div>
@@ -34,7 +34,7 @@ export default function LimparRecentes() {
         {
             title: "Shell Bags: O Histórico Mais Profundo",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Além dos Recentes visíveis, o Windows guarda em <b>Shell Bags</b> (no Registro) a posição de janelas e pastas que você abriu. Isso pode revelar estruturas de pastas privadas para softwares forenses.
             <br/><br/>
             O Voltris Privacy Shield remove os Shell Bags automaticamente, garantindo que mesmo o Windows Search não lembre das suas pastas anteriores.
@@ -44,13 +44,13 @@ export default function LimparRecentes() {
         {
             title: "Privacidade Absoluta com o Voltris Privacy Shield",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             O <b>Voltris Optimizer</b> oferece limpeza profunda de rastros locais.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> <b>Recent Files Wipe:</b> Apaga todos os MRU (Most Recently Used) do Registro.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> <b>Shell Bag Cleaner:</b> Remove o histórico de posições de janelas e estrutura de pastas.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> <b>Auto-Clear on Shutdown:</b> Configura o Windows para limpar automaticamente o histórico ao desligar.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> <b>Recent Files Wipe:</b> Apaga todos os MRU (Most Recently Used) do Registro.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> <b>Shell Bag Cleaner:</b> Remove o histórico de posições de janelas e estrutura de pastas.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> <b>Auto-Clear on Shutdown:</b> Configura o Windows para limpar automaticamente o histórico ao desligar.</li>
         </ul>
       `
         }

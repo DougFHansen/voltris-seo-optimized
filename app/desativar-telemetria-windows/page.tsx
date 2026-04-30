@@ -14,10 +14,10 @@ export default function DesativarTelemetriaWindows() {
         {
             title: "O Windows monitora cada digitação sua?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-600 leading-relaxed text-lg">
           O Windows 10 e 11 vêm com sistemas integrados de monitoramento: Telemetria Funcional, Cortana, Relatórios de Erros, Histórico de Digitação e até anúncios personalizados no menu Iniciar. **Cada clique seu gera um dado que é enviado para a Microsoft.**
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             Além da questão ética de privacidade, o grande problema é o impacto no desempenho: os processos <code>DiagTrack</code> e <code>Compatibility Appraiser</code> podem consumir até 15% de CPU aleatoriamente em momentos cruciais.
         </p>
       `
@@ -25,7 +25,7 @@ export default function DesativarTelemetriaWindows() {
         {
             title: "Desativando a Telemetria via GPO",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-600">
             Usuários da versão Pro podem desativar a telemetria via Editor de Política de Grupo Local (<code>gpedit.msc</code>).
             <br/>Navegue em: <code>Configurações do Computador > Modelos Administrativos > Componentes do Windows > Coleta de Dados e Compilações de Visualização</code>. 
             <br/>Defina **Permitir Telemetria** como **Desabilitado**.
@@ -35,13 +35,13 @@ export default function DesativarTelemetriaWindows() {
         {
             title: "Como a Voltris Maximiza sua Privacidade",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-600 leading-relaxed">
             No **Voltris Optimizer**, fomos além. Desenvolvemos o sistema **Zero-Telemetry** que age no kernel e nas chaves de registro ocultas que a Microsoft não mostra no menu padrão.
         </p>
-        <ul class="space-y-4 text-slate-300">
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Disable Keyloggers:** Bloqueia a coleta de padrões de escrita e voz.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **Block Hosts:** Impede o PC de se conectar aos servidores de análise e anúncios da Microsoft via arquivo de Hosts editado.</li>
-            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-[#31A8FF] mt-1.5 shrink-0"></div> **App Integrity:** Melhora a segurança sem precisar monitorar seu comportamento.</li>
+        <ul class="space-y-4 text-gray-600">
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Disable Keyloggers:** Bloqueia a coleta de padrões de escrita e voz.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **Block Hosts:** Impede o PC de se conectar aos servidores de análise e anúncios da Microsoft via arquivo de Hosts editado.</li>
+            <li class="flex items-start gap-3"><div class="w-2 h-2 rounded-full bg-blue-600 mt-1.5 shrink-0"></div> **App Integrity:** Melhora a segurança sem precisar monitorar seu comportamento.</li>
         </ul>
       `
         }
