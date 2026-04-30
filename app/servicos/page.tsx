@@ -1180,7 +1180,7 @@ export default function ServicesPage() {
         <Header />
         <main>
           {/* Hero Section */}
-          <section className="relative py-20 md:py-32 overflow-hidden">
+          <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-[#8B31FF]/5 via-transparent to-transparent"></div>
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#31A8FF]/10 rounded-full blur-3xl pointer-events-none"></div>
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#8B31FF]/10 rounded-full blur-3xl pointer-events-none"></div>
