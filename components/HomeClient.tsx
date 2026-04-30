@@ -227,6 +227,9 @@ export default function HomeClient() {
                 <div className="fixed inset-0 overflow-hidden pointer-events-none z-10 min-h-screen">
                     <ParticleBackground />
                 </div>
+
+                {/* Glassmorphism Overlay */}
+                <div className="fixed inset-0 bg-gradient-to-b from-white/20 via-white/10 to-gray-50/20 backdrop-blur-[1px] pointer-events-none z-15" />
                 <section
                     className="
                     relative
