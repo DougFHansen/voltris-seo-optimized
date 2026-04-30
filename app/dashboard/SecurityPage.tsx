@@ -217,7 +217,7 @@ export default function SecurityPage() {
                       <button 
                         onClick={onVerify}
                         disabled={verifyCode.length < 6 || isVerifying}
-                        className="w-full sm:w-auto px-10 py-4 bg-[#31A8FF] text-white font-black uppercase italic text-xs rounded-xl shadow-blue-500/20 disabled:opacity-50"
+                        className="w-full sm:w-auto px-10 py-4 bg-[#31A8FF] text-gray-900 font-black uppercase italic text-xs rounded-xl shadow-blue-500/20 disabled:opacity-50"
                       >
                         {isVerifying ? 'Verificando...' : 'Confirmar'}
                       </button>
