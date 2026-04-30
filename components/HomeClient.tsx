@@ -34,6 +34,7 @@ const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
 
 import { motion } from 'framer-motion';
 import JsonLd from "@/components/JsonLd";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const services = [
     {
@@ -216,6 +217,14 @@ export default function HomeClient() {
                 }}
             />
             <main className="relative">
+                {/* Particle Background */}
+                <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+                    <ParticleBackground />
+                </div>
+
+                {/* Glassmorphism Overlay */}
+                <div className="fixed inset-0 bg-gradient-to-b from-white/80 via-white/60 to-gray-50/80 backdrop-blur-[2px] pointer-events-none z-0" />
+
                 {/* Background Gradients (Fixed Behind) */}
                 <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
                     <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[120px]" />
