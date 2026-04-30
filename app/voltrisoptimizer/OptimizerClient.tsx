@@ -1277,13 +1277,6 @@ export default function OptimizerClient() {
                                         color: 'from-[#6B7280] to-[#9CA3AF]', 
                                         desc: 'Configuração avançada do sistema', 
                                         features: ['Componentes do Windows', 'Configurações ocultas', 'Otimizações do sistema', 'Controle total'] 
-                                    },
-                                    { 
-                                        name: 'Drivers', 
-                                        icon: <Cpu />, 
-                                        color: 'from-[#00FF94] to-[#00CC76]', 
-                                        desc: 'Gerenciamento profissional de drivers', 
-                                        features: ['Atualizações automáticas', 'Verificação de compatibilidade', 'Backup de drivers', 'Versões otimizadas'] 
                                     }
                                 ]}
                                 columns={3}
