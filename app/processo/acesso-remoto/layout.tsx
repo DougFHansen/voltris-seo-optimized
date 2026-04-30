@@ -4,12 +4,12 @@ export const metadata: Metadata = {
     title: 'Acesso Remoto Seguro | Processo Profissional | Voltris',
     description: 'Saiba como funciona o acesso remoto seguro da Voltris: criptografia, controle do cliente, transparência e conformidade LGPD.',
     alternates: {
-        canonical: '/processo/acesso-remoto',
+        canonical: 'https://www.voltris.com.br/processo/acesso-remoto',
     },
     openGraph: {
         title: 'Acesso Remoto Seguro | Processo Profissional | Voltris',
         description: 'Atendimento remoto com segurança, transparência e ferramentas profissionais. Veja como protegemos seus dados!',
-        url: 'https://voltris.com.br/processo/acesso-remoto',
+        url: 'https://www.voltris.com.br/processo/acesso-remoto',
         type: 'article',
         images: [
             {

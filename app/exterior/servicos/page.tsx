@@ -28,14 +28,14 @@ export const metadata: Metadata = {
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
   publisher: "VOLTRIS",
-  metadataBase: new URL('https://voltris.com.br/exterior'),
+  metadataBase: new URL('https://www.voltris.com.br'),
   alternates: {
-    canonical: '/exterior/servicos',
+    canonical: 'https://www.voltris.com.br/exterior/servicos',
   },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://voltris.com.br/exterior/servicos',
+    url: 'https://www.voltris.com.br/exterior/servicos',
     siteName: 'VOLTRIS Exterior',
     title: '[2025] Serviços de TI Premium para Brasileiros no Exterior - VOLTRIS',
     description: '✓ 6 serviços especializados em português ✓ Suporte técnico remoto, formatação e otimização ✓ Atendimento 24/7 para expatriados ✓ Preços em EUR/USD ✓ Qualidade brasileira internacional',

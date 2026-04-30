@@ -41,10 +41,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://voltris.com.br'),
-  alternates: {
-    canonical: './',
-  },
+  metadataBase: new URL('https://www.voltris.com.br'),
   openGraph: {
     type: 'website',
     locale: 'pt_BR',

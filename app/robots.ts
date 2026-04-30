@@ -6,7 +6,7 @@ import { MetadataRoute } from 'next'
  * strictly forbidding non-existent or administrative paths.
  */
 export default function robots(): MetadataRoute.Robots {
-  const domain = 'https://voltris.com.br';
+  const domain = 'https://www.voltris.com.br';
 
   return {
     rules: [
@@ -14,42 +14,51 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: '/',
         disallow: [
-          '/blog/',
           '/dashboard/',
-          '/restricted-area-admin/',
           '/api/',
-          '/auth/',
           '/admin/',
+          '/restricted-area-admin/',
+          '/auth/',
           '/private/',
-          '/guias/[slug]', // Only show real static folders, not dynamic patterns
-          '*.json',
-          '/_next/',
-          '/static/',
-          '/public/',
-          '/tmp/',
-          '/*.php', // Standard security shield: block PHP probes
+          '/debug/',
+          '/debug-commands',
+          '/debug-link',
+          '/test-commands',
+          '/blog/',
         ],
       },
       {
         userAgent: 'Googlebot',
         allow: '/',
         disallow: [
-          '/blog/',
+          '/api/',
+          '/admin/',
           '/dashboard/',
           '/restricted-area-admin/',
-          '/admin/',
-          '/api/',
           '/auth/',
-          '*.php',
+          '/private/',
+          '/debug/',
+          '/debug-commands',
+          '/debug-link',
+          '/test-commands',
+          '/blog/',
         ],
       },
       {
         userAgent: 'bingbot',
         allow: '/',
         disallow: [
-          '/blog/',
-          '/admin/',
           '/api/',
+          '/admin/',
+          '/dashboard/',
+          '/restricted-area-admin/',
+          '/auth/',
+          '/private/',
+          '/debug/',
+          '/debug-commands',
+          '/debug-link',
+          '/test-commands',
+          '/blog/',
         ],
       }
     ],

@@ -24,14 +24,14 @@ export const metadata: Metadata = {
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
   publisher: "VOLTRIS",
-  metadataBase: new URL('https://voltris.com.br/exterior'),
+  metadataBase: new URL('https://www.voltris.com.br'),
   alternates: {
-    canonical: '/exterior/orcamento',
+    canonical: 'https://www.voltris.com.br/exterior/orcamento',
   },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://voltris.com.br/exterior/orcamento',
+    url: 'https://www.voltris.com.br/exterior/orcamento',
     siteName: 'VOLTRIS Exterior',
     title: 'Solicitar Orçamento Personalizado para Brasileiros no Exterior',
     description: 'Orçamento gratuito e personalizado para serviços de TI internacionais. Atendimento especializado em português para expatriados brasileiros.',

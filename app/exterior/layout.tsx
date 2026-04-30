@@ -24,14 +24,14 @@ export const metadata: Metadata = {
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
   publisher: "VOLTRIS",
-  metadataBase: new URL('https://voltris.com.br'),
+  metadataBase: new URL('https://www.voltris.com.br'),
   alternates: {
-    canonical: '/exterior',
+    canonical: 'https://www.voltris.com.br/exterior',
   },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://voltris.com.br/exterior',
+    url: 'https://www.voltris.com.br/exterior',
     siteName: 'VOLTRIS Exterior',
     title: 'Suporte Técnico para Brasileiros no Exterior | Pague em Reais',
     description: 'Resolva problemas no seu computador com técnico brasileiro, sem sair de casa. Pagamento facilitado em Reais (PIX) e atendimento no seu fuso horário.',

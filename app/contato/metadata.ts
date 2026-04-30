@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Contato | Fale Conosco | VOLTRIS',
-  description: 'Entre em contato com a VOLTRIS. Suporte técnico remoto, criação de sites e soluções tecnológicas. Telefone, WhatsApp, e-mail e horários de atendimento.',
+  description: 'Entre em contato com a VOLTRIS. Suporte técnico remoto, criação de sites e soluções em tecnologia. Telefone, WhatsApp, e-mail e horário de atendimento.',
   keywords: [
     'contato voltris',
     'fale conosco',
@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     'telefone voltris',
     'whatsapp voltris',
     'email voltris',
-    'contato suporte remoto',
-    'atendimento voltris',
-    'suporte técnico telefone',
-    'contato informática'
+    'suporte remoto contato',
+    'serviço voltris',
+    'telefone suporte técnico',
+    'contato ti'
   ],
   openGraph: {
     title: 'Contato | Fale Conosco | VOLTRIS',
-    description: 'Entre em contato com a VOLTRIS. Telefone, WhatsApp, e-mail e horários de atendimento.',
+    description: 'Entre em contato com a VOLTRIS. Telefone, WhatsApp, e-mail e horário de atendimento.',
     url: 'https://voltris.com.br/contato',
     siteName: 'VOLTRIS',
     images: [

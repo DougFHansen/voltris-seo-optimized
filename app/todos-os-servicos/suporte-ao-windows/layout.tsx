@@ -13,12 +13,12 @@ export const metadata: Metadata = {
         'técnico windows remoto'
     ],
     alternates: {
-        canonical: '/todos-os-servicos/suporte-ao-windows',
+        canonical: 'https://www.voltris.com.br/todos-os-servicos/suporte-ao-windows',
     },
     openGraph: {
         title: 'Suporte Windows Profissional | Planos VOLTRIS',
         description: 'Planos de suporte mensal para usuários domésticos e empresas. Performance e segurança garantidas.',
-        url: 'https://voltris.com.br/todos-os-servicos/suporte-ao-windows',
+        url: 'https://www.voltris.com.br/todos-os-servicos/suporte-ao-windows',
         type: 'website',
         images: [
             {

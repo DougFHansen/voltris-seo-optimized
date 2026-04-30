@@ -15,12 +15,12 @@ export const metadata: Metadata = {
         'instalação segura'
     ],
     alternates: {
-        canonical: '/todos-os-servicos/instalacao-de-programas',
+        canonical: 'https://www.voltris.com.br/todos-os-servicos/instalacao-de-programas',
     },
     openGraph: {
         title: 'Instalação de Programas Comuns | Suporte Remoto VOLTRIS',
         description: 'Instale programas comuns com segurança, agilidade e suporte remoto especializado. Atendimento imediato!',
-        url: 'https://voltris.com.br/todos-os-servicos/instalacao-de-programas',
+        url: 'https://www.voltris.com.br/todos-os-servicos/instalacao-de-programas',
         type: 'website',
         images: [
             {

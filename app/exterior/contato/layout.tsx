@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Contact VOLTRIS for remote IT support. We help Brazilians living abroad with technical support, website creation, and technology solutions. Available worldwide.',
     keywords: ['contact voltris', 'it support abroad', 'brazilian it support', 'remote tech support', 'contact technical support'],
     alternates: {
-        canonical: 'https://voltris.com.br/exterior/contato'
+        canonical: 'https://www.voltris.com.br/exterior/contato'
     },
     openGraph: {
         title: 'Contact Us - IT Support for Brazilians Abroad | VOLTRIS',
         description: 'Remote IT support for Brazilians living abroad. Contact us now.',
-        url: 'https://voltris.com.br/exterior/contato',
+        url: 'https://www.voltris.com.br/exterior/contato',
         type: 'website',
         locale: 'en_US',
         siteName: 'VOLTRIS',

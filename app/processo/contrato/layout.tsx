@@ -4,12 +4,12 @@ export const metadata: Metadata = {
     title: 'Contrato de Serviço | Processo Profissional | Voltris',
     description: 'Conheça o contrato de serviço da Voltris: segurança, transparência, privacidade e garantias para o cliente. Leia os termos!',
     alternates: {
-        canonical: '/processo/contrato',
+        canonical: 'https://www.voltris.com.br/processo/contrato',
     },
     openGraph: {
         title: 'Contrato de Serviço | Processo Profissional | Voltris',
         description: 'Veja como nosso contrato protege você: termos claros, garantias, privacidade e conformidade legal.',
-        url: 'https://voltris.com.br/processo/contrato',
+        url: 'https://www.voltris.com.br/processo/contrato',
         type: 'article',
         images: [
             {

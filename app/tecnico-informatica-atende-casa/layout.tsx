@@ -14,12 +14,12 @@ export const metadata: Metadata = {
         'técnico informática domicílio'
     ],
     alternates: {
-        canonical: '/tecnico-informatica-atende-casa',
+        canonical: 'https://www.voltris.com.br/tecnico-informatica-atende-casa',
     },
     openGraph: {
         title: 'Técnico de Informática que Atende em Casa | VOLTRIS',
         description: 'Suporte técnico de informática no conforto da sua casa. Atendimento remoto e presencial em todo Brasil.',
-        url: 'https://voltris.com.br/tecnico-informatica-atende-casa',
+        url: 'https://www.voltris.com.br/tecnico-informatica-atende-casa',
         type: 'website',
         images: [
             {

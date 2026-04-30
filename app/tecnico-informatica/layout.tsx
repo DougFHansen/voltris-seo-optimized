@@ -13,12 +13,12 @@ export const metadata: Metadata = {
         'técnico windows'
     ],
     alternates: {
-        canonical: '/tecnico-informatica',
+        canonical: 'https://www.voltris.com.br/tecnico-informatica',
     },
     openGraph: {
         title: 'Técnico de Informática Online | Suporte Remoto VOLTRIS',
         description: 'Suporte técnico remoto especializado em informática. Atendimento rápido e seguro em todo Brasil.',
-        url: 'https://voltris.com.br/tecnico-informatica',
+        url: 'https://www.voltris.com.br/tecnico-informatica',
         type: 'website',
         images: [
             {

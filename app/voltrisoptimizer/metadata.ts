@@ -44,14 +44,14 @@ export const metadata: Metadata = {
   authors: [{ name: "VOLTRIS" }],
   creator: "VOLTRIS",
   publisher: "VOLTRIS",
-  metadataBase: new URL('https://voltris.com.br'),
+  metadataBase: new URL('https://www.voltris.com.br'),
   alternates: {
-    canonical: '/voltrisoptimizer',
+    canonical: 'https://www.voltris.com.br/voltrisoptimizer',
   },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://voltris.com.br/voltrisoptimizer',
+    url: 'https://www.voltris.com.br/voltrisoptimizer',
     siteName: 'VOLTRIS',
     title: '[2025] VOLTRIS OPTIMIZER - Otimizador de PC Profissional | Aumente FPS, Desempenho e Produtividade',
     description: 'VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto para gamers, empresas e uso doméstico.',

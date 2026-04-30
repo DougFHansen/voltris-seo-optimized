@@ -4,12 +4,12 @@ export const metadata: Metadata = {
     title: 'Conclusão e Garantia | Processo Profissional | Voltris',
     description: 'Veja como é feita a conclusão dos serviços Voltris: testes, documentação, garantia e suporte pós-serviço. Satisfação total!',
     alternates: {
-        canonical: '/processo/conclusao',
+        canonical: 'https://www.voltris.com.br/processo/conclusao',
     },
     openGraph: {
         title: 'Conclusão e Garantia | Processo Profissional | Voltris',
         description: 'Finalização profissional, garantia de 30 dias, suporte 24/7 e documentação completa.',
-        url: 'https://voltris.com.br/processo/conclusao',
+        url: 'https://www.voltris.com.br/processo/conclusao',
         type: 'article',
         images: [
             {

@@ -14,12 +14,12 @@ export const metadata: Metadata = {
         'suporte remoto 24h'
     ],
     alternates: {
-        canonical: '/todos-os-servicos',
+        canonical: 'https://www.voltris.com.br/todos-os-servicos',
     },
     openGraph: {
         title: 'Nossos Serviços | Suporte e Tecnologia VOLTRIS',
         description: 'Soluções completas em suporte técnico e desenvolvimento web. Atendimento em todo Brasil.',
-        url: 'https://voltris.com.br/todos-os-servicos',
+        url: 'https://www.voltris.com.br/todos-os-servicos',
         type: 'website',
         images: [
             {

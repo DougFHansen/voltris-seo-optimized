@@ -4,12 +4,12 @@ export const metadata: Metadata = {
     title: 'Agendamento de Serviços | Processo Profissional | Voltris',
     description: 'Entenda o processo de agendamento de serviços da Voltris: flexibilidade, confirmação rápida, checklist e atendimento premium. Garanta seu horário online!',
     alternates: {
-        canonical: '/processo/agendamento',
+        canonical: 'https://www.voltris.com.br/processo/agendamento',
     },
     openGraph: {
         title: 'Agendamento de Serviços | Processo Profissional | Voltris',
         description: 'Veja como funciona o agendamento de serviços na Voltris. Atendimento profissional e seguro.',
-        url: 'https://voltris.com.br/processo/agendamento',
+        url: 'https://www.voltris.com.br/processo/agendamento',
         type: 'article',
         images: [
             {
