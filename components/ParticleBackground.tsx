@@ -19,17 +19,17 @@ const ParticleBackground: React.FC = () => {
   const mouseRef = useRef({ x: 0, y: 0 });
   const particlesRef = useRef<Particle[]>([]);
 
-  // Configuration
+  // Configuration - SaaS High-End Style
   const config = {
-    particleCount: { desktop: 80, mobile: 40 },
-    connectionDistance: 150,
-    mouseInfluenceRadius: 200,
-    baseSpeed: 0.5,
+    particleCount: { desktop: 40, mobile: 20 },
+    connectionDistance: 100,
+    mouseInfluenceRadius: 150,
+    baseSpeed: 0.8,
     colors: {
-      hueStart: 200,
-      hueEnd: 280,
-      saturation: 70,
-      lightness: 50
+      hueStart: 180,
+      hueEnd: 320,
+      saturation: 85,
+      lightness: 55
     }
   };
 
@@ -40,8 +40,8 @@ const ParticleBackground: React.FC = () => {
       vx: (Math.random() - 0.5) * config.baseSpeed,
       vy: (Math.random() - 0.5) * config.baseSpeed,
       size: Math.random() * 4 + 3,
-      opacity: Math.random() * 0.8 + 0.2,
-      targetOpacity: Math.random() * 0.8 + 0.2,
+      opacity: Math.random() * 0.6 + 0.3,
+      targetOpacity: Math.random() * 0.6 + 0.3,
       hue: config.colors.hueStart + Math.random() * (config.colors.hueEnd - config.colors.hueStart)
     };
   };
@@ -53,11 +53,12 @@ const ParticleBackground: React.FC = () => {
   }, []);
 
   const drawGradientMesh = useCallback((ctx: CanvasRenderingContext2D, width: number, height: number) => {
-    // Create gradient mesh background
-    const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height));
-    gradient.addColorStop(0, 'rgba(49, 168, 255, 0.05)');
-    gradient.addColorStop(0.5, 'rgba(139, 49, 255, 0.03)');
-    gradient.addColorStop(1, 'rgba(255, 75, 107, 0.02)');
+    // Create vibrant gradient mesh background
+    const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height) * 0.8);
+    gradient.addColorStop(0, 'rgba(56, 189, 248, 0.08)');
+    gradient.addColorStop(0.4, 'rgba(168, 85, 247, 0.06)');
+    gradient.addColorStop(0.7, 'rgba(236, 72, 153, 0.04)');
+    gradient.addColorStop(1, 'rgba(244, 114, 182, 0.02)');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
   }, []);
@@ -98,32 +99,70 @@ const ParticleBackground: React.FC = () => {
         particle.vy = (particle.vy / speed) * config.baseSpeed * 2;
       }
 
-      // Draw particle with glow
-      const gradient = ctx.createRadialGradient(
+      // Draw SaaS High-End Glow with 3-layer hierarchy
+      const coreSize = particle.size * 1.5;
+      const midSize = particle.size * 4;
+      const outerSize = particle.size * 8;
+
+      // Layer 1: Core (solid, sharp center)
+      const coreGradient = ctx.createRadialGradient(
         particle.x, particle.y, 0,
-        particle.x, particle.y, particle.size * 3
+        particle.x, particle.y, coreSize
       );
-      gradient.addColorStop(0, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity})`);
-      gradient.addColorStop(0.5, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity * 0.3})`);
-      gradient.addColorStop(1, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, 0)`);
-      
+      coreGradient.addColorStop(0, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness + 15}%, ${particle.opacity})`);
+      coreGradient.addColorStop(0.7, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity * 0.6})`);
+      coreGradient.addColorStop(1, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, 0)`);
       ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
-      ctx.fillStyle = gradient;
+      ctx.arc(particle.x, particle.y, coreSize, 0, Math.PI * 2);
+      ctx.fillStyle = coreGradient;
       ctx.fill();
 
-      // Draw connections
+      // Layer 2: Mid glow (smooth transition)
+      const midGradient = ctx.createRadialGradient(
+        particle.x, particle.y, coreSize * 0.5,
+        particle.x, particle.y, midSize
+      );
+      midGradient.addColorStop(0, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity * 0.25})`);
+      midGradient.addColorStop(0.5, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity * 0.12})`);
+      midGradient.addColorStop(1, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, 0)`);
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, midSize, 0, Math.PI * 2);
+      ctx.fillStyle = midGradient;
+      ctx.fill();
+
+      // Layer 3: Outer glow (diffuse, subtle)
+      const outerGradient = ctx.createRadialGradient(
+        particle.x, particle.y, midSize * 0.3,
+        particle.x, particle.y, outerSize
+      );
+      outerGradient.addColorStop(0, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity * 0.08})`);
+      outerGradient.addColorStop(0.6, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity * 0.03})`);
+      outerGradient.addColorStop(1, `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, 0)`);
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, outerSize, 0, Math.PI * 2);
+      ctx.fillStyle = outerGradient;
+      ctx.fill();
+
+      // Technical ring (fine, elegant)
+      const ringSize = particle.size * 2.5;
+      ctx.beginPath();
+      ctx.arc(particle.x, particle.y, ringSize, 0, Math.PI * 2);
+      ctx.strokeStyle = `hsla(${particle.hue}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${particle.opacity * 0.3})`;
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+
+      // Draw connections (subtle, elegant)
       for (let j = i + 1; j < particles.length; j++) {
         const other = particles[j];
         const dist = Math.sqrt((particle.x - other.x) ** 2 + (particle.y - other.y) ** 2);
-        
+
         if (dist < config.connectionDistance) {
-          const opacity = (1 - dist / config.connectionDistance) * 0.15 * Math.min(particle.opacity, other.opacity);
+          const opacity = (1 - dist / config.connectionDistance) * 0.08 * Math.min(particle.opacity, other.opacity);
           ctx.beginPath();
           ctx.moveTo(particle.x, particle.y);
           ctx.lineTo(other.x, other.y);
           ctx.strokeStyle = `hsla(${(particle.hue + other.hue) / 2}, ${config.colors.saturation}%, ${config.colors.lightness}%, ${opacity})`;
-          ctx.lineWidth = 0.5;
+          ctx.lineWidth = 0.3;
           ctx.stroke();
         }
       }
