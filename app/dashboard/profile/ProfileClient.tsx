@@ -109,7 +109,7 @@ export default function ProfileClient() {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-6">
         <div className="w-16 h-16 border-t-4 border-r-4 border-[#8B31FF] rounded-full animate-spin"></div>
-        <p className="text-white/30 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Sincronizando Identidade do Usuário...</p>
+        <p className="text-gray-500 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Sincronizando Identidade do Usuário...</p>
       </div>
     );
   }
@@ -122,18 +122,18 @@ export default function ProfileClient() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`relative p-10 rounded-[3.5rem] border overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10] border-white/5 shadow-3xl'}`}
+          className={`relative p-10 rounded-[3.5rem] border overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}
         >
           <div className="absolute -right-20 -top-20 w-[600px] h-[600px] bg-[#8B31FF]/5 blur-[150px] rounded-full"></div>
           
           <div className="relative z-10 flex flex-col md:flex-row gap-10 items-center md:items-start text-center md:text-left">
              <div className="relative group">
                 <div className="w-40 h-40 rounded-[3rem] bg-gradient-to-br from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B] p-[2px] shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                   <div className="w-full h-full rounded-[2.85rem] bg-[#0A0A10] flex items-center justify-center overflow-hidden">
-                      <FiUser className="w-16 h-16 text-white/20 group-hover:text-white group-hover:scale-110 transition-all duration-500" />
+                   <div className="w-full h-full rounded-[2.85rem] bg-gray-100 flex items-center justify-center overflow-hidden">
+                      <FiUser className="w-16 h-16 text-gray-400 group-hover:text-gray-900 group-hover:scale-110 transition-all duration-500" />
                    </div>
                 </div>
-                <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl bg-[#00FF88] flex items-center justify-center shadow-lg border-4 border-[#0A0A10]">
+                <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl bg-[#00FF88] flex items-center justify-center shadow-lg border-4 border-white">
                    <FiCheckCircle className="w-6 h-6 text-black" />
                 </div>
              </div>
@@ -141,19 +141,19 @@ export default function ProfileClient() {
              <div className="flex-1 space-y-4">
                 <div className="space-y-1">
                    <div className="flex items-center gap-3 justify-center md:justify-start">
-                      <h1 className="text-xl md:text-2xl font-black text-white uppercase tracking-tighter leading-tight break-words">{profile?.full_name || 'Agente de Otimização'}</h1>
+                      <h1 className="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tighter leading-tight break-words">{profile?.full_name || 'Agente de Otimização'}</h1>
                    </div>
-                   <p className="text-white/40 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
+                   <p className="text-gray-500 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
                       <FiCpu className="w-4 h-4 text-[#31A8FF]" />
-                      <span className="text-[10px] font-black text-white uppercase tracking-widest">ID: {user?.id.slice(0, 8).toUpperCase()}</span>
+                      <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">ID: {user?.id.slice(0, 8).toUpperCase()}</span>
                    </div>
                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5">
                       <FiActivity className="w-4 h-4 text-[#00FF88]" />
-                      <span className="text-[10px] font-black text-white uppercase tracking-widest">Status: Ativo</span>
+                      <span className="text-[10px] font-black text-gray-900 uppercase tracking-widest">Status: Ativo</span>
                    </div>
                 </div>
              </div>
@@ -182,19 +182,19 @@ export default function ProfileClient() {
                <div className="p-3 bg-[#31A8FF]/10 text-[#31A8FF] rounded-2xl">
                  <FiUser className="w-6 h-6" />
                </div>
-               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Dados <span className="text-[#31A8FF]">Pessoais</span></h3>
+               <h3 className="text-xl font-black text-gray-900 italic uppercase tracking-tighter leading-none">Dados <span className="text-[#31A8FF]">Pessoais</span></h3>
             </div>
 
             <div className="space-y-8">
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">E-mail de Autenticação</label>
-                 <div className="p-5 rounded-2xl bg-black/40 border border-white/5 text-white/40 italic font-bold">
+                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">E-mail de Autenticação</label>
+                 <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-600 italic font-bold">
                     {user?.email}
                  </div>
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Nome Operacional</label>
+                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Nome Operacional</label>
                  {isEditing ? (
                     <input
                       type="text"
@@ -211,7 +211,7 @@ export default function ProfileClient() {
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Linha de Contato Segura</label>
+                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Linha de Contato Segura</label>
                  {isEditing ? (
                     <input
                       type="tel"
@@ -239,12 +239,12 @@ export default function ProfileClient() {
                <div className="p-3 bg-[#8B31FF]/10 text-[#8B31FF] rounded-2xl">
                  <FiMapPin className="w-6 h-6" />
                </div>
-               <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Link <span className="text-[#8B31FF]">Geográfico</span></h3>
+               <h3 className="text-xl font-black text-gray-900 italic uppercase tracking-tighter leading-none">Link <span className="text-[#8B31FF]">Geográfico</span></h3>
             </div>
 
             <div className="space-y-8">
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Endereço Base</label>
+                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Endereço Base</label>
                  {isEditing ? (
                     <input
                       type="text"
@@ -262,7 +262,7 @@ export default function ProfileClient() {
 
                <div className="grid grid-cols-2 gap-6">
                  <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Cidade / Distrito</label>
+                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Cidade / Distrito</label>
                    {isEditing ? (
                       <input
                         type="text"
@@ -277,7 +277,7 @@ export default function ProfileClient() {
                    )}
                  </div>
                  <div className="space-y-3">
-                   <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Código do Estado</label>
+                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Código do Estado</label>
                    {isEditing ? (
                       <input
                         type="text"
@@ -294,7 +294,7 @@ export default function ProfileClient() {
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Código CEP do Sistema</label>
+                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Código CEP do Sistema</label>
                  {isEditing ? (
                     <input
                       type="text"
@@ -321,15 +321,15 @@ export default function ProfileClient() {
                exit={{ opacity: 0, y: 50 }}
                className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[150] w-[90%] max-w-2xl"
              >
-                <div className="bg-[#0A0A10]/90 backdrop-blur-2xl border border-white/10 p-6 rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.8)] flex items-center justify-between gap-6">
+                <div className="bg-white/90 backdrop-blur-2xl border border-gray-200 p-6 rounded-[2.5rem] shadow-xl flex items-center justify-between gap-6">
                    <div className="flex flex-col">
-                      <span className="text-xs font-black text-white italic uppercase tracking-tighter">Modo de Edição</span>
-                      <span className="text-[9px] font-bold text-white/40 uppercase tracking-widest leading-none">Você possui alterações não salvas</span>
+                      <span className="text-xs font-black text-gray-900 italic uppercase tracking-tighter">Modo de Edição</span>
+                      <span className="text-[9px] font-bold text-gray-500 uppercase tracking-widest leading-none">Você possui alterações não salvas</span>
                    </div>
                    <div className="flex gap-4">
                       <button 
                         onClick={() => { setIsEditing(false); }} 
-                        className="px-6 py-3 rounded-xl bg-white/5 text-white/60 font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all"
+                        className="px-6 py-3 rounded-xl bg-gray-100 text-gray-600 font-black uppercase text-[10px] tracking-widest hover:bg-gray-200 transition-all"
                       >
                         Abortar Alterações
                       </button>
