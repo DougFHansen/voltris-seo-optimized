@@ -295,7 +295,7 @@ export default function TicketsClient() {
                   </div>
                   <button 
                     type="submit" disabled={isCreating}
-                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#8B31FF] bg-[length:200%_auto] hover:bg-right text-white font-black uppercase italic text-[11px] tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-500 disabled:opacity-50"
+                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#8B31FF] bg-[length:200%_auto] hover:bg-right text-gray-900 font-black uppercase italic text-[11px] tracking-[0.3em] shadow-2xl hover:scale-[1.02] active:scale-95 transition-all duration-500 disabled:opacity-50"
                   >
                     {isCreating ? 'Transmitindo Dados...' : 'Transmitir Pedido de Suporte'}
                   </button>
@@ -362,7 +362,7 @@ export default function TicketsClient() {
                      <button 
                        onClick={handleSendReply}
                        disabled={!replyText.trim() || isSendingReply}
-                       className="absolute right-3 top-3 bottom-3 px-6 bg-[#8B31FF] text-white rounded-2xl font-black uppercase italic text-[10px] tracking-widest flex items-center gap-3 transition-all hover:scale-105 active:scale-95 disabled:grayscale disabled:opacity-30"
+                       className="absolute right-3 top-3 bottom-3 px-6 bg-[#8B31FF] text-gray-900 rounded-2xl font-black uppercase italic text-[10px] tracking-widest flex items-center gap-3 transition-all hover:scale-105 active:scale-95 disabled:grayscale disabled:opacity-30"
                      >
                         {isSendingReply ? 'Sincronizando...' : (
                           <>
