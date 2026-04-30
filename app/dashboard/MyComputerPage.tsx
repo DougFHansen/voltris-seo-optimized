@@ -191,7 +191,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
           <p className="text-gray-500 font-bold text-xs uppercase tracking-widest pl-5 font-mono">Telemetria e controle de hardware em tempo real</p>
         </div>
 
-        <Link href="/voltrisoptimizer" className="flex items-center gap-3 px-8 py-4 voltris-glass border border-[#31A8FF]/20 rounded-2xl text-[#31A8FF] hover:bg-[#31A8FF] hover:text-white transition-all group shadow-2xl">
+        <Link href="/voltrisoptimizer" className="flex items-center gap-3 px-8 py-4 voltris-glass border border-[#31A8FF]/20 rounded-2xl text-[#31A8FF] hover:bg-[#31A8FF] hover:text-gray-900 transition-all group shadow-2xl">
           <FiDownload className="w-5 h-5 group-hover:animate-bounce" />
           <span className="text-[10px] font-black uppercase tracking-[0.2em]">DOWNLOAD OPTIMIZER</span>
         </Link>
@@ -237,7 +237,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                        <div className="absolute inset-2 border border-white/20 rounded-[2.5rem] opacity-30"></div>
                     </div>
                     <div className={`absolute -bottom-2 -right-2 w-12 h-12 rounded-2xl border-4 ${transparencyMode ? 'border-white' : 'border-white'} flex items-center justify-center z-20 shadow-2xl ${device.is_online ? 'bg-[#00FF88] shadow-[#00FF88]/30' : 'bg-gray-400'}`}>
-                       {device.is_online ? <FiZap className="w-6 h-6 text-black" /> : <FiPower className="w-6 h-6 text-white" />}
+                       {device.is_online ? <FiZap className="w-6 h-6 text-black" /> : <FiPower className="w-6 h-6 text-gray-600" />}
                     </div>
                   </div>
                   
@@ -426,7 +426,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed mb-12 max-w-sm">Você está removendo este nó da rede neural Voltris. Todos os privilégios de otimização remota serão revogados instantaneamente.</p>
                <div className="flex w-full gap-5">
                   <button onClick={() => setShowUnlinkModal(null)} className="flex-1 py-5 rounded-3xl bg-gray-100 border border-gray-200 text-gray-900 font-black uppercase text-[10px] tracking-[0.2em] hover:bg-gray-200 transition-all active:scale-95">Abortar Missão</button>
-                  <button onClick={() => handleUnlink(showUnlinkModal)} className="flex-1 py-5 rounded-3xl bg-red-500 text-white font-black uppercase text-[10px] tracking-[0.2em] shadow-[0_20px_40px_rgba(239,68,68,0.3)] hover:scale-105 active:scale-95 transition-all">Executar Desvinculação</button>
+                  <button onClick={() => handleUnlink(showUnlinkModal)} className="flex-1 py-5 rounded-3xl bg-red-500 text-gray-900 font-black uppercase text-[10px] tracking-[0.2em] shadow-[0_20px_40px_rgba(239,68,68,0.3)] hover:scale-105 active:scale-95 transition-all">Executar Desvinculação</button>
                </div>
             </motion.div>
           </div>
