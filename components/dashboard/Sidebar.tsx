@@ -64,7 +64,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
             animate={{ opacity: 1, x: 0 }}
             className="flex flex-col"
           >
-            <span className="font-black text-xs tracking-[0.3em] uppercase text-white leading-none mb-1">Voltris</span>
+            <span className="font-black text-xs tracking-[0.3em] uppercase text-gray-900 leading-none mb-1">Voltris</span>
             <span className="text-[10px] font-bold text-[#31A8FF] uppercase tracking-widest leading-none">Dashboard</span>
           </motion.div>
         )}
@@ -74,7 +74,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
       {!isMobile && (
         <button 
           onClick={() => setCollapsed?.(!collapsed)}
-          className="absolute -right-3 top-10 w-6 h-6 rounded-full bg-white/10 hover:bg-[#31A8FF] border border-white/10 flex items-center justify-center text-white transition-all z-50 backdrop-blur-xl group hover:scale-110"
+          className="absolute -right-3 top-10 w-6 h-6 rounded-full bg-gray-200 hover:bg-[#31A8FF] border border-gray-300 flex items-center justify-center text-gray-900 hover:text-white transition-all z-50 backdrop-blur-xl group hover:scale-110"
         >
           {collapsed ? <FiChevronRight className="w-3 h-3" /> : <FiChevronLeft className="w-3 h-3" />}
         </button>
@@ -82,14 +82,14 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
 
       {/* Profile Section */}
       <div className={`mb-10 transition-all duration-500 ${!isMobile && collapsed ? 'w-12 mx-auto overflow-hidden' : 'w-full'}`}>
-        <div className={`flex items-center gap-4 p-3 rounded-2xl voltris-glass border border-white/5 transition-all group overflow-hidden ${!isMobile && collapsed ? 'justify-center' : ''}`}>
-           <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white flex-shrink-0 relative overflow-hidden group-hover:border-[#31A8FF]/50">
+        <div className={`flex items-center gap-4 p-3 rounded-2xl voltris-glass border border-gray-200 transition-all group overflow-hidden ${!isMobile && collapsed ? 'justify-center' : ''}`}>
+           <div className="w-10 h-10 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-900 flex-shrink-0 relative overflow-hidden group-hover:border-[#31A8FF]/50">
              <span className="text-sm font-black relative z-10">{user?.email?.[0]?.toUpperCase() || '?'}</span>
              <div className="absolute inset-x-0 bottom-0 h-[2px] bg-[#31A8FF] opacity-50"></div>
            </div>
            {(!collapsed || isMobile) && (
              <div className="min-w-0 flex-1 flex flex-col">
-                <h3 className="text-white font-black text-xs truncate uppercase tracking-wider">
+                <h3 className="text-gray-900 font-black text-xs truncate uppercase tracking-wider">
                   {user?.user_metadata?.full_name?.split(' ')[0] || 'Gamer'}
                 </h3>
                 <span className="text-[9px] font-bold text-emerald-400/80 uppercase tracking-widest">Ativo Agora</span>
@@ -121,7 +121,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
                 onClick={() => setMobileOpen?.(false)}
                 className={`group flex items-center gap-4 transition-all duration-300 rounded-2xl relative
                   ${!isMobile && collapsed ? 'p-4 justify-center' : 'p-4'}
-                  ${isActive ? 'text-white' : 'text-slate-400 hover:text-white hover:bg-white/[0.03]'}
+                  ${isActive ? 'text-gray-900' : 'text-gray-900 hover:text-white hover:bg-gray-100'}
                 `}
                 title={collapsed && !isMobile ? tab.label : ''}
               >
@@ -141,7 +141,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
                   style={{ color: tab.color }}
                 />
                 {(!collapsed || isMobile) && (
-                  <span className={`relative z-10 font-bold text-xs uppercase tracking-widest transition-all ${isActive ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'}`} style={{ color: isActive ? tab.color : 'inherit' }}>
+                  <span className={`relative z-10 font-bold text-xs uppercase tracking-widest transition-all ${isActive ? 'opacity-100' : 'opacity-80 group-hover:opacity-100'}`} style={{ color: isActive ? tab.color : '#111827' }}>
                     {tab.label}
                   </span>
                 )}
@@ -160,7 +160,7 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
       </nav>
 
       {/* Logout / Bottom */}
-      <div className="pt-8 mt-4 border-t border-white/5 flex-shrink-0">
+      <div className="pt-8 mt-4 border-t border-gray-200 flex-shrink-0">
         <button
           onClick={handleLogout}
           className={`w-full flex items-center gap-4 p-4 rounded-2xl text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all group overflow-hidden ${!isMobile && collapsed ? 'justify-center' : ''}`}
@@ -201,12 +201,12 @@ export default function Sidebar({ mobileOpen = false, setMobileOpen, collapsed, 
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute top-0 left-0 h-full w-[85%] max-w-sm bg-[#050510] border-r border-white/10 shadow-3xl"
+              className="absolute top-0 left-0 h-full w-[85%] max-w-sm bg-white border-r border-gray-200 shadow-xl"
             >
               <SidebarContent isMobile />
               {/* Mobile Swipe-Close Handle */}
               <div className="absolute top-1/2 -right-4 w-12 h-20 flex items-center justify-center lg:hidden">
-                <div className="w-1.5 h-12 rounded-full bg-white/10"></div>
+                <div className="w-1.5 h-12 rounded-full bg-gray-300"></div>
               </div>
             </motion.div>
           </div>
