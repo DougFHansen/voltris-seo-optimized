@@ -174,7 +174,7 @@ export default function CompaniesClient() {
         return (
           <div className="flex flex-col items-center justify-center py-40 gap-6 opacity-30">
             <div className="w-16 h-16 border-t-4 border-r-4 border-[#31A8FF] rounded-full animate-spin"></div>
-            <p className="font-black uppercase tracking-[0.3em] text-[10px]">Sincronizando Telemetria da Frota...</p>
+            <p className="font-black uppercase tracking-[0.3em] text-[10px] text-gray-500">Sincronizando Telemetria da Frota...</p>
           </div>
         );
     }
@@ -182,13 +182,13 @@ export default function CompaniesClient() {
     if (!company) {
         return (
             <div className="flex flex-col items-center justify-center py-40 text-center gap-10">
-                <div className={`p-10 rounded-[3rem] border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
-                    <div className="w-24 h-24 rounded-[2rem] bg-white/5 flex items-center justify-center text-white/10 shrink-0">
+                <div className={`p-10 rounded-[3rem] border border-gray-200 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-gray-50 shadow-xl'}`}>
+                    <div className="w-24 h-24 rounded-[2rem] bg-gray-100 flex items-center justify-center text-gray-300 shrink-0">
                         <FiMonitor className="w-12 h-12" />
                     </div>
                     <div className="space-y-4">
-                        <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">Frota <span className="text-[#31A8FF]">Desconectada</span></h2>
-                        <p className="text-white/20 font-bold text-xs uppercase tracking-[0.2em] max-w-md mx-auto">
+                        <h2 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter leading-none">Frota <span className="text-[#31A8FF]">Desconectada</span></h2>
+                        <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] max-w-md mx-auto">
                             Sua conta não está associada a nenhuma organização verificada. Estabeleça um link para iniciar o gerenciamento remoto.
                         </p>
                     </div>
@@ -211,21 +211,21 @@ export default function CompaniesClient() {
                 <div className="space-y-2">
                    <div className="flex items-center gap-3">
                      <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
-                     <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">{company.name}</h2>
+                     <h2 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter">{company.name}</h2>
                    </div>
                    <div className="flex flex-wrap items-center gap-4 pl-5">
                       <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#31A8FF]/10 border border-[#31A8FF]/20">
                          <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.2em]">PROTOCOLO {company.plan_type.toUpperCase()}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                         <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em]">Capacidade da Frota:</span>
+                         <span className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em]">Capacidade da Frota:</span>
                          <span className="text-[10px] font-black text-[#00FF88] uppercase tracking-[0.2em]">{stats.devices} / {company.max_devices} SLOTS ATIVOS</span>
                       </div>
                    </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-                    <Link href="/dashboard/companies/devices" className="px-8 py-4 bg-white/5 border border-white/5 text-white font-black uppercase italic tracking-widest rounded-2xl hover:bg-white/10 transition-all flex items-center justify-center gap-3 text-xs shadow-2xl">
+                    <Link href="/dashboard/companies/devices" className="px-8 py-4 bg-gray-100 border border-gray-200 text-gray-900 font-black uppercase italic tracking-widest rounded-2xl hover:bg-gray-200 transition-all flex items-center justify-center gap-3 text-xs shadow-xl">
                         <FiMonitor className="w-4 h-4" /> Gerenciar Nós da Frota
                     </Link>
                     <button
@@ -278,16 +278,16 @@ export default function CompaniesClient() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
                 
                 {/* Visual Alert Stream */}
-                <div className={`lg:col-span-2 p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}`}>
+                <div className={`lg:col-span-2 p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}>
                     <div className="flex items-center justify-between mb-10">
                        <div className="flex items-center gap-4">
                           <div className="p-3 bg-[#FF4B6B]/10 text-[#FF4B6B] rounded-2xl border border-[#FF4B6B]/20 shadow-lg">
                              <FiAlertTriangle className="w-6 h-6" />
                           </div>
-                          <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Disrupções <span className="text-[#FF4B6B]">Neurais</span></h3>
+                          <h3 className="text-xl font-black text-gray-900 italic uppercase tracking-tighter leading-none">Disrupções <span className="text-[#FF4B6B]">Neurais</span></h3>
                        </div>
                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-black text-white/20 uppercase tracking-widest font-mono">Fluxo em Tempo Real</span>
+                          <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest font-mono">Fluxo em Tempo Real</span>
                           <div className="w-2 h-2 rounded-full bg-[#FF4B6B] animate-pulse"></div>
                        </div>
                     </div>
@@ -313,52 +313,52 @@ export default function CompaniesClient() {
                 </div>
 
                 {/* Tactical Action Grid */}
-                <div className={`p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'}`}>
+                <div className={`p-10 rounded-[3.5rem] border transition-all duration-500 overflow-hidden relative ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}>
                     <div className="flex items-center gap-4 mb-10">
                        <div className="p-3 bg-[#8B31FF]/10 text-[#8B31FF] rounded-2xl border border-[#8B31FF]/20 shadow-lg">
                           <FiZap className="w-6 h-6" />
                        </div>
-                       <h3 className="text-xl font-black text-white italic uppercase tracking-tighter leading-none">Diretrizes <span className="text-[#8B31FF]">Remotas</span></h3>
+                       <h3 className="text-xl font-black text-gray-900 italic uppercase tracking-tighter leading-none">Diretrizes <span className="text-[#8B31FF]">Remotas</span></h3>
                     </div>
 
                     <div className="space-y-4">
                         <button
                             onClick={handleOptimizeAll}
-                            className="w-full text-left p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#31A8FF]/40 transition-all flex items-center justify-between group"
+                            className="w-full text-left p-6 rounded-3xl bg-gray-100 border border-gray-200 hover:bg-gray-200 hover:border-[#31A8FF]/40 transition-all flex items-center justify-between group"
                         >
                             <div className="flex items-center gap-4">
                                <div className="w-12 h-12 rounded-2xl bg-[#31A8FF]/10 border border-[#31A8FF]/20 flex items-center justify-center text-[#31A8FF] group-hover:scale-110 transition-transform">
                                   <FiZap className="w-6 h-6" />
                                </div>
                                <div className="flex flex-col">
-                                  <span className="text-[11px] font-black text-white uppercase tracking-wider italic">Otimização em Massa</span>
-                                  <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest font-mono">Pulso para todos os nós</span>
+                                  <span className="text-[11px] font-black text-gray-900 uppercase tracking-wider italic">Otimização em Massa</span>
+                                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Pulso para todos os nós</span>
                                </div>
                             </div>
                             <FiArrowRight className="w-5 h-5 text-white/10 group-hover:text-white transition-all transform group-hover:translate-x-1" />
                         </button>
 
-                        <button className="w-full text-left p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#00FF88]/40 transition-all flex items-center justify-between group">
+                        <button className="w-full text-left p-6 rounded-3xl bg-gray-100 border border-gray-200 hover:bg-gray-200 hover:border-[#00FF88]/40 transition-all flex items-center justify-between group">
                             <div className="flex items-center gap-4">
                                <div className="w-12 h-12 rounded-2xl bg-[#00FF88]/10 border border-[#00FF88]/20 flex items-center justify-center text-[#00FF88] group-hover:scale-110 transition-transform">
                                   <FiBarChart2 className="w-6 h-6" />
                                </div>
                                <div className="flex flex-col">
-                                  <span className="text-[11px] font-black text-white uppercase tracking-wider italic">Relatório de Inteligência</span>
-                                  <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest font-mono">Dados mensais da frota</span>
+                                  <span className="text-[11px] font-black text-gray-900 uppercase tracking-wider italic">Relatório de Inteligência</span>
+                                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Dados mensais da frota</span>
                                </div>
                             </div>
                             <FiArrowRight className="w-5 h-5 text-white/10 group-hover:text-white transition-all transform group-hover:translate-x-1" />
                         </button>
 
-                        <Link href="/dashboard/companies/devices" className="w-full text-left p-6 rounded-3xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] hover:border-[#FF4B6B]/40 transition-all flex items-center justify-between group">
+                        <Link href="/dashboard/companies/devices" className="w-full text-left p-6 rounded-3xl bg-gray-100 border border-gray-200 hover:bg-gray-200 hover:border-[#FF4B6B]/40 transition-all flex items-center justify-between group">
                             <div className="flex items-center gap-4">
                                <div className="w-12 h-12 rounded-2xl bg-[#FF4B6B]/10 border border-[#FF4B6B]/20 flex items-center justify-center text-[#FF4B6B] group-hover:scale-110 transition-transform">
                                   <FiShield className="w-6 h-6" />
                                </div>
                                <div className="flex flex-col">
-                                  <span className="text-[11px] font-black text-white uppercase tracking-wider italic">Bloqueio de Segurança</span>
-                                  <span className="text-[9px] font-bold text-white/30 uppercase tracking-widest font-mono">Gerenciar acesso dos nós</span>
+                                  <span className="text-[11px] font-black text-gray-900 uppercase tracking-wider italic">Bloqueio de Segurança</span>
+                                  <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Gerenciar acesso dos nós</span>
                                </div>
                             </div>
                             <FiArrowRight className="w-5 h-5 text-white/10 group-hover:text-white transition-all transform group-hover:translate-x-1" />
@@ -371,12 +371,12 @@ export default function CompaniesClient() {
             <AnimatePresence>
                 {isBuyModalOpen && (
                     <div className="fixed inset-0 z-[300] flex items-center justify-center p-6">
-                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/95 backdrop-blur-md" onClick={() => setIsBuyModalOpen(false)} />
+                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/80 backdrop-blur-md" onClick={() => setIsBuyModalOpen(false)} />
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0, y: 30 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 30 }}
-                            className={`bg-[#0A0A10] border border-white/10 rounded-[4rem] p-12 max-w-xl w-full shadow-3xl relative overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}
+                            className={`bg-white border border-gray-200 rounded-[4rem] p-12 max-w-xl w-full shadow-xl relative overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-white'}`}
                         >
                             <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-[#8B31FF] via-[#31A8FF] to-[#FF4B6B]"></div>
                             
@@ -385,13 +385,13 @@ export default function CompaniesClient() {
                                  <FiPieChart className="w-10 h-10" />
                                </div>
                                <div className="space-y-1">
-                                 <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Expandir <span className="text-[#8B31FF] not-italic">Frota</span></h2>
-                                 <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">Injetar slots de nós neurais adicionais</p>
+                                 <h2 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Expandir <span className="text-[#8B31FF] not-italic">Frota</span></h2>
+                                 <p className="text-gray-500 text-[10px] font-bold uppercase tracking-[0.3em]">Injetar slots de nós neurais adicionais</p>
                                </div>
                             </div>
 
                             <div className="mb-12 space-y-4">
-                                <label className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono pl-2">Selecionar Tamanho do Cluster</label>
+                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono pl-2">Selecionar Tamanho do Cluster</label>
                                 <div className="grid grid-cols-4 gap-4">
                                     {[5, 10, 50, 100].map(qty => (
                                         <button
@@ -400,7 +400,7 @@ export default function CompaniesClient() {
                                             className={`relative overflow-hidden py-4 rounded-3xl border font-black uppercase tracking-widest text-[10px] transition-all duration-500 hover:scale-105 active:scale-95
                                               ${buyQuantity === qty 
                                                 ? 'bg-[#8B31FF] border-[#8B31FF] text-white shadow-lg shadow-[#8B31FF]/30' 
-                                                : 'bg-white/5 border-white/10 text-white/30 hover:border-white/20'}`}
+                                                : 'bg-gray-100 border-gray-200 text-gray-400 hover:border-gray-300'}`}
                                         >
                                             <span className="relative z-10">+{qty}</span>
                                             {buyQuantity === qty && (
@@ -411,17 +411,17 @@ export default function CompaniesClient() {
                                 </div>
                             </div>
 
-                            <div className="flex justify-between items-center bg-black/40 border border-white/5 p-8 rounded-[2.5rem] mb-12 relative group overflow-hidden">
+                            <div className="flex justify-between items-center bg-gray-100 border border-gray-200 p-8 rounded-[2.5rem] mb-12 relative group overflow-hidden">
                                 <div className="space-y-1 relative z-10">
-                                  <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">Alocação Total</span>
+                                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Alocação Total</span>
                                   <div className="flex items-baseline gap-2">
-                                     <span className="text-3xl font-black text-white italic tracking-tighter uppercase whitespace-nowrap">R$ {(buyQuantity * 29.90).toFixed(2)}</span>
-                                     <span className="text-[10px] font-black text-white/20 uppercase tracking-widest">/ Mês</span>
+                                     <span className="text-3xl font-black text-gray-900 italic tracking-tighter uppercase whitespace-nowrap">R$ {(buyQuantity * 29.90).toFixed(2)}</span>
+                                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">/ Mês</span>
                                   </div>
                                </div>
                                  <div className="text-right relative z-10">
                                     <div className="text-[10px] font-black text-[#8B31FF] uppercase tracking-widest font-mono">Protocolo Pro</div>
-                                    <div className="text-[9px] font-bold text-white/20 uppercase tracking-widest whitespace-nowrap">Suporte Prioritário 24/7</div>
+                                    <div className="text-[9px] font-bold text-gray-400 uppercase tracking-widest whitespace-nowrap">Suporte Prioritário 24/7</div>
                                  </div>
                                <div className="absolute right-[-20px] top-[-20px] w-32 h-32 bg-[#8B31FF]/5 blur-3xl group-hover:bg-[#8B31FF]/10 transition-all rounded-full"></div>
                             </div>
@@ -429,7 +429,7 @@ export default function CompaniesClient() {
                             <div className="flex gap-6">
                                 <button
                                     onClick={() => setIsBuyModalOpen(false)}
-                                    className="flex-1 py-5 rounded-3xl bg-white/5 text-white/40 font-black uppercase italic tracking-widest text-[10px] hover:bg-white/10 transition-all"
+                                    className="flex-1 py-5 rounded-3xl bg-gray-100 text-gray-400 font-black uppercase italic tracking-widest text-[10px] hover:bg-gray-200 transition-all"
                                 >
                                     Abortar
                                 </button>
@@ -453,13 +453,13 @@ function StatCard({ title, value, icon: Icon, color, subtext, alert = false, tra
         <motion.div
             whileHover={{ y: -5 }}
             className={`border rounded-[3rem] p-8 relative overflow-hidden transition-all duration-500
-              ${alert ? 'border-[#FF4B6B]/40 shadow-lg shadow-[#FF4B6B]/10' : 'border-white/5 shadow-2xl'} 
-              ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}
+              ${alert ? 'border-[#FF4B6B]/40 shadow-lg shadow-[#FF4B6B]/10' : 'border-gray-200 shadow-xl'} 
+              ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200'}
             `}
         >
             <div className="relative z-10 space-y-6">
                 <div className="flex justify-between items-start">
-                    <div className="p-4 rounded-2xl bg-white/5 border border-white/5 text-white shadow-lg transition-transform group-hover:scale-110">
+                    <div className="p-4 rounded-2xl bg-gray-100 border border-gray-200 text-gray-900 shadow-lg transition-transform group-hover:scale-110">
                         <Icon className="w-6 h-6" style={{ color }} />
                     </div>
                     {alert && (
@@ -470,12 +470,12 @@ function StatCard({ title, value, icon: Icon, color, subtext, alert = false, tra
                     )}
                 </div>
                 <div className="space-y-1">
-                   <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">{value}</h3>
-                   <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] font-mono">{title}</p>
+                   <h3 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter leading-none">{value}</h3>
+                   <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">{title}</p>
                 </div>
-                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-200">
                     <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }}></div>
-                    <span className="text-[9px] font-black text-white/10 uppercase tracking-[0.2em] font-mono truncate">{subtext}</span>
+                    <span className="text-[9px] font-black text-gray-300 uppercase tracking-[0.2em] font-mono truncate">{subtext}</span>
                 </div>
             </div>
             {/* Ambient Background Glow */}
@@ -493,20 +493,20 @@ function AlertItem({ device, msg, time, level = 'warning' }: any) {
         <motion.div 
            initial={{ opacity: 0, x: -10 }} 
            animate={{ opacity: 1, x: 0 }}
-           className="flex items-center gap-6 p-6 rounded-[2.5rem] bg-white/[0.03] border border-white/5 hover:bg-white/[0.08] hover:border-white/10 transition-all group"
+           className="flex items-center gap-6 p-6 rounded-[2.5rem] bg-gray-100 border border-gray-200 hover:bg-gray-200 hover:border-gray-300 transition-all group"
         >
             <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border transition-all group-hover:scale-110 ${bg} ${color}`}>
                 <FiAlertTriangle className="w-6 h-6" />
             </div>
             <div className="flex-1 min-w-0 space-y-1">
-                <h4 className="text-sm font-black text-white uppercase italic tracking-tighter truncate group-hover:text-[#FF4B6B] transition-colors">{msg}</h4>
+                <h4 className="text-sm font-black text-gray-900 uppercase italic tracking-tighter truncate group-hover:text-[#FF4B6B] transition-colors">{msg}</h4>
                 <div className="flex items-center gap-2">
-                   <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">Nó de Origem:</span>
+                   <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Nó de Origem:</span>
                    <span className="text-[10px] font-black text-[#31A8FF] uppercase font-mono tracking-widest">{device}</span>
                 </div>
             </div>
             <div className="flex flex-col items-end shrink-0 gap-1">
-               <span className="text-[9px] font-black text-white/10 uppercase tracking-[0.3em] font-mono italic">{time}</span>
+               <span className="text-[9px] font-black text-gray-300 uppercase tracking-[0.3em] font-mono italic">{time}</span>
                <div className={`p-1 rounded-full ${isCritical ? 'bg-[#FF4B6B]' : 'bg-amber-400'} opacity-20`}></div>
             </div>
         </motion.div>
