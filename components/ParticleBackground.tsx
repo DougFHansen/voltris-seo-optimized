@@ -39,9 +39,9 @@ const ParticleBackground: React.FC = () => {
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * config.baseSpeed,
       vy: (Math.random() - 0.5) * config.baseSpeed,
-      size: Math.random() * 3 + 2,
-      opacity: Math.random() * 0.6 + 0.4,
-      targetOpacity: Math.random() * 0.6 + 0.4,
+      size: Math.random() * 4 + 3,
+      opacity: Math.random() * 0.8 + 0.2,
+      targetOpacity: Math.random() * 0.8 + 0.2,
       hue: config.colors.hueStart + Math.random() * (config.colors.hueEnd - config.colors.hueStart)
     };
   };
