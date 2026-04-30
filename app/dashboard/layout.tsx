@@ -28,7 +28,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
 
   return (
     <div className={`h-screen relative flex flex-col overflow-hidden selection:bg-[#8B31FF]/30 font-sans transition-all duration-700
-      ${transparencyMode ? 'text-white' : 'bg-[#050510] text-white'}
+      ${transparencyMode ? 'text-gray-900' : 'bg-gray-50 text-gray-900'}
     `}
     style={{
       '--v-glass-bg': transparencyMode ? 'rgba(255, 255, 255, 0.03)' : 'rgba(10, 10, 15, 0.95)',
@@ -89,21 +89,21 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
       <main className={`flex-1 flex flex-col min-h-0 overflow-hidden relative transition-all duration-700 w-full
         ${transparencyMode 
           ? 'rounded-none lg:rounded-[3.5rem] voltris-glass shadow-[0_40px_100px_rgba(0,0,0,0.6)]' 
-          : 'rounded-none lg:rounded-[3.5rem] bg-[#0A0A12] border border-white/5'
+          : 'rounded-none lg:rounded-[3.5rem] bg-white border border-gray-200 shadow-xl'
         }
       `}>
           
         {/* Mobile Navigation Bar - Fixed at top with blur */}
-        <div className={`lg:hidden flex items-center justify-between px-6 py-4 transition-all duration-300 z-[60] sticky top-0 ${scrolled ? 'bg-[#050510]/80 backdrop-blur-2xl border-b border-white/10' : 'bg-transparent'}`}>
+        <div className={`lg:hidden flex items-center justify-between px-6 py-4 transition-all duration-300 z-[60] sticky top-0 ${scrolled ? 'bg-white/80 backdrop-blur-2xl border-b border-gray-200' : 'bg-transparent'}`}>
            <div className="flex items-center gap-3">
              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#31A8FF] to-[#8B31FF] flex items-center justify-center text-xs font-black text-white shadow-[0_0_20px_rgba(49,168,255,0.3)]">V</div>
              <div className="flex flex-col">
-               <span className="font-black text-[10px] tracking-[0.2em] uppercase text-white/90">Voltris</span>
+               <span className="font-black text-[10px] tracking-[0.2em] uppercase text-gray-900">Voltris</span>
                <span className="text-[9px] font-bold text-[#31A8FF] uppercase tracking-widest leading-none">Painel Pro</span>
              </div>
           </div>
-           <button onClick={() => setMobileMenuOpen(true)} className="w-11 h-11 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center active:scale-90 transition-all">
-              <FiMenu className="w-5 h-5 text-white" />
+           <button onClick={() => setMobileMenuOpen(true)} className="w-11 h-11 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center active:scale-90 transition-all">
+              <FiMenu className="w-5 h-5 text-gray-900" />
            </button>
         </div>
 
@@ -130,7 +130,7 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
 
         {/* Mobile Bottom Navigation - Quick Access Tabs */}
         <div className="lg:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] w-[90%] max-w-[400px]">
-           <nav className="flex items-center justify-around p-2.5 rounded-[2rem] bg-[#0A0A0F]/90 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+           <nav className="flex items-center justify-around p-2.5 rounded-[2rem] bg-white/90 backdrop-blur-2xl border border-gray-200 shadow-xl">
               {[
                 { id: 'overview', icon: FiLayout, label: 'Início', path: '/dashboard?tab=overview' },
                 { id: 'licenses', icon: FiCreditCard, label: 'Licenças', path: '/dashboard?tab=licenses' },
@@ -138,8 +138,8 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
                 { id: 'support', icon: FiSettings, label: 'Suporte', path: '/dashboard/tickets' }
               ].map((item) => (
                 <Link key={item.id} href={item.path} className="flex flex-col items-center gap-1.5 px-4 py-2 rounded-2xl transition-all">
-                   <item.icon className={`w-5 h-5 ${item.path.includes('tab=overview') ? 'text-white' : 'text-white/40'}`} />
-                   <span className="text-[8px] font-black uppercase tracking-widest text-white/40">{item.label}</span>
+                   <item.icon className={`w-5 h-5 ${item.path.includes('tab=overview') ? 'text-gray-900' : 'text-gray-400'}`} />
+                   <span className="text-[8px] font-black uppercase tracking-widest text-gray-400">{item.label}</span>
                 </Link>
               ))}
            </nav>
@@ -151,11 +151,11 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={toggleTransparency}
-            className="p-3 rounded-2xl voltris-glass shadow-2xl flex items-center justify-center text-white/50 hover:text-[#31A8FF] transition-all group border border-white/5 hover:border-[#31A8FF]/30"
+            className="p-3 rounded-2xl voltris-glass shadow-xl flex items-center justify-center text-gray-400 hover:text-[#31A8FF] transition-all group border border-gray-200 hover:border-[#31A8FF]/30"
             title={transparencyMode ? 'Modo Sólido' : 'Modo Transparente'}
           >
             {transparencyMode ? <FiMinimize2 className="w-4 h-4" /> : <FiMaximize2 className="w-4 h-4" />}
-            <div className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-black/90 backdrop-blur-xl text-[9px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+            <div className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-gray-900/90 backdrop-blur-xl text-[9px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-gray-300">
               {transparencyMode ? 'Modo Sólido' : 'Modo Transparente'}
             </div>
           </motion.button>
@@ -164,10 +164,10 @@ function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsSettingsOpen(true)}
-            className="p-3 rounded-2xl voltris-glass shadow-2xl flex items-center justify-center text-white/50 hover:text-[#8B31FF] transition-all group border border-white/5 hover:border-[#8B31FF]/30"
+            className="p-3 rounded-2xl voltris-glass shadow-xl flex items-center justify-center text-gray-400 hover:text-[#8B31FF] transition-all group border border-gray-200 hover:border-[#8B31FF]/30"
           >
             <FiSettings className="w-4 h-4" />
-            <div className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-black/90 backdrop-blur-xl text-[9px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-white/10">
+            <div className="absolute right-full mr-4 px-3 py-1.5 rounded-lg bg-gray-900/90 backdrop-blur-xl text-[9px] font-black uppercase tracking-widest text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none border border-gray-300">
               Configurações UI
             </div>
           </motion.button>
