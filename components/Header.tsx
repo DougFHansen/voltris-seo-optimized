@@ -222,13 +222,27 @@ export default function Header() {
             ) : user ? (
               <>
                 <NotificationDropdown />
-                <div className="flex items-center gap-2 pl-3 border-l border-white/10">
+                <div className="flex items-center gap-2 pl-3 border-l border-gray-200">
                   <Link
                     href={isAdmin ? '/restricted-area-admin' : '/dashboard'}
-                    className="flex items-center gap-2 px-3 xl:px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/10 transition-all text-sm font-medium hover:border-[#8B31FF]/30 hover:shadow-[0_0_15px_rgba(139,49,255,0.1)] whitespace-nowrap"
+                    className="relative flex items-center gap-1.5 px-4 xl:px-5 py-2 rounded-2xl border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 transition-all duration-300 group overflow-hidden whitespace-nowrap shadow-sm"
                   >
-                    <FiLayout className="w-4 h-4" />
-                    <span>Dashboard</span>
+                    <svg className="w-4 h-4 relative z-10 group-hover:scale-110 transition-transform duration-300 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="vg-dashboard" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#31A8FF" />
+                          <stop offset="50%" stopColor="#8B31FF" />
+                          <stop offset="100%" stopColor="#FF4B6B" />
+                        </linearGradient>
+                      </defs>
+                      <rect x="3" y="3" width="7" height="7" rx="1" stroke="url(#vg-dashboard)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <rect x="14" y="3" width="7" height="7" rx="1" stroke="url(#vg-dashboard)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <rect x="14" y="14" width="7" height="7" rx="1" stroke="url(#vg-dashboard)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <rect x="3" y="14" width="7" height="7" rx="1" stroke="url(#vg-dashboard)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span className="font-bold text-gray-900 relative z-10 text-sm">
+                      Dashboard
+                    </span>
                   </Link>
                   <button
                     onClick={handleLogout}
