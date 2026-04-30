@@ -3,14 +3,14 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function GET(request: NextRequest) {
   try {
     const apiKey = '48b7f52550194833a697771746200259';
-    const host = 'voltris.com.br';
+    const host = 'www.voltris.com.br';
     const keyLocation = `https://${host}/${apiKey}.txt`;
 
     // Test URLs para submissão
     const testUrls = [
-      'https://voltris.com.br/',
-      'https://voltris.com.br/guias/ssd-vs-hdd-guia',
-      'https://voltris.com.br/voltrisoptimizer'
+      'https://www.voltris.com.br/',
+      'https://www.voltris.com.br/otimizacao-windows-jogos',
+      'https://www.voltris.com.br/voltrisoptimizer'
     ];
 
     const response = await fetch('https://api.indexnow.org/indexnow', {
