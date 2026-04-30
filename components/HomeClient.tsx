@@ -223,13 +223,13 @@ export default function HomeClient() {
                     <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-100/50 to-blue-100/50 blur-[100px]" />
                 </div>
 
+                {/* Glassmorphism Overlay */}
+                <div className="fixed inset-0 bg-gradient-to-b from-white/20 via-white/10 to-gray-50/20 backdrop-blur-[1px] pointer-events-none z-10" />
+
                 {/* Particle Background */}
-                <div className="fixed inset-0 overflow-hidden pointer-events-none z-10 min-h-screen">
+                <div className="fixed inset-0 overflow-hidden pointer-events-none z-20 min-h-screen">
                     <ParticleBackground />
                 </div>
-
-                {/* Glassmorphism Overlay */}
-                <div className="fixed inset-0 bg-gradient-to-b from-white/20 via-white/10 to-gray-50/20 backdrop-blur-[1px] pointer-events-none z-15" />
                 <section
                     className="
                     relative
