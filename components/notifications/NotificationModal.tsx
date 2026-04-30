@@ -33,8 +33,8 @@ export default function NotificationModal() {
         />
         
         <motion.div
-          className={`relative w-full max-w-lg p-12 rounded-[4rem] border border-white/10 shadow-3xl overflow-hidden
-            ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}
+          className={`relative w-full max-w-lg p-12 rounded-[4rem] border border-gray-200 shadow-xl overflow-hidden
+            ${transparencyMode ? 'voltris-glass' : 'bg-white'}
           `}
           initial={{ y: 50, opacity: 0, scale: 0.9 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
@@ -55,19 +55,19 @@ export default function NotificationModal() {
             </div>
 
             <div className="space-y-4">
-              <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter leading-none">Ativar <span className="text-[#31A8FF] not-italic">Notificações</span></h2>
+              <h2 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter leading-none">Ativar <span className="text-[#31A8FF] not-italic">Notificações</span></h2>
               <div className="flex flex-col gap-2">
-                 <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed px-4">
+                 <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed px-4">
                    Estabeleça uma conexão direta para receber atualizações em tempo real e avisos críticos de segurança.
                  </p>
                  <div className="flex items-center justify-center gap-4 pt-2">
-                    <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+                    <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full border border-gray-200">
                        <FiShield className="w-3 h-3 text-[#00FF88]" />
-                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">CRIPTOGRAFADO</span>
+                       <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest">CRIPTOGRAFADO</span>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/5">
+                    <div className="flex items-center gap-2 px-3 py-1 bg-gray-100 rounded-full border border-gray-200">
                        <FiCpu className="w-3 h-3 text-[#31A8FF]" />
-                       <span className="text-[8px] font-black text-white/40 uppercase tracking-widest">BAIXO CONSUMO</span>
+                       <span className="text-[8px] font-black text-gray-400 uppercase tracking-widest">BAIXO CONSUMO</span>
                     </div>
                  </div>
               </div>
@@ -82,7 +82,7 @@ export default function NotificationModal() {
                 <span>Iniciar Conexão</span>
               </button>
               <button
-                className="w-full py-5 text-white/20 hover:text-white/60 font-black uppercase tracking-[0.3em] text-[10px] transition-all"
+                className="w-full py-5 text-gray-400 hover:text-gray-600 font-black uppercase tracking-[0.3em] text-[10px] transition-all"
                 onClick={handleDismiss}
               >
                 Agora não
