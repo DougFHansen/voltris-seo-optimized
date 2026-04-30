@@ -36,4 +36,4 @@ const filteredRoutes = allRoutes.filter(route =>
 );
 
 console.log('Total URLs found:', filteredRoutes.length);
-filteredRoutes.forEach(r => console.log(`https://voltris.com.br${r === '/' ? '' : r}`));
+filteredRoutes.forEach(r => console.log(`https://www.voltris.com.br${r === '/' ? '' : r}`));
