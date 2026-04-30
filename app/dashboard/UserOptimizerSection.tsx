@@ -82,9 +82,9 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
 
     if (installations.length === 0) {
         return (
-            <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
+            <div className="space-y-4 pt-6 mt-6 border-t border-gray-200">
                 <div className="flex items-center justify-between px-2">
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
                         <FiMonitor className="text-[#31A8FF]" /> Meu Computador
                     </h2>
                 </div>
@@ -92,30 +92,30 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-8 bg-[#1A1A22] border border-white/5 rounded-3xl flex flex-col items-center text-center max-w-2xl mx-auto"
+                    className="p-8 bg-white border border-gray-200 rounded-3xl flex flex-col items-center text-center max-w-2xl mx-auto shadow-xl"
                 >
                     <div className="p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-blue-400 mb-6">
                         <FiZap className="w-8 h-8" />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-2">Vincule seu computador</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Vincule seu computador</h3>
                     <p className="text-slate-400 mb-8 max-w-md">
                         Acesse as informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do site.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                        <div className="bg-[#121218] border border-white/5 p-4 rounded-2xl flex items-center gap-4 text-left">
-                            <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white shrink-0 font-bold">1</div>
-                            <p className="text-xs text-slate-300">Abra o <span className="text-white font-bold">Voltris Optimizer</span> no seu PC</p>
+                        <div className="bg-gray-100 border border-gray-200 p-4 rounded-2xl flex items-center gap-4 text-left">
+                            <div className="w-10 h-10 bg-gray-200 rounded-xl flex items-center justify-center text-gray-900 shrink-0 font-bold">1</div>
+                            <p className="text-xs text-gray-600">Abra o <span className="text-gray-900 font-bold">Voltris Optimizer</span> no seu PC</p>
                         </div>
-                        <div className="bg-[#121218] border border-white/5 p-4 rounded-2xl flex items-center gap-4 text-left">
-                            <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white shrink-0 font-bold">2</div>
-                            <p className="text-xs text-slate-300">Clique em <span className="text-white font-bold">Vincular Conta</span> no topo do app</p>
+                        <div className="bg-gray-100 border border-gray-200 p-4 rounded-2xl flex items-center gap-4 text-left">
+                            <div className="w-10 h-10 bg-gray-200 rounded-xl flex items-center justify-center text-gray-900 shrink-0 font-bold">2</div>
+                            <p className="text-xs text-gray-600">Clique em <span className="text-gray-900 font-bold">Vincular Conta</span> no topo do app</p>
                         </div>
                     </div>
 
-                    <div className="mt-8 pt-8 border-t border-white/5 w-full flex flex-col items-center">
-                        <p className="text-xs text-slate-500 mb-4 uppercase tracking-widest font-black">Não tem o programa?</p>
+                    <div className="mt-8 pt-8 border-t border-gray-200 w-full flex flex-col items-center">
+                        <p className="text-xs text-gray-500 mb-4 uppercase tracking-widest font-black">Não tem o programa?</p>
                         <a
                             href="https://https://www.voltris.com.br/voltrisoptimizer"
                             target="_blank"
@@ -131,9 +131,9 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
 
     return (
         <>
-            <div className="space-y-4 pt-6 mt-6 border-t border-white/5">
+            <div className="space-y-4 pt-6 mt-6 border-t border-gray-200">
                 <div className="flex items-center justify-between px-2">
-                    <h2 className="text-xl font-bold text-white flex items-center gap-2">
+                    <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
                         <FiMonitor className="text-[#31A8FF]" /> Meus Computadores (Voltris)
                     </h2>
                     <span className="text-xs text-slate-500 font-medium">Sincronizado via Telemetria</span>
@@ -145,7 +145,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                             key={inst.id}
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="bg-[#1A1A22] border border-white/5 p-5 rounded-2xl hover:border-white/10 transition-all group overflow-hidden relative"
+                            className="bg-white border border-gray-200 p-5 rounded-2xl hover:border-gray-300 transition-all group overflow-hidden relative shadow-xl"
                         >
                             {/* Background Glow */}
                             <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/10' : 'bg-blue-500/10'
@@ -158,7 +158,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                             ? 'bg-emerald-400 animate-pulse'
                                             : 'bg-slate-500'
                                             }`}></div>
-                                        <span className="text-white font-bold text-sm tracking-tight">{inst.os_name}</span>
+                                        <span className="text-gray-900 font-bold text-sm tracking-tight">{inst.os_name}</span>
                                     </div>
 
                                     <div className="flex flex-col gap-1.5">
@@ -175,15 +175,15 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
 
                                 <div className="flex flex-col items-end gap-2 text-right">
                                     <div className={`px-2.5 py-1 rounded-lg text-[10px] font-black tracking-widest ${inst.is_optimized
-                                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                                        : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                        ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                                        : 'bg-blue-100 text-blue-700 border border-blue-200'
                                         }`}>
                                         {inst.is_optimized ? 'OTIMIZADO' : 'SISTEMA PADRÃO'}
                                     </div>
 
                                     <div className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${inst.license_status === 'active'
-                                        ? 'text-emerald-400 bg-emerald-400/5'
-                                        : 'text-blue-400 bg-blue-400/5'
+                                        ? 'text-emerald-700 bg-emerald-100'
+                                        : 'text-blue-700 bg-blue-100'
                                         }`}>
                                         LICENÇA: {inst.license_status?.toUpperCase() || 'TRIAL'}
                                         {inst.license_status === 'trial' && inst.license_expires_at && (
@@ -198,10 +198,10 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                             </div>
 
                             {/* Action Overlay */}
-                            <div className="mt-4 pt-4 border-t border-white/5 flex gap-4">
+                            <div className="mt-4 pt-4 border-t border-gray-200 flex gap-4">
                                 <div className="flex-1">
                                     <div className="text-[10px] uppercase text-slate-500 font-bold mb-1">Status de Performance</div>
-                                    <div className="h-1 bg-white/5 rounded-full overflow-hidden">
+                                    <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
                                         <motion.div
                                             initial={{ width: 0 }}
                                             animate={{ width: inst.is_optimized ? '100%' : '60%' }}
@@ -236,12 +236,12 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                                 toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
                                             } catch { toast.error('Falha no envio', { id: toastId }); }
                                         }}
-                                        className="px-3 py-1 bg-[#121218] border border-white/10 text-white text-[10px] font-bold rounded-lg hover:bg-white/10 transition-colors shrink-0"
+                                        className="px-3 py-1 bg-gray-100 border border-gray-200 text-gray-900 text-[10px] font-bold rounded-lg hover:bg-gray-200 transition-colors shrink-0"
                                     >
                                         🧹 Cache
                                     </button>
 
-                                    <div className="h-4 w-px bg-white/10 mx-1"></div>
+                                    <div className="h-4 w-px bg-gray-300 mx-1"></div>
 
                                     <button
                                         onClick={() => handleUnlinkClick(inst)}
@@ -272,21 +272,21 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.9, opacity: 0 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="bg-[#121218] border border-white/10 rounded-2xl p-6 max-w-md w-full shadow-2xl"
+                            className="bg-white border border-gray-200 rounded-2xl p-6 max-w-md w-full shadow-xl"
                         >
                             <div className="flex items-start gap-4 mb-6">
                                 <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-2xl">
                                     ⚠️
                                 </div>
                                 <div className="flex-1">
-                                    <h2 className="text-xl font-bold text-white mb-2">Desvincular Computador?</h2>
+                                    <h2 className="text-xl font-bold text-gray-900 mb-2">Desvincular Computador?</h2>
                                     <p className="text-sm text-slate-400 leading-relaxed">
                                         Você perderá o acesso remoto e a telemetria deste dispositivo.
                                     </p>
                                 </div>
                                 <button
                                     onClick={() => setUnlinkModalOpen(false)}
-                                    className="text-slate-400 hover:text-white transition-colors"
+                                    className="text-gray-400 hover:text-gray-900 transition-colors"
                                 >
                                     <FiX className="w-5 h-5" />
                                 </button>
@@ -294,7 +294,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                             <div className="flex gap-3 justify-end">
                                 <button
                                     onClick={() => setUnlinkModalOpen(false)}
-                                    className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors"
+                                    className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors"
                                 >
                                     Cancelar
                                 </button>
