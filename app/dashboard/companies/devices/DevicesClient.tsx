@@ -87,25 +87,25 @@ export default function DevicesClient() {
                 <div className="space-y-2">
                    <div className="flex items-center gap-3">
                      <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
-                     <h2 className="text-4xl font-black text-white italic uppercase tracking-tighter">Nós <span className="text-[#31A8FF] not-italic">Gerenciados</span></h2>
+                     <h2 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Nós <span className="text-[#31A8FF] not-italic">Gerenciados</span></h2>
                    </div>
-                   <p className="text-white/40 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Telemetria da frota e administração remota</p>
+                   <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] pl-5 font-mono">Telemetria da frota e administração remota</p>
                 </div>
 
                 <div className="flex items-center gap-4 w-full md:w-auto">
                     <div className="relative group flex-1 md:flex-none">
-                        <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-[#31A8FF] transition-colors" />
+                        <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-[#31A8FF] transition-colors" />
                         <input
                             type="text"
                             placeholder="BUSCAR ID DO NÓ..."
                             value={search}
                             onChange={e => setSearch(e.target.value)}
-                            className="w-full md:w-64 pl-11 pr-6 py-4 rounded-2xl bg-[#0A0A10]/50 border border-white/5 text-white/40 group-hover:text-white font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#31A8FF] transition-all placeholder:text-white/5"
+                            className="w-full md:w-64 pl-11 pr-6 py-4 rounded-2xl bg-white border border-gray-200 text-gray-500 group-hover:text-gray-900 font-black uppercase text-[10px] tracking-widest focus:outline-none focus:border-[#31A8FF] transition-all placeholder:text-gray-400 shadow-sm"
                         />
                     </div>
                     <button 
                       onClick={fetchDevices} 
-                      className={`p-4 rounded-2xl bg-white/5 text-white hover:bg-white/10 transition-all border border-white/5 ${loading ? 'opacity-50' : ''}`}
+                      className={`p-4 rounded-2xl bg-gray-100 text-gray-900 hover:bg-gray-200 transition-all border border-gray-200 ${loading ? 'opacity-50' : ''}`}
                     >
                         <FiRefreshCw className={loading ? "animate-spin" : "w-5 h-5"} />
                     </button>
@@ -117,14 +117,14 @@ export default function DevicesClient() {
                 <AnimatePresence mode="popLayout">
                     {loading ? (
                         [1, 2, 3].map(i => (
-                          <div key={i} className={`h-32 rounded-[2.5rem] border border-white/5 animate-pulse ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`} />
+                          <div key={i} className={`h-32 rounded-[2.5rem] border border-gray-200 animate-pulse ${transparencyMode ? 'voltris-glass' : 'bg-gray-100 shadow-xl'}`} />
                         ))
                     ) : filteredDevices.length === 0 ? (
-                        <div className={`py-40 flex flex-col items-center justify-center text-center gap-10 rounded-[4rem] border border-white/5 ${transparencyMode ? 'voltris-glass' : 'bg-[#0A0A10]'}`}>
-                            <FiMonitor className="w-20 h-20 text-white/5" />
+                        <div className={`py-40 flex flex-col items-center justify-center text-center gap-10 rounded-[4rem] border border-gray-200 ${transparencyMode ? 'voltris-glass' : 'bg-gray-50 shadow-xl'}`}>
+                            <FiMonitor className="w-20 h-20 text-gray-300" />
                             <div className="space-y-4">
-                              <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">Nenhum Nó Ativo</h3>
-                              <p className="text-white/20 font-bold text-[10px] uppercase tracking-[0.3em] max-w-sm">A busca não retornou IDs de gerenciamento associados a este link de empresa.</p>
+                              <h3 className="text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Nenhum Nó Ativo</h3>
+                              <p className="text-gray-500 font-bold text-[10px] uppercase tracking-[0.3em] max-w-sm">A busca não retornou IDs de gerenciamento associados a este link de empresa.</p>
                             </div>
                         </div>
                     ) : (
@@ -148,44 +148,44 @@ function DeviceCard({ device, onCommand, onLock, transparencyMode }: any) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95 }}
             className={`group p-8 rounded-[3rem] border transition-all duration-500 overflow-hidden relative flex flex-col xl:flex-row items-center gap-10
-              ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-2xl'} 
+              ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'} 
               hover:border-[#31A8FF]/40
             `}
         >
             {/* Status Nucleus */}
             <div className="relative shrink-0">
                 <div className={`w-20 h-20 rounded-[2rem] flex items-center justify-center text-3xl transition-transform group-hover:scale-110 group-hover:rotate-3 shadow-lg 
-                  ${isOnline ? 'bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20 shadow-[#31A8FF]/5' : 'bg-slate-800/20 text-white/10 border border-white/5'}`}>
+                  ${isOnline ? 'bg-[#31A8FF]/10 text-[#31A8FF] border border-[#31A8FF]/20 shadow-[#31A8FF]/5' : 'bg-gray-100 text-gray-400 border border-gray-200'}`}>
                     <FiMonitor />
                 </div>
                 {isOnline && (
                   <div className="absolute -inset-2 bg-[#31A8FF]/20 blur-xl rounded-full animate-pulse-slow"></div>
                 )}
-                <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-4 ${transparencyMode ? 'border-[#0a0a12]' : 'border-[#12121A]'} ${isOnline ? 'bg-[#00FF88] shadow-[0_0_10px_#00FF88]' : 'bg-slate-600'}`} />
+                <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-4 ${transparencyMode ? 'border-white' : 'border-white'} ${isOnline ? 'bg-[#00FF88] shadow-[0_0_10px_#00FF88]' : 'bg-gray-400'}`} />
             </div>
 
             {/* Information Hub */}
             <div className="flex-1 text-center xl:text-left min-w-0 w-full space-y-4">
                 <div className="space-y-1">
-                   <h3 className="text-2xl font-black text-white italic uppercase tracking-tighter truncate leading-none">{device.hostname || "NÓ NÃO IDENTIFICADO"}</h3>
+                   <h3 className="text-2xl font-black text-gray-900 italic uppercase tracking-tighter truncate leading-none">{device.hostname || "NÓ NÃO IDENTIFICADO"}</h3>
                    <div className="flex items-center justify-center xl:justify-start gap-4">
-                      <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] font-mono">HASH: <span className="text-[#31A8FF]">{device.machine_id?.slice(0, 16)}</span></span>
-                      <div className={`px-3 py-0.5 rounded-full border text-[9px] font-black uppercase tracking-widest ${isOnline ? 'bg-[#00FF88]/10 text-[#00FF88] border-[#00FF88]/20' : 'bg-white/5 text-white/20 border-white/10'}`}>
+                      <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] font-mono">HASH: <span className="text-[#31A8FF]">{device.machine_id?.slice(0, 16)}</span></span>
+                      <div className={`px-3 py-0.5 rounded-full border text-[9px] font-black uppercase tracking-widest ${isOnline ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : 'bg-gray-100 text-gray-400 border-gray-200'}`}>
                          {isOnline ? 'Link Ativo' : 'Dormitante'}
                       </div>
                    </div>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-center xl:justify-start gap-6 pt-2">
-                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-xl border border-gray-200 text-[10px] font-black text-gray-700 uppercase tracking-widest">
                        <FiCpu className="text-[#31A8FF] w-4 h-4" />
                        <span>{device.cpu_model?.split(' ')[0] || 'CPU'}</span>
                     </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-xl border border-gray-200 text-[10px] font-black text-gray-700 uppercase tracking-widest">
                        <FiActivity className="text-[#8B31FF] w-4 h-4" />
                        <span>{device.ram_total_gb}GB RAM</span>
                     </div>
-                    <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-xl border border-white/5 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-xl border border-gray-200 text-[10px] font-black text-gray-700 uppercase tracking-widest">
                        <FiShield className="text-[#FF4B6B] w-4 h-4" />
                        <span>{device.os_version?.slice(0, 12)}</span>
                     </div>
@@ -193,13 +193,13 @@ function DeviceCard({ device, onCommand, onLock, transparencyMode }: any) {
             </div>
 
             {/* Tactical Sensors (Mockup) */}
-            <div className="hidden 2xl:flex gap-10 px-10 border-x border-white/5">
+            <div className="hidden 2xl:flex gap-10 px-10 border-x border-gray-200">
                 <div className="space-y-2 text-center w-20">
-                    <div className="text-2xl font-black text-white italic leading-none">12%</div>
+                    <div className="text-2xl font-black text-gray-900 italic leading-none">12%</div>
                     <div className="text-[9px] font-black text-[#31A8FF] uppercase tracking-widest">Carga</div>
                 </div>
                 <div className="space-y-2 text-center w-20">
-                    <div className="text-2xl font-black text-white italic leading-none">45%</div>
+                    <div className="text-2xl font-black text-gray-900 italic leading-none">45%</div>
                     <div className="text-[9px] font-black text-[#8B31FF] uppercase tracking-widest">Uso</div>
                 </div>
             </div>
@@ -222,7 +222,7 @@ function DeviceCard({ device, onCommand, onLock, transparencyMode }: any) {
                 </button>
                 <button
                     title="Terminar Uplink"
-                    className="p-4 rounded-2xl bg-white/5 text-white/20 border border-white/5 hover:bg-white/10 hover:text-white transition-all flex items-center justify-center"
+                    className="p-4 rounded-2xl bg-gray-100 text-gray-400 border border-gray-200 hover:bg-gray-200 hover:text-gray-900 transition-all flex items-center justify-center"
                 >
                     <FiTrash2 className="w-5 h-5" />
                 </button>
@@ -230,8 +230,8 @@ function DeviceCard({ device, onCommand, onLock, transparencyMode }: any) {
             
             {/* Heartbeat Pulse */}
             <div className="absolute right-10 top-6 flex items-center gap-2">
-               <span className="text-[8px] font-black text-white/10 uppercase tracking-[0.2em] font-mono">Último Pulso </span>
-               <span className="text-[9px] font-bold text-white/30 font-mono italic">{new Date(device.last_heartbeat).toLocaleTimeString()}</span>
+               <span className="text-[8px] font-black text-gray-300 uppercase tracking-[0.2em] font-mono">Último Pulso </span>
+               <span className="text-[9px] font-bold text-gray-400 font-mono italic">{new Date(device.last_heartbeat).toLocaleTimeString()}</span>
             </div>
         </motion.div>
     )
