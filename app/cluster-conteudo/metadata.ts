@@ -31,5 +31,9 @@ export const metadata: Metadata = {
       height: 630,
       alt: 'Cluster de Conteúdo Técnico'
     }]
-  }
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
 };

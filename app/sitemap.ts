@@ -26,6 +26,24 @@ const CRITICAL_ROUTES = [
   '/exterior/servicos',
   '/exterior/contato',
   '/exterior/orcamento',
+  // FASE 1: High-quality pages (15-25 pages)
+  '/otimizacao-windows-jogos',
+  '/servicos-combinados',
+  '/empresas',
+  '/glossario',
+  '/como-aumentar-fps-roblox-windows',
+  '/como-corrigir-queda-de-wifi-windows-11',
+  '/como-desativar-vbs-windows-11-gamer',
+  '/como-limpar-cache-nvidia-windows-11',
+  '/otimizar-windows-11-para-valorant',
+  '/otimizar-windows-11-para-warzone-2026',
+  '/otimizar-windows-para-counter-strike-2-cs2',
+  '/otimizar-windows-para-fortnite-2026',
+  '/otimizar-windows-para-minecraft-ultra-fps',
+  '/melhorar-performance-da-steam-windows-11',
+  '/melhorar-performance-do-google-chrome-windows',
+  '/voltrisoptimizer/como-funciona',
+  '/voltrisoptimizer/documentacao',
 ] as const;
 
 function getGuideRoutes(): string[] {
@@ -60,6 +78,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${BASE_URL}${route}`,
     lastModified: now,
     changeFrequency: route === '' ? 'daily' : route.startsWith('/guias/') ? 'monthly' : 'weekly',
-    priority: route === '' ? 1 : route.startsWith('/guias/') ? 0.7 : route.startsWith('/exterior') ? 0.8 : 0.9,
+    priority: route === '' ? 1 
+      : route.startsWith('/guias/') ? 0.7 
+      : route.startsWith('/exterior') ? 0.8 
+      : route === '/otimizacao-windows-jogos' ? 0.95
+      : route.startsWith('/otimizar-windows-para-') ? 0.9
+      : route.startsWith('/como-') ? 0.85
+      : route.startsWith('/melhorar-performance-') ? 0.85
+      : route.startsWith('/voltrisoptimizer/') ? 0.88
+      : 0.9,
   }));
 }

@@ -22,5 +22,9 @@ export const metadata: Metadata = {
     title: 'Perfil do Usuário | VOLTRIS',
     description: 'Gerencie seus dados, pedidos e preferências em seu perfil na VOLTRIS. Segurança, privacidade e controle total da sua conta.',
     images: ['https://voltris.com.br/logo.png']
-  }
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
 }; 
