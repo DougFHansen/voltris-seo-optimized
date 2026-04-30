@@ -29,7 +29,7 @@ const ParticleBackground: React.FC = () => {
       hueStart: 200,
       hueEnd: 280,
       saturation: 70,
-      lightness: 60
+      lightness: 50
     }
   };
 
@@ -39,9 +39,9 @@ const ParticleBackground: React.FC = () => {
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * config.baseSpeed,
       vy: (Math.random() - 0.5) * config.baseSpeed,
-      size: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.5 + 0.2,
-      targetOpacity: Math.random() * 0.5 + 0.2,
+      size: Math.random() * 3 + 2,
+      opacity: Math.random() * 0.6 + 0.4,
+      targetOpacity: Math.random() * 0.6 + 0.4,
       hue: config.colors.hueStart + Math.random() * (config.colors.hueEnd - config.colors.hueStart)
     };
   };
@@ -187,9 +187,9 @@ const ParticleBackground: React.FC = () => {
     const parent = canvas.parentElement;
     if (!parent) return;
 
-    // Set canvas size
-    canvas.width = parent.offsetWidth;
-    canvas.height = parent.offsetHeight;
+    // Set canvas size to window size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     // Initialize particles
     initParticles(canvas.width, canvas.height);

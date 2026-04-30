@@ -223,7 +223,7 @@ export default function HomeClient() {
                 </div>
 
                 {/* Glassmorphism Overlay */}
-                <div className="fixed inset-0 bg-gradient-to-b from-white/80 via-white/60 to-gray-50/80 backdrop-blur-[2px] pointer-events-none z-0" />
+                <div className="fixed inset-0 bg-gradient-to-b from-white/30 via-white/20 to-gray-50/30 backdrop-blur-[1px] pointer-events-none z-10" />
 
                 {/* Background Gradients (Fixed Behind) */}
                 <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
