@@ -255,7 +255,7 @@ export default function NewOrderClient() {
                       className="w-full relative group"
                     >
                        <div className="absolute inset-0 bg-gradient-to-r from-[#FF4B6B] to-[#8B31FF] blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                       <div className="relative flex items-center justify-center gap-4 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-white py-6 rounded-[2rem] font-black uppercase italic text-xs tracking-[0.2em] shadow-2xl transition-all hover:scale-[1.02] active:scale-95 disabled:grayscale disabled:opacity-50">
+                       <div className="relative flex items-center justify-center gap-4 bg-gradient-to-r from-[#FF4B6B] via-[#8B31FF] to-[#31A8FF] text-gray-900 py-6 rounded-[2rem] font-black uppercase italic text-xs tracking-[0.2em] shadow-2xl transition-all hover:scale-[1.02] active:scale-95 disabled:grayscale disabled:opacity-50">
                           {submitting ? (
                             <FiRefreshCw className="w-5 h-5 animate-spin" />
                           ) : (
