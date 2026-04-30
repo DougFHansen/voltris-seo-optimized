@@ -222,14 +222,6 @@ export default function HomeClient() {
                     <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[120px]" />
                     <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-100/50 to-blue-100/50 blur-[100px]" />
                 </div>
-
-                {/* Glassmorphism Overlay */}
-                <div className="fixed inset-0 bg-gradient-to-b from-white/20 via-white/10 to-gray-50/20 backdrop-blur-[1px] pointer-events-none z-10" />
-
-                {/* Particle Background */}
-                <div className="fixed inset-0 overflow-hidden pointer-events-none z-20 min-h-screen">
-                    <ParticleBackground />
-                </div>
                 <section
                     className="
                     relative
@@ -245,7 +237,6 @@ export default function HomeClient() {
                     sm:px-6
                     lg:px-12
                     xl:px-24
-                    z-20
 
                     overflow-x-hidden
                     pt-20
@@ -255,8 +246,15 @@ export default function HomeClient() {
                 "
                     aria-label="Software de otimização de PC para Windows - Voltris Optimizer"
                 >
+                    {/* Particle Background (Hero Only) */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                        <ParticleBackground />
+                    </div>
 
-                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-8 h-full relative z-10">
+                    {/* Glassmorphism Overlay (Hero Only) */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/20 to-gray-50/30 backdrop-blur-[1px] pointer-events-none z-10" />
+
+                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-8 h-full relative z-20">
 
                         {/* Left Content - Typography & CTA */}
                         {/* Using display: contents on mobile to allow reordering of children relative to the visual component */}
