@@ -45,7 +45,7 @@ export default function UISettingsModal({ isOpen, onClose }: UISettingsModalProp
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                    <div className="flex items-center gap-3">
-                      <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#8B31FF] to-[#6010FF] text-white">
+                      <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#8B31FF] to-[#6010FF] text-gray-900">
                         <FiSettings className="w-5 h-5" />
                       </div>
                       <h2 className="text-2xl font-black text-gray-900 uppercase italic tracking-tighter">Configurações <span className="text-[#8B31FF] not-italic">UI</span></h2>

@@ -300,7 +300,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                 </button>
                                 <button
                                     onClick={handleConfirmUnlink}
-                                    className="px-6 py-2 text-sm bg-red-500 hover:bg-red-600 text-white rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
+                                    className="px-6 py-2 text-sm bg-red-500 hover:bg-red-600 text-gray-900 rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
                                 >
                                     Sim, Desvincular
                                 </button>
