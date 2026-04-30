@@ -16,13 +16,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Voltris Optimizer | Documentação Técnica',
     description: 'Mergulhe na arquitetura técnica do Voltris Optimizer. Segurança, Performance e Engenharia de Software explicadas.',
-    url: 'https://voltris.com.br/voltrisoptimizer/documentacao',
+    url: 'https://www.voltris.com.br/voltrisoptimizer/documentacao',
     type: 'article',
     siteName: 'Voltris Technology',
     locale: 'pt_BR',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/voltrisoptimizer/documentacao',
+    canonical: 'https://www.voltris.com.br/voltrisoptimizer/documentacao',
   },
   robots: {
     index: true,

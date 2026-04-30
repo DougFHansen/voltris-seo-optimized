@@ -94,12 +94,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'VOLTRIS OPTIMIZER | Primeiro Software Brasileiro SaaS de Otimização com Controle Remoto',
     description: 'Software de otimização profissional com controle remoto via web. Aumente FPS, otimize para streaming, acelere empresas. Tecnologia SaaS brasileira inovadora.',
-    url: 'https://voltris.com.br/voltrisoptimizer',
+    url: 'https://www.voltris.com.br/voltrisoptimizer',
     type: 'website',
     siteName: 'VOLTRIS Technology',
     images: [
       {
-        url: 'https://voltris.com.br/og-optimizer-enterprise.jpg', // Placeholder para imagem real
+        url: 'https://www.voltris.com.br/og-optimizer-enterprise.jpg', // Placeholder para imagem real
         width: 1200,
         height: 630,
         alt: 'Voltris Optimizer Dashboard',
@@ -108,7 +108,7 @@ export const metadata: Metadata = {
     locale: 'pt_BR',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/voltrisoptimizer',
+    canonical: 'https://www.voltris.com.br/voltrisoptimizer',
   },
   robots: {
     index: true,

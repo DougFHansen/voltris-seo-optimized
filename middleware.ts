@@ -11,6 +11,14 @@ const SECURITY_HEADERS = {
 }
 
 export async function middleware(request: NextRequest) {
+    // Redirecionamento 301: voltris.com.br → www.voltris.com.br
+    const hostname = request.nextUrl.hostname;
+    if (hostname === 'voltris.com.br') {
+        const url = new URL(request.url);
+        url.hostname = 'www.voltris.com.br';
+        return NextResponse.redirect(url, 301);
+    }
+
     let response = NextResponse.next()
 
     // Aplicar headers de segurança em todas as respostas

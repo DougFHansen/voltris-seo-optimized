@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { normalizeUrl } from '@/lib/url-normalizer';
 
 // URLs que NÃO devem ser enviadas ao IndexNow
 const BLOCKED_PATTERNS = [
@@ -31,10 +32,10 @@ function shouldIndexUrl(url: string): boolean {
     }
   }
   
-  // Verificar se é URL válida do domínio
+  // Verificar se é URL válida do domínio (apenas www.voltris.com.br)
   try {
     const urlObj = new URL(url);
-    return urlObj.hostname === 'www.voltris.com.br' || urlObj.hostname === 'voltris.com.br';
+    return urlObj.hostname === 'www.voltris.com.br';
   } catch {
     return false;
   }
@@ -49,8 +50,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid URL list' }, { status: 400 });
     }
 
+    // Normalizar URLs para www.voltris.com.br
+    const normalizedUrls = urlList.map(normalizeUrl);
+    
     // Aplicar filtro de qualidade
-    const filteredUrls = urlList.filter(shouldIndexUrl);
+    const filteredUrls = normalizedUrls.filter(shouldIndexUrl);
 
     if (filteredUrls.length === 0) {
       return NextResponse.json({ 

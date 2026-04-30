@@ -1956,7 +1956,7 @@ export default function OptimizerClient() {
             <SoftwareApplicationSchema
                 name="VOLTRIS OPTIMIZER"
                 description="VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto para gamers, empresas e uso doméstico. Setup instantâneo, tecnologia nacional inovadora."
-                url="https://voltris.com.br/voltrisoptimizer"
+                url="https://www.voltris.com.br/voltrisoptimizer"
                 applicationCategory="GameApplication"
                 operatingSystem="Windows"
                 offers={{

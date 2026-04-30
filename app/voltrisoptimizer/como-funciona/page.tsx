@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: 'Engenharia de Performance: Como o Voltris Acelera seu PC',
         description: 'Não é mágica, é engenharia. Veja como atuamos no Kernel do Windows para desbloquear hardware em Jogos, Streaming e Workstations.',
-        url: 'https://voltris.com.br/voltrisoptimizer/como-funciona',
+        url: 'https://www.voltris.com.br/voltrisoptimizer/como-funciona',
         type: 'article',
         images: [
             {
-                url: 'https://voltris.com.br/og-how-it-works.jpg',
+                url: 'https://www.voltris.com.br/og-how-it-works.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Diagrama de funcionamento do Voltris Optimizer',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         ],
     },
     alternates: {
-        canonical: 'https://voltris.com.br/voltrisoptimizer/como-funciona',
+        canonical: 'https://www.voltris.com.br/voltrisoptimizer/como-funciona',
     },
 };
 
