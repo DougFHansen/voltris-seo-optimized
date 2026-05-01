@@ -166,31 +166,31 @@ export default function ServicesPage() {
         {
           id: 'formatacao_basica',
           title: 'Básica',
-          price: 19.90,
+          price: 99.90,
           description: 'Backup, formatação, instalação de drivers e atualizações.',
           categoryName: 'Formatação Completa',
           serviceName: 'Formatação Básica'
         },
         {
           id: 'formatacao_media',
-          title: 'Padrão',
-          price: 29.90,
+          title: 'Média',
+          price: 149.90,
           description: 'Inclui "Básica" + antivírus e otimização básica.',
           categoryName: 'Formatação Completa',
-          serviceName: 'Formatação Padrão'
+          serviceName: 'Formatação Média'
         },
         {
           id: 'formatacao_avancada',
           title: 'Avançada',
-          price: 39.90,
-          description: 'Inclui "Padrão" + otimização de performance média.',
+          price: 199.90,
+          description: 'Inclui "Média" + otimização de performance média.',
           categoryName: 'Formatação Completa',
           serviceName: 'Formatação Avançada'
         },
         {
           id: 'formatacao_corporativa',
           title: 'Corporativa',
-          price: 69.90,
+          price: 349.90,
           description: 'Inclui "Avançada" + Office Suite (permanente*) e otimização avançada.',
           categoryName: 'Formatação Completa',
           serviceName: 'Formatação Corporativa'
@@ -198,7 +198,7 @@ export default function ServicesPage() {
         {
           id: 'formatacao_gamer',
           title: 'Gamer',
-          price: 89.90,
+          price: 449.90,
           description: 'Inclui "Avançada" + Office Suite (opcional) e otimização gamer extrema (FPS, input lag, etc.).',
           categoryName: 'Formatação Completa',
           serviceName: 'Formatação Gamer'
@@ -212,24 +212,24 @@ export default function ServicesPage() {
         {
           id: 'otimizacao_basica',
           title: 'Básica',
-          price: 15.90,
+          price: 79.90,
           description: 'Drivers, atualizações, correção de erros e otimização básica.',
           categoryName: 'Otimização de Performance',
           serviceName: 'Otimização Básica'
         },
         {
           id: 'otimizacao_media',
-          title: 'Padrão',
-          price: 19.90,
+          title: 'Média',
+          price: 99.90,
           description: 'Inclui "Básica" + otimização de performance média.',
           categoryName: 'Otimização de Performance',
-          serviceName: 'Otimização Padrão'
+          serviceName: 'Otimização Média'
         },
         {
           id: 'otimizacao_avancada',
           title: 'Avançada',
-          price: 29.90,
-          description: 'Inclui "Padrão" + otimização de performance avançada.',
+          price: 149.90,
+          description: 'Inclui "Média" + otimização de performance avançada.',
           categoryName: 'Otimização de Performance',
           serviceName: 'Otimização Avançada'
         }
@@ -242,7 +242,7 @@ export default function ServicesPage() {
         {
           id: 'correcao_windows',
           title: 'Correção de Erros do Windows',
-          price: 9.90,
+          price: 49.90,
           description: 'Solução remota e correção de erros para sistemas Windows. Correção de erros do sistema, reparo de arquivos corrompidos, solução de problemas de inicialização, recuperação do sistema, diagnóstico completo e relatório detalhado.',
           categoryName: 'Correções de Erros do Windows',
           serviceName: 'Correção de Erros do Windows'
@@ -256,7 +256,7 @@ export default function ServicesPage() {
         {
           id: 'impressora_basica',
           title: 'Instalação de Impressora',
-          price: 9.90,
+          price: 49.90,
           description: 'Instalação simples, driver e teste de impressão local.',
           categoryName: 'Instalação de Impressora',
           serviceName: 'Instalação de Impressora'
@@ -270,7 +270,7 @@ export default function ServicesPage() {
         {
           id: 'virus_basica',
           title: 'Remoção de Vírus',
-          price: 7.90,
+          price: 39.90,
           description: 'Varredura e remoção de vírus comuns, malware e spyware.',
           categoryName: 'Remoção de Vírus',
           serviceName: 'Remoção de Vírus'
@@ -284,23 +284,23 @@ export default function ServicesPage() {
         {
           id: 'recuperacao_basica',
           title: 'Básica',
-          price: 20.00,
+          price: 100.00,
           description: 'Recuperação de arquivos excluídos/corrompidos (software padrão).',
           categoryName: 'Recuperação de Dados',
           serviceName: 'Recuperação Básica'
         },
         {
           id: 'recuperacao_media',
-          title: 'Padrão',
-          price: 30.00,
+          title: 'Média',
+          price: 150.00,
           description: 'Casos complexos, ferramentas especializadas, análise de setores.',
           categoryName: 'Recuperação de Dados',
-          serviceName: 'Recuperação Padrão'
+          serviceName: 'Recuperação Média'
         },
         {
           id: 'recuperacao_avancada',
           title: 'Avançada',
-          price: 40.00,
+          price: 200.00,
           description: 'Discos com falhas graves, clonagem, tratamento de blocos defeituosos.',
           categoryName: 'Recuperação de Dados',
           serviceName: 'Recuperação Avançada'
