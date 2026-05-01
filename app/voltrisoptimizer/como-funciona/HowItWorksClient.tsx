@@ -234,7 +234,7 @@ export default function HowItWorksClient() {
                                 <div className="flex flex-col sm:flex-row items-center gap-5 justify-center w-full">
                                     <div className="flex flex-col w-full gap-2">
                                         <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstaller.exe"
+                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.2/VoltrisOptimizerInstaller.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x64) - HowItWorks')}
                                             className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                         >
@@ -465,7 +465,7 @@ export default function HowItWorksClient() {
                             </div>
                             <div className="flex flex-col items-center gap-2 w-full max-w-md">
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstaller.exe"
+                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.2/VoltrisOptimizerInstaller.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x64) - HowItWorks Bottom')}
                                     className="w-full inline-flex items-center justify-center gap-4 px-12 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-black text-2xl rounded-2xl hover:scale-105 hover:shadow-lg transition-all duration-300 transform"
                                 >
