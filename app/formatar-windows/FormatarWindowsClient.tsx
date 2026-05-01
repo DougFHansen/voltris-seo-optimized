@@ -93,7 +93,7 @@ export default function FormatarWindowsClient() {
 
                             <div className="flex flex-col sm:flex-row gap-4 mb-8">
                                 <Link
-                                    href="/todos-os-servicos/formatacao-windows"
+                                    href="/servicos"
                                     className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 backdrop-blur-sm overflow-hidden"
                                 >
                                     <span className="mr-2">Solicitar Orçamento</span>
@@ -101,10 +101,10 @@ export default function FormatarWindowsClient() {
                                 </Link>
                                 <Link
                                     href="https://wa.me/5511996716235"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
                                 >
                                     <MessageCircle className="mr-2" size={20} />
-                                    Falar no WhatsApp
+                                    (11) 99671-6235
                                 </Link>
                             </div>
 
@@ -367,17 +367,17 @@ export default function FormatarWindowsClient() {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
-                            href="/todos-os-servicos/formatacao-windows"
+                            href="/servicos"
                             className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 backdrop-blur-sm overflow-hidden"
                         >
                             <span className="mr-2">Solicitar Orçamento</span>
                             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                         <Link
-                            href="tel:+5511996716235"
-                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+                            href="https://wa.me/5511996716235"
+                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
                         >
-                            <Phone className="mr-2" size={20} />
+                            <MessageCircle className="mr-2" size={20} />
                             (11) 99671-6235
                         </Link>
                     </div>
