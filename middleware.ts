@@ -11,6 +11,19 @@ const SECURITY_HEADERS = {
 }
 
 export async function middleware(request: NextRequest) {
+    const pathname = request.nextUrl.pathname.toLowerCase();
+    
+    // BLOQUEIO SEO 410: URLs de teste nunca devem ser indexadas
+    const TEST_URL_PATTERNS = [
+        'indexnow-test',
+        'performance-test',
+    ];
+    
+    const isTestUrl = TEST_URL_PATTERNS.some(pattern => pathname.includes(pattern));
+    if (isTestUrl) {
+        return new NextResponse(null, { status: 410 });
+    }
+
     // Redirecionamento 301: voltris.com.br → www.voltris.com.br
     const hostname = request.nextUrl.hostname;
     if (hostname === 'voltris.com.br') {

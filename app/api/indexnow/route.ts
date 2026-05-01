@@ -21,7 +21,9 @@ const BLOCKED_PATTERNS = [
   '/integracao-servicos',
   '/reembolso-cancelamento',
   '/pix-limitacao',
+  // URLs de teste - nunca indexar
   '/indexnow-test',
+  '/performance-test',
 ];
 
 function shouldIndexUrl(url: string): boolean {

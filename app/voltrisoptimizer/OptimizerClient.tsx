@@ -577,7 +577,7 @@ export default function OptimizerClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-gray-500 font-medium">Versão Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-md text-xs font-bold text-blue-600">
-                                        v1.0.1.1
+                                        v1.0.1.2
                                     </span>
                                 </div>
 
@@ -594,7 +594,7 @@ export default function OptimizerClient() {
                                         <div className="mt-2 text-center">
                                             <span className="text-[10px] sm:text-xs text-gray-500 font-medium flex items-center justify-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
                                                 <ShieldCheck className="w-3 h-3 text-emerald-600" /> 
-                                                Licença trial de 15 dias inclusa no download
+                                                Licença trial de 7 dias inclusa no download
                                             </span>
                                         </div>
                                         <a

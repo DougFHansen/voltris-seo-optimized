@@ -245,7 +245,7 @@ serve(async (req) => {
       console.log(`[CHECK-TRIAL] 🎉 First activation for HWID: ${hwidHash.substring(0, 16)}...`)
 
       const trialExpiresAt = new Date()
-      trialExpiresAt.setDate(trialExpiresAt.getDate() + 15)
+      trialExpiresAt.setDate(trialExpiresAt.getDate() + 7)
 
       const { data: newTrial, error: insertError } = await supabase
         .from('trial_activations')
@@ -278,9 +278,9 @@ serve(async (req) => {
       response = {
         success: true,
         trialActive: true,
-        daysRemaining: 15,
+        daysRemaining: 7,
         expiresAt: trialExpiresAt.toISOString(),
-        message: 'Trial ativado com sucesso - 15 dias de uso gratuito',
+        message: 'Trial ativado com sucesso - 7 dias de uso gratuito',
         isFirstActivation: true
       }
     }
