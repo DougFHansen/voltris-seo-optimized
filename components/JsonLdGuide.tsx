@@ -113,11 +113,45 @@ export default function JsonLdGuide({
     }))
   } : null;
 
+  // Adiciona Article Schema para SEO
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    image,
+    url: finalUrl,
+    datePublished,
+    dateModified,
+    author: {
+      '@type': 'Person',
+      name: 'Doug FHansen',
+      jobTitle: 'Especialista em Performance de PC',
+      url: 'https://www.voltris.com.br'
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'VOLTRIS',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.voltris.com.br/logo.png'
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': finalUrl
+    }
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       {faqSchema && (
         <script

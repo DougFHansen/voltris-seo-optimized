@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://voltris.com.br',
+    url: 'https://www.voltris.com.br',
     siteName: 'VOLTRIS',
     title: 'VOLTRIS - Otimização de PC e Suporte Técnico Especializado',
     description: 'Suporte técnico remoto especializado em Windows, otimização de computadores e manutenção de sistemas de alta performance.',
@@ -134,8 +134,8 @@ export default function RootLayout({
           data={{
             name: "VOLTRIS - Otimização de PC e Suporte Técnico Especializado",
             description: "Especialistas em suporte técnico remoto e otimização de computadores para máxima performance em todo o Brasil.",
-            url: "https://voltris.com.br",
-            logo: "https://voltris.com.br/logo.png",
+            url: "https://www.voltris.com.br",
+            logo: "https://www.voltris.com.br/logo.png",
             contactPoint: [{
               "@type": "ContactPoint",
               "telephone": "+55-11-99671-6235",
@@ -165,6 +165,22 @@ export default function RootLayout({
               "@type": "AggregateRating",
               "ratingValue": "4.9",
               "ratingCount": "1250"
+            }
+          }}
+        />
+
+        {/* Schema.org Person - Author for E-E-A-T */}
+        <JsonLd
+          type="Person"
+          data={{
+            name: "Doug FHansen",
+            jobTitle: "Especialista em Performance de PC",
+            url: "https://www.voltris.com.br",
+            description: "Especialista em otimização de performance de PC com 10+ anos de experiência. Já ajudou mais de 12.500 usuários a aumentar FPS e reduzir lag através do Voltris Optimizer.",
+            worksFor: {
+              "@type": "Organization",
+              name: "VOLTRIS",
+              url: "https://www.voltris.com.br"
             }
           }}
         />

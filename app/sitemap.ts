@@ -5,45 +5,48 @@ import path from 'path';
 const BASE_URL = 'https://www.voltris.com.br';
 
 const CRITICAL_ROUTES = [
-  '',
-  '/servicos',
-  '/contato',
-  '/sobre',
-  '/guias',
-  '/todos-os-servicos',
-  '/otimizacao-pc',
-  '/formatar-windows',
-  '/assistencia-tecnica',
-  '/tecnico-informatica',
-  '/suporte-tecnico-remoto',
-  '/manutencao-computador',
-  '/erros-jogos',
-  '/voltrisoptimizer',
-  '/adquirir-licenca',
-  '/criar-site',
-  '/faq',
-  '/exterior',
-  '/exterior/servicos',
-  '/exterior/contato',
-  '/exterior/orcamento',
+  { path: '', lastModified: new Date('2026-05-02') },
+  { path: '/servicos', lastModified: new Date('2026-05-02') },
+  { path: '/contato', lastModified: new Date('2026-05-02') },
+  { path: '/sobre', lastModified: new Date('2026-05-02') },
+  { path: '/guias', lastModified: new Date('2026-05-02') },
+  { path: '/todos-os-servicos', lastModified: new Date('2026-05-02') },
+  { path: '/otimizacao-pc', lastModified: new Date('2026-05-02') },
+  { path: '/formatar-windows', lastModified: new Date('2026-05-02') },
+  { path: '/assistencia-tecnica', lastModified: new Date('2026-05-02') },
+  { path: '/tecnico-informatica', lastModified: new Date('2026-05-02') },
+  { path: '/suporte-tecnico-remoto', lastModified: new Date('2026-05-02') },
+  { path: '/manutencao-computador', lastModified: new Date('2026-05-02') },
+  { path: '/erros-jogos', lastModified: new Date('2026-05-02') },
+  { path: '/voltrisoptimizer', lastModified: new Date('2026-05-02') },
+  { path: '/adquirir-licenca', lastModified: new Date('2026-05-02') },
+  { path: '/criar-site', lastModified: new Date('2026-05-02') },
+  { path: '/faq', lastModified: new Date('2026-05-02') },
+  { path: '/exterior', lastModified: new Date('2026-05-02') },
+  { path: '/exterior/servicos', lastModified: new Date('2026-05-02') },
+  { path: '/exterior/contato', lastModified: new Date('2026-05-02') },
+  { path: '/exterior/orcamento', lastModified: new Date('2026-05-02') },
   // FASE 1: High-quality pages (15-25 pages)
-  '/otimizacao-windows-jogos',
-  '/servicos-combinados',
-  '/empresas',
-  '/glossario',
-  '/como-aumentar-fps-roblox-windows',
-  '/como-corrigir-queda-de-wifi-windows-11',
-  '/como-desativar-vbs-windows-11-gamer',
-  '/como-limpar-cache-nvidia-windows-11',
-  '/otimizar-windows-11-para-valorant',
-  '/otimizar-windows-11-para-warzone-2026',
-  '/otimizar-windows-para-counter-strike-2-cs2',
-  '/otimizar-windows-para-fortnite-2026',
-  '/otimizar-windows-para-minecraft-ultra-fps',
-  '/melhorar-performance-da-steam-windows-11',
-  '/melhorar-performance-do-google-chrome-windows',
-  '/voltrisoptimizer/como-funciona',
-  '/voltrisoptimizer/documentacao',
+  { path: '/otimizacao-windows-jogos', lastModified: new Date('2026-05-02') },
+  { path: '/servicos-combinados', lastModified: new Date('2026-05-02') },
+  { path: '/empresas', lastModified: new Date('2026-05-02') },
+  { path: '/glossario', lastModified: new Date('2026-05-02') },
+  { path: '/como-aumentar-fps-roblox-windows', lastModified: new Date('2026-05-02') },
+  { path: '/como-corrigir-queda-de-wifi-windows-11', lastModified: new Date('2026-05-02') },
+  { path: '/como-desativar-vbs-windows-11-gamer', lastModified: new Date('2026-05-02') },
+  { path: '/como-limpar-cache-nvidia-windows-11', lastModified: new Date('2026-05-02') },
+  { path: '/otimizar-windows-11-para-valorant', lastModified: new Date('2026-05-02') },
+  { path: '/otimizar-windows-11-para-warzone-2026', lastModified: new Date('2026-05-02') },
+  { path: '/otimizar-windows-para-counter-strike-2-cs2', lastModified: new Date('2026-05-02') },
+  { path: '/otimizar-windows-para-fortnite-2026', lastModified: new Date('2026-05-02') },
+  { path: '/otimizar-windows-para-minecraft-ultra-fps', lastModified: new Date('2026-05-02') },
+  { path: '/melhorar-performance-da-steam-windows-11', lastModified: new Date('2026-05-02') },
+  { path: '/melhorar-performance-do-google-chrome-windows', lastModified: new Date('2026-05-02') },
+  { path: '/voltrisoptimizer/como-funciona', lastModified: new Date('2026-05-02') },
+  { path: '/voltrisoptimizer/documentacao', lastModified: new Date('2026-05-02') },
+  // Páginas Pilares SEO
+  { path: '/aumentar-fps', lastModified: new Date('2026-05-02') },
+  { path: '/otimizacao-windows-11', lastModified: new Date('2026-05-02') },
 ] as const;
 
 function getGuideRoutes(): string[] {
@@ -74,18 +77,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const guideRoutes = getGuideRoutes();
   const allRoutes = [...CRITICAL_ROUTES, ...guideRoutes];
 
-  return allRoutes.map((route) => ({
-    url: `${BASE_URL}${route}`,
-    lastModified: now,
-    changeFrequency: route === '' ? 'daily' : route.startsWith('/guias/') ? 'monthly' : 'weekly',
-    priority: route === '' ? 1 
-      : route.startsWith('/guias/') ? 0.7 
-      : route.startsWith('/exterior') ? 0.8 
-      : route === '/otimizacao-windows-jogos' ? 0.95
-      : route.startsWith('/otimizar-windows-para-') ? 0.9
-      : route.startsWith('/como-') ? 0.85
-      : route.startsWith('/melhorar-performance-') ? 0.85
-      : route.startsWith('/voltrisoptimizer/') ? 0.88
-      : 0.9,
-  }));
+  return allRoutes.map((route) => {
+    const path = typeof route === 'string' ? route : route.path;
+    const lastModified = typeof route === 'string' ? now : route.lastModified;
+
+    return {
+      url: `${BASE_URL}${path}`,
+      lastModified,
+      changeFrequency: path === '' ? 'daily' : path.startsWith('/guias/') ? 'monthly' : 'weekly',
+      priority: path === '' ? 1
+        : path.startsWith('/guias/') ? 0.7
+        : path.startsWith('/exterior') ? 0.8
+        : path === '/otimizacao-windows-jogos' ? 0.95
+        : path.startsWith('/otimizar-windows-para-') ? 0.9
+        : path.startsWith('/como-') ? 0.85
+        : path.startsWith('/melhorar-performance-') ? 0.85
+        : path.startsWith('/voltrisoptimizer/') ? 0.88
+        : 0.9,
+    };
+  });
 }
