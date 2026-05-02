@@ -47,6 +47,12 @@ const CRITICAL_ROUTES = [
   // Páginas Pilares SEO
   { path: '/aumentar-fps', lastModified: new Date('2026-05-02') },
   { path: '/otimizacao-windows-11', lastModified: new Date('2026-05-02') },
+  // Páginas Satélites
+  { path: '/como-aumentar-fps-valorant-2026', lastModified: new Date('2026-05-02') },
+  { path: '/como-aumentar-fps-warzone-2026', lastModified: new Date('2026-05-02') },
+  { path: '/como-aumentar-fps-cs2-2026', lastModified: new Date('2026-05-02') },
+  { path: '/configurar-nvidia-control-panel-fps', lastModified: new Date('2026-05-02') },
+  { path: '/desativar-telemetria-windows-11', lastModified: new Date('2026-05-02') },
 ] as const;
 
 function getGuideRoutes(): string[] {
