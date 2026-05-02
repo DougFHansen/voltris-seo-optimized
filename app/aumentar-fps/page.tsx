@@ -132,6 +132,10 @@ export default function AumentarFpsPage() {
 
             <h2 className="text-3xl font-bold text-white mt-12 mb-4">Páginas Relacionadas</h2>
             <ul className="list-disc text-gray-300 space-y-2 ml-6">
+              <li><Link href="/como-aumentar-fps-valorant-2026" className="text-[#31A8FF] hover:underline">Como Aumentar FPS no Valorant 2026</Link></li>
+              <li><Link href="/como-aumentar-fps-warzone-2026" className="text-[#31A8FF] hover:underline">Como Aumentar FPS no Warzone 2026</Link></li>
+              <li><Link href="/como-aumentar-fps-cs2-2026" className="text-[#31A8FF] hover:underline">Como Aumentar FPS no CS2 2026</Link></li>
+              <li><Link href="/configurar-nvidia-control-panel-fps" className="text-[#31A8FF] hover:underline">Configurar NVIDIA Control Panel para FPS</Link></li>
               <li><Link href="/otimizar-windows-para-valorant" className="text-[#31A8FF] hover:underline">Otimizar Windows para Valorant</Link></li>
               <li><Link href="/otimizar-windows-para-fortnite-2026" className="text-[#31A8FF] hover:underline">Otimizar Windows para Fortnite</Link></li>
               <li><Link href="/otimizar-windows-para-counter-strike-2-cs2" className="text-[#31A8FF] hover:underline">Otimizar Windows para CS2</Link></li>

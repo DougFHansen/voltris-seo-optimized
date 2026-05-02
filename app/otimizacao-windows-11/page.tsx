@@ -144,10 +144,12 @@ export default function OtimizacaoWindows11Page() {
 
             <h2 className="text-3xl font-bold text-white mt-12 mb-4">Páginas Relacionadas</h2>
             <ul className="list-disc text-gray-300 space-y-2 ml-6">
+              <li><Link href="/desativar-telemetria-windows-11" className="text-[#31A8FF] hover:underline">Como Desativar Telemetria Windows 11</Link></li>
               <li><Link href="/como-desativar-vbs-windows-11-gamer" className="text-[#31A8FF] hover:underline">Como Desativar VBS Windows 11</Link></li>
               <li><Link href="/como-corrigir-queda-de-wifi-windows-11" className="text-[#31A8FF] hover:underline">Como Corrigir Queda de WiFi</Link></li>
               <li><Link href="/otimizacao-windows-jogos" className="text-[#31A8FF] hover:underline">Otimização Windows para Jogos</Link></li>
               <li><Link href="/aumentar-fps" className="text-[#31A8FF] hover:underline">Como Aumentar FPS</Link></li>
+              <li><Link href="/como-aumentar-fps-valorant-2026" className="text-[#31A8FF] hover:underline">Como Aumentar FPS no Valorant</Link></li>
             </ul>
 
             <div className="mt-12 p-6 bg-purple-900/30 rounded-lg border border-purple-500/30">
