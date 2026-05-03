@@ -1209,7 +1209,7 @@ html {
 }
 
 
-/* Modern Custom Scrollbar - Enterprise/SaaS Style */
+/* Modern Custom Scrollbar */
 .custom-scrollbar-modern {
   scrollbar-width: thin;
   scrollbar-color: rgba(139, 49, 255, 0.3) transparent;

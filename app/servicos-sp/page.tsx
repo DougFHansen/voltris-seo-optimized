@@ -41,7 +41,7 @@ export default function TechServicesSPPage() {
     {
       icon: <Monitor className="w-8 h-8 text-cyan-500" />,
       title: "Software Voltris Optimizer",
-      description: "Otimização automática com nosso software SaaS brasileiro",
+      description: "Otimização automática com nosso software brasileiro",
       cities: ["Todo Estado", "Online", "Remoto", "Atendimento", "Suporte"],
       startingPrice: "R$ 29/mês"
     }

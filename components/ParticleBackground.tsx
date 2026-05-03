@@ -19,7 +19,7 @@ const ParticleBackground: React.FC = () => {
   const mouseRef = useRef({ x: 0, y: 0 });
   const particlesRef = useRef<Particle[]>([]);
 
-  // Configuration - SaaS High-End Style
+  // Configuration
   const config = {
     particleCount: { desktop: 40, mobile: 8 }, // REDUZIDO DE 20 PARA 8 NO MOBILE PARA PERFORMANCE
     connectionDistance: 100,
@@ -99,7 +99,7 @@ const ParticleBackground: React.FC = () => {
         particle.vy = (particle.vy / speed) * config.baseSpeed * 2;
       }
 
-      // Draw SaaS High-End Glow with 3-layer hierarchy
+      // Draw Glow with 3-layer hierarchy
       const coreSize = particle.size * 1.5;
       const midSize = particle.size * 4;
       const outerSize = particle.size * 8;

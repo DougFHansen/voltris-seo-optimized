@@ -406,7 +406,7 @@ export default function OptimizerClient() {
                     {/* Floating Tech Elements (Monitor Simulation) */}
                     <div className="absolute inset-0 pointer-events-none hidden lg:block overflow-hidden">
 
-                        {/* Left Card - System Health (Enterprise SaaS Style) */}
+                        {/* Left Card - System Health */}
                         <motion.div
                             style={{ y: yLeft }}
                             initial={{ opacity: 0, x: -100 }}
@@ -472,7 +472,7 @@ export default function OptimizerClient() {
                             </div>
                         </motion.div>
 
-                        {/* Right Card - Performance Engine (Enterprise SaaS Style) */}
+                        {/* Right Card - Performance Engine */}
                         <motion.div
                             style={{ y: yRight }}
                             initial={{ opacity: 0, x: 100 }}
@@ -1433,7 +1433,7 @@ export default function OptimizerClient() {
                                     Otimização de PC para <span className="bg-gradient-to-r from-emerald-500 to-blue-600 text-transparent bg-clip-text">Gamers e Streamers</span>
                                 </h2>
                                 <p className="text-lg text-gray-500 max-w-3xl mx-auto leading-relaxed">
-                                    O primeiro software brasileiro SaaS com controle remoto de otimização. Aumente FPS, reduza lag e elimine travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite.
+                                    O primeiro software brasileiro com controle remoto de otimização. Aumente FPS, reduza lag e elimine travamentos em jogos competitivos como Valorant, CS2, League of Legends e Fortnite.
                                 </p>
                             </div>
 
@@ -1597,7 +1597,7 @@ export default function OptimizerClient() {
                                                 <Lock className="w-5 h-5 text-purple-600" />
                                             </div>
                                             <div>
-                                                <h4 className="text-gray-900 font-bold mb-1">Software SaaS de Otimização Empresarial</h4>
+                                                <h4 className="text-gray-900 font-bold mb-1">Software de Otimização Empresarial</h4>
                                                 <p className="text-sm text-gray-600">Tecnologia inovadora no Brasil: controle total via web sem necessidade de acesso físico</p>
                                             </div>
                                         </div>
@@ -1623,7 +1623,7 @@ export default function OptimizerClient() {
                                                 { title: 'Redução de Custos com TI', desc: 'Menos chamados técnicos e maior vida útil do hardware' },
                                                 { title: 'Produtividade Aumentada', desc: 'Colaboradores com máquinas rápidas e responsivas' },
                                                 { title: 'Gestão Centralizada', desc: 'Controle toda frota de PCs através de um único painel' },
-                                                { title: 'Tecnologia Brasileira', desc: 'Primeiro software SaaS nacional com controle remoto de otimização' }
+                                                { title: 'Tecnologia Brasileira', desc: 'Software nacional com controle remoto de otimização' }
                                             ].map((benefit, i) => (
                                                 <div key={i} className="flex items-start gap-3">
                                                     <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
@@ -1808,13 +1808,13 @@ export default function OptimizerClient() {
                                 Inovação <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">Engarrafada no Brasil</span>
                             </h2>
                             <p className="text-lg text-gray-500 max-w-3xl mx-auto mb-12 leading-relaxed">
-                                Orgulhosamente desenvolvido no Brasil. Fomos os primeiros a integrar <strong className="text-gray-900">Gerenciamento de Kernel</strong> com a conveniência do <strong className="text-gray-900">SaaS Moderno</strong>.
+                                Orgulhosamente desenvolvido no Brasil. Fomos os primeiros a integrar <strong className="text-gray-900">Gerenciamento de Kernel</strong> com a conveniência do <strong className="text-gray-900">Controle Remoto Web</strong>.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                                 {[
                                     { icon: <Radio className="w-6 h-6" />, title: 'Controle Remoto via Web', desc: 'Execute otimizações de qualquer lugar do mundo através do painel online' },
-                                    { icon: <Brain className="w-6 h-6" />, title: 'Tecnologia SaaS', desc: 'Plataforma baseada em nuvem com atualizações automáticas e inteligência artificial' },
+                                    { icon: <Brain className="w-6 h-6" />, title: 'Tecnologia Web', desc: 'Plataforma baseada em nuvem com atualizações automáticas e inteligência artificial' },
                                     { icon: <ShieldCheck className="w-6 h-6" />, title: 'Solução Profissional', desc: 'Desenvolvida com padrões enterprise para uso doméstico e corporativo' },
                                     { icon: <Zap className="w-6 h-6" />, title: 'Inovação Nacional', desc: 'Primeira tecnologia brasileira de otimização remota do mercado' }
                                 ].map((feature, i) => (
@@ -1894,7 +1894,7 @@ export default function OptimizerClient() {
                             onClick={() => setOpenFaqIndex(openFaqIndex === 4 ? null : 4)}
                             isOpen={openFaqIndex === 4}
                             question="Como funciona o controle remoto via web?"
-                            answer="Após instalar o software, você pode acessar o painel web de qualquer lugar e executar otimizações remotamente. Ã‰ a primeira tecnologia SaaS brasileira com esse recurso, ideal para empresas e usuários que gerenciam múltiplos computadores."
+                            answer="Após instalar o software, você pode acessar o painel web de qualquer lugar e executar otimizações remotamente. Ã‰ a primeira tecnologia brasileira com esse recurso, ideal para empresas e usuários que gerenciam múltiplos computadores."
                         />
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 5 ? null : 5)}
@@ -1955,7 +1955,7 @@ export default function OptimizerClient() {
 
             <SoftwareApplicationSchema
                 name="VOLTRIS OPTIMIZER"
-                description="VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto para gamers, empresas e uso doméstico. Setup instantâneo, tecnologia nacional inovadora."
+                description="VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução com controle remoto para gamers, empresas e uso doméstico. Setup instantâneo, tecnologia nacional inovadora."
                 url="https://www.voltris.com.br/voltrisoptimizer"
                 applicationCategory="GameApplication"
                 operatingSystem="Windows"

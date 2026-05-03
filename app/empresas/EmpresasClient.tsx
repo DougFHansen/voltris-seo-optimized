@@ -67,7 +67,7 @@ export default function EmpresasClient() {
                 href="/voltrisoptimizer"
                 className="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-all flex items-center justify-center gap-2"
               >
-                Conhecer SaaS (Otimizador)
+                Conhecer Otimizador
               </Link>
             </motion.div>
           </div>
@@ -117,13 +117,13 @@ export default function EmpresasClient() {
           </section>
         </AnimatedSection>
 
-        {/* SAAS SOLUTION HIGHLIGHT */}
+        {/* SOLUTION HIGHLIGHT */}
         <AnimatedSection direction="up" delay={0.1}>
           <section className="py-24 px-4 bg-gradient-to-b from-[#050510] to-[#0A0A0F] relative">
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
               <div className="flex-1 lg:pr-12">
                 <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                  Gestão Centralizada via <span className="text-[#8B31FF]">Painel Web SaaS</span>
+                  Gestão Centralizada via <span className="text-[#8B31FF]">Painel Web</span>
                 </h2>
                 <p className="text-slate-400 text-lg leading-relaxed mb-8">
                   Diferente do suporte clássico, a Voltris oferece o software <strong className="text-white">Optimizer Dashboard</strong>. Acompanhe a saúde, temperatura e estabilidade de cada computador da sua empresa de um único painel via web.

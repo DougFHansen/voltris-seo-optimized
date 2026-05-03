@@ -51,7 +51,7 @@ export default function DigitalPovertyGuide() {
       `
         },
         {
-            title: "2. O Poder da Web (SaaS)",
+            title: "2. O Poder da Web",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Processamento na Nuvem:</h4>

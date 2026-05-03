@@ -39,7 +39,7 @@ import ParticleBackground from "@/components/ParticleBackground";
 const services = [
     {
         icon: <Zap className="w-8 h-8" />,
-        title: "Voltris Optimizer (SaaS)",
+        title: "Voltris Optimizer",
         desc: "Aumente FPS, reduza input lag e otimize o Windows com apenas 1 clique usando nosso software de alta performance.",
         price: "Licença a partir de R$ 49,90",
         link: "/voltrisoptimizer",
@@ -573,13 +573,13 @@ export default function HomeClient() {
                         <div className="text-center mb-16 max-w-4xl mx-auto">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 backdrop-blur-md mb-4">
                                 <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
-                                <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Primeiro Software SaaS Brasileiro com Controle Remoto</span>
+                                <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Primeiro Software Brasileiro com Controle Remoto</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
                                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">VOLTRIS</span> <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-transparent bg-clip-text">OPTIMIZER</span>
                             </h2>
                             <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed mb-4">
-                                Software de otimização de PC com tecnologia SaaS e controle remoto via web.
+                                Software de otimização de PC com controle remoto via web.
                                 Aumente FPS em jogos, otimize para streaming e acelere computadores corporativos.
                             </p>
                             <p className="text-base text-gray-500 leading-relaxed">
@@ -627,7 +627,7 @@ export default function HomeClient() {
                                     </div>
                                     <h3 className="text-xl font-semibold text-gray-900 mb-3">Para Empresas</h3>
                                     <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                                        Gestão remota de performance via nuvem. Otimize toda frota de computadores corporativos de qualquer lugar através do painel web SaaS.
+                                        Gestão remota de performance via nuvem. Otimize toda frota de computadores corporativos de qualquer lugar através do painel web.
                                     </p>
                                     <ul className="space-y-2 text-xs text-gray-500">
                                         <li className="flex items-center gap-2">
@@ -783,14 +783,14 @@ export default function HomeClient() {
                         {/* SEO Content Block */}
                         <div className="mt-12 bg-white border border-gray-200 rounded-2xl p-8 max-w-5xl mx-auto shadow-sm hover:shadow-md transition-all duration-200">
                             <h3 className="text-2xl font-semibold text-gray-900 mb-4 text-center">
-                                O Primeiro Software Brasileiro SaaS de Otimização com Controle Remoto
+                                O Primeiro Software Brasileiro de Otimização com Controle Remoto
                             </h3>
                             <p className="text-gray-500 leading-relaxed text-center mb-6">
-                                O <strong className="text-gray-700">VOLTRIS OPTIMIZER</strong> é uma tecnologia inovadora desenvolvida no Brasil, sendo o primeiro software SaaS nacional com capacidade de <strong className="text-gray-700">controle remoto de otimização via web</strong>. Nossa plataforma permite que você execute funções de otimização, limpeza de RAM e processamento avançado de qualquer lugar do mundo através do painel online.
+                                O <strong className="text-gray-700">VOLTRIS OPTIMIZER</strong> é uma tecnologia inovadora desenvolvida no Brasil, sendo o primeiro software nacional com capacidade de <strong className="text-gray-700">controle remoto de otimização via web</strong>. Nossa plataforma permite que você execute funções de otimização, limpeza de RAM e processamento avançado de qualquer lugar do mundo através do painel online.
                             </p>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                                 <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-gray-100 transition-colors">
-                                    <div className="text-3xl font-bold text-blue-600 mb-2">SaaS</div>
+                                    <div className="text-3xl font-bold text-blue-600 mb-2">Web</div>
                                     <div className="text-sm text-gray-500">Tecnologia em Nuvem</div>
                                 </div>
                                 <div className="p-4 bg-gray-50 rounded-xl border border-gray-200 hover:bg-gray-100 transition-colors">

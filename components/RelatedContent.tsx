@@ -155,7 +155,7 @@ export const servicosCluster: RelatedItem[] = [
   {
     href: "/voltrisoptimizer",
     title: "Voltris Optimizer: Otimizador de PC Brasileiro",
-    description: "Software SaaS com controle remoto via web. Aumente FPS em até 40%!",
+    description: "Software com controle remoto via web. Aumente FPS em até 40%!",
     category: "Serviços"
   },
   {

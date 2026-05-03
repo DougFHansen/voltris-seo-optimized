@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     'otimização pc corporativo',
     'otimização remota de computadores',
     'gerenciamento remoto de performance',
-    'software saas de otimização empresarial',
+    'software de otimização empresarial',
     'controle de desempenho de máquinas corporativas',
     'gestão de performance windows via nuvem',
     'manutenção preventiva ti',
@@ -70,12 +70,12 @@ export const metadata: Metadata = {
     'redução latência dpc',
     'otimização tcp ip',
     'debloat windows seguro',
-    'software saas brasileiro',
+    'software brasileiro',
     'controle remoto via web',
-    'tecnologia saas',
+    'tecnologia web',
 
     // Cluster: Inovação
-    'primeiro software brasileiro saas',
+    'primeiro software brasileiro',
     'tecnologia brasileira',
     'inovação brasileira',
     'software brasileiro de otimização',
@@ -92,8 +92,8 @@ export const metadata: Metadata = {
     'lyra ai engine performance'
   ],
   openGraph: {
-    title: 'VOLTRIS OPTIMIZER | Primeiro Software Brasileiro SaaS de Otimização com Controle Remoto',
-    description: 'Software de otimização profissional com controle remoto via web. Aumente FPS, otimize para streaming, acelere empresas. Tecnologia SaaS brasileira inovadora.',
+    title: 'VOLTRIS OPTIMIZER | Primeiro Software Brasileiro de Otimização com Controle Remoto',
+    description: 'Software de otimização profissional com controle remoto via web. Aumente FPS, otimize para streaming, acelere empresas. Tecnologia brasileira inovadora.',
     url: 'https://www.voltris.com.br/voltrisoptimizer',
     type: 'website',
     siteName: 'VOLTRIS Technology',

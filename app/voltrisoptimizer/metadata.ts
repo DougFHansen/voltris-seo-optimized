@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '[2025] VOLTRIS OPTIMIZER - Otimizador de PC Profissional | Aumente FPS, Desempenho e Produtividade',
-  description: 'VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto para gamers, empresas e uso doméstico. Setup instantâneo, tecnologia nacional inovadora.',
+  description: 'VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução com controle remoto para gamers, empresas e uso doméstico. Setup instantâneo, tecnologia nacional inovadora.',
   keywords: [
     'otimizador de games',
     'aumentar fps em jogos',
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     'otimização para fortnite',
     'software brasileiro',
     'tecnologia nacional',
-    'saas otimização',
+    'otimização web',
     'controle remoto otimização',
     'gestão de desempenho pc',
     'otimização corporativa',
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     url: 'https://www.voltris.com.br/voltrisoptimizer',
     siteName: 'VOLTRIS',
     title: '[2025] VOLTRIS OPTIMIZER - Otimizador de PC Profissional | Aumente FPS, Desempenho e Produtividade',
-    description: 'VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto para gamers, empresas e uso doméstico.',
+    description: 'VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução com controle remoto para gamers, empresas e uso doméstico.',
     images: [
       {
         url: '/optimizer-banner.jpg',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '[2025] VOLTRIS OPTIMIZER - Otimizador de PC Profissional | Aumente FPS, Desempenho e Produtividade',
-    description: 'VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução SaaS com controle remoto.',
+    description: 'VOLTRIS OPTIMIZER: Software brasileiro de otimização de PC. Aumente até 25% de FPS, elimine stutter e lag, otimização automática para 100+ jogos, redução de input lag em até 40%. Solução com controle remoto.',
     images: ['/optimizer-banner.jpg'],
     creator: '@voltris',
   },
