@@ -103,7 +103,7 @@ export default function AumentarFpsPage() {
               Use o plano de energia de alto desempenho:
             </p>
             <ol className="list-decimal text-gray-300 space-y-2 ml-6">
-              <li>Abrir Configurações > Sistema > Energia</li>
+              <li>Abrir Configurações &gt; Sistema &gt; Energia</li>
               <li>Selecionar "Alto desempenho"</li>
               <li>Clicar em "Opções adicionais de energia"</li>
               <li>Desativar "Ligação rápida de início"</li>
