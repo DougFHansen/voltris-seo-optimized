@@ -37,18 +37,18 @@ export default function BitLockerGuide() {
     {
       title: "Como a Criptografia Funciona (O Peso Invisível)",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O BitLocker "embaralha" cada bit salvo no seu SSD. Quando o jogo pede uma textura, a CPU precisa pegar o dado embaralhado, usar uma chave matemática (AES-XTS) para desembaralhar e só então entregar para a placa de vídeo.
           <br/><strong>O Problema:</strong> Em SSDs ultrarrápidos (7.000 MB/s), a CPU não consegue descriptografar tão rápido quanto o SSD lê. Isso cria um gargalo artificial.
         </p>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mb-6">
           <h4 class="text-red-400 font-bold mb-2">Benchmark Sintético (CrystalDiskMark)</h4>
-          <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+          <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Sem BitLocker:</strong> Leitura 4K Q1T1: 95 MB/s | Latência: 40µs</li>
             <li><strong>Com BitLocker (Software):</strong> Leitura 4K Q1T1: 75 MB/s | Latência: 65µs</li>
           </ul>
-          <p class="text-sm text-gray-400 mt-2">
+          <p class="text-sm text-gray-700 mt-2">
             A latência aumenta cerca de <strong>40-60%</strong> em operações aleatórias pequenas. Jogos modernos fazem milhares dessas operações por segundo.
           </p>
         </div>
@@ -60,13 +60,13 @@ export default function BitLockerGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
                 <h5 class="font-bold text-white mb-2">PC Gamer de Mesa (Desktop)</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     <strong>Desative.</strong> A chance de alguém invadir sua casa especificamente para roubar o SSD e ler seus dados é baixa. O ganho de responsividade do sistema (snappiness) vale a pena.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
                 <h5 class="font-bold text-white mb-2">Notebook de Trabalho/Faculdade</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     <strong>Mantenha Ativado.</strong> Notebooks são perdidos ou roubados com frequência. Sem BitLocker, qualquer um tira o SSD, pluga em outro PC e lê suas fotos, senhas e documentos. A perda de performance é o preço da segurança.
                 </p>
             </div>
@@ -79,10 +79,10 @@ export default function BitLockerGuide() {
     {
       title: "Como Desativar Corretamente",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Existem duas versões: "Criptografia de Dispositivo" (Windows Home) e "BitLocker" (Pro).
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Abra o Menu Iniciar e digite <strong>"Gerenciar BitLocker"</strong>.</li>
             <li>Se não aparecer, digite "Configurações de criptografia do dispositivo".</li>
             <li>Clique em <strong>Desativar BitLocker</strong>.</li>
@@ -96,7 +96,7 @@ export default function BitLockerGuide() {
       title: "Hardware Encryption (OPAL) - O Melhor dos Mundos?",
       content: `
         <h4 class="text-white font-bold mb-3">SSD Samsung/Crucial c/ AES Próprio</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Alguns SSDs caros (Samsung 990 Pro) possuem um chip dedicado para criptografia.
             <br/>Antigamente, o BitLocker podia usar esse chip ("Hardware Encryption") para ter custo zero de CPU.
             <br/>Porém, a Microsoft <strong>removeu</strong> o suporte padrão a isso por falhas de segurança nos firmwares dos SSDs. Hoje, o BitLocker força Software Encryption por padrão, ignorando o chip do SSD. É possível reativar via Group Policy, mas é complexo e inseguro.
@@ -110,7 +110,7 @@ export default function BitLockerGuide() {
       title: "Verificando o Status via CMD",
       content: `
         <h4 class="text-white font-bold mb-3">Linha de Comando</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Abra o CMD como Administrador e digite:
             <br/><code class="bg-black p-1 rounded">manage-bde -status</code>
             <br/>

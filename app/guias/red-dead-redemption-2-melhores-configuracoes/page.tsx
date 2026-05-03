@@ -43,7 +43,7 @@ export default function RDR2Guide() {
         {
             title: "Introdução: O Jogo Mais Bonito da Década",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           RDR2 tem dezenas de opções gráficas. Algumas comem 20 FPS e mudam quase nada visualmente. Vamos aplicar o "Console Settings" turbinado.
         </p>
       `
@@ -54,14 +54,14 @@ export default function RDR2Guide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Texture Quality: Ultra</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     A diferença do High para o Ultra é brutal. As texturas no High parecem Low.
                     <br/><strong>Mantenha no Ultra</strong> mesmo em placas de 4GB/6GB VRAM. O impacto na performance é nulo se tiver VRAM, o impacto é só na memória.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Anisotropic Filtering: x16</h4>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     Custa 1 ou 2 FPS e faz o chão ficar nítido à distância. Nunca baixe isso.
                 </p>
             </div>
@@ -71,7 +71,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 2: Os Assassinos de FPS (Água e Árvores)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Water Physics Quality:</strong> Defina na <strong>Metade (Slider no meio)</strong>.
             <br/>Se colocar no máximo, a simulação da água consome excessivamente CPU e GPU. Visualmente é idêntico.
             <br/>- <strong>Tree Tessellation:</strong> OFF.
@@ -83,7 +83,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 3: Iluminação e Sombras",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Global Illumination:</strong> High.
             - <strong>Shadow Quality:</strong> High. (Ultra deixa as sombras muito "duras", High é mais suave e realista).
             - <strong>Far Shadow Quality:</strong> Medium.
@@ -97,7 +97,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 4: TAA (Anti-Aliasing) e Borrão",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O TAA do RDR2 é famoso por ser borrado.
             <br/>- TAA: Medium.
             <br/>- FXAA: OFF.
@@ -109,7 +109,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 5: Vulkan vs DirectX 12",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Opção "Advanced Graphics" (Lá embaixo, desbloqueie).
             <br/>- <strong>Vulkan:</strong> Geralmente mais suave, menos stutters, melhor em hardware AMD.
             <br/>- <strong>DX12:</strong> Pode ter FPS máximo levemente maior, mas costuma ter mais micro-travadas.
@@ -120,7 +120,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 6: DLSS e FSR",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se jogar em 1440p ou 4K:
             <br/>Ative o <strong>DLSS Quality</strong>.
             <br/>A implementação do DLSS no RDR2 é excelente e corrige o "shimmering" nas crinas dos cavalos e árvores melhor que o TAA nativo.
@@ -131,7 +131,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 7: Geometria e Decals",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Geometry Level of Detail:</strong> 5/5 (Barrinha cheia). Baixar isso faz pedras aparecerem do nada (Pop-in). Não vale a pena baixar.
             - <strong>Grass Level of Detail:</strong> 4/10. Grama é pesado. 4 é o "sweet spot".
         </p>
@@ -143,7 +143,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 8: Fix de Crash (ERR_GFX_STATE)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se o jogo fecha do nada:
                 <br/>Vá em <code>Documentos\\Rockstar Games\\Red Dead Redemption 2\\Settings</code>.
                 <br/>Apague todos os arquivos que começam com <code>sga_</code> (são arquivos de cache Vulkan). O jogo vai recriá-los.
@@ -154,7 +154,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 9: Modo Online",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 No Red Dead Online, estabilidade é mais importante que gráficos.
                 <br/>Considere baixar a Iluminação Volumétrica para Low para garantir 60 FPS fixos em tiroteios em Saint Denis.
             </p>
@@ -163,7 +163,7 @@ export default function RDR2Guide() {
         {
             title: "Capítulo 10: HDR em RDR2",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O modo "Cinematic HDR" é melhor que o "Game HDR".
                 <br/>Aumente o "Paper White" para ter textos legíveis. O RDR2 tem um dos melhores HDRs em cenas noturnas e de fogueira.
             </p>

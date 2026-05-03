@@ -31,7 +31,7 @@ export default function OBSvsSLBSGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div class="bg-blue-900/20 p-6 rounded-xl border border-blue-500">
                 <h4 class="text-white font-bold mb-2">OBS Studio</h4>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     É open-source, mantido pela comunidade.
                     <br/><strong>Vantagem:</strong> Usa pouquíssima CPU. Aceita plugins incríveis (AITum para live vertical, filtros de áudio VST, legendas automáticas).
                     <br/><strong>Desvantagem:</strong> Vem "pelado". Você tem que configurar alertas e chat manualmente.
@@ -39,7 +39,7 @@ export default function OBSvsSLBSGuide() {
             </div>
             <div class="bg-green-900/20 p-6 rounded-xl border border-green-500">
                 <h4 class="text-white font-bold mb-2">Streamlabs Desktop</h4>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     É uma versão modificada do OBS, feita por uma empresa (Logitech).
                     <br/><strong>Vantagem:</strong> Você loga com a Twitch e tudo está pronto (Alertas, Chat na tela, metas de doação). É "instalar e usar".
                     <br/><strong>Desvantagem:</strong> Pesado. Roda vários processos de navegador em segundo plano (Electron). Tenta te vender "Prime" o tempo todo.
@@ -52,7 +52,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "Benchmark: Impacto no FPS",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Testamos os dois softwares fazendo live de Warzone em um PC médio (i5, RTX 3060).
         </p>
         <table class="w-full text-left border-collapse mb-6">
@@ -64,7 +64,7 @@ export default function OBSvsSLBSGuide() {
                     <th class="p-2">Queda de FPS (In-Game)</th>
                 </tr>
             </thead>
-            <tbody class="text-gray-400 text-sm">
+            <tbody class="text-gray-700 text-sm">
                 <tr class="border-b border-gray-800 bg-green-900/20">
                     <td class="p-3 font-bold text-green-400">OBS Studio</td>
                     <td class="p-3">2% - 4%</td>
@@ -79,7 +79,7 @@ export default function OBSvsSLBSGuide() {
                 </tr>
             </tbody>
         </table>
-        <p class="text-gray-400 font-bold text-center mt-4">
+        <p class="text-gray-700 font-bold text-center mt-4">
             Se você tem um PC topo de linha (i9, Ryzen 9), tanto faz. Se você tem PC fraco/médio, o OBS Studio é obrigatório.
         </p>
       `,
@@ -88,10 +88,10 @@ export default function OBSvsSLBSGuide() {
     {
       title: "Dica: Como ter o melhor dos dois mundos",
       content: `
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Você pode usar o OBS Studio (Leve) e puxar os alertas bonitos do Streamlabs via "Fonte de Navegador".
             </p>
-            <ol class="list-decimal list-inside text-gray-400 ml-4">
+            <ol class="list-decimal list-inside text-gray-700 ml-4">
                 <li>Crie sua conta no site do Streamlabs.</li>
                 <li>Configure seus alertas lá (Donate, Follow, Sub).</li>
                 <li>Copie o "Widget URL".</li>
@@ -108,13 +108,13 @@ export default function OBSvsSLBSGuide() {
       title: "12. Arquitetura Técnica e Comparação de Performance",
       content: `
         <h4 class="text-white font-bold mb-3">🔧 Arquitetura Interna de Softwares de Streaming</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Em 2026, a arquitetura dos softwares de streaming determina diretamente sua performance e eficiência:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">OBS Studio (Open Broadcaster Software)</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Arquitetura baseada em plugins modular</li>
               <li>• Renderização via libobs (biblioteca otimizada)</li>
               <li>• Suporte a múltiplas APIs gráficas (D3D11, OpenGL, Vulkan)</li>
@@ -124,7 +124,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-3">Streamlabs Desktop</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Baseado em Electron (Chrome + Node.js)</li>
               <li>• Múltiplos processos Chromium em execução</li>
               <li>• Interface web-based com renderização complexa</li>
@@ -136,7 +136,7 @@ export default function OBSvsSLBSGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Benchmark Avançado de Performance</h4>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Métrica</th>
@@ -182,7 +182,7 @@ export default function OBSvsSLBSGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Otimização de Performance</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Em sistemas com recursos limitados, o OBS Studio permite configurações avançadas de threading e prioridade de processos que podem reduzir ainda mais o overhead de streaming.
           </p>
         </div>
@@ -192,13 +192,13 @@ export default function OBSvsSLBSGuide() {
       title: "13. Configurações Avançadas de Codificação e Transmissão",
       content: `
         <h4 class="text-white font-bold mb-3">⚙️ Codificação de Vídeo e Áudio em 2026</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Ambos os softwares suportam as mais recentes tecnologias de codificação, mas com diferentes níveis de controle:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
           <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-3">OBS Studio - Controle Avançado</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Codificação por software (x264) altamente configurável</li>
               <li>• Codificação por hardware (NVENC, AMD AMF, Intel QSV)</li>
               <li>• Suporte a codecs modernos (AV1, HEVC)</li>
@@ -208,7 +208,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Streamlabs - Configurações Simplificadas</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Presets pré-configurados para diferentes necessidades</li>
               <li>• Codificação automática baseada na conexão</li>
               <li>• Integração simplificada com provedores de CDN</li>
@@ -220,7 +220,7 @@ export default function OBSvsSLBSGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações Recomendadas por Plataforma</h4>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Plataforma</th>
@@ -268,13 +268,13 @@ export default function OBSvsSLBSGuide() {
       title: "14. Tendências de Streaming e Inovação em 2026",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Inovações em Streaming ao Vivo</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O ecossistema de streaming está evoluindo rapidamente com novas tecnologias:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">Codificação Adaptativa</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Ajuste automático de qualidade</li>
               <li>• Otimização baseada na rede</li>
               <li>• Codificação preditiva</li>
@@ -284,7 +284,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-orange-900/10 p-5 rounded-xl border border-orange-500/20">
             <h5 class="text-orange-400 font-bold mb-3">Inteligência Artificial</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Enquadramento automático</li>
               <li>• Supressão de ruído avançada</li>
               <li>• Legendas em tempo real</li>
@@ -294,7 +294,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-pink-900/10 p-5 rounded-xl border border-pink-500/20">
             <h5 class="text-pink-400 font-bold mb-3">Experiências Interativas</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Transmissões multi-angle</li>
               <li>• Interações em tempo real</li>
               <li>• Elementos AR/VR integrados</li>
@@ -305,11 +305,11 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões de Mercado para 2026-2027</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Tendências observadas no mercado de softwares de streaming:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tendência</th>
@@ -348,10 +348,10 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Empresas estão investindo pesadamente em tecnologias de streaming avançado:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>WebRTC Avançado:</strong> Latência inferior a 100ms para transmissões interativas</li>
           <li><strong>Codificação Híbrida:</strong> Combinação de hardware e software para otimização</li>
           <li><strong>Balanceamento de Carga:</strong> Distribuição inteligente em múltiplas plataformas</li>
@@ -367,13 +367,13 @@ export default function OBSvsSLBSGuide() {
       title: "4. Plugins e Extensibilidades",
       content: `
         <h4 class="text-white font-bold mb-3">🔌 Ecossistema de Plugins</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A capacidade de extensão é um fator crítico na escolha do software de streaming:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">OBS Studio - Ecosistema Aberto</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• SDK oficial bem documentado</li>
               <li>• Comunidade ativa com centenas de plugins</li>
               <li>• Suporte a linguagens como C++, C#, Python</li>
@@ -383,7 +383,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-3">Streamlabs - Ecosistema Integrado</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Catálogo de widgets e integrações próprios</li>
               <li>• Integração nativa com serviços Streamlabs</li>
               <li>• Widgets prontos para alertas e interações</li>
@@ -395,7 +395,7 @@ export default function OBSvsSLBSGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">🧩 Plugins Recomendados para OBS Studio</h4>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Plugin</th>
@@ -444,16 +444,16 @@ export default function OBSvsSLBSGuide() {
       title: "5. Configurações de Áudio Profissional",
       content: `
         <h4 class="text-white font-bold mb-3">🎵 Áudio em Transmissões Profissionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A qualidade do áudio é fundamental para uma transmissão de sucesso:
         </p>
         <div class="space-y-6">
           <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
             <h5 class="text-green-400 font-bold mb-2">Configurações de Áudio em OBS Studio</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Controles avançados para diferentes fontes de áudio:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Filtros de áudio como compressores e limitadores</li>
               <li>• Equalização por canal de áudio</li>
               <li>• Monitoramento de níveis de áudio em tempo real</li>
@@ -463,10 +463,10 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
             <h5 class="text-blue-400 font-bold mb-2">Configurações de Áudio em Streamlabs</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Integrações simplificadas para áudio:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Controles de áudio integrados à interface</li>
               <li>• Configurações de áudio para alertas</li>
               <li>• Integração com serviços de voz</li>
@@ -477,13 +477,13 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Áudio Recomendadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Configurações ideais para diferentes tipos de transmissão:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-cyan-400 font-bold mb-2">Gaming Streams</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Mixagem separada para jogo e microfone</li>
               <li>• Compressor para manter volume constante</li>
               <li>• Gate para eliminar ruídos de fundo</li>
@@ -493,7 +493,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-purple-400 font-bold mb-2">Talk Shows/Interações</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Áudio multicanal para convidados remotos</li>
               <li>• Supressão de eco para chamadas</li>
               <li>• Controles independentes por participante</li>
@@ -508,13 +508,13 @@ export default function OBSvsSLBSGuide() {
       title: "6. Segurança e Privacidade em Transmissões",
       content: `
         <h4 class="text-white font-bold mb-3">🔒 Segurança em Softwares de Streaming</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A segurança é uma preocupação importante ao transmitir ao vivo:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">Riscos de Segurança</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Exposição acidental de informações pessoais</li>
               <li>• Compartilhamento inadvertido de senhas ou dados</li>
               <li>• Vulnerabilidades em plugins de terceiros</li>
@@ -524,7 +524,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Boas Práticas de Segurança</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Configuração de firewall para aplicações de streaming</li>
               <li>• Uso de VPN para proteção de IP</li>
               <li>• Verificação de integridade de plugins</li>
@@ -535,11 +535,11 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Configurações de Segurança Recomendadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Medidas específicas para proteger suas transmissões:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Configuração</th>
@@ -582,16 +582,16 @@ export default function OBSvsSLBSGuide() {
       title: "7. Otimizações para Hardware Específico",
       content: `
         <h4 class="text-white font-bold mb-3">⚡ Otimizações Baseadas em Hardware</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A performance de streaming varia significativamente com diferentes hardwares:
         </p>
         <div class="space-y-6">
           <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
             <h5 class="text-green-400 font-bold mb-2">Processadores Intel</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Configurações ideais para CPUs Intel:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Utilizar Quick Sync Video para codificação por hardware</li>
               <li>• Ajustar prioridade de threads para streaming</li>
               <li>• Configurar Power Plans para desempenho máximo</li>
@@ -601,10 +601,10 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
             <h5 class="text-blue-400 font-bold mb-2">Placas de Vídeo NVIDIA</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Aproveitamento máximo das GPUs NVIDIA:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Usar NVENC para codificação eficiente</li>
               <li>• Ajustar configurações de codificação no OBS</li>
               <li>• Configurar prioridade de GPU para streaming</li>
@@ -614,10 +614,10 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="border-l-4 border-purple-500 pl-4 py-2 bg-purple-900/10">
             <h5 class="text-purple-400 font-bold mb-2">AMD e Processadores Ryzen</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Configurações específicas para hardware AMD:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Usar AMD AMF para codificação por hardware</li>
               <li>• Configurar prioridade de núcleos para streaming</li>
               <li>• Ajustar configurações de memória e cache</li>
@@ -628,13 +628,13 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Performance por Hardware</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Desempenho esperado em diferentes configurações de hardware:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-cyan-400 font-bold mb-2">Configurações de Baixo Custo</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• i3/Ryzen 3 + GTX 1050/GTX 1650</li>
               <li>• Melhor usar OBS Studio com x264</li>
               <li>• Streaming 720p a 30fps</li>
@@ -658,13 +658,13 @@ export default function OBSvsSLBSGuide() {
       title: "8. Análise de Mercado e Tendências",
       content: `
         <h4 class="text-white font-bold mb-3">📈 Análise de Mercado de Softwares de Streaming</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Comparação do uso e adoção dos softwares em 2026:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">Estatísticas de Uso</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• OBS Studio: 65% dos streamers (profissionais e amadores)</li>
               <li>• Streamlabs: 25% dos streamers (iniciantes e intermediários)</li>
               <li>• XSplit: 7% dos streamers (usuários pagos)</li>
@@ -674,7 +674,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Motivos de Escolha</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• OBS Studio: Gratuito, leve, altamente personalizável</li>
               <li>• Streamlabs: Interface amigável, recursos prontos</li>
               <li>• OBS Studio: Maior controle e menos bugs</li>
@@ -685,11 +685,11 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Performance em 2026</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Dados reais de performance comparando os softwares:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Métrica</th>
@@ -738,16 +738,16 @@ export default function OBSvsSLBSGuide() {
       title: "9. Soluções Corporativas e Profissionais",
       content: `
         <h4 class="text-white font-bold mb-3">🏢 Streaming em Ambientes Corporativos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Considerações para uso profissional e corporativo:
         </p>
         <div class="space-y-6">
           <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
             <h5 class="text-green-400 font-bold mb-2">OBS Studio em Ambientes Corporativos</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Benefícios e desafios:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Total controle sobre configurações e segurança</li>
               <li>• Possibilidade de customização para necessidades específicas</li>
               <li>• Integração com sistemas internos e APIs corporativas</li>
@@ -757,10 +757,10 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
             <h5 class="text-blue-400 font-bold mb-2">Streamlabs em Ambientes Corporativos</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Considerações para uso empresarial:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Interface mais amigável para usuários não técnicos</li>
               <li>• Recursos prontos para eventos e webinars</li>
               <li>• Integração com redes sociais e plataformas de vídeo</li>
@@ -771,13 +771,13 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações Profissionais Recomendadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Configurações ideais para diferentes cenários profissionais:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-cyan-400 font-bold mb-2">Webinars e Palestras</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Resolução de streaming otimizada para qualidade</li>
               <li>• Áudio prioritário sobre vídeo</li>
               <li>• Fontes de backup configuradas</li>
@@ -801,13 +801,13 @@ export default function OBSvsSLBSGuide() {
       title: "10. Backup e Recuperação de Configurações",
       content: `
         <h4 class="text-white font-bold mb-3">💾 Gestão de Configurações e Perfis</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Estratégias para backup e recuperação de configurações de streaming:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">OBS Studio - Gerenciamento de Perfis</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Configurações armazenadas em arquivos .ini</li>
               <li>• Perfis e cenas salvos separadamente</li>
               <li>• Scripts para backup automático</li>
@@ -817,7 +817,7 @@ export default function OBSvsSLBSGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Streamlabs - Sincronização na Nuvem</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Configurações sincronizadas automaticamente</li>
               <li>• Recuperação de configurações em novos dispositivos</li>
               <li>• Armazenamento em servidores da Streamlabs</li>
@@ -828,7 +828,7 @@ export default function OBSvsSLBSGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Scripts de Backup e Restauração</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Exemplos de scripts para automação de backup:
         </p>
         <div class="bg-gray-900 p-4 rounded-lg overflow-x-auto">
@@ -855,7 +855,7 @@ Write-Host "Backup do OBS Studio concluído em: $backupDir\\obs_backup.zip"</pre
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Perfis de Streaming</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Crie perfis diferentes para diferentes tipos de transmissão (gaming, talk show, webinar) para facilitar a troca de configurações entre diferentes tipos de conteúdo.
           </p>
         </div>

@@ -34,7 +34,7 @@ export default function InstagramDeleteGuide() {
         {
             title: "O processo de despedida em 2026",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, com as novas leis de privacidade e a integração total da Meta, o processo para excluir o Instagram ficou um pouco mais escondido dentro da "Central de Contas". Seja para fazer um detox digital ou por questões de segurança, você tem o direito garantido de apagar todos os seus dados. Mas atenção: uma vez apagada, você perderá todas as suas fotos, seguidores e mensagens para sempre.
         </p>
       `
@@ -42,8 +42,8 @@ export default function InstagramDeleteGuide() {
         {
             title: "1. Salvando suas memórias primeiro",
             content: `
-        <p class="mb-4 text-gray-400">Antes de deletar, baixe uma cópia de tudo o que você postou:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Antes de deletar, baixe uma cópia de tudo o que você postou:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Vá no seu Perfil > Menu (três linhas) > Sua Atividade.</li>
             <li>Role até o final e clique em <strong>'Baixar suas informações'</strong>.</li>
             <li>O Instagram enviará um link para o seu e-mail com todas as suas fotos e vídeos em alta qualidade.</li>
@@ -55,7 +55,7 @@ export default function InstagramDeleteGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Pelo Celular ou PC:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Acesse as Configurações e vá em **Central de Contas**. <br/>
                 2. Clique em **Dados Pessoais** > **Propriedade e controle da conta**. <br/>
                 3. Selecione 'Desativação ou exclusão'. <br/>
@@ -68,7 +68,7 @@ export default function InstagramDeleteGuide() {
         {
             title: "3. O Período de Arrependimento",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não suma do nada:</strong> 
             <br/><br/>Após pedir a exclusão, sua conta ficará invisível, mas o Instagram leva **30 dias** para deletar os arquivos dos servidores dele. Se você se arrepender nesse período, basta entrar no aplicativo com sua senha e clicar em 'Manter conta'. Se passar de 30 dias, nem mesmo o suporte da Meta conseguirá recuperar o seu nome de usuário ou fotos em 2026.
         </p>

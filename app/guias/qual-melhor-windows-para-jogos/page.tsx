@@ -34,7 +34,7 @@ export default function BestWindowsForGamingGuide() {
         {
             title: "O debate do Sistema Operacional",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, a escolha do Windows não é mais apenas uma questão de gosto. Tecnologias modernas como **DirectStorage**, **Auto HDR** e o agendador de tarefas otimizado para os novos processadores da Intel (E-cores) foram feitas sob medida para o **Windows 11**. No entanto, muitos jogadores competitivos ainda juram que o Windows 10 oferece uma latência de sistema menor. Vamos analisar os fatos técnicos de 2026.
         </p>
       `
@@ -42,8 +42,8 @@ export default function BestWindowsForGamingGuide() {
         {
             title: "1. Windows 11: O Rei da Tecnologia",
             content: `
-        <p class="mb-4 text-gray-400">Por que você deveria migrar em 2026:</p>
-        <p class="text-sm text-gray-400">
+        <p class="mb-4 text-gray-700">Por que você deveria migrar em 2026:</p>
+        <p class="text-sm text-gray-700">
             Se você tem um processador **Intel Core de 12ª geração ou superior** (com núcleos de performance e eficiência), o Windows 11 é obrigatório. O Windows 10 não entende essa arquitetura e acaba enviando o jogo para os núcleos lentos, causando lags. Além disso, o suporte a drivers de vídeo WDDM 3.0+ no Windows 11 melhora a estabilidade em jogos de última geração.
         </p>
       `
@@ -53,7 +53,7 @@ export default function BestWindowsForGamingGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Compatibilidade e Leveza:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O Windows 10 consome cerca de 30% menos RAM que o Windows 11 recém-instalado. Se você tem menos de 16GB de RAM ou uma placa de vídeo da série GTX 10 (ou RX 500), o Windows 10 ainda é a escolha mais racional para manter os frames estáveis. Em 2026, ele é o "vovô" que ainda dá conta do recado, mas está perdendo o suporte a novos recursos.
             </p>
         </div>
@@ -62,7 +62,7 @@ export default function BestWindowsForGamingGuide() {
         {
             title: "3. Windows Lite e ISOs Modificadas",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Cuidado com o perigo:</strong> 
             <br/><br/>Versões como <i>Ghost Spectre</i> ou <i>Atlas OS</i> prometem 0% de uso de CPU. Embora elas realmente removam o lixo (bloatware), elas também removem camadas de segurança essenciais e o Windows Update. **Nunca use essas ISOs para trabalho ou bancos.** Se você quer performance, prefira instalar o Windows 11 original e fazer o **Debloat manual** usando nossos scripts, mantendo a segurança do sistema.
         </p>

@@ -40,7 +40,7 @@ export default function LaptopGuide() {
         {
             title: "A Regra de Ouro: Energia e Calor",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Diferente de um Desktop, um notebook gamer é limitado por dois fatores: quanto calor ele consegue dissipar e quanta energia a fonte entrega. Se você tentar jogar na bateria, o desempenho cairá 70% automaticamente para proteger a célula de lítio. <strong>Sempre jogue conectado à tomada.</strong>
         </p>
 
@@ -48,7 +48,7 @@ export default function LaptopGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🔋</span> Plano de Energia Gamer Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 O "Alto Desempenho" do Windows nem sempre é o ideal para notebooks, pois faz a CPU rodar no clock máximo mesmo parada, gerando calor inútil. O <strong>Voltris Optimizer</strong> instala um Power Plan personalizado que libera o Turbo Boost instantaneamente apenas nos jogos, mantendo o notebook frio no desktop.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function LaptopGuide() {
         {
             title: "Passo 1: Forçando a GPU Dedicada (MUX Switch)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitos notebooks usam a GPU integrada (Intel/AMD) para exibir a imagem na tela, mesmo processando o jogo na GPU dedicada (Nvidia), o que cria um gargalo (Optimus).
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Se seu notebook tem <strong>MUX Switch</strong> (Acer Nitro 5 modernos, Dell G15, Legion), abra o software da fabricante (Armoury Crate, NitroSense).</li>
             <li>Procure por "Modo GPU", "Discrete Graphics" ou "MUX Switch".</li>
             <li>Ative a opção "Somente GPU Dedicada" (Pode pedir reinício).</li>
@@ -79,10 +79,10 @@ export default function LaptopGuide() {
         {
             title: "Passo 2: Evitando Thermal Throttling (Troque a Pasta)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o processador bate 95°C ou 100°C, ele reduz a velocidade (de 4.0GHz para 2.5GHz) para não queimar. Isso causa travadas bruscas no jogo.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Levante a traseira:</strong> Coloque um livro (não cobrindo as saídas de ar) ou use um suporte para elevar a parte de trás do notebook em 5cm. Isso melhora o fluxo de ar drasticamente.</li>
             <li><strong>Limpeza:</strong> Se o notebook tem mais de 1 ano, abra e limpe a poeira dos fans. A poeira bloqueia o dissipador.</li>
             <li><strong>Pasta Térmica:</strong> A pasta de fábrica geralmente é ruim. Troque por uma decente (Honeywell PTM7950 ou MasterGel Maker). Notebooks exigem pastas viscosas (pump-out effect).</li>
@@ -92,10 +92,10 @@ export default function LaptopGuide() {
         {
             title: "Passo 3: Configuração do Windows Gráfico",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Garanta que o jogo use a placa certa.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
             <li>Configurações > Sistema > Tela > Elementos Gráficos.</li>
             <li>Em "Apps da área de trabalho", clique em Procurar.</li>
             <li>Selecione o executável do jogo (ex: valorant-win64-shipping.exe).</li>
@@ -111,10 +111,10 @@ export default function LaptopGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-green-400 font-bold mb-4 text-xl">ThrottleStop (Intel) / Ryzen Controller (AMD)</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Undervolt é reduzir a voltagem que a CPU recebe. Isso reduz a temperatura em 10°C sem perder performance. Infelizmente, fabricantes como Dell e HP bloquearam isso na BIOS das gerações 12ª/13ª Intel.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Se sua CPU for 10ª ou 11ª geração, ou AMD Ryzen 5000: Baixe o ThrottleStop. Reduza o "CPU Core" e "CPU Cache" offset em -50mV. Teste. Se estável, tente -80mV.
                 </p>
             </div>
@@ -129,7 +129,7 @@ export default function LaptopGuide() {
             <div class="space-y-4">
                 <div class="bg-gray-800 p-4 rounded-lg">
                     <h5 class="text-orange-400 font-bold mb-2">Limite de Carga</h5>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-700 text-sm">
                         Deixar o notebook 100% carregado na tomada o tempo todo degrada a bateria e pode fazê-la estufar. Ative o "Modo Conservação" no software da fabricante (MyAsus, Lenovo Vantage, Dell Power Manager) para limitar a carga em 60% ou 80%. Isso triplica a vida útil da bateria.
                     </p>
                 </div>

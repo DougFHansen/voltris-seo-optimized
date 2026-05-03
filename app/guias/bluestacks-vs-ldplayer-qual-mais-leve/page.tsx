@@ -34,7 +34,7 @@ export default function EmulatorComparisonGuide() {
         {
             title: "A batalha dos emuladores em 2026",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, emular Android no Windows 11 se tornou muito mais eficiente. Embora a Microsoft tenha o seu próprio subsistema de Android, jogadores e usuários pesados ainda preferem emuladores dedicados devido às ferramentas extras como **mapeamento de teclas**, **macros** e suporte a **altas taxas de quadros (120 FPS)**. Mas qual deles consome menos RAM e CPU no seu setup?
         </p>
       `
@@ -42,8 +42,8 @@ export default function EmulatorComparisonGuide() {
         {
             title: "1. BlueStacks 5: O Gigante Refinado",
             content: `
-        <p class="mb-4 text-gray-400">O BlueStacks é o emulador mais estável do mercado:</p>
-        <p class="text-sm text-gray-400">
+        <p class="mb-4 text-gray-700">O BlueStacks é o emulador mais estável do mercado:</p>
+        <p class="text-sm text-gray-700">
             A versão 5 (e suas evoluções de 2026) foi reconstruída para usar 50% menos RAM que as versões antigas. Ele é imbatível na **compatibilidade**: se um app existe no Android, ele vai rodar no BlueStacks. <br/><br/>
             <strong>Ponto Positivo:</strong> Modo Eco (excelente para farmar em instâncias múltiplas). <br/>
             <strong>Ponto Negativo:</strong> Instalação pesada e muitos anúncios integrados na interface.
@@ -55,7 +55,7 @@ export default function EmulatorComparisonGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Foco em Performance Pura:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O LDPlayer 9+ é conhecido pela sua "magia" em PCs com pouca memória. Ele inicia muito mais rápido que o BlueStacks e possui um kernel otimizado para jogos como <strong>Free Fire, PUBG Mobile e COD Mobile</strong>. <br/><br/>
                 Sua interface é limpa e ele oferece drivers específicos para placas de vídeo integradas (Intel HD Graphics), o que o torna o rei indiscutível para **notebooks de estudo** ou PCs sem placa de vídeo dedicada em 2026.
             </p>
@@ -65,7 +65,7 @@ export default function EmulatorComparisonGuide() {
         {
             title: "3. O segredo da Virtualização",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não importa o emulador:</strong> 
             <br/><br/>Se você não ativar a **Virtualização de Hardware** na sua BIOS, ambos os emuladores rodarão de forma horrível, com quedas bruscas de FPS e travamentos. No gerenciador de tarefas do Windows, verifique na aba 'Desempenho' se diz 'Virtualização: Habilitado'. Sem isso, o seu processador precisa fazer todo o trabalho via software, o que mata o desempenho em 2026.
         </p>
@@ -78,14 +78,14 @@ export default function EmulatorComparisonGuide() {
       title: "Arquitetura de Emuladores Android: Fundamentos Técnicos e Comparação de Desempenho",
       content: `
         <h4 class="text-white font-bold mb-3">🏗️ Arquitetura Interna de Emuladores Android</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Os emuladores Android modernos como BlueStacks e LDPlayer são baseados em arquiteturas complexas que simulam o ambiente Android completo sobre o sistema operacional Windows. Ambos utilizam tecnologias de virtualização para criar uma camada de abstração entre o sistema operacional host e o sistema convidado Android:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Componentes Técnicos do BlueStacks</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Hyper-V ou VirtualBox Backend</li>
               <li>• Android x86 Customizado</li>
               <li>• OpenGL/Vulkan GPU Translation Layer</li>
@@ -96,7 +96,7 @@ export default function EmulatorComparisonGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Componentes Técnicos do LDPlayer</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• QEMU-based Virtualization</li>
               <li>• Android x86 LTS Kernel</li>
               <li>• Direct3D to OpenGL ES Translator</li>
@@ -108,12 +108,12 @@ export default function EmulatorComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚡ Processo de Virtualização e Recursos do Sistema</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O consumo de recursos entre BlueStacks e LDPlayer difere significativamente devido às abordagens de virtualização:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Componente</th>
@@ -159,7 +159,7 @@ export default function EmulatorComparisonGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             LDPlayer utiliza um kernel Android personalizado com otimizações específicas para jogos, incluindo uma implementação mais eficiente do gerenciador de memória e otimizações no scheduler do kernel. Isso resulta em menor latência de entrada e melhor desempenho em jogos competitivos como Free Fire e PUBG Mobile.
           </p>
         </div>
@@ -169,12 +169,12 @@ export default function EmulatorComparisonGuide() {
       title: "Comparação Técnica Avançada e Benchmarks de Desempenho",
       content: `
         <h4 class="text-white font-bold mb-3">📊 Benchmark Comparativo em Diferentes Configurações de Hardware</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Realizamos análises detalhadas de desempenho em diferentes configurações de hardware para determinar onde cada emulador se destaca:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Configuração</th>
@@ -239,14 +239,14 @@ export default function EmulatorComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎮 Análise de Jogos Específicos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Em jogos competitivos, as diferenças de desempenho se tornam mais evidentes:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Free Fire</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>LDPlayer: 90-120 FPS constante</li>
               <li>BlueStacks: 60-90 FPS</li>
               <li>Lag input: LDPlayer menor</li>
@@ -265,7 +265,7 @@ export default function EmulatorComparisonGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">COD Mobile</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>LDPlayer: Melhor resposta de input</li>
               <li>BlueStacks: Melhor compatibilidade</li>
               <li>Renderização: Similar</li>
@@ -275,11 +275,11 @@ export default function EmulatorComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Otimizações Específicas por Emulador</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Configurações avançadas que impactam diretamente no desempenho:
         </p>
         
-        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
           <li><strong>LDPlayer:</strong> Ativar "Modo de Alto Desempenho", alocar 2-4GB de RAM, usar GPU renderização, desativar animações do sistema</li>
           <li><strong>BlueStacks:</strong> Usar modo Eco, configurar 5-8 instâncias ideais, ativar modo de baixa latência para jogos FPS</li>
           <li><strong>Virtualização:</strong> Ambos requerem VT-x/AMD-V ativado, preferencialmente com Hyper-V desativado para LDPlayer</li>
@@ -293,17 +293,17 @@ export default function EmulatorComparisonGuide() {
       title: "Tecnologias Emergentes em Virtualização Android e Futuro dos Emuladores",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Virtualização de Próxima Geração</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A próxima geração de emuladores Android está explorando tecnologias avançadas de virtualização, aceleração de hardware e otimização de desempenho que prometem reduzir ainda mais o overhead de sistema:
         </p>
         
         <h4 class="text-white font-bold mb-3">Hardware-Assisted Virtualization</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Novas tecnologias de virtualização assistida por hardware estão sendo implementadas:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -348,14 +348,14 @@ export default function EmulatorComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Otimização de Emuladores</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na otimização de emuladores:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Adaptação Dinâmica de Recursos</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Alocação automática de CPU/RAM</li>
               <li>Previsão de picos de uso</li>
               <li>Otimização em tempo real</li>
@@ -367,7 +367,7 @@ export default function EmulatorComparisonGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Análise Preditiva de Desempenho</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Identificação de gargalos</li>
               <li>Sugestão de configurações ideais</li>
               <li>Detecção de incompatibilidades</li>
@@ -379,7 +379,7 @@ export default function EmulatorComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de virtualização Android de próxima geração:
         </p>
         
@@ -392,7 +392,7 @@ export default function EmulatorComparisonGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Container-Based Android Virtualization</h5>
-              <p class="text-sm text-gray-400">Empresas como Google e Microsoft estão pesquisando virtualização baseada em containers para Android, que seria significativamente mais leve que a virtualização completa. Essa tecnologia poderia reduzir o consumo de RAM em até 60% e acelerar o tempo de inicialização em 80%. Primeiras implementações experimentais estão previstas para 2027-2028.</p>
+              <p class="text-sm text-gray-700">Empresas como Google e Microsoft estão pesquisando virtualização baseada em containers para Android, que seria significativamente mais leve que a virtualização completa. Essa tecnologia poderia reduzir o consumo de RAM em até 60% e acelerar o tempo de inicialização em 80%. Primeiras implementações experimentais estão previstas para 2027-2028.</p>
             </div>
           </div>
           
@@ -404,7 +404,7 @@ export default function EmulatorComparisonGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Cross-Platform Native Compilation</h5>
-              <p class="text-sm text-gray-400">Projetos como o Libhybris e tecnologias proprietárias estão trabalhando em soluções que permitem executar aplicativos Android nativamente no Windows, eliminando a necessidade de emulação completa. Isso promete desempenho nativo para aplicativos Android no Windows. Implementações iniciais estão previstas para 2026-2027.</p>
+              <p class="text-sm text-gray-700">Projetos como o Libhybris e tecnologias proprietárias estão trabalhando em soluções que permitem executar aplicativos Android nativamente no Windows, eliminando a necessidade de emulação completa. Isso promete desempenho nativo para aplicativos Android no Windows. Implementações iniciais estão previstas para 2026-2027.</p>
             </div>
           </div>
           
@@ -416,14 +416,14 @@ export default function EmulatorComparisonGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">AI-Driven Resource Optimization</h5>
-              <p class="text-sm text-gray-400">Empresas como Intel, AMD e NVIDIA estão desenvolvendo sistemas de IA que podem prever e alocar recursos de sistema com base no padrão de uso do usuário. Esses sistemas poderiam otimizar automaticamente emuladores Android em tempo real, ajustando configurações para maximizar desempenho e minimizar uso de recursos. Pilotos já estão em andamento com desenvolvedores de emuladores para 2026-2027.</p>
+              <p class="text-sm text-gray-700">Empresas como Intel, AMD e NVIDIA estão desenvolvendo sistemas de IA que podem prever e alocar recursos de sistema com base no padrão de uso do usuário. Esses sistemas poderiam otimizar automaticamente emuladores Android em tempo real, ajustando configurações para maximizar desempenho e minimizar uso de recursos. Pilotos já estão em andamento com desenvolvedores de emuladores para 2026-2027.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Com o avanço da tecnologia de virtualização e a crescente integração entre plataformas, o futuro dos emuladores Android pode envolver soluções híbridas que combinam virtualização leve, containerização e compilação nativa. Isso provavelmente resultará em emuladores significativamente mais eficientes em termos de recursos, com desempenho próximo ao nativo e compatibilidade aprimorada. A competição entre BlueStacks, LDPlayer e novos entrantes continuará impulsionando inovações em eficiência e desempenho.
           </p>
         </div>

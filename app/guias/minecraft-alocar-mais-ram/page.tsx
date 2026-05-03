@@ -34,7 +34,7 @@ export default function MinecraftRAMGuide() {
         {
             title: "Por que o Minecraft precisa de RAM?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Diferente de outros jogos, o **Minecraft** roda sobre o Java. Ele cria uma "caixa" de memória virtual onde guarda todas as informações dos blocos (chunks), entidades e mods. Por padrão, o Minecraft vem configurado para usar apenas 2GB de RAM. Em 2026, com texturas em alta definição e mods pesados, 2GB não são suficientes nem para o jogo básico carregar o mapa sem travar.
         </p>
       `
@@ -42,7 +42,7 @@ export default function MinecraftRAMGuide() {
         {
             title: "1. No Launcher Original (Minecraft Java Edition)",
             content: `
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Abra o Launcher e vá na aba <strong>Instalações</strong>.</li>
             <li>Passe o mouse sobre a versão que você joga e clique nos <strong>três pontinhos (...) > Editar</strong>.</li>
             <li>Clique em 'Mais Opções' na parte inferior.</li>
@@ -57,7 +57,7 @@ export default function MinecraftRAMGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Simplicidade:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Abra o TLauncher e clique na <strong>Engrenagem (Configurações)</strong> no canto inferior direito. <br/>
                 2. No menu lateral, selecione 'Configurações'. <br/>
                 3. Você verá uma barra de rolagem chamada <strong>'Alocação de Memória'</strong>. <br/>
@@ -70,7 +70,7 @@ export default function MinecraftRAMGuide() {
         {
             title: "3. O Erro do Excesso: Não exagere!",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitos jogadores pensam: "Se eu tenho 16GB, vou colocar 14GB no Minecraft". 
             <br/><br/><strong>Não faça isso!</strong> Se você alocar RAM demais, o Windows e o próprio Java (através do <i>Garbage Collector</i>) terão dificuldades para gerenciar a limpeza de dados, o que causa travadas gigantes (Lags de 1 segundo) a cada 2 minutos. O ideal para 2026 é manter entre 4GB e 6GB para o jogo base, subindo para 8GB apenas em modpacks gigantes com centenas de mods.
         </p>

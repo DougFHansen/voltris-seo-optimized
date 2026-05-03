@@ -34,7 +34,7 @@ export default function NVMeVsSATAGuide() {
         {
             title: "A Diferença Técnica",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Embora ambos sejam SSDs, o **SATA** usa o mesmo "caminho" (protocolo) que os HDs antigos, o que limita sua velocidade. Já o **NVMe** usa as linhas PCIe da placa-mãe (o mesmo caminho da placa de vídeo), permitindo uma transferência de dados absurdamente maior.
         </p>
       `
@@ -42,10 +42,10 @@ export default function NVMeVsSATAGuide() {
         {
             title: "Uso em Jogos: DirectStorage",
             content: `
-        <p class="mb-4 text-gray-400">Durante muito tempo, ter um NVMe não mudava quase nada nos jogos além de economizar 2 segundos de loading. Mas isso mudou com o <strong>Windows 11</strong>.</p>
+        <p class="mb-4 text-gray-700">Durante muito tempo, ter um NVMe não mudava quase nada nos jogos além de economizar 2 segundos de loading. Mas isso mudou com o <strong>Windows 11</strong>.</p>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">O que é DirectStorage?</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 É uma tecnologia que permite que o jogo envie texturas direto do SSD para a Placa de Vídeo, sem passar pelo Processador. Isso elimina telas de carregamento e permite mundos abertos muito mais detalhados. 
                 <br/><br/><strong>Requisito:</strong> Você precisa de um SSD NVMe de pelo menos 1TB e Windows 11.
             </p>
@@ -55,7 +55,7 @@ export default function NVMeVsSATAGuide() {
         {
             title: "Uso Profissional: Edição e Arquivo",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você trabalha com edição de vídeo 4K, o NVMe é <strong>OBRIGATÓRIO</strong>. No SATA, você terá travamentos no 'timeline' do Premiere ou DaVinci Resolve. No NVMe, você consegue navegar pelo vídeo como se ele já estivesse carregado na memória.
         </p>
       `
@@ -63,7 +63,7 @@ export default function NVMeVsSATAGuide() {
         {
             title: "Veredito Final",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Hoje em dia, a diferença de preço entre um SSD SATA e um NVMe de entrada é de apenas alguns reais. 
             <br/><br/><strong>COMPRE NVME SE:</strong> Sua placa-mãe tem o slot M.2 e você quer performance de última geração.
             <br/><strong>COMPRE SATA SE:</strong> Você está dando vida nova a um notebook antigo que não tem slot M.2.

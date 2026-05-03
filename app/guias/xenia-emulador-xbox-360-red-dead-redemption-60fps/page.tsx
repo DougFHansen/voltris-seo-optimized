@@ -41,7 +41,7 @@ export default function XeniaGuide() {
         {
             title: "Introdução: Master vs Canary",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Sempre use o <strong>Xenia Canary</strong>. A versão "Master" é muito antiga e lenta. O Canary recebe updates diários com correções específicas para jogos como RDR e Fable II.
         </p>
       `
@@ -52,7 +52,7 @@ export default function XeniaGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Editando o Arquivo</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     O Xenia não tem menu de configurações (GUI). Você precisa editar o arquivo <code>xenia-canary.config.toml</code> com o Bloco de Notas.
                     <br/>- <code>d3d12_allow_variable_refresh_rate_and_tearing = true</code> (Para G-Sync/FreeSync).
                     <br/>- <code>license_mask = 1</code> (Desbloqueia jogos Trial/Demo para versão Completa).
@@ -65,7 +65,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 2: Red Dead Redemption 1 (O Ex-Clusivo)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O RDR1 roda incrivelmente bem no Xenia (muito melhor que no RPCS3).
             <br/>Em 4K, o jogo parece um remaster oficial.
             <br/>Exige GPU boa (RTX 3060 ou superior) para 4K 30fps estáveis.
@@ -76,7 +76,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 3: Patches de 60FPS",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Maioria dos jogos de 360 é travada em 30fps.
             <br/>1. Baixe o <code>patches.zip</code> no GitHub do Xenia Canary.
             <br/>2. Extraia na pasta do Xenia.
@@ -92,7 +92,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 4: FSR (FidelityFX)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Xenia Canary tem suporte nativo a FSR 1.0 (no arquivo config).
             <br/>Útil se você quer rodar em 4K mas sua GPU não aguenta nativo.
             <br/><code>d3d12_resolution_scale = 2</code>
@@ -103,7 +103,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 5: Problemas de Áudio (Lag)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o áudio estiver atrasado:
             <br/>Mude <code>apu_max_queued_frames</code> de 64 para 16 no config.toml.
             <br/>Isso reduz a latência do som, mas pode causar "pipocos" (crackling) se a CPU for fraca (i3/Ryzen 3).
@@ -113,7 +113,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 6: Clear Cache (Texturas Pretas)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Às vezes o jogo carrega com o chão preto (Fable II).
             <br/>Delete a pasta <code>cache</code> dentro da pasta do Xenia.
             <br/>Pressione F5 durante o jogo para limpar o cache de runtime. Ajuda a desbugar gráficos na hora.
@@ -123,7 +123,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 7: DLCs e Title Updates",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Xenia carrega DLCs e TUs automaticamente se estiverem na estrutura de pastas correta (Content/0000000...).
             <br/>Mas o jeito mais fácil é: File > Install Content. Selecione o arquivo do DLC. O Xenia copia para o lugar certo.
         </p>
@@ -135,7 +135,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 8: Teclado e Mouse",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Funciona, mas é ruim. O Xenia emula o analógico com o mouse de forma estranha.
                 <br/>Use um controle de Xbox (ou DualSense com DS4Windows). É a experiência nativa.
             </p>
@@ -144,7 +144,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 9: Saves",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Os saves são compatíveis com o Xbox 360 real!
                 <br/>Você pode pegar seu save antigo do console (via Horizon/USB) e jogar no PC.
             </p>
@@ -153,7 +153,7 @@ export default function XeniaGuide() {
         {
             title: "Capítulo 10: Linux (Steam Deck)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Xenia roda no Linux via Proton (SteamOS), mas é instável e tem bugs gráficos (Vulkan no Linux vs D3D12 no Windows).
                 <br/>Para 360, Windows ainda é muito superior.
             </p>

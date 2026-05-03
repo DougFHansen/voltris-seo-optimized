@@ -50,7 +50,7 @@ export default function EASportsFC2026Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-400 mb-8">{description}</p>
+                <p className="text-xl text-gray-700 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos EA Sports FC 2026</h2>
@@ -90,7 +90,7 @@ export default function EASportsFC2026Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações Competitivas (240 FPS)</h2>
-                    <p className="text-gray-400 mb-4">
+                    <p className="text-gray-700 mb-4">
                         Para Ultimate Team e Pro Clubs, cada frame conta. Configurações otimizadas para máxima responsividade.
                     </p>
                     <div className="bg-blue-900/20 p-4 rounded">
@@ -137,7 +137,7 @@ export default function EASportsFC2026Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6">
                     <h2 className="text-2xl font-bold mb-4">HyperMotion 3.0 Optimization</h2>
-                    <p className="text-gray-400 mb-4">
+                    <p className="text-gray-700 mb-4">
                         HyperMotion 3.0 usa machine learning para animações realistas. Requer CPU potente para cálculos.
                     </p>
                     <div className="bg-purple-900/20 p-4 rounded">

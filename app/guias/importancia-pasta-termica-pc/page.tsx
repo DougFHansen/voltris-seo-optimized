@@ -34,7 +34,7 @@ export default function ThermalPasteGuide() {
         {
             title: "O que é Pasta Térmica e por que ela seca?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Embora o topo do seu processador e a base do seu cooler pareçam lisos, eles possuem micro-furos invisíveis ao olho humano. A **Pasta Térmica** serve para preencher esses buracos, garantindo que o calor passe do chip para o metal do cooler. Com o tempo, os óleos da pasta evaporam, ela fica "seca" e quebradiça, perdendo a capacidade de conduzir calor.
         </p>
       `
@@ -42,8 +42,8 @@ export default function ThermalPasteGuide() {
         {
             title: "1. Prata vs Branca: Qual a diferença?",
             content: `
-        <p class="mb-4 text-gray-400">Ao comprar, você encontrará dois tipos básicos:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Ao comprar, você encontrará dois tipos básicos:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Pasta Branca (Silicone):</strong> Barata e simples. Indicada para PCs de escritório ou processadores muito básicos. Seca mais rápido.</li>
             <li><strong>Pasta Cinza/Prata (Cerâmica ou Prata):</strong> Contém partículas metálicas ou de cerâmica que transferem o calor muito melhor. Essencial para PCs Gamer e notebooks que esquentam muito.</li>
         </ul >
@@ -54,7 +54,7 @@ export default function ThermalPasteGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A Regra da Gota:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O erro mais comum é colocar pasta demais. Coloque apenas uma gota do tamanho de um <strong>grão de ervilha</strong> no centro do processador. A pressão do cooler vai espalhar a pasta perfeitamente. Se transbordar para os lados, pode causar sujeira e dificuldade na limpeza futura (embora a maioria não conduza eletricidade, algumas pastas de prata podem ser perigosas em excesso).
             </p>
         </div>
@@ -63,7 +63,7 @@ export default function ThermalPasteGuide() {
         {
             title: "3. Quando trocar?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não troque por rotina se o PC estiver frio. Monitore as temperaturas com o software <strong>HWMonitor</strong>. Se o seu processador (CPU) estiver passando de 90ºC jogando ou 60ºC parado, e você já limpou a poeira das ventoinhas, então chegou a hora de trocar a pasta térmica.
         </p>
       `

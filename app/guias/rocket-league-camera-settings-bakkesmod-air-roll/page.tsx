@@ -40,7 +40,7 @@ export default function RLGuide() {
         {
             title: "Introdução: O Básico Obrigatório",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Abra o jogo agora. Vá em Settings > Camera.
           <br/>Desligue <strong>Camera Shake</strong>.
           <br/>Se você joga com isso ligado, você está jogando no modo Hard. A tela treme a cada toque na bola, impedindo precisão.
@@ -53,7 +53,7 @@ export default function RLGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Configuração RLCS</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     - <strong>Field of View:</strong> 110.
                     - <strong>Distance:</strong> 270.
                     - <strong>Height:</strong> 100.
@@ -69,7 +69,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 2: Controles e Deadzone",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Steering Sensitivity:</strong> 1.30 a 1.70. (Comece com 1.40).
             - <strong>Aerial Sensitivity:</strong> 1.30 a 1.70.
             - <strong>Controller Deadzone:</strong> 0.05 a 0.10. (Use o menor possível sem o carro virar sozinho/drift). Quanto menor, mais rápido o carro responde.
@@ -80,7 +80,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 3: BakkesMod (O Poder em suas mãos)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Funciona na Steam e Epic Games.
             <br/>1. Baixe em bakkesmod.com.
             <br/>2. Instale. (Pressione F2 no jogo para abrir).
@@ -97,7 +97,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 4: Air Roll Direcional",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não use apenas o "Air Roll" geral (aquele que você segura e usa o analógico).
             <br/>Mapeie "Air Roll Right" ou "Air Roll Left" em botões específicos (Quadrado/Círculo ou Bumpers L1/R1).
             <br/>Isso permite girar no eixo E virar o carro ao mesmo tempo (Tornado Spin), impossível com o Air Roll normal. Essencial para mecânicas aéreas.
@@ -107,7 +107,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 5: Deadzone Quadrado (Steam Input)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O analógico é redondo. Mas os cantos (diagonais perfeitas) são essenciais para speedflip.
             <br/>Alguns pros mudam a deadzone para "Square" ou "Cross" via Steam Controller Settings ou DS4Windows.
             <br/>Isso faz com que o carro atinja 100% do input diagonal mais rápido. Teste e veja se gosta.
@@ -117,7 +117,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 6: Video Settings para FPS",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Anti-Aliasing:</strong> OFF.
             - <strong>Render Quality:</strong> High Quality. (Não baixe isso, a bola fica pixelada longe).
             - <strong>Render Detail:</strong> Performance ou High Quality (texturas do chão).
@@ -132,7 +132,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 7: Workshop Maps (Epic Games)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Na Steam é fácil. Na Epic, instale o plugin do BakkesMod "Rocket Plugin" ou "Workshop Map Loader".
                 <br/>Baixe mapas de treino de Rings (Anéis) para treinar voo.
             </p>
@@ -141,7 +141,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 8: Som",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Gameplay Audio: High.
                 <br/>Ambient/Crowd: Mute ou baixo. O barulho da torcida atrapalha ouvir o boost do inimigo.
             </p>
@@ -150,7 +150,7 @@ export default function RLGuide() {
         {
             title: "Capítulo 9: Cross-Network Play",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Deixe ligado. Jogadores de console geralmente têm input lag maior e FPS menor (vantagem para você no PC).
             </p>
             `

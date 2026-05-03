@@ -34,7 +34,7 @@ export default function PostInstallationGuide() {
         {
             title: "O perigo do computador \"pelado\"",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Muitos usuários acham que, ao terminar a instalação do Windows 11, o trabalho acabou. Na verdade, os primeiros 30 minutos após o primeiro boot são cruciais. É nesse momento que você define se o seu sistema será estável e rápido ou se ele começará a acumular erros de DLL e instabilidades de driver. Siga esta ordem cronológica para um setup perfeito em 2026.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PostInstallationGuide() {
         {
             title: "1. A Ordem Correta dos Drivers",
             content: `
-        <p class="mb-4 text-gray-400">Não confie apenas no Windows Update. Instale manualmente nesta ordem:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Não confie apenas no Windows Update. Instale manualmente nesta ordem:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li><strong>Chipset da Placa-mãe:</strong> Define como o processador fala com o resto do PC.</li>
             <li><strong>Rede (LAN/Wi-Fi):</strong> Garante que o download dos outros drivers não caia.</li>
             <li><strong>Drivers de Áudio:</strong> Para ativar recursos como áudio espacial.</li>
@@ -56,7 +56,7 @@ export default function PostInstallationGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Kit de Sobrevivência 2026:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 - <strong>Compressor:</strong> NanaZip (Melhor que o WinRAR para Windows 11). <br/>
                 - <strong>Player:</strong> VLC ou PotPlayer (Suporte universal a codecs). <br/>
                 - <strong>Runtimes:</strong> Visual C++ All-in-One (Evita erro de DLL faltando). <br/>
@@ -68,7 +68,7 @@ export default function PostInstallationGuide() {
         {
             title: "3. Ajustes de Privacidade Imediatos",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>O Windows 11 é fofoqueiro:</strong> 
             <br/><br/>Antes de qualquer coisa, vá em Configurações > Privacidade e Segurança. Desative todas as opções de <strong>Diagnóstico e Comentários</strong> e <strong>ID de Anúncio</strong>. Desative também os 'Aplicativos em segundo plano' que você não usa. Isso garante que o seu PC recém-formatado não comece a enviar dados desnecessários para a Microsoft, liberando banda de internet e processamento.
         </p>

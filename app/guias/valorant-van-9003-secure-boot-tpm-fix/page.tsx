@@ -40,7 +40,7 @@ export default function Van9003Guide() {
         {
             title: "Por que isso acontece?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Vanguard (Anti-Cheat da Riot) no Windows 11 exige que o computador provar que é "confiável" através de hardware. Para isso, ele obriga o uso de <strong>TPM 2.0</strong> (Trusted Platform Module) e <strong>Secure Boot</strong>. Se um desses estiver desligado, o jogo não abre.
         </p>
 
@@ -48,7 +48,7 @@ export default function Van9003Guide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🔒</span> Verificador Automático Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Entrar na BIOS pode ser assustador. O <strong>Voltris Optimizer</strong> tem uma ferramenta de "Valorant Prep" que verifica se seu TPM está ativos, se o disco é GPT e te diz exatamente o que mudar na BIOS antes de você reiniciar o PC.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function Van9003Guide() {
         {
             title: "Passo 1: Verifique se seu disco é GPT ou MBR",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Secure Boot SÓ funciona em discos GPT. Se seu Windows foi instalado em modo antigo (MBR), ativar o Secure Boot fará o PC parar de ligar.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Clique com botão direito no Menu Iniciar > Gerenciamento de Disco.</li>
             <li>Clique com botão direito no "Disco 0" (onde está o Windows) > Propriedades.</li>
             <li>Vá na aba <strong>Volumes</strong>.</li>
@@ -83,10 +83,10 @@ export default function Van9003Guide() {
         {
             title: "Passo 2: Converter MBR para GPT (Sem Formatar)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Windows 10/11 tem uma ferramenta nativa para isso.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4 font-mono text-sm">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 font-mono text-sm">
             <li>Segure Shift e clique em Reiniciar.</li>
             <li>Vá em Solução de Problemas > Opções Avançadas > Prompt de Comando.</li>
             <li>Faça login na sua conta.</li>
@@ -99,10 +99,10 @@ export default function Van9003Guide() {
         {
             title: "Passo 3: Configurando a BIOS (Secure Boot + TPM)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Cada marca é diferente, mas os nomes são parecidos.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
             <li>Reinicie o PC apertando <strong>Del</strong> ou <strong>F2</strong> para entrar na BIOS.</li>
             <li>Desative o <strong>CSM Support</strong> (Compatibility Support Module). O Secure Boot só aparece se o CSM estiver OFF.</li>
             <li>Procure por <strong>Secure Boot</strong>. Mude para <strong>Enabled</strong>.
@@ -111,7 +111,7 @@ export default function Van9003Guide() {
                 </ul>
             </li>
             <li>Procure por <strong>TPM</strong>:
-                <ul class="ml-6 mt-1 text-sm text-gray-400">
+                <ul class="ml-6 mt-1 text-sm text-gray-700">
                     <li>Intel: Chama-se <strong>IPTT</strong> ou <strong>Intel Platform Trust Technology</strong>.</li>
                     <li>AMD: Chama-se <strong>fTPM</strong> ou <strong>Firmware TPM</strong>.</li>
                 </ul>
@@ -129,10 +129,10 @@ export default function Van9003Guide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-red-400 font-bold mb-4 text-xl">VBS e Isolamento de Núcleo</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Às vezes não é a BIOS, é o Windows. O Vanguard precisa que certos serviços de segurança estejam rodando.
                 </p>
-                <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+                <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
                     <li>Pesquise no Windows por <code>msinfo32</code>.</li>
                     <li>Veja "Segurança baseada em virtualização". Deve estar "Em execução".</li>
                     <li>Se não estiver, procure no Windows por "Isolamento de Núcleo" e ative a "Integridade de Memória". (Cuidado: Isso pode diminuir levemente o FPS, mas é exigido pelo Valorant em alguns casos).</li>
@@ -146,7 +146,7 @@ export default function Van9003Guide() {
         {
             title: "Windows 10 vs Windows 11 no Valorant",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se nada funcionar, saiba que essa exigência rigorosa de TPM + Secure Boot é exclusiva do <strong>Windows 11</strong>. No Windows 10, o Valorant roda sem TPM e sem Secure Boot (na maioria dos casos). A solução "nuclear" é voltar para o Windows 10.
             </p>
             `

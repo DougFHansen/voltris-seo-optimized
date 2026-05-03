@@ -35,7 +35,7 @@ export default function GTAVCrashGuide() {
         {
             title: "Por que esse erro acontece?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O erro **ERR_GFX_D3D_INIT** ocorre quando a placa de vídeo para de responder ao jogo por um milissegundo. Isso pode ser causado por um overclock instável, drivers corrompidos ou, mais comumente, uma falha na transição de shaders do DirectX 11. Em 2026, com placas ultra rápidas, o GTA V às vezes "se perde" ao tentar inicializar certas rotinas gráficas.
         </p>
       `
@@ -43,8 +43,8 @@ export default function GTAVCrashGuide() {
         {
             title: "1. Mudando a Versão do DirectX",
             content: `
-        <p class="mb-4 text-gray-400">Se você consegue abrir o jogo até o menu principal:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Se você consegue abrir o jogo até o menu principal:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Vá em Configurações > Gráficos.</li>
             <li>Procure pela opção <strong>'Versão do DirectX'</strong>.</li>
             <li>Se estiver em 11, mude para <strong>10.1 ou 10</strong>.</li>
@@ -57,7 +57,7 @@ export default function GTAVCrashGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Se o jogo nem abre:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Vá na pasta <code>Documentos / Rockstar Games / GTA V</code>. <br/>
                 2. Delete o arquivo <strong>settings.xml</strong>. <br/>
                 3. Ao abrir o jogo novamente, ele criará um novo arquivo com as configurações padrão. <br/>
@@ -69,7 +69,7 @@ export default function GTAVCrashGuide() {
         {
             title: "3. O Problema do Underclock",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em alguns casos raros de 2026, placas de vídeo modernas vêm com um "overclock de fábrica" agressivo demais para o motor do GTA V. 
             <br/><br/>Tente usar o <strong>MSI Afterburner</strong> para reduzir o clock do núcleo (Core Clock) em <strong>-50 MHz</strong>. Surpreendentemente, essa pequena redução de velocidade pode estabilizar a comunicação D3D e impedir que o erro ocorra.
         </p>

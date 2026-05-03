@@ -40,7 +40,7 @@ export default function TempGuide() {
         {
             title: "Por que monitorar?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Saber apenas o FPS não conta a história toda. Se seu FPS é alto mas o jogo "engasga", você precisa ver o <strong>Frametime</strong>. Se o PC desliga, precisa ver a <strong>Temperatura</strong>. Se o jogo trava e fecha, precisa ver o uso de <strong>RAM/VRAM</strong>.
         </p>
 
@@ -48,7 +48,7 @@ export default function TempGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">📊</span> Overlay Nativo Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 O MSI Afterburner é excelente, mas tem uma interface de 2005 e muitas opções confusas. O <strong>Voltris Optimizer</strong> inclui um Overlay Moderno pré-configurado que mostra apenas o essencial (FPS, Latência, Temp), com design clean que não polui sua imersão.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,7 +64,7 @@ export default function TempGuide() {
         {
             title: "Passo 1: Instalação e Configuração",
             content: `
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Baixe o MSI Afterburner (Site oficial da Guru3D ou MSI).</li>
             <li>Durante a instalação, certifique-se de marcar <strong>RivaTuner Statistics Server (RTSS)</strong>. O Afterburner lê os dados, o RivaTuner desenha na tela. Um não vive sem o outro.</li>
             <li>Abra o Afterburner. Clique na Engrenagem (Configurações).</li>
@@ -75,11 +75,11 @@ export default function TempGuide() {
         {
             title: "Passo 2: Escolhendo o que mostrar",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Na lista de gráficos, você deve clicar no item (ex: Temperatura da GPU) e depois marcar a caixa lá embaixo <strong>"Exibir nas informações em tela (OSD)"</strong>. O item ficará com "Em OSD" escrito ao lado.
         </p>
-        <p class="text-gray-400 font-bold mb-2">Checklist Essencial:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-1 ml-4 text-sm">
+        <p class="text-gray-700 font-bold mb-2">Checklist Essencial:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4 text-sm">
             <li>[x] Temperatura da GPU</li>
             <li>[x] Uso da GPU (%) - Se estiver em 99%, o gargalo é a GPU.</li>
             <li>[x] Uso de VRAM (Memória de vídeo)</li>
@@ -94,14 +94,14 @@ export default function TempGuide() {
         {
             title: "Passo 3: Entendendo o Frametime (A Linha Lisa)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O FPS mostra a média do segundo. O Frametime mostra o tempo de cada quadro.
         </p>
-        <p class="text-gray-400 mb-4">
+        <p class="text-gray-700 mb-4">
             Uma linha de Frametime reta e lisa significa jogo fluido.
             <br/>Picos (spikes) na linha significam travadas (stuttering), mesmo que o contador de FPS diga "60".
         </p>
-        <p class="text-gray-400">
+        <p class="text-gray-700">
             Se você tem muitos picos no gráfico, o problema pode ser RAM (falta de dual channel), HD lento carregando textura, ou superaquecimento (Thermal Throttling).
         </p>
       `
@@ -114,10 +114,10 @@ export default function TempGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">Sensores Avançados</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     O Afterburner mostra o básico. O <strong>HWInfo64</strong> mostra voltagens individuais de cada núcleo, temperatura do VRM da placa mãe, velocidade do fan em RPM e erros de memória da GPU.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Você pode conectar o HWInfo64 ao RivaTuner para mostrar esses dados avançados na tela do jogo, mas exige configuração manual complexa.
                 </p>
             </div>
@@ -129,10 +129,10 @@ export default function TempGuide() {
         {
             title: "Não aparece no CS2?",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Counter-Strike 2 e alguns jogos anti-cheat bloqueiam overlays de terceiros.
             </p>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 Para o CS2, adicione <code>-allow_third_party_software</code> nas opções de inicialização da Steam (CUIDADO: Isso reduz seu Trust Factor). A melhor opção é usar o comando nativo do console <code>cl_showfps 1</code> ou a telemetria do próprio jogo.
             </p>
             `

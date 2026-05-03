@@ -34,7 +34,7 @@ export default function ValorantSecureBootGuide() {
         {
             title: "Por que o Erro VAN 9003 acontece?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, o sistema anti-cheat da Riot, o **Vanguard**, exige que o Windows 11 esteja rodando com todas as suas camadas de segurança ativas para evitar cheats de nível de hardware. Se a sua BIOS estiver configurada no modo antigo (Legacy) ou se o **Secure Boot** estiver desligado, o Valorant simplesmente se recusa a iniciar. Resolver isso exige uma viagem à BIOS do seu computador, mas é um processo definitivo.
         </p>
       `
@@ -42,8 +42,8 @@ export default function ValorantSecureBootGuide() {
         {
             title: "1. Verificando o estado atual no Windows",
             content: `
-        <p class="mb-4 text-gray-400">Antes de mexer na BIOS, veja o que está faltando:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Antes de mexer na BIOS, veja o que está faltando:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Aperte Win+R e digite <code>msinfo32</code>.</li>
             <li>Procure por 'Estado da Inicialização Segura'. Se estiver 'Desativado', você precisa ligar o Secure Boot.</li>
             <li>Procure por 'Modo da BIOS'. Se estiver 'Herdado' (Legacy), você precisará converter seu disco para GPT antes de poder ativar o Secure Boot.</li>
@@ -55,7 +55,7 @@ export default function ValorantSecureBootGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Dentro da BIOS (Passo Geral):</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Reinicie o PC e aperte repetidamente a tecla <strong>DEL ou F2</strong>. <br/>
                 2. Vá na aba de <strong>Boot</strong> ou <strong>Security</strong>. <br/>
                 3. Desative o <strong>CSM Support</strong> (Isso é obrigatório para ativar o Secure Boot). <br/>
@@ -68,7 +68,7 @@ export default function ValorantSecureBootGuide() {
         {
             title: "3. O TPM 2.0 (fTPM / PTT)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não esqueça do TPM:</strong> Além do Secure Boot, o TPM deve estar ativo. 
             <br/><br/>Em 2026, processadores modernos possuem o TPM embutido. Procure na BIOS por <strong>fTPM (AMD)</strong> ou <strong>Intel Platform Trust Technology (PTT)</strong> e certifique-se de que está ativado. Sem isso, mesmo com o Secure Boot ligado, o Vanguard pode apresentar o erro VAN 9001 ou 9003.
         </p>

@@ -40,7 +40,7 @@ export default function RouterGuide() {
     {
       title: "A Regra de Ouro: 5GHz vs 2.4GHz",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Wi-Fi 2.4GHz é lento e sofre interferência do microondas, babá eletrônica e dos vizinhos. Jamais jogue no 2.4GHz se puder evitar. O <strong>5GHz</strong> tem menor alcance (atravessa menos paredes), mas oferece latência quase igual à do cabo e velocidade total da sua fibra.
         </p>
 
@@ -48,7 +48,7 @@ export default function RouterGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">📡</span> Otimizador de Wi-Fi Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 O Windows, por padrão, escaneia redes Wi-Fi a cada 60 segundos, causando um pico de lag (Lag Spike) no meio da partida. O <strong>Voltris Optimizer</strong> tem um recurso "WLAN Optimizer" que desativa o Auto-Config do Wi-Fi enquanto você joga, garantindo uma linha reta de ping sem oscilações.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function RouterGuide() {
     {
       title: "Passo 1: Escolhendo o Melhor Canal",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se seu vizinho está usando o Canal 6 e você também, os sinais colidem e seu ping sobe.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Baixe o app <strong>Wi-Fi Analyzer</strong> (Open Source) no celular Android.</li>
             <li>Veja o gráfico. Identifique qual canal está VAZIO.</li>
             <li><strong>Para 2.4GHz:</strong> Use APENAS canais 1, 6 ou 11. (Nunca use canais intermediários como 3 ou 8, pois eles geram sobreposição dupla).</li>
@@ -79,10 +79,10 @@ export default function RouterGuide() {
     {
       title: "Passo 2: Configurando QoS (Quality of Service)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             QoS diz ao roteador: "Se a banda encher, atrase o YouTube, mas NÃO atrase o Jogo".
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Procure a aba QoS ou "Controle de Banda".</li>
             <li>Ative o QoS.</li>
             <li>Defina sua velocidade de Upload e Download real (faça um Speedtest antes). Se você colocar errado, a internet fica lenta.</li>
@@ -98,13 +98,13 @@ export default function RouterGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">NAT Estrito nunca mais</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Para ser o "Host" da partida ou ter NAT Aberto no CoD/Xbox:
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     <strong>UPnP (Universal Plug and Play):</strong> DEIXE ATIVADO. É a forma automática do jogo pedir pro roteador abrir a porta 3074. É seguro para uso doméstico.
                 </p>
-                <p class="text-gray-400 text-sm mt-3">
+                <p class="text-gray-700 text-sm mt-3">
                     <strong>DMZ (Zona Desmilitarizada):</strong> Abre TODAS as portas para um IP. Use apenas em Consoles (PS5/Xbox). NUNCA use DMZ no seu PC, pois isso remove o Firewall do roteador e expõe seu Windows a ataques diretos da internet.
                 </p>
             </div>
@@ -116,10 +116,10 @@ export default function RouterGuide() {
     {
       title: "MTU (Maximum Transmission Unit)",
       content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O padrão é 1500. Alguns guias dizem para mudar para 1450 ou 1472.
             </p>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 <strong>Verdade:</strong> Em 99% das conexões via Fibra (PPPoE), o MTU ideal é 1480 ou 1492. Deixe em 1500 (Padrão) a menos que saiba exatamente o que está fazendo. MTU errado causa fragmentação de pacotes e perda de dados (Packet Loss).
             </p>
             `

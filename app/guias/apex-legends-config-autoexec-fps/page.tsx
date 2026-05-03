@@ -43,10 +43,10 @@ export default function ApexGuide() {
         {
             title: "Introdução: A Source Engine no limite",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Apex é pesado. Ele renderiza mapas gigantes com a engine do Titanfall 2.Configurações padrões como "Volumetric Lighting" e "Sun Shadows" matam o FPS.
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
             Neste guia, vamos modificar o arquivo <code>videoconfig.txt</code> para desativar sombras que o menu do jogo não permite, garantindo visibilidade e frames altos.
         </p>
       `
@@ -58,19 +58,19 @@ export default function ApexGuide() {
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-red-500 font-bold mb-1">Texture Streaming Budget</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">None ou Very Low (2GB)</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     Isso reserva VRAM para texturas. Se você colocar High (6GB) e sua GPU tiver 6GB, o jogo vai engasgar quando o Windows precisar de VRAM. Deixe em None/Very Low para garantir que nunca falte VRAM para o frame buffer. A textura fica feia, mas o jogo roda liso.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-red-500 font-bold mb-1">Volumetric Lighting</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Disabled</span></p>
-                <p class="text-gray-400 text-xs">A luz do sol passando pela poeira. Lindo, mas cega você e come 20 FPS. Desligue.</p>
+                <p class="text-gray-700 text-xs">A luz do sol passando pela poeira. Lindo, mas cega você e come 20 FPS. Desligue.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-red-500 font-bold mb-1">Model Detail</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Low</span></p>
-                <p class="text-gray-400 text-xs">Reduz a complexidade geométrica de objetos distantes. Essencial para estabilidade.</p>
+                <p class="text-gray-700 text-xs">Reduz a complexidade geométrica de objetos distantes. Essencial para estabilidade.</p>
             </div>
         </div>
       `
@@ -78,11 +78,11 @@ export default function ApexGuide() {
         {
             title: "Capítulo 2: videoconfig.txt (Hack de Sombras)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O menu não deixa desligar tudo. Vamos editar o arquivo:
             <br/><code>%userprofile%\\Saved Games\\Respawn\\Apex\\local\\videoconfig.txt</code>
         </p>
-        <div class="bg-black/50 p-4 rounded font-mono text-xs text-gray-400 overflow-x-auto">
+        <div class="bg-black/50 p-4 rounded font-mono text-xs text-gray-700 overflow-x-auto">
             "setting.csm_enabled"       "0"   // (Desativa sombras do sol - Cascaded Shadow Maps)<br/>
             "setting.csm_coverage"      "0"<br/>
             "setting.csm_cascade_res"   "16"  // (Mínimo possível)<br/>
@@ -97,18 +97,18 @@ export default function ApexGuide() {
         {
             title: "Capítulo 3: Autoexec e Launch Options",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Na Steam/EA App > Propriedades do Jogo > Opções de Inicialização:
         </p>
         <code class="block bg-black/50 p-3 rounded text-green-400 font-mono text-sm mb-3">
             -dev -preload -fullscreen -refresh 144 -forcenovsync
         </code>
-        <ul class="list-disc list-inside text-gray-400 text-xs space-y-2">
+        <ul class="list-disc list-inside text-gray-700 text-xs space-y-2">
             <li><strong>-dev:</strong> Remove a animação de intro (barulhenta).</li>
             <li><strong>-preload:</strong> Tenta pré-carregar assets na RAM (ajuda em HDs, cuidado em PCs com pouca RAM).</li>
             <li><strong>-refresh 144:</strong> Força os Hz (mude para o seu monitor).</li>
         </ul>
-        <p class="mt-4 text-gray-400">
+        <p class="mt-4 text-gray-700">
             <strong>Autoexec.cfg:</strong> A Respawn bloqueou a maioria dos comandos cfgs em 2021. Hoje em dia, cfg foca mais em binds (Superglide) do que gráficos.
         </p>
       `
@@ -119,7 +119,7 @@ export default function ApexGuide() {
         {
             title: "Capítulo 4: DX12 Beta",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Apex lançou suporte a DirectX 12 (Beta).
             <br/>Adicione <code>-eac_launcher_settings SettingsDX12.json</code> nas launch options.
             <br/><strong>Veredito 2026:</strong> O DX12 usa melhor múltiplos núcleos da CPU. Se você tem uma GPU AMD ou RTX 4000 e sofre com gargalo de CPU, o DX12 pode aumentar seu FPS mínimo (1% lows) e deixar o jogo mais liso, apesar do FPS máximo mudar pouco. Vale testar.
@@ -129,7 +129,7 @@ export default function ApexGuide() {
         {
             title: "Capítulo 5: Superglide e FPS Cap",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Superglide é uma mecânica de movimento que depende do FPS. É mais fácil acertar o timing com FPS baixo.
             <br/>Alguns pros travam o FPS em valores específicos (ex: 144 ou 180) via RivaTuner ou comando <code>+fps_max 144</code> para garantir consistência no movimento. Não deixe ilimitado se oscilar muito.
         </p>
@@ -138,7 +138,7 @@ export default function ApexGuide() {
         {
             title: "Capítulo 6: Nvidia Reflex",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Como sempre, <strong>On + Boost</strong>.
             <br/>O Apex tem latência de sistema naturalmente alta. O Reflex é mandatório.
             <br/>Se você tiver AMD, ative o <strong>Radeon Anti-Lag</strong> no driver (não tem opção no jogo).
@@ -148,7 +148,7 @@ export default function ApexGuide() {
         {
             title: "Capítulo 7: FOV e Performance",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Quase todo pro usa FOV 104 ou 110.
             <br/>FOV alto = Mais visão periférica, mas os inimigos ficam menores (mais difícil de mirar) e o FPS cai um pouco (renderiza mais coisas).
             <br/>Se não consegue ver o inimigo, tente abaixar o FOV para 104 ou 100.
@@ -161,7 +161,7 @@ export default function ApexGuide() {
         {
             title: "Capítulo 8: Áudio (PC Equalizer)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O áudio do Apex é famoso por ser "quebrado" (passos silenciosos).
                 <br/>Não confie no jogo. Use um equalizador externo (Equalizer APO) para aumentar frequências agudas (4k-8k Hz) onde os passos e recargas acontecem.
             </p>
@@ -170,7 +170,7 @@ export default function ApexGuide() {
         {
             title: "Capítulo 9: Adaptive Resolution (FPS Target)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Apex tem "Adaptive Resolution FPS Target". Coloque em 0 (Desligado).
                 <br/>Se ligar, o jogo vai borrar a tela toda vez que o FPS cair, tornando impossível mirar. É melhor cair FPS com imagem nítida do que manter FPS com imagem pixelada.
             </p>
@@ -179,7 +179,7 @@ export default function ApexGuide() {
         {
             title: "Capítulo 10: Limpeza de Arquivos Temporários",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 A cada temporada, o Apex acumula lixo.
                 <br/>Faça uma "Reparação" do jogo na Steam/EA App a cada update grande para verificar a integridade dos arquivos e remover assets duplicados.
             </p>

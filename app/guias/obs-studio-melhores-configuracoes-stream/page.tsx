@@ -43,15 +43,15 @@ export default function OBSGuide() {
         {
             title: "Introdução: O gargalo da Stream",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Streamar e jogar no mesmo PC (Single PC Setup) é um desafio de equilíbrio. Se o OBS tentar usar 100% da GPU, seu jogo trava. Se o jogo usar 100%, sua stream trava (quadros perdidos).
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
             Neste guia, vamos configurar o OBS para usar chips dedicados da placa de vídeo (NVENC/AMF) e liberar a CPU para o jogo.
         </p>
          <div class="bg-[#0A0A0F] border border-yellow-500/30 p-5 rounded-xl my-6">
             <h4 class="text-yellow-400 font-bold mb-2">Regra #1: Modo Administrador</h4>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 Sempre, SEMPRE abra o OBS como Administrador.
                 <br/>Isso permite que o Windows reserve GPU para o OBS renderizar a cena, mesmo que o jogo esteja em 99% de uso. Sem isso, sua live vai parecer um slide show (lagada) para os espectadores.
             </p>
@@ -65,7 +65,7 @@ export default function OBSGuide() {
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Video Encoder</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">NVIDIA NVENC H.264</span></p>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Se tiver GPU Nvidia, USE. O NVENC é um chip separado, não afeta o FPS do jogo.
                     <br/>Se tiver AMD: Use <strong>AMD HW H.264</strong>.
                     <br/>Se usar x264 (CPU), seu PC vai fritar e o jogo vai travar, a menos que você tenha um Ryzen 9/i9 sobrando.
@@ -74,7 +74,7 @@ export default function OBSGuide() {
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Rate Control & Bitrate</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">CBR 6000 Kbps (Twitch)</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     A Twitch limita a 6000 (oficial) ou 8000 (unofficial). CBR (Constant Bitrate) é obrigatório para estabilidade.
                     <br/>Para YouTube: Use CBR 15000 Kbps ou mais (O YouTube reprocessa tudo, então envie qualidade alta).
                 </p>
@@ -82,7 +82,7 @@ export default function OBSGuide() {
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Preset & Tuning</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">P5 ou P6 (Better Quality)</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     P7 (Max Quality) pode causar lag visível. P5/P6 são idênticos visualmente e mais leves.
                     <br/>Multipass Mode: Single Pass (Duas passadas consome GPU à toa em live).
                     <br/>Look-ahead e Psycho Visual Tuning: ON (Ajuda em jogos rápidos).
@@ -94,7 +94,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 2: Configurações de Gravação (Local Recording)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não use as mesmas configs da Stream!
             <br/>Vá na aba "Recording".
             <br/>- <strong>Format:</strong> MKV (Se o PC travar, você não perde o arquivo. Converta para MP4 depois no OBS > Remux).
@@ -107,15 +107,15 @@ export default function OBSGuide() {
         {
             title: "Capítulo 3: Áudio (Filtros e Separação)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Microfone ruim estraga a live. Use filtros no OBS (Clique na engrenagem do Mic > Filtros):
         </p>
-        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
+        <ol class="list-decimal list-inside text-gray-700 text-sm space-y-2">
             <li><strong>Noise Suppression (RNNNoise):</strong> Remove ventilador e teclado mecânico via IA. Essencial.</li>
             <li><strong>Compressor:</strong> Iguala o volume. Quando você grita, ele abaixa pra não estourar. Quando sussurra, ele mantém audível.</li>
             <li><strong>Limiter:</strong> Coloque em -3dB. Garante que o som NUNCA ultrapasse o limite vermelho (clipagem).</li>
         </ol>
-        <p class="mt-4 text-gray-400 text-sm">
+        <p class="mt-4 text-gray-700 text-sm">
             <strong>Application Audio Capture (BETA):</strong> Use isso em vez de "Desktop Audio". Adicione uma fonte para o "Spotify" e outra para o "Jogo". Assim você pode ouvir música, mas configurar para ela NÃO sair na live (para evitar DMCA) ou não sair na gravação (VOD Track).
         </p>
       `
@@ -126,7 +126,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 4: Vídeo e Resolução (Downscale)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Base (Canvas) Resolution:</strong> A resolução do seu monitor (ex: 1920x1080).
             - <strong>Output (Scaled) Resolution:</strong> A resolução da live.
             <br/>Se você tem pouca internet (upload < 10Mbps), use 1280x720 ou 1664x936 (936p é o segredo dos streamers, divisível por 8 ideal para encode).
@@ -138,7 +138,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 5: Replay Buffer (Clipar Jogadas)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não precisa usar Shadowplay se o OBS já está aberto.
             <br/>Ative o "Replay Buffer" na aba Output. Aloque um tempo (ex: 60s).
             <br/>Configure uma Hotkey. Quando fizer uma jogada, aperte o botão e ele salva os últimos 60 segundos na RAM para o disco, já com seu microfone e overlay da live.
@@ -148,7 +148,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 6: Overlays Web (Browser Source)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Fontes de navegador (Alertas do StreamElements/StreamLabs) são pesadas pois são janelas do Chromium.
             <br/>Dica: Clique duas vezes na fonte > "Control audio via OBS" (Se não tiver som, não use) > <strong class="text-emerald-400">Shutdown source when not visible</strong>.
             <br/>Isso faz a fonte parar de consumir RAM e CPU quando você muda para a cena "Só Jogo".
@@ -158,7 +158,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 7: Prioridade de Processo",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em Configurações > Avançado > Geral > Prioridade do Processo.
             <br/>Defina como <strong>Alta (High)</strong>.
             <br/>Isso garante que o OBS nunca engasgue, mesmo que o jogo esteja sofrendo. A live continua lisa. O espectador prefere ver o jogo a 50 FPS liso do que o jogo a 144 FPS travando a transmissão.
@@ -171,7 +171,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 8: Codec AV1 (Youtube)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você streamar para o YouTube e tiver GPU Nvidia RTX 4000 ou AMD RX 7000.
                 <br/>USE O CODEC AV1.
                 <br/>Ele tem qualidade 40% superior ao H.264 com o mesmo bitrate. 8000 Kbps em AV1 parece 14000 Kbps. A Twitch não suporta, mas o YouTube sim.
@@ -181,7 +181,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 9: Cenas e Coleções",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Crie cenas limpas.
                 <br/>- Cena "Jogando": Apenas Game Capture + Câmera + Alertas.
                 <br/>- Cena "Just Chatting": Câmera Grande + Chat.
@@ -192,7 +192,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 10: Game Capture vs Display Capture",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Sempre use <strong>Game Capture (Captura de Jogo)</strong>.
                 <br/>Ele injeta direto no DirectX e é muito rápido.
                 <br/>Nunca use <strong>Display Capture (Captura de Tela)</strong> para jogos, pois ele é lento, tem tearing e mostra suas notificações do Windows/Desktop acidentalmente (vazamento de dados).

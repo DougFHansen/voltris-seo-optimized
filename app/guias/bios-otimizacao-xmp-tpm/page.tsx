@@ -39,12 +39,12 @@ export default function BiosGuide() {
         {
             title: "Passo 0: Entrando na BIOS (O Portal)",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           A BIOS (agora chamada UEFI) é o sistema operacional da sua placa-mãe.
         </p>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
           <h4 class="text-blue-400 font-bold mb-2">Como Acessar</h4>
-          <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+          <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Método Clássico:</strong> Reinicie o PC e aperte freneticamente a tecla <code>DEL</code> ou <code>F2</code> assim que a tela ligar.</li>
             <li><strong>Método Moderno (Se o SSD for rápido demais):</strong> No Windows, segure a tecla <code>SHIFT</code> e clique em Reiniciar.
                 <br/>Vá em Solução de Problemas > Opções Avançadas > <strong>Configurações de Firmware UEFI</strong> > Reiniciar.</li>
@@ -55,11 +55,11 @@ export default function BiosGuide() {
         {
             title: "1. XMP / DOCP / EXPO (Memória RAM)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Esta é a configuração OBRIGATÓRIA #1.
           <br/>Sua memória RAM vem de fábrica rodando no padrão JEDEC lento (ex: 2133MHz ou 4800MHz DDR5). O XMP é o perfil de overclock seguro testado pela fábrica.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li><strong>Intel:</strong> Procure por "XMP" (Extreme Memory Profile).</li>
             <li><strong>AMD (ASUS):</strong> Chama-se "DOCP".</li>
             <li><strong>AMD (Outros / DDR5):</strong> Chama-se "EXPO".</li>
@@ -71,12 +71,12 @@ export default function BiosGuide() {
         {
             title: "2. Re-Size BAR / SAM (Smart Access Memory)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Tecnologia de 2020+ que permite ao processador acessar toda a VRAM da placa de vídeo de uma só vez, em vez de pequenos pedaços de 256MB.
         </p>
         <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h4 class="text-green-400 font-bold mb-2">Como Ativar</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Geralmente fica na aba "Advanced" ou "PCI Subsystem Settings".
                 <br/>1. Ative "Above 4G Decoding".
                 <br/>2. Ative "Re-Size BAR Support" para <strong>Auto</strong> ou <strong>Enabled</strong>.
@@ -92,11 +92,11 @@ export default function BiosGuide() {
             title: "3. Virtualização (SVM / VT-x)",
             content: `
         <h4 class="text-white font-bold mb-3">Para Emuladores e Docker</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você joga Free Fire no Bluestacks/LDPlayer, ou programa usando Docker/WSL2, você PRECISA disso.
             <br/>Sem a virtualização de hardware, emuladores rodam a 10 FPS travando.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>AMD:</strong> Procure por "SVM Mode" (Secure Virtual Machine). Fica em CPU Configuration.</li>
             <li><strong>Intel:</strong> Procure por "Intel Virtualization Technology" ou "VT-x/VT-d".</li>
         </ul>
@@ -105,20 +105,20 @@ export default function BiosGuide() {
         {
             title: "4. TPM 2.0 e Secure Boot (Valorant)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O anti-cheat Vanguard do Valorant (e o Windows 11) exigem essas tecnologias de segurança.
         </p>
         <div class="space-y-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
                 <h5 class="font-bold text-white mb-2">Secure Boot</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     Deve estar em "Windows UEFI Mode". Se estiver "Other OS", mude.
                     <br/>Nota: Se você mudar isso e o Windows não bootar, é porque seu Windows foi instalado em modo Legacy (antigo). Você precisará converter o disco de MBR para GPT.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-yellow-500/30">
                 <h5 class="font-bold text-white mb-2">fTPM / PTT</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     TPM de Firmware.
                     <br/>AMD: "AMD fTPM switch".
                     <br/>Intel: "Intel PTT" (Platform Trust Technology).
@@ -134,7 +134,7 @@ export default function BiosGuide() {
             title: "Curva de Fans (Silêncio ou Performance)",
             content: `
         <h4 class="text-white font-bold mb-3">Q-Fan / Smart Fan</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Todas as BIOS modernas têm uma ferramenta gráfica de ventiladores.
             <br/>Configure seus fans do gabinete (Case Fans) para ficarem desligados ou em 20% até a CPU bater 50°C. Isso torna o PC silencioso navegando na internet.
             <br/>Configure para subir rápido para 100% quando bater 75°C.

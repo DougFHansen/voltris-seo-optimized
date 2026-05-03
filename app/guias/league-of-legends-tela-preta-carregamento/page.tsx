@@ -34,7 +34,7 @@ export default function LoLBlackScreenGuide() {
         {
             title: "O terror de quem quer subir de elo",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, com o novo anti-cheat e as atualizações frequentes do Windows 11, o erro da **Tela Preta** no LoL continua sendo uma das maiores causas de abandonos involuntários. O problema acontece no exato momento em que o cliente do LoL tenta "entregar" o controle para o executável do jogo. Se houver qualquer falha na comunicação de rede ou na resolução da tela, o jogo simplesmente não abre.
         </p>
       `
@@ -42,8 +42,8 @@ export default function LoLBlackScreenGuide() {
         {
             title: "1. O Truque do Alt + Enter (Resolvendo a Resolução)",
             content: `
-        <p class="mb-4 text-gray-400">Muitas vezes o jogo tenta abrir em uma resolução que seu monitor não suporta no modo Fullscreen:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Muitas vezes o jogo tenta abrir em uma resolução que seu monitor não suporta no modo Fullscreen:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Quando a tela ficar preta, aperte <strong>Alt + Enter</strong> simultaneamente.</li>
             <li>Isso forçará o jogo a sair do modo Tela Cheia e entrar em <strong>Modo Janela</strong>.</li>
             <li>Se o jogo carregar no modo janela, vá nas configurações dentro da partida e ajuste a resolução para o padrão do seu monitor antes de voltar para Tela Cheia.</li>
@@ -55,7 +55,7 @@ export default function LoLBlackScreenGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Se nada funcionar:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Vá na pasta de instalação do LoL (geralmente <code>C:/Riot Games/League of Legends/Config</code>). <br/>
                 2. Delete o arquivo <strong>game.cfg</strong>. <br/>
                 3. Ao tentar entrar em uma partida (use o modo Treino!), o jogo criará um arquivo novo com as configurações de vídeo zeradas, o que costuma eliminar conflitos de drivers de vídeo de 2026.
@@ -66,7 +66,7 @@ export default function LoLBlackScreenGuide() {
         {
             title: "3. Problemas de DNS e Conexão",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se a tela preta vem acompanhada de uma mensagem de "Erro ao conectar ao servidor", o culpado é o seu DNS. 
             <br/><br/><strong>Dica:</strong> Mude o seu DNS para o do Google (8.8.8.8 e 8.8.4.4) ou Cloudflare (1.1.1.1). Os DNS de operadoras de internet no Brasil costumam ter rotas instáveis para os servidores da Riot em 2026, causando falhas na autenticação da partida.
         </p>

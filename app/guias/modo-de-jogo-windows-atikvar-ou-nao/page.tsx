@@ -40,7 +40,7 @@ export default function GameModeGuide() {
         {
             title: "O que o Modo de Jogo realmente faz?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Ao ativar o Modo de Jogo (Configurações > Jogos > Modo de Jogo), o Windows faz duas coisas principais: 1) Pausa o Windows Update e instalações de driver para não ocupar o disco, e 2) Dá prioridade "Alta" aos núcleos da CPU para o processo da janela ativa (o jogo), tirando recursos de abas do Chrome e Spotify.
         </p>
 
@@ -48,7 +48,7 @@ export default function GameModeGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🎮</span> Voltris Game Booster
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 O Modo de Jogo do Windows é suave. O <strong>Voltris Optimizer</strong> é agressivo. Ele não apenas prioriza o jogo, mas suspende temporariamente serviços de impressão, busca e temas visuais, liberando até 15% a mais de recursos do que o modo nativo da Microsoft.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,19 +64,19 @@ export default function GameModeGuide() {
         {
             title: "Game Mode vs Xbox Game Bar",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não confunda os dois!
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
              <div class="bg-green-500/10 p-4 rounded-xl border border-green-500/30">
                 <h4 class="text-green-400 font-bold">Modo de Jogo</h4>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     <strong>ATIVE.</strong> É uma configuração interna do Kernel de prioridade. Leve e eficiente.
                 </p>
             </div>
              <div class="bg-red-500/10 p-4 rounded-xl border border-red-500/30">
                 <h4 class="text-red-400 font-bold">Xbox Game Bar</h4>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     <strong>DESATIVE.</strong> É aquele overlay (Win+G) que grava clipes e chat. Ele consome VRAM e causa stuttering. Só deixe ligado se você realmente usa o chat da Xbox ou clipes.
                 </p>
             </div>
@@ -86,10 +86,10 @@ export default function GameModeGuide() {
         {
             title: "Streamers e OBS: O Perigo",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
              Se você faz live, o Modo de Jogo pode ser um vilão. Como ele dá 100% da prioridade de GPU para o jogo, ele pode deixar o OBS "sem nada", fazendo a live travar (dropped frames) enquanto o jogo roda liso pra você.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Se a live trava:</strong> DESATIVE o Modo de Jogo. E execute o OBS como Administrador (isso equilibra a prioridade).</li>
             <li><strong>Se você só joga:</strong> ATIVE.</li>
         </ul>
@@ -103,10 +103,10 @@ export default function GameModeGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">Agendamento de GPU</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Logo abaixo do botão do Modo de Jogo, existe o "Agendamento de GPU acelerado por hardware". Ele transfere o gerenciamento da VRAM da CPU para a própria GPU.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Isso reduz a latência e é <strong>OBRIGATÓRIO</strong> para usar Frame Generation (DLSS 3). Ative os dois juntos para melhor resultado.
                 </p>
             </div>
@@ -118,14 +118,14 @@ export default function GameModeGuide() {
         {
             title: "Benchmarks 2026",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Em testes com Cyberpunk 2077 e CS2:
             </p>
-            <ul class="list-disc list-inside text-gray-400 space-y-1 ml-4 text-sm">
+            <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4 text-sm">
                 <li><strong>FPS Médio:</strong> Diferença de 1% (Margem de erro).</li>
                 <li><strong>FPS 1% Low (Travadinhas):</strong> Diferença de 8% a favor do Modo de Jogo Ativado.</li>
             </ul>
-            <p class="mt-2 text-gray-400 text-sm">Conclusão: Ele não aumenta o teto, mas levanta o chão, deixando o jogo mais estável.</p>
+            <p class="mt-2 text-gray-700 text-sm">Conclusão: Ele não aumenta o teto, mas levanta o chão, deixando o jogo mais estável.</p>
             `
         }
     ];

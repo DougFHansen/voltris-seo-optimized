@@ -40,10 +40,10 @@ export default function CS2OptimizationGuide() {
     {
       title: "Adeus Source 1, Olá Source 2: O Que Mudou?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Counter-Strike 2 não é apenas uma atualização visual; é uma reescrita total da engine física e de rede. Enquanto o CS:GO era dependente quase exclusivamente da CPU (single-core speed), o CS2 utiliza a GPU de forma intensiva para renderizar fumaças volumétricas, iluminação sub-surface e texturas PBR de alta resolução.
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
           Isso significa que muitos comandos antigos de <code>launch options</code> (como <code>-high</code>, <code>-threads</code>, <code>-nod3d9ex</code>) agora são <strong>inúteis ou prejudiciais</strong>. Em 2026, otimizar CS2 exige uma abordagem limpa e moderna, focada no sistema de Sub-Tick e na estabilidade do Frame Time (1% Lows).
         </p>
 
@@ -51,7 +51,7 @@ export default function CS2OptimizationGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">📡</span> Otimização de Rota e Sub-Tick
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 O sistema Sub-Tick do CS2 envia pacotes de input com carimbos de tempo precisos. Qualquer instabilidade na rede (Jitter) faz os tiros "sumirem". O <strong>Voltris Optimizer</strong> ajusta o protocolo TCP/IP do Windows e desativa o "Nagle's Algorithm" para garantir que seus pacotes cheguem ao servidor Valve sem fila de espera no adaptador de rede.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -67,14 +67,14 @@ export default function CS2OptimizationGuide() {
     {
       title: "Entendendo o Sub-Tick: Por que você erra o tiro?",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             No CS:GO, o servidor "lia" suas ações 64 vezes por segundo (ou 128 vezes em Faceit). No CS2, o servidor sabe o momento <strong>exato</strong> entre os ticks que você clicou.
         </p>
         
         <!-- SVG Technical Diagram: Sub-Tick Timing -->
         <div class="my-8 bg-[#0F111A] p-6 rounded-xl border border-white/5 flex flex-col items-center">
             <h4 class="text-white font-bold mb-6 text-center">Tickrate (CS:GO) vs Sub-Tick (CS2)</h4>
-            <svg viewBox="0 0 800 250" class="w-full h-auto text-gray-400" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 800 250" class="w-full h-auto text-gray-700" xmlns="http://www.w3.org/2000/svg">
                 <!-- CS:GO Timeline -->
                 <g transform="translate(50, 50)">
                     <text x="0" y="-10" fill="#94a3b8" font-size="12" font-weight="bold">CS:GO (Tick Based)</text>
@@ -125,7 +125,7 @@ export default function CS2OptimizationGuide() {
     {
       title: "1. Launch Options: O Que Ainda Funciona?",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Limpe suas opções de inicialização antigas. A maioria dos comandos antigos (<code>-tickrate 128</code>, <code>-novid</code>) foi removida ou incorporada.
         </p>
 
@@ -134,7 +134,7 @@ export default function CS2OptimizationGuide() {
             -nojoy -softparticlesdefaultoff +fps_max 0 +cl_showfps 1 -vulkan
         </div>
         
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4 mt-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 mt-4">
             <li><code>-nojoy</code>: Desativa suporte a joystick, liberando uma pequena quantia de RAM.</li>
             <li><code>-softparticlesdefaultoff</code>: Reduz a queda de fps perto de fumaças (smoke).</li>
             <li><code>+fps_max 0</code>: Tira o limite de 400 FPS do menu.</li>
@@ -146,7 +146,7 @@ export default function CS2OptimizationGuide() {
     {
       title: "2. Comandos de Console Essenciais (Autoexec)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Você deve criar um arquivo <code>autoexec.cfg</code> em <code>game/csgo/cfg/</code> para carregar esses comandos sempre que abrir o jogo.
         </p>
 
@@ -162,7 +162,7 @@ export default function CS2OptimizationGuide() {
         </div>
 
         <h4 class="text-white font-bold mb-3 mt-4">Jump Throw Bind (Ainda necessário?)</h4>
-        <p class="text-gray-400 text-sm">
+        <p class="text-gray-700 text-sm">
             O CS2 agora tem jump-throw nativo (o jogo detecta se você pulou e soltou a granada no mesmo tempo). Porém, para precisão de pixel perfeita, a bind (alias) ainda é usada por profissionais:
         </p>
         <div class="bg-gray-800 p-4 rounded-lg font-mono text-xs text-orange-400 mt-2">
@@ -176,10 +176,10 @@ export default function CS2OptimizationGuide() {
     {
       title: "3. Configurações de Vídeo: Otimizando Source 2",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O menu de vídeo "Advanced Video" mudou tudo.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4 mb-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 mb-4">
             <li><strong>Boost Player Contrast:</strong> <span class="text-green-500 font-bold">Enabled</span>. Essencial para ver inimigos em cantos escuros. Custa 2-3 FPS, vale a pena.</li>
             <li><strong>Vertical Sync:</strong> <span class="text-red-500 font-bold">Disabled</span>. Nunca ative em CS.</li>
             <li><strong>Multisampling Anti-Aliasing Mode (MSAA):</strong> 2x ou 4x. Source 2 fica muito serrilhado sem AA. CMAA2 é uma alternativa mais leve.</li>
@@ -202,17 +202,17 @@ export default function CS2OptimizationGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-purple-400 font-bold mb-4 text-xl">⚠️ Travando na primeira vez que atira?</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     O CS2 compila shaders sob demanda. Na primeira vez que você vê uma skin ou efeito novo, o jogo trava por 0.1s. Isso melhora com o tempo, mas atualizações de driver resetam isso.
                 </p>
             </div>
 
             <h4 class="text-white font-bold mb-3 text-lg">Como rebuildar shaders corretamente:</h4>
-            <p class="text-gray-400 mb-4 text-sm">
+            <p class="text-gray-700 mb-4 text-sm">
                 A Valve recomenda deixar o jogo rodando no menu principal por 10-15 minutos após uma atualização grande ou update de driver.
             </p>
-            <p class="text-gray-400 mb-4 text-sm font-bold">Solução Avançada (DirectX Shader Cache):</p>
-            <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+            <p class="text-gray-700 mb-4 text-sm font-bold">Solução Avançada (DirectX Shader Cache):</p>
+            <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
                 <li>Abra a Limpeza de Disco do Windows.</li>
                 <li>Selecione C: > Marque <strong>"DirectX Shader Cache"</strong>.</li>
                 <li>Execute a limpeza.</li>
@@ -224,10 +224,10 @@ export default function CS2OptimizationGuide() {
     {
       title: "Áudio 3D e Equalização",
       content: `
-            <p class="mb-4 text-gray-400 leading-relaxed">
+            <p class="mb-4 text-gray-700 leading-relaxed">
                 O som do CS2 é processado de forma diferente. O comando <code>snd_mixahead</code> padrão (0.025) às vezes causa som "craquelado" em PCs fracos.
             </p>
-            <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
                 <li>Se o som falhar: Aumente para <code>snd_mixahead 0.05</code>.</li>
                 <li><strong>EQ Profile:</strong> Nas configurações de áudio do jogo, use "Crisp" (Nítido) para destacar passos e reload, ou "Smooth" se os tiros de AWP estiverem machucando seus ouvidos.</li>
                 <li><strong>Perspective Correction:</strong> Sim. Ajuda a identificar se o som vem de trás ou da frente.</li>
@@ -245,7 +245,7 @@ export default function CS2OptimizationGuide() {
                     <div class="shrink-0 w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-xl">📐</div>
                     <div>
                         <h4 class="text-white font-bold text-lg">Hitbox Maior? Não.</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed mt-1">
+                        <p class="text-gray-700 text-sm leading-relaxed mt-1">
                             Jogar em 1280x960 (4:3) esticado NÃO aumenta a hitbox do inimigo no código do jogo. Mas aumenta o <strong>modelo visual</strong> na sua tela, tornando mais fácil focar e clicar na cabeça. Além disso, menos pixels = mais FPS.
                         </p>
                     </div>
@@ -255,7 +255,7 @@ export default function CS2OptimizationGuide() {
                     <div class="shrink-0 w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-xl">👀</div>
                     <div>
                         <h4 class="text-white font-bold text-lg">Visão Periférica Reduzida</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed mt-1">
+                        <p class="text-gray-700 text-sm leading-relaxed mt-1">
                             O custo do 4:3 é perder visão lateral (FOV reduzido). Inimigos nos cantos da tela não aparecerão. No nível profissional, a troca vale a pena pelo foco extra. Para casuais, 16:9 Nativo pode ser mais confortável.
                         </p>
                     </div>

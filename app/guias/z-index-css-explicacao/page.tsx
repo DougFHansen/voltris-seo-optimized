@@ -34,7 +34,7 @@ export default function ZIndexGuide() {
         {
             title: "O que é o z-index?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           No desenvolvimento web de 2026, criar interfaces modernas com camadas sobrepostas (glassmorphism, modais, headers fixos) é regra. O **z-index** é a propriedade CSS que define quem fica "na frente" de quem no eixo Z (profundidade). No entanto, ele é famoso por ser uma das propriedades que mais gera frustração em desenvolvedores iniciantes por parecer "não funcionar" sem motivo aparente.
         </p>
       `
@@ -42,7 +42,7 @@ export default function ZIndexGuide() {
         {
             title: "1. A Regra de Ouro da Posição",
             content: `
-        <p class="mb-4 text-gray-400">O z-index só funciona em elementos que possuem uma posição definida:</p>
+        <p class="mb-4 text-gray-700">O z-index só funciona em elementos que possuem uma posição definida:</p>
         <div class="bg-gray-800 p-4 rounded-lg mb-4">
             <code class="text-blue-400">
                 .caixa {"{"} <br/>
@@ -51,7 +51,7 @@ export default function ZIndexGuide() {
                 {"}"}
             </code>
         </div>
-        <p class="text-sm text-gray-400">
+        <p class="text-sm text-gray-700">
             Se o seu elemento tem <code>position: static</code> (o padrão do navegador), o z-index será **completamente ignorado**. Lembre-se sempre de trocar para <code>relative</code> se quiser apenas mover o elemento no eixo Z.
         </p>
       `
@@ -61,7 +61,7 @@ export default function ZIndexGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Por que o '9999' não funciona?</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Muitas vezes você coloca <code>z-index: 9999</code> em um balão e ele continua atrás de um fundo que tem <code>z-index: 1</code>. Isso acontece por causa do <strong>Stacking Context</strong>. <br/><br/>
                 Imagine que cada container-pai é uma pasta. Se o 'Pai A' tem z-index 1 e o 'Pai B' tem z-index 2, nada dentro do 'Pai A' (mesmo que tenha z-index um bilhão) conseguirá ficar na frente do 'Pai B'. O filho está preso ao nível de hierarquia do seu pai.
             </p>
@@ -71,7 +71,7 @@ export default function ZIndexGuide() {
         {
             title: "3. Boas Práticas em 2026",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não use valores aleatórios:</strong> Evite usar <code>z-index: 9999999</code>. Isso cria uma "guerra de números" impossível de manter em projetos grandes. 
             <br/><br/><strong>Dica:</strong> Em 2026, a melhor prática é criar variáveis CSS para os seus níveis de camada: <br/>
             - <code>--z-modal: 100;</code> <br/>

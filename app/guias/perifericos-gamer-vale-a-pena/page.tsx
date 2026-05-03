@@ -34,7 +34,7 @@ export default function GamingPeripheralsGuide() {
         {
             title: "A evolução dos periféricos",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, o cenário de periféricos gamer mudou drasticamente. Empresas famosas de "marketing RGB" estão perdendo espaço para marcas focadas em performance pura (como Wooting, VGN e Lamzu). Com monitores de 360Hz se tornando comuns, o atraso (latência) dos seus periféricos pode ser o fator que te impede de subir de ranking em jogos competitivos.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GamingPeripheralsGuide() {
         {
             title: "1. Mouses: A era dos 8000Hz e Ultralight",
             content: `
-        <p class="mb-4 text-gray-400">O que importa em um mouse em 2026:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">O que importa em um mouse em 2026:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Peso:</strong> Menos de 60 gramas é o novo padrão para FPS.</li>
             <li><strong>Polling Rate:</strong> 4000Hz ou 8000Hz reduzem o input lag, mas exigem um processador potente.</li>
             <li><strong>Sensores:</strong> PixArt 3395 ou superior. Eles não falham mesmo em movimentos bruscos.</li>
@@ -56,7 +56,7 @@ export default function GamingPeripheralsGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A Tecnologia Hall Effect:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se você joga Valorant ou CS2, um teclado comum não é mais suficiente. Teclados com **Rapid Trigger** permitem que a tecla "resete" assim que você começa a levantá-la, permitindo um counter-strafe instantâneo. Isso não é marketing, é uma vantagem física comprovada em 2026. Se for comprar um teclado mecânico hoje, certifique-se de que ele tenha switches magnéticos.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function GamingPeripheralsGuide() {
         {
             title: "3. Áudio: Fuja do \"7.1 Virtual\"",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Qualidade Estéreo:</strong> 
             <br/><br/>Em 2026, a melhor forma de ouvir passos em jogos não é usando headsets com 7.1 canais virtuais (que apenas distorcem o som). Invista em um bom fone estéreo de marcas de áudio profissional ou use o <strong>Windows Sonic/Dolby Atmos</strong> integrado no sistema. Um som limpo e bem equalizado é muito mais eficiente para localizar inimigos do que filtros de software pesados.
         </p>

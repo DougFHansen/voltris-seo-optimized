@@ -25,7 +25,7 @@ export default function OBSRecordingGuide() {
         {
             title: "Por que o OBS Studio é o padrão da indústria?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Diferente de gravadores simples, o **OBS Studio** (Open Broadcaster Software) oferece controle total. Ele permite separar o áudio do seu microfone do áudio do jogo, criar cenas com webcam e, o mais importante: usar o chip da sua placa de vídeo para gravar sem perder FPS no jogo. Em 2026, ele continua sendo a ferramenta mais poderosa e gratuita para criadores de conteúdo.
         </p>
       `
@@ -33,8 +33,8 @@ export default function OBSRecordingGuide() {
         {
             title: "1. Configurações de Saída (Aumentando a Qualidade)",
             content: `
-        <p class="mb-4 text-gray-400">Vá em Configurações > Saída e mude o Modo de Saída para 'Avançado':</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Vá em Configurações > Saída e mude o Modo de Saída para 'Avançado':</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Tipo:</strong> Padrão.</li>
             <li><strong>Caminho da Gravação:</strong> Escolha uma pasta em um SSD rápido.</li>
             <li><strong>Formato de Gravação:</strong> Use <strong>MKV</strong>. Se o seu PC travar ou a luz acabar, você não perde o vídeo. Depois, você pode converter para MP4 no próprio OBS (Arquivo > Remux Gravações).</li>
@@ -47,7 +47,7 @@ export default function OBSRecordingGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Truque de Performance:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se o seu vídeo está saindo "travado", mude o Controle de Taxa de Bits para <strong>CQP</strong> em vez de CBR. Use um valor de CQP entre <strong>18 e 23</strong>. Quanto menor o número, maior a qualidade e o peso do arquivo. O CQP garante que o OBS use apenas os recursos necessários para capturar a imagem com fidelidade, sem desperdiçar processamento.
             </p>
         </div>
@@ -56,7 +56,7 @@ export default function OBSRecordingGuide() {
         {
             title: "3. Captura de Jogo vs Captura de Tela",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Captura de Jogo:</strong> É o modo mais eficiente. O OBS "trava" no jogo e nada mais aparece, preservando sua privacidade (notificações do Windows não aparecem no vídeo).
             <br/><br/>
             <strong>Captura de Tela:</strong> Use apenas para tutoriais onde você precisa mostrar o Windows inteiro. Em 2026, esse modo ainda consome um pouco mais de recursos do sistema que a captura direta de jogo.
@@ -71,13 +71,13 @@ export default function OBSRecordingGuide() {
             title: "12. Arquitetura de Captura e Codificação de Vídeo",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Arquitetura de Captura de Vídeo em 2026</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A captura de tela e de jogos no OBS Studio utiliza diferentes métodos técnicos que impactam diretamente o desempenho e a qualidade:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Captura de Jogo (Game Capture)</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Hooking em APIs gráficas (DXGI, D3D11, OpenGL)</li>
                     <li>• Captura direta do framebuffer do jogo</li>
                     <li>• Menor overhead de CPU</li>
@@ -87,7 +87,7 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Captura de Tela (Window/Display Capture)</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Composição de pixels na GPU</li>
                     <li>• Captura de janelas ou monitores inteiros</li>
                     <li>• Maior overhead de CPU</li>
@@ -98,11 +98,11 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Pipeline de Codificação de Vídeo</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O processo de codificação envolve múltiplas etapas que determinam a qualidade e eficiência:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Etapa</th>
@@ -148,7 +148,7 @@ export default function OBSRecordingGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Buffer de Gravação</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Um buffer de gravação maior (até 2GB) pode prevenir perda de frames em sistemas com I/O limitado, especialmente ao gravar em HDs mecânicos ou em sistemas com múltiplas operações simultâneas.
             </p>
         </div>
@@ -158,13 +158,13 @@ export default function OBSRecordingGuide() {
             title: "13. Configurações Avançadas de Áudio e Sincronização",
             content: `
         <h4 class="text-white font-bold mb-3">🔊 Arquitetura de Áudio em Gravações Profissionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A captura de áudio no OBS Studio envolve múltiplas fontes e processamento complexo:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Fontes de Áudio</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Audio Input Capture (microfones)</li>
                     <li>• Audio Output Capture (áudio do sistema)</li>
                     <li>• Dispositivos de áudio virtuais</li>
@@ -174,7 +174,7 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Processamento de Áudio</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Filtros de ruído e equalização</li>
                     <li>• Compressão e limitação</li>
                     <li>• Sincronização de múltiplas fontes</li>
@@ -185,11 +185,11 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Áudio Profissionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Parâmetros avançados para diferentes tipos de gravação:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tipo de Gravação</th>
@@ -232,13 +232,13 @@ export default function OBSRecordingGuide() {
             title: "14. Tendências e Inovações em Gravação de Tela em 2026",
             content: `
         <h4 class="text-white font-bold mb-3">🚀 Inovações em Gravação de Vídeo e Áudio</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             As tecnologias de captura de tela estão evoluindo rapidamente com novas abordagens para eficiência e qualidade:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Captura Neural</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Identificação inteligente de áreas de interesse</li>
                     <li>• Compressão adaptativa baseada em atenção</li>
                     <li>• Filtros de ruído avançados por IA</li>
@@ -248,7 +248,7 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="bg-orange-900/10 p-5 rounded-xl border border-orange-500/20">
                 <h5 class="text-orange-400 font-bold mb-3">Codificação Híbrida</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Combinação de hardware e software</li>
                     <li>• Balanceamento automático de carga</li>
                     <li>• Codificação preditiva</li>
@@ -258,7 +258,7 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="bg-pink-900/10 p-5 rounded-xl border border-pink-500/20">
                 <h5 class="text-pink-400 font-bold mb-3">Gravação Adaptativa</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Ajuste automático de qualidade</li>
                     <li>• Monitoramento de recursos do sistema</li>
                     <li>• Pausa e retomada inteligente</li>
@@ -269,11 +269,11 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões de Tecnologia para 2026-2027</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Tendências observadas no desenvolvimento de tecnologias de gravação:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tecnologia</th>
@@ -312,10 +312,10 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Empresas estão investindo pesadamente em tecnologias de gravação avançada:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
             <li><strong>Inteligência Artificial:</strong> Análise preditiva para otimização de recursos durante gravação</li>
             <li><strong>Codificação Híbrida:</strong> Combinação de hardware e software para eficiência máxima</li>
             <li><strong>Balanceamento de Carga:</strong> Distribuição inteligente de processamento de áudio/vídeo</li>
@@ -331,16 +331,16 @@ export default function OBSRecordingGuide() {
             title: "4. Otimizações de Hardware e Performance",
             content: `
         <h4 class="text-white font-bold mb-3">⚡ Otimizações Baseadas em Hardware</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A performance de gravação do OBS Studio varia significativamente com diferentes configurações de hardware:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Processadores Intel</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Configurações ideais para CPUs Intel:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Utilizar Quick Sync Video para codificação por hardware</li>
                     <li>• Ajustar prioridade de threads para gravação</li>
                     <li>• Configurar Power Plans para desempenho máximo</li>
@@ -350,10 +350,10 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Placas de Vídeo NVIDIA</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Aproveitamento máximo das GPUs NVIDIA:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Usar NVENC para codificação eficiente</li>
                     <li>• Ajustar configurações de codificação no OBS</li>
                     <li>• Configurar prioridade de GPU para gravação</li>
@@ -363,10 +363,10 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="border-l-4 border-purple-500 pl-4 py-2 bg-purple-900/10">
                 <h5 class="text-purple-400 font-bold mb-2">AMD e Processadores Ryzen</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Configurações específicas para hardware AMD:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Usar AMD AMF para codificação por hardware</li>
                     <li>• Configurar prioridade de núcleos para gravação</li>
                     <li>• Ajustar configurações de memória e cache</li>
@@ -377,13 +377,13 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Performance por Hardware</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Desempenho esperado em diferentes configurações de hardware:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Configurações de Baixo Custo</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• i3/Ryzen 3 + GT 1030/GTX 1650</li>
                     <li>• Melhor usar CPU encoding com preset ultrafast</li>
                     <li>• Gravação 720p a 30fps</li>
@@ -407,13 +407,13 @@ export default function OBSRecordingGuide() {
             title: "5. Configurações Avançadas de Codificação",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Configurações Técnicas de Codificação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Parâmetros avançados para diferentes tipos de gravação:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Codificação por Hardware</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• NVENC (NVIDIA): Melhor desempenho</li>
                     <li>• AMD AMF: Eficiente para placas AMD</li>
                     <li>• Intel Quick Sync: Bom para CPUs integradas</li>
@@ -423,7 +423,7 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Codificação por Software (x264)</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Maior controle sobre configurações</li>
                     <li>• Qualidade superior com presets lentos</li>
                     <li>• Consumo elevado de CPU</li>
@@ -434,11 +434,11 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Parâmetros Técnicos de Codificação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Entendendo os principais parâmetros que afetam a qualidade e eficiência:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Parâmetro</th>
@@ -487,13 +487,13 @@ export default function OBSRecordingGuide() {
             title: "6. Gerenciamento de Armazenamento e Performance",
             content: `
         <h4 class="text-white font-bold mb-3">💾 Estratégias de Armazenamento e I/O</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O gerenciamento de armazenamento é crítico para gravações longas e de alta qualidade:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Tipos de Armazenamento</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• SSD NVMe: Melhor desempenho para gravação</li>
                     <li>• SSD SATA: Bom equilíbrio custo/desempenho</li>
                     <li>• HDD 7200 RPM: Adequado para gravações longas</li>
@@ -503,7 +503,7 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Planejamento de Espaço</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• 1GB/hora para 720p30 com H.264</li>
                     <li>• 3GB/hora para 1080p60 com H.264</li>
                     <li>• 8GB/hora para 1080p60 com H.264 em alta qualidade</li>
@@ -514,13 +514,13 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Otimizações de I/O e Velocidade de Escrita</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações para maximizar a velocidade de escrita e evitar perda de frames:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Configurações de Sistema</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Desabilitar hibernação durante gravação</li>
                     <li>• Configurar energia para alto desempenho</li>
                     <li>• Desativar economia de energia de disco</li>
@@ -544,16 +544,16 @@ export default function OBSRecordingGuide() {
             title: "7. Monitoramento e Diagnóstico",
             content: `
         <h4 class="text-white font-bold mb-3">📊 Monitoramento de Performance em Tempo Real</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Ferramentas e métricas essenciais para monitorar a qualidade da gravação:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Métricas de Performance</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Parâmetros críticos para monitorar durante gravações:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• FPS de saída (deve permanecer estável)</li>
                     <li>• Uso de CPU (ideal abaixo de 80%)</li>
                     <li>• Uso de GPU (monitorar temperatura)</li>
@@ -563,10 +563,10 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Ferramentas de Diagnóstico</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Recursos para identificar e resolver problemas:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Painel de estatísticas do OBS</li>
                     <li>• Task Manager do Windows</li>
                     <li>• MSI Afterburner para monitoramento de GPU</li>
@@ -577,11 +577,11 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Diagnóstico de Problemas Comuns</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Soluções para problemas frequentes durante gravações:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Problema</th>
@@ -630,13 +630,13 @@ export default function OBSRecordingGuide() {
             title: "8. Plugins e Extensões Avançadas",
             content: `
         <h4 class="text-white font-bold mb-3">🔌 Ecossistema de Plugins Profissionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Plugins avançados que adicionam funcionalidades profissionais ao OBS Studio:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Plugins de Produção</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Advanced Scene Switcher: Automatização de cenas</li>
                     <li>• StreamFX: Efeitos avançados e transições</li>
                     <li>• OBS WebSocket: Controle remoto via scripts</li>
@@ -646,7 +646,7 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Plugins de Integração</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Streamlabs OBS Integration: Integração com serviços</li>
                     <li>• OBS Browser Source: Elementos web interativos</li>
                     <li>• Text Pango FT2: Renderização de texto avançado</li>
@@ -657,11 +657,11 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações e Otimização de Plugins</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Considerações para maximizar o desempenho dos plugins:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Plugin</th>
@@ -704,16 +704,16 @@ export default function OBSRecordingGuide() {
             title: "9. Scripts e Automação",
             content: `
         <h4 class="text-white font-bold mb-3">🤖 Automação com Scripts</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Utilização de scripts para automatizar tarefas repetitivas no OBS Studio:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Tipos de Scripts</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Diferentes categorias de scripts para automatizar tarefas:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Scripts de transição automática entre cenas</li>
                     <li>• Scripts de controle de qualidade de gravação</li>
                     <li>• Scripts de backup e restauração de configurações</li>
@@ -723,10 +723,10 @@ export default function OBSRecordingGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Linguagens Suportadas</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Linguagens disponíveis para desenvolvimento de scripts:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Python (mais comum)</li>
                     <li>• JavaScript</li>
                     <li>• Lua</li>
@@ -737,7 +737,7 @@ export default function OBSRecordingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">💻 Exemplo de Script Avançado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Script Python para monitoramento e ajuste automático de qualidade:
         </p>
         <div class="bg-gray-900 p-4 rounded-lg overflow-x-auto">
@@ -801,7 +801,7 @@ start_timer()</pre>
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Scripts de Monitoramento</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Scripts de monitoramento podem ser configurados para ajustar automaticamente as configurações do OBS com base no desempenho do sistema, garantindo gravações estáveis mesmo em condições variáveis de hardware.
             </p>
         </div>
@@ -811,13 +811,13 @@ start_timer()</pre>
             title: "10. Segurança e Recuperação",
             content: `
         <h4 class="text-white font-bold mb-3">🔒 Segurança em Gravações e Recuperação de Dados</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Considerações importantes para proteger e recuperar suas gravações:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Práticas de Segurança</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Verificação de integridade de arquivos</li>
                     <li>• Cópias de segurança automatizadas</li>
                     <li>• Criptografia de arquivos sensíveis</li>
@@ -827,7 +827,7 @@ start_timer()</pre>
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Recuperação de Dados</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Recuperação de arquivos parcialmente gravados</li>
                     <li>• Conversão de formatos corrompidos</li>
                     <li>• Backup em múltiplas mídias</li>
@@ -838,13 +838,13 @@ start_timer()</pre>
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Estratégias de Recuperação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Procedimentos para recuperação de gravações em diferentes cenários:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Falhas Comuns</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Interrupção de energia: Usar UPS para proteção</li>
                     <li>• Falha de disco: Verificar espaço e saúde do disco</li>
                     <li>• Erros de software: Manter OBS atualizado</li>

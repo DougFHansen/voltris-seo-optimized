@@ -41,7 +41,7 @@ export default function PasteGuide() {
         {
             title: "Introdução: Quando trocar?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Se as temperaturas subiram 5-10°C em comparação a quando o PC era novo, ou se a ventoinha vive em 100% fazendo barulho, é hora de trocar.
           <br/>Pastas de fábrica secam rápido. Uma pasta de qualidade (Kryonaut, MX-6, MasterGel Maker) dura anos e baixa até 8°C.
         </p>
@@ -53,7 +53,7 @@ export default function PasteGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">O Kit Básico</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     - <strong>Pasta Térmica:</strong> Não compre a branca barata (Implastec branc) para PC Gamer! Ela resseca em 1 mês. Invista R$ 50,00 em uma Arctic, Cooler Master ou Thermal Grizzly.
                     - <strong>Limpador:</strong> Álcool Isopropílico (encontra em farmácia de manipulação ou loja de eletrônica). Não use álcool de cozinha (tem água e oxida) nem perfume/acetona.
                     - <strong>Pano:</strong> Filtro de café é ótimo (não solta fiapos). Papel higiênico solta pó.
@@ -65,7 +65,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 2: CPU (Processador)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             1. Desligue o PC e tire da tomada.
             <br/>2. Remova o Cooler. (Dica: Se por AMD, rode um jogo antes para esquentar a pasta, e gire o cooler levemente ao retirar para não arrancar o processador junto do socket).
             <br/>3. Limpe a pasta velha da CPU e do Cooler com o álcool até brilhar.
@@ -82,7 +82,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 3: GPU (Placa de Vídeo) - Atenção",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Abrir a GPU geralmente rompe o lacre de garantia (verifique sua marca, MSI/Galax permitem abrir).
             <br/>1. Solte os parafusos traseiros (backplate).
             <br/>2. Solte os cabos do das ventoinhas e LED com cuidado (são frágeis!).
@@ -97,7 +97,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 4: Thermal Pads",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Ao abrir a GPU, você verá "borrachinhas" nas memórias (VRAM).
             <br/>Se elas rasgarem, você precisa trocar.
             <br/>CUIDADO: A espessura tem que ser exata (0.5mm, 1.0mm, 2.0mm). Se colocar errado, o dissipador não encosta na GPU e ela queima.
@@ -108,7 +108,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 5: Metal Líquido (Conductonaut)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Metal Líquido baixa 15°C, mas é condutivo. Se pingar na placa, dá curto e mata o PC.
             <br/>Além disso, ele corrói alumínio. Só pode ser usado em dissipadores de Cobre niquelado.
             <br/>NÃO RECOMENDAMOS para usuários comuns. O risco não vale os 3°C a menos que uma Kryonaut normal.
@@ -118,7 +118,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 6: Erros Comuns",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - Colocar pasta demais: Não estraga (se não for condutiva), mas faz sujeira e pode isolar o calor se for uma camada grossa demais. A camada tem que ser fina.
             - Colocar pasta de menos: O pior erro. Causa superaquecimento.
             - Esquecer de ligar o fan do cooler depois.
@@ -131,7 +131,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 7: Limpeza das Ventoinhas",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Use um pincel macio para tirar a poeira das pás.
                 <br/>Se usar Ar Comprimido ou Aspirador: SEGURE A VENTOINHA para ela não girar. Se ela girar muito rápido com o ar, ela gera energia (dínamo) e pode queimar a placa-mãe.
             </p>
@@ -140,7 +140,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 8: Tempo de Cura",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Algumas pastas antigas (Artic Silver 5) demoravam 200 horas para curar.
                 <br/>Pastas modernas (MX-4/6, Kryonaut) têm tempo de cura zero. Aplicou, tá pronto.
             </p>
@@ -149,7 +149,7 @@ export default function PasteGuide() {
         {
             title: "Capítulo 9: Thermal Puttys (Massinha)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Uma novidade que substitui os Thermal Pads. É uma pasta grossa que se molda a qualquer espessura. Ótimo para VRAM de GDDR6X (RTX 3070ti/3080).
             </p>
             `

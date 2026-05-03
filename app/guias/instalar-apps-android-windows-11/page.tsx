@@ -34,7 +34,7 @@ export default function AndroidOnWindowsGuide() {
         {
             title: "O que é o WSA?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Diferente dos emuladores como BlueStacks que criam um "computador dentro do computador", o **WSA** integra o Android diretamente no núcleo do Windows 11. Isso significa que os apps de celular aparecem no seu Menu Iniciar, podem ser fixados na barra de tarefas e funcionam com as notificações nativas do Windows, de forma muito mais leve e rápida.
         </p>
       `
@@ -42,8 +42,8 @@ export default function AndroidOnWindowsGuide() {
         {
             title: "1. Requisitos e Ativação",
             content: `
-        <p class="mb-4 text-gray-400">Antes de começar, seu PC precisa estar pronto:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Antes de começar, seu PC precisa estar pronto:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>A virtualização deve estar ligada na BIOS (SVM na AMD ou VT-x na Intel).</li>
             <li>Vá em 'Ativar ou desativar recursos do Windows' e marque <strong>'Plataforma de Máquina Virtual'</strong>.</li>
             <li>Reinicie o computador.</li>
@@ -56,7 +56,7 @@ export default function AndroidOnWindowsGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Dica Avançada:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 A Amazon Appstore tem poucos apps. Para instalar qualquer aplicativo (como o WhatsApp ou um jogo específico), use ferramentas de terceiros como o <strong>'WSA Pacman'</strong> ou <strong>'WSATools'</strong> disponíveis na Microsoft Store. Elas permitem que você apenas clique duas vezes em um arquivo .APK e ele seja instalado no Windows como se fosse um programa comum.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function AndroidOnWindowsGuide() {
         {
             title: "3. Gerenciamento de Memória",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Android no Windows consome muita RAM. 
             <br/>Abra as 'Configurações do Subsistema Windows para Android' e, em <strong>Recursos do Sistema</strong>, mude para 'Conforme Necessário'. Isso faz o Windows fechar o modo Android quando você não estiver usando nenhum app de celular, liberando memória para seus jogos de PC.
         </p>

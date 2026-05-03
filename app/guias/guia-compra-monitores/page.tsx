@@ -39,7 +39,7 @@ export default function MonitorBuyingGuide() {
     {
       title: "Introdução: O Gargalo Invisível",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Você pode ter um PC da NASA com uma RTX 5090, mas se seu monitor for ruim, sua experiência será ruim. Em 2026, o mercado de monitores está infestado de marketing enganoso. "1ms", "HDR" e "Contraste Dinâmico" muitas vezes são mentiras técnicas. Este guia vai te ensinar a ler as entrelinhas das especificações para não gastar dinheiro em ghosting e cores lavadas.
         </p>
       `
@@ -50,8 +50,8 @@ export default function MonitorBuyingGuide() {
         <div class="space-y-6">
             <div class="bg-[#0A0A0F] p-5 rounded-xl border-l-4 border-blue-500">
                 <h4 class="text-blue-400 font-bold text-xl mb-2">IPS (In-Plane Switching)</h4>
-                <p class="text-gray-400 mb-2"><strong>O Padrão de Ouro do Custo-Benefício.</strong></p>
-                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                <p class="text-gray-700 mb-2"><strong>O Padrão de Ouro do Custo-Benefício.</strong></p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                     <li><strong>Prós:</strong> Cores precisas, melhores ângulos de visão (a imagem não escurece se você olhar de lado).</li>
                     <li><strong>Contras:</strong> "IPS Glow" (brilho prateado nos cantos em cenas escuras) e contraste fraco (pretos parecem cinza escuro).</li>
                     <li><strong>Para quem:</strong> 90% dos gamers. É o melhor equilíbrio.</li>
@@ -60,8 +60,8 @@ export default function MonitorBuyingGuide() {
 
             <div class="bg-[#0A0A0F] p-5 rounded-xl border-l-4 border-purple-500">
                 <h4 class="text-purple-400 font-bold text-xl mb-2">VA (Vertical Alignment)</h4>
-                <p class="text-gray-400 mb-2"><strong>Amado por uns, Odiado por outros.</strong></p>
-                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                <p class="text-gray-700 mb-2"><strong>Amado por uns, Odiado por outros.</strong></p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                     <li><strong>Prós:</strong> Contraste 3x melhor que IPS. Pretos profundos, ótimo para filmes e jogos de terror em sala escura.</li>
                     <li><strong>Contras:</strong> <strong>Black Smearing (Ghosting Escuro)</strong>. Em transições de preto para cinza, a imagem borra horrivelmente. Apenas painéis VA de elite (Samsung Odyssey G7/G9) corrigiram isso. Evite VAs baratos para jogos rápidos.</li>
                     <li><strong>Para quem:</strong> Simuladores e jogos Single Player lentos.</li>
@@ -70,8 +70,8 @@ export default function MonitorBuyingGuide() {
 
             <div class="bg-[#0A0A0F] p-5 rounded-xl border-l-4 border-yellow-500">
                 <h4 class="text-yellow-400 font-bold text-xl mb-2">TN (Twisted Nematic)</h4>
-                <p class="text-gray-400 mb-2"><strong>A Relíquia dos Pro-Players.</strong></p>
-                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                <p class="text-gray-700 mb-2"><strong>A Relíquia dos Pro-Players.</strong></p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                     <li><strong>Prós:</strong> O mais rápido e barato. Clareza de movimento excepcional em modelos Zowie.</li>
                     <li><strong>Contras:</strong> Cores horríveis, ângulos de visão péssimos. A imagem muda de cor se você mexer a cabeça.</li>
                     <li><strong>Para quem:</strong> Apenas jogadores Tryhard de CS2/Valorant que não ligam para gráficos, só para a vitória.</li>
@@ -80,8 +80,8 @@ export default function MonitorBuyingGuide() {
 
             <div class="bg-[#0A0A0F] p-5 rounded-xl border-l-4 border-red-500 animate-pulse-slow">
                 <h4 class="text-red-400 font-bold text-xl mb-2">OLED / QD-OLED</h4>
-                <p class="text-gray-400 mb-2"><strong>O Santo Graal (Endgame).</strong></p>
-                <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
+                <p class="text-gray-700 mb-2"><strong>O Santo Graal (Endgame).</strong></p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                     <li><strong>Prós:</strong> Tempo de resposta INSTANTÂNEO (0.03ms reais). Contraste infinito (pixel se apaga para fazer o preto). Cores perfeitas.</li>
                     <li><strong>Contras:</strong> Risco de <strong>Burn-in</strong> (imagem fantasma permanente de elementos estáticos como HUD ou barra de tarefas) com o tempo, embora modelos 2025/2026 tenham muita proteção. Brilho máximo menor em tela cheia (ABL). Custo altíssimo.</li>
                     <li><strong>Para quem:</strong> Quem tem orçamento ilimitado e quer a melhor experiência visual possível.</li>
@@ -94,24 +94,24 @@ export default function MonitorBuyingGuide() {
       title: "2. A Grande Mentira do '1ms' (GtG vs MPRT)",
       content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-6">
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Quando você vê "1ms" na caixa, é marketing. Existem duas formas de medir:
             </p>
             <ul class="space-y-4">
                 <li>
                     <strong class="text-[#31A8FF] text-lg">GtG (Gray-to-Gray):</strong>
-                    <br/><span class="text-gray-400 text-sm">Tempo que um pixel leva para mudar de uma cor cinza para outra. A maioria dos IPS rápidos hoje faz 3ms a 4ms reais. Para chegar em "1ms GtG", os fabricantes aplicam uma voltagem excessiva (Overdrive) nos pixels.</span>
+                    <br/><span class="text-gray-700 text-sm">Tempo que um pixel leva para mudar de uma cor cinza para outra. A maioria dos IPS rápidos hoje faz 3ms a 4ms reais. Para chegar em "1ms GtG", os fabricantes aplicam uma voltagem excessiva (Overdrive) nos pixels.</span>
                     <br/><span class="text-red-400 text-xs font-bold">Consequência:</span> Overshoot/Inverse Ghosting. Rastros brilhantes/coronas ao redor de objetos em movimento. Geralmente, o modo "Fastest" ou "Extreme" do monitor é inutilizável. Use o modo "Normal" ou "Fast".
                 </li>
                 <li>
                     <strong class="text-[#31A8FF] text-lg">MPRT (Moving Picture Response Time):</strong>
-                    <br/><span class="text-gray-400 text-sm">Mede a persistência da imagem na sua retina. Só é possível atingir 1ms MPRT ligando o modo de <strong>Strobing (BFI)</strong>.</span>
+                    <br/><span class="text-gray-700 text-sm">Mede a persistência da imagem na sua retina. Só é possível atingir 1ms MPRT ligando o modo de <strong>Strobing (BFI)</strong>.</span>
                 </li>
             </ul>
         </div>
         <div class="bg-indigo-900/20 p-4 rounded border-l-4 border-indigo-500">
             <h5 class="text-indigo-400 font-bold mb-1">O que é DyAc / ELMB / BFI?</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 São tecnologias que piscam a luz de fundo do monitor (black frame insertion) entre cada frame. Isso "limpa" a imagem na sua retina, eliminando o borrão de movimento.
                 <br/><strong>Prós:</strong> Claridade de movimento absurda (CRT-like).
                 <br/><strong>Contras:</strong> Reduz o brilho da tela e pode causar dor de cabeça em pessoas sensíveis. O DyAc+ da Zowie e o ULMB 2 da NVIDIA são as melhores implementações disso.
@@ -125,11 +125,11 @@ export default function MonitorBuyingGuide() {
     {
       title: "3. HDR: Não caia no golpe do HDR400",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             HDR (High Dynamic Range) precisa de duas coisas: brilho muito alto em pontos específicos e preto absoluto em outros.
         </p>
         <div class="overflow-x-auto mb-6">
-            <table class="w-full text-sm text-left text-gray-400 border border-gray-700">
+            <table class="w-full text-sm text-left text-gray-700 border border-gray-700">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3">Selo</th>
@@ -164,15 +164,15 @@ export default function MonitorBuyingGuide() {
         <ul class="space-y-4 mb-6">
             <li class="bg-gray-800 p-4 rounded-lg">
                 <span class="text-[#31A8FF] font-bold block mb-1">1080p (FHD) @ 360Hz / 540Hz</span>
-                <span class="text-sm text-gray-400">Exclusivo para Esports Profissional. A resolução baixa garante FPS máximo, e os Hz extremos reduzem a latência ao mínimo absoluto. Requer CPU monstra.</span>
+                <span class="text-sm text-gray-700">Exclusivo para Esports Profissional. A resolução baixa garante FPS máximo, e os Hz extremos reduzem a latência ao mínimo absoluto. Requer CPU monstra.</span>
             </li>
             <li class="bg-gray-800 p-4 rounded-lg border border-[#31A8FF]/30 shadow-[0_0_15px_rgba(49,168,255,0.1)]">
                 <span class="text-[#31A8FF] font-bold block mb-1">1440p (QHD) @ 240Hz OLED</span>
-                <span class="text-sm text-gray-400"><strong>A Recomendação Voltris 2026.</strong> A nitidez do 1440p é perfeita para 27", e 240Hz no OLED tem a clareza de movimento de um LCD 360Hz. É o monitor "faz-tudo" perfeito.</span>
+                <span class="text-sm text-gray-700"><strong>A Recomendação Voltris 2026.</strong> A nitidez do 1440p é perfeita para 27", e 240Hz no OLED tem a clareza de movimento de um LCD 360Hz. É o monitor "faz-tudo" perfeito.</span>
             </li>
             <li class="bg-gray-800 p-4 rounded-lg">
                 <span class="text-[#31A8FF] font-bold block mb-1">4K (UHD) @ 144Hz+</span>
-                <span class="text-sm text-gray-400">Luxo para Single Player e trabalho. Exige RTX 4080/4090 ou RX 7900 XTX para rodar bem. Em 2026, monitores "Dual-Mode" (4K 120Hz ou 1080p 240Hz num botão) estão populares.</span>
+                <span class="text-sm text-gray-700">Luxo para Single Player e trabalho. Exige RTX 4080/4090 ou RX 7900 XTX para rodar bem. Em 2026, monitores "Dual-Mode" (4K 120Hz ou 1080p 240Hz num botão) estão populares.</span>
             </li>
         </ul>
       `
@@ -180,7 +180,7 @@ export default function MonitorBuyingGuide() {
     {
       title: "5. Conectividade: HDMI 2.1 vs DP 1.4",
       content: `
-          <p class="mb-4 text-gray-400">
+          <p class="mb-4 text-gray-700">
               O monitor pode limitar sua GPU se você usar o cabo errado.
               <br/><br/>
               <strong>DisplayPort 1.4 (DSC):</strong> O padrão para PC. Suporta até 4K 144Hz com DSC (compressão visualmente sem perdas). Sempre use DP no PC para garantir G-Sync compatível.

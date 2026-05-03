@@ -42,7 +42,7 @@ export default function ErgoGuide() {
         {
             title: "Introdução: A Física da Mira",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Muitos Pros jogam com a "cara na tela" ou teclado torto. Isso funciona por 5 anos, depois vem a tendinite. O objetivo aqui é longevidade e consistência mecânica.
         </p>
       `
@@ -53,7 +53,7 @@ export default function ErgoGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">A Regra dos 90 Graus</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Sente-se e relaxe os ombros.
                     <br/>Seus cotovelos devem estar na mesma altura do tampo da mesa, formando um ângulo de 90 graus.
                     <br/>- Se a mesa for alta: Levante a cadeira e use um apoio para os pés (livros/caixa).
@@ -67,7 +67,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 2: Monitor (Neck Pain)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A borda SUPERIOR do monitor deve estar na altura dos seus olhos.
             <br/>Nós olhamos naturalmente levemente para baixo (15 graus).
             <br/>Se o monitor estiver alto, você força o pescoço para trás.
@@ -79,7 +79,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 3: Cadeira (Gamer vs Office)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Cadeira Gamer (Racing):</strong> Bonita, mas geralmente tem "abas" no ombro que empurram você para frente e assento de balde que aperta as coxas. As almofadas lombares soltas são ruins.
             - <strong>Cadeira de Escritório (Mesh):</strong> Feitas para ergonomia real. O encosto de tela (Mesh) respira e se molda às costas.
             <br/>Se usar Gamer, remova a almofada de cabeça se ela empurrar seu pescoço para frente.
@@ -92,7 +92,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 4: Braço no Mouse (Arm vs Wrist Aiming)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Wrist Aim (Pulso):</strong> Apoia o pulso na borda da mesa. Causa pressão no Túnel do Carpo. Alta sensibilidade necessária. Arriscado.
             - <strong>Arm Aim (Braço):</strong> Apoia o antebraço inteiro na mesa. O pivô é o cotovelo. Baixa sensibilidade. Distribui a pressão e é mais saudável e preciso a longo prazo.
             <br/>Empurre o monitor para trás e libere espaço na mesa para apoiar o braço todo.
@@ -102,7 +102,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 5: A Pega do Mouse (Grip Style)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Palm Grip:</strong> Mão toda no mouse. Relaxado.
             - <strong>Claw/Fingertip:</strong> Dedos arqueados. Mais tensão.
             <br/>Não force um grip que dói. Use o mouse do tamanho certo para sua mão (Rocket Jump Ninja Size Guide). Mouse pequeno demais causa cãibra.
@@ -112,7 +112,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 6: Iluminação do Quarto (Bias Lighting)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Jogar no escuro total com monitor brilhante cansa a vista (contraste excessivo).
             <br/>Coloque uma fita LED (branca quente) atrás do monitor refletindo na parede.
             <br/>Essa luz ambiente suave equilibra a pupila e reduz dor de cabeça.
@@ -122,7 +122,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 7: Alongamentos (Hand Yoga)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Entre as partidas (no lobby/fila):
             <br/>1. Estique o braço e puxe os dedos para trás (palma para frente).
             <br/>2. Feche o punho e gire lentamente.
@@ -136,7 +136,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 8: Hidratação",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Desidratação reduz o tempo de reação e a função cognitiva.
                 <br/>Mantenha uma garrafa d'água na mesa.
             </p>
@@ -145,7 +145,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 9: Pés",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se seus pés balançam, sua coluna fica instável.
                 <br/>Pés firmes no chão dão base para o "Core" (abdômen) segurar a postura.
             </p>
@@ -154,7 +154,7 @@ export default function ErgoGuide() {
         {
             title: "Capítulo 10: Frio nas Mãos",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Mãos geladas = Reflexos lentos.
                 <br/>Se seu quarto é frio, use um aquecedor de mãos USB ou coloque as mãos sob as pernas entre os rounds. Pro players usam Hand Warmers no palco.
             </p>

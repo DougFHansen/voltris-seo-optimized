@@ -34,7 +34,7 @@ export default function MuOnlineFixGuide() {
         {
             title: "O desafio de rodar um clássico em 2026",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **Mu Online** é um jogo que nasceu em uma época onde as placas de vídeo nem eram obrigatórias. Por isso, seu motor gráfico é extremamente dependente de um único núcleo do processador. Em 2026, com monitores de alta resolução, o Mu pode apresentar "engasgos" mesmo em PCs de última geração se o sistema não estiver configurado para lidar com instruções de vídeo antigas.
         </p>
       `
@@ -42,8 +42,8 @@ export default function MuOnlineFixGuide() {
         {
             title: "1. Otimização In-Game: Atalhos de Performance",
             content: `
-        <p class="mb-4 text-gray-400">A maioria dos servidores modernos de Mu possui comandos de otimização nativos:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">A maioria dos servidores modernos de Mu possui comandos de otimização nativos:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>F9 / Tecla O:</strong> Geralmente desativa efeitos de brilho das asas e itens (+11/+15). Em Lorencia lotada, isso triplica seu FPS.</li>
             <li><strong>Desativar Som:</strong> Parece bobagem, mas o driver de áudio do Mu Online é muito antigo e pode causar micro-travadas cada vez que uma skill toca um som.</li>
             <li><strong>Ajuste de Anti-Aliasing:</strong> No launcher, procure manter o Antialiasing em 0 ou 2x. Mais que isso apenas borra a imagem no motor gráfico do Mu.</li>
@@ -55,7 +55,7 @@ export default function MuOnlineFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Ajuste técnico:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Clique com o botão direito no <code>main.exe</code> do seu Mu Online. <br/>
                 2. Vá em Propriedades > Compatibilidade. <br/>
                 3. Marque <strong>'Desabilitar otimizações de tela inteira'</strong>. <br/>
@@ -68,7 +68,7 @@ export default function MuOnlineFixGuide() {
         {
             title: "3. Latência e Conectividade",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O lag no Mu muitas vezes é de rede, não de FPS. 
             <br/><br/><strong>Dica:</strong> Se suas skills demoram para sair, mude o seu <strong>DNS</strong>para o do Google ou Cloudflare. Evite jogar no Wi-Fi; o Mu Online não lida bem com perda de pacotes pequena, o que causa o efeito de "teletransporte" (desync) onde você volta para o lugar onde estava segundos atrás.
         </p>

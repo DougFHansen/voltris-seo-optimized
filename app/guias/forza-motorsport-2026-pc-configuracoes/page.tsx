@@ -50,7 +50,7 @@ export default function ForzaMotorsport2026Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-400 mb-8">{description}</p>
+                <p className="text-xl text-gray-700 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos Forza Motorsport 2026</h2>
@@ -90,7 +90,7 @@ export default function ForzaMotorsport2026Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações Gráficas 4K Ultra</h2>
-                    <p className="text-gray-400 mb-4">
+                    <p className="text-gray-700 mb-4">
                         Forza Motorsport 2026 usa ray tracing em tempo real para reflexos e iluminação global.
                     </p>
                     <div className="bg-purple-900/20 p-4 rounded mb-4">
@@ -157,14 +157,14 @@ export default function ForzaMotorsport2026Guide() {
                     <div className="space-y-4">
                         <div className="bg-red-900/20 p-4 rounded">
                             <h3 className="text-red-400 font-bold mb-2">VRAM Management</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 4K Ultra com ray tracing consome 16-20GB VRAM. Monitore uso e 
                                 reduza Environment Detail se VRAM &gt; 90%.
                             </p>
                         </div>
                         <div className="bg-yellow-900/20 p-4 rounded">
                             <h3 className="text-yellow-400 font-bold mb-2">CPU Bottleneck</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Use Ryzen 7+ ou Intel i7+ para 120FPS estáveis. 
                                 Desative processos background e use modo Ultimate Performance.
                             </p>

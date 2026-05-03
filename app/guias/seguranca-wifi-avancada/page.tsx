@@ -22,15 +22,15 @@ export default function GuidePage() {
     {
       title: "Configurações Críticas no Roteador",
       content: `
-        <p class="mb-4 text-gray-400">Acesse seu roteador (geralmente 192.168.0.1 ou 192.168.1.1) e verifique:</p>
+        <p class="mb-4 text-gray-700">Acesse seu roteador (geralmente 192.168.0.1 ou 192.168.1.1) e verifique:</p>
           <div class="space-y-4">
             <div class="border-l-4 border-red-500 pl-4">
               <h4 class="text-white font-bold">Desative o WPS (Wi-Fi Protected Setup)</h4>
-              <p class="text-gray-400 text-sm">O WPS é uma falha de segurança enorme. Permite que invasores descubram sua senha em minutos via força bruta no PIN.</p>
+              <p class="text-gray-700 text-sm">O WPS é uma falha de segurança enorme. Permite que invasores descubram sua senha em minutos via força bruta no PIN.</p>
             </div>
             <div class="border-l-4 border-green-500 pl-4">
               <h4 class="text-white font-bold">Use WPA3 ou WPA2-AES</h4>
-              <p class="text-gray-400 text-sm">Nunca use WEP ou WPA-TKIP (são obsoletos e inseguros). Se seu roteador suporta WPA3, ative-o.</p>
+              <p class="text-gray-700 text-sm">Nunca use WEP ou WPA-TKIP (são obsoletos e inseguros). Se seu roteador suporta WPA3, ative-o.</p>
             </div>
           </div>
       `,
@@ -40,9 +40,9 @@ export default function GuidePage() {
     {
       title: "Rede de Convidados e IoT",
       content: `
-        <p class="mb-4 text-gray-400">Dispositivos inteligentes (lâmpadas, alexa, geladeiras) têm segurança fraca. Se um hacker invadir sua lâmpada, ele pode acessar seu PC?</p>
-          <p class="text-gray-400">Sim, se estiverem na mesma rede. <strong>A Solução:</strong></p>
-          <ul class="list-disc list-inside text-gray-400">
+        <p class="mb-4 text-gray-700">Dispositivos inteligentes (lâmpadas, alexa, geladeiras) têm segurança fraca. Se um hacker invadir sua lâmpada, ele pode acessar seu PC?</p>
+          <p class="text-gray-700">Sim, se estiverem na mesma rede. <strong>A Solução:</strong></p>
+          <ul class="list-disc list-inside text-gray-700">
             <li>Crie uma <strong>Rede de Convidados (Guest Network)</strong> no roteador.</li>
             <li>Conecte todas as visitas e dispositivos IoT nessa rede.</li>
             <li>A maioria dos roteadores isola a rede de convidados da rede principal ("AP Isolation").</li>

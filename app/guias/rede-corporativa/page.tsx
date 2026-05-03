@@ -36,7 +36,7 @@ export default function RedeCorporativaGuide() {
       content: `
         <p class="mb-4">Redes corporativas exigem planejamento cuidadoso para garantir segurança, performance e escalabilidade. Diferente de redes domésticas, ambientes empresariais precisam lidar com múltiplos departamentos, níveis de acesso e requisitos de compliance.</p>
         <p class="mb-4">Componentes essenciais:</p>
-        <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4 mb-4">
+        <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4 mb-4">
           <li>Roteadores empresariais com recursos avançados</li>
           <li>Switches managed para segmentação</li>
           <li>Firewalls dedicados para segurança</li>
@@ -55,7 +55,7 @@ export default function RedeCorporativaGuide() {
           subtitle: "Levantamento de Requisitos",
           content: `
             <p>Antes de qualquer implementação:</p>
-            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4 mb-4">
+            <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Mapeie todos os departamentos e suas necessidades</li>
               <li>Identifique dispositivos que precisam de acesso à rede</li>
               <li>Determine níveis de acesso e permissões</li>
@@ -68,7 +68,7 @@ export default function RedeCorporativaGuide() {
           subtitle: "Segmentação com VLANs",
           content: `
             <p>Organize a rede em segmentos lógicos:</p>
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4 mb-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4 mb-4">
               <li><strong>VLAN Administrativa:</strong> Acesso restrito a TI</li>
               <li><strong>VLAN Financeira:</strong> Dados sensíveis e controles rigorosos</li>
               <li><strong>VLAN Operacional:</strong> Departamentos de produção/operacional</li>
@@ -83,7 +83,7 @@ export default function RedeCorporativaGuide() {
             <p>Exemplo de estrutura organizada:</p>
             <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30 mt-4">
               <p class="text-white font-semibold mb-2">🏢 Estrutura de IPs:</p>
-              <pre class="text-gray-400 text-sm">
+              <pre class="text-gray-700 text-sm">
 10.0.0.0/8 - Rede Principal
 ├── 10.10.0.0/24 - VLAN Administrativa
 ├── 10.20.0.0/24 - VLAN Financeira  
@@ -104,7 +104,7 @@ export default function RedeCorporativaGuide() {
           subtitle: "Configuração do Roteador Principal",
           content: `
             <p>Passos essenciais:</p>
-            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4 mb-4">
+            <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Configure interfaces para cada VLAN</li>
               <li>Implemente DHCP para cada segmento</li>
               <li>Configure regras de NAT e firewall</li>
@@ -117,7 +117,7 @@ export default function RedeCorporativaGuide() {
           subtitle: "Switches Managed e Port Security",
           content: `
             <p>Segurança em nível de porta:</p>
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4 mb-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4 mb-4">
               <li>Port Security com MAC address binding</li>
               <li>Storm control para prevenir broadcasts excessivos</li>
               <li>BPDU guard para proteger STP</li>
@@ -136,7 +136,7 @@ export default function RedeCorporativaGuide() {
           subtitle: "Firewall e Regras de Acesso",
           content: `
             <p>Implementação de políticas de segurança:</p>
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4 mb-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4 mb-4">
               <li>Regras de entrada/saída por VLAN</li>
               <li>Inspeção profunda de pacotes (DPI)</li>
               <li>Prevenção de intrusão (IPS)</li>
@@ -149,7 +149,7 @@ export default function RedeCorporativaGuide() {
           subtitle: "Autenticação Centralizada",
           content: `
             <p>Integração com Active Directory:</p>
-            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4 mb-4">
+            <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Instale e configure Domain Controller</li>
               <li>Crie grupos de usuários por departamento</li>
               <li>Implemente políticas de grupo (GPO)</li>
@@ -164,7 +164,7 @@ export default function RedeCorporativaGuide() {
       title: "Monitoramento e Manutenção",
       content: `
         <p>Ferramentas essenciais para administração contínua:</p>
-        <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4 mb-4">
+        <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4 mb-4">
           <li><strong>PRTG Network Monitor:</strong> Dashboard completo de performance</li>
           <li><strong>Wireshark:</strong> Análise de pacotes em tempo real</li>
           <li><strong>Nagios:</strong> Alertas proativos de falhas</li>

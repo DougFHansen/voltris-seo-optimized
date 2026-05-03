@@ -43,7 +43,7 @@ export default function OverwatchGuide() {
         {
             title: "Introdução: A Engine Otimizada",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           A engine do Overwatch 2 é uma das melhores do mercado. Ela escala muito bem. Mas configurações padrão como "Dynamic Render Scale" podem arruinar sua memória muscular mudando a resolução no meio da luta.
         </p>
       `
@@ -55,21 +55,21 @@ export default function OverwatchGuide() {
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Render Scale</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Custom (100%)</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     Nunca use "Automatic". O jogo vai mudar a qualidade da imagem sozinho. Fixe em 100%. Se precisar de FPS, baixe para 75% fixo.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Dynamic Render Scale</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-red-400">Off</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                    Isso causa instabilidade no input lag. Mantenha desligado.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Nvidia Reflex</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">On + Boost</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     Essencial para reduzir a latência do sistema. O Boost mantém a GPU acordada.
                 </p>
             </div>
@@ -79,7 +79,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 2: Gráficos Avançados (Visibilidade)",
             content: `
-        <table class="w-full text-sm text-left text-gray-400">
+        <table class="w-full text-sm text-left text-gray-700">
             <tbody>
                 <tr class="border-b border-gray-700">
                     <td class="py-2 font-bold">Texture Quality</td>
@@ -118,7 +118,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 3: Gameplay Input (Mouse)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em Opções > Gameplay:
             <br/><strong>High Precision Mouse Input:</strong> <span class="text-emerald-400 font-bold">ON</span>.
             <br/>Isso permite que o jogo processe o movimento do mouse entre os frames renderizados (Sub-frame input). Seu tiro sai na exata posição que o mouse estava, mesmo se o frame visual ainda não atualizou. Obrigatório para Widowmaker/Cassidy.
@@ -131,7 +131,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 4: Reduce Buffering (O Truque)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Esta opção força o jogo a não pré-renderizar frames extras.
             <br/><strong>Ligue (ON)</strong>.
             <br/><em>Bug conhecido:</em> Se você der Alt+Tab, o FPS pode cair. Se isso acontecer, desligue e ligue o "Reduce Buffering" novamente para limpar o buffer.
@@ -141,7 +141,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 5: Som Dolby Atmos",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O OW2 tem suporte nativo a Dolby Atmos for Headphones.
             <br/>Se você tem fone estéreo, ative isso nas opções de Som do jogo.
             <br/>Ele é muito superior ao "Spatial Sound" do Windows Sonic. Ele permite ouvir Pharah voando acima ou Sombra andando atrás com precisão cirúrgica.
@@ -151,7 +151,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 6: Cap de FPS e Simulação",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Pressione Ctrl+Shift+N no jogo para ver o NetGraph.
             <br/>Veja a linha "SIM" (Simulation Time). Quanto menor, melhor (ex: 3ms).
             <br/>Para diminuir o SIM, aumente o FPS.
@@ -162,7 +162,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 7: Efeitos e Poluição Visual",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Effects Detail:</strong> Low.
             - <strong>Lighting Quality:</strong> Low.
             <br/>Isso reduz drasticamente o brilho das habilidades (Ult da Moira, Dragões do Hanzo), permitindo que você enxergue o que está acontecendo no meio do caos.
@@ -175,7 +175,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 8: Menu e Lobby",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Overwatch renderiza o menu principal (heróis 3D) em qualidade máxima. Isso aquece a GPU.
                 <br/>Habilite o limite de FPS no menu para 30 ou 60 para economizar energia entre as partidas.
             </p>
@@ -184,7 +184,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 9: Skins que dão vantagem?",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Algumas skins mudam o som da arma ou o modelo da mira.
                 <br/>Ex: A skin "Okami" do Hanzo reduz o som dos dragões (já foi nerfado, mas ainda é sutil).
                 <br/>Skins com armas menores (que ocupam menos tela) são preferíveis.
@@ -194,7 +194,7 @@ export default function OverwatchGuide() {
         {
             title: "Capítulo 10: Voltris Optimizer no OW2",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O <strong>Voltris Optimizer</strong> ajusta a prioridade do processo <code>Overwatch.exe</code> para evitar que o Windows Update roube CPU durante a Prorrogação (Overtime).
             </p>
             `

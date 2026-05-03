@@ -34,7 +34,7 @@ export default function CleanDriverInstallGuide() {
         {
             title: "Por que 'Atualizar' nem sempre é a melhor opção?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Ao clicar no botão "Atualizar" do GeForce Experience ou do AMD Adrenalin, o instalador tenta sobrepor os arquivos novos em cima dos antigos. Em 2026, com drivers complexos que pesam quase 1GB, restos de perfis de overclock ou configurações de brilho personalizadas de versões anteriores podem causar conflitos, gerando quedas de FPS inexplicáveis e os famosos "crashes para a área de trabalho".
         </p>
       `
@@ -42,8 +42,8 @@ export default function CleanDriverInstallGuide() {
         {
             title: "1. Instalação Limpa Nativa (NVIDIA)",
             content: `
-        <p class="mb-4 text-gray-400">Se você tem uma placa NVIDIA (RTX ou GTX):</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Se você tem uma placa NVIDIA (RTX ou GTX):</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Baixe o driver manualmente no site da NVIDIA ou use o NVIDIA App.</li>
             <li>Inicie a instalação e escolha <strong>'Instalação Personalizada (Avançada)'</strong>.</li>
             <li>Clique em Avançar. Na parte inferior da lista de componentes, marque a caixa <strong>'Executar uma instalação limpa'</strong>.</li>
@@ -56,7 +56,7 @@ export default function CleanDriverInstallGuide() {
             content: `
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
             <h4 class="text-white font-bold mb-2">AMD Cleanup Utility:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 A AMD oferece uma ferramenta separada chamada <strong>AMD Cleanup Utility</strong>. Recomendamos baixá-la sempre que você notar que o software Adrenaline não está abrindo ou as cores da tela estão estranhas. Ela limpa o registro do Windows de forma profunda antes de você rodar o novo instalador, sendo muito mais eficaz que o desinstalador padrão.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function CleanDriverInstallGuide() {
         {
             title: "3. Aviso sobre o Windows Update",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Importante:</strong> Assim que você desinstalar o driver antigo, o Windows Update tentará baixar automaticamente um driver genérico por trás das cortinas. 
             <br/><br/><strong>Dica:</strong> Desconecte a internet ou use o programa <strong>DDU</strong> para desabilitar essa função temporariamente. Caso contrário, você acabará com uma "salada de drivers" (o do Windows Update e o que você baixou), o que gera ainda mais instabilidade.
         </p>

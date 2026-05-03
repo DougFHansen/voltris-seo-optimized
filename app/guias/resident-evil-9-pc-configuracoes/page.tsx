@@ -50,7 +50,7 @@ export default function ResidentEvil9Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-400 mb-8">{description}</p>
+                <p className="text-xl text-gray-700 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos Resident Evil 9</h2>
@@ -90,7 +90,7 @@ export default function ResidentEvil9Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações RE Engine 2.0</h2>
-                    <p className="text-gray-400 mb-4">
+                    <p className="text-gray-700 mb-4">
                         Resident Evil 9 usa RE Engine 2.0 com ray tracing path tracing e iluminação volumétrica avançada.
                     </p>
                     <div className="bg-purple-900/20 p-4 rounded mb-4">
@@ -158,21 +158,21 @@ export default function ResidentEvil9Guide() {
                     <div className="space-y-4">
                         <div className="bg-red-900/20 p-4 rounded">
                             <h3 className="text-red-400 font-bold mb-2">Path Tracing Impact</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Path Tracing reduz 30-40% FPS. Use Medium para balance 
                                 entre visual e performance em 1440p.
                             </p>
                         </div>
                         <div className="bg-yellow-900/20 p-4 rounded">
                             <h3 className="text-yellow-400 font-bold mb-2">Volumetric Lighting</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Essencial para atmosfera de terror. Reduza para Medium 
                                 se FPS &lt; 60 em cenas escuras.
                             </p>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded">
                             <h3 className="text-green-400 font-bold mb-2">VRAM Optimization</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 4K Ultra consome 12-16GB VRAM. Monitore uso e 
                                 reduza Texture Quality se necessário.
                             </p>

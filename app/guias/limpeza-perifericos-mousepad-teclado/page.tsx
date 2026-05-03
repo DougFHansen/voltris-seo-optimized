@@ -39,7 +39,7 @@ export default function CleaningGuide() {
         {
             title: "Introdução: A Sujeira Invisível",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Seu mousepad acumula gordura da mão, pele morta e suor. Isso cria zonas de atrito irregular ("lama") que prendem o mouse. Lavar o pad a cada 3 meses faz ele parecer novo.
         </p>
       `
@@ -50,7 +50,7 @@ export default function CleaningGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">No Banheiro</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Jogue água morna (não quente) no pad (no box ou pia).
                     <br/>2. Aplique detergente neutro ou shampoo suave.
                     <br/>3. Esfregue suavemente com o lado AMARELO (macio) da esponja ou com a mão. Não use escovas duras para não desfiar o tecido.
@@ -64,7 +64,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 2: Teclado Mecânico",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             1. Tire uma foto do teclado (para lembrar onde ficam as teclas).
             <br/>2. Remova as keycaps com o puxador (keycap puller).
             <br/>3. Lave as keycaps numa bacia com água e sabão. Deixe secar 100%.
@@ -77,7 +77,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 3: Monitor (Cuidado Extremo)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Telas modernas têm camadas anti-reflexo sensíveis.
             <br/>- NUNCA use álcool, Windex, Vidrex ou papel toalha (risca).
             <br/>- Use dois panos de microfibra limpos.
@@ -92,7 +92,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 4: Dentro do PC (Fans)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Aspirador de Pó:</strong> PERIGO. Gera eletricidade estática que pode fritar a placa mãe. Só use se for específico para eletrônicos (ESD safe).
             - <strong>Ar Comprimido / Soprador:</strong> O ideal.
             <br/>Segure a ventoinha com o dedo para ela não girar livremente com o jato de ar (se girar muito rápido, gera voltagem reversa e queima o LED/Motor).
@@ -102,7 +102,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 5: Limpa Contatos (RAM/GPU)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o PC não liga ou dá tela azul:
             <br/>Tire as memórias RAM.
             <br/>Passe uma borracha escolar branca macia nos contatos dourados.
@@ -114,7 +114,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 6: Fone de Ouvido (Pads)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             As almofadas (Earpads) acumulam suor e fedem.
             <br/>- Couro Sintético: Pano úmido com álcool. Hidrate depois com hidratante de pele (pouco) para não descascar.
             <br/>- Tecido (Veludo): Tire e lave com água e sabão igual roupa.
@@ -125,7 +125,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 7: Mouse (Scroll e Sensor)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - Roda do mouse falhando? Sopre forte na fresta ou use limpa contatos (spray) sem desmontar. Geralmente é poeira no encoder.
             - Sensor: Cotonete seco.
             - Pés (Skates): Limpe a borda com palito de dente para tirar a "crosta" de sujeira que se forma ao redor.
@@ -138,7 +138,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 8: A Cadeira",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Aspire o assento (migalhas).
                 <br/>Verifique os parafusos embaixo. Eles soltam com o tempo e a cadeira fica "bamba". Aperte-os a cada 6 meses.
                 <br/>Limpe as rodinhas (cabelos enrolados travam a roda).
@@ -148,7 +148,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 9: Filtros de Poeira",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Lave os filtros magnéticos do gabinete na torneira. Seque bem antes de por de volta.
             </p>
             `
@@ -156,7 +156,7 @@ export default function CleaningGuide() {
         {
             title: "Capítulo 10: Organização de Cabos",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Aproveite a limpeza para arrumar os cabos atrás da mesa.
                 <br/>Cabos emaranhados acumulam bolas de poeira gigantes. Use abraçadeiras de velcro.
             </p>

@@ -50,12 +50,12 @@ export default function CorrigirProblemasSomPCGuide() {
         {
             title: "Por Que o Áudio Fica Ruim?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Problemas de áudio no PC podem <strong>arruinar completamente sua experiência</strong> com jogos, streaming e comunicação. As causas mais comuns incluem drivers desatualizados, configurações incorretas e conflitos de software.
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-red-400">🔥 Principais Causas:</h3>
-          <ul class="space-y-2 text-gray-400">
+          <ul class="space-y-2 text-gray-700">
             <li class="flex items-start gap-2">
               <span class="text-red-400">⚠️</span>
               <span>Drivers de áudio desatualizados ou corrompidos</span>
@@ -83,7 +83,7 @@ export default function CorrigirProblemasSomPCGuide() {
         {
             title: "Diagnóstico Rápido",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Antes de começar a resolver problemas, vamos <strong>identificar a causa raiz</strong>. Use estas ferramentas do Windows para diagnóstico rápido:
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
@@ -91,13 +91,13 @@ export default function CorrigirProblemasSomPCGuide() {
           <div class="grid md:grid-cols-2 gap-4">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-400 mb-2">🎵 Solucionador de Problemas</h4>
-              <p class="text-gray-400 text-sm mb-2">Executar <kbd class="bg-gray-700 px-2 py-1 rounded">msdt /online</kbd> para detectar problemas automaticamente.</p>
-              <p class="text-gray-400 text-sm">Verifica drivers, configurações de áudio e hardware.</p>
+              <p class="text-gray-700 text-sm mb-2">Executar <kbd class="bg-gray-700 px-2 py-1 rounded">msdt /online</kbd> para detectar problemas automaticamente.</p>
+              <p class="text-gray-700 text-sm">Verifica drivers, configurações de áudio e hardware.</p>
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-400 mb-2">🎛️ Gerenciador de Dispositivos</h4>
-              <p class="text-gray-400 text-sm mb-2">Pressione <kbd class="bg-gray-700 px-2 py-1 rounded">Win + X</kbd> para abrir rapidamente.</p>
-              <p class="text-gray-400 text-sm">Teste diferentes dispositivos de saída de áudio.</p>
+              <p class="text-gray-700 text-sm mb-2">Pressione <kbd class="bg-gray-700 px-2 py-1 rounded">Win + X</kbd> para abrir rapidamente.</p>
+              <p class="text-gray-700 text-sm">Teste diferentes dispositivos de saída de áudio.</p>
             </div>
           </div>
         </div>
@@ -106,27 +106,27 @@ export default function CorrigirProblemasSomPCGuide() {
         {
             title: "Drivers e Configurações",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           <strong>Drivers atualizados</strong> são fundamentais para um áudio funcionar perfeitamente. Vamos atualizar tudo passo a passo:
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-green-400">🔄 Atualização de Drivers:</h3>
-          <ol class="space-y-2 text-gray-400 list-decimal list-inside">
+          <ol class="space-y-2 text-gray-700 list-decimal list-inside">
             <li class="mb-2">
               <strong>1. Identificar Hardware:</strong>
-              <p class="text-gray-400 text-sm">Use <kbd class="bg-gray-700 px-2 py-1 rounded">dxdiag</kbd> para ver sua placa de som e drivers.</p>
+              <p class="text-gray-700 text-sm">Use <kbd class="bg-gray-700 px-2 py-1 rounded">dxdiag</kbd> para ver sua placa de som e drivers.</p>
             </li>
             <li class="mb-2">
               <strong>2. Baixar Drivers Oficiais:</strong>
-              <p class="text-gray-400 text-sm mb-2">Visite o site do fabricante (Realtek, NVIDIA, Intel).</p>
+              <p class="text-gray-700 text-sm mb-2">Visite o site do fabricante (Realtek, NVIDIA, Intel).</p>
             </li>
             <li class="mb-2">
               <strong>3. Instalar em Modo Seguro:</strong>
-              <p class="text-gray-400 text-sm mb-2">Desative temporariamente o antivírus durante instalação.</p>
+              <p class="text-gray-700 text-sm mb-2">Desative temporariamente o antivírus durante instalação.</p>
             </li>
             <li class="mb-2">
               <strong>4. Reiniciar o PC:</strong>
-              <p class="text-gray-400 text-sm mb-2">Após instalação, reinicie para aplicar as mudanças.</p>
+              <p class="text-gray-700 text-sm mb-2">Após instalação, reinicie para aplicar as mudanças.</p>
             </li>
           </ol>
         </div>
@@ -135,13 +135,13 @@ export default function CorrigirProblemasSomPCGuide() {
           <div class="grid md:grid-cols-2 gap-4">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-yellow-400 mb-2">🎛️ Serviços de Áudio</h4>
-              <p class="text-gray-400 text-sm mb-2">Pressione <kbd class="bg-gray-700 px-2 py-1 rounded">Win + R</kbd> → digite <kbd class="bg-gray-700 px-2 py-1 rounded">services.msc</kbd> → encontre <kbd class="bg-gray-700 px-2 py-1 rounded">Windows Audio</kbd>.</p>
-              <p class="text-gray-400 text-sm mb-2">Reinicie o serviço se necessário.</p>
+              <p class="text-gray-700 text-sm mb-2">Pressione <kbd class="bg-gray-700 px-2 py-1 rounded">Win + R</kbd> → digite <kbd class="bg-gray-700 px-2 py-1 rounded">services.msc</kbd> → encontre <kbd class="bg-gray-700 px-2 py-1 rounded">Windows Audio</kbd>.</p>
+              <p class="text-gray-700 text-sm mb-2">Reinicie o serviço se necessário.</p>
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-yellow-400 mb-2">🎚️ Propriedades de Som</h4>
-              <p class="text-gray-400 text-sm mb-2">Clique com botão direito no ícone de som → Propriedades → Avançado.</p>
-              <p class="text-gray-400 text-sm mb-2">Ajuste configurações de qualidade e efeitos.</p>
+              <p class="text-gray-700 text-sm mb-2">Clique com botão direito no ícone de som → Propriedades → Avançado.</p>
+              <p class="text-gray-700 text-sm mb-2">Ajuste configurações de qualidade e efeitos.</p>
             </div>
           </div>
         </div>
@@ -150,16 +150,16 @@ export default function CorrigirProblemasSomPCGuide() {
         {
             title: "Soluções Específicas",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Soluções detalhadas para os problemas de áudio mais <strong>comuns</strong> no Windows:
         </p>
         <div class="space-y-4">
           <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-6 mb-6">
             <h3 class="text-xl font-bold mb-4 text-red-400">🔴 Áudio Chiando ou Estático:</h3>
-            <div class="space-y-2 text-gray-400">
+            <div class="space-y-2 text-gray-700">
               <p class="mb-2"><strong>Causa:</strong> Drivers corrompidos ou buffer muito alto.</p>
               <p class="mb-2"><strong>Solução:</strong></p>
-              <ol class="space-y-2 text-gray-400 list-decimal list-inside">
+              <ol class="space-y-2 text-gray-700 list-decimal list-inside">
                 <li>Atualize drivers do fabricante</li>
                 <li>Reinicie serviço de áudio do Windows</li>
                 <li>Reduza buffer para 64-128ms</li>
@@ -169,10 +169,10 @@ export default function CorrigirProblemasSomPCGuide() {
           </div>
           <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-6 mb-6">
             <h3 class="text-xl font-bold mb-4 text-yellow-400">🔊 Som Cortando ou Desincronizado:</h3>
-            <div class="space-y-2 text-gray-400">
+            <div class="space-y-2 text-gray-700">
               <p class="mb-2"><strong>Causa:</strong> Buffer inadequado ou conflito de software.</p>
               <p class="mb-2"><strong>Solução:</strong></p>
-              <ol class="space-y-2 text-gray-400 list-decimal list-inside">
+              <ol class="space-y-2 text-gray-700 list-decimal list-inside">
                 <li>Configure buffer para 32-64ms</li>
                 <li>Desative processos desnecessários</li>
                 <li>Use cabo HDMI de qualidade</li>
@@ -182,10 +182,10 @@ export default function CorrigirProblemasSomPCGuide() {
           </div>
           <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-6 mb-6">
             <h3 class="text-xl font-bold mb-4 text-blue-400">🎤 Microfone Não Funciona:</h3>
-            <div class="space-y-2 text-gray-400">
+            <div class="space-y-2 text-gray-700">
               <p class="mb-2"><strong>Causa:</strong> Hardware com defeito ou configurações incorretas.</p>
               <p class="mb-2"><strong>Solução:</strong></p>
-              <ol class="space-y-2 text-gray-400 list-decimal list-inside">
+              <ol class="space-y-2 text-gray-700 list-decimal list-inside">
                 <li>Teste microfone em outro dispositivo</li>
                 <li>Verifique permissões de acesso ao microfone</li>
                 <li>Atualize drivers de áudio</li>
@@ -200,14 +200,14 @@ export default function CorrigirProblemasSomPCGuide() {
         {
             title: "Prevenção e Manutenção",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           <strong>Evite problemas futuros</strong> com estas práticas de manutenção preventiva:
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
           <div class="grid md:grid-cols-2 gap-4">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-green-400 mb-2">🛡️ Manutenção de Hardware:</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li>Limpeza regular de conectores e portas</li>
                 <li>Atualização periódica de drivers</li>
                 <li>Verificação de temperatura dos componentes</li>
@@ -216,7 +216,7 @@ export default function CorrigirProblemasSomPCGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-green-400 mb-2">🔄 Manutenção de Software:</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li>Desinstale softwares de áudio desnecessários</li>
                 <li>Use o Windows Update para drivers</li>
                 <li>Crie pontos de restauração do sistema</li>

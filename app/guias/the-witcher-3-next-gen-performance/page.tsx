@@ -34,7 +34,7 @@ export default function Witcher3PerformanceGuide() {
         {
             title: "O Desafio da Nova Geração",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **The Witcher 3 Next Gen** transformou um jogo de 2015 em um título extremamente exigente para os padrões de 2026. Com a adição de **Global Illumination** via Ray Tracing e novos assets em 4K, o jogo agora exige muito mais do processador e da placa de vídeo. Se você sente que o jogo está "pesado" mesmo em hardware potente, o segredo está no balanceamento correto entre o DirectX 12 e as tecnologias de Upscaling.
         </p>
       `
@@ -42,8 +42,8 @@ export default function Witcher3PerformanceGuide() {
         {
             title: "1. Ray Tracing: Vale a pena?",
             content: `
-        <p class="mb-4 text-gray-400">Em 2026, o Ray Tracing no Witcher 3 é um comedor de performance:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Em 2026, o Ray Tracing no Witcher 3 é um comedor de performance:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>RT Global Illumination:</strong> Deixa as cores muito mais realistas, mas corta o seu FPS pela metade.</li>
             <li><strong>Reflexos e Sombras RT:</strong> Desative este primeiro. O ganho visual é pequeno perto do custo de performance.</li>
             <li><strong>Dica:</strong> Se você não possui uma RTX 4070 ou superior, mantenha o RT desligado e foque na configuração 'Ultra+' para o restante dos gráficos.</li>
@@ -55,7 +55,7 @@ export default function Witcher3PerformanceGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Máximo ganho visual:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 - <strong>Densidade de Erva (Foliage Density):</strong> No Ultra+, isso mata seu PC em Beauclair. Coloque no Médio ou Alto. <br/>
                 - <strong>Visibilidade da Vegetação:</strong> Alto (Garante que as árvores não apareçam do nada). <br/>
                 - <strong>Pós-processamento:</strong> Desative o 'Motion Blur' e o 'Chromatic Aberration' para uma imagem mais nítida. <br/>
@@ -67,7 +67,7 @@ export default function Witcher3PerformanceGuide() {
         {
             title: "3. Resolvendo Stuttering no DX12",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitos jogadores reclamam de travadinhas constantes na versão DirectX 12. 
             <br/><br/><strong>Dica de 2026:</strong> Certifique-se de que o **Shader Cache** no driver da sua placa de vídeo está configurado para 'Ilimitado'. Além disso, use o <strong>DLSS Frame Generation</strong> (se disponível) ou o <strong>FSR 3.0</strong>. Essas tecnologias de geração de quadros são essenciais para manter o frametime estável nas ruas lotadas de Novigrad.
         </p>

@@ -43,7 +43,7 @@ export default function PingGuide() {
         {
             title: "Introdução: Física vs Rota",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Ping é o tempo que o sinal leva pra ir até o servidor e voltar. Se você mora no Nordeste e o servidor é em SP, existe um limite físico (mas geralmente o problema é a rota da operadora que dá voltas desnecessárias).
         </p>
       `
@@ -54,14 +54,14 @@ export default function PingGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Como funciona?</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Eles são como um "Waze" para sua internet. Em vez do seu dado seguir a rota da Claro/Vivo (que pode estar congestionada), o ExitLag cria um túnel direto para o servidor do jogo usando rotas privadas.
                     <br/><strong>Vale a pena?</strong> SIM, se você tem Packet Loss ou mora longe do servidor (norte/nordeste). NÃO, se você mora do lado do servidor e já tem 5ms.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">ExitLag vs Grátis (Cloudflare Warp)</h4>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     O Cloudflare Warp (1.1.1.1 app) é uma "VPN" grátis que otimiza rotas. É muito bom para resolver problemas de rotas internacionais, mas não é específico para jogos como o ExitLag (UDP multipath).
                 </p>
             </div>
@@ -71,7 +71,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 2: Configurações do Adaptador de Rede",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Gerenciador de Dispositivos > Adaptadores de Rede > Seu Adaptador Ethernet > Avançado.
             <br/>- <strong>Energy Efficient Ethernet (Green Ethernet):</strong> Desativar. (Isso desliga a placa pra economizar energia, causando lag spike).
             <br/>- <strong>Interrupt Moderation:</strong> Desativar. (Processa pacotes imediatamente em vez de agrupar. Usa mais CPU, mas baixa latência).
@@ -82,7 +82,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 3: DNS (Domain Name System)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O DNS não melhora o Ping dentro da partida, mas melhora a velocidade de encontrar partidas e logar.
             <br/>Melhores opções:
             <br/>- <strong>Cloudflare:</strong> 1.1.1.1 e 1.0.0.1 (Foco em privacidade e rapidez).
@@ -97,7 +97,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 4: Algoritmo de Nagle (TCP NoDelay)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Windows agrupa pequenos pacotes de dados para eficiência (Nagle's Algorithm). Em jogos, queremos enviar cada clique IMEDIATAMENTE.
             <br/>Isso exige edição do Regedit (TcpAckFrequency).
             <br/><em>Nota:</em> O Voltris Optimizer faz isso automaticamente, evitando risco de errar no registro.
@@ -107,7 +107,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 5: Wi-Fi vs Cabo (A Realidade)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Wi-Fi é ondas de rádio. Ondas sofrem interferência de paredes, micro-ondas e vizinhos. Isso causa "Jitter" (Ping variando de 20 para 100).
             <br/>Para competir, use <strong>Cabo Ethernet Cat5e ou Cat6</strong>. É barato e resolve 90% dos problemas de "lag misterioso".
         </p>
@@ -116,7 +116,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 6: Teste de Bufferbloat",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Acesse o site <a href="https://www.waveform.com/tools/bufferbloat" target="_blank" class="text-blue-400">Waveform Bufferbloat Test</a>.
             <br/>Se sua nota for C ou D, significa que quando alguém na sua casa assiste Netflix, seu Ping sobe.
             <br/>Solução: Ativar <strong>QoS (Quality of Service)</strong> no seu roteador e limitar a velocidade de download máxima para 90% do total contratado, deixando 10% livre para o jogo trafegar sem fila.
@@ -126,7 +126,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 7: TCP Optimizer",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Uma ferramenta antiga mas ouro.
             <br/>Baixe o TCP Optimizer 4 (SpeedGuide.net).
             <br/>Selecione sua velocidade de internet.
@@ -141,7 +141,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 8: Packet Loss (Perda de Pacote)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Ping alto é ruim. Packet Loss é injogável (você teleporta).
                 <br/>Se tiver Packet Loss no cabo: Ligue para a operadora. Geralmente é problema físico no cabeamento da rua ou modem com defeito.
                 <br/>Se tiver no Wi-Fi: É interferência. Mude o canal do Wi-Fi ou vá para 5GHz.
@@ -151,7 +151,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 9: Flush DNS e Reset IP",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Internet estranha?
                 <br/>Abra CMD como Admin:
                 <br/><code>ipconfig /flushdns</code>
@@ -164,7 +164,7 @@ export default function PingGuide() {
         {
             title: "Capítulo 10: Server Picker",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Em jogos como CS2, você pode limitar o ping máximo aceitável nas configurações.
                 <br/>Defina como "50". Assim o jogo nunca te colocará em servidores chilenos ou argentinos se você for brasileiro, evitando a barreira de idioma e latência.
             </p>

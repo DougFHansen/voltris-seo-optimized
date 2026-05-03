@@ -43,12 +43,12 @@ export default function RobloxGuide() {
         {
             title: "Introdução: O limite de 60 FPS",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Roblox trava o jogo em 60 FPS por padrão. Isso é horrível para obbies e jogos de tiro (Arsenal/Phantom Forces). Antigamente usávamos o "rbxfpsunlocker.exe", mas hoje o <strong>Bloxstrap</strong> faz isso e muito mais.
         </p>
          <div class="bg-[#0A0A0F] border border-blue-500/30 p-5 rounded-xl my-6">
             <h4 class="text-blue-400 font-bold mb-2">O que é Bloxstrap?</h4>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 É um launcher alternativo open-source seguro para Roblox. Ele permite injetar configurações (FastFlags) antes do jogo abrir. Ele substitui o launcher oficial e melhora a compatibilidade com o Discord.
             </p>
         </div>
@@ -57,7 +57,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 1: Instalando e Configurando o Bloxstrap",
             content: `
-        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
+        <ol class="list-decimal list-inside text-gray-700 text-sm space-y-2">
             <li>Baixe o Bloxstrap do GitHub oficial (pizzaboxer/bloxstrap).</li>
             <li>Na instalação, vá em <strong>"FastFlags"</strong>.</li>
             <li>Em "Framerate Limit", coloque <strong>9999</strong> ou a taxa de Hz do seu monitor (ex: 165).</li>
@@ -69,7 +69,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 2: FastFlags Mágicas (JSON)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Você pode editar manualmente o arquivo <code>ClientAppSettings.json</code> ou usar o editor do Bloxstrap. Adicione estas flags para performance extrema:
         </p>
         <div class="bg-black/50 p-4 rounded text-xs font-mono text-green-400 overflow-x-auto">
@@ -82,7 +82,7 @@ export default function RobloxGuide() {
             &nbsp;&nbsp;"FFlagGlobalWindRendering": false<br/>
             }
         </div>
-        <p class="mt-2 text-xs text-gray-400">
+        <p class="mt-2 text-xs text-gray-700">
             <strong>Explicação:</strong> Isso remove sombras, vento, força qualidade 1 (abaixo do mínimo do menu) e desativa Anti-Aliasing.
         </p>
       `
@@ -90,7 +90,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 3: Tecnologia de Iluminação",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Jogos novos usam "Future Lighting" (pesado).
             <br/>Você pode tentar forçar a iluminação antiga (Voxel ou ShadowMap) via FastFlag, mas alguns jogos podem ficar escuros demais.
             <br/>Flag: <code>"FFlagDebugForceFutureIsBrightPhase3": false</code>
@@ -103,7 +103,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 4: Reduzindo Ping (Rotas)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Roblox não tem servidor no Brasil para a maioria dos jogos (apenas alguns hubs). Você joga com 150ms nos EUA.
             <br/>O Bloxstrap mostra a região do servidor (Ctrl+Shift+F5).
             <br/>Use cabo Ethernet. Wi-Fi oscila muito com o protocolo UDP do Roblox.
@@ -113,7 +113,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 5: Texturas de Plástico (Potato Mode)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Existe um pacote de texturas (não oficial) que deixa tudo liso (Plastic).
             <br/>No Bloxstrap, vá em "Mods" e ative "Old Death Sound" (opcional) e procure a opção de aplicar texturas customizadas.
             <br/>Coloque arquivos de textura 1x1 pixel transparente na pasta de texturas. O jogo vai carregar cor sólida em vez de texturas de madeira/concreto, economizando muita VRAM.
@@ -123,7 +123,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 6: Rendering API (Vulkan vs D3D11)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você tem PC muito antigo (Intel HD 2000/3000): Tente usar <strong>Vulkan</strong> ou <strong>OpenGL</strong> nas FastFlags.
             <br/>Às vezes o Vulkan gerencia melhor a pouca memória de vídeo que o DX11.
             <br/>Flag: <code>"FFlagDebugGraphicsPreferVulkan": true</code>
@@ -133,7 +133,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 7: Prioridade no Windows",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Quando o Roblox está em segundo plano (Alt+Tab), ele reduz o FPS para 15 para economizar energia.
             <br/>Se você quer farmar AFK com FPS alto (para macros funcionarem):
             <br/>Flag: <code>"DFIntTaskSchedulerTargetFpsWhenBackground": 60</code>
@@ -146,7 +146,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 8: Problemas com Anti-Virus",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O inject do Bloxstrap ou FPS Unlocker é benigno, mas alguns antivírus grátis (Avast) bloqueiam. Adicione a pasta do Bloxstrap nas exclusões.
             </p>
             `
@@ -154,7 +154,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 9: Voltris Optimizer para Roblox",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O <strong>Voltris Optimizer</strong> detecta o processo <code>RobloxPlayerBeta.exe</code> e aplica automaticamente o plano de energia de alto desempenho e limpa a RAM standby, o que ajuda muito em jogos de mundo aberto como Jailbreak ou Mad City.
             </p>
             `
@@ -162,7 +162,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 10: Tela Cheia Exclusiva",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Roblox usa "Fullscreen Windowed" que tem input lag.
                 <br/>Pressione <strong>Alt+Enter</strong> para tentar forçar fullscreen real (depende do driver) ou use a flag <code>"FFlagHandleAltEnterFullscreenManually": true</code>.
             </p>

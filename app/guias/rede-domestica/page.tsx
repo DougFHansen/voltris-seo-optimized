@@ -26,7 +26,7 @@ export default function RededomesticaGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Componentes Essenciais</h3>
-            <ul class="text-gray-400 text-sm space-y-1">
+            <ul class="text-gray-700 text-sm space-y-1">
               <li>📡 Roteador WiFi dual-band (2.4GHz e 5GHz)</li>
               <li>🔌 Modem compatível com seu provedor de internet</li>
               <li>📱 Smartphones, tablets e computadores</li>
@@ -35,7 +35,7 @@ export default function RededomesticaGuide() {
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Considerações Iniciais</h3>
-            <ul class="text-gray-400 text-sm space-y-1">
+            <ul class="text-gray-700 text-sm space-y-1">
               <li>🏠 Área total da residência em metros quadrados</li>
               <li>📶 Quantidade de paredes e obstáculos</li>
               <li>使用網路 Quantidade de dispositivos simultâneos</li>
@@ -46,7 +46,7 @@ export default function RededomesticaGuide() {
         
         <div class="bg-orange-900/20 border border-orange-500/30 rounded-lg p-4 my-6">
           <h3 class="text-orange-400 font-semibold mb-2">📋 Checklist Inicial</h3>
-          <p class="text-gray-400 text-sm">Antes de começar, tenha: login/senha do provedor, modelo do roteador, lista de dispositivos a conectar e mapa da casa indicando áreas problemáticas de sinal.</p>
+          <p class="text-gray-700 text-sm">Antes de começar, tenha: login/senha do provedor, modelo do roteador, lista de dispositivos a conectar e mapa da casa indicando áreas problemáticas de sinal.</p>
         </div>
       `,
       subsections: []
@@ -60,7 +60,7 @@ export default function RededomesticaGuide() {
         {
           subtitle: "Passo 1: Conexão Física Inicial",
           content: `
-            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4">
+            <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4">
               <li><strong>Conecte o modem:</strong> Ligue o cabo da operadora no porta WAN do roteador</li>
               <li><strong>Energia:</strong> Conecte o adaptador de energia do roteador e aguarde 2 minutos</li>
               <li><strong>Primeiro acesso:</strong> Conecte um computador via cabo Ethernet à porta LAN</li>
@@ -72,7 +72,7 @@ export default function RededomesticaGuide() {
         {
           subtitle: "Passo 2: Configuração Básica de Internet",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li><strong>Tipo de conexão:</strong> Selecione PPPoE, DHCP ou IP Estático conforme provedor</li>
               <li><strong>Credenciais PPPoE:</strong> Insira login e senha fornecidos pela operadora</li>
               <li><strong>Clone MAC Address:</strong> Habilite se seu provedor vincular internet ao MAC do computador</li>
@@ -84,7 +84,7 @@ export default function RededomesticaGuide() {
         {
           subtitle: "Passo 3: Configuração WiFi e Segurança",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li><strong>Rede 2.4GHz:</strong> Nome (SSID) claro + senha WPA2/WPA3 forte (12+ caracteres)</li>
               <li><strong>Rede 5GHz:</strong> Mesmo nome com sufixo "_5G" para fácil identificação</li>
               <li><strong>Canal 2.4GHz:</strong> Use canal 1, 6 ou 11 (menos congestionados)</li>
@@ -96,7 +96,7 @@ export default function RededomesticaGuide() {
         {
           subtitle: "Passo 4: Otimização Avançada",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li><strong>QoS (Qualidade de Serviço):</strong> Priorize streaming e jogos sobre downloads</li>
               <li><strong>Guest Network:</strong> Crie rede convidada separada para visitantes</li>
               <li><strong>Controle parental:</strong> Bloqueie sites inadequados e limite horários</li>
@@ -119,7 +119,7 @@ export default function RededomesticaGuide() {
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
                 <h4 class="text-white font-semibold mb-2">Entry Level (R$ 200-400)</h4>
-                <ul class="text-gray-400 text-xs space-y-1">
+                <ul class="text-gray-700 text-xs space-y-1">
                   <li>TP-Link Archer A7 ou AX1800</li>
                   <li>WiFi dual-band AC1200</li>
                   <li>4 antenas externas ajustáveis</li>
@@ -128,7 +128,7 @@ export default function RededomesticaGuide() {
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#8B31FF]/20">
                 <h4 class="text-white font-semibold mb-2">Mid Range (R$ 400-800)</h4>
-                <ul class="text-gray-400 text-xs space-y-1">
+                <ul class="text-gray-700 text-xs space-y-1">
                   <li>ASUS RT-AX58U ou AX6000</li>
                   <li>WiFi 6 AX3000 dual-band</li>
                   <li>Portas gigabit + USB 3.0</li>
@@ -137,7 +137,7 @@ export default function RededomesticaGuide() {
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
                 <h4 class="text-white font-semibold mb-2">Premium (R$ 800+)</h4>
-                <ul class="text-gray-400 text-xs space-y-1">
+                <ul class="text-gray-700 text-xs space-y-1">
                   <li>Netgear Nighthawk AX12</li>
                   <li>WiFi 6 tri-band AX6000</li>
                   <li>Processador dedicado</li>
@@ -153,7 +153,7 @@ export default function RededomesticaGuide() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-[#171313] p-3 rounded border border-green-500/30">
                 <h4 class="text-green-400 font-semibold mb-2">Mesh WiFi Systems</h4>
-                <ul class="text-gray-400 text-xs space-y-1">
+                <ul class="text-gray-700 text-xs space-y-1">
                   <li>Sistema de pontos coordenados</li>
                   <li>Roteador + 1-2 extensores mesh</li>
                   <li>Mesmo SSID em toda a casa</li>
@@ -162,7 +162,7 @@ export default function RededomesticaGuide() {
               </div>
               <div class="bg-[#171313] p-3 rounded border border-blue-500/30">
                 <h4 class="text-blue-400 font-semibold mb-2">Repetidores Tradicionais</h4>
-                <ul class="text-gray-400 text-xs space-y-1">
+                <ul class="text-gray-700 text-xs space-y-1">
                   <li>Extensão simples de sinal existente</li>
                   <li>SSID separado (_EXT)</li>
                   <li>Perda de 50% da velocidade</li>
@@ -186,8 +186,8 @@ export default function RededomesticaGuide() {
             <div class="space-y-4">
               <div class="bg-[#171313] p-4 rounded-lg border border-red-500/30">
                 <h4 class="text-red-400 font-semibold mb-2">❌ Sem Internet em Todos os Dispositivos</h4>
-                <p class="text-gray-400 text-sm mb-2">Diagnóstico e Solução:</p>
-                <ul class="text-gray-400 text-xs space-y-1 ml-4">
+                <p class="text-gray-700 text-sm mb-2">Diagnóstico e Solução:</p>
+                <ul class="text-gray-700 text-xs space-y-1 ml-4">
                   <li>Verifique se modem está sincronizado (luzes status)</li>
                   <li>Reinicie modem e roteador (30 segundos desligados)</li>
                   <li>Teste conexão com cabo direto do modem ao computador</li>
@@ -197,14 +197,14 @@ export default function RededomesticaGuide() {
               
               <div class="bg-[#171313] p-4 rounded-lg border border-yellow-500/30">
                 <h4 class="text-yellow-400 font-semibold mb-2">⚠️ Internet Lenta ou Instável</h4>
-                <p class="text-gray-400 text-sm mb-2">Possíveis Causas:</p>
-                <ul class="text-gray-400 text-xs space-y-1 ml-4 mb-2">
+                <p class="text-gray-700 text-sm mb-2">Possíveis Causas:</p>
+                <ul class="text-gray-700 text-xs space-y-1 ml-4 mb-2">
                   <li>Interferência de micro-ondas, baby phones ou vizinhos</li>
                   <li>Canal WiFi congestionado (use WiFi Analyzer app)</li>
                   <li>Dispositivos antigos limitando toda a rede</li>
                   <li>ISP com problemas na região</li>
                 </ul>
-                <p class="text-gray-400 text-sm">Solução: Troque canal WiFi, atualize firmware, posicione roteador estrategicamente.</p>
+                <p class="text-gray-700 text-sm">Solução: Troque canal WiFi, atualize firmware, posicione roteador estrategicamente.</p>
               </div>
             </div>
           `
@@ -215,8 +215,8 @@ export default function RededomesticaGuide() {
             <div class="space-y-4">
               <div class="bg-[#171313] p-4 rounded-lg border border-purple-500/30">
                 <h4 class="text-purple-400 font-semibold mb-2">📶 Sinal Fraco em Determinados Cômodos</h4>
-                <p class="text-gray-400 text-sm mb-2">Soluções Escalonadas:</p>
-                <ul class="text-gray-400 text-xs space-y-1 ml-4">
+                <p class="text-gray-700 text-sm mb-2">Soluções Escalonadas:</p>
+                <ul class="text-gray-700 text-xs space-y-1 ml-4">
                   <li><strong>Imediata:</strong> Reposicione roteador em local central e elevado</li>
                   <li><strong>Curto prazo:</strong> Instale repetidor WiFi no ponto médio</li>
                   <li><strong>Médio prazo:</strong> Sistema Mesh WiFi com 2-3 pontos</li>
@@ -226,14 +226,14 @@ export default function RededomesticaGuide() {
               
               <div class="bg-[#171313] p-4 rounded-lg border border-blue-500/30">
                 <h4 class="text-blue-400 font-semibold mb-2">📱 Dispositivos Desconectando Constantemente</h4>
-                <p class="text-gray-400 text-sm mb-2">Causas Comuns:</p>
-                <ul class="text-gray-400 text-xs space-y-1 ml-4 mb-2">
+                <p class="text-gray-700 text-sm mb-2">Causas Comuns:</p>
+                <ul class="text-gray-700 text-xs space-y-1 ml-4 mb-2">
                   <li>Timeout de inatividade muito curto no roteador</li>
                   <li>Lista de clientes lotada (limite de conexões)</li>
                   <li>Firmware desatualizado</li>
                   <li>Problemas de driver no dispositivo</li>
                 </ul>
-                <p class="text-gray-400 text-sm">Solução: Aumente timeout no painel, atualize firmware, reinicie roteador.</p>
+                <p class="text-gray-700 text-sm">Solução: Aumente timeout no painel, atualize firmware, reinicie roteador.</p>
               </div>
             </div>
           `
@@ -241,7 +241,7 @@ export default function RededomesticaGuide() {
         {
           subtitle: "Dicas de Manutenção Preventiva",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li>Atualize firmware do roteador trimestralmente</li>
               <li>Reinicie roteador mensalmente para limpar cache</li>
               <li>Monitore dispositivos conectados para identificar intrusos</li>

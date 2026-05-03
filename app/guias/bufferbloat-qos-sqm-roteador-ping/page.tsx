@@ -41,7 +41,7 @@ export default function BufferbloatGuide() {
         {
             title: "Introdução: O Engarrafamento de Dados",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Imagine uma rodovia (sua internet). Quando ela enche de carros (Netflix 4K), tudo para. O Bufferbloat é o roteador tentando colocar carros demais na fila de espera, causando atraso (lag) para o seu comando do jogo (que é uma moto rápida tentando passar).
         </p>
       `
@@ -52,7 +52,7 @@ export default function BufferbloatGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Diagnóstico</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Acesse <strong>waveform.com/tools/bufferbloat</strong>.
                     <br/>2. Pare todos os downloads.
                     <br/>3. Rode o teste.
@@ -66,7 +66,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 2: QoS Tradicional (Roteadores Comuns)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A maioria dos roteadores (TP-Link, D-Link) tem um "QoS" simples.
             <br/>1. Entre na página do roteador (192.168.0.1).
             <br/>2. Ative QoS.
@@ -79,7 +79,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 3: SQM (Smart Queue Management) - A Cura",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             SQM é a tecnologia real que resolve Bufferbloat.
             <br/>Disponível em roteadores com <strong>OpenWRT</strong>, <strong>Ubiquiti</strong>, ou modelos gamers caros (Asus Merlin).
             <br/>Ele usa algoritmos matemáticos (CAKE ou FQ_CoDel) para garantir que pacotes pequenos (jogos/VoIP) pulem a fila na frente dos pacotes grandes (Netflix).
@@ -92,7 +92,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 4: Configurando o Limite de Banda",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Para o SQM funcionar, o roteador precisa controlar a fila, não o modem da operadora.
             <br/>Configure o limite de Download para <strong>90-95%</strong> da sua velocidade máxima.
             <br/>Configure o Upload para <strong>85-90%</strong>.
@@ -103,7 +103,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 5: OpenWRT (Para Corajosos)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se seu roteador suporta:
             <br/>Instalar OpenWRT transforma um roteador de R$200 num equipamento empresarial de R$1000.
             <br/>Instale o pacote <code>luci-app-sqm</code> e ative o "Piece of Cake".
@@ -114,7 +114,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 6: Cabo Ethernet (CAT6)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Nenhum QoS faz milagre no Wi-Fi com interferência de vizinho.
             <br/>Use cabo de rede CAT5e ou CAT6.
             <br/>O Wi-Fi 6 (AX) tem tecnologias anti-fila (OFDMA) que ajudam, mas o cabo ainda é rei.
@@ -124,7 +124,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 7: ISP Throttling (Operadora)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Às vezes o problema é na rua.
             <br/>Se o Bufferbloat persistir mesmo limitando a banda a 50%, a infraestrutura da sua operadora (Node) está saturada. Ligue e reclame ou troque de fibra.
         </p>
@@ -136,7 +136,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 8: Jogando enquanto faz Live",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Streamers precisam de QoS no Upload.
                 <br/>Se o upload saturar enviando a live para a Twitch, o jogo perde pacotes (Packet Loss). Limite o bitrate do OBS para 80% do seu upload real.
             </p>
@@ -145,7 +145,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 9: Roteadores Recomendados 2026",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Procure CPUs Quad-Core (1.5GHz+). Roteadores fracos não aguentam fazer SQM em conexões Gigabit (1000 Mega).
                 <br/>Ex: Asus RT-AX86U, GL.iNet Flint 2.
             </p>
@@ -154,7 +154,7 @@ export default function BufferbloatGuide() {
         {
             title: "Capítulo 10: ExitLag ajuda?",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 ExitLag otimiza a ROTA, mas não resolve Bufferbloat na sua casa.
                 <br/>Se seu irmão ligar o torrent, o ExitLag não vai impedir o lag. Só o QoS no roteador impede.
             </p>

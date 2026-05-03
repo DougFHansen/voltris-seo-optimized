@@ -34,7 +34,7 @@ export default function CPUAnalysisGuide() {
         {
             title: "O Salto Tecnológico de 2026",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, a forma como olhamos para os processadores mudou. Não falamos mais apenas de "Ghz" ou "Núcleos". O foco agora está na **eficiência por watt** e na capacidade de lidar com inteligência artificial localmente através das **NPUs**. Se você está montando um PC hoje, escolher entre Intel e AMD exige entender se o seu foco é extrair o último frame em um jogo competitivo ou ter um sistema que lida com dezenas de abas e apps de IA sem engasgar.
         </p>
       `
@@ -42,8 +42,8 @@ export default function CPUAnalysisGuide() {
         {
             title: "1. AMD Ryzen: O Poder do 3D V-Cache",
             content: `
-        <p class="mb-4 text-gray-400">A AMD continua dominando o topo das paradas de FPS com as séries 'X3D':</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">A AMD continua dominando o topo das paradas de FPS com as séries 'X3D':</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Latência Mínima:</strong> Ao empilhar memória cache diretamente no topo do processador, a CPU acessa os dados do jogo muito mais rápido.</li>
             <li><strong>Consumo:</strong> Em 2026, os processadores Ryzen são conhecidos por entregar performance absurda consumindo metade da energia da concorrência.</li>
             <li><strong>Ideal para:</strong> Gamers entusiastas e jogadores de simulação (SimRacing, Flight Simulator).</li>
@@ -55,7 +55,7 @@ export default function CPUAnalysisGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">P-Cores e E-Cores:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 A Intel aprimorou sua arquitetura híbrida. <br/><br/>
                 Os <strong>P-Cores</strong> (Performance) cuidam do jogo pesado, enquanto os <strong>E-Cores</strong> (Efficient) gerenciam o Windows, Discord e Chrome em segundo plano. Em 2026, o escalonador do Windows 11 está otimizado para que essa troca seja imperceptível, tornando os processadores Intel excelentes para quem faz Stream (transmissão ao vivo) e joga no mesmo PC.
             </p>
@@ -65,7 +65,7 @@ export default function CPUAnalysisGuide() {
         {
             title: "3. O que observar na compra?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não caia no marketing dos núcleos:</strong> Um processador de 16 núcleos antigo pode ser mais lento que um de 6 núcleos de 2026 para jogos. 
             <br/><br/>Priorize o **IPC** (Instruções por Ciclo). Além disso, em 2026, verifique se a CPU suporta memória <strong>DDR5</strong> de alta frequência (acima de 6000MT/s), pois a largura de banda de memória agora é o maior gargalo para processadores modernos.
         </p>

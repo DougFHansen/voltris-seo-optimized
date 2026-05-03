@@ -40,7 +40,7 @@ export default function InstallWindowsGuide() {
     {
       title: "Por que fazer Instalação Limpa?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Atualizar do Windows 10 para o 11 pelo Windows Update geralmente traz "lixo" do sistema antigo: drivers obsoletos, entradas de registro quebradas e arquivos temporários. Uma <strong>Instalação Limpa</strong> (Clean Install) apaga tudo e instala o sistema fresco, garantindo máxima velocidade e estabilidade.
         </p>
 
@@ -48,7 +48,7 @@ export default function InstallWindowsGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">📦</span> Pós-Instalação Automática
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 O pesadelo de formatar é reinstalar drivers e configurar tudo de novo. O <strong>Voltris Optimizer</strong> atua como um "Ninite" turbinado: ele instala seus Visual C++, DirectX, navegadores e otimiza o Windows recém-instalado em um único clique.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function InstallWindowsGuide() {
     {
       title: "Passo 1: Criando o Pen Drive (Rufus)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Recomendamos o Rufus em vez da ferramenta oficial da Microsoft, pois ele permite personalizações úteis.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Baixe a ISO do Windows 11 no site oficial da Microsoft.</li>
             <li>Baixe e abra o Rufus.</li>
             <li>Selecione seu Pen Drive em "Dispositivo".</li>
@@ -88,10 +88,10 @@ export default function InstallWindowsGuide() {
     {
       title: "Passo 2: BIOS e Boot",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Com o Pen Drive pronto, reinicie o PC.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Ao ligar, fique apertando a tecla de BOOT MENU (Geralmente F8, F11, F12 ou Delete, dependendo da placa-mãe).</li>
             <li>Selecione o Pen Drive (ex: "UEFI: SanDisk").</li>
             <li>O instalador do Windows iniciará.</li>
@@ -101,10 +101,10 @@ export default function InstallWindowsGuide() {
     {
       title: "Passo 3: Particionamento",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Na tela "Onde você quer instalar o Windows?":
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Se você quer apagar tudo (Clean Install): Exclua TODAS as partições do Disco 0 até sobrar apenas "Espaço Não Alocado".</li>
             <li>Selecione o espaço não alocado e clique em Avançar. O Windows criará as partições de recuperação e sistema automaticamente.</li>
             <li><strong>Dica:</strong> Se tiver mais de um HD/SSD, cuidado para não apagar o disco errado (Backup/Jogos). Identifique pelo tamanho (GB).</li>
@@ -119,10 +119,10 @@ export default function InstallWindowsGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">O Truque do "Eu não tenho internet"</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Se você não usou o Rufus para remover a conta online, o Windows 11 te obriga a conectar na internet.
                 </p>
-                <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+                <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
                     <li>Na tela de "Vamos conectar você a uma rede", pressione <strong>Shift + F10</strong>.</li>
                     <li>O CMD abrirá. Digite: <code>OOBE\\BYPASSNRO</code> e dê Enter.</li>
                     <li>O PC vai reiniciar.</li>
@@ -140,13 +140,13 @@ export default function InstallWindowsGuide() {
             <div class="space-y-4">
                <div class="bg-gray-800 p-4 rounded-lg">
                     <h5 class="text-blue-400 font-bold mb-2">1. Windows Update</h5>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-700 text-sm">
                         Rode o Windows Update até não ter mais nada. Ele instala 90% dos drivers (Chipset, Áudio, Rede).
                     </p>
                </div>
                <div class="bg-gray-800 p-4 rounded-lg">
                     <h5 class="text-green-400 font-bold mb-2">2. Driver de Vídeo (GPU)</h5>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-700 text-sm">
                         Baixe manualmente no site da Nvidia/AMD. O driver do Windows Update é uma versão genérica e desatualizada.
                     </p>
                </div>

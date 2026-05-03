@@ -34,7 +34,7 @@ export default function DLLFixGuide() {
         {
             title: "Por que esses erros ocorrem?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Muitos jogos em 2026 são desenvolvidos usando ferramentas que dependem de bibliotecas da Microsoft. Se você formatou o seu PC recentemente ou o Windows Update não instalou tudo o que devia, ao tentar abrir o jogo você verá erros como **"MSVCP140.dll não encontrada"**. Nunca baixe DLLs individuais de sites estranhos! A solução correta é instalar o pacote oficial da Microsoft que contém centenas dessas bibliotecas.
         </p>
       `
@@ -42,8 +42,8 @@ export default function DLLFixGuide() {
         {
              title: "1. Visual C++: O \"All in One\" (A Solução Mágica)",
             content: `
-        <p class="mb-4 text-gray-400">Em vez de baixar um por um, instale o pacote completo:</p>
-        <p class="text-sm text-gray-400">
+        <p class="mb-4 text-gray-700">Em vez de baixar um por um, instale o pacote completo:</p>
+        <p class="text-sm text-gray-700">
             A melhor forma de resolver 99% dos erros de DLL em 2026 é o instalador <strong>Visual C++ Redistributable Runtimes All-in-One</strong>. Ele instala todas as versões de 2005 até 2026 de uma só vez, tanto para 32 bits (x86) quanto para 64 bits (x64). <br/><br/>
             <strong>Dica:</strong> Mesmo que o seu Windows seja 64 bits, você **precisa** instalar as versões x86 também, pois muitos jogos usam essas bibliotecas antigas para rodar subsistemas de áudio ou DRM.
         </p>
@@ -54,7 +54,7 @@ export default function DLLFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">DirectX End-User Web Installer:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Embora o Windows 11 já venha com o DirectX 12, ele não possui os componentes do <strong>DirectX 9, 10 e 11</strong> que muitos jogos clássicos utilizam. <br/><br/>
                 Vá ao site oficial da Microsoft e baixe o 'DirectX End-User Runtime Web Installer'. Ele fará uma verificação nas pastas do seu sistema e baixará apenas o que estiver faltando, corrigindo erros como d3dx9_43.dll.
             </p>
@@ -64,7 +64,7 @@ export default function DLLFixGuide() {
         {
             title: "3. O Erro 0xc00007b",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>O Vilão da Compatibilidade:</strong> 
             <br/><br/>Se você recebe o erro **"O aplicativo não pôde ser inicializado corretamente (0xc00007b)"**, significa que existe uma mistura de DLLs de 32 bits em pastas de 64 bits. A solução definitiva é desinstalar todos os 'Visual C++' pelo Painel de Controle e rodar o instalador All-in-One mencionado no passo 1. Isso limpará o registro e colocará cada arquivo no seu devido lugar.
         </p>
@@ -78,13 +78,13 @@ export default function DLLFixGuide() {
             title: "4. Fundamentos Técnicos de Bibliotecas Dinâmicas",
             content: `
         <h4 class="text-white font-bold mb-3">🔬 Arquitetura de Bibliotecas DLL e Runtimes</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             As DLLs (Dynamic Link Libraries) são componentes fundamentais da arquitetura do Windows que permitem o compartilhamento de código entre múltiplos programas:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Tipos de Bibliotecas</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Bibliotecas C/C++ Runtime (CRT)</li>
                     <li>• Bibliotecas do .NET Framework</li>
                     <li>• Componentes DirectX e Direct3D</li>
@@ -94,7 +94,7 @@ export default function DLLFixGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Arquiteturas e Versões</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• x86 (32-bit) e x64 (64-bit)</li>
                     <li>• Versões do Visual Studio (2005-2022)</li>
                     <li>• Compilação estática vs dinâmica</li>
@@ -105,11 +105,11 @@ export default function DLLFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Processo de Resolução de Dependências</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Windows utiliza um processo complexo para localizar e carregar DLLs:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Etapa</th>
@@ -158,16 +158,16 @@ export default function DLLFixGuide() {
             title: "5. Análise Profunda de Erros de DLL",
             content: `
         <h4 class="text-white font-bold mb-3">🔍 Diagnóstico Técnico de Problemas de DLL</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A identificação precisa da causa raiz de erros de DLL é essencial para soluções eficazes:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Erros Comuns e Significados</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Entendimento técnico dos códigos de erro mais frequentes:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• HRESULT 0x8007007E (DLL_NOT_FOUND)</li>
                     <li>• Erro 0xC00007B (MISMATCH_ARCHITECTURE)</li>
                     <li>• STATUS_DLL_INIT_FAILED</li>
@@ -177,10 +177,10 @@ export default function DLLFixGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Ferramentas de Diagnóstico</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Ferramentas avançadas para análise de dependências:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Dependency Walker</li>
                     <li>• Process Monitor (ProcMon)</li>
                     <li>• Process Explorer</li>
@@ -191,13 +191,13 @@ export default function DLLFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Técnicas Avançadas de Troubleshooting</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Métodos sistemáticos para resolver problemas complexos de DLL:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Análise de Processo</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Monitoramento em tempo real</li>
                     <li>• Análise de chamadas de sistema</li>
                     <li>• Verificação de handles abertos</li>
@@ -206,7 +206,7 @@ export default function DLLFixGuide() {
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Reparo do Sistema</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• SFC /scannow</li>
                     <li>• DISM /Online /Cleanup-Image</li>
                     <li>• Verificação de integridade do sistema</li>
@@ -220,13 +220,13 @@ export default function DLLFixGuide() {
             title: "6. Gestão de Runtimes e Pacotes",
             content: `
         <h4 class="text-white font-bold mb-3">📦 Gerenciamento Avançado de Pacotes Redistribuíveis</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O gerenciamento eficiente dos pacotes redistribuíveis é crucial para a estabilidade do sistema:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Versões do Visual C++</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• VS 2005 (v8.0) - Suporte encerrado</li>
                     <li>• VS 2008 (v9.0) - Suporte encerrado</li>
                     <li>• VS 2010 (v10.0) - Suporte encerrado</li>
@@ -236,7 +236,7 @@ export default function DLLFixGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Componentes DirectX</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• DirectX 9.0c (última versão)</li>
                     <li>• DirectX 10 (integrado no Vista/7)</li>
                     <li>• DirectX 11 (Windows 7+)</li>
@@ -246,7 +246,7 @@ export default function DLLFixGuide() {
             </div>
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Outras Bibliotecas Comuns</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• .NET Framework (1.1-4.8.1)</li>
                     <li>• Visual Basic/C# Runtimes</li>
                     <li>• MSXML e MSMQ</li>
@@ -258,7 +258,7 @@ export default function DLLFixGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Tabela de Compatibilidade e Requisitos</h4>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Componente</th>
@@ -310,16 +310,16 @@ export default function DLLFixGuide() {
             title: "7. Ferramentas Avançadas de Diagnóstico",
             content: `
         <h4 class="text-white font-bold mb-3">🔍 Utilitários Profissionais para Análise de DLL</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Ferramentas especializadas para diagnosticar problemas complexos de dependências:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-purple-500 pl-4 py-2 bg-purple-900/10">
                 <h5 class="text-purple-400 font-bold mb-2">Dependency Walker e Alternativas</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Ferramentas para análise de dependências de módulos executáveis e DLLs:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Dependency Walker (clássico, mas descontinuado)</li>
                     <li>• Dependencies (sucessor moderno)</li>
                     <li>• PE Explorer</li>
@@ -329,10 +329,10 @@ export default function DLLFixGuide() {
             </div>
             <div class="border-l-4 border-cyan-500 pl-4 py-2 bg-cyan-900/10">
                 <h5 class="text-cyan-400 font-bold mb-2">Monitoramento em Tempo Real</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Ferramentas para observar o comportamento do sistema em tempo de execução:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Process Monitor (Sysinternals)</li>
                     <li>• API Monitor</li>
                     <li>• File Monitor</li>
@@ -342,10 +342,10 @@ export default function DLLFixGuide() {
             </div>
             <div class="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-900/10">
                 <h5 class="text-yellow-400 font-bold mb-2">Análise de Manifestos e Assembly</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Ferramentas para inspecionar manifestos e assemblies do lado do cliente:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• FXCop</li>
                     <li>• GAC Util (gacutil.exe)</li>
                     <li>• Assembly Binding Log Viewer</li>
@@ -360,13 +360,13 @@ export default function DLLFixGuide() {
             title: "8. Procedimentos de Reparo Avançado",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Técnicas de Reparo Profundo do Sistema</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Quando métodos convencionais falham, procedimentos avançados podem resolver problemas persistentes:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Reparo do Sistema Operacional</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• SFC /scannow (System File Checker)</li>
                     <li>• DISM /Online /Cleanup-Image /RestoreHealth</li>
                     <li>• SFC /scannow após DISM</li>
@@ -376,7 +376,7 @@ export default function DLLFixGuide() {
             </div>
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Limpeza e Reinstalação de Runtimes</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Desinstalação completa de VCRedist</li>
                     <li>• Limpeza manual de registros</li>
                     <li>• Remoção de componentes Side-by-side</li>
@@ -387,10 +387,10 @@ export default function DLLFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🧪 Procedimentos de Teste e Validação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Após a correção, é importante validar a integridade do sistema:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
             <li><strong>Teste de aplicativos críticos:</strong> Execute os programas que estavam falhando para confirmar a resolução</li>
             <li><strong>Análise de eventos:</strong> Verifique o Event Viewer por erros relacionados a DLLs</li>
             <li><strong>Verificação de desempenho:</strong> Monitore o uso de CPU e memória após a correção</li>
@@ -403,13 +403,13 @@ export default function DLLFixGuide() {
             title: "9. Prevenção e Melhores Práticas",
             content: `
         <h4 class="text-white font-bold mb-3">🛡️ Estratégias de Prevenção de Problemas de DLL</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Medidas preventivas para evitar problemas recorrentes com DLLs:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Manutenção Proativa</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Atualizações regulares de Windows</li>
                     <li>• Manutenção de runtimes atualizados</li>
                     <li>• Backup de DLLs críticas</li>
@@ -419,7 +419,7 @@ export default function DLLFixGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Boas Práticas de Instalação</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Instalação de pacotes completos</li>
                     <li>• Sequência correta de instalação</li>
                     <li>• Verificação de compatibilidade</li>
@@ -431,7 +431,7 @@ export default function DLLFixGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">📋 Checklist de Prevenção</h4>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Prática</th>

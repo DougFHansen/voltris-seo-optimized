@@ -41,7 +41,7 @@ export default function OW2Guide() {
         {
             title: "Introdução: O Mito dos Detalhes",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em Overwatch, gráficos bonitos atrapalham. Efeitos de explosão, neblina e sombras poluem a tela.
           <br/>O objetivo aqui é deixar o jogo "limpo" (outline vermelho dos inimigos bem visível) e com o menor atraso de mouse possível.
         </p>
@@ -53,7 +53,7 @@ export default function OW2Guide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Video Basic</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     - <strong>Field of View (FOV):</strong> 103. Sempre.
                     - <strong>V-Sync:</strong> OFF. (Crime competitivo).
                     - <strong>Triple Buffering:</strong> OFF.
@@ -67,7 +67,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 2: Advanced Graphics (Visual Limpo)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Texture Quality:</strong> Medium (High gasta VRAM à toa, Low deixa borrado. Medium é o equilíbrio).
             - <strong>Texture Filtering:</strong> High/Ultra 16x (Custo zero, melhora texturas inclinadas).
             - <strong>Local Fog Detail:</strong> LOW. (Remove a neblina que esconde inimigos longe).
@@ -81,7 +81,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 3: Render Scale e FSR",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Nunca use "Automatic". Defina como <strong>Custom</strong>.
             <br/>- <strong>100%:</strong> Imagem nativa. Ideal se sua GPU aguenta 200+ FPS.
             <br/>- <strong>75%:</strong> Profissionais usam muito. Deixa o outline vermelho do inimigo "mais grosso" (placebo visual) e ganha muito FPS.
@@ -95,7 +95,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 4: Limitando FPS (SIM Delay)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Pressione Ctrl+Shift+N no jogo. Veja o valor "SIM" (Simulation Delay).
             <br/>Se seu FPS flutua (300 -> 150 -> 400), o SIM varia e sua mira fica inconsistente (muscle memory falha).
             <br/>Trave o FPS num valor que seu PC ATINJA SEMPRE (ex: 200).
@@ -106,7 +106,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 5: Áudio (Dolby vs Windows)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O OW2 tem processamento binaural nativo.
             <br/>Opção 1: Ligue "Dolby Atmos for Headphones" no jogo e DESLIGUE qualquer surround do Windows/Headset.
             <br/>Opção 2: Desligue no jogo e use seu software de preferência.
@@ -117,7 +117,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 6: Gameplay Settings",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Outline Opacity:</strong> 100%.
             - <strong>Enemy UI Color:</strong> Padrão (Vermelho) ou Amarelo (Deuteranopia) - O amarelo destaca muito mais em mapas escuros.
             - <strong>Waypoints Opacity:</strong> Reduza para 50% para o ícone do objetivo não tampar inimigos.
@@ -127,7 +127,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 7: Mouse (High Precision)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             OW2 usa "Raw Input" nativo.
             <br/>Evite DPIs extremos (16000). Use 800 ou 1600 e ajuste a Sensitivity no jogo.
             <br/>eDPI comum de pro players: 3200 a 4800 (ex: 800 DPI x 5 Sens).
@@ -140,7 +140,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 8: Network (High Precision Mouse Input)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Uma opção escondida em Gameplay.
                 <br/>Ative "Enable High Precision Mouse Input".
                 <br/>Isso faz o jogo ler o mouse entre os frames de renderização (sub-frame), essencial para Hitscan (Widow/Cassidy).
@@ -150,7 +150,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 9: Crash de Render Device Lost",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se seu jogo fecha com erro "Render Device Lost":
                 <br/>É geralmente Overclock instável de GPU ou memória RAM. O Overwatch é extremamente sensível a instabilidade de RAM. Remova o XMP se continuar crashando.
             </p>
@@ -159,7 +159,7 @@ export default function OW2Guide() {
         {
             title: "Capítulo 10: Battle.net App",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Configure o launcher da Battle.net para "Fechar completamente ao iniciar o jogo".
                 <br/>Ele consome CPU em segundo plano à toa (Electron app).
             </p>

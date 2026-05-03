@@ -34,7 +34,7 @@ export default function BluetoothResetGuide() {
         {
             title: "Por que os fones Bluetooth param de sincronizar?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           A maioria dos fones TWS (True Wireless) funciona em um sistema de "Mestre e Escravo". Um fone se conecta ao seu celular e o outro se conecta ao primeiro fone. Se você tira apenas um fone da caixinha muitas vezes, essa conexão entre eles pode "quebrar", fazendo com que eles funcionem apenas como fones mono individuais.
         </p>
       `
@@ -42,8 +42,8 @@ export default function BluetoothResetGuide() {
         {
             title: "1. Reset Geral (Xiaomi, Lenovo e Genéricos)",
             content: `
-        <p class="mb-4 text-gray-400">Este é o método que resolve 90% dos problemas de pareamento:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Este é o método que resolve 90% dos problemas de pareamento:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>No seu celular, vá em Bluetooth e escolha <strong>'Esquecer este dispositivo'</strong>.</li>
             <li>Coloque os dois fones na caixinha de carregamento.</li>
             <li>Com eles dentro da case (ou logo após tirar), segure a área touch (ou botão) dos dois ao mesmo tempo por <strong>15 segundos</strong>.</li>
@@ -57,7 +57,7 @@ export default function BluetoothResetGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Dica de Manutenção:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Muitas vezes um lado para de funcionar porque não está carregando. Use um cotonete com um pouco de <strong>álcool isopropílico</strong> para limpar os pinos dourados dentro da case e os contatos do fone. A sujeira do uso diário impede que o fone receba carga, simulando um defeito eletrônico.
             </p>
         </div>
@@ -66,7 +66,7 @@ export default function BluetoothResetGuide() {
         {
             title: "3. Problemas de Áudio no Windows",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o fone funciona no celular mas fica com o som "estourado" ou com microfone ruim no PC:
             <br/>Vá em Configurações de Som > Painel de Controle de Som. Desative o modo <strong>'Hands-Free AG Audio'</strong> e use apenas o modo 'Stereo'. O modo Hands-free reduz a qualidade para o nível de rádio AM para permitir o uso do microfone bluetooth.
         </p>

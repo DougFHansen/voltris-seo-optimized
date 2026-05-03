@@ -217,7 +217,7 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
                     onKeyDown={handleSearchKeyPress}
                     className="w-full px-6 py-5 bg-transparent border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 text-lg transition-all"
                   />
-                  <Search className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400 group-hover:text-blue-600 transition-colors" />
+                  <Search className="absolute right-6 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-700 group-hover:text-blue-600 transition-colors" />
                 </div>
               </div>
 
@@ -248,7 +248,7 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 1, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-gray-400 hover:text-gray-900 transition-colors"
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer text-gray-700 hover:text-gray-900 transition-colors"
           >
             <span className="text-xs uppercase tracking-widest">Scroll</span>
             <div className="w-[1px] h-12 bg-gradient-to-b from-blue-600 to-transparent"></div>
@@ -287,7 +287,7 @@ export default function GuiasClient({ initialGuides }: GuiasClientProps) {
 
             {filteredCategories.length === 0 ? (
               <div className="text-center py-24 bg-white rounded-2xl border border-gray-200 shadow-sm">
-                <Search className="w-16 h-16 text-gray-400 mx-auto mb-6" />
+                <Search className="w-16 h-16 text-gray-700 mx-auto mb-6" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Nenhum guia encontrado</h3>
                 <p className="text-gray-500 mb-8 max-w-sm mx-auto">Não encontramos guias compatíveis com sua busca. Tente palavras-chaves diferentes.</p>
                 <button

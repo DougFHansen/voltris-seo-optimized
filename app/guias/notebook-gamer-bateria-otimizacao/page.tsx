@@ -43,7 +43,7 @@ export default function BatteryGuide() {
         {
             title: "Introdução: O Vilão dGPU",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O maior consumidor de energia do seu notebook é a placa de vídeo dedicada (RTX 3050/4060). Mesmo parada, ela gasta bateria. O segredo é forçar o uso da placa integrada (Intel/AMD) quando fora da tomada.
         </p>
       `
@@ -54,7 +54,7 @@ export default function BatteryGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Mude para 60Hz</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Telas de 144Hz/165Hz gastam 3x mais energia para atualizar os pixels.
                     <br/>Vá em Configurações > Tela > Exibição Avançada.
                     <br/>Mude para <strong>60Hz</strong> quando estiver na faculdade ou trabalho. Alguns notebooks (Asus/Razer) fazem isso automaticamente ao desconectar o cabo.
@@ -66,7 +66,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 2: MUX Switch e Optimus",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Abra o software do seu notebook (Armoury Crate, Dell Command, Lenovo Vantage).
             <br/>Procure por <strong>GPU Mode</strong>.
             <br/>- <strong>Ultimate/Discrete:</strong> Usa só a RTX. Gasta muita bateria.
@@ -78,7 +78,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 3: Plano de Energia e Processador",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Painel de Controle > Opções de Energia > Criar um plano de energia.
             <br/>Nomeie "Economia Máxima".
             <br/>Vá em "Alterar configurações do plano" > Avançadas.
@@ -93,7 +93,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 4: ThrottleStop (Avançado)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Baixe o <a href="https://www.techpowerup.com/download/techpowerup-throttlestop/" class="text-blue-400 hover:underline">ThrottleStop</a> (Cuidado, software avançado).
             <br/>Crie um perfil "Battery".
             <br/>Marque <strong>"Disable Turbo"</strong>.
@@ -104,7 +104,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 5: Undervolt (Se bloqueado)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A maioria dos notebooks modernos (Intel 12th+) bloqueia undervolt.
             <br/>Mas você pode limitar o <strong>TDP (PL1/PL2)</strong>.
             <br/>No ThrottleStop, botão TPL. Baixe o "Long Power PL1" para 15W. Seu i7 vai se comportar como um i3 de ultrabook (econômico).
@@ -114,7 +114,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 6: Hibernar vs Suspender",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O "Modern Standby" do Windows é bugado. O notebook acorda na mochila, esquenta e drena bateria.
             <br/>Recomendação: Use <strong>HIBERNAR</strong> em vez de Suspender ao fechar a tampa por longos períodos. O boot do SSD é rápido (10s) e hibernar gasta 0% de bateria.
         </p>
@@ -123,7 +123,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 7: Navegadores Eficientes",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Use o <strong>Edge</strong> com modo "Eficiência" ligado.
             <br/>Evite o Chrome cheio de extensões.
             <br/>Evite ver vídeos no YouTube em 4K na bateria (o decodificador de vídeo gasta muito). Veja em 720p ou 1080p.
@@ -136,7 +136,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 8: Iluminação RGB",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Desligue o teclado RGB e a luz da tampa/logo.
                 <br/>LEDs consomem cerca de 1 a 3 Watts. Em uma bateria de 50Wh, isso são 20 minutos a menos de vida útil. Use as teclas Fn+Fim(ou ícone luz) para desligar.
             </p>
@@ -145,7 +145,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 9: Calibração de Bateria",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 A cada 3 meses, deixe a bateria descarregar até 0% (desligar) e carregue até 100% sem interrupção.
                 <br/>Isso recalibra o medidor do Windows para mostrar a porcentagem real e usar cada célula da bateria.
             </p>
@@ -154,7 +154,7 @@ export default function BatteryGuide() {
         {
             title: "Capítulo 10: Bloqueador de Carga (80%)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você usa o notebook 90% do tempo na tomada, ative o "Limitador de Carga" no software da fabricante (Asus Battery Health / Dell Power Manager).
                 <br/>Limite a carga a 60% ou 80%. Manter a bateria em 100% o tempo todo degrada o lítio pelo calor e voltagem alta.
             </p>

@@ -34,7 +34,7 @@ export default function InternetTroubleshootingGuide() {
     {
       title: "O diagnóstico de 2026",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Estar desconectado em 2026 é como estar no escuro. Muitas vezes, o problema da sua internet não é a operadora, mas sim um erro de configuração no seu Windows 11 ou uma falha de hardware na sua própria rede doméstica. Antes de ligar para o suporte técnico e esperar horas no telefone, siga este roteiro lógico para identificar e resolver o problema sozinho.
         </p>
       `
@@ -42,8 +42,8 @@ export default function InternetTroubleshootingGuide() {
     {
       title: "1. A Regra do 'Cabo de Ouro'",
       content: `
-        <p class="mb-4 text-gray-400">O problema é no Wi-Fi ou no sinal que chega da rua?</p>
-        <p class="text-sm text-gray-400">
+        <p class="mb-4 text-gray-700">O problema é no Wi-Fi ou no sinal que chega da rua?</p>
+        <p class="text-sm text-gray-700">
             O teste mais importante é conectar um computador via **cabo** diretamente no roteador. Se a internet funcionar perfeitamente no cabo, mas falhar no Wi-Fi, o problema é puramente a sua rede sem fio (interferência ou canal saturado). Se a internet continuar lenta no cabo, o problema pode estar no roteador, no cabo da rua ou nas configurações profundas do seu Windows.
         </p>
       `
@@ -53,7 +53,7 @@ export default function InternetTroubleshootingGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Limpando erros de software:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se o seu computador diz 'Conectado, mas sem internet', o Windows pode estar com um registro de rede travado. <br/><br/>
                 1. Vá em Configurações > Rede e Internet > Configurações avançadas de rede. <br/>
                 2. Clique em <strong>Restauração da rede</strong>. <br/>
@@ -65,7 +65,7 @@ export default function InternetTroubleshootingGuide() {
     {
       title: "3. O problema das atualizações do Windows",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Dica de 2026:</strong> O Windows Update às vezes instala drivers "genéricos" que causam instabilidade no Wi-Fi. 
             <br/><br/>Verifique no site do fabricante do seu notebook ou placa-mãe se há um driver de rede (Intel, Realtek ou Killer) mais recente. Instalar o driver oficial muitas vezes resolve quedas de conexão constantes que o reset de rede não conseguiu consertar.
         </p>

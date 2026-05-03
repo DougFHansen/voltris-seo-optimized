@@ -34,7 +34,7 @@ export default function PCMisteryGuide() {
         {
             title: "O frio na barriga de montar um PC",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Montar um PC é como um quebra-cabeça caro. A maioria das peças só encaixa de um jeito, mas existem armadilhas silenciosas que podem fazer você perder horas tentando descobrir por que o computador não dá imagem ou por que ele desliga após 2 minutos.
         </p>
       `
@@ -42,9 +42,9 @@ export default function PCMisteryGuide() {
         {
             title: "1. O Plástico Invisível do Cooler",
             content: `
-        <p class="mb-4 text-gray-400">Este é o erro campeão de 2026:</p>
+        <p class="mb-4 text-gray-700">Este é o erro campeão de 2026:</p>
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Quase todo cooler (Air Cooler ou Water Cooler) vem com um adesivo transparente na base de metal. Se você esquecer de tirar e aplicar a pasta térmica por cima, o calor não será transferido. O PC vai ligar e desligar em segundos para não derreter o processador. <strong>Sempre verifique a base do metal!</strong>
             </p>
         </div>
@@ -53,7 +53,7 @@ export default function PCMisteryGuide() {
         {
             title: "2. Dual Channel: Não desperdice sua RAM",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se sua placa-mãe tem 4 slots e você tem 2 pentes de memória, eles <strong>NUNCA</strong> devem ser colocados um grudado no outro.
             <br/><br/>Para ativar o Dual Channel (dobro de velocidade de comunicação), você deve pular um slot (ex: Slots 2 e 4). Verifique o manual da sua placa-mãe, mas 90% das vezes é o segundo e o quarto slot contando a partir do processador.
         </p>
@@ -62,7 +62,7 @@ export default function PCMisteryGuide() {
         {
             title: "3. Onde ligar o cabo HDMI/DisplayPort?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Parece óbvio, mas acontece muito: Se você tem uma Placa de Vídeo dedicada, o cabo do monitor <strong>DEVE</strong> ser ligado nela (nas saídas horizontais mais abaixo). Se você ligar na saída vertical da placa-mãe, o PC vai tentar rodar o jogo pelo processador, resultando em 5 FPS ou tela preta.
         </p>
       `
@@ -70,7 +70,7 @@ export default function PCMisteryGuide() {
         {
             title: "4. Espaçadores do Gabinete",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Nunca parafuse a placa-mãe direto na chapa de metal do gabinete. Você precisa usar os "Standoffs" (espaçadores dourados). Sem eles, os contatos elétricos da placa-mãe encostam no metal do gabinete e causam um <strong>curto-circuito</strong> que pode matar todas as suas peças instantaneamente.
         </p>
       `

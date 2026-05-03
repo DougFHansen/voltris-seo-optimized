@@ -50,12 +50,12 @@ export default function AjustarAudioWindowsGuide() {
         {
             title: "Por Que o Áudio Fica Ruim?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Problemas de áudio no Windows podem <strong>arruinar completamente sua experiência</strong> com jogos, streaming e chamadas. As causas mais comuns incluem drivers desatualizados, configurações incorretas e conflitos de software.
         </p>
         <div class="bg-blue-900/20 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-blue-400">🔊 Principais Causas:</h3>
-          <ul class="space-y-2 text-gray-400">
+          <ul class="space-y-2 text-gray-700">
             <li class="flex items-start gap-2">
               <span class="text-red-400">⚠️</span>
               <span>Drivers de áudio desatualizados ou corrompidos</span>
@@ -79,7 +79,7 @@ export default function AjustarAudioWindowsGuide() {
         {
             title: "Verificando Hardware e Drivers",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Antes de ajustar as configurações, precisamos <strong>identificar a causa raiz</strong> do problema de áudio.
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
@@ -87,26 +87,26 @@ export default function AjustarAudioWindowsGuide() {
           <div class="grid md:grid-cols-2 gap-4">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-white mb-2">Gerenciador de Dispositivos</h4>
-              <p class="text-gray-400 text-sm mb-2">Pressione <kbd class="bg-gray-700 px-2 py-1 rounded">Win + X</kbd> para abrir rapidamente.</p>
-              <p class="text-gray-400 text-sm">Verifique status de drivers, desative dispositivos desnecessários.</p>
+              <p class="text-gray-700 text-sm mb-2">Pressione <kbd class="bg-gray-700 px-2 py-1 rounded">Win + X</kbd> para abrir rapidamente.</p>
+              <p class="text-gray-700 text-sm">Verifique status de drivers, desative dispositivos desnecessários.</p>
               
               <h4 class="text-lg font-semibold text-white mb-2">Gerenciador de Som</h4>
-              <p class="text-gray-400 text-sm mb-2">Clique com o botão direito no ícone de som na barra de tarefas.</p>
-              <p class="text-gray-400 text-sm">Acesse propriedades do dispositivo para configurações avançadas.</p>
+              <p class="text-gray-700 text-sm mb-2">Clique com o botão direito no ícone de som na barra de tarefas.</p>
+              <p class="text-gray-700 text-sm">Acesse propriedades do dispositivo para configurações avançadas.</p>
               
               <h4 class="text-lg font-semibold text-white mb-2">Painel de Som DirectX</h4>
-              <p class="text-gray-400 text-sm mb-2">Digite <kbd class="bg-gray-700 px-2 py-1 rounded">dxdiag</kbd> no Executar.</p>
-              <p class="text-gray-400 text-sm">Mostra informações detalhadas sobre drivers DirectX e hardware.</p>
+              <p class="text-gray-700 text-sm mb-2">Digite <kbd class="bg-gray-700 px-2 py-1 rounded">dxdiag</kbd> no Executar.</p>
+              <p class="text-gray-700 text-sm">Mostra informações detalhadas sobre drivers DirectX e hardware.</p>
             </div>
             
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-white mb-2">Verificação de Drivers</h4>
-              <p class="text-gray-400 text-sm mb-2">Use o Gerenciador de Dispositivos para verificar atualizações.</p>
-              <p class="text-gray-400 text-sm mb-2">Visite o site do fabricante da sua placa de som.</p>
+              <p class="text-gray-700 text-sm mb-2">Use o Gerenciador de Dispositivos para verificar atualizações.</p>
+              <p class="text-gray-700 text-sm mb-2">Visite o site do fabricante da sua placa de som.</p>
               
               <h4 class="text-lg font-semibold text-white mb-2">Teste de Hardware</h4>
-              <p class="text-gray-400 text-sm mb-2">Use fones de ouvido diferentes para isolar o problema.</p>
-              <p class="text-gray-400 text-sm mb-2">Teste com cabos e portas diferentes.</p>
+              <p class="text-gray-700 text-sm mb-2">Use fones de ouvido diferentes para isolar o problema.</p>
+              <p class="text-gray-700 text-sm mb-2">Teste com cabos e portas diferentes.</p>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function AjustarAudioWindowsGuide() {
         {
             title: "Configurações Essenciais do Windows",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Comece com estas configurações básicas do Windows para <strong>resolver 90% dos problemas de áudio</strong>:
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
@@ -123,7 +123,7 @@ export default function AjustarAudioWindowsGuide() {
           <div class="space-y-4">
             <div class="bg-gray-700 rounded p-4 mb-4">
               <h4 class="text-lg font-semibold text-yellow-400 mb-2">Dispositivos de Reprodução</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Dispositivo Padrão:</strong> Selecione seu headset ou caixas de som</li>
                 <li><strong>Comunicações:</strong> Configure como dispositivo padrão</li>
                 <li><strong>Propriedades Avançadas:</strong> Clique duplo → Aba "Avançado"</li>
@@ -133,7 +133,7 @@ export default function AjustarAudioWindowsGuide() {
             
             <div class="bg-gray-700 rounded p-4 mb-4">
               <h4 class="text-lg font-semibold text-yellow-400 mb-2">Melhorias de Áudio</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Baixas Latências:</strong> Ative "Melhorias de Áudio"</li>
                 <li><strong>Ambiente Virtual:</strong> Ative se disponível</li>
                 <li><strong>Baixar Frequências:</strong> Ative para fones de ouvido</li>
@@ -143,7 +143,7 @@ export default function AjustarAudioWindowsGuide() {
             
             <div class="bg-gray-700 rounded p-4 mb-4">
               <h4 class="text-lg font-semibold text-yellow-400 mb-2">Configurações de Comunicação</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Exclusivo:</strong> Desative compartilhamento do dispositivo</li>
                 <li><strong>Volume Automático:</strong> Desative para controle manual preciso</li>
                 <li><strong>Notificações:</strong> Configure para não interromper durante jogos</li>
@@ -156,7 +156,7 @@ export default function AjustarAudioWindowsGuide() {
         {
             title: "Ajustes Avançados para Gamers",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Configurações específicas para <strong>eliminar delay de áudio</strong> e melhorar a experiência competitiva:
         </p>
         <div class="bg-purple-900/20 rounded-lg p-6 mb-6">
@@ -164,7 +164,7 @@ export default function AjustarAudioWindowsGuide() {
           <div class="grid md:grid-cols-2 gap-4">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-400 mb-2">Buffer de Áudio</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Windows:</strong> 64-128ms (padrão)</li>
                 <li><strong>Jogos Competitivos:</strong> 32-64ms ou menos</li>
                 <li><strong>Streaming:</strong> 16-32ms (para mínimo delay)</li>
@@ -174,7 +174,7 @@ export default function AjustarAudioWindowsGuide() {
             
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-400 mb-2">Prioridade de Processamento</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Nível de Prioridade:</strong> Tempo Realtime (mais alto)</li>
                 <li><strong>Como configurar:</strong> Gerenciador de Dispositivos → Clique direito → Propriedades → Aba "Avançado"</li>
                 <li><strong>Impacto:</strong> Reduz delay em 50-70%</li>
@@ -183,7 +183,7 @@ export default function AjustarAudioWindowsGuide() {
             
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-400 mb-2">Configurações por Jogo</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>CS2/Valorant:</strong> Buffer 32ms, Prioridade Alta</li>
                 <li><strong>Fortnite/Apex:</strong> Buffer 64ms, Prioridade Média</li>
                 <li><strong>Call of Duty:</strong> Buffer 64ms, Prioridade Alta</li>
@@ -197,17 +197,17 @@ export default function AjustarAudioWindowsGuide() {
         {
             title: "Resolução de Problemas Específicos",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Soluções detalhadas para os problemas de áudio mais <strong>comuns</strong> no Windows:
         </p>
         <div class="space-y-4">
           <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-6 mb-4">
             <h3 class="text-xl font-bold mb-4 text-red-400">🔥 Áudio Estático ou "Crackling"</h3>
-            <div class="text-gray-400">
+            <div class="text-gray-700">
               <p class="mb-2"><strong>Causa:</strong> Geralmente drivers corrompidos ou conflitos de software.</p>
               <p class="mb-2"><strong>Sintomas:</strong> Chiado, estático, distorção, cortes.</p>
               <p class="mb-2"><strong>Solução:</strong></p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Reinicie o PC em modo seguro</li>
                 <li>Desinstale softwares de áudio de terceiros</li>
                 <li>Atualize drivers do fabricante</li>
@@ -219,11 +219,11 @@ export default function AjustarAudioWindowsGuide() {
           
           <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-6 mb-4">
             <h3 class="text-xl font-bold mb-4 text-yellow-400">⚡ Áudio Fora de Sincronia</h3>
-            <div class="text-gray-400">
+            <div class="text-gray-700">
               <p class="mb-2"><strong>Causa:</strong> Problemas de buffer ou configurações de sincronização.</p>
               <p class="mb-2"><strong>Sintomas:</strong> Áudio e vídeo fora de sincronia, eco.</p>
               <p class="mb-2"><strong>Solução:</strong></p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Verifique configurações de buffer</li>
                 <li>Desative processos desnecessários</li>
                 <li>Use cabo HDMI de qualidade</li>
@@ -234,10 +234,10 @@ export default function AjustarAudioWindowsGuide() {
           
           <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-6 mb-4">
             <h3 class="text-xl font-bold mb-4 text-blue-400">🎤️ Microfone Não Funciona</h3>
-            <div class="text-gray-400">
+            <div class="text-gray-700">
               <p class="mb-2"><strong>Causa:</strong> Microfone mudo, não detectado ou com qualidade ruim.</p>
               <p class="mb-2"><strong>Solução:</strong></p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Verifique se o microfone está selecionado como entrada</li>
                 <li>Teste com outro aplicativo (Zoom, Discord)</li>
                 <li>Verifique permissões de acesso ao microfone</li>
@@ -252,12 +252,12 @@ export default function AjustarAudioWindowsGuide() {
         {
             title: "Dicas Profissionais",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Dicas avançadas para áudio profissional de <strong>streaming</strong> e <strong>gravação</strong>:
         </p>
         <div class="bg-green-900/20 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-green-400">🎯 Equipamento Profissional:</h3>
-          <ul class="space-y-2 text-gray-400">
+          <ul class="space-y-2 text-gray-700">
             <li><strong>Interface de Áudio Externa:</strong> Focusrite Scarlett 2i ou similar</li>
             <li><strong>Microfone de Estúdio:</strong> Rode NT1, Shure SM7B ou AT2020</li>
             <li><strong>Processador de Áudio:</strong> Antelope Audio Discrete 8th Gen</li>
@@ -267,8 +267,8 @@ export default function AjustarAudioWindowsGuide() {
         </div>
           
           <div class="bg-gray-800 rounded-lg p-6 mb-6">
-            <h3 class="text-xl font-bold mb-4 text-gray-400">🎛️ Software Profissional:</h3>
-          <ul class="space-y-2 text-gray-400">
+            <h3 class="text-xl font-bold mb-4 text-gray-700">🎛️ Software Profissional:</h3>
+          <ul class="space-y-2 text-gray-700">
             <li><strong>DAW:</strong> Adobe Audition, Reaper ou Ableton Live</li>
             <li><strong>Processamento:</strong> iZotope RX 10, FabFilter Pro</li>
             <li><strong>VST Plugins:</strong> Waves, Soundtoys, Native Instruments</li>

@@ -34,7 +34,7 @@ export default function SpatialAudioGuide() {
         {
             title: "O que é o Som Espacial?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Diferente do som estéreo comum (esquerda e direita), o **Som Espacial** cria uma esfera virtual de áudio ao redor da sua cabeça. Em 2026, isso é fundamental para jogos competitivos, permitindo que você identifique se um inimigo está acima de você, atrás ou em um andar inferior. O Windows 11 processa essa informação e simula a distância e direção usando algoritmos avançados.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SpatialAudioGuide() {
         {
             title: "1. Ativando o Windows Sonic (Grátis)",
             content: `
-        <p class="mb-4 text-gray-400">A Microsoft oferece uma opção excelente sem custo adicional:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">A Microsoft oferece uma opção excelente sem custo adicional:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Clique com o botão direito no ícone de som na barra de tarefas.</li>
             <li>Vá em <strong>Configurações de Som</strong>.</li>
             <li>Clique no seu dispositivo de saída (Fones de ouvido).</li>
@@ -57,7 +57,7 @@ export default function SpatialAudioGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Qual escolher em 2026?</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se você busca a melhor experiência cinematográfica, o **Dolby Atmos** é superior por ter maior suporte em filmes e jogos AAA. Já o **DTS Headphone:X** é muitas vezes preferido por jogadores de FPS por ter uma equalização que destaca melhor frequências de passos e recargas. Ambos são pagos (licença única), mas oferecem períodos de teste gratuitos. Experimente os dois antes de comprar.
             </p>
         </div>
@@ -66,7 +66,7 @@ export default function SpatialAudioGuide() {
         {
             title: "3. Importância da Taxa de Amostragem",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>O ajuste fino:</strong> 
             <br/><br/>Para que o som espacial funcione perfeitamente sem chiados ou atrasos, vá em Propriedades do Dispositivo > Configurações Avançadas e mude o formato padrão para <strong>24 bits, 48000 Hz (Qualidade de Estúdio)</strong>. Evite valores muito altos (como 192kHz) em jogos, pois eles podem desativar o processamento de som espacial ou causar distorção no posicionamento virtual.
         </p>

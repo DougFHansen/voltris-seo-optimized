@@ -39,13 +39,13 @@ export default function CloudBackupGuide() {
     {
       title: "O Fim do Pen-Drive (E Por Que Você Precisa da Nuvem)",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, salvar arquivos localmente é jogar roleta russa. SSDs morrem subitamente. Notebooks são roubados. Ransomwares criptografam tudo. O <strong>Backup em Nuvem em Tempo Real</strong> é a única garantia de que, se seu PC explodir agora, você não perde nem a última frase que digitou.
         </p>
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
           <h4 class="text-blue-400 font-bold mb-2">☁️ Sincronização vs Backup</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Muitos confundem. 
             <br/><strong>Backup (Frio):</strong> Cópia estática guardada na gaveta (HD Externo). Se você apagar o original, a cópia fica lá.
             <br/><strong>Sincronização (Nuvem):</strong> O espelho do seu PC. Se você alterar um arquivo no PC, muda na nuvem. Se apagar no PC, apaga na nuvem (geralmente vai para a lixeira da nuvem).
@@ -57,12 +57,12 @@ export default function CloudBackupGuide() {
     {
       title: "Opção 1: OneDrive (A Escolha Lógica para Windows)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O OneDrive já vem embutido no Windows 10/11. É a solução mais "invisível" e eficiente.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-4">Ativando o "Backup de Pastas do PC"</h4>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Procure o ícone da <strong>nuvem azul/cinza</strong> perto do relógio (ou no Menu Iniciar > OneDrive).</li>
             <li>Entre com sua conta Microsoft (Hotmail/Outlook).</li>
             <li>Clique na engrenagem > Configurações > <strong>Sincronizar e fazer backup</strong>.</li>
@@ -75,10 +75,10 @@ export default function CloudBackupGuide() {
         </p>
 
         <h4 class="text-white font-bold mb-3 mt-6">Arquivos Sob Demanda (Files On-Demand)</h4>
-        <p class="mb-2 text-gray-400 text-sm">
+        <p class="mb-2 text-gray-700 text-sm">
             Este é o maior trunfo do OneDrive. Ele mostra seus 1TB de arquivos no Explorador, mas <strong>NÃO ocupa espaço no disco</strong>.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Ícone Nuvem ☁️:</strong> O arquivo está apenas online. Se clicar, ele baixa na hora.</li>
             <li><strong>Ícone Verde ✅:</strong> O arquivo foi baixado e ocupa espaço.</li>
             <li><strong>Como liberar espaço:</strong> Clique com botão direito em qualquer pasta > "Liberar espaço". O Windows apaga a cópia local e deixa só na nuvem.</li>
@@ -88,13 +88,13 @@ export default function CloudBackupGuide() {
     {
       title: "Opção 2: Google Drive para Desktop",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Se você usa Android ou Gmail, o Google Drive é mais natural. Mas cuidado: ele não se integra tão profundamente quanto o OneDrive.
         </p>
         <div class="space-y-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                 <h5 class="font-bold text-white mb-2">Instalação e Setup</h5>
-                <ol class="list-decimal list-inside text-sm text-gray-400 space-y-2">
+                <ol class="list-decimal list-inside text-sm text-gray-700 space-y-2">
                     <li>Baixe o "Google Drive para Desktop" (antigo Backup and Sync).</li>
                     <li>Nas preferências, escolha "Meu Computador".</li>
                     <li>Clique em "Adicionar pasta" e selecione Documentos/Imagens manualmente.</li>
@@ -103,7 +103,7 @@ export default function CloudBackupGuide() {
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                 <h5 class="font-bold text-white mb-2">Google Fotos</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     Você pode configurar para fazer upload APENAS de fotos/vídeos para o Google Fotos (com compressão ou qualidade original), sem gastar espaço do Drive com documentos.
                 </p>
             </div>
@@ -117,14 +117,14 @@ export default function CloudBackupGuide() {
       title: "Recurso Salvador: Histórico de Versão (Shadow Copy)",
       content: `
         <h4 class="text-white font-bold mb-3">Salvando o TCC Corrompido</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Você salvou o arquivo errado? Deletou um parágrafo importante e fechou o Word?
             <br/>A nuvem guarda as últimas 25-100 versões de cada arquivo.
         </p>
         
         <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Como Usar (OneDrive/Drive)</h5>
-            <ol class="list-decimal list-inside text-sm text-gray-400 space-y-2">
+            <ol class="list-decimal list-inside text-sm text-gray-700 space-y-2">
                 <li>Vá até a pasta do arquivo no Explorador de Arquivos.</li>
                 <li>Clique com botão direito no arquivo > <strong>Histórico de Versão</strong> (OneDrive) ou "Ver versões anteriores" (Drive Web).</li>
                 <li>Uma lista com datas e horários aparecerá.</li>
@@ -136,7 +136,7 @@ export default function CloudBackupGuide() {
     {
       title: "Estratégia Híbrida 3-2-1",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A nuvem é ótima, mas se sua conta for banida ou hackeada, você perde tudo. Não confie apenas nela.
           <br/>Use a nuvem como sua <strong>cópia off-site</strong> (o "1" da regra 3-2-1).
           <br/>Mantenha também um HD Externo em casa com backup semanal (usando Veeam ou Macrium Reflect).
@@ -150,7 +150,7 @@ export default function CloudBackupGuide() {
       title: "O Que NÃO Colocar na Nuvem",
       content: `
         <h4 class="text-white font-bold mb-3">Evite Sincronizar:</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Arquivos Temporários ou Cache:</strong> (Ex: Pasta <code>node_modules</code> de programação, cache do Adobe Premiere). Eles contêm milhares de arquivos pequenos que travam a sincronização.</li>
             <li><strong>Bancos de Dados Abertos:</strong> (Arquivos .PST do Outlook, Máquinas Virtuais ligadas). Eles mudam a cada segundo e a nuvem tenta re-upar o arquivo gigante a cada byte alterado.</li>
             <li><strong>Jogos Instalados:</strong> Steam/Epic já salvam saves na nuvem deles. Não coloque a pasta de instalação (100GB+) no OneDrive.</li>

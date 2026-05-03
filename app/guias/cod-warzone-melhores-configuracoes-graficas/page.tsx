@@ -43,10 +43,10 @@ export default function WarzoneGuide() {
         {
             title: "Introdução: O devorador de VRAM",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O motor gráfico do Warzone (IW Engine) tem um problema sério de gerenciamento de memória. Se você deixar as configurações no padrão, ele vai tentar usar 90% da sua VRAM. Quando um efeito novo aparece (explosão), a VRAM estoura e o jogo trava por 1 segundo (stutter).
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
             O segredo da fluidez no Warzone não é ter uma RTX 4090, mas sim impedir que o jogo se engasgue com a própria memória.
         </p>
       `
@@ -58,7 +58,7 @@ export default function WarzoneGuide() {
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Upscaling / Sharpening</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">FidelityFX CAS</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     Só use DLSS ou FSR se seu FPS estiver injogável (abaixo de 60). O DLSS borra a imagem em movimento distantes. O <strong>FidelityFX CAS</strong> não aumenta FPS, mas aplica um filtro de nitidez que faz os inimigos "poparem" na tela. Ajuste a força para 50-70%.
                 </p>
             </div>
@@ -66,7 +66,7 @@ export default function WarzoneGuide() {
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">VRAM Scale Target</h4>
                 <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">60% a 70%</span></p>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     NUNCA deixe em 90%. O jogo precisa de margem para o Windows e Discord. Se você alocar 90% pro jogo, qualquer notificação de fundo causa travada. Baixar para 70% resolve 90% dos crashes.
                 </p>
             </div>
@@ -76,7 +76,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 2: Texturas e Detalhes",
             content: `
-        <table class="w-full text-sm text-left text-gray-400">
+        <table class="w-full text-sm text-left text-gray-700">
             <tbody>
                 <tr class="border-b border-gray-700">
                     <td class="py-2 font-bold">Texture Resolution</td>
@@ -110,7 +110,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 3: Shadow & Lighting (A chave)",
             content: `
-         <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Spot Cache:</strong> <span class="text-emerald-400 font-bold">ULTRA</span>. Esta é a configuração mais importante. No Ultra, o jogo salva as sombras no seu disco rígido (SSD). No Low, ele tenta recalcular toda hora. Colocar no Ultra ELIMINA stutters.</li>
             <li><strong>Particle Lighting:</strong> Low.</li>
             <li><strong>Ambient Occlusion:</strong> Off. (Inimigos em cantos escuros ficam impossíveis de ver com isso ligado).</li>
@@ -124,7 +124,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 4: Post Processing Effects (Desligue TUDO)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A visão deve ser limpa. Efeitos cinematográficos só atrapalham.
         </p>
         <div class="bg-gray-800 p-4 rounded text-sm text-red-300">
@@ -134,7 +134,7 @@ export default function WarzoneGuide() {
             <br/>- Film Grain (Coloque em 0.00)
             <br/>- Depth of Field (Profundidade de Campo)
         </div>
-        <p class="mt-2 text-gray-400 text-sm">
+        <p class="mt-2 text-gray-700 text-sm">
             Com isso desligado, você consegue ver inimigos enquanto gira a câmera rápido.
         </p>
       `
@@ -142,7 +142,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 5: On-Demand Texture Streaming",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Esta opção baixa texturas de alta qualidade da internet ENQUANTO você joga.
             <br/><strong>Recomendação: <span class="text-red-400">DESLIGADO (OFF)</span>.</strong>
             <br/>Isso causa lag de internet (Packet Burst) e uso de disco. Só ligue se você tiver fibra ótica de 1Gbps e não se importar com downloads constantes.
@@ -152,10 +152,10 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 6: Configurações de Controle (Aim Assist)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você joga no controle (o meta do COD):
         </p>
-        <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+        <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
             <li><strong>Aim Assist Type:</strong> Default ou Black Ops (A comunidade debate, mas Black Ops parece ter um "rotational aim assist" mais pegajoso de perto).</li>
             <li><strong>Aim Response Curve Type:</strong> Dynamic (Acelera a mira quando você empurra o stick todo, permite flicks rápidos e precisão fina no meio).</li>
             <li><strong>Deadzone Inputs:</strong> Ajuste o "Left Stick Min" para o mínimo possível antes de ter drift (ex: 0.03). Quanto menor, mais rápido o boneco começa a correr.</li>
@@ -165,7 +165,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 7: Áudio (Loudness Equalization)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O som do Warzone é notoriamente ruim. Passos são abafados por ataques aéreos.
             <br/>Use o <strong>Loudness Equalization</strong> do Windows (veja nosso guia de Áudio) ou use a mixagem de áudio <strong>"Headphone Bass Boost"</strong> ou <strong>"Home Theater"</strong> dentro do jogo.
             <br/><em>Dica:</em> Diminua o "Music Volume" e "Dialogue Volume" para 20%, mantenha "Effects Volume" em 100%.
@@ -175,7 +175,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 8: Arquivo de Configuração (options.3.cod22.cst)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em <code>Documentos\\Call of Duty\\players</code>.
             <br/>Edite a linha <code>RendererWorkerCount</code>.
             <br/>Defina o valor igual ao número de <strong>Núcleos Físicos</strong> da sua CPU (não Threads).
@@ -190,7 +190,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 9: Telemetria e Rede",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Ative a Telemetria para monitorar "Packet Burst" e "Extrapolation".
                 <br/>Se você ver "Packet Burst" laranja frequentemente:
                 <br/>1. Desligue "On-Demand Texture Streaming".
@@ -202,7 +202,7 @@ export default function WarzoneGuide() {
         {
             title: "Capítulo 10: Scan and Repair (Loop Fix)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se o jogo vive pedindo "Scan and Repair" e nunca arruma:
                 <br/>1. Vá nas configurações do Battle.net > Configurações de Jogo.
                 <br/>2. Adicione argumentos de linha de comando: <code>-d3d11</code> (Força DX11, mais estável em GPUs antigas).

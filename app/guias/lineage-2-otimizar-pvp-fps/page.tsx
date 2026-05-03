@@ -34,7 +34,7 @@ export default function L2OtimizacaoGuide() {
         {
             title: "O desafio de rodar um motor de 2003 em 2026",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **Lineage 2** foi construído sobre uma versão modificada da Unreal Engine 2.5. O maior problema desse motor gráfico é que ele não sabe usar múltiplos núcleos do processador nem o poder das placas de vídeo modernas. Em 2026, mesmo com uma CPU de última geração, você terá quedas de FPS em cidades cheias como Giran ou Aden se não fizer os ajustes coretos nos arquivos do jogo.
         </p>
       `
@@ -42,8 +42,8 @@ export default function L2OtimizacaoGuide() {
         {
             title: "1. Limpeza de Interface no Mass PVP",
             content: `
-        <p class="mb-4 text-gray-400">O que mais pesa no L2 não são os modelos 3D, mas sim o texto na tela:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">O que mais pesa no L2 não são os modelos 3D, mas sim o texto na tela:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Alt + L:</strong> Esconde os nomes dos jogadores e NPCs. Em um cerco de castelo, isso pode dobrar seu FPS instantaneamente.</li>
             <li><strong>Lower Detail:</strong> No menu de opções, carregue o 'Minimum' para texturas de terreno. A geometria do L2 é o que causa o "freeze" (travamento) ao girar a câmera.</li>
             <li><strong>Limitador de Personagem:</strong> Ajuste a barra de <i>PC Limit</i> para o mínimo em áreas lotadas. O jogo deixará de renderizar personagens distantes que você não precisa ver.</li>
@@ -55,7 +55,7 @@ export default function L2OtimizacaoGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Ajuste de Memória:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O L2 vem configurado de fábrica para usar apenas 32MB de cache, o que é ridículo para 2026. <br/><br/>
                 Usando um editor de arquivos <code>.ini</code> (decodificador L2), procure por <strong>CacheSizeMegs</strong>. Mude de 32 para 256 ou 512. Isso reduzirá drasticamente aquelas "travadinhas" de 1 segundo que acontecem quando você corre pelo mapa e o jogo tenta carregar novos assets.
             </p>
@@ -65,7 +65,7 @@ export default function L2OtimizacaoGuide() {
         {
             title: "3. Prioridade de Processo e SSD",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Lineage 2 lê arquivos constantemente. 
             <br/><br/><strong>Dica:</strong> É obrigatório que o jogo esteja em um <strong>SSD NVMe</strong>. Em HDs mecânicos, o tempo de busca dos arquivos na pasta <code>StaticMeshes</code> é lento demais, resultando em personagens invisíveis por vários segundos após teletransportes. Além disso, defina a prioridade do <code>l2.exe</code> para 'Tempo Real' ou 'Alta' no Gerenciador de Tarefas.
         </p>

@@ -43,7 +43,7 @@ export default function UltrawideGuide() {
         {
             title: "Introdução: O Problema do FOV",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em jogos competitivos táticos (Valorant, Overwatch), os desenvolvedores bloqueiam o suporte a 21:9 para evitar que você tenha vantagem de visão periférica sobre quem usa 16:9. Já em LoL e CoD, é permitido.
         </p>
       `
@@ -54,7 +54,7 @@ export default function UltrawideGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Como jogar sem esticar?</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Se você abrir Valorant em 2560x1080, o jogo vai cortar o topo e o chão (Zoom), te deixando em desvantagem.
                     <br/>Solução: Jogue em <strong>1920x1080 (16:9)</strong> com barras pretas laterais.
                     <br/>No Painel Nvidia > Ajustar tamanho e posição da área de trabalho > Aba "Escala":
@@ -68,7 +68,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 2: Flawless Widescreen (Jogos Offline)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitos jogos japoneses (Elden Ring, Sekiro, Final Fantasy) não suportam 21:9 nativamente e colocam barras pretas.
             <br/>Baixe o <strong>Flawless Widescreen</strong>.
             <br/>Ele injeta um fix na memória do jogo que remove as barras pretas e ajusta o HUD.
@@ -79,7 +79,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 3: Vantagem em MOBA (LoL/Dota)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em League of Legends, 21:9 é OP (Overpowered).
             <br/>Você vê o Jungler chegando pelos lados antes de um jogador normal.
             <br/>Recomendação: Ative "Minimapa no lado direito" nas opções, mas cuidado para não cansar o pescoço olhando para os cantos distantes da tela. Aumente a escala do minimapa para compensar.
@@ -92,7 +92,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 4: Streaming (Twitch/YouTube)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Transmitir em 21:9 é ruim para quem assiste no celular (ficam barras pretas gigantes em cima e embaixo).
             <br/>No OBS Studio:
             <br/>Defina a "Tela Base" como 2560x1080.
@@ -105,7 +105,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 5: HUD Centralizado",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em jogos de tiro (Battlefield, CoD), ter a munição e minimapa nos cantos extremos da tela 21:9 te obriga a tirar o olho da mira.
             <br/>Procure nas opções de vídeo por: <strong>"Safe Area Boundary"</strong> ou "Limites do HUD".
             <br/>Aperte o HUD para o centro, como se fosse um monitor 16:9.
@@ -115,7 +115,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 6: 32:9 (Super Ultrawide)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Monitores como o Odyssey G9 (32:9) são equivalentes a dois monitores de 27" colados.
             <br/>Exigem PLACA DE VÍDEO MUITO FORTE. É quase resolução 4K em número de pixels. Se tiver uma RTX 3060, esqueça jogos modernos no Ultra em 32:9.
         </p>
@@ -124,7 +124,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 7: Windows FancyZones",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Para produtividade e multitarefa enquanto espera a fila do jogo:
             <br/>Instale o <strong>Microsoft PowerToys</strong>.
             <br/>Use o "FancyZones" para dividir seu monitor em 3 áreas virtuais.
@@ -138,7 +138,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 8: Cutscenes Esticadas",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Muitos jogos renderizam cutscenes pré-gravadas em 16:9.
                 <br/>Em monitor 21:9, elas podem ficar esticadas (Geraldo gordo) ou com barras pretas. Geralmente não há fix para vídeos pré-gravados, aceite.
             </p>
@@ -147,7 +147,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 9: Curved vs Flat",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Em Ultrawide, a curva (1500R ou 1000R) é essencial para trazer as bordas para o seu campo de visão sem distorção de cor (IPS Glow). Evite Ultrawides planos se for sentar perto.
             </p>
             `
@@ -155,7 +155,7 @@ export default function UltrawideGuide() {
         {
             title: "Capítulo 10: 4:3 Stretched no Ultrawide",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 É possível jogar CS2 "esticado" no Ultrawide? Sim, os bonecos ficam imensos.
                 <br/>Mas a distorção horizontal é tão grande que a sensibilidade do mouse X/Y fica muito diferente. Apenas para quem é maníaco por alvos grandes.
             </p>

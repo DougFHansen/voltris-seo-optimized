@@ -25,7 +25,7 @@ export default function OBSStreamGuide() {
         {
             title: "A diferença entre Gravar e Fazer Stream",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Muitos iniciantes cometem o erro de usar as mesmas configurações para ambos. Ao gravar, o céu é o limite para a qualidade. Ao fazer Live, você depende da sua **velocidade de upload** da internet. Se você tentar enviar mais dados do que sua internet aguenta, sua live vai ficar "pulando frames", parecendo um slide de fotos.
         </p>
       `
@@ -33,8 +33,8 @@ export default function OBSStreamGuide() {
         {
             title: "1. Calculando seu Bitrate",
             content: `
-        <p class="mb-4 text-gray-400">Faça um teste de velocidade. Seu Bitrate deve ser cerca de 80% do seu Upload real:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Faça um teste de velocidade. Seu Bitrate deve ser cerca de 80% do seu Upload real:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>720p 60fps:</strong> 4.500 Kbps.</li>
             <li><strong>1080p 60fps:</strong> 6.000 Kbps (Mínimo da Twitch) a 8.000 Kbps (Recomendado).</li>
             <li><strong>AV1:</strong> Em 2026, se você tem uma placa RTX 40 ou RX 7000, use o codificador <strong>YouTube AV1</strong>. Ele entrega muito mais qualidade com a metade do bitrate.</li>
@@ -46,7 +46,7 @@ export default function OBSStreamGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Dica de Performance:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Nunca use o codificador 'x264' (CPU) se você tem uma placa de vídeo dedicada. O <strong>NVENC</strong> (NVIDIA) ou <strong>AMF</strong> (AMD) possui um chip físico separado apenas para encodar o vídeo, o que significa que fazer a live não vai tirar quase nenhum FPS do seu jogo.
             </p>
         </div>
@@ -55,7 +55,7 @@ export default function OBSStreamGuide() {
         {
             title: "3. Reduzindo o Input Lag (Atraso)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Sua live demora 20 segundos para responder o chat?
             <br/>1. Vá em Configurações > Transmissão.
             <br/>2. Conecte sua conta da Twitch/YouTube diretamente (em vez de usar chave).
@@ -71,13 +71,13 @@ export default function OBSStreamGuide() {
             title: "12. Arquitetura de Codificação e Processamento de Vídeo",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Arquitetura de Codificação de Vídeo em 2026</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A codificação de vídeo em softwares de streaming envolve componentes técnicos complexos que afetam diretamente a qualidade e performance:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Codificação por Software (x264)</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Processamento realizado pela CPU</li>
                     <li>• Maior controle granular sobre configurações</li>
                     <li>• Qualidade superior com presets mais lentos</li>
@@ -87,7 +87,7 @@ export default function OBSStreamGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Codificação por Hardware (NVENC/AMF)</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Processamento dedicado em chips especializados</li>
                     <li>• Menor latência de codificação</li>
                     <li>• Menor consumo de CPU</li>
@@ -98,11 +98,11 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Parâmetros Técnicos de Codificação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Entendendo os principais parâmetros que afetam a qualidade e eficiência da codificação:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Parâmetro</th>
@@ -148,7 +148,7 @@ export default function OBSStreamGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Codificação Dupla</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Em sistemas com hardware suficiente, utilize codificação dupla (record-only encoding) para manter uma qualidade superior na gravação local enquanto transmite com parâmetros otimizados para streaming.
             </p>
         </div>
@@ -158,13 +158,13 @@ export default function OBSStreamGuide() {
             title: "13. Configurações Avançadas de Áudio e Sincronização",
             content: `
         <h4 class="text-white font-bold mb-3">🔊 Configurações Avançadas de Áudio em 2026</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O áudio é um componente crítico para a qualidade da transmissão, com configurações que podem afetar significativamente a experiência do espectador:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Mixagem de Áudio</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Canais de áudio independentes para diferentes fontes</li>
                     <li>• Controle de ganho e balanceamento por canal</li>
                     <li>• Equalização e compressão em tempo real</li>
@@ -174,7 +174,7 @@ export default function OBSStreamGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Sincronização Áudio-Vídeo</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Compensação de latência entre fontes</li>
                     <li>• Ajuste de offset de áudio em milissegundos</li>
                     <li>• Sincronização automática de fontes de áudio</li>
@@ -185,11 +185,11 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Áudio Profissionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Parâmetros avançados para diferentes tipos de transmissão:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tipo de Transmissão</th>
@@ -232,13 +232,13 @@ export default function OBSStreamGuide() {
             title: "14. Tendências e Inovações em Streaming em 2026",
             content: `
         <h4 class="text-white font-bold mb-3">🚀 Inovações em Streaming e Codificação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             As tecnologias de streaming estão evoluindo rapidamente com novas abordagens para codificação e distribuição:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Codificação Neural</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Redução de bitrate em até 40%</li>
                     <li>• Melhoria de qualidade perceptual</li>
                     <li>• Processamento por IA em tempo real</li>
@@ -248,7 +248,7 @@ export default function OBSStreamGuide() {
             </div>
             <div class="bg-orange-900/10 p-5 rounded-xl border border-orange-500/20">
                 <h5 class="text-orange-400 font-bold mb-3">Transmissão Interativa</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Latência ultrabaixa (&lt;100ms)</li>
                     <li>• Interações em tempo real</li>
                     <li>• Controles remotos para espectadores</li>
@@ -258,7 +258,7 @@ export default function OBSStreamGuide() {
             </div>
             <div class="bg-pink-900/10 p-5 rounded-xl border border-pink-500/20">
                 <h5 class="text-pink-400 font-bold mb-3">Streaming Adaptativo</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Ajuste automático de qualidade</li>
                     <li>• Balanceamento de carga inteligente</li>
                     <li>• Otimização baseada em rede</li>
@@ -269,11 +269,11 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões de Tecnologia para 2026-2027</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Tendências observadas no desenvolvimento de tecnologias de streaming:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tecnologia</th>
@@ -312,10 +312,10 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Empresas estão investindo pesadamente em tecnologias de streaming avançado:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
             <li><strong>Inteligência Artificial:</strong> Análise preditiva de qualidade de rede para otimização de streaming</li>
             <li><strong>Codificação Híbrida:</strong> Combinação de hardware e software para eficiência máxima</li>
             <li><strong>Balanceamento de Carga:</strong> Distribuição inteligente em múltiplas plataformas simultaneamente</li>
@@ -331,13 +331,13 @@ export default function OBSStreamGuide() {
             title: "4. Configurações de Performance e Hardware",
             content: `
         <h4 class="text-white font-bold mb-3">⚡ Otimizações Baseadas em Hardware</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A performance do OBS Studio varia significativamente com diferentes configurações de hardware:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Processadores Intel</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Utilizar Quick Sync Video para codificação por hardware</li>
                     <li>• Ajustar prioridade de threads para streaming</li>
                     <li>• Configurar Power Plans para desempenho máximo</li>
@@ -347,7 +347,7 @@ export default function OBSStreamGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Placas de Vídeo NVIDIA</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Usar NVENC para codificação eficiente</li>
                     <li>• Ajustar configurações de codificação no OBS</li>
                     <li>• Configurar prioridade de GPU para streaming</li>
@@ -358,11 +358,11 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Performance Recomendadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações ideais para diferentes classes de hardware:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Classe de Hardware</th>
@@ -410,16 +410,16 @@ export default function OBSStreamGuide() {
             title: "5. Configurações Avançadas de Rede e CDN",
             content: `
         <h4 class="text-white font-bold mb-3">🌐 Configurações de Rede Otimizadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações de rede que impactam diretamente a qualidade da transmissão:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Configurações de Buffer e Latência</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Parâmetros que afetam a estabilidade da transmissão:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Tamanho do buffer de saída: 1-3 segundos</li>
                     <li>• Modo de latência: Balanced ou Low Latency</li>
                     <li>• Reconnect settings: Tentativas e intervalos</li>
@@ -429,10 +429,10 @@ export default function OBSStreamGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">CDN e Servidores de Transmissão</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Otimização para diferentes plataformas de streaming:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Seleção de servidor mais próximo geograficamente</li>
                     <li>• Protocolos de transmissão (RTMP, SRT, WebRTC)</li>
                     <li>• Balanceamento de carga entre múltiplas CDNs</li>
@@ -443,13 +443,13 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📡 Configurações por Plataforma</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações específicas para diferentes plataformas de streaming:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Twitch</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Bitrate máximo: 6000 kbps (1080p60)</li>
                     <li>• Keyframe interval: 2 segundos</li>
                     <li>• Protocolo: RTMP</li>
@@ -473,13 +473,13 @@ export default function OBSStreamGuide() {
             title: "6. Segurança e Monitoramento",
             content: `
         <h4 class="text-white font-bold mb-3">🔒 Segurança em Transmissões ao Vivo</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Considerações importantes para proteger suas transmissões:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Riscos de Segurança</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Exposição acidental de informações pessoais</li>
                     <li>• Compartilhamento inadvertido de senhas ou dados</li>
                     <li>• Vulnerabilidades em plugins de terceiros</li>
@@ -489,7 +489,7 @@ export default function OBSStreamGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Boas Práticas de Segurança</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Configuração de firewall para aplicações de streaming</li>
                     <li>• Uso de VPN para proteção de IP</li>
                     <li>• Verificação de integridade de plugins</li>
@@ -500,11 +500,11 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Monitoramento e Análise de Performance</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Ferramentas e métricas para monitorar a qualidade da transmissão:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Métrica</th>
@@ -547,16 +547,16 @@ export default function OBSStreamGuide() {
             title: "7. Configurações de Gravação e Arquivamento",
             content: `
         <h4 class="text-white font-bold mb-3">💾 Configurações Avançadas de Gravação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Diferentes abordagens para gravação local durante transmissões:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Gravação Simultânea</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Opções para gravar localmente enquanto transmite:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Mesmas configurações de streaming</li>
                     <li>• Codec diferente para gravação (FLV para streaming, MKV para gravação)</li>
                     <li>• Bitrate diferente (superior ao streaming)</li>
@@ -566,10 +566,10 @@ export default function OBSStreamGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Otimização de Armazenamento</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Estratégias para gerenciar espaço e qualidade de gravação:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Compactação pós-transmissão</li>
                     <li>• Formatos eficientes para armazenamento de longo prazo</li>
                     <li>• Estratégias de backup automatizado</li>
@@ -580,13 +580,13 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Gravação Recomendadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações ideais para diferentes cenários de gravação:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Gravação Simples</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Mesmo bitrate do streaming</li>
                     <li>• Codec H.264</li>
                     <li>• MP4 como container</li>
@@ -610,13 +610,13 @@ export default function OBSStreamGuide() {
             title: "8. Plugins e Extensões Avançadas",
             content: `
         <h4 class="text-white font-bold mb-3">🔌 Ecossistema de Plugins Profissionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Plugins avançados que adicionam funcionalidades profissionais ao OBS Studio:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Plugins de Produção</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Advanced Scene Switcher: Mudanças de cena automatizadas</li>
                     <li>• StreamFX: Efeitos avançados e transições</li>
                     <li>• OBS WebSocket: Controle remoto via scripts</li>
@@ -626,7 +626,7 @@ export default function OBSStreamGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Plugins de Integração</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Streamlabs OBS Integration: Integração com serviços</li>
                     <li>• OBS Browser Source: Elementos web interativos</li>
                     <li>• Text Pango FT2: Renderização de texto avançado</li>
@@ -637,11 +637,11 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações e Otimização de Plugins</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Considerações para maximizar o desempenho dos plugins:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Plugin</th>
@@ -684,16 +684,16 @@ export default function OBSStreamGuide() {
             title: "9. Scripts e Automação",
             content: `
         <h4 class="text-white font-bold mb-3">🤖 Automação com Scripts</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Utilização de scripts para automatizar tarefas repetitivas no OBS Studio:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Tipos de Scripts</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Diferentes categorias de scripts para automatizar tarefas:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Scripts de transição automática entre cenas</li>
                     <li>• Scripts de controle de qualidade de transmissão</li>
                     <li>• Scripts de backup e restauração de configurações</li>
@@ -703,10 +703,10 @@ export default function OBSStreamGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Linguagens Suportadas</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Linguagens disponíveis para desenvolvimento de scripts:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Python (mais comum)</li>
                     <li>• JavaScript</li>
                     <li>• Lua</li>
@@ -717,7 +717,7 @@ export default function OBSStreamGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">💻 Exemplo de Script Avançado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Script Python para monitoramento e ajuste automático de qualidade:
         </p>
         <div class="bg-gray-900 p-4 rounded-lg overflow-x-auto">
@@ -773,7 +773,7 @@ start_timer()</pre>
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Scripts de Monitoramento</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Scripts de monitoramento podem ser configurados para ajustar automaticamente as configurações do OBS com base no desempenho do sistema, garantindo uma transmissão estável mesmo em condições variáveis de hardware.
             </p>
         </div>
@@ -783,13 +783,13 @@ start_timer()</pre>
             title: "10. Configurações Corporativas e Profissionais",
             content: `
         <h4 class="text-white font-bold mb-3">🏢 Configurações para Uso Profissional</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Considerações específicas para uso corporativo e profissional do OBS Studio:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Ambientes Corporativos</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Configurações padronizadas para múltiplos usuários</li>
                     <li>• Restrições de acesso a certas configurações</li>
                     <li>• Integração com sistemas de gerenciamento de TI</li>
@@ -799,7 +799,7 @@ start_timer()</pre>
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Produção Profissional</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Configurações otimizadas para hardware específico</li>
                     <li>• Workflows padronizados para diferentes tipos de conteúdo</li>
                     <li>• Integração com sistemas de produção externos</li>
@@ -810,13 +810,13 @@ start_timer()</pre>
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações Profissionais Recomendadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações ideais para diferentes cenários profissionais:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Webinars e Palestras</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Resolução de streaming otimizada para qualidade</li>
                     <li>• Áudio prioritário sobre vídeo</li>
                     <li>• Fontes de backup configuradas</li>

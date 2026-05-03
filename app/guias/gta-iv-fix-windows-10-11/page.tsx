@@ -34,7 +34,7 @@ export default function GTAIVFixGuide() {
         {
             title: "Por que GTA IV roda tão mal no PC?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Lançado em 2008, o GTA IV foi feito para o DirectX 9. O Windows 10 e 11 não lidam bem com as chamadas de desenho (Draw Calls) antigas do jogo, o que faz com que ele trave mesmo em uma RTX 4090. Além disso, o jogo tem conflitos com processadores que têm muitos núcleos.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GTAIVFixGuide() {
         {
             title: "O Milagre do DXVK (Vulkan)",
             content: `
-        <p class="mb-4 text-gray-400">Este é o passo ÚNICO que vai triplicar seu FPS. Ele traduz o jogo de DX9 para Vulkan.</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Este é o passo ÚNICO que vai triplicar seu FPS. Ele traduz o jogo de DX9 para Vulkan.</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Baixe o <strong>DXVK</strong> no GitHub oficial.</li>
             <li>Extraia os arquivos <code>d3d9.dll</code> e <code>dxgi.dll</code> da pasta x32.</li>
             <li>Cole esses arquivos na pasta principal do jogo (onde fica o <code>GTAIV.exe</code>).</li>
@@ -54,11 +54,11 @@ export default function GTAIVFixGuide() {
         {
             title: "GTA IV FusionFix: O Mod Obrigatório",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O FusionFix corrige erros que a Rockstar nunca arrumou, como a proporção da tela (aspect ratio) e as sombras piscando.
         </p>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
                 <li>Corrige o problema das luzes de postes sumindo à distância.</li>
                 <li>Permite pular as intros chatas automaticamente.</li>
                 <li>Conserta o bug da mira em resoluções 4K.</li>
@@ -70,7 +70,7 @@ export default function GTAIVFixGuide() {
         {
             title: "Corrigindo o Erro de Memória (VRAM)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o jogo diz que você não tem memória de vídeo suficiente (mesmo que tenha 8GB), crie um arquivo de texto chamado <code>commandline.txt</code> na pasta do jogo e cole isto dentro:
         </p>
         <code class="text-yellow-400 bg-black/30 p-2 rounded block"> -availablevidmem 4096 -nomemrestrict -norestrictions</code>

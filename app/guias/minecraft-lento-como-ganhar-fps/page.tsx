@@ -34,7 +34,7 @@ export default function MinecraftSlowFixGuide() {
         {
             title: "Por que o Minecraft 'engasga' tanto?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Embora seja feito de quadrados, o **Minecraft** é um dos jogos mais pesados para o processador (CPU) em 2026. Isso acontece porque o jogo processa milhões de blocos ao mesmo tempo em um mundo infinito. Se o seu jogo está "em câmera lenta", o problema geralmente não é a placa de vídeo, mas sim o processador tentando calcular a inteligência artificial dos mobs e a luz dos blocos.
         </p>
         
@@ -42,14 +42,14 @@ export default function MinecraftSlowFixGuide() {
             <h4 class="text-xl font-bold text-purple-300 mb-4">Arquitetura do Minecraft e Performance</h4>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Single-Threaded vs Multi-Threaded</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 O Minecraft original foi desenvolvido com uma arquitetura predominantemente single-threaded, o que significa que depende fortemente de um único núcleo do processador. Embora as versões mais recentes tenham melhorado a utilização de múltiplos núcleos, o thread principal (render thread) ainda é crucial para a performance do jogo.
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-green-400 mb-2">Single-Thread Performance</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Frequência do núcleo é mais importante que número de núcleos</li>
                         <li>• CPUs com alta IPC (Instructions Per Cycle) são ideais</li>
                         <li>• Cache L3 e L2 impactam significativamente no desempenho</li>
@@ -59,7 +59,7 @@ export default function MinecraftSlowFixGuide() {
                 
                 <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-green-400 mb-2">Multi-Thread Improvements</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Chunk loading em threads separados</li>
                         <li>• Lighting engine distribuído</li>
                         <li>• Entity processing paralelizado</li>
@@ -73,8 +73,8 @@ export default function MinecraftSlowFixGuide() {
         {
             title: "1. As Configurações de Vídeo 'Assassinas'",
             content: `
-        <p class="mb-4 text-gray-400">Dentro das opções de vídeo, ajuste estes itens para um ganho imediato:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Dentro das opções de vídeo, ajuste estes itens para um ganho imediato:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Alcance de Renderização (Render Distance):</strong> Não use mais que 8. É a opção que mais pesa.</li>
             <li><strong>Gráficos:</strong> Mude de 'Fabulosos' para 'Rápidos'. Isso retira efeitos de transparência que pesam na GPU.</li>
             <li><strong>Iluminação Suave:</strong> Desligue. Faz os blocos parecerem mais "quadrados", mas salva muitos frames.</li>
@@ -85,7 +85,7 @@ export default function MinecraftSlowFixGuide() {
             <h4 class="text-xl font-bold text-indigo-300 mb-4">Configurações Avançadas de Vídeo</h4>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Otimizações Gráficas Profundas</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Para máquinas mais fracas, estas configurações adicionais podem proporcionar ganhos significativos:
             </p>
             
@@ -130,7 +130,7 @@ export default function MinecraftSlowFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Foco Total:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Com o jogo aberto, dê <strong>Alt + Tab</strong>. <br/>
                 2. Abra o Gerenciador de Tarefas > Detalhes. <br/>
                 3. Encontre o <code>javaw.exe</code> (ou <code>Minecraft.exe</code> se estiver usando uma versão moderna). <br/>
@@ -143,7 +143,7 @@ export default function MinecraftSlowFixGuide() {
             <h4 class="text-xl font-bold text-cyan-300 mb-4">Otimização do Java e JVM Arguments</h4>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Argumentos JVM Avançados</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Para um desempenho ainda melhor, personalize os argumentos do Java Virtual Machine (JVM):
             </p>
             
@@ -154,7 +154,7 @@ export default function MinecraftSlowFixGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-green-400">Alocação de Memória</h6>
-                        <p class="text-sm text-gray-400">-Xmx4G -Xms2G (Aloca 4GB máximo e 2GB inicial)</p>
+                        <p class="text-sm text-gray-700">-Xmx4G -Xms2G (Aloca 4GB máximo e 2GB inicial)</p>
                     </div>
                 </div>
                 
@@ -164,7 +164,7 @@ export default function MinecraftSlowFixGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-green-400">Coletor de Lixo</h6>
-                        <p class="text-sm text-gray-400">-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:+UseCompressedOops</p>
+                        <p class="text-sm text-gray-700">-XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:+UseCompressedOops</p>
                     </div>
                 </div>
                 
@@ -174,13 +174,13 @@ export default function MinecraftSlowFixGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-green-400">Otimizações de Desempenho</h6>
-                        <p class="text-sm text-gray-400">-XX:+AggressiveOpts -XX:MaxGCPauseMillis=10 -XX:GCPauseIntervalMillis=50</p>
+                        <p class="text-sm text-gray-700">-XX:+AggressiveOpts -XX:MaxGCPauseMillis=10 -XX:GCPauseIntervalMillis=50</p>
                     </div>
                 </div>
             </div>
             
             <div class="bg-yellow-900/20 p-4 rounded-lg border border-yellow-500/30 mb-4">
-                <p class="text-sm text-gray-400 italic">
+                <p class="text-sm text-gray-700 italic">
                     ⚠️ AVISO: Ajuste os valores de alocação de memória de acordo com a RAM disponível em seu sistema
                 </p>
             </div>
@@ -190,7 +190,7 @@ export default function MinecraftSlowFixGuide() {
         {
             title: "3. Minecraft no SSD é Obrigatório",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você sente que o jogo trava apenas quando você caminha pelo mapa (loading de novos pedaços do mundo), o problema é o seu HD. 
             <br/><br/>Em 2026, rodar Minecraft em um disco rígido mecânico causa o famoso "Lag de Chunk". Mova a pasta <code>.minecraft</code> para o seu SSD. A velocidade de leitura fará com que o mundo carregue instantaneamente, eliminando aquelas travadas chatas de 2 segundos durante a exploração.
         </p>
@@ -199,14 +199,14 @@ export default function MinecraftSlowFixGuide() {
             <h4 class="text-xl font-bold text-orange-300 mb-4">Otimizações de Armazenamento</h4>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">SSD vs HDD - Impacto Real</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 A diferença entre SSD e HDD no Minecraft é dramaticamente visível:
             </p>
             
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-blue-400 mb-2">SSD Benefits:</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Chunk loading em ~20ms</li>
                         <li>• World save/load instantâneo</li>
                         <li>• Sem micro-stutters de I/O</li>
@@ -216,7 +216,7 @@ export default function MinecraftSlowFixGuide() {
                 
                 <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-blue-400 mb-2">HDD Limitations:</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Chunk loading em ~200-500ms</li>
                         <li>• Saves lentos e possíveis crashes</li>
                         <li>• Micro-stutters frequentes</li>
@@ -226,7 +226,7 @@ export default function MinecraftSlowFixGuide() {
             </div>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Migração Segura para SSD</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Passos para mover seu Minecraft para o SSD sem perder saves:
             </p>
             
@@ -273,14 +273,14 @@ export default function MinecraftSlowFixGuide() {
                     <h4 class="text-xl font-bold text-teal-300 mb-4">Mods Essenciais para Performance</h4>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Fabric/Sodium e Alternativas</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Os mods de performance são essenciais para maximizar o FPS no Minecraft:
                     </p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                             <h6 class="font-bold text-green-400 mb-2">Sodium</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• Acelera renderização em 50-100%</li>
                                 <li>• Otimiza gerenciamento de chunks</li>
                                 <li>• Melhora uso de VRAM</li>
@@ -290,7 +290,7 @@ export default function MinecraftSlowFixGuide() {
                         
                         <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                             <h6 class="font-bold text-green-400 mb-2">OptiFine (Alternativa)</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• Disponível para Forge e Vanilla</li>
                                 <li>• HD Textures e shaders</li>
                                 <li>• Internal rendering improvements</li>
@@ -300,7 +300,7 @@ export default function MinecraftSlowFixGuide() {
                     </div>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Mods Complementares</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Outros mods que melhoram o desempenho:
                     </p>
                     
@@ -311,7 +311,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-blue-400">Lithium</h6>
-                                <p class="text-sm text-gray-400">Otimiza lógica do servidor e IA de mobs</p>
+                                <p class="text-sm text-gray-700">Otimiza lógica do servidor e IA de mobs</p>
                             </div>
                         </div>
                         
@@ -321,7 +321,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-blue-400">Phosphor</h6>
-                                <p class="text-sm text-gray-400">Melhora cálculo de iluminação</p>
+                                <p class="text-sm text-gray-700">Melhora cálculo de iluminação</p>
                             </div>
                         </div>
                         
@@ -331,7 +331,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-blue-400">Starlight</h6>
-                                <p class="text-sm text-gray-400">Reescreve sistema de luz para melhor performance</p>
+                                <p class="text-sm text-gray-700">Reescreve sistema de luz para melhor performance</p>
                             </div>
                         </div>
                     </div>
@@ -345,13 +345,13 @@ export default function MinecraftSlowFixGuide() {
                     <h4 class="text-xl font-bold text-purple-300 mb-4">Ajustes do Windows para Gaming</h4>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Power Plan e CPU Scheduling</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Configurações do Windows que impactam diretamente o desempenho do Minecraft:
                     </p>
                     
                     <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700 mb-6">
                         <h6 class="font-bold text-yellow-400 mb-3">Configurações Recomendadas:</h6>
-                        <ul class="text-gray-400 space-y-2">
+                        <ul class="text-gray-700 space-y-2">
                             <li>• Power Plan: "Alto Desempenho" ou "Melhor Desempenho"</li>
                             <li>• CPU Scheduler: "Má Performance" para o processo do Minecraft</li>
                             <li>• Background Apps: Desabilitar apps desnecessários</li>
@@ -360,7 +360,7 @@ export default function MinecraftSlowFixGuide() {
                     </div>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Windows 11 Gaming Features</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Recursos do Windows 11 que podem ajudar:
                     </p>
                     
@@ -402,7 +402,7 @@ export default function MinecraftSlowFixGuide() {
                     <h4 class="text-xl font-bold text-cyan-300 mb-4">Monitoramento de Performance</h4>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Ferramentas de Monitoramento</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Para entender onde estão os gargalos do seu sistema:
                     </p>
                     
@@ -413,7 +413,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-green-400">Minecraft F3 Menu</h6>
-                                <p class="text-sm text-gray-400">Pressione F3 para informações em tempo real de FPS, chunk updates, entities, etc.</p>
+                                <p class="text-sm text-gray-700">Pressione F3 para informações em tempo real de FPS, chunk updates, entities, etc.</p>
                             </div>
                         </div>
                         
@@ -423,7 +423,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-green-400">HWiNFO64</h6>
-                                <p class="text-sm text-gray-400">Monitoramento de hardware em tempo real para identificar gargalos</p>
+                                <p class="text-sm text-gray-700">Monitoramento de hardware em tempo real para identificar gargalos</p>
                             </div>
                         </div>
                         
@@ -433,20 +433,20 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-green-400">MSI Afterburner</h6>
-                                <p class="text-sm text-gray-400">Overlay com FPS, temperatura e uso de GPU/CPU</p>
+                                <p class="text-sm text-gray-700">Overlay com FPS, temperatura e uso de GPU/CPU</p>
                             </div>
                         </div>
                     </div>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Identificação de Gargalos</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Como identificar se seu sistema está limitado por CPU ou GPU no Minecraft:
                     </p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
                             <h6 class="font-bold text-red-400 mb-2">CPU Bound</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• FPS cai em áreas com muitos mobs</li>
                                 <li>• Uso de CPU acima de 80%</li>
                                 <li>• Melhora ao reduzir render distance</li>
@@ -456,7 +456,7 @@ export default function MinecraftSlowFixGuide() {
                         
                         <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
                             <h6 class="font-bold text-blue-400 mb-2">GPU Bound</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• FPS baixa mesmo em áreas vazias</li>
                                 <li>• Uso de GPU próximo a 100%</li>
                                 <li>• Melhora ao reduzir resolução</li>
@@ -474,26 +474,26 @@ export default function MinecraftSlowFixGuide() {
                     <h4 class="text-xl font-bold text-orange-300 mb-4">Soluções Profissionais para Desempenho Extremo</h4>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Java Virtual Machine Tuning</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Configurações avançadas para JVM que podem melhorar significativamente o desempenho:
                     </p>
                     
                     <div class="bg-gray-800/50 p-5 rounded-lg border border-gray-700 mb-6">
                         <h6 class="font-bold text-yellow-400 mb-3">JVM Arguments Completos:</h6>
-                        <pre class="bg-black/30 p-4 rounded text-xs text-gray-400 overflow-x-auto">
+                        <pre class="bg-black/30 p-4 rounded text-xs text-gray-700 overflow-x-auto">
 -Xmx4G -Xms2G -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:+UseCompressedOops -XX:MaxGCPauseMillis=10 -XX:GCPauseIntervalMillis=50 -XX:+DisableExplicitGC -XX:NewRatio=1 -XX:SurvivorRatio=2 -XX:+UseStringDeduplication -Dsun.rmi.dgc.server.gcInterval=2147483646 -Dsun.rmi.dgc.client.gcInterval=2147483646 -XX:+AlwaysPreTouch -XX:+UseLargePages -XX:+OptimizeStringConcat -XX:+UseFastAccessorMethods -XX:+UseCompressedClassPointers -XX:+UseBiasedLocking
                         </pre>
                     </div>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Procedimentos de Limpeza e Otimização</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Rotina para manter o Minecraft rodando no máximo desempenho:
                     </p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
                             <h6 class="font-bold text-blue-400 mb-2">Antes de Jogar:</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• Feche navegadores e apps desnecessários</li>
                                 <li>• Desative softwares de overlay</li>
                                 <li>• Verifique atualizações pendentes</li>
@@ -503,7 +503,7 @@ export default function MinecraftSlowFixGuide() {
                         
                         <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
                             <h6 class="font-bold text-blue-400 mb-2">Depois de Jogar:</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• Salve e feche o jogo corretamente</li>
                                 <li>• Limpe caches temporários</li>
                                 <li>• Verifique uso de disco</li>
@@ -521,14 +521,14 @@ export default function MinecraftSlowFixGuide() {
                     <h4 class="text-xl font-bold text-teal-300 mb-4">Boas Práticas para Performance Constante</h4>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Rotina Semanal</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Mantenha seu sistema otimizado com esta rotina semanal:
                     </p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                             <h6 class="font-bold text-green-400 mb-2">Limpeza do Sistema</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• Execute limpeza de disco (Cleanmgr)</li>
                                 <li>• Verifique integridade do disco (CHKDSK)</li>
                                 <li>• Reinicie o Windows Update</li>
@@ -538,7 +538,7 @@ export default function MinecraftSlowFixGuide() {
                         
                         <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                             <h6 class="font-bold text-green-400 mb-2">Verificação de Hardware</h6>
-                            <ul class="text-sm text-gray-400 space-y-1">
+                            <ul class="text-sm text-gray-700 space-y-1">
                                 <li>• Monitore temperaturas</li>
                                 <li>• Verifique pasta térmica</li>
                                 <li>• Limpe poeira do sistema</li>
@@ -548,7 +548,7 @@ export default function MinecraftSlowFixGuide() {
                     </div>
                     
                     <h5 class="text-lg font-semibold text-white mt-6 mb-3">Atualizações Importantes</h5>
-                    <p class="text-gray-400 mb-4">
+                    <p class="text-gray-700 mb-4">
                         Manter tudo atualizado é essencial para performance:
                     </p>
                     
@@ -559,7 +559,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-blue-400">Drivers de Vídeo</h6>
-                                <p class="text-sm text-gray-400">Atualize mensalmente para obter otimizações para jogos</p>
+                                <p class="text-sm text-gray-700">Atualize mensalmente para obter otimizações para jogos</p>
                             </div>
                         </div>
                         
@@ -569,7 +569,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-blue-400">Java Runtime</h6>
-                                <p class="text-sm text-gray-400">Mantenha a versão LTS mais recente para melhor performance</p>
+                                <p class="text-sm text-gray-700">Mantenha a versão LTS mais recente para melhor performance</p>
                             </div>
                         </div>
                         
@@ -579,7 +579,7 @@ export default function MinecraftSlowFixGuide() {
                             </div>
                             <div>
                                 <h6 class="font-bold text-blue-400">Mods e Resource Packs</h6>
-                                <p class="text-sm text-gray-400">Verifique compatibilidade com a versão do jogo</p>
+                                <p class="text-sm text-gray-700">Verifique compatibilidade com a versão do jogo</p>
                             </div>
                         </div>
                     </div>

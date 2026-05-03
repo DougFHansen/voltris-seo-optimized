@@ -35,7 +35,7 @@ export default function NetworkGuide() {
         {
             title: "O Mito da Velocidade vs Latência",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Ter 500 Mega de internet não garante ping baixo. Velocidade é a largura da estrada; Latência (Ping) é a velocidade do carro. Se a estrada estiver engarrafada (Bufferbloat), sua Ferrari vai andar a 10km/h. Este guia foca em <strong>Latência</strong>.
         </p>
       `
@@ -43,12 +43,12 @@ export default function NetworkGuide() {
         {
             title: "Passo 1: Diagnosticando o Bufferbloat",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Bufferbloat acontece quando seu roteador tenta enviar dados demais e cria uma fila. Isso causa aqueles "teleportes" no jogo quando alguém começa a assistir Netflix na sala.
         </p>
         <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
             <h4 class="text-white font-bold mb-2">O Teste Definitivo</h4>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 Vá ao site <strong>waveform.com/tools/bufferbloat</strong> e rode o teste. Se você tirar nota "C", "D" ou "F", você tem um problema sério de latência sob carga. A meta é nota "A+".
             </p>
         </div>
@@ -57,13 +57,13 @@ export default function NetworkGuide() {
         {
             title: "Passo 2: Otimização de Registro (TCP No-Delay)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Windows, por padrão, "segura" pequenos pacotes de dados para enviá-los juntos (Nagle's Algorithm). Isso é ótimo para downloads, mas terrível para jogos onde cada milissegundo conta. Vamos desligar isso.
         </p>
 
         <div class="bg-[#1e1e1e] border border-gray-700 p-6 rounded-xl font-mono text-xs overflow-x-auto">
             <p class="text-gray-500 mb-2">Editor de Registro (Regedit)</p>
-            <ol class="list-decimal list-inside text-gray-400 space-y-2">
+            <ol class="list-decimal list-inside text-gray-700 space-y-2">
                 <li>Abra o Regedit e navegue até: <br/><span class="text-blue-300">HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces</span></li>
                 <li>Você verá várias pastas com letras aleatórias. Procure a que tem o seu IP (ex: 192.168.x.x) listado à direita.</li>
                 <li>Nessa pasta, clique com botão direito > Novo > DWORD (32-bit).</li>
@@ -77,10 +77,10 @@ export default function NetworkGuide() {
         {
             title: "Passo 3: DNS Benchmarking (Pare de chutar)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não use o DNS do Google (8.8.8.8) só porque "todo mundo usa". Dependendo da sua rota, o Cloudflare (1.1.1.1) ou até o OpenDNS podem ser mais rápidos.
         </p>
-        <p class="text-gray-400">
+        <p class="text-gray-700">
             Baixe a ferramenta <strong>DNS Benchmark da GRC</strong>. Ela testa 50 servidores DNS reais a partir da sua casa e diz qual responde mais rápido. Configure o vencedor no seu adaptador de rede IPv4.
         </p>
       `

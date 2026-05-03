@@ -34,7 +34,7 @@ export default function BootableUSBGuide() {
     {
       title: "O primeiro passo para a formatação",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, você não precisa mais de DVDs para instalar o Windows. Um pendrive bootável é a forma mais rápida e segura de fazer uma instalação limpa do Windows 11. Nele, você coloca todos os arquivos de instalação de forma que o computador consiga ler as instruções de "boot" assim que é ligado, antes mesmo de entrar no HD ou SSD de hoje.
         </p>
       `
@@ -42,8 +42,8 @@ export default function BootableUSBGuide() {
     {
       title: "1. Método Oficial: Media Creation Tool",
       content: `
-        <p class="mb-4 text-gray-400">Este é o método mais seguro e fácil da Microsoft:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Este é o método mais seguro e fácil da Microsoft:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Acesse o site oficial: <strong>microsoft.com/software-download/windows11</strong>.</li>
             <li>Baixe a ferramenta 'Criar mídia de instalação do Windows 11'.</li>
             <li>Conecte seu pendrive (Atenção: todos os arquivos dele serão apagados!).</li>
@@ -56,7 +56,7 @@ export default function BootableUSBGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Para PCs Antigos ou Customizados:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se o seu PC não tem suporte oficial ao TPM 2.0 ou conta com hardware mais antigo, o **Rufus** é a melhor escolha. <br/><br/>
                 Ao criar o pendrive com ele, você pode marcar opções para **remover o requisito de 4GB de RAM, TPM e Secure Boot**. Isso permite que você instale o Windows 11 em quase qualquer computador de 2026, além de permitir criar uma conta local sem precisar de internet ou e-mail da Microsoft.
             </p>
@@ -66,7 +66,7 @@ export default function BootableUSBGuide() {
     {
       title: "3. Diferença entre MBR e GPT",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não erre na hora do boot:</strong> 
             <br/><br/>- <strong>GPT (UEFI):</strong> O padrão para todos os PCs modernos. Se o seu PC foi comprado após 2015, use GPT. <br/>
             - <strong>MBR (BIOS):</strong> Use apenas se estiver instalando em um computador muito antigo que não tem o menu de BIOS azul/moderno. <br/><br/>
@@ -82,13 +82,13 @@ export default function BootableUSBGuide() {
       title: "4. Fundamentos Técnicos de Boot e Particionamento",
       content: `
         <h4 class="text-white font-bold mb-3">🔬 Arquitetura de Boot e Sistemas de Particionamento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O processo de boot envolve múltiplas etapas técnicas e diferentes sistemas de particionamento:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">Sistemas de Particionamento</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• MBR (Master Boot Record)</li>
               <li>• GPT (GUID Partition Table)</li>
               <li>• EFI System Partition (ESP)</li>
@@ -98,7 +98,7 @@ export default function BootableUSBGuide() {
           </div>
           <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-3">Processo de Boot</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Power-On Self-Test (POST)</li>
               <li>• Firmware Initialization</li>
               <li>• Boot Manager Execution</li>
@@ -109,11 +109,11 @@ export default function BootableUSBGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Comparação Técnica MBR vs GPT</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           As diferenças técnicas entre os sistemas de particionamento são fundamentais para entender a compatibilidade:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Característica</th>
@@ -162,16 +162,16 @@ export default function BootableUSBGuide() {
       title: "5. Processos Técnicos de Criação de Pendrive Bootável",
       content: `
         <h4 class="text-white font-bold mb-3">🔧 Arquitetura de Imagens Bootáveis</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A criação de pendrives bootáveis envolve a manipulação de estruturas complexas de sistema de arquivos e setores de boot:
         </p>
         <div class="space-y-6">
           <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
             <h5 class="text-green-400 font-bold mb-2">Estrutura de uma Imagem ISO</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Componentes técnicos presentes em imagens ISO do Windows:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Boot Sector (MBR ou GPT)</li>
               <li>• El Torito Boot Catalog</li>
               <li>• Boot Manager (bootmgr.efi)</li>
@@ -181,10 +181,10 @@ export default function BootableUSBGuide() {
           </div>
           <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
             <h5 class="text-blue-400 font-bold mb-2">Processo de Escrita de Imagem</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Etapas técnicas envolvidas na gravação de imagens em dispositivos:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Verificação de espaço disponível</li>
               <li>• Formatação com FAT32 (UEFI) ou NTFS (Legacy)</li>
               <li>• Cópia de arquivos de boot</li>
@@ -195,13 +195,13 @@ export default function BootableUSBGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Ferramentas de Baixo Nível</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Ferramentas que operam diretamente com setores e estruturas de disco:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-cyan-400 font-bold mb-2">Ferramentas de Baixo Nível</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• dd (Linux/Unix)</li>
               <li>• diskpart (Windows)</li>
               <li>• Win32DiskImager</li>
@@ -210,7 +210,7 @@ export default function BootableUSBGuide() {
           </div>
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-purple-400 font-bold mb-2">Parâmetros Técnicos</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Tamanho de bloco (sector size)</li>
               <li>• Alinhamento de partição</li>
               <li>• Tipo de partição (07, 0C, EF)</li>
@@ -224,13 +224,13 @@ export default function BootableUSBGuide() {
       title: "6. Técnicas Avançadas de Criação e Personalização",
       content: `
         <h4 class="text-white font-bold mb-3">🛠️ Personalização Avançada de Pendrives Bootáveis</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Técnicas avançadas para criar pendrives com funcionalidades personalizadas:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">Multiboot USB</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• GRUB4DOS</li>
               <li>• YUMI (Yet Another Multiboot USB)</li>
               <li>• Ventoy (plug-and-play)</li>
@@ -240,7 +240,7 @@ export default function BootableUSBGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Preinstalação de Drivers</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Driver injection</li>
               <li>• Windows PE customization</li>
               <li>• WinPE add-ons</li>
@@ -250,7 +250,7 @@ export default function BootableUSBGuide() {
           </div>
           <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-3">Scripts de Instalação</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Unattended installation</li>
               <li>• Answer files (autounattend.xml)</li>
               <li>• PowerShell scripts</li>
@@ -262,7 +262,7 @@ export default function BootableUSBGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Tabela de Compatibilidade e Recomendações</h4>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Cenário</th>
@@ -314,16 +314,16 @@ export default function BootableUSBGuide() {
       title: "7. Análise Profunda de Ferramentas de Criação",
       content: `
         <h4 class="text-white font-bold mb-3">🔍 Comparação Técnica de Ferramentas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Análise detalhada das principais ferramentas para criação de pendrives bootáveis:
         </p>
         <div class="space-y-6">
           <div class="border-l-4 border-purple-500 pl-4 py-2 bg-purple-900/10">
             <h5 class="text-purple-400 font-bold mb-2">Media Creation Tool</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Ferramenta oficial da Microsoft para criação de mídia de instalação:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Oferece ISO oficial e atualizada</li>
               <li>• Integração direta com Windows Update</li>
               <li>• Verificação de integridade automática</li>
@@ -333,10 +333,10 @@ export default function BootableUSBGuide() {
           </div>
           <div class="border-l-4 border-cyan-500 pl-4 py-2 bg-cyan-900/10">
             <h5 class="text-cyan-400 font-bold mb-2">Rufus</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Ferramenta de código aberto com recursos avançados:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Suporte a diversos formatos de imagem</li>
               <li>• Opções de particionamento avançadas</li>
               <li>• Modo de compatibilidade para hardware antigo</li>
@@ -346,10 +346,10 @@ export default function BootableUSBGuide() {
           </div>
           <div class="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-900/10">
             <h5 class="text-yellow-400 font-bold mb-2">Alternativas Profissionais</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Outras ferramentas utilizadas por profissionais:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• WinToUSB (cópias bootáveis de HD)</li>
               <li>• YUMI (multiboot USB)</li>
               <li>• Ventoy (plug-and-play ISO boot)</li>
@@ -364,13 +364,13 @@ export default function BootableUSBGuide() {
       title: "8. Considerações Técnicas de Hardware e Performance",
       content: `
         <h4 class="text-white font-bold mb-3">⚡ Impacto de Hardware na Performance de Instalação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O desempenho do pendrive e do hardware afeta significativamente o processo de instalação:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">Especificações de Pendrives</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Classe de velocidade (Classe 10, UHS-I, UHS-II)</li>
               <li>• Velocidade de leitura/gravação</li>
               <li>• Interface USB (2.0, 3.0, 3.1, 3.2)</li>
@@ -380,7 +380,7 @@ export default function BootableUSBGuide() {
           </div>
           <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-3">Fatores de Performance</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Tamanho do cluster do sistema de arquivos</li>
               <li>• Alinhamento de partição (4K, 1MB)</li>
               <li>• Tamanho de bloco da gravação</li>
@@ -391,10 +391,10 @@ export default function BootableUSBGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Otimização de Performance</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Dicas técnicas para maximizar a velocidade e confiabilidade:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>Escolha de pendrive:</strong> Use pendrives de classe A1 ou A2 para melhor performance de leitura</li>
           <li><strong>Sistema de arquivos:</strong> FAT32 para compatibilidade UEFI, NTFS para tamanhos maiores</li>
           <li><strong>Porta USB:</strong> Use portas USB 3.0 ou superiores para gravação mais rápida</li>
@@ -407,13 +407,13 @@ export default function BootableUSBGuide() {
       title: "9. Solução de Problemas Avançados",
       content: `
         <h4 class="text-white font-bold mb-3">🔍 Diagnóstico e Solução de Problemas Complexos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Técnicas avançadas para resolver problemas comuns e incomuns:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">Problemas de Boot</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Verificação de flags de partição</li>
               <li>• Correção de setor de boot</li>
               <li>• Atualização de firmware UEFI</li>
@@ -423,7 +423,7 @@ export default function BootableUSBGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Erros de Gravação</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Proteção contra gravação</li>
               <li>• Espaço insuficiente</li>
               <li>• Setores defeituosos</li>
@@ -434,11 +434,11 @@ export default function BootableUSBGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📋 Checklist de Solução de Problemas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Procedimentos sistemáticos para resolver problemas:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Problema</th>

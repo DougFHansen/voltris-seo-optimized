@@ -34,7 +34,7 @@ export default function SmartGaGaFFGuide() {
         {
             title: "Por que escolher o SmartGaGa em 2026?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Enquanto BlueStacks e LDPlayer evoluíram para máquinas potentes, o **SmartGaGa** continua sendo o "queridinho" de quem tem computadores modestos. Ele utiliza um motor gráfico diferente, chamado Titan Engine, que consome pouquíssima CPU e permite que o Free Fire rode liso mesmo em máquinas que nem possuem placa de vídeo dedicada.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SmartGaGaFFGuide() {
         {
             title: "1. Configuração de Performance no Emulador",
             content: `
-        <p class="mb-4 text-gray-400">Abra as configurações (ícone da engrenagem) do SmartGaGa:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Abra as configurações (ícone da engrenagem) do SmartGaGa:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>CPU:</strong> Coloque a metade do que seu PC tem (Se tem 4 núcleos, coloque 2).</li>
             <li><strong>RAM:</strong> Coloque 1024MB (se tiver 2GB no PC) ou 2048MB (se tiver 4GB no PC).</li>
             <li><strong>Renderizador:</strong> DirectX (Geralmente melhor para quem não tem GPU dedicada) ou OpenGL (Melhor para quem tem NVIDIA/AMD).</li>
@@ -56,7 +56,7 @@ export default function SmartGaGaFFGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Ajuste de "Capa":</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O SmartGaGa é famoso pela sua sensibilidade Y rápida. Para não "pinar", vá nas configurações de controles e ajuste a Sensibilidade Y para um valor entre 1.0 e 2.0. Desative a 'Aceleração de Mouse' no Windows para ter movimentos mais consistentes.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function SmartGaGaFFGuide() {
         {
             title: "3. Corrigindo o erro de Tela Preta",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o Free Fire abre e fica em uma tela preta infinita:
             <br/>1. Vá nas configurações do Android dentro do emulador.
             <br/>2. Vá em Aplicativos > Free Fire > <strong>Limpar Cache</strong>.

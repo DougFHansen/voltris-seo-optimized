@@ -34,7 +34,7 @@ export default function SSDvsHDGuide() {
         {
             title: "A morte definitiva do HD como disco principal",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, a discussão sobre "SSD vs HD" para rodar o Windows acabou. O Windows 11 foi projetado para rodar em memórias flash; tentar usá-lo em um disco rígido mecânico (HD) resulta em um computador que demora 5 minutos para ligar e trava ao abrir o navegador. No entanto, os HDs ainda possuem um papel importante em nichos específicos de armazenamento de dados massivos.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SSDvsHDGuide() {
         {
             title: "1. Performance: Por que o SSD é 50x mais rápido?",
             content: `
-        <p class="mb-4 text-gray-400">A diferença não está apenas na velocidade de transferência, mas no tempo de acesso:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">A diferença não está apenas na velocidade de transferência, mas no tempo de acesso:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>HD:</strong> Possui um braço mecânico que precisa se mover fisicamente até o disco para ler dados. Isso leva milissegundos preciosos.</li>
             <li><strong>SSD:</strong> Não possui partes móveis. A busca pelo dado é eletrônica e instantânea.</li>
             <li><strong>Em 2026:</strong> Jogos de última geração exigem o recurso **DirectStorage**, que só funciona em SSDs NVMe, permitindo carregar cenários inteiros em menos de 1 segundo.</li>
@@ -55,7 +55,7 @@ export default function SSDvsHDGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Armazenamento de Massa (Cold Storage):</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se você precisa guardar 8TB de filmes, vídeos de Raw Footage ou fotos de família, o HD ainda oferece o melhor preço por Gigabyte. Para **backup**, ele é excelente, pois você pode deixá-lo guardado fora da rede e os dados permanecerão lá. Mas lembre-se: nunca instale programas ou jogos modernos em um HD em 2026, ou você sofrerá com "stuttering" (travadas) constantes.
             </p>
         </div>
@@ -64,7 +64,7 @@ export default function SSDvsHDGuide() {
         {
             title: "3. Durabilidade: O mito dos ciclos de escrita",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Quem dura mais?</strong> 
             <br/><br/>Antigamente, dizia-se que o SSD "queimava" rápido se você escrevesse muito nele. Em 2026, um SSD moderno de 1TB tem uma durabilidade (TBW) que permitiria você escrever 50GB todos os dias por mais de 10 anos. O HD, por ser mecânico, é muito mais sensível a batidas, quedas ou vibrações, podendo morrer instantaneamente se o notebook sofrer um impacto leve enquanto o disco gira.
         </p>

@@ -42,7 +42,7 @@ export default function ETS2Guide() {
         {
             title: "Introdução: O Dilema da Escala",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Nativamente, para tirar o serrilhado dos cabos de energia, você precisa colocar a "Escala de Renderização" em 400%. Isso renderiza o jogo em 4K ou 8K internamente, matando o FPS.
         </p>
       `
@@ -53,7 +53,7 @@ export default function ETS2Guide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Modernizando a Engine</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     O modder Snowymoon criou um plugin que injeta TAA (Temporal Anti-Aliasing) real no jogo.
                     <br/>1. Baixe o <code>dxgi.dll</code> do Snowymoon.
                     <br/>2. Coloque na pasta <code>bin\\win_x64</code> do jogo.
@@ -67,7 +67,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 2: Retrovisores (Espelhos)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Os espelhos renderizam o mundo de novo.
             <br/>- <strong>Mirror Quality:</strong> Medium. (High processa reflexos HD inúteis).
             <br/>- <strong>Mirror Resolution:</strong> Medium.
@@ -78,7 +78,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 3: Configurações de Luz e Sombra",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Vegetation Detail:</strong> High. (É o que você mais vê na estrada).
             - <strong>Grass Density:</strong> Low/Medium. Grama alta no acostamento pesa.
             - <strong>Shadow Quality:</strong> Medium. Sombras suaves do TAA compensam a baixa resolução.
@@ -92,7 +92,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 4: TruckersMP (Multiplayer)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em áreas lotadas (Kirkenes, Calais-Duisburg):
             <br/>- Nas configurações do TruckersMP (Tab > Settings):
             <br/>- Desative <strong>"Load Cabin Accessories"</strong> de outros jogadores.
@@ -105,7 +105,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 5: ProMods (O Mapa Gigante)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O ProMods adiciona detalhes extremos nas cidades.
             <br/>Se você tem "stutter" trocando de país:
             <br/>Use o parâmetro de inicialização <code>-mm_pool_size 4000</code> ou mais (metade da sua RAM). Isso aloca mais memória para o cache de mapa.
@@ -116,7 +116,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 6: Console Developer",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Ative o console (edite <code>config.cfg</code>, mude <code>g_developer</code> e <code>g_console</code> para 1).
             <br/>Comandos úteis:
             <br/><code>warp 0.8</code> (Deixa o tempo do jogo mais lento, física mais realista).
@@ -127,7 +127,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 7: FFB do Volante",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A física de FFB mudou na 1.42+.
             <br/>Mantenha "Força Centrada em Alta Velocidade" baixo.
             <br/>Aumente "Ressonância do Motor" para sentir a vibração do diesel no volante.
@@ -140,7 +140,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 8: Rádio e Música",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Ouvir rádio online in-game usa CPU para streaming.
                 <br/>Se a CPU estiver no gargalo (100%), o áudio pica. Use Spotify externo ou MP3 local.
             </p>
@@ -149,7 +149,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 9: Modo Comboio (Oficial)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 É muito mais otimizado que o TruckersMP, mas limitado a 8-10 amigos.
                 <br/>O tráfego AI é sincronizado. Se o host tiver PC fraco, o tráfego laga pra todo mundo. Deixe quem tem o melhor CPU ser o host.
             </p>
@@ -158,7 +158,7 @@ export default function ETS2Guide() {
         {
             title: "Capítulo 10: Head Tracking",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se não tem VR, use webcam + "OpenTrack" (Neuralnet tracker).
                 <br/>Poder olhar para os espelhos virando a cabeça aumenta a imersão e evita acidentes. Custa 2-3% de CPU.
             </p>

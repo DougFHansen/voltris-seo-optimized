@@ -50,7 +50,7 @@ export default function Stalker2Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-400 mb-8">{description}</p>
+                <p className="text-xl text-gray-700 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos S.T.A.L.K.E.R. 2</h2>
@@ -90,7 +90,7 @@ export default function Stalker2Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações Unreal Engine 5</h2>
-                    <p className="text-gray-400 mb-4">
+                    <p className="text-gray-700 mb-4">
                         S.T.A.L.K.E.R. 2 usa Unreal Engine 5 com Lumen e Nanite para gráficos revolucionários.
                     </p>
                     <div className="bg-purple-900/20 p-4 rounded mb-4">
@@ -155,21 +155,21 @@ export default function Stalker2Guide() {
                     <div className="space-y-4">
                         <div className="bg-red-900/20 p-4 rounded">
                             <h3 className="text-red-400 font-bold mb-2">Anomalias & Efeitos Especiais</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Anomalias consomem muito GPU. Reduza Particle Effects para Medium 
                                 se FPS cair em áreas com anomalias.
                             </p>
                         </div>
                         <div className="bg-yellow-900/20 p-4 rounded">
                             <h3 className="text-yellow-400 font-bold mb-2">NPCs & Mutantes</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Reduza Actor Distance para 80% em áreas densas. 
                                 Use DLSS Performance se necessário.
                             </p>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded">
                             <h3 className="text-green-400 font-bold mb-2">Áreas Internas vs Externas</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Áreas internas rodam melhor. Configure presets diferentes 
                                 para cada tipo de área.
                             </p>

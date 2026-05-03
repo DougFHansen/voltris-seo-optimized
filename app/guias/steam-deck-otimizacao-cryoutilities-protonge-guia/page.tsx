@@ -41,7 +41,7 @@ export default function SteamDeckGuide() {
         {
             title: "Introdução: Otimizando o Hardware",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Steam Deck tem 16GB de RAM compartilhada entre CPU e GPU. O padrão reserva apenas 1GB para vídeo. Em jogos modernos (The Last of Us, Hogwarts Legacy), isso causa stutters horríveis. Vamos corrigir isso.
         </p>
       `
@@ -52,7 +52,7 @@ export default function SteamDeckGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Na BIOS</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Desligue o Steam Deck completamente.
                     <br/>2. Segure <strong>Volume +</strong> e aperte o botão <strong>Power</strong>. Solte o Power quando ouvir o som, mantenha o Volume +.
                     <br/>3. Vá em <strong>Setup Utility</strong> > <strong>Advanced</strong>.
@@ -66,7 +66,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 2: CryoUtilities 2.0 (O Salvador)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Esta ferramenta (criada pelo CryoByte33) otimiza o gerenciamento de memória do Linux.
             <br/>1. Entre no Modo Desktop.
             <br/>2. Baixe o instalador do CryoUtilities no GitHub.
@@ -78,7 +78,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 3: Proton GE (Glorious Eggroll)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A versão oficial do Proton da Valve é boa, mas o <strong>Proton GE</strong> é melhor. Ele tem correções para vídeos que não rodam, FSR mais novo e patches específicos para jogos novos.
             <br/>1. No Modo Desktop, abra a loja "Discover".
             <br/>2. Instale o <strong>ProtonUp-Qt</strong>.
@@ -93,7 +93,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 4: Decky Loader & PowerTools",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Decky Loader é a loja de plugins da comunidade.
             <br/>Instale-o (via terminal no Desktop Mode com vídeo tutorial).
             <br/>Baixe o plugin <strong>PowerTools</strong>.
@@ -105,7 +105,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 5: FSR e 40Hz Mode",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A regra de ouro da bateria: 40FPS sentem como 60FPS, mas gastam como 30FPS.
             <br/>No menu "..." (Performance):
             <br/>- Mude a taxa de atualização para 40Hz.
@@ -117,7 +117,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 6: Shader Cache (Armazenamento)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Steam Deck baixa shaders pre-compilados. Se você tem 64GB, isso lota o drive rápido.
             <br/>Use a ferramenta <strong>"ZShaderCacheMover"</strong> ou link simbólico para mover a pasta <code>shadercache</code> para o cartão MicroSD (se for um cartão A2 rápido).
         </p>
@@ -129,7 +129,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 7: Windows no Deck (Dual Boot)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Vale a pena instalar Windows?
                 <br/>Só se você joga <strong>Call of Duty, Fortnite, Destiny 2 ou FIFA/FC</strong> (jogos com Anti-Cheats incompatíveis com Linux).
                 <br/>Para o resto, o SteamOS é mais otimizado e a experiência de "console" é melhor.
@@ -139,7 +139,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 8: Streaming (Moonlight)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você tem um PC Gamer parrudo em casa:
                 <br/>Não rode Cyberpunk no Deck. Rode no PC e faça stream para o Deck usando <strong>Moonlight</strong> (Sunshine no PC).
                 <br/>Bateria dura 6 horas, gráficos Ultra, zero calor na mão.
@@ -149,7 +149,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 9: SSD Upgrade",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Trocar o SSD 2230 é fácil. Use marcas confiáveis (Sabrent, Corsair). SSDs genéricos do AliExpress esquentam e gastam mais bateria.
             </p>
             `
@@ -157,7 +157,7 @@ export default function SteamDeckGuide() {
         {
             title: "Capítulo 10: Skins e Proteção",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Deck esquenta atrás. Não cubra a saída de ar com skins adesivas baratas. Use capas que respeitem o fluxo de ar.
             </p>
             `

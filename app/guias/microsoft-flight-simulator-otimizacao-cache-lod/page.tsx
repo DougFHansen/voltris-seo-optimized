@@ -42,7 +42,7 @@ export default function MSFSGuide() {
         {
             title: "Introdução: O Simulador de Mundo",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O MSFS baixa o mundo inteiro da nuvem (Azure) enquanto você voa. Se sua internet oscilar, o jogo trava. O segredo é fazer cache local.
         </p>
       `
@@ -53,7 +53,7 @@ export default function MSFSGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">General Options > Data</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     - <strong>Rolling Cache:</strong> ON.
                     <br/>- <strong>Limit:</strong> Defina para <span class="text-emerald-400">32GB ou 64GB</span>. (O padrão de 8GB é muito pouco para voos longos).
                     <br/>- <strong>Path:</strong> Aponte para seu SSD NVMe mais rápido. Nunca coloque no HD.
@@ -66,7 +66,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 2: Terrain LOD Factor",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Terrain Level of Detail (LOD):</strong> O devorador de FPS.
             - Valor 100: Bom equilíbrio.
             - Valor 200: Ultra. Prédios distantes ficam nítidos, mas o FPS cai pela metade em Londres/NY.
@@ -78,7 +78,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 3: DX11 vs DX12 (Frame Gen)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>DX11:</strong> Estável, compatível com addons antigos. Sem Frame Generation.
             - <strong>DX12 (Beta/Preview):</strong> Melhor uso de CPU Multi-core. Necessário para ativar <strong>DLSS 3 Frame Generation</strong>.
             - Se você tem RTX 4000, use DX12 + Frame Gen. O FPS vai de 40 para 80, e como é um simulador civil, o input lag não importa.
@@ -91,7 +91,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 4: Glass Cockpit Refresh Rate",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Aviões modernos (A320, 787, G1000) têm telas digitais no painel.
             <br/>Em "Traffic", procure <strong>"Glass Cockpit Refresh Rate"</strong>.
             <br/>Mude de High para <strong>Medium</strong> ou <strong>Low</strong>.
@@ -102,7 +102,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 5: Tráfego AI e Multiplayer",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Traffic Type:</strong> Real-Time Online. (Usa dados reais de voos, leve).
             - <strong>AI Offline Traffic:</strong> Pesado. O PC simula rotas. Desative.
             - <strong>Ground Aircraft Density:</strong> 50 ou menos. Muitos aviões parados no gate matam o FPS ao pousar no Heathrow.
@@ -112,7 +112,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 6: Off-Screen Terrain Pre-Caching",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Defina como <strong>Ultra</strong>.
             <br/>Isso faz o jogo carregar o terreno atrás de você e nas laterais. Quando você vira a câmera rápido (olhar pela janela), não tem stutter e o terreno já está lá. Consome muita RAM (32GB recomendados).
         </p>
@@ -121,7 +121,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 7: Nuvens Volumétricas",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Volumetric Clouds:</strong> High.
             <br/>O Ultra deixa as nuvens um pouco mais fofas, mas custa 15-20% de performance em dias nublados. No High já são as melhores nuvens de qualquer jogo.
         </p>
@@ -133,7 +133,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 8: Community Folder (Addons)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O MSFS demora 10 minutos pra abrir?
                 <br/>Você tem muitos addons na pasta Community sem usar.
                 <br/>Use o <strong>MSFS Addons Linker</strong> (externo) para ativar apenas os cenários que você vai voar hoje.
@@ -143,7 +143,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 9: Bing Maps Data",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se as cidades parecerem "genéricas" e feias:
                 <br/>Verifique em Data se <strong>"Bing Data World Graphics"</strong> está ON. Às vezes o jogo desliga sozinho se a internet cair.
             </p>
@@ -152,7 +152,7 @@ export default function MSFSGuide() {
         {
             title: "Capítulo 10: VR Optimization",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Para VR (Quest 3/Reverb G2): Use DLSS Performance e OpenXR Toolkit para fazer Foveated Rendering (renderizar só o centro da visão em alta qualidade).
             </p>
             `

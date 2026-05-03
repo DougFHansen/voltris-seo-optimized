@@ -41,10 +41,10 @@ export default function LethalGuide() {
         {
             title: "Introdução: O Charme Low Poly (e o Peso Escondido)",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Lethal Company utiliza uma estética retrô proposital, renderizando internamente em resoluções baixas (cerca de 512x512) antes de aplicar filtros de upscaling. Teoricamente, isso deveria rodar em qualquer calculadora.
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
           No entanto, o jogo é construído na Unity e depende fortemente da CPU para sincronização de física e rede (netcode). Quando adicionamos mods, especialmente aqueles que aumentam o número de jogadores (MoreCompany) ou adicionam itens (Suits, Skins), a carga na CPU cresce exponencialmente.
         </p>
         <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-lg my-4">
@@ -56,14 +56,14 @@ export default function LethalGuide() {
             title: "Capítulo 1: A Tríade da Performance (Mods Essenciais)",
             content: `
         <div class="space-y-4">
-            <p class="text-gray-400 mb-4">Para mitigar o peso dos mods cosméticos, precisamos de mods de otimização que atuem no nível de renderização e memória. Não jogue modded sem estes três:</p>
+            <p class="text-gray-700 mb-4">Para mitigar o peso dos mods cosméticos, precisamos de mods de otimização que atuem no nível de renderização e memória. Não jogue modded sem estes três:</p>
             
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">1. HDLethalCompany (Otimização Gráfica)</h4>
-                <p class="text-gray-400 text-sm text-justify mb-2">
+                <p class="text-gray-700 text-sm text-justify mb-2">
                     Apesar do nome sugerir "gráficos melhores", ele é a melhor ferramenta de performance. Ele permite controlar a resolução interna, neblina e pós-processamento.
                 </p>
-                <ul class="list-disc pl-5 text-gray-400 text-sm space-y-1">
+                <ul class="list-disc pl-5 text-gray-700 text-sm space-y-1">
                     <li><strong>Configuração para Batatas:</strong> Setar 'Resolution Scale' para 1.000 (Nativo) ou menos, e desligar 'Post Processing'.</li>
                     <li><strong>Configuração para Visibilidade:</strong> Remove a neblina volumétrica que consome muita GPU em luas como March e Vow.</li>
                 </ul>
@@ -71,10 +71,10 @@ export default function LethalGuide() {
 
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">2. CullFactory (O Salvador de FPS)</h4>
-                <p class="text-gray-400 text-sm text-justify mb-2">
+                <p class="text-gray-700 text-sm text-justify mb-2">
                     Lethal Company nativamente renderiza coisas que você não está vendo (atrás de paredes). CullFactory implementa um sistema agressivo de "Occlusion Culling".
                 </p>
-                 <ul class="list-disc pl-5 text-gray-400 text-sm space-y-1">
+                 <ul class="list-disc pl-5 text-gray-700 text-sm space-y-1">
                     <li><strong>Impacto:</strong> Aumenta o FPS em até 40% dentro da Factory/Mansion.</li>
                     <li><strong>Configuração:</strong> Instale e deixe no padrão (<code>portal-occlusion</code>).</li>
                 </ul>
@@ -82,7 +82,7 @@ export default function LethalGuide() {
 
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">3. FixPluginTypesSerialization (Técnico)</h4>
-                <p class="text-gray-400 text-sm text-justify">
+                <p class="text-gray-700 text-sm text-justify">
                     Um mod técnico que otimiza o tempo de carregamento e reduz o uso de RAM ao consertar como o BepInEx lida com a serialização de tipos. Essencial para modpacks com +50 mods.
                 </p>
             </div>
@@ -92,14 +92,14 @@ export default function LethalGuide() {
         {
             title: "Capítulo 2: Gerenciamento de Lobby (MoreCompany vs BiggerLobby)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Existem dois mods principais para aumentar o lobby. A escolha impacta a performance:
         </p>
-        <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
+        <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-4">
              <li><strong>MoreCompany:</strong> O mais estável e visualmente polido (tem cosméticos). Recomendado para até 8-12 jogadores. Acima disso, os cosméticos pesam.</li>
              <li><strong>BiggerLobby:</strong> Mais antigo, menos recursos visuais, levemente mais leve para lobbies gigantes (20+ pessoas), mas mais propenso a bugs de desync.</li>
         </ul>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Dica de Ouro:</strong> Se o host tiver PC fraco e net ruim, o jogo vai lagar para TODOS (monstros teleportando). O Host deve ser sempre quem tem o melhor processador (Single Core) e upload.
         </p>
       `
@@ -110,13 +110,13 @@ export default function LethalGuide() {
         {
             title: "Capítulo 3: Diagnóstico de Lag (FPS vs Network)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             É crucial distinguir FPS baixo de Lag de Rede.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div class="bg-red-500/10 p-3 rounded border border-red-500/20">
                 <h5 class="font-bold text-red-400">Sintomas de FPS Baixo</h5>
-                <ul class="text-sm text-gray-400 list-disc pl-4">
+                <ul class="text-sm text-gray-700 list-disc pl-4">
                     <li>Imagem "quadro a quadro" ou lenta.</li>
                     <li>Mouse pesadão.</li>
                     <li>Acontece quando olha para muitas luzes/fumaça.</li>
@@ -125,7 +125,7 @@ export default function LethalGuide() {
             </div>
             <div class="bg-yellow-500/10 p-3 rounded border border-yellow-500/20">
                 <h5 class="font-bold text-yellow-400">Sintomas de Network Lag</h5>
-                <ul class="text-sm text-gray-400 list-disc pl-4">
+                <ul class="text-sm text-gray-700 list-disc pl-4">
                     <li>Monstros te matam de longe.</li>
                     <li>Itens demoram para serem pegos (mãozinha rodando).</li>
                     <li>Voz dos amigos cortando ("robótico").</li>
@@ -138,10 +138,10 @@ export default function LethalGuide() {
         {
             title: "Capítulo 4: Configurando o R2Modman Corretamente",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitos erros vêm de instalações manuais. O R2Modman virtualiza as pastas.
         </p>
-        <ol class="list-decimal pl-5 text-gray-400 space-y-2">
+        <ol class="list-decimal pl-5 text-gray-700 space-y-2">
             <li><strong>Perfil Limpo:</strong> Sempre crie um perfil novo para cada modpack. Misturar mods de versões diferentes causa "Tela Preta" na inicialização.</li>
             <li><strong>Update All:</strong> Cuidado ao clicar em "Update All". Às vezes um mod atualiza e quebra a compatibilidade com o <code>LethalCompanyVariables</code> ou outros core mods. Leia os changelogs.</li>
             <li><strong>Launch Arguments:</strong> Em "Settings" > "Set launch options", você pode remover a intro da Unity e forçar modo exclusivo para ganhar uns ms de input lag.</li>
@@ -154,15 +154,15 @@ export default function LethalGuide() {
         <div class="space-y-4">
             <div class="border-l-2 border-red-500 pl-4 py-1">
                 <strong class="text-white block">Tela Preta ao Iniciar (Carregando infinito)</strong>
-                <p class="text-gray-400 text-sm">Geralmente causado por mods de som (.custom sounds) ou mods incompatíveis com a versão v50/v55/v60 do jogo. Desative metade dos mods e teste. Técnica de "Binary Search".</p>
+                <p class="text-gray-700 text-sm">Geralmente causado por mods de som (.custom sounds) ou mods incompatíveis com a versão v50/v55/v60 do jogo. Desative metade dos mods e teste. Técnica de "Binary Search".</p>
             </div>
             <div class="border-l-2 border-yellow-500 pl-4 py-1">
                 <strong class="text-white block">Amigo não consegue entrar (An error occured)</strong>
-                <p class="text-gray-400 text-sm">Versão do BepInEx diferente ou config de mod diferente. Usem a função "Export Profile as Code" e garantam que todos usem EXATAMENTE o mesmo código.</p>
+                <p class="text-gray-700 text-sm">Versão do BepInEx diferente ou config de mod diferente. Usem a função "Export Profile as Code" e garantam que todos usem EXATAMENTE o mesmo código.</p>
             </div>
              <div class="border-l-2 border-blue-500 pl-4 py-1">
                 <strong class="text-white block">Mouse saindo da tela (Dual Monitor)</strong>
-                <p class="text-gray-400 text-sm">O jogo em modo "Borderless" as vezes não prende o mouse. Instale o mod <code>CursorLock</code> ou use Alt+Enter para forçar Fullscreen Real.</p>
+                <p class="text-gray-700 text-sm">O jogo em modo "Borderless" as vezes não prende o mouse. Instale o mod <code>CursorLock</code> ou use Alt+Enter para forçar Fullscreen Real.</p>
             </div>
         </div>
       `
@@ -173,7 +173,7 @@ export default function LethalGuide() {
         {
             title: "Capítulo 6: Skinwalker Mod (O Inimigo do SSD)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O mod que grava a voz dos seus amigos e faz os monstros repetirem (Skinwalker) é incrível, mas pesado.
                 <br/>Ele grava áudio no disco constantemente. Se instalado em um HD mecânico, causará "stutters" (micro-travadas) toda vez que o monstro tentar "falar".
                 <br/><strong>Solução:</strong> Mova o perfil do R2Modman para o SSD ou desative o mod se tiver pouco espaço em disco.
@@ -183,7 +183,7 @@ export default function LethalGuide() {
         {
             title: "Capítulo 7: Lanterna e Sombras Dinâmicas",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 A lanterna do jogo projeta sombras dinâmicas em tempo real. Cada lanterna acesa multiplica o custo de renderização.
                 <br/>Se tiver 4 jogadores com lanternas "Pro" acesas num corredor apertado, o FPS vai cair pela metade.
                 <br/><strong>Dica de Pro:</strong> Apaguem as lanternas quando não precisarem. Além de salvar bateria, salva frames.

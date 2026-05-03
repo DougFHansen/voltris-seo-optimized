@@ -40,7 +40,7 @@ export default function BrowserGuide() {
         {
             title: "O Mito do Opera GX",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Opera GX ficou famoso pelo design "Gamer" e limitadores de RAM. Ele funciona? <strong>Sim e Não.</strong> O limitador de RAM realmente impede o navegador de passar do limite (ex: 2GB), mas isso deixa o navegador <em>lento</em>. As abas recarregam toda hora. É bom para não travar o jogo, mas ruim para navegar.
         </p>
 
@@ -48,7 +48,7 @@ export default function BrowserGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🌐</span> Browser Mode Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Em vez de mudar de navegador, use o que você gosta. O <strong>Voltris Optimizer</strong> tem um recurso que detecta quando você abre um jogo e envia um comando para o Windows "congelar" (Trim Process) o navegador em segundo plano, reduzindo o uso de RAM de 3GB para 100MB instantaneamente, sem fechar suas abas.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function BrowserGuide() {
         {
             title: "Microsoft Edge: O Rei do Sleeping Tabs",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A Microsoft fez um trabalho incrível no Edge. O recurso <strong>Guias em Suspensão (Sleeping Tabs)</strong> é matador.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Depois de 5 minutos de inatividade, a aba "dorme" e para de usar CPU.</li>
             <li>Você pode ter 50 abas abertas e o consumo de CPU ser 0%.</li>
             <li>Como é nativo do Windows, ele desperta mais rápido que os outros.</li>
@@ -78,7 +78,7 @@ export default function BrowserGuide() {
         {
             title: "Chrome: O Confortável",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Google Chrome adicionou recentemente o "Economia de Memória". Melhorou, mas ainda é o mais pesado da lista. Ele cria muitos processos separados para cada extensão. Se você tem 8GB de RAM, fuja do Chrome enquanto joga. Se tem 32GB, use à vontade.
         </p>
       `
@@ -86,7 +86,7 @@ export default function BrowserGuide() {
         {
             title: "Brave: Sem Anúncios, Mais Velocidade",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Brave bloqueia anúncios e rastreadores nativamente. Isso significa que sites pesados (como portais de notícia) carregam 3x mais rápido porque ele não baixa os scripts de propaganda. Menos script = Menos uso de CPU = Mais CPU para o seu jogo.
         </p>
       `
@@ -99,10 +99,10 @@ export default function BrowserGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">O Mais Rápido do Mundo?</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     O Thorium é uma versão modificada do Chromium compilada com instruções AVX2 especiais para processadores modernos. Ele abre páginas até 10% mais rápido que o Chrome.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Contra: Sincronização com conta Google é chata de configurar e ele atualiza menos frequentemente (risco de segurança leve). Use por sua conta e risco.
                 </p>
             </div>
@@ -114,10 +114,10 @@ export default function BrowserGuide() {
         {
             title: "Dica: Desative Aceleração de Hardware (as vezes)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você tem uma GPU fraca e assiste Twitch/YouTube no 2º monitor enquanto joga, o navegador compete com o jogo pela placa de vídeo.
             </p>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 Desativar a "Aceleração de Hardware" nas configurações do navegador joga a carga de vídeo para a CPU. Se sua CPU for forte e GPU fraca, isso melhora o FPS do jogo. Se sua CPU for fraca, vai travar tudo. Teste!
             </p>
             `

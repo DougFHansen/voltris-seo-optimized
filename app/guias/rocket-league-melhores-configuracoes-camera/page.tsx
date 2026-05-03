@@ -43,7 +43,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Introdução: O crime da Camera Shake",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Se você joga com "Camera Shake" (Tremor da Câmera) ligado, você está em desvantagem. Essa é a primeira coisa que qualquer jogador deve desligar. O jogo fica limpo e sua precisão aérea melhora 100%.
         </p>
       `
@@ -51,7 +51,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 1: Configurações de Câmera (O Padrão Ouro)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Copie estas configurações. É a base usada por 99% dos Pros (RLCS):
         </p>
         <div class="bg-[#0A0A0F] p-5 rounded-xl border border-white/5 space-y-2">
@@ -69,7 +69,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 2: Configurações de Vídeo (Performance)",
             content: `
-        <table class="w-full text-sm text-left text-gray-400">
+        <table class="w-full text-sm text-left text-gray-700">
             <tbody>
                 <tr class="border-b border-gray-700">
                     <td class="py-2 font-bold">Anti-Alias</td>
@@ -103,7 +103,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 3: TASystemSettings.ini (FPS Unlock)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O menu limita a 240 FPS (ou 360 FPS em updates recentes). Para ir além (útil para input lag):
             <br/>Vá em <code>Documentos\\My Games\\Rocket League\\TAGame\\Config\\TASystemSettings.ini</code>.
             <br/>Edite: <code>AllowPerFrameSleep=False</code>.
@@ -118,7 +118,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 4: BakkesMod (Essencial)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             No PC, o uso do <strong>BakkesMod</strong> é permitido e encorajado.
             <br/>Ele não dá vantagem injusta, mas permite:
             <br/>- Modo Anonimizador (Remove carros feios dos oponentes).
@@ -131,7 +131,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 5: Deadzone e Sensibilidade",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Steering Sensitivity:</strong> 1.00 a 1.40 (Mais que isso perde precisão).
             <br/><strong>Aerialensitivity:</strong> 1.00 a 1.40.
             <br/><strong>Controller Deadzone:</strong> 0.05 a 0.10. O menor valor possível antes do seu carro começar a virar sozinho (drift). Stick drift atrapalha flips.
@@ -142,7 +142,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 6: Square Deadzone (Steam Config)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Joysticks são redondos. O jogo espera inputs quadrados (cantos chegam a 100% de input).
             <br/>Na Steam Controller Settings, você pode forçar o input a ser "Square". Isso faz seu carro girar um pouco mais rápido nos aéreos diagonais (Air Roll). É avançado, mas muitos freestylers usam.
         </p>
@@ -151,7 +151,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 7: Voice Chat (Desligar)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Voice Chat do Rocket League raramente é usado para tática. Geralmente é distração.
             <br/>Recomendação: Desligue o Voice Chat nas opções de Gameplay e use apenas Quick Chat (Defending!, I got it!) para comunicação rápida.
         </p>
@@ -163,7 +163,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 8: Input Buffer (Opções de Gameplay)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Lá no final da aba Gameplay:
                 <br/><strong>Input Buffer:</strong>
                 <br/>- <strong>Default (Legacy):</strong> Bom para ping baixo.
@@ -176,7 +176,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 9: Cross-Platform Play",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você joga no PC para subir de rank, desligue o Cross-Platform?
                 <br/><strong>Não.</strong> Jogadores de console (PsyNet) geralmente têm mais input lag (TVs). É mais fácil ganhar deles. Mantenha ligado para filas mais rápidas e oponentes "nerfados" pelo hardware.
             </p>
@@ -185,7 +185,7 @@ export default function RocketLeagueGuide() {
         {
             title: "Capítulo 10: Nameplates (Placas de Nome)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Aumente o <strong>Nameplate Scale</strong> para 130% ou 140%.
                 <br/>Isso permite que você veja onde o oponente está atrás da bola de muito longe, ajudando a prever 50/50s.
             </p>

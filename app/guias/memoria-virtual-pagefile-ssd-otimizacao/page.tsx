@@ -40,7 +40,7 @@ export default function PagefileGuide() {
         {
             title: "Introdução: O que é Pagefile?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Quando a memória RAM enche, o Windows joga os dados menos usados para o disco. Isso é o Pagefile. Se você desativar, assim que a RAM bater 100%, o programa fecha (Crash To Desktop).
         </p>
       `
@@ -51,7 +51,7 @@ export default function PagefileGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Passo a Passo</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Digite "Ajustar a aparência e o desempenho do Windows" no Iniciar.
                     <br/>2. Aba Avançado > Memória Virtual > Alterar.
                     <br/>3. Desmarque "Gerenciar automaticamente".
@@ -65,7 +65,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 2: Tamanho Fixo vs Gerenciado",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Recomendamos <strong>Tamanho Fixo</strong> (Colocar o mesmo valor em Inicial e Máximo).
             <br/>Por quê? Se você deixa variável (ex: 1GB a 20GB), o Windows gasta CPU redimensionando o arquivo durante o jogo e fragmenta o disco. Fixando o tamanho, o arquivo é criado uma vez e fica estático e rápido.
         </p>
@@ -74,7 +74,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 3: Quanto colocar?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Regra prática para Gamers (Valores em MB):
             <br/>- <strong>8GB RAM:</strong> Defina 16000 MB (Precisa de muita ajuda).
             <br/>- <strong>16GB RAM:</strong> Defina 16000 MB ou 12000 MB. (Essencial para Warzone/Tarkov).
@@ -88,7 +88,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 4: SSD vs HD",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>NUNCA use Pagefile no HD mecânico.</strong>
             <br/>O HD é lento. Se o jogo precisar ler algo do pagefile no HD, você vai ter uma travada bruta (stutter) de 1 segundo.
             <br/>Configure o Pagefile APENAS no seu SSD mais rápido (NVMe). Desative (Sem arquivo de paginação) nos HDs secundários.
@@ -98,7 +98,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 5: Committed Memory (Carga)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Alguns jogos (Star Citizen, DCS World) crasham se o "System Commit" não puder chegar a 40GB.
             <br/>System Commit = RAM Física + Pagefile.
             <br/>Se você tem 16GB RAM, precisa de 24GB de Pagefile para chegar nos 40GB totais exigidos por esses simuladores pesados.
@@ -108,7 +108,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 6: O Mito do 'Desativar Pagefile'",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Antigamente, diziam para desativar o pagefile para "economizar vida útil do SSD".
             <br/>Hoje, os SSDs duram petabytes de escrita. Desativar o pagefile só causa instabilidade. O Windows é desenhado para usar pagefile, mesmo com 64GB de RAM. Mantenha ligado.
         </p>
@@ -120,7 +120,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 7: ISLC (Intelligent Standby List Cleaner)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Uma ferramenta que limpa o cache de standby do Windows automaticamente.
                 <br/>Útil se você sente que o jogo começa liso e começa a gaguejar (stutter) depois de 1 hora.
                 <br/>Configure para limpar quando a "Free Memory" for menor que 1024MB.
@@ -130,7 +130,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 8: Erro de Paginação (Tela Azul)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Tela azul "PAGE_FAULT_IN_NONPAGED_AREA"?
                 <br/>Isso geralmente é RAM defeituosa ou instável (XMP agressivo), não configuração de tamanho de pagefile. Rode o MemTest86.
             </p>
@@ -139,7 +139,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 9: Espaço em Disco",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Lembre-se: Se você definir 16GB de pagefile, você perde 16GB de espaço no SSD instantaneamente. Garanta que tem espaço livre. SSD cheio fica lento.
             </p>
             `
@@ -147,7 +147,7 @@ export default function PagefileGuide() {
         {
             title: "Capítulo 10: Reiniciar",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Toda alteração de pagefile exige reinicialização do Windows para aplicar.
             </p>
             `

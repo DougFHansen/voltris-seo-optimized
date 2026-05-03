@@ -38,7 +38,7 @@ export default function AssembleGuide() {
     {
       title: "Fase 0: A Bancada de Testes (Opcional mas Recomendado)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Antes de colocar tudo dentro do gabinete apertado, monte a placa-mãe em cima da caixa dela (papelão não conduz energia). Instale CPU, RAM e Cooler. Ligue a fonte e faça um curto nos pinos 'Power SW' com a chave de fenda para ligar.
             <br/><br/>
             <strong>Por que fazer isso?</strong> Se uma peça veio com defeito, é muito mais fácil trocar agora do que depois de ter parafusado tudo e organizado os cabos.
@@ -51,7 +51,7 @@ export default function AssembleGuide() {
         <div class="space-y-6">
             <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-yellow-500">
               <h4 class="text-white font-bold mb-2">1. Instalação da CPU (O Coração)</h4>
-              <p class="text-gray-400 text-sm mb-2">
+              <p class="text-gray-700 text-sm mb-2">
                 <strong>Intel (LGA 1700/1851):</strong> Levante a alavanca. Alinhe os chanfros (cortes) laterais da CPU com os pinos do socket. Solte suavemente. Baixe a alavanca (vai parecer que vai quebrar, é normal fazer força).
                 <br/><br/>
                 <strong>AMD (AM5):</strong> Igual à Intel. Alinhe o triângulo dourado.
@@ -62,7 +62,7 @@ export default function AssembleGuide() {
 
             <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-green-500">
               <h4 class="text-white font-bold mb-2">2. Memória RAM (Dual Channel)</h4>
-              <p class="text-gray-400 text-sm">
+              <p class="text-gray-700 text-sm">
                 Sua placa provavelmente tem 4 slots. Você deve usar o <strong>SEGUNDO</strong> e o <strong>QUARTO</strong> slot (contando a partir do processador) para ativar o Dual Channel.
                 <br/>Se usar slot 1 e 2, você perde 50% de performance.
                 <br/>Empurre até ouvir um *CLACK* satisfatório.
@@ -71,7 +71,7 @@ export default function AssembleGuide() {
 
             <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-blue-500">
               <h4 class="text-white font-bold mb-2">3. SSD M.2 (Armazenamento)</h4>
-              <p class="text-gray-400 text-sm">
+              <p class="text-gray-700 text-sm">
                 Remova o dissipador (heatsink) da placa-mãe. Remova o plástico azul do thermal pad. Insira o SSD em 45 graus. Parafuse com o parafuso minúsculo (cuidado para não cair dentro da fonte). Recoloque o dissipador.
               </p>
             </div>
@@ -82,14 +82,14 @@ export default function AssembleGuide() {
       title: "Fase 2: O Gabinete e a Fonte",
       content: `
         <div class="space-y-4">
-            <p class="text-gray-400">
+            <p class="text-gray-700">
                 <strong>1. IO Shield (Espelho):</strong> Se sua placa-mãe não tem espelho pré-instalado, coloque-o AGORA no buraco retangular traseiro do gabinete. Tem que fazer 'click' nas 4 pontas. Se esquecer, terá que desmontar tudo.
             </p>
-            <p class="text-gray-400">
+            <p class="text-gray-700">
                 <strong>2. Standoffs (Espaçadores):</strong> São os elevadores dourados/pretos onde a placa-mãe senta. Verifique se eles estão na posição correta para o tamanho da sua placa (ATX, Micro-ATX).
                 <br/><span class="text-red-400 font-bold">AVISO:</span> Se tiver um standoff sobrando embaixo da placa-mãe encostando no circuito, vai dar curto-circuito.
             </p>
-            <p class="text-gray-400">
+            <p class="text-gray-700">
                 <strong>3. Fonte (PSU):</strong> Instale a fonte. Se o gabinete tem filtro de poeira embaixo, o ventilador da fonte deve ficar virado para BAIXO (para pegar ar frio de fora).
             </p>
         </div>
@@ -101,7 +101,7 @@ export default function AssembleGuide() {
     {
       title: "Fase 3: O Pesadelo dos Cabos (Conexões)",
       content: `
-        <ul class="space-y-4 text-gray-400">
+        <ul class="space-y-4 text-gray-700">
             <li class="bg-gray-900 p-4 rounded border border-gray-700">
                 <strong class="text-[#31A8FF] block mb-1">EPS 8-pin (CPU)</strong>
                 Geralmente no canto superior esquerdo. Conecte ANTES de parafusar a placa-mãe se o gabinete for pequeno (sua mão não vai caber depois). Às vezes divide em 4+4.
@@ -131,7 +131,7 @@ export default function AssembleGuide() {
       title: "Fase 4: Finalização e Boot",
       content: `
           <div class="space-y-4">
-            <p class="text-gray-400">
+            <p class="text-gray-700">
                 1. Instale a Placa de Vídeo no primeiro slot PCIe (o reforçado com metal). Parafuse no gabinete.
                 <br/>2. Conecte o monitor na <strong>PLACA DE VÍDEO</strong>, não na placa-mãe (erro clássico).
                 <br/>3. Ligue a chave da fonte (atrás).
@@ -139,7 +139,7 @@ export default function AssembleGuide() {
             </p>
             <div class="bg-emerald-900/20 p-4 rounded border border-emerald-500/30">
                 <h4 class="text-emerald-400 font-bold mb-2">Deu vídeo? Sucesso!</h4>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Agora entre na BIOS (fique apertando DEL):
                     <br/>1. Ative o <strong>XMP / DOCP / EXPO</strong> para sua memória rodar na velocidade certa (ex: 6000MHz). Sem isso ela roda lenta (4800MHz).
                     <br/>2. Ative o <strong>Re-Size BAR</strong>.

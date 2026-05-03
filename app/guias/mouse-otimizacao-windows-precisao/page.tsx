@@ -40,7 +40,7 @@ export default function MouseGuide() {
         {
             title: "Introdução: O Inimigo (EPP)",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           "Aprimorar precisão do ponteiro" (Enhance Pointer Precision) é um nome mentiroso. O que ele faz é ACELERAÇÃO. Se você move o mouse rápido, o cursor anda mais. Se move devagar, anda menos. Isso impede que seu cérebro decore a distância exata para dar um flick shot.
         </p>
       `
@@ -51,7 +51,7 @@ export default function MouseGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Painel de Controle > Mouse</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Aba "Opções do Ponteiro".
                     <br/>2. <strong>DESMARQUE</strong> "Aprimorar precisão do ponteiro".
                     <br/>3. Mantenha a velocidade no risquinho <strong>6 de 11</strong> (Exatamente no meio).
@@ -64,7 +64,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 2: MarkC Mouse Fix (Registry)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Alguns jogos antigos (e até alguns novos em modo janela) ainda sofrem aceleração mesmo com a opção desmarcada.
             <br/>O <strong>MarkC Mouse Fix</strong> é um arquivo de registro (.reg) que remove a curva de aceleração do Windows permanentemente, forçando uma linha reta (1:1).
             <br/>Aplique de acordo com a escala do seu display (100%, 150%, etc).
@@ -74,7 +74,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 3: Polling Rate (Hz): 1000 vs 4000 vs 8000",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>1000Hz (1ms):</strong> O padrão dourado. Estável, consome pouca CPU.
             - <strong>4000Hz/8000Hz:</strong> Mais suave? Sim. Mas consome MUITA CPU. Se você tem um i5 antigo, usar 8000Hz vai fazer seu jogo travar (stutter) quando você mexer o mouse rápido.
             <br/>Recomendação: Use 1000Hz para garantir consistência, a menos que tenha um PC da NASA (i9 14900K).
@@ -87,7 +87,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 4: DPI (Dots Per Inch)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Mito: "DPI alto é mais preciso".
             <br/>Verdade: DPI alto tem menos latência de sensor, mas pega mais vibração da mão (jitter).
             <br/>- <strong>400/800 DPI:</strong> Padrão dos Pros de CS:GO/Valorant. Movimentos estáveis.
@@ -99,7 +99,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 5: Raw Input (Entrada Bruta)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Sempre ative <strong>Raw Input</strong> nas opções do jogo.
             <br/>Isso faz o jogo ler os dados direto do driver do mouse, ignorando as configurações do Windows (velocidade 6/11, aceleração, etc). É a forma mais segura de ter precisão.
         </p>
@@ -108,7 +108,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 6: Limpeza do Sensor",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Um fio de cabelo ou poeira no sensor faz a mira "girar" pro céu ou travar.
             <br/>Sopre o sensor regularmente. Use cotonete sem álcool se precisar.
             <br/>Lave seu Mousepad. Um pad sujo (com gordura da pele) muda o atrito (glide) e afeta a memória muscular.
@@ -118,7 +118,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 7: Mouse Feet (Skates)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Os pés de teflon (PTFE) gastam. Se seu mouse arranha, troque os skates (Tiger Arc, Corepad). Um deslize suave ajuda no micro-ajuste de mira.
         </p>
       `
@@ -129,7 +129,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 8: USB Power Saving",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Windows desliga portas USB para economizar energia.
                 <br/>Gerenciador de Dispositivos > Controladores USB > HUB Raiz USB > Gerenciamento de Energia.
                 <br/>Desmarque "O computador pode desligar o dispositivo para economizar energia". Isso evita que o mouse "durma" ou desconecte por milissegundos.
@@ -139,7 +139,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 9: Angle Snapping",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 No software do mouse (Logitech/Razer), verifique se <strong>Angle Snapping</strong> está OFF.
                 <br/>Essa função tenta fazer você desenhar linhas retas. Em jogos, isso impede que você faça micro-ajustes diagonais na cabeça do inimigo.
             </p>
@@ -148,7 +148,7 @@ export default function MouseGuide() {
         {
             title: "Capítulo 10: eDPI (DPI Efetivo)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Para comparar sensibilidade com amigos:
                 <br/>eDPI = DPI do Mouse * Sensibilidade no Jogo.
                 <br/>Ex: 800 DPI * 1.5 Sens = 1200 eDPI.

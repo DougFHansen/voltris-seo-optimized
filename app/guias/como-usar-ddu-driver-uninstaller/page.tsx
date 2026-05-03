@@ -40,7 +40,7 @@ export default function DDUGuide() {
         {
             title: "Quando usar o DDU?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Você não precisa usar o DDU toda vez que sai uma atualização de driver. Use-o apenas em três situações: 1) Você trocou de placa de vídeo (ex: saiu de AMD para Nvidia), 2) O driver atual está travando/dando tela azul, ou 3) Jogos estão com desempenho muito abaixo do esperado.
         </p>
 
@@ -48,7 +48,7 @@ export default function DDUGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🧹</span> Modo Limpeza Driver Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Entrar no Modo de Segurança é chato. O <strong>Voltris Optimizer</strong> tem um modo "Driver Clean" que reinicia o PC em modo seguro, executa a limpeza e bloqueia o Windows Update temporariamente para evitar que ele instale drivers genéricos antes de você instalar o oficial.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,7 +64,7 @@ export default function DDUGuide() {
         {
             title: "Passo 0: Preparação (Não pule!)",
             content: `
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
             <li>Baixe o <strong>DDU</strong> no site oficial (Wagnardsoft).</li>
             <li>Baixe o driver de vídeo <strong>MAIS NOVO</strong> para sua placa (site da Nvidia/AMD/Intel). Deixe o instalador na Área de Trabalho.</li>
             <li><strong>DESCONECTE A INTERNET (Wi-Fi ou Cabo).</strong> Isso é vital. Se você reiniciar com internet ligada, o Windows Update vai baixar e instalar um driver genérico em segundos, estragando todo o processo.</li>
@@ -74,10 +74,10 @@ export default function DDUGuide() {
         {
             title: "Passo 1: Entrando no Modo de Segurança",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O DDU funciona melhor sem outros programas rodando.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Segure a tecla <strong>SHIFT</strong> no teclado.</li>
             <li>Enquanto segura Shift, vá no Menu Iniciar > Ligar/Desligar > Reiniciar.</li>
             <li>O PC vai abrir uma tela azul de opções.</li>
@@ -90,7 +90,7 @@ export default function DDUGuide() {
         {
             title: "Passo 2: Usando o DDU",
             content: `
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Abra o DDU.exe.</li>
             <li>No lado direito, selecione "GPU".</li>
             <li>Selecione a marca (NVIDIA, AMD ou INTEL).</li>
@@ -103,10 +103,10 @@ export default function DDUGuide() {
         {
             title: "Passo 3: Instalação Limpa",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Agora que você está no Windows normal (ainda sem internet e com a tela meio pixelada):
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
             <li>Execute o instalador do driver que você baixou no Passo 0.</li>
             <li>Na instalação (Nvidia), escolha "Personalizada" e marque <strong>"Executar instalação limpa"</strong> (apenas por garantia).</li>
             <li>Após instalar, reinicie o PC mais uma vez.</li>
@@ -122,10 +122,10 @@ export default function DDUGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-yellow-400 font-bold mb-4 text-xl">Monitor sem som?</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Às vezes, drivers de áudio da GPU (Nvidia High Definition Audio) entram em conflito com o Realtek da placa-mãe.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     No DDU, no lugar de "GPU", selecione "Audio" e remova os drivers de áudio da Nvidia/AMD se você não usa o som do monitor/TV. Isso força o Windows a usar o som Padrão, resolvendo conflitos e chiados.
                 </p>
             </div>
@@ -137,7 +137,7 @@ export default function DDUGuide() {
         {
             title: "NVCleanInstall (Alternativa para Experientes)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você tem GPU Nvidia, existe uma ferramenta chamada <strong>NVCleanInstall</strong>. Ela permite instalar o driver <em>sem</em> a Telemetria, sem o GeForce Experience (se você não usa) e sem drivers 3D Vision inúteis. É um "Debloat" para o driver de vídeo, deixando-o mais leve e com menos processos de fundo.
             </p>
             `

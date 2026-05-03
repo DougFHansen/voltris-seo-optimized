@@ -41,7 +41,7 @@ export default function FrontendGuide() {
         {
             title: "Introdução: Playnite vs LaunchBox",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           - <strong>Playnite:</strong> Totalmente Grátis e Open Source. Interface Desktop muito funcional e Fullscreen customizável. Leve.
           - <strong>LaunchBox:</strong> Bonito, mas a versão "Big Box" (para TV) custa $30. Focado em visual de fliperama (vídeos de fundo).
           <br/>Recomendamos o Playnite para 90% dos usuários.
@@ -54,7 +54,7 @@ export default function FrontendGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Integrações</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     No primeiro setup, conecte suas contas:
                     <br/>- Steam (Precisa estar Público ou API Key).
                     <br/>- Epic Games, GOG, EA App, Ubisoft Connect.
@@ -69,7 +69,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 2: Configurando Emuladores",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Menu > Library > Configure Emulators.
             <br/>Clique em "Import". O Playnite escaneia seu PC buscando RetroArch, Yuzu, PCSX2, etc.
             <br/>Depois em "Scan Automatic" para buscar as ROMs nas pastas.
@@ -80,7 +80,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 3: Fullscreen Mode (Estilo Console)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Pressione F11.
             <br/>O Playnite entra em modo tela cheia navegável por controle (Xbox/PS).
             <br/>Vá em Settings > Layout. Instale temas como <strong>"PS5ish"</strong> ou <strong>"Xbox Series X"</strong>.
@@ -95,7 +95,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 4: Extensões Essenciais",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O poder do Playnite está nos Add-ons.
             <br/>- <strong>HowLongToBeat:</strong> Mostra o tempo para zerar o jogo na tela de detalhes.
             <br/>- <strong>SuccessStory:</strong> Puxa suas conquistas (Steam/RetroAchievements) e mostra no Playnite.
@@ -107,7 +107,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 5: Metadados (Scraping)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Playnite usa o IGDB por padrão.
             <br/>Ctrl+A (Selecionar tudo) > Download Metadata.
             <br/>Ele baixa Capa, Background, Ícone, Descrição, Desenvolvedor e Gênero.
@@ -118,7 +118,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 6: Scripts de Automação",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Settings > Scripts.
             <br/>Você pode configurar ações para "Antes de iniciar o jogo" e "Depois de fechar".
             <br/>Ex: <strong>"Mudar resolução do monitor para 4K antes de abrir, voltar para 1080p depois"</strong>.
@@ -129,7 +129,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 7: Categorias e Filtros",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Crie filtros inteligentes.
             <br/>Ex: "Jogos Instalados" + "Gênero: RPG" + "Tempo < 20h".
             <br/>Salve como um filtro rápido na barra lateral. Ajuda a combater o backlog.
@@ -142,7 +142,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 8: LaunchBox (Big Box)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você pagar pelo LaunchBox Premium ($75 lifetime), ganha o Big Box.
                 <br/>Ele tem transições 3D animadas, vídeos de roda de fliperama e "Attract Mode" (fica rodando demos quando ocioso). É visualmente superior, mas funcionalmente igual.
             </p>
@@ -151,7 +151,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 9: Backup",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Playnite é portátil.
                 <br/>Se você copiar a pasta do Playnite para um Pendrive, leva sua biblioteca inteira (banco de dados) configurada.
                 <br/>Faça backup da pasta periodicamente.
@@ -161,7 +161,7 @@ export default function FrontendGuide() {
         {
             title: "Capítulo 10: Splash Screens",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Extension: Extra Metadata Loader.
                 <br/>Adiciona vídeos de Logo de Console ou Loading Screens antes de abrir o jogo, dando uma transição suave.
             </p>

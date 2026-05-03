@@ -43,7 +43,7 @@ export default function KeyboardGuide() {
         {
             title: "Introdução: O Strafe Perfeito",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em jogos como CS2 e Valorant, você precisa parar totalmente de se mover para atirar com precisão. O tempo que você leva para soltar a tecla 'A' e apertar 'D' define se você ganha ou perde. Teclados <strong>Rapid Trigger</strong> zeram esse delay físico.
         </p>
       `
@@ -54,7 +54,7 @@ export default function KeyboardGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Como funciona</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Num teclado comum, você aperta a tecla até o fundo (4mm) e precisa soltar até o meio (2mm) para ela resetar.
                     <br/>No Rapid Trigger, a tecla reseta assim que você solta <strong>0.1mm</strong> em qualquer altura.
                     <br/>Isso significa que você pode "spamar" ADADADAD na velocidade da luz.
@@ -62,7 +62,7 @@ export default function KeyboardGuide() {
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Configuração Ideal (Wooting/DrunkDeer/Razer)</h4>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     - <strong>Actuation Point:</strong> 0.4mm a 1.0mm (Para não apertar sem querer).
                     - <strong>Rapid Trigger Sensitivity:</strong> 0.15mm (O mais sensível possível sem dar double-click falso).
                     - Aplique isso apenas nas teclas WASD. No G (Granada) ou R (Reload), use padrão para evitar erros.
@@ -74,7 +74,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 2: Snap Tap / SOCD (A Polêmica)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A Razer lançou o "Snap Tap". O que ele faz?
             <br/>Se você segura 'A' e aperta 'D' (sem soltar o 'A'), o teclado prioriza o 'D' instantaneamente.
             <br/>No teclado comum, segurar A+D faz você parar. Com Snap Tap, você muda de direção sem precisar de coordenação perfeita.
@@ -85,7 +85,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 3: Tachyon Mode (Latência)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             No software Wootility, ative o <strong>Tachyon Mode</strong>.
             <br/>Ele sacrifica os efeitos RGB complexos para processar o input do teclado em menos de 1ms.
             <br/>Luzinha bonita < Headshot.
@@ -98,7 +98,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 4: Configuração de Actuation por Tecla",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>WASD:</strong> Actuation 0.4mm + Rapid Trigger (Agilidade).
             - <strong>Spacebar (Pulo):</strong> Actuation 1.5mm (Evita pulos acidentais).
             - <strong>Shift/Ctrl:</strong> 1.0mm.
@@ -110,7 +110,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 5: Mod Tap (Wooting)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O DKS (Dynamic Keystroke) ou Mod Tap permite ações diferentes se você "tocar" ou "segurar".
             <br/>Exemplo: Tocar CapsLock = Ping. Segurar CapsLock = Walk (Shift).
             <br/>Isso otimiza o uso dos dedos mindinhos, muito útil em Fortnite (mais binds ao alcance).
@@ -120,7 +120,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 6: Polling Rate 8000Hz",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Teclados novos vêm com 8000Hz (Razer Huntsman V3 Pro).
             <br/>Vale a pena?
             <br/>Sim, mas consome CPU. Se você tem um i5 de 10ª geração ou inferior, use 1000Hz. Se tiver um Ryzen 7800X3D, use 8000Hz para latência mínima.
@@ -130,7 +130,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 7: Lubrificação e Mods",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Teclados Hall Effect (Wooting 60HE) permitem trocar switches e springs.
             <br/>Usar switches lubrificados (Lube 205g0) deixa o movimento da tecla mais suave, facilitando o controle preciso de 0.1mm. Não é só pelo som (Thock), é pela sensação tátil.
         </p>
@@ -142,7 +142,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 8: Otimização USB",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Conecte o teclado direto na placa-mãe (USB traseiro).
                 <br/>Nunca use HUBs USB ou porta frontal do gabinete.
                 <br/>Use portas USB 3.0 ou superior para garantir energia estável para o processador do teclado.
@@ -152,7 +152,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 9: Alternativas Baratas",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Wooting é caro.
                 <br/>Opções custo-benefício 2026:
                 <br/>- <strong>DrunkDeer A75/G65:</strong> 90% da performance, metade do preço.
@@ -164,7 +164,7 @@ export default function KeyboardGuide() {
         {
             title: "Capítulo 10: Limpeza",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Poeira e cabelos podem entrar no sensor magnético e causar "chatter" (tecla falhando ou ativando sozinha).
                 <br/>Mantenha o teclado limpo. Hall Effect é mais sensível à sujeira que contato metálico.
             </p>

@@ -41,7 +41,7 @@ export default function VideoDriverGuide() {
     {
       title: "Por Que Atualizar Drivers de Vídeo? A Importância Crítica em 2026",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O driver de vídeo é o <strong>manual de instruções</strong> que o Windows usa para conversar com sua placa de vídeo. Sem o driver correto, sua GPU de R$ 3.000 é apenas um pedaço de metal caro. Em 2026, as fabricantes lançam atualizações chamadas <strong>'Game Ready' ou 'Studio'</strong> quase toda semana, corrigindo bugs específicos de lançamentos de jogos, otimizando o uso de novas tecnologias como <strong>Ray Tracing, DLSS 4.0, FSR 4.0, AV1 Encoding</strong> e melhorando performance em geral.
         </p>
         
@@ -49,14 +49,14 @@ export default function VideoDriverGuide() {
             <h4 class="text-xl font-bold text-purple-300 mb-4">Arquitetura de Drivers e Compatibilidade</h4>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Modelos de Driver Modernos</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
               Em 2026, os drivers de vídeo utilizam arquiteturas mais eficientes que se comunicam diretamente com as APIs modernas:
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-green-400 mb-2">DirectX 12 Ultimate</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Suporte a Ray Tracing em tempo real</li>
                         <li>• Variable Rate Shading (VRS)</li>
                         <li>• Mesh Shaders para geometria complexa</li>
@@ -66,7 +66,7 @@ export default function VideoDriverGuide() {
                 
                 <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-green-400 mb-2">Vulkan 1.3 e OpenGL Next</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Low-level access para menor overhead</li>
                         <li>• Multi-threading para CPU eficiente</li>
                         <li>• Cross-platform compatibility</li>
@@ -116,28 +116,28 @@ export default function VideoDriverGuide() {
       title: "Tipos de Drivers: Game Ready vs Studio vs WHQL vs Beta",
       content: `
         <h4 class="text-white font-bold mb-3">🛡️ Drivers WHQL (Windows Hardware Quality Labs)</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           São os drivers <strong>mais estáveis e testados</strong> pelas fabricantes. Passaram por rigorosos testes da Microsoft e são recomendados para <strong>uso diário e produtividade</strong>.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎮 Drivers Game Ready (NVIDIA) e Drivers Oficiais (AMD)</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Lançados com otimizações para <strong>jogos recém-lançados</strong> e novas tecnologias. São mais novos que WHQL e podem ter pequenos bugs, mas oferecem melhor desempenho em jogos recentes.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎬 Drivers Studio (NVIDIA)</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Otimizados para <strong>criação de conteúdo</strong> (Blender, Adobe Premiere, DaVinci Resolve, etc). Se você é designer, editor de vídeo ou streamer, estes drivers oferecem melhor estabilidade e performance em softwares criativos.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🧪 Drivers Beta e Opcionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Versões experimentais com novas funcionalidades. <strong>NÃO são recomendadas</strong> para uso diário. Apenas para testes e desenvolvimento.
         </p>
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mt-6">
           <h4 class="text-blue-400 font-bold mb-2">💡 Qual Driver Escolher?</h4>
-          <ul class="list-disc list-inside text-sm text-gray-400 space-y-2">
+          <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
             <li><strong>Jogador casual:</strong> Game Ready (NVIDIA) ou WHQL (AMD)</li>
             <li><strong>Jogador competitivo:</strong> Game Ready (NVIDIA) ou WHQL (AMD)</li>
             <li><strong>Criador de conteúdo:</strong> Studio (NVIDIA) ou WHQL (AMD)</li>
@@ -151,13 +151,13 @@ export default function VideoDriverGuide() {
       content: `
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mb-6">
           <h4 class="text-amber-400 font-bold mb-2">⚠️ NUNCA Use Programas como Driver Booster ou Sites de Terceiros!</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Sites como "driverpack.net", "driverscape.com" ou programas como "Driver Booster", "Snappy Driver Installer" instalam drivers genéricos ou desatualizados que podem causar <strong>tela azul, instabilidade e perda de performance</strong>. Use SEMPRE os sites oficiais.
           </p>
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📥 Links Oficiais para Download</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Fabricante</th>
@@ -190,7 +190,7 @@ export default function VideoDriverGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">📱 Aplicativos Oficiais (Mais Práticos)</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>NVIDIA App:</strong> Sucessor do GeForce Experience. Detecta sua GPU automaticamente e notifica sobre novos drivers.</li>
           <li><strong>AMD Software: Adrenalin Edition:</strong> Instala drivers e fornece controle avançado de overclock e RGB.</li>
           <li><strong>Intel Arc & Graphics Control Panel:</strong> Para placas Intel Arc e vídeo integrado Intel.</li>
@@ -201,16 +201,16 @@ export default function VideoDriverGuide() {
       title: "Instalação Expressa vs Instalação Limpa (O Guia Definitivo)",
       content: `
         <h4 class="text-white font-bold mb-3">⚡ Instalação Expressa (Recomendada para Atualizações)</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A instalação expressa substitui os arquivos do driver antigo pelos novos. É rápida e suficiente na maioria dos casos, especialmente quando você já tinha um driver da mesma marca (ex: atualizando de NVIDIA 531.18 para 531.41).
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🧹 Instalação Limpa (Recomendada para Problemas)</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A instalação limpa REMOVE completamente o driver antigo antes de instalar o novo. É o método mais seguro para resolver problemas como:
         </p>
         
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li>Tela azul relacionada a <code>nvidia.sys</code>, <code>atikmpag.sys</code> ou <code>igdkmd64.sys</code></li>
           <li>Artefatos gráficos persistentes</li>
           <li>Problemas de desempenho inexplicáveis</li>
@@ -220,7 +220,7 @@ export default function VideoDriverGuide() {
         
         <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20 mt-6">
           <h4 class="text-emerald-400 font-bold mb-2">🔧 Como Fazer uma Instalação Limpa</h4>
-          <ol class="list-decimal list-inside text-sm text-gray-400 space-y-2">
+          <ol class="list-decimal list-inside text-sm text-gray-700 space-y-2">
             <li>Na instalação da NVIDIA, selecione <strong>'Personalizada'</strong> e marque a caixa <strong>'Executar instalação limpa'</strong>.</li>
             <li>No processo da AMD, a instalação é limpa por padrão.</li>
             <li>Para o método mais completo, use o <strong>Display Driver Uninstaller (DDU)</strong> (veja próxima seção).</li>
@@ -231,12 +231,12 @@ export default function VideoDriverGuide() {
     {
       title: "Usando Display Driver Uninstaller (DDU) - O Método Profissional",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O <strong>DDU (Display Driver Uninstaller)</strong> é a ferramenta profissional para remover completamente drivers de vídeo do sistema. É a maneira mais eficaz de fazer uma "base limpa" antes de instalar um novo driver.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">📥 Como Usar o DDU</h4>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Baixe o DDU do site oficial (Guru3D.com ou GitHub do Wagnard).</li>
           <li>Descompacte o arquivo ZIP em uma pasta.</li>
           <li>Execute o DDU em <strong>modo de segurança</strong> (recomendado) ou modo normal.</li>
@@ -247,7 +247,7 @@ export default function VideoDriverGuide() {
         
         <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20 mt-6">
           <h4 class="text-rose-400 font-bold mb-2">⚠️ Avisos Importantes sobre o DDU</h4>
-          <ul class="list-disc list-inside text-sm text-gray-400 space-y-2">
+          <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
             <li>Use o DDU apenas com o Windows saudável (não use se o sistema estiver com BSOD frequente).</li>
             <li>O DDU remove TODOS os drivers de vídeo do sistema, então você terá tela preta por alguns minutos após reiniciar.</li>
             <li>NÃO use o DDU para atualizações normais. Use apenas quando estiver com problemas persistentes.</li>
@@ -258,12 +258,12 @@ export default function VideoDriverGuide() {
     {
       title: "Drivers da Microsoft vs Drivers Oficiais (Qual Escolher?)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Muitas vezes, o <strong>Windows Update</strong> oferece um driver de vídeo em 'Atualizações Opcionais'. Vejamos as diferenças:
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Drivers do Windows Update (DCH)</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li>São versões <strong>modificadas e simplificadas</strong> dos drivers oficiais.</li>
           <li><strong>NÃO possuem</strong> o painel de controle da placa de vídeo (NVIDIA Control Panel, AMD Radeon Settings).</li>
           <li>São mais estáveis, mas <strong>limitam recursos avançados</strong>.</li>
@@ -271,7 +271,7 @@ export default function VideoDriverGuide() {
         </ul>
         
         <h4 class="text-white font-bold mb-3 mt-6">🚀 Drivers Oficiais (DirectX)</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li>São as versões <strong>completas e originais</strong> fornecidas pela NVIDIA, AMD ou Intel.</li>
           <li><strong>Contêm todos os recursos</strong> e painéis de controle.</li>
           <li>Oferecem melhor desempenho e suporte a tecnologias avançadas.</li>
@@ -280,7 +280,7 @@ export default function VideoDriverGuide() {
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mt-6">
           <h4 class="text-blue-400 font-bold mb-2">💡 Recomendação</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             <strong>Sempre prefira os drivers baixados diretamente do site da fabricante</strong> (NVIDIA/AMD/Intel) para ter todos os recursos de performance e controle ativos. Os drivers do Windows Update são uma alternativa válida para uso básico, mas limitam significativamente o potencial da sua GPU.
           </p>
         </div>
@@ -294,7 +294,7 @@ export default function VideoDriverGuide() {
         <div class="space-y-4">
           <div>
             <p class="text-white font-bold">Problema: Tela azul logo após instalar novo driver (STOP: 0x00000116, 0x0000000A)</p>
-            <p class="text-sm text-gray-400 mt-2">
+            <p class="text-sm text-gray-700 mt-2">
               <strong>Causas:</strong> Driver incompatível, conflito com software de overclock, ou driver antigo não removido completamente.<br/>
               <strong>Soluções:</strong> Reinicie em modo de segurança e use o DDU para limpar. Instale um driver mais antigo estável (WHQL) ou o mais recente novamente após limpeza completa.
             </p>
@@ -302,7 +302,7 @@ export default function VideoDriverGuide() {
           
           <div>
             <p class="text-white font-bold">Problema: Jogos travam ou apresentam artefatos gráficos</p>
-            <p class="text-sm text-gray-400 mt-2">
+            <p class="text-sm text-gray-700 mt-2">
               <strong>Causas:</strong> Driver com bug, configurações de overclock instáveis, ou driver desatualizado para o jogo.<br/>
               <strong>Soluções:</strong> Verifique se há atualização do driver. Se problema persistir, reverta para versão WHQL estável. Verifique configurações de overclock.
             </p>
@@ -310,7 +310,7 @@ export default function VideoDriverGuide() {
           
           <div>
             <p class="text-white font-bold">Problema: Temperatura da GPU muito alta após atualização</p>
-            <p class="text-sm text-gray-400 mt-2">
+            <p class="text-sm text-gray-700 mt-2">
               <strong>Causas:</strong> Nova política de energia ou bug na gestão térmica do driver.<br/>
               <strong>Soluções:</strong> Atualize o firmware da BIOS da placa mãe. Verifique configurações do software de controle de ventoinha. Se necessário, reverta o driver temporariamente.
             </p>
@@ -318,7 +318,7 @@ export default function VideoDriverGuide() {
           
           <div>
             <p class="text-white font-bold">Problema: Driver não instala ou dá erro 2869 ou 0x80070643</p>
-            <p class="text-sm text-gray-400 mt-2">
+            <p class="text-sm text-gray-700 mt-2">
               <strong>Causas:</strong> Permissões insuficientes, arquivos corrompidos, ou conflito com antivírus.<br/>
               <strong>Soluções:</strong> Execute como administrador. Desative temporariamente o antivírus. Use o DDU para limpar base do driver antes de reinstalar.
             </p>
@@ -330,11 +330,11 @@ export default function VideoDriverGuide() {
       title: "Compatibilidade e Versionamento: Como Identificar o Driver Correto",
       content: `
         <h4 class="text-white font-bold mb-3">🔍 Identificação de Modelos e Séries de GPUs</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           É crucial identificar corretamente sua placa de vídeo para baixar o driver adequado. Confira como identificar diferentes séries e modelos:
         </p>
         
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Fabricante</th>
@@ -366,14 +366,14 @@ export default function VideoDriverGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">📋 Como Verificar Informações da GPU</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Existem várias maneiras de identificar sua placa de vídeo:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-amber-400 font-bold mb-2">Método 1: Dxdiag</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>1. Pressione Win + R</li>
               <li>2. Digite "dxdiag" e pressione Enter</li>
               <li>3. Verifique a aba "Tela"</li>
@@ -383,7 +383,7 @@ export default function VideoDriverGuide() {
           
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-amber-400 font-bold mb-2">Método 2: Gerenciador de Dispositivos</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>1. Win + X → Gerenciador de Dispositivos</li>
               <li>2. Expanda "Adaptadores de Exibição"</li>
               <li>3. Anote o nome completo da GPU</li>
@@ -397,17 +397,17 @@ export default function VideoDriverGuide() {
       title: "Ferramentas Avançadas para Gerenciamento de Drivers",
       content: `
         <h4 class="text-white font-bold mb-3">🛠️ Ferramentas Profissionais</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Além das ferramentas oficiais, existem utilitários avançados para gerenciamento de drivers:
         </p>
         
         <div class="space-y-4">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/30">
             <h5 class="text-blue-400 font-bold mb-2">Display Driver Uninstaller (DDU)</h5>
-            <p class="text-sm text-gray-400 mb-2">
+            <p class="text-sm text-gray-700 mb-2">
               Ferramenta profissional para remoção completa de drivers de vídeo. Remove até mesmo vestígios de configurações anteriores.
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 ml-4">
+            <ul class="text-sm text-gray-700 space-y-1 ml-4">
               <li>• Modo de segurança recomendado</li>
               <li>• Remove drivers da NVIDIA, AMD e Intel</li>
               <li>• Limpa registros e pastas de configuração</li>
@@ -417,10 +417,10 @@ export default function VideoDriverGuide() {
           
           <div class="bg-emerald-900/10 p-4 rounded-lg border border-emerald-500/30">
             <h5 class="text-emerald-400 font-bold mb-2">GPU-Z</h5>
-            <p class="text-sm text-gray-400 mb-2">
+            <p class="text-sm text-gray-700 mb-2">
               Utilitário para identificação precisa de hardware de GPU e informações de driver instalado.
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 ml-4">
+            <ul class="text-sm text-gray-700 space-y-1 ml-4">
               <li>• Identifica modelo exato da GPU</li>
               <li>• Mostra BIOS da placa de vídeo</li>
               <li>• Informa versão e data do driver</li>
@@ -430,10 +430,10 @@ export default function VideoDriverGuide() {
           
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/30">
             <h5 class="text-purple-400 font-bold mb-2">MSI Afterburner</h5>
-            <p class="text-sm text-gray-400 mb-2">
+            <p class="text-sm text-gray-700 mb-2">
               Além de overclock, permite monitoramento e validação de estabilidade após atualização de driver.
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 ml-4">
+            <ul class="text-sm text-gray-700 space-y-1 ml-4">
               <li>• Overclock e controle de ventoinhas</li>
               <li>• Overlay de informações em jogos</li>
               <li>• Teste de estresse para validar driver</li>
@@ -447,12 +447,12 @@ export default function VideoDriverGuide() {
       title: "Considerações Específicas por Fabricante",
       content: `
         <h4 class="text-white font-bold mb-3">🏭 NVIDIA: Particularidades</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A NVIDIA oferece diferentes categorias de drivers com propósitos específicos:
         </p>
         
         <div class="bg-gradient-to-r from-green-900/20 to-teal-900/20 p-4 rounded-lg border border-green-500/30 mb-6">
-          <ul class="text-sm text-gray-400 space-y-2">
+          <ul class="text-sm text-gray-700 space-y-2">
             <li><strong>Game Ready Drivers:</strong> Otimizados para novos lançamentos de jogos, com correções específicas e melhor desempenho em títulos recentes.</li>
             <li><strong>Studio Drivers:</strong> Testados para estabilidade em aplicações criativas (Blender, Adobe Creative Suite, etc).</li>
             <li><strong>Quantum Drivers:</strong> Versões experimentais com otimizações para tecnologias emergentes (DLSS 4.0, Ray Reconstruction).</li>
@@ -461,12 +461,12 @@ export default function VideoDriverGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3">🏭 AMD: Particularidades</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A AMD oferece drivers com foco em diferentes tipos de usuários:
         </p>
         
         <div class="bg-gradient-to-r from-blue-900/20 to-indigo-900/20 p-4 rounded-lg border border-blue-500/30 mb-6">
-          <ul class="text-sm text-gray-400 space-y-2">
+          <ul class="text-sm text-gray-700 space-y-2">
             <li><strong>Adrenalin Software:</strong> Inclui driver e painel de controle completo com recursos de streaming e monitoramento.</li>
             <li><strong>WHQL Certified:</strong> Drivers testados e certificados pela Microsoft para máxima estabilidade.</li>
             <li><strong>Feature Releases:</strong> Incluem novos recursos e otimizações para jogos recentes.</li>
@@ -475,12 +475,12 @@ export default function VideoDriverGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3">🏭 Intel: Particularidades</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A Intel tem uma abordagem mais integrada com seus drivers:
         </p>
         
         <div class="bg-gradient-to-r from-orange-900/20 to-red-900/20 p-4 rounded-lg border border-orange-500/30">
-          <ul class="text-sm text-gray-400 space-y-2">
+          <ul class="text-sm text-gray-700 space-y-2">
             <li><strong>Intel Arc & Graphics Control Panel:</strong> Interface unificada para placas dedicadas e integradas.</li>
             <li><strong>Optimization Database:</strong> Base de dados com otimizações automáticas para milhares de jogos.</li>
             <li><strong>Intel XeSS:</strong> Tecnologia de upscale proprietária para placas Arc.</li>
@@ -496,7 +496,7 @@ export default function VideoDriverGuide() {
             <h4 class="text-xl font-bold text-cyan-300 mb-4">Validação Após Atualização de Driver</h4>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Testes de Estabilidade</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
               Após instalar um novo driver, é importante validar a estabilidade do sistema:
             </p>
             
@@ -507,7 +507,7 @@ export default function VideoDriverGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-green-400">Teste de Estresse com FurMark</h6>
-                        <p class="text-sm text-gray-400">Aplicação de carga máxima por 10-15 minutos para verificar estabilidade térmica e elétrica</p>
+                        <p class="text-sm text-gray-700">Aplicação de carga máxima por 10-15 minutos para verificar estabilidade térmica e elétrica</p>
                     </div>
                 </div>
                 
@@ -517,7 +517,7 @@ export default function VideoDriverGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-green-400">Benchmark de Jogos</h6>
-                        <p class="text-sm text-gray-400">Execução de benchmarks em jogos conhecidos para comparar performance com driver anterior</p>
+                        <p class="text-sm text-gray-700">Execução de benchmarks em jogos conhecidos para comparar performance com driver anterior</p>
                     </div>
                 </div>
                 
@@ -527,20 +527,20 @@ export default function VideoDriverGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-green-400">Monitoramento de Temperatura</h6>
-                        <p class="text-sm text-gray-400">Verificação de temperaturas máximas durante carga para garantir funcionamento adequado</p>
+                        <p class="text-sm text-gray-700">Verificação de temperaturas máximas durante carga para garantir funcionamento adequado</p>
                     </div>
                 </div>
             </div>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Indicadores de Estabilidade</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
               Critérios para determinar se o driver está estável:
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-red-900/20 p-4 rounded-lg border border-red-500/30">
                     <h6 class="font-bold text-red-400 mb-2">Sinais de Instabilidade</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Tela azul (BSOD) relacionado a driver</li>
                         <li>• Artefatos gráficos persistentes</li>
                         <li>• Travamentos em jogos ou aplicações</li>
@@ -550,7 +550,7 @@ export default function VideoDriverGuide() {
                 
                 <div class="bg-blue-900/20 p-4 rounded-lg border border-blue-500/30">
                     <h6 class="font-bold text-blue-400 mb-2">Sinais de Estabilidade</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Sem crashes ou artefatos</li>
                         <li>• Temperaturas normais (<80°C)</li>
                         <li>• Performance consistente</li>
@@ -568,14 +568,14 @@ export default function VideoDriverGuide() {
             <h4 class="text-xl font-bold text-teal-300 mb-4">Boas Práticas para Manutenção de Drivers</h4>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Rotina Mensal</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
               Mantenha seus drivers atualizados com esta rotina mensal:
             </p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-green-400 mb-2">Verificação de Drivers</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Verifique versão atual do driver</li>
                         <li>• Compare com versão mais recente</li>
                         <li>• Consulte notas de release</li>
@@ -585,7 +585,7 @@ export default function VideoDriverGuide() {
                 
                 <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                     <h6 class="font-bold text-green-400 mb-2">Monitoramento de Performance</h6>
-                    <ul class="text-sm text-gray-400 space-y-1">
+                    <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Registre benchmarks periódicos</li>
                         <li>• Monitore temperaturas</li>
                         <li>• Verifique uso de GPU</li>
@@ -595,7 +595,7 @@ export default function VideoDriverGuide() {
             </div>
             
             <h5 class="text-lg font-semibold text-white mt-6 mb-3">Atualizações Importantes</h5>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
               Momentos críticos para atualização de drivers:
             </p>
             
@@ -606,7 +606,7 @@ export default function VideoDriverGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-blue-400">Lançamento de Novos Jogos</h6>
-                        <p class="text-sm text-gray-400">Drivers Game Ready para otimizações específicas</p>
+                        <p class="text-sm text-gray-700">Drivers Game Ready para otimizações específicas</p>
                     </div>
                 </div>
                 
@@ -616,7 +616,7 @@ export default function VideoDriverGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-blue-400">Correções de Segurança</h6>
-                        <p class="text-sm text-gray-400">Atualizações que corrigem vulnerabilidades</p>
+                        <p class="text-sm text-gray-700">Atualizações que corrigem vulnerabilidades</p>
                     </div>
                 </div>
                 
@@ -626,7 +626,7 @@ export default function VideoDriverGuide() {
                     </div>
                     <div>
                         <h6 class="font-bold text-blue-400">Suporte a Novas Tecnologias</h6>
-                        <p class="text-sm text-gray-400">Implementações de DLSS, FSR, Ray Tracing, etc.</p>
+                        <p class="text-sm text-gray-700">Implementações de DLSS, FSR, Ray Tracing, etc.</p>
                     </div>
                 </div>
             </div>
@@ -639,7 +639,7 @@ export default function VideoDriverGuide() {
       {
           title: "Arquitetura de Drivers de Vídeo e Comunicação com Hardware",
           content: `
-          <p class="mb-6 text-gray-400 leading-relaxed">
+          <p class="mb-6 text-gray-700 leading-relaxed">
             A arquitetura dos drivers de vídeo modernos é extremamente complexa e envolve múltiplas camadas de abstração entre o sistema operacional e o hardware da GPU. Compreender esta arquitetura é essencial para entender como as atualizações de driver afetam o desempenho e a estabilidade do sistema.
           </p>
               
@@ -647,8 +647,8 @@ export default function VideoDriverGuide() {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
               <h5 class="text-blue-400 font-bold mb-3">Camada de API (User Mode)</h5>
-              <p class="text-gray-400 text-sm mb-3">Interfaces com aplicações e APIs gráficas:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Interfaces com aplicações e APIs gráficas:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>DirectX 12, Vulkan, OpenGL interfaces</li>
                 <li>Shader compilation pipeline</li>
                 <li>Resource management</li>
@@ -657,8 +657,8 @@ export default function VideoDriverGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
               <h5 class="text-purple-400 font-bold mb-3">Camada de Hardware (Kernel Mode)</h5>
-              <p class="text-gray-400 text-sm mb-3">Comunicação direta com o hardware:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Comunicação direta com o hardware:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>GPU scheduling and queuing</li>
                 <li>Memory management unit (MMU)</li>
                 <li>Firmware interaction</li>
@@ -669,7 +669,7 @@ export default function VideoDriverGuide() {
               
           <h4 class="text-white font-bold mb-3 mt-6">Componentes Críticos do Driver</h4>
           <div class="overflow-x-auto">
-            <table class="w-full text-xs text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+            <table class="w-full text-xs text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
               <thead class="bg-gray-800">
                 <tr>
                   <th class="p-2 text-left">Componente</th>
@@ -708,10 +708,10 @@ export default function VideoDriverGuide() {
           </div>
               
           <h4 class="text-white font-bold mb-3 mt-6">Processo de Inicialização do Driver</h4>
-          <p class="mb-4 text-gray-400">
+          <p class="mb-4 text-gray-700">
             Quando o driver é carregado, ocorre uma série de verificações e inicializações críticas:
           </p>
-          <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+          <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Hardware Detection:</strong> Verificação do modelo exato da GPU e firmware</li>
             <li><strong>Memory Mapping:</strong> Alocação e mapeamento da memória de vídeo</li>
             <li><strong>Interrupt Setup:</strong> Configuração de vetores de interrupção</li>
@@ -723,7 +723,7 @@ export default function VideoDriverGuide() {
       {
           title: "Otimizações Avançadas e Algoritmos de Renderização",
           content: `
-          <p class="mb-6 text-gray-400 leading-relaxed">
+          <p class="mb-6 text-gray-700 leading-relaxed">
             Os drivers modernos implementam algoritmos sofisticados de otimização que podem variar significativamente entre versões. Estas otimizações são específicas para cada jogo ou aplicação e são constantemente atualizadas para melhorar o desempenho.
           </p>
               
@@ -731,8 +731,8 @@ export default function VideoDriverGuide() {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 p-5 rounded-xl border border-cyan-500/30">
               <h5 class="text-cyan-400 font-bold mb-3">Dynamic Workload Balancing</h5>
-              <p class="text-gray-400 text-sm mb-3">Distribuição inteligente de carga:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Distribuição inteligente de carga:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>Adaptive shader scheduling</li>
                 <li>Compute queue prioritization</li>
                 <li>Memory bandwidth optimization</li>
@@ -741,8 +741,8 @@ export default function VideoDriverGuide() {
             </div>
             <div class="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 p-5 rounded-xl border border-emerald-500/30">
               <h5 class="text-emerald-400 font-bold mb-3">Predictive Resource Management</h5>
-              <p class="text-gray-400 text-sm mb-3">Gestão preditiva de recursos:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Gestão preditiva de recursos:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>Texture streaming prediction</li>
                 <li>Geometry cache optimization</li>
                 <li>Vertex buffer pre-loading</li>
@@ -752,11 +752,11 @@ export default function VideoDriverGuide() {
           </div>
               
           <h4 class="text-white font-bold mb-3 mt-6">Otimizações Específicas por Jogo</h4>
-          <p class="mb-4 text-gray-400">
+          <p class="mb-4 text-gray-700">
             As atualizações de driver frequentemente incluem otimizações específicas para novos lançamentos:
           </p>
           <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
               <thead class="bg-gray-800">
                 <tr>
                   <th class="p-3 text-left">Jogo</th>
@@ -803,7 +803,7 @@ export default function VideoDriverGuide() {
       {
           title: "Diagnóstico Profundo e Análise de Desempenho",
           content: `
-          <p class="mb-6 text-gray-400 leading-relaxed">
+          <p class="mb-6 text-gray-700 leading-relaxed">
             Para profissionais e entusiastas, existem ferramentas e técnicas avançadas para diagnosticar problemas de driver e analisar o desempenho da GPU em detalhes. Estas técnicas ajudam a identificar gargalos e problemas específicos.
           </p>
               
@@ -811,8 +811,8 @@ export default function VideoDriverGuide() {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20">
               <h5 class="text-rose-400 font-bold mb-3">NVIDIA Nsight Graphics</h5>
-              <p class="text-gray-400 text-sm mb-3">Ferramenta de análise profunda:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Ferramenta de análise profunda:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>Frame capture and analysis</li>
                 <li>Shader debugging capabilities</li>
                 <li>GPU workload profiling</li>
@@ -821,8 +821,8 @@ export default function VideoDriverGuide() {
             </div>
             <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20">
               <h5 class="text-amber-400 font-bold mb-3">AMD GPUOpen Tools</h5>
-              <p class="text-gray-400 text-sm mb-3">Suite de desenvolvedor AMD:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Suite de desenvolvedor AMD:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>Radeon GPU Profiler (RGP)</li>
                 <li>Radeon Developer Panel</li>
                 <li>CodeXL performance analyzer</li>
@@ -832,11 +832,11 @@ export default function VideoDriverGuide() {
           </div>
               
           <h4 class="text-white font-bold mb-3 mt-6">Métricas de Desempenho Críticas</h4>
-          <p class="mb-4 text-gray-400">
+          <p class="mb-4 text-gray-700">
             Indicadores importantes para avaliação de performance de driver:
           </p>
           <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
               <thead class="bg-gray-800">
                 <tr>
                   <th class="p-3 text-left">Métrica</th>
@@ -878,19 +878,19 @@ export default function VideoDriverGuide() {
       {
           title: "Atualizações e Estratégias de Migração",
           content: `
-          <p class="mb-6 text-gray-400 leading-relaxed">
+          <p class="mb-6 text-gray-700 leading-relaxed">
             A gestão de drivers em ambientes profissionais e corporativos requer estratégias específicas para garantir estabilidade, segurança e compatibilidade com aplicações críticas. Estas estratégias envolvem testes, validação e planejamento cuidadoso.
           </p>
               
           <h4 class="text-white font-bold mb-3 mt-6">Estratégias de Atualização Corporativa</h4>
-          <p class="mb-4 text-gray-400">
+          <p class="mb-4 text-gray-700">
             Para ambientes empresariais e profissionais, a atualização de drivers requer planejamento:
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gradient-to-br from-indigo-900/20 to-purple-900/20 p-5 rounded-xl border border-indigo-500/30">
               <h5 class="text-indigo-400 font-bold mb-3">Staged Rollout Approach</h5>
-              <p class="text-gray-400 text-sm mb-3">Implantação gradual e controlada:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Implantação gradual e controlada:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>Testar em máquinas piloto primeiro</li>
                 <li>Validar com aplicações críticas</li>
                 <li>Monitorar por 48-72h antes de expandir</li>
@@ -899,8 +899,8 @@ export default function VideoDriverGuide() {
             </div>
             <div class="bg-gradient-to-br from-amber-900/20 to-yellow-900/20 p-5 rounded-xl border border-amber-500/30">
               <h5 class="text-amber-400 font-bold mb-3">Long-term Support (LTS)</h5>
-              <p class="text-gray-400 text-sm mb-3">Versões estáveis e suportadas:</p>
-              <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+              <p class="text-gray-700 text-sm mb-3">Versões estáveis e suportadas:</p>
+              <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                 <li>Usar drivers WHQL para estabilidade</li>
                 <li>Evitar versões beta em produção</li>
                 <li>Planejar atualizações trimestrais</li>
@@ -910,10 +910,10 @@ export default function VideoDriverGuide() {
           </div>
               
           <h4 class="text-white font-bold mb-3 mt-6">Checklist de Validação Pós-Atualização</h4>
-          <p class="mb-4 text-gray-400">
+          <p class="mb-4 text-gray-700">
             Procedimentos críticos para validar a instalação de novos drivers:
           </p>
-          <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+          <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>System Stability:</strong> Monitorar por 24-48h sem crashes ou BSODs</li>
             <li><strong>Performance Baseline:</strong> Comparar benchmarks com versão anterior</li>
             <li><strong>Application Compatibility:</strong> Testar aplicações críticas do negócio</li>
@@ -1008,7 +1008,7 @@ export default function VideoDriverGuide() {
     {
       title: "Histórico e Evolução dos Drivers de Vídeo",
       content: `
-        <p class="mb-4 text-gray-400">A evolução dos drivers de vídeo tem sido um fator crítico para o avanço da computação gráfica. Desde os primeiros adaptadores gráficos monocromáticos até as modernas GPUs capazes de ray tracing em tempo real, os drivers têm desempenhado um papel fundamental na mediação entre software e hardware.</p>
+        <p class="mb-4 text-gray-700">A evolução dos drivers de vídeo tem sido um fator crítico para o avanço da computação gráfica. Desde os primeiros adaptadores gráficos monocromáticos até as modernas GPUs capazes de ray tracing em tempo real, os drivers têm desempenhado um papel fundamental na mediação entre software e hardware.</p>
         
         <div class="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-6 rounded-xl border border-purple-500/30 my-6">
           <h4 class="text-xl font-bold text-purple-300 mb-4">Timeline da Evolução dos Drivers</h4>
@@ -1020,7 +1020,7 @@ export default function VideoDriverGuide() {
               </div>
               <div class="flex-1">
                 <h5 class="font-bold text-white">CGA/EGA/VGA</h5>
-                <p class="text-gray-400 text-sm">Primeiros padrões de BIOS para adaptação gráfica, com drivers embutidos no sistema operacional.</p>
+                <p class="text-gray-700 text-sm">Primeiros padrões de BIOS para adaptação gráfica, com drivers embutidos no sistema operacional.</p>
               </div>
             </div>
             
@@ -1030,7 +1030,7 @@ export default function VideoDriverGuide() {
               </div>
               <div class="flex-1">
                 <h5 class="font-bold text-white">DirectX 1.0</h5>
-                <p class="text-gray-400 text-sm">Microsoft introduz o DirectX, padronizando interfaces de comunicação com hardware gráfico.</p>
+                <p class="text-gray-700 text-sm">Microsoft introduz o DirectX, padronizando interfaces de comunicação com hardware gráfico.</p>
               </div>
             </div>
             
@@ -1040,7 +1040,7 @@ export default function VideoDriverGuide() {
               </div>
               <div class="flex-1">
                 <h5 class="font-bold text-white">OpenGL 1.3</h5>
-                <p class="text-gray-400 text-sm">Padrão profissional consolidado para computação gráfica avançada e aplicações científicas.</p>
+                <p class="text-gray-700 text-sm">Padrão profissional consolidado para computação gráfica avançada e aplicações científicas.</p>
               </div>
             </div>
             
@@ -1050,7 +1050,7 @@ export default function VideoDriverGuide() {
               </div>
               <div class="flex-1">
                 <h5 class="font-bold text-white">CUDA</h5>
-                <p class="text-gray-400 text-sm">NVIDIA introduz programação paralela em GPUs, expandindo funções além da renderização gráfica.</p>
+                <p class="text-gray-700 text-sm">NVIDIA introduz programação paralela em GPUs, expandindo funções além da renderização gráfica.</p>
               </div>
             </div>
             
@@ -1060,7 +1060,7 @@ export default function VideoDriverGuide() {
               </div>
               <div class="flex-1">
                 <h5 class="font-bold text-white">DirectX 12 / Vulkan</h5>
-                <p class="text-gray-400 text-sm">APIs de baixo nível permitem maior controle e eficiência no uso de hardware gráfico.</p>
+                <p class="text-gray-700 text-sm">APIs de baixo nível permitem maior controle e eficiência no uso de hardware gráfico.</p>
               </div>
             </div>
             
@@ -1070,29 +1070,29 @@ export default function VideoDriverGuide() {
               </div>
               <div class="flex-1">
                 <h5 class="font-bold text-white">DLSS / FSR / Ray Tracing</h5>
-                <p class="text-gray-400 text-sm">Tecnologias avançadas de upscale e iluminação exigem drivers altamente especializados.</p>
+                <p class="text-gray-700 text-sm">Tecnologias avançadas de upscale e iluminação exigem drivers altamente especializados.</p>
               </div>
             </div>
           </div>
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">Mudanças Estratégicas nas Políticas de Driver</h4>
-        <p class="mb-4 text-gray-400">Ao longo dos anos, as políticas de distribuição e atualização de drivers mudaram drasticamente:</p>
+        <p class="mb-4 text-gray-700">Ao longo dos anos, as políticas de distribuição e atualização de drivers mudaram drasticamente:</p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h5 class="font-bold text-green-400 mb-2">Era DOS/Windows 3.1</h5>
-            <p class="text-sm text-gray-400">Drivers eram fornecidos apenas com o hardware, atualizações raras e manuais.</p>
+            <p class="text-sm text-gray-700">Drivers eram fornecidos apenas com o hardware, atualizações raras e manuais.</p>
           </div>
           
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h5 class="font-bold text-green-400 mb-2">Windows 95-XP</h5>
-            <p class="text-sm text-gray-400">Microsoft centralizou parte dos drivers, mas fabricantes mantinham controle.</p>
+            <p class="text-sm text-gray-700">Microsoft centralizou parte dos drivers, mas fabricantes mantinham controle.</p>
           </div>
           
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h5 class="font-bold text-green-400 mb-2">Windows Vista-Apresente</h5>
-            <p class="text-sm text-gray-400">Modelo híbrido com WHQL, drivers certificados e repositórios online.</p>
+            <p class="text-sm text-gray-700">Modelo híbrido com WHQL, drivers certificados e repositórios online.</p>
           </div>
         </div>
       `
@@ -1100,16 +1100,16 @@ export default function VideoDriverGuide() {
     {
       title: "Segurança e Vulnerabilidades em Drivers de Vídeo",
       content: `
-        <p class="mb-4 text-gray-400">Os drivers de vídeo operam no nível mais baixo do sistema, com acesso privilegiado ao hardware e à memória do sistema. Isso os torna alvos críticos para ataques de segurança e pontos de falha potencialmente graves.</p>
+        <p class="mb-4 text-gray-700">Os drivers de vídeo operam no nível mais baixo do sistema, com acesso privilegiado ao hardware e à memória do sistema. Isso os torna alvos críticos para ataques de segurança e pontos de falha potencialmente graves.</p>
         
         <h4 class="text-white font-bold mb-3 mt-6">Tipos Comuns de Vulnerabilidades</h4>
-        <p class="mb-4 text-gray-400">Drivers de vídeo são complexos e podem conter diversos tipos de vulnerabilidades:</p>
+        <p class="mb-4 text-gray-700">Drivers de vídeo são complexos e podem conter diversos tipos de vulnerabilidades:</p>
         
         <div class="space-y-4">
           <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
             <h5 class="font-bold text-red-400 mb-2">Buffer Overflow/Underflow</h5>
-            <p class="text-gray-400 text-sm">Erros na validação de entrada podem permitir execução arbitrária de código no kernel.</p>
-            <ul class="list-disc list-inside text-gray-400 text-sm mt-2 space-y-1">
+            <p class="text-gray-700 text-sm">Erros na validação de entrada podem permitir execução arbitrária de código no kernel.</p>
+            <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
               <li>Exemplo: Chamadas maliciosas à interface de driver podem sobrescrever pilha do kernel</li>
               <li>Risco: Elevação de privilégios e controle total do sistema</li>
               <li>Mitigação: Verificação rigorosa de tamanhos e limites de buffers</li>
@@ -1118,8 +1118,8 @@ export default function VideoDriverGuide() {
           
           <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
             <h5 class="font-bold text-red-400 mb-2">Race Conditions</h5>
-            <p class="text-gray-400 text-sm">Condições de corrida entre threads do kernel e aplicações podem ser exploradas.</p>
-            <ul class="list-disc list-inside text-gray-400 text-sm mt-2 space-y-1">
+            <p class="text-gray-700 text-sm">Condições de corrida entre threads do kernel e aplicações podem ser exploradas.</p>
+            <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
               <li>Exemplo: Acesso concorrente a estruturas de dados do driver sem sincronização</li>
               <li>Risco: Corrupção de estado do kernel e possíveis exploits</li>
               <li>Mitigação: Uso adequado de locks e mecanismos de sincronização</li>
@@ -1128,8 +1128,8 @@ export default function VideoDriverGuide() {
           
           <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
             <h5 class="font-bold text-red-400 mb-2">Improper Memory Management</h5>
-            <p class="text-gray-400 text-sm">Falhas na alocação/liberação de memória podem levar a vazamentos e corrupções.</p>
-            <ul class="list-disc list-inside text-gray-400 text-sm mt-2 space-y-1">
+            <p class="text-gray-700 text-sm">Falhas na alocação/liberação de memória podem levar a vazamentos e corrupções.</p>
+            <ul class="list-disc list-inside text-gray-700 text-sm mt-2 space-y-1">
               <li>Exemplo: Falha em liberar buffers de GPU pode esgotar memória do sistema</li>
               <li>Risco: Instabilidade do sistema e possível negação de serviço</li>
               <li>Mitigação: Controle rigoroso de ciclo de vida de recursos</li>
@@ -1139,7 +1139,7 @@ export default function VideoDriverGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">Práticas de Segurança Recomendadas</h4>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Prática</th>
@@ -1179,7 +1179,7 @@ export default function VideoDriverGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">Recomendações para Usuários</h4>
-          <ul class="list-disc list-inside text-sm text-gray-400 space-y-2">
+          <ul class="list-disc list-inside text-sm text-gray-700 space-y-2">
             <li>Sempre use drivers oficialmente assinados e certificados (WHQL)</li>
             <li>Evite drivers de terceiros ou fontes não-oficiais</li>
             <li>Mantenha seu sistema operacional atualizado</li>
@@ -1192,15 +1192,15 @@ export default function VideoDriverGuide() {
     {
       title: "Considerações para Ambientes Corporativos e Profissionais",
       content: `
-        <p class="mb-4 text-gray-400">Em ambientes corporativos e profissionais, a atualização de drivers de vídeo requer planejamento cuidadoso e considerações especiais para manter a estabilidade, segurança e conformidade com políticas de TI.</p>
+        <p class="mb-4 text-gray-700">Em ambientes corporativos e profissionais, a atualização de drivers de vídeo requer planejamento cuidadoso e considerações especiais para manter a estabilidade, segurança e conformidade com políticas de TI.</p>
         
         <h4 class="text-white font-bold mb-3 mt-6">Políticas de Atualização em Ambientes Corporativos</h4>
-        <p class="mb-4 text-gray-400">A gestão de drivers em ambientes empresariais deve equilibrar desempenho, segurança e estabilidade:</p>
+        <p class="mb-4 text-gray-700">A gestão de drivers em ambientes empresariais deve equilibrar desempenho, segurança e estabilidade:</p>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div class="bg-gradient-to-br from-blue-900/20 to-indigo-900/20 p-5 rounded-xl border border-blue-500/30">
             <h5 class="font-bold text-blue-400 mb-3">Ambientes de Produção</h5>
-            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+            <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
               <li>Utilizar apenas drivers WHQL certificados</li>
               <li>Manter versões estáveis testadas por 30+ dias</li>
               <li>Evitar drivers beta ou Game Ready em máquinas de produção</li>
@@ -1212,7 +1212,7 @@ export default function VideoDriverGuide() {
           
           <div class="bg-gradient-to-br from-purple-900/20 to-pink-900/20 p-5 rounded-xl border border-purple-500/30">
             <h5 class="font-bold text-purple-400 mb-3">Ambientes de Desenvolvimento</h5>
-            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+            <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
               <li>Pode utilizar drivers mais recentes para testes</li>
               <li>Acesso a drivers Game Ready e Studio para testes de compatibilidade</li>
               <li>Separar máquinas de testes de produção</li>
@@ -1224,10 +1224,10 @@ export default function VideoDriverGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">Processos de Validação e Teste</h4>
-        <p class="mb-4 text-gray-400">Antes de implantar atualizações de driver em larga escala:</p>
+        <p class="mb-4 text-gray-700">Antes de implantar atualizações de driver em larga escala:</p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Etapa</th>

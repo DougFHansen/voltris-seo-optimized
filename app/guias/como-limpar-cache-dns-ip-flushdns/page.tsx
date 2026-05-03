@@ -40,7 +40,7 @@ export default function FlushDNSGuide() {
     {
       title: "O que é Cache DNS e por que limpar?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Windows guarda uma lista de sites que você visitou (ex: www.google.com -> 142.250.78.100) para carregar mais rápido na próxima vez. Se o IP do site mudar ou se o arquivo cache corromper, você verá erros como "DNS_PROBE_FINISHED_NXDOMAIN" ou jogos que não conectam. O "FlushDNS" joga essa lista no lixo e força o Windows a perguntar o caminho novo.
         </p>
 
@@ -48,7 +48,7 @@ export default function FlushDNSGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">⚡</span> Network Reset Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Executar 5 comandos no CMD toda vez que a internet cai é trabalhoso. O <strong>Voltris Optimizer</strong> tem um botão "Network Reset" que executa toda a sequência de limpeza (IP, DNS, Winsock, Proxy) e reinicia o adaptador de rede automaticamente.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,7 +64,7 @@ export default function FlushDNSGuide() {
     {
       title: "Passo 1: A Sequência Sagrada (IP e DNS)",
       content: `
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
             <li>Abra o CMD como <strong>Administrador</strong>.</li>
             <li>Libere seu IP atual (desconecta a internet momentaneamente):<br/>
                 <code class="text-[#31A8FF]">ipconfig /release</code>
@@ -81,10 +81,10 @@ export default function FlushDNSGuide() {
     {
       title: "Passo 2: Resetando o Winsock (Erros Graves)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o passo 1 não resolveu, pode haver corrupção no Socket do Windows (API que softwares usam para acessar a rede). Isso é comum após remover vírus ou desinstalar VPNs.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4 font-mono text-sm">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4 font-mono text-sm">
             <li>No mesmo CMD, digite:<br/>
                 <code class="text-[#31A8FF]">netsh winsock reset</code>
             </li>
@@ -103,10 +103,10 @@ export default function FlushDNSGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-green-400 font-bold mb-4 text-xl">Crie seu próprio reparador</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Abra o Bloco de Notas, cole os comandos abaixo e salve como <code>RepararNet.bat</code>. Execute sempre que a net cair.
                 </p>
-                <div class="bg-black p-4 rounded text-xs font-mono text-gray-400">
+                <div class="bg-black p-4 rounded text-xs font-mono text-gray-700">
                     @echo off<br/>
                     ipconfig /release<br/>
                     ipconfig /flushdns<br/>
@@ -124,7 +124,7 @@ export default function FlushDNSGuide() {
     {
       title: "Erro: 'A operação solicitada requer elevação'",
       content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se aparecer essa mensagem, você esqueceu de abrir o CMD como <strong>Administrador</strong>. Clique com botão direito no ícone do Prompt de Comando e escolha "Executar como administrador".
             </p>
             `

@@ -34,7 +34,7 @@ export default function VideoPlayerComparisonGuide() {
         {
             title: "O fim do Windows Media Player",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, embora os serviços de streaming dominem, muitos usuários ainda preferem ter seus arquivos de vídeo (4K, MKV, HDR) localmente. O player nativo do Windows 11 evoluiu, mas ainda perde feio para as opções de terceiros quando o assunto é suporte a legendas e codecs complexos. Escolher entre o **VLC** e o **PotPlayer** depende de quão profundo você quer ir nas configurações de imagem.
         </p>
       `
@@ -42,8 +42,8 @@ export default function VideoPlayerComparisonGuide() {
         {
             title: "1. VLC Media Player: O canivete suíço",
             content: `
-        <p class="mb-4 text-gray-400">O favorito de todos por uma razão:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">O favorito de todos por uma razão:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Compatibilidade:</strong> Se você tem um arquivo bizarro de 20 anos atrás, o VLC vai rodar.</li>
             <li><strong>Código Aberto:</strong> Sem anúncios, sem rastreamento, 100% gratuito para sempre.</li>
             <li><strong>Foco:</strong> Sua interface é simples e direta. Você arrasta o vídeo e ele toca. Ponto final.</li>
@@ -55,7 +55,7 @@ export default function VideoPlayerComparisonGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Performance Máxima:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O <strong>PotPlayer</strong> é conhecido por ser extremamente leve, carregando vídeos gigantes de 50GB instantaneamente. <br/><br/>
                 Ele oferece suporte superior a tecnologias modernas de 2026, como o mapeamento de tons HDR para monitores SDR e aceleração de hardware via GPU muito mais eficiente que a do VLC. Se você gosta de personalizar cada detalhe da interface e das legendas, o PotPlayer é imbatível. (Atenção: Durante a instalação, ele pode sugerir programas extras; recuse todos para manter a instalação limpa).
             </p>
@@ -65,7 +65,7 @@ export default function VideoPlayerComparisonGuide() {
         {
             title: "3. Qual escolher?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Escolha o VLC se:</strong> Você quer algo que apenas funcione em qualquer sistema operacional (inclusive Mac e Celular) sem precisar configurar nada.
             <br/><br/>
             <strong>Escolha o PotPlayer se:</strong> Você joga no PC e quer a melhor qualidade de imagem possível usando sua placa de vídeo, ou se você costuma assistir animes e filmes com legendas complexas traduzidas por fãs (fansubs).

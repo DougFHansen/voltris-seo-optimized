@@ -34,7 +34,7 @@ export default function USBTroubleshootingGuide() {
         {
             title: "O mistério do USB 'Morto'",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Você conecta o dispositivo, ouve o barulho clássico do Windows, mas nada acontece (ou pior: aparece um erro de dispositivo desconhecido). Em 2026, com o Windows 11 sendo muito agressivo na economia de energia, muitas vezes o sistema "desliga" a porta USB para poupar bateria ou por causa de um driver que travou durante o uso. Felizmente, na maioria das vezes, o problema não é físico, mas sim lógico.
         </p>
       `
@@ -42,8 +42,8 @@ export default function USBTroubleshootingGuide() {
         {
             title: "1. Resetando o Hub de Barramento USB",
             content: `
-        <p class="mb-4 text-gray-400">Force o Windows a reviver as portas USB:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Force o Windows a reviver as portas USB:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Abra o <strong>Gerenciador de Dispositivos</strong> (Win+X).</li>
             <li>Role até o final em 'Controladores USB'.</li>
             <li>Clique com o botão direito em <strong>'Generic USB Hub'</strong> ou <strong>'USB Root Hub'</strong>.</li>
@@ -57,7 +57,7 @@ export default function USBTroubleshootingGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Impedindo o Windows de dormir:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se o seu mouse ou teclado desliga sozinho após alguns minutos parado: <br/><br/>
                 - Vá em Painel de Controle > Hardware e Sons > Opções de Energia. <br/>
                 - Clique em 'Alterar configurações do plano' > 'Alterar configurações de energia avançadas'. <br/>
@@ -70,7 +70,7 @@ export default function USBTroubleshootingGuide() {
         {
             title: "3. Problemas com Fontes e Energia (2026)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Dica avançada:</strong> Em 2026, muitos periféricos RGB (teclados mecânicos, mouses com luzes) puxam muita energia. 
             <br/><br/>Se você usa um <strong>Hub USB sem fonte externa</strong>, as portas podem não aguentar. Tente conectar o dispositivo diretamente nas portas traseiras da placa-mãe (direto no gabinete) em vez das frontais. As portas traseiras têm fornecimento elétrico mais estável e direto, resolvendo muitos erros de 'Dispositivo não reconhecido'.
         </p>

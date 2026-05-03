@@ -34,7 +34,7 @@ export default function DataRecoveryGuide() {
         {
             title: "A regra de ouro da Recuperação",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O maior erro ao tentar recuperar dados é continuar usando o disco. Quando um arquivo é deletado ou o índice corrompe, os bytes físicos ainda estão lá, mas marcados como "vazios". Se você instalar um programa de recuperação <strong>no mesmo disco</strong> que quer salvar, você pode sobrescrever seus próprios dados e perdê-los para sempre.
         </p>
       `
@@ -42,8 +42,8 @@ export default function DataRecoveryGuide() {
         {
             title: "1. O comando CHKDSK (Primeira Tentativa)",
             content: `
-        <p class="mb-4 text-gray-400">Se o disco aparece mas não abre, tente o reparo logico:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Se o disco aparece mas não abre, tente o reparo logico:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Abra o Prompt de Comando (CMD) como Administrador.</li>
             <li>Digite: <code>chkdsk D: /f</code> (substitua D pela letra do seu disco).</li>
             <li>Este comando tenta consertar a "tabela de conteúdo" do HD. Se funcionar, seus arquivos voltarão sem precisar de softwares extras.</li>
@@ -56,7 +56,7 @@ export default function DataRecoveryGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Poder Bruto:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O <strong>PhotoRec</strong> ignora o sistema de arquivos completamente e lê os dados brutos. Ele não recupera os nomes dos arquivos (viram códigos como f12345.jpg), mas ele recupera o conteúdo de quase qualquer coisa: pendrives queimados, SD cards de câmeras e HDs que dão erro de E/S. É gratuito e o mais eficaz da categoria.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function DataRecoveryGuide() {
         {
             title: "3. Quando desistir e procurar um laboratório?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o disco não gira, não é reconhecido na BIOS ou faz barulhos de arranhado, nenhum software do mundo vai ajudar. O problema é físico (cabeça de leitura ou motor). Nesses casos, abrir o HD em casa significa destruí-lo. O pó do ar no seu quarto é como pedras para os discos magnéticos internos. Use empresas especializadas se os dados valerem o investimento.
         </p>
       `

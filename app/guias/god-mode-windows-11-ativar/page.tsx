@@ -34,7 +34,7 @@ export default function GodModeGuide() {
         {
             title: "O que é o God Mode?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **God Mode** (Modo Deus) não é um hack, mas sim um "atalho mestre" que a Microsoft criou para desenvolvedores. Ele reúne em uma única pasta mais de 200 configurações que normalmente ficam espalhadas entre o novo menu de Configurações e o antigo Painel de Controle, facilitando muito a vida de quem gosta de personalizar o sistema.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GodModeGuide() {
         {
             title: "Passo a Passo: Como ativar",
             content: `
-        <p class="mb-4 text-gray-400">É muito simples e não exige instalar nada:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">É muito simples e não exige instalar nada:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Vá na sua Área de Trabalho (Desktop).</li>
             <li>Clique com o botão direito em um espaço vazio > <strong>Novo > Pasta</strong>.</li>
             <li>Renomeie a pasta com o seguinte código exatamente como está (copie e cole): <br/>
@@ -58,7 +58,7 @@ export default function GodModeGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Categorias Úteis:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Uma vez aberta, você verá tudo organizado: <br/>
                 - Administração do Computador. <br/>
                 - Configurações de Backup e Restauração. <br/>
@@ -72,7 +72,7 @@ export default function GodModeGuide() {
         {
             title: "Dica: Use a Busca por configuração",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Como a lista é gigantesca, use a barra de busca no canto superior direito da pasta do God Mode. Digite algo como "Partição" ou "Cor" e ele filtrará instantaneamente a ferramenta exata que você precisa, sem você ter que navegar por 10 menus diferentes do Windows 11.
         </p>
       `

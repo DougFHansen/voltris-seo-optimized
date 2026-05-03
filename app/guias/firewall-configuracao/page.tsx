@@ -34,7 +34,7 @@ export default function FirewallConfigGuide() {
     {
       title: "O que é o Firewall e por que ele existe?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **Firewall** é como o porteiro do seu computador em 2026. Ele decide o que pode entrar (Inbound) e o que pode sair (Outbound) da sua rede. Sem ele, qualquer computador na internet poderia tentar se conectar diretamente ao seu Windows para roubar arquivos ou instalar vírus. No Windows 11, o firewall nativo é extremamente potente e muitas vezes dispensa o uso de antivírus de terceiros pesados.
         </p>
       `
@@ -42,8 +42,8 @@ export default function FirewallConfigGuide() {
     {
       title: "1. Permitindo um Aplicativo (O jeito fácil)",
       content: `
-        <p class="mb-4 text-gray-400">Se um jogo ou programa não consegue se conectar à internet:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Se um jogo ou programa não consegue se conectar à internet:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Vá em Configurações > Privacidade e Segurança > Segurança do Windows.</li>
             <li>Clique em 'Firewall e Proteção de Rede' > <strong>Permitir um aplicativo pelo firewall</strong>.</li>
             <li>Clique em 'Alterar configurações' e procure o seu jogo na lista.</li>
@@ -56,7 +56,7 @@ export default function FirewallConfigGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Para Usuários Avançados:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O painel avançado permite criar regras específicas para **Portas TCP/UDP**. <br/><br/>
                 Se você está hospedando um servidor de Minecraft ou um site local em 2026, precisará criar uma 'Nova Regra de Entrada', selecionar 'Porta' e digitar o número da porta que o servidor utiliza. Lembre-se: abrir muitas portas pode fragilizar a segurança do sistema; abra apenas o estritamente necessário.
             </p>
@@ -66,7 +66,7 @@ export default function FirewallConfigGuide() {
     {
       title: "3. Jamais desative o Firewall!",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Mito de Performance:</strong> 
             <br/><br/>Muitos tutoriais antigos sugerem desativar o firewall para "ganhar FPS" ou "resolver lag". Em 2026, isso é um mito. O consumo de recursos do firewall do Windows 11 é quase nulo. Desativá-lo deixa o seu PC exposto a ataques de força bruta e worms de rede que podem infectar sua máquina em menos de 10 minutos de conexão direta. Se um jogo está bloqueado, mude a regra, mas mantenha a proteção ligada.
         </p>

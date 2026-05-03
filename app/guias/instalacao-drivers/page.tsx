@@ -26,7 +26,7 @@ export default function InstalacaoDriversGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
-            <ul class="text-gray-400 text-sm space-y-1">
+            <ul class="text-gray-700 text-sm space-y-1">
               <li>✓ Melhora significativamente o desempenho do hardware</li>
               <li>✓ Garante funcionalidade completa dos dispositivos</li>
               <li>✓ Resolve problemas de compatibilidade</li>
@@ -35,7 +35,7 @@ export default function InstalacaoDriversGuide() {
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
-            <ul class="text-gray-400 text-sm space-y-1">
+            <ul class="text-gray-700 text-sm space-y-1">
               <li>🔗 Conexão à internet para download de drivers</li>
               <li>💻 Acesso como administrador do sistema</li>
               <li>⏱️ Tempo estimado: 30-60 minutos</li>
@@ -46,14 +46,14 @@ export default function InstalacaoDriversGuide() {
         
         <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 my-6">
           <h3 class="text-blue-400 font-semibold mb-2">💡 Dica Profissional</h3>
-          <p class="text-gray-400 text-sm">Prefira drivers diretamente do fabricante do hardware em vez dos fornecidos pelo Windows Update para obter melhor desempenho.</p>
+          <p class="text-gray-700 text-sm">Prefira drivers diretamente do fabricante do hardware em vez dos fornecidos pelo Windows Update para obter melhor desempenho.</p>
         </div>
       `,
       subsections: [
         {
           subtitle: "Quando Aplicar Esta Técnica",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li>Quando dispositivos não são reconhecidos corretamente pelo sistema</li>
               <li>Para resolver problemas de compatibilidade de hardware</li>
               <li>Durante a instalação de novos componentes de hardware</li>
@@ -72,7 +72,7 @@ export default function InstalacaoDriversGuide() {
         {
           subtitle: "Identificação e Download de Drivers",
           content: `
-            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4">
+            <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4">
               <li>Identifique o modelo exato do componente de hardware</li>
               <li>Acesse o site oficial do fabricante do dispositivo</li>
               <li>Baixe os drivers mais recentes compatíveis com seu sistema operacional</li>
@@ -84,7 +84,7 @@ export default function InstalacaoDriversGuide() {
         {
           subtitle: "Instalação e Verificação",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li>Desinstale drivers antigos antes de instalar os novos</li>
               <li>Reinicie o computador após desinstalar drivers antigos</li>
               <li>Execute o instalador do novo driver como administrador</li>
@@ -107,7 +107,7 @@ export default function InstalacaoDriversGuide() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
                 <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
-                <ul class="text-gray-400 text-xs space-y-1">
+                <ul class="text-gray-700 text-xs space-y-1">
                   <li>Gerenciador de Dispositivos - ferramenta nativa do Windows</li>
                   <li>Driver Booster Free - para atualização automática de drivers</li>
                   <li>Snappy Driver Installer - para instalação offline de drivers</li>
@@ -115,7 +115,7 @@ export default function InstalacaoDriversGuide() {
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
                 <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
-                <ul class="text-gray-400 text-xs space-y-1">
+                <ul class="text-gray-700 text-xs space-y-1">
                   <li>Driver Genius Professional - para backup e restauração de drivers</li>
                   <li>Double Driver - para cópias de segurança de drivers</li>
                   <li>Soluções corporativas como LanSchool ou ManageEngine</li>
@@ -127,7 +127,7 @@ export default function InstalacaoDriversGuide() {
         {
           subtitle: "Práticas de Segurança",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li>Baixe drivers apenas dos sites oficiais dos fabricantes</li>
               <li>Verifique assinaturas digitais dos pacotes de drivers</li>
               <li>Faça backup dos drivers atuais antes de atualizações</li>
@@ -148,8 +148,8 @@ export default function InstalacaoDriversGuide() {
           content: `
             <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
               <h4 class="text-white font-semibold mb-2">Problema: Driver instalado mas dispositivo ainda não funciona</h4>
-              <p class="text-gray-400 text-sm mb-2">Solução: Verifique compatibilidade e reinstale corretamente</p>
-              <ul class="text-gray-400 text-xs space-y-1 ml-4">
+              <p class="text-gray-700 text-sm mb-2">Solução: Verifique compatibilidade e reinstale corretamente</p>
+              <ul class="text-gray-700 text-xs space-y-1 ml-4">
                 <li>Confirme que o driver é compatível com sua versão do Windows</li>
                 <li>Verifique se o dispositivo está corretamente conectado</li>
                 <li>Desinstale completamente o driver antigo antes de reinstalar</li>
@@ -157,8 +157,8 @@ export default function InstalacaoDriversGuide() {
             </div>
             <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
               <h4 class="text-white font-semibold mb-2">Problema: Conflito entre drivers de dispositivos diferentes</h4>
-              <p class="text-gray-400 text-sm mb-2">Solução: Identifique e resolva conflitos de recursos</p>
-              <ul class="text-gray-400 text-xs space-y-1 ml-4">
+              <p class="text-gray-700 text-sm mb-2">Solução: Identifique e resolva conflitos de recursos</p>
+              <ul class="text-gray-700 text-xs space-y-1 ml-4">
                 <li>Verifique conflitos de IRQ no Gerenciador de Dispositivos</li>
                 <li>Atualize drivers de ambos os dispositivos envolvidos</li>
                 <li>Considere desativar temporariamente um dos dispositivos</li>
@@ -169,7 +169,7 @@ export default function InstalacaoDriversGuide() {
         {
           subtitle: "Prevenção de Problemas Futuros",
           content: `
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li>Mantenha uma biblioteca organizada de drivers para seus dispositivos</li>
               <li>Documente versões de drivers instaladas e datas de atualização</li>
               <li>Planeje atualizações de drivers durante janelas de manutenção</li>

@@ -43,7 +43,7 @@ export default function CheatEngineGuide() {
         {
             title: "Introdução: Ética e Segurança",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           <strong class="text-red-500">AVISO CRÍTICO:</strong> Nunca abra o Cheat Engine enquanto jogos com Anti-Cheat (Valorant, CS2, Fortnite, LoL) estiverem rodando, mesmo que em segundo plano. Você será banido apenas por ter o processo aberto. Use esta ferramenta EXCLUSIVAMENTE para jogos offline (Skyrim, Cyberpunk, The Witcher, Stardew Valley).
         </p>
       `
@@ -54,7 +54,7 @@ export default function CheatEngineGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">O instalador oficial</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     O instalador oficial do Cheat Engine contém ofertas de antivírus (Adware).
                     <br/>Durante a instalação, leia com atenção e clique em <strong>DECLINE</strong> (Recusar) ou desmarque as caixinhas extras. Instale apenas o Core.
                     <br/>Como alternativa, use a versão Portable ou compile o código fonte do GitHub (avançado).
@@ -62,7 +62,7 @@ export default function CheatEngineGuide() {
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Tutorial Básico (Tutorial.exe)</h4>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     O programa vem com um tutorial interativo. Recomendamos completá-lo para entender os conceitos de "Exact Value", "Unknown Initial Value" e "Pointers".
                 </p>
             </div>
@@ -72,7 +72,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 2: Speedhack (Acelerando o Tempo)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A função mais útil para adultos com pouco tempo.
             <br/>1. Abra o jogo e o CE.
             <br/>2. Clique no ícone do PC (Select Process) e escolha o jogo.
@@ -85,7 +85,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 3: Configurando Hotkeys (Atalhos)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Ficar dando Alt+Tab é chato.
             <br/>Vá em Edit > Settings > Hotkeys.
             <br/>Crie atalhos globais:
@@ -101,7 +101,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 4: Cheat Tables (.CT)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Você não precisa ser hacker. A comunidade já fez o trabalho.
             <br/>Sites como <strong>Fearless Revolution</strong> têm arquivos <code>.CT</code> para quase todos os jogos.
             <br/>Baixe a tabela do seu jogo, abra no CE, e ative scripts complexos como "Free Cam", "FOV Changer" ou "Inventory Editor".
@@ -111,7 +111,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 5: Dinheiro Infinito (Search Value)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             1. Veja quanto ouro você tem (ex: 500).
             <br/>2. Busque por 500 (4 Bytes).
             <br/>3. Gaste um pouco no jogo (agora tem 450).
@@ -124,7 +124,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 6: Ponteiros (Pointers)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você reiniciar o jogo e o dinheiro voltar ao normal, é porque o endereço da memória mudou (DMA).
             <br/>Você precisa encontrar o "Pointer" (o mapa que aponta para o endereço real). Isso é avançado e envolve "Pointer Scan".
             <br/>Para iniciantes: Apenas baixe uma Cheat Table pronta que já tem os ponteiros mapeados.
@@ -134,7 +134,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 7: Otimização de Gráficos (Ultra Low)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Alguns jogos não têm opção de desligar sombras ou neblina.
             <br/>Com CE, você pode encontrar o valor que controla "Render Distance" ou "Fog Density" e forçá-lo a 0.
             <br/>Muitos mods de "Potato Graphics" para jogos como Elden Ring nascem assim.
@@ -147,7 +147,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 8: DBVM (Kernel Mode)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O CE tem um driver de Kernel (DBVM) que pode rodar em nível de sistema, tornando-o indetectável por alguns anti-cheats offline agressivos (como Denuvo Anti-Tamper em alguns casos).
                 <br/>Ative em Settings > Extra > Query memory region routines.
             </p>
@@ -156,7 +156,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 9: Jogos Unity (Mono)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Jogos feitos em Unity (Among Us, Cuphead) são fáceis de editar.
                 <br/>No menu do CE, ative "Mono > Activate Mono Features".
                 <br/>Isso disseca a estrutura do jogo e mostra nomes de classes como "PlayerHealth" ou "Ammo", facilitando a edição sem buscar números.
@@ -166,7 +166,7 @@ export default function CheatEngineGuide() {
         {
             title: "Capítulo 10: Limpeza Pós-Uso",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Sempre feche o CE completamente antes de abrir a Steam/Battle.net.
                 <br/>Verifique a bandeja do sistema (perto do relógio). Alguns jogos detectam até o serviço de instalação.
                 <br/>Se você joga competitivamente a sério, considere usar o CE em uma máquina virtual ou em outra partição do Windows para evitar risco zero de ban acidental.

@@ -38,7 +38,7 @@ export default function AudioSurroundGuide() {
         {
             title: "Introdução: O Fim do 'Headset Gamer'?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, a era dos headsets de plástico com luzinhas RGB e "Som 7.1" está acabando no cenário profissional. Jogadores sérios perceberam que equipamentos de <strong>audiófilo</strong> (focados em fidelidade pura) entregam uma vantagem competitiva muito maior (Wallhack sonoro) do que graves estourados que tremem a cabeça mas escondem o som dos passos.
         </p>
       `
@@ -49,8 +49,8 @@ export default function AudioSurroundGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border-t-4 border-blue-500">
                 <h4 class="text-blue-400 font-bold mb-2 text-lg">Closed-Back (Fechado)</h4>
-                <p class="text-gray-400 text-sm mb-2">Padrão da maioria dos "Gamers".</p>
-                <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+                <p class="text-gray-700 text-sm mb-2">Padrão da maioria dos "Gamers".</p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
                     <li><strong>Prós:</strong> Isola o barulho do ventilador/teclado. Mais graves (explosões impactantes).</li>
                     <li><strong>Contras:</strong> "Palco Sonoro" (Soundstage) pequeno. O som parece vir de dentro da sua cabeça, dificultando saber a distância exata do inimigo.</li>
                     <li><strong>Uso:</strong> LAN Houses, ambientes barulhentos.</li>
@@ -58,8 +58,8 @@ export default function AudioSurroundGuide() {
             </div>
             <div class="bg-[#0A0A0F] p-4 rounded-xl border-t-4 border-purple-500">
                 <h4 class="text-purple-400 font-bold mb-2 text-lg">Open-Back (Aberto)</h4>
-                <p class="text-gray-400 text-sm mb-2">A escolha dos especialistas.</p>
-                <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+                <p class="text-gray-700 text-sm mb-2">A escolha dos especialistas.</p>
+                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
                     <li><strong>Prós:</strong> O som "vaza" para fora. Isso cria um Palco Sonoro natural e amplo. Você ouve EXATAMENTE onde o inimigo está, como se estivesse lá.</li>
                     <li><strong>Contras:</strong> Você ouve o barulho do seu quarto. Ninguém ao seu redor quer ouvir seu jogo. Menos graves.</li>
                     <li><strong>Uso:</strong> Quarto silencioso, Competitivo Hardcore.</li>
@@ -73,10 +73,10 @@ export default function AudioSurroundGuide() {
             content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-6">
             <h4 class="text-white font-bold mb-3">Por que os Pros usam fone de celular?</h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Você já deve ter visto em campeonatos de CS2/Valorant: os jogadores usam um fone grande (apenas para abafar o barulho da torcida/ruído branco) e, por baixo dele, pequenos fones intra-auriculares (IEMs).
             </p>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 <strong>Vantagens dos IEMs (Ex: Moondrop, KZ, Truthear):</strong>
                 <br/>1. <strong>Isolamento Passivo:</strong> Entram no canal auditivo, bloqueando tudo.
                 <br/>2. <strong>Detalhe:</strong> Drivers focados em clareza extrema.
@@ -89,7 +89,7 @@ export default function AudioSurroundGuide() {
         {
             title: "3. O Mito do 7.1 Virtual",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Headset com "7.1" na caixa:</strong> Geralmente é um fone estéreo comum com uma placa de som USB barata que aplica um efeito de eco (Reverb).
             <br/><br/>
             <strong>Por que evitar:</strong> Esse eco distorce o áudio original. Em jogos competitivos, você quer o som LIMPO e SECO para identificar a direção. O 7.1 Virtual embola os sons: uma granada explodindo na esquerda ecoa na direita, confundindo seu cérebro.
@@ -106,7 +106,7 @@ export default function AudioSurroundGuide() {
             content: `
             <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20 mb-6">
                 <h4 class="text-emerald-400 font-bold mb-2">Como configurar seu equalizador (APO / Software):</h4>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     Jogos não são filmes. Graves altos (explosões) atrapalham. Passos são frequências médias-altas.
                     <br/><br/>
                     <strong>Receita de Bolo para FPS (Valorant/CS):</strong>
@@ -121,7 +121,7 @@ export default function AudioSurroundGuide() {
         {
             title: "5. Impedância e DAC/Amp",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se você comprar um fone de audiófilo (Ex: Beyerdynamic DT 990 Pro), ele pode ter <strong>250 Ohms</strong>.
                 <br/>Se você ligar isso na saída da placa-mãe, o som vai sair BAIXO e sem vida.
                 <br/><br/>
@@ -138,11 +138,11 @@ export default function AudioSurroundGuide() {
             <ul class="space-y-4">
                 <li class="bg-gray-800 p-4 rounded-lg border-l-4 border-green-500">
                     <span class="text-green-400 font-bold block mb-1">Dongle USB (2.4GHz / Lightspeed / Hyperspeed)</span>
-                    <span class="text-sm text-gray-400">Latência de 1ms. Igual a cabo. Perfeito para jogos. Use sempre com o extensor USB próximo ao mouse/fone para evitar interferência.</span>
+                    <span class="text-sm text-gray-700">Latência de 1ms. Igual a cabo. Perfeito para jogos. Use sempre com o extensor USB próximo ao mouse/fone para evitar interferência.</span>
                 </li>
                 <li class="bg-gray-800 p-4 rounded-lg border-l-4 border-red-500">
                     <span class="text-red-400 font-bold block mb-1">Bluetooth</span>
-                    <span class="text-sm text-gray-400">Latência de 40ms a 200ms. O som do tiro sai depois que você clicou. O áudio piora se você ligar o microfone (perfil HFP limita a banda). <strong>INUTILIZÁVEL para jogos competitivos.</strong></span>
+                    <span class="text-sm text-gray-700">Latência de 40ms a 200ms. O som do tiro sai depois que você clicou. O áudio piora se você ligar o microfone (perfil HFP limita a banda). <strong>INUTILIZÁVEL para jogos competitivos.</strong></span>
                 </li>
             </ul>
           `

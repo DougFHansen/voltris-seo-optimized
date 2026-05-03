@@ -40,7 +40,7 @@ export default function DiskCleanupGuide() {
         {
             title: "Onde o espaço some?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Você desinstala jogos, apaga vídeos, mas o HD continua enchendo. O Windows acumula: cópias de atualizações antigas (Windows.old), arquivos de hibernação (hiberfil.sys), memória virtual (pagefile.sys) e cache de erro.
         </p>
 
@@ -48,7 +48,7 @@ export default function DiskCleanupGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🧹</span> Limpeza Smart
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Por que fazer isso manualmente todo mês? O <strong>Voltris Optimizer</strong> monitora suas pastas temporárias e caches de navegador (Chrome/Edge), limpando automaticamente o lixo inútil a cada inicialização, mantendo seu SSD sempre rápido e livre.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function DiskCleanupGuide() {
         {
             title: "Passo 1: A opção escondida do 'Limpeza de Disco'",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A ferramenta nativa do Windows é ótima, mas muita gente usa errado.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Pressione Win, digite <strong>"Limpeza de Disco"</strong> e abra.</li>
             <li>Escolha a unidade C:.</li>
             <li>Quando abrir, NÃO clique em OK ainda. Clique no botão <strong>"Limpar arquivos do sistema"</strong> com ícone de escudo.</li>
@@ -87,10 +87,10 @@ export default function DiskCleanupGuide() {
         {
             title: "Passo 2: Desativar Hibernação (Economize 6GB+)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você usa SSD, o computador liga em 10 segundos. A hibernação (que salva a RAM no HD para ligar rápido) é inútil e ocupa um espaço igual à sua memória RAM.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Abra o Prompt de Comando (CMD) como Administrador.</li>
             <li>Digite: <code>powercfg.exe /hibernate off</code></li>
             <li>Pronto. O arquivo <code>hiberfil.sys</code> (que é enorme e oculto) sumirá instantaneamente da raiz do C:.</li>
@@ -100,10 +100,10 @@ export default function DiskCleanupGuide() {
         {
             title: "Passo 3: Visualizar o que gasta espaço (WizTree)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Às vezes o vilão é uma pasta de jogo que você esqueceu. O Explorador de Arquivos é ruim para mostrar isso.
         </p>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
              Baixe o <strong>WizTree</strong> (é 50x mais rápido que o WinDirStat). Ele mostra um mapa colorido de quadrados. Os quadrados grandes são os arquivos grandes. Delete o que não precisa (Cuidado para não deletar arquivos do Windows folder).
         </p>
         <div class="mt-4 p-4 border border-yellow-500/20 bg-yellow-900/10 rounded-lg">
@@ -119,10 +119,10 @@ export default function DiskCleanupGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">Lixo de Download</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Quando o Windows baixa uma atualização, ele guarda em <code>C:\\Windows\\SoftwareDistribution\\Download</code>. Depois de instalar, isso deveria ser apagado, mas nem sempre é.
                 </p>
-                <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+                <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
                     <li>Pare o serviço Windows Update (Win+R > services.msc > Windows Update > Parar).</li>
                     <li>Vá na pasta citada acima e apague TUDO dentro da pasta Download.</li>
                     <li>Inicie o serviço novamente.</li>
@@ -137,10 +137,10 @@ export default function DiskCleanupGuide() {
         {
             title: "Sense de Armazenamento (Automático)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Windows 10/11 tem um "faxineiro" nativo.
             </p>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 Vá em <strong>Configurações > Sistema > Armazenamento</strong>. Ative o "Sentido de Armazenamento" (Storage Sense). Configure para rodar "Toda semana" e apagar arquivos da Lixeira com mais de 14 dias.
             </p>
             `

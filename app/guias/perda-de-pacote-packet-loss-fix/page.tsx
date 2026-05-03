@@ -34,7 +34,7 @@ export default function PacketLossGuide() {
         {
             title: "O que é o Packet Loss?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Imagine que você está jogando Valorant. Você clica para atirar, mas o tiro não sai. No segundo seguinte, você aparece morto em outro lugar. Isso é o **Packet Loss**. Ao contrário do "Ping alto" (onde o dado demora a chegar), na Perda de Pacote o dado **simplesmente não chega**. Em 2026, com redes 5G e fibra óptica, a perda de pacotes geralmente acontece dentro da sua casa ou na "rota" que a sua operadora usa.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PacketLossGuide() {
         {
             title: "1. Diagnóstico via CMD",
             content: `
-        <p class="mb-4 text-gray-400">Descubra onde o dado está sumindo:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Descubra onde o dado está sumindo:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Abra o Prompt de Comando (CMD).</li>
             <li>Digite: <code>ping google.com -t</code>.</li>
             <li>Deixe rodar por 1 minuto. Observe se aparece a mensagem <strong>'Esgotado o tempo limite do pedido'</strong>.</li>
@@ -56,7 +56,7 @@ export default function PacketLossGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Inimigo do Gamer:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O Wi-Fi, mesmo o Wi-Fi 6 ou 7 de 2026, sofre interferências de paredes, fornos micro-ondas e redes de vizinhos. Essas interferências causam quedas momentâneas de pacotes. <strong>Para jogos competitivos, o cabo Ethernet (preferencialmente CAT6) é obrigatório</strong>. Se você não puder passar um cabo, considere adaptadores Powerline, que usam a fiação elétrica da casa.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function PacketLossGuide() {
         {
             title: "3. Problemas de Rota da Operadora",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Às vezes, sua internet está perfeita, mas o "caminho" que ela faz até o servidor do jogo está congestionado. 
             <br/><br/><strong>Dica:</strong> Use softwares de tunelamento como <strong>ExitLag</strong> ou <strong>NoPing</strong> em 2026. Eles não diminuem o seu ping fisicamente, mas eles mudam a sua rota para uma estrada privada e livre de trânsito, o que elimina quase 100% da perda de pacotes causada pela infraestrutura da sua operadora.
         </p>

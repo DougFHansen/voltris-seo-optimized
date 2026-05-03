@@ -34,7 +34,7 @@ export default function SandboxGuide() {
         {
             title: "O que é o Windows Sandbox?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, baixar arquivos da internet é um campo minado. O **Windows Sandbox** é como um "quarto de isolamento" para o seu computador. É um ambiente temporário do Windows 11 onde você pode baixar, instalar e rodar qualquer programa suspeito sem que ele tenha acesso aos seus arquivos reais, fotos ou senhas. Quando você fecha o Sandbox, tudo o que aconteceu lá dentro é deletado permanentemente, como se nunca tivesse existido.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SandboxGuide() {
         {
             title: "1. Como ativar o Sandbox (Passo a Passo)",
             content: `
-        <p class="mb-4 text-gray-400">O recurso vem desligado por padrão no Windows 11:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">O recurso vem desligado por padrão no Windows 11:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Pesquise por 'Ativar ou desativar recursos do Windows' no menu Iniciar.</li>
             <li>Role a lista até encontrar <strong>'Área de Transferência do Windows' (Windows Sandbox)</strong>.</li>
             <li>Marque a caixa e clique em OK. O Windows pedirá para reiniciar o PC.</li>
@@ -56,7 +56,7 @@ export default function SandboxGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Fluxo de Trabalho em 2026:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Pesquise por 'Windows Sandbox' no Iniciar e abra como Administrador. <br/>
                 2. No seu Windows real, clique com o botão direito no arquivo suspeito e selecione 'Copiar'. <br/>
                 3. Dentro da janela do Sandbox, clique com o botão direito no desktop e selecione 'Colar'. <br/>
@@ -68,7 +68,7 @@ export default function SandboxGuide() {
         {
             title: "3. Diferença entre Sandbox e Máquina Virtual",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Por que usar o Sandbox?</strong> 
             <br/><br/>Diferente de uma Máquina Virtual (VM) comum que exige Gigabytes de espaço e instalação lenta, o Sandbox é leve e descartável. Ele usa o próprio kernel do seu Windows 11 para rodar, sendo extremamente rápido. Em 2026, ele é a ferramenta favorita de pesquisadores de segurança e usuários que buscam privacidade total ao testar novas ferramentas e scripts.
         </p>

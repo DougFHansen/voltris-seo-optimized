@@ -34,7 +34,7 @@ export default function MinecraftLagGuide() {
         {
             title: "O problema do código do Minecraft",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Minecraft Java Edition roda em uma linguagem chamada Java, que não foi feita especificamente para jogos de alto desempenho. Por padrão, o jogo é ineficiente ao carregar pedaços do mundo (chunks). Em 2026, com mundos cada vez mais altos e profundos, você precisa de mods de otimização para manter um FPS jogável.
         </p>
       `
@@ -42,8 +42,8 @@ export default function MinecraftLagGuide() {
         {
             title: "1. OptiFine: O clássico imortal",
             content: `
-        <p class="mb-4 text-gray-400">O OptiFine é um mod "tudo-em-um" que adiciona suporte a Shaders e otimizações básicas.</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">O OptiFine é um mod "tudo-em-um" que adiciona suporte a Shaders e otimizações básicas.</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Vantagem:</strong> Muito fácil de instalar. Basta baixar o .jar e clicar em 'Install'.</li>
             <li><strong>Destaque:</strong> O recurso de 'Zoom' (tecla C) e o suporte nativo a texturas conectadas (vidro sem emendas).</li>
             <li><strong>Dica:</strong> Nas configurações de vídeo, vá em 'Performance' e ligue o <strong>'Fast Render'</strong> e <strong>'Smart Animations'</strong>.</li>
@@ -55,7 +55,7 @@ export default function MinecraftLagGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Por que o Sodium é melhor?</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Enquanto o OptiFine tenta consertar o jogo, o <strong>Sodium</strong> reescreve a forma como o Minecraft renderiza os blocos. Os ganhos de FPS com Sodium chegam a ser o dobro em relação ao OptiFine. <br/><br/>
                 Para ter a experiência completa, instale o Fabric Loader e os mods: <strong>Sodium</strong> (Performance), <strong>Lithium</strong> (IA e física) e <strong>Iris</strong> (se quiser rodar Shaders).
             </p>
@@ -65,7 +65,7 @@ export default function MinecraftLagGuide() {
         {
             title: "3. Alocação de Memória RAM",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitos pensam que "mais RAM = mais FPS", mas dar RAM demais (ex: 12GB) faz o Minecraft travar a cada 5 segundos por causa de um processo chamado 'Garbage Collection'. 
             <br/>Vá no seu Launcher > Instalações > Editar > Mais Opções. Em 'Argumentos da JVM', mude o <code>-Xmx2G</code> para <code>-Xmx4G</code>. Isso é o ponto ideal para rodar o jogo com mods e shaders.
         </p>

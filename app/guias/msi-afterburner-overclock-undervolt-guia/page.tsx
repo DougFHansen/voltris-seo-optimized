@@ -42,7 +42,7 @@ export default function AfterburnerGuide() {
         {
             title: "Introdução: Risco vs Recompensa",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Overclock de GPU hoje é muito seguro. As placas modernas têm travas de segurança que desligam o PC antes de queimar. O pior que acontece é o driver de vídeo reiniciar.
         </p>
       `
@@ -53,7 +53,7 @@ export default function AfterburnerGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Passo a Passo</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Baixe o <strong>MSI Afterburner</strong> (Site oficial da MSI ou Guru3D). Cuidado com sites falsos!
                     <br/>2. Baixe o <strong>MSI Kombustor</strong> ou <strong>Unigine Heaven</strong> para testar estabilidade.
                     <br/>3. Abra o Afterburner e aumente o <strong>Power Limit</strong> e <strong>Temp Limit</strong> para o máximo permitido. Isso diz para a placa: "Pode usar toda a energia que precisar".
@@ -65,7 +65,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 2: Overclock (Core Clock)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Aumente o <strong>Core Clock (MHz)</strong> de 10 em 10.
             <br/>Rode o Kombustor por 1 minuto.
             <br/>Se não travar e não aparecerem artefatos (riscos coloridos na tela), aumente mais 10.
@@ -77,7 +77,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 3: Overclock (Memory Clock)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Memória GDDR6 aguenta muito overclock.
             <br/>Comece com +200MHz. Vá subindo de 100 em 100.
             <br/>Muitas placas aguentam +500MHz ou até +1000MHz.
@@ -91,7 +91,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 4: Undervolt (A Técnica Mágica)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Undervolt mantém o mesmo clock (performance) usando menos voltagem.
             <br/>Resultado: Placa mais fria (-10°C) e ventoinhas mais silenciosas.
             <br/>1. Aperte <strong>Ctrl + F</strong> para abrir a curva de voltagem.
@@ -105,7 +105,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 5: Curva de Ventoinha (Fan Curve)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não deixe no Auto se sua placa esquenta.
             <br/>Em Settings > Fan: Habilite a curva personalizada.
             <br/>Configure para 100% de ventoinha quando bater 80°C.
@@ -116,7 +116,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 6: OSD (Monitoramento)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Como ver FPS e temperatura dentro do jogo?
             <br/>Settings > Monitoring.
             <br/>Clique em "GPU Temperature" e marque "Show in On-Screen Display".
@@ -128,7 +128,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 7: Startup (Iniciar com Windows)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Só marque o botão "Startup" (Windows Logo) DEPOIS de testar seu overclock por dias em vários jogos.
             <br/>Se você marcar Startup numa configuração instável, seu PC vai travar assim que ligar (Loop de boot).
             <br/>Se isso acontecer, entre em Modo de Segurança e desinstale o Afterburner.
@@ -141,7 +141,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 8: Laptop (Notebooks)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Em notebooks, o Power Limit geralmente é travado pela BIOS.
                 <br/>Você só consegue mexer no Core/Memory Clock.
                 <br/>O Undervolt é AINDA MAIS IMPORTANTE em notebooks para evitar Thermal Throttling.
@@ -151,7 +151,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 9: Nvidia vs AMD",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Afterburner funciona em ambas. Mas para AMD, o software "Adrenalin" já tem tudo isso integrado na aba Tuning, sendo às vezes melhor de usar lá.
             </p>
             `
@@ -159,7 +159,7 @@ export default function AfterburnerGuide() {
         {
             title: "Capítulo 10: Perfil 2D/3D",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Você pode salvar perfis (1 a 5).
                 <br/>Crie um Perfil 1 (Stock/Silencioso) para navegar na web.
                 <br/>Crie um Perfil 2 (Overclock) para jogar.

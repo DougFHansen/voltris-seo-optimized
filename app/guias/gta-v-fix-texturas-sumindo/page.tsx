@@ -34,7 +34,7 @@ export default function GTAVTextureFixGuide() {
         {
             title: "Por que as texturas do GTA V desaparecem?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Este erro é clássico: você está dirigindo em alta velocidade e o asfalto some ou as casas ficam com visual de "PlayStation 1". Isso acontece porque o seu processador (CPU) ou o seu disco não estão conseguindo processar e enviar os arquivos do mapa rápido o suficiente para o jogo. Em 2026, com o Windows 11 consumindo mais recursos, esse problema se tornou ainda mais comum em PCs com CPUs de 4 núcleos.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GTAVTextureFixGuide() {
         {
             title: "1. O Truque da Prioridade de Processo",
             content: `
-        <p class="mb-4 text-gray-400">Force o Windows a dar total atenção ao GTA V:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Force o Windows a dar total atenção ao GTA V:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Com o jogo aberto, aperte <strong>Ctrl + Shift + Esc</strong> para abrir o Gerenciador de Tarefas.</li>
             <li>Vá na aba <strong>Detalhes</strong>.</li>
             <li>Encontre o <code>GTA5.exe</code>.</li>
@@ -57,7 +57,7 @@ export default function GTAVTextureFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Paradoxo de Performance:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Parece estranho, mas **limitar seu FPS em 60** pode fazer o mapa carregar melhor. Se sua placa de vídeo tenta cuspir 100 FPS, ela "atropela" o processador pedindo dados novos, causando o sumiço do mapa. No menu do jogo, ative o <strong>V-Sync</strong> ou use o painel da NVIDIA para travar em 60 FPS. Isso dá um "respiro" para o processador carregar as texturas.
             </p>
         </div>
@@ -66,7 +66,7 @@ export default function GTAVTextureFixGuide() {
         {
             title: "3. Configuração de Distância de Visão",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Dentro de Gráficos, reduza a <strong>'Variedade de Pedestres'</strong> e a <strong>'Densidade de Pedestres'</strong> para baixo. 
             <br/><br/>Essas opções pesam muito na CPU. Ao diminuir a quantidade de carros e pessoas nas ruas, o jogo libera memória e processamento para focar no cenário e nas estradas, resolvendo o bug de invisibilidade.
         </p>

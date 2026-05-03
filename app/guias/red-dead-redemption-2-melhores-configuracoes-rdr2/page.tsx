@@ -34,7 +34,7 @@ export default function RDR2OptimizationGuide() {
         {
             title: "A obra-prima que ainda pesa no PC",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Mesmo anos após o lançamento, **Red Dead Redemption 2** continua sendo um dos jogos mais bonitos e exigentes em 2026. O segredo para rodar o jogo bem não é colocar tudo no "Médio", mas sim entender quais opções gráficas consomem 50% da sua performance e quais não mudam nada no visual. Este guia foca no equilíbrio perfeito entre fidelidade e fluidez.
         </p>
       `
@@ -42,8 +42,8 @@ export default function RDR2OptimizationGuide() {
         {
             title: "1. Vulkan vs DirectX 12 em 2026",
             content: `
-        <p class="mb-4 text-gray-400">A escolha da API define a base da sua performance:</p>
-        <p class="text-sm text-gray-400">
+        <p class="mb-4 text-gray-700">A escolha da API define a base da sua performance:</p>
+        <p class="text-sm text-gray-700">
             - <strong>Vulkan:</strong> Costuma entregar 5 a 10 FPS a mais e tem frametimes mais lisos na maioria das GPUs NVIDIA e AMD modernas. É a recomendação para 2026. <br/><br/>
             - <strong>DirectX 12:</strong> Use apenas se você estiver sofrendo com crashes aleatórios no Vulkan ou se estiver usando placas Intel Arc, que costumam preferir o DX12.
         </p>
@@ -54,7 +54,7 @@ export default function RDR2OptimizationGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Otimização Cirúrgica:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Para ganhar até 40% mais performance sem perder visual, mude estes itens: <br/><br/>
                 - <strong>Water Reflection/Refraction Quality:</strong> Low ou Medium. O reflexo na água do RDR2 é pesado demais para o pouco que aparece. <br/>
                 - <strong>Volumetric Lighting:</strong> Medium. Esse ajuste controla a luz entre as nuvens e neblina; no Ultra, ele destrói qualquer GPU. <br/>
@@ -67,7 +67,7 @@ export default function RDR2OptimizationGuide() {
         {
             title: "3. O Único item que deve estar no ULTRA",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Texture Quality:</strong> 
             <br/><br/>No RDR2, a diferença visual entre 'High' e 'Ultra' nas texturas é gritante. Colocar as texturas em High faz o jogo parecer borrado, com visual de console antigo. Em 2026, **sempre deixe as texturas no Ultra**, mesmo que precise reduzir todo o resto. Se a sua placa de vídeo tiver pelo menos 4GB ou 6GB de VRAM, ela aguentará o Ultra se as outras opções estiverem otimizadas.
         </p>

@@ -34,7 +34,7 @@ export default function PrinterSharingGuide() {
     {
       title: "Por que compartilhar sua impressora?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Ter uma impressora para cada computador é caro e desnecessário. Em 2026, mesmo que sua impressora não tenha Wi-Fi nativo, você pode transformá-la em uma "impressora de rede" conectando-a via USB em um PC e liberando o acesso para todos os outros notebooks e desktops da casa ou escritório através do Windows 11.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PrinterSharingGuide() {
     {
       title: "1. Ativando a Descoberta de Rede",
       content: `
-        <p class="mb-4 text-gray-400">Antes de tudo, os computadores precisam "se ver" na rede:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Antes de tudo, os computadores precisam "se ver" na rede:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Vá em Painel de Controle > Rede e Internet > Central de Rede e Compartilhamento.</li>
             <li>Clique em 'Alterar as configurações de compartilhamento avançadas'.</li>
             <li>Ative a <strong>'Descoberta de rede'</strong> e o <strong>'Compartilhamento de arquivo e impressora'</strong>.</li>
@@ -56,7 +56,7 @@ export default function PrinterSharingGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">No PC onde a impressora está plugada:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Vá em Configurações > Dispositivos > Impressoras e Scanners. <br/>
                 2. Selecione sua impressora e clique em **Propriedades da Impressora**. <br/>
                 3. Vá na aba **Compartilhamento** e marque 'Compartilhar esta impressora'. <br/>
@@ -68,7 +68,7 @@ export default function PrinterSharingGuide() {
     {
       title: "3. Conectando nos outros computadores",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>O passo final:</strong> 
             <br/><br/>No outro computador, abra o Explorer e digite o endereço IP do PC host (ex: <code>\\\\192.168.1.10</code>). Você verá o ícone da impressora compartilhada. Clique com o botão direito e selecione **'Conectar'**. O Windows baixará os drivers automaticamente do PC host e a impressora aparecerá pronta para o uso no Word, Excel ou qualquer outro programa em 2026.
         </p>
@@ -82,13 +82,13 @@ export default function PrinterSharingGuide() {
       title: "4. Fundamentos Técnicos do Compartilhamento de Impressoras",
       content: `
         <h4 class="text-white font-bold mb-3">🔬 Arquitetura de Compartilhamento de Impressoras</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O compartilhamento de impressoras no Windows opera por meio de uma arquitetura cliente-servidor baseada em protocolos de rede:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">Componentes Técnicos</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Serviço de Impressão (Spooler)</li>
               <li>• Protocolo SMB (Server Message Block)</li>
               <li>• Gerenciamento de Filas de Impressão</li>
@@ -98,7 +98,7 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-3">Protocolos e Portas</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Porta 9100 (Raw Printing)</li>
               <li>• Porta 515 (LPD - Line Printer Daemon)</li>
               <li>• Porta 631 (IPP - Internet Printing Protocol)</li>
@@ -109,11 +109,11 @@ export default function PrinterSharingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Processo de Comunicação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O processo de impressão remota envolve múltiplas etapas técnicas:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Etapa</th>
@@ -162,16 +162,16 @@ export default function PrinterSharingGuide() {
       title: "5. Configurações Avançadas de Rede",
       content: `
         <h4 class="text-white font-bold mb-3">🛡️ Configurações de Firewall e Segurança</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A configuração adequada do firewall é essencial para o funcionamento seguro do compartilhamento:
         </p>
         <div class="space-y-6">
           <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
             <h5 class="text-green-400 font-bold mb-2">Regras de Firewall Específicas</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Para permitir o compartilhamento de impressoras, é necessário configurar regras específicas no firewall do Windows:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Permitir porta 9100 para impressão raw</li>
               <li>• Habilitar serviço de impressão no firewall</li>
               <li>• Permitir NetBIOS (portas 137-139)</li>
@@ -180,10 +180,10 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
             <h5 class="text-blue-400 font-bold mb-2">Políticas de Grupo</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Em ambientes corporativos, as políticas de grupo permitem controlar o acesso a impressoras compartilhadas:
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Configurações de segurança de rede</li>
               <li>• Controle de acesso baseado em usuário</li>
               <li>• Restrições de impressão</li>
@@ -193,13 +193,13 @@ export default function PrinterSharingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Rede Avançadas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Vários parâmetros de rede influenciam no desempenho do compartilhamento:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-cyan-400 font-bold mb-2">Configurações TCP/IP</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Buffer de recepção</li>
               <li>• Timeout de conexão</li>
               <li>• Tamanho de pacote</li>
@@ -208,7 +208,7 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="bg-gray-800 p-4 rounded-lg">
             <h5 class="text-purple-400 font-bold mb-2">Opções de Impressão</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Filas de prioridade</li>
               <li>• Processamento em segundo plano</li>
               <li>• Cache de documentos</li>
@@ -222,13 +222,13 @@ export default function PrinterSharingGuide() {
       title: "6. Solução de Problemas Avançados",
       content: `
         <h4 class="text-white font-bold mb-3">🔍 Diagnóstico de Problemas Complexos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Problemas avançados de compartilhamento de impressoras requerem diagnóstico profundo:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">Erros Comuns</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Erro 0x0000011b (falha de autenticação)</li>
               <li>• Falha na instalação de driver</li>
               <li>• Conexão lenta ou intermitente</li>
@@ -238,7 +238,7 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Ferramentas de Diagnóstico</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• PrintUI /s para gerenciamento remoto</li>
               <li>• Comando net view para mapeamento</li>
               <li>• PowerShell para impressoras</li>
@@ -248,7 +248,7 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-3">Soluções Avançadas</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Modificação do registry</li>
               <li>• Atualização de firmware</li>
               <li>• Configuração de gateway</li>
@@ -260,7 +260,7 @@ export default function PrinterSharingGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Prevenção de Problemas Futuros</h4>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Prática</th>
@@ -312,16 +312,16 @@ export default function PrinterSharingGuide() {
       title: "7. Protocolos Alternativos de Impressão",
       content: `
         <h4 class="text-white font-bold mb-3">🌐 Outros Métodos de Compartilhamento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Além do método tradicional do Windows, existem outras abordagens para compartilhar impressoras:
         </p>
         <div class="space-y-6">
           <div class="border-l-4 border-purple-500 pl-4 py-2 bg-purple-900/10">
             <h5 class="text-purple-400 font-bold mb-2">Internet Printing Protocol (IPP)</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Um protocolo baseado em HTTP que permite impressão pela internet ou intranet. Mais seguro e flexível que o SMB tradicional, especialmente para ambientes corporativos com firewalls restritivos.
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Funciona sobre HTTPS para segurança</li>
               <li>• Suporte nativo em Linux e macOS</li>
               <li>• Menos suscetível a bloqueios de firewall</li>
@@ -330,10 +330,10 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="border-l-4 border-cyan-500 pl-4 py-2 bg-cyan-900/10">
             <h5 class="text-cyan-400 font-bold mb-2">Line Printer Daemon (LPD)</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Protocolo tradicional UNIX para impressão remota, ainda amplamente suportado. Bom para ambientes heterogêneos com múltiplos sistemas operacionais.
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Compatibilidade com sistemas legados</li>
               <li>• Simples de configurar</li>
               <li>• Baixa sobrecarga de rede</li>
@@ -342,10 +342,10 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-900/10">
             <h5 class="text-yellow-400 font-bold mb-2">Cloud Printing (Google)</h5>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
               Apesar do encerramento do Google Cloud Print, alternativas como o Google Workspace Printing ainda permitem impressão baseada em nuvem para organizações.
             </p>
-            <ul class="text-sm text-gray-400 space-y-1 mt-2">
+            <ul class="text-sm text-gray-700 space-y-1 mt-2">
               <li>• Impressão de qualquer lugar</li>
               <li>• Autenticação centralizada</li>
               <li>• Gerenciamento baseado em web</li>
@@ -359,13 +359,13 @@ export default function PrinterSharingGuide() {
       title: "8. Segurança Avançada em Impressão de Rede",
       content: `
         <h4 class="text-white font-bold mb-3">🔐 Considerações de Segurança</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Compartilhar impressoras introduz riscos de segurança que devem ser mitigados:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">Controles de Acesso</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Permissões granulares de impressão</li>
               <li>• Autenticação obrigatória</li>
               <li>• Controle baseado em grupos AD</li>
@@ -375,7 +375,7 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-3">Criptografia e Proteção</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• SSL/TLS para transmissão de dados</li>
               <li>• Isolamento de VLAN</li>
               <li>• Filtragem de conteúdo impresso</li>
@@ -386,10 +386,10 @@ export default function PrinterSharingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Melhores Práticas de Segurança</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Implementar segurança adequada no compartilhamento de impressoras:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>Segregação de rede:</strong> Colocar impressoras em uma VLAN separada para limitar o acesso</li>
           <li><strong>Autenticação por cartão:</strong> Utilizar sistemas de autenticação por cartão para liberar impressão</li>
           <li><strong>Registro de atividades:</strong> Manter logs detalhados de todos os trabalhos impressos</li>
@@ -402,13 +402,13 @@ export default function PrinterSharingGuide() {
       title: "9. Tendências e Futuro da Impressão em Rede",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias Emergentes</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A impressão em rede está evoluindo com novas tecnologias e paradigmas:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
           <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-3">Impressão Baseada em IA</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Otimização automática de qualidade</li>
               <li>• Previsão de necessidade de toner</li>
               <li>• Balanceamento de carga inteligente</li>
@@ -418,7 +418,7 @@ export default function PrinterSharingGuide() {
           </div>
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">IoT e Impressão</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Integração com sistemas smart office</li>
               <li>• Controle por assistentes de voz</li>
               <li>• Sensores para monitoramento em tempo real</li>
@@ -429,11 +429,11 @@ export default function PrinterSharingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões para 2026-2027</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O futuro da impressão em rede promete inovações significativas:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>

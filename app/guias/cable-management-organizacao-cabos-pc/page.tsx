@@ -34,7 +34,7 @@ export default function CableManagementGuide() {
         {
             title: "Por que organizar os cabos?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, com gabinetes de vidro temperado e iluminação RGB em todo lugar, um **Cable Management** mal feito acaba com a estética do seu setup. Mas vai além da beleza: cabos espalhados bloqueiam o caminho do ar fresco que entra pelas ventoinhas frontais, fazendo com que sua GPU e CPU trabalhem em temperaturas mais altas. Organizar cabos é o passo final para um PC de alta performance.
         </p>
       `
@@ -42,8 +42,8 @@ export default function CableManagementGuide() {
         {
             title: "1. A regra do \"Caminho de Trás\"",
             content: `
-        <p class="mb-4 text-gray-400">O maior segredo é esconder a bagunça:</p>
-        <p class="text-sm text-gray-400">
+        <p class="mb-4 text-gray-700">O maior segredo é esconder a bagunça:</p>
+        <p class="text-sm text-gray-700">
             Quase todos os gabinetes modernos possuem um espaço atrás da placa-mãe. <br/><br/>
             - Passe o **Cabo de 24 pinos** (energia principal) pelo recorte mais próximo da entrada. <br/>
             - O **Cabo da CPU (8 pinos)** deve passar pelo recorte no topo esquerdo. <br/>
@@ -56,7 +56,7 @@ export default function CableManagementGuide() {
             content: `
        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Fontes Modulares:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se você vai montar um PC em 2026, invista em uma **Fonte Modular**. Ela permite que você conecte apenas os cabos que realmente vai usar. Sobrou cabo SATA ou Molex que não tem utilidade? Deixe-os na caixa da fonte em vez de amontoá-los no fundo do gabinete ("porão"), o que facilitará muito a circulação de ar vinda da fonte.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function CableManagementGuide() {
         {
             title: "3. Cabos Externos: A Mesa Limpa",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Clean Setup:</strong> 
             <br/><br/>A organização não para dentro do PC. Use **canaletas** ou espirais organizadoras para agrupar os fios do monitor, teclado e mouse que descem da mesa. Um setup onde você não vê cabos pendurados transmite muito mais profissionalismo e tranquilidade para longas sessões de jogo ou trabalho em 2026.
         </p>
@@ -78,14 +78,14 @@ export default function CableManagementGuide() {
       title: "Engenharia Térmica e Fluídica: Impacto do Cable Management no Desempenho",
       content: `
         <h4 class="text-white font-bold mb-3">🌡️ Física do Fluxo de Ar em Gabinetes de Computador</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O Cable Management não é apenas uma questão estética; ele tem um impacto físico mensurável no desempenho térmico do sistema. A organização dos cabos afeta diretamente o fluxo de ar dentro do gabinete, influenciando na eficiência dos sistemas de refrigeração:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Princípios de Dinâmica dos Fluidos</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Lei da Continuidade de Massa</li>
               <li>• Equação de Bernoulli</li>
               <li>• Teorema de Torricelli</li>
@@ -96,7 +96,7 @@ export default function CableManagementGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Tipos de Fluxo de Ar</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Fluxo Laminar (ideal)</li>
               <li>• Fluxo Turbulento (comum)</li>
               <li>• Regimes de Transição</li>
@@ -108,12 +108,12 @@ export default function CableManagementGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Impacto Quantificado do Cable Management</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Estudos térmicos demonstram diferenças mensuráveis no desempenho com diferentes níveis de organização de cabos:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Componente</th>
@@ -165,7 +165,7 @@ export default function CableManagementGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Cabos desorganizados dentro do gabinete atuam como obstáculos no fluxo de ar, criando zonas de recirculação e aumentando a turbulência. Isso resulta em perda de pressão estática e diminuição da eficiência dos ventiladores, forçando o sistema a operar em temperaturas mais elevadas.
           </p>
         </div>
@@ -175,12 +175,12 @@ export default function CableManagementGuide() {
       title: "Técnicas Avançadas de Cable Management e Planejamento de Layout",
       content: `
         <h4 class="text-white font-bold mb-3">📐 Planejamento de Layout para Cable Management Profissional</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O Cable Management profissional envolve técnicas avançadas de organização e planejamento que vão além da simples colocação de abraçadeiras. Aqui estão as melhores práticas utilizadas por entusiastas e profissionais:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Técnica</th>
@@ -225,14 +225,14 @@ export default function CableManagementGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Técnicas Profissionais de Organização</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Técnicas avançadas utilizadas por entusiastas e profissionais:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Snake Routing</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>Organização em zigue-zague</li>
               <li>Minimiza comprimento</li>
               <li>Fluxo de ar otimizado</li>
@@ -251,7 +251,7 @@ export default function CableManagementGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Modular Builds</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>Componentes pré-cablados</li>
               <li>Fontes semi-modulares</li>
               <li>Conectores padronizados</li>
@@ -261,11 +261,11 @@ export default function CableManagementGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛠️ Ferramentas e Acessórios Especializados</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Lista de ferramentas e acessórios para Cable Management profissional:
         </p>
         
-        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
           <li><strong>Abraçadeiras de Nylon:</strong> Variadas cores e tamanhos para organização permanente</li>
           <li><strong>Fitas de Velcro:</strong> Removíveis e reutilizáveis para manutenção frequente</li>
           <li><strong>Malhas de Cabo:</strong> Sleeving para cobertura estética e proteção</li>
@@ -279,17 +279,17 @@ export default function CableManagementGuide() {
       title: "Tecnologias Emergentes em Design de Gabinetes e Gestão Térmica",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Design de Gabinete de Próxima Geração</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A próxima geração de gabinetes de computador está explorando tecnologias avançadas de design e materiais que facilitam o Cable Management e otimizam a gestão térmica:
         </p>
         
         <h4 class="text-white font-bold mb-3">Sistema de Roteamento Integrado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Novas tecnologias de design de gabinete que estão sendo implementadas:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -334,14 +334,14 @@ export default function CableManagementGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Design Térmico</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na otimização de designs de gabinete:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Otimização de Layout por IA</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Análise preditiva de fluxo de ar</li>
               <li>Posicionamento ideal de componentes</li>
               <li>Roteamento de cabos otimizado</li>
@@ -353,7 +353,7 @@ export default function CableManagementGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Análise Térmica Preditiva</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Identificação de pontos quentes</li>
               <li>Sugestão de melhorias de layout</li>
               <li>Previsão de desempenho térmico</li>
@@ -365,7 +365,7 @@ export default function CableManagementGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de design de gabinete de próxima geração:
         </p>
         
@@ -378,7 +378,7 @@ export default function CableManagementGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Smart Cabinet Systems</h5>
-              <p class="text-sm text-gray-400">Empresas como Corsair, NZXT e Lian Li estão desenvolvendo gabinetes com sistemas inteligentes que monitoram automaticamente o fluxo de ar e ajustam a posição de componentes e cabos para otimizar o desempenho térmico. Esses sistemas usam sensores de temperatura e algoritmos de IA para manter o sistema em condições ideais. Implementações piloto estão previstas para 2026-2027.</p>
+              <p class="text-sm text-gray-700">Empresas como Corsair, NZXT e Lian Li estão desenvolvendo gabinetes com sistemas inteligentes que monitoram automaticamente o fluxo de ar e ajustam a posição de componentes e cabos para otimizar o desempenho térmico. Esses sistemas usam sensores de temperatura e algoritmos de IA para manter o sistema em condições ideais. Implementações piloto estão previstas para 2026-2027.</p>
             </div>
           </div>
           
@@ -390,7 +390,7 @@ export default function CableManagementGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Advanced Thermal Materials</h5>
-              <p class="text-sm text-gray-400">Pesquisas em nanotecnologia estão desenvolvendo novos materiais para gabinetes que ajudam na dissipação de calor e permitem designs mais eficientes. Materiais como grafeno e compósitos de carbono com propriedades térmicas especiais estão sendo testados para uso em gabinetes de alta performance. Esses materiais poderiam permitir designs mais compactos com melhor gestão térmica. Primeiras aplicações estão previstas para 2027-2029.</p>
+              <p class="text-sm text-gray-700">Pesquisas em nanotecnologia estão desenvolvendo novos materiais para gabinetes que ajudam na dissipação de calor e permitem designs mais eficientes. Materiais como grafeno e compósitos de carbono com propriedades térmicas especiais estão sendo testados para uso em gabinetes de alta performance. Esses materiais poderiam permitir designs mais compactos com melhor gestão térmica. Primeiras aplicações estão previstas para 2027-2029.</p>
             </div>
           </div>
           
@@ -402,14 +402,14 @@ export default function CableManagementGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">Automated Cable Management</h5>
-              <p class="text-sm text-gray-400">Laboratórios de pesquisa estão trabalhando em sistemas de Cable Management automatizados que usam pequenos motores e sensores para ajustar automaticamente a posição dos cabos com base nas condições térmicas do sistema. Esses sistemas poderiam otimizar continuamente o fluxo de ar e reduzir manualmente a necessidade de organização. Implementações experimentais estão em desenvolvimento para 2028-2030.</p>
+              <p class="text-sm text-gray-700">Laboratórios de pesquisa estão trabalhando em sistemas de Cable Management automatizados que usam pequenos motores e sensores para ajustar automaticamente a posição dos cabos com base nas condições térmicas do sistema. Esses sistemas poderiam otimizar continuamente o fluxo de ar e reduzir manualmente a necessidade de organização. Implementações experimentais estão em desenvolvimento para 2028-2030.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Com o avanço da miniaturização e a crescente demanda por sistemas mais eficientes energeticamente, o Cable Management evoluirá de uma tarefa manual para um aspecto integrado do design do sistema. A combinação de inteligência artificial, materiais avançados e design térmico otimizado resultará em gabinetes que automaticamente organizam cabos e otimizam o fluxo de ar, tornando o Cable Management manual uma prática cada vez menos necessária para o usuário médio.
           </p>
         </div>

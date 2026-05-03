@@ -50,7 +50,7 @@ export default function StreetFighter6Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-400 mb-8">{description}</p>
+                <p className="text-xl text-gray-700 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos Street Fighter 6</h2>
@@ -90,7 +90,7 @@ export default function StreetFighter6Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações Competitivas (240 FPS)</h2>
-                    <p className="text-gray-400 mb-4">
+                    <p className="text-gray-700 mb-4">
                         Para fighting games, cada frame de input lag conta. Configurações otimizadas para máxima responsividade.
                     </p>
                     <div className="bg-blue-900/20 p-4 rounded">
@@ -171,21 +171,21 @@ export default function StreetFighter6Guide() {
                     <div className="space-y-4">
                         <div className="bg-blue-900/20 p-4 rounded">
                             <h3 className="text-blue-400 font-bold mb-2">Rollback Netcode</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Street Fighter 6 usa rollback netcode moderno. 
                                 Configure para 5-7 frames de delay para melhor experiência.
                             </p>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded">
                             <h3 className="text-green-400 font-bold mb-2">Network Optimization</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Use Ethernet, configure QoS para gaming, 
                                 e use DNS Cloudflare para menor latência.
                             </p>
                         </div>
                         <div className="bg-yellow-900/20 p-4 rounded">
                             <h3 className="text-yellow-400 font-bold mb-2">Tournament Settings</h3>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-700">
                                 Desative overlays, recording e background apps. 
                                 Use modo de janela borderless para melhor performance.
                             </p>

@@ -34,7 +34,7 @@ export default function SystemMonitoringGuide() {
     {
       title: "Por que monitorar seu PC?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, com processadores que fazem "boost" automático baseado na temperatura, não saber como seu hardware está se comportando é um erro. O monitoramento permite identificar gargalos (CPU a 100% e GPU a 40%), superaquecimento antes que o PC desligue sozinho e até problemas de voltagem na fonte que podem queimar seus componentes. Conhecimento é poder para qualquer entusiasta de PC.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SystemMonitoringGuide() {
     {
       title: "1. MSI Afterburner: O Rei dos Frames",
       content: `
-        <p class="mb-4 text-gray-400">Indispensável para qualquer gamer que queira ver dados enquanto joga:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Indispensável para qualquer gamer que queira ver dados enquanto joga:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>On-Screen Display (OSD):</strong> Coloca um gráfico de FPS e frametime no canto da tela sem que você precise sair do jogo.</li>
             <li><strong>Versatilidade:</strong> Funciona em placas de vídeo de todas as marcas (NVIDIA, AMD, Intel).</li>
             <li><strong>Check de Thermal Throttling:</strong> Permite ver se o clock da GPU cai quando chega em 83ºC.</li>
@@ -55,7 +55,7 @@ export default function SystemMonitoringGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Informação Profissional:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se o Afterburner te mostra o básico, o <strong>HWiNFO64</strong> te mostra tudo. <br/><br/>
                 Ele lê sensores que outros programas ignoram, como a temperatura dos módulos de memória (VRAM), a velocidade de rotação exata de cada fan e até se sua placa-mãe está entregando a energia correta. Em 2026, ele é a ferramenta nº 1 para diagnosticar telas azuis e problemas de hardware instável.
             </p>
@@ -65,7 +65,7 @@ export default function SystemMonitoringGuide() {
     {
       title: "3. Dica: Xbox Game Bar (Win + G)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não quer instalar nada? 
             <br/><br/>O Windows 11 tem um monitor nativo leve. Basta apertar <strong>Win + G</strong> e abrir o widget de 'Desempenho'. Ele mostra o uso de CPU, GPU, VRAM, RAM e FPS de forma simples e discreta. É o ideal para quem não quer telas cheias de números e gráficos, mas quer ter uma ideia do que está pesando no PC.
         </p>

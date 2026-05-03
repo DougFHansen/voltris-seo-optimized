@@ -34,7 +34,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "O mistério das teclas trocadas",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, com a popularização de teclados mecânicos importados, é muito comum comprar um teclado com o layout americano (ANSI) e tentar usá-lo com as configurações brasileiras (ABNT2). Isso faz com que os símbolos não correspondam ao que está impresso na tecla. Resolver isso no Windows 11 leva menos de um minuto, desde que você saiba exatamente qual layout o seu hardware possui.
         </p>
       `
@@ -42,8 +42,8 @@ export default function KeyboardConfigGuide() {
         {
             title: "1. Identificando seu Layout",
             content: `
-        <p class="mb-4 text-gray-400">Antes de configurar, olhe para o seu teclado:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Antes de configurar, olhe para o seu teclado:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>ABNT2:</strong> Tem a tecla 'Ç' e o 'Enter' tem formato de bota (grande). O '@' costuma ficar na tecla '2'.</li>
             <li><strong>Estados Unidos (Internacional):</strong> Não tem a tecla 'Ç'. O 'Enter' é uma barra horizontal pequena. O '@' fica no '2', mas os acentos funcionam de forma diferente (ex: apertar ' e depois 'c' para fazer 'ç').</li>
         </ul >
@@ -54,7 +54,7 @@ export default function KeyboardConfigGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Passo a Passo:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Vá em Configurações > Hora e Idioma > <strong>Idioma e Região</strong>. <br/>
                 2. Em 'Português (Brasil)', clique nos três pontos (...) e selecione <strong>Opções de Idioma</strong>. <br/>
                 3. Role até 'Teclados' e clique em 'Adicionar um teclado'. <br/>
@@ -67,7 +67,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "3. O Atalho Mágico",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o seu teclado desconfigura "do nada" enquanto você joga ou digita:
             <br/><br/><strong>Atenção:</strong> O atalho <strong>Windows + Espaço</strong> alterna entre os layouts instalados. Em 2026, muitos usuários apertam isso acidentalmente. Se o seu teclado ficar louco, tente esse atalho para voltar ao layout correto imediatamente.
         </p>
@@ -81,13 +81,13 @@ export default function KeyboardConfigGuide() {
             title: "12. Arquitetura de Layout de Teclados",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Estrutura Técnica de Layouts de Teclado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em 2026, os layouts de teclados são definidos por padrões internacionais complexos que vão além da simples disposição física das teclas:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Padrões Internacionais</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• ISO 9995: Padrão internacional para layouts de teclado</li>
                     <li>• ANSI INCITS 3-1969: Padrão americano</li>
                     <li>• ABNT NBR 10317: Padrão brasileiro</li>
@@ -97,7 +97,7 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Mapeamento de Scancodes</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Cada tecla tem um código físico único</li>
                     <li>• Os scancodes são interpretados pelo firmware</li>
                     <li>• O sistema operacional converte scancodes em caracteres</li>
@@ -108,11 +108,11 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Arquitetura de Mapeamento de Teclado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O processo de conversão de pressionamento de tecla em caractere visível envolve múltiplas etapas:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Etapa</th>
@@ -158,7 +158,7 @@ export default function KeyboardConfigGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Debug de Layout</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Ferramentas como o "Keyboard Layout Creator" da Microsoft permitem visualizar exatamente como os scancodes são convertidos em caracteres para cada layout específico, ajudando a diagnosticar problemas complexos de mapeamento.
             </p>
         </div>
@@ -168,14 +168,14 @@ export default function KeyboardConfigGuide() {
             title: "13. Tabelas de Mapeamento e Caracteres Especiais",
             content: `
         <h4 class="text-white font-bold mb-3">🔤 Mapeamento de Caracteres Especiais em 2026</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Os layouts ABNT2 e ANSI diferem significativamente no tratamento de caracteres especiais e acentuação:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Layout ABNT2 (Português)</h5>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+                    <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                         <thead class="bg-gray-800">
                             <tr>
                                 <th class="p-2 text-left">Tecla</th>
@@ -210,7 +210,7 @@ export default function KeyboardConfigGuide() {
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Layout ANSI (EUA)</h5>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+                    <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                         <thead class="bg-gray-800">
                             <tr>
                                 <th class="p-2 text-left">Tecla</th>
@@ -245,11 +245,11 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔍 Sequências de Combinação para Acentuação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em layouts internacionais, a criação de caracteres acentuados segue regras específicas:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Caractere</th>
@@ -292,13 +292,13 @@ export default function KeyboardConfigGuide() {
             title: "14. Tendências e Evolução de Layouts em 2026",
             content: `
         <h4 class="text-white font-bold mb-3">🚀 Inovações em Layouts de Teclado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em 2026, os layouts de teclado estão evoluindo com novas tecnologias e padrões de uso:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Layouts Adaptativos</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Layouts dinâmicos baseados em software</li>
                     <li>• Teclas reprogramáveis em tempo real</li>
                     <li>• Mudança automática por aplicativo</li>
@@ -308,7 +308,7 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Layouts Multilíngues</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Combinação de múltiplos idiomas</li>
                     <li>• Teclas com símbolos duplos</li>
                     <li>• Alternância automática</li>
@@ -318,7 +318,7 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Layouts Digitais</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Teclados OLED programáveis</li>
                     <li>• Labels dinâmicos de teclas</li>
                     <li>• Layouts personalizados por perfil</li>
@@ -329,11 +329,11 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Uso de Layouts em 2026</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Dados sobre a distribuição e uso de layouts em diferentes regiões:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Região</th>
@@ -372,10 +372,10 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Empresas e instituições estão investindo em tecnologias de layout avançado:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
             <li><strong>Layouts inteligentes:</strong> Adaptam-se automaticamente ao idioma do texto sendo digitado</li>
             <li><strong>Teclados híbridos:</strong> Combinam layouts físicos e virtuais em tempo real</li>
             <li><strong>Reconhecimento de contexto:</strong> Alteram layout com base no aplicativo em uso</li>
@@ -391,13 +391,13 @@ export default function KeyboardConfigGuide() {
             title: "4. Configurações Regionais Avançadas",
             content: `
         <h4 class="text-white font-bold mb-3">🌍 Configuração Regional Completa</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A configuração do teclado está intimamente ligada às configurações regionais do sistema:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Configurações Associadas</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Formato de data e hora</li>
                     <li>• Separadores decimais e de milhar</li>
                     <li>• Formato de moeda</li>
@@ -407,7 +407,7 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Localização do Sistema</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Idioma de exibição</li>
                     <li>• Idioma de entrada</li>
                     <li>• Idioma de formatos</li>
@@ -418,11 +418,11 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Ferramentas de Configuração Regional</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Métodos avançados para configurar o layout regional:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Método</th>
@@ -465,16 +465,16 @@ export default function KeyboardConfigGuide() {
             title: "5. Troubleshooting Avançado",
             content: `
         <h4 class="text-white font-bold mb-3">🔍 Diagnóstico de Problemas Complexos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Quando o layout parece estar configurado corretamente mas ainda apresenta problemas:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Verificação de Layout Ativo</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Confirme qual layout está realmente ativo:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Use o utilitário "kbdedit.com" para verificar o layout real</li>
                     <li>• Execute "Get-WinUserLanguageList" no PowerShell</li>
                     <li>• Verifique o valor HKLM\SYSTEM\CurrentControlSet\Control\Keyboard Layouts</li>
@@ -483,10 +483,10 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Problemas de Aplicativo Específico</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Alguns aplicativos podem sobrescrever o layout do sistema:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Editores de código podem ter mapeamentos próprios</li>
                     <li>• Jogos podem redefinir o layout para compatibilidade</li>
                     <li>• Aplicativos de segurança podem interceptar entradas</li>
@@ -496,13 +496,13 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛠️ Soluções de Problemas Comuns</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Técnicas avançadas para resolver problemas persistentes:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Soluções de Software</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Reiniciar o serviço de teclado (Input Method Manager)</li>
                     <li>• Limpar cache de layout do usuário</li>
                     <li>• Verificar conflitos com softwares de terceiros</li>
@@ -511,7 +511,7 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Soluções de Sistema</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Atualizar drivers de teclado</li>
                     <li>• Verificar integridade do sistema com SFC /scannow</li>
                     <li>• Reinstalar pacotes de idioma</li>
@@ -525,13 +525,13 @@ export default function KeyboardConfigGuide() {
             title: "6. Segurança e Privacidade",
             content: `
         <h4 class="text-white font-bold mb-3">🔒 Considerações de Segurança em Layouts de Teclado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A configuração de layout pode impactar a segurança do sistema:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Riscos de Segurança</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Keyloggers podem registrar entradas de teclado incorretamente</li>
                     <li>• Diferentes layouts podem comprometer a digitação de senhas</li>
                     <li>• Malware pode alterar layouts para coleta de credenciais</li>
@@ -541,7 +541,7 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Boas Práticas de Segurança</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Verificar regularmente o layout de teclado ativo</li>
                     <li>• Usar autenticação multifatorial como proteção adicional</li>
                     <li>• Ser cauteloso ao digitar senhas em layouts desconhecidos</li>
@@ -552,11 +552,11 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Proteção contra Ataques de Engenharia Social</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Como os layouts de teclado podem ser usados em ataques:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tipo de Ataque</th>
@@ -593,16 +593,16 @@ export default function KeyboardConfigGuide() {
             title: "7. Análise de Performance e Ergonomia",
             content: `
         <h4 class="text-white font-bold mb-3">⚡ Impacto de Layouts na Performance de Digitação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Diferentes layouts de teclado têm impactos variados na velocidade e precisão de digitação:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Estatísticas de Digitação</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Estudos comparando layouts diferentes:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Layout ABNT2: Média de 45 WPM (palavras por minuto) para nativos de português</li>
                     <li>• Layout ANSI: 42 WPM para nativos de português (devido à falta do Ç)</li>
                     <li>• Layout Dvorak: 55 WPM em média (mas curva de aprendizado alta)</li>
@@ -611,10 +611,10 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Ergonomia e Saúde</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     O layout adequado pode impactar a saúde e conforto:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Menor esforço para digitar caracteres nativos</li>
                     <li>• Redução de movimentos repetitivos desnecessários</li>
                     <li>• Menos tensão muscular ao digitar textos longos</li>
@@ -624,13 +624,13 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Estudos de Caso em Performance</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Análise de performance em diferentes cenários:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Profissionais de TI</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Maior necessidade de caracteres especiais</li>
                     <li>• Benefício do layout ANSI para programação</li>
                     <li>• Importância do AltGr para símbolos especiais</li>
@@ -652,13 +652,13 @@ export default function KeyboardConfigGuide() {
             title: "8. Personalização e Scripts Avançados",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Personalização de Layout com Scripts</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Para usuários avançados, é possível criar layouts personalizados:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Ferramentas de Criação</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Microsoft Keyboard Layout Creator (KLCP)</li>
                     <li>• Ukelele (macOS)</li>
                     <li>• xkb (Linux)</li>
@@ -668,7 +668,7 @@ export default function KeyboardConfigGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Exemplos de Personalização</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Teclas de atalho personalizadas</li>
                     <li>• Layouts específicos para programação</li>
                     <li>• Atalhos para caracteres Unicode especiais</li>
@@ -679,7 +679,7 @@ export default function KeyboardConfigGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">💻 Exemplo de Script PowerShell</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Script para verificar e configurar layouts de teclado:
         </p>
         <div class="bg-gray-900 p-4 rounded-lg overflow-x-auto">
@@ -699,7 +699,7 @@ Set-WinSystemLocale "pt-BR"</pre>
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Layout por Aplicativo</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 É possível usar AutoHotkey para configurar layouts diferentes para diferentes aplicativos, ideal para desenvolvedores que trabalham com múltiplas linguagens de programação ou idiomas.
             </p>
         </div>
@@ -709,16 +709,16 @@ Set-WinSystemLocale "pt-BR"</pre>
             title: "9. Compatibilidade com Aplicativos Específicos",
             content: `
         <h4 class="text-white font-bold mb-3">🔄 Compatibilidade com Softwares Especializados</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Alguns aplicativos podem ter problemas específicos com layouts de teclado:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Editores de Código</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     IDEs e editores de código podem ter comportamentos específicos:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Atalhos de teclado específicos podem colidir com layouts</li>
                     <li>• Algumas IDEs ignoram o layout do sistema para atalhos</li>
                     <li>• Teclas especiais podem ter tratamento diferente</li>
@@ -727,10 +727,10 @@ Set-WinSystemLocale "pt-BR"</pre>
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Jogos e Aplicativos Gráficos</h>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Aplicações que utilizam inputs intensivos:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Jogos podem redefinir o layout para compatibilidade</li>
                     <li>• Aplicativos CAD/3D podem ter mapeamentos próprios</li>
                     <li>• Softwares de produtividade podem ignorar o layout</li>
@@ -740,11 +740,11 @@ Set-WinSystemLocale "pt-BR"</pre>
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Soluções de Compatibilidade</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Estratégias para resolver problemas de compatibilidade:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Aplicativo</th>
@@ -787,13 +787,13 @@ Set-WinSystemLocale "pt-BR"</pre>
             title: "10. Soluções Corporativas e de TI",
             content: `
         <h4 class="text-white font-bold mb-3">🏢 Implantação em Ambientes Corporativos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em ambientes empresariais, a padronização de layouts de teclado é crítica:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Políticas de Grupo</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Configuração centralizada de layouts</li>
                     <li>• Imposição de layouts específicos</li>
                     <li>• Impedimento de alterações por usuários</li>
@@ -803,7 +803,7 @@ Set-WinSystemLocale "pt-BR"</pre>
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Soluções de Gerenciamento</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Microsoft Endpoint Manager</li>
                     <li>• System Center Configuration Manager</li>
                     <li>• Soluções de terceiros como PDQ Deploy</li>
@@ -814,7 +814,7 @@ Set-WinSystemLocale "pt-BR"</pre>
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Scripts de Implantação em Lote</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Exemplo de script para implantação de layout em múltiplas máquinas:
         </p>
         <div class="bg-gray-900 p-4 rounded-lg overflow-x-auto">
@@ -837,13 +837,13 @@ Write-Host "Layout ABNT2 configurado com sucesso para o ambiente corporativo"</p
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Considerações de Segurança Corporativa</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Implementação segura de layouts em ambientes corporativos:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Controles de Segurança</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Auditoria de mudanças de layout</li>
                     <li>• Restrições de alteração por usuários normais</li>
                     <li>• Validação de layouts aprovados</li>
@@ -852,7 +852,7 @@ Write-Host "Layout ABNT2 configurado com sucesso para o ambiente corporativo"</p
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Monitoramento</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Relatórios de layouts em uso</li>
                     <li>• Detecção de layouts não autorizados</li>
                     <li>• Alertas de segurança para mudanças</li>

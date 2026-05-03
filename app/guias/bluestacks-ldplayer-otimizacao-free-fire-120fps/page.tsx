@@ -38,7 +38,7 @@ export default function AndroidEmuGuide() {
         {
             title: "Passo 0: A Regra de Ouro (Virtualização)",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           99% dos casos de "emulador travando" são culpa da Virtualização desligada.
           <br/>Sem VT-x (Intel) ou SVM (AMD) ativados na BIOS, o emulador roda em "Modo Software" usando apenas 1 núcleo, o que é inútil para jogos.
           <br/><strong>Ação:</strong> Reinicie o PC, entre na BIOS e ative a Virtualização AGORA.
@@ -48,13 +48,13 @@ export default function AndroidEmuGuide() {
         {
             title: "BlueStacks 5: Configuração Competitiva",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O BS5 é o padrão da indústria. Vamos configurá-lo para performance máxima.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Abra as Configurações (Engrenagem).</li>
             <li><strong>Performance:</strong>
-                <ul class="list-disc ml-8 mt-2 text-sm text-gray-400">
+                <ul class="list-disc ml-8 mt-2 text-sm text-gray-700">
                     <li>CPU: Escolha "Médio (2 núcleos)" se tiver um i3/i5 antigo. Escolha "Alto (4 núcleos)" se tiver um Ryzen 5/i7 recente. <strong>NUNCA use todos os núcleos.</strong> O Windows precisa de folga.</li>
                     <li>RAM: "Alto (4 GB)". O Android x86 de 32 bits não usa mais que isso eficientemente.</li>
                     <li>Modo de Desempenho: "Alta Performance".</li>
@@ -73,7 +73,7 @@ export default function AndroidEmuGuide() {
         {
             title: "LDPlayer 9: A Escolha Leve",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
            Para PCs mais fracos ou quem quer resposta de mouse (input lag) menor, o LDPlayer 9 é superior.
            <br/>1. Vá em Settings > Advanced.
            <br/>2. CPU: 2 Cores | RAM: 3072M (3GB).
@@ -88,19 +88,19 @@ export default function AndroidEmuGuide() {
             title: "Otimizações de Sistema (Debloat)",
             content: `
         <h4 class="text-white font-bold mb-3">Removendo o Lixo</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Emuladores vêm cheios de "Launchers" pesados e apps patrocinados.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
                 <h5 class="font-bold text-white mb-2">BS Tweaker (Para BlueStacks)</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     Baixe o BS Tweaker 6. Ele permite fazer Root, remover anúncios e desativar abas "Game Center" que consomem RAM à toa.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-yellow-500/30">
                 <h5 class="font-bold text-white mb-2">Nova Launcher</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     Instale o Nova Launcher na Play Store do emulador e defina como padrão. A tela inicial ficará limpa e leve, sem carregar banners de propaganda.
                 </p>
             </div>
@@ -110,7 +110,7 @@ export default function AndroidEmuGuide() {
         {
             title: "Hyper-V: O Inimigo",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se seu emulador dá Tela Azul (BSOD) ou parece lento, é o Hyper-V do Windows atrapalhando a virtualização do emulador.
             <br/>Abra o CMD como Admin e digite:
             <br/><code class="bg-black p-1 rounded">bcdedit /set hypervisorlaunchtype off</code>
@@ -125,7 +125,7 @@ export default function AndroidEmuGuide() {
             title: "Dicas de Mapeamento (Smart Keymapping)",
             content: `
         <h4 class="text-white font-bold mb-3">Subindo Capa</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Use as configs de "Smart Controls" do BlueStacks para o Free Fire. Elas detectam automaticamente se você está no menu ou no jogo, liberando o mouse sozinho.
             <br/>Ajuste a sensibilidade Y (Vertical) para ser maior que a X (Horizontal) para facilitar headshots.
         </p>

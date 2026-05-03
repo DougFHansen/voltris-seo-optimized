@@ -28,7 +28,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "Introdução e Visão Geral",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           A manutenção preventiva é um conjunto sistemático de procedimentos regulares que visam manter o desempenho ideal do sistema, prevenir falhas e prolongar a vida útil do hardware e software. Este guia completo com mais de 2000 palavras irá mostrar as melhores práticas para manter seu computador funcionando de forma otimizada, segura e eficiente ao longo do tempo.
         </p>
         
@@ -37,7 +37,7 @@ export default function ManutencaoPreventivaGuide() {
             <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#31A8FF]">✓</span> Benefícios
             </h3>
-            <ul class="text-gray-400 space-y-2">
+            <ul class="text-gray-700 space-y-2">
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#31A8FF] flex-shrink-0"></span>Aumento de 40-60% no desempenho do sistema</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#31A8FF] flex-shrink-0"></span>Redução de 80% nas falhas inesperadas</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#31A8FF] flex-shrink-0"></span>Prolongamento da vida útil do hardware</li>
@@ -49,7 +49,7 @@ export default function ManutencaoPreventivaGuide() {
             <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#FF4B6B]">⚠</span> Requisitos
             </h3>
-            <ul class="text-gray-400 space-y-2">
+            <ul class="text-gray-700 space-y-2">
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF4B6B] flex-shrink-0"></span>Computador com Windows 10/11</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF4B6B] flex-shrink-0"></span>No mínimo 4GB de RAM livre durante a manutenção</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF4B6B] flex-shrink-0"></span>10-15GB de espaço em disco disponível</li>
@@ -66,15 +66,15 @@ export default function ManutencaoPreventivaGuide() {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-black/30 p-4 rounded-lg">
               <h4 class="font-bold text-blue-400 mb-2">Tempo de Vida</h4>
-              <p class="text-gray-400">Computadores com manutenção regular duram 40-60% mais tempo</p>
+              <p class="text-gray-700">Computadores com manutenção regular duram 40-60% mais tempo</p>
             </div>
             <div class="bg-black/30 p-4 rounded-lg">
               <h4 class="font-bold text-purple-400 mb-2">Performance</h4>
-              <p class="text-gray-400">Sistemas bem mantidos mantêm 80-90% da performance original</p>
+              <p class="text-gray-700">Sistemas bem mantidos mantêm 80-90% da performance original</p>
             </div>
             <div class="bg-black/30 p-4 rounded-lg">
               <h4 class="font-bold text-green-400 mb-2">Custos</h4>
-              <p class="text-gray-400">Manutenção preventiva reduz custos em até 70%</p>
+              <p class="text-gray-700">Manutenção preventiva reduz custos em até 70%</p>
             </div>
           </div>
         </div>
@@ -83,11 +83,11 @@ export default function ManutencaoPreventivaGuide() {
         {
           subtitle: "Importância da Manutenção Preventiva",
           content: `
-            <p class="text-gray-400 mb-4">A manutenção preventiva é fundamental para garantir a continuidade operacional e a longevidade do seu equipamento. Assim como um carro precisa de revisões regulares, o computador também requer cuidados sistemáticos para manter seu desempenho ao longo do tempo.</p>
+            <p class="text-gray-700 mb-4">A manutenção preventiva é fundamental para garantir a continuidade operacional e a longevidade do seu equipamento. Assim como um carro precisa de revisões regulares, o computador também requer cuidados sistemáticos para manter seu desempenho ao longo do tempo.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
                 <h5 class="font-bold text-blue-400 mb-2">Aspectos Técnicos</h5>
-                <ul class="text-gray-400 text-sm space-y-1">
+                <ul class="text-gray-700 text-sm space-y-1">
                   <li>• Prevenção de falhas catastróficas</li>
                   <li>• Otimização de recursos do sistema</li>
                   <li>• Eliminação de arquivos temporários</li>
@@ -96,7 +96,7 @@ export default function ManutencaoPreventivaGuide() {
               </div>
               <div class="bg-[#1E1E22] p-4 rounded-lg border border-green-500/30">
                 <h5 class="font-bold text-green-400 mb-2">Benefícios Financeiros</h5>
-                <ul class="text-gray-400 text-sm space-y-1">
+                <ul class="text-gray-700 text-sm space-y-1">
                   <li>• Redução de custos com substituição</li>
                   <li>• Aumento da vida útil do equipamento</li>
                   <li>• Minimização de tempo de inatividade</li>
@@ -111,7 +111,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "1. Planejamento e Frequência de Manutenção",
       content: `
-        <p class="mb-4 text-gray-400">A manutenção preventiva deve seguir um cronograma sistemático para garantir eficácia:</p>
+        <p class="mb-4 text-gray-700">A manutenção preventiva deve seguir um cronograma sistemático para garantir eficácia:</p>
       `,
       subsections: [
         {
@@ -172,8 +172,8 @@ export default function ManutencaoPreventivaGuide() {
         {
           subtitle: "Planejamento de Atividades",
           content: `
-            <p class="text-gray-400 mb-4">Para uma manutenção eficaz, é importante planejar as atividades com antecedência:</p>
-            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
+            <p class="text-gray-700 mb-4">Para uma manutenção eficaz, é importante planejar as atividades com antecedência:</p>
+            <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4">
               <li>Defina datas fixas para cada tipo de manutenção</li>
               <li>Agende tarefas para horários de baixo uso do sistema</li>
               <li>Notifique usuários sobre possíveis interrupções</li>
@@ -187,7 +187,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "2. Limpeza de Arquivos Temporários e Sistêmicos",
       content: `
-        <p class="mb-4 text-gray-400">A limpeza de arquivos temporários é uma das tarefas mais importantes da manutenção preventiva:</p>
+        <p class="mb-4 text-gray-700">A limpeza de arquivos temporários é uma das tarefas mais importantes da manutenção preventiva:</p>
       `,
       subsections: [
         {
@@ -195,14 +195,14 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas Nativas do Windows:</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li><strong>Disk Cleanup (Limpeza de Disco):</strong> Ferramenta nativa para remover arquivos temporários, arquivos de sistema e lixeira.</li>
                 <li><strong>Storage Sense:</strong> Recurso automático de limpeza de arquivos desnecessários.</li>
                 <li><strong>Limpeza de Arquivos de Sistema:</strong> Acessado pelo Disk Cleanup, remove arquivos de sistema antigos.</li>
               </ol>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas de Terceiros Recomendadas:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-400">
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li><strong>CCleaner:</strong> Popular ferramenta para limpeza de registros e arquivos temporários.</li>
                 <li><strong>Glary Utilities:</strong> Conjunto completo de utilitários de sistema.</li>
                 <li><strong>Wise Disk Cleaner:</strong> Alternativa leve e eficiente para limpeza de disco.</li>
@@ -215,7 +215,7 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Passos para Limpeza Completa:</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Execute o "Limpeza de Disco" como administrador</li>
                 <li>Selecione o disco C: e clique em "Limpar arquivos de sistema"</li>
                 <li>Marque todas as opções disponíveis (exceto arquivos de instalação do Windows)</li>
@@ -239,7 +239,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "3. Verificação e Otimização do Disco Rígido",
       content: `
-        <p class="mb-4 text-gray-400">A verificação do disco é essencial para manter a integridade dos dados e o desempenho do sistema:</p>
+        <p class="mb-4 text-gray-700">A verificação do disco é essencial para manter a integridade dos dados e o desempenho do sistema:</p>
       `,
       subsections: [
         {
@@ -247,7 +247,7 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Utilizando o CHKDSK:</h4>
-              <p class="text-gray-400 mb-3">O comando CHKDSK verifica e corrige erros no sistema de arquivos:</p>
+              <p class="text-gray-700 mb-3">O comando CHKDSK verifica e corrige erros no sistema de arquivos:</p>
               <div class="bg-black p-4 rounded border border-blue-500/30 font-mono text-sm text-blue-400 mt-2">
                 <p>chkdsk C: /f /r /x</p>
                 <p># /f - Corrige erros no disco</p>
@@ -256,7 +256,7 @@ export default function ManutencaoPreventivaGuide() {
               </div>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Verificação com Ferramentas Gráficas:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-400 mt-2">
+              <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>Propriedades do disco > Ferramentas > Verificar</li>
                 <li>Utilitários de disco de terceiros como CrystalDiskInfo</li>
                 <li>SMART monitoring para detecção de falhas iminentes</li>
@@ -269,16 +269,16 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Para Discos Rígidos Mecânicos (HDD):</h4>
-              <p class="text-gray-400 mb-3">A desfragmentação organiza os arquivos no disco para melhorar o acesso:</p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <p class="text-gray-700 mb-3">A desfragmentação organiza os arquivos no disco para melhorar o acesso:</p>
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Abra "Otimização e desfragmentação de unidades"</li>
                 <li>Selecione o disco e clique em "Otimizar"</li>
                 <li>Agende automaticamente para manutenção regular</li>
               </ol>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Para Discos SSD:</h4>
-              <p class="text-gray-400 mb-3">SSDs não devem ser desfragmentados, mas sim otimizados com TRIM:</p>
-              <ul class="list-disc list-inside space-y-2 text-gray-400 mt-2">
+              <p class="text-gray-700 mb-3">SSDs não devem ser desfragmentados, mas sim otimizados com TRIM:</p>
+              <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>O Windows 10/11 faz TRIM automaticamente</li>
                 <li>Verifique se o TRIM está ativado: fsutil behavior query DisableDeleteNotify</li>
                 <li>Resultado "0" indica que o TRIM está ativado</li>
@@ -291,7 +291,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "4. Atualização de Drivers e Software",
       content: `
-        <p class="mb-4 text-gray-400">Manter drivers e software atualizados é crucial para desempenho e segurança:</p>
+        <p class="mb-4 text-gray-700">Manter drivers e software atualizados é crucial para desempenho e segurança:</p>
       `,
       subsections: [
         {
@@ -299,7 +299,7 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Métodos de Atualização:</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Gerenciador de Dispositivos do Windows</li>
                 <li>Centro de Atualizações do Windows</li>
                 <li>Sites oficiais dos fabricantes</li>
@@ -310,7 +310,7 @@ export default function ManutencaoPreventivaGuide() {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-yellow-500/30">
                   <h5 class="font-bold text-yellow-400 mb-2">Hardware</h5>
-                  <ul class="text-gray-400 text-sm space-y-1">
+                  <ul class="text-gray-700 text-sm space-y-1">
                     <li>• Drivers de vídeo (NVIDIA/AMD/Intel)</li>
                     <li>• Drivers de chipset da placa-mãe</li>
                     <li>• Drivers de áudio</li>
@@ -319,7 +319,7 @@ export default function ManutencaoPreventivaGuide() {
                 </div>
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-purple-500/30">
                   <h5 class="font-bold text-purple-400 mb-2">Componentes</h5>
-                  <ul class="text-gray-400 text-sm space-y-1">
+                  <ul class="text-gray-700 text-sm space-y-1">
                     <li>• Drivers USB e Bluetooth</li>
                     <li>• Drivers de dispositivos periféricos</li>
                     <li>• Drivers de impressora</li>
@@ -335,7 +335,7 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Software Crítico para Atualização:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-400">
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Sistema operacional (Windows Updates)</li>
                 <li>Antivírus e ferramentas de segurança</li>
                 <li>Software de produtividade (Office, Adobe, etc.)</li>
@@ -344,7 +344,7 @@ export default function ManutencaoPreventivaGuide() {
               </ul>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Verificação de Versões:</h4>
-              <p class="text-gray-400">Sempre verifique se está usando versões estáveis e não beta de drivers e software crítico.</p>
+              <p class="text-gray-700">Sempre verifique se está usando versões estáveis e não beta de drivers e software crítico.</p>
             </div>
           `
         }
@@ -353,15 +353,15 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "5. Limpeza e Otimização do Registro do Windows",
       content: `
-        <p class="mb-4 text-gray-400">A limpeza do registro ajuda a manter o sistema otimizado e livre de entradas obsoletas:</p>
+        <p class="mb-4 text-gray-700">A limpeza do registro ajuda a manter o sistema otimizado e livre de entradas obsoletas:</p>
       `,
       subsections: [
         {
           subtitle: "Importância do Registro",
           content: `
             <div class="prose prose-invert max-w-none">
-              <p class="text-gray-400 mb-3">O registro do Windows armazena configurações e opções do sistema. Com o tempo, pode acumular entradas obsoletas que afetam o desempenho:</p>
-              <ul class="list-disc list-inside space-y-2 text-gray-400">
+              <p class="text-gray-700 mb-3">O registro do Windows armazena configurações e opções do sistema. Com o tempo, pode acumular entradas obsoletas que afetam o desempenho:</p>
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Entradas de programas desinstalados</li>
                 <li>Referências a arquivos ou pastas inexistentes</li>
                 <li>Configurações de hardware removido</li>
@@ -375,7 +375,7 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas Recomendadas:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-400">
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>CCleaner (com cuidado, tem função de limpeza de registro)</li>
                 <li>Reg Organizer</li>
                 <li>Wise Registry Cleaner</li>
@@ -383,7 +383,7 @@ export default function ManutencaoPreventivaGuide() {
               </ul>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Segurança:</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400 mt-2">
+              <ol class="list-decimal list-inside space-y-2 text-gray-700 mt-2">
                 <li>Crie um ponto de restauração do sistema antes de qualquer edição</li>
                 <li>Faça backup do registro antes de fazer alterações</li>
                 <li>Use ferramentas automatizadas em vez de edição manual</li>
@@ -398,7 +398,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "6. Configurações de Energia e Desempenho",
       content: `
-        <p class="mb-4 text-gray-400">As configurações de energia afetam diretamente o desempenho do sistema:</p>
+        <p class="mb-4 text-gray-700">As configurações de energia afetam diretamente o desempenho do sistema:</p>
       `,
       subsections: [
         {
@@ -406,7 +406,7 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Planos Recomendados:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-400">
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li><strong>Alto Desempenho:</strong> Para sistemas que precisam de máxima performance</li>
                 <li><strong>Equilibrado:</strong> Bom para uso geral, equilibra desempenho e economia</li>
                 <li><strong>Economia de Energia:</strong> Para notebooks em bateria</li>
@@ -428,8 +428,8 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Efeitos Visuais e Desempenho:</h4>
-              <p class="text-gray-400 mb-3">Ajuste as configurações de desempenho para priorizar velocidade:</p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <p class="text-gray-700 mb-3">Ajuste as configurações de desempenho para priorizar velocidade:</p>
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Propriedades do Sistema > Avançado > Desempenho > Configurações</li>
                 <li>Selecione "Ajustar para obter o melhor desempenho"</li>
                 <li>Desative animações, sombras e efeitos visuais desnecessários</li>
@@ -443,7 +443,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "7. Monitoramento e Diagnóstico",
       content: `
-        <p class="mb-4 text-gray-400">Monitorar o sistema ajuda a identificar problemas antes que se tornem críticos:</p>
+        <p class="mb-4 text-gray-700">Monitorar o sistema ajuda a identificar problemas antes que se tornem críticos:</p>
       `,
       subsections: [
         {
@@ -451,7 +451,7 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas Nativas:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-400">
+              <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Gerenciador de Tarefas</li>
                 <li>Monitor de Recursos</li>
                 <li>Visualizador de Eventos</li>
@@ -462,7 +462,7 @@ export default function ManutencaoPreventivaGuide() {
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
                   <h5 class="font-bold text-blue-400 mb-2">Monitoramento</h5>
-                  <ul class="text-gray-400 text-sm space-y-1">
+                  <ul class="text-gray-700 text-sm space-y-1">
                     <li>• HWMonitor</li>
                     <li>• MSI Afterburner</li>
                     <li>• CPU-Z</li>
@@ -471,7 +471,7 @@ export default function ManutencaoPreventivaGuide() {
                 </div>
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-purple-500/30">
                   <h5 class="font-bold text-purple-400 mb-2">Diagnóstico</h5>
-                  <ul class="text-gray-400 text-sm space-y-1">
+                  <ul class="text-gray-700 text-sm space-y-1">
                     <li>• MemTest86</li>
                     <li>• Prime95</li>
                     <li>• CrystalDiskMark</li>
@@ -533,7 +533,7 @@ export default function ManutencaoPreventivaGuide() {
     {
       title: "8. Backup e Recuperação",
       content: `
-        <p class="mb-4 text-gray-400">A manutenção preventiva deve incluir estratégias robustas de backup e recuperação:</p>
+        <p class="mb-4 text-gray-700">A manutenção preventiva deve incluir estratégias robustas de backup e recuperação:</p>
       `,
       subsections: [
         {
@@ -544,20 +544,20 @@ export default function ManutencaoPreventivaGuide() {
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-green-500/30">
                   <h5 class="font-bold text-green-400 mb-2">Completo</h5>
-                  <p class="text-gray-400 text-sm">Cópia de todo o sistema em um ponto específico</p>
+                  <p class="text-gray-700 text-sm">Cópia de todo o sistema em um ponto específico</p>
                 </div>
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
                   <h5 class="font-bold text-blue-400 mb-2">Incremental</h5>
-                  <p class="text-gray-400 text-sm">Apenas alterações desde o último backup</p>
+                  <p class="text-gray-700 text-sm">Apenas alterações desde o último backup</p>
                 </div>
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-purple-500/30">
                   <h5 class="font-bold text-purple-400 mb-2">Diferencial</h5>
-                  <p class="text-gray-400 text-sm">Alterações desde o último backup completo</p>
+                  <p class="text-gray-700 text-sm">Alterações desde o último backup completo</p>
                 </div>
               </div>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas de Backup:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-400 mt-2">
+              <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>Ferramentas nativas do Windows (Backup e Restauração)</li>
                 <li>Macrium Reflect (gratuito para uso pessoal)</li>
                 <li>Acronis True Image</li>
@@ -571,8 +571,8 @@ export default function ManutencaoPreventivaGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Criação de Pontos de Restauração:</h4>
-              <p class="text-gray-400 mb-3">Sempre crie um ponto de restauração antes de realizar manutenções importantes:</p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-400">
+              <p class="text-gray-700 mb-3">Sempre crie um ponto de restauração antes de realizar manutenções importantes:</p>
+              <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Propriedades do Sistema > Proteção do Sistema</li>
                 <li>Clique em "Criar" e dê um nome descritivo</li>
                 <li>Descreva brevemente o que será feito</li>
@@ -580,7 +580,7 @@ export default function ManutencaoPreventivaGuide() {
               </ol>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Verificação de Integridade:</h4>
-              <p class="text-gray-400">Teste periodicamente a capacidade de restauração dos backups e pontos de restauração.</p>
+              <p class="text-gray-700">Teste periodicamente a capacidade de restauração dos backups e pontos de restauração.</p>
             </div>
           `
         }
@@ -590,11 +590,11 @@ export default function ManutencaoPreventivaGuide() {
       title: "Conclusão Profissional",
       content: `
         <div class="bg-gradient-to-r from-[#1E1E22] to-[#171313] p-6 rounded-xl border border-gray-800">
-          <p class="mb-4 text-gray-400 leading-relaxed">
+          <p class="mb-4 text-gray-700 leading-relaxed">
             A manutenção preventiva é uma prática essencial para garantir a longevidade e o desempenho do seu computador. 
             Seguindo este guia, você aplicou estratégias de nível profissional que mantêm seu sistema otimizado, seguro e eficiente.
           </p>
-          <p class="text-gray-400 italic border-l-2 border-[#31A8FF] pl-4">
+          <p class="text-gray-700 italic border-l-2 border-[#31A8FF] pl-4">
             Lembre-se: A tecnologia evolui rapidamente. Recomendamos revisar estas práticas regularmente e adaptá-las às novas tecnologias e ameaças.
           </p>
           

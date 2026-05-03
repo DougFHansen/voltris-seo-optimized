@@ -41,7 +41,7 @@ export default function LinuxGuide() {
         {
             title: "Introdução: O Ano do Linux Desktop?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Sim, chegou. Graças ao Steam Deck, o Linux agora roda Cyberpunk e Elden Ring melhor que o Windows em alguns hardwares. Distros como <strong>Bazzite</strong> vêm prontas: instalou, logou na Steam, jogou. Sem terminal.
         </p>
       `
@@ -52,7 +52,7 @@ export default function LinuxGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Otimizadas para Jogos</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     - <strong>Bazzite:</strong> A experiência IDÊNTICA ao Steam Deck. Liga direto no Big Picture (Game Mode). Imutável (não quebra com updates). Perfeita para ligar o PC na TV da sala.
                     - <strong>Nobara:</strong> Feita pelo GloriousEggroll (criador do Proton-GE). Super otimizada, kernels modificados, patches de OBS e drivers Nvidia pré-instalados. Melhor para uso Desktop (trabalho + jogos).
                 </p>
@@ -63,7 +63,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 2: Instalação (Bazzite)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             1. Baixe a ISO no site da Universal Blue. Escolha sua GPU (Nvidia/AMD) e a interface (KDE é a do Steam Deck).
             2. Grave no pendrive com <strong>Ventoy</strong> ou <strong>BalenaEtcher</strong> (Rufus as vezes dá erro).
             3. Boot.
@@ -75,7 +75,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 3: Compatibilidade (Proton)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Na Steam > Settings > Compatibility.
             <br/>Ative <strong>"Enable Steam Play for all other titles"</strong>.
             <br/>Quase tudo roda.
@@ -95,7 +95,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 4: Jogos da Epic/GOG (Heroic)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não existe Epic Launcher para Linux oficial.
             <br/>Use o <strong>Heroic Games Launcher</strong> (Flatpak).
             <br/>Ele loga na sua conta Epic/GOG/Amazon, baixa os jogos e roda usando o Proton da Steam ou Wine-GE.
@@ -106,7 +106,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 5: Drivers (Nvidia vs AMD)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>AMD:</strong> É on-board. Os drivers MESA já vêm no Kernel Linux. É a melhor experiência (plug and play).
             - <strong>Nvidia:</strong> Historicamente problemático, mas no driver 555+ (Beta) o Wayland e HDR funcionam bem.
             <br/>No Bazzite/Nobara, selecione a ISO "Nvidia" para já vir tudo pronto. Não tente instalar driver <code>.run</code> manual do site da Nvidia, você vai quebrar o sistema.
@@ -116,7 +116,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 6: Gamescope (HDR e Upscaling)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O <strong>Gamescope</strong> é o compositor de janelas da Valve.
             <br/>Ele permite forçar FSR em qualquer jogo (Super Resolution), limitar FPS com frame pacing perfeito e usar HDR mesmo se o jogo não suportar (Auto-HDR via driver).
             <br/>No Bazzite (Game Mode), isso já vem ativo no menu "...".
@@ -126,7 +126,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 7: Emulação (EmuDeck)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Baixe o script do <strong>EmuDeck</strong>.
             <br/>Ele instala RetroArch, Yuzu, Cemu, PCSX2, configuros tudo e adiciona as capas na sua Steam Library.
             <br/>A melhor forma de emular no Linux.
@@ -139,7 +139,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 8: Sistema de Arquivos (EXT4 vs BTRFS)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Linux usa EXT4 ou BTRFS, não NTFS.
                 <br/>O Bazzite usa BTRFS com dedup e compressão transparente. Seus jogos ocupam menos espaço no SSD que no Windows!
             </p>
@@ -148,7 +148,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 9: Flatpaks (Apps)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Quer Discord, Spotify, Chrome?
                 <br/>Abra a loja "Discover" (KDE) ou "Software" (GNOME).
                 <br/>Tudo é instalado via Flatpak (Sandboxed). Seguro e limpo, sem sujar o sistema base.
@@ -158,7 +158,7 @@ export default function LinuxGuide() {
         {
             title: "Capítulo 10: Terminal? (Konsole)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Você raramente precisa usar o terminal.
                 <br/>Bazzite tem o comando <code>ujust</code> que é um menu de atalhos para instalar coisas comuns (ujust setup-nvidia, ujust install-obs).
             </p>

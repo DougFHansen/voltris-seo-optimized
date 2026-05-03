@@ -34,7 +34,7 @@ export default function WiFiSolutionsGuide() {
         {
             title: "O Wi-Fi: invisível e instável",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, com o aumento de dispositivos inteligentes (lâmpadas, TVs, geladeiras), o ar das nossas casas está lotado de ondas de rádio. O maior problema do Wi-Fi não é a falta de tecnologia, mas a **interferência**. Se o seu notebook gamer ou PC de trabalho está sofrendo com quedas de sinal, o culpado provavelmente não é o aparelho em si, mas sim o "congestionamento" de canais ao seu redor.
         </p>
       `
@@ -42,8 +42,8 @@ export default function WiFiSolutionsGuide() {
         {
             title: "1. 2.4GHz vs 5GHz: Escolha a Batalha Certa",
             content: `
-        <p class="mb-4 text-gray-400">Entenda para onde conectar cada dispositivo:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Entenda para onde conectar cada dispositivo:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>2.4GHz:</strong> Use apenas para dispositivos lentos ou se houver muitas paredes entre você e o roteador. É uma frequência lenta, mas que atravessa concreto com facilidade.</li>
             <li><strong>5GHz / 6GHz (Wi-Fi 6E/7):</strong> Obrigatório para notebooks de 2026. A velocidade é comparável ao cabo, mas qualquer parede grossa derruba o sinal pela metade. Tente manter o roteador no mesmo cômodo ou use sistemas Mesh.</li>
         </ul >
@@ -54,7 +54,7 @@ export default function WiFiSolutionsGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">PC "dormindo" na rede:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Uma causa comum de quedas no Wi-Fi é o Windows tentando economizar bateria. <br/><br/>
                 1. Vá no Gerenciador de Dispositivos. <br/>
                 2. Expanda 'Adaptadores de Rede' e clique com o botão direito no seu Wi-Fi. <br/>
@@ -66,7 +66,7 @@ export default function WiFiSolutionsGuide() {
         {
             title: "3. Limpando a Pilha de Rede (Flush)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o Wi-Fi conecta mas a internet não carrega nada:
             <br/><br/>Abra o CMD como administrador e digite estes três comandos em ordem:
             <br/>1. <code>netsh winsock reset</code>

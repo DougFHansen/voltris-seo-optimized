@@ -34,7 +34,7 @@ export default function VBSPerformanceGuide() {
         {
             title: "O dilema: Segurança ou Velocidade?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           No Windows 11, o **VBS** (Segurança Baseada em Virtualização) e a **Integridade da Memória** vêm ativados por padrão. Em 2026, essas tecnologias são essenciais para proteger o seu PC contra malwares que tentam injetar código no kernel. No entanto, elas exigem que o processador use parte do seu poder para gerenciar essa "bolha de segurança", o que pode causar perda de performance e micro-travadas em jogos pesados.
         </p>
       `
@@ -42,8 +42,8 @@ export default function VBSPerformanceGuide() {
         {
             title: "1. Como verificar se o VBS está ativo",
             content: `
-        <p class="mb-4 text-gray-400">Descubra se o seu Windows está consumindo recursos extras:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Descubra se o seu Windows está consumindo recursos extras:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Aperte Win+R e digite <code>msinfo32</code>.</li>
             <li>Role até o final e procure por 'Segurança baseada em virtualização'.</li>
             <li>Se estiver escrito 'Executando', o VBS está ativo e impactando a performance.</li>
@@ -55,7 +55,7 @@ export default function VBSPerformanceGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Ganhando FPS em Segundos:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Pesquise por 'Isolamento de Núcleo' no menu Iniciar. <br/>
                 2. Desative a opção <strong>'Integridade da Memória'</strong>. <br/>
                 3. Reinicie o computador. <br/><br/>
@@ -67,7 +67,7 @@ export default function VBSPerformanceGuide() {
         {
             title: "3. Vale o risco em 2026?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Recomendação Voltris:</strong> 
             <br/><br/>Se você é um jogador competitivo que busca cada frame ou tem um processador mais antigo, desativar o VBS é um dos melhores ajustes "escondidos" do Windows 11. No entanto, se o seu PC é usado para trabalho com dados sensíveis ou se você não possui um antivírus confiável, manter o VBS **ativado** é a escolha mais inteligente. A perda de 10 FPS não vale o risco de uma infecção de kernel que rouba suas senhas.
         </p>

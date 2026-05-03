@@ -41,10 +41,10 @@ export default function DNSGuide() {
         {
             title: "DNS Baixa Ping? A Verdade Definitiva",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Existe um mito enorme de que trocar o DNS vai baixar seu ping de 50ms para 20ms dentro do jogo. <strong>Isso é falso.</strong> O DNS (Domain Name System) é a lista telefônica da internet; ele converte "riotgames.com" em um número IP.
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
           Uma vez que o jogo conecta na partida pelo IP do servidor, o DNS não é mais usado. PORÉM, um DNS ruim (geralmente o padrão da sua operadora/ISP) causa demora para abrir o jogo, erros de "Falha ao conectar ao chat", falhas no login e quedas no Lobby. Por isso, usar um DNS premium é essencial.
         </p>
 
@@ -52,7 +52,7 @@ export default function DNSGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🌐</span> Auto-DNS no Voltris Optimizer
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Não sabe qual DNS é mais rápido na sua cidade? O <strong>Voltris Optimizer</strong> faz um teste de ping em tempo real para os principais servidores (Cloudflare, Google, Level3) e aplica automaticamente o mais rápido para o seu adaptador de rede com um clique.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -68,14 +68,14 @@ export default function DNSGuide() {
         {
             title: "Os Grandes Players: Comparativo 2026",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Qual você deve escolher?
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div class="bg-[#0A0A0F] p-6 rounded-xl border border-orange-500/20">
                 <h4 class="text-orange-400 font-bold mb-2 flex items-center gap-2">Cloudflare (1.1.1.1)</h4>
-                <p class="text-gray-400 text-sm mb-4">
+                <p class="text-gray-700 text-sm mb-4">
                     Focado em privacidade e velocidade pura. Geralmente é o mais rápido do mundo (14ms de resposta média global).
                 </p>
                 <ul class="text-xs text-gray-500 font-mono space-y-1">
@@ -86,7 +86,7 @@ export default function DNSGuide() {
 
             <div class="bg-[#0A0A0F] p-6 rounded-xl border border-blue-500/20">
                 <h4 class="text-blue-400 font-bold mb-2 flex items-center gap-2">Google (8.8.8.8)</h4>
-                <p class="text-gray-400 text-sm mb-4">
+                <p class="text-gray-700 text-sm mb-4">
                     O mais confiável. Nunca cai. Se o Cloudflare falhar, o Google é a melhor opção de backup. Levemente mais lento, mas extremamente robusto.
                 </p>
                 <ul class="text-xs text-gray-500 font-mono space-y-1">
@@ -100,7 +100,7 @@ export default function DNSGuide() {
         {
             title: "Como Configurar DNS no Windows 11 (Passo a Passo)",
             content: `
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
             <li>Pressione <strong>Win + R</strong> para abrir o Executar.</li>
             <li>Digite <code>ncpa.cpl</code> e dê Enter. (Isso abre as Conexões de Rede direto).</li>
             <li>Clique com botão direito no seu adaptador (Ethernet ou Wi-Fi) > <strong>Propriedades</strong>.</li>
@@ -120,10 +120,10 @@ export default function DNSGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-purple-400 font-bold mb-4 text-xl">🔒 Criptografia de Navegação</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     O DNS normal envia seus pedidos em texto puro (seu provedor sabe quais sites você acessa). O DoH criptografa isso.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     No Windows 11, você pode ativar isso nativamente: Configurações > Rede e Internet > Ethernet > Atribuição de servidor DNS > Editar > Selecione "Criptografado (DNS sobre HTTPS)" no modelo. Melhora a privacidade, mas adiciona alguns milissegundos de latência. Para jogos competitivos, prefira o modo padrão (não criptografado) pela velocidade.
                 </p>
             </div>
@@ -135,7 +135,7 @@ export default function DNSGuide() {
         {
             title: "DNS Benchmark Tool",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Não confie cegamente. Baixe o software gratuito <strong>DNS Jumper</strong> ou <strong>DNS Benchmark (Gibson Research)</strong>. Eles testam 50 servidores DNS a partir DA SUA casa e te mostram qual é o mais rápido para a sua rota específica. Às vezes, o OpenDNS (208.67.222.222) ganha do Google na sua região.
             </p>
             `

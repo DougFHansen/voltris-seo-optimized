@@ -40,10 +40,10 @@ export default function DebloatGuide() {
         {
             title: "O que é Bloatware e por que remover?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           "Bloatware" (Software Inchado) são aplicativos que vêm pré-instalados no Windows 11 que você nunca pediu e provavelmente nunca vai usar. Exemplos: Disney+, Clipchamp, Notícias, Clima, OneDrive e a assistente Cortana.
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
           Eles não ocupam apenas espaço em disco; eles rodam processos em segundo plano para buscar notificações e atualizações, consumindo CPU e Memória RAM que deveriam ir para seus jogos ou trabalho.
         </p>
 
@@ -51,7 +51,7 @@ export default function DebloatGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🚀</span> Debloat Seguro com 1 Clique
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Mexer no PowerShell pode assustar. O <strong>Voltris Optimizer</strong> tem um módulo "Smart Debloat" que identifica o que é seguro remover e o que é vital para o sistema, limpando seu PC sem quebrar a Loja ou o Windows Update.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -73,10 +73,10 @@ export default function DebloatGuide() {
         {
             title: "Método 1: PowerShell (Manual e Seguro)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Vamos usar o comando <code>Remove-AppxPackage</code> para desinstalar apps que não têm o botão "Desinstalar" nas configurações.
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
             <li>Clique com botão direito no Botão Iniciar > Terminal (Admin) ou PowerShell (Admin).</li>
             <li>Para remover o <strong>Xbox Game Bar</strong> (se você não usa):<br/>
                 <code class="text-[#31A8FF]">Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage</code>
@@ -96,10 +96,10 @@ export default function DebloatGuide() {
         {
             title: "Método 2: Scripts Automatizados (WinUtil)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A comunidade criou ferramentas incríveis. O script do Chris Titus Tech (CTT) é o padrão ouro em 2026.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Abra o PowerShell como Admin.</li>
             <li>Digite: <code>iwr -useb https://christitus.com/win | iex</code></li>
             <li>Uma janela gráfica abrirá. Vá na aba <strong>"Tweaks"</strong>.</li>
@@ -117,17 +117,17 @@ export default function DebloatGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-orange-400 font-bold mb-4 text-xl">⚠️ Atenção aos seus Arquivos</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Antes de remover o OneDrive, certifique-se de que seus arquivos da Área de Trabalho e Documentos estão salvos localmente. O OneDrive costuma "sequestrar" essas pastas.
                 </p>
             </div>
-            <p class="text-gray-400 mb-4 text-sm">
+            <p class="text-gray-700 mb-4 text-sm">
                 No CMD (Prompt de Comando) como Admin, execute:
             </p>
             <div class="bg-[#0A0A0F] p-4 rounded-lg border border-white/10 font-mono text-sm space-y-2">
-                <p class="text-gray-400">taskkill /f /im OneDrive.exe</p>
-                <p class="text-gray-400">%SystemRoot%\\System32\\OneDriveSetup.exe /uninstall</p>
-                <p class="text-gray-400">%SystemRoot%\\SysWOW64\\OneDriveSetup.exe /uninstall</p>
+                <p class="text-gray-700">taskkill /f /im OneDrive.exe</p>
+                <p class="text-gray-700">%SystemRoot%\\System32\\OneDriveSetup.exe /uninstall</p>
+                <p class="text-gray-700">%SystemRoot%\\SysWOW64\\OneDriveSetup.exe /uninstall</p>
             </div>
             `
         }
@@ -140,13 +140,13 @@ export default function DebloatGuide() {
             <div class="space-y-4">
                <div class="bg-gray-800 p-4 rounded-lg">
                     <h5 class="text-green-400 font-bold mb-2">Benefícios</h5>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-700 text-sm">
                         Menos processos (de 180 para 110), boot mais rápido, menus mais responsivos e mais RAM livre para jogos pesados.
                     </p>
                </div>
                <div class="bg-gray-800 p-4 rounded-lg">
                     <h5 class="text-red-400 font-bold mb-2">Efeitos Colaterais</h5>
-                    <p class="text-gray-400 text-sm">
+                    <p class="text-gray-700 text-sm">
                         A busca do Windows pode ficar limitada (sem resultados da web). Widgets podem parar de funcionar. A Loja da Microsoft ainda funciona, mas updates automáticos podem ser pausados.
                     </p>
                </div>

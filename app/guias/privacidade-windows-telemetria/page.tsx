@@ -34,7 +34,7 @@ export default function PrivacyGuide() {
     {
       title: "O que o Windows sabe sobre você?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           No Windows 11, a Microsoft utiliza a **Telemetria** para coletar dados sobre como você usa o sistema, quais aplicativos abre e até o que você digita (para "melhoria do dicionário"). Embora a empresa afirme que os dados são anônimos, esse processo consome recursos do seu PC. Em 2026, com o aumento das ferramentas de IA integradas, o volume de dados enviados triplicou, tornando a desativação desses recursos essencial para quem busca privacidade.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PrivacyGuide() {
     {
       title: "1. Desativando a Telemetria Básica",
       content: `
-        <p class="mb-4 text-gray-400">Ajustes manuais simples para começar:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Ajustes manuais simples para começar:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Vá em Configurações > Privacidade e Segurança > <strong>Diagnóstico e comentários</strong>.</li>
             <li>Desative 'Enviar dados de diagnóstico opcionais'.</li>
             <li>Desative 'Melhorar escrita à mão e digitação'.</li>
@@ -56,7 +56,7 @@ export default function PrivacyGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Anúncios no Iniciar:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Você já reparou em sugestões de apps que nunca instalou? O Windows usa o seu <strong>ID de Anúncio</strong> para isso. <br/><br/>
                 Vá em Configurações > Privacidade e Segurança > Geral e <strong>desative todas as quatro chaves</strong> desta tela. Isso impedirá que o Windows tente criar um perfil de consumo baseado no uso dos seus aplicativos.
             </p>
@@ -66,7 +66,7 @@ export default function PrivacyGuide() {
     {
       title: "3. O \"Poder\" do PowerShell",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Limpeza Profunda em 2026:</strong> 
             <br/><br/>Existem serviços de telemetria que não podem ser desligados pelos menus comuns. Para usuários avançados, recomendamos usar scripts de debloat via PowerShell para desativar serviços como o <i>DiagTrack</i> (Connected User Experiences and Telemetry). Isso não apenas protege seus dados, mas reduz consideravelmente os picos de uso de CPU que causam "travadinhas" em jogos competitivos.
         </p>

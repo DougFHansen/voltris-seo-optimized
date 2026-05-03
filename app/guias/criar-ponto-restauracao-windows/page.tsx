@@ -34,7 +34,7 @@ export default function RestorePointGuide() {
         {
             title: "O seu seguro contra telas azuis",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, modificar o Windows 11 com scripts de otimização ou instalar drivers beta é comum para quem busca performance. O problema é que um comando errado pode corromper o sistema. O **Ponto de Restauração** é como um botão de "voltar no tempo": se algo der errado, você pode retornar o Windows para o estado exato em que ele estava há 10 minutos, salvando o seu trabalho e evitando uma formatação.
         </p>
       `
@@ -42,8 +42,8 @@ export default function RestorePointGuide() {
         {
             title: "1. Ativando a Proteção do Sistema",
             content: `
-        <p class="mb-4 text-gray-400">Por padrão, o Windows 11 pode estar com essa função desligada:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Por padrão, o Windows 11 pode estar com essa função desligada:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Pesquise por <strong>'Criar ponto de restauração'</strong> no menu Iniciar.</li>
             <li>Na aba 'Proteção do Sistema', selecione o seu disco C: e clique em <strong>Configurar</strong>.</li>
             <li>Marque 'Ativar proteção do sistema' e reserve cerca de 5GB a 10GB de espaço.</li>
@@ -56,7 +56,7 @@ export default function RestorePointGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Procedimento de Segurança:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Ainda na mesma janela, clique no botão <strong>Criar...</strong> ao lado de 'Crie um ponto de restauração agora'. <br/><br/>
                 Dê um nome claro para o ponto, como <i>"Antes de instalar Driver NVIDIA 555.25"</i> ou <i>"Antes de Otimizar Registro"</i>. Clique em Criar. Levará cerca de 30 segundos. Agora, você está seguro para fazer qualquer mudança profunda no Windows em 2026.
             </p>
@@ -66,7 +66,7 @@ export default function RestorePointGuide() {
         {
             title: "3. Como Voltar no Tempo?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Se o PC der erro:</strong> 
             <br/><br/>Abra novamente a ferramenta e clique em **Restauração do Sistema**. Selecione o ponto que você criou e avance. O Windows reiniciará e começará a desfazer as mudanças de arquivos de sistema e registro. <br/><br/>
             <strong>Dica Vital:</strong> Restaurar o sistema **não apaga seus arquivos pessoais** (fotos, documentos), mas vai desinstalar qualquer programa que você tenha colocado no PC após a criação do ponto.
@@ -81,13 +81,13 @@ export default function RestorePointGuide() {
             title: "4. Fundamentos Técnicos da Restauração do Sistema",
             content: `
         <h4 class="text-white font-bold mb-3">🔬 Arquitetura Interna do Shadow Copy e Restauração do Sistema</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A restauração do sistema opera em níveis profundos do sistema operacional, utilizando tecnologias avançadas de cópia sombra:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Componentes Técnicos</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Serviço de Cópia Sombra (VSS)</li>
                     <li>• Volume Shadow Copy Provider</li>
                     <li>• System Restore Engine</li>
@@ -97,7 +97,7 @@ export default function RestorePointGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Tecnologias Subjacentes</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Volume Snapshot Technology</li>
                     <li>• Block-Level Change Tracking</li>
                     <li>• Registry Hive Backups</li>
@@ -108,11 +108,11 @@ export default function RestorePointGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Processo de Criação de Ponto de Restauração</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O processo envolve múltiplas etapas técnicas de captura e armazenamento:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Etapa</th>
@@ -161,16 +161,16 @@ export default function RestorePointGuide() {
             title: "5. Configurações Avançadas e Personalização",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Configurações Profissionais do Shadow Copy</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A configuração avançada do serviço de cópia sombra permite otimizar o desempenho e eficiência:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Gerenciamento de Espaço em Disco</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Configurações que afetam o uso de armazenamento:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Limite de espaço em disco (0-15%)</li>
                     <li>• Política de retenção de snapshots</li>
                     <li>• Compactação de dados históricos</li>
@@ -180,10 +180,10 @@ export default function RestorePointGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Configurações de Segurança</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Parâmetros de segurança e acesso:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Controle de acesso baseado em ACL</li>
                     <li>• Criptografia de snapshots</li>
                     <li>• Auditoria de acesso</li>
@@ -194,13 +194,13 @@ export default function RestorePointGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Comandos Avançados do Diskshadow</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Ferramentas de linha de comando para gerenciamento avançado:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Comandos Diskshadow</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• create - Cria snapshots</li>
                     <li>• expose - Mapeia snapshots</li>
                     <li>• delete - Remove snapshots</li>
@@ -210,7 +210,7 @@ export default function RestorePointGuide() {
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Configurações PowerShell</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Enable-ComputerRestore</li>
                     <li>• Disable-ComputerRestore</li>
                     <li>• Checkpoint-Computer</li>
@@ -225,13 +225,13 @@ export default function RestorePointGuide() {
             title: "6. Recuperação Avançada e Diagnóstico",
             content: `
         <h4 class="text-white font-bold mb-3">🔍 Técnicas Avançadas de Recuperação de Sistema</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Quando a restauração padrão não é suficiente, existem métodos mais avançados:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Recuperação de Emergência</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Windows Recovery Environment</li>
                     <li>• Command Prompt Recovery</li>
                     <li>• System File Checker</li>
@@ -241,7 +241,7 @@ export default function RestorePointGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Diagnóstico Profundo</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Event Viewer Analysis</li>
                     <li>• Reliability Monitor</li>
                     <li>• System Health Reports</li>
@@ -251,7 +251,7 @@ export default function RestorePointGuide() {
             </div>
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Recursos Alternativos</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Backup e Restore (Win7 legacy)</li>
                     <li>• File History Recovery</li>
                     <li>• Previous Versions</li>
@@ -263,7 +263,7 @@ export default function RestorePointGuide() {
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Métodos de Recuperação</h4>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Método</th>
@@ -309,16 +309,16 @@ export default function RestorePointGuide() {
             title: "7. Automatização e Scripts de Restauração",
             content: `
         <h4 class="text-white font-bold mb-3">🤖 Automação de Ponto de Restauração com Scripts</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Automatizar a criação de pontos de restauração pode aumentar significativamente a segurança do sistema:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-purple-500 pl-4 py-2 bg-purple-900/10">
                 <h5 class="text-purple-400 font-bold mb-2">Scripts PowerShell Avançados</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Exemplos de scripts para automação:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Script de ponto de restauração pré e pós instalação</li>
                     <li>• Agendamento de pontos de restauração automáticos</li>
                     <li>• Verificação de integridade antes da criação</li>
@@ -328,10 +328,10 @@ export default function RestorePointGuide() {
             </div>
             <div class="border-l-4 border-cyan-500 pl-4 py-2 bg-cyan-900/10">
                 <h5 class="text-cyan-400 font-bold mb-2">Agendamento e Monitoramento</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Técnicas para manter os pontos de restauração atualizados:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• Tarefas agendadas com triggers</li>
                     <li>• Monitoramento de integridade do sistema</li>
                     <li>• Notificações de falha de criação</li>
@@ -341,10 +341,10 @@ export default function RestorePointGuide() {
             </div>
             <div class="border-l-4 border-yellow-500 pl-4 py-2 bg-yellow-900/10">
                 <h5 class="text-yellow-400 font-bold mb-2">Integração com Outros Sistemas</h5>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Conexão com ferramentas de administração e segurança:
                 </p>
-                <ul class="text-sm text-gray-400 space-y-1 mt-2">
+                <ul class="text-sm text-gray-700 space-y-1 mt-2">
                     <li>• SCCM Integration</li>
                     <li>• WSUS Triggers</li>
                     <li>• Active Directory Policies</li>
@@ -359,13 +359,13 @@ export default function RestorePointGuide() {
             title: "8. Recuperação em Ambientes Corporativos",
             content: `
         <h4 class="text-white font-bold mb-3">🏢 Recuperação de Sistema em Ambientes de TI Empresarial</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em ambientes corporativos, a recuperação de sistema segue práticas e políticas específicas:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Políticas de Recuperação</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Política de grupo de restauração</li>
                     <li>• Configuração centralizada de snapshots</li>
                     <li>• Auditoria de alterações de sistema</li>
@@ -375,7 +375,7 @@ export default function RestorePointGuide() {
             </div>
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Soluções Corporativas</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• System Center Configuration Manager</li>
                     <li>• Microsoft Endpoint Configuration Manager</li>
                     <li>• Veeam Endpoint Backup</li>
@@ -386,10 +386,10 @@ export default function RestorePointGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Considerações de Segurança Corporativa</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Implementação de recuperação de sistema em ambientes seguros:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
             <li><strong>Controle de versão:</strong> Manter histórico de pontos de restauração em ambientes controlados</li>
             <li><strong>Integridade verificável:</strong> Utilizar hashes e assinaturas digitais para validar snapshots</li>
             <li><strong>Isolamento de dados:</strong> Separar dados sensíveis dos snapshots de sistema</li>
@@ -402,13 +402,13 @@ export default function RestorePointGuide() {
             title: "9. Alternativas e Tendências Futuras",
             content: `
         <h4 class="text-white font-bold mb-3">🚀 Tendências em Tecnologias de Recuperação de Sistema</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             As tecnologias de recuperação de sistema estão evoluindo rapidamente com novas abordagens:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Tecnologias Emergentes</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Recuperação baseada em nuvem</li>
                     <li>• Snapshots incrementais em tempo real</li>
                     <li>• IA para detecção de anomalias</li>
@@ -418,7 +418,7 @@ export default function RestorePointGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Novos Paradigmas</h5>
-                <ul class="text-sm text-gray-400 space-y-2">
+                <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Containerização de estado do sistema</li>
                     <li>• Microsnapshots contínuos</li>
                     <li>• Recuperação granular de componentes</li>
@@ -429,11 +429,11 @@ export default function RestorePointGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões para 2026-2027</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O futuro da recuperação de sistema promete inovações significativas:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tecnologia</th>

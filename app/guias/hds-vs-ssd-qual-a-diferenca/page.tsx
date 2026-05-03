@@ -40,7 +40,7 @@ export default function StorageGuide() {
         {
             title: "Por que o HD Mecânico morreu?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O HD (Hard Disk Drive) funciona com um disco magnético girando fisicamente a 7200 RPM e uma agulha lendo dados. Isso cria uma latência física (tempo de busca).
           Em 2026, jogos modernos como <em>Starfield</em> e <em>Cyberpunk</em> exigem SSD. Usar HD causa texturas que não carregam, chão invisível e travadas longas. Use HD apenas para fotos e vídeos, NUNCA para jogos ou Windows.
         </p>
@@ -49,7 +49,7 @@ export default function StorageGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🚀</span> NVMe Booster Voltris
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 SSDs perdem performance se não tiverem o comando TRIM executado regularmente. O <strong>Voltris Optimizer</strong> força o re-trim e otimiza o cache de escrita do Windows para garantir que seu NVMe mantenha os 7000MB/s de leitura prometidos na caixa.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -65,10 +65,10 @@ export default function StorageGuide() {
         {
             title: "SATA vs NVMe: Sente diferença?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A migração de HD para SSD SATA é brutal (o PC liga em 1 min -> 10 seg). A migração de SATA para NVMe é sutil no dia a dia, mas importante para carregamentos pesados.
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>SATA (Cabo):</strong> Limitado a 550 MB/s. Bom para dar vida nova a notebooks velhos que não têm slot M.2.</li>
             <li><strong>NVMe M.2 (Placa):</strong> Conecta direto no PCIe. Velocidades de 3000 MB/s a 10000 MB/s. É o padrão atual. Não ocupa espaço com cabos.</li>
         </ul>
@@ -77,21 +77,21 @@ export default function StorageGuide() {
         {
             title: "Gen 3 vs Gen 4 vs Gen 5",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Preciso do mais caro?
         </p>
         <div class="space-y-4">
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-white font-bold">Gen 3 (PCIe 3.0)</h4>
-                <p class="text-gray-400 text-sm">Velocidade ~3500 MB/s. Perfeito para custo-benefício. O Windows liga tão rápido quanto no Gen 4.</p>
+                <p class="text-gray-700 text-sm">Velocidade ~3500 MB/s. Perfeito para custo-benefício. O Windows liga tão rápido quanto no Gen 4.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-blue-400 font-bold">Gen 4 (PCIe 4.0)</h4>
-                <p class="text-gray-400 text-sm">Velocidade ~7000 MB/s. Obrigatório para PS5. Útil para jogos com "DirectStorage" no PC.</p>
+                <p class="text-gray-700 text-sm">Velocidade ~7000 MB/s. Obrigatório para PS5. Útil para jogos com "DirectStorage" no PC.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-purple-400 font-bold">Gen 5 (PCIe 5.0)</h4>
-                <p class="text-gray-400 text-sm">Velocidade ~12000 MB/s. Esquentam MUITO (precisam de cooler). Só vale para editores de vídeo 8K profissionais. Desperdício de dinheiro para gamer hoje.</p>
+                <p class="text-gray-700 text-sm">Velocidade ~12000 MB/s. Esquentam MUITO (precisam de cooler). Só vale para editores de vídeo 8K profissionais. Desperdício de dinheiro para gamer hoje.</p>
             </div>
         </div>
       `
@@ -104,10 +104,10 @@ export default function StorageGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">Adeus telas de loading</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     DirectStorage é uma tecnologia que permite a placa de vídeo carregar texturas direto do SSD NVMe, sem passar pela CPU. Isso promete jogos com loading zero.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Para usar isso, você precisa de um NVMe (SATA não serve) e Windows 11. Jogos como <em>Forspoken</em> e <em>Ratchet & Clank</em> já usam.
                 </p>
             </div>
@@ -119,7 +119,7 @@ export default function StorageGuide() {
         {
             title: "Migrar Windows (Clonagem)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Você não precisa formatar para trocar de disco. Use o software <strong>Macrium Reflect Free</strong> ou <strong>DiskGenius</strong> para clonar seu HD velho para o SSD novo. Ele copia tudo: Windows, arquivos, papel de parede. Tudo igual.
             </p>
             `

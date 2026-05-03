@@ -43,7 +43,7 @@ export default function MinecraftGuide() {
         {
             title: "Introdução: Por que não usar Optifine?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Optifine foi rei por 10 anos, mas seu código é fechado e invasivo. O <strong>Sodium</strong> é open-source e reescreve o pipeline de renderização do Minecraft usando OpenGL moderno. O resultado? Enquanto o Optifine melhora 50% o FPS, o Sodium melhora 300-400% e elimina os picos de lag (lag spikes) quando o Garbage Collector do Java roda.
         </p>
       `
@@ -54,12 +54,12 @@ export default function MinecraftGuide() {
         <div class="space-y-4">
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Passo 1: Fabric Loader</h4>
-                <p class="text-gray-400 text-sm">Baixe e instale o Fabric Loader para a versão do seu jogo (ex: 1.21). Ele é a base leve para os mods.</p>
+                <p class="text-gray-700 text-sm">Baixe e instale o Fabric Loader para a versão do seu jogo (ex: 1.21). Ele é a base leve para os mods.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Passo 2: Mods Essenciais (.jar)</h4>
-                <p class="text-gray-400 text-sm">Coloque na pasta <code>%appdata%\\.minecraft\\mods</code>:</p>
-                <ul class="list-disc list-inside text-gray-400 text-xs mt-2">
+                <p class="text-gray-700 text-sm">Coloque na pasta <code>%appdata%\\.minecraft\\mods</code>:</p>
+                <ul class="list-disc list-inside text-gray-700 text-xs mt-2">
                     <li><strong>Sodium:</strong> O motor gráfico.</li>
                     <li><strong>Lithium:</strong> Otimiza a física e IA do jogo (Server-side).</li>
                     <li><strong>Indium:</strong> Compatibilidade de renderização.</li>
@@ -68,7 +68,7 @@ export default function MinecraftGuide() {
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Passo 3: Shaders? Use Iris.</h4>
-                <p class="text-gray-400 text-sm">O Iris Shaders usa o Sodium para rodar shaders (BSL, Complementary) com o dobro do FPS do Optifine.</p>
+                <p class="text-gray-700 text-sm">O Iris Shaders usa o Sodium para rodar shaders (BSL, Complementary) com o dobro do FPS do Optifine.</p>
             </div>
         </div>
       `
@@ -76,10 +76,10 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 2: Configurando o Sodium (Vídeo)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Aperte Shift+P no menu (se tiver Reese's Sodium Options) ou vá em Vídeo.
         </p>
-        <table class="w-full text-sm text-left text-gray-400">
+        <table class="w-full text-sm text-left text-gray-700">
             <tbody>
                 <tr class="border-b border-gray-700">
                     <td class="py-2 font-bold">Render Distance</td>
@@ -113,7 +113,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 3: Alocação de RAM (Java Arguments)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O mito: "Quanto mais RAM, melhor". <strong>Errado.</strong>
             <br/>Se você der 16GB pro Minecraft Vanilla, o Java vai ficar preguiçoso e acumular lixo. Quando ele resolver limpar (GC Dump), seu jogo vai travar por 2 segundos.
             <br/><strong>Valores Ideais (Launch Options):</strong>
@@ -132,7 +132,7 @@ export default function MinecraftGuide() {
             content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
             <h4 class="text-green-400 font-bold mb-4 text-xl">Renderização de Mesh Shaders</h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Se você tem uma GPU RTX Série 3000 ou 4000 (ex: 3060, 4060).
                 <br/>Instale o mod <strong>Nvidium</strong> junto com o Sodium.
                 <br/>Ele usa uma tecnologia chamada Mesh Shading que permite renderizar distâncias absurdas (32, 64, até 128 Chunks) sem perder FPS. É magia negra tecnológica.
@@ -144,7 +144,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 5: Entity Culling (Entidades Escondidas)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Minecraft padrão renderiza porcos e zumbis mesmo que eles estejam atrás de uma parede.
             <br/>O mod <strong>Entity Culling</strong> para de desenhar o que você não vê.
             <br/>Isso é crucial se você tem uma fazenda de mobs ou muitos baús/item frames na base. Salva 30-50 FPS em bases lotadas.
@@ -154,7 +154,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 6: Java Runtime (JDK 17/21)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Certifique-se de usar um Java moderno.
             <br/>- Minecraft 1.18+: Requer Java 17.
             <br/>- Minecraft 1.20.5+: Requer Java 21.
@@ -165,7 +165,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 7: Distant Horizons (LODs)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Quer ver o mundo inteiro até o horizonte sem lag?
             <br/>O mod <strong>Distant Horizons</strong> cria versões simplificadas (LOD) dos chunks distantes. Você pode ver montanhas a 128 chunks de distância com o peso de 16 chunks.
             <br/>Funciona com Iris Shaders (versões recentes). É o futuro do Minecraft visual.
@@ -178,7 +178,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 8: Servidores e Ping",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se o FPS está alto mas os blocos voltam quando você quebra (Rubberbanding).
                 <br/>Isso é lag de TPS (Ticks Per Second) do servidor ou Ping.
                 <br/>Instale o mod <strong>Mod Menu</strong> para ver o Ping na lista de servidores (Tab).
@@ -189,7 +189,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 9: Fullscreen Exclusivo",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Minecraft roda em "Borderless Window" por padrão.
                 <br/>Vá em Vídeo e mude para <strong>Fullscreen</strong> e defina a resolução correta e Hz (ex: 1920x1080@144).
                 <br/>Isso reduz o input lag drasticamente.
@@ -199,7 +199,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 10: TLauncher e Pirataria (Riscos)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Muitos launchers alternativos contêm spyware.
                 <br/>Recomendamos usar o <strong>Prism Launcher</strong> ou <strong>Modrinth App</strong>. Eles são open-source, gerenciam mods automaticamente e suportam contas originais e offline (com configuração). São muito mais leves e seguros que o TLauncher.
             </p>

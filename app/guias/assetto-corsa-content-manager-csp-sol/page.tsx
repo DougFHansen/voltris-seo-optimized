@@ -43,7 +43,7 @@ export default function ACGuide() {
         {
             title: "Introdução: O Jogo Base é só a Carcaça",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Ninguém joga Assetto Corsa "puro" hoje em dia. A comunidade criou uma engine gráfica nova por cima do jogo chamada CSP. Sem ela, você não tem chuva, noite, luzes ou física avançada.
         </p>
       `
@@ -54,7 +54,7 @@ export default function ACGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Instalação</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Baixe o <strong>Content Manager (Lite ou Full)</strong>.
                     <br/>2. Arraste-o para qualquer pasta (não precisa estar na pasta do jogo).
                     <br/>3. Aponte onde está o <code>AssettoCorsa.exe</code> (pasta Steam).
@@ -67,7 +67,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 2: Custom Shaders Patch (CSP)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             No Content Manager > Settings > Custom Shaders Patch.
             <br/>Clique em <strong>"Install CSP"</strong>.
             <br/>Recomendação: Escolha a versão <strong>Preview</strong> (Paga/Patreon do Ilja) se quiser chuva (RainFX). A versão pública grátis não tem chuva.
@@ -78,7 +78,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 3: Sol e Pure (Clima)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Sol:</strong> Antigo, grátis, focado em ciclo dia/noite.
             - <strong>Pure:</strong> Novo, pago (Patreon Peter Boese), focado em nuvens 3D volumétricas e gráficos "fotorealistas".
             <br/>Instalação: Arraste o arquivo .zip para o Content Manager e clique em Install. Depois vá em Settings > Weather FX e selecione o script.
@@ -91,7 +91,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 4: Extra FX (Beleza vs Performance)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A aba <strong>Extra FX</strong> no CSP habilita Ambient Occlusion local, reflexos reais eMotion Blur de qualidade.
             <br/>Custo: Come cerca de 30-40% do FPS.
             <br/>Se tiver GPU fraca, desative o Extra FX e use apenas as melhorias padrão do CSP.
@@ -101,7 +101,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 5: PPFilters (Filtros de Pós-Processamento)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O jogo fica amarelo/feio sem filtro.
             <br/>Baixe filtros como <strong>"C13AEGIS"</strong>, <strong>"Natural Mod"</strong> ou <strong>"Exquisite"</strong>.
             <br/>Selecione no menu "Video > Post-Processing" do CM e depois in-game no app "Pure Config".
@@ -112,7 +112,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 6: Configuração de Volante (FFB)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             No CM > Settings > Assetto Corsa > Controls.
             <br/>Ative <strong>"Fianl Force Feedback Tweaks"</strong> (FFB Tweaks) no CSP.
             <br/>Isso habilita o Gyro effect, que ajuda a sentir quando o carro está saindo de traseira (drifting).
@@ -123,7 +123,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 7: VR Settings",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Para VR:
             <br/>- Force o modo de renderização para <strong>OpenVR</strong> ou <strong>Oculus Rift</strong>.
             <br/>- Em CSP > Graphics Adjustments: Ative <strong>AMD FidelityFX Super Resolution</strong> (funciona em VR para upscaling).
@@ -137,7 +137,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 8: Shutoko Revival Project (SRP)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Para jogar no mapa da rodovia japonesa com tráfego:
                 <br/>Você precisa baixar o mapa (Discord deles) e o Car Pack.
                 <br/>Requer CSP versão 1.79 ou superior. É pesado por ser um mapa gigante.
@@ -147,7 +147,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 9: Otimização de CPU (Tráfego)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Em servidores com tráfego (AI Traffic), a CPU é o limite.
                 <br/>Em CSP > New AI Behavior: Certifique-se que "Flood optimization" está ativo.
             </p>
@@ -156,7 +156,7 @@ export default function ACGuide() {
         {
             title: "Capítulo 10: Apps In-Game (HUD)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Use a barra lateral direita in-game para ativar apps.
                 <br/>Recomendados:
                 <br/>- <strong>Sidekick:</strong> Mostra marchas e tempo de volta compacto.

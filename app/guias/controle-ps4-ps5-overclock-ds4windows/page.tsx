@@ -41,7 +41,7 @@ export default function ControllerGuide() {
         {
             title: "Introdução: O Problema do 'Duplo Input'",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Quando você conecta um DualSense no PC, o Windows o vê como "Wireless Controller". Se abrir o DS4Windows, ele cria um "Xbox 360 Controller" virtual. Os jogos veem OS DOIS e ficam loucos (botão duplicado). O HidHide resolve isso.
         </p>
       `
@@ -52,7 +52,7 @@ export default function ControllerGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Requisitos</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Baixe o <strong>DS4Windows (Ryochan7 build)</strong>.
                     2. Instale o .NET Runtime 6 ou superior.
                     3. Instale o driver <strong>ViGEmBus</strong> (Virtual Gamepad Emulation Bus).
@@ -66,7 +66,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 2: Overclock (1ms)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             No perfil do DS4Windows:
             <br/>Aba "Other" > BT Poll Rate.
             <br/>Mude para <strong>1000 Hz (1ms)</strong>.
@@ -78,7 +78,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 3: HidHide (Bug do Duplo Controle)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Abra o HidHide Configuration Client.
             <br/>Aba "Devices".
             <br/>Marque a caixa do "Sony Interactive Entertainment Wireless Controller".
@@ -94,7 +94,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 4: Touchpad como Mouse",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muito útil para controlar o PC do sofá.
             <br/>Edite o Perfil > Touchpad.
             <br/>Output Mode: <strong>Mouse</strong>.
@@ -105,7 +105,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 5: Giroscópio (Gyro Aim)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Para emuladores (Cemu/Yuzu):
             <br/>Ative o servidor UDP nas configurações do DS4Windows (port 26760).
             <br/>No emulador, aponte para esse IP/Porta.
@@ -116,7 +116,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 6: Gatilhos Adaptativos (DualSenseX)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O DS4Windows tem suporte básico. Para suporte avançado, use o app pago <strong>DualSenseX (DSX)</strong> na Steam.
             <br/>Ele permite testar a vibração, mudar a cor do LED de acordo com a bateria e forçar a resistência dos gatilhos em jogos que não suportam nativamente (Modo Audio Haptics).
         </p>
@@ -125,7 +125,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 7: Steam Input (Conflito)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A Steam também tem drivers de controle.
             <br/>Se usar DS4Windows, <strong>DESATIVE</strong> o "PlayStation Configuration Support" nas configurações de controle da Steam (Big Picture). Deixe a Steam usar o controle de Xbox emulado pelo DS4Windows.
             <br/>Senão vira uma bagunça de 3 drivers brigando.
@@ -138,7 +138,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 8: Macros",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Você pode criar macros (ex: Apertar X repetidamente) e atribuir a um botão (ex: R3).
                 <br/>Útil para QTEs (Quick Time Events) chatos.
             </p>
@@ -147,7 +147,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 9: Deadzone (Drift)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Seu controle está puxando para o lado?
                 <br/>Aumente o "Deadzone" (Zona Morta) dos analógicos nas configurações do perfil até parar de mexer sozinho (geralmente 0.05 a 0.10).
             </p>
@@ -156,7 +156,7 @@ export default function ControllerGuide() {
         {
             title: "Capítulo 10: Xbox Controller?",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Controles de Xbox funcionam nativos, não precisam de DS4Windows.
                 <br/>Mas você pode usar o app "Xbox Accessories" para atualizar o firmware e remapear botões traseiros (Elite).
             </p>

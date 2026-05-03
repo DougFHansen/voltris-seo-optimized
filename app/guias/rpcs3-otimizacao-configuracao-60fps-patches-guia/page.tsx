@@ -41,7 +41,7 @@ export default function RPCS3Guide() {
         {
             title: "Introdução: A Complexidade do Cell",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Emular PS3 não é plug-and-play. Jogos como Demon's Souls rodam bem. Jogos como The Last of Us e MGS4 exigem CPUs de topo de linha (i7/i9 13th gen ou Ryzen 7000/9000 com AVX-512) para atingir 30fps estáveis.
         </p>
       `
@@ -52,7 +52,7 @@ export default function RPCS3Guide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">O Básico</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     1. Baixe o RPCS3 do site oficial (Atualize sempre, updates diários).
                     <br/>2. Baixe o <strong>PS3 Firmware (4.91+)</strong> no site da Sony.
                     <br/>3. File > Install Firmware.
@@ -65,7 +65,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 2: Configuração Global (CPU/GPU)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>CPU:</strong>
             <br/> PPU Decoder: Recompiler (LLVM).
             <br/> SPU Decoder: Recompiler (LLVM).
@@ -79,7 +79,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 3: SPU Block Size (Performance)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Safe:</strong> Funciona em todos os jogos.
             - <strong>Mega:</strong> Pode aumentar muito o FPS em CPUs Intel, mas quebra o áudio ou trava em alguns jogos. Teste jogo a jogo.
         </p>
@@ -91,7 +91,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 4: Write Color Buffers (Gráficos Quebrados)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitos jogos (Skate 3, Dante's Inferno, GOW) têm luzes estouradas ou tela preta sem isso.
             <br/>Vá na aba GPU e ative <strong>"Write Color Buffers"</strong>.
             <br/>Isso custa performance, mas é obrigatório para renderizar corretamente certos efeitos de iluminação do PS3.
@@ -101,7 +101,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 5: Patch Manager (60FPS Unlock)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O RPCS3 tem um sistema de patches integrado incrível.
             <br/>Manage > Game Patches.
             <br/>Baixe os patches mais recentes.
@@ -114,7 +114,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 6: Multithreaded RSX (GPU Boost)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Na aba GPU, "Multithreaded RSX" separa a carga da GPU em outra thread.
             <br/>Ajuda muito se sua GPU for fraca (GTX 1050), mas pode causar instabilidade. Mantenha OFF se tiver uma RTX.
         </p>
@@ -123,7 +123,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 7: Compilação de Shaders (Stutter)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Assim como no Switch, o RPCS3 compila shaders.
             <br/>Ative "Asynchronous Texture Streaming".
             <br/>Espere o jogo "gaguejar" nos primeiros minutos. Depois fica liso.
@@ -137,7 +137,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 8: Wiki do RPCS3 (A Bíblia)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Pulo do Gato: Antes de abrir qualquer jogo, pesquise "RPCS3 [Nome do Jogo]" no Google e abra a Wiki oficial.
                 <br/>Lá diz EXATAMENTE as configurações que aquele jogo precisa (ex: "Ative Read Color Buffers", "Set Driver Wake-Up Delay 200us"). Siga aquilo à risca.
             </p>
@@ -146,7 +146,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 9: DLCs e Updates (.pkg)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Instale arquivos .pkg (Updates de jogos, DLCs) via File > Install Packages/Raps.
                 <br/>Você precisa do arquivo .RAP (licença) junto com o .PKG para funcionar se for conteúdo da PSN.
             </p>
@@ -155,7 +155,7 @@ export default function RPCS3Guide() {
         {
             title: "Capítulo 10: Performance em Handhelds",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Steam Deck roda jogos leves de PS3 (Lollipop Chainsaw, HD Collections).
                 <br/>Jogos pesados (GOW3, RDR1) rodam a 15-20fps em slow motion. O hardware do Deck não tem força bruta de CPU suficiente para o Cell.
             </p>

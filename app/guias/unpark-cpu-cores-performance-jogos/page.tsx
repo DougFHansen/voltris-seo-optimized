@@ -34,7 +34,7 @@ export default function CoreParkingGuide() {
         {
             title: "Por que o Windows 'desliga' o seu Processador?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **Core Parking** é uma técnica de economia de energia onde o Windows 11 coloca núcleos inativos do processador em um estado de "dormência" profunda. Em 2026, com processadores tendo 16, 24 ou mais núcleos, isso acontece o tempo todo. O problema é que quando o jogo exige poder de fogo, o Windows leva alguns milissegundos para "acordar" os núcleos, o que gera aquelas travadinhas chatas (stuttering) durante a partida.
         </p>
       `
@@ -42,8 +42,8 @@ export default function CoreParkingGuide() {
         {
             title: "1. Desativando via Plano de Energia",
             content: `
-        <p class="mb-4 text-gray-400">A forma mais segura sem usar programas externos:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">A forma mais segura sem usar programas externos:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Pesquise por 'Escolher um plano de energia' no menu Iniciar.</li>
             <li>Selecione o plano <strong>Desempenho Máximo</strong> (ou Alto Desempenho).</li>
             <li>Se o Desempenho Máximo não aparecer, abra o PowerShell como Admin e cole: <code>powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61</code>.</li>
@@ -56,7 +56,7 @@ export default function CoreParkingGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Controle Total:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 Se você quer garantir que 100% dos núcleos fiquem ativos: <br/><br/>
                 - Baixe o <strong>QuickCPU</strong> (ferramenta padrão em 2026). <br/>
                 - Na parte inferior, você verá a barra 'Core Parking'. Arraste para <strong>100%</strong> (Indicates Index). <br/>
@@ -69,7 +69,7 @@ export default function CoreParkingGuide() {
         {
             title: "3. Aviso: Notebooks e Temperatura",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Vale a pena para todos?</strong> 
             <br/><br/>Se você usa um Notebook e ele não está na tomada, desativar o Core Parking vai acabar com a sua bateria em tempo recorde. Além disso, em 2026, manter todos os núcleos ativos gera mais calor. Use esta técnica apenas se o seu processador tem temperaturas estáveis e se você busca a **perfeição na estabilidade do Frametime** em jogos competitivos.
         </p>

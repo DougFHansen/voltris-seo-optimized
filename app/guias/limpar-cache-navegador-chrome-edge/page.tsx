@@ -34,7 +34,7 @@ export default function BrowserCacheGuide() {
         {
             title: "Por que limpar o Cache?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **Cache** é como uma "memória de curto prazo" do seu navegador. Ele guarda logos de sites e fotos para que você não precise baixar tudo de novo cada vez que abre uma página. O problema é que esses arquivos podem ficar velhos (corrompidos), fazendo sites como o Facebook, YouTube ou Gmail travarem ou abrirem com erro visual.
         </p>
       `
@@ -42,13 +42,13 @@ export default function BrowserCacheGuide() {
         {
             title: "1. O Atalho Mágico (Atalho Universal)",
             content: `
-        <p class="mb-4 text-gray-400">Não importa se você usa Chrome, Edge, Brave ou Firefox, o comando é o mesmo:</p>
+        <p class="mb-4 text-gray-700">Não importa se você usa Chrome, Edge, Brave ou Firefox, o comando é o mesmo:</p>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 text-center">
             <kbd class="px-3 py-2 bg-gray-800 rounded border border-gray-600 text-white font-bold">Ctrl</kbd> + 
             <kbd class="px-3 py-2 bg-gray-800 rounded border border-gray-600 text-white font-bold">Shift</kbd> + 
             <kbd class="px-3 py-2 bg-gray-800 rounded border border-gray-600 text-white font-bold">Del</kbd>
         </div>
-        <p class="mt-4 text-sm text-gray-400">
+        <p class="mt-4 text-sm text-gray-700">
             Pressionar essas três teclas juntas abrirá instantaneamente a janela de 'Limpar dados de navegação'.
         </p>
       `
@@ -56,7 +56,7 @@ export default function BrowserCacheGuide() {
         {
             title: "2. O que marcar na hora de limpar?",
             content: `
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Intervalo de tempo:</strong> Recomendamos 'Todo o período'.</li>
             <li><strong>Imagens e arquivos armazenados em cache:</strong> MARQUE (Isso limpa a sujeira visual).</li>
             <li><strong>Cookies e outros dados do site:</strong> OPCIONAL (Lembre-se: se marcar isso, você precisará digitar sua senha de novo em todos os sites).</li>
@@ -67,7 +67,7 @@ export default function BrowserCacheGuide() {
         {
             title: "3. Limpeza 'Hard' (Hard Reload)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se apenas UM site específico está dando erro, você não precisa limpar o cache de tudo. 
             <br/>Com o site aberto, segure a tecla <strong>Ctrl</strong> e clique no botão de <strong>Recarregar (atualizar)</strong>. Ou aperte <strong>Ctrl + F5</strong>. Isso força o navegador a ignorar o cache e baixar tudo do zero apenas para aquele site.
         </p>

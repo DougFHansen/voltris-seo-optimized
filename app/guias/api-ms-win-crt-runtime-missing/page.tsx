@@ -41,13 +41,13 @@ export default function CRTRuntimeErrorGuide() {
         {
             title: "O Que É api-ms-win-crt-runtime-l1-1-0.dll e Por Que Falta?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O erro <strong>"O programa não pôde ser iniciado porque api-ms-win-crt-runtime-l1-1-0.dll está ausente do computador"</strong> é um dos mais comuns ao tentar abrir jogos ou programas no Windows 11. Esse arquivo .dll faz parte do <strong>Universal C Runtime (UCRT)</strong>, um componente essencial do <strong>Microsoft Visual C++ Redistributable</strong> que MUITOS programas precisam para funcionar.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">📚 Entendendo a Sigla Maluca</h4>
         <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700 mb-4">
-          <ul class="list-disc text-gray-400 text-sm space-y-2 ml-6">
+          <ul class="list-disc text-gray-700 text-sm space-y-2 ml-6">
             <li><strong>api-ms-win-crt-runtime</strong> = API do Microsoft Windows C Runtime</li>
             <li><strong>l1-1-0</strong> = Versão da biblioteca (Level 1, Revision 1, Build 0)</li>
             <li><strong>.dll</strong> = Dynamic Link Library (biblioteca dinâmica compartilhada por vários programas)</li>
@@ -55,7 +55,7 @@ export default function CRTRuntimeErrorGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎮 Programas/Jogos Mais Afetados</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-1 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-1 ml-4">
           <li>Adobe Photoshop, Premiere, After Effects</li>
           <li>Skype, Discord (versões antigas)</li>
           <li>Jogos da Steam (The Witcher 3, Dark Souls 3, etc)</li>
@@ -64,7 +64,7 @@ export default function CRTRuntimeErrorGuide() {
           <li>Emuladores (RPCS3, Yuzu, Cemu)</li>
         </ul>
         
-        <p class="text-gray-400 mt-6">
+        <p class="text-gray-700 mt-6">
           <strong>Por que isso acontece?</strong> Quando você instala o Windows "do zero" ou usa uma versão "limpa" (sem bloatware), o Visual C++ Redistributable NÃO vem pré-instalado. Programas assumem que ele JÁ ESTÁ no sistema, então quando você tenta abrir, ele procura pela DLL... e não encontra.
         </p>
       `
@@ -74,13 +74,13 @@ export default function CRTRuntimeErrorGuide() {
             content: `
         <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20 mb-6">
           <h4 class="text-emerald-400 font-bold mb-2">✅ Esta Solução Resolve 98% dos Casos!</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             O erro de api-ms-win-crt-runtime é causado pela FALTA do Visual C++ 2015-2022 Redistributable. A solução é simples: instalar o pacote OFICIAL da Microsoft.
           </p>
         </div>
         
         <h4 class="text-white font-bold mb-3">📥 Passo a Passo Completo</h4>
-        <ol class="list-decimal list-inside text-gray-400 space-y-4 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-4 ml-4">
           <li><strong>Baixe o Visual C++ Redistributable OFICIAL:</strong>
             <ul class="list-disc ml-8 mt-2 space-y-1 text-sm">
               <li><strong>Opção 1 (Recomendada):</strong> Baixe o <strong>"Visual C++ Redistributable Runtimes All-in-One"</strong> do TechPowerUp (instala TODAS as versões de uma vez)</li>
@@ -91,7 +91,7 @@ export default function CRTRuntimeErrorGuide() {
           <li><strong>Baixe AMBAS as versões (x86 E x64):</strong>
             <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20 mt-3">
               <p class="text-amber-400 text-xs font-bold">⚠️ ATENÇÃO CRÍTICA!</p>
-              <p class="text-gray-400 text-sm mt-2">
+              <p class="text-gray-700 text-sm mt-2">
                 Mesmo que seu Windows seja 64-bit, você PRECISA instalar <strong>x86 (32-bit)</strong> E <strong>x64 (64-bit)</strong>. Muitos programas rodam em 32-bit e tentam carregar a DLL da versão x86. Se você instalar apenas x64, o erro continuará!
               </p>
             </div>
@@ -112,7 +112,7 @@ export default function CRTRuntimeErrorGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔍 Como Verificar se Está Instalado</h4>
-        <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
           <li>Aperte <strong>Win + R</strong>, digite <code>appwiz.cpl</code> e pressione Enter.</li>
           <li>No Painel de Controle, procure por <strong>"Microsoft Visual C++ 2015-2022 Redistributable"</strong>.</li>
           <li>Você deve ver DUAS entradas:
@@ -128,12 +128,12 @@ export default function CRTRuntimeErrorGuide() {
         {
             title: "Solução #2: Windows Update (Para Windows 7, 8, 8.1)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Se você ainda usa <strong>Windows 7 ou 8.1 em 2026</strong> (o que NÃO é recomendado por questões de segurança!), o erro de api-ms-win-crt pode persistir mesmo após instalar o Visual C++. Isso acontece porque o Universal C Runtime precisa de uma atualização ESPECÍFICA do Windows chamada <strong>KB2999226</strong>.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛠️ Como Instalar a Atualização KB2999226</h4>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Vá no <strong>Windows Update</strong> (Painel de Controle → Windows Update).</li>
           <li>Clique em "Verificar atualizações".</li>
           <li>Procure pela atualização <strong>KB2999226</strong> na lista de "Atualizações Opcionais" ou "Importantes".</li>
@@ -144,7 +144,7 @@ export default function CRTRuntimeErrorGuide() {
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mt-6">
           <h4 class="text-blue-400 font-bold mb-2">💡 Para Windows 10 e 11</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             No Windows 10 e 11, a atualização KB2999226 já vem PRÉ-INSTALADA. Por isso, na maioria dos casos, basta instalar o Visual C++ (Solução #1) e o erro desaparece. Se o erro persistir no Win10/11, rode o Windows Update até não haver mais atualizações disponíveis.
           </p>
         </div>
@@ -153,12 +153,12 @@ export default function CRTRuntimeErrorGuide() {
         {
             title: "Solução #3: Reinstalar o Programa/Jogo com Administrador",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Às vezes, o programa foi instalado INCORRETAMENTE (sem permissões adequadas) e não consegue acessar as DLLs mesmo que elas estejam presentes no sistema.
         </p>
         
         <h4 class="text-white font-bold mb-3">🔄 Como Reinstalar Corretamente</h4>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Desinstale completamente o programa/jogo (Painel de Controle → Programas e Recursos).</li>
           <li>Delete também a pasta residual (geralmente em <code>C:\Program Files</code> ou <code>C:\Program Files (x86)</code>).</li>
           <li>Baixe o instalador novamente (se possível, a versão mais recente).</li>
@@ -171,12 +171,12 @@ export default function CRTRuntimeErrorGuide() {
         {
             title: "Solução #4: Verificar Integridade dos Arquivos do Sistema (SFC)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Se você JÁ instalou o Visual C++ (ambas as versões) e o erro CONTINUA, pode haver corrupção nos arquivos do Windows. O comando <strong>SFC (System File Checker)</strong> escaneia e repara DLLs corrompidas automaticamente.
         </p>
         
         <h4 class="text-white font-bold mb-3">🛠️ Como Executar o SFC</h4>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Abra o <strong>Prompt de Comando como Administrador</strong>:
             <ul class="list-disc ml-8 mt-2 text-sm">
               <li>Aperte <strong>Win + X</strong></li>
@@ -201,13 +201,13 @@ export default function CRTRuntimeErrorGuide() {
           <h4 class="text-rose-400 font-bold mb-2 flex items-center gap-2">
             <span>🚫</span> NUNCA Baixe DLLs de Sites como "dll-files.com", "dll-download.com", etc!
           </h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Muitas pessoas, ao verem o erro de DLL faltando, procuram no Google "api-ms-win-crt-runtime-l1-1-0.dll download" e caem em sites que oferecem o arquivo .dll para download direto. <strong>Isso é EXTREMAMENTE PERIGOSO!</strong>
           </p>
         </div>
         
         <h4 class="text-white font-bold mb-3">💣 Perigos de Baixar DLLs de Sites Não Oficiais</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><strong>Malware/Vírus:</strong> Sites de DLL freqüentemente injetam trojans, keyloggers ou ransomware nos arquivos. Você instala a DLL e, junto, um vírus.</li>
           <li><strong>DLL Desatualizada:</strong> O arquivo pode estar desatualizado ou corrompido, causando MAIS problemas ao invés de resolver.</li>
           <li><strong>Versão Errada:</strong> Você pode baixar a versão 32-bit quando precisa 64-bit (ou vice-versa), perpetuando o erro.</li>
@@ -215,7 +215,7 @@ export default function CRTRuntimeErrorGuide() {
         </ul>
         
         <h4 class="text-white font-bold mb-3 mt-6">✅ Método CORRETO (Sempre Use Instaladores Oficiais)</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden mt-4">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden mt-4">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Componente</th>
@@ -243,12 +243,12 @@ export default function CRTRuntimeErrorGuide() {
             title: "Análise Técnica: Como o Windows Gerencia DLLs",
             content: `
         <h4 class="text-white font-bold mb-3">🔬 Caminho de Pesquisa de DLLs no Windows</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Para entender completamente o erro de DLL faltando, é importante conhecer o processo de busca de DLLs pelo Windows:
         </p>
         
         <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700 mb-6">
-          <ol class="list-decimal text-gray-400 space-y-3 ml-6">
+          <ol class="list-decimal text-gray-700 space-y-3 ml-6">
             <li><strong>Aplicativo Solicita:</strong> O programa solicita ao Windows para carregar a DLL api-ms-win-crt-runtime-l1-1-0.dll</li>
             <li><strong>Pesquisa na Pasta do App:</strong> Windows verifica se a DLL está na mesma pasta do executável</li>
             <li><strong>Pesquisa em System32/SysWOW64:</strong> Windows verifica as pastas do sistema onde DLLs são registradas</li>
@@ -259,10 +259,10 @@ export default function CRTRuntimeErrorGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 DLL Side-by-Side (WinSxS)</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O Windows utiliza um sistema chamado Side-by-Side (SxS) para gerenciar múltiplas versões de DLLs:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
           <li><strong>Localização:</strong> DLLs do Universal C Runtime estão localizadas em <code>C:\Windows\System32\winsxs\</code></li>
           <li><strong>Versionamento:</strong> Cada versão do Visual C++ tem seu próprio manifesto e versão única</li>
           <li><strong>Isolamento:</strong> Aplicações usam versões específicas de DLLs sem conflitar com outras</li>
@@ -271,7 +271,7 @@ export default function CRTRuntimeErrorGuide() {
         
         <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/30">
           <h5 class="text-amber-400 font-bold mb-2">💡 Curiosidade Técnica</h5>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             As api-ms-win-crt-* são "stub DLLs" - arquivos pequenos que redirecionam para as DLLs reais do UCRT (Universal C Runtime). Isso permite que a Microsoft atualize os runtimes sem quebrar aplicações existentes.
           </p>
         </div>
@@ -281,19 +281,19 @@ export default function CRTRuntimeErrorGuide() {
             title: "Soluções Alternativas Avançadas",
             content: `
         <h4 class="text-white font-bold mb-3">⚙️ Desinstalação Completa e Reinício do Visual C++</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Se as soluções normais não funcionarem, pode ser necessário uma limpeza completa:
         </p>
         
         <div class="bg-red-900/10 p-4 rounded-lg border border-red-500/30 mb-6">
           <h5 class="text-red-400 font-bold mb-2">⚠️ AVISO IMPORTANTE</h5>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Esta operação afetará todos os programas que dependem do Visual C++. Certifique-se de ter acesso à internet para reinstalar rapidamente.
           </p>
         </div>
         
         <h5 class="text-white font-bold mb-3">Método 1: Desinstalação Manual Completa</h5>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 mb-6">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 mb-6">
           <li>Acesse <strong>Painel de Controle > Programas > Programas e Recursos</strong></li>
           <li>Filtre por "Microsoft Visual C++"</li>
           <li>Desinstale TODAS as versões (2005, 2008, 2010, 2012, 2013, 2015-2022) tanto x86 quanto x64</li>
@@ -303,10 +303,10 @@ export default function CRTRuntimeErrorGuide() {
         </ol>
         
         <h5 class="text-white font-bold mb-3">Método 2: Script de Limpeza Automática</h5>
-        <p class="mb-3 text-gray-400">
+        <p class="mb-3 text-gray-700">
           Para usuários avançados, você pode usar um script PowerShell para automatizar a remoção:
         </p>
-        <div class="bg-black/30 p-4 rounded font-mono text-xs text-gray-400 mb-4">
+        <div class="bg-black/30 p-4 rounded font-mono text-xs text-gray-700 mb-4">
           <pre>
 # Script de limpeza do Visual C++
 Get-WmiObject -Class Win32_Product | Where-Object {$_.Name -like "*Visual C++*"} | ForEach-Object { $_.Uninstall() }
@@ -316,10 +316,10 @@ Restart-Computer
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Solução com DISM e SFC Combinados</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Para corrigir problemas mais profundos no sistema, combine DISM e SFC:
         </p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Abra Prompt de Comando como Administrador</li>
           <li>Execute: <code>dism /online /cleanup-image /scanhealth</code></li>
           <li>Execute: <code>dism /online /cleanup-image /restorehealth</code></li>
@@ -333,14 +333,14 @@ Restart-Computer
             title: "Prevenção e Manutenção Preventiva",
             content: `
         <h4 class="text-white font-bold mb-3">🛡️ Estratégias de Prevenção</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Para evitar problemas com DLLs no futuro, siga estas práticas recomendadas:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div class="bg-emerald-900/10 p-4 rounded-lg border border-emerald-500/30">
             <h5 class="text-emerald-400 font-bold mb-2">✅ Boas Práticas</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Manter Windows Update sempre ativo</li>
               <li>Instalar pacotes Visual C++ durante a pós-instalação</li>
               <li>Evitar programas de limpeza agressivos</li>
@@ -350,7 +350,7 @@ Restart-Computer
           
           <div class="bg-rose-900/10 p-4 rounded-lg border border-rose-500/30">
             <h5 class="text-rose-400 font-bold mb-2">❌ Práticas a Evitar</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Modificar arquivos do sistema manualmente</li>
               <li>Usar ferramentas de limpeza de DLL não confiáveis</li>
               <li>Desinstalar componentes do sistema</li>
@@ -360,12 +360,12 @@ Restart-Computer
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔄 Check-list de Pós-Instalação do Windows</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Sempre que reinstalar o Windows, siga esta ordem para evitar problemas de DLL:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Etapa</th>
@@ -397,7 +397,7 @@ Restart-Computer
               <tr class="border-t border-gray-700">
                 <td class="p-3">5</td>
                 <td class="p-3">Visual C++ versões antigas (opcional)</td>
-                <td class="p-3 text-gray-400">Baixa</td>
+                <td class="p-3 text-gray-700">Baixa</td>
               </tr>
             </tbody>
           </table>
@@ -405,7 +405,7 @@ Restart-Computer
         
         <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/30 mt-6">
           <h5 class="text-blue-400 font-bold mb-2">💡 Dica Pro</h5>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Considere usar ferramentas como Ninite ou Chocolatey para instalar todos os pacotes essenciais de uma vez após a reinstalação do Windows.
           </p>
         </div>
@@ -417,7 +417,7 @@ Restart-Computer
         {
             title: "Arquitetura Interna do Universal C Runtime e WinSxS",
             content: `
-            <p class="mb-6 text-gray-400 leading-relaxed">
+            <p class="mb-6 text-gray-700 leading-relaxed">
               O Universal C Runtime (UCRT) é uma evolução arquitetônica do Microsoft Visual C++, projetada para resolver os problemas históricos do "DLL Hell" e proporcionar um ambiente de execução mais robusto e modular. A implementação do UCRT envolve componentes complexos do sistema operacional e mecanismos avançados de gerenciamento de bibliotecas compartilhadas.
             </p>
             
@@ -425,8 +425,8 @@ Restart-Computer
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Api-MS-Win-CRT-* DLLs</h5>
-                <p class="text-gray-400 text-sm mb-3">São stub DLLs que redirecionam para as DLLs reais do UCRT:</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+                <p class="text-gray-700 text-sm mb-3">São stub DLLs que redirecionam para as DLLs reais do UCRT:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                   <li>api-ms-win-crt-runtime-l1-1-0.dll</li>
                   <li>api-ms-win-crt-heap-l1-1-0.dll</li>
                   <li>api-ms-win-crt-string-l1-1-0.dll</li>
@@ -436,8 +436,8 @@ Restart-Computer
               </div>
               <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Implementation DLLs</h5>
-                <p class="text-gray-400 text-sm mb-3">São as DLLs reais que contêm a implementação:</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+                <p class="text-gray-700 text-sm mb-3">São as DLLs reais que contêm a implementação:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                   <li>ucrtbase.dll (versão release)</li>
                   <li>ucrtbased.dll (versão debug)</li>
                   <li>msvcp140.dll (componentes C++)</li>
@@ -448,11 +448,11 @@ Restart-Computer
             </div>
             
             <h4 class="text-white font-bold mb-3 mt-6">Mecanismos de Redirecionamento do UCRT</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               O sistema de redirecionamento do UCRT utiliza o Windows Side-by-Side (WinSxS) para garantir que as aplicações usem as versões corretas das bibliotecas:
             </p>
             <div class="overflow-x-auto">
-              <table class="w-full text-xs text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+              <table class="w-full text-xs text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
                 <thead class="bg-gray-800">
                   <tr>
                     <th class="p-2 text-left">Componente</th>
@@ -491,10 +491,10 @@ Restart-Computer
             </div>
             
             <h4 class="text-white font-bold mb-3 mt-6">Processo de Carregamento de DLLs</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               Quando uma aplicação tenta carregar uma DLL do UCRT, o sistema segue um processo complexo de resolução:
             </p>
-            <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
               <li><strong>Manifest Resolution:</strong> Lê o manifesto da aplicação para identificar dependências</li>
               <li><strong>Assembly Identity:</strong> Determina a identidade exata do assembly necessário</li>
               <li><strong>WinSxS Lookup:</strong> Localiza a implementação correta no diretório WinSxS</li>
@@ -507,16 +507,16 @@ Restart-Computer
         {
             title: "Análise Profunda do Windows Side-by-Side (WinSxS) e Política de Isolamento",
             content: `
-            <p class="mb-6 text-gray-400 leading-relaxed">
+            <p class="mb-6 text-gray-700 leading-relaxed">
               O Windows Side-by-Side (WinSxS) é o mecanismo subjacente que permite a coexistência de múltiplas versões de componentes no mesmo sistema operacional. Este sistema é fundamental para o funcionamento correto do Universal C Runtime e evita os tradicionais conflitos de versão de DLLs conhecidos como "DLL Hell".
             </p>
             
             <h4 class="text-white font-bold mb-3 mt-6">Estrutura do Diretório WinSxS</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               O diretório WinSxS (geralmente em C:\Windows\WinSxS) armazena todas as versões de assemblies do sistema:
             </p>
             <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700 mb-6">
-              <pre class="text-xs text-gray-400 overflow-x-auto">
+              <pre class="text-xs text-gray-700 overflow-x-auto">
 C:\Windows\WinSxS\
 ├── amd64_microsoft.vc90.crt_1fc8b3b9a1e18e3b_9.0.30729.9148_none_80c0a1db1bb53e4a\
 ├── amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_5d84f8aa3f92f89f\
@@ -529,7 +529,7 @@ C:\Windows\WinSxS\
             
             <h4 class="text-white font-bold mb-3 mt-6">Componentes Críticos do WinSxS</h4>
             <div class="overflow-x-auto">
-              <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+              <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                   <tr>
                     <th class="p-3 text-left">Componente</th>
@@ -568,10 +568,10 @@ C:\Windows\WinSxS\
             </div>
             
             <h4 class="text-white font-bold mb-3 mt-6">Política de Isolamento e Segurança</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               O WinSxS implementa políticas de isolamento que garantem a segurança e integridade do sistema:
             </p>
-            <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
               <li><strong>Integrity Checking:</strong> Verifica a integridade dos assemblies usando hashes criptográficos</li>
               <li><strong>Digital Signature Validation:</strong> Valida as assinaturas digitais dos componentes</li>
               <li><strong>Version Binding:</strong> Garante que as versões corretas sejam carregadas</li>
@@ -583,7 +583,7 @@ C:\Windows\WinSxS\
         {
             title: "Soluções Avançadas e Ferramentas de Diagnóstico",
             content: `
-            <p class="mb-6 text-gray-400 leading-relaxed">
+            <p class="mb-6 text-gray-700 leading-relaxed">
               Para profissionais de TI e desenvolvedores, existem soluções avançadas e ferramentas de diagnóstico que permitem uma análise mais profunda de problemas relacionados ao UCRT e WinSxS. Estas ferramentas ajudam a identificar problemas complexos de dependência e configuração.
             </p>
             
@@ -591,8 +591,8 @@ C:\Windows\WinSxS\
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div class="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 p-5 rounded-xl border border-cyan-500/30">
                 <h5 class="text-cyan-400 font-bold mb-3">SxSTrace</h5>
-                <p class="text-gray-400 text-sm mb-3">Ferramenta oficial da Microsoft para rastrear carregamento de assemblies:</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+                <p class="text-gray-700 text-sm mb-3">Ferramenta oficial da Microsoft para rastrear carregamento de assemblies:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                   <li>Rastreia ativação de contextos SxS</li>
                   <li>Mostra dependências resolvidas</li>
                   <li>Identifica falhas de carregamento</li>
@@ -601,8 +601,8 @@ C:\Windows\WinSxS\
               </div>
               <div class="bg-gradient-to-br from-emerald-900/20 to-teal-900/20 p-5 rounded-xl border border-emerald-500/30">
                 <h5 class="text-emerald-400 font-bold mb-3">Process Monitor</h5>
-                <p class="text-gray-400 text-sm mb-3">Monitora acesso a arquivos e DLLs em tempo real:</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+                <p class="text-gray-700 text-sm mb-3">Monitora acesso a arquivos e DLLs em tempo real:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                   <li>Monitora tentativas de carregamento de DLL</li>
                   <li>Registra falhas de acesso</li>
                   <li>Mostra caminhos de pesquisa</li>
@@ -612,11 +612,11 @@ C:\Windows\WinSxS\
             </div>
             
             <h4 class="text-white font-bold mb-3 mt-6">Comandos Avançados de Diagnóstico</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               Para diagnosticar problemas complexos, utilize estes comandos no Prompt de Comando como Administrador:
             </p>
             <div class="bg-black/30 p-4 rounded-lg border border-gray-700 mb-6">
-              <pre class="text-xs text-gray-400 overflow-x-auto">
+              <pre class="text-xs text-gray-700 overflow-x-auto">
 # Verificar integridade do sistema
 sfc /scannow
 
@@ -636,11 +636,11 @@ Get-AppxPackageManifest -Package &lt;PackageName&gt; # Para apps UWP
             </div>
             
             <h4 class="text-white font-bold mb-3 mt-6">Métodos de Reparo Avançado</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               Para casos persistentes de problemas com UCRT, métodos avançados de reparo podem ser necessários:
             </p>
             <div class="overflow-x-auto">
-              <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+              <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                   <tr>
                     <th class="p-3 text-left">Método</th>
@@ -687,19 +687,19 @@ Get-AppxPackageManifest -Package &lt;PackageName&gt; # Para apps UWP
         {
             title: "Implantação em Ambientes Corporativos e Scripts de Automação",
             content: `
-            <p class="mb-6 text-gray-400 leading-relaxed">
+            <p class="mb-6 text-gray-700 leading-relaxed">
               Em ambientes corporativos, a gestão e implantação do Universal C Runtime e Visual C++ Redistributables requer planejamento estratégico e automação para garantir consistência e conformidade em centenas ou milhares de máquinas.
             </p>
             
             <h4 class="text-white font-bold mb-3 mt-6">Estratégias de Implantação Corporativa</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               Para grandes organizações, a implantação do UCRT e Visual C++ deve seguir melhores práticas de gerenciamento de software:
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div class="bg-gradient-to-br from-indigo-900/20 to-purple-900/20 p-5 rounded-xl border border-indigo-500/30">
                 <h5 class="text-indigo-400 font-bold mb-3">SCCM/Intune Deployment</h5>
-                <p class="text-gray-400 text-sm mb-3">Soluções de gerenciamento de endpoints:</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+                <p class="text-gray-700 text-sm mb-3">Soluções de gerenciamento de endpoints:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                   <li>Criação de pacotes de instalação</li>
                   <li>Distribuição em lote controlada</li>
                   <li>Relatórios de conformidade</li>
@@ -708,8 +708,8 @@ Get-AppxPackageManifest -Package &lt;PackageName&gt; # Para apps UWP
               </div>
               <div class="bg-gradient-to-br from-amber-900/20 to-yellow-900/20 p-5 rounded-xl border border-amber-500/30">
                 <h5 class="text-amber-400 font-bold mb-3">Group Policy Integration</h5>
-                <p class="text-gray-400 text-sm mb-3">Integração com políticas de grupo:</p>
-                <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+                <p class="text-gray-700 text-sm mb-3">Integração com políticas de grupo:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-1 text-sm">
                   <li>Scripts de logon para verificação</li>
                   <li>Políticas de segurança para DLLs</li>
                   <li>Controle de versão centralizado</li>
@@ -719,11 +719,11 @@ Get-AppxPackageManifest -Package &lt;PackageName&gt; # Para apps UWP
             </div>
             
             <h4 class="text-white font-bold mb-3 mt-6">Scripts de Automação Avançada</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               Exemplos de scripts PowerShell para implantação automatizada:
             </p>
             <div class="bg-black/30 p-4 rounded-lg border border-gray-700 mb-6">
-              <pre class="text-xs text-gray-400 overflow-x-auto">
+              <pre class="text-xs text-gray-700 overflow-x-auto">
 # Script de verificação e instalação do UCRT
 Function Install-UCRTComponents {
     $VCRedistX86 = "vc_redist.x86.exe"
@@ -761,10 +761,10 @@ Install-UCRTComponents
             </div>
             
             <h4 class="text-white font-bold mb-3 mt-6">Monitoramento e Conformidade</h4>
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
               Para garantir a conformidade contínua, implemente mecanismos de monitoramento:
             </p>
-            <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
               <li><strong>Inventory Systems:</strong> Verificação regular de componentes instalados</li>
               <li><strong>Alert Mechanisms:</strong> Alertas para máquinas com componentes ausentes</li>
               <li><strong>Automated Remediation:</strong> Scripts de correção automática</li>

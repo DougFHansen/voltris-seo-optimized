@@ -43,7 +43,7 @@ export default function PalworldGuide() {
         {
             title: "Introdução: O Efeito Bola de Neve",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Palworld usa a Unreal Engine 5. Cada Pal na base é uma IA com física (pathfinding). Com 15 Pals carregando pedras e berry, a CPU gargala.
         </p>
       `
@@ -54,7 +54,7 @@ export default function PalworldGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">O Essencial</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     - <strong>View Distance:</strong> Medium. (High renderiza Pals muito longe, desnecessário).
                     <br/>- <strong>Grass Details:</strong> Medium.
                     <br/>- <strong>Shadows:</strong> Medium.
@@ -67,7 +67,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 2: DLSS Mod (Obrigatório)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Oficialmente o jogo tem DLSS nativo hoje em dia, mas mods como o <strong>"PureDark"</strong> ou tweaks de Engine.ini oferecem um preset "Ultra Performance" melhor.
             <br/>Se usar nativo: DLSS Performance.
             <br/>Se usar AMD: TSR (Temporal Super Resolution) é melhor que FSR 1.0 neste jogo.
@@ -77,7 +77,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 3: Otimização de Servidor (Lag de Rede)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você é o host ou aluga servidor:
             <br/>Edite <code>PalWorldSettings.ini</code>.
             <br/>- <code>DropItemMaxNum=1000</code> (Padrão 3000). Muitos itens no chão causam lag.
@@ -92,7 +92,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 4: Engine.ini para FPS",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Vá em <code>%localappdata%\\Pal\\Saved\\Config\\Windows</code>.
             <br/>Adicione no Engine.ini:
             <br/><code>[SystemSettings]</code>
@@ -104,7 +104,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 5: Itens no Chão",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Não deixe milhares de pedras/madeira no chão da base.
             <br/>Use baús. A física de colisão de 500 pedrinhas rolando sobrecarrega a CPU.
             <br/>Construa fundações (chão) planas para evitar que itens caiam através do mapa (o que também consome processamento infinito de queda).
@@ -114,7 +114,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 6: Pathfinding AI",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Faça corredores largos na sua base ("3 paredes de largura").
             <br/>Se os Pals ficarem presos ("Stuck"), a IA tenta recalcular a rota 100 vezes por segundo, causando picos de uso de CPU. Bases abertas e planas rodam melhor.
         </p>
@@ -123,7 +123,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 7: Motion Blur e Shake",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Desligue o <strong>Screen Shake</strong> (Tremor da tela) nas opções.
             <br/>Em montarias voadoras, o tremor é irritante e pode causar enjoo.
             <br/>Motion Blur off para ver recursos de longe.
@@ -136,7 +136,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 8: Raid Boss Lag",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Em Bosses de Raid (Bellanoir), o jogo spawna muitos minions.
                 <br/>Reduza temporariamente a resolução ou DLSS para "Ultra Performance" apenas para a luta se seu PC travar.
             </p>
@@ -145,7 +145,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 9: Crossplay Steam/Xbox",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 A versão da Xbox Game Pass (PC) costuma estar 1 patch atrás da Steam.
                 <br/>Isso causa incompatibilidade de mods. Se for jogar com mods, prefira a versão Steam.
             </p>
@@ -154,7 +154,7 @@ export default function PalworldGuide() {
         {
             title: "Capítulo 10: Backup de Save (Corrupção)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O jogo ainda está em Early Access/Beta. Saves corrompem.
                 <br/>Use o script de Auto-Backup na pasta de saves.
                 <br/>Perder 100h de progresso dói.

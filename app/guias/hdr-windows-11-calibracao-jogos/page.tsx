@@ -43,7 +43,7 @@ export default function HDRGuide() {
         {
             title: "Introdução: O Mito do HDR Lavado",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Muitos gamers ativam o HDR e dizem: "Ficou cinza, sem contraste". Isso acontece porque o Windows tenta enviar um sinal de 1000 Nits para um monitor que só aguenta 300 Nits. O monitor "corta" os brancos e perde o preto. Calibração é a chave.
         </p>
       `
@@ -54,14 +54,14 @@ export default function HDRGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">DisplayHDR 400 (O Básico)</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Presente na maioria dos monitores IPS "Gamer" baratos. Ele aceita o sinal HDR, mas não tem brilho suficiente nem Local Dimming.
                     <br/><strong>Veredito:</strong> Geralmente é melhor deixar <span class="text-red-400">DESLIGADO</span>. SDR com boas cores é melhor que HDR simulado ruim.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">HDR 600 / 1000 / True Black (OLED)</h4>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     Monitores OLED (Samsung G8, Alienware) ou Mini-LED. Aqui o HDR brilha (literalmente). Mantenha <span class="text-emerald-400">LIGADO</span>.
                 </p>
             </div>
@@ -71,7 +71,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 2: Windows HDR Calibration App",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Baixe o app <strong>"Windows HDR Calibration"</strong> na Microsoft Store (Grátis).
             <br/>Execute-o. Siga os passos:
             <br/>1. Ajuste o preto até parar de ver as formas.
@@ -83,7 +83,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 3: Auto HDR (Mágica)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações > Sistema > Tela > HDR.
             <br/>Ative <strong>"Auto HDR"</strong>.
             <br/>Isso usa inteligência artificial para injetar HDR em jogos antigos DirectX 11/12 (como Skyrim, GTA V, Rocket League).
@@ -97,7 +97,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 4: Configuração de 10-bit (Nvidia)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             HDR exige 10 bits de cor para evitar "Color Banding" (faixas no céu).
             <br/>No Painel Nvidia > Mudar Resolução.
             <br/>Em "Profundidade de cor de saída", mude de 8 bpc para <strong>10 bpc</strong>.
@@ -108,7 +108,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 5: Slider de Brilho SDR",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Quando o HDR está ligado no Windows, o desktop (Chrome, Word) pode ficar escuro ou muito brilhante.
             <br/>Em Configurações > HDR, use o slider <strong>"Brilho de conteúdo SDR"</strong>.
             <br/>Ajuste para ficar confortável aos olhos para leitura. Isso não afeta o brilho dentro dos jogos.
@@ -118,7 +118,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 6: RTX Video HDR",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se você tem uma GPU RTX 30/40.
             <br/>No Painel Nvidia > Ajustar configurações de imagem de vídeo.
             <br/>Ative <strong>RTX Video HDR</strong>.
@@ -129,7 +129,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 7: atalho Win+Alt+B",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O HDR às vezes buga ao sair de um jogo (tela fica estourada).
             <br/>Use o atalho <strong>Windows + Alt + B</strong>.
             <br/>Isso reinicia o driver de vídeo e liga/desliga o HDR instantaneamente sem precisar ir nos menus.
@@ -142,7 +142,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 8: Jogos com HDR Nativo Quebrado",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Alguns jogos (Red Dead Redemption 2, Cyberpunk no lançamento) têm implementações HDR ruins.
                 <br/>Nesses casos, às vezes o Auto HDR do Windows fica melhor que o HDR "Nativo" do jogo. Teste desligar o HDR no menu do jogo mas manter ligado no Windows.
             </p>
@@ -151,7 +151,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 9: HDMI 2.1 vs DP 1.4",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Para 4K 120Hz com HDR 10-bit, você precisa de largura de banda massiva.
                 <br/>Use cabos <strong>HDMI 2.1</strong> certificados (Ultra High Speed). Cabos HDMI velhos vão piscar a tela ou limitar a 60Hz.
             </p>
@@ -160,7 +160,7 @@ export default function HDRGuide() {
         {
             title: "Capítulo 10: Print Screen no HDR",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Tirar prints com HDR ligado deixava as imagens estouradas.
                 <br/>Use o <strong>Game Bar (Win+G)</strong> para tirar prints em formato JXR (HDR) ou PNG (Tone-mapped para SDR). O Print Screen padrão do teclado já melhorou no Windows 11 2025+, mas o Game Bar é mais confiável.
             </p>

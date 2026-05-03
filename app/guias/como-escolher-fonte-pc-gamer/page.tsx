@@ -39,10 +39,10 @@ export default function PSUGuide() {
         {
             title: "A Mentira do 'Potência Real'",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           No Brasil, existe o mito da "Potência Real". Fontes genéricas dizem ter 500W, mas entregam 200W com ruído elétrico que mata seu SSD aos poucos.
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
           <strong>Regra de Ouro:</strong> Nunca confie apenas na etiqueta de Watts. Olhe a etiqueta lateral: a potência TEM que estar quase toda na linha de <strong>+12V</strong>. Se a fonte diz 500W mas tem 300W na linha de 12V e 200W na linha de 5V/3.3V, é uma fonte de projeto antigo e perigosa.
         </p>
 
@@ -50,7 +50,7 @@ export default function PSUGuide() {
             <h4 class="text-rose-400 font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">💣</span> Pare de usar Estabilizador!
             </h4>
-            <p class="text-gray-400 mb-4">
+            <p class="text-gray-700 mb-4">
                 Estabilizadores foram feitos para TVs de tubo dos anos 80. Fontes modernas têm PFC Ativo que corrige a voltagem em microssegundos (Full Range 90V-240V). O estabilizador é lento (tlec-tlec), e quando ele "corrige", a fonte já corrigiu, criando um surto duplo que queima a fonte.
             </p>
             <p class="text-white font-bold">Use um Filtro de Linha (iClamper) ou direto na tomada.</p>
@@ -60,10 +60,10 @@ export default function PSUGuide() {
         {
             title: "O que é a PSU Tier List?",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             É uma comunidade global de engenheiros que abre fontes e testa componentes. Eles classificam em Tiers:
         </p>
-        <ul class="list-none text-gray-400 space-y-3 ml-4">
+        <ul class="list-none text-gray-700 space-y-3 ml-4">
             <li class="p-2 border-l-4 border-emerald-500 bg-emerald-900/10"><strong>Tier A (High-End):</strong> Para RTX 4080/4090 e Overclock pesado. (Ex: Corsair RMx, XPG Core Reactor).</li>
             <li class="p-2 border-l-4 border-yellow-500 bg-yellow-900/10"><strong>Tier B (Mid-Range):</strong> Ótimo para a maioria dos gamers. (Ex: MSI MAG A650BN, Cooler Master MWE Bronze V2).</li>
             <li class="p-2 border-l-4 border-orange-500 bg-orange-900/10"><strong>Tier C (Low-End):</strong> Aceitável para PCs de entrada (iGPU, RX 6600).</li>
@@ -80,10 +80,10 @@ export default function PSUGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">80 Plus mede eficiência, não qualidade</h4>
-                <p class="text-gray-400 mb-4">
+                <p class="text-gray-700 mb-4">
                     Ter selo 80 Plus significa apenas que a fonte desperdiça menos energia em forma de calor.
                 </p>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Uma fonte pode ser 80 Plus Gold e ter capacitores ruins que explodem em 1 ano. Uma fonte pode ser 80 Plus White e durar 10 anos.
                     <br/><br/>
                     <strong>Geralmente:</strong>
@@ -96,7 +96,7 @@ export default function PSUGuide() {
         {
             title: "Calculando Watts: Quanto eu preciso?",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Some o TDP do processador + TDP da GPU + 100W (resto do sistema).
                 <br/>Exemplo: i5 12400F (65W) + RTX 4060 (115W) + 100W = 280W.
                 <br/>Uma fonte de <strong>450W ou 500W</strong> sobra com folga.
@@ -110,7 +110,7 @@ export default function PSUGuide() {
         {
             title: "Modular vs Semi vs Non-Modular",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 <strong>Non-Modular:</strong> Todos os cabos presos. Fica uma macarronada no gabinete. Barato.
                 <br/><strong>Semi-Modular:</strong> Cabo principal (Placa-mãe) preso, cabos de GPU/SATA soltos. Melhor custo-benefício.
                 <br/><strong>Full Modular:</strong> Tudo solto. Estética perfeita. Caro.

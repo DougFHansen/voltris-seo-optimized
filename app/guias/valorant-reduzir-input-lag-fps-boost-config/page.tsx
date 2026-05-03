@@ -41,7 +41,7 @@ export default function ValorantGuide() {
         {
             title: "Introdução: CPU Bound",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Valorant usa quase nada de GPU. Ele devora CPU (processador).
           <br/>Fechar o Chrome, Discord (Overlay) e apps de fundo é essencial. Otimizar o Windows dá mais resultado no Valorant do que em qualquer outro jogo.
         </p>
@@ -53,7 +53,7 @@ export default function ValorantGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Qualidade</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     - <strong>Multithreaded Rendering:</strong> ON. (Sem isso seu FPS cai pela metade).
                     - <strong>Material Quality:</strong> Low.
                     - <strong>Texture Quality:</strong> Low/Medium.
@@ -74,7 +74,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 2: Nvidia Reflex e FPS",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Nvidia Reflex Low Latency:</strong> On + Boost.
             <br/>Isso força sua GPU a esperar a CPU, mantendo a fila de renderização vazia. Input lag mínimo.
             - <strong>Limit FPS Always:</strong> OFF.
@@ -85,7 +85,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 3: Raw Input Buffer",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em Controls > Mouse.
             <br/>Ative <strong>Raw Input Buffer</strong> se você tem um mouse com Polling Rate alto (1000Hz, 4000Hz, 8000Hz).
             <br/>Isso faz o jogo processar os dados do mouse numa thread separada. Se seu mouse for padrão (125Hz-500Hz), não faz diferença, mas pode deixar ligado.
@@ -98,7 +98,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 4: Resolução Esticada (4:3)?",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Diferente do CS2, no Valorant <strong>4:3 NÃO estica os bonecos</strong> (Hitbox não muda).
                 <br/>Apenas a interface (HUD) e a mira esticam. O FOV continua 103 horizontal travado.
                 <br/>Alguns usam por costume do CS ou para ganhar FPS (menos pixels), mas não dá vantagem de mira.
@@ -108,7 +108,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 5: Otimização de Rede (Packet Loss)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             General > Network Buffering: <strong>Minimum</strong>.
             <br/>Se você tiver perda de pacotes (bonecos teleportando), mude para Moderate, mas isso aumenta o lag de peeker advantage. Tente sempre Minimum e conserte sua internet (cabo Ethernet).
         </p>
@@ -117,7 +117,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 6: Erro VAN 9003 (Sistemas Modernos)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O Windows 11 exige TPM 2.0 e Secure Boot ativados na BIOS para o Vanguard rodar.
             <br/>Entre na BIOS do seu PC, procure "Secure Boot" e mude de "Other OS" para "Windows UEFI". Ative o TPM (fTPM ou PTT).
         </p>
@@ -129,7 +129,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 7: Prioridade de Processo",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Use o Gerenciador de Tarefas > Detalhes > <code>VALORANT-Win64-Shipping.exe</code> > Definir Prioridade > Alta.
                 <br/>Não use "Tempo Real" (trava o mouse). "Alta" ajuda a evitar drops quando o Windows resolve fazer update em background.
             </p>
@@ -138,7 +138,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 8: Áudio HRTF",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Audio > Speaker Configuration: Stereo.
                 <br/>Ative <strong>HRTF</strong>.
                 <br/>Isso simula som 3D. No começo é estranho, mas é a única forma de saber se o passo vem de cima ou de baixo na Haven/Split.
@@ -148,7 +148,7 @@ export default function ValorantGuide() {
         {
             title: "Capítulo 9: Mira (Crosshair)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Copie de um Pro. (Ex: TenZ ou Aspas).
                 <br/>Geralmente: Cyan, 1-4-2-2 (Inner Lines), sem Outline, sem Center Dot. Mira pequena atrapalha menos a visão.
             </p>

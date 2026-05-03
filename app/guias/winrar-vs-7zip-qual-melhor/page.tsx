@@ -34,7 +34,7 @@ export default function CompressorComparisonGuide() {
         {
             title: "A batalha dos arquivos compactados",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Diminuir o tamanho de arquivos para facilitar o envio e a organização continua sendo uma tarefa essencial em 2026. Por décadas, o WinRAR reinou absoluto com sua licença de teste infinita, mas o **7-Zip** e novos forks como o **NanaZip** ganharam espaço por serem tecnicamente superiores em compressão e 100% gratuitos. Vamos descobrir qual deles merece estar no seu PC hoje.
         </p>
       `
@@ -42,8 +42,8 @@ export default function CompressorComparisonGuide() {
         {
             title: "1. 7-Zip: A potência gratuita",
             content: `
-        <p class="mb-4 text-gray-400">Por que os especialistas preferem o 7-Zip?</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Por que os especialistas preferem o 7-Zip?</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Código Aberto:</strong> Sem banners, sem pop-ups pedindo para você comprar nada.</li>
             <li><strong>Formato .7z:</strong> Consegue comprimir arquivos até 10% mais que o formato .rar original em muitos casos.</li>
             <li><strong>Segurança:</strong> Suporta criptografia AES-256 de nível militar para proteger seus arquivos com senha.</li>
@@ -55,7 +55,7 @@ export default function CompressorComparisonGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Exclusividade e Interface:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 O grande diferencial do <strong>WinRAR</strong> em 2026 é ser o único que consegue criar arquivos no formato <strong>.rar v5</strong> nativamente. <br/><br/>
                 O formato .rar é conhecido pela sua resiliência: se um arquivo compactado estiver levemente corrompido, o WinRAR tem ferramentas de 'Registro de Recuperação' que podem salvar o arquivo. Se você trabalha com downloads instáveis ou mídias antigas, o WinRAR ainda tem seu valor.
             </p>
@@ -65,7 +65,7 @@ export default function CompressorComparisonGuide() {
         {
             title: "3. NanaZip: A escolha para Windows 11",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Dica de 2026:</strong> O maior defeito do 7-Zip é a sua interface de 1990 que não integra bem com o novo menu de botão direito do Windows 11. 
             <br/><br/>Para resolver isso, instale o <strong>NanaZip</strong>. Ele é baseado no 7-Zip, mas foi criado especificamente para o Windows 11. Ele aparece diretamente no menu principal (sem precisar clicar em 'Mostrar mais opções') e tem um visual moderno com ícones em alta definição. É a recomendação oficial da equipe Voltris para 2026.
         </p>

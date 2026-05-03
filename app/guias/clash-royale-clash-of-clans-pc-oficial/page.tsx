@@ -34,7 +34,7 @@ export default function SupercellPCGuide() {
         {
             title: "A era pós-emuladores em 2026",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Por muitos anos, você precisava de programas pesados como BlueStacks para jogar Clash no PC. Em 2026, a Supercell e o Google lançaram a versão oficial para Windows via **Google Play Games**. Agora, o jogo roda como um aplicativo nativo do Windows 11, usando todo o poder da sua placa de vídeo e processador sem a lentidão de uma emulação completa de Android.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SupercellPCGuide() {
         {
             title: "1. Requisitos do Sistema em 2026",
             content: `
-        <p class="mb-4 text-gray-400">Para rodar os jogos da Supercell, seu PC precisa de:</p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Para rodar os jogos da Supercell, seu PC precisa de:</p>
+        <ul class="list-disc list-inside text-gray-700 space-y-3">
             <li><strong>Sistema:</strong> Windows 10 ou Windows 11 atualizado.</li>
             <li><strong>Armazenamento:</strong> SSD é obrigatório para evitar travadas no carregamento.</li>
             <li><strong>Memória:</strong> 8GB de RAM.</li>
@@ -56,7 +56,7 @@ export default function SupercellPCGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Tutorial Rápido:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Acesse <strong>play.google.com/googleplaygames</strong> e baixe o instalador. <br/>
                 2. Siga as instruções de instalação e faça login na sua Conta Google. <br/>
                 3. Pesquise por 'Clash Royale' ou 'Clash of Clans' na loja e clique em 'Instalar no Windows'. <br/>
@@ -68,7 +68,7 @@ export default function SupercellPCGuide() {
         {
             title: "3. Sincronização e Supercell ID",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não perca sua vila:</strong> 
             <br/><br/>Ao abrir o jogo no PC, faça login imediatamente com o seu **Supercell ID**. Isso garante que todo o progresso que você tem no celular (Android ou iPhone) seja espelhado no computador. Em 2026, você pode jogar no ônibus pelo celular e continuar a mesma guerra de clãs no PC assim que chegar em casa, com as mesmas tropas e recursos.
         </p>
@@ -81,14 +81,14 @@ export default function SupercellPCGuide() {
       title: "Arquitetura do Google Play Games: Virtualização e Compatibilidade",
       content: `
         <h4 class="text-white font-bold mb-3">🏗️ Arquitetura Técnica do Google Play Games</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           O Google Play Games para PC é baseado em uma arquitetura de virtualização otimizada que permite a execução de aplicativos Android em sistemas Windows sem a sobrecarga de um emulador tradicional. O sistema utiliza tecnologias avançadas de virtualização e tradução de instruções para garantir compatibilidade e desempenho:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Componentes Técnicos</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Hypervisor otimizado (Hyper-V ou WHP)</li>
               <li>• Tradução binária JIT (Just-In-Time)</li>
               <li>• Virtualização assistida por hardware</li>
@@ -99,7 +99,7 @@ export default function SupercellPCGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Recursos de Compatibilidade</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Android 12L/13 LTS em ambiente virtual</li>
               <li>• Integração com serviços Google Play</li>
               <li>• Aceleração de hardware para GPU</li>
@@ -111,12 +111,12 @@ export default function SupercellPCGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Desempenho</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Análise técnica comparando o Google Play Games com emuladores tradicionais:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Métrica</th>
@@ -168,7 +168,7 @@ export default function SupercellPCGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             O Google Play Games utiliza uma implementação otimizada do Android Runtime (ART) que é projetada especificamente para ambientes de desktop. Isso permite que aplicativos Android acessem recursos do sistema hospedeiro de forma mais eficiente, resultando em melhor desempenho e menor consumo de recursos comparado a soluções de emulação completas.
           </p>
         </div>
@@ -178,12 +178,12 @@ export default function SupercellPCGuide() {
       title: "Otimização de Jogos da Supercell e Recursos Avançados",
       content: `
         <h4 class="text-white font-bold mb-3">🎮 Otimização Técnica para Jogos da Supercell</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Os jogos da Supercell como Clash Royale e Clash of Clans foram otimizados para funcionar eficientemente no ambiente do Google Play Games, aproveitando recursos avançados de hardware e software:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Recurso</th>
@@ -228,14 +228,14 @@ export default function SupercellPCGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Recursos Avançados de Desempenho</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Configurações e otimizações avançadas disponíveis para jogos da Supercell:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Configurações Gráficas</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>Resolução Full HD/4K</li>
               <li>Taxa de quadros variável</li>
               <li>Efeitos de partículas</li>
@@ -254,7 +254,7 @@ export default function SupercellPCGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Sincronização e Armazenamento</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>Salvamento em nuvem</li>
               <li>Progresso em múltiplos dispositivos</li>
               <li>Backup automático</li>
@@ -264,11 +264,11 @@ export default function SupercellPCGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📈 Otimizações Específicas para PC</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Recursos exclusivos disponíveis quando jogando em PC:
         </p>
         
-        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
           <li><strong>Resolução Superior:</strong> Jogos renderizados em 4K com texturas nítidas e efeitos de alta qualidade</li>
           <li><strong>Controles por Teclado:</strong> Atribuição personalizada de atalhos para magias e tropas</li>
           <li><strong>Mouse Precision:</strong> Mirar com precisão milimétrica em combates estratégicos</li>
@@ -282,17 +282,17 @@ export default function SupercellPCGuide() {
       title: "Tecnologias Emergentes em Execução de Apps Móveis em Desktop",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Execução Cruzada de Aplicativos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A próxima geração de tecnologias para execução de aplicativos móveis em desktop está explorando métodos avançados de virtualização, compilação cruzada e compatibilidade:
         </p>
         
         <h4 class="text-white font-bold mb-3">Execução e Virtualização Avançada</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Novas tecnologias que estão sendo implementadas para execução de apps móveis em desktop:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -337,14 +337,14 @@ export default function SupercellPCGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Otimização de Execução</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na otimização de execução de aplicativos móveis em desktop:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Otimização Adaptativa</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Ajuste automático de configurações</li>
               <li>Balanceamento de recursos em tempo real</li>
               <li>Previsão de necessidades de hardware</li>
@@ -356,7 +356,7 @@ export default function SupercellPCGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Tradução Inteligente</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Tradução de API em tempo real</li>
               <li>Adaptação de controles automaticamente</li>
               <li>Conversão de interfaces táteis</li>
@@ -368,7 +368,7 @@ export default function SupercellPCGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de execução cruzada de aplicativos:
         </p>
         
@@ -381,7 +381,7 @@ export default function SupercellPCGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Universal App Runtime (UAR)</h5>
-              <p class="text-sm text-gray-400">Empresas como Google, Microsoft e Samsung estão colaborando em tecnologias de runtime universal que permitiriam executar aplicativos de qualquer plataforma móvel em qualquer sistema desktop com mínima perda de desempenho. Essas tecnologias utilizam compilação just-in-time adaptativa e virtualização otimizada. Implementações piloto estão previstas para 2026-2027.</p>
+              <p class="text-sm text-gray-700">Empresas como Google, Microsoft e Samsung estão colaborando em tecnologias de runtime universal que permitiriam executar aplicativos de qualquer plataforma móvel em qualquer sistema desktop com mínima perda de desempenho. Essas tecnologias utilizam compilação just-in-time adaptativa e virtualização otimizada. Implementações piloto estão previstas para 2026-2027.</p>
             </div>
           </div>
           
@@ -393,7 +393,7 @@ export default function SupercellPCGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Native Cross-Compilation</h5>
-              <p class="text-sm text-gray-400">Universidades como MIT e Stanford estão desenvolvendo ferramentas de compilação cruzada que convertem código-fonte de aplicativos móveis diretamente para binários nativos de desktop, eliminando a necessidade de virtualização ou emulação. Isso resultaria em desempenho nativo com todos os recursos preservados. Primeiras demonstrações bem-sucedidas foram apresentadas em 2025, com implementações práticas previstas para 2026-2028.</p>
+              <p class="text-sm text-gray-700">Universidades como MIT e Stanford estão desenvolvendo ferramentas de compilação cruzada que convertem código-fonte de aplicativos móveis diretamente para binários nativos de desktop, eliminando a necessidade de virtualização ou emulação. Isso resultaria em desempenho nativo com todos os recursos preservados. Primeiras demonstrações bem-sucedidas foram apresentadas em 2025, com implementações práticas previstas para 2026-2028.</p>
             </div>
           </div>
           
@@ -405,14 +405,14 @@ export default function SupercellPCGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">AI-Powered App Translation</h5>
-              <p class="text-sm text-gray-400">Empresas como NVIDIA e Intel estão desenvolvendo sistemas de IA que podem automaticamente converter aplicativos móveis para funcionar em desktop com interface otimizada, resoluções adaptadas e controles apropriados. Esses sistemas aprendem com exemplos de conversão bem-sucedida para melhorar continuamente a qualidade da tradução de aplicativos. Implementações beta estão em testes com desenvolvedores para 2026-2027.</p>
+              <p class="text-sm text-gray-700">Empresas como NVIDIA e Intel estão desenvolvendo sistemas de IA que podem automaticamente converter aplicativos móveis para funcionar em desktop com interface otimizada, resoluções adaptadas e controles apropriados. Esses sistemas aprendem com exemplos de conversão bem-sucedida para melhorar continuamente a qualidade da tradução de aplicativos. Implementações beta estão em testes com desenvolvedores para 2026-2027.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Com o avanço das tecnologias de execução cruzada e a crescente convergência entre plataformas móveis e desktop, a distinção entre aplicativos móveis e desktop tenderá a desaparecer. A combinação de inteligência artificial, virtualização otimizada e compilação cruzada resultará em experiências de usuário consistentes em todas as plataformas, onde um aplicativo poderá ser desenvolvido uma vez e executado em qualquer dispositivo com desempenho nativo.
           </p>
         </div>

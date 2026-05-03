@@ -34,7 +34,7 @@ export default function DeadzoneFixGuide() {
         {
             title: "O pesadelo do Drift em 2026",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Seja em um controle de PS5, Xbox ou Nintendo Switch, o **Drift** é causado pelo desgaste físico dos potenciômetros do analógico. Eles começam a enviar pequenos sinais elétricos mesmo quando você não está tocando neles. No PC, temos a vantagem de poder "filtrar" esses sinais usando softwares de zona morta.
         </p>
       `
@@ -42,8 +42,8 @@ export default function DeadzoneFixGuide() {
         {
             title: "1. Como Testar seu Controle",
             content: `
-        <p class="mb-4 text-gray-400">Antes de ajustar, você precisa ver a "sujeira" do sinal:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Antes de ajustar, você precisa ver a "sujeira" do sinal:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Acesse o site <strong>gamepad-tester.com</strong>.</li>
             <li>Conecte seu controle e mexa os analógicos.</li>
             <li>Solte-os. Veja os valores de 'Axis 0' a 'Axis 3'. Se eles não voltarem para 0.0000 e ficarem oscilando (ex: 0.057), você tem Drift.</li>
@@ -56,7 +56,7 @@ export default function DeadzoneFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Válido para todos os jogos:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Abra a <strong>Steam</strong> e vá em Configurações > Controle. <br/>
                 2. Clique em 'Calibragem e Zonas Mortas'. <br/>
                 3. Aumente o valor da 'Zona Morta' até que o ponto azul na tela pare de brilhar quando o controle estiver parado. <br/>
@@ -68,7 +68,7 @@ export default function DeadzoneFixGuide() {
         {
             title: "3. Zonas Mortas dentro dos Jogos",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Jogos competitivos como <strong>Call of Duty, Fortnite e Valorant</strong> têm suas próprias configurações de deadzone. 
             <br/><br/><strong>Dica:</strong> Sempre tente manter a deadzone o menor possível para não perder a precisão. Se o seu drift é de 0.05, coloque a deadzone em 0.07. Não coloque em 0.20 de uma vez, ou o seu personagem parecerá "pesado" para começar a andar.
         </p>

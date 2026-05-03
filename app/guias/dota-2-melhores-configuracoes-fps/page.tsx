@@ -42,7 +42,7 @@ export default function DotaGuide() {
         {
             title: "Introdução: Source 2 e APIs",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Dota 2 foi o primeiro jogo a usar a engine Source 2. Ela é moderna e suporta várias APIs (DX11, Vulkan, OpenGL). A escolha correta da API pode dobrar seu FPS dependendo do seu hardware.
         </p>
       `
@@ -54,11 +54,11 @@ export default function DotaGuide() {
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Como Instalar APIs</h4>
                 <p class="text-white font-mono text-sm mb-2">Steam > Dota 2 > Propriedades > DLC</p>
-                <p class="text-gray-400 text-xs">Marque "Vulkan Support". Desmarque OpenGL (Obsoleto).</p>
+                <p class="text-gray-700 text-xs">Marque "Vulkan Support". Desmarque OpenGL (Obsoleto).</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Launch Options (-vulkan vs -dx11)</h4>
-                <ul class="list-disc list-inside text-gray-400 text-xs mt-2">
+                <ul class="list-disc list-inside text-gray-700 text-xs mt-2">
                     <li><strong>-dx11:</strong> O padrão e mais estável para GPUs Nvidia (GTX/RTX).</li>
                     <li><strong>-vulkan:</strong> Recomendado para GPUs AMD (RX Series) ou Linux. Às vezes ajuda em CPUs fracas (reduz overhead). Teste!</li>
                 </ul>
@@ -69,10 +69,10 @@ export default function DotaGuide() {
         {
             title: "Capítulo 2: Configurações de Vídeo (General)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Use "Use Advanced Settings". Não use o slider básico.
         </p>
-        <table class="w-full text-sm text-left text-gray-400">
+        <table class="w-full text-sm text-left text-gray-700">
             <tbody>
                 <tr class="border-b border-gray-700">
                     <td class="py-2 font-bold">Game Screen Render Quality</td>
@@ -96,7 +96,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 3: Checkboxes (Liga/Desliga)",
             content: `
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Additive Light Pass:</strong> On (Essencial para iluminar o mapa).</li>
             <li><strong>World Lighting:</strong> On.</li>
             <li><strong>Ambient Occlusion:</strong> <span class="text-red-400">Off</span> (Pesado e desnecessário).</li>
@@ -113,7 +113,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 4: FidelityFX Super Resolution (FSR)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se seu PC for uma batata real.
             <br/>Ative o FSR no menu e reduza o "Game Screen Render Quality" para 99% ou menos.
             <br/>O FSR vai entrar em ação e fazer o upscaling. A imagem fica nítida (com um leve efeito de sharpening excessivo), mas o ganho de FPS é brutal em GPUs integradas.
@@ -123,7 +123,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 5: Console e Launch Options",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Adicione nas opções de inicialização:
             <br/><code>-novid -high -map dota -console</code>
             <br/>-novid: Remove intro do careca da Valve.
@@ -137,7 +137,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 6: Rede (Network Quality)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Em Opções > Avançado > Rede.
             <br/>Defina "Network Quality" como <strong>High-End Network</strong>.
             <br/>Isso aumenta a taxa de pacotes, reduzindo o input lag dos seus cliques.
@@ -149,7 +149,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 7: Desativar Fundo do Menu",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O menu principal tem animações pesadas (Herói novo, Arcana).
             <br/>Use o comando (Launch Option): <code>+map_enable_background_maps 0</code>.
             <br/>Isso deixa o fundo preto/estático. O FPS no menu dispara e a GPU esfria.
@@ -162,7 +162,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 8: Otimização de Som",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Ative <strong>"Streamlined Push To Talk"</strong>.
                 <br/>Isso evita que o jogo congele por meio segundo toda vez que você aperta o botão de falar (problema antigo da engine).
             </p>
@@ -171,7 +171,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 9: Minimapa e Visibilidade",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Use ícones simples no minimapa (Setas/X) em vez de Ícones de Heróis se quiser leitura rápida.
                 <br/>Aumente o tamanho do minimapa para "Extra Large" nas opções de interface. Informação é poder.
             </p>
@@ -180,7 +180,7 @@ export default function DotaGuide() {
         {
             title: "Capítulo 10: Prewarm (Pré-carregamento)",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O Dota 2 tem uma opção (Launch option <code>-prewarm</code>) que já vem ativada por padrão hoje em dia.
                 <br/>Ela carrega assets essenciais antes do menu aparecer. Não desative isso. Se seu jogo demora pra abrir, é o prewarm trabalhando para você não travar na partida.
             </p>

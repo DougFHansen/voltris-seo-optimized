@@ -37,15 +37,15 @@ export default function VibeCodingGuide() {
         {
             title: "O que é Vibe Coding? (A Definição de Andrej Karpathy)",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2024, Andrej Karpathy (ex-Diretor de IA da Tesla e OpenAI) twittou algo que mudou a indústria: <em>"Eu não escrevo mais código. Eu apenas descrevo a 'Vibe' (a intenção), reviso o diff, e aceito."</em>
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           <strong>Vibe Coding</strong> não é sobre "não saber programar". É sobre <strong>elevar o nível de abstração</strong>. Em vez de se preocupar se é ` + "`float: left`" + ` ou ` + "`flex-direction: row`" + `, você foca na arquitetura do sistema, na segurança e na experiência do usuário. A IA é o seu "Junior Developer" incansável que digita a sintaxe chata para você.
         </p>
         <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-purple-500 my-8">
             <h4 class="text-purple-400 font-bold mb-2">A Nova Habilidade: Code Review</h4>
-            <p class="text-gray-400 text-sm">
+            <p class="text-gray-700 text-sm">
                 Antes, seu valor era medido por quantas linhas você escrevia. Agora, é medido por quão bem você <strong>lê e critica</strong> o código da IA. Se você aceitar tudo o que o Claude sugere, seu app vai quebrar. O Vibe Coder é um Editor Chefe.
             </p>
         </div>
@@ -54,7 +54,7 @@ export default function VibeCodingGuide() {
         {
             title: "Capítulo 1: O Cursor IDE (A Arma Secreta)",
             content: `
-        <p class="mb-6 text-gray-400">
+        <p class="mb-6 text-gray-700">
             Esqueça o VS Code padrão com plugins lentos. O <strong>Cursor</strong> é um fork (uma cópia melhorada) do VS Code que integra a IA no nível do kernel do editor.
         </p>
 
@@ -64,7 +64,7 @@ export default function VibeCodingGuide() {
                     <span class="text-2xl">🎹</span>
                     <h4 class="text-blue-400 font-bold text-xl">Ctrl + K (Edit Inline)</h4>
                 </div>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Selecione um bloco de código bugado e aperte Ctrl+K. Digite: "Arrume o erro de tipagem aqui". A IA lê o contexto, corrige e mostra o "Diff" (Antes vs Depois) instantaneamente.
                 </p>
             </div>
@@ -74,7 +74,7 @@ export default function VibeCodingGuide() {
                     <span class="text-2xl">💬</span>
                     <h4 class="text-green-400 font-bold text-xl">Ctrl + L (Chat Global)</h4>
                 </div>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Um chat lateral que "vê" todos os arquivos abertos. Você pode perguntar: "Onde está a função de login?" ou "Explique como esse componente React funciona".
                 </p>
             </div>
@@ -84,7 +84,7 @@ export default function VibeCodingGuide() {
                     <span class="text-2xl">🎼</span>
                     <h4 class="text-purple-400 font-bold text-xl">Composer (Ctrl + I)</h4>
                 </div>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     A funcionalidade "Matadora" (Killer Feature) de 2026. O Composer permite editar <strong>múltiplos arquivos ao mesmo tempo</strong>. Você diz: "Mude a cor do botão para azul em todas as páginas e atualize o arquivo de tema global". Ele abre 5 arquivos, edita todos e pede sua aprovação.
                 </p>
             </div>
@@ -94,7 +94,7 @@ export default function VibeCodingGuide() {
                     <span class="text-2xl">👀</span>
                     <h4 class="text-yellow-400 font-bold text-xl">Tab (Copilot++)</h4>
                 </div>
-                <p class="text-gray-400 text-sm">
+                <p class="text-gray-700 text-sm">
                     Não é apenas completar a linha. O Cursor prevê <strong>onde você vai clicar</strong> e o que vai escrever nas próximas 3 linhas. É quase telepático.
                 </p>
             </div>
@@ -104,12 +104,12 @@ export default function VibeCodingGuide() {
         {
             title: "Capítulo 2: O Cérebro (Claude 3.5 Sonnet vs GPT-4o)",
             content: `
-        <p class="mb-6 text-gray-400">
+        <p class="mb-6 text-gray-700">
             A ferramenta é o Cursor, mas quem "pensa" é o Modelo de Linguagem (LLM). Em 2026, a batalha é clara:
         </p>
 
         <div class="overflow-x-auto mb-8">
-            <table class="w-full text-left text-sm text-gray-400 border-collapse border border-gray-700 rounded-lg">
+            <table class="w-full text-left text-sm text-gray-700 border-collapse border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800 text-white">
                     <tr>
                         <th class="p-3 border border-gray-700">Modelo</th>
@@ -145,14 +145,14 @@ export default function VibeCodingGuide() {
         {
             title: "Capítulo 3: Configurando o .cursorrules (As Regras do Jogo)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Você sabia que pode "treinar" o Cursor para codar exatamente como você gosta? Basta criar um arquivo chamado <code>.cursorrules</code> na raiz do seu projeto. A IA lê esse arquivo antes de responder qualquer coisa.
         </p>
 
         <div class="bg-[#1e1e1e] border border-gray-700 p-6 rounded-xl font-mono text-xs overflow-x-auto shadow-2xl relative group">
             <button class="absolute top-4 right-4 bg-white/10 hover:bg-white/20 px-3 py-1 rounded text-white text-xs transition-colors opacity-0 group-hover:opacity-100">Copiar</button>
             <p class="text-gray-500 mb-2"># .cursorrules (Exemplo para Next.js Expert)</p>
-<pre class="text-gray-400">
+<pre class="text-gray-700">
 Role: Senior Next.js 15 & TypeScript Developer sent from the future (2026).
 
 Behavior:
@@ -180,7 +180,7 @@ Safety:
 - Validate all inputs on server actions.
 </pre>
         </div>
-        <p class="text-gray-400 text-sm mt-4">
+        <p class="text-gray-700 text-sm mt-4">
             Com esse arquivo, a IA para de te dar soluções genéricas e começa a agir como um Sênior contratado para o seu projeto específico.
         </p>
       `
@@ -188,14 +188,14 @@ Safety:
         {
             title: "Capítulo 4: Segurança e Ética (O Lado Sombrio)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             "Se a IA escreveu, quem é o dono?" e "Esse código é seguro?". Questões críticas para 2026.
         </p>
         
         <div class="space-y-4">
             <div class="bg-red-900/10 p-5 rounded-lg border-l-4 border-red-500">
                 <h5 class="text-red-400 font-bold mb-2">🚨 Alucinação de Dependências (Typosquatting)</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     Às vezes, a IA pode sugerir instalar um pacote que <em>parece</em> real (ex: ` + "`npm install fast-json-react`" + `) mas que não existe ou é um vírus.
                     <br/><strong>Regra de Ouro:</strong> Nunca instale um pacote sugerido sem antes verificar se ele tem estrelas no GitHub e downloads no NPM.
                 </p>
@@ -203,7 +203,7 @@ Safety:
             
             <div class="bg-yellow-900/10 p-5 rounded-lg border-l-4 border-yellow-500">
                 <h5 class="text-yellow-400 font-bold mb-2">🔐 Vazamento de Segredos</h5>
-                <p class="text-sm text-gray-400">
+                <p class="text-sm text-gray-700">
                     Se você usar o chat da IA e colar suas chaves de API (AWS_KEY, OPENAI_KEY), esses dados podem ser usados para treinar o modelo (dependendo das configurações de privacidade).
                     <br/><strong>Solução:</strong> Use o modo "Privacy Mode" no Cursor (Business tier) ou remova segredos antes de colar código.
                 </p>

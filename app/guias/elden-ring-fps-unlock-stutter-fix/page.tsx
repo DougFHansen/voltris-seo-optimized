@@ -43,7 +43,7 @@ export default function EldenRingGuide() {
         {
             title: "Introdução: As Amarras da Engine",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Ocorrem micro-travadas (stutters) quando você entra em uma área nova? Isso é compilação de shader. Além disso, o jogo é travado em 60Hz. Para quem tem monitor 144Hz, parece lento.
         </p>
       `
@@ -54,7 +54,7 @@ export default function EldenRingGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Obrigatório para Mods</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Para desbloquear FPS ou usar Ultrawide, você precisa modificar a memória do jogo. O EAC bloqueia isso.
                     <br/>1. Baixe o "ToggleAntiCheat" no NexusMods.
                     <br/>2. Ou crie um arquivo <code>steam_appid.txt</code> com o número <code>1245620</code> na pasta do jogo e execute pelo <code>eldenring.exe</code> direto (não pela Steam).
@@ -67,7 +67,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 2: Elden Ring FPS Unlocker",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Baixe o <a href="https://github.com/uberhalit/EldenRingFpsUnlocker" target="_blank" class="text-blue-400">Elden Ring FPS Unlocker</a> no GitHub.
             <br/>- Abra o programa.
             <br/>- Aponte para o jogo.
@@ -80,7 +80,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 3: Flawless Widescreen (21:9)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O jogo renderiza as barras pretas propositalmente.
             <br/>Baixe o <strong>Flawless Widescreen</strong>. Instale o plugin de Elden Ring.
             <br/>Ative "Fix Enabled".
@@ -94,7 +94,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 4: Configurações Gráficas Otimizadas",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>Grass Quality:</strong> Medium. (High coloca grama longe demais, pesado).
             - <strong>Shadow Quality:</strong> Medium.
             - <strong>SSAO:</strong> Medium.
@@ -106,7 +106,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 5: Stutter Fix (Shader Cache)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             No Painel de Controle Nvidia:
             <br/>- Tamanho do Cache de Sombredor (Shader Cache Size): <strong>Ilimitado (Unlimited)</strong> ou <strong>10GB</strong>.
             <br/>Isso permite que o jogo guarde todos os shaders compilados no disco, evitando que ele compile toda vez que você vê um dragão novo.
@@ -116,7 +116,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 6: Prioridade de Processo",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Use o Voltris Optimizer ou Process Lasso para definir <code>eldenring.exe</code> como prioridade <strong>Alta</strong> e desativar "Hyper-Threading" para este jogo específico se tiver uma CPU Intel antiga (ajuda na estabilidade do frame time).
         </p>
       `
@@ -124,7 +124,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 7: Controle (Input Lag)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Jogos Souls exigem precisão.
             <br/>Use controle com cabo. O delay do Bluetooth pode fazer você errar o "Parry".
             <br/>No menu do jogo, desative a vibração se preferir (vibração gasta bateria do controle e pode distrair).
@@ -137,7 +137,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 8: Seamless Coop Mod",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Se quiser jogar com amigos sem as limitações chatas (invocações sumindo após boss), use o mod <strong>Seamless Coop</strong>.
                 <br/>Ele usa um sistema de rede próprio (Steam P2P) e não passa pelos servidores da FromSoft, então você não leva ban, mas joga apenas com quem tem o mod.
             </p>
@@ -146,7 +146,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 9: Backup de Save",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O jogo pode corromper saves ao usar mods.
                 <br/>Vá em <code>%appdata%\\EldenRing</code>.
                 <br/>Copie a pasta com números (seu ID Steam) para um local seguro regularmente.
@@ -156,7 +156,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 10: HDR em Elden Ring",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O HDR nativo é decente, mas as cavernas ficam cinzas.
                 <br/>Recomendamos ajustar o brilho In-Game para um valor menor do que o jogo sugere, para ter pretos reais em telas OLED.
             </p>

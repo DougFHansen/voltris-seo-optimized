@@ -43,7 +43,7 @@ export default function LDPlayerGuide() {
         {
             title: "Introdução: Por que LDPlayer?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Enquanto o BlueStacks foca em recursos premium, o LDPlayer foca em rodar em qualquer "torradeira". Ele usa menos processos em segundo plano e inicia em 5 segundos no SSD.
         </p>
       `
@@ -54,14 +54,14 @@ export default function LDPlayerGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Resolução: O Grande Segredo</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Não use 1080p se não tiver placa de vídeo dedicada.
                     <br/>Use <strong>1280x720 (dpi 240)</strong> ou até <strong>960x540 (dpi 160)</strong>. Menos pixels = Mais FPS. Em tela cheia, você nem nota tanto a diferença no calor da batalha.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">CPU e RAM</h4>
-                <p class="text-gray-400 text-xs">
+                <p class="text-gray-700 text-xs">
                     Recomendado: 2 Cores e 3GB de RAM.
                     <br/>O LDPlayer gerencia muito bem 3GB. Colocar 8GB não aumenta FPS em jogos leves como Free Fire, só desperdiça.
                 </p>
@@ -72,7 +72,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 2: Configurações de Jogo (120 FPS)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Aba "Configurações de Jogo" (Game Settings).
             <br/>- <strong>Taxa de Quadros:</strong> 60 FPS (Padrão) ou 120 FPS (Se tiver monitor 120Hz).
             <br/>- <strong>Suporte a Textura ASTC:</strong> Desmarque. Isso exige muito da GPU. Desligar deixa as texturas um pouco piores, mas o jogo roda liso.
@@ -83,7 +83,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 3: Macros e Scripts",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O LDPlayer tem o melhor gravador de macros embutido.
             <br/>Aperte Ctrl+8.
             <br/>Você pode criar scripts para "Auto-Quest" em jogos MMORPG ou para realizar combos rápidos em jogos de luta.
@@ -97,7 +97,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 4: Virtualização de Rede (Bridge)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Configurações > Rede.
             <br/>Ative o modo "Bridge" e instale o driver se solicitado.
             <br/>Isso faz o emulador pegar um IP direto do seu roteador, como se fosse um celular real no Wi-Fi. Isso resolve problemas de conexão em jogos que bloqueiam emuladores ou têm NAT restrito.
@@ -107,7 +107,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 5: Limpeza de Cache LDPlayer",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             O LDPlayer tem um botão "Limpar Cache de Disco" nas configurações avançadas.
             <br/>Diferente do BlueStacks, ele faz isso rápido. Faça uma vez por semana para evitar lentidão no carregamento.
         </p>
@@ -116,7 +116,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 6: Versões Antigas (LDPlayer 4 vs 9)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             - <strong>LDPlayer 9:</strong> Baseado no Android 9. Rápido, roda Genshin e jogos 64-bit.
             - <strong>LDPlayer 5/3:</strong> Baseado no Android 5/7. Use APENAS se seu PC for muito antigo (2010-2014). A compatibilidade de jogos é menor, mas é ultra leve.
         </p>
@@ -125,7 +125,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 7: Correção de Tela Travada em 50%",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se o carregamento trava em 50% ou 94%:
             <br/>1. Verifique se o VT está ativado.
             <br/>2. Atualize o driver da placa de vídeo (Mesmo que seja integrada Intel HD). O LDPlayer exige suporte a OpenGL 4.0+.
@@ -139,7 +139,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 8: Mapeamento de Teclas",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O mapeamento do LDPlayer é simples.
                 <br/>Clique no ícone de Teclado. Arraste o D-Pad para o analógico.
                 <br/>Importante: Use a tecla "Look Around" (Olhar ao redor) sobre a área de movimentação de câmera do jogo para jogos FPS e defina a sensibilidade.
@@ -149,7 +149,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 9: Multi-Instância Otimizada",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 LDMultiPlayer > Otimização.
                 <br/>Defina FPS para 20 nas instâncias secundárias.
                 <br/>Marque "Desativar som".
@@ -160,7 +160,7 @@ export default function LDPlayerGuide() {
         {
             title: "Capítulo 10: Root One-Click",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Você pode ativar/desativar Root nas configurações gerais com um clique.
                 <br/>Isso é útil para apps que exigem root (Titanium Backup) ou para jogos que detectam e bloqueiam root (banco app).
             </p>

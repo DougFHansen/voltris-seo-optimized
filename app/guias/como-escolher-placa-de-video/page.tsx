@@ -34,7 +34,7 @@ export default function GPUBuyingGuide() {
     {
       title: "O coração do PC Gamer em 2026",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, a placa de vídeo (GPU) é o componente mais caro e importante do seu setup. Não adianta ter o melhor processador do mundo se a sua GPU não consegue processar os efeitos de luz modernos (Ray Tracing) ou as texturas pesadas dos jogos de última geração. Escolher bem em 2026 significa olhar além do "poder bruto" e focar também nas tecnologias de IA e eficiência energética.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GPUBuyingGuide() {
     {
       title: "1. VRAM: A armadilha da memória",
       content: `
-        <p class="mb-4 text-gray-400">Em 2026, a quantidade de memória de vídeo (VRAM) é vital:</p>
-        <p class="text-sm text-gray-400">
+        <p class="mb-4 text-gray-700">Em 2026, a quantidade de memória de vídeo (VRAM) é vital:</p>
+        <p class="text-sm text-gray-700">
             Jogos lançados em 2026 estão consumindo cada vez mais memória devido ao aumento da qualidade das texturas. <br/><br/>
             - <strong>8GB:</strong> É o "mínimo para sobreviver" em 1080p. Em alguns jogos, você precisará reduzir a qualidade das texturas. <br/>
             - <strong>12GB ou 16GB:</strong> É o ponto ideal para longevidade. Se você quer ficar 4 anos sem trocar de placa, procure modelos com pelo menos 12GB.
@@ -55,7 +55,7 @@ export default function GPUBuyingGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Qual Marca Escolher?</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 - <strong>NVIDIA:</strong> Melhor tecnologia de IA (DLSS 3.5), Ray Tracing superior e ideal para quem faz Stream ou edição de vídeo. <br/>
                 - <strong>AMD:</strong> Melhor custo por cada frame. Geralmente são mais baratas e oferecem mais VRAM bruta na mesma faixa de preço da concorrência. <br/>
                 - <strong>Intel Arc:</strong> A terceira via. Oferecem excelente performance em 2026 pelo preço, mas ainda podem ter problemas em jogos muito antigos (DiretX 9).
@@ -66,7 +66,7 @@ export default function GPUBuyingGuide() {
     {
       title: "3. Casamento com o Monitor",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Não desperdice dinheiro:</strong> 
             <br/><br/>Se o seu monitor é 1080p 60Hz, comprar uma RTX 4080 é jogar dinheiro fora, pois você nunca verá o poder total da placa. <br/><br/>
             - Para <strong>1080p</strong>, foque em placas de entrada e média-baixa. <br/>
@@ -82,14 +82,14 @@ export default function GPUBuyingGuide() {
       title: "Arquitetura de GPUs Modernas: Fundamentos Técnicos e Comparação",
       content: `
         <h4 class="text-white font-bold mb-3">🏗️ Arquitetura Interna de GPUs Modernas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           As GPUs modernas são complexos sistemas de processamento paralelo que contêm milhares de núcleos especializados para cálculos vetoriais. As arquiteturas de 2026 representam décadas de otimização em eficiência energética e desempenho computacional:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Componentes Técnicos de GPUs</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Streaming Multiprocessors (SMs)</li>
               <li>• CUDA Cores / Stream Processors</li>
               <li>• Tensor Cores (IA/Aprendizado Profundo)</li>
@@ -100,7 +100,7 @@ export default function GPUBuyingGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Especificações Técnicas Críticas</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>• Barramento de memória (128-512 bits)</li>
               <li>• Tipo de memória (GDDR6/GDDR6X/HBM3)</li>
               <li>• Largura de banda (400-1000 GB/s)</li>
@@ -112,12 +112,12 @@ export default function GPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação Técnica de Arquiteturas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Análise detalhada das arquiteturas líderes em 2026:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Fabricante</th>
@@ -159,7 +159,7 @@ export default function GPUBuyingGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             O número de CUDA cores/stream processors não é um indicador absoluto de desempenho. A eficiência arquitetural, largura de banda da memória e otimização para APIs específicas (DirectX 12 Ultimate, Vulkan) têm impacto significativo no desempenho real em jogos e aplicações.
           </p>
         </div>
@@ -169,12 +169,12 @@ export default function GPUBuyingGuide() {
       title: "Tecnologias de Renderização Avançada e Inteligência Artificial",
       content: `
         <h4 class="text-white font-bold mb-3">🧠 Tecnologias de IA em GPUs Modernas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           As GPUs modernas incorporam tecnologias avançadas de inteligência artificial que revolucionam a experiência de renderização e jogos:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -225,14 +225,14 @@ export default function GPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎮 Comparação de Desempenho Técnico</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Análise comparativa detalhada entre modelos de GPU em diferentes resoluções e configurações:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">1080p Ultra Settings</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>RTX 4060: 60-80 FPS médio</li>
               <li>RX 7600: 55-75 FPS médio</li>
               <li>Arc A750: 50-70 FPS médio</li>
@@ -251,7 +251,7 @@ export default function GPUBuyingGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">4K Medium Settings</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>RTX 4080: 45-60 FPS</li>
               <li>RX 7900 XTX: 40-55 FPS</li>
               <li>Recomendado: RTX 4080</li>
@@ -261,11 +261,11 @@ export default function GPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Recursos Avançados de Renderização</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Tecnologias exclusivas e recursos avançados disponíveis em GPUs modernas:
         </p>
         
-        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
           <li><strong>DLSS Frame Generation:</strong> Técnica exclusiva da NVIDIA que pode dobrar os FPS em jogos compatíveis, gerando frames intermediários via IA</li>
           <li><strong>Ray Reconstruction:</strong> Tecnologia de NVIDIA que melhora o ray tracing com IA, reduzindo o impacto de desempenho</li>
           <li><strong>FidelityFX Variable Shading:</strong> Tecnologia da AMD que otimiza o sombreamento em áreas menos visíveis para economizar recursos</li>
@@ -279,17 +279,17 @@ export default function GPUBuyingGuide() {
       title: "Tecnologias Emergentes em Processamento Gráfico e Futuro das GPUs",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Próxima Geração em GPUs</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A próxima geração de GPUs está explorando tecnologias avançadas que prometem revolucionar o processamento gráfico e a inteligência artificial:
         </p>
         
         <h4 class="text-white font-bold mb-3">Arquiteturas e Processos de Fabricação</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Novas tecnologias que estão sendo implementadas em GPUs de próxima geração:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -334,14 +334,14 @@ export default function GPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em GPUs de Próxima Geração</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na evolução das GPUs:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Renderização Neural</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Simulação de física por IA</li>
               <li>Geração procedural de ambientes</li>
               <li>Síntese de texturas em tempo real</li>
@@ -353,7 +353,7 @@ export default function GPUBuyingGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Otimização Adaptativa</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Ajuste automático de qualidade</li>
               <li>Balanceamento de recursos em tempo real</li>
               <li>Previsão de necessidades de renderização</li>
@@ -365,7 +365,7 @@ export default function GPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de GPUs de próxima geração:
         </p>
         
@@ -378,7 +378,7 @@ export default function GPUBuyingGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Neural Rendering Pipelines</h5>
-              <p class="text-sm text-gray-400">Empresas como NVIDIA, AMD e Intel estão desenvolvendo pipelines de renderização baseados em redes neurais que podem simular efeitos complexos de iluminação, física e materiais com fração do custo computacional tradicional. Essas tecnologias prometem renderizar cenas fotorrealistas em tempo real com consumo de energia significativamente reduzido. Implementações iniciais estão previstas para 2026-2027.</p>
+              <p class="text-sm text-gray-700">Empresas como NVIDIA, AMD e Intel estão desenvolvendo pipelines de renderização baseados em redes neurais que podem simular efeitos complexos de iluminação, física e materiais com fração do custo computacional tradicional. Essas tecnologias prometem renderizar cenas fotorrealistas em tempo real com consumo de energia significativamente reduzido. Implementações iniciais estão previstas para 2026-2027.</p>
             </div>
           </div>
           
@@ -390,7 +390,7 @@ export default function GPUBuyingGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Quantum Dot Displays & GPU Integration</h5>
-              <p class="text-sm text-gray-400">A integração de tecnologias de display como QD-OLED com GPUs especializadas está sendo pesquisada para otimizar o pipeline de renderização diretamente na tela. Isso permitiria renderização adaptativa pixel-por-pixel com base nas propriedades específicas de cada tipo de tecnologia de exibição. Empresas como Samsung e Sony estão colaborando com fabricantes de GPU para implementações práticas, com primeiras demonstrações esperadas para 2027-2029.</p>
+              <p class="text-sm text-gray-700">A integração de tecnologias de display como QD-OLED com GPUs especializadas está sendo pesquisada para otimizar o pipeline de renderização diretamente na tela. Isso permitiria renderização adaptativa pixel-por-pixel com base nas propriedades específicas de cada tipo de tecnologia de exibição. Empresas como Samsung e Sony estão colaborando com fabricantes de GPU para implementações práticas, com primeiras demonstrações esperadas para 2027-2029.</p>
             </div>
           </div>
           
@@ -402,14 +402,14 @@ export default function GPUBuyingGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">Photonic Computing Integration</h5>
-              <p class="text-sm text-gray-400">Pesquisas pioneiras em computação fotônica estão explorando como integrar componentes ópticos com GPUs tradicionais para acelerar tarefas específicas de IA e renderização. Embora ainda em estágios experimentais, essa tecnologia poderia eventualmente superar os limites físicos da eletrônica tradicional. Universidades como MIT e Caltech estão liderando essa pesquisa, com aplicações práticas potenciais para 2028-2030.</p>
+              <p class="text-sm text-gray-700">Pesquisas pioneiras em computação fotônica estão explorando como integrar componentes ópticos com GPUs tradicionais para acelerar tarefas específicas de IA e renderização. Embora ainda em estágios experimentais, essa tecnologia poderia eventualmente superar os limites físicos da eletrônica tradicional. Universidades como MIT e Caltech estão liderando essa pesquisa, com aplicações práticas potenciais para 2028-2030.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Com o avanço das tecnologias de IA e a crescente demanda por renderização fotorrealista em tempo real, as GPUs do futuro serão híbridas entre processamento tradicional e aceleração neural. A distinção entre hardware de renderização e hardware de IA tenderá a desaparecer, resultando em unidades de processamento universal capazes de lidar com qualquer tipo de carga computacional de forma otimizada. Isso transformará não apenas os jogos, mas também campos como simulação científica, design assistido por computador e realidade aumentada.
           </p>
         </div>

@@ -49,10 +49,10 @@ export default function PainelControleNVIDIAGuide() {
         {
             title: "O Que é o Painel de Controle NVIDIA?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O <strong>Painel de Controle NVIDIA</strong> é o software oficial da NVIDIA para gerenciar todas as configurações da sua placa de vídeo. Em 2026, ele evoluiu com recursos avançados de <strong>AI-powered optimization</strong>, <strong>DLSS 3.5</strong> e <strong>Ray Tracing otimizado</strong>.
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Com o painel configurado corretamente, você pode extrair o máximo potencial da sua <strong>RTX 4070</strong> ou <strong>RTX 5090</strong>, garantindo <strong>taxas de quadros perfeitas</strong> e <strong>redução de input lag</strong> em todos os jogos.
         </p>
         `
@@ -60,12 +60,12 @@ export default function PainelControleNVIDIAGuide() {
         {
             title: "Por Que Configurar o Painel NVIDIA?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Configurar o painel NVIDIA corretamente é <strong>essencial</strong> para gamers em 2026. As configurações padrão nem sempre oferecem o melhor desempenho, e ajustes finos podem resultar em <strong>ganhos significativos de FPS</strong>.
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-green-400">🎮 Benefícios da Configuração Correta:</h3>
-          <ul class="space-y-2 text-gray-400">
+          <ul class="space-y-2 text-gray-700">
             <li class="flex items-center gap-2">
               <span class="text-green-400">🚀</span>
               <span>+15-25% FPS em jogos modernos</span>
@@ -98,7 +98,7 @@ export default function PainelControleNVIDIAGuide() {
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-300 mb-3">Modo de Energia</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Preferência Máxima:</strong> Configurar para "Prefer Máximo Desempenho"</li>
                 <li><strong>Fonte de Alimentação:</strong> Fonte de alimentação preferencial</li>
                 <li><strong>Modo USB:</strong> Desativar quando não estiver em uso</li>
@@ -106,7 +106,7 @@ export default function PainelControleNVIDIAGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-300 mb-3">🎮 Configurações de Jogos</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Monitor Tecnológico:</strong> G-Sync ativado</li>
                 <li><strong>Latência Baixa:</strong> Modo Ultra Baixa Latência</li>
                 <li><strong>Taxa de Quadros:</strong> Máxima taxa de atualização</li>
@@ -125,7 +125,7 @@ export default function PainelControleNVIDIAGuide() {
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-300 mb-3">⚙️ Configurações do Driver</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>Shader Cache:</strong> Máximo (para reduzir stuttering)</li>
                 <li><strong>Pré-renderização de Quadros:</strong> Ativada (para reduzir input lag)</li>
                 <li><strong>Renderização Multi-amostra:</strong> 4x MSAA (para qualidade visual)</li>
@@ -134,7 +134,7 @@ export default function PainelControleNVIDIAGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-300 mb-3">🎨 Configurações de Qualidade</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li><strong>DLSS:</strong> Qualidade vs Desempenho (equilibrado)</li>
                 <li><strong>Ray Tracing:</strong> Médio (para jogabilidade)</li>
                 <li><strong>Upscaling:</strong> NVIDIA Image Scaling (alternativa ao DLSS)</li>
@@ -153,7 +153,7 @@ export default function PainelControleNVIDIAGuide() {
           <div class="space-y-4">
             <div class="bg-red-800/50 p-4 rounded-lg border border-red-500/30">
               <h4 class="text-lg font-semibold text-red-300 mb-2">🚨 FPS Baixo ou Instável?</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li>Verifique temperatura da GPU (>85°C)</li>
                 <li>Feche programas em segundo plano</li>
                 <li>Atualize drivers para versão mais recente</li>
@@ -163,7 +163,7 @@ export default function PainelControleNVIDIAGuide() {
             </div>
             <div class="bg-yellow-800/50 p-4 rounded-lg border border-yellow-500/30">
               <h4 class="text-lg font-semibold text-yellow-300 mb-2">⚠️ Tela Cortando ou Travando?</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li>Verifique uso de VRAM (>90%)</li>
                 <li>Ative G-Sync no monitor</li>
                 <li>Desative V-Sync no jogo</li>
@@ -172,7 +172,7 @@ export default function PainelControleNVIDIAGuide() {
             </div>
             <div class="bg-green-800/50 p-4 rounded-lg border border-green-500/30">
               <h4 class="text-lg font-semibold text-green-300 mb-2">✅ Melhores Práticas:</h4>
-              <ul class="space-y-2 text-gray-400">
+              <ul class="space-y-2 text-gray-700">
                 <li>Monitore temperatura e uso de recursos</li>
                 <li>Atualize drivers mensalmente</li>
                 <li>Limpe ventiladores e dissipadores</li>

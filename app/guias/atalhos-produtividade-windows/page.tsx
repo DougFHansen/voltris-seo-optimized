@@ -42,12 +42,12 @@ export default function WindowsShortcutsGuide() {
     {
       title: "Por Que Usar Atalhos do Windows? A Diferença Entre Usuário Comum e Power User",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Usar atalhos de teclado no Windows é como ter um superpoder para navegar pelo sistema. Cada vez que você tira a mão do teclado para usar o mouse, você perde <strong>2-3 segundos</strong> de produtividade. Em um dia de trabalho (8 horas), isso soma <strong>dezenas de minutos perdidos</strong> apenas com movimentos desnecessários. Em 2026, dominar os atalhos do Windows é essencial para desenvolvedores, designers, traders, gamers e qualquer pessoa que queira <strong>triplicar sua velocidade de navegação</strong>.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Produtividade</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li>Usuários que dominam atalhos de teclado são <strong>40-60% mais rápidos</strong> em tarefas diárias do Windows.</li>
           <li>Pesquisadores da Microsoft provaram que alternar entre teclado e mouse <strong>reduz foco em 15%</strong>.</li>
           <li>Profissionais de TI, desenvolvedores e designers usam <strong>90% teclado / 10% mouse</strong>.</li>
@@ -57,12 +57,12 @@ export default function WindowsShortcutsGuide() {
     {
       title: "Atalhos Básicos: O Começo da Sua Jornada de Produtividade",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Estes são os atalhos fundamentais que VOCÊ DEVE dominar antes de qualquer outro. Funcionam em QUALQUER versão do Windows (7, 8, 10, 11).
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔄 Atalhos de Navegação Básicos</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -106,7 +106,7 @@ export default function WindowsShortcutsGuide() {
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mt-6">
           <h4 class="text-blue-400 font-bold mb-2">💡 Dica PRO: Win + R é o Portal de Comandos!</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Use <code>Win + R</code> para abrir rapidamente qualquer programa ou ferramenta. Exemplos: <code>cmd</code> (Prompt de Comando), <code>mspaint</code> (Paint), <code>notepad</code> (Bloco de Notas), <code>calc</code> (Calculadora), <code>msconfig</code> (Configuração do Sistema).
           </p>
         </div>
@@ -115,12 +115,12 @@ export default function WindowsShortcutsGuide() {
     {
       title: "Organização de Janelas: Snap Layouts e Gerenciamento Inteligente",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Pare de redimensionar janelas manualmente! O Windows 11 introduziu os Snap Layouts, que permitem organizar janelas automaticamente com atalhos de teclado.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">📏 Atalhos de Organização de Janelas (Windows 11)</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -159,10 +159,10 @@ export default function WindowsShortcutsGuide() {
         
         <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20 mt-6">
           <h4 class="text-emerald-400 font-bold mb-2">✅ Exemplo Prático: Trabalhando com 2 Aplicações</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Imagine que você quer ter o Excel ocupando metade esquerda da tela e o navegador ocupando metade direita:
           </p>
-          <ul class="list-disc list-inside text-xs text-gray-400 ml-6 mt-2 space-y-1">
+          <ul class="list-disc list-inside text-xs text-gray-700 ml-6 mt-2 space-y-1">
             <li>Abra o Excel → Pressione <code>Win + Setas Esquerda</code> → Excel ocupa metade esquerda</li>
             <li>Abra o navegador → Pressione <code>Win + Setas Direita</code> → Navegador ocupa metade direita</li>
             <li>Sem tocar no mouse! Tudo com teclado!</li>
@@ -174,7 +174,7 @@ export default function WindowsShortcutsGuide() {
       title: "Alternância de Janelas: Mudando entre Aplicações Rapidamente",
       content: `
         <h4 class="text-white font-bold mb-3">🔄 Alternar entre Janelas Abertas</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Alt + Tab</code> - Mostra miniaturas das janelas abertas (modo clássico)</li>
           <li><code>Win + Tab</code> - Abre o Task View com prévias em tamanho real das janelas</li>
           <li><code>Win + T</code> - Percorre os ícones da barra de tarefas (Windows 11)</li>
@@ -182,7 +182,7 @@ export default function WindowsShortcutsGuide() {
         </ul>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎯 Atalhos Avançados de Alternância</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -211,13 +211,13 @@ export default function WindowsShortcutsGuide() {
       content: `
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mb-6">
           <h4 class="text-amber-400 font-bold mb-2">✨ Recurso Poderoso do Windows 11</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Áreas de trabalho virtuais permitem que você crie múltiplos "desktops" para organizar diferentes tarefas. Exemplo: Área de trabalho 1 para trabalho, Área de trabalho 2 para comunicação (Slack, Teams, Discord), Área de trabalho 3 para entretenimento.
           </p>
         </div>
         
         <h4 class="text-white font-bold mb-3">📱 Gerenciar Áreas de Trabalho Virtuais</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -245,7 +245,7 @@ export default function WindowsShortcutsGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎯 Dicas para Usar Áreas de Trabalho Efetivamente</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li>Crie uma área para cada projeto ou tipo de tarefa</li>
           <li>Mova janelas entre áreas com <code>Win + Tab</code> → Clique na janela → "Mover para outra área de trabalho"</li>
           <li>Use nomes personalizados para áreas (clique com direito na área → Renomear)</li>
@@ -257,7 +257,7 @@ export default function WindowsShortcutsGuide() {
       title: "Ferramentas do Sistema: Acesso Rápido a Utilitários Importantes",
       content: `
         <h4 class="text-white font-bold mb-3">🛠️ Atalhos para Ferramentas do Sistema</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -304,7 +304,7 @@ export default function WindowsShortcutsGuide() {
       title: "Captura de Tela e Anotações: Documentando Tudo Rapidamente",
       content: `
         <h4 class="text-white font-bold mb-3">📸 Atalhos de Captura de Tela</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -337,7 +337,7 @@ export default function WindowsShortcutsGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">✏️ Atalhos de Anotações Rápidas</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Win + Shift + N</code> - Abrir aplicativo Sticky Notes (se instalado)</li>
           <li><code>Win + V</code> - Abrir histórico da área de transferência</li>
           <li><code>Win + . (ponto)</code> - Abrir seletor de emojis e símbolos</li>
@@ -349,7 +349,7 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos Avançados: Para Profissionais e Desenvolvedores",
       content: `
         <h4 class="text-white font-bold mb-3">🔐 Atalhos de Segurança e Administração</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -377,7 +377,7 @@ export default function WindowsShortcutsGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">💻 Ferramentas para Desenvolvedores</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Win + R</code> → <code>cmd</code> - Prompt de Comando</li>
           <li><code>Win + R</code> → <code>powershell</code> - PowerShell</li>
           <li><code>Win + R</code> → <code>devmgmt.msc</code> - Gerenciador de Dispositivos</li>
@@ -391,7 +391,7 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Personalização e Acessibilidade",
       content: `
         <h4 class="text-white font-bold mb-3">🎨 Personalização de Interface</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -424,7 +424,7 @@ export default function WindowsShortcutsGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">♿ Atalhos de Acessibilidade</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Win + U</code> - Abrir Central de Facilidade de Acesso para configurações de acessibilidade</li>
           <li><code>Win + Ctrl + C</code> - Abrir Detector de Cores para verificar contraste (desenvolvedores web)</li>
           <li><code>Win + Plus (+)</code> - Ativar Lente de Ampliação para zoom da tela</li>
@@ -437,7 +437,7 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Segurança e Proteção",
       content: `
         <h4 class="text-white font-bold mb-3">🛡️ Segurança do Sistema</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Atalho</th>
@@ -470,7 +470,7 @@ export default function WindowsShortcutsGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔒 Atalhos de Segurança Avançados</h4>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Win + R</code> → <code>gpedit.msc</code> - Editor de Política de Grupo (Professional/Education)</li>
           <li><code>Win + R</code> → <code>msra</code> - Assistente Remoto do Windows</li>
           <li><code>Win + R</code> → <code>eventvwr</code> - Visualizador de Eventos do Windows</li>
@@ -483,19 +483,19 @@ export default function WindowsShortcutsGuide() {
       title: "Automatização e Scripts: Maximizando Produtividade",
       content: `
         <h4 class="text-white font-bold mb-3">🤖 Automação com Atalhos Personalizados</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Além dos atalhos padrão do Windows, você pode criar atalhos personalizados para executar scripts e automatizar tarefas repetitivas:
         </p>
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mb-6">
           <h5 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Atalhos Personalizados</h5>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Você pode criar atalhos personalizados com o PowerToys do Microsoft ou criando arquivos .bat/.vbs com atalhos de teclado específicos.
           </p>
         </div>
         
         <h4 class="text-white font-bold mb-3">📁 Atalhos para Tarefas Repetitivas</h4>
-        <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
+        <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
               <th class="p-3 text-left">Comando</th>
@@ -528,10 +528,10 @@ export default function WindowsShortcutsGuide() {
         </table>
         
         <h4 class="text-white font-bold mb-3 mt-6">📝 Criação de Scripts para Automatização</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Você pode criar scripts para tarefas específicas e associar a atalhos de teclado:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li>Criar arquivos .bat para executar sequências de comandos</li>
           <li>Associar atalhos de teclado a programas específicos</li>
           <li>Usar o PowerToys para criar atalhos personalizados complexos</li>
@@ -543,11 +543,11 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Desenvolvedores e Profissionais Técnicos",
       content: `
         <h4 class="text-white font-bold mb-3">💻 Atalhos Especializados para Desenvolvedores</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Desenvolvedores e profissionais de TI podem aproveitar uma série de atalhos e comandos para aumentar sua produtividade:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Atalho/Comando</th>
@@ -595,10 +595,10 @@ export default function WindowsShortcutsGuide() {
           </table>
         </div>
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Ferramentas de Desenvolvimento Rápidas</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Use esses comandos para acessar rapidamente ferramentas de desenvolvimento:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><code>Win + R</code> → <code>notepad++</code> ou <code>code</code> para abrir editores de código</li>
           <li><code>Win + R</code> → <code>chrome</code> ou <code>firefox</code> para abrir navegadores de desenvolvimento</li>
           <li><code>Win + R</code> → <code>git-bash</code> para terminal Git</li>
@@ -612,13 +612,13 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Performance e Otimização",
       content: `
         <h4 class="text-white font-bold mb-3">⚡ Atalhos para Monitoramento de Performance</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Monitore a performance do seu sistema com atalhos rápidos:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Monitoramento em Tempo Real</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li><code>Ctrl + Shift + Esc</code> → Gerenciador de Tarefas imediato</li>
               <li><code>Win + R</code> → <code>perfmon</code> → Monitor de Performance</li>
               <li><code>Win + R</code> → <code>resmon</code> → Monitor de Recursos</li>
@@ -627,7 +627,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-2">Análise de Sistema</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li><code>Win + R</code> → <code>dxdiag</code> → Informações do DirectX</li>
               <li><code>Win + R</code> → <code>msinfo32</code> → Informações do Sistema</li>
               <li><code>Win + R</code> → <code>winver</code> → Versão do Windows</li>
@@ -636,10 +636,10 @@ export default function WindowsShortcutsGuide() {
           </div>
         </div>
         <h4 class="text-white font-bold mb-3 mt-6">🚀 Atalhos para Otimização de Performance</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Otimize seu sistema com essas combinações eficientes:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Win + Pause</code> → Propriedades do Sistema → Acesso rápido a configurações avançadas</li>
           <li><code>Win + R</code> → <code>sysdm.cpl</code> → Configurações Avançadas do Sistema</li>
           <li><code>Win + R</code> → <code>cleanmgr</code> → Limpeza de Disco para liberar espaço</li>
@@ -649,7 +649,7 @@ export default function WindowsShortcutsGuide() {
         </ul>
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Atalhos de Economia de Energia</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Para notebooks e sistemas com bateria, use <code>Win + X</code> → Opções de Energia para alternar rapidamente entre modos de desempenho. O modo de economia pode aumentar significativamente a duração da bateria.
           </p>
         </div>
@@ -659,11 +659,11 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Segurança Avançada",
       content: `
         <h4 class="text-white font-bold mb-3">🛡️ Atalhos para Segurança e Proteção de Dados</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Mantenha seu sistema seguro com atalhos rápidos para ferramentas de segurança:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Atalho/Comando</th>
@@ -706,10 +706,10 @@ export default function WindowsShortcutsGuide() {
           </table>
         </div>
         <h4 class="text-white font-bold mb-3 mt-6">🔒 Atalhos de Criptografia e Privacidade</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Proteja seus dados com ferramentas de criptografia acessíveis rapidamente:
         </p>
-        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Win + R</code> → <code>control /name Microsoft.BitLockerDriveEncryption</code> → BitLocker</li>
           <li><code>Win + I</code> → Privacidade e Segurança → Configurações de privacidade</li>
           <li><code>Win + R</code> → <code>rekeywiz.msc</code> → Assistente de Backup de Chaves do BitLocker</li>
@@ -722,13 +722,13 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Multitarefa e Produtividade Extrema",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Técnicas Avançadas de Multitarefa</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Domine a multitarefa com combinações de atalhos que aumentam drasticamente sua produtividade:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Janelas</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li><code>Win + Setas</code> → Posicionamento preciso</li>
               <li><code>Win + Shift + Setas</code> → Mover janelas entre monitores</li>
               <li><code>Win + Home</code> → Minimizar todas exceto ativa</li>
@@ -737,7 +737,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Áreas de Trabalho</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li><code>Ctrl + Win + D</code> → Nova área de trabalho</li>
               <li><code>Ctrl + Win + F4</code> → Fechar área de trabalho</li>
               <li><code>Ctrl + Win + Setas</code> → Alternar áreas</li>
@@ -746,7 +746,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Aplicativos</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li><code>Win + T</code> → Navegar na barra de tarefas</li>
               <li><code>Win + Number</code> → Abrir/ativar app da barra</li>
               <li><code>Win + Alt + Number</code> → Abrir nova instância</li>
@@ -755,11 +755,11 @@ export default function WindowsShortcutsGuide() {
           </div>
         </div>
         <h4 class="text-white font-bold mb-3 mt-6">💼 Atalhos para Profissionais de Produtividade</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Estes atalhos são particularmente úteis para profissionais que buscam produtividade extrema:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Atalho</th>
@@ -803,7 +803,7 @@ export default function WindowsShortcutsGuide() {
         </div>
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Combinações Poderosas</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Combine atalhos para produtividade extrema: Use <code>Win + V</code> para acessar o histórico da área de transferência, <code>Win + Shift + S</code> para capturar informações visualizadas, e <code>Win + .</code> para inserir emojis rapidamente em comunicações. Essas combinações podem triplicar sua velocidade em tarefas repetitivas.
           </p>
         </div>
@@ -816,11 +816,11 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Programadores e Desenvolvedores",
       content: `
         <h4 class="text-white font-bold mb-3">💻 Atalhos Especializados para Programadores</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Desenvolvedores podem aumentar significativamente sua produtividade com atalhos específicos para tarefas comuns de programação:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Atalho/Comando</th>
@@ -863,13 +863,13 @@ export default function WindowsShortcutsGuide() {
           </table>
         </div>
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Atalhos para Ambientes de Desenvolvimento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Use estes comandos para acessar rapidamente ferramentas de desenvolvimento:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Ferramentas de Desenvolvimento</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li><code>Win + R</code> → <code>vscode</code> para Visual Studio Code</li>
               <li><code>Win + R</code> → <code>idea</code> para IntelliJ IDEA</li>
               <li><code>Win + R</code> → <code>webstorm</code> para WebStorm</li>
@@ -880,7 +880,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-2">Ambientes de Execução</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li><code>Win + R</code> → <code>node</code> para Node.js REPL</li>
               <li><code>Win + R</code> → <code>python</code> para Python REPL</li>
               <li><code>Win + R</code> → <code>java</code> para Java Runtime</li>
@@ -896,11 +896,11 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Designers e Criadores de Conteúdo",
       content: `
         <h4 class="text-white font-bold mb-3">🎨 Atalhos para Profissionais Criativos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Designers, editores de vídeo e criadores de conteúdo podem usar atalhos para acelerar seu fluxo de trabalho:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Atalho/Comando</th>
@@ -943,13 +943,13 @@ export default function WindowsShortcutsGuide() {
           </table>
         </div>
         <h4 class="text-white font-bold mb-3 mt-6">📸 Atalhos para Captura e Edição de Tela</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Profissionais criativos precisam de ferramentas de captura de tela eficientes:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Captura de Tela</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li><code>Win + Shift + S</code> → Snip & Sketch</li>
               <li><code>Win + G</code> → Xbox Game Bar</li>
               <li><code>Win + Print Screen</code> → Tela inteira</li>
@@ -958,7 +958,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Gravação de Tela</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li><code>Win + Alt + R</code> → Iniciar/parar gravação</li>
               <li><code>Win + Alt + G</code> → Gravação com Game Bar</li>
               <li><code>Win + Alt + Print Screen</code> → Captura de tela do jogo</li>
@@ -966,7 +966,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Ferramentas de Edição</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li><code>Win + R</code> → <code>mspaint</code> → Paint</li>
               <li><code>Win + R</code> → <code>sketchflow</code> → Design rápido</li>
               <li><code>Win + R</code> → <code>screenclip</code> → Captura clipboard</li>
@@ -979,11 +979,11 @@ export default function WindowsShortcutsGuide() {
       title: "Atalhos para Profissionais de TI e Administração de Sistemas",
       content: `
         <h4 class="text-white font-bold mb-3">🖥️ Atalhos Avançados para Profissionais de TI</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Administradores de sistemas e profissionais de TI podem usar atalhos para tarefas avançadas de gerenciamento:
         </p>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Atalho/Comando</th>
@@ -1026,13 +1026,13 @@ export default function WindowsShortcutsGuide() {
           </table>
         </div>
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Ferramentas de Administração de Rede</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Atalhos para ferramentas de rede e administração avançada:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Ferramentas de Rede</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li><code>Win + R</code> → <code>ncpa.cpl</code> → Conexões de Rede</li>
               <li><code>Win + R</code> → <code>cmd /k ipconfig</code> → Configuração IP</li>
               <li><code>Win + R</code> → <code>cmd /k ping www.google.com</code> → Teste de conectividade</li>
@@ -1043,7 +1043,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Ferramentas de Diagnóstico</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li><code>Win + R</code> → <code>perfmon</code> → Monitor de Desempenho</li>
               <li><code>Win + R</code> → <code>resmon</code> → Monitor de Recursos</li>
               <li><code>Win + R</code> → <code>mdsched.exe</code> → Diagnóstico de Memória</li>
@@ -1166,14 +1166,14 @@ export default function WindowsShortcutsGuide() {
       title: "Arquitetura de Atalhos no Windows: Componentes do Sistema e Integração",
       content: `
         <h4 class="text-white font-bold mb-3">⚙️ Componentes do Sistema Envolvidos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Os atalhos de teclado no Windows são gerenciados por diversos componentes do sistema que trabalham em conjunto para interceptar e processar eventos de entrada. Entender essa arquitetura ajuda a compreender como os atalhos funcionam internamente e como podem ser otimizados.
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Input Processing Stack</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>• Raw Input API</li>
               <li>• Human Interface Device (HID) Manager</li>
               <li>• Input Method Manager (IMM)</li>
@@ -1182,7 +1182,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Hook Architecture</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>• WH_KEYBOARD_LL Hook</li>
               <li>• Global Hotkey Registration</li>
               <li>• Accessibility Event Hooks</li>
@@ -1192,12 +1192,12 @@ export default function WindowsShortcutsGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔗 Processo de Interceptação de Atalhos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Quando um atalho como <code>Win + E</code> é pressionado, o sistema executa uma série de etapas para processar o comando:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Etapa</th>
@@ -1237,7 +1237,7 @@ export default function WindowsShortcutsGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Curiosidade Técnica</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             O Windows mantém uma tabela hash de atalhos registrados no kernel para otimizar a detecção. Isso permite que atalhos globais sejam detectados em menos de 1ms, mesmo com centenas de aplicativos em execução. A tabela é organizada por prioridade, com atalhos do sistema tendo precedência sobre atalhos de aplicativos.
           </p>
         </div>
@@ -1247,12 +1247,12 @@ export default function WindowsShortcutsGuide() {
       title: "Otimização de Atalhos para Performance do Sistema",
       content: `
         <h4 class="text-white font-bold mb-3">⚡ Impacto de Atalhos na Performance do Sistema</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Embora os atalhos de teclado sejam extremamente eficientes, seu uso em larga escala ou em sistemas com recursos limitados pode ter implicações na performance. Entender essas implicações permite otimizar o uso de atalhos para máxima eficiência.
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tipo de Atalho</th>
@@ -1291,14 +1291,14 @@ export default function WindowsShortcutsGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Estratégias de Otimização</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Para maximizar a eficiência dos atalhos e minimizar impactos na performance:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Priorização</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>Use atalhos do sistema</li>
               <li>Evite conflitos</li>
               <li>Desative desnecessários</li>
@@ -1307,7 +1307,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-2">Configuração</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>Registre no Windows</li>
               <li>Use hooks eficientes</li>
               <li>Evite loops infinitos</li>
@@ -1316,7 +1316,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Monitoramento</h5>
-            <ul class="text-sm text-gray-400 space-y-1">
+            <ul class="text-sm text-gray-700 space-y-1">
               <li>Performance counters</li>
               <li>Resposta de input</li>
               <li>Uso de recursos</li>
@@ -1326,11 +1326,11 @@ export default function WindowsShortcutsGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Métricas de Performance para Atalhos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Para profissionais de TI e desenvolvedores que implementam atalhos personalizados, é importante entender as métricas que afetam a experiência do usuário:
         </p>
         
-        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
           <li><strong>Latência de Input:</strong> Tempo entre pressionar a tecla e a resposta visual (~50-100ms ideal)</li>
           <li><strong>Throughput:</strong> Número de atalhos processáveis por segundo (limitado a ~1000/s por thread)</li>
           <li><strong>Overhead:</strong> Percentual de CPU dedicado ao processamento de atalhos (<1%)</li>
@@ -1342,17 +1342,17 @@ export default function WindowsShortcutsGuide() {
       title: "Tendências Futuras em Atalhos e Interação Humano-Computador",
       content: `
         <h4 class="text-white font-bold mb-3">🔮 Evolução dos Atalhos de Teclado</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           À medida que a tecnologia evolui, os métodos de interação com os computadores estão se transformando. Os atalhos de teclado tradicionais estão sendo complementados por novas formas de interação, mas continuam sendo fundamentais para usuários avançados. Vamos explorar as tendências que moldarão o futuro dos atalhos e da produtividade.
         </p>
         
         <h4 class="text-white font-bold mb-3">🧠 Inteligência Artificial e Atalhos Adaptativos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           A IA está começando a personalizar atalhos com base no comportamento do usuário:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -1391,14 +1391,14 @@ export default function WindowsShortcutsGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🌐 Atalhos em Ambientes Distribuídos</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Com o aumento do trabalho remoto e ambientes de computação distribuídos, os atalhos estão evoluindo para operar em múltiplos dispositivos e plataformas:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Cross-Device Shortcuts</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Atalhos sincronizados entre dispositivos</li>
               <li>Comandos universais para múltiplas plataformas</li>
               <li>Continuidade de workflows entre dispositivos</li>
@@ -1407,7 +1407,7 @@ export default function WindowsShortcutsGuide() {
           </div>
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Adaptive Interfaces</h5>
-            <ul class="text-sm text-gray-400 space-y-2">
+            <ul class="text-sm text-gray-700 space-y-2">
               <li>Interfaces que aprendem com atalhos usados</li>
               <li>Menus contextuais baseados em histórico</li>
               <li>Atalhos recomendados por IA</li>
@@ -1417,7 +1417,7 @@ export default function WindowsShortcutsGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
           Instituições de pesquisa e empresas de tecnologia estão explorando novas fronteiras para atalhos e produtividade:
         </p>
         
@@ -1430,7 +1430,7 @@ export default function WindowsShortcutsGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Neural Interfaces</h5>
-              <p class="text-sm text-gray-400">Universidade de Stanford está pesquisando interfaces neurais que poderiam permitir "pensar" atalhos em vez de digitá-los, com testes iniciais previstos para 2027-2029.</p>
+              <p class="text-sm text-gray-700">Universidade de Stanford está pesquisando interfaces neurais que poderiam permitir "pensar" atalhos em vez de digitá-los, com testes iniciais previstos para 2027-2029.</p>
             </div>
           </div>
           
@@ -1442,7 +1442,7 @@ export default function WindowsShortcutsGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Haptic Feedback Integration</h5>
-              <p class="text-sm text-gray-400">Microsoft Research está desenvolvendo teclados com feedback tátil adaptativo que fornecem confirmação física de atalhos pressionados, aumentando a precisão em até 35%.</p>
+              <p class="text-sm text-gray-700">Microsoft Research está desenvolvendo teclados com feedback tátil adaptativo que fornecem confirmação física de atalhos pressionados, aumentando a precisão em até 35%.</p>
             </div>
           </div>
           
@@ -1454,14 +1454,14 @@ export default function WindowsShortcutsGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">Predictive Shortcut Systems</h5>
-              <p class="text-sm text-gray-400">Google e Microsoft estão desenvolvendo sistemas preditivos que sugerem ou executam atalhos com base em padrões de trabalho, com implementação esperada no Windows 12 e Android 15.</p>
+              <p class="text-sm text-gray-700">Google e Microsoft estão desenvolvendo sistemas preditivos que sugerem ou executam atalhos com base em padrões de trabalho, com implementação esperada no Windows 12 e Android 15.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Éticas e de Privacidade</h4>
-          <p class="text-sm text-gray-400">
+          <p class="text-sm text-gray-700">
             Com a crescente inteligência dos sistemas de atalhos, questões de privacidade e ética se tornam críticas. Sistemas que aprendem com o comportamento do usuário devem implementar proteção de dados rigorosa e transparência em como os dados de uso são coletados e processados. A privacidade por design será um diferencial importante nos futuros sistemas de produtividade.
           </p>
         </div>

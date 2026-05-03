@@ -34,10 +34,10 @@ export default function BrowserCleanGuide() {
     {
       title: "O que é Cache e por que ele envelhece?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Cache é a memória local do seu navegador. Ele guarda logos, imagens e códigos de sites que você visita sempre para que eles abram mais rápido na próxima vez. 
         </p>
-        <p class="mb-6 text-gray-400 leading-relaxed">
+        <p class="mb-6 text-gray-700 leading-relaxed">
           O problema é que os sites mudam de versão. Se você tem o cache da versão "A" e o site atualizou para a versão "B", o conflito pode travar o navegador ou fazer o site não carregar botões e menus.
         </p>
       `
@@ -45,10 +45,10 @@ export default function BrowserCleanGuide() {
     {
       title: "O Atalho Mágico (Ctrl + Shift + Del)",
       content: `
-        <p class="mb-4 text-gray-400">Este atalho funciona no <strong>Chrome, Edge, Brave e Firefox</strong>.</p>
+        <p class="mb-4 text-gray-700">Este atalho funciona no <strong>Chrome, Edge, Brave e Firefox</strong>.</p>
         <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
             <h4 class="text-white font-bold mb-4">O que Marcar:</h4>
-            <ul class="space-y-3 text-gray-400">
+            <ul class="space-y-3 text-gray-700">
                 <li>✅ <strong>Imagens e arquivos armazenados em cache:</strong> Pode marcar sem medo.</li>
                 <li>✅ <strong>Cookies e outros dados do site:</strong> Marque se quiser deslogar de todos os sites (ajuda a resolver erros de login).</li>
                 <li>❌ <strong>Senhas e outros dados de preenchimento automático:</strong> <strong>NÃO MARQUE</strong> se você não tiver suas senhas anotadas em outro lugar.</li>
@@ -59,10 +59,10 @@ export default function BrowserCleanGuide() {
     {
       title: "Limpeza de Extensões (Bloatware do Browser)",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Muitas vezes a lentidão não é o cache, mas as 10 extensões que você instalou e nunca mais usou.
         </p>
-        <p class="text-gray-400">
+        <p class="text-gray-700">
             Digite <code>chrome://extensions/</code> na barra de endereços do Chrome ou Edge e remova tudo o que for suspeito ou desnecessário. Extensões de VPN grátis e tradutores costumam ser os maiores causadores de lentidão.
         </p>
       `

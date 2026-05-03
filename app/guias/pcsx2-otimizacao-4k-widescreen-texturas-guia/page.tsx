@@ -41,7 +41,7 @@ export default function PCSX2Guide() {
         {
             title: "Introdução: Nightly ou Stable?",
             content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Sempre use a versão <strong>Nightly</strong> baixada do site oficial. A versão "Stable 1.6.0" tem 4 anos de idade e não suporta Vulkan nem texturas HD corretamente.
         </p>
       `
@@ -52,7 +52,7 @@ export default function PCSX2Guide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Arquivos Necessários</h4>
-                <p class="text-gray-400 text-xs text-justify">
+                <p class="text-gray-700 text-xs text-justify">
                     Você precisa da BIOS do PS2 (arquivo .bin).
                     <br/>Recomendado: <code>SCPH-90001 (USA)</code> ou similar.
                     <br/>Coloque na pasta 'bios' do PCSX2.
@@ -66,7 +66,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 2: Gráficos (Upscaling)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Vá em Settings > Graphics.
             <br/>- <strong>Renderer:</strong> Vulkan (melhor performance) ou Direct3D 11 (mais estável em GPUs velhas).
             <br/>- <strong>Internal Resolution:</strong> O segredo da beleza.
@@ -79,7 +79,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 3: Widescreen Patches (16:9)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Jogos de PS2 eram 4:3 (quadrados).
             <br/>Ative "Enable Widescreen Patches" no menu.
             <br/>O PCSX2 aplica hacks automaticamente para renderizar mais cenário nas laterais, preenchendo sua TV moderna sem esticar o personagem (gordo).
@@ -93,7 +93,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 4: Packs de Textura HD",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             A comunidade cria texturas novas remasterizadas por IA.
             <br/>1. Baixe o pack (ex: "God of War HD Texture Pack").
             <br/>2. Coloque na pasta <code>textures/serial_do_jogo/replacements</code>.
@@ -105,7 +105,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 5: Correção de Stutter (EE Cycle Skipping)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Se seu PC é fraco e o áudio fica lento em câmera lenta (robótico):
             <br/>O emulador está rodando abaixo de 60fps (100% speed).
             <br/>Vá em System > Speedhacks.
@@ -117,7 +117,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 6: De-interlacing (Tremido)",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Jogos de PS2 entrelaçados (480i) tremem a imagem.
             <br/>O PCSX2 usa desentrelaçamento automático. Se a imagem vibrar muito, aperte F5 para alternar os modos (Bob, Weave, Blend). "Automatic" geralmente é o melhor.
         </p>
@@ -126,7 +126,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 7: 60 FPS Patches",
             content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             Alguns jogos rodavam a 30fps ou tinham queda (Shadow of the Colossus).
             <br/>Existem códigos PNACH (Cheats) que forçam 60fps.
             <br/>Requer CPU forte, pois você está dobrando a carga do emulador.
@@ -139,7 +139,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 8: Savestates",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 F1 salva, F3 carrega.
                 <br/>Útil para passar partes difíceis, mas NÃO use como save principal. Savestates quebram e corrompem com updates do emulador. Use o Memory Card (Save in-game) sempre que puder.
             </p>
@@ -148,7 +148,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 9: RetroAchievements",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 O PCSX2 Nightly suporta Conquistas!
                 <br/>Crie conta no RetroAchievements.org, logue no emulador e ganhe troféus jogando clássicos de 2002. Ative o "Hardcore Mode" (sem save state) para valer.
             </p>
@@ -157,7 +157,7 @@ export default function PCSX2Guide() {
         {
             title: "Capítulo 10: Per-Game Settings",
             content: `
-            <p class="mb-4 text-gray-400">
+            <p class="mb-4 text-gray-700">
                 Cada jogo é um universo.
                 <br/>Clique com botão direito no jogo na lista > Properties.
                 <br/>Você pode configurar upscale 6x para Final Fantasy X (leve) e apenas 2x para Shadow of the Colossus (pesado) individualmente.

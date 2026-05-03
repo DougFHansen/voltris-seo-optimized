@@ -34,7 +34,7 @@ export default function VirtualizationGuide() {
     {
       title: "O que é a Virtualização?",
       content: `
-        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           A **Virtualização** permite que um único computador físico funcione como se fossem vários. Em 2026, isso é usado para testar novos aplicativos sem sujar o sistema principal, rodar Linux dentro do Windows ou até para emuladores de Android. No entanto, para que softwares como o VMWare tenham performance de verdade, você primeiro precisa "dar permissão" para o processador usar esse recurso diretamente na BIOS.
         </p>
       `
@@ -42,8 +42,8 @@ export default function VirtualizationGuide() {
     {
       title: "1. Ativando na BIOS (VT-x e AMD-V)",
       content: `
-        <p class="mb-4 text-gray-400">Sem este passo, nenhuma máquina virtual funcionará corretamente:</p>
-        <ol class="list-decimal list-inside text-gray-400 space-y-3">
+        <p class="mb-4 text-gray-700">Sem este passo, nenhuma máquina virtual funcionará corretamente:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-3">
             <li>Reinicie o PC e entre na BIOS (DEL ou F2).</li>
             <li><strong>Se for Intel:</strong> Procure por 'Intel Virtualization Technology' ou 'VT-x' e mude para <strong>Enabled</strong>.</li>
             <li><strong>Se for AMD:</strong> Procure por 'SVM Mode' ou 'Secure Virtual Machine' e mude para <strong>Enabled</strong>.</li>
@@ -56,7 +56,7 @@ export default function VirtualizationGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Criando sua primeira VM:</h4>
-            <p class="text-sm text-gray-400">
+            <p class="text-sm text-gray-700">
                 1. Baixe o <strong>VMWare Workstation Player</strong> (versão gratuita para uso pessoal). <br/>
                 2. Clique em 'Create a New Virtual Machine'. <br/>
                 3. Selecione a ISO do sistema que você quer instalar (ex: Windows 11 ou Ubuntu). <br/>
@@ -68,7 +68,7 @@ export default function VirtualizationGuide() {
     {
       title: "3. Virtualização vs Hyper-V",
       content: `
-        <p class="mb-4 text-gray-400">
+        <p class="mb-4 text-gray-700">
             <strong>Conflito Comum:</strong> Em 2026, o Windows 11 tem o seu próprio sistema de virtualização chamado **Hyper-V**. 
             <br/><br/>Se você tentar rodar o VMWare e ele der erro de performance ou travar, verifique se o 'Hyper-V' e o 'Windows Sandbox' estão ativados nos 'Recursos do Windows'. Muitas vezes é necessário <strong>desativar o Hyper-V</strong> para que o VMWare tenha acesso total e direto ao hardware, garantindo muito mais fluidez.
         </p>
