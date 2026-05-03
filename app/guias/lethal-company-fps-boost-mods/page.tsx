@@ -41,10 +41,10 @@ export default function LethalGuide() {
         {
             title: "Introdução: O Charme Low Poly (e o Peso Escondido)",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Lethal Company utiliza uma estética retrô proposital, renderizando internamente em resoluções baixas (cerca de 512x512) antes de aplicar filtros de upscaling. Teoricamente, isso deveria rodar em qualquer calculadora.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           No entanto, o jogo é construído na Unity e depende fortemente da CPU para sincronização de física e rede (netcode). Quando adicionamos mods, especialmente aqueles que aumentam o número de jogadores (MoreCompany) ou adicionam itens (Suits, Skins), a carga na CPU cresce exponencialmente.
         </p>
         <div class="bg-blue-500/10 border border-blue-500/20 p-4 rounded-lg my-4">
@@ -56,7 +56,7 @@ export default function LethalGuide() {
             title: "Capítulo 1: A Tríade da Performance (Mods Essenciais)",
             content: `
         <div class="space-y-4">
-            <p class="text-gray-300 mb-4">Para mitigar o peso dos mods cosméticos, precisamos de mods de otimização que atuem no nível de renderização e memória. Não jogue modded sem estes três:</p>
+            <p class="text-gray-400 mb-4">Para mitigar o peso dos mods cosméticos, precisamos de mods de otimização que atuem no nível de renderização e memória. Não jogue modded sem estes três:</p>
             
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">1. HDLethalCompany (Otimização Gráfica)</h4>
@@ -92,14 +92,14 @@ export default function LethalGuide() {
         {
             title: "Capítulo 2: Gerenciamento de Lobby (MoreCompany vs BiggerLobby)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Existem dois mods principais para aumentar o lobby. A escolha impacta a performance:
         </p>
-        <ul class="list-disc pl-5 text-gray-300 space-y-2 mb-4">
+        <ul class="list-disc pl-5 text-gray-400 space-y-2 mb-4">
              <li><strong>MoreCompany:</strong> O mais estável e visualmente polido (tem cosméticos). Recomendado para até 8-12 jogadores. Acima disso, os cosméticos pesam.</li>
              <li><strong>BiggerLobby:</strong> Mais antigo, menos recursos visuais, levemente mais leve para lobbies gigantes (20+ pessoas), mas mais propenso a bugs de desync.</li>
         </ul>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Dica de Ouro:</strong> Se o host tiver PC fraco e net ruim, o jogo vai lagar para TODOS (monstros teleportando). O Host deve ser sempre quem tem o melhor processador (Single Core) e upload.
         </p>
       `
@@ -110,7 +110,7 @@ export default function LethalGuide() {
         {
             title: "Capítulo 3: Diagnóstico de Lag (FPS vs Network)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             É crucial distinguir FPS baixo de Lag de Rede.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -138,10 +138,10 @@ export default function LethalGuide() {
         {
             title: "Capítulo 4: Configurando o R2Modman Corretamente",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos erros vêm de instalações manuais. O R2Modman virtualiza as pastas.
         </p>
-        <ol class="list-decimal pl-5 text-gray-300 space-y-2">
+        <ol class="list-decimal pl-5 text-gray-400 space-y-2">
             <li><strong>Perfil Limpo:</strong> Sempre crie um perfil novo para cada modpack. Misturar mods de versões diferentes causa "Tela Preta" na inicialização.</li>
             <li><strong>Update All:</strong> Cuidado ao clicar em "Update All". Às vezes um mod atualiza e quebra a compatibilidade com o <code>LethalCompanyVariables</code> ou outros core mods. Leia os changelogs.</li>
             <li><strong>Launch Arguments:</strong> Em "Settings" > "Set launch options", você pode remover a intro da Unity e forçar modo exclusivo para ganhar uns ms de input lag.</li>
@@ -173,7 +173,7 @@ export default function LethalGuide() {
         {
             title: "Capítulo 6: Skinwalker Mod (O Inimigo do SSD)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O mod que grava a voz dos seus amigos e faz os monstros repetirem (Skinwalker) é incrível, mas pesado.
                 <br/>Ele grava áudio no disco constantemente. Se instalado em um HD mecânico, causará "stutters" (micro-travadas) toda vez que o monstro tentar "falar".
                 <br/><strong>Solução:</strong> Mova o perfil do R2Modman para o SSD ou desative o mod se tiver pouco espaço em disco.
@@ -183,7 +183,7 @@ export default function LethalGuide() {
         {
             title: "Capítulo 7: Lanterna e Sombras Dinâmicas",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A lanterna do jogo projeta sombras dinâmicas em tempo real. Cada lanterna acesa multiplica o custo de renderização.
                 <br/>Se tiver 4 jogadores com lanternas "Pro" acesas num corredor apertado, o FPS vai cair pela metade.
                 <br/><strong>Dica de Pro:</strong> Apaguem as lanternas quando não precisarem. Além de salvar bateria, salva frames.

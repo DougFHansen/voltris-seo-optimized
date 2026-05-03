@@ -42,7 +42,7 @@ export default function TempGuide() {
         {
             title: "Introdução: O Inimigo Invisível",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O PC não avisa "estou quente". Ele simplesmente começa a travar. Quando a CPU atinge 95°C (Intel) ou 90°C (Ryzen), o clock cai de 5.0GHz para 3.5GHz. Isso se chama Throttling.
         </p>
       `
@@ -67,7 +67,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 2: FanControl (A Melhor Ferramenta)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Esqueça a BIOS. Use o <strong>FanControl</strong> (open-source).
             <br/>Ele detecta todas as ventoinhas do PC e permite criar curvas mistas.
             <br/>Exemplo: Você pode fazer a ventoinha do gabinete acelerar baseado na temperatura MAX entre (CPU e GPU). Assim, se QUALQUER UM esquentar, o ar circula.
@@ -77,7 +77,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 3: Criando a Curva Ideal",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - Até 50°C: 30% ou 0% (Silêncio).
             - Em 70°C: 60% (Audível mas aceitável).
             - Em 85°C: 100% (Modo turbina de emergência).
@@ -91,7 +91,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 4: Fluxo de Ar (Airflow)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Pressão Positiva:</strong> Mais ar entrando do que saindo. Bom para evitar poeira (o ar sai pelas frestas).
             - <strong>Configuração Padrão:</strong> Fans da Frente/Baixo jogam ar para DENTRO. Fans de Trás/Topo jogam ar para FORA (ar quente sobe).
             - CPU Air Cooler: A ventoinha deve soprar EM DIREÇÃO ao dissipador e para trás do gabinete.
@@ -101,7 +101,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 5: AIO Water Cooler (Bomba)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A bomba (Pump) do Water Cooler deve rodar sempre a 100% ou perto disso. Ela não faz barulho e precisa circular a água.
             <br/>Só regule a velocidade das ventoinhas do radiador.
             <br/>Se a bomba parar, a CPU vai a 100°C em 5 segundos.
@@ -111,7 +111,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 6: Pasta Térmica e VRAM",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Pasta térmica resseca. Se seu PC tem 3 anos e esquenta muito, troque a pasta.
             <br/>Em GPUs, use Thermal Pads nos chips de VRAM. Memórias GDDR6X (RTX 3070ti+) chegam a 110°C fácil se o pad for ruim.
         </p>
@@ -120,7 +120,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 7: Undervolt (Melhor que Fans)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A forma mais eficiente de baixar temperatura não é aumentar a fan para 100% (barulho), é fazer Undervolt na CPU/GPU.
             <br/>Menos Volts = Menos Watts = Menos Calor.
             <br/>Veja nossos guias de Afterburner e BIOS para isso.
@@ -133,7 +133,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 8: Limpeza de Poeira",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Poeira nos filtros bloqueia o ar. Seu PC sufoca.
                 <br/>Limpe os filtros de poeira a cada 3 meses.
                 <br/>Use ar comprimido para limpar as aletas do dissipador.
@@ -143,7 +143,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 9: Temperatura Ambiente",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se seu quarto faz 40°C no verão, seu PC vai sofrer.
                 <br/>A temperatura do PC é sempre Ambiente + Delta.
                 <br/>Não adianta ter o melhor cooler se o ar que entra já está quente. Abra a janela ou ligue o ar condicionado.
@@ -153,7 +153,7 @@ export default function TempGuide() {
         {
             title: "Capítulo 10: Notebooks e Bases",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Notebooks Gamer PRECISAM de base refrigerada ou pelo menos levantar a traseira com um livro (não tampe a entrada de ar).
                 <br/>5cm de espaço embaixo reduzem 5°C.
             </p>

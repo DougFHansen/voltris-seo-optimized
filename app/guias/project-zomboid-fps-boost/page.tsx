@@ -34,7 +34,7 @@ export default function ProjectZomboidGuide() {
         {
             title: "O desafio de sobreviver ao Lag",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Project Zomboid é um jogo incrível, mas a sua engine (baseada em Java) tem dificuldades extremas para gerenciar centenas de zumbis simultâneos no Windows 11 em 2026. Por padrão, o jogo vem configurado para usar pouca memória RAM, o que causa travadas (stuttering) constantes assim que você entra em cidades grandes como Louisville. Otimizar o jogo exige mexer "sob o capô" dos arquivos do sistema.
         </p>
       `
@@ -42,8 +42,8 @@ export default function ProjectZomboidGuide() {
         {
             title: "1. Alocando mais Memória RAM",
             content: `
-        <p class="mb-4 text-gray-300">Este é o ajuste mais importante para evitar crashes:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Este é o ajuste mais importante para evitar crashes:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Vá na pasta de instalação do jogo (Steam > Botão direito > Navegar pelos arquivos locais).</li>
             <li>Procure o arquivo <strong>ProjectZomboid64.json</strong>.</li>
             <li>Abra-o com o Bloco de Notas. Procure a linha que começa com <code>-Xmx</code>.</li>
@@ -57,7 +57,7 @@ export default function ProjectZomboidGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Configurações Críticas em 2026:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 - <strong>Blood Decals (Sangue):</strong> Coloque em 'None'. Cada mancha de sangue no chão é um objeto que o jogo precisa processar para sempre. Em hordas, isso mata o seu FPS. <br/>
                 - <strong>Zoom Levels:</strong> Desative o zoom máximo. Quanto mais longe a câmera está, mais o jogo precisa renderizar, causando lag de processamento. <br/>
                 - <strong>Lighting Quality:</strong> Mude para 'Low'. As sombras dinâmicas de árvores pesam muito no motor Java do Zomboid.
@@ -68,7 +68,7 @@ export default function ProjectZomboidGuide() {
         {
             title: "3. Dica para Multiplayer (Servidores)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Desincronização:</strong> 
             <br/><br/>Se você vê zumbis "teleportando", o problema é o **Update Rate**. Nas configurações de rede do jogo, garanta que o 'Display FPS' esteja ativo. Se o seu FPS estiver alto mas os outros jogadores travam, tente desativar o 'Steam Overlay', que costuma ter conflito com a interface Java do Project Zomboid em 2026.
         </p>

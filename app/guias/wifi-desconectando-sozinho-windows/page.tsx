@@ -34,7 +34,7 @@ export default function WiFiFixGuide() {
         {
             title: "O mistério da queda de sinal",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Não há nada mais frustrante do que estar em uma partida importante ou em uma reunião e o Wi-Fi desconectar sem motivo aparente. Em 2026, com o Wi-Fi 6E e o Wi-Fi 7 se tornando populares, o Windows 11 tenta economizar bateria desligando o sinal quando ele acha que você não está usando ativamente. Além disso, conflitos de canais entre os vizinhos podem derrubar sua conexão no Windows 11 constantemente.
         </p>
       `
@@ -42,8 +42,8 @@ export default function WiFiFixGuide() {
         {
             title: "1. Desativando a Economia de Energia do Adaptador",
             content: `
-        <p class="mb-4 text-gray-300">Este é o ajuste nº 1 para estabilidade:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Este é o ajuste nº 1 para estabilidade:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Aperte Win+X e vá em <strong>Gerenciador de Dispositivos</strong>.</li>
             <li>Expanda 'Adaptadores de rede' e clique duas vezes na sua placa Wi-Fi (ex: Intel Wi-Fi 6E).</li>
             <li>Vá na aba <strong>Gerenciamento de Energia</strong>.</li>
@@ -57,7 +57,7 @@ export default function WiFiFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Comandos de Recuperação:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se o Wi-Fi desconecta e trava o ícone de rede, use estes comandos no CMD (Admin) para limpar erros de 2026: <br/><br/>
                 - <code>netsh winsock reset</code> <br/>
                 - <code>netsh int ip reset</code> <br/>
@@ -70,7 +70,7 @@ export default function WiFiFixGuide() {
         {
             title: "3. Interferência e Canais de 5GHz/6GHz",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Dica de 2026:</strong> Se você mora em apartamento, o sinal 2.4GHz está saturado. 
             <br/><br/>Tente forçar seu PC a usar apenas a frequência de <strong>5GHz ou 6GHz</strong>. No Gerenciador de Dispositivos, nas propriedades avançadas da sua placa Wi-Fi, procure por 'Preferred Band' e selecione 'Prefer 5GHz'. Isso evita que o Windows fique alternando entre as bandas, o que é a causa de 50% das quedas repentinas durante o uso.
         </p>

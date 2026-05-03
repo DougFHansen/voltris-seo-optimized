@@ -34,7 +34,7 @@ export default function HardResetGuide() {
         {
             title: "O que é o Hard Reset?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O **Hard Reset** é uma formatação forçada que limpa o sistema operacional do celular através de um menu "escondido" (Recovery Mode). É a solução definitiva para quando o celular não liga, está em loop infinito (logomarca piscando) ou quando você esqueceu o padrão de desenho/senha da tela.
         </p>
       `
@@ -44,7 +44,7 @@ export default function HardResetGuide() {
             content: `
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
             <h4 class="text-red-400 font-bold mb-2">Cuidado com a Conta Google!</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se você formatar o celular sem remover a conta Google antes (nas configurações), o sistema entrará no bloqueio FRP. Após ligar, ele exigirá o e-mail e senha que estavam nele antes por segurança. Se você não souber esses dados, o celular ficará inutilizável. 
                 <br/><strong>Recomendação:</strong> Se o celular liga, vá em Configurações > Contas > Remova as contas do Google/Samsung/Xiaomi antes de formatar.
             </p>
@@ -54,8 +54,8 @@ export default function HardResetGuide() {
         {
             title: "2. Passo a Passo Geral (Botões)",
             content: `
-        <p class="mb-4 text-gray-300">O processo varia pouco entre as marcas:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O processo varia pouco entre as marcas:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Desligue o celular completamente.</li>
             <li>Segure <strong>Botão Power + Volume Cima</strong> (Samsung/Xiaomi) ou <strong>Volume Baixo</strong> (Motorola) por 10 segundos.</li>
             <li>Quando aparecer o robozinho ou um menu de texto, solte os botões.</li>
@@ -68,7 +68,7 @@ export default function HardResetGuide() {
         {
             title: "3. O que fazer se o Hard Reset falhar?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se o celular continuar travado no logo mesmo após o reset, o problema pode ser o **Firmware corrompido**. 
             <br/>Nesse caso, você precisará usar programas específicos no PC (Odin para Samsung, MiFlash para Xiaomi ou RSA para Motorola) para reinstalar o sistema inteiro do zero via cabo USB.
         </p>

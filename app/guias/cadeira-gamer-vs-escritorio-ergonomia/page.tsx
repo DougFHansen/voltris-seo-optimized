@@ -34,7 +34,7 @@ export default function ChairComparisonGuide() {
         {
             title: "O dilema do conforto em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, com o aumento do trabalho remoto e longas sessões de jogos competitivos, passamos mais de 8 horas sentados por dia. Escolher entre uma **Cadeira Gamer** (com visual de banco de carro de corrida) e uma **Cadeira de Escritório Ergonômica** não é apenas uma decisão estética, mas uma questão de saúde para a sua coluna a longo prazo.
         </p>
       `
@@ -42,8 +42,8 @@ export default function ChairComparisonGuide() {
         {
             title: "1. Cadeira Gamer: Estilo e Imersão",
             content: `
-        <p class="mb-4 text-gray-300">As cadeiras gamer são populares pela sua aparência chamativa:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">As cadeiras gamer são populares pela sua aparência chamativa:</p>
+        <p class="text-sm text-gray-400">
             Elas geralmente permitem inclinar até 180 graus (ótimo para descansar) e possuem braços 3D ou 4D que se movem em várias direções. No entanto, muitas usam **espuma de baixa densidade** e revestimento de "couro" sintético que descasca rápido no clima quente do Brasil e não deixa a pele respirar, causando suor e desconforto após algumas horas.
         </p>
       `
@@ -53,7 +53,7 @@ export default function ChairComparisonGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">O Poder do Mesh:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Cadeiras ergonômicas de alta qualidade (como as de tela Mesh) em 2026 são projetadas para se adaptar à curvatura natural da sua lombar. Elas não tentam prender o seu corpo em um formato rígido de "concha", permitindo micro-movimentos que evitam a fadiga muscular. Além disso, a tela mesh permite a circulação de ar, sendo muito mais fresca para o uso diário.
             </p>
         </div>
@@ -62,7 +62,7 @@ export default function ChairComparisonGuide() {
         {
             title: "3. O que verificar antes de comprar?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Checklist Vital:</strong> 
             <br/><br/>- <strong>Pistão:</strong> Garanta que é Classe 4 (suporta mais peso e dura mais). <br/>
             - <strong>Ajuste de Lombar:</strong> Deve ser ajustável em altura para alinhar com o fundo da sua coluna. <br/>
@@ -78,14 +78,14 @@ export default function ChairComparisonGuide() {
       title: "Biomecânica e Ergonomia: Fundamentos Científicos de Apoio Postural",
       content: `
         <h4 class="text-white font-bold mb-3">🔬 Biomecânica da Coluna Vertebral em Posição Sentada</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A biomecânica da coluna vertebral em posição sentada envolve complexas interações entre músculos, ligamentos e estruturas ósseas. A posição sentada aumenta a pressão sobre os discos intervertebrais em até 40% em comparação com a posição em pé, tornando o apoio lombar adequado essencial para a saúde a longo prazo:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Curvaturas Espinais Normais</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Cervical: Lordose (curvatura para frente)</li>
               <li>• Torácica: Cifose (curvatura para trás)</li>
               <li>• Lombar: Lordose (curvatura para frente)</li>
@@ -96,7 +96,7 @@ export default function ChairComparisonGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Pressões Interdisciplinares</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Em pé: 100% (baseline)</li>
               <li>• Sentado reto: 140%</li>
               <li>• Sentado inclinado: 185%</li>
@@ -108,12 +108,12 @@ export default function ChairComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Análise Comparativa de Pressão na Coluna</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Estudos biomecânicos demonstram diferenças significativas na pressão exercida sobre a coluna em diferentes posições e tipos de cadeiras:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tipo de Cadeira</th>
@@ -165,7 +165,7 @@ export default function ChairComparisonGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             O disco intervertebral L4-L5 suporta aproximadamente 80% do peso corporal quando sentado. O apoio lombar adequado redistribui essa carga para os músculos paravertebrais e ligamentos, reduzindo significativamente o risco de lesões degenerativas a longo prazo.
           </p>
         </div>
@@ -175,12 +175,12 @@ export default function ChairComparisonGuide() {
       title: "Materiais e Engenharia de Apoio: Comparação Técnica de Conforto e Durabilidade",
       content: `
         <h4 class="text-white font-bold mb-3">🏗️ Engenharia de Materiais em Cadeiras Ergonômicas</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A escolha de materiais em cadeiras ergonômicas envolve considerações científicas sobre durabilidade, transpiração, resistência e conforto térmico. Cada material tem propriedades específicas que afetam diretamente o desempenho da cadeira:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Material</th>
@@ -231,14 +231,14 @@ export default function ChairComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Componentes Técnicos de Cadeiras Premium</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Cadeiras de escritório premium incorporam tecnologias avançadas para suporte e conforto:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Sistema de Suspensão</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Ajuste de tensão do corpo</li>
               <li>Amortecimento progressivo</li>
               <li>Adaptação ao peso</li>
@@ -257,7 +257,7 @@ export default function ChairComparisonGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Suporte Lombar Dinâmico</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Ajuste 3D</li>
               <li>Pressão personalizada</li>
               <li>Adaptação em tempo real</li>
@@ -267,11 +267,11 @@ export default function ChairComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🌡️ Avaliação Térmica e Transpiração</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A avaliação científica de conforto térmico em cadeiras considera diversos fatores:
         </p>
         
-        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
           <li><strong>Condutividade Térmica:</strong> Capacidade do material de transferir calor (baixa para tecidos respiráveis, alta para metais)</li>
           <li><strong>Permeabilidade ao vapor:</strong> Taxa de passagem de umidade (crucial para conforto em longas sessões)</li>
           <li><strong>Coeficiente de resistência térmica:</strong> Medida de isolamento (R-value) do material</li>
@@ -285,17 +285,17 @@ export default function ChairComparisonGuide() {
       title: "Tecnologias Emergentes em Mobilidade e Saúde Ocupacional",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Saúde Ocupacional de Próxima Geração</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A próxima geração de cadeiras de escritório está explorando tecnologias avançadas que vão além da ergonomia tradicional para monitorar e melhorar a saúde do usuário:
         </p>
         
         <h4 class="text-white font-bold mb-3">Sistemas de Monitoramento Biométrico</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Novas tecnologias de monitoramento estão sendo implementadas em cadeiras inteligentes:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -340,14 +340,14 @@ export default function ChairComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Saúde Ocupacional</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A IA está começando a desempenhar um papel crucial na prevenção de doenças ocupacionais:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Análise Preditiva de Saúde</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Previsão de risco de lesões</li>
               <li>Padrões de postura de longo prazo</li>
               <li>Recomendações de pausa personalizadas</li>
@@ -359,7 +359,7 @@ export default function ChairComparisonGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Adaptação Proativa</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Ajuste automático de suporte</li>
               <li>Modificação de rigidez dinâmica</li>
               <li>Controle de temperatura ativo</li>
@@ -371,7 +371,7 @@ export default function ChairComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de saúde ocupacional de próxima geração:
         </p>
         
@@ -384,7 +384,7 @@ export default function ChairComparisonGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Smart Ergonomic Surfaces</h5>
-              <p class="text-sm text-gray-300">Universidades como MIT e Stanford estão desenvolvendo superfícies inteligentes que utilizam materiais eletro-reológicos que alteram sua rigidez e conformação com base em sensores biométricos. Essas superfícies poderiam adaptar automaticamente sua forma e suporte para otimizar o conforto e prevenir lesões. Primeiras implementações estão previstas para 2027-2029.</p>
+              <p class="text-sm text-gray-400">Universidades como MIT e Stanford estão desenvolvendo superfícies inteligentes que utilizam materiais eletro-reológicos que alteram sua rigidez e conformação com base em sensores biométricos. Essas superfícies poderiam adaptar automaticamente sua forma e suporte para otimizar o conforto e prevenir lesões. Primeiras implementações estão previstas para 2027-2029.</p>
             </div>
           </div>
           
@@ -396,7 +396,7 @@ export default function ChairComparisonGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Neuromuscular Interface Chairs</h5>
-              <p class="text-sm text-gray-300">Pesquisas em interfaces cérebro-músculo estão levando ao desenvolvimento de cadeiras que podem detectar sinais neuromusculares sutis que antecedem a fadiga e desconforto. Essas cadeiras poderiam fazer microajustes antes mesmo que o usuário percebesse desconforto. Laboratórios como o da NASA estão colaborando com empresas de mobiliário para aplicações em ambientes de trabalho prolongado. Implementações piloto estão previstas para 2028-2030.</p>
+              <p class="text-sm text-gray-400">Pesquisas em interfaces cérebro-músculo estão levando ao desenvolvimento de cadeiras que podem detectar sinais neuromusculares sutis que antecedem a fadiga e desconforto. Essas cadeiras poderiam fazer microajustes antes mesmo que o usuário percebesse desconforto. Laboratórios como o da NASA estão colaborando com empresas de mobiliário para aplicações em ambientes de trabalho prolongado. Implementações piloto estão previstas para 2028-2030.</p>
             </div>
           </div>
           
@@ -408,14 +408,14 @@ export default function ChairComparisonGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">Health Monitoring Integration</h5>
-              <p class="text-sm text-gray-300">Empresas como Herman Miller e Steelcase estão desenvolvendo integrações com sistemas de saúde corporativa que registram dados de postura e saúde ocupacional em longo prazo. Esses sistemas poderiam prever riscos de lesões e sugerir intervenções preventivas. A integração com planos de saúde e programas de bem-estar corporativo está sendo testada para 2026-2027.</p>
+              <p class="text-sm text-gray-400">Empresas como Herman Miller e Steelcase estão desenvolvendo integrações com sistemas de saúde corporativa que registram dados de postura e saúde ocupacional em longo prazo. Esses sistemas poderiam prever riscos de lesões e sugerir intervenções preventivas. A integração com planos de saúde e programas de bem-estar corporativo está sendo testada para 2026-2027.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Com o avanço da tecnologia de monitoramento e a crescente conscientização sobre saúde ocupacional, as cadeiras de escritório evoluirão de meros objetos de apoio para dispositivos médicos preventivos. A combinação de inteligência artificial, sensores biométricos e materiais adaptativos resultará em cadeiras que não apenas suportam o corpo, mas ativamente promovem a saúde e prevenem lesões relacionadas ao trabalho. Isso transformará a forma como pensamos sobre ergonomia e saúde no local de trabalho.
           </p>
         </div>
@@ -428,14 +428,14 @@ export default function ChairComparisonGuide() {
       title: "Ciência das Baterias e Degradabilidade: Engenharia de Materiais em Cadeiras com Recursos Eletrônicos",
       content: `
         <h4 class="text-white font-bold mb-3">🔋 Engenharia de Baterias em Cadeiras Inteligentes</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Com o advento das cadeiras inteligentes equipadas com recursos eletrônicos (massagem, ajustes automatizados, sensores biométricos), a engenharia de baterias tornou-se crucial para o funcionamento desses sistemas:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Química de Baterias</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• <strong>Lítio-Ferro-Fosfato (LiFePO4):</strong> Maior segurança térmica</li>
               <li>• <strong>Níquel-Manganês-Cobalto (NMC):</strong> Melhor densidade energética</li>
               <li>• <strong>Lítio-Titanato (LTO):</strong> Ciclo de vida prolongado</li>
@@ -445,7 +445,7 @@ export default function ChairComparisonGuide() {
           
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Sistemas de Gerenciamento</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• <strong>BMS (Battery Management System):</strong> Proteção e eficiência</li>
               <li>• <strong>Equilíbrio de Células:</strong> Distribuição uniforme de carga</li>
               <li>• <strong>Monitoramento Térmico:</strong> Prevenção de superaquecimento</li>
@@ -455,12 +455,12 @@ export default function ChairComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚡ Características Técnicas de Baterias para Mobiliário Inteligente</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           As especificações técnicas das baterias para cadeiras inteligentes são projetadas para garantir segurança e durabilidade:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Especificação</th>
@@ -506,7 +506,7 @@ export default function ChairComparisonGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔬 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             O sistema de gerenciamento de bateria (BMS) em cadeiras inteligentes monitora continuamente a temperatura, voltagem e corrente de cada célula da bateria para prevenir sobreaquecimento, sobrecarga e descarga profunda. Este sistema é crítico para a segurança e longevidade do mobiliário com recursos eletrônicos.
           </p>
         </div>
@@ -516,14 +516,14 @@ export default function ChairComparisonGuide() {
       title: "Sustentabilidade e Reciclagem: Impacto Ambiental de Cadeiras de Alta Tecnologia",
       content: `
         <h4 class="text-white font-bold mb-3">🌍 Avaliação do Ciclo de Vida de Cadeiras Ergonômicas</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A sustentabilidade das cadeiras ergonômicas envolve análise do ciclo de vida completo, desde a extração de matérias-primas até o descarte final. Cadeiras de alta qualidade tendem a ter menor impacto ambiental devido à sua longevidade:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Matéria-Prima</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Extração responsável</li>
               <li>Recicláveis</li>
               <li>Biológicos</li>
@@ -533,7 +533,7 @@ export default function ChairComparisonGuide() {
           
           <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-2">Produção</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Energia renovável</li>
               <li>Resíduos mínimos</li>
               <li>Transporte eficiente</li>
@@ -543,7 +543,7 @@ export default function ChairComparisonGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Fim de Vida</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Reciclabilidade</li>
               <li>Reutilização</li>
               <li>Descarte seguro</li>
@@ -553,12 +553,12 @@ export default function ChairComparisonGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">♻️ Comparação de Impacto Ambiental</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A análise comparativa do impacto ambiental considera diferentes fatores de sustentabilidade:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tipo de Cadeira</th>
@@ -608,7 +608,7 @@ export default function ChairComparisonGuide() {
           </table>
         </div>
         
-        <p class="text-sm text-gray-300 italic mb-6">
+        <p class="text-sm text-gray-400 italic mb-6">
           *Valores mais altos refletem maior conteúdo de materiais, mas menor taxa de substituição resulta em impacto total menor ao longo do tempo.
         </p>
       `

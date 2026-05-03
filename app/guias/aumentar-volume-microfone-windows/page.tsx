@@ -40,13 +40,13 @@ export default function MicrophoneBoostGuide() {
     {
       title: "Diagnóstico Inicial: Por Que Ninguém Te Ouve?",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O problema de "microfone baixo" no Windows geralmente não é defeito do hardware, mas sim uma "característica" de segurança auditiva ou drivers genéricos. O Windows, por padrão, define níveis conservadores para evitar microfonia. Para streamers, quem trabalha em Home Office ou gamers competitivos, o áudio padrão é inaceitável.
         </p>
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
           <h4 class="text-blue-400 font-bold mb-2">🔊 A Regra de Ouro do Ganho</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             <strong>Volume ≠ Ganho (Gain).</strong> Volume é a saída. Ganho é a sensibilidade de entrada. Aumentar o volume digitalmente apenas amplifica o sinal JÁ capturado (incluindo o chiado). O segredo é ajustar o <strong>Ganho Analógico</strong> (no hardware ou driver) antes de aplicar amplificação digital.
           </p>
         </div>
@@ -55,10 +55,10 @@ export default function MicrophoneBoostGuide() {
     {
       title: "Passo 1: Configuração Nativa do Windows (O Básico Obrigatório)",
       content: `
-        <p class="mb-4 text-gray-300">Antes de instalar softwares, vamos garantir que o Windows não está sabotando seu áudio:</p>
+        <p class="mb-4 text-gray-400">Antes de instalar softwares, vamos garantir que o Windows não está sabotando seu áudio:</p>
         
         <h4 class="text-white font-bold mb-3 mt-4">Painel de Som Clássico (Onde a mágica acontece)</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Pressione <code>Win + R</code>, digite <code>mmsys.cpl</code> e dê Enter. (Isso abre o painel antigo, muito melhor que o novo).</li>
             <li>Vá na aba <strong>Gravação</strong>.</li>
             <li>Clique com botão direito no seu microfone principal > <strong>Propriedades</strong>.</li>
@@ -80,14 +80,14 @@ export default function MicrophoneBoostGuide() {
     {
       title: "Passo 2: Equalizer APO + Peace (Nível Profissional Grátis)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Se o boost do Windows não foi suficiente ou trouxe muito ruído, você precisa de processamento de sinal. O <strong>Equalizer APO</strong> é a ferramenta mais poderosa para Windows, permitindo aplicar pré-amplificação real e filtros VST.
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h5 class="font-bold text-green-400 mb-2">Como Instalar</h5>
-            <ol class="list-decimal list-inside text-sm text-gray-300 space-y-2">
+            <ol class="list-decimal list-inside text-sm text-gray-400 space-y-2">
                 <li>Baixe o <strong>Equalizer APO</strong> e instale.</li>
                 <li>No "Configurator", marque APENAS o seu microfone na aba "Capture Devices". Reinicie o PC.</li>
                 <li>Baixe o <strong>Peace Equalizer</strong> (interface gráfica para o APO).</li>
@@ -95,7 +95,7 @@ export default function MicrophoneBoostGuide() {
           </div>
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h5 class="font-bold text-green-400 mb-2">O Truque do Pre-Amp</h5>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 No topo do Peace, existe uma barra de <strong>Pre Amplifying</strong>. Mova ela para a direita para ganhar até <strong>+30dB</strong> de volume com uma clareza muito superior ao boost nativo do driver Realtek.
             </p>
           </div>
@@ -105,12 +105,12 @@ export default function MicrophoneBoostGuide() {
     {
       title: "Passo 3: Eliminando Ruído com IA (NVIDIA Broadcast / SteelSeries Sonar)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Aumentar o volume aumenta o ruído do ventilador, teclado e vizinhos. Em 2026, usamos IA para limpar isso.
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Ferramenta</th>
@@ -151,31 +151,31 @@ export default function MicrophoneBoostGuide() {
       title: "Engenharia de Áudio: Sample Rates, Bit Depth e Cabos",
       content: `
         <h4 class="text-white font-bold mb-3">Hz e Bits: O que importa?</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Muitos guias dizem para colocar no máximo. <strong>Isso é errado.</strong>
         </p>
         
         <div class="space-y-4">
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-2">44.1kHz vs 48kHz</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     O áudio de CD (44.1kHz) era padrão para música. Para <strong>vídeo e streaming</strong> (OBS, Youtube, Twitch), o padrão absoluto é <strong>48kHz</strong>. Se seu mic estiver em 44.1 e o OBS em 48, haverá <em>resampling</em> em tempo real, causando uso de CPU e perda de qualidade (aliasing). <strong>Configure TUDO para 48000Hz (48kHz).</strong>
                 </p>
             </div>
             
             <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20">
                 <h5 class="text-amber-400 font-bold mb-2">16-bit vs 24-bit</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     <strong>16-bit</strong> oferece 96dB de alcance dinâmico. <strong>24-bit</strong> oferece 144dB. Para voz humana, 16-bit é suficiente, mas <strong>24-bit</strong> permite um "noise floor" (piso de ruído) menor digitalmente, permitindo amplificar mais o sinal sem trazer ruído digital de quantização. Sempre prefira 24-bit se disponível.
                 </p>
             </div>
         </div>
 
         <h4 class="text-white font-bold mb-3 mt-6">USB 2.0 vs 3.0: Energia é Tudo</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Microfones USB (HyperX Quadcast, Blue Yeti) precisam de energia. Portas USB de painel frontal (gabinete) costumam ter voltagem instável, causando:
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Volume baixo intermitente (o mic "perde força")</li>
             <li>Desconexões aleatórias</li>
             <li>Zumbido elétrico (Ground Loop)</li>
@@ -186,16 +186,16 @@ export default function MicrophoneBoostGuide() {
     {
       title: "Solução Definitiva: Voicemeeter Banana",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Se nada funcionou, você precisa de uma mesa de som virtual. O <strong>Voicemeeter Banana</strong> é o padrão da indústria para streamers.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Ele cria um dispositivo virtual "Voicemeeter Output".</li>
             <li>Você joga seu mic real nele.</li>
             <li>Você aplica Compressor (nivela gritos e sussurros) e Gate (corta barulho de teclado).</li>
             <li>Você usa o "Voicemeeter Output" no Discord/Jogos.</li>
         </ul>
-        <p class="text-gray-300 mt-2 text-sm italic">
+        <p class="text-gray-400 mt-2 text-sm italic">
           O Voicemeeter adiciona cerca de 10-15ms de latência, o que é imperceptível para voz, mas oferece controle total de volume independente do Windows.
         </p>
       `
@@ -210,13 +210,13 @@ export default function MicrophoneBoostGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800/50 p-4 rounded-lg">
                 <h5 class="text-white font-bold mb-2">Proximidade (Efeito de Proximidade)</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Microfones cardióides ganham graves e volume exponencialmente quanto mais perto vocÊ está. Fique a <strong>3-5 dedos de distância</strong> do microfone. Se ficar longe (30cm+), você soará como se estivesse num banheiro, e o ganho necessário trará muito ruído.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg">
                 <h5 class="text-white font-bold mb-2">Braço Articulado</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     O mic no suporte de mesa pega vibração do teclado. Um braço articulado (R$ 80-150) isola a vibração e permite colocar o mic perto da boca sem atrapalhar a visão, permitindo usar menos ganho digital (menos ruído).
                 </p>
             </div>

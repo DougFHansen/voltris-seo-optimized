@@ -34,7 +34,7 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "O que realmente funciona na Otimização?",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Muitos programas prometem "acelerar o PC com um clique", mas a maioria é apenas publicidade. A verdadeira otimização consiste em remover o que não é usado e garantir que o Windows não limite o poder do seu hardware. Em 2026, com o Windows 11 mais pesado, esses ajustes manuais são a diferença entre um PC que "engasga" e um que responde instantaneamente.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "1. Efeitos Visuais: Menos Estética, Mais Velocidade",
       content: `
-        <p class="mb-4 text-gray-300">As transparências e animações do Windows consomem ciclos da sua GPU. Vamos desativá-las:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">As transparências e animações do Windows consomem ciclos da sua GPU. Vamos desativá-las:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Pesquise por <strong>'Ajustar a aparência e o desempenho do Windows'</strong>.</li>
             <li>Selecione 'Ajustar para obter o melhor desempenho'.</li>
             <li>Marque apenas: <i>'Usar sombras subjacentes em rótulos de ícones'</i> e <i>'Mostrar sombras sob janelas'</i> para não ficar feio demais.</li>
@@ -56,7 +56,7 @@ export default function PerformanceOptimizationGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Truque da RAM:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Aperte <code>Ctrl + Shift + Esc</code> e vá na aba <strong>Aplicativos de Inicialização</strong>. Desative TUDO o que você não precisa que ligue com o Windows (Spotify, Steam, Cortana, etc). Isso reduz o tempo de boot e libera RAM preciosa para seus jogos.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "3. O Plano de Energia Oculto",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Windows costuma vir no modo 'Equilibrado' para economizar luz. Se quiser potência total:
             <br/>Vá em Painel de Controle > Hardware e Sons > Opções de Energia. Escolha <strong>'Alto Desempenho'</strong>. Se você tiver um processador Ryzen ou Core de 13ª/14ª geração, procure pelo modo 'Desempenho Máximo' (Ultimate Performance).
         </p>
@@ -78,10 +78,10 @@ export default function PerformanceOptimizationGuide() {
       title: "4. Otimização Avançada de Disco e Armazenamento",
       content: `
         <h4 class="text-white font-bold mb-3">🧠 Inteligência Artificial do Windows</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           O Windows 11 usa IA para prever o que você vai usar e pré-carrega em segundo plano. Isso consome RAM e CPU:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li>Abra o <strong>Registro do Windows</strong> (digite 'regedit' no menu Iniciar).</li>
           <li>Navegue até: <code>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System</code></li>
           <li>Crie um novo valor DWORD chamado <code>EnableActivityFeed</code> e defina como 0.</li>
@@ -90,10 +90,10 @@ export default function PerformanceOptimizationGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">🧹 Limpeza Profunda de Disco</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           O Windows acumula lixo com o tempo. Use o Disco de Limpeza e comandos avançados:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li>Abra <strong>Disk Cleanup</strong> como administrador e marque todas as opções, incluindo 'Arquivos de entrega otimizados'.</li>
           <li>Abra o Prompt de Comando como administrador e execute:
             <div class="bg-black/30 p-3 rounded mt-2 font-mono text-xs">
@@ -116,10 +116,10 @@ export default function PerformanceOptimizationGuide() {
       title: "5. Configurações de Memória Virtual e Superfetch",
       content: `
         <h4 class="text-white font-bold mb-3">🧠 Gerenciamento de Memória RAM</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           A memória virtual (arquivo de paginação) ajuda quando a RAM física está cheia. Configure para desempenho ideal:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li>Pressione Win + R, digite <code>sysdm.cpl</code> e pressione Enter.</li>
           <li>Vá na aba 'Avançado' → 'Desempenho' → 'Configurações'.</li>
           <li>Na aba 'Avançado', clique em 'Memória Virtual' → 'Alterar'.</li>
@@ -130,10 +130,10 @@ export default function PerformanceOptimizationGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚡ Superfetch e Prefetch</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           O Superfetch (Serviço SysMain) pré-carrega aplicativos comuns na RAM. Em SSDs modernos, isso pode ser desnecessário:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li>Pressione Win + R, digite <code>services.msc</code> e pressione Enter.</li>
           <li>Procure pelo serviço <strong>SysMain</strong> (Superfetch).</li>
           <li>Clique com botão direito → Propriedades.</li>
@@ -147,10 +147,10 @@ export default function PerformanceOptimizationGuide() {
       title: "6. Otimizações Específicas para Jogos",
       content: `
         <h4 class="text-white font-bold mb-3">🎮 Modo de Jogo do Windows</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           O Windows 11 tem um Modo de Jogo que prioriza recursos para jogos:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li>Pressione Win + G para abrir o Game Bar.</li>
           <li>Clique no ícone de Configurações (engrenagem).</li>
           <li>Ative 'Modo de Jogo' se ainda não estiver ativado.</li>
@@ -159,10 +159,10 @@ export default function PerformanceOptimizationGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações da GPU para Máximo Desempenho</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           Configure sua placa de vídeo para desempenho máximo:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li><strong>NVIDIA:</strong> Abra GeForce Experience → Configurações do Painel → Gerenciar configurações 3D.
             <ul class="list-disc ml-6 mt-2 space-y-1">
               <li>Defina 'Modo de Gerenciamento de Energia' para 'Preferir Máximo Desempenho'</li>
@@ -183,10 +183,10 @@ export default function PerformanceOptimizationGuide() {
       title: "7. Ajustes de Segurança que Afetam Performance",
       content: `
         <h4 class="text-white font-bold mb-3">🛡️ Windows Defender e Real-Time Protection</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           O antivírus embutido do Windows pode impactar performance, especialmente durante jogos:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li>Abra Configurações → Atualização e Segurança → Segurança do Windows.</li>
           <li>Clique em 'Proteção contra vírus e ameaças' → 'Configurações de proteção em tempo real'.</li>
           <li>Desative temporariamente a 'Proteção em tempo real' durante jogos intensos.</li>
@@ -195,10 +195,10 @@ export default function PerformanceOptimizationGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔒 Outras Configurações de Segurança</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           Alguns recursos de segurança podem ser ajustados para melhor desempenho:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li>Desative o 'Controle de Conta de Usuário' para menos interrupções (menos seguro).</li>
           <li>No UAC, defina para o segundo nível mais baixo ('Não notificar, mas bloquear aplicativos que tentarem alterar o computador').</li>
           <li>Desative o 'Windows Search' se você não usa a busca do Windows frequentemente.</li>
@@ -209,10 +209,10 @@ export default function PerformanceOptimizationGuide() {
       title: "8. Benchmarks e Medição de Performance",
       content: `
         <h4 class="text-white font-bold mb-3">📊 Ferramentas de Benchmark</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           Após as otimizações, é importante medir o impacto real:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
           <li><strong>CrystalDiskMark:</strong> Testa velocidade de leitura/gravação do disco.</li>
           <li><strong>UserBenchmark:</strong> Avaliação geral de todos os componentes.</li>
           <li><strong>3DMark:</strong> Benchmark focado em desempenho gráfico para jogos.</li>
@@ -220,7 +220,7 @@ export default function PerformanceOptimizationGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">📈 Métricas Importantes</h4>
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
           Ao comparar antes e depois das otimizações, observe estas métricas:
         </p>
         <div class="overflow-x-auto">

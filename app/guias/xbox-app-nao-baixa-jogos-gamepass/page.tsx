@@ -34,7 +34,7 @@ export default function XboxAppFixGuide() {
         {
             title: "O pesadelo do Game Pass",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O **Xbox Game Pass** em 2026 é um serviço excelente, mas o aplicativo para Windows ainda sofre com problemas de integração profunda com a Microsoft Store. Muitas vezes, um jogo não baixa ou o botão de 'Instalar' simplesmente não reage. Isso acontece devido a falhas nos **Gaming Services**, um componente invisível que gerencia as licenças e a instalação dos jogos da Microsoft no seu PC.
         </p>
       `
@@ -42,8 +42,8 @@ export default function XboxAppFixGuide() {
         {
             title: "1. Resetando o Xbox App e a Microsoft Store",
             content: `
-        <p class="mb-4 text-gray-300">O primeiro passo é redefinir as configurações locais:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O primeiro passo é redefinir as configurações locais:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Vá em Configurações > Aplicativos > Aplicativos Instalados.</li>
             <li>Procure por 'Xbox' e clique nos três pontos > Opções Avançadas > <strong>Restaurar</strong>.</li>
             <li>Faça o mesmo com o aplicativo 'Microsoft Store'.</li>
@@ -56,7 +56,7 @@ export default function XboxAppFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Solução Definitiva:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se os resets simples não funcionaram, precisamos forçar a reinstalação do motor de downloads. <br/><br/>
                 No PowerShell (Admin), cole este comando para desinstalar: <br/>
                 <code>get-appxpackage Microsoft.GamingServices | remove-AppxPackage -allusers</code> <br/><br/>
@@ -70,7 +70,7 @@ export default function XboxAppFixGuide() {
         {
             title: "3. Check de Região e Horário",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Dica de 2026:</strong> A Microsoft Store é chata com a localização. 
             <br/><br/>Verifique se o seu Windows está com a **Hora Automática** ligada e se a **Região** está configurada como 'Brasil'. Se houver divergência entre o horário do seu PC e o horário real do servidor, a autenticação da sua assinatura Game Pass falhará, impedindo qualquer download de iniciar por "erro de segurança".
         </p>

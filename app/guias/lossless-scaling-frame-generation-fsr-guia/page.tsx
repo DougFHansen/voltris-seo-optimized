@@ -41,7 +41,7 @@ export default function LSGuide() {
         {
             title: "Introdução: Magia Negra?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Lossless Scaling captura a janela do jogo e insere frames fake (interpolados) entre os frames reais usando IA leve.
           <br/>Se seu jogo roda a 30fps, ele gera 1 frame falso a cada real -> 60fps visuais.
           <br/>Se usar modo X3 -> 90fps.
@@ -65,7 +65,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 2: Configurando o App",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Scaling Mode:</strong> Auto (Aspect Ratio).
             - <strong>Scaling Type:</strong>
             <br/> LS1 (Performance): Leve e nítido.
@@ -79,7 +79,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 3: Aplicando (Scale)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             1. Configure o app.
             2. Clique no botão azul "Scale".
             3. Você tem 5 segundos para clicar na janela do jogo.
@@ -94,7 +94,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 4: Reduzindo a Latência",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Gerar frames gasta tempo (ms). O jogo parece rodar a 60fps, mas o input lag é de 30fps (ou pior).
             <br/>- Use <strong>Nvidia Reflex</strong> no jogo se tiver.
             <br/>- Ative "Allow Tearing" no Lossless Scaling se não ligar para cortes na tela (reduz lag).
@@ -106,7 +106,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 5: Emuladores (Yuzu/Cemu)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Perfeto para emulação.
             <br/>Zelda TOTK travado a 30fps no Yuzu?
             <br/>Ative LSFG X2.
@@ -118,7 +118,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 6: Assistindo Vídeos (Anime 60fps)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Você pode usar no Chrome/VLC!
             <br/>Abra um anime ou filme no YouTube. Aplique o Lossless Scaling.
             <br/>O vídeo roda interpolado (Soap Opera Effect). Alguns amam.
@@ -128,7 +128,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 7: Capture API (DXGI vs WGC)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em Settings > Capture API.
             <br/>- <strong>DXGI:</strong> Padrão, mais rápido.
             <br/>- <strong>WGC (Windows Graphics Capture):</strong> Use se o DXGI der tela preta ou não capturar o overlay (menus) do jogo.
@@ -141,7 +141,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 8: Ghosting (Fantasmas)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O LSFG pode deixar rastros na interface (HUD) se ela for estática e o fundo mover rápido.
                 <br/>O LSFG 2.1 melhorou muito isso, mas ainda acontece. É o preço a se pagar por performance mágica.
             </p>
@@ -150,7 +150,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 9: GPU Load",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O app usa a GPU para gerar frames. Se sua GPU já estiver em 100% rodando o jogo, o Lossless Scaling vai travar.
                 <br/>Você precisa deixar uma folga na GPU (limite o FPS do jogo para usar 80-90% da GPU) para o app funcionar.
             </p>
@@ -159,7 +159,7 @@ export default function LSGuide() {
         {
             title: "Capítulo 10: Alternativa Grátis? (Magpie)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Existe o <strong>Magpie</strong> (Open Source), mas ele é focado em FSR (Upscaling) e não tem um Frame Generation tão bom quanto o LSFG pago.
             </p>
             `

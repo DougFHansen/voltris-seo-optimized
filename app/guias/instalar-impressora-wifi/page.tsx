@@ -34,7 +34,7 @@ export default function WifiPrinterGuide() {
     {
       title: "O segredo da instalação sem fios",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Instalar uma impressora hoje em dia é muito mais fácil, mas ainda existem gargalos: o PC e a Impressora **precisam estar na mesma rede de 2.4GHz**. Muitas impressoras não reconhecem redes de 5GHz. Se o seu roteador mistura as duas frequências (Smart Connect), você pode ter problemas para achar a impressora no Wi-Fi.
         </p>
       `
@@ -42,8 +42,8 @@ export default function WifiPrinterGuide() {
     {
       title: "1. O Método do 'Primeiro Cabo'",
       content: `
-        <p class="mb-4 text-gray-300">Embora seja Wi-Fi, a forma mais garantida de configurar é usar um cabo USB temporário:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Embora seja Wi-Fi, a forma mais garantida de configurar é usar um cabo USB temporário:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Baixe o instalador oficial do site da fabricante (ex: Driver HP ou Epson).</li>
             <li>Conecte o cabo USB entre a impressora e o PC.</li>
             <li>O instalador vai perguntar: "Como deseja conectar?". Escolha <strong>Sem Fio (Wi-Fi)</strong>.</li>
@@ -57,7 +57,7 @@ export default function WifiPrinterGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Método Manual:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se a impressora já está no Wi-Fi mas o Windows diz 'Impressora não encontrada': <br/>
                 1. Imprima a página de configuração da impressora (veja no menu dela) para descobrir o <strong>Endereço IP</strong> (ex: 192.168.0.15). <br/>
                 2. No Windows, vá em Adicionar Impressora > 'A impressora que eu quero não está na lista'. <br/>
@@ -69,7 +69,7 @@ export default function WifiPrinterGuide() {
     {
       title: "3. Corrigindo o erro 'Offline'",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se a impressora fica offline do nada:
             <br/>Vá em Painel de Controle > Dispositivos e Impressoras. Botão direito na sua impressora > Ver o que está sendo impresso. Clique no menu 'Impressora' e desmarque <strong>'Usar impressora offline'</strong>. Isso costuma travar quando ocorre uma queda rápida de sinal.
         </p>

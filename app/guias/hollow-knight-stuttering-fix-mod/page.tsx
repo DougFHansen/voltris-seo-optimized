@@ -34,7 +34,7 @@ export default function HollowKnightFixGuide() {
         {
             title: "O Stuttering no Reino de Hallownest",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Embora seja um jogo visualmente deslumbrante e leve em termos de hardware, o **Hollow Knight** sofre com um problema técnico comum da engine Unity: o gerenciamento inconsistente de frames. Em 2026, com monitores de alta taxa de atualização (144Hz+), essas pequenas travadinhas (micro-stuttering) podem atrapalhar a precisão necessária para enfrentar chefes difíceis no Panteão.
         </p>
       `
@@ -42,8 +42,8 @@ export default function HollowKnightFixGuide() {
         {
             title: "1. O Problema do V-Sync Interno",
             content: `
-        <p class="mb-4 text-gray-300">O V-Sync nativo do Hollow Knight é conhecido por causar lag de entrada e travadas:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O V-Sync nativo do Hollow Knight é conhecido por causar lag de entrada e travadas:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Abra as configurações do jogo e <strong>DESATIVE</strong> o V-Sync.</li>
             <li>Abra o Painel de Controle da NVIDIA ou o Software AMD.</li>
             <li>Vá em 'Configurações do Programa' e adicione o Hollow Knight.</li>
@@ -57,7 +57,7 @@ export default function HollowKnightFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Correção de Comunidade:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Existe um mod popular chamado <strong>'Hollow Knight Fix'</strong> disponível no Nexus Mods. Ele reescreve como o jogo lida com a entrada de dados e a sincronização do motor Unity. Em 2026, ele é considerado essencial para quem joga em computadores modernos com Windows 11 para evitar o 'tearing' e as oscilações de performance.
             </p>
         </div>
@@ -66,7 +66,7 @@ export default function HollowKnightFixGuide() {
         {
             title: "3. Dica de Fullscreen",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Sempre jogue em modo <strong>'Tela Cheia Exclusiva'</strong>. 
             <br/><br/>O modo 'Janela sem Bordas' no Hollow Knight costuma entrar em conflito com o gerenciador de janelas do Windows, o que causa quedas bruscas de frames quando uma notificação aparece ou quando o sistema decide fazer uma tarefa em segundo plano.
         </p>

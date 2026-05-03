@@ -51,7 +51,7 @@ export default function TopGames2026Guide() {
             title: "Os Blockbusters de 2026 - O Que Esperar",
             content: `
         <h3 class="text-2xl font-bold text-white mb-6">GTA 6: O Monstro que Vem</h3>
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O GTA 6 promete ser o jogo mais exigente da história. Com gráficos ray-traced em tempo real, 
           mundo aberto 4x maior que GTA 5 e física avançada, os requisitos são impressionantes.
         </p>
@@ -60,7 +60,7 @@ export default function TopGames2026Guide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">PC Mínimo vs Recomendado</span>
             </h4>
-            <div class="grid md:grid-cols-2 gap-4 text-gray-300">
+            <div class="grid md:grid-cols-2 gap-4 text-gray-400">
                 <div>
                     <strong class="text-yellow-400">Mínimo (1080p Low):</strong><br/>
                     RTX 3060 / Ryzen 5 5600X / 16GB RAM
@@ -73,7 +73,7 @@ export default function TopGames2026Guide() {
         </div>
 
         <h3 class="text-2xl font-bold text-white mb-6">Starfield 2: O Universo Expandido</h3>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           A Bethesda promete planetas com 4K nativo, 100+ sistemas estelares e multiplayer cross-platform. 
           A otimização será crucial para manter 60 FPS estáveis.
         </p>
@@ -83,7 +83,7 @@ export default function TopGames2026Guide() {
             title: "Configurações Gráficas Ideais - FPS vs Qualidade",
             content: `
         <h3 class="text-2xl font-bold text-white mb-6">A Fórmula Perfeita para 2026</h3>
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, a regra mudou: <strong>DLSS 3 Frame Generation é obrigatório</strong>. 
           Jogos modernos foram desenvolvidos pensando em upscaling inteligente.
         </p>
@@ -92,7 +92,7 @@ export default function TopGames2026Guide() {
             <h4 class="text-[#4ADE80] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">Configuração Universal 2026</span>
             </h4>
-            <ul class="text-gray-300 space-y-2">
+            <ul class="text-gray-400 space-y-2">
                 <li>DLSS Quality (ou FSR 2.1 Balanced)</li>
                 <li>Ray Tracing: Médio (não Ultra)</li>
                 <li>Shadows: Alto (não Ultra)</li>
@@ -102,7 +102,7 @@ export default function TopGames2026Guide() {
         </div>
 
         <h3 class="text-2xl font-bold text-white mb-6">VRAM: O Novo Gatilho</h3>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           Jogos 2026 estão consumindo 12-16GB VRAM em 1440p. RTX 4060 8GB já está no limite. 
           Para futuro-prova, invista em cards com 12GB+ VRAM.
         </p>
@@ -116,7 +116,7 @@ export default function TopGames2026Guide() {
         <div class="grid md:grid-cols-3 gap-6 my-8">
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h4 class="text-[#A855F7] font-bold mb-3">Entry Level (R$ 5k)</h4>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                     <li>RTX 4060 8GB</li>
                     <li>Ryzen 5 7500F</li>
                     <li>16GB DDR5</li>
@@ -127,7 +127,7 @@ export default function TopGames2026Guide() {
             
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h4 class="text-[#31A8FF] font-bold mb-3">Sweet Spot (R$ 10k)</h4>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                     <li>RTX 4070 Ti 12GB</li>
                     <li>Ryzen 7 7800X3D</li>
                     <li>32GB DDR5</li>
@@ -138,7 +138,7 @@ export default function TopGames2026Guide() {
             
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h4 class="text-[#4ADE80] font-bold mb-3">High End (R$ 20k+)</h4>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                     <li>RTX 4090 24GB</li>
                     <li>Ryzen 9 7950X3D</li>
                     <li>64GB DDR5</li>
@@ -153,7 +153,7 @@ export default function TopGames2026Guide() {
             title: "Otimização Avançada - Além das Configurações",
             content: `
         <h3 class="text-2xl font-bold text-white mb-6">Drivers e Bios: O Segredo dos Pros</h3>
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, <strong>drivers específicos por jogo</strong> farão diferença de 20-30% FPS. 
           NVIDIA e AMD estão lançando otimizações sob demanda para cada blockbuster.
         </p>
@@ -162,10 +162,10 @@ export default function TopGames2026Guide() {
             <h4 class="text-[#FB923C] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">Voltris Optimizer: Auto-Otimização 2026</span>
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Nosso software detecta automaticamente jogos 2026 e aplica:
             </p>
-            <ul class="text-gray-300 space-y-2">
+            <ul class="text-gray-400 space-y-2">
                 <li>Perfil de GPU otimizado por jogo</li>
                 <li>Desativação de processos desnecessários</li>
                 <li>Otimização de RAM específica</li>
@@ -178,7 +178,7 @@ export default function TopGames2026Guide() {
         </div>
 
         <h3 class="text-2xl font-bold text-white mb-6">Windows 11: Otimização Essencial</h3>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           Modo de Jogo do Windows 11 agora integra com DLSS 3. Ative Hardware Accelerated GPU Scheduling 
           e desative VBS para ganhar 5-10% performance adicional.
         </p>

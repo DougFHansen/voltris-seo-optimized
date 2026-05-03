@@ -43,7 +43,7 @@ export default function ForzaGuide() {
         {
             title: "Introdução: O Bug das Texturas (Extreme)",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O preset "Extreme" de texturas ambientais exige mais de 10GB de VRAM. Se você tem uma RTX 3070/4060 (8GB), o jogo roda liso, mas depois de 30 minutos o chão fica transparente.
         </p>
       `
@@ -65,7 +65,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 2: Ray Tracing (Audio e Visual)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Forza agora tem Ray Tracing in-game (antes era só na garagem).
             <br/>- <strong>Car Reflections:</strong> Bonito, mas pesado. Use se tiver GPU sobrando.
             <br/>- <strong>Audio Ray Tracing:</strong> Use! A CPU calcula como o som do motor bate nas paredes dos túneis e cânions. Incrível e leve em CPUs modernas.
@@ -75,7 +75,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 3: Input Lag no Volante (G29/G920)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Sente o carro "flutuando"?
             <br/>Em Configurações Avançadas de Controle:
             <br/>- <strong>Vibração:</strong> OFF.
@@ -90,7 +90,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 4: DLSS, FSR e TAA",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>TAA (Nativo):</strong> Embaçado em movimento. Melhor evitar.
             - <strong>MSAA 2x:</strong> Clássico, nítido, mas serrilhado nas árvores.
             - <strong>DLSS Quality:</strong> A melhor opção moderna. Remove serrilhados de folhagem melhor que MSAA e ganha FPS.
@@ -101,7 +101,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 5: Tessellation e Deformação",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Environment Geometry:</strong> High.
             - <strong>Deformable Terrain Quality:</strong> High/Ultra.
             <br/>Isso afeta os rastros na lama e areia. É o charme do jogo, tente manter alto.
@@ -111,7 +111,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 6: SSAO (Sombreamento)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Use <strong>High</strong>.
             <br/>O SSAO dá profundidade às rodas e para-choques. No Low, o carro parece que não está encostando no chão (flutuando).
         </p>
@@ -120,7 +120,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 7: Night Shadows (Sombras Noturnas)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Geralmente "Night Shadows" pode ser desligado.
             <br/>Você raramente repara nas sombras projetadas pelos faróis de outros carros em corridas noturnas rápidas. Ganha bastante FPS à noite no High/Ultra.
         </p>
@@ -132,7 +132,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 8: Modo Online (Convoy Lag)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se os carros dos amigos ficam "pulando" ou sumindo:
                 <br/>É problema de Teredo IPsec no Windows.
                 <br/>Vá em Configurações > Jogos > Rede Xbox e clique em "Corrigir". Ou use o Voltris Optimizer que reseta o serviço Teredo.
@@ -142,7 +142,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 9: FPS Cap (Estabilidade)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Para jogos de corrida, framepacing > frame rate.
                 <br/>É melhor jogar travado em 72 FPS sólidos do que oscilar entre 90 e 110. A sensação de velocidade é mais constante.
             </p>
@@ -151,7 +151,7 @@ export default function ForzaGuide() {
         {
             title: "Capítulo 10: HDD Loading",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você rodar a 300km/h com o jogo no HD, o jogo vai pausar e mostrar "Low streaming bandwidth".
                 <br/>Instale no SSD.
             </p>

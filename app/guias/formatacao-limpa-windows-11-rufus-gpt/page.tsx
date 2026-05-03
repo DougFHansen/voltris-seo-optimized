@@ -40,7 +40,7 @@ export default function FormatGuide() {
         {
             title: "Introdução: Por que Formatar?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Com o tempo, o registro engorda, drivers velhos se acumulam e sobras de programas desinstalados causam conflito. Uma formatação anual é o melhor "upgrade" grátis que você pode dar ao seu PC.
         </p>
       `
@@ -67,7 +67,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 2: Backup (Salve seus Saves)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Copie para um HD Externo ou Google Drive:
             <br/>- Pasta Documentos (Saves de jogos estão aqui!).
             <br/>- Pasta Downloads (se tiver algo importante).
@@ -80,7 +80,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 3: BIOS e Boot",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Reinicie o PC e aperte DEL (ou F2) para entrar na BIOS.
             <br/>Vá em Boot Priority.
             <br/>Coloque o Pendrive (UEFI: USB Flash Drive) em 1º lugar.
@@ -95,7 +95,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 4: Particionamento (O Momento Tenso)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Na tela "Onde você quer instalar o Windows?":
             <br/>Se você quer LIMPEZA TOTAL do SSD (C:):
             <br/>Exclua TODAS as partições do Disco 0 (Recuperação, Sistema, MSR...) até sobrar apenas um "Espaço Não Alocado".
@@ -107,7 +107,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 5: O Segredo da Conta Local",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Desconecte o Cabo de Rede</strong> antes de formatar.
             <br/>Quando o Windows pedir para conectar na internet:
             <br/>1. Aperte <strong>Shift + F10</strong>.
@@ -120,7 +120,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 6: Drivers (Ordem Correta)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Volte para o Windows (reconecte a internet).
             <br/>1. Windows Update (Rode tudo, reinicie quantas vezes precisar).
             <br/>2. Driver de Chipset (Site da AMD/Intel).
@@ -132,7 +132,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 7: Ninite (Instalador Rápido)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Acesse <strong>ninite.com</strong>.
             <br/>Marque Chrome, Discord, Steam, VLC, WinRAR, qBittorrent.
             <br/>Baixe um único instalador que instala tudo de uma vez sem clicar "Next" e sem toolbars indesejadas.
@@ -145,7 +145,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 8: Debloat Pós-Install",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Windows vem limpo, mas já vem com TikTok e Instagram pré-instalados no Iniciar.
                 <br/>Clique com botão direito e Desinstalar.
                 <br/>Use nosso guia de "Debloat" para remover o resto.
@@ -155,7 +155,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 9: Configar",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Lembre de reativar o XMP na BIOS, setar o Hz do Monitor e configurar o Mouse (Desativar Precisão). Você resetou tudo, afinal.
             </p>
             `
@@ -163,7 +163,7 @@ export default function FormatGuide() {
         {
             title: "Capítulo 10: Ativação",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A licença geralmente é digital vinculada à placa-mãe. Ele ativa sozinho.
             </p>
             `

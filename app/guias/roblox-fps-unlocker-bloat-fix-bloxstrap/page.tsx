@@ -40,7 +40,7 @@ export default function RobloxGuide() {
         {
             title: "Introdução: Por que Bloxstrap?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O rbxfpsunlocker.exe antigo funcionava, mas o <strong>Bloxstrap</strong> é melhor. Ele substitui o launcher oficial, atualiza o Roblox sozinho e aplica mods sem você ter que abrir nada extra. É o padrão ouro da comunidade.
         </p>
       `
@@ -65,7 +65,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 2: FastFlags (JSON)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             FastFlags são configurações ocultas de desenvolvedor.
             <br/>No Bloxstrap Menu > FastFlags > Editor.
             <br/>Você pode forçar:
@@ -78,7 +78,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 3: Gráficos Manuais",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Dentro do jogo:
             <br/>Settings > Graphics Mode: <strong>Manual</strong>.
             <br/>Nunca deixe em Automatic. O automático fica mudando a qualidade e causando lag spikes.
@@ -93,7 +93,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 4: Future Lighting",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Jogos novos usam a tecnologia "Future" de iluminação.
                 <br/>Ela pesa MUITO.
                 <br/>Se seu PC for fraco, você pode usar uma FastFlag para forçar a iluminação "ShadowMap" ou "Voxel" (antiga) em qualquer jogo, ganhando FPS.
@@ -104,7 +104,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 5: Sons e Texturas Antigas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Bloxstrap > Mods.
             <br/>- <strong>Use Old Death Sound:</strong> Traz de volta o "Oof!".
             <br/>- <strong>Old Avatar Editor Background:</strong> Remove o fundo 3D pesado do editor de avatar.
@@ -115,7 +115,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 6: ReShade no Roblox",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Bloxstrap facilita a instalação do ReShade (Extravi's ReShade).
             <br/>Cuidado: Em jogos de tiro, shaders de zoom podem ser considerados cheat. Use apenas filtros de cor.
         </p>
@@ -124,7 +124,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 7: Ping e Conexão",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Roblox não deixa escolher servidor.
             <br/>Use a extensão de navegador <strong>RoPro</strong> ou <strong>BTRoblox</strong>.
             <br/>Elas mostram a lista de servidores e o Ping de cada um. Entre num servidor da sua região (Ex: São Paulo ou Flórida) para ter ping baixo.
@@ -137,7 +137,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 8: Limpeza de Cache",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Roblox acumula gigas de texturas temporárias.
                 <br/>Pressione Win+R, digite <code>%temp%</code> e apague a pasta <code>Roblox</code> periodicamente se tiver problemas de texturas não carregando.
             </p>
@@ -146,7 +146,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 9: VR Mode",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se o Roblox insiste em abrir o SteamVR quando você não quer:
                 <br/>No Bloxstrap > FastFlags > Disable VR.
             </p>
@@ -155,7 +155,7 @@ export default function RobloxGuide() {
         {
             title: "Capítulo 10: Multi-Instance",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Bloxstrap permite abrir múltiplas contas ao mesmo tempo (Multi-Roblox).
                 <br/>Útil para farmar AFK em jogos de simulador.
             </p>

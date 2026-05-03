@@ -42,7 +42,7 @@ export default function DiscordGuide() {
         {
             title: "Introdução: Electron Pesado",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Discord usa a tecnologia Electron (Chromium). Ele consome 300MB a 1GB de RAM. A "Aceleração de Hardware" usa sua GPU para renderizar GIFs e Emojis.
         </p>
       `
@@ -64,7 +64,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 2: Voz e Vídeo (Krisp)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Krisp (Supressão de Ruído):</strong> A melhor tecnologia da década. Ative. Ele remove latidos de cachorro, teclado mecânico e ventilador usando IA.
             - <strong>Echo Cancellation:</strong> Ligue se usar caixas de som. Desligue se usar fone de ouvido (Headset), pois distorce levemente a voz.
         </p>
@@ -73,7 +73,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 3: Overlay (Interface em Jogo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Overlay (aqueles avatares que aparecem no canto do jogo) causa:
             <br/>1. Queda de FPS.
             <br/>2. Conflito com Anti-Cheat.
@@ -88,7 +88,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 4: Sensibilidade de Entrada",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nunca use "Determinar automaticamente". O Discord corta o início das suas frases.
             <br/>Desmarque a opção.
             <br/>Fale normalmente e ajuste a barra amarela para ficar um pouco à esquerda do seu volume de voz.
@@ -99,7 +99,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 5: Quality of Service (QoS)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em Voz e Vídeo > "Habilitar Qualidade de Serviço de Pacotes Alta".
             <br/>Isso diz ao seu roteador: "A voz do Discord é urgente".
             <br/>AJUDA muito a não ter voz robótica quando alguém baixa algo na rede. Deixe <strong>LIGADO</strong>.
@@ -110,7 +110,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 6: Atenuação (Ducking)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A configuração que baixa o volume do jogo quando alguém fala.
             <br/>Isso é horrível para jogos de tiro (você não ouve passos quando o time fala).
             <br/>Defina a Atenuação para <strong>0%</strong>.
@@ -120,7 +120,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 7: Cache do Discord (Lixo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Discord guarda cache de todas as imagens que seus amigos mandam. A pasta pode chegar a 10GB.
             <br/>Local: <code>%appdata%/discord/Cache</code>.
             <br/>Pode deletar tudo lá dentro seguramente para liberar espaço no SSD.
@@ -133,7 +133,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 8: Modo Streamer (Privacidade)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se for transmitir, ative o Modo Streamer.
                 <br/>Ele esconde seu email, tags de Discord e convites de servidor na tela para evitar vazamentos.
             </p>
@@ -142,7 +142,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 9: AV1 Streaming",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Para quem tem RTX 4000, o Discord agora suporta streamar em AV1. A qualidade é incrível em 60fps, mesmo com bitrate baixo. Seus amigos precisam ter hardware compatível para assistir (decode).
             </p>
             `
@@ -150,7 +150,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 10: Boost de Servidor (Audio 384kbps)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A qualidade de áudio padrão é 64kbps (ruim).
                 <br/>Servidores com Nível 2 ou 3 desbloqueiam 128kbps e 256kbps. Para música ou podcast, a diferença é brutal. Para voz normal, 64kbps basta.
             </p>

@@ -34,7 +34,7 @@ export default function SSDTypeGuide() {
         {
             title: "A Batalha dos Armazenamentos",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Por anos, dissemos que a diferença de um SSD SATA para um NVMe em jogos era imperceptível. Em 2026, esse cenário mudou drasticamente. Embora o Windows ainda inicie em tempos parecidos, os novos motores gráficos (como a Unreal Engine 5) e a tecnologia **DirectStorage** começaram a exigir a largura de banda massiva que apenas os SSDs NVMe conseguem oferecer.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SSDTypeGuide() {
         {
             title: "1. O fim do gargalo SATA",
             content: `
-        <p class="mb-4 text-gray-300">Entenda por que o SATA está ficando para trás:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">Entenda por que o SATA está ficando para trás:</p>
+        <p class="text-sm text-gray-400">
             O padrão SATA III foi criado em 2009 e tem um teto físico de 600 MB/s. Já o NVMe M.2 conversa diretamente com o processador através das linhas PCIe. <br/><br/>
             - <strong>NVMe Gen 3:</strong> 3.500 MB/s. <br/>
             - <strong>NVMe Gen 4:</strong> 7.500 MB/s. <br/>
@@ -57,7 +57,7 @@ export default function SSDTypeGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Velocidade de Console no PC:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 A tecnologia <strong>DirectStorage</strong> da Microsoft permite que a placa de vídeo puxe os dados do jogo diretamente do SSD, sem passar pelo processador. <br/><br/>
                 Isso elimina as telas de carregamento (loading) e permite mundos abertos muito mais detalhados. Para usar este recurso, o seu SSD <strong>deve ser NVMe</strong>. Deixar um jogo moderno instalado em um SSD SATA em 2026 pode causar 'pop-in' de texturas (objetos aparecendo do nada) e micro-stuttering.
             </p>
@@ -67,7 +67,7 @@ export default function SSDTypeGuide() {
         {
             title: "3. Veredito: Qual comprar hoje?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Vá de NVMe se:</strong> Você está montando um PC novo, joga títulos AAA recentes ou trabalha com arquivos pesados. 
             <br/><br/>
             <strong>Vá de SATA se:</strong> Você quer dar sobrevida a um notebook antigo que não possui slot M.2 ou se precisa de muito espaço (4TB+) para arquivos mortos de forma barata. 

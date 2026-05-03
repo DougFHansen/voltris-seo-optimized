@@ -44,16 +44,16 @@ export default function AmdGuide() {
         {
             title: "Introdução: A Filosofia Radeon",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Diferente do painel Nvidia que é sóbrio, o AMD Adrenalin é um hub completo de jogos. Isso é bom e ruim. Bom porque temos ferramentas de Overclock embutidas (WattMan). Ruim porque ele vem entupido de recursos como "Radeon Boost" que prometem performance mas destroem a qualidade da imagem dinamicamente.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           Neste guia extenso, vamos limpar a casa. Vamos desativar o "bloatware" visual e focar puramente na latência de quadros e estabilidade de clock. Se você sofre com <strong>"Driver Timeout" (Tela preta que volta)</strong>, este guia também é a solução.
         </p>
 
         <div class="bg-[#0A0A0F] border border-red-500/30 p-5 rounded-xl my-6">
             <h4 class="text-red-400 font-bold mb-2">Instalação: Minimalista vs Completa</h4>
-            <p class="text-gray-300 text-sm mb-4">
+            <p class="text-gray-400 text-sm mb-4">
                 Ao instalar o driver, a AMD pergunta: "Full Install", "Minimal" ou "Driver Only".
                 <br/><strong>Recomendação Voltris:</strong> Use <strong class="text-white">Full Install</strong> se você quer fazer Undervolt e usar Anti-Lag. Use <strong>Driver Only</strong> se você tem um PC muito fraco e quer zero processos em background (mas você perde o painel de controle). O meio termo "Minimal" não vale a pena.
             </p>
@@ -63,7 +63,7 @@ export default function AmdGuide() {
         {
             title: "Aba Gaming: Configurações Globais",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Vá em <strong>Gaming > Global Graphics</strong>. Ignore os perfis "eSports" ou "Gaming" predefinidos. Vamos customizar.
         </p>
         
@@ -125,10 +125,10 @@ export default function AmdGuide() {
         {
             title: "Aba Avançada: Onde a Performance Mora",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Role para baixo e abra a seção "Advanced". É aqui que ganhamos FPS de graça.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
             <li><strong>Frame Rate Target Control:</strong> Desativado (Use o limitador do jogo ou RivaTuner).</li>
             <li><strong>Anti-Aliasing:</strong> Use Application Settings.</li>
             <li><strong>Anti-Aliasing Method:</strong> Multisampling (Os outros, como Supersampling, matam o FPS).</li>
@@ -150,10 +150,10 @@ export default function AmdGuide() {
             content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
             <h4 class="text-[#FF4B6B] font-bold mb-4 text-xl">Como usar o RSR corretamente</h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 O RSR é um upscaler espacial que funciona no nível do driver. Ele pega uma imagem 720p ou 900p e estica para 1080p com nitidez.
             </p>
-            <ol class="list-decimal list-inside text-gray-300 text-sm space-y-2">
+            <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
                 <li>Ative o RSR no painel AMD.</li>
                 <li>Entre no jogo.</li>
                 <li>Mude a resolução do jogo para uma MENOR que a do monitor (ex: 1600x900 em monitor 1080p) e coloque em Tela Cheia Exclusiva.</li>
@@ -168,7 +168,7 @@ export default function AmdGuide() {
         {
             title: "Performance Tuning (Undervolt & Overclock)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Aba <strong>Performance > Tuning</strong>. Aceite o aviso de responsabilidade.
             <br/>Placas AMD (RDNA2/3) vêm com voltagem muito alta de fábrica. Fazer Undervolt na verdade AUMENTA a performance porque a placa esquenta menos e sustenta clocks mais altos.
         </p>
@@ -196,10 +196,10 @@ export default function AmdGuide() {
         {
             title: "Correção de Stutters: Shader Cache Reset",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Placas AMD sofrem mais com corrupção de cache de shader que Nvidia. Se seu jogo (Fortnite/Warzone) começar a travar do nada após um update:
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
             <li>Vá em <strong>Gaming > Graphics</strong>.</li>
             <li>Role até o final e clique em <strong>Reset Shader Cache</strong>.</li>
             <li>Reinicie o PC.</li>
@@ -211,7 +211,7 @@ export default function AmdGuide() {
         {
             title: "FreeSync Premium Pro",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Na aba <strong>Display</strong>. Verifique se o FreeSync está "Enabled".
             <br/>Se você joga competitivo (CS2), alguns puristas preferem desligar. Mas o FreeSync moderno da AMD adiciona menos de 1ms de latência. A suavidade visual de não ter "tearing" (rasgos na tela) ajuda muito no rastreamento de alvos (tracking) em jogos como Apex Legends.
             <br/><strong>Configuração Ideal:</strong> FreeSync ON no Driver + V-Sync OFF no Jogo + Cap de FPS (Hz - 3).
@@ -221,7 +221,7 @@ export default function AmdGuide() {
         {
             title: "Gravando Clips: Radeon ReLive",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em <strong>Record & Stream</strong>. O codec da AMD (AMF/VCE) melhorou muito.
             <br/>Para gravar sem perder FPS:
             <br/>- Use codec <strong>HEVC (H.265)</strong> se for apenas gravar para editar e postar no YouTube (arquivo fica menor e melhor qualidade).
@@ -239,10 +239,10 @@ export default function AmdGuide() {
             content: `
             <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20">
                 <h4 class="text-red-400 font-bold mb-3 text-xl">A maldição do "AMD Driver Timeout"</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Se sua tela congela e o software avisa que o driver crashou. Causas comuns:
                 </p>
-                <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+                <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
                     <li><strong>MPO (Multi-Plane Overlay):</strong> Assim como na Nvidia, o MPO do Windows buga drivers AMD. O Voltris Optimizer desativa isso.</li>
                     <li><strong>Memória RAM Instável:</strong> O driver AMD é muito sensível a RAM ruim. Se o XMP estiver instável, o driver de vídeo é o primeiro a cair. Teste desativar o XMP da BIOS.</li>
                     <li><strong>Windows Update:</strong> O Windows adora substituir o driver AMD oficial por uma versão "Basic Display Adapter" antiga. Use a ferramenta "Show/Hide Updates" da Microsoft para bloquear updates de driver de vídeo ou use o DDU com a opção "Prevent Windows Update" marcada.</li>
@@ -253,7 +253,7 @@ export default function AmdGuide() {
         {
             title: "Apêndice: Cores 10-Bit e Pixel Format",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Na aba <strong>Display</strong>, verifique "Pixel Format".
                 <br/>Deve estar em <strong>RGB 4:4:4 Pixel Format PC Standard (Full RGB)</strong>.
                 <br/>Se seu monitor suportar, ative <strong>10-bit Color Depth</strong>. A AMD tem excelente suporte a 10-bit (melhores gradientes de cor) em OpenGL e DirectX, superior à Nvidia em aplicações profissionais.

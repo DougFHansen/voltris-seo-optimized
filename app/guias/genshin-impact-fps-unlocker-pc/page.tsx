@@ -43,12 +43,12 @@ export default function GenshinGuide() {
         {
             title: "Introdução: O Polêmico 60 FPS",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A Hoyoverse liberou 120 FPS para dispositivos Apple, mas no PC, anos se passaram e o limite continua 60 FPS. Felizmente, a comunidade criou um Unlocker que edita a memória do jogo para permitir fluidez total.
         </p>
          <div class="bg-[#0A0A0F] border border-yellow-500/30 p-5 rounded-xl my-6">
             <h4 class="text-yellow-400 font-bold mb-2">Nota sobre Banimentos</h4>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
                 O uso de FPS Unlocker (ex: 3dmigoto ou o launcher github) é tolerado há anos. Não há relatos de banimento massivo APENAS por desbloquear FPS. Mas use por sua conta e risco. Não use mod de skins ou cheats junto.
             </p>
         </div>
@@ -83,7 +83,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 2: FPS Unlocker (Tutorial)",
             content: `
-        <ol class="list-decimal list-inside text-gray-300 text-sm space-y-2">
+        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
             <li>Procure no GitHub por <strong>"Genshin Impact FPS Unlocker"</strong> (o repositório com mais estrelas, geralmente do '34736384').</li>
             <li>Baixe o executável.</li>
             <li>Abra o Unlocker (como Admin).</li>
@@ -99,7 +99,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 3: Filtros Nvidia (Freestyle)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Genshin tem um filtro cinza/lavado por padrão.
             <br/>Se você tem Nvidia, aperte <strong>Alt+F3</strong>.
             <br/>Adicione os filtros:
@@ -115,7 +115,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 4: Sombras e Reflexos",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Shadow Quality:</strong> Medium. (High é pesadíssimo, Low perde a sombra do personagem).
             - <strong>Visual Effects:</strong> Medium.
             - <strong>Reflections:</strong> Off. (Os reflexos na água não valem o custo de performance).
@@ -125,7 +125,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 5: Anti-Aliasing (SMAA vs TAA)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>SMAA:</strong> Mais leve, mas deixa algumas bordas serrilhadas em movimento.
             - <strong>TAA:</strong> Remove todo serrilhado, mas borra um pouco a imagem.
             <br/>Recomendação: Use <strong>SMAA</strong> para nitidez ou <strong>TAA</strong> se você odeia serrilhados.
@@ -135,7 +135,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 6: Crowd Density (NPCs)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em cidades como Fontaine e Sumeru, há muitos NPCs.
             <br/>Defina Crowd Density para <strong>Low</strong>.
             <br/>Isso remove NPCs irrelevantes de fundo, aliviando a CPU na cidade, sem afetar quests.
@@ -145,7 +145,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 7: Co-Op Effect",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             "Co-Op Teammate Effects": Se estiver jogando multiplayer, coloque em <strong>"Partially Off"</strong>.
             <br/>Isso faz os efeitos das skills dos seus amigos ficarem transparentes. Ajuda a ver o inimigo no meio da bagunça visual.
         </p>
@@ -157,7 +157,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 8: Honkai: Star Rail e ZZZ",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 As mesmas ferramentas de Unlocker geralmente funcionam para Honkai: Star Rail e Zenless Zone Zero, pois usam a mesma Unity Engine e estrutura de proteção. O processo é idêntico.
             </p>
             `
@@ -165,7 +165,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 9: SSD e Loading",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O teletransporte demora?
                 <br/>Genshin PRECISA de SSD. Em HDD, o teleporte leva 30 segundos. Em NVMe, leva 2 segundos. Não sofra, instale no SSD.
             </p>
@@ -174,7 +174,7 @@ export default function GenshinGuide() {
         {
             title: "Capítulo 10: Integridade dos Arquivos",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se o jogo fechar sozinho (Crash) frequentemente:
                 <br/>No Launcher, clique nos "três riscos" ao lado do botão Jogar > Reparar Agora.
                 <br/>Genshin costuma corromper arquivos durante updates grandes.

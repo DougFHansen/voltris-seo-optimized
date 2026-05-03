@@ -34,7 +34,7 @@ export default function DPCWatchdogGuide() {
         {
             title: "O que é o erro de 'Violação do Cão de Guarda'?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, o erro **DPC_WATCHDOG_VIOLATION** ocorre quando um driver trava e o sistema não recebe resposta dele por muito tempo. O "Cão de Guarda" (Watchdog) é um cronômetro que fica vigiando os drivers: se algum parar de responder, ele gera a tela azul para salvar seus dados. Na maioria das vezes, o culpado é o driver que gerencia o seu SSD ou o controlador SATA na placa-mãe.
         </p>
       `
@@ -42,8 +42,8 @@ export default function DPCWatchdogGuide() {
         {
             title: "1. Trocando o driver de controlador iastor.sys",
             content: `
-        <p class="mb-4 text-gray-300">Este é o passo que resolve 90% dos casos:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Este é o passo que resolve 90% dos casos:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Aperte <code>Win + X</code> e escolha 'Gerenciador de Dispositivos'.</li>
             <li>Procure por 'Controladores IDE ATA/ATAPI'.</li>
             <li>Se você vir algo como 'Intel(R) Serial ATA Storage Controller', clique com o botão direito e vá em **Atualizar Driver**.</li>
@@ -58,7 +58,7 @@ export default function DPCWatchdogGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Check de Integridade:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se o erro persistir em 2026, a falha pode estar no próprio SSD. <br/><br/>
                 - Baixe o software oficial da marca do seu SSD (Samsung Magician, Kingston SSD Manager, etc). <br/>
                 - Verifique se existe uma atualização de <strong>Firmware</strong> disponível. Isso corrige bugs internos do disco que causam o travamento do driver. <br/>
@@ -70,7 +70,7 @@ export default function DPCWatchdogGuide() {
         {
             title: "3. Dispositivos USB e Periféricos",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Causa secundária:</strong> 
             <br/><br/>Embora raro, drivers de adaptadores Wi-Fi USB ou softwares de controle de RGB (como o iCUE ou Armoury Crate) também podem causar DPC Watchdog se entrarem em conflito. Se você começou a ter esse erro logo após plugar algo novo, remova o dispositivo e veja se a tela azul para. Em 2026, manter o Windows 11 atualizado ajuda a Microsoft a corrigir esses conflitos automaticamente através de novos patches.
         </p>

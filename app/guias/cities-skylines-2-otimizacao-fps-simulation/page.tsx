@@ -42,7 +42,7 @@ export default function CS2Guide() {
         {
             title: "Introdução: 30 FPS é o Novo 60",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em City Builders, você não precisa de 144 FPS. O foco é a velocidade da simulação. Se o jogo roda a 30 FPS mas o tempo passa rápido (3x Speed), está ótimo. Se roda a 60 FPS mas o tempo está em câmera lenta, sua CPU gargalou.
         </p>
       `
@@ -66,7 +66,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 2: Depth of Field (Tilt Shift)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O efeito de "miniatura" (fundo borrado) consome GPU.
             <br/>- <strong>Depth of Field Mode:</strong> Disabled.
             <br/>Além de ganhar performance, você vê sua cidade com clareza total, o que é melhor para planejar estradas.
@@ -76,7 +76,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 3: Level of Detail (LOD)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O jogo renderiza janelas e móveis dentro dos prédios.
             <br/>- <strong>Level of Detail Distance:</strong> Low.
             <br/>Isso faz os modelos de alta qualidade (com dentes e móveis) só aparecerem quando você dá zoom muito perto. De longe, usa modelos simplificados.
@@ -89,7 +89,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 4: DLSS e TAA",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Use <strong>DLSS Quality</strong> se tiver Nvidia.
             <br/>Se não, use TAA.
             <br/>A escala de resolução dinâmica deve ser evitada pois causa borrão quando você move a câmera. Prefira DLSS fixo.
@@ -99,7 +99,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 5: Simulação de Tráfego",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O tráfego é calculado pela CPU.
             <br/>Em cidades com 100k habitantes, o tráfego pode fazer a simulação ficar lenta ("Simulation Speed" cai).
             <br/>Não há configuração gráfica para isso. A solução é melhorar o design das suas estradas (Road Hierarchy) para ter menos carros parados calculando rotas alternativas.
@@ -109,7 +109,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 6: Shadows e Global Illumination",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Global Illumination:</strong> Low.
             - <strong>Reflections:</strong> Low.
             <br/>A água é bonita, mas pesada. Reflexos de prédios na água consomem VRAM.
@@ -119,7 +119,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 7: Mods de Performance",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Use o gerenciador de mods oficial (Paradox Mods).
             <br/>Procure por mods que removem "props" desnecessários (latas de lixo, bancos de praça) em massa. Menos objetos = Menos polígonos.
         </p>
@@ -131,7 +131,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 8: 100k Habitantes (Olimpo)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Ao passar de 100.000 habitantes, o jogo vai ficar lento. É inevitável até em CPUs Threadripper. Aceite a velocidade 1x e curta a paisagem.
             </p>
             `
@@ -139,7 +139,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 9: Autosave Interval",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O salvamento automático causa uma travada de 2 segundos.
                 <br/>Aumente o intervalo para cada 15 ou 30 minutos em vez de 5, para não interromper seu fluxo.
             </p>
@@ -148,7 +148,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 10: V-Sync Off",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você tem 30-40 FPS, V-Sync causa input lag no mouse. Deixe desligado ou use G-Sync/FreeSync para suavizar a câmera.
             </p>
             `

@@ -34,7 +34,7 @@ export default function MonitorPanelGuide() {
         {
             title: "O Coração do seu Monitor",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Ao comprar um monitor em 2026, você verá essas três siglas em todo lugar. Elas se referem à tecnologia física de como os cristais líquidos se organizam dentro da tela. Não existe "o melhor absoluto", mas sim o melhor para o seu tipo de uso. Com o avanço tecnológico, os defeitos de cada tipo foram minimizados, mas as características básicas ainda definem a sua experiência visual.
         </p>
       `
@@ -42,8 +42,8 @@ export default function MonitorPanelGuide() {
         {
             title: "1. IPS: O Equilíbrio Perfeito",
             content: `
-        <p class="mb-4 text-gray-300">O IPS (In-Plane Switching) é a escolha padrão de 2026:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O IPS (In-Plane Switching) é a escolha padrão de 2026:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>Prós:</strong> Cores mais vibrantes e precisas. Se você olhar o monitor por cima ou de lado, a cor não muda (ângulo de visão de 178º).</li>
             <li><strong>Contras:</strong> Sofre com o <i>IPS Glow</i> (brilho esbranquiçado em cenas muito escuras).</li>
             <li><strong>Ideal para:</strong> Jogos de aventura, design gráfico e uso geral.</li>
@@ -55,7 +55,7 @@ export default function MonitorPanelGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Para Cinema e Noite:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O monitor <strong>VA (Vertical Alignment)</strong> tem o melhor contraste. Enquanto um IPS faz pretos que parecem cinza escuro, o VA consegue deixar a tela realmente preta. <br/><br/>
                 - <strong>Ponto Negativo:</strong> Em movimentos ultra rápidos (como girar a câmera no Valorant), ele pode deixar um rastro escuro atrás dos objetos, conhecido como <strong>Ghosting</strong> ou <i>Black Smearing</i>.
             </p>
@@ -65,7 +65,7 @@ export default function MonitorPanelGuide() {
         {
             title: "3. TN: O Rei do Mundo Competitivo (mas por pouco tempo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O <strong>TN (Twisted Nematic)</strong> foi, durante muito tempo, o único a alcançar 1ms de resposta real. 
             <br/><br/>Em 2026, ele ainda é encontrado em monitores ultra rápidos de 360Hz ou 540Hz usados por pro-players de CS2. As cores são "lavadas" e o ângulo de visão é horrível (se você abaixar a cabeça, a imagem inverte), mas se o seu único objetivo é a vitória competitiva em milissegundos, o TN ainda tem seu lugar.
         </p>

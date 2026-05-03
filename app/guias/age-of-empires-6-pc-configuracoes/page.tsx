@@ -50,7 +50,7 @@ export default function AgeOfEmpires6Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-300 mb-8">{description}</p>
+                <p className="text-xl text-gray-400 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos Age of Empires 6</h2>
@@ -90,7 +90,7 @@ export default function AgeOfEmpires6Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações Gráficas para Batalhas Massivas</h2>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-400 mb-4">
                         Age of Empires 6 suporta 2000+ unidades em campo. Configurações otimizadas para late game.
                     </p>
                     <div className="bg-purple-900/20 p-4 rounded mb-4">
@@ -158,21 +158,21 @@ export default function AgeOfEmpires6Guide() {
                     <div className="space-y-4">
                         <div className="bg-red-900/20 p-4 rounded">
                             <h3 className="text-red-400 font-bold mb-2">1000+ Units (Imperial Age)</h3>
-                            <p className="text-sm text-gray-300">
+                            <p className="text-sm text-gray-400">
                                 Reduza Unit Scale para High se FPS &lt; 30. 
                                 Desative Shadows e use DLSS Performance.
                             </p>
                         </div>
                         <div className="bg-yellow-900/20 p-4 rounded">
                             <h3 className="text-yellow-400 font-bold mb-2">8 Players Multiplayer</h3>
-                            <p className="text-sm text-gray-300">
+                            <p className="text-sm text-gray-400">
                                 Use Terrain Detail Medium e Building Detail High. 
                                 Prioritize unit visibility over terrain quality.
                             </p>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded">
                             <h3 className="text-green-400 font-bold mb-2">CPU Bottleneck</h3>
-                            <p className="text-sm text-gray-300">
+                            <p className="text-sm text-gray-400">
                                 Ryzen 7+ ou Intel i7+ recomendado. 
                                 Use Voltris Optimizer para otimizar CPU em tempo real.
                             </p>

@@ -34,7 +34,7 @@ export default function DigitalPovertyGuide() {
         {
             title: "O que é a Pobreza Digital?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, a desigualdade não é apenas financeira, mas de acesso à informação rápida. Ter um PC que trava ao abrir um PDF ou um vídeo de aula coloca você em desvantagem. No entanto, o hardware não define o seu potencial. Com as configurações certas, um notebook de 2018 pode ser tão produtivo quanto um de 2026 para tarefas de estudo e trabalho. O segredo é saber o que **remover** para que o PC foque apenas no que importa.
         </p>
       `
@@ -42,8 +42,8 @@ export default function DigitalPovertyGuide() {
         {
             title: "1. Escolha a Ferramenta Leve (Software alternativo)",
             content: `
-        <p class="mb-4 text-gray-300">Pare de usar programas pesados se o seu PC tem pouca RAM:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Pare de usar programas pesados se o seu PC tem pouca RAM:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>Em vez de Word:</strong> Use o Google Docs (Online) ou o <strong>AbiWord</strong> (Extra leve).</li>
             <li><strong>Em vez de Adobe Reader:</strong> Use o <strong>SumatraPDF</strong>. Ele abre instantaneamente e usa quase 0 de RAM.</li>
             <li><strong>Em vez de Chrome:</strong> Use o <strong>Brave</strong> com bloqueio de anúncios agressivo. Menos anúncios = menos processamento.</li>
@@ -55,7 +55,7 @@ export default function DigitalPovertyGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Processamento na Nuvem:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se o seu PC é fraco demais para editar vídeos ou fotos, use ferramentas que rodam nos servidores de outras empresas. <br/><br/>
                 - <strong>Canva:</strong> Para design sem precisar de Photoshop. <br/>
                 - <strong>CapCut Web:</strong> Para edição de vídeo direto no navegador. <br/>
@@ -67,7 +67,7 @@ export default function DigitalPovertyGuide() {
         {
             title: "3. Otimização Visual do Windows",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Windows 11 gasta muita energia para deixar as janelas bonitas e transparentes. 
             <br/><br/><strong>Dica:</strong> Pesquise por 'Ajustar a aparência e o desempenho do Windows'. Selecione <strong>'Ajustar para obter um melhor desempenho'</strong>. As fontes ficarão um pouco mais simples e as janelas não terão animação, mas a resposta do seu clique será imediata. Sinta a velocidade, não o visual.
         </p>

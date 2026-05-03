@@ -34,7 +34,7 @@ export default function NvidiaReflexGuide() {
         {
             title: "O que é o NVIDIA Reflex?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em jogos competitivos de 2026, ganhar ou perder depende de milissegundos. O **NVIDIA Reflex** é uma tecnologia que remove o "congestionamento" entre o seu processador e a sua placa de vídeo. Sem o Reflex, a CPU envia os quadros para uma fila e a GPU os processa quando pode. Com o Reflex, a CPU só envia o quadro no exato momento em que a GPU está pronta, eliminando o atraso (input lag) entre o seu clique e o tiro na tela.
         </p>
       `
@@ -42,8 +42,8 @@ export default function NvidiaReflexGuide() {
         {
             title: "1. O modo ON: O Equilíbrio Ideal",
             content: `
-        <p class="mb-4 text-gray-300">Ao ativar apenas o 'ON', você tem os seguintes benefícios:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Ao ativar apenas o 'ON', você tem os seguintes benefícios:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>Latência Reduzida:</strong> Seus comandos parecem mais diretos e responsivos.</li>
             <li><strong>Temperatura Estável:</strong> A placa de vídeo não trabalha mais do que o necessário, mantendo o PC mais silencioso.</li>
             <li><strong>Consistência:</strong> Reduz as variações bruscas de atraso, o que ajuda na sua memória muscular de mira.</li>
@@ -55,7 +55,7 @@ export default function NvidiaReflexGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Para cenários competitivos:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O modo <strong>ON + BOOST</strong> faz algo agressivo: ele impede que a placa de vídeo reduza o clock (velocidade) mesmo quando o jogo é leve (CPU Bound). <br/><br/>
                 Imagine que você está parado olhando para uma parede; a GPU normalmente baixaria a velocidade para economizar energia. Com o Boost, ela continua no máximo. Isso garante que, se um inimigo aparecer de repente, a resposta da GPU seja **instantânea**, sem o pequeno atraso de ela precisar "acordar" para processar o movimento.
             </p>
@@ -65,7 +65,7 @@ export default function NvidiaReflexGuide() {
         {
             title: "3. Qual escolher em 2026?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Use ON + BOOST</strong> se você joga profissionalmente jogos como Valorant, CS2 ou Warzone e não se importa com o barulho dos fans ou consumo de energia.
             <br/><br/>
             - <strong>Use apenas ON</strong> para jogos de aventura ou se você joga em um <strong>Notebook Gamer</strong>. O modo Boost em notebooks pode causar superaquecimento desnecessário, o que acaba gerando quedas de FPS por calor (Thermal Throttling), anulando qualquer benefício de latência.

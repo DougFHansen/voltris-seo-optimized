@@ -35,12 +35,12 @@ export default function DebloatGuide() {
         {
             title: "O Problema: Seu PC não é seu",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Quando você instala o Windows 11 hoje, ele vem com mais de 70 aplicativos pré-instalados. De "Disney+" a "Clipchamp", passando por rastreadores de telemetria ("DiagTrack"). Isso não é apenas irritante; esses apps rodam em segundo plano, consumindo ciclos da sua CPU e alocando memória RAM que deveria estar indo para o seu jogo.
         </p>
         <div class="bg-yellow-900/10 border-l-4 border-yellow-500 p-6 rounded-r-lg mb-8">
              <h4 class="text-yellow-400 font-bold mb-2">⚠️ Aviso de Segurança</h4>
-             <p class="text-gray-300 text-sm">
+             <p class="text-gray-400 text-sm">
                 Antes de começar, crie um Ponto de Restauração. Aperte a tecla Windows, digite "Criar ponto de restauração" e salve o estado atual do PC. Se você remover algo errado (como a Loja), poderá voltar atrás.
              </p>
         </div>
@@ -49,10 +49,10 @@ export default function DebloatGuide() {
         {
             title: "Método 1: A Limpeza Manual (O básico)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Antes de usar scripts complexos, vamos remover o lixo visível.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 bg-gray-900 p-6 rounded-xl border border-gray-700">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 bg-gray-900 p-6 rounded-xl border border-gray-700">
             <li>Vá em <strong>Configurações > Aplicativos > Aplicativos Instalados</strong>.</li>
             <li>Procure e desinstale sem dó:
                 <ul class="list-disc ml-8 mt-2 text-sm text-gray-400 space-y-1">
@@ -68,7 +68,7 @@ export default function DebloatGuide() {
         {
             title: "Método 2: PowerShell Cirúrgico (Avançado)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos apps não têm botão "Desinstalar". Para eles, usamos o PowerShell como Administrador.
         </p>
 
@@ -99,10 +99,10 @@ export default function DebloatGuide() {
         {
             title: "Método 3: Desativando Serviços Inúteis (Services.msc)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Serviços são programas que rodam invisíveis. Desativar os certos libera muita RAM.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
+        <ul class="list-disc list-inside text-gray-400 space-y-2">
             <li><strong>Experiências de Usuário Conectado e Telemetria (DiagTrack):</strong> O Espião do Windows. Desative.</li>
             <li><strong>SysMain (Antigo Superfetch):</strong> Se você usa SSD, pode causar escritas desnecessárias. Em HDs, deixe ligado.</li>
             <li><strong>Windows Search:</strong> Se você nunca busca arquivos pelo menu iniciar, desativar isso recupera muito uso de disco.</li>

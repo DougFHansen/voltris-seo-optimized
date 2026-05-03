@@ -40,7 +40,7 @@ export default function WindowsUpdateGuide() {
         {
             title: "Por que o Windows Update trava?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Windows Update é um sistema complexo que depende de vários serviços (BITS, Cryptographic, Installer) trabalhando em harmonia. Se a internet cair durante um download ou se o PC desligar no meio da instalação, os arquivos na pasta de cache (SoftwareDistribution) ficam corrompidos. O sistema tenta ler esse arquivo quebrado, falha e entra em loop infinito.
         </p>
 
@@ -48,7 +48,7 @@ export default function WindowsUpdateGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🔧</span> Reparador Automático Voltris
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Executar comandos de parada de serviço manualmente é chato. O <strong>Voltris Optimizer</strong> possui um botão "Fix Windows Update" que para os serviços, limpa o cache, redefine as DLLs de registro e reinicia tudo para você em 5 segundos.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function WindowsUpdateGuide() {
         {
             title: "Método 1: Solução de Problemas Nativa",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Antes de ir para códigos complexos, tente o básico que funciona em 30% dos casos.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
             <li>Vá em <strong>Configurações > Sistema > Solução de Problemas</strong>.</li>
             <li>Clique em <strong>Outras soluções de problemas</strong>.</li>
             <li>Ao lado de <strong>Windows Update</strong>, clique em <strong>Executar</strong>.</li>
@@ -78,10 +78,10 @@ export default function WindowsUpdateGuide() {
         {
             title: "Método 2: O Reset Manual (CMD) - Eficácia 99%",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se o método acima não funcionou, vamos fazer "cirurgia" no sistema. Precisamos parar os serviços para liberar a pasta de download.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-xs">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-xs">
             <li>Abra o <strong>CMD como Administrador</strong>.</li>
             <li>Digite os comandos abaixo, UM POR UM, esperando cada um terminar:</li>
             <div class="mt-4 space-y-2 text-[#31A8FF]">
@@ -114,13 +114,13 @@ export default function WindowsUpdateGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-red-400 font-bold mb-4 text-xl">Imagem do Windows Danificada</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Se o Windows Update falha porque faltam arquivos base no próprio Windows, precisamos usar o DISM para baixar cópias originais da Microsoft.
                 </p>
-                <p class="text-gray-300 text-sm font-mono bg-black p-2 rounded">
+                <p class="text-gray-400 text-sm font-mono bg-black p-2 rounded">
                     dism /online /cleanup-image /restorehealth
                 </p>
-                <p class="text-gray-300 text-sm mt-2">
+                <p class="text-gray-400 text-sm mt-2">
                     Esse comando demora uns 15-20 minutos e parece que travou em 62.3%, mas é normal. Espere terminar.
                 </p>
             </div>
@@ -132,10 +132,10 @@ export default function WindowsUpdateGuide() {
         {
             title: "Baixar Atualização Manualmente (Catálogo)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se apenas UMA atualização específica (ex: KB5034441) está dando erro e as outras funcionam, você pode instalá-la manualmente.
             </p>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+            <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
                 <li>Anote o código (Ex: KB123456).</li>
                 <li>Vá no site <strong>Catálogo do Microsoft Update</strong> (Microsoft Update Catalog).</li>
                 <li>Pesquise pelo código.</li>

@@ -39,12 +39,12 @@ export default function FansGuide() {
         {
             title: "Regra Básica de Física (Ar Quente Sobe)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A orientação das ventoinhas é vital. A parte "bonita" da ventoinha (sem grade/fios) geralmente é por onde o ar ENTRA. A parte "feia" (com a estrutura do motor e fios) é por onde o ar SAI.
         </p>
         <div class="bg-[#0A0A0F] p-5 rounded-xl border border-white/5">
             <h4 class="text-[#31A8FF] font-bold mb-3">O Setup Padrão (Eficaz):</h4>
-            <ul class="list-disc ml-4 text-gray-300 space-y-2">
+            <ul class="list-disc ml-4 text-gray-400 space-y-2">
                 <li><strong>Frente:</strong> 2 ou 3 fans jogando ar FRIO para DENTRO (Admissão).</li>
                 <li><strong>Traseira:</strong> 1 fan jogando ar QUENTE para FORA (Exaustão).</li>
                 <li><strong>Topo:</strong> 1 ou 2 fans jogando ar QUENTE para FORA (Exaustão). O ar quente sobe naturalmente. Ajude ele a sair.</li>
@@ -55,13 +55,13 @@ export default function FansGuide() {
         {
             title: "Pressão Positiva vs Negativa: A Guerra da Poeira",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Isso define quanto tempo você leva até precisar limpar o PC.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div class="bg-emerald-900/10 p-4 rounded-xl border border-emerald-500/20">
                 <h4 class="text-emerald-400 font-bold mb-2">Pressão Positiva (Recomendado)</h4>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Mais ar entrando do que saindo.
                     <br/>Ex: 3 fans na frente entrando, 1 atrás saindo.
                     <br/><strong>Efeito:</strong> O ar extra tenta escapar por todas as frestas do gabinete, impedindo que a poeira entre pelos buracos sem filtro. O ar só entra pelos filtros da frente. PC limpo por mais tempo.
@@ -69,7 +69,7 @@ export default function FansGuide() {
             </div>
             <div class="bg-red-900/10 p-4 rounded-xl border border-red-500/20">
                 <h4 class="text-red-400 font-bold mb-2">Pressão Negativa</h4>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Mais ar saindo do que entrando.
                     <br/>Ex: 1 entrando, 3 saindo.
                     <br/><strong>Efeito:</strong> Cria um vácuo. O ar é sugado por todas as frestas, furos PCIe e buracos sem filtro para compensar. Seu PC vira um aspirador de pó.
@@ -86,7 +86,7 @@ export default function FansGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">Nem toda Fan é igual</h4>
-                <ul class="list-disc list-inside text-gray-300 text-sm space-y-3">
+                <ul class="list-disc list-inside text-gray-400 text-sm space-y-3">
                     <li><strong>Fans de Alto Fluxo (High Airflow / CFM):</strong> Para gabinete (exaustão). Movem muito ar se não tiver nada na frente.</li>
                     <li><strong>Fans de Pressão Estática (Static Pressure):</strong> Para Radiadores ou grades fechadas. Elas têm pás largas e "empurram" o ar com força através de obstruções (dissipadores).</li>
                 </ul>
@@ -99,7 +99,7 @@ export default function FansGuide() {
         {
             title: "Gabinete Aquário vs Mesh",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Gabinetes "Aquário" (vidro na frente e lado) são lindos, mas limitam a entrada de ar. Neles, as fans laterais e de baixo são CRUCIAIS para admissão.
                 <br/>Gabinetes "Mesh" (frente furada em grade) são os reis da performance. O ar entra direto. Se sua prioridade é temperatura baixa, compre Mesh.
             </p>
@@ -111,7 +111,7 @@ export default function FansGuide() {
         {
             title: "Hubs e Controladoras",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se sua placa mãe não tem conectores suficientes (SYS_FAN), use um <strong>Fan Hub PWM</strong>.
                 <br/>Conecte o Hub na placa mãe (CPU_FAN ou SYS_FAN) e ligue todas as fans no Hub. A placa mãe controlará a velocidade de todas juntas. Evite ligar fans direto na fonte (Molex), pois elas rodarão a 100% o tempo todo, parecendo um avião.
             </p>

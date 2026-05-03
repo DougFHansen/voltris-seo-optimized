@@ -34,7 +34,7 @@ export default function CoolingComparisonGuide() {
         {
             title: "O dilema da refrigeração",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Com os processadores de 2026 chegando a frequências altíssimas e consumindo mais de 250W em carga máxima, manter a temperatura sob controle não é mais uma opção, é uma necessidade. Se a sua CPU passar dos 90°C, ela perderá performance. Mas será que você realmente precisa de um sistema complexo com água ou um bom bloco de metal com ventoinhas (Air Cooler) é o suficiente?
         </p>
       `
@@ -42,8 +42,8 @@ export default function CoolingComparisonGuide() {
         {
             title: "1. Air Cooler: A força bruta do metal",
             content: `
-        <p class="mb-4 text-gray-300">Em 2026, Air Coolers topo de linha desafiam a física:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Em 2026, Air Coolers topo de linha desafiam a física:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>Confiabilidade:</strong> A única coisa que pode quebrar é a ventoinha, que custa 50 reais para trocar. O dissipador dura 20 anos.</li>
             <li><strong>Performance:</strong> Modelos como o Noctua ou DeepCool Assassin IV batem de frente com muitos Water Coolers de 240mm.</li>
             <li><strong>Ideal para:</strong> Jogadores que querem um PC "monte e esqueça", sem se preocupar com vazamentos ou bolhas na bomba.</li>
@@ -55,7 +55,7 @@ export default function CoolingComparisonGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">O Poder do Líquido:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Water Coolers modernos de 2026 são excelentes para tirar o calor de dentro do processador e jogá-lo diretamente para fora do gabinete. <br/><br/>
                 - <strong>Silêncio:</strong> Como o calor é dissipado em uma área maior (radiadores de 360mm ou 420mm), as ventoinhas podem girar mais devagar, fazendo menos barulho. <br/>
                 - <strong>Espaço:</strong> Deixam a placa-mãe "limpa", facilitando o manuseio das memórias RAM. <br/>
@@ -67,7 +67,7 @@ export default function CoolingComparisonGuide() {
         {
             title: "3. O veredito por Processador",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Qual comprar em 2026?</strong>
             <br/><br/>
             - <strong>Core i3 / i5 ou Ryzen 5:</strong> Use um Air Cooler simples (ex: DeepCool AK400). Pagar mais que isso é desperdício. <br/>

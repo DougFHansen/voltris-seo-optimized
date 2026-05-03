@@ -40,7 +40,7 @@ export default function AntivirusGuide() {
         {
             title: "Introdução: O Monstro da CPU",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Toda vez que o jogo carrega um mapa, ele lê 5.000 arquivos do HD. O antivírus intercepta cada leitura para ver se é vírus. Isso dobra o tempo de loading e causa stutter.
         </p>
       `
@@ -67,7 +67,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 2: MsMpEng.exe (Antimalware Service Executable)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se esse processo estiver usando 30% da CPU:
             <br/>Geralmente ele está escaneando a si mesmo ou um update do Windows travado.
             <br/>Adicione o próprio arquivo do Defender nas exclusões (Processo > MsMpEng.exe) para ele parar de loopar. (Dica de Regedit avançada, cuidado).
@@ -77,7 +77,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 3: Outros Antivírus (Bloatware)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Avast, AVG, McAfee: Desinstale. Use o <strong>Revo Uninstaller</strong> para remover tudo.
             <br/>Eles instalam plugins no navegador, "Game Boosters" falsos e pop-ups de venda.
             <br/>O Defender já é nível Enterprise em detecção.
@@ -90,7 +90,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 4: Malwarebytes (O Companheiro)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Tenha o <strong>Malwarebytes Free</strong> instalado.
             <br/>Mas vá em Configurações > Segurança e DESATIVE "Iniciar com Windows".
             <br/>Use ele apenas para fazer uma varredura manual 1x por mês ou se você baixar algo suspeito (pirataria). Não deixe ele rodando junto com o jogo (ele come FPS).
@@ -100,7 +100,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 5: SmartScreen",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O "SmartScreen" bloqueia apps desconhecidos.
             <br/>Para gamers que usam mods ou ferramentas do GitHub (como CapFrameX, FanControl), isso atrapalha.
             <br/>Pode desativar o "Controle de aplicativos e navegador" se você sabe o que está baixando.
@@ -110,7 +110,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 6: Controlled Folder Access (Proteção Ransomware)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Essa função impede que programas gravem na pasta Meus Documentos.
             <br/>Muitos jogos salvam o progresso lá. Se isso estiver ativado, o jogo não salva (Erro de Save Corrompido).
             <br/>Se ativar, lembre-se de autorizar o executável do jogo manualmente.
@@ -120,7 +120,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 7: Isolamento de Núcleo (VBS/HVCI)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Segurança do Dispositivo > Isolamento de Núcleo > Integridade de Memória.
             <br/>Isso usa Virtualização para proteger o Kernel.
             <br/><strong>Custa 5% a 10% de FPS</strong> em alguns jogos.
@@ -134,7 +134,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 8: Falsos Positivos (Trainers/Mods)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você usa Cheat Engine ou WeMod em jogos offline, o AV vai detectar como HackTool.
                 <br/>Não é vírus, mas é uma ferramenta de injeção de memória. Você precisa permitir no dispositivo.
             </p>
@@ -143,7 +143,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 9: AdBlock (A linha de frente)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O melhor antivírus é não clicar no botão "Download" verde falso.
                 <br/>Use uBlock Origin no Chrome/Edge. Ele bloqueia os scripts maliciosos antes de baixarem.
             </p>
@@ -152,7 +152,7 @@ export default function AntivirusGuide() {
         {
             title: "Capítulo 10: Vírus de Pendrive",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Desative o "AutoRun" (Reprodução Automática) de pendrives. É a forma mais comum de infecção offline.
             </p>
             `

@@ -34,7 +34,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "O Pânico do Teclado Mudo",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Diferente de um PC desktop, onde você apenas troca o cabo, o teclado do notebook é integrado. Em 2026, com notebooks cada vez mais finos, os cabos internos são extremamente delicados. Se o seu teclado parou após uma pancada, derramamento de líquido ou até do nada após uma atualização do Windows 11, precisamos descobrir se o problema é apenas um "bug" de sistema ou se a peça física morreu.
         </p>
       `
@@ -42,8 +42,8 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "1. O Teste de BIOS: É Software ou Hardware?",
             content: `
-        <p class="mb-4 text-gray-300">Descubra em 10 segundos se o teclado está vivo:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Descubra em 10 segundos se o teclado está vivo:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Reinicie o notebook.</li>
             <li>Fique apertando a tecla <strong>F2, F10 ou DEL</strong> repetidamente enquanto ele liga.</li>
             <li>Se você conseguir entrar no menu da BIOS e navegar com as setas, o seu teclado está **funcionando perfeitamente**. O problema é o Windows.</li>
@@ -56,7 +56,7 @@ export default function LaptopKeyboardFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Limpando registros:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Clique com o botão direito no Iniciar > <strong>Gerenciador de Dispositivos</strong>. <br/>
                 2. Expanda 'Teclados'. <br/>
                 3. Clique com o botão direito em todos os itens (ex: PS/2 Keyboard) e selecione <strong>Desinstalar dispositivo</strong>. <br/>
@@ -68,7 +68,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "3. Filtro de Teclas: O vilão silencioso",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você precisa segurar a tecla por 1 segundo para ela funcionar:
             <br/><br/><strong>Dica de 2026:</strong> Você pode ter ativado as 'Teclas de Filtragem' sem querer. Vá em Configurações > Acessibilidade > Teclado e verifique se <strong>Teclas de Filtragem</strong> e <strong>Teclas de Aderência</strong> estão desativadas. Essas opções impedem cliques rápidos de serem registrados.
         </p>
@@ -82,13 +82,13 @@ export default function LaptopKeyboardFixGuide() {
             title: "12. Diagnóstico Avançado de Hardware",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Análise de Componentes do Teclado Interno</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em 2026, os teclados de notebooks são compostos por componentes muito mais complexos do que antigamente. O diagnóstico avançado envolve entender a arquitetura interna do teclado:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Componentes Eletrônicos</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Matriz de circuito flexível (Flat Cable)</li>
                     <li>• Conector de interface com a placa-mãe</li>
                     <li>• Microcontrolador dedicado (em alguns modelos)</li>
@@ -98,7 +98,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Falhas Comuns de Hardware</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Oxidação nos conectores</li>
                     <li>• Danos físicos no cabo flexível</li>
                     <li>• Falha no microcontrolador</li>
@@ -109,11 +109,11 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Diagnóstico com Multímetro</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para técnicos avançados, o diagnóstico pode ser feito com equipamentos de medição:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Componente</th>
@@ -147,7 +147,7 @@ export default function LaptopKeyboardFixGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Teste de Continuidade</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Antes de desmontar completamente, teste a continuidade elétrica entre os pontos de conexão do teclado e a placa-mãe. Isso pode indicar rapidamente se há rompimento no cabo flexível.
             </p>
         </div>
@@ -157,16 +157,16 @@ export default function LaptopKeyboardFixGuide() {
             title: "13. Recuperação de Dados e Acesso Alternativo",
             content: `
         <h4 class="text-white font-bold mb-3">💾 Soluções Alternativas para Acesso ao Sistema</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Quando o teclado principal não funciona, existem métodos alternativos para acessar e operar o sistema:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Teclado Virtual Avançado</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     O On-Screen Keyboard do Windows é limitado. Alternativas mais robustas incluem:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• <strong>TouchCursor:</strong> Teclado virtual com suporte a gestos e teclas especiais</li>
                     <li>• <strong>Free Virtual Keyboard:</strong> Configurações avançadas e layouts personalizados</li>
                     <li>• <strong>Click-N-Type:</strong> Alternativas para teclados numéricos e especiais</li>
@@ -174,10 +174,10 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Controle Remoto e Acesso</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Se você tiver outro computador disponível, pode usar soluções de acesso remoto:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• <strong>Windows Remote Desktop:</strong> Pré-instalado no Windows Pro</li>
                     <li>• <strong>TeamViewer:</strong> Fácil configuração e controle completo</li>
                     <li>• <strong>AnyDesk:</strong> Leve e eficiente para operações rápidas</li>
@@ -185,10 +185,10 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="border-l-4 border-purple-500 pl-4 py-2 bg-purple-900/10">
                 <h5 class="text-purple-400 font-bold mb-2">Boot Alternativo</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Em sistemas modernos, é possível habilitar boot remoto via BIOS/UEFI:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• <strong>Intel AMT:</strong> Acesso remoto mesmo com sistema desligado</li>
                     <li>• <strong>Wake-on-LAN:</strong> Liga o sistema remotamente</li>
                     <li>• <strong>IPMI:</strong> Gerenciamento remoto avançado (em notebooks empresariais)</li>
@@ -197,13 +197,13 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔐 Recuperação de Senhas e Dados</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se o teclado não funcionar e você tiver senha de usuário, existem métodos de recuperação:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Métodos de Recuperação</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• <strong>Senha de segurança:</strong> Se configurada previamente</li>
                     <li>• <strong>Cartão de desbloqueio:</strong> Criado durante configuração do Windows</li>
                     <li>• <strong>Conta Microsoft:</strong> Recuperação online</li>
@@ -212,7 +212,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Backup de Dados</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• <strong>Live CD/USB:</strong> Ubuntu ou Knoppix para cópia de dados</li>
                     <li>• <strong>Modo de Segurança:</strong> Se sistema ainda inicializar</li>
                     <li>• <strong>Partição de Recuperação:</strong> Acesso via F8/F11</li>
@@ -226,13 +226,13 @@ export default function LaptopKeyboardFixGuide() {
             title: "14. Tendências de Hardware e Prevenção em 2026",
             content: `
         <h4 class="text-white font-bold mb-3">🚀 Inovações em Teclados de Notebooks</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em 2026, os fabricantes estão introduzindo tecnologias que tornam os teclados mais resistentes e com menos falhas:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Teclados Híbridos</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Combinação mecânico + capacitivo</li>
                     <li>• Resistência a líquidos IPX7</li>
                     <li>• Auto-diagnóstico de falhas</li>
@@ -242,7 +242,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Materiais Avançados</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Polímeros autorregenerativos</li>
                     <li>• Nanorevestimentos hidrofóbicos</li>
                     <li>• Resistência a impactos maiores</li>
@@ -252,7 +252,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Prevenção Inteligente</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Monitoramento de saúde do teclado</li>
                     <li>• Alertas de manutenção preditiva</li>
                     <li>• Diagnóstico contínuo de falhas</li>
@@ -263,11 +263,11 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Prevalência de Falhas em 2026</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Estudos recentes mostram as principais causas de falhas em teclados de notebooks:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Causa</th>
@@ -312,10 +312,10 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Empresas estão investindo pesadamente em tecnologias para reduzir falhas de teclados:
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
             <li><strong>Teclados auto-reparáveis:</strong> Nanotecnologia que "cicatriza" pequenos danos</li>
             <li><strong>Feedback haptico avançado:</strong> Simula sensação de teclas mecânicas</li>
             <li><strong>Detecção de umidade:</strong> Isolação automática em caso de derramamento</li>
@@ -331,13 +331,13 @@ export default function LaptopKeyboardFixGuide() {
             title: "4. Limpeza Profunda e Prevenção",
             content: `
         <h4 class="text-white font-bold mb-3">🧽 Procedimentos de Limpeza Profunda</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos problemas de teclado são causados por acúmulo de sujeira e partículas que interferem na detecção das teclas:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Métodos de Limpeza</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Aspirador de baixa potência com bocal fino</li>
                     <li>• Ar comprimido (sempre em ângulo de 45°)</li>
                     <li>• Escova de cerdas macias para remoção de resíduos</li>
@@ -347,7 +347,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
                 <h5 class="text-purple-400 font-bold mb-3">Passos de Limpeza Segura</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Desligar completamente o notebook</li>
                     <li>• Remover bateria se possível</li>
                     <li>• Virar o notebook com as teclas para baixo</li>
@@ -358,11 +358,11 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Prevenção de Danos</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para evitar problemas futuros com o teclado:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Prática</th>
@@ -405,16 +405,16 @@ export default function LaptopKeyboardFixGuide() {
             title: "5. Soluções de Software Avançado",
             content: `
         <h4 class="text-white font-bold mb-3">💻 Ferramentas de Diagnóstico Avançado</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Além das soluções básicas, existem ferramentas mais avançadas para diagnosticar problemas de teclado:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Keyboard Test Utility</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Ferramentas que mapeiam completamente a funcionalidade do teclado:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• <strong>Keyboard Test:</strong> Mostra visualmente quais teclas estão sendo pressionadas</li>
                     <li>• <strong>Qwerty.killer:</strong> Identifica teclas com resposta anormal</li>
                     <li>• <strong>Free Key Monitor:</strong> Registra todos os eventos de teclado</li>
@@ -422,10 +422,10 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Diagnosticadores do Sistema</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Ferramentas nativas do Windows para diagnóstico de hardware:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• <strong>Windows Memory Diagnostic:</strong> Testa memória RAM e componentes relacionados</li>
                     <li>• <strong>Component Testing:</strong> Verifica hardware específico</li>
                     <li>• <strong>Event Viewer:</strong> Registros de erros de hardware</li>
@@ -434,13 +434,13 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Soluções Baseadas em Scripts</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para problemas persistentes, scripts podem automatizar a solução:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Scripts PowerShell</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Reinicialização de drivers de teclado</li>
                     <li>• Limpeza de cache do sistema</li>
                     <li>• Restauração de configurações de entrada</li>
@@ -449,7 +449,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Batch Files</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Executar diagnose.bat</li>
                     <li>• Verificar serviços de teclado</li>
                     <li>• Reset de configurações de entrada</li>
@@ -463,13 +463,13 @@ export default function LaptopKeyboardFixGuide() {
             title: "6. Análise de Casos Reais e Soluções",
             content: `
         <h4 class="text-white font-bold mb-3">📚 Estudos de Caso em 2026</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Analisando problemas reais enfrentados por usuários e as soluções aplicadas:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Caso 1: Teclado Parcialmente Inoperante</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     <strong>Problema:</strong> Letras Q, W, E e R não funcionavam<br/>
                     <strong>Causa:</strong> Derramamento de café há 6 meses que corroeu parte do circuito<br/>
                     <strong>Solução:</strong> Limpeza com álcool isopropílico e substituição parcial da matriz<br/>
@@ -479,7 +479,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Caso 2: Teclado Intermitente</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     <strong>Problema:</strong> Teclado funcionava por 5 minutos e parava<br/>
                     <strong>Causa:</strong> Conector solto entre teclado e placa-mãe<br/>
                     <strong>Solução:</strong> Reposicionamento e fixação do cabo flat<br/>
@@ -490,11 +490,11 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Reparo em 2026</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Dados reais sobre reparos de teclado em assistências técnicas:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tipo de Problema</th>
@@ -543,16 +543,16 @@ export default function LaptopKeyboardFixGuide() {
             title: "7. Soluções de Recuperação e Backup",
             content: `
         <h4 class="text-white font-bold mb-3">💾 Planejamento de Recuperação</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Preparação para situações em que o teclado falha completamente:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Preparação Preventiva</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Coisas que você pode fazer antes de um problema ocorrer:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• Configurar login com PIN ou biometria</li>
                     <li>• Habilitar teclado virtual permanente</li>
                     <li>• Instalar ferramentas de acesso remoto</li>
@@ -562,10 +562,10 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Recuperação de Emergência</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Passos para tomar quando o teclado falha:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• Usar mouse para ativar teclado virtual</li>
                     <li>• Conectar teclado externo USB/Bluetooth</li>
                     <li>• Utilizar comandos de voz do Windows</li>
@@ -576,13 +576,13 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔐 Segurança e Acesso em Situações de Emergência</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Manter acesso seguro ao sistema quando o teclado principal não funciona:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Autenticação Alternativa</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Biometria (impressão digital, reconhecimento facial)</li>
                     <li>• PIN numérico (mais fácil de inserir com mouse)</li>
                     <li>• Cartão inteligente de segurança</li>
@@ -591,7 +591,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Ferramentas de Acesso</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Teclado virtual avançado</li>
                     <li>• Controle remoto do sistema</li>
                     <li>• Assistência técnica remota</li>
@@ -605,13 +605,13 @@ export default function LaptopKeyboardFixGuide() {
             title: "8. Comparação de Modelos e Tendências",
             content: `
         <h4 class="text-white font-bold mb-3">🏆 Comparação de Teclados de Notebooks em 2026</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Análise das diferentes tecnologias de teclado disponíveis em notebooks:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Tecnologias de Teclado</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• <strong>Scissor Switch:</strong> Mais comum, resistente a poeira</li>
                     <li>• <strong>Butteryfly Switch:</strong> Menor altura, sensibilidade precisa</li>
                     <li>• <strong>Chiclet Keys:</strong> Barato, mas menos durável</li>
@@ -621,7 +621,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
                 <h5 class="text-green-400 font-bold mb-3">Fabricantes e Qualidade</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• <strong>ThinkPad (Lenovo):</strong> Teclados com reputação excepcional</li>
                     <li>• <strong>MacBook (Apple):</strong> Force Touch e Magic Keyboard</li>
                     <li>• <strong>XPS (Dell):</strong> Backlit com retroiluminação uniforme</li>
@@ -632,11 +632,11 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Tendências de Mercado para 2026-2027</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Projeções sobre evolução dos teclados de notebooks:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tecnologia</th>
@@ -679,13 +679,13 @@ export default function LaptopKeyboardFixGuide() {
             title: "9. Análise de Custo-Benefício de Reparos",
             content: `
         <h4 class="text-white font-bold mb-3">💰 Avaliação Financeira de Opções de Reparo</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Análise de custo versus benefício para diferentes opções de reparo:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Opções de Reparo</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• <strong>Limpeza profissional:</strong> R$ 80-150</li>
                     <li>• <strong>Substituição do teclado:</strong> R$ 200-500</li>
                     <li>• <strong>Reparo do cabo flat:</strong> R$ 100-250</li>
@@ -695,7 +695,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Alternativas</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• <strong>Teclado externo:</strong> R$ 50-200</li>
                     <li>• <strong>Compra de novo notebook:</strong> R$ 1500+</li>
                     <li>• <strong>Utilização temporária:</strong> Zero custo</li>
@@ -706,11 +706,11 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Análise de Retorno sobre Investimento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Comparação entre diferentes abordagens de resolução:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Solução</th>
@@ -755,7 +755,7 @@ export default function LaptopKeyboardFixGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
             <h4 class="text-amber-400 font-bold mb-2">💡 Dica Pro: Decisão Baseada em Idade do Notebook</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se o notebook tem mais de 4 anos, geralmente compensa mais comprar um teclado externo ou substituir o notebook inteiro. Se tem menos de 2 anos, o reparo costuma ser mais rentável.
             </p>
         </div>
@@ -765,16 +765,16 @@ export default function LaptopKeyboardFixGuide() {
             title: "10. Segurança e Proteção de Dados",
             content: `
         <h4 class="text-white font-bold mb-3">🔒 Segurança Durante o Processo de Reparo</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Considerações importantes sobre segurança de dados ao lidar com teclados defeituosos:
         </p>
         <div class="space-y-6">
             <div class="border-l-4 border-green-500 pl-4 py-2 bg-green-900/10">
                 <h5 class="text-green-400 font-bold mb-2">Proteção de Informações Sensíveis</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Quando o teclado não funciona, é tentador usar métodos alternativos que podem comprometer a segurança:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• Evitar digitar senhas em locais públicos com teclado virtual</li>
                     <li>• Usar autenticação biométrica quando disponível</li>
                     <li>• Não salvar senhas temporariamente em locais inseguros</li>
@@ -784,10 +784,10 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="border-l-4 border-blue-500 pl-4 py-2 bg-blue-900/10">
                 <h5 class="text-blue-400 font-bold mb-2">Criptografia e Backup</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Preparar o sistema para situações de emergência:
                 </p>
-                <ul class="text-sm text-gray-300 space-y-1 mt-2">
+                <ul class="text-sm text-gray-400 space-y-1 mt-2">
                     <li>• Criptografar disco rígido com BitLocker ou VeraCrypt</li>
                     <li>• Configurar backups automáticos regulares</li>
                     <li>• Manter cópias de chaves de recuperação em local seguro</li>
@@ -798,13 +798,13 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Prevenção de Ameaças Durante Reparo</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Medidas de segurança específicas para quando o teclado principal não está funcionando:
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Medidas Imediatas</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Bloquear a tela imediatamente</li>
                     <li>• Não deixar o notebook desacompanhado</li>
                     <li>• Usar teclado virtual com cuidado em locais públicos</li>
@@ -814,7 +814,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-purple-400 font-bold mb-2">Configurações de Segurança</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Ativar bloqueio automático após inatividade</li>
                     <li>• Configurar autenticação biométrica como alternativa</li>
                     <li>• Usar PIN numérico em vez de senhas complexas</li>
@@ -829,13 +829,13 @@ export default function LaptopKeyboardFixGuide() {
             title: "11. Recursos Técnicos e Especificações",
             content: `
         <h4 class="text-white font-bold mb-3">🔧 Especificações Técnicas de Teclados de Notebooks</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Entendimento detalhado das especificações técnicas que afetam a funcionalidade e reparabilidade:
         </p>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-3">Parâmetros Elétricos</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Tensão de operação: 3.3V ou 5V</li>
                     <li>• Corrente de operação: 10-50mA</li>
                     <li>• Impedância de entrada: 10kΩ a 1MΩ</li>
@@ -845,7 +845,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
             <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
                 <h5 class="text-cyan-400 font-bold mb-3">Parâmetros Mecânicos</h5>
-                <ul class="text-sm text-gray-300 space-y-2">
+                <ul class="text-sm text-gray-400 space-y-2">
                     <li>• Curso de tecla: 1.2-2.0mm</li>
                     <li>• Força de ativação: 45-70cN</li>
                     <li>• Ângulo de pressão ideal: 90°</li>
@@ -856,11 +856,11 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Interfaces de Conexão</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Diferentes tipos de interfaces usadas para conectar o teclado à placa-mãe:
         </p>
         <div class="overflow-x-auto">
-            <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+            <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
                     <tr>
                         <th class="p-3 text-left">Tipo</th>
@@ -899,10 +899,10 @@ export default function LaptopKeyboardFixGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Ferramentas Especializadas</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Equipamentos e ferramentas necessárias para diagnóstico e reparo profissional:
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
             <li><strong>Kit de reparo de notebooks:</strong> Chaves Torx, espátulas plásticas, pinças de precisão</li>
             <li><strong>Microscópio digital:</strong> Para inspeção de conectores e trilhas</li>
             <li><strong>Analisador lógico:</strong> Para verificar sinais digitais entre teclado e placa-mãe</li>

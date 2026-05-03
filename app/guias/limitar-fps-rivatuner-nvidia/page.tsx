@@ -34,7 +34,7 @@ export default function LimitFPSGuide() {
         {
             title: "Por que Limitar o FPS se meu PC é Potente?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, ter um FPS alto (ex: 300 FPS) nem sempre significa que o jogo está fluido. O que realmente importa para a suavidade da imagem é o **Frametime** (o tempo que cada quadro leva para ser renderizado). Se o seu FPS oscila entre 200 e 300, você sentirá travadinhas. Limitar o FPS em um valor fixo (ex: 144) garante que todos os quadros saiam no mesmo tempo, eliminando o stuttering e reduzindo o calor da sua GPU.
         </p>
       `
@@ -42,8 +42,8 @@ export default function LimitFPSGuide() {
         {
             title: "1. RivaTuner (RTSS): A Precisão de Milissegundos",
             content: `
-        <p class="mb-4 text-gray-300">O RivaTuner é considerado o limitador mais preciso do mundo:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O RivaTuner é considerado o limitador mais preciso do mundo:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Abra o RivaTuner Statistics Server (instala junto com o MSI Afterburner).</li>
             <li>No campo <strong>'Framerate limit'</strong>, digite o valor desejado (ex: 144).</li>
             <li>Mude o <strong>'Framerate limit mode'</strong> para 'Async' (para menos lag) ou 'Front-edge' (para mais precisão).</li>
@@ -56,7 +56,7 @@ export default function LimitFPSGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Sem instalar nada extra:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Clique com o botão direito na área de trabalho > Painel de Controle da NVIDIA. <br/>
                 2. Vá em 'Gerenciar as configurações em 3D'. <br/>
                 3. Procure por <strong>'Taxa Máxima de Quadros'</strong>. <br/>
@@ -69,7 +69,7 @@ export default function LimitFPSGuide() {
         {
             title: "3. RivaTuner vs NVIDIA: Qual escolher?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - Use o <strong>RivaTuner</strong> se você sente que o jogo está "tremendo" mesmo com FPS alto. Ele é superior na estabilidade da imagem.
             <br/><br/>
             - Use o <strong>Painel NVIDIA</strong> se você joga competitivamente (Valorant, CS2). Em 2026, o limitador da NVIDIA tem um input lag ligeiramente menor que o do RivaTuner, o que pode fazer a diferença na reação de um tiro.

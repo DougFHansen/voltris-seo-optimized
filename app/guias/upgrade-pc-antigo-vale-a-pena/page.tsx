@@ -34,7 +34,7 @@ export default function OldPCUpgradeGuide() {
         {
             title: "A Vida Útil de um Computador",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, a tecnologia avançou de tal forma que o Windows 11 exige requisitos mínimos que muitos PCs de 7 ou 8 anos atrás não conseguem entregar nativamente (como o TPM 2.0). Antes de gastar dinheiro em uma placa de vídeo nova ou mais memória, você precisa entender se a base do seu PC (Placa-mãe e Processador) ainda aguenta o tranco das exigências modernas ou se você está apenas "adiando o inevitável".
         </p>
       `
@@ -42,8 +42,8 @@ export default function OldPCUpgradeGuide() {
         {
             title: "1. O Trio Milagroso: SSD, RAM e Pasta Térmica",
             content: `
-        <p class="mb-4 text-gray-300">Se você quer dar sobrevida a um PC de 2019 a 2022:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Se você quer dar sobrevida a um PC de 2019 a 2022:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>SSD SATA:</strong> Se o seu PC ainda usa HD, colocar um SSD é o upgrade com maior "sentimento" de velocidade. O PC passa a ligar em 15 segundos em vez de 2 minutos.</li>
             <li><strong>RAM:</strong> Se você tem 8GB, pular para 16GB em Dual Channel resolve 90% das travadas em navegação e jogos leves.</li>
             <li><strong>Limpeza Físicia:</strong> Muitas vezes o "PC antigo" está apenas sofrendo com calor. Trocar a pasta térmica seca pode devolver a performance original do processador.</li>
@@ -55,7 +55,7 @@ export default function OldPCUpgradeGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Cuidado com GPUs Modernas:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O erro mais comum é colocar uma RTX 4060 em um processador Intel de 4ª ou 7ª geração. O processador não conseguirá enviar dados rápido o suficiente para a placa de vídeo, resultando em um uso de GPU de apenas 30% e FPS baixo com muitas travadas. Em 2026, se o seu processador tem menos de 6 núcleos físicos (12 threads), ele será o limitador para qualquer placa de vídeo moderna.
             </p>
         </div>
@@ -64,7 +64,7 @@ export default function OldPCUpgradeGuide() {
         {
             title: "3. Quando desistir do upgrade?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Hora de comprar um novo se:</strong>
             <br/><br/>
             - Suas memórias ainda são <strong>DDR3</strong>. <br/>

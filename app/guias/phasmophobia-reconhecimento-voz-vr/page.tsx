@@ -42,7 +42,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Introdução: 'Give Us A Sign'",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O sistema de voz é o coração do jogo. Existem dois modos: Vosk (Processamento dentro do jogo) e Windows (Cortana/Speech API). Escolher o errado faz o jogo ignorar suas perguntas.
         </p>
       `
@@ -65,7 +65,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 2: Alt-Tab Quebra a Voz",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Um bug antigo do Unity: Se você der Alt-Tab, o reconhecimento de voz do Windows perde o foco.
             <br/>Solução: Clique na barra de tarefas do Windows e depois clique no jogo de novo para "retomar" o foco do áudio. Ou use o modo Vosk.
         </p>
@@ -74,7 +74,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 3: Gráficos (Iluminação)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Shadows:</strong> Hard. (Soft Shadows borrada exige mais GPU).
             - <strong>Volumetric Lighting:</strong> Low ou Off. A neblina do acampamento e mapas externos pesa muito.
             - <strong>Bloom:</strong> Off. Ajuda a não ser cegado pela lanterna no escuro.
@@ -87,7 +87,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 4: VR Optimization (Quest/Index)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em VR, o jogo renderiza duas telas.
             <br/>- Desligue "Eye Adaptation". Em VR isso causa náusea quando a luz muda rápido.
             <br/>- Use o <strong>OpenXR Toolkit</strong> para aplicar FSR (Upscaling) se sua placa de vídeo não aguentar 90 FPS nativos.
@@ -97,7 +97,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 5: Mapa Sunny Meadows (FPS Drop)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O hospício (Sunny Meadows) tem centenas de objetos físicos e luzes.
             <br/>Se travar lá, baixe a resolução de texturas para <strong>Half</strong>.
             <br/>Não acenda todas as luzes do mapa ao mesmo tempo. O jogo tem um limite de luzes dinâmicas; se passar, elas começam a piscar.
@@ -107,7 +107,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 6: Microfone (Input Sensitivity)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O jogo não tem ajuste de ganho (volume) de microfone, apenas sensibilidade de ativação.
             <br/>Ajuste o slider até que a barra azul só suba quando você fala. Se ficar sempre cheia, o fantasma vai te achar no armário por causa do ruído do ventilador (Ambient Noise).
             <br/>Use "Push to Talk" se tiver ambiente barulhento.
@@ -117,7 +117,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 7: Spirit Box",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para a Spirit Box funcionar, você precisa:
             <br/>1. Apagar as luzes da sala.
             <br/>2. Estar sozinho (se o fantasma for tímido).
@@ -132,7 +132,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 8: Weather (Chuva/Neve)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A chuva e neve no exterior consomem partículas.
                 <br/>Se tiver PC muito fraco, evite contratos com "Heavy Rain" se possível, ou olhe para o chão ao caminhar para a casa.
             </p>
@@ -141,7 +141,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 9: Crossplay",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Funciona bem entre PC e Console.
                 <br/>O carregamento é sincronizado. Se você tiver SSD e o amigo do PS4 tiver HD, você vai esperar na van até ele carregar.
             </p>
@@ -150,7 +150,7 @@ export default function PhasmophobiaGuide() {
         {
             title: "Capítulo 10: Filtros de Cor",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Aumente o <strong>Brilho (Brightness)</strong> no jogo para 2.0 ou 3.0.
                 <br/>Alguns monitores são muito escuros e você não vê nada sem lanterna. Aumentar o brilho ajuda a sobreviver durante caçadas sem luz.
             </p>

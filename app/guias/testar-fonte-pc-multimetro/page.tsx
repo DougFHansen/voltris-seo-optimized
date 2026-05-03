@@ -34,7 +34,7 @@ export default function PowerSupplyTestGuide() {
         {
             title: "Diagnóstico Elétrico: O PC está 'vivo'?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, com placas de vídeo exigindo cada vez mais energia, a fonte de alimentação (PSU) tornou-se o componente que mais falha silenciosamente. O PC pode ligar os LEDs, mas não dar vídeo por falta de voltagem estável na linha de 12V. Usar um multímetro é a única forma de garantir que sua fonte não está "morrendo" e colocando em risco seus outros componentes caros.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PowerSupplyTestGuide() {
         {
             title: "1. O Teste do Clipe de Papel (Power On)",
             content: `
-        <p class="mb-4 text-gray-300">Primeiro, precisamos fazer a fonte ligar sem estar conectada à placa-mãe:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Primeiro, precisamos fazer a fonte ligar sem estar conectada à placa-mãe:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Desligue a fonte da tomada e remova todos os cabos do PC.</li>
             <li>No conector grande de 24 pinos, localize o único <strong>Fio Verde</strong> (PS_ON).</li>
             <li>Use um clipe de papel para conectar o pino do fio verde com qualquer <strong>Fio Preto</strong> (GND) vizinho.</li>
@@ -56,7 +56,7 @@ export default function PowerSupplyTestGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Valores de Referência em 2026:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Coloque o multímetro na escala de <strong>20V DC</strong>. Com a fonte ligada (pelo teste do clipe): <br/><br/>
                 - <strong>Fio Amarelo:</strong> Deve marcar entre 11.4V e 12.6V. Se estiver abaixo de 11.4V, sua fonte não aguentará uma placa de vídeo pesada. <br/>
                 - <strong>Fio Vermelho:</strong> Deve marcar próximo de 5.0V. <br/>
@@ -69,7 +69,7 @@ export default function PowerSupplyTestGuide() {
         {
             title: "3. Sintomas de Fonte Defeituosa",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Quando trocar a fonte?</strong> 
             <br/><br/>Se as voltagens oscilarem muito (ex: o 12V ficar pulando para 11V e voltando), os capacitores da sua fonte estão esgotados. Em 2026, uma fonte instável causa o famoso <strong>reboot espontâneo</strong>: o seu PC desliga do nada enquanto você joga algo pesado, pois a voltagem cai abaixo do limite de segurança e a placa-mãe corta a energia para se proteger.
         </p>

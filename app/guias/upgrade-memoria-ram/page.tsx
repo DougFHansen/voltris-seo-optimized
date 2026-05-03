@@ -34,7 +34,7 @@ export default function RAMUpgradeGuide() {
     {
       title: "Quanta RAM eu preciso em 2026?",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, os **16GB de RAM** que antes eram o ideal, tornaram-se o mínimo absoluto para quem joga ou trabalha. Com o Windows 11 e navegadores consumindo cada vez mais, o novo padrão recomendado para uma experiência sem travamentos é **32GB**. No entanto, não basta apenas comprar qualquer memória; a velocidade e a latência (CL) definem se o seu upgrade será um sucesso ou um desperdício de dinheiro.
         </p>
       `
@@ -42,8 +42,8 @@ export default function RAMUpgradeGuide() {
     {
       title: "1. DDR4 vs DDR5: Não são compatíveis!",
       content: `
-        <p class="mb-4 text-gray-300">O erro mais comum em 2026 é comprar o padrão errado:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">O erro mais comum em 2026 é comprar o padrão errado:</p>
+        <p class="text-sm text-gray-400">
             Pentes DDR5 não encaixam em slots DDR4 e vice-versa. <br/><br/>
             - <strong>DDR4:</strong> Presente em PCs até 2022/2023. Frequências comuns: 3200MHz. <br/>
             - <strong>DDR5:</strong> O padrão dos PCs modernos em 2026. Frequências começando em 4800MHz e chegando a 8000MHz+. <br/>
@@ -56,7 +56,7 @@ export default function RAMUpgradeGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Dobre a Banda de Memória:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Nunca use apenas um pente de 16GB se você tem dois slots. Colocar dois pentes de 8GB (Total 16GB) ativa o <strong>Dual Channel</strong>, o que dobra a velocidade de comunicação entre a CPU e a RAM. Em 2026, jogar em Single Channel (um pente só) pode causar quedas de até 30% no seu FPS mínimo, gerando travadas constantes em jogos competitivos.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function RAMUpgradeGuide() {
     {
       title: "3. Misturando Marcas e Velocidades",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Posso misturar?</strong> 
             <br/><br/>Sim, porém o PC sempre rodará na velocidade da memória **mais lenta**. Se você tem um pente de 3600MHz e coloca outro de 2400MHz, ambos funcionarão a 2400MHz. O ideal em 2026 é comprar kits fechados (2x8GB ou 2x16GB) da mesma marca e lote para garantir 100% de estabilidade e ativar o perfil XMP/EXPO sem erros de tela azul.
         </p>

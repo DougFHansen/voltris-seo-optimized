@@ -40,7 +40,7 @@ export default function SpeedtestGuide() {
     {
       title: "Pare de olhar apenas o Download",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Jogos online consomem pouquíssima banda (menos de 1 Mega de download). O que importa é a velocidade com que os dados viajam (Latência/Ping) e a consistência dessa viagem (Jitter).
         </p>
 
@@ -48,7 +48,7 @@ export default function SpeedtestGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">📈</span> Monitor de Rota Voltris
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 O Ping testado no navegador nem sempre reflete o jogo. O <strong>Voltris Optimizer</strong> traça a rota (Traceroute) do seu PC até os servidores de São Paulo (AWS, Riot, Valve) e mostra onde está o gargalo: na sua casa, no provedor ou no servidor do jogo.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,11 +64,11 @@ export default function SpeedtestGuide() {
     {
       title: "O Teste Real: Waveform",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Esqueça o Fast.com ou MinhaConexão. Acesse <strong>waveform.com/tools/bufferbloat</strong>.
         </p>
-        <p class="text-gray-300 mb-2 font-bold">O que ele mede?</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <p class="text-gray-400 mb-2 font-bold">O que ele mede?</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li><strong>Unloaded Ping:</strong> Seu ping quando ninguém está usando a Internet.</li>
             <li><strong>Download Active Ping:</strong> Seu ping enquanto alguém baixa um arquivo pesado. Se esse número subir de 20ms para 200ms, você sofre de <strong>Bufferbloat</strong>.</li>
             <li><strong>Nota (Grau):</strong> Se tirar C, D ou F, seu roteador é ruim em gerenciar tráfego.</li>
@@ -78,12 +78,12 @@ export default function SpeedtestGuide() {
     {
       title: "O que é Jitter?",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Jitter é a variação do ping.
             <br/>Cenário A: Ping estável em 50ms. (Ótimo).
             <br/>Cenário B: Ping varia entre 20ms, 80ms, 30ms, 100ms. (Péssimo).
         </p>
-        <p class="text-gray-300">
+        <p class="text-gray-400">
             Jitter alto causa "teleportes" e bonecos patinando no jogo. Geralmente é causado por Wi-Fi instável ou rota ruim da operadora.
         </p>
       `
@@ -96,10 +96,10 @@ export default function SpeedtestGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">Smart Queue Management</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Se você tirou nota baixa no Waveform:
                 </p>
-                <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+                <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
                     <li>Ative o QoS no seu roteador.</li>
                     <li>Limite a velocidade máxima em 95% do total contratado. (Ex: Se tem 100 Mega, limite em 95 Mega).</li>
                     <li>Isso impede que o buffer do roteador encha, mantendo a fila livre para os pacotes do jogo passarem na frente do download.</li>
@@ -113,10 +113,10 @@ export default function SpeedtestGuide() {
     {
       title: "Packet Loss (Perda de Pacote)",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Abra o CMD (Prompt de Comando) e digite: <code>ping google.com -n 50</code>.
             </p>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
                 Ele fará 50 testes. No final, veja "Perdidos". Deve ser 0 (0% de perda). Se tiver 1% ou mais, chame o técnico da operadora. Há defeito físico na fiação, fibra dobrada ou roteador morrendo. Não há software que resolva perda de pacote física.
             </p>
             `

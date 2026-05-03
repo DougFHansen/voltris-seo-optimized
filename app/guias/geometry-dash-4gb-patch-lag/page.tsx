@@ -34,7 +34,7 @@ export default function GeometryDashPatchGuide() {
         {
             title: "Por que o Geometry Dash trava mesmo em PCs Fortes?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Geometry Dash é um programa de 32 bits. Por padrão, o Windows limita esse tipo de programa a usar apenas **2GB de memória RAM**. Em níveis modernos da comunidade ("Extreme Demons") com milhares de objetos e efeitos, o jogo atinge esse limite rapidamente e fecha sozinho ou começa a rodar em câmera lenta.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GeometryDashPatchGuide() {
         {
             title: "1. Como aplicar o 4GB Patch",
             content: `
-        <p class="mb-4 text-gray-300">O 4GB Patch é uma ferramenta minúscula que muda um "flag" dentro do executável do jogo.</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O 4GB Patch é uma ferramenta minúscula que muda um "flag" dentro do executável do jogo.</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Baixe o <strong>4GB Patch</strong> (de sites confiáveis como o da NTCore).</li>
             <li>Abra o programa e selecione o arquivo <code>GeometryDash.exe</code> na sua pasta da Steam. <br/> (Geralmente em: <code>C:/Program Files (x86)/Steam/steamapps/common/Geometry Dash</code>)</li>
             <li>O programa dirá "Executable successfully patched!".</li>
@@ -56,7 +56,7 @@ export default function GeometryDashPatchGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Alternativa Moderna:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se você usa o <strong>Mega Hack</strong> (v7 ou v8), o patch de 4GB já vem embutido e é aplicado automaticamente. Além disso, use o 'FPS Bypass' para jogar a 144Hz ou 240Hz mesmo que o seu monitor seja 60Hz, o que reduz o input lag drasticamente nos pulos.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function GeometryDashPatchGuide() {
         {
             title: "3. Dica: Smooth Fix e LDM",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Dentro do jogo, sempre ative o <strong>LDM (Low Detail Mode)</strong> nos níveis que oferecem essa opção. Desative o 'Smooth Fix' nas configurações de vídeo, pois ele pode fazer o jogo rodar em câmera lenta se o seu PC não mantiver o FPS estável, o que estraga o timing da música.
         </p>
       `

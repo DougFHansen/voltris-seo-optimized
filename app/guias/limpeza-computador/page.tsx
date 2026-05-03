@@ -28,7 +28,7 @@ export default function LimpezaComputadorGuide() {
     {
       title: "Introdução e Visão Geral",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A limpeza do computador é uma prática essencial para manter o desempenho ideal do sistema. Com o uso contínuo, seu computador acumula arquivos temporários, cache de navegadores, registros inválidos, programas desnecessários e outros detritos digitais que gradualmente reduzem a velocidade e ocupam espaço valioso em disco. Este guia completo com mais de 2000 palavras irá mostrar as melhores técnicas profissionais para limpar e otimizar seu sistema de forma segura e eficiente.
         </p>
         
@@ -37,7 +37,7 @@ export default function LimpezaComputadorGuide() {
             <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#31A8FF]">✓</span> Benefícios
             </h3>
-            <ul class="text-gray-300 space-y-2">
+            <ul class="text-gray-400 space-y-2">
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#31A8FF] flex-shrink-0"></span>Aumento de 25-40% na velocidade de boot</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#31A8FF] flex-shrink-0"></span>Liberação de 5-20GB de espaço em disco</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#31A8FF] flex-shrink-0"></span>Melhoria na resposta de programas</li>
@@ -49,7 +49,7 @@ export default function LimpezaComputadorGuide() {
             <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#FF4B6B]">⚠</span> Requisitos
             </h3>
-            <ul class="text-gray-300 space-y-2">
+            <ul class="text-gray-400 space-y-2">
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF4B6B] flex-shrink-0"></span>Permissões de administrador do Windows</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF4B6B] flex-shrink-0"></span>Backup recente dos dados importantes</li>
               <li class="flex items-start gap-2"><span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#FF4B6B] flex-shrink-0"></span>Conexão à internet (opcional)</li>
@@ -66,15 +66,15 @@ export default function LimpezaComputadorGuide() {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-black/30 p-4 rounded-lg">
               <h4 class="font-bold text-blue-400 mb-2">Acúmulo de Arquivos</h4>
-              <p class="text-gray-300">Computadores não mantidos acumulam 10-30GB de arquivos temporários em 6 meses</p>
+              <p class="text-gray-400">Computadores não mantidos acumulam 10-30GB de arquivos temporários em 6 meses</p>
             </div>
             <div class="bg-black/30 p-4 rounded-lg">
               <h4 class="font-bold text-purple-400 mb-2">Performance</h4>
-              <p class="text-gray-300">Sistemas bem mantidos mantêm 85-95% da performance original</p>
+              <p class="text-gray-400">Sistemas bem mantidos mantêm 85-95% da performance original</p>
             </div>
             <div class="bg-black/30 p-4 rounded-lg">
               <h4 class="font-bold text-green-400 mb-2">Custos</h4>
-              <p class="text-gray-300">Manutenção preventiva reduz custos com substituição em até 60%</p>
+              <p class="text-gray-400">Manutenção preventiva reduz custos com substituição em até 60%</p>
             </div>
           </div>
         </div>
@@ -83,11 +83,11 @@ export default function LimpezaComputadorGuide() {
         {
           subtitle: "Importância da Limpeza Regular",
           content: `
-            <p class="text-gray-300 mb-4">A limpeza regular do computador é fundamental para manter a saúde do sistema operacional e prolongar a vida útil do hardware. Com o tempo, arquivos temporários, cache de navegadores, registros inválidos e programas desnecessários se acumulam, ocupando espaço em disco e afetando o desempenho do sistema.</p>
+            <p class="text-gray-400 mb-4">A limpeza regular do computador é fundamental para manter a saúde do sistema operacional e prolongar a vida útil do hardware. Com o tempo, arquivos temporários, cache de navegadores, registros inválidos e programas desnecessários se acumulam, ocupando espaço em disco e afetando o desempenho do sistema.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
                 <h5 class="font-bold text-blue-400 mb-2">Aspectos Técnicos</h5>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                   <li>• Prevenção de falhas de sistema</li>
                   <li>• Otimização de recursos do sistema</li>
                   <li>• Eliminação de arquivos obsoletos</li>
@@ -96,7 +96,7 @@ export default function LimpezaComputadorGuide() {
               </div>
               <div class="bg-[#1E1E22] p-4 rounded-lg border border-green-500/30">
                 <h5 class="font-bold text-green-400 mb-2">Benefícios Práticos</h5>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                   <li>• Aumento de espaço disponível</li>
                   <li>• Redução de tempo de resposta</li>
                   <li>• Menos erros de aplicativos</li>
@@ -111,7 +111,7 @@ export default function LimpezaComputadorGuide() {
     {
       title: "1. Identificação de Arquivos Necessários e Desnecessários",
       content: `
-        <p class="mb-4 text-gray-300">Antes de iniciar a limpeza, é importante entender quais arquivos podem ser removidos com segurança e quais devem ser mantidos:</p>
+        <p class="mb-4 text-gray-400">Antes de iniciar a limpeza, é importante entender quais arquivos podem ser removidos com segurança e quais devem ser mantidos:</p>
       `,
       subsections: [
         {
@@ -119,7 +119,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Arquivos Seguros para Remoção:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>Arquivos temporários do sistema (%temp%, C:\Windows\Temp)</li>
                 <li>Cache de navegadores web</li>
                 <li>Arquivos de download incompletos</li>
@@ -130,7 +130,7 @@ export default function LimpezaComputadorGuide() {
               </ul>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Arquivos que Requerem Cuidado:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300 mt-2">
+              <ul class="list-disc list-inside space-y-2 text-gray-400 mt-2">
                 <li>Registros do sistema (requer backup antes de edição)</li>
                 <li>Arquivos de programas em uso</li>
                 <li>Arquivos de drivers recentes</li>
@@ -160,13 +160,13 @@ export default function LimpezaComputadorGuide() {
     {
       title: "2. Limpeza Profunda com CCleaner",
       content: `
-        <p class="mb-4 text-gray-300">CCleaner é uma das ferramentas mais populares para limpeza de sistemas Windows, oferecendo uma interface amigável e recursos avançados:</p>
+        <p class="mb-4 text-gray-400">CCleaner é uma das ferramentas mais populares para limpeza de sistemas Windows, oferecendo uma interface amigável e recursos avançados:</p>
       `,
       subsections: [
         {
           subtitle: "Passo 1: Preparação e Backup",
           content: `
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4">
+            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4">
               <li><strong>Backup de Dados:</strong> Copie documentos importantes para unidade externa ou nuvem</li>
               <li><strong>Ponto de Restauração:</strong> Crie restore point em Painel de Controle > Sistema > Proteção do Sistema</li>
               <li><strong>Fechar Programas:</strong> Encerre todos os aplicativos exceto o navegador para download</li>
@@ -180,7 +180,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Instalação:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>Execute o instalador baixado como administrador</li>
                 <li>Siga as telas de instalação padrão</li>
                 <li>Desmarque opções de instalação de softwares adicionais</li>
@@ -205,7 +205,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Limpeza:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>Clique na aba "Cleaner" e selecione "Windows" e "Applications"</li>
                 <li>Marque todas as opções disponíveis (Temp files, Recycle Bin, Recent Docs, etc.)</li>
                 <li>Desmarque opções que contenham dados importantes (ex: cookies de sites importantes)</li>
@@ -221,7 +221,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Limpeza de Navegadores:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>Na mesma aba "Cleaner", selecione cada navegador instalado (Chrome, Firefox, Edge, Opera)</li>
                 <li>Marque opções de cache, cookies, histórico e dados de formulários</li>
                 <li>Execute a limpeza separadamente para cada navegador</li>
@@ -229,7 +229,7 @@ export default function LimpezaComputadorGuide() {
               </ul>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Limpeza de Aplicativos:</h4>
-              <p class="text-gray-300">A aba "Applications" permite limpar cache de diversos programas como Adobe Reader, Windows Media Player, entre outros.</p>
+              <p class="text-gray-400">A aba "Applications" permite limpar cache de diversos programas como Adobe Reader, Windows Media Player, entre outros.</p>
             </div>
           `
         },
@@ -238,7 +238,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Otimização:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>Clique na aba "Registry" na parte superior</li>
                 <li>Clique em "Scan for Issues" para encontrar entradas inválidas</li>
                 <li>Revise cuidadosamente os itens encontrados (normalmente são seguros)</li>
@@ -254,7 +254,7 @@ export default function LimpezaComputadorGuide() {
     {
       title: "3. Ferramentas Alternativas e Nativas do Windows",
       content: `
-        <p class="mb-4 text-gray-300">Além do CCleaner, existem outras excelentes opções gratuitas e ferramentas nativas do Windows para limpeza de computadores:</p>
+        <p class="mb-4 text-gray-400">Além do CCleaner, existem outras excelentes opções gratuitas e ferramentas nativas do Windows para limpeza de computadores:</p>
       `,
       subsections: [
         {
@@ -262,7 +262,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Disk Cleanup (Limpeza de Disco):</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>Executar: Win + R → cleanmgr</li>
                 <li>Limpa arquivos temporários do sistema</li>
                 <li>Libera espaço em unidades específicas</li>
@@ -271,10 +271,10 @@ export default function LimpezaComputadorGuide() {
               </ul>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Storage Sense:</h4>
-              <p class="text-gray-300">Recurso do Windows 10/11 que limpa automaticamente arquivos temporários e desnecessários.</p>
+              <p class="text-gray-400">Recurso do Windows 10/11 que limpa automaticamente arquivos temporários e desnecessários.</p>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Windows Settings:</h4>
-              <p class="text-gray-300">Configurações > Sistema > Armazenamento > Limpar agora para limpeza rápida de arquivos temporários.</p>
+              <p class="text-gray-400">Configurações > Sistema > Armazenamento > Limpar agora para limpeza rápida de arquivos temporários.</p>
             </div>
           `
         },
@@ -284,7 +284,7 @@ export default function LimpezaComputadorGuide() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
                 <h4 class="text-white font-semibold mb-2">BleachBit</h4>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                   <li>Software open-source gratuito</li>
                   <li>Funciona em Windows e Linux</li>
                   <li>Interface intuitiva similar ao CCleaner</li>
@@ -294,7 +294,7 @@ export default function LimpezaComputadorGuide() {
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#FF4B6B]/20">
                 <h4 class="text-white font-semibold mb-2">Disk Cleanup (cleanmgr)</h4>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                   <li>Ferramenta nativa do Windows</li>
                   <li>Sem necessidade de instalação</li>
                   <li>Integração total com o sistema</li>
@@ -304,7 +304,7 @@ export default function LimpezaComputadorGuide() {
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#8B31FF]/20">
                 <h4 class="text-white font-semibold mb-2">Wise Disk Cleaner</h4>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                   <li>Interface amigável e eficiente</li>
                   <li>Busca arquivos temporários em profundidade</li>
                   <li>Opções de limpeza agendada</li>
@@ -314,7 +314,7 @@ export default function LimpezaComputadorGuide() {
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
                 <h4 class="text-white font-semibold mb-2">Glarysoft Quick Shutdown</h4>
-                <ul class="text-gray-300 text-sm space-y-1">
+                <ul class="text-gray-400 text-sm space-y-1">
                   <li>Parte da suíte Glary Utilities</li>
                   <li>Limpeza e otimização combinadas</li>
                   <li>Monitoramento de sistema</li>
@@ -330,7 +330,7 @@ export default function LimpezaComputadorGuide() {
     {
       title: "4. Desinstalação de Programas e Software Não Utilizado",
       content: `
-        <p class="mb-4 text-gray-300">A desinstalação de programas desnecessários é uma parte crucial da limpeza profunda do computador:</p>
+        <p class="mb-4 text-gray-400">A desinstalação de programas desnecessários é uma parte crucial da limpeza profunda do computador:</p>
       `,
       subsections: [
         {
@@ -338,7 +338,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Via Configurações do Windows:</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-300">
+              <ol class="list-decimal list-inside space-y-2 text-gray-400">
                 <li>Pressione Win + I para abrir Configurações</li>
                 <li>Selecione Aplicativos > Aplicativos e recursos</li>
                 <li>Clique em um programa e selecione Desinstalar</li>
@@ -346,7 +346,7 @@ export default function LimpezaComputadorGuide() {
               </ol>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Via Painel de Controle:</h4>
-              <ol class="list-decimal list-inside space-y-2 text-gray-300 mt-2">
+              <ol class="list-decimal list-inside space-y-2 text-gray-400 mt-2">
                 <li>Abra o Painel de Controle</li>
                 <li>Selecione Programas > Programas e Recursos</li>
                 <li>Selecione o programa e clique em Desinstalar</li>
@@ -360,13 +360,13 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Revo Uninstaller:</h4>
-              <p class="text-gray-300">Ferramenta que remove não apenas o programa, mas também todos os arquivos, pastas e entradas de registro relacionados.</p>
+              <p class="text-gray-400">Ferramenta que remove não apenas o programa, mas também todos os arquivos, pastas e entradas de registro relacionados.</p>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">IObit Uninstaller:</h4>
-              <p class="text-gray-300">Oferece varredura profunda após a desinstalação padrão para remover resíduos.</p>
+              <p class="text-gray-400">Oferece varredura profunda após a desinstalação padrão para remover resíduos.</p>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Geek Uninstaller:</h4>
-              <p class="text-gray-300">Ferramenta leve e gratuita que força a desinstalação de programas teimosos.</p>
+              <p class="text-gray-400">Ferramenta leve e gratuita que força a desinstalação de programas teimosos.</p>
             </div>
           `
         },
@@ -375,7 +375,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Software Bloatware Comum:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>Aplicativos de fabricantes de hardware (HP, Dell, Lenovo, etc.)</li>
                 <li>Trialware de antivírus e software de otimização</li>
                 <li>Aplicativos de redes sociais e jogos pré-instalados</li>
@@ -390,7 +390,7 @@ export default function LimpezaComputadorGuide() {
     {
       title: "5. Otimização do Disco Rígido e SSD",
       content: `
-        <p class="mb-4 text-gray-300">A otimização do disco é essencial para manter o desempenho do sistema, especialmente em discos mecânicos:</p>
+        <p class="mb-4 text-gray-400">A otimização do disco é essencial para manter o desempenho do sistema, especialmente em discos mecânicos:</p>
       `,
       subsections: [
         {
@@ -398,8 +398,8 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Importância da Desfragmentação:</h4>
-              <p class="text-gray-300 mb-3">A desfragmentação organiza os arquivos no disco para melhorar o acesso e a velocidade de leitura:</p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-300">
+              <p class="text-gray-400 mb-3">A desfragmentação organiza os arquivos no disco para melhorar o acesso e a velocidade de leitura:</p>
+              <ol class="list-decimal list-inside space-y-2 text-gray-400">
                 <li>Abra "Otimização e desfragmentação de unidades" (Win + R → dfrgui)</li>
                 <li>Selecione o disco e clique em "Otimizar"</li>
                 <li>Agende automaticamente para manutenção regular</li>
@@ -413,8 +413,8 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Diferenças para SSDs:</h4>
-              <p class="text-gray-300 mb-3">SSDs não devem ser desfragmentados pois isso reduz sua vida útil. Em vez disso, devem ser otimizados com TRIM:</p>
-              <ul class="list-disc list-inside space-y-2 text-gray-300 mt-2">
+              <p class="text-gray-400 mb-3">SSDs não devem ser desfragmentados pois isso reduz sua vida útil. Em vez disso, devem ser otimizados com TRIM:</p>
+              <ul class="list-disc list-inside space-y-2 text-gray-400 mt-2">
                 <li>O Windows 10/11 faz TRIM automaticamente</li>
                 <li>Verifique se o TRIM está ativado: fsutil behavior query DisableDeleteNotify</li>
                 <li>Resultado "0" indica que o TRIM está ativado</li>
@@ -428,7 +428,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Utilizando o CHKDSK:</h4>
-              <p class="text-gray-300 mb-3">O comando CHKDSK verifica e corrige erros no sistema de arquivos:</p>
+              <p class="text-gray-400 mb-3">O comando CHKDSK verifica e corrige erros no sistema de arquivos:</p>
               <div class="bg-black p-4 rounded border border-blue-500/30 font-mono text-sm text-blue-400 mt-2">
                 <p>chkdsk C: /f /r /x</p>
                 <p># /f - Corrige erros no disco</p>
@@ -443,7 +443,7 @@ export default function LimpezaComputadorGuide() {
     {
       title: "6. Limpeza Avançada do Sistema",
       content: `
-        <p class="mb-4 text-gray-300">Técnicas avançadas para uma limpeza mais profunda do sistema operacional:</p>
+        <p class="mb-4 text-gray-400">Técnicas avançadas para uma limpeza mais profunda do sistema operacional:</p>
       `,
       subsections: [
         {
@@ -451,8 +451,8 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Windows Update Cleanup:</h4>
-              <p class="text-gray-300 mb-3">Remove arquivos de atualizações antigas do Windows:</p>
-              <ol class="list-decimal list-inside space-y-2 text-gray-300">
+              <p class="text-gray-400 mb-3">Remove arquivos de atualizações antigas do Windows:</p>
+              <ol class="list-decimal list-inside space-y-2 text-gray-400">
                 <li>Execute Disk Cleanup como administrador</li>
                 <li>Clique em "Limpar arquivos de sistema"</li>
                 <li>Marque "Arquivos de atualizações do Windows"</li>
@@ -460,7 +460,7 @@ export default function LimpezaComputadorGuide() {
               </ol>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Componentes de Sistema Obsoletos:</h4>
-              <p class="text-gray-300">Use o comando DISM para remover componentes desnecessários:</p>
+              <p class="text-gray-400">Use o comando DISM para remover componentes desnecessários:</p>
               <div class="bg-black p-4 rounded border border-green-500/30 font-mono text-sm text-green-400 mt-2">
                 <p>dism /online /cleanup-image /spsuperseded</p>
                 <p>dism /online /cleanup-image /startcomponentcleanup</p>
@@ -473,7 +473,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Pastas de Cache Comuns:</h4>
-              <ul class="list-disc list-inside space-y-2 text-gray-300">
+              <ul class="list-disc list-inside space-y-2 text-gray-400">
                 <li>%LOCALAPPDATA%\Microsoft\Windows\INetCache - Cache da Internet</li>
                 <li>C:\Windows\SoftwareDistribution\Download - Cache de atualizações</li>
                 <li>%USERPROFILE%\AppData\LocalLow\Temp - Arquivos temporários especiais</li>
@@ -487,13 +487,13 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="prose prose-invert max-w-none">
               <h4 class="text-lg font-bold text-white mt-4 mb-2">System File Checker (SFC):</h4>
-              <p class="text-gray-300 mb-3">Verifica e repara arquivos do sistema corrompidos:</p>
+              <p class="text-gray-400 mb-3">Verifica e repara arquivos do sistema corrompidos:</p>
               <div class="bg-black p-4 rounded border border-purple-500/30 font-mono text-sm text-purple-400 mt-2">
                 <p>sfc /scannow</p>
               </div>
               
               <h4 class="text-lg font-bold text-white mt-4 mb-2">Deployment Image Servicing and Management (DISM):</h4>
-              <p class="text-gray-300">Repara a imagem do sistema operacional:</p>
+              <p class="text-gray-400">Repara a imagem do sistema operacional:</p>
               <div class="bg-black p-4 rounded border border-yellow-500/30 font-mono text-sm text-yellow-400 mt-2">
                 <p>dism /online /cleanup-image /restorehealth</p>
               </div>
@@ -505,7 +505,7 @@ export default function LimpezaComputadorGuide() {
     {
       title: "7. Problemas Comuns e Soluções",
       content: `
-        <p class="mb-4 text-gray-300">Soluções para problemas frequentes que podem ocorrer durante ou após a limpeza do computador:</p>
+        <p class="mb-4 text-gray-400">Soluções para problemas frequentes que podem ocorrer durante ou após a limpeza do computador:</p>
       `,
       subsections: [
         {
@@ -514,8 +514,8 @@ export default function LimpezaComputadorGuide() {
             <div class="space-y-4">
               <div class="bg-[#171313] p-4 rounded-lg border border-red-500/30">
                 <h4 class="text-red-400 font-semibold mb-2">❌ Erro: "Access Denied" ao deletar arquivos</h4>
-                <p class="text-gray-300 text-sm mb-2">Solução:</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
+                <p class="text-gray-400 text-sm mb-2">Solução:</p>
+                <ul class="text-gray-400 text-xs space-y-1 ml-4">
                   <li>Reinicie o computador em modo de segurança</li>
                   <li>Execute a ferramenta de limpeza como administrador (botão direito → Executar como administrador)</li>
                   <li>Desative programas que possam estar usando os arquivos</li>
@@ -526,8 +526,8 @@ export default function LimpezaComputadorGuide() {
               
               <div class="bg-[#171313] p-4 rounded-lg border border-yellow-500/30">
                 <h4 class="text-yellow-400 font-semibold mb-2">⚠️ Aviso: "System Restore Point Failed"</h4>
-                <p class="text-gray-300 text-sm mb-2">Solução:</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4">
+                <p class="text-gray-400 text-sm mb-2">Solução:</p>
+                <ul class="text-gray-400 text-xs space-y-1 ml-4">
                   <li>Verifique espaço disponível em disco (mínimo 5GB livres)</li>
                   <li>Execute Disk Cleanup antes de criar restore point</li>
                   <li>Reinicie o serviço Volume Shadow Copy via services.msc</li>
@@ -544,36 +544,36 @@ export default function LimpezaComputadorGuide() {
             <div class="space-y-4">
               <div class="bg-[#171313] p-4 rounded-lg border border-purple-500/30">
                 <h4 class="text-purple-400 font-semibold mb-2">🖥️ Programas Abrindo Lentos</h4>
-                <p class="text-gray-300 text-sm mb-2">Causa Provável:</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4 mb-2">
+                <p class="text-gray-400 text-sm mb-2">Causa Provável:</p>
+                <ul class="text-gray-400 text-xs space-y-1 ml-4 mb-2">
                   <li>Cache de programas foi limpo</li>
                   <li>Navegador precisa reconstruir cache</li>
                   <li>Arquivos temporários foram removidos</li>
                   <li>Sistema operacional reconstruindo índices</li>
                 </ul>
-                <p class="text-gray-300 text-sm">Solução: Normalize após algumas horas de uso. Os programas irão reconstruir caches automaticamente.</p>
+                <p class="text-gray-400 text-sm">Solução: Normalize após algumas horas de uso. Os programas irão reconstruir caches automaticamente.</p>
               </div>
               
               <div class="bg-[#171313] p-4 rounded-lg border border-blue-500/30">
                 <h4 class="text-blue-400 font-semibold mb-2">🔒 Sites Pedindo Login Novamente</h4>
-                <p class="text-gray-300 text-sm mb-2">Causa:</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4 mb-2">
+                <p class="text-gray-400 text-sm mb-2">Causa:</p>
+                <ul class="text-gray-400 text-xs space-y-1 ml-4 mb-2">
                   <li>Cookies e dados de sessão foram limpos</li>
                   <li>Autofill de formulários foi removido</li>
                   <li>Cache de autenticação foi apagado</li>
                 </ul>
-                <p class="text-gray-300 text-sm">Solução: Faça login novamente nos sites importantes. Considere desmarcar "Cookies" em limpezas futuras se quiser manter logins salvos.</p>
+                <p class="text-gray-400 text-sm">Solução: Faça login novamente nos sites importantes. Considere desmarcar "Cookies" em limpezas futuras se quiser manter logins salvos.</p>
               </div>
               
               <div class="bg-[#171313] p-4 rounded-lg border border-green-500/30">
                 <h4 class="text-green-400 font-semibold mb-2">⚙️ Sistema Instável Após Limpeza do Registro</h4>
-                <p class="text-gray-300 text-sm mb-2">Causa:</p>
-                <ul class="text-gray-300 text-xs space-y-1 ml-4 mb-2">
+                <p class="text-gray-400 text-sm mb-2">Causa:</p>
+                <ul class="text-gray-400 text-xs space-y-1 ml-4 mb-2">
                   <li>Entradas de registro importantes foram removidas</li>
                   <li>Programas não funcionam corretamente</li>
                   <li>Erros de inicialização ocorrem</li>
                 </ul>
-                <p class="text-gray-300 text-sm">Solução: Restaure o sistema a partir de um ponto de restauração criado antes da limpeza.</p>
+                <p class="text-gray-400 text-sm">Solução: Restaure o sistema a partir de um ponto de restauração criado antes da limpeza.</p>
               </div>
             </div>
           `
@@ -581,7 +581,7 @@ export default function LimpezaComputadorGuide() {
         {
           subtitle: "Dicas de Prevenção",
           content: `
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4">
+            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4">
               <li>Configure limpeza automática mensal no próprio CCleaner ou usando ferramentas nativas</li>
               <li>Mantenha pelo menos 15-20% de espaço livre no disco principal</li>
               <li>Faça backup de senhas importantes antes de limpar navegadores</li>
@@ -598,7 +598,7 @@ export default function LimpezaComputadorGuide() {
       title: "Conclusão Profissional",
       content: `
         <div class="bg-gradient-to-r from-[#1E1E22] to-[#171313] p-6 rounded-xl border border-gray-800">
-          <p class="mb-4 text-gray-300 leading-relaxed">
+          <p class="mb-4 text-gray-400 leading-relaxed">
             A limpeza completa do computador é uma prática essencial para manter o desempenho ideal do sistema. 
             Seguindo este guia, você aplicou técnicas de nível profissional que limpam e otimizam seu sistema de forma segura e eficiente.
           </p>

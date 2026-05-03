@@ -42,7 +42,7 @@ export default function AudioGuide() {
         {
             title: "Introdução: O Segredo dos Pro Players",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Jogos como CS e Tarkov têm sons de passos em frequências específicas (agudos médios). Explosões e tiros são graves. Se você aumentar o volume para ouvir passos, o tiro te deixa surdo. A solução é o Compressor.
         </p>
       `
@@ -67,7 +67,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 2: Equalização para Passos (Footsteps)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No Peace, você verá sliders de frequência.
             <br/>- <strong>60Hz a 250Hz (Graves):</strong> Reduza (-3dB a -6dB). Isso diminui o "Boom" de granadas e o ronco de motores, limpando o som.
             <br/>- <strong>2000Hz a 4000Hz (Médios Agudos):</strong> Aumente (+3dB a +6dB). É aqui que vivem os passos em madeira, metal e terra.
@@ -78,7 +78,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 3: Compressor (Nivelamento)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A ferramenta mais poderosa.
             <br/>No painel "Effects" do Peace, ative o Compression.
             <br/>Ele aumenta sons baixos (passos longe) e diminui sons altos (tiro de AWP do seu lado) automaticamente em tempo real.
@@ -93,7 +93,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 4: AutoEQ (Correção de Fone)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se seu fone é ruim (muito grave, som de caixa), use o botão "AutoEQ" no Peace.
             <br/>Procure o modelo do seu fone (ex: HyperX Cloud II).
             <br/>O software aplica uma curva Harman Target que deixa o som "plano" e perfeito, como fones de estúdio de $1000. Comece daí e depois aplique o boost de passos.
@@ -103,7 +103,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 5: Pre-Amplification (Ganho)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você fez boost de +6dB em alguma frequência, você PRECISA baixar o "Pre-Amplifying" geral para -6dB.
             <br/>Se não fizer isso, quando o som bater no teto (0dB), vai distorcer (Clipping) e parecer estourado.
             <br/>Sempre corte frequências (Subtractive EQ) antes de aumentar.
@@ -113,7 +113,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 6: Microfone (Voz de Locutor)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Você também instalou no Mic, certo?
             <br/>- Aplique um High Pass Filter (Corte de Graves) até 100Hz. Remove ruído de ar condicionado e batidas na mesa.
             <br/>- Aplique um pouco de Ganho se seu mic for baixo.
@@ -124,7 +124,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 7: Perfis (Jogos vs Música)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Salve um perfil "FPS Mode" com graves cortados.
             <br/>Salve um perfil "Music Mode" com graves normais (Bass Boost).
             <br/>Use hotkeys (Ctrl+F1, Ctrl+F2) para trocar instantaneamente antes de abrir o Spotify.
@@ -137,7 +137,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 8: HeSuVi (Surround 7.1 Virtual)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O "HeSuVi" é um addon para o Equalizer APO que simula o som binaural do Dolby Atmos, Sennheiser GSX e outros, de graça.
                 <br/>Funciona melhor que o 7.1 nativo dos headsets USB baratos. Vale testar para imersão, mas Stereo puro ainda é melhor para precisão competitiva.
             </p>
@@ -146,7 +146,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 9: Soluções de Problemas",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O som parou?
                 <br/>Vá nas propriedades do fone no Windows e desative "Aprimoramentos de áudio" (ou ative, depende do driver Realtek).
                 <br/>Reinstale o APO como SFX/EFX (Experimental) no Configurator se o modo padrão LFX/GFX não funcionar.
@@ -156,7 +156,7 @@ export default function AudioGuide() {
         {
             title: "Capítulo 10: Delay (Latência)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O APO adiciona cerca de 0.5ms de latência. Imperceptível para humanos.
             </p>
             `

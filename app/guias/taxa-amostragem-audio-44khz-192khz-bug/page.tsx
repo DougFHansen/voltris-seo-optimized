@@ -41,7 +41,7 @@ export default function SampleRateGuide() {
         {
             title: "Introdução: O Mito da Qualidade",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A maioria dos arquivos de áudio de jogos e filmes são masterizados em 48kHz. Músicas (Spotify/CD) são 44.1kHz. Se você forçar o Windows a rodar em 192kHz, o sistema tem que fazer "Resampling" em tempo real, o que pode gerar artefatos e latência.
         </p>
       `
@@ -66,7 +66,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 2: Sample Rate Mismatch (O Bug do Robô)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se seu Microfone está em 48kHz e seu Fone está em 44.1kHz, alguns programas (Discord, OBS, Voicemeeter) enlouquecem.
             <br/>O som fica picotando, acelerado (voz de esquilo) ou lento (voz de monstro).
             <br/><strong>Regra de Ouro:</strong> Defina TUDO (Entrada e Saída) para 48000 Hz. Sincronia total.
@@ -76,7 +76,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 3: OBS e Desincronia",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se sua live fica com o áudio atrasado depois de 1 hora:
             <br/>Verifique em Settings > Audio no OBS. Deve estar em 48kHz.
             <br/>Se o dispositivo do Windows estiver em 44.1kHz, o OBS vai tentar converter, e a cada segundo ele "perde" algumas amostras, acumulando delay (Drifting).
@@ -89,7 +89,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 4: Latência e Buffer",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Taxas de amostragem mais altas (192kHz) teoricamente têm menor latência (o buffer enche mais rápido).
             <br/>Mas a carga na CPU aumenta. Se a CPU engasgar, você ouve um "POP" ou "Click" no áudio (DPC Latency Spike).
             <br/>48kHz é o ponto doce de baixa latência e estabilidade.
@@ -99,7 +99,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 5: Exclusive Mode (Modo Exclusivo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nas propriedades, as caixas "Permitir que aplicativos assumam controle exclusivo".
             <br/>- <strong>Jogos:</strong> Deixe marcado. Alguns jogos (como CS2) precisam disso para latência mínima.
             <br/>- <strong>Daws (Produção Musical):</strong> Se você abrir o FL Studio com driver ASIO, ele vai silenciar o YouTube/Discord. É normal do modo exclusivo.
@@ -109,7 +109,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 6: Som Espacial (Windows Sonic)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Botão direito no ícone de som > Som Espacial.
             <br/>Windows Sonic for Headphones (Grátis).
             <br/>Ele tenta simular 7.1. Funciona bem em filmes, mas em jogos competitivos estraga a noção de direção precisa (frente/trás). Mantenha desativado para CS/Valorant.
@@ -119,7 +119,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 7: Driver Realtek vs Microsoft High Definition",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Às vezes o driver da Realtek da fabricante da placa-mãe é cheio de bloatware (Nahimic, Sonic Studio) que causa lag.
             <br/>Desinstalar e deixar o driver genérico "High Definition Audio Device" da Microsoft muitas vezes melhora a qualidade e remove efeitos indesejados.
         </p>
@@ -131,7 +131,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 8: USB DACs Externos",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se usa um DAC externo (Focusrite, Fiio), instale os drivers ASIO do fabricante.
                 <br/>Mas no Windows (WDM), mantenha 48kHz. Deixe 192kHz apenas para ouvir arquivos FLAC Lossless no player de música dedicado (Foobar2000 em modo WASAPI).
             </p>
@@ -140,7 +140,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 9: HDMI Audio (GPU)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O áudio que sai pelo monitor (HDMI/DisplayPort) é processado pela Placa de Vídeo.
                 <br/>Ele também precisa ser configurado para 48kHz no Painel de Som.
             </p>
@@ -149,7 +149,7 @@ export default function SampleRateGuide() {
         {
             title: "Capítulo 10: Reiniciar Áudio",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se o som sumir:
                 <br/>Abra Services.msc e reinicie o serviço "Áudio do Windows" (Windows Audio). Mais rápido que reiniciar o PC.
             </p>

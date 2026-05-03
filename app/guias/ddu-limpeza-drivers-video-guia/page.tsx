@@ -41,7 +41,7 @@ export default function DDUGuide() {
         {
             title: "Introdução: Por que desinstalar não basta?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Quando você desinstala pelo Painel de Controle, arquivos de registro e DLLs velhas ficam para trás. Se você trocar de Nvidia para AMD (ou vice-versa) sem limpar, o conflito é certo.
         </p>
       `
@@ -64,7 +64,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 2: Entrando em Modo de Segurança",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O DDU funciona melhor sem interferência.
             <br/>Segure a tecla <strong>SHIFT</strong> e clique em Reiniciar no Menu Iniciar.
             <br/>Vá em Solução de Problemas > Opções Avançadas > Configurações de Inicialização > Reiniciar.
@@ -75,7 +75,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 3: Executando a Limpeza",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Já no Modo de Segurança:
             <br/>1. Abra o DDU.
             <br/>2. Selecione o tipo de dispositivo: <strong>GPU</strong>.
@@ -91,7 +91,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 4: Opções do DDU",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nas opções do DDU, marque:
             <br/>- <strong>"Prevent downloads of drivers from 'Windows Update'"</strong>. Isso impede que o Windows estrague tudo instalando drivers velhos de 2023.
             <br/>- Remove C:Nvidia/AMD folders (Apaga instaladores velhos que ocupam GBs).
@@ -101,7 +101,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 5: Instalando o Novo Driver",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             De volta ao Windows normal (ainda sem internet):
             <br/>A resolução estará baixa (640x480 ou 800x600). É normal, você está sem driver.
             <br/>Execute o instalador do driver que você baixou no passo 1.
@@ -113,7 +113,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 6: Erros Comuns",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Tela Preta Infinita:</strong> Acontece raramente. Se esperar 10 min e não voltar, force o reinício. O DDU geralmente cria um Ponto de Restauração antes de começar por segurança.
             - <strong>Mouse travando:</strong> No modo de segurança, drivers USB de mouse gamer podem não carregar. Tenha um mouse simples USB por perto se precisar.
         </p>
@@ -125,7 +125,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 7: NVCleanstall (Expert)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você tem Nvidia, após o DDU, use o <strong>NVCleanstall</strong> em vez do instalador oficial.
                 <br/>Ele permite instalar o driver SEM a Telemetria, SEM o GeForce Experience e SEM drivers de óculos 3D inúteis. O driver fica mais leve e responsivo.
             </p>
@@ -134,7 +134,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 8: Limpeza de Áudio (Realtek)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O DDU também limpa drivers de Áudio (Realtek/SoundBlaster).
                 <br/>Útil se seu microfone parou de funcionar ou o som está chiando após um update do Windows. Selecione "Audio" no menu drop-down.
             </p>
@@ -143,7 +143,7 @@ export default function DDUGuide() {
         {
             title: "Capítulo 9: Frequência de Limpeza",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Não use DDU a cada update de driver (ex: toda semana). É desnecessário e estressa o registro.
                 <br/>Use DDU apenas quando:
                 <br/>1. Trocar de Placa de Vídeo.

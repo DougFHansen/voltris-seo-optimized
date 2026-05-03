@@ -41,7 +41,7 @@ export default function CitraGuide() {
         {
             title: "Introdução: O Caos dos Forks",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Com o fim oficial do Citra, surgiram vários clones.
           <br/>Recomendamos o <strong>Lime3DS</strong> ou a versão do <strong>PabloMK7</strong> (que tem multiplayer melhor). Evite versoes antigas.
         </p>
@@ -66,7 +66,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 2: Layout de Telas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O 3DS tem duas telas. No monitor, isso é estranho.
             <br/>View > Screen Layout.
             <br/>- <strong>Large Screen:</strong> Tela de cima grande, de baixo pequena no canto. Ideal para gameplay.
@@ -78,7 +78,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 3: Pokémon e Lags",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Pokémon X/Y e Sun/Moon exigem shader cache.
             <br/>Na primeira vez que você vê um ataque novo, trava.
             <br/>Ative "Use Disk Shader Cache".
@@ -92,7 +92,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 4: Mods e Texturas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Zelda Ocarina of Time 3D tem o projeto "Henriko Magnifico" de texturas 4K.
             <br/>Clique com botão direito no jogo > Open Custom Texture Location.
             <br/>Cole as texturas.
@@ -103,7 +103,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 5: Formato .CIA vs .3DS",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>.3DS:</strong> Arquivo de cartucho descriptografado. Roda direto (File > Load).
             - <strong>.CIA:</strong> Arquivo instalado na memória do console. Precisa ir em File > Install CIA. Fica na lista de apps instalados.
             <br/>Para jogar, você previsa desencriptar suas ROMs usando um 3DS real com GodMode9.
@@ -113,7 +113,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 6: Multiplayer",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Lime3DS suporta salas públicas.
             <br/>Menu Multiplayer > Browse Public Rooms.
             <br/>Entre numa sala de Mario Kart 7 e jogue com pessoas do mundo todo (simula o Local Wireless via Internet).
@@ -123,7 +123,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 7: Mouse como Touch",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O mouse simula a caneta Stylus.
             <br/>Não precisa configurar nada. Apenas clique na tela de baixo virtual.
         </p>
@@ -135,7 +135,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 8: New 3DS Mode",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Alguns jogos (Xenoblade, Hyrule Warriors) exigem poder do "New 3DS".
                 <br/>Configurar > System > Emulate Region: Auto, Model: New 3DS.
                 <br/>Isso aumenta o clock da CPU emulada (L2 Cache) e melhora o FPS em jogos pesados.
@@ -145,7 +145,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 9: Android",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A versão Android do Lime3DS é incrível.
                 <br/>Em celulares com Snapdragon 8 Gen 2 ou superior, roda 4x Resolution.
                 <br/>Suporta savestates e skins de controle.
@@ -155,7 +155,7 @@ export default function CitraGuide() {
         {
             title: "Capítulo 10: Amiibo",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Suportado. Carregue o .bin do Amiibo via menu de atalhos (F2).
             </p>
             `

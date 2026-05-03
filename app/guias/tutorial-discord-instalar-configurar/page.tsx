@@ -34,7 +34,7 @@ export default function DiscordGuide() {
         {
             title: "Por que o Discord é essencial para gamers?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, o **Discord** é muito mais que um chat de voz. É onde comunidades se reúnem, onde você streama seus jogos para amigos e onde as guilhas se organizam. No entanto, uma configuração mal feita pode resultar em um áudio chiado, invasões de conta ou lag no seu jogo.
         </p>
       `
@@ -42,8 +42,8 @@ export default function DiscordGuide() {
         {
             title: "1. O Segredo do Áudio Perfeito",
             content: `
-        <p class="mb-4 text-gray-300">Não deixe seus amigos ouvirem o barulho do seu ventilador:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Não deixe seus amigos ouvirem o barulho do seu ventilador:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Vá em Configurações do Usuário > Voz e Vídeo.</li>
             <li>Em <strong>Supressão de Ruído</strong>, selecione <strong>Krisp</strong>. É a melhor tecnologia de IA para remover barulhos de fundo e cliques de teclado.</li>
             <li>Certifique-se de que o 'Cancelamento de Eco' está ativado se você não estiver usando fone de ouvido.</li>
@@ -56,7 +56,7 @@ export default function DiscordGuide() {
             content: `
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
             <h4 class="text-red-400 font-bold mb-2">Cuidado com Links:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O Discord é alvo constante de hackers. <strong>Ative a Autenticação de Dois Fatores (2FA)</strong> em Configurações > Minha Conta. Nunca clique em links que prometem "Discord Nitro Grátis" vindos de desconhecidos; eles roubam sua sessão (Token) e você perde a conta em segundos.
             </p>
         </div>
@@ -65,7 +65,7 @@ export default function DiscordGuide() {
         {
             title: "3. Otimização para Games (Overlay)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O **Overlay do Discord** (aquela interface que mostra quem está falando por cima do jogo) pode causar quedas de FPS em PCs fracos. 
             <br/>Se você sentir que o jogo está "pesado" quando está em call, vá em Configurações > Sobreposição de Jogo e desative a opção 'Ativar sobreposição no jogo'.
         </p>

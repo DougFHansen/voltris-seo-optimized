@@ -40,7 +40,7 @@ export default function VitaGuide() {
         {
             title: "Introdução: Emulador Jovem",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Vita3K ainda é "Experimental". Muitos jogos podem ter glitches gráficos ou de áudio. Mas a lista de compatibilidade cresce todo dia.
         </p>
       `
@@ -64,7 +64,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 2: Instalando Jogos (.pkg, .zip, .vpk)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>.vpk:</strong> Homebrews. Instala fácil.
             - <strong>.pkg:</strong> Jogos da PSN. Você PRECISA do arquivo <code>work.bin</code> ou chave <code>zRIF</code> correspondente para decriptar a licença.
             - <strong>NoNpDrm (Folder/Zip):</strong> O formato mais comum de dumps. Basta selecionar "Install > Zip" ou apontar para a pasta.
@@ -74,7 +74,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 3: Gráficos e Resolução",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configuration > Settings > GPU.
             <br/>Backend: <strong>Vulkan</strong> é mandatório para Android e GPUs AMD. Nvidia pode usar OpenGL se quiser.
             <br/>Internal Resolution: 2x (1080p). Jogos de Vita ficam lindos em HD.
@@ -88,7 +88,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 4: Touch Traseiro (Rear Touchpad)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Vita tinha um touchpad nas costas. Jogos como Uncharted usam isso para subir cordas.
             <br/>No emulador, você pode mapear botões do controle (ex: L3/R3) para simular toques no painel traseiro.
             <br/>Ou usar o Mouse (no PC) e Overlay de toque (no Android).
@@ -98,7 +98,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 5: Persona 4 Golden",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O jogo mais popular. Roda 100%.
             <br/>Se tiver crashes nas cutscenes (vídeos), instale os codecs de mídia adicionais (às vezes o emulador pede para baixar ffmpeg no Linux/Android).
         </p>
@@ -107,7 +107,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 6: Memory Mapping (Android)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No Android, a opção "Memory Mapping" pode triplicar a performance se seu celular suportar.
             <br/>Se o jogo fechar na hora de abrir (Crash), mude para o método "Double Buffer" ou similar. Varia de cada driver (Turnip/Adreno).
         </p>
@@ -116,7 +116,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 7: Custom Drivers (Turnip)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para usuários de Android com Snapdragon:
             <br/>Instale drivers <strong>Turnip</strong> (Mesa) nas configurações do Vita3K. Eles corrigem muitos bugs gráficos que os drivers padrão da Samsung/Xiaomi têm.
         </p>
@@ -128,7 +128,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 8: Save Data",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Os saves ficam em <code>ux0:/user/00/savedata/</code>.
                 <br/>A estrutura de arquivos do Vita3K imita o cartão de memória do Vita real (ux0).
             </p>
@@ -137,7 +137,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 9: Multiplayer",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Ainda muito experimental. Não conte com jogar Freedom Wars online por enquanto.
             </p>
             `
@@ -145,7 +145,7 @@ export default function VitaGuide() {
         {
             title: "Capítulo 10: Homebrews",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Vita3K roda excelente ports de homebrew, como o port de GTA San Andreas e Max Payne para Vita.
             </p>
             `

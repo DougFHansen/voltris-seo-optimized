@@ -41,11 +41,11 @@ export default function BIOSUpdateGuide() {
         {
             title: "O que é a BIOS e Por Que Atualizar? A Base do Hardware",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A <strong>BIOS</strong> (Basic Input/Output System) ou <strong>UEFI</strong> (Unified Extensible Firmware Interface) é o <strong>primeiro software</strong> que roda quando você liga o computador. Ela gerencia o hardware básico antes do Windows carregar. A BIOS é responsável por:
         </p>
         
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li>Inicializar componentes de hardware (CPU, RAM, GPU, armazenamento)</li>
           <li>Realizar o POST (Power-On Self Test) para verificar integridade dos componentes</li>
           <li>Carregar o sistema operacional do disco rígido</li>
@@ -54,7 +54,7 @@ export default function BIOSUpdateGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">⚠️ Diferença entre BIOS e UEFI</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             <strong>BIOS:</strong> Interface antiga baseada em texto, limitações de disco (2TB), boot mais lento. <strong>UEFI:</strong> Interface moderna com gráficos, suporte a discos maiores, boot mais rápido, segurança avançada (Secure Boot). Placas-mãe modernas usam UEFI com interface estilo BIOS para manter familiaridade.
           </p>
         </div>
@@ -63,12 +63,12 @@ export default function BIOSUpdateGuide() {
         {
             title: "Quando VOCÊ REALMENTE Precisa Atualizar a BIOS",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           <strong>NÃO atualize a BIOS apenas por atualizar!</strong> Faça o update apenas em situações específicas:
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">✅ Atualize Quando:</h4>
-        <ul class="list-disc list-inside text-gray-300 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
           <li>Você comprou um <strong>novo processador</strong> (ex: AMD Ryzen 8000 series, Intel Arrow Lake) e a placa-mãe não o reconhece</li>
           <li>O fabricante lançou uma <strong>correção crítica de segurança</strong> (vulnerabilidades de hardware)</li>
           <li>Existe uma <strong>correção de bugs</strong> que afeta sua placa-mãe (instabilidade, falhas de memória RAM, problemas de overclock)</li>
@@ -77,7 +77,7 @@ export default function BIOSUpdateGuide() {
         </ul>
         
         <h4 class="text-white font-bold mb-3 mt-6">❌ NÃO Atualize Quando:</h4>
-        <ul class="list-disc list-inside text-gray-300 space-y-3 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-3 ml-4">
           <li><strong>Seu PC está estável e funcionando bem</strong> (time que está ganhando não se mexe)</li>
           <li>Você está tentando resolver problemas de software (Windows, drivers)</li>
           <li>É apenas para "ganhar performance" (BIOS não melhora FPS ou velocidade do Windows)</li>
@@ -88,12 +88,12 @@ export default function BIOSUpdateGuide() {
         {
             title: "Identificando o Modelo da Sua Placa-Mãe (Essencial para Atualização)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Antes de baixar qualquer arquivo, você precisa do <strong>modelo exato da sua placa-mãe</strong>. Erros comuns:
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">💻 Como Identificar o Modelo da Placa-Mãe</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
           <li><strong>Windows:</strong> Pressione <code>Win + R</code>, digite <code>msinfo32</code> e pressione Enter. Na aba "Resumo", procure por "Modelo" e "Fabricante".</li>
           <li><strong>Cmd:</strong> Abra o Prompt de Comando como administrador e digite: <code>wmic baseboard get Manufacturer,Product,Version</code></li>
           <li><strong>BIOS:</strong> Reinicie o PC e entre na BIOS (geralmente F2, F12, Del ou Esc). O modelo aparece na tela de inicialização.</li>
@@ -101,15 +101,15 @@ export default function BIOSUpdateGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚠️ Cuidado com Modelos Similares</h4>
-        <p class="text-gray-300 mb-3">
+        <p class="text-gray-400 mb-3">
           Fabricantes usam variações como:
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li>MSI B550M PRO-VDH WIFI vs B550M PRO-VDH - são modelos diferentes!</li>
           <li>ASUS ROG STRIX B550-F vs ASUS TUF GAMING B550-PLUS - placas completamente diferentes!</li>
           <li>Gigabyte B450 AORUS ELITE vs B450 AORUS ELITE V2 - versões diferentes do mesmo modelo!</li>
         </ul>
-        <p class="text-gray-300 text-sm mt-3">
+        <p class="text-gray-400 text-sm mt-3">
           <strong>Dica:</strong> Anote o modelo completo (ex: "MSI B550M PRO-VDH WIFI") e confirme no site do fabricante antes de baixar o arquivo.
         </p>
       `
@@ -117,12 +117,12 @@ export default function BIOSUpdateGuide() {
         {
             title: "Método Seguro: Atualização por Pendrive (Q-Flash, M-Flash, EFB)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Este é o <strong>método mais seguro</strong> para atualizar a BIOS, pois é feito fora do sistema operacional.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">💾 Preparação do Pendrive</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
           <li>Use um <strong>pendrive pequeno</strong> (4-8GB é suficiente).</li>
           <li><strong>Formate em FAT32</strong> (não use NTFS ou exFAT). Use o utilitário do Windows ou Rufus.</li>
           <li>Renomeie o arquivo da BIOS para algo curto (ex: <code>BIOS.ROM</code> ou <code>UPDATE.BIN</code>).</li>
@@ -130,7 +130,7 @@ export default function BIOSUpdateGuide() {
         </ol>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔄 Processo de Atualização (Passo a Passo)</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
           <li>Desligue o computador e desconecte todos os cabos (inclusive fonte).</li>
           <li>Insira o pendrive com o arquivo da BIOS.</li>
           <li>Ligue o computador e entre na BIOS (pressione Del ou F2 na inicialização).</li>
@@ -149,7 +149,7 @@ export default function BIOSUpdateGuide() {
         
         <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20 mt-6">
           <h4 class="text-emerald-400 font-bold mb-2">✅ Dicas de Segurança</h4>
-          <ul class="list-disc list-inside text-sm text-gray-300 space-y-2">
+          <ul class="list-disc list-inside text-sm text-gray-400 space-y-2">
             <li>Mantenha o cabo de energia <strong>firmemente conectado</strong> durante toda a atualização.</li>
             <li>Não utilize estabilizador ou filtro de linha de baixa qualidade.</li>
             <li>Se possível, utilize um <strong>UPS (no-break)</strong> para proteger contra quedas de energia.</li>
@@ -161,22 +161,22 @@ export default function BIOSUpdateGuide() {
         {
             title: "BIOS Flashback: O Recurso que Pode Salvar Sua Placa",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           <strong>BIOS Flashback</strong> é um recurso presente em placas-mãe modernas que permite atualizar a BIOS sem ter CPU, RAM ou GPU instaladas.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔌 Como Funciona o BIOS Flashback</h4>
-        <p class="text-gray-300 mb-3">
+        <p class="text-gray-400 mb-3">
           Muitas placas-mãe modernas (especialmente da ASUS, MSI, Gigabyte) têm um botão físico na parte traseira ou um conector especial. Você pode atualizar a BIOS apenas com:
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li>Fonte de alimentação ligada</li>
           <li>Pendrive com o arquivo da BIOS</li>
           <li>Botão de BIOS Flashback ou jumper especial</li>
         </ul>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎯 Benefícios do BIOS Flashback</h4>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li>Recuperar placas-mãe com BIOS corrompida</li>
           <li>Atualizar BIOS para suportar novas CPUs sem ter CPU compatível instalada</li>
           <li>Evitar riscos de hardware durante atualização (não precisa de RAM/CPU)</li>
@@ -184,7 +184,7 @@ export default function BIOSUpdateGuide() {
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mt-6">
           <h4 class="text-blue-400 font-bold mb-2">🔍 Como Identificar se Sua Placa Tem BIOS Flashback</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Procure no painel traseiro da placa-mãe por: <strong>"BIOS Flashback"</strong>, <strong>"USB BIOS Flashback"</strong>, ou um botão com ícone de BIOS. Consulte o manual da sua placa-mãe ou o site do fabricante para confirmação.
           </p>
         </div>
@@ -198,7 +198,7 @@ export default function BIOSUpdateGuide() {
         <div class="space-y-4">
           <div>
             <p class="text-white font-bold">Erro: "Falha na atualização da BIOS" ou "BIOS corrompida"</p>
-            <p class="text-sm text-gray-300 mt-2">
+            <p class="text-sm text-gray-400 mt-2">
               <strong>Causas:</strong> Queda de energia, arquivo de BIOS errado, pendrive com problema.<br/>
               <strong>Soluções:</strong> Use BIOS Flashback se disponível, ou utilize jumper de recuperação (consulte manual da placa-mãe). Em último caso, pode ser necessário regraver a BIOS com equipamento especializado.
             </p>
@@ -206,7 +206,7 @@ export default function BIOSUpdateGuide() {
           
           <div>
             <p class="text-white font-bold">Erro: "Placa-mãe não inicializa após atualização"</p>
-            <p class="text-sm text-gray-300 mt-2">
+            <p class="text-sm text-gray-400 mt-2">
               <strong>Causas:</strong> Arquivo de BIOS incompatível, interrupção forçada durante atualização.<br/>
               <strong>Soluções:</strong> Tente usar BIOS Flashback para retornar a versão anterior. Se não funcionar, consulte manual para procedimento de recuperação com jumper ou cabo especial.
             </p>
@@ -214,7 +214,7 @@ export default function BIOSUpdateGuide() {
           
           <div>
             <p class="text-white font-bold">Erro: "CPU não é reconhecida após atualização"</p>
-            <p class="text-sm text-gray-300 mt-2">
+            <p class="text-sm text-gray-400 mt-2">
               <strong>Causas:</strong> BIOS incompleta ou versão que ainda não suporta a CPU.<br/>
               <strong>Soluções:</strong> Verifique se a BIOS está na versão mais recente que suporta sua CPU. Alguns CPUs novos exigem múltiplas atualizações de BIOS consecutivas.
             </p>
@@ -222,7 +222,7 @@ export default function BIOSUpdateGuide() {
           
           <div>
             <p class="text-white font-bold">Erro: "Problemas de estática ou inicialização instável"</p>
-            <p class="text-sm text-gray-300 mt-2">
+            <p class="text-sm text-gray-400 mt-2">
               <strong>Causas:</strong> Acúmulo de energia estática após atualização.<br/>
               <strong>Soluções:</strong> Desconecte o cabo de alimentação, pressione o botão de ligar por 10 segundos para drenar a energia, depois reconecte e ligue novamente.
             </p>
@@ -234,17 +234,17 @@ export default function BIOSUpdateGuide() {
             title: "Backup e Recuperação: Protegendo-se Contra Falhas",
             content: `
         <h4 class="text-white font-bold mb-3">💾 Fazendo Backup da BIOS Atual</h4>
-        <p class="text-gray-300 mb-3">
+        <p class="text-gray-400 mb-3">
           Antes de atualizar, é recomendável fazer um backup da BIOS atual (se a ferramenta permitir):
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li>Algumas ferramentas de atualização permitem salvar a BIOS atual antes de atualizar.</li>
           <li>Isso é útil para reverter caso ocorram problemas com a nova versão.</li>
           <li>Salve o arquivo em local seguro com nome descritivo (ex: "BIOS_MSI_B550_ANTIGA.ROM").</li>
         </ul>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔄 Métodos de Recuperação</h4>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li><strong>BIOS Flashback:</strong> O mais fácil, se sua placa-mãe suportar.</li>
           <li><strong>Q-Flash/M-Flash:</strong> Se o sistema ainda inicializa parcialmente.</li>
           <li><strong>Jumper de Recuperação:</strong> Consulte o manual da placa-mãe para localização.</li>
@@ -253,7 +253,7 @@ export default function BIOSUpdateGuide() {
         
         <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20 mt-6">
           <h4 class="text-rose-400 font-bold mb-2">⚠️ Aviso Importante</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Atualizar a BIOS é uma operação <strong>arriscada</strong> que pode resultar em <strong>"brickar"</strong> (tornar inutilizável) sua placa-mãe se feita incorretamente. Siga todos os passos com atenção e apenas atualize se for realmente necessário. Se tiver dúvidas, busque ajuda de um técnico experiente.
           </p>
         </div>
@@ -263,17 +263,17 @@ export default function BIOSUpdateGuide() {
             title: "Utilitários e Ferramentas Avançadas para BIOS",
             content: `
         <h4 class="text-white font-bold mb-3">🛠️ Ferramentas Profissionais para BIOS</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Além das ferramentas integradas à BIOS, existem utilitários avançados para diagnóstico e manipulação de firmware:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div class="bg-gradient-to-br from-blue-900/20 to-indigo-900/20 p-4 rounded-lg border border-blue-500/30">
             <h5 class="text-blue-400 font-bold mb-2">AMI Aptio Setup Utility</h5>
-            <p class="text-sm text-gray-300 mb-2">
+            <p class="text-sm text-gray-400 mb-2">
               Utilizado em BIOS baseadas em AMI Aptio, permite acesso avançado a configurações de firmware.
             </p>
-            <ul class="text-xs text-gray-300 space-y-1 ml-4">
+            <ul class="text-xs text-gray-400 space-y-1 ml-4">
               <li>• Configurações avançadas de boot</li>
               <li>• Segurança e criptografia</li>
               <li>• Modos de compatibilidade</li>
@@ -282,10 +282,10 @@ export default function BIOSUpdateGuide() {
           
           <div class="bg-gradient-to-br from-green-900/20 to-teal-900/20 p-4 rounded-lg border border-green-500/30">
             <h5 class="text-green-400 font-bold mb-2">Insyde H2OFFT</h5>
-            <p class="text-sm text-gray-300 mb-2">
+            <p class="text-sm text-gray-400 mb-2">
               Utilizado em notebooks e alguns desktops, permite flashing de BIOS via sistema operacional.
             </p>
-            <ul class="text-xs text-gray-300 space-y-1 ml-4">
+            <ul class="text-xs text-gray-400 space-y-1 ml-4">
               <li>• Atualização via Windows</li>
               <li>• Recuperação avançada</li>
               <li>• Diagnóstico de firmware</li>
@@ -294,17 +294,17 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔍 Softwares de Análise de BIOS</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Ferramentas para análise e extração de informações da BIOS:
         </p>
         
         <div class="space-y-4">
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-amber-400 font-bold mb-2">BIOS Branding Studio</h5>
-            <p class="text-sm text-gray-300 mb-2">
+            <p class="text-sm text-gray-400 mb-2">
               Ferramenta para personalizar e analisar BIOS de diferentes fabricantes.
             </p>
-            <ul class="text-xs text-gray-300 space-y-1 ml-4">
+            <ul class="text-xs text-gray-400 space-y-1 ml-4">
               <li>• Extração de módulos da BIOS</li>
               <li>• Análise de recursos suportados</li>
               <li>• Validação de arquivos de firmware</li>
@@ -313,10 +313,10 @@ export default function BIOSUpdateGuide() {
           
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-amber-400 font-bold mb-2">MMTool</h5>
-            <p class="text-sm text-gray-300 mb-2">
+            <p class="text-sm text-gray-400 mb-2">
               Utilizado para manipular módulos UEFI em BIOS AMI Aptio.
             </p>
-            <ul class="text-xs text-gray-300 space-y-1 ml-4">
+            <ul class="text-xs text-gray-400 space-y-1 ml-4">
               <li>• Adição/remoção de módulos</li>
               <li>• Personalização de recursos</li>
               <li>• Correção de módulos defeituosos</li>
@@ -329,12 +329,12 @@ export default function BIOSUpdateGuide() {
             title: "Considerações Específicas por Fabricante",
             content: `
         <h4 class="text-white font-bold mb-3">🏭 ASUS: Particularidades da BIOS</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A ASUS oferece diferentes interfaces e funcionalidades em suas BIOS:
         </p>
         
         <div class="bg-gradient-to-r from-orange-900/20 to-red-900/20 p-4 rounded-lg border border-orange-500/30 mb-6">
-          <ul class="text-sm text-gray-300 space-y-2">
+          <ul class="text-sm text-gray-400 space-y-2">
             <li><strong>AI Overclocking:</strong> Sistema de overclock automático baseado em componentes detectados.</li>
             <li><strong>Q-Flash Plus:</strong> Atualização de BIOS via botão físico sem CPU/RAM.</li>
             <li><strong>BIOS Flashback:</strong> Recurso de recuperação via USB no painel traseiro.</li>
@@ -343,12 +343,12 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3">🏭 MSI: Particularidades da BIOS</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A MSI tem abordagens específicas para BIOS e ferramentas:
         </p>
         
         <div class="bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-4 rounded-lg border border-purple-500/30 mb-6">
-          <ul class="text-sm text-gray-300 space-y-2">
+          <ul class="text-sm text-gray-400 space-y-2">
             <li><strong>M-Flash:</strong> Ferramenta de atualização integrada à BIOS.</li>
             <li><strong>Click BIOS:</strong> Interface simplificada para usuários iniciantes.</li>
             <li><strong>OC Profile:</strong> Perfis de overclock guardados na BIOS.</li>
@@ -357,12 +357,12 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3">🏭 Gigabyte: Particularidades da BIOS</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A Gigabyte tem recursos distintos em suas BIOS:
         </p>
         
         <div class="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 p-4 rounded-lg border border-cyan-500/30">
-          <ul class="text-sm text-gray-300 space-y-2">
+          <ul class="text-sm text-gray-400 space-y-2">
             <li><strong>Q-Flash:</strong> Atualização de BIOS via pendrive ou interface gráfica.</li>
             <li><strong>@BIOS:</strong> Ferramenta para backup e restauração de BIOS.</li>
             <li><strong>Smart Fan 6:</strong> Controles avançados de cooler integrados à BIOS.</li>
@@ -375,13 +375,13 @@ export default function BIOSUpdateGuide() {
             title: "Compatibilidade com Novas Tecnologias e CPUs",
             content: `
         <h4 class="text-white font-bold mb-3">🔄 Suporte a Novas CPUs</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Um dos motivos mais comuns para atualizar a BIOS é adicionar suporte a novas CPUs:
         </p>
         
         <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/30 mb-6">
           <h5 class="text-amber-400 font-bold mb-2">Processos de Atualização para Nova CPU</h5>
-          <ol class="text-sm text-gray-300 space-y-2 ml-4">
+          <ol class="text-sm text-gray-400 space-y-2 ml-4">
             <li>Verifique se sua placa-mãe está na lista de compatibilidade do novo CPU</li>
             <li>Consulte o site do fabricante para a BIOS mais recente que suporta o CPU</li>
             <li>Em alguns casos, é necessário atualizar para uma BIOS intermediária antes da final</li>
@@ -390,35 +390,35 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚡ Tecnologias Requerendo BIOS Atualizada</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Determinadas tecnologias exigem firmware de BIOS específico:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-emerald-400 font-bold mb-2">DDR5 e XMP 3.0</h5>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
               Memórias DDR5 e perfis XMP 3.0 exigem BIOS atualizada para funcionamento adequado.
             </p>
           </div>
           
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-emerald-400 font-bold mb-2">PCIe 5.0 e USB 3.2 Gen 2x2</h5>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
               Suporte a novas interfaces de armazenamento e conectividade exige firmware atualizado.
             </p>
           </div>
           
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-emerald-400 font-bold mb-2">AMD EXPO e Intel XMP</h5>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
               Tecnologias de overclock de memória exigem BIOS com suporte específico.
             </p>
           </div>
           
           <div class="bg-gray-800/30 p-4 rounded-lg border border-gray-700">
             <h5 class="text-emerald-400 font-bold mb-2">Secure Boot e TPM 2.0</h5>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
               Recursos de segurança exigem BIOS com implementação adequada destes recursos.
             </p>
           </div>
@@ -432,14 +432,14 @@ export default function BIOSUpdateGuide() {
       title: "Arquitetura de Firmware UEFI: Componentes e Estrutura Interna",
       content: `
         <h4 class="text-white font-bold mb-3">🏗️ Estrutura do Firmware UEFI</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O firmware UEFI (Unified Extensible Firmware Interface) é uma evolução significativa em relação à BIOS legada, oferecendo uma arquitetura modular e extensível que permite maior flexibilidade e recursos avançados. A estrutura interna do firmware UEFI é composta por vários componentes interconectados que trabalham em conjunto para inicializar o hardware e preparar o ambiente para o sistema operacional.
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Componentes Principais</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Core Execution Environment (DXE)</li>
               <li>• Boot Device Selection (BDS)</li>
               <li>• Platform Initialization (PEI)</li>
@@ -450,7 +450,7 @@ export default function BIOSUpdateGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Serviços UEFI</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Protocolos de comunicação</li>
               <li>• Gerenciamento de memória</li>
               <li>• Interface de usuário (HII)</li>
@@ -462,12 +462,12 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Processo de Inicialização UEFI</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O processo de inicialização UEFI é dividido em várias fases, cada uma com objetivos específicos:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Fase</th>
@@ -513,7 +513,7 @@ export default function BIOSUpdateGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Curiosidade Técnica</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             O firmware UEFI armazena informações em uma área chamada "Variable Store", que é persistente mesmo com o sistema desligado. Esta área contém configurações como boot entries, chaves de Secure Boot e outras variáveis do sistema. O tamanho típico desta área varia de 64KB a 1MB, dependendo da implementação do fabricante.
           </p>
         </div>
@@ -523,12 +523,12 @@ export default function BIOSUpdateGuide() {
       title: "Técnicas Avançadas de Atualização e Recuperação de BIOS",
       content: `
         <h4 class="text-white font-bold mb-3">🛠️ Métodos Avançados de Atualização de BIOS</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Além dos métodos tradicionais de atualização de BIOS, existem técnicas avançadas utilizadas por técnicos e entusiastas para resolver situações complexas ou recuperar placas-mãe danificadas. Estas técnicas requerem conhecimento técnico profundo e ferramentas especializadas.
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Método</th>
@@ -573,14 +573,14 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Procedimento de Recuperação com Programador SPI</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O método mais confiável para recuperar uma BIOS completamente corrompida é usando um programador SPI (Serial Peripheral Interface):
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-red-900/10 p-4 rounded-lg border border-red-500/20">
             <h5 class="text-red-400 font-bold mb-2">Preparação</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Obter BIOS correta</li>
               <li>Identificar chip SPI</li>
               <li>Montar equipamento</li>
@@ -589,7 +589,7 @@ export default function BIOSUpdateGuide() {
           </div>
           <div class="bg-yellow-900/10 p-4 rounded-lg border border-yellow-500/20">
             <h5 class="text-yellow-400 font-bold mb-2">Leitura</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Conectar clip ao chip</li>
               <li>Verificar conexão</li>
               <li>Ler BIOS atual</li>
@@ -598,7 +598,7 @@ export default function BIOSUpdateGuide() {
           </div>
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Gravação</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Verificar arquivo</li>
               <li>Gravar BIOS</li>
               <li>Confirmar escrita</li>
@@ -608,11 +608,11 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛡️ Medidas de Segurança Durante Recuperação</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Devido ao alto risco envolvido nestes procedimentos, é crucial seguir medidas de segurança rigorosas:
         </p>
         
-        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
           <li>Trabalhar em ambiente livre de estática (use pulseira antiestática)</li>
           <li>Garantir alimentação estável e protegida contra surtos</li>
           <li>Verificar compatibilidade do firmware antes de gravar</li>
@@ -626,17 +626,17 @@ export default function BIOSUpdateGuide() {
       title: "Tendências Futuras em Firmware e Segurança de Inicialização",
       content: `
         <h4 class="text-white font-bold mb-3">🔮 Evolução do Firmware de Inicialização</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O firmware de inicialização está passando por uma transformação significativa com o avanço das tecnologias de segurança, virtualização e inteligência artificial. As próximas gerações de firmware prometem oferecer níveis de segurança e funcionalidade sem precedentes, enquanto enfrentam novos desafios de segurança cibernética.
         </p>
         
         <h4 class="text-white font-bold mb-3">🔐 Segurança de Firmware na Era Moderna</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Com o aumento de ataques sofisticados que visam o firmware, novas tecnologias estão sendo desenvolvidas para proteger o ambiente de inicialização:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -681,14 +681,14 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Firmware</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A IA está começando a influenciar o desenvolvimento de firmware, especialmente em áreas de segurança e otimização:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">IA em Segurança de Firmware</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Análise preditiva de vulnerabilidades</li>
               <li>Detecção de anomalias no processo de boot</li>
               <li>Resposta automatizada a ameaças</li>
@@ -697,7 +697,7 @@ export default function BIOSUpdateGuide() {
           </div>
           <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-2">IA em Otimização</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Ajuste automático de parâmetros de hardware</li>
               <li>Personalização de perfis de inicialização</li>
               <li>Otimização de tempos de boot</li>
@@ -707,7 +707,7 @@ export default function BIOSUpdateGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de firmware avançado:
         </p>
         
@@ -720,7 +720,7 @@ export default function BIOSUpdateGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Firmware Attestation</h5>
-              <p class="text-sm text-gray-300">Universidade de Cambridge está desenvolvendo métodos para verificação remota da integridade do firmware, com implementação prevista para 2027-2029. Isso permitirá que servidores verifiquem remotamente se clientes têm firmware íntegro.</p>
+              <p class="text-sm text-gray-400">Universidade de Cambridge está desenvolvendo métodos para verificação remota da integridade do firmware, com implementação prevista para 2027-2029. Isso permitirá que servidores verifiquem remotamente se clientes têm firmware íntegro.</p>
             </div>
           </div>
           
@@ -732,7 +732,7 @@ export default function BIOSUpdateGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Self-Healing Firmware</h5>
-              <p class="text-sm text-gray-300">Microsoft Research está trabalhando em firmware capaz de detectar e reparar automaticamente modificações maliciosas, com testes iniciais previstos para 2026-2027. O firmware seria capaz de restaurar cópias íntegras de si mesmo.</p>
+              <p class="text-sm text-gray-400">Microsoft Research está trabalhando em firmware capaz de detectar e reparar automaticamente modificações maliciosas, com testes iniciais previstos para 2026-2027. O firmware seria capaz de restaurar cópias íntegras de si mesmo.</p>
             </div>
           </div>
           
@@ -744,14 +744,14 @@ export default function BIOSUpdateGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">Quantum-Resistant Boot</h5>
-              <p class="text-sm text-gray-300">IBM e Intel estão colaborando em firmware resistente a ataques quânticos, com algoritmos de assinatura quântica-resistente integrados ao processo de inicialização. Implementação esperada para 2028-2030.</p>
+              <p class="text-sm text-gray-400">IBM e Intel estão colaborando em firmware resistente a ataques quânticos, com algoritmos de assinatura quântica-resistente integrados ao processo de inicialização. Implementação esperada para 2028-2030.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">⚠️ Implicações para Atualizações Futuras</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Com a crescente complexidade e segurança dos firmwares, as atualizações futuras exigirão processos mais rigorosos de verificação e autenticação. Isso significa que atualizações de firmware se tornarão mais seguras, mas potencialmente mais complexas de realizar. O conceito de "brickar" uma placa-mãe pode evoluir para "desautorizar" permanentemente componentes através de verificações de segurança avançadas.
           </p>
         </div>

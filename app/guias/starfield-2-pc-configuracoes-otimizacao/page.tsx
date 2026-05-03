@@ -50,7 +50,7 @@ export default function Starfield2Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-300 mb-8">{description}</p>
+                <p className="text-xl text-gray-400 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos Estimados Starfield 2</h2>
@@ -90,7 +90,7 @@ export default function Starfield2Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações de Performance</h2>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-400 mb-4">
                         Starfield 2 usa Creation Engine 2.0 com suporte total a DLSS 3 e ray tracing avançado.
                     </p>
                     <div className="bg-purple-900/20 p-4 rounded mb-4">
@@ -126,14 +126,14 @@ export default function Starfield2Guide() {
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="bg-orange-900/20 p-4 rounded">
                             <h3 className="text-orange-400 font-bold mb-2">VRAM Management</h3>
-                            <p className="text-sm text-gray-300">
+                            <p className="text-sm text-gray-400">
                                 Starfield 2 consome muita VRAM com texturas de planetas. 
                                 Monitore uso e ajuste Textures para High se VRAM &gt; 90%.
                             </p>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded">
                             <h3 className="text-green-400 font-bold mb-2">CPU Optimization</h3>
-                            <p className="text-sm text-gray-300">
+                            <p className="text-sm text-gray-400">
                                 Desative VBS e Core Isolation. Use modo de alto desempenho 
                                 e prioridade alta para o processo do jogo.
                             </p>
@@ -143,10 +143,10 @@ export default function Starfield2Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Multiplayer Performance</h2>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-400 mb-4">
                         Para multiplayer, estabilidade de conexão é crucial:
                     </p>
-                    <ul className="list-disc list-inside text-gray-300 space-y-2">
+                    <ul className="list-disc list-inside text-gray-400 space-y-2">
                         <li>Use DNS Cloudflare (1.1.1.1) para menor latência</li>
                         <li>Configure QoS no roteador para priorizar jogo</li>
                         <li>Feche apps de streaming em background</li>

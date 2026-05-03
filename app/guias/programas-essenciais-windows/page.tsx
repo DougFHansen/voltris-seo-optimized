@@ -40,10 +40,10 @@ export default function SoftwareGuide() {
     {
       title: "A Regra do Ninite",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Nunca baixe programas de sites como "Baixaki" ou "Softonic". Eles embutem instaladores com propaganda. O segredo dos técnicos de TI é o <strong>Ninite.com</strong>.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           Você entra no site, marca os checkboxes do que quer (Chrome, Discord, VLC, 7-Zip), baixa UM instalador e ele instala tudo sozinho, em silêncio, recusando automaticamente todas as ofertas de "Baidu Antivirus" e Toolbars.
         </p>
 
@@ -51,7 +51,7 @@ export default function SoftwareGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🛠️</span> Voltris Toolbox
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 O Ninite é bom, mas o <strong>Voltris Optimizer</strong> já inclui as runtimes essenciais para jogos (DirectX, Visual C++ 2005-2022, .NET Framework) que o Ninite não instala. Execute o "Game Essentials" do Voltris uma vez após formatar e você nunca terá erro de DLL faltando.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -67,7 +67,7 @@ export default function SoftwareGuide() {
     {
       title: "1. Compactador: 7-Zip",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Jogue fora o WinRAR. Ele fica pedindo licença toda hora. O <strong>7-Zip</strong> é gratuito, código aberto, mais leve e descompacta arquivos .rar e .zip mais rápido.
         </p>
       `
@@ -75,7 +75,7 @@ export default function SoftwareGuide() {
     {
       title: "2. Player de Vídeo: VLC Media Player",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O "Filmes e TV" do Windows não roda legendas direito, nem formatos mkv estranhos. O VLC roda TUDO. É o canivete suíço dos vídeos. Se quiser algo mais bonitinho, use o <strong>PotPlayer</strong>.
         </p>
       `
@@ -83,10 +83,10 @@ export default function SoftwareGuide() {
     {
       title: "3. Captura de Tela: ShareX",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O melhor software de printscreen do mundo. Gratuito na Steam ou site oficial.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Tira print e já faz upload automático pro Imgur (gera link).</li>
             <li>Grava GIFs da tela ou vídeos MP4 leves.</li>
             <li>Tem editor, seletor de cores, régua e OCR (extrair texto de imagem).</li>
@@ -101,10 +101,10 @@ export default function SoftwareGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">Ferramentas Oficiais da MS</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Baixe na Microsoft Store. Ele adiciona recursos que deveriam vir no Windows:
                 </p>
-                <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4 text-sm">
+                <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4 text-sm">
                     <li><strong>FancyZones:</strong> Crie layouts complexos para dividir janelas no monitor ultrawide.</li>
                     <li><strong>Color Picker:</strong> Win+Shift+C para pegar a cor de qualquer pixel da tela.</li>
                     <li><strong>PowerRename:</strong> Renomear 1000 arquivos de uma vez.</li>
@@ -119,10 +119,10 @@ export default function SoftwareGuide() {
     {
       title: "Antivírus?",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Você <strong>NÃO</strong> precisa de Avast, AVG ou Norton em 2026.
             </p>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
                 O <strong>Windows Defender</strong> nativo já é excelente e leve. Antivírus de terceiros hoje em dia agem como bloatware, instalando VPNs e popups de venda. Fique com o Defender e use o bom senso (não baixe executáveis desconhecidos). Se precisar de uma segunda opinião, baixe o <strong>Malwarebytes Free</strong> para um scan manual ocasional.
             </p>
             `

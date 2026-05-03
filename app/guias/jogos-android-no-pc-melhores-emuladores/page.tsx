@@ -34,7 +34,7 @@ export default function AndroidEmulatorsGuide() {
         {
             title: "A evolução da emulação de Android",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, a emulação de Android no PC mudou muito. Com a chegada do Windows Subsystem for Android (WSA), muitos usuários migraram para a solução nativa. No entanto, se o seu objetivo é **Gamer** (mapeamento de teclas, macros e múltiplas instâncias), os emuladores tradicionais ainda dominam o mercado com recursos que o Windows puro não oferece.
         </p>
       `
@@ -42,8 +42,8 @@ export default function AndroidEmulatorsGuide() {
         {
             title: "1. BlueStacks 5: O Gigante Amado",
             content: `
-        <p class="mb-4 text-gray-300">O BlueStacks é o mais completo, mas também o mais pesado.</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O BlueStacks é o mais completo, mas também o mais pesado.</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>Prós:</strong> Suporte a quase todos os jogos da Play Store, tradução em tempo real e modo Eco extremamente eficiente para deixar o emulador aberto enquanto você trabalha.</li>
             <li><strong>Contras:</strong> Consome muita RAM (mínimo de 8GB no PC recomendado).</li>
             <li><strong>Ideal para:</strong> PCs modernos e quem quer a maior segurança possível.</li>
@@ -55,7 +55,7 @@ export default function AndroidEmulatorsGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A Escolha Gamer:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O <strong>LDPlayer 9</strong> é atualmente o emulador que inicia mais rápido e consome menos CPU durante as partidas de jogos como Free Fire ou COD Mobile. Ele é altamente otimizado para placas de vídeo AMD e NVIDIA, permitindo rodar jogos a 120 FPS ou mais de forma estável.
             </p>
         </div>
@@ -64,7 +64,7 @@ export default function AndroidEmulatorsGuide() {
         {
             title: "3. Aviso: Virtualização (VT)",
             content: `
-        <p class="mb-4 text-gray-300 border-l-4 border-yellow-500 pl-4 bg-yellow-900/10 p-4 rounded">
+        <p class="mb-4 text-gray-400 border-l-4 border-yellow-500 pl-4 bg-yellow-900/10 p-4 rounded">
             <strong>Check Obrigatório:</strong> Nenhum desses emuladores funcionará bem se a <strong>Virtualização (VT-x ou SVM)</strong> estiver desativada na sua BIOS. Se o seu emulador está travando em 99% ou dando lag exagerado, esse é o primeiro passo que você deve verificar.
         </p>
       `

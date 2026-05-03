@@ -41,7 +41,7 @@ export default function YuzuGuide() {
         {
             title: "Introdução: O Fim do Yuzu e Ryujinx",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Nota: O projeto Yuzu foi descontinuado judicialmente. Hoje usamos forks como **Suyu** ou **Sudachi**, ou o **Ryujinx** que continua ativo. As configurações são similares.
         </p>
       `
@@ -65,7 +65,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 2: Melhores Configurações Gráficas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Graphics API:</strong> Vulkan. (OpenGL é legado e lento, só use se Vulkan bugar).
             - <strong>Resolution Scale:</strong> 2x (1440p/4K). Switch nativo é 720p/1080p e fica feio no monitor. 2x deixa nítido sem pesar muito na CPU.
             - <strong>Anti-Aliasing:</strong> SMAA (melhor visual) ou FXAA (mais leve).
@@ -76,7 +76,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 3: Configurações de CPU",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Accuracy:</strong> Auto. Colocar em "Paranoid" ou "High" mata a performance sem ganho visível na maioria dos jogos.
             - <strong>VSync:</strong> Mailbox (Ideal para G-Sync/FreeSync) ou Immediate (Latência mínima, mas com Tearing).
         </p>
@@ -88,7 +88,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 4: Zelda TOTK (O Gigante)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para rodar TOTK liso:
             <br/>1. Use o mod <strong>"TotK Optimizer"</strong>. Ele configura tudo sozinho.
             <br/>2. Ou instale manualmente: <code>UltraCam</code>, <code>DynamicFPS</code> e <code>60fps Static</code>.
@@ -99,7 +99,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 5: Mods (60FPS / Widescreen)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A maioria dos jogos de Switch é travada em 30fps.
             <br/>Clique com botão direito no jogo > Open Mods Directory.
             <br/>Baixe mods no site "HolographicWings" ou GitHub.
@@ -110,7 +110,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 6: Cache de Shaders (Pipeline)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Na primeira vez que você joga, o emulador compila shaders. Isso causa pequenas travadinhas (stutter).
             <br/>Na segunda vez, é liso.
             <br/>Ative "Vulkan Pipeline Cache" e "Asynchronous Shader Building" (Isso reduz stutters, mas pode causar glitches visuais momentâneos).
@@ -120,7 +120,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 7: Motion Controls (Giroscópio)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Essencial para puzzles do Zelda.
             <br/>Controles de PS4/PS5 oficial e Switch Pro têm giroscópio nativo.
             <br/>No Ryujinx/Yuzu, configure o Input e ative "Motion". Balance o controle para testar.
@@ -134,7 +134,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 8: Ryujinx vs Yuzu/Suyu",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 - <strong>Ryujinx:</strong> Mais preciso, roda jogos no lançamento (sem hacks), mas é um pouco mais pesado. Suporta Mac M1/M2 incrivelmente bem.
                 - <strong>Yuzu (Suyu/Sudachi):</strong> Mais rápido em PCs fracos (Hacks de velocidade), mas menos preciso.
                 <br/>Tenha os dois instalados. Se um jogo bugar em um, teste no outro.
@@ -144,7 +144,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 9: Online (LDN / Multiplayer)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Ryujinx tem modo LDN (Local Wireless via Internet).
                 <br/>Você pode jogar Monster Hunter ou Mario Kart com amigos que também usam emulador, como se estivessem na mesma sala (LAN). Não conecta nos servidores oficiais da Nintendo (o que daria Ban na hora).
             </p>
@@ -153,7 +153,7 @@ export default function YuzuGuide() {
         {
             title: "Capítulo 10: Amiibo",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Os emuladores suportam Amiibo virtual.
                 <br/>Basta baixar os arquivos .bin dos Amiibos na internet e carregar quando o jogo pedir (Menu Actions > Scan Amiibo). Ganhe loots exclusivos no Zelda.
             </p>

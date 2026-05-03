@@ -41,7 +41,7 @@ export default function CemuGuide() {
         {
             title: "Introdução: Por que Cemu e não Yuzu?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Para Breath of the Wild e Mario Kart 8, o Cemu (Wii U) é SUPERIOR ao Yuzu (Switch).
           <br/>O Cemu é muito mais leve (roda em i3 antigo) e tem mods de "FPS++" que permitem jogar acima de 60fps sem quebrar a física do jogo. O Yuzu sofre para bater 60fps estáveis.
         </p>
@@ -64,7 +64,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 2: Graphics Packs (A Mágica)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             1. Options > Graphics Packs.
             <br/>2. Clique em "Download latest community graphic packs".
             <br/>3. Abra a aba do jogo (ex: Breath of the Wild).
@@ -77,7 +77,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 3: Vulkan e Async Shaders",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Mude a API Gráfica para Vulkan em General Settings.
             <br/>Ative <strong>"Async Shader Compilation"</strong>.
             <br/>Isso elimina 99% das travadinhas (stutter) de loading de shaders. O jogo roda liso desde o primeiro minuto. O OpenGL compilava shaders travando a tela. O Vulkan compila em background e você nem percebe.
@@ -90,7 +90,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 4: Instalando DLCs e Updates",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Cemu não lê DLCs soltas na pasta. Você precisa instalar na NAND virtual.
             <br/>File > Install Game Title, Update or DLC.
             <br/>Selecione a pasta <code>meta</code> dentro do update que você baixou.
@@ -102,7 +102,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 5: Gyro (Motion Controls)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Zelda tem Dungeons que exigem girar o controle.
             <br/>Input Settings > Ative "Use Motion".
             <br/>Se usar DualSense/DualShock 4: Funciona nativo via DSU Client (instale DS4Windows se precisar).
@@ -113,7 +113,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 6: Xenoblade Chronicles X (60FPS)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Outro monstro do Wii U.
             <br/>O jogo é travado em 30fps.
             <br/>Use o Graphics Pack > Mods > 60FPS Mod.
@@ -124,7 +124,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 7: Jogando Online (Cemu Network)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             É possível jogar Mario Kart 8 e Splatoon nos servidores oficiais da Nintendo!
             <br/>MAS você precisa de um Wii U real desbloqueado para extrair seus arquivos de conta (OTP, SEEPROM, Account.dat).
             <br/>Não baixe isso da internet (é ban na certa de console ID compartilhado).
@@ -137,7 +137,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 8: Mods Visuais (Reshade)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A comunidade criou o "Clarity" e presets de Reshade que adicionam Ray Tracing (RTGI) fake ao Zelda. Fica lindo, mas pesa na GPU.
                 <br/>Ative em Graphics Packs > Enhancements > Clarity. Escolha o preset "Serfrost".
             </p>
@@ -146,7 +146,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 9: Cemu 2.0 (Linux)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A versão 2.0 é nativa de Linux (AppImage).
                 <br/>Roda muito bem no Steam Deck (via EmuDeck), consumindo pouca bateria (TDP 8-10W) para rodar Zelda a 40fps.
             </p>
@@ -155,7 +155,7 @@ export default function CemuGuide() {
         {
             title: "Capítulo 10: Tela Verde (Vídeos)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se as cutscenes ficarem verdes/invertidas, baixe o "Cemuhook" (apenas para versões antigas 1.26). No Cemu 2.0, isso já foi corrigido nativamente via decodificação de software (Debug > Use Cemuhook H264).
             </p>
             `

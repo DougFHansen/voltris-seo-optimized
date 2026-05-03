@@ -43,12 +43,12 @@ export default function FortniteGuide() {
         {
             title: "Introdução: O Modo Performance",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Esqueça DX11 ou DX12. Se você quer competir, o <strong>Performance Mode</strong> é obrigatório. Ele remove efeitos de iluminação pesados e grama, deixando o jogo com visual "Mobile", mas rodando a 240 FPS+ estáveis.
         </p>
          <div class="bg-[#0A0A0F] border border-blue-500/30 p-5 rounded-xl my-6">
             <h4 class="text-blue-400 font-bold mb-2">Malhas (Meshes): A Grande Decisão</h4>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
                 <strong>Low Meshes (Malhas Baixas):</strong> Construções parecem feitas de papelão ou "celular". FPS Máximo. Menor input lag.
                 <br/><strong>High Meshes (Malhas Altas):</strong> Construções têm animação de quebra e você consegue <strong>VER ATRAVÉS</strong> da madeira recém-construída. Dá uma vantagem tática absurda (wallhack legalizado), mas consome um pouco mais de GPU.
                 <br/><em>Recomendação:</em> Se seu PC aguenta, use <strong>High Meshes</strong>. Se for muito fraco, Low.
@@ -83,11 +83,11 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 2: GameUserSettings.ini (Segredos)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Aperte <kbd class="bg-gray-700 px-1 rounded">Win+R</kbd>, digite <code>%localappdata%\\FortniteGame\\Saved\\Config\\WindowsClient</code>.
             <br/>Edite o <code>GameUserSettings.ini</code>. Procure e altere:
         </p>
-        <div class="bg-black/50 p-4 rounded font-mono text-xs text-gray-300 overflow-x-auto">
+        <div class="bg-black/50 p-4 rounded font-mono text-xs text-gray-400 overflow-x-auto">
             bShowGrass=False (Garante que a grama suma)<br/>
             DisplayGamma=2.200000 (Padrão e claro)<br/>
             bDisableMouseAcceleration=True (Obrigatório)<br/>
@@ -106,7 +106,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 3: DirectX 12 Shaders (Fix de Stutter)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você usa Modo Performance e o jogo trava muito na primeira partida:
             <br/>1. Mude para DX12 no menu.
             <br/>2. Jogue 2 partidas de Team Rumble (Tumulto).
@@ -119,7 +119,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 4: Opções de Inicialização Epic Games",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No Launcher da Epic > Configurações > Fortnite > Argumentos adicionais:
         </p>
         <code class="block bg-black/50 p-3 rounded text-green-400 font-mono text-sm mb-3">
@@ -134,7 +134,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 5: Nvidia Reflex & Latência",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No Fortnite, o Reflex é rei. Deixe em <strong>On + Boost</strong>.
             <br/>O jogo é totalmente CPU Bound em lutas de box (endgame). O Reflex impede que a GPU crie fila, garantindo que cada clique de edição (edit) seja registrado instantaneamente.
         </p>
@@ -143,7 +143,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 6: Resolução Esticada (Stretched)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Mudar para 1750x1080 ou 1680x1050.
             <br/>Vantagem: Bonecos mais largos, menos pixels para renderizar (FPS boost).
             <br/>Desvantagem: Perda de FOV horizontal.
@@ -157,7 +157,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 7: Pre-Download de Assets",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 No Launcher da Epic, clique nos "..." do Fortnite > Opções.
                 <br/>Marque: <strong>"Texturas de Alta Resolução"</strong> (NÃO, desmarque isso para economizar 20GB).
                 <br/>Marque: <strong>"Pré-Baixar Ativos de Streaming"</strong>. ISSO É CRUCIAL. Se você desmarcar, o jogo baixa skins de inimigos DURANTE a partida ao vivo, causando lag de internet e FPS. Baixe tudo antes.
@@ -167,7 +167,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 8: Som Visual (Visual Audio)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Ative <strong>"Visualizar Efeitos Sonoros"</strong> nas opções de Áudio.
                 <br/>Isso mostra na tela onde estão passos, baús e tiros.
                 <br/><em>Segredo:</em> O indicador visual aparece ANTES do som ser audível e mostra o dobro da distância. É um "hack" oficializado. Todo pro usa.
@@ -177,7 +177,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 9: Replay Mode (Desativar)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Vá na última aba de configurações (Engrenagem) e role até "Replays".
                 <br/>Grave Replays: <strong>Desligado</strong>.
                 <br/>Gravar replays consome CPU e disco constantemente. Em scrims e campeonatos, desligue para estabilidade máxima.
@@ -187,7 +187,7 @@ export default function FortniteGuide() {
         {
             title: "Capítulo 10: Voltris Optimizer no Fortnite",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O <strong>Voltris Optimizer</strong> limpa a memória standby automaticamente a cada 5 minutos (configurável), o que previne o famoso "Memory Leak" do Fortnite que faz o jogo começar a travar após 2 horas de jogatina.
             </p>
             `

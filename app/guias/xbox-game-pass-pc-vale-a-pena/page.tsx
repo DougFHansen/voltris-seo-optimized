@@ -34,7 +34,7 @@ export default function GamePassValueGuide() {
         {
             title: "O \"Netflix\" dos Videogames em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O **Xbox Game Pass** revolucionou a forma como consumimos jogos. Em 2026, com os jogos AAA (lançamentos de ponta) custando frequentemente acima de R$ 350,00, a proposta de pagar uma mensalidade fixa para ter centenas de títulos à disposição parece tentadora. Porém, o serviço mudou: novos níveis de assinatura e a inclusão da Activision-Blizzard no catálogo transformaram o cenário.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GamePassValueGuide() {
         {
             title: "1. Vantagens do 'Day One'",
             content: `
-        <p class="mb-4 text-gray-300">A maior economia do Game Pass:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">A maior economia do Game Pass:</p>
+        <p class="text-sm text-gray-400">
             A Microsoft continua com a política de lançar todos os seus jogos originais (Xbox Game Studios) no primeiro dia no serviço. Em 2026, isso inclui franquias como <strong>Call of Duty, Halo, Forza e Fable</strong>. Se você planeja jogar pelo menos dois desses grandes lançamentos por ano, o serviço já se paga apenas com a economia de não precisar comprar as licenças individuais. 
         </p>
       `
@@ -53,7 +53,7 @@ export default function GamePassValueGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Poder da Nuvem:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 A assinatura Ultimate em 2026 permite que você jogue quase todo o catálogo via streaming. <br/><br/>
                 Isso significa que você pode rodar jogos pesados em um notebook de escritório ou até no seu celular, sem precisar de uma placa de vídeo potente. Com a expansão dos servidores no Brasil, o lag reduziu drasticamente, tornando o Cloud Gaming uma opção real para quem não quer investir R$ 5.000 em hardware agora.
             </p>
@@ -63,7 +63,7 @@ export default function GamePassValueGuide() {
         {
             title: "3. Quando NÃO vale a pena?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Nem tudo são flores:</strong> 
             <br/><br/>Se você é um jogador que se dedica a apenas um jogo pelo ano inteiro (como CS2, Valorant ou LoL), assinar o Game Pass é desperdício de dinheiro. Além disso, os jogos **não são seus**. Se você parar de pagar, perde o acesso. Para colecionadores que gostam de "ter" o jogo e jogar novamente após 5 anos, as promoções da Steam ainda podem ser um negócio melhor a longo prazo em 2026.
         </p>

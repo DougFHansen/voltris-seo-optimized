@@ -43,7 +43,7 @@ export default function HogwartsGuide() {
         {
             title: "Introdução: O Problema de VRAM e RAM",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Hogwarts Legacy é faminto. Ele facilmente ocupa 20GB de RAM e 10GB de VRAM em 1080p Ultra. Se seu PC não tem isso, ele usa o SSD como memória, causando travadas (stutters) horríveis.
         </p>
       `
@@ -70,7 +70,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 2: Configurações Gráficas Críticas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Fog Quality (Neblina):</strong> Medium ou Low. A neblina volumétrica em Hogwarts pesa muito.
             - <strong>Sky Quality:</strong> Low. Vira um "skybox" estático, economizando CPU.
             - <strong>Foliage Quality:</strong> Medium. O jogo tem muita grama. High mata a performance na Floresta Proibida.
@@ -80,7 +80,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 3: Ray Tracing (Desligue)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A implementação de Ray Tracing em Hogwarts Legacy é bugada.
             <br/>Ela causa vazamento de memória (Memory Leak) e texturas de baixa resolução.
             <br/>Mesmo com uma RTX 4070, recomenda-se deixar <strong>OFF</strong>. A iluminação nativa "baked" já é linda.
@@ -93,7 +93,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 4: Ascendio Mod",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se os tweaks manuais não funcionarem, instale o mod <strong>Ascendio</strong> do NexusMods.
             <br/>Ele é um pacote automatizado de correções da Engine Unreal que melhora o streaming de assets.
             <br/>Fácil de instalar, basta rodar o executável dele.
@@ -103,7 +103,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 5: Atualização de DLSS (DLL Swap)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O jogo vem com uma versão velha do DLSS.
             <br/>Baixe o <code>nvngx_dlss.dll</code> (versão 3.7.0 ou mais nova) do TechPowerUp.
             <br/>Substitua na pasta do jogo <code>Engine\\Plugins\\Runtime\\Nvidia\\DLSS\\Binaries\\ThirdParty\\Win64</code>.
@@ -114,7 +114,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 6: V-Sync e Frame Generation",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se tiver RTX 4000: Ative "Frame Generation". O jogo escala muito bem com isso, transformando 50 FPS em 90 FPS.
             <br/>Se não tiver: Desligue V-Sync no jogo e ligue no Painel Nvidia para estabilidade.
         </p>
@@ -123,7 +123,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 7: Exploit Protection (CFG)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Pesquise "Exploit Protection" no Windows.
             <br/>Aba "Configurações de Programas" > Adicionar programa > aponte para o <code>HogwartsLegacy.exe</code>.
             <br/>Role até "Control Flow Guard (CFG)".
@@ -138,7 +138,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 8: Pop-in de Texturas",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se as texturas demoram a carregar (ficam borradas):
                 <br/>Aumente o arquivo de paginação do Windows (Memória Virtual) para 32GB no seu SSD mais rápido. O jogo *precisa* disso se você tem 16GB de RAM.
             </p>
@@ -147,7 +147,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 9: Câmera Acelerada",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A câmera padrão é lenta e tem aceleração.
                 <br/>Nas opções de Jogo: Aumente a "Sensibilidade da Câmera" e a "Aceleração da Câmera" para o máximo (ou desligue a aceleração no Engine.ini se for avançado) para ter resposta 1:1 no mouse.
             </p>
@@ -156,7 +156,7 @@ export default function HogwartsGuide() {
         {
             title: "Capítulo 10: Process Priority",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Não adianta colocar em "High Priority". A Denuvo (proteção do jogo) impede algumas ferramentas de interagir profundamente, mas o CleanMem ou ISLC (Intelligent Standby List Cleaner) ajuda a limpar a RAM em background.
             </p>
             `

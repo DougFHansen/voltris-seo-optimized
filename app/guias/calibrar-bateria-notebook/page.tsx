@@ -34,7 +34,7 @@ export default function BatteryCalibrationGuide() {
         {
             title: "Por que a bateria \"mente\"?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Com o passar do tempo em 2026, o sensor digital que mede a carga da bateria (Fuel Gauge) pode perder o sincronismo com a capacidade química real das células. Isso faz com que o Windows ache que você ainda tem 15% de bateria, quando na verdade ela já está no fim, causando o desligamento repentino do notebook. A **calibração** não recupera uma bateria morta, mas faz com que a porcentagem mostrada seja real.
         </p>
       `
@@ -42,8 +42,8 @@ export default function BatteryCalibrationGuide() {
         {
             title: "1. Passo a Passo do Ciclo Completo",
             content: `
-        <p class="mb-4 text-gray-300">Siga este procedimento para resetar o sensor:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Siga este procedimento para resetar o sensor:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Carregue o notebook até <strong>100%</strong> e deixe-o ligado na tomada por mais 2 horas para garantir a carga total.</li>
             <li>Desconecte o carregador e use o aparelho até que ele descarregue completamente e desligue sozinho.</li>
             <li><strong>Importante:</strong> Deixe o notebook desligado e sem carga por cerca de 3 a 5 horas.</li>
@@ -57,7 +57,7 @@ export default function BatteryCalibrationGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Ajuste de Energia:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Para que o notebook não hiberne antes da hora no passo 2, vá em Opções de Energia > Alterar configurações do plano. <br/><br/>
                 Certifique-se de que a opção de 'Hibernar' em bateria esteja marcada como **'Nunca'**. Isso permite que as células de íon-lítio descarreguem até o limite seguro configurado pelo hardware, e não pelo software do Windows.
             </p>
@@ -67,7 +67,7 @@ export default function BatteryCalibrationGuide() {
         {
             title: "3. Quando a calibração não resolve?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Dica de 2026:</strong> 
             <br/><br/>Se mesmo após calibrar, o seu notebook continua durando apenas 30 minutos, o problema é o desgaste físico das células (degradação). Use o nosso guia de 'Verificar Saúde da Bateria' para ver o nível de desgaste. Se a capacidade de carga total for menor que 50% da original, a calibração não ajudará mais: você precisará substituir a bateria fisicamente.
         </p>
@@ -80,14 +80,14 @@ export default function BatteryCalibrationGuide() {
       title: "Ciência das Baterias de Íon-Lítio: Química e Degradacão",
       content: `
         <h4 class="text-white font-bold mb-3">🔋 Química das Baterias de Íon-Lítio</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           As baterias de íon-lítio utilizadas em notebooks são compostas por células eletroquímicas que armazenam energia através do movimento de íons de lítio entre o cátodo e o ânodo. A compreensão dos princípios químicos subjacentes é essencial para entender o processo de calibração e degradação:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Componentes Químicos</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Cátodo: Óxido de cobalto, níquel ou manganês</li>
               <li>• Ânodo: Grafite ou silicone</li>
               <li>• Eletrólito: Solução de sais de lítio em solvente orgânico</li>
@@ -98,7 +98,7 @@ export default function BatteryCalibrationGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Reações Eletroquímicas</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Durante a carga: Li⁺ move-se do cátodo para o ânodo</li>
               <li>• Durante a descarga: Li⁺ move-se do ânodo para o cátodo</li>
               <li>• Capacidade nominal: Medida em mAh (miliampere-hora)</li>
@@ -110,12 +110,12 @@ export default function BatteryCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Processos de Degradação</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A degradação das baterias de íon-lítio ocorre por meio de múltiplos mecanismos químicos e físicos:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Mecanismo</th>
@@ -161,7 +161,7 @@ export default function BatteryCalibrationGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             O processo de degradação não é linear e acelera significativamente após atingir cerca de 80% da capacidade original. A calibração não reverte esta degradação química, apenas recalibra o sistema de medição para refletir com precisão a capacidade restante.
           </p>
         </div>
@@ -171,12 +171,12 @@ export default function BatteryCalibrationGuide() {
       title: "Sistemas de Gerenciamento de Bateria e Firmware",
       content: `
         <h4 class="text-white font-bold mb-3">⚡ Unidades de Gerenciamento de Bateria (BMU)</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O sistema de gerenciamento de bateria (Battery Management System - BMS) é responsável por monitorar e controlar com precisão o estado de carga e saúde da bateria. Este sistema inclui sensores, circuitos e firmware especializados:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Componente</th>
@@ -221,14 +221,14 @@ export default function BatteryCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Processo de Calibração Técnica</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A calibração envolve uma série de medições e cálculos precisos para redefinir os pontos de referência do sistema:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Reset de Coulomb Counter</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Descarga completa controlada</li>
               <li>Medição de carga total</li>
               <li>Estabelecimento de ponto zero</li>
@@ -247,7 +247,7 @@ export default function BatteryCalibrationGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Reconfiguração de Limites</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Tensão de corte seguro</li>
               <li>Limites de temperatura</li>
               <li>Proteções contra sobrecarga</li>
@@ -257,11 +257,11 @@ export default function BatteryCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛠️ Comandos e Ferramentas de Calibração</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Ferramentas e comandos para diagnosticar e calibrar o sistema de bateria:
         </p>
         
-        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
           <li><strong>Relatório de bateria:</strong> powercfg /batteryreport (gera relatório completo)</li>
           <li><strong>Gráfico de uso:</strong> powercfg /sleepstudy (análise de consumo)</li>
           <li><strong>Configuração de energia:</strong> powercfg /setactive (alterar plano de energia)</li>
@@ -275,17 +275,17 @@ export default function BatteryCalibrationGuide() {
       title: "Tecnologias Emergentes em Armazenamento de Energia e Gestão de Carga",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Bateria de Próxima Geração</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A próxima geração de baterias para notebooks está explorando tecnologias avançadas que prometem maior densidade energética, ciclos de vida mais longos e tempos de carga mais rápidos:
         </p>
         
         <h4 class="text-white font-bold mb-3">Baterias Sólidas e Semi-Sólidas</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Novas tecnologias de bateria que estão sendo implementadas:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -330,14 +330,14 @@ export default function BatteryCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Gestão de Energia</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A IA está começando a desempenhar um papel crucial na otimização de sistemas de bateria:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Predição de Vida Útil</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Análise preditiva de degradação</li>
               <li>Modelagem de ciclos de vida</li>
               <li>Alertas de substituição preventiva</li>
@@ -349,7 +349,7 @@ export default function BatteryCalibrationGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Gestão de Carga Inteligente</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Carregamento adaptativo</li>
               <li>Controle térmico preditivo</li>
               <li>Equilíbrio de células em tempo real</li>
@@ -361,7 +361,7 @@ export default function BatteryCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de armazenamento de energia de próxima geração:
         </p>
         
@@ -374,7 +374,7 @@ export default function BatteryCalibrationGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Solid-State Batteries</h5>
-              <p class="text-sm text-gray-300">Empresas como QuantumScape e Solid Power estão desenvolvendo baterias de estado sólido que substituem o eletrólito líquido por um material sólido cerâmico. Essas baterias prometem maior segurança, maior densidade energética e ciclos de vida extremamente longos. Implementações iniciais em notebooks estão previstas para 2026-2028, com adoção generalizada esperada para 2028-2030.</p>
+              <p class="text-sm text-gray-400">Empresas como QuantumScape e Solid Power estão desenvolvendo baterias de estado sólido que substituem o eletrólito líquido por um material sólido cerâmico. Essas baterias prometem maior segurança, maior densidade energética e ciclos de vida extremamente longos. Implementações iniciais em notebooks estão previstas para 2026-2028, com adoção generalizada esperada para 2028-2030.</p>
             </div>
           </div>
           
@@ -386,7 +386,7 @@ export default function BatteryCalibrationGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Silicon-Anode Technology</h5>
-              <p class="text-sm text-gray-300">Universidades como Stanford e MIT estão desenvolvendo baterias com ânodos de silicone que podem armazenar até 10 vezes mais energia que os ânodos de grafite convencionais. A empresa Sila Nanotechnologies já está fornecendo materiais de silicone para fabricantes de baterias, com aplicações em notebooks previstas para 2026-2027.</p>
+              <p class="text-sm text-gray-400">Universidades como Stanford e MIT estão desenvolvendo baterias com ânodos de silicone que podem armazenar até 10 vezes mais energia que os ânodos de grafite convencionais. A empresa Sila Nanotechnologies já está fornecendo materiais de silicone para fabricantes de baterias, com aplicações em notebooks previstas para 2026-2027.</p>
             </div>
           </div>
           
@@ -398,14 +398,14 @@ export default function BatteryCalibrationGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">AI-Powered Battery Management</h5>
-              <p class="text-sm text-gray-300">Empresas como Tesla e Apple estão desenvolvendo sistemas de gerenciamento de bateria baseados em IA que podem prever e adaptar os padrões de carga com base no uso do usuário. Esses sistemas aprendem com os hábitos de carregamento e descarga para otimizar a vida útil da bateria. Implementações avançadas estão sendo testadas para inclusão em notebooks a partir de 2026-2027.</p>
+              <p class="text-sm text-gray-400">Empresas como Tesla e Apple estão desenvolvendo sistemas de gerenciamento de bateria baseados em IA que podem prever e adaptar os padrões de carga com base no uso do usuário. Esses sistemas aprendem com os hábitos de carregamento e descarga para otimizar a vida útil da bateria. Implementações avançadas estão sendo testadas para inclusão em notebooks a partir de 2026-2027.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Com o avanço das tecnologias de bateria e a crescente demanda por dispositivos mais eficientes energeticamente, a calibração manual de baterias tornar-se-á cada vez menos necessária. Sistemas inteligentes baseados em IA e novos materiais de bateria com maior estabilidade química resultarão em baterias que se auto-calibram e mantêm sua precisão ao longo de toda a vida útil, reduzindo significativamente a necessidade de intervenção manual por parte do usuário.
           </p>
         </div>

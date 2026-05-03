@@ -50,7 +50,7 @@ export default function Cyberpunk2077Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-300 mb-8">{description}</p>
+                <p className="text-xl text-gray-400 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos Phantom Liberty (Path Tracing)</h2>
@@ -90,7 +90,7 @@ export default function Cyberpunk2077Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações Path Tracing</h2>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-400 mb-4">
                         Path Tracing é o futuro da renderização. Phantom Liberty foi o primeiro jogo a implementar RT completo.
                     </p>
                     <div className="bg-purple-900/20 p-4 rounded mb-4">
@@ -149,14 +149,14 @@ export default function Cyberpunk2077Guide() {
                     <div className="space-y-4">
                         <div className="bg-red-900/20 p-4 rounded">
                             <h3 className="text-red-400 font-bold mb-2">Stuttering em Áreas Densas</h3>
-                            <p className="text-sm text-gray-300">
+                            <p className="text-sm text-gray-400">
                                 Reduza Crowd Density para Medium, ativa DLSS 3.5 Performance e 
                                 aumente VRAM allocation no launcher.
                             </p>
                         </div>
                         <div className="bg-yellow-900/20 p-4 rounded">
                             <h3 className="text-yellow-400 font-bold mb-2">VRAM Insuficiente (8GB)</h3>
-                            <p className="text-sm text-gray-300">
+                            <p className="text-sm text-gray-400">
                                 Use Texture Quality High, desative Cascaded Shadows Resolution 
                                 e configure Specialized Lighting para Medium.
                             </p>

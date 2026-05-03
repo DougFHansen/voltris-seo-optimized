@@ -40,7 +40,7 @@ export default function XboxGuide() {
         {
             title: "Introdução: O DVR Oculto",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Por padrão, o Windows grava os últimos 30 segundos do seu jogo (Background Recording). Em PCs fracos, isso causa um "stutter" a cada minuto quando o buffer do HD enche.
         </p>
       `
@@ -64,7 +64,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 2: Modo de Jogo (Game Mode)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Mito: "Desligue o Game Mode".
             <br/>Em 2026 (Windows 11 24H2), o <strong>Modo de Jogo deve ficar LIGADO</strong>.
             <br/>Ele impede que o Windows Update instale drivers ou reinicie o PC enquanto você joga, e prioriza a CPU para o jogo.
@@ -74,7 +74,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 3: Desativando a Barra (Win+G)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você nunca usa o atalho Win+G:
             <br/>Vá em Configurações > Jogos > Xbox Game Bar.
             <br/>Desmarque "Abrir Xbox Game Bar usando este botão no controle".
@@ -88,7 +88,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 4: Removendo via PowerShell (Debloat)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você quer EXTERMINAR a Game Bar do sistema:
             <br/>Abra o PowerShell como Admin e digite:
             <br/><code>Get-AppxPackage Microsoft.XboxGamingOverlay | Remove-AppxPackage</code>
@@ -99,7 +99,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 5: Xbox Networking (Teredo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você joga Forza Horizon online e cai toda hora:
             <br/>Vá em Configurações > Jogos > Rede Xbox.
             <br/>Verifique se o "Tipo de NAT" está Aberto. Se estiver "Bloqueado", clique em "Corrigir".
@@ -110,7 +110,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 6: Presence Writer (Lag em FPS)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Existe um arquivo chamado <code>GameBarPresenceWriter.exe</code> que avisa seus amigos "Jogando Valorant...".
             <br/>Em alguns PCs, isso causa micro-congelamentos. Se desativar a Game Bar não resolver, renomeie esse arquivo na pasta System32 (arriscado, faça backup).
         </p>
@@ -122,7 +122,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 7: Game Pass no PC",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você assina Game Pass, NÃO desinstale o app Xbox.
                 <br/>Mas desative as notificações de "Conquista Desbloqueada", pois elas cobrem o minimapa do jogo.
             </p>
@@ -131,7 +131,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 8: Widget de Performance",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A Game Bar tem um widget de FPS/CPU. É útil, mas consome mais recursos que o RivaTuner (MSI Afterburner). Prefira o RivaTuner.
             </p>
             `
@@ -139,7 +139,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 9: Agendador de GPU",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Lembre-se de ativar "Agendamento de GPU acelerado por hardware" nas configurações gráficas do Windows. Reduz latência.
             </p>
             `
@@ -147,7 +147,7 @@ export default function XboxGuide() {
         {
             title: "Capítulo 10: Reinstalando",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se arrepender, baixe de volta na Microsoft Store grátis.
             </p>
             `

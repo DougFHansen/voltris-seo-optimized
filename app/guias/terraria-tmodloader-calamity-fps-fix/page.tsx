@@ -42,7 +42,7 @@ export default function TerrariaGuide() {
         {
             title: "Introdução: O Efeito Câmera Lenta",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Terraria liga o tempo do jogo ao Frame Rate. Se seu PC não consegue fazer 60 quadros, o jogo desacelera o tempo para compensar (fica tudo lento).
         </p>
       `
@@ -65,7 +65,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 2: Iluminação (Lighting Mode)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A iluminação "Color" ou "Trippy" é bonita, mas calcula luz pixel a pixel.
             <br/>Em eventos como "Pumpkin Moon" com milhares de partículas:
             <br/>Mude para <strong>Retro</strong> ou <strong>White</strong>.
@@ -76,7 +76,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 3: TModLoader 64-bit",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Terraria original era 32-bit (limitado a 4GB RAM).
             <br/>O TModLoader na Steam hoje já é 64-bit nativo (versão 1.4+).
             <br/>Isso permite usar modpacks gigantes sem dar "Out of Memory". Apenas certifique-se de estar rodando a versão "1.4.4 stable" na Steam.
@@ -89,7 +89,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 4: Config.json e Mods de Performance",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Baixe o mod <strong>"Lag Remover"</strong> ou <strong>"High FPS Support"</strong> no navegador de mods.
             <br/>Eles reduzem partículas de poeira e efeitos de projéteis que você nem vê no calor da batalha.
             <br/>Edite <code>config.json</code> para desativar "Heat Distortion" (efeito de calor no deserto) que buga em algumas GPUs.
@@ -99,7 +99,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 5: Backgrounds e Parallax",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Background:</strong> OFF. Remove o cenário de fundo animado.
             - <strong>Parallax:</strong> 0%. Remove o efeito de profundidade do fundo.
             <br/>Isso alivia a GPU para focar apenas nos sprites da frente.
@@ -109,7 +109,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 6: Calamity Mod Config",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se joga Calamity:
             <br/>Vá em Settings > Mod Configuration > Calamity Mod.
             <br/>Ative <strong>"Reduce particle effects"</strong> e desative <strong>"Afterimages"</strong>.
@@ -120,7 +120,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 7: Stuttering em Monitor 144Hz",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Terraria pode bugar acima de 60Hz (animações aceleradas).
             <br/>Recomendação: Limite o FPS a 60 no Painel Nvidia ou ative V-Sync no jogo para ter a experiência mais estável e livre de glitches.
         </p>
@@ -132,7 +132,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 8: Multiplayer Host",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você é o host, não minimize o jogo (Alt-Tab).
                 <br/>O jogo pode reduzir prioridade e lagar os amigos. Use "Host & Play" com senha.
             </p>
@@ -141,7 +141,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 9: Waves / Events",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Em eventos de onda (Old One's Army), o número de inimigos é enorme.
                 <br/>Use armas que não criam muitos projéteis persistentes (evite armas que enchem a tela de partículas se estiver lagando).
             </p>
@@ -150,7 +150,7 @@ export default function TerrariaGuide() {
         {
             title: "Capítulo 10: Mapas (Minimap)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Dados do mapa explorado ficam na RAM.
                 <br/>Em mundos "Large" totalmente explorados, o save fica pesado. É normal demorar mais para salvar.
             </p>

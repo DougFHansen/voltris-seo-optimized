@@ -42,7 +42,7 @@ export default function MonitorGuide() {
         {
             title: "Introdução: Hertz vs Pixel Response",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Hz é quantas vezes a tela atualiza. Pixel Response é a velocidade que a cor muda. Se a tela atualiza (360Hz) mas o pixel é lento (IPS barato), você vê um rastro borrado atrás dos inimigos. O Overdrive corrige isso.
         </p>
       `
@@ -66,7 +66,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 2: Overdrive (Trace Free / Response Time)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No menu físico do monitor (OSD):
             <br/>Procure por "Overdrive", "Response Time" ou "Trace Free".
             <br/>Nunca coloque no MÁXIMO (Extreme/Fastest). Isso causa <strong>Inverse Ghosting</strong> (um rastro branco brilhante horrível).
@@ -78,7 +78,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 3: DyAc / ELMB (Black Frame Insertion)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Tecnologias de "Strobing" (Zowie DyAc, Asus ELMB) piscam a luz de fundo preto entre cada frame.
             <br/>Isso limpa a visão de forma absurda (CRT feelings).
             <br/>Custo: O brilho da tela cai pela metade.
@@ -92,7 +92,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 4: G-Sync/FreeSync vs Input Lag",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>G-Sync On:</strong> Imagem lisa, sem cortes (tearing). Adiciona ~1ms de input lag (se configurado certo com FPS Cap -3).
             - <strong>G-Sync Off:</strong> Latência bruta mínima. Tem tearing (imagem cortada). Pros preferem OFF.
             <br/>Se você tem 360Hz, o tearing é quase invisível. Pode deixar OFF.
@@ -103,7 +103,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 5: Calibração de Cores (ICC)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Monitores gamer vêm com cores lavadas.
             <br/>Baixe o perfil ICC do seu modelo no site Rtings ou TFTCentral.
             <br/>Aplique no "Gerenciamento de Cores" do Windows.
@@ -114,7 +114,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 6: Black Equalizer / Shadow Boost",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Função que clareia apenas as áreas escuras da tela.
             <br/>Ótimo para ver campers no escuro em COD/Tarkov.
             <br/>Péssimo para filmes (o preto vira cinza). Ative só ao jogar.
@@ -124,7 +124,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 7: Monitor de 24.5'' ou 27''?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para 1080p competitivo: 24.5 polegadas é o limite. 27 polegadas em 1080p fica pixelado (baixa PPI), ruim para ver cabeças de longe.
             <br/>Para 1440p: 27 polegadas é o ideal.
         </p>
@@ -136,7 +136,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 8: Taxa de Contraste (IPS vs TN vs OLED)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 - <strong>TN:</strong> Rápido, cores ruins. (Old School Pro).
                 - <strong>IPS:</strong> Cores lindas, velocidade boa. (Padrão 2026).
                 - <strong>OLED:</strong> Velocidade INSTANTÂNEA (0.03ms), contraste infinito. O melhor dos mundos, mas caro e pode ter burn-in com HUDs estáticos.
@@ -146,7 +146,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 9: Limpeza da Tela",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Apenas pano de microfibra levemente úmido com água destilada. NUNCA use álcool ou Vidrex. Remove a película anti-reflexo.
             </p>
             `
@@ -154,7 +154,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 10: CRU (Custom Resolution Utility)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se seu monitor suporta, você pode fazer Overclock nele (ex: de 144Hz para 165Hz) usando o CRU. Risco baixo, mas teste estabilidade.
             </p>
             `

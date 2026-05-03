@@ -39,13 +39,13 @@ export default function AutomationGuide() {
     {
       title: "O Poder da Preguiça Produtiva",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Bill Gates disse: <em>"Sempre scolherei uma pessoa preguiçosa para fazer um trabalho difícil, pois ela encontrará uma maneira fácil de fazê-lo."</em>. A automação no Windows 11 evoluiu. Antigamente, você precisava ser um programador. Hoje, com o <strong>Power Automate</strong>, você cria robôs visuais que clicam, digitam e organizam arquivos por você.
         </p>
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
           <h4 class="text-white font-bold mb-2">🚀 O Que Dá Para Fazer?</h4>
-          <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+          <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Mover todos os arquivos .pdf da pasta Downloads para Documentos/Faturas.</li>
             <li>Renomear 500 fotos de uma vez com data e local.</li>
             <li>Abrir seu setup de trabalho (Chrome, Slack, Spotify) com um clique e posicionar as janelas.</li>
@@ -57,12 +57,12 @@ export default function AutomationGuide() {
     {
       title: "Ferramenta 1: Power Automate Desktop (O Futuro)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O <strong>Power Automate</strong> vem pré-instalado no Windows 11. Ele é "Low Code" - você arrasta bloquinhos lógicos.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-4">Exemplo Prático: Organizador de Downloads</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Abra o Power Automate e clique em "Novo Fluxo". Dê o nome "Organizar Downloads".</li>
             <li>Na esquerda, busque a ação <strong>"Obter arquivos na pasta"</strong>. Arraste para o centro.
                 <br/><span class="text-xs text-gray-500 ml-6">Pasta: C:\\Users\\SeuUsuario\\Downloads | Filtro: *.pdf</span></li>
@@ -79,13 +79,13 @@ export default function AutomationGuide() {
     {
       title: "Ferramenta 2: Agendador de Tarefas (O Clássico)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Para coisas que devem rodar SOZINHAS (sem você clicar), usamos o <code>taskschd.msc</code>.
         </p>
         <div class="space-y-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                 <h5 class="font-bold text-white mb-2">Desligamento Automático</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Útil para quem deixa o PC baixando jogos e dorme.
                     <br/>1. Criar Tarefa Básica > Nome: "Dormir PC".
                     <br/>2. Disparador: Diariamente às 02:00.
@@ -95,7 +95,7 @@ export default function AutomationGuide() {
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                 <h5 class="font-bold text-white mb-2">Reiniciar Driver de Vídeo no Boot</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Se seu driver buga ao iniciar, crie uma tarefa para rodar um script de restart.
                 </p>
             </div>
@@ -109,7 +109,7 @@ export default function AutomationGuide() {
       title: "Ferramenta 3: Scripts PowerShell (.ps1)",
       content: `
         <h4 class="text-white font-bold mb-3">Poder Ilimitado (com moderação)</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O PowerShell acessa o coração do Windows. Crie um arquivo de texto, cole o código e salve como <code>limpeza.ps1</code>.
         </p>
         
@@ -124,7 +124,7 @@ export default function AutomationGuide() {
             <p>Start-Sleep -Seconds 3</p>
         </div>
         
-        <p class="mt-4 text-gray-300 text-sm">
+        <p class="mt-4 text-gray-400 text-sm">
             Para rodar: Clique com botão direito > "Executar com o PowerShell".
             <br/><strong>Nota:</strong> Você pode precisar abrir o PowerShell como Admin e digitar <code>Set-ExecutionPolicy RemoteSigned</code> uma vez para liberar scripts.
         </p>
@@ -133,10 +133,10 @@ export default function AutomationGuide() {
     {
       title: "Autohotkey (AHK): A Arma Secreta dos Gamers",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O <a href="https://www.autohotkey.com/" class="text-blue-400 hover:underline">AutoHotkey</a> é uma linguagem de script focada em macros de teclado.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Criar atalhos globais (Ex: F1 abre o Spotify).</li>
             <li>Expandir texto (Ex: Digitar "meumail" vira "nome.sobrenome@empresa.com").</li>
             <li>Reapear teclas (Fazer o CapsLock funcionar como Backspace).</li>
@@ -159,13 +159,13 @@ export default function AutomationGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800/50 p-4 rounded-lg">
                 <h5 class="text-pink-400 font-bold mb-2">Modo Foco</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Crie um fluxo que: Fecha Steam/Discord, Ativa "Não Perturbe" no Windows e abre o Word/VS Code.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Backup de Saves</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Script que copia a pasta de Saves do jogo (AppData) e manda para o Google Drive a cada 1 hora.
                 </p>
             </div>

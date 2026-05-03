@@ -43,7 +43,7 @@ export default function ChromeGuide() {
         {
             title: "Introdução: O Monstro da RAM",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Cada aba do Chrome é um processo separado no Windows. Se você tem 16GB de RAM e o Chrome usa 4GB, sobra menos para o jogo e para o cache do sistema. Resultado: Stutters. Felizmente, o Chrome 2025/2026 trouxe ferramentas nativas de eficiência.
         </p>
       `
@@ -73,7 +73,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 2: Aceleração de Hardware",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em Configurações > Sistema > "Usar aceleração de hardware quando disponível".
             <br/><strong>O Dilema:</strong>
             <br/>- Se você assistir vídeos (YouTube/Twitch) enquanto joga:
@@ -86,7 +86,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 3: Extensões Fantasmas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Extensões como "Honey", "Grammarly" ou VPNs rodam scripts em TODAS as páginas que você abre. Isso é pesado.
             <br/>Vá em <code>chrome://extensions</code> e remova tudo que não usa.
             <br/>Mantenha apenas um Adblock (Recomendamos <strong>uBlock Origin Lite</strong>, que é mais leve que o AdBlock Plus).
@@ -99,7 +99,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 4: Chrome Flags (Avançado)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Digite <code>chrome://flags</code> na barra de endereço.
             <br/>Procure por:
             <br/>- <strong>Smooth Scrolling:</strong> Disabled (Reduz input lag na rolagem).
@@ -111,7 +111,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 5: Pré-carregamento de Páginas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configurações > Desempenho > Velocidade.
             <br/>"Pré-carregar páginas".
             <br/>Defina como <strong>Sem pré-carregamento</strong>.
@@ -122,7 +122,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 6: Codec AV1 e YouTube",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se seu PC trava assistindo vídeos em 4K/1080p60.
             <br/>Instale a extensão "h264ify" ou similar para forçar o YouTube a usar o codec H.264, que é mais leve para GPUs antigas decodificarem do que o VP9/AV1.
         </p>
@@ -131,7 +131,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 7: Limpeza de Cache (Reset)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se o Chrome está muito lento, não precisa reinstalar.
             <br/>Pressione Ctrl+Shift+Del > "Todo o período" > Imagens e arquivos armazenados em cache.
             <br/>Limpando 1GB de lixo, o navegador para de engasgar no disco.
@@ -144,7 +144,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 8: Opera GX vs Chrome",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Opera GX tem um "Limitador de RAM". É útil?
                 <br/>Sim, mas ele apenas força o navegador a ficar lento se atingir o limite. O Chrome com "Memory Saver" (Capítulo 1) faz um trabalho similar de forma mais inteligente hoje em dia. O Chrome é mais estável.
             </p>
@@ -153,7 +153,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 9: Modo Anônimo para Jogar?",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Não jogue com abas anônimas abertas. Elas não salvam cache, então toda vez que você dá F5, o site baixa tudo de novo, gastando sua internet e causando ping alto no jogo.
             </p>
             `
@@ -161,7 +161,7 @@ export default function ChromeGuide() {
         {
             title: "Capítulo 10: Task Manager do Chrome",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Chrome tem seu próprio Gerenciador de Tarefas.
                 <br/>Pressione <strong>Shift+Esc</strong> dentro do Chrome.
                 <br/>Veja qual aba ou extensão está usando mais CPU. Às vezes uma única aba travada está consumindo 30% do seu processador. Mate o processo por ali.

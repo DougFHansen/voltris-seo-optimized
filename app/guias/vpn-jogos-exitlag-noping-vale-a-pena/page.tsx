@@ -42,7 +42,7 @@ export default function VPNGuide() {
         {
             title: "Introdução: O Caminho do Pacote",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A internet é uma teia de roteadores. Para ir da sua casa (SP) até o servidor (Miami), o sinal passa por 15 saltos (Hops). Se um desses saltos estiver engarrafado, você tem lag. O VPN Gamer tenta criar um atalho desviando desse engarrafamento.
         </p>
       `
@@ -64,7 +64,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 2: Quando funciona?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Cenário 1 (Funciona):</strong> Sua operadora (Vivo) tem uma rota péssima para o servidor do Valorant, passando por caminhos longos ou servidores sobrecarregados. O ExitLag força uma rota limpa paga. O ping cai e o packet loss some.
             - <strong>Cenário 2 (Não Funciona):</strong> Sua internet local (Wi-Fi) é ruim ou a fibra está quebrada na rua. O ExitLag não consegue consertar o sinal que já sai ruim da sua casa.
         </p>
@@ -73,7 +73,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 3: Configuração de Rotas (TCP/UDP)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No ExitLag:
             <br/>- <strong>Rotas TCP:</strong> 2 (Para conexão/login).
             <br/>- <strong>Rotas UDP:</strong> 2 ou 4 (Para o jogo em si).
@@ -87,7 +87,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 4: Região do Servidor",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Sempre selecione a região ONDE ESTÁ O SERVIDOR DO JOGO.
             <br/>Se você joga CS2 no servidor de SP, selecione "BR São Paulo".
             <br/>Se joga WoW no servidor US East, selecione "US New York".
@@ -98,7 +98,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 5: FPS Boost (Funções Extras)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Esses programas vêm com abas de "FPS Boost" que desativam serviços do Windows, mudam plano de energia, etc.
             <br/>Cuidado. Às vezes eles desativam coisas úteis (Print Spooler, Windows Search).
             <br/>O Voltris Optimizer faz isso de forma mais segura e transparente. Use o VPN apenas para rede.
@@ -108,7 +108,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 6: IPv6 Support",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos GPNs ainda trabalham só em IPv4.
             <br/>Se o jogo usar IPv6 nativo, ative a opção "Enable IPv6" nas configurações do ExitLag (se disponível), senão o jogo pode ignorar o túnel e usar a rota padrão da operadora.
         </p>
@@ -117,7 +117,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 7: Diagnóstico de Rotas (Traceroute)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Use o comando <code>tracert ip_do_servidor</code> no CMD.
             <br/>Se ver asteriscos (*) ou tempos altos (>100ms) no meio do caminho, é prova de que a rota da operadora está ruim e um VPN ajudaria.
         </p>
@@ -129,7 +129,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 8: Jogos P2P (Peer to Peer)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Em jogos como FIFA ou Fighting Games antigos (P2P), você conecta direto no oponente.
                 <br/>O ExitLag tem dificuldade aqui porque o IP de destino muda a cada partida. Geralmente não vale a pena.
             </p>
@@ -138,7 +138,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 9: Bans e Anti-Cheat",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 É seguro. ExitLag/NoPing são permitidos por Riot, Valve, Blizzard.
                 <br/>VPNs comuns de privacidade às vezes são bloqueados porque hackers usam para esconder IP. GPNs são whitelistados.
             </p>
@@ -147,7 +147,7 @@ export default function VPNGuide() {
         {
             title: "Capítulo 10: Preço vs Benefício",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Use o teste grátis (Trial) de 3 dias.
                 <br/>Se o ping baixar, assine. Se ficar igual, não assine. É simples. Não pague pela promessa, pague pelo resultado no seu caso específico.
             </p>

@@ -40,7 +40,7 @@ export default function RegistryGuide() {
     {
       title: "O que é o Registro do Windows?",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Registro é o cérebro do Windows. É um banco de dados gigante onde ficam todas as configurações. Alterar valores aqui pode mudar comportamentos profundos que não existem no menu de Configurações.
         </p>
 
@@ -48,7 +48,7 @@ export default function RegistryGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">⚠️</span> Backup Automático Voltris
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Um erro de digitação no Regedit pode impedir o Windows de ligar. O <strong>Voltris Optimizer</strong> faz um backup automático de chaves críticas antes de aplicar qualquer otimização, permitindo desfazer tudo com um clique se algo der errado.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function RegistryGuide() {
     {
       title: "Tweak 1: Menus Instantâneos (MenuShowDelay)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Windows espera 400ms (quase meio segundo) propositalmente antes de abrir um submenu quando você passa o mouse. Vamos zerar isso.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
             <li>Win + R > regedit.</li>
             <li>Navegue até: <code>HKEY_CURRENT_USER\\Control Panel\\Desktop</code>.</li>
             <li>No lado direito, ache <strong>MenuShowDelay</strong>.</li>
@@ -79,10 +79,10 @@ export default function RegistryGuide() {
     {
       title: "Tweak 2: Prioridade de Jogos (Win32PrioritySeparation)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Define quanta CPU o Windows dá para o programa em primeiro plano (Jogo) vs serviços de fundo.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Caminho: <code>HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\PriorityControl</code>.</li>
             <li>Chave: <strong>Win32PrioritySeparation</strong>.</li>
             <li>Valor (Hexadecimal):
@@ -97,10 +97,10 @@ export default function RegistryGuide() {
     {
       title: "Tweak 3: Throttling de Rede (NetworkThrottlingIndex)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Windows limita o tráfego de rede de processos não-multimídia para economizar bateria/recursos. Em redes Gigabit modernas, isso é desnecessário.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Caminho: <code>HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile</code>.</li>
             <li>Chave: <strong>NetworkThrottlingIndex</strong>.</li>
             <li>Valor padrão: 10 (Decimal).</li>
@@ -116,10 +116,10 @@ export default function RegistryGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-yellow-400 font-bold mb-4 text-xl">Não ative isso!</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Muitos guias mandam ativar o <code>LargeSystemCache</code> dizendo que melhora jogos. Isso é FALSO. Essa configuração é para SERVIDORES de arquivos.
                 </p>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Ativar isso em um PC Gamer faz o Windows roubar toda a memória RAM física para cache de disco, tirando RAM do jogo e causando travamentos (Swap). Mantenha em 0.
                 </p>
             </div>
@@ -131,10 +131,10 @@ export default function RegistryGuide() {
     {
       title: "GameDVR (Gravação de Fundo)",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você não usa o Xbox Game Bar para clipar, desative via Regedit para garantir que ele não está gravando escondido.
             </p>
-            <p class="text-gray-300 text-sm font-mono">
+            <p class="text-gray-400 text-sm font-mono">
                 HKEY_CURRENT_USER\\System\\GameConfigStore -> GameDVR_Enabled = 0.<br/>
                 HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR -> AllowGameDVR = 0.
             </p>

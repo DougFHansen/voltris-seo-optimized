@@ -34,7 +34,7 @@ export default function EncryptionGuide() {
     {
       title: "Privacidade na Era Digital de 2026",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, salvar seus arquivos sem proteção é um risco enorme. Se o seu notebook for roubado, quem estiver com ele poderá acessar suas fotos, senhas salvas em navegadores e documentos bancários bastando apenas conectar o seu HD em outro computador. A **criptografia** transforma seus dados em um código ilegível que só pode ser decifrado por quem tiver a senha mestra.
         </p>
       `
@@ -42,8 +42,8 @@ export default function EncryptionGuide() {
     {
       title: "1. VeraCrypt: O sucessor do TrueCrypt",
       content: `
-        <p class="mb-4 text-gray-300">A ferramenta preferida de especialistas em 2026:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">A ferramenta preferida de especialistas em 2026:</p>
+        <p class="text-sm text-gray-400">
             O <strong>VeraCrypt</strong> é um software de código aberto que permite criar "contêineres" criptografados. Imagine um arquivo que, quando aberto com o VeraCrypt e a senha correta, aparece no Windows como um novo disco (ex: Disco Z:). <br/><br/>
             - <strong>Vantagem:</strong> É imune a acessos até de agências de inteligência se a senha for forte. <br/>
             - <strong>Uso no Pendrive:</strong> Você pode criptografar um pendrive inteiro, garantindo que se ele for perdido, ninguém verá o conteúdo.
@@ -55,7 +55,7 @@ export default function EncryptionGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Proteção Rápida de Pastas:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Clique com o botão direito numa pasta e vá em **Propriedades**. <br/>
                 2. Clique em **Avançados**. <br/>
                 3. Marque a caixa <strong>'Criptografar o conteúdo para proteger os dados'</strong>. <br/><br/>
@@ -67,7 +67,7 @@ export default function EncryptionGuide() {
     {
       title: "3. Boas Práticas de Senhas em 2026",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>O elo mais fraco:</strong> 
             <br/><br/>A criptografia mais forte do mundo não serve de nada se a sua senha for "123456". Em 2026, com o uso de IA para quebrar senhas (brute force), use frases longas no lugar de palavras curtas. <br/><br/>
             Exemplo: <i>"Meu_Gato_Preto_Comeu_2_Peixes_Em_2026"</i> é infinitamente mais difícil de quebrar do que uma senha complexa curta como <i>"G@to2026!"</i>.
@@ -77,12 +77,12 @@ export default function EncryptionGuide() {
     {
       title: "4. BitLocker: Criptografia de Disco Inteiro do Windows",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O <strong>BitLocker</strong> é a solução de criptografia de disco completo do Windows, disponível nas versões Pro, Enterprise e Education. Ele criptografa o disco inteiro (ou volumes individuais) e oferece proteção contra acesso físico não autorizado.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Como Ativar o BitLocker no Windows 11</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4">
           <li>Acesse <strong>Painel de Controle > Sistema e Segurança > BitLocker</strong> ou procure por "BitLocker" no menu Iniciar.</li>
           <li>Selecione o disco que deseja criptografar (normalmente C: para o disco do sistema).</li>
           <li>Escolha como deseja desbloquear o disco: senha ou smart card.</li>
@@ -93,7 +93,7 @@ export default function EncryptionGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">⚠️ Cuidados Importantes com o BitLocker</h4>
-          <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+          <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
             <li>Sempre mantenha sua chave de recuperação em local seguro e acessível</li>
             <li>Não formate o Windows sem ter acesso à chave de recuperação</li>
             <li>Verifique se o TPM (Trusted Platform Module) está ativado na BIOS para melhor segurança</li>
@@ -105,7 +105,7 @@ export default function EncryptionGuide() {
     {
       title: "5. Criptografia em Nuvem: Protegendo Dados Online",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Com o aumento do armazenamento em nuvem, a criptografia de dados antes de enviar para serviços como Google Drive, OneDrive ou Dropbox se tornou essencial. A criptografia de ponta a ponta (E2E) garante que nem mesmo os provedores de nuvem possam acessar seus dados.
         </p>
         
@@ -113,10 +113,10 @@ export default function EncryptionGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
             <h5 class="text-white font-bold mb-3">Cryptomator</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               Ferramenta gratuita e open-source que cria "vaults" criptografados em qualquer serviço de nuvem. Funciona como uma pasta virtual criptografada que você monta quando precisa acessar seus arquivos.
             </p>
-            <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+            <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
               <li>Compatível com Google Drive, OneDrive, Dropbox, etc.</li>
               <li>Sem armazenamento adicional necessário</li>
               <li>Chave de criptografia local (serviços não têm acesso)</li>
@@ -125,10 +125,10 @@ export default function EncryptionGuide() {
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
             <h5 class="text-white font-bold mb-3">Boxcryptor</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               Solução comercial com interface mais amigável, suporte a mais serviços e funcionalidades avançadas de compartilhamento.
             </p>
-            <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+            <ul class="list-disc list-inside text-sm text-gray-400 space-y-1">
               <li>Interface intuitiva</li>
               <li>Suporte a mais serviços de nuvem</li>
               <li>Compartilhamento seguro de arquivos criptografados</li>
@@ -140,12 +140,12 @@ export default function EncryptionGuide() {
     {
       title: "6. Criptografia de Disco em SSDs e NVMe",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Muitos SSDs modernos possuem criptografia de hardware nativa, que é mais rápida e eficiente do que a criptografia por software. Esta funcionalidade, chamada de Self-Encrypting Drive (SED), utiliza o padrão IEEE 1667 ou Opal para proteger os dados.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔒 Vantagens da Criptografia de Hardware</h4>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li><strong>Performance:</strong> Não afeta o desempenho do SSD (criptografia ocorre no hardware)</li>
           <li><strong>Segurança:</strong> Chave criptográfica armazenada no próprio chip do SSD</li>
           <li><strong>Transparência:</strong> Sistema operacional não precisa saber que os dados estão criptografados</li>
@@ -153,10 +153,10 @@ export default function EncryptionGuide() {
         </ul>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Ativação em SSDs Suportados</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A ativação varia conforme o fabricante e modelo do SSD. Geralmente é feita através de ferramentas específicas como:
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
           <li><strong>Intel SSD Toolbox</strong> para SSDs Intel</li>
           <li><strong>Samsung Magician</strong> para SSDs Samsung</li>
           <li><strong>Tools específicos</strong> de outros fabricantes (Crucial, Western Digital, etc.)</li>
@@ -166,13 +166,13 @@ export default function EncryptionGuide() {
     {
       title: "7. Criptografia para Ambientes Corporativos",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Em ambientes empresariais, a criptografia de dados deve ser gerenciada centralmente para garantir conformidade com regulamentações como LGPD, GDPR e SOX. Soluções corporativas oferecem deploy em larga escala, políticas centralizadas e auditoria de segurança.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🏢 Soluções Corporativas de Criptografia</h4>
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg overflow-hidden">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg overflow-hidden">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Solução</th>
@@ -214,7 +214,7 @@ export default function EncryptionGuide() {
     {
       title: "8. Criptografia e Desempenho: O Trade-off",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A criptografia adiciona uma camada de processamento que pode afetar o desempenho do sistema. No entanto, com os hardwares modernos, o impacto é geralmente mínimo graças a instruções criptográficas nativas nas CPUs.
         </p>
         
@@ -222,21 +222,21 @@ export default function EncryptionGuide() {
         <div class="space-y-4 mt-4">
           <div class="bg-green-900/10 p-5 rounded-xl border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Criptografia de Hardware (SEDs):</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               <strong>Impacto:</strong> Praticamente nulo. A criptografia ocorre no controller do SSD, sem uso da CPU.
             </p>
           </div>
           
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Criptografia de Software com AES-NI:</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               <strong>Impacto:</strong> 2-5% em desempenho de disco. CPUs modernas (Intel/AMD pós-2015) têm instruções AES-NI que aceleram a criptografia.
             </p>
           </div>
           
           <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Criptografia de Software sem AES-NI:</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               <strong>Impacto:</strong> 10-20% em desempenho de disco. CPUs antigas dependem da CPU para processamento criptográfico.
             </p>
           </div>
@@ -244,7 +244,7 @@ export default function EncryptionGuide() {
         
         <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20 mt-6">
           <h4 class="text-purple-400 font-bold mb-2">🎮 Impacto em Jogos e Aplicações Intensivas</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Para jogos e aplicações intensivas em I/O, a criptografia pode causar micro-stutters em sistemas com hardware mais antigo. Em SSDs modernos com criptografia de hardware (SEDs), o impacto é imperceptível na maioria dos casos.
           </p>
         </div>
@@ -256,13 +256,13 @@ export default function EncryptionGuide() {
     {
       title: "Criptografia e Protocolos de Segurança: Fundamentos Matemáticos",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A criptografia moderna baseia-se em princípios matemáticos complexos que garantem a segurança dos dados. Em 2026, os algoritmos utilizados são baseados em problemas matemáticos difíceis de resolver, como a fatoração de números primos grandes ou o problema do logaritmo discreto.
         </p>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔐 Tipos de Criptografia e Suas Características</h4>
         <div class="overflow-x-auto mb-6">
-          <table class="w-full text-sm text-gray-300 border-collapse">
+          <table class="w-full text-sm text-gray-400 border-collapse">
             <thead>
               <tr class="bg-white/5 border-b border-white/10">
                 <th class="px-4 py-3 text-left text-white font-bold">Tipo</th>
@@ -309,10 +309,10 @@ export default function EncryptionGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">Teoria dos Números</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Base para algoritmos como RSA, baseados na dificuldade de fatorar números compostos grandes em seus fatores primos.
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+            <ul class="list-disc list-inside text-gray-400 text-sm mt-2 space-y-1">
               <li>Função totiente de Euler</li>
               <li>Teorema de Fermat</li>
               <li>Testes de primalidade</li>
@@ -322,10 +322,10 @@ export default function EncryptionGuide() {
           
           <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-3">Álgebra Linear e Campos Finitos</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Utilizados em algoritmos como AES, que opera em campos finitos GF(2^8).
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+            <ul class="list-disc list-inside text-gray-400 text-sm mt-2 space-y-1">
               <li>Operações em GF(2^8)</li>
               <li>Substituição não-linear</li>
               <li>Transformações lineares</li>
@@ -338,7 +338,7 @@ export default function EncryptionGuide() {
     {
       title: "Implementações Avançadas de Criptografia em Sistemas Operacionais",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Os sistemas operacionais modernos implementam camadas complexas de criptografia integradas ao kernel, drivers e serviços de sistema. Em 2026, a criptografia não é mais uma funcionalidade adicional, mas sim um componente fundamental da arquitetura de segurança.
         </p>
         
@@ -346,10 +346,10 @@ export default function EncryptionGuide() {
         <div class="space-y-6">
           <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
             <h5 class="text-[#31A8FF] font-bold mb-3">Kernel CryptoServices</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               Camada de abstração que fornece primitivas criptográficas para componentes do sistema:
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-4">
               <li><strong>CNG (Cryptography Next Generation):</strong> API moderna para operações criptográficas</li>
               <li><strong>BCrypt:</strong> Interface para algoritmos de criptografia, hashing e geração de chaves</li>
               <li><strong>NCrypt:</strong> Interface para provedores de chaves de hardware (TPM, smart cards)</li>
@@ -359,10 +359,10 @@ export default function EncryptionGuide() {
           
           <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
             <h5 class="text-[#31A8FF] font-bold mb-3">Driver de Sistema de Arquivos Criptografado (EFS)</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               Componente do NTFS que criptografa arquivos individualmente:
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-4">
               <li>Utiliza criptografia híbrida (RSA para chave de sessão, DESX para dados)</li>
               <li>Chaves armazenadas no repositório de chaves do usuário</li>
               <li>Recuperação de chaves possível via agente de recuperação</li>
@@ -372,10 +372,10 @@ export default function EncryptionGuide() {
           
           <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
             <h5 class="text-[#31A8FF] font-bold mb-3">BitLocker e TPM Integration</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               Sistema de criptografia de disco com integração ao Trusted Platform Module:
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2 ml-4">
               <li>Proteção de inicialização com validação de estado do sistema</li>
               <li>Armazenamento seguro de chaves no TPM</li>
               <li>Proteção contra ataques de inicialização fria</li>
@@ -388,21 +388,21 @@ export default function EncryptionGuide() {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
             <h5 class="text-white font-bold mb-3">Linux (LUKS)</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               <strong>Linux Unified Key Setup</strong> é o padrão para criptografia de disco no Linux.
             </p>
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
             <h5 class="text-white font-bold mb-3">macOS (FileVault)</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Criptografia de disco baseada em XTS-AES 128 com chaves protegidas pelo Secure Enclave.
             </p>
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
             <h5 class="text-white font-bold mb-3">Android/iOS</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Criptografia baseada em hardware com chaves armazenadas em TEE (Trusted Execution Environment).
             </p>
           </div>
@@ -412,7 +412,7 @@ export default function EncryptionGuide() {
     {
       title: "Tendências Futuras em Criptografia e Segurança de Dados",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Com o avanço da computação quântica e novas ameaças cibernéticas, a criptografia está em constante evolução. Em 2026, novas abordagens estão sendo desenvolvidas para enfrentar desafios emergentes e garantir a proteção dos dados no futuro.
         </p>
         
@@ -420,10 +420,10 @@ export default function EncryptionGuide() {
         <div class="space-y-6">
           <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-3">Ameaça Quântica</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               Computadores quânticos suficientemente poderosos poderão quebrar algoritmos clássicos como RSA e ECC usando o algoritmo de Shor:
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 ml-4">
               <li><strong>Estimativa:</strong> 2030-2040 para computadores quânticos capazes de quebrar RSA-2048</li>
               <li><strong>Impacto:</strong> Toda a infraestrutura criptográfica baseada em RSA/ECC seria comprometida</li>
               <li><strong>Preparação:</strong> Transição para algoritmos resistentes a quânticos é essencial</li>
@@ -432,10 +432,10 @@ export default function EncryptionGuide() {
           
           <div class="bg-emerald-900/10 p-5 rounded-xl border border-emerald-500/20">
             <h5 class="text-emerald-400 font-bold mb-3">Algoritmos Pós-Quânticos em 2026</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               O NIST já padronizou os primeiros algoritmos pós-quânticos para substituir RSA e ECC:
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1 ml-4">
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1 ml-4">
               <li><strong>Kyber:</strong> Para estabelecimento de chaves (alternativa ao Diffie-Hellman)</li>
               <li><strong>Dilithium:</strong> Para assinaturas digitais (alternativa ao RSA/ECDSA)</li>
               <li><strong>FALCON:</strong> Alternativa mais leve para assinaturas digitais</li>
@@ -448,28 +448,28 @@ export default function EncryptionGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">Homomorphic Encryption</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Permite computação em dados criptografados sem descriptografá-los. Aplicações em nuvem segura e privacidade de dados.
             </p>
           </div>
           
           <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-3">Zero-Knowledge Proofs</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Técnicas que permitem provar a veracidade de uma afirmação sem revelar informações adicionais. Usadas em blockchain e privacidade.
             </p>
           </div>
           
           <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20">
             <h5 class="text-rose-400 font-bold mb-3">Secure Multi-Party Computation</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Permite que múltiplas partes computem uma função conjunta sem revelar suas entradas privadas.
             </p>
           </div>
           
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Attribute-Based Encryption</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Forma avançada de criptografia que permite controles de acesso baseados em atributos.
             </p>
           </div>
@@ -477,7 +477,7 @@ export default function EncryptionGuide() {
         
         <div class="bg-[#0A0A0F] border border-[#FF4B6B]/20 rounded-xl p-6 mt-6">
           <h4 class="text-[#FF4B6B] font-bold mb-2">💡 Considerações para Implementação</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             A transição para criptografia pós-quântica é um processo gradual que exige planejamento cuidadoso. Organizações devem começar a preparar sua infraestrutura para suportar novos algoritmos enquanto mantêm compatibilidade com sistemas legados. A criptografia híbrida (clássica + pós-quântica) será uma abordagem comum durante a transição.
           </p>
         </div>

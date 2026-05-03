@@ -34,7 +34,7 @@ export default function CPUBuyingGuide() {
         {
             title: "O cérebro do PC em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Muitos jogadores cometem o erro de gastar tudo na placa de vídeo e economizar no processador. Em 2026, isso resulta no temido **Gargalo (Bottleneck)**: sua placa de vídeo quer entregar 200 FPS, mas seu processador é tão lento que só consegue processar a lógica do jogo a 60 FPS. Escolher a CPU certa é garantir que sua placa de vídeo consiga trabalhar em 100% de carga.
         </p>
       `
@@ -42,8 +42,8 @@ export default function CPUBuyingGuide() {
         {
             title: "1. Núcleos: Quantos você realmente precisa?",
             content: `
-        <p class="mb-4 text-gray-300">Em 2026, a contagem de núcleos mudou de patamar:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">Em 2026, a contagem de núcleos mudou de patamar:</p>
+        <p class="text-sm text-gray-400">
             - <strong>4 Núcleos (Quad-Core):</strong> Já não são mais recomendados para jogos modernos, pois causam travadas (stutters) constantes. <br/>
             - <strong>6 Núcleos (Hexa-Core):</strong> O ponto ideal de custo-benefício. Core i5 e Ryzen 5 rodam todos os jogos de 2026 com tranquilidade. <br/>
             - <strong>8 Núcleos ou mais:</strong> Essencial apenas para quem joga e faz live simultaneamente no mesmo PC, ou para quem trabalha com renderização pesada e edição de vídeo 4K.
@@ -55,7 +55,7 @@ export default function CPUBuyingGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">As duas Gigantes em 2026:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 - <strong>Intel:</strong> Usa 'núcleos de performance' (P) e 'núcleos de eficiência' (E). É excelente para multitarefa no Windows 11, mas costuma consumir muito mais energia e esquentar mais. <br/>
                 - <strong>AMD:</strong> Em 2026, os modelos 'X3D' com empilhamento de memória cache são os reis absolutos dos jogos, entregando FPS muito mais estáveis em títulos competitivos como Warzone e Valorant.
             </p>
@@ -65,7 +65,7 @@ export default function CPUBuyingGuide() {
         {
             title: "3. O Soquete (Motherboard) e o Futuro",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Pensando na frente:</strong> 
             <br/><br/>Ao escolher um processador, você está escolhendo uma placa-mãe. Procure plataformas que terão suporte por muitos anos. Em 2026, a plataforma **AM5 da AMD** já provou ser duradoura, permitindo trocar apenas o processador no futuro sem precisar jogar a placa-mãe fora. Já a Intel costuma trocar de soquete a cada duas gerações, exigindo um upgrade mais caro.
         </p>
@@ -78,14 +78,14 @@ export default function CPUBuyingGuide() {
       title: "Arquitetura de Processadores Modernos: Fundamentos Técnicos e Comparação",
       content: `
         <h4 class="text-white font-bold mb-3">🏗️ Arquitetura Interna de CPUs Modernas</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           As CPUs modernas são complexos sistemas em chip (SoC) que contêm milhões de transistores organizados em múltiplas unidades funcionais. As arquiteturas de 2026 representam décadas de otimização em eficiência energética, desempenho e paralelismo:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Componentes Técnicos de CPUs</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Cores e Threads (SMT/Hyperthreading)</li>
               <li>• Cache Hierarchies (L1/L2/L3)</li>
               <li>• Unidades de execução (Integer/FPU)</li>
@@ -96,7 +96,7 @@ export default function CPUBuyingGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Especificações Técnicas Críticas</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Frequência base e boost (GHz)</li>
               <li>• TDP e Power Limits (PL1/PL2)</li>
               <li>• Processo de fabricação (3-7nm)</li>
@@ -108,12 +108,12 @@ export default function CPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação Técnica de Arquiteturas</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Análise detalhada das arquiteturas líderes em 2026:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Fabricante</th>
@@ -155,7 +155,7 @@ export default function CPUBuyingGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             O IPC (Instructions Per Cycle) é um indicador crítico de eficiência arquitetural. CPUs com maior IPC executam mais instruções por ciclo de clock, resultando em melhor desempenho real mesmo com frequências mais baixas. O cache L3 é especialmente crítico para jogos, onde a latência de acesso à memória pode limitar o desempenho dos núcleos.
           </p>
         </div>
@@ -165,12 +165,12 @@ export default function CPUBuyingGuide() {
       title: "Tecnologias Avançadas de Processamento e Eficiência",
       content: `
         <h4 class="text-white font-bold mb-3">⚡ Tecnologias de Eficiência e Desempenho em CPUs</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           As CPUs modernas incorporam tecnologias avançadas que otimizam o desempenho e a eficiência energética com base na carga de trabalho:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -221,14 +221,14 @@ export default function CPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🎮 Comparação de Desempenho Técnico</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Análise comparativa detalhada entre modelos de CPU em diferentes cargas de trabalho:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Jogos (FPS)</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Ryzen 7 8000X3D: +15% vs i7-14700K</li>
               <li>i5-15600K: Bom custo/benefício</li>
               <li>Ryzen 5 7600X: Excelente para 1080p</li>
@@ -247,7 +247,7 @@ export default function CPUBuyingGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Eficiência Energética</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Ryzen 7000/8000: Melhor eficiência</li>
               <li>i7-14xxx: Maior consumo</li>
               <li>Thermal: AMD mais fria</li>
@@ -257,11 +257,11 @@ export default function CPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Recursos Avançados de Processamento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Tecnologias exclusivas e recursos avançados disponíveis em CPUs modernas:
         </p>
         
-        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
           <li><strong>AMD EXPO:</strong> Tecnologia equivalente à Intel XMP para memória DDR5, com perfis otimizados por fabricante</li>
           <li><strong>Intel Thread Director:</strong> Sistema que direciona tarefas para os núcleos P ou E baseado em prioridade e tipo de carga</li>
           <li><strong>AMD StoreMI:</strong> Tecnologia de cache híbrido que acelera discos tradicionais com SSDs</li>
@@ -275,17 +275,17 @@ export default function CPUBuyingGuide() {
       title: "Tecnologias Emergentes em Processamento e Futuro dos Processadores",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Próxima Geração em CPUs</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A próxima geração de CPUs está explorando tecnologias avançadas que prometem revolucionar o processamento e a eficiência:
         </p>
         
         <h4 class="text-white font-bold mb-3">Arquiteturas e Processos de Fabricação</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Novas tecnologias que estão sendo implementadas em CPUs de próxima geração:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -330,14 +330,14 @@ export default function CPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em CPUs de Próxima Geração</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A IA está começando a desempenhar um papel crucial na evolução das CPUs:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Previsão de Execução</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Branch prediction neural</li>
               <li>Speculative execution ML</li>
               <li>Instruction prefetch AI</li>
@@ -349,7 +349,7 @@ export default function CPUBuyingGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Otimização Adaptativa</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Ajuste automático de clocks</li>
               <li>Balanceamento de threads em tempo real</li>
               <li>Previsão de necessidades de cache</li>
@@ -361,7 +361,7 @@ export default function CPUBuyingGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de CPUs de próxima geração:
         </p>
         
@@ -374,7 +374,7 @@ export default function CPUBuyingGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Neural Processing Cores</h5>
-              <p class="text-sm text-gray-300">Empresas como Intel, AMD e Apple estão desenvolvendo núcleos de processamento neural integrados diretamente à CPU, capazes de executar tarefas de IA com eficiência extrema. Esses núcleos podem lidar com tarefas como reconhecimento de padrões, otimização de código e até mesmo previsão de ramificações de instruções. Implementações iniciais estão previstas para 2026-2027.</p>
+              <p class="text-sm text-gray-400">Empresas como Intel, AMD e Apple estão desenvolvendo núcleos de processamento neural integrados diretamente à CPU, capazes de executar tarefas de IA com eficiência extrema. Esses núcleos podem lidar com tarefas como reconhecimento de padrões, otimização de código e até mesmo previsão de ramificações de instruções. Implementações iniciais estão previstas para 2026-2027.</p>
             </div>
           </div>
           
@@ -386,7 +386,7 @@ export default function CPUBuyingGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">Quantum-Classical Hybrid Processors</h5>
-              <p class="text-sm text-gray-300">Pesquisas pioneiras em universidades como MIT e IBM estão explorando como integrar unidades de processamento quântico com CPUs clássicas para acelerar tarefas específicas como criptografia, simulações moleculares e otimização. Embora ainda em estágios experimentais, essa tecnologia poderia eventualmente superar os limites da computação clássica. Aplicações práticas potenciais para 2028-2030.</p>
+              <p class="text-sm text-gray-400">Pesquisas pioneiras em universidades como MIT e IBM estão explorando como integrar unidades de processamento quântico com CPUs clássicas para acelerar tarefas específicas como criptografia, simulações moleculares e otimização. Embora ainda em estágios experimentais, essa tecnologia poderia eventualmente superar os limites da computação clássica. Aplicações práticas potenciais para 2028-2030.</p>
             </div>
           </div>
           
@@ -398,14 +398,14 @@ export default function CPUBuyingGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">Bio-inspired Computing Architectures</h5>
-              <p class="text-sm text-gray-300">Universidades como Stanford e Caltech estão desenvolvendo arquiteturas inspiradas no cérebro humano que podem processar informações de maneira radicalmente diferente das CPUs tradicionais. Essas arquiteturas neuromórficas podem oferecer eficiência energética extrema para tarefas específicas. Primeiras implementações práticas estão sendo testadas por empresas como Intel e IBM para aplicações em edge computing e IoT, com potencial para integração em CPUs mainstream para 2027-2029.</p>
+              <p class="text-sm text-gray-400">Universidades como Stanford e Caltech estão desenvolvendo arquiteturas inspiradas no cérebro humano que podem processar informações de maneira radicalmente diferente das CPUs tradicionais. Essas arquiteturas neuromórficas podem oferecer eficiência energética extrema para tarefas específicas. Primeiras implementações práticas estão sendo testadas por empresas como Intel e IBM para aplicações em edge computing e IoT, com potencial para integração em CPUs mainstream para 2027-2029.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Com o avanço das tecnologias de IA e a crescente demanda por eficiência energética, as CPUs do futuro serão híbridas entre processamento tradicional e aceleração neural. A distinção entre CPU, GPU e unidades de IA tenderá a desaparecer, resultando em unidades de processamento universal capazes de lidar com qualquer tipo de carga computacional de forma otimizada. Isso transformará não apenas os jogos, mas também campos como inteligência artificial, simulação científica e computação de alto desempenho.
           </p>
         </div>

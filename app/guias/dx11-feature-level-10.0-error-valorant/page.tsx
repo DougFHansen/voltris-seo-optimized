@@ -34,7 +34,7 @@ export default function ValorantDX11Guide() {
         {
             title: "O Pavor dos Jogadores de Valorant em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O erro **"DX11 Feature Level 10.0 is required to run the engine"** no Valorant é crual. Ele significa que o motor gráfico do jogo está pedindo uma instrução que o seu hardware ou driver não consegue entregar. Em 2026, com as atualizações constantes do Vanguard e do motor da Riot Games, placas de vídeo muito antigas estão perdendo o suporte oficial, mas muitas vezes o problema é apenas um software mal configurado.
         </p>
       `
@@ -42,8 +42,8 @@ export default function ValorantDX11Guide() {
         {
             title: "1. Verificando o suporte real (DXDIAG)",
             content: `
-        <p class="mb-4 text-gray-300">Descubra se a sua placa ainda aguenta o tranco:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Descubra se a sua placa ainda aguenta o tranco:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Aperte <code>Win + R</code>, digite <strong>dxdiag</strong> e dê Enter.</li>
             <li>Vá na aba 'Exibição' (Display).</li>
             <li>À direita, procure por <strong>'Níveis de Recurso' (Feature Levels)</strong>.</li>
@@ -56,7 +56,7 @@ export default function ValorantDX11Guide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A Solução via Software:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Use o <strong>DDU</strong> para apagar todo o driver atual (veja nosso guia). <br/>
                 2. Baixe o driver mais recente direto do site da NVIDIA, AMD ou Intel. <br/>
                 3. Baixe o <strong>DirectX End-User Runtime</strong> no site da Microsoft para repor DLLs de motor gráfico que podem estar faltando. <br/><br/>
@@ -68,7 +68,7 @@ export default function ValorantDX11Guide() {
         {
             title: "3. O \"Golpe\" das Placas Remarcadas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Cuidado em 2026:</strong> 
             <br/><br/>Se você comprou uma placa de vídeo muito barata de sites internacionais, ela pode ser uma "Fake GPU". Por exemplo, uma placa modificada para parecer uma GTX 1050, mas que o chip real é uma 9600GT antiga. Essas placas não possuem Feature Level 11.0 fisicamente. Se o erro persistir após todos os drivers limpos, considere que o seu hardware pode ser o limite físico intransponível.
         </p>

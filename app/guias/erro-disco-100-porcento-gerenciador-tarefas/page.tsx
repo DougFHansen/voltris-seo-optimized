@@ -34,7 +34,7 @@ export default function Disk100FixGuide() {
         {
             title: "O pesadelo da lentidão no Windows 11",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, o erro de **Disco 100%** é um dos problemas mais frustrantes do Windows 11. O sistema fica extremamente lento para abrir qualquer programa, o mouse "engasga" e apertar o menu Iniciar leva segundos. Isso ocorre porque o Windows está tentando ler ou escrever dados no seu armazenamento de forma tão intensa que o drive não consegue processar mais nada.
         </p>
       `
@@ -42,8 +42,8 @@ export default function Disk100FixGuide() {
         {
             title: "1. Desativando o SysMain (Antigo Superfetch)",
             content: `
-        <p class="mb-4 text-gray-300">Este serviço tenta prever o que você vai abrir e "pré-carrega" no disco:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Este serviço tenta prever o que você vai abrir e "pré-carrega" no disco:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Aperte <code>Win + R</code>, digite <strong>services.msc</strong> e dê Enter.</li>
             <li>Procure por <strong>SysMain</strong> na lista.</li>
             <li>Clique com o botão direito, vá em 'Propriedades'.</li>
@@ -57,7 +57,7 @@ export default function Disk100FixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Pausa na Busca:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se você tem muitos arquivos, o Windows Search fica indexando (lendo) tudo o tempo todo para a busca ser rápida. Em 2026, se você usa um HD mecânico, isso é mortal. Tente desativar o serviço **Windows Search** da mesma forma que fez com o SysMain. <br/><br/>
                 <strong>Atenção:</strong> Isso deixará a busca do Windows mais lenta, mas tornará o sistema muito mais ágil para todo o resto.
             </p>
@@ -67,7 +67,7 @@ export default function Disk100FixGuide() {
         {
             title: "3. A Realidade Hardcore em 2026",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>O fim dos HDs:</strong> 
             <br/><br/>Se você ainda usa um HD (Disco Rígido Mecânico) para rodar o Windows 11 em 2026, infelizmente o erro de Disco 100% voltará constantemente. O Windows moderno foi projetado para a velocidade de resposta de um SSD. Nenhuma quantidade de otimização compensará a lentidão física de um disco giratório. <br/><br/>
             Se o seu uso de disco não cai mesmo após os ajustes, o upgrade para um **SSD (SATA ou NVMe)** é a única solução definitiva para transformar o seu PC em uma máquina veloz.

@@ -34,7 +34,7 @@ export default function MonitorCalibrationGuide() {
         {
             title: "Por que as cores parecem erradas?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Muitas vezes, ao tirar o monitor da caixa, o fabricante o configura com brilho exagerado para "chamar a atenção" em prateleiras de lojas. No uso diário em 2026, isso causa cansaço visual e distorce a realidade de fotos e vídeos. Calibrar o monitor garante que o vermelho que você vê na tela seja o mesmo vermelho que sairá na impressão ou que o criador do jogo planejou que você visse.
         </p>
       `
@@ -42,8 +42,8 @@ export default function MonitorCalibrationGuide() {
         {
             title: "1. Calibração Nativa do Windows 11",
             content: `
-        <p class="mb-4 text-gray-300">O Windows tem uma ferramenta excelente escondida nos menus:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O Windows tem uma ferramenta excelente escondida nos menus:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Aperte <code>Win + R</code>, digite <strong>dccw</strong> e dê Enter.</li>
             <li>Siga as instruções na tela. O ponto mais importante é o **Gamma**: ajuste até que o círculo no centro dos pontos desapareça.</li>
             <li>Ajuste o Brilho e Contraste usando os botões físicos do seu monitor conforme solicitado pelas imagens de referência.</li>
@@ -56,7 +56,7 @@ export default function MonitorCalibrationGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Upgrade Profissional:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Muitos monitores (especialmente os da Dell, LG e Samsung) possuem **Perfis de Cores (ICC)** oficiais no site do fabricante. <br/><br/>
                 Baixe e instale esse perfil em 'Gerenciamento de Cores' no Windows. Isso aplica tabelas de tradução de cores precisas feitas em laboratório para o seu painel específico, corrigindo distorções de fábrica que softwares comuns não conseguem enxergar.
             </p>
@@ -66,7 +66,7 @@ export default function MonitorCalibrationGuide() {
         {
             title: "3. Luz Noturna e HDR em 2026",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Dica de Conforto:</strong> 
             <br/><br/>Se você trabalha à noite, ative a **Luz Noturna** para reduzir o azul da tela, que prejudica o sono. Se o seu monitor for HDR, certifique-se de usar o aplicativo **Windows HDR Calibration** (disponível na Microsoft Store em 2026) para ajustar os pontos de branco e preto máximo, evitando que a imagem fique "lavada" em jogos e filmes.
         </p>
@@ -79,14 +79,14 @@ export default function MonitorCalibrationGuide() {
       title: "Ciência das Cores e Reprodução Visual: Fundamentos Técnicos",
       content: `
         <h4 class="text-white font-bold mb-3">🌈 Teoria da Percepção de Cores</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A reprodução de cores em monitores envolve complexos princípios de física, psicologia e engenharia. O olho humano pode distinguir aproximadamente 10 milhões de cores diferentes, mas os monitores usam um modelo tricromático baseado em combinações de vermelho, verde e azul (RGB) para reproduzir esse espectro:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Modelos de Cor</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• RGB (Red, Green, Blue)</li>
               <li>• CMYK (Cyan, Magenta, Yellow, Black)</li>
               <li>• HSV (Hue, Saturation, Value)</li>
@@ -97,7 +97,7 @@ export default function MonitorCalibrationGuide() {
           </div>
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Especificações de Cor</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Temperatura de Cor (Kelvin)</li>
               <li>• Gama (Gamma Curve)</li>
               <li>• Profundidade de Cor (bits)</li>
@@ -109,12 +109,12 @@ export default function MonitorCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Especificações Técnicas de Monitores</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Comparação detalhada das diferentes especificações de reprodução de cores:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Especificação</th>
@@ -160,7 +160,7 @@ export default function MonitorCalibrationGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔍 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             A calibração de cores envolve a criação de um perfil ICC (International Color Consortium) que mapeia os valores RGB do computador para os valores reais de cor emitidos pelo monitor. Um monitor com Delta E < 2 é considerado adequado para trabalho profissional de design, enquanto Delta E > 5 é perceptivelmente diferente para o olho humano.
           </p>
         </div>
@@ -170,12 +170,12 @@ export default function MonitorCalibrationGuide() {
       title: "Técnicas Avançadas de Calibração e Perfis de Cor",
       content: `
         <h4 class="text-white font-bold mb-3">🔧 Processo de Calibração Profissional</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A calibração profissional de monitores envolve múltiplas etapas técnicas e o uso de equipamentos especializados para garantir precisão de cores:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Etapa</th>
@@ -220,14 +220,14 @@ export default function MonitorCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">⚙️ Configurações Avançadas de Monitor</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Configurações avançadas que afetam diretamente a qualidade de reprodução de cores:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Ajustes de Hardware</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Contraste: 80-85%</li>
               <li>Brilho: 120 cd/m²</li>
               <li>Saturação: Padrão</li>
@@ -246,7 +246,7 @@ export default function MonitorCalibrationGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Perfis de Cor</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Perfis ICC Personalizados</li>
               <li>Perfis de Fabricante</li>
               <li>Perfis de Calibração</li>
@@ -256,11 +256,11 @@ export default function MonitorCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🛠️ Ferramentas Profissionais de Calibração</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Lista de ferramentas e softwares para calibração profissional de monitores:
         </p>
         
-        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 mb-6">
           <li><strong>X-Rite i1Display Pro:</strong> Calibrador fotográfico de alta precisão para monitores LCD, LED e OLED</li>
           <li><strong>Datacolor SpyderX Elite:</strong> Calibrador com sensor duplo para precisão superior</li>
           <li><strong>CalMAN:</strong> Software profissional para calibração de monitores de cinema e broadcast</li>
@@ -274,17 +274,17 @@ export default function MonitorCalibrationGuide() {
       title: "Tecnologias Emergentes em Reprodução de Cores e Displays",
       content: `
         <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Display de Próxima Geração</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A próxima geração de displays está explorando tecnologias avançadas que prometem reprodução de cores ainda mais precisa e eficiente:
         </p>
         
         <h4 class="text-white font-bold mb-3">HDR e Wide Color Gamut</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Novas tecnologias de reprodução de cores que estão sendo implementadas:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Tecnologia</th>
@@ -329,14 +329,14 @@ export default function MonitorCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Calibração de Cores</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A IA está começando a desempenhar um papel crucial na calibração automática de displays:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Calibração Adaptativa</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Detecção automática de ambiente</li>
               <li>Ajuste de acordo com a luz ambiente</li>
               <li>Compensação de desgaste temporal</li>
@@ -348,7 +348,7 @@ export default function MonitorCalibrationGuide() {
           
           <div class="bg-amber-900/10 p-4 rounded-lg border border-amber-500/20">
             <h5 class="text-amber-400 font-bold mb-2">Otimização de Reprodução</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>Renderização adaptativa</li>
               <li>Gerenciamento de gamut dinâmico</li>
               <li>Otimização de brilho local</li>
@@ -360,7 +360,7 @@ export default function MonitorCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de displays de próxima geração:
         </p>
         
@@ -373,7 +373,7 @@ export default function MonitorCalibrationGuide() {
             </div>
             <div>
               <h5 class="text-blue-400 font-bold">Quantum Dot OLED (QD-OLED)</h5>
-              <p class="text-sm text-gray-300">Empresas como Samsung e Sony estão desenvolvendo tecnologia QD-OLED que combina os benefícios do OLED (contraste infinito) com os pontos quânticos (gama de cores ampliada). Essa tecnologia promete cobertura de 100% do espaço de cor DCI-P3 com brilho superior. Implementações comerciais estão previstas para 2026-2027, com adoção generalizada esperada para 2027-2029.</p>
+              <p class="text-sm text-gray-400">Empresas como Samsung e Sony estão desenvolvendo tecnologia QD-OLED que combina os benefícios do OLED (contraste infinito) com os pontos quânticos (gama de cores ampliada). Essa tecnologia promete cobertura de 100% do espaço de cor DCI-P3 com brilho superior. Implementações comerciais estão previstas para 2026-2027, com adoção generalizada esperada para 2027-2029.</p>
             </div>
           </div>
           
@@ -385,7 +385,7 @@ export default function MonitorCalibrationGuide() {
             </div>
             <div>
               <h5 class="text-green-400 font-bold">MicroLED Displays</h5>
-              <p class="text-sm text-gray-300">A tecnologia MicroLED promete displays com brilho extremo (até 2000 nits), vida útil ilimitada e reprodução de cores excepcional. Empresas como Apple, Samsung e LG estão investindo pesadamente nessa tecnologia, com primeiras implementações em monitores profissionais previstas para 2026-2028. A tecnologia elimina a necessidade de calibração freqüente devido à estabilidade dos emissores.</p>
+              <p class="text-sm text-gray-400">A tecnologia MicroLED promete displays com brilho extremo (até 2000 nits), vida útil ilimitada e reprodução de cores excepcional. Empresas como Apple, Samsung e LG estão investindo pesadamente nessa tecnologia, com primeiras implementações em monitores profissionais previstas para 2026-2028. A tecnologia elimina a necessidade de calibração freqüente devido à estabilidade dos emissores.</p>
             </div>
           </div>
           
@@ -397,14 +397,14 @@ export default function MonitorCalibrationGuide() {
             </div>
             <div>
               <h5 class="text-purple-400 font-bold">AI-Enhanced Color Management</h5>
-              <p class="text-sm text-gray-300">Empresas como NVIDIA e AMD estão desenvolvendo tecnologias de gerenciamento de cores baseadas em IA que podem calibrar automaticamente displays com base em sensores integrados e modelos preditivos. Esses sistemas aprenderiam com o uso do usuário e as condições ambientais para manter cores precisas ao longo do tempo. Implementações iniciais estão sendo testadas para inclusão em placas de vídeo a partir de 2026-2027.</p>
+              <p class="text-sm text-gray-400">Empresas como NVIDIA e AMD estão desenvolvendo tecnologias de gerenciamento de cores baseadas em IA que podem calibrar automaticamente displays com base em sensores integrados e modelos preditivos. Esses sistemas aprenderiam com o uso do usuário e as condições ambientais para manter cores precisas ao longo do tempo. Implementações iniciais estão sendo testadas para inclusão em placas de vídeo a partir de 2026-2027.</p>
             </div>
           </div>
         </div>
         
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20 mt-6">
           <h4 class="text-red-400 font-bold mb-2">⚠️ Considerações Futuras</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             Com o avanço das tecnologias de display e a crescente demanda por reprodução de cores precisa, os displays do futuro terão capacidades autocalibráveis integradas. A combinação de inteligência artificial, sensores avançados e novos materiais resultará em displays que automaticamente ajustam suas características de cor com base nas condições ambientais e no uso do usuário, tornando a calibração manual cada vez menos necessária para o usuário médio.
           </p>
         </div>
@@ -417,14 +417,14 @@ export default function MonitorCalibrationGuide() {
       title: "Engenharia de Materiais em Painéis de Display: Tecnologia de Produção de Telas",
       content: `
         <h4 class="text-white font-bold mb-3">🏭 Engenharia de Materiais em Displays</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A fabricação de displays modernos envolve tecnologias avançadas de engenharia de materiais, com diferentes tipos de cristais líquidos, polarizadores e camadas de revestimento que afetam diretamente a qualidade de reprodução de cores:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div class="bg-blue-900/10 p-4 rounded-lg border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">Tipos de Cristal Líquido</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Nematic LC: Alinhamento básico, resposta média</li>
               <li>• Twisted Nematic (TN): Custo baixo, resposta rápida</li>
               <li>• In-Plane Switching (IPS): Melhor reprodução de cores</li>
@@ -436,7 +436,7 @@ export default function MonitorCalibrationGuide() {
           
           <div class="bg-purple-900/10 p-4 rounded-lg border border-purple-500/20">
             <h5 class="text-purple-400 font-bold mb-2">Camadas de Display</h5>
-            <ul class="text-sm text-gray-300 space-y-2">
+            <ul class="text-sm text-gray-400 space-y-2">
               <li>• Polarizador Frontal: Filtra luz para controle de cor</li>
               <li>• Substrato de Vidro: Base estrutural das camadas</li>
               <li>• Eletrodos Transparentes: Controlam alinhamento do LC</li>
@@ -448,12 +448,12 @@ export default function MonitorCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">🔧 Processo de Fabricação de Displays</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O processo de fabricação de displays LCD/LED envolve etapas críticas que afetam a qualidade final:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Etapa</th>
@@ -499,7 +499,7 @@ export default function MonitorCalibrationGuide() {
         
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mt-6">
           <h4 class="text-amber-400 font-bold mb-2">🔬 Fato Técnico Importante</h4>
-          <p class="text-sm text-gray-300">
+          <p class="text-sm text-gray-400">
             A variação de temperatura durante a fabricação pode afetar a viscosidade dos cristais líquidos, alterando o tempo de resposta e a precisão de alinhamento. Isso explica por que monitores do mesmo modelo podem ter variações sutis de reprodução de cores, mesmo após calibração. A engenharia de materiais busca minimizar essas variações através de controle rigoroso de processos.
           </p>
         </div>
@@ -509,14 +509,14 @@ export default function MonitorCalibrationGuide() {
       title: "Psicologia da Percepção Visual e Design de Interfaces: Ciência por Trás da Experiência Visual",
       content: `
         <h4 class="text-white font-bold mb-3">🧠 Psicologia da Percepção de Cores</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           A percepção de cores não é apenas física, mas também psicológica. O cérebro humano interpreta cores com base em contexto, memória e expectativas culturais. O design de interfaces modernas leva em consideração esses fatores para otimizar a experiência visual:
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-green-900/10 p-4 rounded-lg border border-green-500/20">
             <h5 class="text-green-400 font-bold mb-2">Conceitos Fundamentais</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Constância de Cor</li>
               <li>Contraste Simultâneo</li>
               <li>Efeito Bezold</li>
@@ -526,7 +526,7 @@ export default function MonitorCalibrationGuide() {
           
           <div class="bg-cyan-900/10 p-4 rounded-lg border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-2">Fatores Contextuais</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Iluminação Ambiente</li>
               <li>Cores Adjacentes</li>
               <li>Tamanho da Área</li>
@@ -536,7 +536,7 @@ export default function MonitorCalibrationGuide() {
           
           <div class="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
             <h5 class="text-indigo-400 font-bold mb-2">Aplicações Práticas</h5>
-            <ul class="text-sm text-gray-300 space-y-1">
+            <ul class="text-sm text-gray-400 space-y-1">
               <li>Design de UI/UX</li>
               <li>Marketing Visual</li>
               <li>Exposição de Arte</li>
@@ -546,12 +546,12 @@ export default function MonitorCalibrationGuide() {
         </div>
         
         <h4 class="text-white font-bold mb-3 mt-6">📊 Impacto da Calibração na Experiência do Usuário</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Estudos mostram que a reprodução precisa de cores afeta diretamente a experiência do usuário:
         </p>
         
         <div class="overflow-x-auto">
-          <table class="w-full text-sm text-gray-300 border border-gray-700 rounded-lg">
+          <table class="w-full text-sm text-gray-400 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Aspecto</th>
@@ -595,7 +595,7 @@ export default function MonitorCalibrationGuide() {
           </table>
         </div>
         
-        <p class="text-sm text-gray-300 italic mb-6">
+        <p class="text-sm text-gray-400 italic mb-6">
           *Valores baseados em estudos de ergonomia visual e experiência do usuário realizados em 2025-2026.
         </p>
       `

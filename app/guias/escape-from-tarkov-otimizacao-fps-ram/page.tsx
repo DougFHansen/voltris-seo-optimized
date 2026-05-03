@@ -43,7 +43,7 @@ export default function TarkovGuide() {
         {
             title: "Introdução: Unity e Otimização Ruim",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Tarkov não usa muito sua GPU. Ele esmaga sua CPU e RAM. Em mapas como Lighthouse e Streets, vazamentos de memória são comuns, fazendo o jogo travar após 2 raids.
         </p>
       `
@@ -73,7 +73,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 2: Auto RAM Cleaner & Physical Cores",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Dentro das configurações do jogo "Game":
             <br/>- <strong>Auto RAM Cleaner:</strong> LIGUE. O jogo força o Garbage Collector do Unity a rodar mais vezes, liberando RAM presa. Essencial para raids longas.
             <br/>- <strong>Use only physical cores:</strong>
@@ -85,7 +85,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 3: PostFX (Visão Competitiva)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Ative o PostFX para clarear sombras.
             <br/>- <strong>Brightness:</strong> 20-30.
             <br/>- <strong>Saturation:</strong> 30-50 (Cores vivas ajudam a distinguir PMC do mato).
@@ -102,7 +102,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 4: Binaural Audio (Steam Audio)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A opção "Binaural Audio" melhora a direção do som (saber se o passo é em cima ou embaixo).
             <br/>Mas... historicamente causa queda de FPS e consumo de CPU.
             <br/><strong>Em 2026:</strong> A BSG otimizou o Oculus Audio. Vale a pena LIGAR pela vantagem tática, a menos que sua CPU seja muito antiga (i5 7ª gen).
@@ -112,7 +112,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 5: Nvidia Reflex + Boost",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Ative <strong>On + Boost</strong>.
             <br/>Tarkov é CPU Bound. O modo Boost mantém o clock da GPU no máximo mesmo quando ela está esperando a CPU, prevenindo frametimes erráticos.
         </p>
@@ -121,7 +121,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 6: MIP Streaming",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Settings > Graphics > MIP Streaming.
             <br/>Isso baixa texturas dinamicamente durante a raid.
             <br/>USE APENAS SE: Tiver HD/SSD Lento e pouca VRAM.
@@ -132,7 +132,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 7: Page File (Arquivo de Paginação)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Tarkov crasaha se faltar memória virtual.
             <br/>No Windows, defina manualmente o arquivo de paginação para <strong>30GB</strong> (Inicial e Máximo) no SSD.
             <br/>Não deixe "Gerenciado pelo Sistema", o Windows é lento para expandir durante a raid.
@@ -145,7 +145,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 8: Process Lasso (Avançado)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Para quem leva a sério.
                 <br/>Use o Process Lasso para desativar o SMT/HyperThreadingapenas para o <code>EscapeFromTarkov.exe</code> e definir "I/O Priority" como High.
                 <br/>Garante 5-10 FPS a mais no mapa Streets.
@@ -155,7 +155,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 9: FOV (Campo de Visão)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 FOV alto (75) mostra mais os lados, mas faz alvos distantes ficarem minúsculos.
                 <br/>FOV baixo (59-63) deixa alvos maiores ("Zoom" natural), mas perde visão periférica.
                 <br/>Além disso, FOV alto renderiza mais objetos, baixando FPS. Use 63-65 se tiver PC fraco.
@@ -165,7 +165,7 @@ export default function TarkovGuide() {
         {
             title: "Capítulo 10: Server Selection",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 No Launcher, selecione manualmente os servidores com ping < 80.
                 <br/>Não use "Auto". O Auto pode te jogar num servidor com packet loss só porque estava vazio.
             </p>

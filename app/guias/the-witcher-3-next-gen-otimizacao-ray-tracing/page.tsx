@@ -43,7 +43,7 @@ export default function Witcher3Guide() {
         {
             title: "Introdução: O Peso da Nova Geração",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A CD Projekt RED adicionou Ray Tracing Global Illumination (RTGI), que transforma a iluminação do jogo, mas custa 40 FPS. Se você não tem uma RTX 3080/4070, cuidado.
         </p>
       `
@@ -65,7 +65,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 2: Ray Tracing (Otimizado)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se for ligar RT, ligue APENAS o <strong>Ray Traced Global Illumination</strong> (Modo Performance).
             <br/>Desligue RT Shadows, RT Reflections e RT Ambient Occlusion. O GI já faz 90% da diferença visual nas florestas e interiores.
             <br/>Sempre use com DLSS Quality ou Balanced.
@@ -75,7 +75,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 3: HairWorks (Cabelo do Geralt)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A tecnologia HairWorks simula fios de cabelo individuais.
             <br/>- <strong>Geralt Only:</strong> O melhor compromisso. O cabelo do Geralt fica bonito, e você não gasta GPU renderizando pelos de lobos e ursos que você nem vê direito na luta.
             <br/>- <strong>AA HairWorks:</strong> 2x ou 4x. 8x é inútil.
@@ -88,7 +88,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 4: Configurações Ultra+ (Novidade)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A versão Next-Gen adicionou presets "Ultra+".
             <br/>- <strong>Foliage Visibility Range:</strong> High é suficiente. Ultra+ renderiza árvores no horizonte infinito, matando a performance.
             - <strong>Grass Density:</strong> High. Ultra+ deixa a grama tão densa que esconde itens no chão.
@@ -98,7 +98,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 5: Mods Essenciais (Já Inclusos?)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O update Next-Gen já integrou o famoso mod <strong>"HD Reworked Project"</strong> (texturas 4K). Não instale esse mod manualmente, vai dar conflito.
             <br/>Mods recomendados para instalar:
             <br/>- <strong>"Fast Travel from Anywhere":</strong> Viaje sem precisar ir até a placa.
@@ -109,7 +109,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 6: Frame Generation (DLSS 3)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Witcher 3 suporta DLSS 3 Frame Gen.
             <br/>Isso é mágico para jogar com RT ligado. Transforma 40 FPS em 70 FPS.
             <br/>O input lag aumenta um pouco, mas como é um jogo de espada (animações longas), não atrapalha tanto.
@@ -119,7 +119,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 7: Stutter Fix DX12",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Vá na pasta do jogo <code>bin\\config\\base</code>.
             <br/>Abra <code>rendering.ini</code>.
             <br/>Mude <code>TextureStreamingHeads</code> de 1 para 0.
@@ -134,7 +134,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 8: Câmera Próxima (Close)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O modo Next-Gen traz uma câmera sobre o ombro (estilo God of War).
                 <br/>Em Opções de Gameplay, você pode configurar separadamente:
                 <br/>- Exploração: Câmera Longe (Padrão).
@@ -146,7 +146,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 9: Cross-Progression",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Entre na sua conta GOG no menu principal.
                 <br/>Isso ativa o Cross-Save. Você pode jogar no PC, salvar, e continuar no Nintendo Switch ou PS5 (se tiver o jogo lá) exatamente de onde parou.
             </p>
@@ -155,7 +155,7 @@ export default function Witcher3Guide() {
         {
             title: "Capítulo 10: Limite de FPS em Menus",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O inventário do Witcher 3 não tem limite de FPS e pode bater 500 FPS, esquentando a GPU.
                 <br/>Use o Painel Nvidia para limitar o FPS global do executável <code>witcher3.exe</code>.
             </p>

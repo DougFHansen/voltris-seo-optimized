@@ -42,7 +42,7 @@ export default function OBSGuide() {
         {
             title: "Introdução: Por que OBS > ShadowPlay?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O OBS permite separar o áudio do Discord do jogo, usar encoders mais eficientes (AV1) e personalizar overlays. Com o "Replay Buffer", ele funciona exatamente igual ao "Instant Replay", salvando os últimos minutos apenas quando você aperta um botão.
         </p>
       `
@@ -68,7 +68,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 2: Replay Buffer (O Segredo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Vá em Output > Replay Buffer.
             <br/>Marque "Enable Replay Buffer".
             <br/>Defina o tempo (ex: 120s = 2 minutos).
@@ -80,7 +80,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 3: Captura de Áudio Separada (Beta)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Use o recurso <strong>"Application Audio Capture" (BETA)</strong> nas Fontes.
             <br/>Adicione uma fonte para o Jogo.
             <br/>Adicione outra para o Discord.
@@ -95,7 +95,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 4: Prioridade de Processo",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se seu OBS trava (laga a gravação) quando a GPU chega a 99% de uso no jogo:
             <br/>Vá em Settings > Advanced.
             <br/>Mude "Process Priority" para <strong>High</strong>.
@@ -106,7 +106,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 5: Formato de Arquivo (MKV)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Grave sempre em <strong>MKV</strong> (Matroska).
             <br/>Se gravar em MP4 e o PC travar (tela azul/luz acabar), você perde o arquivo inteiro (corrompido).
             <br/>No MKV, você salva até o segundo exato da queda de energia.
@@ -117,7 +117,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 6: Captura de Jogo (Game Capture)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Sempre use "Game Capture" (Captura de Jogo). É o método mais eficiente que injeta direto na API gráfica.
             <br/>"Display Capture" (Captura de Tela) é lento, mostra suas notificações do Windows e tem menos FPS.
             <br/>Se o Game Capture ficar preto, execute o OBS como Administrador.
@@ -127,7 +127,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 7: Lookahead e Psycho Visual Tuning",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nas configurações do NVENC:
             <br/>- <strong>Lookahead:</strong> OFF (A menos que tenha jogo com pouco movimento).
             <br/>- <strong>Psycho Visual Tuning:</strong> ON. Melhora a qualidade subjetiva em movimentos rápidos usando aceleração CUDA.
@@ -140,7 +140,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 8: Codec AV1 (O Futuro)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O AV1 (presente nas placas RTX 4000 e RX 7000) tem qualidade de imagem superior ao H.264 em bitrates baixos.
                 <br/>YouTube e Twitch já suportam AV1. Se puder, use. Seus vídeos ficarão sem aqueles "quadrados" (artifacts) em cenas rápidas.
             </p>
@@ -149,7 +149,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 9: Screenshots em Alta Resolução",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Você pode usar o OBS para tirar screenshots limpas (sem HUD, se configurar a fonte corretamente) e salvas em PNG Lossless instantaneamente. Configure o atalho.
             </p>
             `
@@ -157,7 +157,7 @@ export default function OBSGuide() {
         {
             title: "Capítulo 10: Virtual Camera",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Use a "Câmera Virtual" para jogar a imagem do OBS (com filtros de cor e overlay) direto no Discord ou Zoom como se fosse sua webcam.
             </p>
             `

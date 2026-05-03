@@ -34,7 +34,7 @@ export default function SyncTechnologyGuide() {
         {
             title: "O que é o Screen Tearing?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Imagine que sua placa de vídeo está enviando 100 quadros por segundo, mas seu monitor só consegue mostrar 60. O resultado é o **Screen Tearing**: uma linha horizontal que divide a imagem, como se ela estivesse "rasgada". Para resolver isso, inventaram as tecnologias de sincronização, que garantem que o monitor e a GPU falem a mesma língua em 2026.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SyncTechnologyGuide() {
         {
             title: "1. V-Sync: A solução do passado",
             content: `
-        <p class="mb-4 text-gray-300">O V-Sync força a GPU a esperar o monitor:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">O V-Sync força a GPU a esperar o monitor:</p>
+        <p class="text-sm text-gray-400">
             Embora resolva o rasgo da imagem, o <strong>V-Sync clássico</strong> introduz um atraso de resposta (Input Lag) terrível. Em jogos competitivos como Valorant ou CS2, isso pode fazer você perder o tempo de reação. Em 2026, recomendamos deixar o V-Sync sempre **desativado** dentro dos jogos se você tiver acesso a tecnologias mais modernas.
         </p>
       `
@@ -53,7 +53,7 @@ export default function SyncTechnologyGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A Revolução Fluida:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Diferente do V-Sync, o **G-Sync (NVIDIA)** e o **FreeSync (AMD)** fazem o monitor esperar a GPU. Se o seu jogo cair para 47 FPS, o monitor muda sua frequência para 47Hz instantaneamente. Isso elimina o tearing e as travadinhas (stuttering) sem aumentar o input lag de forma perceptível. Em 2026, a maioria dos monitores é 'G-Sync Compatible', o que significa que funcionam com GPUs NVIDIA mesmo sendo oficialmente FreeSync.
             </p>
         </div>
@@ -62,7 +62,7 @@ export default function SyncTechnologyGuide() {
         {
             title: "3. Configuração Perfeita 2026",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Como configurar para latência mínima:</strong> 
             <br/><br/>Se você tem um monitor de 144Hz com G-Sync/FreeSync, a recomendação dos especialistas é: <br/>
             1. Ative o G-Sync/FreeSync no Painel de Controle da GPU. <br/>

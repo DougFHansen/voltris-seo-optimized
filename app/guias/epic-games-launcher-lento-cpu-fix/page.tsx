@@ -34,7 +34,7 @@ export default function EpicGamesFixGuide() {
         {
             title: "O \"peso\" da Epic Games em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Embora a **Epic Games Store** ofereça jogos incríveis de graça toda semana, o seu programa inicializador (Launcher) é conhecido por ser pesado. Construído com tecnologias web, ele pode consumir mais processador que o próprio jogo se estiver mal configurado. Em 2026, com computadores multitarefa, manter o launcher "quieto" enquanto você não está jogando é essencial para a saúde do sistema.
         </p>
       `
@@ -42,8 +42,8 @@ export default function EpicGamesFixGuide() {
         {
             title: "1. Reduzindo o Uso de CPU em Repouso",
             content: `
-        <p class="mb-4 text-gray-300">O launcher costuma "observar" o hardware o tempo todo. Desative isso:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O launcher costuma "observar" o hardware o tempo todo. Desative isso:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Abra o Epic Games Launcher e clique no ícone do seu perfil no topo direito.</li>
             <li>Vá em <strong>Configurações</strong>.</li>
             <li>Desmarque a opção <strong>'Habilitar Navegação por Voz'</strong> e <strong>'Minimizar para a Bandeja do Sistema'</strong> (se preferir que ele feche de verdade).</li>
@@ -56,7 +56,7 @@ export default function EpicGamesFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Truque de Largura de Banda:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Muitas vezes, downloads na Epic travam em 0B/s ou ficam muito lentos. <br/><br/>
                 No menu de Configurações, procure por <strong>'Limitar downloads'</strong>. Coloque um valor muito alto, como 1000000 (um milhão de KB/s). Por algum motivo técnico do código da Epic, colocar um limite manual forçado muitas vezes "destrava" a velocidade máxima da sua conexão em 2026.
             </p>
@@ -66,7 +66,7 @@ export default function EpicGamesFixGuide() {
         {
             title: "3. O Inicializador Limpo (Startup)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Não deixe ele ligar com o PC:</strong> 
             <br/><br/>A maior causa de lentidão ao ligar o computador é o Epic Launcher tentando verificar atualizações logo no primeiro segundo do Windows 11. <br/><br/>
             Vá nas configurações do launcher e desmarque **'Executar na inicialização do computador'**. Só abra a loja quando você REALMENTE for jogar. Isso economizará cerca de 300MB de RAM e vários ciclos de CPU desde o momento do boot.

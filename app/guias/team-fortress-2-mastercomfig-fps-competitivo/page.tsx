@@ -42,7 +42,7 @@ export default function TF2Guide() {
         {
             title: "Introdução: Source Engine Spaghetti",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           TF2 é CPU bound. Uma RTX 4090 fica em 40% de uso. O segredo é otimizar o uso de Single Core da CPU e limpar partículas (chapéus com efeitos Unusual comem FPS).
         </p>
       `
@@ -67,7 +67,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 2: DX8 vs DX9 (Launch Options)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nas opções de inicialização da Steam:
             <br/>- <code>-dxlevel 81</code>: Modo DirectX 8. Remove brilhos (Sheens de Killstreak), algumas skins ficam foscas, e Ubercharge não brilha tanto. GANHO MASSIVO DE FPS.
             <br/>- <code>-dxlevel 95</code>: Modo DirectX 9. Se você pagou caro em skins Australium e quer vê-las brilhando, use esse.
@@ -78,7 +78,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 3: Netcode e Interp",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             TF2 tem configurações de rede de 2007 (feitas para internet discada).
             <br/>No <code>autoexec.cfg</code> (ou nos módulos do Mastercomfig):
             <br/>- <strong>Snapshot Buffer:</strong> Low (0.0152s) para Hitscan (Sniper/Scout). Resposta instantânea.
@@ -92,7 +92,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 4: Custom HUD",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O HUD padrão é ruim (dano longe da mira).
             <br/>Baixe um HUD em <strong>huds.tf</strong> (ex: RaysHUD, ToonHUD, BudHUD).
             <br/>Eles centralizam a vida e munição, permitindo focar na mira. Instale na pasta <code>tf/custom</code>.
@@ -102,7 +102,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 5: Ragdolls e Gibs",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Quando alguém morre, o corpo voa (Ragdoll) e explode em pedaços (Gibs).
             <br/>Calculando física desses corpos em um servidor 12v12 consome CPU.
             <br/>Use o comando (ou mastercomfig module) para desativar Ragdolls. Os inimigos somem ao morrer. Menos distração visual e +FPS.
@@ -112,7 +112,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 6: Null-Cancelling Movement",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Script essencial para Scout.
             <br/>Ele impede que você pare se apertar A e D ao mesmo tempo. Em vez de parar, ele prioriza a última tecla apertada, garantindo movimento constante.
             <br/>Adicione o script no seu <code>autoexec.cfg</code>.
@@ -122,7 +122,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 7: No-Hats Mod (Casual)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Existe um mod que remove todos os chapéus (Hats) do jogo.
             <br/>Funciona apenas em servidores da comunidade com <code>sv_pure 0</code>.
             <br/>No Casual oficial da Valve (<code>sv_pure 1</code>), ele não funciona. Mastercomfig é a única saída para Casual.
@@ -135,7 +135,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 8: Sombras do Jogador",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Desative sombras dinâmicas (<code>r_shadows 0</code>).
                 <br/>Em mapas fechados, a sombra entrega sua posição na esquina? Sim. Mas ganhar 20 FPS ajuda mais a ganhar o duelo do que a informação da sombra (que é bugada no TF2).
             </p>
@@ -144,7 +144,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 9: Hitsound e Killsound",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Ative o som de acerto nas opções avançadas.
                 <br/>Pitch (Tom): Low para dano alto (Boom), High para dano baixo (Tink).
                 <br/>Ajuda a saber instantaneamente quanto dano seu foguete deu sem olhar os números.
@@ -154,7 +154,7 @@ export default function TF2Guide() {
         {
             title: "Capítulo 10: Server FPS",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O TF2 roda a 66 ticks por segundo.
                 <br/>Seu FPS deve ser sempre maior que 66.
                 <br/>O ideal é FPS = Taxa de Hz do Monitor x 2 + 1. (Ex: 144hz -> cap a 289 fps) para minimizar input lag.

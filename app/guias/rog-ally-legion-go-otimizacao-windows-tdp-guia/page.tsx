@@ -41,7 +41,7 @@ export default function RogAllyGuide() {
         {
             title: "Introdução: A Batalha contra o Windows",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Windows rodando em segundo plano consome bateria e CPU. A Asus e a Lenovo tentam ajudar com seus softwares, mas o segredo está em limpar o Windows e controlar o hardware manualmente.
         </p>
       `
@@ -65,7 +65,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 2: Debloat e Core Isolation",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             1. <strong>Core Isolation (Integridade de Memória):</strong> Desative em Configurações > Segurança > Isolamento de Núcleo. Isso dá um boost de 5-10% de FPS em CPUs Ryzen como o Z1 Extreme.
             2. <strong>Startup Apps:</strong> Desative TUDO (Steam, Epic, EA) de iniciar com o Windows. Abra apenas o que for jogar.
             3. Use o nosso guia de "Debloat Windows 11" para remover Teams, Widget e Telemetria.
@@ -75,7 +75,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 3: CPU Boost (O Vilão do Calor)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Z1 Extreme tenta dar boost para 5.0GHz à toa, esquentando o aparelho para 95°C.
             <br/>Desative o "CPU Boost" nas opções de energia do Windows (exige edição de registro simples para aparecer a opção).
             <br/>Resultado: Mesma performance em jogos (que dependem de GPU), mas rodando a 70°C e ventoinhas silenciosas.
@@ -88,7 +88,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 4: RSR (Radeon Super Resolution)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A tela do Ally é 1080p, do Legion é 1600p. Rodar nativo pesa.
             <br/>1. Ative RSR no Painel da AMD ou Central de Comando.
             <br/>2. No jogo, coloque a resolução em <strong>720p</strong> (Ally) ou <strong>800p</strong> (Legion).
@@ -100,7 +100,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 5: Resolução 900p (O Sweet Spot)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Existe um mod de registro para habilitar <strong>900p</strong> no ROG Ally.
             <br/>É o equilíbrio perfeito entre nitidez e FPS. Muito melhor que 720p e muito mais leve que 1080p. Altamente recomendado.
         </p>
@@ -109,7 +109,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 6: TDP Manual",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Não use os perfis padrão (Turbo/Performance). Crie manuais:
             <br/>- <strong>18W:</strong> Para jogos AAA (Cyberpunk a 40fps).
             <br/>- <strong>25W/30W:</strong> Só ligado na tomada. Na bateria dura 40 min.
@@ -120,7 +120,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 7: Hibernate vs Sleep",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O "Sleep" (Suspensão) do Windows é bugado. O portátil liga na mochila e frita.
             <br/>Mude a ação do botão Power para <strong>Hibernar</strong>.
             <br/>Demora 10 segundos a mais para ligar, mas salva a bateria e não acorda sozinho.
@@ -133,7 +133,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 8: Lossless Scaling (App)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Compre o app "Lossless Scaling" na Steam.
                 <br/>Ele tem o modo "Frame Generation" (LSFG) que funciona em QUALQUER jogo e QUALQUER GPU.
                 <br/>Transforma 30fps em 60fps (fake frames). Tem um pouco de ghosting, mas para jogar RPGs lentos no handheld é incrível.
@@ -143,7 +143,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 9: Legion Space",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O software da Lenovo é pesado. Muitos usuários preferem fechá-lo e usar o "Handheld Companion" ou apenas a Steam Big Picture.
             </p>
             `
@@ -151,7 +151,7 @@ export default function RogAllyGuide() {
         {
             title: "Capítulo 10: SD Card (O Burnout do Ally)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O leitor de cartão do ROG Ally original queima com o calor da saída de ar.
                 <br/>Aumente a curva de ventoinha (Fan Curve) para manter o device dbaixo de 75°C e proteger o leitor, ou simplesmente troque o SSD interno por um de 2TB 2230.
             </p>

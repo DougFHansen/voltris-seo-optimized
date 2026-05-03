@@ -34,7 +34,7 @@ export default function PreventiveMaintenanceGuide() {
         {
             title: "O que é Manutenção Preventiva?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A maioria das pessoas só leva o PC na assistência técnica quando ele para de ligar. A **Manutenção Preventiva** é o conjunto de pequenas ações que você faz <strong>antes</strong> do problema acontecer. É muito mais barato gastar 15 minutos por mês limpando o sistema do que pagar por uma placa-mãe nova que queimou por superaquecimento.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PreventiveMaintenanceGuide() {
         {
             title: "1. Rotina de Software (Mensal)",
             content: `
-        <p class="mb-4 text-gray-300">Mantenha o cérebro do seu PC limpo:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Mantenha o cérebro do seu PC limpo:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>Verificar Drivers:</strong> Use o Winget ou sites oficiais para ver se há atualizações de estabilidade.</li>
             <li><strong>Limpeza de Arquivos:</strong> Rode o <code>cleanmgr</code> para tirar atualizações velhas do Windows.</li>
             <li><strong>Check de integridade:</strong> Abra o PowerShell como Admin e digite <code>sfc /scannow</code> para o Windows auto-corrigir arquivos de boot.</li>
@@ -56,7 +56,7 @@ export default function PreventiveMaintenanceGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Checklist Físico:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Verifique se todas as ventoinhas estão girando sem barulho de "areia". <br/>
                 2. Use ar comprimido para limpar os filtros de ar. <br/>
                 3. Confira se os cabos estão bem encaixados (especialmente os de energia da placa de vídeo). <br/>
@@ -68,7 +68,7 @@ export default function PreventiveMaintenanceGuide() {
         {
             title: "3. O \"Seguro\" dos seus Dados",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Hardware a gente compra outro, mas seus dados (fotos, documentos, save de jogos) são únicos. A manutenção definitiva é ter um backup. 
             <br/>Configure o <strong>OneDrive</strong> ou <strong>Google Drive</strong> para sincronizar sua pasta 'Documentos' e 'Imagens'. Assim, se o seu SSD morrer amanhã, você só terá o prejuízo financeiro, não emocional.
         </p>

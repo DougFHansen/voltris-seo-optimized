@@ -34,7 +34,7 @@ export default function GoWMemoryFixGuide() {
         {
             title: "O que é o Memory Leak no God of War?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Muitos jogadores relatam que o God of War começa a rodar bem, mas após 1 ou 2 horas, o FPS cai drasticamente ou o jogo dá crash com a mensagem de "Out of Memory". Isso acontece porque o jogo "esquece" de liberar a memória RAM que não está mais usando, acumulando lixo digital até o Windows não aguentar mais.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GoWMemoryFixGuide() {
         {
             title: "1. Ajustando a Memória Virtual (Paging File)",
             content: `
-        <p class="mb-4 text-gray-300">Se você tem 8GB ou 16GB de RAM, o Windows precisa de um "fôlego" extra no SSD para evitar o crash:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Se você tem 8GB ou 16GB de RAM, o Windows precisa de um "fôlego" extra no SSD para evitar o crash:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Aperte <code>Win + R</code> e digite <strong>sysdm.cpl</strong>.</li>
             <li>Vá em Avançado > Desempenho (Configurações) > Avançado > Alterar.</li>
             <li>Desmarque 'Gerenciar automaticamente'.</li>
@@ -58,7 +58,7 @@ export default function GoWMemoryFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Nexus Mods:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Existe um mod popular chamado <strong>"God of War Memory Leak Fix"</strong> no Nexus Mods. Ele substitui alguns arquivos de biblioteca que melhoram a forma como o jogo despeja os assets do mapa. É altamente recomendado se você joga em notebooks ou PCs com pouca VRAM.
             </p>
         </div>
@@ -67,7 +67,7 @@ export default function GoWMemoryFixGuide() {
         {
             title: "3. Configurações de VRAM",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No God of War, as texturas no 'Ultra' exigem muita memória da placa de vídeo. 
             <br/>Se sua placa tem menos de 8GB de VRAM, mantenha as texturas em <strong>Original</strong> ou <strong>Baixo</strong>. Em 2026, com o HDR ativo, a VRAM enche ainda mais rápido, o que acelera o processo de vazamento de memória.
         </p>

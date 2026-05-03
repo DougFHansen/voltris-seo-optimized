@@ -34,7 +34,7 @@ export default function BloatwareRemovalGuide() {
         {
             title: "O que é Bloatware e por que remover?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Windows 11 em 2026 vem "recheado" de aplicativos que 99% dos usuários nunca abrem: Jogos de cartas, ferramentas de notícias, ferramentas de chat da Microsoft e telemetria constante. Esse "lixo" digital (Bloatware) consome memória RAM e ciclos do processador em segundo plano. Usar o PowerShell permite remover esses itens de forma profunda, algo que o Painel de Controle comum não permite.
         </p>
       `
@@ -44,7 +44,7 @@ export default function BloatwareRemovalGuide() {
             content: `
         <div class="bg-yellow-900/10 p-5 rounded-xl border border-yellow-500/30 mb-6">
             <p class="text-yellow-400 font-bold mb-2">Segurança em primeiro lugar!</p>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Como vamos mexer em arquivos do sistema, é **obrigatório** criar um ponto de restauração. Pesquise por 'Criar ponto de restauração' no Windows e clique em 'Criar'. Se algo parar de funcionar (como a Microsoft Store), você pode voltar no tempo facilmente.
             </p>
         </div>
@@ -53,8 +53,8 @@ export default function BloatwareRemovalGuide() {
         {
             title: "2. O Script Recomendado em 2026",
             content: `
-        <p class="mb-4 text-gray-300">O método mais seguro e atualizado é o <strong>Win11Debloat</strong> ou o script de Chris Titus:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O método mais seguro e atualizado é o <strong>Win11Debloat</strong> ou o script de Chris Titus:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Clique com o botão direito no botão Iniciar e escolha <strong>Terminal (Administrador)</strong> ou PowerShell.</li>
             <li>Cole o seguinte comando (Script de C. Titus): <code>irm christitus.com/win | iex</code></li>
             <li>Uma interface gráfica será aberta. Vá na aba <strong>Tweaks</strong>.</li>
@@ -66,7 +66,7 @@ export default function BloatwareRemovalGuide() {
         {
             title: "3. O que acontece após o Debloat?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Resultados imediatos:</strong> 
             <br/><br/>Após a reinicialização, você notará que o uso de memória RAM em repouso cairá de 4GB-5GB para algo próximo de 2GB-2.5GB. O menu Iniciar ficará instantâneo e você não verá mais notícias ou anúncios intrusivos. Em jogos, isso se traduz em menos picos de lag (stuttering) causados por serviços de fundo tentando atualizar enquanto você joga.
         </p>

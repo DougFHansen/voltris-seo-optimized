@@ -37,15 +37,15 @@ export default function AIAgentsGuide() {
         {
             title: "Introdução: Bem-vindos à Internet Agêntica",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Até 2024, vivemos a era dos "Chatbots". Você fazia uma pergunta ao ChatGPT (` + "`Prompt`" + `), e ele te dava uma resposta (` + "`Completion`" + `). Era uma interação passiva.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, entramos na era <strong>Agêntica</strong>. Um <strong>AI Agent</strong> não espera você perguntar. Ele recebe um objetivo amplo (ex: "Descubra prospects no LinkedIn e mande e-mails personalizados") e trabalha sozinho por horas. Ele navega na web, ele raciocina se encontrou a pessoa certa, ele usa ferramentas (CRM, Gmail) e ele corrige seus próprios erros.
         </p>
         <div class="bg-purple-900/20 border-l-4 border-purple-500 p-6 rounded-r-lg my-8">
             <h4 class="text-purple-400 font-bold text-xl mb-2">A Definição Técnica</h4>
-            <p class="text-gray-300 text-lg">
+            <p class="text-gray-400 text-lg">
                 <em>"Um Agente é um sistema que usa um LLM como cérebro para perceber o ambiente, raciocinar sobre como atingir um objetivo e executar ações usando ferramentas."</em>
             </p>
         </div>
@@ -54,7 +54,7 @@ export default function AIAgentsGuide() {
         {
             title: "Capítulo 1: Anatomia de um Agente (Arquitetura Cognitiva)",
             content: `
-        <p class="mb-6 text-gray-300 text-lg">
+        <p class="mb-6 text-gray-400 text-lg">
             Para construir um agente, você não escreve "ifs" e "elses". Você projeta uma mente. Andrew Ng e Andrej Karpathy definem a arquitetura moderna em 4 pilares:
         </p>
 
@@ -103,12 +103,12 @@ export default function AIAgentsGuide() {
         {
             title: "Capítulo 2: Batalha dos Frameworks (CrewAI vs LangChain)",
             content: `
-        <p class="mb-6 text-gray-300">
+        <p class="mb-6 text-gray-400">
             Você não precisa codar tudo do zero. Existem frameworks que facilitam a orquestração.
         </p>
 
         <div class="overflow-x-auto mb-8">
-            <table class="w-full text-left text-sm text-gray-300 border-collapse border border-gray-700 rounded-lg">
+            <table class="w-full text-left text-sm text-gray-400 border-collapse border border-gray-700 rounded-lg">
                 <thead class="bg-gray-900 text-white uppercase tracking-wider">
                     <tr>
                         <th class="p-4 border border-gray-700">Framework</th>
@@ -144,11 +144,11 @@ export default function AIAgentsGuide() {
         {
             title: "Capítulo 3: Tutorial Prático - Sua Agência de Notícias Automatizada",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Vamos botar a mão na massa. Vamos usar <strong>Python</strong> e <strong>CrewAI</strong> para criar uma empresa que funciona enquanto você dorme.
             <br/>Nossa empresa terá dois funcionários digitais:
         </p>
-        <ul class="list-disc list-inside text-gray-300 mb-6 ml-4">
+        <ul class="list-disc list-inside text-gray-400 mb-6 ml-4">
             <li><strong>Agente 1 (Jornalista):</strong> Varre a internet atrás de novidades sobre um tema.</li>
             <li><strong>Agente 2 (Editor Chefe):</strong> Transforma os dados técnicos em um post viral para LinkedIn.</li>
         </ul>
@@ -160,7 +160,7 @@ export default function AIAgentsGuide() {
                 <span class="w-3 h-3 rounded-full bg-green-500"></span>
                 <span class="ml-2">main.py</span>
             </div>
-<pre><code class="language-python text-gray-300">
+<pre><code class="language-python text-gray-400">
 import os
 from crewai import Agent, Task, Crew, Process
 from langchain_community.tools import DuckDuckGoSearchRun
@@ -228,7 +228,7 @@ print(resultado)
         
         <div class="mt-6 p-6 bg-blue-900/10 border border-blue-500/30 rounded-xl">
             <h4 class="text-blue-400 font-bold text-lg mb-2">O que acontece quando você roda isso?</h4>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2">
+            <ol class="list-decimal list-inside text-gray-400 space-y-2">
                 <li>O script inicia. O <strong>Pesquisador</strong> acessa o DuckDuckGo.</li>
                 <li>Ele lê vários sites (o LLM lê e resume). Se não achar nada bom, ele refaz a busca com outros termos (autonomia!).</li>
                 <li>Quando satisfeito, ele passa o relatório para o <strong>Redator</strong>.</li>
@@ -241,21 +241,21 @@ print(resultado)
         {
             title: "Capítulo 4: Custos e Desafios Reais",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nem tudo são flores. Rodar agentes custa dinheiro e exige supervisão.
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-red-500">
                 <h5 class="text-red-400 font-bold mb-2">💸 O Custo da "Loopite"</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Agentes podem entrar em loops infinitos ("Tentei pesquisar, falhou. Tentei de novo, falhou..."). Se você usar GPT-4, isso pode queimar $10 em minutos.
                     <br/><strong>Solução:</strong> Use modelos mais baratos (GPT-4o-mini ou Haiku) para tarefas simples e estabeleça um limite de "max_iterations".
                 </p>
             </div>
             <div class="bg-gray-800 p-5 rounded-lg border-l-4 border-yellow-500">
                 <h5 class="text-yellow-400 font-bold mb-2">🐌 Latência</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Ao contrário de um chat instantâneo, um agente pode levar 2 a 5 minutos para completar uma tarefa complexa de pesquisa. Eles são feitos para trabalhar em background ("Fire and Forget"), não para conversas em tempo real.
                 </p>
             </div>
@@ -265,10 +265,10 @@ print(resultado)
         {
             title: "Conclusão: O Futuro do Trabalho",
             content: `
-        <p class="text-gray-300 text-lg leading-relaxed">
+        <p class="text-gray-400 text-lg leading-relaxed">
             A revolução dos AI Agents não é sobre substituir humanos, mas sobre <strong>superpoderes</strong>. Imagine ter 10 estagiários digitais incansáveis trabalhando para você. Um lê notícias, outro organiza seu CRM, outro responde e-mails básicos.
         </p>
-        <p class="mt-4 text-gray-300 text-lg leading-relaxed">
+        <p class="mt-4 text-gray-400 text-lg leading-relaxed">
             Quem dominar frameworks como CrewAI agora (2026) será o "Arquiteto de Agentes" do futuro, uma das profissões mais bem pagas da década. Comece pequeno, teste, falhe barato e escale seus agentes.
         </p>
       `

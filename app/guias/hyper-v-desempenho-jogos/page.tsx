@@ -34,7 +34,7 @@ export default function HyperVPerformanceGuide() {
         {
             title: "O Custo da Segurança no Windows 11",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           No Windows 11, a Microsoft ativou recursos como o <strong>VBS (Virtualization-Based Security)</strong> por padrão. Ele usa o motor do Hyper-V para criar uma "bolha" de segurança ao redor do seu sistema. Embora isso torne seu PC quase imune a certos tipos de malware persistente, ele cria uma camada extra de processamento que pode "roubar" CPU dos seus jogos. Em 2026, com CPUs de muitos núcleos, o impacto é menor, mas em processadores de entrada, a diferença de FPS é nítida.
         </p>
       `
@@ -42,8 +42,8 @@ export default function HyperVPerformanceGuide() {
         {
             title: "1. Como saber se o Hyper-V está ativo?",
             content: `
-        <p class="mb-4 text-gray-300">Não confie apenas no menu de recursos. Veja o status real:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Não confie apenas no menu de recursos. Veja o status real:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Pesquise por <strong>'Informações do Sistema'</strong> (msinfo32) no Iniciar.</li>
             <li>Role até o final da lista na aba 'Resumo do Sistema'.</li>
             <li>Procure por <strong>'Segurança baseada em virtualização'</strong>. Se estiver 'Em execução', o Hyper-V está ativo e pesando no seu sistema.</li>
@@ -55,7 +55,7 @@ export default function HyperVPerformanceGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Não desligue se:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 - Você usa o <strong>Google Play Games para PC</strong>. <br/>
                 - Você é desenvolvedor e usa <strong>Docker</strong> ou <strong>WSL2</strong>. <br/>
                 - Você prioriza segurança absoluta acima de alguns frames extras. <br/>
@@ -67,7 +67,7 @@ export default function HyperVPerformanceGuide() {
         {
             title: "3. Como desativar de forma segura",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você decidiu que o FPS é mais importante:
             <br/>1. Vá em 'Ativar ou desativar recursos do Windows'.
             <br/>2. Desmarque <strong>'Hyper-V'</strong>, 'Plataforma de Máquina Virtual' e 'Plataforma do Hipervisor do Windows'.

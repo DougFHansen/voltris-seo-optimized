@@ -40,7 +40,7 @@ export default function ReShadeGuide() {
         {
             title: "Introdução: O que é Post-Processing?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Imagine aplicar filtros do Instagram em tempo real no jogo. O ReShade faz isso, mas com acesso aos dados de profundidade (Depth Buffer) do jogo, permitindo efeitos 3D reais.
         </p>
       `
@@ -64,7 +64,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 2: Ray Tracing (RTGI)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O shader <strong>RTGI</strong> (Ray Traced Global Illumination) de Pascal Gilcher "Marty McFly" simula a luz rebatendo nos objetos.
             <br/>Ele é pago (Patreon), mas existem versões beta antigas grátis.
             <br/>Para funcionar, você precisa configurar a aba "Add-ons" > "Depth3D" para alinhar o Depth Buffer. Se a tela ficar branca ou detectar errado, o RT não funciona.
@@ -74,7 +74,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 3: Filtros Essenciais (Leves)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>CAS (Contrast Adaptive Sharpening):</strong> Remove o borrão do TAA. Deixa a imagem cristalina. Custo: 1 fps.
             - <strong>Vibrance:</strong> Aumenta a saturação das cores inteligentes (não estoura peles).
             - <strong>Curves / Levels:</strong> Corrige o contraste ("preto lavado") de jogos antigos.
@@ -87,7 +87,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 4: SSR (Reflexos)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O shader <strong>SSR (Screen Space Reflections)</strong> do pacote qUINT adiciona reflexos no chão molhado em jogos que não têm (ex: GTA San Andreas).
             <br/>Exige configuração fina para não refletir o céu no asfalto seco.
         </p>
@@ -96,7 +96,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 5: MXAO (Ambient Occlusion)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Adiciona sombras nos cantos e junções de objetos.
             <br/>Dá peso e profundidade à cena. Essencial para jogos antigos (Sims 3, Fallout New Vegas).
             <br/>Custo: Médio (5-10 fps).
@@ -106,7 +106,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 6: Depth of Field (Desfoque)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Cinematic DOF.
             <br/>Foca no personagem e desfoca o fundo igual câmera de cinema.
             <br/>Ótimo para tirar screenshots (Virtual Photography), mas ruim para jogar (esconde inimigos). Defina uma Hotkey para ativar/desativar.
@@ -116,7 +116,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 7: Performance Mode",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Depois de configurar tudo, marque a caixa <strong>"Performance Mode"</strong> na aba Home.
             <br/>Isso "cozinha" os shaders e impede que você edite variáveis, mas ganha muito FPS. Nunca jogue com o Performance Mode desligado.
         </p>
@@ -128,7 +128,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 8: Jogos Online (Anti-Cheat)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Jogos como CS2, Valorant e Siege BLOQUEIAM o ReShade (ou versões específicas).
                 <br/>FFXIV e Sims 4 permitem.
                 <br/>Para jogos competitivos, use o "Nvidia Game Filters" (Alt+F3) que é um ReShade oficial autorizado pelos drivers.
@@ -138,7 +138,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 9: Presets Prontos",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Não precisa configurar do zero.
                 <br/>Vá ao site "Nexus Mods" ou "SweetFX Database" e baixe um preset (.ini) para seu jogo.
                 <br/>Coloque na pasta e selecione no menu do ReShade.
@@ -148,7 +148,7 @@ export default function ReShadeGuide() {
         {
             title: "Capítulo 10: Desinstalação",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Para remover, apague o arquivo <code>dxgi.dll</code> (ou d3d11.dll) e a pasta <code>reshade-shaders</code> da pasta do jogo.
             </p>
             `

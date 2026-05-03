@@ -34,7 +34,7 @@ export default function RobloxConnectionFixGuide() {
         {
             title: "Por que o Roblox desconecta?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, com experiências de Roblox cada vez mais complexas e pesadas, a estabilidade da sua internet se tornou vital. O erro **ID 277** geralmente indica que o seu computador parou de enviar dados para o servidor, enquanto o **ID 279** costuma ser um bloqueio de rede impedindo você de carregar o mapa inicialmente. Quase sempre, o problema pode ser resolvido com ajustes simples no seu Windows 11.
         </p>
       `
@@ -42,8 +42,8 @@ export default function RobloxConnectionFixGuide() {
         {
             title: "1. Limpando o \"Lixo\" do Roblox",
             content: `
-        <p class="mb-4 text-gray-300">Arquivos corrompidos de sessões antigas causam erros de conexão:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Arquivos corrompidos de sessões antigas causam erros de conexão:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Aperte <code>Windows + R</code>, digite <code>%localappdata%</code> e dê Enter.</li>
             <li>Procure a pasta <strong>Roblox</strong> e abra.</li>
             <li>Apague as pastas <strong>logs</strong> e <strong>Downloads</strong>.</li>
@@ -57,7 +57,7 @@ export default function RobloxConnectionFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Liberação de Segurança:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O erro ID 279 frequentemente ocorre porque o Firewall do Windows ou o antivírus bloqueia o acesso do Roblox a portas específicas. <br/><br/>
                 Vá em Painel de Controle > Sistema e Segurança > Windows Defender Firewall > 'Permitir um aplicativo pelo Firewall'. Certifique-se de que o <strong>Roblox</strong> esteja marcado tanto em 'Privado' quanto em 'Público'.
             </p>
@@ -67,7 +67,7 @@ export default function RobloxConnectionFixGuide() {
         {
             title: "3. DNS e IP em 2026",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Renovando o sinal:</strong> 
             <br/><br/>Se o erro persistir, abra o CMD (Prompt de Comando) como administrador e digite estes três comandos, um por um: <br/>
             <code>ipconfig /flushdns</code> <br/>

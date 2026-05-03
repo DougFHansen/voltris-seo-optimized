@@ -36,7 +36,7 @@ export default function FirewallBlockGuide() {
     {
       title: "Por que fazer isso?",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Muitos programas (como Adobe, Autodesk, Jogos Single Player) tentam se conectar à internet a cada 5 minutos para:
           <br/>1. Baixar atualizações que você não pediu.
           <br/>2. Enviar dados de uso (telemetria) sobre seu PC.
@@ -48,13 +48,13 @@ export default function FirewallBlockGuide() {
     {
       title: "Método 1: Firewall do Windows (Sem Instalar Nada)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           O firewall nativo é poderoso, mas a interface é antiga. Siga com calma:
         </p>
         
         <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-700">
             <h4 class="text-white font-bold mb-3">Passo a Passo Visual</h4>
-            <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <ol class="list-decimal list-inside text-gray-400 space-y-3">
                 <li>Abra o Menu Iniciar e digite: <strong>"Firewall do Windows com Segurança Avançada"</strong> (ou <code>wf.msc</code> no Executar).</li>
                 <li>No painel esquerdo, clique em <strong>Regras de Saída</strong> (Outbound Rules).
                     <br/><span class="text-xs text-yellow-500 ml-6">Nota: Regras de Saída bloqueiam o programa de SAIR para a internet. Regras de Entrada bloqueiam hackers de entrar.</span>
@@ -77,10 +77,10 @@ export default function FirewallBlockGuide() {
     {
       title: "Método 2: SimpleWall (Para Quem Quer Facilidade)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           Se você achou o método acima complicado, o <strong>SimpleWall</strong> é um programa open-source minúsculo que torna isso visual.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Ao abrir, ele mostra todos os processos que estão tentando usar a internet AGORA.</li>
             <li>Você só precisa desmarcar a caixinha ao lado do nome do programa.</li>
             <li>Se a caixa não estiver marcada, a internet é bloqueada. Simples assim.</li>
@@ -94,7 +94,7 @@ export default function FirewallBlockGuide() {
       title: "E se o programa tiver vários executáveis?",
       content: `
         <h4 class="text-white font-bold mb-3">O Truque do Launcher</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos jogos modernos têm um <code>Launcher.exe</code> e um <code>Game-Win64-Shipping.exe</code> escondido numa subpasta.
             <br/>Se você bloquear só o Launcher, o jogo pode continuar online.
             <br/><strong>Dica Pro:</strong> Abra o Gerenciador de Tarefas enquanto o jogo roda. Clique com o botão direito no processo do jogo > "Abrir local do arquivo". Esse é o executável real que você deve bloquear.
@@ -104,7 +104,7 @@ export default function FirewallBlockGuide() {
     {
       title: "Como Desbloquear depois?",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Arrependeu? Quer baixar o update?
             <br/>1. Abra o Firewall Avançado novamente.
             <br/>2. Vá em Regras de Saída.
@@ -123,13 +123,13 @@ export default function FirewallBlockGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
                 <h5 class="font-bold text-white mb-2">Regra de Saída (Outbound)</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     O seu PC tentando falar com o servidor do Google. (O que queremos bloquear).
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
                 <h5 class="font-bold text-white mb-2">Regra de Entrada (Inbound)</h5>
-                <p class="text-sm text-gray-300">
+                <p class="text-sm text-gray-400">
                     Um servidor externo tentando iniciar uma conversa com seu PC. (O roteador já bloqueia isso via NAT, mas o Firewall é a segunda barreira).
                 </p>
             </div>

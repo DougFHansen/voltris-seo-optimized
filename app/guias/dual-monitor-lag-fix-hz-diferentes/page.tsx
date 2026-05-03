@@ -43,7 +43,7 @@ export default function DualMonitorGuide() {
         {
             title: "Introdução: O Bug do DWM",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Desktop Window Manager (DWM.exe) tenta sincronizar todas as telas. Se você tem uma tela rápida (144Hz) e uma lenta (60Hz) com um vídeo rodando (YouTube/Twitch/OBS), o Windows às vezes "nivela por baixo", causando stutters no jogo principal.
         </p>
       `
@@ -66,7 +66,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 2: Hardware Accelerated GPU Scheduling",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             No Windows 10/11: Configurações > Sistema > Tela > Elementos Gráficos > Alterar configurações de gráficos padrão.
             <br/>Ative o <strong>Agendamento de GPU acelerado por hardware</strong>.
             <br/>Isso permite que a GPU gerencie sua própria memória, ajudando a lidar com múltiplas taxas de atualização. Reinicie o PC.
@@ -76,7 +76,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 3: Navegadores e Aceleração",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você não pode usar a iGPU:
             <br/>No Chrome/Discord que fica na segunda tela, vá em Configurações e <strong>Desative a Aceleração de Hardware</strong>.
             <br/>Isso força o vídeo a ser decodificado pela CPU. Seu uso de CPU vai subir um pouco, mas libera a GPU para não engasgar o jogo. É uma troca justa hoje em dia, já que CPUs têm núcleos sobrando.
@@ -89,7 +89,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 4: Regra dos Múltiplos",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Matemática ajuda. O Windows lida melhor quando as taxas são múltiplas.
             <br/>120Hz é múltiplo de 60Hz (2x). Funciona liso.
             <br/>144Hz não é múltiplo de 60Hz. (2.4x). Ocorre "frame skipping".
@@ -100,7 +100,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 5: Nvidia Multi-Display Power Saver",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Telas com resoluções/Hz diferentes impedem a placa de vídeo de entrar em modo de economia ("Idle Clocks") ou a fazem oscilar loucamente.
             <br/>Use o <strong>Nvidia Inspector</strong> (Multi Display Power Saver) para forçar clocks de memória altos quando 2 monitores estiverem conectados, evitando lag. (Avançado).
         </p>
@@ -109,7 +109,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 6: Fullscreen Exclusive",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Jogue em <strong>Tela Cheia Exclusiva</strong>.
             <br/>O modo "Janela sem bordas" (Borderless) força o jogo a passar pelo DWM do Windows (o compositor da área de trabalho).
             <br/>O modo Exclusivo pula o DWM, dando prioridade total ao jogo e ignorando o que acontece na segunda tela.
@@ -119,7 +119,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 7: Game Mode (Modo de Jogo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Mantenha o Modo de Jogo do Windows <strong>LIGADO</strong>.
             <br/>Ele detecta o jogo na tela principal e reduz a prioridade de processos (como uma atualização na segunda tela) para evitar que roubem recursos.
         </p>
@@ -131,7 +131,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 8: OBS Studio Preview",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se você faz stream: A "Prévia" (Preview) do OBS consome muita GPU porque renderiza a cena em tempo real.
                 <br/>Clique com botão direito na prévia > <strong>Desativar Prévia</strong> após começar a live.
                 <br/>Isso libera cerca de 10-15% de uso de GPU.
@@ -141,7 +141,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 9: Wallpaper Engine",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Wallpapers animados são lindos, mas comem FPS.
                 <br/>Configure o Wallpaper Engine para "Pausar" ou "Parar (liberar memória)" quando outra aplicação estiver em tela cheia/maximizada.
                 <br/>Não deixe ele rodando atrás do jogo.
@@ -151,7 +151,7 @@ export default function DualMonitorGuide() {
         {
             title: "Capítulo 10: Barra de Tarefas (Taskbar)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 No Windows 11, você pode desativar a barra de tarefas no segundo monitor se preferir.
                 <br/>Menos elementos de UI para o Windows desenhar = Menos chance de conflito.
             </p>

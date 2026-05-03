@@ -34,7 +34,7 @@ export default function EldenRingFixGuide() {
         {
             title: "O desafio técnico de Elden Ring em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Mesmo anos após o lançamento, o **Elden Ring** ainda apresenta problemas de stuttering (micro-travamentos) no Windows 11. Isso acontece principalmente devido à forma como o jogo gerencia o DirectX 12, compilando shaders enquanto você corre pelo mapa. Em 2026, com o DLC Shadow of the Erdtree exigindo ainda mais do hardware, configurar o cache de sombra e o gerenciamento de energia é essencial para uma experiência fluida.
         </p>
       `
@@ -42,8 +42,8 @@ export default function EldenRingFixGuide() {
         {
             title: "1. Shader Cache Ilimitado (NVIDIA)",
             content: `
-        <p class="mb-4 text-gray-300">Este é o ajuste mais importante para acabar com os pulos de FPS:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Este é o ajuste mais importante para acabar com os pulos de FPS:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Abra o Painel de Controle da NVIDIA.</li>
             <li>Vá em 'Gerenciar as configurações em 3D'.</li>
             <li>Procure por <strong>'Tamanho do Cache de Sombreador' (Shader Cache Size)</strong>.</li>
@@ -57,7 +57,7 @@ export default function EldenRingFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Atenção ao Menu:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Muitas vezes, após uma atualização, o Elden Ring ativa o **Ray Tracing** automaticamente. Mesmo no 'Baixo', o Ray Tracing consome quase 40% da performance da sua GPU sem oferecer uma mudança visual drástica no estilo artístico do jogo. Certifique-se de que ele está DESATIVADO nas configurações gráficas para manter os 60 FPS constantes.
             </p>
         </div>
@@ -66,7 +66,7 @@ export default function EldenRingFixGuide() {
         {
             title: "3. Prioridade de Energia e Windows 11",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Estabilidade Máxima em 2026:</strong> 
             <br/><br/>No Windows 11, vá em Configurações > Sistema > Tela > Gráficos. Adicione o executável do Elden Ring (eldenring.exe) e defina como **'Alto Desempenho'**. Além disso, em Opções de Energia, use o plano 'Desempenho Máximo'. Isso garante que o clock do seu processador não caia durante as lutas contra chefes, onde qualquer milissegundo de lag pode ser fatal.
         </p>

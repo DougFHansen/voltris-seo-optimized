@@ -34,7 +34,7 @@ export default function BenchmarkGuide() {
         {
             title: "Por que fazer um Benchmark?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Fazer um benchmark não é apenas ver "números crescendo". É uma ferramenta de diagnóstico. Se você tem um processador i7 e ele marca menos pontos que um i3 no teste, significa que algo está errado: pode ser superaquecimento, driver mal instalado ou até um vírus minerando em segundo plano.
         </p>
       `
@@ -42,10 +42,10 @@ export default function BenchmarkGuide() {
         {
             title: "Cinebench: O Teste do Processador",
             content: `
-        <p class="mb-4 text-gray-300">O Cinebench coloca seu processador para renderizar uma imagem 3D ultra complexa. É o melhor teste para saber se o seu cooler está aguentando o tranco.</p>
+        <p class="mb-4 text-gray-400">O Cinebench coloca seu processador para renderizar uma imagem 3D ultra complexa. É o melhor teste para saber se o seu cooler está aguentando o tranco.</p>
         <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
             <h4 class="text-white font-bold mb-2">Como ler o resultado:</h4>
-            <ul class="list-disc list-inside text-gray-300 text-sm space-y-2">
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
                 <li><strong>Single Core:</strong> Importante para jogos antigos e navegação web.</li>
                 <li><strong>Multi Core:</strong> Importante para lives, edição de vídeo e jogos modernos (como Cyberpunk).</li>
                 <li>Compare seu "Score" com sites como o CPU-Monkey para saber se sua marca está na média.</li>
@@ -56,10 +56,10 @@ export default function BenchmarkGuide() {
         {
             title: "3DMark: O Teste da Placa de Vídeo",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O 3DMark (Time Spy ou Steel Nomad) testa a capacidade da sua GPU em DirectX 12. 
         </p>
-        <p class="text-gray-300 bg-blue-900/10 p-4 rounded border-l-4 border-blue-500">
+        <p class="text-gray-400 bg-blue-900/10 p-4 rounded border-l-4 border-blue-500">
             Dica: Se o seu PC travar ou der tela azul durante o benchmark, é um sinal claro de que sua fonte está fraca ou sua placa de vídeo está com overclock instável. O benchmark é o "exame de sangue" do seu hardware.
         </p>
       `
@@ -67,7 +67,7 @@ export default function BenchmarkGuide() {
         {
             title: "UserBenchmark: O teste rápido",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Embora polêmico entre entusiastas, o <strong>UserBenchmark</strong> é excelente para iniciantes porque ele testa tudo (RAM, SSD, GPU, CPU) em 2 minutos e te mostra um gráfico de "percentil". Se você estiver abaixo do percentual 50, seu PC precisa de otimização urgente.
         </p>
       `

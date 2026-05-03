@@ -34,7 +34,7 @@ export default function UndervoltGuide() {
         {
             title: "O calor: O inimigo do Notebook Gamer",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Notebooks gamers de 2026 são potentes, mas as leis da física não mudam. Ter um processador de 14 ou 24 núcleos em um espaço de 2cm gera um calor absurdo. Quando o processador chega a 95°C, ele entra em **Thermal Throttling**, derrubando sua velocidade pela metade para não derreter. O **Undervolt** consiste em encontrar a menor voltagem estável para o seu processador, fazendo-o consumir menos energia e gerar menos calor, mantendo o mesmo FPS.
         </p>
       `
@@ -42,8 +42,8 @@ export default function UndervoltGuide() {
         {
             title: "1. Desbloqueando o Undervolt em 2026",
             content: `
-        <p class="mb-4 text-gray-300">Atenção: A Intel e a AMD bloquearam o undervolt em muitos modelos recentes por segurança (Plundervolt):</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">Atenção: A Intel e a AMD bloquearam o undervolt em muitos modelos recentes por segurança (Plundervolt):</p>
+        <p class="text-sm text-gray-400">
             Antes de começar, verifique se o seu processador permite mudanças de voltagem. Em 2026, muitas fabricantes exigem que você ative uma opção como 'Overclocking Feature' na BIOS para que softwares como o <strong>ThrottleStop</strong> funcionem. Se as barras de voltagem estiverem cinzas (travadas), você precisará procurar se o seu modelo específico de notebook permite o desbloqueio via BIOS.
         </p>
       `
@@ -53,7 +53,7 @@ export default function UndervoltGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Procedimento Seguro:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Abra o ThrottleStop e clique em <strong>FIVR</strong>. <br/>
                 2. Marque 'Unlock Adjustable Voltage'. <br/>
                 3. Em 'Offset Voltage', comece com <strong>-50mV</strong>. <br/>
@@ -66,7 +66,7 @@ export default function UndervoltGuide() {
         {
             title: "3. Por que isso não é perigoso?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Diferente do Overclock (que aumenta a voltagem e o risco), o Undervolt **diminui** o estresse sobre o processador. 
             <br/><br/><strong>Dica:</strong> Em 2026, um processador que roda a 80°C durará muito mais anos do que um que trabalha constantemente a 100°C. O único "perigo" é o PC travar e reiniciar, mas isso não causa dano ao hardware e serve apenas como aviso de que você reduziu a voltagem demais.
         </p>

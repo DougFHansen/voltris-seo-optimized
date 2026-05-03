@@ -43,7 +43,7 @@ export default function DiscordGuide() {
         {
             title: "Introdução: Electron Bloat",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Discord usa a estrutura Electron. Isso significa que ele carrega um "Chromium" inteiro só para mostrar o chat. Em PCs com CPU fraca (i3/i5 antigos), isso compete recursos com o jogo.
         </p>
       `
@@ -74,7 +74,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 2: Overlay (Inimigo do FPS)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Aquele overlay ("Quem está falando") injeta código no DirectX do jogo.
             <br/>Isso causa perda de 5 a 15 FPS e é a causa #1 de crash em jogos como CS2 e Destiny 2.
             <br/><strong>Recomendação:</strong> Desative o Overlay In-Game nas configurações globais. Se precisar muito, ative apenas para jogos específicos na aba "Jogos Registrados".
@@ -84,7 +84,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 3: Qualidade de Voz e Krisp",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configurações > Voz e Vídeo.
             <br/>- <strong>Supressão de Ruído:</strong> Use <strong>Krisp</strong>. É a melhor tecnologia de IA do mercado. Mas atenção: ele usa CPU. Se sua CPU estiver em 100% no jogo, sua voz vai cortar (robótica). Se isso acontecer, mude para "Standard".
             <br/>- <strong>Cancelamento de Eco:</strong> On.
@@ -98,7 +98,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 4: Reduzindo Animações (CPU)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configurações > Acessibilidade.
             <br/>- <strong>Enable Reduced Motion:</strong> On.
             <br/>- <strong>Automatically play GIFs:</strong> Off.
@@ -110,7 +110,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 5: Stream e Go Live",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configurações > Voz e Vídeo (Lá em baixo em Compartilhamento de Tela).
             <br/>- <strong>Use our latest technology to capture screen:</strong> On.
             <br/>- <strong>Use an experimental method to capture audio:</strong> On.
@@ -121,7 +121,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 6: Configurações de Janela do Windows",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Minimize o Discord para a bandeja (Tray) quando estiver jogando.
             <br/>Não deixe ele aberto no segundo monitor se não estiver lendo.
             <br/>Quando minimizado, o Electron "congela" a renderização visual, liberando recursos.
@@ -131,7 +131,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 7: Cache do Discord (Clean)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Discord acumula imagens (memes) no cache infinitamente. Pode chegar a 10GB.
             <br/>Feche o Discord.
             <br/>Vá em <code>%appdata%\\discord\\Cache</code>, <code>Code Cache</code> e <code>GPUCache</code>.
@@ -145,7 +145,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 8: Modo Streamer",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Ative "Habilitar Modo Streamer Automaticamente".
                 <br/>Isso esconde seu e-mail e discriminador (#Tag) quando o OBS ou um jogo estiver aberto, evitando vazamento de dados acidental em live.
             </p>
@@ -154,7 +154,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 9: Developer Mode (ID)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Configurações > Avançado > Modo de Desenvolvedor.
                 <br/>Ative. Isso permite clicar com botão direito em qualquer usuário/servidor e "Copiar ID". Essencial para moderadores e para reportar problemas.
             </p>
@@ -163,7 +163,7 @@ export default function DiscordGuide() {
         {
             title: "Capítulo 10: Notificações",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Desative "Ativar Notificações na Área de Trabalho".
                 <br/>Receber um pop-up do Windows no meio do clutch do CS:GO minimiza o jogo ou trava a tela. Use apenas o som de notificação, sem banner visual.
             </p>

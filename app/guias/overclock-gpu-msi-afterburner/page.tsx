@@ -40,10 +40,10 @@ export default function OverclockGuide() {
         {
             title: "O que é Overclock e a 'Loteria do Silício'",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           As fabricantes (Asus, Gigabyte, MSI) configuram suas placas de vídeo com clocks conservadores para garantir que 100% dos chips funcionem bem em qualquer condição. Isso significa que **toda** placa de vídeo tem uma margem de segurança não utilizada. O Overclock é o processo de usar essa margem para ganhar FPS de graça.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           O limite do overclock depende da "Silicon Lottery" (Loteria do Silício). Duas placas RTX 4060 idênticas podem ter limites diferentes. Uma pode aceitar +200MHz, a outra só +100MHz. Este guia ensinará como encontrar o limite **da sua** placa.
         </p>
 
@@ -51,7 +51,7 @@ export default function OverclockGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🌡️</span> Monitoramento de Segurança Inteligente
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Fazer overclock sem monitorar a temperatura é perigoso. O <strong>Voltris Optimizer</strong> inclui um overlay discreto que avisa se a temperatura da Junção (Hotspot) passar de 95°C, prevenindo degradação do chip a longo prazo.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -67,14 +67,14 @@ export default function OverclockGuide() {
         {
             title: "Core Clock vs Memory Clock: Qual importa mais?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Aumentar os dois é bom, mas eles servem propósitos diferentes.
         </p>
         
         <!-- SVG Technical Diagram: OC Impact -->
         <div class="my-8 bg-[#0F111A] p-6 rounded-xl border border-white/5 flex flex-col items-center">
             <h4 class="text-white font-bold mb-6 text-center">Anatomia da GPU: Onde Ganhar FPS</h4>
-            <svg viewBox="0 0 800 250" class="w-full h-auto text-gray-300" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 800 250" class="w-full h-auto text-gray-400" xmlns="http://www.w3.org/2000/svg">
                 <!-- Core Cluster -->
                 <g transform="translate(100, 50)">
                     <rect x="0" y="0" width="150" height="150" rx="8" fill="#1e293b" stroke="#31A8FF" stroke-width="2"/>
@@ -104,10 +104,10 @@ export default function OverclockGuide() {
         {
             title: "Passo 1: Preparação e Segurança",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
            Antes de mover qualquer slider, precisamos das ferramentas certas.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Baixe o <strong>MSI Afterburner</strong> (Site oficial: Guru3D ou MSI). Cuidado com sites fake cheios de vírus.</li>
             <li>Baixe um software de benchmark, como <strong>Unigine Heaven</strong> ou <strong>Furmark</strong>.</li>
             <li>Abra o Afterburner.</li>
@@ -120,10 +120,10 @@ export default function OverclockGuide() {
         {
             title: "Passo 2: Power Limit e Temp Limit (Seguro)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A primeira coisa a fazer é liberar a energia.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>No painel principal, encontre os sliders <strong>Power Limit (%)</strong> e <strong>Temp Limit (°C)</strong>.</li>
             <li>Arraste ambos para o <strong>MÁXIMO</strong> (direita).</li>
             <li><em>"Isso vai queimar minha placa?"</em> <strong>NÃO.</strong> A placa tem proteções internas de BIOS. Aumentar o Power Limit apenas diz à placa: "Você pode usar mais energia se precisar para manter o clock alto". Se a temperatura subir demais, ela ainda vai reduzir a velocidade (Throttling) automaticamente. É 100% seguro em placas modernas.</li>
@@ -133,10 +133,10 @@ export default function OverclockGuide() {
         {
             title: "Passo 3: Aumentando o Core Clock (FPS)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Aqui começa a tentativa e erro.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
             <li>Rode o Unigine Heaven em modo Janela (Windowed) para ver o benchmark rodando.</li>
             <li>No Afterburner, aumente o <strong>Core Clock (MHz)</strong> em +50. Clique no botão "Check" (Aplicar).</li>
             <li>Observe o benchmark por 1 minuto. Travou? Apareceram artefatos (riscos coloridos)?</li>
@@ -149,10 +149,10 @@ export default function OverclockGuide() {
         {
             title: "Passo 4: Aumentando o Memory Clock (VRAM)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A memória GDDR6 aguenta muito overclock.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Comece com <strong>+200 MHz</strong>. Aplique.</li>
             <li>Suba de 100 em 100. Muitas placas aguentam +800 ou até +1000 MHz.</li>
             <li><strong>Sinal de falha na memória:</strong> Pontos brancos/roxos piscando na tela ou texturas esticadas. Se vir isso, reduza imediatamente.</li>
@@ -168,12 +168,12 @@ export default function OverclockGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-green-400 font-bold mb-4 text-xl">Menos Calor = Mais Performance</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     As placas modernas batem no limite de temperatura rápido. O Undervolt consiste em manter o mesmo clock alto, mas usando menos voltagem. Isso faz a placa esfriar 5°C a 10°C, permitindo que ela mantenha o Boost Clock por mais tempo sem baixar a frequência.
                 </p>
             </div>
 
-            <p class="text-gray-300 mb-4 text-sm">
+            <p class="text-gray-400 mb-4 text-sm">
                 No Afterburner, aperte <code>Ctrl + F</code> para abrir a Curva de Voltagem. O objetivo é transformar a curva em uma linha reta na frequência desejada com a menor voltagem possível (ex: 1950MHz @ 0.900V em vez de 1950MHz @ 1.050V).
             </p>
             `
@@ -185,7 +185,7 @@ export default function OverclockGuide() {
             title: "Resultados Esperados (Exemplo RTX 3060)",
             content: `
             <div class="overflow-x-auto">
-                <table class="w-full text-sm text-gray-300 border-collapse">
+                <table class="w-full text-sm text-gray-400 border-collapse">
                     <thead>
                         <tr class="bg-white/5 border-b border-white/10">
                             <th class="px-4 py-3 text-left text-white font-bold">Estado</th>

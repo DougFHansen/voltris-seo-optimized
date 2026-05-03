@@ -34,7 +34,7 @@ export default function ResizableBarGuide() {
         {
             title: "O que é o Resizable BAR?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Tradicionalmente, o seu processador (CPU) só conseguia acessar pequenos blocos (256MB) da memória da sua placa de vídeo por vez. O **Resizable BAR (Re-Size BAR)** quebra esse limite, permitindo que a CPU veja e gerencie toda a VRAM da placa de vídeo simultaneamente. Em 2026, com jogos usando 12GB ou mais de texturas, esse recurso é essencial para evitar stuttering e aumentar as taxas mínimas de quadros.
         </p>
       `
@@ -42,8 +42,8 @@ export default function ResizableBarGuide() {
         {
             title: "1. Requisitos para Ativação em 2026",
             content: `
-        <p class="mb-4 text-gray-300">Não é todo PC que suporta, você precisa de:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Não é todo PC que suporta, você precisa de:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>GPU:</strong> NVIDIA GeForce RTX 30 Series ou superior / AMD Radeon RX 6000 ou superior.</li>
             <li><strong>Processador:</strong> AMD Ryzen 3000 (Zen 2) ou Intel 10ª Geração ou superior.</li>
             <li><strong>BIOS:</strong> Deve estar em modo **UEFI** (O modo CSM deve estar desativado).</li>
@@ -55,7 +55,7 @@ export default function ResizableBarGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Configuração na Placa-mãe:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Reinicie o PC e entre na BIOS (geralmente tecla Del ou F2). <br/>
                 2. Vá nas configurações avançadas de PCI ou IO. <br/>
                 3. Ative a opção <strong>Above 4G Decoding</strong>. <br/>
@@ -68,7 +68,7 @@ export default function ResizableBarGuide() {
         {
             title: "3. Como verificar se deu certo?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Check final no Windows:</strong> 
             <br/><br/>Abra o <strong>Painel de Controle da NVIDIA</strong>, clique em 'Informações do Sistema' no canto inferior esquerdo. Na lista de detalhes, procure por 'Resizable BAR'. Se disser 'Sim', você concluiu o processo com sucesso. Para usuários AMD, o software <strong>Adrenalin</strong> mostrará 'Smart Access Memory: Enabled' na aba de Desempenho.
         </p>

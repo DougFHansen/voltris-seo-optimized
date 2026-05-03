@@ -38,14 +38,14 @@ export default function GameConfigGuide() {
         {
             title: "Configuração Interna do Jogo (O Segredo)",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Não adianta ter um PC da NASA e colocar o gráfico no Ultra. Jogadores profissionais usam tudo no <strong>Mínimo (Suave)</strong> para ver os inimigos melhor (sem sombras e mato) e ter o FPS máximo.
         </p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div class="bg-orange-900/10 p-4 rounded-lg border border-orange-500/20">
                 <h4 class="text-orange-400 font-bold mb-2">Free Fire Max</h4>
-                <ul class="list-disc ml-4 text-sm text-gray-300">
+                <ul class="list-disc ml-4 text-sm text-gray-400">
                     <li><strong>Gráficos:</strong> Suave.</li>
                     <li><strong>Alto FPS:</strong> ALTO (Isso libera 60/90fps).</li>
                     <li><strong>Sombra:</strong> Desligado.</li>
@@ -54,7 +54,7 @@ export default function GameConfigGuide() {
             </div>
             <div class="bg-yellow-900/10 p-4 rounded-lg border border-yellow-500/20">
                 <h4 class="text-yellow-400 font-bold mb-2">PUBG Mobile</h4>
-                <ul class="list-disc ml-4 text-sm text-gray-300">
+                <ul class="list-disc ml-4 text-sm text-gray-400">
                     <li><strong>Gráficos:</strong> Suave (Smooth).</li>
                     <li><strong>Taxa de Quadros:</strong> 90 fps (Se disponível) ou Extremo.</li>
                     <li><strong>Estilo:</strong> Colorido (Ajuda a ver inimigos na grama).</li>
@@ -67,10 +67,10 @@ export default function GameConfigGuide() {
         {
             title: "Mecânica de Mira: Sensibilidade X e Y",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
           No BlueStacks, abra o Editor de Controles (Teclado lateral) > Clique com botão direito no ícone de "Mira" (F1).
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ul class="list-disc list-inside text-gray-400 space-y-3 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li><strong>Sensibilidade X (Horizontal):</strong> Deixe entre 1.0 e 1.5. Você quer girar rápido, mas com controle.</li>
             <li><strong>Sensibilidade Y (Vertical):</strong> Aqui está o segredo do "Capa". Deixe entre <strong>1.8 e 2.5</strong>.
                 <br/><span class="text-xs text-green-400 ml-6">Por que? O movimento de subir a mira para a cabeça exige menos movimento físico do mouse, fazendo a mira "grudar" na cabeça mais fácil.</span></li>
@@ -85,7 +85,7 @@ export default function GameConfigGuide() {
             title: "Tela Esticada (Stretch Resolution)",
             content: `
         <h4 class="text-white font-bold mb-3">Hitbox Maior = Mais Kills</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos pros usam resoluções quadradas (ex: 1280x1024) esticadas para preencher o monitor 16:9.
             <br/>Isso faz os personagens parecerem "mais gordos", facilitando acertar tiros.
             <br/><strong>Como fazer:</strong>
@@ -112,7 +112,7 @@ export default function GameConfigGuide() {
             title: "Dicas de DPI do Mouse",
             content: `
         <h4 class="text-white font-bold mb-3">800 vs 1600 DPI</h4>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Emuladores sofrem com "Pixel Skipping" se o DPI for muito baixo com sensibilidade alta no jogo.
             <br/>Recomendação: Use <strong>1000 DPI</strong> no mouse e ajuste a sensibilidade dentro do emulador para ficar confortável. Evite DPIs extremos (400 ou 4000).
         </p>

@@ -46,7 +46,7 @@ export default function BSODGuide() {
       title: "O Que É a Tela Azul da Morte e Por Que Ela Existe?",
       content: `
         <div class="space-y-6">
-          <p class="text-gray-300 leading-relaxed text-lg">
+          <p class="text-gray-400 leading-relaxed text-lg">
             A <strong>Tela Azul da Morte</strong> (Blue Screen of Death - BSOD) não é um erro aleatório. 
             É um mecanismo de proteção crítico do Windows que, desde o Windows NT 3.1 (1993), 
             interrompe completamente o sistema operacional quando detecta uma condição que pode 
@@ -57,7 +57,7 @@ export default function BSODGuide() {
             <h4 class="text-blue-400 font-bold mb-3 flex items-center gap-2">
               <span class="text-2xl">🧠</span> Por Que Você Pode Confiar Neste Guia
             </h4>
-            <p class="text-gray-300 text-sm leading-relaxed">
+            <p class="text-gray-400 text-sm leading-relaxed">
               Este guia foi escrito por técnicos da VOLTRIS com mais de 15 anos de experiência 
               em diagnóstico de hardware e análise forense de crashes. Já resolvemos mais de 
               10.000 casos de BSOD em ambientes domésticos e corporativos. Todas as técnicas 
@@ -106,7 +106,7 @@ export default function BSODGuide() {
 
           <h3 class="text-2xl font-bold text-white mt-8 mb-4">Anatomia de um BSOD: O Que Acontece em Milissegundos</h3>
           
-          <ol class="list-decimal list-inside space-y-3 text-gray-300">
+          <ol class="list-decimal list-inside space-y-3 text-gray-400">
             <li class="pl-2">
               <strong class="text-white">Detecção do Erro (0-5ms):</strong> O kernel do Windows 
               detecta uma violação crítica (acesso inválido à memória, driver travado, hardware 
@@ -137,10 +137,10 @@ export default function BSODGuide() {
 
           <div class="bg-red-900/10 p-5 rounded-xl border-l-4 border-red-500 mt-6">
             <h5 class="text-red-400 font-bold mb-2">⚠️ Mito vs Realidade</h5>
-            <p class="text-gray-300 text-sm mb-3">
+            <p class="text-gray-400 text-sm mb-3">
               <strong>MITO:</strong> "A tela azul é culpa do Windows."
             </p>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               <strong>REALIDADE:</strong> Em 95% dos casos, o BSOD é causado por drivers de 
               terceiros (NVIDIA, Realtek, etc.) ou hardware defeituoso. O Windows apenas 
               detecta e reporta o problema. É como culpar o alarme de incêndio pelo fogo.
@@ -151,7 +151,7 @@ export default function BSODGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
               <span class="text-xl">🩺</span> Voltris System Doctor
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
               Analisar códigos hexadecimais é difícil. O <strong>Voltris Optimizer</strong> possui um leitor de logs integrado que traduz o código de erro "0x0000000A" para português claro (ex: "Falha no Driver da Nvidia").
             </p>
             <a href="/voltrisoptimizer" class="inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg hover:scale-[1.03] transition-all items-center gap-2">
@@ -169,7 +169,7 @@ export default function BSODGuide() {
       title: "Decodificando os Códigos de Erro: Os 10 BSODs Mais Comuns em 2026",
       content: `
         <div class="space-y-6">
-          <p class="text-gray-300 leading-relaxed">
+          <p class="text-gray-400 leading-relaxed">
             Cada BSOD possui um código hexadecimal (ex: 0x0000000A) e um nome descritivo 
             (ex: IRQL_NOT_LESS_OR_EQUAL). Vamos analisar os 10 mais frequentes, suas causas 
             reais e soluções testadas em campo com base em 10.000+ casos atendidos.
@@ -177,7 +177,7 @@ export default function BSODGuide() {
 
           <div class="bg-gradient-to-r from-blue-900/10 to-purple-900/10 p-6 rounded-xl border border-blue-500/20 mt-6 mb-8">
             <h4 class="text-blue-400 font-bold mb-3 text-lg">📊 Estatísticas de BSODs (Dados VOLTRIS 2025)</h4>
-            <p class="text-gray-300 text-sm mb-4">
+            <p class="text-gray-400 text-sm mb-4">
               Análise de 5.000 casos atendidos em 2025:
             </p>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -237,7 +237,7 @@ export default function BSODGuide() {
               
               <div class="bg-black/30 p-4 rounded-lg mt-4">
                 <h5 class="text-yellow-400 font-semibold mb-2 text-sm">⚡ Dica Profissional:</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                   Se você tem 4 pentes de RAM e o erro é intermitente, o problema pode ser 
                   o controlador de memória da CPU (IMC). Teste com apenas 2 pentes em dual-channel. 
                   CPUs Ryzen de 1ª geração são conhecidas por IMC fraco com 4 DIMMs.
@@ -279,7 +279,7 @@ export default function BSODGuide() {
               
               <div class="bg-black/30 p-4 rounded-lg mt-4">
                 <h5 class="text-blue-400 font-semibold mb-2 text-sm">🛠️ Ferramenta Avançada:</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                   Use o <strong>Driver Verifier</strong> do Windows para forçar o driver problemático 
                   a crashar de forma controlada:
                   <br/>
@@ -324,7 +324,7 @@ export default function BSODGuide() {
               
               <div class="bg-red-900/20 p-4 rounded-lg mt-4 border border-red-500/30">
                 <h5 class="text-red-400 font-semibold mb-2 text-sm">🚨 Caso Crítico:</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                   Se você nunca fez overclock e o erro apareceu do nada, sua CPU pode estar 
                   <strong>degradando</strong>. Isso acontece com CPUs Intel de 13ª/14ª geração 
                   (Raptor Lake) que usaram tensões muito altas de fábrica. A Intel reconheceu 
@@ -367,7 +367,7 @@ export default function BSODGuide() {
               
               <div class="bg-yellow-900/20 p-4 rounded-lg mt-4 border border-yellow-500/30">
                 <h5 class="text-yellow-400 font-semibold mb-2 text-sm">💾 Backup Imediato!</h5>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                   Este erro indica que o Windows perdeu acesso a processos críticos, geralmente 
                   por falha de leitura do disco. <strong>Seu SSD pode estar morrendo</strong>. 
                   Não ignore este aviso! Faça backup AGORA antes que seja tarde demais.
@@ -386,7 +386,7 @@ export default function BSODGuide() {
       title: "Ferramentas Profissionais de Diagnóstico: BlueScreenView e WinDbg",
       content: `
         <div class="space-y-6">
-          <p class="text-gray-300 leading-relaxed">
+          <p class="text-gray-400 leading-relaxed">
             Para diagnosticar BSODs corretamente, você precisa de ferramentas que analisem 
             os arquivos Minidump. Vamos explorar as duas principais: BlueScreenView (iniciante) 
             e WinDbg (avançado).
@@ -396,7 +396,7 @@ export default function BSODGuide() {
           
           <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5">
             <h4 class="text-blue-400 font-bold mb-3">📥 Download e Instalação</h4>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2">
+            <ol class="list-decimal list-inside text-gray-400 space-y-2">
               <li>Acesse o site oficial da NirSoft: <code class="bg-white/10 px-2 py-1 rounded text-sm">nirsoft.net/utils/blue_screen_view.html</code></li>
               <li>Baixe a versão ZIP (não precisa instalar)</li>
               <li>Extraia e execute <code class="bg-white/10 px-2 py-1 rounded text-sm">BlueScreenView.exe</code></li>
@@ -448,12 +448,12 @@ export default function BSODGuide() {
 
           <div class="bg-yellow-900/20 p-5 rounded-xl border-l-4 border-yellow-500 mt-6">
             <h5 class="text-yellow-400 font-bold mb-2">⚠️ Caso Especial: ntoskrnl.exe</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Se o BlueScreenView apontar <code class="bg-white/10 px-2 py-1 rounded">ntoskrnl.exe</code> 
               como culpado, o diagnóstico fica mais complexo. Este é o kernel do Windows, e o erro 
               pode ser causado por QUALQUER driver ou hardware. Neste caso:
             </p>
-            <ol class="list-decimal list-inside text-gray-300 text-sm mt-3 space-y-1">
+            <ol class="list-decimal list-inside text-gray-400 text-sm mt-3 space-y-1">
               <li>Teste a RAM com MemTest86 (8 horas)</li>
               <li>Teste a CPU com Prime95 (2 horas)</li>
               <li>Verifique temperaturas (CPU < 90°C, GPU < 85°C)</li>
@@ -464,14 +464,14 @@ export default function BSODGuide() {
 
           <h3 class="text-2xl font-bold text-white mt-10 mb-4">WinDbg: Análise Forense Avançada</h3>
           
-          <p class="text-gray-300 mb-4">
+          <p class="text-gray-400 mb-4">
             O WinDbg (Windows Debugger) é a ferramenta oficial da Microsoft para análise 
             profunda de crashes. É complexo, mas fornece informações que o BlueScreenView não mostra.
           </p>
 
           <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5">
             <h4 class="text-purple-400 font-bold mb-3">📥 Instalação do WinDbg Preview</h4>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2">
+            <ol class="list-decimal list-inside text-gray-400 space-y-2">
               <li>Abra a Microsoft Store</li>
               <li>Pesquise por "WinDbg Preview"</li>
               <li>Clique em "Instalar" (gratuito)</li>
@@ -482,7 +482,7 @@ export default function BSODGuide() {
           <div class="bg-gradient-to-r from-[#1E1E22] to-[#0A0A0F] p-6 rounded-xl border border-purple-500/20 mt-6">
             <h4 class="text-purple-400 font-bold mb-4">🛠️ Análise Básica com WinDbg</h4>
             
-            <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <ol class="list-decimal list-inside text-gray-400 space-y-3">
               <li>
                 <strong>Abrir o Dump:</strong>
                 <br/>
@@ -509,10 +509,10 @@ export default function BSODGuide() {
 
           <div class="bg-blue-900/20 p-5 rounded-xl border border-blue-500/30 mt-6">
             <h5 class="text-blue-400 font-bold mb-2">💡 Quando Usar WinDbg?</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               Use o WinDbg quando:
             </p>
-            <ul class="list-disc list-inside text-gray-300 text-sm mt-2 space-y-1">
+            <ul class="list-disc list-inside text-gray-400 text-sm mt-2 space-y-1">
               <li>O BlueScreenView não consegue abrir o dump</li>
               <li>Você precisa ver a pilha de chamadas completa</li>
               <li>O erro é intermitente e você quer comparar múltiplos dumps</li>
@@ -526,7 +526,7 @@ export default function BSODGuide() {
       title: "Reparando o Windows: SFC, DISM e Restauração do Sistema",
       content: `
         <div class="space-y-6">
-          <p class="text-gray-300 leading-relaxed">
+          <p class="text-gray-400 leading-relaxed">
             Antes de formatar o Windows, tente reparar os arquivos de sistema corrompidos. 
             O Windows possui ferramentas integradas poderosas para isso.
           </p>
@@ -535,7 +535,7 @@ export default function BSODGuide() {
           
           <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5">
             <h4 class="text-green-400 font-bold mb-3">🔧 Como Executar o SFC</h4>
-            <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <ol class="list-decimal list-inside text-gray-400 space-y-3">
               <li>
                 Abra o Prompt de Comando como Administrador:
                 <br/>
@@ -585,7 +585,7 @@ export default function BSODGuide() {
 
           <h3 class="text-2xl font-bold text-white mt-10 mb-4">DISM: Reparação Profunda do Windows</h3>
           
-          <p class="text-gray-300 mb-4">
+          <p class="text-gray-400 mb-4">
             O DISM (Deployment Image Servicing and Management) é mais poderoso que o SFC. 
             Ele baixa arquivos novos diretamente dos servidores da Microsoft e repara a 
             imagem do Windows.
@@ -593,7 +593,7 @@ export default function BSODGuide() {
 
           <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5">
             <h4 class="text-blue-400 font-bold mb-3">🔧 Como Executar o DISM</h4>
-            <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <ol class="list-decimal list-inside text-gray-400 space-y-3">
               <li>
                 Abra o Prompt de Comando como Administrador
               </li>
@@ -631,7 +631,7 @@ export default function BSODGuide() {
 
           <div class="bg-red-900/20 p-5 rounded-xl border-l-4 border-red-500 mt-6">
             <h5 class="text-red-400 font-bold mb-2">⚠️ DISM Requer Internet</h5>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
               O comando <code class="bg-white/10 px-2 py-1 rounded">/RestoreHealth</code> baixa 
               arquivos dos servidores da Microsoft. Certifique-se de estar conectado à internet. 
               Se não tiver internet, use uma ISO do Windows como fonte offline.
@@ -640,14 +640,14 @@ export default function BSODGuide() {
 
           <h3 class="text-2xl font-bold text-white mt-10 mb-4">Restauração do Sistema: Voltar no Tempo</h3>
           
-          <p class="text-gray-300 mb-4">
+          <p class="text-gray-400 mb-4">
             Se o BSOD começou após instalar um programa ou driver, a Restauração do Sistema 
             pode reverter o Windows para um estado anterior.
           </p>
 
           <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5">
             <h4 class="text-purple-400 font-bold mb-3">🔄 Como Usar a Restauração do Sistema</h4>
-            <ol class="list-decimal list-inside text-gray-300 space-y-3">
+            <ol class="list-decimal list-inside text-gray-400 space-y-3">
               <li>
                 Pressione <kbd class="bg-white/10 px-2 py-1 rounded">Win + R</kbd> e digite:
                 <br/>
@@ -674,7 +674,7 @@ export default function BSODGuide() {
 
           <div class="bg-yellow-900/20 p-5 rounded-xl border border-yellow-500/30 mt-6">
             <h5 class="text-yellow-400 font-bold mb-2">ℹ️ Limitações da Restauração do Sistema</h5>
-            <ul class="list-disc list-inside text-gray-300 text-sm space-y-1">
+            <ul class="list-disc list-inside text-gray-400 text-sm space-y-1">
               <li>Não afeta seus arquivos pessoais (documentos, fotos)</li>
               <li>Desinstala programas instalados após o ponto de restauração</li>
               <li>Não funciona se você desativou a Restauração do Sistema</li>
@@ -690,7 +690,7 @@ export default function BSODGuide() {
     {
       title: "Tela Azul ao jogar?",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se o crash só acontece em jogos pesados, provavelmente é <strong>Fonte de Alimentação (PSU)</strong> ou <strong>Superaquecimento</strong>.
                 <br/>Monitore a temperatura. Se a GPU passar de 85°C ou CPU passar de 95°C, eles podem desligar o PC para não queimar.
                 <br/>Se as temperaturas estão boas, sua fonte pode não estar aguentando os picos de energia (Transient Spikes) da placa de vídeo.

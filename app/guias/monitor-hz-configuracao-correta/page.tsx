@@ -43,10 +43,10 @@ export default function MonitorGuide() {
         {
             title: "Introdução: Hertz não é tudo",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Muitos gamers gastam R$ 3.000 em um monitor 240Hz, conectam o cabo HDMI antigo e jogam a 60Hz por anos sem saber. Pior ainda: ativam o modo "Overdrive Extreme" achando que estão ganhando performance, mas estão criando um rastro de "Inverse Ghosting" que piora a mira.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
             Neste guia enciclopédico, vamos calibrar seu monitor com ferramentas profissionais (TestUFO) e softwares de engenharia (CRU) para garantir que cada pixel troque de cor no tempo certo.
         </p>
       `
@@ -73,7 +73,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 2: Overdrive e Ghosting (Ajuste Fino)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Monitores LCD demoram para mudar a cor do pixel (GtG - Gray to Gray). O "Overdrive" aplica uma voltagem extra para acelerar isso.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -83,14 +83,14 @@ export default function MonitorGuide() {
             </div>
             <div class="bg-emerald-900/40 p-3 rounded border border-emerald-500">
                 <h5 class="text-emerald-400 font-bold text-sm">Overdrive: Normal/Fast</h5>
-                <p class="text-gray-300 text-xs"><strong>Ponto Doce.</strong> Nitidez boa sem artefatos.</p>
+                <p class="text-gray-400 text-xs"><strong>Ponto Doce.</strong> Nitidez boa sem artefatos.</p>
             </div>
             <div class="bg-red-900/40 p-3 rounded border border-red-500">
                 <h5 class="text-red-400 font-bold text-sm">Overdrive: Extreme</h5>
-                <p class="text-gray-300 text-xs text-red-300"><strong>PERIGO.</strong> Causa "Inverse Ghosting" (Corona). Um rastro branco brilhante aparece atrás dos objetos. Piora a precisão em FPS.</p>
+                <p class="text-gray-400 text-xs text-red-300"><strong>PERIGO.</strong> Causa "Inverse Ghosting" (Corona). Um rastro branco brilhante aparece atrás dos objetos. Piora a precisão em FPS.</p>
             </div>
         </div>
-        <p class="mt-4 text-gray-300 text-sm">
+        <p class="mt-4 text-gray-400 text-sm">
             Vá no menu do monitor e teste as opções "Trace Free", "Response Time" ou "Overdrive" enquanto olha o site TestUFO. Escolha a que deixa o OVNI mais nítido sem criar rastro branco.
         </p>
       `
@@ -98,15 +98,15 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 3: Strobing (DyAc, ELMB, ULMB)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A tecnologia secreta dos Pros de CS2. O monitor pisca a luz de fundo (backlight) preto entre cada frame para limpar a persistência de visão na sua retina.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li><strong>BenQ:</strong> DyAc / DyAc+ (O melhor do mercado).</li>
             <li><strong>ASUS:</strong> ELMB (Extreme Low Motion Blur).</li>
             <li><strong>Nvidia:</strong> ULMB 2 (Ultra Low Motion Blur).</li>
         </ul>
-        <p class="mt-2 text-gray-300 text-sm bg-blue-900/20 p-3 rounded">
+        <p class="mt-2 text-gray-400 text-sm bg-blue-900/20 p-3 rounded">
             <strong>Veredito:</strong> LIGUE para CS, Valorant e R6. A imagem fica um pouco mais escura, mas a clareza de movimento é CRT-Level (como monitores de tubo antigos). Para jogos Single Player, desligue, pois pode causar dor de cabeça (PWM flickering).
         </p>
       `
@@ -114,11 +114,11 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 4: Tecnologias de Painel (TN vs IPS vs OLED)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Qual a diferença real em 2026?
         </p>
         <table class="w-full text-sm text-left text-gray-400">
-            <thead class="text-xs text-gray-200 uppercase bg-gray-800">
+            <thead class="text-xs text-gray-400 uppercase bg-gray-800">
                 <tr>
                     <th class="px-4 py-2">Painel</th>
                     <th class="px-4 py-2">Velocidade</th>
@@ -157,10 +157,10 @@ export default function MonitorGuide() {
             content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
             <h4 class="text-orange-400 font-bold mb-4 text-xl">Custom Resolution Utility (Hacking)</h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Você pode forçar seu monitor de 60Hz para 75Hz, ou 144Hz para 165Hz. É seguro (o monitor apenas mostra "Out of Range" se não aguentar).
             </p>
-            <ol class="list-decimal list-inside text-gray-300 text-sm space-y-2">
+            <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
                 <li>Baixe o <strong>CRU (Custom Resolution Utility)</strong>.</li>
                 <li>Abra, selecione seu monitor.</li>
                 <li>Em "Detailed Resolutions", clique em Edit.</li>
@@ -177,7 +177,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 6: Calibração de Cores (ICC Profiles)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Baixar um perfil ICC do site "Rtings" ou "TFTCentral" para seu modelo específico pode corrigir o tom amarelado/azulado de fábrica.
             <br/>Para instalar: Digite "Gerenciamento de Cores" no Windows > Adicionar > Selecione o arquivo .icm > Definir como Perfil Padrão.
         </p>
@@ -186,7 +186,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 7: Cabos e Bandwidth",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Por que usar DisplayPort?
             <br/>- HDMI 1.4 (Comum): Max 144Hz em 1080p.
             <br/>- HDMI 2.0: Max 240Hz em 1080p.
@@ -198,7 +198,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 8: Dual Monitor Setup (O Mito)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <em>"Ter um monitor 144Hz e um 60Hz buga o sistema?"</em>
             <br/>Antigamente (Windows 7/10 antigo), sim. O DWM travava o Hz do monitor rápido para 60Hz se tivesse animação no monitor lento (ex: OBS/Twitch).
             <br/>No <strong>Windows 10 (20H2+) e Windows 11</strong>, isso foi corrigido com o "Multiplane Overlay". Você pode rodar Hz misturados sem problemas hoje em dia. Apenas garanta que o jogo esteja em "Tela Cheia Exclusiva" ou "Borderless Otimizado".
@@ -208,7 +208,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 9: HDR no Windows",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A menos que você tenha um monitor <strong>OLED</strong> ou <strong>Mini-LED</strong> caro (R$ 5.000+), <strong>DESLIGUE O HDR</strong>.
             <br/>Monitores IPS/VA "HDR400" comuns não têm brilho suficiente nem Local Dimming. Ao ligar o HDR, o Windows lava as cores e deixa o preto cinza. HDR barato é pior que SDR bem calibrado.
         </p>
@@ -217,7 +217,7 @@ export default function MonitorGuide() {
         {
             title: "Capítulo 10: Cuidados e Limpeza",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nunca use álcool, Veja ou limpa-vidros. Isso destrói a camada anti-reflexo do monitor (a tela fica manchada para sempre).
             <br/><strong>Método Correto:</strong> Pano de microfibra limpo + Água Destilada (ou filtrada). Umedeça o pano (não encharque), passe suavemente. Use outro pano seco para finalizar.
         </p>
@@ -229,7 +229,7 @@ export default function MonitorGuide() {
         {
             title: "Voltris Display Tools",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O <strong>Voltris Optimizer</strong> inclui uma ferramenta de "Monitor Diagnostics" que verifica Dead Pixels, Backlight Bleed e uniformidade de cor, além de aplicar perfis de cores otimizados para eSports automaticamente.
             </p>
             `

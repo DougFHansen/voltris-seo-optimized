@@ -43,7 +43,7 @@ export default function DefenderGuide() {
         {
             title: "Introdução: O MsMpEng.exe",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O processo <strong>Antimalware Service Executable</strong> (MsMpEng.exe) é o motor do Defender. Ele verifica arquivos em tempo real. O problema: quando você abre um jogo de 100GB, ele tenta verificar milhares de arquivos .dll e texturas, causando uso de disco e CPU extremos.
         </p>
       `
@@ -71,14 +71,14 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 2: Limitando o uso de CPU (PowerShell)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Você pode dizer ao Defender para nunca usar mais que X% da sua CPU durante um scan.
             <br/>Abra o PowerShell como Admin e digite:
         </p>
         <code class="block bg-black/50 p-3 rounded text-green-400 font-mono text-sm mb-3">
             Set-MpPreference -ScanAvgCPULoadFactor 20
         </code>
-        <p class="text-gray-300 text-sm">
+        <p class="text-gray-400 text-sm">
             Isso limita o uso a 20%. O scan vai demorar mais, mas seu PC não vai travar enquanto ele acontece. O padrão é 50%.
         </p>
       `
@@ -86,7 +86,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 3: Isolamento de Núcleo (Memory Integrity)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Segurança do Dispositivo > Isolamento de Núcleo > Integridade da Memória.
             <br/>- <strong>CPUs Novas (12th Gen+):</strong> Pode deixar ligado (Impacto mínimo).
             <br/>- <strong>CPUs Antigas (i7 7700 pra baixo):</strong> <span class="text-emerald-400 font-bold">DESLIGUE</span>.
@@ -100,7 +100,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 4: Agendamento de Tarefas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Às vezes o Defender decide fazer um "Scan Completo" no meio da sua partida.
             <br/>Vá no Agendador de Tarefas > Microsoft > Windows > Windows Defender.
             <br/>Nas propriedades de "Windows Defender Scheduled Scan" > Condições.
@@ -113,7 +113,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 5: Envio de Amostras Automático",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nas configurações do Defender: "Envio automático de amostra".
             <br/>Recomendação: <strong>Desativado</strong>.
             <br/>Isso envia arquivos suspeitos (como cracks ou mods de jogos) para a Microsoft analisar. Além de privacidade, isso gasta upload.
@@ -123,7 +123,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 6: Proteção contra Violação",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Mantenha a "Tamper Protection" <strong>LIGADA</strong>.
             <br/>Ela impede que vírus desativem o Defender. Não desative isso a menos que saiba muito bem o que está fazendo (ex: instalando outro Antivírus).
         </p>
@@ -132,7 +132,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 7: Exclusão de Processos",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Além de pastas, você pode excluir processos .exe.
             <br/>Adicione o processo do seu jogo (ex: <code>cs2.exe</code>).
             <br/>Isso impede que o Defender monitore o comportamento do executável em tempo real, reduzindo overhead de CPU.
@@ -145,7 +145,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 8: Modo Jogo (Game Mode)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O "Modo de Jogo" do Windows 10/11 teoricamente impede que o Windows Update e o Defender façam instalações durante jogos.
                 <br/>Mas a configuração manual de exclusões (Capítulo 1) é muito mais eficaz e garantida. Use os dois.
             </p>
@@ -154,7 +154,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 9: Defender vs Antivírus Grátis",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Defender hoje é tão bom quanto Avast/AVG e muito mais leve.
                 <br/>Antivírus de terceiros instalam "Web Shields", "Game Boosters" falsos e pop-ups de venda que pioram o desempenho.
                 <br/>Fique com o Defender otimizado + Bom senso.
@@ -164,7 +164,7 @@ export default function DefenderGuide() {
         {
             title: "Capítulo 10: O Bug do 100% Disco",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se mesmo com tudo isso o MsMpEng.exe usar 100% do disco:
                 <br/>Você pode ter um arquivo corrompido muito grande (ISO ou ZIP) que ele está travado tentando ler. Exclua a pasta de Downloads das verificações ou apague arquivos grandes antigos.
             </p>

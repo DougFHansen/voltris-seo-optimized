@@ -49,13 +49,13 @@ export default function SSDvsHDDGuide() {
         {
             title: "A Diferença Fundamental — Como Cada Um Funciona",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Para entender o porquê da diferença de velocidade, é necessário entender como cada tecnologia armazena dados fisicamente.
         </p>
         <div class="space-y-4 mb-6">
             <div class="bg-[#0A0A0F] border border-white/5 p-5 rounded-xl">
                 <h4 class="text-red-400 font-bold mb-2">🔴 HD Mecânico (HDD) — Tecnologia dos Anos 1950</h4>
-                <p class="text-gray-300 text-sm leading-relaxed">
+                <p class="text-gray-400 text-sm leading-relaxed">
                     Um HD mecânico é literalmente um disco de metal girando a 5.400 ou 7.200 RPM, com uma agulha magnética que lê e escreve dados enquanto o disco gira. O problema é que a agulha precisa se mover fisicamente até o setor correto do disco — isso causa a <strong>latência de busca</strong>, que é de 8–15 milissegundos por operação. Em uma tarefa que requer milhares de operações (carregar um jogo), esses milissegundos somam dezenas de segundos.
                 </p>
                 <div class="mt-3 flex gap-4 text-xs text-gray-500">
@@ -66,7 +66,7 @@ export default function SSDvsHDDGuide() {
             </div>
             <div class="bg-[#0A0A0F] border border-[#31A8FF]/20 p-5 rounded-xl">
                 <h4 class="text-[#31A8FF] font-bold mb-2">🔵 SSD SATA — Flash NAND sem partes móveis</h4>
-                <p class="text-gray-300 text-sm leading-relaxed">
+                <p class="text-gray-400 text-sm leading-relaxed">
                     Um SSD SATA usa chips de memória NAND Flash (o mesmo tipo das pendrives, mas muito mais rápido e confiável). Sem partes mecânicas, a latência de busca despenca para 0,05–0,1 milissegundos. A limitação do SSD SATA é o conector — a interface SATA foi projetada para HDs mecânicos e limita a velocidade de transferência em ~550 MB/s.
                 </p>
                 <div class="mt-3 flex gap-4 text-xs text-gray-500">
@@ -77,7 +77,7 @@ export default function SSDvsHDDGuide() {
             </div>
             <div class="bg-[#0A0A0F] border border-[#8B31FF]/20 p-5 rounded-xl">
                 <h4 class="text-[#8B31FF] font-bold mb-2">🟣 NVMe M.2 — Velocidade de Fórmula 1</h4>
-                <p class="text-gray-300 text-sm leading-relaxed">
+                <p class="text-gray-400 text-sm leading-relaxed">
                     O NVMe M.2 usa a mesma tecnologia NAND Flash do SSD SATA, mas conecta diretamente à placa-mãe pelo barramento PCIe, que tem capacidade de transferência muito superior ao SATA. Um NVMe PCIe 3.0 atinge 3.500 MB/s, enquanto o PCIe 4.0 chega a 7.000 MB/s — <strong>13x mais rápido que um SSD SATA e 84x mais rápido que um HD</strong>.
                 </p>
                 <div class="mt-3 flex gap-4 text-xs text-gray-500">
@@ -92,7 +92,7 @@ export default function SSDvsHDDGuide() {
         {
             title: "Benchmarks Reais — O Que os Números Significam na Prática",
             content: `
-        <p class="mb-4 text-gray-300 leading-relaxed">
+        <p class="mb-4 text-gray-400 leading-relaxed">
           Números de velocidade de transferência impressionam, mas o que realmente importa para o usuário comum é o impacto no dia a dia. Veja dados reais coletados pela equipe Voltris.
         </p>
         <h4 class="text-white font-bold mb-4">⏱️ Tempo de Boot do Windows 11 (Benchmark Voltris):</h4>
@@ -142,19 +142,19 @@ export default function SSDvsHDDGuide() {
                 </thead>
                 <tbody>
                     <tr class="border-t border-white/5">
-                        <td class="p-3 text-gray-300">GTA V (Carregamento Inicial)</td>
+                        <td class="p-3 text-gray-400">GTA V (Carregamento Inicial)</td>
                         <td class="p-3 text-red-400 text-center">~5 min</td>
                         <td class="p-3 text-yellow-400 text-center">~1:30 min</td>
                         <td class="p-3 text-emerald-400 text-center">~55 seg</td>
                     </tr>
                     <tr class="border-t border-white/5">
-                        <td class="p-3 text-gray-300">Cyberpunk 2077 (Load Save)</td>
+                        <td class="p-3 text-gray-400">Cyberpunk 2077 (Load Save)</td>
                         <td class="p-3 text-red-400 text-center">~2:30 min</td>
                         <td class="p-3 text-yellow-400 text-center">~50 seg</td>
                         <td class="p-3 text-emerald-400 text-center">~25 seg</td>
                     </tr>
                     <tr class="border-t border-white/5">
-                        <td class="p-3 text-gray-300">Call of Duty Warzone (Match)</td>
+                        <td class="p-3 text-gray-400">Call of Duty Warzone (Match)</td>
                         <td class="p-3 text-red-400 text-center">~90 seg</td>
                         <td class="p-3 text-yellow-400 text-center">~30 seg</td>
                         <td class="p-3 text-emerald-400 text-center">~18 seg</td>
@@ -172,10 +172,10 @@ export default function SSDvsHDDGuide() {
                 <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                     🎮 Para Jogos — Recomendação
                 </h4>
-                <p class="text-gray-300 text-sm mb-3">
+                <p class="text-gray-400 text-sm mb-3">
                     <strong class="text-white">Sistema Operacional + Jogos Principais:</strong> NVMe M.2 PCIe 3.0 ou 4.0 com 1TB mínimo (R$ 350–600). Em 2026, todos os jogos AAA recomendam SSD no mínimo, e alguns exigem NVMe para streaming de texturas adequado.
                 </p>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     <strong class="text-white">Armazenamento de Jogos Secundários:</strong> SSD SATA 2TB é um excelente custo-benefício para guardar jogos que você joga menos frequentemente.
                 </p>
             </div>
@@ -183,7 +183,7 @@ export default function SSDvsHDDGuide() {
                 <h4 class="text-[#8B31FF] font-bold mb-3 flex items-center gap-2">
                     💼 Para Trabalho / Edição de Vídeo
                 </h4>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     NVMe PCIe 4.0 de alta velocidade faz diferença real ao exportar vídeos ou trabalhar com arquivos RAW pesados. Para edição 4K, um Samsung 990 Pro ou SK Hynix Platinum P41 são escolhas sólidas. O HD pode ser usado para arquivamento (backups frios).
                 </p>
             </div>
@@ -191,7 +191,7 @@ export default function SSDvsHDDGuide() {
                 <h4 class="text-emerald-400 font-bold mb-3 flex items-center gap-2">
                     💰 Para Usuário Comum / Orçamento Limitado
                 </h4>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     Um SSD SATA 480GB/1TB para o sistema operacional já transforma completamente a experiência versus um HD. É o upgrade com melhor custo-benefício em 2026 — o impacto percebido é maior do que trocar de processador em muitos casos.
                 </p>
             </div>
@@ -202,7 +202,7 @@ export default function SSDvsHDDGuide() {
             title: "Como Verificar Compatibilidade e Fazer o Upgrade",
             content: `
         <h4 class="text-white font-bold mb-4">Verificando suporte a NVMe na sua placa-mãe:</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 mb-6">
             <li>Pause e anote o modelo da sua placa-mãe (está na caixa, ou no ID do equipamento: Win+Pause → Sistema).</li>
             <li>Pesquise o modelo no site do fabricante (ASUS, MSI, Gigabyte, ASRock).</li>
             <li>Procure por "M.2 Slot" nas especificações. Se dizer "M.2 PCIe NVMe", você pode instalar um NVMe.</li>
@@ -210,10 +210,10 @@ export default function SSDvsHDDGuide() {
         </ol>
         <div class="bg-[#0A0A0F] border border-yellow-500/20 p-5 rounded-xl mb-6">
             <h5 class="text-yellow-400 font-bold mb-2">⚠️ Cuidado: M.2 ≠ NVMe automaticamente</h5>
-            <p class="text-gray-300 text-sm">O slot M.2 é o conector físico. O protocolo pode ser SATA ou NVMe. Um SSD M.2 SATA é tão rápido quanto um SSD SATA 2.5" — não mais. Certifique-se de que o slot é PCIe/NVMe, não apenas M.2.</p>
+            <p class="text-gray-400 text-sm">O slot M.2 é o conector físico. O protocolo pode ser SATA ou NVMe. Um SSD M.2 SATA é tão rápido quanto um SSD SATA 2.5" — não mais. Certifique-se de que o slot é PCIe/NVMe, não apenas M.2.</p>
         </div>
         <h4 class="text-white font-bold mb-4">Como clonar o HD antigo para o SSD sem reinstalar Windows:</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4">
+        <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4">
             <li>Instale o novo SSD (mantendo o HD antigo conectado temporariamente).</li>
             <li>Baixe o <strong>Macrium Reflect Free</strong> ou <strong>MiniTool Partition Wizard Free</strong>.</li>
             <li>Use a função "Clone Disk" para copiar todo o sistema operacional para o SSD.</li>

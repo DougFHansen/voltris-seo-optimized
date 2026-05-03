@@ -40,7 +40,7 @@ export default function RAMGuide() {
         {
             title: "O Bug do Standby List",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Windows tem um gerenciamento de memória agressivo: ele mantém arquivos fechados na memória RAM ("Em Espera" ou Standby) caso você queira abri-los de novo. A teoria é boa. Na prática, quando um jogo pede RAM livre, o Windows às vezes demora para liberar essa memória em espera, causando uma micro-travada (Stutter).
         </p>
 
@@ -48,7 +48,7 @@ export default function RAMGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">🧠</span> Smart RAM Voltris
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Programas de "Limpar RAM" de 2010 são fakes. O <strong>Voltris Optimizer</strong> usa a mesma tecnologia do ISLC, monitorando a Standby List silenciosamente. Se ela crescer demais durante um jogo, o Voltris a esvazia instantaneamente sem tocar na memória ativa do jogo, prevenindo stutters.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,10 +64,10 @@ export default function RAMGuide() {
         {
             title: "Solução: ISLC (Intelligent Standby List Cleaner)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Ferramenta gratuita criada pelo mesmo desenvolvedor do DDU.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm">
             <li>Baixe o <strong>ISLC</strong>.</li>
             <li>Marque "Start ISLC Minimized" e "Launch ISLC on user logon".</li>
             <li>Configuração sugerida:
@@ -84,10 +84,10 @@ export default function RAMGuide() {
         {
             title: "Navegadores: O ladrão de RAM",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Você joga com o Chrome/Edge aberto tocando música?
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Vá nas Configurações do Navegador > Desempenho.</li>
             <li>Ative a <strong>"Economia de Memória"</strong>.</li>
             <li>Isso congela abas inativas, liberando até 2GB de RAM para o seu jogo.</li>
@@ -102,10 +102,10 @@ export default function RAMGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-white font-bold mb-4 text-xl">NÃO DESATIVE!</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Um mito antigo diz para desativar a memória virtual se tiver muita RAM. Errado. Alguns jogos e o próprio Windows PRECISAM do pagefile para alocar endereços de memória, mesmo que não usem. Se desativar, jogos como Cyberpunk 2077 podem crashar no boot.
                 </p>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     <strong>Recomendação:</strong> Deixe em "Gerenciado pelo Sistema" no seu SSD mais rápido. Não coloque em HD mecânico, pois causa lentidão.
                 </p>
             </div>
@@ -117,7 +117,7 @@ export default function RAMGuide() {
         {
             title: "Diagnóstico com RAMMap",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Quer ver exatamente o que está na Standby List? Baixe o <strong>RAMMap</strong> da Microsoft Sysinternals. Ele mostra graficamente cada arquivo cacheado. É ótimo para descobrir qual programa está vazando memória (Memory Leak).
             </p>
             `

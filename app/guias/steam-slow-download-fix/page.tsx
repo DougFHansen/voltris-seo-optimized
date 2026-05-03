@@ -43,7 +43,7 @@ export default function SteamGuide() {
         {
             title: "Introdução: Otimizando o Cliente",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O cliente da Steam atualizou e ficou mais pesado (agora usa Chromium na biblioteca). Além disso, downloads lentos e "Shader Pre-Caching" infinito são problemas comuns. Vamos resolver.
         </p>
       `
@@ -72,7 +72,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 2: Steam Overlay e FPS",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configurações > Em Jogo > "Ativar o Painel Steam dentro do jogo".
             <br/><strong>Recomendação:</strong> Desligue para jogos competitivos (CS2, Apex). O overlay consome VRAM e causa input lag.
             <br/>Se você precisa do Chat da Steam, use o shift+tab, mas saiba que custa FPS.
@@ -82,7 +82,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 3: Shader Pre-Caching (A Polêmica)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configurações > Downloads > Shader Pre-Caching.
             <br/>- <strong>Ativar? SIM.</strong>
             <br/>Isso permite que a Steam baixe shaders compilados para sua GPU antes do jogo abrir. Isso <strong>ELIMINA</strong> stutters na primeira vez que você joga jogos DX12/Vulkan (Elden Ring, CS2, Apex).
@@ -96,7 +96,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 4: Biblioteca Leve (Low Performance Mode)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Configurações > Biblioteca.
             <br/>- <strong>Modo de largura de banda baixa:</strong> Ative.
             <br/>- <strong>Modo de baixo desempenho:</strong> Ative.
@@ -107,7 +107,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 5: Steam Broadcasting e Remote Play",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos não sabem, mas a Steam fica pronta para transmitir seu jogo.
             <br/>- Configurações > Remote Play > Desativar "Enable Remote Play".
             <br/>- Configurações > Broadcasting > "Privacy setting" -> Disabled.
@@ -118,7 +118,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 6: Friends & Chat (Voz)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Abra a lista de amigos (Chat) > Engrenagem.
             <br/>- Voice: Desative "Gain Control" e "Echo Cancellation" se você já usa isso no software do microfone ou Discord. O processamento de áudio da Steam é ruim.
             <br/>- Ative "Don't sign into friends when Steam starts" se quiser focar.
@@ -128,7 +128,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 7: Launch Options (Comandos Globais)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Você pode criar um atalho da Steam na área de trabalho com o argumento:
             <br/><code>-no-browser +open steam://open/minigameslist</code>
             <br/>Isso abre a Steam em um modo ultra-minimalista, sem a loja, sem o navegador web, usando apenas 50MB de RAM. Perfeito para PCs muito fracos (4GB RAM) que só querem abrir o jogo.
@@ -141,7 +141,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 8: Verificação de Integridade",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se um jogo específico está travando:
                 <br/>Biblioteca > Botão Direito no Jogo > Propriedades > Arquivos Instalados > "Verificar integridade dos arquivos".
                 <br/>Isso conserta texturas corrompidas sem precisar baixar o jogo todo de novo. Frequente em updates do PUBG/Apex.
@@ -151,7 +151,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 9: Movendo Jogos (SSD)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Comprou um SSD novo?
                 <br/>Configurações > Armazenamento.
                 <br/>Adicione o novo drive. Selecione os jogos no drive antigo e clique em "Mover". A Steam transfere tudo corretamente. Mova seus jogos competitivos para o SSD.
@@ -161,7 +161,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 10: Notificações",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Desative "Quando um amigo entrar num jogo" e "Quando um amigo ficar online".
                 <br/>Esses pop-ups causam micro-travadas em alguns jogos fullscreen.
             </p>

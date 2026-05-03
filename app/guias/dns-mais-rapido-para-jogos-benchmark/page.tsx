@@ -41,7 +41,7 @@ export default function DNSGuide() {
         {
             title: "Introdução: O que o DNS faz?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           DNS é a agenda telefônica da internet. Ele traduz "valorant.com" para o IP "104.16.1.1". Um DNS lento demora para achar o servidor. Um DNS rápido conecta instantaneamente.
         </p>
       `
@@ -66,7 +66,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 2: Como Mudar no Windows",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Painel de Controle > Rede e Internet > Central de Rede > Alterar as configurações do adaptador.
             <br/>Botão direito na sua Ethernet > Propriedades.
             <br/>Clique em <strong>Protocolo IP Versão 4 (TCP/IPv4)</strong> > Propriedades.
@@ -77,7 +77,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 3: DNS IPv6 (Importante)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitos esquecem do IPv6. Se seu provedor usa IPv6, o jogo pode priorizar ele.
             <br/>Configure também o Protocolo IP Versão 6 (TCP/IPv6).
             <br/>- Cloudflare IPv6: <code>2606:4700:4700::1111</code>
@@ -91,7 +91,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 4: Flush DNS (Limpar Cache)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Depois de trocar, limpe o cache antigo para garantir que o novo funcione.
             <br/>Abra o CMD (Prompt de Comando) como Administrador.
             <br/>Digite: <code>ipconfig /flushdns</code>
@@ -102,7 +102,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 5: DNS resolve Ping Alto?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Mito:</strong> DNS baixa ping DENTRO da partida.
             <br/><strong>Verdade:</strong> DNS só atua no momento da CONEXÃO (Login, Matchmaking). Depois que o jogo conecta no IP do servidor, o DNS não faz mais nada.
             <br/>Porém, um DNS ruim pode falhar em te conectar ao servidor mais próximo, jogando você num servidor longe (ping alto). Indiretamente, ajuda.
@@ -112,7 +112,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 6: DNS Over HTTPS (DoH)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Navegadores modernos (Chrome/Edge) usam DNS seguro criptografado.
             <br/>Isso é ótimo para privacidade, mas adiciona alguns milissegundos de latência.
             <br/>Para jogos, o DNS tradicional UDP (porta 53) ainda é o mais rápido (raw speed).
@@ -122,7 +122,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 7: DNS Filter (Bloqueio de Ads)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Servidores como o <strong>AdGuard DNS</strong> bloqueiam anúncios na rede toda.
             <br/>Isso economiza banda, mas pode impedir que alguns jogos free-to-play abram suas lojas ou vídeos de recompensa. Use com cautela.
         </p>
@@ -134,7 +134,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 8: Roteador",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O ideal é configurar o DNS direto no <strong>Roteador</strong>.
                 <br/>Assim, seu PC, PS5, Celular e TV Smart usam o DNS rápido automaticamente sem precisar configurar um por um.
             </p>
@@ -143,7 +143,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 9: ISP DNS (Provedor)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O DNS da sua operadora (Vivo/Claro) geralmente é rápido (pois está na rede interna deles), mas cai muito e censura sites. Além de venderem seu histórico de navegação. Evite.
             </p>
             `
@@ -151,7 +151,7 @@ export default function DNSGuide() {
         {
             title: "Capítulo 10: ExitLag e DNS",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Programas como ExitLag ignoram seu DNS do Windows e usam o sistema de resolução próprio deles para encontrar as rotas de jogo.
             </p>
             `

@@ -34,7 +34,7 @@ export default function PackageManagementGuide() {
     {
       title: "O que é um Gerenciador de Pacotes?",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em vez de abrir o Chrome, pesquisar "NVIDIA drivers", entrar no site, baixar o .exe e clicar 10 vezes em "Avançar", você pode simplesmente digitar um comando. O **Winget** é a loja da Microsoft em forma de linha de comando. Ele é seguro, rápido e automatiza a instalação de mais de 4.000 programas populares.
         </p>
       `
@@ -42,8 +42,8 @@ export default function PackageManagementGuide() {
     {
       title: "1. Comandos Básicos do Winget",
       content: `
-        <p class="mb-4 text-gray-300">Abra o PowerShell ou o CMD e teste estes comandos:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Abra o PowerShell ou o CMD e teste estes comandos:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><code>winget search [nome]</code>: Procura se o programa está disponível (ex: <code>winget search discord</code>).</li>
             <li><code>winget install [nome]</code>: Baixa e instala o programa silenciosamente.</li>
             <li><code>winget list</code>: Mostra todos os programas instalados no seu PC.</li>
@@ -56,7 +56,7 @@ export default function PackageManagementGuide() {
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A rotina perfeita:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Uma vez por semana, abra o terminal e digite: <br/>
                 <code>winget upgrade --all</code> <br/><br/>
                 O Windows vai verificar todos os seus programas (Chrome, Spotify, Steam, Drivers) e atualizar todos eles automaticamente para a versão mais segura, sem que você precise abrir um por um.
@@ -67,7 +67,7 @@ export default function PackageManagementGuide() {
     {
       title: "3. Winget.run: Interface Web",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você não gosta de decorar nomes, acesse o site <strong>winget.run</strong>. Lá você pode selecionar todos os programas que deseja (como se estivesse montando um carrinho de compras) e o site vai gerar um único comando para você colar no seu terminal. É a forma mais rápida de configurar um PC recém-formatado.
         </p>
       `

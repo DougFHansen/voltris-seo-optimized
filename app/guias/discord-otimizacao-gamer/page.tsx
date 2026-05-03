@@ -55,10 +55,10 @@ export default function DiscordOtimizacaoGamerGuide() {
         {
             title: "Por Que Discord é Essencial para Gamers?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O <strong>Discord</strong> tornou-se a <strong>plataforma de comunicação padrão</strong> para gamers em 2026. Com <strong>22.2M impressões mensais</strong> de busca, é a ferramenta preferida para <strong>coordenação de equipe</strong>, <strong>comunicação durante jogos</strong> e <strong>formação de comunidades</strong>.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Configurar o Discord corretamente pode <strong>melhorar drasticamente sua experiência</strong> com <strong>áudio cristalino</strong>, <strong>notificações inteligentes</strong>, <strong>integração perfeita com jogos</strong> e <strong>performance otimizada</strong>.
         </p>
         `
@@ -66,7 +66,7 @@ export default function DiscordOtimizacaoGamerGuide() {
         {
             title: "Configurações Essenciais de Áudio",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O áudio é o componente mais importante do Discord para gamers. Configure para <strong>qualidade profissional</strong>:
         </p>
         <div class="bg-blue-900/20 rounded-lg p-6 mb-6">
@@ -74,7 +74,7 @@ export default function DiscordOtimizacaoGamerGuide() {
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-300 mb-2">🎛️ Configurações de Entrada:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Dispositivo de Entrada:</strong> Seu microfone principal</li>
                 <li><strong>Modo de Entrada:</strong> Voice Activity (auto-detecção)</li>
                 <li><strong>Sensibilidade:</strong> -50dB a -10dB (ajuste fino)</li>
@@ -84,7 +84,7 @@ export default function DiscordOtimizacaoGamerGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-300 mb-2">🔊 Configurações de Saída:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Dispositivo de Saída:</strong> Fones ou caixas</li>
                 <li><strong>Modo de Saída:</strong> Automático (ajuste inteligente)</li>
                 <li><strong>Atenuação:</strong> 80% (evita sobrecarga)</li>
@@ -99,7 +99,7 @@ export default function DiscordOtimizacaoGamerGuide() {
         {
             title: "Overlay e Performance",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O overlay do Discord pode <strong>impactar performance</strong> se não configurado corretamente. Otimize para <strong>máximo FPS</strong>:
         </p>
         <div class="bg-purple-900/20 rounded-lg p-6 mb-6">
@@ -107,7 +107,7 @@ export default function DiscordOtimizacaoGamerGuide() {
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-300 mb-2">⚡ Performance:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Overlay In-Game:</strong> Ativado (essencial)</li>
                 <li><strong>Exibição de Notificações:</strong> Somente importantes</li>
                 <li><strong>Atividade de Jogo:</strong> Ativada (integração)</li>
@@ -117,7 +117,7 @@ export default function DiscordOtimizacaoGamerGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-300 mb-2">🎨 Aparência:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Posição:</strong> Canto inferior esquerdo</li>
                 <li><strong>Zoom:</strong> 100% (tamanho padrão)</li>
                 <li><strong>Opacidade:</strong> 80% (visível mas não intrusivo)</li>
@@ -132,7 +132,7 @@ export default function DiscordOtimizacaoGamerGuide() {
         {
             title: "Notificações Inteligentes",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Configure as notificações para <strong>nunca perder informações importantes</strong> durante jogos:
         </p>
         <div class="bg-green-900/20 rounded-lg p-6 mb-6">
@@ -140,7 +140,7 @@ export default function DiscordOtimizacaoGamerGuide() {
           <div class="space-y-4">
             <div class="bg-gray-800 rounded p-4 mb-4">
               <h4 class="text-lg font-semibold text-green-300 mb-2">📱 Notificações Desktop:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Mostrar Notificações:</strong> Ativado</li>
                 <li><strong>Posição:</strong> Canto inferior direito</li>
                 <li><strong>Duração:</strong> 5 segundos (suficiente para ler)</li>
@@ -150,7 +150,7 @@ export default function DiscordOtimizacaoGamerGuide() {
             </div>
             <div class="bg-gray-800 rounded p-4 mb-4">
               <h4 class="text-lg font-semibold text-green-300 mb-2">🎮 Notificações In-Game:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Mensagens Diretas:</strong> Apenas de amigos</li>
                 <li><strong>Menções:</strong> Ativadas (quando te mencionam)</li>
                 <li><strong>Convites:</strong> Ativados (para canais)</li>
@@ -165,7 +165,7 @@ export default function DiscordOtimizacaoGamerGuide() {
         {
             title: "Integração com Jogos",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A <strong>Atividade de Jogo</strong> do Discord oferece <strong>integração perfeita</strong> com seus jogos favoritos:
         </p>
         <div class="bg-yellow-900/20 rounded-lg p-6 mb-6">
@@ -173,7 +173,7 @@ export default function DiscordOtimizacaoGamerGuide() {
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-yellow-300 mb-2">🕹️ Jogos Populares:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Valorant:</strong> Detecção automática</li>
                 <li><strong>CS2:</strong> Status de partida em tempo real</li>
                 <li><strong>Fortnite:</strong> Modo de jogo atual</li>
@@ -183,7 +183,7 @@ export default function DiscordOtimizacaoGamerGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-yellow-300 mb-2">⚙️ Configurações Avançadas:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Exibir Tempo Decorrido:</strong> Ativado</li>
                 <li><strong>Detecção de Inatividade:</strong> 5 minutos</li>
                 <li><strong>Remover ID de Jogo:</strong> Automático</li>
@@ -198,7 +198,7 @@ export default function DiscordOtimizacaoGamerGuide() {
         {
             title: "Servidores e Comunidades",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Crie ou encontre <strong>servidores otimizados</strong> para sua comunidade:
         </p>
         <div class="bg-red-900/20 rounded-lg p-6 mb-6">
@@ -206,7 +206,7 @@ export default function DiscordOtimizacaoGamerGuide() {
           <div class="space-y-4">
             <div class="bg-gray-800 rounded p-4 mb-4">
               <h4 class="text-lg font-semibold text-red-300 mb-2">🎮 Servidores de Jogos:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Boost de Servidor:</strong> 2-3 níveis (para comunidades)</li>
                 <li><strong>Cargos Personalizados:</strong> Gamer, VIP, Moderador</li>
                 <li><strong>Bots de Moderação:</strong> MEE6, Dyno, Carl-bot</li>
@@ -216,7 +216,7 @@ export default function DiscordOtimizacaoGamerGuide() {
             </div>
             <div class="bg-gray-800 rounded p-4 mb-4">
               <h4 class="text-lg font-semibold text-red-300 mb-2">🛡️ Segurança:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Verificação de 2 Fatores:</strong> Ativada</li>
                 <li><strong>Capatcha:</strong> reCAPTCHA ou hCaptcha</li>
                 <li><strong>Filtros de Palavras:</strong> Anti-spam configurado</li>
@@ -231,15 +231,15 @@ export default function DiscordOtimizacaoGamerGuide() {
         {
             title: "Dicas Profissionais",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Dicas avançadas para <strong>dominar o Discord</strong> como profissional:
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-gray-400">🚀 Dicas de Otimização:</h3>
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
-              <h4 class="text-lg font-semibold text-gray-300 mb-2">⚡ Performance:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <h4 class="text-lg font-semibold text-gray-400 mb-2">⚡ Performance:</h4>
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Hardware Acceleration:</strong> Ativada</li>
                 <li><strong>Cache Limpo:</strong> Limpeza semanal</li>
                 <li><strong>Desativar Animações:</strong> Economiza recursos</li>
@@ -248,8 +248,8 @@ export default function DiscordOtimizacaoGamerGuide() {
               </ul>
             </div>
             <div class="space-y-4">
-              <h4 class="text-lg font-semibold text-gray-300 mb-2">🎤️ Áudio Profissional:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <h4 class="text-lg font-semibold text-gray-400 mb-2">🎤️ Áudio Profissional:</h4>
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Compressão de Áudio:</strong> Opus 128kbps</li>
                 <li><strong>Gatekeeper de Voz:</strong> Ativado (qualidade)</li>
                 <li><strong>Echo Cancellation:</strong> Avançado</li>

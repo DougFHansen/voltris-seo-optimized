@@ -41,7 +41,7 @@ export default function DuckStationGuide() {
         {
             title: "Introdução: Adeus ePSXe",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O ePSXe usa plugins antigos de 2010. O DuckStation é um emulador moderno, "All-in-One", que não precisa baixar plugins de vídeo/áudio separados. E tem o recurso matador: PGXP.
         </p>
       `
@@ -65,7 +65,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 2: Upscaling (4K)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Graphics Settings > Enhancement settings.
             <br/>Internal Resolution Scale: 4x (1080p) ou 9x (4K).
             <br/>Mesmo em PCs fracos, 1080p roda liso.
@@ -76,7 +76,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 3: Compressão .CHD",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Jogos de PS1 em .BIN/.CUE ocupam 700MB.
             <br/>O DuckStation suporta o formato <strong>.CHD (Compressed Hunks of Data)</strong>.
             <br/>Converte o jogo para ~300MB sem perder nada de qualidade.
@@ -90,7 +90,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 4: Widescreen Hack",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Fazer jogos 4:3 rodarem em 16:9.
             <br/>O DuckStation faz isso renderizando mais cenário nas laterais.
             <br/>Aviso: Em muitos jogos (Crash Bandicoot), os inimigos nas bordas "brotam" do nada (Pop-in) porque o jogo foi programado para não desenhar o que estava fora do 4:3. Se incomodar, desative.
@@ -100,7 +100,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 5: Overclock da CPU Emulada",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Jogos como Driver 2 rodavam a 20fps no PS1 original.
             <br/>Vá em Console Settings > CPU Emulation.
             <br/>Aumente o "Emulated CPU Clock Speed" para 500% ou 600%.
@@ -111,7 +111,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 6: Texture Filtering (xBR)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você gosta do visual "Pixel Art", deixe Texture Filtering em "Nearest".
             <br/>Se prefere suave, use "Bilinear".
             <br/>Se quer o visual de "HD Remaster", ative o <strong>xBRZ Upscaling</strong> nas texturas. Ele arredonda os pixels. Alguns amam, outros odeiam. Teste.
@@ -121,7 +121,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 7: BIOS",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Requer BIOS (<code>scph1001.bin</code> ou similar).
             <br/>O DuckStation verifica o MD5 da BIOS para garantir que não está corrompida.
         </p>
@@ -133,7 +133,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 8: Rebubinagem (Rewind)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Ative o Rewind nas configurações.
                 <br/>Mapeie uma tecla.
                 <br/>Errou o pulo no Tomb Raider? Segure a tecla e volte no tempo 5 segundos. Cheat moderno!
@@ -143,7 +143,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 9: Interface Big Picture",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O DuckStation tem uma interface "Big Picture" linda para usar na TV com controle.
                 <br/>Settings > Big Picture Mode.
             </p>
@@ -152,7 +152,7 @@ export default function DuckStationGuide() {
         {
             title: "Capítulo 10: Android",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A versão de Android é tão boa quanto a de PC.
                 <br/>Suporta controles Bluetooth e Touch na tela personalizável. Sincronize seus saves com o PC via Google Drive (usando apps de sync de pasta).
             </p>

@@ -34,7 +34,7 @@ export default function SSDGuide() {
         {
             title: "Introdução: SSD não é HD",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           SSDs (Solid State Drives) funcionam como pendrives gigantes. Eles não têm partes móveis. Se você tratar um SSD como um HD antigo (desfragmentando toda semana), você vai <strong>matá-lo</strong> em meses. Este guia ensina a manter a saúde (TBW) e performance em 100%.
         </p>
       `
@@ -42,7 +42,7 @@ export default function SSDGuide() {
         {
             title: "Passo 1: Verificando o TRIM (O Lixeiro Automático)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O comando TRIM diz ao controlador do SSD quais blocos de dados não são mais usados e podem ser apagados internamente. Sem TRIM, o SSD fica muito lento ao longo do tempo.
         </p>
         <div class="bg-[#1e1e1e] border border-gray-700 p-6 rounded-xl font-mono text-xs overflow-x-auto">
@@ -62,10 +62,10 @@ export default function SSDGuide() {
         {
             title: "Passo 2: Política de Cache de Escrita (Risky vs Fast)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Windows tem uma função que usa a RAM como "buffer" temporário antes de gravar no disco. Isso acelera muito a escrita de arquivos pequenos.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-2 bg-gray-900 p-6 rounded-xl border border-gray-700">
+        <ol class="list-decimal list-inside text-gray-400 space-y-2 bg-gray-900 p-6 rounded-xl border border-gray-700">
             <li>Abra o <strong>Gerenciador de Dispositivos</strong> (Win+X > M).</li>
             <li>Expanda "Unidades de Disco" e clique 2x no seu SSD/NVMe.</li>
             <li>Vá na aba <strong>Políticas</strong>.</li>
@@ -77,10 +77,10 @@ export default function SSDGuide() {
         {
             title: "Passo 3: Overprovisioning (O Segredo da Longevidade)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Deixar seu SSD 100% cheio faz ele ficar lento, pois ele precisa de espaço livre para reorganizar dados (Garbage Collection).
         </p>
-        <p class="text-gray-300">
+        <p class="text-gray-400">
             <strong>Recomendação:</strong> Deixe sempre <strong>10% a 15%</strong> do espaço total do disco "Não alocado" (Unallocated) no Gerenciamento de Disco. Ou use o software da fabricante (Samsung Magician, Crucial Storage Executive) para configurar o Overprovisioning automaticamente.
         </p>
       `

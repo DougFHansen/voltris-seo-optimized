@@ -43,7 +43,7 @@ export default function StarfieldGuide() {
         {
             title: "Introdução: CPU Bound",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Diferente de Cyberpunk, Starfield é limitado pela CPU e Memória RAM na maioria dos casos (cidades como New Atlantis e Akila). Ter GPU forte não garante 60 FPS se sua RAM for lenta.
         </p>
       `
@@ -68,7 +68,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 2: Configurações Gráficas Pesadas",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Shadow Quality:</strong> Medium. (High processa sombras para cada pedrinha no chão, matando a CPU).
             - <strong>Volumetric Lighting:</strong> Low. A luz entrando na nave é bonita, mas pesa muito.
             - <strong>Crowd Density:</strong> Low. Reduz a quantidade de cidadãos "sem nome" andando em New Atlantis. Essencial para manter FPS na cidade.
@@ -79,7 +79,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 3: DLSS e FSR 3 (Frame Generation)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A Bethesda adicionou suporte nativo a DLSS e FSR 3 depois do lançamento.
             <br/>- <strong>Render Resolution:</strong> Defina para 67% (Quality) ou 58% (Balanced). 100% não vale a pena.
             - <strong>Frame Generation:</strong> Ative se tiver GPU compatível. Starfield é um jogo lento (RPG), então o input lag extra do Frame Gen não atrapalha tanto quanto em FPS competitivos.
@@ -92,7 +92,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 4: Mods de Performance (Texture 1K)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se tem menos de 8GB de VRAM:
             <br/>Baixe o mod <strong>"Starfield Optimized Textures"</strong> (1K ou 2K).
             <br/>As texturas originais do jogo são 4K não otimizadas. Usar versões recompactadas em 2K economiza VRAM e reduz stutters sem perda visual perceptível.
@@ -102,7 +102,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 5: SSD (Requisito Mínimo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se o jogo trava por 2 segundos a cada tiro ou o áudio da fala sai depois da boca mexer:
             <br/>Você instalou no HD.
             <br/><strong>Solução Única:</strong> Mova para um SSD. Não existe fix de software para HD mecânico neste jogo. A engine exige streaming instantâneo.
@@ -112,7 +112,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 6: VRS (Variable Rate Shading)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Mantenha o <strong>VRS</strong> LIGADO.
             <br/>Ele reduz a qualidade de sombreamento nas bordas escuras da tela onde você não está olhando. Ganho de performance "grátis".
         </p>
@@ -121,7 +121,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 7: Atualização de Drivers (Starfield Ready)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A Nvidia e a Intel (Arc) lançaram drivers específicos que dão +20% de performance em Starfield.
                 <br/>Se você não atualiza driver há 6 meses, faça isso AGORA. A diferença para este jogo específico é massiva.
             </p>
@@ -133,7 +133,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 8: Inventário Lento (Lag nos Menus)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se o menu de armas trava ao abrir:
                 <br/>É porque você tem milhares de itens (Recursos).
                 <br/>Venda o excesso ou guarde no baú da Lodge (o baú infinito). Carregar 5000kg de ferro no inventário pessoal faz a CPU recalcular peso a cada frame do menu.
@@ -143,7 +143,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 9: Navegação Espacial",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 No espaço (batalha de nave), o desempenho é sempre melhor que no planeta.
                 <br/>Você pode aumentar os gráficos para High no espaço, mas terá que baixar ao pousar. Mantenha no Medium para consistência.
             </p>
@@ -152,7 +152,7 @@ export default function StarfieldGuide() {
         {
             title: "Capítulo 10: Limite de FPS (Cap)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A engine fica instável acima de 120 FPS (física de objetos voando).
                 <br/>Limite o FPS a 60, 90 ou 120 no Painel Nvidia. Não deixe Ilimitado.
             </p>

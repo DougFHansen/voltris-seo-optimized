@@ -37,10 +37,10 @@ export default function NativeRecordingGuide() {
         {
             title: "Introdução: O Estúdio Portátil no seu Windows",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, você não precisa mais baixar softwares pesados e cheios de anúncios (como Bandicam ou FRAPS) para gravar sua tela. As ferramentas nativas do Windows 11 evoluíram para níveis profissionais. A <strong>Xbox Game Bar</strong> agora usa aceleração de hardware da GPU (NVENC/AMF) para gravar sem perder FPS, e a <strong>Ferramenta de Captura</strong> permite selecionar áreas precisas para tutoriais rápidos.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Neste guia expandido, vamos além do botão "Gravar". Vamos ensinar como configurar o áudio para não ficar estourado, como editar cortes rápidos sem recodificar o vídeo e como usar o recurso de "Replay" para salvar momentos que já aconteceram.
         </p>
       `
@@ -53,23 +53,23 @@ export default function NativeRecordingGuide() {
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-green-500">
                     <strong class="text-green-400 block mb-1">Win + Alt + R</strong>
-                    <span class="text-gray-300 text-sm">Iniciar/Parar gravação instantânea (Sem menus).</span>
+                    <span class="text-gray-400 text-sm">Iniciar/Parar gravação instantânea (Sem menus).</span>
                 </div>
                 <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-blue-500">
                     <strong class="text-blue-400 block mb-1">Win + Alt + G</strong>
-                    <span class="text-gray-300 text-sm">Salvar os últimos 30 segundos (Clip de Replay).</span>
+                    <span class="text-gray-400 text-sm">Salvar os últimos 30 segundos (Clip de Replay).</span>
                 </div>
                 <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-purple-500">
                     <strong class="text-purple-400 block mb-1">Win + G</strong>
-                    <span class="text-gray-300 text-sm">Abrir o Painel (Overlay) para ajustar volumes.</span>
+                    <span class="text-gray-400 text-sm">Abrir o Painel (Overlay) para ajustar volumes.</span>
                 </div>
             </div>
 
             <h4 class="text-white font-bold text-xl mt-6 mb-3">Configurando o "Replay Buffer" (Gravar o Passado)</h4>
-            <p class="text-gray-300 text-md">
+            <p class="text-gray-400 text-md">
                 O recurso mais poderoso da Game Bar é gravar o que JÁ aconteceu. Isso consome um pouco de RAM, mas garante que você nunca perca um momento épico.
             </p>
-            <ol class="list-decimal list-inside text-gray-300 space-y-2 bg-gray-900/40 p-5 rounded-lg">
+            <ol class="list-decimal list-inside text-gray-400 space-y-2 bg-gray-900/40 p-5 rounded-lg">
                 <li>Vá em <strong>Configurações > Jogos > Capturas</strong>.</li>
                 <li>Ative a opção <strong>"Gravar o que aconteceu"</strong>.</li>
                 <li>Defina o tempo para "30 segundos" ou "1 minuto" (Mais que isso pode causar lag no jogo).</li>
@@ -81,11 +81,11 @@ export default function NativeRecordingGuide() {
         {
             title: "Capítulo 2: Ferramenta de Captura (Tutoriais e Reuniões)",
             content: `
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
             A Xbox Game Bar não grava a Área de Trabalho (Desktop) nem o Explorador de Arquivos por segurança. Para isso (e para gravar apenas uma janela específica do navegador), usamos a Ferramenta de Captura evoluída.
         </p>
 
-        <ol class="list-decimal list-inside text-gray-300 space-y-4 bg-gray-900 border border-gray-700 p-6 rounded-xl">
+        <ol class="list-decimal list-inside text-gray-400 space-y-4 bg-gray-900 border border-gray-700 p-6 rounded-xl">
             <li>
                 <strong>Atalho Mestre:</strong> Pressione <code>Win + Shift + S</code>.
             </li>
@@ -107,12 +107,12 @@ export default function NativeRecordingGuide() {
         {
             title: "Capítulo 3: Configurações de Qualidade (Bitrate e FPS)",
             content: `
-        <p class="text-gray-300 mb-4">
+        <p class="text-gray-400 mb-4">
             O Windows vem configurado para "Economia de Espaço", o que deixa os vídeos pixelados e travados a 30fps. Vamos mudar isso para qualidade de YouTube (1080p60).
         </p>
 
         <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm text-gray-300 border-collapse border border-gray-700 rounded-lg">
+            <table class="w-full text-left text-sm text-gray-400 border-collapse border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800 text-white">
                     <tr>
                         <th class="p-3 border border-gray-700">Configuração</th>
@@ -152,7 +152,7 @@ export default function NativeRecordingGuide() {
         {
             title: "Capítulo 4: Edição Rápida (Clipchamp e Fotos)",
             content: `
-        <p class="text-gray-300 mb-4 h-full">
+        <p class="text-gray-400 mb-4 h-full">
             Você gravou 1 hora de jogo, mas só quer os 5 minutos finais. Não precisa baixar o Adobe Premiere.
         </p>
 
@@ -185,20 +185,20 @@ export default function NativeRecordingGuide() {
         <div class="space-y-6 bg-gray-800/20 p-6 rounded-xl">
             <div>
                 <h4 class="font-bold text-white text-lg">Tela Preta em Jogos (DirectX 12)</h4>
-                <p class="text-gray-300 text-sm mt-1">
+                <p class="text-gray-400 text-sm mt-1">
                     Alguns jogos (como CS2 ou Valorant) em modo "Tela Cheia Exclusiva" bloqueiam a renderização da Game Bar. 
                     <br/><strong>Solução:</strong> Mude o modo de vídeo do jogo para "Janela sem Bordas" (Borderless Window). A perda de FPS hoje em dia é negligenciável e permite gravar sem problemas.
                 </p>
             </div>
             <div>
                 <h4 class="font-bold text-white text-lg">Áudio do Microfone baixo ou mudo</h4>
-                <p class="text-gray-300 text-sm mt-1">
+                <p class="text-gray-400 text-sm mt-1">
                     Abra a Game Bar (Win+G). No widget de "Áudio", vá na aba "Voz". Certifique-se de que o microfone correto está selecionado (às vezes o Windows escolhe a webcam por padrão). Aumente o volume lá.
                 </p>
             </div>
             <div>
                 <h4 class="font-bold text-white text-lg">Vídeo travando muito</h4>
-                <p class="text-gray-300 text-sm mt-1">
+                <p class="text-gray-400 text-sm mt-1">
                     Se você grava no mesmo HD onde o jogo está instalado, o disco não aguenta ler o jogo e escrever o vídeo ao mesmo tempo.
                     <br/><strong>Solução:</strong> Mude a pasta de Capturas para um segundo HD/SSD.
                 </p>

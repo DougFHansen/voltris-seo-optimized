@@ -41,7 +41,7 @@ export default function DolphinGuide() {
         {
             title: "Introdução: Ubershaders",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O "Stutter" clássico da emulação acontece quando um efeito novo aparece na tela e a GPU precisa compilar o shader. O Dolphin resolveu isso com "Ubershaders": um shader gigante genérico que roda enquanto o específico compila, eliminando a pausa.
         </p>
       `
@@ -64,7 +64,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 2: Melhorias Visuais (Enhancements)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Internal Resolution:</strong> 3x Native (1080p) ou 4x (1440p). O Wii nativo é 480p (borrado).
             - <strong>Anti-Aliasing:</strong> 4x MSAA deixa as bordas lisas.
             - <strong>Anisotropic Filtering:</strong> 16x.
@@ -75,7 +75,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 3: Configurando o Wiimote (Motion)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Controllers > Wii Remotes > Emulated Wii Remote.
             <br/>Clique em Configure.
             <br/>- <strong>Device:</strong> Seu Mouse/Teclado ou Gamepad.
@@ -90,7 +90,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 4: Conectando Wiimote Real (DolphinBar)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para a experiência perfeita, compre uma "Mayflash DolphinBar" USB.
             <br/>Ela age como Sensor Bar e Bluetooth ao mesmo tempo.
             <br/>Selecione "Real Wii Remote" no Dolphin e conecte seus controles originais do Wii. Funciona 100%.
@@ -100,7 +100,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 5: Texturas HD (Texture Packs)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Jogos como Xenoblade Chronicles e Resident Evil 4 têm packs de textura 4K feitos por fãs.
             <br/>1. Baixe o pack (pastas com códigos de 3 letras).
             <br/>2. Coloque em <code>Documents/Dolphin Emulator/Load/Textures/</code>.
@@ -111,7 +111,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 6: Netplay (Multiplayer)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Tools > Start Netplay.
             <br/>Você pode jogar Mario Party ou Smash Bros Brawl online com amigos.
             <br/>Exige que todos tenham a MESMA versão do Dolphin e a MESMA ISO (Hash Check).
@@ -121,7 +121,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 7: Hack de 60FPS",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Jogos como Super Mario Sunshine rodavam a 30fps.
             <br/>Clique com botão direito no jogo > Properties > Gecko Codes.
             <br/>Baixe códigos de "60FPS" da Wiki do Dolphin. Ative o cheat.
@@ -134,7 +134,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 8: Formato RVZ (Compressão)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 ISOs de Wii têm 4.7GB (cheias de lixo dummy).
                 <br/>Converta suas ISOs para <strong>RVZ</strong> dentro do próprio Dolphin (Right Click > Convert).
                 <br/>O tamanho cai para 1GB-2GB sem perder qualidade (Lossless). Economize SSD.
@@ -144,7 +144,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 9: GameCube BIOS",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Dolphin não exige BIOS para rodar GameCube, mas se você quiser ver a animação do logo (cubo roxo) iniciando, desmarque "Skip BIOS" na config.
             </p>
             `
@@ -152,7 +152,7 @@ export default function DolphinGuide() {
         {
             title: "Capítulo 10: Android",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 No celular, o Dolphin roda bem em Snapdragons modernos. Use o formato RVZ para economizar espaço interno e mantenha a resolução em 1x ou 2x.
             </p>
             `

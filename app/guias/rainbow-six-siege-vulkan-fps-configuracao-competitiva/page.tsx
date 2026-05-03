@@ -41,7 +41,7 @@ export default function R6Guide() {
         {
             title: "Introdução: Vulkan vs DX11",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O R6 oferece duas versões de lançamento.
           <br/><strong>Vulkan:</strong> Melhor gerenciamento de VRAM e CPU (menos drops de FPS). Suporta Nvidia Reflex. RECOMENDADO.
           <br/><strong>DX11:</strong> Mais instável em FPS, mas alguns preferem a "sensação" do mouse. Hoje em dia, Vulkan é superior em 90% dos casos.
@@ -70,7 +70,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 2: Anti-Aliasing (O Grande Segredo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A maioria desliga AA em jogos FPS. No R6, desligar deixa os pixels serrilhados "tremendo", o que distrai em ângulos longos.
             <br/>Pro Players usam <strong>T-AA</strong>.
             <br/>- <strong>Render Scale:</strong> Se tiver GPU boa, 100%. Se precisar de FPS, baixe até 85%.
@@ -82,7 +82,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 3: Aspect Ratio e FOV",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>4:3:</strong> Deixa os inimigos "gordos", mais fáceis de acertar HS. Reduz o campo de visão lateral. Favorito dos fraggers.
             - <strong>16:10:</strong> O meio termo.
             - <strong>16:9:</strong> Padrão. Melhor visão periférica.
@@ -96,7 +96,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 4: Áudio (Night Mode)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em Audio > Dynamic Range.
             <br/>Escolha <strong>Night Mode</strong>.
             <br/>Ele comprime o áudio: sons altos (explosões) ficam mais baixos, sons baixos (passos) ficam mais altos.
@@ -107,7 +107,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 5: Nvidia Reflex (Latência)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Só disponível no Vulkan.
             <br/>Ative <strong>On + Boost</strong>.
             <br/>Mantém a GPU em clock alto e impede fila de frames pré-renderizados. Reduz o input lag significativamente.
@@ -117,7 +117,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 6: Raw Input",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em Controls > Raw Input - Mouse / Keyboard: ON.
             <br/>Lê os dados direto do driver, ignorando a aceleração do Windows.
         </p>
@@ -126,7 +126,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 7: Mouse Multiplier (Ajuste Fino)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você acha a sensibilidade 4 muito lenta e 5 muito rápida.
             <br/>Você pode editar o arquivo <code>GameSettings.ini</code> em Documentos/My Games/Rainbow Six.
             <br/>Mude o <code>MouseSensitivityMultiplierUnit=0.02</code> para <code>0.002</code> ou outro valor para ter ajuste decimal na sensibilidade.
@@ -139,7 +139,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 8: Benchmark Tool",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O R6 tem um benchmark excelente.
                 <br/>Rode-o após cada mudança. Observe o "Mínimo FPS" (1% low). O jogo precisa ficar acima de 144 fps o tempo todo nas explosões.
             </p>
@@ -148,7 +148,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 9: Skins de Mira",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Em Accessibility.
                 <br/>Mude a cor da mira (Optic Color) para algo que contraste. Violeta, Verde Neon ou Turquesa são ótimos. Vermelho se mistura com sangue e tapetes.
             </p>
@@ -157,7 +157,7 @@ export default function R6Guide() {
         {
             title: "Capítulo 10: Server Data Center",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se o jogo te conectar no servidor errado (EUA em vez de BR):
                 <br/>Edite o <code>GameSettings.ini</code>.
                 <br/>Procure por <code>DataCenterHint=default</code> e mude para <code>playfab/brazilsouth</code>.

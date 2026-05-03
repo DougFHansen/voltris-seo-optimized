@@ -41,7 +41,7 @@ export default function MinecraftGuide() {
         {
             title: "Introdução: Optifine vs Sodium",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O Optifine é código fechado e quebra muitos mods.
           <br/>O <strong>Sodium</strong> reescreveu o motor de renderização do jogo. Resultado: PC que rodava a 40fps agora roda a 150fps.
           <br/>O <strong>Iris</strong> adiciona suporte a Shaders em cima do Sodium.
@@ -69,7 +69,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 2: Escolhendo o Shader",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Baixe shaders no Modrinth ou CurseForge.
             <br/>- <strong>Complementary Reimagined:</strong> O melhor e mais bonito. Tem perfil "Potato" para PC fraco e "Ultra" para RTX. Nuvens volumétricas lindas.
             <br/>- <strong>BSL Shaders:</strong> Visual suave, menos contraste.
@@ -82,7 +82,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 3: Distant Horizons (Visão Infinita)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Este mod (famoso LOD) permite ver 100 ou 500 chunks de distância sem travar o PC.
             <br/>Ele renderiza o terreno distante com qualidade baixa.
             <br/>Compatível com Iris (versões beta) e Complementary.
@@ -96,7 +96,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 4: Mods de Otimização Extras",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A "Santíssima Trindade" do Fabric:
             <br/>1. <strong>Sodium:</strong> Renderização gráfica.
             <br/>2. <strong>Lithium:</strong> Otimização da lógica do servidor (física, IA de mobs). Essencial para Single Player não travar.
@@ -108,7 +108,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 5: Zoom (Substituto do C no Optifine)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Sodium não tem zoom nativo.
             <br/>Instale o mod <strong>Zoomify</strong> ou <strong>Ok Zoomer</strong>.
             <br/>Eles oferecem zoom suave com scroll do mouse, muito melhor que o zoom seco do Optifine.
@@ -118,7 +118,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 6: Dynamic Lights (Tocha na Mão)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para a tocha iluminar enquanto você segura ela:
             <br/>Instale o mod <strong>LambDynamicLights</strong>.
         </p>
@@ -127,7 +127,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 7: Configuração de RAM",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Não aloque toda sua RAM!
             <br/>Para Vanilla + Shaders: 4GB é ideal.
             <br/>Para Modpacks pesados (300 mods): 6GB a 8GB.
@@ -141,7 +141,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 8: TLauncher e Piratas",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Funciona igual. Selecione a versão "Fabric" na lista, instale os mods na pasta <code>mods</code> manualmente.
                 <br/>Mas cuidado com Launchers duvidosos. O Prism Launcher (versão cracked) é mais seguro e gerencia mods melhor.
             </p>
@@ -150,7 +150,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 9: Atualização de Drivers",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O Minecraft OpenGL é sensível a drivers.
                 <br/>Em GPUs AMD no Windows, o driver antigo era horrível. Os drivers 2023+ melhoraram 100% o OpenGL. Atualize!
             </p>
@@ -159,7 +159,7 @@ export default function MinecraftGuide() {
         {
             title: "Capítulo 10: VSync vs Unlimited",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 No Sodium, deixe VSync: OFF e Max Framerate: Unlimited para gerar chunks rápido. Se tiver tearing, use VSync.
             </p>
             `

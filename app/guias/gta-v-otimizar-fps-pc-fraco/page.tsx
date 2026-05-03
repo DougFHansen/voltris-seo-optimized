@@ -43,10 +43,10 @@ export default function GTAGuide() {
     {
       title: "Introdução: FiveM vs GTA Online",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O FiveM é uma plataforma pesada. Ele carrega assets customizados (carros, roupas) que não foram otimizados pela Rockstar. Por isso, um PC que roda GTA V no Ultra pode chorar no FiveM.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
             Neste guia, vamos focar em configurações que lidam com o excesso de polígonos de mods mal feitos, salvando sua VRAM.
         </p>
       `
@@ -102,10 +102,10 @@ export default function GTAGuide() {
     {
       title: "Capítulo 3: FiveM - Limpeza de Cache",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você vê carros piscando, roupas bugadas ou crasha ao entrar no servidor.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 text-sm space-y-2">
+        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
             <li>Feche o FiveM.</li>
             <li>Vá em <code>AppData\\Local\\FiveM\\FiveM.app\\data</code>.</li>
             <li>Apague as pastas <code>cache</code>, <code>server-cache</code> e <code>server-cache-priv</code>.</li>
@@ -120,7 +120,7 @@ export default function GTAGuide() {
     {
       title: "Capítulo 4: Densidade e Variedade (CPU)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O GTA V usa muito a CPU para calcular a IA dos NPCs e carros.
             <br/>- <strong>Population Density:</strong> 50% ou menos.
             <br/>- <strong>Population Variety:</strong> 0% (Baixo). Isso faz o jogo carregar menos modelos de carros diferentes na RAM, reduzindo stutter.
@@ -131,7 +131,7 @@ export default function GTAGuide() {
     {
       title: "Capítulo 5: Tesselation e DirectX",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>DirectX Version:</strong> Use DX11. O DX10/10.1 é legado e tem bugs visuais.
             - <strong>Tessellation:</strong> Normal ou Off. Apenas adiciona relevo em árvores e pedras. Em cidades RP, é inútil.
         </p>
@@ -140,7 +140,7 @@ export default function GTAGuide() {
     {
       title: "Capítulo 6: Commandline.txt",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Crie um arquivo <code>commandline.txt</code> na pasta raiz do GTA V com:
         </p>
         <code class="block bg-black/50 p-3 rounded text-green-400 font-mono text-sm">
@@ -156,7 +156,7 @@ export default function GTAGuide() {
     {
       title: "Capítulo 7: GTA Settings.xml (Ajuste Fino)",
       content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em <code>Documentos\\Rockstar Games\\GTA V\\settings.xml</code>.
             <br/>Você pode desligar sombras completamente mudando <code>ShadowQuality value="0"</code> (O menu só deixa ir até 1).
             <br/>Isso dá um boost gigante de FPS, mas o jogo fica feio (sem sombras). Use apenas em PCs "batata".
@@ -169,7 +169,7 @@ export default function GTAGuide() {
     {
       title: "Capítulo 8: O Problema das Cidades Otimizadas",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Muitos servidores de RP usam "Cidades FPS Boost" que removem props (lixo, postes, neblina).
                 <br/>Se você tem FPS baixo, procure servidores que oferecem "Modo Batata" ou "FPS Mode" no comando /fps dentro do jogo.
             </p>
@@ -178,7 +178,7 @@ export default function GTAGuide() {
     {
       title: "Capítulo 9: Gráficos PVP (No Props)",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Para PVP, você quer ver através de arbustos e remover efeitos de fumaça.
                 <br/>Instale mods gráficos como <strong>NVE (Versão Low)</strong> ou <strong>CitzenFX Vision</strong> que limpam a atmosfera e removem a neblina de distância, melhorando a visibilidade de inimigos.
             </p>
@@ -187,7 +187,7 @@ export default function GTAGuide() {
     {
       title: "Capítulo 10: Limite de FPS (Engine Cap)",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A engine do GTA V (RAGE) começa a bugar física acima de 188 FPS.
                 <br/>Carros ficam mais lentos ou voam.
                 <br/>Se você tem um PC monstro, limite o FPS em 160-180 para evitar bugs de física no RP.

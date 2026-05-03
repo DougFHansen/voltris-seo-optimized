@@ -34,7 +34,7 @@ export default function WebcamFixGuide() {
         {
             title: "Por que a imagem some?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Problemas de webcam no Windows 11 em 2026 são, na maioria das vezes, questões de permissão ou largura de banda. Se você está tentando usar a câmera no Drive, Discord ou Zoom e ela fica com a tela preta (mesmo com o LED de luz aceso), o sistema pode estar bloqueando o acesso por segurança ou o seu driver de vídeo está tendo conflito com a codificação do sensor.
         </p>
       `
@@ -42,8 +42,8 @@ export default function WebcamFixGuide() {
         {
             title: "1. Verificando a Privacidade do Windows",
             content: `
-        <p class="mb-4 text-gray-300">O Windows 11 é rigoroso com a sua imagem:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O Windows 11 é rigoroso com a sua imagem:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Vá em Configurações > <strong>Privacidade e Segurança</strong> > Câmera.</li>
             <li>Certifique-se de que 'Acesso à câmera' está ativado.</li>
             <li>Certifique-se de que o aplicativo específico (ex: Navegador ou Discord) tem permissão individual logo abaixo na lista.</li>
@@ -56,7 +56,7 @@ export default function WebcamFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Limpando registros antigos:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 1. Clique com o botão direito no Iniciar > <strong>Gerenciador de Dispositivos</strong>. <br/>
                 2. Expanda 'Câmeras'. <br/>
                 3. Clique com o botão direito na sua câmera e selecione <strong>Desinstalar dispositivo</strong>. <br/>
@@ -68,7 +68,7 @@ export default function WebcamFixGuide() {
         {
             title: "3. O \"Limite\" do barramento USB",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Sua webcam pisca sem parar?</strong> 
             <br/><br/>Webcams 4K de 2026 exigem muita energia e largura de banda. Se você usa um Hub USB para conectar teclado, mouse, fone e webcam ao mesmo tempo, a porta pode não conseguir transmitir os dados da imagem. Tente conectar a webcam diretamente em uma porta <strong>USB 3.0 (Azul)</strong> na parte traseira do seu PC. Isso resolve 90% dos casos de interferência e imagem piscando.
         </p>

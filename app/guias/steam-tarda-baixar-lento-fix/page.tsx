@@ -28,10 +28,10 @@ export default function SteamLagGuide() {
         {
             title: "Por que a Steam limita meu download?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
           A Steam não baixa arquivos "simples". Ela baixa pedaços comprimidos e criptografados que seu processador precisa descompactar em tempo real. Se o seu download para e o uso de disco sobe, é o seu processador sofrendo, não a internet.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
            Mas se o disco está tranquilo e a velocidade está baixa, o servidor da sua cidade pode estar congestionado.
         </p>
       `,
@@ -40,10 +40,10 @@ export default function SteamLagGuide() {
         {
             title: "Truque 1: Mudar a Região de Download",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você mora em São Paulo e todo mundo em SP está baixando o GTA VI ao mesmo tempo, o servidor "Brazil - Sao Paulo" fica lento. Mude para um servidor menos usado.
         </p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 mb-6">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 mb-6">
             <li>Abra a Steam > Configurações (Settings).</li>
             <li>Vá na aba <strong>Downloads</strong>.</li>
             <li>Em "Região de Download", mude para:
@@ -58,10 +58,10 @@ export default function SteamLagGuide() {
         {
             title: "Truque 2: Limpar Cache de Download",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Às vezes um arquivo parcial trava a fila inteira.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
+        <ul class="list-disc list-inside text-gray-400 space-y-2">
             <li>Ainda na aba <strong>Downloads</strong>.</li>
             <li>Clique no botão <strong>"Limpar Cache de Download" (Clear Download Cache)</strong>.</li>
             <li>A Steam vai reiniciar e pedir seu login de novo. Isso costuma destravar downloads que ficam caindo para 0 bytes/s.</li>
@@ -71,7 +71,7 @@ export default function SteamLagGuide() {
         {
             title: "Truque 3: Desativar 'Limitar banda em stream'",
             content: `
-        <p class="text-gray-300">
+        <p class="text-gray-400">
             Verifique se a caixa "Limitar banda de download enquanto transmite" está desmarcada. Às vezes o Windows acha que você está transmitindo algo e capa a velocidade.
         </p>
       `

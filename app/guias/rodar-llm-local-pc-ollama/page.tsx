@@ -37,14 +37,14 @@ export default function LocalLLMGuide() {
         {
             title: "Introdução: O Fim das Assinaturas de IA",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Você paga R$ 100/mês no ChatGPT Plus? Pare.
           <br/><br/>
           Em 2026, modelos de código aberto ("Open Weights") como o <strong>Llama 3 (Meta)</strong> e <strong>DeepSeek (China)</strong> alcançaram ou superaram o GPT-4 em raciocínio. A melhor parte? Você pode rodá-los no seu próprio computador <em>gamer</em>, sem internet, sem censorship e sem taxas mensais.
         </p>
         <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-green-500 my-8">
             <h4 class="text-green-400 font-bold text-xl mb-2">Por que rodar Local?</h4>
-            <ul class="list-disc list-inside text-gray-300 text-lg space-y-2">
+            <ul class="list-disc list-inside text-gray-400 text-lg space-y-2">
                 <li><strong>Privacidade Absoluta:</strong> Seus documentos médicos ou códigos da empresa nunca saem do seu SSD.</li>
                 <li><strong>Sem Censura:</strong> Você controla o alinhamento moral do modelo.</li>
                 <li><strong>Latência Zero:</strong> Respostas instantâneas, sem esperar fila de servidor.</li>
@@ -55,13 +55,13 @@ export default function LocalLLMGuide() {
         {
             title: "Capítulo 1: Hardware - A Matemática da VRAM",
             content: `
-        <p class="mb-6 text-gray-300 text-lg">
+        <p class="mb-6 text-gray-400 text-lg">
             Para rodar IA, você não precisa de CPU forte. Você precisa de <strong>VRAM (Memória da Placa de Vídeo)</strong>. O modelo inteiro precisa caber na VRAM para ser rápido.
         </p>
         
         <h4 class="text-white font-bold text-xl mb-4">Tabela de Requisitos Reais (2026)</h4>
         <div class="overflow-x-auto mb-8">
-            <table class="w-full text-left text-sm text-gray-300 border-collapse border border-gray-700 rounded-lg">
+            <table class="w-full text-left text-sm text-gray-400 border-collapse border border-gray-700 rounded-lg">
                 <thead class="bg-gray-900 text-white uppercase tracking-wider">
                     <tr>
                         <th class="p-4 border border-gray-700">Modelo (Tamanho)</th>
@@ -101,7 +101,7 @@ export default function LocalLLMGuide() {
         {
             title: "Capítulo 2: Ollama (A Solução Elegante)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O <strong>Ollama</strong> (ollama.com) é o "Docker da IA". Ele encapsula toda a complexidade em um comando simples.
         </p>
 
@@ -140,12 +140,12 @@ SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 
         {
             title: "Capítulo 3: RAG Local (Conversar com seus PDF)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Santo Graal da produtividade: Fazer perguntas sobre seus próprios documentos (PDFs, Contratos, Notas) sem enviar nada para a nuvem.
         </p>
         
         <h4 class="text-white font-bold text-lg mb-2">Ferramenta: AnythingLLM (Desktop)</h4>
-        <ol class="list-decimal list-inside text-gray-300 space-y-4 bg-gray-900 border border-gray-700 p-6 rounded-xl">
+        <ol class="list-decimal list-inside text-gray-400 space-y-4 bg-gray-900 border border-gray-700 p-6 rounded-xl">
             <li>
                 <strong>Instalar:</strong> Baixe o <a href="https://useanything.com/" class="text-blue-400 hover:underline">AnythingLLM Desktop</a>. É um app tudo-em-um (vetores, interface, modelo).
             </li>
@@ -170,7 +170,7 @@ SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="bg-gradient-to-br from-green-900/20 to-green-900/0 border border-green-500/30 p-6 rounded-xl">
                 <h4 class="text-green-400 font-bold text-xl mb-2">PC (NVIDIA)</h4>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     <strong>Prós:</strong> Mais barato para modelos pequenos. CUDA é o padrão da indústria.
                     <br/><strong>Contras:</strong> Memória VRAM é limitada. Uma RTX 4090 tem 24GB e custa R$ 12.000. Rodar modelos de 70B exige duas placas (SLI/NVLink), o que é complexo.
                 </p>
@@ -178,7 +178,7 @@ SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 
 
             <div class="bg-gradient-to-br from-gray-200/10 to-gray-200/0 border border-gray-500/30 p-6 rounded-xl">
                 <h4 class="text-white font-bold text-xl mb-2">Mac (Apple Silicon)</h4>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     <strong>Prós:</strong> Memória Unificada! Um Mac Studio com 192GB de RAM pode alocar 140GB para VRAM. Isso permite rodar modelos gigantes (Llama 3 400B) que precisariam de 8 placas RTX 4090.
                     <br/><strong>Contras:</strong> Inferência (Tokens/s) é mais lenta que na NVIDIA. Custo inicial altíssimo.
                 </p>

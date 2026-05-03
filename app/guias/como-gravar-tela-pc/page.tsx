@@ -59,7 +59,7 @@ export default function ComoGravarTelaPCGuide() {
         {
             title: "Por Que Gravar Tela?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Gravar a tela do PC se tornou essencial em 2026. Com o crescimento da <strong>streaming</strong>, <strong>conteúdo de jogos</strong> e <strong>criação de tutoriais</strong>, saber gravar tela com qualidade profissional é uma habilidade valiosa. Seja para <strong>criar um canal no YouTube</strong>, <strong>transmitir ao vivo</strong> ou simplesmente <strong>guardar seus melhores momentos</strong> nos jogos.
         </p>
         `
@@ -67,12 +67,12 @@ export default function ComoGravarTelaPCGuide() {
         {
             title: "O Que Você Precisa",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Para começar a gravar tela com qualidade, você precisará de:
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-white">Hardware Mínimo Recomendado:</h3>
-          <ul class="space-y-2 text-gray-300">
+          <ul class="space-y-2 text-gray-400">
             <li class="flex items-center gap-2">
               <span class="text-green-400">✓</span>
               <span>Processador: Intel i5 ou Ryzen 5 (2017+)</span>
@@ -93,7 +93,7 @@ export default function ComoGravarTelaPCGuide() {
         </div>
         <div class="bg-blue-900/20 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-blue-400">Softwares Essenciais:</h3>
-          <ul class="space-y-2 text-gray-300">
+          <ul class="space-y-2 text-gray-400">
             <li class="flex items-center gap-2">
               <span class="text-blue-400">🎬</span>
               <span>OBS Studio (gratuito)</span>
@@ -117,7 +117,7 @@ export default function ComoGravarTelaPCGuide() {
         {
             title: "Configurando o OBS Studio",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O <strong>OBS Studio</strong> é o software mais popular para gravação de tela, e por bons motivos. É gratuito, poderoso e compatível com a maioria dos jogos.
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
@@ -125,7 +125,7 @@ export default function ComoGravarTelaPCGuide() {
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-400">📹 Vídeo</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Resolução:</strong> 1920x1080 (Full HD) ou 1280x720 (para baixo desempenho)</li>
                 <li><strong>FPS:</strong> 60 (padrão) ou 30 (para economia de recursos)</li>
                 <li><strong>Bitrate:</strong> 2500-4000 Kbps</li>
@@ -134,7 +134,7 @@ export default function ComoGravarTelaPCGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-green-400">🎤️ Áudio</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Taxa de Amostragem:</strong> 48kHz</li>
                 <li><strong>Bitrate:</strong> 128-192 Kbps</li>
                 <li><strong>Formato:</strong> AAC</li>
@@ -148,12 +148,12 @@ export default function ComoGravarTelaPCGuide() {
         {
             title: "Configurando o ShadowPlay",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O <strong>ShadowPlay</strong> é ideal para quem tem placa NVIDIA e quer o máximo desempenho nos jogos com impacto mínimo na gravação.
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
           <h3 class="text-xl font-bold mb-4 text-green-400">Configurações Recomendadas:</h3>
-          <ul class="space-y-2 text-gray-300">
+          <ul class="space-y-2 text-gray-400">
             <li><strong>Qualidade:</strong> Alta (prioriza desempenho)</li>
             <li><strong>Bitrate:</strong> Automático (ajuste dinâmico)</li>
             <li><strong>Resolução:</strong> Nativa do jogo</li>
@@ -166,7 +166,7 @@ export default function ComoGravarTelaPCGuide() {
         {
             title: "Gravando em 4K 60FPS",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Gravar em <strong>4K 60FPS</strong> é o padrão ouro para streamers profissionais. Requer hardware potente e configurações otimizadas.
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
@@ -174,7 +174,7 @@ export default function ComoGravarTelaPCGuide() {
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-400">💻 Hardware Essencial:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Processador:</strong> Ryzen 7 5800X3D ou Core i7-13700K</li>
                 <li><strong>Placa de Vídeo:</strong> RTX 3080 Ti ou superior</li>
                 <li><strong>Memória RAM:</strong> 16GB DDR4 3200MHz ou superior</li>
@@ -184,7 +184,7 @@ export default function ComoGravarTelaPCGuide() {
             </div>
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-purple-400">⚙️ Configurações OBS:</h4>
-              <ul class="space-y-2 text-gray-300">
+              <ul class="space-y-2 text-gray-400">
                 <li><strong>Resolução:</strong> 3840x2160</li>
                 <li><strong>FPS:</strong> 60</li>
                 <li><strong>Bitrate Vídeo:</strong> 8000-12000 Kbps</li>
@@ -199,27 +199,27 @@ export default function ComoGravarTelaPCGuide() {
         {
             title: "Problemas Comuns e Soluções",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Mesmo com bom hardware, você pode enfrentar problemas. Veja as soluções mais comuns:
         </p>
         <div class="space-y-4">
           <div class="bg-yellow-900/20 border border-yellow-500/30 rounded-lg p-6">
             <h4 class="text-lg font-semibold text-yellow-400">⚠️ Tela Cortando (Frame Drops):</h4>
-            <div class="text-gray-300">
+            <div class="text-gray-400">
               <p class="mb-2"><strong>Causa:</strong> Hardware insuficiente ou configurações muito altas</p>
               <p><strong>Solução:</strong> Reduza resolução para 720p, abaixe o bitrate ou feche programas em segundo plano</p>
             </div>
           </div>
           <div class="bg-red-900/20 border border-red-500/30 rounded-lg p-6">
             <h4 class="text-lg font-semibold text-red-400">🔴 Áudio Fora de Sinc (Delay):</h4>
-            <div class="text-gray-300">
+            <div class="text-gray-400">
               <p class="mb-2"><strong>Causa:</strong> Buffer de áudio muito alto ou driver desatualizado</p>
               <p><strong>Solução:</strong> Reduza buffer para 64ms, atualize drivers de áudio e use ASIO</p>
             </div>
           </div>
           <div class="bg-blue-900/20 border border-blue-500/30 rounded-lg p-6">
             <h4 class="text-lg font-semibold text-blue-400">🔵 Lag na Gravação:</h4>
-            <div class="text-gray-300">
+            <div class="text-gray-400">
               <p class="mb-2"><strong>Causa:</strong> Gravação em HDD lento ou muitos programas abertos</p>
               <p><strong>Solução:</strong> Use SSD exclusivo para gravação, feche todos os programas desnecessários</p>
             </div>
@@ -230,13 +230,13 @@ export default function ComoGravarTelaPCGuide() {
         {
             title: "Dicas Profissionais",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Dicas de especialistas para levar suas gravações ao próximo nível:
         </p>
         <div class="grid md:grid-cols-2 gap-6">
           <div class="space-y-4">
             <h4 class="text-lg font-semibold text-green-400">🎯 Qualidade vs Desempenho:</h4>
-            <ul class="space-y-2 text-gray-300">
+            <ul class="space-y-2 text-gray-400">
               <li>Use <strong>cenas</strong> para mudar rapidamente entre jogo e gravação</li>
               <li>Configure <strong>hotkeys</strong> para ativar/desativar gravação rapidamente</li>
               <li>Teste diferentes <strong>presets</strong> para encontrar o equilíbrio perfeito</li>
@@ -245,7 +245,7 @@ export default function ComoGravarTelaPCGuide() {
           </div>
           <div class="space-y-4">
             <h4 class="text-lg font-semibold text-blue-400">🎨 Produção:</h4>
-            <ul class="space-y-2 text-gray-300">
+            <ul class="space-y-2 text-gray-400">
               <li>Use <strong>iluminação adequada</strong> para evitar sombras no rosto</li>
               <li>Posicione a <strong>câmera corretamente</strong> (ângulo de 45°)</li>
               <li>Fale <strong>próximo ao microfone</strong> para melhor qualidade de áudio</li>

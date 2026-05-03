@@ -43,10 +43,10 @@ export default function CS2Guide() {
         {
             title: "Introdução: Source 2 vs Hardware",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O CS2 é muito mais pesado na GPU que o CS:GO. Launch options antigos como <code>-high</code>, <code>-threads</code> ou <code>-d3d9ex</code> <strong>NÃO FUNCIONAM</strong> ou causam instabilidade no Source 2. Pare de usar configs de 2018.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
             Neste guia, vamos focar no que a Valve confirmou tecnicamente que afeta o subtick e a latência de renderização.
         </p>
       `
@@ -74,7 +74,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 2: Configurações de Vídeo (Competitivo)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O segredo aqui não é colocar tudo no Low. Algumas opções precisam estar no High para você ver o inimigo.
         </p>
         <table class="w-full text-sm text-left text-gray-400 mb-6">
@@ -119,10 +119,10 @@ export default function CS2Guide() {
         {
             title: "Capítulo 3: Autoexec.cfg (Otimização de Rede)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Crie um arquivo <code>autoexec.cfg</code> na pasta <code>game\\csgo\\cfg</code>.
         </p>
-        <div class="bg-black/50 p-4 rounded-xl border border-gray-700 font-mono text-xs text-gray-300 overflow-x-auto">
+        <div class="bg-black/50 p-4 rounded-xl border border-gray-700 font-mono text-xs text-gray-400 overflow-x-auto">
             // Rede (Maximizada para 2026)<br/>
             rate "786432" // (Máximo permitido, essencial para 128tick/subtick)<br/>
             cl_updaterate "128"<br/>
@@ -152,10 +152,10 @@ export default function CS2Guide() {
         {
             title: "Capítulo 4: Áudio (Ouvir Passos Longe)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O som do CS2 é diferente. Para ouvir passos distantes (Low Frequencies) e reduzir o barulho da AK-47 (High Frequencies):
         </p>
-        <ol class="list-decimal list-inside text-gray-300 text-sm space-y-2">
+        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
             <li>No Windows: Painel de Controle de Som > Dispositivo > Propriedades > Aperfeiçoamentos.</li>
             <li>Ative <strong>"Loudness Equalization" (Equalização de volume)</strong>.</li>
             <li>No Jogo: Perfil de Áudio > <strong>"Crisp" (Nítido)</strong>.</li>
@@ -169,12 +169,12 @@ export default function CS2Guide() {
         {
             title: "Capítulo 5: Resolução 4:3 Esticada (Stretched)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A escolha dos pros.
             <br/><strong>Vantagem:</strong> Modelos dos inimigos ficam mais "gordos", mais fáceis de acertar. Menos pixels para renderizar = Mais FPS.
             <br/><strong>Desvantagem:</strong> Campo de visão (FOV) menor, inimigos se movem mais rápido na tela.
         </p>
-        <div class="bg-gray-800 p-4 rounded text-sm text-gray-300">
+        <div class="bg-gray-800 p-4 rounded text-sm text-gray-400">
             <strong>Como Configurar:</strong>
             <br/>1. Painel Nvidia > Ajustar tamanho da área de trabalho.
             <br/>2. Escala: <strong>Tela Inteira</strong>.
@@ -185,10 +185,10 @@ export default function CS2Guide() {
         {
             title: "Capítulo 6: Otimização de Tela Inteira (Bug do Windows)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Windows tenta otimizar jogos aplicando um overlay híbrido. No CS2, isso pode causar input lag.
         </p>
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li>Vá em <code>steamapps\\common\\Counter-Strike Global Offensive\\game\\bin\\win64\\cs2.exe</code></li>
             <li>Clique direito > Propriedades > Compatibilidade.</li>
             <li>Marque <strong>"Desabilitar otimizações de tela inteira"</strong>.</li>
@@ -199,7 +199,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 7: Limpeza de Cache (DirectX)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se seu CS2 está com micro-travadas (stutter) toda vez que vê um inimigo:
             <br/>O cache de shaders do DirectX pode estar corrompido.
             <br/>1. Use a Limpeza de Disco do Windows.
@@ -212,7 +212,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 8: Telemetria e Packet Loss",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Nas configurações do jogo > Jogo > Telemetria.
             <br/>Defina "Mostrar em caso de condições ruins" para <strong>Sempre</strong> ou configure para mostrar FPS e Ping.
             <br/>Isso substitui o antigo <code>net_graph 1</code>. Fique de olho no canto superior direito. Se aparecerem quadrados vermelhos, é perda de pacote da sua internet, não culpa do PC.
@@ -225,7 +225,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 9: Workshop Maps Essenciais",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Otimize seu treino. Inscreva-se na oficina Steam:
                 <br/>- <strong>CS2_AIM</strong>: Para aquecer a mira.
                 <br/>- <strong>Recoil Master</strong>: Para decorar o spray da AK/M4.
@@ -236,7 +236,7 @@ export default function CS2Guide() {
         {
             title: "Capítulo 10: Voltris Optimizer no CS2",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O <strong>Voltris Optimizer</strong> detecta o CS2 e aplica automaticamente:
                 <br/>- Prioridade de CPU "High" (com segurança).
                 <br/>- Desativação de Core Parking (para usar todos os núcleos).

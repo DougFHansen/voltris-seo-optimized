@@ -43,7 +43,7 @@ export default function CyberpunkGuide() {
         {
             title: "Introdução: O Benchmark de 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Cyberpunk 2077 com a engine REDengine 4 é o teste final para qualquer PC. Mesmo em 2026, rodá-lo no Ultra com Path Tracing exige hardware de ponta. Mas com ajustes, um PC médio roda lindo a 60 FPS.
         </p>
       `
@@ -66,7 +66,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 2: DLSS, FSR e XeSS",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             É impossível jogar Cyberpunk nativo em alta resolução sem uma RTX 5090.
             <br/>- <strong>Nvidia:</strong> Use DLSS Quality. Se precisar, DLSS Balanced. Evite Performance em 1080p (fica borrado).
             <br/>- <strong>AMD/Intel/GTX:</strong> Use FSR 2.1/3.0 ou XeSS. O XeSS costuma ter imagem melhor que o FSR em movimento.
@@ -77,7 +77,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 3: Sombras e Iluminação",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Cascaded Shadows Resolution:</strong> Medium. (High dobra o uso de VRAM).
             - <strong>Distant Shadows Resolution:</strong> Low.
             - <strong>Volumetric Fog Resolution:</strong> <span class="text-emerald-400">Low</span>. A neblina do jogo é pesadíssima. No Low ela continua bonita mas roda 20% mais rápido.
@@ -90,7 +90,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 4: Screen Space Reflections (SSR)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se você não usa Ray Tracing, o SSR é o que faz o chão molhado brilhar.
             <br/>- <strong>Psycho:</strong> Insanamente pesado.
             <br/>- <strong>High:</strong> Bom equilíbrio.
@@ -102,7 +102,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 5: HDD Mode (Texturas)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Opção "Slow HDD Mode" na aba Gameplay.
             <br/>- Se você instalou no HD mecânico (Não faça isso!): LIGUE. Isso reduz a variedade de carros e pedestres para a textura carregar a tempo.
             <br/>- Se tem SSD SATA antigo: AUTO.
@@ -113,7 +113,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 6: Ray Tracing (Vale a pena?)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             - <strong>Reflections:</strong> O mais impactante visualmente.
             - <strong>Lighting/Shadows:</strong> Impacto sutil, custo alto.
             - <strong>Path Tracing (Overdrive):</strong> Só para screenshots ou RTX 4080/4090.
@@ -124,7 +124,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 7: Color Precision",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Color Precision: Medium.
             <br/>Difícil notar a diferença para o High a olho nu, mas economiza um pouco de processamento de pós-efeitos.
         </p>
@@ -136,7 +136,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 8: Mods de Performance",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 NexusMods: "General Optimization Mod".
                 <br/>Ele reduz a distância de renderização de lixo na rua e papeis voando, que consomem física da CPU desnecessariamente.
             </p>
@@ -145,7 +145,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 9: SMT (AMD Ryzen)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Cyberpunk tinha um bug com CPUs Ryzen (não usava todos os threads).
                 <br/>Hoje (Patch 2.1+), existe uma opção no menu: <strong>AMD SMT (Simultaneous Multithreading)</strong>.
                 <br/>Defina como <strong>ON</strong> (não Auto) para garantir que todos os núcleos lógicos sejam usados no talo.
@@ -155,7 +155,7 @@ export default function CyberpunkGuide() {
         {
             title: "Capítulo 10: Input Lag no Mouse",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 O jogo tem uma sensação de "mouse pesado".
                 <br/>Em Controls:
                 <br/>- Zoom Sensitivity Reduction: 1.

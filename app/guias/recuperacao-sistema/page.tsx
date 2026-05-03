@@ -35,7 +35,7 @@ export default function RecuperacaoSistemaGuide() {
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
             <h3 class="text-white font-semibold mb-2">Sinais que Indicam Necessidade de Recuperação</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
+            <ul class="text-gray-400 text-sm space-y-1">
               <li>❌ Sistema trava frequentemente</li>
               <li>❌ Blue Screen of Death (BSOD)</li>
               <li>❌ Programas não abrem ou crasham</li>
@@ -45,7 +45,7 @@ export default function RecuperacaoSistemaGuide() {
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
             <h3 class="text-white font-semibold mb-2">Benefícios da Recuperação</h3>
-            <ul class="text-gray-300 text-sm space-y-1">
+            <ul class="text-gray-400 text-sm space-y-1">
               <li>✓ Retorno a estado estável</li>
               <li>✓ Eliminação de malware</li>
               <li>✓ Correção de erros do sistema</li>
@@ -66,7 +66,7 @@ export default function RecuperacaoSistemaGuide() {
           content: `
             <p class="mb-4">A restauração do sistema é um recurso do Windows que reverte as alterações do sistema 
             a um ponto anterior, revertendo alterações recentes no registro e arquivos do sistema.</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4 mb-4">
               <li>Pressione tecla Windows + R e digite "rstrui.exe"</li>
               <li>Selecione "Escolher uma configuração diferente"</li>
               <li>Escolha um ponto de restauração antes do problema ocorrer</li>
@@ -79,7 +79,7 @@ export default function RecuperacaoSistemaGuide() {
           content: `
             <p class="mb-4">A recuperação de imagem restaura todo o disco rígido ou volumes específicos 
             usando uma cópia de segurança previamente criada.</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4 mb-4">
               <li>Acesse Painel de Controle > Sistema e Segurança > Backup e Restauração</li>
               <li>Clique em "Recuperar meu computador usando uma imagem do sistema"</li>
               <li>Siga o assistente de recuperação de imagem</li>
@@ -92,7 +92,7 @@ export default function RecuperacaoSistemaGuide() {
           content: `
             <p class="mb-4">A reinicialização do sistema do Windows 10/11 permite manter seus arquivos 
             e aplicativos enquanto reinstala o sistema operacional.</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4 mb-4">
               <li>Vá para Configurações > Atualização e Segurança > Recuperação</li>
               <li>Em "Reiniciar este PC", clique em "Começar"</li>
               <li>Escolha "Manter meus arquivos" ou "Remover tudo"</li>
@@ -105,7 +105,7 @@ export default function RecuperacaoSistemaGuide() {
           content: `
             <p class="mb-4">Muitos fabricantes incluem ferramentas de recuperação específicas 
             que restauram o sistema para o estado original de fábrica.</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4 mb-4">
               <li>Asus: Ferramenta ASUS Recovery</li>
               <li>HP: HP Recovery Manager</li>
               <li>Dell: Dell Backup and Recovery</li>
@@ -124,7 +124,7 @@ export default function RecuperacaoSistemaGuide() {
           content: `
             <p class="mb-4">Antes de iniciar a recuperação, é importante entender a causa raiz 
             do problema para evitar reincidência.</p>
-            <ul class="space-y-2 text-gray-300 list-disc list-inside ml-4 mb-4">
+            <ul class="space-y-2 text-gray-400 list-disc list-inside ml-4 mb-4">
               <li>Erros recentes de drivers ou hardware</li>
               <li>Instalações de software problemático</li>
               <li>Infecções por malware ou vírus</li>
@@ -137,7 +137,7 @@ export default function RecuperacaoSistemaGuide() {
           content: `
             <p class="mb-4">É altamente recomendável criar pontos de restauração 
             antes de grandes mudanças no sistema.</p>
-            <ol class="space-y-2 text-gray-300 list-decimal list-inside ml-4 mb-4">
+            <ol class="space-y-2 text-gray-400 list-decimal list-inside ml-4 mb-4">
               <li>Abra o Prompt de Comando como Administrador</li>
               <li>Digite: <code class="bg-[#2a2a2e] px-2 py-1 rounded">wusa /r /v</code> para verificar pontos existentes</li>
               <li>Para criar um novo: <code class="bg-[#2a2a2e] px-2 py-1 rounded">wmic /namespace:\\\\root\\default path systemrestore call createrestorepoint "Ponto de Restauração Antes de Mudança", 0, 100</code></li>
@@ -153,7 +153,7 @@ export default function RecuperacaoSistemaGuide() {
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
                 <h4 class="text-white font-semibold mb-2">Backups Regulares</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
+                <ul class="text-gray-400 text-xs space-y-1">
                   <li>Imagens do sistema completas</li>
                   <li>Cópias de arquivos pessoais</li>
                   <li>Exportação de favoritos e configurações</li>
@@ -161,7 +161,7 @@ export default function RecuperacaoSistemaGuide() {
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#FF4B6B]/20">
                 <h4 class="text-white font-semibold mb-2">Armazenamento</h4>
-                <ul class="text-gray-300 text-xs space-y-1">
+                <ul class="text-gray-400 text-xs space-y-1">
                   <li>HD externo dedicado</li>
                   <li>Serviços em nuvem confiáveis</li>
                   <li>Mídias ópticas para arquivamento</li>
@@ -186,7 +186,7 @@ export default function RecuperacaoSistemaGuide() {
           content: `
             <div class="bg-[#171313] p-6 rounded-lg border border-[#31A8FF]/30 mt-6">
               <p class="text-white font-semibold mb-3 text-lg">Precisa de Recuperação Profissional?</p>
-              <p class="text-gray-300 leading-relaxed mb-4">
+              <p class="text-gray-400 leading-relaxed mb-4">
                 Nossa equipe especializada pode recuperar seu sistema com técnicas avançadas 
                 e garantir que seus dados estejam seguros durante todo o processo.
               </p>

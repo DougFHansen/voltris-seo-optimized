@@ -42,7 +42,7 @@ export default function SteamGuide() {
         {
             title: "Introdução: O Efeito Placebo",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Jogadores copiam e colam <code>-high -useforcedmparms -noforcemaccel -heapsize</code> sem saber o que fazem. A Valve já disse: LIMPE SUAS LAUNCH OPTIONS. O jogo sabe detectar seu hardware melhor que um comando de 2012.
         </p>
       `
@@ -66,7 +66,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 2: Comandos Harmful (Perigosos)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>NÃO USE estes:</strong>
             <br/>- <code>-threads X</code>: O jogo gerencia núcleos automaticamente. Se você errar o número, vai ter stuttering.
             <br/>- <code>-high</code>: Força prioridade Alta no Windows. Pode fazer o mouse parar de responder ou o Discord travar se a CPU bater 100%.
@@ -78,7 +78,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 3: APIs Gráficas (DX11 vs Vulkan)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em jogos como Dota 2, Rainbow Six e Apex:
             <br/>- <code>-vulkan</code>: Tenta rodar em Vulkan. Bom para GPUs AMD ou para Linux. Em Nvidia, geralmente DX11 é melhor.
             <br/>- <code>-dx11</code>: Padrão.
@@ -92,7 +92,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 4: CS2 Específico",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para Counter-Strike 2:
             <br/>Recomenda-se usar <strong>NENHUMA</strong> launch option além de <code>-novid</code>.
             <br/>A engine Source 2 odeia comandos antigos da Source 1. Apague tudo e sinta o jogo mais liso.
@@ -102,7 +102,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 5: PUBG e Stuttering",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para PUBG:
             <br/><code>-USEALLAVAILABLECORES</code>: Era útil em 2018. Hoje é inútil.
             <br/><code>-sm4</code>: Forçava Shader Model 4 (DX10) para ganhar FPS sacrificando iluminação. Muitos jogos bloquearam isso por ser "cheat" de visibilidade.
@@ -112,7 +112,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 6: AutoExec.cfg",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Em vez de launch options, coloque seus comandos de jogo (mira, binds, sensibilidade) dentro de um arquivo <code>autoexec.cfg</code> na pasta do jogo.
             <br/>Adicione <code>+exec autoexec.cfg</code> nas opções de inicialização para carregar sempre.
         </p>
@@ -121,7 +121,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 7: Cache de Shaders",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A Steam baixa shaders pré-compilados (Pre-caching).
             <br/>Mantenha isso ativado nas configurações da Steam (Downloads).
             <br/>Desativar isso faz o jogo travar na primeira vez que você vê um efeito novo (ex: granada explodindo).
@@ -134,7 +134,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 8: Limite de VRAM",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Nunca use comandos como <code>-heapsize</code> para setar memória RAM. O Windows faz isso melhor que você. Se você setar errado, o jogo crasha por falta de memória ("Out of Memory").
             </p>
             `
@@ -142,7 +142,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 9: Modo Texto",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se seu PC é muito ruim:
                 <br/>Launch option <code>-no-browser</code> na Steam (atalho do executável da steam, não do jogo) fazia a Steam usar 50MB de RAM. A Valve removeu isso na nova UI. Não funciona mais.
             </p>
@@ -151,7 +151,7 @@ export default function SteamGuide() {
         {
             title: "Capítulo 10: Restaurar Padrão",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Está com bugs? Delete TUDO da caixa de opções de inicialização. Deixe em branco. Verifique a integridade dos arquivos.
             </p>
             `

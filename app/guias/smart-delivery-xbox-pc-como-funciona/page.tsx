@@ -34,7 +34,7 @@ export default function SmartDeliveryGuide() {
         {
             title: "A filosofia do Smart Delivery",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, a Microsoft consolidou o ecossistema Xbox como um serviço, não apenas um console. O **Smart Delivery** é a tecnologia que garante que, se você comprou o jogo *Forza Horizon* para o seu antigo Xbox One, você terá automaticamente a versão otimizada em 4K no seu Xbox Series X ou a versão ultra-performance no seu PC Gamer com Windows 11, sem pagar um centavo a mais por isso.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SmartDeliveryGuide() {
         {
             title: "1. Play Anywhere: Do sofá para o escritório",
             content: `
-        <p class="mb-4 text-gray-300">O maior benefício para usuários de PC em 2026:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">O maior benefício para usuários de PC em 2026:</p>
+        <p class="text-sm text-gray-400">
             Muitos títulos com Smart Delivery também fazem parte do programa **Xbox Play Anywhere**. Isso significa que você pode começar a sua campanha de *Gears of War* no console da sala e, quando alguém quiser usar a TV, você simplesmente senta no seu PC, abre o app Xbox e continua exatamente do mesmo segundo onde parou, com todo o seu progresso sincronizado.
         </p>
       `
@@ -53,7 +53,7 @@ export default function SmartDeliveryGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Instalação Seletiva:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O Smart Delivery não baixa apenas o jogo; ele baixa a **versão correta para o seu hardware**. <br/><br/>
                 Se você tem um Series S, ele baixará texturas em 1080p/1440p para economizar o espaço limitado do SSD. Se você tem um PC topo de linha, ele puxará os pacotes de textura 4K e Ray Tracing. Isso economiza dezenas de gigabytes de download desnecessário no seu Windows 11 em 2026.
             </p>
@@ -63,7 +63,7 @@ export default function SmartDeliveryGuide() {
         {
             title: "3. Como identificar jogos compatíveis?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Na Microsoft Store:</strong> 
             <br/><br/>Procure pelo selo verde 'Smart Delivery' na página do produto. Quase todos os jogos da **Xbox Game Studios** e grandes parceiros como EA e Ubisoft usam essa tecnologia. Em 2026, é muito raro encontrar títulos exclusivos de uma única geração no ecossistema Xbox, tornando o investimento em jogos muito mais duradouro.
         </p>

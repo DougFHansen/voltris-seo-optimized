@@ -40,10 +40,10 @@ export default function SyncGuide() {
         {
             title: "A Regra de Ouro do G-Sync (Bíblia BlurBusters)",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Existe um mito de que "V-Sync adiciona lag, logo devo desligar". Isso é verdade para monitores fixos de 60Hz. Mas no mundo do VRR (G-Sync/FreeSync), a regra muda.
         </p>
-        <p class="mb-6 text-gray-300 leading-relaxed">
+        <p class="mb-6 text-gray-400 leading-relaxed">
             O site BlurBusters provou com câmeras de alta velocidade que o G-Sync PRECISA do V-Sync ativado no Painel de Controle para cobrir o "Tearing de Frametime". Se você usar G-Sync sem V-Sync, você ainda terá rasgos na parte inferior da tela quando o frametime variar.
         </p>
 
@@ -51,7 +51,7 @@ export default function SyncGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">⚖️</span> Auto-Sync via Voltris
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Configurar o trio (G-Sync + V-Sync + FPS Cap) manualmente dá trabalho. O <strong>Voltris Optimizer</strong> aplica um perfil global "E-Sports Sync" que configura o limitador de FPS baseado no seu monitor e as travas de V-Sync no driver automaticamente.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -74,7 +74,7 @@ export default function SyncGuide() {
                 <div class="bg-emerald-500/20 text-emerald-400 font-bold px-3 py-1 rounded">1</div>
                 <div>
                     <h5 class="text-[#31A8FF] font-bold">Painel Nvidia > Configure G-Sync</h5>
-                    <p class="text-gray-300 text-sm">Marque "Enable for Full screen mode". (Modo janela pode causar stutter no Windows DWM).</p>
+                    <p class="text-gray-400 text-sm">Marque "Enable for Full screen mode". (Modo janela pode causar stutter no Windows DWM).</p>
                 </div>
             </div>
 
@@ -82,7 +82,7 @@ export default function SyncGuide() {
                 <div class="bg-emerald-500/20 text-emerald-400 font-bold px-3 py-1 rounded">2</div>
                 <div>
                     <h5 class="text-[#31A8FF] font-bold">Painel Nvidia > Gerenciar Configurações 3D</h5>
-                    <p class="text-gray-300 text-sm">Vertical Sync (Sincronização Vertical): <strong class="text-emerald-400">LIGADO</strong> (On).</p>
+                    <p class="text-gray-400 text-sm">Vertical Sync (Sincronização Vertical): <strong class="text-emerald-400">LIGADO</strong> (On).</p>
                 </div>
             </div>
 
@@ -90,8 +90,8 @@ export default function SyncGuide() {
                 <div class="bg-emerald-500/20 text-emerald-400 font-bold px-3 py-1 rounded">3</div>
                 <div>
                     <h5 class="text-[#31A8FF] font-bold">DENTRO DO JOGO</h5>
-                    <p class="text-gray-300 text-sm">V-Sync: <strong class="text-rose-400">DESLIGADO</strong> (Off).</p>
-                    <p class="text-gray-300 text-sm">FPS Limit: <strong class="text-rose-400">DESLIGADO</strong> ou ilimitado.</p>
+                    <p class="text-gray-400 text-sm">V-Sync: <strong class="text-rose-400">DESLIGADO</strong> (Off).</p>
+                    <p class="text-gray-400 text-sm">FPS Limit: <strong class="text-rose-400">DESLIGADO</strong> ou ilimitado.</p>
                 </div>
             </div>
 
@@ -99,7 +99,7 @@ export default function SyncGuide() {
                 <div class="bg-emerald-500/20 text-emerald-400 font-bold px-3 py-1 rounded">4</div>
                 <div>
                     <h5 class="text-[#31A8FF] font-bold">Painel Nvidia > Max Frame Rate</h5>
-                    <p class="text-gray-300 text-sm">Trave em <strong>Hz - 3</strong>.</p>
+                    <p class="text-gray-400 text-sm">Trave em <strong>Hz - 3</strong>.</p>
                     <ul class="text-gray-400 text-xs ml-4 list-disc mt-1">
                         <li>144Hz -> 141 FPS</li>
                         <li>165Hz -> 162 FPS</li>
@@ -113,10 +113,10 @@ export default function SyncGuide() {
         {
             title: "Por que travar 3 FPS abaixo?",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O G-Sync só funciona <strong>dentro do range</strong> do monitor (Ex: 48Hz até 144Hz).
         </p>
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se seu jogo atinge 145 FPS, o G-Sync <strong>desliga</strong> automaticamente. Nesse momento, entra o V-Sync que você ligou no driver, causando um input lag massivo repentino.
             <br/>Ao travar em 141 FPS, garantimos que o jogo NUNCA encoste no teto de 144Hz. Assim, o G-Sync fica 100% do tempo ativo, e o V-Sync do driver nunca é acionado de verdade (ele fica só de "segurança").
         </p>
@@ -130,15 +130,15 @@ export default function SyncGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-orange-400 font-bold mb-4 text-xl">O que acontece se meu FPS cair muito?</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Suponha que seu FPS caia para 40 FPS num monitor de 144Hz (cujo alcance mínimo é 48Hz). O G-Sync deveria desligar, certo?
                 </p>
-                <p class="text-gray-300 text-sm mb-4">
+                <p class="text-gray-400 text-sm mb-4">
                     Errado. Aí entra o <strong>LFC</strong>. O monitor duplica os Hz para acompanhar.
                     <br/>GPU: 40 FPS.
                     <br/>Monitor: 80 Hz (Mostra cada frame 2 vezes).
                 </p>
-                <p class="text-gray-300 text-sm italic">
+                <p class="text-gray-400 text-sm italic">
                     Isso mantém a fluidez visual mesmo com performance ruim.
                 </p>
             </div>
@@ -147,10 +147,10 @@ export default function SyncGuide() {
         {
             title: "Problema de Brilho Piscando (Flickering)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Alguns monitores VA (propensos a isso) piscam o brilho quando o LFC entra e sai em ação (na transição de 48Hz).
             </p>
-            <p class="text-gray-300">
+            <p class="text-gray-400">
                 <strong>Solução:</strong> Use o programa CRU (Custom Resolution Utility) e aumente o range mínimo do FreeSync para 70Hz ou 90Hz. Isso força o LFC a ficar "Sempre Ativo" em jogos pesados, evitando a oscilação de transição.
             </p>
             `
@@ -161,10 +161,10 @@ export default function SyncGuide() {
         {
             title: "Veredito: Competitivo vs Single Player",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 <strong>CS2 / Valorant:</strong> Se você tem 400 FPS constantes, DESLIGUE tudo (G-Sync Off, V-Sync Off). Deixe o Tearing acontecer. Em FPS altíssimo (300+), o tearing é micro e pouco visível, e a latência é a menor possível.
             </p>
-            <p class="text-gray-300">
+            <p class="text-gray-400">
                 <strong>Warzone / Apex / Jogos AAA:</strong> O FPS varia muito (100-180). Aqui o G-Sync brilha. A consistência visual ajuda você a rastrear (track) alvos melhor do que ter input lag 1ms menor mas com a imagem toda cortada.
             </p>
             `

@@ -46,7 +46,7 @@ export default function EldenRingGuide() {
                 <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse"></span>
                 ATENÇÃO: MODO OFFLINE
             </h3>
-            <p class="text-gray-300">
+            <p class="text-gray-400">
                 Para desbloquear FPS ou usar Ultrawide, você PRECISA desativar o Easy Anti-Cheat (EAC).
                 <br/>Isso força o jogo para o modo Offline. Você não verá mensagens nem invadirá ninguém nos servidores oficiais.
                 <br/>Para jogar online MODIFICADO, use o mod <strong>Seamless Coop</strong> (que usa servidores peer-to-peer separados).
@@ -73,7 +73,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 2: Flawless Widescreen (FPS + 21:9)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             A ferramenta mais fácil.
             <br/>1. Baixe o <strong>Flawless Widescreen</strong>.
             <br/>2. Instale o plugin "Elden Ring".
@@ -87,7 +87,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 3: Tech FPS Unlocker (Alternativa)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se não quiser usar o Flawless Widescreen, use o mod "Elden Ring FPS Unlocker" no GitHub (uberhalit).
             <br/>Ele permite mudar o FOV e travar FPS especificamente sem rodar em background.
         </p>
@@ -99,7 +99,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 4: Seamless Coop (Jogue Online com Mods)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O mod <strong>Seamless Coop</strong> reescreve o netcode do jogo.
             <br/>- Co-op permanente (sem desconectar após boss).
             <br/>- Permite usar cavalo no multiplayer.
@@ -111,7 +111,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 5: Stutter Fix (Shader Cache)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O jogo compila shaders enquanto você joga, causando travadinhas.
             <br/>No Painel Nvidia > Configurações 3D > Tamanho do Cache de Shader: Mude para <strong>Ilimitado</strong> ou <strong>10GB</strong>.
             <br/>No Windows: Ative o "Modo de Jogo" e configure Elden Ring para "Alto Desempenho".
@@ -121,7 +121,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 6: Ray Tracing",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O RT do Elden Ring é apenas para Sombras e Oclusão de Ambiente (não Reflexos).
             <br/>O impacto visual é baixo, mas o custo é ALTO.
             <br/>Recomendamos deixar DESLIGADO a menos que você tenha uma RTX 4080+.
@@ -135,7 +135,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 7: HDR (High Dynamic Range)",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 A implementação de HDR da FromSoftware é excelente.
                 <br/>Se tiver monitor OLED/HDR, ative no Windows (Win+Alt+B) e no jogo. As cavernas ficam escuras de verdade e os feitiços brilham intensamente.
             </p>
@@ -144,7 +144,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 8: Mods de Textura e Reshade",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Pode usar ReShade no modo Offline/Seamless sem problemas.
                 <br/>Recomendamos presets que reduzam o tom "verde/amarelo" do jogo para algo mais natural.
             </p>
@@ -153,7 +153,7 @@ export default function EldenRingGuide() {
         {
             title: "Capítulo 9: Backup de Save",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Faça backup do save em <code>%appdata%/EldenRing</code> regularmente.
                 <br/>Se um cheater invadir (mesmo no Seamless é raro) ou o save corromper com mods, você restaura.
             </p>

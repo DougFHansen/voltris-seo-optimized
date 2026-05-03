@@ -50,7 +50,7 @@ export default function GTA6Guide() {
         <div className="min-h-screen bg-gray-900 text-white">
             <div className="container mx-auto px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-300 mb-8">{description}</p>
+                <p className="text-xl text-gray-400 mb-8">{description}</p>
                 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Requisitos Oficiais GTA 6</h2>
@@ -78,7 +78,7 @@ export default function GTA6Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Configurações Perfeitas por Hardware</h2>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-400 mb-4">
                         GTA 6 foi construído pensando em upscaling. DLSS 3 Quality + Medium RT é o sweet spot para maioria dos jogadores.
                     </p>
                     <div className="bg-blue-900/20 p-4 rounded">
@@ -97,10 +97,10 @@ export default function GTA6Guide() {
 
                 <div className="bg-gray-800 rounded-lg p-6 mb-8">
                     <h2 className="text-2xl font-bold mb-4">Otimização Avançada</h2>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-400 mb-4">
                         Use o Voltris Optimizer para configurar automaticamente seu PC para GTA 6:
                     </p>
-                    <ul className="list-disc list-inside text-gray-300 space-y-2">
+                    <ul className="list-disc list-inside text-gray-400 space-y-2">
                         <li>Perfil GPU otimizado para Rockstar Engine</li>
                         <li>Desativação de processos desnecessários</li>
                         <li>Otimização de RAM para mundo aberto</li>

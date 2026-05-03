@@ -40,7 +40,7 @@ export default function HAGSGuide() {
     {
       title: "O que é HAGS?",
       content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Tradicionalmente, a CPU (Processador) dizia para a GPU o que renderizar e gerenciava a memória de vídeo (VRAM). Com o <strong>Agendamento de GPU Acelerado por Hardware</strong> (HAGS), a Placa de Vídeo ganha autonomia para gerenciar sua própria memória. Isso tira carga do processador.
         </p>
 
@@ -48,7 +48,7 @@ export default function HAGSGuide() {
             <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
                 <span class="text-xl">📊</span> Benchmark Voltris
             </h4>
-            <p class="text-gray-300 mb-4">
+            <p class="text-gray-400 mb-4">
                 Não sabe se seu FPS melhorou? O olho humano engana. O <strong>Voltris Optimizer</strong> inclui um contador de FPS com gráfico de latência em tempo real (Overlay) para você testar com HAGS LIGADO e DESLIGADO e ver matematicamente qual é melhor para sua máquina.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
@@ -64,7 +64,7 @@ export default function HAGSGuide() {
     {
       title: "Quando ATIVAR?",
       content: `
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li><strong>Se você tem RTX Série 40 (4060, 4070...):</strong> OBRIGATÓRIO. O Frame Generation (DLSS 3) não funciona sem isso.</li>
             <li><strong>Se sua CPU é fraca (Gargalo de CPU):</strong> O HAGS ajuda a aliviar o processador, podendo dar uns 5-10 FPS extra em cenários cpu-bound.</li>
             <li><strong>Jogos Modernos (Cyberpunk, Alan Wake 2):</strong> Geralmente se beneficiam.</li>
@@ -74,7 +74,7 @@ export default function HAGSGuide() {
     {
       title: "Quando DESATIVAR?",
       content: `
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li><strong>Placas Antigas (GTX 1060, 1660):</strong> Muitos usuários relatam micro-stuttering (travadinhas) com o HAGS ligado nessas placas. O driver parece não lidar bem com a arquitetura Pascal/Turing antiga.</li>
             <li><strong>Problemas com OBS/Discord:</strong> Se sua stream fica travando ou a tela compartilhada do Discord pisca, experimente desligar. O HAGS prioriza tanto o jogo que "esquece" de renderizar o vídeo do OBS. (Versões recentes do OBS 29+ corrigiram isso, mas ainda acontece).</li>
             <li><strong>Jogos Competitivos Leves (Valorant, CS):</strong> Não faz diferença positiva, e alguns pros preferem desligado por "feeling" de mouse (embora tecnicamente devesse reduzir o input lag).</li>
@@ -84,7 +84,7 @@ export default function HAGSGuide() {
     {
       title: "Como Ativar/Desativar",
       content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Vá em <strong>Configurações > Sistema > Tela</strong>.</li>
             <li>Role até embaixo e clique em <strong>Elementos Gráficos</strong> (ou Configurações de Elementos Gráficos).</li>
             <li>Clique em "Alterar configurações de gráficos padrão".</li>
@@ -101,10 +101,10 @@ export default function HAGSGuide() {
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-green-400 font-bold mb-4 text-xl">Latência do Sistema</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     O HAGS e o Nvidia Reflex trabalham em áreas diferentes. O Reflex limpa a fila de renderização (Render Queue) para garantir que a CPU não mande frames demais que a GPU não aguenta. O HAGS otimiza como esses frames chegam na VRAM.
                 </p>
-                <p class="text-gray-300 text-sm">
+                <p class="text-gray-400 text-sm">
                     <strong>Melhor Combo:</strong> HAGS Ligado + Reflex On + Boost. Isso garante a menor latência matematicamente possível no Windows 11.
                 </p>
             </div>
@@ -116,10 +116,10 @@ export default function HAGSGuide() {
     {
       title: "Não aparece a opção pra mim?",
       content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se a opção não existe no seu Windows:
             </p>
-            <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+            <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
                 <li>Sua placa de vídeo é muito antiga (pré-GTX 1000).</li>
                 <li>Seu driver de vídeo está desatualizado (Atualize!).</li>
                 <li>Seu Windows 10 é uma versão muito antiga (Update para 2004 ou mais novo).</li>

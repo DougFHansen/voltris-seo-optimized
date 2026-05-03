@@ -43,12 +43,12 @@ export default function RawAccelGuide() {
         {
             title: "Introdução: O Paradigma Mudou",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           No Windows, a opção "Aprimorar Precisão do Ponteiro" é horrível porque a curva é ruim. O <strong>Raw Accel</strong> é um driver que intercepta o input do mouse antes do Windows e aplica uma curva matemática perfeita que você desenha.
         </p>
          <div class="bg-[#0A0A0F] border border-blue-500/30 p-5 rounded-xl my-6">
             <h4 class="text-blue-400 font-bold mb-2">A Teoria</h4>
-            <p class="text-gray-300 text-sm">
+            <p class="text-gray-400 text-sm">
                 Imagine ter sensibilidade super baixa (ex: 40cm/360) para mirar na cabeça de longe (precisão) e, instantaneamente, quando você move a mão rápido, sua sensibilidade dobra para você virar 180 graus (flick) sem quebrar o braço. É o melhor dos dois mundos.
             </p>
         </div>
@@ -57,7 +57,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 1: Instalação Segura",
             content: `
-        <ol class="list-decimal list-inside text-gray-300 text-sm space-y-2">
+        <ol class="list-decimal list-inside text-gray-400 text-sm space-y-2">
             <li>Baixe o Raw Accel do GitHub oficial (a1xd).</li>
             <li>Extraia a pasta. Execute <code>installer.exe</code>.</li>
             <li>Reinicie o PC.</li>
@@ -94,7 +94,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 3: Configurando sua Primeira Curva",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             1. <strong>Sens Multiplier:</strong> 1 (Ou ajuste para sua sens base). Ex: Se você usava 800 DPI 0.5 in-game, e agora vai usar 1600 DPI, coloque 0.5 aqui.
             <br/>2. <strong>Acceleration:</strong> Comece baixo. 0.05.
             <br/>3. <strong>Cap Type:</strong> Output.
@@ -108,7 +108,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 4: DPI Alto (1600/3200)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Para o Raw Accel funcionar bem, o mouse precisa enviar muitos dados (pontos).
             <br/>Use 1600 DPI ou mais.
             <br/>Ajuste o "Sens Multiplier" para baixar de volta pra sua sens original (Ex: 1600 DPI com mult 0.5 = sensação de 800 DPI).
@@ -119,7 +119,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 5: Offset (Zona Morta)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Offset</strong> é um valor de velocidade onde a aceleração NÃO aplica.
             <br/>Ex: Offset 15.
             <br/>Se você mover o mouse devagar (micro-ajuste), a aceleração é 0. É 100% consistente.
@@ -131,7 +131,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 6: Anisotropia (Y diferente de X)",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Você pode ter aceleração diferente na vertical.
             <br/>Ex: Em Apex Legends, você quer mover rápido pros lados, mas controlar recuo vertical devagar. Use uma curva X agressiva e Y baixa ou nula.
         </p>
@@ -140,7 +140,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 7: Anti-Cheat e Banimento",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             O Raw Accel é assinado digitalmente e aprovado pelo Vanguard (Valorant) e VAC (Valve).
             <br/>Ele é um driver de mouse legítimo, não um cheat de injeção de memória. 100% Seguro.
         </p>
@@ -152,7 +152,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 8: Treinando a Memória Muscular",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Vai demorar 1 ou 2 semanas para acostumar.
                 <br/>Jogue KovaaK's ou AimLab.
                 <br/>Cenários de "Tracking" ficam mais fáceis. Cenários de "Clicking" estático podem ficar estranhos no começo. Não desista no primeiro dia.
@@ -162,7 +162,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 9: Gráfico Visual",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Observe o gráfico no programa. A linha amarela mostra seu movimento em tempo real.
                 <br/>Faça movimentos normais de jogo e veja onde eles caem no gráfico. Ajuste a aceleração para começar apenas DEPOIS dos seus movimentos de micro-ajuste.
             </p>
@@ -171,7 +171,7 @@ export default function RawAccelGuide() {
         {
             title: "Capítulo 10: Desinstalação Limpa",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Se odiar:
                 <br/>Rode o <code>installer.exe</code> e clique em Uninstall. Reinicie.
                 <br/>Se não fizer isso, o driver continua ativo mesmo fechando o programa.

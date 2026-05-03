@@ -34,7 +34,7 @@ export default function WinSxSCleanGuide() {
         {
             title: "O que é a pasta WinSxS?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A pasta **WinSxS** (Windows Side-by-Side) é necessária para a estabilidade do sistema. Ela guarda cópias de arquivos vitais do Windows, drivers antigos e arquivos de atualizações passadas. Em 2026, com o acúmulo de patches do Windows 11, não é raro essa pasta ultrapassar os 20GB ou 30GB. O Windows mantém esses dados para o caso de você precisar "desinstalar" uma atualização ou recuperar um arquivo corrompido.
         </p>
       `
@@ -42,9 +42,9 @@ export default function WinSxSCleanGuide() {
         {
             title: "1. O Perigo da Exclusão Manual",
             content: `
-        <p class="mb-4 text-gray-300">Aviso Crítico:</p>
+        <p class="mb-4 text-gray-400">Aviso Crítico:</p>
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se você entrar na pasta <code>C:/Windows/WinSxS</code> e deletar qualquer arquivo manualmente, seu Windows <strong>não vai mais ligar</strong> ou vai parar de receber atualizações para sempre. Muitos arquivos ali dentro são "links diretos" para o sistema. Se você os apaga, você apaga partes do coração do Windows. Use apenas as ferramentas oficiais abaixo.
             </p>
         </div>
@@ -53,8 +53,8 @@ export default function WinSxSCleanGuide() {
         {
             title: "2. Limpeza profunda via DISM (O Jeito Certo)",
             content: `
-        <p class="mb-4 text-gray-300">Force o Windows a apagar versões antigas que não são mais necessárias:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Force o Windows a apagar versões antigas que não são mais necessárias:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Pesquise por <strong>CMD</strong> e abra como Administrador.</li>
             <li>Digite o comando: <code>Dism.exe /online /Cleanup-Image /StartComponentCleanup</code>.</li>
             <li>Este comando remove versões passadas de componentes que já foram atualizados.</li>
@@ -65,7 +65,7 @@ export default function WinSxSCleanGuide() {
         {
             title: "3. Usando a Limpeza de Disco Nativa",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Muitas pessoas esquecem de limpar os arquivos do sistema na ferramenta padrão:
             <br/><br/><strong>Dica:</strong> Procure por 'Limpeza de Disco' no Iniciar. Clique em <strong>'Limpar arquivos do sistema'</strong>. Marque a caixa <strong>'Limpeza de atualizações do Windows'</strong>. Isso instrui o sistema a esvaziar a WinSxS de forma segura após grandes patches de 2026.
         </p>

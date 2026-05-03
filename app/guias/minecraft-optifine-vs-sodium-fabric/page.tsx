@@ -34,7 +34,7 @@ export default function SodiumVsOptiFineGuide() {
         {
             title: "O Fim de um Reinado?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           O **OptiFine** dominou o Minecraft por mais de uma década. Ele era a solução única para tudo: performance, shaders, mantas e zoom. No entanto, em 2026, ele se tornou uma "caixa preta" de difícil atualização. O **Sodium** surgiu para resolver isso, focando exclusivamente em renderização moderna e eficiência de memória, deixando o jogo muito mais fluido em PCs modernos e antigos.
         </p>
       `
@@ -42,8 +42,8 @@ export default function SodiumVsOptiFineGuide() {
         {
             title: "1. Performance: O fator decisivo",
             content: `
-        <p class="mb-4 text-gray-300">Em testes reais de 2026, o Sodium vence na maioria dos cenários:</p>
-        <ul class="list-disc list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">Em testes reais de 2026, o Sodium vence na maioria dos cenários:</p>
+        <ul class="list-disc list-inside text-gray-400 space-y-3">
             <li><strong>Sodium:</strong> Reduz drasticamente o tempo de processamento de cada chunk. O FPS tende a ser mais alto e, o mais importante, mais estável (menos quedas bruscas).</li>
             <li><strong>OptiFine:</strong> Oferece um modo "Fast Render" que pode causar bugs visuais com outros mods. O ganho de FPS é menor comparado ao Sodium em novas versões do jogo (1.18+).</li>
         </ul >
@@ -54,7 +54,7 @@ export default function SodiumVsOptiFineGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">A Modularidade do Fabric:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Uma crítica comum ao Sodium era a falta de recursos como Shaders. Hoje, em 2026, isso foi resolvido pelo ecossistema Fabric: <br/><br/>
                 - Para <strong>Shaders</strong>, você usa o mod <strong>Iris</strong>. <br/>
                 - Para <strong>Zoom</strong>, você usa o <strong>Logical Zoom</strong> ou similares. <br/>
@@ -67,7 +67,7 @@ export default function SodiumVsOptiFineGuide() {
         {
             title: "3. Veredito Final",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Use OptiFine se:</strong> Você quer algo extremamente simples de instalar e não joga com muitos outros mods, ou se está em uma versão muito antiga do jogo (pré-1.12).
             <br/><br/>
             <strong>Use Sodium se:</strong> Você joga versões modernas (1.20+) e busca o máximo de FPS possível. Em 2026, o ecossistema Fabric/Sodium é onde a inovação está acontecendo e onde você terá a melhor experiência de jogo fluido.

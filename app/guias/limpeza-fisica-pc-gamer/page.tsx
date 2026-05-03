@@ -40,7 +40,7 @@ export default function CleaningGuide() {
         {
             title: "Por que limpar?",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           A poeira age como um cobertor térmico, impedindo o calor de sair das peças. Além disso, em dias úmidos, a poeira pode conduzir eletricidade e queimar a placa-mãe. PC limpo roda mais frio, mais silencioso e dura mais.
         </p>
       `
@@ -48,7 +48,7 @@ export default function CleaningGuide() {
         {
             title: "O que você precisa",
             content: `
-        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+        <ul class="list-disc list-inside text-gray-400 space-y-2 ml-4">
             <li><strong>Pincel de cerdas macias</strong> (tipo trincha de pintura nova).</li>
             <li><strong>Soprador de ar / Lata de Ar Comprimido</strong> (Ideal).</li>
             <li><strong>Pano de microfibra</strong>.</li>
@@ -61,7 +61,7 @@ export default function CleaningGuide() {
         {
             title: "Passo a Passo Seguro",
             content: `
-        <ol class="list-decimal list-inside text-gray-300 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
+        <ol class="list-decimal list-inside text-gray-400 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li><strong>Desligue tudo:</strong> Tire o PC da tomada. Aperte o botão Power algumas vezes para descarregar a energia residual dos capacitores.</li>
             <li><strong>Abra a lateral:</strong> Remova o vidro/tampa.</li>
             <li><strong>Ventoinhas (Fans):</strong> Use o pincel para soltar a poeira das pás. Segure a pá com o dedo para ela não girar loucamente se usar ar comprimido (girar muito rápido pode gerar voltagem reversa e queimar o motor).</li>
@@ -78,10 +78,10 @@ export default function CleaningGuide() {
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-orange-400 font-bold mb-4 text-xl">Só faça se necessário</h4>
-                <p class="text-gray-300 mb-4">
+                <p class="text-gray-400 mb-4">
                     Não troque a pasta térmica de uma placa de vídeo nova (perde garantia). Do processador, troque se as temperaturas estiverem altas.
                 </p>
-                <ol class="list-decimal list-inside text-gray-300 space-y-2 ml-4 text-sm">
+                <ol class="list-decimal list-inside text-gray-400 space-y-2 ml-4 text-sm">
                     <li>Solte os parafusos do cooler em X (cruz).</li>
                     <li>Gire levemente o cooler para soltar (se for AMD, cuidado para não arrancar o processador junto).</li>
                     <li>Limpe a pasta velha cinza com papel toalha e Álcool Isopropílico até brilhar.</li>
@@ -97,7 +97,7 @@ export default function CleaningGuide() {
         {
             title: "Erro Comum: Secador de Cabelo",
             content: `
-            <p class="mb-4 text-gray-300">
+            <p class="mb-4 text-gray-400">
                 Nunca use secador no modo quente. O calor excessivo pode derreter soldas ou plásticos. No modo frio é aceitável, mas aspirador de pó é perigoso (gera muita estática no bico de plástico). O melhor é soprador específico para eletrônicos.
             </p>
             `

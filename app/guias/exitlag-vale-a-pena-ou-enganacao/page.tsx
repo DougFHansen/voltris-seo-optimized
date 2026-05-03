@@ -34,7 +34,7 @@ export default function ExitLagReviewGuide() {
         {
             title: "O dilema das rotas brasileiras em 2026",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Em 2026, ter uma internet de 1 Giga (1000 Mbps) não garante que você terá um ping baixo. A velocidade de download é como a largura de uma estrada, mas o **Ping** é o tempo que o carro leva para ir e voltar. Muitas operadoras no Brasil usam rotas ineficientes, enviando seus dados de São Paulo para os EUA antes de chegarem ao servidor do jogo, que às vezes está no Rio de Janeiro. É aqui que o **ExitLag** promete agir.
         </p>
       `
@@ -42,8 +42,8 @@ export default function ExitLagReviewGuide() {
         {
             title: "1. Como o ExitLag realmente funciona?",
             content: `
-        <p class="mb-4 text-gray-300">Não é mágica, é engenharia de rede:</p>
-        <p class="text-sm text-gray-300">
+        <p class="mb-4 text-gray-400">Não é mágica, é engenharia de rede:</p>
+        <p class="text-sm text-gray-400">
             O ExitLag possui servidores dedicados espalhados pelo mundo. Ele "sequestra" a conexão do seu jogo e a força a passar pelos servidores dele. <br/><br/>
             <strong>Exemplo:</strong> Se a sua operadora manda seus dados por um caminho de 15 pulos (lento), o ExitLag pode achar um caminho de 3 pulos (rápido). Além disso, ele usa uma técnica de <strong>Multipath</strong>, enviando os dados por duas ou três rotas ao mesmo tempo; se uma falhar, a outra entrega o dado, eliminando o odiado <strong>Packet Loss</strong> (Perda de Pacote).
         </p>
@@ -54,7 +54,7 @@ export default function ExitLagReviewGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">O limite da física:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 Se você já mora perto do servidor do jogo (ex: em São Paulo jogando LoL) e o seu ping já é de 5ms a 10ms, o ExitLag **não vai baixar o seu ping**. Ele não pode fazer a luz viajar mais rápido que o limite físico. <br/><br/>
                 Também não resolverá o lag se a sua internet for via Wi-Fi instável ou rádio. O software otimiza a rota da rua pra fora, não a bagunça de cabos dentro da sua casa em 2026.
             </p>
@@ -64,7 +64,7 @@ export default function ExitLagReviewGuide() {
         {
             title: "3. O veredito para o Gamer em 2026",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             <strong>Teste Grátis:</strong> 
             <br/><br/>Em 2026, a maioria desses serviços oferece 3 dias de teste. A nossa recomendação é: instale e jogue no horário de pico (entre 19h e 22h). Se o seu ping cair ou se as travadinhas sumirem, vale o investimento. Se ficar na mesma, o problema é a sua conexão física ou o servidor do próprio jogo, e nenhum software no mundo resolverá isso.
         </p>

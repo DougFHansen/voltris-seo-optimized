@@ -34,7 +34,7 @@ export default function GTAIVLagFixGuide() {
         {
             title: "O Pior Port da Rockstar na História",
             content: `
-        <p class="mb-6 text-gray-300 leading-relaxed text-lg">
+        <p class="mb-6 text-gray-400 leading-relaxed text-lg">
           Lançado em 2008, o GTA IV nunca foi devidamente corrigido para os PCs modernos. Mesmo com uma RTX 4090, o jogo pode apresentar quedas de FPS para menos de 30 e travamentos (stuttering) constantes. Isso acontece porque o jogo usa uma versão primitiva do DirectX 9 que não sabe como conversar com os drivers atuais de 2026. A solução não está em diminuir os gráficos, mas em **reescrever como o jogo renderiza**.
         </p>
       `
@@ -42,8 +42,8 @@ export default function GTAIVLagFixGuide() {
         {
             title: "1. DXVK: O Salvador do FPS",
             content: `
-        <p class="mb-4 text-gray-300">O DXVK converte os comandos DirectX 9 para a API Vulkan, que é muito mais moderna:</p>
-        <ol class="list-decimal list-inside text-gray-300 space-y-3">
+        <p class="mb-4 text-gray-400">O DXVK converte os comandos DirectX 9 para a API Vulkan, que é muito mais moderna:</p>
+        <ol class="list-decimal list-inside text-gray-400 space-y-3">
             <li>Baixe o <strong>DXVK</strong> (versão estável mas recente de 2026) no GitHub.</li>
             <li>Extraia os arquivos <code>d3d9.dll</code> e <code>dxgi.dll</code> da pasta x32 para a pasta raiz do seu GTA IV (onde fica o GTAIV.exe).</li>
             <li>Rode o jogo. No primeiro minuto ele pode dar umas travadas (enquanto compila shaders), mas depois o FPS dobrará e o stuttering desaparecerá 100%.</li>
@@ -55,7 +55,7 @@ export default function GTAIVLagFixGuide() {
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h4 class="text-white font-bold mb-2">Correções Essenciais:</h4>
-            <p class="text-sm text-gray-300">
+            <p class="text-sm text-gray-400">
                 O GTA IV buga se você rodar acima de 30 FPS. Missões como a última (helicóptero) tornam-se impossíveis de completar. O mod <strong>FusionFix</strong> resolve isso, além de consertar texturas que não carregam e sombras que ficam "piscando" em placas de vídeo modernas de 2026.
             </p>
         </div>
@@ -64,7 +64,7 @@ export default function GTAIVLagFixGuide() {
         {
             title: "3. O arquivo Commandline.txt",
             content: `
-        <p class="mb-4 text-gray-300">
+        <p class="mb-4 text-gray-400">
             Se o jogo diz que você tem "0MB de VRAM" e trava as configurações no Mínimo:
             <br/>Crie um arquivo chamado <code>commandline.txt</code> na pasta do jogo e escreva apenas: <code>-availablevidmem 4096</code> (ou o valor total da sua VRAM). Isso forçará o GTA IV a reconhecer sua placa de vídeo corretamente.
         </p>
