@@ -29,7 +29,7 @@ const FaWhatsapp = dynamic(() => import('react-icons/fa').then(mod => mod.FaWhat
     ssr: false
 });
 
-const Footer = dynamic(() => import('@/components/Footer'), { ssr: false });
+const Footer = dynamic(() => import('@/components/Footer'), { ssr: true }); // SSR ATIVADO PARA PERFORMANCE
 
 
 import { motion } from 'framer-motion';

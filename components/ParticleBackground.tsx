@@ -21,7 +21,7 @@ const ParticleBackground: React.FC = () => {
 
   // Configuration - SaaS High-End Style
   const config = {
-    particleCount: { desktop: 40, mobile: 20 },
+    particleCount: { desktop: 40, mobile: 8 }, // REDUZIDO DE 20 PARA 8 NO MOBILE PARA PERFORMANCE
     connectionDistance: 100,
     mouseInfluenceRadius: 150,
     baseSpeed: 0.8,

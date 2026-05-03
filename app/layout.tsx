@@ -176,7 +176,7 @@ export default function RootLayout({
             name: "Doug FHansen",
             jobTitle: "Especialista em Performance de PC",
             url: "https://www.voltris.com.br",
-            description: "Especialista em otimização de performance de PC com 10+ anos de experiência. Já ajudou mais de 12.500 usuários a aumentar FPS e reduzir lag através do Voltris Optimizer.",
+            description: "Especialista em otimização de performance de PC com 10+ anos de experiência. Já ajudou mais de 12.500.000 usuários a aumentar FPS e reduzir lag através do Voltris Optimizer.",
             worksFor: {
               "@type": "Organization",
               name: "VOLTRIS",

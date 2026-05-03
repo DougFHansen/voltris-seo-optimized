@@ -29,11 +29,23 @@ export default function Header() {
   const isHome = pathname === '/';
 
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+    const handleScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setScrolled(window.scrollY > 20), 100); // DEBOUNCE DE 100MS PARA REDUZIR RERENDERS
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true }); // PASSIVE PARA PERFORMANCE
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const handleLogout = async () => {
@@ -85,7 +97,7 @@ export default function Header() {
   return (
     <>
       <header
-        className="mobile-menu-optimized fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-300 bg-white/95 backdrop-blur-lg border-b border-gray-200"
+        className={`mobile-menu-optimized fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-300 bg-white/95 border-b border-gray-200 ${!isMobile ? 'backdrop-blur-lg' : ''}`}
       >
         {/* Linha Neon Fina – ativa no scroll */}
         <div
