@@ -26,11 +26,11 @@ export async function middleware(request: NextRequest) {
         return new NextResponse(null, { status: 410 });
     }
 
-    // Redirecionamento 301: www.voltris.com.br → voltris.com.br
+    // Redirecionamento 301: voltris.com.br → www.voltris.com.br
     const hostname = request.nextUrl.hostname;
-    if (hostname === 'www.voltris.com.br') {
+    if (hostname === 'voltris.com.br') {
         const url = request.nextUrl.clone();
-        url.hostname = 'voltris.com.br';
+        url.hostname = 'www.voltris.com.br';
         return NextResponse.redirect(url, 301);
     }
 

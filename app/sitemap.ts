@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 
-const BASE_URL = 'https://voltris.com.br';
+const BASE_URL = 'https://www.voltris.com.br';
 
 const CRITICAL_ROUTES = [
   { path: '', lastModified: new Date('2026-05-02') },
@@ -55,6 +55,21 @@ const CRITICAL_ROUTES = [
   { path: '/desativar-telemetria-windows-11', lastModified: new Date('2026-05-02') },
 ] as const;
 
+// Lista de slugs que são origem de redirects (não devem ir para o sitemap)
+const REDIRECT_SOURCES = new Set([
+  'ssd-vs-hd-qual-melhor', 'hds-vs-ssd-qual-a-diferenca', 'nvme-vs-sata-vale-a-pena-upgrade', 'ssd-nvme-vs-sata-jogos',
+  'melhor-dns-para-jogos-google-vs-cloudflare', 'dns-mais-rapido-para-jogos-benchmark', 'debloating-windows-11',
+  'overwatch-2-melhores-configuracoes-fps', 'red-dead-redemption-2-melhores-configuracoes', 'euro-truck-simulator-2-otimizacao',
+  'rocket-league-melhores-configuracoes-camera', 'manutencao-preventiva', 'roblox-fps-unlocker-guia', 'roblox-fps-unlocker-tutorial',
+  'eld-ring-stuttering-fix-dx12', 'elden-ring-fps-unlock-widescreen-fix-stutter', 'obs-studio-melhores-configuracoes-stream',
+  'obs-studio-streaming-twitch-youtube-guia-completo', 'cadeira-gamer-ergonomia-postura-aim', 'teclados-mecanicos-switches-guia',
+  'water-cooler-vs-air-cooler', 'perifericos-gamer-vale-a-pena', 'bluestacks-ldplayer-otimizacao-free-fire-120fps',
+  'bluestacks-vs-ldplayer-qual-mais-leve', 'vpn-vale-a-pena-jogos', 'hdr-windows-vale-a-pena-jogos', 'sync-vertical-g-sync-free-sync-explicacao',
+  'reduzir-ping-jogos-online', 'reduzir-ping-exitlag-noping-dns', 'backup-dados', 'the-witcher-3-next-gen-performance',
+  'valorant-fix-van-9003-secure-boot', 'gta-iv-complete-edition-lag-fix', 'discord-otimizar-para-jogos', 'formatacao-windows',
+  'gta-v-como-resolver-texturas-sumindo-ou-demorando-para-carregar'
+]);
+
 function getGuideRoutes(): string[] {
   const guidesDir = path.join(process.cwd(), 'app', 'guias');
 
@@ -66,6 +81,7 @@ function getGuideRoutes(): string[] {
       .map((entry) => entry.name)
       .filter((slug) => {
         if (slug.startsWith('_') || slug.startsWith('.')) return false;
+        if (REDIRECT_SOURCES.has(slug)) return false;
         const pageTsx = path.join(guidesDir, slug, 'page.tsx');
         const pageJs = path.join(guidesDir, slug, 'page.js');
         return fs.existsSync(pageTsx) || fs.existsSync(pageJs);

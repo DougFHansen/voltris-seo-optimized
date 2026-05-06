@@ -1,6 +1,13 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: "Otimização de Windows para Jogos 2026: CS2, Valorant, Fortnite | VOLTRIS",
+  description: "Guias específicos por jogo para aumentar FPS e reduzir input lag no Windows. CS2, Valorant, Warzone, LoL, Minecraft e mais.",
+  alternates: { canonical: 'https://www.voltris.com.br/otimizacao-windows-jogos' }
+};
 
 const gameOptimizations = [
   {
