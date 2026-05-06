@@ -311,7 +311,7 @@ export default function HomeClient() {
                                     className="inline-flex items-center justify-center px-10 py-5 font-black text-slate-900 transition-all duration-300 bg-white rounded-2xl hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs"
                                 >
                                     <FaWhatsapp className="mr-2 text-lg" />
-                                    Consultoria VIP
+                                    Falar com Especialista
                                 </a>
                             </motion.div>
                         </div>
