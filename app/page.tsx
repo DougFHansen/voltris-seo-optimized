@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://www.voltris.com.br',
+    canonical: 'https://voltris.com.br',
   },
 };
 

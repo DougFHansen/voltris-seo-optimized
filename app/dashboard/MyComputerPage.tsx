@@ -231,7 +231,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 {/* Visual Identity / Host Info */}
                 <div className="p-10 xl:w-96 flex flex-col items-center justify-center text-center border-b xl:border-b-0 xl:border-r border-gray-200 xl:bg-gray-50/[0.5]">
                   <div className="relative mb-8">
-                    <div className={`w-40 h-40 rounded-[3rem] flex items-center justify-center text-white relative transition-all duration-700 group-hover:rotate-3 group-hover:scale-110 ${device.is_online ? 'bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B]' : 'bg-gray-100 grayscale opacity-30'}`}>
+                    <div className={`w-40 h-40 rounded-[3rem] flex items-center justify-center relative transition-all duration-700 group-hover:rotate-3 group-hover:scale-110 ${device.is_online ? 'bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white' : 'bg-gray-100 grayscale opacity-30 text-gray-400'}`}>
                        <FiMonitor className="w-16 h-16 relative z-10" />
                        {device.is_online && <div className="absolute inset-0 rounded-[3rem] blur-2xl opacity-60 bg-gradient-to-br from-[#31A8FF] to-[#FF4B6B] animate-pulse"></div>}
                        <div className="absolute inset-2 border border-white/20 rounded-[2.5rem] opacity-30"></div>

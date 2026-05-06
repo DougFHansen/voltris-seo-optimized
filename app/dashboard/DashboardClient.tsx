@@ -286,8 +286,10 @@ function DashboardContent() {
                   <div className={`
                     flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[9px] sm:text-[11px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-all whitespace-nowrap
                     ${activeTab === tab.id 
-                      ? 'bg-white text-black' 
-                      : 'text-white/40 hover:text-white hover:bg-white/5'}
+                      ? 'bg-white text-black shadow-lg' 
+                      : transparencyMode 
+                        ? 'text-white/40 hover:text-white hover:bg-white/5' 
+                        : 'text-gray-400 hover:text-gray-900 hover:bg-gray-200'}
                   `}
                   style={{ 
                     boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none'
@@ -375,7 +377,7 @@ function DashboardContent() {
                           {/* Card Top */}
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white relative ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF]' : 'bg-gray-100 border border-gray-200'}`}>
+                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center relative transition-all duration-500 ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF] text-white' : 'bg-gray-100 border border-gray-200 text-gray-400'}`}>
                                 <FiCheckCircle className="w-8 h-8" />
                                 <div className={`absolute inset-0 blur-lg opacity-40 ${lic.is_active ? 'bg-[#31A8FF]' : 'bg-transparent'}`}></div>
                               </div>

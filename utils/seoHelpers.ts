@@ -15,8 +15,8 @@ export interface SEOConfig {
 }
 
 export function generateMetadata(config: SEOConfig): Metadata {
-  const baseUrl = 'https://www.voltris.com.br';
-  const defaultImage = 'https://www.voltris.com.br/logo.png';
+  const baseUrl = 'https://voltris.com.br';
+  const defaultImage = 'https://voltris.com.br/logo.png';
   
   return {
     title: config.title,
@@ -104,8 +104,8 @@ export function generateOrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "VOLTRIS",
-    "url": "https://www.voltris.com.br",
-    "logo": "https://www.voltris.com.br/logo.png",
+    "url": "https://voltris.com.br",
+    "logo": "https://voltris.com.br/logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+55-11-99671-6235",
@@ -126,10 +126,10 @@ export function generateLocalBusinessSchema(config: {
     "@type": "LocalBusiness",
     "name": config.name,
     "description": config.description,
-    "image": "https://www.voltris.com.br/logo.png",
-    "logo": "https://www.voltris.com.br/logo.png",
-    "@id": "https://www.voltris.com.br",
-    "url": "https://www.voltris.com.br",
+    "image": "https://voltris.com.br/logo.png",
+    "logo": "https://voltris.com.br/logo.png",
+    "@id": "https://voltris.com.br",
+    "url": "https://voltris.com.br",
     "telephone": "+55-11-99671-6235",
     "email": "contato@voltris.com.br",
     "address": {
@@ -207,7 +207,7 @@ export function generateBreadcrumbSchema(breadcrumbs: Array<{ name: string; url:
       "@type": "ListItem",
       "position": index + 1,
       "name": crumb.name,
-      "item": `https://www.voltris.com.br${crumb.url}`
+      "item": `https://voltris.com.br${crumb.url}`
     }))
   };
 }
@@ -227,7 +227,7 @@ export function generateArticleSchema(config: {
     "@type": "Article",
     "headline": config.title,
     "description": config.description,
-    "image": config.image || "https://www.voltris.com.br/logo.png",
+    "image": config.image || "https://voltris.com.br/logo.png",
     "author": {
       "@type": "Person",
       "name": config.author
@@ -237,14 +237,14 @@ export function generateArticleSchema(config: {
       "name": "VOLTRIS",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.voltris.com.br/logo.png"
+        "url": "https://voltris.com.br/logo.png"
       }
     },
     "datePublished": config.publishedTime,
     "dateModified": config.modifiedTime || config.publishedTime,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://www.voltris.com.br"
+      "@id": "https://voltris.com.br"
     },
     ...(config.section && { "articleSection": config.section }),
     ...(config.tags && { "keywords": config.tags.join(", ") })
@@ -256,10 +256,10 @@ export function generateWebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "VOLTRIS",
-    "url": "https://www.voltris.com.br",
+    "url": "https://voltris.com.br",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://www.voltris.com.br/?s={search_term_string}",
+      "target": "https://voltris.com.br/?s={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };

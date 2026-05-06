@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 
-const BASE_URL = 'https://www.voltris.com.br';
+const BASE_URL = 'https://voltris.com.br';
 
 const CRITICAL_ROUTES = [
   { path: '', lastModified: new Date('2026-05-02') },

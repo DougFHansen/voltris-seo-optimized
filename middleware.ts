@@ -6,8 +6,10 @@ const SECURITY_HEADERS = {
     'X-Frame-Options': 'DENY',
     'X-XSS-Protection': '1; mode=block',
     'Referrer-Policy': 'strict-origin-when-cross-origin',
-    'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
-    'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+    'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+    'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+    'X-DNS-Prefetch-Control': 'on',
+    'Server': 'Voltris Web Network',
 }
 
 export async function middleware(request: NextRequest) {
@@ -24,11 +26,15 @@ export async function middleware(request: NextRequest) {
         return new NextResponse(null, { status: 410 });
     }
 
-    // Redirecionamento 301: voltris.com.br → www.voltris.com.br
+    // Redirecionamento 301: www.voltris.com.br → voltris.com.br (Preferência do Usuário)
+    // Força HTTPS para evitar erros de redirecionamento quebrado
     const hostname = request.nextUrl.hostname;
-    if (hostname === 'voltris.com.br') {
+    const protocol = request.nextUrl.protocol;
+
+    if (hostname === 'www.voltris.com.br' || (hostname === 'voltris.com.br' && protocol === 'http:')) {
         const url = new URL(request.url);
-        url.hostname = 'www.voltris.com.br';
+        url.hostname = 'voltris.com.br';
+        url.protocol = 'https:';
         return NextResponse.redirect(url, 301);
     }
 
@@ -38,6 +44,11 @@ export async function middleware(request: NextRequest) {
     Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
         response.headers.set(key, value)
     })
+
+    // Ocultar informações de infraestrutura
+    response.headers.delete('x-powered-by')
+    response.headers.delete('x-vercel-id')
+    response.headers.delete('x-vercel-cache')
 
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY

@@ -10,7 +10,7 @@ export function generateBreadcrumbJsonLd(breadcrumbs: BreadcrumbItem[]) {
     '@type': 'ListItem',
     position: index + 1,
     name: breadcrumb.name,
-    item: `https://www.voltris.com.br${breadcrumb.href}`
+    item: `https://voltris.com.br${breadcrumb.href}`
   }));
 
   return {
@@ -45,14 +45,14 @@ export function generateArticleJsonLd({
     author: {
       '@type': 'Person',
       name: author,
-      url: 'https://www.voltris.com.br'
+      url: 'https://voltris.com.br'
     },
     publisher: {
       '@type': 'Organization',
       name: 'VOLTRIS',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.voltris.com.br/logo.png'
+        url: 'https://voltris.com.br/logo.png'
       }
     },
     datePublished: datePublished,
@@ -62,7 +62,7 @@ export function generateArticleJsonLd({
     articleBody: description,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': 'https://www.voltris.com.br'
+      '@id': 'https://voltris.com.br'
     }
   };
 }
@@ -72,19 +72,19 @@ export function generateWebsiteJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'VOLTRIS',
-    url: 'https://www.voltris.com.br',
+    url: 'https://voltris.com.br',
     description: 'Suporte técnico remoto especializado em Windows e criação de sites profissionais',
     publisher: {
       '@type': 'Organization',
       name: 'VOLTRIS',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.voltris.com.br/logo.png'
+        url: 'https://voltris.com.br/logo.png'
       }
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://www.voltris.com.br/buscar?q={search_term_string}',
+      target: 'https://voltris.com.br/buscar?q={search_term_string}',
       'query-input': 'required name=search_term_string'
     }
   };
@@ -142,11 +142,11 @@ export function generateSoftwareApplicationSchema({
     creator: {
       '@type': 'Organization',
       name: 'VOLTRIS',
-      url: 'https://www.voltris.com.br'
+      url: 'https://voltris.com.br'
     },
     softwareHelp: {
       '@type': 'CreativeWork',
-      url: 'https://www.voltris.com.br/voltrisoptimizer/documentacao'
+      url: 'https://voltris.com.br/voltrisoptimizer/documentacao'
     },
     softwareRequirements: [
       'Windows 10',
