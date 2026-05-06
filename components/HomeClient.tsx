@@ -221,7 +221,8 @@ export default function HomeClient() {
                     className="
                     relative
                     w-full
-                    min-h-screen
+                    min-h-[100vh]
+                    lg:h-screen
                     bg-[#020205]
                     overflow-hidden
                     flex
@@ -232,10 +233,9 @@ export default function HomeClient() {
                     sm:px-6
                     lg:px-12
                     xl:px-24
-                    pt-20
-                    pb-6
-                    lg:pt-24
-                    lg:pb-12
+                    pt-24
+                    pb-12
+                    lg:py-0
                 "
                     aria-label="Software de otimização de PC para Windows - Voltris Optimizer"
                 >
@@ -252,13 +252,12 @@ export default function HomeClient() {
                         <ParticleBackground />
                     </div>
 
-                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-12 h-full relative z-[10]">
+                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8 lg:gap-12 h-full relative z-[10] py-4 lg:py-0">
 
                         {/* Left Content - Typography & CTA */}
-                        <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-6 lg:z-20">
-
-                            {/* Text Content - Order 1 */}
-                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-8 z-20 w-full lg:pb-32">
+                        <div className="flex flex-col flex-1 items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 z-20">
+                            {/* Text Content */}
+                            <div className="flex flex-col items-center lg:items-start gap-4 lg:gap-6 w-full">
                                 <motion.div 
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -272,7 +271,7 @@ export default function HomeClient() {
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight font-sans lg:mt-8"
+                                    className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black text-white leading-[1.1] tracking-tight font-sans"
                                 >
                                     <span className="text-gradient-premium">Otimização de Windows e Aumento de</span> <br className="hidden lg:block" />
                                     <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Desempenho para Jogos e PC</span>
@@ -282,18 +281,18 @@ export default function HomeClient() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4 }}
-                                    className="text-base sm:text-lg lg:text-xl text-slate-400 max-w-xl leading-relaxed font-medium"
+                                    className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium"
                                 >
                                     Aumente FPS, reduza travamentos e extraia o máximo desempenho do seu computador com <strong className="text-white">otimização avançada</strong> e ajustes a nível de sistema.
                                 </motion.p>
                             </div>
 
-                            {/* Buttons - Order 3 */}
+                            {/* Buttons */}
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.6 }}
-                                className="order-3 lg:order-none flex flex-col sm:flex-row gap-5 w-full sm:w-auto mt-4 lg:absolute lg:bottom-0 lg:left-0 lg:z-30 lg:mb-10"
+                                className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto z-30"
                             >
                                 <a
                                     href="/todos-os-servicos"
@@ -321,7 +320,7 @@ export default function HomeClient() {
                             initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
                             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                             transition={{ duration: 1.2, ease: "easeOut" }}
-                            className="order-2 lg:order-none flex-1 w-full max-w-[650px] lg:max-w-full relative flex items-center justify-center perspective animate-float"
+                            className="order-3 lg:order-none flex-1 w-full max-w-[450px] md:max-w-[550px] lg:max-w-[500px] xl:max-w-[650px] relative flex items-center justify-center perspective animate-float mt-8 lg:mt-0"
                         >
                             {/* Background Glow behind the card */}
                             <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/30 to-[#FF4B6B]/30 blur-[120px] rounded-full transform scale-75 animate-pulse"></div>
