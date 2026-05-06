@@ -265,17 +265,17 @@ export default function HomeClient() {
                                     className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2"
                                 >
                                     <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
-                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Engine v4.0 Ativa</span>
+                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">A Próxima Geração da Performance no Windows</span>
                                 </motion.div>
 
                                 <motion.h1 
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight font-sans lg:mt-8"
+                                    className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight font-sans lg:mt-8"
                                 >
-                                    <span className="text-gradient-premium">A Próxima Geração da</span> <br className="hidden lg:block" />
-                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Performance Windows</span>
+                                    <span className="text-gradient-premium">Otimização de Windows e Aumento de</span> <br className="hidden lg:block" />
+                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Desempenho para Jogos e PC</span>
                                 </motion.h1>
 
                                 <motion.p 
@@ -284,7 +284,7 @@ export default function HomeClient() {
                                     transition={{ delay: 0.4 }}
                                     className="text-base sm:text-lg lg:text-xl text-slate-400 max-w-xl leading-relaxed font-medium"
                                 >
-                                    Extraia cada frame do seu hardware. A <strong className="text-white">Voltris</strong> redefine os limites entre software e hardware com otimização a nível de kernel.
+                                    Aumente FPS, reduza travamentos e extraia o máximo desempenho do seu computador com <strong className="text-white">otimização avançada</strong> e ajustes a nível de sistema.
                                 </motion.p>
                             </div>
 
