@@ -259,26 +259,26 @@ export default function HomeClient() {
 
                             {/* Text Content - Order 1 */}
                             <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-6 z-20 w-full lg:pb-40">
-                                <motion.div 
+                                <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2"
                                 >
                                     <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
-                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">A Próxima Geração da Performance no Windows</span>
+                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Otimização de PC com IA Inteligente para Máximo Desempenho no Windows</span>
                                 </motion.div>
 
-                                <motion.h1 
+                                <motion.h1
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
                                     className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4"
                                 >
-                                    <span className="text-gradient-premium">Otimização de Windows e</span> <br className="hidden lg:block" />
-                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Performance para Jogos</span>
+                                    <span className="text-gradient-premium">Otimização de PC com IA para</span> <br className="hidden lg:block" />
+                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Máximo Desempenho no Windows</span>
                                 </motion.h1>
 
-                                <motion.p 
+                                <motion.p
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4 }}
@@ -289,7 +289,7 @@ export default function HomeClient() {
                             </div>
 
                             {/* Buttons - Order 3 */}
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.6 }}
@@ -317,7 +317,7 @@ export default function HomeClient() {
                         </div>
 
                         {/* Right Content - Visual Component */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
                             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                             transition={{ duration: 1.2, ease: "easeOut" }}
