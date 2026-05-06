@@ -258,7 +258,7 @@ export default function HomeClient() {
                         <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-6 lg:z-20">
 
                             {/* Text Content - Order 1 */}
-                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-8 z-20 w-full lg:pb-32">
+                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-6 z-20 w-full lg:pb-20">
                                 <motion.div 
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -272,7 +272,7 @@ export default function HomeClient() {
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight font-sans lg:mt-8"
+                                    className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4"
                                 >
                                     <span className="text-gradient-premium">Otimização de Windows e Aumento de</span> <br className="hidden lg:block" />
                                     <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Desempenho para Jogos e PC</span>
@@ -282,7 +282,7 @@ export default function HomeClient() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4 }}
-                                    className="text-base sm:text-lg lg:text-xl text-slate-400 max-w-xl leading-relaxed font-medium"
+                                    className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium"
                                 >
                                     Aumente FPS, reduza travamentos e extraia o máximo desempenho do seu computador com <strong className="text-white">otimização avançada</strong> e ajustes a nível de sistema.
                                 </motion.p>
