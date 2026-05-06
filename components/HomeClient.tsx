@@ -255,10 +255,10 @@ export default function HomeClient() {
                     <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-12 h-full relative z-[10]">
 
                         {/* Left Content - Typography & CTA */}
-                        <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-6 lg:z-20">
+                        <div className="flex flex-col flex-1 items-center lg:items-start text-center lg:text-left gap-8 lg:gap-10 z-20">
 
-                            {/* Text Content - Order 1 */}
-                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-6 z-20 w-full lg:pb-40">
+                            {/* Text Content */}
+                            <div className="flex flex-col items-center lg:items-start gap-4 lg:gap-6 w-full">
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -288,12 +288,12 @@ export default function HomeClient() {
                                 </motion.p>
                             </div>
 
-                            {/* Buttons - Order 3 */}
-                            <motion.div
+                            {/* Buttons */}
+                            <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.6 }}
-                                className="order-3 lg:order-none flex flex-col sm:flex-row gap-5 w-full sm:w-auto mt-4 lg:absolute lg:bottom-0 lg:left-0 lg:z-30 lg:mb-6"
+                                className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto z-30"
                             >
                                 <a
                                     href="/todos-os-servicos"
