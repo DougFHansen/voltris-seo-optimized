@@ -3,7 +3,7 @@
  * Garante consistência em todo o projeto para SEO e IndexNow
  */
 
-const CANONICAL_HOST = 'https://voltris.com.br';
+const CANONICAL_HOST = 'https://www.voltris.com.br';
 
 export function normalizeUrl(url: string): string {
   try {
@@ -17,8 +17,8 @@ export function normalizeUrl(url: string): string {
     // Forçar HTTPS
     urlObj.protocol = 'https:';
     
-    // Forçar voltris.com.br
-    urlObj.hostname = 'voltris.com.br';
+    // Forçar www.voltris.com.br
+    urlObj.hostname = 'www.voltris.com.br';
     
     // Remover trailing slash
     const pathname = urlObj.pathname.replace(/\/$/, '') || '/';
