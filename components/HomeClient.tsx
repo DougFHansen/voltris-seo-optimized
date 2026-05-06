@@ -258,7 +258,7 @@ export default function HomeClient() {
                         <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-6 lg:z-20">
 
                             {/* Text Content - Order 1 */}
-                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-6 z-20 w-full lg:pb-20">
+                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-6 z-20 w-full lg:pb-40">
                                 <motion.div 
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -293,7 +293,7 @@ export default function HomeClient() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.6 }}
-                                className="order-3 lg:order-none flex flex-col sm:flex-row gap-5 w-full sm:w-auto mt-4 lg:absolute lg:bottom-0 lg:left-0 lg:z-30 lg:mb-10"
+                                className="order-3 lg:order-none flex flex-col sm:flex-row gap-5 w-full sm:w-auto mt-4 lg:absolute lg:bottom-0 lg:left-0 lg:z-30 lg:mb-6"
                             >
                                 <a
                                     href="/todos-os-servicos"
