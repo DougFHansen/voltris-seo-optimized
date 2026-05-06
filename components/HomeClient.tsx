@@ -265,7 +265,7 @@ export default function HomeClient() {
                                     className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2"
                                 >
                                     <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
-                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Otimização de PC com IA Inteligente para Máximo Desempenho no Windows</span>
+                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Voltris Engine v4.0 • IA Inteligente Ativa</span>
                                 </motion.div>
 
                                 <motion.h1
