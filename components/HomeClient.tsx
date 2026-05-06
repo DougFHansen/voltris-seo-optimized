@@ -274,8 +274,8 @@ export default function HomeClient() {
                                     transition={{ delay: 0.2 }}
                                     className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4"
                                 >
-                                    <span className="text-gradient-premium">Otimização de PC com IA para</span> <br className="hidden lg:block" />
-                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Máximo Desempenho no Windows</span>
+                                    <span className="text-gradient-premium">Otimização de Windows com IA</span> <br className="hidden lg:block" />
+                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Máximo Desempenho</span>
                                 </motion.h1>
 
                                 <motion.p
