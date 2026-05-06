@@ -300,7 +300,7 @@ export default function HomeClient() {
                                     className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/10 overflow-hidden glow-border"
                                 >
                                     <span className="relative z-10 flex items-center gap-2 uppercase tracking-widest text-xs">
-                                        Explorar Planos Premium
+                                        Explorar Serviços
                                         <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                     </span>
                                 </a>
