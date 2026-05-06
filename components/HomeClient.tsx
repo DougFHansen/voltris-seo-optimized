@@ -297,7 +297,7 @@ export default function HomeClient() {
                             >
                                 <a
                                     href="/todos-os-servicos"
-                                    className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/10 overflow-hidden glow-border"
+                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/10 overflow-hidden glow-border"
                                 >
                                     <span className="relative z-10 flex items-center gap-2 uppercase tracking-widest text-xs">
                                         Explorar Planos Premium
@@ -308,7 +308,7 @@ export default function HomeClient() {
                                     href="https://wa.me/5511996716235"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center px-10 py-5 font-black text-slate-900 transition-all duration-300 bg-white rounded-2xl hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-black text-slate-900 transition-all duration-300 bg-white rounded-2xl hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs"
                                 >
                                     <FaWhatsapp className="mr-2 text-lg" />
                                     Falar com Especialista
