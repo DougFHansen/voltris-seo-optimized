@@ -97,13 +97,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`mobile-menu-optimized fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-500 
-          ${scrolled 
-            ? 'bg-white/80 backdrop-blur-xl border-b border-gray-200' 
-            : isHome 
-              ? 'bg-transparent border-transparent' 
-              : 'bg-white/95 border-b border-gray-200'}
-        `}
+        className={`mobile-menu-optimized fixed top-0 left-0 right-0 z-[100] h-16 transition-all duration-500 bg-white/95 backdrop-blur-xl border-b border-gray-200/50 shadow-sm`}
       >
         {/* Linha Neon Fina – ativa no scroll */}
         <div
@@ -142,9 +136,7 @@ export default function Header() {
               <Link
                 key={link.path}
                 href={link.path}
-                className={`text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap shrink-0 
-                  ${(isHome && !scrolled) ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-blue-600'}
-                `}
+                className={`text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap shrink-0 text-gray-700 hover:text-blue-600`}
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 h-[2px] bg-blue-600 transition-all duration-300 rounded-full w-0 opacity-0 group-hover:w-full group-hover:opacity-100" />
@@ -158,9 +150,7 @@ export default function Header() {
               onMouseLeave={() => setIsServicesDropdownOpen(false)}
             >
               <button
-                className={`text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap
-                  ${(isHome && !scrolled) ? 'text-white/90 hover:text-white' : 'text-gray-700 hover:text-blue-600'}
-                `}
+                className={`text-sm font-medium transition-all duration-300 relative group py-2 whitespace-nowrap text-gray-700 hover:text-blue-600`}
                 aria-haspopup="true"
                 aria-expanded={isServicesDropdownOpen}
               >
