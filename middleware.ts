@@ -26,15 +26,11 @@ export async function middleware(request: NextRequest) {
         return new NextResponse(null, { status: 410 });
     }
 
-    // Redirecionamento 301: www.voltris.com.br → voltris.com.br (Preferência do Usuário)
-    // Força HTTPS para evitar erros de redirecionamento quebrado
+    // Redirecionamento 301: www.voltris.com.br → voltris.com.br
     const hostname = request.nextUrl.hostname;
-    const protocol = request.nextUrl.protocol;
-
-    if (hostname === 'www.voltris.com.br' || (hostname === 'voltris.com.br' && protocol === 'http:')) {
-        const url = new URL(request.url);
+    if (hostname === 'www.voltris.com.br') {
+        const url = request.nextUrl.clone();
         url.hostname = 'voltris.com.br';
-        url.protocol = 'https:';
         return NextResponse.redirect(url, 301);
     }
 
