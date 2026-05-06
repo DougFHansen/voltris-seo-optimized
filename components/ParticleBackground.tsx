@@ -24,12 +24,12 @@ const ParticleBackground: React.FC = () => {
     particleCount: { desktop: 40, mobile: 8 }, // REDUZIDO DE 20 PARA 8 NO MOBILE PARA PERFORMANCE
     connectionDistance: 100,
     mouseInfluenceRadius: 150,
-    baseSpeed: 0.8,
+    baseSpeed: 0.6,
     colors: {
-      hueStart: 180,
-      hueEnd: 320,
-      saturation: 85,
-      lightness: 55
+      hueStart: 200,
+      hueEnd: 340,
+      saturation: 90,
+      lightness: 65
     }
   };
 

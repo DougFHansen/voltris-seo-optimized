@@ -217,17 +217,12 @@ export default function HomeClient() {
                 }}
             />
             <main className="relative">
-                {/* Background Gradients (Fixed Behind) */}
-                <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-                    <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-gradient-to-br from-blue-100/50 to-purple-100/50 blur-[120px]" />
-                    <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-purple-100/50 to-blue-100/50 blur-[100px]" />
-                </div>
                 <section
                     className="
                     relative
                     w-full
                     min-h-screen
-                    bg-gradient-to-b from-gray-50 via-white to-gray-100
+                    bg-[#020205]
                     overflow-hidden
                     flex
                     flex-col
@@ -237,8 +232,6 @@ export default function HomeClient() {
                     sm:px-6
                     lg:px-12
                     xl:px-24
-
-                    overflow-x-hidden
                     pt-20
                     pb-6
                     lg:pt-24
@@ -246,70 +239,98 @@ export default function HomeClient() {
                 "
                     aria-label="Software de otimização de PC para Windows - Voltris Optimizer"
                 >
+                    {/* Noise Texture Layer */}
+                    <div className="absolute inset-0 noise-bg z-[1]" />
+
+                    {/* Background Radial Glows - Enterprise Level */}
+                    <div className="absolute top-[-10%] left-[-10%] w-[1000px] h-[1000px] rounded-full bg-[#31A8FF]/10 blur-[180px] pointer-events-none z-0" />
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[1000px] h-[1000px] rounded-full bg-[#8B31FF]/10 blur-[180px] pointer-events-none z-0" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] rounded-full bg-[#FF4B6B]/5 blur-[200px] pointer-events-none z-0" />
+
                     {/* Particle Background (Hero Only) */}
-                    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none z-[2]">
                         <ParticleBackground />
                     </div>
 
-                    {/* Glassmorphism Overlay (Hero Only) */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/20 to-gray-50/30 backdrop-blur-[1px] pointer-events-none z-10" />
-
-                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-8 h-full relative z-20">
+                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-12 h-full relative z-[10]">
 
                         {/* Left Content - Typography & CTA */}
-                        {/* Using display: contents on mobile to allow reordering of children relative to the visual component */}
-                        <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-4 lg:z-20">
+                        <div className="contents lg:flex lg:flex-1 lg:flex-col lg:items-start lg:text-left lg:gap-6 lg:z-20">
 
                             {/* Text Content - Order 1 */}
-                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-2 lg:gap-4 z-20 w-full lg:pb-28">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 border border-blue-200 backdrop-blur-md mb-2 animate-fade-in-up mt-4 lg:mt-0">
-                                    <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
-                                    <span className="text-xs sm:text-sm font-semibold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text tracking-wide">Novos Planos Empresariais Disponíveis</span>
-                                </div>
+                            <div className="order-1 flex flex-col items-center lg:items-start text-center lg:text-left gap-4 lg:gap-8 z-20 w-full lg:pb-32">
+                                <motion.div 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2"
+                                >
+                                    <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
+                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Engine v4.0 Ativa</span>
+                                </motion.div>
 
-                                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight font-sans lg:mt-12">
-                                    <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">Software de Otimização de PC</span> <br className="hidden lg:block" />
-                                    <span className="block mt-2 text-2xl sm:text-3xl lg:text-4xl text-gray-700">Para Máxima Performance no Windows</span>
-                                </h1>
+                                <motion.h1 
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.2 }}
+                                    className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight font-sans lg:mt-8"
+                                >
+                                    <span className="text-gradient-premium">A Próxima Geração da</span> <br className="hidden lg:block" />
+                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Performance Windows</span>
+                                </motion.h1>
 
-                                <p className="text-sm sm:text-base lg:text-lg text-gray-500 max-w-xl leading-relaxed">
-                                    Otimize computadores para jogos, trabalho e uso profissional. Mais desempenho, estabilidade e produtividade com o <strong className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Voltris Optimizer</strong>.
-                                </p>
+                                <motion.p 
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.4 }}
+                                    className="text-base sm:text-lg lg:text-xl text-slate-400 max-w-xl leading-relaxed font-medium"
+                                >
+                                    Extraia cada frame do seu hardware. A <strong className="text-white">Voltris</strong> redefine os limites entre software e hardware com otimização a nível de kernel.
+                                </motion.p>
                             </div>
 
-                            {/* Buttons - Order 3 (Moved below visual on mobile) - Fixed to bottom left on desktop */}
-                            <div className="order-3 lg:order-none flex flex-col sm:flex-row gap-4 w-full sm:w-auto mt-2 lg:absolute lg:bottom-0 lg:left-0 lg:z-30">
+                            {/* Buttons - Order 3 */}
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.6 }}
+                                className="order-3 lg:order-none flex flex-col sm:flex-row gap-5 w-full sm:w-auto mt-4 lg:absolute lg:bottom-0 lg:left-0 lg:z-30 lg:mb-10"
+                            >
                                 <a
                                     href="/todos-os-servicos"
-                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 shadow-lg hover:shadow-xl"
+                                    className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/10 overflow-hidden glow-border"
                                 >
-                                    <span className="mr-2">Ver Planos e Preços</span>
-                                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    <span className="relative z-10 flex items-center gap-2 uppercase tracking-widest text-xs">
+                                        Explorar Planos Premium
+                                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                    </span>
                                 </a>
                                 <a
-                                    href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20otimiza%C3%A7%C3%A3o%20da%20VOLTRIS"
+                                    href="https://wa.me/5511996716235"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                                    className="inline-flex items-center justify-center px-10 py-5 font-black text-slate-900 transition-all duration-300 bg-white rounded-2xl hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs"
                                 >
                                     <FaWhatsapp className="mr-2 text-lg" />
-                                    Falar com Especialista
+                                    Consultoria VIP
                                 </a>
-                            </div>
+                            </motion.div>
                         </div>
 
-                        {/* Right Content - Visual Component (Dashboard Simulation) - Order 2 on Mobile */}
-                        <div className="order-2 lg:order-none flex-1 w-full max-w-[600px] lg:max-w-full relative flex items-center justify-center perspective">
-
+                        {/* Right Content - Visual Component */}
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
+                            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                            transition={{ duration: 1.2, ease: "easeOut" }}
+                            className="order-2 lg:order-none flex-1 w-full max-w-[650px] lg:max-w-full relative flex items-center justify-center perspective animate-float"
+                        >
                             {/* Background Glow behind the card */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/20 to-[#8B31FF]/20 blur-[60px] rounded-full transform scale-75"></div>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/30 to-[#FF4B6B]/30 blur-[120px] rounded-full transform scale-75 animate-pulse"></div>
 
                             {/* Main Glass Panel */}
-                            <OptimizerMockup />
-
-
-
-                        </div>
+                            <div className="relative z-10 w-full transform -rotate-2 hover:rotate-0 transition-transform duration-700">
+                                <OptimizerMockup />
+                            </div>
+                        </motion.div>
                     </div>
                 </section>
                 <AnimatedSection direction="up" delay={0.2}>

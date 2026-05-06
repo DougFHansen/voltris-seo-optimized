@@ -86,22 +86,22 @@ export default function OptimizerMockup() {
                         />
                     </div>
                     <div>
-                        <div className="font-extrabold text-xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text">Voltris Optimizer</div>
+                        <div className="font-extrabold text-xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_15px_rgba(139,49,255,0.4)]">Voltris Optimizer</div>
                         <div className="text-xs text-slate-400 flex items-center gap-1.5">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00FF88]"></span>
                             </span>
-                            Otimização Ativa • <span className="text-slate-500">{scannedCount} items verificados</span>
+                            Otimização Ativa • <span className="text-slate-500 font-mono">{scannedCount} items verificados</span>
                         </div>
                     </div>
                 </div>
                 <a
                     href="/voltrisoptimizer"
                     onClick={() => notifyDownload('Mockup Download Click (Redirect to Page)')}
-                    className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-sm font-bold hover:shadow-[0_0_20px_rgba(139,49,255,0.6)] transition-all shadow-md relative overflow-hidden group"
+                    className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-xs font-black uppercase tracking-widest hover:shadow-[0_0_30px_rgba(139,49,255,0.6)] transition-all shadow-lg relative overflow-hidden group border border-white/10"
                 >
-                    <span className="relative z-10">Download</span>
+                    <span className="relative z-10">Download Free</span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 </a>
             </div>
