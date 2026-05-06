@@ -233,9 +233,10 @@ export default function HomeClient() {
                     sm:px-6
                     lg:px-12
                     xl:px-24
-                    pt-24
+                    pt-32
                     pb-12
-                    lg:py-0
+                    lg:pt-20
+                    lg:pb-0
                 "
                     aria-label="Software de otimização de PC para Windows - Voltris Optimizer"
                 >
@@ -253,6 +254,8 @@ export default function HomeClient() {
                     </div>
 
                     <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center justify-between gap-8 lg:gap-12 h-full relative z-[10] py-4 lg:py-0">
+                        {/* Header Spacer */}
+                        <div className="h-16 lg:h-24 w-full" aria-hidden="true" />
 
                         {/* Left Content - Typography & CTA */}
                         <div className="flex flex-col flex-1 items-center lg:items-start text-center lg:text-left gap-6 lg:gap-8 z-20">
@@ -261,7 +264,7 @@ export default function HomeClient() {
                                 <motion.div 
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2"
+                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-4"
                                 >
                                     <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
                                     <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">A Próxima Geração da Performance no Windows</span>
