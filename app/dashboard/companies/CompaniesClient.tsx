@@ -361,7 +361,7 @@ export default function CompaniesClient() {
                                   <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest font-mono">Gerenciar acesso dos nós</span>
                                </div>
                             </div>
-                            <FiArrowRight className="w-5 h-5 text-white/10 group-hover:text-white transition-all transform group-hover:translate-x-1" />
+                            <FiArrowRight className={`w-5 h-5 transition-all transform group-hover:translate-x-1 ${transparencyMode ? 'text-white/10 group-hover:text-white' : 'text-gray-300 group-hover:text-gray-900'}`} />
                         </Link>
                     </div>
                 </div>

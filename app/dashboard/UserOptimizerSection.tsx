@@ -99,7 +99,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                     </div>
 
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">Vincule seu computador</h3>
-                    <p className="text-slate-400 mb-8 max-w-md">
+                    <p className="text-gray-600 mb-8 max-w-md">
                         Acesse as informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do site.
                     </p>
 
@@ -136,7 +136,7 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                     <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
                         <FiMonitor className="text-[#31A8FF]" /> Meus Computadores (Voltris)
                     </h2>
-                    <span className="text-xs text-slate-500 font-medium">Sincronizado via Telemetria</span>
+                    <span className="text-xs text-gray-600 font-medium">Sincronizado via Telemetria</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -162,11 +162,11 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
                                     </div>
 
                                     <div className="flex flex-col gap-1.5">
-                                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                                        <div className="flex items-center gap-2 text-xs text-gray-600">
                                             <FiCpu className="text-[#31A8FF]" />
                                             <span className="truncate max-w-[180px]">{inst.cpu_name}</span>
                                         </div>
-                                        <div className="flex items-center gap-2 text-xs text-slate-400">
+                                        <div className="flex items-center gap-2 text-xs text-gray-600">
                                             <FiShield className="text-[#8B31FF]" />
                                             <span>v{inst.app_version} • {inst.ram_gb_total}GB RAM</span>
                                         </div>

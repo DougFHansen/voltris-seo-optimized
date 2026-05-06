@@ -60,16 +60,16 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
             <div className={`absolute inset-0 rounded-2xl blur-lg opacity-40 bg-gradient-to-br ${colors[color]}`}></div>
           </div>
           <div className="flex flex-col items-end">
-             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 mb-1">Status</span>
+             <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-1">Status</span>
              <div className="flex items-center gap-1.5">
                <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-r ${colors[color]}`}></div>
-               <span className="text-[9px] sm:text-[10px] font-bold text-gray-500 uppercase tracking-widest leading-none">SINCRONIZADO</span>
+               <span className="text-[9px] sm:text-[10px] font-bold text-gray-700 uppercase tracking-widest leading-none">SINCRONIZADO</span>
              </div>
           </div>
         </div>
 
         <div className="space-y-1">
-           <p className="text-gray-500 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
+           <p className="text-gray-600 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
           <div className="flex items-baseline gap-2">
             <h3 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tighter">{value}</h3>
           </div>
@@ -288,8 +288,8 @@ function DashboardContent() {
                     ${activeTab === tab.id 
                       ? 'bg-white text-black shadow-lg' 
                       : transparencyMode 
-                        ? 'text-white/40 hover:text-white hover:bg-white/5' 
-                        : 'text-gray-400 hover:text-gray-900 hover:bg-gray-200'}
+                        ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50' 
+                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'}
                   `}
                   style={{ 
                     boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none'
@@ -377,7 +377,7 @@ function DashboardContent() {
                           {/* Card Top */}
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center relative transition-all duration-500 ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF] text-white' : 'bg-gray-100 border border-gray-200 text-gray-400'}`}>
+                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center relative transition-all duration-500 ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF] text-white' : 'bg-gray-100 border border-gray-200 text-gray-500'}`}>
                                 <FiCheckCircle className="w-8 h-8" />
                                 <div className={`absolute inset-0 blur-lg opacity-40 ${lic.is_active ? 'bg-[#31A8FF]' : 'bg-transparent'}`}></div>
                               </div>

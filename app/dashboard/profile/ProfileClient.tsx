@@ -143,7 +143,7 @@ export default function ProfileClient() {
                    <div className="flex items-center gap-3 justify-center md:justify-start">
                       <h1 className="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tighter leading-tight break-words">{profile?.full_name || 'Agente de Otimização'}</h1>
                    </div>
-                   <p className="text-gray-500 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
+                   <p className="text-gray-600 font-bold text-xs uppercase tracking-widest">{user?.email}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
@@ -187,14 +187,14 @@ export default function ProfileClient() {
 
             <div className="space-y-8">
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">E-mail de Autenticação</label>
+                 <label className="text-[10px] font-black text-gray-600 uppercase tracking-[0.3em] font-mono">E-mail de Autenticação</label>
                  <div className="p-5 rounded-2xl bg-gray-100 border border-gray-200 text-gray-600 italic font-bold">
                     {user?.email}
                  </div>
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Nome Operacional</label>
+                 <label className="text-[10px] font-black text-gray-600 uppercase tracking-[0.3em] font-mono">Nome Operacional</label>
                  {isEditing ? (
                     <input
                       type="text"
@@ -211,7 +211,7 @@ export default function ProfileClient() {
                </div>
 
                <div className="space-y-3">
-                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] font-mono">Linha de Contato Segura</label>
+                 <label className="text-[10px] font-black text-gray-600 uppercase tracking-[0.3em] font-mono">Linha de Contato Segura</label>
                  {isEditing ? (
                     <input
                       type="tel"
