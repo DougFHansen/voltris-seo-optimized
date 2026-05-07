@@ -125,10 +125,16 @@ export default function Header() {
               priority
               fetchPriority="high"
             />
+            {/* Desktop: inline com o logo */}
             <span className="text-lg lg:text-xl font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-tight hidden sm:block">
               VOLTRIS
             </span>
           </Link>
+
+          {/* Mobile only: VOLTRIS centralizado via posição absoluta */}
+          <span className="sm:hidden absolute left-1/2 -translate-x-1/2 text-lg font-bold bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text tracking-tight pointer-events-none select-none z-10">
+            VOLTRIS
+          </span>
 
           {/* ── Nav Desktop (lg+) ─────────────────────── */}
           <nav className="hidden lg:flex items-center gap-5 xl:gap-7 h-full flex-1 justify-center relative z-20">
