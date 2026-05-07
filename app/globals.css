@@ -10,9 +10,15 @@
   transform: rotate(180deg);
 }
 
-/* Ensure smooth transitions - EXCLUDE hamburger menu elements */
-* {
-  transition-property: transform, opacity, color, background-color, border-color;
+/* Optimized transitions - avoiding the universal '*' selector for better LCP */
+a,
+button,
+input,
+select,
+textarea,
+.transition-all,
+.hover-scale {
+  transition-property: transform, opacity, color, background-color, border-color, box-shadow;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }

@@ -80,6 +80,14 @@ declare global {
 export default function HomeClient() {
     const [showMoreText, setShowMoreText] = useState(false);
     const [minimized, setMinimized] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
 
 
@@ -249,7 +257,7 @@ export default function HomeClient() {
 
                     {/* Particle Background (Hero Only) */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none z-[2]">
-                        <ParticleBackground />
+                        {!isMobile && <ParticleBackground />}
                     </div>
 
                     <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center justify-between gap-4 sm:gap-6 lg:gap-12 h-full relative z-[10]">
@@ -259,42 +267,23 @@ export default function HomeClient() {
 
                             {/* Text Content Block */}
                             <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-6 w-full order-1">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2"
-                                >
+                                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2">
                                     <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
                                     <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Voltris Engine v4.0 • IA Inteligente Ativa</span>
-                                </motion.div>
+                                </div>
 
-                                <motion.h1
-                                    initial={{ opacity: 0, y: 30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.2 }}
-                                    className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4"
-                                >
+                                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4">
                                     <span className="text-gradient-premium">Otimização de Windows com IA</span> <br className="hidden lg:block" />
                                     <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Máximo Desempenho</span>
-                                </motion.h1>
+                                </h1>
 
-                                <motion.p
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.4 }}
-                                    className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium px-2 sm:px-0"
-                                >
+                                <p className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium px-2 sm:px-0">
                                     Aumente FPS, reduza travamentos e extraia o máximo desempenho do seu computador com <strong className="text-white">otimização avançada</strong> e ajustes a nível de sistema.
-                                </motion.p>
+                                </p>
                             </div>
 
                             {/* Buttons Block - Positioned below mockup on mobile via order-3 */}
-                            <motion.div 
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.6 }}
-                                className="flex flex-col sm:flex-row gap-4 lg:gap-5 w-full sm:w-auto z-30 order-3"
-                            >
+                            <div className="flex flex-col sm:flex-row gap-4 lg:gap-5 w-full sm:w-auto z-30 order-3">
                                 <a
                                     href="/todos-os-servicos"
                                     className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/10 overflow-hidden glow-border"
@@ -313,16 +302,11 @@ export default function HomeClient() {
                                     <FaWhatsapp className="mr-2 text-lg" />
                                     Falar com Especialista
                                 </a>
-                            </motion.div>
+                            </div>
                         </div>
 
                         {/* Right Content - Mockup Block - order-2 on mobile */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
-                            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                            transition={{ duration: 1.2, ease: "easeOut" }}
-                            className="order-2 lg:order-none flex-1 w-full max-w-[320px] xs:max-w-[400px] sm:max-w-[500px] lg:max-w-full relative flex items-center justify-center perspective animate-float mt-2 lg:mt-0"
-                        >
+                        <div className="order-2 lg:order-none flex-1 w-full max-w-[320px] xs:max-w-[400px] sm:max-w-[500px] lg:max-w-full relative flex items-center justify-center perspective animate-float mt-2 lg:mt-0">
                             {/* Background Glow behind the card */}
                             <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/30 to-[#FF4B6B]/30 blur-[120px] rounded-full transform scale-75 animate-pulse"></div>
 
@@ -330,7 +314,7 @@ export default function HomeClient() {
                             <div className="relative z-10 w-full transform -rotate-2 hover:rotate-0 transition-transform duration-700">
                                 <OptimizerMockup />
                             </div>
-                        </motion.div>
+                        </div>
                     </div>
                 </section>
                 <AnimatedSection direction="up" delay={0.2}>
