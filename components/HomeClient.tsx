@@ -293,7 +293,7 @@ export default function HomeClient() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.6 }}
-                                className="flex flex-col sm:flex-row gap-4 lg:gap-5 w-full sm:w-auto z-30 order-3 lg:order-none"
+                                className="flex flex-col sm:flex-row gap-4 lg:gap-5 w-full sm:w-auto z-30 order-3"
                             >
                                 <a
                                     href="/todos-os-servicos"
@@ -532,7 +532,7 @@ export default function HomeClient() {
                             <div className="text-center mb-20 max-w-3xl mx-auto">
                                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 border border-blue-200 mb-6">
                                     <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                                    <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Soluções Profissionais</span>
+                                    <span className="text-xs font-bold text-blue-700 tracking-widest uppercase">Soluções Profissionais</span>
                                 </div>
                                 <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
                                     Suporte Técnico Remoto em Informática, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600">Otimização de PC e Serviços Windows</span>
@@ -594,7 +594,7 @@ export default function HomeClient() {
                         <div className="text-center mb-16 max-w-4xl mx-auto">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 backdrop-blur-md mb-4">
                                 <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
-                                <span className="text-xs font-bold text-blue-600 tracking-widest uppercase">Primeiro Software Brasileiro com Controle Remoto</span>
+                                <span className="text-xs font-bold text-blue-700 tracking-widest uppercase">Primeiro Software Brasileiro com Controle Remoto</span>
                             </div>
                             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
                                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-transparent bg-clip-text">VOLTRIS</span> <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-transparent bg-clip-text">OPTIMIZER</span>
