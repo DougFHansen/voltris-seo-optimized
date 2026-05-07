@@ -20,7 +20,7 @@ export default function Header() {
   // Se demorar mais de 1.8s, forçamos o carregamento visual dos botões.
   const [forceLoaded, setForceLoaded] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => setForceLoaded(true), 1800);
+    const timer = setTimeout(() => setForceLoaded(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -36,16 +36,22 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let lastKnownScrollPosition = 0;
+    let ticking = false;
+
     const handleScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => setScrolled(window.scrollY > 20), 100); // DEBOUNCE DE 100MS PARA REDUZIR RERENDERS
+      lastKnownScrollPosition = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(lastKnownScrollPosition > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll, { passive: true }); // PASSIVE PARA PERFORMANCE
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('scroll', handleScroll);
-    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleLogout = async () => {
