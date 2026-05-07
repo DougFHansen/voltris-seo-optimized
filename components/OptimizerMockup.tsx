@@ -71,10 +71,10 @@ export default function OptimizerMockup() {
 
     return (
         <div
-            className="w-full relative z-10 glass-panel rounded-2xl p-6 md:p-8 overflow-hidden transform transition-all duration-500 hover:scale-[1.01] border border-white/10 bg-[#0A0A0F]/60 backdrop-blur-xl shadow-2xl"
+            className="w-full relative z-10 glass-panel rounded-2xl p-4 md:p-8 overflow-hidden transform transition-all duration-500 hover:scale-[1.01] border border-white/10 bg-[#0A0A0F]/60 backdrop-blur-xl shadow-2xl"
         >
             {/* Header of the fake app */}
-            <div className="flex items-center justify-between mb-8 border-b border-white/5 pb-4">
+            <div className="flex items-center justify-between mb-4 md:mb-8 border-b border-white/5 pb-3 md:pb-4">
                 <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
                         <Image
@@ -107,7 +107,7 @@ export default function OptimizerMockup() {
             </div>
 
             {/* Metrics Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="grid grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-6">
                 {/* Metric 1 - FPS */}
                 <div className="bg-white/5 rounded-xl p-4 border border-white/5 hover:bg-white/10 transition-colors group relative overflow-hidden">
                     <div className="absolute inset-0 bg-[#31A8FF]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -147,7 +147,7 @@ export default function OptimizerMockup() {
             </div>
 
             {/* System Status List - Dynamic */}
-            <div className="space-y-3 relative mb-6">
+            <div className="space-y-2 md:space-y-3 relative mb-4 md:mb-6">
                 {/* Dynamic Activity Item */}
                 <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg border-l-2 border-[#8B31FF]/50 relative overflow-hidden">
                     <div
@@ -178,7 +178,7 @@ export default function OptimizerMockup() {
             </div>
 
             {/* Decorative Graph/Line - More Dynamic */}
-            <div className="mt-4 pt-4 border-t border-white/5">
+            <div className="mt-2 md:mt-4 pt-3 md:pt-4 border-t border-white/5">
                 <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
                     <span>Carga do Sistema</span>
                     <span className="text-[#00FF94]">Otimizado em Tempo Real</span>

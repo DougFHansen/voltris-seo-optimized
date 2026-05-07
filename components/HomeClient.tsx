@@ -232,8 +232,8 @@ export default function HomeClient() {
                     sm:px-6
                     lg:px-12
                     xl:px-24
-                    pt-32
-                    pb-6
+                    pt-24
+                    pb-8
                     lg:pt-24
                     lg:pb-12
                 "
@@ -252,13 +252,13 @@ export default function HomeClient() {
                         <ParticleBackground />
                     </div>
 
-                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-4 lg:gap-12 h-full relative z-[10]">
+                    <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center justify-between gap-4 sm:gap-6 lg:gap-12 h-full relative z-[10]">
 
-                        {/* Left Content - Typography & CTA */}
-                        <div className="flex flex-col flex-1 items-center lg:items-start text-center lg:text-left gap-8 lg:gap-10 z-20">
+                        {/* Layout Wrapper: Uses 'contents' on mobile to allow reordering of its children via flexbox order */}
+                        <div className="contents lg:flex lg:flex-col lg:flex-1 lg:items-start lg:gap-10 z-20">
 
-                            {/* Text Content */}
-                            <div className="flex flex-col items-center lg:items-start gap-4 lg:gap-6 w-full">
+                            {/* Text Content Block */}
+                            <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-6 w-full order-1">
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
@@ -272,7 +272,7 @@ export default function HomeClient() {
                                     initial={{ opacity: 0, y: 30 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.2 }}
-                                    className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4"
+                                    className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4"
                                 >
                                     <span className="text-gradient-premium">Otimização de Windows com IA</span> <br className="hidden lg:block" />
                                     <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Máximo Desempenho</span>
@@ -282,18 +282,18 @@ export default function HomeClient() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.4 }}
-                                    className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium"
+                                    className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium px-2 sm:px-0"
                                 >
                                     Aumente FPS, reduza travamentos e extraia o máximo desempenho do seu computador com <strong className="text-white">otimização avançada</strong> e ajustes a nível de sistema.
                                 </motion.p>
                             </div>
 
-                            {/* Buttons */}
+                            {/* Buttons Block - Positioned below mockup on mobile via order-3 */}
                             <motion.div 
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.6 }}
-                                className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto z-30"
+                                className="flex flex-col sm:flex-row gap-4 lg:gap-5 w-full sm:w-auto z-30 order-3 lg:order-none"
                             >
                                 <a
                                     href="/todos-os-servicos"
@@ -316,12 +316,12 @@ export default function HomeClient() {
                             </motion.div>
                         </div>
 
-                        {/* Right Content - Visual Component */}
+                        {/* Right Content - Mockup Block - order-2 on mobile */}
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
                             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                             transition={{ duration: 1.2, ease: "easeOut" }}
-                            className="order-2 lg:order-none flex-1 w-full max-w-[650px] lg:max-w-full relative flex items-center justify-center perspective animate-float"
+                            className="order-2 lg:order-none flex-1 w-full max-w-[320px] xs:max-w-[400px] sm:max-w-[500px] lg:max-w-full relative flex items-center justify-center perspective animate-float mt-2 lg:mt-0"
                         >
                             {/* Background Glow behind the card */}
                             <div className="absolute inset-0 bg-gradient-to-tr from-[#31A8FF]/30 to-[#FF4B6B]/30 blur-[120px] rounded-full transform scale-75 animate-pulse"></div>
