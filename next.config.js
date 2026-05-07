@@ -109,8 +109,8 @@ const nextConfig = {
       { source: '/guias/elden-ring-fps-unlock-widescreen-fix-stutter', destination: '/guias/elden-ring-fps-unlock-stutter-fix', permanent: true },
 
       // Grupo: OBS Studio streaming (3 duplicatas → 1 canônico)
-      { source: '/guias/obs-studio-melhores-configuracoes-stream', destination: '/guias/obs-studio-melhores-configuracoes-stream-2026', permanent: true },
-      { source: '/guias/obs-studio-streaming-twitch-youtube-guia-completo', destination: '/guias/obs-studio-melhores-configuracoes-stream-2026', permanent: true },
+      { source: '/guias/obs-studio-melhores-configuracoes-stream-2026', destination: '/guias/obs-studio-melhores-configuracoes-stream', permanent: true },
+      { source: '/guias/obs-studio-streaming-twitch-youtube-guia-completo', destination: '/guias/obs-studio-melhores-configuracoes-stream', permanent: true },
 
       // Grupo: Cadeiras (2 duplicatas → 1 canônico)
       { source: '/guias/cadeira-gamer-ergonomia-postura-aim', destination: '/guias/cadeira-gamer-vs-escritorio-ergonomia', permanent: true },
@@ -159,6 +159,14 @@ const nextConfig = {
       // Grupo: formatação windows (2 duplicatas → 1 canônico)
       { source: '/guias/formatacao-windows', destination: '/guias/formatacao-limpa-windows-11-rufus-gpt', permanent: true },
       { source: '/guias/gta-v-como-resolver-texturas-sumindo-ou-demorando-para-carregar', destination: '/guias/gta-v-fix-texturas-sumindo', permanent: true },
+
+      // ============================================================
+      // CONVERSÃO DE URLS DATADAS PARA EVERGREEN
+      // ============================================================
+      { source: '/guias/como-escolher-processador-2026', destination: '/guias/como-escolher-processador', permanent: true },
+      { source: '/guias/melhor-dns-jogos-2026', destination: '/guias/melhor-dns-jogos', permanent: true },
+      { source: '/guias/pc-gamer-barato-custo-beneficio-2026', destination: '/guias/pc-gamer-barato-custo-beneficio', permanent: true },
+      { source: '/guias/rtx-4060-vale-a-pena-2026', destination: '/guias/rtx-4060-vale-a-pena', permanent: true },
     ];
   },
   async rewrites() {

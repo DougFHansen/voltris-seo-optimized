@@ -3,7 +3,7 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 import FAQSchema, { dnsFAQs } from '@/components/FAQSchema';
 
 export const guideMetadata = {
-    id: 'melhor-dns-jogos-2026',
+    id: 'melhor-dns-jogos',
     title: "DNS para Jogos: REDUZA PING AGORA! (Teste 2026)",
     description: "Cansado de desconectar do LoL/Valorant? Descubra qual DNS (Cloudflare vs Google) realmente reduz lag e evita quedas. Configuração em 2 minutos para jogos online!",
     category: 'rede-seguranca',
@@ -25,7 +25,7 @@ const keywords = [
     'dns benchmark teste velocidade'
 ];
 
-export const metadata: Metadata = createGuideMetadata('melhor-dns-jogos-2026', title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('melhor-dns-jogos', title, description, keywords);
 
 export default function DNSGuide() {
     const summaryTable = [

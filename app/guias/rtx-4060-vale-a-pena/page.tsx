@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
-  id: 'rtx-4060-vale-a-pena-2026',
+  id: 'rtx-4060-vale-a-pena',
   title: "RTX 4060 Vale a Pena em 2026? Análise de Performance",
   description: "Ainda compensa comprar a RTX 4060 em 2026? Veja o desempenho em jogos atuais, o impacto do DLSS 3.5 e se os 8GB de VRAM são suficientes.",
   category: 'windows-geral',
@@ -20,7 +20,7 @@ const keywords = [
     'melhor placa de video custo beneficio 2026 guia'
 ];
 
-export const metadata: Metadata = createGuideMetadata('rtx-4060-vale-a-pena-2026', title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('rtx-4060-vale-a-pena', title, description, keywords);
 
 export default function RTX4060ReviewGuide() {
     const summaryTable = [

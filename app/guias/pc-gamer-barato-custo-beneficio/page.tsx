@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
-  id: 'pc-gamer-barato-custo-beneficio-2026',
+  id: 'pc-gamer-barato-custo-beneficio',
   title: "PC Gamer Barato em 2026: Guia de Peças Custo-Benefício",
   description: "Quer montar um PC para rodar tudo sem gastar uma fortuna? Veja nossa lista de peças recomendadas (CPU, GPU, RAM) para o melhor custo-benefício em 2026...",
   category: 'windows-geral',
@@ -20,7 +20,7 @@ const keywords = [
     'setup gamer barato e bom para rodar gta v e valorant'
 ];
 
-export const metadata: Metadata = createGuideMetadata('pc-gamer-barato-custo-beneficio-2026', title, description, keywords);
+export const metadata: Metadata = createGuideMetadata('pc-gamer-barato-custo-beneficio', title, description, keywords);
 
 export default function BudgetPCGuide() {
     const summaryTable = [
