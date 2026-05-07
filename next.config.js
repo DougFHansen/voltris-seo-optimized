@@ -222,6 +222,25 @@ const nextConfig = {
         { key: 'X-Frame-Options', value: 'DENY' },
       ],
     },
+    // Cache agressivo para imagens estáticas
+    {
+      source: '/logo.png',
+      headers: [
+        {
+          key: 'Cache-Control',
+          value: 'public, max-age=31536000, immutable',
+        },
+      ],
+    },
+    {
+      source: '/(.*).(png|jpg|jpeg|webp|svg|ico)',
+      headers: [
+        {
+          key: 'Cache-Control',
+          value: 'public, max-age=31536000, immutable',
+        },
+      ],
+    },
   ],
 };
 

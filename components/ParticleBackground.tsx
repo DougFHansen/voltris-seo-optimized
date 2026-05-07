@@ -21,10 +21,10 @@ const ParticleBackground: React.FC = () => {
 
   // Configuration
   const config = {
-    particleCount: { desktop: 40, mobile: 8 }, // REDUZIDO DE 20 PARA 8 NO MOBILE PARA PERFORMANCE
+    particleCount: { desktop: 25, mobile: 5 }, // OTIMIZADO: Valores reduzidos para manter visual com performance
     connectionDistance: 100,
     mouseInfluenceRadius: 150,
-    baseSpeed: 0.6,
+    baseSpeed: 0.4, // Reduzido levemente para suavidade
     colors: {
       hueStart: 200,
       hueEnd: 340,
@@ -39,9 +39,9 @@ const ParticleBackground: React.FC = () => {
       y: Math.random() * height,
       vx: (Math.random() - 0.5) * config.baseSpeed,
       vy: (Math.random() - 0.5) * config.baseSpeed,
-      size: Math.random() * 4 + 3,
-      opacity: Math.random() * 0.6 + 0.3,
-      targetOpacity: Math.random() * 0.6 + 0.3,
+      size: Math.random() * 3 + 2, // Partículas levemente menores para performance
+      opacity: Math.random() * 0.4 + 0.2,
+      targetOpacity: Math.random() * 0.4 + 0.2,
       hue: config.colors.hueStart + Math.random() * (config.colors.hueEnd - config.colors.hueStart)
     };
   };

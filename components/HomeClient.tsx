@@ -83,9 +83,13 @@ export default function HomeClient() {
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        const checkMobile = () => {
+            if (typeof window !== 'undefined') {
+                setIsMobile(window.innerWidth < 768);
+            }
+        };
         checkMobile();
-        window.addEventListener('resize', checkMobile);
+        window.addEventListener('resize', checkMobile, { passive: true });
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
@@ -257,7 +261,7 @@ export default function HomeClient() {
 
                     {/* Particle Background (Hero Only) */}
                     <div className="absolute inset-0 overflow-hidden pointer-events-none z-[2]">
-                        {!isMobile && <ParticleBackground />}
+                        <ParticleBackground />
                     </div>
 
                     <div className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center lg:items-center justify-between gap-4 sm:gap-6 lg:gap-12 h-full relative z-[10]">
