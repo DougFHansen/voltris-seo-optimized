@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Aumentar FPS no CS2 2026 - Guia Completo',
     description: 'Aprenda como aumentar FPS no Counter-Strike 2 com configurações otimizadas.',
-    url: 'https://www.voltris.com.br/como-aumentar-fps-cs2-2026',
+    url: 'https://www.voltris.com.br/como-aumentar-fps-cs2',
     siteName: 'VOLTRIS',
     locale: 'pt_BR',
     type: 'article',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: 'https://www.voltris.com.br/como-aumentar-fps-cs2-2026',
+    canonical: 'https://www.voltris.com.br/como-aumentar-fps-cs2',
   },
 };
 

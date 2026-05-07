@@ -167,6 +167,14 @@ const nextConfig = {
       { source: '/guias/melhor-dns-jogos-2026', destination: '/guias/melhor-dns-jogos', permanent: true },
       { source: '/guias/pc-gamer-barato-custo-beneficio-2026', destination: '/guias/pc-gamer-barato-custo-beneficio', permanent: true },
       { source: '/guias/rtx-4060-vale-a-pena-2026', destination: '/guias/rtx-4060-vale-a-pena', permanent: true },
+
+      { source: '/como-aumentar-fps-cs2-2026', destination: '/como-aumentar-fps-cs2', permanent: true },
+      { source: '/como-aumentar-fps-valorant-2026', destination: '/como-aumentar-fps-valorant', permanent: true },
+      { source: '/como-aumentar-fps-warzone-2026', destination: '/como-aumentar-fps-warzone', permanent: true },
+      { source: '/guia-definitivo-privacidade-windows-2026', destination: '/guia-definitivo-privacidade-windows', permanent: true },
+      { source: '/otimizar-windows-11-para-warzone-2026', destination: '/otimizar-windows-11-para-warzone', permanent: true },
+      { source: '/otimizar-windows-para-fortnite-2026', destination: '/otimizar-windows-para-fortnite', permanent: true },
+      { source: '/otimizar-windows-para-league-of-legends-2026', destination: '/otimizar-windows-para-league-of-legends', permanent: true },
     ];
   },
   async rewrites() {
