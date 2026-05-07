@@ -242,7 +242,7 @@ export default function HowItWorksClient() {
                                             DOWNLOAD x64
                                         </a>
                                         <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
+                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.2/VoltrisOptimizerInstallerX86.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x86) - HowItWorks')}
                                             className="text-[10px] text-slate-500 hover:text-[#31A8FF] transition-colors text-center font-medium opacity-80 hover:opacity-100"
                                         >
@@ -473,7 +473,7 @@ export default function HowItWorksClient() {
                                     BAIXAR SOFTWARE (x64)
                                 </a>
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
+                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.2/VoltrisOptimizerInstallerX86.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x86) - HowItWorks Bottom')}
                                     className="text-sm text-gray-500 hover:text-blue-600 transition-colors font-medium border-b border-transparent hover:border-blue-600"
                                 >

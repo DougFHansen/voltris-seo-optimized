@@ -598,7 +598,7 @@ export default function OptimizerClient() {
                                             </span>
                                         </div>
                                         <a
-                                            href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
+                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.2/VoltrisOptimizerInstallerX86.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x86)')}
                                             className="mt-1 text-[10px] text-gray-600 hover:text-blue-600 transition-colors text-center font-medium block"
                                         >
@@ -1936,7 +1936,7 @@ export default function OptimizerClient() {
                                     BAIXAR SOFTWARE
                                 </a>
                                 <a
-                                    href="https://github.com/DougFHansen/voltris-releases/releases/download/v2.0/VoltrisOptimizerInstallerX86.exe"
+                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.2/VoltrisOptimizerInstallerX86.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x86) - Bottom CTA')}
                                     className="text-sm text-gray-500 hover:text-blue-600 transition-colors font-medium border-b border-transparent hover:border-blue-600"
                                 >
