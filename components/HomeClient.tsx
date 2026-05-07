@@ -41,8 +41,7 @@ const ParticleBackground = dynamic(() => import("@/components/ParticleBackground
 const AboutSection = dynamic(() => import("./sections/AboutSection"), { ssr: false });
 const ServicesSection = dynamic(() => import("./sections/ServicesSection"), { ssr: false });
 const TestimonialsSection = dynamic(() => import("./sections/TestimonialsSection"), { ssr: false });
-const FAQSection = dynamic(() => import("./sections/FAQSection"), { ssr: false });
-const ContactSection = dynamic(() => import("./sections/ContactSection"), { ssr: false });
+const FAQSection = dynamic(() => import("@/components/FAQSection"), { ssr: false });
 
 const services = [
     {
@@ -585,6 +584,7 @@ export default function HomeClient() {
                 </section>
 
                 <TestimonialsSection />
+                <FAQSection />
 
             </main>
             <Footer />
