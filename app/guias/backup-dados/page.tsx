@@ -85,13 +85,13 @@ export default function DataBackupGuide() {
       content: `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-teal-500/30">
-                <h3 class="font-bold text-white mb-2">Hasleo Backup Suite (Grátis)</h3>
+                <h class="font-bold text-gray-900 mb-2">Hasleo Backup Suite (Grátis)</h3>
                 <p class="text-sm text-gray-700">
                     O sucessor espiritual do Macrium Reflect Free (que foi descontinuado). Interface limpa, suporta backup incremental, diferencial, clonagem de disco e criação de pendrive de boot de emergência (WinPE). Totalmente gratuito e sem anúncios.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
-                <h3 class="font-bold text-white mb-2">Veeam Agent for Windows (Free)</h3>
+                <h class="font-bold text-gray-900 mb-2">Veeam Agent for Windows (Free)</h3>
                 <p class="text-sm text-gray-700">
                     Padrão corporativo. Robusto, extremamente confiável, mas com interface mais complexa. Se você quer o software que protege servidores de bancos, use o Veeam.
                 </p>
@@ -105,7 +105,7 @@ export default function DataBackupGuide() {
     {
       title: "O Protocolo 'Cold Storage' (Contra Ransomware)",
       content: `
-        <h4 class="text-white font-bold mb-3">O Vírus não ataca o que não está conectado</h4>
+        <h class="text-gray-900 font-bold mb-3">O Vírus não ataca o que não está conectado</h4>
         <p class="mb-4 text-gray-700">
             Ransomwares modernos infectam seu PC e procuram por qualquer driver conectado (pendrive, HD externo, rede) para criptografar também.
             <br/><strong>A Defesa:</strong> Faça o backup no HD Externo. Quando terminar, EJETAR e DESCONECTAR o cabo USB. Guarde o HD na gaveta. Se um vírus pegar seu PC amanhã, o HD na gaveta está salvo. Isso é "Cold Storage" (Armazenamento Frio).
@@ -133,7 +133,7 @@ export default function DataBackupGuide() {
     {
       title: "Clonagem de Disco: Upgrade de SSD/HD",
       content: `
-        <h4 class="text-white font-bold mb-3">Quando usar 'Clone' em vez de 'Backup'?</h4>
+        <h class="text-gray-900 font-bold mb-3">Quando usar 'Clone' em vez de 'Backup'?</h4>
         <p class="mb-4 text-gray-700">
             Quando você comprou um SSD NVMe novo e maior e quer passar tudo do SSD antigo para ele.
             <br/>Use o recurso "System Clone" ou "Disk Clone" do Hasleo/Macrium.

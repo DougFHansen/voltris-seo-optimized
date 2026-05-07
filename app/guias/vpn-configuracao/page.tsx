@@ -33,7 +33,7 @@ export default function VpnConfiguracaoGuide() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
+            <h class="text-gray-900 font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>✓ Privacidade online completa</li>
               <li>✓ Acesso a conteúdo geo-restrito</li>
@@ -42,7 +42,7 @@ export default function VpnConfiguracaoGuide() {
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-            <h3 class="text-white font-semibold mb-2">Casos de Uso</h3>
+            <h class="text-gray-900 font-semibold mb-2">Casos de Uso</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>✈️ Viagens internacionais</li>
               <li>🏢 Trabalho remoto corporativo</li>
@@ -53,7 +53,7 @@ export default function VpnConfiguracaoGuide() {
         </div>
         
         <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30 mt-4">
-          <p class="text-white font-semibold mb-2">💡 Importante:</p>
+          <p class="text-gray-900 font-semibold mb-2">💡 Importante:</p>
           <p class="text-gray-700 leading-relaxed">
             Nem todas as VPNs são criadas iguais. A escolha do provedor certo é crucial para 
             garantir verdadeira privacidade e desempenho adequado. Evite VPNs gratuitas suspeitas.
@@ -84,21 +84,21 @@ export default function VpnConfiguracaoGuide() {
           content: `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-                <h4 class="text-white font-semibold mb-2">Criptografia Utilizada</h4>
+                <h class="text-gray-900 font-semibold mb-2">Criptografia Utilizada</h4>
                 <ul class="space-y-1 text-gray-700 text-sm">
-                  <li><strong class="text-white">AES-256</strong>: Padrão militar</li>
-                  <li><strong class="text-white">RSA-2048</strong>: Troca de chaves</li>
-                  <li><strong class="text-white">SHA-256</strong>: Verificação de integridade</li>
-                  <li><strong class="text-white">Perfect Forward Secrecy</strong>: Chaves únicas por sessão</li>
+                  <li><s class="text-gray-900">AES-256</strong>: Padrão militar</li>
+                  <li><s class="text-gray-900">RSA-2048</strong>: Troca de chaves</li>
+                  <li><s class="text-gray-900">SHA-256</strong>: Verificação de integridade</li>
+                  <li><s class="text-gray-900">Perfect Forward Secrecy</strong>: Chaves únicas por sessão</li>
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-                <h4 class="text-white font-semibold mb-2">Protocolos VPN</h4>
+                <h class="text-gray-900 font-semibold mb-2">Protocolos VPN</h4>
                 <ul class="space-y-1 text-gray-700 text-sm">
-                  <li><strong class="text-white">OpenVPN</strong>: Mais seguro e confiável</li>
-                  <li><strong class="text-white">IKEv2/IPsec</strong>: Rápido e estável</li>
-                  <li><strong class="text-white">WireGuard</strong>: Moderno e eficiente</li>
-                  <li><strong class="text-white">L2TP/IPsec</strong>: Compatível mas mais lento</li>
+                  <li><s class="text-gray-900">OpenVPN</strong>: Mais seguro e confiável</li>
+                  <li><s class="text-gray-900">IKEv2/IPsec</strong>: Rápido e estável</li>
+                  <li><s class="text-gray-900">WireGuard</strong>: Moderno e eficiente</li>
+                  <li><s class="text-gray-900">L2TP/IPsec</strong>: Compatível mas mais lento</li>
                 </ul>
               </div>
             </div>
@@ -115,7 +115,7 @@ export default function VpnConfiguracaoGuide() {
           content: `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-                <h4 class="text-white font-semibold mb-2">Fatores Essenciais</h4>
+                <h class="text-gray-900 font-semibold mb-2">Fatores Essenciais</h4>
                 <ul class="space-y-2 text-gray-700 text-sm">
                   <li>🔒 <strong>Política de não registro</strong></li>
                   <li>🌐 <strong>Número de servidores/países</strong></li>
@@ -125,7 +125,7 @@ export default function VpnConfiguracaoGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-                <h4 class="text-white font-semibold mb-2">Recursos Adicionais</h4>
+                <h class="text-gray-900 font-semibold mb-2">Recursos Adicionais</h4>
                 <ul class="space-y-2 text-gray-700 text-sm">
                   <li>🛡️ <strong>Kill Switch automático</strong></li>
                   <li>🔄 <strong>Alternância rápida de servidores</strong></li>
@@ -142,7 +142,7 @@ export default function VpnConfiguracaoGuide() {
           content: `
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/20">
-                <h4 class="text-white font-bold mb-2">ExpressVPN</h4>
+                <h class="text-gray-900 font-bold mb-2">ExpressVPN</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>✓ Velocidade excelente</li>
                   <li>✓ 3000+ servidores</li>
@@ -152,7 +152,7 @@ export default function VpnConfiguracaoGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/20">
-                <h4 class="text-white font-bold mb-2">NordVPN</h4>
+                <h class="text-gray-900 font-bold mb-2">NordVPN</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>✓ Dupla criptografia</li>
                   <li>✓ 5500+ servidores</li>
@@ -162,7 +162,7 @@ export default function VpnConfiguracaoGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/20">
-                <h4 class="text-white font-bold mb-2">Surfshark</h4>
+                <h class="text-gray-900 font-bold mb-2">Surfshark</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>✓ Conexões ilimitadas</li>
                   <li>✓ 3200+ servidores</li>
@@ -196,17 +196,17 @@ export default function VpnConfiguracaoGuide() {
           subtitle: "Passo 2: Configuração Inicial",
           content: `
             <div class="mb-4">
-              <h4 class="text-xl font-bold text-white mb-2">Configurações Recomendadas</h4>
+              <h class="text-xl font-bold text-gray-900 mb-2">Configurações Recomendadas</h4>
               <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4 mb-4">
-                <li><strong class="text-white">Protocolo:</strong> OpenVPN (mais seguro) ou WireGuard (mais rápido)</li>
-                <li><strong class="text-white">Kill Switch:</strong> Sempre ativado para proteção máxima</li>
-                <li><strong class="text-white">DNS Leak Protection:</strong> Ativado para evitar vazamento de DNS</li>
-                <li><strong class="text-white">Auto-connect:</strong> Configure para conectar automaticamente</li>
+                <li><s class="text-gray-900">Protocolo:</strong> OpenVPN (mais seguro) ou WireGuard (mais rápido)</li>
+                <li><s class="text-gray-900">Kill Switch:</strong> Sempre ativado para proteção máxima</li>
+                <li><s class="text-gray-900">DNS Leak Protection:</strong> Ativado para evitar vazamento de DNS</li>
+                <li><s class="text-gray-900">Auto-connect:</strong> Configure para conectar automaticamente</li>
               </ul>
             </div>
             
             <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <p class="text-white font-semibold mb-2">💡 Dica Profissional:</p>
+              <p class="text-gray-900 font-semibold mb-2">💡 Dica Profissional:</p>
               <p class="text-gray-700 leading-relaxed">
                 Teste diferentes servidores em países próximos para encontrar a melhor combinação 
                 de velocidade e estabilidade. Servidores mais próximos geralmente oferecem melhor performance.
@@ -241,13 +241,13 @@ export default function VpnConfiguracaoGuide() {
           subtitle: "VPN para Empresas",
           content: `
             <div class="mb-4">
-              <h4 class="text-xl font-bold text-white mb-2">Requisitos Corporativos</h4>
+              <h class="text-xl font-bold text-gray-900 mb-2">Requisitos Corporativos</h4>
               <ul class="space-y-2 text-gray-700 list-disc list-inside ml-4 mb-4">
-                <li><strong class="text-white">Centralized Management:</strong> Painel administrativo para todos os usuários</li>
-                <li><strong class="text-white">Business Servers:</strong> Servidores dedicados para empresas</li>
-                <li><strong class="text-white">Team Accounts:</strong> Contas compartilhadas com controle de acesso</li>
-                <li><strong class="text-white">Audit Logs:</strong> Registro completo de atividades</li>
-                <li><strong class="text-white">Dedicated Support:</strong> Suporte prioritário 24/7</li>
+                <li><s class="text-gray-900">Centralized Management:</strong> Painel administrativo para todos os usuários</li>
+                <li><s class="text-gray-900">Business Servers:</strong> Servidores dedicados para empresas</li>
+                <li><s class="text-gray-900">Team Accounts:</strong> Contas compartilhadas com controle de acesso</li>
+                <li><s class="text-gray-900">Audit Logs:</strong> Registro completo de atividades</li>
+                <li><s class="text-gray-900">Dedicated Support:</strong> Suporte prioritário 24/7</li>
               </ul>
             </div>
           `
@@ -363,7 +363,7 @@ export default function VpnConfiguracaoGuide() {
                 sobre melhores práticas e novas tecnologias de privacidade.
               </p>
               <div class="bg-[#171313] p-6 rounded-lg border border-[#31A8FF]/30 mt-6">
-                <p class="text-white font-semibold mb-3 text-lg">Precisa de Configuração Profissional?</p>
+                <p class="text-gray-900 font-semibold mb-3 text-lg">Precisa de Configuração Profissional?</p>
                 <p class="text-gray-700 leading-relaxed mb-4">
                   Nossa equipe pode configurar VPN corporativa ou pessoal com as melhores práticas 
                   de segurança e otimização de performance.

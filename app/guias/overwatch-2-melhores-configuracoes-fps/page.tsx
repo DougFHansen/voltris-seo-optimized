@@ -54,21 +54,21 @@ export default function OverwatchGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Render Scale</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Custom (100%)</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Custom (100%)</span></p>
                 <p class="text-gray-700 text-xs">
                     Nunca use "Automatic". O jogo vai mudar a qualidade da imagem sozinho. Fixe em 100%. Se precisar de FPS, baixe para 75% fixo.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Dynamic Render Scale</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-red-400">Off</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-red-400">Off</span></p>
                 <p class="text-gray-700 text-xs">
                    Isso causa instabilidade no input lag. Mantenha desligado.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Nvidia Reflex</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">On + Boost</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">On + Boost</span></p>
                 <p class="text-gray-700 text-xs">
                     Essencial para reduzir a latência do sistema. O Boost mantém a GPU acordada.
                 </p>

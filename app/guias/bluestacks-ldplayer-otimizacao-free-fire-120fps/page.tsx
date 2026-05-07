@@ -87,19 +87,19 @@ export default function AndroidEmuGuide() {
         {
             title: "Otimizações de Sistema (Debloat)",
             content: `
-        <h4 class="text-white font-bold mb-3">Removendo o Lixo</h4>
+        <h class="text-gray-900 font-bold mb-3">Removendo o Lixo</h4>
         <p class="mb-4 text-gray-700">
             Emuladores vêm cheios de "Launchers" pesados e apps patrocinados.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
-                <h5 class="font-bold text-white mb-2">BS Tweaker (Para BlueStacks)</h5>
+                <h class="font-bold text-gray-900 mb-2">BS Tweaker (Para BlueStacks)</h5>
                 <p class="text-sm text-gray-700">
                     Baixe o BS Tweaker 6. Ele permite fazer Root, remover anúncios e desativar abas "Game Center" que consomem RAM à toa.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-yellow-500/30">
-                <h5 class="font-bold text-white mb-2">Nova Launcher</h5>
+                <h class="font-bold text-gray-900 mb-2">Nova Launcher</h5>
                 <p class="text-sm text-gray-700">
                     Instale o Nova Launcher na Play Store do emulador e defina como padrão. A tela inicial ficará limpa e leve, sem carregar banners de propaganda.
                 </p>
@@ -124,7 +124,7 @@ export default function AndroidEmuGuide() {
         {
             title: "Dicas de Mapeamento (Smart Keymapping)",
             content: `
-        <h4 class="text-white font-bold mb-3">Subindo Capa</h4>
+        <h class="text-gray-900 font-bold mb-3">Subindo Capa</h4>
         <p class="mb-4 text-gray-700">
             Use as configs de "Smart Controls" do BlueStacks para o Free Fire. Elas detectam automaticamente se você está no menu ou no jogo, liberando o mouse sozinho.
             <br/>Ajuste a sensibilidade Y (Vertical) para ser maior que a X (Horizontal) para facilitar headshots.

@@ -25,7 +25,7 @@ export default function InstalacaoDriversGuide() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios Principais</h3>
+            <h class="text-gray-900 font-semibold mb-2">Benefícios Principais</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>✓ Melhora significativamente o desempenho do hardware</li>
               <li>✓ Garante funcionalidade completa dos dispositivos</li>
@@ -34,7 +34,7 @@ export default function InstalacaoDriversGuide() {
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Requisitos Mínimos</h3>
+            <h class="text-gray-900 font-semibold mb-2">Requisitos Mínimos</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>🔗 Conexão à internet para download de drivers</li>
               <li>💻 Acesso como administrador do sistema</li>
@@ -106,7 +106,7 @@ export default function InstalacaoDriversGuide() {
           content: `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Ferramentas Gratuitas</h4>
+                <h class="text-gray-900 font-semibold mb-2">Ferramentas Gratuitas</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>Gerenciador de Dispositivos - ferramenta nativa do Windows</li>
                   <li>Driver Booster Free - para atualização automática de drivers</li>
@@ -114,7 +114,7 @@ export default function InstalacaoDriversGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Soluções Pagas</h4>
+                <h class="text-gray-900 font-semibold mb-2">Soluções Pagas</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>Driver Genius Professional - para backup e restauração de drivers</li>
                   <li>Double Driver - para cópias de segurança de drivers</li>
@@ -147,7 +147,7 @@ export default function InstalacaoDriversGuide() {
           subtitle: "Erros Frequentes e Soluções",
           content: `
             <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30">
-              <h4 class="text-white font-semibold mb-2">Problema: Driver instalado mas dispositivo ainda não funciona</h4>
+              <h class="text-gray-900 font-semibold mb-2">Problema: Driver instalado mas dispositivo ainda não funciona</h4>
               <p class="text-gray-700 text-sm mb-2">Solução: Verifique compatibilidade e reinstale corretamente</p>
               <ul class="text-gray-700 text-xs space-y-1 ml-4">
                 <li>Confirme que o driver é compatível com sua versão do Windows</li>
@@ -156,7 +156,7 @@ export default function InstalacaoDriversGuide() {
               </ul>
             </div>
             <div class="bg-[#171313] p-4 rounded-lg border border-[#8B31FF]/30 mt-4">
-              <h4 class="text-white font-semibold mb-2">Problema: Conflito entre drivers de dispositivos diferentes</h4>
+              <h class="text-gray-900 font-semibold mb-2">Problema: Conflito entre drivers de dispositivos diferentes</h4>
               <p class="text-gray-700 text-sm mb-2">Solução: Identifique e resolva conflitos de recursos</p>
               <ul class="text-gray-700 text-xs space-y-1 ml-4">
                 <li>Verifique conflitos de IRQ no Gerenciador de Dispositivos</li>

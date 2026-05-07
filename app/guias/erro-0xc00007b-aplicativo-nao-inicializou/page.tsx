@@ -48,7 +48,7 @@ export default function Error07bFixGuide() {
           <strong>Traduzindo em português claro:</strong> O programa que você está tentando abrir (geralmente 64-bit) está tentando carregar uma biblioteca (DLL) de 32-bit, ou vice-versa. O Windows detecta essa incompatibilidade e bloqueia a inicialização para evitar crash ou corrupção de memória. Em 2026, mesmo com o Windows 11 sendo mais estável, esse erro continua comum porque programas antigos (especialmente jogos) dependem de runtimes específicos que podem estar corrompidos no seu PC.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Jogos e Programas Mais Afetados:</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Jogos e Programas Mais Afetados:</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><strong>GTA V, GTA IV, GTA San Andreas</strong> (muito comum)</li>
           <li><strong>Counter-Strike (CS 1.6, CS:GO, CS2)</strong></li>
@@ -68,7 +68,7 @@ export default function Error07bFixGuide() {
           Esta é a solução que resolve <strong>80% dos casos</strong>. O problema está nos pacotes Microsoft Visual C++ Redistributable corrompidos ou faltando.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📥 Passo a Passo Completo</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📥 Passo a Passo Completo</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-4 ml-4">
           <li><strong>Desinstalar TODOS os Visual C++ atuais:</strong>
             <ul class="list-disc ml-8 mt-2 space-y-1 text-sm">
@@ -121,7 +121,7 @@ export default function Error07bFixGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3">🎮 Como Instalar DirectX End-User Runtime</h4>
+        <h class="text-gray-900 font-bold mb-3">🎮 Como Instalar DirectX End-User Runtime</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Vá no site da Microsoft: <code>microsoft.com/download</code> e procure por <strong>"DirectX End-User Runtime"</strong>.</li>
           <li>Baixe o instalador web (<code>dxwebsetup.exe</code>).</li>
@@ -155,7 +155,7 @@ export default function Error07bFixGuide() {
           Se você já instalou todos os runtimes e o erro persiste, pode haver corrupção nos arquivos do próprio Windows.
         </p>
         
-        <h4 class="text-white font-bold mb-3">🛠️ Comando SFC (System File Checker)</h4>
+        <h class="text-gray-900 font-bold mb-3">🛠️ Comando SFC (System File Checker)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Abra o Prompt de Comando como <strong>Administrador</strong>.</li>
           <li>Digite: <code class="bg-white/10 px-2 py-1 rounded">sfc /scannow</code> e pressione Enter.</li>
@@ -163,7 +163,7 @@ export default function Error07bFixGuide() {
           <li>Se encontrou problemas, reinicie e teste o programa.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Comando DISM (Mais Profundo)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Comando DISM (Mais Profundo)</h4>
         <p class="text-gray-700 mb-3">Se o SFC não resolveu, use o DISM:</p>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>No CMD como Administrador, execute:
@@ -189,7 +189,7 @@ export default function Error07bFixGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3">🧹 Como Limpar DLLs Baixadas Manualmente</h4>
+        <h class="text-gray-900 font-bold mb-3">🧹 Como Limpar DLLs Baixadas Manualmente</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Lembre-se de quais DLLs você baixou e colocou manualmente (ex: <code>msvcp140.dll</code>, <code>xinput1_3.dll</code>, etc).</li>
           <li>Vá nas seguintes pastas e DELETE os arquivos que você colocou:
@@ -210,7 +210,7 @@ export default function Error07bFixGuide() {
           Às vezes, o programa foi instalado incorretamente (sem permissões adequadas) ou está tentando acessar arquivos protegidos.
         </p>
         
-        <h4 class="text-white font-bold mb-3">🔄 Reinstalação Correta</h4>
+        <h class="text-gray-900 font-bold mb-3">🔄 Reinstalação Correta</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Desinstale completamente o programa/jogo (Painel de Controle → Programas e Recursos).</li>
           <li>Delete também a pasta residual (geralmente em <code>C:\Program Files</code> ou <code>Documents</code>).</li>
@@ -219,7 +219,7 @@ export default function Error07bFixGuide() {
           <li>Instale em uma pasta sem caracteres especiais (evite acentos, espaços longos).</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Configurar Compatibilidade</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Configurar Compatibilidade</h4>
         <p class="text-gray-700 mb-3">Para jogos/programas antigos:</p>
         <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
           <li>Clique direito no executável do jogo → <strong>Propriedades</strong>.</li>
@@ -237,14 +237,14 @@ export default function Error07bFixGuide() {
           Em casos raros, o erro pode ser causado por bugs no próprio Windows ou drivers de GPU desatualizados.
         </p>
         
-        <h4 class="text-white font-bold mb-3">🔄 Windows Update</h4>
+        <h class="text-gray-900 font-bold mb-3">🔄 Windows Update</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
           <li>Vá em Configurações → Windows Update.</li>
           <li>Clique em "Verificar atualizações" e instale TUDO.</li>
           <li>Reinicie o PC.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Atualizar Drivers GPU</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Atualizar Drivers GPU</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><strong>NVIDIA:</strong> Baixe o GeForce Experience e atualize o driver.</li>
           <li><strong>AMD:</strong> Baixe o AMD Adrenalin e atualize.</li>

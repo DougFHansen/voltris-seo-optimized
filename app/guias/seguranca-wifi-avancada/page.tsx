@@ -25,11 +25,11 @@ export default function GuidePage() {
         <p class="mb-4 text-gray-700">Acesse seu roteador (geralmente 192.168.0.1 ou 192.168.1.1) e verifique:</p>
           <div class="space-y-4">
             <div class="border-l-4 border-red-500 pl-4">
-              <h4 class="text-white font-bold">Desative o WPS (Wi-Fi Protected Setup)</h4>
+              <h class="text-gray-900 font-bold">Desative o WPS (Wi-Fi Protected Setup)</h4>
               <p class="text-gray-700 text-sm">O WPS é uma falha de segurança enorme. Permite que invasores descubram sua senha em minutos via força bruta no PIN.</p>
             </div>
             <div class="border-l-4 border-green-500 pl-4">
-              <h4 class="text-white font-bold">Use WPA3 ou WPA2-AES</h4>
+              <h class="text-gray-900 font-bold">Use WPA3 ou WPA2-AES</h4>
               <p class="text-gray-700 text-sm">Nunca use WEP ou WPA-TKIP (são obsoletos e inseguros). Se seu roteador suporta WPA3, ative-o.</p>
             </div>
           </div>

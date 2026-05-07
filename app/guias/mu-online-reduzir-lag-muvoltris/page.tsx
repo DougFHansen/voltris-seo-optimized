@@ -54,7 +54,7 @@ export default function MuOnlineFixGuide() {
             title: "2. Compatibilidade no Windows 11",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Ajuste técnico:</h4>
+            <h class="text-gray-900 font-bold mb-2">Ajuste técnico:</h4>
             <p class="text-sm text-gray-700">
                 1. Clique com o botão direito no <code>main.exe</code> do seu Mu Online. <br/>
                 2. Vá em Propriedades > Compatibilidade. <br/>

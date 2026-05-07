@@ -55,7 +55,7 @@ export default function EpicGamesFixGuide() {
             title: "2. Corrigindo Downloads Lentos",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Truque de Largura de Banda:</h4>
+            <h class="text-gray-900 font-bold mb-2">Truque de Largura de Banda:</h4>
             <p class="text-sm text-gray-700">
                 Muitas vezes, downloads na Epic travam em 0B/s ou ficam muito lentos. <br/><br/>
                 No menu de Configurações, procure por <strong>'Limitar downloads'</strong>. Coloque um valor muito alto, como 1000000 (um milhão de KB/s). Por algum motivo técnico do código da Epic, colocar um limite manual forçado muitas vezes "destrava" a velocidade máxima da sua conexão em 2026.

@@ -54,7 +54,7 @@ export default function StardewLagGuide() {
             title: "2. Corrigindo o Lag no Modo Janela",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dica de Vídeo:</h4>
+            <h class="text-gray-900 font-bold mb-2">Dica de Vídeo:</h4>
             <p class="text-sm text-gray-700">
                 O Stardew Valley tem um bug conhecido no Windows 10/11 onde o FPS cai pela metade se você usar o modo 'Janela sem Bordas'. Mude para o modo <strong>'Tela Cheia' (Fullscreen)</strong> real nas opções de vídeo do jogo para garantir que sua placa de vídeo foque 100% no pixel art.
             </p>

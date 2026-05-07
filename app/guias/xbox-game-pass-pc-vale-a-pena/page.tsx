@@ -52,7 +52,7 @@ export default function GamePassValueGuide() {
             title: "2. Xbox Cloud Gaming: Jogue sem PC Gamer",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Poder da Nuvem:</h4>
+            <h class="text-gray-900 font-bold mb-2">Poder da Nuvem:</h4>
             <p class="text-sm text-gray-700">
                 A assinatura Ultimate em 2026 permite que você jogue quase todo o catálogo via streaming. <br/><br/>
                 Isso significa que você pode rodar jogos pesados em um notebook de escritório ou até no seu celular, sem precisar de uma placa de vídeo potente. Com a expansão dos servidores no Brasil, o lag reduziu drasticamente, tornando o Cloud Gaming uma opção real para quem não quer investir R$ 5.000 em hardware agora.

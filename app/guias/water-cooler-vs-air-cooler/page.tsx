@@ -82,7 +82,7 @@ export default function CoolerGuide() {
             title: "Pasta Térmica: A Grande Diferença",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Não use pasta de dente!</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Não use pasta de dente!</h4>
                 <p class="text-gray-700 mb-4">
                     A pasta térmica que vem pré-aplicada em Coolers de marca (Corsair, DeepCool) é ótima. Não precisa trocar.
                 </p>

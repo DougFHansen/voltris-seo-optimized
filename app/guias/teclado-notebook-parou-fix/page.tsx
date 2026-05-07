@@ -55,7 +55,7 @@ export default function LaptopKeyboardFixGuide() {
             title: "2. Resetando o Driver (Solução Windows)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Limpando registros:</h4>
+            <h class="text-gray-900 font-bold mb-2">Limpando registros:</h4>
             <p class="text-sm text-gray-700">
                 1. Clique com o botão direito no Iniciar > <strong>Gerenciador de Dispositivos</strong>. <br/>
                 2. Expanda 'Teclados'. <br/>
@@ -81,7 +81,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "12. Diagnóstico Avançado de Hardware",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Análise de Componentes do Teclado Interno</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Análise de Componentes do Teclado Interno</h4>
         <p class="mb-4 text-gray-700">
             Em 2026, os teclados de notebooks são compostos por componentes muito mais complexos do que antigamente. O diagnóstico avançado envolve entender a arquitetura interna do teclado:
         </p>
@@ -108,7 +108,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Diagnóstico com Multímetro</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Diagnóstico com Multímetro</h4>
         <p class="mb-4 text-gray-700">
             Para técnicos avançados, o diagnóstico pode ser feito com equipamentos de medição:
         </p>
@@ -156,7 +156,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "13. Recuperação de Dados e Acesso Alternativo",
             content: `
-        <h4 class="text-white font-bold mb-3">💾 Soluções Alternativas para Acesso ao Sistema</h4>
+        <h class="text-gray-900 font-bold mb-3">💾 Soluções Alternativas para Acesso ao Sistema</h4>
         <p class="mb-4 text-gray-700">
             Quando o teclado principal não funciona, existem métodos alternativos para acessar e operar o sistema:
         </p>
@@ -196,7 +196,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔐 Recuperação de Senhas e Dados</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔐 Recuperação de Senhas e Dados</h4>
         <p class="mb-4 text-gray-700">
             Se o teclado não funcionar e você tiver senha de usuário, existem métodos de recuperação:
         </p>
@@ -225,7 +225,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "14. Tendências de Hardware e Prevenção em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🚀 Inovações em Teclados de Notebooks</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Inovações em Teclados de Notebooks</h4>
         <p class="mb-4 text-gray-700">
             Em 2026, os fabricantes estão introduzindo tecnologias que tornam os teclados mais resistentes e com menos falhas:
         </p>
@@ -262,7 +262,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Prevalência de Falhas em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Prevalência de Falhas em 2026</h4>
         <p class="mb-4 text-gray-700">
             Estudos recentes mostram as principais causas de falhas em teclados de notebooks:
         </p>
@@ -311,7 +311,7 @@ export default function LaptopKeyboardFixGuide() {
             </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
         <p class="mb-4 text-gray-700">
             Empresas estão investindo pesadamente em tecnologias para reduzir falhas de teclados:
         </p>
@@ -330,7 +330,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "4. Limpeza Profunda e Prevenção",
             content: `
-        <h4 class="text-white font-bold mb-3">🧽 Procedimentos de Limpeza Profunda</h4>
+        <h class="text-gray-900 font-bold mb-3">🧽 Procedimentos de Limpeza Profunda</h4>
         <p class="mb-4 text-gray-700">
             Muitos problemas de teclado são causados por acúmulo de sujeira e partículas que interferem na detecção das teclas:
         </p>
@@ -357,7 +357,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Prevenção de Danos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Prevenção de Danos</h4>
         <p class="mb-4 text-gray-700">
             Para evitar problemas futuros com o teclado:
         </p>
@@ -404,7 +404,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "5. Soluções de Software Avançado",
             content: `
-        <h4 class="text-white font-bold mb-3">💻 Ferramentas de Diagnóstico Avançado</h4>
+        <h class="text-gray-900 font-bold mb-3">💻 Ferramentas de Diagnóstico Avançado</h4>
         <p class="mb-4 text-gray-700">
             Além das soluções básicas, existem ferramentas mais avançadas para diagnosticar problemas de teclado:
         </p>
@@ -433,7 +433,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Soluções Baseadas em Scripts</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Soluções Baseadas em Scripts</h4>
         <p class="mb-4 text-gray-700">
             Para problemas persistentes, scripts podem automatizar a solução:
         </p>
@@ -462,7 +462,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "6. Análise de Casos Reais e Soluções",
             content: `
-        <h4 class="text-white font-bold mb-3">📚 Estudos de Caso em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">📚 Estudos de Caso em 2026</h4>
         <p class="mb-4 text-gray-700">
             Analisando problemas reais enfrentados por usuários e as soluções aplicadas:
         </p>
@@ -489,7 +489,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Reparo em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Estatísticas de Reparo em 2026</h4>
         <p class="mb-4 text-gray-700">
             Dados reais sobre reparos de teclado em assistências técnicas:
         </p>
@@ -542,7 +542,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "7. Soluções de Recuperação e Backup",
             content: `
-        <h4 class="text-white font-bold mb-3">💾 Planejamento de Recuperação</h4>
+        <h class="text-gray-900 font-bold mb-3">💾 Planejamento de Recuperação</h4>
         <p class="mb-4 text-gray-700">
             Preparação para situações em que o teclado falha completamente:
         </p>
@@ -575,7 +575,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔐 Segurança e Acesso em Situações de Emergência</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔐 Segurança e Acesso em Situações de Emergência</h4>
         <p class="mb-4 text-gray-700">
             Manter acesso seguro ao sistema quando o teclado principal não funciona:
         </p>
@@ -604,7 +604,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "8. Comparação de Modelos e Tendências",
             content: `
-        <h4 class="text-white font-bold mb-3">🏆 Comparação de Teclados de Notebooks em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">🏆 Comparação de Teclados de Notebooks em 2026</h4>
         <p class="mb-4 text-gray-700">
             Análise das diferentes tecnologias de teclado disponíveis em notebooks:
         </p>
@@ -631,7 +631,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Tendências de Mercado para 2026-2027</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Tendências de Mercado para 2026-2027</h4>
         <p class="mb-4 text-gray-700">
             Projeções sobre evolução dos teclados de notebooks:
         </p>
@@ -678,7 +678,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "9. Análise de Custo-Benefício de Reparos",
             content: `
-        <h4 class="text-white font-bold mb-3">💰 Avaliação Financeira de Opções de Reparo</h4>
+        <h class="text-gray-900 font-bold mb-3">💰 Avaliação Financeira de Opções de Reparo</h4>
         <p class="mb-4 text-gray-700">
             Análise de custo versus benefício para diferentes opções de reparo:
         </p>
@@ -705,7 +705,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Análise de Retorno sobre Investimento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Análise de Retorno sobre Investimento</h4>
         <p class="mb-4 text-gray-700">
             Comparação entre diferentes abordagens de resolução:
         </p>
@@ -764,7 +764,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "10. Segurança e Proteção de Dados",
             content: `
-        <h4 class="text-white font-bold mb-3">🔒 Segurança Durante o Processo de Reparo</h4>
+        <h class="text-gray-900 font-bold mb-3">🔒 Segurança Durante o Processo de Reparo</h4>
         <p class="mb-4 text-gray-700">
             Considerações importantes sobre segurança de dados ao lidar com teclados defeituosos:
         </p>
@@ -797,7 +797,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Prevenção de Ameaças Durante Reparo</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Prevenção de Ameaças Durante Reparo</h4>
         <p class="mb-4 text-gray-700">
             Medidas de segurança específicas para quando o teclado principal não está funcionando:
         </p>
@@ -828,7 +828,7 @@ export default function LaptopKeyboardFixGuide() {
         {
             title: "11. Recursos Técnicos e Especificações",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Especificações Técnicas de Teclados de Notebooks</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Especificações Técnicas de Teclados de Notebooks</h4>
         <p class="mb-4 text-gray-700">
             Entendimento detalhado das especificações técnicas que afetam a funcionalidade e reparabilidade:
         </p>
@@ -855,7 +855,7 @@ export default function LaptopKeyboardFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Interfaces de Conexão</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Comparação de Interfaces de Conexão</h4>
         <p class="mb-4 text-gray-700">
             Diferentes tipos de interfaces usadas para conectar o teclado à placa-mãe:
         </p>
@@ -898,7 +898,7 @@ export default function LaptopKeyboardFixGuide() {
             </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Ferramentas Especializadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Ferramentas Especializadas</h4>
         <p class="mb-4 text-gray-700">
             Equipamentos e ferramentas necessárias para diagnóstico e reparo profissional:
         </p>

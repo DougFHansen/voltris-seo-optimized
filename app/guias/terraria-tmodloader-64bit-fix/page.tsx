@@ -52,7 +52,7 @@ export default function TModLoaderGuide() {
             title: "2. tModLoader 64-bit para Legacy (Versão 1.3)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Para quem usa mods antigos:</h4>
+            <h class="text-gray-900 font-bold mb-2">Para quem usa mods antigos:</h4>
             <p class="text-sm text-gray-700">
                 Se você ainda joga a versão 1.3 para usar mods que não foram atualizados: <br/><br/>
                 1. Procure pelo 'tModLoader 64-bit' no GitHub (repositório de tModLoader-64bit). <br/>

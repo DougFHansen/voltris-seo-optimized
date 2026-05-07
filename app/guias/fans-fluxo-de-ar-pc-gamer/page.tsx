@@ -85,7 +85,7 @@ export default function FansGuide() {
             title: "CFM (Fluxo) vs Pressão Estática",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Nem toda Fan é igual</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Nem toda Fan é igual</h4>
                 <ul class="list-disc list-inside text-gray-700 text-sm space-y-3">
                     <li><strong>Fans de Alto Fluxo (High Airflow / CFM):</strong> Para gabinete (exaustão). Movem muito ar se não tiver nada na frente.</li>
                     <li><strong>Fans de Pressão Estática (Static Pressure):</strong> Para Radiadores ou grades fechadas. Elas têm pás largas e "empurram" o ar com força através de obstruções (dissipadores).</li>

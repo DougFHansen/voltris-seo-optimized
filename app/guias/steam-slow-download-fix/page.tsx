@@ -54,14 +54,14 @@ export default function SteamGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Região de Download</h4>
-                <p class="text-white font-mono text-sm mb-2">Configurações > Downloads > Região</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Configurações > Downloads > Região</p>
                 <p class="text-gray-700 text-xs">
                     Mude para o servidor mais próximo (ex: Brazil - Sao Paulo). Se estiver lento, TENTE OUTRO (ex: Brazil - Rio de Janeiro ou até US - Miami). Às vezes a rota de SP está congestionada e um servidor gringo baixa mais rápido.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Limpar Cache de Download</h4>
-                <p class="text-white font-mono text-sm mb-2">Configurações > Downloads > Limpar Cache</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Configurações > Downloads > Limpar Cache</p>
                 <p class="text-gray-700 text-xs">
                     Se o download para e volta ("disk write error" ou velocidade oscilando), limpe o cache. Isso reseta a conexão com os servidores de conteúdo e remove arquivos temporários corrompidos. (Você terá que logar de novo).
                 </p>

@@ -45,7 +45,7 @@ export default function BrowserShortcutsGuide() {
           A cada vez que você tira a mão do teclado para procurar o ícone 'X' de fechar uma aba com o mouse, você perde cerca de <strong>2-3 segundos</strong>. Somando ao longo de um dia de trabalho/estudo (vamos supor 50 vezes/dia), você desperdiça <strong>100-150 segundos = 2,5 MINUTOS</strong>. Em um ano, isso equivale a <strong>15 HORAS PERDIDAS</strong> apenas fechando abas! Em 2026, dominar os atalhos do navegador é o que separa um usuário comum de um <strong>Power User</strong>.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Produtividade</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Estatísticas de Produtividade</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li>Usuários que dominam atalhos de teclado são <strong>30-40% mais rápidos</strong> em tarefas de navegação web.</li>
           <li>Pesquisadores da Universidade de Stanford (2024) comprovaram que alternar entre teclado e mouse <strong>reduz concentração em 15%</strong>.</li>
@@ -60,7 +60,7 @@ export default function BrowserShortcutsGuide() {
           Pare de se perder entre dezenas de abas abertas. Estes atalhos funcionam em <strong>TODOS</strong> os navegadores Chromium (Chrome, Edge, Brave, Opera, Vivaldi).
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📌 Abrir, Fechar e Reabrir Abas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📌 Abrir, Fechar e Reabrir Abas</h4>
         <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
@@ -119,7 +119,7 @@ export default function BrowserShortcutsGuide() {
     {
       title: "Navegação Ninja: Alternar e Pular Entre Abas Sem Mouse",
       content: `
-        <h4 class="text-white font-bold mb-3">📱 Navegar Entre Abas (Sequencial)</h4>
+        <h class="text-gray-900 font-bold mb-3">📱 Navegar Entre Abas (Sequencial)</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Ctrl + Tab</code> - Vai para a PRÓXIMA aba (à direita)</li>
           <li><code>Ctrl + Shift + Tab</code> - Volta para a aba ANTERIOR (à esquerda)</li>
@@ -127,7 +127,7 @@ export default function BrowserShortcutsGuide() {
           <li><code>Ctrl + Page Up</code> - Mesmo que Ctrl + Shift + Tab (alternativa)</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎯 Pular Diretamente Para Aba Específica (Ninja Mode)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎯 Pular Diretamente Para Aba Específica (Ninja Mode)</h4>
         <p class="text-gray-700 mb-3">
           VOCÊ NÃO PRECISA CLICAR NAS ABAS! Use atalhos numéricos:
         </p>
@@ -170,7 +170,7 @@ export default function BrowserShortcutsGuide() {
     {
       title: "Atalhos de Barra de Endereço (URL) e Busca",
       content: `
-        <h4 class="text-white font-bold mb-3">🔎 Dominar a Barra de Endereço (Omnibox)</h4>
+        <h class="text-gray-900 font-bold mb-3">🔎 Dominar a Barra de Endereço (Omnibox)</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Ctrl + L</code> ou <code>Alt + D</code> ou <code>F6</code> - Seleciona TODA a URL na barra de endereço. Digite e pressione Enter para navegar.</li>
           <li><code>Ctrl + K</code> - Mesmo efeito de Ctrl + L, mas foca na BUSCA (no Chrome/Edge, é a mesma coisa).</li>
@@ -182,7 +182,7 @@ export default function BrowserShortcutsGuide() {
           <li><code>Shift + Enter</code> - Abre o resultado da busca em NOVA ABA.</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔍 Buscar DENTRO da Página Atual</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔍 Buscar DENTRO da Página Atual</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><code>Ctrl + F</code> - Abre a caixa de busca ("Localizar na página")</li>
           <li><code>Enter</code> ou <code>Ctrl + G</code> - Próxima ocorrência</li>
@@ -194,7 +194,7 @@ export default function BrowserShortcutsGuide() {
     {
       title: "Atalhos de Rolagem de Página (Navegação Vertical)",
       content: `
-        <h4 class="text-white font-bold mb-3">📤 Rolar Página Sem Mouse (Leitura Rápida)</h4>
+        <h class="text-gray-900 font-bold mb-3">📤 Rolar Página Sem Mouse (Leitura Rápida)</h4>
         <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
@@ -230,7 +230,7 @@ export default function BrowserShortcutsGuide() {
     {
       title: "Atalhos de Recarregamento de Página (Refresh)",
       content: `
-        <h4 class="text-white font-bold mb-3">🔄 Atualizar Página (Tipos de Refresh)</h4>
+        <h class="text-gray-900 font-bold mb-3">🔄 Atualizar Página (Tipos de Refresh)</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Ctrl + R</code> ou <code>F5</code> - Recarrega a página NORMAL (usa cache se disponível)</li>
           <li><code>Ctrl + Shift + R</code> ou <code>Ctrl + F5</code> ou <code>Shift + F5</code> - <strong>Recarrega LIMPANDO O CACHE</strong> (hard refresh)
@@ -252,7 +252,7 @@ export default function BrowserShortcutsGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3">🧹 O Que Você Pode Limpar Rapidamente</h4>
+        <h class="text-gray-900 font-bold mb-3">🧹 O Que Você Pode Limpar Rapidamente</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><strong>Histórico de navegação</strong> - Todos os sites que você visitou</li>
           <li><strong>Cookies e dados de sites</strong> - Logins salvos, preferências</li>
@@ -269,7 +269,7 @@ export default function BrowserShortcutsGuide() {
     {
       title: "Atalhos Avançados: Zoom, Downloads e Ferramentas do Desenvolvedor",
       content: `
-        <h4 class="text-white font-bold mb-3">🔍 Zoom da Página
+        <h class="text-gray-900 font-bold mb-3">🔍 Zoom da Página
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Ctrl + '+'</code> ou <code>Ctrl + '='</code> - Aumenta zoom da página</li>
           <li><code>Ctrl + '-'</code> - Diminui zoom da página</li>
@@ -279,14 +279,14 @@ export default function BrowserShortcutsGuide() {
           <li><code>Esc</code> - Sai de modo tela cheia ou cancela elemento em foco</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📥 Downloads e Histórico</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📥 Downloads e Histórico</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>Ctrl + J</code> - Abre a janela de downloads</li>
           <li><code>Ctrl + H</code> - Abre histórico de navegação (páginas visitadas)</li>
           <li><code>Ctrl + Shift + T</code> - Reabre abas fechadas recentemente (histórico de abas)</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Ferramentas do Desenvolvedor (DevTools)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛠️ Ferramentas do Desenvolvedor (DevTools)</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><code>F12</code> ou <code>Ctrl + Shift + I</code> - Abre as ferramentas do desenvolvedor</li>
           <li><code>Ctrl + Shift + C</code> - Abre ferramentas em modo inspeção (seleciona elemento)</li>
@@ -305,7 +305,7 @@ export default function BrowserShortcutsGuide() {
               Por trás de cada atalho de teclado existe uma complexa cadeia de processamento que envolve o sistema operacional, o navegador e os motores de renderização. Compreender essa arquitetura ajuda a entender por que certos atalhos funcionam de forma consistente entre diferentes navegadores baseados em Chromium.
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Pipeline de Processamento de Atalhos</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Pipeline de Processamento de Atalhos</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">1. Input Capture</h5>
@@ -329,7 +329,7 @@ export default function BrowserShortcutsGuide() {
               </div>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Estrutura de Mapeamento de Atalhos</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Estrutura de Mapeamento de Atalhos</h4>
             <div class="overflow-x-auto">
               <table class="w-full text-xs text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
                 <thead class="bg-gray-800">
@@ -374,7 +374,7 @@ export default function BrowserShortcutsGuide() {
               </table>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Sistema de Prioridade e Conflitos</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Sistema de Prioridade e Conflitos</h4>
             <p class="mb-4 text-gray-700">
               O navegador implementa um sistema hierárquico de prioridade para resolver conflitos de atalhos:
             </p>
@@ -393,7 +393,7 @@ export default function BrowserShortcutsGuide() {
               Além dos atalhos básicos, existem técnicas avançadas que podem transformar radicalmente sua produtividade na web. Estas técnicas combinam atalhos de teclado com funcionalidades específicas do navegador para criar workflows altamente eficientes.
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Workflows Avançados de Navegação</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Workflows Avançados de Navegação</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div class="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 p-5 rounded-xl border border-cyan-500/30">
                 <h5 class="text-cyan-400 font-bold mb-3">Research Workflow</h5>
@@ -417,7 +417,7 @@ export default function BrowserShortcutsGuide() {
               </div>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Técnicas de Navegação por Teclado Apenas</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Técnicas de Navegação por Teclado Apenas</h4>
             <p class="mb-4 text-gray-700">
               Para usuários avançados que desejam minimizar o uso do mouse:
             </p>
@@ -468,7 +468,7 @@ export default function BrowserShortcutsGuide() {
               Para profissionais que realizam tarefas repetitivas no navegador, é possível criar scripts e usar ferramentas de automação que simulam atalhos de teclado para executar tarefas complexas de forma automatizada.
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Ferramentas de Automação Baseadas em Atalhos</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Ferramentas de Automação Baseadas em Atalhos</h4>
             <p class="mb-4 text-gray-700">
               Diversas ferramentas permitem a criação de macros baseadas em atalhos de navegador:
             </p>
@@ -495,7 +495,7 @@ export default function BrowserShortcutsGuide() {
               </div>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Exemplo de Script Avançado</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Exemplo de Script Avançado</h4>
             <p class="mb-4 text-gray-700">
               Exemplo de macro para automatizar uma tarefa repetitiva de pesquisa e captura de dados:
             </p>
@@ -545,7 +545,7 @@ function automatedResearchWorkflow(searchTerms) {
               Para maximizar a eficiência, é importante medir e otimizar o uso de atalhos de navegação. Existem métricas específicas que podem ajudar a identificar oportunidades de melhoria e quantificar os ganhos de produtividade.
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Métricas de Produtividade em Navegação</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Métricas de Produtividade em Navegação</h4>
             <div class="overflow-x-auto">
               <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
@@ -585,7 +585,7 @@ function automatedResearchWorkflow(searchTerms) {
               </table>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Ferramentas de Análise de Produtividade</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Ferramentas de Análise de Produtividade</h4>
             <p class="mb-4 text-gray-700">
               Existem diversas ferramentas que podem ajudar a analisar e melhorar sua produtividade em navegação:
             </p>
@@ -612,67 +612,67 @@ function automatedResearchWorkflow(searchTerms) {
           <div class="space-y-4">
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">1990</span>
+                <s class="text-gray-900 font-bold text-sm">1990</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">WorldWideWeb</h5>
+                <h class="font-bold text-gray-900">WorldWideWeb</h5>
                 <p class="text-gray-700 text-sm">Primeiro navegador com atalhos básicos como Ctrl+L para ir para a barra de endereço.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">1993</span>
+                <s class="text-gray-900 font-bold text-sm">1993</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Mosaic</h5>
+                <h class="font-bold text-gray-900">Mosaic</h5>
                 <p class="text-gray-700 text-sm">Introduziu atalhos para navegação entre páginas e recarregamento.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">1994</span>
+                <s class="text-gray-900 font-bold text-sm">1994</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Netscape Navigator</h5>
+                <h class="font-bold text-gray-900">Netscape Navigator</h5>
                 <p class="text-gray-700 text-sm">Padronizou muitos dos atalhos que usamos hoje, como Ctrl+T para nova aba.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">1995</span>
+                <s class="text-gray-900 font-bold text-sm">1995</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Internet Explorer</h5>
+                <h class="font-bold text-gray-900">Internet Explorer</h5>
                 <p class="text-gray-700 text-sm">Expandiu o conjunto de atalhos para incluir mais funções de interface.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2008</span>
+                <s class="text-gray-900 font-bold text-sm">2008</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Google Chrome</h5>
+                <h class="font-bold text-gray-900">Google Chrome</h5>
                 <p class="text-gray-700 text-sm">Revolutionou a gestão de abas com atalhos mais sofisticados e integração com extensões.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2026</span>
+                <s class="text-gray-900 font-bold text-sm">2026</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Navegadores Modernos</h5>
+                <h class="font-bold text-gray-900">Navegadores Modernos</h5>
                 <p class="text-gray-700 text-sm">Atalhos adaptativos e personalizáveis com base no comportamento do usuário.</p>
               </div>
             </div>
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Padrões de Consistência</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Padrões de Consistência</h4>
         <p class="mb-4 text-gray-700">Apesar da evolução, muitos atalhos permaneceram consistentes entre navegadores:</p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -698,7 +698,7 @@ function automatedResearchWorkflow(searchTerms) {
       content: `
         <p class="mb-4 text-gray-700">A escolha das combinações de teclas para atalhos não é aleatória. Cada combinação foi cuidadosamente projetada para maximizar a eficiência e minimizar o esforço físico do usuário.</p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Princípios de Design de Atalhos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Princípios de Design de Atalhos</h4>
         <p class="mb-4 text-gray-700">Existem vários princípios fundamentais que guiam a criação de atalhos eficientes:</p>
         
         <div class="space-y-4">
@@ -734,7 +734,7 @@ function automatedResearchWorkflow(searchTerms) {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Métricas de Eficiência de Atalhos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Métricas de Eficiência de Atalhos</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
@@ -790,7 +790,7 @@ function automatedResearchWorkflow(searchTerms) {
       content: `
         <p class="mb-4 text-gray-700">Atalhos de teclado são uma ferramenta crucial para acessibilidade, permitindo que pessoas com diferentes capacidades físicas utilizem navegadores da web de forma eficiente e independente.</p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Atalhos e Acessibilidade</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Atalhos e Acessibilidade</h4>
         <p class="mb-4 text-gray-700">Os atalhos de teclado desempenham um papel vital na inclusão digital:</p>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -819,7 +819,7 @@ function automatedResearchWorkflow(searchTerms) {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Diretrizes de Acessibilidade</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Diretrizes de Acessibilidade</h4>
         <p class="mb-4 text-gray-700">As diretrizes internacionais de acessibilidade influenciam o design de atalhos:</p>
         
         <div class="overflow-x-auto">

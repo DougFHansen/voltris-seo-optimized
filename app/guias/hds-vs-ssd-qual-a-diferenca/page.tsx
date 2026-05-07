@@ -82,7 +82,7 @@ export default function StorageGuide() {
         </p>
         <div class="space-y-4">
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
-                <h4 class="text-white font-bold">Gen 3 (PCIe 3.0)</h4>
+                <h class="text-gray-900 font-bold">Gen 3 (PCIe 3.0)</h4>
                 <p class="text-gray-700 text-sm">Velocidade ~3500 MB/s. Perfeito para custo-benefício. O Windows liga tão rápido quanto no Gen 4.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
@@ -103,7 +103,7 @@ export default function StorageGuide() {
             title: "DirectStorage: O Futuro",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Adeus telas de loading</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Adeus telas de loading</h4>
                 <p class="text-gray-700 mb-4">
                     DirectStorage é uma tecnologia que permite a placa de vídeo carregar texturas direto do SSD NVMe, sem passar pela CPU. Isso promete jogos com loading zero.
                 </p>

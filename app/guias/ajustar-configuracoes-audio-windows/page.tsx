@@ -86,25 +86,25 @@ export default function AjustarAudioWindowsGuide() {
           <h3 class="text-xl font-bold mb-4 text-green-400">🔧 Ferramentas de Diagnóstico:</h3>
           <div class="grid md:grid-cols-2 gap-4">
             <div class="space-y-4">
-              <h4 class="text-lg font-semibold text-white mb-2">Gerenciador de Dispositivos</h4>
+              <h class="text-lg font-semibold text-gray-900 mb-2">Gerenciador de Dispositivos</h4>
               <p class="text-gray-700 text-sm mb-2">Pressione <kbd class="bg-gray-700 px-2 py-1 rounded">Win + X</kbd> para abrir rapidamente.</p>
               <p class="text-gray-700 text-sm">Verifique status de drivers, desative dispositivos desnecessários.</p>
               
-              <h4 class="text-lg font-semibold text-white mb-2">Gerenciador de Som</h4>
+              <h class="text-lg font-semibold text-gray-900 mb-2">Gerenciador de Som</h4>
               <p class="text-gray-700 text-sm mb-2">Clique com o botão direito no ícone de som na barra de tarefas.</p>
               <p class="text-gray-700 text-sm">Acesse propriedades do dispositivo para configurações avançadas.</p>
               
-              <h4 class="text-lg font-semibold text-white mb-2">Painel de Som DirectX</h4>
+              <h class="text-lg font-semibold text-gray-900 mb-2">Painel de Som DirectX</h4>
               <p class="text-gray-700 text-sm mb-2">Digite <kbd class="bg-gray-700 px-2 py-1 rounded">dxdiag</kbd> no Executar.</p>
               <p class="text-gray-700 text-sm">Mostra informações detalhadas sobre drivers DirectX e hardware.</p>
             </div>
             
             <div class="space-y-4">
-              <h4 class="text-lg font-semibold text-white mb-2">Verificação de Drivers</h4>
+              <h class="text-lg font-semibold text-gray-900 mb-2">Verificação de Drivers</h4>
               <p class="text-gray-700 text-sm mb-2">Use o Gerenciador de Dispositivos para verificar atualizações.</p>
               <p class="text-gray-700 text-sm mb-2">Visite o site do fabricante da sua placa de som.</p>
               
-              <h4 class="text-lg font-semibold text-white mb-2">Teste de Hardware</h4>
+              <h class="text-lg font-semibold text-gray-900 mb-2">Teste de Hardware</h4>
               <p class="text-gray-700 text-sm mb-2">Use fones de ouvido diferentes para isolar o problema.</p>
               <p class="text-gray-700 text-sm mb-2">Teste com cabos e portas diferentes.</p>
             </div>

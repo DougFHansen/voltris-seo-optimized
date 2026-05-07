@@ -53,7 +53,7 @@ export default function WiFiSolutionsGuide() {
             title: "2. Gerenciamento de Energia no Windows 11",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">PC "dormindo" na rede:</h4>
+            <h class="text-gray-900 font-bold mb-2">PC "dormindo" na rede:</h4>
             <p class="text-sm text-gray-700">
                 Uma causa comum de quedas no Wi-Fi é o Windows tentando economizar bateria. <br/><br/>
                 1. Vá no Gerenciador de Dispositivos. <br/>

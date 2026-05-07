@@ -56,7 +56,7 @@ export default function BatteryCalibrationGuide() {
             title: "2. Preparando o Windows para a Calibração",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Ajuste de Energia:</h4>
+            <h class="text-gray-900 font-bold mb-2">Ajuste de Energia:</h4>
             <p class="text-sm text-gray-700">
                 Para que o notebook não hiberne antes da hora no passo 2, vá em Opções de Energia > Alterar configurações do plano. <br/><br/>
                 Certifique-se de que a opção de 'Hibernar' em bateria esteja marcada como **'Nunca'**. Isso permite que as células de íon-lítio descarreguem até o limite seguro configurado pelo hardware, e não pelo software do Windows.
@@ -79,7 +79,7 @@ export default function BatteryCalibrationGuide() {
     {
       title: "Ciência das Baterias de Íon-Lítio: Química e Degradacão",
       content: `
-        <h4 class="text-white font-bold mb-3">🔋 Química das Baterias de Íon-Lítio</h4>
+        <h class="text-gray-900 font-bold mb-3">🔋 Química das Baterias de Íon-Lítio</h4>
         <p class="mb-4 text-gray-700">
           As baterias de íon-lítio utilizadas em notebooks são compostas por células eletroquímicas que armazenam energia através do movimento de íons de lítio entre o cátodo e o ânodo. A compreensão dos princípios químicos subjacentes é essencial para entender o processo de calibração e degradação:
         </p>
@@ -109,7 +109,7 @@ export default function BatteryCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Processos de Degradação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Processos de Degradação</h4>
         <p class="mb-4 text-gray-700">
           A degradação das baterias de íon-lítio ocorre por meio de múltiplos mecanismos químicos e físicos:
         </p>
@@ -170,7 +170,7 @@ export default function BatteryCalibrationGuide() {
     {
       title: "Sistemas de Gerenciamento de Bateria e Firmware",
       content: `
-        <h4 class="text-white font-bold mb-3">⚡ Unidades de Gerenciamento de Bateria (BMU)</h4>
+        <h class="text-gray-900 font-bold mb-3">⚡ Unidades de Gerenciamento de Bateria (BMU)</h4>
         <p class="mb-4 text-gray-700">
           O sistema de gerenciamento de bateria (Battery Management System - BMS) é responsável por monitorar e controlar com precisão o estado de carga e saúde da bateria. Este sistema inclui sensores, circuitos e firmware especializados:
         </p>
@@ -220,7 +220,7 @@ export default function BatteryCalibrationGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Processo de Calibração Técnica</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Processo de Calibração Técnica</h4>
         <p class="mb-4 text-gray-700">
           A calibração envolve uma série de medições e cálculos precisos para redefinir os pontos de referência do sistema:
         </p>
@@ -256,7 +256,7 @@ export default function BatteryCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Comandos e Ferramentas de Calibração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛠️ Comandos e Ferramentas de Calibração</h4>
         <p class="mb-4 text-gray-700">
           Ferramentas e comandos para diagnosticar e calibrar o sistema de bateria:
         </p>
@@ -274,12 +274,12 @@ export default function BatteryCalibrationGuide() {
     {
       title: "Tecnologias Emergentes em Armazenamento de Energia e Gestão de Carga",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Bateria de Próxima Geração</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias de Bateria de Próxima Geração</h4>
         <p class="mb-4 text-gray-700">
           A próxima geração de baterias para notebooks está explorando tecnologias avançadas que prometem maior densidade energética, ciclos de vida mais longos e tempos de carga mais rápidos:
         </p>
         
-        <h4 class="text-white font-bold mb-3">Baterias Sólidas e Semi-Sólidas</h4>
+        <h class="text-gray-900 font-bold mb-3">Baterias Sólidas e Semi-Sólidas</h4>
         <p class="mb-4 text-gray-700">
           Novas tecnologias de bateria que estão sendo implementadas:
         </p>
@@ -329,7 +329,7 @@ export default function BatteryCalibrationGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Gestão de Energia</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🤖 Inteligência Artificial em Gestão de Energia</h4>
         <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na otimização de sistemas de bateria:
         </p>
@@ -360,7 +360,7 @@ export default function BatteryCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
         <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de armazenamento de energia de próxima geração:
         </p>

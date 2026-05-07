@@ -54,7 +54,7 @@ export default function SystemMonitoringGuide() {
       title: "2. HWiNFO64: A Bíblia dos Sensores",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Informação Profissional:</h4>
+            <h class="text-gray-900 font-bold mb-2">Informação Profissional:</h4>
             <p class="text-sm text-gray-700">
                 Se o Afterburner te mostra o básico, o <strong>HWiNFO64</strong> te mostra tudo. <br/><br/>
                 Ele lê sensores que outros programas ignoram, como a temperatura dos módulos de memória (VRAM), a velocidade de rotação exata de cada fan e até se sua placa-mãe está entregando a energia correta. Em 2026, ele é a ferramenta nº 1 para diagnosticar telas azuis e problemas de hardware instável.

@@ -27,7 +27,7 @@ export default function GuidePage() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
           <div class="bg-[#171313] p-6 rounded-xl border border-[#31A8FF]/30 hover:border-[#31A8FF]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#31A8FF]">✓</span> Benefícios
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -37,7 +37,7 @@ export default function GuidePage() {
             </ul>
           </div>
           <div class="bg-[#171313] p-6 rounded-xl border border-[#FF4B6B]/30 hover:border-[#FF4B6B]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#FF4B6B]">⚠</span> Requisitos
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -49,7 +49,7 @@ export default function GuidePage() {
         </div>
         
         <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-500/30 mt-8">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-blue-400">📊</span> Métricas Importantes para Jogadores Competitivos
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -110,7 +110,7 @@ export default function GuidePage() {
             <div class="prose prose-invert max-w-none">
               <p>Para maximizar o desempenho do jogo, você pode desativar temporariamente serviços que consomem recursos:</p>
               
-              <h3 class="text-lg font-bold text-white mt-4 mb-2">Serviços que podem ser desativados:</h3>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Serviços que podem ser desativados:</h3>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li><strong>Superfetch/Serviço de Pré-busca</strong>: Em sistemas com SSD, este serviço pode causar picos de uso de disco.</li>
                 <li><strong>Windows Search</strong>: Desative se você não usa a busca do Windows com frequência.</li>
@@ -144,7 +144,7 @@ export default function GuidePage() {
                 </ul>
               </ol>
               
-              <h3 class="text-lg font-bold text-white mt-4 mb-2">Configurações Adicionais de CPU:</h3>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Configurações Adicionais de CPU:</h3>
               <p class="text-gray-700">Desative o Core Parking para manter todos os núcleos disponíveis:</p>
               <div class="bg-black p-4 rounded border border-green-500/30 font-mono text-sm text-green-400 mt-2">
                 <p>Abra o Prompt de Comando como administrador e execute:</p>
@@ -201,7 +201,7 @@ export default function GuidePage() {
                 <li>Adicione as configurações específicas:</li>
               </ol>
               
-              <h3 class="text-lg font-bold text-white mt-4 mb-2">Configurações Recomendadas por Gênero:</h3>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Configurações Recomendadas por Gênero:</h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
                   <h3 class="font-bold text-blue-400 mb-2">Jogos Competitivos (CS2, Valorant, Apex)</h3>
@@ -247,7 +247,7 @@ export default function GuidePage() {
                 <p>Enhanced Sync: Ativado (combate tearing)</p>
               </div>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Configurações por Jogo:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Configurações por Jogo:</h4>
               <p class="text-gray-700">No Radeon Software, vá para a aba "Jogos" e personalize as configurações para cada título:</p>
               <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>Para jogos competitivos: Ative Anti-Lag e maximize Performance Level</li>
@@ -271,14 +271,14 @@ export default function GuidePage() {
             <div class="prose prose-invert max-w-none">
               <p>Manter os drivers atualizados é crucial para desempenho ótimo:</p>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">NVIDIA:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">NVIDIA:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Use o GeForce Experience para atualizações automáticas</li>
                 <li>Para jogadores competitivos: Considere drivers WHQL estáveis</li>
                 <li>Drivers DCH são recomendados para Windows 10/11</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">AMD:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">AMD:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Use o Radeon Software para atualizações</li>
                 <li>Drivers Adrenalin oferecem mais opções de personalização</li>
@@ -299,7 +299,7 @@ export default function GuidePage() {
             <div class="prose prose-invert max-w-none">
               <p>As configurações de BIOS podem impactar significativamente o desempenho:</p>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Configurações Recomendadas:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Configurações Recomendadas:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li><strong>XMP/DOCP/EXPO:</strong> Ative para rodar sua RAM na velocidade nominal</li>
                 <li><strong>Fast Boot:</strong> Desative para detectar problemas de inicialização</li>
@@ -357,7 +357,7 @@ export default function GuidePage() {
             <div class="prose prose-invert max-w-none">
               <p>Como testar objetivamente as melhorias:</p>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Benchmarking Padrão:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Benchmarking Padrão:</h4>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Execute o mesmo trecho do jogo 3 vezes antes e depois das otimizações</li>
                 <li>Use ferramentas como MSI Afterburner para registrar FPS médio, mínimo e variância</li>
@@ -365,7 +365,7 @@ export default function GuidePage() {
                 <li>Teste em diferentes níveis de carga (leve, média, pesada)</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Métricas Importantes:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Métricas Importantes:</h4>
               <div class="overflow-x-auto">
                 <table class="min-w-full bg-black/30 border border-gray-700">
                   <thead>
@@ -411,7 +411,7 @@ export default function GuidePage() {
         <div class="space-y-6">
           
           <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-[#8B31FF]">
-            <h4 class="text-white font-bold text-lg mb-2">Stuttering (Travadinhas) após otimizar</h4>
+            <h class="text-gray-900 font-bold text-lg mb-2">Stuttering (Travadinhas) após otimizar</h4>
             <div class="text-gray-700 text-sm pl-4 border-l border-gray-700">
               <p class="mb-2"><strong class="text-[#8B31FF]">Solução:</strong> O cache de sombreador (Shader Cache) pode ter sido resetado.</p>
               <ul class="list-disc list-inside text-gray-700 mt-2">
@@ -421,7 +421,7 @@ export default function GuidePage() {
           </div>
           
           <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-[#FF4B6B]">
-            <h4 class="text-white font-bold text-lg mb-2">FPS instáveis ou queda repentina</h4>
+            <h class="text-gray-900 font-bold text-lg mb-2">FPS instáveis ou queda repentina</h4>
             <div class="text-gray-700 text-sm pl-4 border-l border-gray-700">
               <p class="mb-2"><strong class="text-[#FF4B6B]">Possíveis causas:</strong></p>
               <ul class="list-disc list-inside text-gray-700 mt-2">
@@ -435,7 +435,7 @@ export default function GuidePage() {
           </div>
           
           <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-[#31A8FF]">
-            <h4 class="text-white font-bold text-lg mb-2">Input Lag elevado</h4>
+            <h class="text-gray-900 font-bold text-lg mb-2">Input Lag elevado</h4>
             <div class="text-gray-700 text-sm pl-4 border-l border-gray-700">
               <p class="mb-2"><strong class="text-[#31A8FF]">Soluções:</strong></p>
               <ul class="list-disc list-inside text-gray-700 mt-2">
@@ -464,7 +464,7 @@ export default function GuidePage() {
           </p>
           
           <div class="mt-6 pt-6 border-t border-gray-700">
-            <h4 class="text-lg font-bold text-white mb-3">✅ Checklist Final:</h4>
+            <h class="text-lg font-bold text-gray-900 mb-3">✅ Checklist Final:</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> Modo de Jogo ativado</div>
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> HAGS ativado (se compatível)</div>
@@ -505,7 +505,7 @@ export default function GuidePage() {
         <p class="mb-4 text-gray-700 leading-relaxed">Para extrair o máximo de desempenho do seu sistema, é essencial compreender as otimizações de hardware e firmware que muitos jogadores ignoram. Estas configurações vão além das tradicionais otimizações de software e podem proporcionar ganhos significativos de performance.</p>
         
         <div class="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-6 rounded-xl border border-purple-500/30 mt-6">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-purple-400">🔧</span> Otimizações de Firmware e Controlador
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -534,7 +534,7 @@ export default function GuidePage() {
           </div>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-8 mb-4">Overclocking Inteligente</h3>
+        <h class="text-lg font-bold text-gray-900 mt-8 mb-4">Overclocking Inteligente</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">O overclocking pode fornecer ganhos significativos de desempenho, mas deve ser feito com cuidado:</p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
@@ -569,7 +569,7 @@ export default function GuidePage() {
         <p class="mb-4 text-gray-700 leading-relaxed">A otimização da rede é crucial para jogos online, especialmente em títulos competitivos onde milissegundos contam. Existem várias configurações que podem reduzir o ping e melhorar a estabilidade da conexão.</p>
         
         <div class="bg-gradient-to-r from-blue-900/20 to-green-900/20 p-6 rounded-xl border border-blue-500/30 mt-6">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-blue-400">🌐</span> Configurações de Rede Avançadas
           </h3>
           <div class="overflow-x-auto">
@@ -607,7 +607,7 @@ export default function GuidePage() {
           </div>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-8 mb-4">Configurações do Windows para Jogos Online</h3>
+        <h class="text-lg font-bold text-gray-900 mt-8 mb-4">Configurações do Windows para Jogos Online</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">Além das configurações de protocolo TCP/IP, o Windows tem recursos específicos que podem ser ajustados:</p>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
@@ -626,28 +626,28 @@ export default function GuidePage() {
           </div>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-8 mb-4">Otimizações de Hardware de Rede</h3>
+        <h class="text-lg font-bold text-gray-900 mt-8 mb-4">Otimizações de Hardware de Rede</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">O hardware também pode ser otimizado para melhor desempenho de rede:</p>
         
         <ul class="space-y-3">
           <li class="flex items-start gap-3 p-3 bg-[#1A1A1A] rounded-lg border border-gray-700">
             <span class="text-green-400 mt-1">✓</span>
             <div>
-              <h3 class="font-bold text-white">Ethernet Priority & VLAN</h3>
+              <h class="font-bold text-gray-900">Ethernet Priority & VLAN</h3>
               <p class="text-sm text-gray-700">Configure prioridade para tráfego de jogo nas configurações da placa de rede</p>
             </div>
           </li>
           <li class="flex items-start gap-3 p-3 bg-[#1A1A1A] rounded-lg border border-gray-700">
             <span class="text-green-400 mt-1">✓</span>
             <div>
-              <h3 class="font-bold text-white">Game Mode nos Roteadores</h3>
+              <h class="font-bold text-gray-900">Game Mode nos Roteadores</h3>
               <p class="text-sm text-gray-700">Ative o modo de jogo se seu roteador suportar para priorizar dispositivos de jogo</p>
             </div>
           </li>
           <li class="flex items-start gap-3 p-3 bg-[#1A1A1A] rounded-lg border border-gray-700">
             <span class="text-green-400 mt-1">✓</span>
             <div>
-              <h3 class="font-bold text-white">WMM (Wi-Fi Multimedia)</h3>
+              <h class="font-bold text-gray-900">WMM (Wi-Fi Multimedia)</h3>
               <p class="text-sm text-gray-700">Para conexões Wi-Fi, habilite WMM para priorizar tráfego de áudio/vídeo/jogo</p>
             </div>
           </li>
@@ -714,7 +714,7 @@ export default function GuidePage() {
         </div>
         
         <div class="bg-gradient-to-r from-indigo-900/20 to-cyan-900/20 p-6 rounded-xl border border-indigo-500/30 mt-8">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-indigo-400">⚙️</span> Perfis de Jogo Personalizados
           </h3>
           <p class="text-gray-700 mb-4">Para diferentes gêneros, configure perfis específicos no painel de controle da GPU:</p>
@@ -782,7 +782,7 @@ export default function GuidePage() {
         </div>
         
         <div class="bg-gradient-to-r from-violet-900/20 to-pink-900/20 p-6 rounded-xl border border-violet-500/30 mt-8">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-violet-400">🔮</span> Previsões de Mercado e Hardware (2026-2027)
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -807,20 +807,20 @@ export default function GuidePage() {
           </div>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-8 mb-4">Preparação para o Futuro</h3>
+        <h class="text-lg font-bold text-gray-900 mt-8 mb-4">Preparação para o Futuro</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">Para se preparar para essas mudanças, considere estas estratégias de longo prazo:</p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
           <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-            <h3 class="font-bold text-white mb-2">Hardware Flexível</h3>
+            <h class="font-bold text-gray-900 mb-2">Hardware Flexível</h3>
             <p class="text-sm text-gray-700">Escolha componentes com boa capacidade de upgrade e suporte a futuras tecnologias.</p>
           </div>
           <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-            <h3 class="font-bold text-white mb-2">Sistema Modular</h3>
+            <h class="font-bold text-gray-900 mb-2">Sistema Modular</h3>
             <p class="text-sm text-gray-700">Configure seu sistema de forma modular para facilitar atualizações e experimentação.</p>
           </div>
           <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-            <h3 class="font-bold text-white mb-2">Conhecimento Atualizado</h3>
+            <h class="font-bold text-gray-900 mb-2">Conhecimento Atualizado</h3>
             <p class="text-sm text-gray-700">Mantenha-se informado sobre novas tecnologias e como elas afetam a otimização de jogos.</p>
           </div>
         </div>

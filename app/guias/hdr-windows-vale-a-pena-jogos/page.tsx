@@ -54,7 +54,7 @@ export default function HDRGuide() {
             title: "2. Como configurar o 'Auto HDR' no Windows 11",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Mágica da IA:</h4>
+            <h class="text-gray-900 font-bold mb-2">Mágica da IA:</h4>
             <p class="text-sm text-gray-700">
                 Se você joga títulos antigos que não têm HDR nativo, o Windows 11 pode "injetar" HDR neles via inteligência artificial. <br/><br/>
                 Vá em <strong>Configurações > Sistema > Tela > HDR</strong> e ative o <strong>'Auto HDR'</strong>. O resultado é surpreendente em jogos como Skyrim, GTA V e outros clássicos, dando uma sobrevida visual a eles em 2026.

@@ -54,7 +54,7 @@ export default function VCRuntimeFixGuide() {
             title: "2. A Solução Definitiva (Visual C++ AIO)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Instale tudo de uma vez:</h4>
+            <h class="text-gray-900 font-bold mb-2">Instale tudo de uma vez:</h4>
             <p class="text-sm text-gray-700">
                 A forma mais inteligente de resolver isso em 2026 é baixar o <strong>Visual C++ Redistributable All-in-One</strong>. <br/><br/>
                 Ele é um instalador único que coloca todas as versões (2005 até 2026) nos formatos x86 e x64 do seu Windows. Isso garante que não apenas o jogo de hoje funcione, mas que nenhum programa futuro apresente erro de DLL. Basta rodar o arquivo <code>install_all.bat</code> como Administrador e aguardar a conclusão.

@@ -56,7 +56,7 @@ export default function GTAVTextureFixGuide() {
             title: "2. Limitando o FPS para salvar a CPU",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Paradoxo de Performance:</h4>
+            <h class="text-gray-900 font-bold mb-2">Paradoxo de Performance:</h4>
             <p class="text-sm text-gray-700">
                 Parece estranho, mas **limitar seu FPS em 60** pode fazer o mapa carregar melhor. Se sua placa de vídeo tenta cuspir 100 FPS, ela "atropela" o processador pedindo dados novos, causando o sumiço do mapa. No menu do jogo, ative o <strong>V-Sync</strong> ou use o painel da NVIDIA para travar em 60 FPS. Isso dá um "respiro" para o processador carregar as texturas.
             </p>

@@ -113,7 +113,7 @@ export default function TempGuide() {
             title: "HWInfo64: Para Diagnóstico Profundo",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Sensores Avançados</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Sensores Avançados</h4>
                 <p class="text-gray-700 mb-4">
                     O Afterburner mostra o básico. O <strong>HWInfo64</strong> mostra voltagens individuais de cada núcleo, temperatura do VRM da placa mãe, velocidade do fan em RPM e erros de memória da GPU.
                 </p>

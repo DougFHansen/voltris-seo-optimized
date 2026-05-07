@@ -91,7 +91,7 @@ export default function BiosGuide() {
         {
             title: "3. Virtualização (SVM / VT-x)",
             content: `
-        <h4 class="text-white font-bold mb-3">Para Emuladores e Docker</h4>
+        <h class="text-gray-900 font-bold mb-3">Para Emuladores e Docker</h4>
         <p class="mb-4 text-gray-700">
             Se você joga Free Fire no Bluestacks/LDPlayer, ou programa usando Docker/WSL2, você PRECISA disso.
             <br/>Sem a virtualização de hardware, emuladores rodam a 10 FPS travando.
@@ -110,14 +110,14 @@ export default function BiosGuide() {
         </p>
         <div class="space-y-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
-                <h5 class="font-bold text-white mb-2">Secure Boot</h5>
+                <h class="font-bold text-gray-900 mb-2">Secure Boot</h5>
                 <p class="text-sm text-gray-700">
                     Deve estar em "Windows UEFI Mode". Se estiver "Other OS", mude.
                     <br/>Nota: Se você mudar isso e o Windows não bootar, é porque seu Windows foi instalado em modo Legacy (antigo). Você precisará converter o disco de MBR para GPT.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-yellow-500/30">
-                <h5 class="font-bold text-white mb-2">fTPM / PTT</h5>
+                <h class="font-bold text-gray-900 mb-2">fTPM / PTT</h5>
                 <p class="text-sm text-gray-700">
                     TPM de Firmware.
                     <br/>AMD: "AMD fTPM switch".
@@ -133,7 +133,7 @@ export default function BiosGuide() {
         {
             title: "Curva de Fans (Silêncio ou Performance)",
             content: `
-        <h4 class="text-white font-bold mb-3">Q-Fan / Smart Fan</h4>
+        <h class="text-gray-900 font-bold mb-3">Q-Fan / Smart Fan</h4>
         <p class="mb-4 text-gray-700">
             Todas as BIOS modernas têm uma ferramenta gráfica de ventiladores.
             <br/>Configure seus fans do gabinete (Case Fans) para ficarem desligados ou em 20% até a CPU bater 50°C. Isso torna o PC silencioso navegando na internet.

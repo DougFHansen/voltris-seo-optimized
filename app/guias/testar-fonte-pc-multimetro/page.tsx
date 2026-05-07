@@ -55,7 +55,7 @@ export default function PowerSupplyTestGuide() {
             title: "2. Medindo as Voltagens com o Multímetro",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Valores de Referência em 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">Valores de Referência em 2026:</h4>
             <p class="text-sm text-gray-700">
                 Coloque o multímetro na escala de <strong>20V DC</strong>. Com a fonte ligada (pelo teste do clipe): <br/><br/>
                 - <strong>Fio Amarelo:</strong> Deve marcar entre 11.4V e 12.6V. Se estiver abaixo de 11.4V, sua fonte não aguentará uma placa de vídeo pesada. <br/>

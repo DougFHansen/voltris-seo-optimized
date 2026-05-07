@@ -55,7 +55,7 @@ export default function MemoryManagementFixGuide() {
             title: "2. Corrigindo o Sistema (SFC e DISM)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Reparo de Arquivos:</h4>
+            <h class="text-gray-900 font-bold mb-2">Reparo de Arquivos:</h4>
             <p class="text-sm text-gray-700">
                 Se o teste de memória deu 'OK', o problema são arquivos do Windows corrompidos tentando acessar a RAM de forma errada. <br/><br/>
                 Abra o CMD como Administrador e rode estes comandos em ordem: <br/>

@@ -53,7 +53,7 @@ export default function PSUGuide() {
             <p class="text-gray-700 mb-4">
                 Estabilizadores foram feitos para TVs de tubo dos anos 80. Fontes modernas têm PFC Ativo que corrige a voltagem em microssegundos (Full Range 90V-240V). O estabilizador é lento (tlec-tlec), e quando ele "corrige", a fonte já corrigiu, criando um surto duplo que queima a fonte.
             </p>
-            <p class="text-white font-bold">Use um Filtro de Linha (iClamper) ou direto na tomada.</p>
+            <p class="text-gray-900 font-bold">Use um Filtro de Linha (iClamper) ou direto na tomada.</p>
         </div>
       `
         },
@@ -79,7 +79,7 @@ export default function PSUGuide() {
             title: "80 Plus: Bronze, Gold ou Platinum?",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">80 Plus mede eficiência, não qualidade</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">80 Plus mede eficiência, não qualidade</h4>
                 <p class="text-gray-700 mb-4">
                     Ter selo 80 Plus significa apenas que a fonte desperdiça menos energia em forma de calor.
                 </p>

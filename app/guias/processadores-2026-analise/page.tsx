@@ -54,7 +54,7 @@ export default function CPUAnalysisGuide() {
             title: "2. Intel Core Ultra: O Mestre da Versatilidade",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">P-Cores e E-Cores:</h4>
+            <h class="text-gray-900 font-bold mb-2">P-Cores e E-Cores:</h4>
             <p class="text-sm text-gray-700">
                 A Intel aprimorou sua arquitetura híbrida. <br/><br/>
                 Os <strong>P-Cores</strong> (Performance) cuidam do jogo pesado, enquanto os <strong>E-Cores</strong> (Efficient) gerenciam o Windows, Discord e Chrome em segundo plano. Em 2026, o escalonador do Windows 11 está otimizado para que essa troca seja imperceptível, tornando os processadores Intel excelentes para quem faz Stream (transmissão ao vivo) e joga no mesmo PC.

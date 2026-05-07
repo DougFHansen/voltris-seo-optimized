@@ -56,7 +56,7 @@ export default function Disk100FixGuide() {
             title: "2. O Windows Search e o fardo da Indexação",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Pausa na Busca:</h4>
+            <h class="text-gray-900 font-bold mb-2">Pausa na Busca:</h4>
             <p class="text-sm text-gray-700">
                 Se você tem muitos arquivos, o Windows Search fica indexando (lendo) tudo o tempo todo para a busca ser rápida. Em 2026, se você usa um HD mecânico, isso é mortal. Tente desativar o serviço **Windows Search** da mesma forma que fez com o SysMain. <br/><br/>
                 <strong>Atenção:</strong> Isso deixará a busca do Windows mais lenta, mas tornará o sistema muito mais ágil para todo o resto.

@@ -52,7 +52,7 @@ export default function SmartDeliveryGuide() {
             title: "2. Gerenciamento Inteligente de Espaço",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Instalação Seletiva:</h4>
+            <h class="text-gray-900 font-bold mb-2">Instalação Seletiva:</h4>
             <p class="text-sm text-gray-700">
                 O Smart Delivery não baixa apenas o jogo; ele baixa a **versão correta para o seu hardware**. <br/><br/>
                 Se você tem um Series S, ele baixará texturas em 1080p/1440p para economizar o espaço limitado do SSD. Se você tem um PC topo de linha, ele puxará os pacotes de textura 4K e Ray Tracing. Isso economiza dezenas de gigabytes de download desnecessário no seu Windows 11 em 2026.

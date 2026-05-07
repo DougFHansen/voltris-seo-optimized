@@ -54,7 +54,7 @@ export default function MinecraftLagGuide() {
             title: "2. Fabric + Sodium: O Novo Padrão de Performance",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Por que o Sodium é melhor?</h4>
+            <h class="text-gray-900 font-bold mb-2">Por que o Sodium é melhor?</h4>
             <p class="text-sm text-gray-700">
                 Enquanto o OptiFine tenta consertar o jogo, o <strong>Sodium</strong> reescreve a forma como o Minecraft renderiza os blocos. Os ganhos de FPS com Sodium chegam a ser o dobro em relação ao OptiFine. <br/><br/>
                 Para ter a experiência completa, instale o Fabric Loader e os mods: <strong>Sodium</strong> (Performance), <strong>Lithium</strong> (IA e física) e <strong>Iris</strong> (se quiser rodar Shaders).

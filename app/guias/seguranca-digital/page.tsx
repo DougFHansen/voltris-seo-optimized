@@ -45,7 +45,7 @@ export default function DigitalSecurityGuide() {
           A cibersegurança evoluiu para enfrentar ameaças cada vez mais sofisticadas. Com a popularização da inteligência artificial generativa, os criminosos cibernéticos agora conseguem criar conteúdos fraudulentos altamente convincentes, personalizados e gramaticalmente perfeitos, dificultando a detecção de golpes.
         </p>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">⚠️</span> Tipos de Ameaças Emergentes em 2026
           </h4>
           <ul class="text-sm text-gray-700 space-y-2">
@@ -81,7 +81,7 @@ export default function DigitalSecurityGuide() {
           <p class="text-yellow-200 font-semibold">Técnicas de Phishing em 2026:</p>
           <p class="text-gray-700 mt-2">Com o avanço da inteligência artificial, os ataques de phishing agora utilizam técnicas de personalização avançada, conhecidas como spear phishing, onde os criminosos usam dados públicos de redes sociais para criar mensagens altamente convincentes e direcionadas.</p>
         </div>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Identificando um Email de Phishing</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Identificando um Email de Phishing</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2">Indícios de Fraude</h4>
@@ -103,7 +103,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">💡</span> Dicas para Prevenção de Phishing
           </h4>
           <table class="min-w-full bg-gray-800/50 rounded-lg overflow-hidden">
@@ -144,17 +144,17 @@ export default function DigitalSecurityGuide() {
       title: "2. Blindando o WhatsApp e Redes Sociais",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Pare a Clonagem:</h4>
+            <h class="text-gray-900 font-bold mb-2">Pare a Clonagem:</h4>
             <p class="text-sm text-gray-700">
                 1. No WhatsApp, vá em Configurações > Conta > <strong>Confirmação em duas etapas</strong>. Crie um PIN. <br/>
                 2. Nunca entregue códigos que chegarem por SMS sob nenhum pretexto. <br/>
                 3. Oculte sua foto de perfil para quem não está nos seus contatos; isso impede que golpistas usem sua imagem para criar um perfil falso e pedir dinheiro para seus parentes.
             </p>
         </div>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Configurações de Privacidade do WhatsApp</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Configurações de Privacidade do WhatsApp</h3>
         <div class="space-y-6">
           <div class="border-l-4 border-green-500 pl-4 py-1">
-            <h4 class="text-lg font-semibold text-white mb-2">Confirmação em duas etapas</h4>
+            <h class="text-lg font-semibold text-gray-900 mb-2">Confirmação em duas etapas</h4>
             <p class="text-gray-700 text-sm mb-2">Adicione uma camada extra de segurança exigindo um código PIN ao vincular seu número a outro dispositivo.</p>
             <ol class="list-decimal list-inside text-gray-700 space-y-1 text-sm">
               <li>Abra o WhatsApp e vá em Configurações > Conta > Confirmação em duas etapas</li>
@@ -164,7 +164,7 @@ export default function DigitalSecurityGuide() {
             </ol>
           </div>
           <div class="border-l-4 border-purple-500 pl-4 py-1">
-            <h4 class="text-lg font-semibold text-white mb-2">Visibilidade de informações</h4>
+            <h class="text-lg font-semibold text-gray-900 mb-2">Visibilidade de informações</h4>
             <p class="text-gray-700 text-sm mb-2">Controle quem pode ver sua foto de perfil, status e último visto.</p>
             <ol class="list-decimal list-inside text-gray-700 space-y-1 text-sm">
               <li>Vá em Configurações > Conta > Privacidade</li>
@@ -173,7 +173,7 @@ export default function DigitalSecurityGuide() {
             </ol>
           </div>
           <div class="border-l-4 border-indigo-500 pl-4 py-1">
-            <h4 class="text-lg font-semibold text-white mb-2">Verificação de segurança</h4>
+            <h class="text-lg font-semibold text-gray-900 mb-2">Verificação de segurança</h4>
             <p class="text-gray-700 text-sm mb-2">Verifique se seus chats estão criptografados com contatos desconhecidos.</p>
             <ol class="list-decimal list-inside text-gray-700 space-y-1 text-sm">
               <li>Toque no nome de um contato > Informações > Verificação de segurança</li>
@@ -195,7 +195,7 @@ export default function DigitalSecurityGuide() {
           <p class="text-red-200 font-semibold">Riscos de Redes Públicas:</p>
           <p class="text-gray-700 mt-2">Em redes Wi-Fi públicas, você está vulnerável a ataques como Man-in-the-Middle (MitM), onde um invasor intercepta a comunicação entre seu dispositivo e a internet. Isso permite roubar senhas, dados bancários e outras informações sensíveis.</p>
         </div>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Segurança em Redes Públicas</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Segurança em Redes Públicas</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2">Uso de VPN</h4>
@@ -211,7 +211,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">📋</span> Checklist de Segurança em Wi-Fi Público
           </h4>
           <ul class="text-sm text-gray-700 space-y-2">
@@ -245,7 +245,7 @@ export default function DigitalSecurityGuide() {
         <p class="mb-4 text-gray-700">
           A engenharia social é a arte de manipular pessoas para obter informações confidenciais. Em 2026, os golpistas utilizam técnicas psicológicas avançadas, combinadas com inteligência artificial, para criar situações de pressão emocional e tirar proveito de emoções humanas como medo, urgência e confiança.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Técnicas Comuns de Engenharia Social</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Técnicas Comuns de Engenharia Social</h3>
         <div class="space-y-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2 flex items-center">
@@ -293,7 +293,7 @@ export default function DigitalSecurityGuide() {
         <p class="mb-4 text-gray-700">
           Deepfakes são vídeos, áudios ou imagens sintéticas criadas com inteligência artificial para simular pessoas reais. Em 2026, essas tecnologias se tornaram mais acessíveis e convincentes, sendo usadas em golpes de todos os tipos, desde fraudes financeiras até campanhas de desinformação.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Como Detectar Deepfakes</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Como Detectar Deepfakes</h3>
         <div class="overflow-x-auto mb-6">
           <table class="min-w-full bg-gray-800/50 rounded-lg overflow-hidden">
             <thead class="bg-gray-700">
@@ -328,16 +328,16 @@ export default function DigitalSecurityGuide() {
           </table>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">💡</span> Medidas Preventivas Contra Deepfakes
           </h4>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-              <h5 class="font-bold text-white mb-2">Verificação de Identidade</h5>
+              <h class="font-bold text-gray-900 mb-2">Verificação de Identidade</h5>
               <p class="text-gray-700 text-sm">Use canais oficiais para confirmar a identidade de alguém em situações duvidosas.</p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-              <h5 class="font-bold text-white mb-2">Conscientização</h5>
+              <h class="font-bold text-gray-900 mb-2">Conscientização</h5>
               <p class="text-gray-700 text-sm">Eduque-se e eduque outros sobre os riscos e sinais de deepfakes.</p>
             </div>
           </div>
@@ -350,7 +350,7 @@ export default function DigitalSecurityGuide() {
         <p class="mb-4 text-gray-700">
           Suas redes sociais contêm uma quantidade impressionante de informações pessoais que podem ser usadas para ataques direcionados. Em 2026, a proteção do perfil digital envolve cuidados com o que você compartilha, quem pode ver e interagir com seu conteúdo, e como você se apresenta online.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Configurações de Segurança em Redes Sociais</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Configurações de Segurança em Redes Sociais</h3>
         <div class="space-y-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2 flex items-center">
@@ -398,7 +398,7 @@ export default function DigitalSecurityGuide() {
         <p class="mb-4 text-gray-700">
           A segurança digital não se limita à proteção contra acessos não autorizados; também envolve garantir que seus dados estejam disponíveis e intactos em caso de incidentes como ransomware, falhas de hardware ou desastres naturais. Em 2026, a estratégia de backup deve ser robusta e testada regularmente.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Estratégias de Backup em 2026</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Estratégias de Backup em 2026</h3>
         <div class="space-y-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2 flex items-center">
@@ -435,7 +435,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">⚠️</span> Armadilhas Comuns em Backups
           </h4>
           <ul class="text-sm text-gray-700 space-y-2">
@@ -469,7 +469,7 @@ export default function DigitalSecurityGuide() {
         <p class="mb-4 text-gray-700">
           Em 2026, a segurança digital também envolve monitorar constantemente suas contas e dispositivos por atividades anormais. Isso inclui o acompanhamento de logins em novos dispositivos, mudanças inesperadas em configurações e padrões de uso que fogem do normal.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Ferramentas e Práticas de Monitoramento</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Ferramentas e Práticas de Monitoramento</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2">Alertas de Segurança</h4>
@@ -490,7 +490,7 @@ export default function DigitalSecurityGuide() {
             </ul>
           </div>
         </div>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Indicadores de Comprometimento (IoCs)</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Indicadores de Comprometimento (IoCs)</h3>
         <div class="space-y-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2 flex items-center">
@@ -530,7 +530,7 @@ export default function DigitalSecurityGuide() {
     {
       title: "12. Criptografia e Segurança de Dados em 2026",
       content: `
-        <h4 class="text-white font-bold mb-3">🔐 Técnicas Avançadas de Criptografia</h4>
+        <h class="text-gray-900 font-bold mb-3">🔐 Técnicas Avançadas de Criptografia</h4>
         <p class="mb-4 text-gray-700">
           Em 2026, a criptografia evoluiu para enfrentar ameaças cada vez mais sofisticadas, incluindo computação quântica e técnicas avançadas de quebra de algoritmos:
         </p>
@@ -557,7 +557,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Implementações Práticas de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Implementações Práticas de Segurança</h4>
         <p class="mb-4 text-gray-700">
           Técnicas avançadas para proteger dados em diferentes cenários:
         </p>
@@ -611,7 +611,7 @@ export default function DigitalSecurityGuide() {
     {
       title: "13. Análise de Vulnerabilidades e Penetration Testing",
       content: `
-        <h4 class="text-white font-bold mb-3">🔍 Metodologias de Análise de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Metodologias de Análise de Segurança</h4>
         <p class="mb-4 text-gray-700">
           Em 2026, a segurança proativa envolve técnicas avançadas de análise de vulnerabilidades e testes de penetração:
         </p>
@@ -648,7 +648,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Técnicas de Identificação de Ameaças</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Técnicas de Identificação de Ameaças</h4>
         <p class="mb-4 text-gray-700">
           Metodologias para identificar e classificar ameaças cibernéticas:
         </p>
@@ -680,7 +680,7 @@ export default function DigitalSecurityGuide() {
     {
       title: "14. Inteligência de Ameaças e Resposta a Incidentes",
       content: `
-        <h4 class="text-white font-bold mb-3">🚨 Inteligência de Ameaças em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">🚨 Inteligência de Ameaças em 2026</h4>
         <p class="mb-4 text-gray-700">
           A inteligência de ameaças evoluiu para fornecer insights preditivos e reativos sobre ataques cibernéticos:
         </p>
@@ -717,7 +717,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Frameworks de Resposta a Incidentes</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Frameworks de Resposta a Incidentes</h4>
         <p class="mb-4 text-gray-700">
           Estruturas padronizadas para resposta eficaz a incidentes de segurança:
         </p>
@@ -760,7 +760,7 @@ export default function DigitalSecurityGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Análise Forense Digital</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Análise Forense Digital</h4>
         <p class="mb-4 text-gray-700">
           Técnicas avançadas para investigação de incidentes cibernéticos:
         </p>
@@ -779,7 +779,7 @@ export default function DigitalSecurityGuide() {
     {
       title: "9. Segurança em Ambientes Corporativos",
       content: `
-        <h4 class="text-white font-bold mb-3">🏢 Segurança Corporativa em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">🏢 Segurança Corporativa em 2026</h4>
         <p class="mb-4 text-gray-700">
           Em ambientes corporativos, a segurança digital envolve políticas, tecnologias e procedimentos coordenados:
         </p>
@@ -812,7 +812,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Controles de Segurança Corporativa</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Controles de Segurança Corporativa</h4>
         <p class="mb-4 text-gray-700">
           Implementações práticas de segurança em ambientes empresariais:
         </p>
@@ -842,7 +842,7 @@ export default function DigitalSecurityGuide() {
     {
       title: "10. Segurança em Nuvem e Infraestrutura como Código",
       content: `
-        <h4 class="text-white font-bold mb-3">☁️ Segurança em Ambientes Cloud</h4>
+        <h class="text-gray-900 font-bold mb-3">☁️ Segurança em Ambientes Cloud</h4>
         <p class="mb-4 text-gray-700">
           A migração para a nuvem introduziu novos desafios e paradigmas de segurança:
         </p>
@@ -869,7 +869,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔐 Práticas de Segurança Cloud-Native</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔐 Práticas de Segurança Cloud-Native</h4>
         <p class="mb-4 text-gray-700">
           Implementações específicas para ambientes nativos da nuvem:
         </p>
@@ -916,7 +916,7 @@ export default function DigitalSecurityGuide() {
     {
       title: "11. Privacidade de Dados e Conformidade Regulatória",
       content: `
-        <h4 class="text-white font-bold mb-3">📋 Regulamentações de Privacidade em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">📋 Regulamentações de Privacidade em 2026</h4>
         <p class="mb-4 text-gray-700">
           Em 2026, as leis de proteção de dados se tornaram mais rigorosas e abrangentes:
         </p>
@@ -949,7 +949,7 @@ export default function DigitalSecurityGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Implementações de Privacidade em Aplicações</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Implementações de Privacidade em Aplicações</h4>
         <p class="mb-4 text-gray-700">
           Técnicas para garantir a privacidade de dados em desenvolvimento de software:
         </p>

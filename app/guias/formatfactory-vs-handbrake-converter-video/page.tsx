@@ -55,7 +55,7 @@ export default function VideoConverterGuide() {
             title: "2. Format Factory: O canivete suíço",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Faz tudo de uma vez:</h4>
+            <h class="text-gray-900 font-bold mb-2">Faz tudo de uma vez:</h4>
             <p class="text-sm text-gray-700">
                 O **Format Factory** é para quem quer praticidade. Ele não converte apenas vídeos; ele transforma JPG em PNG, MP3 em FLAC e até gerencia arquivos PDF. <br/><br/>
                 <strong>Aviso de Segurança 2026:</strong> No passado, o instalador do Format Factory vinha com "bloatwares" (programas indesejados). Sempre baixe do site oficial e preste muita atenção na hora de clicar em 'Avançar' para desmarcar qualquer oferta de antivírus ou barra de buscas.

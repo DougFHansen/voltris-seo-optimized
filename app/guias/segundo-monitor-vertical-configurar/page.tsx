@@ -56,7 +56,7 @@ export default function VerticalMonitorGuide() {
             title: "2. Alinhamento Perfeito do Mouse",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Evite o "Degrau":</h4>
+            <h class="text-gray-900 font-bold mb-2">Evite o "Degrau":</h4>
             <p class="text-sm text-gray-700">
                 Se o seu monitor vertical for menor ou estiver posicionado mais alto que o principal, o mouse pode "travar" ao tentar passar de uma tela para outra. <br/><br/>
                 Na tela de Configurações de Exibição, você pode **clicar e arrastar** os retângulos numerados para cima ou para baixo. Alinhe-os de forma que o mouse passe suavemente pelo centro ou pelo topo de ambas as telas.

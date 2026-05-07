@@ -53,7 +53,7 @@ export default function CyberpunkOptimizationGuide() {
             title: "2. Tecnologias de Elite: DLSS 3.5 e FSR 3",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Multiplicadores de FPS:</h4>
+            <h class="text-gray-900 font-bold mb-2">Multiplicadores de FPS:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>NVIDIA Frame Generation:</strong> Essencial para quem tem uma série RTX 40 ou superior. Dobra o FPS gerando quadros falsos de altíssima qualidade. <br/>
                 - <strong>NVIDIA Ray Reconstruction:</strong> Melhora a nitidez dos reflexos sem pesar tanto quanto o Ray Tracing tradicional. <br/>

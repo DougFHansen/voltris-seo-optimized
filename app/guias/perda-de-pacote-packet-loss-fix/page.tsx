@@ -55,7 +55,7 @@ export default function PacketLossGuide() {
             title: "2. Wi-Fi vs Cabo (O Grande Culpado)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Inimigo do Gamer:</h4>
+            <h class="text-gray-900 font-bold mb-2">Inimigo do Gamer:</h4>
             <p class="text-sm text-gray-700">
                 O Wi-Fi, mesmo o Wi-Fi 6 ou 7 de 2026, sofre interferências de paredes, fornos micro-ondas e redes de vizinhos. Essas interferências causam quedas momentâneas de pacotes. <strong>Para jogos competitivos, o cabo Ethernet (preferencialmente CAT6) é obrigatório</strong>. Se você não puder passar um cabo, considere adaptadores Powerline, que usam a fiação elétrica da casa.
             </p>

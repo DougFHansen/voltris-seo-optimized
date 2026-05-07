@@ -44,7 +44,7 @@ export default function BenchmarkGuide() {
             content: `
         <p class="mb-4 text-gray-700">O Cinebench coloca seu processador para renderizar uma imagem 3D ultra complexa. É o melhor teste para saber se o seu cooler está aguentando o tranco.</p>
         <div class="bg-gray-800 p-5 rounded-xl border border-gray-700">
-            <h4 class="text-white font-bold mb-2">Como ler o resultado:</h4>
+            <h class="text-gray-900 font-bold mb-2">Como ler o resultado:</h4>
             <ul class="list-disc list-inside text-gray-700 text-sm space-y-2">
                 <li><strong>Single Core:</strong> Importante para jogos antigos e navegação web.</li>
                 <li><strong>Multi Core:</strong> Importante para lives, edição de vídeo e jogos modernos (como Cyberpunk).</li>

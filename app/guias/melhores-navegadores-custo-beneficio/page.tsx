@@ -98,7 +98,7 @@ export default function BrowserGuide() {
             title: "Thorium: Para usuários Hardcore",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">O Mais Rápido do Mundo?</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">O Mais Rápido do Mundo?</h4>
                 <p class="text-gray-700 mb-4">
                     O Thorium é uma versão modificada do Chromium compilada com instruções AVX2 especiais para processadores modernos. Ele abre páginas até 10% mais rápido que o Chrome.
                 </p>

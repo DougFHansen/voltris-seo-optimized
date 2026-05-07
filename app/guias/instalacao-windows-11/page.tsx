@@ -118,7 +118,7 @@ export default function InstallWindowsGuide() {
       title: "Instalando Sem Conta Microsoft (OOBE Bypass)",
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">O Truque do "Eu não tenho internet"</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">O Truque do "Eu não tenho internet"</h4>
                 <p class="text-gray-700 mb-4">
                     Se você não usou o Rufus para remover a conta online, o Windows 11 te obriga a conectar na internet.
                 </p>

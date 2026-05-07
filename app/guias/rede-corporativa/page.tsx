@@ -82,7 +82,7 @@ export default function RedeCorporativaGuide() {
           content: `
             <p>Exemplo de estrutura organizada:</p>
             <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30 mt-4">
-              <p class="text-white font-semibold mb-2">🏢 Estrutura de IPs:</p>
+              <p class="text-gray-900 font-semibold mb-2">🏢 Estrutura de IPs:</p>
               <pre class="text-gray-700 text-sm">
 10.0.0.0/8 - Rede Principal
 ├── 10.10.0.0/24 - VLAN Administrativa

@@ -50,7 +50,7 @@ export default function TopGames2026Guide() {
         {
             title: "Os Blockbusters de 2026 - O Que Esperar",
             content: `
-        <h3 class="text-2xl font-bold text-white mb-6">GTA 6: O Monstro que Vem</h3>
+        <h class="text-2xl font-bold text-gray-900 mb-6">GTA 6: O Monstro que Vem</h3>
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O GTA 6 promete ser o jogo mais exigente da história. Com gráficos ray-traced em tempo real, 
           mundo aberto 4x maior que GTA 5 e física avançada, os requisitos são impressionantes.
@@ -72,7 +72,7 @@ export default function TopGames2026Guide() {
             </div>
         </div>
 
-        <h3 class="text-2xl font-bold text-white mb-6">Starfield 2: O Universo Expandido</h3>
+        <h class="text-2xl font-bold text-gray-900 mb-6">Starfield 2: O Universo Expandido</h3>
         <p class="mb-6 text-gray-700 leading-relaxed">
           A Bethesda promete planetas com 4K nativo, 100+ sistemas estelares e multiplayer cross-platform. 
           A otimização será crucial para manter 60 FPS estáveis.
@@ -82,7 +82,7 @@ export default function TopGames2026Guide() {
         {
             title: "Configurações Gráficas Ideais - FPS vs Qualidade",
             content: `
-        <h3 class="text-2xl font-bold text-white mb-6">A Fórmula Perfeita para 2026</h3>
+        <h class="text-2xl font-bold text-gray-900 mb-6">A Fórmula Perfeita para 2026</h3>
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, a regra mudou: <strong>DLSS 3 Frame Generation é obrigatório</strong>. 
           Jogos modernos foram desenvolvidos pensando em upscaling inteligente.
@@ -101,7 +101,7 @@ export default function TopGames2026Guide() {
             </ul>
         </div>
 
-        <h3 class="text-2xl font-bold text-white mb-6">VRAM: O Novo Gatilho</h3>
+        <h class="text-2xl font-bold text-gray-900 mb-6">VRAM: O Novo Gatilho</h3>
         <p class="mb-6 text-gray-700 leading-relaxed">
           Jogos 2026 estão consumindo 12-16GB VRAM em 1440p. RTX 4060 8GB já está no limite. 
           Para futuro-prova, invista em cards com 12GB+ VRAM.
@@ -111,7 +111,7 @@ export default function TopGames2026Guide() {
         {
             title: "Hardware Futuro-Proof - O Que Comprar AGORA",
             content: `
-        <h3 class="text-2xl font-bold text-white mb-6">Builds Recomendadas por Orçamento</h3>
+        <h class="text-2xl font-bold text-gray-900 mb-6">Builds Recomendadas por Orçamento</h3>
         
         <div class="grid md:grid-cols-3 gap-6 my-8">
             <div class="bg-purple-900/10 p-5 rounded-xl border border-purple-500/20">
@@ -152,7 +152,7 @@ export default function TopGames2026Guide() {
         {
             title: "Otimização Avançada - Além das Configurações",
             content: `
-        <h3 class="text-2xl font-bold text-white mb-6">Drivers e Bios: O Segredo dos Pros</h3>
+        <h class="text-2xl font-bold text-gray-900 mb-6">Drivers e Bios: O Segredo dos Pros</h3>
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, <strong>drivers específicos por jogo</strong> farão diferença de 20-30% FPS. 
           NVIDIA e AMD estão lançando otimizações sob demanda para cada blockbuster.
@@ -177,7 +177,7 @@ export default function TopGames2026Guide() {
             </a>
         </div>
 
-        <h3 class="text-2xl font-bold text-white mb-6">Windows 11: Otimização Essencial</h3>
+        <h class="text-2xl font-bold text-gray-900 mb-6">Windows 11: Otimização Essencial</h3>
         <p class="mb-6 text-gray-700 leading-relaxed">
           Modo de Jogo do Windows 11 agora integra com DLSS 3. Ative Hardware Accelerated GPU Scheduling 
           e desative VBS para ganhar 5-10% performance adicional.

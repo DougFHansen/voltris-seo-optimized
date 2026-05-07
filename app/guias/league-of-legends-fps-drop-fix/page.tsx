@@ -54,12 +54,12 @@ export default function LoLGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Habilitar Modo de Configuração Leve</h4>
-                <p class="text-white font-mono text-sm mb-2">Engrenagem > Geral > Modo Leve</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Engrenagem > Geral > Modo Leve</p>
                 <p class="text-gray-700 text-xs">Isso desativa animações do launcher, economizando RAM antes do jogo começar.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Fechar cliente durante as partidas</h4>
-                <p class="text-white font-mono text-sm mb-2">Engrenagem > Geral > Opções</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Engrenagem > Geral > Opções</p>
                 <p class="text-gray-700 text-xs">
                     <span class="text-emerald-400 font-bold">SEMPRE ATIVE ISSO.</span> O cliente do LoL (baseado em Chromium) consome 500MB+ de RAM e CPU em segundo plano. Fechar ele libera recursos para a partida (Game.exe). A única desvantagem é que demora 5 segundos a mais para voltar à tela de honra no final.
                 </p>

@@ -61,7 +61,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 1: A Fundação - Downgrade e Preparações do Executável",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">Por que o Executável v1.0 US é a Pedra Angular</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">Por que o Executável v1.0 US é a Pedra Angular</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             Antes de qualquer arquivo ser copiado, você precisa entender o conceito de <strong>Memory Offset</strong>. Mods de GTA San Andreas não funcionam apenas substituindo arquivos; eles funcionam injetando código Assembly (ASM) diretamente na memória RAM enquanto o jogo roda (.ASI Plugins).
         </p>
@@ -69,7 +69,7 @@ export default function GTASAFixGuide() {
             Os desenvolvedores de mods criam seus códigos baseando-se nos endereços de memória da versão <strong>1.0 US Compact</strong> (o famoso executável "Hoodlum" de 14.383.616 bytes ou sua versão compacta de 5.8MB). As versões Steam, Rockstar Launcher e Windows Store possuem executáveis criptografados ou recompilados com endereços de memória totalmente diferentes. Tentar rodar um mod moderno na versão Steam é como tentar abrir uma porta usando uma chave feita para outra fechadura: o jogo vai crashar instantaneamente.
         </p>
         
-        <h3 class="text-2xl text-white font-bold mb-4 mt-8">O Processo de Downgrade Cirúrgico</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4 mt-8">O Processo de Downgrade Cirúrgico</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             Não basta baixar um <code>gta_sa.exe</code> pirata e colar na pasta. A estrutura de dados (arquivos <code>.dat</code>, <code>.ide</code>, <code>.ipl</code> na pasta <code>data/</code>) mudou entre as versões.
         </p>
@@ -87,7 +87,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 2: O Corretor de Engine (SilentPatch)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">Engenharia Reversa aplicada a Bugs de 20 anos</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">Engenharia Reversa aplicada a Bugs de 20 anos</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             O <strong>SilentPatch</strong> é, sem dúvida, o mod mais essencial já criado para a trilogia GTA. O modder <em>Silent</em> passou anos analisando o código descompilado do jogo para encontrar erros lógicos em C++ deixados pelos programadores originais da Rockstar North.
         </p>
@@ -95,7 +95,7 @@ export default function GTASAFixGuide() {
             Diferente de mods que mudam o visual, o SilentPatch muda o <strong>comportamento</strong> do código. Ele intercepta chamadas de função defeituosas e as redireciona para rotinas corrigidas dentro do <code>SilentPatchSA.asi</code>.
         </p>
         
-        <h4 class="text-xl text-white font-bold mb-3 mt-6">Análise de Bugs Críticos Corrigidos:</h4>
+        <h class="text-xl text-gray-900 font-bold mb-3 mt-6">Análise de Bugs Críticos Corrigidos:</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 mb-6">
             <li><strong>O Bug dos 14ms (Frame Limiter):</strong> A Rockstar implementou um limitador de quadros impreciso que arredondava o tempo de quadros. Isso fazia o jogo oscilar entre 25 e 26 FPS, causando "stuttering". O SilentPatch introduz um timer de alta precisão, travando o jogo em 30 FPS perfeitos (ou 60, se configurado).</li>
             <li><strong>Mouse Hook Lost:</strong> Um bug clássico onde o mouse parava de funcionar se você desse Alt-Tab. O patch força a reinicialização da interface DirectInput ao retomar o foco da janela.</li>
@@ -107,7 +107,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 3: A Matemática da Tela (Widescreen Fix)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">Projeção 3D e Aspect Ratio</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">Projeção 3D e Aspect Ratio</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             Jogos antigos renderizam a cena 3D assumindo uma tela quadrada (4:3). Quando você força 1920x1080 (16:9), a engine simplesmente "estica" essa imagem quadrada para preencher o retângulo, resultando no famoso "CJ Gordo" e miras ovais.
         </p>
@@ -126,7 +126,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 4: Restaurando a Alma do PS2 (SkyGfx)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">Pipeline Gráfica: PC vs Console</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">Pipeline Gráfica: PC vs Console</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             A maior perda da versão PC foi a atmosfera. No PlayStation 2, o GTA SA utilizava o hardware único (Emotion Engine) para criar efeitos de pós-processamento que definiam a identidade visual do jogo. O port de PC desativou tudo isso por incompatibilidade ou preguiça. O mod <strong>SkyGfx</strong> reimplementa a pipeline do PS2 usando shaders HLSL modernos.
         </p>
@@ -150,7 +150,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 5: Quebrando Limites (Project2DFX)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">LOD Lights e Draw Distance</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">LOD Lights e Draw Distance</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             O hardware de 2004 tinha apenas 32MB de RAM. Para economizar memória, o jogo parava de desenhar luzes e objetos a poucos metros de distância. O fundo era apenas uma névoa sólida.
         </p>
@@ -174,7 +174,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 6: Texturas de Alta Definição (RoSA Project Evolved)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">Além do Upscale: Fotogrametria e Arte Manual</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">Além do Upscale: Fotogrametria e Arte Manual</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             Muitos packs de textura apenas passam as imagens originais por um filtro de IA, resultando em visuais estranhos e artefatos. O <strong>RoSA Project Evolved</strong> é diferente. É um esforço comunitário contínuo para substituir texturas manualmente.
         </p>
@@ -194,7 +194,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 7: Vegetação Volumétrica (Insanity / AI Vegetation)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">De "X" para Modelos 3D</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">De "X" para Modelos 3D</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             A vegetação original do jogo consiste em dois planos cruzados formando um "X" com uma textura de folha de baixa resolução. Isso funciona de longe, mas é horrível de perto.
         </p>
@@ -209,7 +209,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 8: Gerenciamento de Memória (LargeAddressAware)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">O Gargalo dos 2 Gigabytes</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">O Gargalo dos 2 Gigabytes</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             Aqui está a parte mais técnica e crítica para quem instala mods de textura. O executável <code>gta_sa.exe</code> é um aplicativo de <strong>32 bits</strong>. Na arquitetura Windows, apps 32-bit são limitados a endereçar no máximo 2GB de RAM virtual, mesmo que você tenha 64GB de RAM instalada no seu PC Gamer.
         </p>
@@ -235,7 +235,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 9: Anti-Aliasing e Driver Injection",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">Forçando Qualidade via Hardware</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">Forçando Qualidade via Hardware</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             O Anti-Aliasing (AA) nativo do GTA SA é uma implementação antiga de MSAA que muitas vezes falha em suavizar bordas de texturas transparentes (como cercas e folhas). Como o jogo roda em DirectX 9, podemos usar o Painel de Controle da GPU para forçar técnicas modernas.
         </p>
@@ -265,7 +265,7 @@ export default function GTASAFixGuide() {
         {
             title: "Fase 10: O Toque Final (ReShade)",
             content: `
-        <h3 class="text-2xl text-white font-bold mb-4">Pós-Processamento Cinemático</h3>
+        <h class="text-2xl text-gray-900 font-bold mb-4">Pós-Processamento Cinemático</h3>
         <p class="mb-4 text-gray-700 leading-relaxed">
             Se depois de tudo isso você ainda quiser um visual mais moderno, o <strong>ReShade</strong> é a ferramenta final. Ele se injeta na pipeline do DirectX e aplica efeitos na imagem final, antes de ir para o monitor.
         </p>

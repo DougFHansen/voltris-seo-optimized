@@ -44,7 +44,7 @@ export default function AutomationGuide() {
         </p>
         
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-2">🚀 O Que Dá Para Fazer?</h4>
+          <h class="text-gray-900 font-bold mb-2">🚀 O Que Dá Para Fazer?</h4>
           <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li>Mover todos os arquivos .pdf da pasta Downloads para Documentos/Faturas.</li>
             <li>Renomear 500 fotos de uma vez com data e local.</li>
@@ -61,7 +61,7 @@ export default function AutomationGuide() {
           O <strong>Power Automate</strong> vem pré-instalado no Windows 11. Ele é "Low Code" - você arrasta bloquinhos lógicos.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-4">Exemplo Prático: Organizador de Downloads</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-4">Exemplo Prático: Organizador de Downloads</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Abra o Power Automate e clique em "Novo Fluxo". Dê o nome "Organizar Downloads".</li>
             <li>Na esquerda, busque a ação <strong>"Obter arquivos na pasta"</strong>. Arraste para o centro.
@@ -84,7 +84,7 @@ export default function AutomationGuide() {
         </p>
         <div class="space-y-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                <h5 class="font-bold text-white mb-2">Desligamento Automático</h5>
+                <h class="font-bold text-gray-900 mb-2">Desligamento Automático</h5>
                 <p class="text-sm text-gray-700">
                     Útil para quem deixa o PC baixando jogos e dorme.
                     <br/>1. Criar Tarefa Básica > Nome: "Dormir PC".
@@ -94,7 +94,7 @@ export default function AutomationGuide() {
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                <h5 class="font-bold text-white mb-2">Reiniciar Driver de Vídeo no Boot</h5>
+                <h class="font-bold text-gray-900 mb-2">Reiniciar Driver de Vídeo no Boot</h5>
                 <p class="text-sm text-gray-700">
                     Se seu driver buga ao iniciar, crie uma tarefa para rodar um script de restart.
                 </p>
@@ -108,7 +108,7 @@ export default function AutomationGuide() {
     {
       title: "Ferramenta 3: Scripts PowerShell (.ps1)",
       content: `
-        <h4 class="text-white font-bold mb-3">Poder Ilimitado (com moderação)</h4>
+        <h class="text-gray-900 font-bold mb-3">Poder Ilimitado (com moderação)</h4>
         <p class="mb-4 text-gray-700">
             O PowerShell acessa o coração do Windows. Crie um arquivo de texto, cole o código e salve como <code>limpeza.ps1</code>.
         </p>
@@ -155,7 +155,7 @@ export default function AutomationGuide() {
     {
       title: "Galeria de Ideias",
       content: `
-        <h4 class="text-white font-bold mb-3">Copie estas ideias:</h4>
+        <h class="text-gray-900 font-bold mb-3">Copie estas ideias:</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800/50 p-4 rounded-lg">
                 <h5 class="text-pink-400 font-bold mb-2">Modo Foco</h5>

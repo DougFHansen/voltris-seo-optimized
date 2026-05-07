@@ -55,7 +55,7 @@ export default function DataRecoveryGuide() {
             title: "2. PhotoRec: O Escavador Digital",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Poder Bruto:</h4>
+            <h class="text-gray-900 font-bold mb-2">Poder Bruto:</h4>
             <p class="text-sm text-gray-700">
                 O <strong>PhotoRec</strong> ignora o sistema de arquivos completamente e lê os dados brutos. Ele não recupera os nomes dos arquivos (viram códigos como f12345.jpg), mas ele recupera o conteúdo de quase qualquer coisa: pendrives queimados, SD cards de câmeras e HDs que dão erro de E/S. É gratuito e o mais eficaz da categoria.
             </p>

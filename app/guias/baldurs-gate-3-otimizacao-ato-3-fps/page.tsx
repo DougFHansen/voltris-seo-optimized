@@ -99,13 +99,13 @@ export default function BG3Guide() {
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
-                <h5 class="font-bold text-white mb-2">DirectX 11 (Padrão)</h5>
+                <h class="font-bold text-gray-900 mb-2">DirectX 11 (Padrão)</h5>
                 <p class="text-sm text-gray-700">
                     Mais estável, menos crashes, melhor para NVIDIA. Porém, tem um overhead de CPU um pouco maior que o Vulkan.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
-                <h5 class="font-bold text-white mb-2">Vulkan</h5>
+                <h class="font-bold text-gray-900 mb-2">Vulkan</h5>
                 <p class="text-sm text-gray-700">
                     Recomendado para AMD Radeon e Linux (Steam Deck). Tem melhor gerenciamento de multi-threading da CPU (bom para o Ato 3), mas pode ter bugs visuais ou crashes aleatórios ("Device Lost").
                 </p>
@@ -116,7 +116,7 @@ export default function BG3Guide() {
         {
             title: "Mods de Qualidade de Vida (QoL)",
             content: `
-        <h4 class="text-white font-bold mb-3">Jogue como um RPG de Ação</h4>
+        <h class="text-gray-900 font-bold mb-3">Jogue como um RPG de Ação</h4>
         <p class="mb-4 text-gray-700">
             A câmera isométrica é clássica, mas ver o mundo de perto é incrível.
         </p>
@@ -133,7 +133,7 @@ export default function BG3Guide() {
         {
             title: "Comando de Inicialização (Steam)",
             content: `
-        <h4 class="text-white font-bold mb-3">Pular o Launcher</h4>
+        <h class="text-gray-900 font-bold mb-3">Pular o Launcher</h4>
         <p class="mb-4 text-gray-700">
             O launcher da Larian fica aberto em segundo plano comendo RAM.
             <br/>Vá na Steam > Botão Direito no Jogo > Propriedades > Opções de Inicialização:

@@ -57,7 +57,7 @@ export default function DPCWatchdogGuide() {
             title: "2. Firmware do SSD e Erros de Disco",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Check de Integridade:</h4>
+            <h class="text-gray-900 font-bold mb-2">Check de Integridade:</h4>
             <p class="text-sm text-gray-700">
                 Se o erro persistir em 2026, a falha pode estar no próprio SSD. <br/><br/>
                 - Baixe o software oficial da marca do seu SSD (Samsung Magician, Kingston SSD Manager, etc). <br/>

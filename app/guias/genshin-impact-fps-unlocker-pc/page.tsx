@@ -60,19 +60,19 @@ export default function GenshinGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Render Resolution</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">1.0 (Nativo)</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">1.0 (Nativo)</span></p>
                 <p class="text-gray-700 text-xs">Se seu PC for fraco, use 0.8. É melhor que baixar a resolução do monitor. 0.6 fica muito borrado.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Volumetric Fog (Neblina)</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-red-400">Off/Low</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-red-400">Off/Low</span></p>
                 <p class="text-gray-700 text-xs">
                    A neblina em lugares como Inazuma ou Dragonspine pesa muito. Desligar deixa o jogo mais nítido e leve.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">SFX Quality (Efeitos)</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-yellow-400">Low/Medium</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-yellow-400">Low/Medium</span></p>
                 <p class="text-gray-700 text-xs">
                     Em combate (Abismo), muitas ults ao mesmo tempo (Kazuha + Neuvillette) causam lag. Low resolve isso.
                 </p>

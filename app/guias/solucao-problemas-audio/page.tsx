@@ -49,7 +49,7 @@ export default function AudioTroubleshootingGuide() {
       title: "Capítulo 1: O Som Desapareceu (Diagnóstico Físico e Lógico)",
       content: `
         <div class="space-y-6">
-            <h4 class="text-white font-bold text-xl mb-4">A Regra dos 3 Pontos de Falha</h4>
+            <h class="text-gray-900 font-bold text-xl mb-4">A Regra dos 3 Pontos de Falha</h4>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-gray-800 p-5 rounded-lg border border-red-500/20">
                     <h5 class="text-red-400 font-bold mb-2">1. Hardware (Físico)</h5>
@@ -81,7 +81,7 @@ export default function AudioTroubleshootingGuide() {
         </p>
 
         <div class="space-y-6 bg-gray-900 border border-gray-700 p-6 rounded-xl">
-            <h4 class="text-white font-bold text-xl mb-3">Diagnóstico com LatencyMon</h4>
+            <h class="text-gray-900 font-bold text-xl mb-3">Diagnóstico com LatencyMon</h4>
             <ol class="list-decimal list-inside text-gray-700 space-y-3">
                 <li>Baixe o <strong>LatencyMon</strong> (Home Edition Free).</li>
                 <li>Clique no Play verde. Jogue ou ouça música por 5 minutos.</li>
@@ -112,7 +112,7 @@ export default function AudioTroubleshootingGuide() {
             A Realtek tem dois tipos de driver: HDA (antigo, 200MB, painel cinza feio) e UAD (moderno, painel na Loja, leve). Eles não se misturam.
         </p>
 
-        <h4 class="text-white font-bold text-xl mt-6 mb-3">Como reinstalar corretamente (Clean Install):</h4>
+        <h class="text-gray-900 font-bold text-xl mt-6 mb-3">Como reinstalar corretamente (Clean Install):</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 bg-gray-900/40 p-5 rounded-lg">
             <li>Baixe o driver de áudio no site da fabricante da sua PLACA MÃE (não no site da Realtek).</li>
             <li>Desconecte a internet (para o Windows Update não atrapalhar).</li>
@@ -155,13 +155,13 @@ export default function AudioTroubleshootingGuide() {
       content: `
         <div class="grid md:grid-cols-2 gap-8">
             <div>
-                <h4 class="text-white font-bold text-lg mb-3">16bit vs 24bit vs 32bit</h4>
+                <h class="text-gray-900 font-bold text-lg mb-3">16bit vs 24bit vs 32bit</h4>
                 <p class="text-gray-700 text-sm">
                     <strong>24 bits</strong> é o padrão da indústria (filmes, spotify). Usar 16 bits (CD) é ok, mas 24 bits dá mais margem dinâmica (menos chiado em silêncios). 32 bits é inútil para reprodução (apenas para gravação).
                 </p>
             </div>
             <div>
-                <h4 class="text-white font-bold text-lg mb-3">44.1kHz vs 48kHz vs 192kHz</h4>
+                <h class="text-gray-900 font-bold text-lg mb-3">44.1kHz vs 48kHz vs 192kHz</h4>
                 <p class="text-gray-700 text-sm">
                     <strong>Mito:</strong> "Quanto maior melhor". 
                     <br/><strong>Fato:</strong> A maioria dos áudios do PC (Jogos, YouTube) está em 48000Hz (48kHz). Se você setar o Windows para 192kHz, o sistema terá que converter (resample) tudo em tempo real. Isso gasta CPU e pode adicionar artefatos/distorção.
@@ -176,21 +176,21 @@ export default function AudioTroubleshootingGuide() {
       content: `
         <div class="space-y-6">
             <div class="bg-gray-800/50 p-4 rounded-lg">
-                <h5 class="text-white font-bold mb-2">Eu preciso de um DAC externo (USB)?</h5>
+                <h class="text-gray-900 font-bold mb-2">Eu preciso de um DAC externo (USB)?</h5>
                 <p class="text-gray-700 text-sm">
                     Se você ouve um chiado de fundo ("hiss") constantes quando não há som tocando, sim. Isso é interferência elétrica da placa-mãe (EMI). Um DAC USB (mesmo um barato como Apple Dongle ou Sharkoon DAC) tira o processamento de dentro da caixa barulhenta do PC e elimina o chiado 100%.
                 </p>
             </div>
 
             <div class="bg-gray-800/50 p-4 rounded-lg">
-                <h5 class="text-white font-bold mb-2">Som Bluetooth com qualidade de rádio AM?</h5>
+                <h class="text-gray-900 font-bold mb-2">Som Bluetooth com qualidade de rádio AM?</h5>
                 <p class="text-gray-700 text-sm">
                     Isso é o perfil "Hands-Free" (HFP). O Bluetooth não aguenta Áudio Estéreo + Microfone ao mesmo tempo. Para corrigir, desabilite o microfone do fone nas configurações de Gravação e use um mic USB separado. O áudio voltará instantaneamente para qualidade de música (A2DP).
                 </p>
             </div>
 
             <div class="bg-gray-800/50 p-4 rounded-lg">
-                <h5 class="text-white font-bold mb-2">Loudness Equalization ajuda em Jogos?</h5>
+                <h class="text-gray-900 font-bold mb-2">Loudness Equalization ajuda em Jogos?</h5>
                 <p class="text-gray-700 text-sm">
                     Sim! É o "wallhack de áudio". Em jogos como Warzone ou CS2, ele aumenta os sons baixos (passos) e comprime os sons altos (tiros). Seus ouvidos agradecem e você ouve inimigos de longe. Ative na aba "Enhancements" do driver.
                 </p>

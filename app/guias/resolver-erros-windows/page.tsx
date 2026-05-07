@@ -56,14 +56,14 @@ export default function ResolverErrosWindowsGuide() {
         {
           subtitle: "Soluções Passo a Passo",
           content: `
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Solução 1: Anotar o Código de Erro</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Solução 1: Anotar o Código de Erro</h4>
             <p class="mb-4">Na tela azul, anote o código de erro (ex: STOP: 0x0000007E, IRQL_NOT_LESS_OR_EQUAL, etc.). Este código ajuda a identificar a causa:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Quando a tela azul aparecer, anote o código de erro exato</li>
               <li>Pesquise o código específico na internet</li>
               <li>Códigos comuns incluem problemas de drivers, memória RAM ou hardware</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Solução 2: Verificar Hardware</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Solução 2: Verificar Hardware</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Desligue o computador completamente</li>
               <li>Verifique se todos os cabos estão bem conectados</li>
@@ -71,7 +71,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Verifique temperatura do processador (superaquecimento pode causar BSOD)</li>
               <li>Teste o disco rígido para erros</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Solução 3: Atualizar Drivers</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Solução 3: Atualizar Drivers</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Inicie o Windows em Modo Seguro</li>
               <li>Atualize drivers críticos (vídeo, rede, áudio)</li>
@@ -100,14 +100,14 @@ export default function ResolverErrosWindowsGuide() {
         {
           subtitle: "Soluções",
           content: `
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Usar Reparação Automática</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Usar Reparação Automática</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Reinicie o computador 3 vezes durante a inicialização para entrar na Reparação Automática</li>
               <li>Ou use mídia de instalação do Windows e escolha "Reparar o computador"</li>
               <li>Selecione "Reparação Automática"</li>
               <li>Aguarde o Windows tentar reparar automaticamente</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Restauração do Sistema</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Restauração do Sistema</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Na tela de reparação, escolha "Opções Avançadas"</li>
               <li>Vá em &quot;Solução de Problemas&quot; &gt; &quot;Opções Avançadas&quot;</li>
@@ -115,7 +115,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Escolha um ponto de restauração anterior ao problema</li>
               <li>Confirme e aguarde a restauração</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Usar Prompt de Comando para Reparar</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Usar Prompt de Comando para Reparar</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Na tela de reparação, escolha Prompt de Comando</li>
               <li>Execute: <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /scannow</code> (verifica integridade de arquivos)</li>
@@ -147,7 +147,7 @@ export default function ResolverErrosWindowsGuide() {
         {
           subtitle: "Diagnóstico e Soluções",
           content: `
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Verificar Temperaturas</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Verificar Temperaturas</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Use ferramentas como HWMonitor para verificar temperaturas</li>
               <li>CPU acima de 80°C ou GPU acima de 85°C indica superaquecimento</li>
@@ -155,13 +155,13 @@ export default function ResolverErrosWindowsGuide() {
               <li>Verifique se ventiladores estão funcionando</li>
               <li>Considere trocar pasta térmica do processador</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Testar Memória RAM</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Testar Memória RAM</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Use a ferramenta Diagnóstico de Memória do Windows</li>
               <li>Ou use MemTest86 para teste completo</li>
               <li>Se encontrar erros, substitua a memória RAM</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Verificar Disco Rígido</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Verificar Disco Rígido</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Execute verificação de erros no disco</li>
               <li>Monitore SMART do disco para sinais de falha iminente</li>
@@ -262,7 +262,7 @@ export default function ResolverErrosWindowsGuide() {
           subtitle: "Erros de Driver Críticos",
           content: `
             <p class="mb-4">Erros de driver são uma das causas mais comuns de problemas no Windows:</p>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Soluções para Problemas de Driver</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Soluções para Problemas de Driver</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Abra o Gerenciador de Dispositivos (<code class="bg-[#2a2a2e] px-2 py-1 rounded">devmgmt.msc</code>)</li>
               <li>Procure dispositivos com ícone amarelo (alerta) ou vermelho (erro)</li>
@@ -272,7 +272,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Visite o site do fabricante para baixar drivers mais recentes</li>
               <li>Para drivers de vídeo, use o DDU (Display Driver Uninstaller) para limpeza completa antes de reinstalar</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Driver Verifier</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Driver Verifier</h4>
             <p class="mb-4">Para identificar drivers problemáticos:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Abra Prompt de Comando como Administrador</li>
@@ -288,7 +288,7 @@ export default function ResolverErrosWindowsGuide() {
           subtitle: "Problemas de Boot e Partição",
           content: `
             <p class="mb-4">Erros relacionados ao processo de inicialização do sistema:</p>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Soluções para Problemas de Boot</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Soluções para Problemas de Boot</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>No Prompt de Comando como Administrador, execute:</li>
               <li><code class="bg-[#2a2a2e] px-2 py-1 rounded">bootrec /fixmbr</code> - Repara o Master Boot Record</li>
@@ -298,7 +298,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Verifique a integridade do disco com <code class="bg-[#2a2a2e] px-2 py-1 rounded">chkdsk C: /f /r</code></li>
               <li>Para sistemas UEFI, verifique se o arquivo <code class="bg-[#2a2a2e] px-2 py-1 rounded">\EFI\Microsoft\Boot\BCD</code> existe</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Ferramentas de Diagnóstico de Boot</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Ferramentas de Diagnóstico de Boot</h4>
             <p class="mb-4">Verifique o estado do sistema de inicialização:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">msinfo32</code> para verificar o status de inicialização</li>
@@ -312,7 +312,7 @@ export default function ResolverErrosWindowsGuide() {
           subtitle: "Erros de Registro e Configurações do Sistema",
           content: `
             <p class="mb-4">Problemas no registro do Windows podem causar diversos erros:</p>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Soluções para Erros de Registro</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Soluções para Erros de Registro</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /scannow</code> primeiro para verificar arquivos de sistema</li>
               <li>Use o Editor do Registro (<code class="bg-[#2a2a2e] px-2 py-1 rounded">regedit</code>) com cuidado para navegar no registro</li>
@@ -321,7 +321,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Use <code class="bg-[#2a2a2e] px-2 py-1 rounded">dism /online /cleanup-image /scanhealth</code> para verificar integridade da imagem</li>
               <li>Se necessário, execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /offlinewim</code> para reparar imagem offline</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Verificação de Integridade do Sistema</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Verificação de Integridade do Sistema</h4>
             <p class="mb-4">Métodos avançados para verificar e reparar o sistema:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Verifique a integridade do sistema com <code class="bg-[#2a2a2e] px-2 py-1 rounded">sfc /verifyonly</code></li>
@@ -341,7 +341,7 @@ export default function ResolverErrosWindowsGuide() {
           subtitle: "Testes de Hardware",
           content: `
             <p class="mb-4">Muitos erros do Windows são causados por problemas de hardware:</p>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Testes de Memória RAM</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Testes de Memória RAM</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Use o Diagnóstico de Memória do Windows (<code class="bg-[#2a2a2e] px-2 py-1 rounded">mdsched.exe</code>)</li>
               <li>Execute o MemTest86+ em USB bootável para teste completo</li>
@@ -349,7 +349,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Verifique configurações de memória na BIOS/UEFI</li>
               <li>Reduza temporariamente a velocidade da RAM para testar estabilidade</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Testes de Disco Rígido</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Testes de Disco Rígido</h4>
             <p class="mb-4">Verificação de integridade do armazenamento:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">chkdsk C: /f /r</code> para verificar setores defeituosos</li>
@@ -358,7 +358,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Use ferramentas como HD Tune para testes completos de disco</li>
               <li>Realize backup imediato se forem detectados problemas de disco</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Testes de Temperatura e Superaquecimento</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Testes de Temperatura e Superaquecimento</h4>
             <p class="mb-4">Monitoramento térmico para evitar problemas:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Use HWMonitor, Core Temp ou SpeedFan para verificar temperaturas</li>
@@ -373,7 +373,7 @@ export default function ResolverErrosWindowsGuide() {
           subtitle: "Ferramentas de Diagnóstico do Windows",
           content: `
             <p class="mb-4">O Windows inclui várias ferramentas avançadas de diagnóstico:</p>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Windows Memory Diagnostic</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Windows Memory Diagnostic</h4>
             <p class="mb-4">Teste de memória integrado ao sistema:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">mdsched.exe</code> no Prompt de Comando</li>
@@ -381,7 +381,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>O teste será realizado na próxima inicialização</li>
               <li>Resultados estarão disponíveis no Visualizador de Eventos</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Reliability Monitor</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Reliability Monitor</h4>
             <p class="mb-4">Monitoramento de confiabilidade do sistema:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">perfmon /rel</code> para abrir o Reliability Monitor</li>
@@ -389,7 +389,7 @@ export default function ResolverErrosWindowsGuide() {
               <li>Analise eventos críticos e avisos recentes</li>
               <li>Compare eventos com data e hora de problemas</li>
             </ol>
-            <h4 class="text-xl font-bold text-white mb-2 mt-4">Performance Monitor</h4>
+            <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Performance Monitor</h4>
             <p class="mb-4">Monitoramento avançado de desempenho:</p>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Execute <code class="bg-[#2a2a2e] px-2 py-1 rounded">perfmon</code> para abrir o Monitor de Desempenho</li>
@@ -421,7 +421,7 @@ export default function ResolverErrosWindowsGuide() {
           subtitle: "Precisa de Ajuda para Resolver Erros?",
           content: `
             <div class="bg-[#171313] p-6 rounded-lg border border-[#31A8FF]/30 mt-6">
-              <p class="text-white font-semibold mb-3 text-lg">Precisa de Ajuda para Resolver Erros?</p>
+              <p class="text-gray-900 font-semibold mb-3 text-lg">Precisa de Ajuda para Resolver Erros?</p>
               <p class="text-gray-700 leading-relaxed mb-4">
                 Nossa equipe de especialistas pode diagnosticar e resolver erros do Windows remotamente, de forma segura e eficiente.
               </p>

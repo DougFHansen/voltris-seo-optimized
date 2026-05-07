@@ -56,7 +56,7 @@ export default function ProjectZomboidGuide() {
             title: "2. Gráficos: O Peso das Hordas",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Configurações Críticas em 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">Configurações Críticas em 2026:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>Blood Decals (Sangue):</strong> Coloque em 'None'. Cada mancha de sangue no chão é um objeto que o jogo precisa processar para sempre. Em hordas, isso mata o seu FPS. <br/>
                 - <strong>Zoom Levels:</strong> Desative o zoom máximo. Quanto mais longe a câmera está, mais o jogo precisa renderizar, causando lag de processamento. <br/>

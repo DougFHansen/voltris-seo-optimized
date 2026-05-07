@@ -55,7 +55,7 @@ export default function BatteryHealthGuide() {
       title: "2. O Segredo dos 80% (Battery Limiter)",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Preservando a Vida Útil:</h4>
+            <h class="text-gray-900 font-bold mb-2">Preservando a Vida Útil:</h4>
             <p class="text-sm text-gray-700">
                 O estado que mais estressa as células da bateria é estar em 100% ou em 0%. Em 2026, quase todos os fabricantes (Asus, Dell, Acer, Lenovo) oferecem um software que permite **limitar a carga em 80%**. <br/><br/>
                 Se você usa o notebook muito tempo ligado na tomada, ative essa opção! Isso impede que a bateria fique "fritando" na voltagem máxima constantemente, dobrando a vida útil dela ao longo dos anos.

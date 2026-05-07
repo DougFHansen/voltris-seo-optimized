@@ -55,7 +55,7 @@ export default function PrivacyGuide() {
       title: "2. Removendo IDs de Anúncios e Rastreamento",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Anúncios no Iniciar:</h4>
+            <h class="text-gray-900 font-bold mb-2">Anúncios no Iniciar:</h4>
             <p class="text-sm text-gray-700">
                 Você já reparou em sugestões de apps que nunca instalou? O Windows usa o seu <strong>ID de Anúncio</strong> para isso. <br/><br/>
                 Vá em Configurações > Privacidade e Segurança > Geral e <strong>desative todas as quatro chaves</strong> desta tela. Isso impedirá que o Windows tente criar um perfil de consumo baseado no uso dos seus aplicativos.

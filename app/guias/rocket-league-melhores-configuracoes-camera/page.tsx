@@ -55,14 +55,14 @@ export default function RocketLeagueGuide() {
             Copie estas configurações. É a base usada por 99% dos Pros (RLCS):
         </p>
         <div class="bg-[#0A0A0F] p-5 rounded-xl border border-white/5 space-y-2">
-            <p class="text-white text-sm"><strong class="text-[#31A8FF]">Camera Shake:</strong> <span class="text-red-400">Uncheck (Desligado)</span></p>
-            <p class="text-white text-sm"><strong class="text-[#31A8FF]">Field of View (FOV):</strong> 110 (Máximo. Visão é tudo).</p>
-            <p class="text-white text-sm"><strong class="text-[#31A8FF]">Distance:</strong> 260.00 a 280.00</p>
-            <p class="text-white text-sm"><strong class="text-[#31A8FF]">Height:</strong> 90.00 a 110.00</p>
-            <p class="text-white text-sm"><strong class="text-[#31A8FF]">Angle:</strong> -3.00 a -5.00</p>
-            <p class="text-white text-sm"><strong class="text-[#31A8FF]">Stiffness:</strong> 0.40 a 0.50 (Quanto maior, mais presa a câmera fica no carro).</p>
-            <p class="text-white text-sm"><strong class="text-[#31A8FF]">Swivel Speed:</strong> 4.00 a 6.00</p>
-             <p class="text-white text-sm"><strong class="text-[#31A8FF]">Transition Speed:</strong> 1.00 a 1.20</p>
+            <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Camera Shake:</strong> <span class="text-red-400">Uncheck (Desligado)</span></p>
+            <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Field of View (FOV):</strong> 110 (Máximo. Visão é tudo).</p>
+            <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Distance:</strong> 260.00 a 280.00</p>
+            <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Height:</strong> 90.00 a 110.00</p>
+            <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Angle:</strong> -3.00 a -5.00</p>
+            <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Stiffness:</strong> 0.40 a 0.50 (Quanto maior, mais presa a câmera fica no carro).</p>
+            <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Swivel Speed:</strong> 4.00 a 6.00</p>
+             <p class="text-gray-900 text-sm"><strong class="text-[#31A8FF]">Transition Speed:</strong> 1.00 a 1.20</p>
         </div>
       `
         },

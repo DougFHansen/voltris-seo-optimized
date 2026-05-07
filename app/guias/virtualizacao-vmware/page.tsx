@@ -55,7 +55,7 @@ export default function VirtualizationGuide() {
       title: "2. Configurando o VMWare em 2026",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Criando sua primeira VM:</h4>
+            <h class="text-gray-900 font-bold mb-2">Criando sua primeira VM:</h4>
             <p class="text-sm text-gray-700">
                 1. Baixe o <strong>VMWare Workstation Player</strong> (versão gratuita para uso pessoal). <br/>
                 2. Clique em 'Create a New Virtual Machine'. <br/>

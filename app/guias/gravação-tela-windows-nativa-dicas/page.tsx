@@ -49,7 +49,7 @@ export default function NativeRecordingGuide() {
             title: "Capítulo 1: Xbox Game Bar (A Central de Jogos)",
             content: `
         <div class="space-y-6">
-            <h4 class="text-white font-bold text-xl mb-3">Comandos de Teclado Essenciais</h4>
+            <h class="text-gray-900 font-bold text-xl mb-3">Comandos de Teclado Essenciais</h4>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-gray-800 p-4 rounded-lg border-l-4 border-green-500">
                     <strong class="text-green-400 block mb-1">Win + Alt + R</strong>
@@ -65,7 +65,7 @@ export default function NativeRecordingGuide() {
                 </div>
             </div>
 
-            <h4 class="text-white font-bold text-xl mt-6 mb-3">Configurando o "Replay Buffer" (Gravar o Passado)</h4>
+            <h class="text-gray-900 font-bold text-xl mt-6 mb-3">Configurando o "Replay Buffer" (Gravar o Passado)</h4>
             <p class="text-gray-700 text-md">
                 O recurso mais poderoso da Game Bar é gravar o que JÁ aconteceu. Isso consome um pouco de RAM, mas garante que você nunca perca um momento épico.
             </p>
@@ -158,7 +158,7 @@ export default function NativeRecordingGuide() {
 
         <div class="grid md:grid-cols-2 gap-8 mt-6">
             <div>
-                <h4 class="text-white font-bold text-lg mb-2">Método 1: App Fotos (Corte sem Perdas)</h4>
+                <h class="text-gray-900 font-bold text-lg mb-2">Método 1: App Fotos (Corte sem Perdas)</h4>
                 <p class="text-gray-700 text-sm mb-2">
                     Abra o vídeo no player padrão do Windows. Clique em <strong>Ctrl + E</strong> (Editar).
                     <br/><br/>
@@ -168,7 +168,7 @@ export default function NativeRecordingGuide() {
             </div>
             
             <div>
-                <h4 class="text-white font-bold text-lg mb-2">Método 2: Clipchamp (Edição Completa)</h4>
+                <h class="text-gray-900 font-bold text-lg mb-2">Método 2: Clipchamp (Edição Completa)</h4>
                 <p class="text-gray-700 text-sm mb-2">
                     O editor oficial do Windows 11. Arraste o vídeo para lá.
                     <br/><br/>
@@ -184,20 +184,20 @@ export default function NativeRecordingGuide() {
             content: `
         <div class="space-y-6 bg-gray-800/20 p-6 rounded-xl">
             <div>
-                <h4 class="font-bold text-white text-lg">Tela Preta em Jogos (DirectX 12)</h4>
+                <h class="font-bold text-gray-900 text-lg">Tela Preta em Jogos (DirectX 12)</h4>
                 <p class="text-gray-700 text-sm mt-1">
                     Alguns jogos (como CS2 ou Valorant) em modo "Tela Cheia Exclusiva" bloqueiam a renderização da Game Bar. 
                     <br/><strong>Solução:</strong> Mude o modo de vídeo do jogo para "Janela sem Bordas" (Borderless Window). A perda de FPS hoje em dia é negligenciável e permite gravar sem problemas.
                 </p>
             </div>
             <div>
-                <h4 class="font-bold text-white text-lg">Áudio do Microfone baixo ou mudo</h4>
+                <h class="font-bold text-gray-900 text-lg">Áudio do Microfone baixo ou mudo</h4>
                 <p class="text-gray-700 text-sm mt-1">
                     Abra a Game Bar (Win+G). No widget de "Áudio", vá na aba "Voz". Certifique-se de que o microfone correto está selecionado (às vezes o Windows escolhe a webcam por padrão). Aumente o volume lá.
                 </p>
             </div>
             <div>
-                <h4 class="font-bold text-white text-lg">Vídeo travando muito</h4>
+                <h class="font-bold text-gray-900 text-lg">Vídeo travando muito</h4>
                 <p class="text-gray-700 text-sm mt-1">
                     Se você grava no mesmo HD onde o jogo está instalado, o disco não aguenta ler o jogo e escrever o vídeo ao mesmo tempo.
                     <br/><strong>Solução:</strong> Mude a pasta de Capturas para um segundo HD/SSD.

@@ -55,7 +55,7 @@ export default function CleanDriverInstallGuide() {
             title: "2. O jeito AMD (Adrenaline)",
             content: `
         <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/30">
-            <h4 class="text-white font-bold mb-2">AMD Cleanup Utility:</h4>
+            <h class="text-gray-900 font-bold mb-2">AMD Cleanup Utility:</h4>
             <p class="text-sm text-gray-700">
                 A AMD oferece uma ferramenta separada chamada <strong>AMD Cleanup Utility</strong>. Recomendamos baixá-la sempre que você notar que o software Adrenaline não está abrindo ou as cores da tela estão estranhas. Ela limpa o registro do Windows de forma profunda antes de você rodar o novo instalador, sendo muito mais eficaz que o desinstalador padrão.
             </p>

@@ -34,7 +34,7 @@ export default function LimpezaComputadorGuide() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
           <div class="bg-[#171313] p-6 rounded-xl border border-[#31A8FF]/30 hover:border-[#31A8FF]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#31A8FF]">✓</span> Benefícios
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -46,7 +46,7 @@ export default function LimpezaComputadorGuide() {
             </ul>
           </div>
           <div class="bg-[#171313] p-6 rounded-xl border border-[#FF4B6B]/30 hover:border-[#FF4B6B]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#FF4B6B]">⚠</span> Requisitos
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -60,7 +60,7 @@ export default function LimpezaComputadorGuide() {
         </div>
         
         <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-500/30 mt-8">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-blue-400">📊</span> Estatísticas Importantes
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -118,7 +118,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Tipos de Arquivos Temporários",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Arquivos Seguros para Remoção:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Arquivos Seguros para Remoção:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Arquivos temporários do sistema (%temp%, C:\Windows\Temp)</li>
                 <li>Cache de navegadores web</li>
@@ -129,7 +129,7 @@ export default function LimpezaComputadorGuide() {
                 <li>Arquivos de atualizações do Windows antigos</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Arquivos que Requerem Cuidado:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Arquivos que Requerem Cuidado:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>Registros do sistema (requer backup antes de edição)</li>
                 <li>Arquivos de programas em uso</li>
@@ -143,7 +143,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Locais Comuns de Acúmulo de Arquivos",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Pastas de Arquivos Temporários:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Pastas de Arquivos Temporários:</h4>
               <div class="bg-black p-4 rounded border border-yellow-500/30 font-mono text-sm text-yellow-400 mt-2">
                 <p>%TEMP% - Pasta temporária do usuário</p>
                 <p>C:\Windows\Temp - Pasta temporária do sistema</p>
@@ -179,7 +179,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Passo 2: Instalação e Configuração Inicial",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Instalação:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Procedimento de Instalação:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Execute o instalador baixado como administrador</li>
                 <li>Siga as telas de instalação padrão</li>
@@ -187,7 +187,7 @@ export default function LimpezaComputadorGuide() {
                 <li>Na primeira execução, clique em "Options" e desmarque opções de publicidade</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Configurações Recomendadas:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Configurações Recomendadas:</h4>
               <div class="bg-black p-4 rounded border border-green-500/30 font-mono text-sm text-green-400 mt-2">
                 <p>Na aba "Advanced":</p>
                 <p>- Habilite "Clean Windows Event Logs" para limpeza completa</p>
@@ -204,7 +204,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Passo 3: Análise e Limpeza de Arquivos Temporários",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Limpeza:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Procedimento de Limpeza:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Clique na aba "Cleaner" e selecione "Windows" e "Applications"</li>
                 <li>Marque todas as opções disponíveis (Temp files, Recycle Bin, Recent Docs, etc.)</li>
@@ -220,7 +220,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Passo 4: Limpeza de Navegadores e Aplicativos",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Limpeza de Navegadores:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Limpeza de Navegadores:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Na mesma aba "Cleaner", selecione cada navegador instalado (Chrome, Firefox, Edge, Opera)</li>
                 <li>Marque opções de cache, cookies, histórico e dados de formulários</li>
@@ -228,7 +228,7 @@ export default function LimpezaComputadorGuide() {
                 <li><strong>Importante:</strong> Faça backup de senhas importantes antes de limpar cookies</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Limpeza de Aplicativos:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Limpeza de Aplicativos:</h4>
               <p class="text-gray-700">A aba "Applications" permite limpar cache de diversos programas como Adobe Reader, Windows Media Player, entre outros.</p>
             </div>
           `
@@ -237,7 +237,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Passo 5: Otimização do Registro (Opcional)",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Otimização:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Procedimento de Otimização:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Clique na aba "Registry" na parte superior</li>
                 <li>Clique em "Scan for Issues" para encontrar entradas inválidas</li>
@@ -261,7 +261,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Ferramentas Nativas do Windows",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Disk Cleanup (Limpeza de Disco):</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Disk Cleanup (Limpeza de Disco):</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Executar: Win + R → cleanmgr</li>
                 <li>Limpa arquivos temporários do sistema</li>
@@ -270,10 +270,10 @@ export default function LimpezaComputadorGuide() {
                 <li>Permite limpar arquivos de sistema com permissões de administrador</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Storage Sense:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Storage Sense:</h4>
               <p class="text-gray-700">Recurso do Windows 10/11 que limpa automaticamente arquivos temporários e desnecessários.</p>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Windows Settings:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Windows Settings:</h4>
               <p class="text-gray-700">Configurações > Sistema > Armazenamento > Limpar agora para limpeza rápida de arquivos temporários.</p>
             </div>
           `
@@ -283,7 +283,7 @@ export default function LimpezaComputadorGuide() {
           content: `
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
               <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">BleachBit</h4>
+                <h class="text-gray-900 font-semibold mb-2">BleachBit</h4>
                 <ul class="text-gray-700 text-sm space-y-1">
                   <li>Software open-source gratuito</li>
                   <li>Funciona em Windows e Linux</li>
@@ -293,7 +293,7 @@ export default function LimpezaComputadorGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Disk Cleanup (cleanmgr)</h4>
+                <h class="text-gray-900 font-semibold mb-2">Disk Cleanup (cleanmgr)</h4>
                 <ul class="text-gray-700 text-sm space-y-1">
                   <li>Ferramenta nativa do Windows</li>
                   <li>Sem necessidade de instalação</li>
@@ -303,7 +303,7 @@ export default function LimpezaComputadorGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#8B31FF]/20">
-                <h4 class="text-white font-semibold mb-2">Wise Disk Cleaner</h4>
+                <h class="text-gray-900 font-semibold mb-2">Wise Disk Cleaner</h4>
                 <ul class="text-gray-700 text-sm space-y-1">
                   <li>Interface amigável e eficiente</li>
                   <li>Busca arquivos temporários em profundidade</li>
@@ -313,7 +313,7 @@ export default function LimpezaComputadorGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Glarysoft Quick Shutdown</h4>
+                <h class="text-gray-900 font-semibold mb-2">Glarysoft Quick Shutdown</h4>
                 <ul class="text-gray-700 text-sm space-y-1">
                   <li>Parte da suíte Glary Utilities</li>
                   <li>Limpeza e otimização combinadas</li>
@@ -337,7 +337,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Métodos de Desinstalação",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Via Configurações do Windows:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Via Configurações do Windows:</h4>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Pressione Win + I para abrir Configurações</li>
                 <li>Selecione Aplicativos > Aplicativos e recursos</li>
@@ -345,7 +345,7 @@ export default function LimpezaComputadorGuide() {
                 <li>Siga as instruções do assistente de desinstalação</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Via Painel de Controle:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Via Painel de Controle:</h4>
               <ol class="list-decimal list-inside space-y-2 text-gray-700 mt-2">
                 <li>Abra o Painel de Controle</li>
                 <li>Selecione Programas > Programas e Recursos</li>
@@ -359,13 +359,13 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Ferramentas de Desinstalação Profunda",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Revo Uninstaller:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Revo Uninstaller:</h4>
               <p class="text-gray-700">Ferramenta que remove não apenas o programa, mas também todos os arquivos, pastas e entradas de registro relacionados.</p>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">IObit Uninstaller:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">IObit Uninstaller:</h4>
               <p class="text-gray-700">Oferece varredura profunda após a desinstalação padrão para remover resíduos.</p>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Geek Uninstaller:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Geek Uninstaller:</h4>
               <p class="text-gray-700">Ferramenta leve e gratuita que força a desinstalação de programas teimosos.</p>
             </div>
           `
@@ -374,7 +374,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Programas Comuns para Remover",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Software Bloatware Comum:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Software Bloatware Comum:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Aplicativos de fabricantes de hardware (HP, Dell, Lenovo, etc.)</li>
                 <li>Trialware de antivírus e software de otimização</li>
@@ -397,7 +397,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Desfragmentação de Discos Mecânicos (HDD)",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Importância da Desfragmentação:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Importância da Desfragmentação:</h4>
               <p class="text-gray-700 mb-3">A desfragmentação organiza os arquivos no disco para melhorar o acesso e a velocidade de leitura:</p>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Abra "Otimização e desfragmentação de unidades" (Win + R → dfrgui)</li>
@@ -412,7 +412,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Otimização de SSDs",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Diferenças para SSDs:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Diferenças para SSDs:</h4>
               <p class="text-gray-700 mb-3">SSDs não devem ser desfragmentados pois isso reduz sua vida útil. Em vez disso, devem ser otimizados com TRIM:</p>
               <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>O Windows 10/11 faz TRIM automaticamente</li>
@@ -427,7 +427,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Verificação de Erros no Disco",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Utilizando o CHKDSK:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Utilizando o CHKDSK:</h4>
               <p class="text-gray-700 mb-3">O comando CHKDSK verifica e corrige erros no sistema de arquivos:</p>
               <div class="bg-black p-4 rounded border border-blue-500/30 font-mono text-sm text-blue-400 mt-2">
                 <p>chkdsk C: /f /r /x</p>
@@ -450,7 +450,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Limpeza de Arquivos de Sistema",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Windows Update Cleanup:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Windows Update Cleanup:</h4>
               <p class="text-gray-700 mb-3">Remove arquivos de atualizações antigas do Windows:</p>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Execute Disk Cleanup como administrador</li>
@@ -459,7 +459,7 @@ export default function LimpezaComputadorGuide() {
                 <li>Execute a limpeza</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Componentes de Sistema Obsoletos:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Componentes de Sistema Obsoletos:</h4>
               <p class="text-gray-700">Use o comando DISM para remover componentes desnecessários:</p>
               <div class="bg-black p-4 rounded border border-green-500/30 font-mono text-sm text-green-400 mt-2">
                 <p>dism /online /cleanup-image /spsuperseded</p>
@@ -472,7 +472,7 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Limpeza de Cache do Sistema",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Pastas de Cache Comuns:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Pastas de Cache Comuns:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>%LOCALAPPDATA%\Microsoft\Windows\INetCache - Cache da Internet</li>
                 <li>C:\Windows\SoftwareDistribution\Download - Cache de atualizações</li>
@@ -486,13 +486,13 @@ export default function LimpezaComputadorGuide() {
           subtitle: "Verificação e Reparo do Sistema",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">System File Checker (SFC):</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">System File Checker (SFC):</h4>
               <p class="text-gray-700 mb-3">Verifica e repara arquivos do sistema corrompidos:</p>
               <div class="bg-black p-4 rounded border border-purple-500/30 font-mono text-sm text-purple-400 mt-2">
                 <p>sfc /scannow</p>
               </div>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Deployment Image Servicing and Management (DISM):</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Deployment Image Servicing and Management (DISM):</h4>
               <p class="text-gray-700">Repara a imagem do sistema operacional:</p>
               <div class="bg-black p-4 rounded border border-yellow-500/30 font-mono text-sm text-yellow-400 mt-2">
                 <p>dism /online /cleanup-image /restorehealth</p>
@@ -607,7 +607,7 @@ export default function LimpezaComputadorGuide() {
           </p>
           
           <div class="mt-6 pt-6 border-t border-gray-700">
-            <h4 class="text-lg font-bold text-white mb-3">✅ Checklist Final de Limpeza:</h4>
+            <h class="text-lg font-bold text-gray-900 mb-3">✅ Checklist Final de Limpeza:</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> Backup de dados importantes realizado</div>
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> Ponto de restauração do sistema criado</div>

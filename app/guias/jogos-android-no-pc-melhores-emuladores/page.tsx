@@ -54,7 +54,7 @@ export default function AndroidEmulatorsGuide() {
             title: "2. LDPlayer e MEmu: Velocidade Pura",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A Escolha Gamer:</h4>
+            <h class="text-gray-900 font-bold mb-2">A Escolha Gamer:</h4>
             <p class="text-sm text-gray-700">
                 O <strong>LDPlayer 9</strong> é atualmente o emulador que inicia mais rápido e consome menos CPU durante as partidas de jogos como Free Fire ou COD Mobile. Ele é altamente otimizado para placas de vídeo AMD e NVIDIA, permitindo rodar jogos a 120 FPS ou mais de forma estável.
             </p>

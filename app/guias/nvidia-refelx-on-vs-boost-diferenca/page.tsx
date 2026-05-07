@@ -54,7 +54,7 @@ export default function NvidiaReflexGuide() {
             title: "2. O modo ON + BOOST: Reação Extrema",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Para cenários competitivos:</h4>
+            <h class="text-gray-900 font-bold mb-2">Para cenários competitivos:</h4>
             <p class="text-sm text-gray-700">
                 O modo <strong>ON + BOOST</strong> faz algo agressivo: ele impede que a placa de vídeo reduza o clock (velocidade) mesmo quando o jogo é leve (CPU Bound). <br/><br/>
                 Imagine que você está parado olhando para uma parede; a GPU normalmente baixaria a velocidade para economizar energia. Com o Boost, ela continua no máximo. Isso garante que, se um inimigo aparecer de repente, a resposta da GPU seja **instantânea**, sem o pequeno atraso de ela precisar "acordar" para processar o movimento.

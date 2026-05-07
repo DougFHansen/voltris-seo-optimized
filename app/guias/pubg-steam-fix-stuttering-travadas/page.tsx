@@ -54,7 +54,7 @@ export default function PUBGStutterFixGuide() {
             title: "2. Configurações para Ganhar Vantagem",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Preset Competitivo 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">Preset Competitivo 2026:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>Anti-Aliasing:</strong> Ultra (Ajuda a ver inimigos de longe sem serrilhado). <br/>
                 - <strong>View Distance:</strong> Ultra (Essencial para renderizar carros e jogadores distantes). <br/>

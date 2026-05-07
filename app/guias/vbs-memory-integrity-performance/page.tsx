@@ -54,7 +54,7 @@ export default function VBSPerformanceGuide() {
             title: "2. Como desativar (Isolamento de Núcleo)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Ganhando FPS em Segundos:</h4>
+            <h class="text-gray-900 font-bold mb-2">Ganhando FPS em Segundos:</h4>
             <p class="text-sm text-gray-700">
                 1. Pesquise por 'Isolamento de Núcleo' no menu Iniciar. <br/>
                 2. Desative a opção <strong>'Integridade da Memória'</strong>. <br/>

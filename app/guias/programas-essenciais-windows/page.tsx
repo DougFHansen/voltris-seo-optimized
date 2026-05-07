@@ -100,7 +100,7 @@ export default function SoftwareGuide() {
       title: "Microsoft PowerToys: Superpoderes",
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Ferramentas Oficiais da MS</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Ferramentas Oficiais da MS</h4>
                 <p class="text-gray-700 mb-4">
                     Baixe na Microsoft Store. Ele adiciona recursos que deveriam vir no Windows:
                 </p>

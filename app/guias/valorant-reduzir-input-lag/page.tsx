@@ -65,13 +65,13 @@ export default function ValorantGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#FF4655] font-bold mb-1">Nvidia Reflex Low Latency</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">On + Boost</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">On + Boost</span></p>
                 <p class="text-gray-700 text-xs">Mantém a GPU em clock máximo e elimina a fila de renderização. Essencial.</p>
             </div>
             
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#FF4655] font-bold mb-1">Multithreaded Rendering</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">On</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">On</span></p>
                 <p class="text-gray-700 text-xs">Ligue se sua CPU tem 6 núcleos ou mais e 12 threads. Se você tem um i3 antigo ou dual-core, desligue, pois pode causar stutter.</p>
             </div>
         </div>
@@ -139,7 +139,7 @@ export default function ValorantGuide() {
                 No CS2, usar 4:3 esticado deixa os bonecos mais gordos. <strong>No Valorant, NÃO.</strong>
                 <br/>A Riot bloqueou isso. Se você colocar 1280x960, apenas o HUD (interface, mapa, vida) fica esticado. Os modelos de personagem continuam com a mesma largura (FOV fixo de 103 na horizontal).
             </p>
-            <p class="text-white text-sm font-bold">Então por que os pros usam?</p>
+            <p class="text-gray-900 text-sm font-bold">Então por que os pros usam?</p>
             <ul class="list-disc list-inside text-gray-700 text-sm">
                 <li>Mira (Crosshair) fica maior e mais visível.</li>
                 <li>Menos pixels para a GPU renderizar = Mais FPS (bom para PCs fracos).</li>

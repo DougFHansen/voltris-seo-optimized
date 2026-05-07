@@ -45,7 +45,7 @@ export default function DiscordOptimizationGuide() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
           <div class="bg-[#171313] p-6 rounded-xl border border-[#31A8FF]/30 hover:border-[#31A8FF]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#31A8FF]">✓</span> Benefícios
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -57,7 +57,7 @@ export default function DiscordOptimizationGuide() {
             </ul>
           </div>
           <div class="bg-[#171313] p-6 rounded-xl border border-[#FF4B6B]/30 hover:border-[#FF4B6B]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#FF4B6B]">⚠</span> Requisitos
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -70,7 +70,7 @@ export default function DiscordOptimizationGuide() {
         </div>
         
         <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-500/30 mt-8">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-blue-400">📊</span> Impacto do Discord no Desempenho de Jogos
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -97,7 +97,7 @@ export default function DiscordOptimizationGuide() {
           Embora seja a melhor ferramenta de comunicação de 2026, o **Discord** é construído sobre uma plataforma chamada Electron. Isso significa que ele é, na prática, um navegador de internet rodando em segundo plano. Se não for configurado corretamente, ele pode consumir centenas de megabytes de RAM e lutar com o seu jogo pelo uso da sua placa de vídeo.
         </p>
         
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Por que o Discord afeta o desempenho dos jogos?</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Por que o Discord afeta o desempenho dos jogos?</h3>
         <div class="prose prose-invert max-w-none">
           <ul class="list-disc list-inside space-y-2 text-gray-700">
             <li><strong>Arquitetura Electron:</strong> Baseado no Chromium, o que significa que ele carrega componentes de navegador mesmo quando você só precisa de texto e voz.</li>
@@ -117,12 +117,12 @@ export default function DiscordOptimizationGuide() {
             Se você tem uma placa de vídeo de entrada e joga títulos pesados, **desative** essa opção. Isso fará com que o Windows use o processador para renderizar o Discord, deixando a placa de vídeo 100% livre para o seu jogo. No entanto, se o seu processador for muito fraco e a sua placa for potente, deixe ativado.
         </p>
         
-        <h3 class="text-lg font-bold text-white mt-6 mb-3">Explicação técnica:</h3>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Explicação técnica:</h3>
         <div class="bg-black/30 p-4 rounded-lg border border-yellow-500/30">
           <p class="text-gray-700">Quando a aceleração de hardware está ativada, o Discord usa shaders e recursos da GPU para renderizar sua interface. Isso pode competir com os recursos que o seu jogo precisa, especialmente em placas de vídeo de entrada onde cada frame conta. Ao desativar essa opção, o Discord volta a usar o processador para renderização, liberando recursos da GPU exclusivamente para o jogo.</p>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-6 mb-3">Passo a passo detalhado:</h3>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Passo a passo detalhado:</h3>
         <ol class="list-decimal list-inside space-y-2 text-gray-700">
           <li>Abra o Discord e clique no seu avatar no canto inferior esquerdo</li>
           <li>Selecione "Configurações do Usuário"</li>
@@ -137,14 +137,14 @@ export default function DiscordOptimizationGuide() {
             title: "2. Overlay e Notificações (Distrações de Performance)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Ganhe fluidez visual:</h4>
+            <h class="text-gray-900 font-bold mb-2">Ganhe fluidez visual:</h4>
             <p class="text-sm text-gray-700">
                 A **Sobreposição de Jogo (Overlay)** é aquela janelinha que mostra quem está falando. Em jogos competitivos como Valorant ou CS2, ela pode causar micro-travamentos (stuttering). <br/><br/>
                 Vá em 'Sobreposição de Jogo' e desative-a. Além disso, em 'Notificações', desative todas as animações de entrada e saída. Em 2026, quanto mais limpo o seu Discord estiver rodando, mais suave será o seu gameplay.
             </p>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-6 mb-3">Configurações avançadas do Overlay:</h3>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Configurações avançadas do Overlay:</h3>
         <div class="prose prose-invert max-w-none">
           <p class="text-gray-700 mb-3">O overlay do Discord é um dos maiores vilões de performance em jogos competitivos. Ele:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-700">
@@ -156,7 +156,7 @@ export default function DiscordOptimizationGuide() {
           </ul>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-6 mb-3">Como desativar completamente o overlay:</h3>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Como desativar completamente o overlay:</h3>
         <div class="bg-black p-4 rounded border border-red-500/30 font-mono text-sm text-red-400 mt-2">
           <p>1. Configurações do Usuário > Overlay de Jogo</p>
           <p>2. Desative "Habilitar sobreposição de jogo"</p>
@@ -173,7 +173,7 @@ export default function DiscordOptimizationGuide() {
             <br/><br/>A função **Krisp (Supressão de Ruído)** é mágica, mas usa bastante CPU. Se o seu jogo está sofrendo pra rodar, mude a supressão para 'Padrão' ou desative-a se você mora em um lugar silencioso. Verifique também em 'Voz e Vídeo' se o 'Csubsistema de Áudio' está em Standard; as versões 'Legacy' podem causar conflitos com drivers de áudio modernos no Windows 11.
         </p>
         
-        <h3 class="text-lg font-bold text-white mt-6 mb-3">Configurações avançadas de áudio:</h3>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Configurações avançadas de áudio:</h3>
         <div class="prose prose-invert max-w-none">
           <p class="text-gray-700 mb-3">Para jogos competitivos, otimize estas configurações:</p>
           <ul class="list-disc list-inside space-y-2 text-gray-700">
@@ -185,7 +185,7 @@ export default function DiscordOptimizationGuide() {
           </ul>
         </div>
         
-        <h3 class="text-lg font-bold text-white mt-6 mb-3">Melhorando a qualidade de voz:</h3>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Melhorando a qualidade de voz:</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <div class="bg-[#1E1E22] p-4 rounded-lg border border-green-500/30">
             <h4 class="font-bold text-green-400 mb-2">Hardware</h4>
@@ -212,7 +212,7 @@ export default function DiscordOptimizationGuide() {
         <div class="prose prose-invert max-w-none">
           <p class="text-gray-700 mb-4">O Discord também pode impactar performance através do processamento de texto e mídia:</p>
           
-          <h4 class="text-lg font-bold text-white mt-4 mb-2">Configurações de texto:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Configurações de texto:</h4>
           <ul class="list-disc list-inside space-y-2 text-gray-700">
             <li><strong>Auto reprodução de vídeos:</strong> Desative para evitar carregamento automático</li>
             <li><strong>Auto reprodução de GIFs:</strong> Desative para economizar recursos</li>
@@ -220,7 +220,7 @@ export default function DiscordOptimizationGuide() {
             <li><strong>Formato de animação:</h4> Defina como "Nunca" ou "Ao passar o mouse"</li>
           </ul>
           
-          <h4 class="text-lg font-bold text-white mt-4 mb-2">Limpeza de cache de mensagens:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Limpeza de cache de mensagens:</h4>
           <p class="text-gray-700">O Discord mantém um cache local de mensagens e mídia que pode crescer consideravelmente. Para limpar:</p>
           <ol class="list-decimal list-inside mt-2 space-y-2 text-gray-700">
             <li>Feche o Discord completamente</li>
@@ -237,7 +237,7 @@ export default function DiscordOptimizationGuide() {
         <div class="prose prose-invert max-w-none">
           <p class="text-gray-700 mb-4">Monitore e gerencie o consumo do Discord para manter seu sistema otimizado:</p>
           
-          <h4 class="text-lg font-bold text-white mt-4 mb-2">Monitoramento de recursos:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Monitoramento de recursos:</h4>
           <p class="text-gray-700">Use o Gerenciador de Tarefas do Windows para monitorar o consumo do Discord:</p>
           
           <div class="overflow-x-auto">
@@ -269,7 +269,7 @@ export default function DiscordOptimizationGuide() {
             </table>
           </div>
           
-          <h4 class="text-lg font-bold text-white mt-4 mb-2">Reduzindo o consumo do Discord:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Reduzindo o consumo do Discord:</h4>
           <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
             <li>Desative servidores que você não usa regularmente</li>
             <li>Reduza o número de canais abertos simultaneamente</li>
@@ -285,7 +285,7 @@ export default function DiscordOptimizationGuide() {
         <div class="prose prose-invert max-w-none">
           <p class="text-gray-700 mb-4">Se você ainda enfrentar problemas de desempenho, considere estas alternativas:</p>
           
-          <h4 class="text-lg font-bold text-white mt-4 mb-2">Aplicativos leves:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Aplicativos leves:</h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div class="bg-[#1E1E22] p-4 rounded-lg border border-orange-500/30">
               <h5 class="font-bold text-orange-400 mb-2">Mumble</h5>
@@ -301,7 +301,7 @@ export default function DiscordOptimizationGuide() {
             </div>
           </div>
           
-          <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas de otimização:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Ferramentas de otimização:</h4>
           <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
             <li><strong>Discord Rich Presence Manager:</strong> Controla a presença sem afetar o desempenho</li>
             <li><strong>Custom Discord Clients:</strong> Como Vesktop ou OpenAsar para melhor desempenho</li>
@@ -323,7 +323,7 @@ export default function DiscordOptimizationGuide() {
           </p>
           
           <div class="mt-6 pt-6 border-t border-gray-700">
-            <h4 class="text-lg font-bold text-white mb-3">✅ Checklist Final de Otimização:</h4>
+            <h class="text-lg font-bold text-gray-900 mb-3">✅ Checklist Final de Otimização:</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> Aceleração de hardware desativada</div>
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> Overlay de jogo desativado</div>
@@ -344,7 +344,7 @@ export default function DiscordOptimizationGuide() {
       content: `
         <p class="mb-4 text-gray-700">O Discord é construído sobre a plataforma Electron, que combina o motor de renderização Chromium e o interpretador JavaScript V8. Esta arquitetura tem implicações significativas para o desempenho do sistema, especialmente quando comparada com clientes de comunicação nativos.</p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Componentes Críticos da Arquitetura Electron</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Componentes Críticos da Arquitetura Electron</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">Processo Principal (Main Process)</h5>
@@ -368,7 +368,7 @@ export default function DiscordOptimizationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Consumo de Recursos por Componente</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Consumo de Recursos por Componente</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-xs text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
             <thead class="bg-gray-800">
@@ -413,7 +413,7 @@ export default function DiscordOptimizationGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Diferenças Arquiteturais vs Clientes Nativos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Diferenças Arquiteturais vs Clientes Nativos</h4>
         <p class="mb-4 text-gray-700">
           Comparação entre Discord (Electron) e clientes de comunicação nativos:
         </p>
@@ -430,7 +430,7 @@ export default function DiscordOptimizationGuide() {
       content: `
         <p class="mb-4 text-gray-700">Para usuários avançados e profissionais, existem técnicas específicas para otimizar o Discord ao máximo, incluindo configurações de baixo nível e ajustes de sistema operacional.</p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Otimizações de Sistema Operacional</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Otimizações de Sistema Operacional</h4>
         <p class="mb-4 text-gray-700">
           Configurações específicas do Windows para melhorar o desempenho do Discord:
         </p>
@@ -457,7 +457,7 @@ export default function DiscordOptimizationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Técnicas de Personalização Avançada</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Técnicas de Personalização Avançada</h4>
         <p class="mb-4 text-gray-700">
           Para usuários experientes, estas técnicas podem melhorar significativamente o desempenho:
         </p>
@@ -506,7 +506,7 @@ export default function DiscordOptimizationGuide() {
       content: `
         <p class="mb-4 text-gray-700">Para streamers e criadores de conteúdo, o Discord tem implicações específicas na qualidade da transmissão e no desempenho do sistema durante streams ao vivo.</p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Impacto em Transmissões ao Vivo</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Impacto em Transmissões ao Vivo</h4>
         <p class="mb-4 text-gray-700">
           O Discord pode afetar negativamente streams ao vivo de várias maneiras:
         </p>
@@ -533,7 +533,7 @@ export default function DiscordOptimizationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Configurações Otimizadas para Streaming</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Configurações Otimizadas para Streaming</h4>
         <p class="mb-4 text-gray-700">
           Recomendações específicas para streamers profissionais:
         </p>
@@ -561,77 +561,77 @@ export default function DiscordOptimizationGuide() {
           <div class="space-y-4">
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2015</span>
+                <s class="text-gray-900 font-bold text-sm">2015</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Lançamento Inicial</h5>
+                <h class="font-bold text-gray-900">Lançamento Inicial</h5>
                 <p class="text-gray-700 text-sm">Focado em comunicação de voz para comunidades de jogos, substituindo alternativas como TeamSpeak e Mumble.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2016</span>
+                <s class="text-gray-900 font-bold text-sm">2016</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Texto e Canais</h5>
+                <h class="font-bold text-gray-900">Texto e Canais</h5>
                 <p class="text-gray-700 text-sm">Adição de mensagens de texto, canais por tópico e permissões de servidor.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2017</span>
+                <s class="text-gray-900 font-bold text-sm">2017</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Servidores e Comunidades</h5>
+                <h class="font-bold text-gray-900">Servidores e Comunidades</h5>
                 <p class="text-gray-700 text-sm">Expansão para comunidades não relacionadas a jogos, com recursos de moderação.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2018</span>
+                <s class="text-gray-900 font-bold text-sm">2018</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Integrações e Bots</h5>
+                <h class="font-bold text-gray-900">Integrações e Bots</h5>
                 <p class="text-gray-700 text-sm">Suporte a bots e integrações com outras plataformas e serviços.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2020</span>
+                <s class="text-gray-900 font-bold text-sm">2020</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Video Calls e Screen Share</h5>
+                <h class="font-bold text-gray-900">Video Calls e Screen Share</h5>
                 <p class="text-gray-700 text-sm">Adição de videochamadas e compartilhamento de tela, ampliando o uso para trabalho.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2021</span>
+                <s class="text-gray-900 font-bold text-sm">2021</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">Stage Channels</h5>
+                <h class="font-bold text-gray-900">Stage Channels</h5>
                 <p class="text-gray-700 text-sm">Canais de áudio ao estilo Clubhouse para eventos e palestras.</p>
               </div>
             </div>
             
             <div class="flex items-start space-x-4">
               <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                <span class="text-white font-bold text-sm">2026</span>
+                <s class="text-gray-900 font-bold text-sm">2026</span>
               </div>
               <div class="flex-1">
-                <h5 class="font-bold text-white">IA e Otimização</h5>
+                <h class="font-bold text-gray-900">IA e Otimização</h5>
                 <p class="text-gray-700 text-sm">Implementação de IA para otimização de recursos e melhor experiência do usuário.</p>
               </div>
             </div>
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Arquitetura Evolutiva</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Arquitetura Evolutiva</h4>
         <p class="mb-4 text-gray-700">A arquitetura do Discord teve que evoluir para suportar milhões de usuários simultâneos:</p>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -657,7 +657,7 @@ export default function DiscordOptimizationGuide() {
       content: `
         <p class="mb-4 text-gray-700">A segurança nas comunicações de voz e texto é uma preocupação crítica para os usuários do Discord, especialmente em comunidades sensíveis ou corporativas. O protocolo utilizado e as práticas de criptografia afetam diretamente a segurança das comunicações.</p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Protocolos de Segurança do Discord</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Protocolos de Segurança do Discord</h4>
         <p class="mb-4 text-gray-700">O Discord utiliza uma combinação de protocolos para garantir a segurança das comunicações:</p>
         
         <div class="space-y-4">
@@ -695,7 +695,7 @@ export default function DiscordOptimizationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Práticas Recomendadas de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Práticas Recomendadas de Segurança</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
@@ -751,7 +751,7 @@ export default function DiscordOptimizationGuide() {
       content: `
         <p class="mb-4 text-gray-700">A comunicação digital, especialmente em ambientes de voz como o Discord, tem implicações psicológicas e sociais que afetam tanto o desempenho em jogos quanto a experiência geral do usuário. Compreender esses aspectos ajuda a otimizar não apenas o desempenho técnico, mas também a experiência humana.</p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Psicologia da Comunicação em Jogos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Psicologia da Comunicação em Jogos</h4>
         <p class="mb-4 text-gray-700">A forma como nos comunicamos em ambientes de jogo afeta diretamente o desempenho e a experiência:</p>
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -780,7 +780,7 @@ export default function DiscordOptimizationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">Equilíbrio e Boas Práticas Sociais</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Equilíbrio e Boas Práticas Sociais</h4>
         <p class="mb-4 text-gray-700">Para maximizar benefícios e minimizar impactos negativos:</p>
         
         <div class="overflow-x-auto">

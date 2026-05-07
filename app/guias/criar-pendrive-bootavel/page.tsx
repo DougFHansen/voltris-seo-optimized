@@ -55,7 +55,7 @@ export default function BootableUSBGuide() {
       title: "2. Método Avançado: RUFUS (Pule o TPM 2.0)",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Para PCs Antigos ou Customizados:</h4>
+            <h class="text-gray-900 font-bold mb-2">Para PCs Antigos ou Customizados:</h4>
             <p class="text-sm text-gray-700">
                 Se o seu PC não tem suporte oficial ao TPM 2.0 ou conta com hardware mais antigo, o **Rufus** é a melhor escolha. <br/><br/>
                 Ao criar o pendrive com ele, você pode marcar opções para **remover o requisito de 4GB de RAM, TPM e Secure Boot**. Isso permite que você instale o Windows 11 em quase qualquer computador de 2026, além de permitir criar uma conta local sem precisar de internet ou e-mail da Microsoft.
@@ -81,7 +81,7 @@ export default function BootableUSBGuide() {
     {
       title: "4. Fundamentos Técnicos de Boot e Particionamento",
       content: `
-        <h4 class="text-white font-bold mb-3">🔬 Arquitetura de Boot e Sistemas de Particionamento</h4>
+        <h class="text-gray-900 font-bold mb-3">🔬 Arquitetura de Boot e Sistemas de Particionamento</h4>
         <p class="mb-4 text-gray-700">
           O processo de boot envolve múltiplas etapas técnicas e diferentes sistemas de particionamento:
         </p>
@@ -108,7 +108,7 @@ export default function BootableUSBGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Comparação Técnica MBR vs GPT</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Comparação Técnica MBR vs GPT</h4>
         <p class="mb-4 text-gray-700">
           As diferenças técnicas entre os sistemas de particionamento são fundamentais para entender a compatibilidade:
         </p>
@@ -161,7 +161,7 @@ export default function BootableUSBGuide() {
     {
       title: "5. Processos Técnicos de Criação de Pendrive Bootável",
       content: `
-        <h4 class="text-white font-bold mb-3">🔧 Arquitetura de Imagens Bootáveis</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Arquitetura de Imagens Bootáveis</h4>
         <p class="mb-4 text-gray-700">
           A criação de pendrives bootáveis envolve a manipulação de estruturas complexas de sistema de arquivos e setores de boot:
         </p>
@@ -194,7 +194,7 @@ export default function BootableUSBGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Ferramentas de Baixo Nível</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Ferramentas de Baixo Nível</h4>
         <p class="mb-4 text-gray-700">
           Ferramentas que operam diretamente com setores e estruturas de disco:
         </p>
@@ -223,7 +223,7 @@ export default function BootableUSBGuide() {
     {
       title: "6. Técnicas Avançadas de Criação e Personalização",
       content: `
-        <h4 class="text-white font-bold mb-3">🛠️ Personalização Avançada de Pendrives Bootáveis</h4>
+        <h class="text-gray-900 font-bold mb-3">🛠️ Personalização Avançada de Pendrives Bootáveis</h4>
         <p class="mb-4 text-gray-700">
           Técnicas avançadas para criar pendrives com funcionalidades personalizadas:
         </p>
@@ -260,7 +260,7 @@ export default function BootableUSBGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Tabela de Compatibilidade e Recomendações</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Tabela de Compatibilidade e Recomendações</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
@@ -313,7 +313,7 @@ export default function BootableUSBGuide() {
     {
       title: "7. Análise Profunda de Ferramentas de Criação",
       content: `
-        <h4 class="text-white font-bold mb-3">🔍 Comparação Técnica de Ferramentas</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Comparação Técnica de Ferramentas</h4>
         <p class="mb-4 text-gray-700">
           Análise detalhada das principais ferramentas para criação de pendrives bootáveis:
         </p>
@@ -363,7 +363,7 @@ export default function BootableUSBGuide() {
     {
       title: "8. Considerações Técnicas de Hardware e Performance",
       content: `
-        <h4 class="text-white font-bold mb-3">⚡ Impacto de Hardware na Performance de Instalação</h4>
+        <h class="text-gray-900 font-bold mb-3">⚡ Impacto de Hardware na Performance de Instalação</h4>
         <p class="mb-4 text-gray-700">
           O desempenho do pendrive e do hardware afeta significativamente o processo de instalação:
         </p>
@@ -390,7 +390,7 @@ export default function BootableUSBGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Otimização de Performance</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Otimização de Performance</h4>
         <p class="mb-4 text-gray-700">
           Dicas técnicas para maximizar a velocidade e confiabilidade:
         </p>
@@ -406,7 +406,7 @@ export default function BootableUSBGuide() {
     {
       title: "9. Solução de Problemas Avançados",
       content: `
-        <h4 class="text-white font-bold mb-3">🔍 Diagnóstico e Solução de Problemas Complexos</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Diagnóstico e Solução de Problemas Complexos</h4>
         <p class="mb-4 text-gray-700">
           Técnicas avançadas para resolver problemas comuns e incomuns:
         </p>
@@ -433,7 +433,7 @@ export default function BootableUSBGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📋 Checklist de Solução de Problemas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📋 Checklist de Solução de Problemas</h4>
         <p class="mb-4 text-gray-700">
           Procedimentos sistemáticos para resolver problemas:
         </p>

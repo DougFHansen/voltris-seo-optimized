@@ -44,15 +44,15 @@ export default function ExcelSheetsGuide() {
             content: `
         <div class="space-y-6">
             <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-green-500">
-                <h4 class="text-white font-bold text-xl">1. Microsoft Create (create.microsoft.com)</h4>
+                <h class="text-gray-900 font-bold text-xl">1. Microsoft Create (create.microsoft.com)</h4>
                 <p class="text-gray-700 mt-2">É a fonte oficial. Lá você encontra modelos de calendário, planejadores de orçamento e rastreadores de saúde feitos pelos próprios designers da Microsoft. <strong>Vantagem:</strong> São 100% seguros e limpos.</p>
             </div>
             <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-blue-500">
-                <h4 class="text-white font-bold text-xl">2. Vertex42</h4>
+                <h class="text-gray-900 font-bold text-xl">2. Vertex42</h4>
                 <p class="text-gray-700 mt-2">O padrão ouro para planilhas complexas. Ideal para engenharia, gestão de projetos (Gráfico de Gantt) e amortização de dívidas. O site parece antigo, mas o conteúdo é o melhor do mundo.</p>
             </div>
              <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-orange-500">
-                <h4 class="text-white font-bold text-xl">3. Google Sheets Gallery</h4>
+                <h class="text-gray-900 font-bold text-xl">3. Google Sheets Gallery</h4>
                 <p class="text-gray-700 mt-2">Se você não tem o Excel instalado e usa o Google Planilhas, o menu "Galeria de Modelos" dentro do próprio app já resolve 90% das necessidades básicas de casa.</p>
             </div>
         </div>

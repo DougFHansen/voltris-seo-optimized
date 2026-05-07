@@ -73,7 +73,7 @@ export default function OverclockGuide() {
         
         <!-- SVG Technical Diagram: OC Impact -->
         <div class="my-8 bg-[#0F111A] p-6 rounded-xl border border-white/5 flex flex-col items-center">
-            <h4 class="text-white font-bold mb-6 text-center">Anatomia da GPU: Onde Ganhar FPS</h4>
+            <h class="text-gray-900 font-bold mb-6 text-center">Anatomia da GPU: Onde Ganhar FPS</h4>
             <svg viewBox="0 0 800 250" class="w-full h-auto text-gray-700" xmlns="http://www.w3.org/2000/svg">
                 <!-- Core Cluster -->
                 <g transform="translate(100, 50)">

@@ -57,19 +57,19 @@ export default function GTAGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Grass Quality (Grama)</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Normal</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Normal</span></p>
                 <p class="text-gray-700 text-xs">A grama no Ultra é o maior devorador de FPS em áreas rurais (Sandy Shores). Coloque em Normal e ganhe 20 FPS instantaneamente.</p>
             </div>
             
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Post FX</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Normal</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Normal</span></p>
                 <p class="text-gray-700 text-xs">Controla Bloom, Motion Blur e HDR. No Ultra, pesa muito. No Normal, o jogo fica mais limpo e leve.</p>
             </div>
 
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Extended Texture Budget (A barra)</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Metade da VRAM</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Metade da VRAM</span></p>
                 <p class="text-gray-700 text-xs">No menu gráfico avançado. Aumente isso até a barra de uso de VRAM ficar verde/amarela. Se ficar vermelha, você terá "texturas sumindo" (cidade invisível).</p>
             </div>
         </div>

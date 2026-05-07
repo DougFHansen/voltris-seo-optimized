@@ -54,7 +54,7 @@ export default function GPUBuyingGuide() {
       title: "2. NVIDIA vs AMD vs Intel em 2026",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Qual Marca Escolher?</h4>
+            <h class="text-gray-900 font-bold mb-2">Qual Marca Escolher?</h4>
             <p class="text-sm text-gray-700">
                 - <strong>NVIDIA:</strong> Melhor tecnologia de IA (DLSS 3.5), Ray Tracing superior e ideal para quem faz Stream ou edição de vídeo. <br/>
                 - <strong>AMD:</strong> Melhor custo por cada frame. Geralmente são mais baratas e oferecem mais VRAM bruta na mesma faixa de preço da concorrência. <br/>
@@ -81,7 +81,7 @@ export default function GPUBuyingGuide() {
     {
       title: "Arquitetura de GPUs Modernas: Fundamentos Técnicos e Comparação",
       content: `
-        <h4 class="text-white font-bold mb-3">🏗️ Arquitetura Interna de GPUs Modernas</h4>
+        <h class="text-gray-900 font-bold mb-3">🏗️ Arquitetura Interna de GPUs Modernas</h4>
         <p class="mb-4 text-gray-700">
           As GPUs modernas são complexos sistemas de processamento paralelo que contêm milhares de núcleos especializados para cálculos vetoriais. As arquiteturas de 2026 representam décadas de otimização em eficiência energética e desempenho computacional:
         </p>
@@ -111,7 +111,7 @@ export default function GPUBuyingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação Técnica de Arquiteturas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Comparação Técnica de Arquiteturas</h4>
         <p class="mb-4 text-gray-700">
           Análise detalhada das arquiteturas líderes em 2026:
         </p>
@@ -168,7 +168,7 @@ export default function GPUBuyingGuide() {
     {
       title: "Tecnologias de Renderização Avançada e Inteligência Artificial",
       content: `
-        <h4 class="text-white font-bold mb-3">🧠 Tecnologias de IA em GPUs Modernas</h4>
+        <h class="text-gray-900 font-bold mb-3">🧠 Tecnologias de IA em GPUs Modernas</h4>
         <p class="mb-4 text-gray-700">
           As GPUs modernas incorporam tecnologias avançadas de inteligência artificial que revolucionam a experiência de renderização e jogos:
         </p>
@@ -224,7 +224,7 @@ export default function GPUBuyingGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Comparação de Desempenho Técnico</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Comparação de Desempenho Técnico</h4>
         <p class="mb-4 text-gray-700">
           Análise comparativa detalhada entre modelos de GPU em diferentes resoluções e configurações:
         </p>
@@ -260,7 +260,7 @@ export default function GPUBuyingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Recursos Avançados de Renderização</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Recursos Avançados de Renderização</h4>
         <p class="mb-4 text-gray-700">
           Tecnologias exclusivas e recursos avançados disponíveis em GPUs modernas:
         </p>
@@ -278,12 +278,12 @@ export default function GPUBuyingGuide() {
     {
       title: "Tecnologias Emergentes em Processamento Gráfico e Futuro das GPUs",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Próxima Geração em GPUs</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias de Próxima Geração em GPUs</h4>
         <p class="mb-4 text-gray-700">
           A próxima geração de GPUs está explorando tecnologias avançadas que prometem revolucionar o processamento gráfico e a inteligência artificial:
         </p>
         
-        <h4 class="text-white font-bold mb-3">Arquiteturas e Processos de Fabricação</h4>
+        <h class="text-gray-900 font-bold mb-3">Arquiteturas e Processos de Fabricação</h4>
         <p class="mb-4 text-gray-700">
           Novas tecnologias que estão sendo implementadas em GPUs de próxima geração:
         </p>
@@ -333,7 +333,7 @@ export default function GPUBuyingGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em GPUs de Próxima Geração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🤖 Inteligência Artificial em GPUs de Próxima Geração</h4>
         <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na evolução das GPUs:
         </p>
@@ -364,7 +364,7 @@ export default function GPUBuyingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
         <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de GPUs de próxima geração:
         </p>

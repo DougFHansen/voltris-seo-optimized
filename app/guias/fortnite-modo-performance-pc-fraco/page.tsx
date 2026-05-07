@@ -62,17 +62,17 @@ export default function FortniteGuide() {
         <div class="space-y-4">
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Rendering Mode</h4>
-                <p class="text-white font-mono text-sm mb-2">Seleção: <span class="text-emerald-400">Performance - Lower Graphical Fidelity</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Seleção: <span class="text-emerald-400">Performance - Lower Graphical Fidelity</span></p>
                 <p class="text-gray-700 text-xs">Reinicie o jogo após mudar. Isso desabilita a maioria das opções de sombras e efeitos.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">View Distance</h4>
-                <p class="text-white font-mono text-sm mb-2">Seleção: <span class="text-emerald-400">Medium ou Far</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Seleção: <span class="text-emerald-400">Medium ou Far</span></p>
                 <p class="text-gray-700 text-xs">Near faz loot (armas no chão) aparecerem só quando você pisa nelas. Medium é o equilíbrio ideal para ver llamas e loot de longe.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Textures</h4>
-                <p class="text-white font-mono text-sm mb-2">Seleção: <span class="text-emerald-400">Low</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Seleção: <span class="text-emerald-400">Low</span></p>
                 <p class="text-gray-700 text-xs text-red-300">
                     Atenção: Às vezes colocar texturas no Medium/High ajuda a estabilizar o jogo e carregar as skins mais rápido (jogando carga na GPU em vez da CPU). Teste.
                 </p>

@@ -72,7 +72,7 @@ export default function AudioSurroundGuide() {
             title: "2. A Revolução dos IEMs (In-Ear Monitors)",
             content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-6">
-            <h4 class="text-white font-bold mb-3">Por que os Pros usam fone de celular?</h4>
+            <h class="text-gray-900 font-bold mb-3">Por que os Pros usam fone de celular?</h4>
             <p class="text-gray-700 mb-4">
                 Você já deve ter visto em campeonatos de CS2/Valorant: os jogadores usam um fone grande (apenas para abafar o barulho da torcida/ruído branco) e, por baixo dele, pequenos fones intra-auriculares (IEMs).
             </p>

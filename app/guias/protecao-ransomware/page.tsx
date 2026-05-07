@@ -55,7 +55,7 @@ export default function RansomwareProtectionGuide() {
       title: "2. A Regra do Backup Offline",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Por que a nuvem não basta?</h4>
+            <h class="text-gray-900 font-bold mb-2">Por que a nuvem não basta?</h4>
             <p class="text-sm text-gray-700">
                 Muitos Ransomwares de 2026 conseguem infectar também o seu <strong>Google Drive ou OneDrive</strong> se eles estiverem sincronizados no PC. <br/><br/>
                 A solução é o <strong>Backup Frio (Cold Backup)</strong>: Tenha um HD externo que você conecta apenas para copiar os arquivos e desconecta logo em seguida. Um vírus não pode criptografar o que não está plugado no computador.
@@ -81,10 +81,10 @@ export default function RansomwareProtectionGuide() {
           Embora o Windows Defender seja razoavelmente eficaz contra ameaças comuns, ransomwares avançados de 2026 exigem soluções mais robustas. Soluções corporativas e antivírus premium oferecem proteção em camadas com inteligência artificial e comportamental.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Antivírus Especializados em Ransomware</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Antivírus Especializados em Ransomware</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">Malwarebytes Endpoint Protection</h5>
+            <h class="text-gray-900 font-bold mb-3">Malwarebytes Endpoint Protection</h5>
             <p class="text-gray-700 text-sm mb-3">
               Solução empresarial com detecção comportamental avançada e resposta automatizada a ameaças de ransomware.
             </p>
@@ -97,7 +97,7 @@ export default function RansomwareProtectionGuide() {
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">Acronis Cyber Protect</h5>
+            <h class="text-gray-900 font-bold mb-3">Acronis Cyber Protect</h5>
             <p class="text-gray-700 text-sm mb-3">
               Combina antivírus, backup e EDR (Endpoint Detection and Response) em uma única plataforma.
             </p>
@@ -110,7 +110,7 @@ export default function RansomwareProtectionGuide() {
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">CrowdStrike Falcon</h5>
+            <h class="text-gray-900 font-bold mb-3">CrowdStrike Falcon</h5>
             <p class="text-gray-700 text-sm mb-3">
               Solução baseada em nuvem com foco em detecção de ameaças avançadas e resposta rápida.
             </p>
@@ -123,7 +123,7 @@ export default function RansomwareProtectionGuide() {
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">ESET Inspect</h5>
+            <h class="text-gray-900 font-bold mb-3">ESET Inspect</h5>
             <p class="text-gray-700 text-sm mb-3">
               Plataforma de detecção e resposta a ameaças com foco em ransomware e ataques direcionados.
             </p>
@@ -144,7 +144,7 @@ export default function RansomwareProtectionGuide() {
           Ransomwares modernos utilizam técnicas avançadas para evitar detecção por assinaturas. A proteção comportamental analisa como os programas se comportam para identificar atividades suspeitas antes que danos ocorram.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔍 Indicadores de Atividade de Ransomware</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔍 Indicadores de Atividade de Ransomware</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
             <thead class="bg-gray-800">
@@ -187,7 +187,7 @@ export default function RansomwareProtectionGuide() {
           Mesmo com as melhores defesas, é essencial ter um plano de recuperação caso uma infecção ocorra. O planejamento de incidentes define procedimentos claros para minimizar o impacto e tempo de inatividade.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📋 Plano de Resposta a Incidentes de Ransomware</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📋 Plano de Resposta a Incidentes de Ransomware</h4>
         <div class="space-y-4">
           <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20">
             <h5 class="text-red-400 font-bold mb-2">Fase 1: Detecção e Contenção (0-30 min)</h5>
@@ -238,7 +238,7 @@ export default function RansomwareProtectionGuide() {
           A criptografia bem implementada pode ser tanto uma proteção quanto uma vulnerabilidade. Entender como usar a criptografia a seu favor é crucial para defesa contra ransomware.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔒 Estratégias de Criptografia Defensiva</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔒 Estratégias de Criptografia Defensiva</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><strong>Criptografia de acesso controlado:</strong> Use BitLocker ou VeraCrypt para proteger discos, mas mantenha as chaves de recuperação em local seguro e separado</li>
           <li><strong>Permissões granulares:</strong> Limite permissões de escrita para reduzir o alcance de ransomware</li>
@@ -246,7 +246,7 @@ export default function RansomwareProtectionGuide() {
           <li><strong>Proteção contra exclusão:</strong> Configure permissões para impedir que ransomware exclua snapshots ou backups</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚠️ Riscos da Criptografia Mal Implementada</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚠️ Riscos da Criptografia Mal Implementada</h4>
         <p class="mb-4 text-gray-700">
           Ransomwares modernos aprendem com técnicas de criptografia legítimas. Eles podem explorar recursos como:
         </p>
@@ -265,7 +265,7 @@ export default function RansomwareProtectionGuide() {
           O panorama do ransomware evolui constantemente. Em 2026, novas técnicas e vetores de ataque surgiram, exigindo defesas mais sofisticadas e adaptativas.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🚀 Tendências Emergentes em Ransomware</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🚀 Tendências Emergentes em Ransomware</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20">
             <h5 class="text-red-400 font-bold mb-3">Ransomware-as-a-Service (RaaS) 3.0</h5>
@@ -296,7 +296,7 @@ export default function RansomwareProtectionGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Contramedidas Avançadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Contramedidas Avançadas</h4>
         <p class="mb-4 text-gray-700">
           Para combater essas ameaças evoluídas, as defesas também precisam evoluir:
         </p>
@@ -318,7 +318,7 @@ export default function RansomwareProtectionGuide() {
           Em 2026, os ataques de ransomware evoluíram para se tornarem campanhas sofisticadas que combinam múltiplas técnicas de infiltração e persistência. A análise forense desses ataques revela padrões complexos que exigem compreensão profunda dos mecanismos de segurança do sistema operacional e das redes corporativas.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Vetores de Infiltração Modernos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Vetores de Infiltração Modernos</h4>
         <div class="overflow-x-auto mb-6">
           <table class="w-full text-sm text-gray-700 border-collapse">
             <thead>
@@ -364,7 +364,7 @@ export default function RansomwareProtectionGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Técnicas de Persistência e Evasão</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Técnicas de Persistência e Evasão</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-red-900/10 p-5 rounded-xl border border-red-500/20">
             <h5 class="text-red-400 font-bold mb-3">Técnicas de Persistência</h5>
@@ -397,7 +397,7 @@ export default function RansomwareProtectionGuide() {
           A defesa eficaz contra ransomware em 2026 exige uma abordagem de segurança em camadas que integra tecnologias, processos e pessoas. A arquitetura de defesa moderna combina soluções preventivas, detectivas e reativas em um ecossistema coeso de proteção.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🏗️ Modelo de Segurança em Camadas (Defense in Depth)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🏗️ Modelo de Segurança em Camadas (Defense in Depth)</h4>
         <div class="space-y-6">
           <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
             <h5 class="text-[#31A8FF] font-bold mb-3">Camada 1: Prevenção de Acesso (Perímetro)</h5>
@@ -452,7 +452,7 @@ export default function RansomwareProtectionGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Framework de Implementação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Framework de Implementação</h4>
         <p class="text-gray-700 mb-4">
           A implementação de uma arquitetura de defesa contra ransomware segue um framework estruturado:
         </p>
@@ -483,7 +483,7 @@ export default function RansomwareProtectionGuide() {
           Em 2026, a detecção e prevenção de ransomware baseiam-se fortemente em inteligência artificial e aprendizado de máquina. Estas tecnologias permitem identificar padrões de comportamento suspeitos antes que danos significativos ocorram, oferecendo proteção proativa contra variantes desconhecidas de malware.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🧠 Modelos de IA para Detecção de Ransomware</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🧠 Modelos de IA para Detecção de Ransomware</h4>
         <div class="space-y-6">
           <div class="bg-cyan-900/10 p-5 rounded-xl border border-cyan-500/20">
             <h5 class="text-cyan-400 font-bold mb-3">Machine Learning Supervisionado</h5>
@@ -525,7 +525,7 @@ export default function RansomwareProtectionGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Implementações Práticas em Soluções Comerciais</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Implementações Práticas em Soluções Comerciais</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
             <thead class="bg-gray-800">

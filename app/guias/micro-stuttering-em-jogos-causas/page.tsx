@@ -54,7 +54,7 @@ export default function MicroStutteringGuide() {
             title: "2. Causas Surpreendentes em 2026",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Checklist de Culpados:</h4>
+            <h class="text-gray-900 font-bold mb-2">Checklist de Culpados:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>Overclock Instável:</strong> Se a GPU está no limite, ela pode atrasar alguns quadros para calcular erro de voltagem. <br/>
                 - <strong>Fsync/G-Sync mal configurado:</strong> Se o FPS for maior que o Hertz do monitor, o buffer de imagem entra em guerra. <br/>

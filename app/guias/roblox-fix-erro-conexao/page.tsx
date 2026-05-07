@@ -56,7 +56,7 @@ export default function RobloxConnectionFixGuide() {
             title: "2. O Bloqueio do Firewall",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Liberação de Segurança:</h4>
+            <h class="text-gray-900 font-bold mb-2">Liberação de Segurança:</h4>
             <p class="text-sm text-gray-700">
                 O erro ID 279 frequentemente ocorre porque o Firewall do Windows ou o antivírus bloqueia o acesso do Roblox a portas específicas. <br/><br/>
                 Vá em Painel de Controle > Sistema e Segurança > Windows Defender Firewall > 'Permitir um aplicativo pelo Firewall'. Certifique-se de que o <strong>Roblox</strong> esteja marcado tanto em 'Privado' quanto em 'Público'.

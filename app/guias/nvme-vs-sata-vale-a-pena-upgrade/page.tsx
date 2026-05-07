@@ -44,7 +44,7 @@ export default function NVMeVsSATAGuide() {
             content: `
         <p class="mb-4 text-gray-700">Durante muito tempo, ter um NVMe não mudava quase nada nos jogos além de economizar 2 segundos de loading. Mas isso mudou com o <strong>Windows 11</strong>.</p>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">O que é DirectStorage?</h4>
+            <h class="text-gray-900 font-bold mb-2">O que é DirectStorage?</h4>
             <p class="text-sm text-gray-700">
                 É uma tecnologia que permite que o jogo envie texturas direto do SSD para a Placa de Vídeo, sem passar pelo Processador. Isso elimina telas de carregamento e permite mundos abertos muito mais detalhados. 
                 <br/><br/><strong>Requisito:</strong> Você precisa de um SSD NVMe de pelo menos 1TB e Windows 11.

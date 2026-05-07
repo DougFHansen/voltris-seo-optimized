@@ -53,7 +53,7 @@ export default function FirewallBlockGuide() {
         </p>
         
         <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-700">
-            <h4 class="text-white font-bold mb-3">Passo a Passo Visual</h4>
+            <h class="text-gray-900 font-bold mb-3">Passo a Passo Visual</h4>
             <ol class="list-decimal list-inside text-gray-700 space-y-3">
                 <li>Abra o Menu Iniciar e digite: <strong>"Firewall do Windows com Segurança Avançada"</strong> (ou <code>wf.msc</code> no Executar).</li>
                 <li>No painel esquerdo, clique em <strong>Regras de Saída</strong> (Outbound Rules).
@@ -93,7 +93,7 @@ export default function FirewallBlockGuide() {
     {
       title: "E se o programa tiver vários executáveis?",
       content: `
-        <h4 class="text-white font-bold mb-3">O Truque do Launcher</h4>
+        <h class="text-gray-900 font-bold mb-3">O Truque do Launcher</h4>
         <p class="mb-4 text-gray-700">
             Muitos jogos modernos têm um <code>Launcher.exe</code> e um <code>Game-Win64-Shipping.exe</code> escondido numa subpasta.
             <br/>Se você bloquear só o Launcher, o jogo pode continuar online.
@@ -119,16 +119,16 @@ export default function FirewallBlockGuide() {
     {
       title: "Regras de Entrada vs Saída",
       content: `
-        <h4 class="text-white font-bold mb-3">Entenda a Diferença</h4>
+        <h class="text-gray-900 font-bold mb-3">Entenda a Diferença</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
-                <h5 class="font-bold text-white mb-2">Regra de Saída (Outbound)</h5>
+                <h class="font-bold text-gray-900 mb-2">Regra de Saída (Outbound)</h5>
                 <p class="text-sm text-gray-700">
                     O seu PC tentando falar com o servidor do Google. (O que queremos bloquear).
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
-                <h5 class="font-bold text-white mb-2">Regra de Entrada (Inbound)</h5>
+                <h class="font-bold text-gray-900 mb-2">Regra de Entrada (Inbound)</h5>
                 <p class="text-sm text-gray-700">
                     Um servidor externo tentando iniciar uma conversa com seu PC. (O roteador já bloqueia isso via NAT, mas o Firewall é a segunda barreira).
                 </p>

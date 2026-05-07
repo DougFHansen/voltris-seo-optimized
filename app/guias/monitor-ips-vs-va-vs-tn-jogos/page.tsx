@@ -54,7 +54,7 @@ export default function MonitorPanelGuide() {
             title: "2. VA: Pretos Profundos e Imersão",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Para Cinema e Noite:</h4>
+            <h class="text-gray-900 font-bold mb-2">Para Cinema e Noite:</h4>
             <p class="text-sm text-gray-700">
                 O monitor <strong>VA (Vertical Alignment)</strong> tem o melhor contraste. Enquanto um IPS faz pretos que parecem cinza escuro, o VA consegue deixar a tela realmente preta. <br/><br/>
                 - <strong>Ponto Negativo:</strong> Em movimentos ultra rápidos (como girar a câmera no Valorant), ele pode deixar um rastro escuro atrás dos objetos, conhecido como <strong>Ghosting</strong> ou <i>Black Smearing</i>.

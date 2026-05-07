@@ -54,7 +54,7 @@ export default function L2OtimizacaoGuide() {
             title: "2. Otimização do arquivo L2.ini",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Ajuste de Memória:</h4>
+            <h class="text-gray-900 font-bold mb-2">Ajuste de Memória:</h4>
             <p class="text-sm text-gray-700">
                 O L2 vem configurado de fábrica para usar apenas 32MB de cache, o que é ridículo para 2026. <br/><br/>
                 Usando um editor de arquivos <code>.ini</code> (decodificador L2), procure por <strong>CacheSizeMegs</strong>. Mude de 32 para 256 ou 512. Isso reduzirá drasticamente aquelas "travadinhas" de 1 segundo que acontecem quando você corre pelo mapa e o jogo tenta carregar novos assets.

@@ -54,7 +54,7 @@ export default function OldPCUpgradeGuide() {
             title: "2. O Gargalo (Bottleneck) de 2026",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Cuidado com GPUs Modernas:</h4>
+            <h class="text-gray-900 font-bold mb-2">Cuidado com GPUs Modernas:</h4>
             <p class="text-sm text-gray-700">
                 O erro mais comum é colocar uma RTX 4060 em um processador Intel de 4ª ou 7ª geração. O processador não conseguirá enviar dados rápido o suficiente para a placa de vídeo, resultando em um uso de GPU de apenas 30% e FPS baixo com muitas travadas. Em 2026, se o seu processador tem menos de 6 núcleos físicos (12 threads), ele será o limitador para qualquer placa de vídeo moderna.
             </p>

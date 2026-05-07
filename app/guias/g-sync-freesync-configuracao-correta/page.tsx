@@ -68,7 +68,7 @@ export default function SyncGuide() {
             title: "Passo 1: A Configuração Sagrada",
             content: `
         <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5 space-y-4">
-            <h4 class="text-white font-bold text-xl mb-4 border-b border-white/10 pb-2">Siga EXATAMENTE nesta ordem:</h4>
+            <h class="text-gray-900 font-bold text-xl mb-4 border-b border-white/10 pb-2">Siga EXATAMENTE nesta ordem:</h4>
             
             <div class="flex items-start gap-4">
                 <div class="bg-emerald-500/20 text-emerald-400 font-bold px-3 py-1 rounded">1</div>

@@ -34,7 +34,7 @@ export default function ManutencaoPreventivaGuide() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
           <div class="bg-[#171313] p-6 rounded-xl border border-[#31A8FF]/30 hover:border-[#31A8FF]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#31A8FF]">✓</span> Benefícios
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -46,7 +46,7 @@ export default function ManutencaoPreventivaGuide() {
             </ul>
           </div>
           <div class="bg-[#171313] p-6 rounded-xl border border-[#FF4B6B]/30 hover:border-[#FF4B6B]/50 transition-colors">
-            <h3 class="text-white font-bold text-lg mb-4 flex items-center gap-2">
+            <h class="text-gray-900 font-bold text-lg mb-4 flex items-center gap-2">
               <span class="text-[#FF4B6B]">⚠</span> Requisitos
             </h3>
             <ul class="text-gray-700 space-y-2">
@@ -60,7 +60,7 @@ export default function ManutencaoPreventivaGuide() {
         </div>
         
         <div class="bg-gradient-to-r from-blue-900/20 to-purple-900/20 p-6 rounded-xl border border-blue-500/30 mt-8">
-          <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-blue-400">📊</span> Estatísticas Importantes
           </h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -194,14 +194,14 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Ferramentas de Limpeza",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas Nativas do Windows:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Ferramentas Nativas do Windows:</h4>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li><strong>Disk Cleanup (Limpeza de Disco):</strong> Ferramenta nativa para remover arquivos temporários, arquivos de sistema e lixeira.</li>
                 <li><strong>Storage Sense:</strong> Recurso automático de limpeza de arquivos desnecessários.</li>
                 <li><strong>Limpeza de Arquivos de Sistema:</strong> Acessado pelo Disk Cleanup, remove arquivos de sistema antigos.</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas de Terceiros Recomendadas:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Ferramentas de Terceiros Recomendadas:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li><strong>CCleaner:</strong> Popular ferramenta para limpeza de registros e arquivos temporários.</li>
                 <li><strong>Glary Utilities:</strong> Conjunto completo de utilitários de sistema.</li>
@@ -214,7 +214,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Procedimento Detalhado",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Passos para Limpeza Completa:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Passos para Limpeza Completa:</h4>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Execute o "Limpeza de Disco" como administrador</li>
                 <li>Selecione o disco C: e clique em "Limpar arquivos de sistema"</li>
@@ -223,7 +223,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li>Repita para outros discos se necessário</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Pastas e Arquivos para Limpeza Manual:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Pastas e Arquivos para Limpeza Manual:</h4>
               <div class="bg-black p-4 rounded border border-green-500/30 font-mono text-sm text-green-400 mt-2">
                 <p>%temp% - Arquivos temporários do sistema</p>
                 <p>C:\Windows\Temp - Arquivos temporários do Windows</p>
@@ -246,7 +246,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Verificação de Erros no Disco",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Utilizando o CHKDSK:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Utilizando o CHKDSK:</h4>
               <p class="text-gray-700 mb-3">O comando CHKDSK verifica e corrige erros no sistema de arquivos:</p>
               <div class="bg-black p-4 rounded border border-blue-500/30 font-mono text-sm text-blue-400 mt-2">
                 <p>chkdsk C: /f /r /x</p>
@@ -255,7 +255,7 @@ export default function ManutencaoPreventivaGuide() {
                 <p># /x - Desmonta o volume se necessário antes do processo</p>
               </div>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Verificação com Ferramentas Gráficas:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Verificação com Ferramentas Gráficas:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>Propriedades do disco > Ferramentas > Verificar</li>
                 <li>Utilitários de disco de terceiros como CrystalDiskInfo</li>
@@ -268,7 +268,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Desfragmentação de Disco (HDD) e Otimização (SSD)",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Para Discos Rígidos Mecânicos (HDD):</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Para Discos Rígidos Mecânicos (HDD):</h4>
               <p class="text-gray-700 mb-3">A desfragmentação organiza os arquivos no disco para melhorar o acesso:</p>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Abra "Otimização e desfragmentação de unidades"</li>
@@ -276,7 +276,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li>Agende automaticamente para manutenção regular</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Para Discos SSD:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Para Discos SSD:</h4>
               <p class="text-gray-700 mb-3">SSDs não devem ser desfragmentados, mas sim otimizados com TRIM:</p>
               <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>O Windows 10/11 faz TRIM automaticamente</li>
@@ -298,7 +298,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Atualização de Drivers",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Métodos de Atualização:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Métodos de Atualização:</h4>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Gerenciador de Dispositivos do Windows</li>
                 <li>Centro de Atualizações do Windows</li>
@@ -306,7 +306,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li>Ferramentas de terceiros como Driver Booster</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Drivers Críticos para Atualização:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Drivers Críticos para Atualização:</h4>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-yellow-500/30">
                   <h5 class="font-bold text-yellow-400 mb-2">Hardware</h5>
@@ -334,7 +334,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Atualização de Software Essencial",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Software Crítico para Atualização:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Software Crítico para Atualização:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Sistema operacional (Windows Updates)</li>
                 <li>Antivírus e ferramentas de segurança</li>
@@ -343,7 +343,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li>Software de drivers e utilitários</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Verificação de Versões:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Verificação de Versões:</h4>
               <p class="text-gray-700">Sempre verifique se está usando versões estáveis e não beta de drivers e software crítico.</p>
             </div>
           `
@@ -374,7 +374,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Ferramentas e Procedimentos",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas Recomendadas:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Ferramentas Recomendadas:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>CCleaner (com cuidado, tem função de limpeza de registro)</li>
                 <li>Reg Organizer</li>
@@ -382,7 +382,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li>Ferramentas nativas (editar com cautela)</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Procedimento de Segurança:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Procedimento de Segurança:</h4>
               <ol class="list-decimal list-inside space-y-2 text-gray-700 mt-2">
                 <li>Crie um ponto de restauração do sistema antes de qualquer edição</li>
                 <li>Faça backup do registro antes de fazer alterações</li>
@@ -405,7 +405,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Planos de Energia",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Planos Recomendados:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Planos Recomendados:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li><strong>Alto Desempenho:</strong> Para sistemas que precisam de máxima performance</li>
                 <li><strong>Equilibrado:</strong> Bom para uso geral, equilibra desempenho e economia</li>
@@ -413,7 +413,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li><strong>Desempenho Máximo (Ultimate Performance):</strong> Para estações de trabalho</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Configurações Avançadas:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Configurações Avançadas:</h4>
               <div class="bg-black p-4 rounded border border-green-500/30 font-mono text-sm text-green-400 mt-2">
                 <p>Desative "Economia de Energia Adaptável"</p>
                 <p>Configure "Processador do Sistema" > "Desempenho Máximo"</p>
@@ -427,7 +427,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Configurações de Desempenho do Sistema",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Efeitos Visuais e Desempenho:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Efeitos Visuais e Desempenho:</h4>
               <p class="text-gray-700 mb-3">Ajuste as configurações de desempenho para priorizar velocidade:</p>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Propriedades do Sistema > Avançado > Desempenho > Configurações</li>
@@ -450,7 +450,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Ferramentas de Monitoramento",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas Nativas:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Ferramentas Nativas:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700">
                 <li>Gerenciador de Tarefas</li>
                 <li>Monitor de Recursos</li>
@@ -458,7 +458,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li>Relatórios de Confiabilidade</li>
               </ul>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas de Terceiros:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Ferramentas de Terceiros:</h4>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-blue-500/30">
                   <h5 class="font-bold text-blue-400 mb-2">Monitoramento</h5>
@@ -486,7 +486,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Indicadores de Saúde do Sistema",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Métricas Importantes:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Métricas Importantes:</h4>
               <div class="overflow-x-auto">
                 <table class="min-w-full bg-black/30 border border-gray-700">
                   <thead>
@@ -540,7 +540,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Estratégias de Backup",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Tipos de Backup:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Tipos de Backup:</h4>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div class="bg-[#1E1E22] p-4 rounded-lg border border-green-500/30">
                   <h5 class="font-bold text-green-400 mb-2">Completo</h5>
@@ -556,7 +556,7 @@ export default function ManutencaoPreventivaGuide() {
                 </div>
               </div>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Ferramentas de Backup:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Ferramentas de Backup:</h4>
               <ul class="list-disc list-inside space-y-2 text-gray-700 mt-2">
                 <li>Ferramentas nativas do Windows (Backup e Restauração)</li>
                 <li>Macrium Reflect (gratuito para uso pessoal)</li>
@@ -570,7 +570,7 @@ export default function ManutencaoPreventivaGuide() {
           subtitle: "Pontos de Restauração",
           content: `
             <div class="prose prose-invert max-w-none">
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Criação de Pontos de Restauração:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Criação de Pontos de Restauração:</h4>
               <p class="text-gray-700 mb-3">Sempre crie um ponto de restauração antes de realizar manutenções importantes:</p>
               <ol class="list-decimal list-inside space-y-2 text-gray-700">
                 <li>Propriedades do Sistema > Proteção do Sistema</li>
@@ -579,7 +579,7 @@ export default function ManutencaoPreventivaGuide() {
                 <li>Confirme a criação do ponto de restauração</li>
               </ol>
               
-              <h4 class="text-lg font-bold text-white mt-4 mb-2">Verificação de Integridade:</h4>
+              <h class="text-lg font-bold text-gray-900 mt-4 mb-2">Verificação de Integridade:</h4>
               <p class="text-gray-700">Teste periodicamente a capacidade de restauração dos backups e pontos de restauração.</p>
             </div>
           `
@@ -599,7 +599,7 @@ export default function ManutencaoPreventivaGuide() {
           </p>
           
           <div class="mt-6 pt-6 border-t border-gray-700">
-            <h4 class="text-lg font-bold text-white mb-3">✅ Checklist Final de Manutenção:</h4>
+            <h class="text-lg font-bold text-gray-900 mb-3">✅ Checklist Final de Manutenção:</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> Limpeza de arquivos temporários realizada</div>
               <div class="flex items-center gap-2 text-green-400"><span class="text-lg">✓</span> Verificação de disco concluída</div>

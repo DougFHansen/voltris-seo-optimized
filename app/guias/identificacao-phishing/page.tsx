@@ -45,7 +45,7 @@ export default function PhishingGuide() {
           O phishing evoluiu de mensagens com erros ortográficos óbvios para campanhas altamente sofisticadas que utilizam inteligência artificial para personalizar conteúdo e direcionar vítimas específicas. Os criminosos agora empregam técnicas como deepfakes, perfis sociais falsos e documentos oficiais falsificados para aumentar a credibilidade de seus golpes.
         </p>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">⚠️</span> Técnicas de Engenharia Social em 2026
           </h4>
           <ul class="text-sm text-gray-700 space-y-2">
@@ -82,7 +82,7 @@ export default function PhishingGuide() {
           <p class="text-yellow-200 font-semibold">Limitações do Hover Test:</p>
           <p class="text-gray-700 mt-2">Em dispositivos móveis, o teste do cursor não é aplicável. Além disso, alguns links podem redirecionar para URLs diferentes após múltiplos saltos. Em 2026, criminosos utilizam URLs encurtadas e redirecionamentos complexos para ocultar o destino final do link.</p>
         </div>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Análise Avançada de URLs</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Análise Avançada de URLs</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2">URL Legítima</h4>
@@ -106,7 +106,7 @@ export default function PhishingGuide() {
           </div>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">💡</span> Dicas para Verificação de URLs
           </h4>
           <table class="min-w-full bg-gray-800/50 rounded-lg overflow-hidden">
@@ -146,15 +146,15 @@ export default function PhishingGuide() {
       title: "2. Phishing via QR Code (Quishing)",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A Nova Ameaça de 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">A Nova Ameaça de 2026:</h4>
             <p class="text-sm text-gray-700">
                 Os criminosos agora enviam QR Codes por e-mail ou Discord. O objetivo é tirar o link do seu PC (onde você tem antivírus e proteções de navegador) e levá-lo para o celular, onde é muito mais difícil conferir a URL real. <strong>Nunca escaneie QR Codes de origens não solicitadas</strong>, mesmo que pareçam um brinde de jogo ou aviso de segurança.
             </p>
         </div>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Técnicas de Quishing em 2026</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Técnicas de Quishing em 2026</h3>
         <div class="space-y-6">
           <div class="border-l-4 border-green-500 pl-4 py-1">
-            <h4 class="text-lg font-semibold text-white mb-2">QR Codes em E-mails e Mensagens</h4>
+            <h class="text-lg font-semibold text-gray-900 mb-2">QR Codes em E-mails e Mensagens</h4>
             <p class="text-gray-700 text-sm mb-2">Criminosos enviam QR Codes em e-mails fraudulentos ou mensagens de texto que direcionam para sites de phishing.</p>
             <ol class="list-decimal list-inside text-gray-700 space-y-1 text-sm">
               <li>E-mails que parecem de instituições legítimas com QR Codes para "verificação de conta"</li>
@@ -164,7 +164,7 @@ export default function PhishingGuide() {
             </ol>
           </div>
           <div class="border-l-4 border-purple-500 pl-4 py-1">
-            <h4 class="text-lg font-semibold text-white mb-2">QR Codes em Locais Públicos</h4>
+            <h class="text-lg font-semibold text-gray-900 mb-2">QR Codes em Locais Públicos</h4>
             <p class="text-gray-700 text-sm mb-2">QR Codes colados ilegalmente em locais públicos, como pontos de ônibus ou outdoors falsos.</p>
             <ol class="list-decimal list-inside text-gray-700 space-y-1 text-sm">
               <li>QR Codes em panfletos ou cartazes suspeitos</li>
@@ -174,7 +174,7 @@ export default function PhishingGuide() {
             </ol>
           </div>
           <div class="border-l-4 border-indigo-500 pl-4 py-1">
-            <h4 class="text-lg font-semibold text-white mb-2">QR Codes em Redes Sociais</h4>
+            <h class="text-lg font-semibold text-gray-900 mb-2">QR Codes em Redes Sociais</h4>
             <p class="text-gray-700 text-sm mb-2">Posts ou stories com QR Codes que direcionam para páginas fraudulentas.</p>
             <ol class="list-decimal list-inside text-gray-700 space-y-1 text-sm">
               <li>Perfis falsos compartilhando QR Codes "promocionais"</li>
@@ -198,7 +198,7 @@ export default function PhishingGuide() {
           <p class="text-red-200 font-semibold">Técnicas de Homograph Attack:</p>
           <p class="text-gray-700 mt-2">Essas técnicas utilizam caracteres Unicode que parecem idênticos aos caracteres ASCII normais, mas são diferentes. Isso é conhecido como homograph attack ou IDN (Internationalized Domain Names) spoofing.</p>
         </div>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Exemplos de Domínios Fraudulentos</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Exemplos de Domínios Fraudulentos</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-green-400 mb-2">Legítimo</h4>
@@ -220,7 +220,7 @@ export default function PhishingGuide() {
           </div>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">📋</span> Como Prevenir Ataques de Homograph
           </h4>
           <ul class="text-sm text-gray-700 space-y-2">
@@ -254,7 +254,7 @@ export default function PhishingGuide() {
         <p class="mb-4 text-gray-700">
           Para e-mails que chegam à sua caixa de entrada, é possível examinar os cabeçalhos para determinar a origem real da mensagem. Em 2026, mesmo e-mails que parecem vir de contas legítimas podem ter sido falsificados através de técnicas de spoofing.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Campos Importantes nos Cabeçalhos de E-mail</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Campos Importantes nos Cabeçalhos de E-mail</h3>
         <div class="space-y-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2 flex items-center">
@@ -302,7 +302,7 @@ export default function PhishingGuide() {
         <p class="mb-4 text-gray-700">
           Sites de phishing muitas vezes tentam copiar fielmente sites legítimos, mas sempre apresentam diferenças sutis que podem ser identificadas com atenção. Em 2026, essas cópias estão cada vez mais convincentes graças ao uso de inteligência artificial.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Elementos a Serem Verificados em Websites</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Elementos a Serem Verificados em Websites</h3>
         <div class="overflow-x-auto mb-6">
           <table class="min-w-full bg-gray-800/50 rounded-lg overflow-hidden">
             <thead class="bg-gray-700">
@@ -337,16 +337,16 @@ export default function PhishingGuide() {
           </table>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">🔍</span> Dicas para Análise Visual
           </h4>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-              <h5 class="font-bold text-white mb-2">Verificação de Segurança</h5>
+              <h class="font-bold text-gray-900 mb-2">Verificação de Segurança</h5>
               <p class="text-gray-700 text-sm">Sempre verifique o cadeado na barra de endereços e o nome da organização no certificado SSL.</p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-              <h5 class="font-bold text-white mb-2">Comportamento da Página</h5>
+              <h class="font-bold text-gray-900 mb-2">Comportamento da Página</h5>
               <p class="text-gray-700 text-sm">Sites legítimos não redirecionam automaticamente após digitar credenciais.</p>
             </div>
           </div>
@@ -359,7 +359,7 @@ export default function PhishingGuide() {
         <p class="mb-4 text-gray-700">
           Em 2026, os criminosos adaptaram suas técnicas de phishing para explorar especificamente as funcionalidades e confiança dos usuários em plataformas populares como redes sociais, serviços de e-mail e plataformas de jogos.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Phishing em Plataformas Populares</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Phishing em Plataformas Populares</h3>
         <div class="space-y-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2 flex items-center">
@@ -410,7 +410,7 @@ export default function PhishingGuide() {
         <p class="mb-4 text-gray-700">
           Em 2026, existem diversas ferramentas e recursos que podem auxiliar na identificação de e-mails e sites fraudulentos. Utilizar essas ferramentas é uma prática recomendada para aumentar sua segurança digital.
         </p>
-        <h3 class="text-xl font-bold text-white mt-6 mb-4">Ferramentas de Verificação Disponíveis</h3>
+        <h class="text-xl font-bold text-gray-900 mt-6 mb-4">Ferramentas de Verificação Disponíveis</h3>
         <div class="space-y-4 mb-6">
           <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <h4 class="font-bold text-blue-400 mb-2 flex items-center">
@@ -450,7 +450,7 @@ export default function PhishingGuide() {
           </div>
         </div>
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 mb-6">
-          <h4 class="text-white font-bold mb-3 flex items-center">
+          <h class="text-gray-900 font-bold mb-3 flex items-center">
             <span className="mr-2">✅</span> Melhores Práticas de Verificação
           </h4>
           <ul class="text-sm text-gray-700 space-y-2">

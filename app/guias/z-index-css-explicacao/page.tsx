@@ -60,7 +60,7 @@ export default function ZIndexGuide() {
             title: "2. O Stacking Context (Dono da festa)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Por que o '9999' não funciona?</h4>
+            <h class="text-gray-900 font-bold mb-2">Por que o '9999' não funciona?</h4>
             <p class="text-sm text-gray-700">
                 Muitas vezes você coloca <code>z-index: 9999</code> em um balão e ele continua atrás de um fundo que tem <code>z-index: 1</code>. Isso acontece por causa do <strong>Stacking Context</strong>. <br/><br/>
                 Imagine que cada container-pai é uma pasta. Se o 'Pai A' tem z-index 1 e o 'Pai B' tem z-index 2, nada dentro do 'Pai A' (mesmo que tenha z-index um bilhão) conseguirá ficar na frente do 'Pai B'. O filho está preso ao nível de hierarquia do seu pai.

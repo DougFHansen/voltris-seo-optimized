@@ -55,7 +55,7 @@ export default function AmdGuide() {
             <h4 class="text-red-400 font-bold mb-2">Instalação: Minimalista vs Completa</h4>
             <p class="text-gray-700 text-sm mb-4">
                 Ao instalar o driver, a AMD pergunta: "Full Install", "Minimal" ou "Driver Only".
-                <br/><strong>Recomendação Voltris:</strong> Use <strong class="text-white">Full Install</strong> se você quer fazer Undervolt e usar Anti-Lag. Use <strong>Driver Only</strong> se você tem um PC muito fraco e quer zero processos em background (mas você perde o painel de controle). O meio termo "Minimal" não vale a pena.
+                <br/><strong>Recomendação Voltris:</strong> Use <s class="text-gray-900">Full Install</strong> se você quer fazer Undervolt e usar Anti-Lag. Use <strong>Driver Only</strong> se você tem um PC muito fraco e quer zero processos em background (mas você perde o painel de controle). O meio termo "Minimal" não vale a pena.
             </p>
         </div>
       `
@@ -73,7 +73,7 @@ export default function AmdGuide() {
                 <p class="text-gray-700 text-sm mb-3">
                     <strong>O que faz:</strong> Sincroniza a CPU com a GPU, similar ao Nvidia Low Latency.
                 </p>
-                <p class="text-white font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
+                <p class="text-gray-900 font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
                     Recomendação: <strong>LIGADO</strong>.
                 </p>
                 <p class="text-gray-700 text-xs mt-2">
@@ -86,7 +86,7 @@ export default function AmdGuide() {
                 <p class="text-gray-700 text-sm mb-3">
                     <strong>O que faz:</strong> Reduz a resolução dinamicamente quando você move o mouse rápido.
                 </p>
-                <p class="text-white font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
+                <p class="text-gray-900 font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
                     Recomendação: <strong>DESLIGADO (OFF)</strong>.
                 </p>
                 <p class="text-gray-700 text-xs mt-2">
@@ -99,7 +99,7 @@ export default function AmdGuide() {
                 <p class="text-gray-700 text-sm mb-3">
                     <strong>O que faz:</strong> Filtro de nitidez pós-processamento.
                 </p>
-                <p class="text-white font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
+                <p class="text-gray-900 font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
                     Recomendação: <strong>Ligado (10% a 20%)</strong>.
                 </p>
                 <p class="text-gray-700 text-xs mt-2">
@@ -112,7 +112,7 @@ export default function AmdGuide() {
                 <p class="text-gray-700 text-sm mb-3">
                     <strong>O que faz:</strong> Limitador de FPS dinâmico para economizar energia.
                 </p>
-                <p class="text-white font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
+                <p class="text-gray-900 font-mono text-sm border-l-2 border-[#FF4B6B] pl-3">
                     Recomendação: <strong>Desligado</strong> (Para Máxima Performance).
                 </p>
                 <p class="text-gray-700 text-xs mt-2">
@@ -174,7 +174,7 @@ export default function AmdGuide() {
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-[#0A0A0F] p-4 border border-white/5 rounded-lg">
-                <h5 class="text-white font-bold">Passo a Passo Seguro</h5>
+                <h class="text-gray-900 font-bold">Passo a Passo Seguro</h5>
                 <ol class="list-decimal list-inside text-gray-700 text-xs mt-2 space-y-1">
                     <li>Ative "Custom" no Tuning Control.</li>
                     <li>Ative "Voltage / Frequency".</li>
@@ -184,7 +184,7 @@ export default function AmdGuide() {
                 </ol>
             </div>
             <div class="bg-[#0A0A0F] p-4 border border-white/5 rounded-lg">
-                <h5 class="text-white font-bold">Curva de Fan</h5>
+                <h class="text-gray-900 font-bold">Curva de Fan</h5>
                 <p class="text-gray-700 text-xs mt-2">
                     Desative o "Zero RPM" se quiser temperaturas menores em idle.
                     <br/>Ajuste a curva para atingir 100% de fan apenas se passar de 75°C. Placas AMD aguentam até 95°C (Junction Temp) tranquilamente, não precisa ter medo de calor.

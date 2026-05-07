@@ -55,7 +55,7 @@ export default function GeneralDataRecoveryGuide() {
       title: "2. O desafio do SSD: O comando TRIM",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Atenção com SSDs:</h4>
+            <h class="text-gray-900 font-bold mb-2">Atenção com SSDs:</h4>
             <p class="text-sm text-gray-700">
                 SSDs modernos de 2026 usam uma função chamada <strong>TRIM</strong>. Poucos minutos após você deletar um arquivo, o SSD faz a "limpeza física" das células de memória para manter a velocidade. Isso torna a recuperação em SSDs muito mais difícil do que em HDs. Se você apagou algo no SSD, desligue o PC imediatamente e procure por softwares especializados como o <strong>R-Studio</strong>.
             </p>

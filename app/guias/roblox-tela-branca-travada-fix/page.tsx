@@ -55,7 +55,7 @@ export default function RobloxWhiteScreenGuide() {
             title: "2. Resetando as Configurações de Internet do Windows",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Truque do Painel de Controle:</h4>
+            <h class="text-gray-900 font-bold mb-2">Truque do Painel de Controle:</h4>
             <p class="text-sm text-gray-700">
                 1. Pesquise por 'Opções da Internet' no menu Iniciar. <br/>
                 2. Vá na aba <strong>Avançadas</strong>. <br/>

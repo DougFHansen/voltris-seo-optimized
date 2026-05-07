@@ -54,7 +54,7 @@ export default function VideoPlayerComparisonGuide() {
             title: "2. PotPlayer: A potência coreana",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Performance Máxima:</h4>
+            <h class="text-gray-900 font-bold mb-2">Performance Máxima:</h4>
             <p class="text-sm text-gray-700">
                 O <strong>PotPlayer</strong> é conhecido por ser extremamente leve, carregando vídeos gigantes de 50GB instantaneamente. <br/><br/>
                 Ele oferece suporte superior a tecnologias modernas de 2026, como o mapeamento de tons HDR para monitores SDR e aceleração de hardware via GPU muito mais eficiente que a do VLC. Se você gosta de personalizar cada detalhe da interface e das legendas, o PotPlayer é imbatível. (Atenção: Durante a instalação, ele pode sugerir programas extras; recuse todos para manter a instalação limpa).

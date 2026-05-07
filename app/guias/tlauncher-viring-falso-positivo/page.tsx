@@ -52,7 +52,7 @@ export default function TLauncherSecurityGuide() {
             content: `
         <div class="space-y-8">
             <div>
-                <h4 class="text-white font-bold text-xl mb-3">O Nascimento (2013-2016)</h4>
+                <h class="text-gray-900 font-bold text-xl mb-3">O Nascimento (2013-2016)</h4>
                 <p class="text-gray-700 text-md">
                     O projeto original nasceu das mãos de um desenvolvedor russo conhecido como <strong>Turq</strong>. Sua intenção era criar um launcher leve, simples e funcional para a comunidade russa. Esse software ganhou tração mundial por sua eficiência. Ele não tinha anúncios intrusivos, não instalava barras de pesquisa e respeitava o usuário.
                 </p>
@@ -68,7 +68,7 @@ export default function TLauncherSecurityGuide() {
             </div>
 
             <div>
-                <h4 class="text-white font-bold text-xl mb-3">O Estado Atual em 2026</h4>
+                <h class="text-gray-900 font-bold text-xl mb-3">O Estado Atual em 2026</h4>
                 <p class="text-gray-700 text-md">
                     Hoje, quando você digita "Baixar Minecraft" no Google, os primeiros resultados são dominados pela versão impostora. O criador original continua mantendo seu projeto sob o nome de <strong>TL Legacy</strong> (ou RuLauncher), mas ele é muito menos conhecido. A ironia é cruel: a versão "falsa" se tornou a "oficial" na mente do público.
                 </p>
@@ -137,7 +137,7 @@ export default function TLauncherSecurityGuide() {
 
         <div class="space-y-6">
             <div>
-                <h4 class="text-white font-bold text-lg mb-2">O que o VirusTotal diz em 2026?</h4>
+                <h class="text-gray-900 font-bold text-lg mb-2">O que o VirusTotal diz em 2026?</h4>
                 <p class="text-gray-700 text-sm mb-2">
                     Ao enviar o instalador do TLauncher para o VirusTotal, vemos detecções consistentes de motores importantes (Sophos, Malwarebytes, Kaspersky):
                 </p>
@@ -149,7 +149,7 @@ export default function TLauncherSecurityGuide() {
             </div>
 
             <div>
-                <h4 class="text-white font-bold text-lg mb-2">A Verdade sobre "Falso Positivo"</h4>
+                <h class="text-gray-900 font-bold text-lg mb-2">A Verdade sobre "Falso Positivo"</h4>
                 <p class="text-gray-700 text-sm">
                     Um falso positivo legítimo ocorre quando um software usa uma técnica de ofuscação de código para proteger sua propriedade intelectual, e o antivírus se confunde.
                     <br/><br/>
@@ -169,14 +169,14 @@ export default function TLauncherSecurityGuide() {
         <div class="grid gap-8">
             <!-- Prism Launcher -->
             <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-green-500">
-                <h3 class="text-2xl font-bold text-white mb-2">1. Prism Launcher (A Escolha do Especialista)</h3>
+                <h class="text-2xl font-bold text-gray-900 mb-2">1. Prism Launcher (A Escolha do Especialista)</h3>
                 <p class="text-green-400 font-bold text-xs uppercase tracking-widest mb-4">Melhor Performance • Open Source</p>
                 <p class="text-gray-700 mb-4">
                     O Prism (fork do antigo MultiMC e PolyMC) é o padrão ouro. Ele é leve, não precisa de instalação (portátil) e tem zero gordura.
                 </p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <h5 class="text-white font-bold mb-2">Vantagens:</h5>
+                        <h class="text-gray-900 font-bold mb-2">Vantagens:</h5>
                         <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                             <li>Código 100% auditável no GitHub.</li>
                             <li>Baixa mods (CurseForge/Modrinth) direto da interface.</li>
@@ -185,7 +185,7 @@ export default function TLauncherSecurityGuide() {
                         </ul>
                     </div>
                     <div>
-                        <h5 class="text-white font-bold mb-2">Para quem é?</h5>
+                        <h class="text-gray-900 font-bold mb-2">Para quem é?</h5>
                         <p class="text-gray-700 text-sm">
                             Para quem quer FPS máximo, joga com muitos mods ou quer controle total sobre o jogo. Pode parecer "feio" para iniciantes, mas é imbatível na técnica.
                         </p>
@@ -195,14 +195,14 @@ export default function TLauncherSecurityGuide() {
 
             <!-- SKLauncher -->
             <div class="bg-gray-800 p-6 rounded-xl border-l-4 border-blue-500">
-                <h3 class="text-2xl font-bold text-white mb-2">2. SKLauncher (O Sucessor Espiritual)</h3>
+                <h class="text-2xl font-bold text-gray-900 mb-2">2. SKLauncher (O Sucessor Espiritual)</h3>
                 <p class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-4">Melhor Visual • Fácil de Usar</p>
                 <p class="text-gray-700 mb-4">
                     Se você gosta da simplicidade do TLauncher (instalar, por nick, jogar), o SK é para você. Ele passou por uma reescrita completa em 2024 e agora é super seguro.
                 </p>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <h5 class="text-white font-bold mb-2">Vantagens:</h5>
+                        <h class="text-gray-900 font-bold mb-2">Vantagens:</h5>
                         <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
                             <li>Interface moderna (Material Design).</li>
                             <li>Sistema de Skins próprio (visível para outros usuários SK).</li>
@@ -211,7 +211,7 @@ export default function TLauncherSecurityGuide() {
                         </ul>
                     </div>
                     <div>
-                        <h5 class="text-white font-bold mb-2">Para quem é?</h5>
+                        <h class="text-gray-900 font-bold mb-2">Para quem é?</h5>
                         <p class="text-gray-700 text-sm">
                             Para o jogador casual que quer clicar e jogar, sem configurar Java ou pastas. É a experiência "TLauncher" feita do jeito certo e honesto.
                         </p>
@@ -221,7 +221,7 @@ export default function TLauncherSecurityGuide() {
 
             <!-- Outras Opções -->
             <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-                <h3 class="text-xl font-bold text-white mb-2">Menções Honrosas</h3>
+                <h class="text-xl font-bold text-gray-900 mb-2">Menções Honrosas</h3>
                 <ul class="space-y-4">
                     <li>
                         <strong class="text-purple-400">TL Legacy:</strong> O verdadeiro clássico. Feio, antigo, mas seguro e nostálgico. Use se seu PC for realmente muito, muito fraco.
@@ -246,7 +246,7 @@ export default function TLauncherSecurityGuide() {
 
         <div class="space-y-8 mt-8">
             <div class="border-l-2 border-gray-600 pl-6">
-                <h4 class="text-white font-bold text-xl mb-2">Fase 1: O Backup Cirúrgico</h4>
+                <h class="text-gray-900 font-bold text-xl mb-2">Fase 1: O Backup Cirúrgico</h4>
                 <p class="text-gray-700 text-sm mb-4">Não copie a pasta <code>.minecraft</code> inteira, pois ela pode conter arquivos infectados. Vamos copiar apenas o essencial.</p>
                 <ol class="list-decimal list-inside text-gray-700 space-y-3">
                     <li>Crie uma pasta na Área de Trabalho chamada "Backup MC".</li>
@@ -265,7 +265,7 @@ export default function TLauncherSecurityGuide() {
             </div>
 
             <div class="border-l-2 border-gray-600 pl-6">
-                <h4 class="text-white font-bold text-xl mb-2">Fase 2: Limpeza Total (Exorcismo)</h4>
+                <h class="text-gray-900 font-bold text-xl mb-2">Fase 2: Limpeza Total (Exorcismo)</h4>
                 <p class="text-gray-700 text-sm mb-4">Removendo o malware pela raiz.</p>
                 <ol class="list-decimal list-inside text-gray-700 space-y-3">
                     <li>Desinstale o TLauncher pelo Painel de Controle.</li>
@@ -277,7 +277,7 @@ export default function TLauncherSecurityGuide() {
             </div>
 
             <div class="border-l-2 border-gray-600 pl-6">
-                <h4 class="text-white font-bold text-xl mb-2">Fase 3: Casa Nova (Prism Launcher)</h4>
+                <h class="text-gray-900 font-bold text-xl mb-2">Fase 3: Casa Nova (Prism Launcher)</h4>
                 <p class="text-gray-700 text-sm mb-4">Configurando o ambiente seguro.</p>
                 <ol class="list-decimal list-inside text-gray-700 space-y-3">
                     <li>Baixe o <strong>Prism Launcher</strong> (Zip ou Instalador do GitHub/Site Oficial).</li>
@@ -298,28 +298,28 @@ export default function TLauncherSecurityGuide() {
             content: `
         <div class="grid gap-6">
             <div class="bg-gray-900/40 p-5 rounded-lg">
-                <h5 class="text-white font-bold text-md mb-2">❓ Meus FPS vão aumentar mudando de launcher?</h5>
+                <h class="text-gray-900 font-bold text-md mb-2">❓ Meus FPS vão aumentar mudando de launcher?</h5>
                 <p class="text-gray-700 text-sm">
                     <strong>Sim, provavelmente.</strong> O TLauncher consome recursos em segundo plano. O Prism Launcher é extremamente leve. Além disso, o Prism facilita muito a instalação do mod <strong>Sodium</strong> (Fabric), que pode triplicar seus FPS comparado ao Minecraft padrão.
                 </p>
             </div>
 
             <div class="bg-gray-900/40 p-5 rounded-lg">
-                <h5 class="text-white font-bold text-md mb-2">❓ Como colocar Skin no Prism Launcher (Modo Offline)?</h5>
+                <h class="text-gray-900 font-bold text-md mb-2">❓ Como colocar Skin no Prism Launcher (Modo Offline)?</h5>
                 <p class="text-gray-700 text-sm">
                     Nativamente, não dá. Mas você pode adicionar o mod <strong>"SkinRestorer"</strong> ou <strong>"Fabric Tailor"</strong> na sua instância. Eles permitem que você use o comando <code>/skin url</code> dentro do jogo para carregar qualquer skin da internet.
                 </p>
             </div>
 
             <div class="bg-gray-900/40 p-5 rounded-lg">
-                <h5 class="text-white font-bold text-md mb-2">❓ O TLauncher pode roubar minha conta Bancária?</h5>
+                <h class="text-gray-900 font-bold text-md mb-2">❓ O TLauncher pode roubar minha conta Bancária?</h5>
                 <p class="text-gray-700 text-sm">
                     Diretamente? Improvável. Indiretamente? Possível. Se o malware capturar suas senhas salvas no navegador ou monitorar seu teclado (keylogger), qualquer conta acessada no PC comprometido está em risco. Por precaução, após a limpeza, mude senhas importantes.
                 </p>
             </div>
 
             <div class="bg-gray-900/40 p-5 rounded-lg">
-                <h5 class="text-white font-bold text-md mb-2">❓ O que é o "TLauncher para Smartphones"?</h5>
+                <h class="text-gray-900 font-bold text-md mb-2">❓ O que é o "TLauncher para Smartphones"?</h5>
                 <p class="text-gray-700 text-sm">
                     O app de mobile (PE/Bedrock) geralmente é apenas um agregador de mods e skins cheio de anúncios. Não recomendamos. Use o app oficial ou buscadores de mods confiáveis como o Modrinth/CurseForge na web.
                 </p>

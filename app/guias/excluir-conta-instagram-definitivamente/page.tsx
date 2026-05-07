@@ -54,7 +54,7 @@ export default function InstagramDeleteGuide() {
             title: "2. Passo a Passo da Exclusão (Central de Contas)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Pelo Celular ou PC:</h4>
+            <h class="text-gray-900 font-bold mb-2">Pelo Celular ou PC:</h4>
             <p class="text-sm text-gray-700">
                 1. Acesse as Configurações e vá em **Central de Contas**. <br/>
                 2. Clique em **Dados Pessoais** > **Propriedade e controle da conta**. <br/>

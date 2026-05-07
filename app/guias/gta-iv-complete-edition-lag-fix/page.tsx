@@ -54,7 +54,7 @@ export default function GTAIVLagFixGuide() {
             title: "2. FusionFix: Consertando os Bugs de 60 FPS",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Correções Essenciais:</h4>
+            <h class="text-gray-900 font-bold mb-2">Correções Essenciais:</h4>
             <p class="text-sm text-gray-700">
                 O GTA IV buga se você rodar acima de 30 FPS. Missões como a última (helicóptero) tornam-se impossíveis de completar. O mod <strong>FusionFix</strong> resolve isso, além de consertar texturas que não carregam e sombras que ficam "piscando" em placas de vídeo modernas de 2026.
             </p>

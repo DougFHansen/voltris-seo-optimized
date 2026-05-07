@@ -52,7 +52,7 @@ export default function BrowserExtensionsGuide() {
       title: "2. Produtividade Visual: Dark Reader e Tab Grouping",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Para quem trabalha à noite:</h4>
+            <h class="text-gray-900 font-bold mb-2">Para quem trabalha à noite:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>Dark Reader:</strong> Transforma qualquer site (mesmo os brancos) em modo escuro de forma inteligente, salvando a sua visão em 2026. <br/>
                 - <strong>Workona ou OneTab:</strong> Se você é o tipo de pessoa que tem 50 abas abertas ao mesmo tempo, essas extensões agrupam tudo em uma única lista, reduzindo o uso de RAM do navegador em até 90%.

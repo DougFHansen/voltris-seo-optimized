@@ -73,7 +73,7 @@ export default function MouseGuide() {
             A configuração padrão do Windows é feita para escritório, não para jogos. Ela tenta "ajudar" você acelerando o cursor. Em jogos, isso destrói sua memória muscular.
         </p>
         <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm space-y-2">
-            <p class="text-white font-bold">Configuração Obrigatória:</p>
+            <p class="text-gray-900 font-bold">Configuração Obrigatória:</p>
             <ol class="list-decimal list-inside text-gray-700">
                 <li>Painel de Controle > Mouse > Opções do Ponteiro.</li>
                 <li><strong>Velocidade do Ponteiro:</strong> Exatamente no 6º pino (Meio).<br/>
@@ -158,7 +158,7 @@ export default function MouseGuide() {
             title: "Configurações de Sensor: LOD, Ripple e Angle Snapping",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Opções avançadas do software do Mouse</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Opções avançadas do software do Mouse</h4>
                 <p class="text-gray-700 mb-6">
                     Mouses da Logitech (G Hub), Razer (Synapse) e Zowie possuem configurações internas de sensor. Entenda o que cada uma faz:
                 </p>

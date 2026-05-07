@@ -55,7 +55,7 @@ export default function PostInstallationGuide() {
             title: "2. O Checklist de Programas Essenciais",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Kit de Sobrevivência 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">Kit de Sobrevivência 2026:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>Compressor:</strong> NanaZip (Melhor que o WinRAR para Windows 11). <br/>
                 - <strong>Player:</strong> VLC ou PotPlayer (Suporte universal a codecs). <br/>

@@ -55,21 +55,21 @@ export default function HardwareDiagnosticGuide() {
             <div class="flex items-start gap-4 bg-[#0A0A0F] border border-white/5 p-4 rounded-xl">
                 <span class="text-2xl font-bold text-[#31A8FF] w-8 shrink-0">1.</span>
                 <div>
-                    <strong class="text-white">Observe os Sintomas</strong>
+                    <s class="text-gray-900">Observe os Sintomas</strong>
                     <p class="text-gray-700 text-sm mt-1">Tela azul aleatória = provável RAM ou driver. PC desliga sob carga = provável superaquecimento ou fonte fraca. PC não liga = fonte, placa mãe ou RAM.</p>
                 </div>
             </div>
             <div class="flex items-start gap-4 bg-[#0A0A0F] border border-white/5 p-4 rounded-xl">
                 <span class="text-2xl font-bold text-[#31A8FF] w-8 shrink-0">2.</span>
                 <div>
-                    <strong class="text-white">Comece pelo mais fácil</strong>
+                    <s class="text-gray-900">Comece pelo mais fácil</strong>
                     <p class="text-gray-700 text-sm mt-1">Sempre teste software antes de hardware. Um driver corrompido causa os mesmos sintomas que RAM ruim. Limpe drivers → teste RAM → teste SSD → teste CPU/GPU → teste fonte.</p>
                 </div>
             </div>
             <div class="flex items-start gap-4 bg-[#0A0A0F] border border-white/5 p-4 rounded-xl">
                 <span class="text-2xl font-bold text-[#31A8FF] w-8 shrink-0">3.</span>
                 <div>
-                    <strong class="text-white">Documente tudo</strong>
+                    <s class="text-gray-900">Documente tudo</strong>
                     <p class="text-gray-700 text-sm mt-1">Tire print dos resultados dos testes. Se você for a uma assistência técnica depois, isso economiza horas de trabalho deles (e dinheiro seu).</p>
                 </div>
             </div>
@@ -86,7 +86,7 @@ export default function HardwareDiagnosticGuide() {
         <p class="mb-4 text-gray-700 leading-relaxed">
           A RAM é responsável por mais de <strong>40% dos casos de tela azul aleatória</strong> em computadores aparentemente saudáveis. O problema é que erros de RAM são difíceis de reproduzir — eles aparecem em momentos aleatórios.
         </p>
-        <h4 class="text-white font-bold mb-4 mt-6">🛠️ Ferramenta #1: TestMem5 (Windows, 30 minutos)</h4>
+        <h class="text-gray-900 font-bold mb-4 mt-6">🛠️ Ferramenta #1: TestMem5 (Windows, 30 minutos)</h4>
         <p class="mb-3 text-gray-700 text-sm">O melhor teste de RAM que roda dentro do próprio Windows.</p>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 mb-6">
             <li>Baixe o <strong>TestMem5</strong> (busque no Google "TestMem5 anta777 download").</li>
@@ -96,7 +96,7 @@ export default function HardwareDiagnosticGuide() {
             <li>Deixe rodando por pelo menos <strong>2 ciclos completos</strong> (1-2 horas).</li>
             <li>Qualquer erro em vermelho = RAM com problema.</li>
         </ol>
-        <h4 class="text-white font-bold mb-4">🛠️ Ferramenta #2: MemTest86+ (Antes do Boot)</h4>
+        <h class="text-gray-900 font-bold mb-4">🛠️ Ferramenta #2: MemTest86+ (Antes do Boot)</h4>
         <p class="mb-3 text-gray-700 text-sm">Mais completo, pois roda fora do Windows e testa a RAM pura.</p>
         <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4 mb-6">
             <li>Baixe o MemTest86+ em memtest.org.</li>
@@ -117,7 +117,7 @@ export default function HardwareDiagnosticGuide() {
         <p class="mb-4 text-gray-700 leading-relaxed">
           Discos com problema causam corrupção de arquivos, crashes do Windows, lentidão extrema e em casos críticos, o PC pode nem conseguir inicializar. A tecnologia S.M.A.R.T. (Self-Monitoring, Analysis and Reporting Technology) permite detectar falhas iminentes antes que o disco morra.
         </p>
-        <h4 class="text-white font-bold mb-3">Como usar o CrystalDiskInfo:</h4>
+        <h class="text-gray-900 font-bold mb-3">Como usar o CrystalDiskInfo:</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 mb-6">
             <li>Baixe e instale o <strong>CrystalDiskInfo</strong> (crystalmark.info — versão gratuita).</li>
             <li>Abra o programa. Ele listará todos os discos do sistema.</li>
@@ -137,7 +137,7 @@ export default function HardwareDiagnosticGuide() {
                 <p class="text-gray-700 text-xs">PARE de usar o computador. O disco pode morrer a qualquer momento. Backup de emergência imediato.</p>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3">Atributos S.M.A.R.T. Críticos para monitorar:</h4>
+        <h class="text-gray-900 font-bold mb-3">Atributos S.M.A.R.T. Críticos para monitorar:</h4>
         <div class="bg-[#0A0A0F] border border-white/5 rounded-xl overflow-hidden">
             <table class="w-full text-sm">
                 <thead class="bg-white/5">
@@ -179,7 +179,7 @@ export default function HardwareDiagnosticGuide() {
         <p class="mb-4 text-gray-700 leading-relaxed">
           Um processador ou placa de vídeo com instabilidade pode não mostrar erro em uso normal, mas vai travar ou desligar durante jogos ou renderização. O <strong>OCCT</strong> é a ferramenta mais respeitada da comunidade para esses testes.
         </p>
-        <h4 class="text-white font-bold mb-3">Baixando e configurando o OCCT:</h4>
+        <h class="text-gray-900 font-bold mb-3">Baixando e configurando o OCCT:</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4 mb-5">
             <li>Baixe o OCCT em <strong>ocbase.com</strong> (versão gratuita é suficiente).</li>
             <li>Instale e abra o programa.</li>

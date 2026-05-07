@@ -56,7 +56,7 @@ export default function GTAVCrashGuide() {
             title: "2. Resetando as Configurações Externamente",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Se o jogo nem abre:</h4>
+            <h class="text-gray-900 font-bold mb-2">Se o jogo nem abre:</h4>
             <p class="text-sm text-gray-700">
                 1. Vá na pasta <code>Documentos / Rockstar Games / GTA V</code>. <br/>
                 2. Delete o arquivo <strong>settings.xml</strong>. <br/>

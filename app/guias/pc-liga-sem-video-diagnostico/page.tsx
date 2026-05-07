@@ -56,7 +56,7 @@ export default function NoVideoDiagnosticGuide() {
             title: "2. Reset de BIOS (Clear CMOS)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Zerando as Configurações:</h4>
+            <h class="text-gray-900 font-bold mb-2">Zerando as Configurações:</h4>
             <p class="text-sm text-gray-700">
                 Muitas vezes, uma configuração errada de memória ou processador na BIOS impede o boot. <br/><br/>
                 Procure pela bateria redonda (moeda) na sua placa-mãe. Remova-a com cuidado e espere 1 minuto (com o PC fora da tomada). Coloque-a de volta. Isso fará a placa-mãe carregar os padrões de fábrica. Se o problema era um overclock mal sucedido, o PC voltará a dar vídeo instantaneamente.

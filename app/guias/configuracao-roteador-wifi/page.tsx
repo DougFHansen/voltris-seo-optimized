@@ -97,7 +97,7 @@ export default function RouterGuide() {
       title: "Abertura de Portas (Port Forwarding) vs UPnP",
       content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">NAT Estrito nunca mais</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">NAT Estrito nunca mais</h4>
                 <p class="text-gray-700 mb-4">
                     Para ser o "Host" da partida ou ter NAT Aberto no CoD/Xbox:
                 </p>

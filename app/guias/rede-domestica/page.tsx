@@ -25,7 +25,7 @@ export default function RededomesticaGuide() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Componentes Essenciais</h3>
+            <h class="text-gray-900 font-semibold mb-2">Componentes Essenciais</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>📡 Roteador WiFi dual-band (2.4GHz e 5GHz)</li>
               <li>🔌 Modem compatível com seu provedor de internet</li>
@@ -34,7 +34,7 @@ export default function RededomesticaGuide() {
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Considerações Iniciais</h3>
+            <h class="text-gray-900 font-semibold mb-2">Considerações Iniciais</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>🏠 Área total da residência em metros quadrados</li>
               <li>📶 Quantidade de paredes e obstáculos</li>
@@ -118,7 +118,7 @@ export default function RededomesticaGuide() {
           content: `
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="bg-[#171313] p-3 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Entry Level (R$ 200-400)</h4>
+                <h class="text-gray-900 font-semibold mb-2">Entry Level (R$ 200-400)</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>TP-Link Archer A7 ou AX1800</li>
                   <li>WiFi dual-band AC1200</li>
@@ -127,7 +127,7 @@ export default function RededomesticaGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#8B31FF]/20">
-                <h4 class="text-white font-semibold mb-2">Mid Range (R$ 400-800)</h4>
+                <h class="text-gray-900 font-semibold mb-2">Mid Range (R$ 400-800)</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>ASUS RT-AX58U ou AX6000</li>
                   <li>WiFi 6 AX3000 dual-band</li>
@@ -136,7 +136,7 @@ export default function RededomesticaGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-3 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Premium (R$ 800+)</h4>
+                <h class="text-gray-900 font-semibold mb-2">Premium (R$ 800+)</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>Netgear Nighthawk AX12</li>
                   <li>WiFi 6 tri-band AX6000</li>

@@ -54,7 +54,7 @@ export default function LoLBlackScreenGuide() {
             title: "2. Reset de Configurações via Arquivo",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Se nada funcionar:</h4>
+            <h class="text-gray-900 font-bold mb-2">Se nada funcionar:</h4>
             <p class="text-sm text-gray-700">
                 1. Vá na pasta de instalação do LoL (geralmente <code>C:/Riot Games/League of Legends/Config</code>). <br/>
                 2. Delete o arquivo <strong>game.cfg</strong>. <br/>

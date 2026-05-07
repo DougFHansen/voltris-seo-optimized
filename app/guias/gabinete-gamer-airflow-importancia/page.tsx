@@ -54,7 +54,7 @@ export default function AirflowGuide() {
             title: "2. Pressão Positiva vs Negativa",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">O Segredo contra a Poeira:</h4>
+            <h class="text-gray-900 font-bold mb-2">O Segredo contra a Poeira:</h4>
             <p class="text-sm text-gray-700">
                 O ideal para gamers é a <strong>Pressão Positiva</strong>. Isso acontece quando você tem mais ventoinhas jogando ar para dentro do que para fora. Isso força o ar (e a poeira) a sair por todas as frestas do gabinete, impedindo que a sujeira entre pelos buraquinhos sem filtro.
             </p>

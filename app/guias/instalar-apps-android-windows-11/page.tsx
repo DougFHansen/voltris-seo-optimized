@@ -55,7 +55,7 @@ export default function AndroidOnWindowsGuide() {
             title: "2. Instalando qualquer APK (Sideload)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dica Avançada:</h4>
+            <h class="text-gray-900 font-bold mb-2">Dica Avançada:</h4>
             <p class="text-sm text-gray-700">
                 A Amazon Appstore tem poucos apps. Para instalar qualquer aplicativo (como o WhatsApp ou um jogo específico), use ferramentas de terceiros como o <strong>'WSA Pacman'</strong> ou <strong>'WSATools'</strong> disponíveis na Microsoft Store. Elas permitem que você apenas clique duas vezes em um arquivo .APK e ele seja instalado no Windows como se fosse um programa comum.
             </p>

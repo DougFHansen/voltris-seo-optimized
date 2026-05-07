@@ -56,7 +56,7 @@ export default function BluetoothTroubleshootingGuide() {
       title: "2. O truque da Antena Wi-Fi",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dica de Hardware:</h4>
+            <h class="text-gray-900 font-bold mb-2">Dica de Hardware:</h4>
             <p class="text-sm text-gray-700">
                 Se você usa um PC de mesa com antenas Wi-Fi na parte de trás da placa-mãe, certifique-se de que as antenas estejam **conectadas**, mesmo que você use internet via cabo. O chip de Bluetooth usa essas mesmas antenas para transmitir o sinal. Sem elas, o alcance do Bluetooth cai para menos de 1 metro, causando lag severo em controles e áudio.
             </p>

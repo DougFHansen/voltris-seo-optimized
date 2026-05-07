@@ -57,7 +57,7 @@ export default function GoWMemoryFixGuide() {
             title: "2. O Mod de Fix de Memória",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Nexus Mods:</h4>
+            <h class="text-gray-900 font-bold mb-2">Nexus Mods:</h4>
             <p class="text-sm text-gray-700">
                 Existe um mod popular chamado <strong>"God of War Memory Leak Fix"</strong> no Nexus Mods. Ele substitui alguns arquivos de biblioteca que melhoram a forma como o jogo despeja os assets do mapa. É altamente recomendado se você joga em notebooks ou PCs com pouca VRAM.
             </p>

@@ -54,7 +54,7 @@ export default function SSDInstallationGuide() {
       title: "2. Como Clonar o Windows (Sem Formatar)",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Processo com Macrium Reflect:</h4>
+            <h class="text-gray-900 font-bold mb-2">Processo com Macrium Reflect:</h4>
             <p class="text-sm text-gray-700">
                 1. Conecte o SSD novo no PC (use um adaptador USB-SATA se for notebook). <br/>
                 2. Abra o software de clonagem e selecione o disco antigo como **Origem** e o novo como **Destino**. <br/>

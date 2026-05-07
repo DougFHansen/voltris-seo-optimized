@@ -52,7 +52,7 @@ export default function ChairComparisonGuide() {
             title: "2. Cadeira de Escritório: Ergonomia Pura",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">O Poder do Mesh:</h4>
+            <h class="text-gray-900 font-bold mb-2">O Poder do Mesh:</h4>
             <p class="text-sm text-gray-700">
                 Cadeiras ergonômicas de alta qualidade (como as de tela Mesh) em 2026 são projetadas para se adaptar à curvatura natural da sua lombar. Elas não tentam prender o seu corpo em um formato rígido de "concha", permitindo micro-movimentos que evitam a fadiga muscular. Além disso, a tela mesh permite a circulação de ar, sendo muito mais fresca para o uso diário.
             </p>
@@ -77,7 +77,7 @@ export default function ChairComparisonGuide() {
     {
       title: "Biomecânica e Ergonomia: Fundamentos Científicos de Apoio Postural",
       content: `
-        <h4 class="text-white font-bold mb-3">🔬 Biomecânica da Coluna Vertebral em Posição Sentada</h4>
+        <h class="text-gray-900 font-bold mb-3">🔬 Biomecânica da Coluna Vertebral em Posição Sentada</h4>
         <p class="mb-4 text-gray-700">
           A biomecânica da coluna vertebral em posição sentada envolve complexas interações entre músculos, ligamentos e estruturas ósseas. A posição sentada aumenta a pressão sobre os discos intervertebrais em até 40% em comparação com a posição em pé, tornando o apoio lombar adequado essencial para a saúde a longo prazo:
         </p>
@@ -107,7 +107,7 @@ export default function ChairComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Análise Comparativa de Pressão na Coluna</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Análise Comparativa de Pressão na Coluna</h4>
         <p class="mb-4 text-gray-700">
           Estudos biomecânicos demonstram diferenças significativas na pressão exercida sobre a coluna em diferentes posições e tipos de cadeiras:
         </p>
@@ -174,7 +174,7 @@ export default function ChairComparisonGuide() {
     {
       title: "Materiais e Engenharia de Apoio: Comparação Técnica de Conforto e Durabilidade",
       content: `
-        <h4 class="text-white font-bold mb-3">🏗️ Engenharia de Materiais em Cadeiras Ergonômicas</h4>
+        <h class="text-gray-900 font-bold mb-3">🏗️ Engenharia de Materiais em Cadeiras Ergonômicas</h4>
         <p class="mb-4 text-gray-700">
           A escolha de materiais em cadeiras ergonômicas envolve considerações científicas sobre durabilidade, transpiração, resistência e conforto térmico. Cada material tem propriedades específicas que afetam diretamente o desempenho da cadeira:
         </p>
@@ -230,7 +230,7 @@ export default function ChairComparisonGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Componentes Técnicos de Cadeiras Premium</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Componentes Técnicos de Cadeiras Premium</h4>
         <p class="mb-4 text-gray-700">
           Cadeiras de escritório premium incorporam tecnologias avançadas para suporte e conforto:
         </p>
@@ -266,7 +266,7 @@ export default function ChairComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🌡️ Avaliação Térmica e Transpiração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🌡️ Avaliação Térmica e Transpiração</h4>
         <p class="mb-4 text-gray-700">
           A avaliação científica de conforto térmico em cadeiras considera diversos fatores:
         </p>
@@ -284,12 +284,12 @@ export default function ChairComparisonGuide() {
     {
       title: "Tecnologias Emergentes em Mobilidade e Saúde Ocupacional",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Saúde Ocupacional de Próxima Geração</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias de Saúde Ocupacional de Próxima Geração</h4>
         <p class="mb-4 text-gray-700">
           A próxima geração de cadeiras de escritório está explorando tecnologias avançadas que vão além da ergonomia tradicional para monitorar e melhorar a saúde do usuário:
         </p>
         
-        <h4 class="text-white font-bold mb-3">Sistemas de Monitoramento Biométrico</h4>
+        <h class="text-gray-900 font-bold mb-3">Sistemas de Monitoramento Biométrico</h4>
         <p class="mb-4 text-gray-700">
           Novas tecnologias de monitoramento estão sendo implementadas em cadeiras inteligentes:
         </p>
@@ -339,7 +339,7 @@ export default function ChairComparisonGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Saúde Ocupacional</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🤖 Inteligência Artificial em Saúde Ocupacional</h4>
         <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na prevenção de doenças ocupacionais:
         </p>
@@ -370,7 +370,7 @@ export default function ChairComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
         <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de saúde ocupacional de próxima geração:
         </p>
@@ -427,7 +427,7 @@ export default function ChairComparisonGuide() {
     {
       title: "Ciência das Baterias e Degradabilidade: Engenharia de Materiais em Cadeiras com Recursos Eletrônicos",
       content: `
-        <h4 class="text-white font-bold mb-3">🔋 Engenharia de Baterias em Cadeiras Inteligentes</h4>
+        <h class="text-gray-900 font-bold mb-3">🔋 Engenharia de Baterias em Cadeiras Inteligentes</h4>
         <p class="mb-4 text-gray-700">
           Com o advento das cadeiras inteligentes equipadas com recursos eletrônicos (massagem, ajustes automatizados, sensores biométricos), a engenharia de baterias tornou-se crucial para o funcionamento desses sistemas:
         </p>
@@ -454,7 +454,7 @@ export default function ChairComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚡ Características Técnicas de Baterias para Mobiliário Inteligente</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚡ Características Técnicas de Baterias para Mobiliário Inteligente</h4>
         <p class="mb-4 text-gray-700">
           As especificações técnicas das baterias para cadeiras inteligentes são projetadas para garantir segurança e durabilidade:
         </p>
@@ -515,7 +515,7 @@ export default function ChairComparisonGuide() {
     {
       title: "Sustentabilidade e Reciclagem: Impacto Ambiental de Cadeiras de Alta Tecnologia",
       content: `
-        <h4 class="text-white font-bold mb-3">🌍 Avaliação do Ciclo de Vida de Cadeiras Ergonômicas</h4>
+        <h class="text-gray-900 font-bold mb-3">🌍 Avaliação do Ciclo de Vida de Cadeiras Ergonômicas</h4>
         <p class="mb-4 text-gray-700">
           A sustentabilidade das cadeiras ergonômicas envolve análise do ciclo de vida completo, desde a extração de matérias-primas até o descarte final. Cadeiras de alta qualidade tendem a ter menor impacto ambiental devido à sua longevidade:
         </p>
@@ -552,7 +552,7 @@ export default function ChairComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">♻️ Comparação de Impacto Ambiental</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">♻️ Comparação de Impacto Ambiental</h4>
         <p class="mb-4 text-gray-700">
           A análise comparativa do impacto ambiental considera diferentes fatores de sustentabilidade:
         </p>

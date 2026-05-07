@@ -53,7 +53,7 @@ export default function CPUOverclockGuide() {
       title: "2. Intel: Multiplicadores e Chipset",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Apenas Séries K:</h4>
+            <h class="text-gray-900 font-bold mb-2">Apenas Séries K:</h4>
             <p class="text-sm text-gray-700">
                 Se o seu processador Intel não tiver o "K" no final (ex: i5-13400), o multiplicador é travado e você não poderá fazer overclock. <br/><br/>
                 Para os processadores desbloqueados, o ajuste é feito na BIOS alterando o <strong>CPU Core Ratio</strong>. Comece subindo +1 em todos os núcleos e use o programa <strong>Cinebench</strong> para testar se o Windows não vai dar tela azul sob estresse.

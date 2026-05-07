@@ -54,7 +54,7 @@ export default function FormatVsCleanGuide() {
             title: "2. Quando você DEVE Formatar?",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Sinais de Alerta:</h4>
+            <h class="text-gray-900 font-bold mb-2">Sinais de Alerta:</h4>
             <p class="text-sm text-gray-700">
                 - O Windows demora mais de 2 minutos para carregar em um SSD. <br/>
                 - Você recebe mensagens de erro de <strong>.dll</strong> faltando constantemente. <br/>

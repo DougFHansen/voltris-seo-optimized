@@ -53,7 +53,7 @@ export default function DLLFixGuide() {
             title: "2. DirectX: O motor dos jogos",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">DirectX End-User Web Installer:</h4>
+            <h class="text-gray-900 font-bold mb-2">DirectX End-User Web Installer:</h4>
             <p class="text-sm text-gray-700">
                 Embora o Windows 11 já venha com o DirectX 12, ele não possui os componentes do <strong>DirectX 9, 10 e 11</strong> que muitos jogos clássicos utilizam. <br/><br/>
                 Vá ao site oficial da Microsoft e baixe o 'DirectX End-User Runtime Web Installer'. Ele fará uma verificação nas pastas do seu sistema e baixará apenas o que estiver faltando, corrigindo erros como d3dx9_43.dll.
@@ -77,7 +77,7 @@ export default function DLLFixGuide() {
         {
             title: "4. Fundamentos Técnicos de Bibliotecas Dinâmicas",
             content: `
-        <h4 class="text-white font-bold mb-3">🔬 Arquitetura de Bibliotecas DLL e Runtimes</h4>
+        <h class="text-gray-900 font-bold mb-3">🔬 Arquitetura de Bibliotecas DLL e Runtimes</h4>
         <p class="mb-4 text-gray-700">
             As DLLs (Dynamic Link Libraries) são componentes fundamentais da arquitetura do Windows que permitem o compartilhamento de código entre múltiplos programas:
         </p>
@@ -104,7 +104,7 @@ export default function DLLFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Processo de Resolução de Dependências</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Processo de Resolução de Dependências</h4>
         <p class="mb-4 text-gray-700">
             O Windows utiliza um processo complexo para localizar e carregar DLLs:
         </p>
@@ -157,7 +157,7 @@ export default function DLLFixGuide() {
         {
             title: "5. Análise Profunda de Erros de DLL",
             content: `
-        <h4 class="text-white font-bold mb-3">🔍 Diagnóstico Técnico de Problemas de DLL</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Diagnóstico Técnico de Problemas de DLL</h4>
         <p class="mb-4 text-gray-700">
             A identificação precisa da causa raiz de erros de DLL é essencial para soluções eficazes:
         </p>
@@ -190,7 +190,7 @@ export default function DLLFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Técnicas Avançadas de Troubleshooting</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Técnicas Avançadas de Troubleshooting</h4>
         <p class="mb-4 text-gray-700">
             Métodos sistemáticos para resolver problemas complexos de DLL:
         </p>
@@ -219,7 +219,7 @@ export default function DLLFixGuide() {
         {
             title: "6. Gestão de Runtimes e Pacotes",
             content: `
-        <h4 class="text-white font-bold mb-3">📦 Gerenciamento Avançado de Pacotes Redistribuíveis</h4>
+        <h class="text-gray-900 font-bold mb-3">📦 Gerenciamento Avançado de Pacotes Redistribuíveis</h4>
         <p class="mb-4 text-gray-700">
             O gerenciamento eficiente dos pacotes redistribuíveis é crucial para a estabilidade do sistema:
         </p>
@@ -256,7 +256,7 @@ export default function DLLFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Tabela de Compatibilidade e Requisitos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Tabela de Compatibilidade e Requisitos</h4>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
@@ -309,7 +309,7 @@ export default function DLLFixGuide() {
         {
             title: "7. Ferramentas Avançadas de Diagnóstico",
             content: `
-        <h4 class="text-white font-bold mb-3">🔍 Utilitários Profissionais para Análise de DLL</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Utilitários Profissionais para Análise de DLL</h4>
         <p class="mb-4 text-gray-700">
             Ferramentas especializadas para diagnosticar problemas complexos de dependências:
         </p>
@@ -359,7 +359,7 @@ export default function DLLFixGuide() {
         {
             title: "8. Procedimentos de Reparo Avançado",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Técnicas de Reparo Profundo do Sistema</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Técnicas de Reparo Profundo do Sistema</h4>
         <p class="mb-4 text-gray-700">
             Quando métodos convencionais falham, procedimentos avançados podem resolver problemas persistentes:
         </p>
@@ -386,7 +386,7 @@ export default function DLLFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🧪 Procedimentos de Teste e Validação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🧪 Procedimentos de Teste e Validação</h4>
         <p class="mb-4 text-gray-700">
             Após a correção, é importante validar a integridade do sistema:
         </p>
@@ -402,7 +402,7 @@ export default function DLLFixGuide() {
         {
             title: "9. Prevenção e Melhores Práticas",
             content: `
-        <h4 class="text-white font-bold mb-3">🛡️ Estratégias de Prevenção de Problemas de DLL</h4>
+        <h class="text-gray-900 font-bold mb-3">🛡️ Estratégias de Prevenção de Problemas de DLL</h4>
         <p class="mb-4 text-gray-700">
             Medidas preventivas para evitar problemas recorrentes com DLLs:
         </p>
@@ -429,7 +429,7 @@ export default function DLLFixGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📋 Checklist de Prevenção</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📋 Checklist de Prevenção</h4>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">

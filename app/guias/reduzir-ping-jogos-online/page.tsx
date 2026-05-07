@@ -54,7 +54,7 @@ export default function ReducePingGuide() {
             title: "2. DNS: A lista telefônica da Internet",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Resolução mais rápida:</h4>
+            <h class="text-gray-900 font-bold mb-2">Resolução mais rápida:</h4>
             <p class="text-sm text-gray-700">
                 O DNS da sua operadora costuma ser lento e congestionado. <br/><br/>
                 Mudar para o <strong>Cloudflare (1.1.1.1)</strong> ou <strong>Google (8.8.8.8)</strong> ajuda o seu PC a encontrar o servidor do jogo de forma mais direta. Em alguns casos, essa pequena troca pode reduzir o ping em 5ms a 10ms e, o mais importante, evitar quedas de conexão.

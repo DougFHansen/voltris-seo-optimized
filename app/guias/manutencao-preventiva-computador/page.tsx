@@ -55,7 +55,7 @@ export default function PreventiveMaintenanceGuide() {
             title: "2. Rotina de Hardware (Semestral)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Checklist Físico:</h4>
+            <h class="text-gray-900 font-bold mb-2">Checklist Físico:</h4>
             <p class="text-sm text-gray-700">
                 1. Verifique se todas as ventoinhas estão girando sem barulho de "areia". <br/>
                 2. Use ar comprimido para limpar os filtros de ar. <br/>

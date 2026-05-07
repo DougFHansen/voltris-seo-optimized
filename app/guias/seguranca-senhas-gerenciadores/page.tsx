@@ -53,7 +53,7 @@ export default function PasswordManagerGuide() {
             title: "2. Gerenciador de Navegador vs Dedicado",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">O Perigo do Chrome/Edge:</h4>
+            <h class="text-gray-900 font-bold mb-2">O Perigo do Chrome/Edge:</h4>
             <p class="text-sm text-gray-700">
                 Salvar senhas no navegador é prático, mas arriscado. Se um malware infectar seu PC, ele pode exportar todos os seus logins salvos no navegador em segundos. Gerenciadores dedicados como **Bitwarden** ou **Proton Pass** exigem autenticação biométrica ou senha mestre para liberar os dados, criando uma camada extra de proteção crucial em 2026.
             </p>
@@ -76,10 +76,10 @@ export default function PasswordManagerGuide() {
           O <strong>Proton Pass</strong> é a nova entrada no mercado de gerenciadores de senhas, desenvolvida pela equipe do ProtonMail. Diferentemente de outros gerenciadores, ele oferece criptografia zero-knowledge hospedada na Suíça, com forte foco em privacidade e transparência.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Recursos do Proton Pass</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Recursos do Proton Pass</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">Criptografia End-to-End</h5>
+            <h class="text-gray-900 font-bold mb-3">Criptografia End-to-End</h5>
             <p class="text-gray-700 text-sm mb-3">
               Todas as senhas são criptografadas localmente antes de serem enviadas aos servidores da Proton.
             </p>
@@ -91,7 +91,7 @@ export default function PasswordManagerGuide() {
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">Integração com Proton Services</h5>
+            <h class="text-gray-900 font-bold mb-3">Integração com Proton Services</h5>
             <p class="text-gray-700 text-sm mb-3">
               Integrado com ProtonMail, ProtonCalendar e outros serviços da Proton para experiência unificada.
             </p>
@@ -111,7 +111,7 @@ export default function PasswordManagerGuide() {
           Escolher o gerenciador certo depende de suas necessidades específicas. Cada um tem vantagens e desvantagens distintas em termos de segurança, recursos e custo.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Gerenciadores de Senhas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Comparação de Gerenciadores de Senhas</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
             <thead class="bg-gray-800">
@@ -178,7 +178,7 @@ export default function PasswordManagerGuide() {
           A segurança de um gerenciador de senhas depende fortemente da proteção da senha mestre e da implementação adequada de autenticação adicional. A combinação de uma senha mestre forte com 2FA oferece proteção robusta contra acessos não autorizados.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔐 Estratégias de Segurança para Senha Mestre</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔐 Estratégias de Segurança para Senha Mestre</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><strong>Frase-senha:</strong> Use uma frase longa e memorável em vez de uma senha curta (ex: "Minha_cachorra_nasceu_em_2023_no_verão!")</li>
           <li><strong>Exclusividade:</strong> A senha mestre deve ser usada SOMENTE para o gerenciador de senhas</li>
@@ -186,7 +186,7 @@ export default function PasswordManagerGuide() {
           <li><strong>Atualização:</strong> Altere a senha mestre periodicamente (a cada 6-12 meses)</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔢 Opções de 2FA para Gerenciadores</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔢 Opções de 2FA para Gerenciadores</h4>
         <div class="space-y-4 mt-4">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-2">TOTP (Time-based One-Time Password)</h5>
@@ -221,7 +221,7 @@ export default function PasswordManagerGuide() {
             Em 2026, os gerenciadores de senhas utilizam técnicas avançadas de criptografia para proteger suas credenciais. O modelo de segurança baseia-se no conceito de "zero-knowledge", onde nem mesmo os provedores do serviço podem acessar suas senhas.
           </p>
           
-          <h4 class="text-white font-bold mb-3 mt-6">🔐 Arquitetura de Criptografia de Gerenciadores de Senhas</h4>
+          <h class="text-gray-900 font-bold mb-3 mt-6">🔐 Arquitetura de Criptografia de Gerenciadores de Senhas</h4>
           <div class="overflow-x-auto mb-6">
             <table class="w-full text-sm text-gray-700 border-collapse">
               <thead>
@@ -267,7 +267,7 @@ export default function PasswordManagerGuide() {
             </table>
           </div>
           
-          <h4 class="text-white font-bold mb-3 mt-6">🛡️ Implementações Avançadas de Segurança</h4>
+          <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Implementações Avançadas de Segurança</h4>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
               <h5 class="text-blue-400 font-bold mb-3">Zero-Knowledge Architecture</h5>
@@ -304,7 +304,7 @@ export default function PasswordManagerGuide() {
             A segurança moderna de gerenciadores de senhas depende de protocolos de autenticação robustos que garantem que apenas o proprietário legítimo possa acessar as credenciais armazenadas.
           </p>
           
-          <h4 class="text-white font-bold mb-3 mt-6">OAuth 2.0 e OpenID Connect</h4>
+          <h class="text-gray-900 font-bold mb-3 mt-6">OAuth 2.0 e OpenID Connect</h4>
           <p class="text-gray-700 mb-4">
             Os protocolos padrão da indústria para autenticação segura:
           </p>
@@ -330,20 +330,20 @@ export default function PasswordManagerGuide() {
             </div>
           </div>
           
-          <h4 class="text-white font-bold mb-3 mt-6">Técnicas Avançadas de Autenticação</h4>
+          <h class="text-gray-900 font-bold mb-3 mt-6">Técnicas Avançadas de Autenticação</h4>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-600">
-              <h5 class="text-white font-bold mb-2">WebAuthn/FIDO2</h5>
+              <h class="text-gray-900 font-bold mb-2">WebAuthn/FIDO2</h5>
               <p class="text-gray-700 text-sm">Autenticação sem senha baseada em chaves públicas</p>
             </div>
             
             <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-600">
-              <h5 class="text-white font-bold mb-2">Device Attestation</h5>
+              <h class="text-gray-900 font-bold mb-2">Device Attestation</h5>
               <p class="text-gray-700 text-sm">Verificação de integridade do dispositivo</p>
             </div>
             
             <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-600">
-              <h5 class="text-white font-bold mb-2">Risk-Based Authentication</h5>
+              <h class="text-gray-900 font-bold mb-2">Risk-Based Authentication</h5>
               <p class="text-gray-700 text-sm">Análise de comportamento para autenticação adaptativa</p>
             </div>
           </div>
@@ -356,7 +356,7 @@ export default function PasswordManagerGuide() {
             Em 2026 e além, a autenticação digital está evoluindo rapidamente com novas tecnologias que visam eliminar completamente as senhas tradicionais.
           </p>
           
-          <h4 class="text-white font-bold mb-3 mt-6">🎯 Transição para Autenticação Sem Senha</h4>
+          <h class="text-gray-900 font-bold mb-3 mt-6">🎯 Transição para Autenticação Sem Senha</h4>
           <div class="space-y-6">
             <div class="bg-orange-900/10 p-5 rounded-xl border border-orange-500/20">
               <h5 class="text-orange-400 font-bold mb-3">WebAuthn e Passkeys</h5>
@@ -385,7 +385,7 @@ export default function PasswordManagerGuide() {
             </div>
           </div>
           
-          <h4 class="text-white font-bold mb-3 mt-6">🔮 Tendências de Mercado em 2026</h4>
+          <h class="text-gray-900 font-bold mb-3 mt-6">🔮 Tendências de Mercado em 2026</h4>
           <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
               <thead class="bg-gray-800">

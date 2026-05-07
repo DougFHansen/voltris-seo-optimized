@@ -56,7 +56,7 @@ export default function FortniteTexturesFixGuide() {
             title: "2. Limite de FPS e Uso de Disco",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Poupe o Hardware:</h4>
+            <h class="text-gray-900 font-bold mb-2">Poupe o Hardware:</h4>
             <p class="text-sm text-gray-700">
                 Se o seu processador está em 100%, ele não consegue processar o carregamento do mapa. <br/><br/>
                 No menu de vídeo do jogo, coloque um **Limite de Taxa de Quadros**. Se o seu monitor é 60Hz, limite a 60 FPS ou 120 FPS. Isso libera "folga" para que o seu PC foque em carregar as texturas e malhas de colisão antes que você chegue no solo após pular do ônibus.

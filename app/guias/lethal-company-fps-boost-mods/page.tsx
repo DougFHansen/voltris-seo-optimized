@@ -153,15 +153,15 @@ export default function LethalGuide() {
             content: `
         <div class="space-y-4">
             <div class="border-l-2 border-red-500 pl-4 py-1">
-                <strong class="text-white block">Tela Preta ao Iniciar (Carregando infinito)</strong>
+                <s class="text-gray-900 block">Tela Preta ao Iniciar (Carregando infinito)</strong>
                 <p class="text-gray-700 text-sm">Geralmente causado por mods de som (.custom sounds) ou mods incompatíveis com a versão v50/v55/v60 do jogo. Desative metade dos mods e teste. Técnica de "Binary Search".</p>
             </div>
             <div class="border-l-2 border-yellow-500 pl-4 py-1">
-                <strong class="text-white block">Amigo não consegue entrar (An error occured)</strong>
+                <s class="text-gray-900 block">Amigo não consegue entrar (An error occured)</strong>
                 <p class="text-gray-700 text-sm">Versão do BepInEx diferente ou config de mod diferente. Usem a função "Export Profile as Code" e garantam que todos usem EXATAMENTE o mesmo código.</p>
             </div>
              <div class="border-l-2 border-blue-500 pl-4 py-1">
-                <strong class="text-white block">Mouse saindo da tela (Dual Monitor)</strong>
+                <s class="text-gray-900 block">Mouse saindo da tela (Dual Monitor)</strong>
                 <p class="text-gray-700 text-sm">O jogo em modo "Borderless" as vezes não prende o mouse. Instale o mod <code>CursorLock</code> ou use Alt+Enter para forçar Fullscreen Real.</p>
             </div>
         </div>

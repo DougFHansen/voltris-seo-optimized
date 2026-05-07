@@ -45,7 +45,7 @@ export default function FormatWindowsGuide() {
           Formatar o Windows é a solução definitiva quando nenhuma otimização funciona mais. Porém, <strong>não é sempre necessário</strong>. Antes de formatar (processo que leva 1-2 horas contando backup e reinstalação de programas), tente soluções menos drásticas.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">✅ Quando Formatar É a Melhor Opção:</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">✅ Quando Formatar É a Melhor Opção:</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>Vírus persistente:</strong> Malware que antivírus não consegue remover (especialmente rootkits).</li>
           <li><strong>Windows corrompido:</strong> Tela azul constante, arquivos de sistema faltando mesmo após <code>sfc /scannow</code> e <code>DISM</code>.</li>
@@ -55,7 +55,7 @@ export default function FormatWindowsGuide() {
           <li><strong>Sensação de \"PC novo\":</strong> Depois de anos, uma instalação limpa realmente dá uma nova vida ao sistema.</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">❌ Quando NÃO Precisa Formatar (Tente Antes):</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">❌ Quando NÃO Precisa Formatar (Tente Antes):</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>PC lento após atualização:</strong> Desinstale a atualização problemática antes (Configurações → Windows Update → Histórico).</li>
           <li><strong>Disco 100%:</strong> Desative SysMain e Superfetch (serviços que travam HDs antigos).</li>
@@ -76,7 +76,7 @@ export default function FormatWindowsGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3">📂 Backup de Arquivos Essenciais</h4>
+        <h class="text-gray-900 font-bold mb-3">📂 Backup de Arquivos Essenciais</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>Pasta do Usuário Completa:</strong> Copie <code>C:\\Users\\SeuNome</code> para HD Externo ou nuvem. Isso inclui:
             <ul class="list-disc ml-8 mt-2 space-y-1 text-sm">
@@ -96,7 +96,7 @@ export default function FormatWindowsGuide() {
           <li><strong>Lista de Programas Instalados:</strong> Tire print da lista de programas (Configurações → Apps) para não esquecer de reinstalar nada.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔑 Chave de Ativação do Windows</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔑 Chave de Ativação do Windows</h4>
         <p class="text-gray-700 mb-3">
           Se seu Windows veio pré-instalado (OEM), a chave está gravada na BIOS e ativará automaticamente após a formatação. Se você comprou separado:
         </p>
@@ -106,7 +106,7 @@ export default function FormatWindowsGuide() {
           <li>Se não estiver vinculado, use o programa gratuito <strong>ProduKey</strong> para extrair a chave (anote em papel).</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">💾 Baixar Drivers Essenciais</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">💾 Baixar Drivers Essenciais</h4>
         <p class="text-gray-700 mb-3">
           Em 2026, o Windows 11 reconhece 95% do hardware automaticamente. Porém, baixe por segurança:
         </p>
@@ -124,7 +124,7 @@ export default function FormatWindowsGuide() {
           Você precisa de um pendrive <strong>vazio</strong> de pelo menos 8GB (recomendo 16GB). Todo o conteúdo será apagado.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📥 Método 1: Media Creation Tool (Oficial da Microsoft)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📥 Método 1: Media Creation Tool (Oficial da Microsoft)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Vá no site da Microsoft: <code>microsoft.com/software-download/windows11</code></li>
           <li>Baixe o <strong>Media Creation Tool</strong> (pequeno, ~20MB).</li>
@@ -137,7 +137,7 @@ export default function FormatWindowsGuide() {
           <strong>Vantagem:</strong> Simples, sem complicação. <strong>Desvantagem:</strong> Lento e requer internet durante o processo.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔥 Método 2: Rufus (Mais Rápido e Flexível)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔥 Método 2: Rufus (Mais Rápido e Flexível)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Baixe a ISO do Windows 11 direto do site da Microsoft (mesmo link acima, mas escolha <strong>\"Baixar ISO\"</strong>).</li>
           <li>Baixe o <strong>Rufus 4.0+</strong> (rufus.ie) — programa gratuito e portátil (sem instalação).</li>
@@ -162,7 +162,7 @@ export default function FormatWindowsGuide() {
     {
       title: "Passo a Passo: Instalando o Windows 11 do Zero",
       content: `
-        <h4 class="text-white font-bold mb-3">🔄 Etapa 1: Entrando na BIOS/Boot Menu</h4>
+        <h class="text-gray-900 font-bold mb-3">🔄 Etapa 1: Entrando na BIOS/Boot Menu</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Com o PC desligado, conecte o pendrive bootável em uma porta USB.</li>
           <li>Ligue o PC e <strong>imediatamente</strong> comece a apertar a tecla de Boot Menu:
@@ -179,7 +179,7 @@ export default function FormatWindowsGuide() {
           <li>Se não aparecer opção de boot, entre na BIOS (geralmente DEL ou F2) e desative <strong>Fast Boot</strong> e <strong>Secure Boot</strong> temporariamente.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">💻 Etapa 2: Tela de Instalação do Windows</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">💻 Etapa 2: Tela de Instalação do Windows</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Após alguns segundos, você verá o logo do Windows e a mensagem \"Preparando...\".</li>
           <li>Escolha o <strong>idioma</strong> (Português Brasil), <strong>formato de hora</strong> e <strong>teclado ABNT2</strong>.</li>
@@ -189,7 +189,7 @@ export default function FormatWindowsGuide() {
           <li>Aceite os termos de licença.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">💾 Etapa 3: Tipo de Instalação (CRÍTICO!)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">💾 Etapa 3: Tipo de Instalação (CRÍTICO!)</h4>
         <p class="text-gray-700 mb-4">
           Esta é a tela mais importante. Você verá duas opções:
         </p>
@@ -213,7 +213,7 @@ export default function FormatWindowsGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3">🧹 Limpando as Partições (Formatação Completa)</h4>
+        <h class="text-gray-900 font-bold mb-3">🧹 Limpando as Partições (Formatação Completa)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Selecione a primeira partição do disco (ex: \"Partição 1: Sistema\").</li>
           <li>Clique em <strong>\"Excluir\"</strong>.</li>
@@ -235,7 +235,7 @@ export default function FormatWindowsGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⏱️ Aguardando a Instalação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⏱️ Aguardando a Instalação</h4>
         <p class="text-gray-700 mb-4">
           O processo de instalação começa automaticamente. Você verá:
         </p>
@@ -257,7 +257,7 @@ export default function FormatWindowsGuide() {
           Após a instalação, o Windows reiniciará e mostrará a tela de configuração inicial (OOBE). <strong>Agora você pode remover o pendrive.</strong>
         </p>
         
-        <h4 class="text-white font-bold mb-3">🌐 Conectando à Internet</h4>
+        <h class="text-gray-900 font-bold mb-3">🌐 Conectando à Internet</h4>
         <p class="text-gray-700 mb-4">
           O Windows 11 <strong>força</strong> conexão com internet durante a configuração (para criar/logar em conta Microsoft). Se você quer usar conta local sem internet:
         </p>
@@ -268,7 +268,7 @@ export default function FormatWindowsGuide() {
           <li>Escolha <strong>\"Continuar com configuração limitada\"</strong> para criar conta local.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">👤 Conta Microsoft vs Conta Local</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">👤 Conta Microsoft vs Conta Local</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-5">
             <h5 class="text-[#31A8FF] font-bold mb-3">☁️ Conta Microsoft</h5>
@@ -311,7 +311,7 @@ export default function FormatWindowsGuide() {
           Parabéns! O Windows 11 está instalado. Mas <strong>ainda não terminamos</strong>. Siga este checklist para um sistema perfeito:
         </p>
         
-        <h4 class="text-white font-bold mb-3">✅ Checklist Pós-Formatação (Ordem Cronológica)</h4>
+        <h class="text-gray-900 font-bold mb-3">✅ Checklist Pós-Formatação (Ordem Cronológica)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-4 ml-4">
           <li><strong>Verificar Ativação:</strong> Configurações → Sistema → Ativação. Se não ativou automaticamente, digite sua chave agora.</li>
           
@@ -359,7 +359,7 @@ export default function FormatWindowsGuide() {
     {
       title: "Problemas Comuns Durante a Instalação (Troubleshooting)",
       content: `
-        <h4 class="text-white font-bold mb-3">🚫 Erro: \"Este PC não atende aos requisitos mínimos\"</h4>
+        <h class="text-gray-900 font-bold mb-3">🚫 Erro: \"Este PC não atende aos requisitos mínimos\"</h4>
         <p class="text-gray-700 mb-3">
           Windows 11 exige TPM 2.0 e Secure Boot. Soluções:
         </p>
@@ -369,7 +369,7 @@ export default function FormatWindowsGuide() {
           <li><strong>Bypass (PCs antigos):</strong> Use Rufus com opção \"Remove TPM requirement\" marcada.</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🚫 Erro: \"Não foi possível criar uma nova partição\"</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🚫 Erro: \"Não foi possível criar uma nova partição\"</h4>
         <p class="text-gray-700 mb-3">
           Isso acontece se o disco ainda tiver estrutura MBR (legado) e você está tentando instalar em modo UEFI.
         </p>
@@ -388,14 +388,14 @@ export default function FormatWindowsGuide() {
           <li>Clique em \"Atualizar\" na tela de partições e continue normalmente.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🚫 Pendrive Não Aparece no Boot Menu</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🚫 Pendrive Não Aparece no Boot Menu</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li>Verifique se o pendrive está em uma porta USB 2.0 (traseira do PC). Portas USB 3.0 frontal às vezes falham.</li>
           <li>Desative \"Fast Boot\" e \"Secure Boot\" temporariamente na BIOS.</li>
           <li>Troque a ordem de boot: Pendrive em 1º lugar, HD em 2º.</li>
         </ul>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🚫 Windows Não Ativa Após Formatação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🚫 Windows Não Ativa Após Formatação</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
           <li><strong>PC OEM (pré-instalado):</strong> Conecte à internet e aguarde 10-30 minutos. Ativará automaticamente via BIOS.</li>
           <li><strong>Licença vinculada à conta Microsoft:</strong> Logue com a mesma conta e vá em Configurações → Ativação → Solucionar problemas.</li>
@@ -438,7 +438,7 @@ export default function FormatWindowsGuide() {
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-black/30 p-4 rounded-lg">
-            <h5 class="text-white font-bold mb-2">📊 Dados Reais</h5>
+            <h class="text-gray-900 font-bold mb-2">📊 Dados Reais</h5>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>• 10.000+ instalações Windows realizadas</li>
               <li>• 98.7% taxa de sucesso na primeira tentativa</li>
@@ -447,7 +447,7 @@ export default function FormatWindowsGuide() {
             </ul>
           </div>
           <div class="bg-black/30 p-4 rounded-lg">
-            <h5 class="text-white font-bold mb-2">🎓 Certificações</h5>
+            <h class="text-gray-900 font-bold mb-2">🎓 Certificações</h5>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>• Microsoft Certified Professional (MCP)</li>
               <li>• CompTIA A+ Certified</li>
@@ -468,70 +468,70 @@ export default function FormatWindowsGuide() {
     content: `
       <div class="space-y-6">
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Vou perder meus arquivos se formatar?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Vou perder meus arquivos se formatar?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Sim, absolutamente.</strong> Formatar apaga TUDO do disco selecionado. Por isso o backup é obrigatório. Se você tem 2 discos (SSD + HD), pode formatar apenas o SSD e manter o HD intacto, mas tome cuidado para não selecionar o disco errado durante a instalação.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Preciso comprar uma nova licença do Windows?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Preciso comprar uma nova licença do Windows?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Não, na maioria dos casos.</strong> Se seu Windows veio pré-instalado (OEM), a chave está gravada na BIOS/UEFI e ativará automaticamente após a formatação. Se você comprou uma licença retail e ela está vinculada à sua conta Microsoft, basta logar com a mesma conta. Apenas se você trocou a placa-mãe recentemente pode precisar reativar manualmente.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Quanto tempo demora para formatar o Windows 11?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Quanto tempo demora para formatar o Windows 11?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Tempo total: 1h30 a 2h30.</strong> Dividido em: Backup (30-60 min), Criação do pendrive (10-40 min), Instalação do Windows (20-40 min), Windows Update e drivers (20-40 min). Em SSDs NVMe modernos, a instalação pura leva apenas 15-20 minutos.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Meu PC não tem TPM 2.0. Posso instalar Windows 11?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Meu PC não tem TPM 2.0. Posso instalar Windows 11?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Sim, com bypass.</strong> Use o Rufus para criar o pendrive bootável e marque as opções para remover requisitos de TPM 2.0, Secure Boot e RAM. O Windows instalará normalmente, mas você não receberá atualizações de segurança oficiais (embora na prática, a Microsoft ainda está enviando updates para PCs sem TPM em 2026). Alternativa: Ative o fTPM/PTT na BIOS se sua CPU for Intel 6ª Gen+ ou AMD Ryzen 1000+.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ É melhor formatar ou usar a opção "Redefinir este PC"?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ É melhor formatar ou usar a opção "Redefinir este PC"?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Formatar é mais limpo.</strong> A opção "Redefinir" (Configurações → Sistema → Recuperação) reinstala o Windows mas pode manter resquícios de drivers problemáticos ou partições corrompidas. Formatação via pendrive bootável é uma instalação 100% limpa, ideal para resolver problemas graves. Use "Redefinir" apenas se for preguiça de criar pendrive e seu problema for leve.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Posso formatar sem perder a licença do Office?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Posso formatar sem perder a licença do Office?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Depende do tipo de licença.</strong> Office 365 (assinatura): Basta logar novamente com sua conta Microsoft após formatar. Office 2021/2019 (licença perpétua): Se estiver vinculado à conta Microsoft, reinstale via office.com. Se for licença OEM (veio com o PC), pode precisar da chave original. Anote sua chave antes de formatar usando o programa gratuito "ProduKey".
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Devo escolher Windows 11 Home ou Pro?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Devo escolher Windows 11 Home ou Pro?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Para uso doméstico: Home é suficiente.</strong> Pro adiciona: BitLocker (criptografia de disco), Remote Desktop (acesso remoto), Hyper-V (máquinas virtuais), Group Policy Editor. Se você não sabe o que são essas coisas, não precisa da Pro. Gamers e usuários comuns: Home. Profissionais de TI, desenvolvedores e empresas: Pro.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Preciso formatar se meu PC está lento?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Preciso formatar se meu PC está lento?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Nem sempre.</strong> Tente primeiro: Desinstalar programas desnecessários, desativar inicialização automática (Gerenciador de Tarefas → Inicializar), limpar disco (Configurações → Sistema → Armazenamento), atualizar drivers, verificar se o disco está 100% (Task Manager → Performance → Disk). Se nada disso resolver e o PC tem mais de 3 anos sem formatação, aí sim vale a pena.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Posso usar o mesmo pendrive para formatar vários PCs?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Posso usar o mesmo pendrive para formatar vários PCs?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Sim, perfeitamente.</strong> Uma vez criado o pendrive bootável, você pode usá-lo quantas vezes quiser em qualquer PC compatível. Guarde-o em local seguro como um "kit de emergência". Recomendo etiquetar: "Windows 11 Bootável - Criado em [data]" para saber se está atualizado. A cada 6 meses, recrie o pendrive com a ISO mais recente para ter as últimas atualizações integradas.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ O que fazer se a instalação travar em "Preparando..."?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ O que fazer se a instalação travar em "Preparando..."?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Aguarde 30 minutos primeiro.</strong> Às vezes parece travado mas está processando. Se realmente travou: 1) Desconecte periféricos USB desnecessários (deixe só teclado, mouse e pendrive). 2) Desative Secure Boot na BIOS temporariamente. 3) Teste o pendrive em outra porta USB (prefira USB 2.0 traseira). 4) Recrie o pendrive com Rufus em vez do Media Creation Tool. 5) Teste a RAM com MemTest86 (RAM defeituosa causa travamentos na instalação).
           </p>
@@ -544,7 +544,7 @@ export default function FormatWindowsGuide() {
     title: "Referências Externas e Recursos Adicionais",
     content: `
       <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-        <h4 class="text-white font-bold mb-4">📚 Fontes Oficiais e Ferramentas Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-4">📚 Fontes Oficiais e Ferramentas Recomendadas</h4>
         <ul class="space-y-3 text-gray-700">
           <li class="flex items-start gap-2">
             <span class="text-[#31A8FF] mt-1">→</span>
@@ -618,7 +618,7 @@ export default function FormatWindowsGuide() {
     {
       title: "Otimização Avançada de SSD Após Formatação",
       content: `
-        <h4 class="text-white font-bold mb-3">🔧 Configurações Críticas para SSDs</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Configurações Críticas para SSDs</h4>
         <p class="text-gray-700 mb-4">
           Após formatar e instalar o Windows em um SSD, é crucial garantir que as otimizações adequadas estejam ativadas para manter o desempenho máximo e prolongar a vida útil do dispositivo.
         </p>
@@ -657,7 +657,7 @@ export default function FormatWindowsGuide() {
     {
       title: "Configurações de Energia para Máximo Desempenho",
       content: `
-        <h4 class="text-white font-bold mb-3">⚡ Plano de Energia Ideal Após Formatação</h4>
+        <h class="text-gray-900 font-bold mb-3">⚡ Plano de Energia Ideal Após Formatação</h4>
         <p class="text-gray-700 mb-4">
           Configure o plano de energia para equilibrar desempenho e eficiência energética:</p>
         <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
@@ -706,7 +706,7 @@ export default function FormatWindowsGuide() {
     {
       title: "Hardening de Segurança Pós-Instalação",
       content: `
-        <h4 class="text-white font-bold mb-3">🛡️ Medidas de Segurança Essenciais</h4>
+        <h class="text-gray-900 font-bold mb-3">🛡️ Medidas de Segurança Essenciais</h4>
         <p class="text-gray-700 mb-4">
           Após formatar e instalar o Windows limpo, é o momento ideal para implementar medidas de segurança avançadas.
         </p>
@@ -807,7 +807,7 @@ export default function FormatWindowsGuide() {
     {
       title: "Boas Práticas de Manutenção Pós-Formatação",
       content: `
-        <h4 class="text-white font-bold mb-3">📅 Calendário de Manutenção Recomendado</h4>
+        <h class="text-gray-900 font-bold mb-3">📅 Calendário de Manutenção Recomendado</h4>
         <p class="text-gray-700 mb-4">
           Após formatar e ter um sistema limpo, é importante manter a performance e segurança com uma rotina de manutenção adequada.
         </p>
@@ -835,7 +835,7 @@ export default function FormatWindowsGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Ferramentas Recomendadas para Manutenção</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛠️ Ferramentas Recomendadas para Manutenção</h4>
         <p class="text-gray-700 mb-3">
           Algumas ferramentas gratuitas que ajudam a manter o sistema otimizado após formatação:
         </p>
@@ -851,7 +851,7 @@ export default function FormatWindowsGuide() {
     {
       title: "Otimizações Específicas para Desempenho",
       content: `
-        <h4 class="text-white font-bold mb-3">🎮 Otimizações para Gamers</h4>
+        <h class="text-gray-900 font-bold mb-3">🎮 Otimizações para Gamers</h4>
         <p class="text-gray-700 mb-4">
           Após formatação, o Windows 11 pode ser otimizado para obter o máximo desempenho em jogos e aplicações exigentes.
         </p>
@@ -937,70 +937,70 @@ export default function FormatWindowsGuide() {
     content: `
       <div class="space-y-6">
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Vou perder meus arquivos se formatar?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Vou perder meus arquivos se formatar?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Sim, absolutamente.</strong> Formatar apaga TUDO do disco selecionado. Por isso o backup é obrigatório. Se você tem 2 discos (SSD + HD), pode formatar apenas o SSD e manter o HD intacto, mas tome cuidado para não selecionar o disco errado durante a instalação.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Preciso comprar uma nova licença do Windows?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Preciso comprar uma nova licença do Windows?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Não, na maioria dos casos.</strong> Se seu Windows veio pré-instalado (OEM), a chave está gravada na BIOS/UEFI e ativará automaticamente após a formatação. Se você comprou uma licença retail e ela está vinculada à sua conta Microsoft, basta logar com a mesma conta. Apenas se você trocou a placa-mãe recentemente pode precisar reativar manualmente.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Quanto tempo demora para formatar o Windows 11?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Quanto tempo demora para formatar o Windows 11?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Tempo total: 1h30 a 2h30.</strong> Dividido em: Backup (30-60 min), Criação do pendrive (10-40 min), Instalação do Windows (20-40 min), Windows Update e drivers (20-40 min). Em SSDs NVMe modernos, a instalação pura leva apenas 15-20 minutos.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Meu PC não tem TPM 2.0. Posso instalar Windows 11?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Meu PC não tem TPM 2.0. Posso instalar Windows 11?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Sim, com bypass.</strong> Use o Rufus para criar o pendrive bootável e marque as opções para remover requisitos de TPM 2.0, Secure Boot e RAM. O Windows instalará normalmente, mas você não receberá atualizações de segurança oficiais (embora na prática, a Microsoft ainda está enviando updates para PCs sem TPM em 2026). Alternativa: Ative o fTPM/PTT na BIOS se sua CPU for Intel 6ª Gen+ ou AMD Ryzen 1000+.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ É melhor formatar ou usar a opção "Redefinir este PC"?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ É melhor formatar ou usar a opção "Redefinir este PC"?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Formatar é mais limpo.</strong> A opção "Redefinir" (Configurações → Sistema → Recuperação) reinstala o Windows mas pode manter resquícios de drivers problemáticos ou partições corrompidas. Formatação via pendrive bootável é uma instalação 100% limpa, ideal para resolver problemas graves. Use "Redefinir" apenas se for preguiça de criar pendrive e seu problema for leve.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Posso formatar sem perder a licença do Office?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Posso formatar sem perder a licença do Office?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Depende do tipo de licença.</strong> Office 365 (assinatura): Basta logar novamente com sua conta Microsoft após formatar. Office 2021/2019 (licença perpétua): Se estiver vinculado à conta Microsoft, reinstale via office.com. Se for licença OEM (veio com o PC), pode precisar da chave original. Anote sua chave antes de formatar usando o programa gratuito "ProduKey".
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Devo escolher Windows 11 Home ou Pro?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Devo escolher Windows 11 Home ou Pro?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Para uso doméstico: Home é suficiente.</strong> Pro adiciona: BitLocker (criptografia de disco), Remote Desktop (acesso remoto), Hyper-V (máquinas virtuais), Group Policy Editor. Se você não sabe o que são essas coisas, não precisa da Pro. Gamers e usuários comuns: Home. Profissionais de TI, desenvolvedores e empresas: Pro.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Preciso formatar se meu PC está lento?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Preciso formatar se meu PC está lento?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Nem sempre.</strong> Tente primeiro: Desinstalar programas desnecessários, desativar inicialização automática (Gerenciador de Tarefas → Inicializar), limpar disco (Configurações → Sistema → Armazenamento), atualizar drivers, verificar se o disco está 100% (Task Manager → Performance → Disk). Se nada disso resolver e o PC tem mais de 3 anos sem formatação, aí sim vale a pena.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ Posso usar o mesmo pendrive para formatar vários PCs?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ Posso usar o mesmo pendrive para formatar vários PCs?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Sim, perfeitamente.</strong> Uma vez criado o pendrive bootável, você pode usá-lo quantas vezes quiser em qualquer PC compatível. Guarde-o em local seguro como um "kit de emergência". Recomendo etiquetar: "Windows 11 Bootável - Criado em [data]" para saber se está atualizado. A cada 6 meses, recrie o pendrive com a ISO mais recente para ter as últimas atualizações integradas.
           </p>
         </div>
 
         <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-          <h4 class="text-white font-bold text-lg mb-2">❓ O que fazer se a instalação travar em "Preparando..."?</h4>
+          <h class="text-gray-900 font-bold text-lg mb-2">❓ O que fazer se a instalação travar em "Preparando..."?</h4>
           <p class="text-gray-700 text-sm">
             <strong>Aguarde 30 minutos primeiro.</strong> Às vezes parece travado mas está processando. Se realmente travou: 1) Desconecte periféricos USB desnecessários (deixe só teclado, mouse e pendrive). 2) Desative Secure Boot na BIOS temporariamente. 3) Teste o pendrive em outra porta USB (prefira USB 2.0 traseira). 4) Recrie o pendrive com Rufus em vez do Media Creation Tool. 5) Teste a RAM com MemTest86 (RAM defeituosa causa travamentos na instalação).
           </p>
@@ -1013,7 +1013,7 @@ export default function FormatWindowsGuide() {
     title: "Referências Externas e Recursos Adicionais",
     content: `
       <div class="bg-[#0A0A0F] border border-white/10 rounded-xl p-6">
-        <h4 class="text-white font-bold mb-4">📚 Fontes Oficiais e Ferramentas Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-4">📚 Fontes Oficiais e Ferramentas Recomendadas</h4>
         <ul class="space-y-3 text-gray-700">
           <li class="flex items-start gap-2">
             <span class="text-[#31A8FF] mt-1">→</span>

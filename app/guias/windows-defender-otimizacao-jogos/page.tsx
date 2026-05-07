@@ -54,7 +54,7 @@ export default function DefenderGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Passo a Passo</h4>
-                <p class="text-white font-mono text-sm mb-2">Segurança do Windows > Proteção contra vírus e ameaças > Gerenciar configurações > Exclusões.</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Segurança do Windows > Proteção contra vírus e ameaças > Gerenciar configurações > Exclusões.</p>
                 <p class="text-gray-700 text-xs">
                     Adicione uma "Pasta". Selecione a pasta onde seus jogos estão instalados (ex: <code>C:\\SteamLibrary</code> ou <code>D:\\Games</code>).
                 </p>

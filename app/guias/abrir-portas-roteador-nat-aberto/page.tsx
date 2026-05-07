@@ -45,7 +45,7 @@ export default function RouterPortGuide() {
           <strong>NAT (Network Address Translation)</strong> é o sistema que permite múltiplos dispositivos (seu PC, celular, TV) compartilharem o mesmo IP público da sua internet. Pense no NAT como um porteiro de prédio: ele controla quem entra e sai. Em jogos online, você PRECISA que esse porteiro seja "liberal" (NAT Aberto) para que outros jogadores consigam se conectar diretamente ao seu dispositivo.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Tipos de NAT (Nomenclatura por Plataforma)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Tipos de NAT (Nomenclatura por Plataforma)</h4>
         <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
@@ -103,7 +103,7 @@ export default function RouterPortGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3">💻 Para PC (Windows 11):</h4>
+        <h class="text-gray-900 font-bold mb-3">💻 Para PC (Windows 11):</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Abra <strong>Configurações</strong> → <strong>Rede e Internet</strong> → <strong>Ethernet</strong> (ou Wi-Fi).</li>
           <li>Clique em <strong>Propriedades</strong> da sua conexão ativa.</li>
@@ -121,7 +121,7 @@ export default function RouterPortGuide() {
           <li>Salve e reinicie o PC.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Para PlayStation 5 / Xbox Series:</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Para PlayStation 5 / Xbox Series:</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Vá em <strong>Configurações</strong> → <strong>Rede</strong> → <strong>Configurações de Internet</strong>.</li>
           <li>Escolha sua conexão (Wi-Fi ou Cabo) e clique em <strong>"Avançado"</strong>.</li>
@@ -138,7 +138,7 @@ export default function RouterPortGuide() {
           <strong>UPnP (Universal Plug and Play)</strong> é uma funcionalidade que permite que jogos e programas abram portas AUTOMATICAMENTE no roteador, sem você precisar fazer manualmente. Em 2026, a maioria dos jogos AAA (Warzone, GTA V, FIFA 26) suporta UPnP.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Como Habilitar UPnP no Roteador</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛠️ Como Habilitar UPnP no Roteador</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Acesse o painel do roteador:
             <ul class="list-disc ml-8 mt-2 space-y-1 text-sm">
@@ -178,7 +178,7 @@ export default function RouterPortGuide() {
           <strong>Port Forwarding (Encaminhamento de Portas)</strong> é quando você diz ao roteador: "Quando alguém da internet tentar se conectar nas portas X, Y e Z, direcione essa conexão para o meu PC/console". É como criar um "atalho" direto do mundo externo para o seu dispositivo.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📝 Portas Essenciais por Jogo/Plataforma (2026)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📝 Portas Essenciais por Jogo/Plataforma (2026)</h4>
         <table class="w-full text-xs text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
           <thead class="bg-gray-800">
             <tr>
@@ -221,7 +221,7 @@ export default function RouterPortGuide() {
           </tbody>
         </table>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Como Configurar Port Forwarding (Passo a Passo)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Como Configurar Port Forwarding (Passo a Passo)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-4 ml-4">
           <li><strong>Acesse o painel do roteador:</strong>
             <ul class="list-disc ml-8 mt-2 space-y-1 text-sm">
@@ -262,7 +262,7 @@ export default function RouterPortGuide() {
           </p>
         </div>
         
-        <h4 class="text-white font-bold mb-3">🎮 Como Configurar DMZ (Apenas Consoles PS5/Xbox)</h4>
+        <h class="text-gray-900 font-bold mb-3">🎮 Como Configurar DMZ (Apenas Consoles PS5/Xbox)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li>Acesse o painel do roteador (<code>192.168.1.1</code>).</li>
           <li>Procure por <strong>"DMZ"</strong> ou <strong>"Zona Desmilitarizada"</strong>.</li>
@@ -279,7 +279,7 @@ export default function RouterPortGuide() {
         {
             title: "Testando se o NAT Ficou Aberto",
             content: `
-        <h4 class="text-white font-bold mb-3">🧪 Como Verificar o Tipo de NAT</h4>
+        <h class="text-gray-900 font-bold mb-3">🧪 Como Verificar o Tipo de NAT</h4>
         
         <p class="text-gray-700 mb-3"><strong>No PlayStation 5:</strong></p>
         <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
@@ -315,7 +315,7 @@ export default function RouterPortGuide() {
           
           <div class="space-y-4">
             <div>
-              <p class="text-white font-bold">Problema: "Configurei Port Forwarding mas o NAT continua Restrito"</p>
+              <p class="text-gray-900 font-bold">Problema: "Configurei Port Forwarding mas o NAT continua Restrito"</p>
               <p class="text-sm text-gray-700 mt-2">
                 <strong>Causas:</strong> (1) IP não está fixo e mudou, (2) Firewall do Windows bloqueando as portas, (3) Roteador não reiniciado após mudanças.<br/>
                 <strong>Solução:</strong> Verifique se o IP ainda é o mesmo (cmd → <code>ipconfig</code>), adicione o jogo como exceção no Firewall do Windows, reinicie o roteador.
@@ -323,7 +323,7 @@ export default function RouterPortGuide() {
             </div>
             
             <div>
-              <p class="text-white font-bold">Problema: "UPnP está habilitado mas o NAT não muda"</p>
+              <p class="text-gray-900 font-bold">Problema: "UPnP está habilitado mas o NAT não muda"</p>
               <p class="text-sm text-gray-700 mt-2">
                 <strong>Causas:</strong> O jogo não suporta UPnP ou o roteador tem firmware antigo.<br/>
                 <strong>Solução:</strong> Atualize o firmware do roteador (site do fabricante) ou parta para Port Forwarding manual.
@@ -331,7 +331,7 @@ export default function RouterPortGuide() {
             </div>
             
             <div>
-              <p class="text-white font-bold">Problema: "Configurei tudo mas algumas partidas ainda desconectam"</p>
+              <p class="text-gray-900 font-bold">Problema: "Configurei tudo mas algumas partidas ainda desconectam"</p>
               <p class="text-sm text-gray-700 mt-2">
                 <strong>Causas:</strong> Instabilidade na internet (packet loss) ou o OUTRO jogador tem NAT Restrito.<br/>
                 <strong>Solução:</strong> Teste sua conexão em sites como <code>fast.com</code> e <code>packetlosstest.com</code>. Se você tem NAT Aberto e o amigo tem NAT Restrito, VOCÊ conseguirá conectar, mas ele não conseguirá ser host.
@@ -339,7 +339,7 @@ export default function RouterPortGuide() {
             </div>
             
             <div>
-              <p class="text-white font-bold">Problema: "Depois de um tempo, o NAT volta para Restrito"</p>
+              <p class="text-gray-900 font-bold">Problema: "Depois de um tempo, o NAT volta para Restrito"</p>
               <p class="text-sm text-gray-700 mt-2">
                 <strong>Causas:</strong> IP não está fixo e o roteador redistribuiu o IP para outro dispositivo.<br/>
                 <strong>Solução:</strong> SEMPRE configure IP fixo ANTES de abrir portas (veja o Pré-Requisito deste guia).
@@ -356,7 +356,7 @@ export default function RouterPortGuide() {
           Para entender completamente como abrir portas de forma eficaz, é essencial compreender a diferença entre os protocolos <strong>TCP (Transmission Control Protocol)</strong> e <strong>UDP (User Datagram Protocol)</strong>, ambos fundamentais para jogos online.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📡 Diferenças Técnicas entre TCP e UDP</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📡 Diferenças Técnicas entre TCP e UDP</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">TCP - Confiável mas mais lento</h5>
@@ -380,7 +380,7 @@ export default function RouterPortGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Por que Jogos Usam Ambos os Protocolos?</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Por que Jogos Usam Ambos os Protocolos?</h4>
         <p class="mb-4 text-gray-700">
           Jogos modernos como Warzone, GTA V e FIFA utilizam uma combinação de TCP e UDP para otimizar a experiência:
         </p>
@@ -404,12 +404,12 @@ export default function RouterPortGuide() {
           Além das configurações do roteador, o <strong>Firewall do Windows</strong> atua como uma segunda camada de proteção que pode bloquear conexões recebidas, mesmo com Port Forwarding configurado corretamente. Entender como configurar ambos é essencial para NAT Aberto completo.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Como o Firewall do Windows Afeta o NAT</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Como o Firewall do Windows Afeta o NAT</h4>
         <p class="mb-4 text-gray-700">
           O Firewall do Windows filtra conexões ENTRANDO no seu PC. Quando você abre portas no roteador (Port Forwarding), você está dizendo ao roteador: "Envie conexões para estas portas para o PC". Mas se o Firewall do Windows estiver bloqueando essas portas, o PC receberá os pacotes mas NÃO os aceitará.
         </p>
         
-        <h4 class="text-white font-bold mb-3">🔧 Configuração do Firewall para Jogos Online</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Configuração do Firewall para Jogos Online</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
           <li><strong>Acesse o Firewall do Windows:</strong> Painel de Controle → Sistema e Segurança → Firewall do Windows Defender</li>
           <li>Clique em <strong>"Permitir um aplicativo ou recurso através do Firewall"</strong></li>
@@ -421,7 +421,7 @@ export default function RouterPortGuide() {
           <li>Adicione as portas específicas do jogo com protocolo TCP e UDP</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Configurações Avançadas de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Configurações Avançadas de Segurança</h4>
         <p class="mb-4 text-gray-700">
           Para jogos que usam intervalos dinâmicos de portas (como Steam), você pode precisar adicionar exceções para o intervalo completo:
         </p>
@@ -449,10 +449,10 @@ export default function RouterPortGuide() {
           Diferentes marcas e modelos de roteadores possuem interfaces distintas para configuração de NAT e portas. Entender as particularidades de cada fabricante ajuda a resolver problemas específicos e otimizar a configuração.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações por Marca de Roteador</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações por Marca de Roteador</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">TP-Link</h5>
+            <h class="text-gray-900 font-bold mb-3">TP-Link</h5>
             <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
               <li>Menu: Avançado → NAT Forwarding → Virtual Server</li>
               <li>As portas podem ser inseridas como intervalo (ex: 27015-27030)</li>
@@ -462,7 +462,7 @@ export default function RouterPortGuide() {
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">ASUS</h5>
+            <h class="text-gray-900 font-bold mb-3">ASUS</h5>
             <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
               <li>Menu: WAN → Virtual Server / Port Forwarding</li>
               <li>Interface intuitiva com pré-configurações para jogos</li>
@@ -472,7 +472,7 @@ export default function RouterPortGuide() {
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">Linksys</h5>
+            <h class="text-gray-900 font-bold mb-3">Linksys</h5>
             <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
               <li>Menu: Applications & Gaming → Port Range Forwarding</li>
               <li>Suporte avançado a DMZ com IP específico</li>
@@ -482,7 +482,7 @@ export default function RouterPortGuide() {
           </div>
           
           <div class="bg-gray-800/50 p-5 rounded-xl border border-gray-600">
-            <h5 class="text-white font-bold mb-3">Netgear</h5>
+            <h class="text-gray-900 font-bold mb-3">Netgear</h5>
             <ul class="list-disc list-inside text-gray-700 space-y-2 text-sm">
               <li>Menu: Advanced → Advanced Setup → Port Forwarding / Port Triggering</li>
               <li>Suporte a configurações de QoS para priorizar jogos</li>
@@ -492,7 +492,7 @@ export default function RouterPortGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚡ Configurações Avançadas para Performance</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚡ Configurações Avançadas para Performance</h4>
         <p class="mb-4 text-gray-700">
           Para jogadores séries, configurações adicionais podem melhorar ainda mais o desempenho:
         </p>
@@ -518,7 +518,7 @@ export default function RouterPortGuide() {
           Para usuários avançados, ferramentas de monitoramento de rede ajudam a diagnosticar problemas de NAT, verificar se portas estão realmente abertas e confirmar que o tráfego está fluindo corretamente entre o roteador e os dispositivos.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔍 Ferramentas Profissionais de Análise de Rede</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔍 Ferramentas Profissionais de Análise de Rede</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
             <thead class="bg-gray-800">
@@ -558,7 +558,7 @@ export default function RouterPortGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Como Usar Wireshark para Diagnosticar NAT</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Como Usar Wireshark para Diagnosticar NAT</h4>
         <p class="mb-4 text-gray-700">
           Wireshark é a ferramenta mais poderosa para análise de rede, permitindo ver exatamente como os pacotes estão sendo transmitidos:
         </p>
@@ -570,7 +570,7 @@ export default function RouterPortGuide() {
           <li>Problemas de NAT aparecerão como pacotes recebidos mas sem resposta</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📈 Monitoramento de Latência e Perda de Pacotes</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📈 Monitoramento de Latência e Perda de Pacotes</h4>
         <p class="mb-4 text-gray-700">
           Além do tipo de NAT, outros fatores afetam a experiência de jogo online:
         </p>
@@ -589,7 +589,7 @@ export default function RouterPortGuide() {
           Em situações onde NAT Restrito persiste apesar de todas as configurações, existem soluções alternativas que podem contornar os problemas de conexão, embora com implicações de segurança e performance.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔄 Alternativas ao NAT Tradicional</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔄 Alternativas ao NAT Tradicional</h4>
         <div class="space-y-6 mt-4">
           <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h5 class="text-blue-400 font-bold mb-3">VPN de Jogo (Exit Lag)</h5>
@@ -622,7 +622,7 @@ export default function RouterPortGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Considerações de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Considerações de Segurança</h4>
         <p class="mb-4 text-gray-700">
           Soluções alternativas podem introduzir riscos de segurança:
         </p>
@@ -654,7 +654,7 @@ export default function RouterPortGuide() {
               Em ambientes corporativos ou redes mais complexas, as configurações de NAT e firewall podem envolver camadas adicionais de segurança que exigem conhecimento técnico avançado. Vamos explorar as configurações mais complexas que você pode encontrar:
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Enterprise NAT Solutions</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Enterprise NAT Solutions</h4>
             <p class="mb-4 text-gray-700">
               Em redes corporativas, o NAT é frequentemente implementado com soluções enterprise que podem incluir:
             </p>
@@ -665,7 +665,7 @@ export default function RouterPortGuide() {
               <li><strong>DS-Lite (Dual-Stack Lite):</strong> Solução para escassez de IPv4 em redes IPv6</li>
             </ul>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Firewall de Camada 7 (Application Layer)</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Firewall de Camada 7 (Application Layer)</h4>
             <p class="mb-4 text-gray-700">
               Firewalls modernos inspecionam não apenas portas e protocolos, mas também o conteúdo dos pacotes:
             </p>
@@ -690,7 +690,7 @@ export default function RouterPortGuide() {
               </div>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Soluções para Ambientes Restritos</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Soluções para Ambientes Restritos</h4>
             <p class="mb-4 text-gray-700">
               Em redes corporativas, você pode enfrentar:</p>
             <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
@@ -708,7 +708,7 @@ export default function RouterPortGuide() {
               Para compreender completamente como as portas funcionam e como o NAT manipula os pacotes, é essencial entender o tratamento profundo de protocolos e cabeçalhos de pacotes:
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Estrutura de Pacotes TCP e UDP</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Estrutura de Pacotes TCP e UDP</h4>
             <div class="overflow-x-auto">
               <table class="w-full text-xs text-gray-700 border border-gray-700 rounded-lg overflow-hidden">
                 <thead class="bg-gray-800">
@@ -760,29 +760,29 @@ export default function RouterPortGuide() {
               </table>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Tratamento de Pacotes no NAT</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Tratamento de Pacotes no NAT</h4>
             <p class="mb-4 text-gray-700">
               O NAT modifica campos específicos dos pacotes para permitir o roteamento:
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
               <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                <h5 class="text-white font-bold mb-2">Ingresso (Entrada)</h5>
+                <h class="text-gray-900 font-bold mb-2">Ingresso (Entrada)</h5>
                 <p class="text-sm text-gray-700">NAT altera IP de origem para IP público</p>
                 <p class="text-xs text-gray-700">Porta origem → Porta pública única</p>
               </div>
               <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                <h5 class="text-white font-bold mb-2">Tradução</h5>
+                <h class="text-gray-900 font-bold mb-2">Tradução</h5>
                 <p class="text-sm text-gray-700">Tabela de mapeamento é atualizada</p>
                 <p class="text-xs text-gray-700">IP pub:porta ↔ IP priv:porta</p>
               </div>
               <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                <h5 class="text-white font-bold mb-2">Egresso (Saída)</h5>
+                <h class="text-gray-900 font-bold mb-2">Egresso (Saída)</h5>
                 <p class="text-sm text-gray-700">NAT reverte tradução original</p>
                 <p class="text-xs text-gray-700">IP destino é revertido para IP privado</p>
               </div>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Considerações para Jogos em Tempo Real</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Considerações para Jogos em Tempo Real</h4>
             <p class="mb-4 text-gray-700">
               Jogos exigem tratamento especial devido à natureza em tempo real:
             </p>
@@ -801,7 +801,7 @@ export default function RouterPortGuide() {
               Para jogos multiplayer, especialmente aqueles com servidores dedicados, o balanceamento de carga e distribuição geográfica são críticos para performance e disponibilidade:
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Arquitetura de Servidores de Jogos</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Arquitetura de Servidores de Jogos</h4>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4">
               <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
                 <h5 class="text-blue-400 font-bold mb-3">Servidores de Matchmaking</h5>
@@ -825,7 +825,7 @@ export default function RouterPortGuide() {
               </div>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Técnicas de Balanceamento de Carga</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Técnicas de Balanceamento de Carga</h4>
             <p class="mb-4 text-gray-700">
               Distribuição inteligente de jogadores entre servidores:
             </p>
@@ -868,7 +868,7 @@ export default function RouterPortGuide() {
               </table>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Infraestrutura de CDN para Jogos</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Infraestrutura de CDN para Jogos</h4>
             <p class="mb-4 text-gray-700">
               Content Delivery Networks especializados para jogos:
             </p>
@@ -887,7 +887,7 @@ export default function RouterPortGuide() {
               Com o aumento do jogo online, a segurança e privacidade se tornaram aspectos críticos tanto para desenvolvedores quanto para jogadores:
             </p>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Vetores de Ataque Comuns em Jogos Online</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Vetores de Ataque Comuns em Jogos Online</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
               <div class="bg-rose-900/10 p-5 rounded-xl border border-rose-500/20">
                 <h5 class="text-rose-400 font-bold mb-3">Ataques DDoS</h5>
@@ -911,7 +911,7 @@ export default function RouterPortGuide() {
               </div>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Medidas de Proteção e Mitigação</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Medidas de Proteção e Mitigação</h4>
             <p class="mb-4 text-gray-700">
               Estratégias para proteger jogadores e infraestrutura:
             </p>
@@ -954,7 +954,7 @@ export default function RouterPortGuide() {
               </table>
             </div>
             
-            <h4 class="text-white font-bold mb-3 mt-6">Boas Práticas de Segurança</h4>
+            <h class="text-gray-900 font-bold mb-3 mt-6">Boas Práticas de Segurança</h4>
             <p class="mb-4 text-gray-700">
               Medidas recomendadas para jogadores e desenvolvedores:
             </p>

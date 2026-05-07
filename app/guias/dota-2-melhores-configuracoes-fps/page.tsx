@@ -53,7 +53,7 @@ export default function DotaGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Como Instalar APIs</h4>
-                <p class="text-white font-mono text-sm mb-2">Steam > Dota 2 > Propriedades > DLC</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Steam > Dota 2 > Propriedades > DLC</p>
                 <p class="text-gray-700 text-xs">Marque "Vulkan Support". Desmarque OpenGL (Obsoleto).</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">

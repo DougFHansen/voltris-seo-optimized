@@ -45,7 +45,7 @@ export default function OBSStudioGuide() {
             title: "2. O Segredo da Qualidade sem Lag (Encoder)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Configuração de Saída 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">Configuração de Saída 2026:</h4>
             <p class="text-sm text-gray-700">
                 Vá em Configurações > Saída > Aba Gravação. <br/><br/>
                 - <strong>Encoder de Vídeo:</strong> Se você tem uma GPU NVIDIA, use <strong>NVIDIA NVENC H.264 (ou AV1)</strong>. Isso faz com que a placa de vídeo grave o vídeo, deixando seu processador livre para o jogo. <br/>

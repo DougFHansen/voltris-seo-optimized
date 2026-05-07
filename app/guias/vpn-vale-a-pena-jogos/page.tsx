@@ -53,7 +53,7 @@ export default function GamingVPNGuide() {
             title: "2. Quando usar uma VPN real para jogar?",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Casos Específicos em 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">Casos Específicos em 2026:</h4>
             <p class="text-sm text-gray-700">
                 1. <strong>Jogar em servidores de outros países:</strong> Se você quer jogar no servidor NA ou Europa, uma VPN pode estabilizar a conexão através de cabos submarinos melhores. <br/>
                 2. <strong>Ataques DDoS:</strong> Se você é um streamer e sofre ataques, a VPN esconde o seu IP real. <br/>

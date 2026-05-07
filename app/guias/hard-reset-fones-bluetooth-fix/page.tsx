@@ -56,7 +56,7 @@ export default function BluetoothResetGuide() {
             title: "2. Higienização: O vilão invisível",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dica de Manutenção:</h4>
+            <h class="text-gray-900 font-bold mb-2">Dica de Manutenção:</h4>
             <p class="text-sm text-gray-700">
                 Muitas vezes um lado para de funcionar porque não está carregando. Use um cotonete com um pouco de <strong>álcool isopropílico</strong> para limpar os pinos dourados dentro da case e os contatos do fone. A sujeira do uso diário impede que o fone receba carga, simulando um defeito eletrônico.
             </p>

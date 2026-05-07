@@ -56,7 +56,7 @@ export default function HollowKnightFixGuide() {
             title: "2. Modificando o Engine (Hollow Knight Fix)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Correção de Comunidade:</h4>
+            <h class="text-gray-900 font-bold mb-2">Correção de Comunidade:</h4>
             <p class="text-sm text-gray-700">
                 Existe um mod popular chamado <strong>'Hollow Knight Fix'</strong> disponível no Nexus Mods. Ele reescreve como o jogo lida com a entrada de dados e a sincronização do motor Unity. Em 2026, ele é considerado essencial para quem joga em computadores modernos com Windows 11 para evitar o 'tearing' e as oscilações de performance.
             </p>

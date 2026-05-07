@@ -52,7 +52,7 @@ export default function BestWindowsForGamingGuide() {
             title: "2. Windows 10: O porto seguro para PCs antigos",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Compatibilidade e Leveza:</h4>
+            <h class="text-gray-900 font-bold mb-2">Compatibilidade e Leveza:</h4>
             <p class="text-sm text-gray-700">
                 O Windows 10 consome cerca de 30% menos RAM que o Windows 11 recém-instalado. Se você tem menos de 16GB de RAM ou uma placa de vídeo da série GTX 10 (ou RX 500), o Windows 10 ainda é a escolha mais racional para manter os frames estáveis. Em 2026, ele é o "vovô" que ainda dá conta do recado, mas está perdendo o suporte a novos recursos.
             </p>

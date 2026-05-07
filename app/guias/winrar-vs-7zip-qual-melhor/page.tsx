@@ -54,7 +54,7 @@ export default function CompressorComparisonGuide() {
             title: "2. WinRAR: O rei do .RAR",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Exclusividade e Interface:</h4>
+            <h class="text-gray-900 font-bold mb-2">Exclusividade e Interface:</h4>
             <p class="text-sm text-gray-700">
                 O grande diferencial do <strong>WinRAR</strong> em 2026 é ser o único que consegue criar arquivos no formato <strong>.rar v5</strong> nativamente. <br/><br/>
                 O formato .rar é conhecido pela sua resiliência: se um arquivo compactado estiver levemente corrompido, o WinRAR tem ferramentas de 'Registro de Recuperação' que podem salvar o arquivo. Se você trabalha com downloads instáveis ou mídias antigas, o WinRAR ainda tem seu valor.

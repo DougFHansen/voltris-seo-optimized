@@ -55,7 +55,7 @@ export default function SandboxGuide() {
             title: "2. Testando arquivos na prática",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Fluxo de Trabalho em 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">Fluxo de Trabalho em 2026:</h4>
             <p class="text-sm text-gray-700">
                 1. Pesquise por 'Windows Sandbox' no Iniciar e abra como Administrador. <br/>
                 2. No seu Windows real, clique com o botão direito no arquivo suspeito e selecione 'Copiar'. <br/>

@@ -54,7 +54,7 @@ export default function ResizableBarGuide() {
             title: "2. Passo a Passo na BIOS",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Configuração na Placa-mãe:</h4>
+            <h class="text-gray-900 font-bold mb-2">Configuração na Placa-mãe:</h4>
             <p class="text-sm text-gray-700">
                 1. Reinicie o PC e entre na BIOS (geralmente tecla Del ou F2). <br/>
                 2. Vá nas configurações avançadas de PCI ou IO. <br/>

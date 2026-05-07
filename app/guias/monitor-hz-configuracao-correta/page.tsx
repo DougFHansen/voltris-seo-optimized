@@ -63,7 +63,7 @@ export default function MonitorGuide() {
                     <li>No Monitor (Botões físicos): Desative o "Eco Mode" ou "Power Saving". Esses modos limitam o brilho e às vezes o Hz.</li>
                 </ol>
                 <div class="mt-4 bg-gray-800 p-3 rounded text-center">
-                    <p class="text-white text-sm">Teste agora: <a href="https://www.testufo.com" target="_blank" class="text-blue-400 underline">testufo.com</a></p>
+                    <p class="text-gray-900 text-sm">Teste agora: <a href="https://www.testufo.com" target="_blank" class="text-blue-400 underline">testufo.com</a></p>
                     <p class="text-xs text-gray-500">Se aparecer "60 fps" no site e seu monitor é 144Hz, algo está errado.</p>
                 </div>
             </div>
@@ -78,7 +78,7 @@ export default function MonitorGuide() {
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="bg-black/40 p-3 rounded border border-white/10">
-                <h5 class="text-white font-bold text-sm">Overdrive: Desligado</h5>
+                <h class="text-gray-900 font-bold text-sm">Overdrive: Desligado</h5>
                 <p class="text-gray-700 text-xs">Muitos borrões (Ghosting). O rastro segue o movimento.</p>
             </div>
             <div class="bg-emerald-900/40 p-3 rounded border border-emerald-500">

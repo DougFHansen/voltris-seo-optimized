@@ -54,7 +54,7 @@ export default function DigitalPovertyGuide() {
             title: "2. O Poder da Web",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Processamento na Nuvem:</h4>
+            <h class="text-gray-900 font-bold mb-2">Processamento na Nuvem:</h4>
             <p class="text-sm text-gray-700">
                 Se o seu PC é fraco demais para editar vídeos ou fotos, use ferramentas que rodam nos servidores de outras empresas. <br/><br/>
                 - <strong>Canva:</strong> Para design sem precisar de Photoshop. <br/>

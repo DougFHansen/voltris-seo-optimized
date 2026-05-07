@@ -54,7 +54,7 @@ export default function CableComparisonGuide() {
             title: "2. DisplayPort: O Rei do Desktop",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Por que ainda é o favorito?</h4>
+            <h class="text-gray-900 font-bold mb-2">Por que ainda é o favorito?</h4>
             <p class="text-sm text-gray-700">
                 O DisplayPort foi feito pensando em computadores. Em 2026, a versão <strong>DP 2.1</strong> permite rodar múltiplos monitores de alta resolução em série (Daisy Chain) usando um único cabo. Além disso, se você usa uma placa NVIDIA e quer garantir que o <strong>G-Sync</strong> funcione perfeitamente sem falhas de imagem, o DisplayPort continua sendo a conexão mais estável.
             </p>

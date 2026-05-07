@@ -55,7 +55,7 @@ export default function GeometryDashPatchGuide() {
             title: "2. Mega Hack e FPS Bypass",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Alternativa Moderna:</h4>
+            <h class="text-gray-900 font-bold mb-2">Alternativa Moderna:</h4>
             <p class="text-sm text-gray-700">
                 Se você usa o <strong>Mega Hack</strong> (v7 ou v8), o patch de 4GB já vem embutido e é aplicado automaticamente. Além disso, use o 'FPS Bypass' para jogar a 144Hz ou 240Hz mesmo que o seu monitor seja 60Hz, o que reduz o input lag drasticamente nos pulos.
             </p>

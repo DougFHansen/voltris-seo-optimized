@@ -54,7 +54,7 @@ export default function DiskHealthGuide() {
             title: "2. Verificando o Desgaste (SSD TBW)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Quilometragem do seu SSD:</h4>
+            <h class="text-gray-900 font-bold mb-2">Quilometragem do seu SSD:</h4>
             <p class="text-sm text-gray-700">
                 Nos SSDs, procure por <strong>'Total Host Writes'</strong>. <br/><br/>
                 Isso mostra quantos Terabytes de dados já foram gravados no drive desde que ele saiu da fábrica. Cada SSD tem um limite de gravação (TBW). Se o seu SSD tem 100TB de limite e você já gravou 90TB, ele começará a apresentar lentidões ou mudar para o modo 'Apenas Leitura' para se proteger. Em 2026, monitore isso se você trabalha com edição de vídeo ou torrents constantes.

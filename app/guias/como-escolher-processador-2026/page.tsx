@@ -54,7 +54,7 @@ export default function CPUBuyingGuide() {
             title: "2. Intel (Arquitetura Híbrida) vs AMD (3D V-Cache)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">As duas Gigantes em 2026:</h4>
+            <h class="text-gray-900 font-bold mb-2">As duas Gigantes em 2026:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>Intel:</strong> Usa 'núcleos de performance' (P) e 'núcleos de eficiência' (E). É excelente para multitarefa no Windows 11, mas costuma consumir muito mais energia e esquentar mais. <br/>
                 - <strong>AMD:</strong> Em 2026, os modelos 'X3D' com empilhamento de memória cache são os reis absolutos dos jogos, entregando FPS muito mais estáveis em títulos competitivos como Warzone e Valorant.
@@ -77,7 +77,7 @@ export default function CPUBuyingGuide() {
     {
       title: "Arquitetura de Processadores Modernos: Fundamentos Técnicos e Comparação",
       content: `
-        <h4 class="text-white font-bold mb-3">🏗️ Arquitetura Interna de CPUs Modernas</h4>
+        <h class="text-gray-900 font-bold mb-3">🏗️ Arquitetura Interna de CPUs Modernas</h4>
         <p class="mb-4 text-gray-700">
           As CPUs modernas são complexos sistemas em chip (SoC) que contêm milhões de transistores organizados em múltiplas unidades funcionais. As arquiteturas de 2026 representam décadas de otimização em eficiência energética, desempenho e paralelismo:
         </p>
@@ -107,7 +107,7 @@ export default function CPUBuyingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação Técnica de Arquiteturas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Comparação Técnica de Arquiteturas</h4>
         <p class="mb-4 text-gray-700">
           Análise detalhada das arquiteturas líderes em 2026:
         </p>
@@ -164,7 +164,7 @@ export default function CPUBuyingGuide() {
     {
       title: "Tecnologias Avançadas de Processamento e Eficiência",
       content: `
-        <h4 class="text-white font-bold mb-3">⚡ Tecnologias de Eficiência e Desempenho em CPUs</h4>
+        <h class="text-gray-900 font-bold mb-3">⚡ Tecnologias de Eficiência e Desempenho em CPUs</h4>
         <p class="mb-4 text-gray-700">
           As CPUs modernas incorporam tecnologias avançadas que otimizam o desempenho e a eficiência energética com base na carga de trabalho:
         </p>
@@ -220,7 +220,7 @@ export default function CPUBuyingGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Comparação de Desempenho Técnico</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Comparação de Desempenho Técnico</h4>
         <p class="mb-4 text-gray-700">
           Análise comparativa detalhada entre modelos de CPU em diferentes cargas de trabalho:
         </p>
@@ -256,7 +256,7 @@ export default function CPUBuyingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Recursos Avançados de Processamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Recursos Avançados de Processamento</h4>
         <p class="mb-4 text-gray-700">
           Tecnologias exclusivas e recursos avançados disponíveis em CPUs modernas:
         </p>
@@ -274,12 +274,12 @@ export default function CPUBuyingGuide() {
     {
       title: "Tecnologias Emergentes em Processamento e Futuro dos Processadores",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Próxima Geração em CPUs</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias de Próxima Geração em CPUs</h4>
         <p class="mb-4 text-gray-700">
           A próxima geração de CPUs está explorando tecnologias avançadas que prometem revolucionar o processamento e a eficiência:
         </p>
         
-        <h4 class="text-white font-bold mb-3">Arquiteturas e Processos de Fabricação</h4>
+        <h class="text-gray-900 font-bold mb-3">Arquiteturas e Processos de Fabricação</h4>
         <p class="mb-4 text-gray-700">
           Novas tecnologias que estão sendo implementadas em CPUs de próxima geração:
         </p>
@@ -329,7 +329,7 @@ export default function CPUBuyingGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em CPUs de Próxima Geração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🤖 Inteligência Artificial em CPUs de Próxima Geração</h4>
         <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na evolução das CPUs:
         </p>
@@ -360,7 +360,7 @@ export default function CPUBuyingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
         <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de CPUs de próxima geração:
         </p>

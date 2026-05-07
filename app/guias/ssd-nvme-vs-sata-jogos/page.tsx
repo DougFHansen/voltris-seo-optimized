@@ -56,7 +56,7 @@ export default function SSDTypeGuide() {
             title: "2. DirectStorage: O divisor de águas",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Velocidade de Console no PC:</h4>
+            <h class="text-gray-900 font-bold mb-2">Velocidade de Console no PC:</h4>
             <p class="text-sm text-gray-700">
                 A tecnologia <strong>DirectStorage</strong> da Microsoft permite que a placa de vídeo puxe os dados do jogo diretamente do SSD, sem passar pelo processador. <br/><br/>
                 Isso elimina as telas de carregamento (loading) e permite mundos abertos muito mais detalhados. Para usar este recurso, o seu SSD <strong>deve ser NVMe</strong>. Deixar um jogo moderno instalado em um SSD SATA em 2026 pode causar 'pop-in' de texturas (objetos aparecendo do nada) e micro-stuttering.

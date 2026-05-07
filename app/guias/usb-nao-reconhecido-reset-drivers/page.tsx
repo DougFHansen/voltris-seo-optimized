@@ -56,7 +56,7 @@ export default function USBTroubleshootingGuide() {
             title: "2. Desativando a Suspensão Seletiva",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Impedindo o Windows de dormir:</h4>
+            <h class="text-gray-900 font-bold mb-2">Impedindo o Windows de dormir:</h4>
             <p class="text-sm text-gray-700">
                 Se o seu mouse ou teclado desliga sozinho após alguns minutos parado: <br/><br/>
                 - Vá em Painel de Controle > Hardware e Sons > Opções de Energia. <br/>

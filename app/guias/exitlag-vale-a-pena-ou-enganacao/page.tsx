@@ -53,7 +53,7 @@ export default function ExitLagReviewGuide() {
             title: "2. Quando NÃO vale a pena?",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">O limite da física:</h4>
+            <h class="text-gray-900 font-bold mb-2">O limite da física:</h4>
             <p class="text-sm text-gray-700">
                 Se você já mora perto do servidor do jogo (ex: em São Paulo jogando LoL) e o seu ping já é de 5ms a 10ms, o ExitLag **não vai baixar o seu ping**. Ele não pode fazer a luz viajar mais rápido que o limite físico. <br/><br/>
                 Também não resolverá o lag se a sua internet for via Wi-Fi instável ou rádio. O software otimiza a rota da rua pra fora, não a bagunça de cabos dentro da sua casa em 2026.

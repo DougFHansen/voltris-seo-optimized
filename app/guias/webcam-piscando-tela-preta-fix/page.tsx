@@ -55,7 +55,7 @@ export default function WebcamFixGuide() {
             title: "2. Resetando o Driver da Câmera",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Limpando registros antigos:</h4>
+            <h class="text-gray-900 font-bold mb-2">Limpando registros antigos:</h4>
             <p class="text-sm text-gray-700">
                 1. Clique com o botão direito no Iniciar > <strong>Gerenciador de Dispositivos</strong>. <br/>
                 2. Expanda 'Câmeras'. <br/>

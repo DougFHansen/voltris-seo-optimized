@@ -52,7 +52,7 @@ export default function SyncTechnologyGuide() {
             title: "2. G-Sync e FreeSync: VRR (Variable Refresh Rate)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A Revolução Fluida:</h4>
+            <h class="text-gray-900 font-bold mb-2">A Revolução Fluida:</h4>
             <p class="text-sm text-gray-700">
                 Diferente do V-Sync, o **G-Sync (NVIDIA)** e o **FreeSync (AMD)** fazem o monitor esperar a GPU. Se o seu jogo cair para 47 FPS, o monitor muda sua frequência para 47Hz instantaneamente. Isso elimina o tearing e as travadinhas (stuttering) sem aumentar o input lag de forma perceptível. Em 2026, a maioria dos monitores é 'G-Sync Compatible', o que significa que funcionam com GPUs NVIDIA mesmo sendo oficialmente FreeSync.
             </p>

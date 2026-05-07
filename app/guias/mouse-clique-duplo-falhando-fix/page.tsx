@@ -55,7 +55,7 @@ export default function MouseFixGuide() {
             title: "2. Ajuste de Debounce Time (Software)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Pulo do Gato para Gamers:</h4>
+            <h class="text-gray-900 font-bold mb-2">Pulo do Gato para Gamers:</h4>
             <p class="text-sm text-gray-700">
                 Se você tem um mouse da Logitech, Razer, Glorious ou Redragon, abra o software da marca. Procure pela opção <strong>'Debounce Time'</strong>. Aumente este valor (ex: de 4ms para 12ms). Isso faz com que o Windows ignore cliques fantasmas que acontecem muito rápido, "filtrando" o clique duplo eletronicamente.
             </p>

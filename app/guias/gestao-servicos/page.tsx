@@ -73,7 +73,7 @@ export default function ServicesManagementGuide() {
             <li>Digite <code class="bg-gray-800 px-2 py-0.5 rounded text-blue-300">services.msc</code> e pressione Enter.</li>
             <li>A janela de Serviços abrirá com três colunas: Nome, Status e Tipo de Inicialização.</li>
         </ol>
-        <h4 class="text-white font-bold mb-4 text-lg">Entendendo os Tipos de Inicialização:</h4>
+        <h class="text-gray-900 font-bold mb-4 text-lg">Entendendo os Tipos de Inicialização:</h4>
         <div class="space-y-3 mb-6">
             <div class="flex items-start gap-4 bg-[#0A0A0F] border border-red-500/20 p-4 rounded-xl">
                 <span class="text-red-400 font-bold text-sm w-24 shrink-0 pt-0.5">🔴 Automático</span>
@@ -102,29 +102,29 @@ export default function ServicesManagementGuide() {
         </p>
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] border border-white/5 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">📡 Telemetria do Windows (DiagTrack)</h5>
+                <h class="text-gray-900 font-bold mb-1">📡 Telemetria do Windows (DiagTrack)</h5>
                 <p class="text-gray-700 text-sm mb-2">Nome completo: <em>Experiências de Usuário Conectado e Telemetria</em></p>
                 <p class="text-gray-700 text-sm">Envia dados de uso, erros e diagnósticos para a Microsoft 24/7. <strong>Sem impacto nenhum</strong> ao desativar para o usuário comum. Recomendamos: <span class="text-red-400 font-bold">Desativado</span>.</p>
             </div>
             <div class="bg-[#0A0A0F] border border-white/5 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">🖨️ Spooler de Impressão (Print Spooler)</h5>
+                <h class="text-gray-900 font-bold mb-1">🖨️ Spooler de Impressão (Print Spooler)</h5>
                 <p class="text-gray-700 text-sm mb-2">Serviço de gerenciamento de filas de impressão.</p>
                 <p class="text-gray-700 text-sm">Se você <strong>não tem impressora</strong>, este serviço é inútil e pode ser explorado por vulnerabilidades (PrintNightmare). Recomendamos: <span class="text-red-400 font-bold">Desativado</span>.</p>
             </div>
             <div class="bg-[#0A0A0F] border border-white/5 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">📠 Fax e Telefonia</h5>
+                <h class="text-gray-900 font-bold mb-1">📠 Fax e Telefonia</h5>
                 <p class="text-gray-700 text-sm">Serviços para envio de fax por modem e TAPI. Em 2026, ninguém usa fax. Recomendamos: <span class="text-red-400 font-bold">Desativado</span>.</p>
             </div>
             <div class="bg-[#0A0A0F] border border-white/5 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">📰 Serviço de Feed de Notícias do Windows</h5>
+                <h class="text-gray-900 font-bold mb-1">📰 Serviço de Feed de Notícias do Windows</h5>
                 <p class="text-gray-700 text-sm">Alimenta os Widgets do Windows 11 com notícias. Se você não usa Widgets, desative. Recomendamos: <span class="text-red-400 font-bold">Desativado</span>.</p>
             </div>
             <div class="bg-[#0A0A0F] border border-white/5 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">📍 Serviço de Localização</h5>
+                <h class="text-gray-900 font-bold mb-1">📍 Serviço de Localização</h5>
                 <p class="text-gray-700 text-sm">Rastreia sua localização para apps como Mapas e Clima. Se você não usa esses apps no PC, desative. Recomendamos: <span class="text-yellow-400 font-bold">Manual</span>.</p>
             </div>
             <div class="bg-[#0A0A0F] border border-white/5 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">🎮 Serviço de Xbox Live (XblAuthManager, XblGameSave)</h5>
+                <h class="text-gray-900 font-bold mb-1">🎮 Serviço de Xbox Live (XblAuthManager, XblGameSave)</h5>
                 <p class="text-gray-700 text-sm">Se você não usa o Xbox App ou Xbox Game Pass, estes serviços são inúteis. Recomendamos: <span class="text-yellow-400 font-bold">Manual</span>.</p>
             </div>
         </div>
@@ -138,7 +138,7 @@ export default function ServicesManagementGuide() {
         </p>
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] border border-yellow-500/20 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">🧠 SysMain (Antigo Superfetch)</h5>
+                <h class="text-gray-900 font-bold mb-1">🧠 SysMain (Antigo Superfetch)</h5>
                 <p class="text-gray-700 text-sm mb-2">Pré-carrega apps frequentemente usados na RAM para abri-los mais rápido.</p>
                 <ul class="text-sm text-gray-700 space-y-1 ml-4 list-disc">
                     <li><strong>Em SSD NVMe:</strong> Desative. O SSD já é rápido o suficiente, e o SysMain apenas causa escritas desnecessárias.</li>
@@ -146,7 +146,7 @@ export default function ServicesManagementGuide() {
                 </ul>
             </div>
             <div class="bg-[#0A0A0F] border border-yellow-500/20 p-5 rounded-xl">
-                <h5 class="text-white font-bold mb-1">🔍 Windows Search</h5>
+                <h class="text-gray-900 font-bold mb-1">🔍 Windows Search</h5>
                 <p class="text-gray-700 text-sm mb-2">Indexa todos os arquivos do disco para que as buscas do Menu Iniciar sejam instantâneas.</p>
                 <ul class="text-sm text-gray-700 space-y-1 ml-4 list-disc">
                     <li>Se você <strong>nunca usa a busca</strong> do Windows: Desative. Libera CPU e reduz escritas no disco.</li>
@@ -167,35 +167,35 @@ export default function ServicesManagementGuide() {
             <div class="flex items-center gap-4 bg-[#0A0A0F] border border-red-500/20 p-4 rounded-xl">
                 <span class="text-2xl">⛔</span>
                 <div>
-                    <strong class="text-white">RPC (Remote Procedure Call) / DCOM</strong>
+                    <s class="text-gray-900">RPC (Remote Procedure Call) / DCOM</strong>
                     <p class="text-gray-700 text-xs mt-1">A espinha dorsal do Windows. Sem ele, nenhum processo pode comunicar com outro. O sistema trava imediatamente.</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 bg-[#0A0A0F] border border-red-500/20 p-4 rounded-xl">
                 <span class="text-2xl">⛔</span>
                 <div>
-                    <strong class="text-white">Plug and Play</strong>
+                    <s class="text-gray-900">Plug and Play</strong>
                     <p class="text-gray-700 text-xs mt-1">Detecta e configura dispositivos. Sem ele, teclado, mouse e pen drives param de funcionar.</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 bg-[#0A0A0F] border border-red-500/20 p-4 rounded-xl">
                 <span class="text-2xl">⛔</span>
                 <div>
-                    <strong class="text-white">Gerenciador de Contas de Segurança (SAM)</strong>
+                    <s class="text-gray-900">Gerenciador de Contas de Segurança (SAM)</strong>
                     <p class="text-gray-700 text-xs mt-1">Gerencia as contas de usuário do Windows. Desativar bloqueia o login.</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 bg-[#0A0A0F] border border-red-500/20 p-4 rounded-xl">
                 <span class="text-2xl">⛔</span>
                 <div>
-                    <strong class="text-white">Windows Update / Windows Defender</strong>
+                    <s class="text-gray-900">Windows Update / Windows Defender</strong>
                     <p class="text-gray-700 text-xs mt-1">Segurança crítica. Desativar expõe o sistema a malware e impede correções de vulnerabilidades.</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 bg-[#0A0A0F] border border-red-500/20 p-4 rounded-xl">
                 <span class="text-2xl">⛔</span>
                 <div>
-                    <strong class="text-white">Serviço de áudio do Windows (AudioEndpointBuilder)</strong>
+                    <s class="text-gray-900">Serviço de áudio do Windows (AudioEndpointBuilder)</strong>
                     <p class="text-gray-700 text-xs mt-1">Sem ele, seu som para completamente.</p>
                 </div>
             </div>

@@ -34,7 +34,7 @@ export default function RecuperacaoSistemaGuide() {
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
           <div class="bg-[#171313] p-4 rounded-lg border border-[#FF4B6B]/30">
-            <h3 class="text-white font-semibold mb-2">Sinais que Indicam Necessidade de Recuperação</h3>
+            <h class="text-gray-900 font-semibold mb-2">Sinais que Indicam Necessidade de Recuperação</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>❌ Sistema trava frequentemente</li>
               <li>❌ Blue Screen of Death (BSOD)</li>
@@ -44,7 +44,7 @@ export default function RecuperacaoSistemaGuide() {
             </ul>
           </div>
           <div class="bg-[#171313] p-4 rounded-lg border border-[#31A8FF]/30">
-            <h3 class="text-white font-semibold mb-2">Benefícios da Recuperação</h3>
+            <h class="text-gray-900 font-semibold mb-2">Benefícios da Recuperação</h3>
             <ul class="text-gray-700 text-sm space-y-1">
               <li>✓ Retorno a estado estável</li>
               <li>✓ Eliminação de malware</li>
@@ -152,7 +152,7 @@ export default function RecuperacaoSistemaGuide() {
             ter backups é essencial para segurança total.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div class="bg-[#171313] p-4 rounded border border-[#31A8FF]/20">
-                <h4 class="text-white font-semibold mb-2">Backups Regulares</h4>
+                <h class="text-gray-900 font-semibold mb-2">Backups Regulares</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>Imagens do sistema completas</li>
                   <li>Cópias de arquivos pessoais</li>
@@ -160,7 +160,7 @@ export default function RecuperacaoSistemaGuide() {
                 </ul>
               </div>
               <div class="bg-[#171313] p-4 rounded border border-[#FF4B6B]/20">
-                <h4 class="text-white font-semibold mb-2">Armazenamento</h4>
+                <h class="text-gray-900 font-semibold mb-2">Armazenamento</h4>
                 <ul class="text-gray-700 text-xs space-y-1">
                   <li>HD externo dedicado</li>
                   <li>Serviços em nuvem confiáveis</li>
@@ -185,7 +185,7 @@ export default function RecuperacaoSistemaGuide() {
           subtitle: "Precisa de Recuperação Profissional?",
           content: `
             <div class="bg-[#171313] p-6 rounded-lg border border-[#31A8FF]/30 mt-6">
-              <p class="text-white font-semibold mb-3 text-lg">Precisa de Recuperação Profissional?</p>
+              <p class="text-gray-900 font-semibold mb-3 text-lg">Precisa de Recuperação Profissional?</p>
               <p class="text-gray-700 leading-relaxed mb-4">
                 Nossa equipe especializada pode recuperar seu sistema com técnicas avançadas 
                 e garantir que seus dados estejam seguros durante todo o processo.

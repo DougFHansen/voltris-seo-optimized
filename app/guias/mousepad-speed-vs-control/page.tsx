@@ -54,7 +54,7 @@ export default function MousepadGuide() {
             title: "2. Mousepad Speed: Para quem busca Agilidade",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Deslize Infinito:</h4>
+            <h class="text-gray-900 font-bold mb-2">Deslize Infinito:</h4>
             <p class="text-sm text-gray-700">
                 Os modelos Speed (e os novos de **Vidro ou Cordura** de 2026) oferecem quase zero resistência inicial. <br/><br/>
                 - <strong>Ideal para:</strong> Jogos de tracking rápido como Apex Legends, Overwatch e Warzone, onde o inimigo se move constantemente e você precisa seguir o alvo com movimentos fluidos. <br/>

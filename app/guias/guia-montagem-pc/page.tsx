@@ -50,7 +50,7 @@ export default function AssembleGuide() {
       content: `
         <div class="space-y-6">
             <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-yellow-500">
-              <h4 class="text-white font-bold mb-2">1. Instalação da CPU (O Coração)</h4>
+              <h class="text-gray-900 font-bold mb-2">1. Instalação da CPU (O Coração)</h4>
               <p class="text-gray-700 text-sm mb-2">
                 <strong>Intel (LGA 1700/1851):</strong> Levante a alavanca. Alinhe os chanfros (cortes) laterais da CPU com os pinos do socket. Solte suavemente. Baixe a alavanca (vai parecer que vai quebrar, é normal fazer força).
                 <br/><br/>
@@ -61,7 +61,7 @@ export default function AssembleGuide() {
             </div>
 
             <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-green-500">
-              <h4 class="text-white font-bold mb-2">2. Memória RAM (Dual Channel)</h4>
+              <h class="text-gray-900 font-bold mb-2">2. Memória RAM (Dual Channel)</h4>
               <p class="text-gray-700 text-sm">
                 Sua placa provavelmente tem 4 slots. Você deve usar o <strong>SEGUNDO</strong> e o <strong>QUARTO</strong> slot (contando a partir do processador) para ativar o Dual Channel.
                 <br/>Se usar slot 1 e 2, você perde 50% de performance.
@@ -70,7 +70,7 @@ export default function AssembleGuide() {
             </div>
 
             <div class="bg-[#1E1E22] p-5 rounded-lg border-l-4 border-blue-500">
-              <h4 class="text-white font-bold mb-2">3. SSD M.2 (Armazenamento)</h4>
+              <h class="text-gray-900 font-bold mb-2">3. SSD M.2 (Armazenamento)</h4>
               <p class="text-gray-700 text-sm">
                 Remova o dissipador (heatsink) da placa-mãe. Remova o plástico azul do thermal pad. Insira o SSD em 45 graus. Parafuse com o parafuso minúsculo (cuidado para não cair dentro da fonte). Recoloque o dissipador.
               </p>

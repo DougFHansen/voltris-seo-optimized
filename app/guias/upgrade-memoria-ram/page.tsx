@@ -55,7 +55,7 @@ export default function RAMUpgradeGuide() {
       title: "2. A Regra do Dual Channel",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dobre a Banda de Memória:</h4>
+            <h class="text-gray-900 font-bold mb-2">Dobre a Banda de Memória:</h4>
             <p class="text-sm text-gray-700">
                 Nunca use apenas um pente de 16GB se você tem dois slots. Colocar dois pentes de 8GB (Total 16GB) ativa o <strong>Dual Channel</strong>, o que dobra a velocidade de comunicação entre a CPU e a RAM. Em 2026, jogar em Single Channel (um pente só) pode causar quedas de até 30% no seu FPS mínimo, gerando travadas constantes em jogos competitivos.
             </p>

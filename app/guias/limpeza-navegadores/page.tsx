@@ -47,7 +47,7 @@ export default function BrowserCleanGuide() {
       content: `
         <p class="mb-4 text-gray-700">Este atalho funciona no <strong>Chrome, Edge, Brave e Firefox</strong>.</p>
         <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
-            <h4 class="text-white font-bold mb-4">O que Marcar:</h4>
+            <h class="text-gray-900 font-bold mb-4">O que Marcar:</h4>
             <ul class="space-y-3 text-gray-700">
                 <li>✅ <strong>Imagens e arquivos armazenados em cache:</strong> Pode marcar sem medo.</li>
                 <li>✅ <strong>Cookies e outros dados do site:</strong> Marque se quiser deslogar de todos os sites (ajuda a resolver erros de login).</li>

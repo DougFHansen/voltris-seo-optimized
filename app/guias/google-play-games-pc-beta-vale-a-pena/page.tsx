@@ -55,7 +55,7 @@ export default function GooglePlayGamesReviewGuide() {
             title: "2. Google Play Games vs Emuladores (BlueStacks)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Onde ele ainda perde:</h4>
+            <h class="text-gray-900 font-bold mb-2">Onde ele ainda perde:</h4>
             <p class="text-sm text-gray-700">
                 Apesar da velocidade, o Google Play Games em 2026 ainda tem um ponto fraco: o **catálogo**. <br/><br/>
                 Enquanto no BlueStacks você pode instalar qualquer APK de qualquer site, o Google Play Games suporta apenas títulos que os desenvolvedores adaptaram manualmente para o PC. Se você joga títulos de nicho ou precisa de macros/scripts complexos de automação, os emuladores clássicos ainda são a única saída.

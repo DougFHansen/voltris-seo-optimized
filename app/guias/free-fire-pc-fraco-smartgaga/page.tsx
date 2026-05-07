@@ -55,7 +55,7 @@ export default function SmartGaGaFFGuide() {
             title: "2. Sensibilidade e Mapeamento (HUD)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Ajuste de "Capa":</h4>
+            <h class="text-gray-900 font-bold mb-2">Ajuste de "Capa":</h4>
             <p class="text-sm text-gray-700">
                 O SmartGaGa é famoso pela sua sensibilidade Y rápida. Para não "pinar", vá nas configurações de controles e ajuste a Sensibilidade Y para um valor entre 1.0 e 2.0. Desative a 'Aceleração de Mouse' no Windows para ter movimentos mais consistentes.
             </p>

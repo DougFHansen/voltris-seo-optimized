@@ -54,7 +54,7 @@ export default function MouseSensorGuide() {
             title: "2. O Perigo dos 4.000Hz / 8.000Hz",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Gargalo de CPU:</h4>
+            <h class="text-gray-900 font-bold mb-2">Gargalo de CPU:</h4>
             <p class="text-sm text-gray-700">
                 Mouses ultra modernos de 2026 permitem o **Polling Rate** acima de 1000Hz. O problema é que isso exige que seu processador leia a posição do mouse 4 mil ou 8 mil vezes por segundo. <br/><br/>
                 Se o seu processador não for de última geração, usar 4000Hz causará <strong>quedas bruscas de FPS</strong> nos jogos toda vez que você mexer o mouse rápido. Se o seu jogo está travando, diminua o Polling Rate para 1000Hz no software do mouse; a diferença na mira é imperceptível, mas a estabilidade do jogo será muito maior.

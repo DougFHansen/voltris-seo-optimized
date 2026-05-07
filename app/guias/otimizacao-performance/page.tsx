@@ -55,7 +55,7 @@ export default function PerformanceOptimizationGuide() {
       title: "2. Gerenciamento de Inicialização",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Truque da RAM:</h4>
+            <h class="text-gray-900 font-bold mb-2">Truque da RAM:</h4>
             <p class="text-sm text-gray-700">
                 Aperte <code>Ctrl + Shift + Esc</code> e vá na aba <strong>Aplicativos de Inicialização</strong>. Desative TUDO o que você não precisa que ligue com o Windows (Spotify, Steam, Cortana, etc). Isso reduz o tempo de boot e libera RAM preciosa para seus jogos.
             </p>
@@ -77,7 +77,7 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "4. Otimização Avançada de Disco e Armazenamento",
       content: `
-        <h4 class="text-white font-bold mb-3">🧠 Inteligência Artificial do Windows</h4>
+        <h class="text-gray-900 font-bold mb-3">🧠 Inteligência Artificial do Windows</h4>
         <p class="text-gray-700 mb-4">
           O Windows 11 usa IA para prever o que você vai usar e pré-carrega em segundo plano. Isso consome RAM e CPU:
         </p>
@@ -89,7 +89,7 @@ export default function PerformanceOptimizationGuide() {
           <li>Crie um novo valor DWORD chamado <code>EnableCdp</code> e defina como 0.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🧹 Limpeza Profunda de Disco</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🧹 Limpeza Profunda de Disco</h4>
         <p class="text-gray-700 mb-4">
           O Windows acumula lixo com o tempo. Use o Disco de Limpeza e comandos avançados:
         </p>
@@ -115,7 +115,7 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "5. Configurações de Memória Virtual e Superfetch",
       content: `
-        <h4 class="text-white font-bold mb-3">🧠 Gerenciamento de Memória RAM</h4>
+        <h class="text-gray-900 font-bold mb-3">🧠 Gerenciamento de Memória RAM</h4>
         <p class="text-gray-700 mb-4">
           A memória virtual (arquivo de paginação) ajuda quando a RAM física está cheia. Configure para desempenho ideal:
         </p>
@@ -129,7 +129,7 @@ export default function PerformanceOptimizationGuide() {
           <li>Clique em 'Definir' e 'OK'. Reinicie o computador.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚡ Superfetch e Prefetch</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚡ Superfetch e Prefetch</h4>
         <p class="text-gray-700 mb-4">
           O Superfetch (Serviço SysMain) pré-carrega aplicativos comuns na RAM. Em SSDs modernos, isso pode ser desnecessário:
         </p>
@@ -146,7 +146,7 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "6. Otimizações Específicas para Jogos",
       content: `
-        <h4 class="text-white font-bold mb-3">🎮 Modo de Jogo do Windows</h4>
+        <h class="text-gray-900 font-bold mb-3">🎮 Modo de Jogo do Windows</h4>
         <p class="text-gray-700 mb-4">
           O Windows 11 tem um Modo de Jogo que prioriza recursos para jogos:
         </p>
@@ -158,7 +158,7 @@ export default function PerformanceOptimizationGuide() {
           <li>Isso aloca mais recursos da CPU e GPU para o jogo ativo.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações da GPU para Máximo Desempenho</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações da GPU para Máximo Desempenho</h4>
         <p class="text-gray-700 mb-4">
           Configure sua placa de vídeo para desempenho máximo:
         </p>
@@ -182,7 +182,7 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "7. Ajustes de Segurança que Afetam Performance",
       content: `
-        <h4 class="text-white font-bold mb-3">🛡️ Windows Defender e Real-Time Protection</h4>
+        <h class="text-gray-900 font-bold mb-3">🛡️ Windows Defender e Real-Time Protection</h4>
         <p class="text-gray-700 mb-4">
           O antivírus embutido do Windows pode impactar performance, especialmente durante jogos:
         </p>
@@ -194,7 +194,7 @@ export default function PerformanceOptimizationGuide() {
           <li>Para desenvolvedores/testadores: Adicione exceções para ferramentas de desenvolvimento.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔒 Outras Configurações de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔒 Outras Configurações de Segurança</h4>
         <p class="text-gray-700 mb-4">
           Alguns recursos de segurança podem ser ajustados para melhor desempenho:
         </p>
@@ -208,7 +208,7 @@ export default function PerformanceOptimizationGuide() {
     {
       title: "8. Benchmarks e Medição de Performance",
       content: `
-        <h4 class="text-white font-bold mb-3">📊 Ferramentas de Benchmark</h4>
+        <h class="text-gray-900 font-bold mb-3">📊 Ferramentas de Benchmark</h4>
         <p class="text-gray-700 mb-4">
           Após as otimizações, é importante medir o impacto real:
         </p>
@@ -219,7 +219,7 @@ export default function PerformanceOptimizationGuide() {
           <li><strong>PCMark 10:</strong> Benchmark completo de desempenho geral do sistema.</li>
         </ol>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📈 Métricas Importantes</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📈 Métricas Importantes</h4>
         <p class="text-gray-700 mb-4">
           Ao comparar antes e depois das otimizações, observe estas métricas:
         </p>

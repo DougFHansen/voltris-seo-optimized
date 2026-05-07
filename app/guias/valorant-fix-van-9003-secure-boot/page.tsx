@@ -54,7 +54,7 @@ export default function ValorantSecureBootGuide() {
             title: "2. Ativando o Secure Boot na BIOS",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dentro da BIOS (Passo Geral):</h4>
+            <h class="text-gray-900 font-bold mb-2">Dentro da BIOS (Passo Geral):</h4>
             <p class="text-sm text-gray-700">
                 1. Reinicie o PC e aperte repetidamente a tecla <strong>DEL ou F2</strong>. <br/>
                 2. Vá na aba de <strong>Boot</strong> ou <strong>Security</strong>. <br/>

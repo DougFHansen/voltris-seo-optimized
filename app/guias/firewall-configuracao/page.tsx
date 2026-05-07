@@ -55,7 +55,7 @@ export default function FirewallConfigGuide() {
       title: "2. Firewall com Segurança Avançada",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Para Usuários Avançados:</h4>
+            <h class="text-gray-900 font-bold mb-2">Para Usuários Avançados:</h4>
             <p class="text-sm text-gray-700">
                 O painel avançado permite criar regras específicas para **Portas TCP/UDP**. <br/><br/>
                 Se você está hospedando um servidor de Minecraft ou um site local em 2026, precisará criar uma 'Nova Regra de Entrada', selecionar 'Porta' e digitar o número da porta que o servidor utiliza. Lembre-se: abrir muitas portas pode fragilizar a segurança do sistema; abra apenas o estritamente necessário.

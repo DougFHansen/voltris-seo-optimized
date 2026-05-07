@@ -54,7 +54,7 @@ export default function SwitchGuide() {
             title: "2. Switches Ópticos vs Mecânicos",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Velocidade da Luz:</h4>
+            <h class="text-gray-900 font-bold mb-2">Velocidade da Luz:</h4>
             <p class="text-sm text-gray-700">
                 Switches ópticos de 2026 usam um feixe de luz para registrar o clique em vez de contato metálico. <br/><br/>
                 - <strong>Durabilidade:</strong> Como não há atrito entre metais, eles não sofrem com o 'Double Click' e duram o dobro de um switch comum. <br/>
@@ -78,7 +78,7 @@ export default function SwitchGuide() {
         {
             title: "4. Tipos Avançados de Switches em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🔬 Tecnologia de Switches de Ponta</h4>
+        <h class="text-gray-900 font-bold mb-3">🔬 Tecnologia de Switches de Ponta</h4>
         <p class="mb-4 text-gray-700">
             Em 2026, além dos switches tradicionais, surgiram tecnologias avançadas que oferecem experiências únicas:
         </p>
@@ -128,7 +128,7 @@ export default function SwitchGuide() {
         {
             title: "5. Comparação Detalhada de Switches",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Tabela Comparativa de Switches</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Tabela Comparativa de Switches</h4>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
@@ -214,7 +214,7 @@ export default function SwitchGuide() {
         {
             title: "6. Personalização e Modificação de Switches",
             content: `
-        <h4 class="text-white font-bold mb-3">🎨 Modding e Personalização de Switches</h4>
+        <h class="text-gray-900 font-bold mb-3">🎨 Modding e Personalização de Switches</h4>
         <p class="mb-4 text-gray-700">
             A comunidade de teclados mecânicos desenvolveu técnicas avançadas para personalizar e melhorar a experiência dos switches:
         </p>
@@ -240,7 +240,7 @@ export default function SwitchGuide() {
                 </ul>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Processos de Modificação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Processos de Modificação</h4>
         <p class="mb-4 text-gray-700">
             Para quem deseja modificar seus switches:
         </p>

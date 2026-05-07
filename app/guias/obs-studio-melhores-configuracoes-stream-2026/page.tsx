@@ -45,7 +45,7 @@ export default function OBSStreamGuide() {
             title: "2. O Poder do NVENC",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Dica de Performance:</h4>
+            <h class="text-gray-900 font-bold mb-2">Dica de Performance:</h4>
             <p class="text-sm text-gray-700">
                 Nunca use o codificador 'x264' (CPU) se você tem uma placa de vídeo dedicada. O <strong>NVENC</strong> (NVIDIA) ou <strong>AMF</strong> (AMD) possui um chip físico separado apenas para encodar o vídeo, o que significa que fazer a live não vai tirar quase nenhum FPS do seu jogo.
             </p>
@@ -70,7 +70,7 @@ export default function OBSStreamGuide() {
         {
             title: "12. Arquitetura de Codificação e Processamento de Vídeo",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Arquitetura de Codificação de Vídeo em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Arquitetura de Codificação de Vídeo em 2026</h4>
         <p class="mb-4 text-gray-700">
             A codificação de vídeo em softwares de streaming envolve componentes técnicos complexos que afetam diretamente a qualidade e performance:
         </p>
@@ -97,7 +97,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Parâmetros Técnicos de Codificação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Parâmetros Técnicos de Codificação</h4>
         <p class="mb-4 text-gray-700">
             Entendendo os principais parâmetros que afetam a qualidade e eficiência da codificação:
         </p>
@@ -157,7 +157,7 @@ export default function OBSStreamGuide() {
         {
             title: "13. Configurações Avançadas de Áudio e Sincronização",
             content: `
-        <h4 class="text-white font-bold mb-3">🔊 Configurações Avançadas de Áudio em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">🔊 Configurações Avançadas de Áudio em 2026</h4>
         <p class="mb-4 text-gray-700">
             O áudio é um componente crítico para a qualidade da transmissão, com configurações que podem afetar significativamente a experiência do espectador:
         </p>
@@ -184,7 +184,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Áudio Profissionais</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações de Áudio Profissionais</h4>
         <p class="mb-4 text-gray-700">
             Parâmetros avançados para diferentes tipos de transmissão:
         </p>
@@ -231,7 +231,7 @@ export default function OBSStreamGuide() {
         {
             title: "14. Tendências e Inovações em Streaming em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🚀 Inovações em Streaming e Codificação</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Inovações em Streaming e Codificação</h4>
         <p class="mb-4 text-gray-700">
             As tecnologias de streaming estão evoluindo rapidamente com novas abordagens para codificação e distribuição:
         </p>
@@ -268,7 +268,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões de Tecnologia para 2026-2027</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Previsões de Tecnologia para 2026-2027</h4>
         <p class="mb-4 text-gray-700">
             Tendências observadas no desenvolvimento de tecnologias de streaming:
         </p>
@@ -311,7 +311,7 @@ export default function OBSStreamGuide() {
             </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
         <p class="mb-4 text-gray-700">
             Empresas estão investindo pesadamente em tecnologias de streaming avançado:
         </p>
@@ -330,7 +330,7 @@ export default function OBSStreamGuide() {
         {
             title: "4. Configurações de Performance e Hardware",
             content: `
-        <h4 class="text-white font-bold mb-3">⚡ Otimizações Baseadas em Hardware</h4>
+        <h class="text-gray-900 font-bold mb-3">⚡ Otimizações Baseadas em Hardware</h4>
         <p class="mb-4 text-gray-700">
             A performance do OBS Studio varia significativamente com diferentes configurações de hardware:
         </p>
@@ -357,7 +357,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Performance Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações de Performance Recomendadas</h4>
         <p class="mb-4 text-gray-700">
             Configurações ideais para diferentes classes de hardware:
         </p>
@@ -409,7 +409,7 @@ export default function OBSStreamGuide() {
         {
             title: "5. Configurações Avançadas de Rede e CDN",
             content: `
-        <h4 class="text-white font-bold mb-3">🌐 Configurações de Rede Otimizadas</h4>
+        <h class="text-gray-900 font-bold mb-3">🌐 Configurações de Rede Otimizadas</h4>
         <p class="mb-4 text-gray-700">
             Configurações de rede que impactam diretamente a qualidade da transmissão:
         </p>
@@ -442,7 +442,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📡 Configurações por Plataforma</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📡 Configurações por Plataforma</h4>
         <p class="mb-4 text-gray-700">
             Configurações específicas para diferentes plataformas de streaming:
         </p>
@@ -472,7 +472,7 @@ export default function OBSStreamGuide() {
         {
             title: "6. Segurança e Monitoramento",
             content: `
-        <h4 class="text-white font-bold mb-3">🔒 Segurança em Transmissões ao Vivo</h4>
+        <h class="text-gray-900 font-bold mb-3">🔒 Segurança em Transmissões ao Vivo</h4>
         <p class="mb-4 text-gray-700">
             Considerações importantes para proteger suas transmissões:
         </p>
@@ -499,7 +499,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Monitoramento e Análise de Performance</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Monitoramento e Análise de Performance</h4>
         <p class="mb-4 text-gray-700">
             Ferramentas e métricas para monitorar a qualidade da transmissão:
         </p>
@@ -546,7 +546,7 @@ export default function OBSStreamGuide() {
         {
             title: "7. Configurações de Gravação e Arquivamento",
             content: `
-        <h4 class="text-white font-bold mb-3">💾 Configurações Avançadas de Gravação</h4>
+        <h class="text-gray-900 font-bold mb-3">💾 Configurações Avançadas de Gravação</h4>
         <p class="mb-4 text-gray-700">
             Diferentes abordagens para gravação local durante transmissões:
         </p>
@@ -579,7 +579,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Gravação Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações de Gravação Recomendadas</h4>
         <p class="mb-4 text-gray-700">
             Configurações ideais para diferentes cenários de gravação:
         </p>
@@ -609,7 +609,7 @@ export default function OBSStreamGuide() {
         {
             title: "8. Plugins e Extensões Avançadas",
             content: `
-        <h4 class="text-white font-bold mb-3">🔌 Ecossistema de Plugins Profissionais</h4>
+        <h class="text-gray-900 font-bold mb-3">🔌 Ecossistema de Plugins Profissionais</h4>
         <p class="mb-4 text-gray-700">
             Plugins avançados que adicionam funcionalidades profissionais ao OBS Studio:
         </p>
@@ -636,7 +636,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações e Otimização de Plugins</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações e Otimização de Plugins</h4>
         <p class="mb-4 text-gray-700">
             Considerações para maximizar o desempenho dos plugins:
         </p>
@@ -683,7 +683,7 @@ export default function OBSStreamGuide() {
         {
             title: "9. Scripts e Automação",
             content: `
-        <h4 class="text-white font-bold mb-3">🤖 Automação com Scripts</h4>
+        <h class="text-gray-900 font-bold mb-3">🤖 Automação com Scripts</h4>
         <p class="mb-4 text-gray-700">
             Utilização de scripts para automatizar tarefas repetitivas no OBS Studio:
         </p>
@@ -716,7 +716,7 @@ export default function OBSStreamGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">💻 Exemplo de Script Avançado</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">💻 Exemplo de Script Avançado</h4>
         <p class="mb-4 text-gray-700">
             Script Python para monitoramento e ajuste automático de qualidade:
         </p>
@@ -782,7 +782,7 @@ start_timer()</pre>
         {
             title: "10. Configurações Corporativas e Profissionais",
             content: `
-        <h4 class="text-white font-bold mb-3">🏢 Configurações para Uso Profissional</h4>
+        <h class="text-gray-900 font-bold mb-3">🏢 Configurações para Uso Profissional</h4>
         <p class="mb-4 text-gray-700">
             Considerações específicas para uso corporativo e profissional do OBS Studio:
         </p>
@@ -809,7 +809,7 @@ start_timer()</pre>
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações Profissionais Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações Profissionais Recomendadas</h4>
         <p class="mb-4 text-gray-700">
             Configurações ideais para diferentes cenários profissionais:
         </p>

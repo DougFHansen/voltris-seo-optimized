@@ -54,7 +54,7 @@ export default function GamingBrandsGuide() {
             title: "2. Razer e Corsair: Os Gigantes do Ecossistema",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Imersão Total:</h4>
+            <h class="text-gray-900 font-bold mb-2">Imersão Total:</h4>
             <p class="text-sm text-gray-700">
                 Se você gosta de RGB sincronizado e visual premium, a **Razer** (Chroma) e a **Corsair** (iCUE) são as rainhas. Em 2026, o software Synapse está muito mais leve, e a Razer lidera o mercado com os sensores com maior taxa de atualização (8000Hz Optical Sensors). O preço é alto, mas a tecnologia é de ponta.
             </p>

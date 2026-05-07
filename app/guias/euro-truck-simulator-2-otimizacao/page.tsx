@@ -53,7 +53,7 @@ export default function ETS2OptimizationGuide() {
             title: "2. Sombras e Retrovisores: Cuidado!",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Poupe o Processador:</h4>
+            <h class="text-gray-900 font-bold mb-2">Poupe o Processador:</h4>
             <p class="text-sm text-gray-700">
                 Os retrovisores do ETS2 são "mini-telas" que renderizam o jogo novamente. <br/><br/>
                 - <strong>Distância do Retrovisor:</strong> Coloque em Médio. <br/>

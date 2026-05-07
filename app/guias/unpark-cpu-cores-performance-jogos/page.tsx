@@ -55,7 +55,7 @@ export default function CoreParkingGuide() {
             title: "2. Usando o QuickCPU ou Unpark-CPU",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Controle Total:</h4>
+            <h class="text-gray-900 font-bold mb-2">Controle Total:</h4>
             <p class="text-sm text-gray-700">
                 Se você quer garantir que 100% dos núcleos fiquem ativos: <br/><br/>
                 - Baixe o <strong>QuickCPU</strong> (ferramenta padrão em 2026). <br/>

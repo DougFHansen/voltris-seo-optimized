@@ -55,7 +55,7 @@ export default function XboxAppFixGuide() {
             title: "2. Reinstalando os Gaming Services via PowerShell",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Solução Definitiva:</h4>
+            <h class="text-gray-900 font-bold mb-2">Solução Definitiva:</h4>
             <p class="text-sm text-gray-700">
                 Se os resets simples não funcionaram, precisamos forçar a reinstalação do motor de downloads. <br/><br/>
                 No PowerShell (Admin), cole este comando para desinstalar: <br/>

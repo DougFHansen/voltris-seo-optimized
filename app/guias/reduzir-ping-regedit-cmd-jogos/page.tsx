@@ -47,7 +47,7 @@ export default function NetworkGuide() {
             Bufferbloat acontece quando seu roteador tenta enviar dados demais e cria uma fila. Isso causa aqueles "teleportes" no jogo quando alguém começa a assistir Netflix na sala.
         </p>
         <div class="bg-gray-900 p-6 rounded-xl border border-gray-700">
-            <h4 class="text-white font-bold mb-2">O Teste Definitivo</h4>
+            <h class="text-gray-900 font-bold mb-2">O Teste Definitivo</h4>
             <p class="text-gray-700 text-sm">
                 Vá ao site <strong>waveform.com/tools/bufferbloat</strong> e rode o teste. Se você tirar nota "C", "D" ou "F", você tem um problema sério de latência sob carga. A meta é nota "A+".
             </p>

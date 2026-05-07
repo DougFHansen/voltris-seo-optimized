@@ -95,7 +95,7 @@ export default function SSDvsHDDGuide() {
         <p class="mb-4 text-gray-700 leading-relaxed">
           Números de velocidade de transferência impressionam, mas o que realmente importa para o usuário comum é o impacto no dia a dia. Veja dados reais coletados pela equipe Voltris.
         </p>
-        <h4 class="text-white font-bold mb-4">⏱️ Tempo de Boot do Windows 11 (Benchmark Voltris):</h4>
+        <h class="text-gray-900 font-bold mb-4">⏱️ Tempo de Boot do Windows 11 (Benchmark Voltris):</h4>
         <div class="bg-[#0A0A0F] border border-white/5 rounded-xl overflow-hidden mb-6">
             <table class="w-full text-sm">
                 <thead class="bg-white/5">
@@ -129,7 +129,7 @@ export default function SSDvsHDDGuide() {
                 </tbody>
             </table>
         </div>
-        <h4 class="text-white font-bold mb-4">🎮 Tempo de Carregamento em Jogos Populares:</h4>
+        <h class="text-gray-900 font-bold mb-4">🎮 Tempo de Carregamento em Jogos Populares:</h4>
         <div class="bg-[#0A0A0F] border border-white/5 rounded-xl overflow-hidden">
             <table class="w-full text-sm">
                 <thead class="bg-white/5">
@@ -173,10 +173,10 @@ export default function SSDvsHDDGuide() {
                     🎮 Para Jogos — Recomendação
                 </h4>
                 <p class="text-gray-700 text-sm mb-3">
-                    <strong class="text-white">Sistema Operacional + Jogos Principais:</strong> NVMe M.2 PCIe 3.0 ou 4.0 com 1TB mínimo (R$ 350–600). Em 2026, todos os jogos AAA recomendam SSD no mínimo, e alguns exigem NVMe para streaming de texturas adequado.
+                    <s class="text-gray-900">Sistema Operacional + Jogos Principais:</strong> NVMe M.2 PCIe 3.0 ou 4.0 com 1TB mínimo (R$ 350–600). Em 2026, todos os jogos AAA recomendam SSD no mínimo, e alguns exigem NVMe para streaming de texturas adequado.
                 </p>
                 <p class="text-gray-700 text-sm">
-                    <strong class="text-white">Armazenamento de Jogos Secundários:</strong> SSD SATA 2TB é um excelente custo-benefício para guardar jogos que você joga menos frequentemente.
+                    <s class="text-gray-900">Armazenamento de Jogos Secundários:</strong> SSD SATA 2TB é um excelente custo-benefício para guardar jogos que você joga menos frequentemente.
                 </p>
             </div>
             <div class="bg-[#0A0A0F] border border-[#8B31FF]/30 p-6 rounded-xl">
@@ -201,7 +201,7 @@ export default function SSDvsHDDGuide() {
         {
             title: "Como Verificar Compatibilidade e Fazer o Upgrade",
             content: `
-        <h4 class="text-white font-bold mb-4">Verificando suporte a NVMe na sua placa-mãe:</h4>
+        <h class="text-gray-900 font-bold mb-4">Verificando suporte a NVMe na sua placa-mãe:</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 mb-6">
             <li>Pause e anote o modelo da sua placa-mãe (está na caixa, ou no ID do equipamento: Win+Pause → Sistema).</li>
             <li>Pesquise o modelo no site do fabricante (ASUS, MSI, Gigabyte, ASRock).</li>
@@ -212,7 +212,7 @@ export default function SSDvsHDDGuide() {
             <h5 class="text-yellow-400 font-bold mb-2">⚠️ Cuidado: M.2 ≠ NVMe automaticamente</h5>
             <p class="text-gray-700 text-sm">O slot M.2 é o conector físico. O protocolo pode ser SATA ou NVMe. Um SSD M.2 SATA é tão rápido quanto um SSD SATA 2.5" — não mais. Certifique-se de que o slot é PCIe/NVMe, não apenas M.2.</p>
         </div>
-        <h4 class="text-white font-bold mb-4">Como clonar o HD antigo para o SSD sem reinstalar Windows:</h4>
+        <h class="text-gray-900 font-bold mb-4">Como clonar o HD antigo para o SSD sem reinstalar Windows:</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
             <li>Instale o novo SSD (mantendo o HD antigo conectado temporariamente).</li>
             <li>Baixe o <strong>Macrium Reflect Free</strong> ou <strong>MiniTool Partition Wizard Free</strong>.</li>

@@ -30,7 +30,7 @@ export default function OBSvsSLBSGuide() {
       content: `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div class="bg-blue-900/20 p-6 rounded-xl border border-blue-500">
-                <h4 class="text-white font-bold mb-2">OBS Studio</h4>
+                <h class="text-gray-900 font-bold mb-2">OBS Studio</h4>
                 <p class="text-gray-700 text-sm">
                     É open-source, mantido pela comunidade.
                     <br/><strong>Vantagem:</strong> Usa pouquíssima CPU. Aceita plugins incríveis (AITum para live vertical, filtros de áudio VST, legendas automáticas).
@@ -38,7 +38,7 @@ export default function OBSvsSLBSGuide() {
                 </p>
             </div>
             <div class="bg-green-900/20 p-6 rounded-xl border border-green-500">
-                <h4 class="text-white font-bold mb-2">Streamlabs Desktop</h4>
+                <h class="text-gray-900 font-bold mb-2">Streamlabs Desktop</h4>
                 <p class="text-gray-700 text-sm">
                     É uma versão modificada do OBS, feita por uma empresa (Logitech).
                     <br/><strong>Vantagem:</strong> Você loga com a Twitch e tudo está pronto (Alertas, Chat na tela, metas de doação). É "instalar e usar".
@@ -107,7 +107,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "12. Arquitetura Técnica e Comparação de Performance",
       content: `
-        <h4 class="text-white font-bold mb-3">🔧 Arquitetura Interna de Softwares de Streaming</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Arquitetura Interna de Softwares de Streaming</h4>
         <p class="mb-4 text-gray-700">
           Em 2026, a arquitetura dos softwares de streaming determina diretamente sua performance e eficiência:
         </p>
@@ -134,7 +134,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Benchmark Avançado de Performance</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Benchmark Avançado de Performance</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
@@ -191,7 +191,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "13. Configurações Avançadas de Codificação e Transmissão",
       content: `
-        <h4 class="text-white font-bold mb-3">⚙️ Codificação de Vídeo e Áudio em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">⚙️ Codificação de Vídeo e Áudio em 2026</h4>
         <p class="mb-4 text-gray-700">
           Ambos os softwares suportam as mais recentes tecnologias de codificação, mas com diferentes níveis de controle:
         </p>
@@ -218,7 +218,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações Recomendadas por Plataforma</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações Recomendadas por Plataforma</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
@@ -267,7 +267,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "14. Tendências de Streaming e Inovação em 2026",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Inovações em Streaming ao Vivo</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Inovações em Streaming ao Vivo</h4>
         <p class="mb-4 text-gray-700">
           O ecossistema de streaming está evoluindo rapidamente com novas tecnologias:
         </p>
@@ -304,7 +304,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões de Mercado para 2026-2027</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Previsões de Mercado para 2026-2027</h4>
         <p class="mb-4 text-gray-700">
           Tendências observadas no mercado de softwares de streaming:
         </p>
@@ -347,7 +347,7 @@ export default function OBSvsSLBSGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
         <p class="mb-4 text-gray-700">
           Empresas estão investindo pesadamente em tecnologias de streaming avançado:
         </p>
@@ -366,7 +366,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "4. Plugins e Extensibilidades",
       content: `
-        <h4 class="text-white font-bold mb-3">🔌 Ecossistema de Plugins</h4>
+        <h class="text-gray-900 font-bold mb-3">🔌 Ecossistema de Plugins</h4>
         <p class="mb-4 text-gray-700">
           A capacidade de extensão é um fator crítico na escolha do software de streaming:
         </p>
@@ -393,7 +393,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🧩 Plugins Recomendados para OBS Studio</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🧩 Plugins Recomendados para OBS Studio</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
@@ -443,7 +443,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "5. Configurações de Áudio Profissional",
       content: `
-        <h4 class="text-white font-bold mb-3">🎵 Áudio em Transmissões Profissionais</h4>
+        <h class="text-gray-900 font-bold mb-3">🎵 Áudio em Transmissões Profissionais</h4>
         <p class="mb-4 text-gray-700">
           A qualidade do áudio é fundamental para uma transmissão de sucesso:
         </p>
@@ -476,7 +476,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Áudio Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações de Áudio Recomendadas</h4>
         <p class="mb-4 text-gray-700">
           Configurações ideais para diferentes tipos de transmissão:
         </p>
@@ -507,7 +507,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "6. Segurança e Privacidade em Transmissões",
       content: `
-        <h4 class="text-white font-bold mb-3">🔒 Segurança em Softwares de Streaming</h4>
+        <h class="text-gray-900 font-bold mb-3">🔒 Segurança em Softwares de Streaming</h4>
         <p class="mb-4 text-gray-700">
           A segurança é uma preocupação importante ao transmitir ao vivo:
         </p>
@@ -534,7 +534,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Configurações de Segurança Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Configurações de Segurança Recomendadas</h4>
         <p class="mb-4 text-gray-700">
           Medidas específicas para proteger suas transmissões:
         </p>
@@ -581,7 +581,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "7. Otimizações para Hardware Específico",
       content: `
-        <h4 class="text-white font-bold mb-3">⚡ Otimizações Baseadas em Hardware</h4>
+        <h class="text-gray-900 font-bold mb-3">⚡ Otimizações Baseadas em Hardware</h4>
         <p class="mb-4 text-gray-700">
           A performance de streaming varia significativamente com diferentes hardwares:
         </p>
@@ -627,7 +627,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Performance por Hardware</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Comparação de Performance por Hardware</h4>
         <p class="mb-4 text-gray-700">
           Desempenho esperado em diferentes configurações de hardware:
         </p>
@@ -657,7 +657,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "8. Análise de Mercado e Tendências",
       content: `
-        <h4 class="text-white font-bold mb-3">📈 Análise de Mercado de Softwares de Streaming</h4>
+        <h class="text-gray-900 font-bold mb-3">📈 Análise de Mercado de Softwares de Streaming</h4>
         <p class="mb-4 text-gray-700">
           Comparação do uso e adoção dos softwares em 2026:
         </p>
@@ -684,7 +684,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Performance em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Estatísticas de Performance em 2026</h4>
         <p class="mb-4 text-gray-700">
           Dados reais de performance comparando os softwares:
         </p>
@@ -737,7 +737,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "9. Soluções Corporativas e Profissionais",
       content: `
-        <h4 class="text-white font-bold mb-3">🏢 Streaming em Ambientes Corporativos</h4>
+        <h class="text-gray-900 font-bold mb-3">🏢 Streaming em Ambientes Corporativos</h4>
         <p class="mb-4 text-gray-700">
           Considerações para uso profissional e corporativo:
         </p>
@@ -770,7 +770,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações Profissionais Recomendadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações Profissionais Recomendadas</h4>
         <p class="mb-4 text-gray-700">
           Configurações ideais para diferentes cenários profissionais:
         </p>
@@ -800,7 +800,7 @@ export default function OBSvsSLBSGuide() {
     {
       title: "10. Backup e Recuperação de Configurações",
       content: `
-        <h4 class="text-white font-bold mb-3">💾 Gestão de Configurações e Perfis</h4>
+        <h class="text-gray-900 font-bold mb-3">💾 Gestão de Configurações e Perfis</h4>
         <p class="mb-4 text-gray-700">
           Estratégias para backup e recuperação de configurações de streaming:
         </p>
@@ -827,7 +827,7 @@ export default function OBSvsSLBSGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Scripts de Backup e Restauração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Scripts de Backup e Restauração</h4>
         <p class="mb-4 text-gray-700">
           Exemplos de scripts para automação de backup:
         </p>

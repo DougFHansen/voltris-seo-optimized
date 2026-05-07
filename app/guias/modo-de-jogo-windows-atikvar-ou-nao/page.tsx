@@ -102,7 +102,7 @@ export default function GameModeGuide() {
             title: "HAGS: O parceiro do Game Mode",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Agendamento de GPU</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Agendamento de GPU</h4>
                 <p class="text-gray-700 mb-4">
                     Logo abaixo do botão do Modo de Jogo, existe o "Agendamento de GPU acelerado por hardware". Ele transfere o gerenciamento da VRAM da CPU para a própria GPU.
                 </p>

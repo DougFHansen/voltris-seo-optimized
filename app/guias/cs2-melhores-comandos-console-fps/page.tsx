@@ -73,7 +73,7 @@ export default function CS2OptimizationGuide() {
         
         <!-- SVG Technical Diagram: Sub-Tick Timing -->
         <div class="my-8 bg-[#0F111A] p-6 rounded-xl border border-white/5 flex flex-col items-center">
-            <h4 class="text-white font-bold mb-6 text-center">Tickrate (CS:GO) vs Sub-Tick (CS2)</h4>
+            <h class="text-gray-900 font-bold mb-6 text-center">Tickrate (CS:GO) vs Sub-Tick (CS2)</h4>
             <svg viewBox="0 0 800 250" class="w-full h-auto text-gray-700" xmlns="http://www.w3.org/2000/svg">
                 <!-- CS:GO Timeline -->
                 <g transform="translate(50, 50)">
@@ -129,7 +129,7 @@ export default function CS2OptimizationGuide() {
             Limpe suas opções de inicialização antigas. A maioria dos comandos antigos (<code>-tickrate 128</code>, <code>-novid</code>) foi removida ou incorporada.
         </p>
 
-        <h4 class="text-white font-bold mb-3 mt-4">A Lista Segura para 2026:</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-4">A Lista Segura para 2026:</h4>
         <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5 font-mono text-sm text-[#31A8FF] break-all">
             -nojoy -softparticlesdefaultoff +fps_max 0 +cl_showfps 1 -vulkan
         </div>
@@ -150,7 +150,7 @@ export default function CS2OptimizationGuide() {
             Você deve criar um arquivo <code>autoexec.cfg</code> em <code>game/csgo/cfg/</code> para carregar esses comandos sempre que abrir o jogo.
         </p>
 
-        <h4 class="text-white font-bold mb-3 mt-4">Comandos de Rede e Performance:</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-4">Comandos de Rede e Performance:</h4>
         <div class="bg-gray-800 p-4 rounded-lg font-mono text-xs text-green-400 space-y-2">
             <p>cl_updaterate 128 // Força a atualização máxima mesmo em sub-tick</p>
             <p>cl_interp 0.015625 // Ajusta a interpolação para conexão estável</p>
@@ -161,7 +161,7 @@ export default function CS2OptimizationGuide() {
             <p>fps_max 0 // Libera o frame limiter</p>
         </div>
 
-        <h4 class="text-white font-bold mb-3 mt-4">Jump Throw Bind (Ainda necessário?)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-4">Jump Throw Bind (Ainda necessário?)</h4>
         <p class="text-gray-700 text-sm">
             O CS2 agora tem jump-throw nativo (o jogo detecta se você pulou e soltou a granada no mesmo tempo). Porém, para precisão de pixel perfeita, a bind (alias) ainda é usada por profissionais:
         </p>
@@ -207,7 +207,7 @@ export default function CS2OptimizationGuide() {
                 </p>
             </div>
 
-            <h4 class="text-white font-bold mb-3 text-lg">Como rebuildar shaders corretamente:</h4>
+            <h class="text-gray-900 font-bold mb-3 text-lg">Como rebuildar shaders corretamente:</h4>
             <p class="text-gray-700 mb-4 text-sm">
                 A Valve recomenda deixar o jogo rodando no menu principal por 10-15 minutos após uma atualização grande ou update de driver.
             </p>
@@ -244,7 +244,7 @@ export default function CS2OptimizationGuide() {
                 <div class="flex gap-4">
                     <div class="shrink-0 w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-xl">📐</div>
                     <div>
-                        <h4 class="text-white font-bold text-lg">Hitbox Maior? Não.</h4>
+                        <h class="text-gray-900 font-bold text-lg">Hitbox Maior? Não.</h4>
                         <p class="text-gray-700 text-sm leading-relaxed mt-1">
                             Jogar em 1280x960 (4:3) esticado NÃO aumenta a hitbox do inimigo no código do jogo. Mas aumenta o <strong>modelo visual</strong> na sua tela, tornando mais fácil focar e clicar na cabeça. Além disso, menos pixels = mais FPS.
                         </p>
@@ -254,7 +254,7 @@ export default function CS2OptimizationGuide() {
                 <div class="flex gap-4">
                     <div class="shrink-0 w-12 h-12 rounded-full bg-yellow-500/10 flex items-center justify-center text-yellow-500 font-bold text-xl">👀</div>
                     <div>
-                        <h4 class="text-white font-bold text-lg">Visão Periférica Reduzida</h4>
+                        <h class="text-gray-900 font-bold text-lg">Visão Periférica Reduzida</h4>
                         <p class="text-gray-700 text-sm leading-relaxed mt-1">
                             O custo do 4:3 é perder visão lateral (FOV reduzido). Inimigos nos cantos da tela não aparecerão. No nível profissional, a troca vale a pena pelo foco extra. Para casuais, 16:9 Nativo pode ser mais confortável.
                         </p>

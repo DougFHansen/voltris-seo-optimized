@@ -64,7 +64,7 @@ export default function OBSGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Video Encoder</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">NVIDIA NVENC H.264</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">NVIDIA NVENC H.264</span></p>
                 <p class="text-gray-700 text-xs text-justify">
                     Se tiver GPU Nvidia, USE. O NVENC é um chip separado, não afeta o FPS do jogo.
                     <br/>Se tiver AMD: Use <strong>AMD HW H.264</strong>.
@@ -73,7 +73,7 @@ export default function OBSGuide() {
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Rate Control & Bitrate</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">CBR 6000 Kbps (Twitch)</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">CBR 6000 Kbps (Twitch)</span></p>
                 <p class="text-gray-700 text-xs">
                     A Twitch limita a 6000 (oficial) ou 8000 (unofficial). CBR (Constant Bitrate) é obrigatório para estabilidade.
                     <br/>Para YouTube: Use CBR 15000 Kbps ou mais (O YouTube reprocessa tudo, então envie qualidade alta).
@@ -81,7 +81,7 @@ export default function OBSGuide() {
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Preset & Tuning</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">P5 ou P6 (Better Quality)</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">P5 ou P6 (Better Quality)</span></p>
                 <p class="text-gray-700 text-xs">
                     P7 (Max Quality) pode causar lag visível. P5/P6 são idênticos visualmente e mais leves.
                     <br/>Multipass Mode: Single Pass (Duas passadas consome GPU à toa em live).

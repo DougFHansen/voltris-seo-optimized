@@ -56,7 +56,7 @@ export default function SpatialAudioGuide() {
             title: "2. Dolby Atmos vs DTS:X",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Qual escolher em 2026?</h4>
+            <h class="text-gray-900 font-bold mb-2">Qual escolher em 2026?</h4>
             <p class="text-sm text-gray-700">
                 Se você busca a melhor experiência cinematográfica, o **Dolby Atmos** é superior por ter maior suporte em filmes e jogos AAA. Já o **DTS Headphone:X** é muitas vezes preferido por jogadores de FPS por ter uma equalização que destaca melhor frequências de passos e recargas. Ambos são pagos (licença única), mas oferecem períodos de teste gratuitos. Experimente os dois antes de comprar.
             </p>

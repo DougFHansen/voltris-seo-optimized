@@ -53,7 +53,7 @@ export default function KeyboardConfigGuide() {
             title: "2. Como configurar no Windows 11",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Passo a Passo:</h4>
+            <h class="text-gray-900 font-bold mb-2">Passo a Passo:</h4>
             <p class="text-sm text-gray-700">
                 1. Vá em Configurações > Hora e Idioma > <strong>Idioma e Região</strong>. <br/>
                 2. Em 'Português (Brasil)', clique nos três pontos (...) e selecione <strong>Opções de Idioma</strong>. <br/>
@@ -80,7 +80,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "12. Arquitetura de Layout de Teclados",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Estrutura Técnica de Layouts de Teclado</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Estrutura Técnica de Layouts de Teclado</h4>
         <p class="mb-4 text-gray-700">
             Em 2026, os layouts de teclados são definidos por padrões internacionais complexos que vão além da simples disposição física das teclas:
         </p>
@@ -107,7 +107,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Arquitetura de Mapeamento de Teclado</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Arquitetura de Mapeamento de Teclado</h4>
         <p class="mb-4 text-gray-700">
             O processo de conversão de pressionamento de tecla em caractere visível envolve múltiplas etapas:
         </p>
@@ -167,7 +167,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "13. Tabelas de Mapeamento e Caracteres Especiais",
             content: `
-        <h4 class="text-white font-bold mb-3">🔤 Mapeamento de Caracteres Especiais em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">🔤 Mapeamento de Caracteres Especiais em 2026</h4>
         <p class="mb-4 text-gray-700">
             Os layouts ABNT2 e ANSI diferem significativamente no tratamento de caracteres especiais e acentuação:
         </p>
@@ -244,7 +244,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔍 Sequências de Combinação para Acentuação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔍 Sequências de Combinação para Acentuação</h4>
         <p class="mb-4 text-gray-700">
             Em layouts internacionais, a criação de caracteres acentuados segue regras específicas:
         </p>
@@ -291,7 +291,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "14. Tendências e Evolução de Layouts em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🚀 Inovações em Layouts de Teclado</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Inovações em Layouts de Teclado</h4>
         <p class="mb-4 text-gray-700">
             Em 2026, os layouts de teclado estão evoluindo com novas tecnologias e padrões de uso:
         </p>
@@ -328,7 +328,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Estatísticas de Uso de Layouts em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Estatísticas de Uso de Layouts em 2026</h4>
         <p class="mb-4 text-gray-700">
             Dados sobre a distribuição e uso de layouts em diferentes regiões:
         </p>
@@ -371,7 +371,7 @@ export default function KeyboardConfigGuide() {
             </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
         <p class="mb-4 text-gray-700">
             Empresas e instituições estão investindo em tecnologias de layout avançado:
         </p>
@@ -390,7 +390,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "4. Configurações Regionais Avançadas",
             content: `
-        <h4 class="text-white font-bold mb-3">🌍 Configuração Regional Completa</h4>
+        <h class="text-gray-900 font-bold mb-3">🌍 Configuração Regional Completa</h4>
         <p class="mb-4 text-gray-700">
             A configuração do teclado está intimamente ligada às configurações regionais do sistema:
         </p>
@@ -417,7 +417,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Ferramentas de Configuração Regional</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Ferramentas de Configuração Regional</h4>
         <p class="mb-4 text-gray-700">
             Métodos avançados para configurar o layout regional:
         </p>
@@ -464,7 +464,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "5. Troubleshooting Avançado",
             content: `
-        <h4 class="text-white font-bold mb-3">🔍 Diagnóstico de Problemas Complexos</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Diagnóstico de Problemas Complexos</h4>
         <p class="mb-4 text-gray-700">
             Quando o layout parece estar configurado corretamente mas ainda apresenta problemas:
         </p>
@@ -495,7 +495,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Soluções de Problemas Comuns</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛠️ Soluções de Problemas Comuns</h4>
         <p class="mb-4 text-gray-700">
             Técnicas avançadas para resolver problemas persistentes:
         </p>
@@ -524,7 +524,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "6. Segurança e Privacidade",
             content: `
-        <h4 class="text-white font-bold mb-3">🔒 Considerações de Segurança em Layouts de Teclado</h4>
+        <h class="text-gray-900 font-bold mb-3">🔒 Considerações de Segurança em Layouts de Teclado</h4>
         <p class="mb-4 text-gray-700">
             A configuração de layout pode impactar a segurança do sistema:
         </p>
@@ -551,7 +551,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Proteção contra Ataques de Engenharia Social</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Proteção contra Ataques de Engenharia Social</h4>
         <p class="mb-4 text-gray-700">
             Como os layouts de teclado podem ser usados em ataques:
         </p>
@@ -592,7 +592,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "7. Análise de Performance e Ergonomia",
             content: `
-        <h4 class="text-white font-bold mb-3">⚡ Impacto de Layouts na Performance de Digitação</h4>
+        <h class="text-gray-900 font-bold mb-3">⚡ Impacto de Layouts na Performance de Digitação</h4>
         <p class="mb-4 text-gray-700">
             Diferentes layouts de teclado têm impactos variados na velocidade e precisão de digitação:
         </p>
@@ -623,7 +623,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Estudos de Caso em Performance</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Estudos de Caso em Performance</h4>
         <p class="mb-4 text-gray-700">
             Análise de performance em diferentes cenários:
         </p>
@@ -651,7 +651,7 @@ export default function KeyboardConfigGuide() {
         {
             title: "8. Personalização e Scripts Avançados",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Personalização de Layout com Scripts</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Personalização de Layout com Scripts</h4>
         <p class="mb-4 text-gray-700">
             Para usuários avançados, é possível criar layouts personalizados:
         </p>
@@ -678,7 +678,7 @@ export default function KeyboardConfigGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">💻 Exemplo de Script PowerShell</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">💻 Exemplo de Script PowerShell</h4>
         <p class="mb-4 text-gray-700">
             Script para verificar e configurar layouts de teclado:
         </p>
@@ -708,7 +708,7 @@ Set-WinSystemLocale "pt-BR"</pre>
         {
             title: "9. Compatibilidade com Aplicativos Específicos",
             content: `
-        <h4 class="text-white font-bold mb-3">🔄 Compatibilidade com Softwares Especializados</h4>
+        <h class="text-gray-900 font-bold mb-3">🔄 Compatibilidade com Softwares Especializados</h4>
         <p class="mb-4 text-gray-700">
             Alguns aplicativos podem ter problemas específicos com layouts de teclado:
         </p>
@@ -739,7 +739,7 @@ Set-WinSystemLocale "pt-BR"</pre>
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Soluções de Compatibilidade</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Soluções de Compatibilidade</h4>
         <p class="mb-4 text-gray-700">
             Estratégias para resolver problemas de compatibilidade:
         </p>
@@ -786,7 +786,7 @@ Set-WinSystemLocale "pt-BR"</pre>
         {
             title: "10. Soluções Corporativas e de TI",
             content: `
-        <h4 class="text-white font-bold mb-3">🏢 Implantação em Ambientes Corporativos</h4>
+        <h class="text-gray-900 font-bold mb-3">🏢 Implantação em Ambientes Corporativos</h4>
         <p class="mb-4 text-gray-700">
             Em ambientes empresariais, a padronização de layouts de teclado é crítica:
         </p>
@@ -813,7 +813,7 @@ Set-WinSystemLocale "pt-BR"</pre>
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Scripts de Implantação em Lote</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Scripts de Implantação em Lote</h4>
         <p class="mb-4 text-gray-700">
             Exemplo de script para implantação de layout em múltiplas máquinas:
         </p>
@@ -836,7 +836,7 @@ Set-WinUserLanguageList -LanguageList "pt-BR" -Force
 Write-Host "Layout ABNT2 configurado com sucesso para o ambiente corporativo"</pre>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Considerações de Segurança Corporativa</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Considerações de Segurança Corporativa</h4>
         <p class="mb-4 text-gray-700">
             Implementação segura de layouts em ambientes corporativos:
         </p>

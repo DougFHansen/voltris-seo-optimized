@@ -59,7 +59,7 @@ export default function LocalLLMGuide() {
             Para rodar IA, você não precisa de CPU forte. Você precisa de <strong>VRAM (Memória da Placa de Vídeo)</strong>. O modelo inteiro precisa caber na VRAM para ser rápido.
         </p>
         
-        <h4 class="text-white font-bold text-xl mb-4">Tabela de Requisitos Reais (2026)</h4>
+        <h class="text-gray-900 font-bold text-xl mb-4">Tabela de Requisitos Reais (2026)</h4>
         <div class="overflow-x-auto mb-8">
             <table class="w-full text-left text-sm text-gray-700 border-collapse border border-gray-700 rounded-lg">
                 <thead class="bg-gray-900 text-white uppercase tracking-wider">
@@ -120,7 +120,7 @@ export default function LocalLLMGuide() {
             </div>
             <div>
                 <p class="text-gray-500 mb-1"># 4. Criar um Personagem Customizado (Modelfile)</p>
-                <p class="text-white">Crie um arquivo chamado 'MarioFile' com:</p>
+                <p class="text-gray-900">Crie um arquivo chamado 'MarioFile' com:</p>
                 <pre class="text-blue-300 pl-4 py-2">
 FROM llama3
 SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 'Wahoo!'."
@@ -144,7 +144,7 @@ SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 
             O Santo Graal da produtividade: Fazer perguntas sobre seus próprios documentos (PDFs, Contratos, Notas) sem enviar nada para a nuvem.
         </p>
         
-        <h4 class="text-white font-bold text-lg mb-2">Ferramenta: AnythingLLM (Desktop)</h4>
+        <h class="text-gray-900 font-bold text-lg mb-2">Ferramenta: AnythingLLM (Desktop)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-4 bg-gray-900 border border-gray-700 p-6 rounded-xl">
             <li>
                 <strong>Instalar:</strong> Baixe o <a href="https://useanything.com/" class="text-blue-400 hover:underline">AnythingLLM Desktop</a>. É um app tudo-em-um (vetores, interface, modelo).
@@ -177,7 +177,7 @@ SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 
             </div>
 
             <div class="bg-gradient-to-br from-gray-200/10 to-gray-200/0 border border-gray-500/30 p-6 rounded-xl">
-                <h4 class="text-white font-bold text-xl mb-2">Mac (Apple Silicon)</h4>
+                <h class="text-gray-900 font-bold text-xl mb-2">Mac (Apple Silicon)</h4>
                 <p class="text-gray-700 text-sm">
                     <strong>Prós:</strong> Memória Unificada! Um Mac Studio com 192GB de RAM pode alocar 140GB para VRAM. Isso permite rodar modelos gigantes (Llama 3 400B) que precisariam de 8 placas RTX 4090.
                     <br/><strong>Contras:</strong> Inferência (Tokens/s) é mais lenta que na NVIDIA. Custo inicial altíssimo.

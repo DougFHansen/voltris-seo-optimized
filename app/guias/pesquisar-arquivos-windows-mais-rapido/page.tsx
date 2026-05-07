@@ -53,7 +53,7 @@ export default function FileSearchGuide() {
             title: "2. Otimizando a Busca Nativa",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Desligando o Lixo:</h4>
+            <h class="text-gray-900 font-bold mb-2">Desligando o Lixo:</h4>
             <p class="text-sm text-gray-700">
                 1. Vá em Configurações > Privacidade e Segurança > Permissões de Busca. <br/>
                 2. Desative 'Pesquisa na Nuvem da Microsoft' e 'Histórico de Pesquisa'. <br/>

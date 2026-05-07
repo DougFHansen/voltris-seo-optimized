@@ -55,7 +55,7 @@ export default function DeadzoneFixGuide() {
             title: "2. Configurando na Steam (Global)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Válido para todos os jogos:</h4>
+            <h class="text-gray-900 font-bold mb-2">Válido para todos os jogos:</h4>
             <p class="text-sm text-gray-700">
                 1. Abra a <strong>Steam</strong> e vá em Configurações > Controle. <br/>
                 2. Clique em 'Calibragem e Zonas Mortas'. <br/>

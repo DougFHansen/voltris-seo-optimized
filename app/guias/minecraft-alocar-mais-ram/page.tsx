@@ -56,7 +56,7 @@ export default function MinecraftRAMGuide() {
             title: "2. No TLauncher (Alternativo)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Simplicidade:</h4>
+            <h class="text-gray-900 font-bold mb-2">Simplicidade:</h4>
             <p class="text-sm text-gray-700">
                 1. Abra o TLauncher e clique na <strong>Engrenagem (Configurações)</strong> no canto inferior direito. <br/>
                 2. No menu lateral, selecione 'Configurações'. <br/>

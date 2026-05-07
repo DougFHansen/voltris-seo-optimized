@@ -54,7 +54,7 @@ export default function SSDvsHDGuide() {
             title: "2. Quando ainda vale a pena comprar um HD?",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Armazenamento de Massa (Cold Storage):</h4>
+            <h class="text-gray-900 font-bold mb-2">Armazenamento de Massa (Cold Storage):</h4>
             <p class="text-sm text-gray-700">
                 Se você precisa guardar 8TB de filmes, vídeos de Raw Footage ou fotos de família, o HD ainda oferece o melhor preço por Gigabyte. Para **backup**, ele é excelente, pois você pode deixá-lo guardado fora da rede e os dados permanecerão lá. Mas lembre-se: nunca instale programas ou jogos modernos em um HD em 2026, ou você sofrerá com "stuttering" (travadas) constantes.
             </p>

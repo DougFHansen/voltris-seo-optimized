@@ -54,7 +54,7 @@ export default function CoolingComparisonGuide() {
             title: "2. Water Cooler: Estética e Silêncio",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">O Poder do Líquido:</h4>
+            <h class="text-gray-900 font-bold mb-2">O Poder do Líquido:</h4>
             <p class="text-sm text-gray-700">
                 Water Coolers modernos de 2026 são excelentes para tirar o calor de dentro do processador e jogá-lo diretamente para fora do gabinete. <br/><br/>
                 - <strong>Silêncio:</strong> Como o calor é dissipado em uma área maior (radiadores de 360mm ou 420mm), as ventoinhas podem girar mais devagar, fazendo menos barulho. <br/>

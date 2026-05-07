@@ -64,7 +64,7 @@ export default function AIAgentsGuide() {
                 <h4 class="text-blue-400 font-bold text-xl mb-2">1. O Cérebro (Core LLM)</h4>
                 <p class="text-gray-700">
                     O modelo de linguagem (GPT-4o, Claude 3.5 Sonnet). Ele não armazena dados, ele processa lógica. Ele decide "O que fazer a seguir?".
-                    <br/><strong class="text-white">Dica 2026:</strong> Claude 3.5 Sonnet é atualmente o melhor "raciocinador" para agentes, superando o GPT-4o em seguir instruções complexas.
+                    <br/><s class="text-gray-900">Dica 2026:</strong> Claude 3.5 Sonnet é atualmente o melhor "raciocinador" para agentes, superando o GPT-4o em seguir instruções complexas.
                 </p>
             </div>
             

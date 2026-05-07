@@ -56,7 +56,7 @@ export default function WifiPrinterGuide() {
       title: "2. Adicionando pelo IP (Se o Windows não achar)",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Método Manual:</h4>
+            <h class="text-gray-900 font-bold mb-2">Método Manual:</h4>
             <p class="text-sm text-gray-700">
                 Se a impressora já está no Wi-Fi mas o Windows diz 'Impressora não encontrada': <br/>
                 1. Imprima a página de configuração da impressora (veja no menu dela) para descobrir o <strong>Endereço IP</strong> (ex: 192.168.0.15). <br/>

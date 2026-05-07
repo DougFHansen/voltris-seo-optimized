@@ -118,7 +118,7 @@ export default function DiskCleanupGuide() {
             title: "Pasta SoftwareDistribution (Correção de Updates)",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">Lixo de Download</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">Lixo de Download</h4>
                 <p class="text-gray-700 mb-4">
                     Quando o Windows baixa uma atualização, ele guarda em <code>C:\\Windows\\SoftwareDistribution\\Download</code>. Depois de instalar, isso deveria ser apagado, mas nem sempre é.
                 </p>

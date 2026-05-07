@@ -92,13 +92,13 @@ export default function KeyboardComparisonGuide() {
             title: "2. Teclado Mecânico: Precisão e Feedback",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Switches Individuais:</h4>
+            <h class="text-gray-900 font-bold mb-2">Switches Individuais:</h4>
             <p class="text-sm text-gray-700">
                 Cada tecla possui seu próprio interruptor físico (switch). <br/><br/>
                 Isso garante que cada clique seja registrado de forma independente (N-Key Rollover), eliminando o ghosting. Além disso, em 2026, os teclados mecânicos oferecem o 'Rapid Trigger' (em switches magnéticos), onde a tecla reseta no instante em que você começa a levantá-la, dando uma vantagem absurda em jogos como Valorant e CS2.
             </p>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Tecnologia dos Switches</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Tecnologia dos Switches</h4>
         <p class="mb-4 text-gray-700">
             Cada switch mecânico é um dispositivo sofisticado com características específicas:
         </p>
@@ -154,7 +154,7 @@ export default function KeyboardComparisonGuide() {
             <h4 class="text-purple-400 font-bold mb-3">🎯 Recomendações por Perfil</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <h5 class="text-white font-bold mb-2">Perfil Gamer</h5>
+                    <h class="text-gray-900 font-bold mb-2">Perfil Gamer</h5>
                     <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Switches lineares (Red) ou magnéticos</li>
                         <li>• Formato compacto (60%-75%)</li>
@@ -163,7 +163,7 @@ export default function KeyboardComparisonGuide() {
                     </ul>
                 </div>
                 <div>
-                    <h5 class="text-white font-bold mb-2">Perfil Office</h5>
+                    <h class="text-gray-900 font-bold mb-2">Perfil Office</h5>
                     <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Switches táteis (Brown) ou silent</li>
                         <li>• Formato completo com numérico</li>
@@ -178,7 +178,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "4. Análise de Custo-Benefício Detalhada",
             content: `
-        <h4 class="text-white font-bold mb-3">💰 Avaliação Financeira de Longo Prazo</h4>
+        <h class="text-gray-900 font-bold mb-3">💰 Avaliação Financeira de Longo Prazo</h4>
         <p class="mb-4 text-gray-700">
             Embora o investimento inicial em um teclado mecânico seja maior, a análise de custo-benefício deve considerar o ciclo de vida do produto:
         </p>
@@ -204,7 +204,7 @@ export default function KeyboardComparisonGuide() {
                 </ul>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação Econômica Detalhada</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Comparação Econômica Detalhada</h4>
         <p class="mb-4 text-gray-700">
             Em um período de 10 anos, a análise revela diferenças significativas:
         </p>
@@ -257,7 +257,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "5. Impacto na Saúde e Ergonomia",
             content: `
-        <h4 class="text-white font-bold mb-3">🏥 Bem-Estar e Saúde no Ambiente de Trabalho</h4>
+        <h class="text-gray-900 font-bold mb-3">🏥 Bem-Estar e Saúde no Ambiente de Trabalho</h4>
         <p class="mb-4 text-gray-700">
             A escolha do teclado também impacta diretamente na saúde do usuário, especialmente para quem passa muitas horas digitando:
         </p>
@@ -266,7 +266,7 @@ export default function KeyboardComparisonGuide() {
             <li><strong>Teclado de Membrana:</strong> Pode causar fadiga mais rápida devido à necessidade de pressionar as teclas até o fundo para registro. No entanto, é mais silencioso, o que reduz o estresse auditivo em ambientes compartilhados.</li>
             <li><strong>Considerações Ergonômicas:</strong> Ambos os tipos beneficiam-se de apoios de punho adequados e posicionamento correto em relação ao cotovelo (ângulo de 90 graus aproximadamente).</li>
         </ul>
-        <h4 class="text-white font-bold mb-3 mt-6">🧠 Impacto na Produtividade e Concentração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🧠 Impacto na Produtividade e Concentração</h4>
         <p class="mb-4 text-gray-700">
             Estudos mostram que a sensação tátil e o feedback auditivo adequados podem melhorar o desempenho cognitivo:
         </p>
@@ -279,7 +279,7 @@ export default function KeyboardComparisonGuide() {
             <h4 class="text-emerald-400 font-bold mb-3">💪 Benefícios para a Saúde</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <h5 class="text-white font-bold mb-2">Teclado Mecânico</h5>
+                    <h class="text-gray-900 font-bold mb-2">Teclado Mecânico</h5>
                     <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Menor força de pressão necessária</li>
                         <li>• Redução de tensão no punho</li>
@@ -288,7 +288,7 @@ export default function KeyboardComparisonGuide() {
                     </ul>
                 </div>
                 <div>
-                    <h5 class="text-white font-bold mb-2">Considerações Gerais</h5>
+                    <h class="text-gray-900 font-bold mb-2">Considerações Gerais</h5>
                     <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Importância do apoio de punho</li>
                         <li>• Posicionamento adequado do teclado</li>
@@ -303,7 +303,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "6. Tecnologia Avançada em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🚀 Inovações Recentes e Futuras</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Inovações Recentes e Futuras</h4>
         <p class="mb-4 text-gray-700">
             Em 2026, a tecnologia de teclados evoluiu significativamente com inovações que melhoram ainda mais a experiência do usuário:
         </p>
@@ -327,7 +327,7 @@ export default function KeyboardComparisonGuide() {
                 </p>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Montagem e Modificação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Montagem e Modificação</h4>
         <p class="mb-4 text-gray-700">
             A cultura DIY (faça você mesmo) cresceu exponencialmente na comunidade de teclados:
         </p>
@@ -342,7 +342,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "7. Escolha Certa para Seu Perfil",
             content: `
-        <h4 class="text-white font-bold mb-3">🎯 Perfis de Usuários e Recomendações</h4>
+        <h class="text-gray-900 font-bold mb-3">🎯 Perfis de Usuários e Recomendações</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6">
             <div class="bg-indigo-900/10 p-5 rounded-xl border border-indigo-500/20">
                 <h5 class="text-indigo-400 font-bold mb-2">Gamer Competitivo</h5>
@@ -375,7 +375,7 @@ export default function KeyboardComparisonGuide() {
                 </ul>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">🔍 Critérios de Decisão</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔍 Critérios de Decisão</h4>
         <p class="mb-4 text-gray-700">
             Use esta lista de verificação para tomar sua decisão:
         </p>
@@ -428,12 +428,12 @@ export default function KeyboardComparisonGuide() {
         {
             title: "8. Considerações Finais e Recomendações",
             content: `
-        <h4 class="text-white font-bold mb-3">✅ Conclusão e Tomada de Decisão</h4>
+        <h class="text-gray-900 font-bold mb-3">✅ Conclusão e Tomada de Decisão</h4>
         <p class="mb-4 text-gray-700">
             A escolha entre teclado mecânico e de membrana depende de seu perfil de uso, orçamento e preferências pessoais. Em 2026, os teclados mecânicos se tornaram a melhor opção para a maioria dos usuários, graças à combinação de desempenho, durabilidade e custo-benefício a longo prazo.
         </p>
         <div class="bg-gradient-to-r from-blue-900/30 to-purple-900/30 p-6 rounded-xl border border-blue-500/30 my-6">
-            <h4 class="text-white font-bold mb-3">📊 Resumo Final</h4>
+            <h class="text-gray-900 font-bold mb-3">📊 Resumo Final</h4>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <h5 class="text-blue-400 font-bold mb-2">Vantagens do Mecânico</h5>
@@ -457,7 +457,7 @@ export default function KeyboardComparisonGuide() {
                 </div>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">💡 Dica Final</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">💡 Dica Final</h4>
         <p class="mb-4 text-gray-700">
             Independentemente da escolha, considere experimentar antes de comprar. Visite lojas físicas ou peça para amigos demonstrarem seus teclados. A sensação de digitação é altamente pessoal e só pode ser avaliada com uso real. Se possível, comece com um teclado mecânico básico para sentir a diferença e decidir se vale o investimento.
         </p>
@@ -470,7 +470,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "12. Firmware Avançado e Personalização de Software",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Firmware QMK/VIA e Personalização Profissional</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Firmware QMK/VIA e Personalização Profissional</h4>
         <p class="mb-4 text-gray-700">
             Em 2026, a personalização de teclados vai muito além da troca de keycaps e switches:
         </p>
@@ -497,7 +497,7 @@ export default function KeyboardComparisonGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Configurações Avançadas de Firmware</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Configurações Avançadas de Firmware</h4>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
@@ -554,7 +554,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "13. Acústica e Modificação Sonora",
             content: `
-        <h4 class="text-white font-bold mb-3">🔊 Engenharia Acústica de Teclados Mecânicos</h4>
+        <h class="text-gray-900 font-bold mb-3">🔊 Engenharia Acústica de Teclados Mecânicos</h4>
         <p class="mb-4 text-gray-700">
             A experiência sonora de um teclado mecânico é tão importante quanto a tátil:
         </p>
@@ -594,7 +594,7 @@ export default function KeyboardComparisonGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Análise Acústica Comparativa</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Análise Acústica Comparativa</h4>
         <p class="mb-4 text-gray-700">
             Medidas objetivas do som produzido por diferentes configurações:
         </p>
@@ -625,7 +625,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "14. Tendências de Mercado e Inovação em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🚀 Inovações Tecnológicas em Teclados Mecânicos</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Inovações Tecnológicas em Teclados Mecânicos</h4>
         <p class="mb-4 text-gray-700">
             O mercado de teclados mecânicos em 2026 apresenta tecnologias revolucionárias:
         </p>
@@ -662,7 +662,7 @@ export default function KeyboardComparisonGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Projeções de Mercado para 2026-2027</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Projeções de Mercado para 2026-2027</h4>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
@@ -708,7 +708,7 @@ export default function KeyboardComparisonGuide() {
             </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas e Desenvolvimento</h4>
         <p class="mb-4 text-gray-700">
             Empresas e universidades estão investindo pesadamente em tecnologias emergentes:
         </p>
@@ -727,7 +727,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "9. Análise de Marcas e Modelos Populares em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🏆 Comparação de Marcas e Modelos em 2026</h4>
+        <h class="text-gray-900 font-bold mb-3">🏆 Comparação de Marcas e Modelos em 2026</h4>
         <p class="mb-4 text-gray-700">
             O mercado de teclados mecânicos e de membrana está repleto de opções com diferentes níveis de qualidade, preço e recursos:
         </p>
@@ -751,7 +751,7 @@ export default function KeyboardComparisonGuide() {
                 </ul>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Análise de Modelos Específicos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Análise de Modelos Específicos</h4>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
@@ -807,7 +807,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "10. Tecnologia de Switches Avançados em 2026",
             content: `
-        <h4 class="text-white font-bold mb-3">🔬 Tecnologia de Switches de Ponta</h4>
+        <h class="text-gray-900 font-bold mb-3">🔬 Tecnologia de Switches de Ponta</h4>
         <p class="mb-4 text-gray-700">
             A tecnologia de switches evoluiu significativamente em 2026, com inovações que melhoram a experiência do usuário:
         </p>
@@ -849,7 +849,7 @@ export default function KeyboardComparisonGuide() {
                 </ul>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Análise Técnica dos Switches</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Análise Técnica dos Switches</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800 p-4 rounded-lg">
                 <h5 class="text-cyan-400 font-bold mb-2">Características Técnicas</h5>
@@ -877,7 +877,7 @@ export default function KeyboardComparisonGuide() {
         {
             title: "11. Ergonomia e Saúde: Impacto de Longo Prazo",
             content: `
-        <h4 class="text-white font-bold mb-3">🏥 Ergonomia Avançada e Prevenção de Lesões</h4>
+        <h class="text-gray-900 font-bold mb-3">🏥 Ergonomia Avançada e Prevenção de Lesões</h4>
         <p class="mb-4 text-gray-700">
             A escolha do teclado tem implicações significativas para a saúde a longo prazo:
         </p>
@@ -901,7 +901,7 @@ export default function KeyboardComparisonGuide() {
                 </ul>
             </div>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Estudos e Pesquisas sobre Saúde</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Estudos e Pesquisas sobre Saúde</h4>
         <p class="mb-4 text-gray-700">
             Diversos estudos científicos comprovam os benefícios de teclados bem projetados:
         </p>
@@ -943,7 +943,7 @@ export default function KeyboardComparisonGuide() {
                 </tbody>
             </table>
         </div>
-        <h4 class="text-white font-bold mb-3 mt-6">💡 Recomendações Médicas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">💡 Recomendações Médicas</h4>
         <p class="mb-4 text-gray-700">
             Profissionais de saúde recomendam:
         </p>

@@ -55,7 +55,7 @@ export default function RestorePointGuide() {
             title: "2. Criando o seu Ponto Manual",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Procedimento de Segurança:</h4>
+            <h class="text-gray-900 font-bold mb-2">Procedimento de Segurança:</h4>
             <p class="text-sm text-gray-700">
                 Ainda na mesma janela, clique no botão <strong>Criar...</strong> ao lado de 'Crie um ponto de restauração agora'. <br/><br/>
                 Dê um nome claro para o ponto, como <i>"Antes de instalar Driver NVIDIA 555.25"</i> ou <i>"Antes de Otimizar Registro"</i>. Clique em Criar. Levará cerca de 30 segundos. Agora, você está seguro para fazer qualquer mudança profunda no Windows em 2026.
@@ -80,7 +80,7 @@ export default function RestorePointGuide() {
         {
             title: "4. Fundamentos Técnicos da Restauração do Sistema",
             content: `
-        <h4 class="text-white font-bold mb-3">🔬 Arquitetura Interna do Shadow Copy e Restauração do Sistema</h4>
+        <h class="text-gray-900 font-bold mb-3">🔬 Arquitetura Interna do Shadow Copy e Restauração do Sistema</h4>
         <p class="mb-4 text-gray-700">
             A restauração do sistema opera em níveis profundos do sistema operacional, utilizando tecnologias avançadas de cópia sombra:
         </p>
@@ -107,7 +107,7 @@ export default function RestorePointGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Processo de Criação de Ponto de Restauração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Processo de Criação de Ponto de Restauração</h4>
         <p class="mb-4 text-gray-700">
             O processo envolve múltiplas etapas técnicas de captura e armazenamento:
         </p>
@@ -160,7 +160,7 @@ export default function RestorePointGuide() {
         {
             title: "5. Configurações Avançadas e Personalização",
             content: `
-        <h4 class="text-white font-bold mb-3">🔧 Configurações Profissionais do Shadow Copy</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Configurações Profissionais do Shadow Copy</h4>
         <p class="mb-4 text-gray-700">
             A configuração avançada do serviço de cópia sombra permite otimizar o desempenho e eficiência:
         </p>
@@ -193,7 +193,7 @@ export default function RestorePointGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Comandos Avançados do Diskshadow</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Comandos Avançados do Diskshadow</h4>
         <p class="mb-4 text-gray-700">
             Ferramentas de linha de comando para gerenciamento avançado:
         </p>
@@ -224,7 +224,7 @@ export default function RestorePointGuide() {
         {
             title: "6. Recuperação Avançada e Diagnóstico",
             content: `
-        <h4 class="text-white font-bold mb-3">🔍 Técnicas Avançadas de Recuperação de Sistema</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Técnicas Avançadas de Recuperação de Sistema</h4>
         <p class="mb-4 text-gray-700">
             Quando a restauração padrão não é suficiente, existem métodos mais avançados:
         </p>
@@ -261,7 +261,7 @@ export default function RestorePointGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Comparação de Métodos de Recuperação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Comparação de Métodos de Recuperação</h4>
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
                 <thead class="bg-gray-800">
@@ -308,7 +308,7 @@ export default function RestorePointGuide() {
         {
             title: "7. Automatização e Scripts de Restauração",
             content: `
-        <h4 class="text-white font-bold mb-3">🤖 Automação de Ponto de Restauração com Scripts</h4>
+        <h class="text-gray-900 font-bold mb-3">🤖 Automação de Ponto de Restauração com Scripts</h4>
         <p class="mb-4 text-gray-700">
             Automatizar a criação de pontos de restauração pode aumentar significativamente a segurança do sistema:
         </p>
@@ -358,7 +358,7 @@ export default function RestorePointGuide() {
         {
             title: "8. Recuperação em Ambientes Corporativos",
             content: `
-        <h4 class="text-white font-bold mb-3">🏢 Recuperação de Sistema em Ambientes de TI Empresarial</h4>
+        <h class="text-gray-900 font-bold mb-3">🏢 Recuperação de Sistema em Ambientes de TI Empresarial</h4>
         <p class="mb-4 text-gray-700">
             Em ambientes corporativos, a recuperação de sistema segue práticas e políticas específicas:
         </p>
@@ -385,7 +385,7 @@ export default function RestorePointGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Considerações de Segurança Corporativa</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Considerações de Segurança Corporativa</h4>
         <p class="mb-4 text-gray-700">
             Implementação de recuperação de sistema em ambientes seguros:
         </p>
@@ -401,7 +401,7 @@ export default function RestorePointGuide() {
         {
             title: "9. Alternativas e Tendências Futuras",
             content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tendências em Tecnologias de Recuperação de Sistema</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tendências em Tecnologias de Recuperação de Sistema</h4>
         <p class="mb-4 text-gray-700">
             As tecnologias de recuperação de sistema estão evoluindo rapidamente com novas abordagens:
         </p>
@@ -428,7 +428,7 @@ export default function RestorePointGuide() {
             </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões para 2026-2027</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Previsões para 2026-2027</h4>
         <p class="mb-4 text-gray-700">
             O futuro da recuperação de sistema promete inovações significativas:
         </p>

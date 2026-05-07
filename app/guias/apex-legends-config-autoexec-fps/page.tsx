@@ -57,19 +57,19 @@ export default function ApexGuide() {
         <div class="space-y-4">
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-red-500 font-bold mb-1">Texture Streaming Budget</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">None ou Very Low (2GB)</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">None ou Very Low (2GB)</span></p>
                 <p class="text-gray-700 text-xs">
                     Isso reserva VRAM para texturas. Se você colocar High (6GB) e sua GPU tiver 6GB, o jogo vai engasgar quando o Windows precisar de VRAM. Deixe em None/Very Low para garantir que nunca falte VRAM para o frame buffer. A textura fica feia, mas o jogo roda liso.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-red-500 font-bold mb-1">Volumetric Lighting</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Disabled</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Disabled</span></p>
                 <p class="text-gray-700 text-xs">A luz do sol passando pela poeira. Lindo, mas cega você e come 20 FPS. Desligue.</p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-red-500 font-bold mb-1">Model Detail</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Low</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">Low</span></p>
                 <p class="text-gray-700 text-xs">Reduz a complexidade geométrica de objetos distantes. Essencial para estabilidade.</p>
             </div>
         </div>

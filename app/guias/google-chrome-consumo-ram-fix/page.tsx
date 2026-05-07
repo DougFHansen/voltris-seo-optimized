@@ -54,14 +54,14 @@ export default function ChromeGuide() {
         <div class="space-y-4">
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Ativar Economia de Memória</h4>
-                <p class="text-white font-mono text-sm mb-2">Configurações > Desempenho > Economia de Memória</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Configurações > Desempenho > Economia de Memória</p>
                 <p class="text-gray-700 text-xs">
                     Ligue isso. O Chrome vai "congelar" as abas que você não está usando (ex: aquele guia que você leu há 1 hora). Elas param de gastar RAM e só recarregam quando você clicar nelas. Isso libera até 2GB de RAM instantaneamente.
                 </p>
             </div>
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-[#31A8FF] font-bold mb-1">Apps em Segundo Plano (O Vilão)</h4>
-                <p class="text-white font-mono text-sm mb-2">Configurações > Sistema</p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Configurações > Sistema</p>
                 <p class="text-gray-700 text-xs">
                    Desmarque: <span class="text-red-400 font-bold">"Executar aplicativos em segundo plano quando o Google Chrome for fechado"</span>.
                    <br/>Se isso estiver ligado, o Chrome continua rodando mesmo quando você fecha o navegador (x), roubando recursos invisivelmente.

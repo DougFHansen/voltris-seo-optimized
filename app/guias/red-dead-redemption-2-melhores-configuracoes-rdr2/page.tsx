@@ -53,7 +53,7 @@ export default function RDR2OptimizationGuide() {
             title: "2. Configurações que \"Matam\" o FPS",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Otimização Cirúrgica:</h4>
+            <h class="text-gray-900 font-bold mb-2">Otimização Cirúrgica:</h4>
             <p class="text-sm text-gray-700">
                 Para ganhar até 40% mais performance sem perder visual, mude estes itens: <br/><br/>
                 - <strong>Water Reflection/Refraction Quality:</strong> Low ou Medium. O reflexo na água do RDR2 é pesado demais para o pouco que aparece. <br/>

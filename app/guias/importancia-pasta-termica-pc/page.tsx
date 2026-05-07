@@ -53,7 +53,7 @@ export default function ThermalPasteGuide() {
             title: "2. Como aplicar sem fazer sujeira",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A Regra da Gota:</h4>
+            <h class="text-gray-900 font-bold mb-2">A Regra da Gota:</h4>
             <p class="text-sm text-gray-700">
                 O erro mais comum é colocar pasta demais. Coloque apenas uma gota do tamanho de um <strong>grão de ervilha</strong> no centro do processador. A pressão do cooler vai espalhar a pasta perfeitamente. Se transbordar para os lados, pode causar sujeira e dificuldade na limpeza futura (embora a maioria não conduza eletricidade, algumas pastas de prata podem ser perigosas em excesso).
             </p>

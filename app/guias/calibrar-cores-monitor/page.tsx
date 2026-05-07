@@ -55,7 +55,7 @@ export default function MonitorCalibrationGuide() {
             title: "2. Perfis ICC: O \"DNA\" do seu Monitor",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Upgrade Profissional:</h4>
+            <h class="text-gray-900 font-bold mb-2">Upgrade Profissional:</h4>
             <p class="text-sm text-gray-700">
                 Muitos monitores (especialmente os da Dell, LG e Samsung) possuem **Perfis de Cores (ICC)** oficiais no site do fabricante. <br/><br/>
                 Baixe e instale esse perfil em 'Gerenciamento de Cores' no Windows. Isso aplica tabelas de tradução de cores precisas feitas em laboratório para o seu painel específico, corrigindo distorções de fábrica que softwares comuns não conseguem enxergar.
@@ -78,7 +78,7 @@ export default function MonitorCalibrationGuide() {
     {
       title: "Ciência das Cores e Reprodução Visual: Fundamentos Técnicos",
       content: `
-        <h4 class="text-white font-bold mb-3">🌈 Teoria da Percepção de Cores</h4>
+        <h class="text-gray-900 font-bold mb-3">🌈 Teoria da Percepção de Cores</h4>
         <p class="mb-4 text-gray-700">
           A reprodução de cores em monitores envolve complexos princípios de física, psicologia e engenharia. O olho humano pode distinguir aproximadamente 10 milhões de cores diferentes, mas os monitores usam um modelo tricromático baseado em combinações de vermelho, verde e azul (RGB) para reproduzir esse espectro:
         </p>
@@ -108,7 +108,7 @@ export default function MonitorCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Especificações Técnicas de Monitores</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Especificações Técnicas de Monitores</h4>
         <p class="mb-4 text-gray-700">
           Comparação detalhada das diferentes especificações de reprodução de cores:
         </p>
@@ -169,7 +169,7 @@ export default function MonitorCalibrationGuide() {
     {
       title: "Técnicas Avançadas de Calibração e Perfis de Cor",
       content: `
-        <h4 class="text-white font-bold mb-3">🔧 Processo de Calibração Profissional</h4>
+        <h class="text-gray-900 font-bold mb-3">🔧 Processo de Calibração Profissional</h4>
         <p class="mb-4 text-gray-700">
           A calibração profissional de monitores envolve múltiplas etapas técnicas e o uso de equipamentos especializados para garantir precisão de cores:
         </p>
@@ -219,7 +219,7 @@ export default function MonitorCalibrationGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Configurações Avançadas de Monitor</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Configurações Avançadas de Monitor</h4>
         <p class="mb-4 text-gray-700">
           Configurações avançadas que afetam diretamente a qualidade de reprodução de cores:
         </p>
@@ -255,7 +255,7 @@ export default function MonitorCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Ferramentas Profissionais de Calibração</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛠️ Ferramentas Profissionais de Calibração</h4>
         <p class="mb-4 text-gray-700">
           Lista de ferramentas e softwares para calibração profissional de monitores:
         </p>
@@ -273,12 +273,12 @@ export default function MonitorCalibrationGuide() {
     {
       title: "Tecnologias Emergentes em Reprodução de Cores e Displays",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Display de Próxima Geração</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias de Display de Próxima Geração</h4>
         <p class="mb-4 text-gray-700">
           A próxima geração de displays está explorando tecnologias avançadas que prometem reprodução de cores ainda mais precisa e eficiente:
         </p>
         
-        <h4 class="text-white font-bold mb-3">HDR e Wide Color Gamut</h4>
+        <h class="text-gray-900 font-bold mb-3">HDR e Wide Color Gamut</h4>
         <p class="mb-4 text-gray-700">
           Novas tecnologias de reprodução de cores que estão sendo implementadas:
         </p>
@@ -328,7 +328,7 @@ export default function MonitorCalibrationGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Calibração de Cores</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🤖 Inteligência Artificial em Calibração de Cores</h4>
         <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na calibração automática de displays:
         </p>
@@ -359,7 +359,7 @@ export default function MonitorCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
         <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de displays de próxima geração:
         </p>
@@ -416,7 +416,7 @@ export default function MonitorCalibrationGuide() {
     {
       title: "Engenharia de Materiais em Painéis de Display: Tecnologia de Produção de Telas",
       content: `
-        <h4 class="text-white font-bold mb-3">🏭 Engenharia de Materiais em Displays</h4>
+        <h class="text-gray-900 font-bold mb-3">🏭 Engenharia de Materiais em Displays</h4>
         <p class="mb-4 text-gray-700">
           A fabricação de displays modernos envolve tecnologias avançadas de engenharia de materiais, com diferentes tipos de cristais líquidos, polarizadores e camadas de revestimento que afetam diretamente a qualidade de reprodução de cores:
         </p>
@@ -447,7 +447,7 @@ export default function MonitorCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Processo de Fabricação de Displays</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Processo de Fabricação de Displays</h4>
         <p class="mb-4 text-gray-700">
           O processo de fabricação de displays LCD/LED envolve etapas críticas que afetam a qualidade final:
         </p>
@@ -508,7 +508,7 @@ export default function MonitorCalibrationGuide() {
     {
       title: "Psicologia da Percepção Visual e Design de Interfaces: Ciência por Trás da Experiência Visual",
       content: `
-        <h4 class="text-white font-bold mb-3">🧠 Psicologia da Percepção de Cores</h4>
+        <h class="text-gray-900 font-bold mb-3">🧠 Psicologia da Percepção de Cores</h4>
         <p class="mb-4 text-gray-700">
           A percepção de cores não é apenas física, mas também psicológica. O cérebro humano interpreta cores com base em contexto, memória e expectativas culturais. O design de interfaces modernas leva em consideração esses fatores para otimizar a experiência visual:
         </p>
@@ -545,7 +545,7 @@ export default function MonitorCalibrationGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Impacto da Calibração na Experiência do Usuário</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Impacto da Calibração na Experiência do Usuário</h4>
         <p class="mb-4 text-gray-700">
           Estudos mostram que a reprodução precisa de cores afeta diretamente a experiência do usuário:
         </p>

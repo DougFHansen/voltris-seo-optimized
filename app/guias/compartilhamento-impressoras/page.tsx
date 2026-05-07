@@ -55,7 +55,7 @@ export default function PrinterSharingGuide() {
       title: "2. Preparando a Impressora Host",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">No PC onde a impressora está plugada:</h4>
+            <h class="text-gray-900 font-bold mb-2">No PC onde a impressora está plugada:</h4>
             <p class="text-sm text-gray-700">
                 1. Vá em Configurações > Dispositivos > Impressoras e Scanners. <br/>
                 2. Selecione sua impressora e clique em **Propriedades da Impressora**. <br/>
@@ -81,7 +81,7 @@ export default function PrinterSharingGuide() {
     {
       title: "4. Fundamentos Técnicos do Compartilhamento de Impressoras",
       content: `
-        <h4 class="text-white font-bold mb-3">🔬 Arquitetura de Compartilhamento de Impressoras</h4>
+        <h class="text-gray-900 font-bold mb-3">🔬 Arquitetura de Compartilhamento de Impressoras</h4>
         <p class="mb-4 text-gray-700">
           O compartilhamento de impressoras no Windows opera por meio de uma arquitetura cliente-servidor baseada em protocolos de rede:
         </p>
@@ -108,7 +108,7 @@ export default function PrinterSharingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚙️ Processo de Comunicação</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚙️ Processo de Comunicação</h4>
         <p class="mb-4 text-gray-700">
           O processo de impressão remota envolve múltiplas etapas técnicas:
         </p>
@@ -161,7 +161,7 @@ export default function PrinterSharingGuide() {
     {
       title: "5. Configurações Avançadas de Rede",
       content: `
-        <h4 class="text-white font-bold mb-3">🛡️ Configurações de Firewall e Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3">🛡️ Configurações de Firewall e Segurança</h4>
         <p class="mb-4 text-gray-700">
           A configuração adequada do firewall é essencial para o funcionamento seguro do compartilhamento:
         </p>
@@ -192,7 +192,7 @@ export default function PrinterSharingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Configurações de Rede Avançadas</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Configurações de Rede Avançadas</h4>
         <p class="mb-4 text-gray-700">
           Vários parâmetros de rede influenciam no desempenho do compartilhamento:
         </p>
@@ -221,7 +221,7 @@ export default function PrinterSharingGuide() {
     {
       title: "6. Solução de Problemas Avançados",
       content: `
-        <h4 class="text-white font-bold mb-3">🔍 Diagnóstico de Problemas Complexos</h4>
+        <h class="text-gray-900 font-bold mb-3">🔍 Diagnóstico de Problemas Complexos</h4>
         <p class="mb-4 text-gray-700">
           Problemas avançados de compartilhamento de impressoras requerem diagnóstico profundo:
         </p>
@@ -258,7 +258,7 @@ export default function PrinterSharingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Prevenção de Problemas Futuros</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Prevenção de Problemas Futuros</h4>
         <div class="overflow-x-auto">
           <table class="w-full text-sm text-gray-700 border border-gray-700 rounded-lg">
             <thead class="bg-gray-800">
@@ -311,7 +311,7 @@ export default function PrinterSharingGuide() {
     {
       title: "7. Protocolos Alternativos de Impressão",
       content: `
-        <h4 class="text-white font-bold mb-3">🌐 Outros Métodos de Compartilhamento</h4>
+        <h class="text-gray-900 font-bold mb-3">🌐 Outros Métodos de Compartilhamento</h4>
         <p class="mb-4 text-gray-700">
           Além do método tradicional do Windows, existem outras abordagens para compartilhar impressoras:
         </p>
@@ -358,7 +358,7 @@ export default function PrinterSharingGuide() {
     {
       title: "8. Segurança Avançada em Impressão de Rede",
       content: `
-        <h4 class="text-white font-bold mb-3">🔐 Considerações de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3">🔐 Considerações de Segurança</h4>
         <p class="mb-4 text-gray-700">
           Compartilhar impressoras introduz riscos de segurança que devem ser mitigados:
         </p>
@@ -385,7 +385,7 @@ export default function PrinterSharingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛡️ Melhores Práticas de Segurança</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛡️ Melhores Práticas de Segurança</h4>
         <p class="mb-4 text-gray-700">
           Implementar segurança adequada no compartilhamento de impressoras:
         </p>
@@ -401,7 +401,7 @@ export default function PrinterSharingGuide() {
     {
       title: "9. Tendências e Futuro da Impressão em Rede",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias Emergentes</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias Emergentes</h4>
         <p class="mb-4 text-gray-700">
           A impressão em rede está evoluindo com novas tecnologias e paradigmas:
         </p>
@@ -428,7 +428,7 @@ export default function PrinterSharingGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Previsões para 2026-2027</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Previsões para 2026-2027</h4>
         <p class="mb-4 text-gray-700">
           O futuro da impressão em rede promete inovações significativas:
         </p>

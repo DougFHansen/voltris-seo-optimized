@@ -55,7 +55,7 @@ export default function LimitFPSGuide() {
             title: "2. Pelo Painel de Controle NVIDIA (Ultra Rápido)",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Sem instalar nada extra:</h4>
+            <h class="text-gray-900 font-bold mb-2">Sem instalar nada extra:</h4>
             <p class="text-sm text-gray-700">
                 1. Clique com o botão direito na área de trabalho > Painel de Controle da NVIDIA. <br/>
                 2. Vá em 'Gerenciar as configurações em 3D'. <br/>

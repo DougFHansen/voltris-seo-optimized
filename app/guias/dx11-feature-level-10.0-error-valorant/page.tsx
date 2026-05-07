@@ -55,7 +55,7 @@ export default function ValorantDX11Guide() {
             title: "2. Reinstalando Drivers e Runtimes 2026",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A Solução via Software:</h4>
+            <h class="text-gray-900 font-bold mb-2">A Solução via Software:</h4>
             <p class="text-sm text-gray-700">
                 1. Use o <strong>DDU</strong> para apagar todo o driver atual (veja nosso guia). <br/>
                 2. Baixe o driver mais recente direto do site da NVIDIA, AMD ou Intel. <br/>

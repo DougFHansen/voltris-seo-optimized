@@ -55,7 +55,7 @@ export default function GamingPeripheralsGuide() {
             title: "2. Teclados: O \"Pay to Win\" do Rapid Trigger",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A Tecnologia Hall Effect:</h4>
+            <h class="text-gray-900 font-bold mb-2">A Tecnologia Hall Effect:</h4>
             <p class="text-sm text-gray-700">
                 Se você joga Valorant ou CS2, um teclado comum não é mais suficiente. Teclados com **Rapid Trigger** permitem que a tecla "resete" assim que você começa a levantá-la, permitindo um counter-strafe instantâneo. Isso não é marketing, é uma vantagem física comprovada em 2026. Se for comprar um teclado mecânico hoje, certifique-se de que ele tenha switches magnéticos.
             </p>

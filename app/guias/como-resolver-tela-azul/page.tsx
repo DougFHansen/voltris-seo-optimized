@@ -68,7 +68,7 @@ export default function BSODGuide() {
             </p>
           </div>
 
-          <h3 class="text-2xl font-bold text-white mt-8 mb-4">A Evolução do BSOD: De 1993 a 2026</h3>
+          <h class="text-2xl font-bold text-gray-900 mt-8 mb-4">A Evolução do BSOD: De 1993 a 2026</h3>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-[#0A0A0F] p-5 rounded-xl border border-white/5">
@@ -104,33 +104,33 @@ export default function BSODGuide() {
             </div>
           </div>
 
-          <h3 class="text-2xl font-bold text-white mt-8 mb-4">Anatomia de um BSOD: O Que Acontece em Milissegundos</h3>
+          <h class="text-2xl font-bold text-gray-900 mt-8 mb-4">Anatomia de um BSOD: O Que Acontece em Milissegundos</h3>
           
           <ol class="list-decimal list-inside space-y-3 text-gray-700">
             <li class="pl-2">
-              <strong class="text-white">Detecção do Erro (0-5ms):</strong> O kernel do Windows 
+              <s class="text-gray-900">Detecção do Erro (0-5ms):</strong> O kernel do Windows 
               detecta uma violação crítica (acesso inválido à memória, driver travado, hardware 
               não respondendo).
             </li>
             <li class="pl-2">
-              <strong class="text-white">Interrupção de Processos (5-10ms):</strong> Todos os 
+              <s class="text-gray-900">Interrupção de Processos (5-10ms):</strong> Todos os 
               processos em execução são congelados imediatamente. Nenhum dado novo é escrito em disco.
             </li>
             <li class="pl-2">
-              <strong class="text-white">Coleta de Dados (10-500ms):</strong> O Windows captura 
+              <s class="text-gray-900">Coleta de Dados (10-500ms):</strong> O Windows captura 
               o estado da memória RAM, registros da CPU, pilha de chamadas e drivers carregados.
             </li>
             <li class="pl-2">
-              <strong class="text-white">Gravação do Minidump (500-2000ms):</strong> Um arquivo 
+              <s class="text-gray-900">Gravação do Minidump (500-2000ms):</strong> Um arquivo 
               .dmp é salvo em <code class="bg-white/10 px-2 py-1 rounded">C:\\Windows\\Minidump</code> 
               contendo informações forenses do crash.
             </li>
             <li class="pl-2">
-              <strong class="text-white">Exibição da Tela Azul (2000ms+):</strong> A tela azul 
+              <s class="text-gray-900">Exibição da Tela Azul (2000ms+):</strong> A tela azul 
               é mostrada com código de erro, porcentagem de coleta e QR code.
             </li>
             <li class="pl-2">
-              <strong class="text-white">Reinicialização Automática:</strong> Após 5-10 segundos 
+              <s class="text-gray-900">Reinicialização Automática:</strong> Após 5-10 segundos 
               (configurável), o PC reinicia automaticamente.
             </li>
           </ol>
@@ -211,7 +211,7 @@ export default function BSODGuide() {
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
                   <ul class="text-gray-700 text-sm space-y-1">
                     <li>• Pente de RAM defeituoso ou mal encaixado</li>
                     <li>• Overclock de memória instável (XMP/DOCP)</li>
@@ -222,7 +222,7 @@ export default function BSODGuide() {
                 </div>
                 
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
                   <ol class="text-gray-700 text-sm space-y-2 list-decimal list-inside">
                     <li>Desligue o PC e remova TODOS os pentes de RAM</li>
                     <li>Limpe os contatos dourados com borracha branca</li>
@@ -254,7 +254,7 @@ export default function BSODGuide() {
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
                   <ul class="text-gray-700 text-sm space-y-1">
                     <li>• Driver de rede (Realtek, Intel, Killer) desatualizado</li>
                     <li>• Driver de GPU (NVIDIA/AMD) corrompido</li>
@@ -265,7 +265,7 @@ export default function BSODGuide() {
                 </div>
                 
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
                   <ol class="text-gray-700 text-sm space-y-2 list-decimal list-inside">
                     <li>Identifique o driver culpado com BlueScreenView</li>
                     <li>Se for <code class="bg-white/10 px-1 rounded">nvlddmkm.sys</code>: Use DDU e reinstale driver NVIDIA</li>
@@ -299,7 +299,7 @@ export default function BSODGuide() {
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
                   <ul class="text-gray-700 text-sm space-y-1">
                     <li>• Overclock de CPU instável (PBO, Curve Optimizer)</li>
                     <li>• Undervolt agressivo causando instabilidade</li>
@@ -310,7 +310,7 @@ export default function BSODGuide() {
                 </div>
                 
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
                   <ol class="text-gray-700 text-sm space-y-2 list-decimal list-inside">
                     <li>Entre na BIOS e clique em "Load Optimized Defaults"</li>
                     <li>Desative PBO, Curve Optimizer, XMP temporariamente</li>
@@ -342,7 +342,7 @@ export default function BSODGuide() {
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">🔍 Causas Reais:</h5>
                   <ul class="text-gray-700 text-sm space-y-1">
                     <li>• SSD/HD com setores defeituosos</li>
                     <li>• Cabo SATA mal conectado ou danificado</li>
@@ -353,7 +353,7 @@ export default function BSODGuide() {
                 </div>
                 
                 <div>
-                  <h5 class="text-white font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
+                  <h class="text-gray-900 font-semibold mb-2 text-sm">✅ Soluções Passo a Passo:</h5>
                   <ol class="text-gray-700 text-sm space-y-2 list-decimal list-inside">
                     <li>URGENTE: Faça backup imediato dos seus dados</li>
                     <li>Verifique saúde do SSD com CrystalDiskInfo</li>
@@ -392,7 +392,7 @@ export default function BSODGuide() {
             e WinDbg (avançado).
           </p>
 
-          <h3 class="text-2xl font-bold text-white mt-8 mb-4">BlueScreenView: Análise Rápida e Visual</h3>
+          <h class="text-2xl font-bold text-gray-900 mt-8 mb-4">BlueScreenView: Análise Rápida e Visual</h3>
           
           <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5">
             <h4 class="text-blue-400 font-bold mb-3">📥 Download e Instalação</h4>
@@ -409,7 +409,7 @@ export default function BSODGuide() {
             
             <div class="space-y-4">
               <div>
-                <h5 class="text-white font-semibold mb-2">Coluna "Bug Check String"</h5>
+                <h class="text-gray-900 font-semibold mb-2">Coluna "Bug Check String"</h5>
                 <p class="text-gray-700 text-sm">
                   Nome descritivo do erro (ex: MEMORY_MANAGEMENT). Este é o código que você 
                   deve pesquisar para entender o problema.
@@ -417,14 +417,14 @@ export default function BSODGuide() {
               </div>
               
               <div>
-                <h5 class="text-white font-semibold mb-2">Coluna "Bug Check Code"</h5>
+                <h class="text-gray-900 font-semibold mb-2">Coluna "Bug Check Code"</h5>
                 <p class="text-gray-700 text-sm">
                   Código hexadecimal (ex: 0x0000001a). Útil para pesquisas técnicas em fóruns.
                 </p>
               </div>
               
               <div>
-                <h5 class="text-white font-semibold mb-2">Coluna "Caused By Driver"</h5>
+                <h class="text-gray-900 font-semibold mb-2">Coluna "Caused By Driver"</h5>
                 <p class="text-gray-700 text-sm">
                   <strong>A MAIS IMPORTANTE!</strong> Mostra qual arquivo .sys causou o crash:
                 </p>
@@ -437,7 +437,7 @@ export default function BSODGuide() {
               </div>
               
               <div>
-                <h5 class="text-white font-semibold mb-2">Coluna "Crash Time"</h5>
+                <h class="text-gray-900 font-semibold mb-2">Coluna "Crash Time"</h5>
                 <p class="text-gray-700 text-sm">
                   Data e hora do crash. Útil para correlacionar com o que você estava fazendo 
                   (jogando, renderizando, navegando).
@@ -462,7 +462,7 @@ export default function BSODGuide() {
             </ol>
           </div>
 
-          <h3 class="text-2xl font-bold text-white mt-10 mb-4">WinDbg: Análise Forense Avançada</h3>
+          <h class="text-2xl font-bold text-gray-900 mt-10 mb-4">WinDbg: Análise Forense Avançada</h3>
           
           <p class="text-gray-700 mb-4">
             O WinDbg (Windows Debugger) é a ferramenta oficial da Microsoft para análise 
@@ -531,7 +531,7 @@ export default function BSODGuide() {
             O Windows possui ferramentas integradas poderosas para isso.
           </p>
 
-          <h3 class="text-2xl font-bold text-white mt-8 mb-4">SFC (System File Checker): Primeira Linha de Defesa</h3>
+          <h class="text-2xl font-bold text-gray-900 mt-8 mb-4">SFC (System File Checker): Primeira Linha de Defesa</h3>
           
           <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5">
             <h4 class="text-green-400 font-bold mb-3">🔧 Como Executar o SFC</h4>
@@ -561,21 +561,21 @@ export default function BSODGuide() {
             
             <div class="space-y-4">
               <div class="bg-black/30 p-4 rounded-lg">
-                <h5 class="text-white font-semibold mb-2 text-sm">✅ "Não encontrou nenhuma violação de integridade"</h5>
+                <h class="text-gray-900 font-semibold mb-2 text-sm">✅ "Não encontrou nenhuma violação de integridade"</h5>
                 <p class="text-gray-700 text-sm">
                   Seus arquivos de sistema estão OK. O BSOD não é causado por corrupção do Windows.
                 </p>
               </div>
               
               <div class="bg-black/30 p-4 rounded-lg">
-                <h5 class="text-white font-semibold mb-2 text-sm">✅ "Encontrou arquivos corrompidos e os reparou com êxito"</h5>
+                <h class="text-gray-900 font-semibold mb-2 text-sm">✅ "Encontrou arquivos corrompidos e os reparou com êxito"</h5>
                 <p class="text-gray-700 text-sm">
                   Perfeito! Reinicie o PC e teste se o BSOD desapareceu.
                 </p>
               </div>
               
               <div class="bg-black/30 p-4 rounded-lg">
-                <h5 class="text-white font-semibold mb-2 text-sm">⚠️ "Encontrou arquivos corrompidos mas não pôde corrigir alguns deles"</h5>
+                <h class="text-gray-900 font-semibold mb-2 text-sm">⚠️ "Encontrou arquivos corrompidos mas não pôde corrigir alguns deles"</h5>
                 <p class="text-gray-700 text-sm">
                   O SFC não conseguiu reparar tudo. Você precisa usar o DISM (próxima seção).
                 </p>
@@ -583,7 +583,7 @@ export default function BSODGuide() {
             </div>
           </div>
 
-          <h3 class="text-2xl font-bold text-white mt-10 mb-4">DISM: Reparação Profunda do Windows</h3>
+          <h class="text-2xl font-bold text-gray-900 mt-10 mb-4">DISM: Reparação Profunda do Windows</h3>
           
           <p class="text-gray-700 mb-4">
             O DISM (Deployment Image Servicing and Management) é mais poderoso que o SFC. 
@@ -638,7 +638,7 @@ export default function BSODGuide() {
             </p>
           </div>
 
-          <h3 class="text-2xl font-bold text-white mt-10 mb-4">Restauração do Sistema: Voltar no Tempo</h3>
+          <h class="text-2xl font-bold text-gray-900 mt-10 mb-4">Restauração do Sistema: Voltar no Tempo</h3>
           
           <p class="text-gray-700 mb-4">
             Se o BSOD começou após instalar um programa ou driver, a Restauração do Sistema 

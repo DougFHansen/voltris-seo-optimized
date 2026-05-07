@@ -52,7 +52,7 @@ export default function InternetTroubleshootingGuide() {
       title: "2. Resetando a Rede do Windows 11",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Limpando erros de software:</h4>
+            <h class="text-gray-900 font-bold mb-2">Limpando erros de software:</h4>
             <p class="text-sm text-gray-700">
                 Se o seu computador diz 'Conectado, mas sem internet', o Windows pode estar com um registro de rede travado. <br/><br/>
                 1. Vá em Configurações > Rede e Internet > Configurações avançadas de rede. <br/>

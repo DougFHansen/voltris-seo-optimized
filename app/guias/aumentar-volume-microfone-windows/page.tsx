@@ -57,7 +57,7 @@ export default function MicrophoneBoostGuide() {
       content: `
         <p class="mb-4 text-gray-700">Antes de instalar softwares, vamos garantir que o Windows não está sabotando seu áudio:</p>
         
-        <h4 class="text-white font-bold mb-3 mt-4">Painel de Som Clássico (Onde a mágica acontece)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-4">Painel de Som Clássico (Onde a mágica acontece)</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Pressione <code>Win + R</code>, digite <code>mmsys.cpl</code> e dê Enter. (Isso abre o painel antigo, muito melhor que o novo).</li>
             <li>Vá na aba <strong>Gravação</strong>.</li>
@@ -150,7 +150,7 @@ export default function MicrophoneBoostGuide() {
     {
       title: "Engenharia de Áudio: Sample Rates, Bit Depth e Cabos",
       content: `
-        <h4 class="text-white font-bold mb-3">Hz e Bits: O que importa?</h4>
+        <h class="text-gray-900 font-bold mb-3">Hz e Bits: O que importa?</h4>
         <p class="mb-4 text-gray-700">
           Muitos guias dizem para colocar no máximo. <strong>Isso é errado.</strong>
         </p>
@@ -171,7 +171,7 @@ export default function MicrophoneBoostGuide() {
             </div>
         </div>
 
-        <h4 class="text-white font-bold mb-3 mt-6">USB 2.0 vs 3.0: Energia é Tudo</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">USB 2.0 vs 3.0: Energia é Tudo</h4>
         <p class="mb-4 text-gray-700">
           Microfones USB (HyperX Quadcast, Blue Yeti) precisam de energia. Portas USB de painel frontal (gabinete) costumam ter voltagem instável, causando:
         </p>
@@ -206,16 +206,16 @@ export default function MicrophoneBoostGuide() {
     {
       title: "Dicas de Posicionamento Físico",
       content: `
-        <h4 class="text-white font-bold mb-3">A Física vence o Software</h4>
+        <h class="text-gray-900 font-bold mb-3">A Física vence o Software</h4>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="bg-gray-800/50 p-4 rounded-lg">
-                <h5 class="text-white font-bold mb-2">Proximidade (Efeito de Proximidade)</h5>
+                <h class="text-gray-900 font-bold mb-2">Proximidade (Efeito de Proximidade)</h5>
                 <p class="text-sm text-gray-700">
                     Microfones cardióides ganham graves e volume exponencialmente quanto mais perto vocÊ está. Fique a <strong>3-5 dedos de distância</strong> do microfone. Se ficar longe (30cm+), você soará como se estivesse num banheiro, e o ganho necessário trará muito ruído.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg">
-                <h5 class="text-white font-bold mb-2">Braço Articulado</h5>
+                <h class="text-gray-900 font-bold mb-2">Braço Articulado</h5>
                 <p class="text-sm text-gray-700">
                     O mic no suporte de mesa pega vibração do teclado. Um braço articulado (R$ 80-150) isola a vibração e permite colocar o mic perto da boca sem atrapalhar a visão, permitindo usar menos ganho digital (menos ruído).
                 </p>

@@ -56,7 +56,7 @@ export default function EldenRingFixGuide() {
             title: "2. Desativando o Ray Tracing Oculto",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Atenção ao Menu:</h4>
+            <h class="text-gray-900 font-bold mb-2">Atenção ao Menu:</h4>
             <p class="text-sm text-gray-700">
                 Muitas vezes, após uma atualização, o Elden Ring ativa o **Ray Tracing** automaticamente. Mesmo no 'Baixo', o Ray Tracing consome quase 40% da performance da sua GPU sem oferecer uma mudança visual drástica no estilo artístico do jogo. Certifique-se de que ele está DESATIVADO nas configurações gráficas para manter os 60 FPS constantes.
             </p>

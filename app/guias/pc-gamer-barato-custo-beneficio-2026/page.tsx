@@ -54,7 +54,7 @@ export default function BudgetPCGuide() {
             title: "2. Placa de Vídeo (GPU): Onde investir mais",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A Regra dos 8GB de VRAM:</h4>
+            <h class="text-gray-900 font-bold mb-2">A Regra dos 8GB de VRAM:</h4>
             <p class="text-sm text-gray-700">
                 Nunca compre uma placa de vídeo com menos de 8GB de memória em 2026. <br/><br/>
                 - <strong>Melhor escolha:</strong> AMD RX 6600. É a placa mais barata que roda quase tudo no Alto em 1080p. <br/>
@@ -114,14 +114,14 @@ export default function BudgetPCGuide() {
         </p>
         
         <div class="prose prose-invert max-w-none">
-          <h4 class="text-lg font-bold text-white mt-6 mb-3">Para AMD Ryzen:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Para AMD Ryzen:</h4>
           <ul class="list-disc list-inside space-y-2 text-gray-700">
             <li><strong>B550:</strong> Ideal para Ryzen 5000 e 7000 series, suporta PCIe 4.0 e dual channel RAM</li>
             <li><strong>A520:</strong> Opção mais barata, mas sem recursos avançados como PCIe 4.0</li>
             <li><strong>Chipset X570:</strong> Para overclock e recursos premium (mais caro)</li>
           </ul>
           
-          <h4 class="text-lg font-bold text-white mt-6 mb-3">Para Intel Core:</h4>
+          <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Para Intel Core:</h4>
           <ul class="list-disc list-inside space-y-2 text-gray-700">
             <li><strong>B660:</strong> Excelente custo-benefício para CPUs da 12ª e 13ª geração</li>
             <li><strong>H610:</strong> Opção econômica com menos recursos</li>
@@ -220,7 +220,7 @@ export default function BudgetPCGuide() {
           </div>
         </div>
         
-        <h4 class="text-lg font-bold text-white mt-6 mb-3">Dicas de Economia:</h4>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Dicas de Economia:</h4>
         <div class="prose prose-invert max-w-none">
           <ul class="list-disc list-inside space-y-2 text-gray-700">
             <li>O cooler stock do Ryzen 5 5600 é surpreendentemente bom e pode ser mantido em builds econômicas</li>
@@ -239,7 +239,7 @@ export default function BudgetPCGuide() {
         </p>
         
         <div class="bg-gradient-to-r from-indigo-900/20 to-purple-900/20 p-6 rounded-xl border border-indigo-500/30 mt-6">
-          <h4 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+          <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span class="text-indigo-400">🔧</span> Checklist de Montagem
           </h4>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -264,7 +264,7 @@ export default function BudgetPCGuide() {
           </div>
         </div>
         
-        <h4 class="text-lg font-bold text-white mt-6 mb-3">Configurações Iniciais:</h4>
+        <h class="text-lg font-bold text-gray-900 mt-6 mb-3">Configurações Iniciais:</h4>
         <div class="prose prose-invert max-w-none">
           <ol class="list-decimal list-inside space-y-2 text-gray-700">
             <li>Entrar no BIOS e habilitar XMP/DOCP para a RAM</li>
@@ -348,7 +348,7 @@ export default function BudgetPCGuide() {
           </div>
           
           <div class="bg-gradient-to-r from-violet-900/20 to-pink-900/20 p-6 rounded-xl border border-violet-500/30 mt-8">
-            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <span class="text-violet-400">🔮</span> Projeções de Mercado e Hardware (2026-2027)
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -373,20 +373,20 @@ export default function BudgetPCGuide() {
             </div>
           </div>
           
-          <h3 class="text-lg font-bold text-white mt-8 mb-4">Preparação para o Futuro</h3>
+          <h class="text-lg font-bold text-gray-900 mt-8 mb-4">Preparação para o Futuro</h3>
           <p class="mb-4 text-gray-700 leading-relaxed">Para se preparar para essas mudanças, considere estas estratégias de longo prazo:</p>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
             <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-              <h4 class="font-bold text-white mb-2">Hardware Flexível</h4>
+              <h class="font-bold text-gray-900 mb-2">Hardware Flexível</h4>
               <p class="text-sm text-gray-700">Escolha componentes com boa capacidade de upgrade e suporte a futuras tecnologias.</p>
             </div>
             <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-              <h4 class="font-bold text-white mb-2">Sistema Modular</h4>
+              <h class="font-bold text-gray-900 mb-2">Sistema Modular</h4>
               <p class="text-sm text-gray-700">Configure seu sistema de forma modular para facilitar atualizações e experimentação.</p>
             </div>
             <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-              <h4 class="font-bold text-white mb-2">Conhecimento Atualizado</h4>
+              <h class="font-bold text-gray-900 mb-2">Conhecimento Atualizado</h4>
               <p class="text-sm text-gray-700">Mantenha-se informado sobre novas tecnologias e como elas afetam a montagem de PCs gamers.</p>
             </div>
           </div>
@@ -398,7 +398,7 @@ export default function BudgetPCGuide() {
           <p class="mb-4 text-gray-700 leading-relaxed">Mesmo com um PC montado com foco em custo-benefício, existem otimizações avançadas que podem extrair o máximo de desempenho do hardware disponível.</p>
           
           <div class="bg-gradient-to-r from-purple-900/20 to-blue-900/20 p-6 rounded-xl border border-purple-500/30 mt-6">
-            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <span class="text-purple-400">🔧</span> Otimizações de Firmware e BIOS
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -427,7 +427,7 @@ export default function BudgetPCGuide() {
             </div>
           </div>
           
-          <h3 class="text-lg font-bold text-white mt-8 mb-4">Overclocking Inteligente em Orçamento Limitado</h3>
+          <h class="text-lg font-bold text-gray-900 mt-8 mb-4">Overclocking Inteligente em Orçamento Limitado</h3>
           <p class="mb-4 text-gray-700 leading-relaxed">O overclocking pode fornecer ganhos significativos de desempenho, mesmo em componentes de custo-benefício:</p>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
@@ -462,7 +462,7 @@ export default function BudgetPCGuide() {
           <p class="mb-4 text-gray-700 leading-relaxed">Entender as diferenças entre componentes similares ajuda a tomar decisões mais informadas ao montar um PC com foco em custo-benefício.</p>
           
           <div class="bg-gradient-to-r from-blue-900/20 to-green-900/20 p-6 rounded-xl border border-blue-500/30 mt-6">
-            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <span class="text-blue-400">📊</span> Comparação de CPUs (2026)
             </h3>
             <div class="overflow-x-auto">
@@ -511,7 +511,7 @@ export default function BudgetPCGuide() {
           </div>
           
           <div class="bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-6 rounded-xl border border-purple-500/30 mt-8">
-            <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <h class="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <span class="text-purple-400">🎮</span> Comparação de GPUs (2026)
             </h3>
             <div class="overflow-x-auto">
@@ -558,16 +558,16 @@ export default function BudgetPCGuide() {
             </div>
           </div>
           
-          <h3 class="text-lg font-bold text-white mt-8 mb-4">Considerações Finais sobre Componentes</h3>
+          <h class="text-lg font-bold text-gray-900 mt-8 mb-4">Considerações Finais sobre Componentes</h3>
           <p class="mb-4 text-gray-700 leading-relaxed">Ao montar um PC com foco em custo-benefício, é importante equilibrar os componentes para evitar gargalos. Um processador potente com uma GPU fraca (ou vice-versa) não aproveitará ao máximo o hardware disponível.</p>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
             <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-              <h4 class="font-bold text-white mb-2">Equilíbrio de Componentes</h4>
+              <h class="font-bold text-gray-900 mb-2">Equilíbrio de Componentes</h4>
               <p class="text-sm text-gray-700">Combine componentes de forma que nenhum seja excessivamente mais potente que os outros, evitando desperdício de recursos.</p>
             </div>
             <div class="bg-[#1A1A1A] p-4 rounded-lg border border-gray-700">
-              <h4 class="font-bold text-white mb-2">Futuro e Upgrade</h4>
+              <h class="font-bold text-gray-900 mb-2">Futuro e Upgrade</h4>
               <p class="text-sm text-gray-700">Escolha componentes que permitam upgrades futuros dentro do mesmo ecossistema (socket, chipset, etc.).</p>
             </div>
           </div>

@@ -84,7 +84,7 @@ export default function GameConfigGuide() {
         {
             title: "Tela Esticada (Stretch Resolution)",
             content: `
-        <h4 class="text-white font-bold mb-3">Hitbox Maior = Mais Kills</h4>
+        <h class="text-gray-900 font-bold mb-3">Hitbox Maior = Mais Kills</h4>
         <p class="mb-4 text-gray-700">
             Muitos pros usam resoluções quadradas (ex: 1280x1024) esticadas para preencher o monitor 16:9.
             <br/>Isso faz os personagens parecerem "mais gordos", facilitando acertar tiros.
@@ -111,7 +111,7 @@ export default function GameConfigGuide() {
         {
             title: "Dicas de DPI do Mouse",
             content: `
-        <h4 class="text-white font-bold mb-3">800 vs 1600 DPI</h4>
+        <h class="text-gray-900 font-bold mb-3">800 vs 1600 DPI</h4>
         <p class="mb-4 text-gray-700">
             Emuladores sofrem com "Pixel Skipping" se o DPI for muito baixo com sensibilidade alta no jogo.
             <br/>Recomendação: Use <strong>1000 DPI</strong> no mouse e ajuste a sensibilidade dentro do emulador para ficar confortável. Evite DPIs extremos (400 ou 4000).

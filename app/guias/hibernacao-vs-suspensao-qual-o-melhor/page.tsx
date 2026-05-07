@@ -54,7 +54,7 @@ export default function HibernationGuide() {
             title: "2. Hibernação: O Sono Profundo",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Puro silêncio:</h4>
+            <h class="text-gray-900 font-bold mb-2">Puro silêncio:</h4>
             <p class="text-sm text-gray-700">
                 A <strong>Hibernação</strong> tira tudo da RAM e escreve um arquivo gigante no seu SSD chamado <code>hiberfil.sys</code>, e então desliga o PC totalmente. <br/><br/>
                 - <strong>Prós:</strong> Você pode tirar o notebook da tomada por 1 mês e, ao ligar, ele voltará exatamente onde você parou. <br/>

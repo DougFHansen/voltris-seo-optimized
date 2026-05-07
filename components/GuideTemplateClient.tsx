@@ -68,6 +68,8 @@ export interface GuideTemplateProps {
     keyPoints?: string[];
     /** Avisos importantes como alertas */
     warningNote?: string;
+    /** Define se o guia é um passo-a-passo estrito para ativar o HowToSchema */
+    isHowTo?: boolean;
     children?: React.ReactNode;
 }
 
@@ -98,6 +100,7 @@ export function GuideTemplateClient({
     showVoltrisOptimizerCTA = true,
     keyPoints,
     warningNote,
+    isHowTo = false,
     children
 }: GuideTemplateProps) {
     const pathname = usePathname();
@@ -232,10 +235,12 @@ export function GuideTemplateClient({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
+      {isHowTo && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
       <Header />
 
       {/* Barra de Progresso de Leitura Viral */}

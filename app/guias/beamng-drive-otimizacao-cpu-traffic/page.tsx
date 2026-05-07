@@ -93,7 +93,7 @@ export default function BeamNGGuide() {
         </p>
         <div class="space-y-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
-                <h5 class="font-bold text-white mb-2">Dynamic Reflections (Reflexos)</h5>
+                <h class="font-bold text-gray-900 mb-2">Dynamic Reflections (Reflexos)</h5>
                 <p class="text-sm text-gray-700">
                     O maior vilão. O jogo renderiza o mundo de novo no capô do carro.
                     <br/>- Desligue ou coloque "Update Rate" em 2 ou 3.
@@ -101,7 +101,7 @@ export default function BeamNGGuide() {
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-yellow-500/30">
-                <h5 class="font-bold text-white mb-2">Shadows (Sombras)</h5>
+                <h class="font-bold text-gray-900 mb-2">Shadows (Sombras)</h5>
                 <p class="text-sm text-gray-700">
                     Use "Partial" em vez de "All". Sombras completas em mapas com muitas árvores (Jungle Rock Island) matam o FPS.
                 </p>
@@ -124,7 +124,7 @@ export default function BeamNGGuide() {
         {
             title: "BeamMP (Multiplayer)",
             content: `
-        <h4 class="text-white font-bold mb-3">Jogando Online</h4>
+        <h class="text-gray-900 font-bold mb-3">Jogando Online</h4>
         <p class="mb-4 text-gray-700">
             O mod BeamMP permite jogar online. Porém, ele é pesado.
             <br/>Se você tiver lag no Multiplayer, o culpado geralmente é a sincronização de física de outros jogadores. Servidores com muitos mods baixam gigabytes de conteúdo para a pasta <code>Resources</code>. Limpe essa pasta periodicamente se o jogo demorar para abrir.

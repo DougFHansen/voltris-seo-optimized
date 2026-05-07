@@ -55,7 +55,7 @@ export default function PackageManagementGuide() {
       title: "2. O Comando Mágico: Atualizar Tudo",
       content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">A rotina perfeita:</h4>
+            <h class="text-gray-900 font-bold mb-2">A rotina perfeita:</h4>
             <p class="text-sm text-gray-700">
                 Uma vez por semana, abra o terminal e digite: <br/>
                 <code>winget upgrade --all</code> <br/><br/>

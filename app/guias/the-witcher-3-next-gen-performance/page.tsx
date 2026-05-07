@@ -54,7 +54,7 @@ export default function Witcher3PerformanceGuide() {
             title: "2. Otimizando configurações de alto impacto",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Máximo ganho visual:</h4>
+            <h class="text-gray-900 font-bold mb-2">Máximo ganho visual:</h4>
             <p class="text-sm text-gray-700">
                 - <strong>Densidade de Erva (Foliage Density):</strong> No Ultra+, isso mata seu PC em Beauclair. Coloque no Médio ou Alto. <br/>
                 - <strong>Visibilidade da Vegetação:</strong> Alto (Garante que as árvores não apareçam do nada). <br/>

@@ -101,7 +101,7 @@ export default function RAMGuide() {
             title: "Arquivo de Paginação (Pagefile): Desativar é bom?",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
-                <h4 class="text-white font-bold mb-4 text-xl">NÃO DESATIVE!</h4>
+                <h class="text-gray-900 font-bold mb-4 text-xl">NÃO DESATIVE!</h4>
                 <p class="text-gray-700 mb-4">
                     Um mito antigo diz para desativar a memória virtual se tiver muita RAM. Errado. Alguns jogos e o próprio Windows PRECISAM do pagefile para alocar endereços de memória, mesmo que não usem. Se desativar, jogos como Cyberpunk 2077 podem crashar no boot.
                 </p>

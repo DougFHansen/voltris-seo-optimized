@@ -41,24 +41,24 @@ export default function DNSGuide() {
             title: "O Benchmark: Quem é mais rápido?",
             content: `
         <p class="mb-4 text-gray-700">
-            Usamos a ferramenta <strong class="text-white">DNSBench</strong> para testar a resposta em milissegundos no Brasil.
+            Usamos a ferramenta <s class="text-gray-900">DNSBench</strong> para testar a resposta em milissegundos no Brasil.
         </p>
         
         <div class="space-y-4">
             <div class="bg-purple-900/20 p-4 rounded border-l-4 border-purple-500">
-                <strong class="text-white block text-lg">1. Cloudflare (1.1.1.1 e 1.0.0.1)</strong>
+                <s class="text-gray-900 block text-lg">1. Cloudflare (1.1.1.1 e 1.0.0.1)</strong>
                 <p class="text-gray-700 text-sm">
                     Vencedor em velocidade bruta (12ms de resposta). Focado em privacidade (não vende seus dados).
                 </p>
             </div>
             <div class="bg-blue-900/20 p-4 rounded border-l-4 border-blue-500">
-                <strong class="text-white block text-lg">2. Google (8.8.8.8 e 8.8.4.4)</strong>
+                <s class="text-gray-900 block text-lg">2. Google (8.8.8.8 e 8.8.4.4)</strong>
                 <p class="text-gray-700 text-sm">
                     Rock solid (20ms de resposta). Nunca cai. Se o Cloudflare falhar, use Google.
                 </p>
             </div>
             <div class="bg-red-900/20 p-4 rounded border-l-4 border-red-500">
-                <strong class="text-white block text-lg">3. DNS da sua Operadora (Net/Vivo)</strong>
+                <s class="text-gray-900 block text-lg">3. DNS da sua Operadora (Net/Vivo)</strong>
                 <p class="text-gray-700 text-sm">
                     Geralmente lento, censurado e vende seu histórico. <strong>Mude imediatamente.</strong>
                 </p>

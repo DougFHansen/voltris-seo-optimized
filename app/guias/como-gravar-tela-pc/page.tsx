@@ -71,7 +71,7 @@ export default function ComoGravarTelaPCGuide() {
           Para começar a gravar tela com qualidade, você precisará de:
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
-          <h3 class="text-xl font-bold mb-4 text-white">Hardware Mínimo Recomendado:</h3>
+          <h class="text-xl font-bold mb-4 text-gray-900">Hardware Mínimo Recomendado:</h3>
           <ul class="space-y-2 text-gray-700">
             <li class="flex items-center gap-2">
               <span class="text-green-400">✓</span>
@@ -121,7 +121,7 @@ export default function ComoGravarTelaPCGuide() {
           O <strong>OBS Studio</strong> é o software mais popular para gravação de tela, e por bons motivos. É gratuito, poderoso e compatível com a maioria dos jogos.
         </p>
         <div class="bg-gray-800 rounded-lg p-6 mb-6">
-          <h3 class="text-xl font-bold mb-4 text-white">Configurações Iniciais:</h3>
+          <h class="text-xl font-bold mb-4 text-gray-900">Configurações Iniciais:</h3>
           <div class="grid md:grid-cols-2 gap-6">
             <div class="space-y-4">
               <h4 class="text-lg font-semibold text-blue-400">📹 Vídeo</h4>

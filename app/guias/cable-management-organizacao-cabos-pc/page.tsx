@@ -55,7 +55,7 @@ export default function CableManagementGuide() {
             title: "2. Gerenciando os Cabos da Fonte (PSU)",
             content: `
        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Fontes Modulares:</h4>
+            <h class="text-gray-900 font-bold mb-2">Fontes Modulares:</h4>
             <p class="text-sm text-gray-700">
                 Se você vai montar um PC em 2026, invista em uma **Fonte Modular**. Ela permite que você conecte apenas os cabos que realmente vai usar. Sobrou cabo SATA ou Molex que não tem utilidade? Deixe-os na caixa da fonte em vez de amontoá-los no fundo do gabinete ("porão"), o que facilitará muito a circulação de ar vinda da fonte.
             </p>
@@ -77,7 +77,7 @@ export default function CableManagementGuide() {
     {
       title: "Engenharia Térmica e Fluídica: Impacto do Cable Management no Desempenho",
       content: `
-        <h4 class="text-white font-bold mb-3">🌡️ Física do Fluxo de Ar em Gabinetes de Computador</h4>
+        <h class="text-gray-900 font-bold mb-3">🌡️ Física do Fluxo de Ar em Gabinetes de Computador</h4>
         <p class="mb-4 text-gray-700">
           O Cable Management não é apenas uma questão estética; ele tem um impacto físico mensurável no desempenho térmico do sistema. A organização dos cabos afeta diretamente o fluxo de ar dentro do gabinete, influenciando na eficiência dos sistemas de refrigeração:
         </p>
@@ -107,7 +107,7 @@ export default function CableManagementGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">📊 Impacto Quantificado do Cable Management</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">📊 Impacto Quantificado do Cable Management</h4>
         <p class="mb-4 text-gray-700">
           Estudos térmicos demonstram diferenças mensuráveis no desempenho com diferentes níveis de organização de cabos:
         </p>
@@ -174,7 +174,7 @@ export default function CableManagementGuide() {
     {
       title: "Técnicas Avançadas de Cable Management e Planejamento de Layout",
       content: `
-        <h4 class="text-white font-bold mb-3">📐 Planejamento de Layout para Cable Management Profissional</h4>
+        <h class="text-gray-900 font-bold mb-3">📐 Planejamento de Layout para Cable Management Profissional</h4>
         <p class="mb-4 text-gray-700">
           O Cable Management profissional envolve técnicas avançadas de organização e planejamento que vão além da simples colocação de abraçadeiras. Aqui estão as melhores práticas utilizadas por entusiastas e profissionais:
         </p>
@@ -224,7 +224,7 @@ export default function CableManagementGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Técnicas Profissionais de Organização</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Técnicas Profissionais de Organização</h4>
         <p class="mb-4 text-gray-700">
           Técnicas avançadas utilizadas por entusiastas e profissionais:
         </p>
@@ -260,7 +260,7 @@ export default function CableManagementGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🛠️ Ferramentas e Acessórios Especializados</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🛠️ Ferramentas e Acessórios Especializados</h4>
         <p class="mb-4 text-gray-700">
           Lista de ferramentas e acessórios para Cable Management profissional:
         </p>
@@ -278,12 +278,12 @@ export default function CableManagementGuide() {
     {
       title: "Tecnologias Emergentes em Design de Gabinetes e Gestão Térmica",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Design de Gabinete de Próxima Geração</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias de Design de Gabinete de Próxima Geração</h4>
         <p class="mb-4 text-gray-700">
           A próxima geração de gabinetes de computador está explorando tecnologias avançadas de design e materiais que facilitam o Cable Management e otimizam a gestão térmica:
         </p>
         
-        <h4 class="text-white font-bold mb-3">Sistema de Roteamento Integrado</h4>
+        <h class="text-gray-900 font-bold mb-3">Sistema de Roteamento Integrado</h4>
         <p class="mb-4 text-gray-700">
           Novas tecnologias de design de gabinete que estão sendo implementadas:
         </p>
@@ -333,7 +333,7 @@ export default function CableManagementGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Design Térmico</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🤖 Inteligência Artificial em Design Térmico</h4>
         <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na otimização de designs de gabinete:
         </p>
@@ -364,7 +364,7 @@ export default function CableManagementGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
         <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de design de gabinete de próxima geração:
         </p>

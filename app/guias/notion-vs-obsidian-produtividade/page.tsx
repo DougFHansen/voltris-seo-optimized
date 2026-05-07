@@ -54,7 +54,7 @@ export default function ProductivityAppGuide() {
             title: "2. Obsidian: O Poder da Privacidade e Velocidade",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Seus dados são seus:</h4>
+            <h class="text-gray-900 font-bold mb-2">Seus dados são seus:</h4>
             <p class="text-sm text-gray-700">
                 O <strong>Obsidian</strong> armazena tudo no seu computador em arquivos de texto simples (.md). Se a internet cair, você continua trabalhando normal. <br/><br/>
                 - <strong>Grafos de Conhecimento:</strong> Ele cria um "mapa estelar" visual que conecta suas notas por tags e links. <br/>

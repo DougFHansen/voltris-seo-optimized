@@ -61,7 +61,7 @@ export default function CloudBackupGuide() {
           O OneDrive já vem embutido no Windows 10/11. É a solução mais "invisível" e eficiente.
         </p>
         
-        <h4 class="text-white font-bold mb-3 mt-4">Ativando o "Backup de Pastas do PC"</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-4">Ativando o "Backup de Pastas do PC"</h4>
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Procure o ícone da <strong>nuvem azul/cinza</strong> perto do relógio (ou no Menu Iniciar > OneDrive).</li>
             <li>Entre com sua conta Microsoft (Hotmail/Outlook).</li>
@@ -74,7 +74,7 @@ export default function CloudBackupGuide() {
             <strong>Mágica Feita:</strong> Agora, tudo que você salvar no Desktop vai automaticamente para a nuvem. Se formatar o PC, basta logar no OneDrive e seus ícones reaparecem.
         </p>
 
-        <h4 class="text-white font-bold mb-3 mt-6">Arquivos Sob Demanda (Files On-Demand)</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">Arquivos Sob Demanda (Files On-Demand)</h4>
         <p class="mb-2 text-gray-700 text-sm">
             Este é o maior trunfo do OneDrive. Ele mostra seus 1TB de arquivos no Explorador, mas <strong>NÃO ocupa espaço no disco</strong>.
         </p>
@@ -93,7 +93,7 @@ export default function CloudBackupGuide() {
         </p>
         <div class="space-y-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                <h5 class="font-bold text-white mb-2">Instalação e Setup</h5>
+                <h class="font-bold text-gray-900 mb-2">Instalação e Setup</h5>
                 <ol class="list-decimal list-inside text-sm text-gray-700 space-y-2">
                     <li>Baixe o "Google Drive para Desktop" (antigo Backup and Sync).</li>
                     <li>Nas preferências, escolha "Meu Computador".</li>
@@ -102,7 +102,7 @@ export default function CloudBackupGuide() {
                 </ol>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                <h5 class="font-bold text-white mb-2">Google Fotos</h5>
+                <h class="font-bold text-gray-900 mb-2">Google Fotos</h5>
                 <p class="text-sm text-gray-700">
                     Você pode configurar para fazer upload APENAS de fotos/vídeos para o Google Fotos (com compressão ou qualidade original), sem gastar espaço do Drive com documentos.
                 </p>
@@ -116,7 +116,7 @@ export default function CloudBackupGuide() {
     {
       title: "Recurso Salvador: Histórico de Versão (Shadow Copy)",
       content: `
-        <h4 class="text-white font-bold mb-3">Salvando o TCC Corrompido</h4>
+        <h class="text-gray-900 font-bold mb-3">Salvando o TCC Corrompido</h4>
         <p class="mb-4 text-gray-700">
             Você salvou o arquivo errado? Deletou um parágrafo importante e fechou o Word?
             <br/>A nuvem guarda as últimas 25-100 versões de cada arquivo.
@@ -149,7 +149,7 @@ export default function CloudBackupGuide() {
     {
       title: "O Que NÃO Colocar na Nuvem",
       content: `
-        <h4 class="text-white font-bold mb-3">Evite Sincronizar:</h4>
+        <h class="text-gray-900 font-bold mb-3">Evite Sincronizar:</h4>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Arquivos Temporários ou Cache:</strong> (Ex: Pasta <code>node_modules</code> de programação, cache do Adobe Premiere). Eles contêm milhares de arquivos pequenos que travam a sincronização.</li>
             <li><strong>Bancos de Dados Abertos:</strong> (Arquivos .PST do Outlook, Máquinas Virtuais ligadas). Eles mudam a cada segundo e a nuvem tenta re-upar o arquivo gigante a cada byte alterado.</li>

@@ -54,7 +54,7 @@ export default function EmulatorComparisonGuide() {
             title: "2. LDPlayer: A escolha dos jogadores de FPS",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Foco em Performance Pura:</h4>
+            <h class="text-gray-900 font-bold mb-2">Foco em Performance Pura:</h4>
             <p class="text-sm text-gray-700">
                 O LDPlayer 9+ é conhecido pela sua "magia" em PCs com pouca memória. Ele inicia muito mais rápido que o BlueStacks e possui um kernel otimizado para jogos como <strong>Free Fire, PUBG Mobile e COD Mobile</strong>. <br/><br/>
                 Sua interface é limpa e ele oferece drivers específicos para placas de vídeo integradas (Intel HD Graphics), o que o torna o rei indiscutível para **notebooks de estudo** ou PCs sem placa de vídeo dedicada em 2026.
@@ -77,7 +77,7 @@ export default function EmulatorComparisonGuide() {
     {
       title: "Arquitetura de Emuladores Android: Fundamentos Técnicos e Comparação de Desempenho",
       content: `
-        <h4 class="text-white font-bold mb-3">🏗️ Arquitetura Interna de Emuladores Android</h4>
+        <h class="text-gray-900 font-bold mb-3">🏗️ Arquitetura Interna de Emuladores Android</h4>
         <p class="mb-4 text-gray-700">
           Os emuladores Android modernos como BlueStacks e LDPlayer são baseados em arquiteturas complexas que simulam o ambiente Android completo sobre o sistema operacional Windows. Ambos utilizam tecnologias de virtualização para criar uma camada de abstração entre o sistema operacional host e o sistema convidado Android:
         </p>
@@ -107,7 +107,7 @@ export default function EmulatorComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">⚡ Processo de Virtualização e Recursos do Sistema</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">⚡ Processo de Virtualização e Recursos do Sistema</h4>
         <p class="mb-4 text-gray-700">
           O consumo de recursos entre BlueStacks e LDPlayer difere significativamente devido às abordagens de virtualização:
         </p>
@@ -168,7 +168,7 @@ export default function EmulatorComparisonGuide() {
     {
       title: "Comparação Técnica Avançada e Benchmarks de Desempenho",
       content: `
-        <h4 class="text-white font-bold mb-3">📊 Benchmark Comparativo em Diferentes Configurações de Hardware</h4>
+        <h class="text-gray-900 font-bold mb-3">📊 Benchmark Comparativo em Diferentes Configurações de Hardware</h4>
         <p class="mb-4 text-gray-700">
           Realizamos análises detalhadas de desempenho em diferentes configurações de hardware para determinar onde cada emulador se destaca:
         </p>
@@ -238,7 +238,7 @@ export default function EmulatorComparisonGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🎮 Análise de Jogos Específicos</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🎮 Análise de Jogos Específicos</h4>
         <p class="mb-4 text-gray-700">
           Em jogos competitivos, as diferenças de desempenho se tornam mais evidentes:
         </p>
@@ -274,7 +274,7 @@ export default function EmulatorComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔧 Otimizações Específicas por Emulador</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔧 Otimizações Específicas por Emulador</h4>
         <p class="mb-4 text-gray-700">
           Configurações avançadas que impactam diretamente no desempenho:
         </p>
@@ -292,12 +292,12 @@ export default function EmulatorComparisonGuide() {
     {
       title: "Tecnologias Emergentes em Virtualização Android e Futuro dos Emuladores",
       content: `
-        <h4 class="text-white font-bold mb-3">🚀 Tecnologias de Virtualização de Próxima Geração</h4>
+        <h class="text-gray-900 font-bold mb-3">🚀 Tecnologias de Virtualização de Próxima Geração</h4>
         <p class="mb-4 text-gray-700">
           A próxima geração de emuladores Android está explorando tecnologias avançadas de virtualização, aceleração de hardware e otimização de desempenho que prometem reduzir ainda mais o overhead de sistema:
         </p>
         
-        <h4 class="text-white font-bold mb-3">Hardware-Assisted Virtualization</h4>
+        <h class="text-gray-900 font-bold mb-3">Hardware-Assisted Virtualization</h4>
         <p class="mb-4 text-gray-700">
           Novas tecnologias de virtualização assistida por hardware estão sendo implementadas:
         </p>
@@ -347,7 +347,7 @@ export default function EmulatorComparisonGuide() {
           </table>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🤖 Inteligência Artificial em Otimização de Emuladores</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🤖 Inteligência Artificial em Otimização de Emuladores</h4>
         <p class="mb-4 text-gray-700">
           A IA está começando a desempenhar um papel crucial na otimização de emuladores:
         </p>
@@ -378,7 +378,7 @@ export default function EmulatorComparisonGuide() {
           </div>
         </div>
         
-        <h4 class="text-white font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
+        <h class="text-gray-900 font-bold mb-3 mt-6">🔬 Pesquisas em Andamento</h4>
         <p class="mb-4 text-gray-700">
           Universidades e empresas de tecnologia estão investindo pesadamente em pesquisa de virtualização Android de próxima geração:
         </p>

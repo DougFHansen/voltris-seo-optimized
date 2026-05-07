@@ -54,7 +54,7 @@ export default function PrivacyProtectionGuide() {
             title: "2. Redes Sociais e a \"Bolha\" Digital",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Checklist de Configuração:</h4>
+            <h class="text-gray-900 font-bold mb-2">Checklist de Configuração:</h4>
             <p class="text-sm text-gray-700">
                 1. <strong>Meta (Instagram/WhatsApp):</strong> Vá em 'Centro de Contas' e desative o rastreamento fora das plataformas. <br/>
                 2. <strong>Google:</strong> Acesse 'Minha Conta' > Dados e Privacidade e ative a **Exclusão Automática** do histórico de localização e atividades na web a cada 3 meses. <br/>

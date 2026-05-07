@@ -54,7 +54,7 @@ export default function NvidiaRollbackGuide() {
             title: "2. Onde encontrar as pérolas da NVIDIA",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
-            <h4 class="text-white font-bold mb-2">Busca Avançada:</h4>
+            <h class="text-gray-900 font-bold mb-2">Busca Avançada:</h4>
             <p class="text-sm text-gray-700">
                 Não use o botão de download comum. Pesquise por <strong>'NVIDIA Advanced Driver Search'</strong>. Lá você terá acesso à lista completa de versões. Em 2026, as versões marcadas como <strong>'Studio Driver'</strong> costumam ser mais testadas e estáveis para quem não quer ser um "betatester" de novas tecnologias problemáticas.
             </p>

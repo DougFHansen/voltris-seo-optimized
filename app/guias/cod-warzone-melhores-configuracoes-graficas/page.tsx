@@ -57,7 +57,7 @@ export default function WarzoneGuide() {
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">Upscaling / Sharpening</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">FidelityFX CAS</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">FidelityFX CAS</span></p>
                 <p class="text-gray-700 text-xs">
                     Só use DLSS ou FSR se seu FPS estiver injogável (abaixo de 60). O DLSS borra a imagem em movimento distantes. O <strong>FidelityFX CAS</strong> não aumenta FPS, mas aplica um filtro de nitidez que faz os inimigos "poparem" na tela. Ajuste a força para 50-70%.
                 </p>
@@ -65,7 +65,7 @@ export default function WarzoneGuide() {
             
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
                 <h4 class="text-orange-500 font-bold mb-1">VRAM Scale Target</h4>
-                <p class="text-white font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">60% a 70%</span></p>
+                <p class="text-gray-900 font-mono text-sm mb-2">Recomendado: <span class="text-emerald-400">60% a 70%</span></p>
                 <p class="text-gray-700 text-xs">
                     NUNCA deixe em 90%. O jogo precisa de margem para o Windows e Discord. Se você alocar 90% pro jogo, qualquer notificação de fundo causa travada. Baixar para 70% resolve 90% dos crashes.
                 </p>

@@ -59,13 +59,13 @@ export default function BitLockerGuide() {
       content: `
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
             <div class="bg-gray-800/50 p-4 rounded-lg border border-red-500/30">
-                <h5 class="font-bold text-white mb-2">PC Gamer de Mesa (Desktop)</h5>
+                <h class="font-bold text-gray-900 mb-2">PC Gamer de Mesa (Desktop)</h5>
                 <p class="text-sm text-gray-700">
                     <strong>Desative.</strong> A chance de alguém invadir sua casa especificamente para roubar o SSD e ler seus dados é baixa. O ganho de responsividade do sistema (snappiness) vale a pena.
                 </p>
             </div>
             <div class="bg-gray-800/50 p-4 rounded-lg border border-green-500/30">
-                <h5 class="font-bold text-white mb-2">Notebook de Trabalho/Faculdade</h5>
+                <h class="font-bold text-gray-900 mb-2">Notebook de Trabalho/Faculdade</h5>
                 <p class="text-sm text-gray-700">
                     <strong>Mantenha Ativado.</strong> Notebooks são perdidos ou roubados com frequência. Sem BitLocker, qualquer um tira o SSD, pluga em outro PC e lê suas fotos, senhas e documentos. A perda de performance é o preço da segurança.
                 </p>
@@ -95,7 +95,7 @@ export default function BitLockerGuide() {
     {
       title: "Hardware Encryption (OPAL) - O Melhor dos Mundos?",
       content: `
-        <h4 class="text-white font-bold mb-3">SSD Samsung/Crucial c/ AES Próprio</h4>
+        <h class="text-gray-900 font-bold mb-3">SSD Samsung/Crucial c/ AES Próprio</h4>
         <p class="mb-4 text-gray-700">
             Alguns SSDs caros (Samsung 990 Pro) possuem um chip dedicado para criptografia.
             <br/>Antigamente, o BitLocker podia usar esse chip ("Hardware Encryption") para ter custo zero de CPU.
@@ -109,7 +109,7 @@ export default function BitLockerGuide() {
     {
       title: "Verificando o Status via CMD",
       content: `
-        <h4 class="text-white font-bold mb-3">Linha de Comando</h4>
+        <h class="text-gray-900 font-bold mb-3">Linha de Comando</h4>
         <p class="mb-4 text-gray-700">
             Abra o CMD como Administrador e digite:
             <br/><code class="bg-black p-1 rounded">manage-bde -status</code>
