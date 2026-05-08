@@ -1,4 +1,4 @@
-{
+﻿{
   "latestVersion": "1.0.1.4",
   "downloadUrl": "https://github.com/DougFHansen/voltris-releases/releases/download/v1.0.1.4/VoltrisUpdater_x64.exe",
   "changelog": "Voltris Optimizer v1.0.1.4\n- [UPGRADE] Sistema de Update completamente estabilizado com fallback inteligente (GitHub + version.json).\n- [FIX] Correção de detecção de versão duplicada.\n- [FIX] Melhorias no download resiliente e detecção de arquitetura.\n- [CORE] Otimização do polling e sistema anti-cache.\n- [PERF] Redução de chamadas redundantes à API.\n- [SECURITY] Validação aprimorada de assets do updater.",

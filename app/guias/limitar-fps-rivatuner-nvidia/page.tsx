@@ -78,6 +78,26 @@ export default function LimitFPSGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Por que limitar FPS se PC é potente?",
+            answer: "FPS alto (300) nem sempre significa fluido. Importante é Frametime. Se FPS oscila 200-300, sente travadinhas. Limitar FPS fixo (144) garante quadros saiam mesmo tempo, eliminando stuttering e reduzindo calor GPU."
+        },
+        {
+            question: "RivaTuner vs NVIDIA qual escolher?",
+            answer: "Use RivaTuner se jogo 'treme' mesmo com FPS alto. É superior estabilidade imagem. Use Painel NVIDIA se joga competitivo (Valorant, CS2). Limitador NVIDIA tem input lag ligeiramente menor que RivaTuner."
+        },
+        {
+            question: "Limitar FPS com G-Sync?",
+            answer: "Se usa G-Sync, limite FPS para 3 frames abaixo Hertz monitor (141 FPS para 144Hz) para garantir G-Sync nunca desligue."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "RivaTuner Statistics Server", url: "https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" },
+        { name: "NVIDIA Control Panel Guide", url: "https://www.nvidia.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/overclock-gpu-msi-afterburner",
@@ -106,6 +126,8 @@ export default function LimitFPSGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -73,6 +73,26 @@ export default function L2OtimizacaoGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Alt + L aumenta FPS?",
+            answer: "Sim. Esconde nomes jogadores e NPCs. Em cerco castelo, pode dobrar FPS instantaneamente pois texto é o que mais pesa no L2."
+        },
+        {
+            question: "Aumentar CacheSizeMegs ajuda?",
+            answer: "Sim. L2 vem configurado para 32MB cache, ridículo 2026. Mude para 256 ou 512. Reduz travadinhas 1 segundo ao correr pelo mapa."
+        },
+        {
+            question: "SSD é obrigatório?",
+            answer: "Sim. L2 lê arquivos constantemente. Em HD mecânicos, tempo busca StaticMeshes lento demais, resultando personagens invisíveis após teletransportes."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Unreal Engine Documentation", url: "https://docs.unrealengine.com/" },
+        { name: "Lineage 2 Official", url: "https://www.lineage2.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/mu-online-reduzir-lag-muvoltris",
@@ -101,6 +121,8 @@ export default function L2OtimizacaoGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

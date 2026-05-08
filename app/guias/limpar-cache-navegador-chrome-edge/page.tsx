@@ -75,6 +75,26 @@ export default function BrowserCacheGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Atalho universal limpa cache?",
+            answer: "Sim. Não importa Chrome, Edge, Brave ou Firefox, comando é Ctrl + Shift + Del. Abre janela limpar dados navegação em todos navegadores."
+        },
+        {
+            question: "Limpar cookies desloga contas?",
+            answer: "Sim. Se marcar 'Cookies e outros dados do site', precisará digitar senha de novo em todos sites. Marque apenas 'Imagens e arquivos em cache' para não deslogar."
+        },
+        {
+            question: "Hard Reload Ctrl + F5?",
+            answer: "Se apenas UM site específico dá erro, não precisa limpar cache tudo. Com site aberto, Ctrl + F5 força navegador ignorar cache e baixar tudo zero apenas aquele site."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Google Chrome Help", url: "https://support.google.com/chrome/" },
+        { name: "Microsoft Edge Help", url: "https://support.microsoft.com/en-us/microsoft-edge" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/atalhos-navegador-produtividade",
@@ -103,6 +123,8 @@ export default function BrowserCacheGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

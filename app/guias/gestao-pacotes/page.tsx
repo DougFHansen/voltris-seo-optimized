@@ -74,6 +74,26 @@ export default function PackageManagementGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Winget é nativo do Windows?",
+      answer: "Sim. Winget é o gerenciador de pacotes oficial da Microsoft, nativo no Windows 11. Não precisa instalar nada extra."
+    },
+    {
+      question: "Como atualizar todos os apps?",
+      answer: "winget upgrade --all. Verifica todos os programas (Chrome, Spotify, Steam, Drivers) e atualiza automaticamente."
+    },
+    {
+      question: "Winget.run serve para quê?",
+      answer: "Interface web onde seleciona programas como carrinho de compras. Gera comando único para colar no terminal. Ótimo para PC recém-formatado."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Winget Documentation", url: "https://learn.microsoft.com/windows/package-manager/" },
+    { name: "Winget.run", url: "https://winget.run/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/pos-instalacao-windows-11",
@@ -102,6 +122,8 @@ export default function PackageManagementGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

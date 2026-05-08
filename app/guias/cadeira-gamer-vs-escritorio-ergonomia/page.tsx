@@ -615,6 +615,27 @@ export default function ChairComparisonGuide() {
     }
   ];
 
+    const faqItems = [
+        {
+            question: "Cadeira gamer é ruim para a coluna?",
+            answer: "Não necessariamente, mas muitas cadeiras gamer baratas usam espuma de baixa qualidade e não oferecem suporte lombar adequado. Cadeiras gamer premium (R$2000+) podem ser boas, mas uma cadeira de escritório ergonômica na mesma faixa de preço geralmente oferece melhor suporte a longo prazo."
+        },
+        {
+            question: "Vale a pena investir em uma cadeira cara?",
+            answer: "Sim. Você passa 8+ horas por dia sentado. Uma cadeira de qualidade dura 10-15 anos, enquanto uma barata precisa ser trocada a cada 2-3 anos. A longo prazo, a cadeira premium sai mais barata e salva sua coluna."
+        },
+        {
+            question: "Mesh vs Couro sintético?",
+            answer: "Mesh (rede) é melhor para o clima brasileiro - permite respiração e evita suor. Couro sintético pode descascar com o calor e umidade. Couro legítimo é bom, mas muito caro."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Herman Miller (Cadeiras Escritório Premium)", url: "https://www.hermanmiller.com/" },
+        { name: "SteelSeries (Cadeiras Gamer)", url: "https://steelseries.com/" },
+        { name: "Secretlab (Cadeiras Gamer)", url: "https://secretlab.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/posicionamento-monitor-ergonomia",
@@ -647,6 +668,8 @@ export default function ChairComparisonGuide() {
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

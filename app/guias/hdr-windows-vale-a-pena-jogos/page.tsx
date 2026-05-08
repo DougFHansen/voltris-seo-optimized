@@ -73,6 +73,26 @@ export default function HDRGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "HDR 400 é bom?",
+            answer: "Não. HDR 400 é nível básico, geralmente apenas aumenta brilho total deixando cores lavadas. HDR 600 em diante já exige Local Dimming, onde a experiência fica incrível."
+        },
+        {
+            question: "Auto HDR funciona em jogos antigos?",
+            answer: "Sim. Configurações > Sistema > Tela > HDR > ative Auto HDR. Windows injeta HDR via IA em jogos como Skyrim e GTA V, dando sobrevida visual a clássicos."
+        },
+        {
+            question: "Desktop fica cinza com HDR?",
+            answer: "Baixe Windows HDR Calibration na Microsoft Store. Cria perfil personalizado ensinando Windows onde pixel para de brilhar e onde chega no máximo. Corrige cores mortas."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Windows HDR Calibration", url: "https://www.microsoft.com/store/productId/9MV4Q7ZV27T6" },
+        { name: "DisplayHDR Certification", url: "https://displayhdr.org/certification/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/calibrar-cores-monitor",
@@ -101,6 +121,8 @@ export default function HDRGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

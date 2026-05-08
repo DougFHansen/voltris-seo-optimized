@@ -413,6 +413,26 @@ export default function CPUBuyingGuide() {
     }
   ];
 
+    const faqItems = [
+        {
+            question: "Ryzen ou Intel para jogos?",
+            answer: "Em 2026, AMD Ryzen tem vantagem em eficiência e custo-benefício. Intel ainda lidera em clock máximo absoluto, mas consome mais energia. Para jogos, ambos são excelentes na mesma faixa de preço."
+        },
+        {
+            question: "Cache 3D V-Cache vale a pena?",
+            answer: "SIM para jogos competitivos. O Ryzen 7 7800X3D e 5800X3D têm FPS 20-30% maiores em jogos como Valorant e CS2 devido ao cache extra. Para uso geral, modelos normais são suficientes."
+        },
+        {
+            question: "4 núcleos ainda serve em 2026?",
+            answer: "Não. Jogos modernos exigem no mínimo 6 núcleos para evitar travadas. Core i5 e Ryzen 5 (6 núcleos) são o ponto ideal de custo-benefício."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "CPU UserBenchmark (Comparativo)", url: "https://cpu.userbenchmark.com/" },
+        { name: "PassMark CPU Mark", url: "https://www.cpubenchmark.net/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/overclock-processador",
@@ -443,6 +463,8 @@ export default function CPUBuyingGuide() {
             contentSections={allContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

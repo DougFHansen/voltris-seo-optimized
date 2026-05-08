@@ -75,6 +75,26 @@ export default function SmartGaGaFFGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "SmartGaGa roda em 2GB RAM?",
+            answer: "Sim. Coloque CPU na metade dos núcleos e RAM em 1024MB nas configurações do emulador. Use DirectX se não tiver GPU dedicada."
+        },
+        {
+            question: "Tela preta no Free Fire?",
+            answer: "Vá em configurações do Android no emulador > Aplicativos > Free Fire > Limpar Cache. Verifique se instalou a versão correta (Amazon App Store é mais estável)."
+        },
+        {
+            question: "Sensibilidade Y muito rápida?",
+            answer: "Ajuste Sensibilidade Y para 1.0-2.0 nas configurações de controles. Desative Aceleração de Mouse no Windows para movimentos consistentes."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "SmartGaGa Official", url: "https://www.smartgaga.com/" },
+        { name: "Free Fire Official", url: "https://ff.garena.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/bluestacks-vs-ldplayer-qual-mais-leve",
@@ -103,6 +123,8 @@ export default function SmartGaGaFFGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -478,6 +478,26 @@ export default function DLLFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Posso baixar DLLs de sites como dll-files.com?",
+            answer: "NUNCA! Esses sites podem conter malware. A solução correta é instalar o VCRedist All-in-One oficial, que contém todas as DLLs necessárias."
+        },
+        {
+            question: "Preciso instalar DirectX em 2026?",
+            answer: "O Windows 10/11 já vem com DirectX 12 nativo. Para jogos antigos (DirectX 9/11), instale o DirectX End-User Runtimes oficial da Microsoft."
+        },
+        {
+            question: "Erro persiste após instalar tudo?",
+            answer: "Pode ser corrupção de arquivos do jogo. Use o 'Verificar integridade de arquivos' no Steam/Epic Games ou reinstale o jogo."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Visual C++ Redistributable All-in-One (ABCGuide)", url: "https://www.techpowerup.com/forums/threads/visual-c-redistributable-aio.342842/" },
+        { name: "DirectX End-User Runtimes (Microsoft)", url: "https://www.microsoft.com/en-us/download/details.aspx?id=35" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/erro-0xc00007b-aplicativo-nao-inicializou",
@@ -509,6 +529,8 @@ export default function DLLFixGuide() {
             advancedContentSections={advancedContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

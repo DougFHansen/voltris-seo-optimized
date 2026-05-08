@@ -72,6 +72,26 @@ export default function GeometryDashPatchGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "4GB Patch funciona?",
+            answer: "Sim. Geometry Dash é 32-bit (limite 2GB). 4GB Patch permite usar 4GB, o dobro. Resolve crashes em níveis com muitos objetos."
+        },
+        {
+            question: "Mega Hack já tem 4GB patch?",
+            answer: "Sim. Mega Hack v7/v8 já vem com 4GB patch embutido e aplicado automaticamente. Também tem FPS Bypass para 144Hz/240Hz."
+        },
+        {
+            question: "Smooth Fix deve ficar ligado?",
+            answer: "Não. Desative Smooth Fix nas configurações. Se PC não mantiver FPS estável, jogo fica em câmera lenta, estragando timing da música."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "NTCore 4GB Patch", url: "https://ntcore.com/4gb-patch/" },
+        { name: "Mega Hack Pro", url: "https://megahack.pro/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/otimizacao-performance",
@@ -100,6 +120,8 @@ export default function GeometryDashPatchGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

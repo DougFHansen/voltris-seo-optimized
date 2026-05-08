@@ -825,6 +825,26 @@ export default function DiscordOptimizationGuide() {
     }
   ];
 
+    const faqItems = [
+        {
+            question: "Aceleração de Hardware: ON ou OFF?",
+            answer: "Se você tem GPU potente (RTX 3060+), deixe ON. Se tem GPU integrada ou placa fraca, desative OFF para não consumir VRAM que o jogo precisa."
+        },
+        {
+            question: "Krisp ou cancelamento de ruído padrão?",
+            answer: "Krisp é melhor mas consome CPU. Se seu PC é fraco, use o cancelamento de ruído padrão do Discord para economizar processamento."
+        },
+        {
+            question: "Overlay causa queda de FPS?",
+            answer: "Sim. O Overlay usa recursos da GPU. Se você não precisa mostrar status no jogo, desative o Overlay para ganhar 2-5 FPS."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Discord Support - Hardware Acceleration", url: "https://support.discord.com/hc/en-us/articles/360035128551" },
+        { name: "Krisp AI Noise Cancellation", url: "https://krisp.ai/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/aumentar-volume-microfone-windows",
@@ -860,6 +880,8 @@ export default function DiscordOptimizationGuide() {
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

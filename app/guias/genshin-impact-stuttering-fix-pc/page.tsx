@@ -72,6 +72,26 @@ export default function GenshinFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Shader cache 10GB ajuda?",
+            answer: "Sim. No painel NVIDIA > Gerenciar Configurações 3D > Tamanho do cache do sombreador > 10GB ou Ilimitado. Reduz engasgos ao usar habilidades pela primeira vez."
+        },
+        {
+            question: "Prioridade Acima do Normal funciona?",
+            answer: "Sim. No Gerenciador de Tarefas > Detalhes > GenshinImpact.exe > Definir Prioridade > Acima do Normal. Windows dá atenção especial ao jogo."
+        },
+        {
+            question: "Resolução de Renderização ideal?",
+            answer: "Mantenha em 1.0 ou 0.8 (PC fraco). Acima de 1.0 o peso aumenta exponencialmente. Desative Bloom para clareza visual e ganho de FPS."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Genshin Impact Official", url: "https://genshin.hoyoverse.com/" },
+        { name: "KeqingMains Theorycrafting", url: "https://keqingmains.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/atualizacao-drivers-video",
@@ -100,6 +120,8 @@ export default function GenshinFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

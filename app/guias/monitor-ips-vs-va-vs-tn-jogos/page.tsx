@@ -73,6 +73,26 @@ export default function MonitorPanelGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "IPS vs VA vs TN qual melhor?",
+            answer: "IPS equilíbrio perfeito cores e velocidade. VA contraste excelente sofre rastro preto (Ghosting). TN velocidade máxima cores ruins ângulo visão horrível."
+        },
+        {
+            question: "IPS Glow o que é?",
+            answer: "IPS Glow brilho esbranquiçado cenas muito escuras. Característica painel IPS não defeito. Menos visível monitores modernos."
+        },
+        {
+            question: "TN ainda vale a pena 2026?",
+            answer: "Ainda encontrado monitores ultra rápidos 360Hz 540Hz pro-players CS2. Cores lavadas ângulo visão horrível mas vitória competitiva milissegundos TN tem lugar."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Rtings Monitor Reviews", url: "https://www.rtings.com/monitor" },
+        { name: "RTINGS Panel Comparison", url: "https://www.rtings.com/monitor/tests/picture-quality" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/guia-compra-monitores",
@@ -101,6 +121,8 @@ export default function MonitorPanelGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

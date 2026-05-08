@@ -87,6 +87,26 @@ export default function SSDGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Desfragmentar SSD faz mal?",
+            answer: "Sim. SSDs funcionam pendrives gigantes não têm partes móveis. Se tratar SSD como HD antigo desfragmentando toda semana vai matá-lo meses."
+        },
+        {
+            question: "TRIM o que faz?",
+            answer: "Comando TRIM diz controlador SSD quais blocos dados não mais usados podem ser apagados internamente. Sem TRIM SSD fica muito lento ao longo tempo."
+        },
+        {
+            question: "Overprovisioning necessário?",
+            answer: "Sim. Deixar SSD 100% cheio faz ficar lento pois precisa espaço livre reorganizar dados Garbage Collection. Deixe 10% a 15% espaço total Não alocado."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - TRIM Command", url: "https://learn.microsoft.com/en-us/windows-server/storage/file-server/trim-faq" },
+        { name: "Samsung Magician", url: "https://www.samsung.com/semiconductor/minisite/ssd/download/tools.html" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/debloat-windows-11-otimizacao-powershell",
@@ -115,6 +135,8 @@ export default function SSDGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
             showVoltrisOptimizerCTA={true}
         />
     );

@@ -75,6 +75,26 @@ export default function VideoConverterGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Handbrake ou FormatFactory para vídeos?",
+            answer: "Handbrake é melhor para qualidade profissional e compressão eficiente. FormatFactory é mais fácil para conversões rápidas e suporta múltiplos formatos (PDF, áudio, imagens)."
+        },
+        {
+            question: "FormatFactory é seguro em 2026?",
+            answer: "Sim, se baixado do site oficial. Cuidado com bloatwares no instalador - desmarque ofertas de antivírus ou barras de busca durante a instalação."
+        },
+        {
+            question: "AV1 suportado por ambos?",
+            answer: "Sim. Ambos suportam AV1 com aceleração por hardware (NVENC, QSV) em 2026, permitindo compressão eficiente com qualidade."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Handbrake Download", url: "https://handbrake.fr/" },
+        { name: "FormatFactory Download", url: "https://www.formatfactory.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/como-usar-obs-studio-gravar-tela",
@@ -103,6 +123,8 @@ export default function VideoConverterGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

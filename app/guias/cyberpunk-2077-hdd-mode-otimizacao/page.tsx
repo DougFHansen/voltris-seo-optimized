@@ -76,6 +76,26 @@ export default function CyberpunkOptimizationGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "HDD Mode vale a pena em SSD?",
+            answer: "Sim. Mesmo em SSDs SATA e NVMe de entrada, o HDD Mode faz o jogo carregar texturas com mais antecedência, reduzindo pop-in e stuttering ao dirigir rápido pela cidade."
+        },
+        {
+            question: "DLSS 3.5 funciona em AMD?",
+            answer: "DLSS é exclusivo NVIDIA. Para AMD, use FSR 3.0 Frame Generation ou XeSS (Intel). DLSS 3.5 (Ray Reconstruction) é a melhor opção para quem tem placa NVIDIA RTX 4000."
+        },
+        {
+            question: "Path Tracing ou Ray Tracing?",
+            answer: "Path Tracing é a forma mais avançada de Ray Tracing, mas consome muitos recursos. Para RTX 4060 ou inferior, use Ray Tracing tradicional com DLSS Performance."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "CD Projekt Red - Cyberpunk 2077 Patch Notes", url: "https://www.cyberpunk.net/en/news/" },
+        { name: "NVIDIA DLSS 3.5 Guide", url: "https://www.nvidia.com/dlss/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/aceleracao-hardware-gpu-agendamento",
@@ -104,6 +124,8 @@ export default function CyberpunkOptimizationGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

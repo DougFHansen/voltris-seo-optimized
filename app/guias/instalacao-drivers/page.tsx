@@ -205,6 +205,29 @@ export default function InstalacaoDriversGuide() {
     { name: "AMD Drivers (placas de vídeo e chipset)", url: "https://www.amd.com/pt/support" },
   ];
 
+  const faqItems = [
+    {
+      question: "É seguro usar drivers de terceiros?",
+      answer: "Drivers de terceiros podem ser arriscados. Sempre prefira drivers dos sites oficiais dos fabricantes (NVIDIA, AMD, Intel, etc.). Se usar ferramentas de terceiros, verifique a reputação e assinatura digital do driver."
+    },
+    {
+      question: "Quantas vezes devo atualizar meus drivers?",
+      answer: "Atualize drivers quando houver problemas de compatibilidade ou para melhorias de desempenho significativas. Não é necessário atualizar mensalmente. Para placas de vídeo, atualize a cada 3-6 meses ou quando lançar novos jogos importantes."
+    },
+    {
+      question: "Posso reinstalar o Windows sem perder meus drivers?",
+      answer: "Ao reinstalar o Windows, você precisará reinstalar os drivers. Recomenda-se fazer backup dos drivers atuais antes. Ferramentas como Driver Genius podem ajudar nesse processo. O Windows Update instalará drivers básicos automaticamente."
+    },
+    {
+      question: "O que fazer se um driver causar tela azul?",
+      answer: "Se um driver causar tela azul, reinicie em Modo de Segurança e desinstale o driver problemático pelo Gerenciador de Dispositivos. Use Restauração do Sistema para voltar a um ponto anterior se necessário."
+    },
+    {
+      question: "Drivers genéricos do Windows são suficientes?",
+      answer: "Drivers genéricos funcionam para uso básico, mas não oferecem performance completa. Para jogos, trabalho gráfico ou uso profissional, instale os drivers específicos do fabricante para aproveitar todos os recursos."
+    }
+  ];
+
   return (
     <GuideTemplate
       title={title}
@@ -215,6 +238,7 @@ export default function InstalacaoDriversGuide() {
       contentSections={contentSections}
       relatedGuides={relatedGuides}
       externalReferences={externalReferences}
+      faqItems={faqItems}
     />
   );
 }

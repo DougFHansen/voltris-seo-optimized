@@ -184,6 +184,12 @@ export default function AssembleGuide() {
     }
   ];
 
+  const externalReferences = [
+    { name: "Intel: Guia de Instalação de Processadores", url: "https://www.intel.com/content/www/us/en/support/articles/000005622/processors.html" },
+    { name: "AMD: Guia de Instalação AM5", url: "https://www.amd.com/en/support/kb-articles/policies-processor-installation" },
+    { name: "PCPartPicker: Verificação de Compatibilidade", url: "https://pcpartpicker.com/" }
+  ];
+
   return (
     <GuideTemplate
       title={title}
@@ -196,6 +202,7 @@ export default function AssembleGuide() {
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
       faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

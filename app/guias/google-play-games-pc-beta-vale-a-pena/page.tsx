@@ -74,6 +74,26 @@ export default function GooglePlayGamesReviewGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Google Play Games é melhor que emuladores?",
+            answer: "Para jogos populares (Clash, Free Fire), sim. É nativo do Windows, seguro, consome metade da RAM e tem sincronização perfeita com Play Store."
+        },
+        {
+            question: "Requisito Hyper-V é obrigatório?",
+            answer: "Sim. Hyper-V (Virtualização) deve estar ativo na BIOS. Sem isso, o programa não abre. Recomendado: 4 núcleos, 8GB RAM."
+        },
+        {
+            question: "Limitação do catálogo?",
+            answer: "Sim. Suporta apenas títulos adaptados manualmente para PC. Se precisa instalar APKs de qualquer site ou macros complexos, emuladores clássicos ainda são necessários."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Google Play Games Official", url: "https://play.google.com/googleplaygames" },
+        { name: "Google Play Games PC Requirements", url: "https://support.google.com/googleplaygames/answer/10063403" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/clash-royale-clash-of-clans-pc-oficial",
@@ -102,6 +122,8 @@ export default function GooglePlayGamesReviewGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

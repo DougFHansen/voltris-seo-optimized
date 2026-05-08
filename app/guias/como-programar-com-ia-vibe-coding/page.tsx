@@ -213,6 +213,27 @@ Safety:
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Vibe Coding é para iniciantes?",
+            answer: "Sim e não. Você precisa entender lógica de programação e arquitetura, mas não precisa decorar sintaxe. É ideal para quem já sabe o básico e quer construir produtos reais sem se perder em detalhes técnicos."
+        },
+        {
+            question: "Cursor é pago?",
+            answer: "A versão gratuita é excelente. A versão Pro ($20/mês) adiciona modelos mais avançados (Claude 3.5 Sonnet) e modo privacidade. Para MVPs, a gratuita é suficiente."
+        },
+        {
+            question: "A IA pode substituir programadores?",
+            answer: "Não. Ela substitui a digitação de código, não o pensamento. Programadores agora são 'Gerentes de Código' que revisam e direcionam a IA. A demanda por bons programadores aumentou, não diminuiu."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Cursor IDE (Download)", url: "https://cursor.sh/" },
+        { name: "Andrej Karpathy Twitter", url: "https://twitter.com/karpathy" },
+        { name: "Anthropic Claude 3.5", url: "https://www.anthropic.com/claude" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/o-que-sao-ai-agents-guia-completo",
@@ -241,6 +262,8 @@ Safety:
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

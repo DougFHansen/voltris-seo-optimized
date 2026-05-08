@@ -74,6 +74,26 @@ export default function GTAVTextureFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Prioridade Alta no Gerenciador de Tarefas ajuda?",
+            answer: "Sim. Com jogo aberto, Ctrl+Shift+Esc > Detalhes > GTA5.exe > Definir Prioridade > Alta. Isso força Windows dar atenção total ao GTA V."
+        },
+        {
+            question: "Limitar FPS em 60 ajuda?",
+            answer: "Sim. Paradoxo de performance: se GPU tenta 100 FPS, 'atropela' CPU pedindo dados, causando sumiço do mapa. Ative V-Sync ou limite em 60 no painel Nvidia para dar respiro ao processador."
+        },
+        {
+            question: "Reduzir Densidade de Pedestres resolve?",
+            answer: "Sim. Variedade e Densidade de Pedestres pesam muito na CPU. Ao diminuir carros e pessoas, jogo libera memória e processamento para focar no cenário e estradas."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Rockstar Games Support", url: "https://support.rockstargames.com/" },
+        { name: "GTA V PC Requirements", url: "https://www.rockstargames.com/gta-v/pc/requirements" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/gta-v-otimizar-fps-pc-fraco",
@@ -102,6 +122,8 @@ export default function GTAVTextureFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

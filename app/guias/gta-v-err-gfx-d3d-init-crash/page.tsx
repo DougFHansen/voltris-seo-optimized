@@ -77,6 +77,26 @@ export default function GTAVCrashGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Mudar DirectX para 10.1 resolve?",
+            answer: "Sim. Se consegue abrir menu, vá em Configurações > Gráficos > Versão do DirectX. Mude de 11 para 10.1 ou 10. Isso corrige falha na comunicação D3D."
+        },
+        {
+            question: "Deletar settings.xml funciona?",
+            answer: "Sim. Vá em Documentos / Rockstar Games / GTA V e delete settings.xml. Jogo criará novo com padrões. Se persistir, abra arquivo e altere DX_Version value='2' para value='0'."
+        },
+        {
+            question: "Underclock da GPU ajuda?",
+            answer: "Sim. Em casos raros, overclock de fábrica agressivo demais causa erro. Use MSI Afterburner para reduzir Core Clock em -50 MHz. Isso estabiliza comunicação D3D."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Rockstar Games Support", url: "https://support.rockstargames.com/" },
+        { name: "DirectX Web Installer", url: "https://www.microsoft.com/en-us/download/details.aspx?id=35" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/gta-v-otimizar-fps-pc-fraco",
@@ -105,6 +125,8 @@ export default function GTAVCrashGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

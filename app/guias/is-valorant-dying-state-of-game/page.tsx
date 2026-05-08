@@ -68,6 +68,26 @@ export default function ValorantStateGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Valorant está morrendo?",
+            answer: "Não. Dados da Riot indicam 1-2 milhões de jogadores simultâneos em horário de pico. Valorant continua no Top 5 da Twitch, provando interesse alto."
+        },
+        {
+            question: "Expansão para consoles ajudou?",
+            answer: "Sim. Valorant atingiu público novo sem PCs Gamers. Implementação do 'Focus Aim' permitiu jogo divertido no controle, mantendo filas rápidas 24h."
+        },
+        {
+            question: "Principais críticas em 2026?",
+            answer: "Frustração com Vanguard (anticheat) em máquinas antigas e pacotes de skins que custam centenas de reais. Jogadores pedem novos modos permanentes."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Riot Games - Valorant Stats", url: "https://www.riotgames.com/" },
+        { name: "Twitch - Valorant Category", url: "https://www.twitch.tv/directory/category/valorant" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/dx11-feature-level-10.0-error-valorant",
@@ -96,6 +116,8 @@ export default function ValorantStateGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

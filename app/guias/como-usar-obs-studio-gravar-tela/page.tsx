@@ -866,6 +866,27 @@ start_timer()</pre>
         }
     ];
 
+    const faqItems = [
+        {
+            question: "MKV ou MP4 para gravar?",
+            answer: "Use MKV. Se seu PC travar ou a luz acabar, você não perde o vídeo. Depois, converta para MP4 no próprio OBS (Arquivo > Remux Gravações). MP4 direto pode corromper se houver interrupção."
+        },
+        {
+            question: "NVENC ou x264?",
+            answer: "NVENC (placa de vídeo) para gravação de jogos - não perde FPS. x264 (CPU) só se tiver CPU muito forte e placa de vídeo fraca. NVENC H.264 é o padrão, NVENC AV1 é mais moderno."
+        },
+        {
+            question: "Bitrate ideal para gravação?",
+            answer: "Para 1080p 60fps: 20-30 Mbps (H.264) ou 15-20 Mbps (AV1). Não precisa bitrate exagerado. Mais que isso não melhora qualidade, apenas aumenta tamanho do arquivo."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "OBS Studio Download Oficial", url: "https://obsproject.com/download" },
+        { name: "OBS Project (Documentação)", url: "https://obsproject.com/wiki" },
+        { name: "NVIDIA NVENC Guide", url: "https://developer.nvidia.com/nvidia-video-codec-sdk/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/obs-studio-melhores-configuracoes-stream-2026",
@@ -898,6 +919,8 @@ start_timer()</pre>
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

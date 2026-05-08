@@ -485,6 +485,26 @@ export default function BootableUSBGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Pendrive de 8GB é suficiente?",
+      answer: "Sim, 8GB é o mínimo para Windows 11. Porém, recomendo 16GB para garantir espaço suficiente e evitar erros durante o processo."
+    },
+    {
+      question: "Posso usar o mesmo pendrive para armazenar dados?",
+      answer: "Não. O pendrive será completamente formatado durante o processo. Tenha certeza de fazer backup de todos os arquivos importantes antes."
+    },
+    {
+      question: "Media Creation Tool ou Rufus?",
+      answer: "Media Creation Tool é mais seguro e fácil (oficial da Microsoft). Rufus é mais avançado e permite bypass de TPM/Secure Boot, ideal para PCs antigos."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Media Creation Tool (Microsoft)", url: "https://www.microsoft.com/software-download/windows11" },
+    { name: "Rufus (Download Oficial)", url: "https://rufus.ie/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/formatacao-windows",
@@ -516,6 +536,8 @@ export default function BootableUSBGuide() {
       advancedContentSections={advancedContentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

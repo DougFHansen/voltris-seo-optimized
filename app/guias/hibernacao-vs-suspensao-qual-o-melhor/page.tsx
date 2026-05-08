@@ -74,6 +74,26 @@ export default function HibernationGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Suspensão consome muita energia?",
+            answer: "Não. Mantém dados na RAM com pouca energia. Ideal para pausas curtas (até 2-3 horas). Risco: queda de energia perde dados não salvos."
+        },
+        {
+            question: "Hibernação desgasta SSD?",
+            answer: "Sim. Escreve arquivo gigante (hiberfil.sys) no SSD toda vez que fecha tampa. Ao longo de anos, pode reduzir vida útil do disco."
+        },
+        {
+            question: "Fast Startup causa bugs?",
+            answer: "Sim. Windows usa hibernação parcial do kernel ao 'desligar'. Se PC tem lentidões aleatórias, clique Reiniciar em vez de Desligar para começar do zero."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Power Settings", url: "https://support.microsoft.com/en-us/windows" },
+        { name: "Windows Fast Startup", url: "https://support.microsoft.com/en-us/windows" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/otimizacao-ssd-windows-11",
@@ -102,6 +122,8 @@ export default function HibernationGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

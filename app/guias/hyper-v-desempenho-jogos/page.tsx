@@ -78,6 +78,26 @@ export default function HyperVPerformanceGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Hyper-V tira FPS?",
+            answer: "Sim. Pode reduzir 5% a 25% em jogos antigos. VBS usa motor Hyper-V para criar bolha de segurança, criando camada extra que rouba CPU dos jogos."
+        },
+        {
+            question: "Como saber se Hyper-V está ativo?",
+            answer: "msinfo32 > Informações do Sistema > procure 'Segurança baseada em virtualização'. Se 'Em execução', Hyper-V está ativo e pesando no sistema."
+        },
+        {
+            question: "Desativar Hyper-V é seguro?",
+            answer: "Não totalmente. Deixa PC mais vulnerável a ataques de Nível de Kernel. Para desativar apenas VBS sem remover motor, vá em Segurança do Windows > Detalhes do isolamento de núcleo > desligue Integridade da Memória."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Hyper-V Documentation", url: "https://learn.microsoft.com/en-us/virtualization/hyper-v/" },
+        { name: "Windows Security - VBS", url: "https://support.microsoft.com/en-us/windows" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/vbs-memory-integrity-performance",
@@ -106,6 +126,8 @@ export default function HyperVPerformanceGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

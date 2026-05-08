@@ -70,6 +70,26 @@ export default function ThermalPasteGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Prata vs Branca qual melhor?",
+            answer: "Pasta Branca (Silicone): barata, PCs escritório, seca mais rápido. Pasta Cinza/Prata (Cerâmica/Prata): partículas metálicas transferem calor melhor, essencial PCs gamer e notebooks."
+        },
+        {
+            question: "Quanto pasta aplicar?",
+            answer: "Regra da Gota: apenas gota tamanho grão de ervilha no centro do processador. Pressão do cooler espalha perfeitamente. Transbordar pode causar sujeira e dificuldade limpeza."
+        },
+        {
+            question: "Quando trocar pasta térmica?",
+            answer: "Não troque por rotina se PC frio. Monitore com HWMonitor. Se CPU passa 90ºC jogando ou 60ºC parado, e já limpou poeira, chegou hora de trocar."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Arctic - Thermal Paste Guide", url: "https://www.arctic.cc/en_US/" },
+        { name: "Noctua - Thermal Compound Guide", url: "https://noctua.at/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/limpeza-fisica-pc-gamer",
@@ -98,6 +118,8 @@ export default function ThermalPasteGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

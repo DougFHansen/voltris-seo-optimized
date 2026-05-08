@@ -72,6 +72,26 @@ export default function ExitLagReviewGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "ExitLag reduz ping de 5ms?",
+            answer: "Não. Se você já mora perto do servidor e tem ping baixo, o software não pode fazer a luz viajar mais rápido que o limite físico."
+        },
+        {
+            question: "Resolve lag por Wi-Fi?",
+            answer: "Não. ExitLag otimiza a rota da rua para fora, não a bagunça de cabos dentro da sua casa. Use cabo ethernet para Wi-Fi instável."
+        },
+        {
+            question: "Vale a pena testar?",
+            answer: "Sim. A maioria oferece 3 dias grátis. Teste no horário de pico (19h-22h). Se o ping cair ou travadinhas sumirem, vale o investimento."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "ExitLag Official", url: "https://www.exitlag.com/" },
+        { name: "NoPing Alternative", url: "https://nopi.ng/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/melhor-dns-jogos-2026",
@@ -100,6 +120,8 @@ export default function ExitLagReviewGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

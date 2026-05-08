@@ -76,6 +76,26 @@ export default function InstagramDeleteGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Excluir ou Desativar?",
+            answer: "Desativar é reversível - sua conta fica oculta mas você pode recuperar. Excluir é permanente após 30 dias e não há recuperação."
+        },
+        {
+            question: "Posso recuperar após 30 dias?",
+            answer: "Não. Após 30 dias, todos os dados são deletados permanentemente dos servidores da Meta. Nem o suporte consegue recuperar."
+        },
+        {
+            question: "Preciso baixar dados antes?",
+            answer: "Sim, recomendado. Vá em Perfil > Sua Atividade > Baixar suas informações para receber um link com todas as suas fotos e vídeos."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Instagram Help Center", url: "https://help.instagram.com/" },
+        { name: "Meta Privacy Center", url: "https://www.facebook.com/privacy/center/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/autenticacao-dois-fatores",
@@ -104,6 +124,8 @@ export default function InstagramDeleteGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

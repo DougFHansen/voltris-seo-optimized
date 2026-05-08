@@ -74,6 +74,26 @@ export default function EldenRingFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Shader Cache Ilimitado é seguro?",
+            answer: "Sim. Ele apenas usa mais espaço em disco para armazenar shaders compilados, evitando que o jogo tenha que recompilá-los toda vez que você carrega uma área. Não afeta a performance negativamente."
+        },
+        {
+            question: "Ray Tracing vale a pena em Elden Ring?",
+            answer: "Não. O estilo artístico do jogo não se beneficia muito do RT. Ele consome até 40% da performance da GPU sem ganho visual significativo. Desative para manter 60 FPS constantes."
+        },
+        {
+            question: "Plano de energia Alto Desempenho ajuda?",
+            answer: "Sim. Isso impede que o Windows reduza o clock da CPU/GPU para economizar energia durante o jogo, o que causa stuttering em lutas contra chefes."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "NVIDIA Shader Cache Settings", url: "https://developer.nvidia.com/content/dx12-shader-cache" },
+        { name: "Elden Ring PC Performance Guide", url: "https://www.pcgamingwiki.com/wiki/Elden_Ring" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/aceleracao-hardware-gpu-agendamento",
@@ -102,6 +122,8 @@ export default function EldenRingFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

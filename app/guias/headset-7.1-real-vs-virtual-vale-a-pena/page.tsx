@@ -182,6 +182,12 @@ export default function AudioSurroundGuide() {
         }
     ];
 
+    const externalReferences = [
+        { name: "Dolby: Atmos para Headphones", url: "https://www.dolby.com/technologies/dolby-atmos-for-headphones" },
+        { name: "Windows Sonic: Spatial Audio", url: "https://support.microsoft.com/pt-br/windows/sound-audio-problems-in-windows-ec0b091b-7ac8-4c5c-9d3e-8e996b945902" },
+        { name: "Equalizer APO: Documentation", url: "https://sourceforge.net/projects/equalizerapo/" }
+    ];
+
     return (
         <GuideTemplate
             title={title}
@@ -194,6 +200,7 @@ export default function AudioSurroundGuide() {
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

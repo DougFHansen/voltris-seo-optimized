@@ -413,6 +413,27 @@ export default function BatteryCalibrationGuide() {
     }
   ];
 
+    const faqItems = [
+        {
+            question: "Com que frequência devo calibrar a bateria?",
+            answer: "Recomenda-se calibrar a bateria uma vez a cada 3 meses. Calibrar com mais frequência não traz benefícios adicionais e pode até desgastar a bateria mais rápido."
+        },
+        {
+            question: "A calibração recupera uma bateria que já está morrendo?",
+            answer: "Não. Calibração apenas sincroniza o sensor de carga com a capacidade real. Se a bateria está fisicamente degradada (segura apenas 30% da capacidade original), a calibração não vai recuperar a capacidade perdida."
+        },
+        {
+            question: "Posso usar o notebook durante a calibração?",
+            answer: "Sim, você pode usar o notebook normalmente durante a descarga. O importante é não interromper o processo e deixar a bateria descarregar completamente até o desligamento automático."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "BatteryInfoView (Ver saúde da bateria)", url: "https://www.nirsoft.net/utils/battery_info_view.html" },
+        { name: "BatteryMon (Monitoramento de bateria)", url: "https://www.passmark.com/products/batmon/" },
+        { name: "Microsoft Battery Report (PowerCfg)", url: "https://support.microsoft.com/en-us/windows/generate-a-battery-report-in-windows-10-or-11-3d085e38-6275-4e2f-881c-e24b5f8a10c5" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/saude-bateria-notebook",
@@ -443,6 +464,8 @@ export default function BatteryCalibrationGuide() {
             contentSections={allContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

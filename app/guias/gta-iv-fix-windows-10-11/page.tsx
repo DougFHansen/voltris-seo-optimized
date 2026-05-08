@@ -78,6 +78,26 @@ export default function GTAIVFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "DXVK traduz DX9 para Vulkan?",
+            answer: "Sim. Traduz comandos DirectX 9 antigos para API Vulkan moderna. GPU sobe uso e FPS fica muito mais estável."
+        },
+        {
+            question: "FusionFix corrige luzes?",
+            answer: "Sim. Corrige luzes de postes sumindo à distância, permite pular intros chatas automaticamente, conserta bug da mira em 4K."
+        },
+        {
+            question: "Erro de memória VRAM?",
+            answer: "Crie commandline.txt na pasta do jogo com: -availablevidmem 4096 -nomemrestrict -norestrictions. Isso força reconhecimento da VRAM."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "DXVK GitHub", url: "https://github.com/doitsujin/dxvk" },
+        { name: "GTA IV FusionFix", url: "https://github.com/ThirteenAG/FusionFix" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/otimizacao-performance",
@@ -106,6 +126,8 @@ export default function GTAIVFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

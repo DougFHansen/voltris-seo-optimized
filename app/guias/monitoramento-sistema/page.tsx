@@ -73,6 +73,26 @@ export default function SystemMonitoringGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "MSI Afterburner vs HWiNFO64 qual melhor?",
+      answer: "Afterburner melhor FPS uso GPU jogos OSD. HWiNFO64 sensores detalhados tensão hotspot temperatura módulos memória VRAM."
+    },
+    {
+      question: "Xbox Game Bar Win + G funciona?",
+      answer: "Sim. Windows 11 monitor nativo leve. Mostra uso CPU GPU VRAM RAM FPS forma simples discreta. Ideal quem não quer telas cheias números."
+    },
+    {
+      question: "Monitoramento afeta FPS?",
+      answer: "Impacto mínimo 1-2 FPS. Afterburner leve HWiNFO64 mais pesado. Use apenas ferramentas necessárias."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "MSI Afterburner", url: "https://www.msi.com/Landing/afterburner" },
+    { name: "HWiNFO64 Download", url: "https://www.hwinfo.com/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/monitorar-temperatura-pc",
@@ -101,6 +121,8 @@ export default function SystemMonitoringGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

@@ -1,4 +1,4 @@
-# AUDITORIA SEO COMPLETA - VOLTRIS.COM.BR
+﻿# AUDITORIA SEO COMPLETA - VOLTRIS.COM.BR
 
 ## ETAPA 1 - AUDITORIA TÉCNICA SEO
 
@@ -90,7 +90,7 @@ url: 'https://www.voltris.com.br'
 - /corrigir-erro-0x80070057
 - /reparar-arquivos-sistema-windows
 
-### CLUSTER SECUNDÁRIO: INTERNET / LATÊNCIA
+### CLUSTER SECUNDÁRIO: INTERNET / LATÃNCIA
 **Pilar**: `/otimizacao-internet` (criar)
 
 **Satélites Faltam**:
@@ -103,7 +103,7 @@ url: 'https://www.voltris.com.br'
 
 ## ETAPA 3 - KEYWORD STRATEGY
 
-### 50 PALAVRAS-CHAVE LONG TAIL (BAIXA CONCORRÊNCIA)
+### 50 PALAVRAS-CHAVE LONG TAIL (BAIXA CONCORRÃNCIA)
 
 **Informacional**:
 1. como aumentar fps roblox windows 11
@@ -161,7 +161,7 @@ url: 'https://www.voltris.com.br'
 49. download voltris
 50. licença voltris
 
-### 20 PALAVRAS-CHAVE MÉDIA CONCORRÊNCIA
+### 20 PALAVRAS-CHAVE MÉDIA CONCORRÃNCIA
 
 1. otimização de pc
 2. aumentar fps
@@ -366,7 +366,7 @@ Se você está tendo problemas de latência, aprenda como [reduzir ping em jogos
 Doug FHansen é especialista em otimização de performance de PC com 10+ anos de experiência. Já ajudou mais de 12.500 usuários a aumentar FPS e reduzir lag através do Voltris Optimizer.
 ```
 
-### CONSISTÊNCIA EDITORIAL
+### CONSISTÃNCIA EDITORIAL
 
 - Mesmo tom de voz em todos os artigos
 - Formatação consistente

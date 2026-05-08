@@ -77,6 +77,26 @@ export default function PCMisteryGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Esquecer plástico cooler processador?",
+            answer: "Erro campeão 2026. Cooler vem adesivo transparente base metal. Esquecer tirar aplicar pasta térmica por cima calor não transferido. PC liga desliga segundos não derreter processador."
+        },
+        {
+            question: "Cabo HDMI ligar onde?",
+            answer: "Placa vídeo dedicada cabo monitor DEVE ser ligado nela saídas horizontais mais abaixo. Se ligar saída vertical placa-mãe PC tenta rodar jogo processador resultado 5 FPS tela preta."
+        },
+        {
+            question: "Standoffs espaçadores necessários?",
+            answer: "Sim. Nunca parafuse placa-mãe direto chapa metal gabinete. Use Standoffs espaçadores dourados. Sem eles contatos elétricos placa-mãe encostam metal gabinete causam curto-circuito pode matar peças instantaneamente."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "PCPartPicker", url: "https://pcpartpicker.com/" },
+        { name: "Linus Tech Tips Build Guide", url: "https://www.youtube.com/watch?v=W9T6WGFmam0" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/diagnostico-hardware",
@@ -105,6 +125,8 @@ export default function PCMisteryGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

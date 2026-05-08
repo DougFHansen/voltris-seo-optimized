@@ -76,6 +76,26 @@ export default function Disk100FixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Desativar SysMain é seguro?",
+            answer: "Sim. SysMain (Superfetch) pré-carrega arquivos. Em SSDs, é inútil. Em HDs, pode causar 100% disco. Desativar não quebra nada."
+        },
+        {
+            question: "Desativar Windows Search afeta a busca?",
+            answer: "Sim, a busca do Windows fica mais lenta, mas o sistema fica muito mais ágil. Se você raramente usa a busca, vale a pena."
+        },
+        {
+            question: "Otimizações não resolvem em HD?",
+            answer: "Correto. Windows 11 foi projetado para SSD. HDs mecânicos terão 100% disco constantemente. A única solução definitiva é upgrade para SSD."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - SysMain Service", url: "https://learn.microsoft.com/windows-server/storage/svfs/sysmain" },
+        { name: "CrystalDiskInfo (Saúde do Disco)", url: "https://crystalmark.info/en/software/crystaldiskinfo/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/otimizacao-ssd-windows-11",
@@ -104,6 +124,8 @@ export default function Disk100FixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

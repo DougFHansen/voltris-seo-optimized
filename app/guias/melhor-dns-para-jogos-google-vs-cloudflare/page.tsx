@@ -84,6 +84,39 @@ export default function DNSGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "DNS baixa ping dentro partida?",
+            answer: "Não. DNS só trabalha quando digita google.com ou abre launcher. Depois conectado servidor partida (IP direto), DNS não faz mais nada. Mudar DNS ajuda carregar sites/downloads rápido, não faz boneco andar rápido."
+        },
+        {
+            question: "Cloudflare vs Google qual mais rápido?",
+            answer: "Cloudflare (1.1.1.1): 12ms resposta, velocidade bruta, privacidade. Google (8.8.8.8): 20ms resposta, rock solid nunca cai. Use Cloudflare principal, Google backup."
+        },
+        {
+            question: "DNS operadora ruim?",
+            answer: "Sim. DNS operadora (Net/Vivo) geralmente lento, censurado e vende histórico. Mude imediatamente para Cloudflare ou Google."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Cloudflare 1.1.1.1", url: "https://1.1.1.1/" },
+        { name: "Google Public DNS", url: "https://developers.google.com/speed/public-dns" }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/como-limpar-cache-dns-ip-flushdns",
+            title: "Flush DNS",
+            description: "Comandos CMD de rede."
+        },
+        {
+            href: "/guias/configuracao-roteador-wifi",
+            title: "Configurar Roteador",
+            description: "DMZ, UPnP e Port Forwarding."
+        }
+    ];
+
     return (
         <GuideTemplate
             title={title}
@@ -93,6 +126,9 @@ export default function DNSGuide() {
             difficultyLevel="Iniciante"
             contentSections={contentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

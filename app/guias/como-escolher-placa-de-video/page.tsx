@@ -417,6 +417,26 @@ export default function GPUBuyingGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Vale a pena RTX 4060 em 2026?",
+      answer: "Sim, para 1080p. Ela tem DLSS 3.5 (IA upscaling) que faz milagres em jogos pesados. Para 1440p, prefira RTX 4070 Super ou RX 7800 XT."
+    },
+    {
+      question: "Intel Arc vale a pena?",
+      answer: "Sim, mas apenas para quem quer custo-benefício extremo. O Arc A750/A780 são excelentes em 1080p/1440p, mas drivers podem ter bugs em jogos novos."
+    },
+    {
+      question: "8GB de VRAM é suficiente?",
+      answer: "Para 1080p, sim. Para 1440p ou jogos modernos em 2026, 12GB é o mínimo ideal para evitar redução de texturas."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "GPU UserBenchmark (Comparativo)", url: "https://gpu.userbenchmark.com/" },
+    { name: "TechPowerUp GPU Database", url: "https://www.techpowerup.com/gpu-specs/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/rtx-4060-vale-a-pena-2026",
@@ -447,6 +467,8 @@ export default function GPUBuyingGuide() {
       contentSections={allContentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

@@ -73,6 +73,26 @@ export default function MinecraftLagGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "OptiFine vs Fabric qual melhor?",
+            answer: "Fabric + Sodium melhor performance. Sodium reescreve renderização Minecraft usando OpenGL moderno. Ganhos FPS chegam dobro em relação OptiFine."
+        },
+        {
+            question: "Mais RAM = mais FPS?",
+            answer: "Não. Dar RAM demais (12GB) faz Minecraft travar cada 5 segundos Garbage Collection. Use 2GB a 4GB ponto ideal."
+        },
+        {
+            question: "Fast Render e Smart Animations?",
+            answer: "Ative nas configurações vídeo OptiFine em Performance. Melhoram desempenho sem perda visual significativa."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "OptiFine Official", url: "https://optifine.net/" },
+        { name: "Fabric Mod Loader", url: "https://fabricmc.net/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/atualizacao-drivers-video",
@@ -101,6 +121,8 @@ export default function MinecraftLagGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

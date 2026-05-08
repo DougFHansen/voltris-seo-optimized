@@ -226,6 +226,13 @@ export default function MonitorBuyingGuide() {
     }
   ];
 
+  const externalReferences = [
+    { name: "RTINGS: Monitor Reviews e Benchmarks", url: "https://www.rtings.com/monitor" },
+    { name: "NVIDIA: G-Sync Compatible Monitors", url: "https://www.nvidia.com/pt-br/geforce/gsync/gaming-monitors" },
+    { name: "DisplayPort: Official Specifications", url: "https://www.displayport.org/" },
+    { name: "HDMI: HDMI 2.1 Specification", url: "https://www.hdmi.org/specification" }
+  ];
+
   return (
     <GuideTemplate
       title={title}
@@ -238,6 +245,7 @@ export default function MonitorBuyingGuide() {
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
       faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

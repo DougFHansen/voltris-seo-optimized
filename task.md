@@ -1,4 +1,4 @@
-# Bing SEO & IndexNow Implementation Task List
+﻿# Bing SEO & IndexNow Implementation Task List
 
 - [x] **1. Sitemap.xml Correction**
     - [x] Audit `app/sitemap.ts` for completeness.

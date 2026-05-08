@@ -76,6 +76,26 @@ export default function ETS2OptimizationGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Escalonamento 400% ou FSR?",
+            answer: "Use FSR. Escalonamento 400% renderiza em 4K internamente, matando o FPS. FSR dá nitidez sem o peso do super-sampling."
+        },
+        {
+            question: "Opções de inicialização funcionam?",
+            answer: "Sim. -mm_max_resource_size 100 -mm_max_tmp_buffers_size 1000 -mm_pool_size 4000 permite que o jogo use mais memória para cache de modelos, reduzindo congeladas."
+        },
+        {
+            question: "Travadas em cidades grandes?",
+            answer: "Reduza Qualidade das Sombras para Médio e Resolução do Retrovisor para Baixo. Sombras em Ultra são o principal vilão em pátios lotados."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "SCS Software Blog", url: "https://blog.scssoft.com/" },
+        { name: "TruckersMP", url: "https://truckersmp.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/otimizacao-performance",
@@ -104,6 +124,8 @@ export default function ETS2OptimizationGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

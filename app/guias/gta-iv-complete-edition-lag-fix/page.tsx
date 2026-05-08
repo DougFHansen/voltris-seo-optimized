@@ -72,6 +72,26 @@ export default function GTAIVLagFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "DXVK triplica FPS?",
+            answer: "Sim. DXVK converte DirectX 9 para Vulkan, que é muito mais moderna. No primeiro minuto pode travar compilando shaders, mas depois FPS dobra e stuttering desaparece."
+        },
+        {
+            question: "FusionFix resolve bugs?",
+            answer: "Sim. GTA IV buga acima de 30 FPS (missões impossíveis). FusionFix corrige isso, texturas que não carregam e sombras piscando em GPUs modernas."
+        },
+        {
+            question: "Jogo diz 0MB VRAM?",
+            answer: "Crie commandline.txt na pasta do jogo e escreva: -availablevidmem 4096 (ou valor total da sua VRAM). Isso forçará reconhecimento correto."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "DXVK GitHub", url: "https://github.com/doitsujin/dxvk" },
+        { name: "GTA IV FusionFix", url: "https://github.com/ThirteenAG/FusionFix" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/gta-iv-fix-windows-10-11",
@@ -100,6 +120,8 @@ export default function GTAIVLagFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

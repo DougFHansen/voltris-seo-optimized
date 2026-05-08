@@ -74,6 +74,26 @@ export default function MicroStutteringGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "FPS alto mas parece travado?",
+            answer: "É Micro-Stuttering. Se primeiro quadro leva 1ms e segundo leva 50ms, sente engasgo mesmo média alta. Problema mudou falta potência para falta sincronismo."
+        },
+        {
+            question: "Como monitorar frametime?",
+            answer: "Use MSI Afterburner com RivaTuner. Ative gráfico Frametime no OSD. Linha deve ser reta possível. Se muitos picos, sofrendo micro-stuttering."
+        },
+        {
+            question: "Limitar FPS resolve?",
+            answer: "Sim. Se PC alcança 120 FPS instáveis, trave em 100 FPS via RivaTuner. Processador e GPU param correr limite e entregam quadros ritmo constante."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "MSI Afterburner", url: "https://www.msi.com/Landing/afterburner" },
+        { name: "RivaTuner Statistics Server", url: "https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/limitar-fps-rivatuner-nvidia",
@@ -102,6 +122,8 @@ export default function MicroStutteringGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

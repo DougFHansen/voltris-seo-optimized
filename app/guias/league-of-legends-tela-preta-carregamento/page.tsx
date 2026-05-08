@@ -74,6 +74,26 @@ export default function LoLBlackScreenGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Alt + Enter resolve tela preta?",
+            answer: "Sim. Quando tela preta, Alt + Enter força jogo sair Tela Cheia e entrar Modo Janela. Se carregar no modo janela, ajuste resolução nas configurações antes de voltar Tela Cheia."
+        },
+        {
+            question: "Deletar game.cfg funciona?",
+            answer: "Sim. Vá pasta instalação LoL (C:/Riot Games/League of Legends/Config), delete game.cfg. Ao entrar partida modo Treino, jogo cria arquivo novo com configurações vídeo zeradas, eliminando conflitos drivers."
+        },
+        {
+            question: "DNS causa tela preta?",
+            answer: "Se tela preta vem com 'Erro ao conectar ao servidor', DNS é culpado. Mude para Google (8.8.8.8 e 8.8.4.4) ou Cloudflare (1.1.1.1). DNS operadoras Brasil têm rotas instáveis para servidores Riot 2026."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Riot Games Support", url: "https://support-leagueoflegends.riotgames.com/" },
+        { name: "Hextech Repair Tool", url: "https://support-leagueoflegends.riotgames.com/hc/pt-br/articles/201752824-Reparando-o-League-of-Lends" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/league-of-legends-fps-drop-fix",
@@ -102,6 +122,8 @@ export default function LoLBlackScreenGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

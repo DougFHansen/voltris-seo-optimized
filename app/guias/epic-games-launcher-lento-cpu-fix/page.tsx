@@ -75,6 +75,26 @@ export default function EpicGamesFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Launcher consumindo 30% CPU em repouso?",
+            answer: "Desative 'Navegação por Voz', 'Minimizar para Bandeja' e use 'Modo de Pouca Energia'. Isso reduz processamento web em background."
+        },
+        {
+            question: "Download travado em 0B/s?",
+            answer: "Nas configurações, coloque um limite manual muito alto (ex: 1000000 KB/s). Isso 'destrava' a velocidade máxima da conexão."
+        },
+        {
+            question: "Deixo o launcher aberto sempre?",
+            answer: "Não. Desative 'Executar na inicialização'. Só abra quando for jogar. Isso economiza 300MB+ de RAM."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Epic Games Support", url: "https://help.epicgames.com/" },
+        { name: "Epic Games Status", url: "https://status.epicgames.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/limpar-cache-dns-ip-flushdns",
@@ -103,6 +123,8 @@ export default function EpicGamesFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

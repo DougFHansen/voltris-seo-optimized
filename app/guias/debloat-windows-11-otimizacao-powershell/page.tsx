@@ -112,16 +112,36 @@ export default function DebloatGuide() {
         }
     ];
 
-    const relatedGuides = [
+    const faqItems = [
         {
-            href: "/guias/otimizacao-ssd-windows-11",
-            title: "Otimizar SSD",
-            description: "Complemente o Debloat com um disco rápido."
+            question: "Debloat quebra o Windows?",
+            answer: "Não, se feito corretamente. Scripts confiáveis como Chris Titus Tech ou Voltris Optimizer removem apenas apps e telemetria. NUNCA remova serviços essenciais como Windows Update ou Defender."
         },
         {
-            href: "/guias/como-escolher-memoria-ram",
-            title: "Guia de RAM",
-            description: "8GB é pouco? Veja se precisa de upgrade."
+            question: "Posso desfazer se algo quebrar?",
+            answer: "Sim. Crie um Ponto de Restauração antes. Se algo der errado, reinicie em Modo de Segurança e use a Restauração do Sistema para voltar ao estado anterior."
+        },
+        {
+            question: "Windows Update vai reinstalar tudo?",
+            answer: "Parcialmente. Apps removidos podem voltar. Para evitar isso, use o Debloat com Windows Update configurado para 'Notificar antes de baixar'."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Chris Titus Tech Debloat Script", url: "https://github.com/ChrisTitusTech/winutil" },
+        { name: "Microsoft - Desinstalar Apps", url: "https://support.microsoft.com/windows/desinstalar-apps-do-windows-10-ou-11-5b61a89e-289b-4e6d-b59e-2c3b5a5e50e1" }
+    ];
+
+    const relatedGuides = [
+        {
+            href: "/guias/criar-ponto-restauracao-windows",
+            title: "Ponto de Restauração",
+            description: "Crie backup antes de debloatar."
+        },
+        {
+            href: "/guias/pos-instalacao-windows-11",
+            title: "Checklist Windows",
+            description: "O que instalar após o Windows novo."
         },
         {
             href: "/guias/remocao-virus-malware",
@@ -140,6 +160,8 @@ export default function DebloatGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
             showVoltrisOptimizerCTA={false}
         >
             <div className="mt-12 p-8 rounded-3xl bg-gradient-to-br from-[#121218] to-[#050510] border border-white/5 relative overflow-hidden group">

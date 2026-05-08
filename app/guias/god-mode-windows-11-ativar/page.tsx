@@ -79,6 +79,26 @@ export default function GodModeGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "God Mode é seguro?",
+            answer: "Sim. É um recurso nativo da Microsoft criado para desenvolvedores. Apenas reúne configurações que já existem espalhadas pelo Windows em uma pasta."
+        },
+        {
+            question: "Funciona no Windows 10?",
+            answer: "Sim. God Mode funciona tanto no Windows 10 quanto no Windows 11. O processo é idêntico."
+        },
+        {
+            question: "Como encontrar configurações específicas?",
+            answer: "Use a barra de busca no canto superior direito da pasta. Digite algo como 'Partição' ou 'Cor' para filtrar instantaneamente."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Windows God Mode", url: "https://support.microsoft.com/en-us/windows" },
+        { name: "HowToGeek - God Mode Guide", url: "https://www.howtogeek.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/atalhos-produtividade-windows",
@@ -107,6 +127,8 @@ export default function GodModeGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

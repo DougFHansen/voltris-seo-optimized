@@ -76,6 +76,26 @@ export default function SodiumVsOptiFineGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Sodium vs OptiFine qual mais FPS?",
+            answer: "Sodium vence maioria cenários. Reduz drasticamente tempo processamento chunk. FPS tende ser mais alto e mais estável (menos quedas bruscas)."
+        },
+        {
+            question: "OptiFine tem Zoom e Texturas Conectadas?",
+            answer: "Sim. Sodium sozinho não faz tudo, mas combo Sodium + Mods Auxiliares muito mais potente. Para Zoom use Logical Zoom. Para Texturas Conectadas use Continuity."
+        },
+        {
+            question: "Quando usar OptiFine vs Sodium?",
+            answer: "Use OptiFine se quer algo simples instalar e não joga muitos mods, ou versão antiga (pré-1.12). Use Sodium se joga versões modernas (1.20+) e busca máximo FPS."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Sodium Mod (GitHub)", url: "https://github.com/CaffeineMC/sodium-fabric" },
+        { name: "OptiFine Official", url: "https://optifine.net/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/minecraft-aumentar-fps-fabric-sodium",
@@ -104,6 +124,8 @@ export default function SodiumVsOptiFineGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

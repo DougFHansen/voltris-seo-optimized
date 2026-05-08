@@ -69,6 +69,26 @@ export default function BrowserCleanGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Atalho Ctrl + Shift + Del funciona em todos navegadores?",
+      answer: "Sim. Funciona no Chrome, Edge, Brave e Firefox. Abre janela limpar dados navegação universal."
+    },
+    {
+      question: "Limpar cookies desloga contas?",
+      answer: "Sim. Se marcar 'Cookies e outros dados do site', desloga de todos sites. Marque apenas 'Imagens e arquivos em cache' para não deslogar."
+    },
+    {
+      question: "Extensões causam lentidão?",
+      answer: "Sim. Muitas vezes lentidão não é cache, mas extensões não usadas. Digite chrome://extensions/ e remova extensões suspeitas ou desnecessárias."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Chrome Help", url: "https://support.google.com/chrome/" },
+    { name: "Firefox Help", url: "https://support.mozilla.org/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/atalhos-navegador-produtividade",
@@ -97,6 +117,8 @@ export default function BrowserCleanGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

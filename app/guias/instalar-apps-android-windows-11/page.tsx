@@ -73,6 +73,26 @@ export default function AndroidOnWindowsGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "WSA vs Emuladores qual melhor?",
+            answer: "WSA integra Android diretamente no núcleo Windows 11. Apps aparecem no Menu Iniciar, podem ser fixados na barra de tarefas, funcionam com notificações nativas, mais leve e rápido que BlueStacks."
+        },
+        {
+            question: "Como instalar APKs?",
+            answer: "Amazon Appstore tem poucos apps. Use WSA Pacman ou WSATools na Microsoft Store. Clique duas vezes em arquivo .APK e instala como programa comum."
+        },
+        {
+            question: "Gerenciamento de Memória?",
+            answer: "Android no Windows consome muita RAM. Configurações WSA > Recursos do Sistema > mude para Conforme Necessário. Fecha modo Android quando não usando, liberando memória para jogos."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - WSA Documentation", url: "https://learn.microsoft.com/en-us/windows/WSL/" },
+        { name: "Amazon Appstore", url: "https://www.amazon.com/amazonappstoreapp" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/windows-sandbox-testar-virus",
@@ -101,6 +121,8 @@ export default function AndroidOnWindowsGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -76,6 +76,26 @@ export default function PreventiveMaintenanceGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Qual frequência ideal manutenção?",
+            answer: "Hardware: limpeza física a cada 6 meses. Software: limpeza disco mensal. Segurança: backups semanais. Ambiente carpete/animais = a cada 2-3 meses."
+        },
+        {
+            question: "SFC /scannow resolve problemas?",
+            answer: "Sim. Abre PowerShell como Admin e digita sfc /scannow. Windows auto-corrige arquivos boot. Execute mensalmente."
+        },
+        {
+            question: "Backup OneDrive/Google Drive suficiente?",
+            answer: "Sim para documentos/imagens. Hardware pode comprar outro, dados são únicos. Configure sincronização Documentos e Imagens. Se SSD morrer, prejuízo apenas financeiro, não emocional."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Maintenance", url: "https://support.microsoft.com/en-us/windows" },
+        { name: "CrystalDiskInfo", url: "https://crystaldiskinfo.en.softonic.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/limpeza-fisica-pc-gamer",
@@ -104,6 +124,8 @@ export default function PreventiveMaintenanceGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

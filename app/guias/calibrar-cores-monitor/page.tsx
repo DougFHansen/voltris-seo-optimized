@@ -602,6 +602,27 @@ export default function MonitorCalibrationGuide() {
     }
   ];
 
+    const faqItems = [
+        {
+            question: "Preciso de hardware profissional para calibrar?",
+            answer: "Para uso geral e jogos, a calibração do Windows (dccw) é suficiente. Para design profissional ou fotografia, um colorímetro como o SpyderX ou DisplayCal é recomendado."
+        },
+        {
+            question: "Com que frequência devo recalibrar?",
+            answer: "Monitores IPS e VA desviam lentamente ao longo de anos. Recalibrar uma vez por ano é suficiente para uso geral. Profissionais podem recalibrar a cada 3-6 meses."
+        },
+        {
+            question: "Perfil ICC do fabricante é bom?",
+            answer: "Os perfis ICC fornecidos pelo fabricante são geralmente bons pontos de partida, mas não são perfeitos. Cada unidade de monitor varia ligeiramente, então calibrar manualmente sempre é melhor."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "DisplayCal (Calibração Open Source)", url: "https://displaycal.net/" },
+        { name: "SpyderX (Colorímetro Profissional)", url: "https://spyderx.datacolor.com/" },
+        { name: "Lagom LCD Test Pages", url: "https://www.lagom.nl/lcd-test/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/guia-compra-monitores",
@@ -634,6 +655,8 @@ export default function MonitorCalibrationGuide() {
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -71,6 +71,26 @@ export default function AndroidEmulatorsGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "LDPlayer 9 é o mais rápido?",
+            answer: "Sim. LDPlayer 9 inicia mais rápido e consome menos CPU durante partidas Free Fire/COD Mobile. Otimizado para AMD/NVIDIA, permite 120 FPS+ estável."
+        },
+        {
+            question: "Virtualização (VT) é obrigatório?",
+            answer: "Sim. Nenhum emulador funciona bem se VT-x/SVM desativada na BIOS. Se emulador trava em 99% ou lag exagerado, verifique isso primeiro."
+        },
+        {
+            question: "BlueStacks vs LDPlayer?",
+            answer: "BlueStacks: mais completo, suporte quase todos jogos, mas pesado (mínimo 8GB RAM). LDPlayer: foca em rodar em qualquer PC, usa menos processos, inicia em 5s no SSD."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "BlueStacks Official", url: "https://www.bluestacks.com/" },
+        { name: "LDPlayer Official", url: "https://pt.ldplayer.net/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/bluestacks-vs-ldplayer-qual-mais-leve",
@@ -99,6 +119,8 @@ export default function AndroidEmulatorsGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

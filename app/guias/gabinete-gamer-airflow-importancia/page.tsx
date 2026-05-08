@@ -72,6 +72,26 @@ export default function AirflowGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Pressão positiva ou negativa?",
+            answer: "Pressão positiva (mais entrada que saída) é ideal. Isso força ar e poeira a sair por frestas, impedindo que sujeira entre sem filtro."
+        },
+        {
+            question: "Gabinete de vidro esquenta?",
+            answer: "Sim. Vidro temperado na frente mata airflow se não houver frestas. Remova o painel frontal durante jogos pesados para ver queda de 5-10°C."
+        },
+        {
+            question: "Posição das ventoinhas?",
+            answer: "Frente/Baixo: entrada (ar frio para dentro). Atrás/Cima: exaustão (ar quente para fora). Ar quente sobe, então ventoinhas de cima devem ser exaustoras."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Gamers Nexus Airflow Guide", url: "https://www.youtube.com/watch?v=YDCMMf-_ASE" },
+        { name: "LTT Airflow Explained", url: "https://www.youtube.com/watch?v=KbXv3jK2iQY" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/importancia-pasta-termica-pc",
@@ -100,6 +120,8 @@ export default function AirflowGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -420,6 +420,26 @@ export default function SupercellPCGuide() {
     }
   ];
 
+    const faqItems = [
+        {
+            question: "Posso jogar com amigos que estão no celular?",
+            answer: "Sim! O Google Play Games para PC usa os mesmos servidores oficiais. Você pode entrar em clãs, jogar 2v2 e conversar com jogadores de celular normalmente."
+        },
+        {
+            question: "A conta é compartilhada?",
+            answer: "Sim, sua conta do Google Play Games é a mesma do celular. Se você já jogava no celular, seu progresso será sincronizado automaticamente no PC."
+        },
+        {
+            question: "Preciso de emulador?",
+            answer: "Não. O Google Play Games para PC é um app nativo do Windows, não um emulador Android. Ele roda diretamente no Windows com muito melhor performance que emuladores."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Google Play Games para PC (Download)", url: "https://www.google.com/playgames/" },
+        { name: "Supercell Support", url: "https://supercell.com/en/support/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/google-play-games-pc-beta-vale-a-pena",
@@ -450,6 +470,8 @@ export default function SupercellPCGuide() {
             contentSections={allContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

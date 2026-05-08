@@ -76,6 +76,26 @@ export default function FortniteTexturesFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Pré-baixar ativos de Stream funciona?",
+            answer: "Sim. No Epic Launcher, clique nos três pontos sob Fortnite > Opções > marque 'Pré-baixar Ativos de Stream'. Isso baixa texturas antes de jogar, evitando carregamento durante a partida."
+        },
+        {
+            question: "HDD causa texturas de massinha?",
+            answer: "Sim. HDs mecânicos são muito lentos para streaming. Solução: mudar Malha para Baixo (Geometria Mobile) ou fazer upgrade para SSD."
+        },
+        {
+            question: "CPU 100% afeta carregamento?",
+            answer: "Sim. Se CPU está em 100%, não processa carregamento. Limite FPS no jogo (60 ou 120) para liberar CPU focar no carregamento."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Epic Games Support - Fortnite", url: "https://help.epicgames.com/" },
+        { name: "Fortnite Status Twitter", url: "https://twitter.com/FortniteStatus" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/fortnite-modo-performance-pc-fraco",
@@ -104,6 +124,8 @@ export default function FortniteTexturesFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -74,6 +74,26 @@ export default function HollowKnightFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "V-Sync interno causa lag?",
+            answer: "Sim. V-Sync nativo do Hollow Knight causa input lag e travadas. Desative no jogo e force no Painel NVIDIA/AMD para melhor sincronização."
+        },
+        {
+            question: "Mod Hollow Knight Fix funciona?",
+            answer: "Sim. Mod no Nexus Mods reescreve como jogo lida com entrada e sincronização Unity. Essencial para PCs modernos com Windows 11 evitar tearing e oscilações."
+        },
+        {
+            question: "Tela Cheia Exclusiva é melhor?",
+            answer: "Sim. Sempre jogue em Tela Cheia Exclusiva. Janela sem Bordas conflita com gerenciador do Windows, causando quedas de frames com notificações."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Nexus Mods - Hollow Knight Fix", url: "https://www.nexusmods.com/hollowknight/mods/" },
+        { name: "Unity Performance Guide", url: "https://docs.unity3d.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/reduzir-ping-jogos-online",
@@ -102,6 +122,8 @@ export default function HollowKnightFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -208,6 +208,26 @@ export default function NativeRecordingGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Game Bar não grava tela preta?",
+            answer: "Mude o modo de vídeo do jogo para 'Janela sem Bordas' (Borderless Window). A perda de FPS hoje é negligenciável e permite gravar sem problemas."
+        },
+        {
+            question: "Áudio do microfone baixo ou mudo?",
+            answer: "Abra Game Bar (Win+G) > widget Áudio > aba Voz. Certifique-se de que o microfone correto está selecionado (Windows às vezes escolhe webcam por padrão)."
+        },
+        {
+            question: "Vídeo travando muito?",
+            answer: "Se grava no mesmo HD onde o jogo está instalado, o disco não agenta ler e escrever ao mesmo tempo. Mude pasta de Capturas para segundo HD/SSD."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Xbox Game Bar", url: "https://support.xbox.com/en-US/help/hardware-network/xbox-accessories/game-bar" },
+        { name: "Clipchamp Editor", url: "https://clipchamp.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/como-usar-obs-studio-gravar-tela",
@@ -236,6 +256,8 @@ export default function NativeRecordingGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

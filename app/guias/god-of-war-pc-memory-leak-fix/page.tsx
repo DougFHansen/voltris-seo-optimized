@@ -75,6 +75,26 @@ export default function GoWMemoryFixGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Memória Virtual ajuda?",
+            answer: "Sim. Ajuste Paging File no SSD: sysdm.cpl > Avançado > Desempenho > Avançado > Alterar. Tamanho personalizado no SSD. Isso dá fôlego extra para evitar crash."
+        },
+        {
+            question: "Mod Nexus Mods funciona?",
+            answer: "Sim. 'God of War Memory Leak Fix' no Nexus Mods substitui bibliotecas para melhorar despejo de assets. Recomendado para notebooks ou PCs com pouca VRAM."
+        },
+        {
+            question: "Texturas Ultra em 8GB VRAM?",
+            answer: "Não. Texturas Ultra exigem muita VRAM. Mantenha em Original ou Baixo se tiver menos de 8GB. HDR acelera vazamento de memória."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "God of War PC Support", url: "https://support.sie.com/hc/en-us" },
+        { name: "Nexus Mods - GoW Memory Leak Fix", url: "https://www.nexusmods.com/godofwar/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/atualizacao-drivers-video",
@@ -103,6 +123,8 @@ export default function GoWMemoryFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

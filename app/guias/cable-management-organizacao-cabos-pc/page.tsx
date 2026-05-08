@@ -417,6 +417,27 @@ export default function CableManagementGuide() {
     }
   ];
 
+    const faqItems = [
+        {
+            question: "Quantas abraçadeiras devo usar?",
+            answer: "Use o suficiente para manter os cabos firmes, mas não exagere. Uma abraçadeira a cada 10-15cm é uma boa regra. Velcro é preferível para facilitar manutenção futura."
+        },
+        {
+            question: "Posso cortar os cabos para encurtar?",
+            answer: "NUNCA corte cabos da fonte de alimentação. Isso anula a garantia e é perigoso. Use cabos modulares encurtados ou enrolne o excesso atrás do gabinete."
+        },
+        {
+            question: "Cabo flat (comprido) vale a pena?",
+            answer: "Sim, cabos flat são mais fáceis de organizar e ocupam menos espaço. Eles melhoram significativamente o visual e o airflow do gabinete."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "CableMod (Cabos Modulares)", url: "https://cablemod.com/" },
+        { name: "Lian Li Strimer (Organizador de Cabos)", url: "https://lian-li.com/" },
+        { name: "PcPartPicker Cable Management Guide", url: "https://pcpartpicker.com/guide/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/limpeza-fisica-pc-gamer",
@@ -447,6 +468,8 @@ export default function CableManagementGuide() {
             contentSections={allContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

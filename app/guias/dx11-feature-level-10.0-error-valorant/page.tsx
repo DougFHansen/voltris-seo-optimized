@@ -76,6 +76,26 @@ export default function ValorantDX11Guide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Minha placa é antiga demais para Valorant?",
+            answer: "Se o dxdiag mostrar Feature Level 10.0 ou inferior, sua placa não suporta o jogo. Valorant exige DirectX 11 (Feature Level 11.0). Placas anteriores a GTX 600/HD 7000 podem ter problemas."
+        },
+        {
+            question: "Atualizei o driver mas erro persiste?",
+            answer: "Use DDU para limpar completamente os drivers antigos e instale o driver oficial do fabricante. Drivers genéricos do Windows podem não ter suporte completo."
+        },
+        {
+            question: "DirectX End-User Runtime ajuda?",
+            answer: "Sim. Instale o DirectX End-User Runtime da Microsoft. Ele adiciona DLLs antigas que podem estar faltando e causando o erro."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "DirectX End-User Runtime (Microsoft)", url: "https://www.microsoft.com/en-us/download/details.aspx?id=35" },
+        { name: "DDU (Display Driver Uninstaller)", url: "https://www.wagnardsoft.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/como-usar-ddu-driver-uninstaller",
@@ -104,6 +124,8 @@ export default function ValorantDX11Guide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

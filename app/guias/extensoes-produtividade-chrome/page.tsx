@@ -71,6 +71,26 @@ export default function BrowserExtensionsGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "uBlock Origin vs AdBlock?",
+      answer: "uBlock Origin é mais leve e bloqueia rastreadores. AdBlock comum é pesado e deixa anúncios passarem."
+    },
+    {
+      question: "Extensões de cupom são seguras?",
+      answer: "Não. Muitas vendem seu histórico de navegação. Evite extensões que pedem permissão para 'ler e alterar todos os dados'."
+    },
+    {
+      question: "Muitas extensões deixam lento?",
+      answer: "Sim. Cada extensão consome RAM. Instale poucas, mas que realmente transformem sua forma de usar a web."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Chrome Web Store", url: "https://chrome.google.com/webstore" },
+    { name: "uBlock Origin GitHub", url: "https://github.com/gorhill/uBlock" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/atalhos-navegador-produtividade",
@@ -99,6 +119,8 @@ export default function BrowserExtensionsGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

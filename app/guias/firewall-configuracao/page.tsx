@@ -74,6 +74,26 @@ export default function FirewallConfigGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Desativar firewall ganha FPS?",
+      answer: "Não. O consumo de recursos do firewall do Windows 11 é quase nulo. Desativá-lo é um mito e deixa seu PC exposto a ataques."
+    },
+    {
+      question: "Como abrir portas para servidor?",
+      answer: "No painel avançado, crie 'Nova Regra de Entrada' > 'Porta' > TCP/UDP e digite o número da porta. Abra apenas o estritamente necessário."
+    },
+    {
+      question: "Jogo bloqueado pelo firewall?",
+      answer: "Vá em Configurações > Firewall e Proteção de Rede > Permitir um aplicativo pelo firewall. Alterne as caixas 'Privada' e 'Pública' para o jogo."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Microsoft Firewall Documentation", url: "https://learn.microsoft.com/windows/security/operating-system-security/network-security/windows-firewall" },
+    { name: "Common TCP/UDP Ports List", url: "https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/bloquear-internet-firewall-windows",
@@ -102,6 +122,8 @@ export default function FirewallConfigGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

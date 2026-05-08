@@ -480,6 +480,25 @@ export default function RestorePointGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Ponto de Restauração apaga meus arquivos?",
+            answer: "Não. Ele apenas restaura configurações do Windows, drivers e programas. Seus arquivos pessoais (documentos, fotos, downloads) permanecem intactos."
+        },
+        {
+            question: "Quanto espaço em disco preciso?",
+            answer: "Recomendo 5GB a 10GB. O Windows gerencia automaticamente, apagando pontos antigos quando o espaço acaba. Mais espaço = mais pontos de restauração."
+        },
+        {
+            question: "Posso usar Ponto de Restauração após formatação?",
+            answer: "Não. Pontos de restauração ficam no disco C. Se você formatar, todos os pontos são apagados. Use backup externo para dados importantes."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Restauração do Sistema", url: "https://support.microsoft.com/pt-br/windows/restauração-do-sistema-535833f9-8770-9b4f-8846-9a8353d6f541" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/pos-instalacao-windows-11",
@@ -512,6 +531,8 @@ export default function RestorePointGuide() {
             additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }
