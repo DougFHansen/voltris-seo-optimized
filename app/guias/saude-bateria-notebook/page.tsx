@@ -75,6 +75,22 @@ export default function BatteryHealthGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Bateria viciada tem recuperação?",
+      answer: "Parcialmente. Calibração pode corrigir leitura errada, mas células degradadas não recuperam. Se Full Charge Capacity < 70% de Design Capacity, troca é necessária."
+    },
+    {
+      question: "Deixar carregando o tempo todo estraga?",
+      answer: "Sim. Bateria em 100% constantemente degrada células químicas. Use software do fabricante para limitar carga a 80% se usa notebook na tomada."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Microsoft - Battery Report", url: "https://support.microsoft.com/en-us/windows/generate-battery-report-in-windows-13c61d9a-3aa0-4eef-864f-94f7369ad5eb" },
+    { name: "Asus Battery Health Charging", url: "https://www.asus.com/support/faq/1045438/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/calibrar-bateria-notebook",
@@ -103,6 +119,8 @@ export default function BatteryHealthGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

@@ -71,6 +71,22 @@ export default function SmartDeliveryGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Smart Delivery funciona no PC?",
+            answer: "Sim. Se o jogo tem Smart Delivery, a versão do PC é incluída automaticamente. Comprando uma vez, você joga no Xbox e PC sem custo extra."
+        },
+        {
+            question: "Saves são compartilhados?",
+            answer: "Sim, se o jogo é Xbox Play Anywhere. Saves são sincronizados na nuvem, permitindo continuar de onde parou em qualquer plataforma."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Xbox Smart Delivery Info", url: "https://www.xbox.com/en-US/xbox-series-x/smart-delivery" },
+        { name: "Xbox Play Anywhere Games", url: "https://www.xbox.com/en-US/xbox-game-pass/games" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/xbox-game-pass-pc-vale-a-pena",
@@ -99,6 +115,8 @@ export default function SmartDeliveryGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -52,6 +52,22 @@ export default function GuidePage() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "WPS é realmente perigoso?",
+      answer: "Sim. WPS permite invasores descobrirem sua senha em minutos via força bruta no PIN. Desative WPS imediatamente nas configurações do roteador."
+    },
+    {
+      question: "WPA3 é obrigatório?",
+      answer: "Não, mas recomendado. Se seu roteador não suporta WPA3, use WPA2-AES. Nunca use WEP ou WPA-TKIP, que são obsoletos e inseguros."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Wi-Fi Alliance - WPA3", url: "https://www.wi-fi.org/discover-wi-fi/wi-fi-security/" },
+    { name: "Router Security Checklist", url: "https://routersecurity.org/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/otimizacao-performance",
@@ -79,6 +95,8 @@ export default function GuidePage() {
       difficultyLevel="Iniciante"
       contentSections={contentSections}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

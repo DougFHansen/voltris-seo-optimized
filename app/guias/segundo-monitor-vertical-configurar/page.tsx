@@ -75,11 +75,27 @@ export default function VerticalMonitorGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Monitor vertical estraga a tela?",
+            answer: "Não. Monitores são projetados para funcionar em qualquer orientação. A única diferença é que o calor pode se acumular de forma diferente, mas não é problema em uso normal."
+        },
+        {
+            question: "Qual tamanho ideal para monitor vertical?",
+            answer: "24 polegadas é o ideal. Monitores muito grandes (27+) na vertical podem causar desconforto no pescoço por exigir movimento excessivo da cabeça."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Display Settings", url: "https://support.microsoft.com/en-us/windows/change-display-settings-in-windows-31d67429-5a84-4d14-9552-572b1753c4c0" },
+        { name: "DisplayFusion (Monitor Management)", url: "https://www.binaryfortress.com/displayfusion/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/guia-compra-monitores",
             title: "Comprar Monitores",
-            description: "Saiba escolher mofinitores com bons suportes."
+            description: "Saiba escolher monitores com bons suportes."
         },
         {
             href: "/guias/monitor-ips-vs-va-vs-tn-jogos",
@@ -103,6 +119,8 @@ export default function VerticalMonitorGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

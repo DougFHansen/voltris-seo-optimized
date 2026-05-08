@@ -200,6 +200,23 @@ export default function AudioTroubleshootingGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Realtek não instala (Erro 10)?",
+      answer: "Use DDU (Display Driver Uninstaller) em modo seguro para limpar drivers antigos. Depois instale o driver oficial do site da placa-mãe, não do Windows Update."
+    },
+    {
+      question: "Som picota em jogos?",
+      answer: "Geralmente é latência DPC alta. Use LatencyMon para identificar o processo culpado. Desative 'High Definition Audio' da GPU no Gerenciador de Dispositivos."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "LatencyMon (DPC Latency Checker)", url: "https://www.resplendence.com/latencymon" },
+    { name: "DDU Official", url: "https://www.wagnardsoft.com/" },
+    { name: "Peace Equalizer (APO)", url: "https://sourceforge.net/projects/peace-equalizer-apo-extension/" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/aumentar-volume-microfone-windows",
@@ -228,6 +245,8 @@ export default function AudioTroubleshootingGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }
