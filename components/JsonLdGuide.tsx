@@ -22,7 +22,7 @@ export default function JsonLdGuide({
   title,
   description,
   url,
-  image = 'https://voltris.com.br/logo.png',
+  image = 'https://www.voltris.com.br/logo.png',
   datePublished = new Date().toISOString(),
   dateModified = new Date().toISOString(),
   author = 'VOLTRIS - Especialista em Performance',
@@ -54,7 +54,7 @@ export default function JsonLdGuide({
       name: 'VOLTRIS',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://voltris.com.br/logo.png'
+        url: 'https://www.voltris.com.br/logo.png'
       }
     },
     estimatedCost: {
@@ -80,12 +80,13 @@ export default function JsonLdGuide({
       }
     ],
     ...(steps && steps.length > 0 && {
-      step: steps.map((step, index) => ({
-        '@type': 'HowToStep',
+      "step": steps.map((step, index) => ({
+        "@type": "HowToStep",
+        "url": `https://www.voltris.com.br${pathname}/#section-${index}`,
         position: index + 1,
         name: step.name,
         text: step.text,
-        image: 'https://voltris.com.br/logo.png'
+        image: 'https://www.voltris.com.br/logo.png'
       }))
     }),
     ...(category && {

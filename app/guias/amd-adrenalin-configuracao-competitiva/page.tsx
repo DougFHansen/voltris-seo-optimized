@@ -187,7 +187,7 @@ export default function AmdGuide() {
                 <h class="text-gray-900 font-bold">Curva de Fan</h5>
                 <p class="text-gray-700 text-xs mt-2">
                     Desative o "Zero RPM" se quiser temperaturas menores em idle.
-                    <br/>Ajuste a curva para atingir 100% de fan apenas se passar de 75°C. Placas AMD aguentam até 95°C (Junction Temp) tranquilamente, não precisa ter medo de calor.
+                    <br/>Ajuste a curva para atingir 100% de fan apenas se passar de 75C. Placas AMD aguentam até 95C (Junction Temp) tranquilamente, não precisa ter medo de calor.
                 </p>
             </div>
         </div>

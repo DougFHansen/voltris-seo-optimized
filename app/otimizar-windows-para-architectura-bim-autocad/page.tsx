@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function OtimizarArquitetura() {
     const title = 'Como Otimizar o Windows 11 para Arquitetura e Engenharia (AutoCAD/BIM) (2026)';
@@ -74,7 +74,7 @@ export default function OtimizarArquitetura() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

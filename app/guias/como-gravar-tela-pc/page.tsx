@@ -247,7 +247,7 @@ export default function ComoGravarTelaPCGuide() {
             <h4 class="text-lg font-semibold text-blue-400">🎨 Produção:</h4>
             <ul class="space-y-2 text-gray-700">
               <li>Use <strong>iluminação adequada</strong> para evitar sombras no rosto</li>
-              <li>Posicione a <strong>câmera corretamente</strong> (ângulo de 45°)</li>
+              <li>Posicione a <strong>câmera corretamente</strong> (ângulo de 45)</li>
               <li>Fale <strong>próximo ao microfone</strong> para melhor qualidade de áudio</li>
               <li>Use <strong>fundo verde</strong> ou chroma key para melhor qualidade visual</li>
             </ul>

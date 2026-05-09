@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function WifiSecurity() {
     const title = 'Como Descobrir Quem Está Usando sua Wi-Fi pelo Windows 11 (2026)';
@@ -74,7 +74,7 @@ export default function WifiSecurity() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

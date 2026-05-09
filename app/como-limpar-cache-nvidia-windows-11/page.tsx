@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export const metadata: Metadata = {
   title: 'Como Limpar Cache NVIDIA Windows 11 | Shader Cache 2026',
@@ -118,7 +118,7 @@ export default function LimparCacheNvidia() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

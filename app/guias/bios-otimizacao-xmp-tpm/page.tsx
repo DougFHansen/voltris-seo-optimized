@@ -136,8 +136,8 @@ export default function BiosGuide() {
         <h class="text-gray-900 font-bold mb-3">Q-Fan / Smart Fan</h4>
         <p class="mb-4 text-gray-700">
             Todas as BIOS modernas têm uma ferramenta gráfica de ventiladores.
-            <br/>Configure seus fans do gabinete (Case Fans) para ficarem desligados ou em 20% até a CPU bater 50°C. Isso torna o PC silencioso navegando na internet.
-            <br/>Configure para subir rápido para 100% quando bater 75°C.
+            <br/>Configure seus fans do gabinete (Case Fans) para ficarem desligados ou em 20% até a CPU bater 50C. Isso torna o PC silencioso navegando na internet.
+            <br/>Configure para subir rápido para 100% quando bater 75C.
         </p>
       `
         }

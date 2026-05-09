@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 import { title, description, keywords } from './metadata';
 
 export default function DesativarTelemetriaWindows() {
@@ -64,7 +64,7 @@ export default function DesativarTelemetriaWindows() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

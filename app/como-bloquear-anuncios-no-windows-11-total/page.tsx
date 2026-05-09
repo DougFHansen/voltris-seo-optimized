@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export const metadata: Metadata = {
   title: 'Como Bloquear Anúncios Windows 11 | Guia Definitivo 2026',
@@ -118,7 +118,7 @@ export default function BloquearAnuncios() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

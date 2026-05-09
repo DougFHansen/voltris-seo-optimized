@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 // Importamos os metadados do arquivo local
 import { title, description, keywords } from './metadata';
@@ -194,7 +194,7 @@ export default function MelhoresProgramasOtimizarWindows() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

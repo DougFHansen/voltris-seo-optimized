@@ -130,18 +130,18 @@ export default function ForzaMotorsport2026Guide() {
                         <div className="bg-orange-900/20 p-4 rounded">
                             <h3 className="text-orange-400 font-bold mb-2">Logitech G29/G923</h3>
                             <ul className="text-sm space-y-1">
-                                <li>Rotation: 900°</li>
+                                <li>Rotation: 900</li>
                                 <li>FFB Strength: 80-100%</li>
                                 <li>Damping: 20%</li>
                                 <li>Spring: 15%</li>
                                 <li>Center Spring: 0%</li>
-                                <li>Operating Range: 900°</li>
+                                <li>Operating Range: 900</li>
                             </ul>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded">
                             <h3 className="text-green-400 font-bold mb-2">Fanatec CSL Elite</h3>
                             <ul className="text-sm space-y-1">
-                                <li>Rotation: 900° (GT3) / 540° (F1)</li>
+                                <li>Rotation: 900 (GT3) / 540 (F1)</li>
                                 <li>FFB: 100%</li>
                                 <li>Shock: 80%</li>
                                 <li>Damper: 20%</li>

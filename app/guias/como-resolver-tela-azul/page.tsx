@@ -315,7 +315,7 @@ export default function BSODGuide() {
                     <li>Entre na BIOS e clique em "Load Optimized Defaults"</li>
                     <li>Desative PBO, Curve Optimizer, XMP temporariamente</li>
                     <li>Teste por 24 horas. Se o erro sumir, o OC estava instável</li>
-                    <li>Monitore temperaturas com HWiNFO64 (CPU não deve passar de 90°C)</li>
+                    <li>Monitore temperaturas com HWiNFO64 (CPU não deve passar de 90C)</li>
                     <li>Teste a fonte com multímetro (12V deve estar entre 11.8V-12.2V)</li>
                     <li>Se persistir: CPU pode estar degradada (RMA se em garantia)</li>
                   </ol>
@@ -456,7 +456,7 @@ export default function BSODGuide() {
             <ol class="list-decimal list-inside text-gray-700 text-sm mt-3 space-y-1">
               <li>Teste a RAM com MemTest86 (8 horas)</li>
               <li>Teste a CPU com Prime95 (2 horas)</li>
-              <li>Verifique temperaturas (CPU < 90°C, GPU < 85°C)</li>
+              <li>Verifique temperaturas (CPU < 90C, GPU < 85C)</li>
               <li>Teste a fonte com multímetro</li>
               <li>Se tudo passar: Problema pode ser no SSD ou placa-mãe</li>
             </ol>
@@ -692,7 +692,7 @@ export default function BSODGuide() {
       content: `
             <p class="mb-4 text-gray-700">
                 Se o crash só acontece em jogos pesados, provavelmente é <strong>Fonte de Alimentação (PSU)</strong> ou <strong>Superaquecimento</strong>.
-                <br/>Monitore a temperatura. Se a GPU passar de 85°C ou CPU passar de 95°C, eles podem desligar o PC para não queimar.
+                <br/>Monitore a temperatura. Se a GPU passar de 85C ou CPU passar de 95C, eles podem desligar o PC para não queimar.
                 <br/>Se as temperaturas estão boas, sua fonte pode não estar aguentando os picos de energia (Transient Spikes) da placa de vídeo.
             </p>
             `
@@ -714,7 +714,7 @@ export default function BSODGuide() {
     },
     {
       question: "Meu BSOD só acontece em jogos. Por quê?",
-      answer: "Jogos estressam o hardware ao máximo. Se o BSOD só ocorre em jogos, as causas mais prováveis são: 1) Fonte de alimentação (PSU) não aguenta os picos de consumo da GPU (transient spikes), 2) GPU superaquecendo (thermal throttling), 3) Overclock instável que passa em testes leves mas falha sob carga pesada, 4) Driver de GPU bugado. Monitore temperaturas com HWiNFO64 durante o jogo. Se GPU passar de 85°C ou CPU de 90°C, é superaquecimento."
+      answer: "Jogos estressam o hardware ao máximo. Se o BSOD só ocorre em jogos, as causas mais prováveis são: 1) Fonte de alimentação (PSU) não aguenta os picos de consumo da GPU (transient spikes), 2) GPU superaquecendo (thermal throttling), 3) Overclock instável que passa em testes leves mas falha sob carga pesada, 4) Driver de GPU bugado. Monitore temperaturas com HWiNFO64 durante o jogo. Se GPU passar de 85C ou CPU de 90C, é superaquecimento."
     },
     {
       question: "Quanto tempo leva para diagnosticar um BSOD corretamente?",

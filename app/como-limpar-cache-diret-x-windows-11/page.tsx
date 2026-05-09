@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function LimparDirectX() {
     const title = 'Como Limpar o Cache do DirectX no Windows 11 (2026)';
@@ -72,7 +72,7 @@ export default function LimparDirectX() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function StickyKeys() {
     const title = 'Como Desativar as Teclas de Aderência no Windows 11 (Permanentemente)';
@@ -69,7 +69,7 @@ export default function StickyKeys() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title} description={description} keywords={keywords}
             estimatedTime="5 min" difficultyLevel="Iniciante"
             contentSections={contentSections} summaryTable={summaryTable}

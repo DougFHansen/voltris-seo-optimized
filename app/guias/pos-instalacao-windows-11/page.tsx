@@ -23,6 +23,7 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('pos-instalacao-windows-11', title, description, keywords);
 
 export default function PostInstallationGuide() {
+    const pathname = '/guias/pos-instalacao-windows-11';
     const summaryTable = [
         { label: "Prioridade #1", value: "Drivers de Chipset e GPU" },
         { label: "Navegação", value: "Brave ou Edge (Fuja de Bloatware)" },
@@ -76,6 +77,22 @@ export default function PostInstallationGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Preciso instalar todos os drivers manualmente?",
+            answer: "Recomendado sim. Windows Update funciona, mas muitas vezes entrega versões genéricas. Drivers oficiais do site do fabricante são mais otimizados e estáveis."
+        },
+        {
+            question: "Visual C++ All-in-One é seguro?",
+            answer: "Sim. É apenas um instalador que reúne todas as versões do Visual C++ Redistributable. Muitos jogos e programas precisam de versões específicas antigas."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Visual C++ All-in-One", url: "https://github.com/abbodi1406/vcredist_x64/releases" },
+        { name: "NanaZip (GitHub)", url: "https://github.com/M2Team/NanaZip" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/atualizacao-drivers-video",
@@ -104,6 +121,9 @@ export default function PostInstallationGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
+            pathname={pathname}
         />
     );
 }

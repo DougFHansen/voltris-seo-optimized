@@ -339,7 +339,7 @@ export default function LaptopKeyboardFixGuide() {
                 <h5 class="text-blue-400 font-bold mb-3">Métodos de Limpeza</h5>
                 <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Aspirador de baixa potência com bocal fino</li>
-                    <li>• Ar comprimido (sempre em ângulo de 45°)</li>
+                    <li>• Ar comprimido (sempre em ângulo de 45)</li>
                     <li>• Escova de cerdas macias para remoção de resíduos</li>
                     <li>• Álcool isopropílico a 99% para limpeza de contatos</li>
                     <li>• Palitos de dente para remoção de partículas presas</li>
@@ -848,7 +848,7 @@ export default function LaptopKeyboardFixGuide() {
                 <ul class="text-sm text-gray-700 space-y-2">
                     <li>• Curso de tecla: 1.2-2.0mm</li>
                     <li>• Força de ativação: 45-70cN</li>
-                    <li>• Ângulo de pressão ideal: 90°</li>
+                    <li>• Ângulo de pressão ideal: 90</li>
                     <li>• Tolerância: ±0.5mm</li>
                     <li>• Material: Policarbonato/PVC</li>
                 </ul>

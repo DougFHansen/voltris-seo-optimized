@@ -4,55 +4,58 @@ import path from 'path';
 
 const BASE_URL = 'https://www.voltris.com.br';
 
+// CORREÇÃO: Usar data atual dinâmica em vez de hardcoded
+const NOW = new Date();
+
 const CRITICAL_ROUTES = [
-  { path: '', lastModified: new Date('2026-05-02') },
-  { path: '/servicos', lastModified: new Date('2026-05-02') },
-  { path: '/contato', lastModified: new Date('2026-05-02') },
-  { path: '/sobre', lastModified: new Date('2026-05-02') },
-  { path: '/guias', lastModified: new Date('2026-05-02') },
-  { path: '/todos-os-servicos', lastModified: new Date('2026-05-02') },
-  { path: '/otimizacao-pc', lastModified: new Date('2026-05-02') },
-  { path: '/formatar-windows', lastModified: new Date('2026-05-02') },
-  { path: '/assistencia-tecnica', lastModified: new Date('2026-05-02') },
-  { path: '/tecnico-informatica', lastModified: new Date('2026-05-02') },
-  { path: '/suporte-tecnico-remoto', lastModified: new Date('2026-05-02') },
-  { path: '/manutencao-computador', lastModified: new Date('2026-05-02') },
-  { path: '/erros-jogos', lastModified: new Date('2026-05-02') },
-  { path: '/voltrisoptimizer', lastModified: new Date('2026-05-02') },
-  { path: '/adquirir-licenca', lastModified: new Date('2026-05-02') },
-  { path: '/criar-site', lastModified: new Date('2026-05-02') },
-  { path: '/faq', lastModified: new Date('2026-05-02') },
-  { path: '/exterior', lastModified: new Date('2026-05-02') },
-  { path: '/exterior/servicos', lastModified: new Date('2026-05-02') },
-  { path: '/exterior/contato', lastModified: new Date('2026-05-02') },
-  { path: '/exterior/orcamento', lastModified: new Date('2026-05-02') },
+  { path: '', lastModified: NOW },
+  { path: '/servicos', lastModified: NOW },
+  { path: '/contato', lastModified: NOW },
+  { path: '/sobre', lastModified: NOW },
+  { path: '/guias', lastModified: NOW },
+  { path: '/todos-os-servicos', lastModified: NOW },
+  { path: '/otimizacao-pc', lastModified: NOW },
+  { path: '/formatar-windows', lastModified: NOW },
+  { path: '/assistencia-tecnica', lastModified: NOW },
+  { path: '/tecnico-informatica', lastModified: NOW },
+  { path: '/suporte-tecnico-remoto', lastModified: NOW },
+  { path: '/manutencao-computador', lastModified: NOW },
+  { path: '/erros-jogos', lastModified: NOW },
+  { path: '/voltrisoptimizer', lastModified: NOW },
+  { path: '/adquirir-licenca', lastModified: NOW },
+  { path: '/criar-site', lastModified: NOW },
+  { path: '/faq', lastModified: NOW },
+  { path: '/exterior', lastModified: NOW },
+  { path: '/exterior/servicos', lastModified: NOW },
+  { path: '/exterior/contato', lastModified: NOW },
+  { path: '/exterior/orcamento', lastModified: NOW },
   // FASE 1: High-quality pages (15-25 pages)
-  { path: '/otimizacao-windows-jogos', lastModified: new Date('2026-05-02') },
-  { path: '/servicos-combinados', lastModified: new Date('2026-05-02') },
-  { path: '/empresas', lastModified: new Date('2026-05-02') },
-  { path: '/glossario', lastModified: new Date('2026-05-02') },
-  { path: '/como-aumentar-fps-roblox-windows', lastModified: new Date('2026-05-02') },
-  { path: '/como-corrigir-queda-de-wifi-windows-11', lastModified: new Date('2026-05-02') },
-  { path: '/como-desativar-vbs-windows-11-gamer', lastModified: new Date('2026-05-02') },
-  { path: '/como-limpar-cache-nvidia-windows-11', lastModified: new Date('2026-05-02') },
-  { path: '/otimizar-windows-11-para-valorant', lastModified: new Date('2026-05-02') },
-  { path: '/otimizar-windows-11-para-warzone', lastModified: new Date('2026-05-02') },
-  { path: '/otimizar-windows-para-counter-strike-2-cs2', lastModified: new Date('2026-05-02') },
-  { path: '/otimizar-windows-para-fortnite', lastModified: new Date('2026-05-02') },
-  { path: '/otimizar-windows-para-minecraft-ultra-fps', lastModified: new Date('2026-05-02') },
-  { path: '/melhorar-performance-da-steam-windows-11', lastModified: new Date('2026-05-02') },
-  { path: '/melhorar-performance-do-google-chrome-windows', lastModified: new Date('2026-05-02') },
-  { path: '/voltrisoptimizer/como-funciona', lastModified: new Date('2026-05-02') },
-  { path: '/voltrisoptimizer/documentacao', lastModified: new Date('2026-05-02') },
+  { path: '/otimizacao-windows-jogos', lastModified: NOW },
+  { path: '/servicos-combinados', lastModified: NOW },
+  { path: '/empresas', lastModified: NOW },
+  { path: '/glossario', lastModified: NOW },
+  { path: '/como-aumentar-fps-roblox-windows', lastModified: NOW },
+  { path: '/como-corrigir-queda-de-wifi-windows-11', lastModified: NOW },
+  { path: '/como-desativar-vbs-windows-11-gamer', lastModified: NOW },
+  { path: '/como-limpar-cache-nvidia-windows-11', lastModified: NOW },
+  { path: '/otimizar-windows-11-para-valorant', lastModified: NOW },
+  { path: '/otimizar-windows-11-para-warzone', lastModified: NOW },
+  { path: '/otimizar-windows-para-counter-strike-2-cs2', lastModified: NOW },
+  { path: '/otimizar-windows-para-fortnite', lastModified: NOW },
+  { path: '/otimizar-windows-para-minecraft-ultra-fps', lastModified: NOW },
+  { path: '/melhorar-performance-da-steam-windows-11', lastModified: NOW },
+  { path: '/melhorar-performance-do-google-chrome-windows', lastModified: NOW },
+  { path: '/voltrisoptimizer/como-funciona', lastModified: NOW },
+  { path: '/voltrisoptimizer/documentacao', lastModified: NOW },
   // Páginas Pilares SEO
-  { path: '/aumentar-fps', lastModified: new Date('2026-05-02') },
-  { path: '/otimizacao-windows-11', lastModified: new Date('2026-05-02') },
+  { path: '/aumentar-fps', lastModified: NOW },
+  { path: '/otimizacao-windows-11', lastModified: NOW },
   // Páginas Satélites
-  { path: '/como-aumentar-fps-valorant', lastModified: new Date('2026-05-02') },
-  { path: '/como-aumentar-fps-warzone', lastModified: new Date('2026-05-02') },
-  { path: '/como-aumentar-fps-cs2', lastModified: new Date('2026-05-02') },
-  { path: '/configurar-nvidia-control-panel-fps', lastModified: new Date('2026-05-02') },
-  { path: '/desativar-telemetria-windows-11', lastModified: new Date('2026-05-02') },
+  { path: '/como-aumentar-fps-valorant', lastModified: NOW },
+  { path: '/como-aumentar-fps-warzone', lastModified: NOW },
+  { path: '/como-aumentar-fps-cs2', lastModified: NOW },
+  { path: '/configurar-nvidia-control-panel-fps', lastModified: NOW },
+  { path: '/desativar-telemetria-windows-11', lastModified: NOW },
 ] as const;
 
 // Lista de slugs que são origem de redirects (não devem ir para o sitemap)
@@ -70,7 +73,7 @@ const REDIRECT_SOURCES = new Set([
   'gta-v-como-resolver-texturas-sumindo-ou-demorando-para-carregar'
 ]);
 
-function getGuideRoutes(): string[] {
+function getGuideRoutes(): { path: string; lastModified: Date }[] {
   const guidesDir = path.join(process.cwd(), 'app', 'guias');
 
   try {
@@ -78,16 +81,28 @@ function getGuideRoutes(): string[] {
 
     return entries
       .filter((entry) => entry.isDirectory())
-      .map((entry) => entry.name)
-      .filter((slug) => {
-        if (slug.startsWith('_') || slug.startsWith('.')) return false;
-        if (REDIRECT_SOURCES.has(slug)) return false;
+      .map((entry) => {
+        const slug = entry.name;
+        if (slug.startsWith('_') || slug.startsWith('.')) return null;
+        if (REDIRECT_SOURCES.has(slug)) return null;
+        
         const pageTsx = path.join(guidesDir, slug, 'page.tsx');
         const pageJs = path.join(guidesDir, slug, 'page.js');
-        return fs.existsSync(pageTsx) || fs.existsSync(pageJs);
+        
+        if (!fs.existsSync(pageTsx) && !fs.existsSync(pageJs)) return null;
+        
+        // Get real modification time from filesystem
+        const filePath = fs.existsSync(pageTsx) ? pageTsx : pageJs;
+        const stats = fs.statSync(filePath);
+        const lastModified = stats.mtime;
+        
+        return {
+          path: `/guias/${slug}`,
+          lastModified
+        };
       })
-      .map((slug) => `/guias/${slug}`)
-      .sort((a, b) => a.localeCompare(b));
+      .filter((item): item is { path: string; lastModified: Date } => item !== null)
+      .sort((a, b) => a.path.localeCompare(b.path));
   } catch {
     // Never break sitemap endpoint due to filesystem/runtime issues.
     return [];

@@ -136,7 +136,7 @@ export default function ElderScrolls6Guide() {
                                 <li>Power Plan: Ultimate</li>
                                 <li>VBS: Disabled</li>
                                 <li>Core Parking: Disabled</li>
-                                <li>Temperature: &lt;85°C</li>
+                                <li>Temperature: &lt;85C</li>
                             </ul>
                         </div>
                         <div className="bg-green-900/20 p-4 rounded">

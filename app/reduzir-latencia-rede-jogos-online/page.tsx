@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function LatenciaRede() {
     const title = 'Como Reduzir a Latência de Rede (Ping) em Jogos Online no Windows 11 (2026)';
@@ -76,7 +76,7 @@ export default function LatenciaRede() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

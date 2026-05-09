@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function LoLPerformance() {
     const title = 'Como Otimizar o Windows 11 para League of Legends (2026) | FPS Máximo';
@@ -67,7 +67,7 @@ export default function LoLPerformance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title} description={description} keywords={keywords}
             estimatedTime="12 min" difficultyLevel="Intermediário"
             contentSections={contentSections} summaryTable={summaryTable}

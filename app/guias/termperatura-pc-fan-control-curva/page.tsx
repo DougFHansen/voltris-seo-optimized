@@ -11,7 +11,7 @@ export const guideMetadata = {
 };
 
 const title = "Controle de Temperatura (2026): Silêncio vs Performance";
-const description = "O Thermal Throttling é o assassino silencioso de FPS. Se sua CPU bate 95°C, ela reduz a velocidade pela metade para não queimar. Resolva isso agora.";
+const description = "O Thermal Throttling é o assassino silencioso de FPS. Se sua CPU bate 95C, ela reduz a velocidade pela metade para não queimar. Resolva isso agora.";
 
 const keywords = [
     'como usar fan control github tutorial',
@@ -31,10 +31,10 @@ export default function TempGuide() {
     const summaryTable = [
         { label: "Software", value: "FanControl (GitHub)" },
         { label: "Monitor", value: "HWMonitor / HWiNFO" },
-        { label: "CPU Max", value: "85°C (Seguro)" },
-        { label: "GPU Max", value: "80°C (Seguro)" },
-        { label: "Hotspot", value: "100°C (Limite)" },
-        { label: "Idle Temp", value: "35-45°C" },
+        { label: "CPU Max", value: "85C (Seguro)" },
+        { label: "GPU Max", value: "80C (Seguro)" },
+        { label: "Hotspot", value: "100C (Limite)" },
+        { label: "Idle Temp", value: "35-45C" },
         { label: "Pasta Térmica", value: "Trocar a cada 2 anos" }
     ];
 
@@ -43,7 +43,7 @@ export default function TempGuide() {
             title: "Introdução: O Inimigo Invisível",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
-          O PC não avisa "estou quente". Ele simplesmente começa a travar. Quando a CPU atinge 95°C (Intel) ou 90°C (Ryzen), o clock cai de 5.0GHz para 3.5GHz. Isso se chama Throttling.
+          O PC não avisa "estou quente". Ele simplesmente começa a travar. Quando a CPU atinge 95C (Intel) ou 90C (Ryzen), o clock cai de 5.0GHz para 3.5GHz. Isso se chama Throttling.
         </p>
       `
         },
@@ -57,8 +57,8 @@ export default function TempGuide() {
                     1. Baixe e rode o <strong>CPUID HWMonitor</strong>.
                     <br/>2. Jogue por 20 minutos.
                     <br/>3. Dê Alt-Tab e olhe a coluna "Max".
-                    <br/>- <strong>CPU Package:</strong> Se > 90°C, problema.
-                    <br/>- <strong>GPU Hotspot:</strong> Se > 105°C, problema na pasta térmica da placa.
+                    <br/>- <strong>CPU Package:</strong> Se > 90C, problema.
+                    <br/>- <strong>GPU Hotspot:</strong> Se > 105C, problema na pasta térmica da placa.
                 </p>
             </div>
         </div>
@@ -78,10 +78,10 @@ export default function TempGuide() {
             title: "Capítulo 3: Criando a Curva Ideal",
             content: `
         <p class="mb-4 text-gray-700">
-            - Até 50°C: 30% ou 0% (Silêncio).
-            - Em 70°C: 60% (Audível mas aceitável).
-            - Em 85°C: 100% (Modo turbina de emergência).
-            <br/>Ative a "Hysteresis" (Delay). Isso impede que a ventoinha fique oscilando (Womm... Womm...) se a temperatura pula de 69°C para 71°C rápido.
+            - Até 50C: 30% ou 0% (Silêncio).
+            - Em 70C: 60% (Audível mas aceitável).
+            - Em 85C: 100% (Modo turbina de emergência).
+            <br/>Ative a "Hysteresis" (Delay). Isso impede que a ventoinha fique oscilando (Womm... Womm...) se a temperatura pula de 69C para 71C rápido.
         </p>
       `
         }
@@ -104,7 +104,7 @@ export default function TempGuide() {
         <p class="mb-4 text-gray-700">
             A bomba (Pump) do Water Cooler deve rodar sempre a 100% ou perto disso. Ela não faz barulho e precisa circular a água.
             <br/>Só regule a velocidade das ventoinhas do radiador.
-            <br/>Se a bomba parar, a CPU vai a 100°C em 5 segundos.
+            <br/>Se a bomba parar, a CPU vai a 100C em 5 segundos.
         </p>
       `
         },
@@ -113,7 +113,7 @@ export default function TempGuide() {
             content: `
         <p class="mb-4 text-gray-700">
             Pasta térmica resseca. Se seu PC tem 3 anos e esquenta muito, troque a pasta.
-            <br/>Em GPUs, use Thermal Pads nos chips de VRAM. Memórias GDDR6X (RTX 3070ti+) chegam a 110°C fácil se o pad for ruim.
+            <br/>Em GPUs, use Thermal Pads nos chips de VRAM. Memórias GDDR6X (RTX 3070ti+) chegam a 110C fácil se o pad for ruim.
         </p>
       `
         },
@@ -144,7 +144,7 @@ export default function TempGuide() {
             title: "Capítulo 9: Temperatura Ambiente",
             content: `
             <p class="mb-4 text-gray-700">
-                Se seu quarto faz 40°C no verão, seu PC vai sofrer.
+                Se seu quarto faz 40C no verão, seu PC vai sofrer.
                 <br/>A temperatura do PC é sempre Ambiente + Delta.
                 <br/>Não adianta ter o melhor cooler se o ar que entra já está quente. Abra a janela ou ligue o ar condicionado.
             </p>
@@ -155,7 +155,7 @@ export default function TempGuide() {
             content: `
             <p class="mb-4 text-gray-700">
                 Notebooks Gamer PRECISAM de base refrigerada ou pelo menos levantar a traseira com um livro (não tampe a entrada de ar).
-                <br/>5cm de espaço embaixo reduzem 5°C.
+                <br/>5cm de espaço embaixo reduzem 5C.
             </p>
             `
         }
@@ -164,7 +164,7 @@ export default function TempGuide() {
     const faqItems = [
         {
             question: "Qual a temperatura perigosa?",
-            answer: "CPU acima de 100°C desliga o PC. GPU acima de 95°C. Tente manter CPU < 80°C e GPU < 75°C para longevidade."
+            answer: "CPU acima de 100C desliga o PC. GPU acima de 95C. Tente manter CPU < 80C e GPU < 75C para longevidade."
         },
         {
             question: "FanControl não detecta minhas fans?",

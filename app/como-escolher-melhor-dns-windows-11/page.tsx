@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function EscolherDNS() {
     const title = 'Como Escolher o Melhor DNS para o Windows 11 em 2026 | Guia Gamer';
@@ -78,7 +78,7 @@ export default function EscolherDNS() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

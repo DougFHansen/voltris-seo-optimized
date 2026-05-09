@@ -67,7 +67,7 @@ export default function DiskHealthGuide() {
             content: `
         <p class="mb-4 text-gray-700">
             <strong>O perigo do calor:</strong> 
-            <br/><br/>SSDs NVMe de 2026 operam em temperaturas altas, mas não devem passar dos 70°C por muito tempo. Se o CrystalDiskInfo mostrar o status em vermelho por causa da temperatura, seu SSD entrará em 'Thermal Throttling' e ficará mais lento que um HD antigo. Considere comprar um dissipador de calor (heatsink) se as temperaturas estiverem constantemente acima de 65°C.
+            <br/><br/>SSDs NVMe de 2026 operam em temperaturas altas, mas não devem passar dos 70C por muito tempo. Se o CrystalDiskInfo mostrar o status em vermelho por causa da temperatura, seu SSD entrará em 'Thermal Throttling' e ficará mais lento que um HD antigo. Considere comprar um dissipador de calor (heatsink) se as temperaturas estiverem constantemente acima de 65C.
         </p>
       `
         }

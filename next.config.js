@@ -1,7 +1,5 @@
 /** @type {import('next').Config} */
 const nextConfig = {
-  // Tenta evitar redirecionamentos em POSTs para /api
-  skipTrailingSlashRedirect: true,
   poweredByHeader: false,
   experimental: {
     optimizeCss: true,
@@ -13,10 +11,10 @@ const nextConfig = {
     ],
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    // ignoreDuringBuilds: true, // REMOVIDO: Enterprise-grade exige build limpo
   },
   typescript: {
-    ignoreBuildErrors: true,
+    // ignoreBuildErrors: true, // REMOVIDO: Enterprise-grade exige build limpo
   },
   serverExternalPackages: ['sharp'],
   images: {
@@ -49,7 +47,8 @@ const nextConfig = {
   async redirects() {
     return [
       // ============================================================
-      // REDIRECTS DE SERVIÇOS (existentes)
+      // REDIRECTS DE CONTEÚDO (apenas regras de conteúdo, não canonicalização)
+      // Canonicalização (http→https, non-www→www) é feita pelo middleware.ts
       // ============================================================
       { source: '/todos-os-servicos/criacao-de-sites/plano-profissional', destination: '/criar-site', permanent: true },
       { source: '/todos-os-servicos/criacao-de-sites/plano-empresarial', destination: '/criar-site', permanent: true },
@@ -211,12 +210,10 @@ const nextConfig = {
         { key: 'X-XSS-Protection', value: '1; mode=block' },
         { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-        { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
         {
           key: 'Content-Security-Policy',
           value: [
             "default-src 'self'",
-            "upgrade-insecure-requests",
             "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://js.stripe.com https://pagead2.googlesyndication.com https://adservice.google.com.br https://adservice.google.com https://static.cloudflareinsights.com https://*.adtrafficquality.google",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com",

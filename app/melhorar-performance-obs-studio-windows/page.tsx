@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function PerformanceOBS() {
     const title = 'Como Melhorar a Performance do OBS Studio no Windows 11 (2026)';
@@ -75,7 +75,7 @@ export default function PerformanceOBS() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

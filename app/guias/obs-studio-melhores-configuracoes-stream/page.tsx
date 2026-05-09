@@ -302,7 +302,7 @@ export default function OBSStreamGuide() {
                         <td class="p-3">Disponível em softwares modernos</td>
                     </tr>
                     <tr class="border-t border-gray-700 bg-gray-800/30">
-                        <td class="p-3">Transmissões 360°</td>
+                        <td class="p-3">Transmissões 360</td>
                         <td class="p-3">5% das transmissões</td>
                         <td class="p-3">Experiência imersiva</td>
                         <td class="p-3">Nicho especializado</td>

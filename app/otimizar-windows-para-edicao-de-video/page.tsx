@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function OtimizarVideo() {
     const title = 'Como Otimizar o Windows 11 para Edição de Vídeo (2026)';
@@ -74,7 +74,7 @@ export default function OtimizarVideo() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

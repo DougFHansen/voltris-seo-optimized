@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function GuiaPrivacidade() {
     const title = 'Guia Definitivo de Privacidade do Windows 11 (2026) | Como se Proteger';
@@ -74,7 +74,7 @@ export default function GuiaPrivacidade() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

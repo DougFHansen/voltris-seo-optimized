@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export const metadata: Metadata = {
   title: 'Como Desativar VBS Windows 11 para Ganhar FPS | Guia Gamer 2026',
@@ -116,7 +116,7 @@ export default function DesativarVBS() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

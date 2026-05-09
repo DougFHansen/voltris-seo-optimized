@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function CS2Performance() {
     const title = 'Como Otimizar o Windows 11 para Counter-Strike 2 (CS2) | FPS Máximo 2026';
@@ -69,7 +69,7 @@ export default function CS2Performance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title} description={description} keywords={keywords}
             estimatedTime="15 min" difficultyLevel="Avançado"
             contentSections={contentSections} summaryTable={summaryTable}

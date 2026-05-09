@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function PerformanceHD() {
     const title = 'Como Melhorar a Performance de HD Antigo no Windows 11 (2026)';
@@ -74,7 +74,7 @@ export default function PerformanceHD() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

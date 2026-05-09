@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 import { title, description, keywords } from './metadata';
 
 export default function RemoverBloatwareWindows() {
@@ -72,7 +72,7 @@ export default function RemoverBloatwareWindows() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

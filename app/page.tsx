@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import HomeServer from '@/components/HomeServer';
 import HomeClient from '@/components/HomeClient';
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Voltris Optimizer | Performance e Suporte de TI Avançado',
     description: 'Aumente o FPS do seu jogo ou a produtividade da sua empresa com nosso software e suporte remoto especializado.',
-    url: 'https://voltris.com.br',
+    url: 'https://www.voltris.com.br',
     siteName: 'Voltris',
     locale: 'pt_BR',
     type: 'website',
@@ -41,10 +42,18 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br',
+    canonical: 'https://www.voltris.com.br',
   },
 };
 
 export default function Home() {
-  return <HomeClient />;
+  return (
+    <>
+      {/* Server Component: Renders SEO content on server (Hero, About, Services, Optimizer section, FAQ, schema markup) */}
+      <HomeServer />
+      
+      {/* Client Component: Adds interactivity on client (particles, animations, OAuth callback, WhatsApp float) */}
+      <HomeClient />
+    </>
+  );
 }

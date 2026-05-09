@@ -4,7 +4,7 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 export const guideMetadata = {
     id: 'msi-afterburner-overclock-undervolt-guia',
     title: "MSI Afterburner (2026): Guia Seguro de Overclock e Undervolt",
-    description: "Aumente o FPS da sua placa de vídeo grátis com Overclock ou reduza a temperatura em 10°C com Undervolt. Guia passo a passo para iniciantes.",
+    description: "Aumente o FPS da sua placa de vídeo grátis com Overclock ou reduza a temperatura em 10C com Undervolt. Guia passo a passo para iniciantes.",
     category: 'hardware',
     difficulty: 'Avançado',
     time: '45 min'
@@ -34,7 +34,7 @@ export default function AfterburnerGuide() {
         { label: "Core Clock", value: "+50 a +150 MHz" },
         { label: "Memory Clock", value: "+200 a +1000 MHz" },
         { label: "Power Limit", value: "Máximo (Slider)" },
-        { label: "Temp Limit", value: "83°C (Padrão)" },
+        { label: "Temp Limit", value: "83C (Padrão)" },
         { label: "Undervolt", value: "Ctrl + F (Curva)" }
     ];
 
@@ -93,7 +93,7 @@ export default function AfterburnerGuide() {
             content: `
         <p class="mb-4 text-gray-700">
             Undervolt mantém o mesmo clock (performance) usando menos voltagem.
-            <br/>Resultado: Placa mais fria (-10°C) e ventoinhas mais silenciosas.
+            <br/>Resultado: Placa mais fria (-10C) e ventoinhas mais silenciosas.
             <br/>1. Aperte <strong>Ctrl + F</strong> para abrir a curva de voltagem.
             <br/>2. Escolha uma voltagem (ex: 900mV).
             <br/>3. Suba o ponto dessa voltagem até a frequência desejada (ex: 1900MHz).
@@ -108,8 +108,8 @@ export default function AfterburnerGuide() {
         <p class="mb-4 text-gray-700">
             Não deixe no Auto se sua placa esquenta.
             <br/>Em Settings > Fan: Habilite a curva personalizada.
-            <br/>Configure para 100% de ventoinha quando bater 80°C.
-            <br/>Configure 0% (Zero Frozr) abaixo de 40°C para silêncio total no desktop.
+            <br/>Configure para 100% de ventoinha quando bater 80C.
+            <br/>Configure 0% (Zero Frozr) abaixo de 40C para silêncio total no desktop.
         </p>
       `
         },
@@ -172,7 +172,7 @@ export default function AfterburnerGuide() {
     const faqItems = [
         {
             question: "Overclock diminui a vida útil?",
-            answer: "Teoricamente sim, por eletromigração. Na prática, em vez de durar 15 anos, sua placa dura 14 anos. Você vai trocá-la muito antes disso. O que mata placa é calor excessivo (90°C+), não frequência."
+            answer: "Teoricamente sim, por eletromigração. Na prática, em vez de durar 15 anos, sua placa dura 14 anos. Você vai trocá-la muito antes disso. O que mata placa é calor excessivo (90C+), não frequência."
         },
         {
             question: "Tela piscou e resetou configuração?",

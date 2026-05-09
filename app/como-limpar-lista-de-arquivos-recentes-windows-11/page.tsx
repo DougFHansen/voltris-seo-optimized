@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function LimparRecentes() {
     const title = 'Como Limpar a Lista de Arquivos Recentes no Windows 11 (Privacidade 2026)';
@@ -67,7 +67,7 @@ export default function LimparRecentes() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title} description={description} keywords={keywords}
             estimatedTime="8 min" difficultyLevel="Iniciante"
             contentSections={contentSections} summaryTable={summaryTable}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function AudioGamer() {
     const title = 'Melhores Configurações de Som para Jogos no Windows 11 (2026)';
@@ -76,7 +76,7 @@ export default function AudioGamer() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function DesativarAppsFundo() {
     const title = 'Como Desativar Aplicativos em Segundo Plano no Windows 11 (2026)';
@@ -74,7 +74,7 @@ export default function DesativarAppsFundo() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

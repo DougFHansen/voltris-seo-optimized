@@ -154,7 +154,7 @@ export default function PainelControleNVIDIAGuide() {
             <div class="bg-red-800/50 p-4 rounded-lg border border-red-500/30">
               <h4 class="text-lg font-semibold text-red-300 mb-2">🚨 FPS Baixo ou Instável?</h4>
               <ul class="space-y-2 text-gray-700">
-                <li>Verifique temperatura da GPU (>85°C)</li>
+                <li>Verifique temperatura da GPU (>85C)</li>
                 <li>Feche programas em segundo plano</li>
                 <li>Atualize drivers para versão mais recente</li>
                 <li>Desative overlays (Discord, Steam)</li>

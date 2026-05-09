@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function LagTeclado() {
     const title = 'Como Corrigir o Lag no Teclado no Windows 11 (Atraso de Digitação 2026)';
@@ -76,7 +76,7 @@ export default function LagTeclado() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

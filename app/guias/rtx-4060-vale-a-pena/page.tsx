@@ -70,6 +70,22 @@ export default function RTX4060ReviewGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "8GB VRAM é suficiente?",
+            answer: "Para 1080p, sim. Para 1440p/4K, não. Texturas pesadas de 2026 saturam 8GB em 1440p, causando travadas. Se joga em 1440p+, considere RX 7800 XT ou RTX 4070 (12GB+)."
+        },
+        {
+            question: "RTX 4060 vs RX 7600?",
+            answer: "RX 7600 é 10% mais barata e performance bruta similar. RTX 4060 consome menos (115W), tem DLSS 3.5 e encoder AV1. Para streaming/edição, RTX 4060 é melhor."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "NVIDIA RTX 4060 Official", url: "https://www.nvidia.com/geforce/graphics-cards/rtx-40-series/rtx-4060-family/" },
+        { name: "TechPowerUp GPU Database", url: "https://www.techpowerup.com/gpu-specs/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/como-escolher-placa-de-video",
@@ -98,6 +114,8 @@ export default function RTX4060ReviewGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

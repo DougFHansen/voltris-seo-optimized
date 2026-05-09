@@ -44,7 +44,7 @@ export default function GlossarioPage() {
         {
             title: "Thermal Throttling",
             color: "text-[#FF4B6B]",
-            desc: "Quando o processador ou placa de vídeo esquenta demais (geralmente acima de 90°C) e diminui a velocidade propositalmente para não queimar. Causa travamentos bruscos em jogos."
+            desc: "Quando o processador ou placa de vídeo esquenta demais (geralmente acima de 90C) e diminui a velocidade propositalmente para não queimar. Causa travamentos bruscos em jogos."
         },
         {
             title: "XMP / DOCP",

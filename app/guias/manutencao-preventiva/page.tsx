@@ -519,8 +519,8 @@ export default function ManutencaoPreventivaGuide() {
                     <tr class="bg-gray-800/30">
                       <td class="py-2 px-4 border-b border-gray-700">Temperatura</td>
                       <td class="py-2 px-4 border-b border-gray-700">CPU/GPU</td>
-                      <td class="py-2 px-4 border-b border-gray-700">&lt;70°C</td>
-                      <td class="py-2 px-4 border-b border-gray-700">&gt;85°C</td>
+                      <td class="py-2 px-4 border-b border-gray-700">&lt;70C</td>
+                      <td class="py-2 px-4 border-b border-gray-700">&gt;85C</td>
                     </tr>
                   </tbody>
                 </table>

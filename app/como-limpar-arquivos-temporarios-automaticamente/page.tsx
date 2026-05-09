@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function LimpezaAutomatica() {
     const title = 'Como Limpar Arquivos Temporários Automaticamente no Windows 11 (2026)';
@@ -76,7 +76,7 @@ export default function LimpezaAutomatica() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

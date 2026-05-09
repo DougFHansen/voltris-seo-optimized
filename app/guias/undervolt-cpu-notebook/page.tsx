@@ -4,14 +4,14 @@ import { GuideTemplate, createGuideMetadata } from '@/components/GuideTemplate';
 export const guideMetadata = {
   id: 'undervolt-cpu-notebook',
   title: "Undervolt de CPU em Notebook: Como reduzir o calor (2026)",
-  description: "Seu notebook ferve enquanto você joga? Aprenda como fazer undervolt na CPU para reduzir a temperatura em até 10°C sem perder performance em 2026.",
+  description: "Seu notebook ferve enquanto você joga? Aprenda como fazer undervolt na CPU para reduzir a temperatura em até 10C sem perder performance em 2026.",
   category: 'hardware',
   difficulty: 'Intermediário',
   time: '45 min'
 };
 
 const title = "Undervolt de CPU em Notebook: Como reduzir o calor (2026)";
-const description = "Seu notebook ferve enquanto você joga? Aprenda como fazer undervolt na CPU para reduzir a temperatura em até 10°C sem perder performance em 2026.";
+const description = "Seu notebook ferve enquanto você joga? Aprenda como fazer undervolt na CPU para reduzir a temperatura em até 10C sem perder performance em 2026.";
 const keywords = [
     'undervolt cpu notebook como fazer 2026 tutorial',
     'reduzir temperatura notebook gamer tutorial guia',
@@ -25,7 +25,7 @@ export const metadata: Metadata = createGuideMetadata('undervolt-cpu-notebook', 
 export default function UndervoltGuide() {
     const summaryTable = [
         { label: "O que é", value: "Reduzir a voltagem sem reduzir a velocidade" },
-        { label: "Benefício #1", value: "Redução de Temperatura (até 15°C)" },
+        { label: "Benefício #1", value: "Redução de Temperatura (até 15C)" },
         { label: "Benefício #2", value: "Fim do Thermal Throttling (Quedas de FPS)" },
         { label: "Dificuldade", value: "Alta (Requer testes de estabilidade)" }
     ];
@@ -35,7 +35,7 @@ export default function UndervoltGuide() {
             title: "O calor: O inimigo do Notebook Gamer",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
-          Notebooks gamers de 2026 são potentes, mas as leis da física não mudam. Ter um processador de 14 ou 24 núcleos em um espaço de 2cm gera um calor absurdo. Quando o processador chega a 95°C, ele entra em **Thermal Throttling**, derrubando sua velocidade pela metade para não derreter. O **Undervolt** consiste em encontrar a menor voltagem estável para o seu processador, fazendo-o consumir menos energia e gerar menos calor, mantendo o mesmo FPS.
+          Notebooks gamers de 2026 são potentes, mas as leis da física não mudam. Ter um processador de 14 ou 24 núcleos em um espaço de 2cm gera um calor absurdo. Quando o processador chega a 95C, ele entra em **Thermal Throttling**, derrubando sua velocidade pela metade para não derreter. O **Undervolt** consiste em encontrar a menor voltagem estável para o seu processador, fazendo-o consumir menos energia e gerar menos calor, mantendo o mesmo FPS.
         </p>
       `
         },
@@ -68,7 +68,7 @@ export default function UndervoltGuide() {
             content: `
         <p class="mb-4 text-gray-700">
             Diferente do Overclock (que aumenta a voltagem e o risco), o Undervolt **diminui** o estresse sobre o processador. 
-            <br/><br/><strong>Dica:</strong> Em 2026, um processador que roda a 80°C durará muito mais anos do que um que trabalha constantemente a 100°C. O único "perigo" é o PC travar e reiniciar, mas isso não causa dano ao hardware e serve apenas como aviso de que você reduziu a voltagem demais.
+            <br/><br/><strong>Dica:</strong> Em 2026, um processador que roda a 80C durará muito mais anos do que um que trabalha constantemente a 100C. O único "perigo" é o PC travar e reiniciar, mas isso não causa dano ao hardware e serve apenas como aviso de que você reduziu a voltagem demais.
         </p>
       `
         }

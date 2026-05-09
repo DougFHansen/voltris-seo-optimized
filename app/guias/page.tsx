@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import GuiasClient from './GuiasClient';
+import GuiasServer from './GuiasServer';
 import { getAllGuides } from '@/lib/guides';
 
 export const metadata: Metadata = {
@@ -19,5 +19,10 @@ export const metadata: Metadata = {
 
 export default function Guias() {
   const guides = getAllGuides();
-  return <GuiasClient initialGuides={guides} />;
+  return (
+    <>
+      {/* Server Component: Renders SEO content on server (Hero, CTA, static content) */}
+      <GuiasServer initialGuides={guides} />
+    </>
+  );
 }

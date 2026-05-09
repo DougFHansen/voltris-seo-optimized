@@ -74,6 +74,22 @@ export default function PrivacyGuide() {
     }
   ];
 
+  const faqItems = [
+    {
+      question: "Desativar telemetria quebra o Windows?",
+      answer: "Não. A Microsoft não bloqueia o sistema se você desativar a telemetria. Você pode continuar usando normalmente. Algumas funcionalidades 'smart' podem parar de funcionar, mas isso é o objetivo."
+    },
+    {
+      question: "ID de Anúncio é perigoso?",
+      answer: "Não é perigoso, mas é invasivo. É um identificador único que permite à Microsoft criar um perfil do que você consome. Desativar aumenta sua privacidade."
+    }
+  ];
+
+  const externalReferences = [
+    { name: "Microsoft - Privacy Dashboard", url: "https://account.microsoft.com/privacy/" },
+    { name: "O&O ShutUp10 (Debloat Tool)", url: "https://www.oo-software.com/en/shutup10" }
+  ];
+
   const relatedGuides = [
     {
       href: "/guias/debloating-windows-11",
@@ -102,6 +118,8 @@ export default function PrivacyGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={faqItems}
+      externalReferences={externalReferences}
     />
   );
 }

@@ -81,7 +81,7 @@ export default function CPUOverclockGuide() {
     {
       href: "/guias/monitorar-temperatura-pc",
       title: "Monitorar Calor",
-      description: "Não deixe a CPU passar de 90°C."
+      description: "Não deixe a CPU passar de 90C."
     },
     {
       href: "/guias/undervolt-cpu-notebook",

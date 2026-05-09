@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function ChromePerformance() {
     const title = 'Como Acelerar o Google Chrome no Windows 11 | Menos RAM e Mais Velocidade';
@@ -74,7 +74,7 @@ export default function ChromePerformance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

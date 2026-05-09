@@ -70,6 +70,22 @@ export default function BestWindowsForGamingGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Windows 11 é mais lento que o 10?",
+            answer: "Em hardware moderno (Intel 12ª gen+), não. Windows 11 é otimizado para arquitetura híbrida. Em hardware antigo (pré-2018), Windows 10 pode ser 5-10% mais leve em RAM."
+        },
+        {
+            question: "Ghost Spectre é seguro?",
+            answer: "Não. Remove camadas de segurança e Windows Update. Use apenas para jogos offline em PC dedicado. Para uso geral, prefira Windows 11 original com debloat manual."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Microsoft - Windows 11 System Requirements", url: "https://www.microsoft.com/windows/windows-11" },
+        { name: "Ghost Spectre (GitHub)", url: "https://github.com/GhostSpectre/GhostSpectre-Windows11" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/debloating-windows-11",
@@ -98,6 +114,8 @@ export default function BestWindowsForGamingGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

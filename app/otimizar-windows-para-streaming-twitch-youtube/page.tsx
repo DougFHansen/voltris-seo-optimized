@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function StreamingPerformance() {
     const title = 'Como Otimizar o Windows 11 para Streaming (Twitch/YouTube) (2026)';
@@ -74,7 +74,7 @@ export default function StreamingPerformance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function WifiFix() {
     const title = 'Como Corrigir Queda de Wi-Fi no Windows 11 (Desconexão 2026)';
@@ -74,7 +74,7 @@ export default function WifiFix() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

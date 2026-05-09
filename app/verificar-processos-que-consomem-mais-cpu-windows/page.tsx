@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function CpuDiagnostic() {
     const title = 'Como Verificar Processos que Consomem Mais CPU no Windows 11 (2026)';
@@ -73,7 +73,7 @@ export default function CpuDiagnostic() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title} description={description} keywords={keywords}
             estimatedTime="12 min" difficultyLevel="Intermediário"
             contentSections={contentSections} summaryTable={summaryTable}

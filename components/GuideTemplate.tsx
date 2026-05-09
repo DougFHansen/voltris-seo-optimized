@@ -1,10 +1,12 @@
 import { Metadata } from 'next';
-import { GuideTemplateClient, GuideTemplateProps, ContentSection, RelatedGuide, SummaryTableItem } from './GuideTemplateClient';
+import GuideTemplateServer from './GuideTemplateServer';
+import GuideTemplateClient from './GuideTemplateClient';
+import type { ContentSection, RelatedGuide, SummaryTableItem, ExternalReference } from './GuideTemplateServer';
 
-// Re-export types if needed by consumers (though usually page.tsx doesn't need them explicitely)
-export type { GuideTemplateProps, ContentSection, RelatedGuide, SummaryTableItem };
+// Re-export types if needed by consumers
+export type { ContentSection, RelatedGuide, SummaryTableItem, ExternalReference };
 
-const BASE_URL = 'https://voltris.com.br';
+const BASE_URL = 'https://www.voltris.com.br';
 
 /**
  * Generates metadata for the guide pages.
@@ -75,8 +77,46 @@ export function createGuideMetadata(slug: string, title: string, description: st
 
 /**
  * Server Component wrapper for the Guide Template.
- * Passes all props down to the Client Component which handles the interactive UI.
+ * Enterprise-grade hybrid architecture:
+ * - GuideTemplateServer: Renders SEO content on server (H1, article, FAQ, schema markup)
+ * - GuideTemplateClient: Adds interactivity on client (progress bar, floating buttons, animations)
+ * 
+ * This ensures Google receives complete HTML with all SEO content while preserving
+ * premium UI/UX with animations and interactivity.
  */
-export function GuideTemplate(props: GuideTemplateProps) {
-  return <GuideTemplateClient {...props} />;
+export function GuideTemplate(props: {
+  title: string;
+  description: string;
+  keywords: string[];
+  estimatedTime: string;
+  difficultyLevel: string;
+  contentSections: ContentSection[];
+  relatedGuides?: RelatedGuide[];
+  author?: string;
+  authorBio?: string;
+  authorCredentials?: string[];
+  lastUpdated?: string;
+  summaryTable?: SummaryTableItem[];
+  faqItems?: Array<{ question: string; answer: string }>;
+  externalReferences?: ExternalReference[];
+  advancedContentSections?: ContentSection[];
+  additionalContentSections?: ContentSection[];
+  showVoltrisOptimizerCTA?: boolean;
+  keyPoints?: string[];
+  warningNote?: string;
+  isHowTo?: boolean;
+  pathname: string;
+}) {
+  return (
+    <>
+      {/* Server Component: Renders SEO content on server */}
+      <GuideTemplateServer {...props} />
+      
+      {/* Client Component: Adds interactivity (progress bar, floating buttons, animations) */}
+      <GuideTemplateClient 
+        title={props.title} 
+        showVoltrisOptimizerCTA={props.showVoltrisOptimizerCTA} 
+      />
+    </>
+  );
 }

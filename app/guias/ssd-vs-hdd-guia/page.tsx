@@ -231,7 +231,7 @@ export default function SSDvsHDDGuide() {
         },
         {
             question: "SSD esquenta? Precisa de cooler?",
-            answer: "SSDs NVMe de alta velocidade, especialmente PCIe 4.0, podem atingir 60–80°C sob carga pesada. Em cargas sustentadas (transferência de arquivos grandes), podem ocorrer throttling acima de 75°C, reduzindo a velocidade. Placas-mãe modernas geralmente incluem dissipadores M.2 — use-os. Para PCIe 3.0 de uso comum, o calor raramente é problema."
+            answer: "SSDs NVMe de alta velocidade, especialmente PCIe 4.0, podem atingir 60–80C sob carga pesada. Em cargas sustentadas (transferência de arquivos grandes), podem ocorrer throttling acima de 75C, reduzindo a velocidade. Placas-mãe modernas geralmente incluem dissipadores M.2 — use-os. Para PCIe 3.0 de uso comum, o calor raramente é problema."
         },
         {
             question: "Um HD pode ser usado junto com o SSD?",

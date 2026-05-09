@@ -52,7 +52,7 @@ export default function OverclockGuide() {
                 <span class="text-xl">🌡️</span> Monitoramento de Segurança Inteligente
             </h4>
             <p class="text-gray-700 mb-4">
-                Fazer overclock sem monitorar a temperatura é perigoso. O <strong>Voltris Optimizer</strong> inclui um overlay discreto que avisa se a temperatura da Junção (Hotspot) passar de 95°C, prevenindo degradação do chip a longo prazo.
+                Fazer overclock sem monitorar a temperatura é perigoso. O <strong>Voltris Optimizer</strong> inclui um overlay discreto que avisa se a temperatura da Junção (Hotspot) passar de 95C, prevenindo degradação do chip a longo prazo.
             </p>
             <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
                 Baixar Monitor Voltris
@@ -124,7 +124,7 @@ export default function OverclockGuide() {
             A primeira coisa a fazer é liberar a energia.
         </p>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-            <li>No painel principal, encontre os sliders <strong>Power Limit (%)</strong> e <strong>Temp Limit (°C)</strong>.</li>
+            <li>No painel principal, encontre os sliders <strong>Power Limit (%)</strong> e <strong>Temp Limit (C)</strong>.</li>
             <li>Arraste ambos para o <strong>MÁXIMO</strong> (direita).</li>
             <li><em>"Isso vai queimar minha placa?"</em> <strong>NÃO.</strong> A placa tem proteções internas de BIOS. Aumentar o Power Limit apenas diz à placa: "Você pode usar mais energia se precisar para manter o clock alto". Se a temperatura subir demais, ela ainda vai reduzir a velocidade (Throttling) automaticamente. É 100% seguro em placas modernas.</li>
         </ul>
@@ -169,7 +169,7 @@ export default function OverclockGuide() {
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-green-400 font-bold mb-4 text-xl">Menos Calor = Mais Performance</h4>
                 <p class="text-gray-700 mb-4">
-                    As placas modernas batem no limite de temperatura rápido. O Undervolt consiste em manter o mesmo clock alto, mas usando menos voltagem. Isso faz a placa esfriar 5°C a 10°C, permitindo que ela mantenha o Boost Clock por mais tempo sem baixar a frequência.
+                    As placas modernas batem no limite de temperatura rápido. O Undervolt consiste em manter o mesmo clock alto, mas usando menos voltagem. Isso faz a placa esfriar 5C a 10C, permitindo que ela mantenha o Boost Clock por mais tempo sem baixar a frequência.
                 </p>
             </div>
 
@@ -198,19 +198,19 @@ export default function OverclockGuide() {
                         <tr class="border-b border-white/5 hover:bg-white/5">
                             <td class="px-4 py-3">Stock (Fábrica)</td>
                             <td class="px-4 py-3">1837 / 7500</td>
-                            <td class="px-4 py-3">72°C</td>
+                            <td class="px-4 py-3">72C</td>
                             <td class="px-4 py-3">58 FPS</td>
                         </tr>
                         <tr class="border-b border-white/5 hover:bg-white/5">
                             <td class="px-4 py-3">Overclock (+150/+1000)</td>
                             <td class="px-4 py-3">1987 / 8500</td>
-                            <td class="px-4 py-3">76°C</td>
+                            <td class="px-4 py-3">76C</td>
                             <td class="px-4 py-3 text-green-400 font-bold">66 FPS (+13%)</td>
                         </tr>
                          <tr class="hover:bg-white/5">
                             <td class="px-4 py-3">Undervolt (0.9V)</td>
                             <td class="px-4 py-3">1950 / 8500</td>
-                            <td class="px-4 py-3 text-blue-400 font-bold">64°C (-8°C)</td>
+                            <td class="px-4 py-3 text-blue-400 font-bold">64C (-8C)</td>
                             <td class="px-4 py-3">65 FPS</td>
                         </tr>
                     </tbody>
@@ -227,7 +227,7 @@ export default function OverclockGuide() {
         },
         {
             question: "Posso fazer overclock em Notebook?",
-            answer: "Pode, mas <strong>o ganho é limitado pelo calor</strong>. Em notebooks, recomendamos UnderVolt. Se você aumentar o clock, o notebook vai bater 90°C mais rápido e reduzir a velocidade (Thermal Throttling), resultando em pior performance."
+            answer: "Pode, mas <strong>o ganho é limitado pelo calor</strong>. Em notebooks, recomendamos UnderVolt. Se você aumentar o clock, o notebook vai bater 90C mais rápido e reduzir a velocidade (Thermal Throttling), resultando em pior performance."
         },
         {
             question: "O PC reiniciou durante o teste, queimei algo?",

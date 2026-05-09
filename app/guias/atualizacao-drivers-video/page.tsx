@@ -544,7 +544,7 @@ export default function VideoDriverGuide() {
                         <li>• Tela azul (BSOD) relacionado a driver</li>
                         <li>• Artefatos gráficos persistentes</li>
                         <li>• Travamentos em jogos ou aplicações</li>
-                        <li>• Temperatura excessiva (>85°C)</li>
+                        <li>• Temperatura excessiva (>85C)</li>
                     </ul>
                 </div>
                 
@@ -552,7 +552,7 @@ export default function VideoDriverGuide() {
                     <h6 class="font-bold text-blue-400 mb-2">Sinais de Estabilidade</h6>
                     <ul class="text-sm text-gray-700 space-y-1">
                         <li>• Sem crashes ou artefatos</li>
-                        <li>• Temperaturas normais (<80°C)</li>
+                        <li>• Temperaturas normais (<80C)</li>
                         <li>• Performance consistente</li>
                         <li>• Recursos avançados funcionando</li>
                     </ul>
@@ -996,7 +996,7 @@ export default function VideoDriverGuide() {
     },
     {
       question: "Quais sinais indicam que um driver está instável?",
-      answer: "Sinais de instabilidade incluem: tela azul relacionada a driver, artefatos gráficos persistentes, travamentos em jogos, temperaturas excessivas (>85°C) e performance inconsistente."
+      answer: "Sinais de instabilidade incluem: tela azul relacionada a driver, artefatos gráficos persistentes, travamentos em jogos, temperaturas excessivas (>85C) e performance inconsistente."
     },
     {
       question: "Quando devo atualizar meus drivers de vídeo?",

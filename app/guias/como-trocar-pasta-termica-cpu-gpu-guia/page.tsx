@@ -42,8 +42,8 @@ export default function PasteGuide() {
             title: "Introdução: Quando trocar?",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
-          Se as temperaturas subiram 5-10°C em comparação a quando o PC era novo, ou se a ventoinha vive em 100% fazendo barulho, é hora de trocar.
-          <br/>Pastas de fábrica secam rápido. Uma pasta de qualidade (Kryonaut, MX-6, MasterGel Maker) dura anos e baixa até 8°C.
+          Se as temperaturas subiram 5-10C em comparação a quando o PC era novo, ou se a ventoinha vive em 100% fazendo barulho, é hora de trocar.
+          <br/>Pastas de fábrica secam rápido. Uma pasta de qualidade (Kryonaut, MX-6, MasterGel Maker) dura anos e baixa até 8C.
         </p>
       `
         },
@@ -87,7 +87,7 @@ export default function PasteGuide() {
             <br/>1. Solte os parafusos traseiros (backplate).
             <br/>2. Solte os cabos do das ventoinhas e LED com cuidado (são frágeis!).
             <br/>3. O chip da GPU é "Direct Die" (cristal exposto). Você PRECISA cobrir 100% dele. Aqui o método da gota NÃO serve.
-            <br/>USE O MÉTODO DE ESPALHAR OU UM "X" BEM GENEROSO. Se uma partezinha ficar sem pasta, o hotspot vai bater 105°C e a placa vai travar.
+            <br/>USE O MÉTODO DE ESPALHAR OU UM "X" BEM GENEROSO. Se uma partezinha ficar sem pasta, o hotspot vai bater 105C e a placa vai travar.
         </p>
       `
         }
@@ -109,9 +109,9 @@ export default function PasteGuide() {
             title: "Capítulo 5: Metal Líquido (Conductonaut)",
             content: `
         <p class="mb-4 text-gray-700">
-            Metal Líquido baixa 15°C, mas é condutivo. Se pingar na placa, dá curto e mata o PC.
+            Metal Líquido baixa 15C, mas é condutivo. Se pingar na placa, dá curto e mata o PC.
             <br/>Além disso, ele corrói alumínio. Só pode ser usado em dissipadores de Cobre niquelado.
-            <br/>NÃO RECOMENDAMOS para usuários comuns. O risco não vale os 3°C a menos que uma Kryonaut normal.
+            <br/>NÃO RECOMENDAMOS para usuários comuns. O risco não vale os 3C a menos que uma Kryonaut normal.
         </p>
       `
         },

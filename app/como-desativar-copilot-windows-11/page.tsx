@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function DesativarCopilot() {
     const title = 'Como Desativar e Remover o Copilot do Windows 11 (2026)';
@@ -76,7 +76,7 @@ export default function DesativarCopilot() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

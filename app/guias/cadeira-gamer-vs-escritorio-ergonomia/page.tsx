@@ -90,7 +90,7 @@ export default function ChairComparisonGuide() {
               <li>• Torácica: Cifose (curvatura para trás)</li>
               <li>• Lombar: Lordose (curvatura para frente)</li>
               <li>• Sacral: Cifose (curvatura para trás)</li>
-              <li>• Ângulo de sacro (S1): 30-40°</li>
+              <li>• Ângulo de sacro (S1): 30-40</li>
               <li>• Centro de gravidade: L4-L5</li>
             </ul>
           </div>
@@ -101,7 +101,7 @@ export default function ChairComparisonGuide() {
               <li>• Sentado reto: 140%</li>
               <li>• Sentado inclinado: 185%</li>
               <li>• Sentado com apoio lombar: 120%</li>
-              <li>• Sentado com reclinação 135°: 90%</li>
+              <li>• Sentado com reclinação 135: 90%</li>
               <li>• Posição de descanso: 85%</li>
             </ul>
           </div>
@@ -127,35 +127,35 @@ export default function ChairComparisonGuide() {
               <tr class="border-t border-gray-700">
                 <td class="p-3">Cadeira Gamer Básica</td>
                 <td class="p-3">185 mmHg</td>
-                <td class="p-3">-15° (anterior)</td>
+                <td class="p-3">-15 (anterior)</td>
                 <td class="p-3">Reduzida</td>
                 <td class="p-3">4.5/10</td>
               </tr>
               <tr class="border-t border-gray-700 bg-gray-800/30">
                 <td class="p-3">Cadeira Gamer Premium</td>
                 <td class="p-3">160 mmHg</td>
-                <td class="p-3">-8° (anterior)</td>
+                <td class="p-3">-8 (anterior)</td>
                 <td class="p-3">Parcial</td>
                 <td class="p-3">6.8/10</td>
               </tr>
               <tr class="border-t border-gray-700">
                 <td class="p-3">Cadeira Escritório Básica</td>
                 <td class="p-3">140 mmHg</td>
-                <td class="p-3">-5° (anterior)</td>
+                <td class="p-3">-5 (anterior)</td>
                 <td class="p-3">Preservada</td>
                 <td class="p-3">7.2/10</td>
               </tr>
               <tr class="border-t border-gray-700 bg-gray-800/30">
                 <td class="p-3">Cadeira Escritório Ergonômica</td>
                 <td class="p-3">110 mmHg</td>
-                <td class="p-3">+2° (neutra)</td>
+                <td class="p-3">+2 (neutra)</td>
                 <td class="p-3">Ideal</td>
                 <td class="p-3">9.1/10</td>
               </tr>
               <tr class="border-t border-gray-700">
                 <td class="p-3">Cadeira Escritório Premium</td>
                 <td class="p-3">95 mmHg</td>
-                <td class="p-3">+5° (posterior)</td>
+                <td class="p-3">+5 (posterior)</td>
                 <td class="p-3">Superior</td>
                 <td class="p-3">9.5/10</td>
               </tr>
@@ -490,7 +490,7 @@ export default function ChairComparisonGuide() {
               </tr>
               <tr class="border-t border-gray-700 bg-gray-800/30">
                 <td class="p-3">Temperatura Operacional</td>
-                <td class="p-3">0°C a 45°C</td>
+                <td class="p-3">0C a 45C</td>
                 <td class="p-3">Faixa</td>
                 <td class="p-3">Segurança e eficiência</td>
               </tr>

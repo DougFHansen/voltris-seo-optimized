@@ -1,11 +1,11 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 import { title, description, keywords } from './metadata';
 
 export default function DiagnosticoHardwareTemperatura() {
     const summaryTable = [
         { label: "O que monitorar", value: "CPU, GPU e SSD" },
-        { label: "Temperatura Limite", value: "85°C (Recomendado)" },
+        { label: "Temperatura Limite", value: "85C (Recomendado)" },
         { label: "Saúde SSD", value: "S.M.A.R.T Metrics" },
         { label: "Solução", value: "Voltris Live Dashboard" }
     ];
@@ -15,7 +15,7 @@ export default function DiagnosticoHardwareTemperatura() {
             title: "Como saber se o seu PC está sobrecarregado?",
             content: `
         <p class="mb-6 text-gray-600 leading-relaxed text-lg">
-          O superaquecimento é a causa número 1 de perda de performance em jogos (Power Throttling). Se a sua CPU atinge 95°C, o Windows reduz o clock para evitar o derretimento do chip. Isso causa travamentos irremediáveis no FPS.
+          O superaquecimento é a causa número 1 de perda de performance em jogos (Power Throttling). Se a sua CPU atinge 95C, o Windows reduz o clock para evitar o derretimento do chip. Isso causa travamentos irremediáveis no FPS.
         </p>
         <p class="mb-6 text-gray-600 leading-relaxed">
             Monitorar a saúde dos seus componentes (<code>S.M.A.R.T</code> de SSD, voltagem da fonte, ciclos de uso) é essencial para garantir a longevidade do investimento.
@@ -48,7 +48,7 @@ export default function DiagnosticoHardwareTemperatura() {
     const faqItems = [
         {
             question: "Qual a temperatura normal da GPU em carga total?",
-            answer: "Para GPUs modernas, nada entre 65°C a 80°C é perfeitamente normal. Se ultrapassar 85°C de forma constante, é hora de limpar o PC ou reaplicar pasta térmica."
+            answer: "Para GPUs modernas, nada entre 65C a 80C é perfeitamente normal. Se ultrapassar 85C de forma constante, é hora de limpar o PC ou reaplicar pasta térmica."
         },
         {
             question: "O Voltris consegue consertar peças defeituosas?",
@@ -62,7 +62,7 @@ export default function DiagnosticoHardwareTemperatura() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}
@@ -77,7 +77,7 @@ export default function DiagnosticoHardwareTemperatura() {
                 "Aprender a ler os dados de temperatura com precisão",
                 "O que é Power Throttling e como ele destrói seu FPS",
                 "Como monitorar a saúde do seu SSD/NVMe sem programas pesados",
-                "Riscos de deixar o PC operando acima de 90°C",
+                "Riscos de deixar o PC operando acima de 90C",
                 "Como o Voltris unifica o diagnóstico em uma só tela"
             ]}
         />

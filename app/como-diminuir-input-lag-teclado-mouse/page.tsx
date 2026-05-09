@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function InputLagPerifericos() {
     const title = 'Como Diminuir o Input Lag do Mouse e Teclado no Windows 11 (2026)';
@@ -74,7 +74,7 @@ export default function InputLagPerifericos() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

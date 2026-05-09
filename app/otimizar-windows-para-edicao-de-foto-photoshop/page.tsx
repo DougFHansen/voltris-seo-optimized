@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function PhotoshopPerformance() {
     const title = 'Como Otimizar o Windows 11 para Photoshop e Lightroom (2026)';
@@ -67,7 +67,7 @@ export default function PhotoshopPerformance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title} description={description} keywords={keywords}
             estimatedTime="15 min" difficultyLevel="Intermediário"
             contentSections={contentSections} summaryTable={summaryTable}

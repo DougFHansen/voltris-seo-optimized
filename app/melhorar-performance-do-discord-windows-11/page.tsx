@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function DiscordPerformance() {
     const title = 'Como Melhorar a Performance do Discord no Windows 11 (2026)';
@@ -74,7 +74,7 @@ export default function DiscordPerformance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

@@ -201,7 +201,7 @@ export default function BatteryCalibrationGuide() {
               <tr class="border-t border-gray-700">
                 <td class="p-3">Temperature Sensor</td>
                 <td class="p-3">Monitoramento térmico</td>
-                <td class="p-3">±1°C</td>
+                <td class="p-3">±1C</td>
                 <td class="p-3">Hardware</td>
               </tr>
               <tr class="border-t border-gray-700 bg-gray-800/30">

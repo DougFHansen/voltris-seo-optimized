@@ -76,7 +76,7 @@ export default function HardwareDiagnosticGuide() {
         </div>
         <div class="bg-yellow-900/10 border-l-4 border-yellow-500 p-5 rounded-r-lg">
             <h4 class="text-yellow-400 font-bold mb-2">⚠️ Antes de Tudo: Verifique as Temperaturas</h4>
-            <p class="text-gray-700 text-sm">Baixe o <strong>HWiNFO64</strong> e monitore as temperaturas enquanto reproduz o problema. Um PC que desliga a 95°C+ na CPU ou GPU não precisa de diagnóstico complexo — precisa de troca de pasta térmica ou melhor refrigeração. Confira nosso guia de <a href="/guias/monitorar-temperatura-pc" class="text-[#31A8FF] hover:underline">monitoramento de temperatura</a>.</p>
+            <p class="text-gray-700 text-sm">Baixe o <strong>HWiNFO64</strong> e monitore as temperaturas enquanto reproduz o problema. Um PC que desliga a 95C+ na CPU ou GPU não precisa de diagnóstico complexo — precisa de troca de pasta térmica ou melhor refrigeração. Confira nosso guia de <a href="/guias/monitorar-temperatura-pc" class="text-[#31A8FF] hover:underline">monitoramento de temperatura</a>.</p>
         </div>
       `
         },
@@ -189,7 +189,7 @@ export default function HardwareDiagnosticGuide() {
             <div class="bg-[#0A0A0F] border border-[#31A8FF]/20 p-5 rounded-xl">
                 <h5 class="text-[#31A8FF] font-bold mb-2">🖥️ Teste de CPU (Linpack)</h5>
                 <p class="text-gray-700 text-sm mb-2">Selecione "CPU: Linpack" no OCCT. Duração: 15-30 minutos.</p>
-                <p class="text-gray-700 text-xs"><strong>Sinal de problema:</strong> Temperatura acima de 95°C, PC desliga ou reinicia durante o teste, ou o OCCT reporta erro de cálculo.</p>
+                <p class="text-gray-700 text-xs"><strong>Sinal de problema:</strong> Temperatura acima de 95C, PC desliga ou reinicia durante o teste, ou o OCCT reporta erro de cálculo.</p>
             </div>
             <div class="bg-[#0A0A0F] border border-[#8B31FF]/20 p-5 rounded-xl">
                 <h5 class="text-[#8B31FF] font-bold mb-2">🎮 Teste de GPU (3D)</h5>

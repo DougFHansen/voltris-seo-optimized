@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function VelocidadeBoot() {
     const title = 'Como Fazer o Windows 11 Iniciar Mais Rápido | Guia de Boot 2026';
@@ -74,7 +74,7 @@ export default function VelocidadeBoot() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

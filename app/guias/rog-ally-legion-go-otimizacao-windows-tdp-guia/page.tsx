@@ -76,9 +76,9 @@ export default function RogAllyGuide() {
             title: "Capítulo 3: CPU Boost (O Vilão do Calor)",
             content: `
         <p class="mb-4 text-gray-700">
-            O Z1 Extreme tenta dar boost para 5.0GHz à toa, esquentando o aparelho para 95°C.
+            O Z1 Extreme tenta dar boost para 5.0GHz à toa, esquentando o aparelho para 95C.
             <br/>Desative o "CPU Boost" nas opções de energia do Windows (exige edição de registro simples para aparecer a opção).
-            <br/>Resultado: Mesma performance em jogos (que dependem de GPU), mas rodando a 70°C e ventoinhas silenciosas.
+            <br/>Resultado: Mesma performance em jogos (que dependem de GPU), mas rodando a 70C e ventoinhas silenciosas.
         </p>
       `
         }
@@ -153,7 +153,7 @@ export default function RogAllyGuide() {
             content: `
             <p class="mb-4 text-gray-700">
                 O leitor de cartão do ROG Ally original queima com o calor da saída de ar.
-                <br/>Aumente a curva de ventoinha (Fan Curve) para manter o device dbaixo de 75°C e proteger o leitor, ou simplesmente troque o SSD interno por um de 2TB 2230.
+                <br/>Aumente a curva de ventoinha (Fan Curve) para manter o device dbaixo de 75C e proteger o leitor, ou simplesmente troque o SSD interno por um de 2TB 2230.
             </p>
             `
         }

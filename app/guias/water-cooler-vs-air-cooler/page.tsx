@@ -88,7 +88,7 @@ export default function CoolerGuide() {
                 </p>
                 <p class="text-gray-700 text-sm">
                     Agora, se você comprou um cooler "White Label" chinês ou está fazendo manutenção após 2 anos, compre uma pasta de prata ou cerâmica decente (Ex: SnowDog, Artic MX-4).
-                    <br/>A diferença entre uma pasta ruim e uma boa pode ser de 5°C a 10°C.
+                    <br/>A diferença entre uma pasta ruim e uma boa pode ser de 5C a 10C.
                     <br/><strong>Método de aplicação:</strong> Um ponto no meio (Ervilha) ou um X. Não espalhe com o dedo (gordura da pele estraga a condutividade). Deixe a pressão do cooler espalhar.
                 </p>
             </div>
@@ -99,8 +99,8 @@ export default function CoolerGuide() {
             content: `
             <p class="mb-4 text-gray-700">
                 Seu PC parece um turbina? Ajuste a curva na BIOS.
-                <br/>Não faz sentido a ventoinha ir a 100% quando a CPU está a 50°C (abrindo navegador).
-                <br/>Configure para ficar silencioso (30-40%) até 65°C, e só acelerar de verdade quando passar de 75°C (jogando). Isso salva seus ouvidos.
+                <br/>Não faz sentido a ventoinha ir a 100% quando a CPU está a 50C (abrindo navegador).
+                <br/>Configure para ficar silencioso (30-40%) até 65C, e só acelerar de verdade quando passar de 75C (jogando). Isso salva seus ouvidos.
             </p>
             `
         }

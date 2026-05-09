@@ -83,7 +83,7 @@ export default function BatteryGuide() {
             <br/>Nomeie "Economia Máxima".
             <br/>Vá em "Alterar configurações do plano" > Avançadas.
             <br/>- <strong>Gerenciamento de energia do processador > Estado máximo:</strong> Defina para <strong>99%</strong> ou <strong>80%</strong>.
-            <br/>Isso DESATIVA o Turbo Boost. Sua CPU de 4.5GHz vai rodar a 2.5GHz. Para Word/Excel é o suficiente e a CPU fica gelada (35°C), nem ligando as ventoinhas.
+            <br/>Isso DESATIVA o Turbo Boost. Sua CPU de 4.5GHz vai rodar a 2.5GHz. Para Word/Excel é o suficiente e a CPU fica gelada (35C), nem ligando as ventoinhas.
         </p>
       `
         }

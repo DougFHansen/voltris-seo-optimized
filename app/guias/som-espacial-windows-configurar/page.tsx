@@ -26,7 +26,7 @@ export default function SpatialAudioGuide() {
     const summaryTable = [
         { label: "Nativo (Grátis)", value: "Windows Sonic para Fones de Ouvido" },
         { label: "Premium (Pago)", value: "Dolby Atmos / DTS Sound Unbound" },
-        { label: "Uso Principal", value: "Localização de inimigos (Vertical e 360°)" },
+        { label: "Uso Principal", value: "Localização de inimigos (Vertical e 360)" },
         { label: "Dificuldade", value: "Fácil" }
     ];
 

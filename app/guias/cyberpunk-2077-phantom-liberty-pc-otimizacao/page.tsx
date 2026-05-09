@@ -127,7 +127,7 @@ export default function Cyberpunk2077Guide() {
                                 <li>Core Clock: +150 MHz</li>
                                 <li>Memory Clock: +1000 MHz</li>
                                 <li>Power Limit: 115-120%</li>
-                                <li>Temp Limit: 85°C</li>
+                                <li>Temp Limit: 85C</li>
                                 <li>Use MSI Afterburner</li>
                             </ul>
                         </div>

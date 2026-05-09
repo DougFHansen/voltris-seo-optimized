@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function GtaRpPerformance() {
     const title = 'Como Otimizar o Windows 11 para GTA V RP (FiveM) | FPS e Estabilidade';
@@ -74,7 +74,7 @@ export default function GtaRpPerformance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

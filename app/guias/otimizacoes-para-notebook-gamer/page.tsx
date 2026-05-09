@@ -80,7 +80,7 @@ export default function LaptopGuide() {
             title: "Passo 2: Evitando Thermal Throttling (Troque a Pasta)",
             content: `
         <p class="mb-4 text-gray-700">
-            Se o processador bate 95°C ou 100°C, ele reduz a velocidade (de 4.0GHz para 2.5GHz) para não queimar. Isso causa travadas bruscas no jogo.
+            Se o processador bate 95C ou 100C, ele reduz a velocidade (de 4.0GHz para 2.5GHz) para não queimar. Isso causa travadas bruscas no jogo.
         </p>
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Levante a traseira:</strong> Coloque um livro (não cobrindo as saídas de ar) ou use um suporte para elevar a parte de trás do notebook em 5cm. Isso melhora o fluxo de ar drasticamente.</li>
@@ -112,7 +112,7 @@ export default function LaptopGuide() {
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-green-400 font-bold mb-4 text-xl">ThrottleStop (Intel) / Ryzen Controller (AMD)</h4>
                 <p class="text-gray-700 mb-4">
-                    Undervolt é reduzir a voltagem que a CPU recebe. Isso reduz a temperatura em 10°C sem perder performance. Infelizmente, fabricantes como Dell e HP bloquearam isso na BIOS das gerações 12ª/13ª Intel.
+                    Undervolt é reduzir a voltagem que a CPU recebe. Isso reduz a temperatura em 10C sem perder performance. Infelizmente, fabricantes como Dell e HP bloquearam isso na BIOS das gerações 12ª/13ª Intel.
                 </p>
                 <p class="text-gray-700 text-sm">
                     Se sua CPU for 10ª ou 11ª geração, ou AMD Ryzen 5000: Baixe o ThrottleStop. Reduza o "CPU Core" e "CPU Cache" offset em -50mV. Teste. Se estável, tente -80mV.

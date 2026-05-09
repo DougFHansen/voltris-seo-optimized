@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function FortniteFPS() {
     const title = 'Como Otimizar o Windows para Fortnite (2026) | FPS Máximo e Sem Lag';
@@ -74,7 +74,7 @@ export default function FortniteFPS() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

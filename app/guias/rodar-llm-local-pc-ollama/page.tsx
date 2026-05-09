@@ -188,6 +188,23 @@ SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Quanto VRAM preciso para Llama 3 70B?",
+            answer: "Modelo 70B quantizado (Q4_K_M) precisa de ~40GB VRAM. RTX 4090 24GB não roda sozinha. Precisa de 2x RTX 3090/4090 em NVLink ou Mac com 64GB+ RAM unificada."
+        },
+        {
+            question: "Ollama vs LM Studio?",
+            answer: "Ollama é linha de comando, leve e rápido. LM Studio tem interface gráfica amigável com chat. Para iniciantes, LM Studio é mais fácil. Para usuários avançados, Ollama é mais flexível."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Ollama Official", url: "https://ollama.com/" },
+        { name: "LM Studio", url: "https://lmstudio.ai/" },
+        { name: "Hugging Face Models", url: "https://huggingface.co/models" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/como-escolher-placa-de-video",
@@ -216,6 +233,8 @@ SYSTEM "Você é o Mario Bros. Responda tudo com sotaque italiano e termine com 
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

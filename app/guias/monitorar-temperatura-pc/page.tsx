@@ -29,8 +29,8 @@ export const metadata: Metadata = createGuideMetadata('monitorar-temperatura-pc'
 export default function TempGuide() {
     const summaryTable = [
         { label: "Software", value: "MSI Afterburner + RTSS" },
-        { label: "CPU Temp Ideal", value: "Abaixo de 80°C" },
-        { label: "GPU Temp Ideal", value: "Abaixo de 75°C" },
+        { label: "CPU Temp Ideal", value: "Abaixo de 80C" },
+        { label: "GPU Temp Ideal", value: "Abaixo de 75C" },
         { label: "Impacto FPS", value: "Mínimo (1-2 FPS)" },
         { label: "Recurso Vital", value: "Frametime Graph" },
         { label: "Compatibilidade", value: "DX11, DX12, Vulkan" }
@@ -149,8 +149,8 @@ export default function TempGuide() {
             answer: "Você configura na aba 'Informações em Tela (OSD)'. Sugerimos F10 ou F11."
         },
         {
-            question: "GPU a 85°C é perigoso?",
-            answer: "Para Laptop, não. Para Desktop, é alto. Se bater 85°C, a placa vai começar a reduzir o clock (Thermal Throttling). O ideal é manter abaixo de 75°C ajustando a curva de ventoinha (Fan Curve) no próprio Afterburner."
+            question: "GPU a 85C é perigoso?",
+            answer: "Para Laptop, não. Para Desktop, é alto. Se bater 85C, a placa vai começar a reduzir o clock (Thermal Throttling). O ideal é manter abaixo de 75C ajustando a curva de ventoinha (Fan Curve) no próprio Afterburner."
         }
     ];
 

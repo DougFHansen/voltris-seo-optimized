@@ -147,7 +147,7 @@ export default function EASportsFC2026Guide() {
                             <li>Affinity: All cores enabled</li>
                             <li>Power Plan: Ultimate Performance</li>
                             <li>Background processes: Minimal</li>
-                            <li>Temperature: &lt;80°C</li>
+                            <li>Temperature: &lt;80C</li>
                         </ul>
                     </div>
                 </div>

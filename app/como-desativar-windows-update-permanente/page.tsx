@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function DesativarUpdate() {
     const title = 'Como Desativar o Windows Update Permanentemente no Windows 11 (2026)';
@@ -76,7 +76,7 @@ export default function DesativarUpdate() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

@@ -77,6 +77,22 @@ export default function RobloxWhiteScreenGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "ReShade causa tela branca?",
+            answer: "Sim. Versões desatualizadas de ReShade ou Bloxshade são os maiores causadores de tela branca após atualizações do Roblox. Remova a pasta de shaders ou atualize o injetor."
+        },
+        {
+            question: "Notebook usa placa integrada?",
+            answer: "Sim, isso causa tela branca. Vá em Configurações > Sistema > Gráficos > Roblox > Alto Desempenho para forçar placa dedicada."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Roblox Support - Graphics", url: "https://en.help.roblox.com/hc/en-us/articles/203313380" },
+        { name: "Bloxshade (GitHub)", url: "https://github.com/roblox-shaders/bloxshade" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/roblox-fix-erro-conexao",
@@ -105,6 +121,8 @@ export default function RobloxWhiteScreenGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

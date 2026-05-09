@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function SSDHealth() {
     const title = 'Como Verificar a Saúde do SSD no Windows 11 (TBW e Vida Útil 2026)';
@@ -76,7 +76,7 @@ export default function SSDHealth() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

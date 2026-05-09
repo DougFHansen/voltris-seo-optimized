@@ -77,6 +77,22 @@ export default function RobloxFPSUnlockerGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "FPS Unlocker dá ban?",
+            answer: "Não. O próprio criador do Roblox confirmou em conferências oficiais que o uso de unlockers é permitido. É 100% seguro."
+        },
+        {
+            question: "Preciso de monitor 144Hz?",
+            answer: "Não é obrigatório, mas recomendado. Mesmo em monitor 60Hz, FPS alto reduz input lag e faz o jogo responder mais rápido aos comandos."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "Roblox FPS Unlocker (GitHub)", url: "https://github.com/axstin/rbxfpsunlocker" },
+        { name: "Bloxstrap (Alternative)", url: "https://github.com/pizzaboxer/bloxstrap" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/roblox-fix-erro-conexao",
@@ -105,6 +121,8 @@ export default function RobloxFPSUnlockerGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

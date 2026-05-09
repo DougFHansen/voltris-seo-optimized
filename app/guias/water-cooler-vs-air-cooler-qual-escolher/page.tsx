@@ -35,7 +35,7 @@ export default function CoolingComparisonGuide() {
             title: "O dilema da refrigeração",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
-          Com os processadores de 2026 chegando a frequências altíssimas e consumindo mais de 250W em carga máxima, manter a temperatura sob controle não é mais uma opção, é uma necessidade. Se a sua CPU passar dos 90°C, ela perderá performance. Mas será que você realmente precisa de um sistema complexo com água ou um bom bloco de metal com ventoinhas (Air Cooler) é o suficiente?
+          Com os processadores de 2026 chegando a frequências altíssimas e consumindo mais de 250W em carga máxima, manter a temperatura sob controle não é mais uma opção, é uma necessidade. Se a sua CPU passar dos 90C, ela perderá performance. Mas será que você realmente precisa de um sistema complexo com água ou um bom bloco de metal com ventoinhas (Air Cooler) é o suficiente?
         </p>
       `
         },
@@ -72,7 +72,7 @@ export default function CoolingComparisonGuide() {
             <br/><br/>
             - <strong>Core i3 / i5 ou Ryzen 5:</strong> Use um Air Cooler simples (ex: DeepCool AK400). Pagar mais que isso é desperdício. <br/>
             - <strong>Ryzen 7 ou Core i7:</strong> Um Air Cooler robusto (Dual Tower) ou um Water Cooler de 240mm. <br/>
-            - <strong>Core i9 ou Ryzen 9:</strong> Obrigatório o uso de Water Cooler de 360mm ou superior se for fazer uso profissional (edição/render). No Air Cooler, eles chegarão a 100°C rapidamente.
+            - <strong>Core i9 ou Ryzen 9:</strong> Obrigatório o uso de Water Cooler de 360mm ou superior se for fazer uso profissional (edição/render). No Air Cooler, eles chegarão a 100C rapidamente.
         </p>
       `
         }

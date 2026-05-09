@@ -150,7 +150,7 @@ export default function ResolverErrosWindowsGuide() {
             <h class="text-xl font-bold text-gray-900 mb-2 mt-4">Verificar Temperaturas</h4>
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Use ferramentas como HWMonitor para verificar temperaturas</li>
-              <li>CPU acima de 80°C ou GPU acima de 85°C indica superaquecimento</li>
+              <li>CPU acima de 80C ou GPU acima de 85C indica superaquecimento</li>
               <li>Limpe poeira dos ventiladores e dissipadores</li>
               <li>Verifique se ventiladores estão funcionando</li>
               <li>Considere trocar pasta térmica do processador</li>
@@ -363,7 +363,7 @@ export default function ResolverErrosWindowsGuide() {
             <ol class="space-y-2 text-gray-700 list-decimal list-inside ml-4 mb-4">
               <li>Use HWMonitor, Core Temp ou SpeedFan para verificar temperaturas</li>
               <li>Monitore temperaturas da CPU, GPU e disco rígido</li>
-              <li>Valores críticos: CPU > 85°C, GPU > 85°C, HDD > 50°C</li>
+              <li>Valores críticos: CPU > 85C, GPU > 85C, HDD > 50C</li>
               <li>Verifique se ventoinhas estão funcionando corretamente</li>
               <li>Lave o computador para remover poeira que impede refrigeração</li>
             </ol>

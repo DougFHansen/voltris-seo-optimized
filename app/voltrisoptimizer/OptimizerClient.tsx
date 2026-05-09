@@ -1875,7 +1875,7 @@ export default function OptimizerClient() {
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 1 ? null : 1)}
                             isOpen={openFaqIndex === 1}
-                            question="Ã‰ seguro? Corre risco de formatar?"
+                            question="É seguro? Corre risco de formatar?"
                             answer="Totalmente seguro. Nossas otimizações são reversíveis e criamos pontos de restauração automáticos. Não formatamos a máquina, apenas ajustamos o sistema para eficiência máxima."
                         />
                         <FAQItem
@@ -1894,7 +1894,7 @@ export default function OptimizerClient() {
                             onClick={() => setOpenFaqIndex(openFaqIndex === 4 ? null : 4)}
                             isOpen={openFaqIndex === 4}
                             question="Como funciona o controle remoto via web?"
-                            answer="Após instalar o software, você pode acessar o painel web de qualquer lugar e executar otimizações remotamente. Ã‰ a primeira tecnologia brasileira com esse recurso, ideal para empresas e usuários que gerenciam múltiplos computadores."
+                            answer="Após instalar o software, você pode acessar o painel web de qualquer lugar e executar otimizações remotamente. É a primeira tecnologia brasileira com esse recurso, ideal para empresas e usuários que gerenciam múltiplos computadores."
                         />
                         <FAQItem
                             onClick={() => setOpenFaqIndex(openFaqIndex === 5 ? null : 5)}

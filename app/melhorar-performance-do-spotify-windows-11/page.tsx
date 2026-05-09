@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function SpotifyPerformance() {
     const title = 'Como Melhorar a Performance do Spotify no Windows 11 (2026)';
@@ -67,7 +67,7 @@ export default function SpotifyPerformance() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title} description={description} keywords={keywords}
             estimatedTime="8 min" difficultyLevel="Iniciante"
             contentSections={contentSections} summaryTable={summaryTable}

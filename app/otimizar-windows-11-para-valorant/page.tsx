@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function OtimizarWindowsValorant() {
     const title = 'Como Otimizar o Windows 11 para Valorant | FPS Máximo e Zero Lag (2026)';
@@ -78,7 +78,7 @@ export default function OtimizarWindowsValorant() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

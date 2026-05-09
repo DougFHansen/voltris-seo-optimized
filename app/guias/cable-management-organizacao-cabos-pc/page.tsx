@@ -117,47 +117,47 @@ export default function CableManagementGuide() {
             <thead class="bg-gray-800">
               <tr>
                 <th class="p-3 text-left">Componente</th>
-                <th class="p-3 text-left">Sem CM (°C)</th>
-                <th class="p-3 text-left">CM Básico (°C)</th>
-                <th class="p-3 text-left">CM Avançado (°C)</th>
+                <th class="p-3 text-left">Sem CM (C)</th>
+                <th class="p-3 text-left">CM Básico (C)</th>
+                <th class="p-3 text-left">CM Avançado (C)</th>
                 <th class="p-3 text-left">Melhoria</th>
               </tr>
             </thead>
             <tbody>
               <tr class="border-t border-gray-700">
                 <td class="p-3">CPU (full load)</td>
-                <td class="p-3">85°C</td>
-                <td class="p-3">78°C</td>
-                <td class="p-3">72°C</td>
-                <td class="p-3">13°C (-15%)</td>
+                <td class="p-3">85C</td>
+                <td class="p-3">78C</td>
+                <td class="p-3">72C</td>
+                <td class="p-3">13C (-15%)</td>
               </tr>
               <tr class="border-t border-gray-700 bg-gray-800/30">
                 <td class="p-3">GPU (full load)</td>
-                <td class="p-3">78°C</td>
-                <td class="p-3">72°C</td>
-                <td class="p-3">67°C</td>
-                <td class="p-3">11°C (-14%)</td>
+                <td class="p-3">78C</td>
+                <td class="p-3">72C</td>
+                <td class="p-3">67C</td>
+                <td class="p-3">11C (-14%)</td>
               </tr>
               <tr class="border-t border-gray-700">
                 <td class="p-3">VRAM (full load)</td>
-                <td class="p-3">92°C</td>
-                <td class="p-3">85°C</td>
-                <td class="p-3">80°C</td>
-                <td class="p-3">12°C (-13%)</td>
+                <td class="p-3">92C</td>
+                <td class="p-3">85C</td>
+                <td class="p-3">80C</td>
+                <td class="p-3">12C (-13%)</td>
               </tr>
               <tr class="border-t border-gray-700 bg-gray-800/30">
                 <td class="p-3">PSU (full load)</td>
-                <td class="p-3">55°C</td>
-                <td class="p-3">50°C</td>
-                <td class="p-3">47°C</td>
-                <td class="p-3">8°C (-15%)</td>
+                <td class="p-3">55C</td>
+                <td class="p-3">50C</td>
+                <td class="p-3">47C</td>
+                <td class="p-3">8C (-15%)</td>
               </tr>
               <tr class="border-t border-gray-700">
                 <td class="p-3">SSD (seq. read)</td>
-                <td class="p-3">48°C</td>
-                <td class="p-3">45°C</td>
-                <td class="p-3">42°C</td>
-                <td class="p-3">6°C (-12%)</td>
+                <td class="p-3">48C</td>
+                <td class="p-3">45C</td>
+                <td class="p-3">42C</td>
+                <td class="p-3">6C (-12%)</td>
               </tr>
             </tbody>
           </table>

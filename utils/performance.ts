@@ -431,34 +431,38 @@ export const performanceMetrics = new PerformanceMetrics();
 
 // Função de registro para instrumentação
 export const register = () => {
-  if (typeof window !== 'undefined') {
-    // Registrar métricas de performance no cliente
-    const observer = new PerformanceObserver((list) => {
-      for (const entry of list.getEntries()) {
-        if (entry.entryType === 'navigation') {
-          const navEntry = entry as PerformanceNavigationTiming;
-          console.log('Navigation Performance:', {
-            dns: navEntry.domainLookupEnd - navEntry.domainLookupStart,
-            tcp: navEntry.connectEnd - navEntry.connectStart,
-            ttfb: navEntry.responseStart - navEntry.requestStart,
-            domContentLoaded: navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
-            load: navEntry.loadEventEnd - navEntry.loadEventStart,
-          });
+  try {
+    if (typeof window !== 'undefined') {
+      // Registrar métricas de performance no cliente
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (entry.entryType === 'navigation') {
+            const navEntry = entry as PerformanceNavigationTiming;
+            console.log('Navigation Performance:', {
+              dns: navEntry.domainLookupEnd - navEntry.domainLookupStart,
+              tcp: navEntry.connectEnd - navEntry.connectStart,
+              ttfb: navEntry.responseStart - navEntry.requestStart,
+              domContentLoaded: navEntry.domContentLoadedEventEnd - navEntry.domContentLoadedEventStart,
+              load: navEntry.loadEventEnd - navEntry.loadEventStart,
+            });
+          }
         }
-      }
-    });
+      });
+      
+      observer.observe({ entryTypes: ['navigation', 'paint', 'largest-contentful-paint'] });
+    }
     
-    observer.observe({ entryTypes: ['navigation', 'paint', 'largest-contentful-paint'] });
-  }
-  
-  if (typeof global !== 'undefined') {
-    // Registrar métricas de performance no servidor
-    const startTime = process.hrtime.bigint();
-    
-    process.on('exit', () => {
-      const endTime = process.hrtime.bigint();
-      const duration = Number(endTime - startTime) / 1000000; // Convert to milliseconds
-      console.log(`Server uptime: ${duration}ms`);
-    });
+    if (typeof global !== 'undefined') {
+      // Registrar métricas de performance no servidor
+      const startTime = process.hrtime.bigint();
+      
+      process.on('exit', () => {
+        const endTime = process.hrtime.bigint();
+        const duration = Number(endTime - startTime) / 1000000; // Convert to milliseconds
+        console.log(`Server uptime: ${duration}ms`);
+      });
+    }
+  } catch (error) {
+    console.error('Error in performance register:', error);
   }
 }; 

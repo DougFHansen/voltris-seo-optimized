@@ -73,6 +73,22 @@ export default function ReducePingGuide() {
         }
     ];
 
+    const faqItems = [
+        {
+            question: "Wi-Fi 7 é bom para jogos?",
+            answer: "Ainda não. Mesmo Wi-Fi 7 sofre interferência de paredes e outros eletrônicos. Ping oscila de 20ms para 100ms do nada. Use cabo Ethernet CAT6+ para estabilidade."
+        },
+        {
+            question: "ExitLag realmente funciona?",
+            answer: "Sim. Funciona como Waze para dados, busca rota menos movimentada até servidor. Útil se mora longe dos servidores ou joga em servidores internacionais."
+        }
+    ];
+
+    const externalReferences = [
+        { name: "ExitLag Website", url: "https://www.exitlag.com/" },
+        { name: "NoPing Tunnel", url: "https://www.noping.com/" }
+    ];
+
     const relatedGuides = [
         {
             href: "/guias/reduzir-ping-regedit-cmd-jogos",
@@ -101,6 +117,8 @@ export default function ReducePingGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={faqItems}
+            externalReferences={externalReferences}
         />
     );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function MelhoresTweaks() {
     const title = 'Top 10 Melhores Tweaks para Melhorar a Performance do Windows 11 (2026)';
@@ -74,7 +74,7 @@ export default function MelhoresTweaks() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { GuideTemplateClient } from '@/components/GuideTemplateClient';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export default function DesativarServicos() {
     const title = 'Quais Serviços Desativar no Windows 11 para Melhorar a Performance (2026)';
@@ -78,7 +78,7 @@ export default function DesativarServicos() {
     ];
 
     return (
-        <GuideTemplateClient
+        <GuideTemplate
             title={title}
             description={description}
             keywords={keywords}

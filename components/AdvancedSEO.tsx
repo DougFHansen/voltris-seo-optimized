@@ -95,7 +95,7 @@ const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       "@type": "WebPage",
       "name": fullTitle,
       "description": fullDescription,
-      "url": canonical || "https://voltris.com.br",
+      "url": canonical || "https://www.voltris.com.br",
       "mainEntity": {
         "@type": "Organization",
         "name": "VOLTRIS",
@@ -231,7 +231,7 @@ const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       <meta property="og:type" content={ogType} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={fullDescription} />
-      <meta property="og:url" content={canonical || "https://voltris.com.br"} />
+      <meta property="og:url" content={canonical || "https://www.voltris.com.br"} />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
