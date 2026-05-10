@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('upgrade-memoria-ram', title, description, keywords);
 
 export default function RAMUpgradeGuide() {
+  const aiSummary = "Para upgrade RAM 2026: mínimo 16GB, ideal 32GB. Verifique padrão com CPU-Z (DDR4 vs DDR5 não são compatíveis). Use Dual Channel (2 pentes iguais, ex: 2x16GB) para dobrar banda. Misturar marcas funciona mas roda na velocidade mais lenta. Compre kit fechado para ativar XMP/EXPO sem erros.";
+
   const summaryTable = [
     { label: "Padrão Atual", value: "DDR5 (PCs novos) / DDR4 (PCs antigos/custo-benefício)" },
     { label: "Dual Channel", value: "Sempre use 2 pentes iguais (ex: 2x16GB)" },
@@ -101,6 +103,10 @@ export default function RAMUpgradeGuide() {
       contentSections={contentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
+      faqItems={[]}
+      externalReferences={[]}
+      pathname="/guias/upgrade-memoria-ram"
+      aiSummary={aiSummary}
     />
   );
 }

@@ -29,6 +29,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('nvidia-painel-controle-melhores-configuracoes', title, description, keywords);
 
 export default function NvidiaGuide() {
+    const aiSummary = "Para otimizar placas NVIDIA RTX 30/40 série, configure Modo de Latência Baixa ON (Ultra em jogos competitivos), Gerenciamento de Energia Preferência por Desempenho Máximo, Cache de Shader Ilimitado, e G-Sync ON. Use NVIDIA Profile Inspector para habilitar Maximum Pre-Rendered Frames = 1. Desative MPO (Multi-Plane Overlay) via regedit para corrigir flickering.";
+
     const summaryTable = [
         { label: "Capítulos", value: "10 (Completo)" },
         { label: "Nível Técnico", value: "Extremo" },
@@ -41,7 +43,7 @@ export default function NvidiaGuide() {
 
     const contentSections = [
         {
-            title: "Introdução e Meta",
+            title: "Introdução: Objetivo de Eliminar Gargalos de Software do Driver GeForce",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Neste manifesto de 10 capítulos, vamos dissecar o driver GeForce. O objetivo é simples: eliminar gargalos de software que impedem seu hardware de brilhar. Vamos além do básico "Ligar/Desligar". Vamos entender o fluxo de renderização, a fila de quadros da CPU e como o Windows interfere na sua GPU.
@@ -50,6 +52,7 @@ export default function NvidiaGuide() {
         },
         {
             title: "Capítulo 1: Configurações 3D Globais (O Core)",
+            summary: "Modo de Latência Baixa deve estar LIGADO (define Maximum Pre-Rendered Frames para 1). Gerenciamento de Energia deve estar em Preferência por Desempenho Máximo para manter clocks no P0 State. Cache de Shader deve estar Ilimitado para evitar stutters por falta de cache em jogos modernos.",
             content: `
         <p class="mb-4 text-gray-700">
             A base de tudo. Configure isso errado e nada mais importa.
@@ -81,6 +84,7 @@ export default function NvidiaGuide() {
         },
         {
             title: "Capítulo 2: Cores e Faixa Dinâmica (O Fim do Cinza)",
+            summary: "Configure Utilizar configurações de cor da NVIDIA marcado, Profundidade de cor em 10 bpc (ou 8 bpc), Intervalo de saída Completo (0-255). Nunca use Limitado (16-235) em monitor. Aumente Digital Vibrance para 65-75% em jogos competitivos para distinguir inimigos em áreas escuras.",
             content: `
         <p class="mb-4 text-gray-700">
             Muitos monitores vêm configurados como "TVs" pelo driver, limitando o espectro de cores.
@@ -98,6 +102,7 @@ export default function NvidiaGuide() {
         },
         {
             title: "Capítulo 3: DSR e DLDSR (Supersampling IA)",
+            summary: "DLDSR (Deep Learning Dynamic Super Resolution) usa IA para supersampling com custo de performance menor que DSR antigo. Ative DLDSR 1.78x ou 2.25x globalmente, defina Suavidade DSR em 33%, e selecione a nova resolução no jogo. Resultado: imagem nítida com serrilhados eliminados por IA.",
             content: `
         <p class="mb-4 text-gray-700">
             DLDSR (Deep Learning Dynamic Super Resolution) é a arma secreta das placas RTX.
@@ -117,6 +122,7 @@ export default function NvidiaGuide() {
         },
         {
             title: "Capítulo 4: G-Sync e V-Sync (A Trindade)",
+            summary: "Configuração definitiva para remover tearing sem input lag: G-Sync ON no painel, V-Sync ON no painel, V-Sync OFF no jogo, FPS cap em (Hz - 3). Isso mantém G-Sync sempre ativo. V-Sync no painel age como limitador de quadro para quando framerate excede Hz, mas como limitamos abaixo do Hz, não adiciona latência.",
             content: `
         <p class="mb-4 text-gray-700">
             A configuração definitiva para remover tearing SEM input lag perceptível.
@@ -134,6 +140,7 @@ export default function NvidiaGuide() {
         },
         {
             title: "Capítulo 5: Escala e Aspect Ratio (4:3 CS2)",
+            summary: "Para resoluções esticadas em CS2 e Valorant, configure Modo de escala em Tela Inteira, Executar escala em GPU (menor input lag que Monitor/Vídeo), e marque Substituir o modo de escala definido por jogos e programas. GPU geralmente tem melhor qualidade de downscaling que o monitor.",
             content: `
         <p class="mb-4 text-gray-700">
             Para jogadores de CS2 e Valorant que usam resoluções esticadas (Stretched).
@@ -186,6 +193,7 @@ export default function NvidiaGuide() {
         },
         {
             title: "Capítulo 9: MPO Fix (Multi-Plane Overlay)",
+            summary: "MPO causa telas piscando (flickering), telas pretas em Alt+Tab e stutters em navegadores Chromium. Desative usando arquivo de registro oficial 'mpo_disable.reg' do fórum da Nvidia ou criando chave OverlayTestMode no registro do DWM definida como 5. Voltris Optimizer faz isso automaticamente no modo 'Correção de Bugs'.",
             content: `
             <p class="mb-4 text-gray-700">
                 O maior vilão do Windows 10/11 com Nvidia. O MPO causa telas piscando (flickering), telas pretas em Alt+Tab e stutters em navegadores baseados em Chromium.
@@ -276,6 +284,8 @@ export default function NvidiaGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/nvidia-painel-controle-melhores-configuracoes"
+            aiSummary={aiSummary}
         />
     );
 }

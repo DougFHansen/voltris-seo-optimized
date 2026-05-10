@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('saude-bateria-notebook', title, description, keywords);
 
 export default function BatteryHealthGuide() {
+  const aiSummary = "Para verificar saúde bateria: use powercfg /batteryreport no CMD. Compare Design Capacity vs Full Charge Capacity (<70% = degradada). Limite carga em 80% via software fabricante (Asus/Dell/Lenovo). Evite calor (base cooler) e mantenha entre 20-80%. Bateria viciada não tem recuperação química.";
+
   const summaryTable = [
     { label: "Comando Chave", value: "powercfg /batteryreport" },
     { label: "Carga Ideal", value: "Entre 20% e 80%" },
@@ -120,7 +122,9 @@ export default function BatteryHealthGuide() {
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
       faqItems={faqItems}
-      externalReferences={externalReferences}
+      externalReferences={[]}
+      pathname="/guias/saude-bateria-notebook"
+      aiSummary={aiSummary}
     />
   );
 }

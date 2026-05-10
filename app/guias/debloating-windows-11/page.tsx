@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('debloating-windows-11', title, description, keywords);
 
 export default function DebloatGuide() {
+    const aiSummary = "Para debloat Windows 11: use PowerShell (Admin) com comando Remove-AppxPackage para remover apps UWP (TikTok, OneDrive, Xbox). Crie Ponto de Restauração antes. Ganho: -1.5GB RAM. Scripts open source como WinUtil (Chris Titus Tech) são seguros. Reversível: reinstalar via Microsoft Store.";
+
     const summaryTable = [
         { label: "Ferramenta", value: "PowerShell (Admin)" },
         { label: "Risco", value: "Médio (Crie Ponto de Restauração)" },
@@ -207,6 +209,8 @@ export default function DebloatGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/debloating-windows-11"
+            aiSummary={aiSummary}
         />
     );
 }

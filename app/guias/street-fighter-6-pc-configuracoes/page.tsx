@@ -1,15 +1,16 @@
 import { Metadata } from 'next';
+import { GuideTemplate } from '@/components/GuideTemplate';
 
 export const guideMetadata = {
     id: 'street-fighter-6-pc-configuracoes',
-    title: "Street Fighter 6 PC: 240FPS COMBO! (Config Pro 2026)",
+    title: "Street Fighter 6 PC: 240FPS COMBO! (Config Pro)",
     description: "Domine o World Tour com 240 FPS! Configurações para input lag ZERO, response perfeita e visual otimizado para competitive fighting.",
-    category: 'otimizacao',
+    category: 'games-fix',
     difficulty: 'Intermediário',
     time: '20 min'
 };
 
-const title = "Street Fighter 6 PC: 240FPS COMBO! (Config Pro 2026)";
+const title = "Street Fighter 6 PC: 240FPS COMBO! (Config Pro)";
 const description = "Street Fighter 6 chega com RE Engine e gráficos cel-shaded. Aprenda as configurações exatas para combos perfeitos e resposta instantânea.";
 
 const keywords = [
@@ -45,192 +46,148 @@ export const metadata: Metadata = {
     }
 };
 
+const contentSections = [
+    {
+        title: 'Requisitos Street Fighter 6',
+        summary: 'Street Fighter 6 requer GPU GTX 1660 Super mínimo para 60 FPS em 1080p, RTX 3060 Ti para 120 FPS em 1440p, e RTX 4070 com Ryzen 7 7800X3D para 240 FPS competitivos em monitores 240Hz.',
+        content: `
+            <p>Street Fighter 6 exige hardware balanceado para rodar com 240 FPS em monitores competitivos. Veja os requisitos mínimos, recomendados e tournament.</p>
+            <h3>Mínimo (1080p 60 FPS)</h3>
+            <ul>
+                <li>GPU: GTX 1660 Super 6GB</li>
+                <li>CPU: Ryzen 3 3300X</li>
+                <li>RAM: 8GB DDR4</li>
+                <li>Storage: 60GB SSD</li>
+                <li>DirectX: 12</li>
+            </ul>
+            <h3>Recomendado (1440p 120 FPS)</h3>
+            <ul>
+                <li>GPU: RTX 3060 Ti 8GB</li>
+                <li>CPU: Ryzen 5 5600X</li>
+                <li>RAM: 16GB DDR4</li>
+                <li>Storage: 60GB NVMe</li>
+                <li>DirectX: 12 Ultimate</li>
+            </ul>
+            <h3>Tournament (240Hz)</h3>
+            <ul>
+                <li>GPU: RTX 4070 12GB</li>
+                <li>CPU: Ryzen 7 7800X3D</li>
+                <li>RAM: 32GB DDR5</li>
+                <li>Storage: 60GB NVMe Gen4</li>
+                <li>Monitor: 240Hz+</li>
+            </ul>
+        `
+    },
+    {
+        title: 'Configurações Competitivas (240 FPS)',
+        summary: 'Desative V-Sync, Motion Blur e configure Graphics Quality em Medium. Use resolução 1440p ou 1080p para FPS máximo com Frame Rate Unlimited para input lag mínimo.',
+        content: `
+            <p>Para fighting games, cada frame de input lag conta. Configurações otimizadas para máxima responsividade.</p>
+            <h3>Settings Tournament 1440p</h3>
+            <ul>
+                <li>Resolution: 1440p (ou 1080p para FPS máximo)</li>
+                <li>Frame Rate: Unlimited</li>
+                <li>V-Sync: OFF</li>
+                <li>Graphics Quality: Medium</li>
+                <li>Shadow Quality: Low</li>
+                <li>Texture Quality: High</li>
+                <li>Effects Quality: Medium</li>
+                <li>Anti-Aliasing: FXAA</li>
+                <li>Motion Blur: OFF</li>
+                <li>Bloom: Low</li>
+            </ul>
+        `
+    },
+    {
+        title: 'Input Lag Optimization',
+        summary: 'Configure monitor com Overdrive High, Response Time Fastest e Refresh Rate 240Hz. No Windows, ative NVIDIA Reflex, Game Mode e desative VBS para latência ultra-baixa.',
+        content: `
+            <h3>Monitor Settings</h3>
+            <ul>
+                <li>Overdrive: High</li>
+                <li>Response Time: Fastest</li>
+                <li>G-Sync/FreeSync: ON</li>
+                <li>Refresh Rate: 240Hz</li>
+                <li>Game Mode: ON</li>
+                <li>Black Equalizer: 10</li>
+            </ul>
+            <h3>Windows & GPU</h3>
+            <ul>
+                <li>NVIDIA Reflex: ON + Boost</li>
+                <li>Game Mode: ON</li>
+                <li>Hardware Accelerated GPU: ON</li>
+                <li>VBS: Disabled</li>
+                <li>Mouse Polling Rate: 1000Hz</li>
+                <li>Display Latency: Ultra Low</li>
+            </ul>
+        `
+    },
+    {
+        title: 'Controller & Fight Stick',
+        summary: 'Configure Fight Stick com Input Delay 0ms, Deadzone 0% e Polling Rate 1000Hz. Para Hitbox, use Sensitivity Medium, Deadzone 5% e Polling Rate 1000Hz para resposta máxima.',
+        content: `
+            <h3>Fight Stick Settings</h3>
+            <ul>
+                <li>Input Delay: 0ms</li>
+                <li>Deadzone: 0%</li>
+                <li>Polling Rate: 1000Hz</li>
+                <li>D-Pad: Digital</li>
+                <li>Gate: Square (8-way)</li>
+                <li>Buttons: 30mm Sanwa</li>
+            </ul>
+            <h3>Hitbox Settings</h3>
+            <ul>
+                <li>Sensitivity: Medium</li>
+                <li>Deadzone: 5%</li>
+                <li>Polling Rate: 1000Hz</li>
+                <li>Input Display: ON</li>
+                <li>Button Mapping: Tournament Legal</li>
+                <li>Turbo: Disabled</li>
+            </ul>
+        `
+    },
+    {
+        title: 'Netcode & Online',
+        summary: 'Street Fighter 6 usa rollback netcode. Configure para 5-7 frames de delay. Use Ethernet, QoS para gaming e DNS Cloudflare para menor latência online.',
+        content: `
+            <h3>Rollback Netcode</h3>
+            <p>Street Fighter 6 usa rollback netcode moderno. Configure para 5-7 frames de delay para melhor experiência.</p>
+            <h3>Network Optimization</h3>
+            <p>Use Ethernet, configure QoS para gaming, e use DNS Cloudflare para menor latência.</p>
+            <h3>Tournament Settings</h3>
+            <p>Desative overlays, recording e background apps. Use modo de janela borderless para melhor performance.</p>
+        `
+    }
+];
+
+const summaryTable = [
+    { label: 'Dificuldade', value: 'Intermediário' },
+    { label: 'Tempo', value: '20 min' },
+    { label: 'Categoria', value: 'Games Fix' },
+    { label: 'FPS Alvo', value: '240 FPS' }
+];
+
+const keyPoints = [
+    'Configurações para input lag ZERO',
+    'Otimização para 240 FPS competitivos',
+    'Settings para tournament e competitive',
+    'Otimização de controller e fight stick'
+];
+
 export default function StreetFighter6Guide() {
     return (
-        <div className="min-h-screen bg-gray-900 text-white">
-            <div className="container mx-auto px-4 py-8">
-                <h1 className="text-4xl font-bold mb-6">{title}</h1>
-                <p className="text-xl text-gray-700 mb-8">{description}</p>
-                
-                <div className="bg-gray-800 rounded-lg p-6 mb-8">
-                    <h2 className="text-2xl font-bold mb-4">Requisitos Street Fighter 6</h2>
-                    <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-red-900/20 p-4 rounded">
-                            <h3 className="text-red-400 font-bold mb-2">Mínimo (1080p 60 FPS)</h3>
-                            <ul className="text-sm space-y-1">
-                                <li>GPU: GTX 1660 Super 6GB</li>
-                                <li>CPU: Ryzen 3 3300X</li>
-                                <li>RAM: 8GB DDR4</li>
-                                <li>Storage: 60GB SSD</li>
-                                <li>DirectX: 12</li>
-                            </ul>
-                        </div>
-                        <div className="bg-yellow-900/20 p-4 rounded">
-                            <h3 className="text-yellow-400 font-bold mb-2">Recomendado (1440p 120 FPS)</h3>
-                            <ul className="text-sm space-y-1">
-                                <li>GPU: RTX 3060 Ti 8GB</li>
-                                <li>CPU: Ryzen 5 5600X</li>
-                                <li>RAM: 16GB DDR4</li>
-                                <li>Storage: 60GB NVMe</li>
-                                <li>DirectX: 12 Ultimate</li>
-                            </ul>
-                        </div>
-                        <div className="bg-green-900/20 p-4 rounded">
-                            <h3 className="text-green-400 font-bold mb-2">Tournament (240Hz)</h3>
-                            <ul className="text-sm space-y-1">
-                                <li>GPU: RTX 4070 12GB</li>
-                                <li>CPU: Ryzen 7 7800X3D</li>
-                                <li>RAM: 32GB DDR5</li>
-                                <li>Storage: 60GB NVMe Gen4</li>
-                                <li>Monitor: 240Hz+</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-gray-800 rounded-lg p-6 mb-8">
-                    <h2 className="text-2xl font-bold mb-4">Configurações Competitivas (240 FPS)</h2>
-                    <p className="text-gray-700 mb-4">
-                        Para fighting games, cada frame de input lag conta. Configurações otimizadas para máxima responsividade.
-                    </p>
-                    <div className="bg-blue-900/20 p-4 rounded">
-                        <h3 className="text-blue-400 font-bold mb-2">Settings Tournament 1440p</h3>
-                        <ul className="text-sm space-y-1">
-                            <li>Resolution: 1440p (ou 1080p para FPS máximo)</li>
-                            <li>Frame Rate: Unlimited</li>
-                            <li>V-Sync: OFF</li>
-                            <li>Graphics Quality: Medium</li>
-                            <li>Shadow Quality: Low</li>
-                            <li>Texture Quality: High</li>
-                            <li>Effects Quality: Medium</li>
-                            <li>Anti-Aliasing: FXAA</li>
-                            <li>Motion Blur: OFF</li>
-                            <li>Bloom: Low</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="bg-gray-800 rounded-lg p-6 mb-8">
-                    <h2 className="text-2xl font-bold mb-4">Input Lag Optimization</h2>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-orange-900/20 p-4 rounded">
-                            <h3 className="text-orange-400 font-bold mb-2">Monitor Settings</h3>
-                            <ul className="text-sm space-y-1">
-                                <li>Overdrive: High</li>
-                                <li>Response Time: Fastest</li>
-                                <li>G-Sync/FreeSync: ON</li>
-                                <li>Refresh Rate: 240Hz</li>
-                                <li>Game Mode: ON</li>
-                                <li>Black Equalizer: 10</li>
-                            </ul>
-                        </div>
-                        <div className="bg-green-900/20 p-4 rounded">
-                            <h3 className="text-green-400 font-bold mb-2">Windows & GPU</h3>
-                            <ul className="text-sm space-y-1">
-                                <li>NVIDIA Reflex: ON + Boost</li>
-                                <li>Game Mode: ON</li>
-                                <li>Hardware Accelerated GPU: ON</li>
-                                <li>VBS: Disabled</li>
-                                <li>Mouse Polling Rate: 1000Hz</li>
-                                <li>Display Latency: Ultra Low</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-gray-800 rounded-lg p-6 mb-8">
-                    <h2 className="text-2xl font-bold mb-4">Controller & Fight Stick</h2>
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <div className="bg-purple-900/20 p-4 rounded">
-                            <h3 className="text-purple-400 font-bold mb-2">Fight Stick Settings</h3>
-                            <ul className="text-sm space-y-1">
-                                <li>Input Delay: 0ms</li>
-                                <li>Deadzone: 0%</li>
-                                <li>Polling Rate: 1000Hz</li>
-                                <li>D-Pad: Digital</li>
-                                <li>Gate: Square (8-way)</li>
-                                <li>Buttons: 30mm Sanwa</li>
-                            </ul>
-                        </div>
-                        <div className="bg-red-900/20 p-4 rounded">
-                            <h3 className="text-red-400 font-bold mb-2">Hitbox Settings</h3>
-                            <ul className="text-sm space-y-1">
-                                <li>Sensitivity: Medium</li>
-                                <li>Deadzone: 5%</li>
-                                <li>Polling Rate: 1000Hz</li>
-                                <li>Input Display: ON</li>
-                                <li>Button Mapping: Tournament Legal</li>
-                                <li>Turbo: Disabled</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-gray-800 rounded-lg p-6 mb-8">
-                    <h2 className="text-2xl font-bold mb-4">Netcode & Online</h2>
-                    <div className="space-y-4">
-                        <div className="bg-blue-900/20 p-4 rounded">
-                            <h3 className="text-blue-400 font-bold mb-2">Rollback Netcode</h3>
-                            <p className="text-sm text-gray-700">
-                                Street Fighter 6 usa rollback netcode moderno. 
-                                Configure para 5-7 frames de delay para melhor experiência.
-                            </p>
-                        </div>
-                        <div className="bg-green-900/20 p-4 rounded">
-                            <h3 className="text-green-400 font-bold mb-2">Network Optimization</h3>
-                            <p className="text-sm text-gray-700">
-                                Use Ethernet, configure QoS para gaming, 
-                                e use DNS Cloudflare para menor latência.
-                            </p>
-                        </div>
-                        <div className="bg-yellow-900/20 p-4 rounded">
-                            <h3 className="text-yellow-400 font-bold mb-2">Tournament Settings</h3>
-                            <p className="text-sm text-gray-700">
-                                Desative overlays, recording e background apps. 
-                                Use modo de janela borderless para melhor performance.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] rounded-lg p-6 mb-8">
-                    <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                        <span className="text-3xl">?</span>
-                        Voltris Optimizer: 240FPS COMBO PERFEITO!
-                    </h2>
-                    <p className="text-white mb-6">
-                        Street Fighter 6 com 240FPS exige otimização extrema! O Voltris Optimizer configura automaticamente:
-                    </p>
-                    <div className="grid md:grid-cols-2 gap-4 mb-6">
-                        <div className="bg-white/10 backdrop-blur-sm p-4 rounded">
-                            <h3 className="font-bold text-white mb-2">Otimizações Fighting</h3>
-                            <ul className="text-sm text-white/90 space-y-1">
-                                <li>Perfil GPU para fighting games</li>
-                                <li>Otimização de input lag zero</li>
-                                <li>Desativação de processos desnecessários</li>
-                                <li>Configurações para tournament</li>
-                            </ul>
-                        </div>
-                        <div className="bg-white/10 backdrop-blur-sm p-4 rounded">
-                            <h3 className="font-bold text-white mb-2">Resultados</h3>
-                            <ul className="text-sm text-white/90 space-y-1">
-                                <li>+15-25% FPS estáveis</li>
-                                <li>Input lag zero absoluto</li>
-                                <li>Combos perfeitos sem lag</li>
-                                <li>Online sem delay</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <a href="/voltrisoptimizer" className="flex-1 bg-white text-[#31A8FF] font-bold text-center px-6 py-3 rounded-lg hover:scale-105 transition-all">
-                            Baixar Grátis
-                        </a>
-                        <a href="/adquirir-licenca" className="flex-1 bg-black/30 text-white font-bold text-center px-6 py-3 rounded-lg hover:bg-black/50 transition-all border border-white/30">
-                            Ver Planos PRO
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <GuideTemplate
+            title={title}
+            description={description}
+            keywords={keywords}
+            estimatedTime={guideMetadata.time}
+            difficultyLevel={guideMetadata.difficulty}
+            contentSections={contentSections}
+            summaryTable={summaryTable}
+            keyPoints={keyPoints}
+            showVoltrisOptimizerCTA={true}
+            pathname="/guias/street-fighter-6-pc-configuracoes"
+            category={guideMetadata.category}
+        />
     );
 }

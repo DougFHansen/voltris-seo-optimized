@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('monitor-ips-vs-va-vs-tn-jogos', title, description, keywords);
 
 export default function MonitorPanelGuide() {
+    const aiSummary = "IPS é equilíbrio perfeito entre cores e velocidade (melhor para uso geral). VA tem contraste excelente mas sofre rastro preto (ghosting) em movimentos rápidos. TN tem velocidade máxima (360Hz-540Hz) mas cores lavadas e ângulo de visão ruim (apenas para competitivo extremo).";
+
     const summaryTable = [
         { label: "Painel TN", value: "Velocidade máxima / Cores ruins" },
         { label: "Painel VA", value: "Contraste excelente / Rastro preto (Ghosting)" },
@@ -123,6 +125,8 @@ export default function MonitorPanelGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/monitor-ips-vs-va-vs-tn-jogos"
+            aiSummary={aiSummary}
         />
     );
 }

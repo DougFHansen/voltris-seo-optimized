@@ -26,6 +26,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('backup-dados', title, description, keywords);
 
 export default function DataBackupGuide() {
+  const aiSummary = "Regra 3-2-1: 3 cópias, 2 mídias diferentes, 1 off-site (nuvem). Use Hasleo Backup Suite ou Veeam Agent para Imagem de Sistema completa. Backup local em HD externo USB (desconectado após backup). Off-site em OneDrive/Backblaze. Frequência: semanal incremental. Imagem de sistema restaura Windows+programas em 30min.";
+
   const summaryTable = [
     { label: "A Regra de Ouro", value: "3-2-1 (3 Cópias, 2 Locais, 1 Offsite)" },
     { label: "Melhor Software Grátis", value: "Hasleo Backup Suite / Veeam Agent" },
@@ -200,9 +202,11 @@ export default function DataBackupGuide() {
       advancedContentSections={advancedContentSections}
       additionalContentSections={additionalContentSections}
       summaryTable={summaryTable}
+      relatedGuides={relatedGuides}
       faqItems={faqItems}
       externalReferences={externalReferences}
-      relatedGuides={relatedGuides}
+      pathname="/guias/backup-dados"
+      aiSummary={aiSummary}
     />
   );
 }

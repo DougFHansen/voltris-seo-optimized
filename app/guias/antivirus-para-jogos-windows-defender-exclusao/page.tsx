@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('antivirus-para-jogos-windows-defender-exclusao', title, description, keywords);
 
 export default function AntivirusGuide() {
+    const aiSummary = "Para otimizar o Windows Defender para jogos, adicione exclusões para pastas de jogos (SteamApps, Epic Games, etc.) em Segurança do Windows > Proteção contra vírus > Gerenciar configurações > Exclusões. Desative antivírus terceiros (Norton, McAfee) que causam bloatware e reduzem performance. Use Malwarebytes Free apenas para varredura manual mensal.";
+
     const summaryTable = [
         { label: "Software", value: "Windows Defender (Nativo)" },
         { label: "Pasta Steam", value: "Adicionar Exclusão" },
@@ -38,7 +40,7 @@ export default function AntivirusGuide() {
 
     const contentSections = [
         {
-            title: "Introdução: O Monstro da CPU",
+            title: "Introdução: Por que antivírus causa stutter e aumenta loading de jogos",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Toda vez que o jogo carrega um mapa, ele lê 5.000 arquivos do HD. O antivírus intercepta cada leitura para ver se é vírus. Isso dobra o tempo de loading e causa stutter.
@@ -46,7 +48,8 @@ export default function AntivirusGuide() {
       `
         },
         {
-            title: "Capítulo 1: Configurando Exclusões (O Pulo do Gato)",
+            title: "Capítulo 1: Como configurar exclusões no Windows Defender para pastas de jogos",
+            summary: "Jogos originais Steam/Epic são seguros, não precisam escanear toda hora. Iniciar > Segurança do Windows > Proteção contra vírus e ameaças > Gerenciar configurações > Exclusões > Adicionar ou remover exclusões > Adicionar > Pasta. Selecione C:/Program Files (x86)/Steam/steamapps. Faça mesmo para Epic Games, Battlenet, etc.",
             content: `
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
@@ -65,7 +68,8 @@ export default function AntivirusGuide() {
       `
         },
         {
-            title: "Capítulo 2: MsMpEng.exe (Antimalware Service Executable)",
+            title: "Capítulo 2: Como corrigir alto uso de CPU do MsMpEng.exe (Antimalware Service Executable)",
+            summary: "Se MsMpEng.exe estiver usando 30% da CPU, geralmente está escaneando a si mesmo ou update do Windows travado. Adicione próprio arquivo do Defender nas exclusões (Processo > MsMpEng.exe) para parar de loopar. É dica de Regedit avançada, cuidado ao editar registro.",
             content: `
         <p class="mb-4 text-gray-700">
             Se esse processo estiver usando 30% da CPU:
@@ -76,6 +80,7 @@ export default function AntivirusGuide() {
         },
         {
             title: "Capítulo 3: Outros Antivírus (Bloatware)",
+            summary: "Avast, AVG, McAfee devem ser desinstalados. Use Revo Uninstaller para remover tudo. Eles instalam plugins no navegador, Game Boosters falsos e pop-ups de venda. Windows Defender já é nível Enterprise em detecção e é mais leve.",
             content: `
         <p class="mb-4 text-gray-700">
             Avast, AVG, McAfee: Desinstale. Use o <strong>Revo Uninstaller</strong> para remover tudo.
@@ -89,6 +94,7 @@ export default function AntivirusGuide() {
     const advancedContentSections = [
         {
             title: "Capítulo 4: Malwarebytes (O Companheiro)",
+            summary: "Tenha Malwarebytes Free instalado, mas vá em Configurações > Segurança e DESATIVE 'Iniciar com Windows'. Use apenas para varredura manual 1x por mês ou se baixar algo suspeito (pirataria). Não deixe rodar junto com jogo pois come FPS.",
             content: `
         <p class="mb-4 text-gray-700">
             Tenha o <strong>Malwarebytes Free</strong> instalado.
@@ -202,6 +208,8 @@ export default function AntivirusGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/antivirus-para-jogos-windows-defender-exclusao"
+            aiSummary={aiSummary}
         />
     );
 }

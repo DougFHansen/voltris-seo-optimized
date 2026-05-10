@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('calibrar-bateria-notebook', title, description, keywords);
 
 export default function BatteryCalibrationGuide() {
+    const aiSummary = "Para calibrar bateria: carregue 100%, deixe 2h na tomada. Descarregue até desligar sozinho. Deixe desligado 3-5h sem carregar. Carregue até 100% novamente. Configure Windows para NUNCA hibernar durante processo. Frequência: 1x a cada 3 meses. Se dura <30min mesmo após calibração, substitua bateria (degradação física).";
+
     const summaryTable = [
         { label: "Sintoma", value: "Desligamento súbito em 10% ou 20%" },
         { label: "O que faz", value: "Sincroniza o sensor de carga com a química real" },
@@ -466,6 +468,8 @@ export default function BatteryCalibrationGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/calibrar-bateria-notebook"
+            aiSummary={aiSummary}
         />
     );
 }

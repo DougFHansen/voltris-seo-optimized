@@ -26,6 +26,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('abrir-portas-roteador-nat-aberto', title, description, keywords);
 
 export default function RouterPortGuide() {
+    const aiSummary = "Para abrir portas e conseguir NAT Aberto, primeiro habilite UPnP no roteador (solução automática). Se não funcionar, configure Port Forwarding manual: acesse painel do roteador (192.168.0.1 ou 192.168.1.1), vá em Port Forwarding/NAT, adicione as portas do jogo (Warzone: 3074, 27036, 27037) e aponte para o IP fixo do seu PC. Para consoles, use DMZ como último recurso.";
+
     const summaryTable = [
         { label: "O que é NAT", value: "Network Address Translation (sistema de tradução de IP)" },
         { label: "NAT Tipo 1 (Aberto)", value: "Ideal - sem restrições, menor lag" },
@@ -39,7 +41,7 @@ export default function RouterPortGuide() {
 
     const contentSections = [
         {
-            title: "O Que É NAT e Por Que Você Precisa Dele Aberto",
+            title: "O Que É NAT e Por Que Você Precisa Dele Aberto para jogos online",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           <strong>NAT (Network Address Translation)</strong> é o sistema que permite múltiplos dispositivos (seu PC, celular, TV) compartilharem o mesmo IP público da sua internet. Pense no NAT como um porteiro de prédio: ele controla quem entra e sai. Em jogos online, você PRECISA que esse porteiro seja "liberal" (NAT Aberto) para que outros jogadores consigam se conectar diretamente ao seu dispositivo.
@@ -95,6 +97,7 @@ export default function RouterPortGuide() {
         },
         {
             title: "Pré-Requisito: Configurar IP Fixo (ESSENCIAL)",
+            summary: "Se abrir portas sem IP fixo, quando roteador redistribuir IPs (a cada reinicialização), encaminhamento de portas irá para dispositivo ERRADO. IP fixo garante que portas sempre apontem para seu PC/console. Para PC: Configurações > Rede > Ethernet > Propriedades > Atribuição de IP > Manual. Use IP alto (192.168.1.150), máscara 255.255.255.0, gateway 192.168.1.1.",
             content: `
         <div class="bg-amber-900/10 p-5 rounded-xl border border-amber-500/20 mb-6">
           <h4 class="text-amber-400 font-bold mb-2">⚠️ ATENÇÃO: Faça Isso ANTES de Abrir Portas!</h4>
@@ -133,6 +136,7 @@ export default function RouterPortGuide() {
         },
         {
             title: "Método #1: Habilitar UPnP (Solução Automática)",
+            summary: "UPnP permite que jogos e programas abram portas automaticamente no roteador. Acesse painel do roteador (192.168.1.1 ou 192.168.0.1), faça login, procure por UPnP/NAT/Segurança, ative 'Habilitar UPnP'. Vantagens: fácil, funciona para todos jogos automaticamente. Desvantagens: menos seguro, pode não funcionar em roteadores antigos.",
             content: `
         <p class="mb-4 text-gray-700">
           <strong>UPnP (Universal Plug and Play)</strong> é uma funcionalidade que permite que jogos e programas abram portas AUTOMATICAMENTE no roteador, sem você precisar fazer manualmente. Em 2026, a maioria dos jogos AAA (Warzone, GTA V, FIFA 26) suporta UPnP.
@@ -173,6 +177,7 @@ export default function RouterPortGuide() {
         },
         {
             title: "Método #2: Port Forwarding Manual (Solução Definitiva)",
+            summary: "Port Forwarding diz ao roteador: quando alguém da internet tentar se conectar nas portas X, Y e Z, direcione para meu PC/console. É como criar atalho direto do mundo externo para seu dispositivo. No painel do roteador, vá em Port Forwarding/NAT, adicione portas do jogo (Warzone: 3074, 27036, 27037 TCP/UDP) e aponte para IP fixo do seu PC.",
             content: `
         <p class="mb-4 text-gray-700">
           <strong>Port Forwarding (Encaminhamento de Portas)</strong> é quando você diz ao roteador: "Quando alguém da internet tentar se conectar nas portas X, Y e Z, direcione essa conexão para o meu PC/console". É como criar um "atalho" direto do mundo externo para o seu dispositivo.
@@ -1119,14 +1124,16 @@ export default function RouterPortGuide() {
             keywords={keywords}
             estimatedTime="60 min"
             difficultyLevel="Avançado"
-            author="Equipe Técnica Voltris"
-            lastUpdated="Fevereiro 2026"
+            author="Equipe Rede Voltris"
+            lastUpdated="2026"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
+            pathname="/guias/abrir-portas-roteador-nat-aberto"
+            aiSummary={aiSummary}
         />
     );
 }

@@ -29,6 +29,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('valorant-reduzir-input-lag', title, description, keywords);
 
 export default function ValorantGuide() {
+    const aiSummary = "Para otimizar Valorant em 2026, configure Nvidia Reflex ON+Boost, Raw Input Buffer ON, Multithreaded Rendering ON (se tiver 6+ cores), Material Quality Low, UI Low, Vignette Off, Anti-Aliasing MSAA 2x/4x. Network Buffering: Minimum. Use GameUserSettings.ini para tweaks avançados. Desative softwares RGB conflitantes com Vanguard.";
+
     const summaryTable = [
         { label: "Reflex", value: "On + Boost" },
         { label: "Raw Input", value: "On (Mouse 8KHz)" },
@@ -41,7 +43,7 @@ export default function ValorantGuide() {
 
     const contentSections = [
         {
-            title: "Introdução: CPU Bound",
+            title: "Introdução: Por que Valorant é CPU-Bound e como isso afeta FPS",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Valorant roda até em torradeira, mas rodar a 60 FPS e rodar a 300 FPS faz uma diferença enorme no "Peeker's Advantage". Como o jogo depende muito de um único núcleo da CPU (Single Thread), qualquer processo de fundo do Windows pode causar uma micro-travada.
@@ -60,7 +62,8 @@ export default function ValorantGuide() {
       `
         },
         {
-            title: "Capítulo 1: Configurações de Vídeo (Geral)",
+            title: "Capítulo 1: Configurações de Vídeo para Reduzir Latência de Input",
+            summary: "Nvidia Reflex Low Latency deve ser configurado em On + Boost para manter a GPU em clock máximo e eliminar fila de renderização. Multithreaded Rendering deve estar On se a CPU tiver 6 núcleos ou mais, desligado em CPUs dual-core antigas para evitar stutter.",
             content: `
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
@@ -78,7 +81,8 @@ export default function ValorantGuide() {
       `
         },
         {
-            title: "Capítulo 2: Gráficos (Qualidade vs Clareza)",
+            title: "Capítulo 2: Configurações de Gráficos para Visibilidade de Inimigos",
+            summary: "Material, Texture e UI Quality devem ficar em Low para destacar inimigos. Vignette deve estar Off para não escurecer bordas da tela. VSync deve estar Off para evitar latência. Anti-Aliasing MSAA 2x ou 4x oferece melhor clareza sem impacto significativo no FPS.",
             content: `
         <table class="w-full text-sm text-left text-gray-700">
             <tbody>
@@ -118,6 +122,7 @@ export default function ValorantGuide() {
         },
         {
             title: "Capítulo 3: Raw Input Buffer (A revolução)",
+            summary: "Raw Input Buffer deve estar On para o jogo ler dados do mouse direto da API do hardware, ignorando o Windows. Isso resolve engasgamentos com mouse de alta polling rate (1000Hz, 4000Hz, 8000Hz) e deixa a mira mais direta e precisa.",
             content: `
         <p class="mb-4 text-gray-700">
             Nas configurações de "Geral" > "Mouse".
@@ -174,6 +179,7 @@ export default function ValorantGuide() {
         },
         {
             title: "Capítulo 6: Otimização de Rede (Network Buffering)",
+            summary: "Network Buffering deve ficar em Minimum para ping baixo (0-30ms) e estável, oferecendo menor delay. Use Moderate para ping instável ou alto (60ms+) para suavizar movimentação dos inimigos e evitar teletransportes. Nunca use Maximum.",
             content: `
         <p class="mb-4 text-gray-700">
             Em Geral > Rede:
@@ -286,6 +292,8 @@ export default function ValorantGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/valorant-reduzir-input-lag"
+            aiSummary={aiSummary}
         />
     );
 }

@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('protecao-ransomware', title, description, keywords);
 
 export default function RansomwareProtectionGuide() {
+  const aiSummary = "Para proteção Ransomware: ative 'Acesso a Pastas Controlado' no Windows Defender (Segurança > Proteção contra Ransomware). Backup offline é crucial: HD externo desconectado após backup (nuvem pode ser infectada se sincronizada). Se infectado, desconecte da internet, use No More Ransom (Europol) para buscar chave de descriptografia.";
+
   const summaryTable = [
     { label: "O que é", value: "Vírus que sequestra (criptografa) seus arquivos" },
     { label: "Solução Nativa", value: "Acesso a Pastas Controlado (Windows Defender)" },
@@ -713,6 +715,8 @@ export default function RansomwareProtectionGuide() {
           description: "Evite credenciais fracas que facilitam invasões."
         }
       ]}
+      pathname="/guias/protecao-ransomware"
+      aiSummary={aiSummary}
     />
   );
 }

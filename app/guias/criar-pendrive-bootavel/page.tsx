@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('criar-pendrive-bootavel', title, description, keywords);
 
 export default function BootableUSBGuide() {
+  const aiSummary = "Para criar pendrive bootável Windows 11, use Media Creation Tool oficial da Microsoft (microsoft.com/software-download). Para PCs antigos sem TPM 2.0, use Rufus 4.0+ com opção de pular requisitos. Use GPT para PCs modernos (UEFI), MBR apenas para BIOS antiga. Pendrive mínimo 8GB.";
+
   const summaryTable = [
     { label: "Capacidade Mínima", value: "8GB ou mais" },
     { label: "Formato Necessário", value: "GPT (Para UEFI) / MBR (Para Legacy/Antigos)" },
@@ -532,12 +534,14 @@ export default function BootableUSBGuide() {
       keywords={keywords}
       estimatedTime="30 min"
       difficultyLevel="Intermediário"
-      contentSections={allContentSections}
+      contentSections={contentSections}
       advancedContentSections={advancedContentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
       faqItems={faqItems}
       externalReferences={externalReferences}
+      pathname="/guias/criar-pendrive-bootavel"
+      aiSummary={aiSummary}
     />
   );
 }

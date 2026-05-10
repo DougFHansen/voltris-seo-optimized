@@ -26,6 +26,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('bios-otimizacao-xmp-tpm', title, description, keywords);
 
 export default function BiosGuide() {
+    const aiSummary = "Para otimizar a BIOS (UEFI) em 2026, ative XMP/DOCP/EXPO para liberar a velocidade máxima da RAM (ganho de até 20% FPS em jogos CPU-bound). Ative Re-Size BAR para GPU RTX 3000+ ou RX 6000+ para acessar toda VRAM. Ative SVM/VT-x para emuladores e TPM 2.0 + Secure Boot para Valorant Vanguard.";
+
     const summaryTable = [
         { label: "RAM Speed", value: "XMP / DOCP / EXPO (Ativar)" },
         { label: "GPU Boost", value: "Re-Size BAR (Ativar)" },
@@ -37,7 +39,7 @@ export default function BiosGuide() {
 
     const contentSections = [
         {
-            title: "Passo 0: Entrando na BIOS (O Portal)",
+            title: "Passo 0: Como entrar na BIOS (UEFI) do Windows 11",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           A BIOS (agora chamada UEFI) é o sistema operacional da sua placa-mãe.
@@ -53,7 +55,8 @@ export default function BiosGuide() {
       `
         },
         {
-            title: "1. XMP / DOCP / EXPO (Memória RAM)",
+            title: "1. Como ativar XMP/DOCP/EXPO para liberar velocidade máxima da RAM",
+            summary: "XMP/DOCP/EXPO é o perfil de overclock seguro testado pela fábrica que libera a velocidade máxima da RAM. RAM vem rodando no padrão JEDEC lento (2133MHz ou 4800MHz DDR5). Ativar XMP pode dar até 20% mais FPS em jogos CPU-bound como Warzone e Valorant.",
             content: `
         <p class="mb-4 text-gray-700">
           Esta é a configuração OBRIGATÓRIA #1.
@@ -69,7 +72,8 @@ export default function BiosGuide() {
       `
         },
         {
-            title: "2. Re-Size BAR / SAM (Smart Access Memory)",
+            title: "2. Como ativar Re-Size BAR/SAM para GPU acessar toda VRAM",
+            summary: "Re-Size BAR permite ao processador acessar toda VRAM da placa de vídeo de uma só vez, em vez de pequenos pedaços de 256MB. Ative Above 4G Decoding e Re-Size BAR Support para Auto/Enabled. Requer GPU RTX 3000+ ou Radeon RX 6000+.",
             content: `
         <p class="mb-4 text-gray-700">
             Tecnologia de 2020+ que permite ao processador acessar toda a VRAM da placa de vídeo de uma só vez, em vez de pequenos pedaços de 256MB.
@@ -90,6 +94,7 @@ export default function BiosGuide() {
     const advancedContentSections = [
         {
             title: "3. Virtualização (SVM / VT-x)",
+            summary: "Virtualização de hardware (SVM/VT-x) é essencial para emuladores como Bluestacks/LDPlayer e para Docker/WSL2. Sem virtualização, emuladores rodam a 10 FPS travando. Ative na BIOS se você usa emuladores Android ou desenvolvimento.",
             content: `
         <h class="text-gray-900 font-bold mb-3">Para Emuladores e Docker</h4>
         <p class="mb-4 text-gray-700">
@@ -104,6 +109,7 @@ export default function BiosGuide() {
         },
         {
             title: "4. TPM 2.0 e Secure Boot (Valorant)",
+            summary: "TPM 2.0 e Secure Boot são exigidos pelo anti-cheat Vanguard do Valorant e Windows 11. Secure Boot deve estar em Windows UEFI Mode. AMD: AMD fTPM switch. Intel: Intel PTT (Platform Trust Technology). Se Windows não bootar após mudar, Windows foi instalado em modo Legacy e precisa converter disco de MBR para GPT.",
             content: `
         <p class="mb-4 text-gray-700">
             O anti-cheat Vanguard do Valorant (e o Windows 11) exigem essas tecnologias de segurança.
@@ -198,6 +204,8 @@ export default function BiosGuide() {
             faqItems={faqItems}
             externalReferences={externalReferences}
             relatedGuides={relatedGuides}
+            pathname="/guias/bios-otimizacao-xmp-tpm"
+            aiSummary={aiSummary}
         />
     );
 }

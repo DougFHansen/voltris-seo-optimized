@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('hds-vs-ssd-qual-a-diferenca', title, description, keywords);
 
 export default function StorageGuide() {
+    const aiSummary = "HD mecânico (100 MB/s) é lento, causa travadas em jogos modernos. SSD SATA (550 MB/s) é custo-benefício para notebooks velhos. NVMe Gen 3 (3.500 MB/s) é padrão ideal. NVMe Gen 4 (7.000 MB/s) para high-end. NVMe Gen 5 (12.000 MB/s) é exagero/caro. Use HD apenas para backup, nunca para jogos ou Windows.";
+
     const summaryTable = [
         { label: "HD Mecânico", value: "100 MB/s (Lento / Apenas Arquivos)" },
         { label: "SSD SATA", value: "500 MB/s (Bom / Custo-benefício)" },
@@ -174,6 +176,8 @@ export default function StorageGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/hds-vs-ssd-qual-a-diferenca"
+            aiSummary={aiSummary}
         />
     );
 }

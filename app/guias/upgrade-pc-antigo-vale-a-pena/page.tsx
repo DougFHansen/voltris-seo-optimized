@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('upgrade-pc-antigo-vale-a-pena', title, description, keywords);
 
 export default function OldPCUpgradeGuide() {
+    const aiSummary = "Para PC antigo (2019-2022), upgrades que valem: SSD SATA (maior ganho perceptível), RAM 8GB→16GB Dual Channel, troca de pasta térmica. Não vale: GPU moderna em CPU <6 núcleos, DDR3. Se precisa comprar Fonte+Gabinete+GPU junto, melhor montar PC novo em plataforma AM5/Intel 12ª+.";
+
     const summaryTable = [
         { label: "Upgrade Vital", value: "SSD (Sair do HD é obrigatório)" },
         { label: "Upgrade Barato", value: "Memória RAM (Mínimo 16GB)" },
@@ -104,6 +106,10 @@ export default function OldPCUpgradeGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={[]}
+            externalReferences={[]}
+            pathname="/guias/upgrade-pc-antigo-vale-a-pena"
+            aiSummary={aiSummary}
         />
     );
 }

@@ -26,6 +26,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('g-sync-freesync-configuracao-correta', title, description, keywords);
 
 export default function SyncGuide() {
+    const aiSummary = "Para G-Sync/FreeSync: V-Sync ON no Painel Nvidia, V-Sync OFF no jogo. FPS Cap em Hz-3 (ex: 141 FPS para 144Hz). Isso garante tearing zero com latência mínima. G-Sync Compatible funciona bem em monitores FreeSync. Use LFC (Low Framerate Compensation) abaixo de 48Hz.";
+
     const summaryTable = [
         { label: "V-Sync (NV Painel)", value: "LIGADO (Sempre)" },
         { label: "V-Sync (In-Game)", value: "DESLIGADO (Sempre)" },
@@ -38,7 +40,7 @@ export default function SyncGuide() {
 
     const contentSections = [
         {
-            title: "A Regra de Ouro do G-Sync (Bíblia BlurBusters)",
+            title: "A Regra de Ouro do G-Sync: Por que V-Sync no Painel é essencial",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Existe um mito de que "V-Sync adiciona lag, logo devo desligar". Isso é verdade para monitores fixos de 60Hz. Mas no mundo do VRR (G-Sync/FreeSync), a regra muda.
@@ -47,25 +49,11 @@ export default function SyncGuide() {
             O site BlurBusters provou com câmeras de alta velocidade que o G-Sync PRECISA do V-Sync ativado no Painel de Controle para cobrir o "Tearing de Frametime". Se você usar G-Sync sem V-Sync, você ainda terá rasgos na parte inferior da tela quando o frametime variar.
         </p>
 
-        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 my-8">
-            <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
-                <span class="text-xl">⚖️</span> Auto-Sync via Voltris
-            </h4>
-            <p class="text-gray-700 mb-4">
-                Configurar o trio (G-Sync + V-Sync + FPS Cap) manualmente dá trabalho. O <strong>Voltris Optimizer</strong> aplica um perfil global "E-Sports Sync" que configura o limitador de FPS baseado no seu monitor e as travas de V-Sync no driver automaticamente.
-            </p>
-            <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
-                Otimizar Sync
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
-        </div>
       `
         },
         {
-            title: "Passo 1: A Configuração Sagrada",
+            title: "Passo 1: Configuração correta de G-Sync, V-Sync e FPS Cap para tearing zero",
+            summary: "Configuração correta G-Sync: Painel Nvidia > Configure G-Sync > Enable for Full screen mode. Painel Nvidia > Gerenciar Configurações 3D > Vertical Sync LIGADO. DENTRO DO JOGO: V-Sync DESLIGADO, FPS Limit DESLIGADO ou ilimitado. Isso garante tearing zero com latência mínima.",
             content: `
         <div class="bg-[#0A0A0F] p-6 rounded-xl border border-white/5 space-y-4">
             <h class="text-gray-900 font-bold text-xl mb-4 border-b border-white/10 pb-2">Siga EXATAMENTE nesta ordem:</h4>
@@ -112,6 +100,7 @@ export default function SyncGuide() {
         },
         {
             title: "Por que travar 3 FPS abaixo?",
+            summary: "G-Sync só funciona dentro do range do monitor (ex: 48Hz até 144Hz). Se jogo atinge 145 FPS, G-Sync desliga e V-Sync entra, causando input lag massivo. Travando em 141 FPS, garante que jogo nunca encoste no teto de 144Hz, mantendo G-Sync 100% ativo e V-Sync do driver nunca acionado de verdade.",
             content: `
         <p class="mb-4 text-gray-700">
             O G-Sync só funciona <strong>dentro do range</strong> do monitor (Ex: 48Hz até 144Hz).
@@ -127,6 +116,7 @@ export default function SyncGuide() {
     const advancedContentSections = [
         {
             title: "LFC (Low Framerate Compensation): O Salvador",
+            summary: "Se FPS cair para 40 FPS em monitor 144Hz (alcance mínimo 48Hz), G-Sync deveria desligar. LFC duplica Hz para acompanhar: GPU 40 FPS, Monitor 80 Hz (mostra cada frame 2 vezes). Isso mantém fluidez visual mesmo com performance ruim.",
             content: `
             <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
                 <h4 class="text-orange-400 font-bold mb-4 text-xl">O que acontece se meu FPS cair muito?</h4>
@@ -218,11 +208,12 @@ export default function SyncGuide() {
             difficultyLevel="Avançado"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/g-sync-freesync-configuracao-correta"
+            aiSummary={aiSummary}
         />
     );
 }

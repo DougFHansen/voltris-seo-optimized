@@ -32,7 +32,7 @@ export default function FortniteTexturesFixGuide() {
 
     const contentSections = [
         {
-            title: "O pesadelo das construções de massinha em 2026",
+            title: "Introdução: Por que texturas do Fortnite não carregam e como funciona streaming",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Em 2026, com o aumento da fidelidade visual do Fortnite, a Epic implementou um sistema onde o jogo baixa texturas enquanto você joga. Se a sua internet oscila ou se o seu disco (SSD/HD) não consegue ler os arquivos rápido o suficiente, você acaba caindo em um mapa que parece feito de "massinha" ou com construções que não carregam a colisão, fazendo você atravessar o chão.
@@ -40,7 +40,8 @@ export default function FortniteTexturesFixGuide() {
       `
         },
         {
-            title: "1. A Solução do Epic Games Launcher",
+            title: "1. Como pré-baixar ativos de stream no Epic Games Launcher",
+            summary: "No Epic Launcher, Biblioteca > três pontos sob Fortnite > Opções > marque 'Pré-baixar Ativos de Stream' (baixa texturas antes de jogar). Desmarque 'Texturas de Alta Resolução' se tem menos de 12GB RAM ou pouco espaço. Isso evita carregamento durante partida.",
             content: `
         <p class="mb-4 text-gray-700">Este é o passo mais eficaz para resolver o problema permanentemente:</p>
         <ol class="list-decimal list-inside text-gray-700 space-y-3">
@@ -53,7 +54,8 @@ export default function FortniteTexturesFixGuide() {
       `
         },
         {
-            title: "2. Limite de FPS e Uso de Disco",
+            title: "2. Como configurar limite de FPS para reduzir uso de disco",
+            summary: "Se CPU está em 100%, não consegue processar carregamento do mapa. No menu de vídeo, coloque Limite de Taxa de Quadros. Se monitor é 60Hz, limite a 60 FPS ou 120 FPS. Isso libera folga para PC focar em carregar texturas e malhas de colisão antes de chegar no solo após pular do ônibus.",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h class="text-gray-900 font-bold mb-2">Poupe o Hardware:</h4>
@@ -65,7 +67,8 @@ export default function FortniteTexturesFixGuide() {
       `
         },
         {
-            title: "3. O \"Modo HDD\" e a Qualidade dos Shaders",
+            title: "3. Como configurar Malha Baixo para HD mecânico e Modo de Jogo",
+            summary: "Se ainda joga em HD mecânico, construções sempre demorarão. Solução temporária: mudar Malha para Baixo (Geometria Mobile) - jogo exige menos velocidade de leitura do disco, estruturas aparecem instantaneamente embora com visual menos detalhado. Em 2026, certifique-se que Windows 11 está configurado para Modo de Jogo Ativado em Configurações > Jogos.",
             content: `
         <p class="mb-4 text-gray-700">
             <strong>Check final 2026:</strong> 

@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('otimizacoes-para-notebook-gamer', title, description, keywords);
 
 export default function LaptopGuide() {
+    const aiSummary = "Para otimizar notebook gamer, sempre jogue na tomada (bateria limita 70%). Ative MUX Switch/GPU dedicada no software da fabricante (Armoury Crate/NitroSense). Use ThrottleStop (Intel) ou Ryzen Controller para undervolt e reduzir temperatura. Use cooler pad. Limpe poeira e troque pasta térmica a cada 12-18 meses.";
+
     const summaryTable = [
         { label: "Maior Inimigo", value: "Calor (Thermal Throttling)" },
         { label: "Energia", value: "Sempre na Tomada para Jogar" },
@@ -190,6 +192,8 @@ export default function LaptopGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/otimizacoes-para-notebook-gamer"
+            aiSummary={aiSummary}
         />
     );
 }

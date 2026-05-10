@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('como-trocar-pasta-termica-cpu-gpu-guia', title, description, keywords);
 
 export default function PasteGuide() {
+    const aiSummary = "Para trocar pasta térmica, use pasta de qualidade (Arctic MX-6, Thermal Grizzly Kryonaut) e álcool isopropílico 99%. Na CPU, aplique em formato X e aperte cooler em cruz. Na GPU, cuidado com garantia e use método gota central. Troque a cada 12-18 meses. Evite pasta branca barata (seca em 1 mês).";
+
     const summaryTable = [
         { label: "Material 1", value: "Pasta Térmica de Prata/Cerâmica" },
         { label: "Material 2", value: "Álcool Isopropílico 99%" },
@@ -39,7 +41,7 @@ export default function PasteGuide() {
 
     const contentSections = [
         {
-            title: "Introdução: Quando trocar?",
+            title: "Introdução: Sinais de que a pasta térmica precisa ser trocada",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Se as temperaturas subiram 5-10C em comparação a quando o PC era novo, ou se a ventoinha vive em 100% fazendo barulho, é hora de trocar.
@@ -48,7 +50,8 @@ export default function PasteGuide() {
       `
         },
         {
-            title: "Capítulo 1: Materiais Necessários",
+            title: "Capítulo 1: Materiais necessários para troca de pasta térmica",
+            summary: "Kit básico: Pasta térmica de qualidade (Arctic, Cooler Master, Thermal Grizzly) - não use branca barata que resseca em 1 mês. Álcool isopropílico 99% para limpeza (não use álcool de cozinha que tem água e oxida). Filtro de café para limpar (não solta fiapos).",
             content: `
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
@@ -63,7 +66,8 @@ export default function PasteGuide() {
       `
         },
         {
-            title: "Capítulo 2: CPU (Processador)",
+            title: "Capítulo 2: Como trocar pasta térmica na CPU (Processador)",
+            summary: "Desligue PC e tire da tomada. Remova cooler - se AMD, rode jogo antes para esquentar pasta e gire cooler levemente ao retirar para não arrancar processador. Limpe pasta velha com álcool até brilhar. Aplique nova pasta em formato X (melhor custo-benefício) ou espalhar. Recoloque cooler apertando parafusos em cruz para pressão igual.",
             content: `
         <p class="mb-4 text-gray-700">
             1. Desligue o PC e tire da tomada.
@@ -80,7 +84,8 @@ export default function PasteGuide() {
       `
         },
         {
-            title: "Capítulo 3: GPU (Placa de Vídeo) - Atenção",
+            title: "Capítulo 3: Como trocar pasta térmica na GPU (Placa de Vídeo) com cuidado",
+            summary: "Abrir GPU geralmente rompe lacre de garantia (verifique marca, MSI/Galax permitem abrir). Solte parafusos traseiros e cabos de ventoinhas/LED com cuidado. Chip da GPU é Direct Die (cristal exposto) - PRECISA cobrir 100%. Use método espalhar ou X generoso. Se parte ficar sem pasta, hotspot bate 105C e placa trava.",
             content: `
         <p class="mb-4 text-gray-700">
             Abrir a GPU geralmente rompe o lacre de garantia (verifique sua marca, MSI/Galax permitem abrir).
@@ -194,11 +199,12 @@ export default function PasteGuide() {
             difficultyLevel="Avançado"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/como-trocar-pasta-termica-cpu-gpu-guia"
+            aiSummary={aiSummary}
         />
     );
 }

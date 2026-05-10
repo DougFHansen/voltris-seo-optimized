@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('hibernacao-vs-suspensao-qual-o-melhor', title, description, keywords);
 
 export default function HibernationGuide() {
+    const aiSummary = "Suspensão (Sleep): mantém dados na RAM, rápido retorno (1s), consome pouca energia. Ideal para pausas curtas (2-3h). Risco: queda de energia perde dados. Hibernação: salva RAM no disco (hiberfil.sys), zero energia, retorno lento. Desgasta SSD com escritas. Desligar: limpa memória, início zero. Fast Startup é hibernação parcial - use Reiniciar para bugs.";
+
     const summaryTable = [
         { label: "Suspensão", value: "Rápida / Mantém dados na RAM / Consome pouca energia" },
         { label: "Hibernação", value: "Lenta / Salva dados no disco / Consome zero energia" },
@@ -124,6 +126,8 @@ export default function HibernationGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/hibernacao-vs-suspensao-qual-o-melhor"
+            aiSummary={aiSummary}
         />
     );
 }

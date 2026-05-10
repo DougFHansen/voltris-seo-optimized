@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('overclock-gpu-msi-afterburner', title, description, keywords);
 
 export default function OverclockGuide() {
+    const aiSummary = "Para overclock GPU seguro, use MSI Afterburner. Aumente Power Limit ao máximo. Core Clock: +50MHz inicial, teste com Kombustor/Furmark, aumente em +25MHz até ficar instável. Memory Clock: +200MHz inicial. Mantenha temperatura <85C. Undervolt (Curva de Voltagem) reduz temperatura sem perder performance. Ganho médio: 10-15% FPS.";
+
     const summaryTable = [
         { label: "Software", value: "MSI Afterburner (Gratuito)" },
         { label: "Risco", value: "Baixo (Se não mexer na Voltagem)" },
@@ -272,6 +274,8 @@ export default function OverclockGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/overclock-gpu-msi-afterburner"
+            aiSummary={aiSummary}
         />
     );
 }

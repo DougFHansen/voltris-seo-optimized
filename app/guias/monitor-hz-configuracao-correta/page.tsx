@@ -29,6 +29,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('monitor-hz-configuracao-correta', title, description, keywords);
 
 export default function MonitorGuide() {
+    const aiSummary = "Para configurar monitor corretamente, use cabo DisplayPort (nunca HDMI antigo). No Windows, mude taxa de atualização para o máximo. No monitor, desative Eco Mode. Configure Overdrive em Normal/Fast (nunca Extreme). Use TestUFO.com para verificar Hz real. Para jogos FPS, use strobing (DyAc/ELMB) mas apenas se FPS for estável.";
+
     const summaryTable = [
         { label: "Ferramenta", value: "UFO Test / CRU" },
         { label: "Cabo", value: "DisplayPort (Sempre)" },
@@ -41,7 +43,7 @@ export default function MonitorGuide() {
 
     const contentSections = [
         {
-            title: "Introdução: Hertz não é tudo",
+            title: "Introdução: Por que Hz do monitor não é tudo e como configurar corretamente",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Muitos gamers gastam R$ 3.000 em um monitor 240Hz, conectam o cabo HDMI antigo e jogam a 60Hz por anos sem saber. Pior ainda: ativam o modo "Overdrive Extreme" achando que estão ganhando performance, mas estão criando um rastro de "Inverse Ghosting" que piora a mira.
@@ -52,7 +54,8 @@ export default function MonitorGuide() {
       `
         },
         {
-            title: "Capítulo 1: O Básico Bem Feito (Hz Real)",
+            title: "Capítulo 1: Como verificar e configurar Hz real do monitor no Windows",
+            summary: "Use cabo DisplayPort que veio na caixa (HDMI antigo limita Hz). No Windows: Configurações > Sistema > Tela > Exibição Avançada > Taxa de atualização, mude de 60Hz para máximo. No monitor, desative Eco Mode ou Power Saving que podem limitar Hz. Teste em testufo.com - se aparecer 60 fps em monitor 144Hz, algo está errado.",
             content: `
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-5 rounded-xl border border-white/5">
@@ -71,7 +74,8 @@ export default function MonitorGuide() {
       `
         },
         {
-            title: "Capítulo 2: Overdrive e Ghosting (Ajuste Fino)",
+            title: "Capítulo 2: Como configurar Overdrive para eliminar Ghosting sem Inverse Ghosting",
+            summary: "Overdrive aplica voltagem extra para acelerar mudança de cor do pixel. Overdrive Desligado = muitos borrões (Ghosting). Overdrive Normal/Fast = ponto doce, nitidez boa sem artefatos. Overdrive Extreme = PERIGO, causa Inverse Ghosting (Corona) com rastro branco brilhante que piora precisão em FPS.",
             content: `
         <p class="mb-4 text-gray-700">
             Monitores LCD demoram para mudar a cor do pixel (GtG - Gray to Gray). O "Overdrive" aplica uma voltagem extra para acelerar isso.
@@ -97,6 +101,7 @@ export default function MonitorGuide() {
         },
         {
             title: "Capítulo 3: Strobing (DyAc, ELMB, ULMB)",
+            summary: "Monitor pisca luz de fundo preto entre cada frame para limpar persistência de visão na retina. BenQ: DyAc/DyAc+ (melhor do mercado). ASUS: ELMB. Nvidia: ULMB 2. LIGUE para CS, Valorant e R6 - clareza de movimento CRT-Level. Para jogos Single Player, desligue pois pode causar dor de cabeça (PWM flickering).",
             content: `
         <p class="mb-4 text-gray-700">
             A tecnologia secreta dos Pros de CS2. O monitor pisca a luz de fundo (backlight) preto entre cada frame para limpar a persistência de visão na sua retina.
@@ -113,6 +118,7 @@ export default function MonitorGuide() {
         },
         {
             title: "Capítulo 4: Tecnologias de Painel (TN vs IPS vs OLED)",
+            summary: "TN: Ultra Rápido, cores ruins (lavadas), uso ideal apenas CS2/Valorant Pro. IPS: Muito Rápido, cores excelentes, melhor All-Rounder. OLED: Instantâneo (0.03ms), cores perfeitas (HDR), futuro mas caro. IPS é recomendado para maioria dos gamers por equilíbrio entre performance e cores.",
             content: `
         <p class="mb-4 text-gray-700">
             Qual a diferença real em 2026?
@@ -154,6 +160,7 @@ export default function MonitorGuide() {
     const advancedContentSections = [
         {
             title: "Capítulo 5: Overclock de Monitor (CRU)",
+            summary: "Use CRU (Custom Resolution Utility) para forçar monitor de 60Hz para 75Hz ou 144Hz para 165Hz. É seguro (monitor mostra Out of Range se não aguentar). Baixe CRU, selecione monitor, em Detailed Resolutions clique Edit, mude Refresh Rate em passos de 5Hz. Rode restart64.exe para reiniciar driver. Muitos painéis de laptop 60Hz chegam a 90Hz facilmente.",
             content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
             <h4 class="text-orange-400 font-bold mb-4 text-xl">Custom Resolution Utility (Hacking)</h4>
@@ -289,6 +296,8 @@ export default function MonitorGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/monitor-hz-configuracao-correta"
+            aiSummary={aiSummary}
         />
     );
 }

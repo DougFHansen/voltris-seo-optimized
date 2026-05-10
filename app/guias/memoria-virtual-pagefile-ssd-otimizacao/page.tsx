@@ -28,6 +28,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('memoria-virtual-pagefile-ssd-otimizacao', title, description, keywords);
 
 export default function PagefileGuide() {
+    const aiSummary = "Para configurar pagefile corretamente, coloque no SSD (nunca em HD). Use tamanho fixo (Min=Max) para evitar fragmentação. Com 8GB RAM: 16000MB. Com 16GB RAM: 12000-16000MB. Com 32GB RAM: 4000-8000MB. Nunca desative - jogos modernos como Warzone/Tarkov precisam para não crashar.";
+
     const summaryTable = [
         { label: "Local", value: "SSD (Obrigatório)" },
         { label: "Tamanho (16GB RAM)", value: "16GB - 24GB" },
@@ -46,7 +48,7 @@ export default function PagefileGuide() {
       `
         },
         {
-            title: "Capítulo 1: Onde configurar",
+            title: "Capítulo 1: Como acessar configurações de Memória Virtual no Windows 11",
             content: `
         <div class="space-y-4">
             <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
@@ -64,6 +66,7 @@ export default function PagefileGuide() {
         },
         {
             title: "Capítulo 2: Tamanho Fixo vs Gerenciado",
+            summary: "Recomenda Tamanho Fixo (mesmo valor em Inicial e Máximo). Se deixar variável (1GB a 20GB), Windows gasta CPU redimensionando arquivo durante jogo e fragmenta disco. Fixando tamanho, arquivo é criado uma vez e fica estático e rápido.",
             content: `
         <p class="mb-4 text-gray-700">
             Recomendamos <strong>Tamanho Fixo</strong> (Colocar o mesmo valor em Inicial e Máximo).
@@ -72,7 +75,8 @@ export default function PagefileGuide() {
       `
         },
         {
-            title: "Capítulo 3: Quanto colocar?",
+            title: "Capítulo 3: Tamanho ideal de Pagefile para diferentes quantidades de RAM",
+            summary: "Regra prática para Gamers (valores em MB): 8GB RAM = 16000 MB. 16GB RAM = 16000 MB ou 12000 MB (essencial para Warzone/Tarkov). 32GB RAM = 4096 MB ou deixe Gerenciado (raramente usa, só por segurança). Nunca desative pagefile - jogos modernos precisam para não crashar.",
             content: `
         <p class="mb-4 text-gray-700">
             Regra prática para Gamers (Valores em MB):
@@ -87,6 +91,7 @@ export default function PagefileGuide() {
     const advancedContentSections = [
         {
             title: "Capítulo 4: SSD vs HD",
+            summary: "NUNCA use Pagefile no HD mecânico. HD é lento e causará travada bruta (stutter) de 1 segundo se jogo precisar ler do pagefile. Configure Pagefile APENAS no SSD mais rápido (NVMe). Desative (Sem arquivo de paginação) nos HDs secundários.",
             content: `
         <p class="mb-4 text-gray-700">
             <strong>NUNCA use Pagefile no HD mecânico.</strong>
@@ -192,11 +197,12 @@ export default function PagefileGuide() {
             difficultyLevel="Intermediário"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/memoria-virtual-pagefile-ssd-otimizacao"
+            aiSummary={aiSummary}
         />
     );
 }

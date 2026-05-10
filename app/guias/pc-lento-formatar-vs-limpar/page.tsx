@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('pc-lento-formatar-vs-limpar', title, description, keywords);
 
 export default function FormatVsCleanGuide() {
+    const aiSummary = "Limpeza resolve 70% lentidões: desabilite inicialização apps (Gerenciador Tarefas), limpe disco (Windows.old), desinstale bloatware. Formate se: Windows >2min no SSD, erros .dll constantes, vírus/ransomware, trocou placa-mãe/CPU. Use 'Restaurar PC' Windows 11 para reinstalar mantendo arquivos pessoais.";
+
     const summaryTable = [
         { label: "Limpar", value: "Rápido / Mantém arquivos / Resolve 70% das lentidões" },
         { label: "Formatar", value: "Demorado / Remove tudo / Resolve 100% dos erros de software" },
@@ -103,6 +105,10 @@ export default function FormatVsCleanGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={[]}
+            externalReferences={[]}
+            pathname="/guias/pc-lento-formatar-vs-limpar"
+            aiSummary={aiSummary}
         />
     );
 }

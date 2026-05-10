@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('cs2-melhores-comandos-console-fps', title, description, keywords);
 
 export default function CS2OptimizationGuide() {
+  const aiSummary = "Para otimizar CS2 em 2026, use launch options: -novid -nojoy -limitvprocs -high. No console: cl_showfps 1, fps_max 0 (ou Hz-3), r_dynamic 0, cl_interp 0. Ative NVIDIA Reflex ON+Boost. Limpe o shader cache regularmente. CS2 agora depende mais da GPU que do CPU, ao contrário do CS:GO.";
+
   const summaryTable = [
     { label: "Engine", value: "Source 2" },
     { label: "Arquitetura", value: "Sub-Tick (Servidor) + 64-bit" },
@@ -38,34 +40,20 @@ export default function CS2OptimizationGuide() {
 
   const contentSections = [
     {
-      title: "Adeus Source 1, Olá Source 2: O Que Mudou?",
+      title: "Adeus Source 1, Olá Source 2: O que mudou na engine do CS2",
       content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O Counter-Strike 2 não é apenas uma atualização visual; é uma reescrita total da engine física e de rede. Enquanto o CS:GO era dependente quase exclusivamente da CPU (single-core speed), o CS2 utiliza a GPU de forma intensiva para renderizar fumaças volumétricas, iluminação sub-surface e texturas PBR de alta resolução.
         </p>
         <p class="mb-6 text-gray-700 leading-relaxed">
-          Isso significa que muitos comandos antigos de <code>launch options</code> (como <code>-high</code>, <code>-threads</code>, <code>-nod3d9ex</code>) agora são <strong>inúteis ou prejudiciais</strong>. Em 2026, otimizar CS2 exige uma abordagem limpa e moderna, focada no sistema de Sub-Tick e na estabilidade do Frame Time (1% Lows).
+          Isso significa que muitos comandos antigos de <code>launch options</code> (como <code>-tickrate 128</code>, <code>-novid</code>) agora são <strong>inúteis ou prejudiciais</strong>. Em 2026, otimizar CS2 exige uma abordagem limpa e moderna, focada no sistema de Sub-Tick e na estabilidade do Frame Time (1% Lows).
         </p>
 
-        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 my-8">
-            <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
-                <span class="text-xl">📡</span> Otimização de Rota e Sub-Tick
-            </h4>
-            <p class="text-gray-700 mb-4">
-                O sistema Sub-Tick do CS2 envia pacotes de input com carimbos de tempo precisos. Qualquer instabilidade na rede (Jitter) faz os tiros "sumirem". O <strong>Voltris Optimizer</strong> ajusta o protocolo TCP/IP do Windows e desativa o "Nagle's Algorithm" para garantir que seus pacotes cheguem ao servidor Valve sem fila de espera no adaptador de rede.
-            </p>
-            <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
-                Estabilizar Ping com Voltris
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
-        </div>
       `
     },
     {
-      title: "Entendendo o Sub-Tick: Por que você erra o tiro?",
+      title: "Entendendo o Sub-Tick: Por que você erra o tiro no CS2",
+      summary: "Sub-Tick do CS2 envia pacotes de input com carimbos de tempo precisos, permitindo que o servidor saiba o momento exato entre ticks que você clicou. Isso elimina o problema de tiros sumirem em intervalos de tick, mas exige estabilidade de rede (Jitter baixo) para funcionar corretamente.",
       content: `
         <p class="mb-4 text-gray-700">
             No CS:GO, o servidor "lia" suas ações 64 vezes por segundo (ou 128 vezes em Faceit). No CS2, o servidor sabe o momento <strong>exato</strong> entre os ticks que você clicou.
@@ -124,6 +112,7 @@ export default function CS2OptimizationGuide() {
     },
     {
       title: "1. Launch Options: O Que Ainda Funciona?",
+      summary: "Launch options seguras para CS2 em 2026: -nojoy -softparticlesdefaultoff +fps_max 0 +cl_showfps 1 -vulkan. O comando -high causa instabilidade de áudio e não deve ser usado. Vulkan pode dar +20% FPS em placas AMD e Linux, mas pode piorar em Nvidia antigas.",
       content: `
         <p class="mb-4 text-gray-700">
             Limpe suas opções de inicialização antigas. A maioria dos comandos antigos (<code>-tickrate 128</code>, <code>-novid</code>) foi removida ou incorporada.
@@ -145,6 +134,7 @@ export default function CS2OptimizationGuide() {
     },
     {
       title: "2. Comandos de Console Essenciais (Autoexec)",
+      summary: "Comandos essenciais para autoexec.cfg: cl_updaterate 128 força atualização máxima, cl_interp 0.015625 ajusta interpolação para conexão estável, cl_interp_ratio 1 reduz buffer de pacotes, fps_max 0 libera frame limiter. Jump-throw bind ainda é necessário para precisão de pixel perfeita.",
       content: `
         <p class="mb-4 text-gray-700">
             Você deve criar um arquivo <code>autoexec.cfg</code> em <code>game/csgo/cfg/</code> para carregar esses comandos sempre que abrir o jogo.
@@ -175,6 +165,7 @@ export default function CS2OptimizationGuide() {
     },
     {
       title: "3. Configurações de Vídeo: Otimizando Source 2",
+      summary: "Boost Player Contrast deve estar Enabled para ver inimigos em cantos escuros. Vertical Sync Disabled é obrigatório. MSAA 2x ou 4x é recomendado, CMAA2 é alternativa mais leve. Global Shadow Quality High/Medium é tático. Particle Detail Low é essencial para não travar em Smoke/HE. NVIDIA Reflex Enabled + Boost é obrigatório.",
       content: `
         <p class="mb-4 text-gray-700">
             O menu de vídeo "Advanced Video" mudou tudo.
@@ -318,6 +309,8 @@ export default function CS2OptimizationGuide() {
       relatedGuides={relatedGuides}
       faqItems={faqItems}
       externalReferences={externalReferences}
+      pathname="/guias/cs2-melhores-comandos-console-fps"
+      aiSummary={aiSummary}
     />
   );
 }

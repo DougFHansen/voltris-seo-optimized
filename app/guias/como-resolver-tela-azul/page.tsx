@@ -29,6 +29,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('como-resolver-tela-azul', title, description, keywords);
 
 export default function BSODGuide() {
+  const aiSummary = "Para resolver BSOD, use BlueScreenView para analisar minidumps (C:\\Windows\\Minidump). Causas comuns: drivers desatualizados (40%), RAM defeituosa (30%), overclock instável (20%). Teste RAM com MemTest86 e use Driver Verifier para isolar driver problemático. Faça backup antes de diagnósticos.";
+
   const summaryTable = [
     { label: "Ferramenta Principal", value: "BlueScreenView + WinDbg" },
     { label: "Teste de Hardware", value: "MemTest86 + Prime95" },
@@ -43,7 +45,7 @@ export default function BSODGuide() {
 
   const contentSections = [
     {
-      title: "O Que É a Tela Azul da Morte e Por Que Ela Existe?",
+      title: "O Que É a Tela Azul da Morte (BSOD) e Por Que Ela Existe no Windows",
       content: `
         <div class="space-y-6">
           <p class="text-gray-700 leading-relaxed text-lg">
@@ -167,6 +169,7 @@ export default function BSODGuide() {
     },
     {
       title: "Decodificando os Códigos de Erro: Os 10 BSODs Mais Comuns em 2026",
+      summary: "Causas de BSOD em 2026: 40% drivers desatualizados/incompatíveis, 30% memória RAM defeituosa, 20% overclock instável, 10% hardware defeituoso. Use BlueScreenView para analisar minidumps em C:\\Windows\\Minidump. MEMORY_MANAGEMENT (0x0000001A) é o mais comum, geralmente causado por RAM defeituosa ou XMP instável.",
       content: `
         <div class="space-y-6">
           <p class="text-gray-700 leading-relaxed">
@@ -384,6 +387,7 @@ export default function BSODGuide() {
   const advancedContentSections = [
     {
       title: "Ferramentas Profissionais de Diagnóstico: BlueScreenView e WinDbg",
+      summary: "BlueScreenView é ferramenta iniciante para análise rápida de minidumps em C:\\Windows\\Minidump. WinDbg é ferramenta avançada para análise profunda. BlueScreenView mostra driver causador do crash e código de erro. WinDbg permite análise de stack trace e debugging avançado.",
       content: `
         <div class="space-y-6">
           <p class="text-gray-700 leading-relaxed">
@@ -524,6 +528,7 @@ export default function BSODGuide() {
     },
     {
       title: "Reparando o Windows: SFC, DISM e Restauração do Sistema",
+      summary: "SFC (System File Checker) verifica e repara arquivos de sistema corrompidos. Execute 'sfc /scannow' no CMD como Administrador. DISM repara a imagem do Windows com comando 'DISM /Online /Cleanup-Image /RestoreHealth'. Restauração do Sistema pode reverter o Windows para um ponto anterior se BSOD começou após atualização.",
       content: `
         <div class="space-y-6">
           <p class="text-gray-700 leading-relaxed">
@@ -774,15 +779,16 @@ export default function BSODGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="40 min"
-      difficultyLevel="Avançado"
+      estimatedTime="45 min"
+      difficultyLevel="Intermediário"
       contentSections={contentSections}
       advancedContentSections={advancedContentSections}
-      additionalContentSections={additionalContentSections}
       summaryTable={summaryTable}
       relatedGuides={relatedGuides}
       faqItems={faqItems}
       externalReferences={externalReferences}
+      pathname="/guias/como-resolver-tela-azul"
+      aiSummary={aiSummary}
     />
   );
 }

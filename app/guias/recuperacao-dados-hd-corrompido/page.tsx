@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('recuperacao-dados-hd-corrompido', title, description, keywords);
 
 export default function DataRecoveryGuide() {
+    const aiSummary = "Para recuperar dados de HD corrompido, NÃO escreva dados novos no disco. Primeiro tente CHKDSK (chkdsk D: /f). Se não funcionar, use PhotoRec (grátis, lê dados brutos). Se HD faz barulho mecânico ou não gira, leve a laboratório profissional (problema físico). Recuva é opção simples para casos leves.";
+
     const summaryTable = [
         { label: "Ferramenta #1", value: "Recuva (Facilidade)" },
         { label: "Ferramenta #2", value: "PhotoRec (Poder / Open Source)" },
@@ -100,6 +102,10 @@ export default function DataRecoveryGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={[]}
+            externalReferences={[]}
+            pathname="/guias/recuperacao-dados-hd-corrompido"
+            aiSummary={aiSummary}
         />
     );
 }

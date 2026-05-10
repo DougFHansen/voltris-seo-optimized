@@ -29,6 +29,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('amd-adrenalin-configuracao-competitiva', title, description, keywords);
 
 export default function AmdGuide() {
+    const aiSummary = "Para otimizar placas AMD Radeon RX 6000/7000, ative Radeon Anti-Lag 2 para reduzir input lag em até 30%, desative Radeon Boost que causa inconsistência visual, configure Tessellation Override para 8x ou 16x (padrão 64x consome FPS), e use Texture Filtering em Performance. Para ganho extra, faça Undervolt seguro reduzindo voltagem em 25-50mV.";
+
     const summaryTable = [
         { label: "Software", value: "Adrenalin 24.x+" },
         { label: "Anti-Lag", value: "Ligado (Nível 2 em CS2)" },
@@ -42,7 +44,7 @@ export default function AmdGuide() {
 
     const contentSections = [
         {
-            title: "Introdução: A Filosofia Radeon",
+            title: "Introdução: Filosofia do AMD Adrenalin e recursos que causam lag",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Diferente do painel Nvidia que é sóbrio, o AMD Adrenalin é um hub completo de jogos. Isso é bom e ruim. Bom porque temos ferramentas de Overclock embutidas (WattMan). Ruim porque ele vem entupido de recursos como "Radeon Boost" que prometem performance mas destroem a qualidade da imagem dinamicamente.
@@ -61,7 +63,8 @@ export default function AmdGuide() {
       `
         },
         {
-            title: "Aba Gaming: Configurações Globais",
+            title: "Aba Gaming: Configurações Globais do AMD Adrenalin para jogos competitivos",
+            summary: "Radeon Anti-Lag deve estar LIGADO para sincronizar CPU com GPU e reduzir input lag em até 30%. Radeon Boost deve estar DESLIGADO pois reduz resolução dinamicamente ao mover mouse, causando inconsistência visual. Radeon Image Sharpening pode ser usado se monitor tem baixa resolução.",
             content: `
         <p class="mb-4 text-gray-700">
             Vá em <strong>Gaming > Global Graphics</strong>. Ignore os perfis "eSports" ou "Gaming" predefinidos. Vamos customizar.
@@ -124,6 +127,7 @@ export default function AmdGuide() {
         },
         {
             title: "Aba Avançada: Onde a Performance Mora",
+            summary: "Texture Filtering Quality deve estar em Performance (diferença visual para High é nula, mas ganha estabilidade). Surface Format Optimization Enabled permite driver mudar formatos de textura antigos para novos mais rápidos. Tessellation Mode Override com Maximum Tessellation Level em 8x ou 16x (padrão 64x consome FPS). Morphological Anti-Aliasing deve estar DESLIGADO.",
             content: `
         <p class="mb-4 text-gray-700">
             Role para baixo e abra a seção "Advanced". É aqui que ganhamos FPS de graça.
@@ -147,6 +151,7 @@ export default function AmdGuide() {
     const advancedContentSections = [
         {
             title: "RSR (Radeon Super Resolution): O DLSS para Todos",
+            summary: "RSR é upscaler espacial que funciona no driver. Ative RSR no painel AMD, mude resolução do jogo para menor que monitor (ex: 1600x900 em 1080p) em Tela Cheia Exclusiva. Se jogo tiver FSR nativo, USE FSR nativo (melhor que RSR pois processa antes do HUD). RSR aplica filtro na tela toda, pode deixar texto feio.",
             content: `
         <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 mb-8">
             <h4 class="text-[#FF4B6B] font-bold mb-4 text-xl">Como usar o RSR corretamente</h4>
@@ -167,6 +172,7 @@ export default function AmdGuide() {
         },
         {
             title: "Performance Tuning (Undervolt & Overclock)",
+            summary: "Placas AMD RDNA2/3 vêm com voltagem alta de fábrica. Undervolt AUMENTA performance pois placa esquenta menos e sustenta clocks mais altos. Ative Custom no Tuning Control, ative Voltage/Frequency, reduza voltagem em passos de -25mV. Exemplo RX 6600: Padrão 1150mV -> Seguro 1100mV. Rode benchmark após cada ajuste.",
             content: `
         <p class="mb-4 text-gray-700">
             Aba <strong>Performance > Tuning</strong>. Aceite o aviso de responsabilidade.
@@ -315,6 +321,8 @@ export default function AmdGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/amd-adrenalin-configuracao-competitiva"
+            aiSummary={aiSummary}
         />
     );
 }

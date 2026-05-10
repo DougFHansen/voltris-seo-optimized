@@ -41,7 +41,7 @@ export default function ApexGuide() {
 
     const contentSections = [
         {
-            title: "Introdução: A Source Engine no limite",
+            title: "Introdução: Por que Apex Legends é pesado na Source Engine modificada",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Apex é pesado. Ele renderiza mapas gigantes com a engine do Titanfall 2.Configurações padrões como "Volumetric Lighting" e "Sun Shadows" matam o FPS.
@@ -52,7 +52,8 @@ export default function ApexGuide() {
       `
         },
         {
-            title: "Capítulo 1: Configurações In-Game (O Básico)",
+            title: "Capítulo 1: Configurações In-Game do Apex Legends para performance",
+            summary: "Texture Streaming Budget deve ficar em None ou Very Low (2GB) para garantir que nunca falte VRAM para frame buffer. Volumetric Lighting deve estar Disabled (luz do sol passando pela poeira cega e consome 20 FPS). Model Detail em Low reduz complexidade geométrica de objetos distantes para estabilidade.",
             content: `
         <div class="space-y-4">
              <div class="bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
@@ -76,7 +77,8 @@ export default function ApexGuide() {
       `
         },
         {
-            title: "Capítulo 2: videoconfig.txt (Hack de Sombras)",
+            title: "Capítulo 2: Como editar videoconfig.txt para desativar sombras ocultas",
+            summary: "Edite arquivo %userprofile%\\Saved Games\\Respawn\\Apex\\local\\videoconfig.txt. Configure setting.csm_enabled 0 (desativa sombras do sol), setting.csm_cascade_res 16 (mínimo), setting.r_lod_switch_scale 0.6 (reduz distância de renderização), setting.bnao_enabled 0 (desativa Ambient Occlusion). Após salvar, marque arquivo como Somente Leitura para evitar reset.",
             content: `
         <p class="mb-4 text-gray-700">
             O menu não deixa desligar tudo. Vamos editar o arquivo:
@@ -96,6 +98,7 @@ export default function ApexGuide() {
         },
         {
             title: "Capítulo 3: Autoexec e Launch Options",
+            summary: "Launch options recomendadas: -dev -preload -fullscreen -refresh 144 -forcenovsync. -dev remove animação de intro, -preload pré-carrega assets na RAM (cuidado com pouca RAM), -refresh 144 força Hz. Autoexec.cfg foi bloqueado pela Respawn em 2021, hoje foca mais em binds (Superglide) do que gráficos.",
             content: `
         <p class="mb-4 text-gray-700">
             Na Steam/EA App > Propriedades do Jogo > Opções de Inicialização:
@@ -118,6 +121,7 @@ export default function ApexGuide() {
     const advancedContentSections = [
         {
             title: "Capítulo 4: DX12 Beta",
+            summary: "Adicione -eac_launcher_settings SettingsDX12.json nas launch options para ativar DirectX 12. DX12 usa melhor múltiplos núcleos da CPU. Se tem GPU AMD ou RTX 4000 e sofre com gargalo de CPU, DX12 pode aumentar FPS mínimo (1% lows) e deixar jogo mais liso, apesar de FPS máximo mudar pouco. Vale testar.",
             content: `
         <p class="mb-4 text-gray-700">
             O Apex lançou suporte a DirectX 12 (Beta).
@@ -128,6 +132,7 @@ export default function ApexGuide() {
         },
         {
             title: "Capítulo 5: Superglide e FPS Cap",
+            summary: "Superglide é mecânica de movimento que depende do FPS, mais fácil acertar timing com FPS baixo. Alguns pros travam FPS em valores específicos (144 ou 180) via RivaTuner ou comando +fps_max 144 para garantir consistência no movimento. Não deixe ilimitado se oscilar muito.",
             content: `
         <p class="mb-4 text-gray-700">
             Superglide é uma mecânica de movimento que depende do FPS. É mais fácil acertar o timing com FPS baixo.
@@ -137,6 +142,7 @@ export default function ApexGuide() {
         },
         {
             title: "Capítulo 6: Nvidia Reflex",
+            summary: "Nvidia Reflex deve estar configurado em On + Boost para manter GPU em clock máximo e eliminar fila de renderização. Isso reduz input lag significativamente em Apex Legends. Disponível em placas RTX 2000 e superiores.",
             content: `
         <p class="mb-4 text-gray-700">
             Como sempre, <strong>On + Boost</strong>.

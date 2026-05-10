@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('limpar-memoria-ram-windows', title, description, keywords);
 
 export default function RAMGuide() {
+    const aiSummary = "Para limpar RAM e resolver stuttering: use ISLC (Intelligent Standby List Cleaner). Configuração: Start minimized, List size 1024MB, Free memory <2048MB (8GB) ou 4096MB (16GB). Deixe pagefile gerenciado pelo sistema. Chrome: ative 'Economia de Memória'. ISLC limpa Standby List automaticamente sem fechar jogos.";
+
     const summaryTable = [
         { label: "Problema", value: "Standby List Cache" },
         { label: "Sintoma", value: "Jogo engasga após 1 hora" },
@@ -176,6 +178,8 @@ export default function RAMGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/limpar-memoria-ram-windows"
+            aiSummary={aiSummary}
         />
     );
 }

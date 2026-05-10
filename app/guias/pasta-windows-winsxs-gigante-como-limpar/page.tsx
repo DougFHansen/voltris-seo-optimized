@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('pasta-windows-winsxs-gigante-como-limpar', title, description, keywords);
 
 export default function WinSxSCleanGuide() {
+    const aiSummary = "Para limpar pasta WinSxS, NUNCA delete arquivos manualmente (quebra o Windows). Use DISM: Dism.exe /online /Cleanup-Image /StartComponentCleanup. Para limpeza profunda, adicione /ResetBase (não permite rollback de atualizações). Ou use Limpeza de Disco nativa > Limpar arquivos do sistema > Limpeza de atualizações do Windows.";
+
     const summaryTable = [
         { label: "O que é", value: "Armazenamento de componentes e drivers antigos" },
         { label: "Risco", value: "NUNCA delete arquivos manualmente nesta pasta" },
@@ -101,6 +103,10 @@ export default function WinSxSCleanGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={[]}
+            externalReferences={[]}
+            pathname="/guias/pasta-windows-winsxs-gigante-como-limpar"
+            aiSummary={aiSummary}
         />
     );
 }

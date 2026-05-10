@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('otimizacao-ssd-windows-11', title, description, keywords);
 
 export default function SSDGuide() {
+    const aiSummary = "Para otimizar SSD/NVMe no Windows 11, verifique se TRIM está ativado com comando `fsutil behavior query DisableDeleteNotify` (deve retornar 0). Ative cache de escrita no Gerenciador de Dispositivos > Políticas. Deixe 10-15% do espaço total não alocado (Overprovisioning) para manter performance e longevidade do SSD. Nunca desfragmente SSD.";
+
     const summaryTable = [
         { label: "Comando Vital", value: "TRIM" },
         { label: "Configuração Chave", value: "Cache de Escrita (Ligado)" },
@@ -32,7 +34,7 @@ export default function SSDGuide() {
 
     const contentSections = [
         {
-            title: "Introdução: SSD não é HD",
+            title: "Introdução: Por que SSD não deve ser tratado como HD antigo",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           SSDs (Solid State Drives) funcionam como pendrives gigantes. Eles não têm partes móveis. Se você tratar um SSD como um HD antigo (desfragmentando toda semana), você vai <strong>matá-lo</strong> em meses. Este guia ensina a manter a saúde (TBW) e performance em 100%.
@@ -40,7 +42,8 @@ export default function SSDGuide() {
       `
         },
         {
-            title: "Passo 1: Verificando o TRIM (O Lixeiro Automático)",
+            title: "Passo 1: Como verificar e ativar TRIM no SSD Windows 11",
+            summary: "TRIM diz ao controlador do SSD quais blocos não são mais usados e podem ser apagados. Sem TRIM, SSD fica muito lento ao longo do tempo. Verifique com comando 'fsutil behavior query DisableDeleteNotify' - deve retornar 0 (ativado). Se retornar 1, ative com 'fsutil behavior set DisableDeleteNotify 0'.",
             content: `
         <p class="mb-4 text-gray-700">
             O comando TRIM diz ao controlador do SSD quais blocos de dados não são mais usados e podem ser apagados internamente. Sem TRIM, o SSD fica muito lento ao longo do tempo.
@@ -60,7 +63,8 @@ export default function SSDGuide() {
       `
         },
         {
-            title: "Passo 2: Política de Cache de Escrita (Risky vs Fast)",
+            title: "Passo 2: Como configurar cache de escrita do SSD para performance",
+            summary: "Windows usa RAM como buffer temporário antes de gravar no disco, acelerando escrita de arquivos pequenos. No Gerenciador de Dispositivos > Políticas, marque 'Habilitar cache de gravação no dispositivo'. Opção 'Desativar a limpeza de buffer de cache' aumenta velocidade mas arrisca perda de dados se energia cair - só use com UPS ou notebook com bateria.",
             content: `
         <p class="mb-4 text-gray-700">
             O Windows tem uma função que usa a RAM como "buffer" temporário antes de gravar no disco. Isso acelera muito a escrita de arquivos pequenos.
@@ -75,7 +79,8 @@ export default function SSDGuide() {
       `
         },
         {
-            title: "Passo 3: Overprovisioning (O Segredo da Longevidade)",
+            title: "Passo 3: Como configurar Overprovisioning para longevidade do SSD",
+            summary: "Deixar SSD 100% cheio faz ele ficar lento pois precisa de espaço livre para reorganizar dados (Garbage Collection). Deixe sempre 10% a 15% do espaço total não alocado no Gerenciamento de Disco, ou use software da fabricante (Samsung Magician, Crucial Storage Executive) para configurar Overprovisioning automaticamente.",
             content: `
         <p class="mb-4 text-gray-700">
             Deixar seu SSD 100% cheio faz ele ficar lento, pois ele precisa de espaço livre para reorganizar dados (Garbage Collection).
@@ -138,6 +143,8 @@ export default function SSDGuide() {
             faqItems={faqItems}
             externalReferences={externalReferences}
             showVoltrisOptimizerCTA={true}
+            pathname="/guias/otimizacao-ssd-windows-11"
+            aiSummary={aiSummary}
         />
     );
 }

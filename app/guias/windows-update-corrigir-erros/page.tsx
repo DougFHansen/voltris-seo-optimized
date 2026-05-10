@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('windows-update-corrigir-erros', title, description, keywords);
 
 export default function WindowsUpdateGuide() {
+    const aiSummary = "Para corrigir erros do Windows Update (0x80070002, travado em 0%), abra CMD como administrador e execute: `net stop wuauserv`, `net stop cryptSvc`, `net stop bits`, `net stop msiserver`. Renomeie pastas: `ren C:\\Windows\\SoftwareDistribution SoftwareDistribution.old`, `ren C:\\Windows\\System32\\catroot2 Catroot2.old`. Reinicie serviços e execute `dism /online /cleanup-image /restorehealth`.";
+
     const summaryTable = [
         { label: "Ferramenta", value: "CMD (Admin)" },
         { label: "Pasta Alvo", value: "C:\\Windows\\SoftwareDistribution" },
@@ -193,11 +195,12 @@ export default function WindowsUpdateGuide() {
             difficultyLevel="Intermediário"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/windows-update-corrigir-erros"
+            aiSummary={aiSummary}
         />
     );
 }

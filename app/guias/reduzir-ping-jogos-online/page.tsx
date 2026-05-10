@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('reduzir-ping-jogos-online', title, description, keywords);
 
 export default function ReducePingGuide() {
+    const aiSummary = "Para reduzir ping, primeiro use cabo Ethernet CAT6+ (Wi-Fi tem jitter). Configure DNS para Cloudflare 1.1.1.1 ou Google 8.8.8. Se a rota da operadora for ruim, use ExitLag ou NoPing para otimizar o caminho. Desativize downloads em background e verifique se não há bufferbloat no roteador.";
+
     const summaryTable = [
         { label: "Conexão", value: "Sempre Cabo Ethernet (CAT6+)" },
         { label: "DNS Recomendado", value: "Cloudflare (1.1.1.1)" },
@@ -32,7 +34,7 @@ export default function ReducePingGuide() {
 
     const contentSections = [
         {
-            title: "O que é o Ping (Latência)?",
+            title: "O que é Ping (Latência) e por que estabilidade é mais importante que velocidade",
             content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O **Ping** é o tempo que um comando leva para sair do seu PC, chegar ao servidor do jogo e voltar para você. Em 2026, com conexões de fibra óptica ultra rápidas, o problema raramente é a velocidade da internet (Megas), mas sim a **estabilidade da rota**. Ter 1Gbps de velocidade não garante ping baixo; o que garante é um caminho livre e curto entre você e o servidor.
@@ -40,7 +42,8 @@ export default function ReducePingGuide() {
       `
         },
         {
-            title: "1. O Fim do Wi-Fi para Games",
+            title: "1. Por que usar cabo Ethernet em vez de Wi-Fi para jogos online",
+            summary: "Wi-Fi sofre interferência de paredes e outros eletrôlicos, causando ping jitter que oscila de 20ms para 100ms. Use cabo Ethernet CAT6+ para estabilidade. Cabos de até 20 metros mantêm 100% da performance, ao contrário do sinal sem fio que degrada com distância.",
             content: `
         <p class="mb-4 text-gray-700">Mesmo o Wi-Fi 7 de 2026 sofre com a física do ambiente:</p>
         <ul class="list-disc list-inside text-gray-700 space-y-3">
@@ -51,7 +54,8 @@ export default function ReducePingGuide() {
       `
         },
         {
-            title: "2. DNS: A lista telefônica da Internet",
+            title: "2. Como configurar DNS para reduzir ping e evitar quedas de conexão",
+            summary: "DNS da operadora costuma ser lento e congestionado. Mudar para Cloudflare (1.1.1.1) ou Google (8.8.8.8) ajuda o PC a encontrar o servidor do jogo de forma mais direta. Isso pode reduzir o ping em 5ms a 10ms e evitar quedas de conexão.",
             content: `
         <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20">
             <h class="text-gray-900 font-bold mb-2">Resolução mais rápida:</h4>
@@ -63,7 +67,8 @@ export default function ReducePingGuide() {
       `
         },
         {
-            title: "3. Softwares de Otimização de Rota",
+            title: "3. Como usar ExitLag e NoPing para otimizar rota de rede em jogos",
+            summary: "Programas como ExitLag funcionam como Waze para dados, buscando a rota menos movimentada até o servidor. Isso é especialmente útil se você mora longe dos servidores (ex: Nordeste jogando em São Paulo) ou se joga em servidores internacionais, onde a rota da operadora pode estar congestionada.",
             content: `
         <p class="mb-4 text-gray-700">
             Se o seu problema é a rota da sua operadora (tráfego congestionado):
@@ -119,6 +124,8 @@ export default function ReducePingGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/reduzir-ping-jogos-online"
+            aiSummary={aiSummary}
         />
     );
 }

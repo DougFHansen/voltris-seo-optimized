@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('tela-azul-memory-management-fix', title, description, keywords);
 
 export default function MemoryManagementFixGuide() {
+    const aiSummary = "Para erro MEMORY_MANAGEMENT BSOD: teste RAM com Diagnóstico do Windows (mdsched.exe). Se detectar hardware, substitua pente. Se OK, rode SFC /scannow e DISM /restorehealth. Desative XMP/EXPO se tiver overclock instável. Aumente DRAM voltage na BIOS se necessário. MemTest86 para testes profundos.";
+
     const summaryTable = [
         { label: "Causa #1", value: "Pente de Memória RAM com defeito físico" },
         { label: "Causa #2", value: "Arquivos de sistema corrompidos" },
@@ -105,6 +107,10 @@ export default function MemoryManagementFixGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={[]}
+            externalReferences={[]}
+            pathname="/guias/tela-azul-memory-management-fix"
+            aiSummary={aiSummary}
         />
     );
 }

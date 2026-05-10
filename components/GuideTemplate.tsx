@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import GuideTemplateServer from './GuideTemplateServer';
 import GuideTemplateClient from './GuideTemplateClient';
 import type { ContentSection, RelatedGuide, SummaryTableItem, ExternalReference } from './GuideTemplateServer';
+import { GuideMetadata } from '@/lib/guides';
 
 // Re-export types if needed by consumers
 export type { ContentSection, RelatedGuide, SummaryTableItem, ExternalReference };
@@ -106,6 +107,10 @@ export function GuideTemplate(props: {
   warningNote?: string;
   isHowTo?: boolean;
   pathname: string;
+  category?: string;
+  allGuides?: GuideMetadata[];
+  quickSolution?: string;
+  aiSummary?: string; // Nova prop para AEO/GEO - Answer-First Block
 }) {
   return (
     <>

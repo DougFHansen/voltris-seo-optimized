@@ -19,12 +19,12 @@ export interface GuideTemplateClientProps {
 const VoltrisOptimizerBanner = ({ isSecondary = false, title }: { isSecondary?: boolean; title: string }) => (
     <div className={`my-12 relative group ${isSecondary ? 'opacity-90 scale-95' : ''}`}>
         <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl opacity-30 group-hover:opacity-60 blur-xl transition duration-500"></div>
-        <div className="relative bg-white/95 backdrop-blur-3xl border border-gray-200 rounded-[2.5rem] p-8 md:p-12 overflow-hidden flex flex-col xl:flex-row items-center gap-12 shadow-xl">
+        <div className="relative bg-white/95 backdrop-blur-3xl border border-gray-200 rounded-[2.5rem] p-8 md:p-12 flex flex-col xl:flex-row items-center gap-12 shadow-xl">
             <div className="flex-1 space-y-6 z-10 text-center xl:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 border border-blue-200 text-blue-700 text-[10px] font-black uppercase tracking-[0.2em]">
                     <Zap className="w-3 h-3 fill-current" /> Otimização Recomendada
                 </div>
-                <h3 className="text-3xl md:text-5xl font-black text-gray-900 leading-tight uppercase italic tracking-tighter">
+                <h3 className="text-xl md:text-2xl font-black text-gray-900 leading-tight uppercase italic tracking-tight">
                     Não faça no <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Manual.</span>
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed font-bold">
@@ -34,10 +34,10 @@ const VoltrisOptimizerBanner = ({ isSecondary = false, title }: { isSecondary?: 
                     <Link
                         href="/voltrisoptimizer"
                         onClick={() => notifyDownload(`Guide CTA Click - ${title}`)}
-                        className="px-10 py-5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-black uppercase italic tracking-widest rounded-2xl hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3 group"
+                        className="px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold uppercase italic tracking-wider rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
                     >
                         <span>Baixar Agora</span>
-                        <Download className="w-5 h-5 group-hover:animate-bounce" />
+                        <Download className="w-4 h-4 group-hover:animate-bounce" />
                     </Link>
                 </div>
             </div>

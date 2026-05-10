@@ -24,6 +24,8 @@ export const metadata: Metadata = createGuideMetadata('pos-instalacao-windows-11
 
 export default function PostInstallationGuide() {
     const pathname = '/guias/pos-instalacao-windows-11';
+    const aiSummary = "Após formatar Windows 11, instale drivers nesta ordem: Chipset > Rede > Áudio > GPU. Programas essenciais: NanaZip, VLC/PotPlayer, Visual C++ All-in-One, Brave/Edge. Desative telemetria em Privacidade > Diagnóstico. Use Windows Defender atualizado.";
+
     const summaryTable = [
         { label: "Prioridade #1", value: "Drivers de Chipset e GPU" },
         { label: "Navegação", value: "Brave ou Edge (Fuja de Bloatware)" },
@@ -124,6 +126,7 @@ export default function PostInstallationGuide() {
             faqItems={faqItems}
             externalReferences={externalReferences}
             pathname={pathname}
+            aiSummary={aiSummary}
         />
     );
 }

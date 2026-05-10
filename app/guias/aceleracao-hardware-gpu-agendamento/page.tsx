@@ -38,31 +38,18 @@ export default function HAGSGuide() {
 
   const contentSections = [
     {
-      title: "O que é HAGS?",
+      title: "O que é HAGS (Hardware Accelerated GPU Scheduling) e como funciona",
+      summary: "HAGS (Hardware Accelerated GPU Scheduling) permite que placa de vídeo gerencie sua própria memória (VRAM), tirando carga do processador. Tradicionalmente, CPU dizia para GPU o que renderizar e gerenciava VRAM. Com HAGS, GPU ganha autonomia para gerenciar VRAM.",
       content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           Tradicionalmente, a CPU (Processador) dizia para a GPU o que renderizar e gerenciava a memória de vídeo (VRAM). Com o <strong>Agendamento de GPU Acelerado por Hardware</strong> (HAGS), a Placa de Vídeo ganha autonomia para gerenciar sua própria memória. Isso tira carga do processador.
         </p>
 
-        <div class="bg-blue-900/10 p-5 rounded-xl border border-blue-500/20 my-8">
-            <h4 class="text-[#31A8FF] font-bold mb-3 flex items-center gap-2">
-                <span class="text-xl">📊</span> Benchmark Voltris
-            </h4>
-            <p class="text-gray-700 mb-4">
-                Não sabe se seu FPS melhorou? O olho humano engana. O <strong>Voltris Optimizer</strong> inclui um contador de FPS com gráfico de latência em tempo real (Overlay) para você testar com HAGS LIGADO e DESLIGADO e ver matematicamente qual é melhor para sua máquina.
-            </p>
-            <a href="/voltrisoptimizer" class="group relative inline-flex px-8 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] items-center justify-center gap-2">
-                Monitorar FPS
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            </a>
-        </div>
       `
     },
     {
-      title: "Quando ATIVAR?",
+      title: "Quando ATIVAR HAGS: Placas compatíveis e cenários recomendados",
+      summary: "ATIVAR se tem RTX Série 40 (4060, 4070...) - OBRIGATÓRIO, Frame Generation (DLSS 3) não funciona sem HAGS. ATIVAR se CPU é fraca (gargalo de CPU) - HAGS ajuda aliviar processador, pode dar 5-10 FPS extra em cenários cpu-bound. ATIVAR em jogos modernos (Cyberpunk, Alan Wake 2) geralmente se beneficiam.",
       content: `
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Se você tem RTX Série 40 (4060, 4070...):</strong> OBRIGATÓRIO. O Frame Generation (DLSS 3) não funciona sem isso.</li>
@@ -72,7 +59,8 @@ export default function HAGSGuide() {
       `
     },
     {
-      title: "Quando DESATIVAR?",
+      title: "Quando DESATIVAR HAGS: Placas incompatíveis e problemas conhecidos",
+      summary: "DESATIVAR em placas antigas (GTX 1060, 1660) - muitos usuários relatam micro-stuttering com HAGS ligado nessas placas, driver não lida bem com arquitetura Pascal/Turing antiga. DESATIVAR se problemas com OBS/Discord - se stream trava ou tela compartilhada pisca, HAGS prioriza jogo e esquece de renderizar vídeo do OBS.",
       content: `
         <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
             <li><strong>Placas Antigas (GTX 1060, 1660):</strong> Muitos usuários relatam micro-stuttering (travadinhas) com o HAGS ligado nessas placas. O driver parece não lidar bem com a arquitetura Pascal/Turing antiga.</li>
@@ -82,7 +70,8 @@ export default function HAGSGuide() {
       `
     },
     {
-      title: "Como Ativar/Desativar",
+      title: "Como Ativar ou Desativar HAGS no Windows 11",
+      summary: "Vá em Configurações > Sistema > Tela. Role até embaixo e clique em Elementos Gráficos (ou Configurações de Elementos Gráficos). Clique em 'Alterar configurações de gráficos padrão'. Mude a chave 'Agendamento de GPU acelerado por hardware'. REINICIE O PC - mudança não funciona sem reiniciar.",
       content: `
         <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4 bg-[#0A0A0F] p-4 rounded-xl border border-white/5">
             <li>Vá em <strong>Configurações > Sistema > Tela</strong>.</li>

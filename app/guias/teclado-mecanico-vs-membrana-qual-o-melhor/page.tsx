@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('teclado-mecanico-vs-membrana-qual-o-melhor', title, description, keywords);
 
 export default function KeyboardComparisonGuide() {
+    const aiSummary = "Teclados mecânicos são duráveis (50-100M cliques), rápidos e customizáveis - ideais para jogos. Teclados de membrana são baratos, silenciosos mas frágeis (5M cliques) e sofrem ghosting. Veredito 2026: mecânico para games, membrana apenas para escritório básico.";
+
     const summaryTable = [
         { label: "Mecânico", value: "Durável, Rápido, Customizável" },
         { label: "Membrana", value: "Barato, Silencioso, Frágil" },
@@ -1077,17 +1079,18 @@ export default function KeyboardComparisonGuide() {
             title={title}
             description={description}
             keywords={keywords}
-            estimatedTime="60 min"
-            difficultyLevel="Avançado"
-            author="Equipe Técnica Voltris"
-            lastUpdated="2026-01-20"
-            contentSections={allContentSections}
+            estimatedTime="15 min"
+            difficultyLevel="Intermediário"
+            author="Equipe Periféricos Voltris"
+            lastUpdated="2026"
+            contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
+            relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
-            relatedGuides={relatedGuides}
+            pathname="/guias/teclado-mecanico-vs-membrana-qual-o-melhor"
+            aiSummary={aiSummary}
         />
     );
 }

@@ -71,11 +71,11 @@ export default function OptimizerMockup() {
 
     return (
         <div
-            className="w-full relative z-10 glass-panel rounded-2xl p-4 md:p-8 overflow-hidden transform transition-all duration-500 hover:scale-[1.01] border border-white/10 bg-[#0A0A0F]/60 backdrop-blur-xl shadow-2xl"
+            className="w-full relative z-10 glass-panel rounded-2xl p-4 md:p-8 transform transition-all duration-500 hover:scale-[1.01] border border-white/10 bg-[#0A0A0F]/60 backdrop-blur-xl shadow-2xl"
         >
             {/* Header of the fake app */}
-            <div className="flex items-center justify-between mb-4 md:mb-8 border-b border-white/5 pb-3 md:pb-4">
-                <div className="flex items-center gap-3">
+            <div className="flex items-start justify-between mb-4 md:mb-8 border-b border-white/5 pb-3 md:pb-4 gap-3">
+                <div className="flex items-center gap-3 shrink-0 min-w-0">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
                         <Image
                             src="/logo.png"
@@ -99,9 +99,9 @@ export default function OptimizerMockup() {
                 <a
                     href="/voltrisoptimizer"
                     onClick={() => notifyDownload('Mockup Download Click (Redirect to Page)')}
-                    className="px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-xs font-black uppercase tracking-widest hover:shadow-[0_0_30px_rgba(139,49,255,0.6)] transition-all shadow-lg relative overflow-hidden group border border-white/10"
+                    className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-[10px] font-black uppercase tracking-wider hover:shadow-[0_0_30px_rgba(139,49,255,0.6)] transition-all shadow-lg relative overflow-hidden group border border-white/10 shrink-0"
                 >
-                    <span className="relative z-10">Download Free</span>
+                    <span className="relative z-10 whitespace-nowrap">Download</span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 </a>
             </div>

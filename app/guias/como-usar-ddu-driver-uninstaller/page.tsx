@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('como-usar-ddu-driver-uninstaller', title, description, keywords);
 
 export default function DDUGuide() {
+    const aiSummary = "Para usar DDU, baixe do site oficial Wagnardsoft. Entre no Modo de Segurança (segure Shift + Reiniciar). Desconecte internet (crucial). Selecione GPU (Nvidia/AMD/Intel), clique em 'Limpar e Reiniciar'. Após reiniciar, instale driver oficial baixado anteriormente. Use apenas ao trocar GPU ou corrigir bugs graves.";
+
     const summaryTable = [
         { label: "Ferramenta", value: "DDU (Wagnardsoft)" },
         { label: "Modo Obrigatório", value: "Modo de Segurança (Safe Mode)" },
@@ -191,11 +193,12 @@ export default function DDUGuide() {
             difficultyLevel="Avançado"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/como-usar-ddu-driver-uninstaller"
+            aiSummary={aiSummary}
         />
     );
 }

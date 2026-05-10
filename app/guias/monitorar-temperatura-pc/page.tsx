@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('monitorar-temperatura-pc', title, description, keywords);
 
 export default function TempGuide() {
+    const aiSummary = "Para monitorar temperatura, use MSI Afterburner + RivaTuner Statistics Server (RTSS). Na aba Monitoramento, marque 'Exibir nas informações em tela (OSD)' para FPS, Temp CPU/GPU, RAM, VRAM e Frametime. CPU ideal <80C, GPU ideal <75C. Frametime deve ser estável (linha reta), não picos.";
+
     const summaryTable = [
         { label: "Software", value: "MSI Afterburner + RTSS" },
         { label: "CPU Temp Ideal", value: "Abaixo de 80C" },
@@ -186,11 +188,12 @@ export default function TempGuide() {
             difficultyLevel="Intermediário"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/monitorar-temperatura-pc"
+            aiSummary={aiSummary}
         />
     );
 }

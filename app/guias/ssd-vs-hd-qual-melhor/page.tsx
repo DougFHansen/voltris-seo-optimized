@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('ssd-vs-hd-qual-melhor', title, description, keywords);
 
 export default function SSDvsHDGuide() {
+    const aiSummary = "SSD é 50x mais rápido que HD (3500+ MB/s vs 150 MB/s). Windows 11 requer SSD para fluidez. HD ainda útil para armazenamento massivo (8TB+ de backup/filmes). SSD moderno dura 10+ anos com uso normal. Veredito 2026: SSD para sistema/jogos, HD apenas para backup.";
+
     const summaryTable = [
         { label: "Velocidade Leitura", value: "HD: 150 MB/s | SSD: 3.500+ MB/s" },
         { label: "Uso em Jogos", value: "HD: Travadas / SSD: Fluidez total" },
@@ -96,10 +98,14 @@ export default function SSDvsHDGuide() {
             description={description}
             keywords={keywords}
             estimatedTime="15 min"
-            difficultyLevel="Iniciante"
+            difficultyLevel="Intermediário"
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={[]}
+            externalReferences={[]}
+            pathname="/guias/ssd-vs-hd-qual-melhor"
+            aiSummary={aiSummary}
         />
     );
 }

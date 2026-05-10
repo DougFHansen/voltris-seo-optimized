@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('criar-ponto-restauracao-windows', title, description, keywords);
 
 export default function RestorePointGuide() {
+    const aiSummary = "Para criar ponto de restauração: pesquise 'Criar ponto de restauração', ative Proteção do Sistema no disco C: (5-10GB). Crie ponto manual antes de instalar drivers ou mexer no registro. Para restaurar, use 'Restauração do Sistema' - não apaga arquivos pessoais, mas desinstala programas pós-ponto.";
+
     const summaryTable = [
         { label: "O que faz", value: "Tira um 'print' das configurações do Windows" },
         { label: "Frequência", value: "Sempre antes de instalar mods ou novos drivers" },
@@ -533,6 +535,8 @@ export default function RestorePointGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/criar-ponto-restauracao-windows"
+            aiSummary={aiSummary}
         />
     );
 }

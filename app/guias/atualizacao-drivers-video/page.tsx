@@ -26,6 +26,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('atualizacao-drivers-video', title, description, keywords);
 
 export default function VideoDriverGuide() {
+  const aiSummary = "Para atualizar drivers de vídeo NVIDIA, AMD ou Intel em 2026, use os aplicativos oficiais (NVIDIA App, AMD Adrenalin, Intel Arc Control) para baixar drivers Game Ready ou WHQL. Para problemas persistentes, use DDU para instalação limpa antes de instalar o novo driver. Evite sites de terceiros como Driver Booster.";
+
   const summaryTable = [
     { label: "NVIDIA", value: "NVIDIA App / GeForce Experience → Game Ready ou Studio" },
     { label: "AMD", value: "AMD Software: Adrenalin Edition → Drivers WHQL" },
@@ -39,7 +41,7 @@ export default function VideoDriverGuide() {
 
   const contentSections = [
     {
-      title: "Por Que Atualizar Drivers de Vídeo? A Importância Crítica em 2026",
+      title: "Por Que Atualizar Drivers de Vídeo é Crítico para Performance e Estabilidade em 2026",
       content: `
         <p class="mb-6 text-gray-700 leading-relaxed text-lg">
           O driver de vídeo é o <strong>manual de instruções</strong> que o Windows usa para conversar com sua placa de vídeo. Sem o driver correto, sua GPU de R$ 3.000 é apenas um pedaço de metal caro. Em 2026, as fabricantes lançam atualizações chamadas <strong>'Game Ready' ou 'Studio'</strong> quase toda semana, corrigindo bugs específicos de lançamentos de jogos, otimizando o uso de novas tecnologias como <strong>Ray Tracing, DLSS 4.0, FSR 4.0, AV1 Encoding</strong> e melhorando performance em geral.
@@ -113,7 +115,8 @@ export default function VideoDriverGuide() {
       `
     },
     {
-      title: "Tipos de Drivers: Game Ready vs Studio vs WHQL vs Beta",
+      title: "Tipos de Drivers: Diferença entre Game Ready, Studio, WHQL e Beta",
+      summary: "Drivers WHQL são os mais estáveis e testados pela Microsoft, recomendados para uso diário. Drivers Game Ready oferecem otimizações para jogos recém-lançados e novas tecnologias. Drivers Studio são otimizados para criação de conteúdo. Drivers Beta são experimentais e não recomendados para uso diário.",
       content: `
         <h class="text-gray-900 font-bold mb-3">🛡️ Drivers WHQL (Windows Hardware Quality Labs)</h4>
         <p class="mb-4 text-gray-700">
@@ -199,6 +202,7 @@ export default function VideoDriverGuide() {
     },
     {
       title: "Instalação Expressa vs Instalação Limpa (O Guia Definitivo)",
+      summary: "Instalação expressa substitui arquivos do driver antigo pelos novos e é suficiente para atualizações. Instalação limpa remove completamente o driver antigo antes de instalar o novo, sendo recomendada para resolver problemas como tela azul, artefatos gráficos e incompatibilidade após troca de placa de vídeo.",
       content: `
         <h class="text-gray-900 font-bold mb-3">⚡ Instalação Expressa (Recomendada para Atualizações)</h4>
         <p class="mb-4 text-gray-700">
@@ -230,6 +234,7 @@ export default function VideoDriverGuide() {
     },
     {
       title: "Usando Display Driver Uninstaller (DDU) - O Método Profissional",
+      summary: "DDU remove completamente drivers de vídeo do sistema antes de instalar novos drivers. Execute em modo de segurança, selecione a fabricante e clique em 'Limpar e Reiniciar'. Use apenas para resolver problemas persistentes como tela azul ou artefatos gráficos, não para atualizações normais.",
       content: `
         <p class="mb-4 text-gray-700">
           O <strong>DDU (Display Driver Uninstaller)</strong> é a ferramenta profissional para remover completamente drivers de vídeo do sistema. É a maneira mais eficaz de fazer uma "base limpa" antes de instalar um novo driver.
@@ -288,6 +293,7 @@ export default function VideoDriverGuide() {
     },
     {
       title: "Resolução de Problemas Comuns com Drivers de Vídeo",
+      summary: "Tela azul após instalar novo driver pode ser resolvida usando DDU para instalação limpa. Artefatos gráficos podem indicar overclock instável ou superaquecimento. Driver parou de responder pode ser resolvido reinstalando o driver. Drivers do Windows Update são limitados e não incluem painel de controle.",
       content: `
         <h class="text-gray-900 font-bold mb-3">🚨 Problemas Frequentes e Soluções</h4>
         
@@ -1317,17 +1323,18 @@ export default function VideoDriverGuide() {
       title={title}
       description={description}
       keywords={keywords}
-      estimatedTime="60 min"
+      estimatedTime="45 min"
       difficultyLevel="Avançado"
       author="Equipe Técnica Voltris"
-      lastUpdated="2026-01-20"
+      lastUpdated="2026"
       contentSections={contentSections}
-      advancedContentSections={advancedContentSections}
-      additionalContentSections={additionalContentSections}
       summaryTable={summaryTable}
+      relatedGuides={relatedGuides}
       faqItems={faqItems}
       externalReferences={externalReferences}
-      relatedGuides={relatedGuides}
+      category={guideMetadata.category}
+      pathname="/guias/atualizacao-drivers-video"
+      aiSummary={aiSummary}
     />
   );
 }

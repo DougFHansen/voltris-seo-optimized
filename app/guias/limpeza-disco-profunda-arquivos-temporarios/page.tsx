@@ -27,6 +27,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('limpeza-disco-profunda-arquivos-temporarios', title, description, keywords);
 
 export default function DiskCleanupGuide() {
+    const aiSummary = "Para limpeza profunda, use Limpeza de Disco > Limpar arquivos do sistema. Marque: Limpeza Windows Update, Instalações anteriores Windows, Lixeira. Use WizTree para identificar arquivos grandes. Limpe %temp% e %windir%Temp via CMD. Se SSD, desative hibernação (powercfg /h off) para recuperar 4-16GB. SoftwareDistribution pode ser limpa após updates.";
+
     const summaryTable = [
         { label: "Ferramenta Básica", value: "Limpeza de Disco (Cleanmgr)" },
         { label: "Ferramenta Visual", value: "WizTree (Melhor que WinDirStat)" },
@@ -199,6 +201,8 @@ export default function DiskCleanupGuide() {
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/limpeza-disco-profunda-arquivos-temporarios"
+            aiSummary={aiSummary}
         />
     );
 }

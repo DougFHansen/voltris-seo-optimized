@@ -28,6 +28,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('bufferbloat-qos-sqm-roteador-ping', title, description, keywords);
 
 export default function BufferbloatGuide() {
+    const aiSummary = "Para corrigir bufferbloat (ping alto quando alguém usa internet), primeiro teste em waveform.com/tools/bufferbloat. Se der C/D/F, configure QoS no roteador: limite download para 90% da velocidade contratada e upload para 85%. Use algoritmo SQM (CAKE ou FQ_CoDel) se disponível. Para roteadores OpenWRT/ASUSWRT-Merlin, configure SQM com CAKE para nota A+.";
+
     const summaryTable = [
         { label: "Teste", value: "Waveform Bufferbloat" },
         { label: "Solução", value: "QoS (Quality of Service)" },
@@ -204,11 +206,12 @@ export default function BufferbloatGuide() {
             difficultyLevel="Muito Avançado"
             contentSections={contentSections}
             advancedContentSections={advancedContentSections}
-            additionalContentSections={additionalContentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
             faqItems={faqItems}
             externalReferences={externalReferences}
+            pathname="/guias/bufferbloat-qos-sqm-roteador-ping"
+            aiSummary={aiSummary}
         />
     );
 }

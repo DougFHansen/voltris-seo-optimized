@@ -130,7 +130,7 @@ export default function ContatoPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">E-mail</h3>
                 <p className="text-gray-600 mb-6 line-clamp-2">Para orçamentos detalhados ou parcerias comerciais.</p>
-                <a href="mailto:contato@voltrisoptimizer.com" className="text-purple-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
+                <a href="mailto:contato@voltris.com" className="text-purple-600 font-bold flex items-center gap-2 group-hover:gap-4 transition-all">
                   contato@voltrisoptimizer.com <ArrowRight className="w-4 h-4" />
                 </a>
               </motion.div>
@@ -210,7 +210,7 @@ export default function ContatoPage() {
                   "Especialistas Certificados em Windows e Hardware",
                   "Garantia de Satisfação ou Reembolso",
                   "Acesso Remoto Seguro (AnyDesk/TeamViewer)",
-                  "Mais de 5.000 Clientes Atendidos"
+                  "Mais de 1.000.000 de Clientes Atendidos"
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-4 bg-white border border-gray-200 p-4 rounded-xl shadow-sm">
                     <CheckCircle className="w-6 h-6 text-emerald-600 shrink-0" />

@@ -23,6 +23,8 @@ const keywords = [
 export const metadata: Metadata = createGuideMetadata('undervolt-cpu-notebook', title, description, keywords);
 
 export default function UndervoltGuide() {
+    const aiSummary = "Para undervolt notebook, use ThrottleStop (Intel) ou Ryzen Controller (AMD). No ThrottleStop: FIVR > Unlock Adjustable Voltage > Offset Voltage -50mV inicial. Aplique mesmo valor em CPU Core e CPU Cache. Aumente de 10mV em 10mV até instabilidade. Reduz temperatura até 15C sem perder performance. Verifique se BIOS permite overclock feature.";
+
     const summaryTable = [
         { label: "O que é", value: "Reduzir a voltagem sem reduzir a velocidade" },
         { label: "Benefício #1", value: "Redução de Temperatura (até 15C)" },
@@ -102,6 +104,10 @@ export default function UndervoltGuide() {
             contentSections={contentSections}
             summaryTable={summaryTable}
             relatedGuides={relatedGuides}
+            faqItems={[]}
+            externalReferences={[]}
+            pathname="/guias/undervolt-cpu-notebook"
+            aiSummary={aiSummary}
         />
     );
 }
