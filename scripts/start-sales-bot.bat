@@ -1,7 +1,6 @@
 @echo off
 chcp 65001 >nul
 title Voltris Sales Bot - Telegram
-color 0A
 
 REM Navegar para a pasta onde este arquivo está
 REM Isso garante que funcione mesmo clicando duplo em qualquer lugar
@@ -19,6 +18,6 @@ echo.
 echo ==========================================
 echo.
 
-node telegram-sales-bot.js
+node telegram-sales-bot.cjs
 
 pause
