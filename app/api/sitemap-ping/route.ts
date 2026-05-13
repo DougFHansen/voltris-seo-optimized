@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const SITEMAP_URL = 'https://voltris.com.br/sitemap.xml';
+const SITEMAP_URL = 'https://www.voltris.com.br/sitemap.xml';
 const GOOGLE_PING = `https://www.google.com/ping?sitemap=${encodeURIComponent(SITEMAP_URL)}`;
 const BING_PING = `https://www.bing.com/ping?sitemap=${encodeURIComponent(SITEMAP_URL)}`;
 

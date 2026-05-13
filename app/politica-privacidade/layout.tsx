@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Política de privacidade da VOLTRIS. Saiba como coletamos, usamos e protegemos suas informações pessoais. Transparência e segurança em primeiro lugar.',
     keywords: ['política de privacidade', 'privacidade voltris', 'proteção dados pessoais', 'uso de dados', 'segurança informação'],
     alternates: {
-        canonical: 'https://voltris.com.br/politica-privacidade'
+        canonical: 'https://www.voltris.com.br/politica-privacidade'
     },
     openGraph: {
         title: 'Política de Privacidade - VOLTRIS',
         description: 'Como coletamos, usamos e protegemos suas informações pessoais.',
-        url: 'https://voltris.com.br/politica-privacidade',
+        url: 'https://www.voltris.com.br/politica-privacidade',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

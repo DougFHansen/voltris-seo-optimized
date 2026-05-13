@@ -17,5 +17,5 @@ export const metadata: Metadata = generateMetadata({
     "otimização para games"
   ],
   url: '/erros-jogos',
-  image: 'https://voltris.com.br/logo.png'
+  image: 'https://www.voltris.com.br/logo.png'
 }); 

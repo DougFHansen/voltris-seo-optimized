@@ -99,8 +99,8 @@ const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
       "mainEntity": {
         "@type": "Organization",
         "name": "VOLTRIS",
-        "url": "https://voltris.com.br",
-        "logo": "https://voltris.com.br/logo.png",
+        "url": "https://www.voltris.com.br",
+        "logo": "https://www.voltris.com.br/logo.png",
         "description": "Suporte técnico remoto especializado em Windows, criação de sites profissionais, otimização de computadores e manutenção de sistemas.",
         "address": {
           "@type": "PostalAddress",
@@ -129,7 +129,7 @@ const AdvancedSEO: React.FC<AdvancedSEOProps> = ({
         "name": "VOLTRIS",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://voltris.com.br/logo.png"
+          "url": "https://www.voltris.com.br/logo.png"
         }
       };
       if (article.publishedTime) structuredData.datePublished = article.publishedTime;

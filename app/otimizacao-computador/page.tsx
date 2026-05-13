@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Otimização de Computador Profissional | VOLTRIS',
     description: 'Serviço profissional de otimização de computador para aumentar velocidade, desempenho e estabilidade do seu PC ou notebook.',
-    url: 'https://voltris.com.br/otimizacao-computador',
+    url: 'https://www.voltris.com.br/otimizacao-computador',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/otimizacao-computador',
+    canonical: 'https://www.voltris.com.br/otimizacao-computador',
   },
   robots: {
     index: true,

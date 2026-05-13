@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     'suporte técnico informática', 'formatar notebook', 'backup de arquivos', 'otimização windows'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/formatar-windows',
+    canonical: 'https://www.voltris.com.br/formatar-windows',
   },
   openGraph: {
     title: 'Formatação de Windows Profissional e Otimizada | VOLTRIS',
     description: 'Deixe seu computador como novo. Formatação profissional com backup e otimização gamer.',
-    url: 'https://voltris.com.br/formatar-windows',
+    url: 'https://www.voltris.com.br/formatar-windows',
     type: 'website',
   }
 };
@@ -31,7 +31,7 @@ export default function WindowsFormattingPage() {
           provider: {
             "@type": "Organization",
             "name": "VOLTRIS",
-            "url": "https://voltris.com.br"
+            "url": "https://www.voltris.com.br"
           },
           serviceType: "Suporte Técnico de Informática",
           areaServed: { "@type": "Country", "name": "Brasil" },

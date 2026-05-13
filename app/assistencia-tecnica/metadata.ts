@@ -28,12 +28,12 @@ export const metadata: Metadata = {
     'assistência técnica sorocaba'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/assistencia-tecnica'
+    canonical: 'https://www.voltris.com.br/assistencia-tecnica'
   },
   openGraph: {
     title: 'Assistência Técnica em SP | Conserto de Computadores - VOLTRIS',
     description: 'Assistência técnica especializada em computadores em São Paulo. Reparo de hardware, software, redes e otimização. Orçamento grátis, técnicos certificados e garantia.',
-    url: 'https://voltris.com.br/assistencia-tecnica',
+    url: 'https://www.voltris.com.br/assistencia-tecnica',
     type: 'website',
     images: [{
       url: '/computer-repair-service.jpg',

@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     'manutenção preventiva combo'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/servicos-combinados'
+    canonical: 'https://www.voltris.com.br/servicos-combinados'
   },
   openGraph: {
     title: 'Pacotes de Serviços Técnicos | Formatação + Otimização + Assistência - VOLTRIS',
     description: 'Pacotes combinados de serviços técnicos: formatação de Windows, otimização de PC, assistência técnica e software de otimização. Economize e tenha o melhor desempenho.',
-    url: 'https://voltris.com.br/servicos-combinados',
+    url: 'https://www.voltris.com.br/servicos-combinados',
     type: 'website',
     images: [{
       url: '/combined-tech-services.jpg',

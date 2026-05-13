@@ -13,8 +13,8 @@ export default function AboutLayout({
         "@type": "Organization",
         "name": "VOLTRIS",
         "description": "Empresa especializada em suporte técnico remoto e criação de sites, com mais de 5000 clientes atendidos e 98% de satisfação.",
-        "url": "https://voltris.com.br",
-        "logo": "https://voltris.com.br/logo.png",
+        "url": "https://www.voltris.com.br",
+        "logo": "https://www.voltris.com.br/logo.png",
         "foundingDate": "2015",
         "numberOfEmployees": "10-50",
         "address": {

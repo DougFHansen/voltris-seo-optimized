@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Criação de Sites Profissionais | VOLTRIS',
     description: 'Sites modernos que convertem visitantes em clientes.',
-    url: 'https://voltris.com.br/todos-os-servicos/criacao-sites',
+    url: 'https://www.voltris.com.br/todos-os-servicos/criacao-sites',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/todos-os-servicos/criacao-sites',
+    canonical: 'https://www.voltris.com.br/todos-os-servicos/criacao-sites',
   },
 };
 

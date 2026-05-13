@@ -229,8 +229,8 @@ export default function PainelControleNVIDIAGuide() {
             <JsonLdGuide
                 title={title}
                 description={description}
-                url="https://voltris.com.br/guias/painel-de-controle-nvidia"
-                image="https://voltris.com.br/logo.png"
+                url="https://www.voltris.com.br/guias/painel-de-controle-nvidia"
+                image="https://www.voltris.com.br/logo.png"
                 estimatedTime="20"
                 difficulty="Intermediário"
                 category="Configuração NVIDIA"

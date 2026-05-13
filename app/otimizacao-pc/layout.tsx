@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Otimização completa de PC. Limpeza de arquivos temporários, desativação de programas desnecessários, ajustes de performance e muito mais. PC mais rápido em minutos.',
     keywords: ['otimização de pc', 'deixar pc mais rápido', 'otimizar windows', 'limpeza de pc', 'melhorar performance pc', 'computador lento', 'acelerar windows'],
     alternates: {
-        canonical: 'https://voltris.com.br/otimizacao-pc'
+        canonical: 'https://www.voltris.com.br/otimizacao-pc'
     },
     openGraph: {
         title: 'Otimização de PC - Deixe seu Computador Mais Rápido | VOLTRIS',
         description: 'Otimização completa para deixar seu PC mais rápido. Serviço remoto profissional.',
-        url: 'https://voltris.com.br/otimizacao-pc',
+        url: 'https://www.voltris.com.br/otimizacao-pc',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

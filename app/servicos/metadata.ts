@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Serviços de TI - Suporte Técnico Remoto e Criação de Sites | VOLTRIS',
     description: 'Suporte técnico remoto, formatação, otimização e criação de sites. Serviços de TI com atendimento especializado no Brasil.',
-    url: 'https://voltris.com.br/servicos',
+    url: 'https://www.voltris.com.br/servicos',
     type: 'website',
     locale: 'pt_BR',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'VOLTRIS Logo'
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Serviços de TI - Suporte Técnico Remoto e Criação de Sites | VOLTRIS',
     description: 'Suporte técnico remoto, formatação, otimização e criação de sites. Atendimento especializado no Brasil.',
-    images: ['https://voltris.com.br/logo.png']
+    images: ['https://www.voltris.com.br/logo.png']
   },
   alternates: {
-    canonical: 'https://voltris.com.br/servicos'
+    canonical: 'https://www.voltris.com.br/servicos'
   },
   robots: {
     index: true,

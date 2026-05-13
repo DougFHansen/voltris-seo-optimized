@@ -10,12 +10,12 @@ export const metadata: Metadata = {
     'acelerar pc lento', 'tuning windows', 'otimização gamer', 'limpeza de sistema'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/otimizacao-pc',
+    canonical: 'https://www.voltris.com.br/otimizacao-pc',
   },
   openGraph: {
     title: 'Otimização Profissional de PC e Performance Windows | VOLTRIS',
     description: 'Máxima performance para seu computador. Ganhe até 40% mais FPS em seus jogos favoritos.',
-    url: 'https://voltris.com.br/otimizacao-pc',
+    url: 'https://www.voltris.com.br/otimizacao-pc',
     type: 'website',
   }
 };
@@ -31,7 +31,7 @@ export default function PcOptimizationPage() {
           provider: {
             "@type": "Organization",
             "name": "VOLTRIS",
-            "url": "https://voltris.com.br"
+            "url": "https://www.voltris.com.br"
           },
           serviceType: "Informática e Tecnologia",
           areaServed: { "@type": "Country", "name": "Brasil" },

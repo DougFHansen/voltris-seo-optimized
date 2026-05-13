@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Suporte Técnico Remoto Profissional | VOLTRIS',
     description: 'Serviço de suporte técnico remoto especializado para Windows, resolução de problemas, formatação e manutenção de sistemas.',
-    url: 'https://voltris.com.br/suporte-tecnico-remoto',
+    url: 'https://www.voltris.com.br/suporte-tecnico-remoto',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/suporte-tecnico-remoto',
+    canonical: 'https://www.voltris.com.br/suporte-tecnico-remoto',
   },
   robots: {
     index: true,

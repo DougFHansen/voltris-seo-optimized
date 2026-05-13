@@ -23,11 +23,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Otimizar a Performance do Seu PC | Guia Profissional | VOLTRIS',
     description: 'Técnicas profissionais para acelerar seu computador e melhorar significativamente o desempenho do sistema.',
-    url: 'https://voltris.com.br/guias/otimizacao-performance',
+    url: 'https://www.voltris.com.br/guias/otimizacao-performance',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Otimização de Performance - VOLTRIS',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Como Otimizar a Performance do Seu PC | VOLTRIS',
     description: 'Técnicas profissionais para acelerar seu computador e melhorar o desempenho.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/otimizacao-performance',
+    canonical: 'https://www.voltris.com.br/guias/otimizacao-performance',
   },
 };
 

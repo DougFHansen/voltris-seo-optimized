@@ -155,7 +155,7 @@ export default function ExteriorHomePage() {
             "provider": {
               "@type": "Organization",
               "name": "VOLTRIS",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             },
             "serviceType": "Remote Technical Support",
             "areaServed": [

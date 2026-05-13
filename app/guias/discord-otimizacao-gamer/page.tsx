@@ -311,8 +311,8 @@ export default function DiscordOtimizacaoGamerGuide() {
             <JsonLdGuide
                 title={title}
                 description={description}
-                url="https://voltris.com.br/guias/discord-otimizacao-gamer"
-                image="https://voltris.com.br/logo.png"
+                url="https://www.voltris.com.br/guias/discord-otimizacao-gamer"
+                image="https://www.voltris.com.br/logo.png"
                 estimatedTime="12"
                 difficulty="Iniciante"
                 category="Discord Gamer"

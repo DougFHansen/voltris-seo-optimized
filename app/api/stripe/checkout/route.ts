@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { createAdminClient } from '@/utils/supabase/admin';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://voltris.com.br';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.voltris.com.br';
 
 const PRICE_MAP: Record<string, any> = {
   // Licenças (Assinaturas)

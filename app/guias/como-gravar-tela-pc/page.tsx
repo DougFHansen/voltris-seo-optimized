@@ -305,8 +305,8 @@ export default function ComoGravarTelaPCGuide() {
             <JsonLdGuide
                 title={title}
                 description={description}
-                url="https://voltris.com.br/guias/como-gravar-tela-pc"
-                image="https://voltris.com.br/logo.png"
+                url="https://www.voltris.com.br/guias/como-gravar-tela-pc"
+                image="https://www.voltris.com.br/logo.png"
                 estimatedTime="15"
                 difficulty="Iniciante"
                 category="Gravação de Tela"

@@ -13,7 +13,7 @@ export default function OtimizacaoPerformanceLayout({
     "@type": "HowTo",
     "name": "Como Otimizar a Performance do Seu PC",
     "description": "Guia completo passo a passo para otimizar e acelerar seu computador Windows usando técnicas profissionais.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "totalTime": "PT1H",
     "step": [
       {
@@ -60,25 +60,25 @@ export default function OtimizacaoPerformanceLayout({
     "@type": "Article",
     "headline": "Como Otimizar a Performance do Seu PC",
     "description": "Guia completo com técnicas profissionais para acelerar e otimizar seu computador Windows.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "author": {
       "@type": "Organization",
       "name": "VOLTRIS",
-      "url": "https://voltris.com.br"
+      "url": "https://www.voltris.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "VOLTRIS",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://voltris.com.br/logo.png"
+        "url": "https://www.voltris.com.br/logo.png"
       }
     },
     "datePublished": new Date().toISOString(),
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://voltris.com.br/guias/otimizacao-performance"
+      "@id": "https://www.voltris.com.br/guias/otimizacao-performance"
     }
   };
 

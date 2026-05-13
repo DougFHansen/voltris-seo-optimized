@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/ea-sports-fc-2026-pc-configuracoes-fps'
+        canonical: 'https://www.voltris.com.br/guias/ea-sports-fc-2026-pc-configuracoes-fps'
     }
 };
 

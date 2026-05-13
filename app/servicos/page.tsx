@@ -1159,7 +1159,7 @@ export default function ServicesPage() {
             "provider": {
               "@type": "Organization",
               "name": "Voltris",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             },
             "areaServed": {
               "@type": "Country",

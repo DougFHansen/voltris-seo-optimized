@@ -17,5 +17,5 @@ export const metadata: Metadata = generateMetadata({
     "suporte Office"
   ],
   url: '/instalacao-office',
-  image: 'https://voltris.com.br/logo.png'
+  image: 'https://www.voltris.com.br/logo.png'
 }); 

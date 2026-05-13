@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Guia de Segurança Digital Essencial | Proteção Contra Vírus e Malware | VOLTRIS',
     description: 'Proteja seu computador contra vírus, malware e ataques cibernéticos. Guia completo de segurança digital.',
-    url: 'https://voltris.com.br/guias/seguranca-digital',
+    url: 'https://www.voltris.com.br/guias/seguranca-digital',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Segurança Digital - VOLTRIS',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Guia de Segurança Digital Essencial | VOLTRIS',
     description: 'Proteja seu computador contra vírus e malware. Guia completo de segurança digital.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/seguranca-digital',
+    canonical: 'https://www.voltris.com.br/guias/seguranca-digital',
   },
 };
 

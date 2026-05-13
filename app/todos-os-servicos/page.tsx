@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Nossos Serviços | VOLTRIS',
     description: 'Soluções completas em suporte técnico remoto e desenvolvimento web.',
-    url: 'https://voltris.com.br/todos-os-servicos',
+    url: 'https://www.voltris.com.br/todos-os-servicos',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/todos-os-servicos',
+    canonical: 'https://www.voltris.com.br/todos-os-servicos',
   },
 };
 
@@ -30,7 +30,7 @@ export default function ServicosPage() {
             "provider": {
               "@type": "Organization",
               "name": "Voltris",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             },
             "areaServed": {
               "@type": "Country",
@@ -49,7 +49,7 @@ export default function ServicosPage() {
               "@type": "ServiceChannel",
               "serviceLocation": {
                 "@type": "VirtualLocation",
-                "url": "https://voltris.com.br"
+                "url": "https://www.voltris.com.br"
               }
             }
           })

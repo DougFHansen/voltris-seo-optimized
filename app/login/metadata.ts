@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Entrar na Área do Cliente | VOLTRIS',
     description: 'Acesse sua conta VOLTRIS para gerenciar serviços, pedidos e suporte técnico remoto. Login seguro e rápido.',
-    url: 'https://voltris.com.br/login',
+    url: 'https://www.voltris.com.br/login',
     type: 'website',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Logo VOLTRIS'
@@ -25,6 +25,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Entrar na Área do Cliente | VOLTRIS',
     description: 'Acesse sua conta VOLTRIS para gerenciar serviços, pedidos e suporte técnico remoto. Login seguro e rápido.',
-    images: ['https://voltris.com.br/logo.png']
+    images: ['https://www.voltris.com.br/logo.png']
   }
 }; 

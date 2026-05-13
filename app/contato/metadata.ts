@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contato | Fale Conosco | VOLTRIS',
     description: 'Entre em contato com a VOLTRIS. Telefone, WhatsApp, e-mail e horário de atendimento.',
-    url: 'https://voltris.com.br/contato',
+    url: 'https://www.voltris.com.br/contato',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Contato VOLTRIS',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Contato | VOLTRIS',
     description: 'Entre em contato conosco. Telefone, WhatsApp e e-mail.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/contato',
+    canonical: 'https://www.voltris.com.br/contato',
   },
 };
 

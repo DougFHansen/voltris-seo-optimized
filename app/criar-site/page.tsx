@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Criação de Sites Profissionais: Alta Performance Superior | VOLTRIS",
     description: "Sua empresa merece um site que carrega em milissegundos. Esqueça soluções genéricas. Vá de VOLTRIS.",
-    url: "https://voltris.com.br/criar-site",
+    url: "https://www.voltris.com.br/criar-site",
     type: "website",
     images: [
       {
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     images: ["/logo-seo-web.png"]
   },
   alternates: {
-    canonical: "https://voltris.com.br/criar-site"
+    canonical: "https://www.voltris.com.br/criar-site"
   }
 };
 
@@ -50,7 +50,7 @@ export default function CriarSitePage() {
             "provider": {
               "@type": "Organization",
               "name": "VOLTRIS",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             },
             "serviceType": "Desenvolvimento Web",
             "areaServed": {

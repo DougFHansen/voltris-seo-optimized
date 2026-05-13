@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const baseUrl = 'https://voltris.com.br';
+  const baseUrl = 'https://www.voltris.com.br';
 
   // Map pages to images
   const pages = [

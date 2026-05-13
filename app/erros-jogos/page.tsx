@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Correção de Erros em Jogos - Suporte Técnico Gamer Especializado | VOLTRIS',
     description: 'Resolvemos VAN9003, crashes no GTA, Erros de VAC e Roblox 268 remotamente em minutos. Volte a jogar agora!',
-    url: 'https://voltris.com.br/erros-jogos',
+    url: 'https://www.voltris.com.br/erros-jogos',
     type: 'website',
     images: [{ url: '/logo-seo-gamer.png', width: 1200, height: 630 }]
   },
@@ -38,7 +38,7 @@ export default function ErrosJogosPage() {
             "provider": {
               "@type": "Organization",
               "name": "VOLTRIS",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             },
             "serviceType": "Suporte Técnico para Jogos",
             "areaServed": { "@type": "Country", "name": "Brasil" }

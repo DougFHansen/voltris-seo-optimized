@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/resident-evil-9-pc-configuracoes'
+        canonical: 'https://www.voltris.com.br/guias/resident-evil-9-pc-configuracoes'
     }
 };
 

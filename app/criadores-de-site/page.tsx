@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Criadores de Site - Equipe Especializada em Desenvolvimento Web | VOLTRIS",
     description: "Criadores de site profissionais e especializados. Equipe experiente em desenvolvimento web, design responsivo e SEO.",
-    url: "https://voltris.com.br/criadores-de-site",
+    url: "https://www.voltris.com.br/criadores-de-site",
     type: "website",
     images: [
       {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     images: ["/remotebanner.jpg"]
   },
   alternates: {
-    canonical: "https://voltris.com.br/criadores-de-site"
+    canonical: "https://www.voltris.com.br/criadores-de-site"
   }
 };
 
@@ -63,8 +63,8 @@ export default function CriadoresDeSitePage() {
             "@type": "Organization",
             "name": "VOLTRIS - Criadores de Site",
             "description": "Equipe especializada em criação de sites profissionais e desenvolvimento web",
-            "url": "https://voltris.com.br",
-            "logo": "https://voltris.com.br/logo.png",
+            "url": "https://www.voltris.com.br",
+            "logo": "https://www.voltris.com.br/logo.png",
             "employee": [
               {
                 "@type": "Person",

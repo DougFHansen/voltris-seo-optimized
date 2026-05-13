@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Perfil do Usuário | VOLTRIS',
     description: 'Gerencie seus dados, pedidos e preferências em seu perfil na VOLTRIS. Segurança, privacidade e controle total da sua conta.',
-    url: 'https://voltris.com.br/profile',
+    url: 'https://www.voltris.com.br/profile',
     type: 'website',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Logo VOLTRIS'
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Perfil do Usuário | VOLTRIS',
     description: 'Gerencie seus dados, pedidos e preferências em seu perfil na VOLTRIS. Segurança, privacidade e controle total da sua conta.',
-    images: ['https://voltris.com.br/logo.png']
+    images: ['https://www.voltris.com.br/logo.png']
   },
   robots: {
     index: false,

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Gestão Avançada de TI para Empresas | VOLTRIS',
     description: 'Aumente a produtividade e reduza o tempo de inatividade com suporte corporativo especializado.',
-    url: 'https://voltris.com.br/empresas',
+    url: 'https://www.voltris.com.br/empresas',
     images: ['/logo.png']
   }
 };

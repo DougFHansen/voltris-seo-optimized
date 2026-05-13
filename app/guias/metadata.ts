@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Guias e Tutoriais de Suporte Técnico | VOLTRIS',
     description: 'Aprenda técnicas profissionais de suporte técnico, otimização e manutenção de computadores com nossos guias completos e detalhados.',
-    url: 'https://voltris.com.br/guias',
+    url: 'https://www.voltris.com.br/guias',
     siteName: 'VOLTRIS',
     images: [
       {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias',
+    canonical: 'https://www.voltris.com.br/guias',
   },
 };
 

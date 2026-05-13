@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/cyberpunk-2077-phantom-liberty-pc-otimizacao'
+        canonical: 'https://www.voltris.com.br/guias/cyberpunk-2077-phantom-liberty-pc-otimizacao'
     }
 };
 

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Técnico de Informática que Atende em Casa | VOLTRIS",
     description: "Resolva problemas no seu computador sem sair de casa com nosso suporte técnico remoto de elite.",
-    url: "https://voltris.com.br/tecnico-informatica-atende-casa",
+    url: "https://www.voltris.com.br/tecnico-informatica-atende-casa",
     type: "website",
     images: [{ url: "/remotebanner.jpg", width: 1200, height: 630 }]
   }
@@ -38,7 +38,7 @@ export default function TecnicoInformaticaAtendeCasaPage() {
             "provider": {
               "@type": "Organization",
               "name": "VOLTRIS",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             }
           })
         }}

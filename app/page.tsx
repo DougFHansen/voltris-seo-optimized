@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://voltris.com.br/og-image.jpg',
+        url: 'https://www.voltris.com.br/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Voltris Optimizer',

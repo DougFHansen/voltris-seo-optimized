@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Desativar VBS Windows 11 | Guia Gamer para Aumentar FPS',
     description: 'Desative VBS e HVCI para ganhar até 25% de performance em jogos. Guia completo para gamers Windows 11.',
-    url: 'https://voltris.com.br/como-desativar-vbs-windows-11-gamer',
+    url: 'https://www.voltris.com.br/como-desativar-vbs-windows-11-gamer',
     siteName: 'VOLTRIS',
     locale: 'pt_BR',
     type: 'article',
     images: [
       {
-        url: 'https://voltris.com.br/og-image.jpg',
+        url: 'https://www.voltris.com.br/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Como Desativar VBS Windows 11 - Guia VOLTRIS',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/como-desativar-vbs-windows-11-gamer',
+    canonical: 'https://www.voltris.com.br/como-desativar-vbs-windows-11-gamer',
   },
 };
 

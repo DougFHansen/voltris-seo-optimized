@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'LGPD - Lei Geral de Proteção de Dados | VOLTRIS',
     description: 'Informações sobre aplicação da LGPD na VOLTRIS: direitos do titular, bases legais e conformidade.',
-    url: 'https://voltris.com.br/lgpd',
+    url: 'https://www.voltris.com.br/lgpd',
     type: 'website',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Logo VOLTRIS'
@@ -21,6 +21,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'LGPD - Lei Geral de Proteção de Dados | VOLTRIS',
     description: 'Conformidade com a LGPD: direitos do titular, bases legais e tratamento de dados.',
-    images: ['https://voltris.com.br/logo.png']
+    images: ['https://www.voltris.com.br/logo.png']
   }
 }; 

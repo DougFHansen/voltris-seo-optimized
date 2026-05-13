@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Manutenção de Computador Profissional | VOLTRIS',
     description: 'Serviço profissional de manutenção de computador com diagnóstico completo, limpeza interna, troca de peças e manutenção preventiva.',
-    url: 'https://voltris.com.br/manutencao-computador',
+    url: 'https://www.voltris.com.br/manutencao-computador',
     siteName: 'VOLTRIS',
     images: [{ url: '/remotebanner.jpg', width: 1200, height: 630, alt: 'Manutenção de Computador Profissional VOLTRIS' }],
     locale: 'pt_BR',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/manutencao-computador',
+    canonical: 'https://www.voltris.com.br/manutencao-computador',
   },
   robots: {
     index: true,
@@ -48,7 +48,7 @@ export default function ManutencaoComputadorPage() {
             '@type': 'Service',
             'name': 'Manutenção de Computador Profissional',
             'description': 'Serviço profissional de manutenção de computador com diagnóstico completo, limpeza interna, troca de peças e manutenção preventiva.',
-            'provider': { '@type': 'Organization', 'name': 'VOLTRIS', 'url': 'https://voltris.com.br', 'telephone': '+5511996716235' },
+            'provider': { '@type': 'Organization', 'name': 'VOLTRIS', 'url': 'https://www.voltris.com.br', 'telephone': '+5511996716235' },
             'serviceType': 'Manutenção de Hardware',
             'areaServed': { '@type': 'Country', 'name': 'Brasil' }
           })

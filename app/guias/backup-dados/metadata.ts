@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Fazer Backup dos Seus Dados | Guia Completo de Backup | VOLTRIS',
     description: 'Aprenda métodos eficazes para fazer backup completo dos seus arquivos importantes. Guia completo passo a passo.',
-    url: 'https://voltris.com.br/guias/backup-dados',
+    url: 'https://www.voltris.com.br/guias/backup-dados',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Backup de Dados - VOLTRIS',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Como Fazer Backup dos Seus Dados | VOLTRIS',
     description: 'Aprenda métodos eficazes para fazer backup completo dos seus arquivos importantes.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/backup-dados',
+    canonical: 'https://www.voltris.com.br/guias/backup-dados',
   },
 };
 

@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Aumentar FPS no Roblox | Guia Completo 2026',
     description: 'Otimize seu Windows para ganhar mais FPS no Roblox. Dicas profissionais para eliminar lag e jogar sem travamentos.',
-    url: 'https://voltris.com.br/como-aumentar-fps-roblox-windows',
+    url: 'https://www.voltris.com.br/como-aumentar-fps-roblox-windows',
     siteName: 'VOLTRIS',
     locale: 'pt_BR',
     type: 'article',
     images: [
       {
-        url: 'https://voltris.com.br/og-image.jpg',
+        url: 'https://www.voltris.com.br/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Como Aumentar FPS no Roblox - Guia VOLTRIS',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/como-aumentar-fps-roblox-windows',
+    canonical: 'https://www.voltris.com.br/como-aumentar-fps-roblox-windows',
   },
 };
 

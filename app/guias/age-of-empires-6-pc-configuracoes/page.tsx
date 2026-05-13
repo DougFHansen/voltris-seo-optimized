@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/age-of-empires-6-pc-configuracoes'
+        canonical: 'https://www.voltris.com.br/guias/age-of-empires-6-pc-configuracoes'
     }
 };
 

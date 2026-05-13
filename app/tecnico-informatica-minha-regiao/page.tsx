@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Técnico de Informática na Minha Região | VOLTRIS",
     description: "Atendimento em todo Brasil com suporte remoto imediato. O técnico mais próximo de você está a um clique.",
-    url: "https://voltris.com.br/tecnico-informatica-minha-regiao",
+    url: "https://www.voltris.com.br/tecnico-informatica-minha-regiao",
     type: "website",
     images: [{ url: "/remotebanner.jpg", width: 1200, height: 630 }]
   }
@@ -37,7 +37,7 @@ export default function TecnicoInformaticaMinhaRegiaoPage() {
             "provider": {
               "@type": "Organization",
               "name": "VOLTRIS",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             }
           })
         }}

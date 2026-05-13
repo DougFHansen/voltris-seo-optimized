@@ -325,8 +325,8 @@ export default function ReShadeGuide() {
             <JsonLdGuide
                 title={title}
                 description={description}
-                url="https://voltris.com.br/guias/reshade-instalacao-configuracao"
-                image="https://voltris.com.br/logo.png"
+                url="https://www.voltris.com.br/guias/reshade-instalacao-configuracao"
+                image="https://www.voltris.com.br/logo.png"
                 estimatedTime="25"
                 difficulty="Avançado"
                 category="ReShade Graphics"

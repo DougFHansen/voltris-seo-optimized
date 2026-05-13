@@ -23,11 +23,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Manutenção Preventiva de Computadores | Guia Completo | VOLTRIS',
     description: 'Rotinas de manutenção que você pode fazer regularmente para manter seu computador funcionando perfeitamente.',
-    url: 'https://voltris.com.br/guias/manutencao-preventiva',
+    url: 'https://www.voltris.com.br/guias/manutencao-preventiva',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Manutenção Preventiva - VOLTRIS',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Manutenção Preventiva de Computadores | VOLTRIS',
     description: 'Rotinas de manutenção para manter seu computador funcionando perfeitamente.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/manutencao-preventiva',
+    canonical: 'https://www.voltris.com.br/guias/manutencao-preventiva',
   },
 };
 

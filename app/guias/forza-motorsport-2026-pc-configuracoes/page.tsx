@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/forza-motorsport-2026-pc-configuracoes'
+        canonical: 'https://www.voltris.com.br/guias/forza-motorsport-2026-pc-configuracoes'
     }
 };
 

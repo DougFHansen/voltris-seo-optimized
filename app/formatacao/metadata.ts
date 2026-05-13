@@ -26,5 +26,5 @@ export const metadata: Metadata = generateMetadata({
     'instalação segura'
   ],
   url: '/formatacao',
-  image: 'https://voltris.com.br/logo.png'
+  image: 'https://www.voltris.com.br/logo.png'
 }); 

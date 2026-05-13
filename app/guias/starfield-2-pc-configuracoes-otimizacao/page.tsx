@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/starfield-2-pc-configuracoes-otimizacao'
+        canonical: 'https://www.voltris.com.br/guias/starfield-2-pc-configuracoes-otimizacao'
     }
 };
 

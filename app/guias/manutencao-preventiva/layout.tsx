@@ -13,7 +13,7 @@ export default function ManutencaoPreventivaLayout({
     "@type": "HowTo",
     "name": "Manutenção Preventiva de Computadores",
     "description": "Guia completo sobre rotinas de manutenção preventiva para manter seu computador funcionando perfeitamente.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "totalTime": "PT3H",
     "step": [
       {
@@ -42,25 +42,25 @@ export default function ManutencaoPreventivaLayout({
     "@type": "Article",
     "headline": "Manutenção Preventiva de Computadores",
     "description": "Guia completo sobre rotinas de manutenção preventiva para manter seu computador funcionando perfeitamente.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "author": {
       "@type": "Organization",
       "name": "VOLTRIS",
-      "url": "https://voltris.com.br"
+      "url": "https://www.voltris.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "VOLTRIS",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://voltris.com.br/logo.png"
+        "url": "https://www.voltris.com.br/logo.png"
       }
     },
     "datePublished": new Date().toISOString(),
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://voltris.com.br/guias/manutencao-preventiva"
+      "@id": "https://www.voltris.com.br/guias/manutencao-preventiva"
     }
   };
 

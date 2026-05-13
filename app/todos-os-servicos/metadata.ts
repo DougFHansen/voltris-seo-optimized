@@ -17,12 +17,12 @@ export const metadata: Metadata = {
     'voltris optimizer'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/todos-os-servicos'
+    canonical: 'https://www.voltris.com.br/todos-os-servicos'
   },
   openGraph: {
     title: 'Todos os Serviços Técnicos | Formatação, Otimização, Assistência - VOLTRIS',
     description: 'Confira todos os nossos serviços técnicos: formatação de Windows, otimização de PC, assistência técnica especializada, software de otimização e pacotes combinados.',
-    url: 'https://voltris.com.br/todos-os-servicos',
+    url: 'https://www.voltris.com.br/todos-os-servicos',
     type: 'website',
     images: [{
       url: '/all-tech-services.jpg',

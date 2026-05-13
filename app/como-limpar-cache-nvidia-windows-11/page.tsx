@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Limpar Cache NVIDIA Windows 11 | Guia Shader Cache 2026',
     description: 'Resolva micro-travamentos e problemas de performance limpando o Shader Cache da NVIDIA. Guia completo para Windows 11.',
-    url: 'https://voltris.com.br/como-limpar-cache-nvidia-windows-11',
+    url: 'https://www.voltris.com.br/como-limpar-cache-nvidia-windows-11',
     siteName: 'VOLTRIS',
     locale: 'pt_BR',
     type: 'article',
     images: [
       {
-        url: 'https://voltris.com.br/og-image.jpg',
+        url: 'https://www.voltris.com.br/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Como Limpar Cache NVIDIA Windows 11 - Guia VOLTRIS',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/como-limpar-cache-nvidia-windows-11',
+    canonical: 'https://www.voltris.com.br/como-limpar-cache-nvidia-windows-11',
   },
 };
 

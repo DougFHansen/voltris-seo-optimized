@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Técnico de Informática - Suporte Remoto Especializado | VOLTRIS",
     description: "Suporte técnico remoto especializado em informática. Atendimento 24/7 para todo o Brasil.",
-    url: "https://voltris.com.br/tecnico-informatica",
+    url: "https://www.voltris.com.br/tecnico-informatica",
     type: "website",
     images: [{ url: "/remotebanner.jpg", width: 1200, height: 630 }]
   }
@@ -40,7 +40,7 @@ export default function TecnicoInformaticaPage() {
             "provider": {
               "@type": "Organization",
               "name": "VOLTRIS",
-              "url": "https://voltris.com.br"
+              "url": "https://www.voltris.com.br"
             },
             "areaServed": { "@type": "Country", "name": "Brasil" }
           })

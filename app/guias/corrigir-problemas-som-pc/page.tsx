@@ -272,8 +272,8 @@ export default function CorrigirProblemasSomPCGuide() {
             <JsonLdGuide
                 title={title}
                 description={description}
-                url="https://voltris.com.br/guias/corrigir-problemas-som-pc"
-                image="https://voltris.com.br/logo.png"
+                url="https://www.voltris.com.br/guias/corrigir-problemas-som-pc"
+                image="https://www.voltris.com.br/logo.png"
                 estimatedTime="15"
                 difficulty="Intermediário"
                 category="Problemas de Som"

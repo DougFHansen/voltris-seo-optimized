@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Instalação e ativação do Microsoft Office (Word, Excel, PowerPoint). Configuração completa, sincronização OneDrive e suporte técnico. Serviço 100% remoto.',
     keywords: ['instalação office', 'instalar microsoft office', 'ativar office', 'office remoto', 'configurar office', 'office word excel'],
     alternates: {
-        canonical: 'https://voltris.com.br/todos-os-servicos/instalacao-do-office'
+        canonical: 'https://www.voltris.com.br/todos-os-servicos/instalacao-do-office'
     },
     openGraph: {
         title: 'Instalação do Microsoft Office - Remoto e Profissional | VOLTRIS',
         description: 'Instalação e ativação do Microsoft Office com configuração completa.',
-        url: 'https://voltris.com.br/todos-os-servicos/instalacao-do-office',
+        url: 'https://www.voltris.com.br/todos-os-servicos/instalacao-do-office',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

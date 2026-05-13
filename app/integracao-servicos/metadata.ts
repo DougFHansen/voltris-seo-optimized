@@ -16,12 +16,12 @@ export const metadata: Metadata = {
     'pacotes de serviços técnicos'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/integracao-servicos'
+    canonical: 'https://www.voltris.com.br/integracao-servicos'
   },
   openGraph: {
     title: 'Integração de Serviços Técnicos | Formatação + Otimização + Assistência - VOLTRIS',
     description: 'Como nossos serviços de formatação, otimização e assistência técnica trabalham juntos para maximizar o desempenho do seu PC. Soluções integradas para resultados completos.',
-    url: 'https://voltris.com.br/integracao-servicos',
+    url: 'https://www.voltris.com.br/integracao-servicos',
     type: 'website',
     images: [{
       url: '/service-integration.jpg',

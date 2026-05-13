@@ -23,11 +23,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Guia Completo de Formatação do Windows | Tutorial Passo a Passo | VOLTRIS',
     description: 'Aprenda como formatar seu computador Windows de forma segura e completa. Guia passo a passo profissional.',
-    url: 'https://voltris.com.br/guias/formatacao-windows',
+    url: 'https://www.voltris.com.br/guias/formatacao-windows',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Formatação do Windows - VOLTRIS',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Guia Completo de Formatação do Windows | VOLTRIS',
     description: 'Aprenda como formatar seu computador Windows de forma segura. Tutorial passo a passo completo.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/formatacao-windows',
+    canonical: 'https://www.voltris.com.br/guias/formatacao-windows',
   },
   other: {
     'article:published_time': new Date().toISOString(),

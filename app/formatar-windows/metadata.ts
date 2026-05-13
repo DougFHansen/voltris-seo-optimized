@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     'formatação windows sorocaba'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/formatar-windows'
+    canonical: 'https://www.voltris.com.br/formatar-windows'
   },
   openGraph: {
     title: 'Formatação de Windows em SP | Rápido e Garantido - VOLTRIS',
     description: 'Formatação de Windows Profissional em São Paulo. Instalação limpa, drivers atualizados, configurações otimizadas. Orçamento em minutos, sem surpresas.',
-    url: 'https://voltris.com.br/formatar-windows',
+    url: 'https://www.voltris.com.br/formatar-windows',
     type: 'website',
     images: [{
       url: '/windows-formatting-service.jpg',

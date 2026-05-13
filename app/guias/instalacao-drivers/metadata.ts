@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Instalação e Atualização de Drivers | Guia Completo | VOLTRIS',
     description: 'Aprenda como instalar, atualizar e gerenciar drivers do seu computador para garantir que todos os dispositivos funcionem corretamente.',
-    url: 'https://voltris.com.br/guias/instalacao-drivers',
+    url: 'https://www.voltris.com.br/guias/instalacao-drivers',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Instalação de Drivers - VOLTRIS',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Instalação e Atualização de Drivers | VOLTRIS',
     description: 'Guia completo sobre instalação e gerenciamento de drivers.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/instalacao-drivers',
+    canonical: 'https://www.voltris.com.br/guias/instalacao-drivers',
   },
 };
 

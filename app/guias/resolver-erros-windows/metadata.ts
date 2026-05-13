@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Resolver Erros Comuns do Windows | Guia de Troubleshooting | VOLTRIS',
     description: 'Guia completo para diagnosticar e resolver os erros mais frequentes no Windows.',
-    url: 'https://voltris.com.br/guias/resolver-erros-windows',
+    url: 'https://www.voltris.com.br/guias/resolver-erros-windows',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Resolução de Erros Windows - VOLTRIS',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Como Resolver Erros Comuns do Windows | VOLTRIS',
     description: 'Guia completo para diagnosticar e resolver erros do Windows.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/resolver-erros-windows',
+    canonical: 'https://www.voltris.com.br/guias/resolver-erros-windows',
   },
 };
 

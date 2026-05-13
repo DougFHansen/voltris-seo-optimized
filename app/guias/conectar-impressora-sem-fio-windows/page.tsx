@@ -319,8 +319,8 @@ export default function ConectarImpressoraSemFioWindowsGuide() {
             <JsonLdGuide
                 title={title}
                 description={description}
-                url="https://voltris.com.br/guias/conectar-impressora-sem-fio-windows"
-                image="https://voltris.com.br/logo.png"
+                url="https://www.voltris.com.br/guias/conectar-impressora-sem-fio-windows"
+                image="https://www.voltris.com.br/logo.png"
                 estimatedTime="8"
                 difficulty="Iniciante"
                 category="Impressora Sem Fio"

@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Informações sobre como a VOLTRIS trata seus dados pessoais de acordo com a LGPD. Conheça nossos procedimentos de segurança e privacidade.',
     keywords: ['lgpd', 'proteção de dados', 'privacidade', 'segurança de dados', 'lei geral proteção dados', 'dados pessoais'],
     alternates: {
-        canonical: 'https://voltris.com.br/lgpd'
+        canonical: 'https://www.voltris.com.br/lgpd'
     },
     openGraph: {
         title: 'LGPD - Lei Geral de Proteção de Dados | VOLTRIS',
         description: 'Como a VOLTRIS trata seus dados pessoais de acordo com a LGPD.',
-        url: 'https://voltris.com.br/lgpd',
+        url: 'https://www.voltris.com.br/lgpd',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

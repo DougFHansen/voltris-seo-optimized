@@ -13,7 +13,7 @@ export default function BackupDadosLayout({
     "@type": "HowTo",
     "name": "Como Fazer Backup dos Seus Dados",
     "description": "Guia completo passo a passo para fazer backup eficaz dos seus arquivos importantes usando diferentes métodos.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "totalTime": "PT1H",
     "step": [
       {
@@ -60,25 +60,25 @@ export default function BackupDadosLayout({
     "@type": "Article",
     "headline": "Como Fazer Backup dos Seus Dados",
     "description": "Guia completo sobre métodos eficazes para fazer backup completo dos seus arquivos importantes.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "author": {
       "@type": "Organization",
       "name": "VOLTRIS",
-      "url": "https://voltris.com.br"
+      "url": "https://www.voltris.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "VOLTRIS",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://voltris.com.br/logo.png"
+        "url": "https://www.voltris.com.br/logo.png"
       }
     },
     "datePublished": new Date().toISOString(),
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://voltris.com.br/guias/backup-dados"
+      "@id": "https://www.voltris.com.br/guias/backup-dados"
     }
   };
 

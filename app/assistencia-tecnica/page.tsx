@@ -42,13 +42,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Assistência Técnica VOLTRIS | Reparo e Manutenção Especializada',
     description: 'Serviços completos de assistência técnica para computadores e notebooks. Reparo, manutenção e configuração por especialistas.',
-    url: 'https://voltris.com.br/assistencia-tecnica',
+    url: 'https://www.voltris.com.br/assistencia-tecnica',
     siteName: 'VOLTRIS',
     locale: 'pt_BR',
     type: 'website',
     images: [
       {
-        url: 'https://voltris.com.br/og-image.jpg',
+        url: 'https://www.voltris.com.br/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Assistência Técnica VOLTRIS - Reparo de Computadores',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/assistencia-tecnica',
+    canonical: 'https://www.voltris.com.br/assistencia-tecnica',
   },
 };
 
@@ -152,7 +152,7 @@ export default function TechnicalSupportPage() {
           provider: {
             "@type": "Organization",
             "name": "VOLTRIS",
-            "url": "https://voltris.com.br"
+            "url": "https://www.voltris.com.br"
           },
           serviceType: "Suporte Técnico",
           areaServed: { "@type": "Country", "name": "Brasil" },

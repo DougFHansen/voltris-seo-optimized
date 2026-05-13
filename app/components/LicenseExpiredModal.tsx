@@ -132,7 +132,7 @@ export default function LicenseExpiredModal({
                             {/* Actions */}
                             <div className="flex flex-col gap-3">
                                 <a
-                                    href="https://voltris.com.br/pricing"
+                                    href="https://www.voltris.com.br/pricing"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group relative px-6 py-4 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-center rounded-xl overflow-hidden transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-3"

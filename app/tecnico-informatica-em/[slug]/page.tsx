@@ -251,12 +251,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             `limpeza de vírus ${location.name}`
         ],
         alternates: {
-            canonical: `https://voltris.com.br/tecnico-informatica-em/${location.slug}`
+            canonical: `https://www.voltris.com.br/tecnico-informatica-em/${location.slug}`
         },
         openGraph: {
             title: `Técnico de Informática em ${location.name} | VOLTRIS`,
             description: location.description,
-            url: `https://voltris.com.br/tecnico-informatica-em/${location.slug}`,
+            url: `https://www.voltris.com.br/tecnico-informatica-em/${location.slug}`,
             type: 'website',
             images: [{ url: '/remotebanner.jpg', width: 1200, height: 630 }]
         }
@@ -286,7 +286,7 @@ export default function LocalPage({ params }: { params: { slug: string } }) {
                         "@type": "LocalBusiness",
                         "name": `VOLTRIS - Técnico de Informática em ${location.name}`,
                         "description": location.description,
-                        "url": `https://voltris.com.br/tecnico-informatica-em/${location.slug}`,
+                        "url": `https://www.voltris.com.br/tecnico-informatica-em/${location.slug}`,
                         "telephone": "+5511996716235",
                         "address": {
                             "@type": "PostalAddress",

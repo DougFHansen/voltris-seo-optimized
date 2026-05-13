@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     'assistência em domicílio sp'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/servicos-sp'
+    canonical: 'https://www.voltris.com.br/servicos-sp'
   },
   openGraph: {
     title: 'Serviços Técnicos em SP | Formatação, Otimização e Assistência - VOLTRIS',
     description: 'Serviços técnicos especializados em São Paulo: formatação de Windows, otimização de PC, assistência técnica e software de otimização. Atendimento local, técnicos certificados e garantia.',
-    url: 'https://voltris.com.br/servicos-sp',
+    url: 'https://www.voltris.com.br/servicos-sp',
     type: 'website',
     images: [{
       url: '/tech-services-sao-paulo.jpg',

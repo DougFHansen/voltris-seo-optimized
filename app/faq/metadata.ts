@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Perguntas Frequentes (FAQ) | VOLTRIS',
     description: 'Tire suas dúvidas sobre suporte técnico remoto, criação de sites, pagamentos, segurança e mais. Veja as respostas para as perguntas mais comuns.',
-    url: 'https://voltris.com.br/faq',
+    url: 'https://www.voltris.com.br/faq',
     type: 'website',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Logo VOLTRIS'
@@ -21,6 +21,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Perguntas Frequentes (FAQ) | VOLTRIS',
     description: 'Tire suas dúvidas sobre suporte técnico remoto, criação de sites, pagamentos, segurança e mais. Veja as respostas para as perguntas mais comuns.',
-    images: ['https://voltris.com.br/logo.png']
+    images: ['https://www.voltris.com.br/logo.png']
   }
 }; 

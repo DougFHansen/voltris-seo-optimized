@@ -18,5 +18,5 @@ export const metadata: Metadata = generateMetadata({
     "site institucional"
   ],
   url: '/criar-site',
-  image: 'https://voltris.com.br/logo.png'
+  image: 'https://www.voltris.com.br/logo.png'
 }); 

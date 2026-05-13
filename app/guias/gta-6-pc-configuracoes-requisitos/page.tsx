@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/gta-6-pc-configuracoes-requisitos'
+        canonical: 'https://www.voltris.com.br/guias/gta-6-pc-configuracoes-requisitos'
     }
 };
 

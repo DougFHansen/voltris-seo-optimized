@@ -33,7 +33,7 @@ export default function JsonLdGuide({
   steps
 }: JsonLdGuideProps) {
   const pathname = usePathname();
-  const finalUrl = url || `https://voltris.com.br${pathname}`;
+  const finalUrl = url || `https://www.voltris.com.br${pathname}`;
   
   const structuredData = {
     '@context': 'https://schema.org',
@@ -47,7 +47,7 @@ export default function JsonLdGuide({
     author: {
       '@type': 'Organization',
       name: 'VOLTRIS',
-      url: 'https://voltris.com.br'
+      url: 'https://www.voltris.com.br'
     },
     publisher: {
       '@type': 'Organization',

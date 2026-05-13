@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Como Bloquear Anúncios Windows 11 | Guia Completo 2026',
     description: 'Remova todas as propagandas do Windows 11. Guia definitivo para Menu Iniciar, Explorador de Arquivos e Tela de Bloqueio.',
-    url: 'https://voltris.com.br/como-bloquear-anuncios-no-windows-11-total',
+    url: 'https://www.voltris.com.br/como-bloquear-anuncios-no-windows-11-total',
     siteName: 'VOLTRIS',
     locale: 'pt_BR',
     type: 'article',
     images: [
       {
-        url: 'https://voltris.com.br/og-image.jpg',
+        url: 'https://www.voltris.com.br/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Como Bloquear Anúncios Windows 11 - Guia VOLTRIS',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     creator: '@voltris',
   },
   alternates: {
-    canonical: 'https://voltris.com.br/como-bloquear-anuncios-no-windows-11-total',
+    canonical: 'https://www.voltris.com.br/como-bloquear-anuncios-no-windows-11-total',
   },
 };
 

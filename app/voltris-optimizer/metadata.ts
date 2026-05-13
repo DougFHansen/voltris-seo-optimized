@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     'software de performance gamer brasil'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/voltris-optimizer'
+    canonical: 'https://www.voltris.com.br/voltris-optimizer'
   },
   openGraph: {
     title: 'Software de Otimização de PC | Voltris Optimizer - Aumente FPS e Performance',
     description: 'Voltris Optimizer: Software brasileiro de otimização de PC. Aumente FPS em jogos, otimize Windows, acelere computadores. Versão grátis e paga.',
-    url: 'https://voltris.com.br/voltris-optimizer',
+    url: 'https://www.voltris.com.br/voltris-optimizer',
     type: 'website',
     images: [{
       url: '/voltris-optimizer-showcase.jpg',

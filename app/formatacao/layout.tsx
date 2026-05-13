@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Formatação remota completa do seu computador. Instalação limpa do Windows, drivers, programas essenciais e otimização. Serviço rápido e seguro, sem sair de casa.',
     keywords: ['formatação remota', 'formatar pc online', 'formatação windows 10', 'formatação windows 11', 'instalação limpa windows', 'formatar computador remoto', 'backup formatação', 'formatação profissional'],
     alternates: {
-        canonical: 'https://voltris.com.br/formatacao'
+        canonical: 'https://www.voltris.com.br/formatacao'
     },
     openGraph: {
         title: 'Formatação de PC Remota - Windows 10 e 11 | VOLTRIS',
         description: 'Formatação remota completa com backup, instalação de drivers e otimização. Serviço profissional 100% online.',
-        url: 'https://voltris.com.br/formatacao',
+        url: 'https://www.voltris.com.br/formatacao',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

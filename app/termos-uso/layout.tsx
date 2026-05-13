@@ -5,12 +5,12 @@ export const metadata: Metadata = {
     description: 'Termos e condições de uso dos serviços VOLTRIS. Leia atentamente antes de contratar nossos serviços de suporte técnico e criação de sites.',
     keywords: ['termos de uso', 'condições de uso', 'termos serviço', 'contrato voltris', 'termos condições'],
     alternates: {
-        canonical: 'https://voltris.com.br/termos-uso'
+        canonical: 'https://www.voltris.com.br/termos-uso'
     },
     openGraph: {
         title: 'Termos de Uso - VOLTRIS',
         description: 'Termos e condições de uso dos nossos serviços.',
-        url: 'https://voltris.com.br/termos-uso',
+        url: 'https://www.voltris.com.br/termos-uso',
         type: 'website',
         locale: 'pt_BR',
         siteName: 'VOLTRIS',

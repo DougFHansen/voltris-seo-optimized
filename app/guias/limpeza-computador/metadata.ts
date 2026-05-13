@@ -26,11 +26,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Limpeza Completa do Computador | Guia Profissional | VOLTRIS',
     description: 'Técnicas profissionais para limpar arquivos temporários, cache e otimizar o espaço em disco do seu computador.',
-    url: 'https://voltris.com.br/guias/limpeza-computador',
+    url: 'https://www.voltris.com.br/guias/limpeza-computador',
     siteName: 'VOLTRIS',
     images: [
       {
-        url: 'https://voltris.com.br/logo.png',
+        url: 'https://www.voltris.com.br/logo.png',
         width: 1200,
         height: 630,
         alt: 'Guia de Limpeza de Computador - VOLTRIS',
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Limpeza Completa do Computador | VOLTRIS',
     description: 'Técnicas profissionais para limpar e otimizar seu computador.',
-    images: ['https://voltris.com.br/logo.png'],
+    images: ['https://www.voltris.com.br/logo.png'],
   },
   robots: {
     index: true,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://voltris.com.br/guias/limpeza-computador',
+    canonical: 'https://www.voltris.com.br/guias/limpeza-computador',
   },
 };
 

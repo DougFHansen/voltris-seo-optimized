@@ -18,12 +18,12 @@ export const metadata: Metadata = {
     'manutenção profissional de pc'
   ],
   alternates: {
-    canonical: 'https://voltris.com.br/otimizacao-pc'
+    canonical: 'https://www.voltris.com.br/otimizacao-pc'
   },
   openGraph: {
     title: 'Otimização de PC Windows | Máxima Performance para Jogos e Empresas - VOLTRIS',
     description: 'Serviço profissional de otimização de sistema Windows em todo o Brasil. Aumente FPS em jogos e produtividade em empresas.',
-    url: 'https://voltris.com.br/otimizacao-pc',
+    url: 'https://www.voltris.com.br/otimizacao-pc',
     type: 'website',
     images: [{
       url: '/pc-optimization-service.jpg',

@@ -13,7 +13,7 @@ export default function LimpezaComputadorLayout({
     "@type": "HowTo",
     "name": "Limpeza Completa do Computador",
     "description": "Guia passo a passo completo para limpar arquivos temporários, cache, programas desnecessários e otimizar o espaço em disco.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "totalTime": "PT1H",
     "step": [
       {
@@ -60,25 +60,25 @@ export default function LimpezaComputadorLayout({
     "@type": "Article",
     "headline": "Limpeza Completa do Computador",
     "description": "Guia completo com técnicas profissionais para limpar arquivos temporários, cache e otimizar o espaço em disco.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "author": {
       "@type": "Organization",
       "name": "VOLTRIS",
-      "url": "https://voltris.com.br"
+      "url": "https://www.voltris.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "VOLTRIS",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://voltris.com.br/logo.png"
+        "url": "https://www.voltris.com.br/logo.png"
       }
     },
     "datePublished": new Date().toISOString(),
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://voltris.com.br/guias/limpeza-computador"
+      "@id": "https://www.voltris.com.br/guias/limpeza-computador"
     }
   };
 

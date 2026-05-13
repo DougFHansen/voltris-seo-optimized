@@ -42,7 +42,7 @@ export const metadata: Metadata = {
         ]
     },
     alternates: {
-        canonical: 'https://voltris.com.br/guias/elder-scrolls-6-pc-requisitos-configuracoes'
+        canonical: 'https://www.voltris.com.br/guias/elder-scrolls-6-pc-requisitos-configuracoes'
     }
 };
 

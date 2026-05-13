@@ -13,7 +13,7 @@ export default function ResolverErrosWindowsLayout({
     "@type": "HowTo",
     "name": "Como Resolver Erros Comuns do Windows",
     "description": "Guia completo passo a passo para diagnosticar e resolver os erros mais frequentes no Windows.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "totalTime": "PT2H",
     "step": [
       {
@@ -54,25 +54,25 @@ export default function ResolverErrosWindowsLayout({
     "@type": "Article",
     "headline": "Como Resolver Erros Comuns do Windows",
     "description": "Guia completo para diagnosticar e resolver os erros mais frequentes no Windows.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "author": {
       "@type": "Organization",
       "name": "VOLTRIS",
-      "url": "https://voltris.com.br"
+      "url": "https://www.voltris.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "VOLTRIS",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://voltris.com.br/logo.png"
+        "url": "https://www.voltris.com.br/logo.png"
       }
     },
     "datePublished": new Date().toISOString(),
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://voltris.com.br/guias/resolver-erros-windows"
+      "@id": "https://www.voltris.com.br/guias/resolver-erros-windows"
     }
   };
 

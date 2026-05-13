@@ -13,7 +13,7 @@ export default function InstalacaoDriversLayout({
     "@type": "HowTo",
     "name": "Instalação e Atualização de Drivers",
     "description": "Guia completo passo a passo para instalar, atualizar e gerenciar drivers do computador.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "totalTime": "PT45M",
     "step": [
       {
@@ -54,25 +54,25 @@ export default function InstalacaoDriversLayout({
     "@type": "Article",
     "headline": "Instalação e Atualização de Drivers",
     "description": "Guia completo sobre como instalar, atualizar e gerenciar drivers do computador.",
-    "image": "https://voltris.com.br/logo.png",
+    "image": "https://www.voltris.com.br/logo.png",
     "author": {
       "@type": "Organization",
       "name": "VOLTRIS",
-      "url": "https://voltris.com.br"
+      "url": "https://www.voltris.com.br"
     },
     "publisher": {
       "@type": "Organization",
       "name": "VOLTRIS",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://voltris.com.br/logo.png"
+        "url": "https://www.voltris.com.br/logo.png"
       }
     },
     "datePublished": new Date().toISOString(),
     "dateModified": new Date().toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://voltris.com.br/guias/instalacao-drivers"
+      "@id": "https://www.voltris.com.br/guias/instalacao-drivers"
     }
   };
 
