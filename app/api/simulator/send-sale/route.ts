@@ -31,10 +31,13 @@ export async function GET(request: NextRequest) {
     const token = (process.env.TELEGRAM_BOT_TOKEN || '').replace(/['"]/g, '').trim();
     const chatId = (process.env.TELEGRAM_CHAT_ID || '-1003839628448').replace(/['"]/g, '').trim();
 
+    console.log('[SalesSimulator] Token presente:', !!token);
+    console.log('[SalesSimulator] Chat ID:', chatId);
+
     if (!token || !chatId) {
       console.warn('[SalesSimulator] Telegram credentials missing.');
       return NextResponse.json(
-        { error: 'Telegram credentials not configured' },
+        { error: 'Telegram credentials not configured', hasToken: !!token, hasChatId: !!chatId },
         { status: 500 }
       );
     }
