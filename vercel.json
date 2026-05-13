@@ -40,11 +40,5 @@
       "destination": "/",
       "permanent": true
     }
-  ],
-  "crons": [
-    {
-      "path": "/api/simulator/send-sale?key=voltris-sales-simulator-2026",
-      "schedule": "*/5 * * * *"
-    }
   ]
 }
