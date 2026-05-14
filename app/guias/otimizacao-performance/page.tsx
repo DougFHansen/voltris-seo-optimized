@@ -338,7 +338,7 @@ export default function PerformanceOptimizationGuide() {
       keywords={keywords}
       estimatedTime="35 min"
       difficultyLevel="Intermediário"
-      author="Douglas F. Hansen"
+      author="Douglas Felipe"
       lastUpdated="Março 2026"
       contentSections={allContentSections}
       summaryTable={summaryTable}

@@ -132,7 +132,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
                   <p>
-                    A história da <strong className="text-gray-900 font-semibold">Voltris</strong> começou em 2025, não como uma empresa, mas como um desafio. Douglas Felipe Moraes Gonçalves, nosso fundador, percebeu que a maioria das "assistências técnicas" se limitava a formatar computadores sem entender a raiz dos problemas de performance.
+                    A história da <strong className="text-gray-900 font-semibold">Voltris</strong> começou em 2025, não como uma empresa, mas como um desafio. Douglas Felipe, nosso fundador, percebeu que a maioria das "assistências técnicas" se limitava a formatar computadores sem entender a raiz dos problemas de performance.
                   </p>
                   <p>
                     O que começou com suporte para amigos cresceu exponencialmente. A metodologia proprietária de otimização da Voltris — que vai além do hardware e ajusta o sistema operacional a nível de kernel — rapidamente ganhou fama entre gamers e profissionais que precisavam de estabilidade absoluta.
@@ -289,7 +289,7 @@ export default function AboutPage() {
                   <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden relative">
                     <Image
                       src="/ceo.jpg"
-                      alt="Douglas Felipe Moraes Gonçalves"
+                      alt="Douglas Felipe"
                       fill
                       className="object-cover"
                     />
@@ -302,7 +302,7 @@ export default function AboutPage() {
                     "A tecnologia deve ser libertadora, não uma dor de cabeça. Na Voltris, não consertamos apenas computadores; nós devolvemos tempo e tranquilidade para as pessoas."
                   </h3>
                   <div>
-                    <p className="text-blue-600 font-bold text-lg tracking-wide uppercase">Douglas Felipe Moraes Gonçalves</p>
+                    <p className="text-blue-600 font-bold text-lg tracking-wide uppercase">Douglas Felipe</p>
                     <p className="text-gray-500 text-sm">CEO & Fundador</p>
                   </div>
                 </div>

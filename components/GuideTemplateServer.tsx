@@ -86,7 +86,7 @@ export default function GuideTemplateServer({
     difficultyLevel,
     contentSections,
     relatedGuides = [],
-    author = "Douglas F. Hansen",
+    author = "Douglas Felipe",
     authorBio = "Especialista em otimização de sistemas Windows com anos de experiência em diagnóstico de hardware, tuning de kernel e suporte técnico avançado. Fundador da Voltris e desenvolvedor do Voltris Optimizer.",
     authorCredentials = ["Especialista em Sistemas Windows", "Desenvolvedor do Voltris Optimizer", "Suporte Técnico Avançado"],
     lastUpdated = "2026",

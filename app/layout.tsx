@@ -181,7 +181,7 @@ export default function RootLayout({
         <JsonLd
           type="Person"
           data={{
-            name: "Doug FHansen",
+            name: "Douglas Felipe",
             jobTitle: "CEO & Especialista em Infraestrutura de TI",
             url: "https://www.voltris.com.br",
             description: "Especialista em otimização de performance de sistemas e infraestrutura de TI com 10+ anos de experiência. Autoridade em suporte remoto global e segurança digital.",

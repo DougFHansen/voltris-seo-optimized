@@ -126,7 +126,7 @@ export default function JsonLdGuide({
     dateModified,
     author: {
       '@type': 'Person',
-      name: 'Doug FHansen',
+      name: 'Douglas Felipe',
       jobTitle: 'Especialista em Performance de PC',
       url: 'https://www.voltris.com.br'
     },

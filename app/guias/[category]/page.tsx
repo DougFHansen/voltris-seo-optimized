@@ -76,7 +76,7 @@ export default async function CategoryHubPage({ params }: { params: Promise<{ ca
       "url": `https://www.voltris.com.br/guias/${guide.id}`,
       "author": {
         "@type": "Person",
-        "name": "Douglas F. Hansen"
+        "name": "Douglas Felipe"
       },
       "datePublished": "2025-01-01",
       "dateModified": "2026-01-01"

@@ -13,7 +13,7 @@ const comparisonSchema = {
   "description": "Comparação honesta entre otimização manual do Windows e automática com Voltris Optimizer. Descubra qual método oferece melhor performance, tempo investido e resultados em 2026.",
   "author": {
     "@type": "Person",
-    "name": "Douglas F. Hansen"
+    "name": "Douglas Felipe"
   },
   "datePublished": "2025-01-01",
   "dateModified": "2026-01-01",
