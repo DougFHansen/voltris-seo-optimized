@@ -19,7 +19,8 @@ import {
   ShoppingCart,
   CheckCircle2,
   ChevronRight,
-  MessageSquare
+  MessageSquare,
+  Lock
 } from 'lucide-react';
 import Link from 'next/link';
 
