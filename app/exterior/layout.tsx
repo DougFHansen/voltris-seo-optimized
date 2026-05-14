@@ -65,10 +65,21 @@ export const metadata: Metadata = {
   category: 'technology',
 };
 
+import InternationalStatus from "@/components/InternationalStatus";
+
 export default function ExteriorLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <div className="fixed top-0 left-0 right-0 z-[110]">
+        <InternationalStatus />
+      </div>
+      <div className="pt-8">
+        {children}
+      </div>
+    </>
+  );
 }

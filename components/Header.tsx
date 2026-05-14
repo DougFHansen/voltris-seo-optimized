@@ -64,32 +64,34 @@ export default function Header() {
 
   const servicesNavLinks = [
     {
-      category: 'Software Expert',
+      category: 'Vertical Gamer',
       items: [
-        { name: 'Voltris Optimizer', path: '/voltrisoptimizer', desc: 'Performance Máxima' },
-        { name: 'Assinar PRO', path: '/adquirir-licenca', desc: 'Ativação de Licença' },
+        { name: 'Hub Gamer', path: '/gamer', desc: 'Performance & FPS' },
+        { name: 'Voltris Optimizer', path: '/voltrisoptimizer', desc: 'Software de Elite' },
+        { name: 'Otimização Remota', path: '/otimizacao-pc', desc: 'Tuning de Especialista' },
       ]
     },
     {
-      category: 'Suporte Gamer',
+      category: 'Vertical B2B',
       items: [
-        { name: 'Otimização Gamer', path: '/otimizacao-pc', desc: 'FPS & Input Lag' },
-        { name: 'Erros em Jogos', path: '/erros-jogos', desc: 'GTA, CS2 e mais' },
+        { name: 'Hub Corporativo', path: '/corporativo', desc: 'Suporte Empresarial' },
+        { name: 'Serviços B2B', path: '/corporativo/servicos', desc: 'Gestão & Infra' },
+        { name: 'Cidades Atendidas', path: '/corporativo#local', desc: 'Atendimento Regional' },
       ]
     },
     {
-      category: 'Assistência Técnica',
+      category: 'Vertical Home',
       items: [
-        { name: 'Formatação Windows', path: '/formatar-windows', desc: 'Sistema Limpo' },
-        { name: 'Manutenção de PC', path: '/manutencao-computador', desc: 'Hardware & Limpeza' },
-        { name: 'Suporte Remoto', path: '/suporte-tecnico-remoto', desc: 'Atendimento Online' },
-        { name: 'Internacional', path: '/exterior', desc: 'Suporte no Exterior' },
+        { name: 'Hub Residencial', path: '/home', desc: 'Suporte para Casa' },
+        { name: 'Formatação', path: '/home#servicos', desc: 'Windows Novo' },
+        { name: 'Limpeza Técnica', path: '/home#servicos', desc: 'Fim da Lentidão' },
       ]
     },
     {
-      category: 'Web & Design',
+      category: 'Outros',
       items: [
-        { name: 'Criação de Sites', path: '/criar-site', desc: 'Sites Profissionais' },
+        { name: 'Criação de Sites', path: '/criar-site', desc: 'Presença Digital' },
+        { name: 'Área do Cliente', path: '/dashboard', desc: 'Gestão de Chamados' },
       ]
     },
   ];

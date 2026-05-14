@@ -37,7 +37,7 @@ export default function PcOptimizationPage() {
           areaServed: { "@type": "Country", "name": "Brasil" },
           offers: {
             "@type": "Offer",
-            "price": "49.90",
+            "price": "197.00",
             "priceCurrency": "BRL"
           }
         }}

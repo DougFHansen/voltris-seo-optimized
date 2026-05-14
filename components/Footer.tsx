@@ -20,12 +20,11 @@ export default function Footer() {
       { name: 'Contato', path: '/contato' },
     ],
     services: [
-      { name: 'Formatação Windows', path: '/formatar-windows' },
-      { name: 'Otimização Gamer', path: '/otimizacao-pc' },
-      { name: 'Erros em Jogos', path: '/erros-jogos' },
-      { name: 'Manutenção de PC', path: '/manutencao-computador' },
+      { name: 'Hub Gamer', path: '/gamer' },
+      { name: 'Hub Corporativo (B2B)', path: '/corporativo' },
+      { name: 'Hub Residencial (Home)', path: '/home' },
+      { name: 'Voltris Optimizer', path: '/voltrisoptimizer' },
       { name: 'Criação de Sites', path: '/criar-site' },
-      { name: 'Suporte Remoto', path: '/suporte-tecnico-remoto' },
     ],
     cities: [
       { name: 'São Paulo', path: '/tecnico-informatica-em/sao-paulo' },

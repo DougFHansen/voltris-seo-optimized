@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: "VOLTRIS - Otimização de PC, Performance Gamer e Suporte Técnico",
     template: "%s | VOLTRIS"
   },
-  description: "A maior autoridade em performance gamer e otimização de Windows do Brasil. Baixe o Voltris Optimizer, confira nossos 300+ guias de FPS e solicite suporte técnico especializado.",
+  description: "A maior autoridade em performance gamer, otimização de Windows e suporte técnico remoto. Baixe o Voltris Optimizer, confira nossos 300+ guias de FPS e solicite suporte especializado para qualquer lugar do mundo.",
   keywords: [
     "otimização de pc",
     "aumentar fps",
@@ -25,15 +25,13 @@ export const metadata: Metadata = {
     "suporte técnico remoto",
     "otimização windows",
     "redutor de lag",
-    "melhores configurações windows",
+    "suporte técnico internacional",
     "especialista em performance pc",
-    "otimização pc brasil",
+    "suporte técnico brasileiros exterior",
     "guias técnicos informática",
-    "como aumentar fps windows 11",
-    "limpeza de arquivos temporarios",
     "suporte informatica online"
   ],
-  authors: [{ name: "VOLTRIS - Especialista em Performance" }],
+  authors: [{ name: "VOLTRIS - Especialista em Performance Global" }],
   creator: "VOLTRIS",
   publisher: "VOLTRIS",
   formatDetection: {
@@ -42,6 +40,14 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://www.voltris.com.br'),
+  alternates: {
+    canonical: 'https://www.voltris.com.br',
+    languages: {
+      'pt-BR': 'https://www.voltris.com.br',
+      'pt-PT': 'https://www.voltris.com.br/exterior',
+      'x-default': 'https://www.voltris.com.br/exterior',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
@@ -155,6 +161,9 @@ export default function RootLayout({
             name: "Voltris Optimizer",
             operatingSystem: "Windows 10, Windows 11",
             applicationCategory: "UtilitiesApplication",
+            softwareVersion: "3.5.0",
+            downloadUrl: "https://www.voltris.com.br/download/VoltrisOptimizer.exe",
+            fileSize: "15MB",
             offers: {
               "@type": "Offer",
               "price": "0",
@@ -173,24 +182,35 @@ export default function RootLayout({
           type="Person"
           data={{
             name: "Doug FHansen",
-            jobTitle: "Especialista em Performance de PC",
+            jobTitle: "CEO & Especialista em Infraestrutura de TI",
             url: "https://www.voltris.com.br",
-            description: "Especialista em otimização de performance de PC com 10+ anos de experiência. Já ajudou mais de 12.500.000 usuários a aumentar FPS e reduzir lag através do Voltris Optimizer.",
+            description: "Especialista em otimização de performance de sistemas e infraestrutura de TI com 10+ anos de experiência. Autoridade em suporte remoto global e segurança digital.",
+            knowsAbout: [
+              "Windows Optimization",
+              "Cybersecurity for Remote Work",
+              "Managed IT Services (MSP)",
+              "Digital Privacy",
+              "Remote Desktop Support"
+            ],
             worksFor: {
               "@type": "Organization",
               name: "VOLTRIS",
               url: "https://www.voltris.com.br"
-            }
+            },
+            sameAs: [
+              "https://www.linkedin.com/in/dougfhansen",
+              "https://www.instagram.com/voltris.com.br"
+            ]
           }}
         />
 
-        {/* Schema.org WebSite with SearchAction for rich search box */}
+        {/* Schema.org WebSite with Global Context */}
         <JsonLd
           type="WebSite"
           data={{
             name: "VOLTRIS",
             url: "https://www.voltris.com.br",
-            description: "A maior autoridade em performance gamer e otimização de Windows do Brasil",
+            description: "A maior autoridade em performance gamer, otimização de Windows e suporte técnico remoto global.",
             potentialAction: {
               "@type": "SearchAction",
               target: {
@@ -199,6 +219,31 @@ export default function RootLayout({
               },
               "query-input": "required name=search_term_string"
             }
+          }}
+        />
+
+        {/* Global Service Schema for AEO/GEO */}
+        <JsonLd 
+          type="Service"
+          data={{
+            name: "Suporte Técnico Remoto Especializado",
+            description: "Suporte técnico remoto de alta performance disponível globalmente para brasileiros no exterior.",
+            provider: {
+              "@type": "Organization",
+              name: "VOLTRIS",
+              url: "https://www.voltris.com.br"
+            },
+            areaServed: [
+              { "@type": "Country", name: "BR" },
+              { "@type": "Country", name: "PT" },
+              { "@type": "Country", name: "US" },
+              { "@type": "Country", name: "JP" },
+              { "@type": "Country", name: "IE" },
+              { "@type": "Country", name: "CA" },
+              { "@type": "Country", name: "GB" }
+            ],
+            serviceType: "Remote Technical Support",
+            termsOfService: "https://www.voltris.com.br/termos"
           }}
         />
 

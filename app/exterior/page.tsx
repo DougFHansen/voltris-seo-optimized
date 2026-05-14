@@ -33,58 +33,40 @@ import { motion } from 'framer-motion';
 // International services with same structure but Brazil-expat focused content
 const internationalServices = [
   {
-    id: "suporte-remoto-global",
-    title: "Suporte Técnico Remoto Global",
-    description: "Atendimento especializado em português para brasileiros em qualquer país. Suporte 24/7 com horários flexíveis conforme seu fuso horário.",
+    id: "voltris-concierge",
+    title: "Voltris Digital Concierge",
+    description: "Gestão completa da sua infraestrutura digital. Atendimento VIP proativo para brasileiros que não aceitam menos que a máxima performance e segurança no exterior.",
     iconType: "Globe",
-    price: "A partir de €29,90 / $32,90",
-    buttonText: "Solicitar Atendimento",
+    price: "Sob Consulta",
+    buttonText: "Agendar Consulta Estratégica",
     redirect: "/exterior/servicos/suporte-tecnico"
   },
   {
-    id: "criacao-site-internacional",
-    title: "Criação de Sites Multilíngues",
-    description: "Sites profissionais com suporte a múltiplos idiomas, otimizados para mercados internacionais e integração com sistemas de pagamento globais.",
-    iconType: "MonitorSmartphone",
-    price: "A partir de €297,90 / $327,90",
-    buttonText: "Criar Meu Site Global",
-    redirect: "/exterior/servicos/criacao-sites"
-  },
-  {
-    id: "migracao-dados",
-    title: "Migração de Dados Internacional",
-    description: "Transferência segura de seus dados entre países, sincronização em nuvem e backup automatizado com redundância global.",
-    iconType: "Database",
-    price: "€89,90 / $99,90",
-    buttonText: "Migrar Dados",
-    redirect: "/exterior/servicos/migracao-dados"
-  },
-  {
-    id: "configuracao-redes",
-    title: "Configuração de Redes Globais",
-    description: "Otimização de conexões internacionais, configuração de VPN, segurança de redes e conectividade com serviços brasileiros do exterior.",
+    id: "infrastructure-management",
+    title: "Gestão de Infraestrutura Global",
+    description: "Configuração e manutenção de alto nível para sua rede, servidores e sistemas. Garantimos que sua ferramenta de trabalho opere em 100% de disponibilidade.",
     iconType: "FiGlobe",
-    price: "€69,90 / $76,90",
-    buttonText: "Configurar Rede",
+    price: "Planos Mensais",
+    buttonText: "Falar com Especialista",
     redirect: "/exterior/servicos/configuracao-redes"
   },
   {
-    id: "suporte-nuvem",
-    title: "Suporte a Serviços em Nuvem",
-    description: "Assistência com Google Workspace, Microsoft 365, AWS, Azure e outros serviços em nuvem utilizados por brasileiros no exterior.",
-    iconType: "FiCloud",
-    price: "€49,90 / $54,90",
-    buttonText: "Suporte em Nuvem",
-    redirect: "/exterior/servicos/suporte-nuvem"
+    id: "criacao-site-premium",
+    title: "Presença Digital Enterprise",
+    description: "Desenvolvimento de ecossistemas digitais multilíngues. Sites e plataformas otimizadas para mercados globais com foco em autoridade e conversão.",
+    iconType: "MonitorSmartphone",
+    price: "Projetos Sob Medida",
+    buttonText: "Solicitar Briefing",
+    redirect: "/exterior/servicos/criacao-sites"
   },
   {
-    id: "consultoria-ti",
-    title: "Consultoria de TI Internacional",
-    description: "Planejamento estratégico de tecnologia para brasileiros que trabalham remotamente ou possuem negócios internacionais.",
-    iconType: "FiBarChart2",
-    price: "€149,90 / $164,90",
-    buttonText: "Consultar Especialista",
-    redirect: "/exterior/servicos/consultoria"
+    id: "security-privacy",
+    title: "Segurança & Privacidade Digital",
+    description: "Criptografia de dados, VPNs exclusivas e auditoria de segurança. Proteja seu patrimônio digital contra ameaças internacionais e conformidade global.",
+    iconType: "ShieldCheck",
+    price: "Auditoria de Segurança",
+    buttonText: "Proteger Meus Dados",
+    redirect: "/exterior/servicos/suporte-nuvem"
   }
 ];
 
@@ -206,32 +188,31 @@ export default function ExteriorHomePage() {
                 <span className="text-purple-300 font-medium">Para Brasileiros no Exterior</span>
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                Suporte Técnico em <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">Português</span>
-                <br />para Brasileiros no Mundo
+              <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-[0.9] tracking-tighter">
+                Infraestrutura Digital <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Sem Fronteiras.</span>
               </h1>
 
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-                Atendimento especializado para brasileiros que moram fora do Brasil.
-                Suporte remoto em português, com horários flexíveis e compreensão total
-                das suas necessidades tecnológicas internacionais.
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+                Atendimento de elite 100% remoto para brasileiros no exterior via AnyDesk ou TeamViewer. 
+                Garantimos a máxima performance e segurança da sua tecnologia, 
+                com a exclusividade e confiança de quem fala a sua língua.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Link
                   href="/exterior/contato"
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center gap-3"
+                  className="bg-white text-black hover:bg-gray-200 font-black py-5 px-10 rounded-2xl shadow-2xl hover:scale-[1.02] transition-all duration-300 flex items-center gap-3 text-lg"
                 >
-                  <FiPhone className="text-lg" />
-                  Fale Conosco Agora
+                  <FiPhone className="text-xl" />
+                  Agendar Consulta Estratégica
                 </Link>
 
                 <Link
                   href="/exterior/servicos"
-                  className="border-2 border-purple-500 text-purple-300 hover:bg-purple-500 hover:text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center gap-3"
+                  className="bg-white/5 hover:bg-white/10 text-white font-bold py-5 px-10 rounded-2xl border border-white/10 transition-all duration-300 flex items-center gap-3 text-lg"
                 >
-                  <FiSettings className="text-lg" />
-                  Ver Todos Serviços
+                  <FiSettings className="text-xl" />
+                  Explorar Infraestrutura
                 </Link>
               </div>
             </motion.div>

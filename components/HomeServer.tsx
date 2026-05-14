@@ -8,7 +8,7 @@ import {
     FiAlertTriangle,
     FiShield,
 } from 'react-icons/fi';
-import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check } from "lucide-react";
+import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check, Briefcase } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import AboutSection from "./sections/AboutSection";
 import ServicesSection from "./sections/ServicesSection";
@@ -28,7 +28,7 @@ const services = [
         icon: <Activity className="w-8 h-8" />,
         title: "Otimização Avançada Gamer",
         desc: "Acesso remoto por especialista para overclock de RAM, CPU e tunning profundo de kernel voltado para eSports.",
-        price: "A partir de R$ 149,90",
+        price: "A partir de R$ 197,00",
         link: "/otimizacao-pc",
         highlight: true
     },
@@ -36,7 +36,7 @@ const services = [
         icon: <FiAlertTriangle className="w-8 h-8" />,
         title: "Correção de Erros no Windows",
         desc: "Resolvemos erros de sistema, telas azuis, falhas de inicialização e problemas de desempenho no Windows remotamente.",
-        price: "A partir de R$ 49,90",
+        price: "A partir de R$ 97,00",
         link: "/suporte-ao-windows",
         highlight: false
     },
@@ -44,7 +44,7 @@ const services = [
         icon: <FiShield className="w-8 h-8" />,
         title: "Suporte Técnico Expresso",
         desc: "Remoção de vírus, malwares e formatação remota completa com backup seguro para PCs e Notebooks.",
-        price: "A partir de R$ 99,90",
+        price: "A partir de R$ 147,00",
         link: "/formatacao",
         highlight: false
     }
@@ -197,6 +197,58 @@ export default function HomeServer() {
                 </section>
 
                 <AboutSection />
+                
+                {/* --- VERTICAL SELECTOR (SILO ENTRY POINTS) --- */}
+                <section className="py-24 px-4 bg-[#050508] relative overflow-hidden border-y border-white/5">
+                    <div className="max-w-7xl mx-auto relative z-10">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Como podemos <span className="text-blue-500">potencializar seu dia?</span></h2>
+                            <p className="text-slate-400 max-w-2xl mx-auto">Selecione seu perfil e acesse soluções personalizadas para sua necessidade real.</p>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {/* Silo Gamer */}
+                            <Link href="/gamer" className="group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 hover:border-purple-500/50 transition-all overflow-hidden">
+                                <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-600/20 blur-[60px] rounded-full group-hover:bg-purple-600/40 transition-all"></div>
+                                <div className="mb-6 p-4 rounded-2xl bg-purple-600/10 text-purple-400 inline-block">
+                                    <Rocket className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-4">Vertical Gamer</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed mb-8">Otimização extrema de FPS, redução de input lag e tuning para eSports.</p>
+                                <div className="flex items-center gap-2 text-purple-400 font-bold text-sm">
+                                    Explorar Performance <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
+
+                            {/* Silo Corporativo */}
+                            <Link href="/corporativo" className="group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 hover:border-blue-500/50 transition-all overflow-hidden">
+                                <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-600/20 blur-[60px] rounded-full group-hover:bg-blue-600/40 transition-all"></div>
+                                <div className="mb-6 p-4 rounded-2xl bg-blue-600/10 text-blue-400 inline-block">
+                                    <Briefcase className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-4">Vertical B2B</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed mb-8">Infraestrutura, suporte gerenciado, segurança LGPD e contratos mensais.</p>
+                                <div className="flex items-center gap-2 text-blue-400 font-bold text-sm">
+                                    Explorar Soluções B2B <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
+
+                            {/* Silo Home */}
+                            <Link href="/home" className="group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 hover:border-emerald-500/50 transition-all overflow-hidden">
+                                <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-600/20 blur-[60px] rounded-full group-hover:bg-emerald-600/40 transition-all"></div>
+                                <div className="mb-6 p-4 rounded-2xl bg-emerald-600/10 text-emerald-400 inline-block">
+                                    <Laptop2 className="w-8 h-8" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-4">Vertical Home</h3>
+                                <p className="text-slate-400 text-sm leading-relaxed mb-8">Suporte remoto residencial, formatação, limpeza e resolução de problemas.</p>
+                                <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+                                    Acessar Suporte <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+
                 <ServicesSection />
 
                 {/* --- OPTIMIZER SECTION (SERVER-SIDE) --- */}
