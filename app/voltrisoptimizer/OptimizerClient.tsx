@@ -16,13 +16,13 @@ import { notifyDownload } from '@/utils/notifications';
 
 // --- PREMIUM ENTERPRISE COMPONENTS ---
 
-const MetricCard = ({ icon, title, value, subtitle, trend, color }: { 
-    icon: React.ReactNode, 
-    title: string, 
-    value: string, 
-    subtitle: string, 
+const MetricCard = ({ icon, title, value, subtitle, trend, color }: {
+    icon: React.ReactNode,
+    title: string,
+    value: string,
+    subtitle: string,
     trend?: 'up' | 'down',
-    color: string 
+    color: string
 }) => {
     return (
         <motion.div
@@ -31,7 +31,7 @@ const MetricCard = ({ icon, title, value, subtitle, trend, color }: {
         >
             {/* Background Glow */}
             <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-[0.03] rounded-2xl blur-xl group-hover:opacity-[0.08] transition-all duration-500`} />
-            
+
             {/* Card Content */}
             <div className="relative bg-white border border-gray-200 rounded-2xl p-8 group-hover:border-gray-300 transition-all duration-300 shadow-sm">
                 {/* Icon Container */}
@@ -39,7 +39,7 @@ const MetricCard = ({ icon, title, value, subtitle, trend, color }: {
                     <div className="absolute inset-0 bg-white/20 rounded-2xl animate-pulse" />
                     <div className="relative z-10 text-white">{icon}</div>
                 </div>
-                
+
                 {/* Content */}
                 <div className="space-y-3">
                     <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">{title}</p>
@@ -48,9 +48,8 @@ const MetricCard = ({ icon, title, value, subtitle, trend, color }: {
                             {value}
                         </h3>
                         {trend && (
-                            <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
-                                trend === 'up' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
-                            }`}>
+                            <div className={`flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${trend === 'up' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
+                                }`}>
                                 {trend === 'up' ? <TrendingUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3 rotate-180" />}
                                 12%
                             </div>
@@ -63,14 +62,14 @@ const MetricCard = ({ icon, title, value, subtitle, trend, color }: {
     );
 };
 
-const FeatureCard = ({ 
-    icon, 
-    title, 
-    description, 
-    features, 
-    gradient, 
+const FeatureCard = ({
+    icon,
+    title,
+    description,
+    features,
+    gradient,
     delay,
-    isExpanded = false 
+    isExpanded = false
 }: {
     icon: React.ReactNode,
     title: string,
@@ -81,7 +80,7 @@ const FeatureCard = ({
     isExpanded?: boolean
 }) => {
     const [isHovered, setIsHovered] = useState(false);
-    
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -94,11 +93,10 @@ const FeatureCard = ({
         >
             {/* Animated Background */}
             <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-[0.02] rounded-3xl blur-2xl transition-all duration-700 ${isHovered ? 'opacity-[0.08] scale-110' : ''}`} />
-            
+
             {/* Card */}
-            <div className={`relative bg-white border border-gray-200 rounded-2xl p-8 transition-all duration-500 shadow-sm ${
-                isHovered ? 'border-gray-300 shadow-lg' : ''
-            } ${isExpanded ? 'md:col-span-2' : ''}`}>
+            <div className={`relative bg-white border border-gray-200 rounded-2xl p-8 transition-all duration-500 shadow-sm ${isHovered ? 'border-gray-300 shadow-lg' : ''
+                } ${isExpanded ? 'md:col-span-2' : ''}`}>
                 {/* Header */}
                 <div className="flex items-start justify-between mb-6">
                     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradient} flex items-center justify-center relative overflow-hidden`}>
@@ -110,12 +108,12 @@ const FeatureCard = ({
                         <span className="text-xs font-medium text-blue-600">Premium</span>
                     </div>
                 </div>
-                
+
                 {/* Content */}
                 <div className="space-y-4">
                     <h3 className="text-2xl font-bold text-gray-900">{title}</h3>
                     <p className="text-gray-600 leading-relaxed">{description}</p>
-                    
+
                     {/* Features */}
                     <div className={`grid gap-3 ${isExpanded ? 'md:grid-cols-2' : ''}`}>
                         {features.map((feature, idx) => (
@@ -134,7 +132,7 @@ const FeatureCard = ({
                         ))}
                     </div>
                 </div>
-                
+
                 {/* Hover Effect Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 rounded-3xl pointer-events-none transition-opacity duration-500 ${isHovered ? 'opacity-[0.03]' : ''}`} />
             </div>
@@ -142,18 +140,18 @@ const FeatureCard = ({
     );
 };
 
-const CategoryHeader = ({ 
-    icon, 
-    title, 
-    description, 
-    color, 
-    count 
-}: { 
-    icon: React.ReactNode, 
-    title: string, 
-    description: string, 
-    color: string, 
-    count: number 
+const CategoryHeader = ({
+    icon,
+    title,
+    description,
+    color,
+    count
+}: {
+    icon: React.ReactNode,
+    title: string,
+    description: string,
+    color: string,
+    count: number
 }) => {
     return (
         <motion.div
@@ -167,7 +165,7 @@ const CategoryHeader = ({
                     <div className="relative z-10 text-white text-3xl">{icon}</div>
                 </div>
             </div>
-            
+
             <div className="space-y-4">
                 <div className="flex items-center justify-center gap-4">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{title}</h2>
@@ -196,30 +194,30 @@ const ToolGrid = ({ tools, columns = 4 }: { tools: any[], columns?: number }) =>
                 >
                     {/* Background Effect */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-[0.02] rounded-2xl blur-xl group-hover:opacity-[0.08] transition-all duration-500`} />
-                    
+
                     {/* Card */}
                     <div className="relative bg-white border border-gray-200 rounded-2xl p-6 group-hover:border-gray-300 transition-all duration-300 shadow-sm">
                         {/* Icon */}
                         <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 bg-gray-100`}
-                             style={{ backgroundColor: `${tool.color}10` }}>
+                            style={{ backgroundColor: `${tool.color}10` }}>
                             <div className="w-7 h-7 transition-colors duration-300" style={{ color: tool.color }}>
                                 {tool.icon}
                             </div>
                         </div>
-                        
+
                         {/* Content */}
                         <div className="space-y-3">
                             <h4 className="text-xl font-bold text-gray-900 group-hover:text-opacity-100 transition-colors">
                                 {tool.name}
                             </h4>
                             <p className="text-sm text-gray-600 leading-relaxed">{tool.desc}</p>
-                            
+
                             {/* Features */}
                             <div className="space-y-2">
                                 {tool.features.map((feature: string, fIdx: number) => (
                                     <div key={fIdx} className="flex items-center gap-2">
                                         <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
-                                             style={{ backgroundColor: `${tool.color}20` }}>
+                                            style={{ backgroundColor: `${tool.color}20` }}>
                                             <CheckCircle2 className="w-2.5 h-2.5" style={{ color: tool.color }} />
                                         </div>
                                         <span className="text-xs text-gray-500">{feature}</span>
@@ -227,7 +225,7 @@ const ToolGrid = ({ tools, columns = 4 }: { tools: any[], columns?: number }) =>
                                 ))}
                             </div>
                         </div>
-                        
+
                         {/* Hover Overlay */}
                         <div className={`absolute inset-0 bg-gradient-to-br ${tool.color} opacity-0 rounded-2xl pointer-events-none transition-opacity duration-300 group-hover:opacity-[0.05]`} />
                     </div>
@@ -576,7 +574,7 @@ export default function OptimizerClient() {
                             </h1>
 
                             <p className="text-xl md:text-2xl text-gray-500 max-w-3xl mx-auto mb-12 leading-relaxed tracking-wide">
-                                Desbloqueie o poder real do seu hardware. 
+                                Desbloqueie o poder real do seu hardware.
                                 <span className="text-gray-900 font-medium"> Engenharia de Kernel </span> para quem não aceita o atraso do Windows.
                             </p>
 
@@ -600,7 +598,7 @@ export default function OptimizerClient() {
                                         </a>
                                         <div className="mt-2 text-center">
                                             <span className="text-[10px] sm:text-xs text-gray-500 font-medium flex items-center justify-center gap-1.5 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all">
-                                                <ShieldCheck className="w-3 h-3 text-emerald-600" /> 
+                                                <ShieldCheck className="w-3 h-3 text-emerald-600" />
                                                 Licença trial de 7 dias inclusa no download
                                             </span>
                                         </div>
@@ -664,7 +662,7 @@ export default function OptimizerClient() {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="space-y-8">
                                 <div className="flex items-center justify-center gap-6">
                                     <h1 className="text-5xl md:text-7xl font-black bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 bg-clip-text text-transparent">
@@ -676,10 +674,10 @@ export default function OptimizerClient() {
                                     </div>
                                 </div>
                                 <p className="text-2xl text-gray-500 max-w-5xl mx-auto leading-relaxed">
-                                    Transforme seu PC em uma máquina de nível empresarial com nossa suite completa de 25 ferramentas profissionais de otimização. 
+                                    Transforme seu PC em uma máquina de nível empresarial com nossa suite completa de 25 ferramentas profissionais de otimização.
                                     Construída com tecnologia de ponta e projetada para performance máxima.
                                 </p>
-                                
+
                                 {/* Premium Stats */}
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto mt-16">
                                     <MetricCard
@@ -726,7 +724,7 @@ export default function OptimizerClient() {
                                 color="from-[#31A8FF] to-[#5FC2FF]"
                                 count={4}
                             />
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                                 {/* Dashboard */}
                                 <FeatureCard
@@ -803,7 +801,7 @@ export default function OptimizerClient() {
                                 color="from-[#8B31FF] to-[#FF4B6B]"
                                 count={2}
                             />
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                                 {/* Gamer */}
                                 <motion.div
@@ -815,7 +813,7 @@ export default function OptimizerClient() {
                                 >
                                     {/* Background Gradient */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-orange-100/50 rounded-4xl blur-3xl group-hover:from-pink-200/50 group-hover:to-orange-200/50 transition-all duration-700" />
-                                    
+
                                     {/* Card */}
                                     <div className="relative bg-white border border-gray-200 rounded-3xl p-12 group-hover:border-pink-300 transition-all duration-500 shadow-sm">
                                         {/* Header */}
@@ -831,14 +829,14 @@ export default function OptimizerClient() {
                                                 <span className="text-base font-bold text-white">MODO GAMER</span>
                                             </div>
                                         </div>
-                                        
+
                                         {/* Content */}
                                         <div className="space-y-8">
                                             <h3 className="text-4xl font-bold text-gray-900">Gamer</h3>
                                             <p className="text-xl text-gray-600 leading-relaxed">
                                                 Otimização de performance extrema com detecção inteligente de jogos e algoritmos especializados de enhancement
                                             </p>
-                                            
+
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                 <div>
                                                     <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
@@ -868,7 +866,7 @@ export default function OptimizerClient() {
                                                         ))}
                                                     </ul>
                                                 </div>
-                                                
+
                                                 <div>
                                                     <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                         <TrendingUp className="w-6 h-6" />
@@ -912,7 +910,7 @@ export default function OptimizerClient() {
                                 >
                                     {/* Background Gradient */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-red-100/50 to-rose-100/50 rounded-4xl blur-3xl group-hover:from-red-200/50 group-hover:to-rose-200/50 transition-all duration-700" />
-                                    
+
                                     {/* Card */}
                                     <div className="relative bg-white border border-gray-200 rounded-3xl p-12 group-hover:border-red-300 transition-all duration-500 shadow-sm">
                                         {/* Header */}
@@ -928,14 +926,14 @@ export default function OptimizerClient() {
                                                 <span className="text-base font-bold text-white">SEGURANÇA MÁXIMA</span>
                                             </div>
                                         </div>
-                                        
+
                                         {/* Content */}
                                         <div className="space-y-8">
                                             <h3 className="text-4xl font-bold text-gray-900">Voltris Shield</h3>
                                             <p className="text-xl text-gray-600 leading-relaxed">
                                                 Sistema de proteção multicamadas avançado com monitoramento em tempo real e detecção inteligente de ameaças
                                             </p>
-                                            
+
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                                 <div>
                                                     <h4 className="text-2xl font-semibold text-red-600 mb-6 flex items-center gap-3">
@@ -965,7 +963,7 @@ export default function OptimizerClient() {
                                                         ))}
                                                     </ul>
                                                 </div>
-                                                
+
                                                 <div>
                                                     <h4 className="text-2xl font-semibold text-red-600 mb-6 flex items-center gap-3">
                                                         <Lock className="w-6 h-6" />
@@ -1010,7 +1008,7 @@ export default function OptimizerClient() {
                                 color="from-[#FF4B6B] to-[#FF8F4B]"
                                 count={1}
                             />
-                            
+
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -1019,7 +1017,7 @@ export default function OptimizerClient() {
                             >
                                 {/* Background Effect */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-orange-100/50 rounded-4xl blur-3xl group-hover:from-pink-200/50 group-hover:to-orange-200/50 transition-all duration-700" />
-                                
+
                                 {/* Card */}
                                 <div className="relative bg-white border border-gray-200 rounded-3xl p-16 group-hover:border-pink-300 transition-all duration-500 shadow-sm">
                                     {/* Header */}
@@ -1041,7 +1039,7 @@ export default function OptimizerClient() {
                                             <span className="text-base font-bold text-white">READY TO GO</span>
                                         </div>
                                     </div>
-                                    
+
                                     {/* Features Grid */}
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                                         <div>
@@ -1066,7 +1064,7 @@ export default function OptimizerClient() {
                                                 ))}
                                             </ul>
                                         </div>
-                                        
+
                                         <div>
                                             <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                 <Cpu className="w-6 h-6" />
@@ -1089,7 +1087,7 @@ export default function OptimizerClient() {
                                                 ))}
                                             </ul>
                                         </div>
-                                        
+
                                         <div>
                                             <h4 className="text-2xl font-semibold text-pink-600 mb-6 flex items-center gap-3">
                                                 <Star className="w-6 h-6" />
@@ -1126,50 +1124,50 @@ export default function OptimizerClient() {
                                 color="from-[#FFEE00] to-[#FFB300]"
                                 count={6}
                             />
-                            
-                            <ToolGrid 
+
+                            <ToolGrid
                                 tools={[
-                                    { 
-                                        name: 'Personalizar', 
-                                        icon: <Settings />, 
-                                        color: 'from-[#FFEE00] to-[#FFB300]', 
-                                        desc: 'Motor avançado de customização visual', 
-                                        features: ['Temas Dark/Light', 'Transparência inteligente', 'Centralização da taskbar', 'Esquemas de cores personalizados'] 
+                                    {
+                                        name: 'Personalizar',
+                                        icon: <Settings />,
+                                        color: 'from-[#FFEE00] to-[#FFB300]',
+                                        desc: 'Motor avançado de customização visual',
+                                        features: ['Temas Dark/Light', 'Transparência inteligente', 'Centralização da taskbar', 'Esquemas de cores personalizados']
                                     },
-                                    { 
-                                        name: 'Tela', 
-                                        icon: <Monitor />, 
-                                        color: 'from-[#31A8FF] to-[#5FC2FF]', 
-                                        desc: 'Gerenciamento profissional de display', 
-                                        features: ['Resolução ideal', 'Otimização de taxa de refresh', 'Suporte multi-monitor', 'Calibração HDR'] 
+                                    {
+                                        name: 'Tela',
+                                        icon: <Monitor />,
+                                        color: 'from-[#31A8FF] to-[#5FC2FF]',
+                                        desc: 'Gerenciamento profissional de display',
+                                        features: ['Resolução ideal', 'Otimização de taxa de refresh', 'Suporte multi-monitor', 'Calibração HDR']
                                     },
-                                    { 
-                                        name: 'Energia', 
-                                        icon: <Bolt />, 
-                                        color: 'from-[#00FF94] to-[#00CC76]', 
-                                        desc: 'Otimização inteligente de energia', 
-                                        features: ['Performance vs economia', 'Otimização de bateria', 'Perfis adaptativos', 'Modo turbo'] 
+                                    {
+                                        name: 'Energia',
+                                        icon: <Bolt />,
+                                        color: 'from-[#00FF94] to-[#00CC76]',
+                                        desc: 'Otimização inteligente de energia',
+                                        features: ['Performance vs economia', 'Otimização de bateria', 'Perfis adaptativos', 'Modo turbo']
                                     },
-                                    { 
-                                        name: 'Segurança', 
-                                        icon: <Lock />, 
-                                        color: 'from-[#FF0055] to-[#FF5588]', 
-                                        desc: 'Configuração avançada de segurança', 
-                                        features: ['Firewall de última geração', 'Controle UAC', 'Permissões de aplicativos', 'Proteção multicamadas'] 
+                                    {
+                                        name: 'Segurança',
+                                        icon: <Lock />,
+                                        color: 'from-[#FF0055] to-[#FF5588]',
+                                        desc: 'Configuração avançada de segurança',
+                                        features: ['Firewall de última geração', 'Controle UAC', 'Permissões de aplicativos', 'Proteção multicamadas']
                                     },
-                                    { 
-                                        name: 'Privacidade', 
-                                        icon: <ShieldCheck />, 
-                                        color: 'from-[#8B31FF] to-[#B070FF]', 
-                                        desc: 'Sistema completo de controle de privacidade', 
-                                        features: ['Telemetria do Windows', 'Controle de coleta de dados', 'Privacidade de aplicativos', 'Anti-tracking'] 
+                                    {
+                                        name: 'Privacidade',
+                                        icon: <ShieldCheck />,
+                                        color: 'from-[#8B31FF] to-[#B070FF]',
+                                        desc: 'Sistema completo de controle de privacidade',
+                                        features: ['Telemetria do Windows', 'Controle de coleta de dados', 'Privacidade de aplicativos', 'Anti-tracking']
                                     },
-                                    { 
-                                        name: 'Debloat', 
-                                        icon: <Minus />, 
-                                        color: 'from-[#FF4B6B] to-[#FF8F4B]', 
-                                        desc: 'Remoção profissional de bloatware', 
-                                        features: ['Aplicativos pré-instalados', 'Componentes desnecessários', 'Otimização do sistema', 'Windows Lite'] 
+                                    {
+                                        name: 'Debloat',
+                                        icon: <Minus />,
+                                        color: 'from-[#FF4B6B] to-[#FF8F4B]',
+                                        desc: 'Remoção profissional de bloatware',
+                                        features: ['Aplicativos pré-instalados', 'Componentes desnecessários', 'Otimização do sistema', 'Windows Lite']
                                     }
                                 ]}
                                 columns={3}
@@ -1185,36 +1183,36 @@ export default function OptimizerClient() {
                                 color="from-[#00E5FF] to-[#00FFCA]"
                                 count={4}
                             />
-                            
-                            <ToolGrid 
+
+                            <ToolGrid
                                 tools={[
-                                    { 
-                                        name: 'Dispositivo', 
-                                        icon: <Laptop />, 
-                                        color: 'from-[#00E5FF] to-[#00FFCA]', 
-                                        desc: 'Sistema completo de informações de hardware', 
-                                        features: ['Análise completa de hardware', 'Status dos drivers', 'Versões do sistema', 'Especificações técnicas'] 
+                                    {
+                                        name: 'Dispositivo',
+                                        icon: <Laptop />,
+                                        color: 'from-[#00E5FF] to-[#00FFCA]',
+                                        desc: 'Sistema completo de informações de hardware',
+                                        features: ['Análise completa de hardware', 'Status dos drivers', 'Versões do sistema', 'Especificações técnicas']
                                     },
-                                    { 
-                                        name: 'Benchmark', 
-                                        icon: <BarChart3 />, 
-                                        color: 'from-[#FFB300] to-[#FF8F4B]', 
-                                        desc: 'Testes profissionais de performance', 
-                                        features: ['Testes de CPU/GPU/RAM', 'Comparações de performance', 'Acompanhamento histórico', 'Scores globais'] 
+                                    {
+                                        name: 'Benchmark',
+                                        icon: <BarChart3 />,
+                                        color: 'from-[#FFB300] to-[#FF8F4B]',
+                                        desc: 'Testes profissionais de performance',
+                                        features: ['Testes de CPU/GPU/RAM', 'Comparações de performance', 'Acompanhamento histórico', 'Scores globais']
                                     },
-                                    { 
-                                        name: 'Diagnóstico', 
-                                        icon: <Activity />, 
-                                        color: 'from-[#31A8FF] to-[#5FC2FF]', 
-                                        desc: 'Verificação completa da saúde do sistema', 
-                                        features: ['Análise da saúde do sistema', 'Detecção de erros críticos', 'Diagnósticos de componentes', 'Relatórios detalhados'] 
+                                    {
+                                        name: 'Diagnóstico',
+                                        icon: <Activity />,
+                                        color: 'from-[#31A8FF] to-[#5FC2FF]',
+                                        desc: 'Verificação completa da saúde do sistema',
+                                        features: ['Análise da saúde do sistema', 'Detecção de erros críticos', 'Diagnósticos de componentes', 'Relatórios detalhados']
                                     },
-                                    { 
-                                        name: 'Histórico', 
-                                        icon: <Brain />, 
-                                        color: 'from-[#8B31FF] to-[#B070FF]', 
-                                        desc: 'Timeline avançada de atividades', 
-                                        features: ['Histórico de otimizações', 'Acompanhamento de mudanças', 'Monitoramento de atividades', 'Logging detalhado'] 
+                                    {
+                                        name: 'Histórico',
+                                        icon: <Brain />,
+                                        color: 'from-[#8B31FF] to-[#B070FF]',
+                                        desc: 'Timeline avançada de atividades',
+                                        features: ['Histórico de otimizações', 'Acompanhamento de mudanças', 'Monitoramento de atividades', 'Logging detalhado']
                                     }
                                 ]}
                                 columns={4}
@@ -1230,29 +1228,29 @@ export default function OptimizerClient() {
                                 color="from-[#FF8F4B] to-[#FFB300]"
                                 count={3}
                             />
-                            
-                            <ToolGrid 
+
+                            <ToolGrid
                                 tools={[
-                                    { 
-                                        name: 'Agendador', 
-                                        icon: <Activity />, 
-                                        color: 'from-[#FF8F4B] to-[#FFB300]', 
-                                        desc: 'Motor profissional de automação', 
-                                        features: ['Agendamento avançado', 'Tarefas recorrentes', 'Automação de manutenção', 'Workflow completo'] 
+                                    {
+                                        name: 'Agendador',
+                                        icon: <Activity />,
+                                        color: 'from-[#FF8F4B] to-[#FFB300]',
+                                        desc: 'Motor profissional de automação',
+                                        features: ['Agendamento avançado', 'Tarefas recorrentes', 'Automação de manutenção', 'Workflow completo']
                                     },
-                                    { 
-                                        name: 'Logs', 
-                                        icon: <Database />, 
-                                        color: 'from-[#6B7280] to-[#9CA3AF]', 
-                                        desc: 'Análise profissional de eventos', 
-                                        features: ['Eventos do sistema', 'Análise de erros', 'Logging em tempo real', 'Exportação avançada'] 
+                                    {
+                                        name: 'Logs',
+                                        icon: <Database />,
+                                        color: 'from-[#6B7280] to-[#9CA3AF]',
+                                        desc: 'Análise profissional de eventos',
+                                        features: ['Eventos do sistema', 'Análise de erros', 'Logging em tempo real', 'Exportação avançada']
                                     },
-                                    { 
-                                        name: 'Serviços Pro', 
-                                        icon: <Settings />, 
-                                        color: 'from-[#FFEE00] to-[#FFB300]', 
-                                        desc: 'Recursos avançados profissionais', 
-                                        features: ['Funções avançadas', 'Configurações profissionais', 'Otimizações expert', 'Suporte prioritário'] 
+                                    {
+                                        name: 'Serviços Pro',
+                                        icon: <Settings />,
+                                        color: 'from-[#FFEE00] to-[#FFB300]',
+                                        desc: 'Recursos avançados profissionais',
+                                        features: ['Funções avançadas', 'Configurações profissionais', 'Otimizações expert', 'Suporte prioritário']
                                     }
                                 ]}
                                 columns={3}
@@ -1268,22 +1266,22 @@ export default function OptimizerClient() {
                                 color="from-[#6B7280] to-[#9CA3AF]"
                                 count={3}
                             />
-                            
-                            <ToolGrid 
+
+                            <ToolGrid
                                 tools={[
-                                    { 
-                                        name: 'Reparo', 
-                                        icon: <Wrench />, 
-                                        color: 'from-[#31A8FF] to-[#5FC2FF]', 
-                                        desc: 'Reparo automático do sistema', 
-                                        features: ['Correção de erros do Windows', 'Correção automática', 'Algoritmos de reparo profundo', 'Estabilidade do sistema'] 
+                                    {
+                                        name: 'Reparo',
+                                        icon: <Wrench />,
+                                        color: 'from-[#31A8FF] to-[#5FC2FF]',
+                                        desc: 'Reparo automático do sistema',
+                                        features: ['Correção de erros do Windows', 'Correção automática', 'Algoritmos de reparo profundo', 'Estabilidade do sistema']
                                     },
-                                    { 
-                                        name: 'Sistema', 
-                                        icon: <Settings />, 
-                                        color: 'from-[#6B7280] to-[#9CA3AF]', 
-                                        desc: 'Configuração avançada do sistema', 
-                                        features: ['Componentes do Windows', 'Configurações ocultas', 'Otimizações do sistema', 'Controle total'] 
+                                    {
+                                        name: 'Sistema',
+                                        icon: <Settings />,
+                                        color: 'from-[#6B7280] to-[#9CA3AF]',
+                                        desc: 'Configuração avançada do sistema',
+                                        features: ['Componentes do Windows', 'Configurações ocultas', 'Otimizações do sistema', 'Controle total']
                                     }
                                 ]}
                                 columns={3}
@@ -1815,19 +1813,19 @@ export default function OptimizerClient() {
                                 Escolha seu Nível de <span className="text-blue-600">Performance.</span>
                             </h2>
                             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-                                A licença Pro é o atalho definitivo para quem busca máxima automação, 
+                                A licença Pro é o atalho definitivo para quem busca máxima automação,
                                 segurança e resultados que duram.
                             </p>
                         </div>
 
                         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
                             {/* PLANO FREE */}
-                            <motion.div 
+                            <motion.div
                                 whileHover={{ y: -10 }}
                                 className="p-10 rounded-[2.5rem] bg-gray-50 border border-gray-200 flex flex-col"
                             >
                                 <div className="mb-8">
-                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Versão Gratuita</h3>
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Versão Gratuita por 7 Dias</h3>
                                     <p className="text-gray-500 text-sm">Otimização manual básica para iniciantes.</p>
                                 </div>
                                 <div className="text-4xl font-black text-gray-900 mb-8">R$ 0</div>
@@ -1853,7 +1851,7 @@ export default function OptimizerClient() {
                             </motion.div>
 
                             {/* PLANO PRO (LICENÇA VITALÍCIA) */}
-                            <motion.div 
+                            <motion.div
                                 whileHover={{ y: -10 }}
                                 className="p-10 rounded-[2.5rem] bg-gradient-to-br from-gray-900 to-blue-900 border border-blue-500 shadow-2xl relative flex flex-col"
                             >
@@ -1861,13 +1859,15 @@ export default function OptimizerClient() {
                                     RECOMENDADO
                                 </div>
                                 <div className="mb-8">
-                                    <h3 className="text-2xl font-bold text-white mb-2">Licença PRO Vitalícia</h3>
+                                    <h3 className="text-2xl font-bold text-white mb-2">Licença PRO</h3>
                                     <p className="text-blue-200 text-sm">Acesso total a todas as ferramentas premium.</p>
                                 </div>
                                 <div className="mb-8">
-                                    <div className="text-sm text-blue-400 line-through">De R$ 197,00</div>
-                                    <div className="text-5xl font-black text-white">R$ 97,00</div>
-                                    <div className="text-xs text-blue-300 mt-2 font-bold uppercase tracking-widest">Pagamento Único. Sem Mensalidade.</div>
+                                    <div className="text-sm text-blue-400 line-through">De R$ 98,90</div>
+                                    <div className="text-5xl font-black text-white flex items-end gap-1">
+                                        R$ 69,90<span className="text-lg text-blue-200 font-medium pb-1">/Mês</span>
+                                    </div>
+                                    <div className="text-xs text-blue-300 mt-2 font-bold uppercase tracking-widest">Assinatura Mensal. Cancele quando quiser.</div>
                                 </div>
                                 <ul className="space-y-4 mb-12 flex-grow">
                                     {[
@@ -2054,7 +2054,7 @@ export default function OptimizerClient() {
                             exit={{ opacity: 0, scale: 0.8, y: 20 }}
                             className="fixed bottom-10 right-10 z-[100] hidden md:block"
                         >
-                            <Link 
+                            <Link
                                 href="/adquirir-licenca"
                                 className="relative group flex items-center gap-4 bg-gradient-to-r from-gray-900 to-blue-900 border border-blue-500/50 p-2 pr-6 rounded-full shadow-2xl hover:scale-105 transition-all"
                             >
@@ -2065,7 +2065,7 @@ export default function OptimizerClient() {
                                     <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest">Oferta Limitada</span>
                                     <span className="text-sm font-bold text-white whitespace-nowrap">Obter Licença PRO</span>
                                 </div>
-                                
+
                                 {/* Pulse Effect */}
                                 <div className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping -z-10" />
                             </Link>
