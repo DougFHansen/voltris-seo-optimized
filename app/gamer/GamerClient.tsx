@@ -150,7 +150,7 @@ export default function GamerClient() {
       <section className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter">ENGINEERING <span className="text-purple-500">VICTORY.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-black mb-6 tracking-tighter">ENGENHARIA PARA <span className="text-purple-500">VENCER.</span></h2>
             <p className="text-slate-400 max-w-2xl mx-auto font-medium">Cada configuração é feita manualmente por especialistas em eSports para o seu hardware específico.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
