@@ -75,10 +75,10 @@ export default function LocalCorporateClient({ locationName, stateAbbr, regional
                                 <span className="text-xs text-slate-500 font-mono">monitoring_{locationName.toLowerCase()}.log</span>
                              </div>
                              <div className="space-y-4 font-mono text-sm text-slate-400">
-                                <div>&gt; Checking infrastructure nodes in {locationName}...</div>
-                                <div>&gt; Regional SLA: <span className="text-emerald-500">15 min response confirmed.</span></div>
-                                <div>&gt; Security Protocol: <span className="text-blue-500">LGPD Compliance verified.</span></div>
-                                <div>&gt; Status: <span className="text-white">VOLTRIS B2B ACTIVE.</span></div>
+                                 <div>&gt; Verificando nós de infraestrutura em {locationName}...</div>
+                                 <div>&gt; SLA Regional: <span className="text-emerald-500">Resposta em 15 min confirmada.</span></div>
+                                 <div>&gt; Protocolo de Segurança: <span className="text-blue-500">Conformidade LGPD verificada.</span></div>
+                                 <div>&gt; Status: <span className="text-white">VOLTRIS B2B ATIVO.</span></div>
                              </div>
                         </div>
                     </div>

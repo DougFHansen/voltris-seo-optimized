@@ -44,7 +44,7 @@ export default function CorporateHeader() {
             />
             <div className="flex flex-col">
               <span className="text-lg lg:text-xl font-bold text-white tracking-tight">VOLTRIS</span>
-              <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-blue-500/80 leading-none">Infrastructure</span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-blue-500/80 leading-none">Infraestrutura</span>
             </div>
           </Link>
 
