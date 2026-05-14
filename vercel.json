@@ -34,11 +34,5 @@
       "destination": "/api/sitemap"
     }
   ],
-  "redirects": [
-    {
-      "source": "/home",
-      "destination": "/",
-      "permanent": true
-    }
   ]
 }
