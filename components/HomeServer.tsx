@@ -213,7 +213,7 @@ export default function HomeServer() {
                                 <div className="mb-6 p-4 rounded-2xl bg-purple-600/10 text-purple-400 inline-block">
                                     <Rocket className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Vertical Gamer</h3>
+                                <h3 className="text-2xl font-bold text-white mb-4">Performance Gamer</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-8">Otimização extrema de FPS, redução de input lag e tuning para eSports.</p>
                                 <div className="flex items-center gap-2 text-purple-400 font-bold text-sm">
                                     Explorar Performance <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -226,7 +226,7 @@ export default function HomeServer() {
                                 <div className="mb-6 p-4 rounded-2xl bg-blue-600/10 text-blue-400 inline-block">
                                     <Briefcase className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Vertical B2B</h3>
+                                <h3 className="text-2xl font-bold text-white mb-4">Soluções Corporativas</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-8">Infraestrutura, suporte gerenciado, segurança LGPD e contratos mensais.</p>
                                 <div className="flex items-center gap-2 text-blue-400 font-bold text-sm">
                                     Explorar Soluções B2B <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -239,7 +239,7 @@ export default function HomeServer() {
                                 <div className="mb-6 p-4 rounded-2xl bg-emerald-600/10 text-emerald-400 inline-block">
                                     <Laptop2 className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Vertical Home</h3>
+                                <h3 className="text-2xl font-bold text-white mb-4">Suporte Residencial</h3>
                                 <p className="text-slate-400 text-sm leading-relaxed mb-8">Suporte remoto residencial, formatação, limpeza e resolução de problemas.</p>
                                 <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
                                     Acessar Suporte <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
