@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Zap, MessageSquare, CheckCircle2, Lock, Cpu, Server, ChevronDown, Rocket, Crown, Star } from 'lucide-react';
+import { ShieldCheck, Zap, MessageSquare, CheckCircle2, Lock, Cpu, Server, ChevronDown, Rocket, Crown, Star, HelpCircle } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/app/hooks/useAuth';
 import { toast } from 'react-hot-toast';
@@ -95,7 +95,7 @@ function AdquirirLicencaContent() {
         <main className="min-h-screen bg-gray-50 text-gray-900 font-sans selection:bg-[#31A8FF]/30 relative pb-20">
 
             {/* Global Ambient Background Effects */}
-            <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+            <div className="fixed inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-10 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
 
             {/* Background Gradients */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
@@ -350,13 +350,67 @@ function AdquirirLicencaContent() {
 
                     </div>
 
+                    {/* --- RISK REVERSAL: GARANTIA BLINDADA --- */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="mt-32 p-10 md:p-16 rounded-[3rem] bg-gradient-to-br from-white to-gray-50 border border-gray-200 shadow-2xl relative overflow-hidden"
+                    >
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-100/30 blur-[80px] rounded-full -mr-20 -mt-20"></div>
+                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-12 text-left">
+                            <div className="w-32 h-32 md:w-48 md:h-48 shrink-0 bg-white rounded-full shadow-inner border border-emerald-100 flex items-center justify-center p-4">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3513/3513233.png" alt="Selo de Garantia 7 Dias" className="w-full h-full object-contain opacity-80" />
+                            </div>
+                            <div className="space-y-4">
+                                <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tighter uppercase italic">
+                                    Risco Zero. <span className="text-emerald-600">Satisfação ou seu Dinheiro de Volta.</span>
+                                </h2>
+                                <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                                    Estamos tão confiantes no poder do <strong className="text-gray-900">Voltris Optimizer</strong> que oferecemos uma garantia incondicional de 7 dias. Se você não notar um aumento de FPS ou seu PC continuar lento, basta solicitar o reembolso. <strong className="text-gray-900">Sem perguntas, sem burocracia.</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* --- CONVERSION FAQ: QUEBRA DE OBJEÇÕES --- */}
+                    <div className="mt-32 text-left max-w-4xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tighter">Perguntas sobre a Assinatura</h2>
+                            <p className="text-gray-500">Tudo o que você precisa saber para assinar com tranquilidade.</p>
+                        </div>
+                        <div className="space-y-6">
+                            {[
+                                { q: "Como recebo minha licença?", a: "Imediatamente após a confirmação do pagamento, você receberá sua chave de ativação por e-mail e também poderá visualizá-la no seu painel de usuário no site." },
+                                { q: "Posso cancelar quando quiser?", a: "Sim. A assinatura não possui fidelidade. Você pode cancelar a renovação automática a qualquer momento com apenas um clique nas configurações da sua conta." },
+                                { q: "A licença funciona em mais de um PC?", a: "Depende do plano escolhido. O plano Standard é para 1 PC, o Pro para 3 PCs e o Enterprise é ilimitado para sua empresa." },
+                                { q: "Quais são as formas de pagamento?", a: "Aceitamos Cartão de Crédito (em até 12x), Pix e Boleto Bancário. Pagamentos via Pix e Cartão liberam a licença na hora." }
+                            ].map((faq, i) => (
+                                <div key={i} className="p-8 bg-white border border-gray-100 rounded-3xl hover:shadow-lg transition-all">
+                                    <h3 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-3">
+                                        <HelpCircle className="w-5 h-5 text-blue-500" /> {faq.q}
+                                    </h3>
+                                    <p className="text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* --- LIVE PROOF TICKET --- */}
+                    <div className="mt-24 inline-flex items-center gap-3 px-6 py-3 bg-white border border-gray-200 rounded-full shadow-sm animate-bounce">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
+                        <span className="text-xs font-bold text-gray-600 uppercase tracking-widest">
+                            <strong className="text-gray-900">1.240+</strong> Licenças ativadas nos últimos 30 dias
+                        </span>
+                    </div>
+
                     {/* Trust Badges */}
                     <div className="mt-24 pt-12 border-t border-gray-200 grid grid-cols-2 md:grid-cols-4 gap-8">
                         {[
-                            { icon: ShieldCheck, label: 'Garantia de 7 dias', color: '#10b981' },
-                            { icon: Lock, label: 'Checkout Seguro', color: '#3b82f6' },
-                            { icon: MessageSquare, label: 'Suporte Humanizado', color: '#8b5cf6' },
-                            { icon: Zap, label: 'Ativação Imediata', color: '#f59e0b' }
+                            { icon: ShieldCheck, label: 'Garantia Incondicional', color: '#10b981' },
+                            { icon: Lock, label: 'SSL 256-bit Secure Checkout', color: '#3b82f6' },
+                            { icon: MessageSquare, label: 'Suporte Humanizado via WhatsApp', color: '#8b5cf6' },
+                            { icon: Zap, label: 'Entrega Digital Imediata', color: '#f59e0b' }
                         ].map((badge, i) => (
                             <div key={i} className="flex flex-col items-center text-center gap-3">
                                 <badge.icon style={{ color: badge.color }} className="w-6 h-6 opacity-60" />

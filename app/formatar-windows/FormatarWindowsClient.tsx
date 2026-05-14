@@ -70,7 +70,7 @@ export default function FormatarWindowsClient() {
             {/* Hero Section */}
             <section className="relative py-20 md:py-32 px-4">
                 {/* Background Ambience */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-purple-200/30 blur-[120px] mix-blend-screen" />
                 <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-200/30 blur-[100px] mix-blend-screen" />
 
@@ -159,7 +159,7 @@ export default function FormatarWindowsClient() {
 
             {/* Trust Indicators */}
             <section className="py-16 bg-gray-100 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto px-4 relative z-10">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                         <div>
@@ -184,7 +184,7 @@ export default function FormatarWindowsClient() {
 
             {/* Pricing Section */}
             <section className="py-20 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blur-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blur-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 border border-blue-200 mb-6">
@@ -251,7 +251,7 @@ export default function FormatarWindowsClient() {
 
             {/* Process Section */}
             <section className="py-20 bg-gray-100 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
@@ -299,7 +299,7 @@ export default function FormatarWindowsClient() {
 
             {/* Testimonials */}
             <section className="py-20 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
@@ -358,7 +358,7 @@ export default function FormatarWindowsClient() {
 
             {/* Contact Section */}
             <section className="py-20 bg-gray-100 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-4xl mx-auto text-center relative z-10">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Pronto para formatar seu Windows?</h2>
                     <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -386,7 +386,7 @@ export default function FormatarWindowsClient() {
 
             {/* Related Services */}
             <section className="py-20 bg-gray-100 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-6xl mx-auto relative z-10">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">
@@ -466,7 +466,7 @@ export default function FormatarWindowsClient() {
 
             {/* FAQ Section */}
             <section className="py-20 px-4 relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-5 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="max-w-4xl mx-auto relative z-10">
                     <div className="space-y-6">
                         {faqItems.map((faq, index) => (

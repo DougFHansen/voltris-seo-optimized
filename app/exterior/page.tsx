@@ -120,7 +120,7 @@ export default function ExteriorHomePage() {
   return (
     <div className="min-h-screen bg-[#050510] relative overflow-x-hidden pt-16 md:pt-20">
       {/* Global Ambient Background Effects (Noise Overlay on Top) */}
-      <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
+      <div className="fixed inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
 
       {/* Background Gradients (Fixed Behind) */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">

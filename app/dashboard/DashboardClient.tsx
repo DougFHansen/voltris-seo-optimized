@@ -8,7 +8,7 @@ import Link from 'next/link';
 import {
   FiPackage, FiClock, FiCheckCircle, FiRefreshCw, FiPlus,
   FiActivity, FiAlertTriangle, FiSearch, FiCopy, FiExternalLink, FiCpu, FiShield,
-  FiMonitor, FiDownload
+  FiMonitor, FiDownload, FiCreditCard, FiRotateCcw, FiX
 } from 'react-icons/fi';
 
 import type { Order } from '@/types/order';
@@ -116,6 +116,8 @@ function DashboardContent() {
   const [installationsCount, setInstallationsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
+  const [isCancelling, setIsCancelling] = useState(false);
   const supabase = useMemo(() => createClient(), []);
 
   const fetchData = useCallback(async (showLoading = true) => {
@@ -147,6 +149,50 @@ function DashboardContent() {
       if (showLoading) setIsLoading(false);
     }
   }, [user?.id, user?.email, supabase]); // Depende apenas do ID e email, não do objeto user inteiro
+
+  const handleManageBilling = async () => {
+    const toastId = toast.loading('Conectando ao Stripe...');
+    try {
+      const response = await fetch('/api/stripe/portal', { method: 'POST' });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error || 'Erro ao abrir portal');
+      }
+    } catch (error: any) {
+      toast.error(error.message, { id: toastId });
+    } finally {
+      toast.dismiss(toastId);
+    }
+  };
+
+  const handleRequestRefund = () => {
+    const message = `Olá! Gostaria de solicitar o reembolso da minha licença Voltris.\n\nUsuário: ${user?.email}\nID: ${user?.id}\nMotivo: Arrependimento (Garantia 7 dias)`;
+    const whatsappUrl = `https://wa.me/5511996716235?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleConfirmCancel = async () => {
+    setIsCancelling(true);
+    const toastId = toast.loading('Processando cancelamento...');
+    try {
+      const response = await fetch('/api/stripe/cancel', { method: 'POST' });
+      const data = await response.json();
+      
+      if (response.ok) {
+        toast.success('Assinatura cancelada! Você ainda terá acesso até o fim do período.', { id: toastId });
+        setIsCancelModalOpen(false);
+        fetchData(false);
+      } else {
+        throw new Error(data.error || 'Erro ao cancelar');
+      }
+    } catch (error: any) {
+      toast.error(error.message, { id: toastId });
+    } finally {
+      setIsCancelling(false);
+    }
+  };
 
   // Carregar dados apenas na montagem e quando o ID do usuário mudar de fato
   const userIdRef = useRef<string | undefined>(undefined);
@@ -335,6 +381,34 @@ function DashboardContent() {
                      </Link>
                    </div>
                 </div>
+
+                {/* Billing & Subscription Hub */}
+                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-gray-200 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-white shadow-xl'}`}>
+                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-blue-500/5 opacity-30"></div>
+                   <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
+                     <div className="space-y-4">
+                        <div className="p-3 bg-emerald-100/10 border border-emerald-500/20 rounded-2xl w-fit mx-auto lg:mx-0">
+                          <FiCreditCard className="w-8 h-8 text-emerald-500" />
+                        </div>
+                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Centro de <span className="text-emerald-500 not-italic">Faturamento</span></h2>
+                        <p className="text-gray-500 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Gerencie suas assinaturas, cancele renovações automáticas ou solicite reembolsos dentro do prazo de garantia.</p>
+                     </div>
+                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <button 
+                            onClick={() => setIsCancelModalOpen(true)}
+                            className="px-8 py-4 bg-gray-900 text-white font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest"
+                        >
+                            Cancelar Renovação
+                        </button>
+                        <button 
+                            onClick={handleRequestRefund}
+                            className="px-8 py-4 bg-white border border-gray-200 text-gray-900 font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:bg-gray-50 transition-all tracking-widest"
+                        >
+                            Solicitar Reembolso
+                        </button>
+                     </div>
+                   </div>
+                </div>
               </motion.div>
             )}
 
@@ -346,18 +420,35 @@ function DashboardContent() {
                 exit={{ opacity: 0, y: 30 }}
                 className="space-y-6"
               >
-                {/* Urgent Warning if needed */}
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 p-5 sm:p-6 rounded-[2rem] bg-amber-50 border border-amber-200 backdrop-blur-xl">
-                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
-                      <FiAlertTriangle className="w-6 h-6 sm:w-7 sm:h-7" />
+                {/* Urgent Warning with Integrated Billing Actions */}
+                <div className="flex flex-col gap-4 p-6 sm:p-8 rounded-[2rem] bg-amber-50 border border-amber-200 shadow-lg">
+                   <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-amber-100 flex items-center justify-center text-amber-600 shrink-0">
+                         <FiAlertTriangle className="w-6 h-6 sm:w-7 sm:h-7" />
+                      </div>
+                      <div className="flex-1 text-center sm:text-left">
+                         <h4 className="font-black text-gray-900 uppercase italic tracking-wider text-sm sm:text-base">Gestão de Licença & Pagamento</h4>
+                         <p className="text-amber-700 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">Sua segurança é nossa prioridade. Gerencie sua assinatura ou peça reembolso abaixo.</p>
+                      </div>
+                      <button onClick={() => fetchData(true)} className="w-full sm:w-auto px-6 py-3 bg-amber-400 text-black font-black uppercase italic text-[10px] rounded-xl shadow-md hover:scale-105 transition-all">
+                         Sync Agora
+                      </button>
                    </div>
-                   <div className="flex-1 text-center sm:text-left">
-                      <h4 className="font-black text-gray-900 uppercase italic tracking-wider text-sm sm:text-base">Sincronização de Pagamento</h4>
-                      <p className="text-amber-700 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">Se o seu pedido não apareceu imediatamente, clique no botão de sincronização.</p>
+                   
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-amber-200">
+                      <button 
+                         onClick={() => setIsCancelModalOpen(true)}
+                         className="flex items-center justify-center gap-2 px-6 py-4 bg-gray-900 text-white font-black uppercase italic text-[10px] rounded-xl hover:bg-black transition-all shadow-xl"
+                      >
+                         <FiX className="w-4 h-4" /> Cancelar Renovação Automática
+                      </button>
+                      <button 
+                         onClick={handleRequestRefund}
+                         className="flex items-center justify-center gap-2 px-6 py-4 bg-white border border-amber-300 text-gray-900 font-black uppercase italic text-[10px] rounded-xl hover:bg-amber-100 transition-all shadow-sm"
+                      >
+                         <FiRotateCcw className="w-4 h-4" /> Solicitar Reembolso (7 Dias)
+                      </button>
                    </div>
-                   <button onClick={() => fetchData(true)} className="w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-amber-400 text-black font-black uppercase italic text-[10px] sm:text-xs rounded-xl shadow-xl hover:scale-105 transition-all">
-                      Sync Agora
-                   </button>
                 </div>
 
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
@@ -426,9 +517,11 @@ function DashboardContent() {
                                    <span className="text-[10px] font-black text-green-700 uppercase tracking-widest">Vinculado</span>
                                 </div>
                              </div>
-                              <Link href="/voltrisoptimizer" className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
-                                 Baixar App <FiPlus className="w-3 h-3" />
-                              </Link>
+                              <div className="flex items-center gap-4">
+                                <Link href="/voltrisoptimizer" className="text-[10px] font-black text-[#8B31FF] uppercase tracking-[0.2em] flex items-center gap-2 hover:translate-x-1 transition-transform">
+                                   Baixar App <FiPlus className="w-3 h-3" />
+                                </Link>
+                              </div>
                           </div>
                         </div>
                       </motion.div>
@@ -594,6 +687,60 @@ function DashboardContent() {
         </div>
         </div>
       )}
+
+      {/* --- MODAL DE CANCELAMENTO PROFISSIONAL --- */}
+      <AnimatePresence>
+        {isCancelModalOpen && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsCancelModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative w-full max-w-md bg-white rounded-[2.5rem] p-10 shadow-2xl border border-gray-200 overflow-hidden"
+            >
+              {/* Background Glow */}
+              <div className="absolute -right-20 -top-20 w-64 h-64 bg-red-500/5 blur-[80px] rounded-full"></div>
+              
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <div className="w-20 h-20 rounded-3xl bg-red-50 flex items-center justify-center text-red-500 mb-8 border border-red-100">
+                  <FiAlertTriangle className="w-10 h-10" />
+                </div>
+                
+                <h2 className="text-2xl font-black text-gray-900 uppercase italic tracking-tighter mb-4">
+                  Cancelar Assinatura?
+                </h2>
+                
+                <p className="text-gray-500 font-medium text-sm leading-relaxed mb-10">
+                  Ao confirmar, sua renovação automática será interrompida. Você continuará com acesso PRO até o fim do seu ciclo atual de faturamento.
+                </p>
+                
+                <div className="flex flex-col gap-3 w-full">
+                  <button
+                    onClick={handleConfirmCancel}
+                    disabled={isCancelling}
+                    className="w-full py-5 bg-gray-900 text-white font-black uppercase italic tracking-widest rounded-2xl hover:bg-black transition-all shadow-xl disabled:opacity-50"
+                  >
+                    {isCancelling ? 'Processando...' : 'Confirmar Cancelamento'}
+                  </button>
+                  <button
+                    onClick={() => setIsCancelModalOpen(false)}
+                    className="w-full py-4 text-gray-400 font-bold uppercase text-[10px] tracking-widest hover:text-gray-900 transition-colors"
+                  >
+                    Manter minha assinatura
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </AuthGuard>
   );
 }

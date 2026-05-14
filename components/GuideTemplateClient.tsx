@@ -25,19 +25,27 @@ const VoltrisOptimizerBanner = ({ isSecondary = false, title }: { isSecondary?: 
                     <Zap className="w-3 h-3 fill-current" /> Otimização Recomendada
                 </div>
                 <h3 className="text-xl md:text-2xl font-black text-gray-900 leading-tight uppercase italic tracking-tight">
-                    Não faça no <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Manual.</span>
+                    Não perca tempo com <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Ajustes Manuais.</span>
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed font-bold">
-                    O <span className="text-gray-900">Voltris Optimizer</span> automatiza todo este guia e remove o delay do seu Windows em segundos.
+                    O <span className="text-gray-900">Voltris Optimizer PRO</span> automatiza este guia e aplica 150+ otimizações de kernel instantaneamente.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center xl:justify-start">
                     <Link
                         href="/voltrisoptimizer"
-                        onClick={() => notifyDownload(`Guide CTA Click - ${title}`)}
+                        onClick={() => notifyDownload(`Guide CTA Click (Free) - ${title}`)}
+                        className="px-6 py-3 bg-white border-2 border-gray-200 text-gray-900 font-bold uppercase italic tracking-wider rounded-xl hover:bg-gray-50 transition-all flex items-center justify-center gap-2 group"
+                    >
+                        <span>Versão Grátis</span>
+                        <Download className="w-4 h-4" />
+                    </Link>
+                    <Link
+                        href="/adquirir-licenca"
+                        onClick={() => notifyDownload(`Guide CTA Click (PRO) - ${title}`)}
                         className="px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold uppercase italic tracking-wider rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
                     >
-                        <span>Baixar Agora</span>
-                        <Download className="w-4 h-4 group-hover:animate-bounce" />
+                        <span>Obter Licença PRO</span>
+                        <Zap className="w-4 h-4 fill-current group-hover:animate-pulse" />
                     </Link>
                 </div>
             </div>

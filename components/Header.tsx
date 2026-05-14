@@ -64,7 +64,7 @@ export default function Header() {
 
   const servicesNavLinks = [
     {
-      category: 'Vertical Gamer',
+      category: 'Alta Performance',
       items: [
         { name: 'Hub Gamer', path: '/gamer', desc: 'Performance & FPS' },
         { name: 'Voltris Optimizer', path: '/voltrisoptimizer', desc: 'Software de Elite' },
@@ -72,7 +72,7 @@ export default function Header() {
       ]
     },
     {
-      category: 'Vertical B2B',
+      category: 'Soluções Corporativas',
       items: [
         { name: 'Hub Corporativo', path: '/corporativo', desc: 'Suporte Empresarial' },
         { name: 'Serviços B2B', path: '/corporativo/servicos', desc: 'Gestão & Infra' },
@@ -80,7 +80,7 @@ export default function Header() {
       ]
     },
     {
-      category: 'Vertical Home',
+      category: 'Suporte Residencial',
       items: [
         { name: 'Hub Residencial', path: '/home', desc: 'Suporte para Casa' },
         { name: 'Formatação', path: '/home#servicos', desc: 'Windows Novo' },
@@ -91,6 +91,7 @@ export default function Header() {
       category: 'Outros',
       items: [
         { name: 'Criação de Sites', path: '/criar-site', desc: 'Presença Digital' },
+        { name: 'Adquirir Licença', path: '/checkout', desc: 'Versão PRO Vitalícia', badge: 'PRO' },
         { name: 'Área do Cliente', path: '/dashboard', desc: 'Gestão de Chamados' },
       ]
     },
@@ -187,7 +188,7 @@ export default function Header() {
                           const isActive = pathname === item.path;
                           return (
                             <Link
-                              key={item.path}
+                              key={`${item.name}-${item.path}`}
                               href={item.path}
                               onClick={() =>
                                 item.path === '/voltrisoptimizer' && notifyDownload('Header Menu Click')
@@ -199,13 +200,20 @@ export default function Header() {
                               }`}
                             >
                               <div className="flex flex-col">
-                                <span
-                                  className={`text-sm font-bold transition-colors ${
-                                    isActive ? 'text-blue-600' : 'text-gray-700 group-hover/item:text-blue-600'
-                                  }`}
-                                >
-                                  {item.name}
-                                </span>
+                                <div className="flex items-center justify-between">
+                                  <span
+                                    className={`text-sm font-bold transition-colors ${
+                                      isActive ? 'text-blue-600' : 'text-gray-700 group-hover/item:text-blue-600'
+                                    }`}
+                                  >
+                                    {item.name}
+                                  </span>
+                                  {item.badge && (
+                                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-[8px] px-1.5 py-0.5 rounded-full font-black uppercase tracking-tighter">
+                                      {item.badge}
+                                    </span>
+                                  )}
+                                </div>
                                 <span className="text-[10px] text-gray-500 font-medium tracking-tight">
                                   {item.desc}
                                 </span>

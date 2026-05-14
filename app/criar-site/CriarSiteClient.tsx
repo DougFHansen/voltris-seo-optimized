@@ -84,7 +84,7 @@ export default function CriarSiteClient() {
             <main className="bg-gradient-to-b from-gray-50 via-white to-gray-100 min-h-screen relative overflow-x-hidden font-sans selection:bg-[#31A8FF]/30 text-gray-900">
 
                 {/* Efeitos de Fundo - Branding Voltris Premium */}
-                <div className="fixed inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 brightness-100 contrast-100 mix-blend-overlay pointer-events-none z-0"></div>
+                <div className="fixed inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-10 brightness-100 contrast-100 mix-blend-overlay pointer-events-none z-0"></div>
                 <div className="fixed top-0 right-0 w-[800px] h-[800px] bg-gradient-to-br from-blue-100/50 to-purple-100/50 rounded-full blur-[120px] pointer-events-none z-0"></div>
                 <div className="fixed bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-purple-100/50 to-blue-100/50 rounded-full blur-[100px] pointer-events-none z-0"></div>
 

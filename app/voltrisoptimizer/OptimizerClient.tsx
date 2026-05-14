@@ -284,6 +284,13 @@ export default function OptimizerClient() {
     const [cpuLoad, setCpuLoad] = useState(12);
     const [latencyLoad, setLatencyLoad] = useState(15);
     const [graphData, setGraphData] = useState([30, 45, 40, 60, 55, 75, 70, 90, 85]);
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 400);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     // Live Data Simulation
     useEffect(() => {
@@ -1800,6 +1807,94 @@ export default function OptimizerClient() {
                     </div>
                 </section>
 
+                {/* --- PRICING & COMPARISON (CONVERSION STRATEGY) --- */}
+                <section className="py-32 relative z-10 bg-white border-t border-gray-200">
+                    <div className="container mx-auto px-4">
+                        <div className="text-center mb-20">
+                            <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 tracking-tighter">
+                                Escolha seu Nível de <span className="text-blue-600">Performance.</span>
+                            </h2>
+                            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+                                A licença Pro é o atalho definitivo para quem busca máxima automação, 
+                                segurança e resultados que duram.
+                            </p>
+                        </div>
+
+                        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                            {/* PLANO FREE */}
+                            <motion.div 
+                                whileHover={{ y: -10 }}
+                                className="p-10 rounded-[2.5rem] bg-gray-50 border border-gray-200 flex flex-col"
+                            >
+                                <div className="mb-8">
+                                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Versão Gratuita</h3>
+                                    <p className="text-gray-500 text-sm">Otimização manual básica para iniciantes.</p>
+                                </div>
+                                <div className="text-4xl font-black text-gray-900 mb-8">R$ 0</div>
+                                <ul className="space-y-4 mb-12 flex-grow">
+                                    {[
+                                        "Ajustes de Sistema Básicos",
+                                        "Limpeza de Arquivos Temporários",
+                                        "Otimização de Memória Manual",
+                                        "Comunidade de Suporte",
+                                        "Atualizações Manuais"
+                                    ].map((f, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-sm text-gray-600">
+                                            <CheckCircle2 className="w-5 h-5 text-gray-300" /> {f}
+                                        </li>
+                                    ))}
+                                    <li className="flex items-center gap-3 text-sm text-gray-400 line-through">
+                                        <XCircle className="w-5 h-5" /> Automação Anti-Lentidão
+                                    </li>
+                                </ul>
+                                <a href="#hero" className="w-full py-4 px-6 rounded-xl border-2 border-gray-200 text-gray-900 font-bold text-center hover:bg-gray-100 transition-all">
+                                    Baixar Versão Grátis
+                                </a>
+                            </motion.div>
+
+                            {/* PLANO PRO (LICENÇA VITALÍCIA) */}
+                            <motion.div 
+                                whileHover={{ y: -10 }}
+                                className="p-10 rounded-[2.5rem] bg-gradient-to-br from-gray-900 to-blue-900 border border-blue-500 shadow-2xl relative flex flex-col"
+                            >
+                                <div className="absolute -top-5 right-10 px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full text-white text-xs font-black uppercase tracking-widest shadow-xl">
+                                    RECOMENDADO
+                                </div>
+                                <div className="mb-8">
+                                    <h3 className="text-2xl font-bold text-white mb-2">Licença PRO Vitalícia</h3>
+                                    <p className="text-blue-200 text-sm">Acesso total a todas as ferramentas premium.</p>
+                                </div>
+                                <div className="mb-8">
+                                    <div className="text-sm text-blue-400 line-through">De R$ 197,00</div>
+                                    <div className="text-5xl font-black text-white">R$ 97,00</div>
+                                    <div className="text-xs text-blue-300 mt-2 font-bold uppercase tracking-widest">Pagamento Único. Sem Mensalidade.</div>
+                                </div>
+                                <ul className="space-y-4 mb-12 flex-grow">
+                                    {[
+                                        "Engenharia de Kernel Exclusiva",
+                                        "Automação Anti-Lentidão (24/7)",
+                                        "Redução de Input Lag Nível Elite",
+                                        "Limpeza Automática de Cache",
+                                        "Prioridade de CPU Ultra-Fast",
+                                        "Suporte VIP via WhatsApp",
+                                        "Controle Remoto Web Ilimitado"
+                                    ].map((f, i) => (
+                                        <li key={i} className="flex items-center gap-3 text-sm text-white">
+                                            <CheckCircle2 className="w-5 h-5 text-blue-400" /> {f}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <Link href="/adquirir-licenca" className="w-full py-5 px-6 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-black text-center text-lg hover:scale-[1.03] transition-all shadow-xl shadow-blue-500/20">
+                                    ADQUIRIR LICENÇA PRO
+                                </Link>
+                                <div className="mt-4 text-center">
+                                    <span className="text-[10px] text-blue-300 font-bold uppercase tracking-[0.2em]">Compra 100% Segura • Risco Zero</span>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </section>
+
                 {/* --- SEO SECTION: TECNOLOGIA E INOVAÇÃO --- */}
                 <section className="py-32 relative z-10 bg-gray-100">
                     <div className="container mx-auto px-4">
@@ -1949,6 +2044,34 @@ export default function OptimizerClient() {
                         </div>
                     </div>
                 </section>
+
+                {/* --- FLOATING CONVERSION CTA (FAB) --- */}
+                <AnimatePresence>
+                    {scrolled && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                            className="fixed bottom-10 right-10 z-[100] hidden md:block"
+                        >
+                            <Link 
+                                href="/adquirir-licenca"
+                                className="relative group flex items-center gap-4 bg-gradient-to-r from-gray-900 to-blue-900 border border-blue-500/50 p-2 pr-6 rounded-full shadow-2xl hover:scale-105 transition-all"
+                            >
+                                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white shadow-lg group-hover:rotate-12 transition-transform">
+                                    <Sparkles className="w-6 h-6" />
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-[10px] font-black text-blue-400 uppercase tracking-widest">Oferta Limitada</span>
+                                    <span className="text-sm font-bold text-white whitespace-nowrap">Obter Licença PRO</span>
+                                </div>
+                                
+                                {/* Pulse Effect */}
+                                <div className="absolute inset-0 rounded-full bg-blue-500/20 animate-ping -z-10" />
+                            </Link>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 <Footer />
             </main>

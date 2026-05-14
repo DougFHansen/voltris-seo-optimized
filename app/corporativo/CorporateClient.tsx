@@ -56,7 +56,7 @@ const SERVICES = [
   }
 ];
 
-const VERTICALS = [
+const SECTORS = [
   { name: "Clínicas & Saúde", icon: <Stethoscope />, desc: "Proteção de prontuários e estabilidade para sistemas de gestão médica." },
   { name: "Direito & Advocacia", icon: <Scale />, desc: "Segurança máxima para documentos sigilosos e acesso remoto a tribunais." },
   { name: "Escritórios & PMEs", icon: <Briefcase />, desc: "Produtividade total para equipes administrativas e financeiras." },
@@ -178,7 +178,7 @@ export default function CorporateClient() {
         </div>
       </section>
 
-      {/* Verticals / Segments */}
+      {/* Sectors / Segments */}
       <section id="segmentos" className="py-32 px-4 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
@@ -187,7 +187,7 @@ export default function CorporateClient() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VERTICALS.map((v, i) => (
+            {SECTORS.map((v, i) => (
               <div key={i} className="p-8 rounded-3xl bg-[#0A0F1C] border border-white/10 hover:border-blue-500/50 transition-all text-center">
                 <div className="mb-6 mx-auto w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">
                   {v.icon}
