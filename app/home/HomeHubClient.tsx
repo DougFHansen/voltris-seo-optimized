@@ -39,6 +39,36 @@ const HOME_SERVICES = [
 ];
 
 export default function HomeHubClient() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!mounted) return;
+
+    const handleAnchorScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          const headerHeight = 80;
+          const elementPosition = (element as HTMLElement).offsetTop - headerHeight;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    handleAnchorScroll();
+    window.addEventListener('hashchange', handleAnchorScroll);
+    return () => window.removeEventListener('hashchange', handleAnchorScroll);
+  }, [mounted]);
+
+  if (!mounted) return null;
   return (
     <div className="bg-[#020205] text-white min-h-screen font-sans selection:bg-emerald-500/30 relative">
       <div className="fixed inset-0 noise-bg pointer-events-none opacity-[0.03] z-[100]"></div>

@@ -91,7 +91,7 @@ export default function Header() {
       category: 'Outros',
       items: [
         { name: 'Criação de Sites', path: '/criar-site', desc: 'Presença Digital' },
-        { name: 'Adquirir Licença', path: '/checkout', desc: 'Versão PRO Vitalícia', badge: 'PRO' },
+        { name: 'Adquirir Licença', path: '/adquirir-licenca', desc: 'Versão PRO Vitalícia', badge: 'PRO' },
         { name: 'Área do Cliente', path: '/dashboard', desc: 'Gestão de Chamados' },
       ]
     },

@@ -69,7 +69,7 @@ const ServicesSection = () => {
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.3}>
-                <section id="services" className="relative py-20 lg:py-32 bg-gray-100 overflow-hidden">
+                <section id="servicos" className="relative py-20 lg:py-32 bg-gray-100 overflow-hidden">
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-blue-100/50 to-transparent blur-[100px] pointer-events-none"></div>
 
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

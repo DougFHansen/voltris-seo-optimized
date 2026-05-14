@@ -64,6 +64,36 @@ const SECTORS = [
 ];
 
 export default function CorporateClient() {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  React.useEffect(() => {
+    if (!mounted) return;
+
+    const handleAnchorScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          const headerHeight = 80;
+          const elementPosition = (element as HTMLElement).offsetTop - headerHeight;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    handleAnchorScroll();
+    window.addEventListener('hashchange', handleAnchorScroll);
+    return () => window.removeEventListener('hashchange', handleAnchorScroll);
+  }, [mounted]);
+
+  if (!mounted) return null;
   return (
     <div className="bg-[#020205] text-white min-h-screen font-sans selection:bg-blue-500/30 relative">
       <div className="fixed inset-0 noise-bg pointer-events-none opacity-[0.03] z-[100]"></div>
@@ -249,7 +279,7 @@ export default function CorporateClient() {
       </section>
 
       {/* Final B2B CTA */}
-      <section className="py-32 px-4">
+      <section id="local" className="py-32 px-4">
         <div className="max-w-5xl mx-auto rounded-[3rem] bg-gradient-to-b from-blue-600 to-blue-800 p-12 md:p-20 text-center relative overflow-hidden shadow-2xl shadow-blue-900/50">
           <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20"></div>
           <div className="relative z-10">

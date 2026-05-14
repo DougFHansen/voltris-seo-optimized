@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // --- Configurações de Branding & Preços ---
 const WHATSAPP_LINK = "https://wa.me/5511996716235?text=Olá! Gostaria de saber mais sobre os serviços de otimização da Voltris.";
@@ -125,7 +125,37 @@ const CORPORATE_PLANS = [
 ];
 
 export default function ServicesPage() {
+  const [mounted, setMounted] = useState(false);
   const [activeTab, setActiveTab] = useState<"gamer" | "business">("gamer");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    const handleAnchorScroll = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          const headerHeight = 80;
+          const elementPosition = (element as HTMLElement).offsetTop - headerHeight;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+
+    handleAnchorScroll();
+    window.addEventListener('hashchange', handleAnchorScroll);
+    return () => window.removeEventListener('hashchange', handleAnchorScroll);
+  }, [mounted]);
+
+  if (!mounted) return null;
 
   return (
     <div className="min-h-screen bg-[#020205] text-white font-sans selection:bg-blue-500/30">
