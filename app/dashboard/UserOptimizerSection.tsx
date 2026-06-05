@@ -1,0 +1,314 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { createClient } from '@/utils/supabase/client';
+import { toast } from 'react-hot-toast';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiMonitor, FiCpu, FiZap, FiActivity, FiClock, FiShield, FiX } from 'react-icons/fi';
+
+export default function UserOptimizerSection({ userId }: { userId: string }) {
+    const [installations, setInstallations] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [unlinkModalOpen, setUnlinkModalOpen] = useState(false);
+    const [selectedInstallation, setSelectedInstallation] = useState<any>(null);
+    const supabase = createClient();
+
+    useEffect(() => {
+        console.log('[UserOptimizerSection] userId:', userId);
+        if (userId) {
+            fetchData();
+
+            const channel = supabase
+                .channel(`user-installs-${userId}`)
+                .on('postgres_changes' as any, {
+                    event: '*',
+                    table: 'installations',
+                    filter: `user_id=eq.${userId}`
+                }, () => {
+                    console.log('[UserOptimizerSection] Realtime update received');
+                    fetchData();
+                })
+                .subscribe();
+
+            return () => {
+                supabase.removeChannel(channel);
+            };
+        }
+    }, [userId]);
+
+    const fetchData = async () => {
+        try {
+            console.log('[UserOptimizerSection] Buscando instalações para userId:', userId);
+            const { data, error } = await supabase
+                .from('installations')
+                .select('*')
+                .eq('user_id', userId)
+                .order('last_heartbeat', { ascending: false });
+
+            console.log('[UserOptimizerSection] Resultado da query:', { data, error });
+            if (error) throw error;
+            console.log('[UserOptimizerSection] Instalações encontradas:', data?.length || 0);
+            setInstallations(data || []);
+        } catch (err) {
+            console.error('[UserOptimizerSection] Erro ao buscar instalações:', err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleUnlinkClick = (installation: any) => {
+        setSelectedInstallation(installation);
+        setUnlinkModalOpen(true);
+    };
+
+    const handleConfirmUnlink = async () => {
+        if (!selectedInstallation) return;
+        setUnlinkModalOpen(false);
+        const loadingId = toast.loading('Processando...');
+        try {
+            await fetch('/api/v1/install/unlink', {
+                method: 'POST',
+                body: JSON.stringify({ installation_id: selectedInstallation.id })
+            });
+            toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
+            fetchData();
+        } catch {
+            toast.error('Falha ao desvincular.', { id: loadingId });
+        }
+        setSelectedInstallation(null);
+    };
+
+    if (loading) return null;
+
+    if (installations.length === 0) {
+        return (
+            <div className="space-y-4 pt-6 mt-6 border-t border-gray-200">
+                <div className="flex items-center justify-between px-2">
+                    <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                        <FiMonitor className="text-[#31A8FF]" /> Meu Computador
+                    </h2>
+                </div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-8 bg-white border border-gray-200 rounded-3xl flex flex-col items-center text-center max-w-2xl mx-auto shadow-xl"
+                >
+                    <div className="p-4 bg-blue-500/10 rounded-2xl border border-blue-500/20 text-blue-400 mb-6">
+                        <FiZap className="w-8 h-8" />
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Vincule seu computador</h3>
+                    <p className="text-gray-600 mb-8 max-w-md">
+                        Acesse as informações em tempo real da sua máquina, status de otimização e gerencie sua licença diretamente do site.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                        <div className="bg-gray-100 border border-gray-200 p-4 rounded-2xl flex items-center gap-4 text-left">
+                            <div className="w-10 h-10 bg-gray-200 rounded-xl flex items-center justify-center text-gray-900 shrink-0 font-bold">1</div>
+                            <p className="text-xs text-gray-600">Abra o <span className="text-gray-900 font-bold">Voltris Optimizer</span> no seu PC</p>
+                        </div>
+                        <div className="bg-gray-100 border border-gray-200 p-4 rounded-2xl flex items-center gap-4 text-left">
+                            <div className="w-10 h-10 bg-gray-200 rounded-xl flex items-center justify-center text-gray-900 shrink-0 font-bold">2</div>
+                            <p className="text-xs text-gray-600">Clique em <span className="text-gray-900 font-bold">Vincular Conta</span> no topo do app</p>
+                        </div>
+                    </div>
+
+                    <div className="mt-8 pt-8 border-t border-gray-200 w-full flex flex-col items-center">
+                        <p className="text-xs text-gray-500 mb-4 uppercase tracking-widest font-black">Não tem o programa?</p>
+                        <a
+                            href="https://https://www.voltris.com.br/voltrisoptimizer"
+                            target="_blank"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-black rounded-2xl hover:scale-105 transition-all shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+                        >
+                            Baixar Voltris Optimizer
+                        </a>
+                    </div>
+                </motion.div>
+            </div>
+        );
+    }
+
+    return (
+        <>
+            <div className="space-y-4 pt-6 mt-6 border-t border-gray-200">
+                <div className="flex items-center justify-between px-2">
+                    <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                        <FiMonitor className="text-[#31A8FF]" /> Meus Computadores (Voltris)
+                    </h2>
+                    <span className="text-xs text-gray-600 font-medium">Sincronizado via Telemetria</span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {installations.map((inst) => (
+                        <motion.div
+                            key={inst.id}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="bg-white border border-gray-200 p-5 rounded-2xl hover:border-gray-300 transition-all group overflow-hidden relative shadow-xl"
+                        >
+                            {/* Background Glow */}
+                            <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-3xl transition-opacity ${inst.is_optimized ? 'bg-emerald-500/10' : 'bg-blue-500/10'
+                                }`}></div>
+
+                            <div className="flex justify-between items-start relative z-10">
+                                <div className="space-y-3">
+                                    <div className="flex items-center gap-2">
+                                        <div className={`w-2 h-2 rounded-full ${new Date().getTime() - new Date(inst.last_heartbeat).getTime() < 300000
+                                            ? 'bg-emerald-400 animate-pulse'
+                                            : 'bg-slate-500'
+                                            }`}></div>
+                                        <span className="text-gray-900 font-bold text-sm tracking-tight">{inst.os_name}</span>
+                                    </div>
+
+                                    <div className="flex flex-col gap-1.5">
+                                        <div className="flex items-center gap-2 text-xs text-gray-600">
+                                            <FiCpu className="text-[#31A8FF]" />
+                                            <span className="truncate max-w-[180px]">{inst.cpu_name}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2 text-xs text-gray-600">
+                                            <FiShield className="text-[#8B31FF]" />
+                                            <span>v{inst.app_version} • {inst.ram_gb_total}GB RAM</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex flex-col items-end gap-2 text-right">
+                                    <div className={`px-2.5 py-1 rounded-lg text-[10px] font-black tracking-widest ${inst.is_optimized
+                                        ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                                        : 'bg-blue-100 text-blue-700 border border-blue-200'
+                                        }`}>
+                                        {inst.is_optimized ? 'OTIMIZADO' : 'SISTEMA PADRÃO'}
+                                    </div>
+
+                                    <div className={`text-[9px] font-bold px-1.5 py-0.5 rounded ${inst.license_status === 'active'
+                                        ? 'text-emerald-700 bg-emerald-100'
+                                        : 'text-blue-700 bg-blue-100'
+                                        }`}>
+                                        LICENÇA: {inst.license_status?.toUpperCase() || 'TRIAL'}
+                                        {inst.license_status === 'trial' && inst.license_expires_at && (
+                                            <span className="ml-2 opacity-60">Expira em: {new Date(inst.license_expires_at).toLocaleDateString()}</span>
+                                        )}
+                                    </div>
+
+                                    <div className="text-[10px] text-slate-500 font-mono flex items-center gap-1.5">
+                                        {new Date(inst.last_heartbeat).toLocaleTimeString()} <FiClock />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Action Overlay */}
+                            <div className="mt-4 pt-4 border-t border-gray-200 flex gap-4">
+                                <div className="flex-1">
+                                    <div className="text-[10px] uppercase text-slate-500 font-bold mb-1">Status de Performance</div>
+                                    <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
+                                        <motion.div
+                                            initial={{ width: 0 }}
+                                            animate={{ width: inst.is_optimized ? '100%' : '60%' }}
+                                            className={`h-full bg-gradient-to-r ${inst.is_optimized ? 'from-emerald-500 to-emerald-400' : 'from-blue-500 to-blue-400'}`}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                    <button
+                                        onClick={async () => {
+                                            const toastId = toast.loading('⚡ Enviando comando...');
+                                            try {
+                                                await fetch('/api/v1/commands/create', {
+                                                    method: 'POST',
+                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'OPTIMIZE_RAM' })
+                                                });
+                                                toast.success('Comando enviado!', { id: toastId, icon: '🚀' });
+                                            } catch { toast.error('Falha no envio', { id: toastId }); }
+                                        }}
+                                        className="px-3 py-1 bg-white text-black text-[10px] font-bold rounded-lg hover:scale-105 transition-transform shrink-0 shadow-lg shadow-white/10"
+                                    >
+                                        ⚡ RAM
+                                    </button>
+                                    <button
+                                        onClick={async () => {
+                                            const toastId = toast.loading('🧹 Solicitando limpeza...');
+                                            try {
+                                                await fetch('/api/v1/commands/create', {
+                                                    method: 'POST',
+                                                    body: JSON.stringify({ installation_id: inst.id, command_type: 'CLEAN_TEMP' })
+                                                });
+                                                toast.success('Limpeza agendada!', { id: toastId, icon: '✨' });
+                                            } catch { toast.error('Falha no envio', { id: toastId }); }
+                                        }}
+                                        className="px-3 py-1 bg-gray-100 border border-gray-200 text-gray-900 text-[10px] font-bold rounded-lg hover:bg-gray-200 transition-colors shrink-0"
+                                    >
+                                        🧹 Cache
+                                    </button>
+
+                                    <div className="h-4 w-px bg-gray-300 mx-1"></div>
+
+                                    <button
+                                        onClick={() => handleUnlinkClick(inst)}
+                                        className="w-7 h-7 flex items-center justify-center bg-red-500/10 text-red-500 rounded-lg hover:bg-red-500/20 transition-colors shrink-0"
+                                        title="Desvincular Computador"
+                                    >
+                                        ✕
+                                    </button>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Modal de Confirmação */}
+            <AnimatePresence>
+                {unlinkModalOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+                        onClick={() => setUnlinkModalOpen(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            onClick={(e) => e.stopPropagation()}
+                            className="bg-white border border-gray-200 rounded-2xl p-6 max-w-md w-full shadow-xl"
+                        >
+                            <div className="flex items-start gap-4 mb-6">
+                                <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 shrink-0 text-2xl">
+                                    ⚠️
+                                </div>
+                                <div className="flex-1">
+                                    <h2 className="text-xl font-bold text-gray-900 mb-2">Desvincular Computador?</h2>
+                                    <p className="text-sm text-slate-400 leading-relaxed">
+                                        Você perderá o acesso remoto e a telemetria deste dispositivo.
+                                    </p>
+                                </div>
+                                <button
+                                    onClick={() => setUnlinkModalOpen(false)}
+                                    className="text-gray-400 hover:text-gray-900 transition-colors"
+                                >
+                                    <FiX className="w-5 h-5" />
+                                </button>
+                            </div>
+                            <div className="flex gap-3 justify-end">
+                                <button
+                                    onClick={() => setUnlinkModalOpen(false)}
+                                    className="px-4 py-2 text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    onClick={handleConfirmUnlink}
+                                    className="px-6 py-2 text-sm bg-red-500 hover:bg-red-600 text-gray-900 rounded-lg font-bold transition-all shadow-lg shadow-red-500/20"
+                                >
+                                    Sim, Desvincular
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
+    );
+}

@@ -1,0 +1,13 @@
+node_modules/
+.next/
+.env
+.env.local
+*.log 
+.vercel
+
+.vercel
+.env*.local
+
+# Cloudflare Worker proxy (projeto separado, não faz parte do build Next.js)
+pagbank-proxy/node_modules/
+pagbank-proxy/.wrangler/

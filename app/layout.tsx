@@ -1,0 +1,265 @@
+import type { Metadata } from "next";
+import Script from "next/script";
+import ReactQueryProvider from "./ReactQueryProvider";
+import PWAInstall from "@/components/PWAInstall";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import CookieBanner from "@/components/CookieBanner";
+import { Inter } from 'next/font/google';
+import "./globals.css";
+import ClientNotificationProvider from './components/ClientNotificationProvider';
+import ClientPWAInstall from "./components/ClientPWAInstall";
+import { AuthProvider } from '@/app/context/AuthContext';
+import JsonLd from "@/components/JsonLd";
+
+export const metadata: Metadata = {
+  title: {
+    default: "VOLTRIS - Otimização de PC, Performance Gamer e Suporte Técnico",
+    template: "%s | VOLTRIS"
+  },
+  description: "A maior autoridade em performance gamer, otimização de Windows e suporte de TI. Baixe o Voltris Optimizer ou agende suporte técnico remoto rápido.",
+  keywords: [
+    "otimização de pc",
+    "aumentar fps",
+    "performance gamer",
+    "voltris optimizer",
+    "suporte técnico remoto",
+    "otimização windows",
+    "redutor de lag",
+    "suporte técnico internacional",
+    "especialista em performance pc",
+    "suporte técnico brasileiros exterior",
+    "guias técnicos informática",
+    "suporte informatica online"
+  ],
+  authors: [{ name: "VOLTRIS - Especialista em Performance Global" }],
+  creator: "VOLTRIS",
+  publisher: "VOLTRIS",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://www.voltris.com.br'),
+  alternates: {
+    canonical: 'https://www.voltris.com.br',
+    languages: {
+      'pt-BR': 'https://www.voltris.com.br',
+      'pt-PT': 'https://www.voltris.com.br/exterior',
+      'x-default': 'https://www.voltris.com.br/exterior',
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: 'https://www.voltris.com.br',
+    siteName: 'VOLTRIS',
+    title: 'VOLTRIS - Otimização de PC e Suporte Técnico Especializado',
+    description: 'Suporte técnico remoto especializado em Windows, otimização de computadores e manutenção de sistemas de alta performance.',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'VOLTRIS - Otimização de PC e Suporte Técnico',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VOLTRIS - Otimização de PC e Suporte Técnico Especializado',
+    description: 'Suporte técnico remoto especializado em Windows e otimização de computadores.',
+    images: ['/logo.png'],
+    creator: '@voltris',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'fThNqPzp5iyhs4616KxDU0Zit0vLiz3XaQHLIilW5p4',
+    other: {
+      'msvalidate.01': 'B3EA85422343FBF303FC4E7243937093',
+    },
+  },
+  category: 'technology',
+};
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="pt-br">
+      <head>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/logo.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#8B31FF" />
+        <meta name="msapplication-TileColor" content="#8B31FF" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="language" content="Portuguese" />
+
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-XY0CKLVY2B"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XY0CKLVY2B', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+
+        {/* Schema.org Organization */}
+        <JsonLd
+          type="Organization"
+          data={{
+            name: "VOLTRIS - Otimização de PC e Suporte Técnico Especializado",
+            description: "Especialistas em suporte técnico remoto e otimização de computadores para máxima performance em todo o Brasil.",
+            url: "https://www.voltris.com.br",
+            logo: "https://www.voltris.com.br/logo.png",
+            contactPoint: [{
+              "@type": "ContactPoint",
+              "telephone": "+55-11-99671-6235",
+              "contactType": "customer service",
+              "areaServed": "BR",
+              "availableLanguage": "Portuguese"
+            }],
+            sameAs: [
+              "https://www.instagram.com/voltris.com.br"
+            ]
+          }}
+        />
+
+        {/* Schema.org Software Application - Huge SEO boost for Voltris Optimizer */}
+        <JsonLd
+          type="SoftwareApplication"
+          data={{
+            name: "Voltris Optimizer",
+            operatingSystem: "Windows 10, Windows 11",
+            applicationCategory: "UtilitiesApplication",
+            softwareVersion: "3.5.0",
+            downloadUrl: "https://www.voltris.com.br/download/VoltrisOptimizer.exe",
+            fileSize: "15MB",
+            offers: {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "BRL"
+            },
+            aggregateRating: {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "1250"
+            }
+          }}
+        />
+
+        {/* Schema.org Person - Author for E-E-A-T */}
+        <JsonLd
+          type="Person"
+          data={{
+            name: "Douglas Felipe",
+            jobTitle: "CEO & Especialista em Infraestrutura de TI",
+            url: "https://www.voltris.com.br",
+            description: "Especialista em otimização de performance de sistemas e infraestrutura de TI com 10+ anos de experiência. Autoridade em suporte remoto global e segurança digital.",
+            knowsAbout: [
+              "Windows Optimization",
+              "Cybersecurity for Remote Work",
+              "Managed IT Services (MSP)",
+              "Digital Privacy",
+              "Remote Desktop Support"
+            ],
+            worksFor: {
+              "@type": "Organization",
+              name: "VOLTRIS",
+              url: "https://www.voltris.com.br"
+            },
+            sameAs: [
+              "https://www.linkedin.com/in/dougfhansen",
+              "https://www.instagram.com/voltris.com.br"
+            ]
+          }}
+        />
+
+        {/* Schema.org WebSite with Global Context */}
+        <JsonLd
+          type="WebSite"
+          data={{
+            name: "VOLTRIS",
+            url: "https://www.voltris.com.br",
+            description: "A maior autoridade em performance gamer, otimização de Windows e suporte técnico remoto global.",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate: "https://www.voltris.com.br/?s={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          }}
+        />
+
+        {/* Global Service Schema for AEO/GEO */}
+        <JsonLd 
+          type="Service"
+          data={{
+            name: "Suporte Técnico Remoto Especializado",
+            description: "Suporte técnico remoto de alta performance disponível globalmente para brasileiros no exterior.",
+            provider: {
+              "@type": "Organization",
+              name: "VOLTRIS",
+              url: "https://www.voltris.com.br"
+            },
+            areaServed: [
+              { "@type": "Country", name: "BR" },
+              { "@type": "Country", name: "PT" },
+              { "@type": "Country", name: "US" },
+              { "@type": "Country", name: "JP" },
+              { "@type": "Country", name: "IE" },
+              { "@type": "Country", name: "CA" },
+              { "@type": "Country", name: "GB" }
+            ],
+            serviceType: "Remote Technical Support",
+            termsOfService: "https://www.voltris.com.br/termos"
+          }}
+        />
+
+      </head>
+      <body className={`antialiased ${inter.className} ${inter.variable} font-sans`} role="document" aria-label="VOLTRIS - Otimização de PC e Suporte Técnico Especializado">
+        <AuthProvider>
+          <ClientNotificationProvider>
+            <ReactQueryProvider>
+              <CookieBanner />
+              {children}
+              <ClientPWAInstall />
+              <GoogleAnalytics />
+            </ReactQueryProvider>
+          </ClientNotificationProvider>
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}

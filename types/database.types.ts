@@ -1,0 +1,105 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export type Database = {
+  public: {
+    Tables: {
+      payments: {
+        Row: {
+          id: string
+          preference_id: string | null
+          payment_id: string | null
+          email: string
+          license_type: string
+          amount: number
+          currency: string
+          status: string
+          processed_at: string | null
+          mercado_pago_data: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          preference_id?: string | null
+          payment_id?: string | null
+          email: string
+          license_type: string
+          amount: number
+          currency?: string
+          status: string
+          processed_at?: string | null
+          mercado_pago_data?: Json | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          preference_id?: string | null
+          payment_id?: string | null
+          email?: string
+          license_type?: string
+          amount?: number
+          currency?: string
+          status?: string
+          processed_at?: string | null
+          mercado_pago_data?: Json | null
+          created_at?: string
+        }
+      }
+      licenses: {
+        Row: {
+          id: string
+          license_key: string
+          payment_id: string
+          email: string
+          license_type: string
+          max_devices: number
+          devices_in_use: number
+          expires_at: string
+          is_active: boolean
+          activated_at: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          license_key: string
+          payment_id: string
+          email: string
+          license_type: string
+          max_devices: number
+          devices_in_use?: number
+          expires_at: string
+          is_active?: boolean
+          activated_at?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          license_key?: string
+          payment_id?: string
+          email?: string
+          license_type?: string
+          max_devices?: number
+          devices_in_use?: number
+          expires_at?: string
+          is_active?: boolean
+          activated_at?: string | null
+          created_at?: string
+        }
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+  }
+}

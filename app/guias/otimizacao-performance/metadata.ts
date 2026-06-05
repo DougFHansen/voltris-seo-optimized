@@ -1,0 +1,60 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '[2025] Como Otimizar a Performance do Seu PC - 12 Técnicas Comprovadas | VOLTRIS',
+  description: '✓ 12 técnicas profissionais comprovadas ✓ Aumente o desempenho em até 50% ✓ Passo a passo detalhado ✓ Liberar espaço, otimizar RAM e acelerar inicialização ✓ Atualizado Janeiro 2025',
+  keywords: [
+    'otimizar PC',
+    'acelerar computador',
+    'melhorar desempenho Windows',
+    'otimização sistema',
+    'como otimizar Windows',
+    'acelerar inicialização Windows',
+    'liberar espaço disco',
+    'otimizar memória RAM',
+    'limpar arquivos temporários',
+    'otimizar registro Windows',
+    'melhorar velocidade PC',
+    'desfragmentar disco',
+    'otimização performance',
+    'técnicas otimização PC',
+    'guia otimização computador'
+  ],
+  openGraph: {
+    title: 'Como Otimizar a Performance do Seu PC | Guia Profissional | VOLTRIS',
+    description: 'Técnicas profissionais para acelerar seu computador e melhorar significativamente o desempenho do sistema.',
+    url: 'https://www.voltris.com.br/guias/otimizacao-performance',
+    siteName: 'VOLTRIS',
+    images: [
+      {
+        url: 'https://www.voltris.com.br/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Guia de Otimização de Performance - VOLTRIS',
+      },
+    ],
+    locale: 'pt_BR',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Como Otimizar a Performance do Seu PC | VOLTRIS',
+    description: 'Técnicas profissionais para acelerar seu computador e melhorar o desempenho.',
+    images: ['https://www.voltris.com.br/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://www.voltris.com.br/guias/otimizacao-performance',
+  },
+};
+
