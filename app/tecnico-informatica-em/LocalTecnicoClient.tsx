@@ -23,6 +23,8 @@ interface LocalTecnicoClientProps {
         neighborhoods: string[];
         cities?: string[];
         localFact?: string;
+        dynamicContexts?: { title: string; desc: string; }[];
+        faqs?: { q: string; a: string; }[];
     };
 }
 
@@ -138,6 +140,15 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                                         </div>
                                     </div>
                                 ))}
+                                {regionalContext.dynamicContexts && regionalContext.dynamicContexts.map((ctx, i) => (
+                                    <div key={`ctx-${i}`} className="flex gap-4 p-5 rounded-2xl bg-blue-50/50 border border-blue-100 hover:border-blue-300 transition-all shadow-sm">
+                                        <BoltIcon className="w-6 h-6 text-blue-600 shrink-0" />
+                                        <div>
+                                            <h4 className="text-gray-900 font-bold text-sm mb-1">{ctx.title}</h4>
+                                            <p className="text-gray-500 text-xs">{ctx.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         <div className="relative">
@@ -229,6 +240,31 @@ export default function LocalTecnicoClient({ locationName, stateAbbr, regionalCo
                         </div>
                     </div>
                 </section>
+
+                {/* Local FAQ Section - Anti-Doorway Pages */}
+                {regionalContext.faqs && regionalContext.faqs.length > 0 && (
+                    <section className="py-24 px-4 relative z-10 bg-white">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="text-center mb-16">
+                                <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Perguntas Frequentes em {locationName}</h2>
+                                <p className="text-gray-600 font-light">Tudo o que os clientes da sua região costumam nos perguntar antes de fechar o serviço.</p>
+                            </div>
+                            <div className="space-y-4">
+                                {regionalContext.faqs.map((faq, i) => (
+                                    <details key={i} className="group bg-gray-50 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+                                        <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-gray-900 text-lg">
+                                            {faq.q}
+                                            <ChevronDownIcon className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform" />
+                                        </summary>
+                                        <div className="px-6 pb-6 text-gray-600 font-light leading-relaxed">
+                                            {faq.a}
+                                        </div>
+                                    </details>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                )}
 
                 {/* Final CTA (Bento Style) */}
                 <section className="py-24 px-4 relative z-10 bg-gray-50">

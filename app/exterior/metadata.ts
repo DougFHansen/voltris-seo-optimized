@@ -28,7 +28,12 @@ export const metadata: Metadata = {
     creator: '@voltris'
   },
   alternates: {
-    canonical: 'https://www.voltris.com.br/exterior'
+    canonical: 'https://www.voltris.com.br/exterior',
+    languages: {
+      'pt-BR': 'https://www.voltris.com.br',
+      'pt-PT': 'https://www.voltris.com.br/exterior',
+      'x-default': 'https://www.voltris.com.br/exterior',
+    },
   },
   robots: {
     index: true,

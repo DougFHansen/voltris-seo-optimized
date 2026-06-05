@@ -42,11 +42,6 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.voltris.com.br'),
   alternates: {
     canonical: 'https://www.voltris.com.br',
-    languages: {
-      'pt-BR': 'https://www.voltris.com.br',
-      'pt-PT': 'https://www.voltris.com.br/exterior',
-      'x-default': 'https://www.voltris.com.br/exterior',
-    },
   },
   openGraph: {
     type: 'website',

@@ -63,6 +63,15 @@ const CRITICAL_ROUTES = [
   { path: '/como-aumentar-fps-cs2', lastModified: NOW },
   { path: '/configurar-nvidia-control-panel-fps', lastModified: NOW },
   { path: '/desativar-telemetria-windows-11', lastModified: NOW },
+  // Hub de Cidades
+  { path: '/tecnico-informatica-em', lastModified: NOW },
+] as const;
+
+const LOCAL_CITIES = [
+  'sao-paulo', 'rio-de-janeiro', 'belo-horizonte', 'curitiba', 'porto-alegre', 'salvador', 'brasilia', 
+  'fortaleza', 'recife', 'goiania', 'florianopolis', 'manaus', 'belem', 'vitoria', 'campo-grande', 
+  'cuiaba', 'sao-luis', 'natal', 'joao-pessoa', 'maceio', 'teresina', 'aracaju', 'palmas', 
+  'rio-branco', 'porto-velho', 'boa-vista', 'macapa'
 ] as const;
 
 // Lista de slugs que são origem de redirects (não devem ir para o sitemap)
@@ -119,7 +128,11 @@ function getGuideRoutes(): { path: string; lastModified: Date }[] {
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const guideRoutes = getGuideRoutes();
-  const allRoutes = [...CRITICAL_ROUTES, ...guideRoutes];
+  const allRoutes = [
+    ...CRITICAL_ROUTES, 
+    ...guideRoutes,
+    ...LOCAL_CITIES.map(city => ({ path: `/tecnico-informatica-em/${city}`, lastModified: now }))
+  ];
 
   return allRoutes.map((route) => {
     const path = typeof route === 'string' ? route : route.path;

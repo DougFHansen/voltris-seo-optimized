@@ -31,6 +31,7 @@ export default function Footer() {
       { name: 'Rio de Janeiro', path: '/tecnico-informatica-em/rio-de-janeiro' },
       { name: 'Belo Horizonte', path: '/tecnico-informatica-em/belo-horizonte' },
       { name: 'Curitiba', path: '/tecnico-informatica-em/curitiba' },
+      { name: 'Ver todas as regiões', path: '/tecnico-informatica-em' },
     ],
     legal: [
       { name: 'Privacidade', path: '/politica-privacidade' },

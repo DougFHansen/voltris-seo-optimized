@@ -43,6 +43,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://www.voltris.com.br',
+    languages: {
+      'pt-BR': 'https://www.voltris.com.br',
+      'pt-PT': 'https://www.voltris.com.br/exterior',
+      'x-default': 'https://www.voltris.com.br/exterior',
+    },
   },
 };
 

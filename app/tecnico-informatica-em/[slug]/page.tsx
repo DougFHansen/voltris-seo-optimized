@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import LocalTecnicoClient from '../LocalTecnicoClient';
+import { getDeterministicItems, LOCAL_FAQS, REGIONAL_CONTEXTS } from '@/lib/local-data';
 
 interface LocationData {
     slug: string;
@@ -238,15 +239,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
         title: `Técnico de Informática em ${location.name} - Suporte Remoto e Manutenção | VOLTRIS`,
         description: `${location.description} Atendimento 24h, 100% seguro e sem necessidade de deslocamento. Resolva problemas de lentidão e erros agora.`,
-        robots: {
-            index: false,
-            follow: true,
-            nocache: true,
-            googleBot: {
-                index: false,
-                follow: true,
-            }
-        },
         keywords: [
             `técnico de informática em ${location.name}`,
             `manutenção de computador ${location.name}`,
@@ -285,6 +277,19 @@ export default function LocalPage({ params }: { params: { slug: string } }) {
         notFound();
     }
 
+    // Generate deterministic content to avoid Doorway Pages
+    const rawFaqs = getDeterministicItems(LOCAL_FAQS, location.slug, 3);
+    const faqs = rawFaqs.map(f => ({
+        q: f.q.replace(/\{cidade\}/g, location.name).replace(/\{estado\}/g, location.stateAbbr),
+        a: f.a.replace(/\{cidade\}/g, location.name).replace(/\{estado\}/g, location.stateAbbr)
+    }));
+
+    const rawContexts = getDeterministicItems(REGIONAL_CONTEXTS, location.slug, 2);
+    const contexts = rawContexts.map(c => ({
+        title: c.title.replace(/\{cidade\}/g, location.name).replace(/\{estado\}/g, location.stateAbbr),
+        desc: c.desc.replace(/\{cidade\}/g, location.name).replace(/\{estado\}/g, location.stateAbbr)
+    }));
+
     return (
         <>
             <script
@@ -315,12 +320,31 @@ export default function LocalPage({ params }: { params: { slug: string } }) {
                     })
                 }}
             />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": faqs.map(faq => ({
+                            "@type": "Question",
+                            "name": faq.q,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": faq.a
+                            }
+                        }))
+                    })
+                }}
+            />
             <LocalTecnicoClient
                 locationName={location.name}
                 stateAbbr={location.stateAbbr}
                 regionalContext={{
                     neighborhoods: location.neighborhoods,
-                    localFact: `Atendemos toda a região de ${location.name} com protocolos de segurança de elite.`
+                    localFact: `Atendemos toda a região de ${location.name} com protocolos de segurança de elite.`,
+                    dynamicContexts: contexts,
+                    faqs: faqs
                 }}
             />
         </>
