@@ -186,7 +186,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
         <div className="space-y-2">
           <div className="flex items-center gap-3">
             <div className="w-2 h-8 bg-gradient-to-b from-[#31A8FF] to-[#8B31FF] rounded-full"></div>
-            <h2 className="text-3xl font-black text-gray-900 italic uppercase tracking-tighter">Gerenciador de <span className="text-[#31A8FF] not-italic">Instâncias</span></h2>
+            <h2 className="text-3xl font-black text-white italic uppercase tracking-tighter">Gerenciador de <span className="text-[#31A8FF] not-italic">Instâncias</span></h2>
           </div>
           <p className="text-gray-500 font-bold text-xs uppercase tracking-widest pl-5 font-mono">Telemetria e controle de hardware em tempo real</p>
         </div>
@@ -198,13 +198,13 @@ export default function MyComputerPage({ userId }: { userId: string }) {
       </div>
 
       {devices.length === 0 ? (
-        <div className={`p-24 rounded-[4rem] border border-gray-200 text-center flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-gray-50 shadow-xl'}`}>
+        <div className={`p-24 rounded-[4rem] border border-white/5 text-center flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0a0a0f] shadow-xl'}`}>
            <div className="relative">
-             <FiMonitor className="w-20 h-20 text-gray-300" />
+             <FiMonitor className="w-20 h-20 text-gray-500" />
              <FiPlus className="absolute -top-2 -right-2 w-10 h-10 text-[#31A8FF] animate-pulse" />
            </div>
            <div className="space-y-3">
-             <h3 className="text-3xl font-black text-gray-900 uppercase italic tracking-tighter">Nenhum Nó Ativo Detectado</h3>
+             <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">Nenhum Nó Ativo Detectado</h3>
              <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] max-w-sm mx-auto leading-relaxed">Inicialize o Voltris Optimizer em seu computador pessoal para estabelecer um link de gerenciamento.</p>
            </div>
            <Link href="/voltrisoptimizer" className="mt-4 px-10 py-5 bg-white text-black font-black uppercase italic tracking-widest rounded-2xl hover:scale-110 active:scale-95 transition-all shadow-3xl text-xs">
@@ -219,7 +219,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               className={`group relative rounded-[3.5rem] border overflow-hidden transition-all duration-700
-                ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}
+                ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}
                 hover:border-[#31A8FF]/40
               `}
             >
@@ -229,9 +229,9 @@ export default function MyComputerPage({ userId }: { userId: string }) {
               <div className="relative z-10 flex flex-col xl:flex-row">
                 
                 {/* Visual Identity / Host Info */}
-                <div className="p-10 xl:w-96 flex flex-col items-center justify-center text-center border-b xl:border-b-0 xl:border-r border-gray-200 xl:bg-gray-50/[0.5]">
+                <div className="p-10 xl:w-96 flex flex-col items-center justify-center text-center border-b xl:border-b-0 xl:border-r border-white/5 xl:bg-[#0a0a0f]">
                   <div className="relative mb-8">
-                    <div className={`w-40 h-40 rounded-[3rem] flex items-center justify-center relative transition-all duration-700 group-hover:rotate-3 group-hover:scale-110 ${device.is_online ? 'bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white' : 'bg-gray-100 grayscale opacity-30 text-gray-400'}`}>
+                    <div className={`w-40 h-40 rounded-[3rem] flex items-center justify-center relative transition-all duration-700 group-hover:rotate-3 group-hover:scale-110 ${device.is_online ? 'bg-gradient-to-br from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white' : 'bg-[#1a1a24] grayscale opacity-30 text-gray-400'}`}>
                        <FiMonitor className="w-16 h-16 relative z-10" />
                        {device.is_online && <div className="absolute inset-0 rounded-[3rem] blur-2xl opacity-60 bg-gradient-to-br from-[#31A8FF] to-[#FF4B6B] animate-pulse"></div>}
                        <div className="absolute inset-2 border border-white/20 rounded-[2.5rem] opacity-30"></div>
@@ -242,10 +242,10 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                   </div>
                   
                   <div className="space-y-1 w-full">
-                    <h3 className="text-3xl font-black text-gray-900 uppercase italic tracking-widest truncate px-4">{device.pc_name}</h3>
+                    <h3 className="text-3xl font-black text-white uppercase italic tracking-widest truncate px-4">{device.pc_name}</h3>
                     <div className="flex flex-col gap-2 pt-2">
-                      <div className={`mx-auto px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] inline-flex items-center gap-2 border ${device.is_online ? 'text-green-700 border-green-200 bg-green-100' : 'text-gray-500 border-gray-200 bg-gray-100'}`}>
-                        <div className={`w-2 h-2 rounded-full ${device.is_online ? 'bg-green-600 animate-pulse' : 'bg-gray-400'}`}></div>
+                      <div className={`mx-auto px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] inline-flex items-center gap-2 border ${device.is_online ? 'text-emerald-400 border-emerald-400/20 bg-emerald-400/10' : 'text-gray-400 border-white/10 bg-white/5'}`}>
+                        <div className={`w-2 h-2 rounded-full ${device.is_online ? 'bg-emerald-500 animate-pulse' : 'bg-gray-500'}`}></div>
                         {device.is_online ? 'Conexão Ativa' : 'Link Perdido'}
                       </div>
                       <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest font-mono">Telemetry: {new Date(device.last_heartbeat || device.last_active).toLocaleString()}</p>
@@ -265,14 +265,14 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                 <div className="flex-1 flex flex-col">
                   
                   {/* Real-time Status Ribbons */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 border-b border-gray-200 bg-gray-50">
+                  <div className="grid grid-cols-2 md:grid-cols-4 border-b border-white/5 bg-[#0a0a0f]">
                     {[
                       { label: 'Rede', value: device.is_online ? 'Criptografada' : 'Espera', icon: FiActivity, color: device.is_online ? 'text-[#31A8FF]' : 'text-slate-500' },
                       { label: 'Optimizer', value: device.is_optimized ? 'Ativo' : 'Espera', icon: FiZap, color: device.is_optimized ? 'text-[#8B31FF]' : 'text-slate-500' },
                       { label: 'Proteção', value: 'Escudo Ativo', icon: FiShield, color: 'text-emerald-400' },
                       { label: 'Protocolo', value: device.is_licensed ? 'Acesso Total' : 'Restrito', icon: FiCheck, color: device.is_licensed ? 'text-[#31A8FF]' : 'text-red-400' },
                     ].map((stat, i) => (
-                      <div key={i} className="p-7 border-r border-gray-200 flex flex-col gap-2 group/stat relative overflow-hidden">
+                      <div key={i} className="p-7 border-r border-white/5 flex flex-col gap-2 group/stat relative overflow-hidden">
                         <div className="absolute inset-0 bg-transparent group-hover/stat:bg-gray-100/50 transition-all"></div>
                         <div className="flex items-center justify-between text-gray-400 relative z-10">
                           <span className="text-[9px] font-black uppercase tracking-[0.2em]">{stat.label}</span>
@@ -284,40 +284,40 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                   </div>
 
                   {/* Hardware Specification Architecture */}
-                  <div className="flex-1 p-10 grid grid-cols-1 md:grid-cols-2 gap-10 bg-gray-50/[0.5]">
+                  <div className="flex-1 p-10 grid grid-cols-1 md:grid-cols-2 gap-10 bg-[#0a0a0f]/50">
                     
                     {/* CPU & RAM Architecture */}
                     <div className="space-y-8">
-                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white border border-gray-200 hover:border-[#31A8FF]/30 transition-all group/hw shadow-md">
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-[#12121A] border border-white/5 hover:border-[#31A8FF]/30 transition-all group/hw shadow-md">
                           <div className="p-4 rounded-2xl bg-[#31A8FF]/10 text-[#31A8FF] shadow-[0_0_20px_rgba(49,168,255,0.1)] group-hover/hw:scale-110 transition-transform"><FiCpu className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
                             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Módulo do Processador Primário</span>
-                            <span className="text-sm font-black text-gray-900 uppercase italic tracking-tight truncate leading-tight">{device.cpu || 'Processador Não Detectado'}</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight truncate leading-tight">{device.cpu || 'Processador Não Detectado'}</span>
                           </div>
                        </div>
-                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white border border-gray-200 hover:border-[#8B31FF]/30 transition-all group/hw shadow-md">
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-[#12121A] border border-white/5 hover:border-[#8B31FF]/30 transition-all group/hw shadow-md">
                           <div className="p-4 rounded-2xl bg-[#8B31FF]/10 text-[#8B31FF] shadow-[0_0_20px_rgba(139,49,255,0.1)] group-hover/hw:scale-110 transition-transform"><FiActivity className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
                             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Alocação Dinâmica de Memória</span>
-                            <span className="text-sm font-black text-gray-900 uppercase italic tracking-tight leading-tight">{device.ram || 'Memória Não Encontrada'}</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight">{device.ram || 'Memória Não Encontrada'}</span>
                           </div>
                        </div>
                     </div>
 
                     {/* GPU & OS Architecture */}
                     <div className="space-y-8">
-                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white border border-gray-200 hover:border-[#FF4B6B]/30 transition-all group/hw shadow-md">
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-[#12121A] border border-white/5 hover:border-[#FF4B6B]/30 transition-all group/hw shadow-md">
                           <div className="p-4 rounded-2xl bg-[#FF4B6B]/10 text-[#FF4B6B] shadow-[0_0_20px_rgba(255,75,107,0.1)] group-hover/hw:scale-110 transition-transform"><FiMonitor className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
                             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Unidade de Computação Visual</span>
-                            <span className="text-sm font-black text-gray-900 uppercase italic tracking-tight leading-tight truncate">{device.gpu || 'Gráficos Acelerados por Hardware'}</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight truncate">{device.gpu || 'Gráficos Acelerados por Hardware'}</span>
                           </div>
                        </div>
-                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-white border border-gray-200 hover:border-emerald-400/30 transition-all group/hw shadow-md">
+                       <div className="flex items-start gap-6 p-6 rounded-[2.5rem] bg-[#12121A] border border-white/5 hover:border-emerald-400/30 transition-all group/hw shadow-md">
                           <div className="p-4 rounded-2xl bg-emerald-400/10 text-emerald-400 shadow-[0_0_20px_rgba(52,211,153,0.1)] group-hover/hw:scale-110 transition-transform"><FiHardDrive className="w-8 h-8" /></div>
                           <div className="flex flex-col min-w-0">
                             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Kernel do Sistema Operacional</span>
-                            <span className="text-sm font-black text-gray-900 uppercase italic tracking-tight leading-tight">{device.os || 'Windows Master Build'}</span>
+                            <span className="text-sm font-black text-white uppercase italic tracking-tight leading-tight">{device.os || 'Windows Master Build'}</span>
                           </div>
                        </div>
                     </div>
@@ -325,7 +325,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
                   </div>
 
                   {/* Remote Command Terminal — ALL SECTIONS */}
-                  <div className="border-t border-gray-200 bg-gray-100">
+                  <div className="border-t border-white/5 bg-[#0a0a0f]">
                     {/* Section Header */}
                     <div className="px-8 pt-6 pb-3">
                       <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">Painel de Controle Remoto</h4>
@@ -417,16 +417,16 @@ export default function MyComputerPage({ userId }: { userId: string }) {
               initial={{ scale: 0.9, y: 30, rotateX: 20 }} 
               animate={{ scale: 1, y: 0, rotateX: 0 }} 
               exit={{ scale: 0.9, y: 30, rotateX: 20 }} 
-              className={`relative w-full max-w-lg p-12 rounded-[4rem] border border-gray-200 shadow-xl flex flex-col items-center text-center ${transparencyMode ? 'voltris-glass' : 'bg-white'}`}
+              className={`relative w-full max-w-lg p-12 rounded-[4rem] border border-white/5 shadow-xl flex flex-col items-center text-center ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A]'}`}
             >
-               <div className="w-24 h-24 rounded-[2.5rem] bg-red-100 flex items-center justify-center text-red-600 mb-8 border border-red-200 shadow-inner">
+               <div className="w-24 h-24 rounded-[2.5rem] bg-red-500/10 flex items-center justify-center text-red-500 mb-8 border border-red-500/20 shadow-inner">
                  <FiAlertCircle className="w-12 h-12" />
                </div>
-               <h3 className="text-4xl font-black text-gray-900 italic uppercase tracking-tighter mb-4">Terminação de <span className="text-red-600">Comando</span></h3>
-               <p className="text-gray-500 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed mb-12 max-w-sm">Você está removendo este nó da rede neural Voltris. Todos os privilégios de otimização remota serão revogados instantaneamente.</p>
+               <h3 className="text-4xl font-black text-white italic uppercase tracking-tighter mb-4">Terminação de <span className="text-red-500">Comando</span></h3>
+               <p className="text-gray-400 font-bold text-xs uppercase tracking-[0.2em] leading-relaxed mb-12 max-w-sm">Você está removendo este nó da rede neural Voltris. Todos os privilégios de otimização remota serão revogados instantaneamente.</p>
                <div className="flex w-full gap-5">
-                  <button onClick={() => setShowUnlinkModal(null)} className="flex-1 py-5 rounded-3xl bg-gray-100 border border-gray-200 text-gray-900 font-black uppercase text-[10px] tracking-[0.2em] hover:bg-gray-200 transition-all active:scale-95">Abortar Missão</button>
-                  <button onClick={() => handleUnlink(showUnlinkModal)} className="flex-1 py-5 rounded-3xl bg-red-500 text-gray-900 font-black uppercase text-[10px] tracking-[0.2em] shadow-[0_20px_40px_rgba(239,68,68,0.3)] hover:scale-105 active:scale-95 transition-all">Executar Desvinculação</button>
+                  <button onClick={() => setShowUnlinkModal(null)} className="flex-1 py-5 rounded-3xl bg-white/5 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] hover:bg-white/10 transition-all active:scale-95">Abortar Missão</button>
+                  <button onClick={() => handleUnlink(showUnlinkModal)} className="flex-1 py-5 rounded-3xl bg-red-600 text-white font-black uppercase text-[10px] tracking-[0.2em] shadow-[0_20px_40px_rgba(239,68,68,0.3)] hover:scale-105 active:scale-95 transition-all">Executar Desvinculação</button>
                </div>
             </motion.div>
           </div>
