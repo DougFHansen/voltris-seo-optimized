@@ -545,8 +545,8 @@ function DashboardContent() {
                         <FiPackage className="w-6 h-6" />
                       </div>
                       <div>
-                        <h2 className="text-2xl font-black text-gray-900 italic uppercase tracking-tighter">Histórico de Pedidos</h2>
-                        <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mt-1">Acompanhe todos os seus serviços e licenças</p>
+                        <h2 className="text-2xl font-black text-white italic uppercase tracking-tighter">Histórico de Pedidos</h2>
+                        <p className="text-gray-400 text-[10px] font-black uppercase tracking-widest mt-1">Acompanhe todos os seus serviços e licenças</p>
                       </div>
                     </div>
                   </div>
@@ -589,10 +589,10 @@ function DashboardContent() {
                               };
                             })
                           ].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()).map((item, idx) => (
-                            <tr key={item.id + idx} className="group hover:bg-gray-50 active:bg-gray-100 transition-colors">
+                            <tr key={item.id + idx} className="group hover:bg-white/5 active:bg-white/10 transition-colors">
                               <td className="py-6 px-2">
                                 <div className="flex flex-col">
-                                  <span className="text-sm font-black text-gray-900 uppercase italic tracking-tight">{item.display_name}</span>
+                                  <span className="text-sm font-black text-white uppercase italic tracking-tight">{item.display_name}</span>
                                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-1">
                                     {item.display_type === 'LICENSE' ? (
                                       <span className="text-[#31A8FF]">💎 PRODUTO DIGITAL</span>
@@ -610,21 +610,21 @@ function DashboardContent() {
                                 </span>
                               </td>
                               <td className="py-6 px-2">
-                                <span className="text-xs font-black text-green-700">
+                                <span className="text-xs font-black text-emerald-400">
                                   R$ {(item.amount || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                                 </span>
                               </td>
                               <td className="py-6 px-2">
                                 <div className={`flex items-center gap-2 px-3 py-1 rounded-full border w-fit
-                                  ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
-                                    (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-500/10 border-red-500/20 text-red-400' :
+                                  ${(['completed', 'approved', 'paid', 'active'].includes(item.status?.toLowerCase())) ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+                                    (['cancelled', 'rejected', 'declined', 'canceled', 'refunded'].includes(item.status?.toLowerCase())) ? 'bg-red-500/10 border-red-500/20 text-red-400' :
                                     'bg-amber-500/10 border-amber-500/20 text-amber-400'}
                                 `}>
-                                  <div className={`w-1 h-1 rounded-full ${(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'bg-emerald-600' : (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'bg-red-600' : 'bg-amber-600 animate-pulse'}`}></div>
+                                  <div className={`w-1 h-1 rounded-full ${(['completed', 'approved', 'paid', 'active'].includes(item.status?.toLowerCase())) ? 'bg-emerald-600' : (['cancelled', 'rejected', 'declined', 'canceled', 'refunded'].includes(item.status?.toLowerCase())) ? 'bg-red-600' : 'bg-amber-600 animate-pulse'}`}></div>
                                   <span className="text-[10px] font-black uppercase tracking-widest leading-none">
-                                    {(item.status === 'completed' || item.status === 'approved' || item.status === 'paid') ? 'APROVADO' : 
-                                     (item.status === 'cancelled' || item.status === 'rejected' || item.status === 'declined') ? 'CANCELADO' : 
-                                     'PROCESSANDO'}
+                                    {(['completed', 'approved', 'paid', 'active', 'succeeded', 'ativo'].includes(String(item.status).trim().toLowerCase())) ? 'APROVADO' : 
+                                     (['cancelled', 'rejected', 'declined', 'canceled', 'refunded', 'cancelado'].includes(String(item.status).trim().toLowerCase())) ? 'CANCELADO' : 
+                                     'PENDENTE'}
                                   </span>
                                 </div>
                               </td>
