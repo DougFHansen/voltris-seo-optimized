@@ -47,8 +47,8 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay, type: "spring", stiffness: 100 }}
       className={`relative group overflow-hidden p-5 sm:p-6 rounded-[2rem] sm:rounded-[2.5rem] border transition-all duration-500
-        ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}
-        hover:border-gray-300 hover:-translate-y-2
+        ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}
+        hover:border-white/10 hover:-translate-y-2
       `}
     >
       <div className={`absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-br ${colors[color]} opacity-5 blur-[60px] group-hover:opacity-15 transition-all duration-700`}></div>
@@ -69,9 +69,9 @@ const StatCard = ({ title, value, icon: Icon, color, delay }: any) => {
         </div>
 
         <div className="space-y-1">
-           <p className="text-gray-600 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
+           <p className="text-gray-400 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] mb-1">{title}</p>
           <div className="flex items-baseline gap-2">
-            <h3 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tighter">{value}</h3>
+            <h3 className="text-3xl sm:text-4xl font-black text-white tracking-tighter">{value}</h3>
           </div>
         </div>
 
@@ -167,10 +167,25 @@ function DashboardContent() {
     }
   };
 
-  const handleRequestRefund = () => {
-    const message = `Olá! Gostaria de solicitar o reembolso da minha licença Voltris.\n\nUsuário: ${user?.email}\nID: ${user?.id}\nMotivo: Arrependimento (Garantia 7 dias)`;
-    const whatsappUrl = `https://wa.me/5511996716235?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+  const handleRequestRefund = async () => {
+    if (!window.confirm("Aviso: O reembolso cancelará sua assinatura imediatamente e desativará seu acesso. O valor será estornado se a compra foi feita nos últimos 7 dias. Deseja prosseguir?")) {
+      return;
+    }
+
+    const toastId = toast.loading('Processando reembolso com a Stripe...');
+    try {
+      const response = await fetch('/api/stripe/refund', { method: 'POST' });
+      const data = await response.json();
+      
+      if (response.ok) {
+        toast.success(data.message || 'Reembolso efetuado com sucesso!', { id: toastId });
+        fetchData(false);
+      } else {
+        throw new Error(data.error || 'Erro ao processar reembolso');
+      }
+    } catch (error: any) {
+      toast.error(error.message, { id: toastId });
+    }
   };
 
   const handleConfirmCancel = async () => {
@@ -272,7 +287,7 @@ function DashboardContent() {
         <header className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 text-center lg:text-left">
           <div className="space-y-1.5 flex-1 min-w-0 flex flex-col items-center lg:items-start w-full">
             <div className="flex flex-col lg:flex-row items-center gap-2 sm:gap-3">
-              <h1 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl xl:text-3xl font-black text-gray-900 tracking-tighter uppercase italic leading-none break-words">Centro de <span className="text-[#31A8FF] not-italic">Painel</span></h1>
+              <h2 className="text-lg xs:text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tighter uppercase italic leading-none break-words">Centro de <span className="text-[#31A8FF] not-italic">Painel</span></h2>
               
               {/* Hardware ID Protection Status Badge */}
                <div className={`flex items-center gap-2 px-3 py-1 rounded-full border backdrop-blur-md transition-all duration-500
@@ -301,7 +316,7 @@ function DashboardContent() {
                   .then(() => toast.success('Dados atualizados!'))
                   .finally(() => setIsRefreshing(false)); 
               }}
-              className={`p-4 rounded-2xl bg-gray-100 border border-gray-200 text-gray-600 hover:text-gray-900 hover:bg-gray-200 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
+              className={`p-4 rounded-2xl bg-[#12121A] border border-white/5 text-gray-400 hover:text-white hover:bg-white/5 transition-all ${isRefreshing ? 'opacity-50' : ''}`}
             >
               <FiRefreshCw className={`w-5 h-5 ${isRefreshing ? 'animate-spin' : ''}`} />
             </motion.button>
@@ -318,38 +333,7 @@ function DashboardContent() {
           </div>
         </header>
 
-        {/* Custom Modern Tabs - Enhanced Mobile Responsivity */}
-        <div className="w-full flex items-center justify-start sm:justify-center py-2 sm:py-4 overflow-x-auto scrollbar-hide px-2 sm:px-0">
-          <div className={`p-1 rounded-2xl sm:rounded-full flex items-center gap-1 sm:gap-2 ${transparencyMode ? 'bg-white/5 backdrop-blur-3xl' : 'bg-gray-100'} border border-gray-200 shadow-xl transition-all min-w-max sm:min-w-0`}>
-              {[
-                { id: 'overview', label: 'Dashboard', icon: FiActivity, color: '#31A8FF' },
-                { id: 'licenses', label: 'Licenças', icon: FiCheckCircle, color: '#8B31FF' },
-                { id: 'orders', label: 'Pedidos', icon: FiPackage, color: '#FF4B6B' },
-                { id: 'pc', label: 'Monitor', icon: FiMonitor, color: '#00C9A7' },
-                { id: 'security', label: 'Segurança', icon: FiShield, color: '#FFD700' }
-              ].map((tab) => (
-                <Link key={tab.id} href={`/dashboard?tab=${tab.id}`} className="shrink-0">
-                  <div className={`
-                    flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl text-[9px] sm:text-[11px] font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] transition-all whitespace-nowrap
-                    ${activeTab === tab.id 
-                      ? 'bg-white text-black shadow-lg' 
-                      : transparencyMode 
-                        ? 'text-gray-600 hover:text-gray-900 hover:bg-gray-200/50' 
-                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200'}
-                  `}
-                  style={{ 
-                    boxShadow: activeTab === tab.id ? `0 10px 25px ${tab.color}40` : 'none'
-                  }}>
-                    <tab.icon 
-                      className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-colors ${activeTab === tab.id ? '' : 'opacity-60'}`} 
-                      style={{ color: tab.color }}
-                    />
-                    <span className="inline-block" style={{ color: activeTab === tab.id ? 'black' : 'inherit' }}>{tab.label}</span>
-                  </div>
-                </Link>
-              ))}
-          </div>
-        </div>
+        {/* Tabs Horizontais Removidas - Navegação unificada na Sidebar lateral inspirada no Restaurante */}
 
         {/* Tab Content Rendering */}
         <div className="flex-1 min-h-0 relative">
@@ -366,14 +350,14 @@ function DashboardContent() {
                 <StatCard title="Licenças Disponíveis" value={stats.activeLicenses} icon={FiCheckCircle} color="purple" delay={0.2} />
                 <StatCard title="Computadores Vinculados" value={stats.computers} icon={FiMonitor} color="green" delay={0.3} />
                    {/* Tactical Billboard */}
-                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-gray-200 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-white shadow-xl'}`}>
+                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] shadow-xl'}`}>
                    <div className="absolute inset-0 bg-gradient-to-r from-[#31A8FF]/10 via-transparent to-[#8B31FF]/10 opacity-30"></div>
                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
                      <div className="space-y-4">
-                        <div className="p-3 bg-gray-100 border border-gray-200 rounded-2xl w-fit mx-auto lg:mx-0">
+                        <div className="p-3 bg-white/5 border border-white/10 rounded-2xl w-fit mx-auto lg:mx-0">
                           <FiDownload className="w-8 h-8 text-[#31A8FF]" />
                         </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Performance Máxima <span className="text-[#31A8FF] not-italic">Liberada</span></h2>
+                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Performance Máxima <span className="text-[#31A8FF] not-italic">Liberada</span></h2>
                         <p className="text-gray-500 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Baixe o Voltris Optimizer agora para aplicar os ajustes de hardware e eliminar o input lag em segundos.</p>
                      </div>
                      <Link href="/voltrisoptimizer" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-white text-black font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:scale-105 transition-all shadow-2xl tracking-widest text-center">
@@ -383,14 +367,14 @@ function DashboardContent() {
                 </div>
 
                 {/* Billing & Subscription Hub */}
-                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-gray-200 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-white shadow-xl'}`}>
+                <div className={`md:col-span-2 lg:col-span-3 p-6 sm:p-10 rounded-[2rem] sm:rounded-[3rem] border border-white/5 relative overflow-hidden group ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] shadow-xl'}`}>
                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-blue-500/5 opacity-30"></div>
                    <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 sm:gap-10 text-center lg:text-left">
                      <div className="space-y-4">
-                        <div className="p-3 bg-emerald-100/10 border border-emerald-500/20 rounded-2xl w-fit mx-auto lg:mx-0">
+                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl w-fit mx-auto lg:mx-0">
                           <FiCreditCard className="w-8 h-8 text-emerald-500" />
                         </div>
-                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-gray-900 italic uppercase tracking-tighter">Centro de <span className="text-emerald-500 not-italic">Faturamento</span></h2>
+                        <h2 className="text-xl sm:text-2xl lg:text-4xl font-black text-white italic uppercase tracking-tighter">Centro de <span className="text-emerald-500 not-italic">Faturamento</span></h2>
                         <p className="text-gray-500 font-bold text-[10px] sm:text-sm max-w-xl uppercase tracking-widest leading-relaxed">Gerencie suas assinaturas, cancele renovações automáticas ou solicite reembolsos dentro do prazo de garantia.</p>
                      </div>
                      <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -402,7 +386,7 @@ function DashboardContent() {
                         </button>
                         <button 
                             onClick={handleRequestRefund}
-                            className="px-8 py-4 bg-white border border-gray-200 text-gray-900 font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:bg-gray-50 transition-all tracking-widest"
+                            className="px-8 py-4 bg-[#12121A] border border-white/10 text-white font-black uppercase italic text-[10px] sm:text-xs rounded-2xl hover:bg-white/5 transition-all tracking-widest"
                         >
                             Solicitar Reembolso
                         </button>

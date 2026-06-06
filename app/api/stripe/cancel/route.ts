@@ -19,12 +19,24 @@ export async function POST(req: Request) {
             .eq('id', user.id)
             .single();
 
-        if (!profile?.stripe_customer_id) {
+        let customerId = profile?.stripe_customer_id;
+
+        if (!customerId) {
+            // Tenta buscar o cliente na Stripe pelo email como fallback inteligente
+            const customers = await stripe.customers.list({ email: user.email!, limit: 1 });
+            if (customers.data.length > 0) {
+                customerId = customers.data[0].id;
+                // Salva o ID no perfil para acessos futuros
+                await supabase.from('profiles').update({ stripe_customer_id: customerId }).eq('id', user.id);
+            }
+        }
+
+        if (!customerId) {
             return NextResponse.json({ error: 'Nenhuma assinatura encontrada para este usuário.' }, { status: 404 });
         }
 
         const subscriptions = await stripe.subscriptions.list({
-            customer: profile.stripe_customer_id,
+            customer: customerId,
             status: 'active',
             limit: 1
         });

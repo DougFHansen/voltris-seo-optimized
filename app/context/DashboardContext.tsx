@@ -16,7 +16,7 @@ interface DashboardContextType {
 const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
 
 export function DashboardProvider({ children }: { children: ReactNode }) {
-  const [transparencyMode, setTransparencyMode] = useState(true);
+  const [transparencyMode, setTransparencyMode] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [hardwareIDProtection, setHardwareIDProtection] = useState(true);
   const [mounted, setMounted] = useState(false);
