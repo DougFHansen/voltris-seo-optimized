@@ -411,7 +411,7 @@ function DashboardContent() {
                          <FiAlertTriangle className="w-6 h-6 sm:w-7 sm:h-7" />
                       </div>
                       <div className="flex-1 text-center sm:text-left">
-                         <h4 className="font-black text-gray-900 uppercase italic tracking-wider text-sm sm:text-base">Gestão de Licença & Pagamento</h4>
+                         <h4 className="font-black text-white uppercase italic tracking-wider text-sm sm:text-base">Gestão de Licença & Pagamento</h4>
                          <p className="text-amber-700 text-[9px] sm:text-xs font-bold uppercase tracking-widest mt-1">Sua segurança é nossa prioridade. Gerencie sua assinatura ou peça reembolso abaixo.</p>
                       </div>
                       <button onClick={() => fetchData(true)} className="w-full sm:w-auto px-6 py-3 bg-amber-400 text-black font-black uppercase italic text-[10px] rounded-xl shadow-md hover:scale-105 transition-all">
@@ -428,7 +428,7 @@ function DashboardContent() {
                       </button>
                       <button 
                          onClick={handleRequestRefund}
-                         className="flex items-center justify-center gap-2 px-6 py-4 bg-white border border-amber-300 text-gray-900 font-black uppercase italic text-[10px] rounded-xl hover:bg-amber-100 transition-all shadow-sm"
+                         className="flex items-center justify-center gap-2 px-6 py-4 bg-amber-500/10 border border-amber-500/20 text-amber-500 font-black uppercase italic text-[10px] rounded-xl hover:bg-amber-500/20 transition-all shadow-sm"
                       >
                          <FiRotateCcw className="w-4 h-4" /> Solicitar Reembolso (7 Dias)
                       </button>
@@ -443,7 +443,7 @@ function DashboardContent() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className={`group relative p-6 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'} hover:border-[#31A8FF]/40`}
+                        className={`group relative p-6 sm:p-8 rounded-[2rem] sm:rounded-[3rem] border transition-all duration-500 overflow-hidden ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'} hover:border-[#31A8FF]/40`}
                       >
                         {/* Interactive Background Elements */}
                         <div className={`absolute -right-20 -bottom-20 w-80 h-80 ${lic.is_active ? 'bg-[#31A8FF]/10' : 'bg-red-500/10'} blur-[100px] rounded-full group-hover:scale-110 transition-transform duration-700`}></div>
@@ -452,12 +452,12 @@ function DashboardContent() {
                           {/* Card Top */}
                           <div className="flex items-center justify-between">
                             <div className="flex items-center gap-4">
-                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center relative transition-all duration-500 ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF] text-white' : 'bg-gray-100 border border-gray-200 text-gray-500'}`}>
+                              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center relative transition-all duration-500 ${lic.is_active ? 'bg-gradient-to-br from-[#31A8FF] to-[#1070FF] text-white' : 'bg-white/5 border border-white/10 text-gray-400'}`}>
                                 <FiCheckCircle className="w-8 h-8" />
                                 <div className={`absolute inset-0 blur-lg opacity-40 ${lic.is_active ? 'bg-[#31A8FF]' : 'bg-transparent'}`}></div>
                               </div>
                               <div className="flex flex-col">
-                                <h4 className="text-xl font-black text-gray-900 uppercase italic tracking-tighter">{lic.license_type}</h4>
+                                <h4 className="text-xl font-black text-white uppercase italic tracking-tighter">{lic.license_type}</h4>
                                 <span className={`text-[9px] font-black tracking-[0.2em] px-3 py-1 rounded-full uppercase w-fit mt-1 border ${lic.is_active ? 'bg-emerald-400/10 text-emerald-400 border-emerald-400/20' : 'bg-red-400/10 text-red-400 border-red-400/20'}`}>
                                    {lic.is_active ? 'Ativa' : 'Expirada'}
                                 </span>
@@ -465,19 +465,19 @@ function DashboardContent() {
                             </div>
                             <div className="hidden sm:flex flex-col items-end">
                                <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Validade</span>
-                               <span className="text-sm font-black text-gray-900 italic">{new Date(lic.expires_at).toLocaleDateString('pt-BR')}</span>
+                               <span className="text-sm font-black text-white italic">{new Date(lic.expires_at).toLocaleDateString('pt-BR')}</span>
                             </div>
                           </div>
 
                           {/* Key Section - Dark Box */}
-                          <div className="bg-gray-100 rounded-[2rem] p-6 border border-gray-200 group-hover:border-[#31A8FF]/20 transition-all">
+                          <div className="bg-[#0a0a0f] rounded-[2rem] p-6 border border-white/5 group-hover:border-[#31A8FF]/20 transition-all">
                              <span className="text-[9px] font-black text-[#31A8FF] uppercase tracking-[0.3em] mb-4 block">Chave de Ativação</span>
                              <div className="flex items-center justify-between gap-4">
-                                <code className="flex-1 font-mono text-base font-black text-gray-900 tracking-widest truncate select-all">{lic.license_key}</code>
+                                <code className="flex-1 font-mono text-base font-black text-white tracking-widest truncate select-all">{lic.license_key}</code>
                                 <div className="flex items-center gap-2">
                                   <button
                                     onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Key copiada!'); }}
-                                    className="p-3 rounded-xl bg-gray-200 hover:bg-gray-300 text-gray-600 hover:text-gray-900 transition-all border border-gray-300"
+                                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all border border-white/10"
                                     title="Copiar Chave"
                                   >
                                     <FiCopy className="w-4 h-4" />
@@ -494,7 +494,7 @@ function DashboardContent() {
                              <div className="flex items-center gap-8">
                                 <div className="flex flex-col">
                                    <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Dispositivos</span>
-                                   <span className="text-sm font-black text-gray-900">{lic.devices_in_use}/{lic.max_devices}</span>
+                                   <span className="text-sm font-black text-white">{lic.devices_in_use}/{lic.max_devices}</span>
                                 </div>
                                 <div className="flex flex-col">
                                    <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Hardware ID</span>
@@ -511,12 +511,12 @@ function DashboardContent() {
                       </motion.div>
                     ))
                   ) : (
-                    <div className={`col-span-1 xl:col-span-2 p-20 rounded-[4rem] text-center border border-gray-200 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-gray-50 shadow-xl'}`}>
-                       <div className="w-24 h-24 rounded-[2rem] bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400">
+                    <div className={`col-span-1 xl:col-span-2 p-20 rounded-[4rem] text-center border border-white/5 flex flex-col items-center gap-8 ${transparencyMode ? 'voltris-glass' : 'bg-[#0a0a0f] shadow-xl'}`}>
+                       <div className="w-24 h-24 rounded-[2rem] bg-[#12121A] border border-white/10 flex items-center justify-center text-gray-400">
                           <FiShield className="w-12 h-12" />
                        </div>
                        <div className="space-y-4">
-                         <h3 className="text-4xl font-black text-gray-900 uppercase italic tracking-tighter">Armazém de Licenças Vazio</h3>
+                         <h3 className="text-4xl font-black text-white uppercase italic tracking-tighter">Armazém de Licenças Vazio</h3>
                          <p className="text-gray-500 font-bold max-w-lg mx-auto uppercase tracking-wide text-xs">Você ainda não possui licenças operacionais vinculadas a esta conta. Adquira uma agora para desbloquear o Optimizer.</p>
                        </div>
                        <Link href="/adquirir-licenca">
@@ -538,7 +538,7 @@ function DashboardContent() {
                 exit={{ opacity: 0, y: 30 }}
                 className="space-y-6"
               >
-                <div className={`p-8 rounded-[2rem] sm:rounded-[3rem] border ${transparencyMode ? 'voltris-glass' : 'bg-white border-gray-200 shadow-xl'}`}>
+                <div className={`p-8 rounded-[2rem] sm:rounded-[3rem] border ${transparencyMode ? 'voltris-glass' : 'bg-[#12121A] border-white/5 shadow-xl'}`}>
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-10">
                     <div className="flex items-center gap-4">
                       <div className="p-4 bg-gradient-to-br from-[#31A8FF] to-[#1070FF] rounded-2xl text-white shadow-lg shadow-blue-500/20">
@@ -554,14 +554,14 @@ function DashboardContent() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left">
                       <thead>
-                        <tr className="border-b border-gray-200">
+                        <tr className="border-b border-white/10">
                           <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Serviço / Licença</th>
                           <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] hidden sm:table-cell">Data</th>
                           <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Valor</th>
                           <th className="pb-4 px-2 text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Status</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-gray-200">
+                      <tbody className="divide-y divide-white/10">
                         {/* Mesclagem de Pedidos e Pagamentos */}
                         {[
                           ...orders.map(o => ({ ...o, display_type: 'SERVICE_LEGACY', display_name: o.service_name, display_plan: o.plan_type, amount: o.total || o.final_price })),
@@ -687,7 +687,7 @@ function DashboardContent() {
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              className="relative w-full max-w-md bg-white rounded-[2.5rem] p-10 shadow-2xl border border-gray-200 overflow-hidden"
+              className="relative w-full max-w-md bg-[#12121A] rounded-[2.5rem] p-10 shadow-2xl border border-white/10 overflow-hidden"
             >
               {/* Background Glow */}
               <div className="absolute -right-20 -top-20 w-64 h-64 bg-red-500/5 blur-[80px] rounded-full"></div>
@@ -697,11 +697,11 @@ function DashboardContent() {
                   <FiAlertTriangle className="w-10 h-10" />
                 </div>
                 
-                <h2 className="text-2xl font-black text-gray-900 uppercase italic tracking-tighter mb-4">
+                <h2 className="text-2xl font-black text-white uppercase italic tracking-tighter mb-4">
                   Cancelar Assinatura?
                 </h2>
                 
-                <p className="text-gray-500 font-medium text-sm leading-relaxed mb-10">
+                <p className="text-gray-400 font-medium text-sm leading-relaxed mb-10">
                   Ao confirmar, sua renovação automática será interrompida. Você continuará com acesso PRO até o fim do seu ciclo atual de faturamento.
                 </p>
                 
@@ -709,13 +709,13 @@ function DashboardContent() {
                   <button
                     onClick={handleConfirmCancel}
                     disabled={isCancelling}
-                    className="w-full py-5 bg-gray-900 text-white font-black uppercase italic tracking-widest rounded-2xl hover:bg-black transition-all shadow-xl disabled:opacity-50"
+                    className="w-full py-5 bg-white/5 border border-white/10 text-white font-black uppercase italic tracking-widest rounded-2xl hover:bg-white/10 transition-all shadow-xl disabled:opacity-50"
                   >
                     {isCancelling ? 'Processando...' : 'Confirmar Cancelamento'}
                   </button>
                   <button
                     onClick={() => setIsCancelModalOpen(false)}
-                    className="w-full py-4 text-gray-400 font-bold uppercase text-[10px] tracking-widest hover:text-gray-900 transition-colors"
+                    className="w-full py-4 text-gray-500 font-bold uppercase text-[10px] tracking-widest hover:text-white transition-colors"
                   >
                     Manter minha assinatura
                   </button>
