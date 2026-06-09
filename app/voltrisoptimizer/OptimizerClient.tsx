@@ -582,7 +582,7 @@ export default function OptimizerClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-gray-500 font-medium">Versão Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-md text-xs font-bold text-blue-600">
-                                        v1.0.1.3
+                                        v1.0.1.5
                                     </span>
                                 </div>
 
@@ -2018,7 +2018,7 @@ export default function OptimizerClient() {
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-xs text-gray-500 font-medium">Versão Atual:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-md text-xs font-bold text-blue-600">
-                                    v1.0.1.3
+                                    v1.0.1.5
                                 </span>
                             </div>
                             <div className="flex flex-col items-center gap-2 w-full max-w-sm">
