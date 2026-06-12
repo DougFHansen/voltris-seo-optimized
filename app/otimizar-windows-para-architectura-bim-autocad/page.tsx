@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Arquitetura e Engenharia (AutoCAD/BIM) (2026)",
+  description: "Acelere seu fluxo de trabalho no AutoCAD, Revit, SketchUp e Lumion. Guia completo para arquitetos e engenheiros otimizarem a GPU e o tempo de render no Windows 11."
+};
+
+
 export default function OtimizarArquitetura() {
     const title = 'Como Otimizar o Windows 11 para Arquitetura e Engenharia (AutoCAD/BIM) (2026)';
     const description = 'Acelere seu fluxo de trabalho no AutoCAD, Revit, SketchUp e Lumion. Guia completo para arquitetos e engenheiros otimizarem a GPU e o tempo de render no Windows 11.';

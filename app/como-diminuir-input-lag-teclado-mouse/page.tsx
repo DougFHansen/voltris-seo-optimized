@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Diminuir o Input Lag do Mouse e Teclado no Windows 11 (2026)",
+  description: "Guia completo para reduzir a latência de periféricos. Aprenda a ajustar o Polling Rate, desativar a aceleração do mouse via registro e otimizar a taxa de atualização do teclado para resposta instantânea."
+};
+
+
 export default function InputLagPerifericos() {
     const title = 'Como Diminuir o Input Lag do Mouse e Teclado no Windows 11 (2026)';
     const description = 'Guia completo para reduzir a latência de periféricos. Aprenda a ajustar o Polling Rate, desativar a aceleração do mouse via registro e otimizar a taxa de atualização do teclado para resposta instantânea.';

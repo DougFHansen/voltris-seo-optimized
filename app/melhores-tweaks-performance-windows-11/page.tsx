@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Top 10 Melhores Tweaks para Melhorar a Performance do Windows 11 (2026)",
+  description: "Descubra os ajustes definitivos que realmente funcionam. Do registro à aceleração de GPU, este guia mostra como transformar seu PC lento em uma máquina de alto desempenho."
+};
+
+
 export default function MelhoresTweaks() {
     const title = 'Top 10 Melhores Tweaks para Melhorar a Performance do Windows 11 (2026)';
     const description = 'Descubra os ajustes definitivos que realmente funcionam. Do registro à aceleração de GPU, este guia mostra como transformar seu PC lento em uma máquina de alto desempenho.';

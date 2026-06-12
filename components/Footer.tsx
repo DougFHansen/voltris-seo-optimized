@@ -17,6 +17,7 @@ export default function Footer() {
       { name: 'Serviços', path: '/todos-os-servicos' },
       { name: 'Guias', path: '/guias' },
       { name: 'Gamers', path: '/voltrisoptimizer' },
+      { name: 'Mapa do Site', path: '/mapa-do-site' },
       { name: 'Contato', path: '/contato' },
     ],
     services: [

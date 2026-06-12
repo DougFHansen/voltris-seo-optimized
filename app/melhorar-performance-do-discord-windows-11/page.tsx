@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Melhorar a Performance do Discord no Windows 11 (2026)",
+  description: "Seu Discord está lento ou travando durante as streams? Aprenda as melhores configurações para o Discord no Windows 11, como reduzir o consumo de CPU e ganhar mais FPS nos seus jogos."
+};
+
+
 export default function DiscordPerformance() {
     const title = 'Como Melhorar a Performance do Discord no Windows 11 (2026)';
     const description = 'Seu Discord está lento ou travando durante as streams? Aprenda as melhores configurações para o Discord no Windows 11, como reduzir o consumo de CPU e ganhar mais FPS nos seus jogos.';

@@ -59,6 +59,14 @@ export async function middleware(request: NextRequest) {
         const slug = normalizedPath.substring(7); // extrai o slug
         
         if (slug && slug !== '') {
+            // URLs com caracteres especiais são lixo/legado — retornar 410 GONE
+            // Isso diz ao Google: "essa página nunca existiu e nunca vai existir"
+            // Elimina centenas de erros "Página com redirecionamento" no GSC
+            const hasSpecialChars = /[:()\[\]áàãâéèêíìîóòõôúùûçñ,!?@#$%&=+]/.test(slug);
+            if (hasSpecialChars) {
+                return new NextResponse(null, { status: 410 });
+            }
+
             const isValid = VALID_CATEGORIES.has(slug) || VALID_GUIDE_SLUGS.has(slug);
             
             if (!isValid) {

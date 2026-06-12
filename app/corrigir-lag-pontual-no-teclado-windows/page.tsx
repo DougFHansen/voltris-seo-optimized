@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Corrigir o Lag no Teclado no Windows 11 (Atraso de Digitação 2026)",
+  description: "Seu teclado está digitando atrasado ou falhando? Aprenda a resolver o lag de digitação no Windows 11, desativar as Teclas de Filtragem e otimizar a taxa de repetição para resposta instantânea."
+};
+
+
 export default function LagTeclado() {
     const title = 'Como Corrigir o Lag no Teclado no Windows 11 (Atraso de Digitação 2026)';
     const description = 'Seu teclado está digitando atrasado ou falhando? Aprenda a resolver o lag de digitação no Windows 11, desativar as Teclas de Filtragem e otimizar a taxa de repetição para resposta instantânea.';

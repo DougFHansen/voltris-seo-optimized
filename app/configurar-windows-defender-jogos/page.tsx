@@ -1,6 +1,7 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 import { title, description, keywords } from './metadata';
+export { metadata } from './metadata';
 
 export default function ConfigurarWindowsDefenderJogos() {
     const summaryTable = [

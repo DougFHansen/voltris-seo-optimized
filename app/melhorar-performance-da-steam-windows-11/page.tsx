@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Melhorar a Performance da Steam no Windows 11 (2026)",
+  description: "A Steam está lenta para abrir ou travando ao baixar jogos? Aprenda a otimizar o launcher da Steam no Windows 11, limpar caches de download e reduzir o consumo de RAM."
+};
+
+
 export default function SteamPerformance() {
     const title = 'Como Melhorar a Performance da Steam no Windows 11 (2026)';
     const description = 'A Steam está lenta para abrir ou travando ao baixar jogos? Aprenda a otimizar o launcher da Steam no Windows 11, limpar caches de download e reduzir o consumo de RAM.';

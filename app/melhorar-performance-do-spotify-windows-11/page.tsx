@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Melhorar a Performance do Spotify no Windows 11 (2026)",
+  description: "O Spotify está pesando no seu PC durante os jogos? Aprenda a reduzir o consumo de RAM e CPU do Spotify no Windows 11, sem precisar fechar o app para ouvir música enquanto joga."
+};
+
+
 export default function SpotifyPerformance() {
     const title = 'Como Melhorar a Performance do Spotify no Windows 11 (2026)';
     const description = 'O Spotify está pesando no seu PC durante os jogos? Aprenda a reduzir o consumo de RAM e CPU do Spotify no Windows 11, sem precisar fechar o app para ouvir música enquanto joga.';

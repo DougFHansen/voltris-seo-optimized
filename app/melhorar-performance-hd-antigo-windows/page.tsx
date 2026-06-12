@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Melhorar a Performance de HD Antigo no Windows 11 (2026)",
+  description: "Seu carregamento está lento? Aprenda a dar fôlego ao seu HD convencional. Guia sobre desfragmentação, otimização de leitura e como reduzir o tempo de acesso a disco no Windows 11."
+};
+
+
 export default function PerformanceHD() {
     const title = 'Como Melhorar a Performance de HD Antigo no Windows 11 (2026)';
     const description = 'Seu carregamento está lento? Aprenda a dar fôlego ao seu HD convencional. Guia sobre desfragmentação, otimização de leitura e como reduzir o tempo de acesso a disco no Windows 11.';

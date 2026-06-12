@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Edição de Vídeo (2026)",
+  description: "Acelere seu fluxo de trabalho no Premiere Pro, After Effects e DaVinci Resolve. Guia completo para otimizar a RAM, o uso de SSDs para cache e prioridade de renderização no Windows 11."
+};
+
+
 export default function OtimizarVideo() {
     const title = 'Como Otimizar o Windows 11 para Edição de Vídeo (2026)';
     const description = 'Acelere seu fluxo de trabalho no Premiere Pro, After Effects e DaVinci Resolve. Guia completo para otimizar a RAM, o uso de SSDs para cache e prioridade de renderização no Windows 11.';

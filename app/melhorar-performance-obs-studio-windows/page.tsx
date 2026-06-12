@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Melhorar a Performance do OBS Studio no Windows 11 (2026)",
+  description: "Guia definitivo para encoders de vídeo. Aprenda a configurar o Windows para evitar perda de quadros (frame drops) no OBS, ativar o Hardware Accelerated GPU Scheduling e otimizar processos de fundo para uma live fluida."
+};
+
+
 export default function PerformanceOBS() {
     const title = 'Como Melhorar a Performance do OBS Studio no Windows 11 (2026)';
     const description = 'Guia definitivo para encoders de vídeo. Aprenda a configurar o Windows para evitar perda de quadros (frame drops) no OBS, ativar o Hardware Accelerated GPU Scheduling e otimizar processos de fundo para uma live fluida.';

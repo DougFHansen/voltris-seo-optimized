@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Quais Serviços Desativar no Windows 11 para Melhorar a Performance (2026)",
+  description: "Guia completo e seguro sobre serviços do Windows. Aprenda quais processos desativar para liberar RAM e CPU sem comprometer a estabilidade do sistema."
+};
+
+
 export default function DesativarServicos() {
     const title = 'Quais Serviços Desativar no Windows 11 para Melhorar a Performance (2026)';
     const description = 'Guia completo e seguro sobre serviços do Windows. Aprenda quais processos desativar para liberar RAM e CPU sem comprometer a estabilidade do sistema.';

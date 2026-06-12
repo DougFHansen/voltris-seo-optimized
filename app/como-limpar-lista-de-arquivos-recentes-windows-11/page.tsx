@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Limpar a Lista de Arquivos Recentes no Windows 11 (Privacidade 2026)",
+  description: "Preocupado com quem pode ver seus arquivos recentemente abertos? Aprenda a limpar e desativar o histórico de arquivos recentes no Windows 11 pelo Explorador, Início e Barra de Tarefas."
+};
+
+
 export default function LimparRecentes() {
     const title = 'Como Limpar a Lista de Arquivos Recentes no Windows 11 (Privacidade 2026)';
     const description = 'Preocupado com quem pode ver seus arquivos recentemente abertos? Aprenda a limpar e desativar o histórico de arquivos recentes no Windows 11 pelo Explorador, Início e Barra de Tarefas.';

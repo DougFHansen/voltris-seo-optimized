@@ -79,12 +79,14 @@ const nextConfig = {
       // Grupo: SSD vs HDD (5 duplicatas → 1 canônico)
       { source: '/guias/ssd-vs-hd-qual-melhor', destination: '/guias/ssd-vs-hdd-guia', permanent: true },
       { source: '/guias/hds-vs-ssd-qual-a-diferenca', destination: '/guias/ssd-vs-hdd-guia', permanent: true },
-      { source: '/guias/nvme-vs-sata-vale-a-pena-upgrade', destination: '/guias/ssd-nvme-vs-sata-jogos', permanent: true },
+      // FLATTENED: antes apontava para ssd-nvme-vs-sata-jogos (chain intermediário)
+      { source: '/guias/nvme-vs-sata-vale-a-pena-upgrade', destination: '/guias/ssd-vs-hdd-guia', permanent: true },
       { source: '/guias/ssd-nvme-vs-sata-jogos', destination: '/guias/ssd-vs-hdd-guia', permanent: true },
 
       // Grupo: DNS para Jogos (3 duplicatas → 1 canônico)
-      { source: '/guias/melhor-dns-para-jogos-google-vs-cloudflare', destination: '/guias/melhor-dns-jogos-2026', permanent: true },
-      { source: '/guias/dns-mais-rapido-para-jogos-benchmark', destination: '/guias/melhor-dns-jogos-2026', permanent: true },
+      // FLATTENED: antes apontava para melhor-dns-jogos-2026 (chain intermediário)
+      { source: '/guias/melhor-dns-para-jogos-google-vs-cloudflare', destination: '/guias/melhor-dns-jogos', permanent: true },
+      { source: '/guias/dns-mais-rapido-para-jogos-benchmark', destination: '/guias/melhor-dns-jogos', permanent: true },
 
       // Grupo: Debloat Windows 11 (2 duplicatas → 1 canônico)
       { source: '/guias/debloating-windows-11', destination: '/guias/debloat-windows-11-otimizacao-powershell', permanent: true },

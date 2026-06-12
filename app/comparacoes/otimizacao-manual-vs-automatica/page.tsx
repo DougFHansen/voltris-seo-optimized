@@ -4,6 +4,12 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { CheckCircle, XCircle, Clock, Zap, Download, ArrowRight, Award, Target } from 'lucide-react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Otimização Manual vs Automática: Comparação Completa 2026 | VOLTRIS',
+    description: 'Comparação honesta entre otimização manual do Windows e automática com Voltris Optimizer. Descubra qual método oferece melhor performance, tempo investido e resultados em 2026.',
+};
 
 // JSON-LD Schema para página comparativa
 const comparisonSchema = {

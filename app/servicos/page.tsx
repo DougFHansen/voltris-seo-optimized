@@ -156,8 +156,6 @@ export default function ServicesPage() {
     return () => window.removeEventListener('hashchange', handleAnchorScroll);
   }, [mounted]);
 
-  if (!mounted) return null;
-
   return (
     <div className="min-h-screen bg-[#020205] text-white font-sans selection:bg-blue-500/30">
       {/* Schemas de SEO Estruturados (Google & Bing) */}
@@ -208,6 +206,7 @@ export default function ServicesPage() {
 
       <Header />
 
+      <h1 className="sr-only">Serviços VOLTRIS - Otimização de Computadores</h1>
       {/* --- Hero Section --- */}
       <section className="pt-32 pb-20 px-4 relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent -z-10"></div>

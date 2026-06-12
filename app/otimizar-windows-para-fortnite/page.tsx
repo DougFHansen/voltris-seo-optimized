@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows para Fortnite (2026) | FPS Máximo e Sem Lag",
+  description: "Guia definitivo para jogadores competitivos de Fortnite. Aprenda a configurar o modo de desempenho, desativar logs de telemetria e otimizar o Windows 11 para o menor tempo de resposta possível."
+};
+
+
 export default function FortniteFPS() {
     const title = 'Como Otimizar o Windows para Fortnite (2026) | FPS Máximo e Sem Lag';
     const description = 'Guia definitivo para jogadores competitivos de Fortnite. Aprenda a configurar o modo de desempenho, desativar logs de telemetria e otimizar o Windows 11 para o menor tempo de resposta possível.';

@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Melhorar a Performance do Excel em Planilhas Pesadas (2026)",
+  description: "Seu Excel está travando ou "
+};
+
+
 export default function ExcelPerformance() {
     const title = 'Como Melhorar a Performance do Excel em Planilhas Pesadas (2026)';
     const description = 'Seu Excel está travando ou "Não Respondendo"? Aprenda a otimizar o Windows 11 para acelerar o cálculo de fórmulas, gerenciar o uso de RAM em planilhas gigantes e eliminar lentidão no Office.';

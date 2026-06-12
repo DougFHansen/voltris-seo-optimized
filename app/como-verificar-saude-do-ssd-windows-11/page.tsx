@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Verificar a Saúde do SSD no Windows 11 (TBW e Vida Útil 2026)",
+  description: "Seu SSD está lento ou falhando? Aprenda como verificar a saúde do disco, monitorar a temperatura e garantir a máxima performance do seu SSD no Windows 11."
+};
+
+
 export default function SSDHealth() {
     const title = 'Como Verificar a Saúde do SSD no Windows 11 (TBW e Vida Útil 2026)';
     const description = 'Seu SSD está lento ou falhando? Aprenda como verificar a saúde do disco, monitorar a temperatura e garantir a máxima performance do seu SSD no Windows 11.';

@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Counter-Strike 2 (CS2) | FPS Máximo 2026",
+  description: "Guia definitivo para jogadores de CS2. Aprenda a otimizar o Windows 11 para conseguir FPS alto e estável no Counter-Strike 2, reduzir o input lag e eliminar o stuttering nos mapas competitivos."
+};
+
+
 export default function CS2Performance() {
     const title = 'Como Otimizar o Windows 11 para Counter-Strike 2 (CS2) | FPS Máximo 2026';
     const description = 'Guia definitivo para jogadores de CS2. Aprenda a otimizar o Windows 11 para conseguir FPS alto e estável no Counter-Strike 2, reduzir o input lag e eliminar o stuttering nos mapas competitivos.';

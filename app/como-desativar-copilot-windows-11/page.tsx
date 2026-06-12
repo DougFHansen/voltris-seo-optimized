@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Desativar e Remover o Copilot do Windows 11 (2026)",
+  description: "O Copilot está consumindo sua RAM? Aprenda a desativar completamente a I.A. da Microsoft, remover o ícone da barra de tarefas e bloquear processos de telemetria da I.A."
+};
+
+
 export default function DesativarCopilot() {
     const title = 'Como Desativar e Remover o Copilot do Windows 11 (2026)';
     const description = 'O Copilot está consumindo sua RAM? Aprenda a desativar completamente a I.A. da Microsoft, remover o ícone da barra de tarefas e bloquear processos de telemetria da I.A.';

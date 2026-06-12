@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Desativar o Windows Update Permanentemente no Windows 11 (2026)",
+  description: "Cansado de reinícios inesperados? Aprenda como bloquear as atualizações automáticas do Windows 11 de forma definitiva e segura via Registro e Políticas de Grupo."
+};
+
+
 export default function DesativarUpdate() {
     const title = 'Como Desativar o Windows Update Permanentemente no Windows 11 (2026)';
     const description = 'Cansado de reinícios inesperados? Aprenda como bloquear as atualizações automáticas do Windows 11 de forma definitiva e segura via Registro e Políticas de Grupo.';

@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Limpar o Cache do DirectX no Windows 11 (2026)",
+  description: "Seus jogos estão travando sem motivo? Aprenda a limpar o cache de shaders do DirectX (DX11/DX12) no Windows 11 para eliminar o stuttering e melhorar a estabilidade gráfica."
+};
+
+
 export default function LimparDirectX() {
     const title = 'Como Limpar o Cache do DirectX no Windows 11 (2026)';
     const description = 'Seus jogos estão travando sem motivo? Aprenda a limpar o cache de shaders do DirectX (DX11/DX12) no Windows 11 para eliminar o stuttering e melhorar a estabilidade gráfica.';

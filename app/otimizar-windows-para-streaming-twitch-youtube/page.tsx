@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Streaming (Twitch/YouTube) (2026)",
+  description: "Sua live está travando? Aprenda como configurar o Windows 11 para um streaming fluido, otimizar o OBS Studio e garantir zero perda de quadros durante suas transmissões ao vivo."
+};
+
+
 export default function StreamingPerformance() {
     const title = 'Como Otimizar o Windows 11 para Streaming (Twitch/YouTube) (2026)';
     const description = 'Sua live está travando? Aprenda como configurar o Windows 11 para um streaming fluido, otimizar o OBS Studio e garantir zero perda de quadros durante suas transmissões ao vivo.';

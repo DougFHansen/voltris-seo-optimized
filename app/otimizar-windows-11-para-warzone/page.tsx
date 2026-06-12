@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Warzone (2026) | Ganhe FPS e Reduza Lag",
+  description: "Guia definitivo para jogadores de Call of Duty: Warzone. Aprenda a configurar o Windows para evitar micro-travamentos, otimizar memória de vídeo e reduzir o ping para o mínimo possível."
+};
+
+
 export default function WarzoneFPS() {
     const title = 'Como Otimizar o Windows 11 para Warzone (2026) | Ganhe FPS e Reduza Lag';
     const description = 'Guia definitivo para jogadores de Call of Duty: Warzone. Aprenda a configurar o Windows para evitar micro-travamentos, otimizar memória de vídeo e reduzir o ping para o mínimo possível.';

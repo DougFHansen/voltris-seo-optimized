@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Melhores Configurações de Som para Jogos no Windows 11 (2026)",
+  description: "Quer ouvir seus inimigos antes? Aprenda as melhores configurações de áudio para jogos no Windows 11, como ativar o som espacial corretamente e otimizar a qualidade dos seus fones."
+};
+
+
 export default function AudioGamer() {
     const title = 'Melhores Configurações de Som para Jogos no Windows 11 (2026)';
     const description = 'Quer ouvir seus inimigos antes? Aprenda as melhores configurações de áudio para jogos no Windows 11, como ativar o som espacial corretamente e otimizar a qualidade dos seus fones.';

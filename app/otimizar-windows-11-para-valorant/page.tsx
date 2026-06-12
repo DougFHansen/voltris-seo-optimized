@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Valorant | FPS Máximo e Zero Lag (2026)",
+  description: "Guia definitivo para aumentar o FPS e reduzir a latência no Valorant. Aprenda configurações de hardware, tweaks de sistema e desative processos inúteis para dominar as ranqueadas."
+};
+
+
 export default function OtimizarWindowsValorant() {
     const title = 'Como Otimizar o Windows 11 para Valorant | FPS Máximo e Zero Lag (2026)';
     const description = 'Guia definitivo para aumentar o FPS e reduzir a latência no Valorant. Aprenda configurações de hardware, tweaks de sistema e desative processos inúteis para dominar as ranqueadas.';

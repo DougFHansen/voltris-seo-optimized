@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Verificar Processos que Consomem Mais CPU no Windows 11 (2026)",
+  description: "Seu PC está lento sem motivo? Aprenda a identificar e eliminar processos que estão consumindo CPU sem necessidade no Windows 11, usando o Gerenciador de Tarefas e ferramentas avançadas."
+};
+
+
 export default function CpuDiagnostic() {
     const title = 'Como Verificar Processos que Consomem Mais CPU no Windows 11 (2026)';
     const description = 'Seu PC está lento sem motivo? Aprenda a identificar e eliminar processos que estão consumindo CPU sem necessidade no Windows 11, usando o Gerenciador de Tarefas e ferramentas avançadas.';

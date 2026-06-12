@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Escolher o Melhor DNS para o Windows 11 em 2026 | Guia Gamer",
+  description: "Pare de navegar devagar. Aprenda a escolher e configurar o melhor DNS para jogos e navegação no Windows 11. Descubra como reduzir o ping e ter respostas mais rápidas em sites."
+};
+
+
 export default function EscolherDNS() {
     const title = 'Como Escolher o Melhor DNS para o Windows 11 em 2026 | Guia Gamer';
     const description = 'Pare de navegar devagar. Aprenda a escolher e configurar o melhor DNS para jogos e navegação no Windows 11. Descubra como reduzir o ping e ter respostas mais rápidas em sites.';

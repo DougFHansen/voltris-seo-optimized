@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Corrigir Queda de Wi-Fi no Windows 11 (Desconexão 2026)",
+  description: "Sua internet Wi-Fi está caindo toda hora? Aprenda a corrigir desconexões automáticas, desativar a economia de energia da placa de rede e estabilizar o sinal no Windows 11."
+};
+
+
 export default function WifiFix() {
     const title = 'Como Corrigir Queda de Wi-Fi no Windows 11 (Desconexão 2026)';
     const description = 'Sua internet Wi-Fi está caindo toda hora? Aprenda a corrigir desconexões automáticas, desativar a economia de energia da placa de rede e estabilizar o sinal no Windows 11.';

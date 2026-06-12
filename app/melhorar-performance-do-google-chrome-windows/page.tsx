@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Acelerar o Google Chrome no Windows 11 | Menos RAM e Mais Velocidade",
+  description: "Seu Google Chrome está lento ou travando? Aprenda a otimizar o Windows 11 para melhorar a performance do navegador, reduzir o consumo de memória RAM e carregar sites instantaneamente."
+};
+
+
 export default function ChromePerformance() {
     const title = 'Como Acelerar o Google Chrome no Windows 11 | Menos RAM e Mais Velocidade';
     const description = 'Seu Google Chrome está lento ou travando? Aprenda a otimizar o Windows 11 para melhorar a performance do navegador, reduzir o consumo de memória RAM e carregar sites instantaneamente.';

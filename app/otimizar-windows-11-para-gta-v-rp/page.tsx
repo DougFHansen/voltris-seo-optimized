@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para GTA V RP (FiveM) | FPS e Estabilidade",
+  description: "Seu GTA RP está travando? Aprenda a otimizar o Windows para ganhar mais FPS no FiveM, reduzir o stuttering em cidades pesadas e melhorar o tempo de carregamento de texturas."
+};
+
+
 export default function GtaRpPerformance() {
     const title = 'Como Otimizar o Windows 11 para GTA V RP (FiveM) | FPS e Estabilidade';
     const description = 'Seu GTA RP está travando? Aprenda a otimizar o Windows para ganhar mais FPS no FiveM, reduzir o stuttering em cidades pesadas e melhorar o tempo de carregamento de texturas.';

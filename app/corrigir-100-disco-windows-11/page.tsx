@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Corrigir o Erro de Disco 100% no Windows 11 (Guia Definitivo 2026)",
+  description: "Seu PC está travando com o Disco em 100% no Gerenciador de Tarefas? Aprenda a resolver a lentidão desativando o SysMain, corrigindo drivers de AHCI e limpando arquivos corrompidos."
+};
+
+
 export default function CorrigirDisco() {
     const title = 'Como Corrigir o Erro de Disco 100% no Windows 11 (Guia Definitivo 2026)';
     const description = 'Seu PC está travando com o Disco em 100% no Gerenciador de Tarefas? Aprenda a resolver a lentidão desativando o SysMain, corrigindo drivers de AHCI e limpando arquivos corrompidos.';

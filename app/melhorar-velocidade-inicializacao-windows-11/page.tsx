@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Fazer o Windows 11 Iniciar Mais Rápido | Guia de Boot 2026",
+  description: "Seu PC demora para ligar? Aprenda a otimizar a inicialização do Windows 11, desativar aplicativos de fundo e reduzir o tempo de boot para segundos."
+};
+
+
 export default function VelocidadeBoot() {
     const title = 'Como Fazer o Windows 11 Iniciar Mais Rápido | Guia de Boot 2026';
     const description = 'Seu PC demora para ligar? Aprenda a otimizar a inicialização do Windows 11, desativar aplicativos de fundo e reduzir o tempo de boot para segundos.';

@@ -4,68 +4,7 @@ import path from 'path';
 
 const BASE_URL = 'https://www.voltris.com.br';
 
-// CORREÇÃO: Usar data atual dinâmica em vez de hardcoded
 const NOW = new Date();
-
-const CRITICAL_ROUTES = [
-  { path: '', lastModified: NOW },
-  { path: '/servicos', lastModified: NOW },
-  { path: '/contato', lastModified: NOW },
-  { path: '/sobre', lastModified: NOW },
-  { path: '/guias', lastModified: NOW },
-  { path: '/todos-os-servicos', lastModified: NOW },
-  { path: '/otimizacao-pc', lastModified: NOW },
-  { path: '/formatar-windows', lastModified: NOW },
-  { path: '/assistencia-tecnica', lastModified: NOW },
-  { path: '/tecnico-informatica', lastModified: NOW },
-  { path: '/suporte-tecnico-remoto', lastModified: NOW },
-  { path: '/manutencao-computador', lastModified: NOW },
-  { path: '/erros-jogos', lastModified: NOW },
-  { path: '/voltrisoptimizer', lastModified: NOW },
-  { path: '/adquirir-licenca', lastModified: NOW },
-  { path: '/criar-site', lastModified: NOW },
-  { path: '/faq', lastModified: NOW },
-  { path: '/exterior', lastModified: NOW },
-  { path: '/exterior/portugal', lastModified: NOW },
-  { path: '/exterior/servicos', lastModified: NOW },
-  { path: '/exterior/contato', lastModified: NOW },
-  { path: '/exterior/orcamento', lastModified: NOW },
-  { path: '/corporativo', lastModified: NOW },
-  { path: '/corporativo/servicos', lastModified: NOW },
-  { path: '/corporativo/planos', lastModified: NOW },
-  { path: '/corporativo/cases', lastModified: NOW },
-  { path: '/gamer', lastModified: NOW },
-  { path: '/home', lastModified: NOW },
-  // FASE 1: High-quality pages (15-25 pages)
-  { path: '/otimizacao-windows-jogos', lastModified: NOW },
-  { path: '/servicos-combinados', lastModified: NOW },
-  { path: '/empresas', lastModified: NOW },
-  { path: '/glossario', lastModified: NOW },
-  { path: '/como-aumentar-fps-roblox-windows', lastModified: NOW },
-  { path: '/como-corrigir-queda-de-wifi-windows-11', lastModified: NOW },
-  { path: '/como-desativar-vbs-windows-11-gamer', lastModified: NOW },
-  { path: '/como-limpar-cache-nvidia-windows-11', lastModified: NOW },
-  { path: '/otimizar-windows-11-para-valorant', lastModified: NOW },
-  { path: '/otimizar-windows-11-para-warzone', lastModified: NOW },
-  { path: '/otimizar-windows-para-counter-strike-2-cs2', lastModified: NOW },
-  { path: '/otimizar-windows-para-fortnite', lastModified: NOW },
-  { path: '/otimizar-windows-para-minecraft-ultra-fps', lastModified: NOW },
-  { path: '/melhorar-performance-da-steam-windows-11', lastModified: NOW },
-  { path: '/melhorar-performance-do-google-chrome-windows', lastModified: NOW },
-  { path: '/voltrisoptimizer/como-funciona', lastModified: NOW },
-  { path: '/voltrisoptimizer/documentacao', lastModified: NOW },
-  // Páginas Pilares SEO
-  { path: '/aumentar-fps', lastModified: NOW },
-  { path: '/otimizacao-windows-11', lastModified: NOW },
-  // Páginas Satélites
-  { path: '/como-aumentar-fps-valorant', lastModified: NOW },
-  { path: '/como-aumentar-fps-warzone', lastModified: NOW },
-  { path: '/como-aumentar-fps-cs2', lastModified: NOW },
-  { path: '/configurar-nvidia-control-panel-fps', lastModified: NOW },
-  { path: '/desativar-telemetria-windows-11', lastModified: NOW },
-  // Hub de Cidades
-  { path: '/tecnico-informatica-em', lastModified: NOW },
-] as const;
 
 const LOCAL_CITIES = [
   'sao-paulo', 'rio-de-janeiro', 'belo-horizonte', 'curitiba', 'porto-alegre', 'salvador', 'brasilia', 
@@ -74,7 +13,11 @@ const LOCAL_CITIES = [
   'rio-branco', 'porto-velho', 'boa-vista', 'macapa'
 ] as const;
 
-// Lista de slugs que são origem de redirects (não devem ir para o sitemap)
+const CORPORATE_CITIES = [
+    'sao-paulo', 'rio-de-janeiro', 'curitiba', 'belo-horizonte', 'porto-alegre', 'florianopolis', 'campinas'
+];
+
+// Lista de slugs de /guias que são origem de redirects (não devem ir para o sitemap)
 const REDIRECT_SOURCES = new Set([
   'ssd-vs-hd-qual-melhor', 'hds-vs-ssd-qual-a-diferenca', 'nvme-vs-sata-vale-a-pena-upgrade', 'ssd-nvme-vs-sata-jogos',
   'melhor-dns-para-jogos-google-vs-cloudflare', 'dns-mais-rapido-para-jogos-benchmark', 'debloating-windows-11',
@@ -89,68 +32,101 @@ const REDIRECT_SOURCES = new Set([
   'gta-v-como-resolver-texturas-sumindo-ou-demorando-para-carregar'
 ]);
 
-function getGuideRoutes(): { path: string; lastModified: Date }[] {
-  const guidesDir = path.join(process.cwd(), 'app', 'guias');
+// Diretórios que NUNCA devem ir para o sitemap
+const EXCLUDED_DIRS = new Set([
+    'api', 'dashboard', 'admin', 'auth', 'login', 'private', 'debug', 'test-commands', 
+    'debug-link', 'debug-commands', 'restricted-area-admin', 'reset-password', 'perfil',
+    'criar-test-users', 'processo', 'pix-limitacao', 'integracao-servicos',
+    'formatacao', 'formatacao-pc', 'voltris-optimizer', 'como-os-estudio-gravar-tela',
+    'gravacao-tela-windows-nativa-dicas'
+]);
 
-  try {
-    const entries = fs.readdirSync(guidesDir, { withFileTypes: true });
+interface RouteInfo {
+    path: string;
+    lastModified: Date;
+}
 
-    return entries
-      .filter((entry) => entry.isDirectory())
-      .map((entry) => {
-        const slug = entry.name;
-        if (slug.startsWith('_') || slug.startsWith('.')) return null;
-        if (REDIRECT_SOURCES.has(slug)) return null;
-        
-        const pageTsx = path.join(guidesDir, slug, 'page.tsx');
-        const pageJs = path.join(guidesDir, slug, 'page.js');
-        
-        if (!fs.existsSync(pageTsx) && !fs.existsSync(pageJs)) return null;
-        
-        // Get real modification time from filesystem
-        const filePath = fs.existsSync(pageTsx) ? pageTsx : pageJs;
-        const stats = fs.statSync(filePath);
-        const lastModified = stats.mtime;
-        
-        return {
-          path: `/guias/${slug}`,
-          lastModified
-        };
-      })
-      .filter((item): item is { path: string; lastModified: Date } => item !== null)
-      .sort((a, b) => a.path.localeCompare(b.path));
-  } catch {
-    // Never break sitemap endpoint due to filesystem/runtime issues.
-    return [];
-  }
+/**
+ * Varre recursivamente o diretório app procurando por page.tsx e page.js.
+ * Garante que 100% das páginas públicas sejam incluídas dinamicamente.
+ */
+function getAllAppRoutes(dir: string, basePath = ''): RouteInfo[] {
+    let results: RouteInfo[] = [];
+    
+    try {
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+        for (const entry of entries) {
+            const fullPath = path.join(dir, entry.name);
+            const routePath = basePath === '' ? `/${entry.name}` : `${basePath}/${entry.name}`;
+
+            if (entry.isDirectory()) {
+                // Pular pastas ocultas ou componentes
+                if (entry.name.startsWith('_') || entry.name.startsWith('.') || entry.name === 'components' || entry.name === 'lib') continue;
+                
+                // Pular diretórios excluídos
+                if (EXCLUDED_DIRS.has(entry.name)) continue;
+
+                // Pular pastas de rotas dinâmicas como [slug] (elas são injetadas manualmente)
+                if (entry.name.startsWith('[') && entry.name.endsWith(']')) continue;
+
+                // Se for a pasta guias, verificar se o slug não é source de redirect
+                if (basePath === '/guias' && REDIRECT_SOURCES.has(entry.name)) continue;
+
+                results = results.concat(getAllAppRoutes(fullPath, routePath));
+            } else if (entry.name === 'page.tsx' || entry.name === 'page.js') {
+                const stats = fs.statSync(fullPath);
+                
+                // A própria raiz (app/page.tsx)
+                const finalPath = basePath === '' ? '' : basePath;
+
+                // Evitar duplicações em casos estranhos
+                if (!results.find(r => r.path === finalPath)) {
+                    results.push({
+                        path: finalPath,
+                        lastModified: stats.mtime
+                    });
+                }
+            }
+        }
+    } catch (e) {
+        console.error('Erro lendo rotas para o sitemap:', e);
+    }
+    
+    return results;
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
-  const guideRoutes = getGuideRoutes();
-  const allRoutes = [
-    ...CRITICAL_ROUTES, 
-    ...guideRoutes,
-    ...LOCAL_CITIES.map(city => ({ path: `/tecnico-informatica-em/${city}`, lastModified: now }))
-  ];
+    const appDir = path.join(process.cwd(), 'app');
+    
+    // 1. Busca todas as rotas estáticas dinamicamente varrendo o HD
+    const autoRoutes = getAllAppRoutes(appDir);
+    
+    // 2. Injeta rotas dinâmicas conhecidas manualmente
+    const dynamicRoutes: RouteInfo[] = [
+        ...LOCAL_CITIES.map(city => ({ path: `/tecnico-informatica-em/${city}`, lastModified: NOW })),
+        ...CORPORATE_CITIES.map(city => ({ path: `/corporativo/suporte-ti-em/${city}`, lastModified: NOW }))
+    ];
 
-  return allRoutes.map((route) => {
-    const path = typeof route === 'string' ? route : route.path;
-    const lastModified = typeof route === 'string' ? now : route.lastModified;
+    const allRoutes = [...autoRoutes, ...dynamicRoutes];
 
-    return {
-      url: `${BASE_URL}${path}`,
-      lastModified,
-      changeFrequency: path === '' ? 'daily' : path.startsWith('/guias/') ? 'monthly' : 'weekly',
-      priority: path === '' ? 1
-        : path.startsWith('/guias/') ? 0.7
-        : path.startsWith('/exterior') ? 0.8
-        : path === '/otimizacao-windows-jogos' ? 0.95
-        : path.startsWith('/otimizar-windows-para-') ? 0.9
-        : path.startsWith('/como-') ? 0.85
-        : path.startsWith('/melhorar-performance-') ? 0.85
-        : path.startsWith('/voltrisoptimizer/') ? 0.88
-        : 0.9,
-    };
-  });
+    // Ordena para fins de clareza no XML gerado
+    allRoutes.sort((a, b) => a.path.localeCompare(b.path));
+
+    return allRoutes.map((route) => {
+        return {
+            url: `${BASE_URL}${route.path}`,
+            lastModified: route.lastModified,
+            changeFrequency: route.path === '' ? 'daily' : route.path.startsWith('/guias/') ? 'monthly' : 'weekly',
+            priority: route.path === '' ? 1
+                : route.path.startsWith('/guias/') ? 0.7
+                : route.path.startsWith('/exterior') ? 0.8
+                : route.path === '/otimizacao-windows-jogos' ? 0.95
+                : route.path.startsWith('/otimizar-windows-para-') ? 0.9
+                : route.path.startsWith('/como-') ? 0.85
+                : route.path.startsWith('/melhorar-performance-') ? 0.85
+                : route.path.startsWith('/voltrisoptimizer/') ? 0.88
+                : 0.9,
+        };
+    });
 }

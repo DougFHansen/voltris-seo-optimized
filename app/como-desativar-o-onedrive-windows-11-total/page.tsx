@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Desativar e Remover o OneDrive do Windows 11 (O Guia 2026)",
+  description: "O OneDrive está deixando seu PC lento? Aprenda a desativar a sincronização automática, remover o ícone do explorador de arquivos e desinstalar o OneDrive de forma definitiva."
+};
+
+
 export default function DesativarOneDrive() {
     const title = 'Como Desativar e Remover o OneDrive do Windows 11 (O Guia 2026)';
     const description = 'O OneDrive está deixando seu PC lento? Aprenda a desativar a sincronização automática, remover o ícone do explorador de arquivos e desinstalar o OneDrive de forma definitiva.';

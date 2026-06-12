@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Desativar Aplicativos em Segundo Plano no Windows 11 (2026)",
+  description: "Seu PC está sem memória RAM? Aprenda a desativar aplicativos que rodam escondidos no Windows 11. Guia completo sobre configurações de privacidade e otimização de segundo plano."
+};
+
+
 export default function DesativarAppsFundo() {
     const title = 'Como Desativar Aplicativos em Segundo Plano no Windows 11 (2026)';
     const description = 'Seu PC está sem memória RAM? Aprenda a desativar aplicativos que rodam escondidos no Windows 11. Guia completo sobre configurações de privacidade e otimização de segundo plano.';

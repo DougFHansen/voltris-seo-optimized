@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Desativar as Teclas de Aderência no Windows 11 (Permanentemente)",
+  description: "O popup de Teclas de Aderência aparece toda vez que você usa Shift? Aprenda a desativar permanentemente essa função de acessibilidade e nunca mais ser interrompido durante os seus jogos."
+};
+
+
 export default function StickyKeys() {
     const title = 'Como Desativar as Teclas de Aderência no Windows 11 (Permanentemente)';
     const description = 'O popup de Teclas de Aderência aparece toda vez que você usa Shift? Aprenda a desativar permanentemente essa função de acessibilidade e nunca mais ser interrompido durante os seus jogos.';

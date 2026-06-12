@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Ciência de Dados e Estatística (2026)",
+  description: "Acelere seu fluxo de trabalho no Python, R, PowerBI e Excel. Guia completo para cientistas de dados otimizarem o uso de RAM para grandes datasets e prioridade de CPU para cálculos pesados."
+};
+
+
 export default function OtimizarDataScience() {
     const title = 'Como Otimizar o Windows 11 para Ciência de Dados e Estatística (2026)';
     const description = 'Acelere seu fluxo de trabalho no Python, R, PowerBI e Excel. Guia completo para cientistas de dados otimizarem o uso de RAM para grandes datasets e prioridade de CPU para cálculos pesados.';

@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Melhorar a Saúde da Bateria do Notebook no Windows 11 (2026)",
+  description: "Aprenda a fazer a bateria do seu notebook durar mais. Guia completo sobre planos de energia personalizados, desativação de apps que drenam carga e como monitorar o desgaste da bateria."
+};
+
+
 export default function SaudeBateria() {
     const title = 'Como Melhorar a Saúde da Bateria do Notebook no Windows 11 (2026)';
     const description = 'Aprenda a fazer a bateria do seu notebook durar mais. Guia completo sobre planos de energia personalizados, desativação de apps que drenam carga e como monitorar o desgaste da bateria.';

@@ -1,4 +1,4 @@
-// Código gerado automaticamente para verificação O(1) de guias ativos no Middleware (Edge Runtime)
+﻿// CÃ³digo gerado automaticamente para verificaÃ§Ã£o O(1) de guias ativos no Middleware (Edge Runtime)
 // Gerado em: 2026-05-16T23:41:40.085Z
 
 export const VALID_CATEGORIES = new Set<string>([
@@ -130,7 +130,7 @@ export const VALID_GUIDE_SLUGS = new Set<string>([
     'god-of-war-pc-memory-leak-fix',
     'google-chrome-consumo-ram-fix',
     'google-play-games-pc-beta-vale-a-pena',
-    'gravação-tela-windows-nativa-dicas',
+    'gravaÃ§Ã£o-tela-windows-nativa-dicas',
     'gta-6-pc-configuracoes-requisitos',
     'gta-iv-complete-edition-lag-fix',
     'gta-iv-fix-windows-10-11',
@@ -359,3 +359,4 @@ export const VALID_GUIDE_SLUGS = new Set<string>([
     'z-index-css-explicacao',
     'zonas-mortas-analogico-controle-fix'
 ]);
+

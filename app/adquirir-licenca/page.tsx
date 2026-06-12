@@ -93,7 +93,6 @@ function AdquirirLicencaContent() {
 
     return (
         <main className="min-h-screen bg-gray-50 text-gray-900 font-sans selection:bg-[#31A8FF]/30 relative pb-20">
-
             {/* Global Ambient Background Effects */}
             <div className="fixed inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E')] opacity-10 brightness-100 contrast-150 mix-blend-overlay pointer-events-none z-50"></div>
 
@@ -502,6 +501,7 @@ export default function AdquirirLicencaPage() {
     return (
         <>
             <Header />
+            <h1 className="sr-only">Adquirir Licença Voltris Optimizer</h1>
             <Suspense fallback={<div className="min-h-screen bg-gray-50" />}>
                 <AdquirirLicencaContent />
             </Suspense>

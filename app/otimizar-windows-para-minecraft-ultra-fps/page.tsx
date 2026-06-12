@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows para Minecraft | FPS Ultra e Sem Lag (2026)",
+  description: "Seu Minecraft está travando? Aprenda a otimizar o Windows 11 para ganhar mais FPS no Minecraft Java e Bedrock, configurar os argumentos de memória e reduzir o input lag."
+};
+
+
 export default function MinecraftFPS() {
     const title = 'Como Otimizar o Windows para Minecraft | FPS Ultra e Sem Lag (2026)';
     const description = 'Seu Minecraft está travando? Aprenda a otimizar o Windows 11 para ganhar mais FPS no Minecraft Java e Bedrock, configurar os argumentos de memória e reduzir o input lag.';

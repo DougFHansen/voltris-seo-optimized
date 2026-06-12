@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Guia Definitivo de Privacidade do Windows 11 (2026) | Como se Proteger",
+  description: "Pare de ser rastreado pela Microsoft. Aprenda a desativar a telemetria, o histórico de atividades e as IDs de anúncio para ter um sistema 100% privado e mais rápido."
+};
+
+
 export default function GuiaPrivacidade() {
     const title = 'Guia Definitivo de Privacidade do Windows 11 (2026) | Como se Proteger';
     const description = 'Pare de ser rastreado pela Microsoft. Aprenda a desativar a telemetria, o histórico de atividades e as IDs de anúncio para ter um sistema 100% privado e mais rápido.';

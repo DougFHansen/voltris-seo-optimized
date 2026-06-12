@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Aumentar o Desempenho de Emuladores Android no Windows 11 (2026)",
+  description: "Seu Bluestacks ou LDPlayer está travando? Aprenda a otimizar o Windows para ganhar mais FPS em emuladores Android, configurar a virtualização corretamente e reduzir o consumo de RAM."
+};
+
+
 export default function EmuladorFPS() {
     const title = 'Como Aumentar o Desempenho de Emuladores Android no Windows 11 (2026)';
     const description = 'Seu Bluestacks ou LDPlayer está travando? Aprenda a otimizar o Windows para ganhar mais FPS em emuladores Android, configurar a virtualização corretamente e reduzir o consumo de RAM.';

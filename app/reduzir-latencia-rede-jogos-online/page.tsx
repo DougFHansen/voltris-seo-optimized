@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Reduzir a Latência de Rede (Ping) em Jogos Online no Windows 11 (2026)",
+  description: "Guia profissional para estabilizar seu sinal de rede. Aprenda a desativar o Algoritmo de Nagle, otimizar o TCP Ack Frequency e ajustar seu adaptador de rede para resposta instantânea em jogos como Valorant e CS2."
+};
+
+
 export default function LatenciaRede() {
     const title = 'Como Reduzir a Latência de Rede (Ping) em Jogos Online no Windows 11 (2026)';
     const description = 'Guia profissional para estabilizar seu sinal de rede. Aprenda a desativar o Algoritmo de Nagle, otimizar o TCP Ack Frequency e ajustar seu adaptador de rede para resposta instantânea em jogos como Valorant e CS2.';

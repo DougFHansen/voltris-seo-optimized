@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Descobrir Quem Está Usando sua Wi-Fi pelo Windows 11 (2026)",
+  description: "Sua internet está lenta? Aprenda a identificar dispositivos conectados na sua rede Wi-Fi usando o Windows. Guia completo sobre segurança de rede, comandos de rede e proteção DNS."
+};
+
+
 export default function WifiSecurity() {
     const title = 'Como Descobrir Quem Está Usando sua Wi-Fi pelo Windows 11 (2026)';
     const description = 'Sua internet está lenta? Aprenda a identificar dispositivos conectados na sua rede Wi-Fi usando o Windows. Guia completo sobre segurança de rede, comandos de rede e proteção DNS.';

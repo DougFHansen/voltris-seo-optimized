@@ -3,6 +3,7 @@ import { GuideTemplate } from '@/components/GuideTemplate';
 
 // Importamos os metadados do arquivo local
 import { title, description, keywords } from './metadata';
+export { metadata } from './metadata';
 
 export default function MelhoresProgramasOtimizarWindows() {
     const summaryTable = [

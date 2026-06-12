@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Remover Arquivos Duplicados no Windows 11 (Guia 2026)",
+  description: "Seu HD está cheio de arquivos repetidos? Aprenda a localizar e apagar fotos, vídeos e documentos duplicados de forma segura e automática no Windows 11."
+};
+
+
 export default function RemoverDuplicados() {
     const title = 'Como Remover Arquivos Duplicados no Windows 11 (Guia 2026)';
     const description = 'Seu HD está cheio de arquivos repetidos? Aprenda a localizar e apagar fotos, vídeos e documentos duplicados de forma segura e automática no Windows 11.';

@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para League of Legends (2026) | FPS Máximo",
+  description: "Sua partida de LoL está com lag? Aprenda a otimizar o Windows 11 para conseguir FPS estável no League of Legends, reduzir o ping e eliminar o travamento no client."
+};
+
+
 export default function LoLPerformance() {
     const title = 'Como Otimizar o Windows 11 para League of Legends (2026) | FPS Máximo';
     const description = 'Sua partida de LoL está com lag? Aprenda a otimizar o Windows 11 para conseguir FPS estável no League of Legends, reduzir o ping e eliminar o travamento no client.';

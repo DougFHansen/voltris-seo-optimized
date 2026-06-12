@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Corrigir o Mouse Acelerando Sozinho no Windows 11 (2026)",
+  description: "Seu cursor está se movendo de forma estranha ou acelerando sem controle? Aprenda a desativar a aceleração do mouse no Windows 11 para ter ponteiro 1:1 e maior precisão nos jogos."
+};
+
+
 export default function MouseAcceleration() {
     const title = 'Como Corrigir o Mouse Acelerando Sozinho no Windows 11 (2026)';
     const description = 'Seu cursor está se movendo de forma estranha ou acelerando sem controle? Aprenda a desativar a aceleração do mouse no Windows 11 para ter ponteiro 1:1 e maior precisão nos jogos.';

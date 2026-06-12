@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Otimizar o Windows 11 para Photoshop e Lightroom (2026)",
+  description: "Seu Photoshop está lento? Aprenda a configurar o disco de scratch, a GPU e a RAM para acelerar a edição de fotos no Windows 11 com o Adobe Photoshop e Lightroom Classic."
+};
+
+
 export default function PhotoshopPerformance() {
     const title = 'Como Otimizar o Windows 11 para Photoshop e Lightroom (2026)';
     const description = 'Seu Photoshop está lento? Aprenda a configurar o disco de scratch, a GPU e a RAM para acelerar a edição de fotos no Windows 11 com o Adobe Photoshop e Lightroom Classic.';

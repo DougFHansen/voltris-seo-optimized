@@ -1,6 +1,12 @@
 import React from 'react';
 import { GuideTemplate } from '@/components/GuideTemplate';
 
+export const metadata = {
+  title: "Como Limpar Arquivos Temporários Automaticamente no Windows 11 (2026)",
+  description: "Guia passo a passo para manter seu PC sempre limpo. Aprenda a configurar o Sensor de Armazenamento, criar scripts de limpeza via Agendador de Tarefas e usar o Voltris Ultra Cleaner para remoção profunda."
+};
+
+
 export default function LimpezaAutomatica() {
     const title = 'Como Limpar Arquivos Temporários Automaticamente no Windows 11 (2026)';
     const description = 'Guia passo a passo para manter seu PC sempre limpo. Aprenda a configurar o Sensor de Armazenamento, criar scripts de limpeza via Agendador de Tarefas e usar o Voltris Ultra Cleaner para remoção profunda.';
