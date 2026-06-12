@@ -74,32 +74,34 @@ export default function OptimizerMockup() {
             className="w-full relative z-10 glass-panel rounded-2xl p-4 md:p-8 transform transition-all duration-500 hover:scale-[1.01] border border-white/10 bg-[#0A0A0F]/60 backdrop-blur-xl shadow-2xl"
         >
             {/* Header of the fake app */}
-            <div className="flex items-start justify-between mb-4 md:mb-8 border-b border-white/5 pb-3 md:pb-4 gap-3">
-                <div className="flex items-center gap-3 shrink-0 min-w-0">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10">
+            <div className="flex items-start justify-between mb-4 md:mb-8 border-b border-white/5 pb-3 md:pb-4 gap-2 md:gap-3">
+                <div className="flex items-center gap-2 md:gap-3 flex-1 min-w-0">
+                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg flex items-center justify-center bg-white/5 border border-white/10 shrink-0">
                         <Image
                             src="/logo.png"
                             alt="Voltris Logo"
                             width={40}
                             height={40}
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain p-1 md:p-0"
                         />
                     </div>
-                    <div>
-                        <div className="font-extrabold text-xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_15px_rgba(139,49,255,0.4)]">Voltris Optimizer</div>
-                        <div className="text-xs text-slate-400 flex items-center gap-1.5">
-                            <span className="relative flex h-2 w-2">
+                    <div className="min-w-0 flex-1">
+                        <div className="font-extrabold text-base md:text-xl bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_15px_rgba(139,49,255,0.4)] truncate">Voltris Optimizer</div>
+                        <div className="text-[9px] md:text-xs text-slate-400 flex items-center gap-1.5 truncate">
+                            <span className="relative flex h-1.5 w-1.5 md:h-2 md:w-2 shrink-0">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00FF88]"></span>
+                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-[#00FF88]"></span>
                             </span>
-                            Otimização Ativa • <span className="text-slate-500 font-mono">{scannedCount} items verificados</span>
+                            <span className="truncate">
+                                Otimização Ativa <span className="hidden xs:inline">• <span className="text-slate-500 font-mono">{scannedCount} items</span></span>
+                            </span>
                         </div>
                     </div>
                 </div>
                 <a
                     href="/voltrisoptimizer"
                     onClick={() => notifyDownload('Mockup Download Click (Redirect to Page)')}
-                    className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-[10px] font-black uppercase tracking-wider hover:shadow-[0_0_30px_rgba(139,49,255,0.6)] transition-all shadow-lg relative overflow-hidden group border border-white/10 shrink-0"
+                    className="px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-[9px] md:text-[10px] font-black uppercase tracking-wider hover:shadow-[0_0_30px_rgba(139,49,255,0.6)] transition-all shadow-lg relative overflow-hidden group border border-white/10 shrink-0"
                 >
                     <span className="relative z-10 whitespace-nowrap">Download</span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
