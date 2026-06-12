@@ -8,7 +8,7 @@ import {
     FiAlertTriangle,
     FiShield,
 } from 'react-icons/fi';
-import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check, Briefcase } from "lucide-react";
+import { MonitorSmartphone, Laptop2, ShieldCheck, HardDrive, GaugeCircle, Database, Package, Printer, Cpu, Zap, Activity, ChevronRight, BarChart3, Lock, Wrench, Rocket, Check, Briefcase, Download } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
 import AboutSection from "./sections/AboutSection";
 import ServicesSection from "./sections/ServicesSection";
@@ -72,6 +72,25 @@ export default function HomeServer() {
                         "@type": "AggregateRating",
                         "ratingValue": "4.9",
                         "reviewCount": "1250"
+                    }
+                }}
+            />
+            <JsonLd
+                type="Service"
+                data={{
+                    name: "Suporte Técnico Remoto e Formatação",
+                    description: "Serviços especializados de TI, formatação de Windows, otimização de computadores e remoção de vírus com atendimento imediato via acesso remoto.",
+                    provider: {
+                        "@type": "Organization",
+                        "name": "VOLTRIS",
+                        "url": "https://www.voltris.com.br"
+                    },
+                    serviceType: "Suporte Técnico de Informática",
+                    areaServed: { "@type": "Country", "name": "Brasil" },
+                    offers: {
+                        "@type": "Offer",
+                        "price": "100.00",
+                        "priceCurrency": "BRL"
                     }
                 }}
             />
@@ -151,36 +170,39 @@ export default function HomeServer() {
                             <div className="flex flex-col items-center lg:items-start gap-3 lg:gap-6 w-full order-1">
                                 <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-xl mb-2">
                                     <span className="flex h-2 w-2 rounded-full bg-[#00FF88] shadow-[0_0_12px_rgba(0,255,136,0.8)] animate-pulse"></span>
-                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Voltris Engine v4.0 • IA Inteligente Ativa</span>
+                                    <span className="text-xs font-black uppercase tracking-[0.2em] text-white/70">Software Inteligente & Especialistas Reais</span>
                                 </div>
 
-                                <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4">
-                                    <span className="text-gradient-premium">Otimização de Windows com IA</span> <br className="hidden lg:block" />
-                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Máximo Desempenho</span>
+                                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tight font-sans lg:mt-4">
+                                    <span className="text-gradient-premium">Seu PC Mais Rápido.</span> <br className="hidden lg:block" />
+                                    <span className="bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-transparent bg-clip-text drop-shadow-[0_0_30px_rgba(139,49,255,0.3)]">Sem Complicações.</span>
                                 </h1>
 
                                 <p className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed font-medium px-2 sm:px-0">
-                                    Deixe seu Windows <strong className="text-white">até 84% mais rápido</strong> e livre de travamentos. Baixe o <strong className="text-white">Voltris Optimizer</strong> ou agende um suporte técnico profissional com garantia de satisfação.
+                                    Aumente o FPS em jogos e acabe com a lentidão. Otimize sozinho usando nosso software <strong className="text-white">Voltris Optimizer</strong> ou deixe que nossos <strong className="text-white">Especialistas</strong> façam tudo por você de forma remota.
                                 </p>
                             </div>
 
                             {/* Buttons Block */}
                             <div className="flex flex-col sm:flex-row gap-4 lg:gap-5 w-full sm:w-auto z-30 order-3">
                                 <a
-                                    href="/todos-os-servicos"
-                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:border-white/20 hover:bg-white/10 overflow-hidden glow-border"
+                                    href="/voltrisoptimizer"
+                                    className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-white transition-all duration-300 bg-gradient-to-r from-[#31A8FF] to-[#8B31FF] rounded-2xl hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(49,168,255,0.4)] overflow-hidden"
                                 >
                                     <span className="relative z-10 flex items-center gap-2 uppercase tracking-widest text-xs">
-                                        Explorar Serviços
-                                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        Baixar Optimizer
+                                        <Download className="w-4 h-4 transition-transform group-hover:translate-y-1" />
                                     </span>
                                 </a>
                                 <a
-                                    href="https://wa.me/5511996716235"
+                                    href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20remotos%20de%20suporte%20e%20otimiza%C3%A7%C3%A3o"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-black text-slate-900 transition-all duration-300 bg-white rounded-2xl hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] uppercase tracking-widest text-xs"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-black text-white transition-all duration-300 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 uppercase tracking-widest text-xs"
                                 >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" className="mr-2">
+                                        <path d="M17.472 14.387c-.3-.1-1.7-.8-1.9-1.4-.3-.5-.1-.8.2-1.1.3-.3.6-.7.9-1.1.3-.4.4-.5.6-.5.2 0 .4-.1.5-.4.1-.3 0-.8-.4-1.5-.5-.8-1.4-2.1-2.6-2.1-1.3 0-2.1.8-2.9 1.6-.8.8-1.3 1.3-2.5 1.3-.8 0-1.4-.4-1.9-.9-.5-.5-.7-.7-1.2-1.1 0 0-.4-.3-.6-.8-.2-.5-.6-1.5-.6-2.9 0-1.4.9-2.7 2.1-3.7 1.1-1 2.5-1.6 4.1-1.6 1.7 0 3.1.6 4.2 1.6 1 .9 1.6 2.1 1.6 3.5 0 1.4-.6 2.6-1.6 3.4zm-6.5-3.2c.2 1.1.8 2 1.6 2.6.9.6 2.1.9 3.2.9 1.1 0 2.3-.3 3.2-.9.8-.6 1.4-1.5 1.6-2.6.2-1.1-.1-2.3-.7-3.2-.6-.8-1.5-1.4-2.6-1.6-1.1-.2-2.3.1-3.2.7-.8.6-1.4 1.5-1.6 2.6z" />
+                                    </svg>
                                     Falar com Especialista
                                 </a>
                             </div>
@@ -198,53 +220,56 @@ export default function HomeServer() {
 
                 <AboutSection />
                 
-                {/* --- VERTICAL SELECTOR (SILO ENTRY POINTS) --- */}
+                {/* --- CHOOSE YOUR PATH (SOFTWARE VS SERVICE) --- */}
                 <section className="py-24 px-4 bg-[#050508] relative overflow-hidden border-y border-white/5">
-                    <div className="max-w-7xl mx-auto relative z-10">
+                    <div className="max-w-5xl mx-auto relative z-10">
                         <div className="text-center mb-16">
-                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Como podemos <span className="text-blue-500">potencializar seu dia?</span></h2>
-                            <p className="text-slate-400 max-w-2xl mx-auto">Selecione seu perfil e acesse soluções personalizadas para sua necessidade real.</p>
+                            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Escolha a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Sua Solução</span></h2>
+                            <p className="text-slate-400 max-w-2xl mx-auto">Você prefere que o software faça tudo automaticamente ou deseja a intervenção e análise de um especialista humano?</p>
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {/* Silo Gamer */}
-                            <Link href="/gamer" className="group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 hover:border-purple-500/50 transition-all overflow-hidden">
-                                <div className="absolute -top-20 -right-20 w-40 h-40 bg-purple-600/20 blur-[60px] rounded-full group-hover:bg-purple-600/40 transition-all"></div>
-                                <div className="mb-6 p-4 rounded-2xl bg-purple-600/10 text-purple-400 inline-block">
-                                    <Rocket className="w-8 h-8" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {/* Software Option */}
+                            <div className="group relative p-10 rounded-[2.5rem] bg-[#0A0A0F] border border-blue-500/20 hover:border-blue-500/50 transition-all overflow-hidden flex flex-col items-center text-center">
+                                <div className="absolute inset-0 bg-gradient-to-b from-blue-600/5 to-transparent pointer-events-none" />
+                                <div className="mb-6 p-4 rounded-full bg-blue-500/10 text-blue-400">
+                                    <Rocket className="w-10 h-10" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Performance Gamer</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed mb-8">Otimização extrema de FPS, redução de input lag e tuning para eSports.</p>
-                                <div className="flex items-center gap-2 text-purple-400 font-bold text-sm">
-                                    Explorar Performance <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <h3 className="text-3xl font-black text-white mb-4">Voltris Optimizer</h3>
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold text-white mb-6">
+                                    FAÇA VOCÊ MESMO
                                 </div>
-                            </Link>
+                                <p className="text-slate-400 mb-8 leading-relaxed">Software inteligente para otimização automática. Você instala, clica e o sistema acelera seu Windows e seus jogos sem precisar entender de TI.</p>
+                                <ul className="space-y-3 mb-10 w-full text-left text-sm text-slate-300">
+                                    <li className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> Licença a partir de R$ 49,90</li>
+                                    <li className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> 1-Clique para otimizar</li>
+                                    <li className="flex items-center gap-2"><Check className="text-blue-500 w-4 h-4" /> Aumento extremo de FPS</li>
+                                </ul>
+                                <Link href="/voltrisoptimizer" className="mt-auto w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold transition-all text-center tracking-wide uppercase text-sm">
+                                    Conhecer o Software
+                                </Link>
+                            </div>
 
-                            {/* Silo Corporativo */}
-                            <Link href="/corporativo" className="group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 hover:border-blue-500/50 transition-all overflow-hidden">
-                                <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-600/20 blur-[60px] rounded-full group-hover:bg-blue-600/40 transition-all"></div>
-                                <div className="mb-6 p-4 rounded-2xl bg-blue-600/10 text-blue-400 inline-block">
-                                    <Briefcase className="w-8 h-8" />
+                            {/* Service Option */}
+                            <div className="group relative p-10 rounded-[2.5rem] bg-[#0A0A0F] border border-emerald-500/20 hover:border-emerald-500/50 transition-all overflow-hidden flex flex-col items-center text-center">
+                                <div className="absolute inset-0 bg-gradient-to-b from-emerald-600/5 to-transparent pointer-events-none" />
+                                <div className="mb-6 p-4 rounded-full bg-emerald-500/10 text-emerald-400">
+                                    <Briefcase className="w-10 h-10" />
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Soluções Corporativas</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed mb-8">Infraestrutura, suporte gerenciado, segurança LGPD e contratos mensais.</p>
-                                <div className="flex items-center gap-2 text-blue-400 font-bold text-sm">
-                                    Explorar Soluções B2B <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                <h3 className="text-3xl font-black text-white mb-4">Suporte & Formatação</h3>
+                                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 text-xs font-bold text-white mb-6">
+                                    DEIXE COM A GENTE
                                 </div>
-                            </Link>
-
-                            {/* Silo Home */}
-                            <Link href="/home" className="group relative p-8 rounded-[2.5rem] bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 hover:border-emerald-500/50 transition-all overflow-hidden">
-                                <div className="absolute -top-20 -right-20 w-40 h-40 bg-emerald-600/20 blur-[60px] rounded-full group-hover:bg-emerald-600/40 transition-all"></div>
-                                <div className="mb-6 p-4 rounded-2xl bg-emerald-600/10 text-emerald-400 inline-block">
-                                    <Laptop2 className="w-8 h-8" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-white mb-4">Suporte Residencial</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed mb-8">Suporte remoto residencial, formatação, limpeza e resolução de problemas.</p>
-                                <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm">
-                                    Acessar Suporte <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </div>
-                            </Link>
+                                <p className="text-slate-400 mb-8 leading-relaxed">Agende um atendimento. Nossos técnicos assumem o controle remotamente, formatam, tiram vírus e otimizam seu computador do zero com garantia.</p>
+                                <ul className="space-y-3 mb-10 w-full text-left text-sm text-slate-300">
+                                    <li className="flex items-center gap-2"><Check className="text-emerald-500 w-4 h-4" /> Atendimento humano premium</li>
+                                    <li className="flex items-center gap-2"><Check className="text-emerald-500 w-4 h-4" /> Formatação e Otimização Profunda</li>
+                                    <li className="flex items-center gap-2"><Check className="text-emerald-500 w-4 h-4" /> Você não faz absolutamente nada</li>
+                                </ul>
+                                <Link href="/todos-os-servicos" className="mt-auto w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-all text-center tracking-wide uppercase text-sm">
+                                    Ver Nossos Serviços
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </section>

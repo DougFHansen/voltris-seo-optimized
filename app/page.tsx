@@ -3,8 +3,8 @@ import HomeServer from '@/components/HomeServer';
 import HomeClient from '@/components/HomeClient';
 
 export const metadata: Metadata = {
-  title: 'Voltris Optimizer | Otimização de PC e Suporte de TI Remoto',
-  description: 'Software para otimização de PC (aumente FPS e reduza lag). Suporte técnico remoto especializado para empresas e gamers em todo o Brasil. Atendimento imediato.',
+  title: 'Voltris | Otimizador de PC e Suporte Técnico Remoto Especializado',
+  description: 'Aumente o FPS com nosso Software (Voltris Optimizer) ou agende Formatação e Otimização Remota com especialistas reais. Atendimento online em todo o Brasil.',
   keywords: [
     'voltris optimizer',
     'otimização de pc',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     'otimizar pc gamer'
   ],
   openGraph: {
-    title: 'Voltris Optimizer | Performance e Suporte de TI Avançado',
-    description: 'Aumente o FPS do seu jogo ou a produtividade da sua empresa com nosso software e suporte remoto especializado.',
+    title: 'Voltris | Otimizador de PC e Suporte Técnico Remoto Especializado',
+    description: 'Aumente o FPS em jogos com nosso Software ou resolva problemas instantaneamente com nosso Suporte Remoto Profissional.',
     url: 'https://www.voltris.com.br',
     siteName: 'Voltris',
     locale: 'pt_BR',
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Voltris Optimizer | Performance e Suporte de TI Avançado',
-    description: 'Aumente o FPS do seu jogo ou a produtividade da sua empresa com nosso software de otimização remota.',
+    title: 'Voltris | Otimizador de PC e Suporte Técnico Remoto Especializado',
+    description: 'Aumente o FPS em jogos com nosso Software ou resolva problemas instantaneamente com nosso Suporte Remoto Profissional.',
     creator: '@voltris',
   },
   alternates: {
