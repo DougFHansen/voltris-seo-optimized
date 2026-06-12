@@ -101,9 +101,9 @@ export default function OptimizerMockup() {
                 <a
                     href="/voltrisoptimizer"
                     onClick={() => notifyDownload('Mockup Download Click (Redirect to Page)')}
-                    className="px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-[9px] md:text-[10px] font-black uppercase tracking-wider hover:shadow-[0_0_30px_rgba(139,49,255,0.6)] transition-all shadow-lg relative overflow-hidden group border border-white/10 shrink-0"
+                    className="flex items-center justify-center h-7 px-3 md:h-8 md:px-4 rounded-lg bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white text-[9px] md:text-[10px] font-black uppercase tracking-wider hover:shadow-[0_0_30px_rgba(139,49,255,0.6)] transition-all shadow-lg relative overflow-hidden group border border-white/10 shrink-0"
                 >
-                    <span className="relative z-10 whitespace-nowrap">Download</span>
+                    <span className="relative z-10 whitespace-nowrap leading-none">Download</span>
                     <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                 </a>
             </div>
