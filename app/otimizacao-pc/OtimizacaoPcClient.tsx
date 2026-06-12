@@ -15,9 +15,7 @@ import {
     Gamepad2,
     Download,
     ArrowRight,
-    ChevronRight,
-    MessageCircle,
-    Phone
+    ChevronRight
 } from 'lucide-react';
 import Header from '@/components/Header';
 import dynamic from 'next/dynamic';
@@ -135,11 +133,13 @@ export default function OtimizacaoPcClient() {
                                     <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                                 <Link
-                                    href="https://wa.me/5511996716235"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+                                    href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20otimiza%C3%A7%C3%A3o%20de%20computador"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
                                 >
-                                    <MessageCircle className="mr-2" />
-                                    Falar no WhatsApp
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" className="mr-2">
+                                        <path d="M17.472 14.387c-.3-.1-1.7-.8-1.9-1.4-.3-.5-.1-.8.2-1.1.3-.3.6-.7.9-1.1.3-.4.4-.5.6-.5.2 0 .4-.1.5-.4.1-.3 0-.8-.4-1.5-.5-.8-1.4-2.1-2.6-2.1-1.3 0-2.1.8-2.9 1.6-.8.8-1.3 1.3-2.5 1.3-.8 0-1.4-.4-1.9-.9-.5-.5-.7-.7-1.2-1.1 0 0-.4-.3-.6-.8-.2-.5-.6-1.5-.6-2.9 0-1.4.9-2.7 2.1-3.7 1.1-1 2.5-1.6 4.1-1.6 1.7 0 3.1.6 4.2 1.6 1 .9 1.6 2.1 1.6 3.5 0 1.4-.6 2.6-1.6 3.4zm-6.5-3.2c.2 1.1.8 2 1.6 2.6.9.6 2.1.9 3.2.9 1.1 0 2.3-.3 3.2-.9.8-.6 1.4-1.5 1.6-2.6.2-1.1-.1-2.3-.7-3.2-.6-.8-1.5-1.4-2.6-1.6-1.1-.2-2.3.1-3.2.7-.8.6-1.4 1.5-1.6 2.6z" />
+                                    </svg>
+                                    Falar com Especialista
                                 </Link>
                             </div>
 
@@ -421,7 +421,7 @@ export default function OtimizacaoPcClient() {
                             </div>
                         </Link>
 
-                        <Link href="/assistencia-tecnica" className="group relative bg-white border border-gray-200 hover:border-purple-300 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
+                        <Link href="/formatar-windows" className="group relative bg-white border border-gray-200 hover:border-purple-300 rounded-3xl p-1 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-lg">
                             <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                             <div className="relative h-full bg-gray-50 rounded-[20px] p-8 flex flex-col items-start overflow-hidden">
                                 <div className="w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center mb-8 group-hover:bg-purple-100 group-hover:border-purple-200 transition-all duration-300 shadow-sm">
@@ -429,9 +429,9 @@ export default function OtimizacaoPcClient() {
                                         <Wrench className="w-8 h-8" />
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">Assistência Técnica</h3>
+                                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:via-purple-600 group-hover:to-pink-600 transition-all">Suporte Técnico Remoto</h3>
                                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                                    Reparo de hardware e manutenção preventiva
+                                    Resolução de problemas online de forma rápida e segura
                                 </p>
                                 <div className="mt-auto w-full pt-6 border-t border-gray-200 flex items-center justify-between">
                                     <span className="text-purple-600 text-sm font-medium">Saiba mais</span>
@@ -483,11 +483,13 @@ export default function OtimizacaoPcClient() {
                             <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                         <Link
-                            href="tel:+5511996716235"
-                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-gray-900 transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+                            href="https://wa.me/5511996716235?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20otimiza%C3%A7%C3%A3o%20de%20computador"
+                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-[#050510] transition-all duration-200 bg-[#00FF94] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
                         >
-                            <Phone className="mr-2" />
-                            (11) 99671-6235
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" className="mr-2">
+                                <path d="M17.472 14.387c-.3-.1-1.7-.8-1.9-1.4-.3-.5-.1-.8.2-1.1.3-.3.6-.7.9-1.1.3-.4.4-.5.6-.5.2 0 .4-.1.5-.4.1-.3 0-.8-.4-1.5-.5-.8-1.4-2.1-2.6-2.1-1.3 0-2.1.8-2.9 1.6-.8.8-1.3 1.3-2.5 1.3-.8 0-1.4-.4-1.9-.9-.5-.5-.7-.7-1.2-1.1 0 0-.4-.3-.6-.8-.2-.5-.6-1.5-.6-2.9 0-1.4.9-2.7 2.1-3.7 1.1-1 2.5-1.6 4.1-1.6 1.7 0 3.1.6 4.2 1.6 1 .9 1.6 2.1 1.6 3.5 0 1.4-.6 2.6-1.6 3.4zm-6.5-3.2c.2 1.1.8 2 1.6 2.6.9.6 2.1.9 3.2.9 1.1 0 2.3-.3 3.2-.9.8-.6 1.4-1.5 1.6-2.6.2-1.1-.1-2.3-.7-3.2-.6-.8-1.5-1.4-2.6-1.6-1.1-.2-2.3.1-3.2.7-.8.6-1.4 1.5-1.6 2.6z" />
+                            </svg>
+                            Falar com Especialista
                         </Link>
                     </div>
                 </div>

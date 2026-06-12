@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Phone, MapPin, CheckCircle2, Star, Clock, Shield, CreditCard, MessageCircle, Zap, Wrench, Monitor, ChevronRight } from 'lucide-react';
+import { Phone, MapPin, CheckCircle2, Star, Clock, Shield, CreditCard, Zap, Wrench, Monitor, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header';
 import DOMPurify from 'isomorphic-dompurify';
 import dynamic from 'next/dynamic';
@@ -31,7 +31,7 @@ export default function FormatarWindowsClient() {
     const pricingPlans = [
         {
             name: "Formatação Básica",
-            price: "R$ 120",
+            price: "R$ 100",
             features: [
                 "Instalação limpa do Windows",
                 "Atualizações essenciais",
@@ -41,7 +41,7 @@ export default function FormatarWindowsClient() {
         },
         {
             name: "Formatação Premium",
-            price: "R$ 180",
+            price: "R$ 150",
             features: [
                 "Tudo da básica +",
                 "Todos os drivers atualizados",
@@ -101,10 +101,12 @@ export default function FormatarWindowsClient() {
                                 </Link>
                                 <Link
                                     href="https://wa.me/5511996716235"
-                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+                                    className="inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-[#00FF94] text-[#050510] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
                                 >
-                                    <MessageCircle className="mr-2" size={20} />
-                                    (11) 99671-6235
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" className="mr-2">
+                                        <path d="M17.472 14.387c-.3-.1-1.7-.8-1.9-1.4-.3-.5-.1-.8.2-1.1.3-.3.6-.7.9-1.1.3-.4.4-.5.6-.5.2 0 .4-.1.5-.4.1-.3 0-.8-.4-1.5-.5-.8-1.4-2.1-2.6-2.1-1.3 0-2.1.8-2.9 1.6-.8.8-1.3 1.3-2.5 1.3-.8 0-1.4-.4-1.9-.9-.5-.5-.7-.7-1.2-1.1 0 0-.4-.3-.6-.8-.2-.5-.6-1.5-.6-2.9 0-1.4.9-2.7 2.1-3.7 1.1-1 2.5-1.6 4.1-1.6 1.7 0 3.1.6 4.2 1.6 1 .9 1.6 2.1 1.6 3.5 0 1.4-.6 2.6-1.6 3.4zm-6.5-3.2c.2 1.1.8 2 1.6 2.6.9.6 2.1.9 3.2.9 1.1 0 2.3-.3 3.2-.9.8-.6 1.4-1.5 1.6-2.6.2-1.1-.1-2.3-.7-3.2-.6-.8-1.5-1.4-2.6-1.6-1.1-.2-2.3.1-3.2.7-.8.6-1.4 1.5-1.6 2.6z" />
+                                    </svg>
+                                    Falar com Suporte
                                 </Link>
                             </div>
 
@@ -375,10 +377,12 @@ export default function FormatarWindowsClient() {
                         </Link>
                         <Link
                             href="https://wa.me/5511996716235"
-                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-emerald-500 rounded-lg hover:bg-emerald-600 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500"
+                            className="inline-flex items-center justify-center px-8 py-4 font-semibold text-white transition-all duration-200 bg-[#00FF94] text-[#050510] rounded-lg hover:bg-[#00CC76] hover:shadow-[0_0_20px_rgba(0,255,148,0.4)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00FF94]"
                         >
-                            <MessageCircle className="mr-2" size={20} />
-                            (11) 99671-6235
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" className="mr-2">
+                                <path d="M17.472 14.387c-.3-.1-1.7-.8-1.9-1.4-.3-.5-.1-.8.2-1.1.3-.3.6-.7.9-1.1.3-.4.4-.5.6-.5.2 0 .4-.1.5-.4.1-.3 0-.8-.4-1.5-.5-.8-1.4-2.1-2.6-2.1-1.3 0-2.1.8-2.9 1.6-.8.8-1.3 1.3-2.5 1.3-.8 0-1.4-.4-1.9-.9-.5-.5-.7-.7-1.2-1.1 0 0-.4-.3-.6-.8-.2-.5-.6-1.5-.6-2.9 0-1.4.9-2.7 2.1-3.7 1.1-1 2.5-1.6 4.1-1.6 1.7 0 3.1.6 4.2 1.6 1 .9 1.6 2.1 1.6 3.5 0 1.4-.6 2.6-1.6 3.4zm-6.5-3.2c.2 1.1.8 2 1.6 2.6.9.6 2.1.9 3.2.9 1.1 0 2.3-.3 3.2-.9.8-.6 1.4-1.5 1.6-2.6.2-1.1-.1-2.3-.7-3.2-.6-.8-1.5-1.4-2.6-1.6-1.1-.2-2.3.1-3.2.7-.8.6-1.4 1.5-1.6 2.6z" />
+                            </svg>
+                            Falar com Suporte
                         </Link>
                     </div>
                 </div>

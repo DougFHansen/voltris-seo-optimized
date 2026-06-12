@@ -37,7 +37,7 @@ export default function WindowsFormattingPage() {
           areaServed: { "@type": "Country", "name": "Brasil" },
           offers: {
             "@type": "Offer",
-            "price": "120.00",
+            "price": "100.00",
             "priceCurrency": "BRL"
           }
         }}
