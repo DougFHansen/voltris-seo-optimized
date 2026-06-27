@@ -582,14 +582,14 @@ export default function OptimizerClient() {
                                 <div className="flex items-center gap-2">
                                     <span className="text-xs text-gray-500 font-medium">Versão Atual:</span>
                                     <span className="px-2.5 py-1 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-md text-xs font-bold text-blue-600">
-                                        v1.0.1.5
+                                        v1.0.2.0
                                     </span>
                                 </div>
 
                                 <div className="flex flex-col sm:flex-row items-start gap-5 justify-center w-full">
                                     <div className="flex flex-col w-full gap-2">
                                         <a
-                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe"
+                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.0/VoltrisOptimizerInstaller.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x64)')}
                                             className="group relative w-full px-6 py-3 bg-gradient-to-r from-[#31A8FF] via-[#8B31FF] to-[#FF4B6B] text-white font-bold text-base rounded-lg overflow-hidden transition-all duration-300 transform hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(139,49,255,0.4)] flex items-center justify-center gap-2"
                                         >
@@ -603,7 +603,7 @@ export default function OptimizerClient() {
                                             </span>
                                         </div>
                                         <a
-                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstallerX86.exe"
+                                            href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.0/VoltrisOptimizerInstallerX86.exe"
                                             onClick={() => notifyDownload('Voltris Optimizer Installer (x86)')}
                                             className="mt-1 text-[10px] text-gray-600 hover:text-blue-600 transition-colors text-center font-medium block"
                                         >
@@ -2018,12 +2018,12 @@ export default function OptimizerClient() {
                             <div className="flex items-center gap-2 mb-2">
                                 <span className="text-xs text-gray-500 font-medium">Versão Atual:</span>
                                 <span className="px-2.5 py-1 bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 rounded-md text-xs font-bold text-blue-600">
-                                    v1.0.1.5
+                                    v1.0.2.0
                                 </span>
                             </div>
                             <div className="flex flex-col items-center gap-2 w-full max-w-sm">
                                 <a
-                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstaller.exe"
+                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.0/VoltrisOptimizerInstaller.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x64) - Bottom CTA')}
                                     className="inline-flex items-center gap-4 w-full justify-center px-12 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-black text-xl rounded-2xl hover:scale-105 hover:shadow-[0_0_80px_rgba(139,49,255,0.4)] transition-all duration-300"
                                 >
@@ -2031,7 +2031,7 @@ export default function OptimizerClient() {
                                     BAIXAR SOFTWARE
                                 </a>
                                 <a
-                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.1.5/VoltrisOptimizerInstallerX86.exe"
+                                    href="https://github.com/DougFHansen/Download-Voltris-Optimizer/releases/download/v1.0.2.0/VoltrisOptimizerInstallerX86.exe"
                                     onClick={() => notifyDownload('Voltris Optimizer Installer (x86) - Bottom CTA')}
                                     className="text-sm text-gray-500 hover:text-blue-600 transition-colors font-medium border-b border-transparent hover:border-blue-600"
                                 >
