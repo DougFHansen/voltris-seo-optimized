@@ -87,7 +87,7 @@ function AdquirirLicencaContent() {
     };
 
     const prices = {
-        month: { standard: '9.90', pro: '69.90', enterprise: '299.90' },
+        month: { standard: '4.99', pro: '15.00', enterprise: '299.90' },
         year: { standard: '79.90', pro: '149.90', enterprise: '1,099.90' }
     };
 

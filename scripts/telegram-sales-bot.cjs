@@ -14,8 +14,8 @@ const https = require('https');
 // Configuração dos planos e preços
 const PRICES = {
   month: {
-    Standard: '9,90',
-    Pro: '69,90',
+    Standard: '4,99',
+    Pro: '15,00',
     Enterprise: '299,90',
   },
   year: {

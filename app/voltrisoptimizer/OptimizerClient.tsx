@@ -1865,7 +1865,7 @@ export default function OptimizerClient() {
                                 <div className="mb-8">
                                     <div className="text-sm text-blue-400 line-through">De R$ 98,90</div>
                                     <div className="text-5xl font-black text-white flex items-end gap-1">
-                                        R$ 69,90<span className="text-lg text-blue-200 font-medium pb-1">/Mês</span>
+                                        R$ 15,00<span className="text-lg text-blue-200 font-medium pb-1">/Mês</span>
                                     </div>
                                     <div className="text-xs text-blue-300 mt-2 font-bold uppercase tracking-widest">Assinatura Mensal. Cancele quando quiser.</div>
                                 </div>
