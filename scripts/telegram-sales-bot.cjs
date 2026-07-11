@@ -19,8 +19,8 @@ const PRICES = {
     Enterprise: '299,90',
   },
   year: {
-    Standard: '79,90',
-    Pro: '149,90',
+    Standard: '29,90',
+    Pro: '59,90',
     Enterprise: '1.099,90',
   },
 };

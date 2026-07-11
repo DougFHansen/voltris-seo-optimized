@@ -8,11 +8,11 @@ const PRICE_MAP: Record<string, any> = {
   // Licenças (Assinaturas)
   standard: {
     month: { name: 'Licença Standard Mensal', amount: 4.99, mode: 'subscription' },
-    year:  { name: 'Licença Standard Anual',  amount: 79.90, mode: 'subscription' },
+    year:  { name: 'Licença Standard Anual',  amount: 29.90, mode: 'subscription' },
   },
   pro: {
     month: { name: 'Licença Pro Gamer Mensal', amount: 15.00, mode: 'subscription' },
-    year:  { name: 'Licença Pro Gamer Anual',  amount: 149.90, mode: 'subscription' },
+    year:  { name: 'Licença Pro Gamer Anual',  amount: 59.90, mode: 'subscription' },
   },
   enterprise: {
     month: { name: 'Licença Enterprise Mensal', amount: 299.90, mode: 'subscription' },
