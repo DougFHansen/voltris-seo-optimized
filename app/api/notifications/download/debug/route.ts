@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { TelegramService } from '@/services/telegramService';
+import { requireAdmin } from '@/utils/supabase/requireAdmin';
 
 /**
  * GET /api/notifications/download/debug
  * Rota de diagnóstico para testar a comunicação com o Telegram
  */
 export async function GET(req: NextRequest) {
+  // SEGURANÇA: diagnóstico expõe prefixo do token e chatId — somente administradores
+  const admin = await requireAdmin();
+  if (admin.error) return admin.error;
+
   const token = (process.env.TELEGRAM_BOT_TOKEN || "").replace(/['"]/g, "").trim();
   const chatId = (process.env.TELEGRAM_CHAT_ID || "").replace(/['"]/g, "").trim();
 

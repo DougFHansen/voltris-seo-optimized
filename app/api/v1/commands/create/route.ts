@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { getOptionalSessionUser } from '@/utils/supabase/ownership';
 
 export const runtime = 'nodejs';
 
@@ -77,6 +78,13 @@ export async function POST(request: NextRequest) {
 
         if (installError || !installation) {
             return NextResponse.json({ error: 'Installation not found' }, { status: 404 });
+        }
+
+        // SEGURANÇA: se o chamador estiver autenticado (dashboard web), só pode criar
+        // comandos para instalações da própria conta. Desktop sem sessão segue normal.
+        const sessionUser = await getOptionalSessionUser();
+        if (sessionUser && installation.user_id && installation.user_id !== sessionUser.id) {
+            return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
         }
 
         // Sanitizar payload — aceitar apenas objetos simples

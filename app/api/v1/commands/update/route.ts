@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextRequest, NextResponse } from 'next/server';
+import { commandOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
 
 export async function POST(req: NextRequest) {
     try {
@@ -15,6 +16,18 @@ export async function POST(req: NextRequest) {
             console.error('[API/COMMANDS/UPDATE] Parâmetros inválidos!');
             return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
         }
+
+        // SEGURANÇA: validar status permitido (o desktop reporta resultados
+        // apenas destes estados, evitando gravação de valores arbitrários).
+        const ALLOWED_STATUS = ['pending', 'running', 'completed', 'success', 'failed', 'error', 'cancelled'];
+        if (typeof status !== 'string' || !ALLOWED_STATUS.includes(status)) {
+            return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
+        }
+
+        // SEGURANÇA: se o chamador estiver autenticado, só pode atualizar comandos
+        // de instalações da própria conta. Desktop sem sessão segue normal.
+        const ownershipError = await commandOwnershipErrorIfAuthenticated(command_id);
+        if (ownershipError) return ownershipError;
 
         const supabaseAdmin = createClient(
             process.env.NEXT_PUBLIC_SUPABASE_URL!,

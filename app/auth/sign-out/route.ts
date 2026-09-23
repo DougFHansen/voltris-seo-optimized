@@ -8,8 +8,8 @@ export async function POST(request: Request) {
 
   await supabase.auth.signOut()
 
-  // Redirect to the login page after signing out
+  // Redirect to the login page after signing out (303 See Other — POST → GET)
   return NextResponse.redirect(`${requestUrl.origin}/login`, {
-    status: 301,
+    status: 303,
   })
 } 

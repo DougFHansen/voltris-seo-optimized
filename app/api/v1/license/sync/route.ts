@@ -12,16 +12,10 @@ export async function POST() {
         {
             success: true,
             status: 'ok',
-            message: 'License synced successfully',
-            license_status: 'ok',
-            valid: true
+            message: 'License synced successfully'
         },
         {
-            status: 200,
-            headers: {
-                // Cache por 5 minutos na CDN — chamadas repetidas do mesmo IP não chegam nem à Function
-                'Cache-Control': 'public, max-age=300, s-maxage=300, stale-while-revalidate=600',
-            }
+            status: 200
         }
     );
 }
@@ -29,7 +23,7 @@ export async function POST() {
 // Também aceita GET para não retornar 405 e forçar retry
 export async function GET() {
     return NextResponse.json(
-        { success: true, status: 'ok', valid: true },
+        { success: true, status: 'ok' },
         { status: 200 }
     );
 }

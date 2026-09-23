@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { installationOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
 
 export const runtime = 'nodejs';
 
@@ -14,6 +15,11 @@ export async function GET(request: NextRequest) {
             console.error('[API/STATUS] installation_id faltando');
             return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
         }
+
+        // SEGURANÇA: se o chamador estiver autenticado (dashboard web), só permite
+        // consultar instalações da própria conta. Chamadas desktop sem sessão seguem normais.
+        const ownershipError = await installationOwnershipErrorIfAuthenticated(installation_id);
+        if (ownershipError) return ownershipError;
 
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
         const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -62,37 +68,13 @@ export async function GET(request: NextRequest) {
                 // Se o parse falhar, ignorar o filtro
             }
         }
-        let userEmail = null;
 
-        if (isLinked) {
-            console.log(`[API/STATUS] ID ${installation_id} está vinculado ao usuário ${installation.user_id}`);
-            // Buscar email do usuário na tabela auth.users via admin API
-            try {
-                const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(installation.user_id!);
-                
-                if (!userError && user) {
-                    userEmail = user.email;
-                } else {
-                    // Fallback para profiles se o admin API falhar ou não tiver email lá
-                    const { data: profile } = await supabase
-                        .from('profiles')
-                        .select('email')
-                        .eq('id', installation.user_id!)
-                        .single();
-                    userEmail = profile?.email;
-                }
-            } catch (authErr) {
-                console.error('[API/STATUS] Erro ao buscar email do usuário:', authErr);
-            }
-        } else {
-            console.log(`[API/STATUS] ID ${installation_id} existe mas ainda não está vinculado.`);
-        }
+        // SEGURANÇA: NÃO expor user_id/user_email do dono da instalação a chamadores
+        // não autenticados. O app desktop só precisa saber se está vinculado (booleano).
 
         return NextResponse.json({
-            linked: isLinked ? (installation.user_id as string) : null, 
+            linked: isLinked,
             is_linked: isLinked,
-            user_id: isLinked ? installation.user_id : null,
-            user_email: userEmail,
             installation_id: installation_id,
             last_updated: installation.updated_at
         });

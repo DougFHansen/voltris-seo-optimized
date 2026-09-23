@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireAdmin } from '@/utils/supabase/requireAdmin';
 
 export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {
     try {
+        // SEGURANÇA: rota de diagnóstico — somente administradores
+        const admin = await requireAdmin();
+        if (admin.error) return admin.error;
+
         const { searchParams } = new URL(request.url);
         const installation_id = searchParams.get('installation_id');
 

@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from '@/utils/supabase/server';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+
+export const runtime = 'nodejs';
 
 // Configuração do Supabase
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
+const supabase = createSupabaseClient(supabaseUrl, supabaseServiceKey);
 
 export interface PushSubscriptionData {
   endpoint: string;
@@ -28,7 +31,19 @@ export interface PushSubscriptionRequest {
 
 export async function POST(request: NextRequest) {
   try {
-    const { subscription, userId, browserInfo }: PushSubscriptionRequest = await request.json();
+    // SEGURANÇA: exigir sessão — o user_id é derivado da sessão autenticada,
+    // nunca do corpo da requisição (impede cadastrar inscrição em nome de outro usuário).
+    const supabaseSession = await createClient();
+    const { data: { user } } = await supabaseSession.auth.getUser();
+    if (!user) {
+      return NextResponse.json(
+        { success: false, message: 'Login required' },
+        { status: 401 }
+      );
+    }
+    const userId = user.id;
+
+    const { subscription, browserInfo }: PushSubscriptionRequest = await request.json();
     
     console.log('📱 Nova inscrição push recebida:', {
       userId,
@@ -45,7 +60,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    if (!userId || !browserInfo?.browserFingerprint) {
+    if (!browserInfo?.browserFingerprint) {
       return NextResponse.json(
         { success: false, message: 'Informações do navegador inválidas' },
         { status: 400 }
@@ -87,6 +102,7 @@ export async function POST(request: NextRequest) {
           updated_at: new Date().toISOString()
         })
         .eq('id', existingSubscription.id)
+        .eq('user_id', userId)
         .select()
         .single();
       
@@ -158,16 +174,19 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get('userId');
-    const browserFingerprint = searchParams.get('browserFingerprint');
-    
-    if (!userId) {
+    // SEGURANÇA: exigir sessão — o user_id é derivado da sessão autenticada
+    const supabaseSession = await createClient();
+    const { data: { user } } = await supabaseSession.auth.getUser();
+    if (!user) {
       return NextResponse.json(
-        { success: false, message: 'userId é obrigatório' },
-        { status: 400 }
+        { success: false, message: 'Login required' },
+        { status: 401 }
       );
     }
+    const userId = user.id;
+
+    const { searchParams } = new URL(request.url);
+    const browserFingerprint = searchParams.get('browserFingerprint');
     
     let query = supabase
       .from('push_subscriptions')
@@ -206,11 +225,22 @@ export async function GET(request: NextRequest) {
 
 export async function DELETE(request: NextRequest) {
   try {
-    const { subscriptionId, userId, browserFingerprint } = await request.json();
-    
-    if (!subscriptionId || !userId) {
+    // SEGURANÇA: exigir sessão — o user_id é derivado da sessão autenticada
+    const supabaseSession = await createClient();
+    const { data: { user } } = await supabaseSession.auth.getUser();
+    if (!user) {
       return NextResponse.json(
-        { success: false, message: 'subscriptionId e userId são obrigatórios' },
+        { success: false, message: 'Login required' },
+        { status: 401 }
+      );
+    }
+    const userId = user.id;
+
+    const { subscriptionId } = await request.json();
+    
+    if (!subscriptionId) {
+      return NextResponse.json(
+        { success: false, message: 'subscriptionId é obrigatório' },
         { status: 400 }
       );
     }
@@ -271,9 +301,20 @@ export async function DELETE(request: NextRequest) {
 
 export async function PATCH(request: NextRequest) {
   try {
-    const { subscriptionId, userId, isActive } = await request.json();
+    // SEGURANÇA: exigir sessão — o user_id é derivado da sessão autenticada
+    const supabaseSession = await createClient();
+    const { data: { user } } = await supabaseSession.auth.getUser();
+    if (!user) {
+      return NextResponse.json(
+        { success: false, message: 'Login required' },
+        { status: 401 }
+      );
+    }
+    const userId = user.id;
+
+    const { subscriptionId, isActive } = await request.json();
     
-    if (!subscriptionId || !userId || typeof isActive !== 'boolean') {
+    if (!subscriptionId || typeof isActive !== 'boolean') {
       return NextResponse.json(
         { success: false, message: 'Dados inválidos para atualização' },
         { status: 400 }

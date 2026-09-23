@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/utils/supabase/server';
+import { createClient } from '@supabase/supabase-js';
+import { getOptionalSessionUser } from '@/utils/supabase/ownership';
 
 export const runtime = 'nodejs';
 
@@ -29,7 +30,7 @@ export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
         const licenseKey = body.license_key || body.licenseKey;
-        const deviceId = body.device_id || body.deviceId;
+        let deviceId = body.device_id || body.deviceId;
         const machineName = body.machine_name || body.machineName;
         const osVersion = body.os_version || body.osVersion;
         const processorCount = body.processor_count || body.processorCount;
@@ -38,7 +39,22 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ success: false, errorMessage: 'License key and device ID are required' }, { status: 400 });
         }
 
-        const supabase = await createClient();
+        // SEGURANÇA: validar deviceId para impedir injeção de valores malformados
+        // ou extremamente longos na tabela de dispositivos.
+        const deviceIdStr = String(deviceId).trim();
+        if (deviceIdStr.length < 3 || deviceIdStr.length > 128 || /[\x00-\x1f;'"\\]/.test(deviceIdStr)) {
+            return NextResponse.json({ success: false, errorMessage: 'Invalid device ID format', errorCode: 'INVALID_DEVICE_ID' }, { status: 400 });
+        }
+        deviceId = deviceIdStr;
+
+        // SEGURANÇA: service_role para o fluxo desktop (sem sessão). A validação
+        // de propriedade é feita abaixo quando houver sessão autenticada.
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+        if (!supabaseUrl || !supabaseServiceKey) {
+            return NextResponse.json({ success: false, errorMessage: 'Server configuration error' }, { status: 500 });
+        }
+        const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
         // 1. Buscar a licença com license_display_name
         const { data: license, error: licError } = await supabase
@@ -63,10 +79,18 @@ export async function POST(request: NextRequest) {
             }
         }
 
-        // 3. Segurança: Se a licença tem user_id, verificar se o usuário logado bate (Se houver login)
-        const { data: { user } } = await supabase.auth.getUser();
-        if (license.user_id && user && license.user_id !== user.id) {
-            return NextResponse.json({ success: false, errorMessage: 'This license belongs to another account.', errorCode: 'FORBIDDEN' }, { status: 403 });
+        // 3. Segurança: Se houver sessão autenticada, verificar se a licença pertence
+        // ao usuário logado. Sem sessão (desktop), o fluxo original segue.
+        const sessionUser = await getOptionalSessionUser();
+        if (sessionUser) {
+            const ownershipBlocked =
+                (license.user_id && license.user_id !== sessionUser.id) ||
+                (license.email &&
+                    sessionUser.email &&
+                    license.email.toLowerCase() !== sessionUser.email.toLowerCase());
+            if (ownershipBlocked) {
+                return NextResponse.json({ success: false, errorMessage: 'This license belongs to another account.', errorCode: 'FORBIDDEN' }, { status: 403 });
+            }
         }
 
         // 4. Verificar se o dispositivo já está registrado para esta licença

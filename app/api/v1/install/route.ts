@@ -6,17 +6,22 @@ export const runtime = 'nodejs';
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { installation_id, user_id, app_version, hardware } = body;
+        const { installation_id, app_version, hardware } = body;
 
         console.log('[API/INSTALL] Recebida requisição de registro');
         console.log('[API/INSTALL] installation_id:', installation_id);
-        console.log('[API/INSTALL] user_id:', user_id);
         console.log('[API/INSTALL] app_version:', app_version);
         console.log('[API/INSTALL] hardware:', hardware);
 
         if (!installation_id) {
             console.error('[API/INSTALL] installation_id faltando');
             return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
+        }
+
+        // SEGURANÇA: validar formato UUID para impedir criação de IDs arbitrários
+        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(installation_id.trim())) {
+            console.error('[API/INSTALL] installation_id em formato inválido');
+            return NextResponse.json({ error: 'Invalid installation_id format' }, { status: 400 });
         }
 
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -53,10 +58,9 @@ export async function POST(request: NextRequest) {
             updated_at: new Date().toISOString()
         };
 
-        // Só incluir user_id se ele vier na requisição, para não sobrescrever com null se já estiver vinculado
-        if (user_id) {
-            upsertData.user_id = user_id;
-        }
+        // SEGURANÇA: NUNCA aceitar user_id vindo do corpo da requisição.
+        // O vínculo de conta é feito exclusivamente por /api/v1/install/link (autenticado).
+        // Isso impede que um atacante registre uma instalação e a atribua a qualquer usuário.
 
         const { error } = await supabase
             .from('installations')

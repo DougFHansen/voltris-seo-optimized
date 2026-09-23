@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
     // Limitar a 50 URLs por requisição (controle de frequência)
     const urlsToSubmit = filteredUrls.slice(0, 50);
 
-    const apiKey = '48b7f52550194833a697771746200259';
+    const apiKey = process.env.INDEXNOW_API_KEY || '';
     const host = 'www.voltris.com.br';
     const keyLocation = `https://${host}/${apiKey}.txt`;
 

@@ -22,8 +22,9 @@ const nextConfig = {
     deviceSizes: [320, 480, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 2592000,
-    dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // SEGURANÇA: desativado — nenhuma imagem SVG é servida via next/image
+    // no projeto (SVGs são usados apenas como CSS background).
+    dangerouslyAllowSVG: false,
     loader: 'default',
     remotePatterns: [
       {

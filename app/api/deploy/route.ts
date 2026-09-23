@@ -100,6 +100,15 @@ export async function POST(req: NextRequest) {
  */
 export async function GET(req: NextRequest) {
     try {
+        // SEGURANÇA: correlação de deploys contém métricas internas —
+        // restrita a administradores (GET era público, permitia enxergar
+        // dados de telemetria interna sem autenticação).
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
+        if (!profile?.is_admin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
         const { searchParams } = new URL(req.url);
         const deployVersion = searchParams.get('version');
         const analysisHours = parseInt(searchParams.get('hours') || '24');
@@ -110,8 +119,6 @@ export async function GET(req: NextRequest) {
                 { status: 400 }
             );
         }
-
-        const supabase = await createClient();
 
         // Get deploy info
         const { data: deploy, error: deployError } = await supabase

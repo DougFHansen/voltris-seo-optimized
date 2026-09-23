@@ -31,10 +31,11 @@ export async function POST(req: Request) {
                 .maybeSingle();
             if (data) conflicts.push('e-mail');
 
-            // Also check Auth directly
-            const { data: authData } = await supabaseAdmin.auth.admin.listUsers();
-            const existingAuthUser = authData.users.find(u => u.email === email);
-            if (existingAuthUser && !conflicts.includes('e-mail')) conflicts.push('e-mail');
+            // SEGURANÇA/PERFORMANCE: verificar no Auth de forma pontual
+            // (getUserByEmail) em vez de listar TODOS os usuários (listUsers),
+            // o que era lento e expunha enumeração massiva de contas.
+            const { data: authData } = await supabaseAdmin.auth.admin.getUserByEmail(email);
+            if (authData?.user && !conflicts.includes('e-mail')) conflicts.push('e-mail');
         }
 
         // 3. Check Phone

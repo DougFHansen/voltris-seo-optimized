@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { getOptionalSessionUser, licenseOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -88,7 +89,14 @@ export async function POST(request: NextRequest) {
         errorCode: 'LICENSE_NOT_FOUND',
       });
     }
-    
+
+    // SEGURANÇA: se o chamador estiver autenticado, só o dono pode desativar
+    // dispositivos da licença. O app desktop (sem sessão) segue funcionando,
+    // pois só consegue desativar o próprio dispositivo usando a chave + deviceId.
+    const sessionUser = await getOptionalSessionUser();
+    const ownershipError = await licenseOwnershipErrorIfAuthenticated(license, sessionUser);
+    if (ownershipError) return ownershipError;
+
     console.log(`[LICENSE DEACTIVATE] Licença encontrada:`, {
       id: license.id,
       type: license.license_type,

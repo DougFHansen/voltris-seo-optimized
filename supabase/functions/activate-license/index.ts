@@ -193,19 +193,18 @@ serve(async (req) => {
     }
 
     if (!licenseRecord) {
-      // Licença válida mas não no DB — registrar e ativar
-      console.warn(`[ACTIVATE-LICENSE] License not in DB — auto-registering: ${licenseKey.substring(0, 12)}...`)
+      // SEGURANÇA: não auto-registrar licenças que não existem no banco.
+      // Licenças legítimas são criadas pelo webhook (generate_complete_license_v3)
+      // imediatamente após o pagamento aprovado, então sempre existem no DB.
+      console.warn(`[ACTIVATE-LICENSE] License not in DB — denied: ${licenseKey.substring(0, 12)}...`)
       await supabase.from('audit_logs').insert({
-        event_type: 'LICENSE_AUTO_REGISTERED',
+        event_type: 'LICENSE_NOT_IN_DB',
         metadata: { license_key_prefix: licenseKey.substring(0, 12), device_id: deviceId.substring(0, 8), ip: clientIP }
       })
       const response: ActivateLicenseResponse = {
-        success: true,
-        message: 'Licença ativada com sucesso',
-        license_type: structureResult.planName,
-        max_devices: structureResult.maxDevices,
-        devices_in_use: 1,
-        expires_at: structureResult.validityDate.toISOString(),
+        success: false,
+        message: 'Licença não encontrada no sistema',
+        error_code: 'LICENSE_NOT_FOUND',
       }
       return new Response(JSON.stringify(response), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
     }

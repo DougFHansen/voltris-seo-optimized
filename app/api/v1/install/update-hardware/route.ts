@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { installationOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
 
 export const runtime = 'nodejs';
 
@@ -16,6 +17,16 @@ export async function POST(request: NextRequest) {
             console.error('[API/UPDATE-HARDWARE] installation_id faltando');
             return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
         }
+
+        // SEGURANÇA: validar formato UUID
+        if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(installation_id.trim())) {
+            return NextResponse.json({ error: 'Invalid installation_id format' }, { status: 400 });
+        }
+
+        // SEGURANÇA: se o chamador estiver autenticado (dashboard web), só permite
+        // atualizar hardware de instalações da própria conta. Desktop sem sessão segue normal.
+        const ownershipError = await installationOwnershipErrorIfAuthenticated(installation_id);
+        if (ownershipError) return ownershipError;
 
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
         const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;

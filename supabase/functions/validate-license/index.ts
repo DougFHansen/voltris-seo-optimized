@@ -210,37 +210,41 @@ serve(async (req) => {
 
     if (dbError && dbError.code !== 'PGRST116') {
       console.error(`[VALIDATE-LICENSE] DB error: ${dbError.message}`)
-      // Fail-open com aviso: se o DB está offline mas a assinatura é válida, permitir com log
-      console.warn('[VALIDATE-LICENSE] DB unavailable — allowing based on valid signature (offline mode)')
+      // SEGURANÇA: NÃO falhar aberto quando o banco está indisponível.
+      // Sem verificação no DB (revogação, limite de dispositivos, expiração)
+      // não há como garantir a validade — negar acesso.
       const response: ValidateLicenseResponse = {
         success: true,
-        valid: true,
+        valid: false,
         license_type: structureResult.planName,
         max_devices: structureResult.maxDevices,
         devices_in_use: 0,
         expires_at: structureResult.validityDate.toISOString(),
-        message: 'Licença válida (modo offline — DB indisponível)',
+        message: 'Serviço de validação indisponível — tente novamente em instantes',
+        error_code: 'VALIDATION_SERVICE_UNAVAILABLE',
       }
       return new Response(JSON.stringify(response), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
     }
 
-    // Licença não encontrada no DB — pode ser nova (ainda não registrada após pagamento)
-    // Aceitar se assinatura é válida, mas registrar para auditoria
+    // SEGURANÇA: licença não encontrada no DB — não aceitar.
+    // Licenças legítimas compradas são criadas pelo webhook (generate_complete_license_v3)
+    // imediatamente após o pagamento aprovado, então sempre existem no DB.
     if (!licenseRecord) {
-      console.warn(`[VALIDATE-LICENSE] License not in DB but signature valid — registering: ${licenseKey.substring(0, 12)}...`)
-      // Registrar no audit_logs
+      console.warn(`[VALIDATE-LICENSE] License not in DB — denied: ${licenseKey.substring(0, 12)}...`)
+      // Registrar para auditoria
       await supabase.from('audit_logs').insert({
-        event_type: 'LICENSE_VALIDATED_NOT_IN_DB',
+        event_type: 'LICENSE_NOT_IN_DB',
         metadata: { license_key_prefix: licenseKey.substring(0, 12), device_id: deviceId.substring(0, 8), ip: clientIP }
       })
       const response: ValidateLicenseResponse = {
         success: true,
-        valid: true,
+        valid: false,
         license_type: structureResult.planName,
         max_devices: structureResult.maxDevices,
         devices_in_use: 0,
         expires_at: structureResult.validityDate.toISOString(),
-        message: 'Licença válida',
+        message: 'Licença não encontrada no sistema',
+        error_code: 'LICENSE_NOT_FOUND',
       }
       return new Response(JSON.stringify(response), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
     }

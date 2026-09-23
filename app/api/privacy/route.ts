@@ -11,6 +11,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+import { requireAdmin } from '@/utils/supabase/requireAdmin';
 import crypto from 'crypto';
 
 export const runtime = 'nodejs';
@@ -22,6 +23,16 @@ export const dynamic = 'force-dynamic';
  */
 export async function POST(req: NextRequest) {
     try {
+        // SEGURANÇA: solicitações de exclusão exigem sessão autenticada
+        const supabase = await createClient();
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            return NextResponse.json(
+                { success: false, error: 'UNAUTHORIZED', message: 'Login required' },
+                { status: 401 }
+            );
+        }
+
         const body = await req.json();
         const { device_id, company_id, scope, requested_by } = body;
 
@@ -36,7 +47,21 @@ export async function POST(req: NextRequest) {
             );
         }
 
-        const supabase = await createClient();
+        // SEGURANÇA: o usuário só pode solicitar exclusão dos próprios dispositivos.
+        // Verificamos via tabela de instalações (que tem o user_id do dono).
+        if (device_id) {
+            const { data: installation } = await supabase
+                .from('installations')
+                .select('user_id')
+                .eq('id', device_id)
+                .maybeSingle();
+            if (installation && installation.user_id && installation.user_id !== user.id) {
+                return NextResponse.json(
+                    { success: false, error: 'FORBIDDEN', message: 'This device does not belong to your account' },
+                    { status: 403 }
+                );
+            }
+        }
 
         // Create deletion request
         const { data: request, error } = await supabase
@@ -86,6 +111,10 @@ export async function POST(req: NextRequest) {
  */
 export async function GET(req: NextRequest) {
     try {
+        // SEGURANÇA: consulta de requisições de exclusão é restrita a administradores
+        const admin = await requireAdmin();
+        if (admin.error) return admin.error;
+
         const { searchParams } = new URL(req.url);
         const requestId = searchParams.get('id');
 
@@ -215,6 +244,10 @@ async function processDataDeletion(
  */
 export async function PUT(req: NextRequest) {
     try {
+        // SEGURANÇA: auditoria de acesso é restrita a administradores
+        const admin = await requireAdmin();
+        if (admin.error) return admin.error;
+
         const body = await req.json();
         const { user_id, access_type, resource_type, resource_id, query_filters, rows_accessed } = body;
 
@@ -259,6 +292,10 @@ export async function PUT(req: NextRequest) {
  */
 export async function DELETE(req: NextRequest) {
     try {
+        // SEGURANÇA: limpeza de retenção é restrita a administradores
+        const admin = await requireAdmin();
+        if (admin.error) return admin.error;
+
         const supabase = await createClient();
 
         // Get all retention policies
@@ -333,6 +370,10 @@ export function pseudonymize(identifier: string, salt: string): string {
  */
 export async function PATCH(req: NextRequest) {
     try {
+        // SEGURANÇA: exportação de dados é restrita a administradores
+        const admin = await requireAdmin();
+        if (admin.error) return admin.error;
+
         const body = await req.json();
         const { device_id } = body;
 

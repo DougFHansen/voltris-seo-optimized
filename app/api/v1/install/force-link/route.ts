@@ -1,10 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireAdmin } from '@/utils/supabase/requireAdmin';
 
 export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
     try {
+        // SEGURANÇA: vincular instalação a qualquer usuário é operação de administrador.
+        // Usuários comuns devem usar /api/v1/install/link (autenticado por sessão).
+        const admin = await requireAdmin();
+        if (admin.error) return admin.error;
+
         const { installation_id, user_id } = await request.json();
 
         console.log('[FORCE-LINK] Recebida requisição de vinculação forçada');

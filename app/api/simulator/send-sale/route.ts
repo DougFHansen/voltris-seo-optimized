@@ -7,11 +7,20 @@ import { generateSimulatedSale } from '@/services/salesSimulator';
  */
 export async function GET(request: NextRequest) {
   try {
-    // Verificar autorização via header ou query param
+    // SEGURANÇA: exigir secret configurado em ambiente. Removido o fallback
+    // hardcoded, que permitia a qualquer pessoa que conhecesse o código (público)
+    // disparar mensagens no Telegram.
     const authHeader = request.headers.get('authorization');
     const url = new URL(request.url);
     const secretKey = url.searchParams.get('key');
-    const expectedKey = process.env.SIMULATOR_SECRET_KEY || 'voltris-sales-simulator-2026';
+    const expectedKey = process.env.SIMULATOR_SECRET_KEY;
+
+    if (!expectedKey) {
+      return NextResponse.json(
+        { error: 'Server not configured for simulator' },
+        { status: 503 }
+      );
+    }
 
     // Aceitar via header Bearer ou query param key
     const isAuthorized = 
@@ -29,7 +38,7 @@ export async function GET(request: NextRequest) {
 
     // Enviar mensagem para o Telegram
     const token = (process.env.TELEGRAM_BOT_TOKEN || '').replace(/['"]/g, '').trim();
-    const chatId = (process.env.TELEGRAM_CHAT_ID || '-1003839628448').replace(/['"]/g, '').trim();
+    const chatId = (process.env.TELEGRAM_CHAT_ID || '').replace(/['"]/g, '').trim();
 
     console.log('[SalesSimulator] Token presente:', !!token);
     console.log('[SalesSimulator] Chat ID:', chatId);
