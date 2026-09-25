@@ -32,15 +32,14 @@ export async function GET(request: NextRequest) {
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
         console.log(`[API/STATUS] Consultando ID: ${installation_id}`);
+        
+        // Normalizar UUID para lowercase
+        const normalizedId = installation_id.toLowerCase();
+        
         const { data: installation, error } = await supabase
             .from('installations')
-            .select(`
-                id,
-                user_id,
-                updated_at,
-                last_heartbeat
-            `)
-            .eq('id', installation_id)
+            .select('id, user_id, updated_at, last_heartbeat')
+            .eq('id', normalizedId)
             .single();
 
         if (error) {

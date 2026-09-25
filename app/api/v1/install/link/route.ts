@@ -47,14 +47,18 @@ export async function POST(request: NextRequest) {
 
         // --- FIM DA VALIDAÇÃO ---
 
+        // Normalizar UUIDs para lowercase
+        const normalizedInstallationId = installation_id.toLowerCase();
+        const normalizedUserId = user_id.toLowerCase();
+
         // Se passou, usar o SERVICE ROLE para forçar a vinculação no banco
         const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
 
         const { error } = await supabaseAdmin
             .from('installations')
             .upsert({
-                id: installation_id,
-                user_id: user_id,
+                id: normalizedInstallationId,
+                user_id: normalizedUserId,
                 updated_at: new Date().toISOString(),
                 last_heartbeat: new Date().toISOString()
             }, { onConflict: 'id' });
