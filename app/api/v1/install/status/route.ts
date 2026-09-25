@@ -74,16 +74,16 @@ export async function GET(request: NextRequest) {
         let userEmail: string | null = null;
         if (isLinked && installation.user_id) {
             try {
-                const { data: { users }, error: usersError } = await supabase.auth.admin.listUsers();
-                if (!usersError && users) {
-                    const linkedUser = users.find(u => u.id === installation.user_id);
-                    if (linkedUser) {
-                        userEmail = linkedUser.email || null;
-                        console.log(`[API/STATUS] Email encontrado: ${userEmail}`);
-                    }
+                // Tentar encontrar o email na tabela de usuários via Supabase Auth
+                const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(installation.user_id);
+                if (!userError && user) {
+                    userEmail = user.email || null;
+                    console.log(`[API/STATUS] Email encontrado: ${userEmail}`);
+                } else {
+                    console.warn(`[API/STATUS] Erro ao buscar usuário ${installation.user_id}:`, userError?.message);
                 }
-            } catch (err) {
-                console.warn(`[API/STATUS] Erro ao buscar email do usuário:`, err);
+            } catch (err: any) {
+                console.warn(`[API/STATUS] Erro ao buscar email do usuário:`, err?.message);
             }
         }
 
