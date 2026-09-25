@@ -64,10 +64,13 @@ export async function POST(request: NextRequest) {
             throw error;
         }
 
-        console.log(`[API/LINK] Vinculação realizada para ${user.email} con sucesso.`);
+        console.log(`[API/LINK] Vinculação realizada para ${user.email} com sucesso.`);
         return NextResponse.json({
             success: true,
-            message: 'Dispositivo vinculado com total segurança.'
+            message: 'Dispositivo vinculado com total segurança.',
+            email: user.email,
+            user_id: user.id,
+            linked_at: new Date().toISOString()
         });
         
     } catch (error: any) {

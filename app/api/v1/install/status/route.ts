@@ -46,7 +46,9 @@ export async function GET(request: NextRequest) {
         if (error) {
             console.warn(`[API/STATUS] ID não encontrado no banco [404]: ${installation_id}`);
             return NextResponse.json({ 
-                linked: null, 
+                linked: null,
+                is_linked: false,
+                email: null,
                 user_email: null,
                 error: 'Installation not found' 
             }, { status: 404 });
@@ -69,17 +71,34 @@ export async function GET(request: NextRequest) {
             }
         }
 
-        // SEGURANÇA: NÃO expor user_id/user_email do dono da instalação a chamadores
-        // não autenticados. O app desktop só precisa saber se está vinculado (booleano).
+        // Se vinculado, buscar o email do usuário
+        let userEmail: string | null = null;
+        if (isLinked && installation.user_id) {
+            try {
+                const { data: { users }, error: usersError } = await supabase.auth.admin.listUsers();
+                if (!usersError && users) {
+                    const linkedUser = users.find(u => u.id === installation.user_id);
+                    if (linkedUser) {
+                        userEmail = linkedUser.email || null;
+                        console.log(`[API/STATUS] Email encontrado: ${userEmail}`);
+                    }
+                }
+            } catch (err) {
+                console.warn(`[API/STATUS] Erro ao buscar email do usuário:`, err);
+            }
+        }
 
         return NextResponse.json({
             linked: isLinked,
             is_linked: isLinked,
+            email: userEmail,
+            user_email: userEmail,
             installation_id: installation_id,
+            linked_at: installation.updated_at,
             last_updated: installation.updated_at
         });
     } catch (error: any) {
         console.error('[API/STATUS] Erro inesperado:', error);
-        return NextResponse.json({ linked: null, error: error.message }, { status: 500 });
+        return NextResponse.json({ linked: null, is_linked: false, email: null, error: error.message }, { status: 500 });
     }
 }
