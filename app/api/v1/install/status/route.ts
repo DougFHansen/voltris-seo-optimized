@@ -6,36 +6,41 @@ export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {
     try {
+        console.log('[API/STATUS] ========== INICIANDO GET /api/v1/install/status ==========');
+        console.log('[API/STATUS] Timestamp:', new Date().toISOString());
+        
         const { searchParams } = new URL(request.url);
         const raw_id = searchParams.get('installation_id');
         const installation_id = raw_id?.trim();
-        const since = searchParams.get('since'); // ISO timestamp — só retorna vinculado se updated_at > since
+        const since = searchParams.get('since');
+
+        console.log('[API/STATUS] Query params:', { installation_id, since });
 
         if (!installation_id) {
-            console.error('[API/STATUS] installation_id faltando');
-            return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
+            console.error('[API/STATUS] ❌ installation_id faltando');
+            return NextResponse.json({ error: 'Missing installation_id', is_linked: false }, { status: 400 });
         }
 
-        // SEGURANÇA: se o chamador estiver autenticado (dashboard web), só permite
-        // consultar instalações da própria conta. Chamadas desktop sem sessão seguem normais.
         const ownershipError = await installationOwnershipErrorIfAuthenticated(installation_id);
-        if (ownershipError) return ownershipError;
+        if (ownershipError) {
+            console.warn('[API/STATUS] ⚠️ Ownership check retornou erro');
+            return ownershipError;
+        }
 
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
         const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
         if (!supabaseUrl || !supabaseServiceKey) {
-            console.error('[API/STATUS] Configuração do banco faltando');
-            return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
+            console.error('[API/STATUS] ❌ Configuração faltando');
+            return NextResponse.json({ error: 'Database configuration missing', is_linked: false }, { status: 500 });
         }
 
         const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-        console.log(`[API/STATUS] Consultando ID: ${installation_id}`);
-        
         // Normalizar UUID para lowercase
         const normalizedId = installation_id.toLowerCase();
         
+        console.log(`[API/STATUS] Consultando installation_id: ${normalizedId}`);
         const { data: installation, error } = await supabase
             .from('installations')
             .select('id, user_id, updated_at, last_heartbeat')
@@ -43,30 +48,32 @@ export async function GET(request: NextRequest) {
             .single();
 
         if (error) {
-            console.warn(`[API/STATUS] ID não encontrado no banco [404]: ${installation_id}`);
+            console.warn(`[API/STATUS] ⚠️ Instalação não encontrada [${error.code}]:`, error.message);
             return NextResponse.json({ 
                 linked: null,
                 is_linked: false,
                 email: null,
-                user_email: null,
-                error: 'Installation not found' 
+                error: 'Installation not found',
+                debug_error: error.message
             }, { status: 404 });
         }
 
-        // Verificar se está vinculado (tem user_id)
-        // Se `since` foi passado, só considerar vinculado se a vinculação ocorreu APÓS esse timestamp
-        // Isso evita detectar vinculações antigas de sessões anteriores
+        console.log('[API/STATUS] ✅ Instalação encontrada:', installation);
+
+        // Verificar se está vinculado
         let isLinked = installation && installation.user_id ? true : false;
+        console.log('[API/STATUS] isLinked:', isLinked, 'user_id:', installation.user_id);
+
         if (isLinked && since) {
             try {
                 const sinceDate = new Date(since);
                 const updatedAt = new Date(installation.updated_at);
                 if (updatedAt <= sinceDate) {
-                    console.log(`[API/STATUS] Vinculação existente mas anterior ao since (${since}), ignorando`);
+                    console.log(`[API/STATUS] Vinculação anterior ao since, ignorando`);
                     isLinked = false;
                 }
             } catch {
-                // Se o parse falhar, ignorar o filtro
+                console.warn('[API/STATUS] Erro ao parsear since timestamp');
             }
         }
 
@@ -74,30 +81,54 @@ export async function GET(request: NextRequest) {
         let userEmail: string | null = null;
         if (isLinked && installation.user_id) {
             try {
-                // Tentar encontrar o email na tabela de usuários via Supabase Auth
+                console.log(`[API/STATUS] Buscando email para user_id: ${installation.user_id}`);
                 const { data: { user }, error: userError } = await supabase.auth.admin.getUserById(installation.user_id);
-                if (!userError && user) {
+                
+                if (userError) {
+                    console.error(`[API/STATUS] ❌ Erro ao buscar usuário:`, {
+                        code: userError.code,
+                        message: userError.message
+                    });
+                } else if (user) {
                     userEmail = user.email || null;
-                    console.log(`[API/STATUS] Email encontrado: ${userEmail}`);
+                    console.log(`[API/STATUS] ✅ Email encontrado:`, userEmail);
                 } else {
-                    console.warn(`[API/STATUS] Erro ao buscar usuário ${installation.user_id}:`, userError?.message);
+                    console.warn(`[API/STATUS] ⚠️ getUserById retornou null para user_id: ${installation.user_id}`);
                 }
             } catch (err: any) {
-                console.warn(`[API/STATUS] Erro ao buscar email do usuário:`, err?.message);
+                console.error(`[API/STATUS] ❌ Exception ao buscar email:`, {
+                    name: err.name,
+                    message: err.message,
+                    stack: err.stack
+                });
             }
         }
 
-        return NextResponse.json({
+        const response = {
             linked: isLinked,
             is_linked: isLinked,
             email: userEmail,
             user_email: userEmail,
+            user_id: installation.user_id,
             installation_id: installation_id,
             linked_at: installation.updated_at,
             last_updated: installation.updated_at
-        });
+        };
+
+        console.log('[API/STATUS] ✅ Response a enviar:', response);
+        return NextResponse.json(response);
+
     } catch (error: any) {
-        console.error('[API/STATUS] Erro inesperado:', error);
-        return NextResponse.json({ linked: null, is_linked: false, email: null, error: error.message }, { status: 500 });
+        console.error('[API/STATUS] ❌❌❌ ERRO CRÍTICO NA RAIZ:', {
+            message: error.message,
+            stack: error.stack,
+            name: error.name
+        });
+        return NextResponse.json({ 
+            linked: null, 
+            is_linked: false, 
+            email: null, 
+            error: error.message 
+        }, { status: 500 });
     }
 }
