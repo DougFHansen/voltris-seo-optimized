@@ -66,10 +66,15 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
         setUnlinkModalOpen(false);
         const loadingId = toast.loading('Processando...');
         try {
-            await fetch('/api/v1/install/unlink', {
+            const unlinkRes = await fetch('/api/v1/install/unlink', {
                 method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ installation_id: selectedInstallation.id })
             });
+            if (!unlinkRes.ok) {
+                const errData = await unlinkRes.json().catch(() => ({}));
+                throw new Error(errData.error || `HTTP ${unlinkRes.status}`);
+            }
             toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
             fetchData();
         } catch {

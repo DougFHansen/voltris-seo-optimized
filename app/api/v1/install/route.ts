@@ -5,76 +5,100 @@ export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
     try {
-        const body = await request.json();
-        const { installation_id, app_version, hardware } = body;
+        let body: any;
+        try {
+            body = await request.json();
+        } catch {
+            return NextResponse.json({ error: 'JSON inválido no corpo da requisição.' }, { status: 400 });
+        }
 
-        console.log('[API/INSTALL] Recebida requisição de registro');
-        console.log('[API/INSTALL] installation_id:', installation_id);
-        console.log('[API/INSTALL] app_version:', app_version);
-        console.log('[API/INSTALL] hardware:', hardware);
+        const { installation_id, app_version, hardware } = body ?? {};
+
+        console.log('[API/INSTALL] Registrando instalação:', installation_id);
 
         if (!installation_id) {
-            console.error('[API/INSTALL] installation_id faltando');
             return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
         }
 
-        // SEGURANÇA: validar formato UUID para impedir criação de IDs arbitrários
+        // Validar formato UUID
         if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(installation_id.trim())) {
-            console.error('[API/INSTALL] installation_id em formato inválido');
-            return NextResponse.json({ error: 'Invalid installation_id format' }, { status: 400 });
+            console.error('[API/INSTALL] UUID inválido:', installation_id);
+            return NextResponse.json({ error: 'Formato de installation_id inválido.' }, { status: 400 });
         }
 
         const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
         const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
         if (!supabaseUrl || !supabaseServiceKey) {
-            console.error('[API/INSTALL] Configuração do banco faltando');
-            return NextResponse.json({ error: 'Database configuration missing' }, { status: 500 });
+            return NextResponse.json({ error: 'Configuração do servidor incompleta.' }, { status: 500 });
         }
 
-        const supabase = createClient(supabaseUrl, supabaseServiceKey);
+        const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+            auth: { autoRefreshToken: false, persistSession: false }
+        });
 
-        console.log('[API/INSTALL] Fazendo upsert da instalação (resiliente)...');
-        
-        // Mapeamento resiliente: tenta ler o padrão novo, depois fallbacks de chaves que o app antigo envia
-        const cpuName = hardware?.cpu_name || hardware?.cpu || hardware?.processor;
-        const gpuName = hardware?.gpu_name || hardware?.gpu || hardware?.graphics;
-        const ramTotal = hardware?.ram_gb_total || hardware?.ram || hardware?.memory;
-        const pcName = hardware?.pc_name || hardware?.hostname || hardware?.pc;
+        // Mapear campos — suporta nomes antigos e novos enviados pelo desktop
+        const cpuName   = hardware?.cpu_name   ?? hardware?.cpu        ?? hardware?.processor  ?? null;
+        const gpuName   = hardware?.gpu_name   ?? hardware?.gpu        ?? hardware?.graphics   ?? null;
+        const ramTotal  = hardware?.ram_gb_total?? hardware?.ram        ?? hardware?.memory     ?? null;
+        const pcName    = hardware?.pc_name    ?? hardware?.hostname   ?? hardware?.pc         ?? null;
+        const diskType  = hardware?.disk_type  ?? hardware?.disk       ?? null;
+        const diskMainType = hardware?.disk_main_type ?? hardware?.disk_type ?? hardware?.disk ?? null;
+        const osName    = hardware?.os_name    ?? hardware?.os         ?? null;
+        const osBuild   = hardware?.os_build   ?? hardware?.build      ?? null;
+        const winEdition= hardware?.windows_edition ?? hardware?.edition ?? null;
+        const arch      = hardware?.architecture ?? null;
 
-        const upsertData: any = {
-            id: installation_id.trim(),
-            pc_name: pcName,
-            app_version: app_version,
-            cpu_name: cpuName,
-            ram_gb_total: ramTotal,
-            gpu_name: gpuName,
-            disk_type: hardware?.disk_type || hardware?.disk_main_type || hardware?.disk,
-            os_name: hardware?.os_name || hardware?.os,
-            os_build: hardware?.os_build || hardware?.build,
-            windows_edition: hardware?.windows_edition || hardware?.edition,
-            architecture: hardware?.architecture,
-            last_heartbeat: new Date().toISOString(),
-            updated_at: new Date().toISOString()
+        // Apenas colunas que EXISTEM na tabela installations
+        const upsertData: Record<string, any> = {
+            id:               installation_id.trim().toLowerCase(),
+            app_version:      app_version ?? null,
+            pc_name:          pcName,
+            cpu_name:         cpuName,
+            gpu_name:         gpuName,
+            ram_gb_total:     ramTotal !== null ? Number(ramTotal) : null,
+            disk_type:        diskType,
+            disk_main_type:   diskMainType,
+            os_name:          osName,
+            os_build:         osBuild,
+            windows_edition:  winEdition,
+            architecture:     arch,
+            last_heartbeat:   new Date().toISOString(),
+            updated_at:       new Date().toISOString(),
         };
 
-        // SEGURANÇA: NUNCA aceitar user_id vindo do corpo da requisição.
-        // O vínculo de conta é feito exclusivamente por /api/v1/install/link (autenticado).
-        // Isso impede que um atacante registre uma instalação e a atribua a qualquer usuário.
+        // Remover chaves com valor null para não sobrescrever dados existentes desnecessariamente
+        Object.keys(upsertData).forEach(k => {
+            if (upsertData[k] === null && k !== 'id') {
+                delete upsertData[k];
+            }
+        });
+        // id e timestamps sempre presentes
+        upsertData.id = installation_id.trim().toLowerCase();
+        upsertData.last_heartbeat = new Date().toISOString();
+        upsertData.updated_at = new Date().toISOString();
+
+        console.log('[API/INSTALL] Upsert payload:', JSON.stringify(upsertData));
 
         const { error } = await supabase
             .from('installations')
             .upsert(upsertData, { onConflict: 'id' });
 
         if (error) {
-            console.error('[API/INSTALL] Erro ao fazer upsert:', error);
-            throw error;
+            console.error('[API/INSTALL] ❌ Erro no upsert:', {
+                message: error.message,
+                code: error.code,
+                details: error.details,
+                hint: error.hint
+            });
+            return NextResponse.json({ error: error.message, code: error.code }, { status: 500 });
         }
 
-        console.log('[API/INSTALL] Instalação registrada com sucesso!');
+        console.log('[API/INSTALL] ✅ Instalação registrada:', installation_id);
         return NextResponse.json({ success: true });
+
     } catch (error: any) {
-        console.error('[API/INSTALL] Erro geral:', error);
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        console.error('[API/INSTALL] ❌❌ ERRO CRÍTICO:', error?.message);
+        return NextResponse.json({ error: error?.message || 'Erro interno.' }, { status: 500 });
     }
 }
