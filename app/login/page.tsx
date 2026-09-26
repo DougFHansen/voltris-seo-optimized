@@ -116,17 +116,47 @@ function LoginContent() {
     }
   }, [isLoginView]);
 
-  const linkInstallation = async (userId: string) => {
-    if (!installationId) return;
+  /**
+   * Vincula o dispositivo que originou o acesso.
+   *
+   * Só resolve se o backend confirmar (HTTP 2xx + verified). Antes esta função
+   * logava "vinculado com sucesso" sem checar response.ok — o usuario era
+   * redirecionado para o dashboard com um vinculo que nunca existiu.
+   */
+  const linkInstallation = async (userId: string): Promise<{ ok: boolean; message?: string }> => {
+    if (!installationId) return { ok: true };
     try {
-      await fetch('/api/v1/install/link', {
+      const response = await fetch('/api/v1/install/link', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ installation_id: installationId, user_id: userId })
       });
-      console.log('Dispositivo vinculado com sucesso!');
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        console.error('[LINK] Falha ao vincular dispositivo:', response.status, data);
+        return {
+          ok: false,
+          message:
+            data?.error ||
+            `Não foi possível vincular o dispositivo (HTTP ${response.status}).`
+        };
+      }
+
+      if (data?.verified !== true) {
+        console.error('[LINK] Backend não confirmou a persistência do vínculo:', data);
+        return {
+          ok: false,
+          message: 'O servidor não confirmou o vínculo. Verifique e tente novamente.'
+        };
+      }
+
+      console.log('[LINK] Dispositivo vinculado e confirmado:', data.installation_id);
+      return { ok: true };
     } catch (err) {
       console.error('Erro ao vincular dispositivo:', err);
+      return { ok: false, message: 'Falha de conexão ao vincular o dispositivo.' };
     }
   };
 
@@ -154,12 +184,16 @@ function LoginContent() {
 
         const dest = getFinalRedirect();
         if (installationId) {
-          linkInstallation(user.id).then(() => {
-            window.location.href = dest;
-          });
-        } else {
-          window.location.href = dest;
+          // Não redireciona como se estivesse tudo certo: se o vínculo falhou,
+          // o usuário precisa saber e poder reenviar.
+          const result = await linkInstallation(user.id);
+          if (!result.ok) {
+            setError(result.message || 'Não foi possível vincular o dispositivo.');
+            window.location.href = `${dest}${dest.includes('?') ? '&' : '?'}link_failed=1`;
+            return;
+          }
         }
+        window.location.href = dest;
       };
       checkMfaAndRedirect();
     }

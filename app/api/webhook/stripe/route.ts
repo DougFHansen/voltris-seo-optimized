@@ -62,10 +62,36 @@ export async function POST(req: NextRequest) {
                     p_billing_period: billingPeriod
                 });
 
-                if (error) console.error('[STRIPE WEBHOOK] Erro ao gerar licença:', error);
-                else console.log(`[STRIPE WEBHOOK] ✅ Licença ${billingPeriod} gerada com sucesso.`);
+                if (error) {
+                    console.error('[STRIPE WEBHOOK] Erro ao gerar licença:', error);
+                } else {
+                    console.log(`[STRIPE WEBHOOK] Licença ${billingPeriod} gerada com sucesso.`);
+
+                    // A RPC grava a chave, mas o vinculo com a conta (user_id)
+                    // precisa ser persistido: sem isso a licença não aparece no
+                    // painel do cliente. Preenchido aqui, de forma idempotente.
+                    const generatedKey =
+                        (data as { license_key?: string } | null)?.license_key ?? null;
+
+                    if (generatedKey) {
+                        const patch: Record<string, unknown> = {
+                            license_display_name: (licenseType ?? 'standard').toUpperCase(),
+                        };
+                        if (userId) patch.user_id = userId;
+                        if (email) patch.email = email;
+
+                        const { error: linkError } = await supabase
+                            .from('licenses')
+                            .update(patch)
+                            .eq('license_key', generatedKey);
+
+                        if (linkError) {
+                            console.error('[STRIPE WEBHOOK] Erro ao vincular licença ao usuário:', linkError);
+                        }
+                    }
+                }
             } else {
-                console.log(`[STRIPE WEBHOOK] ✅ Serviço ${licenseType} registrado como aprovado.`);
+                console.log(`[STRIPE WEBHOOK] Serviço ${licenseType} registrado como aprovado.`);
             }
 
             break;
@@ -104,13 +130,48 @@ export async function POST(req: NextRequest) {
                 .single();
 
             if (sub) {
-                // 2. Desativa as licenças vinculadas
-                await supabase.from('licenses')
-                    .update({ is_active: false })
-                    .eq('email', sub.email)
-                    .eq('license_type', sub.plan_type);
-                
-                console.log(`[STRIPE WEBHOOK] ❌ Licenças de ${sub.email} desativadas.`);
+                // 2. Revoga as licenças vinculadas.
+                // Schema canônico: revogação é `revoked = true` e o plano é
+                // `plan_type`. O código antigo usava `is_active`/`email`/
+                // `license_type`, colunas que não existem em public.licenses
+                // (42703 em cancelamento).
+                //
+                // Sem `.or()` com e-mail: o PostgREST exige aspas em valores de
+                // filtro com caracteres especiais e o supabase-js não as aplica.
+                // Busca por user_id e, se não houver, por customer_email.
+                const patch = { revoked: true, notes: 'Cancelada via Stripe' };
+
+                const byUser = sub.user_id
+                    ? await supabase
+                          .from('licenses')
+                          .update(patch)
+                          .eq('plan_type', sub.plan_type)
+                          .eq('user_id', sub.user_id)
+                          .select('license_key')
+                    : { data: null, error: null };
+
+                if (byUser.error) {
+                    console.error('[STRIPE WEBHOOK] Erro ao revogar por user_id:', byUser.error);
+                } else if (!byUser.data || byUser.data.length === 0) {
+                    const byEmail = await supabase
+                        .from('licenses')
+                        .update(patch)
+                        .eq('plan_type', sub.plan_type)
+                        .eq('customer_email', sub.email)
+                        .select('license_key');
+
+                    if (byEmail.error) {
+                        console.error('[STRIPE WEBHOOK] Erro ao revogar por e-mail:', byEmail.error);
+                    } else {
+                        console.log(
+                            `[STRIPE WEBHOOK] ${byEmail.data?.length ?? 0} licença(s) de ${sub.email} revogada(s).`
+                        );
+                    }
+                } else {
+                    console.log(
+                        `[STRIPE WEBHOOK] ${byUser.data.length} licença(s) de ${sub.email} revogada(s).`
+                    );
+                }
             }
             break;
         }

@@ -1,127 +1,132 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { installationOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logSuccess,
+    logSupabaseError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+    normalizeUuid,
+} from '@/lib/voltris-log';
 
 export const runtime = 'nodejs';
 
+const TRIAL_DAYS = 7;
+
+/**
+ * GET /api/v1/license/validate?installation_id=...
+ *
+ * Estado autoritativo da licenca do dispositivo, para o app desktop.
+ * Nao aceita status vindo do cliente: le do servidor.
+ */
 export async function GET(req: NextRequest) {
-    try {
-        const { searchParams } = new URL(req.url);
-        const installation_id = searchParams.get('installation_id');
+    const correlationId = getOrCreateCorrelationId(req);
+    const ctx = startOperation('LICENSE_VALIDATE', correlationId);
 
-        console.log('[API/LICENSE/VALIDATE] ===== INÍCIO =====');
-        console.log('[API/LICENSE/VALIDATE] installation_id:', installation_id);
-
-        if (!installation_id) {
-            console.error('[API/LICENSE/VALIDATE] installation_id faltando!');
-            return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
-        }
-
-        // SEGURANÇA: se o chamador estiver autenticado (dashboard web), só valida
-        // instalações da própria conta. Desktop sem sessão segue funcionando.
-        const ownershipError = await installationOwnershipErrorIfAuthenticated(installation_id);
-        if (ownershipError) return ownershipError;
-
-        const supabaseAdmin = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.SUPABASE_SERVICE_ROLE_KEY!
-        );
-
-        // Buscar instalação
-        console.log('[API/LICENSE/VALIDATE] Buscando instalação...');
-        const { data: installation, error: installError } = await supabaseAdmin
-            .from('installations')
-            .select('id, license_status, license_key, license_expires_at, created_at, app_version')
-            .eq('id', installation_id)
-            .single();
-
-        if (installError || !installation) {
-            console.error('[API/LICENSE/VALIDATE] Instalação não encontrada:', installError);
-            return NextResponse.json({ 
-                valid: false, 
-                reason: 'installation_not_found',
-                message: 'Dispositivo não encontrado'
-            });
-        }
-
-        console.log('[API/LICENSE/VALIDATE] Instalação encontrada:', installation);
-
-        // PRIORIDADE 1: Verificar se tem licença ativa
-        if (installation.license_status === 'active' && installation.license_key) {
-            console.log('[API/LICENSE/VALIDATE] ✅ Licença ativa encontrada');
-            
-            // Verificar se a licença expirou (se tiver data de expiração)
-            if (installation.license_expires_at) {
-                const expiresAt = new Date(installation.license_expires_at);
-                const now = new Date();
-                
-                if (expiresAt < now) {
-                    console.log('[API/LICENSE/VALIDATE] ❌ Licença expirada');
-                    return NextResponse.json({
-                        valid: false,
-                        license_status: 'expired',
-                        reason: 'license_expired',
-                        message: 'Licença expirada. Renove para continuar.'
-                    });
-                }
-            }
-            
-            return NextResponse.json({
-                valid: true,
-                license_status: 'active',
-                license_key: installation.license_key,
-                message: 'Licença ativa'
-            });
-        }
-
-        // PRIORIDADE 2: Verificar status de trial (sincronizado pelo programa)
-        // O programa envia o status real do trial via /api/v1/license/sync
-        if (installation.license_status === 'trial') {
-            console.log('[API/LICENSE/VALIDATE] ✅ Trial ativo (sincronizado pelo programa)');
-            
-            // Calcular dias restantes baseado em created_at como fallback
-            const createdAt = new Date(installation.created_at);
-            const now = new Date();
-            const daysSinceInstall = Math.floor((now.getTime() - createdAt.getTime()) / (1000 * 60 * 60 * 24));
-            const trialDaysRemaining = Math.max(0, 7 - daysSinceInstall);
-            
-            return NextResponse.json({
-                valid: true,
-                license_status: 'trial',
-                trial_days_remaining: trialDaysRemaining,
-                message: `Trial ativo - ${trialDaysRemaining} dia(s) restante(s)`
-            });
-        }
-
-        // PRIORIDADE 3: Status 'expired' ou 'revoked'
-        if (installation.license_status === 'expired' || installation.license_status === 'revoked') {
-            console.log('[API/LICENSE/VALIDATE] ❌ Licença expirada ou revogada');
-            return NextResponse.json({
-                valid: false,
-                license_status: installation.license_status,
-                reason: installation.license_status === 'revoked' ? 'license_revoked' : 'trial_expired',
-                message: installation.license_status === 'revoked' 
-                    ? 'Licença revogada. Entre em contato com o suporte.'
-                    : 'Período de teste expirado. Ative uma licença para continuar.'
-            });
-        }
-
-        // FALLBACK: Se não tem status definido, considerar trial expirado
-        console.log('[API/LICENSE/VALIDATE] ❌ Status indefinido - considerando expirado');
-        return NextResponse.json({
-            valid: false,
-            license_status: 'expired',
-            reason: 'trial_expired',
-            trial_days_remaining: 0,
-            message: 'Período de teste expirado. Ative uma licença para continuar.'
+    const installationId = normalizeUuid(req.nextUrl.searchParams.get('installation_id'));
+    if (!installationId) {
+        return errorWithCorrelation(ctx, 400, 'MISSING_INSTALLATION_ID', 'Missing or invalid installation_id', {
+            details: { valid: false },
         });
-
-    } catch (err: any) {
-        console.error('[API/LICENSE/VALIDATE] Erro geral:', err);
-        return NextResponse.json({ 
-            valid: false,
-            reason: 'server_error',
-            error: err.message 
-        }, { status: 500 });
     }
+    ctx.installationId = installationId;
+
+    const ownershipError = await installationOwnershipErrorIfAuthenticated(installationId);
+    if (ownershipError) return ownershipError;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseServiceKey) {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Configuracao do servidor incompleta', {
+            details: { valid: false },
+        });
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    const { data: installation, error } = await supabase
+        .from('installations')
+        .select('id, license_status, license_key, license_expires_at, created_at, trial_started_at, app_version')
+        .eq('id', installationId)
+        .maybeSingle();
+
+    if (error) {
+        logSupabaseError(ctx, 'buscar instalacao', error);
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao consultar o dispositivo', {
+            details: { valid: false },
+        });
+    }
+    if (!installation) {
+        return errorWithCorrelation(ctx, 404, 'INSTALLATION_NOT_FOUND', 'Dispositivo nao encontrado', {
+            details: { valid: false, reason: 'installation_not_found' },
+        });
+    }
+
+    const status = installation.license_status as 'trial' | 'active' | 'expired' | 'revoked';
+
+    if (status === 'active' && installation.license_key) {
+        if (installation.license_expires_at && new Date(installation.license_expires_at) < new Date()) {
+            logSuccess(ctx, 'licenca expirada');
+            return jsonWithCorrelation(ctx, {
+                valid: false,
+                license_status: 'expired',
+                reason: 'license_expired',
+                message: 'Licenca expirada. Renove para continuar.',
+            });
+        }
+
+        logSuccess(ctx, 'licenca ativa');
+        return jsonWithCorrelation(ctx, {
+            valid: true,
+            license_status: 'active',
+            license_key: installation.license_key,
+            license_expires_at: installation.license_expires_at,
+            message: 'Licenca ativa',
+        });
+    }
+
+    if (status === 'trial') {
+        // O trial comeca quando o dispositivo e registrado, nao na criacao da
+        // conta: usar trial_started_at evita trial zerado em maquinas antigas.
+        const trialStart = installation.trial_started_at ?? installation.created_at;
+        const daysSince = Math.max(
+            0,
+            Math.floor((Date.now() - new Date(trialStart).getTime()) / (1000 * 60 * 60 * 24))
+        );
+        const daysRemaining = Math.max(0, TRIAL_DAYS - daysSince);
+
+        if (daysRemaining === 0) {
+            logSuccess(ctx, 'trial expirado', { daysSince });
+            return jsonWithCorrelation(ctx, {
+                valid: false,
+                license_status: 'expired',
+                reason: 'trial_expired',
+                trial_days_remaining: 0,
+                message: 'Periodo de teste expirado. Ative uma licenca para continuar.',
+            });
+        }
+
+        logSuccess(ctx, 'trial ativo', { daysRemaining });
+        return jsonWithCorrelation(ctx, {
+            valid: true,
+            license_status: 'trial',
+            trial_days_remaining: daysRemaining,
+            message: `Trial ativo - ${daysRemaining} dia(s) restante(s)`,
+        });
+    }
+
+    logSuccess(ctx, 'licenca sem acesso', { status });
+    return jsonWithCorrelation(ctx, {
+        valid: false,
+        license_status: status,
+        reason: status === 'revoked' ? 'license_revoked' : 'trial_expired',
+        message:
+            status === 'revoked'
+                ? 'Licenca revogada. Entre em contato com o suporte.'
+                : 'Periodo de teste expirado. Ative uma licenca para continuar.',
+    });
 }

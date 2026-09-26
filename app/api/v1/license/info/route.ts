@@ -1,147 +1,108 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { getOptionalSessionUser, licenseOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
+import { NextRequest } from 'next/server';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logSuccess,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+    maskEmail,
+} from '@/lib/voltris-log';
+import {
+    isLicenseActive,
+    isLicenseExpired,
+    licenseDisplayName,
+    countLicenseDevices,
+    licenseIsOwnedBy,
+    findLicenseByKey,
+    getServiceClient,
+    type LicenseDeviceRow,
+} from '@/lib/license-schema';
+import { getOptionalSessionUser } from '@/utils/supabase/ownership';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 
 /**
- * API de Informações da Licença - Voltris Optimizer
- * 
- * Endpoint usado para obter informações detalhadas da licença
- * GET /api/v1/license/info?key=VOLTRIS-LIC-...
- * 
- * Query params:
- * - key: Chave da licença
+ * GET /api/v1/license/info?key=VOLTRIS-...
+ *
+ * Dados publicos da licenca para qualquer chamador; dados sensiveis (email do
+ * cliente e lista de dispositivos) somente para o dono autenticado.
  */
 export async function GET(request: NextRequest) {
-  const requestId = `info-${Date.now()}-${Math.random().toString(36).substring(7)}`;
-  
-  console.log(`[LICENSE INFO] ========== CONSULTA ${requestId} ==========`);
-  
-  try {
-    // Parse query params
-    const { searchParams } = new URL(request.url);
-    const licenseKey = searchParams.get('key');
-    
-    console.log(`[LICENSE INFO] Chave recebida:`, licenseKey ? `${licenseKey.substring(0, 20)}...` : 'ausente');
-    
-    // Validações
+    const correlationId = getOrCreateCorrelationId(request);
+    const ctx = startOperation('LICENSE_INFO', correlationId);
+
+    const licenseKey = (request.nextUrl.searchParams.get('key') ?? '').trim().toUpperCase();
     if (!licenseKey) {
-      return NextResponse.json(
-        {
-          valid: false,
-          errorMessage: 'Chave de licença é obrigatória',
-          errorCode: 'MISSING_LICENSE_KEY',
-        },
-        { status: 400 }
-      );
-    }
-    
-    // Conectar ao Supabase com service role
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-    
-    if (!supabaseUrl || !supabaseServiceKey) {
-      console.error('[LICENSE INFO] Credenciais Supabase não configuradas');
-      return NextResponse.json(
-        {
-          valid: false,
-          errorMessage: 'Erro de configuração do servidor',
-          errorCode: 'SERVER_CONFIG_ERROR',
-        },
-        { status: 500 }
-      );
-    }
-    
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-    
-    // Buscar licença no banco
-    console.log(`[LICENSE INFO] Buscando licença no banco...`);
-    
-    const { data: license, error: licenseError } = await supabase
-      .from('licenses')
-      .select('*')
-      .eq('license_key', licenseKey)
-      .single();
-    
-    if (licenseError || !license) {
-      console.log(`[LICENSE INFO] Licença não encontrada:`, licenseError);
-      return NextResponse.json({
-        valid: false,
-        errorMessage: 'Licença não encontrada',
-        errorCode: 'LICENSE_NOT_FOUND',
-      });
+        return errorWithCorrelation(ctx, 400, 'MISSING_LICENSE_KEY', 'Chave de licenca e obrigatoria', {
+            details: { valid: false },
+        });
     }
 
-    // SEGURANÇA: só o dono da licença (via sessão) recebe dados sensíveis
-    // (email do cliente e lista de dispositivos). O app desktop, que consulta
-    // sem sessão, continua recebendo os dados públicos da própria licença.
+    let license;
+    try {
+        license = await findLicenseByKey(licenseKey);
+    } catch {
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao consultar licenca', {
+            details: { valid: false, errorCode: 'DB_ERROR' },
+        });
+    }
+
+    if (!license) {
+        return errorWithCorrelation(ctx, 404, 'LICENSE_NOT_FOUND', 'Licenca nao encontrada', {
+            details: { valid: false, errorCode: 'LICENSE_NOT_FOUND' },
+        });
+    }
+
     const sessionUser = await getOptionalSessionUser();
-    const ownershipError = await licenseOwnershipErrorIfAuthenticated(license, sessionUser);
+    const ownsLicense = licenseIsOwnedBy(license, sessionUser);
+    if (sessionUser) ctx.userId = sessionUser.id;
 
-    const ownsLicense = !ownershipError;
-    const registeredDevices = [];
     let customerEmail: string | null = null;
+    let registeredDevices: Array<Record<string, unknown>> = [];
+    let devicesInUse = 0;
 
     if (ownsLicense) {
-      // Buscar dispositivos registrados
-      const { data: devices } = await supabase
-        .from('license_devices')
-        .select('device_id, device_name, machine_name, activated_at, last_used_at')
-        .eq('license_id', license.id)
-        .order('activated_at', { ascending: false });
+        customerEmail = license.email ?? license.customer_email ?? null;
+        const supabase = getServiceClient();
+        const { data: devices } = await supabase
+            .from('license_devices')
+            .select('id, license_key, device_id, device_name, machine_name, os_version, app_version, activated_at, last_used_at, last_seen_at')
+            .eq('license_key', licenseKey)
+            .order('activated_at', { ascending: false });
 
-      for (const d of devices || []) {
-        registeredDevices.push({
-          deviceId: d.device_id,
-          deviceName: d.device_name || d.machine_name,
-          machineName: d.machine_name,
-          activatedAt: d.activated_at,
-          lastUsedAt: d.last_used_at,
-        });
-      }
-
-      customerEmail = license.email || null;
+        registeredDevices = ((devices ?? []) as LicenseDeviceRow[]).map((d) => ({
+            deviceId: d.device_id,
+            deviceName: d.device_name ?? d.machine_name,
+            machineName: d.machine_name,
+            osVersion: d.os_version,
+            appVersion: d.app_version,
+            activatedAt: d.activated_at,
+            lastUsedAt: d.last_used_at ?? d.last_seen_at,
+        }));
+        devicesInUse = registeredDevices.length;
+    } else {
+        // Contagem e barata e nao expoe PII.
+        devicesInUse = await countLicenseDevices(licenseKey);
     }
 
-    console.log(`[LICENSE INFO] Licença encontrada com ${registeredDevices.length} dispositivos (dono: ${ownsLicense})`);
-    
-    // Verificar se está ativa
-    const isActive = license.is_active;
-    let isExpired = false;
-    
-    if (license.expires_at) {
-      const expiryDate = new Date(license.expires_at);
-      const now = new Date();
-      isExpired = expiryDate < now;
-    }
-    
-    const valid = isActive && !isExpired;
-    
-    return NextResponse.json({
-      valid,
-      type: license.license_type,
-      maxDevices: license.max_devices,
-      devicesInUse: license.devices_in_use,
-      expiresAt: license.expires_at,
-      activatedAt: license.activated_at,
-      customerEmail,
-      registeredDevices,
-      isActive,
-      isExpired,
+    const isActive = isLicenseActive(license);
+    const expired = isLicenseExpired(license);
+
+    logSuccess(ctx, 'licenca consultada', { ownsLicense, isActive, expired, customer: maskEmail(customerEmail) });
+
+    return jsonWithCorrelation(ctx, {
+        valid: isActive && !expired,
+        type: license.plan_type,
+        displayName: licenseDisplayName(license),
+        maxDevices: license.max_devices ?? 1,
+        devicesInUse,
+        expiresAt: license.expires_at,
+        activatedAt: license.activated_at,
+        billingPeriod: license.billing_period,
+        customerEmail,
+        registeredDevices,
+        isActive,
+        isExpired: expired,
     });
-    
-  } catch (error: any) {
-    console.error(`[LICENSE INFO] Erro:`, error);
-    return NextResponse.json(
-      {
-        valid: false,
-        errorMessage: 'Erro ao consultar licença',
-        errorCode: 'INFO_ERROR',
-        details: error.message,
-      },
-      { status: 500 }
-    );
-  }
 }

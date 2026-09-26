@@ -102,7 +102,7 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     // Real-time updates
     const channel = supabase
       .channel('public:installations')
-      .on('postgres_changes', { event: '*', table: 'installations', filter: `user_id=eq.${userId}` }, fetchDevices)
+      .on('postgres_changes' as any, { event: '*', table: 'installations', filter: `user_id=eq.${userId}` }, fetchDevices)
       .subscribe();
 
     return () => {
@@ -151,18 +151,31 @@ export default function MyComputerPage({ userId }: { userId: string }) {
     const loadingId = toast.loading('Desvinculando hardware...');
     try {
       const response = await fetch('/api/v1/install/unlink', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ installation_id: id })
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ installation_id: id })
       });
-      
-      if (!response.ok) throw new Error();
-      
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const reason = data?.error || `HTTP ${response.status}`;
+        const corr = data?.correlation_id ? ` (id: ${data.correlation_id})` : '';
+        console.error('[UNLINK] Falha ao desvincular:', response.status, data);
+        throw new Error(`${reason}${corr}`);
+      }
+
+      if (data?.verified !== true && data?.already_unlinked !== true) {
+        throw new Error('O servidor não confirmou a desvinculação.');
+      }
+
       toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
       fetchDevices();
       setShowUnlinkModal(null);
-    } catch (error) {
-      toast.error('Falha ao desvincular.', { id: loadingId });
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'erro desconhecido';
+      console.error('[UNLINK] Erro:', err);
+      toast.error(`Falha ao desvincular: ${message}`, { id: loadingId, duration: 8000 });
     }
   };
 

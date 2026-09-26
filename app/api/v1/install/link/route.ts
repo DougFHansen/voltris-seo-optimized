@@ -1,113 +1,183 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logRequest,
+    logSuccess,
+    logSupabaseError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+    normalizeUuid,
+    maskEmail,
+} from '@/lib/voltris-log';
 
 export const runtime = 'nodejs';
 
+/**
+ * POST /api/v1/install/link
+ *
+ * Vincula uma instalacao a conta do usuario AUTENTICADO.
+ *
+ * Regra de seguranca: o `user_id` do body e apenas uma dica de UI. O dono real
+ * vem SEMPRE da sessao (cookie). Divergencia entre os dois e 403.
+ *
+ * Sucesso so e declarado depois de releitura no banco (regra 19): o app desktop
+ * so exibe "vinculado" quando este endpoint responde success.
+ */
 export async function POST(request: NextRequest) {
+    const correlationId = getOrCreateCorrelationId(request);
+    const ctx = startOperation('INSTALL_LINK', correlationId);
+
+    let body: any;
     try {
-        console.log('[API/LINK] ========== POST /api/v1/install/link ==========');
-
-        let bodyData: any;
-        try {
-            bodyData = await request.json();
-        } catch {
-            return NextResponse.json({ error: 'JSON inválido no corpo da requisição.' }, { status: 400 });
-        }
-
-        const { installation_id, user_id } = bodyData ?? {};
-        console.log('[API/LINK] installation_id:', installation_id, '| user_id:', user_id);
-
-        if (!installation_id || !user_id) {
-            return NextResponse.json({ error: 'Parâmetros ausentes: installation_id e user_id são obrigatórios.' }, { status: 400 });
-        }
-
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-        const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-        if (!supabaseUrl || !supabaseAnonKey || !supabaseServiceKey) {
-            console.error('[API/LINK] ❌ Variáveis de ambiente faltando');
-            return NextResponse.json({ error: 'Configuração do servidor incompleta.' }, { status: 500 });
-        }
-
-        // Verificar sessão do usuário via cookies
-        const serverSupabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-            cookies: {
-                get: (name: string) => request.cookies.get(name)?.value,
-                set: (_name: string, _value: string, _options: CookieOptions) => {},
-                remove: (_name: string, _options: CookieOptions) => {},
-            },
-        });
-
-        const { data: { user }, error: authError } = await serverSupabase.auth.getUser();
-
-        if (authError) {
-            console.error('[API/LINK] ❌ Erro de autenticação:', authError.message);
-            return NextResponse.json({ error: 'Erro ao verificar sessão: ' + authError.message }, { status: 401 });
-        }
-
-        if (!user) {
-            console.error('[API/LINK] ❌ Usuário não autenticado');
-            return NextResponse.json({ error: 'Sessão expirada. Faça login novamente.' }, { status: 401 });
-        }
-
-        console.log('[API/LINK] ✅ Usuário autenticado:', user.id, user.email);
-
-        // Validação de segurança: user_id do body deve bater com o da sessão
-        if (user.id.toLowerCase() !== user_id.toLowerCase()) {
-            console.error(`[API/LINK] ❌ ALERTA: sessão=${user.id} ≠ payload=${user_id}`);
-            return NextResponse.json({ error: 'Violação de integridade. Acesso negado.' }, { status: 403 });
-        }
-
-        const normalizedInstallationId = installation_id.trim().toLowerCase();
-        const normalizedUserId = user.id.toLowerCase();
-
-        // Usar service role para forçar vinculação
-        const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
-            auth: { autoRefreshToken: false, persistSession: false }
-        });
-
-        console.log('[API/LINK] Fazendo upsert installation_id:', normalizedInstallationId, '→ user_id:', normalizedUserId);
-
-        const { error: upsertError } = await supabaseAdmin
-            .from('installations')
-            .upsert({
-                id: normalizedInstallationId,
-                user_id: normalizedUserId,
-                updated_at: new Date().toISOString(),
-                last_heartbeat: new Date().toISOString()
-            }, { onConflict: 'id' });
-
-        if (upsertError) {
-            console.error('[API/LINK] ❌ Erro no upsert:', {
-                message: upsertError.message,
-                code: upsertError.code,
-                details: upsertError.details,
-                hint: upsertError.hint
-            });
-            return NextResponse.json({
-                error: 'Erro ao vincular dispositivo no banco de dados.',
-                details: upsertError.message,
-                code: upsertError.code
-            }, { status: 500 });
-        }
-
-        console.log(`[API/LINK] ✅ Vinculado com sucesso: ${user.email}`);
-
-        return NextResponse.json({
-            success: true,
-            message: 'Dispositivo vinculado com sucesso.',
-            email: user.email,
-            user_id: user.id,
-            linked_at: new Date().toISOString()
-        });
-
-    } catch (error: any) {
-        console.error('[API/LINK] ❌❌❌ ERRO CRÍTICO:', error?.message, error?.stack);
-        return NextResponse.json({
-            error: 'Erro interno ao processar vinculação.',
-            details: error?.message
-        }, { status: 500 });
+        body = await request.json();
+    } catch {
+        logRequest(ctx, request);
+        return errorWithCorrelation(ctx, 400, 'INVALID_JSON', 'JSON invalido no corpo da requisicao.');
     }
+    logRequest(ctx, request, body);
+
+    const pick = (...keys: string[]) => {
+        for (const k of keys) {
+            const camel = k.replace(/_([a-z])/g, (_, c: string) => c.toUpperCase());
+            const v = body?.[k] ?? body?.[camel];
+            if (v !== undefined && v !== null) return v;
+        }
+        return undefined;
+    };
+
+    const installationId = normalizeUuid(pick('installation_id'));
+    if (!installationId) {
+        return errorWithCorrelation(ctx, 400, 'INVALID_INSTALLATION_ID', 'installation_id invalido ou ausente.');
+    }
+    ctx.installationId = installationId;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseAnonKey || !supabaseServiceKey) {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Configuracao do servidor incompleta.');
+    }
+
+    const serverSupabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+        cookies: {
+            get: (name: string) => request.cookies.get(name)?.value,
+            set: (_n: string, _v: string, _o: CookieOptions) => {},
+            remove: (_n: string, _o: CookieOptions) => {},
+        },
+    });
+
+    const { data: sessionData, error: authError } = await serverSupabase.auth.getUser();
+    const user = sessionData?.user ?? null;
+
+    if (authError) {
+        return errorWithCorrelation(ctx, 401, 'AUTH_SESSION_ERROR', 'Erro ao verificar sessao.', {
+            expose: true,
+            details: { reason: authError.message },
+        });
+    }
+    if (!user) {
+        return errorWithCorrelation(ctx, 401, 'UNAUTHORIZED', 'Sessao expirada. Faca login novamente.');
+    }
+    ctx.userId = user.id;
+
+    const claimedUserId = pick('user_id');
+    if (claimedUserId && String(claimedUserId).toLowerCase() !== user.id.toLowerCase()) {
+        return errorWithCorrelation(
+            ctx,
+            403,
+            'INTEGRITY_VIOLATION',
+            'Violacao de integridade: o usuario do corpo difere da sessao.'
+        );
+    }
+
+    // O vinculo aponta para profiles.id (FK). Garante que o perfil existe antes
+    // de gravar, para nao estourar 23503 e devolver 409 opaco.
+    const admin = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    const { data: profile, error: profileError } = await admin
+        .from('profiles')
+        .select('id, email')
+        .eq('id', user.id)
+        .maybeSingle();
+
+    if (profileError) {
+        logSupabaseError(ctx, 'buscar perfil do usuario', profileError);
+        return errorWithCorrelation(ctx, 500, 'PROFILE_LOOKUP_FAILED', 'Nao foi possivel validar o perfil.');
+    }
+    if (!profile) {
+        return errorWithCorrelation(
+            ctx,
+            409,
+            'PROFILE_MISSING',
+            'Perfil do usuario ainda nao existe. Recarregue a pagina e tente novamente.'
+        );
+    }
+
+    const now = new Date().toISOString();
+
+    const { error: upsertError } = await admin.from('installations').upsert(
+        {
+            id: installationId,
+            user_id: user.id,
+            linked_at: now,
+            last_link_check_at: now,
+            updated_at: now,
+        },
+        { onConflict: 'id' }
+    );
+
+    if (upsertError) {
+        logSupabaseError(ctx, 'upsert link installations', upsertError);
+        return errorWithCorrelation(ctx, 500, 'DB_LINK_FAILED', 'Erro ao vincular dispositivo no banco de dados.', {
+            expose: true,
+            details: { pg_code: upsertError.code ?? null },
+        });
+    }
+
+    // REGRA 19: so declara sucesso depois de confirmar no banco.
+    const { data: confirmed, error: confirmError } = await admin
+        .from('installations')
+        .select('id, user_id, linked_at')
+        .eq('id', installationId)
+        .single();
+
+    if (confirmError || !confirmed) {
+        logSupabaseError(ctx, 'confirmar vinculo', confirmError);
+        return errorWithCorrelation(
+            ctx,
+            500,
+            'LINK_NOT_CONFIRMED',
+            'O vinculo nao pode ser confirmado no banco. Nada foi vinculado.'
+        );
+    }
+    if (confirmed.user_id !== user.id) {
+        return errorWithCorrelation(
+            ctx,
+            500,
+            'LINK_NOT_CONFIRMED',
+            'O banco nao retornou o vinculo esperado. Nada foi vinculado.'
+        );
+    }
+
+    logSuccess(ctx, 'vinculacao confirmada', { email: maskEmail(user.email) });
+
+    return jsonWithCorrelation(ctx, {
+        success: true,
+        message: 'Dispositivo vinculado com sucesso.',
+        installation_id: confirmed.id,
+        user_id: confirmed.user_id,
+        email: user.email,
+        linked_at: confirmed.linked_at ?? now,
+        verified: true,
+    });
+}
+
+/** Health check do endpoint. */
+export async function GET() {
+    return Response.json({ status: 'ok', endpoint: 'install/link' });
 }

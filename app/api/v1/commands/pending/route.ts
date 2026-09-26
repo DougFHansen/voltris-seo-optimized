@@ -1,79 +1,101 @@
 import { createClient } from '@supabase/supabase-js';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { installationOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logSuccess,
+    logWarn,
+    logSupabaseError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+    normalizeUuid,
+} from '@/lib/voltris-log';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
+/** Comandos expirados nao sao entregues: evita replay de comando antigo. */
+const COMMAND_TTL_MINUTES = 30;
+
+/**
+ * GET /api/v1/commands/pending
+ *
+ * Entrega os comandos pendentes de UMA maquina. O dispositivo authentica pelo
+ * proprio installation_id (que ele gera e persiste localmente).
+ */
 export async function GET(req: NextRequest) {
-    try {
-        const { searchParams } = new URL(req.url);
-        const machine_id = searchParams.get('machine_id') || searchParams.get('device_id');
+    const correlationId = getOrCreateCorrelationId(req);
+    const ctx = startOperation('COMMAND_PENDING', correlationId);
 
-        console.log('[API/COMMANDS/PENDING] ===== INÍCIO =====');
-        console.log('[API/COMMANDS/PENDING] machine_id/device_id:', machine_id);
+    const { searchParams } = req.nextUrl;
+    const rawId = searchParams.get('machine_id') ?? searchParams.get('device_id');
+    const machineId = normalizeUuid(rawId);
 
-        if (!machine_id) {
-            console.error('[API/COMMANDS/PENDING] machine_id faltando!');
-            return NextResponse.json({ error: 'Missing machine_id' }, { status: 400 });
-        }
-
-        // SEGURANÇA: se o chamador estiver autenticado (dashboard web), só consulta
-        // comandos de instalações da própria conta. Desktop sem sessão segue normal.
-        const ownershipError = await installationOwnershipErrorIfAuthenticated(machine_id);
-        if (ownershipError) return ownershipError;
-
-        const supabaseAdmin = createClient(
-            process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.SUPABASE_SERVICE_ROLE_KEY!
-        );
-
-        // Buscar installation_id usando machine_id
-        console.log('[API/COMMANDS/PENDING] Buscando instalação...');
-        const { data: installation, error: installError } = await supabaseAdmin
-            .from('installations')
-            .select('id')
-            .eq('id', machine_id)
-            .single();
-
-        if (installError || !installation) {
-            console.error('[API/COMMANDS/PENDING] Instalação não encontrada:', installError);
-            return NextResponse.json({ commands: [] }); // Silent fail for unregistered devices
-        }
-
-        console.log('[API/COMMANDS/PENDING] Instalação encontrada:', installation.id);
-
-        // Buscar comandos pendentes na tabela device_commands
-        console.log('[API/COMMANDS/PENDING] Buscando comandos pendentes...');
-        const { data: commands, error } = await supabaseAdmin
-            .from('device_commands')
-            .select('id, command_type, payload, status, created_at')
-            .eq('installation_id', installation.id)
-            .eq('status', 'pending')
-            .order('created_at', { ascending: true });
-
-        if (error) {
-            console.error('[API/COMMANDS/PENDING] Erro ao buscar comandos:', error);
-            return NextResponse.json({ commands: [] });
-        }
-
-        console.log('[API/COMMANDS/PENDING] Comandos encontrados:', commands?.length || 0);
-        if (commands && commands.length > 0) {
-            console.log('[API/COMMANDS/PENDING] Detalhes dos comandos:', JSON.stringify(commands, null, 2));
-        }
-        console.log('[API/COMMANDS/PENDING] ===== FIM =====');
-
-        return NextResponse.json(
-            { commands: commands || [] },
-            { 
-                headers: {
-                    'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate'
-                }
-            }
-        );
-
-    } catch (err) {
-        console.error('[API/COMMANDS/PENDING] Erro geral:', err);
-        return NextResponse.json({ error: 'Server Error' }, { status: 500 });
+    if (!machineId) {
+        return errorWithCorrelation(ctx, 400, 'INVALID_MACHINE_ID', 'Missing or invalid machine_id', {
+            details: { commands: [] },
+        });
     }
+    ctx.installationId = machineId;
+
+    const ownershipError = await installationOwnershipErrorIfAuthenticated(machineId);
+    if (ownershipError) return ownershipError;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseServiceKey) {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Database configuration missing', {
+            details: { commands: [] },
+        });
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    const { data: installation, error: installError } = await supabase
+        .from('installations')
+        .select('id')
+        .eq('id', machineId)
+        .maybeSingle();
+
+    if (installError) {
+        logSupabaseError(ctx, 'buscar instalacao', installError);
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao consultar o dispositivo.', {
+            details: { commands: [] },
+        });
+    }
+
+    if (!installation) {
+        // Dispositivo ainda nao registrado: responde lista vazia (nao erro) para
+        // o app nao entrar em loop de retry.
+        logWarn(ctx, 'instalacao nao encontrada; retornando lista vazia');
+        return jsonWithCorrelation(ctx, { commands: [], registered: false });
+    }
+
+    const notExpired = new Date(Date.now() - COMMAND_TTL_MINUTES * 60_000).toISOString();
+
+    const { data: commands, error } = await supabase
+        .from('device_commands')
+        .select('id, command_type, payload, status, created_at')
+        .eq('installation_id', installation.id)
+        .eq('status', 'pending')
+        .gte('created_at', notExpired)
+        .order('created_at', { ascending: true });
+
+    if (error) {
+        logSupabaseError(ctx, 'buscar device_commands pendentes', error);
+        return errorWithCorrelation(ctx, 500, 'DB_COMMAND_READ_FAILED', 'Erro ao buscar comandos.', {
+            details: { commands: [] },
+        });
+    }
+
+    logSuccess(ctx, 'comandos pendentes entregues', { count: commands?.length ?? 0 });
+
+    return jsonWithCorrelation(
+        ctx,
+        { commands: commands ?? [], registered: true },
+        200
+    );
 }

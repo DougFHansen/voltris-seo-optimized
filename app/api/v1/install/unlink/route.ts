@@ -1,92 +1,160 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { createClient as createServerClient } from '@/utils/supabase/server';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logRequest,
+    logSuccess,
+    logSupabaseError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+    normalizeUuid,
+} from '@/lib/voltris-log';
 
 export const runtime = 'nodejs';
 
+/**
+ * POST /api/v1/install/unlink
+ *
+ * Desvincula a maquina do usuario. Exige sessao: desvinculacao e sempre uma
+ * acao do dono, nunca do dispositivo.
+ *
+ * O `installation_id` e aceito no body OU na query string, porque o app desktop
+ * enviava apenas na query (e recebia 400 "Missing installation_id").
+ */
 export async function POST(request: NextRequest) {
+    const correlationId = getOrCreateCorrelationId(request);
+    const ctx = startOperation('INSTALL_UNLINK', correlationId);
+
+    let body: any = {};
     try {
-        let installation_id: string | undefined;
-
-        try {
-            const body = await request.json();
-            installation_id = body?.installation_id;
-        } catch {
-            return NextResponse.json({ error: 'JSON inválido no corpo da requisição.' }, { status: 400 });
-        }
-
-        if (!installation_id) {
-            return NextResponse.json({ error: 'Missing installation_id' }, { status: 400 });
-        }
-
-        // SEGURANÇA: exigir sessão — desvincular só é feito pelo dashboard web.
-        const supabaseSession = await createServerClient();
-        const { data: { user }, error: authError } = await supabaseSession.auth.getUser();
-
-        console.log('[API/UNLINK] user:', user?.id, 'authError:', authError?.message);
-
-        if (!user) {
-            return NextResponse.json({ error: 'Unauthorized — sessão inválida ou expirada.' }, { status: 401 });
-        }
-
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-        const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-        const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-        // SEGURANÇA: verificar que a instalação pertence ao usuário logado
-        const { data: installation, error: fetchError } = await supabase
-            .from('installations')
-            .select('id, user_id')
-            .eq('id', installation_id)
-            .maybeSingle();
-
-        console.log('[API/UNLINK] installation:', installation, 'fetchError:', fetchError?.message);
-
-        if (fetchError) {
-            console.error('[API/UNLINK] Erro ao buscar instalação:', fetchError);
-            return NextResponse.json({ error: 'Erro ao verificar instalação.' }, { status: 500 });
-        }
-
-        if (!installation) {
-            return NextResponse.json({ error: 'Instalação não encontrada.' }, { status: 404 });
-        }
-
-        if (installation.user_id && installation.user_id !== user.id) {
-            console.warn(`[API/UNLINK] ACESSO NEGADO: user ${user.id} tentou desvincular instalação de ${installation.user_id}`);
-            return NextResponse.json({ error: 'Forbidden — você não é dono desta instalação.' }, { status: 403 });
-        }
-
-        // Desvincular: user_id = null
-        const { error: updateError } = await supabase
-            .from('installations')
-            .update({
-                user_id: null,
-                updated_at: new Date().toISOString()
-            })
-            .eq('id', installation_id);
-
-        if (updateError) {
-            console.error('[API/UNLINK] Erro ao desvincular:', updateError);
-            throw updateError;
-        }
-
-        console.log(`[API/UNLINK] ✅ Instalação ${installation_id} desvinculada com sucesso.`);
-
-        // Limpar comandos pendentes — opcional, não falha se tabela não existir
-        try {
-            await supabase
-                .from('device_commands')
-                .delete()
-                .eq('installation_id', installation_id)
-                .eq('status', 'pending');
-        } catch (cmdError) {
-            console.warn('[API/UNLINK] Aviso: não foi possível limpar device_commands (não crítico):', cmdError);
-        }
-
-        return NextResponse.json({ success: true });
-
-    } catch (error: any) {
-        console.error('[API/UNLINK] ❌ ERRO CRÍTICO:', error?.message, error?.code);
-        return NextResponse.json({ error: error?.message || 'Erro interno ao desvincular.' }, { status: 500 });
+        body = await request.json();
+    } catch {
+        // body vazio e aceitavel quando o id vem na query string
+        body = {};
     }
+    logRequest(ctx, request, body);
+
+    const rawId =
+        body?.installation_id ??
+        body?.installationId ??
+        request.nextUrl.searchParams.get('installation_id');
+
+    const installationId = normalizeUuid(rawId);
+    if (!installationId) {
+        return errorWithCorrelation(ctx, 400, 'INVALID_INSTALLATION_ID', 'Missing or invalid installation_id.');
+    }
+    ctx.installationId = installationId;
+
+    const supabase = await createServerClient();
+    const { data: sessionData, error: authError } = await supabase.auth.getUser();
+    const user = sessionData?.user ?? null;
+
+    if (!user) {
+        return errorWithCorrelation(ctx, 401, 'UNAUTHORIZED', 'Unauthorized - sessao invalida ou expirada.');
+    }
+    ctx.userId = user.id;
+    void authError;
+
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!supabaseUrl || !supabaseServiceKey) {
+        return errorWithCorrelation(ctx, 500, 'SERVER_CONFIG', 'Configuracao do servidor incompleta.');
+    }
+
+    const admin = createClient(supabaseUrl, supabaseServiceKey, {
+        auth: { autoRefreshToken: false, persistSession: false },
+    });
+
+    const { data: installation, error: fetchError } = await admin
+        .from('installations')
+        .select('id, user_id')
+        .eq('id', installationId)
+        .maybeSingle();
+
+    if (fetchError) {
+        logSupabaseError(ctx, 'buscar instalacao', fetchError);
+        return errorWithCorrelation(ctx, 500, 'DB_READ_FAILED', 'Erro ao verificar instalacao.', {
+            expose: true,
+            details: { pg_code: fetchError.code ?? null },
+        });
+    }
+
+    if (!installation) {
+        return errorWithCorrelation(ctx, 404, 'INSTALLATION_NOT_FOUND', 'Instalacao nao encontrada.');
+    }
+
+    if (installation.user_id !== user.id) {
+        return errorWithCorrelation(ctx, 403, 'NOT_OWNER', 'Voce nao e dono desta instalacao.');
+    }
+
+    if (installation.user_id === null) {
+        // Ja desvinculado: idempotente, nao e erro.
+        logSuccess(ctx, 'instalacao ja estava desvinculada');
+        return jsonWithCorrelation(ctx, { success: true, already_unlinked: true, installation_id: installationId });
+    }
+
+    const { error: updateError } = await admin
+        .from('installations')
+        .update({ user_id: null, linked_at: null, updated_at: new Date().toISOString() })
+        .eq('id', installationId)
+        .eq('user_id', user.id);
+
+    if (updateError) {
+        logSupabaseError(ctx, 'desvincular instalacao', updateError);
+        return errorWithCorrelation(ctx, 500, 'DB_UNLINK_FAILED', 'Erro ao desvincular dispositivo.', {
+            expose: true,
+            details: { pg_code: updateError.code ?? null },
+        });
+    }
+
+    // Confirmacao pos-escrita (regra 19).
+    const { data: confirmed, error: confirmError } = await admin
+        .from('installations')
+        .select('id, user_id')
+        .eq('id', installationId)
+        .single();
+
+    if (confirmError || !confirmed || confirmed.user_id !== null) {
+        logSupabaseError(ctx, 'confirmar desvinculo', confirmError);
+        return errorWithCorrelation(
+            ctx,
+            500,
+            'UNLINK_NOT_CONFIRMED',
+            'A desvinculacao nao pode ser confirmada no banco.'
+        );
+    }
+
+    // Limpeza de comandos pendentes. Nao e mais engolida em silencio: se
+    // falhar, o vinculo continua desfeito e o cliente recebe o aviso.
+    let pendingRemoved = 0;
+    let cleanupWarning: string | null = null;
+    try {
+        const { count, error: cmdError } = await admin
+            .from('device_commands')
+            .delete({ count: 'exact' })
+            .eq('installation_id', installationId)
+            .eq('status', 'pending');
+        if (cmdError) throw cmdError;
+        pendingRemoved = count ?? 0;
+    } catch (cmdError: any) {
+        cleanupWarning = 'Comandos pendentes nao foram limpos.';
+        logSupabaseError(ctx, 'limpar device_commands pendentes', cmdError ?? null);
+    }
+
+    logSuccess(ctx, 'desvinculacao confirmada', { pendingRemoved, cleanupWarning });
+
+    return jsonWithCorrelation(ctx, {
+        success: true,
+        verified: true,
+        installation_id: confirmed.id,
+        pending_commands_removed: pendingRemoved,
+        ...(cleanupWarning ? { warning: cleanupWarning } : {}),
+    });
+}
+
+/** Health check do endpoint. */
+export async function GET() {
+    return Response.json({ status: 'ok', endpoint: 'install/unlink' });
 }

@@ -61,27 +61,40 @@ export default function UserOptimizerSection({ userId }: { userId: string }) {
         setUnlinkModalOpen(true);
     };
 
-    const handleConfirmUnlink = async () => {
-        if (!selectedInstallation) return;
-        setUnlinkModalOpen(false);
-        const loadingId = toast.loading('Processando...');
-        try {
-            const unlinkRes = await fetch('/api/v1/install/unlink', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ installation_id: selectedInstallation.id })
-            });
-            if (!unlinkRes.ok) {
-                const errData = await unlinkRes.json().catch(() => ({}));
-                throw new Error(errData.error || `HTTP ${unlinkRes.status}`);
-            }
-            toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
-            fetchData();
-        } catch {
-            toast.error('Falha ao desvincular.', { id: loadingId });
-        }
-        setSelectedInstallation(null);
-    };
+  const handleConfirmUnlink = async () => {
+    if (!selectedInstallation) return;
+    setUnlinkModalOpen(false);
+    const loadingId = toast.loading('Processando...');
+    try {
+      const unlinkRes = await fetch('/api/v1/install/unlink', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ installation_id: selectedInstallation.id })
+      });
+      const unlinkData = await unlinkRes.json().catch(() => ({}));
+
+      if (!unlinkRes.ok) {
+        // Não mascara a causa: mostra o erro e o correlation_id do servidor.
+        const reason = unlinkData?.error || `HTTP ${unlinkRes.status}`;
+        const corr = unlinkData?.correlation_id ? ` (id: ${unlinkData.correlation_id})` : '';
+        console.error('[UNLINK] Falha ao desvincular:', unlinkRes.status, unlinkData);
+        throw new Error(`${reason}${corr}`);
+      }
+
+      if (unlinkData?.verified !== true && unlinkData?.already_unlinked !== true) {
+        throw new Error('O servidor não confirmou a desvinculação.');
+      }
+
+      toast.success('Dispositivo removido.', { id: loadingId, icon: '🗑️' });
+      fetchData();
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'erro desconhecido';
+      console.error('[UNLINK] Erro:', err);
+      toast.error(`Falha ao desvincular: ${message}`, { id: loadingId, duration: 8000 });
+    }
+    setSelectedInstallation(null);
+  };
+
 
     if (loading) return null;
 
