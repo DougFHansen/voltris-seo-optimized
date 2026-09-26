@@ -24,6 +24,7 @@ export type VoltrisOperation =
     | 'INSTALL_STATUS'
     | 'INSTALL_HARDWARE'
     | 'INSTALL_FORCE_LINK'
+    | 'INSTALL_CREDENTIAL'
     | 'COMMAND_CREATE'
     | 'COMMAND_PENDING'
     | 'COMMAND_UPDATE'

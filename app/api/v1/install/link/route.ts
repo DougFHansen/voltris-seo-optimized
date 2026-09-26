@@ -12,11 +12,6 @@ import {
     normalizeUuid,
     maskEmail,
 } from '@/lib/voltris-log';
-import {
-    DEVICE_CREDENTIAL_FIELD,
-    generateDeviceCredential,
-    hashDeviceCredential,
-} from '@/lib/device-credential';
 
 export const runtime = 'nodejs';
 
@@ -125,6 +120,17 @@ export async function POST(request: NextRequest) {
 
     const now = new Date().toISOString();
 
+    // ROTACAO DA CREDENCIAL NO VINCULO
+    // O vinculo e feito pelo NAVEGADOR, que prova identidade por sessao. O
+    // navegador nao tem a credencial do dispositivo, entao nao consegue validar
+    // nada — logo o vinculo e o ponto de confianca e rotaciona a credencial.
+    //
+    // Isso tambem e o caminho de recuperacao: builds antigos gravavam o hash via
+    // /install/link e devolviam o token no corpo da resposta, que o JavaScript
+    // nunca lia. O app ficava com hash gravado e zero tokens, travado em
+    // "credencial invalida" para sempre (409 no registro, sem email no status).
+    // Rotacionando aqui, revincular pela conta destrava a maquina: o proximo
+    // poll do app encontra o hash vazio e registra o token que ele mesmo gerou.
     const { error: upsertError } = await admin.from('installations').upsert(
         {
             id: installationId,
@@ -132,6 +138,9 @@ export async function POST(request: NextRequest) {
             linked_at: now,
             last_link_check_at: now,
             updated_at: now,
+            device_credential_hash: null,
+            device_credential_issued: null,
+            unlinked_at: null,
         },
         { onConflict: 'id' }
     );
@@ -171,28 +180,17 @@ export async function POST(request: NextRequest) {
 
     logSuccess(ctx, 'vinculacao confirmada', { email: maskEmail(user.email) });
 
-    // REGRA 19 (continuacao): o navegador é quem vincula, então é o lugar certo para
-    // emitir a credencial do dispositivo. O token volta UMA ÚNICA VEZ nesta
-    // resposta; o banco guarda só o hash. O app desktop a recebe pelo
-    // polling de /install/status logo em seguida e a guarda com DPAPI.
-    const credential = generateDeviceCredential();
-    const { error: credentialError } = await admin
-        .from('installations')
-        .update({
-            device_credential_hash: hashDeviceCredential(credential),
-            device_credential_issued: now,
-            unlinked_at: null,
-        })
-        .eq('id', installationId);
-
-    if (credentialError) {
-        // O vinculo ja esta feito e confirmado; falhar so na credencial nao
-        // pode reportar erro de vinculo. O app revincula e recebe na proxima
-        // emissao.
-        logSupabaseError(ctx, 'emitir credencial do dispositivo', credentialError);
-    } else {
-        logSuccess(ctx, 'credencial de dispositivo emitida');
-    }
+    // A credencial de dispositivo NAO e emitida aqui.
+    //
+    // O navegador autentica por sessão e não precisa dela; o token era
+    // devolvido no corpo da resposta, mas o JavaScript da página nunca o lia —
+    // então o hash ficava gravado sem o app nunca receber o token. Resultado:
+    // o poll do app caia em "credencial invalida", nao devolvia email e o
+    // modal de sucesso ao vincular nunca aparecia.
+    //
+    // A credencial é de REGRA do dispositivo: o app gera o próprio token e o
+    // registra em POST /api/v1/install/credential antes de abrir o navegador.
+    // Assim nenhum segredo trafega do servidor para o app.
 
     return jsonWithCorrelation(ctx, {
         success: true,
@@ -202,7 +200,6 @@ export async function POST(request: NextRequest) {
         email: user.email,
         linked_at: confirmed.linked_at ?? now,
         verified: true,
-        ...(credentialError ? {} : { [DEVICE_CREDENTIAL_FIELD]: credential }),
     });
 }
 

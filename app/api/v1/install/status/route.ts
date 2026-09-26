@@ -33,14 +33,20 @@ export const revalidate = 0;
  *
  * AUTENTICACAO DO DISPOSITIVO
  * O app não tem sessão. Ele se apresenta com a credencial de dispositivo
- * (header x-voltris-device-credential). Três casos:
+ * (header x-voltris-device-credential). A credencial é de REGRA do próprio
+ * dispositivo: o app a gera e a registra em POST /api/v1/install/credential.
+ * Aqui só verificamos. Quatro casos:
  *
- *   1. sem credencial no banco  -> emite uma e devolve (dispositivo legado que
- *      ainda não reivindicou). O installation_id é um UUID v4 do app e, com o
- *      RLS corrigido, não é mais enumerável por anon.
- *   2. credencial correta       -> devolve o email do dono.
- *   3. credencial incorreta     -> devolve apenas `linked`, SEM email e sem
- *      reemitir. O app orienta a revincular.
+ *   1. sem hash no banco + app apresenta token -> registra o hash do token
+ *      APRESENTADO e devolve o email. Cobre a primeira execução e também
+ *      desbloqueia máquinas presas por builds antigos (o /install/link rotaciona
+ *      o hash, então o próximo poll se auto-registra).
+ *   2. sem hash no banco + app sem token       -> bootstrap de transição, emite
+ *      uma única credencial. Só para builds muito antigos; o app novo nunca
+ *      chega aqui.
+ *   3. hash correto                            -> devolve o email do dono.
+ *   4. hash incorreto                          -> devolve apenas `linked`, SEM
+ *      email e sem reemitir. O app orienta a revincular.
  *
  * Sem esse portão, este endpoint virava um oráculo de e-mail: bastava saber o
  * installation_id para descobrir a quem a máquina pertence.
@@ -122,22 +128,46 @@ export async function GET(request: NextRequest) {
 
     if (isLinked) {
         if (!installation.device_credential_hash) {
-            // Caso 1: haven't claimed it yet. Emite uma agora.
-            issuedCredential = generateDeviceCredential();
-            const { error: issueError } = await supabase
-                .from('installations')
-                .update({
-                    device_credential_hash: hashDeviceCredential(issuedCredential),
-                    device_credential_issued: new Date().toISOString(),
-                })
-                .eq('id', installationId);
+            if (presented) {
+                // O app gerou o proprio token e ainda nao conseguiu registrar
+                // (build antigo, ou registro anterior falhou). Gravamos o hash
+                // do token QUE ELE APRESENTOU: nenhum segredo trafega, e o
+                // device ja e o dono do token.
+                const { error: lateError } = await supabase
+                    .from('installations')
+                    .update({
+                        device_credential_hash: hashDeviceCredential(presented),
+                        device_credential_issued: new Date().toISOString(),
+                    })
+                    .eq('id', installationId)
+                    .is('device_credential_hash', null);
 
-            if (issueError) {
-                logSupabaseError(ctx, 'emitir credencial (bootstrap)', issueError);
-                issuedCredential = null;
+                if (lateError) {
+                    logSupabaseError(ctx, 'registrar credencial (tardio)', lateError);
+                } else {
+                    credentialValid = true;
+                    logSuccess(ctx, 'credencial registrada no primeiro poll');
+                }
             } else {
-                credentialValid = true;
-                logSuccess(ctx, 'credencial emitida no bootstrap');
+                // Transicao: build muito antigo, sem token nenhum. Emite uma
+                // vez. O app novo ja registra por POST /install/credential e
+                // nunca chega aqui.
+                issuedCredential = generateDeviceCredential();
+                const { error: issueError } = await supabase
+                    .from('installations')
+                    .update({
+                        device_credential_hash: hashDeviceCredential(issuedCredential),
+                        device_credential_issued: new Date().toISOString(),
+                    })
+                    .eq('id', installationId);
+
+                if (issueError) {
+                    logSupabaseError(ctx, 'emitir credencial (bootstrap legado)', issueError);
+                    issuedCredential = null;
+                } else {
+                    credentialValid = true;
+                    logSuccess(ctx, 'credencial emitida no bootstrap legado');
+                }
             }
         } else {
             // Hash ja existe: ou o app tem a credencial, ou nao tem.
