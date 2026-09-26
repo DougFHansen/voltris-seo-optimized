@@ -12,6 +12,14 @@ import {
     normalizeUuid,
     maskEmail,
 } from '@/lib/voltris-log';
+import {
+    DEVICE_CREDENTIAL_FIELD,
+    DEVICE_CREDENTIAL_HEADER,
+    generateDeviceCredential,
+    hashDeviceCredential,
+    readPresentedCredential,
+    verifyDeviceCredential,
+} from '@/lib/device-credential';
 
 export const runtime = 'nodejs';
 
@@ -21,11 +29,24 @@ export const revalidate = 0;
 /**
  * GET /api/v1/install/status
  *
- * Consulta de estado usada pelo app desktop para saber se esta vinculado.
+ * Estado de vínculo usado pelo app desktop.
  *
- * Sem este campo `linked`, o programa tratava falha de rede como "desvinculado"
- * e apagava o estado local. Por isso o app desktop so pode limpar o estado local
- * quando `is_linked === false` com HTTP 200.
+ * AUTENTICACAO DO DISPOSITIVO
+ * O app não tem sessão. Ele se apresenta com a credencial de dispositivo
+ * (header x-voltris-device-credential). Três casos:
+ *
+ *   1. sem credencial no banco  -> emite uma e devolve (dispositivo legado que
+ *      ainda não reivindicou). O installation_id é um UUID v4 do app e, com o
+ *      RLS corrigido, não é mais enumerável por anon.
+ *   2. credencial correta       -> devolve o email do dono.
+ *   3. credencial incorreta     -> devolve apenas `linked`, SEM email e sem
+ *      reemitir. O app orienta a revincular.
+ *
+ * Sem esse portão, este endpoint virava um oráculo de e-mail: bastava saber o
+ * installation_id para descobrir a quem a máquina pertence.
+ *
+ * `is_linked === false` só é devolvido com HTTP 200 quando a resposta é
+ * conclusiva — é isso que impede o app de tratar "rede caiu" como "desvinculado".
  */
 export async function GET(request: NextRequest) {
     const correlationId = getOrCreateCorrelationId(request);
@@ -59,7 +80,7 @@ export async function GET(request: NextRequest) {
 
     const { data: installation, error } = await supabase
         .from('installations')
-        .select('id, user_id, linked_at, updated_at, last_heartbeat')
+        .select('id, user_id, linked_at, updated_at, last_heartbeat, device_credential_hash')
         .eq('id', installationId)
         .maybeSingle();
 
@@ -89,8 +110,50 @@ export async function GET(request: NextRequest) {
         }
     }
 
+    // Credencial apresentada pelo app.
+    const presented = readPresentedCredential(
+        request.headers.get(DEVICE_CREDENTIAL_HEADER),
+        null
+    );
+
+    let issuedCredential: string | null = null;
+    let credentialValid = false;
+    let credentialInvalid = false;
+
+    if (isLinked) {
+        if (!installation.device_credential_hash) {
+            // Caso 1: haven't claimed it yet. Emite uma agora.
+            issuedCredential = generateDeviceCredential();
+            const { error: issueError } = await supabase
+                .from('installations')
+                .update({
+                    device_credential_hash: hashDeviceCredential(issuedCredential),
+                    device_credential_issued: new Date().toISOString(),
+                })
+                .eq('id', installationId);
+
+            if (issueError) {
+                logSupabaseError(ctx, 'emitir credencial (bootstrap)', issueError);
+                issuedCredential = null;
+            } else {
+                credentialValid = true;
+                logSuccess(ctx, 'credencial emitida no bootstrap');
+            }
+        } else {
+            // Hash ja existe: ou o app tem a credencial, ou nao tem.
+            credentialValid = verifyDeviceCredential(presented, installation.device_credential_hash);
+            credentialInvalid = !credentialValid;
+
+            if (credentialInvalid) {
+                logWarn(ctx, 'credencial ausente ou invalida; email nao sera devolvido', {
+                    presented: Boolean(presented),
+                });
+            }
+        }
+    }
+
     let userEmail: string | null = null;
-    if (isLinked && installation.user_id) {
+    if (isLinked && installation.user_id && credentialValid) {
         const { data: userData, error: userError } = await supabase.auth.admin.getUserById(installation.user_id);
         if (userError) {
             logSupabaseError(ctx, 'buscar email do usuario', userError);
@@ -109,7 +172,12 @@ export async function GET(request: NextRequest) {
         logWarn(ctx, 'nao foi possivel registrar last_link_check_at', { reason: (e as Error)?.message });
     }
 
-    logSuccess(ctx, 'status consultado', { isLinked, user: maskEmail(userEmail) });
+    logSuccess(ctx, 'status consultado', {
+        isLinked,
+        credentialValid,
+        credentialInvalid,
+        user: maskEmail(userEmail),
+    });
 
     return jsonWithCorrelation(
         ctx,
@@ -123,6 +191,9 @@ export async function GET(request: NextRequest) {
             linked_at: installation.linked_at,
             last_updated: installation.updated_at,
             last_heartbeat: installation.last_heartbeat,
+            credential_valid: isLinked ? credentialValid : null,
+            credential_invalid: isLinked ? credentialInvalid : null,
+            ...(issuedCredential ? { [DEVICE_CREDENTIAL_FIELD]: issuedCredential } : {}),
         },
         200
     );

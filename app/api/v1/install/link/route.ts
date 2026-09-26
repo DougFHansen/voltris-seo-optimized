@@ -12,6 +12,11 @@ import {
     normalizeUuid,
     maskEmail,
 } from '@/lib/voltris-log';
+import {
+    DEVICE_CREDENTIAL_FIELD,
+    generateDeviceCredential,
+    hashDeviceCredential,
+} from '@/lib/device-credential';
 
 export const runtime = 'nodejs';
 
@@ -166,6 +171,29 @@ export async function POST(request: NextRequest) {
 
     logSuccess(ctx, 'vinculacao confirmada', { email: maskEmail(user.email) });
 
+    // REGRA 19 (continuacao): o navegador é quem vincula, então é o lugar certo para
+    // emitir a credencial do dispositivo. O token volta UMA ÚNICA VEZ nesta
+    // resposta; o banco guarda só o hash. O app desktop a recebe pelo
+    // polling de /install/status logo em seguida e a guarda com DPAPI.
+    const credential = generateDeviceCredential();
+    const { error: credentialError } = await admin
+        .from('installations')
+        .update({
+            device_credential_hash: hashDeviceCredential(credential),
+            device_credential_issued: now,
+            unlinked_at: null,
+        })
+        .eq('id', installationId);
+
+    if (credentialError) {
+        // O vinculo ja esta feito e confirmado; falhar so na credencial nao
+        // pode reportar erro de vinculo. O app revincula e recebe na proxima
+        // emissao.
+        logSupabaseError(ctx, 'emitir credencial do dispositivo', credentialError);
+    } else {
+        logSuccess(ctx, 'credencial de dispositivo emitida');
+    }
+
     return jsonWithCorrelation(ctx, {
         success: true,
         message: 'Dispositivo vinculado com sucesso.',
@@ -174,6 +202,7 @@ export async function POST(request: NextRequest) {
         email: user.email,
         linked_at: confirmed.linked_at ?? now,
         verified: true,
+        ...(credentialError ? {} : { [DEVICE_CREDENTIAL_FIELD]: credential }),
     });
 }
 

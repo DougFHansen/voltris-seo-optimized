@@ -6,22 +6,37 @@ import {
     getOrCreateCorrelationId,
     logRequest,
     logSuccess,
+    logWarn,
     logSupabaseError,
     jsonWithCorrelation,
     errorWithCorrelation,
     normalizeUuid,
 } from '@/lib/voltris-log';
+import {
+    DEVICE_CREDENTIAL_HEADER,
+    readPresentedCredential,
+    verifyDeviceCredential,
+} from '@/lib/device-credential';
 
 export const runtime = 'nodejs';
 
 /**
  * POST /api/v1/install/unlink
  *
- * Desvincula a maquina do usuario. Exige sessao: desvinculacao e sempre uma
- * acao do dono, nunca do dispositivo.
+ * Desvincula a maquina. Duas autorizacoes, conforme quem chama:
  *
- * O `installation_id` e aceito no body OU na query string, porque o app desktop
- * enviava apenas na query (e recebia 400 "Missing installation_id").
+ *   1. SESSAO (dashboard do site) — o dono desvinca pela aba MyComputer.
+ *      Exigida, como antes.
+ *
+ *   2. CREDENCIAL DE DISPOSITIVO (app desktop) — o proprio dispositivo se
+ *      desvincula. E o que permite o botao "Desvincular deste Computador"
+ *      funcionar: o app nao tem cookie de sessao, tem a credencial emitida no
+ *      momento do vinculo.
+ *
+ * Sem sessao E sem credencial valida => 401. Nunca desvincula "por saber o
+ * installation_id", que e o que causava o IDOR.
+ *
+ * O `installation_id` e aceito no body OU na query string.
  */
 export async function POST(request: NextRequest) {
     const correlationId = getOrCreateCorrelationId(request);
@@ -31,7 +46,6 @@ export async function POST(request: NextRequest) {
     try {
         body = await request.json();
     } catch {
-        // body vazio e aceitavel quando o id vem na query string
         body = {};
     }
     logRequest(ctx, request, body);
@@ -47,16 +61,6 @@ export async function POST(request: NextRequest) {
     }
     ctx.installationId = installationId;
 
-    const supabase = await createServerClient();
-    const { data: sessionData, error: authError } = await supabase.auth.getUser();
-    const user = sessionData?.user ?? null;
-
-    if (!user) {
-        return errorWithCorrelation(ctx, 401, 'UNAUTHORIZED', 'Unauthorized - sessao invalida ou expirada.');
-    }
-    ctx.userId = user.id;
-    void authError;
-
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
     if (!supabaseUrl || !supabaseServiceKey) {
@@ -69,7 +73,7 @@ export async function POST(request: NextRequest) {
 
     const { data: installation, error: fetchError } = await admin
         .from('installations')
-        .select('id, user_id')
+        .select('id, user_id, device_credential_hash')
         .eq('id', installationId)
         .maybeSingle();
 
@@ -85,21 +89,60 @@ export async function POST(request: NextRequest) {
         return errorWithCorrelation(ctx, 404, 'INSTALLATION_NOT_FOUND', 'Instalacao nao encontrada.');
     }
 
-    if (installation.user_id !== user.id) {
-        return errorWithCorrelation(ctx, 403, 'NOT_OWNER', 'Voce nao e dono desta instalacao.');
+    // --- Autorizacao: sessao OU credencial de dispositivo ---
+    const supabase = await createServerClient();
+    const { data: sessionData } = await supabase.auth.getUser();
+    const user = sessionData?.user ?? null;
+
+    const presentedCredential = readPresentedCredential(
+        request.headers.get(DEVICE_CREDENTIAL_HEADER),
+        body?.device_credential
+    );
+    const credentialOk = verifyDeviceCredential(presentedCredential, installation.device_credential_hash);
+
+    if (user) {
+        ctx.userId = user.id;
+        if (installation.user_id !== user.id) {
+            return errorWithCorrelation(ctx, 403, 'NOT_OWNER', 'Voce nao e dono desta instalacao.');
+        }
+    } else if (!credentialOk) {
+        logWarn(ctx, 'desvinculo sem sessao e sem credencial valida', {
+            presented: Boolean(presentedCredential),
+            hasStoredCredential: Boolean(installation.device_credential_hash),
+        });
+        return errorWithCorrelation(
+            ctx,
+            401,
+            'UNAUTHORIZED',
+            'Sessao ausente e credencial de dispositivo invalida. Revincule o dispositivo pela conta.'
+        );
+    } else {
+        logSuccess(ctx, 'desvinculo autorizado por credencial de dispositivo');
     }
 
     if (installation.user_id === null) {
         // Ja desvinculado: idempotente, nao e erro.
         logSuccess(ctx, 'instalacao ja estava desvinculada');
-        return jsonWithCorrelation(ctx, { success: true, already_unlinked: true, installation_id: installationId });
+        return jsonWithCorrelation(ctx, {
+            success: true,
+            already_unlinked: true,
+            installation_id: installationId,
+        });
     }
 
+    // Descarte a credencial: ela vale para UM vinculo. Revincular gera outra.
     const { error: updateError } = await admin
         .from('installations')
-        .update({ user_id: null, linked_at: null, updated_at: new Date().toISOString() })
+        .update({
+            user_id: null,
+            linked_at: null,
+            device_credential_hash: null,
+            device_credential_issued: null,
+            unlinked_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+        })
         .eq('id', installationId)
-        .eq('user_id', user.id);
+        .not('user_id', 'is', null);
 
     if (updateError) {
         logSupabaseError(ctx, 'desvincular instalacao', updateError);
@@ -112,7 +155,7 @@ export async function POST(request: NextRequest) {
     // Confirmacao pos-escrita (regra 19).
     const { data: confirmed, error: confirmError } = await admin
         .from('installations')
-        .select('id, user_id')
+        .select('id, user_id, device_credential_hash')
         .eq('id', installationId)
         .single();
 
@@ -143,7 +186,11 @@ export async function POST(request: NextRequest) {
         logSupabaseError(ctx, 'limpar device_commands pendentes', cmdError ?? null);
     }
 
-    logSuccess(ctx, 'desvinculacao confirmada', { pendingRemoved, cleanupWarning });
+    logSuccess(ctx, 'desvinculacao confirmada', {
+        authorizedBy: user ? 'session' : 'device_credential',
+        pendingRemoved,
+        cleanupWarning,
+    });
 
     return jsonWithCorrelation(ctx, {
         success: true,
