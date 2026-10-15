@@ -4,11 +4,13 @@ import {
     startOperation,
     getOrCreateCorrelationId,
     logRequest,
+    logWarn,
     logSuccess,
     logSupabaseError,
     jsonWithCorrelation,
     errorWithCorrelation,
 } from '@/lib/voltris-log';
+import { licenseRateGuard, guardIdentity, rateLimitedResponse } from '@/lib/license-rate-guard';
 import {
     getServiceClient,
     isLicenseExpired,
@@ -59,6 +61,16 @@ export async function POST(request: NextRequest) {
     const osVersion = pick('os_version') ?? null;
     const appVersion = pick('app_version') ?? null;
     const processorCount = Number(pick('processor_count') ?? 0) || null;
+
+    // Rate limit (missão §9): ativação é a porta de força bruta de catálogo
+    // (tentar VOLTRIS-PRO-... aleatórios). Orçamento por chave/device e por IP.
+    const guard = licenseRateGuard('activate', request, guardIdentity(licenseKey, deviceId));
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: tentativas demais de ativação', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
+    }
 
     if (!licenseKey || !deviceId) {
         return errorWithCorrelation(ctx, 400, 'MISSING_FIELDS', 'License key and device ID are required', {

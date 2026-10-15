@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-hot-toast';
 import Link from 'next/link';
@@ -17,7 +17,142 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import { useDashboard } from '@/app/context/DashboardContext';
 import { notifyPageView } from '@/utils/notifications';
+import { LICENSE_CATALOG, LICENSE_PLANS, SERVICE_CATALOG } from '@/lib/license-catalog';
 
+
+// ============================================================================
+// Estados reais da licença (missão §6).
+//
+// Rótulo e acento vêm do SERVIDOR: /api/v1/license/me aplica resolveLicenseState
+// sobre licenses + payments + subscriptions. O navegador não re-deriva nada —
+// aqui só existe o mapeamento visual do estado já resolvido.
+// ============================================================================
+interface LicenseStateVisual {
+  icon: VoltrisIconName;
+  accent: string;
+  chip: string;
+  hint: string;
+}
+
+const LICENSE_STATE_STYLE: Record<string, LicenseStateVisual> = {
+  ATIVA: {
+    icon: 'check',
+    accent: DASHBOARD_ACCENT.success,
+    chip: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+    hint: 'Acesso liberado durante todo o período pago.',
+  },
+  CANCELAMENTO_AGENDADO: {
+    icon: 'clock',
+    accent: DASHBOARD_ACCENT.info,
+    chip: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+    hint: 'A renovação automática está desligada, mas o acesso segue válido até a data de expiração — cancelamento agendado não é expiração imediata.',
+  },
+  FALHA_NO_PAGAMENTO: {
+    icon: 'alertTriangle',
+    accent: DASHBOARD_ACCENT.warning,
+    chip: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
+    hint: 'A cobrança recorrente falhou. Você mantém o acesso do período já pago; regularize o cartão no Portal Stripe para não perder a renovação.',
+  },
+  PAGAMENTO_PENDENTE: {
+    icon: 'processing',
+    accent: DASHBOARD_ACCENT.warning,
+    chip: 'bg-amber-500/10 text-amber-300 border-amber-500/25',
+    hint: 'Pagamento ainda não confirmado pela Stripe. O acesso só é liberado depois da confirmação — nada é antecipado.',
+  },
+  EXPIRADA: {
+    icon: 'alertCircle',
+    accent: DASHBOARD_ACCENT.brandPink,
+    chip: 'bg-rose-500/10 text-rose-400 border-rose-500/20',
+    hint: 'O período pago terminou. Renove para reativar o PRO no mesmo computador, sem reinstalar o aplicativo.',
+  },
+  REVOGADA: {
+    icon: 'lock',
+    accent: DASHBOARD_ACCENT.danger,
+    chip: 'bg-rose-500/15 text-rose-300 border-rose-500/30',
+    hint: 'Licença revogada (estorno, chargeback ou decisão de suporte). Seus dados não foram apagados — fale com a gente para entender o caso.',
+  },
+};
+
+const STATE_STYLE_FALLBACK: LicenseStateVisual = {
+  icon: 'info',
+  accent: DASHBOARD_ACCENT.brandBlue,
+  chip: 'bg-slate-500/10 text-slate-300 border-slate-600/40',
+  hint: '',
+};
+
+const SUBSCRIPTION_STATUS_LABEL: Record<string, string> = {
+  ACTIVE: 'Ativa',
+  CANCEL_SCHEDULED: 'Cancelamento agendado',
+  CANCELED: 'Cancelada',
+  PAST_DUE: 'Cobrança atrasada',
+  TRIALING: 'Período de teste',
+  INCOMPLETE: 'Cadastro incompleto',
+  INCOMPLETE_EXPIRED: 'Cadastro expirado',
+  UNPAID: 'Sem pagamento',
+  PAUSED: 'Pausada',
+};
+
+const PAYMENT_STATUS_LABEL: Record<string, string> = {
+  approved: 'Aprovado',
+  paid: 'Pago',
+  pending: 'Pendente',
+  processing: 'Processando',
+  open: 'Aguardando',
+  unpaid: 'Não pago',
+  failed: 'Recusado',
+  payment_failed: 'Recusado',
+  declined: 'Recusado',
+  past_due: 'Cobrança atrasada',
+  refunded: 'Estornado',
+  charged_back: 'Chargeback',
+  canceled: 'Cancelado',
+};
+
+// Polling com limite + timeout (missão §6): em vez de um setInterval eterno,
+// consulta a cada 15 s por no máximo 40 tentativas (~10 min) enquanto houver
+// pagamento pendente e para sozinho com aviso honesto.
+const LICENSE_POLL_INTERVAL_MS = 15_000;
+const LICENSE_POLL_MAX_ATTEMPTS = 40;
+
+/** Nome do produto vem do catálogo do backend, nunca de texto solto no cliente. */
+function productLabel(planType?: string | null, billingPeriod?: string | null): string {
+  const period = (billingPeriod ?? '').toLowerCase().startsWith('y') ? 'year' : 'month';
+  const fromCatalog = LICENSE_CATALOG[planType as keyof typeof LICENSE_CATALOG]?.[period as 'month' | 'year'];
+  if (fromCatalog) return fromCatalog.name;
+  const service = SERVICE_CATALOG[(planType ?? '').toLowerCase()];
+  if (service) return service.name;
+  const plan = LICENSE_PLANS[planType as keyof typeof LICENSE_PLANS];
+  return plan ? plan.displayName : (planType || 'Produto');
+}
+
+/**
+ * A chave de licença é o segredo de ativação: aparece mascarada e só é revelada
+ * sob ação explícita (print de tela e compartilhamento eram riscos reais).
+ */
+function maskLicenseKey(key?: string | null): string {
+  if (!key) return '— — — —';
+  const parts = key.split('-');
+  if (parts.length < 3) return `${key.slice(0, 3)}${'•'.repeat(Math.max(6, key.length - 3))}`;
+  const tail = parts[parts.length - 1];
+  const hiddenTail = tail.length > 4 ? `${'•'.repeat(tail.length - 4)}${tail.slice(-4)}` : tail;
+  return `${parts.slice(0, 2).join('-')}-${'•'.repeat(Math.max(3, parts[2].length))}-${'•'.repeat(6)}-${hiddenTail}`;
+}
+
+const fmtDate = (iso?: string | null) =>
+  iso ? new Date(iso).toLocaleDateString('pt-BR') : '—';
+
+const fmtDateTime = (iso?: string | null) =>
+  iso ? new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—';
+
+const fmtTime = (iso?: string | null) =>
+  iso ? new Date(iso).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : '—';
+
+const InfoCell = ({ label, value, tone = 'text-slate-200' }: { label: string; value: ReactNode; tone?: string }) => (
+  <div className="flex flex-col gap-0.5 min-w-0">
+    <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">{label}</span>
+    <span className={`text-xs font-semibold ${tone} truncate`}>{value}</span>
+  </div>
+);
 
 // Componente de Card de Estatística - Estilo Executivo
 const StatCard = ({ title, value, icon, delay, description }: {
@@ -81,6 +216,12 @@ function DashboardContent() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [payments, setPayments] = useState<any[]>([]);
   const [licenses, setLicenses] = useState<any[]>([]);
+  const [pendingPurchases, setPendingPurchases] = useState<any[]>([]);
+  const [hasPending, setHasPending] = useState(false);
+  const [serverTime, setServerTime] = useState<string | null>(null);
+  const [revealedKeys, setRevealedKeys] = useState<Record<string, boolean>>({});
+  const [isPolling, setIsPolling] = useState(false);
+  const [pollAttempt, setPollAttempt] = useState(0);
   const [installationsCount, setInstallationsCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -112,8 +253,15 @@ function DashboardContent() {
       if (licensesJson?.error) {
         console.error('Erro ao buscar licencas:', licensesJson.error);
         setLicenses([]);
+        setPendingPurchases([]);
+        setHasPending(false);
       } else {
+        // Contrato canônico da rota: licenses[] já traz state/stateLabel/hasAccess
+        // resolvidos no servidor, mais pendingPurchases/hasPending/server_time.
         setLicenses(licensesJson?.licenses || []);
+        setPendingPurchases(licensesJson?.pendingPurchases || []);
+        setHasPending(licensesJson?.hasPending === true);
+        setServerTime(licensesJson?.server_time ?? null);
       }
 
       setInstallationsCount(installationsRes.count || 0);
@@ -237,9 +385,61 @@ function DashboardContent() {
     return () => clearTimeout(timer);
   }, [searchParams, loading, fetchData]);
 
+  // Polling LIMITADO de pagamento pendente (missão §6): antes o painel só
+  // atualizava no F5, então quem pagava via o checkout ficava olhando uma tela
+  // "sem licença" para sempre. Aqui reconsulta sozinho, com teto de tentativas.
+  useEffect(() => {
+    if (!user?.id || !hasPending) {
+      setIsPolling(false);
+      setPollAttempt(0);
+      return;
+    }
+
+    setIsPolling(true);
+    setPollAttempt(0);
+
+    let attempts = 0;
+    const id = setInterval(() => {
+      attempts += 1;
+      if (attempts > LICENSE_POLL_MAX_ATTEMPTS) {
+        clearInterval(id);
+        setIsPolling(false);
+        toast('O pagamento ainda não foi confirmado pela Stripe. Assim que for aprovado, a chave aparece aqui — use “Verificar agora” para não esperar.', {
+          icon: '⏳',
+          id: 'voltris-poll-limite',
+          duration: 9000,
+        });
+        return;
+      }
+      setPollAttempt(attempts);
+      void fetchData(false);
+    }, LICENSE_POLL_INTERVAL_MS);
+
+    return () => clearInterval(id);
+  }, [user?.id, hasPending, fetchData]);
+
+  // Copia segura: a chave vai para a área de transferência sob ação explícita.
+  // Se o navegador bloquear (contexto não seguro), revela a chave em vez de
+  // falhar em silêncio.
+  const handleCopyKey = async (key: string) => {
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('clipboard indisponível');
+      await navigator.clipboard.writeText(key);
+      toast.success('Chave copiada. Ela dá acesso ao seu plano — trate como uma senha.');
+    } catch {
+      setRevealedKeys((prev) => ({ ...prev, [key]: true }));
+      toast.error('Seu navegador bloqueou a cópia automática. A chave foi revelada abaixo — copie manualmente.', { duration: 8000 });
+    }
+  };
+
+  const toggleRevealKey = (key: string) =>
+    setRevealedKeys((prev) => ({ ...prev, [key]: !prev[key] }));
+
   const stats = {
     totalOrders: orders.length + payments.length,
-    activeLicenses: licenses.filter(l => l.isActive).length,
+    // "Ativas" = acesso real segundo o servidor (inclui cancelamento agendado e
+    // falha de cobrança dentro do período já pago). isActive puro não reflete isso.
+    activeLicenses: licenses.filter(l => l.hasAccess ?? l.isActive).length,
     computers: installationsCount
   };
 
@@ -431,9 +631,58 @@ function DashboardContent() {
                     </div>
                   </div>
 
+                  {/* Compras aguardando confirmacao da Stripe. A licença ainda
+                      não é liberada (missão §6): o bloco vem de
+                      /api/v1/license/me -> pendingPurchases, não é suposição. */}
+                  {pendingPurchases.length > 0 && (
+                    <div className="p-5 sm:p-6 rounded-2xl bg-amber-500/[0.06] border border-amber-500/25 flex flex-col gap-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                        <div className="flex items-center gap-3 flex-1">
+                          <VoltrisIconTile icon="processing" accent={DASHBOARD_ACCENT.warning} size={10} />
+                          <div>
+                            <h4 className="text-sm font-semibold text-amber-200">
+                              {pendingPurchases.length === 1
+                                ? 'Pagamento aguardando confirmação'
+                                : `${pendingPurchases.length} pagamentos aguardando confirmação`}
+                            </h4>
+                            <p className="text-xs text-slate-400 mt-0.5">
+                              {isPolling
+                                ? `Consultando a Stripe automaticamente — tentativa ${pollAttempt} de ${LICENSE_POLL_MAX_ATTEMPTS}.`
+                                : 'A chave de ativação aparece aqui assim que o pagamento for aprovado.'}
+                            </p>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => fetchData(true)}
+                          className="px-4 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-200 text-xs font-medium transition-all"
+                        >
+                          Verificar agora
+                        </button>
+                      </div>
+                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {pendingPurchases.map((p) => (
+                          <li key={p.payment_id} className="flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl bg-slate-950/50 border border-slate-800/80">
+                            <div className="flex flex-col min-w-0">
+                              <span className="text-xs font-semibold text-slate-200 truncate">{productLabel(p.type, p.billingPeriod)}</span>
+                              <span className="text-[10px] text-slate-500">Criado em {fmtDateTime(p.createdAt)}</span>
+                            </div>
+                            <span className="shrink-0 text-[10px] font-semibold uppercase tracking-wider text-amber-300">
+                              {PAYMENT_STATUS_LABEL[String(p.status ?? '').toLowerCase()] ?? String(p.status ?? '—')}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
                     {licenses.length > 0 ? (
-                      licenses.map((lic, i) => (
+                      licenses.map((lic, i) => {
+                        const stateStyle = LICENSE_STATE_STYLE[lic.state] ?? STATE_STYLE_FALLBACK;
+                        const revealed = revealedKeys[String(lic.license_key)] === true;
+                        const maxDevices = lic.maxDevices ?? 1;
+                        const devicesFull = (lic.devicesInUse ?? 0) >= maxDevices && maxDevices < 9999;
+                        return (
                         <motion.div
                           key={lic.license_key}
                           initial={{ opacity: 0, y: 15 }}
@@ -442,35 +691,52 @@ function DashboardContent() {
                           className={`group relative p-6 rounded-2xl border transition-all duration-200 ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/50 border-slate-800/80 shadow-sm'} hover:border-slate-700`}
                         >
                           <div className="relative z-10 flex flex-col gap-5">
-                            {/* Card Top */}
-                            <div className="flex items-center justify-between">
+                            {/* Card Top: estado CANONICO resolvido no servidor */}
+                            <div className="flex items-start justify-between gap-4">
                               <div className="flex items-center gap-3">
-                                <VoltrisIconTile
-                                  icon="success"
-                                  accent={lic.isActive ? DASHBOARD_ACCENT.brand : DASHBOARD_ACCENT.danger}
-                                  size={10}
-                                />
+                                <VoltrisIconTile icon={stateStyle.icon} accent={stateStyle.accent} size={10} />
                                 <div className="flex flex-col">
-                                  <h4 className="text-base font-bold text-white tracking-tight">{lic.displayName || lic.type}</h4>
-                                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider w-fit mt-0.5 border ${lic.isActive ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20'}`}>
-                                    {lic.isActive ? 'Ativa' : 'Expirada'}
+                                  <h4 className="text-base font-bold text-white tracking-tight">{lic.displayName || productLabel(lic.type, lic.billingPeriod)}</h4>
+                                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider w-fit mt-0.5 border ${stateStyle.chip}`}>
+                                    {lic.stateLabel ?? '—'}
                                   </span>
                                 </div>
                               </div>
                               <div className="flex flex-col items-end">
-                                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Validade</span>
-                                <span className="text-xs font-semibold text-slate-200 mt-0.5">{new Date(lic.expiresAt).toLocaleDateString('pt-BR')}</span>
+                                <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">
+                                  {lic.hasAccess ? 'Acesso até' : 'Validade'}
+                                </span>
+                                <span className="text-xs font-semibold text-slate-200 mt-0.5">{fmtDate(lic.expiresAt)}</span>
+                                {typeof lic.daysLeft === 'number' && lic.hasAccess && (
+                                  <span className={`text-[10px] font-semibold mt-0.5 ${lic.expiringSoon ? 'text-amber-400' : 'text-slate-500'}`}>
+                                    {lic.daysLeft > 0 ? `faltam ${lic.daysLeft} dia${lic.daysLeft === 1 ? '' : 's'}` : 'expira hoje'}
+                                  </span>
+                                )}
                               </div>
                             </div>
 
-                            {/* Key Section */}
+                            {/* Por que este estado? (sem jargão, sem placebo) */}
+                            {stateStyle.hint && (
+                              <p className="text-[11px] leading-relaxed text-slate-400 -mt-1">{stateStyle.hint}</p>
+                            )}
+
+                            {/* Key Section: mascarada por padrão */}
                             <div className="bg-slate-950/70 rounded-xl p-3.5 border border-slate-800/80 flex flex-col gap-1.5">
                               <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Chave de Ativação</span>
                               <div className="flex items-center justify-between gap-3">
-                                <code className="flex-1 font-mono text-xs font-semibold text-slate-200 tracking-wide truncate select-all">{lic.license_key}</code>
+                                <code className="flex-1 font-mono text-xs font-semibold text-slate-200 tracking-wide truncate select-all">
+                                  {revealed ? lic.license_key : maskLicenseKey(lic.license_key)}
+                                </code>
                                 <div className="flex items-center gap-1.5">
                                   <button
-                                    onClick={() => { navigator.clipboard.writeText(lic.license_key); toast.success('Chave copiada!'); }}
+                                    onClick={() => toggleRevealKey(lic.license_key)}
+                                    className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700/80"
+                                    title={revealed ? 'Ocultar chave' : 'Revelar chave'}
+                                  >
+                                    <VoltrisIcon name={revealed ? 'lock' : 'key'} size={14} />
+                                  </button>
+                                  <button
+                                    onClick={() => handleCopyKey(lic.license_key)}
                                     className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700/80"
                                     title="Copiar Chave"
                                   >
@@ -483,25 +749,78 @@ function DashboardContent() {
                               </div>
                             </div>
 
-                            {/* Footer Info */}
-                            <div className="flex items-center justify-between border-t border-slate-800/60 pt-4 text-xs">
-                              <div className="flex items-center gap-6">
-                                <div className="flex flex-col">
-                                  <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Dispositivos</span>
-                                  <span className="text-xs font-bold text-white mt-0.5">{lic.devicesInUse}/{lic.maxDevices}</span>
-                                </div>
-                                <div className="flex flex-col">
-                                  <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Status HWID</span>
-                                  <span className="text-xs font-semibold text-emerald-400 mt-0.5">Sincronizado</span>
-                                </div>
+                            {/* Detalhes reais: plano, período, ativação, dispositivos, assinatura */}
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                              <InfoCell label="Plano" value={productLabel(lic.type, lic.billingPeriod)} />
+                              <InfoCell label="Período" value={lic.billingPeriodLabel ?? 'Mensal'} />
+                              <InfoCell
+                                label="Dispositivos"
+                                value={`${lic.devicesInUse ?? 0}/${maxDevices >= 9999 ? 'ilimitado' : maxDevices}`}
+                                tone={devicesFull ? 'text-amber-400' : 'text-white'}
+                              />
+                              <InfoCell
+                                label="Ativada em"
+                                value={lic.activatedAt ? fmtDateTime(lic.activatedAt) : 'ainda não ativada'}
+                                tone={lic.activatedAt ? 'text-slate-200' : 'text-slate-500'}
+                              />
+                              <InfoCell
+                                label="Pagamento"
+                                value={
+                                  lic.paymentStatus
+                                    ? PAYMENT_STATUS_LABEL[String(lic.paymentStatus).toLowerCase()] ?? String(lic.paymentStatus)
+                                    : 'sem registro'
+                                }
+                                tone={
+                                  lic.paymentStatus === 'approved' || lic.paymentStatus === 'paid'
+                                    ? 'text-emerald-400'
+                                    : lic.paymentStatus === 'failed' || lic.paymentStatus === 'unpaid' || lic.paymentStatus === 'refunded' || lic.paymentStatus === 'chargeback'
+                                      ? 'text-rose-400'
+                                      : 'text-amber-400'
+                                }
+                              />
+                              <InfoCell
+                                label="Assinatura"
+                                value={SUBSCRIPTION_STATUS_LABEL[String(lic.subscriptionStatus ?? '').toUpperCase()] ?? 'sem assinatura'}
+                              />
+                              <InfoCell
+                                label={lic.nextBillingAt ? 'Renova em' : lic.canceledAt ? 'Cancelada em' : 'Renovação'}
+                                value={lic.nextBillingAt ? fmtDate(lic.nextBillingAt) : lic.canceledAt ? fmtDate(lic.canceledAt) : 'desligada'}
+                              />
+                            </div>
+
+                            {/* Rodapé: sincronizacao real + acoes proprias do estado */}
+                            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800/60 pt-4 text-xs">
+                              <div className="flex items-center gap-2 text-slate-500">
+                                <VoltrisIcon name="clock" size={12} />
+                                <span>
+                                  {isPolling
+                                    ? 'Verificando pagamento com a Stripe…'
+                                    : `Dados sincronizados às ${fmtTime(serverTime)}`}
+                                </span>
                               </div>
-                              <Link href="/voltrisoptimizer" className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 transition-colors">
-                                Baixar App <VoltrisIcon name="plus" size={12} />
-                              </Link>
+                              <div className="flex flex-wrap items-center gap-2">
+                                {(lic.state === 'EXPIRADA' || lic.state === 'PAGAMENTO_PENDENTE') && (
+                                  <Link href="/adquirir-licenca" className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-[11px] transition-colors">
+                                    Renovar acesso
+                                  </Link>
+                                )}
+                                {lic.hasAccess && lic.subscriptionStatus && lic.subscriptionStatus !== 'CANCELED' && (
+                                  <button
+                                    onClick={handleManageBilling}
+                                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium text-[11px] transition-all"
+                                  >
+                                    Gerenciar no Portal Stripe
+                                  </button>
+                                )}
+                                <Link href="/voltrisoptimizer" className="px-3 py-1.5 rounded-lg text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1 transition-colors">
+                                  Baixar App <VoltrisIcon name="download" size={12} />
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </motion.div>
-                      ))
+                        );
+                      })
                     ) : (
                       <div className={`col-span-1 xl:col-span-2 p-12 sm:p-16 rounded-2xl text-center border border-slate-800/80 flex flex-col items-center gap-4 ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/30'}`}>
                         <VoltrisIconTile icon="security" accent={DASHBOARD_ACCENT.brand} size={14} />

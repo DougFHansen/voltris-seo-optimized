@@ -4,11 +4,13 @@ import {
     startOperation,
     getOrCreateCorrelationId,
     logRequest,
+    logWarn,
     logSuccess,
     logSupabaseError,
     jsonWithCorrelation,
     errorWithCorrelation,
 } from '@/lib/voltris-log';
+import { licenseRateGuard, guardIdentity, rateLimitedResponse } from '@/lib/license-rate-guard';
 import {
     getServiceClient,
     countLicenseDevices,
@@ -52,6 +54,16 @@ export async function POST(request: NextRequest) {
 
     const licenseKey = String(pick('license_key') ?? '').trim().toUpperCase();
     const deviceId = String(pick('device_id') ?? '').trim();
+
+    // Rate limit (missão §9): desvincular liberando slot é uma operação com
+    // efeito — não pode ser martelada por script.
+    const guard = licenseRateGuard('deactivate', request, guardIdentity(licenseKey, deviceId));
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: desvinculações demais', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
+    }
 
     if (!licenseKey) {
         return errorWithCorrelation(ctx, 400, 'MISSING_LICENSE_KEY', 'Chave de licenca e obrigatoria', {

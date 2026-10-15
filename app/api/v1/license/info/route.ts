@@ -2,6 +2,7 @@ import { NextRequest } from 'next/server';
 import {
     startOperation,
     getOrCreateCorrelationId,
+    logWarn,
     logSuccess,
     jsonWithCorrelation,
     errorWithCorrelation,
@@ -18,6 +19,7 @@ import {
     type LicenseDeviceRow,
 } from '@/lib/license-schema';
 import { getOptionalSessionUser } from '@/utils/supabase/ownership';
+import { licenseRateGuard, rateLimitedResponse } from '@/lib/license-rate-guard';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
@@ -37,6 +39,16 @@ export async function GET(request: NextRequest) {
         return errorWithCorrelation(ctx, 400, 'MISSING_LICENSE_KEY', 'Chave de licenca e obrigatoria', {
             details: { valid: false },
         });
+    }
+
+    // Rate limit (missão §9): a rota devolve dados da licença; varrer chaves não
+    // pode ser barato. Identidade = sufixo da chave (nunca a chave inteira).
+    const guard = licenseRateGuard('info', request, licenseKey.slice(-8));
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: consultas de info demais', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
     }
 
     let license;

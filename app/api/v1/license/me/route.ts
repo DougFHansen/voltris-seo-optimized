@@ -3,6 +3,7 @@ import { createClient as createServerClient } from '@/utils/supabase/server';
 import {
     startOperation,
     getOrCreateCorrelationId,
+    logWarn,
     logSuccess,
     logSupabaseError,
     jsonWithCorrelation,
@@ -16,10 +17,34 @@ import {
     licenseDisplayName,
     countLicenseDevices,
     licenseIsOwnedBy,
+    resolveLicenseState,
+    billingPeriodLabel,
     type LicenseRow,
 } from '@/lib/license-schema';
+import { licenseRateGuard, rateLimitedResponse } from '@/lib/license-rate-guard';
 
 export const runtime = 'nodejs';
+
+/** Linhas minimas usadas do schema real (verificado no banco vivo). */
+interface PaymentRow {
+    id: string;
+    status: string | null;
+    stripe_subscription_id: string | null;
+    plan_type: string | null;
+    billing_period: string | null;
+    amount: number | null;
+    created_at: string | null;
+    reference_id?: string | null;
+}
+
+interface SubscriptionRow {
+    pagbank_subscription_id: string | null;
+    status: string | null;
+    plan_type: string | null;
+    billing_period: string | null;
+    next_billing_at: string | null;
+    canceled_at: string | null;
+}
 
 /**
  * GET /api/v1/license/me
@@ -42,6 +67,16 @@ export async function GET(request: NextRequest) {
         return errorWithCorrelation(ctx, 401, 'UNAUTHORIZED', 'Nao autorizado');
     }
     ctx.userId = user.id;
+
+    // Rate limit (missão §9): o painel faz polling limitado de pagamento pendente
+    // (1 a cada 15 s). O teto abaixo cobre esse polling e corta abuso.
+    const guard = licenseRateGuard('me', request, user.id);
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: consultas ao painel demais', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
+    }
 
     const admin = getServiceClient();
 
@@ -80,24 +115,110 @@ export async function GET(request: NextRequest) {
     const session = { id: user.id, email: user.email ?? null };
     const owned = candidates.filter((l) => licenseIsOwnedBy(l, session));
 
+    // ----------------------------------------------------------------------------
+    // Estado canonico (missao secao 6): a licenca so pode ser classificada com o
+    // pagamento e a assinatura que a sustentam. Nada aqui e derivado no navegador.
+    // ----------------------------------------------------------------------------
+    const paymentIds = Array.from(new Set(
+        owned.map((l) => l.payment_id ?? null).filter((v): v is string => !!v)
+    ));
+
+    const [paymentsRes, subsRes, pendingRes] = await Promise.all([
+        paymentIds.length
+            ? admin.from('payments')
+                .select('id,status,stripe_subscription_id,plan_type,billing_period,amount,created_at')
+                .in('id', paymentIds)
+            : Promise.resolve({ data: [] as PaymentRow[], error: null }),
+        admin.from('subscriptions')
+            .select('pagbank_subscription_id,status,plan_type,billing_period,next_billing_at,canceled_at,user_id,email')
+            .eq('user_id', user.id),
+        admin.from('payments')
+            .select('id,status,plan_type,billing_period,amount,created_at,reference_id')
+            .eq('user_id', user.id)
+            .in('status', ['pending', 'processing', 'open', 'unpaid'])
+            .order('created_at', { ascending: false })
+            .limit(10),
+    ]);
+
+    if (paymentsRes.error) logSupabaseError(ctx, 'buscar pagamentos das licencas', paymentsRes.error);
+    if (subsRes.error) logSupabaseError(ctx, 'buscar assinaturas do usuario', subsRes.error);
+    if (pendingRes.error) logSupabaseError(ctx, 'buscar compras pendentes', pendingRes.error);
+
+    const payments = new Map<string, PaymentRow>(
+        ((paymentsRes.data ?? []) as PaymentRow[]).map((p) => [String(p.id), p])
+    );
+    const subscriptions = ((subsRes.data ?? []) as SubscriptionRow[]);
+
     const formatted = await Promise.all(
         owned.map(async (license) => {
             const devicesInUse = await countLicenseDevices(license.license_key);
+            const payment = license.payment_id ? payments.get(String(license.payment_id)) : undefined;
+
+            // Vinculo assinatura<->licenca: primeiro pelo id Stripe do pagamento
+            // (preciso), depois por plano (compatibilidade com linhas antigas em
+            // que payment_id esta NULL — as 7 linhas legadas do banco vivo).
+            const subscription =
+                (payment?.stripe_subscription_id
+                    ? subscriptions.find((s) => s.pagbank_subscription_id === payment.stripe_subscription_id)
+                    : undefined) ??
+                subscriptions.find((s) => (s.plan_type ?? '') === (license.plan_type ?? '')) ??
+                undefined;
+
+            const resolved = resolveLicenseState({
+                revoked: license.revoked,
+                expires_at: license.expires_at,
+                payment_status: payment?.status ?? null,
+                subscription_status: subscription?.status ?? null,
+            });
+
             return {
                 license_key: license.license_key,
                 type: license.plan_type ?? 'standard',
                 displayName: licenseDisplayName(license),
+                // Mantidos por compatibilidade com quem ja consome a rota.
                 isActive: isLicenseActive(license),
                 isExpired: isLicenseExpired(license),
+                // Fonte de verdade do painel:
+                state: resolved.state,
+                stateLabel: resolved.label,
+                hasAccess: resolved.hasAccess,
+                expiringSoon: resolved.expiringSoon,
+                daysLeft: resolved.daysLeft,
+                revoked: license.revoked === true,
                 expiresAt: license.expires_at,
+                activatedAt: license.activated_at,
+                billingPeriod: license.billing_period ?? null,
+                billingPeriodLabel: billingPeriodLabel(license.billing_period),
                 maxDevices: license.max_devices ?? 1,
                 devicesInUse,
-                activatedAt: license.activated_at,
+                paymentStatus: payment?.status ?? null,
+                subscriptionStatus: subscription?.status ?? null,
+                nextBillingAt: subscription?.next_billing_at ?? null,
+                canceledAt: subscription?.canceled_at ?? null,
             };
         })
     );
 
-    logSuccess(ctx, 'licencas do usuario', { count: formatted.length, user: maskEmail(user.email) });
+    const licensedPaymentIds = new Set(paymentIds.map(String));
+    const pendingPurchases = ((pendingRes.data ?? []) as PaymentRow[])
+        // uma compra pendente ja emitida (linhas legadas) nao e "pendente" no painel
+        .filter((p) => !licensedPaymentIds.has(String(p.id)))
+        .map((p) => ({
+            payment_id: p.id,
+            status: p.status,
+            type: p.plan_type ?? null,
+            billingPeriod: p.billing_period ?? null,
+            billingPeriodLabel: billingPeriodLabel(p.billing_period),
+            amount: p.amount ?? null,
+            createdAt: p.created_at,
+            referenceId: p.reference_id ?? null,
+        }));
+
+    logSuccess(ctx, 'licencas do usuario', {
+        count: formatted.length,
+        pendentes: pendingPurchases.length,
+        user: maskEmail(user.email),
+    });
 
     return jsonWithCorrelation(ctx, {
         user: {
@@ -106,5 +227,9 @@ export async function GET(request: NextRequest) {
             name: user.user_metadata?.full_name || 'Usuario Voltris',
         },
         licenses: formatted,
+        pendingPurchases,
+        // O dashboard usa isto para decidir se faz polling LIMITADO (secao 6).
+        hasPending: pendingPurchases.length > 0 || formatted.some((l) => l.state === 'PAGAMENTO_PENDENTE'),
+        server_time: new Date().toISOString(),
     });
 }

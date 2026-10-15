@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "node --test tests/*.test.ts",
+    "test:license": "node --test tests/license-state.test.ts tests/license-catalog.test.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

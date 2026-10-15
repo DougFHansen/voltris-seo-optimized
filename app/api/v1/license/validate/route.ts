@@ -4,12 +4,14 @@ import { installationOwnershipErrorIfAuthenticated } from '@/utils/supabase/owne
 import {
     startOperation,
     getOrCreateCorrelationId,
+    logWarn,
     logSuccess,
     logSupabaseError,
     jsonWithCorrelation,
     errorWithCorrelation,
     normalizeUuid,
 } from '@/lib/voltris-log';
+import { licenseRateGuard, rateLimitedResponse } from '@/lib/license-rate-guard';
 
 export const runtime = 'nodejs';
 
@@ -32,6 +34,17 @@ export async function GET(req: NextRequest) {
         });
     }
     ctx.installationId = installationId;
+
+    // Rate limit (missão §9): esta rota é chamada pelo timer de revalidação do
+    // app (1 a cada 2 min por dispositivo). O teto cobre uso legitimo e corta
+    // loop/scan por installation_id aleatório.
+    const guard = licenseRateGuard('validate', req, installationId);
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: revalidações demais', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
+    }
 
     const ownershipError = await installationOwnershipErrorIfAuthenticated(installationId);
     if (ownershipError) return ownershipError;

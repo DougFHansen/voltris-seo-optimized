@@ -3,13 +3,14 @@ import {
     startOperation,
     getOrCreateCorrelationId,
     logRequest,
-    logSuccess,
     logWarn,
+    logSuccess,
     logSupabaseError,
     jsonWithCorrelation,
     errorWithCorrelation,
     normalizeUuid,
 } from '@/lib/voltris-log';
+import { licenseRateGuard, guardIdentity, rateLimitedResponse } from '@/lib/license-rate-guard';
 import { installationOwnershipErrorIfAuthenticated } from '@/utils/supabase/ownership';
 import {
     getServiceClient,
@@ -59,6 +60,16 @@ export async function POST(request: NextRequest) {
     const reportedStatus = String(pick('license_status') ?? pick('status') ?? '').trim().toLowerCase();
     const reportedKey = pick('license_key');
     const reportedExpiresAt = pick('license_expires_at') ?? pick('expires_at');
+
+    // Rate limit (missão §9): sync escreve em installations; sem teto, um app
+    // com bug de loop ou um script consegue inundar o estado do dispositivo.
+    const guard = licenseRateGuard('sync', request, guardIdentity(installationId, reportedKey));
+    if (!guard.allowed) {
+        logWarn(ctx, 'LICENSE_RATE_LIMIT: sincronizações demais', {
+            scope: guard.scope, id: guard.key, retryAfterSec: guard.retryAfterSec,
+        });
+        return rateLimitedResponse(guard, correlationId);
+    }
 
     if (!installationId) {
         return errorWithCorrelation(ctx, 400, 'MISSING_INSTALLATION_ID', 'Missing or invalid installation_id');

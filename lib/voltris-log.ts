@@ -32,8 +32,12 @@ export type VoltrisOperation =
     | 'LICENSE_DEACTIVATE'
     | 'LICENSE_INFO'
     | 'LICENSE_ME'
+    | 'LICENSE_RENEWAL'
     | 'LICENSE_SYNC'
-    | 'LICENSE_VALIDATE';
+    | 'LICENSE_VALIDATE'
+    | 'STRIPE_CHECKOUT'
+    | 'STRIPE_WEBHOOK'
+    | 'ADMIN_RECONCILE';
 
 type LogLevel = 'info' | 'warn' | 'error';
 
