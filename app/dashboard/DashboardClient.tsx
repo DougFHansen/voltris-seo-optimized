@@ -93,9 +93,14 @@ function DashboardContent() {
     try {
       if (showLoading) setIsLoading(true);
 
-      const [ordersRes, licensesRes, installationsRes, paymentsRes] = await Promise.all([
+      const [ordersRes, licensesJson, installationsRes, paymentsRes] = await Promise.all([
         supabase.from('orders').select('*').eq('user_id', user.id).order('created_at', { ascending: false }),
-        supabase.from('licenses').select('*').eq('email', user.email).order('created_at', { ascending: false }),
+        // Licencas vem da rota canonica (service_role + filtro por sessao).
+        // A query direta usava `.eq('email', ...)` e colunas nao-canonicas
+        // (license_type/is_active/devices_in_use/id) que nao existem em
+        // public.licenses — o painel ficava vazio/breakado.
+        fetch('/api/v1/license/me', { credentials: 'same-origin' })
+          .then(async (r) => (r.ok ? r.json() : { error: `HTTP ${r.status}` })),
         supabase.from('installations').select('id', { count: 'exact', head: true }).eq('user_id', user.id),
         supabase.from('payments').select('*').eq('user_id', user.id).order('created_at', { ascending: false })
       ]);
@@ -104,8 +109,11 @@ function DashboardContent() {
       setOrders(ordersRes.data || []);
       setPayments(paymentsRes.data || []);
 
-      if (!licensesRes.error) {
-        setLicenses(licensesRes.data || []);
+      if (licensesJson?.error) {
+        console.error('Erro ao buscar licencas:', licensesJson.error);
+        setLicenses([]);
+      } else {
+        setLicenses(licensesJson?.licenses || []);
       }
 
       setInstallationsCount(installationsRes.count || 0);
@@ -231,7 +239,7 @@ function DashboardContent() {
 
   const stats = {
     totalOrders: orders.length + payments.length,
-    activeLicenses: licenses.filter(l => l.is_active).length,
+    activeLicenses: licenses.filter(l => l.isActive).length,
     computers: installationsCount
   };
 
@@ -427,7 +435,7 @@ function DashboardContent() {
                     {licenses.length > 0 ? (
                       licenses.map((lic, i) => (
                         <motion.div
-                          key={lic.id}
+                          key={lic.license_key}
                           initial={{ opacity: 0, y: 15 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: i * 0.05 }}
@@ -439,19 +447,19 @@ function DashboardContent() {
                               <div className="flex items-center gap-3">
                                 <VoltrisIconTile
                                   icon="success"
-                                  accent={lic.is_active ? DASHBOARD_ACCENT.brand : DASHBOARD_ACCENT.danger}
+                                  accent={lic.isActive ? DASHBOARD_ACCENT.brand : DASHBOARD_ACCENT.danger}
                                   size={10}
                                 />
                                 <div className="flex flex-col">
-                                  <h4 className="text-base font-bold text-white tracking-tight">{lic.license_type}</h4>
-                                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider w-fit mt-0.5 border ${lic.is_active ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20'}`}>
-                                    {lic.is_active ? 'Ativa' : 'Expirada'}
+                                  <h4 className="text-base font-bold text-white tracking-tight">{lic.displayName || lic.type}</h4>
+                                  <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full uppercase tracking-wider w-fit mt-0.5 border ${lic.isActive ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border-rose-500/20'}`}>
+                                    {lic.isActive ? 'Ativa' : 'Expirada'}
                                   </span>
                                 </div>
                               </div>
                               <div className="flex flex-col items-end">
                                 <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Validade</span>
-                                <span className="text-xs font-semibold text-slate-200 mt-0.5">{new Date(lic.expires_at).toLocaleDateString('pt-BR')}</span>
+                                <span className="text-xs font-semibold text-slate-200 mt-0.5">{new Date(lic.expiresAt).toLocaleDateString('pt-BR')}</span>
                               </div>
                             </div>
 
@@ -480,7 +488,7 @@ function DashboardContent() {
                               <div className="flex items-center gap-6">
                                 <div className="flex flex-col">
                                   <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Dispositivos</span>
-                                  <span className="text-xs font-bold text-white mt-0.5">{lic.devices_in_use}/{lic.max_devices}</span>
+                                  <span className="text-xs font-bold text-white mt-0.5">{lic.devicesInUse}/{lic.maxDevices}</span>
                                 </div>
                                 <div className="flex flex-col">
                                   <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider">Status HWID</span>

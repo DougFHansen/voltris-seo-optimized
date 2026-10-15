@@ -32,12 +32,21 @@ export async function POST(req: NextRequest) {
 
             const type = session.metadata?.type || 'license';
 
-            console.log(`[STRIPE WEBHOOK] Checkout completado para ${email} (Ref: ${referenceId}, Tipo: ${type})`);
+            console.log(`[STRIPE WEBHOOK] Checkout completado para ${email} (Ref: ${referenceId}, Tipo: ${type}, payment_status: ${session.payment_status})`);
 
-            // 1. Atualiza status do pagamento no Supabase
-            await supabase.from('payments')
-                .update({ status: 'approved', pagbank_id: session.id })
-                .eq('reference_id', referenceId);
+            // 1. Localiza o pagamento REAL criado pelo checkout. A emissao so e
+            //    feita contra um payment_id verdadeiro (idempotencia da RPC).
+            //    O update antigo usava `pagbank_id`, coluna inexistente em
+            //    public.payments — falhava silenciosamente e nao aprovava nada.
+            const { data: payRow, error: payLookupError } = await supabase
+                .from('payments')
+                .select('id, status, plan_type, user_id, email')
+                .eq('reference_id', referenceId)
+                .maybeSingle();
+
+            if (payLookupError) {
+                console.error('[STRIPE WEBHOOK] Erro ao buscar pagamento:', payLookupError);
+            }
 
             // 2. Registra a assinatura (apenas se for licença)
             if (subscriptionId) {
@@ -48,47 +57,70 @@ export async function POST(req: NextRequest) {
                     email: email,
                     plan_type: licenseType,
                     billing_period: billingPeriod,
-                    status: 'ACTIVE'
+                    status: session.payment_status === 'paid' ? 'ACTIVE' : 'TRIALING'
                 }, { onConflict: 'pagbank_subscription_id' });
             }
 
-            // 3. Chama o RPC apenas para licenças
+            // 3. Chama o RPC apenas para licencas
             if (type === 'license') {
+                // Gate de liquidacao (item 6): so emite com pagamento liquidado
+                // na Stripe. Sem prova de liquidacao, nada e emitido nem aprovado.
+                if (session.payment_status !== 'paid') {
+                    console.warn(`[STRIPE WEBHOOK] Sessao ${session.id} com payment_status="${session.payment_status}"; emissao adiada (invoice.paid cuidara da cobranca recorrente).`);
+                    break;
+                }
+
+                let paymentId: string | null = payRow?.id ?? null;
+
+                if (!paymentId) {
+                    // Recuperacao deterministica: o checkout nao registrou o
+                    // pagamento. Cria a linha com o stripe_id da sessao (prova
+                    // de liquidacao) para entao emitir contra seu id real.
+                    const { data: created, error: createErr } = await supabase
+                        .from('payments')
+                        .insert({
+                            reference_id: referenceId,
+                            provider: 'stripe',
+                            stripe_id: session.id,
+                            status: 'pending',
+                            user_id: userId || null,
+                            email: email,
+                            plan_type: licenseType,
+                            billing_period: billingPeriod,
+                            amount: (session.amount_total ?? 0) / 100,
+                        })
+                        .select('id')
+                        .single();
+
+                    if (createErr || !created) {
+                        console.error('[STRIPE WEBHOOK] Falha ao registrar pagamento da sessao:', createErr);
+                        return NextResponse.json({ error: 'PAYMENT_REGISTRATION_FAILED' }, { status: 500 });
+                    }
+                    paymentId = created.id;
+                }
+
                 const { data, error } = await supabase.rpc('generate_complete_license_v3', {
-                    p_payment_id: null,
-                    p_user_id: userId,
+                    p_payment_id: paymentId,
+                    p_user_id: userId || null,
                     p_email: email,
                     p_plan_type: licenseType,
-                    p_billing_period: billingPeriod
+                    p_billing_period: billingPeriod,
+                    p_stripe_session_id: session.id
                 });
 
                 if (error) {
-                    console.error('[STRIPE WEBHOOK] Erro ao gerar licença:', error);
+                    // Sem NULL silencioso (item 4): a RPC canonica agora RAISE
+                    // excecoes explicitas; responder 500 faz a Stripe reenviar.
+                    console.error('[STRIPE WEBHOOK] Erro explicito na RPC de emissao:', error);
+                    return NextResponse.json({ error: 'LICENSE_ISSUE_FAILED', detail: error.message }, { status: 500 });
+                }
+
+                const issuedKey = (data as { license_key?: string } | null)?.license_key ?? null;
+                if (issuedKey) {
+                    console.log(`[STRIPE WEBHOOK] Licenca ${billingPeriod} ok (${issuedKey.slice(0, 12)}…); vinculo user/payment e aprovacao do pagamento ocorreram na mesma transacao da RPC.`);
                 } else {
-                    console.log(`[STRIPE WEBHOOK] Licença ${billingPeriod} gerada com sucesso.`);
-
-                    // A RPC grava a chave, mas o vinculo com a conta (user_id)
-                    // precisa ser persistido: sem isso a licença não aparece no
-                    // painel do cliente. Preenchido aqui, de forma idempotente.
-                    const generatedKey =
-                        (data as { license_key?: string } | null)?.license_key ?? null;
-
-                    if (generatedKey) {
-                        const patch: Record<string, unknown> = {
-                            license_display_name: (licenseType ?? 'standard').toUpperCase(),
-                        };
-                        if (userId) patch.user_id = userId;
-                        if (email) patch.email = email;
-
-                        const { error: linkError } = await supabase
-                            .from('licenses')
-                            .update(patch)
-                            .eq('license_key', generatedKey);
-
-                        if (linkError) {
-                            console.error('[STRIPE WEBHOOK] Erro ao vincular licença ao usuário:', linkError);
-                        }
-                    }
+                    console.error('[STRIPE WEBHOOK] RPC respondeu sem license_key — tratar como falha:', data);
+                    return NextResponse.json({ error: 'LICENSE_ISSUE_MALFORMED' }, { status: 500 });
                 }
             } else {
                 console.log(`[STRIPE WEBHOOK] Serviço ${licenseType} registrado como aprovado.`);
