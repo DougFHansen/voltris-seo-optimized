@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import type Stripe from 'stripe';
+    import type Stripe from 'stripe';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { stripe } from '@/lib/stripe';
 import { createAdminClient } from '@/utils/supabase/admin';
@@ -14,7 +14,7 @@ import {
 } from '@/lib/voltris-log';
 
 const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
-
+    
 /**
  * Webhook Stripe — missao secoes 4/7/12.
  *

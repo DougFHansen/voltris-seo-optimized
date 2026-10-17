@@ -436,7 +436,7 @@ function LoginContent() {
       const { data: directCheck } = await supabase
         .from('profiles')
         .select('id')
-        .or(`phone.eq.${phone},phone.ilike.%${cleanPhone}%`)
+        .or(`phone.eq.${cleanPhone},phone.ilike.%${cleanPhone}%`)
         .maybeSingle();
 
       if (directCheck) {

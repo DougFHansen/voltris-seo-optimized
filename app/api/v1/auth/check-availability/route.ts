@@ -1,14 +1,42 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
 
-// Service Role for system-level checks (Bypasses RLS)
+// Chave administrativa usada apenas no servidor para checagens do sistema.
 const supabaseAdmin = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+// Janela de 60s por IP. O teto é folgado para uso humano real (uma checagem por
+// campo ao cadastrar) e derruba varredura automatizada de bases de contas.
+const WINDOW_MS = 60_000;
+const MAX_PER_IP = 25;
+const attempts = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(ip: string): boolean {
+    const now = Date.now();
+    const entry = attempts.get(ip);
+    if (!entry || now >= entry.resetAt) {
+        attempts.set(ip, { count: 1, resetAt: now + WINDOW_MS });
+        return false;
+    }
+    if (entry.count >= MAX_PER_IP) return true;
+    entry.count += 1;
+    return false;
+}
+
 export async function POST(req: Request) {
     try {
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+            || req.headers.get('x-real-ip')
+            || 'local';
+        if (isRateLimited(ip)) {
+            return NextResponse.json(
+                { available: false, error: 'Muitas tentativas em sequência. Aguarde um instante e tente novamente.' },
+                { status: 429, headers: { 'retry-after': '60' } }
+            );
+        }
+
         const { email, login, phone } = await req.json();
         const conflicts: string[] = [];
 
@@ -44,7 +72,7 @@ export async function POST(req: Request) {
             const { data } = await supabaseAdmin
                 .from('profiles')
                 .select('id')
-                .or(`phone.eq.${phone},phone.ilike.%${cleanPhone}%`)
+                .or(`phone.eq.${cleanPhone},phone.ilike.%${cleanPhone}%`)
                 .maybeSingle();
             if (data) conflicts.push('WhatsApp');
         }

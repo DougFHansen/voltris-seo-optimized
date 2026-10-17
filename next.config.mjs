@@ -229,17 +229,24 @@ const nextConfig = {
       ]
     };
   },
-  headers: async () => [
+  headers: async () => {
+    const securityHeaders = [
+      { key: 'Server', value: 'Voltris Web Network' },
+      { key: 'X-DNS-Prefetch-Control', value: 'on' },
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'X-Frame-Options', value: 'DENY' },
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+      // HSTS apenas em produção (não forçar https no dev/local)
+      ...(process.env.NODE_ENV === 'production'
+        ? [{ key: 'Strict-Transport-Security', value: 'max-age=31536000' }]
+        : []),
+    ];
+    return [
     {
       source: '/(.*)',
       headers: [
-        { key: 'Server', value: 'Voltris Web Network' },
-        { key: 'X-DNS-Prefetch-Control', value: 'on' },
-        { key: 'X-Content-Type-Options', value: 'nosniff' },
-        { key: 'X-Frame-Options', value: 'DENY' },
-        { key: 'X-XSS-Protection', value: '1; mode=block' },
-        { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-        { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ...securityHeaders,
         {
           key: 'Content-Security-Policy',
           value: [
@@ -252,6 +259,7 @@ const nextConfig = {
             "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://td.doubleclick.net https://googleads.g.doubleclick.net https://*.adtrafficquality.google https://www.google.com https://accounts.google.com",
             "object-src 'none'",
             "base-uri 'self'",
+            "frame-ancestors 'none'",
             "form-action 'self' https://*.supabase.co https://accounts.google.com",
           ].join('; '),
         },
@@ -284,7 +292,8 @@ const nextConfig = {
         },
       ],
     },
-  ],
+    ];
+  },
 };
 
 export default nextConfig;

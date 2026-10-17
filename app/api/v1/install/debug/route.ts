@@ -55,9 +55,9 @@ export async function GET(request: NextRequest) {
             .single();
 
         if (error) {
+            console.error('[INSTALL DEBUG] consulta falhou', { installation_id, error });
             return NextResponse.json({
-                error: error.message,
-                details: error
+                error: 'Não foi possível carregar a instalação.'
             }, { status: 500 });
         }
 
@@ -66,6 +66,7 @@ export async function GET(request: NextRequest) {
             message: data ? 'Instalação encontrada' : 'Instalação não encontrada'
         });
     } catch (error: any) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
+        console.error('[INSTALL DEBUG] erro inesperado', error);
+        return NextResponse.json({ error: 'Erro interno no diagnóstico.' }, { status: 500 });
     }
 }
