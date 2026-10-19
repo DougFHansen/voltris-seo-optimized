@@ -8,6 +8,7 @@ import { evaluateRefund } from '@/lib/billing-policy';
 import { extractChargeInvoiceId, extractInvoiceSubscriptionId, toStripeIdString } from '@/lib/billing-state';
 import { readSubscriptionSnapshot, syncSubscriptionRow } from '@/lib/stripe-sync';
 import { notifyRefund } from '@/lib/email-notifier';
+import { NotificationService } from '@/services/notificationService';
 import { licenseRateGuard, rateLimitedResponse } from '@/lib/license-rate-guard';
 import {
     startOperation,
@@ -123,6 +124,58 @@ async function resolveCharge(payment: PaymentRow): Promise<{ charge: Stripe.Char
     }
 
     return { charge: null, chargeId: null, source: 'nao_resolvido' };
+}
+
+/**
+ * Sino do reembolso: o cliente acompanha o ESTADO REAL da operação e o
+ * admin recebe o alerta de cada etapa (solicitação, processamento, crédito).
+ * Nunca lança: o reembolso já foi registrado no banco, a notificação é
+ * efeito colateral.
+ */
+async function notificarReembolso(opts: {
+    userId: string | null;
+    stage: 'requested' | 'processing' | 'confirmed';
+    amount: number;
+    paymentId: string;
+    email?: string | null;
+}) {
+    const textos = {
+        requested: {
+            title: 'Reembolso em análise',
+            message: 'Recebemos sua solicitação de reembolso. Nossa equipe está analisando e o retorno chega por aqui.',
+        },
+        processing: {
+            title: 'Reembolso em processamento',
+            message: 'O processo de reembolso foi aceito pelo processador. O crédito ainda não caiu na conta.',
+        },
+        confirmed: {
+            title: 'Reembolso confirmado',
+            message: 'O reembolso foi confirmado e o valor está sendo devolvido.',
+        },
+    } as const;
+    const t = textos[opts.stage];
+
+    try {
+        if (opts.userId) {
+            await NotificationService.notify({
+                recipients: [opts.userId],
+                kind: 'refund',
+                title: t.title,
+                message: t.message,
+                actionUrl: '/dashboard?tab=licenses',
+                data: { payment_id: opts.paymentId, amount: opts.amount, stage: opts.stage },
+            });
+        }
+        await NotificationService.notifyAdmins({
+            kind: 'refund',
+            title: `Reembolso: ${opts.stage}`,
+            message: `${maskEmail(opts.email ?? null)} — R$ ${opts.amount.toFixed(2)} (${opts.stage}).`,
+            actionUrl: '/restricted-area-admin?tab=purchases',
+            data: { payment_id: opts.paymentId, stage: opts.stage, amount: opts.amount },
+        });
+    } catch (e) {
+        console.error('[api/stripe/refund] reembolso registrado, mas notificação falhou:', e);
+    }
 }
 
 export async function POST(req: NextRequest) {
@@ -266,6 +319,14 @@ export async function POST(req: NextRequest) {
                 ctx,
             });
 
+            await notificarReembolso({
+                userId: user.id,
+                stage: 'requested',
+                amount: Number(payment.amount ?? 0),
+                paymentId: payment.id,
+                email: payment.email,
+            });
+
             return jsonWithCorrelation(ctx, {
                 ok: true,
                 status: 'requested',
@@ -310,6 +371,13 @@ export async function POST(req: NextRequest) {
                 manualReview: true,
                 supabase: admin,
                 ctx,
+            });
+            await notificarReembolso({
+                userId: user.id,
+                stage: 'requested',
+                amount: Number(payment.amount ?? 0),
+                paymentId: payment.id,
+                email: payment.email,
             });
             return jsonWithCorrelation(ctx, {
                 ok: true,
@@ -516,6 +584,14 @@ export async function POST(req: NextRequest) {
             accessUntil: accessUntil,
             supabase: admin,
             ctx,
+        });
+
+        await notificarReembolso({
+            userId: user.id,
+            stage: refund.status === 'succeeded' ? 'confirmed' : 'processing',
+            amount: refund.amount / 100,
+            paymentId: payment.id,
+            email: payment.email,
         });
 
         return jsonWithCorrelation(ctx, {

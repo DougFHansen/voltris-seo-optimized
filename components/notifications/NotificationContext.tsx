@@ -1,12 +1,16 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode, useRef } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useRef, useCallback } from 'react';
 import { useAuth } from '@/app/hooks/useAuth';
 import { createClient } from '@/utils/supabase/client';
 import NotificationPermissionModal from './NotificationPermissionModal';
 import { toast } from 'react-hot-toast';
+import { ICONE_POR_TIPO, ROTULO_POR_TIPO, ehVisivelParaCliente } from '@/lib/notification-kinds';
 
-export type NotificationType = 'ticket' | 'order' | 'system' | 'profile' | 'newsletter' | 'comment' | 'ticket_status';
+export type NotificationType =
+    | 'ticket' | 'order' | 'system' | 'profile' | 'newsletter' | 'comment'
+    | 'ticket_status' | 'license' | 'refund' | 'service';
+
 export type NotificationSound = 'ping' | 'chime' | 'tone';
 
 export interface Notification {
@@ -18,6 +22,9 @@ export interface Notification {
   read: boolean;
   sound: NotificationSound;
   created_at: string;
+  action_url?: string | null;
+  data?: Record<string, unknown> | null;
+  audience?: string | null;
 }
 
 export interface NotificationSettings {
@@ -26,7 +33,7 @@ export interface NotificationSettings {
   notification_categories: NotificationType[];
   sound_theme: string;
   volume: number;
-  sound_volume?: number; // Adicionado para suportar o novo volume
+  sound_volume?: number;
 }
 
 interface NotificationContextProps {
@@ -41,374 +48,391 @@ interface NotificationContextProps {
   refreshNotifications: () => Promise<void>;
   updateSettings: (settings: Partial<NotificationSettings>) => Promise<void>;
   clearAllNotifications: () => Promise<void>;
+  /** Permissão do navegador: 'default' | 'granted' | 'denied' | 'unsupported'. */
+  browserPermission: NotificationPermission | 'unsupported';
+  /** Ativa (ou reativa) as notificações do navegador. */
+  enableBrowserNotifications: () => Promise<boolean>;
+  /** Houve erro ao falar com o servidor de notificações? */
+  error: string | null;
 }
 
 const NotificationContext = createContext<NotificationContextProps | undefined>(undefined);
 
-/**
- * NotificationContext fornece:
- * - notifications: lista das notificações do usuário
- * - unreadCount: quantidade de não lidas
- * - settings: configurações do usuário
- * - loading: status de carregamento
- * - showPermissionModal: exibe modal de permissão
- * - setShowPermissionModal: controla modal
- * - markAsRead: marca uma notificação como lida
- * - markAllAsRead: marca todas como lidas
- * - refreshNotifications: recarrega notificações
- * - updateSettings: atualiza configurações
- * - clearAllNotifications: apaga todas as notificações
- */
-// Utilitário para tocar som de notificação com Web Audio API e fallback
+/* ------------------------------------------------------------------ Som */
+
 let audioContext: AudioContext | null = null;
-let lastPlayedId: string | null = null;
 let userInteracted = false;
-let soundBuffers: Record<string, AudioBuffer | null> = { ping: null, chime: null, tone: null };
+const soundBuffers: Record<string, AudioBuffer | null> = { ping: null, chime: null, tone: null };
+
+/** Arquivos de som que EXISTEM em /public (não inventar arquivo). */
+const SOM_ARQUIVO: Record<string, string> = {
+    ping: '/ping.wav',
+    chime: '/alert.mp3',
+    tone: '/tone.wav',
+};
 
 async function loadSoundBuffer(sound: string): Promise<AudioBuffer | null> {
-  if (!audioContext) audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-  if (soundBuffers[sound]) return soundBuffers[sound];
-  let src = '/ping.wav';
-  if (sound === 'chime') src = '/alert.mp3';
-  if (sound === 'tone') src = '/tone.wav';
-  try {
-    const response = await fetch(src);
-    const arrayBuffer = await response.arrayBuffer();
-    const buffer = await audioContext.decodeAudioData(arrayBuffer);
-    soundBuffers[sound] = buffer;
-    return buffer;
-  } catch (e) {
-    return null;
-  }
+    if (typeof window === 'undefined') return null;
+    if (!audioContext) {
+        const AC = window.AudioContext || (window as any).webkitAudioContext;
+        if (!AC) return null;
+        audioContext = new AC();
+    }
+    if (soundBuffers[sound] !== null && soundBuffers[sound] !== undefined) {
+        return soundBuffers[sound];
+    }
+    const src = SOM_ARQUIVO[sound] || SOM_ARQUIVO.ping;
+    try {
+        const response = await fetch(src);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const arrayBuffer = await response.arrayBuffer();
+        const buffer = await audioContext.decodeAudioData(arrayBuffer);
+        soundBuffers[sound] = buffer;
+        return buffer;
+    } catch (e) {
+        console.warn(`[notificações] não foi possível carregar o som ${src}:`, e);
+        soundBuffers[sound] = null;
+        return null;
+    }
 }
 
-async function playNotificationSound(sound: string, volume: number = 1, type?: string) {
-  // Removido: if (type === 'order') { sound = 'chime'; }
-  console.log('[DEBUG] playNotificationSound chamado:', { sound, volume });
-  if (!sound) {
-    console.warn('[DEBUG] Som não especificado, abortando.');
-    return;
-  }
-  if (!audioContext) audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-  if (audioContext.state === 'suspended') {
-    try { await audioContext.resume(); } catch (e) { console.warn('[DEBUG] Falha ao retomar AudioContext:', e); }
-  }
-  const buffer = await loadSoundBuffer(sound);
-  if (!buffer) {
-    console.warn('[DEBUG] Buffer de áudio não carregado:', sound);
-    return;
-  }
-  const source = audioContext.createBufferSource();
-  source.buffer = buffer;
-  const gain = audioContext.createGain();
-  gain.gain.value = volume;
-  source.connect(gain).connect(audioContext.destination);
-  try {
-    source.start(0);
-  } catch (e) {
-    console.warn('[DEBUG] Falha ao tocar som:', e);
-  }
+export async function playNotificationSound(sound: string, volume: number = 0.7) {
+    if (typeof window === 'undefined') return;
+    if (!sound) return;
+    const buffer = await loadSoundBuffer(sound);
+    if (!buffer || !audioContext) return;
+    if (audioContext.state === 'suspended') {
+        try { await audioContext.resume(); } catch { /* bloqueado pelo navegador */ }
+    }
+    const source = audioContext.createBufferSource();
+    source.buffer = buffer;
+    const gain = audioContext.createGain();
+    gain.gain.value = Math.max(0, Math.min(1, volume));
+    source.connect(gain).connect(audioContext.destination);
+    try {
+        source.start(0);
+    } catch (e) {
+        console.warn('[notificações] falha ao tocar som:', e);
+    }
 }
 
-// Detectar bloqueio de autoplay e pedir permissão na primeira interação
 function ensureAudioUnlocked() {
-  if (userInteracted) return;
-  if (!audioContext) audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-  if (audioContext.state === 'suspended') {
-    audioContext.resume();
-  }
-  userInteracted = true;
+    if (userInteracted || typeof window === 'undefined') return;
+    try {
+        if (!audioContext) {
+            const AC = window.AudioContext || (window as any).webkitAudioContext;
+            if (AC) audioContext = new AC();
+        }
+        if (audioContext && audioContext.state === 'suspended') audioContext.resume();
+    } catch { /* ignora */ }
+    userInteracted = true;
 }
 
-// Listener global para postMessage (fallback)
-function handleNotificationSoundMessage(event: any, settings: NotificationSettings | null) {
-  if (event.data && event.data.type === 'PLAY_NOTIFICATION_SOUND') {
-    const vol = settings?.sound_volume !== undefined ? Math.max(0, Math.min(1, settings.sound_volume / 100)) : (settings?.volume ?? 0.7);
-    playNotificationSound(event.data.sound, vol);
-  }
-}
+/* ------------------------------------------------------------- Provider */
 
 export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const { user, isAdmin } = useAuth();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [settings, setSettings] = useState<NotificationSettings | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [showPermissionModal, setShowPermissionModal] = useState(false);
+  const [browserPermission, setBrowserPermission] = useState<NotificationPermission | 'unsupported'>(
+      typeof window !== 'undefined' && 'Notification' in window ? window.Notification.permission : 'unsupported'
+  );
   const supabase = useRef(createClient());
   const lastNotifId = useRef<string | null>(null);
+  const lastPlayedId = useRef<string | null>(null);
 
-  // Carregar notificações e configurações do Supabase
-  useEffect(() => {
-    const fetchData = async () => {
+  /** Token da sessão (o servidor exige Authorization). */
+  const tokenRef = useRef<string | null>(null);
+
+  /* --------------------------------------------------- carregamento */
+
+  const carregarNotificacoes = useCallback(async (silencioso = false) => {
       if (!user) {
         setNotifications([]);
-        setSettings(null);
         setLoading(false);
         return;
       }
-      setLoading(true);
-      // Buscar notificações (últimas 50)
-      const { data: notifs, error: notifError } = await supabase.current
-        .from('notifications')
-        .select('*')
-        .eq('user_id', user.id)
-        .order('created_at', { ascending: false })
-        .limit(50);
-      let filteredNotifs = notifs || [];
-      if (!isAdmin) {
-        filteredNotifs = filteredNotifs.filter(n => n.type !== 'newsletter' && n.type !== 'comment');
-      }
-      if (notifError) {
-        setNotifications([]);
-      } else {
-        setNotifications(filteredNotifs);
-      }
-      // Buscar configurações
-      let settingsData = null;
-      let settingsError = null;
-      const settingsResp = await supabase.current
-        .from('user_settings')
-        .select('*')
-        .eq('user_id', user.id)
-        .single();
-      settingsData = settingsResp.data;
-      settingsError = settingsResp.error;
-      if (settingsError || !settingsData) {
-        // Criar registro default se não existir
-        const { data: newSettings } = await supabase.current
-          .from('user_settings')
-          .insert({
-            user_id: user.id,
-            notifications_enabled: null,
-            sound_enabled: true,
-            notification_categories: ['ticket', 'order', 'system', 'profile'],
-            sound_theme: 'default',
-            volume: 1.0
-          })
-          .select()
-          .single();
-        setSettings(newSettings);
-        setShowPermissionModal(true);
-      } else {
-        setSettings(settingsData || null);
-        if (settingsData && settingsData.notifications_enabled === null) {
-          setShowPermissionModal(true);
+      if (!silencioso) setLoading(true);
+      try {
+        const { data: sessao } = await supabase.current.auth.getSession();
+        const token = sessao.session?.access_token ?? null;
+        tokenRef.current = token;
+        if (!token) {
+            setNotifications([]);
+            return;
         }
+
+        const res = await fetch('/api/notifications?limit=50', {
+            cache: 'no-store',
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        if (res.status === 401) {
+            setNotifications([]);
+            setError('Sessão expirada. Faça login novamente.');
+            return;
+        }
+        const json = await res.json();
+        if (!res.ok) throw new Error(json?.error || 'Falha ao carregar notificações.');
+
+        let lista: Notification[] = json.notifications ?? [];
+        // Regra do projeto: newsletter e comentário social não são do cliente.
+        if (!isAdmin) {
+            lista = lista.filter((n) => ehVisivelParaCliente(n.type));
+        }
+        setNotifications(lista);
+        setError(null);
+      } catch (e: any) {
+        setError(e?.message || 'Não foi possível carregar as notificações.');
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
-    };
-    fetchData();
   }, [user, isAdmin]);
 
-  // SUPABASE REALTIME - deve ser um useEffect separado
-  useEffect(() => {
-    if (!user) return;
-    let channel: any = null;
-    const supabaseClient = supabase.current;
-    console.log('[Realtime] Registrando canal de notificações (com filtro por user_id)');
-    channel = supabaseClient
-      .channel('realtime:notifications_admin')
-      .on(
-        'postgres_changes',
-        {
-          event: '*',
-          schema: 'public',
-          table: 'notifications',
-          filter: `user_id=eq.${user.id}`
-        },
-        (payload: any) => {
-          console.log('[Realtime] Evento recebido (admin):', payload);
-          if (!isAdmin && (payload.new?.type === 'newsletter' || payload.new?.type === 'comment')) return;
-          if (payload.eventType === 'INSERT') {
-            setNotifications(prev => {
-              if (prev.some(n => n.id === payload.new.id)) return prev;
-              // Tocar som imediatamente ao receber nova notificação
-              if (payload.new.sound) {
-                const vol = settings?.sound_volume !== undefined ? Math.max(0, Math.min(1, settings.sound_volume / 100)) : (settings?.volume ?? 0.7);
-                playNotificationSound(payload.new.sound, vol, payload.new.type);
-              }
-              return [payload.new, ...prev];
-            });
-          } else if (payload.eventType === 'UPDATE') {
-            setNotifications(prev => prev.map(n => n.id === payload.new.id ? payload.new : n));
-          } else if (payload.eventType === 'DELETE') {
-            setNotifications(prev => prev.filter(n => n.id !== payload.old.id));
-          }
-        }
-      )
-      .subscribe((status) => {
-        console.log('[Realtime] Canal subscribe status (admin):', status);
-      });
-    return () => {
-      if (channel) {
-        console.log('[Realtime] Removendo canal de notificações (admin)');
-        supabaseClient.removeChannel(channel);
+  // Configurações (preferências do usuário)
+  const carregarConfiguracoes = useCallback(async () => {
+      if (!user) {
+          setSettings(null);
+          return;
       }
-    };
-  }, [user?.id, isAdmin, settings]);
+      const { data } = await supabase.current
+          .from('user_settings')
+          .select('*')
+          .eq('user_id', user.id)
+          .maybeSingle();
 
-  // Realtime: tocar som ao receber nova notificação e exibir toast para ticket_status
+      if (!data) {
+          const { data: novo } = await supabase.current
+              .from('user_settings')
+              .insert({
+                  user_id: user.id,
+                  notifications_enabled: null,
+                  sound_enabled: true,
+                  notification_categories: ['ticket', 'order', 'system', 'profile'],
+                  sound_theme: 'default',
+                  volume: 1.0,
+              })
+              .select()
+              .maybeSingle();
+          setSettings(novo ?? null);
+          setShowPermissionModal(true);
+          return;
+      }
+
+      setSettings(data);
+      if (data.notifications_enabled === null) setShowPermissionModal(true);
+  }, [user]);
+
   useEffect(() => {
-    if (!settings?.sound_enabled) {
-      console.log('[DEBUG] Som de notificação desativado nas configurações.');
-      return;
-    }
-    if (notifications.length === 0) return;
-    const latest = notifications[0];
-    if (latest && latest.id !== lastNotifId.current && !latest.read) {
-      console.log('[DEBUG] Nova notificação detectada:', latest);
-      if (!latest.sound) {
-        console.warn('[DEBUG] Notificação recebida sem campo sound:', latest);
+      if (!user) {
+          setNotifications([]);
+          setSettings(null);
+          setLoading(false);
+          return;
       }
-      if (lastPlayedId !== latest.id) {
-        const vol = settings.sound_volume !== undefined ? Math.max(0, Math.min(1, settings.sound_volume / 100)) : (settings.volume ?? 0.7);
-        playNotificationSound(latest.sound, vol, latest.type); // Passa o tipo para garantir 'order' = 'chime'
-        lastPlayedId = latest.id;
+      void (async () => {
+          await Promise.all([carregarNotificacoes(), carregarConfiguracoes()]);
+      })();
+  }, [user?.id, isAdmin, carregarNotificacoes, carregarConfiguracoes]);
+
+  /* ---------------------------------------------------------- Realtime */
+
+  useEffect(() => {
+      if (!user) return;
+      let channel: any = null;
+      let ativo = true;
+
+      const supabaseClient = supabase.current;
+      channel = supabaseClient
+          .channel(`notifications:${user.id}`)
+          .on(
+              'postgres_changes',
+              { event: 'INSERT', schema: 'public', table: 'notifications', filter: `user_id=eq.${user.id}` },
+              (payload: any) => {
+                  if (!ativo) return;
+                  const nova = payload.new as Notification;
+                  if (!nova?.id) return;
+                  if (!isAdmin && !ehVisivelParaCliente(nova.type)) return;
+                  setNotifications((prev) => (prev.some((n) => n.id === nova.id) ? prev : [nova, ...prev]));
+              }
+          )
+          .subscribe();
+
+      return () => {
+          ativo = false;
+          if (channel) supabaseClient.removeChannel(channel);
+      };
+  }, [user?.id, isAdmin]);
+
+  /* ------------------------------------- fallback: polling (sem Realtime) */
+
+  useEffect(() => {
+      if (!user) return;
+      const intervalo = setInterval(() => {
+          // Só sonda com a aba visível: em segundo plano quem cuida é o
+          // Realtime (e o navegador não gasta bateria à toa).
+          if (typeof document !== 'undefined' && document.hidden) return;
+          void carregarNotificacoes(true);
+      }, 45_000);
+      return () => clearInterval(intervalo);
+  }, [user?.id, carregarNotificacoes]);
+
+  /* ------------------------------- som + toast + notificação do navegador */
+
+  useEffect(() => {
+      if (!settings || notifications.length === 0) return;
+      const latest = notifications[0];
+      if (!latest || latest.id === lastNotifId.current) return;
+      lastNotifId.current = latest.id;
+
+      const volume = settings.sound_volume !== undefined
+          ? Math.max(0, Math.min(1, settings.sound_volume / 100))
+          : (settings.volume ?? 0.7);
+
+      const categoriaAtiva = !settings.notification_categories?.length
+          || settings.notification_categories.includes(latest.type);
+      const habilitado = settings.notifications_enabled !== false;
+
+      if (settings.sound_enabled && habilitado && categoriaAtiva && latest.sound && !latest.read) {
+          if (lastPlayedId.current !== latest.id) {
+              void playNotificationSound(latest.sound, volume);
+              lastPlayedId.current = latest.id;
+          }
       }
-      // Exibir toast para ticket_status e pedidos
-      if (latest.type === 'ticket_status' || latest.type === 'order') {
-        const icon = latest.type === 'order' ? '🛍️' : '🎫';
-        toast(latest.title + (latest.message ? ('\n' + latest.message) : ''), {
-          icon: icon,
+
+      // Toast (sempre, para o usuário saber na hora).
+      toast(latest.title + (latest.message ? `\n${latest.message}` : ''), {
+          icon: ICONE_POR_TIPO[latest.type] === 'license' ? '🪪' : ICONE_POR_TIPO[latest.type] === 'ticket' ? '🎫' : '🔔',
           duration: 6000,
           style: {
-            background: '#18181b',
-            color: '#fff',
-            border: '1px solid #8B31FF',
-            fontWeight: 500,
+              background: '#18181b',
+              color: '#fff',
+              border: '1px solid #8B31FF',
+              fontWeight: 500,
           },
-        });
+      });
+
+      // Notificação do navegador (desktop e mobile). Só quando a aba está em
+      // segundo plano — senão o toast já resolve e duplica.
+      if (typeof document !== 'undefined' && document.hidden && habilitado) {
+          mostrarNotificacaoDoNavegador(latest, settings);
       }
-      lastNotifId.current = latest.id;
-    }
   }, [notifications, settings]);
 
-  // BroadcastChannel para receber comando do SW
-  useEffect(() => {
-    if (!settings?.sound_enabled) return;
-    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
-      let channel: BroadcastChannel | null = null;
-      let messageHandler: any = null;
-      if ('BroadcastChannel' in window) {
-        channel = new BroadcastChannel('voltris_notifications');
-        channel.onmessage = (event) => {
-          if (event.data && event.data.type === 'PLAY_NOTIFICATION_SOUND') {
-            const vol = settings?.sound_volume !== undefined ? Math.max(0, Math.min(1, settings.sound_volume / 100)) : (settings?.volume ?? 0.7);
-            console.log('[DEBUG] BroadcastChannel: comando para tocar som:', event.data);
-            playNotificationSound(event.data.sound, vol);
-          }
-        };
-      } else {
-        messageHandler = (event: any) => {
-          console.log('[DEBUG] postMessage: comando para tocar som:', event.data);
-          handleNotificationSoundMessage(event, settings);
-        };
-        (window as any).addEventListener('message', messageHandler);
-      }
-      return () => {
-        if (channel) channel.close();
-        if (messageHandler && typeof window.removeEventListener === 'function') (window as any).removeEventListener('message', messageHandler);
-      };
-    }
-  }, [settings]);
+  /* --------------------------------- desbloqueio de áudio na 1ª interação */
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      if (typeof document === 'undefined') return;
       document.addEventListener('click', ensureAudioUnlocked, { once: true });
-      return () => {
-        document.removeEventListener('click', ensureAudioUnlocked);
-      };
-    }
+      return () => document.removeEventListener('click', ensureAudioUnlocked);
   }, []);
 
-  const unreadCount = notifications.filter(n => !n.read).length;
+  /* ---------------------------------------------------------- ações */
 
-  const markAsRead = async (id: string) => {
-    if (!user) return;
-    await supabase.current
-      .from('notifications')
-      .update({ read: true })
-      .eq('id', id);
-    setNotifications(notifications.map(n => n.id === id ? { ...n, read: true } : n));
-  };
+  const unreadCount = notifications.filter((n) => !n.read).length;
 
-  const markAllAsRead = async () => {
-    if (!user) return;
-    await supabase.current
-      .from('notifications')
-      .update({ read: true })
-      .eq('user_id', user.id)
-      .eq('read', false);
-    setNotifications(notifications.map(n => ({ ...n, read: true })));
-  };
-
-  const refreshNotifications = async () => {
-    if (!user) return;
-    setLoading(true);
-    const { data: notifs } = await supabase.current
-      .from('notifications')
-      .select('*')
-      .eq('user_id', user.id)
-      .order('created_at', { ascending: false })
-      .limit(50);
-    setNotifications(notifs || []);
-    setLoading(false);
-  };
-
-  const refreshSettings = async () => {
-    if (!user) return;
-    setLoading(true);
-    const { data: settingsData } = await supabase.current
-      .from('user_settings')
-      .select('*')
-      .eq('user_id', user.id)
-      .single();
-    setSettings(settingsData || null);
-    setLoading(false);
-  };
-
-  const updateSettings = async (newSettings: Partial<NotificationSettings>) => {
-    if (!user) return;
-    const { data, error } = await supabase.current
-      .from('user_settings')
-      .update(newSettings)
-      .eq('user_id', user.id)
-      .select()
-      .single();
-    if (!error && data) {
-      setSettings(data);
-      await refreshSettings(); // Garante sincronização após update
-    }
-  };
-
-  const clearAllNotifications = async () => {
-    if (!user) return;
-    await supabase.current
-      .from('notifications')
-      .delete()
-      .eq('user_id', user.id);
-    setNotifications([]);
-  };
-
-  // Função para ativar notificações (chamada pelo modal)
-  const handleActivateNotifications = async () => {
-    if (user) {
-      await supabase.current
-        .from('user_settings')
-        .update({ notifications_enabled: true })
-        .eq('user_id', user.id);
-      // Registra o Service Worker
-      if ('serviceWorker' in navigator) {
-        try {
-          await navigator.serviceWorker.register('/sw.js');
-        } catch (e) { /* ignore */ }
+  const marcarComoLidaNoServidor = useCallback(async (ids: string[] | 'all') => {
+      const token = tokenRef.current;
+      if (!token) return false;
+      const res = await fetch('/api/notifications', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify(ids === 'all' ? { all: true } : { ids }),
+      });
+      if (!res.ok) {
+          const json = await res.json().catch(() => ({}));
+          setError(json?.error || 'Não foi possível marcar as notificações como lidas.');
+          return false;
       }
-      // Atualiza estado local
-      setSettings((prev) => prev ? { ...prev, notifications_enabled: true } : prev);
-    }
-  };
-  // Função para ignorar (não faz nada extra)
-  const handleDismissNotifications = () => { };
+      return true;
+  }, []);
+
+  const markAsRead = useCallback(async (id: string) => {
+      if (!user) return;
+      // Otimista: a tela responde na hora; se o servidor recusar, revertemos.
+      setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)));
+      const ok = await marcarComoLidaNoServidor([id]);
+      if (!ok) {
+          setNotifications((prev) => prev.map((n) => (n.id === id ? { ...n, read: false } : n)));
+      }
+  }, [user, marcarComoLidaNoServidor]);
+
+  const markAllAsRead = useCallback(async () => {
+      if (!user) return;
+      const anteriores = notifications;
+      setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+      const ok = await marcarComoLidaNoServidor('all');
+      if (!ok) setNotifications(anteriores);
+  }, [user, notifications, marcarComoLidaNoServidor]);
+
+  const refreshNotifications = useCallback(async () => {
+      await carregarNotificacoes();
+  }, [carregarNotificacoes]);
+
+  const updateSettings = useCallback(async (novo: Partial<NotificationSettings>) => {
+      if (!user) return;
+      const { data, error: err } = await supabase.current
+          .from('user_settings')
+          .update(novo)
+          .eq('user_id', user.id)
+          .select()
+          .maybeSingle();
+      if (err) {
+          setError(err.message || 'Não foi possível salvar as preferências.');
+          return;
+      }
+      if (data) setSettings(data);
+  }, [user]);
+
+  const clearAllNotifications = useCallback(async () => {
+      if (!user) return;
+      const token = tokenRef.current;
+      if (!token) return;
+      const anteriores = notifications;
+      setNotifications([]);
+      try {
+          const res = await fetch('/api/notifications', {
+              method: 'DELETE',
+              headers: { Authorization: `Bearer ${token}` },
+          });
+          if (!res.ok) throw new Error('Falha ao limpar as notificações.');
+          setError(null);
+      } catch (e: any) {
+          setNotifications(anteriores);
+          setError(e?.message || 'Não foi possível limpar as notificações.');
+      }
+  }, [user, notifications]);
+
+  const enableBrowserNotifications = useCallback(async () => {
+      if (typeof window === 'undefined' || !('Notification' in window)) {
+          setBrowserPermission('unsupported');
+          return false;
+      }
+      const perm = await window.Notification.requestPermission();
+      setBrowserPermission(perm);
+      if (perm === 'granted') {
+          // Registra o service worker (necessário para notificação no mobile).
+          if ('serviceWorker' in navigator) {
+              try {
+                  await navigator.serviceWorker.register('/sw.js');
+              } catch (e) {
+                  console.warn('[notificações] service worker não registrado:', e);
+              }
+          }
+      }
+      return perm === 'granted';
+  }, []);
+
+  const handleActivateNotifications = useCallback(async () => {
+      if (user) {
+          await updateSettings({ notifications_enabled: true });
+          await enableBrowserNotifications();
+      }
+  }, [user, updateSettings, enableBrowserNotifications]);
+
+  const handleDismissNotifications = useCallback(() => { }, []);
 
   return (
     <NotificationContext.Provider value={{
@@ -416,23 +440,66 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       unreadCount,
       settings,
       loading,
+      error,
       showPermissionModal,
       setShowPermissionModal,
       markAsRead,
       markAllAsRead,
       refreshNotifications,
       updateSettings,
-      clearAllNotifications
+      clearAllNotifications,
+      browserPermission,
+      enableBrowserNotifications,
     }}>
-      {/* Modal só para usuários autenticados e nunca respondeu (checa localStorage) */}
-      {user && <NotificationPermissionModal onActivate={handleActivateNotifications} onDismiss={handleDismissNotifications} />}
+      {user && (
+        <NotificationPermissionModal
+          onActivate={handleActivateNotifications}
+          onDismiss={handleDismissNotifications}
+        />
+      )}
       {children}
     </NotificationContext.Provider>
   );
 };
 
+/**
+ * Notificação do navegador. Usa o Service Worker quando existe (é o caminho
+ * que funciona no Android/iOS e no desktop com aba fechada) e cai para a
+ * Web Notification API quando não há SW.
+ */
+function mostrarNotificacaoDoNavegador(n: Notification, settings: NotificationSettings | null) {
+    if (typeof window === 'undefined' || !('Notification' in window)) return;
+    if (window.Notification.permission !== 'granted') return;
+
+    const opcoes: NotificationOptions & { actions?: any[] } = {
+        body: n.message,
+        icon: '/logo-v2.webp',
+        badge: '/logo.png',
+        tag: `voltris-${n.id}`,
+        data: { url: n.action_url || '/dashboard/notifications', id: n.id },
+        requireInteraction: false,
+    };
+
+    try {
+        if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+            navigator.serviceWorker.ready
+                .then((reg) => reg.showNotification(n.title, opcoes as any))
+                .catch(() => {
+                    new window.Notification(n.title, opcoes as any);
+                });
+            return;
+        }
+    } catch { /* cai para a API direta */ }
+
+    try {
+        new window.Notification(n.title, opcoes as any);
+    } catch (e) {
+        console.warn('[notificações] navegador recusou a notificação:', e);
+    }
+}
+
 export function useNotificationContext() {
   const ctx = useContext(NotificationContext);
   if (!ctx) throw new Error('useNotificationContext deve ser usado dentro de NotificationProvider');
   return ctx;
-} 
+}

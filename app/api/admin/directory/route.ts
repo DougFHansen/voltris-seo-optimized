@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { requireCapability, auditAction, rateLimit, type AdminCapability } from '@/lib/admin-auth';
 import { createAdminClient } from '@/utils/supabase/admin';
 import { readPage, paginate, sanitizeSearch, maskEmail } from '@/lib/admin-queries';
+import { NotificationService } from '@/services/notificationService';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -171,9 +172,11 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
     const Body = z.object({
         resource: z.enum(['newsletter', 'tickets']),
-        action: z.enum(['update_status', 'delete']),
+        action: z.enum(['update_status', 'delete', 'reply']),
         id: z.string().uuid('Identificador inválido.'),
         status: z.string().trim().max(40).optional(),
+        /** Resposta do suporte ao cliente (action = 'reply'). */
+        message: z.string().trim().min(2, 'Escreva a resposta ao cliente.').max(4000).optional(),
         /** Justificativa: obrigatória em toda escrita administrativa. */
         reason: z.string().trim().min(5, 'Justifique a alteração.').max(500),
     });
@@ -186,10 +189,14 @@ export async function POST(req: NextRequest) {
         );
     }
 
-    const { resource, action, id, status, reason } = parsed.data;
+    const { resource, action, id, status, message, reason } = parsed.data;
 
     const guard = await requireCapability(
-        resource === 'newsletter' ? 'emails.resend' : 'clients.read'
+        resource === 'newsletter'
+            ? 'emails.resend'
+            : action === 'reply'
+                ? 'tickets.write'
+                : 'clients.read'
     );
     if (guard.response) return guard.response;
     const actor = guard.actor!;
@@ -238,6 +245,69 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ ok: true, deleted: id });
         }
 
+        if (action === 'reply') {
+            // Resposta do suporte: grava a mensagem no chamado e AVISA o
+            // cliente. É o caminho que o operator usa para responder.
+            if (resource !== 'tickets') {
+                return NextResponse.json(
+                    { error: 'Resposta disponível apenas para chamados.', code: 'NOT_ALLOWED' },
+                    { status: 400 }
+                );
+            }
+            if (!message) {
+                return NextResponse.json(
+                    { error: 'Escreva a resposta ao cliente.', code: 'MESSAGE_REQUIRED' },
+                    { status: 400 }
+                );
+            }
+
+            const dono = (before as { user_id?: string } | null)?.user_id;
+            const { error: msgError } = await db
+                .from('ticket_messages')
+                .insert({
+                    ticket_id: id,
+                    content: message,
+                    user_id: actor.userId,
+                });
+            if (msgError) throw msgError;
+
+            // O status segue junto: responder e fechar é o mesmo gesto.
+            const novoStatus = status || 'Respondido';
+            const { data: afterReply } = await db
+                .from('tickets')
+                .update({ status: novoStatus })
+                .eq('id', id)
+                .select()
+                .maybeSingle();
+
+            await auditAction(actor, {
+                resource,
+                resourceId: id,
+                action: 'TICKET_REPLIED',
+                before,
+                after: afterReply ?? { status: novoStatus, resposta: message.slice(0, 200) },
+                reason,
+                outcome: 'OK',
+            });
+
+            if (dono) {
+                try {
+                    await NotificationService.notify({
+                        recipients: [dono],
+                        kind: 'ticket_reply',
+                        title: 'Resposta do suporte',
+                        message: message.slice(0, 240),
+                        actionUrl: '/dashboard/tickets',
+                        data: { ticket_id: id, status: novoStatus, kind: 'ticket_reply' },
+                    });
+                } catch (e) {
+                    console.error('[api/admin/directory] resposta gravada, mas notificação falhou:', e);
+                }
+            }
+
+            return NextResponse.json({ ok: true, item: afterReply });
+        }
+
         if (!status) {
             return NextResponse.json({ error: 'Novo status não informado.', code: 'STATUS_REQUIRED' }, { status: 400 });
         }
@@ -256,6 +326,29 @@ export async function POST(req: NextRequest) {
             reason,
             outcome: 'OK',
         });
+
+        // O CLIENTE é avisado da mudança de status. A trigger do banco também
+        // avisa, mas ela é ignorada quando a mudança vem do painel (ver
+        // `notificacaocorrigida.sql`) — senão o cliente receberia a mesma
+        // notícia duas vezes.
+        if (resource === 'tickets') {
+            const dono = (before as { user_id?: string } | null)?.user_id;
+            if (dono) {
+                try {
+                    await NotificationService.notify({
+                        recipients: [dono],
+                        kind: 'ticket_reply',
+                        title: 'Seu chamado foi atualizado',
+                        message: `O status do chamado "${(before as { title?: string }).title ?? ''}" mudou para: ${status}.`,
+                        actionUrl: '/dashboard/tickets',
+                        data: { ticket_id: id, status, kind: 'ticket_reply' },
+                    });
+                } catch (e) {
+                    console.error('[api/admin/directory] status alterado, mas notificação falhou:', e);
+                }
+            }
+        }
+
         return NextResponse.json({ ok: true, item: after });
     } catch (err: any) {
         await auditAction(actor, {

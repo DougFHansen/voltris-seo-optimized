@@ -113,28 +113,28 @@ export default function AdminUsersTab() {
     return (
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
 
-            <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm p-5 lg:flex-row lg:items-center lg:justify-between">
                 <div className="relative flex-1">
                     <FiSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16} />
                     <input
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Nome, e-mail, login ou telefone…"
-                        className="w-full rounded-lg border border-slate-700 bg-slate-800/80 py-2 pl-9 pr-3 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
+                        className="w-full rounded-xl border border-slate-800 bg-slate-950/60 py-2.5 pl-9 pr-3 text-xs text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
                     />
                 </div>
                 <div className="flex items-center gap-2">
                     <button
                         onClick={exportar}
                         disabled={rows.length === 0}
-                        className="flex items-center gap-2 rounded-lg bg-slate-800 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:bg-slate-700 disabled:opacity-40"
+                        className="flex items-center gap-2 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 hover:bg-slate-800 transition hover:bg-slate-700 disabled:opacity-40"
                     >
                         <FiDownload size={14} /> Exportar
                     </button>
                     <button
                         onClick={load}
                         disabled={loading}
-                        className="rounded-lg bg-slate-800 p-2 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                        className="rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
                     >
                         <FiRefreshCw size={14} className={loading ? 'animate-spin' : ''} />
                     </button>
@@ -142,7 +142,7 @@ export default function AdminUsersTab() {
             </div>
 
             {error && (
-                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                <div role="alert" className="flex items-start gap-3 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
                     <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
                     <div className="text-sm">
                         <p className="font-semibold text-rose-300">Não foi possível carregar</p>
@@ -152,7 +152,7 @@ export default function AdminUsersTab() {
                 </div>
             )}
 
-            <div className="overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/60">
+            <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm">
                 {loading && rows.length === 0 ? (
                     <div className="flex items-center justify-center gap-3 py-16 text-slate-400">
                         <FiRefreshCw className="animate-spin" size={20} />
@@ -168,7 +168,7 @@ export default function AdminUsersTab() {
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full min-w-[860px] text-left text-sm">
-                            <thead className="border-b border-slate-700/60 text-xs uppercase tracking-wider text-slate-500">
+                            <thead className="border-b border-slate-800/80 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                                 <tr>
                                     <th className="px-4 py-3 font-semibold">Nome</th>
                                     <th className="px-4 py-3 font-semibold">E-mail</th>
@@ -178,10 +178,10 @@ export default function AdminUsersTab() {
                                     <th className="px-4 py-3 font-semibold">Cadastro</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800">
+                            <tbody className="divide-y divide-slate-800/60">
                                 {rows.map((r) => (
-                                    <tr key={r.id} className="hover:bg-slate-800/40">
-                                        <td className="px-4 py-3 font-medium text-slate-200">{r.full_name ?? r.login ?? '—'}</td>
+                                    <tr key={r.id} className="hover:bg-slate-800/30 transition-colors">
+                                        <td className="py-4 px-3 text-xs font-semibold text-slate-200">{r.full_name ?? r.login ?? '—'}</td>
                                         <td className="px-4 py-3 font-mono text-xs text-slate-400">{r.email}</td>
                                         <td className="px-4 py-3 text-xs text-slate-400">{r.phone ?? '—'}</td>
                                         <td className="px-4 py-3 text-xs text-slate-400">

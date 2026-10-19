@@ -7,12 +7,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import VoltrisIcon, { type VoltrisIconName } from '@/components/dashboard/VoltrisIcon';
 import VoltrisIconTile, { DASHBOARD_ACCENT } from '@/components/dashboard/VoltrisIconTile';
 import { useDashboard } from '@/app/context/DashboardContext';
+import { ICONE_POR_TIPO, COR_POR_TIPO, ROTULO_POR_TIPO } from '@/lib/notification-kinds';
 
 export default function NotificationsClient() {
     const { transparencyMode } = useDashboard();
     const { notifications, markAsRead, markAllAsRead, refreshNotifications } = useNotificationContext();
     const { isAdmin } = useAuth();
-    const [filter, setFilter] = useState<'all' | 'unread' | 'order' | 'ticket'>('all');
+    const [filter, setFilter] = useState<'all' | 'unread' | 'compras' | 'licencas' | 'suporte' | 'reembolsos'>('all');
     const [isRefreshing, setIsRefreshing] = useState(false);
 
     // Filtragem conforme lógica original
@@ -22,40 +23,27 @@ export default function NotificationsClient() {
     // Filtro ativo na aba
     const filteredNotifications = baseNotifications.filter(n => {
         if (filter === 'unread') return !n.read;
-        if (filter === 'order') return n.type === 'order';
-        if (filter === 'ticket') return n.type === 'ticket';
+        if (filter === 'compras') return n.type === 'order';
+        if (filter === 'licencas') return n.type === 'license';
+        if (filter === 'suporte') return n.type === 'ticket' || n.type === 'ticket_status';
+        if (filter === 'reembolsos') return n.type === 'refund';
         return true;
     });
 
-    const getIcon = (type: string): VoltrisIconName => {
-        switch (type) {
-            case 'order': return 'package';
-            case 'ticket': return 'message';
-            case 'success': return 'success';
-            case 'warning': return 'alertTriangle';
-            default: return 'bell';
-        }
-    };
+    const getIcon = (type: string): VoltrisIconName =>
+        (ICONE_POR_TIPO[type] as VoltrisIconName) || 'bell';
 
-    // Cores dos ícones mantidas estritamente conforme configurado pelo usuário
     const getColor = (type: string) => {
-        switch (type) {
-      case 'order': return 'text-[#00D4FF] bg-[#00D4FF]/10 border-[#00D4FF]/20';
-      case 'ticket': return 'text-[#8B31FF] bg-[#8B31FF]/10 border-[#8B31FF]/20';
-      case 'success': return 'text-[#00FF94] bg-[#00FF94]/10 border-[#00FF94]/20';
-      case 'warning': return 'text-[#F59E0B] bg-[#F59E0B]/10 border-[#F59E0B]/20';
-      default: return 'text-[#8B31FF] bg-[#8B31FF]/10 border-[#8B31FF]/20';
-        }
+        const cor = COR_POR_TIPO[type] || DASHBOARD_ACCENT.brand;
+        return `text-[${cor}] bg-[${cor}]/10 border-[${cor}]/20`;
     };
 
-    const getTypeLabel = (type: string) => {
-        switch (type) {
-            case 'order': return 'Pedido';
-            case 'ticket': return 'Ticket';
-            case 'success': return 'Sucesso';
-            case 'warning': return 'Alerta';
-            default: return 'Sistema';
-        }
+    const getTypeLabel = (type: string) => ROTULO_POR_TIPO[type] ?? 'Sistema';
+
+    /** Marca como lida e leva ao destino da notificação (quando existe). */
+    const abrirNotificacao = async (n: (typeof notifications)[number]) => {
+        await markAsRead(n.id);
+        if (n.action_url) window.location.href = n.action_url;
     };
 
     const handleRefresh = async () => {
@@ -119,8 +107,10 @@ export default function NotificationsClient() {
                 {[
                     { id: 'all', label: 'Todas', count: baseNotifications.length },
                     { id: 'unread', label: 'Não Lidas', count: unreadCount },
-                    { id: 'order', label: 'Pedidos', count: baseNotifications.filter(n => n.type === 'order').length },
-                    { id: 'ticket', label: 'Tickets', count: baseNotifications.filter(n => n.type === 'ticket').length },
+                    { id: 'compras', label: 'Compras', count: baseNotifications.filter(n => n.type === 'order').length },
+                    { id: 'licencas', label: 'Licenças', count: baseNotifications.filter(n => n.type === 'license').length },
+                    { id: 'suporte', label: 'Suporte', count: baseNotifications.filter(n => n.type === 'ticket' || n.type === 'ticket_status').length },
+                    { id: 'reembolsos', label: 'Reembolsos', count: baseNotifications.filter(n => n.type === 'refund').length },
                 ].map((tab) => {
                     const isActive = filter === tab.id;
                     return (
@@ -168,7 +158,7 @@ export default function NotificationsClient() {
                                             : `${transparencyMode ? 'voltris-glass' : 'bg-slate-900/70 border-slate-800 shadow-md'} hover:border-indigo-500/40 hover:bg-slate-900/90`
                                         }
                                     `}
-                                    onClick={() => markAsRead(notif.id)}
+                                    onClick={() => abrirNotificacao(notif)}
                                 >
                                     <div className="flex items-start gap-3.5 sm:gap-4">
                                         {/* Icon Box with User's Exact Colors */}

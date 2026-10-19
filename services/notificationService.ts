@@ -1,5 +1,10 @@
 import { createClient } from '@supabase/supabase-js';
 import webpush from 'web-push';
+import {
+    NotificationKind,
+    NotificationType,
+    tipoParaGravacao,
+} from '@/lib/notification-kinds';
 
 // Configuração do cliente Supabase com Service Role para acesso irrestrito (backend)
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -12,150 +17,177 @@ if (!supabaseUrl || !supabaseServiceKey) {
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Configuração Web Push (VAPID)
-if (process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
-    webpush.setVapidDetails(
-        'mailto:admin@voltris.com',
-        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
-        process.env.VAPID_PRIVATE_KEY
-    );
+const vapidPublic = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+const vapidPrivate = process.env.VAPID_PRIVATE_KEY;
+const pushConfigurado = !!(vapidPublic && vapidPrivate);
+
+if (pushConfigurado) {
+    webpush.setVapidDetails('mailto:admin@voltris.com', vapidPublic!, vapidPrivate!);
 }
 
-export type NotificationType = 'ticket' | 'order' | 'system' | 'profile' | 'newsletter' | 'comment' | 'ticket_status';
-
-export interface TriggerNotificationOptions {
-    recipients: string[]; // Array de user_ids
-    title: string;
-    message: string;
-    type: NotificationType;
-    sound?: 'ping' | 'chime' | 'tone';
-    data?: Record<string, any>; // Metadados extras (link, id do pedido, etc)
-    actionUrl?: string; // URL para redirecionamento ao clicar (push)
+/** tipos novos do enum só existem depois de `notificacaocorrigida.sql` */
+export interface NotificationCapabilities {
+    /** As colunas action_url/data/audience existem. */
+    richColumns: boolean;
+    /** O enum aceita os tipos novos (license/service/refund). */
+    richTypes: boolean;
+    /** Web Push (VAPID) configurado no ambiente. */
+    push: boolean;
 }
+
+let capsPromise: Promise<NotificationCapabilities> | null = null;
 
 /**
- * Serviço centralizado de notificações Enterprise
- * Garante consistência entre DB, Realtime e Push
+ * Detecta, UMA vez, o que o banco real suporta.
+ *
+ * O sistema precisa funcionar ANTES e DEPOIS de `notificacaocorrigida.sql`
+ * ser aplicado. Sem colunas novas, a notificação continua sendo gravada (com
+ * o tipo base) — só perde o link de navegação e o tipo refinado.
+ */
+export function capabilitiesDoBanco(): Promise<NotificationCapabilities> {
+    if (!capsPromise) {
+        capsPromise = (async (): Promise<NotificationCapabilities> => {
+            let richColumns = false;
+            let richTypes = false;
+            try {
+                const { error } = await supabase
+                    .from('notifications')
+                    .select('id, action_url, data, audience')
+                    .limit(1);
+                richColumns = !error;
+                if (richColumns) {
+                    // Se o enum não tiver o valor, o PostgREST devolve erro
+                    // de tipo inválido — é o teste que usamos para saber.
+                    const { error: erroTipo } = await supabase
+                        .from('notifications')
+                        .select('id')
+                        .eq('type' as never, 'license' as never)
+                        .limit(1);
+                    richTypes = !erroTipo;
+                }
+            } catch (e) {
+                console.error('[NotificationService] falha ao detectar capacidades do banco:', e);
+            }
+            const caps: NotificationCapabilities = {
+                richColumns,
+                richTypes,
+                push: pushConfigurado,
+            };
+            console.log(
+                `[NotificationService] capacidades: colunas=${caps.richColumns} tipos=${caps.richTypes} push=${caps.push}`
+            );
+            return caps;
+        })();
+    }
+    return capsPromise;
+}
+
+/** Zera o cache de capacidades (usado em testes e após aplicar o SQL). */
+export function resetarCapacidades(): void {
+    capsPromise = null;
+}
+
+export interface TriggerNotificationOptions {
+    recipients: string[];
+    kind: NotificationKind;
+    title: string;
+    message: string;
+    sound?: 'ping' | 'chime' | 'tone';
+    data?: Record<string, unknown>;
+    actionUrl?: string;
+    /** 'user' (padrão) ou 'admin' (notificação de operação). */
+    audience?: 'user' | 'admin';
+}
+
+/** Som padrão por tipo de negócio — compra/licença "toca" diferente de ticket. */
+const SOM_PADRAO: Record<NotificationKind, 'ping' | 'chime' | 'tone'> = {
+    purchase: 'chime',
+    license: 'chime',
+    service: 'chime',
+    ticket: 'ping',
+    ticket_reply: 'ping',
+    refund: 'tone',
+    subscription: 'chime',
+    payment_failed: 'tone',
+    newsletter: 'ping',
+    profile: 'ping',
+    system: 'ping',
+};
+
+/**
+ * Serviço centralizado de notificações (in-app + Web Push).
+ *
+ * Regra de ouro: gravar a notificação NUNCA derruba o fluxo de negócio que a
+ * originou. A exceção é quando a notificação É o objetivo (ex.: o admin
+ * precisa saber do ticket novo) — aí o erro sobe e quem chamou decide.
  */
 export const NotificationService = {
-
     /**
-     * Dispara uma notificação completa (DB + Realtime + Push)
+     * Dispara uma notificação completa (DB + Realtime + Push).
      * @param options Opções da notificação
      */
     async notify(options: TriggerNotificationOptions) {
-        console.log(`🔔 NotificationService: Disparando notificação [${options.type}] para ${options.recipients.length} usuários`);
+        const recipients = (options.recipients ?? []).filter(Boolean);
+        if (recipients.length === 0) return [];
 
-        // 1. Persistir no Banco de Dados (Fonte da Verdade)
-        // Isso acionará automaticamente o Supabase Realtime para quem estiver ouvindo a tabela 'notifications'
-        const notificationsToInsert = options.recipients.map(userId => ({
-            user_id: userId,
+        const caps = await capabilitiesDoBanco();
+        const type = tipoParaGravacao(options.kind, caps.richTypes);
+        const sound = options.sound ?? SOM_PADRAO[options.kind] ?? 'ping';
+        const now = new Date().toISOString();
+
+        const base = {
+            user_id: null as unknown as string,
             title: options.title,
             message: options.message,
-            type: options.type,
+            type,
             read: false,
-            sound: options.sound || 'ping',
-            created_at: new Date().toISOString()
-            // Note: A tabela atual não tem coluna 'data' JSONB, então metadados extras de negócio
-            // não são salvos na tabela notifications nesta versão do schema.
-            // O frontend deve derivar navegação com base no 'type' ou mensagens padrão,
-            // ou devemos alterar o schema. Por segurança, mantemos compatibilidade com schema atual.
+            sound,
+            created_at: now,
+        };
+
+        const data = {
+            ...(options.data ?? {}),
+            kind: options.kind,
+        };
+
+        const rows = recipients.map((userId) => ({
+            ...base,
+            user_id: userId,
+            ...(caps.richColumns
+                ? {
+                    action_url: options.actionUrl ?? null,
+                    data,
+                    audience: options.audience ?? 'user',
+                    updated_at: now,
+                }
+                : {}),
         }));
 
         const { data: insertedData, error: dbError } = await supabase
             .from('notifications')
-            .insert(notificationsToInsert)
+            .insert(rows)
             .select();
 
         if (dbError) {
             console.error('❌ Erro crítico ao persistir notificação:', dbError);
-            // Em sistema enterprise, poderíamos jogar numa fila de retry (Dead Letter Queue)
-            // Aqui, lançamos erro para o caller tratar (abortar transação se necessário)
             throw new Error(`Falha ao persistir notificação: ${dbError.message}`);
         }
 
-        // 2. Disparar Web Push (Async / Fire-and-Forget)
-        // Não bloqueamos o retorno da função pelo push, pois é um efeito colateral
-        this.sendWebPush(options).catch(err => {
+        // Web Push é efeito colateral: nunca derruba o fluxo.
+        this.sendWebPush(options).catch((err) => {
             console.error('❌ Erro no envio de Web Push (background):', err);
         });
 
-        console.log('✅ Notificações persistidas e enviadas para fila de push.');
-        return insertedData;
+        return insertedData ?? [];
     },
 
     /**
-     * Método interno para gerenciar envio de Push Notifications
-     */
-    async sendWebPush(options: TriggerNotificationOptions) {
-        // Buscar inscrições ativas apenas dos destinatários
-        const { data: subscriptions, error: subError } = await supabase
-            .from('push_subscriptions')
-            .select('*')
-            .in('user_id', options.recipients)
-            .eq('is_active', true);
-
-        if (subError) {
-            console.error('Erro ao buscar inscrições push:', subError);
-            return;
-        }
-
-        if (!subscriptions || subscriptions.length === 0) {
-            console.log('ℹ️ Nenhuma subscrição push ativa encontrada para os destinatários.');
-            return;
-        }
-
-        const payload = JSON.stringify({
-            title: options.title,
-            body: options.message,
-            icon: '/logo-v2.webp', // Ícone padrão
-            tag: `voltris-${options.type}-${Date.now()}`,
-            data: {
-                url: options.actionUrl || '/',
-                ...options.data
-            }
-        });
-
-        console.log(`📤 Enviando ${subscriptions.length} pushes...`);
-
-        const results = await Promise.allSettled(subscriptions.map(async sub => {
-            try {
-                await webpush.sendNotification({
-                    endpoint: sub.endpoint,
-                    keys: {
-                        p256dh: sub.p256dh,
-                        auth: sub.auth
-                    }
-                }, payload);
-
-                // Opcional: Atualizar last_used
-                await supabase
-                    .from('push_subscriptions')
-                    .update({ last_used: new Date().toISOString() })
-                    .eq('id', sub.id);
-
-            } catch (err: any) {
-                // Tratar erro 410 (Gone) -> Remover/Inativar inscrição
-                if (err.statusCode === 410) {
-                    console.warn(`⚠️ Inscrição expirada (410) para usuário ${sub.user_id}. Desativando...`);
-                    await supabase
-                        .from('push_subscriptions')
-                        .update({ is_active: false })
-                        .eq('id', sub.id);
-                } else {
-                    throw err;
-                }
-            }
-        }));
-
-        const successCount = results.filter(r => r.status === 'fulfilled').length;
-        console.log(`📊 Pushes enviados: ${successCount}/${subscriptions.length}`);
-    },
-
-    /**
-     * Helper para notificar Admins
+     * Notifica os administradores ativos.
+     *
+     * `is_blocked`/`is_deleted` são respeitados: um admin bloqueado não deve
+     * receber alerta de operação.
      */
     async notifyAdmins(options: Omit<TriggerNotificationOptions, 'recipients'>) {
-        // Buscar IDs de todos os admins
         const { data: admins, error } = await supabase
             .from('profiles')
             .select('id')
@@ -163,15 +195,95 @@ export const NotificationService = {
 
         if (error || !admins) {
             console.error('Erro ao buscar admins:', error);
-            return;
+            return [];
         }
 
-        const adminIds = admins.map(a => a.id);
-        if (adminIds.length === 0) return;
+        const ativos = admins.filter(
+            (a) => (a as unknown as { is_blocked?: boolean }).is_blocked !== true
+        );
+        const ids = ativos.map((a) => a.id);
+        if (ids.length === 0) return [];
 
         return this.notify({
             ...options,
-            recipients: adminIds
+            recipients: ids,
+            audience: options.audience ?? 'admin',
         });
-    }
+    },
+
+    /**
+     * Envio de Web Push (VAPID) para as inscrições ativas dos destinatários.
+     */
+    async sendWebPush(options: TriggerNotificationOptions) {
+        if (!pushConfigurado) {
+            // Sem VAPID não há Web Push — o in-app + Realtime continuam
+            // funcionando. Não é erro, é ausência de configuração.
+            return { enviados: 0, motivo: 'VAPID não configurado' };
+        }
+
+        const recipients = (options.recipients ?? []).filter(Boolean);
+        if (recipients.length === 0) return { enviados: 0 };
+
+        const { data: subscriptions, error: subError } = await supabase
+            .from('push_subscriptions')
+            .select('*')
+            .in('user_id', recipients)
+            .eq('is_active', true);
+
+        if (subError) {
+            console.error('Erro ao buscar inscrições push:', subError);
+            return { enviados: 0 };
+        }
+
+        if (!subscriptions || subscriptions.length === 0) {
+            return { enviados: 0, motivo: 'sem inscrições ativas' };
+        }
+
+        const payload = JSON.stringify({
+            title: options.title,
+            body: options.message,
+            icon: '/logo-v2.webp',
+            badge: '/logo.png',
+            tag: `voltris-${options.kind}`,
+            data: {
+                url: options.actionUrl || '/',
+                kind: options.kind,
+                ...(options.data ?? {}),
+            },
+        });
+
+        const results = await Promise.allSettled(
+            subscriptions.map(async (sub) => {
+                try {
+                    await webpush.sendNotification(
+                        {
+                            endpoint: sub.endpoint,
+                            keys: { p256dh: sub.p256dh, auth: sub.auth },
+                        },
+                        payload
+                    );
+                    await supabase
+                        .from('push_subscriptions')
+                        .update({ last_used: new Date().toISOString() })
+                        .eq('id', sub.id);
+                } catch (err: any) {
+                    if (err?.statusCode === 410) {
+                        console.warn(`⚠️ Inscrição expirada (410) para usuário ${sub.user_id}. Desativando...`);
+                        await supabase
+                            .from('push_subscriptions')
+                            .update({ is_active: false })
+                            .eq('id', sub.id);
+                    } else {
+                        throw err;
+                    }
+                }
+            })
+        );
+
+        const enviados = results.filter((r) => r.status === 'fulfilled').length;
+        console.log(`📊 Pushes enviados: ${enviados}/${subscriptions.length}`);
+        return { enviados, total: subscriptions.length };
+    },
 };
+
+export type { NotificationKind, NotificationType };

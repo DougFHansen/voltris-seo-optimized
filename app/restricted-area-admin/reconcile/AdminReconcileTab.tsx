@@ -167,7 +167,7 @@ export default function AdminReconcileTab() {
             </div>
 
             {erro && (
-                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                <div role="alert" className="flex items-start gap-3 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
                     <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
                     <div className="text-sm">
                         <p className="font-semibold text-rose-300">Conciliação indisponível</p>
@@ -181,14 +181,14 @@ export default function AdminReconcileTab() {
                 </div>
             )}
 
-            <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm p-5 lg:flex-row lg:items-center lg:justify-between">
                 <div className="relative flex-1">
                     <FiSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16} />
                     <input
                         value={filtro}
                         onChange={(e) => setFiltro(e.target.value)}
                         placeholder="Filtrar por referência, plano ou ação…"
-                        className="w-full rounded-lg border border-slate-700 bg-slate-800/80 py-2 pl-9 pr-3 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
+                        className="w-full rounded-xl border border-slate-800 bg-slate-950/60 py-2.5 pl-9 pr-3 text-xs text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
                     />
                 </div>
                 <div className="flex items-center gap-2">
@@ -203,7 +203,7 @@ export default function AdminReconcileTab() {
                     <button
                         onClick={carregar}
                         disabled={carregando}
-                        className="rounded-lg bg-slate-800 p-2 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                        className="rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
                     >
                         <FiRefreshCw size={14} className={carregando ? 'animate-spin' : ''} />
                     </button>
@@ -259,7 +259,7 @@ export default function AdminReconcileTab() {
                 </div>
             )}
 
-            <div className="overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/60">
+            <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm">
                 {carregando && !dados ? (
                     <div className="flex items-center justify-center gap-3 py-16 text-slate-400">
                         <FiRefreshCw className="animate-spin" size={20} />
@@ -276,7 +276,7 @@ export default function AdminReconcileTab() {
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full min-w-[900px] text-left text-sm">
-                            <thead className="border-b border-slate-700/60 text-xs uppercase tracking-wider text-slate-500">
+                            <thead className="border-b border-slate-800/80 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                                 <tr>
                                     <th className="px-4 py-3 font-semibold">Compra</th>
                                     <th className="px-4 py-3 font-semibold">Plano</th>
@@ -286,11 +286,11 @@ export default function AdminReconcileTab() {
                                     <th className="px-4 py-3 font-semibold">Por quê</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800">
+                            <tbody className="divide-y divide-slate-800/60">
                                 {linhas.map((r) => {
                                     const a = ACAO[r.action] ?? ACAO.NEEDS_MANUAL;
                                     return (
-                                        <tr key={r.payment_id} className="hover:bg-slate-800/40">
+                                        <tr key={r.payment_id} className="hover:bg-slate-800/30 transition-colors">
                                             <td className="px-4 py-3">
                                                 <span className="font-mono text-xs text-slate-300">{r.reference_id ?? r.payment_id.slice(0, 8)}</span>
                                                 {r.applied && (
@@ -308,7 +308,7 @@ export default function AdminReconcileTab() {
                                                 {r.age_days !== null ? `${r.age_days}d` : '—'}
                                             </td>
                                             <td className="px-4 py-3">
-                                                <span className={`rounded border px-2 py-0.5 text-[10px] font-semibold ${a.cls}`}>
+                                                <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${a.cls}`}>
                                                     {a.rotulo}
                                                 </span>
                                             </td>
@@ -332,7 +332,7 @@ function Card({ label, value, tone, icon: Icon }: {
     icon: React.ComponentType<{ size?: number; className?: string }>;
 }) {
     return (
-        <div className="rounded-xl border border-slate-700/60 bg-slate-900/60 p-4">
+        <div className="rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm p-5">
             <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{label}</span>
                 <Icon size={15} className={tone} />

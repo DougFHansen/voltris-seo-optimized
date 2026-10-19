@@ -97,14 +97,14 @@ export default function AdminClientsTab() {
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
 
             {/* ---------------- Filtros ---------------- */}
-            <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm p-5 lg:flex-row lg:items-center lg:justify-between">
                 <div className="relative flex-1">
                     <FiSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16} />
                     <input
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Nome, e-mail ou login…"
-                        className="w-full rounded-lg border border-slate-700 bg-slate-800/80 py-2 pl-9 pr-3 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
+                        className="w-full rounded-xl border border-slate-800 bg-slate-950/60 py-2.5 pl-9 pr-3 text-xs text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
                     />
                 </div>
                 <div className="flex items-center gap-2">
@@ -122,7 +122,7 @@ export default function AdminClientsTab() {
                     <button
                         onClick={() => load()}
                         disabled={loading}
-                        className="rounded-lg bg-slate-800 p-2 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                        className="rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
                     >
                         <FiRefreshCw size={14} className={loading ? 'animate-spin' : ''} />
                     </button>
@@ -130,7 +130,7 @@ export default function AdminClientsTab() {
             </div>
 
             {error && (
-                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                <div role="alert" className="flex items-start gap-3 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
                     <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
                     <div className="text-sm">
                         <p className="font-semibold text-rose-300">Não foi possível carregar</p>
@@ -140,7 +140,7 @@ export default function AdminClientsTab() {
             )}
 
             {/* ---------------- Tabela ---------------- */}
-            <div className="overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/60">
+            <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm">
                 {loading && rows.length === 0 ? (
                     <div className="flex items-center justify-center gap-3 py-16 text-slate-400">
                         <FiRefreshCw className="animate-spin" size={20} />
@@ -154,7 +154,7 @@ export default function AdminClientsTab() {
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full min-w-[820px] text-left text-sm">
-                            <thead className="border-b border-slate-700/60 text-xs uppercase tracking-wider text-slate-500">
+                            <thead className="border-b border-slate-800/80 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                                 <tr>
                                     <th className="px-4 py-3 font-semibold">Cliente</th>
                                     <th className="px-4 py-3 font-semibold">Contato</th>
@@ -165,9 +165,9 @@ export default function AdminClientsTab() {
                                     <th className="px-4 py-3 font-semibold text-right">Ficha</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800">
+                            <tbody className="divide-y divide-slate-800/60">
                                 {rows.map((c) => (
-                                    <tr key={c.id} className="hover:bg-slate-800/40">
+                                    <tr key={c.id} className="hover:bg-slate-800/30 transition-colors">
                                         <td className="px-4 py-3">
                                             <div className="flex items-center gap-2">
                                                 <span className="font-medium text-slate-200">{c.fullName}</span>
@@ -204,7 +204,7 @@ export default function AdminClientsTab() {
                                         <td className="px-4 py-3 text-right">
                                             <button
                                                 onClick={() => setSelected(c)}
-                                                className="rounded-lg border border-slate-700 px-2.5 py-1.5 text-[11px] font-semibold text-slate-300 transition hover:border-indigo-500 hover:text-indigo-300"
+                                                className="rounded-full border border-slate-700 px-2.5 py-1 text-[11px] font-medium text-slate-300 transition hover:border-indigo-500 hover:text-indigo-300"
                                             >
                                                 Abrir
                                             </button>
@@ -349,7 +349,7 @@ function ClientDrawer({ client, onClose }: { client: ClientRow; onClose: () => v
                             <span className="text-sm">Carregando…</span>
                         </div>
                     ) : erro ? (
-                        <div role="alert" className="rounded-xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm">
+                        <div role="alert" className="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm">
                             <p className="font-semibold text-rose-300">Não foi possível abrir a ficha</p>
                             <p className="mt-1 text-rose-200/80">{erro}</p>
                         </div>
@@ -424,7 +424,7 @@ function Compras({ rows }: { rows: any[] }) {
             <thead className="text-slate-500">
                 <tr><th className="py-2">Data</th><th>Plano</th><th>Valor</th><th>Status</th></tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-slate-800/60">
                 {rows.map((r, i) => (
                     <tr key={i}>
                         <td className="py-2 text-slate-400">{new Date(r.created_at).toLocaleDateString('pt-BR')}</td>
@@ -527,7 +527,7 @@ function StatusBadge({ status }: { status: string }) {
             : ['failed', 'canceled', 'cancelled'].includes(s)
                 ? 'bg-rose-500/10 text-rose-400 border-rose-500/30'
                 : 'bg-amber-500/10 text-amber-400 border-amber-500/30';
-    return <span className={`rounded border px-2 py-0.5 text-[10px] font-semibold ${cls}`}>{status ?? '—'}</span>;
+    return <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${cls}`}>{status ?? '—'}</span>;
 }
 
 function Field({ label, value }: { label: string; value: string }) {

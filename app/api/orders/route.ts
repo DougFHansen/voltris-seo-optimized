@@ -55,27 +55,31 @@ export async function POST(req: NextRequest) {
 
         console.log('✅ Pedido criado com sucesso:', order.id);
 
-        // 4. SISTEMA DE NOTIFICAÇÕES (Enterprise)
-        // OBRIGATÓRIO: Notificar Usuário e Admins via NotificationService persistente
+        // 4. SISTEMA DE NOTIFICAÇÕES
+        // OBRIGATÓRIO: o cliente e o admin precisam saber do pedido.
+        // O cliente recebe a confirmação; o admin, o alerta de venda (com
+        // deep link para a aba Pedidos do painel único).
 
         try {
             // A) Notificar o Cliente (Confirmação)
             await NotificationService.notify({
                 recipients: [user.id],
-                type: 'order',
-                title: 'Pedido Recebido! 🚀',
+                kind: 'service',
+                title: 'Pedido recebido!',
                 message: `Seu pedido #${order.id.slice(0, 8)} foi recebido e está sendo processado.`,
                 sound: 'chime',
-                actionUrl: `/dashboard/orders`, // Link para ver o pedido
+                actionUrl: '/dashboard?tab=orders',
+                data: { order_id: order.id, total },
             });
 
             // B) Notificar Administradores (Alerta de Venda)
             await NotificationService.notifyAdmins({
-                type: 'order',
-                title: '💰 Novo Pedido Realizado',
+                kind: 'service',
+                title: 'Novo pedido realizado',
                 message: `${userName} realizou um pedido de R$ ${Number(total).toFixed(2)}.`,
                 sound: 'chime',
-                actionUrl: `/restricted-area-admin?tab=orders`, // Painel unico, deep link para a aba
+                actionUrl: `/restricted-area-admin?tab=orders`,
+                data: { order_id: order.id, total, user_id: user.id },
             });
 
         } catch (notifError) {

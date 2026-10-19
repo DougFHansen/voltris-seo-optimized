@@ -70,12 +70,26 @@ export default function TicketsClient() {
     setIsCreating(true);
     try {
       if (!user) throw new Error('Usuário não autenticado');
-      const { data: ticket, error } = await supabase.from('tickets').insert([{
-        title: newTicket.title, status: 'Aberto', user_id: user.id, priority: newTicket.priority
-      }]).select().single();
-      if (error) throw error;
 
-      await supabase.from('ticket_messages').insert({ ticket_id: ticket.id, content: newTicket.description, user_id: user.id });
+      // A criação passa pelo SERVIDOR (`/api/tickets`) porque é lá que o
+      // admin é notificado do novo chamado. Inserindo direto do navegador, o
+      // chamado existia e o admin não ficava sabendo.
+      const { data: sessao } = await supabase.auth.getSession();
+      const token = sessao.session?.access_token;
+      if (!token) throw new Error('Sessão expirada. Faça login novamente.');
+
+      const res = await fetch('/api/tickets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          action: 'create',
+          title: newTicket.title,
+          description: newTicket.description,
+          priority: newTicket.priority,
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json?.error || 'Erro ao abrir chamado');
 
       setNewTicket({ title: '', description: '', priority: 'medium' });
       setShowCreateForm(false);
@@ -92,17 +106,27 @@ export default function TicketsClient() {
     if (!replyText.trim() || !selectedTicket || !user) return;
     setIsSendingReply(true);
     try {
-      const { error } = await supabase.from('ticket_messages').insert({
-        ticket_id: selectedTicket.id,
-        content: replyText,
-        user_id: user.id
+      const { data: sessao } = await supabase.auth.getSession();
+      const token = sessao.session?.access_token;
+      if (!token) throw new Error('Sessão expirada. Faça login novamente.');
+
+      const res = await fetch('/api/tickets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({
+          action: 'reply',
+          ticketId: selectedTicket.id,
+          reply: replyText,
+        }),
       });
-      if (error) throw error;
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json?.error || 'Falha ao enviar mensagem');
+
       setReplyText('');
       const { data } = await supabase.from('ticket_messages').select('*').eq('ticket_id', selectedTicket.id).order('created_at', { ascending: true });
       setMessages(data || []);
-    } catch (error) {
-       toast.error('Falha ao enviar mensagem');
+    } catch (error: any) {
+       toast.error(error?.message || 'Falha ao enviar mensagem');
     } finally {
        setIsSendingReply(false);
     }

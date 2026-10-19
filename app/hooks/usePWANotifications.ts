@@ -318,6 +318,8 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
         badge: '/logo-v2.webp',
         tag: 'test-notification',
         requireInteraction: true,
+        // `actions` existe na NotificationOptions do Service Worker, mas o
+        // tipo do TS do DOM não declara — daí o cast.
         actions: [
           {
             action: 'view',
@@ -330,7 +332,7 @@ export function usePWANotifications(): PWANotificationState & PWANotificationAct
             icon: '/logo-v2.webp'
           }
         ]
-      });
+      } as NotificationOptions & { actions: unknown[] });
       
       console.log('✅ Notificação de teste enviada com sucesso');
       

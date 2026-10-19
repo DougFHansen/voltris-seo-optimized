@@ -37,15 +37,29 @@ function componentes(dir = 'app/restricted-area-admin'): string[] {
     return out;
 }
 
-/** Arquivos de aba (exclui o shell: page.tsx e layout.tsx). */
+/** Arquivos de aba (exclui o shell e o kit compartilhado "_ui.tsx"). */
 function abas(): string[] {
     return componentes().filter((f) => {
         const base = f.split(/[\\/]/).pop()!;
+        if (base.startsWith('_')) return false; // kit de UI: não é uma aba
         return !['page.tsx', 'layout.tsx'].includes(base);
     });
 }
 
 const ARQUIVOS = abas();
+
+/**
+ * Fonte efetiva de uma aba.
+ *
+ * As abas passaram a usar o kit compartilhado (_ui.tsx) para os estados de
+ * carregamento, erro e vazio. A verificação precisa olhar as DUAS fontes:
+ * exigir o texto literal dentro de cada aba reprovaria código correto.
+ */
+const KIT = readFileSync('app/restricted-area-admin/_ui.tsx', 'utf8');
+function fonteDaAba(arquivo: string): string {
+    const src = readFileSync(arquivo, 'utf8');
+    return /from '\.\.\/_ui'/.test(src) ? src + '\n' + KIT : src;
+}
 
 // ===========================================================================
 // 1. Nenhuma aba lê o banco pelo navegador
@@ -95,7 +109,7 @@ describe('cada aba distingue carregando, erro e vazio', () => {
         const nome = f.split(/[\\/]/).slice(-2).join('/');
 
         test(`${nome} tem estado de carregamento`, () => {
-            const src = readFileSync(f, 'utf8');
+            const src = fonteDaAba(f);
             assert.ok(
                 /loading|Loading|Carregando/.test(src),
                 `${nome} não mostra estado de carregamento`
@@ -103,7 +117,7 @@ describe('cada aba distingue carregando, erro e vazio', () => {
         });
 
         test(`${nome} tem estado de erro com retry`, () => {
-            const src = readFileSync(f, 'utf8');
+            const src = fonteDaAba(f);
             assert.ok(/error|setError/.test(src), `${nome} não trata erro`);
             assert.ok(
                 /role="alert"/.test(src),
@@ -112,11 +126,13 @@ describe('cada aba distingue carregando, erro e vazio', () => {
         });
 
         test(`${nome} tem estado vazio ou fallback de "sem dados"`, () => {
-            const src = readFileSync(f, 'utf8');
+            const src = fonteDaAba(f);
             // Um painel de cartões (Visão Geral) não tem "lista vazia": o
             // equivalente é ter um caminho explícito para "não há dado" —
             // seja uma lista vazia, seja um aviso de dado indisponível.
-            const temListaVazia = /rows\.length === 0|length === 0/.test(src);
+            // Aceita tambem a forma negada (`!lista.length`), que e o mesmo
+            // estado vazio escrito de outra maneira.
+            const temListaVazia = /rows\.length === 0|length === 0|!\s*[A-Za-z_$][\w$?.]*\.length/.test(src);
             const temFallback = /unavailable|sem dados|nenhum registro|Nenhum\s+\w+\s+registrad|Confirme|confirmado no banco/i.test(src);
             assert.ok(
                 temListaVazia || temFallback,
@@ -133,7 +149,7 @@ describe('cada aba distingue carregando, erro e vazio', () => {
         });
 
         test(`${nome} não engole erro de fetch`, () => {
-            const src = readFileSync(f, 'utf8');
+            const src = fonteDaAba(f);
             // `catch {` e `catch (e)` são igualmente válidos; exigir só o
             // parêntesis reprovaria código correto.
             assert.ok(
@@ -281,5 +297,35 @@ describe('o que a API devolve é o mínimo necessário', () => {
     test('a paginação tem teto', () => {
         const src = readFileSync('app/api/admin/directory/route.ts', 'utf8');
         assert.ok(/readPage/.test(src), 'sem readPage a rota pode devolver a tabela inteira');
+    });
+});
+
+
+// ===========================================================================
+// 5. O kit compartilhado precisa trazer os estados que as abas usam
+// ===========================================================================
+
+describe('kit de UI do painel', () => {
+    const kit = readFileSync('app/restricted-area-admin/_ui.tsx', 'utf8');
+
+    test('o kit existe e é importado pelas abas', () => {
+        assert.ok(kit.length > 100, 'kit vazio');
+        const abasQueUsam = abas().filter((a) => /from '\.\.\/_ui'/.test(readFileSync(a, 'utf8')));
+        assert.ok(abasQueUsam.length >= 1, 'nenhuma aba usa o kit compartilhado');
+    });
+
+    test('o kit tem estado de erro anunciado (role="alert")', () => {
+        assert.match(kit, /role="alert"/);
+        assert.match(kit, /AdminErrorState/);
+    });
+
+    test('o kit tem estado vazio e de carregamento', () => {
+        assert.match(kit, /AdminEmptyState/);
+        assert.match(kit, /AdminLoading/);
+    });
+
+    test('o kit usa o visual do dashboard (cards rounded-2xl, slate-900/50)', () => {
+        assert.match(kit, /rounded-2xl/);
+        assert.match(kit, /bg-slate-900\/50/);
     });
 });

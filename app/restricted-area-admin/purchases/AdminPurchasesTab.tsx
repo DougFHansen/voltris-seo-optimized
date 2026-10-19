@@ -130,14 +130,14 @@ export default function AdminPurchasesTab() {
             )}
 
             {/* Filtros */}
-            <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm p-5 lg:flex-row lg:items-center lg:justify-between">
                 <div className="relative flex-1">
                     <FiSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16} />
                     <input
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Nome, e-mail, referência ou ID Stripe…"
-                        className="w-full rounded-lg border border-slate-700 bg-slate-800/80 py-2 pl-9 pr-3 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
+                        className="w-full rounded-xl border border-slate-800 bg-slate-950/60 py-2.5 pl-9 pr-3 text-xs text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
                     />
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
@@ -155,7 +155,7 @@ export default function AdminPurchasesTab() {
                     <button
                         onClick={load}
                         disabled={loading}
-                        className="rounded-lg bg-slate-800 p-2 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                        className="rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
                     >
                         <FiRefreshCw size={14} className={loading ? 'animate-spin' : ''} />
                     </button>
@@ -163,7 +163,7 @@ export default function AdminPurchasesTab() {
             </div>
 
             {error && (
-                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                <div role="alert" className="flex items-start gap-3 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
                     <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
                     <div className="text-sm">
                         <p className="font-semibold text-rose-300">Não foi possível carregar</p>
@@ -173,7 +173,7 @@ export default function AdminPurchasesTab() {
             )}
 
             {/* Tabela */}
-            <div className="overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/60">
+            <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm">
                 {loading && rows.length === 0 ? (
                     <div className="flex items-center justify-center gap-3 py-16 text-slate-400">
                         <FiRefreshCw className="animate-spin" size={20} />
@@ -187,7 +187,7 @@ export default function AdminPurchasesTab() {
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="w-full min-w-[980px] text-left text-sm">
-                            <thead className="border-b border-slate-700/60 text-xs uppercase tracking-wider text-slate-500">
+                            <thead className="border-b border-slate-800/80 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                                 <tr>
                                     <th className="px-4 py-3 font-semibold">Cliente</th>
                                     <th className="px-4 py-3 font-semibold">Contato</th>
@@ -198,9 +198,9 @@ export default function AdminPurchasesTab() {
                                     <th className="px-4 py-3 font-semibold">Licença</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-slate-800">
+                            <tbody className="divide-y divide-slate-800/60">
                                 {rows.map((r) => (
-                                    <tr key={r.id} className="hover:bg-slate-800/40">
+                                    <tr key={r.id} className="hover:bg-slate-800/30 transition-colors">
                                         <td className="px-4 py-3">
                                             <span className="font-medium text-slate-200">{r.nome}</span>
                                             <p className="text-[11px] text-slate-500">{r.tipo} · {r.reference ?? '—'}</p>
@@ -277,5 +277,5 @@ function Status({ status }: { status: string | null }) {
             : ['failed', 'canceled', 'cancelled'].includes(s)
                 ? ['bg-rose-500/10 text-rose-400 border-rose-500/30', status]
                 : ['bg-amber-500/10 text-amber-400 border-amber-500/30', status ?? '—'];
-    return <span className={`rounded border px-2 py-0.5 text-[10px] font-semibold ${cls}`}>{label}</span>;
+    return <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${cls}`}>{label}</span>;
 }

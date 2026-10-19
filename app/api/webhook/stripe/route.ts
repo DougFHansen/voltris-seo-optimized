@@ -11,6 +11,7 @@ import {
 } from '@/lib/billing-state';
 import { STRIPE_SUPPORTED_EVENTS } from '@/lib/stripe-events';
 import { readSubscriptionSnapshot, syncSubscriptionRow, writePaymentFacts } from '@/lib/stripe-sync';
+import { NotificationService } from '@/services/notificationService';
 import {
     notifyPurchaseConfirmed,
     notifySubscriptionRenewed,
@@ -373,6 +374,37 @@ async function handleCheckoutSettled(supabase: SupabaseClient, session: Stripe.C
         : 'licenca emitida', { key: issuedKey.slice(0, 12) + '…', plan: licenseType, period: billingPeriod });
 
     // =========================================================================
+    // NOTIFICAÇÃO IN-APP (sino) — o canal IMEDIATO da compra
+    //
+    // O e-mail é o canal assíncrono (chega em minutos); o sino é o canal de
+    // agora: o cliente vê "licença liberada" na hora e o admin vê a venda.
+    // Nunca derruba o webhook: notificação falhando NÃO desfaz compra nem
+    // licença — por isso o try/catch.
+    // =========================================================================
+    try {
+        const destino = userId || payRow?.user_id || null;
+        if (destino) {
+            await NotificationService.notify({
+                recipients: [destino],
+                kind: 'license',
+                title: 'Licença liberada!',
+                message: `Sua licença ${String(licenseType ?? '').toUpperCase()} está pronta. A chave de ativação já está no seu painel.`,
+                actionUrl: '/dashboard?tab=licenses',
+                data: { license_key: issuedKey, payment_id: paymentId, plan: licenseType },
+            });
+        }
+        await NotificationService.notifyAdmins({
+            kind: 'purchase',
+            title: 'Nova compra confirmada',
+            message: `Licença ${String(licenseType ?? '').toUpperCase()} emitida para ${maskEmail(email)} (R$ ${(((session.amount_total ?? 0) / 100)).toFixed(2)}).`,
+            actionUrl: '/restricted-area-admin?tab=purchases',
+            data: { payment_id: paymentId, user_id: destino, plan: licenseType },
+        });
+    } catch (e) {
+        console.error('[webhook/stripe] compra concluída, mas notificação falhou:', e);
+    }
+
+    // =========================================================================
     // E-MAIL DE COMPRA (FASE 4)
     //
     // Só chega aqui com `payment_status === 'paid'` (gate lá no topo desta
@@ -568,6 +600,22 @@ async function handleInvoicePaid(supabase: SupabaseClient, invoiceRaw: Stripe.In
             supabase,
             ctx,
         });
+
+        // Sino: a renovação é o cliente vendo que o acesso continua.
+        try {
+            await NotificationService.notify({
+                recipients: [known.user_id],
+                kind: 'subscription',
+                title: 'Assinatura renovada',
+                message: renewalEnabled
+                    ? 'Sua renovação foi aprovada. Seu acesso continua ativo.'
+                    : 'Sua renovação foi aprovada, mas a assinatura está marcada para cancelar no fim do período.',
+                actionUrl: '/dashboard?tab=licenses',
+                data: { payment_id: renewalPaymentId, renewal: true },
+            });
+        } catch (e) {
+            console.error('[webhook/stripe] renovação aplicada, mas notificação falhou:', e);
+        }
     }
 }
 
@@ -781,6 +829,27 @@ async function handleInvoicePaymentFailed(supabase: SupabaseClient, invoiceRaw: 
                     supabase,
                     ctx,
                 });
+
+                // Sino: cliente e admin precisam saber da recusa na hora.
+                try {
+                    await NotificationService.notify({
+                        recipients: [subRow.user_id],
+                        kind: 'payment_failed',
+                        title: 'Pagamento não aprovado',
+                        message: 'Não conseguimos aprovar a sua última cobrança. Atualize o cartão para não perder o acesso.',
+                        actionUrl: '/dashboard?tab=licenses',
+                        data: { subscription_id: subId, amount: Number(invoice.amount_due ?? 0) / 100 },
+                    });
+                    await NotificationService.notifyAdmins({
+                        kind: 'payment_failed',
+                        title: 'Pagamento recusado',
+                        message: `A cobrança de ${maskEmail(subRow.email)} foi recusada (R$ ${(Number(invoice.amount_due ?? 0) / 100).toFixed(2)}).`,
+                        actionUrl: '/restricted-area-admin?tab=purchases',
+                        data: { subscription_id: subId, user_id: subRow.user_id },
+                    });
+                } catch (e) {
+                    console.error('[webhook/stripe] falha de pagamento, mas notificação falhou:', e);
+                }
             }
         } catch (err: any) {
             logWarn(ctx, 'falha ao preparar e-mail de pagamento recusado', {

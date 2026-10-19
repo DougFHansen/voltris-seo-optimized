@@ -77,6 +77,9 @@ export const ADMIN_CAPABILITIES = {
     'reconcile.apply':   ['superadmin', 'financeiro'],
     'roles.write':       ['superadmin'],
     'overview.read':     ['superadmin', 'financeiro', 'suporte', 'leitura'],
+    'notifications.read':['superadmin', 'financeiro', 'suporte', 'leitura'],
+    'notifications.write':['superadmin', 'suporte'],
+    'tickets.write':    ['superadmin', 'suporte'],
 } as const satisfies Record<string, readonly AdminRole[]>;
 
 export type AdminCapability = keyof typeof ADMIN_CAPABILITIES;

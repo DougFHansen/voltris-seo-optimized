@@ -100,7 +100,7 @@ export default function AdminOverviewTab() {
             </div>
 
             {/* ---------------- Filtro de período ---------------- */}
-            <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-col gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm p-5 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-wrap gap-2">
                     {PERIODS.map((p) => (
                         <button
@@ -123,7 +123,7 @@ export default function AdminOverviewTab() {
                     <button
                         onClick={load}
                         disabled={loading}
-                        className="flex items-center gap-2 rounded-lg bg-slate-800 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                        className="flex items-center gap-2 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-300 hover:bg-slate-800 transition hover:bg-slate-700 disabled:opacity-50"
                     >
                         <FiRefreshCw size={14} className={loading ? 'animate-spin' : ''} />
                     </button>
@@ -131,7 +131,7 @@ export default function AdminOverviewTab() {
             </div>
 
             {error && (
-                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                <div role="alert" className="flex items-start gap-3 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
                     <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
                     <div className="text-sm">
                         <p className="font-semibold text-rose-300">Não foi possível carregar</p>
@@ -280,7 +280,7 @@ function Card({ label, value, tone, icon: Icon, hint }: {
     icon: React.ComponentType<{ size?: number; className?: string }>; hint?: string;
 }) {
     return (
-        <div className="rounded-xl border border-slate-700/60 bg-slate-900/60 p-4">
+        <div className="rounded-2xl border border-slate-800/80 bg-slate-900/50 shadow-sm p-5">
             <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">{label}</span>
                 <Icon size={15} className={tone} />
@@ -293,7 +293,7 @@ function Card({ label, value, tone, icon: Icon, hint }: {
 
 function Alert({ title, value, hint }: { title: string; value: number; hint: string }) {
     return (
-        <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 p-4">
+        <div className="rounded-2xl border border-amber-500/40 bg-amber-500/10 p-4">
             <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">{title}</span>
                 <span className="text-xl font-bold text-amber-300">{value}</span>
