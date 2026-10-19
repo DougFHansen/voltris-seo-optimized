@@ -519,4 +519,91 @@ passado só sai com uma ação explícita no painel.
 
 ---
 
+## 11. PAINEL COM A CARA DO DASHBOARD + NOTIFICAÇÕES COMPLETAS (2026-10-19)
+
+### 11.1 Design: o painel passou a ser o dashboard
+
+O admin usava `react-icons/fi` monocromos, cards `rounded-xl bg-slate-900/60` e
+chips retangulares — o dashboard usava `VoltrisIcon` com ícone colorido por
+aba, cards `rounded-2xl bg-slate-900/50` e pílulas arredondadas. Agora são a
+**mesma interface** em dois níveis de acesso:
+
+- sidebar com o sistema de menu do dashboard (`.vtab` + `.vtab__ico`, cor por
+  aba via `--vtab-color`, trilho lateral e pílula de gradiente no item ativo);
+- mesmo fundo (`bg-[#0a0a0f]`, gradiente radial e grade de 60px) e a mesma
+  lateral (`bg-[#12121A]`, `border-white/5`);
+- cards, tabelas, cabeçalhos, chips e botões das 11 abas no padrão do
+  dashboard;
+- kit compartilhado `app/restricted-area-admin/_ui.tsx` (Card, StatCard,
+  Table, Chip, Button, Filtros e os estados de carregamento/erro/vazio).
+
+### 11.2 Notificações: o que estava quebrado (medido)
+
+| Defeito | Efeito |
+|---|---|
+| `notifications` nunca foi publicada no `supabase_realtime` | o sino só atualizava ao recarregar a página |
+| não havia policy de **UPDATE** nem de **DELETE** | "marcar como lida" e "limpar todas" mentiam: a tela mudava, o banco não |
+| a policy de **INSERT** deixava o cliente forjar aviso | notificação falsa no próprio sino |
+| as triggers de status gravavam em colunas inexistentes (`body`, `data`) e com enum inválido | admin respondia um ticket e o cliente **não era notificado** — sem erro nenhum |
+| nenhuma compra, renovação, falha de pagamento ou reembolso gerava notificação in-app | só e-mail |
+| não existia tela de notificações no painel | o admin recebia alerta e não tinha onde ver |
+
+### 11.3 O que foi entregue
+
+- **Vocabulário único** (`lib/notification-kinds.ts`): cada tipo de negócio
+  (compra, licença, serviço, ticket, reembolso…) tem um tipo "refinado" e um
+  tipo "base". O app **detecta em runtime** o que o banco aceita e funciona
+  ANTES e DEPOIS de `notificacaocorrigida.sql` — nunca deixa de notificar.
+- **Isolamento garantido no servidor**: `/api/notifications` filtra por
+  `user_id` da **sessão** (o corpo da requisição nunca escolhe o dono) para
+  listar, marcar lida e limpar. Um usuário não vê nem toca na notificação de
+  outro. O admin tem rota própria (`/api/admin/notifications`) com
+  `requireCapability` + auditoria, e vê o movimento completo (compras, pedidos,
+  tickets, reembolsos) com e-mail mascarado.
+- **Eventos que agora notificam** (cliente **e** admin): compra/licença
+  emitida, renovação, pagamento recusado, pedido de serviço, chamado aberto,
+  resposta do suporte, reembolso (solicitado / em processamento / confirmado).
+- **"Responder" no painel de Tickets**: o texto vai para a Central de Suporte
+  do cliente e vira notificação no sino dele.
+- **Cliente reescrito**: leitura pela API do servidor, Realtime (com fallback
+  de polling de 45s), notificação do navegador (com Service Worker, que é o
+  caminho que funciona no Android/iOS), som respeitando as preferências,
+  toast para todo tipo, e sino/central de notificações no estilo do dashboard
+  e responsivos.
+- **`notificacaocorrigida.sql`**: arquivo para você aplicar no Supabase
+  (policies, realtime, enums, colunas, índices e as triggers corrigidas — que
+  ignoram a mudança vinda do painel para o cliente não receber a notícia em
+  duplicidade).
+
+### 11.4 Verificação no ar
+
+| Teste | Resultado |
+|---|---|
+| `GET /api/notifications` sem sessão | 401 |
+| `GET /api/admin/notifications` sem sessão | 401 |
+| `GET /api/notifications` com a sessão do Alvaro | 1 notificação (a dele) |
+| `GET /api/notifications` com a sessão do admin | 9 notificações (as dele) |
+| `GET /api/admin/notifications` com a sessão do admin | 11 notificações, e-mail mascarado (`a…d@gmail.com`) |
+| Resumo do painel | `{porTipo:{order:9,ticket:2}, naoLidas:2, total:11}` |
+| Marcar como lida | `read:false → read:true` **persistido no banco** (antes não persistia) e revertido depois do teste |
+
+```
+npm test -> 740 testes, 0 falha
+npx next build -> exit 0
+```
+
+### 11.5 Pendências (não são código)
+
+1. **Aplicar `notificacaocorrigida.sql`** no SQL Editor do Supabase. Sem ele:
+   o Realtime não dispara (o polling de 45s cobre), os tipos refinados não
+   existem e as notificações não têm link de navegação (`action_url`).
+2. **Web Push (notificação com o app fechado)**: precisa de
+   `NEXT_PUBLIC_VAPID_PUBLIC_KEY` e `VAPID_PRIVATE_KEY` na Vercel. Sem elas o
+   sistema avisa no-app, no toast e na notificação do navegador (com a aba
+   aberta) — e o botão de push se mantém desligado em vez de fingir.
+3. Aplicar também `admin.sql` (Seções 5 e 6) e `notificacaocorrigida.sql` na
+   mesma janela, para o cadastro e as notificações ficarem completos.
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { ShieldAlert } from 'lucide-react';
-import { FiSearch, FiRefreshCw, FiInbox, FiCheckCircle } from 'react-icons/fi';
+import { FiSearch, FiRefreshCw, FiInbox, FiCheckCircle, FiSend } from 'react-icons/fi';
 
 /**
  * ABA TICKETS — LEITURA E ESCRITA MOVIDAS PARA O SERVIDOR.
@@ -53,6 +53,7 @@ export default function AdminTicketsTab() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [editando, setEditando] = useState<Ticket | null>(null);
+    const [respondendo, setRespondendo] = useState<Ticket | null>(null);
 
     useEffect(() => {
         const t = setTimeout(() => { setDebounced(search.trim()); setPage(0); }, 350);
@@ -170,12 +171,20 @@ export default function AdminTicketsTab() {
                                             {new Date(r.created_at).toLocaleDateString('pt-BR')}
                                         </td>
                                         <td className="px-4 py-3 text-right">
-                                            <button
-                                                onClick={() => setEditando(r)}
-                                                className="rounded-full border border-slate-700 px-2.5 py-1 text-[11px] font-medium text-slate-300 transition hover:border-indigo-500 hover:text-indigo-300"
-                                            >
-                                                Alterar
-                                            </button>
+                                            <div className="inline-flex items-center gap-2">
+                                                <button
+                                                    onClick={() => setRespondendo(r)}
+                                                    className="rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 py-1 text-[11px] font-medium text-indigo-300 transition hover:bg-indigo-500/20"
+                                                >
+                                                    Responder
+                                                </button>
+                                                <button
+                                                    onClick={() => setEditando(r)}
+                                                    className="rounded-full border border-slate-700 px-2.5 py-1 text-[11px] font-medium text-slate-300 transition hover:border-indigo-500 hover:text-indigo-300"
+                                                >
+                                                    Alterar
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))}
@@ -202,6 +211,14 @@ export default function AdminTicketsTab() {
                     ticket={editando}
                     onClose={() => setEditando(null)}
                     onSaved={() => { setEditando(null); load(); }}
+                />
+            )}
+
+            {respondendo && (
+                <ReplyModal
+                    ticket={respondendo}
+                    onClose={() => setRespondendo(null)}
+                    onSaved={() => { setRespondendo(null); load(); }}
                 />
             )}
         </motion.div>
@@ -276,6 +293,93 @@ function StatusModal({ ticket, onClose, onSaved }: { ticket: Ticket; onClose: ()
                         className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500 disabled:opacity-50">
                         <FiCheckCircle size={15} />
                         {salvando ? 'Salvando…' : 'Confirmar'}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+/**
+ * RESPOSTA DO SUPORTE AO CLIENTE.
+ *
+ * Escrever a resposta é um ato diferente de mudar o status: o texto vai para
+ * o cliente (na Central de Suporte) E vira notificação no sino dele. É o
+ * caminho que o pedido do operador descreve: "ticket respondido pelo
+ * administrador" tem de aparecer para quem abriu.
+ */
+function ReplyModal({ ticket, onClose, onSaved }: { ticket: Ticket; onClose: () => void; onSaved: () => void }) {
+    const [mensagem, setMensagem] = useState('');
+    const [status, setStatus] = useState('Respondido');
+    const [motivo, setMotivo] = useState('');
+    const [salvando, setSalvando] = useState(false);
+
+    const enviar = async () => {
+        if (mensagem.trim().length < 2) {
+            toast.error('Escreva a resposta ao cliente.');
+            return;
+        }
+        if (motivo.trim().length < 5) {
+            toast.error('Justifique a alteração (mínimo 5 caracteres).');
+            return;
+        }
+        setSalvando(true);
+        try {
+            const res = await fetch('/api/admin/directory', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    resource: 'tickets',
+                    action: 'reply',
+                    id: ticket.id,
+                    message: mensagem.trim(),
+                    status,
+                    reason: motivo.trim(),
+                }),
+            });
+            const json = await res.json();
+            if (!res.ok) { toast.error(json?.error ?? 'Não foi possível responder.'); return; }
+            toast.success('Resposta enviada. O cliente foi notificado.');
+            onSaved();
+        } catch {
+            toast.error('Falha de rede ao responder o ticket.');
+        } finally {
+            setSalvando(false);
+        }
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4" onClick={onClose}>
+            <div onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-lg rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-2xl">
+                <h3 className="mb-1 text-lg font-bold text-white">Responder ao cliente</h3>
+                <p className="mb-4 truncate text-xs text-slate-500">{ticket.title}</p>
+
+                <label className="mb-1 block text-xs font-semibold text-slate-400">Resposta *</label>
+                <textarea value={mensagem} onChange={(e) => setMensagem(e.target.value)} rows={5}
+                    placeholder="Ex.: já aplicamos a correção na versão 1.2. Pode reiniciar o aplicativo para validar."
+                    className="mb-4 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500" />
+
+                <label className="mb-1 block text-xs font-semibold text-slate-400">Status após responder</label>
+                <select value={status} onChange={(e) => setStatus(e.target.value)}
+                    className="mb-4 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 outline-none focus:border-indigo-500">
+                    {STATUS.map((s) => <option key={s} value={s}>{s}</option>)}
+                </select>
+
+                <label className="mb-1 block text-xs font-semibold text-slate-400">Justificativa (auditoria) *</label>
+                <textarea value={motivo} onChange={(e) => setMotivo(e.target.value)} rows={2}
+                    placeholder="Ex.: orientação técnica enviada após análise do chamado."
+                    className="mb-4 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-3 py-2 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500" />
+
+                <div className="flex gap-2">
+                    <button onClick={onClose}
+                        className="flex-1 rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-2.5 text-sm font-semibold text-slate-300 transition hover:bg-slate-700">
+                        Cancelar
+                    </button>
+                    <button onClick={enviar} disabled={salvando}
+                        className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white transition disabled:opacity-50">
+                        <FiSend size={15} />
+                        {salvando ? 'Enviando…' : 'Enviar e notificar'}
                     </button>
                 </div>
             </div>
