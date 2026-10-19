@@ -164,9 +164,11 @@ export async function POST(request: NextRequest) {
       subscription: {
         id: result.id,
         endpoint: result.endpoint,
-        platform: result.platform,
-        deviceType: result.device_type,
-        isActive: result.is_active,
+        // A tabela pode ser a versao ANTIGA (sem estas colunas): o que nao
+        // existe e reportado de forma explicita, sem quebrar a resposta.
+        platform: cols.has('platform') ? result.platform : null,
+        deviceType: cols.has('device_type') ? result.device_type : null,
+        isActive: cols.has('is_active') ? result.is_active : true,
         createdAt: result.created_at
       }
     });
@@ -372,14 +374,30 @@ export async function PATCH(request: NextRequest) {
       );
     }
     
-    // Atualizar status da inscrição
-    const { error: updateError } = await supabase
-      .from('push_subscriptions')
-      .update({
-        is_active: isActive,
-        updated_at: new Date().toISOString()
-      })
-      .eq('id', subscriptionId);
+    // Atualizar status da inscrição.
+    //
+    // Se a tabela for a versão ANTIGA (sem `is_active`), não existe status:
+    // "ativar" é um no-op e "desativar" remove a inscrição (senão o navegador
+    // continuaria recebendo avisos).
+    const colsToggle = await colunasPush();
+    let updateError: { message: string } | null = null;
+
+    if (colsToggle.has('is_active')) {
+        const r = await supabase
+            .from('push_subscriptions')
+            .update({
+                is_active: isActive,
+                updated_at: new Date().toISOString()
+            })
+            .eq('id', subscriptionId);
+        updateError = r.error as { message: string } | null;
+    } else if (!isActive) {
+        const r = await supabase
+            .from('push_subscriptions')
+            .delete()
+            .eq('id', subscriptionId);
+        updateError = r.error as { message: string } | null;
+    }
     
     if (updateError) {
       console.error('❌ Erro ao atualizar inscrição:', updateError);
