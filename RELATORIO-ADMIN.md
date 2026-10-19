@@ -389,4 +389,57 @@ do modal; `GET /api/admin/clients?detail=<id>` devolve todos os campos;
 
 ---
 
+## 9. CONTA SOCIAL SEM PERFIL + CONCILIAÇÃO APLICADA (2026-10-19)
+
+### 9.1 Etapa de complementação para contas Google
+
+Contas criadas pelo Google nunca passam pelo formulário: chegavam ao painel sem
+`login`, telefone e endereço — e, com o trigger quebrado, sem `bairro` também.
+
+- `lib/profile-completeness.ts` define a lista de campos (a **mesma** do
+  cadastro) e quem é obrigado a completar:
+  - conta social incompleta → **tem** de completar;
+  - conta de e-mail → **não** é exigida retroativamente (quem já passou pelo
+    formulário não é punido);
+  - administrador → **não** fica preso no formulário (a equipe não pode ser
+    trancada; a ficha do painel continua mostrando o que falta).
+- `/perfil` deixou de ser só "editar dados": agora exige `login` e `bairro`
+  também, consulta o CEP real, checa disponibilidade de usuário/WhatsApp, valida
+  com as **mesmas** regras do cadastro (`lib/signup-rules.ts`) e detecta
+  gravação silenciosa (update sem erro e sem linha = erro na tela).
+- `AuthGuard` leva a conta social incompleta para `/perfil?force=1&redirect=…` e
+  não renderiza a página protegida até a complementação.
+- `app/auth/callback/route.ts` passou a usar a **mesma** regra (antes checava
+  `phone/city/state/cep` e ignorava `login`/`neighborhood`).
+
+### 9.2 Reconciliação: Álvaro liquidado
+
+Com a autorização explícita do operador, foi aplicada **apenas** a linha do
+Álvaro (`refs: ["st_1792253655757"]`), com a frase `RECONCILE-APPLY`:
+
+| Campo | Antes | Depois |
+|---|---|---|
+| `payments.status` | `pending` | **`approved`** |
+| `payments.stripe_id` | `null` | `cs_live_a13KrZUFcNHTn6AMLeVoj28b7uYa5c12Pz1RK4wwaxexdR1ugJwiYuNP7T` |
+| `payments.paid_at` | `null` | `2026-10-19T13:27:52.457+00:00` |
+| `subscriptions.status` | `ACTIVE` | `ACTIVE` (com `next_billing_at` = 2026-11-17T16:15:41Z, vindo da Stripe) |
+| `licenses` | `VOLTRIS-PRO-257682-20261117-21E5A428FFBF67C4` | intacta, não revogada |
+
+O restante do relatório (22 `MARK_UNPAID`, 3 `EMIT_LICENSE`, 1 `NEEDS_MANUAL`)
+continua **sem aplicar**: é decisão do operador.
+
+### 9.3 Verificação
+
+```
+npm test        -> 680 testes, 0 falha
+npx next build  -> exit 0
+```
+
+Push `69b9e021` → Vercel "Deployment has completed". Conferido no ar:
+`/perfil` serve o formulário novo (campos `login`/`bairro`, consulta de CEP e de
+disponibilidade) e o chunk do `/dashboard` contém o desvio para
+`/perfil?force=1&redirect=`.
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*
