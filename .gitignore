@@ -24,3 +24,8 @@ Fatura_VOLTRIS_PRO_Alvaro_Araujo.pdf
 scripts/_*
 fatura.pdf
 Fatura_VOLTRIS_*.pdf
+
+# Documentos de cliente / gerador (NUNCA versionar)
+VOLTRIS_fatura_*.pdf
+VOLTRIS_fatura_*.html
+Gerador_Documentos_*.html

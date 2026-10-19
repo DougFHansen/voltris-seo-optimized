@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { colunasPush, somenteColunas } from '@/lib/push-schema';
 import webpush from 'web-push';
 import { chavePublicaDoServidor, chavePrivadaDoServidor } from '@/lib/vapid-server';
 import {
@@ -254,12 +255,17 @@ export const NotificationService = {
 
         const recipients = (options.recipients ?? []).filter(Boolean);
         if (recipients.length === 0) return { enviados: 0 };
-
-        const { data: subscriptions, error: subError } = await supabase
+        // A tabela em producao pode ser a versao ANTIGA (sem is_active): usa so
+        // as colunas que existem.
+        const cols = await colunasPush();
+        let querySubs = supabase
             .from('push_subscriptions')
             .select('*')
-            .in('user_id', recipients)
-            .eq('is_active', true);
+            .in('user_id', recipients);
+        if (cols.has('is_active')) {
+            querySubs = querySubs.eq('is_active', true);
+        }
+        const { data: subscriptions, error: subError } = await querySubs;
 
         if (subError) {
             console.error('Erro ao buscar inscrições push:', subError);
@@ -293,17 +299,23 @@ export const NotificationService = {
                         },
                         payload
                     );
-                    await supabase
-                        .from('push_subscriptions')
-                        .update({ last_used: new Date().toISOString() })
-                        .eq('id', sub.id);
+                    if (cols.has('last_used')) {
+                        await supabase
+                            .from('push_subscriptions')
+                            .update({ last_used: new Date().toISOString() })
+                            .eq('id', sub.id);
+                    }
                 } catch (err: any) {
                     if (err?.statusCode === 410) {
                         console.warn(`⚠️ Inscrição expirada (410) para usuário ${sub.user_id}. Desativando...`);
-                        await supabase
-                            .from('push_subscriptions')
-                            .update({ is_active: false })
-                            .eq('id', sub.id);
+                        if (cols.has('is_active')) {
+                            await supabase
+                                .from('push_subscriptions')
+                                .update({ is_active: false })
+                                .eq('id', sub.id);
+                        } else {
+                            await supabase.from('push_subscriptions').delete().eq('id', sub.id);
+                        }
                     } else {
                         throw err;
                     }

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { colunasPush, somenteColunas } from '@/lib/push-schema';
 import { createClient } from '@/utils/supabase/server';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 
@@ -68,12 +69,19 @@ export async function POST(request: NextRequest) {
     }
     
     // Verificar se já existe uma inscrição para este usuário neste navegador
-    const { data: existingSubscription, error: checkError } = await supabase
-      .from('push_subscriptions')
-      .select('id, is_active, endpoint')
-      .eq('user_id', userId)
-      .eq('browser_fingerprint', browserInfo.browserFingerprint)
-      .single();
+    // Schema real detectado: a tabela de producao pode ser a versao ANTIGA
+    // (sem is_active/browser_fingerprint). Usar so as colunas que existem.
+    const cols = await colunasPush();
+    const colsLeitura = ['id', 'endpoint'].filter((c) => cols.has(c)).join(', ') || 'id';
+    let queryExistente = supabase
+        .from('push_subscriptions')
+        .select(colsLeitura)
+        .eq('user_id', userId);
+    if (cols.has('browser_fingerprint') && browserInfo?.browserFingerprint) {
+        queryExistente = queryExistente.eq('browser_fingerprint', browserInfo.browserFingerprint);
+    }
+    const { data: existentes, error: checkError } = await queryExistente.limit(1);
+    const existingSubscription: any = (existentes ?? [])[0] ?? null;
     
     if (checkError && checkError.code !== 'PGRST116') { // PGRST116 = no rows returned
       console.error('❌ Erro ao verificar inscrição existente:', checkError);
@@ -91,17 +99,17 @@ export async function POST(request: NextRequest) {
       
       const { data: updatedSubscription, error: updateError } = await supabase
         .from('push_subscriptions')
-        .update({
-          endpoint: subscription.endpoint,
-          p256dh: subscription.keys.p256dh,
-          auth: subscription.keys.auth,
-          user_agent: browserInfo.userAgent,
-          platform: browserInfo.platform,
-          device_type: browserInfo.deviceType,
-          is_active: true,
-          updated_at: new Date().toISOString()
-        })
-        .eq('id', existingSubscription.id)
+            .update(somenteColunas(cols, {
+                endpoint: subscription.endpoint,
+                p256dh: subscription.keys.p256dh,
+                auth: subscription.keys.auth,
+                user_agent: browserInfo.userAgent,
+                platform: browserInfo.platform,
+                device_type: browserInfo.deviceType,
+                browser_fingerprint: browserInfo.browserFingerprint,
+                is_active: true,
+            }))
+            .eq('id', existingSubscription.id)
         .eq('user_id', userId)
         .select()
         .single();
@@ -123,17 +131,17 @@ export async function POST(request: NextRequest) {
       
       const { data: newSubscription, error: insertError } = await supabase
         .from('push_subscriptions')
-        .insert({
-          user_id: userId,
-          endpoint: subscription.endpoint,
-          p256dh: subscription.keys.p256dh,
-          auth: subscription.keys.auth,
-          user_agent: browserInfo.userAgent,
-          platform: browserInfo.platform,
-          device_type: browserInfo.deviceType,
-          browser_fingerprint: browserInfo.browserFingerprint,
-          is_active: true
-        })
+        .insert(somenteColunas(cols, {
+            user_id: userId,
+            endpoint: subscription.endpoint,
+            p256dh: subscription.keys.p256dh,
+            auth: subscription.keys.auth,
+            user_agent: browserInfo.userAgent,
+            platform: browserInfo.platform,
+            device_type: browserInfo.deviceType,
+            browser_fingerprint: browserInfo.browserFingerprint,
+            is_active: true,
+        }))
         .select()
         .single();
       
@@ -188,14 +196,16 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const browserFingerprint = searchParams.get('browserFingerprint');
     
+    const cols = await colunasPush();
     let query = supabase
       .from('push_subscriptions')
       .select('*')
       .eq('user_id', userId)
-      .eq('is_active', true);
-    
+
     if (browserFingerprint) {
-      query = query.eq('browser_fingerprint', browserFingerprint);
+        if (cols.has('browser_fingerprint') && browserFingerprint) {
+            query = query.eq('browser_fingerprint', browserFingerprint);
+        }
     }
     
     const { data: subscriptions, error } = await query;
@@ -266,24 +276,44 @@ export async function DELETE(request: NextRequest) {
       );
     }
     
-    // Marcar como inativa em vez de deletar (soft delete)
-    const { error: updateError } = await supabase
-      .from('push_subscriptions')
-      .update({
-        is_active: false,
-        updated_at: new Date().toISOString()
-      })
-      .eq('id', subscriptionId);
-    
-    if (updateError) {
-      console.error('❌ Erro ao desativar inscrição:', updateError);
-      return NextResponse.json(
-        { success: false, message: 'Erro ao desativar inscrição' },
-        { status: 500 }
-      );
+    // Marcar como inativa em vez de deletar (soft delete).
+    //
+    // Se a tabela de producao for a versao ANTIGA (sem `is_active`), a
+    // desativacao nao existe: nesse caso a inscricao e REMOVIDA de verdade —
+    // do contrario o navegador continuaria recebendo avisos apos o
+    // "Desativar".
+    const colsDelete = await colunasPush();
+    if (colsDelete.has('is_active')) {
+        const { error: updateError } = await supabase
+            .from('push_subscriptions')
+            .update({
+                is_active: false,
+                updated_at: new Date().toISOString()
+            })
+            .eq('id', subscriptionId);
+
+        if (updateError) {
+            console.error('❌ Erro ao desativar inscrição:', updateError);
+            return NextResponse.json(
+                { success: false, message: 'Erro ao desativar inscrição' },
+                { status: 500 }
+            );
+        }
+        console.log('✅ Inscrição desativada com sucesso:', subscriptionId);
+    } else {
+        const { error: deleteError } = await supabase
+            .from('push_subscriptions')
+            .delete()
+            .eq('id', subscriptionId);
+        if (deleteError) {
+            console.error('❌ Erro ao remover inscrição:', deleteError);
+            return NextResponse.json(
+                { success: false, message: 'Erro ao remover inscrição' },
+                { status: 500 }
+            );
+        }
+        console.log('✅ Inscrição removida (tabela sem is_active):', subscriptionId);
     }
-    
-    console.log('✅ Inscrição desativada com sucesso:', subscriptionId);
     
     return NextResponse.json({
       success: true,

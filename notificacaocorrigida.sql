@@ -368,3 +368,57 @@ END $$;
 SELECT
     (SELECT count(*) FROM public.notifications) AS notificacoes,
     (SELECT count(*) FROM public.notifications WHERE read = false) AS nao_lidas;
+
+
+-- ============================================================================
+-- 7) PUSH SUBSCRIPTIONS - COLUNAS QUE FALTAM NO BANCO DE PRODUCAO
+-- ============================================================================
+--
+-- O BANCO DE PRODUCAO tem a versao ANTIGA da tabela public.push_subscriptions:
+-- id, user_id, endpoint, p256dh, auth, created_at, updated_at.
+--
+-- O codigo do sistema (registro da inscricao, envio do aviso com o site
+-- fechado e desativacao) usa is_active, browser_fingerprint, user_agent,
+-- platform, device_type e last_used. Sem essas colunas o "Ativar
+-- notificacoes" falhava com:
+--
+--     column push_subscriptions.is_active does not exist   (Postgres 42703)
+--
+-- O codigo ja foi blindado para funcionar com os dois schemas (ele detecta as
+-- colunas existentes antes de gravar), mas esta e a CORRECAO DEFINITIVA: rode
+-- este arquivo e a tabela passa a ter o schema completo.
+--
+-- Tudo e idempotente: pode rodar quantas vezes quiser, sem erro e sem
+-- perder nenhuma inscricao ja gravada.
+-- ============================================================================
+
+-- 7.1 Colunas que faltam (as inscricoes ja existentes continuam valendo).
+ALTER TABLE public.push_subscriptions
+    ADD COLUMN IF NOT EXISTS is_active           BOOLEAN     DEFAULT TRUE,
+    ADD COLUMN IF NOT EXISTS browser_fingerprint  TEXT,
+    ADD COLUMN IF NOT EXISTS user_agent           TEXT,
+    ADD COLUMN IF NOT EXISTS platform             TEXT,
+    ADD COLUMN IF NOT EXISTS device_type          TEXT,
+    ADD COLUMN IF NOT EXISTS last_used            TIMESTAMPTZ;
+
+-- 7.2 Inscricoes antigas (sem fingerprint) passam a valer como ativas.
+UPDATE public.push_subscriptions
+   SET is_active = TRUE
+ WHERE is_active IS NULL;
+
+-- 7.3 Indice para localizar a inscricao do navegador (mesmo dispositivo,
+--     outro login) sem varrer a tabela inteira.
+CREATE INDEX IF NOT EXISTS idx_push_subscriptions_user_fingerprint
+    ON public.push_subscriptions (user_id, browser_fingerprint);
+
+-- 7.4 Indice do envio de avisos: apenas inscricoes ativas por usuario.
+CREATE INDEX IF NOT EXISTS idx_push_subscriptions_active
+    ON public.push_subscriptions (user_id)
+ WHERE is_active = TRUE;
+
+-- 7.5 Conference: o schema completo esta no lugar.
+SELECT
+    (SELECT count(*) FROM public.push_subscriptions) AS inscricoes,
+    (SELECT count(*) FROM public.push_subscriptions WHERE is_active) AS ativas,
+    (SELECT count(*) FROM information_schema.columns
+      WHERE table_schema = 'public' AND table_name = 'push_subscriptions') AS colunas;
