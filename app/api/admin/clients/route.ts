@@ -37,6 +37,19 @@ const Query = z.object({
 });
 
 export async function GET(req: NextRequest) {
+    // BUG CORRIGIDO: a ficha do cliente estava exportada apenas como PUT,
+    // enquanto o painel a pedia com `fetch(url)` — que é GET. O GET caía na
+    // LISTAGEM, devolvia { items, total } com status 200 e o cliente chamava
+    // `setData(json)`. O componente `Resumo` então lia `json.profile.login` em
+    // um objeto sem `profile` e lançava TypeError: era isso que derrubava a
+    // página inteira ao clicar em "Abrir".
+    //
+    // Leitura agora é GET de verdade (e PUT continua aceito para não quebrar
+    // nenhum chamador antigo).
+    if (req.nextUrl.searchParams.has('detail')) {
+        return detail(req);
+    }
+
     const { response } = await requireCapability('clients.read');
     if (response) return response;
 
@@ -107,7 +120,9 @@ export async function GET(req: NextRequest) {
             login: r.login ?? null,
             emailMasked: maskEmail(r.email),
             // Nome para o operador reconhecer o cliente na lista.
-            fullName: r.full_name ?? r.login ?? '—',
+            // `??` não basta: há perfis com `full_name` vazio (string ''), e a
+            // lista ficava com a célula em branco. `||` cai para o login.
+            fullName: (r.full_name ?? '').trim() || r.login || '—',
             phone: r.phone ?? null,
             city: r.city ?? null,
             state: r.state ?? null,
@@ -142,6 +157,10 @@ export async function GET(req: NextRequest) {
  * é a regra explícita da parte.
  */
 export async function PUT(req: NextRequest) {
+    return detail(req);
+}
+
+async function detail(req: NextRequest) {
     const { response } = await requireCapability('clients.read');
     if (response) return response;
 

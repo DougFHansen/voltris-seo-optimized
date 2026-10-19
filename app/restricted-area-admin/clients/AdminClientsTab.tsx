@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import toast from 'react-hot-toast';
-import { FiSearch, FiRefreshCw, FiUsers, FiX, FiKey, FiCreditCard } from 'react-icons/fi';
+import { FiSearch, FiRefreshCw, FiUsers, FiX, FiCreditCard } from 'react-icons/fi';
 import { ShieldAlert, ChevronDown, ChevronUp } from 'lucide-react';
 
 /**
@@ -42,6 +41,8 @@ interface ClientDetail {
     devices: any[];
     invoices: any[];
     adminHistory: any[];
+    /** Seções que falharam no servidor; o resto continua visível. */
+    secoesComFalha?: string[];
 }
 
 const PAGE_SIZE = 25;
@@ -248,18 +249,51 @@ export default function AdminClientsTab() {
 function ClientDrawer({ client, onClose }: { client: ClientRow; onClose: () => void }) {
     const [data, setData] = useState<ClientDetail | null>(null);
     const [loading, setLoading] = useState(true);
+    const [erro, setErro] = useState<string | null>(null);
     const [tab, setTab] = useState<'resumo' | 'compras' | 'licencas' | 'assinaturas' | 'dispositivos' | 'faturas'>('resumo');
 
     useEffect(() => {
         let alive = true;
+        setData(null);
+        setErro(null);
+        setLoading(true);
         (async () => {
             try {
                 const res = await fetch(`/api/admin/clients?detail=${client.id}`, { cache: 'no-store' });
-                if (!res.ok) { toast.error('Não foi possível carregar a ficha do cliente.'); return; }
+                if (res.status === 401) { window.location.href = '/login'; return; }
+                if (!res.ok) {
+                    const json = await res.json().catch(() => null);
+                    if (alive) setErro(json?.error ?? 'Não foi possível carregar a ficha do cliente.');
+                    return;
+                }
                 const json = await res.json();
-                if (alive) setData(json);
-            } catch { toast.error('Falha de rede ao carregar a ficha.'); }
-            finally { if (alive) setLoading(false); }
+
+                // CONTRATO DA FICHA: { profile, purchases, licenses, ... }.
+                // Se o servidor devolver outra coisa (por exemplo, a listagem),
+                // NADA é entregue ao render. Era exatamente essa validação que
+                // faltava quando `d.profile.login` derrubava a página inteira.
+                if (!json || typeof json !== 'object' || !json.profile || typeof json.profile !== 'object') {
+                    if (alive) setErro('O servidor respondeu em um formato inesperado. Atualize a página e tente de novo.');
+                    return;
+                }
+
+                if (alive) {
+                    setData({
+                        profile: json.profile,
+                        purchases: Array.isArray(json.purchases) ? json.purchases : [],
+                        licenses: Array.isArray(json.licenses) ? json.licenses : [],
+                        subscriptions: Array.isArray(json.subscriptions) ? json.subscriptions : [],
+                        devices: Array.isArray(json.devices) ? json.devices : [],
+                        invoices: Array.isArray(json.invoices) ? json.invoices : [],
+                        adminHistory: Array.isArray(json.adminHistory) ? json.adminHistory : [],
+                        secoesComFalha: Array.isArray(json.secoesComFalha) ? json.secoesComFalha : undefined,
+                    });
+                }
+            } catch {
+                if (alive) setErro('Falha de rede ao carregar a ficha.');
+            } finally {
+                if (alive) setLoading(false);
+            }
         })();
         return () => { alive = false; };
     }, [client.id]);
@@ -314,8 +348,18 @@ function ClientDrawer({ client, onClose }: { client: ClientRow; onClose: () => v
                             <FiRefreshCw className="animate-spin" size={18} />
                             <span className="text-sm">Carregando…</span>
                         </div>
+                    ) : erro ? (
+                        <div role="alert" className="rounded-xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm">
+                            <p className="font-semibold text-rose-300">Não foi possível abrir a ficha</p>
+                            <p className="mt-1 text-rose-200/80">{erro}</p>
+                        </div>
                     ) : !data ? null : (
                         <>
+                            {data.secoesComFalha && data.secoesComFalha.length > 0 && (
+                                <p role="alert" className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] text-amber-200/90">
+                                    Não foi possível carregar: {data.secoesComFalha.join(', ')}. O restante está completo.
+                                </p>
+                            )}
                             {tab === 'resumo' && <Resumo d={data} />}
                             {tab === 'compras' && <Compras rows={data.purchases} />}
                             {tab === 'licencas' && <Licencas rows={data.licenses} />}
