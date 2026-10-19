@@ -47,6 +47,23 @@ async function colunasDisponiveis(): Promise<string> {
         : 'id, user_id, title, message, type, read, sound, created_at, action_url, data, audience';
 }
 
+/**
+ * `read_at`/`updated_at` só existem depois do SQL. Sem isso, o UPDATE falhava
+ * com 42703 e "marcar como lida" NÃO persistia — exatamente o defeito que
+ * o SQL veio consertar, mas que não pode depender dele para funcionar.
+ */
+let temColunasDeLeitura: boolean | null = null;
+async function colunasDeLeituraExiste(): Promise<boolean> {
+    if (temColunasDeLeitura === null) {
+        const { error } = await supabaseAdmin
+            .from('notifications')
+            .select('id, read_at, updated_at')
+            .limit(1);
+        temColunasDeLeitura = !error;
+    }
+    return temColunasDeLeitura;
+}
+
 export async function GET(req: NextRequest) {
     const userId = await usuarioDaSessao(req);
     if (!userId) {
@@ -126,11 +143,11 @@ export async function PATCH(req: NextRequest) {
     }
 
     try {
-        const patch: Record<string, unknown> = {
-            read: true,
-            read_at: new Date().toISOString(),
-            updated_at: new Date().toISOString(),
-        };
+        const patch: Record<string, unknown> = { read: true };
+        if (await colunasDeLeituraExiste()) {
+            patch.read_at = new Date().toISOString();
+            patch.updated_at = new Date().toISOString();
+        }
 
         let query = supabaseAdmin
             .from('notifications')

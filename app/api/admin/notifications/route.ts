@@ -196,13 +196,20 @@ export async function PATCH(req: NextRequest) {
 
     try {
         const read = body.read !== false;
+        const patch: Record<string, unknown> = { read };
+        // `read_at`/`updated_at` só existem depois de `notificacaocorrigida.sql`.
+        const { error: erroColunas } = await db
+            .from('notifications')
+            .select('id, read_at, updated_at')
+            .limit(1);
+        if (!erroColunas) {
+            patch.read_at = read ? new Date().toISOString() : null;
+            patch.updated_at = new Date().toISOString();
+        }
+
         const { data, error } = await db
             .from('notifications')
-            .update({
-                read,
-                read_at: read ? new Date().toISOString() : null,
-                updated_at: new Date().toISOString(),
-            })
+            .update(patch)
             .eq('id', body.id)
             .select('id, read')
             .maybeSingle();
