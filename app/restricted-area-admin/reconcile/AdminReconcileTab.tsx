@@ -26,7 +26,14 @@ import { ShieldAlert } from 'lucide-react';
  * E o que o aplicador escreve não vem desta tela — vem da resposta da Stripe.
  */
 
-type Outcome = 'ALREADY_ISSUED' | 'ISSUE_LICENSE' | 'MARK_PAID' | 'LINK_ONLY' | 'WAIT_STRIPE' | 'NEEDS_MANUAL';
+type Outcome =
+    | 'EMIT_LICENSE'
+    | 'APPROVE_PAYMENT'
+    | 'LINK_SUBSCRIPTION'
+    | 'ALREADY_ISSUED'
+    | 'WAIT_STRIPE'
+    | 'MARK_UNPAID'
+    | 'NEEDS_MANUAL';
 
 interface ReportRow {
     payment_id: string;
@@ -50,14 +57,26 @@ interface Relatorio {
     report: ReportRow[];
 }
 
+/**
+ * Os nomes abaixo são os que a ROTA realmente devolve (`ReconcileAction`).
+ *
+ * Antes a tela usava nomes que não existiam mais — ISSUE_LICENSE, MARK_PAID,
+ * LINK_ONLY. Resultado: todas as ações caíam no fallback "Conferência manual",
+ * e o contador de ações aplicáveis dava zero, então o botão "Aplicar" nunca
+ * aparecia. Uma tela que nunca deixa aplicar não concilia nada.
+ */
 const ACAO: Record<string, { rotulo: string; cls: string; tom: 'ok' | 'aviso' | 'perigo' | 'neutro' }> = {
     ALREADY_ISSUED: { rotulo: 'Licença já emitida', cls: 'bg-slate-500/10 text-slate-400 border-slate-500/30', tom: 'neutro' },
-    ISSUE_LICENSE: { rotulo: 'Emitir licença', cls: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30', tom: 'aviso' },
-    MARK_PAID: { rotulo: 'Confirmar pagamento', cls: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30', tom: 'ok' },
-    LINK_ONLY: { rotulo: 'Vincular assinatura', cls: 'bg-violet-500/10 text-violet-400 border-violet-500/30', tom: 'aviso' },
+    EMIT_LICENSE: { rotulo: 'Emitir licença', cls: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30', tom: 'aviso' },
+    APPROVE_PAYMENT: { rotulo: 'Confirmar pagamento', cls: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30', tom: 'ok' },
+    LINK_SUBSCRIPTION: { rotulo: 'Vincular assinatura', cls: 'bg-violet-500/10 text-violet-400 border-violet-500/30', tom: 'aviso' },
     WAIT_STRIPE: { rotulo: 'Aguardando Stripe', cls: 'bg-amber-500/10 text-amber-400 border-amber-500/30', tom: 'aviso' },
+    MARK_UNPAID: { rotulo: 'Marcar não pago', cls: 'bg-rose-500/10 text-rose-400 border-rose-500/30', tom: 'perigo' },
     NEEDS_MANUAL: { rotulo: 'Conferência manual', cls: 'bg-rose-500/10 text-rose-400 border-rose-500/30', tom: 'perigo' },
 };
+
+/** Ações que o apply realmente executa. WAIT_STRIPE e NEEDS_MANUAL não escrevem. */
+const APLICAVEIS = new Set(['EMIT_LICENSE', 'APPROVE_PAYMENT', 'LINK_SUBSCRIPTION', 'ALREADY_ISSUED', 'MARK_UNPAID']);
 
 export default function AdminReconcileTab() {
     const [dados, setDados] = useState<Relatorio | null>(null);
@@ -131,9 +150,7 @@ export default function AdminReconcileTab() {
         );
     });
 
-    const aplicaveis = (dados?.report ?? []).filter((r) =>
-        ['ISSUE_LICENSE', 'MARK_PAID', 'LINK_ONLY'].includes(r.action)
-    ).length;
+    const aplicaveis = (dados?.report ?? []).filter((r) => APLICAVEIS.has(r.action)).length;
     const manuais = (dados?.summary ?? {}).NEEDS_MANUAL ?? 0;
 
     return (
@@ -200,8 +217,9 @@ export default function AdminReconcileTab() {
                         <div className="text-sm">
                             <p className="font-semibold text-amber-300">Isto escreve no banco de clientes</p>
                             <p className="mt-1 text-amber-200/80">
-                                Vai confirmar como pago {aplicaveis} pagamento(s) e emitir/ajustar licença.
-                                A informação vem da Stripe; ainda assim, confira o relatório antes.
+                                Vai aplicar {aplicaveis} ajuste(s): confirmar os pagamentos que a Stripe
+                                comprova como pagos, emitir licenças faltantes e marcar como não pagos
+                                apenas os que a Stripe reporta como não pagos. Confira o relatório antes.
                             </p>
                             <label className="mt-3 mb-1 block text-xs font-semibold text-amber-300">
                                 Digite <span className="font-mono">RECONCILE-APPLY</span> para confirmar

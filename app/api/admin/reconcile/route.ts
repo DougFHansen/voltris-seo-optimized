@@ -64,6 +64,7 @@ interface PendingRow {
     user_id: string | null;
     email: string | null;
     created_at: string | null;
+    paid_at: string | null;
 }
 
 interface ReportRow {
@@ -142,7 +143,7 @@ async function run(req: NextRequest, apply: boolean, onlyRefs?: string[]) {
 
         // ---------------- 2. Pagamentos pendentes ----------------
         let pendingQuery = admin.from('payments')
-            .select('id,reference_id,status,provider,stripe_id,plan_type,billing_period,amount,user_id,email,created_at')
+            .select('id,reference_id,status,provider,stripe_id,plan_type,billing_period,amount,user_id,email,created_at,paid_at')
             .in('status', PENDING_STATUSES)
             .order('created_at', { ascending: false })
             .limit(200);
@@ -184,7 +185,10 @@ async function run(req: NextRequest, apply: boolean, onlyRefs?: string[]) {
         const errors: string[] = [];
         if (apply) {
             for (const row of report) {
-                if (row.action === 'ALREADY_ISSUED' || row.action === 'WAIT_STRIPE' || row.action === 'NEEDS_MANUAL') continue;
+                // ALREADY_ISSUED NÃO é mais pulado: se a Stripe diz que o dinheiro
+                // entrou, o pagamento local tem de sair de "pending" mesmo quando a
+                // licença já foi emitida por outro caminho.
+                if (row.action === 'WAIT_STRIPE' || row.action === 'NEEDS_MANUAL') continue;
                 const source = stripeRows.find((r) => r.id === row.payment_id);
                 try {
                     await execute(ctx, admin, row, source ?? null, subCache);
@@ -420,12 +424,18 @@ async function classify(
     }
 
     if (licensedPaymentIds.has(p.id)) {
-        base.action = licensedPaymentIds.has(p.id) && base.stripe.subscription_id ? 'LINK_SUBSCRIPTION' : 'ALREADY_ISSUED';
+        // A Stripe JÁ confirmou que o dinheiro entrou (settled). Se a licença
+        // existe e o pagamento local ainda está em PENDING_STATUSES, o registro
+        // é que está atrasado — deixá-lo "pending" para sempre é exatamente o
+        // defeito que fazia um cliente pagante parecer inadimplente.
+        //
+        // Por isso ALREADY_ISSUED também ACERTA O PAGAMENTO. Antes ele era
+        // pulado no apply e a linha nunca saía de "pending".
+        base.action = base.stripe.subscription_id ? 'LINK_SUBSCRIPTION' : 'ALREADY_ISSUED';
         base.reason = 'licença já existe para este payment_id (emissão idempotente)';
         base.effect = base.action === 'LINK_SUBSCRIPTION'
-            ? 'apenas vincula/atualiza a linha de subscriptions (status ACTIVE + next_billing_at da Stripe)'
-            : 'nenhum';
-        if (base.action === 'ALREADY_ISSUED') return base;
+            ? 'payments.status -> "approved" (+ paid_at se vazio) e subscriptions vinculada/atualizada (status ACTIVE e próxima cobrança da Stripe)'
+            : 'payments.status -> "approved" (+ paid_at se vazio)';
     } else {
         base.action = 'EMIT_LICENSE';
         base.reason = 'pagamento liquidado sem licença emitida';
@@ -474,6 +484,23 @@ async function getSubscription(
 // Execução (só com apply=true)
 // ============================================================================
 
+/**
+ * Campos para tirar um pagamento de "pending" quando a Stripe comprova que o
+ * dinheiro entrou.
+ *
+ * `paid_at` só é preenchido se estiver vazio: não se reescreve a data original
+ * de um pagamento que já a tinha. `stripe_id` nunca é sobrescrito por null.
+ */
+function settlementPatch(payment: PendingRow, sessionId: string | null) {
+    const patch: Record<string, unknown> = {
+        status: 'approved',
+        stripe_id: payment.stripe_id ?? sessionId ?? null,
+        updated_at: new Date().toISOString(),
+    };
+    if (!payment.paid_at) patch.paid_at = new Date().toISOString();
+    return patch;
+}
+
 async function execute(
     ctx: OperationContext,
     admin: ReturnType<typeof createAdminClient>,
@@ -491,11 +518,14 @@ async function execute(
         return;
     }
 
-    if (row.action === 'APPROVE_PAYMENT') {
+    if (row.action === 'APPROVE_PAYMENT' || row.action === 'ALREADY_ISSUED') {
         const { error } = await admin.from('payments')
-            .update({ status: 'approved', stripe_id: payment.stripe_id ?? row.stripe.session_id ?? null, updated_at: new Date().toISOString() })
+            .update(settlementPatch(payment, row.stripe.session_id ?? null))
             .eq('id', payment.id);
-        if (error) { logSupabaseError(ctx, 'aprovar pagamento de serviço', error); throw new Error(error.message); }
+        if (error) {
+            logSupabaseError(ctx, row.action === 'ALREADY_ISSUED' ? 'acertar pagamento com licença já emitida' : 'aprovar pagamento de serviço', error);
+            throw new Error(error.message);
+        }
         return;
     }
 
@@ -534,9 +564,9 @@ async function execute(
         }
 
         if (row.action === 'LINK_SUBSCRIPTION') {
-            // licença já emitida: só vinculação/acerto de status
+            // licença já emitida: vincula a assinatura E acerta o pagamento.
             const { error } = await admin.from('payments')
-                .update({ status: 'approved', stripe_id: payment.stripe_id ?? sessionId, updated_at: new Date().toISOString() })
+                .update(settlementPatch(payment, sessionId))
                 .eq('id', payment.id);
             if (error) { logSupabaseError(ctx, 'aprovar pagamento já emitido', error); throw new Error(error.message); }
             return;
