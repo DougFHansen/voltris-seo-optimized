@@ -310,4 +310,83 @@ O padrão já está pronto para as seis: `requireCapability`, `auditAction`, `pa
 
 ---
 
+## 8. FICHA DO CLIENTE VAZIA + CADASTRO INCOMPLETO (2026-10-19)
+
+Duas perguntas do operador: *"por que as informações do usuário não aparecem
+corretamente no modal?"* e *"no cadastro, tudo deve ser obrigatório"*.
+
+### 8.1 Causa raiz (medida em produção, não estimada)
+
+A migration `supabase/migrations/20260219000001_fix_function_search_path_security.sql`
+redefiniu `public.handle_new_user()` para gravar **apenas** `id, email, full_name,
+created_at, updated_at`. O formulário de cadastro continuava enviando `login`,
+`phone`, `address`, `city`, `neighborhood`, `state`, `cep` em
+`raw_user_meta_data` — o trigger simplesmente descartava.
+
+Distribuição real dos 113 perfis na data:
+
+| Campo | Antes de 2026-02-19 (11 perfis) | Depois (102 perfis) |
+|---|---|---|
+| `login` | 1/11 | **0/102** |
+| `neighborhood` | 1/11 | **0/102** |
+| `phone` / `city` / `state` / `cep` | ~6/11 | 47/102 (gravados por outros fluxos, ex.: checkout) |
+
+Ou seja: **o dado nunca foi salvo** — não é bug de exibição. Não existe
+"informação escondida" para recuperar: em `auth.users.raw_user_meta_data` só 23
+dos 128 usuários têm `login` e 22 têm endereço (o resto entrou por OAuth ou
+pelo checkout).
+
+### 8.2 O que foi entregue
+
+- **Modal da ficha**: passou a exibir `Login`, `Nome completo`, `Telefone`, `CEP`,
+  `Endereço`, `Bairro`, `Cidade / UF` e `Situação`. O que falta aparece como
+  **"Não informado"** (nunca mais travessão silencioso) e um aviso explica que
+  o cadastro está incompleto e que o cliente pode completar em "Meu Perfil".
+- **Cadastro obrigatório de verdade**: `lib/signup-rules.ts` centraliza as
+  regras dos 3 passos. `login`, e-mail, senha, nome completo, WhatsApp, CEP,
+  rua, número, **bairro**, cidade e UF são obrigatórios; os três passos são
+  **revalidados no momento de criar a conta** (voltar e apagar um campo não
+  escapa). O botão "Corrigir CEP / Digitar Manualmente" deixou de ser um beco
+  sem saída (o endereço manual é aceito, com CEP de 8 dígitos).
+- **Gravação do perfil**: o cadastro agora grava `login`, telefone, endereço,
+  bairro, cidade, UF e CEP em `profiles` logo após o `signUp`, e detecta
+  atualização silenciosa (RLS barrando / nenhuma linha alterada) em vez de
+  fingir sucesso. Verificado ao vivo: a policy de UPDATE do próprio perfil
+  funciona com sessão `authenticated` (PATCH do próprio usuário, mesmos
+  valores, volta a linha).
+- **`admin.sql` Seção 5**: recria `handle_new_user()` com todos os campos
+  (`CREATE OR REPLACE`, `ON CONFLICT (id) DO NOTHING`, tratamento de `login`
+  duplicado, `search_path` fixo). Corrige os **próximos** cadastros; **não
+  faz backfill** — alterar linhas existentes em massa está fora do escopo da
+  missão.
+
+### 8.3 Como confirmar no ar
+
+```bash
+npm test                       # 660 testes, 0 falha
+npx next build                 # exit 0
+```
+
+PUSH `46d28f81` → Vercel "Deployment has completed". Conferido no site:
+`/_next/static/chunks/app/login/page-*.js` contém as novas regras;
+`/_next/static/chunks/app/restricted-area-admin/page-*.js` contém o novo aviso
+do modal; `GET /api/admin/clients?detail=<id>` devolve todos os campos;
+`GET /api/admin/reconcile` (dry-run) devolve o efeito novo
+`payments.status -> "approved" (+ paid_at se vazio)`.
+
+### 8.4 Pendências (não resolvidas por código)
+
+1. **Aplicar `admin.sql`** no SQL Editor do Supabase — a Seção 5 ainda não foi
+   executada em produção. Até lá, o cadastro se sustenta na gravação do
+   cliente, que já funciona, mas o trigger continua gravando só nome/e-mail.
+2. **Cadastro social (Google)** não passa pelo formulário: essas contas
+   continuam sem telefone/endereço. Se quiser, o próximo passo é uma etapa de
+   complementação de perfil no primeiro acesso.
+3. **Contas antigas** continuam incompletas — só o cliente pode completar em
+   "Meu Perfil" (ou o operador, com revisão).
+4. **Reconciliação ainda não aplicada**: Álvaro continua `pending` porque a
+   conciliação exige ação explícita do operador (`RECONCILE-APPLY`) no painel.
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*
