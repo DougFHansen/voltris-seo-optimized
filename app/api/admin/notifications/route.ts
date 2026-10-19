@@ -83,7 +83,10 @@ export async function GET(req: NextRequest) {
         if (parsed.data.type) query = query.eq('type', parsed.data.type);
         if (parsed.data.read === '1') query = query.eq('read', true);
         if (parsed.data.read === '0') query = query.eq('read', false);
-        if (parsed.data.audience) query = query.eq('audience', parsed.data.audience);
+        // Filtro de público só faz sentido depois do SQL (coluna `audience`).
+        if (parsed.data.audience && colunas.includes('audience')) {
+            query = query.eq('audience', parsed.data.audience);
+        }
         if (q) {
             query = query.or(
                 `title.ilike.%${q}%,message.ilike.%${q}%,data->>kind.ilike.%${q}%`
@@ -127,9 +130,16 @@ export async function GET(req: NextRequest) {
         }));
 
         // Contadores por tipo (com os mesmos filtros) para o topo da aba.
-        const { data: todas } = await db
+        // `audience` só existe depois de `notificacaocorrigida.sql` — pedir
+        // uma coluna inexistente faria a consulta INTEIRA falhar e o resumo
+        // viria zerado (o painel diria "0 notificações" com 11 no banco).
+        const temAudience = colunas.includes('audience');
+        const { data: todas, error: erroResumo } = await db
             .from('notifications')
-            .select('type, read, audience');
+            .select(temAudience ? 'type, read, audience' : 'type, read');
+        if (erroResumo) {
+            console.error('[api/admin/notifications] erro no resumo:', erroResumo);
+        }
         const lista = (todas ?? []) as unknown as { type: string; read: boolean; audience: string | null }[];
         const contagem = lista.reduce<Record<string, number>>((acc, n) => {
             acc[n.type] = (acc[n.type] ?? 0) + 1;
