@@ -42,6 +42,10 @@ export interface PaymentInvoiceRow {
     period_start: string | null;
     period_end: string | null;
     created_at: string | null;
+    /** Campos que existem na tabela mas não são consumidos pelo documento. */
+    stripe_customer_id?: string | null;
+    updated_at?: string | null;
+    payment_method?: string | null;
 }
 
 const SERVICE_PLAN_PATTERN = /formatacao|otimizacao|correcao|impressora|virus|recuperacao|reconfiguracao/;
@@ -94,11 +98,32 @@ function planLabel(planType: string | null): string {
     return LICENSE_PLANS[key]?.displayName ?? (planType ?? 'Produto VOLTRIS').toUpperCase();
 }
 
-function billingLabel(period: string | null, kind: InvoiceKind): string {
+/**
+ * Rótulo da modalidade de cobrança.
+ *
+ * `subscriptionId` é PARAMETRÓRIO de propósito. A versão anterior decidia
+ * "assinatura recorrente" apenas pelo `billing_period`, e produzia este
+ * documento incoerente:
+ *
+ *     Modalidade de cobrança   Mensal — assinatura recorrente
+ *     Assinatura               — (compra avulsa)
+ *
+ * As duas linhas vêm do mesmo documento e se contradizem. A recorrência é uma
+ * propriedade da ASSINATURA, não do período: um pagamento mensal avulso é
+ * perfeitamente possível. Sem `stripe_subscription_id` não há recorrência,
+ * por mais que o `billing_period` diga "month".
+ */
+function billingLabel(
+    period: string | null,
+    kind: InvoiceKind,
+    subscriptionId: string | null
+): string {
     const p = (period ?? '').trim().toLowerCase();
     const base = ['year', 'anual', 'annual', 'y'].includes(p) ? 'Anual' : 'Mensal';
     if (kind === 'service') return 'Pagamento único';
-    return `${base} — assinatura recorrente`;
+    return subscriptionId
+        ? `${base} — assinatura recorrente`
+        : `${base} — compra avulsa`;
 }
 
 export interface LicenseFacts {
@@ -111,6 +136,14 @@ export interface LicenseFacts {
     revoked: boolean | null;
     user_id: string | null;
     devicesInUse: number | null;
+    /**
+     * Identificador interno do cliente.
+     *
+     * Existe em `licenses.client_id` e era ignorado pelo documento. É o número
+     * que o suporte usa para localizar a conta sem pedir CPF ao cliente, então
+     * imprimi-lo é o que torna a fatura útil em um atendimento.
+     */
+    client_id?: string | number | null;
 }
 
 export interface BuildInvoiceOptions {
@@ -170,7 +203,7 @@ export function buildInvoiceData(options: BuildInvoiceOptions): InvoiceData {
             ? `Serviço Profissional — ${(row.plan_type ?? '').replace(/_/g, ' ').toUpperCase()}`
             : 'VOLTRIS OPTIMIZER',
         planLabel: kind === 'service' ? 'Serviço' : planLabel(row.plan_type),
-        billingLabel: billingLabel(row.billing_period, kind),
+        billingLabel: billingLabel(row.billing_period, kind, row.stripe_subscription_id ?? null),
 
         amountPaid,
         amountRefunded: refunded !== null && refunded > 0 ? refunded : null,
@@ -180,6 +213,10 @@ export function buildInvoiceData(options: BuildInvoiceOptions): InvoiceData {
         paymentStatusTone: paymentStatus.tone,
 
         licenseKey: license?.license_key ?? null,
+        clientId:
+            license?.client_id != null && String(license.client_id).trim() !== ''
+                ? String(license.client_id)
+                : null,
         maxDevices: license?.max_devices ?? LICENSE_PLANS[
             (row.plan_type ?? '').toLowerCase() as keyof typeof LICENSE_PLANS
         ]?.maxDevices ?? null,
@@ -188,8 +225,18 @@ export function buildInvoiceData(options: BuildInvoiceOptions): InvoiceData {
         licenseStateLabel,
         licenseStateTone: licenseTone,
 
+        /**
+         * `period_end` só herda a validade da licença quando existe um início.
+         *
+         * Sem `period_start`, apresentar "— a 18/11/2026" é pior do que não
+         * apresentar nada: o travessão parece um dado e o cliente lê como um
+         * período contratado. Quando não há período registrado, a fatura mostra
+         * "—" e a informação de vigência continua visível no bloco da licença.
+         */
         periodStart: row.period_start ?? null,
-        periodEnd: row.period_end ?? license?.expires_at ?? null,
+        periodEnd:
+            row.period_end ??
+            (row.period_start ? license?.expires_at ?? null : null),
         devicesInUse: license?.devicesInUse ?? null,
 
         legalNote: options.legalNote ?? null,
@@ -226,7 +273,7 @@ export async function findLicenseForPayment(
     if (row.id) {
         const { data } = await supabase
             .from('licenses')
-            .select('license_key,plan_type,max_devices,created_at,activated_at,expires_at,revoked,user_id')
+            .select('license_key,plan_type,max_devices,created_at,activated_at,expires_at,revoked,user_id,client_id')
             .eq('payment_id', row.id)
             .order('created_at', { ascending: false })
             .limit(1);
@@ -236,7 +283,7 @@ export async function findLicenseForPayment(
     if (candidates.length === 0 && row.user_id) {
         const { data } = await supabase
             .from('licenses')
-            .select('license_key,plan_type,max_devices,created_at,activated_at,expires_at,revoked,user_id')
+            .select('license_key,plan_type,max_devices,created_at,activated_at,expires_at,revoked,user_id,client_id')
             .eq('user_id', row.user_id)
             .eq('plan_type', (row.plan_type ?? '').toLowerCase())
             .order('created_at', { ascending: false })
@@ -266,6 +313,7 @@ export async function findLicenseForPayment(
         expires_at: (lic.expires_at as string) ?? null,
         revoked: (lic.revoked as boolean) ?? null,
         user_id: (lic.user_id as string) ?? null,
+        client_id: (lic.client_id as string | number | null) ?? null,
         devicesInUse,
     };
 }

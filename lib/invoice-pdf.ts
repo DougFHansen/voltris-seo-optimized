@@ -93,13 +93,39 @@ export function formatDateBR(iso: string | number | Date | null | undefined): st
 }
 
 /** R$ 1.234,56 — nunca US$. */
-export function formatBRL(value: number | string | null | undefined, currency = 'BRL'): string {
-    const n = typeof value === 'string' ? Number(value) : value;
+export function formatBRL(value: number | string | null | undefined, currency = 'BRL'): string {    const n = typeof value === 'string' ? Number(value) : value;
     if (n === null || n === undefined || !Number.isFinite(n)) return '—';
     return n.toLocaleString('pt-BR', {
         style: 'currency',
         currency: (currency || 'BRL').toUpperCase(),
     });
+}
+
+/**
+ * Encurta identificadores longos para caber na coluna do documento.
+ *
+ * Os IDs da Stripe (`cs_live_…`, `pi_…`, `in_…`, `sub_…`) têm 30 a 90
+ * caracteres e não têm espaços. Impressos inteiros, eles quebravam a linha em
+ * quatro partes e a última colidia com a linha seguinte, deixando o documento
+ * ilegível:
+ *
+ *     Referência do pagamento  cs_live_a1QVeYYjLaGsopJp
+ *                              NvAsn0HMpS6XXhADXPVhErq
+ *                              OCRogS6UUG84lxPugeX
+ *                              1R/10/2026, 23:46      <- era a linha seguinte
+ *
+ * O formato `prefixo…sufixo` é o que empresas usam em documento físico: mantém
+ * os dois extremos, que são o que permite localizar a transação no painel da
+ * Stripe, e some com o meio, que não é digitável nem comparável.
+ *
+ * `keep` é o número de caracteres preservados no início e no fim.
+ */
+export function shortenRef(value: string | null | undefined, keep = 8): string {
+    const s = String(value ?? '').trim();
+    if (s === '') return '—';
+    // Só encurta o que realmente não cabe: IDs curtos continuam íntegros.
+    if (s.length <= keep * 2 + 1) return s;
+    return `${s.slice(0, keep)}…${s.slice(-keep)}`;
 }
 
 /**
@@ -352,6 +378,8 @@ export interface InvoiceData {
     paymentStatusTone: 'ok' | 'warn' | 'bad';
 
     licenseKey: string | null;
+    /** Identificador interno do cliente (`licenses.client_id`). */
+    clientId: string | null;
     maxDevices: number | null;
     devicesInUse: number | null;
     licenseStartedAt: string | null;
@@ -477,19 +505,31 @@ export async function generateInvoicePdf(data: InvoiceData): Promise<GeneratedIn
     const colX = [MARGIN, MARGIN + colW + colGap];
 
     const leftRows: Array<[string, string]> = [
-        ['Identificador da compra', data.purchaseId ?? '—'],
-        ['Referência do pagamento', data.stripePaymentId ?? '—'],
+        ['Identificador da compra', shortenRef(data.purchaseId)],
+        ['Referência do pagamento', shortenRef(data.stripePaymentId)],
         ['Data da compra', formatDateTimeBR(data.purchasedAt)],
         ['Pagamento confirmado em', formatDateTimeBR(data.paidAt)],
         ['Modalidade de cobrança', data.billingLabel],
     ];
     const rightRows: Array<[string, string]> = [
-        ['Fatura Stripe', data.stripeInvoiceId ?? '—'],
-        ['Cobrança Stripe', data.stripeChargeId ?? '—'],
-        ['Período pago', data.periodStart || data.periodEnd
-            ? `${formatDateBR(data.periodStart)} a ${formatDateBR(data.periodEnd)}`
-            : '—'],
-        ['Assinatura', data.stripeSubscriptionId ?? '— (compra avulsa)'],
+        ['Fatura Stripe', shortenRef(data.stripeInvoiceId)],
+        ['Cobrança Stripe', shortenRef(data.stripeChargeId)],
+        /**
+         * Só afirma um período quando os dois extremos existem.
+         *
+         * Com apenas um deles, "— a 18/11/2026" ou "18/10/2026 a —" parece um
+         * período contratado com data inválida, quando na verdade não há
+         * período registrado. A vigência continua visível no bloco da licença.
+         */
+        ['Período pago',
+            data.periodStart && data.periodEnd
+                ? `${formatDateBR(data.periodStart)} a ${formatDateBR(data.periodEnd)}`
+                : data.periodEnd
+                    ? `até ${formatDateBR(data.periodEnd)}`
+                    : data.periodStart
+                        ? `a partir de ${formatDateBR(data.periodStart)}`
+                        : '—'],
+        ['Assinatura', data.stripeSubscriptionId ? shortenRef(data.stripeSubscriptionId) : '— (compra avulsa)'],
         ['Plano adquirido', data.planLabel],
     ];
 
@@ -650,11 +690,22 @@ function drawHeader(page: PDFPage, fonts: Fonts, company: CompanyInfo, invoice: 
         company.endereco,
         company.email,
     ];
+    /**
+     * "ID do cliente" é o identificador INTERNO (`licenses.client_id`), não o
+     * documento fiscal. São coisas distintas e a confusão entre elas deixava a
+     * linha sempre como "—" mesmo com o cliente corretamente cadastrado.
+     *
+     * O CPF/CNPJ do cliente só aparece quando realmente conhecido; não é
+     * obrigatório numa fatura de software.
+     */
     const clientLines: string[] = [
         invoice.customerName ?? '—',
         invoice.customerEmail ?? '—',
-        invoice.customerDocument ? `ID do cliente: ${invoice.customerDocument}` : 'ID do cliente: —',
+        invoice.clientId ? `ID do cliente: ${invoice.clientId}` : 'ID do cliente: —',
     ];
+    if (invoice.customerDocument) {
+        clientLines.push(`CPF/CNPJ: ${invoice.customerDocument}`);
+    }
 
     const emitBottom = drawField(page, fonts, MARGIN, y, colW, 'EMITENTE', emitterLines);
     const clientBottom = drawField(page, fonts, MARGIN + colW + colGap, y, colW, 'CLIENTE', clientLines);
