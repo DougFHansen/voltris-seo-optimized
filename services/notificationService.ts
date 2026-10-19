@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import webpush from 'web-push';
+import { chavePublicaVapid } from '@/lib/vapid-keys';
 import {
     NotificationKind,
     NotificationType,
@@ -17,12 +18,15 @@ if (!supabaseUrl || !supabaseServiceKey) {
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Configuração Web Push (VAPID)
-const vapidPublic = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
 const vapidPrivate = process.env.VAPID_PRIVATE_KEY;
-const pushConfigurado = !!(vapidPublic && vapidPrivate);
+const pushConfigurado = !!vapidPrivate;
 
 if (pushConfigurado) {
-    webpush.setVapidDetails('mailto:admin@voltris.com', vapidPublic!, vapidPrivate!);
+    webpush.setVapidDetails('mailto:admin@voltris.com', chavePublicaVapid(), vapidPrivate!);
+} else {
+    console.warn(
+        '[NotificationService] VAPID_PRIVATE_KEY nao configurada: o Web Push (aviso com o site fechado) fica indisponivel. As notificacoes in-app continuam funcionando.'
+    );
 }
 
 /** tipos novos do enum só existem depois de `notificacaocorrigida.sql` */

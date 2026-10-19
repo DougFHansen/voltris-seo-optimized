@@ -6,6 +6,7 @@ import { createClient } from '@/utils/supabase/client';
 import NotificationPermissionModal from './NotificationPermissionModal';
 import { toast } from 'react-hot-toast';
 import { ICONE_POR_TIPO, ROTULO_POR_TIPO, ehVisivelParaCliente } from '@/lib/notification-kinds';
+import { ativarPush, lerEstadoPush, type EstadoPush } from '@/lib/push-client';
 
 export type NotificationType =
     | 'ticket' | 'order' | 'system' | 'profile' | 'newsletter' | 'comment'
@@ -54,6 +55,8 @@ interface NotificationContextProps {
   enableBrowserNotifications: () => Promise<boolean>;
   /** Houve erro ao falar com o servidor de notificações? */
   error: string | null;
+  /** Estado real do Web Push (permissão, inscrição, VAPID). */
+  estadoPush: EstadoPush | null;
 }
 
 const NotificationContext = createContext<NotificationContextProps | undefined>(undefined);
@@ -140,6 +143,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const [browserPermission, setBrowserPermission] = useState<NotificationPermission | 'unsupported'>(
       typeof window !== 'undefined' && 'Notification' in window ? window.Notification.permission : 'unsupported'
   );
+  const [estadoPush, setEstadoPush] = useState<EstadoPush | null>(null);
   const supabase = useRef(createClient());
   const lastNotifId = useRef<string | null>(null);
   const lastPlayedId = useRef<string | null>(null);
@@ -234,6 +238,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       }
       void (async () => {
           await Promise.all([carregarNotificacoes(), carregarConfiguracoes()]);
+          setEstadoPush(await lerEstadoPush());
       })();
   }, [user?.id, isAdmin, carregarNotificacoes, carregarConfiguracoes]);
 
@@ -410,19 +415,15 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
           setBrowserPermission('unsupported');
           return false;
       }
-      const perm = await window.Notification.requestPermission();
-      setBrowserPermission(perm);
-      if (perm === 'granted') {
-          // Registra o service worker (necessário para notificação no mobile).
-          if ('serviceWorker' in navigator) {
-              try {
-                  await navigator.serviceWorker.register('/sw.js');
-              } catch (e) {
-                  console.warn('[notificações] service worker não registrado:', e);
-              }
-          }
-      }
-      return perm === 'granted';
+      // Fluxo real: permissão -> service worker -> inscrição de Web Push.
+      // Antes só era pedida a permissão e nada era assinado — o usuário
+      // achava que tinha ativado, mas o aviso com o site fechado nunca
+      // chegava.
+      const resultado = await ativarPush();
+      setEstadoPush(resultado.estado);
+      setBrowserPermission(resultado.estado.permissao);
+      if (!resultado.ok && resultado.erro) setError(resultado.erro);
+      return resultado.ok;
   }, []);
 
   const handleActivateNotifications = useCallback(async () => {
@@ -450,6 +451,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       clearAllNotifications,
       browserPermission,
       enableBrowserNotifications,
+      estadoPush,
     }}>
       {user && (
         <NotificationPermissionModal

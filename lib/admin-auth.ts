@@ -74,6 +74,7 @@ export const ADMIN_CAPABILITIES = {
     'emails.read':       ['superadmin', 'financeiro', 'suporte', 'leitura'],
     'emails.resend':     ['superadmin', 'suporte'],
     'refunds.write':     ['superadmin', 'financeiro'],
+    'refunds.read':      ['superadmin', 'financeiro', 'suporte', 'leitura'],
     'reconcile.apply':   ['superadmin', 'financeiro'],
     'roles.write':       ['superadmin'],
     'overview.read':     ['superadmin', 'financeiro', 'suporte', 'leitura'],

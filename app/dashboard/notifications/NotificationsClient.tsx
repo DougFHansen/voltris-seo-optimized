@@ -8,6 +8,7 @@ import VoltrisIcon, { type VoltrisIconName } from '@/components/dashboard/Voltri
 import VoltrisIconTile, { DASHBOARD_ACCENT } from '@/components/dashboard/VoltrisIconTile';
 import { useDashboard } from '@/app/context/DashboardContext';
 import { ICONE_POR_TIPO, COR_POR_TIPO, ROTULO_POR_TIPO } from '@/lib/notification-kinds';
+import NotificationActivation from '@/components/notifications/NotificationActivation';
 
 export default function NotificationsClient() {
     const { transparencyMode } = useDashboard();
@@ -58,6 +59,9 @@ export default function NotificationsClient() {
     return (
         <div className="flex flex-col gap-6 w-full max-w-5xl mx-auto">
             
+            {/* Ativacao real de notificacoes (permite permissao + Web Push) */}
+            <NotificationActivation />
+
             {/* Page Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
                 <div>

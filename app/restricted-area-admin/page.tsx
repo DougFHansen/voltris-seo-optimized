@@ -18,6 +18,8 @@ import AdminClientsTab from './clients/AdminClientsTab';
 import AdminPurchasesTab from './purchases/AdminPurchasesTab';
 import AdminReconcileTab from './reconcile/AdminReconcileTab';
 import AdminNotificationsTab from './notifications/AdminNotificationsTab';
+import AdminRefundsTab from './refunds/AdminRefundsTab';
+import NotificationActivation from '@/components/notifications/NotificationActivation';
 
 /**
  * PAINEL ADMINISTRATIVO — mesmo visual do dashboard do usuário.
@@ -37,6 +39,7 @@ const tabs: { label: string; value: string; icon: VoltrisIconName; color: string
     { label: 'Newsletter',    value: 'newsletter',   icon: 'mail',       color: '#10B981' },
     { label: 'E-mails',       value: 'emails',       icon: 'send',       color: '#6366F1' },
     { label: 'Usuários',      value: 'users',        icon: 'person',     color: '#8B31FF' },
+    { label: 'Reembolsos',   value: 'refunds',      icon: 'receipt',    color: '#EF4444' },
     { label: 'Notificações',  value: 'notifications', icon: 'bell',       color: '#31A8FF' },
 ];
 
@@ -271,6 +274,10 @@ export default function AdminDashboard() {
                             transition={{ type: 'spring', damping: 22, stiffness: 120, duration: 0.3 }}
                             className="max-w-[1400px] mx-auto w-full pb-10"
                         >
+                            <div className="mb-5">
+                                <NotificationActivation compacto />
+                            </div>
+
                             {error && (
                                 <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-3 mb-5 flex items-center gap-3">
                                     <VoltrisIcon name="warning" size={16} className="text-amber-400 flex-shrink-0" />
@@ -287,6 +294,7 @@ export default function AdminDashboard() {
                             {activeTab === 'newsletter'   && <AdminNewsletterTab />}
                             {activeTab === 'emails'     && <AdminEmailsTab />}
                             {activeTab === 'users'      && <AdminUsersTab />}
+                            {activeTab === 'refunds' && <AdminRefundsTab />}
                             {activeTab === 'notifications' && <AdminNotificationsTab />}
                         </motion.div>
                     </main>

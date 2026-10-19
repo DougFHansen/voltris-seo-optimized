@@ -179,31 +179,34 @@ async function doBackgroundSync() {
   }
 }
 
-// Push notifications (para futuras implementações)
+// Push notifications (aviso com o site fechado)
 self.addEventListener('push', (event) => {
   if (event.data) {
     const data = event.data.json();
     const options = {
       body: data.body,
-      icon: data.icon || '/logo.webp',
-      badge: data.badge || '/logo.webp',
+      icon: data.icon || '/logo-v2.webp',
+      badge: data.badge || '/logo.png',
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),
         primaryKey: data.id || 1,
         category: data.category || 'system',
-        sound: data.sound || null
+        sound: data.sound || null,
+        // Destino do clique: leva exatamente para a tela do assunto
+        // (licença, ticket, reembolso) em vez de sempre abrir a home.
+        url: data.url || '/'
       },
       actions: [
         {
           action: 'explore',
           title: 'Ver mais',
-          icon: '/logo.webp'
+          icon: '/logo.png'
         },
         {
           action: 'close',
           title: 'Fechar',
-          icon: '/logo.webp'
+          icon: '/logo.png'
         }
       ]
     };
@@ -227,15 +230,25 @@ self.addEventListener('push', (event) => {
   }
 });
 
-// Clique em notificação
+// Clique na notificação: abre (ou foca) a tela do assunto.
 self.addEventListener('notificationclick', (event) => {
   event.notification.close();
-  
-  if (event.action === 'explore') {
-    event.waitUntil(
-      clients.openWindow('/')
-    );
-  }
+
+  if (event.action === 'close') return;
+
+  const destino = (event.notification.data && event.notification.data.url) || '/';
+
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
+      for (const client of clientList) {
+        // Se a aba já está aberta, leva ela para a tela certa e foca.
+        if ('focus' in client && 'navigate' in client) {
+          return client.navigate(destino).then(() => client.focus());
+        }
+      }
+      return self.clients.openWindow(destino);
+    })
+  );
 });
 
 // Mensagens do cliente
