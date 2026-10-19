@@ -442,4 +442,81 @@ disponibilidade) e o chunk do `/dashboard` contém o desvio para
 
 ---
 
+## 10. TRAVA DE CADASTRO DUPLICADO — EXISTIA NO CÓDIGO, MAS NUNCA FUNCIONOU (2026-10-19)
+
+Pergunta do operador: *"no cadastro, foi feito a opção de não poder cadastrar com
+um telefone/e-mail já cadastrado?"*. A resposta honesta: **as travas estavam
+escritas, mas não funcionavam — nenhuma das três.**
+
+### 10.1 Os três defeitos (medidos, não estimados)
+
+**(a) O endpoint respondia "disponível" para tudo.**
+O código chamava `auth.admin.getUserByEmail(...)` — método que **não existe**
+no `@supabase/supabase-js` 2.50.3 (`getUserById`, `listUsers`, `createUser`,
+`generateLink`… é o que existe). A chamada estourava `TypeError` e caía no
+`catch`, que devolvia `{ available: true }`. Como o cadastro **sempre** envia
+e-mail, o endpoint respondia "disponível" em 100% dos casos — inclusive quando
+o e-mail, o usuário e o WhatsApp já existiam.
+
+**(b) A trava de telefone comparava a coisa errada.**
+```
+or=(phone.eq.37998127122, phone.ilike.*37998127122*)
+```
+contra o telefone **formatado** do banco, `"(37) 99812-7122"`. O hífen quebra
+a sequência de dígitos: as duas variantes devolvem **0 linhas**. Testado no ar
+com o número do Álvaro: 0 candidatos para os dois filtros.
+
+**(c) A falha era ABERTA.**
+O `catch` devolvia `available: true` — "não consegui verificar" virava "pode
+cadastrar". Como o WhatsApp **não tem restrição no banco**, essa falha
+aberta produzia duplicatas sem ninguém perceber.
+
+**Consequência real no banco:** `11996716235` está em **3 contas**
+(`voltris tecnologia` — e-mail nulo, `douglas felipe moraes gonçalves` — a conta
+do operador, e `upgrademu upgrade`). E-mail e usuário: 0 duplicatas (o UNIQUE
+do Auth e o índice único de `profiles.login` seguram a barra — mas só depois
+de o usuário tentar, com mensagem crua).
+
+### 10.2 O que foi corrigido
+
+- `lib/phone-dup.ts`: normalização do número (só dígitos, sem DDI 55, sem zero à
+  esquerda), comparação exata e padrões de busca que casam com **qualquer**
+  formatação (o hífen deixa de atrapalhar).
+- O endpoint compara o número normalizado e traz candidatos por padrão antes
+  de decidir; o filtro por texto com dígitos saiu.
+- E-mail conferido em `profiles` **e** em `auth.users` (`listUsers` com cache de
+  60s e limite de 10 páginas); `getUserByEmail` saiu.
+- Usuário conferido sem o bug do `maybeSingle` (várias linhas = conflito).
+- A própria conta é excluída pelo **token** da requisição — nunca pelo corpo
+  (senão bastaria mandar o id da vítima para burlar a trava).
+- Falha **fechada** (HTTP 503) em vez de "disponível".
+- O cadastro revalida e-mail, usuário e WhatsApp **antes** de criar a conta.
+- `admin.sql` Seção 6: coluna `phone_normalized` (acelerador opcional, com o
+  backfill comentado para revisão manual — a aplicação não depende dela).
+
+### 10.3 Verificação no ar (endpoint novo, deploy `a92831f9`)
+
+| Consulta | Resultado |
+|---|---|
+| `{phone: "(37) 99812-7122"}` | `available:false` — "já está em uso: WhatsApp" |
+| `{phone: "37998127122"}` (sem formatação) | `available:false` — "WhatsApp" |
+| `{email: "alvaroaraujodxd@gmail.com"}` | `available:false` — "e-mail" |
+| `{login: "Douglas Felipe"}` | `available:false` — "usuário" |
+| dados novos | `available:true` |
+| `{login, email}` **com o token do dono** | `available:true` (não conflita consigo mesmo) |
+| `{login, email}` **sem token** | `available:false` |
+
+```
+npm test -> 697 testes, 0 falha
+```
+
+### 10.4 Pendência de dado (decisão do operador)
+
+As 3 contas com o WhatsApp `11996716235` continuam lá. **Não apaguei nem
+bloqueei nada**: decidir qual conta é a legítima (e o que fazer com as outras)
+é decisão de negócio. A trava impede novas duplicatas a partir de agora; o
+passado só sai com uma ação explícita no painel.
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*
