@@ -5,20 +5,22 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+import { requireCapability } from '@/lib/admin-auth';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
+    // Gate pelo helper único, no servidor. A checagem inline de
+    // `profiles.is_admin` que existia aqui duplicava a regra de autorização
+    // em uma segunda implementação — e era a única rota do painel que não
+    // respeitava `is_blocked`/`is_deleted`, ou seja, um admin desativado
+    // continuava vendo o registro de deploys.
+    const guard = await requireCapability('roles.write');
+    if (guard.response) return guard.response;
+
     try {
         const supabase = await createClient();
-
-        // SEGURANÇA: Verificar se é admin
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-
-        const { data: profile } = await supabase.from('profiles').select('is_admin').eq('id', user.id).single();
-        if (!profile?.is_admin) return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
 
         const { data: deploys, error } = await supabase
             .from('deploy_registry')

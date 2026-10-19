@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { requireAdmin } from '@/utils/supabase/requireAdmin';
+import { requireCapability } from '@/lib/admin-auth';
 import { createAdminClient } from '@/utils/supabase/admin';
 import { resendOutboxEmail, getOutboxStats } from '@/lib/email-outbox';
 import { getResendConfigStatus } from '@/lib/resend-client';
@@ -55,8 +55,8 @@ export async function GET(req: NextRequest) {
     const correlationId = getOrCreateCorrelationId(req);
     const ctx = startOperation('ADMIN_EMAILS', correlationId);
 
-    const guard = await requireAdmin();
-    if (guard.error) return guard.error;
+    const guard = await requireCapability('emails.read');
+    if (guard.response) return guard.response;
 
     const parsed = ListQuery.safeParse(Object.fromEntries(req.nextUrl.searchParams));
     if (!parsed.success) {
@@ -149,9 +149,9 @@ export async function POST(req: NextRequest) {
     const correlationId = getOrCreateCorrelationId(req);
     const ctx: OperationContext = startOperation('ADMIN_EMAILS', correlationId);
 
-    const guard = await requireAdmin();
-    if (guard.error) return guard.error;
-    const adminUserId = guard.user.id;
+    const guard = await requireCapability('emails.resend');
+    if (guard.response) return guard.response;
+    const adminUserId = guard.actor!.userId;
 
     let body: unknown;
     try {

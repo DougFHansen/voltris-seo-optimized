@@ -13,13 +13,15 @@ const PREFIX = '@/';
 /**
  * Substituições aplicadas APENAS neste carregador (nunca no bundle).
  *
- * `next/server` carrega o runtime do Next.js, que exige um servidor de verdade
- * e falha no `node --test`. Como os testes de e-mail verificam lógica pura
- * (backoff, idempotência, transições de estado) e não HTTP, basta um dublê com
- * o mesmo formato de retorno. Ver `scripts/stubs/next-server.mjs`.
+ * `next/server` e `next/headers` carregam o runtime do Next.js, que exige um
+ * servidor de verdade e falha no `node --test`. Como os testes verificam
+ * lógica pura (permissões, redação de segredo, período, máscara, SQL) e não
+ * HTTP nem cookie, basta um dublê com o mesmo formato de retorno.
+ * Ver `scripts/stubs/`.
  */
 const STUBS = new Map([
     ['next/server', resolvePath(ROOT, 'scripts/stubs/next-server.mjs')],
+    ['next/headers', resolvePath(ROOT, 'scripts/stubs/next-headers.mjs')],
 ]);
 
 export async function resolve(specifier, context, nextResolve) {

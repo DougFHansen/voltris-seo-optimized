@@ -17,6 +17,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { requireCapability } from '@/lib/admin-auth';
 import type Stripe from 'stripe';
 import { stripe } from '@/lib/stripe';
 import { createClient } from '@/utils/supabase/server';
@@ -113,21 +114,30 @@ async function run(req: NextRequest, apply: boolean, onlyRefs?: string[]) {
     const ctx = startOperation('ADMIN_RECONCILE', correlationId);
 
     try {
-        // ---------------- 1. Gate de admin ----------------
-        const supabase = await createClient();
-        const { data: sessionData, error: authError } = await supabase.auth.getUser();
-        const user = sessionData?.user ?? null;
-        if (authError || !user) return errorWithCorrelation(ctx, 401, 'UNAUTHORIZED', 'Não autorizado');
+        // ---------------- 1. Gate de capacidade ----------------
+        //
+        // A checagem inline de `profiles.is_admin` que existia aqui foi
+        // removida em favor do helper único. Motivo concreto: ela duplicava a
+        // regra de autorização (e a testei apenas nesta rota), enquanto a
+        // reconciliação é a operação mais SENSÍVEL do painel — ela pode
+        //alterar um pagamento para `paid`.
+        //
+        // `apply` exige `reconcile.apply` (superadmin/financeiro). O dry-run
+        // é leitura e vale para qualquer perfil que veja pagamentos: mostrar
+        // o que está pendente não altera nada.
+        const needed = apply ? 'reconcile.apply' : 'payments.read';
+        const guard = await requireCapability(needed);
+        if (guard.response) return guard.response;
 
-        const { data: profile, error: profileErr } = await supabase
-            .from('profiles').select('is_admin').eq('id', user.id).maybeSingle();
-        if (profileErr) logSupabaseError(ctx, 'ler perfil do admin', profileErr);
-        if (!profile?.is_admin) {
-            logWarn(ctx, 'reconciliação tentada por não-admin', { user: maskEmail(user.email) });
+        const actor = guard.actor!;
+        if (!actor) {
             return errorWithCorrelation(ctx, 403, 'FORBIDDEN', 'Apenas administradores');
         }
+        if (!apply && !actor) {
+            logWarn(ctx, 'reconciliação tentada por não-admin');
+        }
 
-        ctx.userId = user.id;
+        ctx.userId = actor.userId;
         const admin = createAdminClient();
 
         // ---------------- 2. Pagamentos pendentes ----------------
@@ -196,7 +206,7 @@ async function run(req: NextRequest, apply: boolean, onlyRefs?: string[]) {
         }, {});
 
         logSuccess(ctx, apply ? 'reconciliação aplicada' : 'reconciliação (dry-run)', {
-            pendentes: report.length, summary, admin: maskEmail(user.email),
+            pendentes: report.length, summary, admin: maskEmail(actor.email),
         });
 
         const payload = {

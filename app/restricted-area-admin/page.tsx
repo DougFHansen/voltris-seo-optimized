@@ -13,12 +13,15 @@ import AdminTicketsTab from './tickets/AdminTicketsTab';
 import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
 import AdminUsersTab from './users/AdminUsersTab';
 import AdminEmailsTab from './emails/AdminEmailsTab';
+import AdminOverviewTab from './overview/AdminOverviewTab';
+import AdminClientsTab from './clients/AdminClientsTab';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const tabs = [
   { label: 'Visão Geral',  value: 'overview',    icon: FiHome,         color: 'text-slate-400' },
+  { label: 'Clientes',     value: 'clients',     icon: FiUsers,        color: 'text-cyan-400' },
   { label: 'Pedidos',      value: 'orders',      icon: ClipboardList,  color: 'text-indigo-400' },
   { label: 'Tickets',      value: 'tickets',     icon: TicketCheck,    color: 'text-violet-400' },
   { label: 'Newsletter',   value: 'newsletter',  icon: FiMail,         color: 'text-amber-400' },
@@ -28,7 +31,7 @@ const tabs = [
 
 export default function AdminDashboard() {
   const { user, loading, error, signOut } = useAuth();
-  const [activeTab, setActiveTab] = useState('orders');
+  const [activeTab, setActiveTab] = useState('overview');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -266,7 +269,9 @@ export default function AdminDashboard() {
 
               {activeTab === 'orders'     && <AdminOrdersTab />}
               {activeTab === 'tickets'    && <AdminTicketsTab />}
-              {activeTab === 'newsletter' && <AdminNewsletterTab />}
+              {activeTab === 'overview'     && <AdminOverviewTab />}
+              {activeTab === 'clients'      && <AdminClientsTab />}
+              {activeTab === 'newsletter'   && <AdminNewsletterTab />}
               {activeTab === 'emails'     && <AdminEmailsTab />}
               {activeTab === 'users'      && <AdminUsersTab />}
             </motion.div>
