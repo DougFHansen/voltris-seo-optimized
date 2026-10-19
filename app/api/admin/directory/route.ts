@@ -62,6 +62,22 @@ const COLUNAS: Record<string, string> = {
 };
 
 /**
+ * Tabela real de cada recurso.
+ *
+ * O nome do recurso NÃO é o nome da tabela: as contas vivem em `profiles` e
+ * os inscritos em `newsletter_subscribers`. Ler `users` e `newsletter`
+ * direto devolvia erro e as abas "Usuários" e "Newsletter" ficavam
+ * quebradas — sem lista e sem explicação do motivo.
+ */
+const TABELA: Record<string, string> = {
+    users: 'profiles',
+    newsletter: 'newsletter_subscribers',
+    tickets: 'tickets',
+    orders: 'orders',
+    service_requests: 'service_requests',
+};
+
+/**
  * Capacidade exigida por recurso, para LEITURA.
  *
  * `users`, `tickets` e `newsletter` usam `clients.read` porque são dados de
@@ -95,8 +111,9 @@ export async function GET(req: NextRequest) {
     const db = createAdminClient();
 
     try {
+        const tabela = TABELA[resource] ?? resource;
         let query = db
-            .from(resource)
+            .from(tabela)
             .select(COLUNAS[resource], { count: 'exact' })
             .order('created_at', { ascending: false })
             .range(offset, offset + limit - 1);
@@ -131,7 +148,7 @@ export async function GET(req: NextRequest) {
         // Tabela INEXISTENTE não pode derrubar a aba: cai para lista vazia com
         // um motivo explícito, e não para "não há dados" sem explicação.
         if (resource === 'orders' || resource === 'service_requests') {
-            const r = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/${resource}?select=id&limit=1`, {
+            const r = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/${TABELA[resource] ?? resource}?select=id&limit=1`, {
                 headers: {
                     apikey: process.env.SUPABASE_SERVICE_ROLE_KEY!,
                     Authorization: `Bearer ${process.env.SUPABASE_SERVICE_ROLE_KEY}`,
@@ -212,10 +229,11 @@ export async function POST(req: NextRequest) {
     }
 
     const db = createAdminClient();
+    const tabela = TABELA[resource] ?? resource;
 
     try {
         const { data: before, error: readErr } = await db
-            .from(resource).select('*').eq('id', id).maybeSingle();
+            .from(tabela).select('*').eq('id', id).maybeSingle();
 
         if (readErr || !before) {
             return NextResponse.json({ error: 'Registro não encontrado.', code: 'NOT_FOUND' }, { status: 404 });
@@ -230,7 +248,7 @@ export async function POST(req: NextRequest) {
                     { status: 400 }
                 );
             }
-            const { error } = await db.from(resource).delete().eq('id', id);
+            const { error } = await db.from(tabela).delete().eq('id', id);
             if (error) throw error;
 
             await auditAction(actor, {
@@ -313,7 +331,7 @@ export async function POST(req: NextRequest) {
         }
 
         const { data: after, error } = await db
-            .from(resource).update({ status }).eq('id', id).select().maybeSingle();
+            .from(tabela).update({ status }).eq('id', id).select().maybeSingle();
 
         if (error) throw error;
 
