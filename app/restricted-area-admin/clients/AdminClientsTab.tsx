@@ -376,14 +376,38 @@ function ClientDrawer({ client, onClose }: { client: ClientRow; onClose: () => v
 
 function Resumo({ d }: { d: ClientDetail }) {
     const p = d.profile;
+    const txt = (v: unknown) =>
+        v === null || v === undefined || String(v).trim() === '' ? 'Não informado' : String(v);
+
+    // Contas antigas foram criadas quando o trigger do banco gravava só
+    // nome/e-mail. Em vez de esconder o buraco com "—", dizemos o que falta.
+    const faltando = ['login', 'full_name', 'phone', 'address', 'neighborhood', 'city', 'state', 'cep']
+        .filter((k) => !p[k] || String(p[k]).trim() === '');
+
     return (
         <div className="grid grid-cols-2 gap-3 text-sm">
-            <Field label="Login" value={p.login ?? '—'} />
-            <Field label="E-mail" value={p.email ?? '—'} />
-            <Field label="Telefone" value={p.phone ?? '—'} />
-            <Field label="Cadastro" value={new Date(p.created_at).toLocaleDateString('pt-BR')} />
-            <Field label="Cidade" value={[p.city, p.state].filter(Boolean).join(' / ') || '—'} />
+            <Field label="Login" value={txt(p.login)} />
+            <Field label="E-mail" value={txt(p.email)} />
+            <Field label="Nome completo" value={txt(p.full_name)} />
+            <Field label="Telefone" value={txt(p.phone)} />
+            <Field label="Cadastro" value={p.created_at ? new Date(p.created_at).toLocaleDateString('pt-BR') : 'Não informado'} />
+            <Field label="CEP" value={txt(p.cep)} />
+            <div className="col-span-2">
+                <Field label="Endereço" value={txt(p.address)} />
+            </div>
+            <Field label="Bairro" value={txt(p.neighborhood)} />
+            <Field label="Cidade / UF" value={[p.city, p.state].filter(Boolean).join(' / ') || 'Não informado'} />
             <Field label="Perfil" value={p.is_admin ? 'Administrador' : 'Cliente'} />
+            <Field label="Situação" value={p.is_blocked ? 'Bloqueado' : 'Ativo'} />
+
+            {faltando.length > 0 && (
+                <p className="col-span-2 mt-1 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] leading-relaxed text-amber-200/90">
+                    Este cadastro está incompleto: {faltando.join(', ')}. Contas criadas antes da
+                    correção do formulário podem não ter esses dados — o cliente pode completá-los
+                    em “Meu Perfil”.
+                </p>
+            )}
+
             <div className="col-span-2 mt-3 grid grid-cols-3 gap-2">
                 <Mini label="Compras" value={d.purchases.length} />
                 <Mini label="Licenças" value={d.licenses.length} />

@@ -9,6 +9,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/app/hooks/useAuth';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { notifyPageView } from '@/utils/notifications';
+import {
+  isValidEmail,
+  validateBrazilianPhone,
+  validateSignupStep1,
+  validateSignupStep2,
+  validateSignupStep3,
+} from '@/lib/signup-rules';
 
 // Icons
 import { FaWhatsapp } from 'react-icons/fa';
@@ -41,6 +48,8 @@ function LoginContent() {
   const [number, setNumber] = useState('');
   const [isCepLoading, setIsCepLoading] = useState(false);
   const [isCepValid, setIsCepValid] = useState(false);
+  /** Usuário clicou em "Corrigir CEP / Digitar Manualmente". */
+  const [manualAddress, setManualAddress] = useState(false);
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -219,10 +228,6 @@ function LoginContent() {
     return 'Ocorreu um erro técnico. Tente novamente.';
   };
 
-  const validateEmail = (emailStr: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailStr);
-  };
-
   // --- HANDLERS ---
   const handleMfaVerify = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -231,7 +236,7 @@ function LoginContent() {
     setError(null);
     try {
       const { data: factorsData } = await supabase.auth.mfa.listFactors();
-      const factor = factorsData?.all?.find(f => f.status === 'verified');
+      const factor = factorsData?.all?.find((f: { id: string; status?: string }) => f.status === 'verified');
       if (!factor) throw new Error('Nenhum verificador ativo encontrado.');
 
       const { error } = await supabase.auth.mfa.challengeAndVerify({
@@ -258,7 +263,7 @@ function LoginContent() {
     setLoading(true);
     try {
       let loginEmail = email.trim();
-      const isEmail = validateEmail(loginEmail);
+      const isEmail = isValidEmail(loginEmail);
 
       // Se não for e-mail, tenta buscar por username
       if (!isEmail) {
@@ -341,14 +346,10 @@ function LoginContent() {
 
   const handleNextStep = async () => {
     if (signupStep === 1) {
-      if (!login) return setError("Preencha o Usuário.");
-      if (!email) return setError("Preencha o E-mail.");
-      if (!validateEmail(email)) return setError("Formato de e-mail inválido.");
-      
-      // Validação de Senha Forte (Nivel Stripe/Enterprise)
-      if (password.length < 8) return setError("A senha deve ter pelo menos 8 caracteres.");
-      if (passwordStrength < 3) return setError("Sua senha é fraca. Use letras maiúsculas, números e símbolos.");
-      
+      // Toda a obrigatoriedade do passo 1 vive em lib/signup-rules.ts.
+      const erro = validateSignupStep1({ login, email, password, passwordStrength });
+      if (erro) return setError(erro);
+
       setLoading(true);
       setError(null);
       try {
@@ -387,11 +388,8 @@ function LoginContent() {
     }
     
     if (signupStep === 2) {
-      if (!fullName) return setError("Preencha o Nome Completo.");
-      if (!phone) return setError("Preencha o WhatsApp.");
-      if (!validateBrazilianPhone(phone)) {
-        return setError("Número de WhatsApp inválido ou DDD inexistente.");
-      }
+      const erro = validateSignupStep2({ fullName, phone });
+      if (erro) return setError(erro);
 
       setLoading(true);
       setError(null);
@@ -421,12 +419,21 @@ function LoginContent() {
   };
 
   const handleSignUp = async () => {
-    if (!cep || !state || !city || !street || !number) {
-      return setError("Por favor, preencha o endereço completo.");
-    }
-    if (!isCepValid) {
-      return setError("O CEP informado é inválido. Por favor, utilize um CEP real.");
-    }
+    // Defesa em profundidade: os três passos são revalidados no momento de
+    // criar a conta. Não adianta "voltar" e apagar um campo — o cadastro não
+    // prossegue. Nenhum campo é opcional.
+    const erro1 = validateSignupStep1({ login, email, password, passwordStrength });
+    if (erro1) { setSignupStep(1); return setError(erro1); }
+
+    const erro2 = validateSignupStep2({ fullName, phone });
+    if (erro2) { setSignupStep(2); return setError(erro2); }
+
+    const erro3 = validateSignupStep3({
+      cep, street, number, neighborhood, city, state,
+      cepValid: isCepValid, manualAddress,
+    });
+    if (erro3) { setSignupStep(3); return setError(erro3); }
+
     setError(null);
     setLoading(true);
 
@@ -444,20 +451,20 @@ function LoginContent() {
         return setError("Este WhatsApp já está em uma conta. Use outro número.");
       }
 
+      const dadosPerfil = {
+        login: login.trim(),
+        full_name: fullName.trim(),
+        phone: phone.trim(),
+        address: `${street.trim()}, ${number.trim()}`,
+        city: city.trim(),
+        neighborhood: neighborhood.trim(),
+        state: state.trim().toUpperCase(),
+        cep: cep.trim(),
+      };
+
       const { data: signUpData, error } = await supabase.auth.signUp({
-        email, password,
-        options: { 
-          data: { 
-            full_name: fullName, 
-            phone, 
-            city, 
-            neighborhood, 
-            state, 
-            cep, 
-            address: `${street}, ${number}`,
-            login 
-          } 
-        },
+        email: email.trim(), password,
+        options: { data: dadosPerfil },
       });
       if (error) throw error;
 
@@ -472,6 +479,30 @@ function LoginContent() {
         }
 
         if (session) {
+          // O trigger do banco (handle_new_user) já deveria copiar tudo, mas
+          // a versão em produção foi sobrescrita e grava só nome/e-mail.
+          // Enquanto admin.sql não for aplicado, esta é a gravação que
+          // garante login, telefone, endereço, bairro, cidade, UF e CEP.
+          const { data: perfilAtualizado, error: perfilError } = await supabase
+            .from('profiles')
+            .update(dadosPerfil)
+            .eq('id', signUpData.user.id)
+            .select('id')
+            .maybeSingle();
+
+          // `update` sem erro e sem linha também é falha: significa que a RLS
+          // barrou ou que o perfil não existe. Não podemos chamar isso de
+          // sucesso só porque o HTTP respondeu 200.
+          const perfilFalhou = !!perfilError || !perfilAtualizado;
+
+          if (perfilFalhou) {
+            // Nunca silencioso: a conta existe, mas o operador precisa saber.
+            console.error('[cadastro] perfil não sincronizado:', perfilError?.message ?? 'nenhuma linha atualizada');
+            setRedirectText('Conta criada, mas não foi possível salvar todos os dados do perfil. Atualize em "Meu Perfil".');
+          } else {
+            setRedirectText('Redirecionando...');
+          }
+
           setSuccess(true);
           if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
 
@@ -485,7 +516,7 @@ function LoginContent() {
 
           setTimeout(() => {
             window.location.href = dest;
-          }, 800);
+          }, perfilFalhou ? 5000 : 800);
         } else {
           // Requer confirmação de email
           setRedirectText("Cadastro realizado! Verifique seu e-mail para confirmar.");
@@ -518,25 +549,6 @@ function LoginContent() {
   // Formatters
   const formatPhone = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 11 ? n.replace(/(\d{2})(\d{4,5})(\d{4})/, '($1) $2-$3') : v; };
   const formatCEP = (v: string) => { const n = v.replace(/\D/g, ''); return n.length <= 8 ? n.replace(/(\d{5})(\d{3})/, '$1-$2') : v; };
-
-  const validateBrazilianPhone = (v: string) => {
-    const n = v.replace(/\D/g, '');
-    // Verifica tamanho 11 (DDD + 9 + 8 dígitos)
-    if (n.length !== 11) return false;
-    // O nono dígito (pos 2) deve ser obrigatoriamente 9 para celulares
-    if (n[2] !== '9') return false;
-    // Lista de DDDs válidos no Brasil
-    const validDDDs = [
-      '11','12','13','14','15','16','17','18','19',
-      '21','22','24','27','28','31','32','33','34','35','37','38',
-      '41','42','43','44','45','46','47','48','49',
-      '51','53','54','55','61','62','63','64','65','66','67','68','69',
-      '71','73','74','75','77','79','81','82','83','84','85','86','87','88','89',
-      '91','92','93','94','95','96','97','98','99'
-    ];
-    if (!validDDDs.includes(n.substring(0, 2))) return false;
-    return true;
-  };
 
   const handleCepChange = async (v: string) => {
     const formattedCep = formatCEP(v);
@@ -573,6 +585,7 @@ function LoginContent() {
           setStreet(street || '');
           setError(null);
           setIsCepValid(true);
+          setManualAddress(false);
           console.log('🎯 Endereço preenchido com sucesso!');
         }
       } catch (err) {
@@ -853,10 +866,10 @@ function LoginContent() {
                                 type="text" 
                                 placeholder="UF" 
                                 maxLength={2} 
-                                readOnly={isCepValid}
+                                readOnly={isCepValid && !!state}
                                 value={state} 
-                                onChange={e => !isCepValid && setState(e.target.value.toUpperCase())} 
-                                className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                                onChange={e => (!isCepValid || !state) && setState(e.target.value.toUpperCase())} 
+                                className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid && state ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                               />
                             </div>
                           </div>
@@ -864,10 +877,10 @@ function LoginContent() {
                             <input 
                               type="text" 
                               placeholder="Rua / Logradouro" 
-                              readOnly={isCepValid}
+                              readOnly={isCepValid && !!street}
                               value={street} 
-                              onChange={e => !isCepValid && setStreet(e.target.value)} 
-                              className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              onChange={e => (!isCepValid || !street) && setStreet(e.target.value)} 
+                              className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid && street ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                             />
                           </div>
                           <div className="grid grid-cols-3 gap-3">
@@ -875,10 +888,10 @@ function LoginContent() {
                               <input 
                                 type="text" 
                                 placeholder="Bairro" 
-                                readOnly={isCepValid}
+                                readOnly={isCepValid && !!neighborhood}
                                 value={neighborhood} 
-                                onChange={e => !isCepValid && setNeighborhood(e.target.value)} 
-                                className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                                onChange={e => (!isCepValid || !neighborhood) && setNeighborhood(e.target.value)} 
+                                className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid && neighborhood ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                               />
                             </div>
                             <div className="bg-gray-100 border border-blue-300 rounded-xl px-4 py-3 focus-within:border-blue-300 transition-all bg-gradient-to-br from-blue-100/50 to-transparent">
@@ -895,21 +908,23 @@ function LoginContent() {
                             <input 
                               type="text" 
                               placeholder="Cidade" 
-                              readOnly={isCepValid}
+                              readOnly={isCepValid && !!city}
                               value={city} 
-                              onChange={e => !isCepValid && setCity(e.target.value)} 
-                              className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
+                              onChange={e => (!isCepValid || !city) && setCity(e.target.value)} 
+                              className={`bg-transparent w-full text-gray-900 text-sm outline-none transition-all ${isCepValid && city ? 'opacity-30 cursor-not-allowed select-none' : ''}`} 
                             />
                           </div>
-                          {isCepValid && (
-                            <button 
-                              type="button"
-                              onClick={() => { setCep(''); setIsCepValid(false); setStreet(''); setNeighborhood(''); setCity(''); setState(''); }}
-                              className="text-[10px] text-pink-600 font-bold uppercase tracking-widest hover:underline text-center w-full mt-1"
-                            >
-                              Corrigir CEP / Digitar Manualmente
-                            </button>
-                          )}
+                          <button 
+                            type="button"
+                            onClick={() => {
+                              setManualAddress(true);
+                              setCep(''); setIsCepValid(false);
+                              setStreet(''); setNeighborhood(''); setCity(''); setState('');
+                            }}
+                            className="text-[10px] text-pink-600 font-bold uppercase tracking-widest hover:underline text-center w-full mt-1"
+                          >
+                            Corrigir CEP / Digitar Manualmente
+                          </button>
                         </div>
                       )}
 

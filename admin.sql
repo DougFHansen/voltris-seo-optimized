@@ -20,9 +20,10 @@
 -- GARANTIAS
 --   - NADA destrutivo: só CREATE ... IF NOT EXISTS, ALTER ... ENABLE RLS e
 --     índices. Nenhum DROP, nenhum TRUNCATE, nenhum DELETE.
---   - Não altera `payments`, `licenses`, `subscriptions` nem `profiles`: são
---     dados de clientes. Só acrescentamos colunas novas quando estritamente
---     necessário, sempre aditivas e com DEFAULT.
+--   - Não altera linhas existentes de `payments`, `licenses`, `subscriptions`
+--     nem `profiles`: são dados de clientes. A Seção 5 recria SOMENTE a função
+--     de trigger `handle_new_user()`; nenhum cadastro existente é reescrito.
+--     Colunas novas, quando estritamente necessárias, são aditivas e com DEFAULT.
 --   - RLS nunca é desabilitada.
 --   - Pode ser executado mais de uma vez sem efeito colateral.
 --
@@ -435,6 +436,127 @@ BEGIN
     ) THEN
         RAISE NOTICE 'admin.sql: % admin(s) com is_admin=true e role nulo serão tratados como superadmin por compatibilidade.',
             (SELECT count(*) FROM public.profiles WHERE is_admin = true AND role IS NULL);
+    END IF;
+END $$;
+
+
+-- ############################################################################
+-- SEÇÃO 5 — CADASTRO: TRIGGER QUE GRAVA O PERFIL COMPLETO
+--
+-- PROBLEMA REAL, MEDIDO EM PRODUÇÃO (2026-10-19)
+--
+--   `public.handle_new_user()` foi redefinida pela migration
+--   `20260219000001_fix_function_search_path_security.sql` e passou a inserir
+--   APENAS (id, email, full_name, created_at, updated_at).
+--
+--   Nos 102 perfis criados DEPOIS de 2026-02-19:
+--       login .......... 0/102 preenchidos
+--       neighborhood ... 0/102 preenchidos
+--       phone/city/state/cep ... 47/102 (preenchidos por outros fluxos)
+--
+--   O cadastro enviava tudo em `raw_user_meta_data`, mas o trigger descartava
+--   login, telefone, endereço, bairro, cidade, UF e CEP. Era por isso que a
+--   ficha do cliente no painel aparecia com "—" nesses campos.
+--
+-- O QUE ESTE BLOCO FAZ
+--
+--   Recria a função com TODOS os campos, mantendo `search_path` fixo
+--   (segurança). É `CREATE OR REPLACE`: não apaga dado, não altera nenhuma
+--   linha existente e pode rodar quantas vezes for preciso.
+--
+--   `ON CONFLICT (id) DO NOTHING`: se outro trigger já criou o perfil, o
+--   cadastro não falha.
+--
+--   `login` é UNIQUE. Para cadastro social (sem `login` no metadata), o
+--   fallback é a parte local do e-mail; se ela já existir, o bloco de exceção
+--   acrescenta um sufixo curto do id em vez de derrubar o cadastro.
+--
+-- IMPORTANTE
+--
+--   Isto corrige os PRÓXIMOS cadastros. NÃO faz backfill: preencher dados de
+--   clientes existentes a partir do metadata é decisão de negócio e deve ser
+--   feita com revisão, não por script automático. (A missão proíbe UPDATE em
+--   massa de dados existentes.)
+-- ############################################################################
+
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public, pg_temp
+AS $$
+DECLARE
+    v_email TEXT := NEW.email;
+    v_login TEXT;
+BEGIN
+    v_login := COALESCE(
+        NULLIF(BTRIM(NEW.raw_user_meta_data->>'login'), ''),
+        NULLIF(split_part(COALESCE(NEW.email, ''), '@', 1), ''),
+        'usuario'
+    );
+
+    BEGIN
+        INSERT INTO public.profiles (
+            id, login, email, full_name, phone, address,
+            city, neighborhood, state, cep, created_at, updated_at
+        ) VALUES (
+            NEW.id,
+            v_login,
+            v_email,
+            COALESCE(NEW.raw_user_meta_data->>'full_name', ''),
+            COALESCE(NEW.raw_user_meta_data->>'phone', ''),
+            COALESCE(NEW.raw_user_meta_data->>'address', ''),
+            COALESCE(NEW.raw_user_meta_data->>'city', ''),
+            COALESCE(NEW.raw_user_meta_data->>'neighborhood', ''),
+            COALESCE(NEW.raw_user_meta_data->>'state', ''),
+            COALESCE(NEW.raw_user_meta_data->>'cep', ''),
+            NOW(), NOW()
+        )
+        ON CONFLICT (id) DO NOTHING;
+    EXCEPTION WHEN unique_violation THEN
+        -- `login` já usado por outra conta: usa e-mail local + sufixo do id.
+        INSERT INTO public.profiles (
+            id, login, email, full_name, phone, address,
+            city, neighborhood, state, cep, created_at, updated_at
+        ) VALUES (
+            NEW.id,
+            LEFT(
+                COALESCE(NULLIF(split_part(COALESCE(NEW.email, ''), '@', 1), ''), 'usuario')
+                || '-' || substr(NEW.id::text, 1, 8),
+                30
+            ),
+            v_email,
+            COALESCE(NEW.raw_user_meta_data->>'full_name', ''),
+            COALESCE(NEW.raw_user_meta_data->>'phone', ''),
+            COALESCE(NEW.raw_user_meta_data->>'address', ''),
+            COALESCE(NEW.raw_user_meta_data->>'city', ''),
+            COALESCE(NEW.raw_user_meta_data->>'neighborhood', ''),
+            COALESCE(NEW.raw_user_meta_data->>'state', ''),
+            COALESCE(NEW.raw_user_meta_data->>'cep', ''),
+            NOW(), NOW()
+        )
+        ON CONFLICT (id) DO NOTHING;
+    END;
+
+    RETURN NEW;
+END;
+$$;
+
+-- A função é chamada pelo trigger, não por RPC. Ninguém precisa executá-la.
+REVOKE ALL ON FUNCTION public.handle_new_user() FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.handle_new_user() TO service_role;
+
+-- Confirma que o trigger existe e aponta para a função recriada.
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_trigger
+        WHERE tgname = 'on_auth_user_created'
+          AND tgrelid = 'auth.users'::regclass
+    ) THEN
+        RAISE NOTICE 'admin.sql: trigger on_auth_user_created NÃO existe — crie-o manualmente.';
+    ELSE
+        RAISE NOTICE 'admin.sql: trigger on_auth_user_created presente; novos cadastros gravarão login, telefone, endereço, bairro, cidade, UF e CEP.';
     END IF;
 END $$;
 
