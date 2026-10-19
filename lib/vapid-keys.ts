@@ -14,7 +14,7 @@
  */
 
 export const VAPID_PUBLIC_KEY_PADRAO =
-    'BAzgWrqm4lTzStPGyI1mcU8m3zsPY9DVhlq-IP8-oMlpeH6Lijd5RWyAfhmAScpOfUrN77c1vpka2eFxWMCnlek';
+    'BOPUkO19Bp-6tH6k9bPZiG3AIUyU3C-o9uLod2NxW59Hpkbp6eI5KWmELVV1ilPm2ofBLUk6ym5z7uh7S4q0dEA';
 
 /** Chave pública em uso (ambiente tem precedência sobre a padrão). */
 export function chavePublicaVapid(): string {
