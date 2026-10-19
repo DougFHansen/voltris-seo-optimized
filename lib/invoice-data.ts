@@ -204,6 +204,15 @@ export function buildInvoiceData(options: BuildInvoiceOptions): InvoiceData {
             : 'VOLTRIS OPTIMIZER',
         planLabel: kind === 'service' ? 'Serviço' : planLabel(row.plan_type),
         billingLabel: billingLabel(row.billing_period, kind, row.stripe_subscription_id ?? null),
+        // O PDF usa o ciclo CRU ("month"/"year") para o rótulo curto do
+        // cabeçalho ("Plano PRO mensal") e a modalidade em português.
+        billingPeriod: row.billing_period ?? null,
+        productKindLabel:
+            kind === 'service'
+                ? 'Serviço profissional'
+                : kind === 'renewal'
+                    ? 'Renovação de licenciamento'
+                    : 'Licenciamento digital',
 
         amountPaid,
         amountRefunded: refunded !== null && refunded > 0 ? refunded : null,

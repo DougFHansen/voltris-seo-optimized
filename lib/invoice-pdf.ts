@@ -1,359 +1,223 @@
 /**
- * GERAÇÃO DA FATURA COMERCIAL EM PDF (missão §6).
+ * FATURA EM PDF — redesenhada para ser IDÊNTICA ao documento do aplicativo
+ * desktop (referência: "Fatura_VOLTRIS_PRO_Alvaro_Araujo.pdf" entregue pelo
+ * operador).
  *
- * Decisões técnicas e o porquê de cada uma:
+ * O desenho NÃO foi inventado: ele foi extraído do PDF de referência
+ * (streams de conteúdo, cores, coordenadas, fontes e textos) e reproduzido com
+ * `pdf-lib` + as MESMAS fontes (Lato Black/Semibold/Regular/Bold e DejaVu Sans
+ * Mono), depositadas em `assets/fonts`.
  *
- *  - `pdf-lib`: biblioteca 100% JavaScript, sem binário nativo, que roda no
- *    runtime Node da Vercel sem subir um browser (cold start de segundos,
- *    centenas de MB) e sem depender de arquivo de fonte externo. As fontes
- *    standard usam WinAnsiEncoding, que cobre integralmente o português
- *    (á, â, ç, ã, é, ê, í, ó, ô, õ, ú, ü).
- *  - A identidade visual (degradê rosa -> roxo -> azul, cabeçalho premium,
- *    cartão do plano, rodapé) é desenhada nativamente com as primitivas do
- *    PDF, no mesmo vocabulário de cor do site
- *    (#FF4B6B rosa, #8B31FF roxo, #31A8FF azul).
- *  - O glifo "V" da marca é redesenhado em paths a partir de public/logo.png,
- *    para que o documento NUNCA saia sem identidade — mesmo que o arquivo de
- *    imagem não esteja disponível no bundle.
- *  - Layout por CURSOR ÚNICO: cada bloco informa quanto consumiu e o próximo
- *    começa exatamente abaixo. É o que garante que nada sobreponha nada,
- *    qualquer que seja o tamanho do conteúdo (nome longo, chave, observação).
- *  - O documento é gerado a partir dos fatos gravados no Supabase (espelho da
- *    Stripe). Se faltar dado histórico, o campo mostra "—" em vez de valor
- *    inventado (missão §6: "Se faltarem informações históricas, não invente").
+ * Especificação (A4 = 595,2756 x 841,8898 pt):
+ *
+ *   topo ............ barra em gradiente rosa -> azul (7 pt)
+ *   cabeçalho ........ banda #111327 (y 632..842) + faixa #161A34 (y 632..694)
+ *                      + hachuras diagonais #2E3156 + marca VOLTRIS
+ *   corpo ............ fundo branco, seções com título roxo #9C47DB
+ *   emitente/cliente . duas colunas separadas por um fio em x=298
+ *   detalhamento ..... cartão #F5F6FC (509x147)
+ *   total ............ cartão #F2ECFA (509x38), valor em #7741C7
+ *   chave ............ cartão escuro #111327 (509x91) com barra azul
+ *   rodapé .......... avisos em #69738C e assinatura #6A4FA6
  */
 
-import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage, type RGB } from 'pdf-lib';
-import { getCompanyInfo, type CompanyInfo } from '@/lib/company';
-import type { InvoiceKind } from '@/lib/invoice-data';
+import {
+    PDFDocument,
+    StandardFonts,
+    rgb,
+    appendBezierCurve,
+    closePath,
+    fill,
+    lineTo,
+    moveTo,
+    popGraphicsState,
+    pushGraphicsState,
+    setFillingRgbColor,
+    type Color,
+    type PDFFont,
+    type PDFPage,
+    type RGB,
+} from 'pdf-lib';
+import fontkit from '@pdf-lib/fontkit';
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
+import { getCompanyInfo } from '@/lib/company';
 
-// ============================================================================
-// PALETA — mesma da identidade do site (globals.css / Header / Footer)
-// ============================================================================
-const BRAND_PINK: RGB = rgb(1.0, 0.294, 0.42);    // #FF4B6B
-const BRAND_PURPLE: RGB = rgb(0.545, 0.192, 1.0); // #8B31FF
-const BRAND_BLUE: RGB = rgb(0.192, 0.659, 1.0);  // #31A8FF
-const INK: RGB = rgb(0.09, 0.11, 0.16);           // #161C29
-const INK_SOFT: RGB = rgb(0.42, 0.46, 0.54);      // #6B7589
-const INK_MUTED: RGB = rgb(0.58, 0.62, 0.69);     // #949EB0
-const PAPER: RGB = rgb(1, 1, 1);
-const SURFACE: RGB = rgb(0.968, 0.976, 0.992);
-const HAIRLINE: RGB = rgb(0.82, 0.85, 0.90);
-const DANGER: RGB = rgb(0.82, 0.18, 0.26);
-const SUCCESS: RGB = rgb(0.04, 0.52, 0.36);
-const WARNING: RGB = rgb(0.72, 0.45, 0.05);
+/* ------------------------------------------------------------------ cores */
 
-// A4 exato em pontos (72 dpi): 595,28 x 841,89
-const PAGE_W = 595.28;
-const PAGE_H = 841.89;
-const MARGIN = 46;
-const CONTENT_W = PAGE_W - MARGIN * 2;
+const C = {
+    white: rgb(1, 1, 1),
+    header: rgb(0.066667, 0.07451, 0.152941),       // #111327
+    headerAccent: rgb(0.086275, 0.101961, 0.203922), // #161A34
+    headerLine: rgb(0.180392, 0.192157, 0.337255),   // #2E3156
+    brandPink: rgb(1, 0.247059, 0.454902),          // #FF3F74
+    brandBlue: rgb(0.090196, 0.407843, 0.847059),    // #1768D8
+    violet: rgb(0.611765, 0.278431, 0.858824),       // #9C47DB
+    blue: rgb(0.090196, 0.407843, 0.847059),         // #1768D8
+    ink: rgb(0.094118, 0.12549, 0.231373),           // #18203B
+    inkSoft: rgb(0.411765, 0.45098, 0.54902),        // #69738C
+    inkMuted: rgb(0.643137, 0.670588, 0.807843),     // #A4ABCE
+    inkLight: rgb(0.768627, 0.788235, 0.878431),     // #C4C9E0
+    onDark: rgb(0.65098, 0.976471, 0.831373),        // #A6F9D4
+    onDark2: rgb(0.85098, 0.866667, 0.945098),       // #D9DDF1
+    onDark3: rgb(0.843137, 0.756863, 0.960784),      // #D7C1F5
+    onDark4: rgb(0.745098, 0.772549, 0.905882),      // #BEC5E7
+    total: rgb(0.466667, 0.254902, 0.780392),         // #7741C7
+    footer: rgb(0.415686, 0.309804, 0.65098),         // #6A4FA6
+    cardSoft: rgb(0.960784, 0.964706, 0.988235),     // #F5F6FC
+    cardTotal: rgb(0.94902, 0.92549, 0.980392),      // #F2ECFA
+    hairline: rgb(0.882353, 0.898039, 0.937255),     // #E1E5EF
+    divider: rgb(0.858824, 0.87451, 0.933333),       // #DBDFEE
+    pillBg: rgb(0.129412, 0.235294, 0.270588),       // #213C45
+    checkGreen: rgb(0.196078, 0.811765, 0.584314),   // #32CF95
+    mark: rgb(0.113725, 0.137255, 0.25098),          // #1D2350
+};
 
-const CHIP_BG_PURPLE = rgb(0.945, 0.933, 1);
-const CHIP_BG_BLUE = rgb(0.906, 0.957, 1);
-const CHIP_BG_NEUTRAL = rgb(0.957, 0.965, 0.98);
+/* ------------------------------------------------------------------ página */
 
-// ============================================================================
-// TIPOGRAFIA / FORMATAÇÃO
-// ============================================================================
+const PAGE_W = 595.2756;
+const PAGE_H = 841.8898;
 
-/**
- * Fuso usado no documento.
- *
- * Fixo em America/Sao_Paulo de propósito: uma fatura brasileira precisa mostrar
- * a data no horário do contrato. Sem isso, o mesmo pagamento apareceria como
- * "18/11" ao rodar no servidor UTC da Vercel e "19/11" rodando local — o
- * documento mudaria de data conforme ONDE foi gerado. Este é o bug que os
- * testes pegaram.
- */
-export const INVOICE_TIMEZONE = 'America/Sao_Paulo';
-
-/** 15/08/2026 · 14:32 (pt-BR) — nunca o formato americano. */
-export function formatDateTimeBR(iso: string | number | Date | null | undefined): string {
-    if (iso === null || iso === undefined || iso === '') return '—';
-    const date = iso instanceof Date ? iso : new Date(typeof iso === 'number'
-        ? (iso < 1e11 ? iso * 1000 : iso)
-        : iso);
-    if (Number.isNaN(date.getTime())) return '—';
-    return date.toLocaleString('pt-BR', {
-        day: '2-digit', month: '2-digit', year: 'numeric',
-        hour: '2-digit', minute: '2-digit',
-        timeZone: INVOICE_TIMEZONE,
-    });
-}
-
-/** 15/08/2026 */
-export function formatDateBR(iso: string | number | Date | null | undefined): string {
-    if (iso === null || iso === undefined || iso === '') return '—';
-    const date = iso instanceof Date ? iso : new Date(typeof iso === 'number'
-        ? (iso < 1e11 ? iso * 1000 : iso)
-        : iso);
-    if (Number.isNaN(date.getTime())) return '—';
-    return date.toLocaleDateString('pt-BR', { timeZone: INVOICE_TIMEZONE });
-}
-
-/** R$ 1.234,56 — nunca US$. */
-export function formatBRL(value: number | string | null | undefined, currency = 'BRL'): string {    const n = typeof value === 'string' ? Number(value) : value;
-    if (n === null || n === undefined || !Number.isFinite(n)) return '—';
-    return n.toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: (currency || 'BRL').toUpperCase(),
-    });
-}
-
-/**
- * Encurta identificadores longos para caber na coluna do documento.
- *
- * Os IDs da Stripe (`cs_live_…`, `pi_…`, `in_…`, `sub_…`) têm 30 a 90
- * caracteres e não têm espaços. Impressos inteiros, eles quebravam a linha em
- * quatro partes e a última colidia com a linha seguinte, deixando o documento
- * ilegível:
- *
- *     Referência do pagamento  cs_live_a1QVeYYjLaGsopJp
- *                              NvAsn0HMpS6XXhADXPVhErq
- *                              OCRogS6UUG84lxPugeX
- *                              1R/10/2026, 23:46      <- era a linha seguinte
- *
- * O formato `prefixo…sufixo` é o que empresas usam em documento físico: mantém
- * os dois extremos, que são o que permite localizar a transação no painel da
- * Stripe, e some com o meio, que não é digitável nem comparável.
- *
- * `keep` é o número de caracteres preservados no início e no fim.
- */
-export function shortenRef(value: string | null | undefined, keep = 8): string {
-    const s = String(value ?? '').trim();
-    if (s === '') return '—';
-    // Só encurta o que realmente não cabe: IDs curtos continuam íntegros.
-    if (s.length <= keep * 2 + 1) return s;
-    return `${s.slice(0, keep)}…${s.slice(-keep)}`;
-}
-
-/**
- * Quebra de linha por largura real. Usa `widthOfTextAtSize` (medição de
- * verdade, não estimativa), com fallback para não quebrar em texto sem espaço.
- */
-function wrapText(text: string, font: PDFFont, size: number, maxWidth: number): string[] {
-    const source = String(text ?? '');
-    if (source === '') return [''];
-
-    const lines: string[] = [];
-    let current = '';
-
-    for (const word of source.split(/\s+/)) {
-        const candidate = current ? `${current} ${word}` : word;
-        if (font.widthOfTextAtSize(candidate, size) <= maxWidth) {
-            current = candidate;
-            continue;
-        }
-        if (current) lines.push(current);
-        // Palavra sozinha maior que a linha: corta por caractere.
-        if (font.widthOfTextAtSize(word, size) > maxWidth) {
-            let chunk = '';
-            for (const ch of word) {
-                if (font.widthOfTextAtSize(chunk + ch, size) > maxWidth && chunk) {
-                    lines.push(chunk);
-                    chunk = ch;
-                } else {
-                    chunk += ch;
-                }
-            }
-            current = chunk;
-        } else {
-            current = word;
-        }
-    }
-    if (current) lines.push(current);
-    return lines.length > 0 ? lines : [''];
-}
-
-/**
- * Reduz o corpo da fonte até o texto caber em `maxWidth` (e, se ainda não
- * couber, trunca com reticências). Usado em chaves de licença, que têm
- * comprimento variável mas nunca devem estourar o cartão.
- */
-function fitText(
-    text: string,
-    font: PDFFont,
-    maxWidth: number,
-    startSize: number,
-    minSize = 7
-): { text: string; size: number } {
-    let size = startSize;
-    while (size > minSize && font.widthOfTextAtSize(text, size) > maxWidth) {
-        size -= 0.5;
-    }
-    if (font.widthOfTextAtSize(text, size) <= maxWidth) return { text, size };
-
-    let clipped = text;
-    while (clipped.length > 4 && font.widthOfTextAtSize(`${clipped}…`, size) > maxWidth) {
-        clipped = clipped.slice(0, -1);
-    }
-    return { text: `${clipped}…`, size };
-}
-
-// ============================================================================
-// PRIMITIVAS DE DESENHO
-// ============================================================================
+/* ------------------------------------------------------------------ fontes */
 
 interface Fonts {
+    heavy: PDFFont;
+    semibold: PDFFont;
     regular: PDFFont;
     bold: PDFFont;
-    italic: PDFFont;
-}
-
-/** Amostra de faixas que reproduz o degradê rosa -> roxo -> azul da marca. */
-function drawBrandGradient(page: PDFPage, x: number, y: number, w: number, h: number) {
-    const pr = BRAND_PINK.red, pg = BRAND_PINK.green, pb = BRAND_PINK.blue;
-    const ur = BRAND_PURPLE.red, ug = BRAND_PURPLE.green, ub = BRAND_PURPLE.blue;
-    const br = BRAND_BLUE.red, bg = BRAND_BLUE.green, bb = BRAND_BLUE.blue;
-
-    const steps = 16;
-    const sw = w / steps;
-    for (let i = 0; i < steps; i++) {
-        const t = steps > 1 ? i / (steps - 1) : 0;
-        const k = t < 0.5 ? t / 0.5 : (t - 0.5) / 0.5;
-        const from = t < 0.5 ? [pr, pg, pb] : [ur, ug, ub];
-        const to = t < 0.5 ? [ur, ug, ub] : [br, bg, bb];
-        const color = rgb(
-            from[0] + (to[0] - from[0]) * k,
-            from[1] + (to[1] - from[1]) * k,
-            from[2] + (to[2] - from[2]) * k
-        );
-        page.drawRectangle({ x: x + i * sw, y, width: sw + 0.6, height: h, color });
-    }
+    mono: PDFFont;
 }
 
 /**
- * Retângulo arredondado de verdade (curvas de Bézier), não o "quase arredondado"
- * de três retângulos sobrepostos — que deixava os cantos internos aparecendo
- * quando o preenchimento e a borda tinham cores diferentes.
+ * Os ARQUIVOS das fontes ficam em cache (leitura uma vez por processo), mas a
+ * FONTE EMBUTIDA é criada por documento.
+ *
+ * Por quê: um `PDFFont` pertence ao `PDFDocument` em que foi criado. Reusar
+ * o mesmo objeto em outro documento produz um PDF com glifos/cMap do
+ * documento anterior — o arquivo saía correto no primeiro pedido e quebrado
+ * no segundo (texto ilegível). Este é o tipo de bug que só aparece em
+ * produção, no segundo usuário.
  */
-function roundedRect(
-    page: PDFPage,
-    x: number, y: number, w: number, h: number, r: number,
-    opts: { color?: RGB; borderColor?: RGB; borderWidth?: number } = {}
-) {
-    const rad = Math.max(0, Math.min(r, w / 2, h / 2));
-    if (rad === 0) {
-        page.drawRectangle({
-            x, y, width: w, height: h,
-            color: opts.color, borderColor: opts.borderColor, borderWidth: opts.borderWidth ?? 0,
+let fontFiles: { heavy: Buffer; semibold: Buffer; regular: Buffer; bold: Buffer; mono: Buffer } | null = null;
+
+async function lerFontes(): Promise<NonNullable<typeof fontFiles>> {
+    if (fontFiles) return fontFiles;
+    const dir = path.join(process.cwd(), 'assets', 'fonts');
+    const ler = (nome: string) => readFile(path.join(dir, nome));
+    fontFiles = {
+        heavy: await ler('Lato-Black.ttf'),
+        semibold: await ler('Lato-SemiBold.ttf'),
+        regular: await ler('Lato-Regular.ttf'),
+        bold: await ler('Lato-Bold.ttf'),
+        mono: await ler('DejaVuSansMono.ttf'),
+    };
+    return fontFiles;
+}
+
+async function carregarFontes(doc: PDFDocument): Promise<Fonts> {
+    doc.registerFontkit(fontkit as never);
+    const f = await lerFontes();
+    const emb = (bytes: Buffer) => doc.embedFont(bytes as never, { subset: true } as never);
+    return {
+        heavy: await emb(f.heavy),
+        semibold: await emb(f.semibold),
+        regular: await emb(f.regular),
+        bold: await emb(f.bold),
+        mono: await emb(f.mono),
+    };
+}
+
+/* --------------------------------------------------------------- formatos */
+
+export const INVOICE_TIMEZONE = 'America/Sao_Paulo';
+
+export function formatDateTimeBR(iso: string | number | Date | null | undefined): string {
+    if (iso === null || iso === undefined || iso === '') return '—';
+    const d = iso instanceof Date ? iso : new Date(iso);
+    if (Number.isNaN(d.getTime())) return '—';
+    try {
+        return d.toLocaleString('pt-BR', {
+            timeZone: INVOICE_TIMEZONE,
+            day: '2-digit', month: '2-digit', year: 'numeric',
+            hour: '2-digit', minute: '2-digit',
         });
-        return;
-    }
-
-    const k = rad * 0.5523;
-    const x2 = x + w, y2 = y + h;
-
-    const path = [
-        `M ${x + rad} ${y}`,
-        `L ${x2 - rad} ${y}`,
-        `C ${x2 - rad + k} ${y} ${x2} ${y + rad - k} ${x2} ${y + rad}`,
-        `L ${x2} ${y2 - rad}`,
-        `C ${x2} ${y2 - rad + k} ${x2 - rad + k} ${y2} ${x2 - rad} ${y2}`,
-        `L ${x + rad} ${y2}`,
-        `C ${x + rad - k} ${y2} ${x} ${y2 - rad + k} ${x} ${y2 - rad}`,
-        `L ${x} ${y + rad}`,
-        `C ${x} ${y + rad - k} ${x + rad - k} ${y} ${x + rad} ${y}`,
-        'Z',
-    ].join(' ');
-
-    page.drawSvgPath(path, {
-        x: 0, y: 0,
-        color: opts.color,
-        borderColor: opts.borderColor,
-        borderWidth: opts.borderWidth ?? 0,
-    });
-}
-
-/**
- * Glifo "V" da VOLTRIS — versão vetorial do logo oficial (public/logo.png),
- * com as três lâminas em rosa, roxo e azul.
- */
-function drawVoltrisMark(page: PDFPage, x: number, y: number, s: number) {
-    // Feito com `drawLine` (traço grosso) e não com `drawSvgPath`: o
-    // interpretador de SVG do pdf-lib usa Y-para-baixo, enquanto o PDF usa
-    // Y-para-cima — o caminho saía espelhado e fora da página.
-    page.drawLine({
-        start: { x: x + s * 0.06, y: y + s * 0.94 },
-        end: { x: x + s * 0.30, y: y + s * 0.06 },
-        thickness: s * 0.17, color: BRAND_PINK,
-    });
-    page.drawLine({
-        start: { x: x + s * 0.26, y: y + s * 0.90 },
-        end: { x: x + s * 0.46, y: y + s * 0.08 },
-        thickness: s * 0.16, color: BRAND_PURPLE,
-    });
-    page.drawLine({
-        start: { x: x + s * 0.88, y: y + s * 0.88 },
-        end: { x: x + s * 0.52, y: y + s * 0.04 },
-        thickness: s * 0.18, color: BRAND_BLUE,
-    });
-}
-
-/** Chip colorido. Devolve a largura consumida para o cursor horizontal. */
-function drawChip(
-    page: PDFPage, fonts: Fonts,
-    x: number, y: number, text: string, color: RGB, bg: RGB
-): number {
-    const label = text.toUpperCase();
-    const size = 6.6;
-    const padX = 7;
-    const w = fonts.bold.widthOfTextAtSize(label, size) + padX * 2;
-    const h = 14;
-    roundedRect(page, x, y, w, h, 7, { color: bg });
-    page.drawText(label, { x: x + padX, y: y + 4.4, size, font: fonts.bold, color });
-    return w;
-}
-
-/** Título de seção com sublinhado na cor da marca. */
-function drawSectionTitle(page: PDFPage, fonts: Fonts, x: number, y: number, text: string) {
-    page.drawText(text, { x, y, size: 8.4, font: fonts.bold, color: BRAND_PURPLE });
-    page.drawRectangle({ x, y: y - 5.5, width: 48, height: 1.8, color: BRAND_PINK });
-}
-
-// ============================================================================
-// TÍTULO POR TIPO DE COBRANÇA (missão §6: distinguir compra de renovação)
-// ============================================================================
-
-export function invoiceTitle(kind: InvoiceKind): string {
-    switch (kind) {
-        case 'renewal': return 'Fatura de Renovação';
-        case 'refund': return 'Comprovante de Reembolso';
-        case 'service': return 'Fatura de Serviço';
-        case 'purchase':
-        default: return 'Fatura Comercial';
+    } catch {
+        return '-';
     }
 }
 
-function invoiceSubtitle(kind: InvoiceKind): string {
-    switch (kind) {
-        case 'renewal': return 'Cobrança recorrente do período contratado.';
-        case 'refund': return 'Valor devolvido ao cliente.';
-        case 'service': return 'Serviço profissional contratado.';
-        case 'purchase':
-        default: return 'Assinatura inicial do Voltris Optimizer.';
+export function formatDateBR(iso: string | number | Date | null | undefined): string {
+    if (iso === null || iso === undefined || iso === '') return '—';
+    const d = iso instanceof Date ? iso : new Date(iso);
+    if (Number.isNaN(d.getTime())) return '—';
+    try {
+        return d.toLocaleDateString('pt-BR', {
+            timeZone: INVOICE_TIMEZONE,
+            day: '2-digit', month: '2-digit', year: 'numeric',
+        });
+    } catch {
+        return '-';
     }
 }
 
-/** Rótulo curto para o chip (o chip tem largura limitada pelo cartão). */
-function shortPlanChip(label: string): string {
-    return label.replace(/^VOLTRIS\s*/i, '');
+export function formatBRL(value: number | string | null | undefined, currency = 'BRL'): string {
+    const n = typeof value === 'string' ? Number(value) : value;
+    if (value === null || value === undefined || value === '' || !Number.isFinite(n as number)) return '—';
+    try {
+        return (n as number).toLocaleString('pt-BR', { style: 'currency', currency });
+    } catch {
+        return '-';
+    }
 }
 
-// ============================================================================
-// DADOS DA FATURA
-// ============================================================================
+/** Identificadores longos não podem quebrar o layout: encurta preservando o início e o fim. */
+export function shortenRef(value: string | null | undefined, keep = 8): string {
+    const v = (value ?? '').trim();
+    if (!v) return '—';
+    if (v.length <= keep * 2 + 1) return v;
+    return `${v.slice(0, keep)}…${v.slice(-keep)}`;
+}
+
+/** "17 OUT 2026" — o formato do topo do documento. */
+function dataLongaBR(iso: string | null | undefined): string {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return '—';
+    const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+    try {
+        const partes = new Intl.DateTimeFormat('en-CA', {
+            timeZone: INVOICE_TIMEZONE, year: 'numeric', month: '2-digit', day: '2-digit',
+        }).formatToParts(d);
+        const get = (tipo: string) => partes.find((p) => p.type === tipo)?.value ?? '';
+        return `${get('day')} ${meses[Number(get('month')) - 1] ?? ''} ${get('year')}`;
+    } catch {
+        return '—';
+    }
+}
+
+/** Ciclo curto: "Mensal", "Anual", "Pagamento único". */
+function cicloCurto(billingPeriod: string | null | undefined): string {
+    const p = (billingPeriod ?? '').trim().toLowerCase();
+    if (!p) return '';
+    if (['year', 'anual', 'annual', 'y'].includes(p)) return 'Anual';
+    if (['month', 'mensal', 'monthly', 'm'].includes(p)) return 'Mensal';
+    if (['week', 'semanal'].includes(p)) return 'Semanal';
+    if (['day', 'diario', 'diário'].includes(p)) return 'Diário';
+    if (p.includes('único') || p.includes('unico')) return 'Pagamento único';
+    if (p.includes('recorrente')) return 'Mensal';
+    if (p.includes('avulsa')) return 'Mensal';
+    return '';
+}
+
+/* ------------------------------------------------------------------ dados */
+
+export type InvoiceKind = 'purchase' | 'renewal' | 'service' | 'refund';
 
 export interface InvoiceData {
-    /** Identificador comercial impresso no documento. */
     invoiceNumber: string;
     kind: InvoiceKind;
-    /** uuid da compra no banco (identificador interno). */
     purchaseId: string | null;
-    /** `in_…` — fatura da Stripe (quando existe). */
     stripeInvoiceId: string | null;
-    /** `pi_…` — PaymentIntent. */
     stripePaymentId: string | null;
     stripeChargeId: string | null;
     stripeSubscriptionId: string | null;
@@ -367,10 +231,12 @@ export interface InvoiceData {
     productName: string;
     planLabel: string;
     billingLabel: string;
+    /** Ciclo cru ('month' | 'year'), para o rótulo curto do documento. */
+    billingPeriod?: string | null;
+    /** Descrição da modalidade, ex.: "Licenciamento digital". */
+    productKindLabel?: string | null;
 
-    /** Valor EFETIVAMENTE pago nesta cobrança (nunca o preço do plano). */
     amountPaid: number;
-    /** Valor devolvido, quando reembolsado. */
     amountRefunded: number | null;
     currency: string;
 
@@ -378,7 +244,6 @@ export interface InvoiceData {
     paymentStatusTone: 'ok' | 'warn' | 'bad';
 
     licenseKey: string | null;
-    /** Identificador interno do cliente (`licenses.client_id`). */
     clientId: string | null;
     maxDevices: number | null;
     devicesInUse: number | null;
@@ -390,7 +255,6 @@ export interface InvoiceData {
     periodStart: string | null;
     periodEnd: string | null;
 
-    /** Texto legal específico (ex.: motivo do reembolso). */
     legalNote: string | null;
 }
 
@@ -399,350 +263,285 @@ export interface GeneratedInvoice {
     fileName: string;
 }
 
-// ============================================================================
-// GERADOR
-// ============================================================================
+export function invoiceTitle(kind: InvoiceKind): string {
+    switch (kind) {
+        case 'renewal': return 'Fatura de Renovação';
+        case 'service': return 'Fatura de Serviço';
+        case 'refund': return 'Comprovante de Reembolso';
+        default: return 'Fatura Comercial';
+    }
+}
 
-/**
- * Gera o PDF da fatura.
- *
- * Todo campo vem de `InvoiceData`, que por sua vez é montado a partir do banco
- * (espelho da Stripe) depois da checagem de posse na rota. Não existe valor,
- * nome ou chave hard-coded aqui.
- */
+/* -------------------------------------------------------------- auxiliares */
+
+/** Retângulo de cantos arredondados (raio de 4 pt, como no documento original). */
+function caixaArredondada(
+    page: PDFPage,
+    x: number,
+    y: number,
+    w: number,
+    h: number,
+    r: number,
+    color: RGB | Color
+) {
+    const k = 0.5523 * r;
+    const c = color as RGB;
+    page.pushOperators(
+        pushGraphicsState(),
+        setFillingRgbColor(c.red, c.green, c.blue),
+        moveTo(x + r, y),
+        lineTo(x + w - r, y),
+        appendBezierCurve(x + w - r + k, y, x + w, y + r - k, x + w, y + r),
+        lineTo(x + w, y + h - r),
+        appendBezierCurve(x + w, y + h - r + k, x + w - r + k, y + h, x + w - r, y + h),
+        lineTo(x + r, y + h),
+        appendBezierCurve(x + r - k, y + h, x, y + h - r + k, x, y + h - r),
+        lineTo(x, y + r),
+        appendBezierCurve(x, y + r - k, x + r - k, y, x + r, y),
+        closePath(),
+        fill(),
+        popGraphicsState()
+    );
+}
+
+function texto(
+    page: PDFPage,
+    font: PDFFont,
+    x: number,
+    y: number,
+    size: number,
+    value: string,
+    color: Color = C.ink
+) {
+    if (!value) return;
+    page.drawText(value, { x, y, size, font, color });
+}
+
+function textoDireita(
+    page: PDFPage,
+    font: PDFFont,
+    xDireita: number,
+    y: number,
+    size: number,
+    value: string,
+    color: Color = C.ink
+) {
+    if (!value) return;
+    const w = font.widthOfTextAtSize(value, size);
+    page.drawText(value, { x: xDireita - w, y, size, font, color });
+}
+
+function linha(page: PDFPage, x1: number, y1: number, x2: number, y2: number, color: Color, width = 0.7) {
+    page.drawLine({ start: { x: x1, y: y1 }, end: { x: x2, y: y2 }, color, thickness: width });
+}
+
+/* --------------------------------------------------------------- gerador */
+
 export async function generateInvoicePdf(data: InvoiceData): Promise<GeneratedInvoice> {
     const { info: company } = getCompanyInfo();
 
     const doc = await PDFDocument.create();
+    const fonts = await carregarFontes(doc);
     doc.setTitle(`${invoiceTitle(data.kind)} ${data.invoiceNumber}`);
     doc.setAuthor(company.razaoSocial);
-    doc.setSubject(`Documento comercial VOLTRIS — ${data.invoiceNumber}`);
-    // Observação: o pdf-lib reescreve /Producer no `save()` com o próprio nome da
-    // biblioteca, então este call é inefetivo. Os campos que importam para um
-    // documento comercial (Title, Author, Subject, CreationDate) são preservados
-    // e definem quem produziu/assinou o arquivo nos leitores de PDF.
+    // Rastreabilidade: os identificadores da Stripe vão nos METADADOS do
+    // PDF. O papel segue com o desenho aprovado (apenas ID da compra e
+    // Referência), mas o arquivo continua permitindo localizar a transação.
+    doc.setSubject(
+        `Documento comercial VOLTRIS — ${data.invoiceNumber}` +
+        (data.purchaseId ? ` | compra: ${data.purchaseId}` : '') +
+        (data.stripePaymentId ? ` | pagamento: ${data.stripePaymentId}` : '') +
+        (data.stripeInvoiceId ? ` | fatura: ${data.stripeInvoiceId}` : '') +
+        (data.stripeSubscriptionId ? ` | assinatura: ${data.stripeSubscriptionId}` : '') +
+        (data.stripeChargeId ? ` | cobranca: ${data.stripeChargeId}` : '')
+    );
+    doc.setKeywords([
+        data.purchaseId, data.invoiceNumber, data.stripePaymentId,
+        data.stripeInvoiceId, data.stripeSubscriptionId, data.stripeChargeId,
+        data.licenseKey,
+    ].filter(Boolean).map(String) as string[]);
+    doc.setProducer('VOLTRIS');
     doc.setCreator('VOLTRIS');
 
-    // Metadata determinística: o mesmo documento para a mesma cobrança.
-    doc.setCreationDate(new Date(data.purchasedAt ?? Date.now()));
-    if (data.paidAt) doc.setModificationDate(new Date(data.paidAt));
-
-    const fonts: Fonts = {
-        regular: await doc.embedFont(StandardFonts.Helvetica),
-        bold: await doc.embedFont(StandardFonts.HelveticaBold),
-        italic: await doc.embedFont(StandardFonts.HelveticaOblique),
-    };
-
     const page = doc.addPage([PAGE_W, PAGE_H]);
-    page.drawRectangle({ x: 0, y: 0, width: PAGE_W, height: PAGE_H, color: PAPER });
 
-    let y = drawHeader(page, fonts, company, data);
+    /* ------------------------------------------------------------- fundo */
+    page.drawRectangle({ x: 0, y: 0, width: PAGE_W, height: PAGE_H, color: C.white });
 
-    // ---------------------------------------------------------------------
-    // Cartão "destaque do plano"
-    // ---------------------------------------------------------------------
-    y -= 10;
-    const cardH = 84;
-    const cardTop = y;
-    roundedRect(page, MARGIN, cardTop - cardH, CONTENT_W, cardH, 10, {
-        color: SURFACE, borderColor: HAIRLINE, borderWidth: 0.8,
-    });
-    drawBrandGradient(page, MARGIN + 1, cardTop - cardH + 8, 4.5, cardH - 16);
-
-    const cardTextX = MARGIN + 20;
-    page.drawText(fitText(data.productName, fonts.bold, CONTENT_W * 0.56, 16, 11).text, {
-        x: cardTextX, y: cardTop - 28, size: 16, font: fonts.bold, color: INK,
-    });
-    page.drawText(invoiceSubtitle(data.kind), {
-        x: cardTextX, y: cardTop - 43, size: 8.2, font: fonts.regular, color: INK_SOFT,
-    });
-
-    // Chips — largura disponível à esquerda do valor
-    const amountText = formatBRL(data.amountPaid, data.currency);
-    const amountSize = 22;
-    const amountW = fonts.bold.widthOfTextAtSize(amountText, amountSize);
-    const amountX = PAGE_W - MARGIN - 18 - amountW;
-    const chipsRightLimit = amountX - 24;
-
-    let chipX = cardTextX;
-    const chipY = cardTop - cardH + 16;
-    const chipDefs: Array<[string, RGB, RGB]> = [
-        [shortPlanChip(data.planLabel), BRAND_PURPLE, CHIP_BG_PURPLE],
-        [data.billingLabel.split(' — ')[0], BRAND_BLUE, CHIP_BG_BLUE],
-        [data.paymentStatusLabel, toneColor(data.paymentStatusTone), CHIP_BG_NEUTRAL],
-    ];
-    for (const [label, color, bg] of chipDefs) {
-        const probe = fonts.bold.widthOfTextAtSize(label.toUpperCase(), 6.6) + 14;
-        if (chipX + probe > chipsRightLimit) break;   // sem transbordar o cartão
-        chipX += drawChip(page, fonts, chipX, chipY, label, color, bg) + 6;
-    }
-
-    page.drawText(amountText, {
-        x: amountX, y: cardTop - 32, size: amountSize, font: fonts.bold, color: INK,
-    });
-    page.drawText('VALOR PAGO NESTA COBRANÇA', {
-        x: PAGE_W - MARGIN - 18 - 140, y: cardTop - 44, size: 6.4, font: fonts.regular, color: INK_MUTED,
-    });
-
-    if (typeof data.amountRefunded === 'number' && data.amountRefunded > 0) {
-        const refundText = `Reembolsado: ${formatBRL(data.amountRefunded, data.currency)}`;
-        page.drawText(refundText, {
-            x: PAGE_W - MARGIN - 18 - fonts.regular.widthOfTextAtSize(refundText, 8.4),
-            y: cardTop - 57, size: 8.4, font: fonts.bold, color: DANGER,
-        });
-    }
-
-    y = cardTop - cardH - 26;
-
-    // ---------------------------------------------------------------------
-    // Dados da transação (duas colunas alinhadas)
-    // ---------------------------------------------------------------------
-    drawSectionTitle(page, fonts, MARGIN, y, 'DADOS DA TRANSAÇÃO');
-    y -= 22;
-
-    const colGap = 26;
-    const colW = (CONTENT_W - colGap) / 2;
-    const colX = [MARGIN, MARGIN + colW + colGap];
-
-    const leftRows: Array<[string, string]> = [
-        ['Identificador da compra', shortenRef(data.purchaseId)],
-        ['Referência do pagamento', shortenRef(data.stripePaymentId)],
-        ['Data da compra', formatDateTimeBR(data.purchasedAt)],
-        ['Pagamento confirmado em', formatDateTimeBR(data.paidAt)],
-        ['Modalidade de cobrança', data.billingLabel],
-    ];
-    const rightRows: Array<[string, string]> = [
-        ['Fatura Stripe', shortenRef(data.stripeInvoiceId)],
-        ['Cobrança Stripe', shortenRef(data.stripeChargeId)],
-        /**
-         * Só afirma um período quando os dois extremos existem.
-         *
-         * Com apenas um deles, "— a 18/11/2026" ou "18/10/2026 a —" parece um
-         * período contratado com data inválida, quando na verdade não há
-         * período registrado. A vigência continua visível no bloco da licença.
-         */
-        ['Período pago',
-            data.periodStart && data.periodEnd
-                ? `${formatDateBR(data.periodStart)} a ${formatDateBR(data.periodEnd)}`
-                : data.periodEnd
-                    ? `até ${formatDateBR(data.periodEnd)}`
-                    : data.periodStart
-                        ? `a partir de ${formatDateBR(data.periodStart)}`
-                        : '—'],
-        ['Assinatura', data.stripeSubscriptionId ? shortenRef(data.stripeSubscriptionId) : '— (compra avulsa)'],
-        ['Plano adquirido', data.planLabel],
-    ];
-
-    const rows = Math.max(leftRows.length, rightRows.length);
-    for (let i = 0; i < rows; i++) {
-        const used = Math.max(
-            i < leftRows.length ? drawInfoRow(page, fonts, colX[0], y, colW, leftRows[i][0], leftRows[i][1]) : 0,
-            i < rightRows.length ? drawInfoRow(page, fonts, colX[1], y, colW, rightRows[i][0], rightRows[i][1]) : 0,
+    /* ------------------------------------------ barra superior em gradiente */
+    const barraAltura = 7;
+    const passos = 120;
+    for (let i = 0; i < passos; i++) {
+        const t = i / (passos - 1);
+        const cor = rgb(
+            C.brandPink.red + (C.brandBlue.red - C.brandPink.red) * t,
+            C.brandPink.green + (C.brandBlue.green - C.brandPink.green) * t,
+            C.brandPink.blue + (C.brandBlue.blue - C.brandPink.blue) * t
         );
-        y = used - 20;
+        const w = PAGE_W / passos;
+        page.drawRectangle({ x: i * w, y: PAGE_H - barraAltura, width: w + 0.6, height: barraAltura, color: cor });
     }
 
-    // ---------------------------------------------------------------------
-    // Licença
-    // ---------------------------------------------------------------------
-    drawSectionTitle(page, fonts, MARGIN, y, 'LICENÇA VOLTRIS OPTIMIZER');
-    y -= 22;
+    /* --------------------------------------------------------- cabeçalho */
+    page.drawRectangle({ x: 0, y: 632, width: PAGE_W, height: 210, color: C.header });
+    page.drawRectangle({ x: 0, y: 632, width: PAGE_W, height: 62, color: C.headerAccent });
 
-    const licH = 78;
-    roundedRect(page, MARGIN, y - licH, CONTENT_W, licH, 10, {
-        color: SURFACE, borderColor: rgb(0.82, 0.85, 0.90), borderWidth: 0.9,
-    });
+    for (let i = 0; i < 8; i++) {
+        const x = 410 + i * 25;
+        linha(page, x, 705, x + 58, 842, C.headerLine, 0.7);
+    }
+    for (const y of [723, 745, 767, 789]) {
+        linha(page, 352, y, 595, y, C.headerLine, 0.7);
+    }
 
-    const licLeftW = CONTENT_W * 0.52;
-    page.drawText('Chave de licença', {
-        x: MARGIN + 16, y: y - 19, size: 7.2, font: fonts.regular, color: INK_MUTED,
-    });
-    const keyFitted = fitText(data.licenseKey ?? '—', fonts.bold, licLeftW - 32, 10.5, 7);
-    page.drawText(keyFitted.text, {
-        x: MARGIN + 16, y: y - 34, size: keyFitted.size, font: fonts.bold, color: INK,
-    });
+    // barra em gradiente no canto inferior direito
+    for (let i = 0; i < 40; i++) {
+        const t = i / 39;
+        const cor = rgb(
+            0.2 + (0.090196 - 0.2) * t,
+            0.58 + (0.407843 - 0.58) * t,
+            0.847 + (0.847059 - 0.847) * t
+        );
+        const w = (595.2756 - 523.8425) / 40;
+        page.drawRectangle({ x: 523.8425 + i * w, y: 629, width: w + 0.4, height: 4, color: cor });
+    }
 
-    page.drawText('Dispositivos', {
-        x: MARGIN + 16, y: y - 54, size: 7.2, font: fonts.regular, color: INK_MUTED,
-    });
-    const devices = typeof data.maxDevices === 'number'
-        ? (data.maxDevices >= 9999
-            ? 'Ilimitados'
-            : `${data.maxDevices} permitido${data.maxDevices === 1 ? '' : 's'}${data.devicesInUse !== null ? ` · ${data.devicesInUse} em uso` : ''}`)
-        : '—';
-    page.drawText(devices, { x: MARGIN + 16, y: y - 67, size: 9, font: fonts.bold, color: INK });
+    /* ------------------------------------------------------ marca VOLTRIS */
+    caixaArredondada(page, 43, 764, 37, 37, 6, C.mark);
+    page.drawLine({ start: { x: 51, y: 790 }, end: { x: 61.6, y: 774 }, color: C.brandBlue, thickness: 5.1 });
+    page.drawLine({ start: { x: 61.6, y: 774 }, end: { x: 70.4, y: 790 }, color: C.brandBlue, thickness: 5.1 });
+    page.drawLine({ start: { x: 61.6, y: 774 }, end: { x: 70.4, y: 790 }, color: C.brandBlue, thickness: 1 });
 
-    const licRightX = MARGIN + licLeftW + 14;
-    const licRightW = CONTENT_W - licLeftW - 30;
-    let ly = y - 19;
-    ly = drawInfoRow(page, fonts, licRightX, ly, licRightW, 'Início da vigência', formatDateTimeBR(data.licenseStartedAt), { size: 8.6, valueFont: fonts.regular });
-    ly = drawInfoRow(page, fonts, licRightX, ly, licRightW, 'Expiração', formatDateTimeBR(data.licenseExpiresAt), { size: 8.6, valueFont: fonts.regular });
-    drawInfoRow(page, fonts, licRightX, ly, licRightW, 'Situação', data.licenseStateLabel, {
-        size: 8.6, valueColor: toneColor(data.licenseStateTone),
-    });
+    texto(page, fonts.heavy, 89, 786, 20, 'VOLTRIS', C.white);
+    texto(page, fonts.semibold, 91, 772, 8, 'OPTIMIZER  /  SOFTWARE', C.inkMuted);
 
-    y -= licH + 26;
+    const titulo = invoiceTitle(data.kind).toUpperCase();
+    texto(page, fonts.heavy, 44, 721, 27, titulo, C.white);
 
-    // ---------------------------------------------------------------------
-    // Observação específica (ex.: motivo do reembolso)
-    // ---------------------------------------------------------------------
-    if (data.legalNote) {
-        const noteLines = wrapText(data.legalNote, fonts.regular, 8.2, CONTENT_W - 28);
-        const noteH = 22 + noteLines.length * 11;
-        roundedRect(page, MARGIN, y - noteH, CONTENT_W, noteH, 8, {
-            color: rgb(0.995, 0.985, 0.945), borderColor: rgb(0.93, 0.86, 0.62), borderWidth: 0.8,
-        });
-        page.drawText('OBSERVAÇÃO', { x: MARGIN + 14, y: y - 17, size: 7, font: fonts.bold, color: rgb(0.58, 0.42, 0.05) });
-        let ny = y - 29;
-        for (const line of noteLines) {
-            page.drawText(line, { x: MARGIN + 14, y: ny, size: 8.2, font: fonts.regular, color: INK });
-            ny -= 11;
+    const ciclo = cicloCurto(data.billingPeriod ?? data.billingLabel);
+    const planoCurto = data.planLabel.replace(/^VOLTRIS\s*/i, '');
+    const subtitulo = `${data.productKindLabel ?? 'Licenciamento digital'}  •  Plano ${planoCurto}${ciclo ? ` ${ciclo.toLowerCase()}` : ''}`;
+    texto(page, fonts.regular, 45, 700, 10.1, subtitulo, C.inkLight);
+
+    /* -------------------------------------------- pílula de status + data */
+    caixaArredondada(page, 43, 651, 196, 28, 8, C.pillBg);
+    page.drawCircle({ x: 60.5, y: 664.5, size: 3.5, color: C.checkGreen });
+    const rotuloStatus =
+        data.paymentStatusTone === 'ok'
+            ? 'PAGAMENTO CONFIRMADO'
+            : data.paymentStatusTone === 'bad'
+                ? (data.kind === 'refund' ? 'REEMBOLSO PROCESSADO' : 'PAGAMENTO RECUSADO')
+                : 'PAGAMENTO EM ANÁLISE';
+    texto(page, fonts.bold, 73, 660, 9.1, rotuloStatus, data.paymentStatusTone === 'ok' ? C.onDark : C.inkLight);
+    textoDireita(page, fonts.bold, 551, 660, 10.3, dataLongaBR(data.purchasedAt ?? data.paidAt), C.onDark2);
+
+    /* ------------------------------------------------------ dados da fatura */
+    texto(page, fonts.heavy, 44, 606, 9.3, 'DADOS DA FATURA', C.violet);
+    textoDireita(page, fonts.bold, 551, 606, 9.5, `EMISSÃO  ${formatDateBR(new Date())}`, C.inkSoft);
+
+    /* ----------------------------------------------------------- emitente */
+    texto(page, fonts.heavy, 61, 561, 8.5, 'EMITENTE', C.violet);
+    texto(page, fonts.heavy, 61, 537, 12.5, company.razaoSocial.toUpperCase(), C.ink);
+    if (company.cnpj) {
+        texto(page, fonts.semibold, 61, 515, 10, `CNPJ  ${company.cnpj}`, C.inkSoft);
+    }
+    const cidade = [company.cidade, company.uf].filter(Boolean).join(' - ');
+    texto(page, fonts.regular, 61, 495, 9.7, `${cidade}, Brasil`, C.inkSoft);
+    texto(page, fonts.regular, 61, 476, 9.7, company.email, C.inkSoft);
+
+    /* ------------------------------------------------------------ cliente */
+    texto(page, fonts.heavy, 318, 561, 8.5, 'CLIENTE', C.blue);
+    texto(page, fonts.heavy, 318, 537, 12.5, data.customerName?.trim() || '—', C.ink);
+    texto(page, fonts.regular, 318, 515, 9.5, data.customerEmail?.trim() || '—', C.inkSoft);
+    texto(page, fonts.semibold, 318, 495, 9.9, `${data.planLabel}  •  ${ciclo}`, C.ink);
+    if (data.maxDevices) {
+        texto(page, fonts.regular, 318, 476, 9.5, `Licença para até ${data.maxDevices} dispositivos`, C.inkSoft);
+    }
+
+    linha(page, 298, 455, 298, 571, C.divider, 1);
+
+    /* ------------------------------------------------- detalhamento da compra */
+    texto(page, fonts.heavy, 44, 406, 10.4, 'DETALHAMENTO DA COMPRA', C.ink);
+    caixaArredondada(page, 43, 439, 509, 147, 8, C.cardSoft);
+
+    texto(page, fonts.bold, 53, 378, 8.2, 'PRODUTO / DESCRIÇÃO', C.inkSoft);
+    textoDireita(page, fonts.bold, 552, 378, 8.2, 'VALOR', C.inkSoft);
+    linha(page, 43, 395, 552, 395, C.hairline, 0.7);
+
+    const nomeProduto = `${data.productName}  •  ${data.kind === 'service' ? 'SERVIÇO' : `LICENÇA ${planoCurto}`}`;
+    texto(page, fonts.heavy, 53, 346, 11.1, nomeProduto.toUpperCase(), C.ink);
+
+    const descricao: string[] = [];
+    descricao.push(ciclo === 'Pagamento único' ? 'Pagamento único' : `Assinatura ${ciclo.toLowerCase()}`);
+    if (data.periodStart && data.periodEnd) {
+        descricao.push(`${formatDateBR(data.periodStart)} a ${formatDateBR(data.periodEnd)}`);
+    }
+    texto(page, fonts.regular, 53, 329, 9.6, descricao.join('  •  '), C.inkSoft);
+
+    textoDireita(page, fonts.heavy, 552, 342, 12.7, formatBRL(data.amountPaid, data.currency), C.ink);
+    linha(page, 43, 366, 552, 366, C.hairline, 0.7);
+
+    /* --------------------------------------------------------------- total */
+    caixaArredondada(page, 43, 266, 509, 38, 8, C.cardTotal);
+    texto(page, fonts.bold, 56, 279, 10.2, 'TOTAL PAGO', C.ink);
+    textoDireita(page, fonts.heavy, 540, 276, 21, formatBRL(data.amountPaid, data.currency), C.total);
+    linha(page, 43, 312, 552, 312, C.hairline, 0.7);
+
+    /* ----------------------------------------------- identificação da compra */
+    texto(page, fonts.heavy, 44, 241, 10.4, 'IDENTIFICAÇÃO DA COMPRA', C.ink);
+    texto(page, fonts.bold, 44, 220, 9.3, 'ID da compra', C.inkSoft);
+    texto(page, fonts.mono, 163, 220, 9, data.purchaseId ?? '—', C.ink);
+    texto(page, fonts.bold, 44, 201, 9.3, 'Referência', C.inkSoft);
+    texto(page, fonts.mono, 163, 201, 9.2, data.invoiceNumber, C.ink);
+
+    /* ---------------------------------------------------- chave de ativação */
+    if (data.licenseKey) {
+        caixaArredondada(page, 43, 94, 509, 91, 8, C.header);
+        for (let i = 0; i < 24; i++) {
+            const t = i / 23;
+            const cor = rgb(
+                0.1182 + (0.090196 - 0.1182) * t,
+                0.400895 + (0.407843 - 0.400895) * t,
+                0.84769 - (0.84769 - 0.847059) * t
+            );
+            page.drawRectangle({
+                x: 47.83 + i * (1.033333 / 24), y: 94,
+                width: 1.033333 / 24 + 0.02, height: 91, color: cor,
+            });
         }
-        y -= noteH + 22;
+        texto(page, fonts.heavy, 60, 162, 9.5, 'CHAVE DE ATIVAÇÃO', C.onDark3);
+        texto(page, fonts.mono, 60, 138, 10.05, data.licenseKey, C.white);
+        texto(page, fonts.regular, 60, 113, 9.4, 'Ative no VOLTRIS OPTIMIZER  •  Uso reservado ao titular', C.onDark4);
     }
 
-    drawFooter(page, fonts, company);
+    /* -------------------------------------------------------------- rodapé */
+    linha(page, 43, 63, 552, 63, C.hairline, 0.7);
+    // Mesma cadência do documento de referência: a observação principal em
+    // 9,2 pt (y 75) e as linhas de rodapé em 8,25 pt (y 47 e y 34).
+    let yAviso = 75;
+    if (data.licenseKey) {
+        texto(page, fonts.regular, 44, yAviso, 9.2, 'A licença deve ser inserida na área de ativação do aplicativo.', C.inkSoft);
+        yAviso = 47;
+    }
+    if (data.legalNote) {
+        texto(page, fonts.regular, 44, yAviso, 8.25, data.legalNote, C.inkSoft);
+        yAviso = 34;
+    }
+    texto(page, fonts.regular, 44, 47, 8.25, 'Fatura comercial: não substitui nota fiscal de serviços (NFS-e).', C.inkSoft);
+    texto(page, fonts.regular, 44, 34, 8.25, `Dados do emitente: ${company.site.replace(/^https?:\/\//, '')}`, C.inkSoft);
+    textoDireita(page, fonts.bold, 551, 34, 8.3, 'VOLTRIS  ©  Tecnologia & Performance', C.footer);
 
     const bytes = await doc.save();
-
-    // Nome de arquivo ASCII-safe: acentos em `Content-Disposition` quebram em
-    // alguns navegadores e proxies.
-    const safeNumber = data.invoiceNumber.replace(/[^A-Za-z0-9._-]/g, '-');
-    const safeKind = invoiceTitle(data.kind)
+    const planoArquivo = (data.planLabel || 'COMPRA').replace(/^VOLTRIS[\s_-]*/i, '').toUpperCase();
+    // Nome do arquivo sem acento e com "_" entre as palavras — o mesmo padrão
+    // do documento do aplicativo desktop ("Fatura_VOLTRIS_PRO_Alvaro_araujo.pdf").
+    const clienteArquivo = (data.customerName || 'cliente')
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
-        .replace(/\s+/g, '-');
-
+        .replace(/[^\w]+/g, '_')
+        .replace(/^_+|_+$/g, '');
     return {
         bytes,
-        fileName: `VOLTRIS-${safeKind}-${safeNumber}.pdf`,
+        fileName: `Fatura_VOLTRIS_${planoArquivo}_${clienteArquivo}.pdf`,
     };
-}
-
-function toneColor(tone: 'ok' | 'warn' | 'bad'): RGB {
-    return tone === 'ok' ? SUCCESS : tone === 'bad' ? DANGER : WARNING;
-}
-
-// ============================================================================
-// BLOCOS COM CURSOR ÚNICO
-// ============================================================================
-
-/**
- * Linha rótulo -> valor com quebra real. Devolve o Y da PRÓXIMA linha (ou seja,
- * o quanto o bloco consumiu), o que é o que impede o desalinhamento Progressivo
- * entre as duas colunas.
- */
-function drawInfoRow(
-    page: PDFPage, fonts: Fonts,
-    x: number, y: number, w: number, label: string, value: string,
-    opts: { valueColor?: RGB; valueFont?: PDFFont; size?: number } = {}
-): number {
-    const size = opts.size ?? 9;
-    const valueFont = opts.valueFont ?? fonts.bold;
-    const valueColor = opts.valueColor ?? INK;
-
-    const labelW = Math.min(122, w * 0.48);
-    page.drawText(label, { x, y, size: 8, font: fonts.regular, color: INK_SOFT });
-
-    const valueX = x + labelW;
-    const lines = wrapText(value ?? '—', valueFont, size, w - labelW);
-    lines.forEach((line, i) => {
-        page.drawText(line, { x: valueX, y: y - i * 11.5, size, font: valueFont, color: valueColor });
-    });
-
-    return y - lines.length * 11.5;
-}
-
-/** Cabeçalho: marca, documento, emitente e cliente. Devolve o cursor livre. */
-function drawHeader(page: PDFPage, fonts: Fonts, company: CompanyInfo, invoice: InvoiceData): number {
-    const top = PAGE_H - MARGIN;
-
-    // Faixa de marca no topo da página
-    drawBrandGradient(page, 0, top + MARGIN - 12, PAGE_W, 5);
-
-    // Logo + nome
-    drawVoltrisMark(page, MARGIN, top - 26, 32);
-    page.drawText('VOLTRIS', { x: MARGIN + 42, y: top - 12, size: 19, font: fonts.bold, color: INK });
-    page.drawText('VOLTRIS OPTIMIZER', {
-        x: MARGIN + 43, y: top - 25, size: 7.2, font: fonts.regular, color: BRAND_PURPLE,
-    });
-
-    // Documento (à direita)
-    page.drawText(invoiceTitle(invoice.kind), {
-        x: PAGE_W - MARGIN - 190, y: top - 12, size: 12, font: fonts.bold, color: INK,
-    });
-    page.drawText(invoice.invoiceNumber, {
-        x: PAGE_W - MARGIN - 190, y: top - 25, size: 8.6, font: fonts.regular, color: INK_SOFT,
-    });
-
-    let y = top - 40;
-
-    page.drawRectangle({ x: MARGIN, y, width: CONTENT_W, height: 0.8, color: HAIRLINE });
-    y -= 20;
-
-    // Emitente / Cliente — altura calculada pelo maior bloco
-    const colGap = 26;
-    const colW = (CONTENT_W - colGap) / 2;
-
-    const emitterLines: string[] = [
-        company.razaoSocial,
-        company.cnpj ? `CNPJ: ${company.cnpj}` : 'CNPJ: não informado',
-        company.endereco,
-        company.email,
-    ];
-    /**
-     * "ID do cliente" é o identificador INTERNO (`licenses.client_id`), não o
-     * documento fiscal. São coisas distintas e a confusão entre elas deixava a
-     * linha sempre como "—" mesmo com o cliente corretamente cadastrado.
-     *
-     * O CPF/CNPJ do cliente só aparece quando realmente conhecido; não é
-     * obrigatório numa fatura de software.
-     */
-    const clientLines: string[] = [
-        invoice.customerName ?? '—',
-        invoice.customerEmail ?? '—',
-        invoice.clientId ? `ID do cliente: ${invoice.clientId}` : 'ID do cliente: —',
-    ];
-    if (invoice.customerDocument) {
-        clientLines.push(`CPF/CNPJ: ${invoice.customerDocument}`);
-    }
-
-    const emitBottom = drawField(page, fonts, MARGIN, y, colW, 'EMITENTE', emitterLines);
-    const clientBottom = drawField(page, fonts, MARGIN + colW + colGap, y, colW, 'CLIENTE', clientLines);
-
-    return Math.min(emitBottom, clientBottom) - 4;
-}
-
-/** Bloco "rótulo em cima, lista de linhas embaixo". Devolve o Y final. */
-function drawField(
-    page: PDFPage, fonts: Fonts,
-    x: number, y: number, w: number, label: string, lines: string[]
-): number {
-    page.drawText(label, { x, y, size: 6.8, font: fonts.bold, color: BRAND_PURPLE });
-
-    let ly = y - 13;
-    for (const line of lines) {
-        for (const wrapped of wrapText(line, fonts.regular, 8.4, w)) {
-            page.drawText(wrapped, { x, y: ly, size: 8.4, font: fonts.regular, color: INK });
-            ly -= 11;
-        }
-    }
-    return ly;
-}
-
-/** Rodapé com o aviso legal obrigatório (missão §6). */
-function drawFooter(page: PDFPage, fonts: Fonts, company: CompanyInfo) {
-    const y = MARGIN + 30;
-
-    page.drawRectangle({ x: MARGIN, y: y + 22, width: CONTENT_W, height: 0.8, color: HAIRLINE });
-
-    let ly = y + 10;
-    for (const line of wrapText(company.avisoDocumento, fonts.italic, 7.6, CONTENT_W)) {
-        page.drawText(line, { x: MARGIN, y: ly, size: 7.6, font: fonts.italic, color: INK_SOFT });
-        ly -= 9.5;
-    }
-
-    page.drawText(`${company.site.replace(/^https?:\/\//, '')}  ·  ${company.email}`, {
-        x: MARGIN, y: MARGIN - 6, size: 7, font: fonts.regular, color: INK_MUTED,
-    });
 }

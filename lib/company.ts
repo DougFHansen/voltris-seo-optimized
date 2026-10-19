@@ -38,6 +38,16 @@ const CNPJ_PADRAO = '47.241.737/0001-60';
 
 const SITE_PADRAO = 'https://www.voltris.com.br';
 
+/**
+ * Razão social usada quando o ambiente não informa outra.
+ *
+ * O documento comercial impresso (fatura em PDF) é o mesmo que o aplicativo
+ * desktop gera; o padrão aqui é o mesmo da razão social publicada no CNPJ,
+ * para que o papel e a fatura não se contradigam. Uma troca de razão social
+ * continua sendo uma decisão de ambiente (`VOLTRIS_RAZAO_SOCIAL`).
+ */
+const RAZAO_SOCIAL_PADRAO = 'VOLTRIS OTIMIZACAO LTDA';
+
 /** Remove tudo que não é dígito. */
 export function onlyDigits(value: string): string {
     return value.replace(/\D+/g, '');
@@ -99,7 +109,7 @@ export function getCompanyInfo(): { info: CompanyInfo; cnpjValid: boolean } {
     const razaoSocial =
         env('VOLTRIS_RAZAO_SOCIAL') ??
         env('VOLTRIS_NOME_FANTASIA') ??
-        'VOLTRIS';
+        RAZAO_SOCIAL_PADRAO;
 
     const info: CompanyInfo = {
         razaoSocial,

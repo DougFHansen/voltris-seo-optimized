@@ -30,6 +30,7 @@ import {
     type PaymentInvoiceRow,
 } from '../lib/invoice-data.ts';
 import { formatCnpj, isValidCnpj, onlyDigits, getCompanyInfo } from '../lib/company.ts';
+import { extrairTextoDoPdf } from './helpers/pdf-extract.ts';
 
 // ============================================================================
 // DADOS DA EMITENTE
@@ -243,52 +244,6 @@ const LICENCA = {
  * o hex antes de comparar. Isto é verificação de verdade: prova que o dado do
  * cliente está DENTRO do arquivo entregue, e não apenas num objeto em memória.
  */
-async function extrairTextoDoPdf(bytes: Uint8Array): Promise<string> {
-    const zlib = await import('node:zlib');
-    const raw = Buffer.from(bytes).toString('latin1');
-    const partes: string[] = [];
-
-    const streamRe = /stream\r?\n?([\s\S]*?)\r?\n?endstream/g;
-    let m: RegExpExecArray | null;
-    while ((m = streamRe.exec(raw)) !== null) {
-        let inflado: string;
-        try {
-            inflado = zlib.inflateSync(Buffer.from(m[1], 'latin1')).toString('latin1');
-        } catch {
-            continue; // stream não comprimido (imagem): irrelevante para texto
-        }
-
-        // Conteúdo da página: <HEX> Tj
-        const hexRe = /<([0-9A-Fa-f]+)>\s*Tj/g;
-        let h: RegExpExecArray | null;
-        while ((h = hexRe.exec(inflado)) !== null) {
-            const hex = h[1];
-            let texto = '';
-            for (let i = 0; i + 1 < hex.length; i += 2) {
-                texto += String.fromCharCode(parseInt(hex.slice(i, i + 2), 16));
-            }
-            partes.push(texto);
-        }
-
-        // Dicionário de metadados: <FEFF...> (UTF-16BE) dentro de <>
-        const dictRe = /<([0-9A-Fa-f]+)>/g;
-        let d: RegExpExecArray | null;
-        while ((d = dictRe.exec(inflado)) !== null) {
-            const hex = d[1];
-            if (hex.length % 4 !== 0 || hex.length < 8) continue;
-            let texto = '';
-            let ok = true;
-            for (let i = 4; i + 3 < hex.length; i += 4) {
-                const code = parseInt(hex.slice(i, i + 4), 16);
-                if (code < 32 || code > 0xffff) { ok = false; break; }
-                texto += String.fromCharCode(code);
-            }
-            if (ok && texto.length > 3) partes.push(texto);
-        }
-    }
-
-    return partes.join('\n');
-}
 
 describe('generateInvoicePdf — documento válido em A4', () => {
     test('gera PDF legível com uma página A4 (595,28 x 841,89 pt)', async () => {
@@ -301,7 +256,9 @@ describe('generateInvoicePdf — documento válido em A4', () => {
         assert.ok(Math.abs(width - 595.28) < 1, `largura ${width}`);
         assert.ok(Math.abs(height - 841.89) < 1, `altura ${height}`);
         assert.ok(bytes.length > 1500, `PDF suspiciousamente pequeno: ${bytes.length}`);
-        assert.match(fileName, /^VOLTRIS-.+\.pdf$/);
+        // O nome segue o padrão do aplicativo desktop:
+        // "Fatura_VOLTRIS_<PLANO>_<Cliente>.pdf".
+        assert.match(fileName, /^Fatura_VOLTRIS_[A-Z0-9]+_[A-Za-z0-9_]+\.pdf$/);
     });
 
     test('nome do arquivo é ASCII (acento quebra Content-Disposition em proxy)', async () => {
@@ -319,11 +276,17 @@ describe('generateInvoicePdf — documento válido em A4', () => {
         assert.ok(texto.length > 0, 'nenhum stream de texto encontrado');
 
         // Identificadores: o documento precisa ser rastreável até a transação.
+        // No PAPEL ficam o ID da compra e a Referência (o desenho aprovado);
+        // os identificadores da Stripe vão nos METADADOS do PDF, para o
+        // papel não carregar ruído e o arquivo continuar localizável.
         assert.ok(texto.includes('1e0f9938'), 'identificador interno da compra ausente');
-        assert.ok(texto.includes('pi_3ABC'), 'referência do pagamento ausente');
-        assert.ok(texto.includes('in_1ABC'), 'id da fatura Stripe ausente');
-        assert.ok(texto.includes('sub_1ABC'), 'id da assinatura ausente');
         assert.ok(texto.includes('st_1792377997027'), 'número da fatura ausente');
+
+        const docMeta = await PDFDocument.load(bytes);
+        const meta = [docMeta.getSubject() ?? '', ...(docMeta.getKeywords() ?? [])].join(' ');
+        assert.ok(meta.includes('pi_3ABC'), 'referência do pagamento ausente dos metadados');
+        assert.ok(meta.includes('in_1ABC'), 'id da fatura Stripe ausente dos metadados');
+        assert.ok(meta.includes('sub_1ABC'), 'id da assinatura ausente dos metadados');
 
         // Cliente e licença.
         assert.ok(texto.includes('Maria Aparecida de Souza'), 'nome do cliente ausente');
