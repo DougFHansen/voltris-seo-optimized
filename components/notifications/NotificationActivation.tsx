@@ -37,6 +37,7 @@ export default function NotificationActivation({ compacto = false }: { compacto?
     const [motivoServidor, setMotivoServidor] = useState<string | null>(null);
     const [fase, setFase] = useState<Fase>('carregando');
     const [erro, setErro] = useState<string | null>(null);
+    const [aviso, setAviso] = useState<string | null>(null);
     const [ocupado, setOcupado] = useState(false);
 
     const recarregar = useCallback(async () => {
@@ -82,9 +83,28 @@ export default function NotificationActivation({ compacto = false }: { compacto?
 
     const testar = async () => {
         setOcupado(true);
+        setErro(null);
+        setAviso(null);
         const r = await testarPush();
         setOcupado(false);
-        if (!r.ok) setErro(r.erro || 'Não foi possível enviar a notificação de teste.');
+        if (!r.ok) {
+            setErro(r.erro || 'Não foi possível enviar a notificação de teste.');
+            return;
+        }
+        // O que o usuário precisa ver: que o teste rodou e quantos
+        // dispositivos foram avisados de verdade.
+        const dispositivos = r.dispositivos ?? 0;
+        setAviso(
+            dispositivos > 0
+                ? `${r.mensagem ?? 'Notificação de teste enviada.'} Confira também o sino de notificações do painel.`
+                : `${r.mensagem ?? 'Notificação de teste registrada no painel.'} Se o aviso não aparecer com o site fechado, clique em “Desativar” e depois em “Ativar agora” para refazer a inscrição.`
+        );
+        // A lista de notificações do painel atualiza na hora (não espera o
+        // polling de 45s nem depender do Realtime).
+        try {
+            window.dispatchEvent(new CustomEvent('voltris:notificacoes:recarregar'));
+        } catch { /* ambiente sem window */ }
+        await recarregar();
     };
 
     if (fase === 'carregando' || !estado) {
@@ -172,6 +192,11 @@ export default function NotificationActivation({ compacto = false }: { compacto?
             </div>
 
             {/* Situações reais que exigem explicação — nada de erro genérico. */}
+            {aviso && !erro && (
+                <p role="status" className="mt-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-[11px] leading-relaxed text-emerald-200">
+                    {aviso}
+                </p>
+            )}
             {erro && (
                 <p role="alert" className="mt-3 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-[11px] leading-relaxed text-rose-200">
                     {erro}

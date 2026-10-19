@@ -129,6 +129,14 @@ export interface TriggerNotificationOptions {
     actionUrl?: string;
     /** 'user' (padrão) ou 'admin' (notificação de operação). */
     audience?: 'user' | 'admin';
+    /**
+     * Quando true, o Web Push NÃO é disparado por `notify()`.
+     *
+     * Existe para o botão "Testar": ele quer gravar a notificação in-app e
+     * enviar o push por conta própria (para poder informar quantos
+     * dispositivos receberam) — sem mandar o aviso duas vezes.
+     */
+    semPush?: boolean;
 }
 
 /** Som padrão por tipo de negócio — compra/licença "toca" diferente de ticket. */
@@ -206,9 +214,11 @@ export const NotificationService = {
         }
 
         // Web Push é efeito colateral: nunca derruba o fluxo.
-        this.sendWebPush(options).catch((err) => {
-            console.error('❌ Erro no envio de Web Push (background):', err);
-        });
+        if (!options.semPush) {
+            this.sendWebPush(options).catch((err) => {
+                console.error('❌ Erro no envio de Web Push (background):', err);
+            });
+        }
 
         return insertedData ?? [];
     },

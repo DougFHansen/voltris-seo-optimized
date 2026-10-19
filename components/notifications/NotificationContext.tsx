@@ -298,6 +298,14 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       return () => clearInterval(intervalo);
   }, [user?.id, carregarNotificacoes]);
 
+  /* ------------- o botão "Testar" pede a recarga imediata da lista ------- */
+
+  useEffect(() => {
+      const aoRecarregar = () => { void carregarNotificacoes(true); };
+      window.addEventListener('voltris:notificacoes:recarregar', aoRecarregar);
+      return () => window.removeEventListener('voltris:notificacoes:recarregar', aoRecarregar);
+  }, [carregarNotificacoes]);
+
   /* ------------------------------- som + toast + notificação do navegador */
 
   useEffect(() => {

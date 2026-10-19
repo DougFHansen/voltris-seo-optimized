@@ -272,14 +272,67 @@ export async function cancelarPush(): Promise<{ ok: boolean; erro?: string }> {
     }
 }
 
-/** Teste real: mostra uma notificação pelo próprio navegador. */
-export async function testarPush(): Promise<{ ok: boolean; erro?: string }> {
+/**
+ * Teste REAL do sistema de notificações.
+ *
+ * Antes isso só mostrava um aviso local do navegador — o painel não mudava
+ * e não dava para saber se o Web Push (aviso com o site fechado) funcionava.
+ * Agora o botão:
+ *
+ *   1. pede ao servidor uma notificação de teste (que entra na lista in-app);
+ *   2. dispara o Web Push para os dispositivos inscritos do usuário;
+ *   3. mostra o aviso local do navegador (resposta imediata);
+ *   4. devolve o que aconteceu ("2 dispositivos avisados") para a interface
+ *      mostrar a verdade — nunca um "deu certo" sem prova.
+ */
+export async function testarPush(): Promise<{
+    ok: boolean;
+    erro?: string;
+    mensagem?: string;
+    dispositivos?: number;
+}> {
     if (typeof window === 'undefined' || !('Notification' in window)) {
         return { ok: false, erro: 'Este navegador não suporta notificações.' };
     }
     if (Notification.permission !== 'granted') {
-        return { ok: false, erro: 'A permissão de notificações ainda não foi concedida.' };
+        return {
+            ok: false,
+            erro:
+                'A permissão de notificações ainda não foi concedida. Libere as notificações nas configurações do navegador e recarregue a página.',
+        };
     }
+
+    // 1) Notificação de verdade no sistema (in-app + Web Push).
+    let resposta: {
+        ok: boolean;
+        erro?: string;
+        mensagem?: string;
+        dispositivos?: number;
+    } = {
+        ok: false,
+    };
+    try {
+        const r = await comTimeout(
+            fetch('/api/notifications/test', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'same-origin',
+            }),
+            TIMEOUT_ETAPA,
+            'O servidor demorou demais para responder ao teste.'
+        );
+        const j = await r.json().catch(() => ({}));
+        resposta = {
+            ok: !!j?.ok,
+            erro: j?.erro,
+            mensagem: j?.mensagem,
+            dispositivos: j?.push?.enviados,
+        };
+    } catch (e: any) {
+        resposta = { ok: false, erro: e?.message ?? 'Falha ao testar as notificações.' };
+    }
+
+    // 2) Aviso local do navegador (resposta imediata, sem esperar o servidor).
     try {
         const reg = await registrarServiceWorker();
         const opcoes: NotificationOptions & { renotify?: boolean } = {
@@ -294,8 +347,21 @@ export async function testarPush(): Promise<{ ok: boolean; erro?: string }> {
         } else {
             new Notification('VOLTRIS — teste', opcoes);
         }
-        return { ok: true };
-    } catch (e: any) {
-        return { ok: false, erro: e?.message || 'O navegador recusou a notificação de teste.' };
+    } catch {
+        // O aviso local é um extra: se o navegador recusar, o teste no
+        // servidor (que é o que importa) continua valendo.
     }
+
+    if (!resposta.ok) {
+        return {
+            ok: false,
+            erro: resposta.erro ?? 'Não foi possível enviar a notificação de teste.',
+            dispositivos: resposta.dispositivos,
+        };
+    }
+    return {
+        ok: true,
+        mensagem: resposta.mensagem ?? 'Notificação de teste enviada.',
+        dispositivos: resposta.dispositivos ?? 0,
+    };
 }
