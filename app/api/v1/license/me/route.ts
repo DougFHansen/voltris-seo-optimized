@@ -345,7 +345,7 @@ export async function GET(request: NextRequest) {
         hasPending: pendingPurchases.length > 0 || formatted.some((l) => l.state === 'PAGAMENTO_PENDENTE'),
         // Fatos de assinatura no nível da conta (para o card "Gestão de
         // Licenças & Faturamento", que não pertence a uma licença específica).
-        billing: buildAccountBilling(subscriptions, formatted),
+        billing: buildAccountBilling(subscriptions, formatted, { state: refundState, message: refundMessage, updatedAt: refundUpdatedAt }),
         server_time: new Date().toISOString(),
     });
 }
@@ -353,7 +353,10 @@ export async function GET(request: NextRequest) {
 /** Consolida o estado de faturamento da conta para o card de gestão. */
 function buildAccountBilling(
     subscriptions: Array<SubscriptionRow & { pagbank_subscription_id: string }>,
-    licenses: Array<Record<string, unknown>>
+    licenses: Array<Record<string, unknown>>,
+    refund: { state: string; message: string | null; updatedAt: string | null } = {
+        state: 'none', message: null, updatedAt: null,
+    }
 ) {
     // A assinatura mais relevante é a que ainda está associada a uma licença com
     // acesso; na ausência, a mais recente registrada.
@@ -384,6 +387,11 @@ function buildAccountBilling(
         canCancelRenewal: state.canCancelRenewal,
         canResumeRenewal: state.canResumeRenewal,
         canRequestRefund: state.canRequestRefund,
+        // Estado REAL do reembolso pedido pelo cliente: o botão precisa
+        // contar a história (solicitado -> em processamento -> aplicado).
+        refundState: refund.state,
+        refundMessage: refund.message,
+        refundUpdatedAt: refund.updatedAt,
         totalSubscriptions: subscriptions.length,
     };
 }
