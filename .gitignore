@@ -22,3 +22,4 @@ Fatura_VOLTRIS_PRO_Alvaro_Araujo.pdf
 
 # temporarios de inspecao/geracao (nunca versionar: podem conter chaves)
 scripts/_*
+fatura.pdf
