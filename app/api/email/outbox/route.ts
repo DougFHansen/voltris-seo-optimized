@@ -38,8 +38,16 @@ export const dynamic = 'force-dynamic';
  * mecanismo de spam.
  */
 
-const CRON_SECRET = process.env.EMAIL_CRON_SECRET?.trim();
-const IS_VERCEL_CRON = !!process.env.VERCEL_CRON;
+/**
+ * Segredo da chamada de cron.
+ *
+ * `CRON_SECRET` é o NOME QUE A VERCEL USA: ao declarar um cron em
+ * `vercel.json`, a Vercel injeta `Authorization: Bearer <CRON_SECRET>` usando
+ * esta variável do projeto. `EMAIL_CRON_SECRET` continua aceito como alias
+ * para quem já tinha configurado, mas o nome canônico é `CRON_SECRET` — é o
+ * que a plataforma lê e envia.
+ */
+const CRON_SECRET = process.env.CRON_SECRET?.trim() || process.env.EMAIL_CRON_SECRET?.trim();
 
 /** Corpo opcional: teto de linhas nesta passagem. */
 function readLimit(req: NextRequest): number {
@@ -50,15 +58,34 @@ function readLimit(req: NextRequest): number {
     return Math.min(Math.floor(n), 50);
 }
 
-/** Libera o modo cron (sem token) quando autorizado. */
+/**
+ * Libera a chamada de cron da Vercel.
+ *
+ * Mecanismo CORRETO, conforme a documentação da Vercel: ao declarar um cron
+ * em `vercel.json`, a Vercel injeta `Authorization: Bearer <CRON_SECRET>`,
+ * usando a variável de ambiente `CRON_SECRET` do projeto. É esse header que
+ * distingue a invocação legítima de uma chamada qualquer da internet.
+ *
+ * A primeira versão deste arquivo confiava em `process.env.VERCEL_CRON` e num
+ * header `x-vercel-cron`. Nenhum dos dois existe: o primeiro nunca é definido
+ * pela Vercel e o segundo não é enviado. Na prática a rota ficava fechada
+ * para o cron E para o operador — o worker só rodava por `drainQueue` dentro
+ * do webhook. Lido `CRON_SECRET`, a comparação é a única fonte de verdade.
+ *
+ * O header `x-cron-secret` continua aceito para uso manual do operador.
+ */
 function cronAllowed(req: NextRequest): boolean {
-    if (IS_VERCEL_CRON) {
-        // A Vercel injeta este header apenas em chamadas de cron da própria
-        // plataforma; chamada externa não o consegue forjar.
-        const marker = req.headers.get('x-vercel-cron');
-        if (marker) return true;
+    const secret = CRON_SECRET || process.env.CRON_SECRET?.trim();
+
+    if (secret) {
+        const bearer = req.headers.get('authorization');
+        if (bearer === `Bearer ${secret}`) return true;
+        if (req.headers.get('x-cron-secret') === secret) return true;
     }
-    if (CRON_SECRET && req.headers.get('x-cron-secret') === CRON_SECRET) return true;
+
+    // Sem CRON_SECRET configurado, a rota permanece fechada. Aceitar chamadas
+    // sem autenticação transformaria o worker em um endpoint público que envia
+    // e-mail — exatamente o que a rota precisa não ser.
     return false;
 }
 
@@ -117,8 +144,10 @@ export async function GET(req: NextRequest) {
     const correlationId = getOrCreateCorrelationId(req);
     const ctx = startOperation('EMAIL_WORKER', correlationId);
 
-    const temSegredo = CRON_SECRET && req.headers.get('x-cron-secret') === CRON_SECRET;
-    if (!temSegredo) {
+    const segredoInformado =
+        req.headers.get('x-cron-secret') === CRON_SECRET ||
+        req.headers.get('authorization') === `Bearer ${CRON_SECRET}`;
+    if (!segredoInformado) {
         const { requireAdmin } = await import('@/utils/supabase/requireAdmin');
         const { error } = await requireAdmin();
         if (error) return error;
