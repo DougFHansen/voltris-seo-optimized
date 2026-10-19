@@ -56,17 +56,40 @@ export function capabilitiesDoBanco(): Promise<NotificationCapabilities> {
                     .limit(1);
                 richColumns = !error;
                 if (richColumns) {
-                    // Se o enum não tiver o valor, o PostgREST devolve erro
-                    // de tipo inválido — é o teste que usamos para saber.
+                    // Testa se o enum aceita 'license'.
+                    //
+                    // Dois erros possíveis e MUITO diferentes:
+                    //  - 22P02 "invalid input value for enum": o valor NÃO
+                    //    existe -> resposta definitiva, e vale cachear.
+                    //  - 55P04 "unsafe use of new value": o valor existe mas
+                    //    ainda não foi commitado (quem está aplicando o SQL
+                    //    está no meio da transação) -> resposta TEMPORÁRIA,
+                    //    NÃO pode ser cacheada, senão o sistema ficaria
+                    //    achando para sempre que o tipo novo não existe.
                     const { error: erroTipo } = await supabase
                         .from('notifications')
                         .select('id')
                         .eq('type' as never, 'license' as never)
                         .limit(1);
-                    richTypes = !erroTipo;
+                    if (!erroTipo) {
+                        richTypes = true;
+                    } else {
+                        const msg = String(erroTipo.message ?? '');
+                        const codigo = String((erroTipo as { code?: string }).code ?? '');
+                        const definitivo = codigo === '22P02' || /invalid input value for enum/i.test(msg);
+                        if (!definitivo) {
+                            // Erro transitório: não cacheia, tenta de novo depois.
+                            capsPromise = null;
+                            console.warn(
+                                '[NotificationService] tipos do enum ainda não disponíveis (provável transação em andamento):',
+                                msg.slice(0, 120)
+                            );
+                        }
+                    }
                 }
             } catch (e) {
                 console.error('[NotificationService] falha ao detectar capacidades do banco:', e);
+                capsPromise = null;
             }
             const caps: NotificationCapabilities = {
                 richColumns,

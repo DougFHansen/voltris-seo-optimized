@@ -40,6 +40,13 @@
 -- notificações clicáveis.
 --
 -- Onde aplicar: SQL Editor do Supabase (ou `supabase db push`).
+--
+-- ERRO 55P04 (se você ver): "unsafe use of new value ... of enum type
+-- notification_type". Acontece porque o SQL Editor roda o arquivo inteiro
+-- numa transação e o Postgres só libera o uso de um valor novo de enum
+-- DEPOIS do commit. A Seção 1 explica a ordem recomendada — o arquivo já
+-- foi ajustado para não usar os valores novos em lugar nenhum, então dá
+-- para rodar tudo de uma vez.
 -- ============================================================================
 
 
@@ -49,6 +56,31 @@
 -- `ALTER TYPE ... ADD VALUE` não roda dentro de bloco transacional em
 -- Postgres antigo; o SQL Editor do Supabase roda cada comando em autocommit,
 -- então funciona. Se der erro de transação, rode estas 3 linhas isoladas.
+-- ############################################################################
+-- BLOCO 1 — OS TRÊS VALORES NOVOS DO ENUM
+--
+-- ATENÇÃO: LEIA ANTES DE EXECUTAR
+--
+-- O erro "55P04: unsafe use of new value" acontece porque o SQL Editor do
+-- Supabase roda o ARQUIVO INTEIRO numa transação só. E o Postgres tem uma
+-- regra dura: um valor novo de enum só pode ser USADO depois dedar COMMIT.
+--
+-- Ou seja:
+--   - `ALTER TYPE ... ADD VALUE` pode ser executado dentro da transação;
+--   - mas qualquer coisa que USE esse valor na MESMA transação estoura.
+--
+-- Por isso este arquivo foi reescrito para NÃO usar os valores novos em
+-- lugar nenhum: a Seção 5 (triggers) grava 'ticket' e 'order', que já
+-- existiam, e a verificação do final (Seção 6) lista o enum dentro de um
+-- bloco com tratamento de erro. Assim dá para rodar o arquivo inteiro de
+-- uma vez, em uma transação só, sem erro.
+--
+-- Se preferir executar em partes (recomendado, para ver o resultado em
+-- etapas), a ordem é:
+--   1) rode só as 3 linhas ALTER TYPE abaixo e deixe o editor COMITAR;
+--   2) depois rode o restante do arquivo (Seções 2 a 6).
+--
+-- O arquivo é idempotente: rodar de novo não quebra nada.
 -- ############################################################################
 
 ALTER TYPE public.notification_type ADD VALUE IF NOT EXISTS 'license';
@@ -314,7 +346,23 @@ WHERE tgname IN ('trg_notify_ticket_status_change', 'trg_notify_order_status_cha
 
 -- 6.5 Os tipos novos do enum estão lá?
 -- ESPERADO: license, refund, service
-SELECT unnest(enum_range(NULL::public.notification_type)) AS tipo;
+--
+-- Esta consulta NÃO pode derrubar o script: dentro da MESMA transação em que
+-- os valores foram adicionados, listar o enum pode estourar o erro 55P04
+-- ("unsafe use of new value"). Por isso ela vai dentro de um bloco com
+-- tratamento de erro — e, se acontecer, é só aviso: os valores serão
+-- commitados no fim da transação e a listagem passa a funcionar depois.
+DO $$
+BEGIN
+    PERFORM 1 FROM unnest(enum_range(NULL::public.notification_type));
+    RAISE NOTICE 'notificacaocorrigida.sql: tipos do enum notification_type: %',
+        (SELECT string_agg(e.enumlabel, ', ' ORDER BY e.enumsortorder)
+           FROM pg_enum e
+           JOIN pg_type t ON t.oid = e.enumtypid
+          WHERE t.typname = 'notification_type');
+EXCEPTION WHEN OTHERS THEN
+    RAISE NOTICE 'notificacaocorrigida.sql: nao foi possivel listar o enum nesta transacao (%). Rode a consulta 6.5 de novo depois do commit.', SQLERRM;
+END $$;
 
 -- 6.6 Nenhuma notificação foi apagada por esta execução.
 SELECT
