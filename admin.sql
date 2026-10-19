@@ -562,6 +562,51 @@ END $$;
 
 
 -- ############################################################################
+-- SEÇÃO 6 — TELEFONE NORMALIZADO (acelerador da trava de WhatsApp duplicado)
+--
+-- MEDIDO EM PRODUÇÃO (2026-10-19): a trava de telefone duplicado NUNCA
+-- funcionou. O endpoint comparava
+--     or=(phone.eq.37998127122, phone.ilike.*37998127122*)
+-- contra o telefone gravado FORMATADO ("(37) 99812-7122"): o hífen quebra a
+-- sequência de dígitos e nenhuma linha era devolvida. No banco existem 3
+-- contas com o mesmo WhatsApp (11996716235).
+--
+-- O código já foi corrigido e hoje a comparação é feita sobre o número
+-- NORMALIZADO (ver lib/phone-dup.ts), sem depender de coluna nova.
+--
+-- Esta seção é o acelerador para o volume crescer: uma coluna com o número
+-- só em dígitos (indexável) permite consulta exata em vez de varrer a tabela
+-- com padrão curinga.
+--
+-- A coluna é ADITIVA e a aplicação NÃO depende dela: se ela não existir, o
+-- endpoint usa o caminho textual e continua correto.
+-- ############################################################################
+
+ALTER TABLE public.profiles
+    ADD COLUMN IF NOT EXISTS phone_normalized text;
+
+CREATE INDEX IF NOT EXISTS idx_profiles_phone_normalized
+    ON public.profiles (phone_normalized)
+    WHERE phone_normalized IS NOT NULL;
+
+-- ---------------------------------------------------------------------------
+-- BACKFILL (OPCIONAL, REVISADO À MÃO — NÃO É EXECUTADO POR ESTE ARQUIVO)
+--
+-- Preencher a coluna é um UPDATE em dados de clientes: a missão proíbe
+-- UPDATE em massa, então este bloco fica COMENTADO de propósito. O operador
+-- decide, revisando antes, e roda no SQL Editor:
+--
+--   UPDATE public.profiles
+--      SET phone_normalized = right(regexp_replace(phone, '\D', '', 'g'), 11)
+--    WHERE phone IS NOT NULL
+--      AND phone_normalized IS NULL;
+--
+-- Sem o backfill, a coluna fica vazia e a checagem segue pelo caminho textual
+-- (resultado idêntico, só mais lenta em bases grandes).
+-- ---------------------------------------------------------------------------
+
+
+-- ############################################################################
 -- VERIFICAÇÕES PÓS-EXECUÇÃO
 -- Rode cada bloco depois de executar o arquivo. Todos devem retornar o
 -- resultado indicado na coluna "esperado".

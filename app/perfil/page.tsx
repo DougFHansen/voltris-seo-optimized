@@ -211,12 +211,20 @@ function ProfileContent() {
             if (!user) throw new Error('Usuário não autenticado');
 
             // Disponibilidade real: usuário e WhatsApp não podem estar em uso.
+            // O token da sessão vai no cabeçalho porque o servidor precisa
+            // saber QUEM está perguntando — a própria conta não pode ser
+            // tratada como conflito (é a tela de completar o perfil dela).
+            const { data: sessao } = await supabase.auth.getSession();
+            const token = sessao.session?.access_token;
             const check = await fetch('/api/v1/auth/check-availability', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+                },
                 body: JSON.stringify({
                     login: form.login.trim(),
-                    phone: form.phone.replace(/\D/g, ''),
+                    phone: form.phone.trim(),
                 }),
             });
             const disponibilidade = await check.json().catch(() => null);

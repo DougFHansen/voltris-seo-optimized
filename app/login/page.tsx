@@ -438,17 +438,29 @@ function LoginContent() {
     setLoading(true);
 
     try {
-      // 1. Bloqueio Profissional de WhatsApp Duplicado
-      const cleanPhone = phone.replace(/\D/g, '');
-      const { data: directCheck } = await supabase
-        .from('profiles')
-        .select('id')
-        .or(`phone.eq.${cleanPhone},phone.ilike.%${cleanPhone}%`)
-        .maybeSingle();
-
-      if (directCheck) {
+      // 1. Revalidação final de disponibilidade: e-mail, usuário e WhatsApp.
+      //
+      // Antes isto consultava o banco direto com
+      // `or(phone.eq.<dígitos>, phone.ilike.*<dígitos>*)`, que NUNCA casava
+      // com o telefone formatado "(37) 99812-7122" — a trava de duplicidade
+      // simplesmente não existia. Agora a verificação é pelo endpoint, que
+      // compara o número normalizado (dígito a dígito).
+      const checkRes = await fetch('/api/v1/auth/check-availability', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: email.trim(),
+          login: login.trim(),
+          phone: phone.trim(),
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const checkJson = await checkRes.json().catch(() => null);
+      if (!checkJson || checkJson.available !== true) {
         setLoading(false);
-        return setError("Este WhatsApp já está em uma conta. Use outro número.");
+        return setError(
+          checkJson?.error ||
+            'Não foi possível validar a disponibilidade dos dados agora. Tente novamente.'
+        );
       }
 
       const dadosPerfil = {
