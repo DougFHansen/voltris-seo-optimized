@@ -31,6 +31,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/utils/supabase/client';
+import { clienteDeRecuperacao } from '@/lib/recovery-client';
 import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -189,7 +190,9 @@ export default function ResetPasswordPage() {
         if (!email) { router.push('/login?modo=recuperar'); return; }
         setResending(true);
         try {
-            await supabase.auth.resetPasswordForEmail(email, {
+            // Mesmo cliente implícito do pedido inicial: o link reenviado
+            // também tem de funcionar em qualquer navegador.
+            await clienteDeRecuperacao().auth.resetPasswordForEmail(email, {
                 redirectTo: `${window.location.origin}/reset-password`,
             });
             router.push('/login?link=reenviado');

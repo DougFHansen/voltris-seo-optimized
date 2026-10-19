@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/app/hooks/useAuth';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { notifyPageView } from '@/utils/notifications';
+import { clienteDeRecuperacao } from '@/lib/recovery-client';
 import {
   isValidEmail,
   validateBrazilianPhone,
@@ -554,7 +555,12 @@ function LoginContent() {
   const handlePasswordRecovery = async () => {
     setError(null); setLoading(true);
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+      // O pedido é feito no fluxo IMPLÍCITO (ver `lib/recovery-client.ts`):
+      // o link chega com o token no fragmento e funciona em qualquer navegador.
+      // No PKCE (padrão do @supabase/ssr) o verificador do código fica num
+      // cookie que não sobrevive à cadeia de redirecionamento do link — e o
+      // resultado é "invalid flow state, no valid flow state found".
+      const { error } = await clienteDeRecuperacao().auth.resetPasswordForEmail(email.trim(), {
         // Destino do link: a tela de nova senha. O app também reconhece o link
         // se ele cair em outra página (ver `pareceLinkDeRecuperacao`).
         redirectTo: `${window.location.origin}/reset-password`,

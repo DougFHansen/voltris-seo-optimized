@@ -154,3 +154,20 @@ describe('a interpretação do link continua correta', () => {
         assert.equal(r.kind, 'error');
     });
 });
+
+describe('o pedido do link e feito no fluxo IMPLICITO (funciona em qualquer navegador)', () => {
+    test('existe um cliente de recuperacao com flowType implicit', () => {
+        const lib = readFileSync('lib/recovery-client.ts', 'utf8');
+        assert.match(lib, /flowType: 'implicit'/);
+        assert.match(lib, /persistSession: false/);
+        assert.match(lib, /detectSessionInUrl: false/);
+    });
+
+    test('a tela de login pede o link por esse cliente (e nao pelo PKCE do SSR)', () => {
+        assert.match(loginPage, /clienteDeRecuperacao\(\)\.auth\.resetPasswordForEmail/);
+    });
+
+    test('o reenvio do link usa o mesmo cliente', () => {
+        assert.match(resetPage, /clienteDeRecuperacao\(\)\.auth\.resetPasswordForEmail/);
+    });
+});
