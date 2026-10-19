@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { ShieldAlert } from 'lucide-react';
 import { FiSearch, FiRefreshCw, FiInbox, FiCheckCircle, FiSend } from 'react-icons/fi';
+import { rotulo } from '@/lib/admin-labels';
 
 /**
  * ABA TICKETS — LEITURA E ESCRITA MOVIDAS PARA O SERVIDOR.
@@ -163,10 +164,10 @@ export default function AdminTicketsTab() {
                                         </td>
                                         <td className="px-4 py-3">
                                             <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${PRIORIDADE[r.priority ?? 'low'] ?? PRIORIDADE.low}`}>
-                                                {r.priority ?? 'low'}
+                                                {rotulo(r.priority ?? 'low', 'prioridade')}
                                             </span>
                                         </td>
-                                        <td className="px-4 py-3 text-xs text-slate-300">{r.status}</td>
+                                        <td className="px-4 py-3 text-xs text-slate-300">{rotulo(r.status, 'ticket')}</td>
                                         <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-500">
                                             {new Date(r.created_at).toLocaleDateString('pt-BR')}
                                         </td>

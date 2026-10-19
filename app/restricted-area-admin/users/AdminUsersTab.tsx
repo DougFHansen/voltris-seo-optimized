@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { ShieldAlert } from 'lucide-react';
 import { FiSearch, FiRefreshCw, FiUsers, FiDownload } from 'react-icons/fi';
+import { rotuloPapel } from '@/lib/admin-labels';
 
 /**
  * ABA LEGADA — LEITURA MOVIDA PARA O SERVIDOR.
@@ -191,7 +192,7 @@ export default function AdminUsersTab() {
                                             <div className="flex flex-wrap gap-1">
                                                 {r.is_admin && (
                                                     <span className="rounded bg-violet-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-violet-300">
-                                                        {r.role ?? 'admin'}
+                                                        {rotuloPapel(r.role, r.is_admin)}
                                                     </span>
                                                 )}
                                                 {r.is_blocked && (

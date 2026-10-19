@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiSearch, FiRefreshCw, FiUsers, FiX, FiCreditCard } from 'react-icons/fi';
 import { ShieldAlert, ChevronDown, ChevronUp } from 'lucide-react';
+import VoltrisIcon, { VoltrisIconName } from '@/components/dashboard/VoltrisIcon';
+import { rotulo, tomDoStatus, classeDoTom } from '@/lib/admin-labels';
 
 /**
  * GESTÃO DE CLIENTES (PARTE 3).
@@ -299,64 +301,123 @@ function ClientDrawer({ client, onClose }: { client: ClientRow; onClose: () => v
     }, [client.id]);
 
     const TABS = [
-        { v: 'resumo', l: 'Visão geral' },
-        { v: 'compras', l: 'Compras' },
-        { v: 'licencas', l: 'Licenças' },
-        { v: 'assinaturas', l: 'Assinaturas' },
-        { v: 'dispositivos', l: 'Dispositivos' },
-        { v: 'faturas', l: 'Faturas' },
+        { v: 'resumo', l: 'Visão geral', icone: 'person' },
+        { v: 'compras', l: 'Compras', icone: 'creditCard' },
+        { v: 'licencas', l: 'Licenças', icone: 'license' },
+        { v: 'assinaturas', l: 'Assinaturas', icone: 'orders' },
+        { v: 'dispositivos', l: 'Dispositivos', icone: 'deviceInfo' },
+        { v: 'faturas', l: 'Faturas', icone: 'receipt' },
     ] as const;
+
+    const p = data?.profile;
+    const iniciais = String(p?.full_name || client.fullName || '?')
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((parte) => parte.charAt(0).toUpperCase())
+        .join('');
 
     return (
         <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 p-4 pt-16 overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 backdrop-blur-sm p-4 pt-10 overflow-y-auto"
             onClick={onClose}
         >
             <motion.div
-                initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -20, opacity: 0 }}
+                initial={{ y: -16, opacity: 0, scale: 0.98 }}
+                animate={{ y: 0, opacity: 1, scale: 1 }}
+                exit={{ y: -16, opacity: 0, scale: 0.98 }}
+                transition={{ type: 'spring', damping: 26, stiffness: 220 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-3xl rounded-xl border border-slate-700 bg-slate-900 shadow-2xl"
+                className="w-full max-w-4xl overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/95 shadow-2xl"
             >
-                <div className="flex items-start justify-between border-b border-slate-700 p-5">
-                    <div>
-                        <h3 className="text-lg font-bold text-slate-100">{client.fullName}</h3>
-                        <p className="mt-0.5 text-sm text-slate-400">{data?.profile?.email ?? client.emailMasked}</p>
+                {/* Cabeçalho — no padrão do dashboard: ladrilho com gradiente, nome e chips */}
+                <div className="flex items-start justify-between gap-4 border-b border-slate-800/80 p-5 sm:p-6">
+                    <div className="flex items-center gap-4 min-w-0">
+                        <div
+                            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl text-base font-bold text-white"
+                            style={{
+                                background: 'linear-gradient(135deg, #FF4B6B 0%, #8B31FF 55%, #31A8FF 100%)',
+                                boxShadow: '0 0 18px rgba(255, 75, 107, 0.35)',
+                            }}
+                        >
+                            {iniciais}
+                        </div>
+                        <div className="min-w-0">
+                            <h3 className="truncate text-lg font-bold tracking-tight text-white">
+                                {client.fullName}
+                            </h3>
+                            <p className="mt-0.5 truncate text-xs text-slate-400">
+                                {data?.profile?.email ?? client.emailMasked}
+                            </p>
+                            <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-2.5 py-0.5 text-[11px] font-medium text-indigo-300">
+                                    {p?.is_admin ? 'Administrador' : 'Cliente'}
+                                </span>
+                                <span
+                                    className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
+                                        p?.is_blocked
+                                            ? 'border-rose-500/20 bg-rose-500/10 text-rose-300'
+                                            : 'border-emerald-500/20 bg-emerald-500/10 text-emerald-300'
+                                    }`}
+                                >
+                                    <span className={`w-1.5 h-1.5 rounded-full ${p?.is_blocked ? 'bg-rose-400' : 'bg-emerald-400'}`} />
+                                    {p?.is_blocked ? 'Bloqueado' : 'Ativo'}
+                                </span>
+                                {p?.created_at && (
+                                    <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-700/60 bg-slate-800/40 px-2.5 py-0.5 text-[11px] font-medium text-slate-400">
+                                        Desde {new Date(p.created_at).toLocaleDateString('pt-BR')}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
                     </div>
-                    <button onClick={onClose} className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-800" aria-label="Fechar">
-                        <FiX size={18} />
+                    <button
+                        onClick={onClose}
+                        aria-label="Fechar ficha do cliente"
+                        className="shrink-0 rounded-xl border border-slate-800 bg-slate-900/60 p-2 text-slate-400 transition hover:border-slate-700 hover:text-white"
+                    >
+                        <VoltrisIcon name="close" size={16} />
                     </button>
                 </div>
 
-                <div className="flex gap-1 overflow-x-auto border-b border-slate-700 px-4 pt-3">
+                {/* Abas em pílula — mesmo padrão dos filtros do dashboard */}
+                <div className="flex gap-2 overflow-x-auto border-b border-slate-800/80 px-5 py-3 no-scrollbar sm:px-6">
                     {TABS.map((t) => (
                         <button
                             key={t.v}
                             onClick={() => setTab(t.v)}
-                            className={`whitespace-nowrap rounded-t-lg px-3 py-2 text-xs font-semibold transition ${
-                                tab === t.v ? 'bg-slate-800 text-indigo-300' : 'text-slate-500 hover:text-slate-300'
+                            className={`inline-flex items-center gap-2 whitespace-nowrap rounded-xl px-3.5 py-2 text-xs font-semibold transition ${
+                                tab === t.v
+                                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
+                                    : 'bg-slate-900/60 text-slate-400 border border-slate-800/80 hover:bg-slate-800/60 hover:text-slate-200'
                             }`}
                         >
+                            <VoltrisIcon name={t.icone} size={14} />
                             {t.l}
                         </button>
                     ))}
                 </div>
 
-                <div className="max-h-[60vh] overflow-y-auto p-5">
+                {/* Conteúdo */}
+                <div className="max-h-[62vh] overflow-y-auto p-5 sm:p-6 custom-scrollbar">
                     {loading ? (
-                        <div className="flex items-center justify-center gap-3 py-12 text-slate-400">
-                            <FiRefreshCw className="animate-spin" size={18} />
-                            <span className="text-sm">Carregando…</span>
+                        <div className="flex items-center justify-center gap-3 py-16 text-slate-400">
+                            <VoltrisIcon name="processing" size={18} className="animate-spin" />
+                            <span className="text-xs font-medium uppercase tracking-widest">Carregando ficha…</span>
                         </div>
                     ) : erro ? (
-                        <div role="alert" className="rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4 text-sm">
-                            <p className="font-semibold text-rose-300">Não foi possível abrir a ficha</p>
-                            <p className="mt-1 text-rose-200/80">{erro}</p>
+                        <div role="alert" className="flex items-start gap-3 rounded-2xl border border-rose-500/40 bg-rose-500/10 p-4">
+                            <VoltrisIcon name="alertCircle" size={20} className="mt-0.5 shrink-0 text-rose-400" />
+                            <div className="text-sm">
+                                <p className="font-semibold text-rose-300">Não foi possível abrir a ficha</p>
+                                <p className="mt-0.5 text-xs text-rose-200/80">{erro}</p>
+                            </div>
                         </div>
                     ) : !data ? null : (
                         <>
                             {data.secoesComFalha && data.secoesComFalha.length > 0 && (
-                                <p role="alert" className="mb-4 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] text-amber-200/90">
+                                <p role="alert" className="mb-4 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-[11px] leading-relaxed text-amber-200/90">
                                     Não foi possível carregar: {data.secoesComFalha.join(', ')}. O restante está completo.
                                 </p>
                             )}
@@ -385,76 +446,98 @@ function Resumo({ d }: { d: ClientDetail }) {
         .filter((k) => !p[k] || String(p[k]).trim() === '');
 
     return (
-        <div className="grid grid-cols-2 gap-3 text-sm">
-            <Field label="Login" value={txt(p.login)} />
-            <Field label="E-mail" value={txt(p.email)} />
-            <Field label="Nome completo" value={txt(p.full_name)} />
-            <Field label="Telefone" value={txt(p.phone)} />
-            <Field label="Cadastro" value={p.created_at ? new Date(p.created_at).toLocaleDateString('pt-BR') : 'Não informado'} />
-            <Field label="CEP" value={txt(p.cep)} />
-            <div className="col-span-2">
-                <Field label="Endereço" value={txt(p.address)} />
+        <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                <Mini label="Compras" value={d.purchases.length} icone="creditCard" cor="#00FF94" />
+                <Mini label="Licenças" value={d.licenses.length} icone="license" cor="#8B31FF" />
+                <Mini label="Dispositivos" value={d.devices.length} icone="deviceInfo" cor="#06B6D4" />
             </div>
-            <Field label="Bairro" value={txt(p.neighborhood)} />
-            <Field label="Cidade / UF" value={[p.city, p.state].filter(Boolean).join(' / ') || 'Não informado'} />
-            <Field label="Perfil" value={p.is_admin ? 'Administrador' : 'Cliente'} />
-            <Field label="Situação" value={p.is_blocked ? 'Bloqueado' : 'Ativo'} />
+
+            <div className="grid grid-cols-1 gap-x-4 gap-y-3.5 rounded-2xl border border-slate-800/80 bg-slate-900/50 p-5 sm:grid-cols-2">
+                <Field label="Login" value={txt(p.login)} />
+                <Field label="E-mail" value={txt(p.email)} />
+                <Field label="Nome completo" value={txt(p.full_name)} />
+                <Field label="Telefone" value={txt(p.phone)} />
+                <Field label="Cadastro" value={p.created_at ? new Date(p.created_at).toLocaleDateString('pt-BR') : 'Não informado'} />
+                <Field label="CEP" value={txt(p.cep)} />
+                <div className="col-span-1 sm:col-span-2">
+                    <Field label="Endereço" value={txt(p.address)} />
+                </div>
+                <Field label="Bairro" value={txt(p.neighborhood)} />
+                <Field label="Cidade / UF" value={[p.city, p.state].filter(Boolean).join(' / ') || 'Não informado'} />
+                <Field label="Perfil" value={p.is_admin ? 'Administrador' : 'Cliente'} />
+                <Field label="Situação" value={p.is_blocked ? 'Bloqueado' : 'Ativo'} />
+            </div>
 
             {faltando.length > 0 && (
-                <p className="col-span-2 mt-1 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] leading-relaxed text-amber-200/90">
+                <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3.5 py-2.5 text-[11px] leading-relaxed text-amber-200/90">
                     Este cadastro está incompleto: {faltando.join(', ')}. Contas criadas antes da
                     correção do formulário podem não ter esses dados — o cliente pode completá-los
                     em “Meu Perfil”.
                 </p>
             )}
-
-            <div className="col-span-2 mt-3 grid grid-cols-3 gap-2">
-                <Mini label="Compras" value={d.purchases.length} />
-                <Mini label="Licenças" value={d.licenses.length} />
-                <Mini label="Dispositivos" value={d.devices.length} />
-            </div>
         </div>
     );
 }
 
 function Compras({ rows }: { rows: any[] }) {
-    if (!rows.length) return <Vazio texto="Nenhuma compra registrada." />;
+    if (!rows.length) return <Vazio texto="Nenhuma compra registrada." icone="creditCard" />;
     return (
-        <table className="w-full text-left text-xs">
-            <thead className="text-slate-500">
-                <tr><th className="py-2">Data</th><th>Plano</th><th>Valor</th><th>Status</th></tr>
-            </thead>
-            <tbody className="divide-y divide-slate-800/60">
-                {rows.map((r, i) => (
-                    <tr key={i}>
-                        <td className="py-2 text-slate-400">{new Date(r.created_at).toLocaleDateString('pt-BR')}</td>
-                        <td className="text-slate-300">{r.plan_type ?? '—'}</td>
-                        <td className="text-slate-300">R$ {Number(r.amount ?? 0).toFixed(2)}</td>
-                        <td><StatusBadge status={r.status} /></td>
+        <div className="overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/50">
+            <table className="w-full text-left">
+                <thead className="border-b border-slate-800/80 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                    <tr>
+                        <th className="px-4 py-3">Data</th>
+                        <th className="px-4 py-3">Plano</th>
+                        <th className="px-4 py-3">Valor</th>
+                        <th className="px-4 py-3">Status</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60">
+                    {rows.map((r, i) => (
+                        <tr key={i} className="hover:bg-slate-800/30 transition-colors">
+                            <td className="px-4 py-3 text-xs text-slate-400">
+                                {new Date(r.created_at).toLocaleDateString('pt-BR')}
+                            </td>
+                            <td className="px-4 py-3 text-xs font-semibold text-white">
+                                {rotulo(r.plan_type, 'plano')}
+                            </td>
+                            <td className="px-4 py-3 text-xs text-slate-300">
+                                R$ {Number(r.amount ?? 0).toFixed(2)}
+                            </td>
+                            <td className="px-4 py-3">
+                                <StatusBadge status={r.status} dominio="pagamento" />
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     );
 }
 
 function Licencas({ rows }: { rows: any[] }) {
-    if (!rows.length) return <Vazio texto="Nenhuma licença emitida." />;
+    if (!rows.length) return <Vazio texto="Nenhuma licença emitida." icone="license" />;
     return (
         <div className="space-y-2">
             {rows.map((r, i) => (
-                <div key={i} className="rounded-lg border border-slate-700 p-3">
-                    <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs text-emerald-400">{r.license_key}</span>
-                        <span className={`rounded px-2 py-0.5 text-[10px] font-semibold ${
-                            r.revoked ? 'bg-rose-500/20 text-rose-300' : 'bg-emerald-500/20 text-emerald-300'
-                        }`}>
+                <div key={i} className="rounded-2xl border border-slate-800/80 bg-slate-900/50 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                        <span className="font-mono text-xs font-semibold text-emerald-300">{r.license_key}</span>
+                        <span
+                            className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
+                                r.revoked
+                                    ? 'border-rose-500/20 bg-rose-500/10 text-rose-300'
+                                    : 'border-emerald-500/20 bg-emerald-500/10 text-emerald-300'
+                            }`}
+                        >
+                            <span className={`w-1.5 h-1.5 rounded-full ${r.revoked ? 'bg-rose-400' : 'bg-emerald-400'}`} />
                             {r.revoked ? 'Revogada' : 'Ativa'}
                         </span>
                     </div>
-                    <p className="mt-1 text-[11px] text-slate-500">
-                        {r.plan_type} · vence {r.expires_at ? new Date(r.expires_at).toLocaleDateString('pt-BR') : '—'}
-                        {r.client_id ? ` · cliente ${r.client_id}` : ''}
+                    <p className="mt-2 text-[11px] text-slate-500">
+                        {rotulo(r.plan_type, 'plano')} · vence {r.expires_at ? new Date(r.expires_at).toLocaleDateString('pt-BR') : '—'}
+                        {r.client_id ? ` · cliente ${String(r.client_id).slice(0, 8)}` : ''}
                     </p>
                 </div>
             ))}
@@ -463,12 +546,12 @@ function Licencas({ rows }: { rows: any[] }) {
 }
 
 function Dispositivos({ rows }: { rows: any[] }) {
-    if (!rows.length) return <Vazio texto="Nenhum dispositivo vinculado." />;
+    if (!rows.length) return <Vazio texto="Nenhum dispositivo vinculado." icone="deviceInfo" />;
     return (
         <div className="space-y-2">
             {rows.map((r, i) => (
-                <div key={i} className="rounded-lg border border-slate-700 p-3 text-xs">
-                    <p className="font-medium text-slate-200">{r.machine_name ?? r.device_name ?? 'Dispositivo'}</p>
+                <div key={i} className="rounded-2xl border border-slate-800/80 bg-slate-900/50 p-4 text-xs">
+                    <p className="font-semibold text-white">{r.machine_name ?? r.device_name ?? 'Dispositivo'}</p>
                     <p className="mt-1 font-mono text-[11px] text-slate-500">{r.device_id}</p>
                     <p className="mt-1 text-[11px] text-slate-500">
                         {r.os_version ?? '—'} · visto {r.last_seen_at ? new Date(r.last_seen_at).toLocaleDateString('pt-BR') : 'nunca'}
@@ -480,21 +563,21 @@ function Dispositivos({ rows }: { rows: any[] }) {
 }
 
 function Faturas({ rows }: { rows: any[] }) {
-    if (!rows.length) return <Vazio texto="Nenhuma fatura disponível para compras confirmadas." />;
+    if (!rows.length) return <Vazio texto="Nenhuma fatura disponível para compras confirmadas." icone="receipt" />;
     return (
         <div className="space-y-2">
             <p className="text-[11px] text-slate-500">
                 A fatura é gerada a partir da compra confirmada, pelo mesmo gerador usado pelo cliente.
             </p>
             {rows.map((r, i) => (
-                <div key={i} className="flex items-center justify-between rounded-lg border border-slate-700 p-3 text-xs">
-                    <div>
-                        <FiCreditCard className="inline mr-2 text-slate-500" size={14} />
-                        <span className="text-slate-300">{r.reference_id}</span>
+                <div key={i} className="flex items-center justify-between gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/50 p-4 text-xs">
+                    <div className="flex items-center gap-2 min-w-0">
+                        <VoltrisIcon name="receipt" size={14} className="text-slate-500 shrink-0" />
+                        <span className="text-slate-300 truncate">{r.reference_id}</span>
                     </div>
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 shrink-0">
                         <span className="text-slate-300">R$ {Number(r.amount ?? 0).toFixed(2)}</span>
-                        <StatusBadge status={r.status} />
+                        <StatusBadge status={r.status} dominio="pagamento" />
                     </div>
                 </div>
             ))}
@@ -503,14 +586,20 @@ function Faturas({ rows }: { rows: any[] }) {
 }
 
 function Simples({ rows, vazio }: { rows: any[]; vazio: string }) {
-    if (!rows.length) return <Vazio texto={vazio} />;
+    if (!rows.length) return <Vazio texto={vazio} icone="orders" />;
     return (
         <div className="space-y-2">
             {rows.map((r, i) => (
-                <div key={i} className="rounded-lg border border-slate-700 p-3 text-xs">
-                    <p className="text-slate-200">{r.plan_type} · {r.billing_period}</p>
-                    <p className="mt-1 text-slate-500">
-                        {r.status} · próxima cobrança {r.next_billing_at ? new Date(r.next_billing_at).toLocaleDateString('pt-BR') : '—'}
+                <div key={i} className="rounded-2xl border border-slate-800/80 bg-slate-900/50 p-4 text-xs">
+                    <div className="flex items-center justify-between gap-3">
+                        <p className="font-semibold text-white">
+                            {rotulo(r.plan_type, 'plano')}
+                            <span className="ml-2 font-normal text-slate-500">{rotulo(r.billing_period, 'ciclo')}</span>
+                        </p>
+                        <StatusBadge status={r.status} dominio="assinatura" />
+                    </div>
+                    <p className="mt-2 text-[11px] text-slate-500">
+                        Próxima cobrança {r.next_billing_at ? new Date(r.next_billing_at).toLocaleDateString('pt-BR') : '—'}
                     </p>
                 </div>
             ))}
@@ -518,36 +607,49 @@ function Simples({ rows, vazio }: { rows: any[]; vazio: string }) {
     );
 }
 
-function StatusBadge({ status }: { status: string }) {
-    const s = String(status ?? '').toLowerCase();
-    const cls = ['approved', 'paid', 'succeeded'].includes(s)
-        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-        : ['refunded', 'partially_refunded'].includes(s)
-            ? 'bg-violet-500/10 text-violet-400 border-violet-500/30'
-            : ['failed', 'canceled', 'cancelled'].includes(s)
-                ? 'bg-rose-500/10 text-rose-400 border-rose-500/30'
-                : 'bg-amber-500/10 text-amber-400 border-amber-500/30';
-    return <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${cls}`}>{status ?? '—'}</span>;
+function StatusBadge({ status, dominio }: { status: string | null | undefined; dominio?: 'pagamento' | 'assinatura' }) {
+    const tom = tomDoStatus(status);
+    return (
+        <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${classeDoTom(tom)}`}>
+            {rotulo(status, dominio ?? 'pagamento')}
+        </span>
+    );
 }
 
 function Field({ label, value }: { label: string; value: string }) {
     return (
-        <div>
+        <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">{label}</p>
-            <p className="mt-0.5 break-words text-slate-300">{value}</p>
+            <p className="mt-0.5 break-words text-xs font-semibold text-slate-200">{value}</p>
         </div>
     );
 }
 
-function Mini({ label, value }: { label: string; value: number }) {
+function Mini({ label, value, icone, cor }: { label: string; value: number; icone: VoltrisIconName; cor: string }) {
     return (
-        <div className="rounded-lg bg-slate-800/60 p-3 text-center">
-            <p className="text-xl font-bold text-slate-100">{value}</p>
-            <p className="text-[10px] uppercase tracking-wider text-slate-500">{label}</p>
+        <div className="rounded-2xl border border-slate-800/80 bg-slate-900/50 p-4">
+            <div className="flex items-center justify-between gap-3">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{label}</span>
+                <span
+                    className="flex h-8 w-8 items-center justify-center rounded-xl"
+                    style={{
+                        backgroundColor: `color-mix(in srgb, ${cor} 10%, transparent)`,
+                        border: `1px solid color-mix(in srgb, ${cor} 20%, transparent)`,
+                    }}
+                >
+                    <VoltrisIcon name={icone} size={15} style={{ color: cor }} />
+                </span>
+            </div>
+            <p className="mt-2 text-2xl font-bold tracking-tight text-white">{value}</p>
         </div>
     );
 }
 
-function Vazio({ texto }: { texto: string }) {
-    return <p className="py-10 text-center text-sm text-slate-500">{texto}</p>;
+function Vazio({ texto, icone }: { texto: string; icone: VoltrisIconName }) {
+    return (
+        <div className="flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-800/80 bg-slate-900/50 py-12 text-center">
+            <VoltrisIcon name={icone} size={26} className="text-slate-600" />
+            <p className="text-xs text-slate-500">{texto}</p>
+        </div>
+    );
 }

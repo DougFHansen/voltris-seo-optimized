@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { ShieldAlert } from 'lucide-react';
 import { FiSearch, FiRefreshCw, FiMail, FiDownload, FiTrash2 } from 'react-icons/fi';
+import { rotulo } from '@/lib/admin-labels';
 
 /**
  * ABA NEWSLETTER — LEITURA E ESCRITA MOVIDAS PARA O SERVIDOR.
@@ -168,14 +169,14 @@ export default function AdminNewsletterTab() {
                                                 {r.email}
                                             </a>
                                         </td>
-                                        <td className="px-4 py-3 text-xs text-slate-400">{r.source ?? '—'}</td>
+                                        <td className="px-4 py-3 text-xs text-slate-400">{rotulo(r.source, 'origem')}</td>
                                         <td className="px-4 py-3">
                                             <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${
                                                 r.status === 'active'
                                                     ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
                                                     : 'bg-slate-500/10 text-slate-400 border-slate-500/30'
                                             }`}>
-                                                {r.status === 'active' ? 'ativo' : (r.status ?? '—')}
+                                                {rotulo(r.status, 'newsletter')}
                                             </span>
                                         </td>
                                         <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-500">

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { FiRefreshCw, FiSearch, FiAlertTriangle, FiCheckCircle, FiClock, FiInfo } from 'react-icons/fi';
 import { ShieldAlert } from 'lucide-react';
+import { rotulo } from '@/lib/admin-labels';
 
 /**
  * CONCILIAÇÃO FINANCEIRA (PARTE 5).
@@ -300,7 +301,7 @@ export default function AdminReconcileTab() {
                                                     <p className="text-[10px] text-rose-400">{r.error}</p>
                                                 )}
                                             </td>
-                                            <td className="px-4 py-3 text-xs text-slate-300">{r.plan_type ?? '—'}</td>
+                                            <td className="px-4 py-3 text-xs text-slate-300">{rotulo(r.plan_type, 'plano')}</td>
                                             <td className="px-4 py-3 text-right text-xs text-slate-100">
                                                 R$ {Number(r.amount ?? 0).toFixed(2)}
                                             </td>

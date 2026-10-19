@@ -8,6 +8,7 @@ import {
     FiClock, FiXCircle, FiInbox, FiExternalLink,
 } from 'react-icons/fi';
 import { MailWarning, RotateCw, ShieldAlert } from 'lucide-react';
+import { rotulo } from '@/lib/admin-labels';
 
 /**
  * HISTÓRICO DE E-MAIL TRANSACIONAL (missão §13).
@@ -372,7 +373,7 @@ export default function AdminEmailsTab() {
                                                         className="mt-1 line-clamp-2 text-[11px] text-rose-400/90"
                                                         title={row.last_error}
                                                     >
-                                                        {row.last_error_kind}: {row.last_error}
+                                                        {rotulo(row.last_error_kind, 'erro_email')}: {row.last_error}
                                                     </p>
                                                 )}
                                                 {row.attempts > 1 && (

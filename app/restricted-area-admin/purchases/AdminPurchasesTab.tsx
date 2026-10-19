@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiSearch, FiRefreshCw, FiShoppingCart } from 'react-icons/fi';
 import { ShieldAlert } from 'lucide-react';
+import { rotulo } from '@/lib/admin-labels';
 
 /**
  * COMPRAS REAIS (PARTE 5).
@@ -270,12 +271,17 @@ export default function AdminPurchasesTab() {
 
 function Status({ status }: { status: string | null }) {
     const s = String(status ?? '').toLowerCase();
-    const [cls, label] = ['approved', 'paid', 'succeeded'].includes(s)
-        ? ['bg-emerald-500/10 text-emerald-400 border-emerald-500/30', status ?? '—']
+    const cls = ['approved', 'paid', 'succeeded'].includes(s)
+        ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
         : ['refunded', 'partially_refunded'].includes(s)
-            ? ['bg-violet-500/10 text-violet-400 border-violet-500/30', status]
+            ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20'
             : ['failed', 'canceled', 'cancelled'].includes(s)
-                ? ['bg-rose-500/10 text-rose-400 border-rose-500/30', status]
-                : ['bg-amber-500/10 text-amber-400 border-amber-500/30', status ?? '—'];
-    return <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${cls}`}>{label}</span>;
+                ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                : 'bg-amber-500/10 text-amber-400 border-amber-500/20';
+    // Rótulo em pt-BR: o status cru do banco ("approved") nunca aparece na tela.
+    return (
+        <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${cls}`}>
+            {rotulo(status, 'pagamento')}
+        </span>
+    );
 }
