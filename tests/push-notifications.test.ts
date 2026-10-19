@@ -24,6 +24,8 @@ const sw = readFileSync('public/sw.js', 'utf8');
 const rota = readFileSync('app/api/push-subscription/route.ts', 'utf8');
 const dashboard = readFileSync('app/dashboard/notifications/NotificationsClient.tsx', 'utf8');
 const admin = readFileSync('app/restricted-area-admin/page.tsx', 'utf8');
+const sino = readFileSync('components/notifications/NotificationDropdown.tsx', 'utf8');
+const adminTab = readFileSync('app/restricted-area-admin/notifications/AdminNotificationsTab.tsx', 'utf8');
 
 describe('o fluxo de ativação é real', () => {
     test('o cliente pede a permissão, registra o service worker e assina o push', () => {
@@ -63,7 +65,40 @@ describe('o fluxo de ativação é real', () => {
     test('o componente explica as situações reais (iOS, permissão negada, VAPID ausente)', () => {
         assert.match(componente, /Tela de Início/);
         assert.match(componente, /permissão foi negada/i);
-        assert.match(componente, /NEXT_PUBLIC_VAPID_PUBLIC_KEY/);
+        // O estado do push no SERVIDOR é consultado: o navegador pode estar
+        // pronto e o servidor não (falta VAPID_PRIVATE_KEY no ambiente).
+        assert.match(componente, /\/api\/notifications\/push-status/);
+        assert.match(componente, /motivoServidor/);
+    });
+
+    test('a rota de status do push diz se a chave privada existe (sem vazar segredo)', () => {
+        const status = readFileSync('app/api/notifications/push-status/route.ts', 'utf8');
+        assert.match(status, /chavePrivadaVapid\(\)/);
+        assert.match(status, /privadoConfigurado/);
+        assert.ok(
+            !/chavePrivada:\s*privado/.test(status),
+            'a chave privada não pode ser devolvida na resposta'
+        );
+    });
+});
+
+describe('a notificação vista não volta a aparecer', () => {
+    test('o que já estava no banco quando a tela abriu não toca som nem abre toast', () => {
+        // Defeito real: ao entrar no dashboard, a notificação antiga tocava o
+        // som e abria o toast de novo — era o "ficar aparecendo" relatado.
+        assert.match(contexto, /idsJaCarregados/);
+        assert.match(contexto, /idsJaCarregados\.current\.has\(latest\.id\)/);
+    });
+
+    test('o que o usuário vê é marcado como visto (sino e admin)', () => {
+        assert.match(contexto, /marcarVistas/);
+        assert.match(contexto, /marcarComoLidaNoServidor/);
+        // sino do site
+        assert.match(sino, /marcarVistas/);
+        // central do dashboard
+        assert.match(dashboard, /marcarVistas/);
+        // aba de notificações do admin
+        assert.match(adminTab, /read: true/);
     });
 });
 

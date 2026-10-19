@@ -46,6 +46,8 @@ interface NotificationContextProps {
   setShowPermissionModal: (show: boolean) => void;
   markAsRead: (id: string) => Promise<void>;
   markAllAsRead: () => Promise<void>;
+  /** Marca como vistas as notificacoes que o usuario viu em tela. */
+  marcarVistas: (ids: string[]) => Promise<void>;
   refreshNotifications: () => Promise<void>;
   updateSettings: (settings: Partial<NotificationSettings>) => Promise<void>;
   clearAllNotifications: () => Promise<void>;
@@ -147,6 +149,15 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const supabase = useRef(createClient());
   const lastNotifId = useRef<string | null>(null);
   const lastPlayedId = useRef<string | null>(null);
+  /**
+   * Ids que JA estavam no banco quando a tela abriu.
+   *
+   * Sem isto, toda vez que o usuario entrava no dashboard (ou atualizava a
+   * pagina) a notificacao antiga TOCAVA o som e abria o toast de novo — era
+   * o "ficar aparecendo" que o operador reclamou. Notificacao que ja estava
+   * na lista quando a tela abriu e' historico: ela nao avisa de novo.
+   */
+  const idsJaCarregados = useRef<Set<string>>(new Set());
 
   /** Token da sessão (o servidor exige Authorization). */
   const tokenRef = useRef<string | null>(null);
@@ -186,6 +197,9 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
         if (!isAdmin) {
             lista = lista.filter((n) => ehVisivelParaCliente(n.type));
         }
+        // Marca como já vistas as que vieram do banco: elas são histórico e
+        // não podem tocar o som nem abrir toast de novo a cada entrada.
+        for (const n of lista) idsJaCarregados.current.add(n.id);
         setNotifications(lista);
         setError(null);
       } catch (e: any) {
@@ -291,6 +305,8 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       const latest = notifications[0];
       if (!latest || latest.id === lastNotifId.current) return;
       lastNotifId.current = latest.id;
+      // Ja estava na tela quando ela abriu? Entao e' historico: nao avisa de novo.
+      if (idsJaCarregados.current.has(latest.id)) return;
 
       const volume = settings.sound_volume !== undefined
           ? Math.max(0, Math.min(1, settings.sound_volume / 100))
@@ -372,6 +388,24 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       if (!ok) setNotifications(anteriores);
   }, [user, notifications, marcarComoLidaNoServidor]);
 
+  /**
+   * Marca como VISTAS as notificacoes que apareceram em tela.
+   *
+   * E o que um sistema profissional faz: o que o usuario viu, ele leu. Sem
+   * isto, o sino continuava apontando para avisos ja lidos e a notificacao
+   * "reaparecia" toda vez que a pagina era recarregada.
+   */
+  const marcarVistas = useCallback(async (ids: string[]) => {
+      if (!user || !ids.length) return;
+      const unicas = [...new Set(ids)];
+      if (!unicas.length) return;
+      setNotifications((prev) => prev.map((n) => (unicas.includes(n.id) ? { ...n, read: true } : n)));
+      const ok = await marcarComoLidaNoServidor(unicas);
+      if (!ok) {
+          setNotifications((prev) => prev.map((n) => (unicas.includes(n.id) ? { ...n, read: false } : n)));
+      }
+  }, [user, marcarComoLidaNoServidor]);
+
   const refreshNotifications = useCallback(async () => {
       await carregarNotificacoes();
   }, [carregarNotificacoes]);
@@ -446,6 +480,7 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
       setShowPermissionModal,
       markAsRead,
       markAllAsRead,
+      marcarVistas,
       refreshNotifications,
       updateSettings,
       clearAllNotifications,

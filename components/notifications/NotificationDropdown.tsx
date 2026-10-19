@@ -16,7 +16,7 @@ import { ICONE_POR_TIPO, COR_POR_TIPO, ROTULO_POR_TIPO } from '@/lib/notificatio
  *    largura da viewport (era um dropdown de 384px fixo, que estourava).
  */
 export default function NotificationDropdown() {
-  const { notifications, unreadCount, markAllAsRead, markAsRead, loading, error } = useNotificationContext();
+  const { notifications, unreadCount, markAllAsRead, markAsRead, marcarVistas, loading, error } = useNotificationContext();
   const [open, setOpen] = React.useState(false);
   const ref = React.useRef<HTMLDivElement | null>(null);
 

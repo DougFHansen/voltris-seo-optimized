@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNotificationContext } from '@/components/notifications/NotificationContext';
 import { useAuth } from '@/app/hooks/useAuth';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,7 +12,7 @@ import NotificationActivation from '@/components/notifications/NotificationActiv
 
 export default function NotificationsClient() {
     const { transparencyMode } = useDashboard();
-    const { notifications, markAsRead, markAllAsRead, refreshNotifications } = useNotificationContext();
+    const { notifications, markAsRead, markAllAsRead, marcarVistas, refreshNotifications } = useNotificationContext();
     const { isAdmin } = useAuth();
     const [filter, setFilter] = useState<'all' | 'unread' | 'compras' | 'licencas' | 'suporte' | 'reembolsos'>('all');
     const [isRefreshing, setIsRefreshing] = useState(false);
@@ -40,6 +40,18 @@ export default function NotificationsClient() {
     };
 
     const getTypeLabel = (type: string) => ROTULO_POR_TIPO[type] ?? 'Sistema';
+
+    /**
+     * O que o usuario viu, ele leu: as notificacoes exibidas na tela sao
+     * marcadas como vistas ao abrir a central. Sem isso, o sino continuava
+     * apontando para avisos ja lidos e eles "reapareciam" a cada entrada.
+     */
+    useEffect(() => {
+        if (!notifications.length) return;
+        const visiveis = filteredNotifications.slice(0, 20).map((n) => n.id);
+        if (visiveis.length) void marcarVistas(visiveis);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [notifications.length, filter]);
 
     /** Marca como lida e leva ao destino da notificação (quando existe). */
     const abrirNotificacao = async (n: (typeof notifications)[number]) => {

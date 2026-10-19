@@ -181,7 +181,34 @@ describe('a fatura tem o mesmo desenho do documento de referência', () => {
         const c = await conteudoDaPagina(out.bytes);
         assert.match(c, /51 94 m/);    // cartão da chave de ativação
         assert.match(c, /51 266 m/);  // cartão do total
-        assert.match(c, /51 439 m/);  // cartão do detalhamento
+        assert.match(c, /51 439 m/);  // cartão do bloco emitente/cliente
         assert.match(c, /51 651 m/);  // pílula de status
+    });
+
+    test('CADA CARTÃO É DESENHADO ANTES DO SEU TEXTO (senão ele COBRE o texto)', async () => {
+        // Este foi um defeito REAL: o cartão do bloco EMITENTE/CLIENTE era
+        // desenhado depois dos textos e os cobria — o documento saía com um
+        // cartão vazio e sem os dados do emitente e do cliente.
+        const data = buildInvoiceData({ row: PAGAMENTO, license: LICENCA });
+        const out = await generateInvoicePdf(data);
+        const c = await conteudoDaPagina(out.bytes);
+
+        const pares: [string, string][] = [
+            ['51 439 m', '1 0 0 1 61 561 Tm'],   // cartão -> "EMITENTE"
+            ['51 439 m', '1 0 0 1 318 537 Tm'],  // cartão -> nome do cliente
+            ['51 266 m', '1 0 0 1 56 279 Tm'],   // cartão do total -> "TOTAL PAGO"
+            ['51 94 m', '1 0 0 1 60 162 Tm'],    // cartão da chave -> "CHAVE DE ATIVAÇÃO"
+            ['51 651 m', '1 0 0 1 73 660 Tm'],   // pílula -> "PAGAMENTO CONFIRMADO"
+        ];
+        for (const [cartao, textoBloco] of pares) {
+            const iCartao = c.indexOf(cartao);
+            const iTexto = c.indexOf(textoBloco);
+            assert.ok(iCartao !== -1, `cartão não encontrado: ${cartao}`);
+            assert.ok(iTexto !== -1, `texto não encontrado: ${textoBloco}`);
+            assert.ok(
+                iCartao < iTexto,
+                `o cartão (${cartao}) é desenhado DEPOIS do texto (${textoBloco}) e o cobre`
+            );
+        }
     });
 });

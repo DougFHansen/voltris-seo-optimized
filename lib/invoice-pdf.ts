@@ -368,20 +368,6 @@ export async function generateInvoicePdf(data: InvoiceData): Promise<GeneratedIn
     /* ------------------------------------------------------------- fundo */
     page.drawRectangle({ x: 0, y: 0, width: PAGE_W, height: PAGE_H, color: C.white });
 
-    /* ------------------------------------------ barra superior em gradiente */
-    const barraAltura = 7;
-    const passos = 120;
-    for (let i = 0; i < passos; i++) {
-        const t = i / (passos - 1);
-        const cor = rgb(
-            C.brandPink.red + (C.brandBlue.red - C.brandPink.red) * t,
-            C.brandPink.green + (C.brandBlue.green - C.brandPink.green) * t,
-            C.brandPink.blue + (C.brandBlue.blue - C.brandPink.blue) * t
-        );
-        const w = PAGE_W / passos;
-        page.drawRectangle({ x: i * w, y: PAGE_H - barraAltura, width: w + 0.6, height: barraAltura, color: cor });
-    }
-
     /* --------------------------------------------------------- cabeçalho */
     page.drawRectangle({ x: 0, y: 632, width: PAGE_W, height: 210, color: C.header });
     page.drawRectangle({ x: 0, y: 632, width: PAGE_W, height: 62, color: C.headerAccent });
@@ -394,22 +380,36 @@ export async function generateInvoicePdf(data: InvoiceData): Promise<GeneratedIn
         linha(page, 352, y, 595, y, C.headerLine, 0.7);
     }
 
-    // barra em gradiente no canto inferior direito
-    for (let i = 0; i < 40; i++) {
-        const t = i / 39;
-        const cor = rgb(
-            0.2 + (0.090196 - 0.2) * t,
-            0.58 + (0.407843 - 0.58) * t,
-            0.847 + (0.847059 - 0.847) * t
-        );
-        const w = (595.2756 - 523.8425) / 40;
-        page.drawRectangle({ x: 523.8425 + i * w, y: 629, width: w + 0.4, height: 4, color: cor });
-    }
+    /* ---------------------------------------------------------------------
+     * FAIXA EM GRADIENTE (topo) e SEU CONTINUÁVEL (canto inferior direito)
+     *
+     * A faixa é desenhada DEPOIS da banda escura: se viesse antes, a banda
+     * opaca a cobriria e o papel sairia sem a faixa rosa no topo — foi
+     * exatamente o que aconteceu na primeira versão.
+     * ------------------------------------------------------------------- */
+    const fita = (x: number, y: number, w: number, h: number, de: RGB, ate: RGB) => {
+        const passos = 40;
+        for (let i = 0; i < passos; i++) {
+            const t = i / (passos - 1);
+            const cor = rgb(
+                de.red + (ate.red - de.red) * t,
+                de.green + (ate.green - de.green) * t,
+                de.blue + (ate.blue - de.blue) * t
+            );
+            const largura = w / passos;
+            page.drawRectangle({ x: x + i * largura, y, width: largura + 0.4, height: h, color: cor });
+        }
+    };
+    // topo: rosa -> azul, largura toda
+    fita(0, PAGE_H - 7, PAGE_W, 7, C.brandPink, C.brandBlue);
+    // canto inferior direito: o continuidade da fita, em azul
+    fita(523.8425, 629, PAGE_W - 523.8425, 4, C.brandBlue, C.brandBlue);
 
     /* ------------------------------------------------------ marca VOLTRIS */
     caixaArredondada(page, 43, 764, 37, 37, 6, C.mark);
-    page.drawLine({ start: { x: 51, y: 790 }, end: { x: 61.6, y: 774 }, color: C.brandBlue, thickness: 5.1 });
-    page.drawLine({ start: { x: 61.6, y: 774 }, end: { x: 70.4, y: 790 }, color: C.brandBlue, thickness: 5.1 });
+    // "V" em rosa (traço grosso) + selo de confirmação em azul (traço fino)
+    page.drawLine({ start: { x: 51, y: 790 }, end: { x: 61.6, y: 774 }, color: C.brandPink, thickness: 5.1 });
+    page.drawLine({ start: { x: 61.6, y: 774 }, end: { x: 70.4, y: 790 }, color: C.brandPink, thickness: 5.1 });
     page.drawLine({ start: { x: 61.6, y: 774 }, end: { x: 70.4, y: 790 }, color: C.brandBlue, thickness: 1 });
 
     texto(page, fonts.heavy, 89, 786, 20, 'VOLTRIS', C.white);
@@ -439,6 +439,17 @@ export async function generateInvoicePdf(data: InvoiceData): Promise<GeneratedIn
     texto(page, fonts.heavy, 44, 606, 9.3, 'DADOS DA FATURA', C.violet);
     textoDireita(page, fonts.bold, 551, 606, 9.5, `EMISSÃO  ${formatDateBR(new Date())}`, C.inkSoft);
 
+    /* ---------------------------------------------------------------------
+     * CARTÃO DO BLOCO EMITENTE/CLIENTE
+     *
+     * A ORDEM DE DESENHO IMPORTA: o cartão é opaco. Se ele for desenhado
+     * DEPOIS dos textos, ele COBRE o bloco inteiro — o documento saía com
+     * um cartão vazio e sem os dados do emitente e do cliente.
+     *
+     * O mesmo vale para os outros cartões: fundo primeiro, texto depois.
+     * ------------------------------------------------------------------- */
+    caixaArredondada(page, 43, 439, 509, 147, 8, C.cardSoft);
+
     /* ----------------------------------------------------------- emitente */
     texto(page, fonts.heavy, 61, 561, 8.5, 'EMITENTE', C.violet);
     texto(page, fonts.heavy, 61, 537, 12.5, company.razaoSocial.toUpperCase(), C.ink);
@@ -462,7 +473,6 @@ export async function generateInvoicePdf(data: InvoiceData): Promise<GeneratedIn
 
     /* ------------------------------------------------- detalhamento da compra */
     texto(page, fonts.heavy, 44, 406, 10.4, 'DETALHAMENTO DA COMPRA', C.ink);
-    caixaArredondada(page, 43, 439, 509, 147, 8, C.cardSoft);
 
     texto(page, fonts.bold, 53, 378, 8.2, 'PRODUTO / DESCRIÇÃO', C.inkSoft);
     textoDireita(page, fonts.bold, 552, 378, 8.2, 'VALOR', C.inkSoft);
@@ -528,7 +538,7 @@ export async function generateInvoicePdf(data: InvoiceData): Promise<GeneratedIn
         yAviso = 34;
     }
     texto(page, fonts.regular, 44, 47, 8.25, 'Fatura comercial: não substitui nota fiscal de serviços (NFS-e).', C.inkSoft);
-    texto(page, fonts.regular, 44, 34, 8.25, `Dados do emitente: ${company.site.replace(/^https?:\/\//, '')}`, C.inkSoft);
+    texto(page, fonts.regular, 44, 34, 8.25, `Dados do emitente: ${company.site.replace(/^https?:\/\/(www\.)?/, '')}`, C.inkSoft);
     textoDireita(page, fonts.bold, 551, 34, 8.3, 'VOLTRIS  ©  Tecnologia & Performance', C.footer);
 
     const bytes = await doc.save();

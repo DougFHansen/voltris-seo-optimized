@@ -33,6 +33,8 @@ type Fase = 'carregando' | 'inativo' | 'ativo' | 'erro';
 
 export default function NotificationActivation({ compacto = false }: { compacto?: boolean }) {
     const [estado, setEstado] = useState<EstadoPush | null>(null);
+    const [servidorPronto, setServidorPronto] = useState<boolean | null>(null);
+    const [motivoServidor, setMotivoServidor] = useState<string | null>(null);
     const [fase, setFase] = useState<Fase>('carregando');
     const [erro, setErro] = useState<string | null>(null);
     const [ocupado, setOcupado] = useState(false);
@@ -41,6 +43,15 @@ export default function NotificationActivation({ compacto = false }: { compacto?
         const e = await lerEstadoPush();
         setEstado(e);
         setFase(e.inscrito && e.permissao === 'granted' ? 'ativo' : 'inativo');
+        // O navegador pode estar pronto e o servidor nao: so o servidor sabe.
+        try {
+            const r = await fetch('/api/notifications/push-status', { cache: 'no-store' });
+            if (r.ok) {
+                const j = await r.json();
+                setServidorPronto(j?.disponivel === true);
+                setMotivoServidor(j?.motivo ?? null);
+            }
+        } catch { setServidorPronto(null); }
         return e;
     }, []);
 
@@ -87,7 +98,7 @@ export default function NotificationActivation({ compacto = false }: { compacto?
 
     const ativo = fase === 'ativo';
     const bloqueado = estado.permissao === 'denied';
-    const semVapid = !estado.vapidConfigurado;
+    const semVapid = !estado.vapidConfigurado || servidorPronto === false;
 
     return (
         <div
@@ -168,9 +179,9 @@ export default function NotificationActivation({ compacto = false }: { compacto?
             )}
             {semVapid && !erro && (
                 <p className="mt-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-[11px] leading-relaxed text-amber-200">
-                    O servidor ainda não tem a chave VAPID configurada (<code>NEXT_PUBLIC_VAPID_PUBLIC_KEY</code>).
-                    Sem ela o navegador não consegue receber push com o site fechado — as notificações dentro do
-                    site continuam funcionando.
+                    {motivoServidor ?? 'O servidor ainda não tem a chave VAPID configurada.'}{' '}
+                    Sem isso o navegador não consegue receber aviso com o site fechado — as notificações
+                    dentro do site continuam funcionando normalmente.
                 </p>
             )}
             {bloqueado && !erro && (

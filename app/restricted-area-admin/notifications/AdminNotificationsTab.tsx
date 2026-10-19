@@ -100,6 +100,18 @@ export default function AdminNotificationsTab() {
                 throw new Error(json?.error || 'Falha ao carregar as notificações.');
             }
             setDados(json);
+
+            // O que o operador viu, ele leu: as notificações exibidas na
+            // aba são marcadas como lidas, para não reaparecerem a cada
+            // entrada no painel.
+            const visiveis = (json.items ?? []).filter((n: { read?: boolean }) => !n.read).slice(0, 20);
+            for (const n of visiveis) {
+                void fetch('/api/admin/notifications', {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: n.id, read: true }),
+                }).catch(() => undefined);
+            }
         } catch (e: any) {
             setErro(e?.message || 'Erro desconhecido.');
             setDados(null);
