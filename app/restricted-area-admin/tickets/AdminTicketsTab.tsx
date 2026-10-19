@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { ShieldAlert } from 'lucide-react';
-import { FiSearch, FiRefreshCw, FiInbox, FiCheckCircle, FiSend } from 'react-icons/fi';
+import { FiSearch, FiRefreshCw, FiInbox, FiCheckCircle, FiSend, FiX } from 'react-icons/fi';
 import { rotulo } from '@/lib/admin-labels';
 
 /**
@@ -54,6 +54,7 @@ export default function AdminTicketsTab() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [editando, setEditando] = useState<Ticket | null>(null);
+    const [abrindo, setAbrindo] = useState<Ticket | null>(null);
     const [respondendo, setRespondendo] = useState<Ticket | null>(null);
 
     useEffect(() => {
@@ -157,7 +158,11 @@ export default function AdminTicketsTab() {
                             </thead>
                             <tbody className="divide-y divide-slate-800/60">
                                 {rows.map((r) => (
-                                    <tr key={r.id} className="hover:bg-slate-800/30 transition-colors">
+                                    <tr
+                                            key={r.id}
+                                            onClick={() => setAbrindo(r)}
+                                            className="cursor-pointer hover:bg-slate-800/30 transition-colors"
+                                        >
                                         <td className="px-4 py-3">
                                             <span className="font-medium text-slate-200">{r.title}</span>
                                             <p className="font-mono text-[10px] text-slate-600">{r.id.slice(0, 8)}</p>
@@ -206,6 +211,14 @@ export default function AdminTicketsTab() {
                     </div>
                 )}
             </div>
+
+            {abrindo && (
+                <TicketModal
+                    ticket={abrindo}
+                    onClose={() => setAbrindo(null)}
+                    onResponder={() => { setRespondendo(abrindo); setAbrindo(null); }}
+                />
+            )}
 
             {editando && (
                 <StatusModal
@@ -381,6 +394,125 @@ function ReplyModal({ ticket, onClose, onSaved }: { ticket: Ticket; onClose: () 
                         className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 px-4 py-2.5 text-sm font-semibold text-white transition disabled:opacity-50">
                         <FiSend size={15} />
                         {salvando ? 'Enviando…' : 'Enviar e notificar'}
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
+/**
+ * CHAMADO ABERTO — a conversa inteira.
+ *
+ * Antes a aba de Tickets mostrava so a lista: nao dava para clicar no ticket
+ * nem ler a mensagem do cliente. Agora o clique abre o chamado com TODAS as
+ * mensagens, o cliente e as acoes (responder/alterar status).
+ */
+function TicketModal({
+    ticket,
+    onClose,
+    onResponder,
+}: {
+    ticket: Ticket;
+    onClose: () => void;
+    onResponder: () => void;
+}) {
+    const [dados, setDados] = useState<any>(null);
+    const [erro, setErro] = useState<string | null>(null);
+    const [carregando, setCarregando] = useState(true);
+
+    useEffect(() => {
+        let ativo = true;
+        (async () => {
+            setCarregando(true);
+            try {
+                const res = await fetch(`/api/admin/tickets/${ticket.id}`, { cache: 'no-store' });
+                const json = await res.json();
+                if (!res.ok) throw new Error(json?.error || 'Falha ao carregar o chamado.');
+                if (ativo) { setDados(json); setErro(null); }
+            } catch (e: any) {
+                if (ativo) setErro(e?.message || 'Erro ao carregar o chamado.');
+            } finally {
+                if (ativo) setCarregando(false);
+            }
+        })();
+        return () => { ativo = false; };
+    }, [ticket.id]);
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={onClose}>
+            <div
+                onClick={(e) => e.stopPropagation()}
+                className="flex max-h-[85vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl"
+            >
+                <div className="flex items-start justify-between gap-4 border-b border-slate-800 p-5">
+                    <div className="min-w-0">
+                        <h3 className="truncate text-lg font-bold text-white">{dados?.ticket?.title ?? ticket.title}</h3>
+                        <p className="mt-0.5 text-xs text-slate-400">
+                            {rotulo(dados?.ticket?.status ?? ticket.status, 'ticket')} · {rotulo(dados?.ticket?.priority ?? ticket.priority, 'prioridade')}
+                            {' · '}{new Date(dados?.ticket?.created_at ?? ticket.created_at).toLocaleString('pt-BR')}
+                        </p>
+                        {dados?.cliente && (
+                            <p className="mt-1 text-[11px] text-slate-500">
+                                {dados.cliente.nome ?? 'Cliente'} · {dados.cliente.email ?? 'sem e-mail'} · {dados.cliente.telefone ?? 'sem telefone'}
+                            </p>
+                        )}
+                    </div>
+                    <button
+                        onClick={onClose}
+                        aria-label="Fechar chamado"
+                        className="shrink-0 rounded-xl border border-slate-800 p-2 text-slate-400 transition hover:border-slate-700 hover:text-white"
+                    >
+                        <FiX size={16} />
+                    </button>
+                </div>
+
+                <div className="custom-scrollbar flex-1 overflow-y-auto p-5">
+                    {carregando && (
+                        <p className="py-8 text-center text-xs text-slate-500">Carregando a conversa…</p>
+                    )}
+                    {erro && (
+                        <p role="alert" className="rounded-xl border border-rose-500/40 bg-rose-500/10 p-3 text-xs text-rose-200">{erro}</p>
+                    )}
+                    {dados && (dados.mensagens ?? []).length === 0 && (
+                        <p className="py-8 text-center text-xs text-slate-500">Este chamado ainda não tem mensagens.</p>
+                    )}
+                    <div className="space-y-3">
+                        {(dados?.mensagens ?? []).map((m: any) => {
+                            const doAdmin = m.user_id === dados?.cliente?.id ? false : true;
+                            return (
+                                <div key={m.id} className={`flex ${doAdmin ? 'justify-end' : 'justify-start'}`}>
+                                    <div
+                                        className={`max-w-[80%] rounded-2xl border px-3.5 py-2.5 text-xs ${
+                                            doAdmin
+                                                ? 'border-indigo-500/25 bg-indigo-500/10 text-slate-200'
+                                                : 'border-slate-800 bg-slate-800/40 text-slate-300'
+                                        }`}
+                                    >
+                                        <p className="whitespace-pre-wrap break-words">{m.content}</p>
+                                        <p className="mt-1 text-[10px] text-slate-500">
+                                            {doAdmin ? 'Equipe VOLTRIS' : 'Cliente'} · {new Date(m.created_at).toLocaleString('pt-BR')}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+
+                <div className="flex items-center justify-end gap-2 border-t border-slate-800 p-4">
+                    <button
+                        onClick={onClose}
+                        className="rounded-xl border border-slate-800 px-4 py-2 text-xs font-semibold text-slate-300 transition hover:bg-slate-800"
+                    >
+                        Fechar
+                    </button>
+                    <button
+                        onClick={onResponder}
+                        className="rounded-xl bg-indigo-600 px-4 py-2 text-xs font-semibold text-white transition hover:bg-indigo-500"
+                    >
+                        Responder ao cliente
                     </button>
                 </div>
             </div>

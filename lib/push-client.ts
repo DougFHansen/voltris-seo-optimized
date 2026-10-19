@@ -24,6 +24,23 @@ import {
     supportsPushNotifications,
 } from '@/app/utils/browserFingerprint';
 
+/**
+ * Limite de tempo para cada etapa.
+ *
+ * Sem isto, uma promessa que nunca resolve (o caso real: `serviceWorker.ready`
+ * quando o service worker não ativa) deixa o botão em "Ativando..." para
+ * sempre, sem mensagem. Nenhuma etapa do fluxo pode ficar pendurada.
+ */
+const TIMEOUT_PERMISSAO = 60_000;
+const TIMEOUT_ETAPA = 20_000;
+
+function comTimeout<T>(p: Promise<T>, ms: number, mensagem: string): Promise<T> {
+    return Promise.race([
+        p,
+        new Promise<T>((_, reject) => setTimeout(() => reject(new Error(mensagem)), ms)),
+    ]);
+}
+
 export interface EstadoPush {
     /** O navegador tem Web Push + Service Worker. */
     suportado: boolean;
@@ -84,8 +101,19 @@ export function ehIOS(): boolean {
 export async function registrarServiceWorker(): Promise<ServiceWorkerRegistration | null> {
     if (typeof navigator === 'undefined' || !('serviceWorker' in navigator)) return null;
     try {
-        const reg = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
-        await navigator.serviceWorker.ready;
+        const reg = await comTimeout(
+            navigator.serviceWorker.register('/sw.js', { scope: '/' }),
+            TIMEOUT_ETAPA,
+            'O registro do service worker demorou demais para responder.'
+        );
+        // `ready` só resolve com um service worker ATIVO. Se ele não ativar
+        // (erro no sw.js, extensão, política do navegador), a promessa fica
+        // pendurada para sempre — era o que travava o botão em "Ativando...".
+        await comTimeout(
+            navigator.serviceWorker.ready,
+            TIMEOUT_ETAPA,
+            'O service worker não ativou. Recarregue a página e tente de novo.'
+        );
         return reg;
     } catch (e) {
         console.warn('[push] não foi possível registrar o service worker:', e);
@@ -114,7 +142,11 @@ export async function lerEstadoPush(): Promise<EstadoPush> {
         const reg = await navigator.serviceWorker.getRegistration('/');
         base.serviceWorker = !!reg;
         if (reg && 'pushManager' in reg) {
-            const sub = await reg.pushManager.getSubscription();
+            const sub = await comTimeout(
+                reg.pushManager.getSubscription(),
+                TIMEOUT_ETAPA,
+                'Não foi possível ler a inscrição de push.'
+            ).catch(() => null);
             base.inscrito = !!sub;
         }
     } catch { /* segue com o estado parcial */ }
@@ -152,7 +184,11 @@ export async function ativarPush(): Promise<{ ok: boolean; estado: EstadoPush; e
     }
 
     try {
-        const permissao = await Notification.requestPermission();
+        const permissao = await comTimeout(
+            Notification.requestPermission(),
+            TIMEOUT_PERMISSAO,
+            'A confirmação do navegador demorou demais. Tente novamente.'
+        );
         if (permissao !== 'granted') {
             return {
                 ok: false,
@@ -173,13 +209,18 @@ export async function ativarPush(): Promise<{ ok: boolean; estado: EstadoPush; e
             return { ok: false, estado, erro: 'O servidor não disponibilizou a chave VAPID. O aviso com o site fechado está indisponível.' };
         }
 
-        const sub = await reg.pushManager.subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: base64ParaUint8Array(chavePublica) as unknown as BufferSource,
-        });
+        const sub = await comTimeout(
+            reg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: base64ParaUint8Array(chavePublica) as unknown as BufferSource,
+            }),
+            TIMEOUT_ETAPA,
+            'O navegador não conseguiu assinar as notificações push.'
+        );
 
         const info = collectBrowserInfo();
-        const resposta = await fetch('/api/push-subscription', {
+        const resposta = await comTimeout(
+            fetch('/api/push-subscription', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'same-origin',
@@ -193,7 +234,7 @@ export async function ativarPush(): Promise<{ ok: boolean; estado: EstadoPush; e
                     language: info.language,
                 },
             }),
-        });
+        }), TIMEOUT_ETAPA, 'O servidor demorou demais para gravar a inscrição.');
 
         if (!resposta.ok) {
             const erro = await resposta.json().catch(() => ({}));

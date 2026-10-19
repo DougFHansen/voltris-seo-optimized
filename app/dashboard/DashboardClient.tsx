@@ -221,6 +221,39 @@ const StatCard = ({ title, value, icon, delay, description }: {
   );
 };
 
+/**
+ * Rotulo e estado do botao de reembolso.
+ *
+ * O botao tem que contar a historia real do pedido:
+ *   nenhum      -> "Solicitar Reembolso (7 Dias)"
+ *   solicitado  -> "Reembolso solicitado" (aguardando a equipe)
+ *   processing  -> "Reembolso em processamento"
+ *   applied     -> "Reembolso aplicado com sucesso"
+ *   rejected    -> "Reembolso recusado" (com o motivo)
+ */
+function ROTULO_REEMBOLSO(estado?: string | null): string {
+    switch (estado) {
+        case 'requested': return 'Reembolso solicitado';
+        case 'processing': return 'Reembolso em processamento';
+        case 'applied': return 'Reembolso aplicado com sucesso';
+        case 'rejected': return 'Reembolso recusado';
+        default: return 'Solicitar Reembolso (7 Dias)';
+    }
+}
+
+function ESTILO_REEMBOLSO(estado?: string | null): string {
+    if (estado === 'applied') {
+        return 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400';
+    }
+    if (estado === 'requested' || estado === 'processing') {
+        return 'bg-amber-500/10 border-amber-500/20 text-amber-400';
+    }
+    if (estado === 'rejected') {
+        return 'bg-rose-500/10 border-rose-500/20 text-rose-400';
+    }
+    return 'bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400';
+}
+
 export default function DashboardClient() {
   return (
     <Suspense fallback={
@@ -821,10 +854,10 @@ function DashboardContent() {
                           onClick={() => handleRequestRefund(
                             licenses.find((l: any) => l?.invoice?.available)?.invoice?.paymentId ?? null
                           )}
-                          disabled={!billing?.canRequestRefund || isRefunding}
-                          className="px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all disabled:opacity-40"
+                          disabled={!billing?.canRequestRefund || isRefunding || (billing?.refundState && billing.refundState !== 'none')}
+                          className={`px-4 py-2.5 ${ESTILO_REEMBOLSO(billing?.refundState)} font-medium text-xs rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed`}
                         >
-                          Reembolso (7 Dias)
+                          {ROTULO_REEMBOLSO(billing?.refundState)}
                         </button>
                       </div>
                     </div>
@@ -904,14 +937,21 @@ function DashboardContent() {
                         onClick={() => handleRequestRefund(
                           licenses.find((l: any) => l?.invoice?.available)?.invoice?.paymentId ?? null
                         )}
-                        disabled={!billing?.canRequestRefund || isRefunding}
-                        title={!billing?.canRequestRefund
-                          ? 'Este pagamento não está elegível para reembolso.'
-                          : 'Solicitar reembolso da sua compra mais recente (7 dias corridos).'}
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-rose-500/10"
+                        disabled={!billing?.canRequestRefund || isRefunding || (billing?.refundState && billing.refundState !== 'none')}
+                        title={billing?.refundState && billing.refundState !== 'none'
+                          ? (billing?.refundMessage || 'Este pedido de reembolso ja foi registrado.')
+                          : (!billing?.canRequestRefund
+                            ? 'Este pagamento não está elegível para reembolso.'
+                            : 'Solicitar reembolso da sua compra mais recente (7 dias corridos).')}
+                        className={`flex items-center justify-center gap-2 px-4 py-2.5 ${ESTILO_REEMBOLSO(billing?.refundState)} font-medium text-xs rounded-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed`}
                       >
-                        <VoltrisIcon name={billing?.canRequestRefund ? 'processing' : 'check'} size={14} />
-                        {billing?.canRequestRefund ? 'Solicitar Reembolso (7 Dias)' : 'Reembolso indisponível'}
+                        <VoltrisIcon
+                          name={billing?.refundState === 'applied' ? 'check' : (billing?.refundState === 'requested' || billing?.refundState === 'processing' ? 'clock' : 'processing')}
+                          size={14}
+                        />
+                        {billing?.refundState && billing.refundState !== 'none'
+                          ? ROTULO_REEMBOLSO(billing.refundState)
+                          : (billing?.canRequestRefund ? 'Solicitar Reembolso (7 Dias)' : 'Reembolso indisponível')}
                       </button>
                     </div>
 

@@ -174,6 +174,38 @@ export async function GET(request: NextRequest) {
         .order('created_at', { ascending: false })
         .limit(10);
 
+    // ------------------------------------------------------------------
+    // ESTADO DO REEMBOLSO PEDIDO PELO CLIENTE
+    //
+    // O botão "Solicitar Reembolso" precisa refletir a REALIDADE: solicitado,
+    // em processamento, aplicado ou recusado. Sem isto, o cliente clicava de
+    // novo em pedidos ja feitos e achava que nada acontecia.
+    // ------------------------------------------------------------------
+    let refundState: 'none' | 'requested' | 'processing' | 'applied' | 'rejected' = 'none';
+    let refundMessage: string | null = null;
+    let refundUpdatedAt: string | null = null;
+    try {
+        const { data: rr } = await admin
+            .from('refund_requests')
+            .select('status, outcome_message, created_at, updated_at, resolved_at')
+            .eq('user_id', user.id)
+            .order('created_at', { ascending: false })
+            .limit(1);
+        const r = (rr ?? [])[0];
+        if (r) {
+            const st = String(r.status ?? '').toLowerCase();
+            if (st === 'requested') refundState = 'requested';
+            else if (st === 'processing') refundState = 'processing';
+            else if (st === 'succeeded') refundState = 'applied';
+            else if (st === 'rejected' || st === 'failed') refundState = 'rejected';
+            refundMessage = r.outcome_message ?? null;
+            refundUpdatedAt = r.updated_at ?? r.resolved_at ?? r.created_at ?? null;
+        }
+    } catch (e: any) {
+        // Tabela ausente em bases antigas: segue sem o estado extra.
+        logWarn(ctx, 'estado de reembolso indisponivel', { error: String(e?.message ?? e).slice(0, 120) });
+    }
+
     if (paymentsRes.error) logSupabaseError(ctx, 'buscar pagamentos das licencas', paymentsRes.error);
     if (subsRes.error) logSupabaseError(ctx, 'buscar assinaturas do usuario', subsRes.error);
     if (pendingErr) logSupabaseError(ctx, 'buscar compras pendentes', pendingErr);
@@ -257,6 +289,9 @@ export async function GET(request: NextRequest) {
                 canCancelRenewal: billing.canCancelRenewal,
                 canResumeRenewal: billing.canResumeRenewal,
                 canRequestRefund: billing.canRequestRefund,
+    refundState,
+    refundMessage,
+    refundUpdatedAt,
                 invoice: {
                     available: invoiceAvailable,
                     paymentId: payment?.id ?? null,

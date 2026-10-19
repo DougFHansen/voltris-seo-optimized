@@ -15,8 +15,10 @@ const STATIC_ASSETS = [
 
 // Recursos para cache dinâmico
 const DYNAMIC_ASSETS = [
-  '/api/sitemap',
-  '/api/sitemap-images',
+  // '/api/sitemap' e '/api/sitemap-images' NAO existem (404) e foram o que
+  // abortava a instalacao do service worker -- logo, o push nunca ativava.
+  // A lista ficou vazia de proposito e, mesmo assim, o cache e tolerante a
+  // falhas (ver o handler de 'install').
 ];
 
 // Estratégias de cache
@@ -31,22 +33,44 @@ const CACHE_STRATEGIES = {
 // Instalação do Service Worker
 self.addEventListener('install', (event) => {
   console.log('Service Worker: Installing...');
-  
+
+  // Cache tolerante a falhas.
+  //
+  // `cache.addAll()` ABORTA a instalação inteira se QUALQUER item falhar.
+  // Foi exatamente o que aconteceu: `/api/sitemap` e `/api/sitemap-images`
+  // respondem 404, o `addAll` rejeitou, o service worker NUNCA ativou e o
+  // botão "Ativar notificações" ficava em "Ativando..." para sempre (o
+  // `navigator.serviceWorker.ready` nunca resolvia).
+  //
+  // Aqui cada recurso é cacheado por conta própria: o que existe entra no
+  // cache, o que falta apenas é ignorado — e a instalação sempre termina.
+  const cachear = async (cacheName, urls) => {
+    const cache = await caches.open(cacheName);
+    const resultados = await Promise.allSettled(
+      urls.map(async (url) => {
+        const resposta = await fetch(url, { cache: 'reload' });
+        if (!resposta.ok) throw new Error(`${url} -> HTTP ${resposta.status}`);
+        await cache.put(url, resposta);
+      })
+    );
+    const falhas = resultados
+      .map((r, i) => (r.status === 'rejected' ? urls[i] : null))
+      .filter(Boolean);
+    if (falhas.length) {
+      console.warn('Service Worker: recursos não cacheados (ignorados):', falhas);
+    }
+  };
+
   event.waitUntil(
     Promise.all([
-      // Cache estático
-      caches.open(STATIC_CACHE).then((cache) => {
-        console.log('Service Worker: Caching static assets');
-        return cache.addAll(STATIC_ASSETS);
-      }),
-      // Cache dinâmico
-      caches.open(DYNAMIC_CACHE).then((cache) => {
-        console.log('Service Worker: Caching dynamic assets');
-        return cache.addAll(DYNAMIC_ASSETS);
-      }),
-    ])
+      cachear(STATIC_CACHE, STATIC_ASSETS),
+      cachear(DYNAMIC_CACHE, DYNAMIC_ASSETS),
+    ]).catch((e) => {
+      // O SW precisa ativar MESMO que o cache falhe: sem ele não há push.
+      console.warn('Service Worker: falha parcial no cache, seguindo assim mesmo:', e);
+    })
   );
-  
+
   self.skipWaiting();
 });
 

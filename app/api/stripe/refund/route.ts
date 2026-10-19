@@ -168,8 +168,10 @@ async function notificarReembolso(opts: {
         }
         await NotificationService.notifyAdmins({
             kind: 'refund',
-            title: `Reembolso: ${opts.stage}`,
-            message: `${maskEmail(opts.email ?? null)} — R$ ${opts.amount.toFixed(2)} (${opts.stage}).`,
+            title: opts.stage === 'requested'
+                ? 'Novo pedido de reembolso'
+                : (opts.stage === 'processing' ? 'Reembolso em processamento' : 'Reembolso confirmado'),
+            message: `${maskEmail(opts.email ?? null)} — R$ ${opts.amount.toFixed(2)}. ${opts.stage === 'requested' ? 'O pedido precisa de analise.' : 'A operacao foi executada.'}`,
             actionUrl: '/restricted-area-admin?tab=purchases',
             data: { payment_id: opts.paymentId, stage: opts.stage, amount: opts.amount },
         });
