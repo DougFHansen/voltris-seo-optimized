@@ -606,4 +606,67 @@ npx next build -> exit 0
 
 ---
 
+## 12. VERIFICAÇÃO DEPOIS DE APLICAR OS DOIS SQL (2026-10-19)
+
+O operador aplicou `admin.sql` e `notificacaocorrigida.sql`. Tudo conferido
+por sonda e por fluxo real:
+
+### 12.1 Schema (aplicado)
+
+| Item | Estado |
+|---|---|
+| `notifications.action_url` / `data` / `audience` | ✅ existem |
+| `notifications.read_at` / `updated_at` | ✅ existem |
+| enum `notification_type` | ✅ aceita `license`, `service`, `refund` |
+| `profiles.phone_normalized` | ✅ existe |
+| `email_outbox` (aba E-mails) | ✅ existe (vazia, sem e-mail disparado ainda) |
+| `payments.stripe_invoice_id` / `subscriptions.cancel_at_period_end` | ✅ existem |
+
+### 12.2 O trigger de cadastro (a causa raiz da ficha vazia)
+
+Cadastro de teste real (criado pelo mesmo caminho do formulário), com leitura
+do perfil logo depois:
+
+```json
+{"login":"verificacao.trigger","full_name":"Verificacao Trigger",
+ "phone":"(37) 99812-7122","address":"Rua Teste, 123","city":"Divinopolis",
+ "neighborhood":"Centro","state":"MG","cep":"35500-000","email":"…"}
+```
+
+**Nenhum campo faltando.** Antes (trigger quebrado) o login e o bairro ficavam
+vazios. A conta e o perfil de teste foram removidos em seguida (total de
+perfis voltou a 114, sem rastro).
+
+### 12.3 Realtime (o sino em tempo real)
+
+- canal `postgres_changes` em `notifications`: **SUBSCRIBED**;
+- inserção real de uma notificação → **evento recebido pelo assinante**, com
+  `action_url` no payload — sem recarregar a página;
+- notificação de teste removida depois (total do banco segue 11).
+
+### 12.4 Varredura de todas as rotas do painel
+
+| Rota | Antes | Agora |
+|---|---|---|
+| `overview` | 200 | 200 |
+| `clients` | 200 (114) | 200 (114) |
+| `purchases` | 200 (29) | 200 (29) |
+| `reconcile` | 200 | 200 |
+| `emails` | 200 (vazio) | 200 (vazio — outbox sem disparo) |
+| `notifications` | 200 (11) | 200 (11) |
+| `directory?tickets` | 200 (2) | 200 (2) |
+| `directory?users` | **500** | **200 (114)** — lia a tabela `users`, que não existe (contas estão em `profiles`) |
+| `directory?newsletter` | **500** | **200 (2)** — lia `newsletter` em vez de `newsletter_subscribers` |
+| `directory?orders` / `service_requests` | 200 (0) | 200 (0) |
+
+As duas abas quebradas foram corrigidas (commit `0a97f9e4`).
+
+### 12.5 Marcação de lida com o schema novo
+
+`read:false → read:true` com `read_at` e `updated_at` gravados, e o estado
+original do dado foi restaurado em seguida (a notificação do Álvaro segue
+**não lida**, e o banco continua com 11 notificações).
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*
