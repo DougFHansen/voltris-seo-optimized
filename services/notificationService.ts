@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import webpush from 'web-push';
-import { chavePublicaVapid } from '@/lib/vapid-keys';
+import { chavePublicaDoServidor, chavePrivadaDoServidor } from '@/lib/vapid-server';
 import {
     NotificationKind,
     NotificationType,
@@ -18,14 +18,18 @@ if (!supabaseUrl || !supabaseServiceKey) {
 const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
 // Configuração Web Push (VAPID)
-const vapidPrivate = process.env.VAPID_PRIVATE_KEY;
-const pushConfigurado = !!vapidPrivate;
+// O par VAPID vem do ambiente quando existe; quando nao existe, o servidor
+// DERIVA um par deterministico (lib/vapid-server.ts) para que o aviso com o
+// site fechado funcione sem configuracao manual.
+const vapidPublic = chavePublicaDoServidor();
+const vapidPrivate = chavePrivadaDoServidor();
+const pushConfigurado = !!vapidPublic && !!vapidPrivate;
 
 if (pushConfigurado) {
-    webpush.setVapidDetails('mailto:admin@voltris.com', chavePublicaVapid(), vapidPrivate!);
+    webpush.setVapidDetails('mailto:admin@voltris.com', vapidPublic, vapidPrivate);
 } else {
     console.warn(
-        '[NotificationService] VAPID_PRIVATE_KEY nao configurada: o Web Push (aviso com o site fechado) fica indisponivel. As notificacoes in-app continuam funcionando.'
+        '[NotificationService] par VAPID indisponivel: o Web Push (aviso com o site fechado) fica indisponivel. As notificacoes in-app continuam funcionando.'
     );
 }
 

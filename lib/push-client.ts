@@ -55,6 +55,25 @@ function base64ParaUint8Array(base64: string): Uint8Array {
     return out;
 }
 
+/**
+ * Chave pública VAPID em uso no servidor.
+ *
+ * O servidor pode estar com a chave no ambiente OU com o par derivado
+ * deterministicamente (ver `lib/vapid-server.ts`). O cliente pergunta ao
+ * servidor em vez de confiar numa constante do bundle: assim o navegador
+ * assina sempre com a chave que o servidor usa.
+ */
+export async function obterChavePublicaVapid(): Promise<string> {
+    try {
+        const r = await fetch('/api/notifications/push-status', { cache: 'no-store' });
+        if (r.ok) {
+            const j = await r.json();
+            if (j?.chavePublica) return j.chavePublica as string;
+        }
+    } catch { /* sem rede: cai no valor local */ }
+    return chaveVapidPublica();
+}
+
 export function ehIOS(): boolean {
     if (typeof navigator === 'undefined') return false;
     const ua = navigator.userAgent;
@@ -149,9 +168,14 @@ export async function ativarPush(): Promise<{ ok: boolean; estado: EstadoPush; e
             return { ok: false, estado, erro: 'Não foi possível registrar o service worker.' };
         }
 
+        const chavePublica = await obterChavePublicaVapid();
+        if (!chavePublica) {
+            return { ok: false, estado, erro: 'O servidor não disponibilizou a chave VAPID. O aviso com o site fechado está indisponível.' };
+        }
+
         const sub = await reg.pushManager.subscribe({
             userVisibleOnly: true,
-            applicationServerKey: base64ParaUint8Array(chaveVapidPublica()) as unknown as BufferSource,
+            applicationServerKey: base64ParaUint8Array(chavePublica) as unknown as BufferSource,
         });
 
         const info = collectBrowserInfo();

@@ -73,12 +73,28 @@ describe('o fluxo de ativação é real', () => {
 
     test('a rota de status do push diz se a chave privada existe (sem vazar segredo)', () => {
         const status = readFileSync('app/api/notifications/push-status/route.ts', 'utf8');
-        assert.match(status, /chavePrivadaVapid\(\)/);
+        assert.match(status, /chavePrivadaDoServidor\(\)/);
         assert.match(status, /privadoConfigurado/);
         assert.ok(
             !/chavePrivada:\s*privado/.test(status),
             'a chave privada não pode ser devolvida na resposta'
         );
+    });
+
+    test('o servidor tem um par VAPID mesmo sem variavel de ambiente', () => {
+        const servidor = readFileSync('lib/vapid-server.ts', 'utf8');
+        assert.match(servidor, /hkdfSync/);
+        assert.match(servidor, /chavePublicaDoServidor/);
+        assert.match(servidor, /chavePrivadaDoServidor/);
+        // O serviço e a rota usam o par do servidor.
+        assert.match(servico, /chavePublicaDoServidor/);
+        assert.match(servico, /chavePrivadaDoServidor/);
+    });
+
+    test('o cliente pergunta ao servidor qual e a chave publica em uso', () => {
+        const cliente = readFileSync('lib/push-client.ts', 'utf8');
+        assert.match(cliente, /\/api\/notifications\/push-status/);
+        assert.match(cliente, /obterChavePublicaVapid/);
     });
 });
 
@@ -103,9 +119,15 @@ describe('a notificação vista não volta a aparecer', () => {
 });
 
 describe('segurança das chaves VAPID', () => {
-    test('a chave privada vem SEMPRE do ambiente', () => {
-        assert.match(servico, /process\.env\.VAPID_PRIVATE_KEY/);
+    test('a chave privada nunca e devolvida ao navegador', () => {
+        // O par pode vir do ambiente ou ser derivado no servidor; o que NUNCA
+        // pode acontecer e a chave privada chegar ao bundle do cliente.
         assert.match(chaves, /process\.env\.VAPID_PRIVATE_KEY/);
+        const cliente = readFileSync('lib/push-client.ts', 'utf8');
+        assert.ok(
+            !/VAPID_PRIVATE_KEY/.test(cliente),
+            'o cliente nao pode ler a chave privada'
+        );
     });
 
     test('a chave privada não está em nenhum arquivo versionado', () => {

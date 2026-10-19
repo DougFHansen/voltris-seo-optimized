@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { chavePublicaVapid, chavePrivadaVapid } from '@/lib/vapid-keys';
+import { chavePublicaDoServidor, chavePrivadaDoServidor } from '@/lib/vapid-server';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -29,16 +29,16 @@ export async function GET(req: NextRequest) {
         autenticado = !!data?.user?.id;
     }
 
-    const privado = chavePrivadaVapid();
+    const privado = chavePrivadaDoServidor();
     const disponivel = !!privado;
 
     return NextResponse.json({
         autenticado,
-        chavePublica: chavePublicaVapid(),
+        chavePublica: chavePublicaDoServidor(),
         privadoConfigurado: disponivel,
         disponivel,
         motivo: disponivel
             ? null
-            : 'O servidor não tem VAPID_PRIVATE_KEY configurado. O aviso com o site fechado só funciona depois que essa variável existir no ambiente.',
+            : 'O servidor não conseguiu obter um par VAPID. O aviso com o site fechado fica indisponível até isso ser resolvido.',
     });
 }
