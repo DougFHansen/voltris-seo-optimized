@@ -139,6 +139,13 @@ ALTER TABLE public.notifications ENABLE ROW LEVEL SECURITY;
 -- INSERT: sai a policy que deixava o cliente forjar notificação.
 DROP POLICY IF EXISTS "Users can insert their own notifications" ON public.notifications;
 
+-- A policy nova tambem precisa ser removida antes de ser recriada: sem este
+-- DROP, a segunda execucao do arquivo quebrava com
+--     42710: policy "service role only inserts notifications" already exists
+-- e ABORTAVA o resto do script (inclusive a secao 7, que cria as colunas
+-- de push_subscriptions).
+DROP POLICY IF EXISTS "service role only inserts notifications" ON public.notifications;
+
 CREATE POLICY "service role only inserts notifications"
     ON public.notifications FOR INSERT
     TO service_role
