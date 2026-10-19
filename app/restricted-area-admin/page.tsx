@@ -5,7 +5,7 @@ import AuthGuard from '@/components/AuthGuard';
 import { useState } from 'react';
 import {
   FiUsers, FiMail, FiMenu, FiChevronLeft, FiChevronRight,
-  FiLogOut, FiHome, FiZap, FiRefreshCw, FiSend
+  FiLogOut, FiHome, FiZap, FiRefreshCw, FiSend, FiCreditCard
 } from 'react-icons/fi';
 import { ClipboardList, TicketCheck } from 'lucide-react';
 import AdminOrdersTab from './orders/AdminOrdersTab';
@@ -15,6 +15,7 @@ import AdminUsersTab from './users/AdminUsersTab';
 import AdminEmailsTab from './emails/AdminEmailsTab';
 import AdminOverviewTab from './overview/AdminOverviewTab';
 import AdminClientsTab from './clients/AdminClientsTab';
+import AdminPurchasesTab from './purchases/AdminPurchasesTab';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -22,6 +23,7 @@ import Image from 'next/image';
 const tabs = [
   { label: 'Visão Geral',  value: 'overview',    icon: FiHome,         color: 'text-slate-400' },
   { label: 'Clientes',     value: 'clients',     icon: FiUsers,        color: 'text-cyan-400' },
+  { label: 'Compras',      value: 'purchases',   icon: FiCreditCard,   color: 'text-emerald-400' },
   { label: 'Pedidos',      value: 'orders',      icon: ClipboardList,  color: 'text-indigo-400' },
   { label: 'Tickets',      value: 'tickets',     icon: TicketCheck,    color: 'text-violet-400' },
   { label: 'Newsletter',   value: 'newsletter',  icon: FiMail,         color: 'text-amber-400' },
@@ -230,47 +232,25 @@ export default function AdminDashboard() {
                 </div>
               )}
 
-              {activeTab === 'overview' && (
-                <div className="space-y-5">
-                  {/* Welcome Card */}
-                  <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-                    <h3 className="text-base font-bold text-slate-100 mb-1">Bem-vindo, {user?.email}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed">
-                      Você está no painel administrativo de nível supremo. Utilize a barra lateral para gerenciar pedidos, tickets, newsletter e usuários.
-                    </p>
-                  </div>
-                  {/* Stats Grid */}
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    {[
-                      { label: 'Pedidos', icon: ClipboardList, color: 'text-indigo-400', bg: 'bg-indigo-500/10 border-indigo-500/20', tab: 'orders' },
-                      { label: 'Tickets',  icon: TicketCheck,   color: 'text-violet-400', bg: 'bg-violet-500/10 border-violet-500/20', tab: 'tickets' },
-                      { label: 'Newsletter', icon: FiMail,      color: 'text-amber-400',  bg: 'bg-amber-500/10 border-amber-500/20',  tab: 'newsletter' },
-                      { label: 'Usuários', icon: FiUsers,       color: 'text-emerald-400',bg: 'bg-emerald-500/10 border-emerald-500/20', tab: 'users' },
-                    ].map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <button
-                          key={item.tab}
-                          onClick={() => setActiveTab(item.tab)}
-                          className="bg-slate-900 border border-slate-800 rounded-xl p-4 text-left hover:border-slate-700 transition group"
-                        >
-                          <div className={`w-9 h-9 rounded-lg ${item.bg} border flex items-center justify-center mb-3`}>
-                            <Icon className={`w-4 h-4 ${item.color}`} />
-                          </div>
-                          <p className="text-xs font-semibold text-slate-300 group-hover:text-white transition">{item.label}</p>
-                          <p className="text-[10px] text-slate-600 mt-0.5">Clique para acessar →</p>
-                        </button>
-                      );
-                    })}
-                  </div>
+              {/*
+                O bloco antigo de "Visão Geral" (cartão de boas-vindas + quatro
+                botões de atalho) foi REMOVIDO, e não escondido.
 
-                </div>
-              )}
+                Motivo: existiam DOIS blocos com `activeTab === 'overview'` —
+                o antigo e o novo `AdminOverviewTab` — então a aba renderizava
+                os dois ao mesmo tempo. Pior, os atalhos duplicavam o que a
+                barra lateral já faz e apontavam só para 4 abas, escondendo as
+                novas (Clientes, Compras, E-mails).
+
+                A saudação foi para dentro de `AdminOverviewTab`, que agora é a
+                única visão geral e traz os números reais do negócio.
+              */}
 
               {activeTab === 'orders'     && <AdminOrdersTab />}
               {activeTab === 'tickets'    && <AdminTicketsTab />}
               {activeTab === 'overview'     && <AdminOverviewTab />}
               {activeTab === 'clients'      && <AdminClientsTab />}
+              {activeTab === 'purchases'    && <AdminPurchasesTab />}
               {activeTab === 'newsletter'   && <AdminNewsletterTab />}
               {activeTab === 'emails'     && <AdminEmailsTab />}
               {activeTab === 'users'      && <AdminUsersTab />}

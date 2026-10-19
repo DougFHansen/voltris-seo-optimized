@@ -89,6 +89,16 @@ export default function AdminOverviewTab() {
     return (
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
 
+            {/* Saudação: veio do bloco antigo de visão geral, removido por
+                duplicar `activeTab === 'overview'`. */}
+            <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6">
+                <h3 className="mb-1 text-base font-bold text-slate-100">Visão geral do negócio</h3>
+                <p className="text-sm leading-relaxed text-slate-500">
+                    Números reais do banco, calculados no servidor. A tabela <strong>Compras</strong> lista quem pagou,
+                    quando e por quanto.
+                </p>
+            </div>
+
             {/* ---------------- Filtro de período ---------------- */}
             <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex flex-wrap gap-2">
