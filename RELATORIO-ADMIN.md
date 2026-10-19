@@ -757,4 +757,63 @@ finge que está ativado.
 
 ---
 
+## 14. FATURA (2ª RODADA) E NOTIFICAÇÕES QUE NÃO REAPARECEM (2026-10-19)
+
+### 14.1 A fatura gerada não era igual ao original (e havia um bug de verdade)
+
+O operador colocou `fatura.pdf` na raiz do projeto e apontou: o papel não
+seguia o design, tinha "um card todo em branco" e não gerava as informações
+corretas. Renderizando os dois PDFs lado a lado (pdf.js + canvas), apareceram
+**três defeitos reais** — nenhum deles visível na leitura do código:
+
+1. **O card do bloco EMITENTE/CLIENTE era desenhado DEPOIS dos textos** e os
+   cobria. O documento saía com um cartão vazio e **sem os dados do emitente e
+   do cliente**. Agora todo cartão é desenhado antes do seu texto (fundo
+   primeiro) — e há teste que trava essa ordem.
+2. **A faixa em gradiente do topo era desenhada antes da banda escura** e
+   ficava escondida atrás dela. O papel saía sem a faixa rosa. Agora ela é
+   desenhada depois (rosa → azul, largura toda), como no original.
+3. **O logo VOLTRIS estava com o "V" azul.** No original o "V" é **rosa**
+   (traço 5,1) e o selo de confirmação é azul (traço 1).
+
+Também: "Dados do emitente: voltris.com.br" (sem `www`, como no original).
+
+Conferência final: os dois PDFs foram **renderizados em imagem** e comparados —
+o gerado agora sai com as mesmas cores, cards, posições e hierarquia do
+aplicativo desktop.
+
+### 14.2 Notificação que "reaparecia" a cada entrada
+
+Duas causas, ambas corrigidas:
+
+- **Som e toast disparavam também no carregamento.** A notificação que já
+  estava no banco tocava o som e abria o toast toda vez que o usuário entrava
+  no dashboard ou atualizava a página. Agora só o que **chega enquanto a tela
+  está aberta** avisa; o que já estava na lista é histórico.
+- **"O que o usuário vê, ele leu" não existia.** O sino, a Central de
+  Notificações do dashboard e a aba de Notificações do admin agora marcam como
+  **vistas** as notificações que foram exibidas (e a marcação persiste no
+  banco, com `read_at`).
+
+### 14.3 O push agora diz a verdade
+
+Nova rota `/api/notifications/push-status`: o painel informa se o servidor
+realmente tem a chave VAPID privada configurada (a chave privada nunca é
+exposta — só se ela existe). No estado atual, a resposta é:
+
+> `privadoConfigurado=false` — "O servidor não tem VAPID_PRIVATE_KEY
+> configurado. O aviso com o site fechado só funciona depois que essa
+> variável existir no ambiente."
+
+Ou seja: o operador vê exatamente o que falta, em vez de o sistema fingir
+que está ativado.
+
+**Pendência (1 linha na Vercel):**
+
+```
+VAPID_PRIVATE_KEY=qDaHRV_X6HF2FOx4aegcs-I8E8jJnncyoRHV0z42Okk
+```
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*
