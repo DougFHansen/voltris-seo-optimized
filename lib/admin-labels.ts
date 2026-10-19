@@ -170,6 +170,17 @@ const ORIGEM: Record<string, string> = {
     google: 'Login com Google',
 };
 
+/** Estados da solicitação de reembolso (`refund_requests.status`). */
+const REEMBOLSO: Record<string, string> = {
+    requested: 'Aguardando análise',
+    processing: 'Em processamento',
+    succeeded: 'Reembolsado',
+    rejected: 'Recusado',
+    failed: 'Falhou',
+    canceled: 'Cancelado',
+    cancelled: 'Cancelado',
+};
+
 const MAPAS: Record<string, Record<string, string>> = {
     pagamento: PAGAMENTO,
     assinatura: ASSINATURA,
@@ -184,6 +195,7 @@ const MAPAS: Record<string, Record<string, string>> = {
     ticket: TICKET,
     erro_email: ERRO_EMAIL,
     origem: ORIGEM,
+    reembolso: REEMBOLSO,
 };
 
 export type DomAdmin = keyof typeof MAPAS;

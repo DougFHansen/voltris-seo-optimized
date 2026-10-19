@@ -121,7 +121,7 @@ export async function GET(req: NextRequest) {
             return {
                 id: r.id,
                 status: r.status,
-                statusRotulo: rotulo(r.status, 'pagamento') === r.status ? (r.status ?? '—') : rotulo(r.status, 'pagamento'),
+                statusRotulo: rotulo(r.status, 'reembolso'),
                 tom: tomDoStatus(r.status),
                 amount: Number(r.amount ?? 0),
                 currency: (r.currency ?? 'BRL').toUpperCase(),

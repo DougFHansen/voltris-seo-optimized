@@ -669,4 +669,92 @@ original do dado foi restaurado em seguida (a notificação do Álvaro segue
 
 ---
 
+## 13. REEMBOLSOS, WEB PUSH E FATURA (2026-10-19)
+
+### 13.1 Aba "Reembolsos" (o pedido do cliente agora chega ao painel)
+
+O cliente pede reembolso pelo painel (`/api/stripe/refund`) → a solicitação é
+gravada em `refund_requests` e **o admin era avisado por e-mail, sem nenhuma
+tela**. Agora existe a aba **Reembolsos** (`/restricted-area-admin?tab=reembolsos`)
+com os dados que o atendimento precisa para decidir:
+
+nome, e-mail (mascarado), telefone, cidade/UF, login, plano, ciclo, valor pago,
+valor do reembolso, **chave da licença**, limite de dispositivos, validade,
+referência da compra, base da política (art. 49 do CDC), mensagem do cliente e
+o estado real do pedido no processador.
+
+O operador **aprova** (executa o reembolso na Stripe, com chave de idempotência
+determinística — o mesmo pedido nunca devolve dinheiro duas vezes) ou **recusa**
+(com justificativa). O cliente é notificado nos dois casos e a decisão fica na
+auditoria (`refunds.read` para ler, `refunds.write` para decidir).
+
+### 13.2 Web Push — o aviso com o site fechado
+
+O botão "ativar notificações" pedia a permissão do navegador e registrava o
+service worker, mas **não assinava o Web Push**: o usuário achava que tinha
+ativado e o aviso com o app fechado nunca chegava.
+
+Agora o fluxo é real: permissão → service worker na raiz → inscrição com a chave
+VAPID → gravação em `/api/push-subscription` (o `user_id` vem do token, nunca
+do navegador). Um **único componente** (`NotificationActivation`) serve o
+dashboard e o painel admin, e mostra o estado lido do navegador: ativo, inativo,
+permissão negada, VAPID ausente e a exigência do iOS (adicionar à Tela de
+Início). Há botão de **teste** e de **desativar**. O service worker passou a
+levar o usuário para a **tela do assunto** ao clicar (antes abria sempre a home).
+
+A chave **pública** do VAPID ficou versionada (é pública por design); a
+**privada** continua só no ambiente (`VAPID_PRIVATE_KEY`).
+
+> **Segurança:** um arquivo temporário de inspeção foi versionado por engano e
+> continha a chave privada. A chave foi **rotacionada na hora** e o arquivo
+> removido — a antiga deve ser considerada queimada.
+
+### 13.3 Fatura em PDF idêntica ao documento do aplicativo desktop
+
+O desenho NÃO foi inventado: foi extraído do PDF de referência (streams de
+conteúdo, cores, coordenadas, fontes e textos) e reproduzido com `pdf-lib` e as
+**mesmas fontes** (Lato Black/Semibold/Regular/Bold + DejaVu Sans Mono).
+
+Comparação de posição, tamanho e cor de cada texto: idêntica (bandas #111327 e
+#161A34, hachuras #2E3156, gradiente rosa→azul, marca VOLTRIS, cartões
+#F5F6FC/#F2ECFA, cartão escuro da chave com barra azul, divisória em x=298,
+rodapé nas mesmas alturas). O nome do arquivo segue o padrão do desktop
+(`Fatura_VOLTRIS_PRO_Alvaro_Araujo.pdf`).
+
+**Nenhum `.sql` foi necessário:** a fatura usa só dados que já existem
+(`payments`, `licenses`, `profiles`).
+
+**Correção de bug encontrada no caminho:** as fontes embutidas NÃO podem ser
+compartilhadas entre documentos — o primeiro PDF saía certo e os seguintes
+saíam com texto ilegível. Agora só os *arquivos* ficam em cache; a fonte é
+criada por PDF.
+
+### 13.4 Verificação no ar
+
+| Teste | Resultado |
+|---|---|
+| `GET /api/admin/refunds` | 200, com nome, e-mail mascarado, telefone, compra e licença |
+| Demais rotas do painel | 200 |
+| `sw.js` servido | handler de push + clique levando ao destino |
+| Bundle do painel | aba "Reembolsos" + componente de ativação |
+
+```
+npm test -> 806 testes, 0 falha
+npx next build -> exit 0
+```
+
+### 13.5 Pendência de ambiente (1 linha)
+
+Para o aviso chegar **com o site fechado**, a Vercel precisa da chave privada:
+
+```
+VAPID_PRIVATE_KEY=qDaHRV_X6HF2FOx4aegcs-I8E8jJnncyoRHV0z42Okk
+```
+
+Sem ela, o sistema avisa dentro do site (sino, toast, notificação do
+navegador com a aba aberta) e **diz** que o push está indisponível — não
+finge que está ativado.
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*
