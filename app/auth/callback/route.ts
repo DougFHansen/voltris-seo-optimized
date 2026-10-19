@@ -1,6 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import { NextRequest, NextResponse } from 'next/server';
 import { TelegramService } from '@/services/telegramService';
+import { precisaComplementar } from '@/lib/profile-completeness';
 
 export async function GET(request: NextRequest) {
   const { searchParams, origin } = new URL(request.url);
@@ -100,7 +101,7 @@ export async function GET(request: NextRequest) {
               }
             }
             
-            return NextResponse.redirect(`${origin}/perfil?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
+            return NextResponse.redirect(`${origin}/perfil?force=1&completar=1&google=1&redirect=${encodeURIComponent(next === '/' ? '/dashboard' : next)}`);
           }
           
           return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent('Erro ao buscar perfil do usuário')}`);
@@ -108,18 +109,20 @@ export async function GET(request: NextRequest) {
 
         console.log('✅ [OAuth Callback] Perfil encontrado:', profile);
 
-        // Se campos obrigatórios estão faltando, redirecionar para completar cadastro
-        const missingFields = !profile?.phone || !profile?.city || !profile?.state || !profile?.cep;
-        
-        if (missingFields) {
+        // A regra é a MESMA do AuthGuard e da página /perfil: conta social sem
+        // os campos obrigatórios precisa completar antes de usar o site.
+        // Aqui usava uma checagem solta (phone/city/state/cep) que não
+        // cobria `login` nem `neighborhood` — os dois campos que o trigger
+        // quebrado nunca gravou.
+        if (precisaComplementar(data.user, profile)) {
           console.log('🔍 [OAuth Callback] Perfil incompleto, redirecionando para completar cadastro');
-          return NextResponse.redirect(`${origin}/perfil?completar=1&google=1&redirect=${encodeURIComponent(next)}`);
-        } else {
-          console.log('✅ [OAuth Callback] Perfil completo, redirecionando para:', next);
-          // Se next é '/', redirecionar para dashboard como fallback
-          const finalDestination = next === '/' ? '/dashboard' : next;
-          return NextResponse.redirect(`${origin}${finalDestination}`);
+          const destino = next === '/' ? '/dashboard' : next;
+          return NextResponse.redirect(`${origin}/perfil?force=1&completar=1&google=1&redirect=${encodeURIComponent(destino)}`);
         }
+
+        console.log('✅ [OAuth Callback] Perfil completo, redirecionando para:', next);
+        const finalDestination = next === '/' ? '/dashboard' : next;
+        return NextResponse.redirect(`${origin}${finalDestination}`);
       }
     } catch (error) {
       console.error('❌ [OAuth Callback] Erro inesperado no callback:', error);

@@ -1,9 +1,10 @@
 'use client';
 
 import { useAuth } from '@/app/hooks/useAuth';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import { createClient } from '@/utils/supabase/client';
+import { precisaComplementar } from '@/lib/profile-completeness';
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -13,12 +14,21 @@ interface AuthGuardProps {
 export default function AuthGuard({ children, requireAdmin = false }: AuthGuardProps) {
   const { user, isAdmin, profile, loading } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const supabase = createClient();
 
   useEffect(() => {
     if (loading) return;
     if (!user) {
       router.push('/login');
+      return;
+    }
+
+    // Perfil incompleto em conta social (Google): o usuário tem de completar
+    // os dados antes de usar o site. `profile === null` significa "ainda
+    // carregando" — esperar para não expulsar quem tem o perfil completo.
+    if (profile !== null && precisaComplementar(user, profile) && pathname !== '/perfil') {
+      router.replace(`/perfil?force=1&redirect=${encodeURIComponent(pathname)}`);
       return;
     }
 
@@ -37,7 +47,7 @@ export default function AuthGuard({ children, requireAdmin = false }: AuthGuardP
       if (profile === null) return;
       router.push('/dashboard');
     }
-  }, [user, isAdmin, profile, loading, requireAdmin, router]);
+  }, [user, isAdmin, profile, loading, requireAdmin, router, pathname]);
 
   // Enquanto carrega o estado inicial de SESSÃO, não bloqueia nada (para evitar flickering) ou aguarda
   // Mas se já temos o usuário, podemos renderizar, mesmo que o perfil ainda esteja em loading
@@ -45,6 +55,9 @@ export default function AuthGuard({ children, requireAdmin = false }: AuthGuardP
 
   // Sem usuário: não renderiza nada (redirect em andamento)
   if (!user) return null;
+
+  // Perfil social incompleto: não renderiza a página protegida (redirect em andamento)
+  if (profile !== null && pathname !== '/perfil' && precisaComplementar(user, profile)) return null;
 
   if (requireAdmin && !isAdmin) return null;
 

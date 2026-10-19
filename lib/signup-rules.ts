@@ -69,14 +69,8 @@ export function validateBrazilianPhone(v: string): boolean {
 }
 
 export function validateSignupStep1(d: SignupStep1): string | null {
-    const login = String(d.login ?? '').trim();
-    if (!login) return 'Preencha o Usuário.';
-    if (login.length < 3 || login.length > 30) {
-        return 'O usuário deve ter entre 3 e 30 caracteres.';
-    }
-    if (!/^[A-Za-z0-9._-]+$/.test(login)) {
-        return 'O usuário só pode ter letras, números, ponto, hífen ou sublinhado (sem espaços).';
-    }
+    const erroLogin = validateLoginValue(d.login);
+    if (erroLogin) return erroLogin;
     if (!String(d.email ?? '').trim()) return 'Preencha o E-mail.';
     if (!isValidEmail(d.email)) return 'Formato de e-mail inválido.';
     if (String(d.password ?? '').length < 8) {
@@ -84,6 +78,22 @@ export function validateSignupStep1(d: SignupStep1): string | null {
     }
     if (d.passwordStrength < 3) {
         return 'Sua senha é fraca. Use letras maiúsculas, números e símbolos.';
+    }
+    return null;
+}
+
+/**
+ * Regra de usuário (login) isolada — usada tanto no cadastro quanto na
+ * etapa de complementação de perfil das contas sociais.
+ */
+export function validateLoginValue(v: string): string | null {
+    const login = String(v ?? '').trim();
+    if (!login) return 'Preencha o Usuário.';
+    if (login.length < 3 || login.length > 30) {
+        return 'O usuário deve ter entre 3 e 30 caracteres.';
+    }
+    if (!/^[A-Za-z0-9._-]+$/.test(login)) {
+        return 'O usuário só pode ter letras, números, ponto, hífen ou sublinhado (sem espaços).';
     }
     return null;
 }
