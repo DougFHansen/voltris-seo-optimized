@@ -1,217 +1,169 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { createClient } from '@/utils/supabase/client';
-import { FiChevronUp, FiChevronDown, FiFilter, FiTool } from 'react-icons/fi';
+import { ShieldAlert } from 'lucide-react';
+import { FiSearch, FiRefreshCw, FiTool, FiInfo } from 'react-icons/fi';
 
-interface ServiceRequest {
-  id: string;
-  created_at: string;
-  status: string;
-  requested_services: unknown[];
-  scheduling_type: string;
-  requested_datetime?: string;
-  admin_notes?: string;
-  final_price: number;
-  order_id?: string;
-  profiles?: {
-    full_name: string;
-    email: string;
-  };
+/**
+ * ABA SOLICITAÇÕES DE SERVIÇO — LEITURA MOVIDA PARA O SERVIDOR.
+ *
+ * Mesma correção das demais abas legadas: a leitura saía do navegador com a
+ * chave `anon` e dependia de policy RLS, o que produz tela vazia sem erro.
+ *
+ * A tabela `service_requests` também está VAZIA no banco (0 linhas,
+ * confirmado por consulta direta). A aba diz isso explicitamente em vez de
+ * fingir um estado que não existe.
+ */
+
+interface Req {
+    id: string;
+    [k: string]: unknown;
 }
 
+const PAGE_SIZE = 25;
+
 export default function AdminServiceRequestsTab() {
-  const [serviceRequests, setServiceRequests] = useState<ServiceRequest[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState('all');
-  const [sortBy, setSortBy] = useState('date');
-  const [sortOrder, setSortOrder] = useState('desc');
-  const supabase = createClient();
+    const [rows, setRows] = useState<Req[]>([]);
+    const [total, setTotal] = useState(0);
+    const [page, setPage] = useState(0);
+    const [search, setSearch] = useState('');
+    const [debounced, setDebounced] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchServiceRequests = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('service_requests')
-          .select(`*, profiles:user_id (full_name, email)`)
-          .order('created_at', { ascending: false });
-        if (error) throw error;
-        setServiceRequests(data || []);
-      } catch {}
-      finally { setLoading(false); }
-    };
-    fetchServiceRequests();
-  }, [supabase]);
+    useEffect(() => {
+        const t = setTimeout(() => { setDebounced(search.trim()); setPage(0); }, 350);
+        return () => clearTimeout(t);
+    }, [search]);
 
-  const filteredServiceRequests = serviceRequests.filter(r => filter === 'all' || r.status === filter);
-  const sortedServiceRequests = [...filteredServiceRequests].sort((a, b) => {
-    if (sortBy === 'date') return sortOrder === 'desc'
-      ? new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-      : new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
-    if (sortBy === 'total') return sortOrder === 'desc' ? b.final_price - a.final_price : a.final_price - b.final_price;
-    return 0;
-  });
+    const load = useCallback(async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const p = new URLSearchParams({
+                resource: 'service_requests',
+                limit: String(PAGE_SIZE),
+                offset: String(page * PAGE_SIZE),
+            });
+            if (debounced) p.set('q', debounced);
 
-  const updateServiceRequestStatus = async (requestId: string, newStatus: string) => {
-    try {
-      const { error } = await supabase.from('service_requests').update({ status: newStatus }).eq('id', requestId);
-      if (error) throw error;
-      setServiceRequests(serviceRequests.map(r => r.id === requestId ? { ...r, status: newStatus } : r));
-    } catch {}
-  };
+            const res = await fetch(`/api/admin/directory?${p}`, { cache: 'no-store' });
+            const json = await res.json();
 
-  const getStatusBadge = (status: string) => {
-    switch (status) {
-      case 'completed':  return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20';
-      case 'pending':    return 'bg-amber-500/10 text-amber-400 border-amber-500/20';
-      case 'scheduled':  return 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20';
-      case 'cancelled':  return 'bg-rose-500/10 text-rose-400 border-rose-500/20';
-      default:           return 'bg-slate-500/10 text-slate-400 border-slate-500/20';
-    }
-  };
+            if (res.status === 401) { window.location.href = '/login'; return; }
+            if (!res.ok) { setError(json?.error ?? 'Não foi possível carregar as solicitações.'); return; }
 
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'completed': return 'Concluído';
-      case 'pending':   return 'Pendente';
-      case 'scheduled': return 'Agendado';
-      case 'cancelled': return 'Cancelado';
-      default:          return 'Desconhecido';
-    }
-  };
+            setRows(json.items ?? []);
+            setTotal(json.total ?? 0);
+        } catch {
+            setError('Falha de rede ao consultar as solicitações.');
+        } finally {
+            setLoading(false);
+        }
+    }, [page, debounced]);
 
-  if (loading) {
+    useEffect(() => { load(); }, [load]);
+
+    const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
     return (
-      <div className="flex items-center justify-center py-20">
-        <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
 
-  return (
-    <div className="space-y-5">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
-          <h1 className="text-lg font-bold text-slate-100">Solicitações Técnicas</h1>
-          <p className="text-xs text-slate-500 mt-0.5">{serviceRequests.length} solicitação(ões) no sistema</p>
-        </div>
-      </div>
-
-      {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2">
-          <FiFilter className="text-slate-500 w-3.5 h-3.5" />
-          <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-300 focus:outline-none focus:border-indigo-500/50 transition"
-          >
-            <option value="all">Todos os Status</option>
-            <option value="completed">Concluídos</option>
-            <option value="pending">Pendentes</option>
-            <option value="scheduled">Agendados</option>
-            <option value="cancelled">Cancelados</option>
-          </select>
-        </div>
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-sm text-slate-300 focus:outline-none focus:border-indigo-500/50 transition"
-        >
-          <option value="date">Ordenar por Data</option>
-          <option value="total">Ordenar por Valor</option>
-        </select>
-        <button
-          onClick={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')}
-          className="flex items-center gap-1.5 px-3 py-2 bg-slate-900 border border-slate-800 hover:bg-slate-800 rounded-xl text-slate-400 transition text-xs"
-        >
-          {sortOrder === 'desc' ? <FiChevronDown className="w-3.5 h-3.5" /> : <FiChevronUp className="w-3.5 h-3.5" />}
-          {sortOrder === 'desc' ? 'Decrescente' : 'Crescente'}
-        </button>
-      </div>
-
-      {/* Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-        <div className="overflow-x-auto">
-          {loading ? (
-            <div className="p-6 text-center text-slate-500 text-sm">Carregando...</div>
-          ) : sortedServiceRequests.length === 0 ? (
-            <div className="p-12 text-center">
-              <div className="w-12 h-12 mx-auto mb-3 bg-slate-800 rounded-xl flex items-center justify-center">
-                <FiTool className="w-5 h-5 text-slate-600" />
-              </div>
-              <p className="text-sm text-slate-500">Nenhuma solicitação encontrada</p>
+            <div className="flex items-start gap-3 rounded-xl border border-blue-500/30 bg-blue-500/5 p-4">
+                <FiInfo className="mt-0.5 shrink-0 text-blue-400" size={18} />
+                <p className="text-xs leading-relaxed text-blue-200/80">
+                    A tabela <code>service_requests</code> está <strong>zerada</strong> no banco. Os serviços
+                    contratados pelo VOLTRIS BR são registrados em <code>payments</code> com
+                    <code> invoice_kind = 'service'</code> e aparecem na aba <strong>Compras</strong>.
+                </p>
             </div>
-          ) : (
-            <table className="min-w-full">
-              <thead>
-                <tr className="border-b border-slate-800 bg-slate-800/30">
-                  {['ID', 'Cliente', 'Status', 'Agendamento', 'Data', 'Total', 'Serviços', 'Ações'].map(h => (
-                    <th key={h} className="px-4 py-3 text-left text-[10px] font-semibold text-slate-500 uppercase tracking-widest whitespace-nowrap">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {sortedServiceRequests.map((request, index) => (
-                  <motion.tr
-                    key={request.id}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: index * 0.04 }}
-                    className="border-b border-slate-800/50 hover:bg-slate-800/20 transition"
-                  >
-                    <td className="px-4 py-3 text-xs font-mono text-slate-500">#{request.id.slice(0, 8)}</td>
-                    <td className="px-4 py-3">
-                      <p className="text-sm text-slate-200 font-medium">{request.profiles?.full_name || '—'}</p>
-                      <p className="text-[10px] text-slate-600">{request.profiles?.email || '—'}</p>
-                    </td>
-                    <td className="px-4 py-3">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-semibold border ${getStatusBadge(request.status)}`}>
-                        {getStatusText(request.status)}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3 text-xs text-slate-400">
-                      {request.scheduling_type === 'now' ? 'Imediato' : 'Agendado'}
-                      {request.requested_datetime && (
-                        <div className="text-[10px] text-slate-600">{new Date(request.requested_datetime).toLocaleDateString('pt-BR')}</div>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 text-xs text-slate-500 whitespace-nowrap">
-                      {new Date(request.created_at).toLocaleDateString('pt-BR')}
-                    </td>
-                    <td className="px-4 py-3 text-sm font-semibold text-slate-200 whitespace-nowrap">
-                      R$ {request.final_price.toFixed(2)}
-                    </td>
-                    <td className="px-4 py-3 text-xs text-slate-500">
-                      <span className="text-slate-400">{request.requested_services?.length || 0} serviço(s)</span>
-                      {request.requested_services?.slice(0, 2).map((service: unknown, i: number) => (
-                        <div key={i} className="text-[10px] text-slate-600">• {(service as any).service_name || 'Serviço'}</div>
-                      ))}
-                      {(request.requested_services?.length || 0) > 2 && (
-                        <div className="text-[10px] text-slate-700">+{request.requested_services!.length - 2} mais</div>
-                      )}
-                    </td>
-                    <td className="px-4 py-3">
-                      <select
-                        value={request.status}
-                        onChange={(e) => updateServiceRequestStatus(request.id, e.target.value)}
-                        className="bg-slate-800 border border-slate-700 rounded-lg px-2 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500/50 transition"
-                      >
-                        <option value="pending">Pendente</option>
-                        <option value="scheduled">Agendado</option>
-                        <option value="completed">Concluído</option>
-                        <option value="cancelled">Cancelado</option>
-                      </select>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-      </div>
-    </div>
-  );
+
+            <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="relative flex-1">
+                    <FiSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16} />
+                    <input
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Buscar por nome ou e-mail…"
+                        className="w-full rounded-lg border border-slate-700 bg-slate-800/80 py-2 pl-9 pr-3 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
+                    />
+                </div>
+                <button onClick={load} disabled={loading}
+                    className="self-end rounded-lg bg-slate-800 p-2 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50 lg:self-auto">
+                    <FiRefreshCw size={14} className={loading ? 'animate-spin' : ''} />
+                </button>
+            </div>
+
+            {error && (
+                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                    <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
+                    <div className="text-sm">
+                        <p className="font-semibold text-rose-300">Não foi possível carregar</p>
+                        <p className="text-rose-200/80">{error}</p>
+                    </div>
+                </div>
+            )}
+
+            <div className="overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/60">
+                {loading && rows.length === 0 ? (
+                    <div className="flex items-center justify-center gap-3 py-16 text-slate-400">
+                        <FiRefreshCw className="animate-spin" size={20} /><span className="text-sm">Carregando…</span>
+                    </div>
+                ) : rows.length === 0 ? (
+                    <div className="py-16 text-center">
+                        <FiTool className="mx-auto mb-3 text-slate-600" size={36} />
+                        <p className="text-sm text-slate-400">
+                            {debounced ? 'Nenhuma solicitação com esta busca.' : 'Nenhuma solicitação registrada.'}
+                        </p>
+                        {!debounced && (
+                            <p className="mt-1 text-xs text-slate-600">
+                                Confirmado no banco: 0 registros.
+                            </p>
+                        )}
+                    </div>
+                ) : (
+                    <div className="overflow-x-auto">
+                        <table className="w-full min-w-[720px] text-left text-sm">
+                            <thead className="border-b border-slate-700/60 text-xs uppercase tracking-wider text-slate-500">
+                                <tr>
+                                    <th className="px-4 py-3 font-semibold">Cliente</th>
+                                    <th className="px-4 py-3 font-semibold">Serviço</th>
+                                    <th className="px-4 py-3 font-semibold">Status</th>
+                                    <th className="px-4 py-3 font-semibold">Aberto em</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-800">
+                                {rows.map((r: any) => (
+                                    <tr key={r.id} className="hover:bg-slate-800/40">
+                                        <td className="px-4 py-3 text-slate-200">
+                                            {r.name ?? r.customer_name ?? '—'}
+                                            {r.email && <p className="text-xs text-slate-500">{r.email}</p>}
+                                        </td>
+                                        <td className="px-4 py-3 text-xs text-slate-300">{r.service_type ?? '—'}</td>
+                                        <td className="px-4 py-3 text-xs text-slate-300">{r.status ?? '—'}</td>
+                                        <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-500">
+                                            {r.created_at ? new Date(r.created_at).toLocaleDateString('pt-BR') : '—'}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+
+                {total > PAGE_SIZE && (
+                    <div className="flex items-center justify-between border-t border-slate-700/60 px-4 py-3 text-xs text-slate-400">
+                        <span>{page * PAGE_SIZE + 1}–{Math.min((page + 1) * PAGE_SIZE, total)} de {total}</span>
+                        <div className="flex gap-2">
+                            <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0}
+                                className="rounded-lg bg-slate-800 px-3 py-1.5 font-semibold transition hover:bg-slate-700 disabled:opacity-40">Anterior</button>
+                            <button onClick={() => setPage((p) => (p + 1 < totalPages ? p + 1 : p))} disabled={page + 1 >= totalPages}
+                                className="rounded-lg bg-slate-800 px-3 py-1.5 font-semibold transition hover:bg-slate-700 disabled:opacity-40">Próxima</button>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </motion.div>
+    );
 }

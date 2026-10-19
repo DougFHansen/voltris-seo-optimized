@@ -1,233 +1,229 @@
-import React, { useEffect, useState } from 'react';
-import { createClient } from '@/utils/supabase/client';
-import ConfirmModal from '@/components/ConfirmModal';
-import { FiTrash2, FiUserX, FiUserCheck, FiUserPlus, FiUsers, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { toast } from 'react-hot-toast';
-import { motion } from 'framer-motion';
+'use client';
 
-interface UserProfile {
-  id: string;
-  login: string | null;
-  full_name: string | null;
-  phone: string | null;
-  city: string | null;
-  neighborhood: string | null;
-  state: string | null;
-  cep: string | null;
-  created_at: string;
-  is_blocked: boolean;
-  is_deleted: boolean;
-  email?: string | null;
+import { useCallback, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import { ShieldAlert } from 'lucide-react';
+import { FiSearch, FiRefreshCw, FiUsers, FiDownload } from 'react-icons/fi';
+
+/**
+ * ABA LEGADA — LEITURA MOVIDA PARA O SERVIDOR.
+ *
+ * O QUE MUDOU E POR QUÊ
+ * ---------------------
+ * Esta aba lia `profiles` com o cliente do navegador e a chave `anon`. Isso
+ * significa que a lista dependia de uma policy RLS existir para o papel do
+ * usuário: se faltasse, a tela vinha VAZIA e sem nenhuma mensagem de erro —
+ * era impossível distinguir "não há clientes" de "a consulta foi bloqueada".
+ *
+ * Agora a leitura passa por `/api/admin/directory`, que usa `service_role` no
+ * servidor (ignora RLS) e exige a capacidade `clients.read`. Duas
+ * consequências: a aba não depende de policy nenhuma, e o e-mail chega
+ * MASCARADO, o que evita vazar a base inteira por um bundle do navegador.
+ *
+ * O que NÃO mudou: a lista continua sendo de CLIENTES. Para ver quem PAGOU,
+ * com data e valor, a aba é "Compras".
+ */
+
+interface UserRow {
+    id: string;
+    login: string | null;
+    email: string;
+    full_name: string | null;
+    phone: string | null;
+    city: string | null;
+    state: string | null;
+    is_admin: boolean;
+    role: string | null;
+    is_blocked: boolean;
+    created_at: string;
 }
 
-const AdminUsersTab: React.FC = () => {
-  const [users, setUsers] = useState<UserProfile[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [actionLoading, setActionLoading] = useState<string | null>(null);
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [confirmMessage, setConfirmMessage] = useState('');
-  const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null);
+const PAGE_SIZE = 25;
 
-  const [page, setPage] = useState(0);
-  const [pageSize] = useState(10);
-  const [totalCount, setTotalCount] = useState(0);
+export default function AdminUsersTab() {
+    const [rows, setRows] = useState<UserRow[]>([]);
+    const [total, setTotal] = useState(0);
+    const [page, setPage] = useState(0);
+    const [search, setSearch] = useState('');
+    const [debounced, setDebounced] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
-  const fetchUsers = async () => {
-    setLoading(true);
-    const supabase = createClient();
-    const { data, error, count } = await supabase
-      .from('profiles')
-      .select('*', { count: 'exact' })
-      .order('created_at', { ascending: false })
-      .range(page * pageSize, (page + 1) * pageSize - 1);
-    if (!error && data) {
-      setUsers(data);
-      if (count !== null) setTotalCount(count);
-    }
-    setLoading(false);
-  };
+    useEffect(() => {
+        const t = setTimeout(() => { setDebounced(search.trim()); setPage(0); }, 350);
+        return () => clearTimeout(t);
+    }, [search]);
 
-  useEffect(() => { fetchUsers(); }, [page]);
+    const load = useCallback(async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const p = new URLSearchParams({
+                resource: 'users',
+                limit: String(PAGE_SIZE),
+                offset: String(page * PAGE_SIZE),
+            });
+            if (debounced) p.set('q', debounced);
 
-  const handleBlockToggle = async (user: UserProfile) => {
-    setActionLoading(user.id);
-    const supabase = createClient();
-    await supabase.from('profiles').update({ is_blocked: !user.is_blocked, updated_at: new Date().toISOString() }).eq('id', user.id);
-    await fetchUsers();
-    setActionLoading(null);
-    toast.success(user.is_blocked ? 'Usuário desbloqueado!' : 'Usuário bloqueado!');
-  };
+            const res = await fetch(`/api/admin/directory?${p}`, { cache: 'no-store' });
+            const json = await res.json();
 
-  const handleDeleteToggle = (user: UserProfile) => {
-    setConfirmMessage(user.is_deleted ? 'Restaurar este usuário?' : 'Excluir este usuário?');
-    setConfirmAction(() => async () => {
-      setActionLoading(user.id);
-      const supabase = createClient();
-      const { error } = await supabase.from('profiles').update({
-        is_deleted: !user.is_deleted,
-        updated_at: new Date().toISOString()
-      }).eq('id', user.id);
-      if (error) {
-        toast.error('Erro ao atualizar usuário: ' + error.message);
-        setActionLoading(null);
-        return;
-      }
-      await fetchUsers();
-      setActionLoading(null);
-      setShowConfirm(false);
-      toast.success(user.is_deleted ? 'Usuário restaurado!' : 'Usuário excluído!');
-    });
-    setShowConfirm(true);
-  };
+            if (res.status === 401) { window.location.href = '/login'; return; }
+            if (!res.ok) { setError(json?.error ?? 'Não foi possível carregar os usuários.'); return; }
 
-  const totalPages = Math.ceil(totalCount / pageSize);
+            setRows(json.items ?? []);
+            setTotal(json.total ?? 0);
+        } catch {
+            setError('Falha de rede ao consultar os usuários.');
+        } finally {
+            setLoading(false);
+        }
+    }, [page, debounced]);
 
-  if (loading && users.length === 0) {
+    useEffect(() => { load(); }, [load]);
+
+    const exportar = () => {
+        const head = ['Nome', 'Email (mascarado)', 'Telefone', 'Cidade', 'UF', 'Admin', 'Bloqueado', 'Cadastro'];
+        const linhas = rows.map((r) => [
+            (r.full_name ?? r.login ?? '').replace(/"/g, '""'),
+            r.email,
+            (r.phone ?? '').replace(/"/g, '""'),
+            r.city ?? '', r.state ?? '',
+            r.is_admin ? 'sim' : 'não',
+            r.is_blocked ? 'sim' : 'não',
+            new Date(r.created_at).toLocaleDateString('pt-BR'),
+        ].map((v) => `"${v}"`).join(';'));
+
+        // BOM no inicio: sem isso o Excel abre o CSV em latin-1 e os acentos
+        // viram lixo -- exatamente o tipo de bug "sem mensagem de erro".
+        const blob = new Blob(['﻿' + [head.join(';'), ...linhas].join('\n')],
+            { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `voltris-usuarios-${new Date().toISOString().slice(0, 10)}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+        toast.success(`Exportados ${rows.length} usuário(s) desta página.`);
+    };
+
+    const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
     return (
-      <div className="flex items-center justify-center py-20">
-        <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-5">
 
-  return (
-    <div className="space-y-5">
-      {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
-          <h1 className="text-lg font-bold text-slate-100">Gerenciar Usuários</h1>
-          <p className="text-xs text-slate-500 mt-0.5">{totalCount} usuário(s) cadastrado(s) • Pág. {page + 1}/{totalPages || 1}</p>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <FiUsers className="w-4 h-4 text-emerald-400" />
-          <span className="text-xs text-slate-500">{totalCount} total</span>
-        </div>
-      </div>
+            <div className="flex flex-col gap-3 rounded-xl border border-slate-700/60 bg-slate-900/60 p-4 lg:flex-row lg:items-center lg:justify-between">
+                <div className="relative flex-1">
+                    <FiSearch className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" size={16} />
+                    <input
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Nome, e-mail, login ou telefone…"
+                        className="w-full rounded-lg border border-slate-700 bg-slate-800/80 py-2 pl-9 pr-3 text-sm text-slate-200 outline-none placeholder:text-slate-500 focus:border-indigo-500"
+                    />
+                </div>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={exportar}
+                        disabled={rows.length === 0}
+                        className="flex items-center gap-2 rounded-lg bg-slate-800 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:bg-slate-700 disabled:opacity-40"
+                    >
+                        <FiDownload size={14} /> Exportar
+                    </button>
+                    <button
+                        onClick={load}
+                        disabled={loading}
+                        className="rounded-lg bg-slate-800 p-2 text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                    >
+                        <FiRefreshCw size={14} className={loading ? 'animate-spin' : ''} />
+                    </button>
+                </div>
+            </div>
 
-      {/* Table */}
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="min-w-full">
-            <thead>
-              <tr className="border-b border-slate-800 bg-slate-800/30">
-                <th className="px-4 py-3 text-left text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Login</th>
-                <th className="px-4 py-3 text-left text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Nome Completo</th>
-                <th className="px-4 py-3 text-left text-[10px] font-semibold text-slate-500 uppercase tracking-widest hidden md:table-cell">E-mail</th>
-                <th className="px-4 py-3 text-left text-[10px] font-semibold text-slate-500 uppercase tracking-widest hidden lg:table-cell">Cidade/UF</th>
-                <th className="px-4 py-3 text-left text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Status</th>
-                <th className="px-4 py-3 text-left text-[10px] font-semibold text-slate-500 uppercase tracking-widest">Ações</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <motion.tr
-                  key={user.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: index * 0.04 }}
-                  className="border-b border-slate-800/50 hover:bg-slate-800/20 transition"
-                >
-                  <td className="px-4 py-3 text-sm text-slate-300 font-medium">{user.login || '—'}</td>
-                  <td className="px-4 py-3 text-sm text-slate-200 font-medium">{user.full_name || '—'}</td>
-                  <td className="px-4 py-3 text-sm text-slate-500 hidden md:table-cell">{user.email || '—'}</td>
-                  <td className="px-4 py-3 text-sm text-slate-500 hidden lg:table-cell">
-                    {user.city ? `${user.city}/${user.state}` : '—'}
-                  </td>
-                  <td className="px-4 py-3">
-                    {user.is_deleted ? (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-500/10 text-slate-500 border border-slate-500/20 uppercase">
-                        Removido
-                      </span>
-                    ) : user.is_blocked ? (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20 uppercase">
-                        Bloqueado
-                      </span>
-                    ) : (
-                      <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase">
-                        Ativo
-                      </span>
-                    )}
-                  </td>
-                  <td className="px-4 py-3">
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        title={user.is_blocked ? 'Desbloquear' : 'Bloquear'}
-                        className={`p-1.5 rounded-lg transition-all ${
-                          user.is_blocked
-                            ? 'bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20'
-                            : 'bg-amber-500/10 text-amber-400 hover:bg-amber-500/20'
-                        }`}
-                        onClick={() => handleBlockToggle(user)}
-                        disabled={actionLoading === user.id}
-                      >
-                        {user.is_blocked ? <FiUserCheck size={14} /> : <FiUserX size={14} />}
-                      </button>
-                      <button
-                        title={user.is_deleted ? 'Restaurar' : 'Excluir'}
-                        className={`p-1.5 rounded-lg transition-all ${
-                          user.is_deleted
-                            ? 'bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20'
-                            : 'bg-rose-500/10 text-rose-400 hover:bg-rose-500/20'
-                        }`}
-                        onClick={() => handleDeleteToggle(user)}
-                        disabled={actionLoading === user.id}
-                      >
-                        {user.is_deleted ? <FiUserPlus size={14} /> : <FiTrash2 size={14} />}
-                      </button>
+            {error && (
+                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                    <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
+                    <div className="text-sm">
+                        <p className="font-semibold text-rose-300">Não foi possível carregar</p>
+                        <p className="text-rose-200/80">{error}</p>
+                        <button onClick={load} className="mt-2 text-xs font-semibold text-rose-300 underline">Tentar de novo</button>
                     </div>
-                  </td>
-                </motion.tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                </div>
+            )}
 
-        {/* Pagination */}
-        <div className="flex items-center justify-between px-4 py-3 border-t border-slate-800 bg-slate-800/20">
-          <button
-            onClick={() => setPage(p => Math.max(0, p - 1))}
-            disabled={page === 0 || loading}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-400 bg-slate-800 hover:bg-slate-700 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed transition"
-          >
-            <FiChevronLeft className="w-3.5 h-3.5" />
-            Anterior
-          </button>
-          <div className="flex gap-1.5">
-            {[...Array(totalPages)].map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setPage(i)}
-                className={`w-7 h-7 rounded-lg text-xs font-bold transition-all ${
-                  page === i
-                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20'
-                    : 'bg-slate-800 text-slate-500 hover:bg-slate-700 hover:text-slate-300'
-                }`}
-              >
-                {i + 1}
-              </button>
-            )).slice(Math.max(0, page - 2), Math.min(totalPages, page + 3))}
-          </div>
-          <button
-            onClick={() => setPage(p => p + 1)}
-            disabled={(page + 1) * pageSize >= totalCount || loading}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-400 bg-slate-800 hover:bg-slate-700 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed transition"
-          >
-            Próxima
-            <FiChevronRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      </div>
+            <div className="overflow-hidden rounded-xl border border-slate-700/60 bg-slate-900/60">
+                {loading && rows.length === 0 ? (
+                    <div className="flex items-center justify-center gap-3 py-16 text-slate-400">
+                        <FiRefreshCw className="animate-spin" size={20} />
+                        <span className="text-sm">Carregando usuários…</span>
+                    </div>
+                ) : rows.length === 0 ? (
+                    <div className="py-16 text-center">
+                        <FiUsers className="mx-auto mb-3 text-slate-600" size={36} />
+                        <p className="text-sm text-slate-400">
+                            {debounced ? 'Nenhum usuário encontrado com esta busca.' : 'Nenhum usuário cadastrado.'}
+                        </p>
+                    </div>
+                ) : (
+                    <div className="overflow-x-auto">
+                        <table className="w-full min-w-[860px] text-left text-sm">
+                            <thead className="border-b border-slate-700/60 text-xs uppercase tracking-wider text-slate-500">
+                                <tr>
+                                    <th className="px-4 py-3 font-semibold">Nome</th>
+                                    <th className="px-4 py-3 font-semibold">E-mail</th>
+                                    <th className="px-4 py-3 font-semibold">Telefone</th>
+                                    <th className="px-4 py-3 font-semibold">Local</th>
+                                    <th className="px-4 py-3 font-semibold">Perfil</th>
+                                    <th className="px-4 py-3 font-semibold">Cadastro</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-800">
+                                {rows.map((r) => (
+                                    <tr key={r.id} className="hover:bg-slate-800/40">
+                                        <td className="px-4 py-3 font-medium text-slate-200">{r.full_name ?? r.login ?? '—'}</td>
+                                        <td className="px-4 py-3 font-mono text-xs text-slate-400">{r.email}</td>
+                                        <td className="px-4 py-3 text-xs text-slate-400">{r.phone ?? '—'}</td>
+                                        <td className="px-4 py-3 text-xs text-slate-400">
+                                            {r.city ? `${r.city}${r.state ? ` / ${r.state}` : ''}` : '—'}
+                                        </td>
+                                        <td className="px-4 py-3">
+                                            <div className="flex flex-wrap gap-1">
+                                                {r.is_admin && (
+                                                    <span className="rounded bg-violet-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-violet-300">
+                                                        {r.role ?? 'admin'}
+                                                    </span>
+                                                )}
+                                                {r.is_blocked && (
+                                                    <span className="rounded bg-rose-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-rose-300">
+                                                        bloqueado
+                                                    </span>
+                                                )}
+                                                {!r.is_admin && !r.is_blocked && <span className="text-xs text-slate-600">cliente</span>}
+                                            </div>
+                                        </td>
+                                        <td className="whitespace-nowrap px-4 py-3 text-xs text-slate-500">
+                                            {new Date(r.created_at).toLocaleDateString('pt-BR')}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
 
-      <ConfirmModal
-        open={showConfirm}
-        message={confirmMessage}
-        confirmText="Confirmar"
-        cancelText="Cancelar"
-        onConfirm={() => { if (confirmAction) confirmAction(); }}
-        onCancel={() => setShowConfirm(false)}
-      />
-    </div>
-  );
-};
-
-export default AdminUsersTab;
+                {total > PAGE_SIZE && (
+                    <div className="flex items-center justify-between border-t border-slate-700/60 px-4 py-3 text-xs text-slate-400">
+                        <span>{page * PAGE_SIZE + 1}–{Math.min((page + 1) * PAGE_SIZE, total)} de {total}</span>
+                        <div className="flex gap-2">
+                            <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0}
+                                className="rounded-lg bg-slate-800 px-3 py-1.5 font-semibold transition hover:bg-slate-700 disabled:opacity-40">Anterior</button>
+                            <button onClick={() => setPage((p) => (p + 1 < totalPages ? p + 1 : p))} disabled={page + 1 >= totalPages}
+                                className="rounded-lg bg-slate-800 px-3 py-1.5 font-semibold transition hover:bg-slate-700 disabled:opacity-40">Próxima</button>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </motion.div>
+    );
+}

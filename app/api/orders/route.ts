@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
                 title: '💰 Novo Pedido Realizado',
                 message: `${userName} realizou um pedido de R$ ${Number(total).toFixed(2)}.`,
                 sound: 'chime',
-                actionUrl: `/restricted-area-admin/orders`, // Link para painel admin
+                actionUrl: `/restricted-area-admin?tab=orders`, // Painel unico, deep link para a aba
             });
 
         } catch (notifError) {

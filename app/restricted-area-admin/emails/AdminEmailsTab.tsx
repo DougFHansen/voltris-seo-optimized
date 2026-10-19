@@ -7,7 +7,7 @@ import {
     FiRefreshCw, FiSearch, FiSend, FiAlertTriangle, FiCheckCircle,
     FiClock, FiXCircle, FiInbox, FiExternalLink,
 } from 'react-icons/fi';
-import { MailWarning, RotateCw } from 'lucide-react';
+import { MailWarning, RotateCw, ShieldAlert } from 'lucide-react';
 
 /**
  * HISTÓRICO DE E-MAIL TRANSACIONAL (missão §13).
@@ -118,6 +118,7 @@ export default function AdminEmailsTab() {
     const [stats, setStats] = useState<OutboxStats | null>(null);
     const [config, setConfig] = useState<ResendConfig | null>(null);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     const [status, setStatus] = useState('all');
     const [search, setSearch] = useState('');
     const [searchDebounced, setSearchDebounced] = useState('');
@@ -135,6 +136,7 @@ export default function AdminEmailsTab() {
 
     const load = useCallback(async (opts?: { silent?: boolean }) => {
         if (!opts?.silent) setLoading(true);
+        setError(null);
         try {
             const params = new URLSearchParams({ status, limit: String(PAGE_SIZE), offset: String(page * PAGE_SIZE) });
             if (searchDebounced) params.set('q', searchDebounced);
@@ -142,8 +144,14 @@ export default function AdminEmailsTab() {
             const res = await fetch(`/api/admin/emails?${params}`, { cache: 'no-store' });
             const json = await res.json();
 
+            if (res.status === 401) { window.location.href = '/login'; return; }
             if (!res.ok) {
-                toast.error(json?.error ?? 'Não foi possível carregar o histórico de e-mails.');
+                // ANTES isto era só um toast, que desaparece em segundos e
+                // deixa a tabela vazia sem explicação. O administrador via
+                // "nenhum e-mail" e não "a consulta falhou" — exatamente o
+                // erro invisível que a Parte 13 descreve.
+                setError(json?.error ?? 'Não foi possível carregar o histórico de e-mails.');
+                toast.error(json?.error ?? 'Não foi possível carregar.');
                 return;
             }
 
@@ -152,7 +160,7 @@ export default function AdminEmailsTab() {
             setConfig(json.config ?? null);
             setTotal(json.pagination?.total ?? 0);
         } catch {
-            toast.error('Falha de rede ao consultar o histórico de e-mails.');
+            setError('Falha de rede ao consultar o histórico de e-mails. Verifique sua conexão.');
         } finally {
             setLoading(false);
         }
@@ -208,6 +216,18 @@ export default function AdminEmailsTab() {
             transition={{ duration: 0.3 }}
             className="space-y-5"
         >
+            {error && (
+                <div role="alert" className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">
+                    <ShieldAlert className="mt-0.5 shrink-0 text-rose-400" size={20} />
+                    <div className="text-sm">
+                        <p className="font-semibold text-rose-300">Não foi possível carregar o histórico</p>
+                        <p className="mt-1 text-rose-200/80">{error}</p>
+                        <button onClick={() => load()} className="mt-2 text-xs font-semibold text-rose-300 underline">
+                            Tentar de novo
+                        </button>
+                    </div>
+                </div>
+            )}
             {/* ---------------- Alerta de configuração ---------------- */}
             {config && !config.configured && (
                 <div className="flex items-start gap-3 rounded-xl border border-rose-500/40 bg-rose-500/10 p-4">

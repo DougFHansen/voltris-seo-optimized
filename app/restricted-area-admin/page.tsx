@@ -2,7 +2,7 @@
 
 import { useAuth } from '@/app/hooks/useAuth';
 import AuthGuard from '@/components/AuthGuard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   FiUsers, FiMail, FiMenu, FiChevronLeft, FiChevronRight,
   FiLogOut, FiHome, FiZap, FiRefreshCw, FiSend, FiCreditCard
@@ -33,6 +33,19 @@ const tabs = [
 
 export default function AdminDashboard() {
   const { user, loading, error, signOut } = useAuth();
+  // Deep link: /restricted-area-admin?tab=compras abre direto na aba.
+  //
+  // Existia uma SEGUNDA página em /restricted-area-admin/orders que duplicava
+  // a aba Pedidos — duas interfaces para a mesma coisa, e a notificação de
+  // pedido apontava para ela. Com ?tab= o painel tem UMA porta só e o link
+  // antigo continua funcionando, porque a aba correspondente já existe.
+  useEffect(() => {
+    const alvo = new URLSearchParams(window.location.search).get('tab');
+    if (alvo && tabs.some((t) => t.value === alvo)) {
+      setActiveTab(alvo);
+    }
+  }, []);
+
   const [activeTab, setActiveTab] = useState('overview');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
