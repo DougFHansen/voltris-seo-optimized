@@ -162,22 +162,57 @@ export async function PUT(req: NextRequest) {
             return NextResponse.json({ error: 'Cliente não encontrado.', code: 'NOT_FOUND' }, { status: 404 });
         }
 
-        const [payments, licenses, subscriptions, devices, audit] = await Promise.all([
-            db.from('payments')
-                .select('id, reference_id, plan_type, amount, currency, status, invoice_kind, created_at, paid_at, stripe_invoice_id, stripe_subscription_id')
-                .eq('user_id', id).order('created_at', { ascending: false }).limit(50),
-            db.from('licenses')
-                .select('license_key, plan_type, max_devices, created_at, activated_at, expires_at, revoked, client_id')
-                .eq('user_id', id).order('created_at', { ascending: false }).limit(50),
+        // Os pedidos são carregados ANTES dos dispositivos porque os
+        // dispositivos sao ligados ao cliente pela CHAVE DA LICENÇA, e não por
+        // `user_id`.
+        //
+        // BUG CORRIGIDO AQUI: a versão anterior fazia
+        //     .from('license_devices').eq('user_id', id)
+        // e a tabela `license_devices` NÃO TEM a coluna `user_id` — colunas
+        // reais: id, license_key, device_id, machine_name, os_version,
+        // app_version, activated_at, last_seen_at, device_name, last_used_at,
+        // processor_count. O PostgREST devolvia
+        //     42703 - column license_devices.user_id does not exist
+        // o `Promise.all` rejeitava e a ficha do cliente retornava 500. Era por
+        // isso que clicar em "Abrir" não trazia nada.
+        const payments = await db
+            .from('payments')
+            .select('id, reference_id, plan_type, amount, currency, status, invoice_kind, created_at, paid_at, stripe_invoice_id, stripe_subscription_id')
+            .eq('user_id', id)
+            .order('created_at', { ascending: false })
+            .limit(50);
+
+        const licenses = await db
+            .from('licenses')
+            .select('license_key, plan_type, max_devices, created_at, activated_at, expires_at, revoked, client_id')
+            .eq('user_id', id)
+            .order('created_at', { ascending: false })
+            .limit(50);
+
+        const licenseRows = (licenses.data ?? []) as Array<{ license_key?: string | null }>;
+        const keys = licenseRows.map((l) => l.license_key).filter((k): k is string => !!k);
+
+        // Sem licença não há chave para consultar — e aí a lista é legitimamente
+        // vazia, não um erro.
+        const devices = keys.length > 0
+            ? await db
+                .from('license_devices')
+                .select('id, license_key, device_id, machine_name, device_name, os_version, app_version, activated_at, last_seen_at')
+                .in('license_key', keys)
+                .order('activated_at', { ascending: false })
+                .limit(100)
+            : { data: [] as any[], error: null };
+
+        const [subscriptions, audit] = await Promise.all([
             db.from('subscriptions')
                 .select('id, plan_type, status, billing_period, cancel_at_period_end, next_billing_at, pagbank_subscription_id')
-                .eq('user_id', id).limit(50),
-            db.from('license_devices')
-                .select('id, license_key, device_id, machine_name, os_version, app_version, activated_at, last_seen_at')
-                .eq('user_id', id).limit(100),
+                .eq('user_id', id)
+                .limit(50),
             db.from('admin_audit_log')
                 .select('id, action, resource, resource_id, outcome, created_at')
-                .eq('admin_id', id).order('created_at', { ascending: false }).limit(20),
+                .eq('admin_id', id)
+                .order('created_at', { ascending: false })
+                .limit(20),
         ]);
 
         // As faturas são as mesmas compras confirmadas: a fatura É derivada do
@@ -185,6 +220,14 @@ export async function PUT(req: NextRequest) {
         const invoices = (payments.data ?? []).filter((p: any) =>
             ['approved', 'paid', 'succeeded', 'refunded', 'partially_refunded'].includes(String(p.status).toLowerCase())
         );
+
+        // Uma seção que falhou não pode derrubar as outras. O administrador
+        // precisa ver o que existe, com o aviso do que não veio.
+        const falhas: string[] = [];
+        if (payments.error) falhas.push('compras');
+        if (licenses.error) falhas.push('licenças');
+        if (devices.error) falhas.push('dispositivos');
+        if (subscriptions.error) falhas.push('assinaturas');
 
         return NextResponse.json({
             profile: {
@@ -199,6 +242,7 @@ export async function PUT(req: NextRequest) {
             devices: devices.data ?? [],
             invoices,
             adminHistory: audit.data ?? [],
+            ...(falhas.length > 0 ? { secoesComFalha: falhas } : {}),
         });
     } catch (err: any) {
         return NextResponse.json({ error: 'Erro ao carregar o cliente.', code: 'UNEXPECTED' }, { status: 500 });

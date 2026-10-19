@@ -16,6 +16,7 @@ import AdminEmailsTab from './emails/AdminEmailsTab';
 import AdminOverviewTab from './overview/AdminOverviewTab';
 import AdminClientsTab from './clients/AdminClientsTab';
 import AdminPurchasesTab from './purchases/AdminPurchasesTab';
+import AdminReconcileTab from './reconcile/AdminReconcileTab';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,6 +26,7 @@ const tabs = [
   { label: 'Clientes',     value: 'clients',     icon: FiUsers,        color: 'text-cyan-400' },
   { label: 'Compras',      value: 'purchases',   icon: FiCreditCard,   color: 'text-emerald-400' },
   { label: 'Pedidos',      value: 'orders',      icon: ClipboardList,  color: 'text-indigo-400' },
+  { label: 'Conciliar',    value: 'reconcile',   icon: FiRefreshCw,    color: 'text-amber-400' },
   { label: 'Tickets',      value: 'tickets',     icon: TicketCheck,    color: 'text-violet-400' },
   { label: 'Newsletter',   value: 'newsletter',  icon: FiMail,         color: 'text-amber-400' },
   { label: 'E-mails',      value: 'emails',      icon: FiSend,         color: 'text-pink-400' },
@@ -264,6 +266,7 @@ export default function AdminDashboard() {
               {activeTab === 'overview'     && <AdminOverviewTab />}
               {activeTab === 'clients'      && <AdminClientsTab />}
               {activeTab === 'purchases'    && <AdminPurchasesTab />}
+              {activeTab === 'reconcile'    && <AdminReconcileTab />}
               {activeTab === 'newsletter'   && <AdminNewsletterTab />}
               {activeTab === 'emails'     && <AdminEmailsTab />}
               {activeTab === 'users'      && <AdminUsersTab />}

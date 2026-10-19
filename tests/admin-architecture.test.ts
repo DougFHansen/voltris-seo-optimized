@@ -134,8 +134,10 @@ describe('cada aba distingue carregando, erro e vazio', () => {
 
         test(`${nome} não engole erro de fetch`, () => {
             const src = readFileSync(f, 'utf8');
+            // `catch {` e `catch (e)` são igualmente válidos; exigir só o
+            // parêntesis reprovaria código correto.
             assert.ok(
-                /catch\s*\(|setError/.test(src),
+                /catch\s*[({]/.test(src) && /set(Error|Erro)/.test(src),
                 `${nome} pode ficar em carregamento eterno se o fetch falhar`
             );
         });
