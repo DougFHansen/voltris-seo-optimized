@@ -57,11 +57,15 @@ describe('reconhecer o link de recuperação', () => {
         );
     });
 
-    test('PKCE só é recuperação na própria página de reset', () => {
+    test('PKCE é recuperação em qualquer página, exceto o callback do OAuth', () => {
         const partes = { hash: '', search: 'code=pkce-123' };
         assert.equal(pareceLinkDeRecuperacao(partes, '/reset-password'), true);
-        // Em outra página, `?code=` é o callback do OAuth (Google) e NÃO
-        // pode ser tratado como recuperação.
+        // O link caiu no lugar errado (Site URL do Supabase): mesmo assim é
+        // recuperação e tem de ser encaminhado.
+        assert.equal(pareceLinkDeRecuperacao(partes, '/'), true);
+        assert.equal(pareceLinkDeRecuperacao(partes, '/login'), true);
+        // A EXCEÇÃO é o callback do Google: `?code=` lá é OAuth, e ele é uma
+        // ROTA DE SERVIDOR (troca o código no servidor).
         assert.equal(pareceLinkDeRecuperacao(partes, '/auth/callback'), false);
     });
 
@@ -88,10 +92,30 @@ describe('o token de recuperação NÃO abre sessão no site', () => {
         assert.match(clienteSupabase, /pareceLinkDeRecuperacao/);
     });
 
-    test('o contexto encaminha o link para /reset-password', () => {
+    test('o encaminhamento acontece ANTES do cliente nascer (sem erro vermelho)', () => {
+        // Se o cliente nascesse com `?code=` na URL, ele tentaria trocar o
+        // código e mostraria "invalid flow state, no valid flow state
+        // found" — o erro vermelho que passa rápido, antes da tela de nova
+        // senha. Por isso o redirect acontece dentro da fábrica do cliente.
+        const iRedirect = clienteSupabase.indexOf('window.location.replace');
+        const iCreate = clienteSupabase.indexOf('createBrowserClient(');
+        assert.ok(iRedirect > 0, 'o redirect precisa existir na fábrica do cliente');
+        assert.ok(
+            iRedirect < iCreate,
+            'o redirect tem de acontecer antes de o cliente ser criado'
+        );
+    });
+
+    test('o contexto encaminha o link para /reset-password (rede de segurança)', () => {
         assert.match(contexto, /pareceLinkDeRecuperacao/);
         assert.match(contexto, /urlDeRedirecionamentoParaReset/);
         assert.match(contexto, /window\.location\.replace/);
+    });
+
+    test('a troca do token traduz o erro de "flow state"', () => {
+        assert.match(resetPage, /explicarErroDeTrocaDeToken/);
+        const lib = readFileSync('lib/password-recovery.ts', 'utf8');
+        assert.match(lib, /invalid flow state|MESMO navegador/);
     });
 });
 

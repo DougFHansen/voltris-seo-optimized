@@ -43,6 +43,7 @@ import {
     passwordsMatch,
     hasPasswordIdentity,
     explainUpdateError,
+    explicarErroDeTrocaDeToken,
     type RecoveryLinkState,
 } from '@/lib/password-recovery';
 
@@ -100,7 +101,7 @@ export default function ResetPasswordPage() {
                     setLink({
                         status: 'invalid',
                         reason: 'expired',
-                        message: 'Este link expirou ou já foi utilizado. Peça um novo para continuar.',
+                        message: explicarErroDeTrocaDeToken(sessionError?.message),
                     });
                     return;
                 }

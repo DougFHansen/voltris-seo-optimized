@@ -192,12 +192,16 @@ export function pareceLinkDeRecuperacao(parts: RecoveryUrlParts, pathname?: stri
     if (hashParams.get('error_code') || hashParams.get('error')) return true;
     if (query.get('error_code')) return true;
 
-    // PKCE: `?code=` só é recuperação quando a própria página é a de reset.
-    // Em qualquer outro lugar, `?code=` é o callback OAuth (Google) e não
-    // pode ser-treated como recuperação.
+    // PKCE: `?code=` é a forma do link de recuperação quando o projeto usa
+    // o fluxo PKCE (é o que o @supabase/ssr faz).
+    //
+    // A EXCEÇÃO é o callback do OAuth (Google), que também usa `?code=` — mas
+    // esse é uma ROTA DE SERVIDOR (`/auth/callback`), que troca o código no
+    // servidor. No navegador, um `?code=` em qualquer outra página é um link
+    // de recuperação que caiu no lugar errado.
     if (query.get('code')) {
         const caminho = (pathname ?? '').replace(/\/+$/, '');
-        if (caminho === '/reset-password') return true;
+        if (caminho !== '/auth/callback') return true;
     }
 
     return false;
@@ -216,6 +220,35 @@ export function urlDeRedirecionamentoParaReset(
     const hash = parts.hash ? (parts.hash.startsWith('#') ? parts.hash : `#${parts.hash}`) : '';
     const search = parts.search ? (parts.search.startsWith('?') ? parts.search : `?${parts.search}`) : '';
     return `${pathname}${search}${hash}`;
+}
+
+/**
+ * Erro na TROCA do token (o passo antes de mostrar o formulário).
+ *
+ * "invalid flow state, no valid flow state found" é o caso real relatado:
+ * o projeto usa o fluxo PKCE (é o que o @supabase/ssr faz), e o verificador
+ * do código fica guardado no navegador onde o link foi PEDIDO. Se a pessoa
+ * abriu o link em outro navegador, em outro dispositivo ou depois de limpar os
+ * dados do site, o verificador não existe e a troca falha.
+ *
+ * Traduzir isso para uma frase que diz o que fazer é a diferença entre
+ * "erro mysteriously" e "peça outro link e abra no mesmo aparelho".
+ */
+export function explicarErroDeTrocaDeToken(message: string | null | undefined): string {
+    const m = (message ?? '').toLowerCase();
+    if (/flow state|verifier|no valid flow/.test(m)) {
+        return 'Este link precisa ser aberto no MESMO navegador onde você pediu a redefinição. Peça um novo link e abra-o no mesmo aparelho (sem modo anônimo).';
+    }
+    if (/expired|otp_expired|invalid/.test(m)) {
+        return 'Este link expirou ou já foi utilizado. Peça um novo link para continuar.';
+    }
+    if (/email.*confirm|not confirmed/.test(m)) {
+        return 'Este e-mail ainda não foi confirmado no cadastro. Confirme-o antes de redefinir a senha.';
+    }
+    if (/rate|too many/.test(m)) {
+        return 'Muitas tentativas em pouco tempo. Aguarde alguns minutos e tente de novo.';
+    }
+    return 'Não foi possível validar este link. Peça um novo link para continuar.';
 }
 
 /**

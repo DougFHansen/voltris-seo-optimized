@@ -1,5 +1,9 @@
 import { createBrowserClient } from '@supabase/ssr'
-import { pareceLinkDeRecuperacao, readLocationParts } from '@/lib/password-recovery'
+import {
+  pareceLinkDeRecuperacao,
+  readLocationParts,
+  urlDeRedirecionamentoParaReset,
+} from '@/lib/password-recovery'
 
 let client: ReturnType<typeof createBrowserClient> | undefined;
 
@@ -23,7 +27,20 @@ function opcoesDoCliente() {
   if (typeof window === 'undefined') {
     return { auth: { detectSessionInUrl: true, persistSession: true } }
   }
-  const linkDeRecuperacao = pareceLinkDeRecuperacao(readLocationParts(), window.location.pathname)
+  const partes = readLocationParts()
+  const linkDeRecuperacao = pareceLinkDeRecuperacao(partes, window.location.pathname)
+
+  if (linkDeRecuperacao && window.location.pathname.replace(/\/+$/, '') !== '/reset-password') {
+    // O link caiu no lugar errado (o "Site URL" do Supabase é o destino padrão
+    // quando a URL de redefinição não está na lista permitida).
+    //
+    // O encaminhamento acontece AQUI, antes de o cliente existir: se o
+    // cliente nascesse com `?code=` na URL, ele tentaria trocar o código e
+    // mostraria "invalid flow state, no valid flow state found" — o erro
+    // vermelho que passa rápido, antes da tela de nova senha.
+    window.location.replace(urlDeRedirecionamentoParaReset(partes))
+  }
+
   return {
     auth: {
       // Link de recuperação: NÃO abre sessão sozinho.
