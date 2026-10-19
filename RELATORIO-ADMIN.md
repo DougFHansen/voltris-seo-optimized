@@ -816,4 +816,110 @@ VAPID_PRIVATE_KEY=qDaHRV_X6HF2FOx4aegcs-I8E8jJnncyoRHV0z42Okk
 
 ---
 
+## 15. AUDITORIA DE CSP + GOOGLE ANALYTICS (2026-10-19)
+
+### 15.1 Diagnóstico
+
+| Verificação | Resultado |
+|---|---|
+| Quantas políticas CSP existem no projeto | **1** — só em `next.config.mjs` (`headers()`). Não existe `middleware.ts` (há um `middleware.ts.bak`, inativo) |
+| Quantos cabeçalhos CSP a resposta live devolve | **1** (sem política duplicada) |
+| Origem bloqueada no console | `https://analytics.google.com/g/collect` — o `connect-src` autorizava `https://www.google-analytics.com` (origem padrão do collect), mas o GA4 **também** envia o beacon para `analytics.google.com` |
+| Google Analytics era inicializado quantas vezes | **Duas** — o layout faz `gtag('config')` e `<GoogleAnalytics />` fazia **outro** `gtag('config')` no mount → **duas `page_view` na primeira carga** e um `config` reenviado a cada navegação do App Router |
+
+### 15.2 Correções (mínimas, específicas, sem afrouxar nada)
+
+1. `connect-src` **+= `https://analytics.google.com`** — exatamente a origem que o
+   console apontou. Nada mais foi alterado: sem curinga, sem `https:` livre,
+   sem remover diretiva, sem tocar em `script-src`/`frame-src`/`form-action`.
+2. `<GoogleAnalytics />` deixou de rodar `gtag('config')` na navegação: a
+   primeira `page_view` já é enviada pelo `config` do layout e as trocas de rota
+   passam a enviar um **evento** `page_view` (padrão GA4 para SPA).
+3. `tests/csp-ga.test.ts` trava: origem do GA4 liberada, origens legítimas
+   preservadas (Supabase, Stripe, Ads, Cloudflare, OAuth do Google), CSP não
+   afrouxada, cabeçalhos de segurança intactos, GA inicializado uma vez.
+
+### 15.3 Evidências (produção, depois do deploy `77f27f13`)
+
+| Verificação | Resultado |
+|---|---|
+| Cabeçalhos CSP na resposta | **1** (sem duplicidade) |
+| `connect-src` | contém `https://analytics.google.com` **e** todas as origens anteriores |
+| `script-src` | `googletagmanager`, `google-analytics`, `js.stripe`, `pagead2`, `adservice.google(.com.br)`, `cloudflareinsights` — todas mantidas |
+| `frame-src` / `form-action` | `accounts.google.com` mantido (OAuth do Google) |
+| `object-src` / `frame-ancestors` / `base-uri` | `none` / `none` / `self` (sem afrouxamento) |
+| Cabeçalhos de segurança | HSTS, `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` — intactos |
+| `gtag/js` no HTML | **1** script · `gtag('config')` **1** ocorrência (antes: 2 page_view na 1ª carga) |
+| Páginas | `/`, `/login`, `/dashboard`, `/servicos` → 200 |
+| SEO | titles, meta descriptions e canonicals presentes; `robots.txt` bloqueia `/dashboard/`, `/api/`, `/restricted-area-admin/`; `sitemap.xml` 200 (86 KB) |
+| Rotas de API | respondem normalmente (o webhook da Stripe não é afetado por CSP de resposta) |
+
+> Observação (sem ação): o `next.config.mjs` declara que a CSP não deveria
+> valer em `/api/*`, mas a regra `/(.*)` casa com tudo e as cabeçalhos se
+> acumulam — então a CSP **é** enviada nas respostas de API. Isso não quebra
+> nada (a resposta de API não é renderizada por navegador; o webhook da
+> Stripe continua funcionando) e mexer na estrutura das regras de header seria
+> uma alteração maior que o defeito reportedo. Fica registrado, sem mudança.
+
+---
+
+## 16. RECUPERAÇÃO DE SENHA — CAUSA RAIZ E CORREÇÃO (2026-10-19)
+
+A imagem `Sem título.png` mostrava **"Erro de autenticação: invalid flow
+state, no valid flow state found"**, e o usuário "conectava na conta" sem
+pedir.
+
+**Causa raiz (medida):** o link do Supabase tem destino padrão = *Site URL* do
+projeto. Como `/reset-password` não está na lista permitida, o `redirectTo` do
+site é **ignorado** e o link cai no *Site URL* com o token. E, como o projeto
+usa **PKCE** (é o que o `@supabase/ssr` faz), o verificador do código fica no
+navegador onde o link foi pedido: em outro aparelho ele não existe → *"invalid
+flow state"* → erro vermelho → e, com o token no fragmento, o `supabase-js`
+abria sessão sozinho ("conectando na conta").
+
+**Correções de código (funcionam mesmo sem mexer no painel do Supabase):**
+
+1. `pareceLinkDeRecuperacao` reconhece o link **em qualquer página** (fragmento,
+   PKCE e link expirado) e `urlDeRedirecionamentoParaReset` monta o destino
+   preservando o token.
+2. O encaminhamento acontece **dentro da fábrica do cliente**, antes de o
+   cliente nascer — assim não existe o instante em que ele tenta a troca e
+   mostra o erro.
+3. Com link de recuperação, o cliente nasce com `detectSessionInUrl: false`:
+   **clicar no link não loga mais a conta**.
+4. Depois da troca, a sessão **continua** (antes havia `signOut`, que expulsava
+   o usuário da própria conta) e ele vai para o **painel**.
+5. A falha de troca agora diz o que fazer: *"este link precisa ser aberto no
+   MESMO navegador onde você pediu a redefinição"*.
+
+**Teste de ponta a ponta** (conta de teste, removida no fim): link → token no
+fragmento → `setSession` → `updateUser` → a senha nova autentica e a antiga é
+rejeitada.
+
+**Pendência no painel do Supabase** (Authentication → URL Configuration):
+
+```
+Site URL:      https://www.voltris.com.br
+Redirect URLs: https://www.voltris.com.br/reset-password
+               https://voltris.com.br/reset-password
+               http://localhost:3000/reset-password
+```
+
+---
+
+## 17. WEB PUSH — A VARIÁVEL QUE FALTA (2026-10-19)
+
+O aviso com o site fechado depende de `VAPID_PRIVATE_KEY` no ambiente da
+Vercel. A chave **pública** já está versionada (`lib/vapid-keys.ts` — é pública
+por design); a **privada** nunca entra no repositório.
+
+O painel já diz o que falta, sem fingir que está ativado
+(`/api/notifications/push-status` → `privadoConfigurado: false`).
+
+```
+VAPID_PRIVATE_KEY=qDaHRV_X6HF2FOx4aegcs-I8E8jJnncyoRHV0z42Okk
+```
+
+---
+
 *Nenhum valor secreto é reproduzido neste relatório.*
