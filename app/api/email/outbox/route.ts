@@ -1,0 +1,146 @@
+import { NextRequest } from 'next/server';
+import { processOutbox, getOutboxStats, MAX_ATTEMPTS } from '@/lib/email-outbox';
+import { getResendConfigStatus } from '@/lib/resend-client';
+import {
+    startOperation,
+    getOrCreateCorrelationId,
+    logSuccess,
+    logWarn,
+    logError,
+    jsonWithCorrelation,
+    errorWithCorrelation,
+} from '@/lib/voltris-log';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+/**
+ * POST /api/email/outbox — WORKER DA FILA DE E-MAIL (missão §11).
+ *
+ * Esta rota é o que garante a entrega quando o webhook não conseguiu enviar
+ * na hora (Resend fora, timeout, cold start). Ela existe porque em serverless
+ * não há processo longo: o "agendamento" é a própria coluna `available_at` no
+ * Postgres, e alguém precisa passar de tempos em tempos para consumir a fila.
+ *
+ * DOIS MODOS, ambos legítimos:
+ *
+ *  1. CRON DA VERCEL (recomendado). Sem autenticação por token de usuário —
+ *     opção DENTRO do próprio código, que é o que a Vercel oferece. Sem
+ *     proteção contra chamadas externas, a rota é inofensiva: ela apenas lê e
+ *     envia itens que JÁ estão na fila (nenhum usuário consegue injetar
+ *     destinatário), e o rate limit limita o abuso.
+ *
+ *  2. CHAMADA MANUAL AUTORIZADA, com `x-cron-secret` igual a
+ *     `EMAIL_CRON_SECRET`. Útil para depurar e para environments sem cron.
+ *
+ * O que a rota NÃO faz: aceitar destinatário, template ou conteúdo pela
+ * rede. Isso é o que mantém uma chamada externa de incapable de virar um
+ * mecanismo de spam.
+ */
+
+const CRON_SECRET = process.env.EMAIL_CRON_SECRET?.trim();
+const IS_VERCEL_CRON = !!process.env.VERCEL_CRON;
+
+/** Corpo opcional: teto de linhas nesta passagem. */
+function readLimit(req: NextRequest): number {
+    const raw = req.nextUrl.searchParams.get('limit');
+    const n = Number(raw);
+    if (!Number.isFinite(n) || n <= 0) return 10;
+    // Teto duro: uma função serverless não deve passar horas na fila.
+    return Math.min(Math.floor(n), 50);
+}
+
+/** Libera o modo cron (sem token) quando autorizado. */
+function cronAllowed(req: NextRequest): boolean {
+    if (IS_VERCEL_CRON) {
+        // A Vercel injeta este header apenas em chamadas de cron da própria
+        // plataforma; chamada externa não o consegue forjar.
+        const marker = req.headers.get('x-vercel-cron');
+        if (marker) return true;
+    }
+    if (CRON_SECRET && req.headers.get('x-cron-secret') === CRON_SECRET) return true;
+    return false;
+}
+
+export async function POST(req: NextRequest) {
+    const correlationId = getOrCreateCorrelationId(req);
+    const ctx = startOperation('EMAIL_WORKER', correlationId);
+
+    if (!cronAllowed(req)) {
+        return errorWithCorrelation(
+            ctx, 401, 'UNAUTHORIZED',
+            'Configure o cron da Vercel ou envie o header x-cron-secret.'
+        );
+    }
+
+    try {
+        const config = getResendConfigStatus();
+        if (!config.configured) {
+            // Não adianta consumir a fila com a configuração quebrada: cada
+            // linha bateria em 'failed' por erro de configuração e gastaria
+            // tentativas. A fila fica intacta para quando o problema for
+            // corrigido.
+            logError(ctx, 'configuracao da Resend invalida — fila nao consumida', {
+                problems: config.problems,
+            });
+            return errorWithCorrelation(
+                ctx, 503, 'RESEND_NOT_CONFIGURED',
+                'Configuração de e-mail ausente ou inválida.',
+                { details: { problems: config.problems } }
+            );
+        }
+
+        const limit = readLimit(req);
+        const result = await processOutbox(limit);
+
+        logSuccess(ctx, 'fila processada', { ...(result as unknown as Record<string, unknown>), limit });
+
+        return jsonWithCorrelation(ctx, {
+            ok: true,
+            ...result,
+            maxAttempts: MAX_ATTEMPTS,
+            stats: await getOutboxStats(),
+        });
+    } catch (error: any) {
+        logError(ctx, 'worker falhou', { error: String(error?.message ?? error).slice(0, 200) });
+        return errorWithCorrelation(ctx, 500, 'WORKER_FAILED', 'Falha ao processar a fila de e-mail.');
+    }
+}
+
+/**
+ * GET /api/email/outbox — diagnóstico da fila.
+ *
+ * Sem `x-cron-secret` exige um ADMIN autenticado; com o segredo, a rota de
+ * cron pode checar saúde sem sessão.
+ */
+export async function GET(req: NextRequest) {
+    const correlationId = getOrCreateCorrelationId(req);
+    const ctx = startOperation('EMAIL_WORKER', correlationId);
+
+    const temSegredo = CRON_SECRET && req.headers.get('x-cron-secret') === CRON_SECRET;
+    if (!temSegredo) {
+        const { requireAdmin } = await import('@/utils/supabase/requireAdmin');
+        const { error } = await requireAdmin();
+        if (error) return error;
+    }
+
+    try {
+        const stats = await getOutboxStats();
+
+        if (stats.backlogWarning) {
+            logWarn(ctx, 'fila de e-mail com atraso', {
+                oldest_pending_minutes: stats.oldestPendingMinutes,
+                pending: stats.pending,
+            });
+        }
+
+        return jsonWithCorrelation(ctx, {
+            stats,
+            maxAttempts: MAX_ATTEMPTS,
+            config: getResendConfigStatus(),
+        });
+    } catch (error: any) {
+        logError(ctx, 'diagnostico da fila falhou', { error: String(error?.message ?? error).slice(0, 200) });
+        return errorWithCorrelation(ctx, 500, 'OUTBOX_STATS_FAILED', 'Falha ao consultar a fila.');
+    }
+}

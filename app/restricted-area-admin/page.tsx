@@ -5,13 +5,14 @@ import AuthGuard from '@/components/AuthGuard';
 import { useState } from 'react';
 import {
   FiUsers, FiMail, FiMenu, FiChevronLeft, FiChevronRight,
-  FiLogOut, FiHome, FiZap, FiRefreshCw
+  FiLogOut, FiHome, FiZap, FiRefreshCw, FiSend
 } from 'react-icons/fi';
 import { ClipboardList, TicketCheck } from 'lucide-react';
 import AdminOrdersTab from './orders/AdminOrdersTab';
 import AdminTicketsTab from './tickets/AdminTicketsTab';
 import AdminNewsletterTab from './newsletter/AdminNewsletterTab';
 import AdminUsersTab from './users/AdminUsersTab';
+import AdminEmailsTab from './emails/AdminEmailsTab';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -21,6 +22,7 @@ const tabs = [
   { label: 'Pedidos',      value: 'orders',      icon: ClipboardList,  color: 'text-indigo-400' },
   { label: 'Tickets',      value: 'tickets',     icon: TicketCheck,    color: 'text-violet-400' },
   { label: 'Newsletter',   value: 'newsletter',  icon: FiMail,         color: 'text-amber-400' },
+  { label: 'E-mails',      value: 'emails',      icon: FiSend,         color: 'text-pink-400' },
   { label: 'Usuários',     value: 'users',       icon: FiUsers,        color: 'text-emerald-400' },
 ];
 
@@ -265,6 +267,7 @@ export default function AdminDashboard() {
               {activeTab === 'orders'     && <AdminOrdersTab />}
               {activeTab === 'tickets'    && <AdminTicketsTab />}
               {activeTab === 'newsletter' && <AdminNewsletterTab />}
+              {activeTab === 'emails'     && <AdminEmailsTab />}
               {activeTab === 'users'      && <AdminUsersTab />}
             </motion.div>
           </main>

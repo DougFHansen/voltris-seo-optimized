@@ -21,6 +21,9 @@ import {
     billingPeriodLabel,
     type LicenseRow,
 } from '@/lib/license-schema';
+import { resolveBillingState } from '@/lib/billing-state';
+import { isInvoicable } from '@/lib/invoice-data';
+import { selectWithOptionalColumns } from '@/lib/supabase-schema-compat';
 import { licenseRateGuard, rateLimitedResponse } from '@/lib/license-rate-guard';
 
 export const runtime = 'nodejs';
@@ -35,6 +38,14 @@ interface PaymentRow {
     amount: number | null;
     created_at: string | null;
     reference_id?: string | null;
+    // Campos novos (podem não existir antes da migration — ver fallback abaixo)
+    invoice_kind?: string | null;
+    stripe_invoice_id?: string | null;
+    stripe_refund_id?: string | null;
+    paid_at?: string | null;
+    currency?: string | null;
+    refunded_amount?: number | null;
+    updated_at?: string | null;
 }
 
 interface SubscriptionRow {
@@ -44,6 +55,10 @@ interface SubscriptionRow {
     billing_period: string | null;
     next_billing_at: string | null;
     canceled_at: string | null;
+    // Campos novos
+    cancel_at_period_end?: boolean | null;
+    ended_at?: string | null;
+    payment_method_last4?: string | null;
 }
 
 /**
@@ -51,9 +66,15 @@ interface SubscriptionRow {
  *
  * Licencas do usuario autenticado. Requer sessao (cookie OU Bearer token).
  *
- * O filtro e feito no SERVIDOR com service_role, usando o email da sessao como
- * criterio adicional. A RLS de licenses ja restringe o acesso direto do
- * navegador; aqui o service_role e seguro porque o userId vem da sessao.
+ * O filtro e feito no SERVIDOR com service_role, usando o user_id da sessao
+ * como autoridade — o e-mail só entra como fallback para linhas legadas sem
+ * `licenses.user_id`, e mesmo assim passando por `licenseIsOwnedBy`.
+ *
+ * Além das licenças, a rota devolve os FATOS DE FATURAMENTO e de FATURA de
+ * cada uma (missão §3 e §5): situação da assinatura, se a renovação está
+ * realmente ativa e se existe documento PDF baixável. É o que permite ao painel
+ * mostrar "Renovação: Ativada" apenas quando a Stripe confirma, e habilitar o
+ * botão de fatura apenas quando existe cobrança confirmada.
  */
 export async function GET(request: NextRequest) {
     const correlationId = getOrCreateCorrelationId(request);
@@ -123,31 +144,47 @@ export async function GET(request: NextRequest) {
         owned.map((l) => l.payment_id ?? null).filter((v): v is string => !!v)
     ));
 
-    const [paymentsRes, subsRes, pendingRes] = await Promise.all([
+    // Colunas novas entram como "opcionais": se a migration ainda não rodou, a
+    // rota continua funcionando com o que existe (sem regressão de deploy).
+    const [paymentsRes, subsRes] = await Promise.all([
         paymentIds.length
-            ? admin.from('payments')
-                .select('id,status,stripe_subscription_id,plan_type,billing_period,amount,created_at')
-                .in('id', paymentIds)
+            ? selectWithOptionalColumns<PaymentRow>(
+                admin,
+                'payments',
+                ['id', 'status', 'stripe_subscription_id', 'plan_type', 'billing_period', 'amount', 'created_at', 'reference_id'],
+                ['invoice_kind', 'stripe_invoice_id', 'stripe_refund_id', 'paid_at', 'currency', 'refunded_amount', 'updated_at'],
+                // Sem este filtro o fallback buscaria a tabela INTEIRA.
+                (q) => q.in('id', paymentIds)
+            ).then((r) => ({ data: r.rows, error: null as { message: string } | null }))
             : Promise.resolve({ data: [] as PaymentRow[], error: null }),
-        admin.from('subscriptions')
-            .select('pagbank_subscription_id,status,plan_type,billing_period,next_billing_at,canceled_at,user_id,email')
-            .eq('user_id', user.id),
-        admin.from('payments')
-            .select('id,status,plan_type,billing_period,amount,created_at,reference_id')
-            .eq('user_id', user.id)
-            .in('status', ['pending', 'processing', 'open', 'unpaid'])
-            .order('created_at', { ascending: false })
-            .limit(10),
+        selectWithOptionalColumns<SubscriptionRow>(
+            admin,
+            'subscriptions',
+            ['pagbank_subscription_id', 'status', 'plan_type', 'billing_period', 'next_billing_at', 'canceled_at', 'user_id', 'email'],
+            ['cancel_at_period_end', 'ended_at', 'payment_method_last4'],
+            (q) => q.eq('user_id', user.id)
+        ).then((r) => ({ data: r.rows, error: null as { message: string } | null })),
     ]);
+
+    const { data: pendingRows, error: pendingErr } = await admin
+        .from('payments')
+        .select('id,status,plan_type,billing_period,amount,created_at,reference_id')
+        .eq('user_id', user.id)
+        .in('status', ['pending', 'processing', 'open', 'unpaid'])
+        .order('created_at', { ascending: false })
+        .limit(10);
 
     if (paymentsRes.error) logSupabaseError(ctx, 'buscar pagamentos das licencas', paymentsRes.error);
     if (subsRes.error) logSupabaseError(ctx, 'buscar assinaturas do usuario', subsRes.error);
-    if (pendingRes.error) logSupabaseError(ctx, 'buscar compras pendentes', pendingRes.error);
+    if (pendingErr) logSupabaseError(ctx, 'buscar compras pendentes', pendingErr);
 
     const payments = new Map<string, PaymentRow>(
-        ((paymentsRes.data ?? []) as PaymentRow[]).map((p) => [String(p.id), p])
+        (paymentsRes.data ?? []).map((p) => [String(p.id), p])
     );
-    const subscriptions = ((subsRes.data ?? []) as SubscriptionRow[]);
+    const subscriptions = (subsRes.data ?? []).filter(
+        (s): s is SubscriptionRow & { pagbank_subscription_id: string } =>
+            !!s && !!s.pagbank_subscription_id
+    );
 
     const formatted = await Promise.all(
         owned.map(async (license) => {
@@ -171,6 +208,18 @@ export async function GET(request: NextRequest) {
                 subscription_status: subscription?.status ?? null,
             });
 
+            // Situação do FATURAMENTO (diferente do estado da licença): aqui mora
+            // "a Stripe ainda vai cobrar?" e "existe documento para baixar?".
+            const billing = resolveBillingState({
+                subscriptionStatus: subscription?.status ?? null,
+                hasSubscription: !!subscription,
+                paymentStatus: payment?.status ?? null,
+                cancelAtPeriodEnd: subscription?.cancel_at_period_end ?? null,
+                nextBillingAt: subscription?.next_billing_at ?? null,
+            });
+
+            const invoiceAvailable = !!payment && isInvoicable(payment.status);
+
             return {
                 license_key: license.license_key,
                 type: license.plan_type ?? 'standard',
@@ -192,15 +241,43 @@ export async function GET(request: NextRequest) {
                 maxDevices: license.max_devices ?? 1,
                 devicesInUse,
                 paymentStatus: payment?.status ?? null,
+                paymentId: payment?.id ?? null,
                 subscriptionStatus: subscription?.status ?? null,
+                subscriptionId: subscription?.pagbank_subscription_id ?? null,
                 nextBillingAt: subscription?.next_billing_at ?? null,
                 canceledAt: subscription?.canceled_at ?? null,
+                endsAt: subscription?.ended_at ?? null,
+                paymentMethodLast4: subscription?.payment_method_last4 ?? null,
+
+                // Bloco novo: fatos de faturamento e de fatura (missão §3/§5).
+                billingState: billing.state,
+                billingLabel: billing.label,
+                renewalEnabled: billing.renewalEnabled,
+                billingHint: billing.hint,
+                canCancelRenewal: billing.canCancelRenewal,
+                canResumeRenewal: billing.canResumeRenewal,
+                canRequestRefund: billing.canRequestRefund,
+                invoice: {
+                    available: invoiceAvailable,
+                    paymentId: payment?.id ?? null,
+                    stripeInvoiceId: payment?.stripe_invoice_id ?? null,
+                    kind: payment?.invoice_kind ?? null,
+                    amount: payment?.amount ?? null,
+                    currency: payment?.currency ?? 'BRL',
+                    paidAt: payment?.paid_at ?? payment?.created_at ?? null,
+                    refunded: typeof payment?.refunded_amount === 'number'
+                        ? payment.refunded_amount > 0
+                        : false,
+                    unavailableReason: invoiceAvailable
+                        ? null
+                        : 'Fatura indisponível: aguardando confirmação do pagamento.',
+                },
             };
         })
     );
 
     const licensedPaymentIds = new Set(paymentIds.map(String));
-    const pendingPurchases = ((pendingRes.data ?? []) as PaymentRow[])
+    const pendingPurchases = ((pendingRows ?? []) as PaymentRow[])
         // uma compra pendente ja emitida (linhas legadas) nao e "pendente" no painel
         .filter((p) => !licensedPaymentIds.has(String(p.id)))
         .map((p) => ({
@@ -217,6 +294,7 @@ export async function GET(request: NextRequest) {
     logSuccess(ctx, 'licencas do usuario', {
         count: formatted.length,
         pendentes: pendingPurchases.length,
+        assinaturas: subscriptions.length,
         user: maskEmail(user.email),
     });
 
@@ -230,6 +308,47 @@ export async function GET(request: NextRequest) {
         pendingPurchases,
         // O dashboard usa isto para decidir se faz polling LIMITADO (secao 6).
         hasPending: pendingPurchases.length > 0 || formatted.some((l) => l.state === 'PAGAMENTO_PENDENTE'),
+        // Fatos de assinatura no nível da conta (para o card "Gestão de
+        // Licenças & Faturamento", que não pertence a uma licença específica).
+        billing: buildAccountBilling(subscriptions, formatted),
         server_time: new Date().toISOString(),
     });
+}
+
+/** Consolida o estado de faturamento da conta para o card de gestão. */
+function buildAccountBilling(
+    subscriptions: Array<SubscriptionRow & { pagbank_subscription_id: string }>,
+    licenses: Array<Record<string, unknown>>
+) {
+    // A assinatura mais relevante é a que ainda está associada a uma licença com
+    // acesso; na ausência, a mais recente registrada.
+    const primary =
+        subscriptions.find((s) =>
+            licenses.some((l) => l.subscriptionId === s.pagbank_subscription_id && l.hasAccess)
+        ) ?? subscriptions[0] ?? null;
+
+    const state = resolveBillingState({
+        subscriptionStatus: primary?.status ?? null,
+        hasSubscription: !!primary,
+        paymentStatus: null,
+        cancelAtPeriodEnd: primary?.cancel_at_period_end ?? null,
+        nextBillingAt: primary?.next_billing_at ?? null,
+    });
+
+    return {
+        hasSubscription: !!primary,
+        subscriptionId: primary?.pagbank_subscription_id ?? null,
+        subscriptionStatus: primary?.status ?? null,
+        cancelAtPeriodEnd: primary?.cancel_at_period_end ?? null,
+        nextBillingAt: primary?.next_billing_at ?? null,
+        endsAt: primary?.ended_at ?? null,
+        state: state.state,
+        stateLabel: state.label,
+        renewalEnabled: state.renewalEnabled,
+        hint: state.hint,
+        canCancelRenewal: state.canCancelRenewal,
+        canResumeRenewal: state.canResumeRenewal,
+        canRequestRefund: state.canRequestRefund,
+        totalSubscriptions: subscriptions.length,
+    };
 }

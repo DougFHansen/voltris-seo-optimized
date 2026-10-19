@@ -9,8 +9,13 @@
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
     "type-check": "tsc --noEmit",
-    "test": "node --test tests/*.test.ts",
-    "test:license": "node --test tests/license-state.test.ts tests/license-catalog.test.ts"
+    "test": "node --import ./scripts/register-alias.mjs --test tests/*.test.ts",
+    "test:license": "node --import ./scripts/register-alias.mjs --test tests/license-state.test.ts tests/license-catalog.test.ts",
+    "test:billing": "node --import ./scripts/register-alias.mjs --test tests/billing-state.test.ts tests/billing-policy.test.ts tests/invoice-pdf.test.ts",
+    "audit:stripe": "node scripts/_audit-stripe.mjs",
+    "preview:invoice": "node --import ./scripts/register-alias.mjs scripts/preview-invoice.mjs",
+    "test:email": "node --import ./scripts/register-alias.mjs --test tests/email-resend-client.test.ts tests/email-templates.test.ts tests/email-outbox.test.ts",
+    "preview:email": "node --import ./scripts/register-alias.mjs scripts/preview-email.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -39,6 +44,7 @@
     "lucide-react": "^0.525.0",
     "next": "15.5.19",
     "node-fetch": "^3.3.2",
+    "pdf-lib": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-easy-crop": "^5.4.2",
@@ -46,6 +52,7 @@
     "react-hot-toast": "^2.5.2",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
+    "resend": "^4.8.0",
     "sharp": "^0.33.2",
     "stripe": "^20.4.1",
     "swiper": "^12.1.2",

@@ -11,3 +11,10 @@ node_modules/
 # Cloudflare Worker proxy (projeto separado, n√£o faz parte do build Next.js)
 pagbank-proxy/node_modules/
 pagbank-proxy/.wrangler/
+
+# Sa√≠da do script de pr√©-visualiza√ß√£o de e-mail (gerada localmente)
+.preview-email/
+
+# Missıes internas e rascunhos de trabalho: N√O devem ir para o repositÛrio.
+Corrigir.txt
+.qoder-scratch/

@@ -61,6 +61,7 @@ export type VoltrisIconName =
   // memory, build, visibility_off, delete, settings, auto_awesome, wifi).
   | 'package'
   | 'creditCard'
+  | 'receipt'
   | 'download'
   | 'externalLink'
   | 'copy'
@@ -277,6 +278,13 @@ export const VOLTRIS_ICON_PATHS: Record<VoltrisIconName, string> = {
     'M20 2H4c-1.1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z',
   creditCard:
     'M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z',
+  // Recibo/fatura (documento com canto dobrado + linhas). Mesmo idioma visual
+  // dos demais ícones de site (Material filled 24x24): preenchimento sólido,
+  // sem traço.
+  receipt:
+    'M18,17H6v-2h12V17zM18,13H6v-2h12V13zM18,9H6V7h12V9zM3,22l1.5,-1.5L6,22l1.5,-1.5L9,22' +
+    'l1.5,-1.5L12,22l1.5,-1.5L15,22l1.5,-1.5L18,22l1.5,-1.5L21,22V2l-1.5,1.5L18,2l-1.5,1.5L15,2' +
+    'l-1.5,1.5L12,2l-1.5,1.5L9,2L7.5,3.5L6,2L4.5,3.5L3,2V22z',
   download: 'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z',
   externalLink:
     'M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z',

@@ -114,6 +114,35 @@ const PAYMENT_STATUS_LABEL: Record<string, string> = {
 const LICENSE_POLL_INTERVAL_MS = 15_000;
 const LICENSE_POLL_MAX_ATTEMPTS = 40;
 
+/**
+ * Timeout do download da fatura (missão §5: "O carregamento deve ter tratamento
+ * de timeout, erro, recuperação e tentativa novamente" e "nunca exiba um estado
+ * de carregamento infinito"). 25 s é folgado para geração de PDF em serverless
+ * frio e curto o bastante para o usuário não achar que travou.
+ */
+const INVOICE_TIMEOUT_MS = 25_000;
+
+/** Fases possíveis do documento, todas VERDADEIRAS (nunca "carregando..." eterno). */
+type InvoicePhase = 'idle' | 'preparing' | 'ready' | 'error' | 'unavailable';
+
+interface InvoiceUiState {
+  phase: InvoicePhase;
+  message: string;
+}
+
+/**
+ * Texto do rodapé da fatura por fase. A missão é explícita: nada de
+ * "Verificando pagamento com a Stripe..." nesse espaço — o que aparece aqui é o
+ * estado real do DOCUMENTO.
+ */
+const INVOICE_PHASE_TEXT: Record<InvoicePhase, string> = {
+  idle: '',
+  preparing: 'Preparando sua fatura…',
+  ready: 'Fatura disponível para download.',
+  error: 'Não foi possível preparar a fatura. Tentar novamente.',
+  unavailable: 'Fatura indisponível: aguardando confirmação do pagamento.',
+};
+
 /** Nome do produto vem do catálogo do backend, nunca de texto solto no cliente. */
 function productLabel(planType?: string | null, billingPeriod?: string | null): string {
   const period = (billingPeriod ?? '').toLowerCase().startsWith('y') ? 'year' : 'month';
@@ -227,6 +256,15 @@ function DashboardContent() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState(false);
   const [isCancelling, setIsCancelling] = useState(false);
+  const [cancelAction, setCancelAction] = useState<'cancel' | 'resume'>('cancel');
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [invoiceUi, setInvoiceUi] = useState<Record<string, InvoiceUiState>>({});
+  const [isRefundModalOpen, setIsRefundModalOpen] = useState(false);
+  const [isRefunding, setIsRefunding] = useState(false);
+  const [refundReason, setRefundReason] = useState('');
+  const [refundTarget, setRefundTarget] = useState<{ paymentId: string | null; scope: 'latest' | 'initial' } | null>(null);
+  /** Fatos de faturamento da conta, resolvidos no servidor (§3). */
+  const [billing, setBilling] = useState<any>(null);
   const supabase = useMemo(() => createClient(), []);
 
   const fetchData = useCallback(async (showLoading = true) => {
@@ -262,6 +300,8 @@ function DashboardContent() {
         setPendingPurchases(licensesJson?.pendingPurchases || []);
         setHasPending(licensesJson?.hasPending === true);
         setServerTime(licensesJson?.server_time ?? null);
+        // Situação real da assinatura/renovação, resolvida no servidor.
+        setBilling(licensesJson?.billing ?? null);
       }
 
       setInstallationsCount(installationsRes.count || 0);
@@ -275,61 +315,252 @@ function DashboardContent() {
   }, [user?.id, user?.email, supabase]); // Depende apenas do ID e email, não do objeto user inteiro
 
   const handleManageBilling = async () => {
-    const toastId = toast.loading('Conectando ao Stripe...');
+    const toastId = toast.loading('Conectando ao processador de pagamentos...');
     try {
       const response = await fetch('/api/stripe/portal', { method: 'POST' });
       const data = await response.json();
-      if (data.url) {
+      if (response.ok && data.url) {
         window.location.href = data.url;
-      } else {
-        throw new Error(data.error || 'Erro ao abrir portal');
+        return;
       }
-    } catch (error: any) {
-      toast.error(error.message, { id: toastId });
+      toast.error(data.error || 'Não foi possível abrir o portal de pagamentos.', { id: toastId });
+    } catch {
+      toast.error('Não foi possível abrir o portal de pagamentos.', { id: toastId });
     } finally {
       toast.dismiss(toastId);
     }
   };
 
-  const handleRequestRefund = async () => {
-    if (!window.confirm("Aviso: O reembolso cancelará sua assinatura imediatamente e desativará seu acesso. O valor será estornado se a compra foi feita nos últimos 7 dias. Deseja prosseguir?")) {
-      return;
-    }
-
-    const toastId = toast.loading('Processando reembolso com a Stripe...');
+  /**
+   * "Sincronizar Agora" — reconcilia o espelho local com a Stripe (missão §9).
+   *
+   * A versão antiga chamava `fetchData()`, que só relia o Supabase: se o
+   * webhook tivesse atrasado, a tela continuava mostrando o estado velho e o
+   * usuário concluía que a Stripe estava errada. Agora a rota autenticada
+   * consulta a Stripe de verdade e só devolve sucesso depois de reconciliar.
+   */
+  const handleSync = async () => {
+    if (isSyncing) return;
+    setIsSyncing(true);
+    const toastId = toast.loading('Conferindo com o processador de pagamentos...');
     try {
-      const response = await fetch('/api/stripe/refund', { method: 'POST' });
-      const data = await response.json();
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 20_000);
+      const response = await fetch('/api/stripe/sync', {
+        method: 'POST',
+        signal: controller.signal,
+        credentials: 'same-origin',
+      }).finally(() => clearTimeout(timer));
 
-      if (response.ok) {
-        toast.success(data.message || 'Reembolso efetuado com sucesso!', { id: toastId });
-        fetchData(false);
-      } else {
-        throw new Error(data.error || 'Erro ao processar reembolso');
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Não foi possível sincronizar agora.');
       }
-    } catch (error: any) {
-      toast.error(error.message, { id: toastId });
+
+      await fetchData(false);
+
+      const changed = Array.isArray(data.subscriptions)
+        ? data.subscriptions.filter((s: any) => s?.changed).length
+        : 0;
+
+      if (data.ok) {
+        toast.success(
+          changed > 0
+            ? `Sincronização concluída — ${changed} atualização(ões) aplicada(s).`
+            : (data.message || 'Sincronização concluída. Tudo já estava atualizado.'),
+          { id: toastId }
+        );
+      } else {
+        toast(data.message || 'Sincronização parcial: confira os avisos.', { id: toastId, icon: '⚠️' });
+      }
+    } catch (err: any) {
+      toast.error(
+        err?.name === 'AbortError'
+          ? 'A sincronização demorou demais e foi cancelada. Tente novamente.'
+          : (err?.message || 'Erro ao sincronizar.'),
+        { id: toastId }
+      );
+    } finally {
+      setIsSyncing(false);
+      toast.dismiss(toastId);
     }
   };
 
-  const handleConfirmCancel = async () => {
-    setIsCancelling(true);
-    const toastId = toast.loading('Processando cancelamento...');
-    try {
-      const response = await fetch('/api/stripe/cancel', { method: 'POST' });
-      const data = await response.json();
+  /**
+   * Download da fatura PDF (missão §5 e §6).
+   *
+   * Estados verdadeiros em todas as etapas, com timeout explícito:
+   *   preparing -> ready | error | unavailable
+   * Nunca fica em "carregando" para sempre: o AbortController garante isso.
+   */
+  const handleDownloadInvoice = async (licenseKey: string, paymentId: string | null) => {
+    if (!paymentId) {
+      setInvoiceUi((prev) => ({
+        ...prev,
+        [licenseKey]: { phase: 'unavailable', message: INVOICE_PHASE_TEXT.unavailable },
+      }));
+      return;
+    }
 
-      if (response.ok) {
-        toast.success('Assinatura cancelada! Você ainda terá acesso até o fim do período.', { id: toastId });
-        setIsCancelModalOpen(false);
-        fetchData(false);
-      } else {
-        throw new Error(data.error || 'Erro ao cancelar');
+    setInvoiceUi((prev) => ({
+      ...prev,
+      [licenseKey]: { phase: 'preparing', message: INVOICE_PHASE_TEXT.preparing },
+    }));
+
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), INVOICE_TIMEOUT_MS);
+
+    try {
+      const response = await fetch(`/api/billing/invoice?payment_id=${encodeURIComponent(paymentId)}`, {
+        credentials: 'same-origin',
+        signal: controller.signal,
+      });
+
+      if (response.status === 409) {
+        const body = await response.json().catch(() => ({}));
+        const message = body.error || INVOICE_PHASE_TEXT.unavailable;
+        setInvoiceUi((prev) => ({ ...prev, [licenseKey]: { phase: 'unavailable', message } }));
+        toast.error(message);
+        return;
       }
-    } catch (error: any) {
-      toast.error(error.message, { id: toastId });
+
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body.error || INVOICE_PHASE_TEXT.error);
+      }
+
+      const blob = await response.blob();
+
+      // Nome do arquivo vem do Content-Disposition do servidor (nunca montado
+      // aqui com dados do usuário).
+      const disposition = response.headers.get('Content-Disposition') ?? '';
+      const match = /filename="([^"]+)"/i.exec(disposition);
+      const fileName = match?.[1] ?? `VOLTRIS-fatura-${paymentId.slice(0, 8)}.pdf`;
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+
+      setInvoiceUi((prev) => ({
+        ...prev,
+        [licenseKey]: { phase: 'ready', message: INVOICE_PHASE_TEXT.ready },
+      }));
+    } catch (err: any) {
+      const timedOut = err?.name === 'AbortError';
+      const message = timedOut
+        ? 'A geração do documento demorou demais. Tentar novamente.'
+        : (err?.message || INVOICE_PHASE_TEXT.error);
+      setInvoiceUi((prev) => ({ ...prev, [licenseKey]: { phase: 'error', message } }));
+      toast.error(message);
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+
+  /**
+   * Reembolso (missão §8). O botão só aparece quando existe ação real; a
+   * elegibilidade (7 dias corridos) é decidida no servidor, e a resposta diz
+   * exatamente o que aconteceu — reembolso confirmado, em processamento ou
+   * solicitação em análise. Nunca "sucesso" sem operação real.
+   */
+  const handleRequestRefund = async (paymentId: string | null, scope: 'latest' | 'initial' = 'latest') => {
+    if (isRefunding) return;
+
+    setIsRefundModalOpen(true);
+    setRefundTarget({ paymentId, scope });
+  };
+
+  const confirmRefund = async () => {
+    if (!refundTarget || isRefunding) return;
+    setIsRefunding(true);
+    const toastId = toast.loading('Processando solicitação de reembolso...');
+    try {
+      const response = await fetch('/api/stripe/refund', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({
+          payment_id: refundTarget.paymentId ?? undefined,
+          scope: refundTarget.scope,
+          confirm: true,
+          reason: refundReason.trim() || undefined,
+        }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Não foi possível processar a solicitação.');
+      }
+
+      // 202 = registrado para análise; 200 = reembolso executado.
+      if (data.status === 'requested') {
+        toast('Solicitação registrada. Nossa equipe vai analisar e entrará em contato.', {
+          id: toastId, icon: '📋', duration: 8000,
+        });
+      } else if (data.status === 'processing') {
+        toast.success(data.message || 'Reembolso em processamento.', { id: toastId });
+      } else {
+        toast.success(data.message || 'Reembolso confirmado.', { id: toastId });
+      }
+
+      setIsRefundModalOpen(false);
+      setRefundReason('');
+      await fetchData(false);
+    } catch (err: any) {
+      toast.error(err?.message || 'Erro ao processar a solicitação de reembolso.', { id: toastId });
+    } finally {
+      setIsRefunding(false);
+      toast.dismiss(toastId);
+    }
+  };
+
+  /**
+   * Cancelar / reativar a renovação (missão §7).
+   *
+   * O modal mostra até quando o acesso permanece — informação que vem do
+   * servidor (`billing.endsAt`), não de cálculo do navegador. A confirmação só
+   * aparece depois que a Stripe responde; falha é mostrada como falha.
+   */
+  const handleConfirmCancel = async () => {
+    if (isCancelling) return;
+    setIsCancelling(true);
+    const toastId = toast.loading('Atualizando a renovação na Stripe...');
+    try {
+      const response = await fetch('/api/stripe/cancel', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({
+          action: cancelAction,
+          subscription_id: billing?.subscriptionId ?? undefined,
+        }),
+      });
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Não foi possível alterar a renovação.');
+      }
+
+      toast.success(
+        data.message || (cancelAction === 'cancel'
+          ? 'Renovação desligada. Você continua com acesso até o fim do período pago.'
+          : 'Renovação reativada.'),
+        { id: toastId, duration: 7000 }
+      );
+
+      setIsCancelModalOpen(false);
+      await fetchData(false);
+    } catch (err: any) {
+      toast.error(err?.message || 'Erro ao cancelar a renovação.', { id: toastId });
     } finally {
       setIsCancelling(false);
+      toast.dismiss(toastId);
     }
   };
 
@@ -561,25 +792,37 @@ function DashboardContent() {
                         <VoltrisIconTile icon="creditCard" accent={DASHBOARD_ACCENT.brand} size={10} />
                         <h3 className="text-lg font-bold text-white tracking-tight">Faturamento & Assinatura</h3>
                         <p className="text-slate-400 text-xs leading-relaxed">
-                          Gerencie seus métodos de pagamento, acesse faturas da Stripe, cancele renovações automáticas ou solicite reembolso de garantia.
+                          Baixe a fatura comercial em PDF, confira o estado real da sua assinatura,
+                          desligue a renovação automática ou solicite reembolso de garantia.
                         </p>
                       </div>
                       <div className="flex flex-wrap items-center gap-3 pt-2">
                         <button
-                          onClick={handleManageBilling}
-                          className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium text-xs rounded-xl transition-all flex items-center gap-2"
+                          onClick={handleSync}
+                          disabled={isSyncing}
+                          className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium text-xs rounded-xl transition-all flex items-center gap-2 disabled:opacity-50"
                         >
-                          <VoltrisIcon name="externalLink" size={14} /> Portal Stripe
+                          <VoltrisIcon name="processing" size={14} className={isSyncing ? 'animate-spin' : ''} />
+                          {isSyncing ? 'Sincronizando…' : 'Sincronizar Agora'}
                         </button>
+                        {billing?.hasSubscription && billing?.state !== 'ENDED' ? (
+                          <button
+                            onClick={() => {
+                              setCancelAction(billing?.canResumeRenewal ? 'resume' : 'cancel');
+                              setIsCancelModalOpen(true);
+                            }}
+                            disabled={!billing?.canCancelRenewal && !billing?.canResumeRenewal}
+                            className="px-4 py-2.5 bg-slate-900/60 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium text-xs rounded-xl transition-all disabled:opacity-40"
+                          >
+                            {billing?.canResumeRenewal ? 'Reativar Renovação' : 'Cancelar Renovação'}
+                          </button>
+                        ) : null}
                         <button
-                          onClick={() => setIsCancelModalOpen(true)}
-                          className="px-4 py-2.5 bg-slate-900/60 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium text-xs rounded-xl transition-all"
-                        >
-                          Cancelar Renovação
-                        </button>
-                        <button
-                          onClick={handleRequestRefund}
-                          className="px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all"
+                          onClick={() => handleRequestRefund(
+                            licenses.find((l: any) => l?.invoice?.available)?.invoice?.paymentId ?? null
+                          )}
+                          disabled={!billing?.canRequestRefund || isRefunding}
+                          className="px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all disabled:opacity-40"
                         >
                           Reembolso (7 Dias)
                         </button>
@@ -599,35 +842,96 @@ function DashboardContent() {
                   transition={{ duration: 0.2 }}
                   className="space-y-6"
                 >
-                  {/* Warning & Billing Actions Banner */}
-                  <div className="flex flex-col gap-4 p-5 sm:p-6 rounded-2xl bg-amber-500/[0.06] border border-amber-500/20">
+                  {/* Gestão de Licenças & Faturamento (§9) — os botões refletem a situação
+                      REAL do cliente: nada de "cancelar" em assinatura encerrada
+                      nem "reembolso" em compra já devolvida. */}
+                  <div className={`flex flex-col gap-4 p-5 sm:p-6 rounded-2xl border ${transparencyMode ? 'voltris-glass' : 'bg-slate-900/40 border-slate-800/80'}`}>
                     <div className="flex flex-col sm:flex-row items-center gap-4">
-                       <VoltrisIconTile icon="alertTriangle" accent={DASHBOARD_ACCENT.warning} size={10} />
+                      <VoltrisIconTile
+                        icon={billing?.hasSubscription ? 'creditCard' : 'security'}
+                        accent={billing?.hasSubscription ? DASHBOARD_ACCENT.brand : DASHBOARD_ACCENT.info}
+                        size={10}
+                      />
                       <div className="flex-1 text-center sm:text-left">
                         <h4 className="font-semibold text-slate-200 text-sm">Gestão de Licenças & Faturamento</h4>
-                        <p className="text-slate-400 text-xs mt-0.5">Gerencie seu plano, cancele renovação ou solicite reembolso dentro de 7 dias.</p>
+                        <p className="text-slate-400 text-xs mt-0.5">
+                          {billing?.hasSubscription
+                            ? (billing.hint || 'Confira o estado real da sua assinatura.')
+                            : 'Você não possui assinatura recorrente — compras avulsas não geram renovação.'}
+                        </p>
                       </div>
-                      <button 
-                        onClick={() => fetchData(true)} 
-                        className="px-4 py-2 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 font-medium text-xs rounded-xl transition-all shadow-sm"
+                      <button
+                        onClick={handleSync}
+                        disabled={isSyncing}
+                        className="px-4 py-2 bg-slate-800/80 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium text-xs rounded-xl transition-all shadow-sm disabled:opacity-50 flex items-center gap-2"
                       >
-                        Sincronizar Agora
+                        <VoltrisIcon name="processing" size={13} className={isSyncing ? 'animate-spin' : ''} />
+                        {isSyncing ? 'Sincronizando…' : 'Sincronizar Agora'}
                       </button>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-amber-500/15">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3 border-t border-slate-800/60">
+                      {/* Cancelar / Reativar renovação — só quando a operação
+                          realmente existe para o estado atual (§7 e §9). */}
+                      {billing?.hasSubscription && billing?.state !== 'ENDED' && billing?.state !== 'REFUNDED' ? (
+                        <button
+                          onClick={() => {
+                            setCancelAction(billing?.canResumeRenewal ? 'resume' : 'cancel');
+                            setIsCancelModalOpen(true);
+                          }}
+                          disabled={!billing?.canCancelRenewal && !billing?.canResumeRenewal}
+                          title={
+                            !billing?.canCancelRenewal && !billing?.canResumeRenewal
+                              ? 'Nenhuma alteração de renovação disponível agora.'
+                              : undefined
+                          }
+                          className="flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium text-xs rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-slate-900"
+                        >
+                          <VoltrisIcon name={billing?.canResumeRenewal ? 'recovery' : 'close'} size={14} />
+                          {billing?.canResumeRenewal
+                            ? 'Reativar Renovação Automática'
+                            : 'Cancelar Renovação Automática'}
+                        </button>
+                      ) : (
+                        <div className="flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-900/40 border border-slate-800/60 text-slate-500 font-medium text-xs rounded-xl">
+                          <VoltrisIcon name="check" size={14} />
+                          {billing?.state === 'ENDED' ? 'Assinatura encerrada' : 'Sem assinatura recorrente'}
+                        </div>
+                      )}
+
+                      {/* Reembolso — elegibilidade real na palavra e no botão (§8). */}
                       <button
-                        onClick={() => setIsCancelModalOpen(true)}
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium text-xs rounded-xl transition-all"
+                        onClick={() => handleRequestRefund(
+                          licenses.find((l: any) => l?.invoice?.available)?.invoice?.paymentId ?? null
+                        )}
+                        disabled={!billing?.canRequestRefund || isRefunding}
+                        title={!billing?.canRequestRefund
+                          ? 'Este pagamento não está elegível para reembolso.'
+                          : 'Solicitar reembolso da sua compra mais recente (7 dias corridos).'}
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-rose-500/10"
                       >
-                        <VoltrisIcon name="close" size={14} /> Cancelar Renovação Automática
+                        <VoltrisIcon name={billing?.canRequestRefund ? 'processing' : 'check'} size={14} />
+                        {billing?.canRequestRefund ? 'Solicitar Reembolso (7 Dias)' : 'Reembolso indisponível'}
                       </button>
-                      <button
-                        onClick={handleRequestRefund}
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-rose-500/10 hover:bg-rose-500/15 border border-rose-500/20 text-rose-400 font-medium text-xs rounded-xl transition-all"
-                      >
-                        <VoltrisIcon name="processing" size={14} /> Solicitar Reembolso (7 Dias)
-                      </button>
+                    </div>
+
+                    {/* Linha de estado: fonte da verdade é o servidor */}
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-[11px] text-slate-500">
+                      <span>
+                        Estado: <span className="text-slate-300 font-medium">{billing?.stateLabel || '—'}</span>
+                      </span>
+                      <span>
+                        Renovação:{' '}
+                        <span className={`font-semibold ${billing?.renewalEnabled ? 'text-emerald-400' : 'text-slate-400'}`}>
+                          {billing?.renewalEnabled ? 'Ativada' : 'Desligada'}
+                        </span>
+                      </span>
+                      {billing?.nextBillingAt && (
+                        <span>Próxima cobrança: <span className="text-slate-300 font-medium">{fmtDate(billing.nextBillingAt)}</span></span>
+                      )}
+                      {billing?.endsAt && (
+                        <span>Acesso até: <span className="text-slate-300 font-medium">{fmtDate(billing.endsAt)}</span></span>
+                      )}
                     </div>
                   </div>
 
@@ -682,6 +986,12 @@ function DashboardContent() {
                         const revealed = revealedKeys[String(lic.license_key)] === true;
                         const maxDevices = lic.maxDevices ?? 1;
                         const devicesFull = (lic.devicesInUse ?? 0) >= maxDevices && maxDevices < 9999;
+                        // Estado real do documento desta compra (ver INVOICE_PHASE_TEXT).
+                        const invoiceState: InvoiceUiState = invoiceUi[String(lic.license_key)] ?? {
+                          phase: 'idle',
+                          message: '',
+                        };
+                        const invoicePhase: InvoicePhase = invoiceState.phase;
                         return (
                         <motion.div
                           key={lic.license_key}
@@ -782,20 +1092,41 @@ function DashboardContent() {
                                 label="Assinatura"
                                 value={SUBSCRIPTION_STATUS_LABEL[String(lic.subscriptionStatus ?? '').toUpperCase()] ?? 'sem assinatura'}
                               />
+                              {/* Renovação: ATIVADA/DESLIGADA só quando o servidor confirma (§3) */}
                               <InfoCell
-                                label={lic.nextBillingAt ? 'Renova em' : lic.canceledAt ? 'Cancelada em' : 'Renovação'}
-                                value={lic.nextBillingAt ? fmtDate(lic.nextBillingAt) : lic.canceledAt ? fmtDate(lic.canceledAt) : 'desligada'}
+                                label="Renovação"
+                                value={
+                                  lic.billingState === 'ONE_TIME' ? 'sem recorrência'
+                                    : lic.billingState === 'ENDED' ? 'assinatura encerrada'
+                                      : lic.renewalEnabled
+                                        ? `ativada${lic.nextBillingAt ? ` · ${fmtDate(lic.nextBillingAt)}` : ''}`
+                                        : lic.billingState === 'CANCEL_SCHEDULED'
+                                          ? `desligada · acesso até ${fmtDate(lic.endsAt || lic.expiresAt)}`
+                                          : (lic.billingLabel || '—').toLowerCase()
+                                }
+                                tone={
+                                  lic.renewalEnabled ? 'text-emerald-400'
+                                    : lic.billingState === 'CANCEL_SCHEDULED' ? 'text-cyan-400'
+                                      : lic.billingState === 'ENDED' ? 'text-rose-400'
+                                        : 'text-slate-300'
+                                }
                               />
                             </div>
 
-                            {/* Rodapé: sincronizacao real + acoes proprias do estado */}
+                            {/* Rodapé: estado real do documento + acoes proprias do estado */}
                             <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800/60 pt-4 text-xs">
                               <div className="flex items-center gap-2 text-slate-500">
-                                <VoltrisIcon name="clock" size={12} />
-                                <span>
-                                  {isPolling
-                                    ? 'Verificando pagamento com a Stripe…'
-                                    : `Dados sincronizados às ${fmtTime(serverTime)}`}
+                                <VoltrisIcon
+                                  name={invoicePhase === 'preparing' ? 'processing' : invoicePhase === 'error' ? 'alertCircle' : 'receipt'}
+                                  size={12}
+                                  className={invoicePhase === 'preparing' ? 'animate-spin' : ''}
+                                />
+                                <span className={invoicePhase === 'error' ? 'text-rose-400' : invoicePhase === 'ready' ? 'text-emerald-400' : ''}>
+                                  {invoicePhase === 'idle'
+                                    ? lic.invoice?.available
+                                      ? `Dados sincronizados às ${fmtTime(serverTime)}`
+                                      : `Dados sincronizados às ${fmtTime(serverTime)}`
+                                    : invoiceState.message || INVOICE_PHASE_TEXT[invoicePhase]}
                                 </span>
                               </div>
                               <div className="flex flex-wrap items-center gap-2">
@@ -804,14 +1135,36 @@ function DashboardContent() {
                                     Renovar acesso
                                   </Link>
                                 )}
-                                {lic.hasAccess && lic.subscriptionStatus && lic.subscriptionStatus !== 'CANCELED' && (
+                                {/* O Portal da Stripe sai daqui e só aparece onde é
+                                    realmente necessário: cobrança recusada, onde o
+                                    cliente precisa atualizar o cartão. Em todos os
+                                    outros casos a fatura PDF substitui (§5). */}
+                                {lic.state === 'FALHA_NO_PAGAMENTO' && (
                                   <button
                                     onClick={handleManageBilling}
-                                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium text-[11px] transition-all"
+                                    className="px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/25 text-amber-300 font-medium text-[11px] transition-all"
                                   >
-                                    Gerenciar no Portal Stripe
+                                    Atualizar cartão de pagamento
                                   </button>
                                 )}
+                                {/* Substitui "Gerenciar no Portal Stripe" (missão §5).
+                                    O estado do documento é o do botão: nada de
+                                    sucesso falso nem carregamento infinito. */}
+                                <button
+                                  onClick={() => handleDownloadInvoice(lic.license_key, lic.invoice?.paymentId ?? lic.paymentId ?? null)}
+                                  disabled={!lic.invoice?.available || invoicePhase === 'preparing'}
+                                  title={lic.invoice?.available
+                                    ? 'Baixar a fatura comercial em PDF desta compra'
+                                    : (lic.invoice?.unavailableReason ?? INVOICE_PHASE_TEXT.unavailable)}
+                                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 font-medium text-[11px] transition-all flex items-center gap-1.5 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-slate-800"
+                                >
+                                  <VoltrisIcon name={invoicePhase === 'preparing' ? 'processing' : 'receipt'} size={12} className={invoicePhase === 'preparing' ? 'animate-spin' : ''} />
+                                  {invoicePhase === 'preparing'
+                                    ? 'Gerando PDF…'
+                                    : invoicePhase === 'ready'
+                                      ? 'Baixar novamente'
+                                      : 'Baixar Fatura (PDF)'}
+                                </button>
                                 <Link href="/voltrisoptimizer" className="px-3 py-1.5 rounded-lg text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1 transition-colors">
                                   Baixar App <VoltrisIcon name="download" size={12} />
                                 </Link>
@@ -980,7 +1333,7 @@ function DashboardContent() {
         </div>
       )}
 
-      {/* --- MODAL DE CANCELAMENTO PROFISSIONAL --- */}
+      {/* --- MODAL DE CANCELAMENTO PROFISSIONAL (missão §7) --- */}
       <AnimatePresence>
         {isCancelModalOpen && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
@@ -988,41 +1341,180 @@ function DashboardContent() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsCancelModalOpen(false)}
+              onClick={() => !isCancelling && setIsCancelModalOpen(false)}
               className="absolute inset-0 bg-black/60 backdrop-blur-md"
             />
             <motion.div
               initial={{ scale: 0.95, opacity: 0, y: 10 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 10 }}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="cancel-modal-title"
               className="relative w-full max-w-md bg-slate-900 rounded-2xl p-7 shadow-2xl border border-slate-800 overflow-hidden"
             >
               <div className="relative z-10 flex flex-col items-center text-center">
-                <VoltrisIconTile icon="alertTriangle" accent={DASHBOARD_ACCENT.danger} size={12} className="mb-5" />
+                <VoltrisIconTile
+                  icon={cancelAction === 'cancel' ? 'alertTriangle' : 'recovery'}
+                  accent={cancelAction === 'cancel' ? DASHBOARD_ACCENT.danger : DASHBOARD_ACCENT.success}
+                  size={12}
+                  className="mb-5"
+                />
 
-                <h3 className="text-lg font-bold text-white tracking-tight mb-2">
-                  Cancelar Assinatura?
+                <h3 id="cancel-modal-title" className="text-lg font-bold text-white tracking-tight mb-2">
+                  {cancelAction === 'cancel' ? 'Desligar renovação automática?' : 'Reativar renovação automática?'}
                 </h3>
 
-                <p className="text-slate-400 text-xs leading-relaxed mb-6">
-                  Ao confirmar, sua renovação automática será interrompida. Você continuará com acesso aos recursos PRO até o término do ciclo atual de faturamento.
+                <p className="text-slate-400 text-xs leading-relaxed mb-5">
+                  {cancelAction === 'cancel'
+                    ? 'A próxima cobrança programada será removida. Você não paga nada a mais e continua com todos os recursos até o fim do período já pago.'
+                    : 'A renovação automática voltará a ser cobrada no próximo ciclo, no valor e na data que já estavam contratados.'}
                 </p>
+
+                {/* Informação que o cliente tem direito de saber ANTES de confirmar */}
+                <div className="w-full rounded-xl bg-slate-950/60 border border-slate-800 px-4 py-3 mb-6 text-left space-y-1.5">
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <span className="text-slate-400">Assinatura</span>
+                    <span className="text-slate-200 font-medium">{billing?.stateLabel || '—'}</span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <span className="text-slate-400">
+                      {cancelAction === 'cancel' ? 'Acesso até' : 'Próxima cobrança'}
+                    </span>
+                    <span className="text-slate-200 font-medium">
+                      {fmtDate(cancelAction === 'cancel'
+                        ? (billing?.endsAt || billing?.nextBillingAt)
+                        : billing?.nextBillingAt)}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <span className="text-slate-400">Multa por cancelamento</span>
+                    <span className="text-emerald-400 font-medium">Não há</span>
+                  </div>
+                </div>
 
                 <div className="flex flex-col gap-2.5 w-full">
                   <button
                     onClick={handleConfirmCancel}
                     disabled={isCancelling}
-                    className="w-full py-2.5 bg-rose-500 hover:bg-rose-600 disabled:opacity-50 text-white font-semibold text-xs rounded-xl transition-all shadow-sm"
+                    className={`w-full py-2.5 font-semibold text-xs rounded-xl transition-all shadow-sm disabled:opacity-50 ${
+                      cancelAction === 'cancel'
+                        ? 'bg-rose-500 hover:bg-rose-600 text-white'
+                        : 'bg-emerald-600 hover:bg-emerald-500 text-white'
+                    }`}
                   >
-                    {isCancelling ? 'Processando...' : 'Confirmar Cancelamento'}
+                    {isCancelling
+                      ? 'Confirmando com o processador...'
+                      : cancelAction === 'cancel'
+                        ? 'Confirmar Cancelamento'
+                        : 'Confirmar Reativação'}
                   </button>
                   <button
                     onClick={() => setIsCancelModalOpen(false)}
-                    className="w-full py-2.5 bg-slate-800 hover:bg-slate-700/80 border border-slate-700/70 text-slate-300 font-medium text-xs rounded-xl transition-all"
+                    disabled={isCancelling}
+                    className="w-full py-2.5 bg-slate-800 hover:bg-slate-700/80 border border-slate-700/70 text-slate-300 font-medium text-xs rounded-xl transition-all disabled:opacity-50"
                   >
-                    Manter minha assinatura
+                    {cancelAction === 'cancel' ? 'Manter minha assinatura' : 'Cancelar operação'}
                   </button>
                 </div>
+
+                <p className="mt-4 text-[10px] text-slate-500 leading-relaxed">
+                  A alteração é registrada no processador de pagamentos. Nada muda aqui até
+                  que ele confirme a operação.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* --- MODAL DE REEMBOLSO (missão §8) --- */}
+      <AnimatePresence>
+        {isRefundModalOpen && (
+          <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => !isRefunding && setIsRefundModalOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 10 }}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="refund-modal-title"
+              className="relative w-full max-w-md bg-slate-900 rounded-2xl p-7 shadow-2xl border border-slate-800 overflow-hidden"
+            >
+              <div className="relative z-10 flex flex-col items-center text-center">
+                <VoltrisIconTile icon="processing" accent={DASHBOARD_ACCENT.warning} size={12} className="mb-5" />
+
+                <h3 id="refund-modal-title" className="text-lg font-bold text-white tracking-tight mb-2">
+                  Solicitar reembolso
+                </h3>
+
+                <p className="text-slate-400 text-xs leading-relaxed mb-5">
+                  Você tem direito a reembolso integral em até 7 dias corridos após a
+                  contratação, sem necessidade de justificativa (art. 49 do Código de Defesa
+                  do Consumidor). Depois desse prazo, sua solicitação passa por análise.
+                </p>
+
+                <div className="w-full rounded-xl bg-slate-950/60 border border-slate-800 px-4 py-3 mb-4 text-left space-y-1.5">
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <span className="text-slate-400">Compra</span>
+                    <span className="text-slate-200 font-medium">
+                      {refundTarget?.paymentId
+                        ? `#${refundTarget.paymentId.slice(0, 8)}`
+                        : 'sua compra mais recente'}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <span className="text-slate-400">Efeito no acesso</span>
+                    <span className="text-slate-200 font-medium">
+                      {billing?.canCancelRenewal ? 'recorrência será encerrada' : 'apenas o período reembolsado'}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between gap-3 text-xs">
+                    <span className="text-slate-400">Prazo do estorno</span>
+                    <span className="text-slate-200 font-medium">1 a 2 faturas</span>
+                  </div>
+                </div>
+
+                <label className="w-full text-left text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">
+                  Motivo (opcional)
+                </label>
+                <textarea
+                  value={refundReason}
+                  onChange={(e) => setRefundReason(e.target.value)}
+                  maxLength={1000}
+                  rows={3}
+                  placeholder="Conte rapidamente o que houve (ajuda nossa análise)."
+                  className="w-full px-3 py-2.5 bg-slate-950/70 border border-slate-800 rounded-xl text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-indigo-500/50 transition-colors resize-none"
+                />
+
+                <div className="flex flex-col gap-2.5 w-full mt-5">
+                  <button
+                    onClick={confirmRefund}
+                    disabled={isRefunding}
+                    className="w-full py-2.5 bg-rose-500 hover:bg-rose-600 disabled:opacity-50 text-white font-semibold text-xs rounded-xl transition-all shadow-sm"
+                  >
+                    {isRefunding ? 'Processando com o processador...' : 'Confirmar Solicitação'}
+                  </button>
+                  <button
+                    onClick={() => setIsRefundModalOpen(false)}
+                    disabled={isRefunding}
+                    className="w-full py-2.5 bg-slate-800 hover:bg-slate-700/80 border border-slate-700/70 text-slate-300 font-medium text-xs rounded-xl transition-all disabled:opacity-50"
+                  >
+                    Voltar
+                  </button>
+                </div>
+
+                <p className="mt-4 text-[10px] text-slate-500 leading-relaxed">
+                  Você só recebe a confirmação de conclusão depois que o processador de
+                  pagamentos estornar o valor de verdade.
+                </p>
               </div>
             </motion.div>
           </div>
