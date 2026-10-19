@@ -3,6 +3,12 @@
 import { createContext, useContext, useEffect, useRef, useState, useCallback, ReactNode } from 'react';
 import { createClient } from '@/utils/supabase/client';
 import { User } from '@supabase/supabase-js';
+import type { AuthChangeEvent, Session } from '@supabase/supabase-js';
+import {
+    pareceLinkDeRecuperacao,
+    readLocationParts,
+    urlDeRedirecionamentoParaReset,
+} from '@/lib/password-recovery';
 
 interface AuthState {
   user: User | null;
@@ -87,6 +93,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  /**
+   * LINK DE RECUPERAÇÃO CHEGANDO EM QUALQUER PÁGINA.
+   *
+   * O link do Supabase tem como destino padrão o "Site URL" do projeto —
+   * que, sem a URL de redirecionamento na lista permitida, FAZ o link
+   * ignorar o `redirectTo` do site. O token chegava na home e o usuário
+   * "logava" sozinho, sem nunca ver a tela de nova senha.
+   *
+   * Aqui o app reconhece o link onde ele cair e encaminha para
+   * `/reset-password` carregando o token junto (fragmento ou query).
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const partes = readLocationParts();
+    if (!pareceLinkDeRecuperacao(partes, window.location.pathname)) return;
+    if (window.location.pathname.replace(/\/+$/, '') === '/reset-password') return;
+    window.location.replace(urlDeRedirecionamentoParaReset(partes));
+  }, []);
+
   useEffect(() => {
     const supabase = supabaseRef.current;
     let mounted = true;
@@ -121,7 +146,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     initSession();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
       if (!mounted) return;
 
       if (event === 'SIGNED_OUT') {

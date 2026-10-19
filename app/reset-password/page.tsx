@@ -168,12 +168,17 @@ export default function ResetPasswordPage() {
 
             setSuccess(true);
 
-            // O signOut vem DEPOIS da troca. Antes disso ele destruiria
-            // exatamente a sessão que autorizou a troca.
-            window.setTimeout(async () => {
-                try { await supabase.auth.signOut(); } catch { /* senha já trocada */ }
-                router.replace('/login?senha=alterada');
-            }, 2500);
+            // A sessão de recuperação CONTINUA válida depois da troca — é ela
+            // que permite entrar direto no painel com a senha nova.
+            //
+            // Antes o código fazia `signOut()` e mandava o usuário para o
+            // login: ele tinha acabado de definir a senha e era expulso da
+            // própria conta. Agora o fluxo termina onde o usuário espera:
+            // no painel, já autenticado.
+            window.history.replaceState({}, '', '/dashboard');
+            window.setTimeout(() => {
+                router.replace('/dashboard');
+            }, 1200);
         } finally {
             setLoading(false);
         }
@@ -321,7 +326,7 @@ export default function ResetPasswordPage() {
                         <div className="text-center py-6" role="status" aria-live="polite">
                             <FiCheckCircle className="text-emerald-500 mx-auto mb-4" size={44} />
                             <p className="text-lg font-semibold text-gray-900 mb-1">Senha redefinida!</p>
-                            <p className="text-sm text-gray-600">Encerrando a sessão e levando você para o login…</p>
+                            <p className="text-sm text-gray-600">Sua senha foi alterada. Levando você para o painel…</p>
                         </div>
                     )}
                 </div>

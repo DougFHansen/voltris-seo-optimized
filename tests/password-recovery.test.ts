@@ -50,16 +50,22 @@ describe('referência a arquivos do fluxo', () => {
         );
     });
 
-    test('a página não faz logout antes de trocar a senha', async () => {
+    test('a página não destrói a sessão de recuperação', async () => {
         const { readFileSync } = await import('node:fs');
         const src = readFileSync('app/reset-password/page.tsx', 'utf8');
         const idxUpdate = src.indexOf('updateUser({ password })');
-        const idxSignOut = src.indexOf('auth.signOut()');
         assert.ok(idxUpdate > 0, 'updateUser precisa existir');
-        assert.ok(idxSignOut > 0, 'signOut precisa existir (política pós-troca)');
+        // A sessão de recuperação é a que AUTORIZA a troca: destruí-la antes
+        // (ou no final) faria o usuário ser expulso da própria conta logo
+        // depois de definir a senha nova. A política agora é: a sessão
+        // continua e o usuário entra direto no painel.
         assert.ok(
-            idxSignOut > idxUpdate,
-            'signOut ANTES de updateUser destruiria a sessão de recuperação'
+            !/auth\.signOut\(\)/.test(src),
+            'não deve haver signOut: o usuário deve seguir para o painel autenticado'
+        );
+        assert.ok(
+            src.includes("router.replace('/dashboard')"),
+            'depois de trocar a senha, o usuário vai para o painel'
         );
     });
 

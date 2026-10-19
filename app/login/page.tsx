@@ -56,6 +56,8 @@ function LoginContent() {
   const [success, setSuccess] = useState(false);
   const [isLoginView, setIsLoginView] = useState(true);
   const [isRecoveryView, setIsRecoveryView] = useState(false);
+  /** O link de redefinição já foi enviado (substitui o `alert` cru). */
+  const [recoverySent, setRecoverySent] = useState(false);
   const [signupStep, setSignupStep] = useState(1); // 1, 2, 3
 
   const [isMfaChallenge, setIsMfaChallenge] = useState(false);
@@ -552,9 +554,15 @@ function LoginContent() {
   const handlePasswordRecovery = async () => {
     setError(null); setLoading(true);
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: `${window.location.origin}/reset-password` });
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
+        // Destino do link: a tela de nova senha. O app também reconhece o link
+        // se ele cair em outra página (ver `pareceLinkDeRecuperacao`).
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
       if (error) throw error;
-      alert("Email enviado!"); setIsRecoveryView(false); setIsLoginView(true);
+      // Sem `alert`: a confirmação fica na própria tela, com o próximo passo
+      // explicado (o `alert` era a "mensagem que passa rápido" do relato).
+      setRecoverySent(true);
     } catch (err: any) { setError(err.message); } finally { setLoading(false); }
   };
 
@@ -752,7 +760,7 @@ function LoginContent() {
                       </div>
 
                       <div className="flex justify-end">
-                        <button type="button" onClick={() => setIsRecoveryView(true)} className="text-xs text-gray-500 hover:text-blue-600 transition-colors font-medium">Esqueci a senha</button>
+                        <button type="button" onClick={() => { setIsRecoveryView(true); setRecoverySent(false); setError(null); }} className="text-xs text-gray-500 hover:text-blue-600 transition-colors font-medium">Esqueci a senha</button>
                       </div>
 
                       {error && (
@@ -954,10 +962,46 @@ function LoginContent() {
                   {/* --- RECOVERY --- */}
                   {isRecoveryView && (
                     <div className="space-y-4">
-                      <p className="text-gray-600 text-sm text-center">Digite seu email para receber o link.</p>
-                      <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3"><Mail className="w-4 h-4 text-gray-500" /><input type="email" placeholder="E-mail cadastrado" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-gray-900 text-sm outline-none" /></div>
-                      <button onClick={handlePasswordRecovery} disabled={loading} className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl text-sm">Enviar Link</button>
-                      <button onClick={() => setIsRecoveryView(false)} className="w-full text-center text-xs text-gray-500">Voltar</button>
+                      {recoverySent ? (
+                        <div className="space-y-4 text-center">
+                          <div className="mx-auto w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+                            <CheckCircle className="w-6 h-6 text-emerald-500" />
+                          </div>
+                          <p className="text-sm font-semibold text-gray-900">Link enviado!</p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Se você tiver uma conta com <strong>{email.trim()}</strong>, o link chega em
+                            poucos instantes. Ao abrir, ele leva direto à tela de <strong>criar nova
+                            senha</strong> — e a sua conta só é conectada depois que você confirmar a
+                            troca.
+                          </p>
+                          <p className="text-[11px] text-gray-400">
+                            O link vale por pouco tempo e só pode ser usado uma vez.
+                          </p>
+                          <div className="flex flex-col gap-2 pt-1">
+                            <button
+                              onClick={() => { setRecoverySent(false); setError(null); }}
+                              className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl text-sm"
+                            >
+                              Enviar outro link
+                            </button>
+                            <button
+                              onClick={() => { setIsRecoveryView(false); setRecoverySent(false); setError(null); }}
+                              className="w-full text-center text-xs text-gray-500"
+                            >
+                              Voltar para o login
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          <p className="text-gray-600 text-sm text-center">Digite seu email para receber o link.</p>
+                          <div className="bg-gray-100 border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3"><Mail className="w-4 h-4 text-gray-500" /><input type="email" placeholder="E-mail cadastrado" value={email} onChange={e => setEmail(e.target.value)} className="bg-transparent w-full text-gray-900 text-sm outline-none" /></div>
+                          <button onClick={handlePasswordRecovery} disabled={loading || !email.trim()} className="w-full py-3 bg-blue-600 text-white font-bold rounded-xl text-sm disabled:opacity-50">
+                            {loading ? 'Enviando…' : 'Enviar Link'}
+                          </button>
+                          <button onClick={() => { setIsRecoveryView(false); setError(null); }} className="w-full text-center text-xs text-gray-500">Voltar</button>
+                        </>
+                      )}
                     </div>
                   )}
 

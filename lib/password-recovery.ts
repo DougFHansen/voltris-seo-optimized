@@ -155,6 +155,70 @@ export function interpretRecoveryLink(parts: RecoveryUrlParts):
 }
 
 /**
+ * Esta URL é um LINK DE RECUPERAÇÃO?
+ *
+ * O link do Supabase chega em um de dois formatos e — este é o ponto — pode
+ * chegar em QUALQUER página, não só em `/reset-password`:
+ *
+ *   IMPLÍCITO  ...#access_token=…&type=recovery
+ *   PKCE       ...?code=…
+ *
+ * Por que em qualquer página: o "Site URL" configurado no projeto do
+ * Supabase é o destino PADRÃO do link. Se a URL de redirecionamento não
+ * estiver na lista permitida, o Supabase IGNORA o `redirectTo` do site e
+ * manda o usuário para o Site URL — com o token no fragmento. Foi
+ * exatamente o que aconteceu: o link abria a home, o navegador logava a
+ * conta sozinho (o supabase-js absorve o token do fragmento) e o usuário
+ * nunca via a tela de nova senha.
+ *
+ * Por isso o app precisa:
+ *   1. reconhecer o link onde ele cair (esta função);
+ *   2. encaminhar para `/reset-password` carregando o token junto;
+ *   3. NÃO abrir sessão com esse token (senão o usuário entra logado sem
+ *      querer — foi o "do nada loga na minha conta").
+ */
+export function pareceLinkDeRecuperacao(parts: RecoveryUrlParts, pathname?: string): boolean {
+    const rawHash = parts.hash ?? '';
+    const hash = (rawHash.startsWith('#') ? rawHash.slice(1) : rawHash).replace(/^\/+/, '');
+    const rawSearch = parts.search ?? '';
+    const search = rawSearch.startsWith('?') ? rawSearch.slice(1) : rawSearch;
+
+    const hashParams = new URLSearchParams(hash);
+    const query = new URLSearchParams(search);
+
+    // Implícito com type=recovery: a assinatura inequívica do link.
+    if (hashParams.get('type') === 'recovery' && hashParams.get('access_token')) return true;
+    // Link expirado/recusado: o Supabase devolve o erro no fragmento.
+    if (hashParams.get('error_code') || hashParams.get('error')) return true;
+    if (query.get('error_code')) return true;
+
+    // PKCE: `?code=` só é recuperação quando a própria página é a de reset.
+    // Em qualquer outro lugar, `?code=` é o callback OAuth (Google) e não
+    // pode ser-treated como recuperação.
+    if (query.get('code')) {
+        const caminho = (pathname ?? '').replace(/\/+$/, '');
+        if (caminho === '/reset-password') return true;
+    }
+
+    return false;
+}
+
+/**
+ * Monta a URL de destino do `/reset-password` preservando o token.
+ *
+ * O token pode estar no fragmento (`#access_token=…`) ou na query (`?code=…`).
+ * Perder qualquer um dos dois faz o link parecer inválido.
+ */
+export function urlDeRedirecionamentoParaReset(
+    parts: RecoveryUrlParts,
+    pathname = '/reset-password'
+): string {
+    const hash = parts.hash ? (parts.hash.startsWith('#') ? parts.hash : `#${parts.hash}`) : '';
+    const search = parts.search ? (parts.search.startsWith('?') ? parts.search : `?${parts.search}`) : '';
+    return `${pathname}${search}${hash}`;
+}
+
+/**
  * O usuário tem senha local?
  *
  * Conta criada só com Google não tem identidade `email`. Definir a senha nela
