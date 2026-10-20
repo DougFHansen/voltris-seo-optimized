@@ -40,7 +40,11 @@ export async function POST(request: NextRequest) {
     // manual chega ao grupo.
     if (process.env.DIAGNOSTICS_FORWARDING_DISABLED === '1') {
         return NextResponse.json(
-            { ok: false, error: 'forwarding_disabled' },
+            {
+                ok: false,
+                error: 'forwarding_disabled',
+                hint: 'Remova a variável DIAGNOSTICS_FORWARDING_DISABLED=1 do ambiente do deploy e publique de novo.',
+            },
             { status: 503, headers: { 'Access-Control-Allow-Origin': '*' } }
         );
     }

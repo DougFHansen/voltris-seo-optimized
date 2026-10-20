@@ -148,9 +148,18 @@ export async function OPTIONS() {
 export async function POST(request: NextRequest) {
     // O INTERRUPTOR: o encaminhamento pode ser DESLIGADO a qualquer
     // momento, sem reiniciar nada e sem derrubar o resto do site.
+    //
+    // A resposta DIZ O QUE FAZER, porque quem encontra um 503 num
+    // alarme que não chega precisa saber o que destravar — e adivinhar
+    // "é o interruptor" ou "é o token" gastaria mais tempo do que a
+    // própria correção.
     if (FORWARDING_DISABLED) {
         return NextResponse.json(
-            { ok: false, error: 'forwarding_disabled' },
+            {
+                ok: false,
+                error: 'forwarding_disabled',
+                hint: 'O encaminhamento está desligado: a variável DIAGNOSTICS_FORWARDING_DISABLED=1 está no ambiente do deploy. Remova-a (ou ponha 0) e publique de novo.',
+            },
             { status: 503, headers: corsHeaders() }
         );
     }
