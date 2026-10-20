@@ -62,6 +62,69 @@ function formatLocationInfo(location?: LocationInfo): string {
 }
 
 export const TelegramService = {
+    /**
+     * Envia uma mensagem para um destino EXPLICITO.
+     *
+     * A extensao do navegador tem o seu proprio bot e o seu proprio grupo,
+     * e nenhum dos dois e o mesmo do site. Por isso o destino e um
+     * PARAMETRO, e nao uma constante do modulo: o token e o chat_id sao
+     * lidos do ambiente pelo CHAMADOR, e o token nunca aparece no codigo.
+     *
+     * Devolve o RECIBO (`messageId`), e nao `void`: "enviei" e "o Telegram
+     * aceitou" sao frases diferentes, e a segunda e a que interessa.
+     */
+    async sendMessageTo(
+        message: string,
+        options: {
+            token: string;
+            chatId: string;
+            /** Destino alternativo da API, para teste em ambiente controlado. */
+            apiBase?: string;
+            fetchImpl?: typeof fetch;
+        }
+    ): Promise<{ ok: boolean; messageId?: number; error?: string }> {
+        const token = (options.token || '').replace(/['"]/g, '').trim();
+        const chatId = (options.chatId || '').replace(/['"]/g, '').trim();
+
+        if (!token || !chatId) {
+            return { ok: false, error: 'telegram_not_configured' };
+        }
+
+        const apiBase = (options.apiBase || 'https://api.telegram.org').replace(/\/+$/, '');
+        const doFetch = options.fetchImpl ?? fetch;
+
+        try {
+            const response = await doFetch(`${apiBase}/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true,
+                }),
+            });
+
+            if (!response.ok) {
+                // O corpo da resposta do Telegram pode repetir o que foi
+                // pedido, e ele carrega o token na URL: ele NAO e lido nem
+                // registrado.
+                console.error('[Telegram] API Error:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                });
+                return { ok: false, error: `telegram_http_${response.status}` };
+            }
+
+            const body = await response.json().catch(() => null);
+            return { ok: true, messageId: body?.result?.message_id };
+        } catch (error) {
+            console.error('[Telegram] Fetch failed:', error instanceof Error ? error.name : 'unknown');
+            return { ok: false, error: 'telegram_network_error' };
+        }
+    },
+
+
   /**
    * Envia uma mensagem para o chat configurado via variáveis de ambiente
    */
