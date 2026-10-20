@@ -352,7 +352,24 @@ const BROWSER_LABEL: Record<string, string> = {
 /** A mensagem de um erro. */
 export function formatExtensionAlert(event: ExtensionDiagnosticEvent): string {
     const browser = BROWSER_LABEL[event.browser] ?? 'Navegador';
-    const title = event.severity === 'CRITICAL' ? '🔴 VOLTRIS SHIELD — CRITICAL' : '🚨 VOLTRIS SHIELD — ERROR';
+    /*
+     * TRÊS TÍTULOS, E NÃO DOIS.
+     *
+     * A primeira versão tinha só "CRITICAL" e "todo o resto", e rotulava um
+     * AVISO como "🚨 ERROR". Isso não é um detalhe de formatação: um aviso
+     * que diz "alguns provedores não atualizaram, mas as listas anteriores
+     * continuam em vigor" é uma informação completamente diferente de um
+     * erro, e o grupo precisa saber qual das duas está lendo.
+     *
+     * Um alerta de aviso marcado como erro treina quem lê a ignorar o
+     * canal — que é o mesmo que não ter canal.
+     */
+    const title =
+        event.severity === 'CRITICAL'
+            ? '🔴 VOLTRIS SHIELD — CRITICAL'
+            : event.severity === 'WARNING'
+              ? '⚠️ VOLTRIS SHIELD — AVISO'
+              : '🚨 VOLTRIS SHIELD — ERROR';
     const when = new Date(event.timestamp);
     const stamp = Number.isNaN(when.getTime())
         ? 'UTC'
@@ -375,6 +392,21 @@ export function formatExtensionAlert(event: ExtensionDiagnosticEvent): string {
         `🕒 Data/Hora: ${escapeTelegramHtml(stamp)}`,
         `🔁 Ocorrências agrupadas: ${event.occurrences}`,
     ];
+
+    if (event.severity === 'WARNING') {
+        /*
+         * O QUE UM AVISO QUER DIZER.
+         *
+         * Um aviso é, quase sempre, "algo degradou mas a proteção segue de
+         * pé". Dizer isso na mensagem é a diferença entre um alerta que
+         * assusta à toa e um alerta que informa.
+         */
+        lines.push(
+            '',
+            '🛡️ <b>Impacto:</b> a extensão continua operando; a falha é parcial ou já estava resolvida.',
+            '🔧 <b>Ação recomendada:</b> verificar no painel de diagnóstico. Se persistir, o componente citado está indisponível.'
+        );
+    }
 
     if (event.severity === 'CRITICAL') {
         lines.push('', '🛡️ <b>Impacto:</b>', 'Uma funcionalidade essencial está indisponível.');

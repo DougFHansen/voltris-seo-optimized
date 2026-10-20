@@ -280,6 +280,34 @@ describe('a mensagem', () => {
         assert.ok(text.includes('Ocorrências agrupadas: 1'));
     });
 
+    test('um AVISO nao pode aparecer rotulado como ERRO', () => {
+        // O defeito real: o formatador so distinguia CRITICAL de "todo o
+        // resto", e um aviso — "alguns provedores nao atualizaram, mas as
+        // listas anteriores continuam em vigor" — chegava ao grupo como se
+        // fosse uma falha. Um alerta de aviso marcado como erro treina quem
+        // le o canal a ignora-lo.
+        const event = validateExtensionDiagnostic({ ...VALID, severity: 'WARNING' });
+        const text = formatExtensionAlert((event as { event: ExtensionDiagnosticEvent }).event);
+        assert.ok(text.includes('AVISO'));
+        assert.ok(!text.includes('🚨 VOLTRIS SHIELD — ERROR'));
+        assert.ok(!text.includes('CRITICAL'));
+        // E o aviso DIZ que a protecao continua de pe.
+        assert.ok(text.includes('a extensão continua operando'));
+    });
+
+    test('os tres titulos sao distintos', () => {
+        const titulo = (severity: string) => {
+            const r = validateExtensionDiagnostic({ ...VALID, severity });
+            return formatExtensionAlert((r as { event: ExtensionDiagnosticEvent }).event).split('\n')[0];
+        };
+        assert.ok(titulo('WARNING').includes('AVISO'));
+        assert.ok(titulo('ERROR').includes('ERROR'));
+        assert.ok(titulo('CRITICAL').includes('CRITICAL'));
+        // E sao tres titulos diferentes, nao um rotulado tres vezes.
+        const tres = new Set([titulo('WARNING'), titulo('ERROR'), titulo('CRITICAL')]);
+        assert.equal(tres.size, 3);
+    });
+
     test('a mensagem critica tem o bloco de impacto', () => {
         const event = validateExtensionDiagnostic({
             ...VALID,
