@@ -3,6 +3,7 @@ import { stripe } from '@/lib/stripe';
 import { createAdminClient } from '@/utils/supabase/admin';
 import { createClient } from '@/utils/supabase/server';
 import { licenseRateGuard, rateLimitedResponse } from '@/lib/license-rate-guard';
+import { resolveSiteUrl, requestOriginOf } from '@/lib/site-url';
 import {
     startOperation,
     getOrCreateCorrelationId,
@@ -102,7 +103,10 @@ export async function POST(req: NextRequest) {
 
         const session = await stripe.billingPortal.sessions.create({
             customer: customerId,
-            return_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://www.voltris.com.br'}/dashboard?tab=licenses`,
+            // Volta para a aba de Minhas Licenças — e para o MESMO site de
+            // onde o pedido saiu (lib/site-url.ts), não para uma URL do
+            // ambiente que pode estar errada.
+            return_url: `${resolveSiteUrl({ requestOrigin: requestOriginOf(req.headers) })}/dashboard?tab=licenses`,
         });
 
         logSuccess(ctx, 'sessao do portal criada', { user: maskEmail(user.email), customer: customerId });

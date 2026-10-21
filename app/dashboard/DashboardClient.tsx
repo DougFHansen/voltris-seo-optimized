@@ -17,6 +17,7 @@ import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 import { useDashboard } from '@/app/context/DashboardContext';
 import { notifyPageView } from '@/utils/notifications';
+import { resolveDashboardTab } from '@/components/dashboard/dashboardTabs';
 import { LICENSE_CATALOG, LICENSE_PLANS, SERVICE_CATALOG } from '@/lib/license-catalog';
 
 
@@ -273,7 +274,10 @@ function DashboardContent() {
   const { user, profile, loading } = useAuth();
   const { transparencyMode } = useDashboard();
   const searchParams = useSearchParams();
-  const activeTab = searchParams.get('tab') || (searchParams.get('checkout_success') === 'true' ? 'licenses' : 'overview');
+  // Mesma função que o menu lateral usa (components/dashboard/dashboardTabs.ts):
+  // o CONTEÚDO e a NAVEGAÇÃO nunca podem discordar sobre qual aba está aberta.
+  // `?checkout_success=true` (volta da Stripe) = "Minhas Licenças".
+  const activeTab = resolveDashboardTab(searchParams) || 'overview';
 
   const [orders, setOrders] = useState<Order[]>([]);
   const [payments, setPayments] = useState<any[]>([]);

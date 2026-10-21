@@ -190,7 +190,10 @@ export async function syncSubscriptionRow(
     // Metadados: só preenchem o que está vazio; dado real da Stripe manda.
     if (!existing) {
         patch.pagbank_subscription_id = snapshot.stripeSubscriptionId;
-        patch.reference_id = fallback?.referenceId ?? `sub_${snapshot.stripeSubscriptionId}`;
+        // `reference_id` = o id da própria assinatura (`sub_...`). Antes era
+        // `sub_${id}`, que produzia `sub_sub_1UT0...` e quebrava o
+        // casamento por referência entre `subscriptions` e `payments`.
+        patch.reference_id = fallback?.referenceId ?? snapshot.stripeSubscriptionId;
         patch.user_id = fallback?.userId ?? null;
         patch.email = fallback?.email ?? null;
         patch.plan_type = fallback?.planType ?? null;

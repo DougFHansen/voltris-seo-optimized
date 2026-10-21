@@ -13,13 +13,34 @@ import {
     getOrCreateCorrelationId,
     logSuccess,
     logError,
+    logWarn,
     logSupabaseError,
     maskEmail,
 } from '@/lib/voltris-log';
+import { resolveSiteUrl, requestOriginOf } from '@/lib/site-url';
+import { buildCheckoutReturnUrls } from '@/lib/checkout-redirect';
 
 export const runtime = 'nodejs';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://www.voltris.com.br';
+/**
+ * URL base do site para os links de retorno da Stripe.
+ *
+ * NÃO é mais uma constante lida do ambiente: `lib/site-url.ts` resolve a URL
+ * considering a ORIGEM DA REQUISIÇÃO (o site de onde o cliente comprou). Isso
+ * resolve de uma vez os dois defeitos que faziam a compra "não voltar para a
+ * aba de Minhas Licenças":
+ *
+ *   - `NEXT_PUBLIC_BASE_URL` valia `http://voltris.com.br` (http + sem www),
+ *     o que colocava o cliente no site de PRODUÇÃO durante o teste local e
+ *     ainda assim fazia o caminho do dashboard passar por um salto em claro;
+ *   - em desenvolvimento, o checkout voltava para `voltris.com.br` em vez de
+ *     `localhost:3000` — o painel testado nunca era o local.
+ */
+function baseUrlDaRequisicao(req: NextRequest): string {
+    return resolveSiteUrl({
+        requestOrigin: requestOriginOf(req.headers),
+    });
+}
 
 /**
  * Texto legal exibido NA PÁGINA DE CHECKOUT da Stripe, antes do pagamento
@@ -129,6 +150,16 @@ export async function POST(req: NextRequest) {
         const licenseType = String(body.license_type ?? '').toLowerCase();
         const billingPeriod = String(body.billing_period ?? 'month');
 
+        // URL base do site (volta do Stripe). Ver lib/site-url.ts.
+        const BASE_URL = baseUrlDaRequisicao(req);
+        const baseConfigurada = resolveSiteUrl({ requestOrigin: null });
+        if (BASE_URL !== baseConfigurada) {
+            logWarn(ctx, 'url base do site corrigida pela origem da requisicao', {
+                configurada: baseConfigurada,
+                usada: BASE_URL,
+            });
+        }
+
         // 1. Identidade: sessao autenticada e a unica fonte de user_id/email.
         const auth = await createClient();
         const { data: sessionData, error: authError } = await auth.auth.getUser();
@@ -216,6 +247,11 @@ export async function POST(req: NextRequest) {
             }
             : {};
 
+        const urls = buildCheckoutReturnUrls(BASE_URL, {
+            isLicense,
+            referenceId,
+        });
+
         const sessionOptions: Stripe.Checkout.SessionCreateParams = {
             payment_method_types: ['card'],
             line_items: [lineItem],
@@ -224,8 +260,11 @@ export async function POST(req: NextRequest) {
             // Vincula a sessão ao usuário no próprio Stripe: a reconciliação
             // admin passa a conseguir casar pendência sem depender de e-mail.
             client_reference_id: referenceId,
-            success_url: `${BASE_URL}/dashboard?checkout_success=true&type=${isLicense ? 'license' : 'service'}&ref=${referenceId}`,
-            cancel_url: isLicense ? `${BASE_URL}/adquirir-licenca` : `${BASE_URL}/servicos`,
+            // Volta para /dashboard?tab=licenses&checkout_success=true...
+            // (lib/checkout-redirect.ts) — a aba de MINHAS LICENÇAS, com o
+            // aviso de compra e o `ref` da compra.
+            success_url: urls.success_url,
+            cancel_url: urls.cancel_url,
             metadata: {
                 reference_id: referenceId,
                 user_id: user.id,
@@ -251,6 +290,7 @@ export async function POST(req: NextRequest) {
             user: maskEmail(email),
             session: session.id,
             customer: customerId,
+            success_url: sessionOptions.success_url,
             recurring: isLicense ? recurrenceLabel(billingPeriod) : null,
             price_id: product?.stripePriceId ?? 'price_data (ad-hoc)',
         });

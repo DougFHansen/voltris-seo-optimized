@@ -12,7 +12,11 @@
     "test": "node --experimental-test-module-mocks --import ./scripts/register-alias.mjs --test tests/*.test.ts",
     "test:license": "node --import ./scripts/register-alias.mjs --test tests/license-state.test.ts tests/license-catalog.test.ts",
     "test:billing": "node --import ./scripts/register-alias.mjs --test tests/billing-state.test.ts tests/billing-policy.test.ts tests/invoice-pdf.test.ts",
+    "test:checkout": "node --import ./scripts/register-alias.mjs --test tests/checkout-redirect.test.ts",
     "audit:stripe": "node scripts/_audit-stripe.mjs",
+    "verify:checkout-url": "node --import ./scripts/register-alias.mjs scripts/stripe-checkout-url-check.mjs",
+    "verify:stripe-webhook": "node --import ./scripts/register-alias.mjs scripts/stripe-webhook-events-check.mjs",
+    "fix:stripe-webhook": "node --import ./scripts/register-alias.mjs scripts/stripe-webhook-events-check.mjs --apply",
     "preview:invoice": "node --import ./scripts/register-alias.mjs scripts/preview-invoice.mjs",
     "test:email": "node --import ./scripts/register-alias.mjs --test tests/email-resend-client.test.ts tests/email-templates.test.ts tests/email-outbox.test.ts",
     "preview:email": "node --import ./scripts/register-alias.mjs scripts/preview-email.mjs"

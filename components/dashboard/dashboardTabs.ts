@@ -134,6 +134,31 @@ export const DASHBOARD_TABS: DashboardTab[] = [
 ];
 
 /**
+ * Resolve QUAL aba do painel está ativa, a partir da query string.
+ *
+ * É a fonte única de verdade: o CONTEÚDO (`DashboardClient`) e a NAVEGAÇÃO
+ * (`Sidebar` / `MobileTabs`) usam a MESMA função. Antes eles discordavam —
+ * o painel abria a aba de licenças (via `checkout_success=true`) enquanto o
+ * menu lateral continuava destacando "Visão Geral", e o cliente achava que
+ * não tinha sido redirecionado para "Minhas Licenças".
+ *
+ * Regras:
+ *   - `?tab=` manda: ele é explícito.
+ *   - `?checkout_success=true` (volta da Stripe) = aba "Minhas Licenças".
+ *   - sem nenhum dos dois: "Visão Geral".
+ */
+export function resolveDashboardTab(searchParams: URLSearchParams | null | undefined): string | null {
+    if (!searchParams) return null;
+
+    const explicita = searchParams.get('tab');
+    if (explicita) return explicita;
+
+    if (searchParams.get('checkout_success') === 'true') return 'licenses';
+
+    return null;
+}
+
+/**
  * Resolve se a tab está ativa. Preserva exatamente a lógica já usada pela
  * Sidebar: abas virtuais casam por query string na rota `/dashboard`, e as
  * demais por prefixo de rota.
@@ -144,7 +169,7 @@ export function isDashboardTabActive(
   searchParams: URLSearchParams | null
 ): boolean {
   if (tab.path === '/dashboard') {
-    const current = searchParams?.get('tab');
+    const current = resolveDashboardTab(searchParams);
     if (tab.query?.tab === 'overview') {
       return pathname === '/dashboard' && (!current || current === 'overview');
     }

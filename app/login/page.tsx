@@ -10,6 +10,7 @@ import { useAuth } from '@/app/hooks/useAuth';
 import GoogleLoginButton from '@/components/GoogleLoginButton';
 import { notifyPageView } from '@/utils/notifications';
 import { clienteDeRecuperacao } from '@/lib/recovery-client';
+import { safeInternalRedirect } from '@/lib/safe-redirect';
 import {
   isValidEmail,
   validateBrazilianPhone,
@@ -179,10 +180,15 @@ function LoginContent() {
   };
 
   const getFinalRedirect = useCallback(() => {
-    // Se houver redirectUrl válido (ex: /adquirir-licenca?plan=pro), tem prioridade máxima
-    if (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login')) {
-      if (redirectUrl.includes('restricted') && !authIsAdmin) return '/dashboard';
-      return redirectUrl;
+    // O destino vem do parâmetro `redirect` — que agora carrega a query string
+    // INTEIRA (ex.: `/dashboard?tab=licenses&checkout_success=true&type=license`).
+    // É isso que faz quem volta da Stripe cair na aba de Minhas Licenças em vez
+    // da Visão Geral. `safeInternalRedirect` garante que o destino é interno
+    // (nunca um site externo).
+    const destino = safeInternalRedirect(redirectUrl, '');
+    if (destino && destino !== '/' && !destino.includes('/login')) {
+      if (destino.includes('restricted') && !authIsAdmin) return '/dashboard';
+      return destino;
     }
     if (pendingOrder) return '/dashboard?pendingOrder=true';
     return authIsAdmin ? '/restricted-area-admin' : '/dashboard';
@@ -327,8 +333,9 @@ function LoginContent() {
       if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
 
       // Redirecionar diretamente após login bem-sucedido
-      const dest = (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login'))
-        ? (redirectUrl.includes('restricted') && !admin ? '/dashboard' : redirectUrl)
+      const destinoSeguro = safeInternalRedirect(redirectUrl, '');
+      const dest = (destinoSeguro && destinoSeguro !== '/' && !destinoSeguro.includes('/login'))
+        ? (destinoSeguro.includes('restricted') && !admin ? '/dashboard' : destinoSeguro)
         : (pendingOrder ? '/dashboard?pendingOrder=true' : (admin ? '/restricted-area-admin' : '/dashboard'));
 
       console.log('🚀 Redirecionando para:', dest);
@@ -522,8 +529,9 @@ function LoginContent() {
           if (typeof window !== 'undefined') window.dispatchEvent(new Event('auth-changed'));
 
           // Redirecionar diretamente após cadastro
-          const dest = (redirectUrl && redirectUrl !== '/' && !redirectUrl.includes('/login'))
-            ? redirectUrl
+          const destinoCadastro = safeInternalRedirect(redirectUrl, '');
+          const dest = (destinoCadastro && destinoCadastro !== '/' && !destinoCadastro.includes('/login'))
+            ? destinoCadastro
             : '/dashboard';
 
           // Notificar sucesso no Telegram (Formulário Normal)

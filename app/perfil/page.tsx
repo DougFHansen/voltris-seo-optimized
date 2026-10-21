@@ -37,6 +37,7 @@ import {
     validateSignupStep3,
 } from '@/lib/signup-rules';
 import { perfilCompleto, rotulosFaltantes, separarEndereco } from '@/lib/profile-completeness';
+import { safeInternalRedirect } from '@/lib/safe-redirect';
 
 interface FormState {
     login: string;
@@ -84,13 +85,18 @@ function ProfileContent() {
     const [manualAddress, setManualAddress] = useState(false);
     const supabase = createClient();
 
-    const destino = searchParams.get('redirect') || '/dashboard';
+    // O destino vem do AuthGuard com a query string INTEIRA. Quem voltou da
+    // Stripe e caiu aqui (conta social com perfil incompleto) precisa voltar
+    // para `/dashboard?tab=licenses&checkout_success=true...` — e não para a
+    // Visão Geral. `safeInternalRedirect` garante que o destino é interno.
+    const destino = safeInternalRedirect(searchParams.get('redirect'), '/dashboard');
     const forcar = searchParams.get('force') === '1';
 
     useEffect(() => {
         if (loading) return;
         if (!user) {
-            router.replace('/login');
+            // Guarda o destino para o login devolver o cliente ao mesmo ponto.
+            router.replace(`/login?redirect=${encodeURIComponent(destino)}`);
             return;
         }
         if (profile) {

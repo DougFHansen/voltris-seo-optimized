@@ -24,6 +24,7 @@
 
 import { formatBRL, formatDateBR, formatDateTimeBR, INVOICE_TIMEZONE } from '@/lib/invoice-pdf';
 import { getCompanyInfo } from '@/lib/company';
+import { resolveSiteUrl } from '@/lib/site-url';
 
 // ============================================================================
 // PALETA E CONSTANTES DE LAYOUT
@@ -292,7 +293,10 @@ export interface EmailContext {
 
 /** URLs construídas a partir do ambiente — nunca hard-coded (§10). */
 export function getEmailContext(): EmailContext {
-    const site = (process.env.NEXT_PUBLIC_BASE_URL || 'https://www.voltris.com.br').replace(/\/$/, '');
+    // Mesma resolução do checkout (lib/site-url.ts): https garantido, sem
+    // barra final e com a URL canônica do site. O e-mail de compra aponta
+    // para `/dashboard?tab=licenses` — a aba que o cliente deve ver.
+    const site = resolveSiteUrl();
     return {
         siteUrl: site,
         dashboardUrl: `${site}/dashboard?tab=licenses`,
