@@ -1,0 +1,34 @@
+# O QUE NÃO SOBE PARA A VERCEL.
+#
+# O storage do projeto na Vercel e' a soma de: cache de build + artefatos de
+# cada deployment. Cada build aqui produz ~1,7 GB de cache do webpack e ~235 MB
+# de HTML prerenderizado (343 paginas de guia). Entao tudo que NAO e' usado pelo
+# app Next.js sai fora do upload: nao ocupa storage e nao atrasa o build.
+#
+# O QUE NAO PODE SAIR (e' usado em runtime):
+#   - assets/        -> lib/invoice-pdf.ts le as fontes de process.cwd()/assets/fonts
+#   - services/      -> importado pelas rotas de API (notificacoes, telegram)
+#   - supabase/migrations -> nao e' build, mas fica no repo como referencia
+
+# Projeto desktop em C# (0 uso pelo app Next.js). O historico do git ainda tem
+# ~52 MB de DLLs e instaladores aqui.
+app-desktop/
+
+# Edge Functions em Deno: sao publicadas pelo Supabase CLI, nao pelo Next.js.
+supabase/functions/
+
+# Testes: rodam no CI/local, nunca no build de producao.
+tests/
+
+# Backup do middleware desativado (so o middleware.ts vale).
+middleware.ts.bak
+
+# Binarios soltos na raiz (documentacao/print de debug).
+*.pdf
+OPA.png
+Sem t?tulo.png
+scratch-fix.cjs
+
+# Rascunhos e saidas locais.
+.qoder-scratch/
+.preview-email/

@@ -15,7 +15,7 @@ pagbank-proxy/.wrangler/
 # SaÃ­da do script de prÃ©-visualizaÃ§Ã£o de e-mail (gerada localmente)
 .preview-email/
 
-# Missões internas e rascunhos de trabalho: NÃO devem ir para o repositório.
+# Missï¿½es internas e rascunhos de trabalho: Nï¿½O devem ir para o repositï¿½rio.
 Corrigir.txt
 .qoder-scratch/
 Fatura_VOLTRIS_PRO_Alvaro_Araujo.pdf
@@ -29,3 +29,11 @@ Fatura_VOLTRIS_*.pdf
 VOLTRIS_fatura_*.pdf
 VOLTRIS_fatura_*.html
 Gerador_Documentos_*.html
+
+# Artefatos de build do app desktop em C#.
+# O repo carregava ~52 MB de DLLs/instaladores por aqui e o .git chegou a
+# 414 MB so com esses arquivos no historico.
+app-desktop/bin/
+app-desktop/obj/
+app-desktop/**/bin/
+app-desktop/**/obj/
