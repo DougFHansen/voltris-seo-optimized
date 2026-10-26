@@ -32,7 +32,7 @@ const cs = (rel: string) => {
     assert.ok(existsSync(full), `arquivo do app ausente: ${rel}`);
     return readFileSync(full, 'utf8');
 };
-const sql = (name: string) => readFileSync(path.join(REPO, 'supabase', 'migrations', name), 'utf8');
+const sql = (_name: string) => readFileSync(path.join(REPO, 'SQLCOMPLETO.sql'), 'utf8');
 
 describe('desktop — verificador de assinatura', { skip: hasApp ? false : 'app desktop ausente nesta máquina' }, () => {
     const src = () => cs('Services/License/LicenseSignatureVerifier.cs');

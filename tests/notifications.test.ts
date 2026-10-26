@@ -30,7 +30,7 @@ import {
 const rotaUsuario = readFileSync('app/api/notifications/route.ts', 'utf8');
 const rotaAdmin = readFileSync('app/api/admin/notifications/route.ts', 'utf8');
 const servico = readFileSync('services/notificationService.ts', 'utf8');
-const sql = readFileSync('notificacaocorrigida.sql', 'utf8');
+const sql = readFileSync('SQLCOMPLETO.sql', 'utf8');
 const contexto = readFileSync('components/notifications/NotificationContext.tsx', 'utf8');
 const painel = readFileSync('app/restricted-area-admin/page.tsx', 'utf8');
 const webhook = readFileSync('app/api/webhook/stripe/route.ts', 'utf8');

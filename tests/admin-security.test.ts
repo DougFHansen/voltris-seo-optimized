@@ -287,22 +287,31 @@ describe('admin.sql é seguro de executar', () => {
     // Comentários são removidos ANTES das verificações: o arquivo documenta
     // "nenhum DROP, nenhum TRUNCATE, nenhum DELETE", e um teste que acuse a
     // própria documentação de ser perigosa não serve para nada.
-    const sql = readFileSync('admin.sql', 'utf8')
+    const sql = readFileSync('SQLCOMPLETO.sql', 'utf8')
         .split('\n')
         .filter((l) => !l.trimStart().startsWith('--'))
         .join('\n');
 
+    /**
+     * O arquivo é o schema INTEIRO do site. O corpo das funções (`$$ ... $$`)
+     * é CÓDIGO que só roda quando a função é chamada — um DELETE dentro de
+     * `cleanup_expired_trials()` é a lógica dela, não uma operação que o
+     * script aplica no banco. Por isso o corpo das funções sai da análise:
+     * o que interessa aqui é o que o ARQUIVO executa ao ser aplicado.
+     */
+    const sqlExecutado = sql.replace(/\$\$[\s\S]*?\$\$/g, ' ');
+
     test('não apaga dados', () => {
         // DROP TRIGGER IF EXISTS é padrão idempotente de migration e não
         // apaga registro nenhum; DROP TABLE/TRUNCATE/DELETE, sim.
-        assert.equal(/DROP\s+TABLE/i.test(sql), false, 'admin.sql não pode derrubar tabela');
-        assert.equal(/TRUNCATE/i.test(sql), false, 'admin.sql não pode truncar');
-        assert.equal(/^\s*DELETE\s+FROM/im.test(sql), false, 'admin.sql não pode apagar linha');
-        assert.equal(/^\s*UPDATE\s+public\./im.test(sql), false, 'admin.sql não altera dados existentes');
+        assert.equal(/DROP\s+TABLE/i.test(sqlExecutado), false, 'o schema não pode derrubar tabela');
+        assert.equal(/TRUNCATE/i.test(sqlExecutado), false, 'o schema não pode truncar');
+        assert.equal(/^\s*DELETE\s+FROM/im.test(sqlExecutado), false, 'o schema não pode apagar linha');
+        assert.equal(/^\s*UPDATE\s+public\./im.test(sqlExecutado), false, 'o schema não altera dados existentes');
     });
 
     test('nunca desabilita RLS', () => {
-        assert.equal(/DISABLE\s+ROW\s+LEVEL\s+SECURITY/i.test(sql), false);
+        assert.equal(/DISABLE\s+ROW\s+LEVEL\s+SECURITY/i.test(sqlExecutado), false);
     });
 
     test('habilita RLS nas tabelas novas', () => {
@@ -317,10 +326,16 @@ describe('admin.sql é seguro de executar', () => {
 
     test('revoga acesso de anon e authenticated nas tabelas sensíveis', () => {
         for (const t of ['email_outbox', 'admin_audit_log', 'admin_role_grants']) {
-            const bloco = sql.slice(sql.indexOf(`ALTER TABLE public.${t} ENABLE`), sql.indexOf(`ALTER TABLE public.${t} ENABLE`) + 400);
+            // O schema é organizado por fases (RLS numa, REVOKE noutra),
+            // então o REVOKE é procurado no arquivo inteiro — mas precisa
+            // ser DA TABELA certa.
+            const re = new RegExp(
+                `REVOKE ALL ON (public\\.)?${t}\\b[^;]*FROM\\s+PUBLIC,\\s*anon,\\s*authenticated`,
+                'i',
+            );
             assert.ok(
-                /REVOKE ALL ON .* FROM PUBLIC, anon, authenticated/.test(bloco),
-                `${t} precisa ter REVOKE ALL para anon/authenticated`
+                re.test(sql),
+                `${t} precisa ter REVOKE ALL para anon/authenticated`,
             );
         }
     });

@@ -165,7 +165,7 @@ describe('planFromStripePriceId — reconciliação Stripe→plano', () => {
 // ============================================================================
 
 describe('assinatura canônica — fórmula SQL é a fonte', () => {
-    const sqlMigration = read('supabase', 'migrations', '20260818000000_security_hardening.sql');
+    const sqlMigration = read('SQLCOMPLETO.sql');
 
     test('generate_voltris_signature existe e usa SHA-256 truncado em 16 hex maiúsculos', () => {
         const fn = sqlMigration.match(/CREATE OR REPLACE FUNCTION public\.generate_voltris_signature\b([\s\S]{0,1200}?)\n(AS|LANGUAGE|\$\$)/i);

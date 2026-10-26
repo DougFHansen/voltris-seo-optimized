@@ -12,6 +12,7 @@ import {
 import { STRIPE_SUPPORTED_EVENTS } from '@/lib/stripe-events';
 import { readSubscriptionSnapshot, syncSubscriptionRow, writePaymentFacts } from '@/lib/stripe-sync';
 import { NotificationService } from '@/services/notificationService';
+import { TelegramService } from '@/services/telegramService';
 import {
     notifyPurchaseConfirmed,
     notifySubscriptionRenewed,
@@ -167,6 +168,38 @@ async function processEvent(supabase: SupabaseClient, event: Stripe.Event, ctx: 
                 if (error) logSupabaseError(ctx, 'marcar pagamento como falho', error);
             }
             logWarn(ctx, 'checkout com pagamento asynco falhou', { ref, session: session.id });
+            void TelegramService.notifyCheckoutAbandoned({
+                email: session.customer_email || session.metadata?.customer_email || null,
+                plan: session.metadata?.license_type || null,
+                amount: (session.amount_total ?? 0) / 100,
+                referenceId: ref || null,
+                reason: 'Pagamento recusado (tentativa assíncrona falhou)',
+            });
+            break;
+        }
+
+        case 'checkout.session.expired': {
+            // Stripe dispara ~24h depois quando a sessão de checkout expira sem
+            // pagamento. É o sinal AUTOMÁTICO de ABANDONO: ninguém pagou e a
+            // sessão já não pode ser paga. Marca como não pago com GUARDA
+            // `.eq('status','pending')` — nunca sobrescreve um aprovado.
+            const session = event.data.object as Stripe.Checkout.Session;
+            const ref = session.metadata?.reference_id;
+            if (ref) {
+                const { error } = await supabase.from('payments')
+                    .update({ status: 'failed', updated_at: new Date().toISOString() })
+                    .eq('reference_id', ref)
+                    .eq('status', 'pending');
+                if (error) logSupabaseError(ctx, 'marcar checkout expirado como nao pago', error);
+            }
+            logWarn(ctx, 'checkout expirou sem pagamento (abandono)', { ref, session: session.id });
+            void TelegramService.notifyCheckoutAbandoned({
+                email: session.customer_email || session.metadata?.customer_email || null,
+                plan: session.metadata?.license_type || null,
+                amount: (session.amount_total ?? 0) / 100,
+                referenceId: ref || null,
+                reason: 'Checkout expirou sem pagamento',
+            });
             break;
         }
 
@@ -322,6 +355,13 @@ async function handleCheckoutSettled(supabase: SupabaseClient, session: Stripe.C
             .eq('id', paymentId);
         if (error) logSupabaseError(ctx, 'aprovar pagamento de servico', error);
         logSuccess(ctx, 'servico aprovado', { ref: referenceId });
+        void TelegramService.notifyPurchaseSuccess({
+            email: email || null,
+            plan: licenseType || null,
+            amount: (session.amount_total ?? 0) / 100,
+            referenceId: referenceId || null,
+            kind: 'serviço',
+        });
         return;
     }
 
@@ -403,6 +443,16 @@ async function handleCheckoutSettled(supabase: SupabaseClient, session: Stripe.C
     } catch (e) {
         console.error('[webhook/stripe] compra concluída, mas notificação falhou:', e);
     }
+
+    // Telegram: registro da venda confirmada no canal do time. Fire-and-forget
+    // (void) — falha de notificação JAMAIS desfaz a compra nem a licença.
+    void TelegramService.notifyPurchaseSuccess({
+        email: email || null,
+        plan: licenseType || null,
+        amount: (session.amount_total ?? 0) / 100,
+        referenceId: referenceId || null,
+        kind: 'licença',
+    });
 
     // =========================================================================
     // E-MAIL DE COMPRA (FASE 4)

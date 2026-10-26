@@ -25,7 +25,7 @@ import { readFileSync } from 'node:fs';
 const schema = readFileSync('lib/push-schema.ts', 'utf8');
 const rota = readFileSync('app/api/push-subscription/route.ts', 'utf8');
 const servico = readFileSync('services/notificationService.ts', 'utf8');
-const sql = readFileSync('notificacaocorrigida.sql', 'utf8');
+const sql = readFileSync('SQLCOMPLETO.sql', 'utf8');
 
 /** Colunas que a versão antiga da tabela NÃO tem. */
 const COLUNAS_NOVAS = [
@@ -113,10 +113,19 @@ describe('adaptacao ao schema real de push_subscriptions', () => {    test('exis
         assert.match(sql, /ADD COLUMN IF NOT EXISTS/);
     });
 
-    test('nenhuma tabela nova e criada: a correcao e so de colunas', () => {
+    test('a tabela de push e criada UMA vez (e nao recriada pela correcao)', () => {
+        // No schema unico a tabela PRECISA ser criada (é o schema completo).
+        // O que nao pode é ela ser criada duas vezes — recriá-la derrubaria
+        // as inscrições que já existem.
+        const criacoes = sql.match(/CREATE\s+TABLE[^;]*push_subscriptions/gi) || [];
         assert.ok(
-            !/CREATE TABLE[^;]*push_subscriptions/i.test(sql),
-            'nao deve criar a tabela de novo (ela ja existe)'
+            criacoes.length <= 1,
+            `push_subscriptions não pode ser criada mais de uma vez (${criacoes.length} vezes)`,
+        );
+        // E a correção de colunas não pode recriar a tabela.
+        assert.ok(
+            !/DROP\s+TABLE[^;]*push_subscriptions/i.test(sql),
+            'push_subscriptions não pode ser derrubada e recriada',
         );
     });
 });

@@ -20,7 +20,7 @@ import { describe, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
-const sql = readFileSync('notificacaocorrigida.sql', 'utf8');
+const sql = readFileSync('SQLCOMPLETO.sql', 'utf8');
 
 /** Remove comentários para não ler nome de policy dentro de texto. */
 function semComentarios(): string {

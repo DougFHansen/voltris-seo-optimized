@@ -244,5 +244,70 @@ export const TelegramService = {
     ].join('\n');
 
     return this.sendMessage(message);
+  },
+
+  /**
+   * Notifica uma COMPRA CONFIRMADA (pagamento liquidado na Stripe).
+   *
+   * Chamado pelo webhook (`checkout.session.completed`) e pela reconciliação
+   * admin. É FIRE-AND-FORGET: quem chama usa `void`, e `sendMessage` já engole
+   * as próprias falhas — uma notificação que não sai JAMAIS desfaz a compra ou
+   * revoga a licença. O dinheiro e a emissão vêm antes, no gate `paid`.
+   */
+  async notifyPurchaseSuccess(info: {
+    email?: string | null;
+    plan?: string | null;
+    amount?: number | null;
+    referenceId?: string | null;
+    kind?: string;
+  }) {
+    const timestamp = new Date().toLocaleString('pt-BR');
+    const valor = (Number(info.amount) || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    const message = [
+      `✅ <b>COMPRA CONFIRMADA</b> ✅`,
+      ``,
+      `💰 <b>Valor:</b> ${valor}`,
+      `🎟 <b>Plano/Serviço:</b> ${escapeHtml(info.plan || '—')}${info.kind ? ` (${escapeHtml(info.kind)})` : ''}`,
+      `👤 <b>Cliente:</b> ${escapeHtml(info.email || 'não informado')}`,
+      `🔗 <b>Ref:</b> ${escapeHtml(info.referenceId || '—')}`,
+      `⏰ <b>Data/Hora:</b> ${timestamp}`,
+      ``,
+      `#voltris #venda #pago #stripe`
+    ].join('\n');
+
+    return this.sendMessage(message);
+  },
+
+  /**
+   * Notifica um CHECKOUT ABANDONADO: a sessão expirou sem pagamento ou a
+   * tentativa assíncrona falhou. É o registro do "cliente que abriu a compra e
+   * não concluiu" — exatamente o que hoje só aparece como Customer R$ 0,00 na
+   * Stripe e nunca chega ao time.
+   */
+  async notifyCheckoutAbandoned(info: {
+    email?: string | null;
+    plan?: string | null;
+    amount?: number | null;
+    referenceId?: string | null;
+    reason?: string;
+  }) {
+    const timestamp = new Date().toLocaleString('pt-BR');
+    const valor = (Number(info.amount) || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    const message = [
+      `⚠️ <b>CHECKOUT ABANDONADO</b> ⚠️`,
+      ``,
+      `💸 <b>Valor não convertido:</b> ${valor}`,
+      `🎟 <b>Plano/Serviço:</b> ${escapeHtml(info.plan || '—')}`,
+      `👤 <b>Cliente:</b> ${escapeHtml(info.email || 'não informado')}`,
+      `🔗 <b>Ref:</b> ${escapeHtml(info.referenceId || '—')}`,
+      `🧾 <b>Motivo:</b> ${escapeHtml(info.reason || 'Sem pagamento concluído')}`,
+      `⏰ <b>Data/Hora:</b> ${timestamp}`,
+      ``,
+      `#voltris #abandono #checkout #stripe`
+    ].join('\n');
+
+    return this.sendMessage(message);
   }
 };

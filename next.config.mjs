@@ -2,7 +2,11 @@
 const nextConfig = {
   poweredByHeader: false,
   experimental: {
-    optimizeCss: true,
+    // optimizeCss desligado de proposito: ele roda o `critters` inline/minificando
+    // CSS PAGINA POR PAGINA nas 489 rotas estaticas, o que inflava o cache de build
+    // (~1,7 GB) e o tempo de deploy sem ganho material de carga. As demais
+    // otimizações seguem ligadas.
+    optimizeCss: false,
     optimizePackageImports: [
       'lucide-react',
       'react-icons',

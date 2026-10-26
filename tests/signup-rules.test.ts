@@ -141,7 +141,7 @@ describe('utilitários', () => {
 describe('contrato da tela, do modal e do admin.sql', () => {
     const tela = readFileSync('app/login/page.tsx', 'utf8');
     const modal = readFileSync('app/restricted-area-admin/clients/AdminClientsTab.tsx', 'utf8');
-    const sql = readFileSync('admin.sql', 'utf8');
+    const sql = readFileSync('SQLCOMPLETO.sql', 'utf8');
 
     test('a tela revalida os três passos antes de criar a conta', () => {
         assert.match(tela, /validateSignupStep1\(\{ login, email, password, passwordStrength \}\)/);

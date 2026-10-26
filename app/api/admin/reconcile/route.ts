@@ -22,6 +22,7 @@ import type Stripe from 'stripe';
 import { stripe } from '@/lib/stripe';
 import { createClient } from '@/utils/supabase/server';
 import { createAdminClient } from '@/utils/supabase/admin';
+import { TelegramService } from '@/services/telegramService';
 import {
     startOperation,
     getOrCreateCorrelationId,
@@ -515,6 +516,10 @@ async function execute(
             .update({ status: 'failed', updated_at: new Date().toISOString() })
             .eq('id', payment.id);
         if (error) { logSupabaseError(ctx, 'marcar pagamento como não pago', error); throw new Error(error.message); }
+        void TelegramService.notifyCheckoutAbandoned({
+            email: payment.email, plan: payment.plan_type, amount: payment.amount,
+            referenceId: payment.reference_id, reason: 'Reconciliação: Stripe confirma não pago',
+        });
         return;
     }
 
@@ -526,6 +531,10 @@ async function execute(
             logSupabaseError(ctx, row.action === 'ALREADY_ISSUED' ? 'acertar pagamento com licença já emitida' : 'aprovar pagamento de serviço', error);
             throw new Error(error.message);
         }
+        void TelegramService.notifyPurchaseSuccess({
+            email: payment.email, plan: payment.plan_type, amount: payment.amount,
+            referenceId: payment.reference_id, kind: 'reconciliação',
+        });
         return;
     }
 
@@ -569,6 +578,10 @@ async function execute(
                 .update(settlementPatch(payment, sessionId))
                 .eq('id', payment.id);
             if (error) { logSupabaseError(ctx, 'aprovar pagamento já emitido', error); throw new Error(error.message); }
+            void TelegramService.notifyPurchaseSuccess({
+                email: payment.email, plan: payment.plan_type, amount: payment.amount,
+                referenceId: payment.reference_id, kind: 'reconciliação',
+            });
             return;
         }
 
@@ -593,6 +606,10 @@ async function execute(
             plan: payment.plan_type,
             period: interval,
             already: issued.already_issued === true,
+        });
+        void TelegramService.notifyPurchaseSuccess({
+            email: payment.email, plan: payment.plan_type, amount: payment.amount,
+            referenceId: payment.reference_id, kind: 'reconciliação',
         });
     }
 }

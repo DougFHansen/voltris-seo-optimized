@@ -130,8 +130,8 @@ describe('§7 — renovação usa o período AUTORITATIVO da Stripe', () => {
     });
 
     test('a data autoritativa entra na emissão por parâmetro (não é inventada)', () => {
-        const renewal = read('supabase', 'migrations', '20261015200000_webhook_hardening_and_renewal.sql');
-        const emitter = read('supabase', 'migrations', '20261015180000_fix_generate_complete_license_v3.sql');
+        const renewal = read('SQLCOMPLETO.sql');
+        const emitter = read('SQLCOMPLETO.sql');
         assert.match(emitter, /p_valid_until\s+date/i,
             'a RPC canônica de emissão deveria receber a data autoritativa como parâmetro');
         assert.match(renewal, /generate_complete_license_v3\([\s\S]{0,400}?date\(p_period_end\)/i,
